@@ -1,0 +1,23 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:h="http://helix-toolkit.org/wpf" x:Class="cHolosViewer" 
+             mc:Ignorable="d" x:ClassModifier="Friend"
+             d:DesignHeight="300" d:DesignWidth="500">
+    <Grid>
+        <h:HelixViewport3D Background="White" Name="mainViewport" CameraRotationMode="Turnball" ZoomExtentsWhenLoaded="False" ClipToBounds="False" Margin="0,0,0,0" ShowCoordinateSystem="True" ShowCameraInfo="False" IsChangeFieldOfViewEnabled="False" />
+        <Canvas Name="overlay2d" IsHitTestVisible="False" ClipToBounds="False"/>
+        <Grid x:Name="pnlInvalidated" Height="40" VerticalAlignment="Top" Background="LemonChiffon" Opacity="0.8" >
+            <Image x:Name="imgInvalidatedCaption" Margin="4,4,0,0" Source="pack://application:,,,/Resources/error32.png" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="32" />
+            <Label x:Name="lblInvalidatedCaption" Margin="48,4,101,4"></Label>
+            <Button x:Name="cmdRefresh" Height="24" Margin="0,8,8,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="80" FontFamily="Tahoma" FontSize="10.667">
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="16" Height="16" Source="pack://application:,,,/Resources/arrow_refresh.png"></Image>
+                    <Label x:Name="lblRefresh" Height="22">Aggiorna</Label>
+                </StackPanel>
+            </Button> 
+        </Grid>
+    </Grid>
+</UserControl>

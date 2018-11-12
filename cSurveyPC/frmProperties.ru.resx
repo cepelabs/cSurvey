@@ -1,0 +1,1843 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="iml.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+      AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+      LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+      ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB+
+      EwAAAk1TRnQBSQFMAgEBBwEAAbQBBgG0AQYBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+      AwABIAMAAQEBAAEYBgABGE4ABu4D/X4AA+8n7gPvCQAD7gaKA94eAAPvJ+4D7zMAArcBtQKwAa4CrwGs
+      Aq4BrAGuAa8BrAGuAa8BrAGuAa8BrAGuAa8BrAGuAa8BrAGuAa8BrAGuAa8BrAKuAawCrwGsArABrgK3
+      AbUGAAPuA4UG/wKGAYUD7hsAA7YDrwOuA60VrgOtA64DrwO2MwACsAGuJ/8CsAGuAwAD7gOGBf8B+gL/
+      AfsD/wKHAYYD7hgAA68n/wOvMwACrwGtA/8BvAG6AbgBvQG7AbkBvwG8AboBvwG8AboBvwG8AboBvgG8
+      AbkBvgG8AboBvgG8AbkBvgG8AboBvQG7AbkBvAG6AbgD/wKvAa0D7gOHAv4C/AH7AfQC/wHzAQYBGQG5
+      Av8B9gL/Af0CiAGHA+4VAAOuA/8DugO7Cb0MvAO7A7oD/wOuMwACrwGtA/8BvQG5AbcD/wG/AbwBugPz
+      Ab8BvAG6A/8BvwG7AbkD/wG/AbsBuQP/Ab0BuQG3A/8CrwGtA4sB/AH7AfoB9wH1AfEB/wH+Ae4BEAEi
+      AbkBWgFvAf8BEgEkAbkC/wHyAf8B/gH4AogBhwPuEgADrgP/A7oD/wO9A/MDvQP/A7wD/wO8A/8DugP/
+      A64zAAKvAa0D/wHAAb4BuwHBAb8BvQHDAcEBvgHDAcEBvgHDAcEBvgHDAcABvgHEAcABvwHFAcABvgHE
+      AcABvwHCAb8BvQHAAb4BuwP/Aq8BrQKLAYwB9wH2AfQB9gH0AesBCAEbAbsBZQF5Af8BTwFlAfsBTgFl
+      AfwBFQEmAboC/wHsAfsB+QHyAokBiAPuDwADrgP/A74DvwzBCcIDwAO+A/8DrjMAAq8BrQP/AbYBtAGx
+      Ae8B8AHvAbkBtwG1AeMB4gHhAboBtwG1AfUB8AHyAccBuAG6Af8B8gH2AccBuAG6AfQB8AHxAbcBtAGy
+      A/8CrwGtA/QCiAGHAfkB+AHzAfoB9wHnARMBJQG7AWwBgAH4AUEBWQHzAT8BWAH1ARQBJQG7AfoB9wHo
+      AfMB8gHtAokBiAPuDAADrgP/A7QD8AO3A+IDuAPzA8AD+QPAA/IDtQP/A64zAAGvAbABrQH/Af4B/wGy
+      AbABrQG0AbIBsAG2AbQBsgG2AbQBsgG4AbQBsgHDAbQBtgEAAaEBWQEAAaIBXQEAAaEBWQHCAbMBtQG0
+      AbABrwH/Af4B/wGvAbABrQYAAokBhwH6AfgB8wH2AfMB4gEUASUBuwFzAYYB9QEvAUsB7gFvAYMB+AEK
+      AR0BvQHsAeoB4wHrAukDiAPuCQADrwP/A7ADsga0A7UDvAlRA7sDsgP/A68zAAKwAa4B/wL+AakBpwGl
+      AfoB+QH4Aa0BqwGpAecB5gHlAbABqwGqAf8B+wH/AQABogFdAQAB0QGkAQABogFdAf8B+gH/AawBpwGm
+      Af8C/gKwAa4JAAKJAYcB+QH3AfIB8QHuAdwBEwElAbwBeAGLAfUBEwElAb0B7gHrAdsB4QHgAdsB4AHf
+      Ad0B5QHkAeIDhgPuBgADrwP/A6cD+QOrA+YDrQP9A1EDaQNRA/0DqQP/A68zAAKwAa4B/gL9AakBpQGi
+      AasBpwGlAa0BqQGmAa0BqQGmAa8BqQGnAbkBqAGqAQABowFbAQABowFeAQABowFbAbgBqAGpAasBpQGj
+      Af4C/QKwAa4MAAKJAYgB+gH4AfEB6wHmAdcBCgEeAb8B6gHlAdYB3wHcAdcB3AHaAdkB3ALaAd0C2gHv
+      Au4DrAYAA68D/gOmA6gGqgOrA7EJUgOwA6cD/gOvMwABtQGxAasB/wH+AfoBpQGeAZgB9wH0AfABqQGi
+      AZwB5gHgAdwBqgGiAZ0B/QH1AfMBtgGiAaEB/wH1AfcBtgGiAaEB/AH0AfIBpQGeAZkB/wH+AfoBtQGx
+      AasPAAKJAYgB+AH3AfMB3AHZAdEB2AHWAdAB2AHWAdMBpQKkAYQChQGlAaMBpAHuAu0DqgYAA7AD/QOf
+      A/QDowPhA6QD+AOsA/oDrAP3A58D/QOwMwABkgGrAb8B7gH0AfsBfgGYAa4BgAGaAbABggGbAbEBggGb
+      AbEBggGbAbEBggGbAbEBgwGbAbIBgwGbAbIBgwGbAbIBgQGaAbEBfgGYAa4B7gH0AfsBkgGrAb8SAAKJ
+      AYgB9gH1AfQB0AHPAc0B0gHRAdAChQGGA+wDhAHwAe8B7gOqBgADqQP1A5YDmAyaCZsDmQOWA/UDqTMA
+      AQ0BkgH/AYEBxwH/AX8BxwH/AYAByAH/AYAByAH/AYAByAH/AYAByAH/AYAByAH/AYAByAH/AYAByAH/
+      AYAByAH/AYAByAH/AX8BxwH/AYEBxwH/AQ0BkgH/FQADiAHzAvIBzAHKAckBnwGeAZ8ChAGFAZ4CnQHw
+      Au8DqgYAA4YDwAO/G8ADvwPAA4YzAAGJAcQB9QEXAZUB/wEWAZQB/wEVAZQB/wEWAZQB/wEWAZQB/wEW
+      AZQB/wEWAZQB/wEWAZQB/wEWAZQB/wEWAZQB/wEVAZQB/wEWAZQB/wEXAZUB/wFvAbkB9xgAA4gB9gH0
+      AfMB9AHzAfIB9AHzAfIB8wHyAfAB8wHyAfEDqwYAA78GiwOKFYsDigaLA7N7AAOuA6sGqgOrcgAG7gP9
+      JwAG7gP9TgAD7gP1MAAD7gaKA94kAAPuBooD3iQAAuoB9QL9Af4SAAL9Af4C6AH1DAABFgGvAYABaAHo
+      Ac4G7icAA+4DhQb/A4YD7h4AA+4DhQb/A4YD7h4AAusB9gFPAUwB8gJCAe0C/QH+DAAC/QH+ASkBJwHj
+      ATEBLwHqAugB9QkAAYwB8wHoAQEB/wHWAXgBZwFqAXQBbQFuA+4hAAPuAYUChgP/AfsB/QH/AfwF/wGG
+      AocD7hgAA+4DhgT/AfwB/gH/Af4E/wGIAYYBhwPuGAAC6wH2AVgBVgH1AWMBYQH6AVgBVQH2AUQBQgHs
+      Av0B/gYAAv0B/gEvAS4B5QFBAT8B8QFMAUoB9gExAS8B6gLoAfUJAAF6AWABZAF2AWcBaAFiAVEBUgGB
+      AWEBaAPuGwAD7gOHAf0B/gH9AfYB+AH8AfYB/AH/Aa4BbwEAAfkC/wH+Av8ChwGIA+4SAAPuA4cB/wH+
+      Af0B/gH4AfkB/wH6Af8BAAF3ASoB/wH9BP8BiAKHA+4VAAL0AfgBWwFYAfYBZQFiAfoBcQFwAf8BWQFW
+      AfYBRQFDAe0C/QH+Av0B/gE4ATUB6AFHAUUB8gFjAWIB/wFKAUgB9AEvAS0B6QHzAfIB+AkAAXIBagFr
+      AZIBhAGDAVsBxwG1AQAB9QHBAQABtQGNA+4YAAOLAfsB+gH7AfIB8wH2AfEB9gH/AbABdAEAAeIBuAFn
+      AbEBdQEAAfUB+gH/AfoB+wH/AocBiQPuDwADiwH8AfoB+wH4AfIB9AH/AfQB/AEAAXoBMAEAAd4BmwEA
+      AXsBMQH/AfgC/wH6Af0BiQGHAYgD7hUAAvQB+AFbAVkB9gFmAWMB+gF0AXEB/wFaAVgB9gFGAUQB7QFC
+      AUAB7AFQAU0B9AFoAWcB/wFQAU4B9QE2ATQB6wLzAfgPAAFwAWQBZgHeAv8BTgH3AdsBAAHrAbsBAAGz
+      AYwD7hUAAosBjAH2AvUB7gHwAfQBsAFxAQAB5gG8AXIB4AGwAV0B4AGwAVwBsQF2AQAB8AH1Af8B9QH2
+      AfkBhwGIAYkD7gwAAosBjAH4AfUB9AH5Ae8B8QEAAXoBLAETAdwBrQEAAdQBnQEAAdQBnQEAAXwBMQH/
+      AfQB+QH9AfUB9wGJAYgBiQPuFQAC9AH4AVwBWgH2AWcBZAH6AXQBcgH/AXMBcAH/AXABbgH/AW4BbAH/
+      AVcBVQH3AT8BPQHuAvMB+BYAAcgBmQHnAv8BUwH0AdoBAAHeAa8BAAGzAYwD7hIAA/QBhwKIAvUB+AHp
+      Ae4B+gGyAXYBAAHmAb4BewHbAakBUQHcAakBUAGyAXYBAAHqAe8B+gLvAfMCiAGJA+4JAAP0AYgBhwGI
+      AfsB9QH3Af8B7QH0AQABfQExATQB2QG3AQAByQGdAQABywGeAQABfQExAf8B7QH0AfUB7wHxAYkBiAGJ
+      A+4VAAL0AfgBXQFbAfcBeQF2Af8BWQFWAf8BVwFUAf8BcgFwAf8BSAFGAfAC8wH4HAABwAGVAaoB8wHo
+      AVUB9QHbAQAB6wG7AQABswGMA+4VAAGHAYgBiQH0AfUB+QHlAeoB9gGyAXYBAAHnAcABggHZAZ8BQwHo
+      Ab8BfwGyAXMBAAHkAeYB6wHqAekB6gOIA+4MAAGJAogB/AH1AfcB/QHoAe8BAAF9ATEBSgHXAcABAAHC
+      AZ0BQwHYAcABAAF8AS0B7gHlAekB6wLpA4gD7hIAAv0B/gFfAVwB9gF9AXkB/wFeAVsB/wFbAVgB/wF2
+      AXQB/wFIAUUB7wL9Af4fAAHAAZUBqwHzAegBVQH0AdsBAAHrAbsBAAGzAYwD7hUAAYcBiAGJAfMB9AH4
+      AeAB5QHwAbMBdwEAAekBwwGHAbMBdwEAAd4B4wHtAd0B3gHgAt8B3gHlAeQB4gOGA+4MAAGJAYgBiQH7
+      AfQB9gH3AeMB6QEAAX4BMQFbAdkBywEAAX4BMQH0AeIB5wHjAd0B3gHgAt4B5QHkAeIDhgPuDAAC/QH+
+      AWkBZgH4AXABbQH7AYABfgH/AX4BewH/AXwBeQH/AXkBdwH/AV4BXAH3AUoBRwHuAv0B/h8AAcABlQGr
+      AfMB6AFVAfQB2wEAAesBuwEAAbMBiwPuFQABiAKJAfQB9QH4AdsB3gHqAbMBdAEAAdoB3QHoAtkB3gHb
+      AdkB2gHcAtoB3QLaAe8C7gOsDwABiQGIAYkB/AH0AfUB8AHdAeMBAAF9AS4B7wHcAeIB4QHZAtwB2QHa
+      AdwC2gHdAtoB7wLuA6wJAAH+Af0B/gFxAW4B+wF3AXQB/QGGAYIB/wF2AXMB/AFkAWIB+AFgAV0B9wFt
+      AWoB+gF7AXkB/wFgAV0B9wFLAUgB7gL9Af4fAAHAAZUBqwHzAegBRQH0AdYBXwH3AdkBAAGzAYwD7hUA
+      AYgCiQH0AfUB+AHVAdYB2gLUAdYB1wLVAaUCpAGEAoUBpQGjAaQB7gLtA6oSAAGKAokB+gH0AfYB3wHV
+      AdcB2gHTAdQB2AHVAdQBpQKkAYQChQGlAaMBpAHuAu0DqgYAA/4BdgFzAf4BfQF6Af4BigGHAf8BfAF5
+      Af0BbAFpAfsC9AH5AvQB+QFhAV4B+AFuAWwB+gF9AXoB/wFhAV8B9wFMAUkB7wP+HwABwAGVAaYB/wH7
+      ATQBvAGeAQAB7AG7AQABswGMA+4VAAKIAYkB9QH0AfYBzwLOAdIB0QHQAoUBhgPsA4QB8AHvAe4DqhUA
+      AYkBiAGJAfcB9AH1AdABzgHNAdIB0QHQAoUBhgPsA4QB8AHvAe4DqgYAAvgB+gF6AXcB/wGBAX4B/wGB
+      AX4B/gF0AXEB/QL1AfkGAAL0AfkBYgFfAfgBbwFtAfsBfgF8Af8BYgFfAfgB0gHRAfED/x8AAcABlQHp
+      Av8BUQH0AdoBAAHrAboBAAGzAYwD7hUAA4gB8wLyAcwBygHJAZ8BngGfAoQBhQGeAp0B8ALvA6oYAAOI
+      AfMC8gHMAcoByQGfAZ4BnwKEAYUBngKdAfAC7wOqCQAC+AH6AXoBdwH/AXkBdgH+AvUB+QwAAvQB+QFk
+      AWEB+AFqAWgB+QGrAakB8AH1AfQB+SUAAb8BlAHoAv8BUgHzAdkBAAHsAbwBAAG1AY4YAAOIAfYB9AHz
+      AfQB8wHyAfQB8wHyAfMB8gHwAfMB8gHxA6sbAAOIAfYB9AHzAfQB8wHyAfQB8wHyAfMB8gHwAfMB8gHx
+      A6sMAAL4AfoC9QH5EgAC9AH5AtUB8wLtAfYrAAG/AZMB6wL/AT8B9wHZAQABuAGRGwADrgOrBqoDqyEA
+      A64DqwaqA6sqAAP9MAABLwHOAa0BAAG+AZUBwAHnAd8BQgFNAT4HAAE+AwABKAMAAUADAAEgAwABAQEA
+      AQEGAAEBFgAD/wEAAv8B8QP/AgABgAEAAeEB/wGAAwABgAEAAcAB/wGAAwABgAEAAYABfwGAAwABgAIA
+      AT8BgAMAAYACAAEfAYADAAGAAgABDwGAAwABgAIAAQcBgAMAAYABAAHAAQMBgAMAAYABAAHgAQEBgAMA
+      AYABAAHwAQEBgAMAAYABAAH4AQEBgAMAAYABAAH8AQEBgAMAAYABAAH+AQEBgAMAAYABAAH/AQEBgAMA
+      A/8BgwL/AgAB8QH/AfED/wGfAf8B4QH/AeEB/wLnAYcB/wHAAf8BwAH/AsMBgwH/AYABfwGAAX8CgQHB
+      Af8BAAE/AQABPwGAAQEBwAH/AQABHwEAAR8BwAEDAeABfwEAAQ8BAAEPAeABBwHwAT8BAAEHAQABBwHw
+      AQ8B+AEfAcABAwHAAQMB8AEPAfwBDwHgAQEB4AEBAeABBwH+AQcB8AEBAfABAQHAAQMB/wEDAfgBAQH4
+      AQEBgAEBAf8BgQH8AQEB/AEBAYEBgAH/AcAB/gEBAf4BAQHDAcEB/wHgAf8BAQH/AQEB5wHjAf8B8AH/
+      AYMB/wGDAf8B9wH/AfgL
+    </value>
+  </data>
+  <data name="cmdCancel.Text" xml:space="preserve">
+    <value>Отменить</value>
+  </data>
+  <data name="cboPlotPenStyle.Items" xml:space="preserve">
+    <value>Непрерывная линия</value>
+  </data>
+  <data name="cboPlotPenStyle.Items1" xml:space="preserve">
+    <value>Прерывистая</value>
+  </data>
+  <data name="cboPlotPenStyle.Items2" xml:space="preserve">
+    <value>Точки</value>
+  </data>
+  <data name="cboPlotPenStyle.Items3" xml:space="preserve">
+    <value>Линия с одной точкой</value>
+  </data>
+  <data name="cboPlotPenStyle.Items4" xml:space="preserve">
+    <value>Линия с двумя точками</value>
+  </data>
+  <data name="cboPlotPointSymbol.Items" xml:space="preserve">
+    <value>Квадрат</value>
+  </data>
+  <data name="cboPlotPointSymbol.Items1" xml:space="preserve">
+    <value>Круг</value>
+  </data>
+  <data name="cboPlotPointSymbol.Items2" xml:space="preserve">
+    <value>Плюс</value>
+  </data>
+  <data name="cboPlotPointSymbol.Items3" xml:space="preserve">
+    <value>Крест</value>
+  </data>
+  <data name="cboPlotPointSymbol.Items4" xml:space="preserve">
+    <value>Пустой квадрат</value>
+  </data>
+  <data name="cboPlotPointSymbol.Items5" xml:space="preserve">
+    <value>Пустой круг</value>
+  </data>
+  <data name="cboPlotPointSymbol.Items6" xml:space="preserve">
+    <value>Треугольник</value>
+  </data>
+  <data name="cboPlotPointSymbol.Items7" xml:space="preserve">
+    <value>Пустой треугольник</value>
+  </data>
+  <data name="cboPlotPointSymbol.ToolTip" xml:space="preserve">
+    <value>Значек пикета по умолчанию</value>
+  </data>
+  <data name="cboPlotTranslationLinePenStyle.Items" xml:space="preserve">
+    <value>Непрерывная линия</value>
+  </data>
+  <data name="cboPlotTranslationLinePenStyle.Items1" xml:space="preserve">
+    <value>Прерывистая</value>
+  </data>
+  <data name="cboPlotTranslationLinePenStyle.Items2" xml:space="preserve">
+    <value>Точки</value>
+  </data>
+  <data name="cboPlotTranslationLinePenStyle.Items3" xml:space="preserve">
+    <value>Линия с одной точкой</value>
+  </data>
+  <data name="cboPlotTranslationLinePenStyle.Items4" xml:space="preserve">
+    <value>Линия с двумя точками</value>
+  </data>
+  <data name="txtDesignSketchPlanCorrectionY.ToolTip" xml:space="preserve">
+    <value>Поправочный коэффициент для абриса в плане  (Y)</value>
+  </data>
+  <data name="txtDesignSketchPlanCorrectionX.ToolTip" xml:space="preserve">
+    <value>Поправочный коэффициент для абриса в плане  (X)</value>
+  </data>
+  <data name="txtDesignSketchPlanCorrectionScale.ToolTip" xml:space="preserve">
+    <value>Поправочный коэффициент для абриса в плане (масштаб)</value>
+  </data>
+  <data name="txtDesignSketchProfileCorrectionY.ToolTip" xml:space="preserve">
+    <value>Поправочный коэффициент для абриса в разрезе (Y)</value>
+  </data>
+  <data name="txtDesignSketchProfileCorrectionX.ToolTip" xml:space="preserve">
+    <value>Поправочный коэффициент для абриса в разрезе (X)</value>
+  </data>
+  <data name="txtDesignSketchProfileCorrectionScale.ToolTip" xml:space="preserve">
+    <value>Поправочный коэффициент для абриса в разрезе (масштаб)</value>
+  </data>
+  <data name="cboSignRotateMode.Items" xml:space="preserve">
+    <value>Ориентиуемый</value>
+  </data>
+  <data name="cboSignRotateMode.Items1" xml:space="preserve">
+    <value>Фиксированный</value>
+  </data>
+  <data name="cboSignRotateMode.ToolTip" xml:space="preserve">
+    <value>Режим вращения символа</value>
+  </data>
+  <data name="cboTextRotateMode.Items" xml:space="preserve">
+    <value>Ориентиуемый</value>
+  </data>
+  <data name="cboTextRotateMode.Items1" xml:space="preserve">
+    <value>Фиксированный</value>
+  </data>
+  <data name="cboTextRotateMode.ToolTip" xml:space="preserve">
+    <value>Режим вращения текста</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="chkGPSSendToTherion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>265, 17</value>
+  </data>
+  <data name="chkGPSSendToTherion.Text" xml:space="preserve">
+    <value>Отправлять географическое положение всех пикетов в Therion</value>
+  </data>
+  <data name="chkGPSEnabled.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 17</value>
+  </data>
+  <data name="chkGPSEnabled.Text" xml:space="preserve">
+    <value>Включить географические функции</value>
+  </data>
+  <data name="cboDesignWarpingMode.Items" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="cboDesignWarpingMode.Items1" xml:space="preserve">
+    <value>Простой (1 точка -&gt; 1 сегмент)</value>
+  </data>
+  <data name="cboDesignBindingMode.Items" xml:space="preserve">
+    <value>Автоматически</value>
+  </data>
+  <data name="cboDesignBindingMode.Items1" xml:space="preserve">
+    <value>Только после редактирования</value>
+  </data>
+  <data name="cboDesignBindingMode.Items2" xml:space="preserve">
+    <value>Вручную</value>
+  </data>
+  <data name="cmdChangeInversionModeAndSetDirections.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABkUlEQVQ4T5WSTUsCURSGz7J1i1YFhSuh
+        hSC0LFBz8uMPBG0K2vQTgqgUsk8XLVokhrrITYUuCozIpEUxRiCVJVlObtr3B97OmZlkahyhF144c869
+        z9xz7yEAZJWySRCbnz2l77UCfAnCg7avW2Iz7ahfgMA6ofqaRLpEuiWWnF50UAcQ3iaozRgyFULq0rDE
+        ajMOqZnrbeoAIlv0FdwgLJ8QDq4Nr3AsOamZ623qAFgetlf6vmsvIHtLCBh34DVrXWUF6JKebz6mkVEZ
+        sPbPSxRNMqDSiiBdJSTK/ZjZG+oJ6Qq4aI0jdU84bgwiWR7uCbEBggw4a3mQrhEWi4TThhu75VH4uB25
+        E2lRfiKDFt2hgh3Ai4qaC5lnwkSMX6JAOK+PQX2bY8/qrr7PotaexxRDbACFAUfaAHJN4xL9cWrE+Dlz
+        dZ6LR8PZJ0L+hRDqCuDjHbb7kNP4mMYzuv1LVFJ4HqyWzcoqXdkAIS7mPw1LbKZH2DIPf+2yAaI8dWGm
+        iyU2046yAVj6RJp2nMAfAaBvGTpFWOSfqY4AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="cmdNewID.Text" xml:space="preserve">
+    <value>&amp;Новый</value>
+  </data>
+  <data name="chksurfaceprofile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 17</value>
+  </data>
+  <data name="chksurfaceprofile.Text" xml:space="preserve">
+    <value>Включить профиль поверхности</value>
+  </data>
+  <data name="cmdUpdateCalculateVersion.ToolTip" xml:space="preserve">
+    <value>Обновление версии программного кода расчета</value>
+  </data>
+  <data name="cmdApply.Text" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+  <data name="lbl3DSurfaceModelLOD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 13</value>
+  </data>
+  <data name="lbl3DSurfaceModelLOD.Text" xml:space="preserve">
+    <value>Упрощение модели:</value>
+  </data>
+  <data name="lbl3DSurfaceTextureLOD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 13</value>
+  </data>
+  <data name="lbl3DSurfaceTextureLOD.Text" xml:space="preserve">
+    <value>Упрощение текстур:</value>
+  </data>
+  <data name="frm3DSurface.Text" xml:space="preserve">
+    <value>Поверхность:</value>
+  </data>
+  <data name="GroupBox9.Text" xml:space="preserve">
+    <value>Внутренний просмотрщик:</value>
+  </data>
+  <data name="chk3DLochShowSplay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 17</value>
+  </data>
+  <data name="chk3DLochShowSplay.Text" xml:space="preserve">
+    <value>Показать боковые замеры</value>
+  </data>
+  <data name="chk3dLochShowDialog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 17</value>
+  </data>
+  <data name="chk3dLochShowDialog.Text" xml:space="preserve">
+    <value>Показать окно выбора данных при запуске Loch</value>
+  </data>
+  <data name="lbl3DModelMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
+  </data>
+  <data name="lbl3DModelMode.Text" xml:space="preserve">
+    <value>3D модель:</value>
+  </data>
+  <data name="cbo3DModelMode.Items" xml:space="preserve">
+    <value>По умолчанию (объём из данных ЛПВН)</value>
+  </data>
+  <data name="cbo3DModelMode.Items1" xml:space="preserve">
+    <value>Простая передискретизация (объём из границ плана и разреза для каждого пикета)</value>
+  </data>
+  <data name="cbo3DModelMode.Items2" xml:space="preserve">
+    <value>Сложная передискретизация (объём из границ плана и разреза для каждого пикета и также для n дополнительных 'виртуальных' пикетов)</value>
+  </data>
+  <data name="lblPlotNoteTextFont.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 13</value>
+  </data>
+  <data name="lblPlotNoteTextFont.Text" xml:space="preserve">
+    <value>Шрифт:</value>
+  </data>
+  <data name="lblPlotNoteTextColor.Text" xml:space="preserve">
+    <value>Цвет:</value>
+  </data>
+  <data name="lblPlotNoteTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 13</value>
+  </data>
+  <data name="lblPlotNoteTextScaleFactor.Text" xml:space="preserve">
+    <value>Текст (размер):</value>
+  </data>
+  <data name="lblPlotSplaySelectedPenWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 13</value>
+  </data>
+  <data name="lblPlotSplaySelectedPenWidth.Text" xml:space="preserve">
+    <value>Размер (sel.):</value>
+  </data>
+  <data name="lblPlotSplayPenWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 13</value>
+  </data>
+  <data name="lblPlotSplayPenWidth.Text" xml:space="preserve">
+    <value>Размер:</value>
+  </data>
+  <data name="lblPlotSplayPenStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 13</value>
+  </data>
+  <data name="lblPlotSplayPenStyle.Text" xml:space="preserve">
+    <value>Стиль:</value>
+  </data>
+  <data name="lblPlotLRUDSelectedPenWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 13</value>
+  </data>
+  <data name="lblPlotLRUDSelectedPenWidth.Text" xml:space="preserve">
+    <value>Размер (sel.):</value>
+  </data>
+  <data name="lblPlotLRUDPenWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 13</value>
+  </data>
+  <data name="lblPlotLRUDPenWidth.Text" xml:space="preserve">
+    <value>Размер:</value>
+  </data>
+  <data name="lblPlotLRUDPenStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 13</value>
+  </data>
+  <data name="lblPlotLRUDPenStyle.Text" xml:space="preserve">
+    <value>Стиль:</value>
+  </data>
+  <data name="lblPlotTranslationLinePenColor.Text" xml:space="preserve">
+    <value>Цвет:</value>
+  </data>
+  <data name="lblPlotTranslationLinePenSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 13</value>
+  </data>
+  <data name="lblPlotTranslationLinePenSize.Text" xml:space="preserve">
+    <value>Размер:</value>
+  </data>
+  <data name="lblPlotTranslationLinePenStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 13</value>
+  </data>
+  <data name="lblPlotTranslationLinePenStyle.Text" xml:space="preserve">
+    <value>Стиль:</value>
+  </data>
+  <data name="frmPlotTranslationLine.Text" xml:space="preserve">
+    <value>Линии выноса:</value>
+  </data>
+  <data name="lblPlotTextFont.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 13</value>
+  </data>
+  <data name="lblPlotTextFont.Text" xml:space="preserve">
+    <value>Шрифт:</value>
+  </data>
+  <data name="lblPlotPointColor.Text" xml:space="preserve">
+    <value>Цвет:</value>
+  </data>
+  <data name="lblPlotTextColor.Text" xml:space="preserve">
+    <value>Цвет:</value>
+  </data>
+  <data name="lblPlotTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 13</value>
+  </data>
+  <data name="lblPlotTextScaleFactor.Text" xml:space="preserve">
+    <value>Текст (размер):</value>
+  </data>
+  <data name="lblPlotSelectedPointSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 13</value>
+  </data>
+  <data name="lblPlotSelectedPointSize.Text" xml:space="preserve">
+    <value>Размер (sel.):</value>
+  </data>
+  <data name="lblPlotPointSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 13</value>
+  </data>
+  <data name="lblPlotPointSize.Text" xml:space="preserve">
+    <value>Размер:</value>
+  </data>
+  <data name="lblPlotPointSymbol.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 13</value>
+  </data>
+  <data name="lblPlotPointSymbol.Text" xml:space="preserve">
+    <value>Символ:</value>
+  </data>
+  <data name="frmPlotPoint.Text" xml:space="preserve">
+    <value>Пикеты:</value>
+  </data>
+  <data name="chkPlotCenterlineVectors.Text" xml:space="preserve">
+    <value>Показывать векторы</value>
+  </data>
+  <data name="lblPlotPenColor.Text" xml:space="preserve">
+    <value>Цвет:</value>
+  </data>
+  <data name="lblPlotPenWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 13</value>
+  </data>
+  <data name="lblPlotPenWidth.Text" xml:space="preserve">
+    <value>Размер:</value>
+  </data>
+  <data name="lblPlotSelectedPenWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 13</value>
+  </data>
+  <data name="lblPlotSelectedPenWidth.Text" xml:space="preserve">
+    <value>Размер (sel.):</value>
+  </data>
+  <data name="lblPlotPenStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 13</value>
+  </data>
+  <data name="lblPlotPenStyle.Text" xml:space="preserve">
+    <value>Стиль:</value>
+  </data>
+  <data name="frmPlotPen.Text" xml:space="preserve">
+    <value>Сегменты:</value>
+  </data>
+  <data name="tabInfoPlot.Text" xml:space="preserve">
+    <value>Нитка хода</value>
+  </data>
+  <data name="cboClipBorder.Items" xml:space="preserve">
+    <value>Не обрезать объекты на по линии границ пещеры</value>
+  </data>
+  <data name="cboClipBorder.Items1" xml:space="preserve">
+    <value>Обрезать объекты по линии границ пещеры</value>
+  </data>
+  <data name="cboClipBorder.Items2" xml:space="preserve">
+    <value>Отключить для всех объектов</value>
+  </data>
+  <data name="lblClippingAdvancedClipart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 13</value>
+  </data>
+  <data name="lblClippingAdvancedClipart.Text" xml:space="preserve">
+    <value>Продвинутые инструменты:</value>
+  </data>
+  <data name="lblClippingBorder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 13</value>
+  </data>
+  <data name="lblClippingBorder.Text" xml:space="preserve">
+    <value>Границы:</value>
+  </data>
+  <data name="lblTextRotateMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 13</value>
+  </data>
+  <data name="lblTextRotateMode.Text" xml:space="preserve">
+    <value>Вращение текста:</value>
+  </data>
+  <data name="lblSignRotateMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 13</value>
+  </data>
+  <data name="lblSignRotateMode.Text" xml:space="preserve">
+    <value>Поворот символов:</value>
+  </data>
+  <data name="GroupBox5.Text" xml:space="preserve">
+    <value>Поворот значков и текста:</value>
+  </data>
+  <data name="lblDesignLowerLayersTransparencyThreshold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 13</value>
+  </data>
+  <data name="lblDesignLowerLayersTransparencyThreshold.Text" xml:space="preserve">
+    <value>Нижние уровни:</value>
+  </data>
+  <data name="lblDesignOriginalPositionTransparencyThreshold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 13</value>
+  </data>
+  <data name="lblDesignOriginalPositionTransparencyThreshold.Text" xml:space="preserve">
+    <value>Начальное положение:</value>
+  </data>
+  <data name="lblDesignBackgroundTransparencyThreshold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 13</value>
+  </data>
+  <data name="lblDesignBackgroundTransparencyThreshold.Text" xml:space="preserve">
+    <value>Фон:</value>
+  </data>
+  <data name="lblDesignCombinedAreaTransparencyThreshold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 13</value>
+  </data>
+  <data name="lblDesignCombinedAreaTransparencyThreshold.Text" xml:space="preserve">
+    <value>Комбинированный вид:</value>
+  </data>
+  <data name="GroupBox3.Text" xml:space="preserve">
+    <value>Прозрачность:</value>
+  </data>
+  <data name="lblSketchProfileCorrectionScale.Text" xml:space="preserve">
+    <value>Масштаб:</value>
+  </data>
+  <data name="lblSketchProfileCorrectionTranslation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 13</value>
+  </data>
+  <data name="lblSketchProfileCorrectionTranslation.Text" xml:space="preserve">
+    <value>Преобразование (X,Y):</value>
+  </data>
+  <data name="frmSketchProfile.Text" xml:space="preserve">
+    <value>Корректирующие коэффициенты разреза:</value>
+  </data>
+  <data name="lblSketchPlanCorrectionScale.Text" xml:space="preserve">
+    <value>Масштаб:</value>
+  </data>
+  <data name="lblSketchPlanCorrectionTranslation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 13</value>
+  </data>
+  <data name="lblSketchPlanCorrectionTranslation.Text" xml:space="preserve">
+    <value>Преобразование (X,Y):</value>
+  </data>
+  <data name="frmSketchPlan.Text" xml:space="preserve">
+    <value>Корректирующие коэффициенты плана:</value>
+  </data>
+  <data name="cboLineType.Items" xml:space="preserve">
+    <value>Прямые линии</value>
+  </data>
+  <data name="Label27.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 13</value>
+  </data>
+  <data name="Label27.Text" xml:space="preserve">
+    <value>Линии:</value>
+  </data>
+  <data name="lblDesignTextureScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 13</value>
+  </data>
+  <data name="lblDesignTextureScale.Text" xml:space="preserve">
+    <value>Текстуры brushes:</value>
+  </data>
+  <data name="lblDesignTextFont.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 13</value>
+  </data>
+  <data name="lblDesignTextFont.Text" xml:space="preserve">
+    <value>Шрифт:</value>
+  </data>
+  <data name="lblDesignSoilScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 13</value>
+  </data>
+  <data name="lblDesignSoilScale.Text" xml:space="preserve">
+    <value>Clipart brushes:</value>
+  </data>
+  <data name="lblDesignTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 13</value>
+  </data>
+  <data name="lblDesignTextScaleFactor.Text" xml:space="preserve">
+    <value>Текст:</value>
+  </data>
+  <data name="lblDesignSignScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 13</value>
+  </data>
+  <data name="lblDesignSignScaleFactor.Text" xml:space="preserve">
+    <value>Символы:</value>
+  </data>
+  <data name="lblDesignTerrainLevelScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 13</value>
+  </data>
+  <data name="lblDesignTerrainLevelScaleFactor.Text" xml:space="preserve">
+    <value>Границы:</value>
+  </data>
+  <data name="frrmDesign.Text" xml:space="preserve">
+    <value>Клипарт, знаки е объекты (масштаб и шрифт):</value>
+  </data>
+  <data name="Label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 13</value>
+  </data>
+  <data name="Label8.Text" xml:space="preserve">
+    <value>Ультратонкие линии:</value>
+  </data>
+  <data name="Label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
+  </data>
+  <data name="Label7.Text" xml:space="preserve">
+    <value>Тонкие линии:</value>
+  </data>
+  <data name="Label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 13</value>
+  </data>
+  <data name="Label4.Text" xml:space="preserve">
+    <value>Средние линии:</value>
+  </data>
+  <data name="lblBaseLinesScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
+  </data>
+  <data name="lblBaseLinesScaleFactor.Text" xml:space="preserve">
+    <value>Жирные линии:</value>
+  </data>
+  <data name="lblBaseLineWidthScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 13</value>
+  </data>
+  <data name="lblBaseLineWidthScaleFactor.Text" xml:space="preserve">
+    <value>Базовый масштаб:</value>
+  </data>
+  <data name="GroupBox1.Text" xml:space="preserve">
+    <value>Ширина линии (масштаб):</value>
+  </data>
+  <data name="tabInfoDesign.Text" xml:space="preserve">
+    <value>Дизайн</value>
+  </data>
+  <data name="lblSpecialTrigPointsStructure.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 13</value>
+  </data>
+  <data name="lblSpecialTrigPointsStructure.Text" xml:space="preserve">
+    <value>Особые пикеты:</value>
+  </data>
+  <data name="lblTrigPointsStructure.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 13</value>
+  </data>
+  <data name="lblTrigPointsStructure.Text" xml:space="preserve">
+    <value>Пикеты:</value>
+  </data>
+  <data name="lblInfoBoxStructure.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 13</value>
+  </data>
+  <data name="lblInfoBoxStructure.Text" xml:space="preserve">
+    <value>Информационное окно:</value>
+  </data>
+  <data name="tabInfoInfoBox.Text" xml:space="preserve">
+    <value>Информационное поле и пикеты</value>
+  </data>
+  <data name="lblCaveInfoDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 13</value>
+  </data>
+  <data name="lblCaveInfoDescription.Text" xml:space="preserve">
+    <value>Описание:</value>
+  </data>
+  <data name="btnCaveInfoAddCave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 22</value>
+  </data>
+  <data name="btnCaveInfoAddCave.Text" xml:space="preserve">
+    <value>Добавить пещеру</value>
+  </data>
+  <data name="btnCaveInfoAddBranch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 22</value>
+  </data>
+  <data name="btnCaveInfoAddBranch.Text" xml:space="preserve">
+    <value>Добавить ветку</value>
+  </data>
+  <data name="btnCaveInfoDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 22</value>
+  </data>
+  <data name="btnCaveInfoDelete.Text" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="lblCaveInfoID.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 13</value>
+  </data>
+  <data name="lblCaveInfoID.Text" xml:space="preserve">
+    <value>Кадастровый ID:</value>
+  </data>
+  <data name="lblCaveInfoName.Text" xml:space="preserve">
+    <value>Название:</value>
+  </data>
+  <data name="cmdCaveInfoColorReset.Text" xml:space="preserve">
+    <value>По умолчанию</value>
+  </data>
+  <data name="lblCaveInfoColor.Text" xml:space="preserve">
+    <value>Цвет:</value>
+  </data>
+  <data name="tabCaveInfoSegments.Text" xml:space="preserve">
+    <value>Сегменты</value>
+  </data>
+  <data name="lblCaveInfoSurfaceProfileShow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 13</value>
+  </data>
+  <data name="lblCaveInfoSurfaceProfileShow.Text" xml:space="preserve">
+    <value>Показать:</value>
+  </data>
+  <data name="cboCaveInfoSurfaceProfileShow.Items" xml:space="preserve">
+    <value>По умолчанию</value>
+  </data>
+  <data name="cboCaveInfoSurfaceProfileShow.Items1" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="tabCaveInfoSurface.Text" xml:space="preserve">
+    <value>Поверхность</value>
+  </data>
+  <data name="tabInfoCaves.Text" xml:space="preserve">
+    <value>Пещеры и ветки</value>
+  </data>
+  <data name="btnSessionsAddSession.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 22</value>
+  </data>
+  <data name="btnSessionsAddSession.Text" xml:space="preserve">
+    <value>Добавить съёмку</value>
+  </data>
+  <data name="btnSessionsDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 22</value>
+  </data>
+  <data name="btnSessionsDelete.Text" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="lblSessionDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 13</value>
+  </data>
+  <data name="lblSessionDescription.Text" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="lblSessionDate.Text" xml:space="preserve">
+    <value>Дата:</value>
+  </data>
+  <data name="lblSessionDesigner.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 13</value>
+  </data>
+  <data name="lblSessionDesigner.Text" xml:space="preserve">
+    <value>Дизайнер/ы:</value>
+  </data>
+  <data name="lblSessionTeam.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 13</value>
+  </data>
+  <data name="lblSessionTeam.Text" xml:space="preserve">
+    <value>Съёмщик/и:</value>
+  </data>
+  <data name="lblSessionClub.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
+  </data>
+  <data name="lblSessionClub.Text" xml:space="preserve">
+    <value>Группа/ы:</value>
+  </data>
+  <data name="tabSessionMain.Text" xml:space="preserve">
+    <value>Основные</value>
+  </data>
+  <data name="cboSessionDepthType.Items" xml:space="preserve">
+    <value>Глубина (на пикете до)</value>
+  </data>
+  <data name="cboSessionDepthType.Items1" xml:space="preserve">
+    <value>Глубина (на пикете от)</value>
+  </data>
+  <data name="cboSessionDepthType.Items2" xml:space="preserve">
+    <value>Разница глубин</value>
+  </data>
+  <data name="lblSessionDepthType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 13</value>
+  </data>
+  <data name="lblSessionDepthType.Text" xml:space="preserve">
+    <value>Глубина:</value>
+  </data>
+  <data name="chkSessionDecMag.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 17</value>
+  </data>
+  <data name="chkSessionDecMag.Text" xml:space="preserve">
+    <value>Склонение:</value>
+  </data>
+  <data name="cboSessionNordType.Items" xml:space="preserve">
+    <value>Магнитный север</value>
+  </data>
+  <data name="cboSessionNordType.Items1" xml:space="preserve">
+    <value>Географический север</value>
+  </data>
+  <data name="lblSessionNordType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 13</value>
+  </data>
+  <data name="lblSessionNordType.Text" xml:space="preserve">
+    <value>Север:</value>
+  </data>
+  <data name="cboSessionDataFormat.Items" xml:space="preserve">
+    <value>По умолчанию (Расстояние/Азимут/Угол)</value>
+  </data>
+  <data name="cboSessionDataFormat.Items1" xml:space="preserve">
+    <value>Картографические (X/Y/Z)</value>
+  </data>
+  <data name="cboSessionDataFormat.Items2" xml:space="preserve">
+    <value>Подводные (Расстояние/Азимут/Глубина)</value>
+  </data>
+  <data name="lblSessionDataFormat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 13</value>
+  </data>
+  <data name="lblSessionDataFormat.Text" xml:space="preserve">
+    <value>Формат:</value>
+  </data>
+  <data name="lblSessionGrade.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 13</value>
+  </data>
+  <data name="lblSessionGrade.Text" xml:space="preserve">
+    <value>Уровень достоверности:</value>
+  </data>
+  <data name="cboSessionSideMeasuresReferTo.Items" xml:space="preserve">
+    <value>Пикет ДО</value>
+  </data>
+  <data name="cboSessionSideMeasuresReferTo.Items1" xml:space="preserve">
+    <value>Пикет ОТ</value>
+  </data>
+  <data name="cboSessionDistanceType.Items" xml:space="preserve">
+    <value>Метры</value>
+  </data>
+  <data name="cboSessionDistanceType.Items1" xml:space="preserve">
+    <value>Футы</value>
+  </data>
+  <data name="cboSessionDistanceType.Items2" xml:space="preserve">
+    <value>Ярды</value>
+  </data>
+  <data name="lblSessionDistanceType.Text" xml:space="preserve">
+    <value>Расстояние:</value>
+  </data>
+  <data name="cboSessionSideMeasuresType.Items" xml:space="preserve">
+    <value>Перпендикулярно к предыдущему сегменту</value>
+  </data>
+  <data name="cboSessionSideMeasuresType.Items1" xml:space="preserve">
+    <value>Бисектриса угла между предыдущим и следующим сегментами</value>
+  </data>
+  <data name="cboSessionSideMeasuresType.Items2" xml:space="preserve">
+    <value>Перпендикулярно к следующему сегменту</value>
+  </data>
+  <data name="lblSessionSideMeasureType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 13</value>
+  </data>
+  <data name="lblSessionSideMeasureType.Text" xml:space="preserve">
+    <value>Боковые замеры:</value>
+  </data>
+  <data name="cboSessionBearingType.Items" xml:space="preserve">
+    <value>Градусы</value>
+  </data>
+  <data name="cboSessionBearingType.Items1" xml:space="preserve">
+    <value>Грады</value>
+  </data>
+  <data name="lblSessionBearingType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 13</value>
+  </data>
+  <data name="lblSessionBearingType.Text" xml:space="preserve">
+    <value>Направление:</value>
+  </data>
+  <data name="chkSessionBearingDirection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 17</value>
+  </data>
+  <data name="chkSessionBearingDirection.Text" xml:space="preserve">
+    <value>Обратный</value>
+  </data>
+  <data name="cboSessionInclinationType.Items" xml:space="preserve">
+    <value>Градусы</value>
+  </data>
+  <data name="cboSessionInclinationType.Items1" xml:space="preserve">
+    <value>Грады</value>
+  </data>
+  <data name="lblSessionInclinationType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 13</value>
+  </data>
+  <data name="lblSessionInclinationType.Text" xml:space="preserve">
+    <value>Угол:</value>
+  </data>
+  <data name="chkSessionInclinationDirection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 17</value>
+  </data>
+  <data name="chkSessionInclinationDirection.Text" xml:space="preserve">
+    <value>Обратный</value>
+  </data>
+  <data name="tabSessionMeasure.Text" xml:space="preserve">
+    <value>Измерения</value>
+  </data>
+  <data name="chkSessionVthreshold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 17</value>
+  </data>
+  <data name="chkSessionVthreshold.Text" xml:space="preserve">
+    <value>Порог вертикальности UD:</value>
+  </data>
+  <data name="tabSessionOther.Text" xml:space="preserve">
+    <value>Другой</value>
+  </data>
+  <data name="tabInfoSessions.Text" xml:space="preserve">
+    <value>Съёмки</value>
+  </data>
+  <data name="cboDepthType.Items" xml:space="preserve">
+    <value>Глубина (на пикете до)</value>
+  </data>
+  <data name="cboDepthType.Items1" xml:space="preserve">
+    <value>Глубина (на пикете от)</value>
+  </data>
+  <data name="cboDepthType.Items2" xml:space="preserve">
+    <value>Разница глубин</value>
+  </data>
+  <data name="lblDepthType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 13</value>
+  </data>
+  <data name="lblDepthType.Text" xml:space="preserve">
+    <value>Глубина:</value>
+  </data>
+  <data name="chkInclinationDirection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 17</value>
+  </data>
+  <data name="chkInclinationDirection.Text" xml:space="preserve">
+    <value>Обратный</value>
+  </data>
+  <data name="cboInclinationType.Items" xml:space="preserve">
+    <value>Градусы</value>
+  </data>
+  <data name="cboInclinationType.Items1" xml:space="preserve">
+    <value>Грады</value>
+  </data>
+  <data name="lblInclinationType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 13</value>
+  </data>
+  <data name="lblInclinationType.Text" xml:space="preserve">
+    <value>Угол:</value>
+  </data>
+  <data name="chkGlobalDecMag.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 17</value>
+  </data>
+  <data name="chkGlobalDecMag.Text" xml:space="preserve">
+    <value>Склонение:</value>
+  </data>
+  <data name="chkGlobalVthreshold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 17</value>
+  </data>
+  <data name="chkGlobalVthreshold.Text" xml:space="preserve">
+    <value>Порог вертикальности UD:</value>
+  </data>
+  <data name="GroupBox2.Text" xml:space="preserve">
+    <value>Значение по умолчанию для съёмки:</value>
+  </data>
+  <data name="chkDecMag.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 17</value>
+  </data>
+  <data name="chkDecMag.Text" xml:space="preserve">
+    <value>Склонение:</value>
+  </data>
+  <data name="lblNordType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 13</value>
+  </data>
+  <data name="lblNordType.Text" xml:space="preserve">
+    <value>Север:</value>
+  </data>
+  <data name="cboNordType.Items" xml:space="preserve">
+    <value>Магнитный север</value>
+  </data>
+  <data name="cboNordType.Items1" xml:space="preserve">
+    <value>Географический север</value>
+  </data>
+  <data name="cboDataFormat.Items" xml:space="preserve">
+    <value>По умолчанию (Расстояние/Азимут/Угол)</value>
+  </data>
+  <data name="cboDataFormat.Items1" xml:space="preserve">
+    <value>Декартовы (X/Y/Z)</value>
+  </data>
+  <data name="cboDataFormat.Items2" xml:space="preserve">
+    <value>Подводные (Расстояние/Азимут/Глубина)</value>
+  </data>
+  <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 13</value>
+  </data>
+  <data name="Label1.Text" xml:space="preserve">
+    <value>Формат:</value>
+  </data>
+  <data name="lblGrade.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 13</value>
+  </data>
+  <data name="lblGrade.Text" xml:space="preserve">
+    <value>Уровень достоверности:</value>
+  </data>
+  <data name="cboSideMeasuresReferTo.Items" xml:space="preserve">
+    <value>Пикет ДО</value>
+  </data>
+  <data name="cboSideMeasuresReferTo.Items1" xml:space="preserve">
+    <value>Пикет ОТ</value>
+  </data>
+  <data name="cboDistanceType.Items" xml:space="preserve">
+    <value>Метры</value>
+  </data>
+  <data name="cboDistanceType.Items1" xml:space="preserve">
+    <value>Футы</value>
+  </data>
+  <data name="cboDistanceType.Items2" xml:space="preserve">
+    <value>Ярды</value>
+  </data>
+  <data name="lblSideMeasuresType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 13</value>
+  </data>
+  <data name="lblSideMeasuresType.Text" xml:space="preserve">
+    <value>Боковые замеры:</value>
+  </data>
+  <data name="cboSideMeasuresType.Items" xml:space="preserve">
+    <value>Перпендикулярно к предыдущему сегменту</value>
+  </data>
+  <data name="cboSideMeasuresType.Items1" xml:space="preserve">
+    <value>Бисектриса угла между предыдущим и следующим сегментами</value>
+  </data>
+  <data name="cboSideMeasuresType.Items2" xml:space="preserve">
+    <value>Перпендикулярно к следующему сегменту</value>
+  </data>
+  <data name="lblDistanceType.Text" xml:space="preserve">
+    <value>Расстояние:</value>
+  </data>
+  <data name="chkVthreshold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 17</value>
+  </data>
+  <data name="chkVthreshold.Text" xml:space="preserve">
+    <value>Порог вертикальности UD:</value>
+  </data>
+  <data name="cboBearingType.Items" xml:space="preserve">
+    <value>Градусы</value>
+  </data>
+  <data name="cboBearingType.Items1" xml:space="preserve">
+    <value>Грады</value>
+  </data>
+  <data name="lblBearingType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 13</value>
+  </data>
+  <data name="lblBearingType.Text" xml:space="preserve">
+    <value>Направление:</value>
+  </data>
+  <data name="chkBearingDirection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 17</value>
+  </data>
+  <data name="chkBearingDirection.Text" xml:space="preserve">
+    <value>Обратный</value>
+  </data>
+  <data name="tabInfoMeasure.Text" xml:space="preserve">
+    <value>Измерения</value>
+  </data>
+  <data name="optGPSRefPointOnOrigin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 17</value>
+  </data>
+  <data name="optGPSRefPointOnOrigin.Text" xml:space="preserve">
+    <value>Точка отсчета</value>
+  </data>
+  <data name="lblCoordinateGeo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
+  </data>
+  <data name="lblCoordinateGeo.Text" xml:space="preserve">
+    <value>Система:</value>
+  </data>
+  <data name="lblCoordinateBand.Text" xml:space="preserve">
+    <value>Band:</value>
+  </data>
+  <data name="lblCoordinateZone.Text" xml:space="preserve">
+    <value>Зона:</value>
+  </data>
+  <data name="frmGPSDefaults.Text" xml:space="preserve">
+    <value>Значения по умолчанию:</value>
+  </data>
+  <data name="lblGPSCustomRefPoint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 13</value>
+  </data>
+  <data name="lblGPSCustomRefPoint.Text" xml:space="preserve">
+    <value>Опорный пикет:</value>
+  </data>
+  <data name="tabInfoGPS.Text" xml:space="preserve">
+    <value>Географическое положение</value>
+  </data>
+  <data name="lblCalculateVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
+  </data>
+  <data name="lblCalculateVersion.Text" xml:space="preserve">
+    <value>Версия:</value>
+  </data>
+  <data name="chkBindCrossSection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 17</value>
+  </data>
+  <data name="chkBindCrossSection.Text" xml:space="preserve">
+    <value>Соединять поперечное сечение</value>
+  </data>
+  <data name="lblNordCorrectionWarning.Text" xml:space="preserve">
+    <value>Внимание: при включении  географических функций коррекция магнитного склонения происходит автоматически.</value>
+  </data>
+  <data name="chkBindSplaySegment.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 17</value>
+  </data>
+  <data name="cboSplayMode.Items" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="cboSplayMode.Items1" xml:space="preserve">
+    <value>Автоматическое управление</value>
+  </data>
+  <data name="Label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 13</value>
+  </data>
+  <data name="Label5.Text" xml:space="preserve">
+    <value>Точка отсчета:</value>
+  </data>
+  <data name="Label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 13</value>
+  </data>
+  <data name="Label3.Text" xml:space="preserve">
+    <value>Обратный:</value>
+  </data>
+  <data name="cboInversionMode.Items1" xml:space="preserve">
+    <value>Абсолютный</value>
+  </data>
+  <data name="chkCalculateMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 17</value>
+  </data>
+  <data name="chkCalculateMode.Text" xml:space="preserve">
+    <value>Автоматический расчет</value>
+  </data>
+  <data name="lblNordCorrection.Text" xml:space="preserve">
+    <value>Поправка на север:</value>
+  </data>
+  <data name="cboNordCorrection.Items" xml:space="preserve">
+    <value>Нет (использовать заданные значения  без коррекции)</value>
+  </data>
+  <data name="cboNordCorrection.Items1" xml:space="preserve">
+    <value>Все на географический Север</value>
+  </data>
+  <data name="lblCalculateMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 13</value>
+  </data>
+  <data name="lblCalculateMode.Text" xml:space="preserve">
+    <value>Тип расчета:</value>
+  </data>
+  <data name="cboCalculateType.Items" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="cboCalculateType.Items1" xml:space="preserve">
+    <value>Внутренний</value>
+  </data>
+  <data name="cboCalculateType.Items2" xml:space="preserve">
+    <value>Использовать Therion</value>
+  </data>
+  <data name="lblRingCorrectionMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 13</value>
+  </data>
+  <data name="lblRingCorrectionMode.Text" xml:space="preserve">
+    <value>Коррекция клоец:</value>
+  </data>
+  <data name="cboRingCorrectionMode.Items" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="cboRingCorrectionMode.Items1" xml:space="preserve">
+    <value>Замыкать первую расчитанныю точку</value>
+  </data>
+  <data name="cboRingCorrectionMode.Items2" xml:space="preserve">
+    <value>Коррекция средней точки</value>
+  </data>
+  <data name="tabInfoOptions.Text" xml:space="preserve">
+    <value>Параметры расчета</value>
+  </data>
+  <data name="chkHistoryEnabled.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 17</value>
+  </data>
+  <data name="chkHistoryEnabled.Text" xml:space="preserve">
+    <value>Сохранить историю</value>
+  </data>
+  <data name="Label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 13</value>
+  </data>
+  <data name="Label10.Text" xml:space="preserve">
+    <value>Уровень достоверности/точность:</value>
+  </data>
+  <data name="lblDesigner.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 13</value>
+  </data>
+  <data name="lblDesigner.Text" xml:space="preserve">
+    <value>Дизайнер/ы:</value>
+  </data>
+  <data name="lblTeam.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 13</value>
+  </data>
+  <data name="lblTeam.Text" xml:space="preserve">
+    <value>Съёмщик/и:</value>
+  </data>
+  <data name="lblCatasto.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 13</value>
+  </data>
+  <data name="lblCatasto.Text" xml:space="preserve">
+    <value>Кадастровый ID:</value>
+  </data>
+  <data name="lblClub.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
+  </data>
+  <data name="lblClub.Text" xml:space="preserve">
+    <value>Команда/ы:</value>
+  </data>
+  <data name="lblDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 13</value>
+  </data>
+  <data name="lblDescription.Text" xml:space="preserve">
+    <value>Описание:</value>
+  </data>
+  <data name="lblName.Text" xml:space="preserve">
+    <value>Название:</value>
+  </data>
+  <data name="tabInfoMain.Text" xml:space="preserve">
+    <value>Основные</value>
+  </data>
+  <data name="chkSurfaceProfileShow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 17</value>
+  </data>
+  <data name="chkSurfaceProfileShow.Text" xml:space="preserve">
+    <value>Показать в разрезе</value>
+  </data>
+  <data name="lblsurfaceprofileelevation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 13</value>
+  </data>
+  <data name="lblsurfaceprofileelevation.Text" xml:space="preserve">
+    <value>Набор данных:</value>
+  </data>
+  <data name="tabInfoSurface.Text" xml:space="preserve">
+    <value>Поверхность</value>
+  </data>
+  <data name="lblHighlightCondition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 13</value>
+  </data>
+  <data name="lblHighlightCondition.Text" xml:space="preserve">
+    <value>Состояние:</value>
+  </data>
+  <data name="lblHighlightApplyTo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 13</value>
+  </data>
+  <data name="lblHighlightApplyTo.Text" xml:space="preserve">
+    <value>Применить к:</value>
+  </data>
+  <data name="lblHighlightOpacity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 13</value>
+  </data>
+  <data name="lblHighlightOpacity.Text" xml:space="preserve">
+    <value>Прозрачность:</value>
+  </data>
+  <data name="lblHighlightSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 13</value>
+  </data>
+  <data name="lblHighlightSize.Text" xml:space="preserve">
+    <value>Размер:</value>
+  </data>
+  <data name="lblHighlightName.Text" xml:space="preserve">
+    <value>Название:</value>
+  </data>
+  <data name="lblHighlightColor.Text" xml:space="preserve">
+    <value>Цвет:</value>
+  </data>
+  <data name="btnAddHighlight0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 22</value>
+  </data>
+  <data name="btnAddHighlight0.Text" xml:space="preserve">
+    <value>Пикеты</value>
+  </data>
+  <data name="btnAddHighlight1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 22</value>
+  </data>
+  <data name="btnAddHighlight1.Text" xml:space="preserve">
+    <value>Сегменты</value>
+  </data>
+  <data name="btnAddHighlight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 22</value>
+  </data>
+  <data name="btnAddHighlight.Text" xml:space="preserve">
+    <value>Добавить выделение</value>
+  </data>
+  <data name="btnDeleteHighlight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 22</value>
+  </data>
+  <data name="btnDeleteHighlight.Text" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="btnResetHighlight.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnResetHighlight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 22</value>
+  </data>
+  <data name="btnResetHighlight.Text" xml:space="preserve">
+    <value>Сброс</value>
+  </data>
+  <data name="tabInfoHighlights.Text" xml:space="preserve">
+    <value>Выделение</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.Icon" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Свойсва:</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnCaveInfoSegmentsRefresh.ToolTip" xml:space="preserve">
+		<value>Обновить список связанных объектов</value>
+	</data>
+  <data name="btnCaveInfoSelectSegment.ToolTip" xml:space="preserve">
+		<value>Выбрать</value>
+	</data>
+  <data name="cboPlotSplayPenStyle.Items4" xml:space="preserve">
+		<value>Линия с двумя точками</value>
+	</data>
+  <data name="cboLineType.Items2" xml:space="preserve">
+		<value>Безье</value>
+	</data>
+  <data name="cboCaveInfoSurfaceProfileShow.Items2" xml:space="preserve">
+		<value>Нет</value>
+	</data>
+  <data name="cboPlotLRUDPenStyle.Items4" xml:space="preserve">
+		<value>Линия с двумя точками</value>
+	</data>
+  <data name="cboClipAdvancedClipart.Items" xml:space="preserve">
+		<value>По умолчанию (GDI, с помощью регионов)</value>
+	</data>
+  <data name="cboCoordinateFormat.ToolTip" xml:space="preserve">
+		<value>Формат по умолчанию для географических координат</value>
+	</data>
+  <data name="cboPlotLRUDPenStyle.Items1" xml:space="preserve">
+		<value>Прерывистая</value>
+	</data>
+  <data name="cboCoordinateGeo.ToolTip" xml:space="preserve">
+		<value>Датум по умолчанию</value>
+	</data>
+  <data name="cboPlotSplayPenStyle.Items1" xml:space="preserve">
+		<value>Прерывистая</value>
+	</data>
+  <data name="cboGPSCustomRefPoint.ToolTip" xml:space="preserve">
+		<value>Указывает пикет используемый для географического позиционирования съёмки</value>
+	</data>
+  <data name="cboPlotSplayPenStyle.Items" xml:space="preserve">
+		<value>Непрерывная линия</value>
+	</data>
+  <data name="cboPlotTranslationLinePenStyle.ToolTip" xml:space="preserve">
+		<value>Стиль по умолчанию для всех линий нитки</value>
+	</data>
+  <data name="cboDefAccuracy.ToolTip" xml:space="preserve">
+		<value>Точность</value>
+	</data>
+  <data name="cboLineType.Items1" xml:space="preserve">
+		<value>Сплайны</value>
+	</data>
+  <data name="cboPlotLRUDPenStyle.Items2" xml:space="preserve">
+		<value>Точки</value>
+	</data>
+  <data name="cboDesignWarpingMode.ToolTip" xml:space="preserve">
+		<value>Определяет, как обрабатывать изменение графических объектов в соответствии с изменениями в нитке хода</value>
+	</data>
+  <data name="cboPlotLRUDPenStyle.Items3" xml:space="preserve">
+		<value>Линия с одной точкой</value>
+	</data>
+  <data name="cboInversionMode.Items" xml:space="preserve">
+		<value>Относительный</value>
+	</data>
+  <data name="cboPlotPenStyle.ToolTip" xml:space="preserve">
+		<value>Стиль по умолчанию для всех линий нитки</value>
+	</data>
+  <data name="cboPlotSplayPenStyle.ToolTip" xml:space="preserve">
+		<value>Стиль по умолчанию для всех линий нитки</value>
+	</data>
+  <data name="cboPlotLRUDPenStyle.Items" xml:space="preserve">
+		<value>Непрерывная линия</value>
+	</data>
+  <data name="cboPlotSplayPenStyle.Items3" xml:space="preserve">
+		<value>Линия с одной точкой</value>
+	</data>
+  <data name="cboPlotSplayPenStyle.Items2" xml:space="preserve">
+		<value>Точки</value>
+	</data>
+  <data name="cboPlotLRUDPenStyle.ToolTip" xml:space="preserve">
+		<value>Стиль по умолчанию для всех линий нитки</value>
+	</data>
+  <data name="cboDesignBindingMode.ToolTip" xml:space="preserve">
+		<value>Показывает, как связаны графические объекты и сегменты съёмки</value>
+	</data>
+  <data name="cboClipAdvancedClipart.Items1" xml:space="preserve">
+		<value>Обрезка</value>
+	</data>
+  <data name="ToolStripMenuItem8.Text" xml:space="preserve">
+		<value>Название (%NAME%)</value>
+	</data>
+  <data name="mnuInfoBoxTags7.Text" xml:space="preserve">
+		<value>Дата первой съёмки (%FIRSTSESSIONDATE%)</value>
+	</data>
+  <data name="picPlotTranslationLinePenColor.ToolTip" xml:space="preserve">
+		<value>Цвет по умолчанию для линий съёмки</value>
+	</data>
+  <data name="chkGPSEnabled.ToolTip" xml:space="preserve">
+		<value>Включить расчет географического положенич всех пикетов</value>
+	</data>
+  <data name="ToolStripMenuItem14.Text" xml:space="preserve">
+		<value>Кадастровый номер (%CAVEID%)</value>
+	</data>
+  <data name="mnuSessionDecMagFromTable.Text" xml:space="preserve">
+		<value>Из таблицы</value>
+	</data>
+  <data name="ToolStripMenuItem9.Text" xml:space="preserve">
+		<value>Примечание (%NOTE%)</value>
+	</data>
+  <data name="colPropSegmentsBindedSegment.Text" xml:space="preserve">
+		<value>Сегмент</value>
+	</data>
+  <data name="tabSessionNote.Text" xml:space="preserve">
+		<value>Примечания</value>
+	</data>
+  <data name="chkProfileWarpingEnabled.Text" xml:space="preserve">
+		<value>Разрез</value>
+	</data>
+  <data name="mnuInfoBoxTags8.Text" xml:space="preserve">
+		<value>Дата последней съёмки (%LASTSESSIONDATE%)</value>
+	</data>
+  <data name="mnuSessionDecMag.Text" xml:space="preserve">
+		<value>Вычислить склонение</value>
+	</data>
+  <data name="cmdNewID.ToolTip" xml:space="preserve">
+		<value>Назначает съёмке новый уникальный идентификатор. Использовать в случае, если съёмка была создана путем копирования файла в другой проект.</value>
+	</data>
+  <data name="mnuInfoBoxTags1.Text" xml:space="preserve">
+		<value>Название (%NAME%)</value>
+	</data>
+  <data name="ToolStripMenuItem12.Text" xml:space="preserve">
+		<value>Географическое положение (%GEOPOS%)</value>
+	</data>
+  <data name="lvCaveInfoSegments.ToolTip" xml:space="preserve">
+		<value>Части нитки асоциированные с объектом</value>
+	</data>
+  <data name="mnuInfoBoxTags5.Text" xml:space="preserve">
+		<value>Группа/ы (%TEAM%)</value>
+	</data>
+  <data name="mnuInfoBoxTags2.Text" xml:space="preserve">
+		<value>Описание (%DESCRIPTION%)</value>
+	</data>
+  <data name="mnuInfoBoxTags11.Text" xml:space="preserve">
+		<value>Дизайнер (%DESIGNER%)</value>
+	</data>
+  <data name="mnuInfoBoxTags6.Text" xml:space="preserve">
+		<value>Географическое положение (%GEOPOS%)</value>
+	</data>
+  <data name="ToolStripMenuItem10.Text" xml:space="preserve">
+		<value>Первый псевдоним (%FIRSTALIAS%)</value>
+	</data>
+  <data name="PrimoAliasToolStripMenuItem.Text" xml:space="preserve">
+		<value>Первый псевдоним (%FIRSTALIAS%)</value>
+	</data>
+  <data name="GroupBox8.Text" xml:space="preserve">
+		<value>Обрезка:</value>
+	</data>
+  <data name="lbl3DNormalizationFactor.Text" xml:space="preserve">
+		<value>Нормализация:</value>
+	</data>
+  <data name="lblSessionColor.Text" xml:space="preserve">
+		<value>Цвет:</value>
+	</data>
+  <data name="ToolStripMenuItem5.Text" xml:space="preserve">
+		<value>Название (%NAME%)</value>
+	</data>
+  <data name="mnuSessionDecMagFromWeb.Text" xml:space="preserve">
+		<value>Из интернета</value>
+	</data>
+  <data name="GroupBox7.Text" xml:space="preserve">
+		<value>Примечания и дополнительная информация:</value>
+	</data>
+  <data name="picSessionColor.ToolTip" xml:space="preserve">
+		<value>Цвет, используемый для обозначения полости или ветви</value>
+	</data>
+  <data name="GroupBox6.Text" xml:space="preserve">
+		<value>Боковые замеры</value>
+	</data>
+  <data name="picHighlightColor.ToolTip" xml:space="preserve">
+		<value>Цвет, используемый для обозначения полости или ветви</value>
+	</data>
+  <data name="ToolStripMenuItem13.Text" xml:space="preserve">
+		<value>Название пещеры (%CAVENAME%)</value>
+	</data>
+  <data name="cmdSessionColorReset.Text" xml:space="preserve">
+		<value>По умолчанию</value>
+	</data>
+  <data name="mnuInfoBoxTags4.Text" xml:space="preserve">
+		<value>Клуб/ы (%CLUB%)</value>
+	</data>
+  <data name="mnuInfoBoxTags10.Text" xml:space="preserve">
+		<value>Последняя схёмка в году (%LASTSESSIONYEAR%)</value>
+	</data>
+  <data name="picPlotTextColor.ToolTip" xml:space="preserve">
+		<value>Цвет по умолчанию для номеров пикетов</value>
+	</data>
+  <data name="chkPlanWarpingEnabled.Text" xml:space="preserve">
+		<value>План</value>
+	</data>
+  <data name="picPlotNoteTextColor.ToolTip" xml:space="preserve">
+		<value>Цвет по умолчанию для номеров пикетов</value>
+	</data>
+  <data name="mnuInfoBoxTags12.Text" xml:space="preserve">
+		<value>Примечания (%NOTE%)</value>
+	</data>
+  <data name="ToolStripMenuItem7.Text" xml:space="preserve">
+		<value>Кадастровый номер (%CAVEID%)</value>
+	</data>
+  <data name="frmPlotLRUD.Text" xml:space="preserve">
+		<value>ЛПВН</value>
+	</data>
+  <data name="tabInfoNote.Text" xml:space="preserve">
+		<value>Примечания</value>
+	</data>
+  <data name="lblDesignTransparencyEdit.Text" xml:space="preserve">
+		<value>Редактировать:</value>
+	</data>
+  <data name="cmdChangeInversionModeAndSetDirections.ToolTip" xml:space="preserve">
+		<value>Установить обратный на 'абсолютный' сохранив текущее направление отрисовки</value>
+	</data>
+  <data name="chkGPSSendToTherion.ToolTip" xml:space="preserve">
+		<value>Отправлять географическое положение пикетов c привязкой в Therion</value>
+	</data>
+  <data name="picPlotPenColor.ToolTip" xml:space="preserve">
+		<value>Цвет по умолчанию для линий съёмки</value>
+	</data>
+  <data name="mnuInfoBoxTags99.Text" xml:space="preserve">
+		<value>Перевод строки (%BR%)</value>
+	</data>
+  <data name="mnuInfoBoxTags13.Text" xml:space="preserve">
+		<value>Грейд/точность (%GA%)</value>
+	</data>
+  <data name="frmSketch.Text" xml:space="preserve">
+		<value>Абрис</value>
+	</data>
+  <data name="NomeGrottaToolStripMenuItem.Text" xml:space="preserve">
+		<value>Название пещеры (%CAVENAME%)</value>
+	</data>
+  <data name="picCaveInfoColor.ToolTip" xml:space="preserve">
+		<value>Цвет, используемый для обозначения полости или ветви</value>
+	</data>
+  <data name="lblSplayMode.Text" xml:space="preserve">
+		<value>Боковой замер</value>
+	</data>
+  <data name="lblCoordinateFormat.Text" xml:space="preserve">
+		<value>Формат:</value>
+	</data>
+  <data name="ToolStripMenuItem15.Text" xml:space="preserve">
+		<value>Географическое положение (%GEOPOS%)</value>
+	</data>
+  <data name="ToolStripMenuItem11.Text" xml:space="preserve">
+		<value>Примечание (%NOTE%)</value>
+	</data>
+  <data name="lblDesignTransparencyPreview.Text" xml:space="preserve">
+		<value>Предварительный просмотр:</value>
+	</data>
+  <data name="mnuInfoBoxTags9.Text" xml:space="preserve">
+		<value>Год первой съёмки (%FIRSTSESSIONYEAR%)</value>
+	</data>
+  <data name="picPlotPointColor.ToolTip" xml:space="preserve">
+		<value>Цвет по умолчанию для пикетов</value>
+	</data>
+  <data name="lbl3DOversamplingFactor.Text" xml:space="preserve">
+		<value>Передискретизация:</value>
+	</data>
+  <data name="mnuInfoBoxTags3.Text" xml:space="preserve">
+		<value>Кадастровый номер (%ID%)</value>
+	</data>
+  <data name="chksurfaceprofile.ToolTip" xml:space="preserve">
+		<value>Активизирует параметры отображения профиля поверхности</value>
+	</data>
+  <data name="txtPlotPenWidth.ToolTip" xml:space="preserve">
+		<value>Толщина линий нитки по умолчанию</value>
+	</data>
+  <data name="lblDesignWarpingModeEnabledIn.Text" xml:space="preserve">
+		<value>Активная трансформация на</value>
+	</data>
+  <data name="txtSessionDate.ToolTip" xml:space="preserve">
+		<value>Дата съёмки</value>
+	</data>
+  <data name="txtDesignTextScaleFactor.ToolTip" xml:space="preserve">
+		<value>Коэффициент масштабирования  текста</value>
+	</data>
+  <data name="txtDesignSoilScaleFactor.ToolTip" xml:space="preserve">
+		<value>Коэффициент масштабирования для заливки картинок</value>
+	</data>
+  <data name="txtHighlightName.ToolTip" xml:space="preserve">
+		<value>Назване пещеры или ветки</value>
+	</data>
+  <data name="txtPlotNoteTextFont.ToolTip" xml:space="preserve">
+		<value>Шрифт по умолчанию для пикетов</value>
+	</data>
+  <data name="txtPlotPointSize.ToolTip" xml:space="preserve">
+		<value>Размер символа пикетов</value>
+	</data>
+  <data name="txtDesignBackgroundTransparencyThreshold.ToolTip" xml:space="preserve">
+		<value>Индекс прозрачности используемый в заливке пещеры в комбинированном режиме просмотра</value>
+	</data>
+  <data name="txtCatasto.ToolTip" xml:space="preserve">
+		<value>Кадастровый номер</value>
+	</data>
+  <data name="txtDesignEditLowerLayersTransparencyThreshold.ToolTip" xml:space="preserve">
+		<value>Индекс прозрачности используемый на уровнях ниже активного</value>
+	</data>
+  <data name="txtCaveInfoDescription.ToolTip" xml:space="preserve">
+		<value>Описание</value>
+	</data>
+  <data name="txtDesignEditCombinedAreaTransparencyThreshold.ToolTip" xml:space="preserve">
+		<value>Индекс прозрачности используемый в заливке пещеры в комбинированном режиме просмотра</value>
+	</data>
+  <data name="txtDesignTextFont.ToolTip" xml:space="preserve">
+		<value>Шрифт по умолчанию для текстовых объектов</value>
+	</data>
+  <data name="txtClub.ToolTip" xml:space="preserve">
+		<value>Группа/ы</value>
+	</data>
+  <data name="txtBaseLightLinesScaleFactor.ToolTip" xml:space="preserve">
+		<value>Толщина линий, тонкие</value>
+	</data>
+  <data name="txtPlotNoteTextScaleFactor.ToolTip" xml:space="preserve">
+		<value>Масштабный коэффициент для текста пикетов</value>
+	</data>
+  <data name="lblDesignWarpingMode.Text" xml:space="preserve">
+		<value>Трансформация:</value>
+	</data>
+  <data name="txtSessionClub.ToolTip" xml:space="preserve">
+		<value>Группа/ы</value>
+	</data>
+  <data name="txtTeam.ToolTip" xml:space="preserve">
+		<value>Первопроходец/ы</value>
+	</data>
+  <data name="txtBaseLineWidthScaleFactor.ToolTip" xml:space="preserve">
+		<value>Масштабный коефициент для линий в этой съёмке</value>
+	</data>
+  <data name="txtDesigner.ToolTip" xml:space="preserve">
+		<value>Дизайнер/ы</value>
+	</data>
+  <data name="txtDesignClipartScaleFactor.ToolTip" xml:space="preserve">
+		<value>Коэффициент масштабирования клипарт</value>
+	</data>
+  <data name="txtGlobalVthreshold.ToolTip" xml:space="preserve">
+		<value>Порог вертикальности UD</value>
+	</data>
+  <data name="txtSessionTeam.ToolTip" xml:space="preserve">
+		<value>Первопроходец/ы</value>
+	</data>
+  <data name="txtDesignSignScaleFactor.ToolTip" xml:space="preserve">
+		<value>Коэффициент масштабирования символов</value>
+	</data>
+  <data name="txtPlotLRUDSelectedPenWidth.ToolTip" xml:space="preserve">
+		<value>Толщина линий нитки по умолчанию  при выделении</value>
+	</data>
+  <data name="txtDesignTextureScaleFactor.ToolTip" xml:space="preserve">
+		<value>Коэффициент масштабирования для заливки текстурой</value>
+	</data>
+  <data name="cboDefGrade.ToolTip" xml:space="preserve">
+		<value>Уровень достоверности</value>
+	</data>
+  <data name="cboOrigin.ToolTip" xml:space="preserve">
+		<value>Установить пикет, котрый будет использоваться как точка отсчета для нитки хода.</value>
+	</data>
+  <data name="txtCaveInfoID.ToolTip" xml:space="preserve">
+		<value>Кадастровый номер</value>
+	</data>
+  <data name="txtName.ToolTip" xml:space="preserve">
+		<value>Назване пешеры или карстовой системы</value>
+	</data>
+  <data name="txtDesignTerrainLevelScaleFactor.ToolTip" xml:space="preserve">
+		<value>Коэффициент масштабирования bordi artistici</value>
+	</data>
+  <data name="txtID.ToolTip" xml:space="preserve">
+		<value>Уникальный идентификатор для этой съёмки</value>
+	</data>
+  <data name="txtSessionDesigner.ToolTip" xml:space="preserve">
+		<value>Дизайнер/ы</value>
+	</data>
+  <data name="txtVthreshold.ToolTip" xml:space="preserve">
+		<value>Порог вертикальности для UD</value>
+	</data>
+  <data name="txtCaveInfoName.ToolTip" xml:space="preserve">
+		<value>Название пещеры или ветки</value>
+	</data>
+  <data name="txtPlotSplayPenWidth.ToolTip" xml:space="preserve">
+		<value>Толщина линий нитки по умолчанию</value>
+	</data>
+  <data name="txtPlotTextFont.ToolTip" xml:space="preserve">
+		<value>Шрифт по умолчанию для пикетов</value>
+	</data>
+  <data name="txtSessionVthreshold.ToolTip" xml:space="preserve">
+		<value>Порог вертикальности для UD</value>
+	</data>
+  <data name="txtPlotTranslationLinePenWidth.ToolTip" xml:space="preserve">
+		<value>Толщина линий нитки по умолчанию</value>
+	</data>
+  <data name="txtPlotTextScaleFactor.ToolTip" xml:space="preserve">
+		<value>Масштабный коэффициент для текста пикетов</value>
+	</data>
+  <data name="txtHighlightOpacity.ToolTip" xml:space="preserve">
+		<value>Индекс прозрачности</value>
+	</data>
+  <data name="txtBaseHeavyLinesScaleFactor.ToolTip" xml:space="preserve">
+		<value>Толщина линий, толстые</value>
+	</data>
+  <data name="txtDescrizione.ToolTip" xml:space="preserve">
+		<value>Описание</value>
+	</data>
+  <data name="txtDesignOriginalPositionTransparencyThreshold.ToolTip" xml:space="preserve">
+		<value>Индекс прозрачности используемый в заливке пещеры в комбинированном режиме просмотра</value>
+	</data>
+  <data name="txtPlotSplaySelectedPenWidth.ToolTip" xml:space="preserve">
+		<value>Толщина линий нитки по умолчанию  при выделени</value>
+	</data>
+  <data name="txtDesignCombinedAreaTransparencyThreshold.ToolTip" xml:space="preserve">
+		<value>Индекс прозрачности используемый в заливке пещеры в комбинированном режиме просмотра</value>
+	</data>
+  <data name="txtBaseUltraLightLinesScaleFactor.ToolTip" xml:space="preserve">
+		<value>Толщина линий, оч тонкие</value>
+	</data>
+  <data name="txtPlotLRUDPenWidth.ToolTip" xml:space="preserve">
+		<value>Толщина линий нитки по умолчанию</value>
+	</data>
+  <data name="txtHighlightCondition.ToolTip" xml:space="preserve">
+		<value>Назване пещеры или ветки</value>
+	</data>
+  <data name="txtBaseMediumLinesScaleFactor.ToolTip" xml:space="preserve">
+		<value>Толщина линий, средние</value>
+	</data>
+  <data name="txtPlotSelectedPointSize.ToolTip" xml:space="preserve">
+		<value>Размер символа пикета при выделении</value>
+	</data>
+  <data name="txtPlotSelectedPenWidth.ToolTip" xml:space="preserve">
+		<value>Толщина линий нитки по умолчанию  при выделении</value>
+	</data>
+  <data name="ToolStripMenuItem16.Text" xml:space="preserve">
+		<value>Новая строка (%BR%)</value>
+	</data>
+  <data name="ToolStripMenuItem17.Text" xml:space="preserve">
+		<value>Новая строка (%BR%)</value>
+	</data>
+  <data name="cmdInfoBoxStructureTagAdd.Text" xml:space="preserve">
+		<value>Тег</value>
+	</data>
+  <data name="lblDesignClipartScaleFactor.Text" xml:space="preserve">
+		<value>Клипарт:</value>
+	</data>
+  <data name="lblDesignBindingMode.Text" xml:space="preserve">
+		<value>Привязки:</value>
+	</data>
+  <data name="btnSessionSegmentsRefresh.ToolTip" xml:space="preserve">
+    <value>Обновить список связанных объектов</value>
+  </data>
+  <data name="btnSessionCalibrationSegmentsRefresh.ToolTip" xml:space="preserve">
+    <value>Обновить список связанных объектов</value>
+  </data>
+</root>

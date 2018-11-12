@@ -1,0 +1,578 @@
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Partial Class frmSurface
+    Inherits cForm
+
+    'Form esegue l'override del metodo Dispose per pulire l'elenco dei componenti.
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        Try
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+        Finally
+            MyBase.Dispose(disposing)
+        End Try
+    End Sub
+
+    'Richiesto da Progettazione Windows Form
+    Private components As System.ComponentModel.IContainer
+
+    'NOTA: la procedura che segue è richiesta da Progettazione Windows Form
+    'Può essere modificata in Progettazione Windows Form.  
+    'Non modificarla nell'editor del codice.
+    <System.Diagnostics.DebuggerStepThrough()> _
+    Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSurface))
+        Me.tbMain = New System.Windows.Forms.ToolStrip()
+        Me.btnAdd = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.btnImportElevationData = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnImportOrthoPhoto = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuImportShapeFile = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuImportWMS = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnRemove = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnClear = New System.Windows.Forms.ToolStripButton()
+        Me.cmdCancel = New System.Windows.Forms.Button()
+        Me.cmdOk = New System.Windows.Forms.Button()
+        Me.tabPhoto = New System.Windows.Forms.TabPage()
+        Me.chkOrthoPhotoDefault = New System.Windows.Forms.CheckBox()
+        Me.lvOrthoPhotos = New System.Windows.Forms.ListView()
+        Me.mnuOrthophotos = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.mnuOrthophotosDelete = New System.Windows.Forms.ToolStripMenuItem()
+        Me.imlOrthoPhotos = New System.Windows.Forms.ImageList(Me.components)
+        Me.txtOrthoPhotoInformation = New System.Windows.Forms.TextBox()
+        Me.picOrthoPhotoPreview = New System.Windows.Forms.PictureBox()
+        Me.tabData = New System.Windows.Forms.TabPage()
+        Me.chkElevationDefault = New System.Windows.Forms.CheckBox()
+        Me.lvElevations = New System.Windows.Forms.ListView()
+        Me.mnuElevations = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.mnuElevationsDelete = New System.Windows.Forms.ToolStripMenuItem()
+        Me.imlElevations = New System.Windows.Forms.ImageList(Me.components)
+        Me.cboColorSchema = New System.Windows.Forms.ComboBox()
+        Me.lblColorSchema = New System.Windows.Forms.Label()
+        Me.picElevationsPreview = New System.Windows.Forms.PictureBox()
+        Me.mnuElevationsPreview = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.mnuElevationsPreviewElevationOrthoPhotoFromWMS = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuElevationsPreviewElevationOrthoPhotoFromWMSItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.mnuElevationsPreviewElevationSavePreview = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuElevationsPreviewExportData = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.mnuElevationsPreviewRemoveNODATA = New System.Windows.Forms.ToolStripMenuItem()
+        Me.txtElevationInformation = New System.Windows.Forms.TextBox()
+        Me.tabMain = New System.Windows.Forms.TabControl()
+        Me.tabShape = New System.Windows.Forms.TabPage()
+        Me.lvShapes = New System.Windows.Forms.ListView()
+        Me.tabWMS = New System.Windows.Forms.TabPage()
+        Me.lvWMSs = New System.Windows.Forms.ListView()
+        Me.colWMSName = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.colWMSURL = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.colWMSLayer = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.mnuWMSs = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.mnuWMSsEdit = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.mnuWMSsDelete = New System.Windows.Forms.ToolStripMenuItem()
+        Me.imlWMS = New System.Windows.Forms.ImageList(Me.components)
+        Me.pnlPopup = New System.Windows.Forms.Panel()
+        Me.btnPopupClose = New System.Windows.Forms.Button()
+        Me.lblPopupWarning = New System.Windows.Forms.Label()
+        Me.picPopupWarning = New System.Windows.Forms.PictureBox()
+        Me.tipDefault = New System.Windows.Forms.ToolTip(Me.components)
+        Me.imlPopup = New System.Windows.Forms.ImageList(Me.components)
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.tbMain.SuspendLayout()
+        Me.tabPhoto.SuspendLayout()
+        Me.mnuOrthophotos.SuspendLayout()
+        CType(Me.picOrthoPhotoPreview, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabData.SuspendLayout()
+        Me.mnuElevations.SuspendLayout()
+        CType(Me.picElevationsPreview, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.mnuElevationsPreview.SuspendLayout()
+        Me.tabMain.SuspendLayout()
+        Me.tabShape.SuspendLayout()
+        Me.tabWMS.SuspendLayout()
+        Me.mnuWMSs.SuspendLayout()
+        Me.pnlPopup.SuspendLayout()
+        CType(Me.picPopupWarning, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
+        Me.SuspendLayout()
+        '
+        'tbMain
+        '
+        resources.ApplyResources(Me.tbMain, "tbMain")
+        Me.tbMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me.tbMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnAdd, Me.btnRemove, Me.ToolStripSeparator1, Me.btnClear})
+        Me.tbMain.Name = "tbMain"
+        '
+        'btnAdd
+        '
+        Me.btnAdd.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnImportElevationData, Me.btnImportOrthoPhoto, Me.mnuImportShapeFile, Me.mnuImportWMS})
+        Me.btnAdd.Image = Global.cSurveyPC.My.Resources.Resources.add
+        resources.ApplyResources(Me.btnAdd, "btnAdd")
+        Me.btnAdd.Name = "btnAdd"
+        '
+        'btnImportElevationData
+        '
+        Me.btnImportElevationData.Name = "btnImportElevationData"
+        resources.ApplyResources(Me.btnImportElevationData, "btnImportElevationData")
+        '
+        'btnImportOrthoPhoto
+        '
+        Me.btnImportOrthoPhoto.Name = "btnImportOrthoPhoto"
+        resources.ApplyResources(Me.btnImportOrthoPhoto, "btnImportOrthoPhoto")
+        '
+        'mnuImportShapeFile
+        '
+        Me.mnuImportShapeFile.Name = "mnuImportShapeFile"
+        resources.ApplyResources(Me.mnuImportShapeFile, "mnuImportShapeFile")
+        '
+        'mnuImportWMS
+        '
+        Me.mnuImportWMS.Name = "mnuImportWMS"
+        resources.ApplyResources(Me.mnuImportWMS, "mnuImportWMS")
+        '
+        'btnRemove
+        '
+        resources.ApplyResources(Me.btnRemove, "btnRemove")
+        Me.btnRemove.Name = "btnRemove"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        resources.ApplyResources(Me.ToolStripSeparator1, "ToolStripSeparator1")
+        '
+        'btnClear
+        '
+        resources.ApplyResources(Me.btnClear, "btnClear")
+        Me.btnClear.Name = "btnClear"
+        '
+        'cmdCancel
+        '
+        resources.ApplyResources(Me.cmdCancel, "cmdCancel")
+        Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdCancel.Name = "cmdCancel"
+        Me.cmdCancel.UseVisualStyleBackColor = True
+        '
+        'cmdOk
+        '
+        resources.ApplyResources(Me.cmdOk, "cmdOk")
+        Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
+        Me.cmdOk.Name = "cmdOk"
+        Me.cmdOk.UseVisualStyleBackColor = True
+        '
+        'tabPhoto
+        '
+        Me.tabPhoto.Controls.Add(Me.chkOrthoPhotoDefault)
+        Me.tabPhoto.Controls.Add(Me.lvOrthoPhotos)
+        Me.tabPhoto.Controls.Add(Me.txtOrthoPhotoInformation)
+        Me.tabPhoto.Controls.Add(Me.picOrthoPhotoPreview)
+        resources.ApplyResources(Me.tabPhoto, "tabPhoto")
+        Me.tabPhoto.Name = "tabPhoto"
+        Me.tabPhoto.UseVisualStyleBackColor = True
+        '
+        'chkOrthoPhotoDefault
+        '
+        resources.ApplyResources(Me.chkOrthoPhotoDefault, "chkOrthoPhotoDefault")
+        Me.chkOrthoPhotoDefault.Name = "chkOrthoPhotoDefault"
+        Me.chkOrthoPhotoDefault.UseVisualStyleBackColor = True
+        '
+        'lvOrthoPhotos
+        '
+        resources.ApplyResources(Me.lvOrthoPhotos, "lvOrthoPhotos")
+        Me.lvOrthoPhotos.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.lvOrthoPhotos.ContextMenuStrip = Me.mnuOrthophotos
+        Me.lvOrthoPhotos.HideSelection = False
+        Me.lvOrthoPhotos.LabelEdit = True
+        Me.lvOrthoPhotos.LargeImageList = Me.imlOrthoPhotos
+        Me.lvOrthoPhotos.MultiSelect = False
+        Me.lvOrthoPhotos.Name = "lvOrthoPhotos"
+        Me.lvOrthoPhotos.SmallImageList = Me.imlOrthoPhotos
+        Me.lvOrthoPhotos.TileSize = New System.Drawing.Size(64, 64)
+        Me.lvOrthoPhotos.UseCompatibleStateImageBehavior = False
+        Me.lvOrthoPhotos.View = System.Windows.Forms.View.Tile
+        '
+        'mnuOrthophotos
+        '
+        resources.ApplyResources(Me.mnuOrthophotos, "mnuOrthophotos")
+        Me.mnuOrthophotos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuOrthophotosDelete})
+        Me.mnuOrthophotos.Name = "mnuElevations"
+        '
+        'mnuOrthophotosDelete
+        '
+        Me.mnuOrthophotosDelete.Image = Global.cSurveyPC.My.Resources.Resources.cross
+        Me.mnuOrthophotosDelete.Name = "mnuOrthophotosDelete"
+        resources.ApplyResources(Me.mnuOrthophotosDelete, "mnuOrthophotosDelete")
+        '
+        'imlOrthoPhotos
+        '
+        Me.imlOrthoPhotos.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit
+        resources.ApplyResources(Me.imlOrthoPhotos, "imlOrthoPhotos")
+        Me.imlOrthoPhotos.TransparentColor = System.Drawing.Color.Transparent
+        '
+        'txtOrthoPhotoInformation
+        '
+        resources.ApplyResources(Me.txtOrthoPhotoInformation, "txtOrthoPhotoInformation")
+        Me.txtOrthoPhotoInformation.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtOrthoPhotoInformation.Name = "txtOrthoPhotoInformation"
+        '
+        'picOrthoPhotoPreview
+        '
+        resources.ApplyResources(Me.picOrthoPhotoPreview, "picOrthoPhotoPreview")
+        Me.picOrthoPhotoPreview.Name = "picOrthoPhotoPreview"
+        Me.picOrthoPhotoPreview.TabStop = False
+        '
+        'tabData
+        '
+        Me.tabData.Controls.Add(Me.chkElevationDefault)
+        Me.tabData.Controls.Add(Me.lvElevations)
+        Me.tabData.Controls.Add(Me.cboColorSchema)
+        Me.tabData.Controls.Add(Me.lblColorSchema)
+        Me.tabData.Controls.Add(Me.picElevationsPreview)
+        Me.tabData.Controls.Add(Me.txtElevationInformation)
+        resources.ApplyResources(Me.tabData, "tabData")
+        Me.tabData.Name = "tabData"
+        Me.tabData.UseVisualStyleBackColor = True
+        '
+        'chkElevationDefault
+        '
+        resources.ApplyResources(Me.chkElevationDefault, "chkElevationDefault")
+        Me.chkElevationDefault.Name = "chkElevationDefault"
+        Me.chkElevationDefault.UseVisualStyleBackColor = True
+        '
+        'lvElevations
+        '
+        resources.ApplyResources(Me.lvElevations, "lvElevations")
+        Me.lvElevations.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.lvElevations.ContextMenuStrip = Me.mnuElevations
+        Me.lvElevations.HideSelection = False
+        Me.lvElevations.LabelEdit = True
+        Me.lvElevations.LargeImageList = Me.imlElevations
+        Me.lvElevations.MultiSelect = False
+        Me.lvElevations.Name = "lvElevations"
+        Me.lvElevations.SmallImageList = Me.imlElevations
+        Me.lvElevations.TileSize = New System.Drawing.Size(64, 64)
+        Me.lvElevations.UseCompatibleStateImageBehavior = False
+        Me.lvElevations.View = System.Windows.Forms.View.Tile
+        '
+        'mnuElevations
+        '
+        resources.ApplyResources(Me.mnuElevations, "mnuElevations")
+        Me.mnuElevations.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuElevationsDelete})
+        Me.mnuElevations.Name = "mnuElevations"
+        '
+        'mnuElevationsDelete
+        '
+        Me.mnuElevationsDelete.Image = Global.cSurveyPC.My.Resources.Resources.cross
+        Me.mnuElevationsDelete.Name = "mnuElevationsDelete"
+        resources.ApplyResources(Me.mnuElevationsDelete, "mnuElevationsDelete")
+        '
+        'imlElevations
+        '
+        Me.imlElevations.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit
+        resources.ApplyResources(Me.imlElevations, "imlElevations")
+        Me.imlElevations.TransparentColor = System.Drawing.Color.Transparent
+        '
+        'cboColorSchema
+        '
+        resources.ApplyResources(Me.cboColorSchema, "cboColorSchema")
+        Me.cboColorSchema.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboColorSchema.FormattingEnabled = True
+        Me.cboColorSchema.Items.AddRange(New Object() {resources.GetString("cboColorSchema.Items"), resources.GetString("cboColorSchema.Items1")})
+        Me.cboColorSchema.Name = "cboColorSchema"
+        '
+        'lblColorSchema
+        '
+        resources.ApplyResources(Me.lblColorSchema, "lblColorSchema")
+        Me.lblColorSchema.Name = "lblColorSchema"
+        '
+        'picElevationsPreview
+        '
+        resources.ApplyResources(Me.picElevationsPreview, "picElevationsPreview")
+        Me.picElevationsPreview.ContextMenuStrip = Me.mnuElevationsPreview
+        Me.picElevationsPreview.Name = "picElevationsPreview"
+        Me.picElevationsPreview.TabStop = False
+        '
+        'mnuElevationsPreview
+        '
+        resources.ApplyResources(Me.mnuElevationsPreview, "mnuElevationsPreview")
+        Me.mnuElevationsPreview.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuElevationsPreviewElevationOrthoPhotoFromWMS, Me.ToolStripMenuItem1, Me.mnuElevationsPreviewElevationSavePreview, Me.mnuElevationsPreviewExportData, Me.ToolStripMenuItem2, Me.mnuElevationsPreviewRemoveNODATA})
+        Me.mnuElevationsPreview.Name = "mnuElevationsPreview"
+        '
+        'mnuElevationsPreviewElevationOrthoPhotoFromWMS
+        '
+        Me.mnuElevationsPreviewElevationOrthoPhotoFromWMS.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuElevationsPreviewElevationOrthoPhotoFromWMSItem})
+        Me.mnuElevationsPreviewElevationOrthoPhotoFromWMS.Name = "mnuElevationsPreviewElevationOrthoPhotoFromWMS"
+        resources.ApplyResources(Me.mnuElevationsPreviewElevationOrthoPhotoFromWMS, "mnuElevationsPreviewElevationOrthoPhotoFromWMS")
+        '
+        'mnuElevationsPreviewElevationOrthoPhotoFromWMSItem
+        '
+        Me.mnuElevationsPreviewElevationOrthoPhotoFromWMSItem.Name = "mnuElevationsPreviewElevationOrthoPhotoFromWMSItem"
+        resources.ApplyResources(Me.mnuElevationsPreviewElevationOrthoPhotoFromWMSItem, "mnuElevationsPreviewElevationOrthoPhotoFromWMSItem")
+        '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        resources.ApplyResources(Me.ToolStripMenuItem1, "ToolStripMenuItem1")
+        '
+        'mnuElevationsPreviewElevationSavePreview
+        '
+        Me.mnuElevationsPreviewElevationSavePreview.Name = "mnuElevationsPreviewElevationSavePreview"
+        resources.ApplyResources(Me.mnuElevationsPreviewElevationSavePreview, "mnuElevationsPreviewElevationSavePreview")
+        '
+        'mnuElevationsPreviewExportData
+        '
+        Me.mnuElevationsPreviewExportData.Image = Global.cSurveyPC.My.Resources.Resources.page_white_put
+        Me.mnuElevationsPreviewExportData.Name = "mnuElevationsPreviewExportData"
+        resources.ApplyResources(Me.mnuElevationsPreviewExportData, "mnuElevationsPreviewExportData")
+        '
+        'ToolStripMenuItem2
+        '
+        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+        resources.ApplyResources(Me.ToolStripMenuItem2, "ToolStripMenuItem2")
+        '
+        'mnuElevationsPreviewRemoveNODATA
+        '
+        Me.mnuElevationsPreviewRemoveNODATA.Name = "mnuElevationsPreviewRemoveNODATA"
+        resources.ApplyResources(Me.mnuElevationsPreviewRemoveNODATA, "mnuElevationsPreviewRemoveNODATA")
+        '
+        'txtElevationInformation
+        '
+        resources.ApplyResources(Me.txtElevationInformation, "txtElevationInformation")
+        Me.txtElevationInformation.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtElevationInformation.Name = "txtElevationInformation"
+        '
+        'tabMain
+        '
+        resources.ApplyResources(Me.tabMain, "tabMain")
+        Me.tabMain.Controls.Add(Me.tabData)
+        Me.tabMain.Controls.Add(Me.tabPhoto)
+        Me.tabMain.Controls.Add(Me.tabShape)
+        Me.tabMain.Controls.Add(Me.tabWMS)
+        Me.tabMain.Name = "tabMain"
+        Me.tabMain.SelectedIndex = 0
+        '
+        'tabShape
+        '
+        Me.tabShape.Controls.Add(Me.lvShapes)
+        resources.ApplyResources(Me.tabShape, "tabShape")
+        Me.tabShape.Name = "tabShape"
+        Me.tabShape.UseVisualStyleBackColor = True
+        '
+        'lvShapes
+        '
+        resources.ApplyResources(Me.lvShapes, "lvShapes")
+        Me.lvShapes.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.lvShapes.HideSelection = False
+        Me.lvShapes.LabelEdit = True
+        Me.lvShapes.LargeImageList = Me.imlOrthoPhotos
+        Me.lvShapes.MultiSelect = False
+        Me.lvShapes.Name = "lvShapes"
+        Me.lvShapes.SmallImageList = Me.imlOrthoPhotos
+        Me.lvShapes.TileSize = New System.Drawing.Size(64, 64)
+        Me.lvShapes.UseCompatibleStateImageBehavior = False
+        Me.lvShapes.View = System.Windows.Forms.View.Tile
+        '
+        'tabWMS
+        '
+        Me.tabWMS.Controls.Add(Me.lvWMSs)
+        resources.ApplyResources(Me.tabWMS, "tabWMS")
+        Me.tabWMS.Name = "tabWMS"
+        Me.tabWMS.UseVisualStyleBackColor = True
+        '
+        'lvWMSs
+        '
+        resources.ApplyResources(Me.lvWMSs, "lvWMSs")
+        Me.lvWMSs.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.lvWMSs.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colWMSName, Me.colWMSURL, Me.colWMSLayer})
+        Me.lvWMSs.ContextMenuStrip = Me.mnuWMSs
+        Me.lvWMSs.FullRowSelect = True
+        Me.lvWMSs.HideSelection = False
+        Me.lvWMSs.LargeImageList = Me.imlOrthoPhotos
+        Me.lvWMSs.MultiSelect = False
+        Me.lvWMSs.Name = "lvWMSs"
+        Me.lvWMSs.SmallImageList = Me.imlWMS
+        Me.lvWMSs.TileSize = New System.Drawing.Size(64, 64)
+        Me.lvWMSs.UseCompatibleStateImageBehavior = False
+        Me.lvWMSs.View = System.Windows.Forms.View.Details
+        '
+        'colWMSName
+        '
+        resources.ApplyResources(Me.colWMSName, "colWMSName")
+        '
+        'colWMSURL
+        '
+        resources.ApplyResources(Me.colWMSURL, "colWMSURL")
+        '
+        'colWMSLayer
+        '
+        resources.ApplyResources(Me.colWMSLayer, "colWMSLayer")
+        '
+        'mnuWMSs
+        '
+        resources.ApplyResources(Me.mnuWMSs, "mnuWMSs")
+        Me.mnuWMSs.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuWMSsEdit, Me.ToolStripMenuItem3, Me.mnuWMSsDelete})
+        Me.mnuWMSs.Name = "mnuWMSs"
+        '
+        'mnuWMSsEdit
+        '
+        Me.mnuWMSsEdit.Name = "mnuWMSsEdit"
+        resources.ApplyResources(Me.mnuWMSsEdit, "mnuWMSsEdit")
+        '
+        'ToolStripMenuItem3
+        '
+        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
+        resources.ApplyResources(Me.ToolStripMenuItem3, "ToolStripMenuItem3")
+        '
+        'mnuWMSsDelete
+        '
+        Me.mnuWMSsDelete.Image = Global.cSurveyPC.My.Resources.Resources.cross
+        Me.mnuWMSsDelete.Name = "mnuWMSsDelete"
+        resources.ApplyResources(Me.mnuWMSsDelete, "mnuWMSsDelete")
+        '
+        'imlWMS
+        '
+        Me.imlWMS.ImageStream = CType(resources.GetObject("imlWMS.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.imlWMS.TransparentColor = System.Drawing.Color.Transparent
+        Me.imlWMS.Images.SetKeyName(0, "layer_wms")
+        '
+        'pnlPopup
+        '
+        Me.pnlPopup.Controls.Add(Me.btnPopupClose)
+        Me.pnlPopup.Controls.Add(Me.lblPopupWarning)
+        Me.pnlPopup.Controls.Add(Me.picPopupWarning)
+        resources.ApplyResources(Me.pnlPopup, "pnlPopup")
+        Me.pnlPopup.Name = "pnlPopup"
+        '
+        'btnPopupClose
+        '
+        resources.ApplyResources(Me.btnPopupClose, "btnPopupClose")
+        Me.btnPopupClose.BackColor = System.Drawing.Color.Transparent
+        Me.btnPopupClose.FlatAppearance.BorderSize = 0
+        Me.btnPopupClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.btnPopupClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.btnPopupClose.Image = Global.cSurveyPC.My.Resources.Resources.cross
+        Me.btnPopupClose.Name = "btnPopupClose"
+        Me.btnPopupClose.UseVisualStyleBackColor = False
+        '
+        'lblPopupWarning
+        '
+        resources.ApplyResources(Me.lblPopupWarning, "lblPopupWarning")
+        Me.lblPopupWarning.Name = "lblPopupWarning"
+        '
+        'picPopupWarning
+        '
+        resources.ApplyResources(Me.picPopupWarning, "picPopupWarning")
+        Me.picPopupWarning.Name = "picPopupWarning"
+        Me.picPopupWarning.TabStop = False
+        '
+        'imlPopup
+        '
+        Me.imlPopup.ImageStream = CType(resources.GetObject("imlPopup.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.imlPopup.TransparentColor = System.Drawing.Color.Transparent
+        Me.imlPopup.Images.SetKeyName(0, "warning")
+        Me.imlPopup.Images.SetKeyName(1, "calculate")
+        Me.imlPopup.Images.SetKeyName(2, "error")
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.cmdCancel)
+        Me.Panel1.Controls.Add(Me.tabMain)
+        Me.Panel1.Controls.Add(Me.cmdOk)
+        resources.ApplyResources(Me.Panel1, "Panel1")
+        Me.Panel1.Name = "Panel1"
+        '
+        'frmSurface
+        '
+        Me.AcceptButton = Me.cmdOk
+        resources.ApplyResources(Me, "$this")
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.CancelButton = Me.cmdCancel
+        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.pnlPopup)
+        Me.Controls.Add(Me.tbMain)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.KeyPreview = True
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
+        Me.Name = "frmSurface"
+        Me.tbMain.ResumeLayout(False)
+        Me.tbMain.PerformLayout()
+        Me.tabPhoto.ResumeLayout(False)
+        Me.tabPhoto.PerformLayout()
+        Me.mnuOrthophotos.ResumeLayout(False)
+        CType(Me.picOrthoPhotoPreview, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabData.ResumeLayout(False)
+        Me.tabData.PerformLayout()
+        Me.mnuElevations.ResumeLayout(False)
+        CType(Me.picElevationsPreview, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.mnuElevationsPreview.ResumeLayout(False)
+        Me.tabMain.ResumeLayout(False)
+        Me.tabShape.ResumeLayout(False)
+        Me.tabWMS.ResumeLayout(False)
+        Me.mnuWMSs.ResumeLayout(False)
+        Me.pnlPopup.ResumeLayout(False)
+        CType(Me.picPopupWarning, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
+
+    End Sub
+    Friend WithEvents tbMain As System.Windows.Forms.ToolStrip
+    Friend WithEvents btnRemove As System.Windows.Forms.ToolStripButton
+    Friend WithEvents cmdCancel As System.Windows.Forms.Button
+    Friend WithEvents cmdOk As System.Windows.Forms.Button
+    Friend WithEvents tabPhoto As System.Windows.Forms.TabPage
+    Friend WithEvents txtOrthoPhotoInformation As System.Windows.Forms.TextBox
+    Friend WithEvents picOrthoPhotoPreview As System.Windows.Forms.PictureBox
+    Friend WithEvents tabData As System.Windows.Forms.TabPage
+    Friend WithEvents cboColorSchema As System.Windows.Forms.ComboBox
+    Friend WithEvents lblColorSchema As System.Windows.Forms.Label
+    Friend WithEvents picElevationsPreview As System.Windows.Forms.PictureBox
+    Friend WithEvents txtElevationInformation As System.Windows.Forms.TextBox
+    Friend WithEvents tabMain As System.Windows.Forms.TabControl
+    Friend WithEvents lvOrthoPhotos As System.Windows.Forms.ListView
+    Friend WithEvents imlOrthoPhotos As System.Windows.Forms.ImageList
+    Friend WithEvents lvElevations As System.Windows.Forms.ListView
+    Friend WithEvents imlElevations As System.Windows.Forms.ImageList
+    Friend WithEvents chkElevationDefault As System.Windows.Forms.CheckBox
+    Friend WithEvents chkOrthoPhotoDefault As System.Windows.Forms.CheckBox
+    Friend WithEvents mnuElevationsPreview As System.Windows.Forms.ContextMenuStrip
+    Friend WithEvents mnuElevationsPreviewElevationSavePreview As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuElevationsPreviewExportData As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem2 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents mnuElevationsPreviewRemoveNODATA As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents btnAdd As System.Windows.Forms.ToolStripDropDownButton
+    Friend WithEvents btnImportElevationData As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents btnImportOrthoPhoto As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuImportShapeFile As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tabShape As System.Windows.Forms.TabPage
+    Friend WithEvents lvShapes As System.Windows.Forms.ListView
+    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents btnClear As System.Windows.Forms.ToolStripButton
+    Friend WithEvents pnlPopup As System.Windows.Forms.Panel
+    Friend WithEvents btnPopupClose As System.Windows.Forms.Button
+    Friend WithEvents lblPopupWarning As System.Windows.Forms.Label
+    Friend WithEvents picPopupWarning As System.Windows.Forms.PictureBox
+    Friend WithEvents tipDefault As System.Windows.Forms.ToolTip
+    Friend WithEvents imlPopup As System.Windows.Forms.ImageList
+    Friend WithEvents tabWMS As System.Windows.Forms.TabPage
+    Friend WithEvents lvWMSs As System.Windows.Forms.ListView
+    Friend WithEvents colWMSURL As System.Windows.Forms.ColumnHeader
+    Friend WithEvents colWMSLayer As System.Windows.Forms.ColumnHeader
+    Friend WithEvents imlWMS As System.Windows.Forms.ImageList
+    Friend WithEvents mnuImportWMS As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents colWMSName As System.Windows.Forms.ColumnHeader
+    Friend WithEvents mnuElevationsPreviewElevationOrthoPhotoFromWMS As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuElevationsPreviewElevationOrthoPhotoFromWMSItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents mnuWMSs As ContextMenuStrip
+    Friend WithEvents mnuWMSsEdit As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem3 As ToolStripSeparator
+    Friend WithEvents mnuWMSsDelete As ToolStripMenuItem
+    Friend WithEvents mnuElevations As ContextMenuStrip
+    Friend WithEvents mnuElevationsDelete As ToolStripMenuItem
+    Friend WithEvents mnuOrthophotos As ContextMenuStrip
+    Friend WithEvents mnuOrthophotosDelete As ToolStripMenuItem
+End Class

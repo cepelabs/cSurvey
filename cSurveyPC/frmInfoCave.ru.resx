@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="cmdClose.Text" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+	<assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+	<data name="lblSurveyInfoCaveBranch.Size" type="System.Drawing.Size, System.Drawing">
+		<value>44, 13</value>
+	</data>
+	<data name="lblSurveyInfoCaveBranch.Text" xml:space="preserve">
+    <value>Ветка:</value>
+  </data>
+	<data name="colSurveyInfoName.HeaderText" xml:space="preserve">
+    <value>Данные</value>
+  </data>
+	<data name="colSurveyInfoValue.HeaderText" xml:space="preserve">
+    <value>Значения</value>
+  </data>
+	<data name="lblSurveyInfoCave.Size" type="System.Drawing.Size, System.Drawing">
+		<value>36, 13</value>
+	</data>
+	<data name="lblSurveyInfoCave.Text" xml:space="preserve">
+    <value>Пещера:</value>
+  </data>
+	<data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+		<value>
+        AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAKtWDgCsVw8ArFcQAKxYEACvXBYAsF0WALBdGACzYhkAtmYcALpq
+        HQC9bRwArmMlAK5kJQCvZikAsmYnALlpIAC9byIAuWsmALpsJQCzZygAsmgqALVqKwC7byoAv3MiAL90
+        IwC+cSYAv3QkAL1xLAC+dC8Ar2wyAK9sNACxbDMAsW41ALRxNwC/dDAAsnE4ALVyOQC4dToAuXY8AMJ1
+        IgDAdiYAwHUoAMJ3LQDCeSoAxHkpAMN6LADEei8AxHwtAMJ5MADEejAAxX0wAMZ/NgDFfTkAxX08AMWA
+        MgDGgDQAyYExAMiCNgDKhDUAyYM6AMmFOQDMhzoAyoY9AMyJOwDLiD4AzIk9ALGBWQCzhFsAtYVdALGO
+        cAC8mXsAvZp8AMmDQQDKhkcAy4lAAMyKQQDNjEIAy4hFAM6KRADOjUUAzYpJAM6NSQDNikwA0I9IAM6Q
+        RgDQkEUA0JFJANCSTQDRlE0A1ZZMANSYTgDQj1AA05ZQANSXUwDUmVUA1pxXANaXWQDWmVgA1p1aANef
+        XADYnFoA2J5cANmgWgDYoF0Ax5duAMiYbwDbn2AA259kAMuacQDMm3IA2aJgANyiYwDapGIA26VlANym
+        ZgDdomkA36dsAN2pagDerGwA4KduAOCtbgDhrXAA5K10AOCwcQDhsXQA5bF1AOeyeADjtHgA5bV6AOa2
+        fADpt34A6bl/AOm7ggDtu4EA6byBAOq9hQDtvIUA7b+IAO/CiwDuw4wA8MGKAPDEjgD0xY8A78aQAO/K
+        kwDwxZAA8smUAPbKlgDxz5oA9cyZAPLPnAD1zpwA+M2ZAPvPnQD20J0A+9GeAOXFoQDmyKUA9tOhAPXU
+        ogD21qQA+NKhAPzToQD51aQA/tmnAPrXqAD62akA/tmpAPvcrQD83a4A/d6wAP7gsgD/4rUA/+W4AP/o
+        vAD/6sAA/+3DAP/uxQD/8MYA//HJAP///wDPAEAA8ABJAP8RWgD/MXAA/1GGAP9xnAD/kbIA/7HIAP/R
+        3wD///8AAAAAAC8AIABQADYAcABMAJAAYgCwAHgAzwCOAPAApAD/EbMA/zG+AP9RxwD/cdEA/5HcAP+x
+        5QD/0fAA////AAAAAAAsAC8ASwBQAGkAcACHAJAApQCwAMQAzwDhAPAA8BH/APIx/wD0Uf8A9nH/APeR
+        /wD5sf8A+9H/AP///wAAAAAAGwAvAC0AUAA/AHAAUgCQAGMAsAB2AM8AiADwAJkR/wCmMf8AtFH/AMJx
+        /wDPkf8A3LH/AOvR/wD///8AAAAAAAgALwAOAFAAFQBwABsAkAAhALAAJgDPACwA8AA+Ef8AWDH/AHFR
+        /wCMcf8AppH/AL+x/wDa0f8A////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEYfBgUHBgcHIUYAAAAAAAAAAAAAAAAA
+        AAAAAAAAACAHEysyLysqKREKCQchAAAAAAAAAAAAAAAAAAAAAEQHMVBwhZukoqKik39ZKgkHQwAAAAAA
+        AAAAAAAAAAANEk9/pJOIgHx8fH2Ah46TaAsIDwAAAAAAAAAAAAAADTVlmJt9eXl6enp6enl6eX2OiSsJ
+        DgAAAAAAAAAAAA02c6mKdnd5eXd3d3Z3d3l5eXeEkzQJFQAAAAAAAABEF3OqhXN2dnZzcWdnZ2dxc3Z2
+        dnaBkzIIRQAAAAAAAAZrpohxc3N2c2+1tbW1tbVvc3Nzc3OCiREHAAAAAAAgUpKfaHFwcHBxb1q1tbW1
+        WmhxcHJwcXGLbxMhAAAAAAd+rXJob29vb29oW7W1tbVbaG9vb29vb3KTMgcAAABINo6XYGZoaGhoaGRa
+        tbW1tVplaGhoaGhoZIpiEEgAACFipoFfY2RjY2NjYFq1tbW1WmBjZWNjY2NgeoIaJAAABH+vZF9gYGBg
+        YGBfVrW1tbVWX2BgYGBgYF9mljIFAAAEhrBYXV5fXl9fX15NtbW1tU1eXl9eX19fXl2iNAUAAASJsVRd
+        XV1dXV1dWkK1tbW1QlldXV1dXV1dV6Q8BQAAAo2xUFhZWVlZWVlVO7W1tbVAV1lZWVlZWVlVpEEFAAAE
+        j7NLVFdXV1dXV021tbW1tUBUV1dXV1dXVE2kTwUAAASNsllQVFRUVFRVTT47OTk+TVRUVFRUVFRQWaJP
+        BgAAIniueUFPUFBQUFBPQTs5OT1CTVBQUFBQUEtyizYlAAAAU6iVOkFMTExMTEw7nrW1njtMTE9MTExL
+        PYp7HQAAAAAFo7RNPEFBS0FBPjO1tbW1Mz9BQUFBQT1NpmYGAAAAACV0raEwOj09PT09LbW1tbUtOz0+
+        PT06N5CJSSYAAAAAAAaZsXwuOD06OzownbW1nTA7Ojw6OjNzomYGAAAAAAAAaTaltHIsMzg4ODMtKCgt
+        Mzg4ODMuaKt7HGoAAAAAAAAAD2yotHcbLDMzMzMzMDMzMzMuKXKsgU4VAAAAAAAAAAAAD2yosqA3GCos
+        Li4uLiwsGTeTqYNRFQAAAAAAAAAAAAAAFDaarrSRaDMLCwsLM2WMr5t+IxYAAAAAAAAAAAAAAAAAbQV4
+        payvs7SzsrGwq5uNYQVuAAAAAAAAAAAAAAAAAAAAACYFXHuZnJqZlI10SgYnAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAJwIBAQECBCcAAAAAAAAAAAAAAAD////////////gB///gAH//gAAf/wAAD/4AAAf8AAAD+AA
+        AAfgAAAHwAAAA8AAAAOAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAHAAAADwAAAA8AA
+        AAPgAAAH4AAAB/AAAA/4AAAf/AAAP/4AAH//gAH///AP/ygAAAAQAAAAIAAAAAEACAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAArVgPAK1ZEgCuWxQArl0ZALBeGQCxYBkAt2wsAMBxGwDCeCYAw3oqAMV7
+        KgDHfSsAxn4tAMaALwDHgjMAyIQ2AMWCPgDJhjkAzIk9ALuLYQC8jWMAzYpBAM6NQgDOjkYAyolIANCP
+        QwDPkEgAzpJOANGTSgDTlEkA1JVLANKUTQDVmE8Az5NRANOXUQDUmFIA1JlUANacVgDWnVkA2J9eANmh
+        XQDMk2AA0J91ANmiYQDcpWIA2qRkANynZgDdqGYA16JpANqnaQDfrGsA2ahvAN+sbADVpnsA3q94AOCt
+        bgDhsXIA5rd6AOG7kADkvpYA4sCdAOTDoADnyKcA6MqoAOjLrgDrzawA7M+vAOrOsADs0LAA////AADw
+        SgAR/1sAMf9xAFH/hwBx/50Akf+yALH/yQDR/98A////AAAAAAACLwAABFAAAAZwAAAIkAAACrAAAAvP
+        AAAO8AAAIP8SAD3/MQBb/1EAef9xAJj/kQC1/7EA1P/RAP///wAAAAAAFC8AACJQAAAwcAAAPZAAAEyw
+        AABZzwAAZ/AAAHj/EQCK/zEAnP9RAK7/cQDA/5EA0v+xAOT/0QD///8AAAAAACYvAABAUAAAWnAAAHSQ
+        AACOsAAAqc8AAMLwAADR/xEA2P8xAN7/UQDj/3EA6f+RAO//sQD2/9EA////AAAAAAAvJgAAUEEAAHBb
+        AACQdAAAsI4AAM+pAADwwwAA/9IRAP/YMQD/3VEA/+RxAP/qkQD/8LEA//bRAP///wAAAAAALxQAAFAi
+        AABwMAAAkD4AALBNAADPWwAA8GkAAP95EQD/ijEA/51RAP+vcQD/wZEA/9KxAP/l0QD///8AAAAAAC8D
+        AABQBAAAcAYAAJAJAACwCgAAzwwAAPAOAAD/IBIA/z4xAP9cUQD/enEA/5eRAP+2sQD/1NEA////AAAA
+        AAAvAA4AUAAXAHAAIQCQACsAsAA2AM8AQADwAEkA/xFaAP8xcAD/UYYA/3GcAP+RsgD/scgA/9HfAP//
+        /wAAAAAALwAgAFAANgBwAEwAkABiALAAeADPAI4A8ACkAP8RswD/Mb4A/1HHAP9x0QD/kdwA/7HlAP/R
+        8AD///8AAAAAACwALwBLAFAAaQBwAIcAkAClALAAxADPAOEA8ADwEf8A8jH/APRR/wD2cf8A95H/APmx
+        /wD70f8A////AAAAAAAbAC8ALQBQAD8AcABSAJAAYwCwAHYAzwCIAPAAmRH/AKYx/wC0Uf8AwnH/AM+R
+        /wDcsf8A69H/AP///wAAAAAACAAvAA4AUAAVAHAAGwCQACEAsAAmAM8ALADwAD4R/wBYMf8AcVH/AIxx
+        /wCmkf8Av7H/ANrR/wD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAUBQICAgQUAAAAAAAAAAADGTg6Ojo4
+        GQIAAAAAAAAGLjk1MC0tODkuBgAAAAADKDUwRUZGRikwMygDAAAVES8uKSZFRh8nLCwwERUABScpJych
+        Q0YeJignKScFAAMoJSUkHkJGGiMlJSUpAwADMiAgIBpARhMgIyAgMgMAAzcYGxsTRkYSGxsbGDcDAAU8
+        ExYWEg0MEhYXFhM8BQArNjQQEg9ARg4SEhA0NisAAAVBMQ0LP0YKDQ0xQQUAAAAABz47HAkICiI7PgcA
+        AAAAAAAFKj1EREQ9KgUAAAAAAAAAACsFAQEBBSsAAAAAAP//AADwHwAA4A8AAMAHAACAAwAAAAEAAAAB
+        AAAAAQAAAAEAAAABAAAAAQAAAAEAAIADAADABwAA4A8AAPAfAAA=
+</value>
+	</data>
+	<data name="$this.Text" xml:space="preserve">
+    <value>Информация о пещере:</value>
+  </data>
+	<data name="mnuSurveyInfoCopy.Text" xml:space="preserve">
+    <value>Копировать</value>
+  </data>
+	<data name="mnuSurveyInfoCopyAll.Text" xml:space="preserve">
+    <value>Скопировать все</value>
+  </data>
+	<data name="mnuSurveyInfoExport.Text" xml:space="preserve">
+    <value>Экспорт...</value>
+  </data>
+</root>

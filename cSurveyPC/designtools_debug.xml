@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<design>
+  <tools>
+    <tool type="image" name="btnDesignTools_Base_Image" image="icon_image_small.ico" style="2" caption="Immagine" tooltip="Inserisce nel rilievo un immagine generica da ricalcare..." layer="0" method="CreateImage" parameters="cave,branch,image">
+      <caption lang="it" caption="Immagine" tooltip="Inserisce nel rilievo un immagine generica da ricalcare..."/>
+      <caption lang="en" caption="Image" tooltip="Add a generic image in the survey..."/>
+      <caption lang="ru" caption="Изображение" tooltip="Добавить фоновое изображние..."/>
+    </tool>
+    <tool type="sketch" name="btnDesignTools_Base_Sketch" image="icon_sketch_small.ico" style="2" caption="Sketch" tooltip="Inserisce nel rilievo uno sketch di grotta da adattare alla poligonale e ricalcare..." layer="0" method="CreateSketch" parameters="cave,branch,image">
+      <caption lang="it" caption="Sketch" tooltip="Inserisce nel rilievo uno sketch di grotta da adattare alla poligonale e ricalcare..."/>
+      <caption lang="en" caption="Sketch" tooltip="Add a cave sketch in the survey..."/>
+	  <caption lang="ru" caption="Абрис" tooltip="Добавить абрис в съёмку..."/>
+    </tool>
+    <tool type="separator" />
+    <tool type="dropdown" name="btnDesignTools_Soil_" image="icon_soilcurve_small.ico" style="2" caption="Suolo" tooltip="Raccoglie gli oggetti per disegnare il tipo di suolo" layer="1">
+      <tool type="freehandarea" convertto="1" name="btnDesignTools_Soil_Generic" image="icon_soilcurve_small.ico" style="3" caption="Suolo generico" tooltip="Crea un suolo generico" layer="1" method="CreateSoil" parameters="cave,branch">
+        <caption lang="it" caption="Suolo generico" tooltip="Crea un suolo generico liberamente personalizzabile"/>
+        <caption lang="en" caption="Generic soil" tooltip="Add a generic customizable soil"/>
+		<caption lang="ru" caption="Покрытие пола" tooltip="Добавить настраиваемое покрытие пола"/>
+      </tool>
+      <tool type="separator" />
+      <tool type="freehandarea" convertto="1"  name="btnDesignTools_Soil_Pebbles" image="icon_pebbles_small.ico" style="3" caption="Ciotoli" tooltip="Crea un suolo con ciotoli" layer="1" method="CreatePebblesSoil" parameters="cave,branch">
+        <caption lang="it" caption="Ciotoli" tooltip="Crea un suolo con ciotoli"/>
+        <caption lang="en" caption="Pebbles" tooltip="Add pebbles"/>
+		<caption lang="ru" caption="Галька" tooltip="Добавить гальку"/>
+      </tool>
+      <tool type="freehandarea" convertto="1"  name="btnDesignTools_Soil_Sand" image="icon_sand_small.ico" style="3" caption="Sabbia/argilla" tooltip="Crea un suolo sabbioso o argilloso" layer="1" method="CreateSandSoil" parameters="cave,branch">
+        <caption lang="it" caption="Sabbia/argilla" tooltip="Crea un suolo sabbioso o argilloso"/>
+        <caption lang="en" caption="Sand/clay" tooltip="Add sand or clay soil"/>
+		<caption lang="ru" caption="Песок/глина" tooltip="Добавить песок или глину"/>
+      </tool>
+      <tool type="freehandarea" convertto="1"  name="btnDesignTools_Soil_SmallDebrits" image="icon_smalldebrits_small.ico" style="3" caption="Piccoli detriti" tooltip="Crea un suolo con piccoli detriti" layer="1" method="CreateSmallDebritsSoil" parameters="cave,branch">
+        <caption lang="it" caption="Piccoli detriti" tooltip="Crea un suolo con piccoli detriti"/>
+        <caption lang="en" caption="Small debrits" tooltip="Add small debrits"/>
+		<caption lang="ru" caption="Мелкий щебень" tooltip="Добавить мелкий щебень"/>
+      </tool>
+      <tool type="freehandarea" convertto="1"  name="btnDesignTools_Soil_BigDebrits" image="icon_bigdebrits_small.ico" style="3" caption="Grandi detriti" tooltip="Crea un suolo con grandi detriti" layer="1" method="CreateBigDebritsSoil" parameters="cave,branch">
+        <caption lang="it" caption="Grandi detriti" tooltip="Crea un suolo con grandi detriti"/>
+        <caption lang="en" caption="Big debrits" tooltip="Add big debrits"/>
+		<caption lang="ru" caption="Крупный щебень" tooltip="Добавить крупный щебень"/>
+      </tool>
+      <tool type="freehandarea" convertto="1"  name="btnDesignTools_Soil_Flow" image="icon_flow_small.ico" style="3" caption="Colata" tooltip="Crea una colata" layer="1" method="CreateFlowSoil" parameters="cave,branch">
+        <caption lang="it" caption="Colata" tooltip="Crea una colata"/>
+        <caption lang="en" caption="Flow" tooltip="Add a flow"/>
+		<caption lang="ru" caption="Натёк" tooltip="Добавить натёчку"/>
+      </tool>
+      <caption lang="it" caption="Suolo" tooltip="Raccoglie gli oggetti per disegnare il tipo di suolo"/>
+      <caption lang="en" caption="Soil" tooltip="Tools for drawing soil"/>
+	  <caption lang="ru" caption="Покрытие пола" tooltip="Инструменты рисования покрытия пола"/>
+    </tool>
+    <tool type="separator" />
+    <tool type="dropdown" name="btnDesignTools_Water_Waters" image="icon_water_small.ico" style="2" caption="Acqua" tooltip="Raccoglie gli oggetti per rappresentare l'acqua" layer="2">
+      <caption lang="it" caption="Acqua" tooltip="Raccoglie gli oggetti per rappresentare l'acqua"/>
+      <caption lang="en" caption="Water" tooltip="Tools for drawing water"/>
+	  <caption lang="ru" caption="Вода" tooltip="Инструменты рисования воды"/>
+      <tool type="freehandarea" convertto="1"  name="btnDesignTools_Water_Water" image="icon_water_small.ico" style="3" caption="Acqua" tooltip="Acqua" layer="2" method="CreateWaterArea" parameters="cave,branch">
+        <caption lang="it" caption="Acqua" tooltip="Acqua"/>
+        <caption lang="en" caption="Water" tooltip="Water"/>
+		<caption lang="ru" caption="Вода" tooltip="Вода"/>
+      </tool>
+      <tool type="freehandarea" convertto="1"  name="btnDesignTools_Water_NotStandardWater" image="icon_water_small.ico" style="3" caption="Acqua (non standard)" tooltip="Acqua" layer="2" method="CreateNotStandardWaterArea" parameters="cave,branch">
+        <caption lang="it" caption="Acqua (non standard)" tooltip="Acqua (non standard)"/>
+        <caption lang="en" caption="Water (not standard)" tooltip="Water (not standard)"/>
+		<caption lang="ru" caption="Вода (не стандартная)" tooltip="Вода (с не стандартной заливкой)"/>
+      </tool>
+    </tool>
+    <tool type="dropdown" name="btnDesignTools_Water_Borders" image="icon_soilcurve_small.ico" style="2" caption="Morfologie del suolo" tooltip="Raccoglie gli oggetti per disegnare le morfologie del suolo" layer="2">
+      <caption lang="it" caption="Morfologie del suolo" tooltip="Raccoglie gli oggetti per disegnare le morfologie del suolo"/>
+      <caption lang="en" caption="Floor morphologies" tooltip="Floor morphologies"/>
+	  <caption lang="ru" caption="Морфология пола пещеры" tooltip="Элементы рельефа пещеры"/>
+      <tool type="freehandline" convertto="1"  name="btnDesignTools_Water_Border" image="icon_border_small.ico" style="3" caption="Curva del suolo" tooltip="Disegna una curva del suolo" layer="2" method="CreateBorder" parameters="cave,branch">
+        <caption lang="it" caption="Curva del suolo" tooltip="Disegna una curva del suolo"/>
+        <caption lang="en" caption="Generic floor curve" tooltip="Generic floor curve"/>
+		<caption lang="ru" caption="Общая линия пола" tooltip="Общая настраиваемая линия пола"/>
+      </tool>
+      <tool type="freehandline" convertto="1"  name="btnDesignTools_Water_CliffCurve" image="icon_cliff_small.ico" style="3" caption="Scarpata" tooltip="Disegna una scarpata" layer="2" method="CreateCliffCurve" parameters="cave,branch">
+        <caption lang="it" caption="Scarpata" tooltip="Disegna una scarpata"/>
+        <caption lang="en" caption="Cliff curve" tooltip="Ccliff curve"/>
+		<caption lang="ru" caption="Линия отвеса" tooltip="Линия границы отвеса"/>
+      </tool>
+      <tool type="freehandline" convertto="1"  name="btnDesignTools_Water_LevelCurve" image="icon_gradient_small.ico" style="3" caption="Gradiente" tooltip="Disegna un gradiente" layer="2" method="CreateLevelCurve" parameters="cave,branch">
+        <caption lang="it" caption="Gradiente" tooltip="Disegna un gradiente"/>
+        <caption lang="en" caption="Level curve" tooltip="Level curve"/>
+		<caption lang="ru" caption="Линия уклона" tooltip="Линия контура уклона"/>
+      </tool>
+      <tool type="freehandline" convertto="1"  name="btnDesignTools_Water_OverhangCurve" image="icon_overhang_small.ico" style="3" caption="Sporgenza" tooltip="Disegna una sporgenza" layer="2" method="CreateOverhangCurve" parameters="cave,branch">
+        <caption lang="it" caption="Sporgenza" tooltip="Disegna una sporgenza"/>
+        <caption lang="en" caption="Overhang curve" tooltip="Overhang curve"/>
+		<caption lang="ru" caption="Линия нависания" tooltip="Линия контура нависания"/>
+      </tool>
+      <tool type="freehandline" convertto="1"  name="btnDesignTools_Water_Meander" image="icon_meander_small.ico" style="3" caption="Meandro" tooltip="Disegna un meandro" layer="2" method="CreateMeander" parameters="cave,branch">
+        <caption lang="it" caption="Meandro" tooltip="Disegna un meandro"/>
+        <caption lang="en" caption="Meander curve" tooltip="Meander curve"/>
+		<caption lang="ru" caption="Линия меандра" tooltip="Линия контура меандра в полу"/>
+      </tool>
+      <tool type="separator" />
+      <tool type="freehandline" convertto="1"  name="btnDesignTools_Water_PresumedBorder" image="icon_presumedborder_small.ico" style="3" caption="Curva del suolo presunta" tooltip="Disegna una curva del suolo presunta" layer="2" method="CreatePresumedBorder" parameters="cave,branch">
+        <caption lang="it" caption="Curva del suolo presunta" tooltip="Disegna una curva del suolo presunta"/>
+        <caption lang="en" caption="Presumed generic floor curve" tooltip="Presumed generic floor curve"/>
+		<caption lang="ru" caption="Предпологаемая линия пола" tooltip="Предположительная настраиваемая линия пола"/>
+      </tool>
+      <tool type="freehandline" convertto="1"  name="btnDesignTools_Water_PresumedCliffCurve" image="icon_cliff_small.ico" style="3" caption="Scarpata presunta/a soffitto" tooltip="Disegna una scarpata presunta" layer="2" method="CreatePresumedCliffCurve" parameters="cave,branch">
+        <caption lang="it" caption="Scarpata presunta" tooltip="Disegna una scarpata presunta"/>
+        <caption lang="en" caption="Presumed cliff curve" tooltip="Presumed cliff curve"/>
+		<caption lang="ru" caption="Предполагаемая линия отвеса" tooltip="Предполагаемая линия границы отвеса"/>
+      </tool>
+      <tool type="freehandline" convertto="1"  name="btnDesignTools_Water_PresumedLevelCurve" image="icon_gradient_small.ico" style="3" caption="Gradiente presunto" tooltip="Disegna un gradiente presunto" layer="2" method="CreatePresumedLevelCurve" parameters="cave,branch">
+        <caption lang="it" caption="Gradiente presunto" tooltip="Disegna un gradiente presunto"/>
+        <caption lang="en" caption="Presumed level curve" tooltip="Presumed level curve"/>
+		<caption lang="ru" caption="Предполагаемая линия уклона" tooltip="Предполагаемая линия контура уклона"/>
+      </tool>
+      <tool type="freehandline" convertto="1"  name="btnDesignTools_Water_PresumedOverhangCurve" image="icon_presumedoverhang_small.ico" style="3" caption="Sporgenza presunta" tooltip="Disegna una sporgenza presunta" layer="2" method="CreatePresumedOverhangCurve" parameters="cave,branch">
+        <caption lang="it" caption="Sporgenza presunta" tooltip="Disegna una sporgenza presunta"/>
+        <caption lang="en" caption="Presumed overhang curve" tooltip="Presumed overhang curve"/>
+		<caption lang="ru" caption="Линия предполагаемого нависания" tooltip="Линия  контура предполагаемого нависания"/>
+      </tool>
+      <tool type="freehandline" convertto="1"  name="btnDesignTools_Water_PresumedMeander" image="icon_meander_small.ico" style="3" caption="Meandro presunto" tooltip="Disegna un meandro presunto" layer="2" method="CreatePresumedMeander" parameters="cave,branch">
+        <caption lang="it" caption="Meandro presunto" tooltip="Disegna un meandro presunto"/>
+        <caption lang="en" caption="Presumed meander curve" tooltip="Presumed meander curve"/>
+		<caption lang="ru" caption="Линия предполагаемого меандра" tooltip="Линия контура предполагаемого меандра в полу"/>
+      </tool>
+    </tool>
+    <tool type="separator" />
+    <tool type="gallery" subtype="clipart" name="btnDesignTools_Rocks_Rock" image="icon_rocks_small.ico" style="2" caption="Rocce" tooltip="Apre la gallery degli oggetti roccia" layer="3" category="32" cliparts="cliparts" gallery="rocks,Rocce,0" method="CreateRockFromClipart" parameters="cave,branch,data,dataformat">
+      <caption lang="it" caption="Rocce" tooltip="Apre la gallery degli oggetti roccia"/>
+      <caption lang="en" caption="Rocks" tooltip="Open the rocks gallery"/>
+	  <caption lang="ru" caption="Камни" tooltip="Открыть галерею камней"/>
+    </tool>
+    <tool type="dropdown" name="btnDesignTools_Rocks_Design" image="icon_rockborders_small.ico" style="2" caption="Rocce" tooltip="Raccoglie gli strumenti per disegnare rocce" layer="3">
+      <caption lang="it" caption="Strumenti per disegnare le rocce" tooltip="Raccoglie gli strumenti per disegnare rocce"/>
+      <caption lang="en" caption="Rocks" tooltip="Rocks"/>
+	  <caption lang="ru" caption="Добавить камень" tooltip="Добавить камень"/>
+      <tool type="freehandarea" convertto="1" name="Rocks_RockBorderWithFilling" image="icon_rockborderwithfilling_small.ico" style="3" caption="Roccia (esterno, con riempimento)" tooltip="Disegna una roccia (con riempimento)" layer="3" category="32" method="CreateRockArea" parameters="cave,branch">
+        <caption lang="it" caption="Roccia (esterno, con riempimento)" tooltip="Disegna il contorno esterno di una roccia"/>
+        <caption lang="en" caption="Rock (border with filling)" tooltip="Rock (border with filling)"/>
+		<caption lang="ru" caption="Камень (граница с заполенением)" tooltip="Камень (граница с заполенением)"/>
+      </tool>
+      <tool type="freehandline" convertto="1" name="Rocks_RockBorder" image="icon_rockborder_small.ico" style="3" caption="Roccia (interno, senza riempimento)" tooltip="Disegna una roccia (solo contorno)" layer="3" category="32" method="CreateRockBorder" parameters="cave,branch">
+        <caption lang="it" caption="Roccia (interno, senza riempimento)" tooltip="Disegna un bordo interno di una roccia"/>
+        <caption lang="en" caption="Rock (only border)" tooltip="Rock (only border)"/>
+		<caption lang="ru" caption="Камень (только граница)" tooltip="Камень (только граница)"/>
+      </tool>
+    </tool>
+    <tool type="gallery" subtype="clipart" name="btnDesignTools_Rocks_Concretion" image="icon_concretions_small.ico" style="2" caption="Concrezioni" tooltip="Apre la gallery degli oggetti concrezioni/stalattiti/stalgmiti" layer="3" category="33" cliparts="cliparts" gallery="concretions,Concrezioni,0" method="CreateConcretionFromClipart" parameters="cave,branch,data,dataformat" canchangedin="">
+      <caption lang="it" caption="Concrezioni" tooltip="Apre la gallery degli oggetti concrezioni"/>
+      <caption lang="en" caption="Concretion" tooltip="Open the concretion gallery"/>
+	  <caption lang="ru" caption="Образования" tooltip="Открыть галерею пещерных образований"/>
+    </tool>
+    <tool type="dropdown" name="btnDesignTools_Concretion_Design" image="icon_concretionborders_small.ico" style="2" caption="concrezioni" tooltip="Raccoglie gli strumenti per disegnare concrezioni" layer="3">
+      <caption lang="it" caption="Strumenti per disegnare le concrezioni" tooltip="Raccoglie gli strumenti per disegnare concrezioni"/>
+      <caption lang="en" caption="Concretion" tooltip="Concretion"/>
+	  <caption lang="ru" caption="Concretion" tooltip="Образование"/>
+        <tool type="freehandarea" convertto="1" name="Concretion_ConcretionBorderWithFilling" image="icon_concretionborderwithfilling_small.ico" style="3" caption="Concrezione (esterno, con riempimento)" tooltip="Disegna una roccia (con riempimento)" layer="3" category="32" method="CreateConcretionBorderWithFilling" parameters="cave,branch">
+          <caption lang="it" caption="Concrezione (esterno, con riempimento)" tooltip="Disegna una roccia"/>
+          <caption lang="en" caption="Concretion (border with filling)" tooltip="Concretion (border with filling)"/>
+		  <caption lang="ru" caption="Образование (граница с заполнением)" tooltip="Образование (граница с заполнением)"/>
+        </tool>
+        <tool type="freehandline" convertto="1" name="Concretion_ConcretionBorder" image="icon_concretionborder_small.ico" style="3" caption="Concrezione (interno, senza riempimento)" tooltip="Disegna una roccia (solo contorno)" layer="3" category="32" method="CreateConcretionBorder" parameters="cave,branch">
+          <caption lang="it" caption="Concrezione (interno, senza riempimento)" tooltip="Disegna una roccia"/>
+          <caption lang="en" caption="Concretion (only border)" tooltip="Concretion (only border)"/>
+		  <caption lang="ru" caption="Образование (только граница)" tooltip="Образование (только граница)"/>
+        </tool>
+    </tool>
+    <tool type="separator" />
+    <tool type="dropdown" name="btnDesignTools_TerrainLevel_Borders" image="icon_presumedborder_small.ico" style="2" caption="Morfologie del soffitto" tooltip="Raccoglie gli oggetti per disegnare le morfologie del soffitto" layer="4">
+      <caption lang="it" caption="Morfologie del soffitto" tooltip="Raccoglie gli oggetti per disegnare le morfologie del soffitto"/>
+      <caption lang="en" caption="Ceiling morphologies" tooltip="Ceiling morphologies"/>
+	  <caption lang="ru" caption="Морфология потолка пещеры" tooltip="Элементы рельефа потолка пещеры"/>
+      <tool type="freehandline" convertto="1"  name="btnDesignTools_TerrainLevel_PresumedBorder" image="icon_presumedborder_small.ico" style="3" caption="Curva del soffitto" tooltip="Disegna una curva generica del soffitto" layer="4" method="CreateCeilingBorder" parameters="cave,branch">
+        <caption lang="it" caption="Curva del soffitto" tooltip="Disegna una curva del soffitto a soffitto"/>
+        <caption lang="en" caption="Generic ceilingcurve" tooltip="Generic ceiling floor curve"/>
+		<caption lang="ru" caption="Простая линия потолка" tooltip="Простая настраиваемая линия потолка"/>
+      </tool>
+      <tool type="freehandline" convertto="1"  name="btnDesignTools_TerrainLevel_PresumedCliffCurve" image="icon_cliff_small.ico" style="3" caption="Camino" tooltip="Disegna la partenza di un camino" layer="4" method="CreateCeilingCliffCurve" parameters="cave,branch">
+        <caption lang="it" caption="Camino" tooltip="Disegna la partenza di un camino"/>
+        <caption lang="en" caption="Chimney" tooltip="Draw the start of a chimney"/>
+		<caption lang="ru" caption="Дымоход" tooltip="Рисовать начало дымохода"/>
+      </tool>
+      <tool type="freehandline" convertto="1"  name="btnDesignTools_TerrainLevel_PresumedMeander" image="icon_meander_small.ico" style="3" caption="Meandro a soffitto" tooltip="Disegna un meandro a soffitto" layer="4" method="CreateCeilingMeander" parameters="cave,branch">
+        <caption lang="it" caption="Meandro a soffitto" tooltip="Disegna un meandro a soffitto"/>
+        <caption lang="en" caption="Meander ceiling curve" tooltip="Meander ceiling curve"/>
+		<caption lang="ru" caption="Линия меандра в потолке" tooltip="Линия контура меандра в потолке"/>
+      </tool>
+    </tool>
+    <tool type="separator" />
+    <tool type="dropdown" name="btnDesignTools_Borders_CaveBorders" image="icon_caveborder_small.ico" style="2" caption="Margini cavità" tooltip="Raccoglie gli oggetti per disegnare i margini principali della cavità" layer="5">
+      <caption lang="it" caption="Margini cavità" tooltip="Raccoglie gli oggetti per disegnare i margini principali della cavità"/>
+      <caption lang="en" caption="Cave borders" tooltip="Tools for draw cave borders"/>
+	  <caption lang="ru" caption="Границы пещеры" tooltip="Инструменты для рисования границ пещеры"/>
+      <tool type="invertedfreehandarea" convertto="1"  name="btnDesignTools_Borders_CaveBorder" image="icon_caveborder_small.ico" style="3" caption="Margine cavità" tooltip="Disegna il margine principale della cavità" layer="5" method="CreateCaveBorder" parameters="cave,branch">
+        <caption lang="it" caption="Margine cavità" tooltip="Disegna il margine principale della cavità"/>
+        <caption lang="en" caption="Cave border" tooltip="Cave border"/>
+		<caption lang="ru" caption="Стена пещеры" tooltip="Стена пещеры"/>
+      </tool>
+      <tool type="invertedfreehandarea" convertto="1"  name="btnDesignTools_Borders_PresumedCaveBorder" image="icon_presumedborder_small.ico"  style="3" caption="Margine cavità presunto" tooltip="Disegna un margine di cavità presunto" layer="5" method="CreatePresumedCaveBorder" parameters="cave,branch">
+        <caption lang="it" caption="Margine cavità presunto" tooltip="Disegna il presunto margine principale della cavità"/>
+        <caption lang="en" caption="Presumed cave border" tooltip="Presumed cave border"/>
+		<caption lang="ru" caption="Предполагаемая стена пещеры" tooltip="Предполагаемая стена пещеры"/>
+      </tool>
+      <tool type="invertedfreehandarea" convertto="1"  name="btnDesignTools_Borders_TooNarrowCaveBorder" image="icon_presumedborder_small.ico"  style="3" caption="Margine cavità troppo stretto" tooltip="Disegna un margine di cavità troppo stretto" layer="5" method="CreateTooNarrowCaveBorder" parameters="cave,branch">
+        <caption lang="it" caption="Margine cavità troppo stretto" tooltip="Disegna margine principale della cavità quando tropp stretto per essere percorso"/>
+        <caption lang="en" caption="Too narrow cave border" tooltip="Too narrow cave border"/>
+		<caption lang="ru" caption="Слишком узко" tooltip="Стена пещеры в слишком узком месте"/>
+      </tool>
+      <tool type="invertedfreehandarea" convertto="1"  name="btnDesignTools_Borders_UnderlyingCaveBorder" image="icon_presumedborder_small.ico"  style="3" caption="Margine cavità presunto" tooltip="Disegna un margine di cavità sottoposto" layer="5" method="CreateUnderlyingCaveBorder" parameters="cave,branch">
+        <caption lang="it" caption="Margine cavità sottoposto" tooltip="Disegna il margine principale della cavità quando sottoposto ad un altro ramo"/>
+        <caption lang="en" caption="Underlying cave border" tooltip="Underlying cave border"/>
+		<caption lang="ru" caption="Нижележащая стена пещеры" tooltip="Нижележащая стена пещеры"/>
+      </tool>
+    </tool>
+    <tool type="dropdown" name="btnDesignTools_Borders_Borders" image="icon_border_small.ico" style="2" caption="Margini" tooltip="Raccoglie gli oggetti per disegnare margini generici" layer="5">
+      <caption lang="it" caption="Margini" tooltip="Raccoglie gli oggetti per disegnare margini generici"/>
+      <caption lang="en" caption="Generic borders" tooltip="Tools for draw generic borders"/>
+	  <caption lang="ru" caption="Общие границы" tooltip="Инструменты для рисования линий границ"/>
+      <tool type="freehandline" convertto="1"  name="btnDesignTools_Borders_Border" image="icon_border_small.ico" style="3" caption="Margine" tooltip="Disegna un margine" layer="5" method="CreateBorder" parameters="cave,branch">
+        <caption lang="it" caption="Margine" tooltip="Disegna un margine generico"/>
+        <caption lang="en" caption="Border" tooltip="Border"/>
+		<caption lang="ru" caption="Граница" tooltip="Простая настраиваемая линия границы"/>
+      </tool>
+      <tool type="freehandline" convertto="1"  name="btnDesignTools_Borders_PresumedBorder" image="icon_presumedborder_small.ico" style="3" caption="Margine presunto" tooltip="Disegna un margine presunto" layer="5" method="CreatePresumedBorder" parameters="cave,branch">
+        <caption lang="it" caption="Margine presunto" tooltip="Disegna un margine presunto"/>
+        <caption lang="en" caption="Presumed border" tooltip="Presumed border"/>
+		<caption lang="ru" caption="Предполагаемая граница" tooltip="Предполагаемая граница"/>
+      </tool>
+    </tool>
+    <tool type="separator" />
+    <tool type="gallery" subtype="sign" name="btnDesignTools_Signs_Signs" image="icon_symbols_small.ico" style="2" caption="Simboli" tooltip="Apre la gallery dei simboli" layer="6" category="80" cliparts="signs" gallery="signs,Simboli,1" method="CreateSign" parameters="cave,branch,data,dataformat">
+      <caption lang="it" caption="Simboli" tooltip="Apre la gallery dei simboli"/>
+      <caption lang="en" caption="Signs" tooltip="Open the signs gallery"/>
+	  <caption lang="ru" caption="Символы" tooltip="Открыть галерею условных обознпачний"/>
+    </tool>
+    <tool type="texteditor" name="btnDesignTools_Signs_text" image="icon_text_small.ico" style="2" caption="Testo" tooltip="Inserisce un testo libero" layer="6" method="CreateText" parameters="cave,branch,text">
+      <caption lang="it" caption="Testo" tooltip="Inserisce un testo libero" />
+      <caption lang="en" caption="Text" tooltip="Text"/>
+	  <caption lang="ru" caption="Подпись" tooltip="Подпись"/>
+    </tool>
+    <tool type="crosssection" name="btnDesignTools_Signs_Profile" image="icon_profile_small.ico" style="2" caption="Sezione trasversale" tooltip="Inserisce il segnaposto per una sezione trasverale" layer="6" method="CreateCrossSection" parameters="cave,branch,segment">
+      <caption lang="it" caption="Sezione trasversale" tooltip="Inserisce il segnaposto per una sezione trasverale" />
+      <caption lang="en" caption="Cross section" tooltip="Add a cross section"/>
+	  <caption lang="ru" caption="Поперечное сечение" tooltip="Добавить поперечное сечение"/>
+    </tool>
+    <tool type="dropdown" name="btnDesignTools_Signs_Quotas" image="icon_quote_small.ico" style="2" caption="Quote" tooltip="Raccoglie gli oggetti per disegnare quote, scale metriche, dislivelli e riferimenti altimetrici" layer="6">
+      <caption lang="it" caption="Quote" tooltip="Raccoglie gli oggetti per disegnare quote, scale metriche, dislivelli e riferimenti altimetrici" />
+      <caption lang="en" caption="Quotas" tooltip="Tools for draw quotas, scales and drops"/>
+	    <caption lang="ru" caption="Измерения" tooltip="Инструменты для рисования замеров, масштабов и высот"/>
+      <tool type="quota" name="btnDesignTools_Signs_VerticalQuota" image="icon_quotev_small.ico" style="3" caption="Quota verticale" tooltip="Inserisce una quota verticale" layer="6" method="CreateVerticalQuota" parameters="cave,branch,text">
+        <caption lang="it" caption="Quota verticale" tooltip="Inserisce una quota verticale" />
+        <caption lang="en" caption="Vertical quota" tooltip="Vertical quota"/>
+		    <caption lang="ru" caption="Вертикальное расстояние" tooltip="Измерение расстояний по вертикали"/>
+      </tool>
+      <tool type="quota" name="btnDesignTools_Signs_HorizontalQuota" image="icon_quoteh_small.ico" style="3" caption="Quota orizzontale" tooltip="Inserisce una quota orizzontale" layer="6" method="CreateHorizontalQuota" parameters="cave,branch,text">
+        <caption lang="it" caption="Quota orizzontale" tooltip="Inserisce una quota orizzontalee" />
+        <caption lang="en" caption="Horizontal quota" tooltip="Horizontal quota"/>
+		    <caption lang="ru" caption="Горизонтальное расстояние" tooltip="Измерение расстояний по горизонтали"/>
+      </tool>
+      <tool type="quota" name="btnDesignTools_Signs_ObliqueQuota" image="icon_quoteo_small.ico" style="3" caption="Quota libera" tooltip="Inserisce una quota libera" layer="6" method="CreateObliqueQuota" parameters="cave,branch,text">
+        <caption lang="it" caption="Quota libera" tooltip="Inserisce una quota libera" />
+        <caption lang="en" caption="Free quota" tooltip="Free quota"/>
+        <caption lang="ru" caption="Свободное расстояние" tooltip="Измерение расстояния"/>
+      </tool>
+      <tool type="quota" name="btnDesignTools_Signs_AltimetricQuota" image="icon_quotealt_small.ico" style="3" caption="Quota altimetrica" tooltip="Inserisce una quota altimetrica" layer="6" method="CreateAltitudeQuota" parameters="cave,branch,text">
+        <caption lang="it" caption="Quota altimetrica" tooltip="Inserisce una quota altimetrica" />
+        <caption lang="en" caption="Altimetric quota" tooltip="Altimetric quota"/>
+		<caption lang="ru" caption="Отметка альтитуды" tooltip="Измерение альтитуды над уровнем моря"/>
+      </tool>
+      <tool type="quota" name="btnDesignTools_Signs_DropQuota" image="icon_quotedrop_small.ico" style="3" caption="Dislivello" tooltip="Inserisce un dislivello" layer="6" method="CreateDropQuota" parameters="cave,branch,text">
+        <caption lang="it" caption="Dislivello" tooltip="Inserisce un dislivello" />
+        <caption lang="en" caption="Drop quota" tooltip="Drop quota"/>
+		<caption lang="ru" caption="Отметка глубины" tooltip="Измерение глубины относительно пикета"/>
+      </tool>
+      <tool type="quota" name="btnDesignTools_Signs_VerticalScaleQuota" image="icon_quotescalev_small.ico" style="3" caption="Scala verticale" tooltip="Inserisce una scala verticale" layer="6" method="CreateVerticalScaleQuota" parameters="cave,branch,text">
+        <caption lang="it" caption="Scala verticale" tooltip="Inserisce una scala verticale" />
+        <caption lang="en" caption="Vertical scale" tooltip="Vertical scale"/>
+		<caption lang="ru" caption="Вертикальный масштаб" tooltip="Шкала вертикального масштаба"/>
+      </tool>
+      <tool type="quota" name="btnDesignTools_Signs_HorizontalScaleQuota" image="icon_quotescaleh_small.ico" style="3" caption="Scala orizzontale" tooltip="Inserisce una scale orizzontale" layer="6" method="CreateHorizontalScaleQuota" parameters="cave,branch,text">
+        <caption lang="it" caption="Scala orizzontale" tooltip="Inserisce una scala orizzontale" />
+        <caption lang="en" caption="Horizontal scale" tooltip="Horizontal scale"/>
+		<caption lang="ru" caption="Горизонтальный масштаб" tooltip="Шкала горизонтального масштаба"/>
+      </tool>
+      <tool type="quota" name="btnDesignTools_Signs_GridScaleQuota" image="icon_gridscale_small.ico" style="3" caption="Griglia" tooltip="Inserisce una griglia" layer="6" method="CreateGridScaleQuota" parameters="cave,branch,text">
+        <caption lang="it" caption="Griglia" tooltip="Griglia" />
+        <caption lang="en" caption="Grid" tooltip="Grid"/>
+		<caption lang="ru" caption="Сетка" tooltip="Сетка"/>
+      </tool>
+    </tool>
+    <tool type="attachment" name="btnDesignTools_Signs_Attachment" image="icon_attachment_small.ico" style="2" caption="Allegato" tooltip="Inserisce un allegato" layer="6" method="CreateAttachment" parameters="cave,branch,data,dataformat">
+      <caption lang="it" caption="Allegato" tooltip="Allegato" />
+      <caption lang="en" caption="Attachment" tooltip="Attachment"/>
+      <caption lang="ru" caption="Oграда" tooltip="Oграда"/>
+    </tool>
+    <tool type="separator" />
+    <tool type="scale" name="btnDesignTools_Signs_Scale" image="icon_scale_small.ico" style="2" caption="Scala" tooltip="Inserisce una scala" layer="6" method="CreateScale" parameters="cave,branch">
+      <caption lang="it" caption="Scala" tooltip="Scala" />
+      <caption lang="en" caption="Scale" tooltip="Scale"/>
+      <caption lang="ru" caption="Масштаб" tooltip="Масштаб"/>
+    </tool>
+    <tool type="legend" name="btnDesignTools_Signs_Legend" image="icon_legend_small.ico" style="2" caption="Legenda" tooltip="Inserisce una legenda" layer="6" method="CreateLegend" parameters="cave,branch,text">
+      <caption lang="it" caption="Legenda" tooltip="Legenda" />
+      <caption lang="en" caption="Legend" tooltip="Legend"/>
+      <caption lang="ru" caption="Легенда" tooltip="Легенда"/>
+    </tool>
+    <tool type="gallery" subtype="compass" name="btnDesignTools_Signs_Compasses" image="icon_compass_small.ico" style="2" caption="Nord" tooltip="Apre la gallery dei simboli del Nord e delle bussole" layer="6" design="plan" category="83" cliparts="signs" gallery="compasses,Bussole,2" method="CreateCompass" parameters="cave,branch,data,dataformat">
+      <caption lang="it" caption="Nord e bussole" tooltip="Apre la gallery dei simboli del Nord e delle bussole" />
+      <caption lang="en" caption="North and compasses" tooltip="Open North and compasses gallery"/>
+      <caption lang="ru" caption="Север и компасы" tooltip="Открытая галерея Север и компасы"/>
+    </tool>
+    <tool type="informationboxtext" name="btnDesignTools_Signs_InfoboxText" image="icon_infobox_small.ico" style="2" caption="Testo informativo" tooltip="Inserisce il testo informativo" layer="6" method="CreateInformationBoxText" parameters="cave,branch">
+      <caption lang="it" caption="Testo informativo" tooltip="Testo informativo" />
+      <caption lang="en" caption="Information box" tooltip="Information box"/>
+      <caption lang="ru" caption="Информационное поле" tooltip="Информационное поле"/>
+    </tool>
+  </tools>
+</design>

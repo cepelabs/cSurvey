@@ -1,0 +1,880 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cmdDefaultFolder.Text" xml:space="preserve">
+    <value>Sfoglia...</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="Label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 13</value>
+  </data>
+  <data name="Label3.Text" xml:space="preserve">
+    <value>Cartella predefinita:</value>
+  </data>
+  <data name="chkFilesExtension.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 17</value>
+  </data>
+  <data name="chkFilesExtension.Text" xml:space="preserve">
+    <value>Associa le estensioni dei file di cSurvey</value>
+  </data>
+  <data name="lblDefaultDesigner.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 13</value>
+  </data>
+  <data name="lblDefaultDesigner.Text" xml:space="preserve">
+    <value>Disegnatore/i:</value>
+  </data>
+  <data name="lblDefaultTeam.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 13</value>
+  </data>
+  <data name="lblDefaultTeam.Text" xml:space="preserve">
+    <value>Rilevatore/i:</value>
+  </data>
+  <data name="lblDefaultClub.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
+  </data>
+  <data name="lblDefaultClub.Text" xml:space="preserve">
+    <value>Gruppo/i:</value>
+  </data>
+  <data name="tabMain.Text" xml:space="preserve">
+    <value>Generale</value>
+  </data>
+  <data name="chkCalculateMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 17</value>
+  </data>
+  <data name="chkCalculateMode.Text" xml:space="preserve">
+    <value>Calcolo automatico</value>
+  </data>
+  <data name="lblDefaultCalculateMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 13</value>
+  </data>
+  <data name="lblDefaultCalculateMode.Text" xml:space="preserve">
+    <value>Tipo di calcolo:</value>
+  </data>
+  <data name="cboDefaultCalculateType.Items" xml:space="preserve">
+    <value>Manuale</value>
+  </data>
+  <data name="cboDefaultCalculateType.Items1" xml:space="preserve">
+    <value>Automatico</value>
+  </data>
+  <data name="cboDefaultCalculateType.Items2" xml:space="preserve">
+    <value>Utilizza Therion</value>
+  </data>
+  <data name="tabOptions.Text" xml:space="preserve">
+    <value>Opzioni di calcolo</value>
+  </data>
+  <data name="chkTherionLochEnabled.Text" xml:space="preserve">
+    <value>Attiva Loch</value>
+  </data>
+  <data name="chkTherionLochEnabled.ToolTip" xml:space="preserve">
+    <value>Attiva Loch, il visualizzatore 3D di Therion</value>
+  </data>
+  <data name="cmdTherionPathBrowse.Text" xml:space="preserve">
+    <value>Sfoglia...</value>
+  </data>
+  <data name="txtTherionPath.ToolTip" xml:space="preserve">
+    <value>Specifica il file eseguibile di Therion</value>
+  </data>
+  <data name="chkTherionEnabled.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 17</value>
+  </data>
+  <data name="chkTherionEnabled.Text" xml:space="preserve">
+    <value>Attiva interfaccia per Therion</value>
+  </data>
+  <data name="chkTherionEnabled.ToolTip" xml:space="preserve">
+    <value>Attiva tutte le funzioni di interfacciamento con Therion</value>
+  </data>
+  <data name="chkTherionSegmentForcePath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 17</value>
+  </data>
+  <data name="chkTherionSegmentForcePath.Text" xml:space="preserve">
+    <value>Forza percorso in sezione</value>
+  </data>
+  <data name="chkTherionSegmentForceDirection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 17</value>
+  </data>
+  <data name="chkTherionSegmentForceDirection.Text" xml:space="preserve">
+    <value>Forza direzione segmenti</value>
+  </data>
+  <data name="chkTherionTrigpointSafename.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 17</value>
+  </data>
+  <data name="chkTherionTrigpointSafename.Text" xml:space="preserve">
+    <value>Usa dizionario capisaldi</value>
+  </data>
+  <data name="chkTherionBackgroundProcess.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 17</value>
+  </data>
+  <data name="chkTherionBackgroundProcess.Text" xml:space="preserve">
+    <value>Avvia come processo in background</value>
+  </data>
+  <data name="chkTherionDeleteTempFiles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 17</value>
+  </data>
+  <data name="chkTherionDeleteTempFiles.Text" xml:space="preserve">
+    <value>Elimina file temporanei</value>
+  </data>
+  <data name="frmTherionAdvancedSettings.Text" xml:space="preserve">
+    <value>Avanzate:</value>
+  </data>
+  <data name="chkLayersShowItemPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 17</value>
+  </data>
+  <data name="chkLayersShowItemPreview.Text" xml:space="preserve">
+    <value>Mostra l'anteprima degli oggetti nella gestione livelli</value>
+  </data>
+  <data name="chkLayersShowItemPreview.ToolTip" xml:space="preserve">
+    <value>Mostra le anteprima degli oggetti nella gestione livelli</value>
+  </data>
+  <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>275, 17</value>
+  </data>
+  <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 13</value>
+  </data>
+  <data name="Label1.Text" xml:space="preserve">
+    <value>Lingua:</value>
+  </data>
+  <data name="chkGridBackColorByCave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 17</value>
+  </data>
+  <data name="chkGridBackColorByCave.ToolTip" xml:space="preserve">
+    <value>Mostra dati colorati per grotta/ramo</value>
+  </data>
+  <data name="chkClipboardLocalFormat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 17</value>
+  </data>
+  <data name="chkClipboardLocalFormat.Text" xml:space="preserve">
+    <value>Usa formato locale</value>
+  </data>
+  <data name="chkClipboardLocalFormat.ToolTip" xml:space="preserve">
+    <value>Usa le impostazioni di formato locali per i dati in clipboard</value>
+  </data>
+  <data name="chkClipboardCleanPastedStation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 17</value>
+  </data>
+  <data name="chkClipboardCleanPastedStation.Text" xml:space="preserve">
+    <value>Cancella capisaldi su incolla</value>
+  </data>
+  <data name="lblClipboardFormats.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 13</value>
+  </data>
+  <data name="lblClipboardFormats.Text" xml:space="preserve">
+    <value>Formati aggiuntivi per gli appunti:</value>
+  </data>
+  <data name="GroupBox3.Text" xml:space="preserve">
+    <value>Taglia, copia e incolla:</value>
+  </data>
+  <data name="chkSetDesignToolsEnabledByLevel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 17</value>
+  </data>
+  <data name="chkSetDesignToolsEnabledByLevel.Text" xml:space="preserve">
+    <value>Mostra strumenti attivi per livello</value>
+  </data>
+  <data name="chkSetDesignToolsHiddenByLevel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 17</value>
+  </data>
+  <data name="chkSetDesignToolsHiddenByLevel.Text" xml:space="preserve">
+    <value>Nascondi strumenti non attivi</value>
+  </data>
+  <data name="tabInterface.Text" xml:space="preserve">
+    <value>Interfaccia</value>
+  </data>
+  <data name="chkDesignUseOnlyAnchorToMove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>212, 17</value>
+  </data>
+  <data name="chkDesignUseOnlyAnchorToMove.Text" xml:space="preserve">
+    <value>Sposta gli oggetti solo tramite angolo in alto a sinistra</value>
+  </data>
+  <data name="chkDesignUseOnlyAnchorToMove.ToolTip" xml:space="preserve">
+    <value>Indica se attivare lo spostamento libero degli oggetti o limitarlo al punto di ancoraggio superiore sinistro</value>
+  </data>
+  <data name="cboDesignZoomType.Items1" xml:space="preserve">
+    <value>Scala</value>
+  </data>
+  <data name="lblDesignZoomType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 13</value>
+  </data>
+  <data name="lblDesignZoomType.Text" xml:space="preserve">
+    <value>Tipo di zoom:</value>
+  </data>
+  <data name="cboDesignShowRulersStyle.Items" xml:space="preserve">
+    <value>Semplice</value>
+  </data>
+  <data name="cboDesignShowRulersStyle.Items1" xml:space="preserve">
+    <value>Avanzato</value>
+  </data>
+  <data name="lblDesignShowRulersStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 13</value>
+  </data>
+  <data name="cboDesignClipBorder.Items" xml:space="preserve">
+    <value>Non tagliare gli oggetti del livello bordi</value>
+  </data>
+  <data name="cboDesignClipBorder.Items1" xml:space="preserve">
+    <value>Taglia gli oggetti del livello bordi</value>
+  </data>
+  <data name="cboDesignClipBorder.Items2" xml:space="preserve">
+    <value>Disattiva per tutti gli oggetti</value>
+  </data>
+  <data name="lblClipping.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 13</value>
+  </data>
+  <data name="lblClipping.Text" xml:space="preserve">
+    <value>Clipping dei bordi:</value>
+  </data>
+  <data name="cboDesignLineType.Items" xml:space="preserve">
+    <value>Rette</value>
+  </data>
+  <data name="Label27.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 13</value>
+  </data>
+  <data name="Label27.Text" xml:space="preserve">
+    <value>Linea:</value>
+  </data>
+  <data name="cboDesignQuality.Items" xml:space="preserve">
+    <value>Bozza</value>
+  </data>
+  <data name="cboDesignQuality.Items1" xml:space="preserve">
+    <value>Media</value>
+  </data>
+  <data name="cboDesignQuality.Items2" xml:space="preserve">
+    <value>Alta</value>
+  </data>
+  <data name="lblDesignQuality.Text" xml:space="preserve">
+    <value>Qualità:</value>
+  </data>
+  <data name="chkDesignShowRulers.Text" xml:space="preserve">
+    <value>Mostra righelli</value>
+  </data>
+  <data name="lblDesignMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 13</value>
+  </data>
+  <data name="lblDesignMode.Text" xml:space="preserve">
+    <value>Modalità di disegno:</value>
+  </data>
+  <data name="tabDesign.Text" xml:space="preserve">
+    <value>Disegno</value>
+  </data>
+  <data name="txtSVGExportDPI.ToolTip" xml:space="preserve">
+    <value>Specifica i DPI da utilizzare di default per l'esportazione di un fil SVG con larghezza e altezza del disegno specificati in pixel</value>
+  </data>
+  <data name="chkSVGExportNoClipartBrushes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>151, 17</value>
+  </data>
+  <data name="chkSVGExportNoClipartBrushes.Text" xml:space="preserve">
+    <value>Disattiva riempimenti con clipart</value>
+  </data>
+  <data name="chkSVGExportNoClipartBrushes.ToolTip" xml:space="preserve">
+    <value>Disattiva i riempimenti con clipart sostituendoli con dei colori semplici</value>
+  </data>
+  <data name="chkSVGExportNoClipping.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 17</value>
+  </data>
+  <data name="chkSVGExportNoClipping.Text" xml:space="preserve">
+    <value>Disattiva clipping</value>
+  </data>
+  <data name="chkSVGExportNoClipping.ToolTip" xml:space="preserve">
+    <value>Disattiva il clipping degli oggetti grafici.</value>
+  </data>
+  <data name="lblSVGExportScale.Text" xml:space="preserve">
+    <value>Scala:</value>
+  </data>
+  <data name="txtSVGExportScale.ToolTip" xml:space="preserve">
+    <value>Specifica un fattore di scala aggiuntivo da applicare al file SVG in fase di esportazione</value>
+  </data>
+  <data name="GroupBox2.Text" xml:space="preserve">
+    <value>Esportazione:</value>
+  </data>
+  <data name="chkSVGImportAutodivide.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 17</value>
+  </data>
+  <data name="chkSVGImportAutodivide.Text" xml:space="preserve">
+    <value>Dividi automaticamente</value>
+  </data>
+  <data name="lblSVGImportScale.Text" xml:space="preserve">
+    <value>Scala:</value>
+  </data>
+  <data name="lblSVGImportLineType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
+  </data>
+  <data name="lblSVGImportLineType.Text" xml:space="preserve">
+    <value>Linee:</value>
+  </data>
+  <data name="lblPlotSelectedPointSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 13</value>
+  </data>
+  <data name="lblPlotSelectedPointSize.Text" xml:space="preserve">
+    <value>Massima dim. path:</value>
+  </data>
+  <data name="GroupBox1.Text" xml:space="preserve">
+    <value>Importazione:</value>
+  </data>
+  <data name="chkVTopoImportSetAsBranch.Text" xml:space="preserve">
+    <value>Crea un ramo per ogni set di misure</value>
+  </data>
+  <data name="chkVTopoImportIncompatibleSet.Text" xml:space="preserve">
+    <value>Importa set di misure non compatibili con cSurvey</value>
+  </data>
+  <data name="chkAutosaveUseHistorySettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 17</value>
+  </data>
+  <data name="chkAutosaveUseHistorySettings.Text" xml:space="preserve">
+    <value>Usa impostazioni definite per le revisioni locali</value>
+  </data>
+  <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 13</value>
+  </data>
+  <data name="Label2.Text" xml:space="preserve">
+    <value>Mb</value>
+  </data>
+  <data name="lblHistoryDailyCopies.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 13</value>
+  </data>
+  <data name="lblHistoryDailyCopies.Text" xml:space="preserve">
+    <value>Revisioni per giornata:</value>
+  </data>
+  <data name="cmdHistoryFolderBrowse.Text" xml:space="preserve">
+    <value>Sfoglia...</value>
+  </data>
+  <data name="lblHistoryFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 13</value>
+  </data>
+  <data name="lblHistoryFolder.Text" xml:space="preserve">
+    <value>Archivia in:</value>
+  </data>
+  <data name="lblHistoryMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 13</value>
+  </data>
+  <data name="lblHistoryMode.Text" xml:space="preserve">
+    <value>Modalità di gestione revisioni:</value>
+  </data>
+  <data name="chkHistory.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 17</value>
+  </data>
+  <data name="chkHistory.Text" xml:space="preserve">
+    <value>Storico revisioni</value>
+  </data>
+  <data name="chkHistory.ToolTip" xml:space="preserve">
+    <value>Attiva la gestione dello storico delle revisioni</value>
+  </data>
+  <data name="chkAutosave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 17</value>
+  </data>
+  <data name="chkAutosave.Text" xml:space="preserve">
+    <value>Attiva salvataggio automatico copia di backup</value>
+  </data>
+  <data name="cboHistoryMode.Items" xml:space="preserve">
+    <value>In una cartella del sistema corrente</value>
+  </data>
+  <data name="tabHistory.Text" xml:space="preserve">
+    <value>Revisioni</value>
+  </data>
+  <data name="lblFunctionLanguage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 13</value>
+  </data>
+  <data name="lblFunctionLanguage.Text" xml:space="preserve">
+    <value>Linguaggio funzioni:</value>
+  </data>
+  <data name="chkMultiThreading.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 17</value>
+  </data>
+  <data name="chkMultiThreading.Text" xml:space="preserve">
+    <value>Attiva multithreading avanzato</value>
+  </data>
+  <data name="Label4.Text" xml:space="preserve">
+    <value>Attenzione: questa opzione utilizza la connessione ad internet per verificare e notificare la presenza di un aggiornamento del programma.</value>
+  </data>
+  <data name="chkCheckNewVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 17</value>
+  </data>
+  <data name="chkCheckNewVersion.Text" xml:space="preserve">
+    <value>Controlla la presenza di nuove versioni</value>
+  </data>
+  <data name="lblSendExceptionWarning.Text" xml:space="preserve">
+    <value>Attenzione: questa opzione invia automaticamente un report per ogni errore non gestito utilizzando la connessione internet.
+Non verrà inviato alcun dato relativo all'utente o al rilievo attivo.</value>
+  </data>
+  <data name="chkSendException.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 17</value>
+  </data>
+  <data name="chkSendException.Text" xml:space="preserve">
+    <value>Invia segnalazioni di errore</value>
+  </data>
+  <data name="chkSendException.ToolTip" xml:space="preserve">
+    <value>Invia le segnalazioni di errore all'autore</value>
+  </data>
+  <data name="chkLogEnabled.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 17</value>
+  </data>
+  <data name="chkLogEnabled.Text" xml:space="preserve">
+    <value>Attiva log</value>
+  </data>
+  <data name="tabSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 12</value>
+  </data>
+  <data name="cmdCancel.Text" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAHtwXQBraWcAbWtpAHBsawBxb2wAc3BuAHVzcQB2dHEAenZ0AH15
+        dwB9enkAfnx7ALR6BgC5egAAun4EALR6CAC1fAoAtX4OALZ/EgDFdAAAx3sAAMp+AACBfnsAgX58AACE
+        QwAAhkUAAIhFAACISAC2gRUAuIIXALiDGAC6jTEAy4ICAMyECADPiA4Az4sVANCKEwDRjhsA05AfANOS
+        JADVlSwA15kzANiaNADZnjsAkYVvAIOAfgCEgX8A26JDAN2lSgDLpl4A36lRAOCqUwDirlkA47BfAMKe
+        fQDmtGUA57ZqAOm5bwDnunIA6L58AOnAfgBCXqQAABbeAAAY3wAAGeEAAB3gAAAh4gCEgoAAhoSCAIaF
+        hACJg4IAioaEAI6GhQCFhYsAjYuJAJCOjACWko8Ak5KQAJWTkgCXl5gAmZqaAJ2amQCdm50Am5ydAJ2d
+        nQCjm5cAoJ2cAKWioQCmpKMAp6amAKikogCpp6UAq6mnAKuqqQCtrK0Asa2nALGvrQC0rq8AtLCpALOx
+        rgCzsrEAtbKwALqwsQC4tbMAuLa1ALq4tgC8ubYAubm5ALy6ugC7vLwAvb29AMSggADGo4UAx6WIAMin
+        jADJqY4Ay6ySAMytkgDMrpQA1LmdANa7oADav6QA6cCBAOvLlQDszpoA7dCcANrBqgDcwqkA3cSrANvC
+        rADdxK4AxMK/AN3GsADdx7QA38iyAN7ItADfyrgA8NOlAPLXrADgyrUA4Mu4AOHMuQDizr0A49C+APTb
+        tAD23roA+OC/AMDBwQDEwsAAyMXEAM3LygDOzMoA0c/OANLQzwDT0dAA1dPSANfV0wDX09UA1dTVANnW
+        0gDZ1dUA3dTXAN3Z0wDa2tkA3NrZAN7c2gDb29wA3tveAOLOwADi0cEA5NLBAOTSxADl1MYA5tbJAOfX
+        zQDn2MoA6NnLAOjYzADk3tYA4dzdAPjhwQDn4tkA4eDeAOjg2QDp5d0A7ebfAPXq1QDx5N4A9e7eAPjt
+        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
+</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Impostazioni:</value>
+  </data>
+  <data name="chkTherionSegmentForcePath.ToolTip" xml:space="preserve">
+		<value>Imposta il percorso da seguire per la generazione della sezione</value>
+	</data>
+  <data name="chkTherionSegmentForceDirection.ToolTip" xml:space="preserve">
+		<value>Imposta la direzione di ogni segmento</value>
+	</data>
+  <data name="chkTherionTrigpointSafename.ToolTip" xml:space="preserve">
+		<value>Usa un dizionario di conversione per in nomi dei capisaldi (per evitare problemi di incompatibilità con Therion)</value>
+	</data>
+  <data name="chkTherionBackgroundProcess.ToolTip" xml:space="preserve">
+		<value>Avvia Therion in background  (in modalità completamente invisibile)</value>
+	</data>
+  <data name="chkTherionDeleteTempFiles.ToolTip" xml:space="preserve">
+		<value>Elimina i file temporanei creati durante l'interfacciamento con Therion </value>
+	</data>
+  <data name="Label5.Text" xml:space="preserve">
+		<value>Soglia di complessità:</value>
+	</data>
+  <data name="chkClipboardCleanPastedStation.ToolTip" xml:space="preserve">
+		<value>Cancella i capisaldi impostati per un segmento incollato se esiste già un'altro segmento con gli stessi riferimenti.</value>
+	</data>
+  <data name="colClipboardFormat.Text" xml:space="preserve">
+		<value>Formato</value>
+	</data>
+  <data name="txtDesignMetricGridOpacity.ToolTip" xml:space="preserve">
+		<value>Indice di trasparenza usato per disegnare la griglia metrica</value>
+	</data>
+  <data name="lblDesignMetricGridOpacity.Text" xml:space="preserve">
+		<value>Trasparenza:</value>
+	</data>
+  <data name="cboDesignShowMetricGrid.Items" xml:space="preserve">
+		<value>Nessuno</value>
+	</data>
+  <data name="cboDesignShowMetricGrid.Items1" xml:space="preserve">
+		<value>Griglia metrica standard</value>
+	</data>
+  <data name="cboDesignShowMetricGrid.Items2" xml:space="preserve">
+		<value>Griglia metrica allineata al segmento corrente</value>
+	</data>
+  <data name="Label6.Text" xml:space="preserve">
+		<value>Griglia metrica:</value>
+	</data>
+  <data name="txtDefaultFont.ToolTip" xml:space="preserve">
+		<value>Carattere predefinito per il testo dei capisaldi</value>
+	</data>
+  <data name="lblDefaultFont.Text" xml:space="preserve">
+		<value>Carattere predefinito:</value>
+	</data>
+  <data name="cboDesignZoomType.ToolTip" xml:space="preserve">
+		<value>Specifica in che unità specificare il fattore di zoom</value>
+	</data>
+  <data name="txtSVGImportPathMaxLen.ToolTip" xml:space="preserve">
+		<value>Indica la dimensione massima (in punti) di path grafico da importare (i path  con più punti di quelli indicati verranno ignorati)</value>
+	</data>
+  <data name="chkSVGImportAutodivide.ToolTip" xml:space="preserve">
+		<value>Divide automaticamente l'oggetto importato in oggetti più semplici</value>
+	</data>
+  <data name="cboSVGImportLineType.Items" xml:space="preserve">
+		<value>Rette</value>
+	</data>
+  <data name="cboSVGImportLineType.ToolTip" xml:space="preserve">
+		<value>Specifica il tipo di linea da utilizzare per gli oggetti importati da SVG</value>
+	</data>
+  <data name="txtSVGImportScale.ToolTip" xml:space="preserve">
+		<value>Fattore di scala aggiuntivo da applicare agli oggetti importati</value>
+	</data>
+  <data name="chkVTopoImportSetAsBranch.ToolTip" xml:space="preserve">
+		<value>Crea un ramo per ogni set di misure in modo da riportare i colori impostati in VisualTopo</value>
+	</data>
+  <data name="chkVTopoImportIncompatibleSet.ToolTip" xml:space="preserve">
+		<value>Consente l'importazione di dati associati a unità di misura non compatibili con cSurvey.
+I dati andranno poi corretti manualmente dopo l'importazione.</value>
+	</data>
+  <data name="GroupBox4.Text" xml:space="preserve">
+		<value>Importazione:</value>
+	</data>
+  <data name="Label9.Text" xml:space="preserve">
+		<value>Altezza:</value>
+	</data>
+  <data name="Label7.Text" xml:space="preserve">
+		<value>Larghezza:</value>
+	</data>
+  <data name="lblPlotNoteTextColor.Text" xml:space="preserve">
+		<value>Colore di sfondo:</value>
+	</data>
+  <data name="picWMSFromOrthoPhotoBackgroundColor.ToolTip" xml:space="preserve">
+		<value>Colore predefinito per il testo dei capisaldi</value>
+	</data>
+  <data name="Label8.Text" xml:space="preserve">
+		<value>Dimensione massima:</value>
+	</data>
+  <data name="GroupBox6.Text" xml:space="preserve">
+		<value>Ortofoto da WMS:</value>
+	</data>
+  <data name="btnWMSBrowse.ToolTip" xml:space="preserve">
+		<value>Sfoglia la cartella...</value>
+	</data>
+  <data name="lblWMSCacheCurrentSize.Text" xml:space="preserve">
+		<value>Dimensione corrente:</value>
+	</data>
+  <data name="btnWMSClearCache.Text" xml:space="preserve">
+		<value>Pulisci</value>
+	</data>
+  <data name="btnWMSClearCache.ToolTip" xml:space="preserve">
+		<value>Pulisce la cache</value>
+	</data>
+  <data name="lblWMSCacheMaxSize.Text" xml:space="preserve">
+		<value>Dimensione massima:</value>
+	</data>
+  <data name="chkWMSCacheEnabled.Text" xml:space="preserve">
+		<value>Abilita cache</value>
+	</data>
+  <data name="chkWMSCacheEnabled.ToolTip" xml:space="preserve">
+		<value>Consente l'importazione di dati associati a unità di misura non compatibili con cSurvey.
+I dati andranno poi corretti manualmente dopo l'importazione.</value>
+	</data>
+  <data name="chkHistoryArchiveOnSave.Text" xml:space="preserve">
+		<value>Archivia automaticamente ad ogni salvataggio</value>
+	</data>
+  <data name="lblHistoryMaxCopies.Text" xml:space="preserve">
+		<value>Revisioni totali:</value>
+	</data>
+  <data name="txtHistoryMaxCopies.ToolTip" xml:space="preserve">
+		<value>Spefica il numero di revisioni da archiviare complessivamente</value>
+	</data>
+  <data name="txtHistoryDailyCopies.ToolTip" xml:space="preserve">
+		<value>Spefica il numero di revisioni da archiviare per singola giornata</value>
+	</data>
+  <data name="TabPage1.Text" xml:space="preserve">
+		<value>Cartella</value>
+	</data>
+  <data name="chkHistoryWebArchiveOnSave.Text" xml:space="preserve">
+		<value>Archivia automaticamente ad ogni salvataggio</value>
+	</data>
+  <data name="chkHistoryWebAuthReq.Text" xml:space="preserve">
+		<value>Richiede l'autenticazione a livello di rete</value>
+	</data>
+  <data name="lblHistoryWebMaxCopies.Text" xml:space="preserve">
+		<value>Revisioni totali:</value>
+	</data>
+  <data name="txtHistoryWebMaxCopies.ToolTip" xml:space="preserve">
+		<value>Spefica il numero di revisioni da archiviare complessivamente</value>
+	</data>
+  <data name="lblHistoryWebDailyCopies.Text" xml:space="preserve">
+		<value>Revisioni per giornata:</value>
+	</data>
+  <data name="txtHistoryWebDailyCopies.ToolTip" xml:space="preserve">
+		<value>Spefica il numero di revisioni da archiviare per singola giornata</value>
+	</data>
+  <data name="lblHistoryWebPassword.Text" xml:space="preserve">
+		<value>Password:</value>
+	</data>
+  <data name="lblHistoryWebUsername.Text" xml:space="preserve">
+		<value>Nome utente:</value>
+	</data>
+  <data name="cboHistoryMode.Items1" xml:space="preserve">
+		<value>Servizio web</value>
+	</data>
+  <data name="cboHistoryMode.Items2" xml:space="preserve">
+		<value>Entrambi</value>
+	</data>
+  <data name="txtMachineID.ToolTip" xml:space="preserve">
+		<value>Identificatore univoco che contraddistingue questo computer.
+Non vi è correlazione tra questo codice e alcun dato relativo all'utente.</value>
+	</data>
+  <data name="chkMultiThreading.ToolTip" xml:space="preserve">
+		<value>Attiva alcune funzionalità aggiuntive in multithreading</value>
+	</data>
+  <data name="chkCheckNewVersion.ToolTip" xml:space="preserve">
+		<value>Controlla automaticamente la presenza di una nuova versione on-line</value>
+	</data>
+  <data name="chkLogEnabled.ToolTip" xml:space="preserve">
+		<value>Attiva il log dettagliato delle attività del programma.</value>
+	</data>
+  <data name="cboLanguage.Items" xml:space="preserve">
+    <value>Predefinito</value>
+  </data>
+  <data name="cboDesignBarPosition.Items" xml:space="preserve">
+    <value>Predefinito</value>
+  </data>
+  <data name="cboDesignBarPosition.Items1" xml:space="preserve">
+    <value>Angolo in alto a sinistra dell'area di disegno</value>
+  </data>
+  <data name="cboDesignBarPosition.Items2" xml:space="preserve">
+    <value>Vicino all'oggetto in fase di modifica</value>
+  </data>
+  <data name="cboDesignBarPosition.Items3" xml:space="preserve">
+    <value>Vicino all'oggetto o al punto in fase di modifica</value>
+  </data>
+  <data name="Label10.Text" xml:space="preserve">
+    <value>Posizione barra disegno:</value>
+  </data>
+  <data name="chkShowLastUsedToolsInDesignBar.Text" xml:space="preserve">
+    <value>Mostra gli ultimi strumenti nella barra di disegno</value>
+  </data>
+  <data name="lblTherionPath.Text" xml:space="preserve">
+    <value>File Therion:</value>
+  </data>
+  <data name="lblDesignShowRulersStyle.Text" xml:space="preserve">
+    <value>Stile:</value>
+  </data>
+  <data name="chkDesignShowMetricGrid.Text" xml:space="preserve">
+    <value>Mostra griglia metrica</value>
+  </data>
+  <data name="chkGridBackColorByCave.Text" xml:space="preserve">
+    <value>Abilita colori in griglia</value>
+  </data>
+  <data name="chkAllowResizablePanel.Text" xml:space="preserve">
+    <value>Consenti ridimensionamento pannelli</value>
+  </data>
+  <data name="chkAllowResizablePanel.ToolTip" xml:space="preserve">
+    <value>Consenti ridimensionamento pannelli nella form principale</value>
+  </data>
+  <data name="txtDesignAnchorScale.ToolTip" xml:space="preserve">
+    <value>Fattore di scala per gli ancoraggi</value>
+  </data>
+  <data name="lblBaseLineWidthScaleFactor.Text" xml:space="preserve">
+    <value>Scala ancoraggi:</value>
+  </data>
+  <data name="GroupBox7.Text" xml:space="preserve">
+    <value>Esportazione tabella battute:</value>
+  </data>
+  <data name="chkShotsGridExportSplayNames.Text" xml:space="preserve">
+    <value>Esporta caposaldo di fine per gli splay</value>
+  </data>
+  <data name="chkShotsGridExportSplayNames.ToolTip" xml:space="preserve">
+    <value>Esporta il caposaldo di fine per splay o lascia il valore vuoto</value>
+  </data>
+  <data name="tabGrids.Text" xml:space="preserve">
+    <value>Griglie</value>
+  </data>
+  <data name="chkDesignShowLegacyExtraPrintAndExportObjects.Text" xml:space="preserve">
+    <value>Consenti oggetti di stampa classici</value>
+  </data>
+  <data name="chkDesignUseAdvancedSelection.Text" xml:space="preserve">
+    <value>Usa selezione avanzata</value>
+  </data>
+  <data name="chkDesignUseAdvancedSelection.ToolTip" xml:space="preserve">
+    <value>Usa sistema di selezione avanzata degli oggetti nel designer</value>
+  </data>
+  <data name="Label11.Text" xml:space="preserve">
+    <value>Modalità selezione:</value>
+  </data>
+  <data name="Label11.ToolTip" xml:space="preserve">
+    <value>Modalità di selezione oggetti nel designer</value>
+  </data>
+  <data name="cboDesignSelectionMode.Items" xml:space="preserve">
+    <value>Default (bounding box)</value>
+  </data>
+  <data name="cboDesignSelectionMode.Items1" xml:space="preserve">
+    <value>Selezione di precisione</value>
+  </data>
+  <data name="cboDesignSelectionMode.Items2" xml:space="preserve">
+    <value>Selezione di precisione e bounding box</value>
+  </data>
+  <data name="chkAlwaysUseShellForAttchments.Text" xml:space="preserve">
+    <value>Usa sempre programma pred. per aprire gli allegati</value>
+  </data>
+  <data name="chkAlwaysUseShellForAttchments.ToolTip" xml:space="preserve">
+    <value>Usa sempre il programma predefinito per aprire tutti gli allegati (anche immagini e audio)</value>
+  </data>
+  <data name="lblDesignSelectionMode.Text" xml:space="preserve">
+    <value>Modalità di sel.:</value>
+  </data>
+  <data name="lblDesignSelectionMode.ToolTip" xml:space="preserve">
+    <value>Modalità di sel. nel designer</value>
+  </data>
+  <data name="chkLinkedSurveysSelectOnAdd.Text" xml:space="preserve">
+    <value>Seleziona rilievi al collegamento</value>
+  </data>
+  <data name="tabLinkedSurveys.Text" xml:space="preserve">
+    <value>Rilievi collegati</value>
+  </data>
+  <data name="chkLinkedSurveysShowInCaveInfo.Text" xml:space="preserve">
+    <value>Mostra rilievi collegati nelle informazioni grotta</value>
+  </data>
+  <data name="chkLinkedSurveysRecursiveLoad.Text" xml:space="preserve">
+    <value>Collega ricorsivamente i rilievi</value>
+  </data>
+</root>

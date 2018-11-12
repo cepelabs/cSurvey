@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="cmdCancel.Text" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+	<assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+	<data name="lblPosition.Size" type="System.Drawing.Size, System.Drawing">
+		<value>51, 13</value>
+	</data>
+	<data name="lblPosition.Text" xml:space="preserve">
+    <value>Расположение:</value>
+  </data>
+	<data name="Label1.Text" xml:space="preserve">
+    <value>Номер:</value>
+  </data>
+	<data name="lblPlanPosition.Size" type="System.Drawing.Size, System.Drawing">
+		<value>31, 13</value>
+	</data>
+	<data name="lblPlanPosition.Text" xml:space="preserve">
+    <value>План:</value>
+  </data>
+	<data name="lblConnectedTo.Size" type="System.Drawing.Size, System.Drawing">
+		<value>75, 13</value>
+	</data>
+	<data name="lblConnectedTo.Text" xml:space="preserve">
+    <value>Следующие пикеты:</value>
+  </data>
+	<data name="lblProfilePosition.Size" type="System.Drawing.Size, System.Drawing">
+		<value>41, 13</value>
+	</data>
+	<data name="lblProfilePosition.Text" xml:space="preserve">
+    <value>Разрез:</value>
+  </data>
+	<data name="lblScaleSize.Text" xml:space="preserve">
+    <value>Масштаб:</value>
+  </data>
+	<data name="cmdApply.Text" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+	<data name="cmdNext.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+		<value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABMklEQVQ4T6WRPUvDUBSG85MEwU2a9GPU
+        Ubd20f9h0oii4mA7FV2sCLZOGdooDmJrlRYDRWhBWhTUVNRFCi4Kr/cEiuacDikeeJYn73nv5UYD8C/G
+        ykkQIrV66sTtE/VFDs8SQhiWi1r/DbMrVVHCs4QQMdOFcztA2XtGzAyX8CwhBC0deT5mNi5Q8h6h/ynh
+        WUII3aqi2BogkWsimW9i/+rhS1e3ilxgqILCtY+53Tbm99rIHHZQOL/7pIflWUIIKsg3XrBQ7GDxoIul
+        4x52zrqTFWxfviJd6iNTvkeu7o/eYZpnCSEMq4L1+juWnSds1XwYZiVYjvwGcVVgNz6w2Rqqk3+XaXiW
+        ECKRdbF28x06eTQ8SwiRyrrDpB38ttAyDc8SUmjalEIs0/BskB8nowPtB1Ashh+Jtes5AAAAAElFTkSu
+        QmCC
+</value>
+	</data>
+	<data name="cmdPrev.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+		<value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABKElEQVQ4T6WST0sCURTF/UjCgLvw/7KW
+        tdNNfY9GJ4qKFulKbJMhpK1mMTNFi0izUByQQCESBW2UahOCG4PTfY8gZ94sZuwHZ3PueYf7Hi8A4F9y
+        Nf1INFyIKddI7t2ozizPC4aDtV0dtf4HohmDxvYsk2gsEZZ1VM03qM8ThGWfBRE6XDFHCB3e49K0qECn
+        sT3LJBr8sIHzx+EikW8inmui1JogkvFYwB6scPcyT5e72DjrYL3YQeHJojfwUXB625tvX71i66KHzVIX
+        +cbUewEhsfvn6hbS1QFSlT5OHt59FTCkqKzhuGZhRx3joP5JBRqN7Vkm0fiDNtFw1JpBaXwhtkIBg2+y
+        3/5GPLvCR/pFSigGkllj5szyvGC4I5GCzizPu5nehcAPAJiGH594zX4AAAAASUVORK5CYII=
+</value>
+	</data>
+	<data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+		<value>
+        AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAHJwbAB/fXsAgH57AIB+fAA9aZMANXa0ADt8uQBSe6AAPoS/AFiG
+        sgBgi7MAYpK8AD6CwABEjscASIzEAEOTzABClc0ASJHJAE2UywBMm9MATp7TAFGd0gBVndEAVaTXAFmh
+        0wByoc4Ae67QAH+p1ACEgoAAh4WCAIeHhQCKhoMAioiGAIyKiACSjowAk5GOAJmXlACamZUAnZuYAKOh
+        ngClo6AApaSiAKenpACrqaUAra2rAK6urACwrqwAt7KqALCwrQC1sq8AvbWuALOzsgC0tLEAuLa0ALq5
+        uAC9u7sAwLy8AImz1wCMs9YAjLTWAI222QCr4vsAseL4ALLl+gDCwsEAxcXEAMnHxgDKyMcAzMjGAMvL
+        ygDNzMsAzszMANHPzwDR0M8A1dLSANfW1QDZ19YA29rZAN3b2wDe3N0A4N/eAOHg3wDr5N8A4uHgAOTj
+        4gDl5OMA5ublAOjo5wDq6egA7OvrAO7t7QDw7u4A8fDvAPLx8QD08vIA9PTzAPX19QD49/cA+fn5AP37
+        +QD+/PoA+/z8AP7+/gB4/xEAiv8xAJz/UQCu/3EAwP+RANL/sQDk/9EA////AAAAAAAmLwAAQFAAAFpw
+        AAB0kAAAjrAAAKnPAADC8AAA0f8RANj/MQDe/1EA4/9xAOn/kQDv/7EA9v/RAP///wAAAAAALyYAAFBB
+        AABwWwAAkHQAALCOAADPqQAA8MMAAP/SEQD/2DEA/91RAP/kcQD/6pEA//CxAP/20QD///8AAAAAAC8U
+        AABQIgAAcDAAAJA+AACwTQAAz1sAAPBpAAD/eREA/4oxAP+dUQD/r3EA/8GRAP/SsQD/5dEA////AAAA
+        AAAvAwAAUAQAAHAGAACQCQAAsAoAAM8MAADwDgAA/yASAP8+MQD/XFEA/3pxAP+XkQD/trEA/9TRAP//
+        /wAAAAAALwAOAFAAFwBwACEAkAArALAANgDPAEAA8ABJAP8RWgD/MXAA/1GGAP9xnAD/kbIA/7HIAP/R
+        3wD///8AAAAAAC8AIABQADYAcABMAJAAYgCwAHgAzwCOAPAApAD/EbMA/zG+AP9RxwD/cdEA/5HcAP+x
+        5QD/0fAA////AAAAAAAsAC8ASwBQAGkAcACHAJAApQCwAMQAzwDhAPAA8BH/APIx/wD0Uf8A9nH/APeR
+        /wD5sf8A+9H/AP///wAAAAAAGwAvAC0AUAA/AHAAUgCQAGMAsAB2AM8AiADwAJkR/wCmMf8AtFH/AMJx
+        /wDPkf8A3LH/AOvR/wD///8AAAAAAAgALwAOAFAAFQBwABsAkAAhALAAJgDPACwA8AA+Ef8AWDH/AHFR
+        /wCMcf8AppH/AL+x/wDa0f8A////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAcGCgAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAANGBkPCgAAAAAAAAAAAAAAAAA0MS4tLS4uLi4uLi4uMAlAFhcTCzMyMTQAAAAA
+        AAAAADFvb29vb29vb29vb29vPRBAFhcSHG9vMQAAAAAAAAAALm9vZ2dvb29vb29vb29vPRE/FhYOGm8x
+        AAAAAAAAAAAtb2dmZmZmZmZmZmZmZ29vPBE/FRQFbzUAAAAAAAAAAC1vZmZmZmZmZmZmZmZmZmdvPBE+
+        GzMkNwAAAAAAAAAALW9kY2RjY2NjY2NjY2NjZGVnOghTRSoBIgQfAAAAAAAtb2NjY2NjY2NjY2NjY2Nj
+        Y2RvZSBKREtbXlAeAAAAAC1vYmJiYmJiYmJiYmJiYmJiYmRvIU1ISAQdHiEAAAAALW9hYmFiYWJhYmFi
+        YWJhYmJhY28DUURHIgAAAAAAAAAtb2FhYWFhYWFhYWFhYWFhYWFiZx5SNzgkAAAAAAAAAC1vYGBgYGBg
+        YGBgYGBgYGBgYGFmJkpPMiYlJicAAAAALW9fX15fXl9eX15fXl9eX15gX2JOKU1cUVQ5KAAAAAAtb15e
+        Xl5eXl5eXl5eXl5eXl5eYGFSLyw2LDEAAAAAAC1vXV1dXV1dXV1dXV1dXV1dXV1dXmBvMQAAAAAAAAAA
+        LW9dXV1dXV1dXV1dXV1dXVxdXF1cXG8uAAAAAAAAAAAtb1tbW1tbW1tbW1tbW1tbW1xbXFtbby0AAAAA
+        AAAAAC1vWltaW1pbWltaW1tbW1pbWltaWlpvLQAAAAAAAAAALW9aWlpaWlpaWlpaWlpaWlpaWlpaWm8t
+        AAAAAAAAAAAtb1laWVlaWlpaWlpaWVpZWVlZWVlYby0AAAAAAAAAAC1vWFlZWVlZWVlZWVlZWGBvb29v
+        b29vLgAAAAAAAAAALW9YWFhYWVhZWFlYWFhXb0YrKysrKm8xAAAAAAAAAAAub1dXV1hXV1dXV1dXWFdv
+        K29mYltvWTYAAAAAAAAAAC5vVVdXV1dXV1dXV1dXVW8rZl9Zb1g1AAAAAAAAAAAALm9UVlZXVlZWVlZW
+        VlZVbythWm9XNQAAAAAAAAAAAAAub1RUVVVVVVVVVVVVVFRvK1tvVzUAAAAAAAAAAAAAAC5vUVJSUlJS
+        UlJSUlJSUW8qb1hBAAAAAAAAAAAAAAAAMW9vb29vb29vb29vb29vb29ZQQAAAAAAAAAAAAAAAABCMS4u
+        Li4uLi4uLi4uLi0uMUIAAAAAAAAAAAAAAAD/////////////D////wf/wAAAP8AAAD/AAAA/wAAAP8AA
+        AD/AAAAHwAAAA8AAAAPAAAAfwAAAH8AAAAPAAAADwAAAB8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AA
+        AD/AAAA/wAAAP8AAAH/AAAD/wAAB/8AAA//AAAf/wAAP/ygAAAAQAAAAIAAAAAEACAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAhH97ADh9uwA7gL4AYYqxAGuTtwA5hMAAPIXCAEKJxABClc0AS5nRAE6d
+        0gBSndIAVp/TAFKi1gB4ptQAfKjSAHyu0AB+rNcAhoKAAJCNiwCQjowAlJGPAJWSkACYlZIAmZeVAKGe
+        mwCin50ApKGfAKWlowCnp6QAqKakAKqppgCtrasArq6sALGvrACwsK0AtbOvALizrAC2s7AAtra0ALq2
+        sQC6ubcAvbq1ALq6uADAuK8Aw7+/AMm/uQCErtMAg63UAImx1ACp4PkAseP5ALLk+gDGxcMAy8nHAMrJ
+        yADMzMsAzs3MANHNzADT0tEA19XUANrY2ADl3NcA4N7eAODg3wDj4+IA5OTjAObl5ADo5+YA6efoAOnp
+        6ADs6+oA7OzrAOvr7ADv7+4A8fDvAPLx8AD28/EA8/TyAPT08wD29vUA+/bzAPn39QD6+fcA//v3AP/8
+        9wD6+PgA//76AP7+/gBb/1EAef9xAJj/kQC1/7EA1P/RAP///wAAAAAAFC8AACJQAAAwcAAAPZAAAEyw
+        AABZzwAAZ/AAAHj/EQCK/zEAnP9RAK7/cQDA/5EA0v+xAOT/0QD///8AAAAAACYvAABAUAAAWnAAAHSQ
+        AACOsAAAqc8AAMLwAADR/xEA2P8xAN7/UQDj/3EA6f+RAO//sQD2/9EA////AAAAAAAvJgAAUEEAAHBb
+        AACQdAAAsI4AAM+pAADwwwAA/9IRAP/YMQD/3VEA/+RxAP/qkQD/8LEA//bRAP///wAAAAAALxQAAFAi
+        AABwMAAAkD4AALBNAADPWwAA8GkAAP95EQD/ijEA/51RAP+vcQD/wZEA/9KxAP/l0QD///8AAAAAAC8D
+        AABQBAAAcAYAAJAJAACwCgAAzwwAAPAOAAD/IBIA/z4xAP9cUQD/enEA/5eRAP+2sQD/1NEA////AAAA
+        AAAvAA4AUAAXAHAAIQCQACsAsAA2AM8AQADwAEkA/xFaAP8xcAD/UYYA/3GcAP+RsgD/scgA/9HfAP//
+        /wAAAAAALwAgAFAANgBwAEwAkABiALAAeADPAI4A8ACkAP8RswD/Mb4A/1HHAP9x0QD/kdwA/7HlAP/R
+        8AD///8AAAAAACwALwBLAFAAaQBwAIcAkAClALAAxADPAOEA8ADwEf8A8jH/APRR/wD2cf8A95H/APmx
+        /wD70f8A////AAAAAAAbAC8ALQBQAD8AcABSAJAAYwCwAHYAzwCIAPAAmRH/AKYx/wC0Uf8AwnH/AM+R
+        /wDcsf8A69H/AP///wAAAAAACAAvAA4AUAAVAHAAGwCQACEAsAAmAM8ALADwAD4R/wBYMf8AcVH/AIxx
+        /wCmkf8Av7H/ANrR/wD///8AAAAAAAAAAAAAAAAAAAAAACwkIiEiJgUDAgQtJSwAAAAkX19fX18GDg0I
+        EF8lAAAAIl9ZWVlfBzUMDAcPKQAAACFfV1dUWDIJNQsKEisAAAAhX1FRUVRYMgkzES8BExcAIV9QUFBR
+        U1YwMT87PElGFSFfTU1NTU1OUlUnPjsUFhghX0tLS0xLS01RFz0uGQAAIV9ISUlJSUlJTRdAIxobHCFf
+        R0hIR0dPX186N0xBNx8hX0RFRUVEXzkgIDYfICoAIl9CQ0NDQl8eSV9KOgAAACJfQEBBQEFfHV9GOAAA
+        AAAkX19fX19fX19HOAAAAAAAKCQiIiIiISIkKAAAAAAAAP//AAAABwAAAAcAAAAHAAAABwAAAAEAAAAA
+        AAAAAAAAAAMAAAAAAAAAAAAAAAEAAAAHAAAADwAAAB8AAAA/AAA=
+</value>
+	</data>
+	<data name="$this.Location" type="System.Drawing.Point, System.Drawing">
+		<value>0, 0</value>
+	</data>
+	<data name="$this.Text" xml:space="preserve">
+    <value>Свойства пикета/точки:</value>
+  </data>
+	<data name="cmdPrev.ToolTip" xml:space="preserve">
+		<value>Предыдущая точка или объект</value>
+	</data>
+	<data name="cmdNext.ToolTip" xml:space="preserve">
+		<value>Следующая точка или объект</value>
+	</data>
+	<data name="lblScaleUM.Text" xml:space="preserve">
+		<value>м</value>
+	</data>
+	<data name="TabPage1.Text" xml:space="preserve">
+		<value>План</value>
+	</data>
+	<data name="TabPage2.Text" xml:space="preserve">
+		<value>Разрез</value>
+	</data>
+</root>

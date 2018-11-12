@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<data>
+  <item name="Dati generali">
+    <items data="Parent.Properties">
+      <item name="Nome" data="Parent.Name" />
+      <item name="N° catastale" data="Parent.ID" />
+      <item name="Descrizione" data="Parent.Description" />
+      <item name="Gruppi" data="Parent.Club" />
+    </items>
+  </item>
+  <item name="Cavità nel rilievo corrente">
+    <items data="Parent.Properties.CaveInfos">
+      <item name="Nome" data="Parent.Name" />
+      <item name="N° catastale" data="Parent.ID" />
+      <item name="Descrizione" data="Parent.Description" />
+
+      <item name="Sviluppo spaziale" data="Parent.GetSpeleometric.Length" />
+      <item name="Sviluppo planimetrico" data="Parent.GetSpeleometric.PlanimetricLength" />
+      <item name="Dislivello positivo" data="Parent.GetSpeleometric.PositiveVerticalRange" />
+      <item name="Dislivello negativo" data="Parent.GetSpeleometric.NegativeVerticalRange" />
+      <item name="Dislivello totale" data="Parent.GetSpeleometric.VerticalRange" />
+
+      <item name="Caposaldo ingresso" data="Parent.GetSpeleometric.EntranceStation" />
+      <item name="Latitudine" data="Parent.GetSpeleometric.EntranceCoordinate.Latitude" />
+      <item name="Longitudine" data="Parent.GetSpeleometric.EntranceCoordinate.Longitude" />
+      <item name="Altitudine" data="Parent.GetSpeleometric.EntranceCoordinate.Altitude" />
+    </items>
+  </item>
+</data>

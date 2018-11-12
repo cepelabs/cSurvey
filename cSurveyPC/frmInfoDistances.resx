@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pnlSurveyRing.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="chkSplays.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="chkSplays.Location" type="System.Drawing.Point, System.Drawing">
+    <value>320, 8</value>
+  </data>
+  <data name="chkSplays.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 17</value>
+  </data>
+  <data name="chkSplays.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="chkSplays.Text" xml:space="preserve">
+    <value>Splay</value>
+  </data>
+  <data name="&gt;&gt;chkSplays.Name" xml:space="preserve">
+    <value>chkSplays</value>
+  </data>
+  <data name="&gt;&gt;chkSplays.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkSplays.Parent" xml:space="preserve">
+    <value>pnlSurveyRing</value>
+  </data>
+  <data name="&gt;&gt;chkSplays.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cmdFilter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>289, 3</value>
+  </data>
+  <data name="cmdFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="cmdFilter.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;cmdFilter.Name" xml:space="preserve">
+    <value>cmdFilter</value>
+  </data>
+  <data name="&gt;&gt;cmdFilter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmdFilter.Parent" xml:space="preserve">
+    <value>pnlSurveyRing</value>
+  </data>
+  <data name="&gt;&gt;cmdFilter.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cmdRefresh.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdRefresh.Location" type="System.Drawing.Point, System.Drawing">
+    <value>633, 3</value>
+  </data>
+  <data name="cmdRefresh.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 25</value>
+  </data>
+  <data name="cmdRefresh.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="cmdRefresh.Text" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="cmdRefresh.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="&gt;&gt;cmdRefresh.Name" xml:space="preserve">
+    <value>cmdRefresh</value>
+  </data>
+  <data name="&gt;&gt;cmdRefresh.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmdRefresh.Parent" xml:space="preserve">
+    <value>pnlSurveyRing</value>
+  </data>
+  <data name="&gt;&gt;cmdRefresh.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtMaxDistance.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
+  <data name="txtMaxDistance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>117, 261</value>
+  </data>
+  <data name="txtMaxDistance.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="txtMaxDistance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>576, 26</value>
+  </data>
+  <data name="txtMaxDistance.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;txtMaxDistance.Name" xml:space="preserve">
+    <value>txtMaxDistance</value>
+  </data>
+  <data name="&gt;&gt;txtMaxDistance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtMaxDistance.Parent" xml:space="preserve">
+    <value>pnlSurveyRing</value>
+  </data>
+  <data name="&gt;&gt;txtMaxDistance.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblMaxDistance.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="lblMaxDistance.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblMaxDistance.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblMaxDistance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 261</value>
+  </data>
+  <data name="lblMaxDistance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 13</value>
+  </data>
+  <data name="lblMaxDistance.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="lblMaxDistance.Text" xml:space="preserve">
+    <value>Most distant stations:</value>
+  </data>
+  <data name="lblMaxDistance.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lblMaxDistance.Name" xml:space="preserve">
+    <value>lblMaxDistance</value>
+  </data>
+  <data name="&gt;&gt;lblMaxDistance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblMaxDistance.Parent" xml:space="preserve">
+    <value>pnlSurveyRing</value>
+  </data>
+  <data name="&gt;&gt;lblMaxDistance.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lblDistanceMode.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblDistanceMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblDistanceMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>422, 9</value>
+  </data>
+  <data name="lblDistanceMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 13</value>
+  </data>
+  <data name="lblDistanceMode.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="lblDistanceMode.Text" xml:space="preserve">
+    <value>Distance:</value>
+  </data>
+  <data name="lblDistanceMode.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lblDistanceMode.Name" xml:space="preserve">
+    <value>lblDistanceMode</value>
+  </data>
+  <data name="&gt;&gt;lblDistanceMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblDistanceMode.Parent" xml:space="preserve">
+    <value>pnlSurveyRing</value>
+  </data>
+  <data name="&gt;&gt;lblDistanceMode.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="cboDistanceMode.Items" xml:space="preserve">
+    <value>Planimetric</value>
+  </data>
+  <data name="cboDistanceMode.Items1" xml:space="preserve">
+    <value>Drop</value>
+  </data>
+  <data name="cboDistanceMode.Items2" xml:space="preserve">
+    <value>Real</value>
+  </data>
+  <data name="cboDistanceMode.Items3" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="cboDistanceMode.Items4" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="cboDistanceMode.Items5" xml:space="preserve">
+    <value>Z</value>
+  </data>
+  <data name="cboDistanceMode.Items6" xml:space="preserve">
+    <value>To surface (vertically)</value>
+  </data>
+  <data name="cboDistanceMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>482, 6</value>
+  </data>
+  <data name="cboDistanceMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 21</value>
+  </data>
+  <data name="cboDistanceMode.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cboDistanceMode.Name" xml:space="preserve">
+    <value>cboDistanceMode</value>
+  </data>
+  <data name="&gt;&gt;cboDistanceMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboDistanceMode.Parent" xml:space="preserve">
+    <value>pnlSurveyRing</value>
+  </data>
+  <data name="&gt;&gt;cboDistanceMode.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="txtFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>84, 6</value>
+  </data>
+  <data name="txtFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 21</value>
+  </data>
+  <data name="txtFilter.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtFilter.Name" xml:space="preserve">
+    <value>txtFilter</value>
+  </data>
+  <data name="&gt;&gt;txtFilter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtFilter.Parent" xml:space="preserve">
+    <value>pnlSurveyRing</value>
+  </data>
+  <data name="&gt;&gt;txtFilter.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="Label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 9</value>
+  </data>
+  <data name="Label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 13</value>
+  </data>
+  <data name="Label4.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="Label4.Text" xml:space="preserve">
+    <value>Filter by:</value>
+  </data>
+  <data name="Label4.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;Label4.Name" xml:space="preserve">
+    <value>Label4</value>
+  </data>
+  <data name="&gt;&gt;Label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label4.Parent" xml:space="preserve">
+    <value>pnlSurveyRing</value>
+  </data>
+  <data name="&gt;&gt;Label4.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="grdSurveyDistances.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <metadata name="mnuSurveyDistances.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="mnuSurveyDistances.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="mnuSurveyDistancesCopy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 22</value>
+  </data>
+  <data name="mnuSurveyDistancesCopy.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="mnuSurveyDistancesCopyAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 22</value>
+  </data>
+  <data name="mnuSurveyDistancesCopyAll.Text" xml:space="preserve">
+    <value>Copy all</value>
+  </data>
+  <data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 6</value>
+  </data>
+  <data name="mnuSurveyDistancesExport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 22</value>
+  </data>
+  <data name="mnuSurveyDistancesExport.Text" xml:space="preserve">
+    <value>Export...</value>
+  </data>
+  <data name="ToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 6</value>
+  </data>
+  <data name="mnuSurveyDistancesRefresh.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 22</value>
+  </data>
+  <data name="mnuSurveyDistancesRefresh.Text" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="mnuSurveyDistances.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 104</value>
+  </data>
+  <data name="&gt;&gt;mnuSurveyDistances.Name" xml:space="preserve">
+    <value>mnuSurveyDistances</value>
+  </data>
+  <data name="&gt;&gt;mnuSurveyDistances.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="grdSurveyDistances.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 33</value>
+  </data>
+  <data name="grdSurveyDistances.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>64</value>
+  </data>
+  <data name="grdSurveyDistances.Size" type="System.Drawing.Size, System.Drawing">
+    <value>695, 222</value>
+  </data>
+  <data name="grdSurveyDistances.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;grdSurveyDistances.Name" xml:space="preserve">
+    <value>grdSurveyDistances</value>
+  </data>
+  <data name="&gt;&gt;grdSurveyDistances.Type" xml:space="preserve">
+    <value>cSurveyPC.cGrid, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;grdSurveyDistances.Parent" xml:space="preserve">
+    <value>pnlSurveyRing</value>
+  </data>
+  <data name="&gt;&gt;grdSurveyDistances.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="pnlSurveyRing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 10</value>
+  </data>
+  <data name="pnlSurveyRing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>713, 290</value>
+  </data>
+  <data name="pnlSurveyRing.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="&gt;&gt;pnlSurveyRing.Name" xml:space="preserve">
+    <value>pnlSurveyRing</value>
+  </data>
+  <data name="&gt;&gt;pnlSurveyRing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlSurveyRing.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlSurveyRing.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cmdClose.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="cmdClose.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdClose.Location" type="System.Drawing.Point, System.Drawing">
+    <value>645, 306</value>
+  </data>
+  <data name="cmdClose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 25</value>
+  </data>
+  <data name="cmdClose.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="cmdClose.Text" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="&gt;&gt;cmdClose.Name" xml:space="preserve">
+    <value>cmdClose</value>
+  </data>
+  <data name="&gt;&gt;cmdClose.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmdClose.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdClose.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>737, 341</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAACOJxgAmi8cAKozHACWLyAAmjckAKY7KAC2NyAAqkMsALZDLACqQ
+        zAAskcwAMZXOADyXzQAss+wANrftADm37AA3uO0APrntAG2v1gBCreEAQbruAES77QBDve8ARrzuAEm9
+        7gBOvu4AWLXlAFC/7wBKv/EATL/wAFC/8ABSwO8AVcDvAE3A8ABSwfAAVcHwAFfE8gBZwvAAXMPwAFnE
+        8QBdxPEAXsf0AGvB6wBhxfEAZcbyAGXI8gBhyPQAZcn0AGnI8gBtyvIAbszzAGnJ9ABqzPUAbs30AHHM
+        8wB1zfMAcc31AHbO9AB5z/QAc9D2AHTQ9gB60fUAfdD1AIHJ7ACFy+0AicztAI3O7wCS0e8AgNP3AILU
+        +ACF1vgAidr7AJXS8ACW1PAAmtTwAJ7W8QCa3PkAnN34AKHY8gCl2vIAqdvzAKvc8wCt3fMAqt30AKLe
+        +ACf4fsAn+H8AKHh+gCl4voAoeL8AKTj/QCo4/sAtf+xANT/0QD///8AAAAAABQvAAAiUAAAMHAAAD2Q
+        AABMsAAAWc8AAGfwAAB4/xEAiv8xAJz/UQCu/3EAwP+RANL/sQDk/9EA////AAAAAAAmLwAAQFAAAFpw
+        AAB0kAAAjrAAAKnPAADC8AAA0f8RANj/MQDe/1EA4/9xAOn/kQDv/7EA9v/RAP///wAAAAAALyYAAFBB
+        AABwWwAAkHQAALCOAADPqQAA8MMAAP/SEQD/2DEA/91RAP/kcQD/6pEA//CxAP/20QD///8AAAAAAC8U
+        AABQIgAAcDAAAJA+AACwTQAAz1sAAPBpAAD/eREA/4oxAP+dUQD/r3EA/8GRAP/SsQD/5dEA////AAAA
+        AAAvAwAAUAQAAHAGAACQCQAAsAoAAM8MAADwDgAA/yASAP8+MQD/XFEA/3pxAP+XkQD/trEA/9TRAP//
+        /wAAAAAALwAOAFAAFwBwACEAkAArALAANgDPAEAA8ABJAP8RWgD/MXAA/1GGAP9xnAD/kbIA/7HIAP/R
+        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
+</value>
+  </data>
+  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Station distances:</value>
+  </data>
+  <data name="&gt;&gt;mnuSurveyDistancesCopy.Name" xml:space="preserve">
+    <value>mnuSurveyDistancesCopy</value>
+  </data>
+  <data name="&gt;&gt;mnuSurveyDistancesCopy.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mnuSurveyDistancesCopyAll.Name" xml:space="preserve">
+    <value>mnuSurveyDistancesCopyAll</value>
+  </data>
+  <data name="&gt;&gt;mnuSurveyDistancesCopyAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem1.Name" xml:space="preserve">
+    <value>ToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mnuSurveyDistancesExport.Name" xml:space="preserve">
+    <value>mnuSurveyDistancesExport</value>
+  </data>
+  <data name="&gt;&gt;mnuSurveyDistancesExport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem2.Name" xml:space="preserve">
+    <value>ToolStripMenuItem2</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mnuSurveyDistancesRefresh.Name" xml:space="preserve">
+    <value>mnuSurveyDistancesRefresh</value>
+  </data>
+  <data name="&gt;&gt;mnuSurveyDistancesRefresh.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmInfoDistances</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+</root>

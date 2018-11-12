@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="cHolosItemEdit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ht="clr-namespace:HelixToolkit.Wpf;assembly=HelixToolkit.Wpf" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ht:LinearConverter x:Key="Multiplier" M="0.5"/>
+    </UserControl.Resources>
+    <DockPanel>
+            <StatusBar DockPanel.Dock="Bottom">
+                <TextBlock Text="{Binding Value, ElementName=planeManipulator, StringFormat='{}{0:0.000}'}"/>
+            </StatusBar>
+
+        <ht:HelixViewport3D Name="mainViewport" ShowCoordinateSystem="True" Camera="{ht:PerspectiveCamera 0,-10,10}" ZoomExtentsWhenLoaded="True">
+            <ht:SunLight/>
+
+            <ht:CubeVisual3D x:Name="cube_station1" Transform="{ht:Translate 0,-3,0}" Fill="#B2CD7F32"/>
+            <ht:CombinedManipulator CanRotateX="false" CanRotateY="false" CanRotateZ="False" TargetTransform="{Binding Transform, ElementName=cube_station1}"/>
+
+            <ht:CubeVisual3D x:Name="cube_station2" Transform="{ht:Translate 0,+3,0}" Fill="#B2CD7F32"/>
+            <ht:CombinedManipulator CanRotateX="false" CanRotateY="False" CanRotateZ="False" TargetTransform="{Binding Transform, ElementName=cube_station2}"/>
+
+            <ht:CubeVisual3D x:Name="cube_station3" Transform="{ht:Translate 0,0,0}" Fill="#B2C0C0C0"/>
+            <ht:CombinedManipulator CanRotateX="false" CanRotateY="true" CanRotateZ="False" CanTranslateX="False" CanTranslateY="False" CanTranslateZ="False" TargetTransform="{Binding Transform, ElementName=cube_station3}"/>
+        </ht:HelixViewport3D>
+        </DockPanel>
+</UserControl>

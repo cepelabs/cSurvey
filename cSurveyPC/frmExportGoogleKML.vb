@@ -1,0 +1,37 @@
+﻿Public Class frmExportGoogleKML
+
+    Private Sub pSettingsLoad()
+        Try
+            Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
+            chkExportWaypoint.Checked = oReg.GetValue("data.export.googlekml.waypoint", "1")
+            chkExportTrack.Checked = oReg.GetValue("data.export.googlekml.track", "0")
+            chkExportCaveBorders.Checked = oReg.GetValue("data.export.googlekml.caveborders", "0")
+            Call oReg.Close()
+            Call oReg.Dispose()
+        Catch
+        End Try
+    End Sub
+
+    Private Sub pSettingsSave()
+        Try
+            Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
+            Call oReg.SetValue("data.export.googlekml.waypoint", IIf(chkExportWaypoint.Checked, "1", "0"))
+            Call oReg.SetValue("data.export.googlekml.track", IIf(chkExportTrack.Checked, "1", "0"))
+            Call oReg.SetValue("data.export.googlekml.caveborders", IIf(chkExportCaveBorders.Checked, "1", "0"))
+            Call oReg.Close()
+            Call oReg.Dispose()
+        Catch
+        End Try
+    End Sub
+
+    Public Sub New()
+        ' Chiamata richiesta dalla finestra di progettazione.
+        InitializeComponent()
+        ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
+        Call pSettingsLoad()
+    End Sub
+
+    Private Sub cmdOk_Click(sender As System.Object, e As System.EventArgs) Handles cmdOk.Click
+        Call pSettingsSave()
+    End Sub
+End Class

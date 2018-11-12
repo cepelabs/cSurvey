@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FTTLib</name>
+    </assembly>
+    <members>
+        <member name="T:FTTLib.FileCategory">
+            <summary>
+            File Category enumerator for generalized file type identification
+            </summary>
+        </member>
+        <member name="F:FTTLib.FileCategory.Archive">
+            <summary>
+            Any file that can be extracted into several files
+            </summary>
+        </member>
+        <member name="F:FTTLib.FileCategory.Audio">
+            <summary>
+            Any file that can only contain an audio stream
+            </summary>
+        </member>
+        <member name="F:FTTLib.FileCategory.Binary">
+            <summary>
+            Any file that is unclassified or does not have a text representation
+            </summary>
+        </member>
+        <member name="F:FTTLib.FileCategory.Code">
+            <summary>
+            Any file that contains instructions that are compilable or machine-readable
+            </summary>
+        </member>
+        <member name="F:FTTLib.FileCategory.Document">
+            <summary>
+            Any file that is designed for conveying structured information between people
+            </summary>
+        </member>
+        <member name="F:FTTLib.FileCategory.Image">
+            <summary>
+            Any file that can only contain a single image or series of images
+            </summary>
+        </member>
+        <member name="F:FTTLib.FileCategory.PDF">
+            <summary>
+            Any file that is considered a document archive format
+            </summary>
+        </member>
+        <member name="F:FTTLib.FileCategory.Presentation">
+            <summary>
+            Any file that is designed for electronic presentations consisting of a series of separate pages or slides
+            </summary>
+        </member>
+        <member name="F:FTTLib.FileCategory.Spreadsheet">
+            <summary>
+            Any file in which data is arranged in rows and columns and can be manipulated and used in calculations
+            </summary>
+        </member>
+        <member name="F:FTTLib.FileCategory.Text">
+            <summary>
+            Any file that is not classified under another category and is not binary
+            </summary>
+        </member>
+        <member name="F:FTTLib.FileCategory.Video">
+            <summary>
+            Any file that is designed to be a container for a video stream
+            </summary>
+        </member>
+        <member name="T:FTTLib.FTT">
+            <summary>
+            Methods for translating between mime-types and file extensions
+            </summary>
+        </member>
+        <member name="M:FTTLib.FTT.GetMimeType(System.String)">
+            <summary>
+            Returns the mime type for the given file name
+            </summary>
+            <param name="fileName">A file name, file extension or file path specification</param>
+            <returns></returns>
+        </member>
+        <member name="M:FTTLib.FTT.GetMimeTypeFileExtensions(System.String)">
+            <summary>
+            Returns a list of possible file extensions for the given mime type
+            </summary>
+            <param name="mimeType">A mime type</param>
+            <returns></returns>
+        </member>
+        <member name="M:FTTLib.FTT.GetFileCategory(System.String)">
+            <summary>
+            Returns a file category for the given file name
+            </summary>
+            <param name="fileName">A file name, file extension or file path specification</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

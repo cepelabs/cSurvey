@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+	<data name="Label4.Size" type="System.Drawing.Size, System.Drawing">
+		<value>74, 13</value>
+	</data>
+	<data name="Label4.Text" xml:space="preserve">
+    <value>Средняя ошибка:</value>
+  </data>
+	<data name="Selected.HeaderText" xml:space="preserve">
+    <value>Выбрать</value>
+  </data>
+	<data name="colTrigPointsStation0.HeaderText" xml:space="preserve">
+    <value>Пикет</value>
+  </data>
+	<data name="colTrigPointsStation0.ToolTipText" xml:space="preserve">
+    <value>Референс пикет кольца</value>
+  </data>
+	<data name="colError.HeaderText" xml:space="preserve">
+    <value>Ошибка %</value>
+  </data>
+	<data name="colError.ToolTipText" xml:space="preserve">
+    <value>Ошибка в процентах</value>
+  </data>
+	<data name="colErrAbs.HeaderText" xml:space="preserve">
+    <value>Линейная ошибка</value>
+  </data>
+	<data name="colErrAbs.ToolTipText" xml:space="preserve">
+    <value>Линейная ошибка</value>
+  </data>
+	<data name="colErrX.ToolTipText" xml:space="preserve">
+    <value>Невязка по оси X</value>
+  </data>
+	<data name="colErrY.ToolTipText" xml:space="preserve">
+    <value>Невязка по оси Y</value>
+  </data>
+	<data name="colErrZ.ToolTipText" xml:space="preserve">
+    <value>Невязка по оси Z</value>
+  </data>
+	<data name="colRingLen.HeaderText" xml:space="preserve">
+    <value>Длинна</value>
+  </data>
+	<data name="colRingLen.ToolTipText" xml:space="preserve">
+    <value>Длинна кольца</value>
+  </data>
+	<data name="colTrigPoints.HeaderText" xml:space="preserve">
+    <value>Кол-во пикетов</value>
+  </data>
+	<data name="colTrigPoints.ToolTipText" xml:space="preserve">
+    <value>Количество пикетов в кольце</value>
+  </data>
+	<data name="colTrigPointsList.HeaderText" xml:space="preserve">
+    <value>Пикеты</value>
+  </data>
+	<data name="colTrigPointsList.ToolTipText" xml:space="preserve">
+    <value>Номера пикетов</value>
+  </data>
+	<data name="Colore.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+	<data name="mnuInfoRing.Size" type="System.Drawing.Size, System.Drawing">
+		<value>150, 148</value>
+	</data>
+	<data name="mnuInfoRingCopy.Size" type="System.Drawing.Size, System.Drawing">
+		<value>149, 22</value>
+	</data>
+	<data name="mnuInfoRingCopy.Text" xml:space="preserve">
+    <value>Копировать</value>
+  </data>
+	<data name="mnuInfoRingCopyAll.Size" type="System.Drawing.Size, System.Drawing">
+		<value>149, 22</value>
+	</data>
+	<data name="mnuInfoRingCopyAll.Text" xml:space="preserve">
+    <value>Копировать все</value>
+  </data>
+	<data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+		<value>146, 6</value>
+	</data>
+	<data name="mnuInfoRingSelectAll.Size" type="System.Drawing.Size, System.Drawing">
+		<value>149, 22</value>
+	</data>
+	<data name="mnuInfoRingSelectAll.Text" xml:space="preserve">
+    <value>Выбрать все</value>
+  </data>
+	<data name="mnuInfoRingDeselectAll.Size" type="System.Drawing.Size, System.Drawing">
+		<value>149, 22</value>
+	</data>
+	<data name="mnuInfoRingDeselectAll.Text" xml:space="preserve">
+    <value>Отменить все</value>
+  </data>
+	<data name="mnuInfoRingRevertSelect.Size" type="System.Drawing.Size, System.Drawing">
+		<value>149, 22</value>
+	</data>
+	<data name="mnuInfoRingRevertSelect.Text" xml:space="preserve">
+    <value>Обратить выбор</value>
+  </data>
+	<data name="ToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
+		<value>146, 6</value>
+	</data>
+	<data name="mnuInfoRingColor.Size" type="System.Drawing.Size, System.Drawing">
+		<value>149, 22</value>
+	</data>
+	<data name="mnuInfoRingColor.Text" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+	<data name="mnuInfoRingColorBrowse.Size" type="System.Drawing.Size, System.Drawing">
+		<value>152, 22</value>
+	</data>
+	<data name="mnuInfoRingColorBrowse.Text" xml:space="preserve">
+    <value>Обзор...</value>
+  </data>
+	<data name="ToolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
+		<value>149, 6</value>
+	</data>
+	<data name="mnuInfoRingColorReset.Size" type="System.Drawing.Size, System.Drawing">
+		<value>152, 22</value>
+	</data>
+	<data name="mnuInfoRingColorReset.Text" xml:space="preserve">
+    <value>Сброс</value>
+  </data>
+	<data name="cmdApply.Text" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+	<data name="cmdCancel.Text" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+	<data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+		<value>
+        AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAALJ5PgCzekAAs3xCALR8QwCyfEUAtH5GALV/SAC2gEcAtYBIALOC
+        TwC5hU0AsoNSALWFUgC7h1AAu4hSALqIVAC+i1QAs4ZaALSIWgC2i10Av41ZALmNXwCyimEAsY1oALSO
+        aQC+kWMAvpJkALSQawC+lWsAtZRzALaWdQC5lHAAwI5XAMCOWgDAj1wAwpBbAMKRXQDElWIAxZZlAMeY
+        ZwDHmGgAypttAMqcbQDLnnAAwp14AM2jdQDPpHYAx6J7AMaifgDQpnoA1q59ANiwfgC0oY4AuaaSAMml
+        gADMq4oAzq2MANaugADYsIIA2rWJANy2iADfu4wA37yTAN+9mgDgu4cA4LuIAOG8igDiv4wA48COAOTA
+        jQDkwZEA5sSSAOXDlADmxJYA5MOYAObFmQDiw58A6MaaAOnImgDoyJ0A48OgAOPEoQDkxqQA6sqgAOvM
+        ogDszaIA682kAOzNpQDqy6oA6syqAO3PqADozK0A7dCpAO7SrQDw1K4A7NGyAO/UsQDv1LgA8NWyAPHW
+        tQDx2LcA8tm5APTbuwD03LkA8tm+APTbvAD03L0A9d7BAPfgwQD24MUA+ODCAPjhxgD44sgA+eTJAPnl
+        zQD8584A/OjPAPvn0QD86NAA/evVAP7s1gD+7dkA/+/dAP/x3gD/8uAA9v/RAP///wAAAAAALyYAAFBB
+        AABwWwAAkHQAALCOAADPqQAA8MMAAP/SEQD/2DEA/91RAP/kcQD/6pEA//CxAP/20QD///8AAAAAAC8U
+        AABQIgAAcDAAAJA+AACwTQAAz1sAAPBpAAD/eREA/4oxAP+dUQD/r3EA/8GRAP/SsQD/5dEA////AAAA
+        AAAvAwAAUAQAAHAGAACQCQAAsAoAAM8MAADwDgAA/yASAP8+MQD/XFEA/3pxAP+XkQD/trEA/9TRAP//
+        /wAAAAAALwAOAFAAFwBwACEAkAArALAANgDPAEAA8ABJAP8RWgD/MXAA/1GGAP9xnAD/kbIA/7HIAP/R
+        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
+</value>
+	</data>
+	<data name="$this.Text" xml:space="preserve">
+    <value>Кольца:</value>
+  </data>
+	<data name="cmdOk.Text" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+	<data name="colErrX.HeaderText" xml:space="preserve">
+    <value>X</value>
+  </data>
+	<data name="colErrY.HeaderText" xml:space="preserve">
+    <value>Y</value>
+  </data>
+	<data name="colErrZ.HeaderText" xml:space="preserve">
+    <value>Z</value>
+  </data>
+	<data name="mnuInfoRingExport.Text" xml:space="preserve">
+    <value>Экспорт...</value>
+  </data>
+</root>

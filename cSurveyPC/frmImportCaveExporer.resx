@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="txtPrefix.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 9pt, style=Bold</value>
+  </data>
+  <data name="txtPrefix.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 40</value>
+  </data>
+  <data name="txtPrefix.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 22</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="txtPrefix.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <metadata name="tipDefault.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="txtPrefix.ToolTip" xml:space="preserve">
+    <value>Prefix that will be added to all stations names</value>
+  </data>
+  <data name="&gt;&gt;txtPrefix.Name" xml:space="preserve">
+    <value>txtPrefix</value>
+  </data>
+  <data name="&gt;&gt;txtPrefix.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPrefix.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPrefix.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lblPrefix.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblPrefix.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPrefix.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 44</value>
+  </data>
+  <data name="lblPrefix.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 13</value>
+  </data>
+  <data name="lblPrefix.TabIndex" type="System.Int32, mscorlib">
+    <value>62</value>
+  </data>
+  <data name="lblPrefix.Text" xml:space="preserve">
+    <value>Prefix:</value>
+  </data>
+  <data name="&gt;&gt;lblPrefix.Name" xml:space="preserve">
+    <value>lblPrefix</value>
+  </data>
+  <data name="&gt;&gt;lblPrefix.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPrefix.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPrefix.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="txtFilename.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 9pt, style=Bold</value>
+  </data>
+  <data name="txtFilename.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 12</value>
+  </data>
+  <data name="txtFilename.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 22</value>
+  </data>
+  <data name="txtFilename.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="txtFilename.ToolTip" xml:space="preserve">
+    <value>CaveExplorer file name</value>
+  </data>
+  <data name="&gt;&gt;txtFilename.Name" xml:space="preserve">
+    <value>txtFilename</value>
+  </data>
+  <data name="&gt;&gt;txtFilename.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtFilename.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtFilename.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lblFilename.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblFilename.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblFilename.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 16</value>
+  </data>
+  <data name="lblFilename.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="lblFilename.TabIndex" type="System.Int32, mscorlib">
+    <value>65</value>
+  </data>
+  <data name="lblFilename.Text" xml:space="preserve">
+    <value>File:</value>
+  </data>
+  <data name="&gt;&gt;lblFilename.Name" xml:space="preserve">
+    <value>lblFilename</value>
+  </data>
+  <data name="&gt;&gt;lblFilename.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblFilename.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblFilename.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cmdCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="cmdCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>225, 221</value>
+  </data>
+  <data name="cmdCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 25</value>
+  </data>
+  <data name="cmdCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="cmdCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;cmdCancel.Name" xml:space="preserve">
+    <value>cmdCancel</value>
+  </data>
+  <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cmdOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="cmdOk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>139, 221</value>
+  </data>
+  <data name="cmdOk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 25</value>
+  </data>
+  <data name="cmdOk.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="cmdOk.Text" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="&gt;&gt;cmdOk.Name" xml:space="preserve">
+    <value>cmdOk</value>
+  </data>
+  <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtCaveName.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 9pt, style=Bold</value>
+  </data>
+  <data name="txtCaveName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 68</value>
+  </data>
+  <data name="txtCaveName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 22</value>
+  </data>
+  <data name="txtCaveName.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="txtCaveName.ToolTip" xml:space="preserve">
+    <value>Cave name (leave empty if you want to import the name set in CaveExplorer file)</value>
+  </data>
+  <data name="&gt;&gt;txtCaveName.Name" xml:space="preserve">
+    <value>txtCaveName</value>
+  </data>
+  <data name="&gt;&gt;txtCaveName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCaveName.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtCaveName.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblCaveName.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblCaveName.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblCaveName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblCaveName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 72</value>
+  </data>
+  <data name="lblCaveName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 13</value>
+  </data>
+  <data name="lblCaveName.TabIndex" type="System.Int32, mscorlib">
+    <value>68</value>
+  </data>
+  <data name="lblCaveName.Text" xml:space="preserve">
+    <value>Cave:</value>
+  </data>
+  <data name="&gt;&gt;lblCaveName.Name" xml:space="preserve">
+    <value>lblCaveName</value>
+  </data>
+  <data name="&gt;&gt;lblCaveName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCaveName.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblCaveName.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>317, 258</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB5KwAAfC8AAH81AACAOQAAgz4AAIU+AACGRgAAiEYAAIlJAACM
+        SgAAjk0AHJRdAACecQA8mGgAAKJxAAClcQAAonUAAKx3AACoegAAq30AAK9/AEOYbgBJqX0ATKx+AFGp
+        ewBRq34AUK1/AAC3hwAAuJgAALyYAE6vgwBRrYEAV7eJAADBmQAAxpoAAMqZAADPmQAAyJ0AANSbAADg
+        oQAP56wAEuitACzjswAv47UASeO+AEzkwABr5coAbOXKAKWlogCnp6QAra2rAK6urACwr60AsLCtALSw
+        rwCzs7IAtbCwALS0sgDFs7gAx7W5AIDr2ACJ794Al+XfAJzn3gCX6twAnejdAJzs3wCh6+AAwsLBAMXF
+        xADLy8oA4N/eAOHg3wDi4eAA5OPiAOXk4wDm5uUA6OjnAOrp6ADs6+sA7u3tAPHw7wDy8fEA9PLzAPT0
+        8wD19fUA+Pf3APr3+AD6+fkA/fr6AP76/AD7/PwA/v7+ANT/0QD///8AAAAAABQvAAAiUAAAMHAAAD2Q
+        AABMsAAAWc8AAGfwAAB4/xEAiv8xAJz/UQCu/3EAwP+RANL/sQDk/9EA////AAAAAAAmLwAAQFAAAFpw
+        AAB0kAAAjrAAAKnPAADC8AAA0f8RANj/MQDe/1EA4/9xAOn/kQDv/7EA9v/RAP///wAAAAAALyYAAFBB
+        AABwWwAAkHQAALCOAADPqQAA8MMAAP/SEQD/2DEA/91RAP/kcQD/6pEA//CxAP/20QD///8AAAAAAC8U
+        AABQIgAAcDAAAJA+AACwTQAAz1sAAPBpAAD/eREA/4oxAP+dUQD/r3EA/8GRAP/SsQD/5dEA////AAAA
+        AAAvAwAAUAQAAHAGAACQCQAAsAoAAM8MAADwDgAA/yASAP8+MQD/XFEA/3pxAP+XkQD/trEA/9TRAP//
+        /wAAAAAALwAOAFAAFwBwACEAkAArALAANgDPAEAA8ABJAP8RWgD/MXAA/1GGAP9xnAD/kbIA/7HIAP/R
+        3wD///8AAAAAAC8AIABQADYAcABMAJAAYgCwAHgAzwCOAPAApAD/EbMA/zG+AP9RxwD/cdEA/5HcAP+x
+        5QD/0fAA////AAAAAAAsAC8ASwBQAGkAcACHAJAApQCwAMQAzwDhAPAA8BH/APIx/wD0Uf8A9nH/APeR
+        /wD5sf8A+9H/AP///wAAAAAAGwAvAC0AUAA/AHAAUgCQAGMAsAB2AM8AiADwAJkR/wCmMf8AtFH/AMJx
+        /wDPkf8A3LH/AOvR/wD///8AAAAAAAgALwAOAFAAFQBwABsAkAAhALAAJgDPACwA8AA+Ef8AWDH/AHFR
+        /wCMcf8AppH/AL+x/wDa0f8A////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgkICQkJCQwAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAGKSgoKCgqCQAAAAAAAAA4NjQ0NDQ0NDQ0MzQ0NDY5PAQrJycnJywHAAAA
+        AAAAADZfX19fX19fX19fX19fX19fBC0lJSUlLgcAAAAAAAAANF9fX19fX19fX11fX18BAwQEMCQkJCQw
+        BQgKCwAAAAAzX11cXFxcXFxcXFxdXx8SPSYmIyMmJiMmPhwXAAAAADNfXFxcXFxcXFxcXFxfXyAQQSIi
+        IiIiIkMVGgAAAAAAM19ZWVlZWVlZWVlZWVxdXyAQQh4eHh5EFBoAAAAAAAAzX1lXWVdZV1lXWVdZV1pb
+        XxsPQh0dQhMZAAAAAAAAADNfV1dXV1dXV1dXV1dXV1hbXxsNPz8RFgAAAAAAAAAAM19WV1ZXVldWV1ZX
+        VldWV1dbXxgCAiE8AAAAAAAAAAAzX1ZWVlZWVlZWVlZWVlZWVldZW19fXzcAAAAAAAAAADNfVVVVVVVV
+        VVVVVVVVVVVVVVVWV1ZfNAAAAAAAAAAAM19UVFNUU1RTVFNUU1RTVFNUU1RTVF8zAAAAAAAAAAAzX1NT
+        U1NTU1NTU1NTU1NTU1NTU1NTXzMAAAAAAAAAADNfUlJSUlJSUlJSUlJSUlJSUlJSUlJfMwAAAAAAAAAA
+        M19SUlJSUlJSUlJSUlJSUlJSUlJSUV8zAAAAAAAAAAAzX1FRUVFRUVFRUVFRUVFRUVFRUVFRXzMAAAAA
+        AAAAADNfUFFQUVFQUVBRUFFQUVBRUVFQUVBfMwAAAAAAAAAAM19QUFBQUFBQUFBQUFBQUFBQUFBQUF8z
+        AAAAAAAAAAAzX09QT09QUFBQUFBQUFBPT09PT05OXzMAAAAAAAAAADNfTk9PT09PT09PT09PTlRfX19f
+        X19fNAAAAAAAAAAAM19OTk5OT05PTk9OTk5NX0cyMjIyMV81AAAAAAAAAAA0X01NTU5NTU1NTU1NTk1f
+        Ml9cVlFfTzoAAAAAAAAAADRfS01NTU1NTU1NTU1NS18yXFRPX046AAAAAAAAAAAANF9KTExNTExMTExM
+        TExLXzJWUF9NOgAAAAAAAAAAAAA0X0pKS0tLS0tLS0tLSkpfMlFfTToAAAAAAAAAAAAAADRfSElJSUlJ
+        SUlJSUlJSF8xX05FAAAAAAAAAAAAAAAANV9fX19fX19fX19fX19fX19PRQAAAAAAAAAAAAAAAABGNjQ0
+        NDQ0NDQ0NDQ0NDM0NUYAAAAAAAAAAAAAAAD/////////////4B///+AfwAAAH8AAAB/AAAADwAAAA8AA
+        AAfAAAAPwAAAH8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AA
+        AD/AAAA/wAAAP8AAAH/AAAD/wAAB/8AAA//AAAf/wAAP/ygAAAAQAAAAIAAAAAEACAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAHkrAAB6LQAAfC8AAH82AACCOgAAh0EAAIhFAACKSQAAjEoAEJJWABiR
+        WQAArnoAALF/AECgdAAAuJsAAL6bAAC5nQAAvp0ATbCDAADInwAAwaAAAMigAADfpgBy1r8AQOu/AKWl
+        owCnp6QAra2rAK6urACwrq0AsLCtALWxsQC2trQAurq4AMCytgCE18QAg9zKAI7bywCW39AAysrIAODf
+        3gDh4N8A2vDlAOPj4gDk5OMA5uXkAOjn5gDp6egA7OrpAO3s6wDv7+4A8O/vAPLx8AD18vIA8/TyAPT0
+        8wD29fUA+/X2APn4+AD9+PkA/vr9AP7+/gD///8AAAAAAAAvDgAAUBgAAHAiAACQLAAAsDYAAM9AAADw
+        SgAR/1sAMf9xAFH/hwBx/50Akf+yALH/yQDR/98A////AAAAAAACLwAABFAAAAZwAAAIkAAACrAAAAvP
+        AAAO8AAAIP8SAD3/MQBb/1EAef9xAJj/kQC1/7EA1P/RAP///wAAAAAAFC8AACJQAAAwcAAAPZAAAEyw
+        AABZzwAAZ/AAAHj/EQCK/zEAnP9RAK7/cQDA/5EA0v+xAOT/0QD///8AAAAAACYvAABAUAAAWnAAAHSQ
+        AACOsAAAqc8AAMLwAADR/xEA2P8xAN7/UQDj/3EA6f+RAO//sQD2/9EA////AAAAAAAvJgAAUEEAAHBb
+        AACQdAAAsI4AAM+pAADwwwAA/9IRAP/YMQD/3VEA/+RxAP/qkQD/8LEA//bRAP///wAAAAAALxQAAFAi
+        AABwMAAAkD4AALBNAADPWwAA8GkAAP95EQD/ijEA/51RAP+vcQD/wZEA/9KxAP/l0QD///8AAAAAAC8D
+        AABQBAAAcAYAAJAJAACwCgAAzwwAAPAOAAD/IBIA/z4xAP9cUQD/enEA/5eRAP+2sQD/1NEA////AAAA
+        AAAvAA4AUAAXAHAAIQCQACsAsAA2AM8AQADwAEkA/xFaAP8xcAD/UYYA/3GcAP+RsgD/scgA/9HfAP//
+        /wAAAAAALwAgAFAANgBwAEwAkABiALAAeADPAI4A8ACkAP8RswD/Mb4A/1HHAP9x0QD/kdwA/7HlAP/R
+        8AD///8AAAAAACwALwBLAFAAaQBwAIcAkAClALAAxADPAOEA8ADwEf8A8jH/APRR/wD2cf8A95H/APmx
+        /wD70f8A////AAAAAAAbAC8ALQBQAD8AcABSAJAAYwCwAHYAzwCIAPAAmRH/AKYx/wC0Uf8AwnH/AM+R
+        /wDcsf8A69H/AP///wAAAAAACAAvAA4AUAAVAHAAGwCQACEAsAAmAM8ALADwAD4R/wBYMf8AcVH/AIxx
+        /wCmkf8Av7H/ANrR/wD///8AAAAAAAAAAAAAAAAAAAAAACIeHRwcHBweICALCAgKAAAfPz8/Pz8/Pz8r
+        BRkXBwAAHT8+PT4+Pj8TBAwWFg0HDhw/Ozs7Ozw/ARgSEBAVJQkcPzk5OTk7PT8CJA8RJgcAHD84ODg5
+        ODk8PwImJwYAABw/NTU1NTU1Njo+AwUAAAAcPzMzMzQzMzM0Nj8jAAAAHD8xMjIyMjIxMTI/HgAAABw/
+        MDAxMDA3Pz8/Px0AAAAcPy4vLy8uPygbGj8eAAAAHT8sLS0tLD8bMT8wKAAAAB0/KSkqKSk/Gj8wKAAA
+        AAAePz8/Pz8/Pz8wKAAAAAAAIR8dHR0dHB0eIQAAAAAAAP//AAAAAwAAAAMAAAAAAAAAAAAAAAEAAAAD
+        AAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAADwAAAB8AAAA/AAA=
+</value>
+  </data>
+  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Import from CaveExplorer:</value>
+  </data>
+  <data name="&gt;&gt;tipDefault.Name" xml:space="preserve">
+    <value>tipDefault</value>
+  </data>
+  <data name="&gt;&gt;tipDefault.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmImportCaveExporer</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>cSurveyPC.cForm, cSurveyPC, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+</root>

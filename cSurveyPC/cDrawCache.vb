@@ -1,0 +1,632 @@
+﻿Imports System.Drawing
+Imports System.Drawing.Drawing2D
+Imports System.Xml
+
+Imports cSurveyPC.cSurvey.Design
+
+Namespace cSurvey.Drawings
+    Public Class cDrawCache
+        Implements IEnumerable
+        Implements IDisposable
+
+        Private bBounds As Boolean
+        Private oBounds As RectangleF
+        Private oItems As List(Of cDrawCacheItem)
+
+        Private bInvalidaded As Boolean
+
+        Private iMaxDrawItemCount As Integer
+
+        Public Function Hittest(Graphics As Graphics, Point As PointF, Scale As Single, Precision As Single, Wide As Single) As Boolean
+            Try
+                Dim oPoint As PointF = Point ' New PointF(Point.X * Precision, Point.Y * Precision)
+                SyncLock oItems
+                    For Each oItem As cDrawCacheItem In oItems
+                        If oItem.Type = cDrawCacheItem.cDrawCacheItemType.Filler Then
+                            If oItem.Path.IsVisible(Point, Graphics) Then
+                                Return True
+                            End If
+                        End If
+                        If oItem.Type = cDrawCacheItem.cDrawCacheItemType.Filler OrElse oItem.Type = cDrawCacheItem.cDrawCacheItemType.Border Then
+                            Using oPath As GraphicsPath = oItem.Path.Clone
+                                Using oPen As Pen = If(IsNothing(oItem.Pen), Nothing, oItem.Pen.Clone)
+                                    If Not IsNothing(oPen) Then oPen.Width = 0.2 *25/ Scale 'If(oPen.Width <= 0, 0.1F, oPen.Width) * Scale * Wide * Precision
+                                    oPath.FillMode = FillMode.Winding
+                                    Call oPath.Widen(oPen)
+                                    If oPath.IsVisible(Point, Graphics) Then
+                                        Return True
+                                    End If
+                                End Using
+                            End Using
+                            'Using oMatrix As Matrix = New Matrix
+                            '        Call oMatrix.Scale(1000, 1000)
+                            '        Call oPath.Transform(oMatrix)
+                            '        Using oPen As Pen = If(IsNothing(oItem.Pen), Nothing, oItem.Pen.Clone)
+                            '            If Not IsNothing(oPen) Then oPen.Width = If(oPen.Width <= 0, 0.1F, oPen.Width) * Scale * Wide * Precision
+                            '            If oItem.IsFilled Then
+                            '                If oPath.IsVisible(oPoint) Then
+                            '                    Return True
+                            '                ElseIf oItem.IsOutlined AndAlso oPath.IsOutlineVisible(oPoint, oPen) Then
+                            '                    Return True
+                            '                    'Using oPath As GraphicsPath = oItem.Path.Clone
+                            '                    '    Call oPath.Widen(oPen)
+                            '                    '    If oPath.IsVisible(Point) Then
+                            '                    '        Return True
+                            '                    '    End If
+                            '                    'End Using
+                            '                End If
+                            '            Else
+                            '                'If oItem.IsOutlined Then
+                            '                '    Using oPath As GraphicsPath = oItem.Path.Clone
+                            '                '        Call oPath.Widen(oPen, Nothing, 0.001F)
+                            '                '        If oPath.IsVisible(Point) Then
+                            '                '            Return True
+                            '                '        End If
+                            '                '    End Using
+                            '                'End If
+                            '                If oItem.IsOutlined AndAlso oPath.IsOutlineVisible(oPoint, oPen) Then
+                            '                    Return True
+                            '                End If
+                            '            End If
+                            '        End Using
+                            '    End Using
+                            'End Using
+                        End If
+                    Next
+                End SyncLock
+                Return False
+            Catch ex As Exception
+                Return GetBounds.Contains(Point)
+            End Try
+
+            'If IsNothing(oItem.Brush) Then
+            '    If IsNothing(oItem.Pen) Then
+            '        Return False
+            '    Else
+            '        If oItem.Path.IsOutlineVisible(Point, oItem.Pen) Then
+            '            Return True
+            '        End If
+            '    End If
+            'Else
+            '    If IsNothing(oItem.Pen) Then
+            '        If oItem.Path.IsVisible(Point) Then
+            '            Return True
+            '        End If
+            '    Else
+            '        If oItem.Path.IsVisible(Point) OrElse oItem.Path.IsOutlineVisible(Point, oItem.Pen) Then
+            '            Return True
+            '        End If
+            '    End If
+            'End If
+        End Function
+
+        Friend Sub New()
+            oItems = New List(Of cDrawCacheItem)
+            bInvalidaded = True
+            iMaxDrawItemCount = modMain.GetMaxDrawItemCount
+        End Sub
+
+        Public Function SetClip(ClipPath As GraphicsPath) As cDrawCacheItem
+            Dim oItem As cDrawCacheItem = New cDrawCacheItem(cDrawCacheItem.cDrawCacheItemType.SetClip)
+            Call oItem.AddPath(ClipPath)
+            Call oItems.Add(oItem)
+            bBounds = False
+            Return oItem
+        End Function
+
+        Public Function ResetClip() As cDrawCacheItem
+            Dim oItem As cDrawCacheItem = New cDrawCacheItem(cDrawCacheItem.cDrawCacheItemType.ResetClip)
+            Call oItems.Add(oItem)
+            bBounds = False
+            Return oItem
+        End Function
+
+        Public Function Add(Type As cDrawCacheItem.cDrawCacheItemType) As cDrawCacheItem
+            Dim oItem As cDrawCacheItem = New cDrawCacheItem(Type)
+            Call oItems.Add(oItem)
+            bBounds = False
+            Return oItem
+        End Function
+
+        Public Function Add(Type As cDrawCacheItem.cDrawCacheItemType, ByVal Path As GraphicsPath, Optional ByVal Pen As Pen = Nothing, Optional ByVal WireframePen As Pen = Nothing, Optional ByVal Brush As Brush = Nothing) As cDrawCacheItem
+            Dim oItem As cDrawCacheItem = New cDrawCacheItem(Type, Path, Pen, WireframePen, Brush)
+            Call oItems.Add(oItem)
+            bBounds = False
+            Return oItem
+        End Function
+
+        Default Public ReadOnly Property Item(ByVal Index As Integer) As cDrawCacheItem
+            Get
+                Return oItems(Index)
+            End Get
+        End Property
+
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return oItems.Count
+            End Get
+        End Property
+
+        Public Sub Remove(ByVal Item As cDrawCacheItem)
+            Call oItems.Remove(Item)
+            bBounds = False
+        End Sub
+
+        Public Sub Remove(ByVal Index As Integer)
+            Call oItems.RemoveAt(Index)
+            bBounds = False
+        End Sub
+
+        Public Sub Clear()
+            Call oItems.Clear()
+            bBounds = False
+        End Sub
+
+        Public Sub Invalidate()
+            If Not Invalidated Then
+                bInvalidaded = True
+                Call oItems.Clear()
+                bBounds = False
+            End If
+        End Sub
+
+        Public ReadOnly Property Invalidated As Boolean
+            Get
+                Return bInvalidaded
+            End Get
+        End Property
+
+        Public Sub Rendered()
+            bBounds = False
+            Call GetBounds()
+            bInvalidaded = False
+        End Sub
+
+        Public Sub ResetOffset()
+            Dim oPoint As PointF = GetBounds.Location
+            If Not oPoint.IsEmpty Then
+                Using oTraslateMatix As Matrix = New Matrix
+                    Call oTraslateMatix.Translate(-oPoint.X, -oPoint.Y)
+                    Call Trasform(oTraslateMatix)
+                End Using
+                bBounds = False
+            End If
+        End Sub
+
+        Public Sub Trasform(Matrix As Matrix)
+            SyncLock oItems
+                For Each oItem As cDrawCacheItem In oItems
+                    Call oItem.Transform(Matrix)
+                Next
+            End SyncLock
+            bBounds = False
+        End Sub
+
+        Public Function GetEnumerator() As System.Collections.IEnumerator Implements System.Collections.IEnumerable.GetEnumerator
+            Return oItems.GetEnumerator
+        End Function
+
+        Public Function GetBounds() As RectangleF
+            If Not bBounds Then
+                Dim oRect As RectangleF
+                SyncLock oItems
+                    For Each oItem As cDrawCacheItem In oItems.Where(Function(item) item.Type = cDrawCacheItem.cDrawCacheItemType.Border OrElse item.Type = cDrawCacheItem.cDrawCacheItemType.SetClip)
+                        Dim oNewRect As RectangleF = oItem.GetBounds
+                        If Not modPaint.IsRectangleEmpty(oNewRect) Then
+                            If modPaint.IsRectangleEmpty(oRect) Then
+                                oRect = oNewRect
+                            Else
+                                oRect = RectangleF.Union(oRect, oNewRect)
+                            End If
+                        End If
+                    Next
+                End SyncLock
+                oBounds = oRect
+                bBounds = True
+            End If
+            Return oBounds
+        End Function
+
+        Friend Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, Optional ByVal Matrix As Matrix = Nothing) As XmlElement
+            Dim oSVGGroup As XmlElement = modSVG.CreateGroup(SVG)
+            Dim sKey As String = ""
+
+            SyncLock oItems
+                If (Options And cItem.SVGOptionsEnum.ClipartBrushes) = cItem.SVGOptionsEnum.ClipartBrushes Then
+                    For Each oItem As cDrawCacheItem In oItems.Where(Function(Item) Item.Type <= cDrawCacheItem.cDrawCacheItemType.ResetClip)
+                        If oItem.Type = cDrawCacheItem.cDrawCacheItemType.SetClip Then
+                            sKey = "clip_" & Guid.NewGuid.ToString
+                            Dim oSVGClipPath As XmlElement = modSVG.CreateClipPath(SVG, sKey)
+                            Call modSVG.AppendItem(SVG, oSVGClipPath, PaintOptions, oItem.Path)
+                            Call modSVG.AppendItem(SVG, oSVGGroup, oSVGClipPath)
+                        ElseIf oItem.Type = cDrawCacheItem.cDrawCacheItemType.Filler Then
+                            Dim oSVGItem As XmlElement = oItem.AppendSvgItem(SVG, oSVGGroup, PaintOptions, Options, Matrix)
+                            If Not oSVGItem Is Nothing AndAlso sKey <> "" Then
+                                Call oSVGItem.SetAttribute("clip-path", "url(#" & sKey & ")")
+                            End If
+                        Else
+                            sKey = ""
+                        End If
+                    Next
+                End If
+
+                For Each oItem As cDrawCacheItem In oItems
+                    If oItem.Type = cDrawCacheItem.cDrawCacheItemType.Border Then
+                        Call oItem.AppendSvgItem(SVG, oSVGGroup, PaintOptions, Options, Matrix)
+                    End If
+                Next
+            End SyncLock
+
+            Return oSVGGroup
+        End Function
+
+        Public Function Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum) As Boolean
+            Try
+                If oItems.Count > 0 Then
+                    If (Options And cItem.PaintOptionsEnum.Wireframe) = cItem.PaintOptionsEnum.Wireframe Or (Options And cItem.PaintOptionsEnum.SchematicLayerDraw) = cItem.PaintOptionsEnum.SchematicLayerDraw Then
+                        Dim oItemsToDraw As IEnumerable(Of cDrawCacheItem) = oItems.Where(Function(item) item.IsWireframeOutlined)
+                        If Not (Options And cItem.PaintOptionsEnum.IgnoreMaxDrawItemCount) = cItem.PaintOptionsEnum.IgnoreMaxDrawItemCount AndAlso oItemsToDraw.Count > iMaxDrawItemCount Then
+                            Dim oItem As cDrawCacheItem = oItemsToDraw.First
+                            Dim oRect As RectangleF = GetBounds()
+                            Call Graphics.DrawRectangle(oItem.WireframePen, oRect.X, oRect.Y, oRect.Width, oRect.Height)
+                        Else
+                            SyncLock oItemsToDraw
+                                For Each oItem As cDrawCacheItem In oItemsToDraw
+                                    Call Graphics.DrawPath(oItem.WireframePen, oItem.Path)
+                                Next
+                            End SyncLock
+                        End If
+                    Else
+                        Dim oRestores As Stack(Of Boolean) = New Stack(Of Boolean)
+                        Dim oStates As Stack(Of GraphicsState) = New Stack(Of GraphicsState)
+                        SyncLock oItems
+                            For Each oItem As cDrawCacheItem In oItems ' oItems.Where(Function(Item) Item.Type <= cDrawCacheItem.cDrawCacheItemType.FillerAndClip)
+                                'code for hittesting test...
+                                'If oItem.Type = cDrawCacheItem.cDrawCacheItemType.Filler OrElse oItem.Type = cDrawCacheItem.cDrawCacheItemType.Border Then
+                                '    Using oPath As GraphicsPath = oItem.Path.Clone
+                                '        Using oPen As Pen = If(IsNothing(oItem.Pen), Nothing, oItem.Pen.Clone)
+                                '            If Not IsNothing(oPen) Then oPen.Width = 0.5 'If(oPen.Width <= 0, 0.1F, oPen.Width) * Scale * Wide * Precision
+                                '            oPath.FillMode = FillMode.Winding
+                                '            Call oPath.Widen(oPen)
+                                '            Call Graphics.FillPath(Brushes.Red, oPath)
+                                '        End Using
+                                '    End Using
+                                'End If
+                                If oItem.Type = cDrawCacheItem.cDrawCacheItemType.SetClip Then
+                                    Using oClip As Region = New Region(oItem.Path)
+                                        If Not oClip Is Nothing And Not (Options And cItem.PaintOptionsEnum.SchematicLayerDraw) = cItem.PaintOptionsEnum.SchematicLayerDraw Then
+                                            If Not (oClip.IsEmpty(Graphics) Or oClip.IsInfinite(Graphics)) Then
+                                                Call oRestores.Push(True)
+                                                Call oStates.Push(Graphics.Save)
+                                                If Graphics.Clip.IsEmpty(Graphics) Or Graphics.Clip.IsInfinite(Graphics) Then
+                                                    Call Graphics.SetClip(oClip, CombineMode.Replace)
+                                                Else
+                                                    Call Graphics.SetClip(oClip, CombineMode.Intersect)
+                                                End If
+                                            Else
+                                                'mark graphic as not be restored
+                                                Call oRestores.Push(False)
+                                            End If
+                                        Else
+                                            'mark graphic as not be restored
+                                            Call oRestores.Push(False)
+                                        End If
+                                    End Using
+                                ElseIf oItem.Type = cDrawCacheItem.cDrawCacheItemType.Filler Then
+                                    If oItem.IsFilled Then
+                                        Call Graphics.FillPath(oItem.Brush, oItem.Path)
+                                    End If
+                                    If oItem.IsOutlined Then
+                                        Call Graphics.DrawPath(oItem.Pen, oItem.Path)
+                                    End If
+                                ElseIf oItem.Type = cDrawCacheItem.cDrawCacheItemType.Border Then
+                                    If oItem.IsFilled Then
+                                        Call Graphics.FillPath(oItem.Brush, oItem.Path)
+                                    End If
+                                    If oItem.IsOutlined Then
+                                        Call Graphics.DrawPath(oItem.Pen, oItem.Path)
+                                    End If
+                                Else
+                                    If oRestores.Pop() Then
+                                        'restore graphic state
+                                        Call Graphics.Restore(oStates.Pop())
+                                    End If
+                                End If
+                            Next
+                        End SyncLock
+                    End If
+                End If
+                Return True
+            Catch ex As Exception
+                Return False
+            End Try
+        End Function
+
+#Region "IDisposable Support"
+        Private disposedValue As Boolean ' Per rilevare chiamate ridondanti
+
+        ' IDisposable
+        Protected Overridable Sub Dispose(disposing As Boolean)
+            If Not Me.disposedValue Then
+                If disposing Then
+                    'If Not oClip Is Nothing Then oClip.Dispose()
+                    'If Not oClipPath Is Nothing Then oClipPath.Dispose()
+                    For Each oItem As cDrawCacheItem In oItems
+                        Call oItem.Dispose()
+                    Next
+                    Call oItems.Clear()
+                End If
+                'oClip = Nothing
+                'oClipPath = Nothing
+                oItems = Nothing
+            End If
+            Me.disposedValue = True
+        End Sub
+
+        ' Questo codice è aggiunto da Visual Basic per implementare in modo corretto il modello Disposable.
+        Public Sub Dispose() Implements IDisposable.Dispose
+            ' Non modificare questo codice. Inserire il codice di pulizia in Dispose(disposing As Boolean).
+            Dispose(True)
+            GC.SuppressFinalize(Me)
+        End Sub
+#End Region
+
+    End Class
+
+    Public Class cDrawCacheItem
+        Implements IDisposable
+
+        Public Enum cDrawCacheItemType
+            Filler = 0
+            SetClip = 1
+            ResetClip = 2
+            Border = 9
+        End Enum
+
+        Private iType As cDrawCacheItemType
+        Private oPath As GraphicsPath
+
+        Private bIsFilled As Boolean
+        Private bIsOutlined As Boolean
+        Private bIsWireframeOutlined As Boolean
+
+        Private oPen As Pen
+        Private oWireframePen As Pen
+        Private oBrush As Brush
+
+        Public Overrides Function ToString() As String
+            Return MyBase.ToString() & " {" & iType.ToString & "}"
+        End Function
+
+        Friend ReadOnly Property Type As cDrawCacheItemType
+            Get
+                Return iType
+            End Get
+        End Property
+
+        Friend ReadOnly Property Brush As Brush
+            Get
+                Return oBrush
+            End Get
+        End Property
+
+        Friend ReadOnly Property Pen As Pen
+            Get
+                Return oPen
+            End Get
+        End Property
+
+        Friend ReadOnly Property WireframePen As Pen
+            Get
+                Return oWireframePen
+            End Get
+        End Property
+
+        Friend ReadOnly Property Path As GraphicsPath
+            Get
+                Return oPath
+            End Get
+        End Property
+
+        Friend Sub New(Type As cDrawCacheItemType)
+            iType = Type
+
+            oPath = New GraphicsPath
+            bIsFilled = False
+            bIsOutlined = False
+            bIsWireframeOutlined = False
+        End Sub
+
+        Friend Sub New(Type As cDrawCacheItemType, ByVal Path As GraphicsPath, ByVal Pen As Pen, ByVal WireframePen As Pen, ByVal Brush As Brush)
+            iType = Type
+
+            If Path Is Nothing Then
+                oPath = New GraphicsPath
+            Else
+                oPath = Path.Clone
+            End If
+            If Pen Is Nothing Then
+                bIsOutlined = False
+            Else
+                oPen = Pen.Clone
+                bIsOutlined = True
+            End If
+            If WireframePen Is Nothing Then
+                bIsWireframeOutlined = False
+            Else
+                oWireframePen = WireframePen.Clone
+                bIsWireframeOutlined = True
+            End If
+            If Brush Is Nothing Then
+                bIsFilled = False
+            Else
+                oBrush = Brush.Clone
+                bIsFilled = True
+            End If
+        End Sub
+
+        Public Sub Transform(ByVal Matrix As Matrix)
+            If Not Matrix Is Nothing Then
+                Call oPath.Transform(Matrix)
+            End If
+        End Sub
+
+        Public Function GetBounds() As RectangleF
+            Return oPath.GetBounds
+        End Function
+
+        Public Sub StartFigure()
+            Call oPath.StartFigure()
+        End Sub
+
+        Public Sub AddPolygon(ByVal Points() As PointF)
+            Call oPath.AddPolygon(Points)
+        End Sub
+
+        Public Sub AddPath(ByVal Path As GraphicsPath)
+            Call oPath.AddPath(Path, False)
+        End Sub
+
+        Public Sub AddString(ByVal Text As String, ByVal Font As Font, ByVal Point As PointF, Optional ByVal Format As StringFormat = Nothing)
+            Call oPath.AddString(Text, Font.FontFamily, Font.Style, Font.Size, Point, Format)
+        End Sub
+
+        Public Sub AddString(ByVal Text As String, ByVal Font As Font, ByVal Rectangle As RectangleF, Optional ByVal Format As StringFormat = Nothing)
+            Call oPath.AddString(Text, Font.FontFamily, Font.Style, Font.Size, Rectangle, Format)
+        End Sub
+
+        Public Sub AddLine(ByVal X1 As Single, ByVal Y1 As Single, ByVal X2 As Single, ByVal Y2 As Single)
+            Call oPath.AddLine(X1, Y1, X2, Y2)
+        End Sub
+
+        Public Sub AddLine(ByVal Point1 As PointF, ByVal Point2 As PointF)
+            Call oPath.AddLine(Point1, Point2)
+        End Sub
+
+        Public Sub AddCurve(ByVal Points() As PointF, ByVal Tension As Single)
+            Call oPath.AddCurve(Points, Tension)
+        End Sub
+
+        Public Sub AddLines(ByVal Points() As PointF)
+            Call oPath.AddLines(Points)
+        End Sub
+
+        Public Sub AddBezier(ByVal Point1 As PointF, ByVal Point2 As PointF, ByVal Point3 As PointF, ByVal Point4 As PointF)
+            Call oPath.AddBezier(Point1, Point2, Point3, Point4)
+        End Sub
+
+        Public Sub AddRectangle(ByVal X As Single, ByVal Y As Single, ByVal Width As Single, ByVal Height As Single)
+            Call oPath.AddRectangle(New RectangleF(X, Y, Width, Height))
+        End Sub
+
+        Public Sub AddRectangle(ByVal Rectangle As RectangleF)
+            Call oPath.AddRectangle(Rectangle)
+        End Sub
+
+        Public Sub AddEllipse(ByVal X As Single, ByVal Y As Single, ByVal Width As Single, ByVal Height As Single)
+            Call oPath.AddEllipse(New RectangleF(X, Y, Width, Height))
+        End Sub
+
+        Public Sub AddEllipse(ByVal Rectangle As RectangleF)
+            Call oPath.AddEllipse(Rectangle)
+        End Sub
+
+        Friend Sub SetBrush(ByVal Brush As Brush)
+            If Brush Is Nothing Then
+                oBrush = Nothing
+                bIsFilled = False
+            Else
+                oBrush = Brush.Clone
+                bIsFilled = True
+            End If
+        End Sub
+
+        Friend Sub SetPen(ByVal Pen As Pen)
+            If Pen Is Nothing Then
+                oPen = Nothing
+                bIsOutlined = False
+            Else
+                oPen = Pen.Clone
+                bIsOutlined = True
+            End If
+        End Sub
+
+        Friend Sub SetWireframePen(ByVal WireframePen As Pen)
+            If WireframePen Is Nothing Then
+                oWireframePen = Nothing
+                bIsWireframeOutlined = False
+            Else
+                oWireframePen = WireframePen.Clone
+                bIsWireframeOutlined = True
+            End If
+        End Sub
+
+        Friend ReadOnly Property IsFilled As Boolean
+            Get
+                Return bIsFilled
+            End Get
+        End Property
+
+        Friend ReadOnly Property IsOutlined As Boolean
+            Get
+                Return bIsOutlined
+            End Get
+        End Property
+
+        Friend ReadOnly Property IsWireframeOutlined As Boolean
+            Get
+                Return bIsWireframeOutlined
+            End Get
+        End Property
+
+        Friend Function AppendSvgItem(ByVal SVG As XmlDocument, ByVal Parent As XmlElement, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, Optional ByVal Matrix As Matrix = Nothing) As XmlElement
+            If bIsFilled Or bIsOutlined Then
+                Dim oSvgPath As GraphicsPath
+                Dim bDispose As Boolean
+                If Matrix Is Nothing Then
+                    oSvgPath = oPath
+                Else
+                    oSvgPath = oPath.Clone
+                    Call oSvgPath.Transform(Matrix)
+                    bDispose = True
+                End If
+                Dim oItem As XmlElement = modSVG.CreateItem(SVG, PaintOptions, oSvgPath)
+                Call modSVG.AppendItemStyle(SVG, oItem, IIf(bIsFilled, oBrush, Nothing), IIf(bIsOutlined, oPen, Nothing))
+                Call modSVG.AppendItem(SVG, Parent, oItem)
+                If bDispose Then
+                    Call oSvgPath.Dispose()
+                End If
+                Return oItem
+            End If
+        End Function
+
+#Region "IDisposable Support"
+        Private disposedValue As Boolean ' Per rilevare chiamate ridondanti
+
+        ' IDisposable
+        Protected Overridable Sub Dispose(disposing As Boolean)
+            If Not Me.disposedValue Then
+                If disposing Then
+                    If Not oPath Is Nothing Then oPath.Dispose()
+                    If Not oPen Is Nothing Then oPen.Dispose()
+                    If Not oWireframePen Is Nothing Then oWireframePen.Dispose()
+                    If Not oBrush Is Nothing Then oBrush.Dispose()
+                End If
+                oPath = Nothing
+                oPen = Nothing
+                oWireframePen = Nothing
+                oBrush = Nothing
+            End If
+            Me.disposedValue = True
+        End Sub
+
+        ' Questo codice è aggiunto da Visual Basic per implementare in modo corretto il modello Disposable.
+        Public Sub Dispose() Implements IDisposable.Dispose
+            ' Non modificare questo codice. Inserire il codice di pulizia in Dispose(disposing As Boolean).
+            Dispose(True)
+            GC.SuppressFinalize(Me)
+        End Sub
+#End Region
+
+    End Class
+End Namespace

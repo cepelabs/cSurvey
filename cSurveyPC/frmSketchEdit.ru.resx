@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="mnuTrigpointsRemoveFilter.Text" xml:space="preserve">
+    <value>Удалить фильтр</value>
+  </data>
+	<assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+	<data name="mnuPreviewAdd.Size" type="System.Drawing.Size, System.Drawing">
+		<value>191, 22</value>
+	</data>
+	<data name="mnuPreviewAdd.Text" xml:space="preserve">
+    <value>Добавить опорный пикет...</value>
+  </data>
+	<data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+		<value>188, 6</value>
+	</data>
+	<data name="mnuPreviewRemove.Size" type="System.Drawing.Size, System.Drawing">
+		<value>191, 22</value>
+	</data>
+	<data name="mnuPreviewRemove.Text" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+	<data name="mnuPreviewRemoveAll.Size" type="System.Drawing.Size, System.Drawing">
+		<value>191, 22</value>
+	</data>
+	<data name="mnuPreviewRemoveAll.Text" xml:space="preserve">
+    <value>Удалить все</value>
+  </data>
+	<data name="ToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
+		<value>188, 6</value>
+	</data>
+	<data name="mnuPreviewSetTransparent.Size" type="System.Drawing.Size, System.Drawing">
+		<value>191, 22</value>
+	</data>
+	<data name="mnuPreviewSetTransparent.Text" xml:space="preserve">
+    <value>Сделать цвет прозрачным</value>
+  </data>
+	<data name="mnuPreviewTransparentThreshold.Size" type="System.Drawing.Size, System.Drawing">
+		<value>191, 22</value>
+	</data>
+	<data name="mnuPreviewTransparentThreshold.Text" xml:space="preserve">
+    <value>Порог прозрачности</value>
+  </data>
+	<data name="mnuPreviewDeleteTransparent.Size" type="System.Drawing.Size, System.Drawing">
+		<value>191, 22</value>
+	</data>
+	<data name="mnuPreviewDeleteTransparent.Text" xml:space="preserve">
+    <value>Убрать прозрачность</value>
+  </data>
+	<data name="mnuPreviewStop.Size" type="System.Drawing.Size, System.Drawing">
+		<value>191, 22</value>
+	</data>
+	<data name="mnuPreviewStop.Text" xml:space="preserve">
+    <value>Применить изменения</value>
+  </data>
+	<data name="mnuPreview.Size" type="System.Drawing.Size, System.Drawing">
+		<value>192, 170</value>
+	</data>
+	<data name="cmdCancel.Text" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+	<data name="imlStations.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+		<value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACK
+        BwAAAk1TRnQBSQFMAwEBAAGEAQABhAEAARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMA
+        AUADAAEQAwABAQEAAQgGAAEEGAABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHAAdwBwAEA
+        AfABygGmAQABMwUAATMBAAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANCAQADOQEA
+        AYABfAH/AQACUAH/AQABkwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/ATMDAAFm
+        AwABmQMAAcwCAAEzAwACMwIAATMBZgIAATMBmQIAATMBzAIAATMB/wIAAWYDAAFmATMCAAJmAgABZgGZ
+        AgABZgHMAgABZgH/AgABmQMAAZkBMwIAAZkBZgIAApkCAAGZAcwCAAGZAf8CAAHMAwABzAEzAgABzAFm
+        AgABzAGZAgACzAIAAcwB/wIAAf8BZgIAAf8BmQIAAf8BzAEAATMB/wIAAf8BAAEzAQABMwEAAWYBAAEz
+        AQABmQEAATMBAAHMAQABMwEAAf8BAAH/ATMCAAMzAQACMwFmAQACMwGZAQACMwHMAQACMwH/AQABMwFm
+        AgABMwFmATMBAAEzAmYBAAEzAWYBmQEAATMBZgHMAQABMwFmAf8BAAEzAZkCAAEzAZkBMwEAATMBmQFm
+        AQABMwKZAQABMwGZAcwBAAEzAZkB/wEAATMBzAIAATMBzAEzAQABMwHMAWYBAAEzAcwBmQEAATMCzAEA
+        ATMBzAH/AQABMwH/ATMBAAEzAf8BZgEAATMB/wGZAQABMwH/AcwBAAEzAv8BAAFmAwABZgEAATMBAAFm
+        AQABZgEAAWYBAAGZAQABZgEAAcwBAAFmAQAB/wEAAWYBMwIAAWYCMwEAAWYBMwFmAQABZgEzAZkBAAFm
+        ATMBzAEAAWYBMwH/AQACZgIAAmYBMwEAA2YBAAJmAZkBAAJmAcwBAAFmAZkCAAFmAZkBMwEAAWYBmQFm
+        AQABZgKZAQABZgGZAcwBAAFmAZkB/wEAAWYBzAIAAWYBzAEzAQABZgHMAZkBAAFmAswBAAFmAcwB/wEA
+        AWYB/wIAAWYB/wEzAQABZgH/AZkBAAFmAf8BzAEAAcwBAAH/AQAB/wEAAcwBAAKZAgABmQEzAZkBAAGZ
+        AQABmQEAAZkBAAHMAQABmQMAAZkCMwEAAZkBAAFmAQABmQEzAcwBAAGZAQAB/wEAAZkBZgIAAZkBZgEz
+        AQABmQEzAWYBAAGZAWYBmQEAAZkBZgHMAQABmQEzAf8BAAKZATMBAAKZAWYBAAOZAQACmQHMAQACmQH/
+        AQABmQHMAgABmQHMATMBAAFmAcwBZgEAAZkBzAGZAQABmQLMAQABmQHMAf8BAAGZAf8CAAGZAf8BMwEA
+        AZkBzAFmAQABmQH/AZkBAAGZAf8BzAEAAZkC/wEAAcwDAAGZAQABMwEAAcwBAAFmAQABzAEAAZkBAAHM
+        AQABzAEAAZkBMwIAAcwCMwEAAcwBMwFmAQABzAEzAZkBAAHMATMBzAEAAcwBMwH/AQABzAFmAgABzAFm
+        ATMBAAGZAmYBAAHMAWYBmQEAAcwBZgHMAQABmQFmAf8BAAHMAZkCAAHMAZkBMwEAAcwBmQFmAQABzAKZ
+        AQABzAGZAcwBAAHMAZkB/wEAAswCAALMATMBAALMAWYBAALMAZkBAAPMAQACzAH/AQABzAH/AgABzAH/
+        ATMBAAGZAf8BZgEAAcwB/wGZAQABzAH/AcwBAAHMAv8BAAHMAQABMwEAAf8BAAFmAQAB/wEAAZkBAAHM
+        ATMCAAH/AjMBAAH/ATMBZgEAAf8BMwGZAQAB/wEzAcwBAAH/ATMB/wEAAf8BZgIAAf8BZgEzAQABzAJm
+        AQAB/wFmAZkBAAH/AWYBzAEAAcwBZgH/AQAB/wGZAgAB/wGZATMBAAH/AZkBZgEAAf8CmQEAAf8BmQHM
+        AQAB/wGZAf8BAAH/AcwCAAH/AcwBMwEAAf8BzAFmAQAB/wHMAZkBAAH/AswBAAH/AcwB/wEAAv8BMwEA
+        AcwB/wFmAQAC/wGZAQAC/wHMAQACZgH/AQABZgH/AWYBAAFmAv8BAAH/AmYBAAH/AWYB/wEAAv8BZgEA
+        ASEBAAGlAQADXwEAA3cBAAOGAQADlgEAA8sBAAOyAQAD1wEAA90BAAPjAQAD6gEAA/EBAAP4AQAB8AH7
+        Af8BAAGkAqABAAOAAwAB/wIAAf8DAAL/AQAB/wMAAf8BAAH/AQAC/wIAA///AAgAAfQD8wH0OgAB9AGT
+        A0YBkwH0OQABkwFMA3UBTAGTOQABRgXjAUY5AAFGAXUDTQF1AUY5AAFGAZQD4wGUAUY5AAGZAUwDlAFM
+        AZk6AAGZA0YBmf8ANgABQgFNAT4HAAE+AwABKAMAAUADAAEQAwABAQEAAQEFAAGAFwAD/wEAAv8GAAL/
+        BgAC/wYAAv8GAAH8AR8GAAH4AQ8GAAH4AQ8GAAH4AQ8GAAH4AQ8GAAH4AQ8GAAH4AQ8GAAH8AR8GAAL/
+        BgAC/wYAAv8GAAL/BgAL
+</value>
+	</data>
+	<data name="btnLoadImage.Size" type="System.Drawing.Size, System.Drawing">
+		<value>93, 22</value>
+	</data>
+	<data name="btnLoadImage.Text" xml:space="preserve">
+    <value>Повернуть изображение...</value>
+  </data>
+	<data name="btnUndo.Text" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+	<data name="btnRescale0.Size" type="System.Drawing.Size, System.Drawing">
+		<value>152, 22</value>
+	</data>
+	<data name="btnRescale1.Size" type="System.Drawing.Size, System.Drawing">
+		<value>152, 22</value>
+	</data>
+	<data name="btnRescale2.Size" type="System.Drawing.Size, System.Drawing">
+		<value>152, 22</value>
+	</data>
+	<data name="btnRescale3.Size" type="System.Drawing.Size, System.Drawing">
+		<value>152, 22</value>
+	</data>
+	<data name="btnRescale.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+		<value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIgSURBVDhPjVLvT5JRFH7/Futja7U+OHVpbvmpslrRdP0N
+        rQ8t+0nph7aakCuXfiiaW645m0UguCiSH6kp6VDG/MnwlVcsQEDkNYPs6Zzry1ZgrGd7OOfee57nHO57
+        pQIaWm0D9besqL1h+S9yLWs0uSTxRvQ7sJwB5M3y5BquZY0mlyR25cP7ThntwxEYXBERjW4FHZ5VQc4f
+        fFzBPceyMGGNJt81UFTgwJXXeDYRx+GWNzD54qi8SSO32lFHrNYP4ul4DI880b0NeIKeL3G8mEygdyqB
+        l/51mGczqG+zQ9cTRO1dO/qmkzCNf0N4o8jg6HWL2OzzJ9E/k8RAIA37QhY1eivOPg/gGJnU3LHBMrsp
+        akoMGmjESBZwkOjDogpPeBtVt604Ywqgii5rLJLDoWtmvKczS3ADoYLBxe7PseauUZzv/ITTHW6ceuhG
+        I1HX6UU1dawk8eRqHmPyD/iUPBzzGQwvqQilNYOmJyP4F8499mJ+HfCGVPjX8th/+ZWIEyvbWEppBjrq
+        zHg7t4bBha+CnDNOGl3CYJpEwdiOEHHk9WKxgU9JYSqaFuScccLgwlziF3XNIRjfQcWlfhF5ihKDcEqF
+        nN4S5JyxawAhKJ6g5C9kcz//IqORLpXfBhfL9IUOtphF5LWypT3lcpfY1DUiujC5+LjeJmJhXXe11yld
+        MA452YQn+ZO812wYekdP5EgZ7iOKn70OmRXEMpCk300FuiZKIXW4AAAAAElFTkSuQmCC
+</value>
+	</data>
+	<data name="btnRescale.Text" xml:space="preserve">
+    <value>Изменить размер</value>
+  </data>
+	<data name="btnRotate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+		<value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIfSURBVDhPhVJNT1NBFK07ViZuWPgDXBldvBVSNA8L1YUm
+        xCVbgbAgslH8SExKSqkJMTGxhCBBokICqNTS8vFAShQ/MNWY0PgRDG1a+mqoBCwUTVgc752ZPtoSw0lO
+        ZubOOffdue/aSlHTMQ21LYJ+axxMddwPR4dx5Wx7cLnhaQx6+2SR8MyNANJ/AJNob3uxP0m1xzAv+hZx
+        2Z/E1XAWg9Ecqt2yEv1mAIlt4O78KrrmkkjtlCRxds64nXfmcIESnPNORxpGV/IVaKevS3PP2zS6F0zc
+        f23i3quUSGI9x+kJ7ureWbPsSHkFHY85ZA80e5sfJgkfvPtZxF4iP2cvQecMTtbfbqLtIRFQ5tUc0L+4
+        hocf1jCg+CjyS1TElbFOqDkBLYfFgVDJZhI9jmTw5GMGg0Rehz5JMzeUZNKsYB2qqDlsHv68LjhSQK6I
+        70lm6dXHJapUw/zRTTxf2sBYntENJCluv+YvMjvchrPWY8gE/FvYPPkti+CXTYuhr79FvFKZC4esZTye
+        qHEHdsWEcXnG8hamvmct8rnQrLsmIIbMFQo3PYvhku89Klr7+0SCJCUIr+Tw8se24HxsR5jVwGg8VDxc
+        jYEUmkNp1A8sweEKZejuKFejcefjW8BC/C/eEAvNLOCVh6uuJ4Lz3tnEqRZfF8VOyCsJkYQrYfKeY/LK
+        glYre3CcWC4iJdD4OWrCSs15/C9ugQUHivZgs/0DEFjGJpvjnYUAAAAASUVORK5CYII=
+</value>
+	</data>
+	<data name="btnRotate.Text" xml:space="preserve">
+    <value>Повернуть</value>
+  </data>
+	<data name="btnRotate.ToolTipText" xml:space="preserve">
+    <value>Повернуть на 90° по часовой</value>
+  </data>
+	<data name="btnFlipH.Size" type="System.Drawing.Size, System.Drawing">
+		<value>122, 22</value>
+	</data>
+	<data name="btnFlipH.Text" xml:space="preserve">
+    <value>Горизонтально</value>
+  </data>
+	<data name="btnFlipV.Size" type="System.Drawing.Size, System.Drawing">
+		<value>122, 22</value>
+	</data>
+	<data name="btnFlipV.Text" xml:space="preserve">
+    <value>Вертикально</value>
+  </data>
+	<data name="btnFlip.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+		<value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJCSURBVDhPlVNdSFNhGD7QfUT3XUQUSMGozWQzCw3FO29S
+        osCi2wJzjZxtc170A10UUVJhuA3tzvZ7ZhfhXLadHJtQGP0x2c52KDanNdPWmvr0fh/bCkaiDzx833nP
+        9z7f+z7nPcJ20WYV25vN4liLWUTb4MRCObw5TlJSi8n39Hi/F3pbFKOSgvk80Gz2Qeh+PPPs9FAYnfdD
+        VXYxPgjhzEMJ7VZ/Tm+LYTSs4GNuA5H0b9ijWSR/ACdIUGDJm0Hd64SyCgQTBTyZyeD2ZAo3XiSRXAZY
+        RQK7kcH1/iv8nzOYkhdx0ODGuWGJx1U941yga0jC0WteDEcyuDet1ApMU+Lb7DIO93lhk2So+308Xq93
+        IVcCGqhfx2uZi9hnF5BaKbdQEfi0tELJHtyZSnBqyeUGom7AD63FD51F5PG7wQQ0Rg+yRTLRRCZ2klkM
+        B6jXm5NpdIzMQe+Jk1EZ2GPZv6RnFmfvbwUUXlErCVcryJfWoLrqxnlnCheIjRZftQIdHTw2IPI4o8bo
+        /qeCisAvapSgMrjQG8hDQ/0xVDzQ0o2GYB71lPxKLtSaWFpfxwbfAXV6JwbH3/A9+wrMsIuOWRzpcyP2
+        pYiXiVXMfy8LbGUOmMCHRUCSfyKiFGktIP6tLND9KLxUM4lkbGUSW60TNL4xOEJpvMus0TQCc7SyUeYC
+        BBVR/T/u2lPXpD573dR4ZSzcRAmXR6JcLE4tcBO3gB3E3cT9RPWhU8ZLuh7Hc/YjdVidAXZgu9hJ3Euk
+        CoV9fwC8oF79P7x6JAAAAABJRU5ErkJggg==
+</value>
+	</data>
+	<data name="btnFlip.Text" xml:space="preserve">
+    <value>Развернуть</value>
+  </data>
+	<data name="btnToGrayscale.Text" xml:space="preserve">
+    <value>Преобразовать в оттенки серого</value>
+  </data>
+	<data name="btnRubber.Text" xml:space="preserve">
+    <value>Ластик</value>
+  </data>
+	<data name="btnRubber0.Text" xml:space="preserve">
+    <value>Маленький ластик</value>
+  </data>
+	<data name="btnRubber1.Text" xml:space="preserve">
+    <value>Средний ластик</value>
+  </data>
+	<data name="btnRubber2.Text" xml:space="preserve">
+    <value>Большой ластик</value>
+  </data>
+	<data name="btnRubber3.Text" xml:space="preserve">
+    <value>Гигантский ластик</value>
+  </data>
+	<data name="btnShowCutBorders.Text" xml:space="preserve">
+    <value>Показать границы обрезки</value>
+  </data>
+	<data name="btnCut.Text" xml:space="preserve">
+    <value>Обрезать</value>
+  </data>
+	<data name="btnStop.Text" xml:space="preserve">
+    <value>Применить изменения</value>
+  </data>
+	<data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+		<value>
+        AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAu7u9/7a3uf+2t7j/tre5/7Cwsv+2t7n/tba4/7a3uf+2trj/tre5/7O0tf+ioqP/qqqr/5GR
+        nv8qMJ//JCmh/yMoif8jKZH/JCmh/zg9pP+Rk5r/KS0x/4eHiP+2t7j/srK0/7Cwsv+Mi4v/o6Kk/7a3
+        uf+7u73/AAAAALu7vf/29vb///////39/f//////7+7t///////+/v3//v7+//7+/v/5+fj/w8HA/87M
+        yv/s6+r/hYjX/x0l2v80ObT/KS02/xcbJ/8bIqT/HSXa/7W48P/Pz8//6+rq//39/f+7uLX/nJqW/8vJ
+        x//b2dj/2NbV/9rZ2f+rrK3/tre5//X19f/6+vr///7+//7+/v/w7+7//v7+/+jn5v/9/f3/0dDO/9XU
+        0v/29vb/3dza//v7+/95fuf/HSXa/yYrVf8XGx//Fxsf/xgeWP8dJdr/mJzt/+3s6//49/f/8fHx/+bk
+        4//n5uX/u7i1/+vr6v/+/v7//v7+/7a2uP+2t7n/zc3M/+jo6P/+/v7///////Lx8f///v7/7ezr//7+
+        /v/6+vn/7Ozr//7+/v/My8r/eHp8/21y0/8dJdr/RUqp/x0hJf8iJir/KzCQ/xwl2v+jpu//7Ovq/8/N
+        zP/b2tn//Pz8/8LAvv/Ewr//vbu5//b29f/+/v7/tra4/7a3uf/Ozs3/6Ojo//39/f//////9fT0/8jH
+        z//i4eD//v7+/+3s6//v7u7/lJWX/yQoK/8XGx7/XWB6/y423P8iKtr/Jy67/y00wv8dJdr/MDbS/9LR
+        2v/g393/3Nva/+no5//f3tz/2djW/9rY1v/h397/6Ofm//T09P+2trj/tre5/8bGxv/l5eX//v7+/7W4
+        8/9YXuL/MDjd/25z5f+6vNv/zMrI/+Hg3/+Nj5H/Fxsf/xcbH/8lKS3/qarP/0NJ2P8hKdr/ICja/1Zc
+        4//h4vj//Pz8//7+/v/+/v7//v7+//7+/v/x8fD/6Ofm//j39/+joZ3/1dPR/7S0tv+2t7n/x8fG/+Xk
+        5P+Slu3/HSXa/x0l2f8dJdr/HSXa/xwkzf+4ud///f39//f39/8tMTT/LC8z/5CSlP/09PT/1tTT/+fn
+        6v/p6vv/+/v7//39/f/+/f3//v7+//7+/v/+/v7//v7+//7+/v/19PT/0M7M/9bV1P/Ny8n/Y2Jg/7a3
+        uf/Hx8f/zMzh/ysy3P88Q9//0tLp/0ZJUv8ZH2v/HCXa/11j5P/9/Pz//Pz8/62trf/Pzsz/5+Xk/9zb
+        2f/8/Pz//f39//7+/v/+/v7//Pz8//39/f/9/f3//f39//7+/v/+/v7//f39//7+/v/q6en/8fDw//v7
+        +/+0tLb/tre5/8fHxv+7vN7/HCTa/3l+5f+jo6T/VVhb/xcbI/8cJMv/Ji3H/7S0s//+/v7///7+/9DN
+        zP/49/f//v7+//7+/v/+/v7////////////+/v7//v7+//7+/v/+/v7//v7+///////+/v7//v7+//Dw
+        7//y8fH//v7+/7a3uf+2t7n/yMjH/8LD3/8iKtr/RkvV/6Wjqf89QEP/Fxse/xccN/8qMHT/ysvM/+jo
+        6f/9/f3/1dPR///+/v/+/v7//Pv7//7+/v////////////7+/v//////////////////////////////
+        /////////Pz8//v7+//+/v7/tra4/7a3uf/IyMf/5ubl/21z5/8dJdr/Nz3X/z5Ck/8XGyH/Fxsf/xcb
+        Hv8XGx7/KCww/1NVWP+rrK7/6Ojo//v7/P///v7//v7+//7+/v///////v7+//7+/v////////////7+
+        /v////////////7+/v/+/v7///////////+2t7n/tre5/8nIyP/l5eT/9vb8/2Rp5P8fJ9f/HSTa/xgd
+        U/8XGh//Jiou/6+xsv+jpab/YmRm/yIlKf8XGx//Sk1Q/5SWmP/m5uf///////////////////////7+
+        /v/+/v7//v7+///////+/v7////////////+/v7//////7a3uf+2t7n/yMjH/+bm5f/w7+7/7ezs/3N2
+        jP8YHlj/Fxsg/xcbH/9hY2X/1tXT//7+/f/S0M///v7+/7y9vv9vcnT/QENH/zQ4O/+1trf//v7+//7+
+        /v/+/v7//v7+//7+/v/+/v7//v7+////////////////////////////tre5/7a3uf/IyMf/39/e/+De
+        3f/t7Oz/mpub/xcaH/9TVln/S05R/yMnK/+trKz//v7+//39/f/+/v7///7+//38/f/z9PT/UFNW/xgc
+        IP+Ehoj//Pz8//7+/v/+/v7//v7+//7+/v/+/v7///////////////////////////+2t7n/tre5/8jI
+        x//d3dz/0tDP/9/d3P/W1NP/s7Kw/9/d3f/s6+v/YmVn/0pNUP/g4OD/7+7t/9DOzf/s6+r/kZOU/56g
+        of9+gYP/Fxsf/yksMP9WWVz/3t/f//7+/v///////v7+/////////////v7+//7+/v///////v7+/7a3
+        uf+2t7n/yMfH/+Xl5f/r6ur/4N/e/+Hg3//9/f3/+/v7//7+/v+/vr3/JCgr/5CSk//s6+r/5uXk//7+
+        /v/4+Pj/SUxP/xcbHv9ER0v/09TU/1VYW/82Oj3/srS1///////+/v7//////////////////v7+//7+
+        /v/+/v7/tre5/7a3uf/Ozc3/6Ojo//r6+v/l5OP/7Ovq/5GRkf9eYWP/P0NG/5CQkv+pqqv/Ki4y/9zd
+        3v/n5+f/gIKE/62usP9XWl3/Ki4y/yUpLf+OkJL/8/Pz/3x+gf8hJCj/h4mL//f39////////v7+//7+
+        /v/+/v7//v7+//7+/v+2t7n/tre5/+7t7f/29vb//f38/8rJx//y8fH/UlNW/xcbH/8XGx//dXZ3/9va
+        2P9bXV//V1pd/+3t7f+2t7j/Fxse/yAkKP/T1NT/qqyt/xwgJP9eYWT/8PDw/52fof8fIyf/YGNl//T0
+        9f///////////////////////////7a3uf+2t7n/7u3t//f39//+/v7/+Pf3//b19f9ZW1v/Fxoe/xca
+        Hv9GSEv/x8XE/+Dg4f8xNTj/KS0x/0lNUP8XGx//GR0h/zg7Pv/l5eb/09TU/zxAQ/9LTlH/09TV/9rb
+        2/8uMjb/LDA0/9zc3f/+/v7/////////////////tre5/7a3uf/t7e3/8PDv//r5+v/z8vL/6uno/8HB
+        wv9GR0f/oKGi/8XFxf/n5uX/5+bl/97e3/9BREf/Fxsf/3h6fP/19fX/U1ZZ/xcbH/+xs7T/6+vr/3V3
+        ef8iJin/rK6v//z8/P9gY2b/Fhsf/56fof////////////////+2t7n/tre5/9fX1v/t7Oz//f39/9/e
+        3f/w7+//5OPi/5aY1P9yd+T/am7b/56f0//o6Of//v7+/+Pi4v95e33/HyMn/4qMjv/t7e3/nJ6f/xoe
+        Iv+DhYj/9/f3/4eJi/8kJyv/fH6B/+jp6f+rrK7/HSEl/1hbXv/09PT//////7a3uf+2t7n/4eDg//Hx
+        8f/+/v7//v7+/+Lh4f+DiOr/HSXa/x0l2v8dJdr/Hyfa/1he4//+/v7/3NrZ//7+/v+xsrP/LzI2/1BT
+        Vv/h4uL/zs/Q/ywwM/9YW17/29vc/8HCw/8zNjr/QURI/+zs7P/X2Nn/Nzs+/zI2Of/Q0NH/tre5/7a3
+        uf/39/b/+/v7//39/f//////uLja/x0l2v8cI8H/GB5Y/xgdRf8bIqf/Hiba/62v5//19PT//v7+//7+
+        /v/k5OX/SEtP/yQoLP/Cw8T/09TU/1ZZXP80Nzv/s7S1/+7u7/9SVVj/LjE1/7u9vv/f3+D/YGNl/yUp
+        Lf9TVln/tre5/+nn5//x8O//+/r6/+/u7v+Wl9r/HSXa/xkfdP8WGh//Fhsf/1NWeP8dJNr/U1fO/+7t
+        7f/q6ej//v7+///////7+/v/dnl7/x0hJf+LjY//8/Pz/32Agv8fIyf/hoiK//j4+P+GiIr/Iycq/3+B
+        g//19vb/jI6Q/yYpLf+2t7n/+fn5//z8/P/6+vr/sLGy/1tgpf8dJdr/Vlq4/zc5PP8WGx7/TVF9/xwk
+        2v9UWM3/+Pj3//7+/v//////////////////////vb6//x0hJf9eYWP/7u7v/6qsrf8xNDj/W15h/9rb
+        3P+0tbf/JSks/1FUV//m5+f/oaKk/7a2uP/5+Pj/z8/Q/0pNUP8XGh7/Fxw4/x0l2v8uNdr/VVqy/yku
+        df81PNL/HyfZ/6us0P/X1dP/5OTj////////////////////////////0tPT/0FESP87PkL/w8TF/9/g
+        4P9KTVD/Ky4y/9fY2f/Y2dr/T1JV/zU4PP9sbnH/tre5//Py8v++vbz/HB8j/xcbHv8XGx//Jyxx/x4m
+        2f8cJdr/HCXa/yMq2/9rb9b//fz8//j39v/z8/L//v7+//7+/v//////////////////////7Ozs/3Z5
+        e/8gJCj/j5GT//39/f9laGr/GR0h/5eZm//z8/T/g4WH/yAjJ/9+f4L/5uTk/6qopf9PT0//GBwg/0lK
+        S/+UkpD/oZ+8/5SW4/+ChNH/l5Wr/+Hf3v/5+Pj/+Pj3//7+/v/+/v7//v7+////////////////////
+        /////////Pz8/6WmqP8lKCz/YGNl/+Xl5v+srq//ICQo/1daXf/x8fL/jo+S/yMmKv+enp3/7ezs/7Cu
+        q/+mpKT/q6el/725uP+npKH/rquo/7i1s//S0M//9PPy/+7s6//39vb///////7+/v/+/v7/////////
+        /////////////////////////////8nKyv9KTVD/QENH/76/wP/W19j/Oj5B/zI2Of+Fh4n/ICMn/1xe
+        YP/p6Of/3NrZ/+3r6v+zsK3/ycXE/5yYlf+sqab/3Nva//Tz8v/x8O//9/f2//39/f///////v7+//7+
+        /v/////////////////+/v7///////////////////////Dw8f9tb3L/IiYq/5aYmv/m5uf/c3V4/yAj
+        J/+WmJr/w8LA/8jGxP/7+/v/+fj4/93a2f+rp6T/m5iU/7Guq//j4eD/9/b2//Tz8v/9/f3/////////
+        ///+/v7//v7+/////////////////////////////v7+//7+/v////////////7+/v+KjI7/HSEk/2ps
+        b//Y2Nn/lpia/wAAAACvr7D/r6+x/5GRkf+YmJj/e3p5/3p4d/90c3L/mZeY/5+en/+vrrD/rq2u/7W1
+        t/+2t7n/tre5/7a3uf+2t7n/tre5/7a3uf+2t7n/tre5/7a3uf+2t7n/tre5/7a3uf+2t7n/tre5/7a3
+        uf+Fh4n/ICMn/36Agv8AAAAAgAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAE=
+</value>
+	</data>
+	<data name="$this.Text" xml:space="preserve">
+    <value>Изменить абрис:</value>
+  </data>
+	<data name="colTrigpointName.Text" xml:space="preserve">
+		<value>Название</value>
+	</data>
+	<data name="mnuTrigpointsFilterBy.ToolTipText" xml:space="preserve">
+		<value>Введите номер или часть номера пикета для поиска</value>
+	</data>
+	<data name="btnShowSplay.Text" xml:space="preserve">
+		<value>Боковые замеры</value>
+	</data>
+	<data name="btnRescale.ToolTipText" xml:space="preserve">
+		<value>Изменит размер изображения</value>
+	</data>
+	<data name="btnCut.ToolTipText" xml:space="preserve">
+		<value>Обрезать изображение</value>
+	</data>
+	<data name="btnZoomIn.Text" xml:space="preserve">
+		<value>Увеличить</value>
+	</data>
+	<data name="btnZoomOut.Text" xml:space="preserve">
+		<value>Уменьшить</value>
+	</data>
+	<data name="mnuPreviewAddExtra.Text" xml:space="preserve">
+		<value>Добавить точку отсчета</value>
+	</data>
+	<data name="mnuPreviewEditDistance.Text" xml:space="preserve">
+		<value>Изменить расстояние...</value>
+	</data>
+</root>

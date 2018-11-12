@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]>
+<!-- Creator: CorelDRAW -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="21.8159mm" height="4.3007mm" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 17.6811 3.48559" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:csurvey="http://www.csurvey.it" csurvey:sign="777" csurvey:caption.it="Acqua" csurvey:caption="Waterflow" csurvey:author="" csurvey:note="" csurvey:rotationangledelta="270.0">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str1 {stroke:#1F1A17;stroke-width:0.0617578}
+    .str0 {stroke:#1F1A17;stroke-width:0.142967}
+    .fil1 {fill:none}
+    .fil0 {fill:#1F1A17}
+    .fil2 {fill:#1F1A17;fill-rule:nonzero}
+   ]]>
+  </style>
+ </defs>
+ <g id="Livello_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer" />
+  <g id="_190847424">
+   <path id="_190852920" class="fil0 str0" d="M17.5232 0.245167c-0.730314,0.0597316 -2.14653,2.3921 -2.82708,2.40888 -0.643999,0.0158042 -1.95023,-2.33999 -2.65186,-2.36544 -0.676256,-0.0244762 -1.42051,2.26461 -2.27993,2.28577 -0.863393,0.0212343 -1.65401,-2.32337 -2.28698,-2.33115 -0.690196,-0.00850993 -2.26721,1.75831 -3.34781,1.78214l-0.081047 0.00178303 -0.00356607 -0.162094 0.081047 -0.00178303c1.0314,-0.0226932 2.57324,-1.79171 3.35332,-1.78214 0.760464,0.00940145 1.53868,2.34947 2.28099,2.33115 0.746767,-0.0183166 1.48016,-2.31503 2.28982,-2.28561 0.791829,0.0286906 2.12254,2.37808 2.64197,2.36527 0.569841,-0.0140211 2.00664,-2.34201 2.818,-2.40839l0.0807228 -0.0065648 0.0132107 0.161527 -0.0808038 0.00664585z" />
+  </g>
+  <path class="fil1 str0" d="M17.5167 0.164363c-0.761193,0.0622441 -2.20464,2.3934 -2.82254,2.40863 -0.580053,0.0142643 -1.90282,-2.33837 -2.64691,-2.36536 -0.744092,-0.0269886 -1.48081,2.26591 -2.28488,2.28569 -0.804067,0.0197755 -1.58609,-2.32256 -2.28398,-2.33115 -0.697895,-0.00859098 -2.32848,1.75961 -3.35056,1.78214" />
+  <polygon id="_238135648" class="fil2 str1" points="4.04676,1.9461 4.04676,3.44117 0.0876928,1.95745 4.04676,0.47372 " />
+ </g>
+</svg>

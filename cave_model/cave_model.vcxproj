@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{95592842-FC0A-4665-AFCC-6DB281FDE7A1}</ProjectGuid>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <Keyword>ManagedCProj</Keyword>
+    <RootNamespace>cave_model</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(ProjectDir)\cave_model;$(ProjectDir)\cave_model\common;$(ProjectDir)\cave_model\format;$(ProjectDir)\cave_model\ogre;$(ProjectDir)\cave_model\wykobi;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(ProjectDir)\cave_model;$(ProjectDir)\cave_model\common;$(ProjectDir)\cave_model\format;$(ProjectDir)\cave_model\ogre\;$(ProjectDir)\cave_model\wykobi;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(ProjectDir)\cave_model;$(ProjectDir)\cave_model\common;$(ProjectDir)\cave_model\format;$(ProjectDir)\cave_model\ogre;$(ProjectDir)\cave_model\wykobi;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(ProjectDir)\cave_model;$(ProjectDir)\cave_model\common;$(ProjectDir)\cave_model\format;$(ProjectDir)\cave_model\ogre;$(ProjectDir)\cave_model\wykobi;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <DisableSpecificWarnings>4018;4305;4244;4267;4793;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+      <FullProgramDatabaseFile>true</FullProgramDatabaseFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <DisableSpecificWarnings>4018;4305;4244;4267;4793;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_SCL_SECURE_NO_WARNINGS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <DisableSpecificWarnings>4018;4305;4244;4267;4793;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>NDEBUG;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <DisableSpecificWarnings>4018;4305;4244;4267;4793;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="dNetCMCave.h" />
+    <ClInclude Include="cave_model\CMCave.h" />
+    <ClInclude Include="cave_model\CMDebug.h" />
+    <ClInclude Include="cave_model\CMHelpers.h" />
+    <ClInclude Include="cave_model\CMLog.h" />
+    <ClInclude Include="cave_model\CMPiket.h" />
+    <ClInclude Include="cave_model\CMTypes.h" />
+    <ClInclude Include="cave_model\common\CMAssertions.h" />
+    <ClInclude Include="cave_model\common\CMcommon.h" />
+    <ClInclude Include="cave_model\common\CMtext.h" />
+    <ClInclude Include="cave_model\common\CMyprintf.h" />
+    <ClInclude Include="cave_model\format\fmt\format.h" />
+    <ClInclude Include="cave_model\format\format.h" />
+    <ClInclude Include="cave_model\format\posix.h" />
+    <ClInclude Include="cave_model\ogre\asm_math.h" />
+    <ClInclude Include="cave_model\ogre\OgreMath.h" />
+    <ClInclude Include="cave_model\ogre\OgreMatrix3.h" />
+    <ClInclude Include="cave_model\ogre\OgreMatrix4.h" />
+    <ClInclude Include="cave_model\ogre\OgrePrerequisites.h" />
+    <ClInclude Include="cave_model\ogre\OgreQuaternion.h" />
+    <ClInclude Include="cave_model\ogre\OgreVector2.h" />
+    <ClInclude Include="cave_model\ogre\OgreVector3.h" />
+    <ClInclude Include="cave_model\ogre\OgreVector4.h" />
+    <ClInclude Include="cave_model\wykobi\wykobi.hpp" />
+    <ClInclude Include="cave_model\wykobi\wykobi_algorithm.hpp" />
+    <ClInclude Include="cave_model\wykobi\wykobi_graphics_net.hpp" />
+    <ClInclude Include="cave_model\wykobi\wykobi_graphics_opengl.hpp" />
+    <ClInclude Include="cave_model\wykobi\wykobi_graphics_vcl.hpp" />
+    <ClInclude Include="cave_model\wykobi\wykobi_gui.hpp" />
+    <ClInclude Include="cave_model\wykobi\wykobi_instantiate.hpp" />
+    <ClInclude Include="cave_model\wykobi\wykobi_math.hpp" />
+    <ClInclude Include="cave_model\wykobi\wykobi_matrix.hpp" />
+    <ClInclude Include="cave_model\wykobi\wykobi_nd.hpp" />
+    <ClInclude Include="cave_model\wykobi\wykobi_utilities.hpp" />
+    <ClInclude Include="cave_model\wykobi\wykobi_wrap.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="dNetCMCave.cpp" />
+    <ClCompile Include="cave_model\CMCave.cpp" />
+    <ClCompile Include="cave_model\CMDebug.cpp" />
+    <ClCompile Include="cave_model\CMHelpers.cpp" />
+    <ClCompile Include="cave_model\CMLog.cpp" />
+    <ClCompile Include="cave_model\CMPiket.cpp" />
+    <ClCompile Include="cave_model\CMTypes.cpp" />
+    <ClCompile Include="cave_model\common\CMAssertions.cpp" />
+    <ClCompile Include="cave_model\common\CMtext.cpp" />
+    <ClCompile Include="cave_model\format\fmt\format.cc" />
+    <ClCompile Include="cave_model\ogre\OgreMath.cpp" />
+    <ClCompile Include="cave_model\ogre\OgreMatrix3.cpp" />
+    <ClCompile Include="cave_model\ogre\OgreMatrix4.cpp" />
+    <ClCompile Include="cave_model\ogre\OgreQuaternion.cpp" />
+    <ClCompile Include="cave_model\ogre\OgreVector2.cpp" />
+    <ClCompile Include="cave_model\ogre\OgreVector3.cpp" />
+    <ClCompile Include="cave_model\ogre\OgreVector4.cpp" />
+    <ClCompile Include="cave_model\wykobi\wykobi_build.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="cave_model\wykobi\wykobi_wrap.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cave_model\wykobi\wykobi.inl" />
+    <None Include="cave_model\wykobi\wykobi_axis_projection_descriptor.inl" />
+    <None Include="cave_model\wykobi\wykobi_clipping.inl" />
+    <None Include="cave_model\wykobi\wykobi_duplicates.inl" />
+    <None Include="cave_model\wykobi\wykobi_earclipping.inl" />
+    <None Include="cave_model\wykobi\wykobi_hull.inl" />
+    <None Include="cave_model\wykobi\wykobi_matrix.inl" />
+    <None Include="cave_model\wykobi\wykobi_minimum_bounding_ball.inl" />
+    <None Include="cave_model\wykobi\wykobi_naive_group_intersections.inl" />
+    <None Include="cave_model\wykobi\wykobi_nd.inl" />
+    <None Include="cave_model\wykobi\wykobi_normalization.inl" />
+    <None Include="cave_model\wykobi\wykobi_ordered_polygon.inl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="8.5491mm" height="50.7349mm" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 1.00426 5.95979"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:black;stroke-width:0.0234938}
+    .fil1 {fill:none}
+    .fil0 {fill:black}
+    .fil2 {fill:black;fill-rule:nonzero}
+   ]]>
+  </style>
+ </defs>
+ <g id="Rocce">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_288663568">
+   <polygon id="_288663736" class="fil0 str0" points="0.117998,4.38636 0.012205,5.45625 0.495967,5.93182 0.495967,4.75111 "/>
+   <polygon id="_110418896" class="fil1 str0" points="0.883544,4.38636 0.992027,5.45625 0.495967,5.93182 0.495967,4.75111 "/>
+   <polygon id="_288663592" class="fil2" points="0.288187,0.420739 0.288187,0 0.399618,0 0.631726,0.280951 0.631726,0 0.738153,0 0.738153,0.420739 0.623139,0.420739 0.394602,0.146355 0.394602,0.420739 "/>
+  </g>
+  <g id="_119075520">
+   <polygon id="_287718944" class="fil1 str0" points="0.504166,0.553045 0.143395,4.10336 0.512365,4.45593 "/>
+   <polygon id="_287718896" class="fil0 str0" points="0.519836,0.553045 0.848538,4.10336 0.512365,4.45593 "/>
+  </g>
+ </g>
+</svg>

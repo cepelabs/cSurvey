@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+	<data name="btnAddSet.Size" type="System.Drawing.Size, System.Drawing">
+		<value>64, 22</value>
+	</data>
+	<data name="btnAddSet.Text" xml:space="preserve">
+    <value>Aggiungi set</value>
+  </data>
+	<data name="btnDelete.Size" type="System.Drawing.Size, System.Drawing">
+		<value>58, 22</value>
+	</data>
+	<data name="btnDelete.Text" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+	<data name="btnDeleteAll.Size" type="System.Drawing.Size, System.Drawing">
+		<value>71, 22</value>
+	</data>
+	<data name="btnDeleteAll.Text" xml:space="preserve">
+    <value>Elimina tutti</value>
+  </data>
+	<data name="iml.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+		<value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAw
+        BgAAAk1TRnQBSQFMAgEBAgEAAZgBAgGYAQIBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        AwABEAMAAQEBAAEYBgABDCoAA+66AAPuAX4BUAGPA+4bAAbuEgAG7nsAA+4BfgFQAY8BfgFQAY8BfgFQ
+        AY8D7hUAA+4BMAFAAcQBMAFAAcQD7gwAA+4BMAFAAcQBMAFAAcQD7ngAAX4BUAGQAX4BUAGQAX4BUAGQ
+        AX4BUAGQAX4BUAGQEgAD7gEwAUABxAFsAX4B/AFsAX4B/AEwAUABxAPuBgAD7gEwAUABxAFsAX4B/AFs
+        AX4B/AEwAUABxAPuewABfAFPAZQYAAEwAUABxAFxAYIB+gFZAW4B+QFZAW4B+QFxAYIB+gEwAUABxAbu
+        ATABQAHEAXEBggH6AVkBbgH5AVkBbgH5AXEBggH6ATABQAHEbAAD7gYAD+4GAAPuCQABMAFAAcQBdgGH
+        AfgBVAFpAfcBVAFpAfcBVAFpAfcBdgGHAfgBMAFAAcQBMAFAAcQBdgGHAfgBVAFpAfcBVAFpAfcBVAFp
+        AfcBdgGHAfgBMAFAAcRpAAPuAX0BUAGRBgABowFiAToBogFiAToBowFiATgBogFiAToBowFiAToGAAF9
+        AVABkQPuCQABMAFAAcQBewGMAfcBTwFlAfUBTwFlAfUBTwFlAfUBewGMAfcBewGMAfcBTwFlAfUBTwFl
+        AfUBTwFlAfUBewGMAfcBMAFAAcRpAAPuAX4BUAGPAX0BUAGRA+4DAAGiAWEBOwkAAaMBYgE6AwAD7gF9
+        AVABkAF+AVABjwPuCQABMAFAAcQBggGRAfYBSwFhAfMBSwFhAfMBSwFhAfMBSwFhAfMBSwFhAfMBSwFh
+        AfMBggGRAfYBMAFAAcRsAAF+AVABjwF+AVABjwF9AVABkQF6AU4BmAMAAaIBYQE7CQABowFiATgDAAF8
+        AU8BlQF+AVABkAF+AVABjwF+AVABjwwAATABQAHEAYgBlgH2AUYBXQHwAUYBXQHwAUYBXQHwAUYBXQHw
+        AYgBlgH2ATABQAHEcgABfgFQAY8BfQFQAZEGAAGiAWEBOwnuAaMBYgE6BgABfQFQAZABfgFQAY8MAAPu
+        ATABQAHEAY8BnQH1AUEBWQHuAUEBWQHuAUEBWQHuAUEBWQHuAY8BnQH1ATABQAHEA+5yAAF9AVABkQYA
+        AaIBYgE6AaIBYQE7AaIBYQE7AaIBYQE7AaMBYgE6BgABfQFQAZEMAAPuATABQAHEAZcBowH1ATwBVQHs
+        ATwBVQHsATwBVQHsATwBVQHsATwBVQHsATwBVQHsAZcBowH1ATABQAHEA+5+AAPuGAAD7gEwAUABxAGe
+        AasB9AE3AVEB6gE3AVEB6gE3AVEB6gGeAasB9AGeAasB9AE3AVEB6gE3AVEB6gE3AVEB6gGeAasB9AEw
+        AUABxAPudQAG7gF6AU4BmAbuEgABMAFAAcQBpwGzAfUBMgFNAecBMgFNAecBMgFNAecBpwGzAfUBMAFA
+        AcQBMAFAAcQBpwGzAfUBMgFNAecBMgFNAecBMgFNAecBpwGzAfUBMAFAAcR1AAF+AVABkAF9AVABkQF9
+        AVABkQF9AVABkQF+AVABkBIAATABQAHEAbABuwH1AS0BSQHlAS0BSQHlAbABuwH1ATABQAHEBgABMAFA
+        AcQBsAG7AfUBLQFJAeUBLQFJAeUBsAG7AfUBMAFAAcR4AAF+AVABjwF+AVABjwF+AVABjxgAATABQAHE
+        AboBwwH2AboBwwH2ATABQAHEDAABMAFAAcQBugHDAfYBugHDAfYBMAFAAcR+AAF+AVABjx4AATABQAHE
+        ATABQAHEEgABMAFAAcQBMAFAAcRpAAFCAU0BPgcAAT4DAAEoAwABQAMAARADAAEBAQABAQUAAYAXAAP/
+        AQAB/wF/Av8EAAH+AT8C5wQAAfwBHwLDBAAB/AEfAoEEAAH/AX8BgAEBBAAB7AEbAYABAQQAAcwBGQHA
+        AQMEAAGFAdAB4AEHBAABhQHQAfABDwQAAcwBGQHgAQcEAAHsARsBwAEDBAAB/wF/AYABAQQAAfwBHwGA
+        AQEEAAH8AR8CgQQAAf4BPwLDBAAB/wF/AucEAAs=
+</value>
+	</data>
+	<data name="cmdApply.Text" xml:space="preserve">
+    <value>Applica</value>
+  </data>
+	<data name="cmdCancel.Text" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+	<data name="lblDescription.Size" type="System.Drawing.Size, System.Drawing">
+		<value>60, 13</value>
+	</data>
+	<data name="lblDescription.Text" xml:space="preserve">
+    <value>Descrizione:</value>
+  </data>
+	<data name="tabGradeMain.Text" xml:space="preserve">
+    <value>Deviazione standard</value>
+  </data>
+	<data name="chkInclination.Size" type="System.Drawing.Size, System.Drawing">
+		<value>75, 17</value>
+	</data>
+	<data name="chkInclination.Text" xml:space="preserve">
+    <value>Inclinazione</value>
+  </data>
+	<data name="chkBearing.Size" type="System.Drawing.Size, System.Drawing">
+		<value>62, 17</value>
+	</data>
+	<data name="chkBearing.Text" xml:space="preserve">
+    <value>Azimut</value>
+  </data>
+	<data name="chkDistance.Text" xml:space="preserve">
+    <value>Distanza</value>
+  </data>
+	<data name="lblMeasureUnit.Size" type="System.Drawing.Size, System.Drawing">
+		<value>78, 13</value>
+	</data>
+	<data name="lblMeasureUnit.Text" xml:space="preserve">
+    <value>Unità di misura:</value>
+  </data>
+	<data name="lblValues.Size" type="System.Drawing.Size, System.Drawing">
+		<value>42, 13</value>
+	</data>
+	<data name="lblValues.Text" xml:space="preserve">
+    <value>Valori:</value>
+  </data>
+	<data name="$this.Text" xml:space="preserve">
+    <value>Gradi di precisione:</value>
+  </data>
+	<data name="cboInclinationType.Items" xml:space="preserve">
+		<value>Gradi sessadecimali</value>
+	</data>
+	<data name="cboInclinationType.Items1" xml:space="preserve">
+		<value>Gradi centesimali (grads)</value>
+	</data>
+	<data name="cboBearingType.Items" xml:space="preserve">
+		<value>Gradi sessadecimali</value>
+	</data>
+	<data name="cboBearingType.Items1" xml:space="preserve">
+		<value>Gradi centesimali (grads)</value>
+	</data>
+	<data name="cboDistanceType.Items" xml:space="preserve">
+		<value>Metri</value>
+	</data>
+	<data name="cboDistanceType.Items1" xml:space="preserve">
+		<value>Piedi</value>
+	</data>
+	<data name="cboDistanceType.Items2" xml:space="preserve">
+		<value>Iarde</value>
+	</data>
+</root>

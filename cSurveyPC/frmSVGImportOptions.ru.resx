@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="cmdCancel.Text" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+	<assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+	<data name="lblSVGLineType.Size" type="System.Drawing.Size, System.Drawing">
+		<value>55, 13</value>
+	</data>
+	<data name="lblSVGLineType.Text" xml:space="preserve">
+    <value>Тип линии:</value>
+  </data>
+	<data name="lblSVGScale.Text" xml:space="preserve">
+    <value>Масштаб:</value>
+  </data>
+	<data name="chkSVGAutodivide.Size" type="System.Drawing.Size, System.Drawing">
+		<value>121, 17</value>
+	</data>
+	<data name="chkSVGAutodivide.Text" xml:space="preserve">
+    <value>Разделить автоматически</value>
+  </data>
+	<data name="lblPlotSelectedPointSize.Size" type="System.Drawing.Size, System.Drawing">
+		<value>101, 13</value>
+	</data>
+	<data name="lblPlotSelectedPointSize.Text" xml:space="preserve">
+    <value>Максимальный размер пути:</value>
+  </data>
+	<data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
+		<value>30, 13</value>
+	</data>
+	<data name="Label1.Text" xml:space="preserve">
+    <value>Размер:</value>
+  </data>
+	<data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+		<value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AADc3Nz/zMzM/8zMzP/MzMz/zMzM/8zMzP/MzMz/zMzM/8zMzP/MzMz/zMzM/8zMzP/c3Nz/AAAAAAAA
+        AAAAAAAAurq4/6+vrf+urqv/ra2r/66urP+vr63/sLCv/7K2uf+QXyP/qqKW/7Cxsf+wsK7/urq4/wAA
+        AAAAAAAAAAAAALCwrf//////////////////////////////////////i1od/+7m2////////////7Cw
+        rf8AAAAAAAAAAAAAAACurqv///////39/f/+/v7//////2NjY/9jY2P//////6J8TP/BqIj/////////
+        //+ur63/AAAAAAAAAAAAAAAAra2r///////6+Pj/+/r6//////9jY2P/Y2Nj///////axqz/l2gt////
+        ////////sLKy/wAAAAAAAAAAAAAAAK2tq///////9vb2//b39//6+vr///////////9jY2P/np6e/2Nj
+        Y/+enp7////+/7W6vv/z8/P/AAAAAAAAAACtrav///////T08//09PP/9fX0//b29f/6+/n//////2Nj
+        Y//b3N3/Y2Nj/5ttMv+jjHD/v7Sn/8zMzP/MzMz/ra2r///////y8fD/8vHw//Lx8P/y8fD/9PPy//38
+        +/+enp7/Y2Nj/56env/q2cX/n4Fa/5dsNf+ZcDz/mXA9/62tq///////7+/u/+/v7v/v7+7/7+/u/+/w
+        7//y8vH/+fr4//////9jY2P//////73Cxv8AAAAAAAAAAAAAAACtrav//////+zr6v/t7Ov/7ezr/+3s
+        6//t7Ov/7ezr/+7t7P/y8fD//fz7/2NjY/9jY2P/AAAAAAAAAAAAAAAAra2r///////p6ej/6urp/+rq
+        6f/q6un/6eno//P08v////////////////9jY2P/Y2Nj/wAAAAAAAAAAAAAAAK2uq///////5+Xk/+jn
+        5v/o5+b/6Ofm/+fl5P//////y8vK/6enpf+pqaf//////7i4tv8AAAAAAAAAAAAAAACurqv//////+Pj
+        4v/k5OP/5OXk/+Tk4//j4+L//////6enpP/r6+r//////+rq6//Ly8n/AAAAAAAAAAAAAAAArq6s////
+        ///g397/4d/e/+Hg3//h397/4N/e//////+lpaP//////+jo6P/Kysj/AAAAAAAAAAAAAAAAAAAAAK+v
+        rf///////////////////////////////////////////+np6f/Kysj/AAAAAAAAAAAAAAAAAAAAAAAA
+        AAC3t7X/sLCt/66urP+urqv/rq6r/66uq/+trqv/rq6r/6+vrf+2trT/AAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAesQQAHrEEAB6xBAAesQQAHrEEAA6xBAACsQQAArEEAB6xBAAesQQAHrEEAB6xBAAesQQAP
+        rEEAH6xBAD+sQQ==
+</value>
+	</data>
+	<data name="$this.Text" xml:space="preserve">
+    <value>Импорт графического объекта SVG:</value>
+  </data>
+	<data name="cboSVGLineType.Items" xml:space="preserve">
+		<value>Прямые</value>
+	</data>
+	<data name="cboSVGLineType.Items1" xml:space="preserve">
+		<value>Наклонные</value>
+	</data>
+	<data name="cboSVGLineType.Items2" xml:space="preserve">
+		<value>Безье</value>
+	</data>
+</root>

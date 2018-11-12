@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="cave_model">
+      <UniqueIdentifier>{df6eb52f-8e61-4322-bc69-47fc8a5868e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cave_model\common">
+      <UniqueIdentifier>{f25e2b58-ae87-419a-af61-0c8b0688e324}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cave_model\format">
+      <UniqueIdentifier>{06018c95-cb3a-4bf4-a81e-ae861883f5dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cave_model\ogre">
+      <UniqueIdentifier>{d66ba2ab-db62-43d5-bef9-464d32be9f5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cave_model\wykobi">
+      <UniqueIdentifier>{2cc72866-c03c-4a9f-9e31-de5728b2f33f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dot_net_wrap">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cave_model\CMHelpers.h">
+      <Filter>cave_model</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\CMLog.h">
+      <Filter>cave_model</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\CMPiket.h">
+      <Filter>cave_model</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\CMTypes.h">
+      <Filter>cave_model</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\CMCave.h">
+      <Filter>cave_model</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\CMDebug.h">
+      <Filter>cave_model</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\wykobi\wykobi_instantiate.hpp">
+      <Filter>cave_model\wykobi</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\wykobi\wykobi_math.hpp">
+      <Filter>cave_model\wykobi</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\wykobi\wykobi_matrix.hpp">
+      <Filter>cave_model\wykobi</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\wykobi\wykobi_nd.hpp">
+      <Filter>cave_model\wykobi</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\wykobi\wykobi_utilities.hpp">
+      <Filter>cave_model\wykobi</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\wykobi\wykobi_wrap.h">
+      <Filter>cave_model\wykobi</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\wykobi\wykobi.hpp">
+      <Filter>cave_model\wykobi</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\wykobi\wykobi_algorithm.hpp">
+      <Filter>cave_model\wykobi</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\wykobi\wykobi_graphics_net.hpp">
+      <Filter>cave_model\wykobi</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\wykobi\wykobi_graphics_opengl.hpp">
+      <Filter>cave_model\wykobi</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\wykobi\wykobi_graphics_vcl.hpp">
+      <Filter>cave_model\wykobi</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\wykobi\wykobi_gui.hpp">
+      <Filter>cave_model\wykobi</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\common\CMAssertions.h">
+      <Filter>cave_model\common</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\common\CMcommon.h">
+      <Filter>cave_model\common</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\common\CMtext.h">
+      <Filter>cave_model\common</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\common\CMyprintf.h">
+      <Filter>cave_model\common</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\format\format.h">
+      <Filter>cave_model\format</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\format\posix.h">
+      <Filter>cave_model\format</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\format\fmt\format.h">
+      <Filter>cave_model\format</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\ogre\OgrePrerequisites.h">
+      <Filter>cave_model\ogre</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\ogre\OgreQuaternion.h">
+      <Filter>cave_model\ogre</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\ogre\OgreVector2.h">
+      <Filter>cave_model\ogre</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\ogre\OgreVector3.h">
+      <Filter>cave_model\ogre</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\ogre\OgreVector4.h">
+      <Filter>cave_model\ogre</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\ogre\asm_math.h">
+      <Filter>cave_model\ogre</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\ogre\OgreMath.h">
+      <Filter>cave_model\ogre</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\ogre\OgreMatrix3.h">
+      <Filter>cave_model\ogre</Filter>
+    </ClInclude>
+    <ClInclude Include="cave_model\ogre\OgreMatrix4.h">
+      <Filter>cave_model\ogre</Filter>
+    </ClInclude>
+    <ClInclude Include="dNetCMCave.h">
+      <Filter>dot_net_wrap</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AssemblyInfo.cpp">
+      <Filter>dot_net_wrap</Filter>
+    </ClCompile>
+    <ClCompile Include="cave_model\CMHelpers.cpp">
+      <Filter>cave_model</Filter>
+    </ClCompile>
+    <ClCompile Include="cave_model\CMLog.cpp">
+      <Filter>cave_model</Filter>
+    </ClCompile>
+    <ClCompile Include="cave_model\CMPiket.cpp">
+      <Filter>cave_model</Filter>
+    </ClCompile>
+    <ClCompile Include="cave_model\CMTypes.cpp">
+      <Filter>cave_model</Filter>
+    </ClCompile>
+    <ClCompile Include="cave_model\CMCave.cpp">
+      <Filter>cave_model</Filter>
+    </ClCompile>
+    <ClCompile Include="cave_model\CMDebug.cpp">
+      <Filter>cave_model</Filter>
+    </ClCompile>
+    <ClCompile Include="cave_model\wykobi\wykobi_wrap.cpp">
+      <Filter>cave_model\wykobi</Filter>
+    </ClCompile>
+    <ClCompile Include="cave_model\wykobi\wykobi_build.cpp">
+      <Filter>cave_model\wykobi</Filter>
+    </ClCompile>
+    <ClCompile Include="cave_model\common\CMtext.cpp">
+      <Filter>cave_model\common</Filter>
+    </ClCompile>
+    <ClCompile Include="cave_model\common\CMAssertions.cpp">
+      <Filter>cave_model\common</Filter>
+    </ClCompile>
+    <ClCompile Include="cave_model\format\fmt\format.cc">
+      <Filter>cave_model\format</Filter>
+    </ClCompile>
+    <ClCompile Include="cave_model\ogre\OgreQuaternion.cpp">
+      <Filter>cave_model\ogre</Filter>
+    </ClCompile>
+    <ClCompile Include="cave_model\ogre\OgreVector2.cpp">
+      <Filter>cave_model\ogre</Filter>
+    </ClCompile>
+    <ClCompile Include="cave_model\ogre\OgreVector3.cpp">
+      <Filter>cave_model\ogre</Filter>
+    </ClCompile>
+    <ClCompile Include="cave_model\ogre\OgreVector4.cpp">
+      <Filter>cave_model\ogre</Filter>
+    </ClCompile>
+    <ClCompile Include="cave_model\ogre\OgreMath.cpp">
+      <Filter>cave_model\ogre</Filter>
+    </ClCompile>
+    <ClCompile Include="cave_model\ogre\OgreMatrix3.cpp">
+      <Filter>cave_model\ogre</Filter>
+    </ClCompile>
+    <ClCompile Include="cave_model\ogre\OgreMatrix4.cpp">
+      <Filter>cave_model\ogre</Filter>
+    </ClCompile>
+    <ClCompile Include="dNetCMCave.cpp">
+      <Filter>dot_net_wrap</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cave_model\wykobi\wykobi_matrix.inl">
+      <Filter>cave_model\wykobi</Filter>
+    </None>
+    <None Include="cave_model\wykobi\wykobi_minimum_bounding_ball.inl">
+      <Filter>cave_model\wykobi</Filter>
+    </None>
+    <None Include="cave_model\wykobi\wykobi_naive_group_intersections.inl">
+      <Filter>cave_model\wykobi</Filter>
+    </None>
+    <None Include="cave_model\wykobi\wykobi_nd.inl">
+      <Filter>cave_model\wykobi</Filter>
+    </None>
+    <None Include="cave_model\wykobi\wykobi_normalization.inl">
+      <Filter>cave_model\wykobi</Filter>
+    </None>
+    <None Include="cave_model\wykobi\wykobi_ordered_polygon.inl">
+      <Filter>cave_model\wykobi</Filter>
+    </None>
+    <None Include="cave_model\wykobi\wykobi.inl">
+      <Filter>cave_model\wykobi</Filter>
+    </None>
+    <None Include="cave_model\wykobi\wykobi_axis_projection_descriptor.inl">
+      <Filter>cave_model\wykobi</Filter>
+    </None>
+    <None Include="cave_model\wykobi\wykobi_clipping.inl">
+      <Filter>cave_model\wykobi</Filter>
+    </None>
+    <None Include="cave_model\wykobi\wykobi_duplicates.inl">
+      <Filter>cave_model\wykobi</Filter>
+    </None>
+    <None Include="cave_model\wykobi\wykobi_earclipping.inl">
+      <Filter>cave_model\wykobi</Filter>
+    </None>
+    <None Include="cave_model\wykobi\wykobi_hull.inl">
+      <Filter>cave_model\wykobi</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -981,15 +981,18 @@ Namespace cSurvey.Design
         Public Overridable Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, Selection As Helper.Editor.cIEditDesignSelection)
             Try
                 Dim sOrigin As String = oSurvey.Properties.Origin
+                Dim bIsThisSurvey As Boolean = PaintOptions.Survey Is oSurvey
 
-                'If PaintOptions.IsDesign Then
+                'Dim bPrintExportAreaPreview As Boolean = False
+                'If bIsThisSurvey AndAlso PaintOptions.IsDesign Then
                 '    Dim oDesignOptions As cOptionsDesign = PaintOptions
                 '    If oDesignOptions.DrawPrintOrExportArea Then
                 '        PaintOptions = oDesignOptions.GetPrintOrExportProfile(Me).Options
+                '        bPrintExportAreaPreview = True
                 '    End If
                 'End If
 
-                If PaintOptions.Survey Is oSurvey Then
+                If bIsThisSurvey Then
                     If Type = cIDesign.cDesignTypeEnum.Plan AndAlso sOrigin <> "" AndAlso oSurvey.Properties.GPS.Enabled AndAlso PaintOptions.SurfaceOptions.DrawSurface Then
                         Dim iBackupSmoothingMode As SmoothingMode = Graphics.SmoothingMode
                         Graphics.SmoothingMode = SmoothingMode.None

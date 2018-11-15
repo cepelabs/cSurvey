@@ -224,12 +224,15 @@ Public Class frmSplay
             txtPropProfileSplayNegInclinationRangeMin.Value = modSegmentsTools.GetDefaultProfileSplayBorderNegInclinationRange.Width
             txtPropProfileSplayNegInclinationRangeMax.Value = modSegmentsTools.GetDefaultProfileSplayBorderNegInclinationRange.Height
         Else
-            txtPropProfileSplayProjectionAngle.Value = oSegment.ProfileSplayBorderProjectionAngle
-            txtPropProfileSplayMaxVariationAngle.Value = oSegment.ProfileSplayBorderMaxAngleVariation
-            txtPropProfileSplayPosInclinationRangeMin.Value = oSegment.ProfileSplayBorderPosInclinationRange.Width
-            txtPropProfileSplayPosInclinationRangeMax.Value = oSegment.ProfileSplayBorderPosInclinationRange.Height
-            txtPropProfileSplayNegInclinationRangeMin.Value = oSegment.ProfileSplayBorderNegInclinationRange.Width
-            txtPropProfileSplayNegInclinationRangeMax.Value = oSegment.ProfileSplayBorderNegInclinationRange.Height
+            Try
+                txtPropProfileSplayProjectionAngle.Value = oSegment.ProfileSplayBorderProjectionAngle
+                txtPropProfileSplayMaxVariationAngle.Value = oSegment.ProfileSplayBorderMaxAngleVariation
+                txtPropProfileSplayPosInclinationRangeMin.Value = oSegment.ProfileSplayBorderPosInclinationRange.Width
+                txtPropProfileSplayPosInclinationRangeMax.Value = oSegment.ProfileSplayBorderPosInclinationRange.Height
+                txtPropProfileSplayNegInclinationRangeMin.Value = oSegment.ProfileSplayBorderNegInclinationRange.Width
+                txtPropProfileSplayNegInclinationRangeMax.Value = oSegment.ProfileSplayBorderNegInclinationRange.Height
+            Catch ex As Exception
+            End Try
         End If
 
         Dim oCrossSection As cItemCrossSection

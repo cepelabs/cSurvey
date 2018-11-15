@@ -748,7 +748,7 @@ Namespace cSurvey
             If iProfileSplayBorderProjectionAngle <> 0 Then Call oXmlSegment.SetAttribute("profilesplayborderprojectionangle", iProfileSplayBorderProjectionAngle)
             If sProfileSplayBorderMaxAngleVariation <> 20 Then Call oXmlSegment.SetAttribute("profilesplaybordermaxanglevariation", modNumbers.NumberToString(sProfileSplayBorderMaxAngleVariation))
             If Not oProfileSplayBorderPosInclinationRange <> modSegmentsTools.GetDefaultProfileSplayBorderPosInclinationRange Then Call oXmlSegment.SetAttribute("profilesplayborderposinclinationrange", modNumbers.SizeFToString(oProfileSplayBorderPosInclinationRange, "0.0"))
-            If Not oProfileSplayBorderNegInclinationRange <> modSegmentsTools.GetDefaultProfileSplayBorderNegInclinationRange Then Call oXmlSegment.SetAttribute("profilesplayborderneginclinationrange", modNumbers.SizeFToString(oProfileSplayBorderPosInclinationRange, "0.0"))
+            If Not oProfileSplayBorderNegInclinationRange <> modSegmentsTools.GetDefaultProfileSplayBorderNegInclinationRange Then Call oXmlSegment.SetAttribute("profilesplayborderneginclinationrange", modNumbers.SizeFToString(oProfileSplayBorderNegInclinationRange, "0.0"))
 
             If iSurfaceProfileShow <> cISurfaceProfile.SurfaceProfileShowEnum.Default Then Call oXmlSegment.SetAttribute("surfaceprofileshow", iSurfaceProfileShow.ToString("D"))
 

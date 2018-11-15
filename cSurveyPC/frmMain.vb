@@ -5123,7 +5123,7 @@ Public Class frmMain
                             txtPropProfileSplayPosInclinationRangeMax.Value = oItemSplayBorder.SplayBorderPosInclinationRange.Height
                             txtPropProfileSplayNegInclinationRangeMin.Value = oItemSplayBorder.SplayBorderNegInclinationRange.Width
                             txtPropProfileSplayNegInclinationRangeMax.Value = oItemSplayBorder.SplayBorderNegInclinationRange.Height
-                        Catch
+                        Catch ex As Exception
                         End Try
                         Call pObjectPropertyProfileDrawProjectionSchema()
                         pnlPropProfileSplayBorder.Visible = True

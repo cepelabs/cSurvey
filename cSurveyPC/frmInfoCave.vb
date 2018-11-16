@@ -211,30 +211,34 @@ Public Class frmInfoCave
             Dim dMaxAltitude As Decimal = Decimal.MinValue
             For Each oSurveyItem As cSurveyPlaceholder In cboSurveyInfoFilename.Items
                 If Not oSurveyItem.IsSystem Then
-                    Dim oSpeleometric As Calculate.Plot.cSpeleometric = oSurveyItem.Survey.Calculate.Speleometrics(sCurrentCave, sCurrentBranch)
-                    If oSpeleometric Is Nothing Then
-                        'old survey file...do nothing...or show warning...?
-                    Else
-                        Dim sMainCaveEntrance As String = oSpeleometric.EntranceStation
-                        If sMainCaveEntrance = "" Then
+                    Try
+                        Dim oSpeleometric As Calculate.Plot.cSpeleometric = oSurveyItem.Survey.Calculate.Speleometrics(sCurrentCave, sCurrentBranch)
+                        If oSpeleometric Is Nothing Then
+                            'old survey file...do nothing...or show warning...?
                         Else
-                            Dim dAltitude As Decimal = modConversion.ConvertBaseToDefaultDistance(oSpeleometric.EntranceCoordinate.Altitude, oSurvey)
-                            Dim dSurveyMaxAltitude As Decimal = dAltitude + modConversion.ConvertBaseToDefaultDistance(oSpeleometric.PositiveVerticalRange, oSurvey)
-                            Dim dSurveyMinAltitude As Decimal = dAltitude - modConversion.ConvertBaseToDefaultDistance(oSpeleometric.NegativeVerticalRange, oSurvey)
-                            If dSurveyMaxAltitude > dMaxAltitude Then dMaxAltitude = dSurveyMaxAltitude
-                            If dSurveyMinAltitude < dMinAltitude Then dMinAltitude = dSurveyMinAltitude
+                            Dim sMainCaveEntrance As String = oSpeleometric.EntranceStation
+                            If sMainCaveEntrance = "" Then
+                            Else
+                                Dim dAltitude As Decimal = modConversion.ConvertBaseToDefaultDistance(oSpeleometric.EntranceCoordinate.Altitude, oSurvey)
+                                Dim dSurveyMaxAltitude As Decimal = dAltitude + modConversion.ConvertBaseToDefaultDistance(oSpeleometric.PositiveVerticalRange, oSurvey)
+                                Dim dSurveyMinAltitude As Decimal = dAltitude - modConversion.ConvertBaseToDefaultDistance(oSpeleometric.NegativeVerticalRange, oSurvey)
+                                If dSurveyMaxAltitude > dMaxAltitude Then dMaxAltitude = dSurveyMaxAltitude
+                                If dSurveyMinAltitude < dMinAltitude Then dMinAltitude = dSurveyMinAltitude
+                            End If
+                            dLenght += modConversion.ConvertBaseToDefaultDistance(oSpeleometric.Length, oSurvey)
+                            dPlanimetricLength += modConversion.ConvertBaseToDefaultDistance(oSpeleometric.PlanimetricLength, oSurvey)
+                            dMeasuredLength += modConversion.ConvertBaseToDefaultDistance(oSpeleometric.MeasuredLength, oSurvey)
+                            dSegmentCount += oSpeleometric.SegmentCount
+                            dExcludedSegmentCount += oSpeleometric.ExcludedSegmentCount
                         End If
-                        dLenght += modConversion.ConvertBaseToDefaultDistance(oSpeleometric.Length, oSurvey)
-                        dPlanimetricLength += modConversion.ConvertBaseToDefaultDistance(oSpeleometric.PlanimetricLength, oSurvey)
-                        dMeasuredLength += modConversion.ConvertBaseToDefaultDistance(oSpeleometric.MeasuredLength, oSurvey)
-                        dSegmentCount += oSpeleometric.SegmentCount
-                        dExcludedSegmentCount += oSpeleometric.ExcludedSegmentCount
-                    End If
+                    Catch ex As Exception
+                        Call oSurvey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Error, "Error in " & oSurveyItem.Survey.Name & "/" & sCurrentCave & "/" & sCurrentBranch & ":" & ex.Message, True)
+                    End Try
                 End If
             Next
             Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart20"), modNumbers.MathRound(dMaxAltitude, iDistanceDecimalPlace) & " " & sDistanceSimbol)
             Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart21"), modNumbers.MathRound(dMinAltitude, iDistanceDecimalPlace) & " " & sDistanceSimbol)
-            Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart22"), modNumbers.MathRound(dMaxAltitude - dminaltitude, iDistanceDecimalPlace) & " " & sDistanceSimbol)
+            Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart22"), modNumbers.MathRound(dMaxAltitude - dMinAltitude, iDistanceDecimalPlace) & " " & sDistanceSimbol)
 
             Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart13"), modNumbers.MathRound(dLenght, iDistanceDecimalPlace) & " " & sDistanceSimbol)
             Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart14"), modNumbers.MathRound(dPlanimetricLength, iDistanceDecimalPlace) & " " & sDistanceSimbol)
@@ -242,35 +246,39 @@ Public Class frmInfoCave
             Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart16"), dSegmentCount)
             Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart17"), dExcludedSegmentCount)
         Else
-            Dim oSpeleometric As Calculate.Plot.cSpeleometric = oCurrentSurvey.Calculate.Speleometrics(sCurrentCave, sCurrentBranch)
-            If oSpeleometric Is Nothing Then
-                'old survey file...do nothing...or show warning...?
-            Else
-                If Not bBranch Then
-                    Dim sMainCaveEntrance As String = oSpeleometric.EntranceStation
-                    If sMainCaveEntrance = "" Then
-                        Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart4"), GetLocalizedString("infocave.textpart4a"))
-                        Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart8"), GetLocalizedString("infocave.textpart8a"))
-                        Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart9"), GetLocalizedString("infocave.textpart8a"))
-                    Else
-                        Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart4"), sMainCaveEntrance)
-                        If Not oSpeleometric.EntranceCoordinate Is Nothing Then
-                            Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart5"), modNumbers.NumberToCoordinate(oSpeleometric.EntranceCoordinate.Latitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "N", "S"))
-                            Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart6"), modNumbers.NumberToCoordinate(oSpeleometric.EntranceCoordinate.Longitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "E", "W"))
-                            Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart7"), modNumbers.MathRound(modConversion.ConvertBaseToDefaultDistance(oSpeleometric.EntranceCoordinate.Altitude, oSurvey), iDistanceDecimalPlace) & " " & sDistanceSimbol)
+            Try
+                Dim oSpeleometric As Calculate.Plot.cSpeleometric = oCurrentSurvey.Calculate.Speleometrics(sCurrentCave, sCurrentBranch)
+                If oSpeleometric Is Nothing Then
+                    'old survey file...do nothing...or show warning...?
+                Else
+                    If Not bBranch Then
+                        Dim sMainCaveEntrance As String = oSpeleometric.EntranceStation
+                        If sMainCaveEntrance = "" Then
+                            Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart4"), GetLocalizedString("infocave.textpart4a"))
+                            Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart8"), GetLocalizedString("infocave.textpart8a"))
+                            Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart9"), GetLocalizedString("infocave.textpart8a"))
+                        Else
+                            Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart4"), sMainCaveEntrance)
+                            If Not oSpeleometric.EntranceCoordinate Is Nothing Then
+                                Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart5"), modNumbers.NumberToCoordinate(oSpeleometric.EntranceCoordinate.Latitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "N", "S"))
+                                Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart6"), modNumbers.NumberToCoordinate(oSpeleometric.EntranceCoordinate.Longitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "E", "W"))
+                                Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart7"), modNumbers.MathRound(modConversion.ConvertBaseToDefaultDistance(oSpeleometric.EntranceCoordinate.Altitude, oSurvey), iDistanceDecimalPlace) & " " & sDistanceSimbol)
+                            End If
+                            Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart8"), modNumbers.MathRound(Math.Abs(modConversion.ConvertBaseToDefaultDistance(oSpeleometric.PositiveVerticalRange, oSurvey)), iDistanceDecimalPlace) & " " & sDistanceSimbol)
+                            Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart9"), modNumbers.MathRound(Math.Abs(modConversion.ConvertBaseToDefaultDistance(oSpeleometric.NegativeVerticalRange, oSurvey)), iDistanceDecimalPlace) & " " & sDistanceSimbol)
                         End If
-                        Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart8"), modNumbers.MathRound(Math.Abs(modConversion.ConvertBaseToDefaultDistance(oSpeleometric.PositiveVerticalRange, oSurvey)), iDistanceDecimalPlace) & " " & sDistanceSimbol)
-                        Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart9"), modNumbers.MathRound(Math.Abs(modConversion.ConvertBaseToDefaultDistance(oSpeleometric.NegativeVerticalRange, oSurvey)), iDistanceDecimalPlace) & " " & sDistanceSimbol)
                     End If
-                End If
-                Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart18"), modConversion.ConvertBaseToDefaultDistance(modNumbers.MathRound(oSpeleometric.VerticalRange, iDistanceDecimalPlace), oSurvey) & " " & sDistanceSimbol)
+                    Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart18"), modConversion.ConvertBaseToDefaultDistance(modNumbers.MathRound(oSpeleometric.VerticalRange, iDistanceDecimalPlace), oSurvey) & " " & sDistanceSimbol)
 
-                Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart13"), modNumbers.MathRound(modConversion.ConvertBaseToDefaultDistance(oSpeleometric.Length, oSurvey), iDistanceDecimalPlace) & " " & sDistanceSimbol)
-                Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart14"), modNumbers.MathRound(modConversion.ConvertBaseToDefaultDistance(oSpeleometric.PlanimetricLength, oSurvey), iDistanceDecimalPlace) & " " & sDistanceSimbol)
-                Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart15"), modNumbers.MathRound(modConversion.ConvertBaseToDefaultDistance(oSpeleometric.MeasuredLength, oSurvey), iDistanceDecimalPlace) & " " & sDistanceSimbol)
-                Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart16"), oSpeleometric.SegmentCount)
-                Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart17"), oSpeleometric.ExcludedSegmentCount)
-            End If
+                    Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart13"), modNumbers.MathRound(modConversion.ConvertBaseToDefaultDistance(oSpeleometric.Length, oSurvey), iDistanceDecimalPlace) & " " & sDistanceSimbol)
+                    Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart14"), modNumbers.MathRound(modConversion.ConvertBaseToDefaultDistance(oSpeleometric.PlanimetricLength, oSurvey), iDistanceDecimalPlace) & " " & sDistanceSimbol)
+                    Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart15"), modNumbers.MathRound(modConversion.ConvertBaseToDefaultDistance(oSpeleometric.MeasuredLength, oSurvey), iDistanceDecimalPlace) & " " & sDistanceSimbol)
+                    Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart16"), oSpeleometric.SegmentCount)
+                    Call grdSurveyInfo.Rows.Add(GetLocalizedString("infocave.textpart17"), oSpeleometric.ExcludedSegmentCount)
+                End If
+            Catch ex As Exception
+                Call oSurvey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Error, "Error in " & oCurrentSurvey.Name & "/" & sCurrentCave & "/" & sCurrentBranch & ":" & ex.Message, True)
+            End Try
         End If
         Cursor = Cursors.Default
     End Sub

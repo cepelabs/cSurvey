@@ -273,6 +273,8 @@ Namespace cSurvey.Design
                                                 oCaveColor = oSurvey.Properties.CaveInfos.GetColor(oSegment, oDrawingObject.PenColor)
                                             Case 1
                                                 oCaveColor = oSurvey.Properties.CaveInfos.GetColor(oSegment.Cave, "", oDrawingObject.PenColor)
+                                            Case 2
+                                                oCaveColor = oSurvey.Properties.CaveInfos.GetOriginColor(oSegment, oDrawingObject.PenColor)
                                         End Select
                                         If PaintOptions.CenterlineColorGray Then
                                             oCaveColor = modPaint.GrayColor(oCaveColor)
@@ -289,15 +291,8 @@ Namespace cSurvey.Design
                                                 oColor = modPaint.GrayColor(oColor)
                                             End If
 
-                                            Dim oToPoint As PointF
-                                            Dim oFromPoint As PointF
-                                            'If oSegment.Data.Data.Reversed Then
-                                            '    oToPoint = oSegment.Data.Plan.FromPoint
-                                            '    oFromPoint = oSegment.Data.Plan.ToPoint
-                                            'Else
-                                            oToPoint = oSegment.Data.Plan.ToPoint
-                                            oFromPoint = oSegment.Data.Plan.FromPoint
-                                            'End If
+                                            Dim oToPoint As PointF = oSegment.Data.Plan.ToPoint
+                                            Dim oFromPoint As PointF = oSegment.Data.Plan.FromPoint
 
                                             Dim oFromSplay As List(Of Plot.cSplayPlanProjectedData)
                                             If PaintOptions.ShowSplayMode = cOptions.ShowSplayModeEnum.All Then

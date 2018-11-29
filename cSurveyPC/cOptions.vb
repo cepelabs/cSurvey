@@ -112,11 +112,13 @@ Namespace cSurvey.Design
         Public Enum CombineColorModeEnum
             CavesAndBranches = 0
             OnlyCaves = 1
+            ExtendStart = 2
         End Enum
 
         Public Enum CenterlineColorModeEnum
             CavesAndBranches = 0
             OnlyCaves = 1
+            ExtendStart = 2
         End Enum
 
         Private iCenterlineColorMode As CenterlineColorModeEnum

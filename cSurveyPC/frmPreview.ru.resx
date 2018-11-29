@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
+  <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,109 +59,109 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="metadata">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" />
-							</xsd:sequence>
-							<xsd:attribute name="name" use="required" type="xsd:string" />
-							<xsd:attribute name="type" type="xsd:string" />
-							<xsd:attribute name="mimetype" type="xsd:string" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="assembly">
-						<xsd:complexType>
-							<xsd:attribute name="alias" type="xsd:string" />
-							<xsd:attribute name="name" type="xsd:string" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<data name="lblScale.Text" xml:space="preserve">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lblScale.Text" xml:space="preserve">
     <value>Масштаб:</value>
   </data>
-	<data name="cboScale.Items" xml:space="preserve">
+  <data name="cboScale.Items" xml:space="preserve">
     <value>Автоматически</value>
   </data>
-	<data name="cboScale.Items11" xml:space="preserve">
+  <data name="cboScale.Items11" xml:space="preserve">
     <value>В ручную</value>
   </data>
-	<data name="cboPrintCenterlineColorMode.Items" xml:space="preserve">
+  <data name="cboPrintCenterlineColorMode.Items" xml:space="preserve">
     <value>Пещеры и Ветки</value>
   </data>
-	<data name="cboPrintCenterlineColorMode.Items1" xml:space="preserve">
+  <data name="cboPrintCenterlineColorMode.Items1" xml:space="preserve">
     <value>Только пещеры</value>
   </data>
-	<assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-	<data name="lblPrintCenterlineColorMode.Size" type="System.Drawing.Size, System.Drawing">
-		<value>62, 13</value>
-	</data>
-	<data name="lblPrintCenterlineColorMode.Text" xml:space="preserve">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblPrintCenterlineColorMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 13</value>
+  </data>
+  <data name="lblPrintCenterlineColorMode.Text" xml:space="preserve">
     <value>Стиль цвет:</value>
   </data>
-	<data name="chkPrintCombineColorGray.Text" xml:space="preserve">
+  <data name="chkPrintCombineColorGray.Text" xml:space="preserve">
     <value>Оттенки серого</value>
   </data>
-	<data name="cboPrintCombineColorMode.Items" xml:space="preserve">
+  <data name="cboPrintCombineColorMode.Items" xml:space="preserve">
     <value>Пещеры/Ветки</value>
   </data>
-	<data name="cboPrintCombineColorMode.Items1" xml:space="preserve">
+  <data name="cboPrintCombineColorMode.Items1" xml:space="preserve">
     <value>Только пещеры</value>
   </data>
-	<data name="lblPrintCombineColorMode.Size" type="System.Drawing.Size, System.Drawing">
-		<value>62, 13</value>
-	</data>
-	<data name="lblPrintCombineColorMode.Text" xml:space="preserve">
+  <data name="lblPrintCombineColorMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 13</value>
+  </data>
+  <data name="lblPrintCombineColorMode.Text" xml:space="preserve">
     <value>Стиль цвет:</value>
   </data>
-	<data name="chkUseDrawingZOrder.Text" xml:space="preserve">
+  <data name="chkUseDrawingZOrder.Text" xml:space="preserve">
     <value>Порядок отрисовки:</value>
   </data>
-	<data name="lblCurrentProfile.Text" xml:space="preserve">
+  <data name="lblCurrentProfile.Text" xml:space="preserve">
     <value>Профиль:</value>
   </data>
-	<data name="btnZOrderDetails.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="btnZOrderDetails.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
         JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACV0lEQVQ4T6WSzWsTQRiH53/p1YPQq7HZ
         dHezzSbEJPXiwZMXQRAUPIgRk+xusjlYsCL2YD3oQfGDSm2y+bImppJaKS0oNGj9ALG2xSYGQTz9fGeS
@@ -175,195 +175,195 @@
         D+dre2IupRxqdDYat/0kUSF5VXwcEigA3IELudj8KcLnfE2xuESZOjGIV9uzJDBxQKAHcCFypkg9UBTF
         /U7s90HEmPgcpk7kxVFL77nFAjA0XEnD4xDFfXeYL/QHY38AqVfnu9nacC8AAAAASUVORK5CYII=
 </value>
-	</data>
-	<data name="chkPrintDesignAdvancedBrushes.Text" xml:space="preserve">
+  </data>
+  <data name="chkPrintDesignAdvancedBrushes.Text" xml:space="preserve">
     <value>Специальные ниструменты</value>
   </data>
-	<data name="chkTranslations.Text" xml:space="preserve">
+  <data name="chkTranslations.Text" xml:space="preserve">
     <value>Выносы</value>
   </data>
-	<data name="cboPrintDesignStyle.Items" xml:space="preserve">
+  <data name="cboPrintDesignStyle.Items" xml:space="preserve">
     <value>Съёмка</value>
   </data>
-	<data name="cboPrintDesignStyle.Items1" xml:space="preserve">
+  <data name="cboPrintDesignStyle.Items1" xml:space="preserve">
     <value>Заливка</value>
   </data>
-	<data name="cboPrintDesignStyle.Items2" xml:space="preserve">
+  <data name="cboPrintDesignStyle.Items2" xml:space="preserve">
     <value>Комбинированный</value>
   </data>
-	<data name="chkPrintDesignStyle.Size" type="System.Drawing.Size, System.Drawing">
-		<value>35, 13</value>
-	</data>
-	<data name="chkPrintDesignStyle.Text" xml:space="preserve">
+  <data name="chkPrintDesignStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 13</value>
+  </data>
+  <data name="chkPrintDesignStyle.Text" xml:space="preserve">
     <value>Стиль:</value>
   </data>
-	<data name="lblGPSData.Size" type="System.Drawing.Size, System.Drawing">
-		<value>45, 13</value>
-	</data>
-	<data name="lblGPSData.Text" xml:space="preserve">
+  <data name="lblGPSData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 13</value>
+  </data>
+  <data name="lblGPSData.Text" xml:space="preserve">
     <value>Формат:</value>
   </data>
-	<data name="chkExportGPS.Text" xml:space="preserve">
+  <data name="chkExportGPS.Text" xml:space="preserve">
     <value>Экспорт географических данных</value>
   </data>
-	<data name="chkPrintDesignSpecialPoint.Size" type="System.Drawing.Size, System.Drawing">
-		<value>100, 17</value>
-	</data>
-	<data name="chkPrintDesignSpecialPoint.Text" xml:space="preserve">
+  <data name="chkPrintDesignSpecialPoint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 17</value>
+  </data>
+  <data name="chkPrintDesignSpecialPoint.Text" xml:space="preserve">
     <value>Специальные пикеты</value>
   </data>
-	<data name="chkPrintImages.Text" xml:space="preserve">
+  <data name="chkPrintImages.Text" xml:space="preserve">
     <value>Изображения</value>
   </data>
-	<data name="chkPrintDesign.Text" xml:space="preserve">
+  <data name="chkPrintDesign.Text" xml:space="preserve">
     <value>Дизайн печати</value>
   </data>
-	<data name="chkPrintCentrelineColorGray.Size" type="System.Drawing.Size, System.Drawing">
-		<value>76, 17</value>
-	</data>
-	<data name="chkPrintCentrelineColorGray.Text" xml:space="preserve">
+  <data name="chkPrintCentrelineColorGray.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 17</value>
+  </data>
+  <data name="chkPrintCentrelineColorGray.Text" xml:space="preserve">
     <value>Оттенки серого</value>
   </data>
-	<data name="cboCompassPosition.Items" xml:space="preserve">
+  <data name="cboCompassPosition.Items" xml:space="preserve">
     <value>Вверху слева</value>
   </data>
-	<data name="cboCompassPosition.Items1" xml:space="preserve">
+  <data name="cboCompassPosition.Items1" xml:space="preserve">
     <value>Вверху справа</value>
   </data>
-	<data name="cboCompassPosition.Items2" xml:space="preserve">
+  <data name="cboCompassPosition.Items2" xml:space="preserve">
     <value>Внизу слева</value>
   </data>
-	<data name="cboCompassPosition.Items3" xml:space="preserve">
+  <data name="cboCompassPosition.Items3" xml:space="preserve">
     <value>Внизу справа</value>
   </data>
-	<data name="Label4.Size" type="System.Drawing.Size, System.Drawing">
-		<value>51, 13</value>
-	</data>
-	<data name="Label4.Text" xml:space="preserve">
+  <data name="Label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 13</value>
+  </data>
+  <data name="Label4.Text" xml:space="preserve">
     <value>Расположение:</value>
   </data>
-	<data name="chkPrintCompass.Text" xml:space="preserve">
+  <data name="chkPrintCompass.Text" xml:space="preserve">
     <value>Компас</value>
   </data>
-	<data name="chkPrintStations.Size" type="System.Drawing.Size, System.Drawing">
-		<value>65, 17</value>
-	</data>
-	<data name="chkPrintStations.Text" xml:space="preserve">
+  <data name="chkPrintStations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 17</value>
+  </data>
+  <data name="chkPrintStations.Text" xml:space="preserve">
     <value>Пикеты</value>
   </data>
-	<data name="chkPrintShots.Size" type="System.Drawing.Size, System.Drawing">
-		<value>53, 17</value>
-	</data>
-	<data name="chkPrintShots.Text" xml:space="preserve">
+  <data name="chkPrintShots.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 17</value>
+  </data>
+  <data name="chkPrintShots.Text" xml:space="preserve">
     <value>Пикеты</value>
   </data>
-	<data name="chkPrintCentreline.Text" xml:space="preserve">
+  <data name="chkPrintCentreline.Text" xml:space="preserve">
     <value>Нитка хода</value>
   </data>
-	<data name="cboScalePosition.Items" xml:space="preserve">
+  <data name="cboScalePosition.Items" xml:space="preserve">
     <value>Вверху слева</value>
   </data>
-	<data name="cboScalePosition.Items1" xml:space="preserve">
+  <data name="cboScalePosition.Items1" xml:space="preserve">
     <value>Вверху справа</value>
   </data>
-	<data name="cboScalePosition.Items2" xml:space="preserve">
+  <data name="cboScalePosition.Items2" xml:space="preserve">
     <value>Внизу слева</value>
   </data>
-	<data name="cboScalePosition.Items3" xml:space="preserve">
+  <data name="cboScalePosition.Items3" xml:space="preserve">
     <value>Внизу справа</value>
   </data>
-	<data name="Label3.Size" type="System.Drawing.Size, System.Drawing">
-		<value>51, 13</value>
-	</data>
-	<data name="Label3.Text" xml:space="preserve">
+  <data name="Label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 13</value>
+  </data>
+  <data name="Label3.Text" xml:space="preserve">
     <value>Расположение:</value>
   </data>
-	<data name="cboBoxPosition.Items" xml:space="preserve">
+  <data name="cboBoxPosition.Items" xml:space="preserve">
     <value>Вверху слева</value>
   </data>
-	<data name="cboBoxPosition.Items1" xml:space="preserve">
+  <data name="cboBoxPosition.Items1" xml:space="preserve">
     <value>Вверху справа</value>
   </data>
-	<data name="cboBoxPosition.Items2" xml:space="preserve">
+  <data name="cboBoxPosition.Items2" xml:space="preserve">
     <value>Внизу слева</value>
   </data>
-	<data name="cboBoxPosition.Items3" xml:space="preserve">
+  <data name="cboBoxPosition.Items3" xml:space="preserve">
     <value>Внизу справа</value>
   </data>
-	<data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
-		<value>51, 13</value>
-	</data>
-	<data name="Label2.Text" xml:space="preserve">
+  <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 13</value>
+  </data>
+  <data name="Label2.Text" xml:space="preserve">
     <value>Расположение:</value>
   </data>
-	<data name="chkPrintScale.Text" xml:space="preserve">
+  <data name="chkPrintScale.Text" xml:space="preserve">
     <value>Масштаб</value>
   </data>
-	<data name="chkPrintBox.Text" xml:space="preserve">
+  <data name="chkPrintBox.Text" xml:space="preserve">
     <value>Подпись</value>
   </data>
-	<data name="lblPrinter.Size" type="System.Drawing.Size, System.Drawing">
-		<value>43, 13</value>
-	</data>
-	<data name="lblPrinter.Text" xml:space="preserve">
+  <data name="lblPrinter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 13</value>
+  </data>
+  <data name="lblPrinter.Text" xml:space="preserve">
     <value>Принтер:</value>
   </data>
-	<data name="lblPageFormat.Size" type="System.Drawing.Size, System.Drawing">
-		<value>35, 13</value>
-	</data>
-	<data name="lblPageFormat.Text" xml:space="preserve">
+  <data name="lblPageFormat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 13</value>
+  </data>
+  <data name="lblPageFormat.Text" xml:space="preserve">
     <value>Страница:</value>
   </data>
-	<data name="grpOrientation.Text" xml:space="preserve">
+  <data name="grpOrientation.Text" xml:space="preserve">
     <value>Ориентация:</value>
   </data>
-	<data name="chkBackgroundTransparent.Size" type="System.Drawing.Size, System.Drawing">
-		<value>144, 17</value>
-	</data>
-	<data name="chkBackgroundTransparent.Text" xml:space="preserve">
+  <data name="chkBackgroundTransparent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 17</value>
+  </data>
+  <data name="chkBackgroundTransparent.Text" xml:space="preserve">
     <value>Прозрачный фон</value>
   </data>
-	<data name="lblSize.Size" type="System.Drawing.Size, System.Drawing">
-		<value>30, 13</value>
-	</data>
-	<data name="lblSize.Text" xml:space="preserve">
+  <data name="lblSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 13</value>
+  </data>
+  <data name="lblSize.Text" xml:space="preserve">
     <value>Размер:</value>
   </data>
-	<data name="Label7.Size" type="System.Drawing.Size, System.Drawing">
-		<value>45, 13</value>
-	</data>
-	<data name="Label7.Text" xml:space="preserve">
+  <data name="Label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 13</value>
+  </data>
+  <data name="Label7.Text" xml:space="preserve">
     <value>Формат:</value>
   </data>
-	<data name="btnAdd.Size" type="System.Drawing.Size, System.Drawing">
-		<value>58, 22</value>
-	</data>
-	<data name="btnAdd.Text" xml:space="preserve">
+  <data name="btnAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 22</value>
+  </data>
+  <data name="btnAdd.Text" xml:space="preserve">
     <value>Добавить...</value>
   </data>
-	<data name="btnDelete.Size" type="System.Drawing.Size, System.Drawing">
-		<value>66, 22</value>
-	</data>
-	<data name="btnDelete.Text" xml:space="preserve">
+  <data name="btnDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 22</value>
+  </data>
+  <data name="btnDelete.Text" xml:space="preserve">
     <value>Удалить</value>
   </data>
-	<data name="btnProperty.Size" type="System.Drawing.Size, System.Drawing">
-		<value>76, 22</value>
-	</data>
-	<data name="btnProperty.Text" xml:space="preserve">
+  <data name="btnProperty.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 22</value>
+  </data>
+  <data name="btnProperty.Text" xml:space="preserve">
     <value>Свойства</value>
   </data>
-	<data name="btnZoomIn.Text" xml:space="preserve">
+  <data name="btnZoomIn.Text" xml:space="preserve">
     <value>Увеличить</value>
   </data>
-	<data name="btnZoomOut.Text" xml:space="preserve">
+  <data name="btnZoomOut.Text" xml:space="preserve">
     <value>Уменьшить</value>
   </data>
-	<data name="btnZoomToFit.Text" xml:space="preserve">
+  <data name="btnZoomToFit.Text" xml:space="preserve">
     <value>Вместить</value>
   </data>
-	<data name="btnImportSettings.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="btnImportSettings.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
@@ -376,33 +376,33 @@
         kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
         TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
-	</data>
-	<data name="btnImportSettings.Size" type="System.Drawing.Size, System.Drawing">
-		<value>59, 22</value>
-	</data>
-	<data name="btnImportSettings.Text" xml:space="preserve">
+  </data>
+  <data name="btnImportSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 22</value>
+  </data>
+  <data name="btnImportSettings.Text" xml:space="preserve">
     <value>Параметры</value>
   </data>
-	<data name="btnPreviewQuality0.Size" type="System.Drawing.Size, System.Drawing">
-		<value>152, 22</value>
-	</data>
-	<data name="btnPreviewQuality0.Text" xml:space="preserve">
+  <data name="btnPreviewQuality0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="btnPreviewQuality0.Text" xml:space="preserve">
     <value>Низкое</value>
   </data>
-	<data name="btnPreviewQuality1.Size" type="System.Drawing.Size, System.Drawing">
-		<value>152, 22</value>
-	</data>
-	<data name="btnPreviewQuality1.Text" xml:space="preserve">
+  <data name="btnPreviewQuality1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="btnPreviewQuality1.Text" xml:space="preserve">
     <value>Среднее</value>
   </data>
-	<data name="btnPreviewQuality2.Size" type="System.Drawing.Size, System.Drawing">
-		<value>152, 22</value>
-	</data>
-	<data name="btnPreviewQuality2.Text" xml:space="preserve">
+  <data name="btnPreviewQuality2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="btnPreviewQuality2.Text" xml:space="preserve">
     <value>Высокое</value>
   </data>
-	<data name="btnPreviewQuality.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="btnPreviewQuality.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
@@ -415,33 +415,33 @@
         kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
         TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
-	</data>
-	<data name="btnPreviewQuality.Size" type="System.Drawing.Size, System.Drawing">
-		<value>93, 22</value>
-	</data>
-	<data name="btnPreviewQuality.Text" xml:space="preserve">
+  </data>
+  <data name="btnPreviewQuality.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 22</value>
+  </data>
+  <data name="btnPreviewQuality.Text" xml:space="preserve">
     <value>Качество превью</value>
   </data>
-	<data name="btnStop.Size" type="System.Drawing.Size, System.Drawing">
-		<value>90, 22</value>
-	</data>
-	<data name="btnStop.Text" xml:space="preserve">
+  <data name="btnStop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 22</value>
+  </data>
+  <data name="btnStop.Text" xml:space="preserve">
     <value>Останвить отрисовку</value>
   </data>
-	<data name="btnPrint.Size" type="System.Drawing.Size, System.Drawing">
-		<value>61, 22</value>
-	</data>
-	<data name="btnPrint.Text" xml:space="preserve">
+  <data name="btnPrint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 22</value>
+  </data>
+  <data name="btnPrint.Text" xml:space="preserve">
     <value>Печать...</value>
   </data>
-	<data name="btnExport.Size" type="System.Drawing.Size, System.Drawing">
-		<value>71, 22</value>
-	</data>
-	<data name="btnExport.Text" xml:space="preserve">
+  <data name="btnExport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 22</value>
+  </data>
+  <data name="btnExport.Text" xml:space="preserve">
     <value>Экспорт...</value>
   </data>
-	<data name="cmdClose.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="cmdClose.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
@@ -454,15 +454,15 @@
         kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
         TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
-	</data>
-	<data name="cmdClose.Size" type="System.Drawing.Size, System.Drawing">
-		<value>37, 22</value>
-	</data>
-	<data name="cmdClose.Text" xml:space="preserve">
+  </data>
+  <data name="cmdClose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 22</value>
+  </data>
+  <data name="cmdClose.Text" xml:space="preserve">
     <value>Закрыть</value>
   </data>
-	<data name="iml.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-		<value>
+  <data name="iml.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACs
@@ -539,9 +539,9 @@
         AcACAAF/AYACAAEBBAAB/AIAAT8BwAIAAf8BgAIAAQEEAAH8AgABPwHAAQABAQH/AcACAAEDBAAB/AIA
         AT8BwAEAAQMF/wQACw==
 </value>
-	</data>
-	<data name="picInvalidated.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  </data>
+  <data name="picInvalidated.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
         JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAEbklEQVRYR8VWb0yVZRwVLC0/1NZmq7VV
         q9XASRFyr2CQmJr/LaWrDDFCEBUUl7YYcBNb68/qA31qfqlWa2szc7GYaAjEJe4V9AIFCCUJXPC6uebW
@@ -564,12 +564,12 @@
         Aq6QczUIv/jRZsTjLz3kJU8ZhwIsPFtt72cyeN7M4CMzTaC2PFxHMsblKeNQgHuIFCKHWDnNWEE8TdxL
         /BfgDkIhlOr+aYY8ZG7+hA8GmL1SgNmE5eLMAXP+Bece01x8115jAAAAAElFTkSuQmCC
 </value>
-	</data>
-	<data name="cmdRefresh.Text" xml:space="preserve">
+  </data>
+  <data name="cmdRefresh.Text" xml:space="preserve">
     <value>Обновить</value>
   </data>
-	<data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         AAABAAQAEBAAAAAAIABoBAAARgAAACAgAAAAACAAqBAAAK4EAAAwMAAAAAAgAKglAABWFQAAQEAAAAAA
         IAAoQgAA/joAACgAAAAQAAAAIAAAAAEAIAAAAAAAQAQAAAAAAAAAAAAAAAAAAAAAAAD///8BiYmJA19f
         Xw2QkJCHkJCQkYuLi5WHh4eZhoaGm4aGhpuIiIiXjIyMk5GRkZGTk5OJX19fDY2NjQP///8B////Af//
@@ -1105,62 +1105,68 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
 </value>
-	</data>
-	<data name="btnSidePanel.Text" xml:space="preserve">
+  </data>
+  <data name="btnSidePanel.Text" xml:space="preserve">
 		<value>Показать/Скрыть боковую панель</value>
 	</data>
-	<data name="btnImportSettings4.Text" xml:space="preserve">
+  <data name="btnImportSettings4.Text" xml:space="preserve">
 		<value>Импорт из плана</value>
 	</data>
-	<data name="btnImportSettings5.Text" xml:space="preserve">
+  <data name="btnImportSettings5.Text" xml:space="preserve">
 		<value>Импорт из разреза</value>
 	</data>
-	<data name="btnImportSettings2.Text" xml:space="preserve">
+  <data name="btnImportSettings2.Text" xml:space="preserve">
 		<value>Импорт из файла...</value>
 	</data>
-	<data name="btnImportSettings3.Text" xml:space="preserve">
+  <data name="btnImportSettings3.Text" xml:space="preserve">
 		<value>Экспорт в файл...</value>
 	</data>
-	<data name="btnManualRefresh.Text" xml:space="preserve">
+  <data name="btnManualRefresh.Text" xml:space="preserve">
 		<value>Ручное обновление</value>
 	</data>
-	<data name="pnlStatusCurrentRule.Text" xml:space="preserve">
+  <data name="pnlStatusCurrentRule.Text" xml:space="preserve">
 		<value>По умолчанию</value>
 	</data>
-	<data name="pnlStatusCurrentRule.ToolTipText" xml:space="preserve">
+  <data name="pnlStatusCurrentRule.ToolTipText" xml:space="preserve">
 		<value>Настройки масштаба</value>
 	</data>
-	<data name="pnlStatusDesignZoom.ToolTipText" xml:space="preserve">
+  <data name="pnlStatusDesignZoom.ToolTipText" xml:space="preserve">
 		<value>Zoom фактор</value>
 	</data>
-	<data name="mnuLvContextAdd.Text" xml:space="preserve">
+  <data name="mnuLvContextAdd.Text" xml:space="preserve">
 		<value>Добавить...</value>
 	</data>
-	<data name="mnuLvContextDelete.Text" xml:space="preserve">
+  <data name="mnuLvContextDelete.Text" xml:space="preserve">
 		<value>Удалить</value>
 	</data>
-	<data name="mnuLvContextImport.Text" xml:space="preserve">
+  <data name="mnuLvContextImport.Text" xml:space="preserve">
 		<value>Импорт из файла...</value>
 	</data>
-	<data name="mnuLvContextExport.Text" xml:space="preserve">
+  <data name="mnuLvContextExport.Text" xml:space="preserve">
 		<value>Экспорт в файл...</value>
 	</data>
-	<data name="$this.Text" xml:space="preserve">
+  <data name="$this.Text" xml:space="preserve">
 		<value>- cSurvey - Предпросмотр</value>
 	</data>
-	<data name="chkPrintSplay.Text" xml:space="preserve">
+  <data name="chkPrintSplay.Text" xml:space="preserve">
 		<value>Боковые замеры</value>
 	</data>
-	<data name="chkPrintSketches.Text" xml:space="preserve">
+  <data name="chkPrintSketches.Text" xml:space="preserve">
 		<value>Абрис</value>
 	</data>
-	<data name="chkPrintLRUD.Text" xml:space="preserve">
+  <data name="chkPrintLRUD.Text" xml:space="preserve">
 		<value>ЛПВН</value>
 	</data>
-	<data name="btnImportSettings0.Text" xml:space="preserve">
+  <data name="btnImportSettings0.Text" xml:space="preserve">
 		<value>Импорт из просмотра печати</value>
 	</data>
-	<data name="btnImportSettings1.Text" xml:space="preserve">
+  <data name="btnImportSettings1.Text" xml:space="preserve">
 		<value>Импорт из просмотра и экспорт изображения</value>
 	</data>
+  <data name="cboPrintCombineColorMode.Items2" xml:space="preserve">
+    <value>Extend start</value>
+  </data>
+  <data name="cboPrintCenterlineColorMode.Items2" xml:space="preserve">
+    <value>Extend start</value>
+  </data>
 </root>

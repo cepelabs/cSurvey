@@ -574,7 +574,6 @@ Namespace cSurvey
 
         Public Function GetSurveySegments() As cSegmentCollection Implements cISegmentCollection.GetSurveySegments
             Return New cSegmentCollection(oSurvey, oSegments.Where(Function(item) Not item.Calibration AndAlso item.IsValid))
-            'Return New cSegmentCollection(oSurvey, GetDistintSegments.ToList.Where(Function(item) Not item.Calibration AndAlso item.IsValid))
         End Function
 
         Public Sub CheckSplayFlags()

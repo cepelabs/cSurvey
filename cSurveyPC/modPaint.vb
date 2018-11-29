@@ -1483,11 +1483,11 @@ Module modPaint
             Text = Text.Replace("%SVILPLAN(" & sPath & ")%", sDefaultPlanimetricLength & " " & sDistanceSimbol)
             Text = Text.Replace("%PLANLEN(" & sPath & ")%", sDefaultPlanimetricLength & " " & sDistanceSimbol)
 
-            Dim sDefaultPositiveVerticalRange As String = modNumbers.MathRound(oSpeleometric.DefaultPositiveVerticalRange, iDistanceDecimalPlace)
+            Dim sDefaultPositiveVerticalRange As String = modNumbers.MathRound(oSpeleometric.DefaultPositiveVerticalRange.GetValueOrDefault(0), iDistanceDecimalPlace)
             Text = Text.Replace("%DISPOS(" & sPath & ")%", sDefaultPositiveVerticalRange & " " & sDistanceSimbol)
             Text = Text.Replace("%PVRNG(" & sPath & ")%", sDefaultPositiveVerticalRange & " " & sDistanceSimbol)
 
-            Dim sDefaultNegativeVerticalRange As String = modNumbers.MathRound(oSpeleometric.DefaultNegativeVerticalRange, iDistanceDecimalPlace)
+            Dim sDefaultNegativeVerticalRange As String = modNumbers.MathRound(oSpeleometric.DefaultNegativeVerticalRange.GetValueOrDefault(0), iDistanceDecimalPlace)
             Text = Text.Replace("%DISNEG(" & sPath & ")%", sDefaultNegativeVerticalRange & " " & sDistanceSimbol)
             Text = Text.Replace("%NVRNG(" & sPath & ")%", sDefaultNegativeVerticalRange & " " & sDistanceSimbol)
 

@@ -14406,4 +14406,13 @@ o ad una sezione trasversale</value>
   <data name="mnuViewLinkedSurveys.Text" xml:space="preserve">
     <value>Rilievi collegati</value>
   </data>
+  <data name="cboDesignCombineColorMode.Items2" xml:space="preserve">
+    <value>Origine/suborigini</value>
+  </data>
+  <data name="cbo3dPlotColorMode.Items2" xml:space="preserve">
+    <value>Origine/suborigine</value>
+  </data>
+  <data name="cboDesignPlotColorMode.Items2" xml:space="preserve">
+    <value>Origine/suborigine</value>
+  </data>
 </root>

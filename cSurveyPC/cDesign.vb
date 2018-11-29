@@ -1254,10 +1254,12 @@ Namespace cSurvey.Design
                                         Dim oBorderItem As Design.Items.cItemInvertedFreeHandArea = oItem
                                         Dim oColor As Color
                                         Select Case PaintOptions.CombineColorMode
-                                            Case 0
+                                            Case cOptions.CombineColorModeEnum.CavesAndBranches
                                                 oColor = oSurvey.Properties.CaveInfos.GetColor(oBorderItem.Cave, oBorderItem.Branch, Color.LightGray)
-                                            Case 1
+                                            Case cOptions.CombineColorModeEnum.OnlyCaves
                                                 oColor = oSurvey.Properties.CaveInfos.GetColor(oBorderItem.Cave, "", Color.LightGray)
+                                            Case cOptions.CombineColorModeEnum.ExtendStart
+                                                oColor = oSurvey.Properties.CaveInfos.GetOriginColor(oBorderItem.Cave, oBorderItem.Branch, Color.LightGray)
                                         End Select
                                         If PaintOptions.CombineColorGray Then
                                             oColor = modPaint.GrayColor(oColor)
@@ -1304,6 +1306,8 @@ Namespace cSurvey.Design
                                                     oColor = oSurvey.Properties.CaveInfos.GetColor(oCaveBranchPlaceholder.Cave, oCaveBranchPlaceholder.Branch, Color.LightGray)
                                                 Case cOptions.CombineColorModeEnum.OnlyCaves
                                                     oColor = oSurvey.Properties.CaveInfos.GetColor(oCaveBranchPlaceholder.Cave, "", Color.LightGray)
+                                                Case cOptions.CombineColorModeEnum.ExtendStart
+                                                    oColor = oSurvey.Properties.CaveInfos.GetOriginColor(oCaveBranchPlaceholder.Cave, oCaveBranchPlaceholder.Branch, Color.LightGray)
                                             End Select
                                             If PaintOptions.CombineColorGray Then
                                                 oColor = modPaint.GrayColor(oColor)

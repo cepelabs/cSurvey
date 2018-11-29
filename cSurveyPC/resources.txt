@@ -835,3 +835,5 @@ infocave.textpart20=Max altitude
 infocave.textpart21=Min altitude
 infocave.textpart22=Altitude delta
 infodistance.textpart8=Calculating...
+infocave.textpart23=Surveys without quota
+infocave.textpart24=Surveys without data

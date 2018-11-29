@@ -197,15 +197,53 @@ Public Class frmLinkedSurveys
     End Sub
 
     Private Sub mnucontextCalculate_Click(sender As Object, e As EventArgs) Handles mnucontextCalculate.Click
+        Call pCalculate
+    End Sub
+
+    Private Sub mnuContextOpen_Click(sender As Object, e As EventArgs) Handles mnuContextOpen.Click
+        Call pOpen
+    End Sub
+
+    Private Sub cmdCalculateSelected_Click(sender As Object, e As EventArgs) Handles cmdCalculateSelected.Click
+        Call pCalculate()
+    End Sub
+
+    Private Sub pCalculateAll()
+        Cursor = Cursors.WaitCursor
+        For Each oLinkedSurvey In oSurvey.LinkedSurveys.GetUsable
+            Call oSurvey.RaiseOnProgressEvent("calculatelinkedsurvey", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, String.Format(modMain.GetLocalizedString("linkedsurveys.textpart2"), oLinkedSurvey.GetFilename), 0)
+            Try
+                Call oLinkedSurvey.LinkedSurvey.Calculate.Calculate()
+            Catch ex As Exception
+                oSurvey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Error, "linkedsurvey.calculate error: " & ex.Message, True)
+            End Try
+            Call oSurvey.RaiseOnProgressEvent("calculatelinkedsurvey", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
+        Next
+        Cursor = Cursors.Default
+    End Sub
+
+    Private Sub pCalculate()
+        Cursor = Cursors.WaitCursor
         Dim oLinkedSurvey As cLinkedSurvey = tvLinkedSurveys.FocusedObject
         If Not IsNothing(oLinkedSurvey) Then
             Call oSurvey.RaiseOnProgressEvent("calculatelinkedsurvey", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, String.Format(modMain.GetLocalizedString("linkedsurveys.textpart2"), oLinkedSurvey.GetFilename), 0)
             Call oLinkedSurvey.LinkedSurvey.Calculate.Calculate()
             Call oSurvey.RaiseOnProgressEvent("calculatelinkedsurvey", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
         End If
+        Cursor = Cursors.Default
     End Sub
 
-    Private Sub mnuContextOpen_Click(sender As Object, e As EventArgs) Handles mnuContextOpen.Click
-        Call pOpen
+    Private Sub cmdCalculate_DropDownOpening(sender As Object, e As EventArgs) Handles cmdCalculate.DropDownOpening
+        Dim oLinkedSurvey As cLinkedSurvey = tvLinkedSurveys.FocusedObject
+        If IsNothing(oLinkedSurvey) Then
+            cmdCalculateSelected.Enabled = False
+        Else
+            cmdCalculateSelected.Enabled = True
+        End If
+        cmdCalculateAll.Enabled = tvLinkedSurveys.GetItemCount > 0
+    End Sub
+
+    Private Sub cmdCalculateAll_Click(sender As Object, e As EventArgs) Handles cmdCalculateAll.Click
+        Call pCalculateAll()
     End Sub
 End Class

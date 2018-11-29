@@ -835,3 +835,5 @@ infocave.textpart20=Quota massima
 infocave.textpart21=Quota minima
 infocave.textpart22=Differenza di quota
 infodistance.textpart8=Calcolo...
+infocave.textpart23=Rilievi senza quote
+infocave.textpart24=Rilievi senza dati

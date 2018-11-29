@@ -52,6 +52,24 @@ Namespace cSurvey.Calculate.Plot
                         'Dim dDisTot As Single
                         Dim iSegmentCount As Integer = 0
                         Dim iExcludedSegmentCount As Integer = 0
+
+                        Dim dQuotaMin As Single
+                        Dim dQuotaMax As Single
+
+                        'Threading.Tasks.Parallel.ForEach(Of cSurveyPC.cSurvey.cSegment)(oSegments.Cast(Of cSegment), Sub(oSegment)
+                        '                                                                                                 Dim dMeasuredDistance As Single = oSegment.GetBaseDistance
+                        '                                                                                                 dTotMeasured += dMeasuredDistance
+                        '                                                                                                 If oSegment.Exclude Then
+                        '                                                                                                     iExcludedSegmentCount += 1
+                        '                                                                                                 Else
+                        '                                                                                                     Dim dRealDistance As Single = oSegment.Data.Data.Distance
+                        '                                                                                                     Dim sPlanDistance As Single = oSegment.Data.Plan.GetProjectedDistance
+                        '                                                                                                     dTotReal += dRealDistance
+                        '                                                                                                     dTotPlan += sPlanDistance
+                        '                                                                                                     iSegmentCount += 1
+                        '                                                                                                 End If
+                        '                                                                                             End Sub)
+
                         For Each oSegment As cSegment In oSegments
                             Dim dMeasuredDistance As Single = oSegment.GetBaseDistance
                             dTotMeasured += dMeasuredDistance
@@ -59,27 +77,28 @@ Namespace cSurvey.Calculate.Plot
                                 iExcludedSegmentCount += 1
                             Else
                                 Dim dRealDistance As Single = oSegment.Data.Data.Distance
-                                Dim sPlanDistance As Single = oSegment.Data.Plan.GetProjectedDistance 'modPaint.DistancePointToPoint(oSegment.Data.Plan.FromPoint, oSegment.Data.Plan.ToPoint)
+                                Dim sPlanDistance As Single = oSegment.Data.Plan.GetProjectedDistance
                                 dTotReal += dRealDistance
                                 dTotPlan += sPlanDistance
                                 iSegmentCount += 1
                             End If
                         Next
 
-                        'dDisTot = 0
+                        Dim dQuotaOrigin As Single = oSurvey.Calculate.TrigPoints(oSurvey.Properties.Origin).Coordinate.Altitude
                         dDisNeg = 0
                         dDisPos = 0
                         Try
-                            'dDisTot = oProfileBounds.Height
-                            dDisNeg = oProfileBounds.Bottom
                             dDisPos = oProfileBounds.Top
+                            dDisNeg = oProfileBounds.Bottom
                         Catch ex As Exception
                         End Try
 
+                        dQuotaMax = dQuotaOrigin - dDisPos
+                        dQuotaMin = dQuotaOrigin - dDisNeg
 
                         Dim oSpeleometric As cSpeleometric
                         If bBranch Then
-                            oSpeleometric = New cSpeleometric(oSurvey, sCave, sBranch, dTotReal, dTotPlan, dTotMeasured, 0, iSegmentCount, iExcludedSegmentCount, 0, dDisNeg - dDisPos, "", Nothing)
+                            oSpeleometric = New cSpeleometric(oSurvey, sCave, sBranch, dTotReal, dTotPlan, dTotMeasured, 0, iSegmentCount, iExcludedSegmentCount, dQuotaMax, dQuotaMin, oProfileBounds.Height)
                         Else
                             Dim oMainCaveEntrance As cSurveyPC.cSurvey.cTrigPoint
                             If bComplex Then
@@ -90,14 +109,16 @@ Namespace cSurvey.Calculate.Plot
                             Dim sEntrance As String = ""
                             Dim oEntranceCoordinate As Calculate.cTrigPointCoordinate = Nothing
                             Dim dEntranceZ As Decimal
-                            If Not oMainCaveEntrance Is Nothing Then
+                            If oMainCaveEntrance Is Nothing Then
+                                oSpeleometric = New cSpeleometric(oSurvey, sCave, sBranch, dTotReal, dTotPlan, dTotMeasured, 0, iSegmentCount, iExcludedSegmentCount, dQuotaMax, dQuotaMin, oProfileBounds.Height)
+                            Else
                                 sEntrance = oMainCaveEntrance.Name
                                 oEntranceCoordinate = oSurvey.Calculate.TrigPoints(sEntrance).Coordinate
                                 dEntranceZ = oSurvey.Calculate.TrigPoints(sEntrance).Point.Z
                                 dDisPos = dDisPos - dEntranceZ
                                 dDisNeg = dDisNeg - dEntranceZ
+                                oSpeleometric = New cSpeleometric(oSurvey, sCave, sBranch, dTotReal, dTotPlan, dTotMeasured, 0, iSegmentCount, iExcludedSegmentCount, dQuotaMax, dQuotaMin, dDisPos, dDisNeg, sEntrance, oEntranceCoordinate)
                             End If
-                            oSpeleometric = New cSpeleometric(oSurvey, sCave, sBranch, dTotReal, dTotPlan, dTotMeasured, 0, iSegmentCount, iExcludedSegmentCount, dDisPos, dDisNeg, sEntrance, oEntranceCoordinate)
                         End If
 
                         Dim sKey As String = pFormatKey(sCave, sBranch)

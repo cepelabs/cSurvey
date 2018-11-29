@@ -392,7 +392,7 @@ Partial Class frmPreview
         '
         Me.cboPrintCenterlineColorMode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
         Me.cboPrintCenterlineColorMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboPrintCenterlineColorMode.Items.AddRange(New Object() {resources.GetString("cboPrintCenterlineColorMode.Items"), resources.GetString("cboPrintCenterlineColorMode.Items1")})
+        Me.cboPrintCenterlineColorMode.Items.AddRange(New Object() {resources.GetString("cboPrintCenterlineColorMode.Items"), resources.GetString("cboPrintCenterlineColorMode.Items1"), resources.GetString("cboPrintCenterlineColorMode.Items2")})
         resources.ApplyResources(Me.cboPrintCenterlineColorMode, "cboPrintCenterlineColorMode")
         Me.cboPrintCenterlineColorMode.Name = "cboPrintCenterlineColorMode"
         '
@@ -430,7 +430,7 @@ Partial Class frmPreview
         Me.cboPrintCombineColorMode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
         Me.cboPrintCombineColorMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboPrintCombineColorMode, "cboPrintCombineColorMode")
-        Me.cboPrintCombineColorMode.Items.AddRange(New Object() {resources.GetString("cboPrintCombineColorMode.Items"), resources.GetString("cboPrintCombineColorMode.Items1")})
+        Me.cboPrintCombineColorMode.Items.AddRange(New Object() {resources.GetString("cboPrintCombineColorMode.Items"), resources.GetString("cboPrintCombineColorMode.Items1"), resources.GetString("cboPrintCombineColorMode.Items2")})
         Me.cboPrintCombineColorMode.Name = "cboPrintCombineColorMode"
         '
         'lblPrintCombineColorMode

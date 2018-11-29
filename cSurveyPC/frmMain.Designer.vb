@@ -4470,7 +4470,7 @@ Partial Class frmMain
         '
         Me.cboDesignCombineColorMode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
         Me.cboDesignCombineColorMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboDesignCombineColorMode.Items.AddRange(New Object() {resources.GetString("cboDesignCombineColorMode.Items"), resources.GetString("cboDesignCombineColorMode.Items1")})
+        Me.cboDesignCombineColorMode.Items.AddRange(New Object() {resources.GetString("cboDesignCombineColorMode.Items"), resources.GetString("cboDesignCombineColorMode.Items1"), resources.GetString("cboDesignCombineColorMode.Items2")})
         resources.ApplyResources(Me.cboDesignCombineColorMode, "cboDesignCombineColorMode")
         Me.cboDesignCombineColorMode.Name = "cboDesignCombineColorMode"
         '
@@ -4603,7 +4603,7 @@ Partial Class frmMain
         '
         Me.cboDesignPlotColorMode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
         Me.cboDesignPlotColorMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboDesignPlotColorMode.Items.AddRange(New Object() {resources.GetString("cboDesignPlotColorMode.Items"), resources.GetString("cboDesignPlotColorMode.Items1")})
+        Me.cboDesignPlotColorMode.Items.AddRange(New Object() {resources.GetString("cboDesignPlotColorMode.Items"), resources.GetString("cboDesignPlotColorMode.Items1"), resources.GetString("cboDesignPlotColorMode.Items2")})
         resources.ApplyResources(Me.cboDesignPlotColorMode, "cboDesignPlotColorMode")
         Me.cboDesignPlotColorMode.Name = "cboDesignPlotColorMode"
         '
@@ -8412,7 +8412,7 @@ Partial Class frmMain
         '
         Me.cbo3dPlotColorMode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
         Me.cbo3dPlotColorMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbo3dPlotColorMode.Items.AddRange(New Object() {resources.GetString("cbo3dPlotColorMode.Items"), resources.GetString("cbo3dPlotColorMode.Items1")})
+        Me.cbo3dPlotColorMode.Items.AddRange(New Object() {resources.GetString("cbo3dPlotColorMode.Items"), resources.GetString("cbo3dPlotColorMode.Items1"), resources.GetString("cbo3dPlotColorMode.Items2")})
         resources.ApplyResources(Me.cbo3dPlotColorMode, "cbo3dPlotColorMode")
         Me.cbo3dPlotColorMode.Name = "cbo3dPlotColorMode"
         '

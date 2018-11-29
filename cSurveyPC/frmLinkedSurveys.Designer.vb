@@ -29,6 +29,7 @@ Partial Class frmLinkedSurveys
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdUnlink = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdRefresh = New System.Windows.Forms.ToolStripButton()
         Me.tvLinkedSurveys = New BrightIdeasSoftware.ObjectListView()
         Me.colLinkedSurveysIcon = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
@@ -37,6 +38,7 @@ Partial Class frmLinkedSurveys
         Me.colLinkedSurveysFilename = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
         Me.colLinkedSurveysFolder = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
         Me.colLinkedSurveysNote = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
+        Me.colLinkedSurveysLastException = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
         Me.mnuContext = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.mnuContextAdd = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripSeparator()
@@ -46,7 +48,9 @@ Partial Class frmLinkedSurveys
         Me.mnuContextUnlink = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
         Me.mnucontextRefresh = New System.Windows.Forms.ToolStripMenuItem()
-        Me.colLinkedSurveysLastException = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
+        Me.cmdCalculate = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.cmdCalculateSelected = New System.Windows.Forms.ToolStripMenuItem()
+        Me.cmdCalculateAll = New System.Windows.Forms.ToolStripMenuItem()
         Me.tbMain.SuspendLayout()
         CType(Me.tvLinkedSurveys, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.mnuContext.SuspendLayout()
@@ -56,7 +60,7 @@ Partial Class frmLinkedSurveys
         '
         resources.ApplyResources(Me.tbMain, "tbMain")
         Me.tbMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.tbMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAdd, Me.ToolStripSeparator1, Me.cmdUnlink, Me.ToolStripSeparator2, Me.cmdRefresh})
+        Me.tbMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAdd, Me.ToolStripSeparator1, Me.cmdUnlink, Me.ToolStripSeparator2, Me.cmdCalculate, Me.ToolStripSeparator3, Me.cmdRefresh})
         Me.tbMain.Name = "tbMain"
         '
         'cmdAdd
@@ -82,6 +86,11 @@ Partial Class frmLinkedSurveys
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
         resources.ApplyResources(Me.ToolStripSeparator2, "ToolStripSeparator2")
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        resources.ApplyResources(Me.ToolStripSeparator3, "ToolStripSeparator3")
         '
         'cmdRefresh
         '
@@ -143,6 +152,10 @@ Partial Class frmLinkedSurveys
         '
         resources.ApplyResources(Me.colLinkedSurveysNote, "colLinkedSurveysNote")
         '
+        'colLinkedSurveysLastException
+        '
+        resources.ApplyResources(Me.colLinkedSurveysLastException, "colLinkedSurveysLastException")
+        '
         'mnuContext
         '
         resources.ApplyResources(Me.mnuContext, "mnuContext")
@@ -193,9 +206,23 @@ Partial Class frmLinkedSurveys
         Me.mnucontextRefresh.Name = "mnucontextRefresh"
         resources.ApplyResources(Me.mnucontextRefresh, "mnucontextRefresh")
         '
-        'colLinkedSurveysLastException
+        'cmdCalculate
         '
-        resources.ApplyResources(Me.colLinkedSurveysLastException, "colLinkedSurveysLastException")
+        Me.cmdCalculate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdCalculate.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdCalculateSelected, Me.cmdCalculateAll})
+        Me.cmdCalculate.Image = Global.cSurveyPC.My.Resources.Resources.calculator
+        resources.ApplyResources(Me.cmdCalculate, "cmdCalculate")
+        Me.cmdCalculate.Name = "cmdCalculate"
+        '
+        'cmdCalculateSelected
+        '
+        Me.cmdCalculateSelected.Name = "cmdCalculateSelected"
+        resources.ApplyResources(Me.cmdCalculateSelected, "cmdCalculateSelected")
+        '
+        'cmdCalculateAll
+        '
+        Me.cmdCalculateAll.Name = "cmdCalculateAll"
+        resources.ApplyResources(Me.cmdCalculateAll, "cmdCalculateAll")
         '
         'frmLinkedSurveys
         '
@@ -239,4 +266,8 @@ Partial Class frmLinkedSurveys
     Friend WithEvents ToolStripMenuItem3 As ToolStripSeparator
     Friend WithEvents mnuContextOpen As ToolStripMenuItem
     Friend WithEvents colLinkedSurveysLastException As BrightIdeasSoftware.OLVColumn
+    Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
+    Friend WithEvents cmdCalculate As ToolStripDropDownButton
+    Friend WithEvents cmdCalculateSelected As ToolStripMenuItem
+    Friend WithEvents cmdCalculateAll As ToolStripMenuItem
 End Class

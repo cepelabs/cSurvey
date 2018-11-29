@@ -539,7 +539,6 @@ Namespace cSurvey.Calculate
                     Call oSurvey.TrigPoints.Rebind()
 
                     Dim oOrigin As cSurveyPC.cSurvey.cTrigPoint = oSurvey.TrigPoints.GetOrigin
-                    'calcolo SOLO se ho l'orgine definita...altrimenti segnalo il problema e non faccio nulla
                     If oOrigin Is Nothing Then
                         Return New cActionResult(False, "calculate", GetLocalizedString("calculate.textpart1"))
                     Else
@@ -605,9 +604,9 @@ Namespace cSurvey.Calculate
                 Return New cActionResult(True, "", "")
             Catch ex As Exception
                 Call oSurvey.RaiseOnProgressEvent("calculate", cSurvey.OnProgressEventArgs.ProgressActionEnum.Reset, GetLocalizedString("calculate.progressend1"), 0)
-                oSurvey.Properties.DesignWarpingMode = cSurvey.DesignWarpingModeEnum.None
-                RaiseEvent OnCalculateComplete(Me, New EventArgs)
-                Return New cActionResult(False, "csurvey.calculate", String.Format(GetLocalizedString("calculate.textpart2"), ex.Message))
+            oSurvey.Properties.DesignWarpingMode = cSurvey.DesignWarpingModeEnum.None
+            RaiseEvent OnCalculateComplete(Me, New EventArgs)
+            Return New cActionResult(False, "csurvey.calculate", String.Format(GetLocalizedString("calculate.textpart2"), ex.Message))
             End Try
         End Function
 
@@ -1105,8 +1104,9 @@ Namespace cSurvey.Calculate
             Dim oCalculatedTrigpoints As Dictionary(Of String, cTrigPointPoint) = New Dictionary(Of String, cTrigPointPoint)(StringComparer.OrdinalIgnoreCase)
 
             Dim oRelocateTrigpoints As List(Of cRelocatePoint) = New List(Of cRelocatePoint)
-            Dim bRelocate As Boolean
-
+            Dim oRelocateTrigpointsByGroup As Dictionary(Of String, List(Of String)) = New Dictionary(Of String, List(Of String))
+            'Dim bRelocate As Boolean
+            Dim iLeft As Integer
             Dim bMoreSegments As Boolean
             Dim iGroupIndex As Integer = 0
             Dim oGroups As List(Of cSegmentGroup) = Groups.ToCalculateList(Origin.From, Integer.MinValue)
@@ -1125,10 +1125,11 @@ Namespace cSurvey.Calculate
 
                     Call oTrigPoints.Clear()
                     Call oTrigPoints.Insert(0, New cTrigPointCalculateItem(sExtendStart, 1))
-                    bRelocate = True
+                    'bRelocate = True
                     If Not oCalculatedTrigpoints.ContainsKey(sExtendStart) Then
-                        oCalculatedTrigpoints.Add(sExtendStart, New cTrigPointPoint(oTPs(sExtendStart).Point, 0))
+                        oCalculatedTrigpoints.Add(sExtendStart, New cTrigPointPoint(oTPs(sExtendStart).Point, ileft))
                     End If
+                    iLeft += 500
                     iGroupIndex += 1
 
                     Do Until oTrigPoints.Count = 0 OrElse oSubSegmentColl.Count = 0
@@ -1148,8 +1149,9 @@ Namespace cSurvey.Calculate
                                     Dim oFromEEPoint As cTrigPointPoint = oCalculatedTrigpoints(sFrom)
 
                                     Dim sNewSign As Decimal
+                                    Dim bIsSplay As Boolean = oSegment.Splay
 
-                                    If oSegment.Splay Then
+                                    If bIsSplay Then
                                         sNewSign = 1
                                     Else
                                         If oSurvey.TrigPoints.Contains(sFrom) Then
@@ -1163,42 +1165,25 @@ Namespace cSurvey.Calculate
                                         End If
                                     End If
 
+                                    Dim oPlanFromPoint As PointD = oFromPoint.To2DPoint(cTrigPointPoint.ProjectionEnum.FromTop)
+                                    Dim oPlanToPoint As PointD = oToPoint.To2DPoint(cTrigPointPoint.ProjectionEnum.FromTop)
+                                    Dim sD As Decimal = modPaint.DistancePointToPoint(oPlanFromPoint, oPlanToPoint)
+                                    Dim oToEEPoint As cTrigPointPoint = New cTrigPointPoint(oToPoint, oFromEEPoint.D + sD * sNewSign)
+                                    If Not oCalculatedTrigpoints.ContainsKey(sTo) Then Call oCalculatedTrigpoints.Add(sTo, oToEEPoint)
                                     With oToTP
-                                        'devo ricalcolare d...
-                                        Dim oPlanFromPoint As PointD = oFromPoint.To2DPoint(cTrigPointPoint.ProjectionEnum.FromTop)
-                                        Dim oPlanToPoint As PointD = oToPoint.To2DPoint(cTrigPointPoint.ProjectionEnum.FromTop)
-                                        Dim sD As Decimal = modPaint.DistancePointToPoint(oPlanFromPoint, oPlanToPoint)
-                                        Dim oToEEPoint As cTrigPointPoint = New cTrigPointPoint(oToPoint, oFromEEPoint.D + sD * sNewSign)
-                                        If Not oCalculatedTrigpoints.ContainsKey(sTo) Then Call oCalculatedTrigpoints.Add(sTo, oToEEPoint)
                                         Dim oPointToRelocate As cTrigPointPoint = .Connections.SetPoint(sFrom, oToEEPoint)
-                                        If bRelocate Then Call oRelocateTrigpoints.Add(New cRelocatePoint(sTo, sFrom, oGroup, oPointToRelocate))
+                                        Call oRelocateTrigpoints.Add(New cRelocatePoint(sTo, sFrom, oGroup, oPointToRelocate, bIsSplay))
+                                        Call pAppendStationToGroup(oRelocateTrigpointsByGroup, sTo, oGroup)
                                     End With
                                     With oFromTP
                                         Dim oPointToRelocate As cTrigPointPoint = .Connections.SetPoint(sTo, oFromEEPoint)
-                                        If bRelocate Then Call oRelocateTrigpoints.Add(New cRelocatePoint(sFrom, sTo, oGroup, oPointToRelocate))
+                                        Call oRelocateTrigpoints.Add(New cRelocatePoint(sFrom, sTo, oGroup, oPointToRelocate, bIsSplay))
+                                        Call pAppendStationToGroup(oRelocateTrigpointsByGroup, sFrom, oGroup)
                                     End With
 
                                     If Not bIgnore Then
-                                        If oSegment.Splay Then
-                                            'splay data are always at the end point...
-                                            If oSegment.Data.Data.Reversed Then
-                                                Call oFromTP.SideMeasure.AppendUpDown(sTo, oSegment.GetBaseUp, oSegment.GetBaseDown)
-                                                Call oFromTP.SideMeasure.AppendLeftRight(sTo, oSegment.GetBaseLeft, oSegment.GetBaseRight, oSegment.GetSideMeasuresType)
-                                            Else
-                                                Call oToTP.SideMeasure.AppendUpDown(sFrom, oSegment.GetBaseUp, oSegment.GetBaseDown)
-                                                Call oToTP.SideMeasure.AppendLeftRight(sFrom, oSegment.GetBaseLeft, oSegment.GetBaseRight, oSegment.GetSideMeasuresType)
-                                            End If
-                                        Else
-                                            If oSegment.GetSideMeasuresReferTo = cSegment.SideMeasuresReferToEnum.StartPoint Then
-                                                If oSegment.Data.Data.Reversed Then
-                                                    Call oToTP.SideMeasure.AppendUpDown(sFrom, oSegment.GetBaseUp, oSegment.GetBaseDown)
-                                                    Call oToTP.SideMeasure.AppendLeftRight(sFrom, oSegment.GetBaseLeft, oSegment.GetBaseRight, oSegment.GetSideMeasuresType)
-                                                Else
-                                                    Call oFromTP.SideMeasure.AppendUpDown(sTo, oSegment.GetBaseUp, oSegment.GetBaseDown)
-                                                    Call oFromTP.SideMeasure.AppendLeftRight(sTo, oSegment.GetBaseLeft, oSegment.GetBaseRight, oSegment.GetSideMeasuresType)
-                                                End If
-                                            Else
-                                                'end point...
+                                            If oSegment.Splay Then
+                                                'splay data are always at the end point...
                                                 If oSegment.Data.Data.Reversed Then
                                                     Call oFromTP.SideMeasure.AppendUpDown(sTo, oSegment.GetBaseUp, oSegment.GetBaseDown)
                                                     Call oFromTP.SideMeasure.AppendLeftRight(sTo, oSegment.GetBaseLeft, oSegment.GetBaseRight, oSegment.GetSideMeasuresType)
@@ -1206,17 +1191,35 @@ Namespace cSurvey.Calculate
                                                     Call oToTP.SideMeasure.AppendUpDown(sFrom, oSegment.GetBaseUp, oSegment.GetBaseDown)
                                                     Call oToTP.SideMeasure.AppendLeftRight(sFrom, oSegment.GetBaseLeft, oSegment.GetBaseRight, oSegment.GetSideMeasuresType)
                                                 End If
+                                            Else
+                                                If oSegment.GetSideMeasuresReferTo = cSegment.SideMeasuresReferToEnum.StartPoint Then
+                                                    If oSegment.Data.Data.Reversed Then
+                                                        Call oToTP.SideMeasure.AppendUpDown(sFrom, oSegment.GetBaseUp, oSegment.GetBaseDown)
+                                                        Call oToTP.SideMeasure.AppendLeftRight(sFrom, oSegment.GetBaseLeft, oSegment.GetBaseRight, oSegment.GetSideMeasuresType)
+                                                    Else
+                                                        Call oFromTP.SideMeasure.AppendUpDown(sTo, oSegment.GetBaseUp, oSegment.GetBaseDown)
+                                                        Call oFromTP.SideMeasure.AppendLeftRight(sTo, oSegment.GetBaseLeft, oSegment.GetBaseRight, oSegment.GetSideMeasuresType)
+                                                    End If
+                                                Else
+                                                    'end point...
+                                                    If oSegment.Data.Data.Reversed Then
+                                                        Call oFromTP.SideMeasure.AppendUpDown(sTo, oSegment.GetBaseUp, oSegment.GetBaseDown)
+                                                        Call oFromTP.SideMeasure.AppendLeftRight(sTo, oSegment.GetBaseLeft, oSegment.GetBaseRight, oSegment.GetSideMeasuresType)
+                                                    Else
+                                                        Call oToTP.SideMeasure.AppendUpDown(sFrom, oSegment.GetBaseUp, oSegment.GetBaseDown)
+                                                        Call oToTP.SideMeasure.AppendLeftRight(sFrom, oSegment.GetBaseLeft, oSegment.GetBaseRight, oSegment.GetSideMeasuresType)
+                                                    End If
+                                                End If
                                             End If
-                                        End If
 
-                                        'add shot to processed collection
-                                        Call oCalculatedSegments.Add(oSegment)
-                                        If Not oSegment.Splay Then
-                                            'splay don't have next shot
-                                            Call oNextTrigPoint.Add(New cTrigPointCalculateItem(sTo, sNewSign))
+                                            'add shot to processed collection
+                                            Call oCalculatedSegments.Add(oSegment)
+                                            If Not oSegment.Splay Then
+                                                'splay don't have next shot
+                                                Call oNextTrigPoint.Add(New cTrigPointCalculateItem(sTo, sNewSign))
+                                            End If
                                         End If
                                     End If
-                                End If
                             Next
                             oSubSegmentColl = oSubSegmentColl.Except(oCalculatedSegments).ToList
                             'For Each oSegment As cSegment In oCalculatedSegments
@@ -1233,6 +1236,8 @@ Namespace cSurvey.Calculate
 
             Dim oSegmentsColl As List(Of cSegment) = Groups.GetDistinctSegments.Where(Function(oitem) Not oitem.Splay).ToList
 
+            Dim oRelocateTrigpointsIndex As List(Of cRelocatePoint) = pRelocateStationsCreateIndex(oRelocateTrigpointsByGroup, oRelocateTrigpoints)
+
             For Each oGroup As cSegmentGroup In Groups
                 If Not IsNothing(oGroup.ParentConnection) Then
                     Dim bReverse As Boolean
@@ -1241,27 +1246,30 @@ Namespace cSurvey.Calculate
                         oParentSegment = oSegmentsColl.Where(Function(oitem) oitem.Data.Group.Key <> oGroup.Key AndAlso ((oitem.Data.Data.From = oGroup.Connection.Station AndAlso oitem.Data.Data.To = oGroup.Connection.FromStation) OrElse (oitem.Data.Data.From = oGroup.Connection.FromStation AndAlso oitem.Data.Data.To = oGroup.Connection.Station))).FirstOrDefault()
                         bReverse = True
                     End If
-                    Dim oSourceGroup As cSegmentGroup = oParentSegment.Data.Group
-                    Dim oSourcePoint As cTrigPointPoint = oTPs(oGroup.ParentConnection.Station).Connections(oGroup.ParentConnection.FromStation).GetPoint()
-                    Dim oDestPoint As cTrigPointPoint = oTPs(oGroup.Connection.Station).Connections(oGroup.Connection.FromStation).GetPoint()
-                    Dim dD As Decimal
-                    If bReverse Then
-                        dD = oDestPoint.D - oSourcePoint.D
+                    If IsNothing(oParentSegment) Then
+                        'group is wrong...
+                        Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, "Relocating " & oGroup.ExtendStart & " not possibile: parent shot not found or in same group, fallback to autoconnection", True)
                     Else
-                        dD = oSourcePoint.D - oDestPoint.D
-                    End If
-                    If dD <> 0 Then
+                        Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, "Relocating " & oGroup.ExtendStart & " on " & oGroup.ParentConnection.ToString & " to " & oGroup.Connection.ToString, True)
+                        Dim oSourceGroup As cSegmentGroup = oParentSegment.Data.Group
+                        Dim oSourcePoint As cTrigPointPoint = oTPs(oGroup.ParentConnection.Station).Connections(oGroup.ParentConnection.FromStation).GetPoint()
+                        Dim oDestPoint As cTrigPointPoint = oTPs(oGroup.Connection.Station).Connections(oGroup.Connection.FromStation).GetPoint()
+                        Dim dD As Decimal
+                        If bReverse Then
+                            dD = oDestPoint.D - oSourcePoint.D
+                        Else
+                            dD = oSourcePoint.D - oDestPoint.D
+                        End If
                         Dim oPointToRelocate As List(Of cRelocatePoint) = oRelocateTrigpoints.Where(Function(oitem) oitem.Group.Key = oGroup.Key).ToList
-                        'For Each oRelocateTrigpoint As cRelocatePoint In oPointToRelocate
-                        '    Call oRelocateTrigpoint.Point.MoveBy(0, 0, 0, dD)
-                        '    Call oRelocateTrigpoint.ChangeGroup(oSourceGroup)
-                        'Next
+
                         Threading.Tasks.Parallel.ForEach(Of cRelocatePoint)(oPointToRelocate, Sub(oRelocateTrigpoint)
-                                                                                                  Call oRelocateTrigpoint.Point.MoveBy(0, 0, 0, dD)
-                                                                                                  SyncLock oRelocateTrigpoint
-                                                                                                      Call oRelocateTrigpoint.ChangeGroup(oSourceGroup)
-                                                                                                  End SyncLock
+                                                                                                  If dD <> 0 Then Call oRelocateTrigpoint.Point.MoveBy(0, 0, 0, dD)
+                                                                                                  'SyncLock oRelocateTrigpoint
+                                                                                                  Call oRelocateTrigpoint.ChangeGroup(oSourceGroup)
+                                                                                                  'End SyncLock
                                                                                               End Sub)
+                        'oRelocateTrigpoints = oRelocateTrigpoints.Except(oPointToRelocate).ToList
+
                     End If
                 End If
             Next
@@ -1282,7 +1290,7 @@ Namespace cSurvey.Calculate
                 End If
                 Call oCalculatedTrigpoints.Add(Origin.From, oOriginTP)
 
-                Call pRelocateStations(New cConnectionDef(Origin.From, Origin.From), oOriginTP, oRelocateTrigpoints)
+                Call pRelocateStations(New cConnectionDef(Origin.From, Origin.From), oOriginTP, oRelocateTrigpoints, oRelocateTrigpointsIndex)
 
                 Do Until oTrigPoints.Count = 0 OrElse oSegmentsColl.Count = 0
                     For Each oTrigPointCalculateItem As cTrigPointCalculateItem In oTrigPoints
@@ -1312,14 +1320,11 @@ Namespace cSurvey.Calculate
                                     Call oNextTrigPoint.Add(New cTrigPointCalculateItem(sTo, 1))
 
                                     'autoconnection for group without connection's stations
-                                    Call pRelocateStations(New cConnectionDef(sTo, sFrom), oToTP, oRelocateTrigpoints)
+                                    Call pRelocateStations(New cConnectionDef(sTo, sFrom), oToTP, oRelocateTrigpoints, oRelocateTrigpointsIndex)
                                 End If
                             End If
                         Next
                         oSegmentsColl = oSegmentsColl.Except(oCalculatedSegments).ToList
-                        'For Each oSegment As cSegment In oCalculatedSegments
-                        '    Call oSegmentsColl.Remove(oSegment)
-                        'Next
                         Call oCalculatedSegments.Clear()
                     Next
                     Call oTrigPoints.Clear()
@@ -1332,9 +1337,6 @@ Namespace cSurvey.Calculate
             oOriginTP = oTPs(Origin.From).GetPoints.FirstOrDefault()
             If Not IsNothing(oOriginTP) Then
                 Dim dD As Decimal = -1 * oOriginTP.D
-                'For Each oTp As cTrigPoint In oTPs
-                '    Call oTp.Connections.MoveBy(0, 0, 0, dD)
-                'Next
                 If dD <> 0 Then
                     Threading.Tasks.Parallel.ForEach(Of cTrigPoint)(oTPs, Sub(oTp)
                                                                               Call oTp.Connections.MoveBy(0, 0, 0, dD)
@@ -1343,37 +1345,107 @@ Namespace cSurvey.Calculate
             End If
         End Sub
 
-        Private Sub pRelocateStations(ConnectionDef As cConnectionDef, Station As cTrigPointPoint, ByRef RelocateTrigpoints As List(Of cRelocatePoint))
-            'autoconnection for group without connection's stations
-            For Each oGroup As cSegmentGroup In RelocateTrigpoints.Where(Function(oitem) oitem.Station = ConnectionDef.Station AndAlso oitem.Connection <> ConnectionDef).Select(Function(oitem) oitem.Group).ToList
-                Dim oPointToRelocate As List(Of cRelocatePoint) = RelocateTrigpoints.Where(Function(oitem) oitem.Group.Key = oGroup.Key).ToList
-                If oPointToRelocate.Count > 0 Then
-                    Dim oBaseRelocateTrigpoint As cRelocatePoint = oPointToRelocate.Where(Function(oitem) oitem.Station = ConnectionDef.Station AndAlso Not oitem Is Station).FirstOrDefault
-                    If Not IsNothing(oBaseRelocateTrigpoint) Then
-                        Dim dD As Decimal = Station.D - oBaseRelocateTrigpoint.Point.D
-                        If dD <> 0 Then
-                            Threading.Tasks.Parallel.ForEach(Of cRelocatePoint)(oPointToRelocate, Sub(oRelocateTrigpoint)
-                                                                                                      Call oRelocateTrigpoint.Point.MoveBy(0, 0, 0, dD)
-                                                                                                  End Sub)
-                            'For Each oRelocateTrigpoint As cRelocatePoint In oPointToRelocate
-                            '    Call oRelocateTrigpoint.Point.MoveBy(0, 0, 0, dD)
-                            '    Call RelocateTrigpoints.Remove(oRelocateTrigpoint)
-                            'Next
-                            RelocateTrigpoints = RelocateTrigpoints.Except(oPointToRelocate).ToList
-                        End If
-                    End If
+        Private Sub pAppendStationToGroup(RelocateTrigpointsByGroup As Dictionary(Of String, List(Of String)), Station As String, Group As cSegmentGroup)
+            If RelocateTrigpointsByGroup.ContainsKey(Station) Then
+                Dim oGroups As List(Of String) = RelocateTrigpointsByGroup(Station)
+                If Not oGroups.Contains(Group.Key) Then Call oGroups.Add(Group.Key)
+            Else
+                Dim oGroups As List(Of String) = New List(Of String)
+                Call oGroups.Add(Group.Key)
+                Call RelocateTrigpointsByGroup.Add(Station, oGroups)
+            End If
+        End Sub
+
+        Private Function pRelocateStationsCreateIndex(ByRef RelocateTrigpointsByGroup As Dictionary(Of String, List(Of String)), ByRef RelocateTrigpoints As List(Of cRelocatePoint)) As List(Of cRelocatePoint)
+            Dim oIndex As List(Of cRelocatePoint) = New List(Of cRelocatePoint)
+            For Each sStation As String In RelocateTrigpointsByGroup.Keys
+                If RelocateTrigpointsByGroup(sStation).Count > 1 Then
+                    Call oIndex.AddRange(RelocateTrigpoints.Where(Function(oitem) oitem.Station = sStation))
                 End If
             Next
+            Return oIndex
+        End Function
+
+        Private Sub pRelocateStations(ConnectionDef As cConnectionDef, Station As cTrigPointPoint, ByRef RelocateTrigpoints As List(Of cRelocatePoint), ByRef RelocateTrigpointsIndex As List(Of cRelocatePoint))
+            '0 create a collection with crelocatepoint with station included in more than 1 group and use this as collection for next steps
+
+            '1 connectiondef should exist only in 1 group
+            '2 find group for connectiondef = maingroup
+            '3 locate other group with station from maingroup
+            '4 find first point for same station of maingroup
+            '5 relocate those groups and change point's group
+
+            Dim oBaseStation As cRelocatePoint = RelocateTrigpointsIndex.FirstOrDefault(Function(oitem) oitem.Connection = ConnectionDef)
+            If IsNothing(oBaseStation) Then
+                'error?
+            Else
+                For Each oGroup As cSegmentGroup In RelocateTrigpoints.Where(Function(oitem) oitem.Group.Key <> oBaseStation.Group.Key AndAlso oitem.Station = oBaseStation.Station AndAlso oitem.Connection <> ConnectionDef).Select(Function(oitem) oitem.Group).ToList
+                    'group with same station but not same group
+                    Dim oPointToRelocate As List(Of cRelocatePoint) = RelocateTrigpoints.Where(Function(oitem) oitem.Group.Key = oGroup.Key).ToList
+                    If oPointToRelocate.Count > 0 Then
+                        'find same station in other group (I can use RelocateTrigpointsIndex for better search)
+                        'Dim oSameStation As cRelocatePoint = oPointToRelocate.FirstOrDefault(Function(oitem) oitem.Station = oBaseStation.Station)
+                        Dim oSameStationInAnotherGroup As cRelocatePoint = RelocateTrigpointsIndex.FirstOrDefault(Function(oitem) oitem.Group.Key = oGroup.Key AndAlso oitem.Station = oBaseStation.Station AndAlso oitem.Connection <> ConnectionDef)
+                        If IsNothing(oSameStationInAnotherGroup) Then
+                            'error?
+                        Else
+                            Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, "Autorelocating " & oGroup.ExtendStart & " on " & oBaseStation.Connection.ToString & " to " & oSameStationInAnotherGroup.Connection.ToString, True)
+                            Dim dD As Decimal = oBaseStation.Point.D - oSameStationInAnotherGroup.Point.D
+                            If dD = 0 Then
+                                Threading.Tasks.Parallel.ForEach(Of cRelocatePoint)(oPointToRelocate, Sub(oRelocateTrigpoint)
+                                                                                                          Call oRelocateTrigpoint.ChangeGroup(oBaseStation.Group)
+                                                                                                      End Sub)
+                            Else
+                                Threading.Tasks.Parallel.ForEach(Of cRelocatePoint)(oPointToRelocate, Sub(oRelocateTrigpoint)
+                                                                                                          Call oRelocateTrigpoint.Point.MoveBy(0, 0, 0, dD)
+                                                                                                          Call oRelocateTrigpoint.ChangeGroup(oBaseStation.Group)
+                                                                                                      End Sub)
+                            End If
+                        End If
+                    End If
+                Next
+            End If
+
+
+            ''autoconnection for group without connection's stations
+            'For Each oGroup As cSegmentGroup In RelocateTrigpoints.Where(Function(oitem) oitem.Station = ConnectionDef.Station AndAlso oitem.Connection <> ConnectionDef).Select(Function(oitem) oitem.Group).ToList
+            '    If Not oGroup.HaveParentConnection Then
+            '        Dim oPointToRelocate As List(Of cRelocatePoint) = RelocateTrigpoints.Where(Function(oitem) oitem.Group.Key = oGroup.Key).ToList
+            '        If oPointToRelocate.Count > 0 Then
+            '            Dim oBaseRelocateTrigpoint As cRelocatePoint = oPointToRelocate.Where(Function(oitem) oitem.Station = ConnectionDef.Station AndAlso Not oitem.Point Is Station).FirstOrDefault
+            '            If Not IsNothing(oBaseRelocateTrigpoint) Then
+            '                'Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, "Autorelocating " & oGroup.ExtendStart & " on " & oBaseRelocateTrigpoint.Station, True)
+            '                Dim dD As Decimal = Station.D - oBaseRelocateTrigpoint.Point.D
+            '                Threading.Tasks.Parallel.ForEach(Of cRelocatePoint)(oPointToRelocate, Sub(oRelocateTrigpoint)
+            '                                                                                          If dD <> 0 Then Call oRelocateTrigpoint.Point.MoveBy(0, 0, 0, dD)
+            '                                                                                          Call oRelocateTrigpoint.ChangeGroup(oBaseRelocateTrigpoint.Group)
+            '                                                                                      End Sub)
+            '                'For Each oRelocateTrigpoint As cRelocatePoint In oPointToRelocate
+            '                '    Call oRelocateTrigpoint.Point.MoveBy(0, 0, 0, dD)
+            '                '    Call RelocateTrigpoints.Remove(oRelocateTrigpoint)
+            '                'Next
+            '                'RelocateTrigpoints = RelocateTrigpoints.Except(oPointToRelocate).ToList
+            '            End If
+            '        End If
+            '    End If
+            'Next
         End Sub
 
         Private Class cRelocatePoint
             Private oConnectioDef As cConnectionDef
             Private oGroup As cSegmentGroup
             Private oPoint As cTrigPointPoint
+            Private bIsSplay As Boolean
 
             Public Overrides Function ToString() As String
                 Return oConnectioDef.Station & "(<" & oConnectioDef.FromStation & ") [>" & oGroup.Key & "]"
             End Function
+
+            Public ReadOnly Property IsSplay As Boolean
+                Get
+                    Return bIsSplay
+                End Get
+            End Property
 
             Public ReadOnly Property Connection As cConnectionDef
                 Get
@@ -1409,10 +1481,11 @@ Namespace cSurvey.Calculate
                 End Get
             End Property
 
-            Public Sub New(Station As String, RelativeStation As String, Group As cSegmentGroup, Point As cTrigPointPoint)
+            Public Sub New(Station As String, RelativeStation As String, Group As cSegmentGroup, Point As cTrigPointPoint, IsSplay As Boolean)
                 oConnectioDef = New cConnectionDef(Station, RelativeStation)
                 oGroup = Group
                 oPoint = Point
+                bISSplay = IsSplay
             End Sub
         End Class
 

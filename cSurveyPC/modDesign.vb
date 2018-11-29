@@ -259,13 +259,16 @@ Module modDesign
                             bDone = True
                         Else
                             If Not bDone Then
-                                With oSurvey.Properties.CaveInfos(sCave).Branches(sBranch)
-                                    If .Parent Is Nothing Then
+                                Dim oBranch As cCaveInfoBranch = oSurvey.Properties.CaveInfos(sCave).Branches(sBranch)
+                                If IsNothing(oBranch) Then
+                                    sBranch = ""
+                                Else
+                                    If IsNothing(oBranch.Parent) Then
                                         sBranch = ""
                                     Else
-                                        sBranch = .Parent.Path
+                                        sBranch = oBranch.Parent.Path
                                     End If
-                                End With
+                                End If
                             End If
                         End If
                     Loop Until bDone
@@ -306,14 +309,15 @@ Module modDesign
                 oImageBounds = New Rectangle(0, 0, oRealBounds.Width * sScale, oRealBounds.Height * sScale)
                 oImage = New Bitmap(oImageBounds.Width, oImageBounds.Height)
 
-                Dim oMatrix As Matrix = New Matrix
-                Call oMatrix.Translate(oTraslation.Width, oTraslation.Height, MatrixOrder.Append)
-                Call oMatrix.Scale(sScale, sScale, MatrixOrder.Append)
-                oGraphics = Graphics.FromImage(oImage)
-                oGraphics.Transform = oMatrix
+                Using oMatrix As Matrix = New Matrix
+                    Call oMatrix.Translate(oTraslation.Width, oTraslation.Height, MatrixOrder.Append)
+                    Call oMatrix.Scale(sScale, sScale, MatrixOrder.Append)
+                    oGraphics = Graphics.FromImage(oImage)
+                    oGraphics.Transform = oMatrix
 
-                Dim oPaintOptions As cOptions = oSurvey.Options("_design.plan").DefaultOptions
-                oClippingRegions = Plan.GetCaveClippingRegions(oGraphics, oPaintOptions)
+                    Dim oPaintOptions As cOptions = oSurvey.Options("_design.plan").DefaultOptions
+                    oClippingRegions = Plan.GetCaveClippingRegions(oGraphics, oPaintOptions)
+                End Using
             End If
         End Sub
 
@@ -563,13 +567,16 @@ Module modDesign
                             bDone = True
                         Else
                             If Not bDone Then
-                                With oSurvey.Properties.CaveInfos(sCave).Branches(sBranch)
-                                    If .Parent Is Nothing Then
+                                Dim oBranch As cCaveInfoBranch = oSurvey.Properties.CaveInfos(sCave).Branches(sBranch)
+                                If IsNothing(oBranch) Then
+                                    sBranch = ""
+                                Else
+                                    If IsNothing(oBranch.Parent) Then
                                         sBranch = ""
                                     Else
-                                        sBranch = .Parent.Path
+                                        sBranch = oBranch.Parent.Path
                                     End If
-                                End With
+                                End If
                             End If
                         End If
                     Loop Until bDone
@@ -608,14 +615,15 @@ Module modDesign
                 oImageBounds = New Rectangle(0, 0, oRealBounds.Width * sScale, oRealBounds.Height * sScale)
                 oImage = New Bitmap(oImageBounds.Width, oImageBounds.Height)
 
-                Dim oMatrix As Matrix = New Matrix
-                Call oMatrix.Translate(oTraslation.Width, oTraslation.Height, MatrixOrder.Append)
-                Call oMatrix.Scale(sScale, sScale, MatrixOrder.Append)
-                oGraphics = Graphics.FromImage(oImage)
-                oGraphics.Transform = oMatrix
+                Using oMatrix As Matrix = New Matrix
+                    Call oMatrix.Translate(oTraslation.Width, oTraslation.Height, MatrixOrder.Append)
+                    Call oMatrix.Scale(sScale, sScale, MatrixOrder.Append)
+                    oGraphics = Graphics.FromImage(oImage)
+                    oGraphics.Transform = oMatrix
 
-                Dim oPaintOptions As cOptions = oSurvey.Options("_design.profile").DefaultOptions
-                oClippingRegions = Profile.GetCaveClippingRegions(oGraphics, oPaintOptions)
+                    Dim oPaintOptions As cOptions = oSurvey.Options("_design.profile").DefaultOptions
+                    oClippingRegions = Profile.GetCaveClippingRegions(oGraphics, oPaintOptions)
+                End Using
             End If
         End Sub
 

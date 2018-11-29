@@ -1081,10 +1081,12 @@ Friend Class cHolosViewer
                                     If oShot.Splay Then
                                         If oShot.Data.SegmentColor = Color.Transparent Then
                                             Select Case PaintOptions.CenterlineColorMode
-                                                Case 0
+                                                Case cOptions.CenterlineColorModeEnum.CavesAndBranches
                                                     oCaveColor = oCurrentSurvey.Properties.CaveInfos.GetColor(oShot, oDrawingObject.PenColor)
-                                                Case 1
+                                                Case cOptions.CenterlineColorModeEnum.OnlyCaves
                                                     oCaveColor = oCurrentSurvey.Properties.CaveInfos.GetColor(oShot.Cave, "", oDrawingObject.PenColor)
+                                                Case cOptions.CenterlineColorModeEnum.ExtendStart
+                                                    oCaveColor = oCurrentSurvey.Properties.CaveInfos.GetOriginColor(oShot, oDrawingObject.PenColor)
                                             End Select
                                             oColor = modPaint.LightColor(oCaveColor, 0.3)
                                         Else

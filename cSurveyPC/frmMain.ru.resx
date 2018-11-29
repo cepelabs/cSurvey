@@ -13006,4 +13006,13 @@
   <data name="cboDesignPlotSplayStyle.Items2" xml:space="preserve">
     <value>Лучи</value>
   </data>
+  <data name="cboDesignCombineColorMode.Items2" xml:space="preserve">
+    <value>Extend start</value>
+  </data>
+  <data name="cbo3dPlotColorMode.Items2" xml:space="preserve">
+    <value>Extend start</value>
+  </data>
+  <data name="cboDesignPlotColorMode.Items2" xml:space="preserve">
+    <value>Extend start</value>
+  </data>
 </root>

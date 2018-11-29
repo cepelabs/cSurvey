@@ -342,6 +342,8 @@ Namespace cSurvey.Design
                                                 oCaveColor = oSurvey.Properties.CaveInfos.GetColor(oSegment, oDrawingObject.PenColor)
                                             Case 1
                                                 oCaveColor = oSurvey.Properties.CaveInfos.GetColor(oSegment.Cave, "", oDrawingObject.PenColor)
+                                            Case 2
+                                                oCaveColor = oSurvey.Properties.CaveInfos.GetOriginColor(oSegment, oDrawingObject.PenColor)
                                         End Select
                                         If PaintOptions.CenterlineColorGray Then
                                             oCaveColor = modPaint.GrayColor(oCaveColor)
@@ -358,15 +360,8 @@ Namespace cSurvey.Design
                                                 End If
                                             End If
 
-                                            Dim oToPoint As PointF
-                                            Dim oFromPoint As PointF
-                                            'If oSegment.Data.Data.Reversed Then
-                                            '    oToPoint = oSegment.Data.Profile.FromPoint
-                                            '    oFromPoint = oSegment.Data.Profile.ToPoint
-                                            'Else
-                                            oToPoint = oSegment.Data.Profile.ToPoint
-                                            oFromPoint = oSegment.Data.Profile.FromPoint
-                                            'end If
+                                            Dim oToPoint As PointF = oSegment.Data.Profile.ToPoint
+                                            Dim oFromPoint As PointF = oSegment.Data.Profile.FromPoint
 
                                             Dim oFromSplay As List(Of Plot.cSplayProfileProjectedData)
                                             If PaintOptions.ShowSplayMode = cOptions.ShowSplayModeEnum.All Then

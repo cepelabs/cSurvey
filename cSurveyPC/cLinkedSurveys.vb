@@ -229,9 +229,12 @@ Namespace cSurvey
         Public Function Add(Filename As String) As cLinkedSurvey
             Dim oItem As cLinkedSurvey = New cLinkedSurvey(oSurvey, Filename)
             If Not IsNothing(oItem.LinkedSurvey) Then
-                If Not pExist(oItem.LinkedSurvey.ID) Then
+                If pExist(oItem.LinkedSurvey.ID) Then
+                    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, "Survey file """ & Filename & """ is already linked", True)
+                Else
                     Call oItems.Add(oItem)
                     Call oSurvey.RaiseOnLinkedSurveysAdd(oItem)
+                    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, "Survey file """ & Filename & """ successfully linked", True)
                     Return oItem
                 End If
             End If

@@ -720,6 +720,9 @@
   <data name="cboPrintCenterlineColorMode.Items1" xml:space="preserve">
     <value>Only caves</value>
   </data>
+  <data name="cboPrintCenterlineColorMode.Items2" xml:space="preserve">
+    <value>Extend start</value>
+  </data>
   <data name="cboPrintCenterlineColorMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>88, 77</value>
   </data>
@@ -896,6 +899,9 @@
   </data>
   <data name="cboPrintCombineColorMode.Items1" xml:space="preserve">
     <value>Only caves</value>
+  </data>
+  <data name="cboPrintCombineColorMode.Items2" xml:space="preserve">
+    <value>Extend start</value>
   </data>
   <data name="cboPrintCombineColorMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>88, 228</value>
@@ -2540,7 +2546,7 @@
     <value>False</value>
   </data>
   <data name="pnlStatusText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>627, 20</value>
+    <value>711, 20</value>
   </data>
   <data name="pnlStatusText.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -2615,13 +2621,13 @@
     <value>1:250</value>
   </data>
   <data name="pnlStatusDesignZoom500.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 20</value>
+    <value>39, 17</value>
   </data>
   <data name="pnlStatusDesignZoom500.Text" xml:space="preserve">
     <value>1:500</value>
   </data>
   <data name="pnlStatusDesignZoom1000.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 20</value>
+    <value>45, 17</value>
   </data>
   <data name="pnlStatusDesignZoom1000.Text" xml:space="preserve">
     <value>1:1000</value>
@@ -2706,7 +2712,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACs
-        EAAAAk1TRnQBSQFMAgEBAwEAAUQBBQFEAQUBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        EAAAAk1TRnQBSQFMAgEBAwEAAUwBBQFMAQUBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABgAMAASADAAEBAQABCAYAARAYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA

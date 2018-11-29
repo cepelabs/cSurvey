@@ -152,6 +152,30 @@
   <data name="ToolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
+  <data name="cmdCalculateSelected.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="cmdCalculateSelected.Text" xml:space="preserve">
+    <value>Calculate</value>
+  </data>
+  <data name="cmdCalculateAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="cmdCalculateAll.Text" xml:space="preserve">
+    <value>Calculate all</value>
+  </data>
+  <data name="cmdCalculate.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="cmdCalculate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 22</value>
+  </data>
+  <data name="cmdCalculate.Text" xml:space="preserve">
+    <value>Calculate</value>
+  </data>
+  <data name="ToolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
   <data name="cmdRefresh.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -354,6 +378,12 @@
   <data name="&gt;&gt;ToolStripSeparator2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;ToolStripSeparator3.Name" xml:space="preserve">
+    <value>ToolStripSeparator3</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;cmdRefresh.Name" xml:space="preserve">
     <value>cmdRefresh</value>
   </data>
@@ -394,6 +424,12 @@
     <value>colLinkedSurveysNote</value>
   </data>
   <data name="&gt;&gt;colLinkedSurveysNote.Type" xml:space="preserve">
+    <value>BrightIdeasSoftware.OLVColumn, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
+  </data>
+  <data name="&gt;&gt;colLinkedSurveysLastException.Name" xml:space="preserve">
+    <value>colLinkedSurveysLastException</value>
+  </data>
+  <data name="&gt;&gt;colLinkedSurveysLastException.Type" xml:space="preserve">
     <value>BrightIdeasSoftware.OLVColumn, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
   </data>
   <data name="&gt;&gt;mnuContextAdd.Name" xml:space="preserve">
@@ -444,11 +480,23 @@
   <data name="&gt;&gt;mnucontextRefresh.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;colLinkedSurveysLastException.Name" xml:space="preserve">
-    <value>colLinkedSurveysLastException</value>
+  <data name="&gt;&gt;cmdCalculate.Name" xml:space="preserve">
+    <value>cmdCalculate</value>
   </data>
-  <data name="&gt;&gt;colLinkedSurveysLastException.Type" xml:space="preserve">
-    <value>BrightIdeasSoftware.OLVColumn, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
+  <data name="&gt;&gt;cmdCalculate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmdCalculateSelected.Name" xml:space="preserve">
+    <value>cmdCalculateSelected</value>
+  </data>
+  <data name="&gt;&gt;cmdCalculateSelected.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmdCalculateAll.Name" xml:space="preserve">
+    <value>cmdCalculateAll</value>
+  </data>
+  <data name="&gt;&gt;cmdCalculateAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmLinkedSurveys</value>

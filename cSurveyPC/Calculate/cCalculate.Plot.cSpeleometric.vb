@@ -17,9 +17,12 @@ Namespace cSurvey.Calculate.Plot
         Private iSegmentCount As Integer
         Private iExcludedSegmentCount As Integer
 
-        Private sPositiveVerticalRange As Single
-        Private sNegativeVerticalRange As Single
+        Private sPositiveVerticalRange As Single?
+        Private sNegativeVerticalRange As Single?
         Private sVerticalRange As Single
+
+        Private sQuotaMax As Single?
+        Private sQuotaMin As Single?
 
         Private oEntranceCoordinate As cTrigPointCoordinate
         Private sEntranceStation As String
@@ -60,25 +63,33 @@ Namespace cSurvey.Calculate.Plot
             End Get
         End Property
 
-        Public ReadOnly Property DefaultPositiveVerticalRange As Single
+        Public ReadOnly Property DefaultPositiveVerticalRange As Single?
             Get
-                Return modConversion.ConvertBaseToDefaultDistance(sPositiveVerticalRange, oSurvey)
+                If sPositiveVerticalRange.HasValue Then
+                    Return modConversion.ConvertBaseToDefaultDistance(sPositiveVerticalRange.Value, oSurvey)
+                Else
+                    Return Nothing
+                End If
             End Get
         End Property
 
-        Public ReadOnly Property PositiveVerticalRange As Single
+        Public ReadOnly Property PositiveVerticalRange As Single?
             Get
                 Return sPositiveVerticalRange
             End Get
         End Property
 
-        Public ReadOnly Property DefaultNegativeVerticalRange As Single
+        Public ReadOnly Property DefaultNegativeVerticalRange As Single?
             Get
-                Return modConversion.ConvertBaseToDefaultDistance(sNegativeVerticalRange, oSurvey)
+                If sNegativeVerticalRange.HasValue Then
+                    Return modConversion.ConvertBaseToDefaultDistance(sNegativeVerticalRange.Value, oSurvey)
+                Else
+                    Return Nothing
+                End If
             End Get
         End Property
 
-        Public ReadOnly Property NegativeVerticalRange As Single
+        Public ReadOnly Property NegativeVerticalRange As Single?
             Get
                 Return sNegativeVerticalRange
             End Get
@@ -93,6 +104,18 @@ Namespace cSurvey.Calculate.Plot
         Public ReadOnly Property VerticalRange As Single
             Get
                 Return sVerticalRange
+            End Get
+        End Property
+
+        Public ReadOnly Property QuotaMin As Single?
+            Get
+                Return sQuotaMin
+            End Get
+        End Property
+
+        Public ReadOnly Property QuotaMax As Single?
+            Get
+                Return sQuotaMax
             End Get
         End Property
 
@@ -144,7 +167,34 @@ Namespace cSurvey.Calculate.Plot
             End Get
         End Property
 
-        Friend Sub New(Survey As cSurvey, Cave As String, Branch As String, Length As Single, PlanimetricLength As Single, MeasuredLength As Single, Extension As Single, SegmentCount As Integer, ExcludedSegmentCount As Integer, PositiveVerticalRange As Single, NegativeVerticalRange As Single, EntranceStation As String, EntranceCoordinate As cTrigPointCoordinate)
+        Friend Sub New(Survey As cSurvey, Cave As String, Branch As String, Length As Single, PlanimetricLength As Single, MeasuredLength As Single, Extension As Single, SegmentCount As Integer, ExcludedSegmentCount As Integer, QuotaMax As Single, QuotaMin As Single, VerticalRange As Single)
+            oSurvey = Survey
+
+            sCave = Cave
+            sBranch = Branch
+
+            Dim iDecimalPlace As Integer = 0
+
+            sPlanimetricLength = modNumbers.MathRound(PlanimetricLength, iDecimalPlace)
+            sLength = modNumbers.MathRound(Length, iDecimalPlace)
+            sMeasuredLength = modNumbers.MathRound(MeasuredLength, iDecimalPlace)
+            sExtension = modNumbers.MathRound(Extension, iDecimalPlace)
+
+            iSegmentCount = SegmentCount
+            iExcludedSegmentCount = ExcludedSegmentCount
+
+            sPositiveVerticalRange = Nothing
+            sNegativeVerticalRange = Nothing
+            sVerticalRange = VerticalRange
+
+            sQuotaMax = QuotaMax
+            sQuotaMin = QuotaMin
+
+            sEntranceStation = ""
+            oEntranceCoordinate = Nothing
+        End Sub
+
+        Friend Sub New(Survey As cSurvey, Cave As String, Branch As String, Length As Single, PlanimetricLength As Single, MeasuredLength As Single, Extension As Single, SegmentCount As Integer, ExcludedSegmentCount As Integer, QuotaMax As Single, QuotaMin As Single, PositiveVerticalRange As Single, NegativeVerticalRange As Single, EntranceStation As String, EntranceCoordinate As cTrigPointCoordinate)
             oSurvey = Survey
 
             sCave = Cave
@@ -164,6 +214,9 @@ Namespace cSurvey.Calculate.Plot
             sNegativeVerticalRange = Math.Abs(modNumbers.MathRound(NegativeVerticalRange, iDecimalPlace))
             sVerticalRange = sPositiveVerticalRange + sNegativeVerticalRange
 
+            sQuotaMax = QuotaMax
+            sQuotaMin = QuotaMin
+
             sEntranceStation = EntranceStation
             oEntranceCoordinate = EntranceCoordinate
         End Sub
@@ -181,8 +234,11 @@ Namespace cSurvey.Calculate.Plot
             Call oXmlSM.SetAttribute("sc", modNumbers.NumberToString(iSegmentCount, "0"))
             Call oXmlSM.SetAttribute("xsc", modNumbers.NumberToString(iExcludedSegmentCount, "0"))
 
-            Call oXmlSM.SetAttribute("pvr", modNumbers.NumberToString(sPositiveVerticalRange, "0.00"))
-            Call oXmlSM.SetAttribute("nvr", modNumbers.NumberToString(sNegativeVerticalRange, "0.00"))
+            If sPositiveVerticalRange.HasValue Then Call oXmlSM.SetAttribute("pvr", modNumbers.NumberToString(sPositiveVerticalRange.Value, "0.00"))
+            If sNegativeVerticalRange.HasValue Then Call oXmlSM.SetAttribute("nvr", modNumbers.NumberToString(sNegativeVerticalRange.Value, "0.00"))
+
+            If sQuotaMax.HasValue Then Call oXmlSM.SetAttribute("qmx", modNumbers.NumberToString(sQuotaMax.Value, "0.00"))
+            If sQuotaMin.HasValue Then Call oXmlSM.SetAttribute("qmn", modNumbers.NumberToString(sQuotaMin.Value, "0.00"))
 
             If sEntranceStation <> "" Then Call oXmlSM.SetAttribute("es", sEntranceStation)
             If Not oEntranceCoordinate Is Nothing Then Call oEntranceCoordinate.SaveTo(File, Document, oXmlSM, "escoord")
@@ -205,9 +261,16 @@ Namespace cSurvey.Calculate.Plot
             iSegmentCount = modNumbers.StringToInteger(modXML.GetAttributeValue(Item, "sc", 0))
             iExcludedSegmentCount = modNumbers.StringToInteger(modXML.GetAttributeValue(Item, "esc", 0))
 
-            sPositiveVerticalRange = modNumbers.StringToSingle(modXML.GetAttributeValue(Item, "pvr", 0))
-            sNegativeVerticalRange = modNumbers.StringToSingle(modXML.GetAttributeValue(Item, "nvr", 0))
-            sVerticalRange = sPositiveVerticalRange + sNegativeVerticalRange
+            If modXML.HasAttribute(Item, "pvr") Then sPositiveVerticalRange = modNumbers.StringToSingle(modXML.GetAttributeValue(Item, "pvr", 0))
+            If modXML.HasAttribute(Item, "nvr") Then sNegativeVerticalRange = modNumbers.StringToSingle(modXML.GetAttributeValue(Item, "nvr", 0))
+            If sPositiveVerticalRange.HasValue AndAlso sNegativeVerticalRange.HasValue Then
+                sVerticalRange = sPositiveVerticalRange.Value + sNegativeVerticalRange.Value
+            Else
+                sVerticalRange = modNumbers.StringToSingle(modXML.GetAttributeValue(Item, "vr", 0))
+            End If
+
+            If modXML.HasAttribute(Item, "qmx") Then sQuotaMax = modNumbers.StringToSingle(modXML.GetAttributeValue(Item, "qmx", 0))
+            If modXML.HasAttribute(Item, "qmn") Then sQuotaMin = modNumbers.StringToSingle(modXML.GetAttributeValue(Item, "qmn", 0))
 
             sEntranceStation = modXML.GetAttributeValue(Item, "es", "")
             If modXML.ChildElementExist(Item, "escoord") Then oEntranceCoordinate = New cTrigPointCoordinate(Item.Item("escoord"))

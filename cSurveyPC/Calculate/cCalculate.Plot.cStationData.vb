@@ -3,7 +3,7 @@ Imports System.Xml
 
 Namespace cSurvey.Calculate.Plot
     Public Class cStationData
-        Private bIsOrphan As Boolean 'per una cosa perfetta questi flag dovrebbero essere nullabili...
+        Private bIsOrphan As Boolean 'in a perfect world this should be nullable....
         Private bIsSplay As Boolean
         Private bIsCalibration As Boolean
 

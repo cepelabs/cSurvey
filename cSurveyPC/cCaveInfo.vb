@@ -177,7 +177,7 @@ Namespace cSurvey
             End If
         End Function
 
-        Public Function Path() As String Implements cICaveInfoBranches.path
+        Public Function Path() As String Implements cICaveInfoBranches.Path
             Return sName
         End Function
 

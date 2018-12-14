@@ -545,9 +545,10 @@ Module modExport
 
         ExportSketch = &H10
         ExportSurfaceElevationsData = &H20
-        ExportSurfaceElevationsReferences = &H40
+        'ExportSurfaceElevationsReferences = &H40
         TrigpointExportDictionary = &H100
         TrigpointExportNameAsComment = &H200
+        UseCadastralIDinCaveNames = &H400
 
         SegmentForceDirection = &H2000
         SegmentForcePath = &H4000
@@ -1135,93 +1136,316 @@ Module modExport
         End If
     End Sub
 
-    Public Sub ExcelExportTo(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String)
+    <Flags> Public Enum ExcelExportOptionsEnum
+        CalculatedData = &H1
+        NamedSplayStation = &H2
+        NamedSplayStationData = &H4
+        Colors = &H100
+    End Enum
+
+    Private Function pExcelNextColumn(ByRef Column As Integer, Optional Increment As Integer = 1) As Integer
+        Column += Increment
+        Return Column
+    End Function
+
+    Public Sub ExcelExportTo(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, Options As ExcelExportOptionsEnum)
         Dim oFileinfo As IO.FileInfo = New IO.FileInfo(Filename)
         If oFileinfo.Exists Then oFileinfo.Delete()
+        Dim bColors As Boolean = (Options And ExcelExportOptionsEnum.Colors) = ExcelExportOptionsEnum.Colors
+        Dim bCalculatedData As Boolean = (Options And ExcelExportOptionsEnum.CalculatedData) = ExcelExportOptionsEnum.CalculatedData
+        Dim bNamedSplayStation As Boolean = (Options And ExcelExportOptionsEnum.NamedSplayStation) = ExcelExportOptionsEnum.NamedSplayStation
+        Dim bNamedSplayStationData As Boolean = (Options And ExcelExportOptionsEnum.NamedSplayStationData) = ExcelExportOptionsEnum.NamedSplayStationData
         Using oXLS As OfficeOpenXml.ExcelPackage = New OfficeOpenXml.ExcelPackage(oFileinfo)
-            Using oXLSSegment As OfficeOpenXml.ExcelWorksheet = oXLS.Workbook.Worksheets.Add("Segmenti")
+            Using oXLSSegment As OfficeOpenXml.ExcelWorksheet = oXLS.Workbook.Worksheets.Add(modMain.GetLocalizedString("main.textpart110"))
                 Dim sLastSession As String = "@@@@@@@@"
 
                 Dim r As Integer = 1
+                Dim c As Integer = 0
                 For Each oSegment As cSegment In Survey.Segments
                     If sLastSession <> oSegment.Session Then
-                        oXLSSegment.Cells(r, 1).Value = modMain.GetLocalizedString("main.textpart13")
-                        oXLSSegment.Cells(r, 2).Value = modMain.GetLocalizedString("main.textpart11")
-                        oXLSSegment.Cells(r, 3).Value = modMain.GetLocalizedString("main.textpart12")
-                        oXLSSegment.Cells(r, 4).Value = modMain.GetLocalizedString("main.textpart15")
-                        oXLSSegment.Cells(r, 5).Value = modMain.GetLocalizedString("main.textpart16")
-                        oXLSSegment.Cells(r, 6).Value = GetMeasureName(oSegment, MeasureEnum.Distance)
-                        oXLSSegment.Cells(r, 7).Value = GetMeasureName(oSegment, MeasureEnum.Bearing)
-                        oXLSSegment.Cells(r, 8).Value = GetMeasureName(oSegment, MeasureEnum.Inclination)
-                        oXLSSegment.Cells(r, 9).Value = modMain.GetLocalizedString("main.textpart20a")
-                        oXLSSegment.Cells(r, 10).Value = modMain.GetLocalizedString("main.textpart20b")
-                        oXLSSegment.Cells(r, 11).Value = modMain.GetLocalizedString("main.textpart20c")
-                        oXLSSegment.Cells(r, 12).Value = modMain.GetLocalizedString("main.textpart20d")
+                        c = 0
+
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart13")
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart11")
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart12")
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart15")
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart16")
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = GetMeasureName(oSegment, MeasureEnum.Distance)
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = GetMeasureName(oSegment, MeasureEnum.Bearing)
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = GetMeasureName(oSegment, MeasureEnum.Inclination)
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart20a")
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart20b")
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart20c")
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart20d")
+
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart134")
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart135")
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart136")
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart137")
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart138")
+
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart139")
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart140")
+
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart141")
+
                         oXLSSegment.Row(r).Style.Font.Bold = True
 
                         r += 1
                     End If
 
-                    oXLSSegment.Cells(r, 1).Value = oSegment.Session
-                    oXLSSegment.Cells(r, 2).Value = oSegment.Cave
-                    oXLSSegment.Cells(r, 3).Value = oSegment.Branch
+                    c = 0
+                    oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = oSegment.Session
+                    If bColors Then
+                        Dim oSessionColor As Color = Survey.Properties.Sessions.GetColor(oSegment, Color.Transparent)
+                        If Not (oSessionColor = Color.Transparent) Then
+                            oXLSSegment.Cells(r, c).Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
+                            oXLSSegment.Cells(r, c).Style.Fill.BackgroundColor.SetColor(oSessionColor)
+                        End If
+                    End If
+                    oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = oSegment.Cave
+                    If bColors Then
+                        Dim oCaveBranchColor As Color = Survey.Properties.CaveInfos.GetColor(oSegment, Color.Transparent)
+                        If Not (oCaveBranchColor = Color.Transparent) Then
+                            oXLSSegment.Cells(r, c).Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
+                            oXLSSegment.Cells(r, c).Style.Fill.BackgroundColor.SetColor(oCaveBranchColor)
+                        End If
+                    End If
+                    oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = oSegment.Branch
+                    If bColors Then
+                        Dim oCaveBranchColor As Color = Survey.Properties.CaveInfos.GetColor(oSegment, Color.Transparent)
+                        If Not (oCaveBranchColor = Color.Transparent) Then
+                            oXLSSegment.Cells(r, c).Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
+                            oXLSSegment.Cells(r, c).Style.Fill.BackgroundColor.SetColor(oCaveBranchColor)
+                        End If
+                    End If
 
-                    oXLSSegment.Cells(r, 4).Value = oSegment.[From]
-                    oXLSSegment.Cells(r, 5).Value = oSegment.[To]
+                    oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = oSegment.[From]
+                    If (oSegment.Splay AndAlso bNamedSplayStation) OrElse (Not oSegment.Splay) Then
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = oSegment.[To]
+                    Else
+                        pExcelNextColumn(c)
+                    End If
 
-                    oXLSSegment.Cells(r, 6).Value = oSegment.Distance
-                    oXLSSegment.Cells(r, 7).Value = oSegment.Bearing
-                    oXLSSegment.Cells(r, 8).Value = oSegment.Inclination
+                    oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = oSegment.Distance
+                    oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = oSegment.Bearing
+                    oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = oSegment.Inclination
 
-                    oXLSSegment.Cells(r, 9).Value = oSegment.Left
-                    oXLSSegment.Cells(r, 10).Value = oSegment.Right
-                    oXLSSegment.Cells(r, 11).Value = oSegment.Up
-                    oXLSSegment.Cells(r, 12).Value = oSegment.Down
+                    oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = oSegment.Left
+                    oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = oSegment.Right
+                    oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = oSegment.Up
+                    oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = oSegment.Down
+
+                    oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = If(oSegment.Direction = cSegment.DirectionEnum.Right, modMain.GetLocalizedString("main.textpart20a"), modMain.GetLocalizedString("main.textpart20b"))
+                    oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = If(oSegment.Exclude, "✔", "")
+                    oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = If(oSegment.Splay, "✔", "")
+                    oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = If(oSegment.Surface, "✔", "")
+                    oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = If(oSegment.Duplicate, "✔", "")
+
+                    oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = If(oSegment.Virtual, "✔", "")
+                    oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = If(oSegment.Calibration, "✔", "")
+
+                    oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = oSegment.Note
 
                     sLastSession = oSegment.Session
+
                     r += 1
                 Next
 
                 r = 2
-                Dim oXLSTrigpoint As OfficeOpenXml.ExcelWorksheet = oXLS.Workbook.Worksheets.Add("Capisaldi")
-                oXLSTrigpoint.Cells(1, 1).Value = modMain.GetLocalizedString("main.textpart37")
-                oXLSTrigpoint.Cells(1, 2).Value = modMain.GetLocalizedString("main.textpart38")
-                oXLSTrigpoint.Cells(1, 3).Value = modMain.GetLocalizedString("main.textpart39")
+                c = 0
+                Dim oXLSTrigpoint As OfficeOpenXml.ExcelWorksheet = oXLS.Workbook.Worksheets.Add(modMain.GetLocalizedString("main.textpart111"))
+                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart142")
+
+                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart113")
+                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart114")
+                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart115")
+                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart151")
+
+                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart150")
+                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart146")
+                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart147")
+                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart148")
+                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart149")
+
+                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart37")
+                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart38")
+                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart39")
+
+                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart116")
+                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart117")
+                oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart118")
+
                 oXLSTrigpoint.Row(1).Style.Font.Bold = True
-                For Each otrigpoint As cTrigPoint In Survey.TrigPoints
-                    oXLSTrigpoint.Cells(r, 1).Value = modNumbers.MathRound(otrigpoint.Data.X, 2)
-                    oXLSTrigpoint.Cells(r, 2).Value = modNumbers.MathRound(otrigpoint.Data.Y, 2)
-                    oXLSTrigpoint.Cells(r, 3).Value = modNumbers.MathRound(otrigpoint.Data.Z, 2)
-                    r += 1
+                For Each oTrigpoint As cTrigPoint In Survey.TrigPoints
+                    If Not oTrigpoint.Data.IsOrphan Then
+                        If (Not oTrigpoint.Data.IsSplay) OrElse (oTrigpoint.Data.IsSplay AndAlso bNamedSplayStation AndAlso bNamedSplayStationData) Then
+                            c = 0
+                            oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = oTrigpoint.Name
+                            If oTrigpoint.Coordinate.IsEmpty Then
+                                pExcelNextColumn(c, 4)
+                            Else
+                                oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = oTrigpoint.Coordinate.Latitude
+                                oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = oTrigpoint.Coordinate.Longitude
+                                oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = oTrigpoint.Coordinate.Altitude
+                                oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = oTrigpoint.Coordinate.Fix.ToString
+                            End If
+                            oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = oTrigpoint.Entrance.ToString
+                            oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = oTrigpoint.Type.ToString
+                            oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = If(oTrigpoint.IsSpecial, "✔", "")
+                            oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = If(oTrigpoint.IsInExploration, "✔", "")
+                            oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = oTrigpoint.Note
+
+                            If bCalculatedData Then
+                                oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = modNumbers.MathRound(oTrigpoint.Data.X, 2)
+                                oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = modNumbers.MathRound(oTrigpoint.Data.Y, 2)
+                                oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = modNumbers.MathRound(oTrigpoint.Data.Z, 2)
+                                If Survey.Calculate.TrigPoints.Contains(oTrigpoint) Then
+                                    Dim oCalculatedTrigpoint As Calculate.cTrigPoint = Survey.Calculate.TrigPoints(oTrigpoint)
+                                    If oCalculatedTrigpoint.Coordinate.IsEmpty Then
+                                        pExcelNextColumn(c, 3)
+                                    Else
+                                        oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = oCalculatedTrigpoint.Coordinate.Latitude
+                                        oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = oCalculatedTrigpoint.Coordinate.Longitude
+                                        oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = oCalculatedTrigpoint.Coordinate.Altitude
+                                    End If
+                                End If
+                            End If
+
+                            r += 1
+                        End If
+                    End If
                 Next
 
                 r = 2
-                Dim oXLSSession As OfficeOpenXml.ExcelWorksheet = oXLS.Workbook.Worksheets.Add("Sessioni")
-                oXLSSession.Cells(1, 1).Value = "ID"
-                oXLSSession.Cells(1, 2).Value = "Data"
-                oXLSSession.Cells(1, 3).Value = "Descrizione"
-                oXLSSession.Cells(1, 4).Value = "Note"
-                oXLSSession.Cells(1, 5).Value = "Gruppi"
-                oXLSSession.Cells(1, 6).Value = "Rilevatori"
-                oXLSSession.Cells(1, 7).Value = "Disegnatori"
+                c = 0
+                Dim oXLSSession As OfficeOpenXml.ExcelWorksheet = oXLS.Workbook.Worksheets.Add(modMain.GetLocalizedString("main.textpart112"))
+                oXLSSession.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart119")
+                oXLSSession.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart120")
+                oXLSSession.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart121")
+                oXLSSession.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart122")
+                oXLSSession.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart123")
+                oXLSSession.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart124")
+                oXLSSession.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart125")
                 oXLSSession.Row(1).Style.Font.Bold = True
                 For Each oSession As cSession In Survey.Properties.Sessions
-                    oXLSSession.Cells(r, 1).Value = oSession.ID
-                    oXLSSession.Cells(r, 2).Value = oSession.Date
-                    oXLSSession.Cells(r, 3).Value = oSession.Description
-                    oXLSSession.Cells(r, 4).Value = oSession.Note
-                    oXLSSession.Cells(r, 5).Value = oSession.Club
-                    oXLSSession.Cells(r, 6).Value = oSession.Team
-                    oXLSSession.Cells(r, 7).Value = oSession.Designer
+                    c = 0
+                    oXLSSession.Cells(r, pExcelNextColumn(c)).Value = oSession.ID
+                    If bColors Then
+                        Dim oSessionColor As Color = Survey.Properties.Sessions.GetColor(oSession, Color.Transparent)
+                        If Not (oSessionColor = Color.Transparent) Then
+                            oXLSSession.Cells(r, c).Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
+                            oXLSSession.Cells(r, c).Style.Fill.BackgroundColor.SetColor(oSessionColor)
+                        End If
+                    End If
+                    oXLSSession.Cells(r, pExcelNextColumn(c)).Value = oSession.Date
+                    oXLSSession.Cells(r, c).Style.Numberformat.Format = "dd/mm/yyyy"
+                    oXLSSession.Cells(r, pExcelNextColumn(c)).Value = oSession.Description
+                    oXLSSession.Cells(r, pExcelNextColumn(c)).Value = oSession.Note
+                    oXLSSession.Cells(r, pExcelNextColumn(c)).Value = oSession.Club
+                    oXLSSession.Cells(r, pExcelNextColumn(c)).Value = oSession.Team
+                    oXLSSession.Cells(r, pExcelNextColumn(c)).Value = oSession.Designer
                     r += 1
                 Next
+
+                'caves and branches
+                r = 2
+                c = 0
+                Dim oXLSCaves As OfficeOpenXml.ExcelWorksheet = oXLS.Workbook.Worksheets.Add(modMain.GetLocalizedString("main.textpart126"))
+                oXLSCaves.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart131")
+                oXLSCaves.Column(2).Hidden = True
+                oXLSCaves.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart127")
+                oXLSCaves.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart128")
+                oXLSCaves.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart129")
+                oXLSCaves.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart130")
+                oXLSCaves.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart132")
+                oXLSCaves.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart133")
+                oXLSCaves.Row(1).Style.Font.Bold = True
+                For Each oCave As cCaveInfo In Survey.Properties.CaveInfos
+                    c = 0
+                    oXLSCaves.Cells(r, pExcelNextColumn(c)).Value = oCave.Name
+                    If bColors Then
+                        Dim oCaveBranchColor As Color = oCave.GetColor(Color.Transparent)
+                        If Not (oCaveBranchColor = Color.Transparent) Then
+                            oXLSCaves.Cells(r, c).Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
+                            oXLSCaves.Cells(r, c).Style.Fill.BackgroundColor.SetColor(oCaveBranchColor)
+                        End If
+                    End If
+                    oXLSCaves.Cells(r, pExcelNextColumn(c)).Value = oCave.Name
+                    oXLSCaves.Cells(r, pExcelNextColumn(c)).Value = oCave.ID
+                    oXLSCaves.Cells(r, pExcelNextColumn(c)).Value = oCave.Description
+                    oXLSCaves.Cells(r, pExcelNextColumn(c)).Value = oCave.ExtendStart
+                    If IsNothing(oCave.ParentConnection) Then
+                        pExcelNextColumn(c)
+                    Else
+                        oXLSCaves.Cells(r, pExcelNextColumn(c)).Value = oCave.ParentConnection.ToString
+                    End If
+                    If IsNothing(oCave.Connection) Then
+                        pExcelNextColumn(c)
+                    Else
+                        oXLSCaves.Cells(r, pExcelNextColumn(c)).Value = oCave.Connection.ToString
+                    End If
+
+                    r += 1
+
+                    Call pExportBranches(Survey, oXLSCaves, oCave, r, 1)
+                Next
+
+                If bCalculatedData Then
+                    r = 2
+                    c = 0
+                    If Survey.Calculate.GeoMagDeclinationData.Count > 0 Then
+                        Dim oXLSGeoData As OfficeOpenXml.ExcelWorksheet = oXLS.Workbook.Worksheets.Add(modMain.GetLocalizedString("main.textpart145"))
+                        oXLSGeoData.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart143")
+                        oXLSGeoData.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart144")
+                        oXLSGeoData.Row(1).Style.Font.Bold = True
+                        For Each oGeoDataDate As Date In Survey.Calculate.GeoMagDeclinationData.GetDates
+                            c = 0
+                            oXLSGeoData.Cells(r, pExcelNextColumn(c)).Value = oGeoDataDate
+                            oXLSGeoData.Cells(r, c).Style.Numberformat.Format = "dd/mm/yyyy"
+                            oXLSGeoData.Cells(r, pExcelNextColumn(c)).Value = Survey.Calculate.GeoMagDeclinationData.GetValue(oGeoDataDate)
+
+                            r += 1
+                        Next
+                    End If
+                End If
 
                 Call oXLS.Save()
             End Using
         End Using
     End Sub
 
-    <FlagsAttribute()> Public Enum HolosExportOptionsEnum
+    Private Sub pExportBranches(Survey As cSurveyPC.cSurvey.cSurvey, XLSCaves As OfficeOpenXml.ExcelWorksheet, Parent As cICaveInfoBranches, ByRef r As Integer, Indent As Integer)
+        Dim c As Integer
+        For Each oBranch As cCaveInfoBranch In Parent.Branches
+            c = 0
+            XLSCaves.Cells(r, pExcelNextColumn(c)).Value = Space(Indent * 2) & "└ " & oBranch.Name
+            Dim oCaveBranchColor As Color = oBranch.GetColor(Color.Transparent)
+            If Not (oCaveBranchColor = Color.Transparent) Then
+                XLSCaves.Cells(r, c).Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
+                XLSCaves.Cells(r, c).Style.Fill.BackgroundColor.SetColor(oCaveBranchColor)
+            End If
+            XLSCaves.Cells(r, pExcelNextColumn(c)).Value = oBranch.Name
+            XLSCaves.Cells(r, pExcelNextColumn(c)).Value = oBranch.Description
+            XLSCaves.Cells(r, pExcelNextColumn(c)).Value = oBranch.ExtendStart
+            If IsNothing(oBranch.ParentConnection) Then
+                pExcelNextColumn(c)
+            Else
+                XLSCaves.Cells(r, pExcelNextColumn(c)).Value = oBranch.ParentConnection.ToString
+            End If
+            If IsNothing(oBranch.Connection) Then
+                pExcelNextColumn(c)
+            Else
+                XLSCaves.Cells(r, pExcelNextColumn(c)).Value = oBranch.Connection.ToString
+            End If
+
+            r += 1
+
+            Call pExportBranches(Survey, XLSCaves, oBranch, r, Indent + 1)
+        Next
+    End Sub
+
+    <Flags> Public Enum HolosExportOptionsEnum
         SurfaceData = &H1
         LRUDdata = &H10
         Colors = &H100
@@ -2082,7 +2306,7 @@ Module modExport
                 sText = sText.Replace(":", "")
                 sText = sText.Replace("+", "")
                 sText = sText.Replace("-", "")
-                sText = sText.Replace("'", "")
+                sText = sText.Replace("'", "_")
                 sText = sText.Replace("@", "")
                 sText = sText.Replace("#", "")
                 sText = sText.Replace("[", "")
@@ -2099,7 +2323,7 @@ Module modExport
                 sText = sText.Replace("!", "")
                 sText = sText.Replace("<", "")
                 sText = sText.Replace(">", "")
-                sText = sText.Replace("’", "")
+                sText = sText.Replace("’", "_")
                 sText = sText.Replace(Chr(34), "")
             Case FormatTextForEnum.BaseWithoutSpaces
                 sText = FormatTextFor(sText, FormatTextForEnum.Base)
@@ -2115,7 +2339,7 @@ Module modExport
             Case FormatTextForEnum.TherionFile
                 sText = Chr(34) & sText.Replace(Chr(34), Chr(34) & Chr(34)) & Chr(34)
             Case FormatTextForEnum.TherionStationName
-                sText = sText.Replace(")", "")
+                sText = sText.Replace(")", "_")
                 sText = sText.Replace("(", "_")
                 sText = sText.Replace(" ", "_")
         End Select
@@ -2143,7 +2367,7 @@ Module modExport
             Call st.WriteLine("#csurvey " & modMain.GetReleaseVersion & " legacy1")
             Dim sName As String = FormatTextFor(Survey.Name, FormatTextForEnum.BaseWithoutSpacesAndSlash)
             If sName = "" Then sName = "csurvey_unnamed"
-            Call st.Write("survey " & sName & " -title " & Chr(34) & Survey.Name & Chr(34))
+            Call st.Write("survey " & sName & " -title " & Chr(34) & If((Options And TherionExportOptionsEnum.UseCadastralIDinCaveNames) = TherionExportOptionsEnum.UseCadastralIDinCaveNames AndAlso Survey.Properties.ID <> "", Survey.Properties.ID & " " & Survey.Properties.Name, Survey.Properties.Name) & Chr(34))
 
             If Survey.Properties.NordCorrectionMode = cSurvey.cSurvey.NordCorrectionModeEnum.None Then
                 Call st.Write(" -declination [0.00 deg]")
@@ -2173,23 +2397,6 @@ Module modExport
 
             Dim sOrigin As String = DictionaryTranslate(Dictionary, Survey.Properties.Origin)
             Call st.WriteLine("extend start " & sOrigin)
-
-            'If Survey.Properties.GPS.Enabled Then
-            '    If (Options And TherionExportOptionsEnum.ExportSurfaceElevationsReferences) = TherionExportOptionsEnum.ExportSurfaceElevationsReferences Then
-            '        'If Survey.Surface.Elevations.ShowIn3D Then
-            '        Call st.WriteLine("group")
-            '        Call st.WriteLine("units length metres")
-            '        Call st.WriteLine("units compass degrees")
-            '        Call st.WriteLine("units clino degrees")
-            '        Call st.WriteLine("data normal from to compass clino length left right up down")
-            '        Dim sSurfaceElevationTrigpointName1 As String = DictionaryTranslate(Dictionary, cSurvey.Calculate.cCalculate.SurfaceElevationTrigpointName1)
-            '        Dim sSurfaceElevationTrigpointName2 As String = DictionaryTranslate(Dictionary, cSurvey.Calculate.cCalculate.SurfaceElevationTrigpointName2)
-            '        Call st.WriteLine("flags surface splay approx")
-            '        Call st.WriteLine(sSurfaceElevationTrigpointName1 & " " & sSurfaceElevationTrigpointName2 & " " & modText.FormatNumber(0, "0.00") & " " & modText.FormatNumber(0, "0.00") & " " & modText.FormatNumber(0, "0.00") & " " & modText.FormatNumber(0, "0.00") & " " & modText.FormatNumber(0, "0.00") & " " & modText.FormatNumber(0, "0.00") & " " & modText.FormatNumber(0, "0.00"))
-            '        Call st.WriteLine("endgroup")
-            '        'End If
-            '    End If
-            'End If
 
             For Each oSession As cSession In Survey.Properties.Sessions.GetWithEmpty.Values
                 Call st.WriteLine("group")
@@ -2384,258 +2591,6 @@ Module modExport
         Return "encoding " & Encoder.WebName & vbCrLf
     End Function
 
-    'Public Function TherionThExportFor3D(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, ExportSurfaceElevationsData As Boolean, VThreshold As Single, Optional ByVal Dictionary As IDictionary(Of String, String) = Nothing) As List(Of String)
-    '    '                           GPS Enabled	    GPS Disabled
-    '    'Declinazione manuale       No	            Si
-    '    'Declinazione automatica    Si	            No
-    '    'Correzione nord	        Si, automatica	Si, tramite opzione
-
-    '    Dim oFiles As List(Of String) = New List(Of String)
-
-    '    Using st As StreamWriter = My.Computer.FileSystem.OpenTextFileWriter(Filename, False, TextFileEncoder)
-    '        Call st.WriteLine(pGetTherionTextEncorderDef(TextFileEncoder))
-    '        Dim sName As String = FormatTextFor(Survey.Name, FormatTextForEnum.BaseWithoutSpacesAndSlash)
-    '        If sName = "" Then sName = "csurvey_unnamed"
-    '        Call st.WriteLine("survey " & sName & " -title " & Chr(34) & Survey.Name & Chr(34))
-
-    '        'If Not Survey.Properties.GPS.Enabled Then
-    '        '    'se il rilievo prevede correzioni del nord metto il valore della declinazione globale se presente...
-    '        '    If Not Survey.Properties.NordCorrectionMode = cSurvey.cSurvey.NordCorrectionModeEnum.None Then
-    '        '        If Survey.Properties.GlobalDeclinationEnabled Then
-    '        '            Call st.Write(" -declination [" & modText.FormatNumber(Survey.Properties.GlobalDeclination, "0.00") & " deg]")
-    '        '        End If
-    '        '    End If
-    '        'End If
-    '        'Call st.WriteLine("")
-
-    '        If Survey.Properties.GPS.Enabled Then
-    '            If ExportSurfaceElevationsData Then
-    '                'If Survey.Surface.Elevations.ShowIn3D Then
-    '                Dim sSurfaceFile As String = Survey.Surface.CreateTherionSurfaceDataFile(Path.GetDirectoryName(Filename), Filename, oFiles)
-    '                Call st.WriteLine("input " & Chr(34) & sSurfaceFile & Chr(34))
-    '                'End If
-    '            End If
-    '        End If
-
-    '        For Each oGrade As cGrade In Survey.Grades
-    '            Dim sGrade As String = oGrade.CreateTherionGradeTextBlock
-    '            If sGrade <> "" Then
-    '                Call st.WriteLine(sGrade)
-    '            End If
-    '        Next
-    '        Call st.WriteLine("grade null" & vbCrLf & "endgrade")
-
-    '        'If Survey.Properties.GPS.Enabled Then
-    '        '    If (Options And TherionExportOptionsEnum.ExportSurfaceElevationsReferences) = TherionExportOptionsEnum.ExportSurfaceElevationsReferences Then
-    '        '        If Survey.Surface.Elevations.ShowIn3D Then
-    '        '            Call st.WriteLine("survey _elevation")
-    '        '            Call st.WriteLine("centerline")
-    '        '            Call st.WriteLine("units length metres")
-    '        '            Call st.WriteLine("units compass degrees")
-    '        '            Call st.WriteLine("units clino degrees")
-    '        '            Call st.WriteLine("data normal from to compass clino length left right up down")
-    '        '            Dim sSurfaceElevationTrigpointName1 As String = DictionaryTranslate(Dictionary, cSurvey.Calculate.cCalculate.SurfaceElevationTrigpointName1)
-    '        '            Dim sSurfaceElevationTrigpointName2 As String = DictionaryTranslate(Dictionary, cSurvey.Calculate.cCalculate.SurfaceElevationTrigpointName2)
-    '        '            Call st.WriteLine("flags surface splay approx")
-    '        '            Call st.WriteLine(sSurfaceElevationTrigpointName1 & " " & sSurfaceElevationTrigpointName2 & " " & modText.FormatNumber(0, "0.00") & " " & modText.FormatNumber(0, "0.00") & " " & modText.FormatNumber(0, "0.00") & " " & modText.FormatNumber(0, "0.00") & " " & modText.FormatNumber(0, "0.00") & " " & modText.FormatNumber(0, "0.00") & " " & modText.FormatNumber(0, "0.00"))
-
-    '        '            Dim oTrigPoint As cTrigPoint = Survey.TrigPoints(cSurvey.Calculate.cCalculate.SurfaceElevationTrigpointName1)
-    '        '            If Not oTrigPoint Is Nothing Then
-    '        '                With oTrigPoint
-    '        '                    If Not .Coordinate.IsEmpty Then
-    '        '                        Dim sIndex As String = DictionaryTranslate(Dictionary, .Name)
-    '        '                        Call st.WriteLine("cs lat-long")
-    '        '                        Call st.WriteLine("fix " & sIndex & " " & modText.FormatNumber(.Coordinate.GetLatitude, "0.0000000") & "    " & modText.FormatNumber(.Coordinate.GetLongitude, "0.0000000") & "    " & modText.FormatNumber(.Coordinate.GetAltitude, "0.00"))
-    '        '                    End If
-    '        '                End With
-    '        '            End If
-
-    '        '            Call st.WriteLine("endcenterline")
-    '        '            Call st.WriteLine("endsurvey _elevation")
-    '        '        End If
-    '        '    End If
-    '        'End If
-
-    '        Dim oTrigpointFirstSession As Dictionary(Of String, String) = New Dictionary(Of String, String)
-    '        Dim oTrigpointOtherSessions As Dictionary(Of String, List(Of String)) = New Dictionary(Of String, List(Of String))
-    '        For Each oSession As cSession In Survey.Properties.Sessions.GetWithEmpty.Values
-    '            Dim sSessionID As String = FormatTextFor(IIf(oSession.ID = "", "_null", oSession.ID), FormatTextForEnum.BaseWithoutSpaces)
-    '            Call st.WriteLine("survey " & sSessionID)
-    '            Call st.WriteLine("centerline")
-    '            'Call st.WriteLine("date " & Strings.Format(oSession.Date, "yyyy.MM.dd"))
-
-    '            Call st.WriteLine("vthreshold " & VThreshold & " deg")
-
-    '            'If Survey.Properties.GPS.Enabled Then
-    '            '    'se ho i dati geografici il nord viene sempre corretto...nel caso i dati siano geografici specifico una declinazione a 0
-    '            '    'anche perché non ho capito come dire a therion come NON CORREGGERE i dati
-    '            '    If oSession.NordType = cSegment.NordTypeEnum.Geographic Then
-    '            Call st.WriteLine("declination 0.00 deg")
-    '            '    End If
-    '            'Else
-    '            ''se non ho dati geografici...
-    '            ''se il rilievo non prevede correzione metto tutto a 0
-    '            'If Survey.Properties.NordCorrectionMode = cSurvey.cSurvey.NordCorrectionModeEnum.None Then
-    '            '    Call st.WriteLine("declination 0.00 deg")
-    '            'Else
-    '            '    'se il rilievo prevede correzioni e ho messo una declinazione per la sessione la metto altrimenti
-    '            '    If oSession.NordType = cSegment.NordTypeEnum.Magnetic Then
-    '            '        'se ho una declinazione manuale la imposto...altrimenti dovrebbe prendere quella associata al tag 'survey'
-    '            '        If oSession.DeclinationEnabled Then
-    '            '            Call st.WriteLine("declination " & modText.FormatNumber(oSession.GetDeclination, "0.00") & " deg")
-    '            '        End If
-    '            '    Else
-    '            '        'metto la declinazione 0 essendo nord geografico...anche qua sarebbe opportuno capire l'arcano
-    '            '        Call st.WriteLine("declination 0.00 deg")
-    '            '    End If
-    '            'End If
-    '            'End If
-
-    '            Dim oSegments As cSegmentCollection = Survey.Segments.GetSessionSegments(oSession)
-    '            Select Case oSession.DataFormat
-    '                Case cSegment.DataFormatEnum.Normal
-    '                    Call st.WriteLine("units length " & GetTherionDistanceUnit(oSession.DistanceType))
-    '                    Call st.WriteLine("units compass " & GetTherionBearingUnit(oSession.BearingType))
-    '                    Call st.WriteLine("units clino " & GetTherionInclinationUnit(oSession.InclinationType))
-    '                    Call st.WriteLine("data normal from to compass clino length left right up down")
-    '                Case cSegment.DataFormatEnum.Cartesian
-    '                    Call st.WriteLine("units length " & GetTherionDistanceUnit(oSession.DistanceType))
-    '                    Call st.WriteLine("data cartesian from to northing altitude easting left right up down")
-    '            End Select
-
-    '            If oSession.Grade <> "" Then Call st.WriteLine("grade " & oSession.Grade)
-
-    '            Dim sFlags As String = ""
-    '            Dim sPreviousFlags As String = ""
-    '            For Each oSegment As cSegment In oSegments
-    '                If oSegment.IsValid And Not oSegment.IsSelfDefined And Not oSegment.Splay Then
-    '                    For Each oSubData As cSurvey.Calculate.Plot.cSubData In oSegment.Data.SubDatas
-    '                        With oSubData
-    '                            Dim sFrom As String = .[From]
-    '                            Dim sTo As String = .[To]
-
-    '                            If oTrigpointFirstSession.ContainsKey(sFrom) Then
-    '                                If oTrigpointOtherSessions.ContainsKey(sFrom) Then
-    '                                    Call oTrigpointOtherSessions(sFrom).Add(sSessionID)
-    '                                Else
-    '                                    Call oTrigpointOtherSessions.Add(sFrom, New List(Of String))
-    '                                    Call oTrigpointOtherSessions(sFrom).Add(sSessionID)
-    '                                End If
-    '                            Else
-    '                                oTrigpointFirstSession.Add(sFrom, sSessionID)
-    '                            End If
-    '                            If oTrigpointFirstSession.ContainsKey(sTo) Then
-    '                                If oTrigpointOtherSessions.ContainsKey(sTo) Then
-    '                                    Call oTrigpointOtherSessions(sTo).Add(sSessionID)
-    '                                Else
-    '                                    Call oTrigpointOtherSessions.Add(sTo, New List(Of String))
-    '                                    Call oTrigpointOtherSessions(sTo).Add(sSessionID)
-    '                                End If
-    '                            Else
-    '                                Call oTrigpointFirstSession.Add(sTo, sSessionID)
-    '                            End If
-
-    '                            sFrom = DictionaryTranslate(Dictionary, sFrom)
-    '                            sTo = DictionaryTranslate(Dictionary, .[To])
-
-    '                            sFlags = ""
-    '                            If oSegment.Duplicate Then sFlags = sFlags & " duplicate" Else sFlags = sFlags & " not duplicate"
-    '                            If oSegment.Surface Then sFlags = sFlags & " surface" Else sFlags = sFlags & " not surface"
-    '                            'occhio...exclude generico non esiste in therion...viene indicato sempre come surface...
-    '                            If oSegment.Exclude And (Not oSegment.Splay And Not oSegment.Duplicate And Not oSegment.Surface) Then sFlags = sFlags & " surface"
-
-    '                            If sFlags <> sPreviousFlags Then
-    '                                Call st.WriteLine("flags " & sFlags)
-    '                                sPreviousFlags = sFlags
-    '                            End If
-    '                            Call st.WriteLine(sFrom & " " & sTo & " " & modText.FormatNumber(.Bearing, "0.00") & " " & modText.FormatNumber(modPaint.NormalizeInclination(.Inclination), "0.00") & " " & modText.FormatNumber(.Distance, "0.00") & " [" & modText.FormatNumber(.FromLeft, "0.00") & " " & modText.FormatNumber(.ToLeft, "0.00") & "] [" & modText.FormatNumber(.FromRight, "0.00") & " " & modText.FormatNumber(.ToRight, "0.00") & "] [" & modText.FormatNumber(.FromUp, "0.00") & " " & modText.FormatNumber(.ToUp, "0.00") & "] [" & modText.FormatNumber(.FromDown, "0.00") & " " & modText.FormatNumber(.ToDown, "0.00") & "]")
-    '                        End With
-    '                    Next
-    '                End If
-    '            Next
-    '            Call st.WriteLine("endcenterline")
-    '            Call st.WriteLine("endsurvey " & sSessionID)
-    '        Next
-
-    '        'sezione centerline generica...ogni caposaldo va riferito alla prima occorrenza in una sessione...
-    '        Call st.WriteLine("centerline")
-    '        With Survey.Properties
-    '            Dim sIndex As String = DictionaryTranslate(Dictionary, .Origin)
-    '            Call st.WriteLine("extend start " & sIndex & "@" & oTrigpointFirstSession(.Origin))
-    '        End With
-
-    '        For Each sTrigpoint As String In oTrigpointFirstSession.Keys
-    '            If Survey.TrigPoints.Contains(sTrigpoint) Then
-    '                Dim oTrigpoint As cTrigPoint = Survey.TrigPoints(sTrigpoint)
-    '                With oTrigpoint
-    '                    Dim sIndex As String = DictionaryTranslate(Dictionary, .Name)
-    '                    Dim sSessionID As String = oTrigpointFirstSession(sTrigpoint)
-    '                    If .Type <> cTrigPoint.TrigPointTypeEnum.Undefined Then
-    '                        Dim sThType As String = ""
-    '                        Select Case .Type
-    '                            Case cTrigPoint.TrigPointTypeEnum.Temporary
-    '                                sThType = "temporary"
-    '                            Case cTrigPoint.TrigPointTypeEnum.Fixed
-    '                                sThType = "fixed"
-    '                            Case cTrigPoint.TrigPointTypeEnum.Painted
-    '                                sThType = "painted"
-    '                        End Select
-    '                        Call st.WriteLine("mark " & sIndex & "@" & sSessionID & " " & sThType)
-    '                    End If
-
-    '                    'If (Options And TherionExportOptionsEnum.UseSubData) = 0 Then
-    '                    '    For Each oConnection As cConnection In .Connections
-    '                    '        If oConnection.Ignore Then
-    '                    '            Call st.WriteLine("extend ignore " & sIndex & "@" & sSessionID & " " & DictionaryTranslate(Dictionary, oConnection.TrigPoint) & "@" & oTrigpointFirstSession(oConnection.TrigPoint))
-    '                    '        End If
-    '                    '    Next
-    '                    'End If
-
-    '                    If Not .Coordinate.IsEmpty And Survey.Properties.GPS.SendToTherion And Survey.Properties.GPS.Enabled Then
-    '                        Call st.WriteLine("cs lat-long")
-    '                        Call st.WriteLine("fix " & sIndex & "@" & sSessionID & " " & modText.FormatNumber(.Coordinate.GetLatitude, "0.0000000") & "    " & modText.FormatNumber(.Coordinate.GetLongitude, "0.0000000") & "    " & modText.FormatNumber(.Coordinate.GetAltitude, "0.00"))
-    '                    End If
-
-    '                    'If (Options And TherionExportOptionsEnum.TrigpointExportNameAsComment) = TherionExportOptionsEnum.TrigpointExportNameAsComment Then
-    '                    Call st.WriteLine("station " & sIndex & "@" & sSessionID & " " & FormatTextFor(Survey.Properties.GetFormattedTrigpointText(oTrigpoint), FormatTextForEnum.TherionFile))
-    '                    'End If
-
-    '                    If oTrigpointOtherSessions.ContainsKey(sTrigpoint) Then
-    '                        For Each sOtherSessionID As String In oTrigpointOtherSessions(sTrigpoint)
-    '                            If sSessionID <> sOtherSessionID Then
-    '                                Call st.WriteLine("equate " & sIndex & "@" & sSessionID & " " & sIndex & "@" & sOtherSessionID)
-    '                            End If
-    '                        Next
-    '                    End If
-    '                End With
-    '            End If
-    '        Next
-
-    '        If Not Survey.Properties.GPS.SendToTherion And Survey.Properties.GPS.Enabled Then
-    '            Dim oTrigPoint As cTrigPoint = Survey.TrigPoints.GetGPSBaseReferencePoint
-    '            If Not oTrigPoint Is Nothing Then
-    '                With oTrigPoint
-    '                    If Not .Coordinate.IsEmpty Then
-    '                        Dim sIndex As String = DictionaryTranslate(Dictionary, .Name)
-    '                        Call st.WriteLine("cs lat-long")
-    '                        Call st.WriteLine("fix " & sIndex & "@" & oTrigpointFirstSession(.Name) & " " & modText.FormatNumber(.Coordinate.GetLatitude, "0.0000000") & "    " & modText.FormatNumber(.Coordinate.GetLongitude, "0.0000000") & "    " & modText.FormatNumber(.Coordinate.GetAltitude, "0.00"))
-    '                    End If
-    '                End With
-    '            End If
-    '        End If
-    '        'If (Options And TherionExportOptionsEnum.ScrapFor3D) = TherionExportOptionsEnum.ScrapFor3D Then
-    '        '    Call st.WriteLine("walls off")
-    '        'End If
-    '        Call st.WriteLine("endcenterline")
-
-    '        Call st.WriteLine("endsurvey " & sName)
-    '        Call st.Flush()
-    '        Call st.Close()
-    '    End Using
-
-    '    Return oFiles
-    'End Function
-
     Private Function pGetDepthValue(Depths As Dictionary(Of String, Decimal), Station As String) As Decimal
         Dim dValue As Decimal
         If Depths.TryGetValue(Station, dValue) Then
@@ -2663,7 +2618,7 @@ Module modExport
         Dim sCaveBranchID As String = pGetTherionCaveBranchID(Branch)
         Dim sRelativeCaveBranchID As String = If(Branch.Name = "", "unnamed", FormatTextFor(Branch.Name, FormatTextForEnum.BaseWithoutSpacesAndSlash))
         iIndent += 1
-        Call St.WriteLine(Space(iIndent) & "survey " & sRelativeCaveBranchID & " -title " & FormatTextFor(Branch.Name, FormatTextForEnum.TherionText))
+        Call St.WriteLine(Space(iIndent) & "survey " & sRelativeCaveBranchID & " -title " & FormatTextFor(If((Options And TherionExportOptionsEnum.UseCadastralIDinCaveNames) = TherionExportOptionsEnum.UseCadastralIDinCaveNames AndAlso Survey.Properties.ID <> "", Survey.Properties.ID & " " & Survey.Properties.Name, Survey.Properties.Name), FormatTextForEnum.TherionText))
         If oBranchSegments.Count > 0 Then
             Dim oSessions As List(Of cSession) = oBranchSegments.GetSessions
             For Each oSession As cSession In oSessions
@@ -2932,8 +2887,8 @@ Module modExport
         Using st As StreamWriter = My.Computer.FileSystem.OpenTextFileWriter(Filename, False, TextFileEncoder)
             Call st.WriteLine(pGetTherionTextEncorderDef(TextFileEncoder))
             Call st.WriteLine("#csurvey " & modMain.GetReleaseVersion)
-            Dim sName As String = FormatTextFor(If(Survey.Name = "", "csurvey_unnamed", Survey.Name), FormatTextForEnum.BaseWithoutSpacesAndSlash)
-            Call st.Write("survey " & sName & " -title " & """" & Survey.Name & """")
+            Dim sName As String = FormatTextFor(If(Survey.Properties.Name = "", "csurvey_unnamed", Survey.Properties.Name), FormatTextForEnum.BaseWithoutSpacesAndSlash)
+            Call st.Write("survey " & sName & " -title " & FormatTextFor(If((Options And TherionExportOptionsEnum.UseCadastralIDinCaveNames) = TherionExportOptionsEnum.UseCadastralIDinCaveNames AndAlso Survey.Properties.ID <> "", Survey.Properties.ID & " " & Survey.Properties.Name, Survey.Properties.Name), FormatTextForEnum.TherionText))
 
             If Not Survey.Properties.GPS.Enabled Then
                 'se il rilievo prevede correzioni del nord metto il valore della declinazione globale se presente...

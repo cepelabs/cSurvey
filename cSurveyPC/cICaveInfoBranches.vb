@@ -14,6 +14,7 @@ Namespace cSurvey
 
         ReadOnly Property Cave() As String
         ReadOnly Property Name() As String
+
         Property Description As String
         Property Color() As Color
         ReadOnly Property ColorIsValid As Boolean

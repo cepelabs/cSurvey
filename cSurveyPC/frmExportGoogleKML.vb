@@ -2,24 +2,24 @@
 
     Private Sub pSettingsLoad()
         Try
-            Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-            chkExportWaypoint.Checked = oReg.GetValue("data.export.googlekml.waypoint", "1")
-            chkExportTrack.Checked = oReg.GetValue("data.export.googlekml.track", "0")
-            chkExportCaveBorders.Checked = oReg.GetValue("data.export.googlekml.caveborders", "0")
-            Call oReg.Close()
-            Call oReg.Dispose()
+            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
+                chkExportWaypoint.Checked = oReg.GetValue("data.export.googlekml.waypoint", "1")
+                chkExportTrack.Checked = oReg.GetValue("data.export.googlekml.track", "0")
+                chkExportCaveBorders.Checked = oReg.GetValue("data.export.googlekml.caveborders", "0")
+                Call oReg.Close()
+            End Using
         Catch
         End Try
     End Sub
 
     Private Sub pSettingsSave()
         Try
-            Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-            Call oReg.SetValue("data.export.googlekml.waypoint", IIf(chkExportWaypoint.Checked, "1", "0"))
-            Call oReg.SetValue("data.export.googlekml.track", IIf(chkExportTrack.Checked, "1", "0"))
-            Call oReg.SetValue("data.export.googlekml.caveborders", IIf(chkExportCaveBorders.Checked, "1", "0"))
-            Call oReg.Close()
-            Call oReg.Dispose()
+            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
+                Call oReg.SetValue("data.export.googlekml.waypoint", IIf(chkExportWaypoint.Checked, "1", "0"))
+                Call oReg.SetValue("data.export.googlekml.track", IIf(chkExportTrack.Checked, "1", "0"))
+                Call oReg.SetValue("data.export.googlekml.caveborders", IIf(chkExportCaveBorders.Checked, "1", "0"))
+                Call oReg.Close()
+            End Using
         Catch
         End Try
     End Sub

@@ -2542,11 +2542,8 @@
   <data name="sbMain.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
   </data>
-  <data name="pnlStatusText.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="pnlStatusText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>711, 20</value>
+    <value>494, 20</value>
   </data>
   <data name="pnlStatusText.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -2621,13 +2618,13 @@
     <value>1:250</value>
   </data>
   <data name="pnlStatusDesignZoom500.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 17</value>
+    <value>39, 20</value>
   </data>
   <data name="pnlStatusDesignZoom500.Text" xml:space="preserve">
     <value>1:500</value>
   </data>
   <data name="pnlStatusDesignZoom1000.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 17</value>
+    <value>45, 20</value>
   </data>
   <data name="pnlStatusDesignZoom1000.Text" xml:space="preserve">
     <value>1:1000</value>
@@ -2712,7 +2709,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACs
-        EAAAAk1TRnQBSQFMAgEBAwEAAUwBBQFMAQUBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        EAAAAk1TRnQBSQFMAgEBAwEAAVQBBQFUAQUBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABgAMAASADAAEBAQABCAYAARAYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA

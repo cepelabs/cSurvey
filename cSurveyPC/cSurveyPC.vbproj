@@ -564,6 +564,12 @@
     <Compile Include="frmDisto.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmExportExcel.Designer.vb">
+      <DependentUpon>frmExportExcel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmExportExcel.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmExportHolos.Designer.vb">
       <DependentUpon>frmExportHolos.vb</DependentUpon>
     </Compile>
@@ -1469,6 +1475,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmExceptionManager.ru.resx">
       <DependentUpon>frmExceptionManager.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExportExcel.it.resx">
+      <DependentUpon>frmExportExcel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExportExcel.resx">
+      <DependentUpon>frmExportExcel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExportExcel.ru.resx">
+      <DependentUpon>frmExportExcel.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmExportGoogleKML.ru.resx">
       <DependentUpon>frmExportGoogleKML.vb</DependentUpon>

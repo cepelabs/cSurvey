@@ -498,6 +498,354 @@
   <data name="&gt;&gt;tabMain.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="chkTherionLochEnabled.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="chkTherionLochEnabled.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 40</value>
+  </data>
+  <data name="chkTherionLochEnabled.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 28</value>
+  </data>
+  <data name="chkTherionLochEnabled.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="chkTherionLochEnabled.Text" xml:space="preserve">
+    <value>Enable Loch</value>
+  </data>
+  <data name="chkTherionLochEnabled.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <metadata name="tipStandard.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="chkTherionLochEnabled.ToolTip" xml:space="preserve">
+    <value>Enable Loch, the Therion 3D viewer</value>
+  </data>
+  <data name="&gt;&gt;chkTherionLochEnabled.Name" xml:space="preserve">
+    <value>chkTherionLochEnabled</value>
+  </data>
+  <data name="&gt;&gt;chkTherionLochEnabled.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkTherionLochEnabled.Parent" xml:space="preserve">
+    <value>tabTherion</value>
+  </data>
+  <data name="&gt;&gt;chkTherionLochEnabled.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cmdTherionPathBrowse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>376, 10</value>
+  </data>
+  <data name="cmdTherionPathBrowse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 25</value>
+  </data>
+  <data name="cmdTherionPathBrowse.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="cmdTherionPathBrowse.Text" xml:space="preserve">
+    <value>Browse...</value>
+  </data>
+  <data name="&gt;&gt;cmdTherionPathBrowse.Name" xml:space="preserve">
+    <value>cmdTherionPathBrowse</value>
+  </data>
+  <data name="&gt;&gt;cmdTherionPathBrowse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmdTherionPathBrowse.Parent" xml:space="preserve">
+    <value>tabTherion</value>
+  </data>
+  <data name="&gt;&gt;cmdTherionPathBrowse.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtTherionPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 13</value>
+  </data>
+  <data name="txtTherionPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>282, 21</value>
+  </data>
+  <data name="txtTherionPath.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="txtTherionPath.ToolTip" xml:space="preserve">
+    <value>The Therion executable path</value>
+  </data>
+  <data name="&gt;&gt;txtTherionPath.Name" xml:space="preserve">
+    <value>txtTherionPath</value>
+  </data>
+  <data name="&gt;&gt;txtTherionPath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtTherionPath.Parent" xml:space="preserve">
+    <value>tabTherion</value>
+  </data>
+  <data name="&gt;&gt;txtTherionPath.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblTherionPath.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblTherionPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 16</value>
+  </data>
+  <data name="lblTherionPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 13</value>
+  </data>
+  <data name="lblTherionPath.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="lblTherionPath.Text" xml:space="preserve">
+    <value>Therion file:</value>
+  </data>
+  <data name="&gt;&gt;lblTherionPath.Name" xml:space="preserve">
+    <value>lblTherionPath</value>
+  </data>
+  <data name="&gt;&gt;lblTherionPath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblTherionPath.Parent" xml:space="preserve">
+    <value>tabTherion</value>
+  </data>
+  <data name="&gt;&gt;lblTherionPath.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="frmTherionAdvancedSettings.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="chkTherionUseCadastralIDInCaveNames.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkTherionUseCadastralIDInCaveNames.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkTherionUseCadastralIDInCaveNames.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 66</value>
+  </data>
+  <data name="chkTherionUseCadastralIDInCaveNames.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 17</value>
+  </data>
+  <data name="chkTherionUseCadastralIDInCaveNames.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="chkTherionUseCadastralIDInCaveNames.Text" xml:space="preserve">
+    <value>Use cadastral ID in cave names</value>
+  </data>
+  <data name="chkTherionUseCadastralIDInCaveNames.ToolTip" xml:space="preserve">
+    <value>Use a dictionary to convert the names of the stations (to avoid problems of incompatibility with Therion)</value>
+  </data>
+  <data name="&gt;&gt;chkTherionUseCadastralIDInCaveNames.Name" xml:space="preserve">
+    <value>chkTherionUseCadastralIDInCaveNames</value>
+  </data>
+  <data name="&gt;&gt;chkTherionUseCadastralIDInCaveNames.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkTherionUseCadastralIDInCaveNames.Parent" xml:space="preserve">
+    <value>frmTherionAdvancedSettings</value>
+  </data>
+  <data name="&gt;&gt;chkTherionUseCadastralIDInCaveNames.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkTherionSegmentForcePath.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkTherionSegmentForcePath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>252, 43</value>
+  </data>
+  <data name="chkTherionSegmentForcePath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 17</value>
+  </data>
+  <data name="chkTherionSegmentForcePath.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="chkTherionSegmentForcePath.Text" xml:space="preserve">
+    <value>Force path in extended elevation</value>
+  </data>
+  <data name="chkTherionSegmentForcePath.ToolTip" xml:space="preserve">
+    <value>Sets the path to follow for the generation of the section</value>
+  </data>
+  <data name="&gt;&gt;chkTherionSegmentForcePath.Name" xml:space="preserve">
+    <value>chkTherionSegmentForcePath</value>
+  </data>
+  <data name="&gt;&gt;chkTherionSegmentForcePath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkTherionSegmentForcePath.Parent" xml:space="preserve">
+    <value>frmTherionAdvancedSettings</value>
+  </data>
+  <data name="&gt;&gt;chkTherionSegmentForcePath.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkTherionSegmentForceDirection.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkTherionSegmentForceDirection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>252, 20</value>
+  </data>
+  <data name="chkTherionSegmentForceDirection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 17</value>
+  </data>
+  <data name="chkTherionSegmentForceDirection.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="chkTherionSegmentForceDirection.Text" xml:space="preserve">
+    <value>Force shot directions</value>
+  </data>
+  <data name="chkTherionSegmentForceDirection.ToolTip" xml:space="preserve">
+    <value>Sets the direction of each segment</value>
+  </data>
+  <data name="&gt;&gt;chkTherionSegmentForceDirection.Name" xml:space="preserve">
+    <value>chkTherionSegmentForceDirection</value>
+  </data>
+  <data name="&gt;&gt;chkTherionSegmentForceDirection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkTherionSegmentForceDirection.Parent" xml:space="preserve">
+    <value>frmTherionAdvancedSettings</value>
+  </data>
+  <data name="&gt;&gt;chkTherionSegmentForceDirection.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="chkTherionTrigpointSafename.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkTherionTrigpointSafename.Location" type="System.Drawing.Point, System.Drawing">
+    <value>252, 66</value>
+  </data>
+  <data name="chkTherionTrigpointSafename.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 17</value>
+  </data>
+  <data name="chkTherionTrigpointSafename.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="chkTherionTrigpointSafename.Text" xml:space="preserve">
+    <value>Use station dictionary</value>
+  </data>
+  <data name="chkTherionTrigpointSafename.ToolTip" xml:space="preserve">
+    <value>Use a dictionary to convert the names of the stations (to avoid problems of incompatibility with Therion)</value>
+  </data>
+  <data name="&gt;&gt;chkTherionTrigpointSafename.Name" xml:space="preserve">
+    <value>chkTherionTrigpointSafename</value>
+  </data>
+  <data name="&gt;&gt;chkTherionTrigpointSafename.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkTherionTrigpointSafename.Parent" xml:space="preserve">
+    <value>frmTherionAdvancedSettings</value>
+  </data>
+  <data name="&gt;&gt;chkTherionTrigpointSafename.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="chkTherionBackgroundProcess.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkTherionBackgroundProcess.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 20</value>
+  </data>
+  <data name="chkTherionBackgroundProcess.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 17</value>
+  </data>
+  <data name="chkTherionBackgroundProcess.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="chkTherionBackgroundProcess.Text" xml:space="preserve">
+    <value>Start as a background process</value>
+  </data>
+  <data name="chkTherionBackgroundProcess.ToolTip" xml:space="preserve">
+    <value>Start Therion in the background (completely invisible)</value>
+  </data>
+  <data name="&gt;&gt;chkTherionBackgroundProcess.Name" xml:space="preserve">
+    <value>chkTherionBackgroundProcess</value>
+  </data>
+  <data name="&gt;&gt;chkTherionBackgroundProcess.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkTherionBackgroundProcess.Parent" xml:space="preserve">
+    <value>frmTherionAdvancedSettings</value>
+  </data>
+  <data name="&gt;&gt;chkTherionBackgroundProcess.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="chkTherionDeleteTempFiles.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkTherionDeleteTempFiles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 43</value>
+  </data>
+  <data name="chkTherionDeleteTempFiles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 17</value>
+  </data>
+  <data name="chkTherionDeleteTempFiles.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="chkTherionDeleteTempFiles.Text" xml:space="preserve">
+    <value>Delete temp files</value>
+  </data>
+  <data name="chkTherionDeleteTempFiles.ToolTip" xml:space="preserve">
+    <value>Delete the temporary files created during interfacing with Therion</value>
+  </data>
+  <data name="&gt;&gt;chkTherionDeleteTempFiles.Name" xml:space="preserve">
+    <value>chkTherionDeleteTempFiles</value>
+  </data>
+  <data name="&gt;&gt;chkTherionDeleteTempFiles.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkTherionDeleteTempFiles.Parent" xml:space="preserve">
+    <value>frmTherionAdvancedSettings</value>
+  </data>
+  <data name="&gt;&gt;chkTherionDeleteTempFiles.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="frmTherionAdvancedSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 105</value>
+  </data>
+  <data name="frmTherionAdvancedSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>450, 120</value>
+  </data>
+  <data name="frmTherionAdvancedSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>115</value>
+  </data>
+  <data name="frmTherionAdvancedSettings.Text" xml:space="preserve">
+    <value>Advanced options:</value>
+  </data>
+  <data name="&gt;&gt;frmTherionAdvancedSettings.Name" xml:space="preserve">
+    <value>frmTherionAdvancedSettings</value>
+  </data>
+  <data name="&gt;&gt;frmTherionAdvancedSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;frmTherionAdvancedSettings.Parent" xml:space="preserve">
+    <value>tabTherion</value>
+  </data>
+  <data name="&gt;&gt;frmTherionAdvancedSettings.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tabTherion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabTherion.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabTherion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>471, 406</value>
+  </data>
+  <data name="tabTherion.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabTherion.Text" xml:space="preserve">
+    <value>Therion</value>
+  </data>
+  <data name="&gt;&gt;tabTherion.Name" xml:space="preserve">
+    <value>tabTherion</value>
+  </data>
+  <data name="&gt;&gt;tabTherion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabTherion.Parent" xml:space="preserve">
+    <value>tabSettings</value>
+  </data>
+  <data name="&gt;&gt;tabTherion.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="chkCalculateMode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -610,369 +958,6 @@
     <value>tabSettings</value>
   </data>
   <data name="&gt;&gt;tabOptions.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="chkTherionLochEnabled.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="chkTherionLochEnabled.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="chkTherionLochEnabled.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 71</value>
-  </data>
-  <data name="chkTherionLochEnabled.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 28</value>
-  </data>
-  <data name="chkTherionLochEnabled.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="chkTherionLochEnabled.Text" xml:space="preserve">
-    <value>Enable Loch</value>
-  </data>
-  <data name="chkTherionLochEnabled.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageBeforeText</value>
-  </data>
-  <metadata name="tipStandard.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="chkTherionLochEnabled.ToolTip" xml:space="preserve">
-    <value>Enable Loch, the Therion 3D viewer</value>
-  </data>
-  <data name="&gt;&gt;chkTherionLochEnabled.Name" xml:space="preserve">
-    <value>chkTherionLochEnabled</value>
-  </data>
-  <data name="&gt;&gt;chkTherionLochEnabled.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkTherionLochEnabled.Parent" xml:space="preserve">
-    <value>tabTherion</value>
-  </data>
-  <data name="&gt;&gt;chkTherionLochEnabled.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="cmdTherionPathBrowse.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="cmdTherionPathBrowse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>340, 41</value>
-  </data>
-  <data name="cmdTherionPathBrowse.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 25</value>
-  </data>
-  <data name="cmdTherionPathBrowse.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="cmdTherionPathBrowse.Text" xml:space="preserve">
-    <value>Browse...</value>
-  </data>
-  <data name="&gt;&gt;cmdTherionPathBrowse.Name" xml:space="preserve">
-    <value>cmdTherionPathBrowse</value>
-  </data>
-  <data name="&gt;&gt;cmdTherionPathBrowse.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdTherionPathBrowse.Parent" xml:space="preserve">
-    <value>tabTherion</value>
-  </data>
-  <data name="&gt;&gt;cmdTherionPathBrowse.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="txtTherionPath.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="txtTherionPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>124, 44</value>
-  </data>
-  <data name="txtTherionPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 21</value>
-  </data>
-  <data name="txtTherionPath.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="txtTherionPath.ToolTip" xml:space="preserve">
-    <value>The Therion executable path</value>
-  </data>
-  <data name="&gt;&gt;txtTherionPath.Name" xml:space="preserve">
-    <value>txtTherionPath</value>
-  </data>
-  <data name="&gt;&gt;txtTherionPath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtTherionPath.Parent" xml:space="preserve">
-    <value>tabTherion</value>
-  </data>
-  <data name="&gt;&gt;txtTherionPath.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="lblTherionPath.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblTherionPath.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="lblTherionPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>52, 47</value>
-  </data>
-  <data name="lblTherionPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 13</value>
-  </data>
-  <data name="lblTherionPath.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="lblTherionPath.Text" xml:space="preserve">
-    <value>Therion file:</value>
-  </data>
-  <data name="&gt;&gt;lblTherionPath.Name" xml:space="preserve">
-    <value>lblTherionPath</value>
-  </data>
-  <data name="&gt;&gt;lblTherionPath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblTherionPath.Parent" xml:space="preserve">
-    <value>tabTherion</value>
-  </data>
-  <data name="&gt;&gt;lblTherionPath.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="chkTherionEnabled.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkTherionEnabled.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="chkTherionEnabled.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 16</value>
-  </data>
-  <data name="chkTherionEnabled.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 17</value>
-  </data>
-  <data name="chkTherionEnabled.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="chkTherionEnabled.Text" xml:space="preserve">
-    <value>Enable Therion interface</value>
-  </data>
-  <data name="chkTherionEnabled.ToolTip" xml:space="preserve">
-    <value>Enable all the Therion interface functions</value>
-  </data>
-  <data name="&gt;&gt;chkTherionEnabled.Name" xml:space="preserve">
-    <value>chkTherionEnabled</value>
-  </data>
-  <data name="&gt;&gt;chkTherionEnabled.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkTherionEnabled.Parent" xml:space="preserve">
-    <value>tabTherion</value>
-  </data>
-  <data name="&gt;&gt;chkTherionEnabled.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="frmTherionAdvancedSettings.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="chkTherionSegmentForcePath.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkTherionSegmentForcePath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>252, 43</value>
-  </data>
-  <data name="chkTherionSegmentForcePath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 17</value>
-  </data>
-  <data name="chkTherionSegmentForcePath.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="chkTherionSegmentForcePath.Text" xml:space="preserve">
-    <value>Force path in extended elevation</value>
-  </data>
-  <data name="chkTherionSegmentForcePath.ToolTip" xml:space="preserve">
-    <value>Sets the path to follow for the generation of the section</value>
-  </data>
-  <data name="&gt;&gt;chkTherionSegmentForcePath.Name" xml:space="preserve">
-    <value>chkTherionSegmentForcePath</value>
-  </data>
-  <data name="&gt;&gt;chkTherionSegmentForcePath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkTherionSegmentForcePath.Parent" xml:space="preserve">
-    <value>frmTherionAdvancedSettings</value>
-  </data>
-  <data name="&gt;&gt;chkTherionSegmentForcePath.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="chkTherionSegmentForceDirection.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkTherionSegmentForceDirection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>252, 20</value>
-  </data>
-  <data name="chkTherionSegmentForceDirection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 17</value>
-  </data>
-  <data name="chkTherionSegmentForceDirection.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="chkTherionSegmentForceDirection.Text" xml:space="preserve">
-    <value>Force shot directions</value>
-  </data>
-  <data name="chkTherionSegmentForceDirection.ToolTip" xml:space="preserve">
-    <value>Sets the direction of each segment</value>
-  </data>
-  <data name="&gt;&gt;chkTherionSegmentForceDirection.Name" xml:space="preserve">
-    <value>chkTherionSegmentForceDirection</value>
-  </data>
-  <data name="&gt;&gt;chkTherionSegmentForceDirection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkTherionSegmentForceDirection.Parent" xml:space="preserve">
-    <value>frmTherionAdvancedSettings</value>
-  </data>
-  <data name="&gt;&gt;chkTherionSegmentForceDirection.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="chkTherionTrigpointSafename.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkTherionTrigpointSafename.Location" type="System.Drawing.Point, System.Drawing">
-    <value>252, 66</value>
-  </data>
-  <data name="chkTherionTrigpointSafename.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 17</value>
-  </data>
-  <data name="chkTherionTrigpointSafename.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="chkTherionTrigpointSafename.Text" xml:space="preserve">
-    <value>Use station dictionary</value>
-  </data>
-  <data name="chkTherionTrigpointSafename.ToolTip" xml:space="preserve">
-    <value>Use a dictionary to convert the names of the stations (to avoid problems of incompatibility with Therion)</value>
-  </data>
-  <data name="&gt;&gt;chkTherionTrigpointSafename.Name" xml:space="preserve">
-    <value>chkTherionTrigpointSafename</value>
-  </data>
-  <data name="&gt;&gt;chkTherionTrigpointSafename.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkTherionTrigpointSafename.Parent" xml:space="preserve">
-    <value>frmTherionAdvancedSettings</value>
-  </data>
-  <data name="&gt;&gt;chkTherionTrigpointSafename.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="chkTherionBackgroundProcess.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkTherionBackgroundProcess.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 20</value>
-  </data>
-  <data name="chkTherionBackgroundProcess.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 17</value>
-  </data>
-  <data name="chkTherionBackgroundProcess.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="chkTherionBackgroundProcess.Text" xml:space="preserve">
-    <value>Start as a background process</value>
-  </data>
-  <data name="chkTherionBackgroundProcess.ToolTip" xml:space="preserve">
-    <value>Start Therion in the background (completely invisible)</value>
-  </data>
-  <data name="&gt;&gt;chkTherionBackgroundProcess.Name" xml:space="preserve">
-    <value>chkTherionBackgroundProcess</value>
-  </data>
-  <data name="&gt;&gt;chkTherionBackgroundProcess.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkTherionBackgroundProcess.Parent" xml:space="preserve">
-    <value>frmTherionAdvancedSettings</value>
-  </data>
-  <data name="&gt;&gt;chkTherionBackgroundProcess.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="chkTherionDeleteTempFiles.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkTherionDeleteTempFiles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 43</value>
-  </data>
-  <data name="chkTherionDeleteTempFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 17</value>
-  </data>
-  <data name="chkTherionDeleteTempFiles.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="chkTherionDeleteTempFiles.Text" xml:space="preserve">
-    <value>Delete temp files</value>
-  </data>
-  <data name="chkTherionDeleteTempFiles.ToolTip" xml:space="preserve">
-    <value>Delete the temporary files created during interfacing with Therion</value>
-  </data>
-  <data name="&gt;&gt;chkTherionDeleteTempFiles.Name" xml:space="preserve">
-    <value>chkTherionDeleteTempFiles</value>
-  </data>
-  <data name="&gt;&gt;chkTherionDeleteTempFiles.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkTherionDeleteTempFiles.Parent" xml:space="preserve">
-    <value>frmTherionAdvancedSettings</value>
-  </data>
-  <data name="&gt;&gt;chkTherionDeleteTempFiles.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="frmTherionAdvancedSettings.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="frmTherionAdvancedSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 105</value>
-  </data>
-  <data name="frmTherionAdvancedSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>450, 100</value>
-  </data>
-  <data name="frmTherionAdvancedSettings.TabIndex" type="System.Int32, mscorlib">
-    <value>115</value>
-  </data>
-  <data name="frmTherionAdvancedSettings.Text" xml:space="preserve">
-    <value>Advanced options:</value>
-  </data>
-  <data name="&gt;&gt;frmTherionAdvancedSettings.Name" xml:space="preserve">
-    <value>frmTherionAdvancedSettings</value>
-  </data>
-  <data name="&gt;&gt;frmTherionAdvancedSettings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;frmTherionAdvancedSettings.Parent" xml:space="preserve">
-    <value>tabTherion</value>
-  </data>
-  <data name="&gt;&gt;frmTherionAdvancedSettings.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="tabTherion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabTherion.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabTherion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>471, 406</value>
-  </data>
-  <data name="tabTherion.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tabTherion.Text" xml:space="preserve">
-    <value>Therion</value>
-  </data>
-  <data name="&gt;&gt;tabTherion.Name" xml:space="preserve">
-    <value>tabTherion</value>
-  </data>
-  <data name="&gt;&gt;tabTherion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabTherion.Parent" xml:space="preserve">
-    <value>tabSettings</value>
-  </data>
-  <data name="&gt;&gt;tabTherion.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="chkAlwaysUseShellForAttchments.AutoSize" type="System.Boolean, mscorlib">
@@ -4970,6 +4955,9 @@ No personal data or survey data will be send.</value>
         BAAWJSQgICAgICAgICAjJRYAGxcWFhYWFhYWFhYWFhcbAP//AAD/5wAA/wEAAAABAAAAAAAAAAAAAAAB
         AAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAA=
 </value>
+  </data>
+  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

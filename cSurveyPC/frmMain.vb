@@ -1524,7 +1524,7 @@ Public Class frmMain
                         oRow.Visible = oStations.Contains(sStation)
 
                         iIndex += 1
-                        If iIndex Mod 20 = 0 Then Call oSurvey.RaiseOnProgressEvent("applyfilter", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "Applicazione filtro capisaldi...", iIndex / iCount)
+                        If iIndex Mod 100 = 0 Then Call oSurvey.RaiseOnProgressEvent("applyfilter", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "Applicazione filtro capisaldi...", iIndex / iCount)
                     Next
                     '---------------------------------------------------------------
                     If Not pGetCurrentDesignTools.CurrentItem Is Nothing AndAlso pGetCurrentDesignTools.CurrentItem.Type = cIItem.cItemTypeEnum.Segment Then
@@ -7556,75 +7556,89 @@ Public Class frmMain
             Case ImportExportFormatEnum.threedD
                 Call oHolos.Export()
             Case ImportExportFormatEnum.Survey
-                Dim oSFD As SaveFileDialog = New SaveFileDialog
-                With oSFD
-                    .Title = GetLocalizedString("main.exportdatadialog")
-                    .Filter = GetLocalizedString("main.filetypeTRO") & " (*.TRO)|*.TRO|" & GetLocalizedString("main.filetypeTH") & " (*.TH)|*.TH|" & GetLocalizedString("main.filetypeXLSX") & " (*.XLSX)|*.XLSX|" & GetLocalizedString("main.filetypeHOLOS") & " (*.XML)|*.XML"
-                    .FilterIndex = modMain.FilterRestoreLast("export.data", 1)
-                    .OverwritePrompt = True
-                    .CheckPathExists = True
-                    If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                        Call modMain.FilterSaveLast("export.data", .FilterIndex)
-                        Select Case .FilterIndex
-                            Case 1
-                                Dim iVTopoOptions As modExport.VTopoExportOptionsEnum = VTopoExportOptionsEnum.Default
-                                Call modExport.VTopoTroExportTo(oSurvey, .FileName, Nothing, iVTopoOptions)
-                            Case 2
-                                Dim frmET As frmExportTherion = New frmExportTherion
-                                If frmET.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                                    Dim bThSegmentForceDirection As Boolean = oSurvey.GetGlobalSetting("therion.segmentforcedirection", 1)
-                                    Dim bThSegmentForcePath As Boolean = oSurvey.GetGlobalSetting("therion.segmentforcepath", 1)
-                                    Dim iThOptions As modExport.TherionExportOptionsEnum = IIf(bThSegmentForceDirection, modExport.TherionExportOptionsEnum.SegmentForceDirection, 0) Or IIf(bThSegmentForcePath, modExport.TherionExportOptionsEnum.SegmentForcePath, 0)
-                                    'If oSurvey.Properties.ThreeDLochUseCaveBorder Then iThOptions = iThOptions Or TherionExportOptionsEnum.Scrap
-                                    If frmET.chkExportDesign.Checked Then iThOptions = iThOptions Or TherionExportOptionsEnum.Scrap
-                                    iThOptions = iThOptions Or TherionExportOptionsEnum.CalculateSplay
-                                    Dim oTherionSaveNameDictionary As Dictionary(Of String, String) = modExport.TherionGetSavenameDictionary(oSurvey)
-                                    Call modExport.TherionThExportTo(oSurvey, .FileName, oTherionSaveNameDictionary, iThOptions)
-                                    If frmET.chkExportThconfig.Checked Then
-                                        Dim sConfigFilename As String = IO.Path.Combine(IO.Path.GetDirectoryName(.FileName), IO.Path.GetFileNameWithoutExtension(.FileName) & ".thconfig")
-                                        Dim sExportCommand As String = ""
-                                        sExportCommand = sExportCommand & "export map -proj plan -output " & Chr(34) & IO.Path.GetFileNameWithoutExtension(.FileName) & "_plan.pdf" & Chr(34) & vbCrLf
-                                        sExportCommand = sExportCommand & "export map -proj extended -output " & Chr(34) & IO.Path.GetFileNameWithoutExtension(.FileName) & "_profile.pdf" & Chr(34) & vbCrLf
-                                        Call modExport.TherionCreateConfig(oSurvey, sConfigFilename, .FileName, sExportCommand)
-                                    End If
-                                End If
-                            Case 3
-                                Call modExport.ExcelExportTo(oSurvey, .FileName)
-                            Case 4
-                                Dim frmEH As frmExportHolos = New frmExportHolos
-                                If frmEH.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                                    Dim iOption As HolosExportOptionsEnum
-                                    If frmEH.chkExportSurface.Checked Then iOption = iOption Or HolosExportOptionsEnum.SurfaceData
-                                    If frmEH.chkExportLRUD.Checked Then iOption = iOption Or HolosExportOptionsEnum.LRUDdata
-                                    If frmEH.chkExportColors.Checked Then iOption = iOption Or HolosExportOptionsEnum.LRUDdata
-                                    Call modExport.HolosExportTo(oSurvey, .FileName, frmEH.cboExportProfile.SelectedIndex, iOption)
-                                End If
-                        End Select
-                    End If
-                End With
+                Using oSFD As SaveFileDialog = New SaveFileDialog
+                    With oSFD
+                        .Title = GetLocalizedString("main.exportdatadialog")
+                        .Filter = GetLocalizedString("main.filetypeTRO") & " (*.TRO)|*.TRO|" & GetLocalizedString("main.filetypeTH") & " (*.TH)|*.TH|" & GetLocalizedString("main.filetypeXLSX") & " (*.XLSX)|*.XLSX|" & GetLocalizedString("main.filetypeHOLOS") & " (*.XML)|*.XML"
+                        .FilterIndex = modMain.FilterRestoreLast("export.data", 1)
+                        .OverwritePrompt = True
+                        .CheckPathExists = True
+                        If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                            Call modMain.FilterSaveLast("export.data", .FilterIndex)
+                            Select Case .FilterIndex
+                                Case 1
+                                    Dim iVTopoOptions As modExport.VTopoExportOptionsEnum = VTopoExportOptionsEnum.Default
+                                    Call modExport.VTopoTroExportTo(oSurvey, .FileName, Nothing, iVTopoOptions)
+                                Case 2
+                                    Using frmET As frmExportTherion = New frmExportTherion
+                                        If frmET.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                                            Dim bThSegmentForceDirection As Boolean = oSurvey.GetGlobalSetting("therion.segmentforcedirection", 1)
+                                            Dim bThSegmentForcePath As Boolean = oSurvey.GetGlobalSetting("therion.segmentforcepath", 1)
+                                            Dim iThOptions As modExport.TherionExportOptionsEnum = IIf(bThSegmentForceDirection, modExport.TherionExportOptionsEnum.SegmentForceDirection, 0) Or IIf(bThSegmentForcePath, modExport.TherionExportOptionsEnum.SegmentForcePath, 0)
+                                            'If oSurvey.Properties.ThreeDLochUseCaveBorder Then iThOptions = iThOptions Or TherionExportOptionsEnum.Scrap
+                                            If frmET.chkExportDesign.Checked Then iThOptions = iThOptions Or TherionExportOptionsEnum.Scrap
+                                            iThOptions = iThOptions Or TherionExportOptionsEnum.CalculateSplay
+                                            Dim oTherionSaveNameDictionary As Dictionary(Of String, String) = modExport.TherionGetSavenameDictionary(oSurvey)
+                                            Call modExport.TherionThExportTo(oSurvey, .FileName, oTherionSaveNameDictionary, iThOptions)
+                                            If frmET.chkExportThconfig.Checked Then
+                                                Dim sConfigFilename As String = IO.Path.Combine(IO.Path.GetDirectoryName(.FileName), IO.Path.GetFileNameWithoutExtension(.FileName) & ".thconfig")
+                                                Dim sExportCommand As String = ""
+                                                sExportCommand = sExportCommand & "export map -proj plan -output " & Chr(34) & IO.Path.GetFileNameWithoutExtension(.FileName) & "_plan.pdf" & Chr(34) & vbCrLf
+                                                sExportCommand = sExportCommand & "export map -proj extended -output " & Chr(34) & IO.Path.GetFileNameWithoutExtension(.FileName) & "_profile.pdf" & Chr(34) & vbCrLf
+                                                Call modExport.TherionCreateConfig(oSurvey, sConfigFilename, .FileName, sExportCommand)
+                                            End If
+                                        End If
+                                    End Using
+                                Case 3
+                                    Using frmEE As frmExportExcel = New frmExportExcel
+                                        If frmEE.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                                            Dim iOption As ExcelExportOptionsEnum
+                                            If frmEE.chkExportCalculatedData.Checked Then iOption = iOption Or ExcelExportOptionsEnum.CalculatedData
+                                            If frmEE.chkExportColor.Checked Then iOption = iOption Or ExcelExportOptionsEnum.Colors
+                                            If frmEE.chkExportNamedSplayStations.Checked Then iOption = iOption Or ExcelExportOptionsEnum.NamedSplayStation
+                                            If frmEE.chkExportNamedSplayStationsData.Checked Then iOption = iOption Or ExcelExportOptionsEnum.NamedSplayStationData
+                                            Call modExport.ExcelExportTo(oSurvey, .FileName, iOption)
+                                        End If
+                                    End Using
+                                Case 4
+                                    Using frmEH As frmExportHolos = New frmExportHolos
+                                        If frmEH.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                                            Dim iOption As HolosExportOptionsEnum
+                                            If frmEH.chkExportSurface.Checked Then iOption = iOption Or HolosExportOptionsEnum.SurfaceData
+                                            If frmEH.chkExportLRUD.Checked Then iOption = iOption Or HolosExportOptionsEnum.LRUDdata
+                                            If frmEH.chkExportColors.Checked Then iOption = iOption Or HolosExportOptionsEnum.LRUDdata
+                                            Call modExport.HolosExportTo(oSurvey, .FileName, frmEH.cboExportProfile.SelectedIndex, iOption)
+                                        End If
+                                    End Using
+                            End Select
+                        End If
+                    End With
+                End Using
             Case ImportExportFormatEnum.Track
-                Dim oSFD As SaveFileDialog = New SaveFileDialog
-                With oSFD
-                    .Title = GetLocalizedString("main.exporttrackdialog")
-                    .Filter = GetLocalizedString("main.filetypeKML") & " (*.KML)|*.KML"
-                    .FilterIndex = modMain.FilterRestoreLast("export.track", 1)
-                    .OverwritePrompt = True
-                    .CheckPathExists = True
-                    If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                        Call modMain.FilterSaveLast("export.track", .FilterIndex)
-                        Select Case .FilterIndex
-                            Case 1
-                                Dim frmEKML As frmExportGoogleKML = New frmExportGoogleKML
-                                If frmEKML.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                                    Dim iOption As GoogleKMLExportOptionsEnum
-                                    If frmEKML.chkExportTrack.Checked Then iOption = iOption Or GoogleKMLExportOptionsEnum.Track
-                                    If frmEKML.chkExportWaypoint.Checked Then iOption = iOption Or GoogleKMLExportOptionsEnum.Waypoint
-                                    If frmEKML.chkExportCaveBorders.Checked Then iOption = iOption Or GoogleKMLExportOptionsEnum.CaveBorders
-                                    Call modExport.GoogleKmlExportTo2(oSurvey, .FileName, iOption)
-                                End If
-                        End Select
-                    End If
-                End With
+                Using oSFD As SaveFileDialog = New SaveFileDialog
+                    With oSFD
+                        .Title = GetLocalizedString("main.exporttrackdialog")
+                        .Filter = GetLocalizedString("main.filetypeKML") & " (*.KML)|*.KML"
+                        .FilterIndex = modMain.FilterRestoreLast("export.track", 1)
+                        .OverwritePrompt = True
+                        .CheckPathExists = True
+                        If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                            Call modMain.FilterSaveLast("export.track", .FilterIndex)
+                            Select Case .FilterIndex
+                                Case 1
+                                    Using frmEKML As frmExportGoogleKML = New frmExportGoogleKML
+                                        If frmEKML.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                                            Dim iOption As GoogleKMLExportOptionsEnum
+                                            If frmEKML.chkExportTrack.Checked Then iOption = iOption Or GoogleKMLExportOptionsEnum.Track
+                                            If frmEKML.chkExportWaypoint.Checked Then iOption = iOption Or GoogleKMLExportOptionsEnum.Waypoint
+                                            If frmEKML.chkExportCaveBorders.Checked Then iOption = iOption Or GoogleKMLExportOptionsEnum.CaveBorders
+                                            Call modExport.GoogleKmlExportTo2(oSurvey, .FileName, iOption)
+                                        End If
+                                    End Using
+                            End Select
+                        End If
+                    End With
+                End Using
             Case ImportExportFormatEnum.Image
                 Call pPopupsHide()
                 Dim iView As frmPreview.ViewModeEnum
@@ -14716,6 +14730,7 @@ Public Class frmMain
             Call oMousePointer.Push(Cursors.WaitCursor)
             Dim bThBackgroundProcess As Boolean = oSurvey.GetGlobalSetting("therion.backgroundprocess", 0)
             Dim bThTrigpointSafeName As Boolean = oSurvey.GetGlobalSetting("therion.trigpointsafename", 1)
+            Dim bThUseCadastralIDinCaveNames As Boolean = oSurvey.GetGlobalSetting("therion.usecadastralidincavenames", 0)
             Dim bThDeleteTempFile As Boolean = oSurvey.GetGlobalSetting("therion.deletetempfiles", 0)
 
             Dim oFiles As List(Of String) = New List(Of String)
@@ -14769,60 +14784,64 @@ Public Class frmMain
                     '---------------------------------------------------------------------------------------------------------
 
                     If bThTrigpointSafeName Then iThOptions = iThOptions Or TherionExportOptionsEnum.TrigpointExportNameAsComment
+                    If bThUseCadastralIDinCaveNames Then iThOptions = iThOptions Or TherionExportOptionsEnum.UseCadastralIDinCaveNames
 
                     Dim sTempThInputFilename As String = IO.Path.Combine(sTempPath, Guid.NewGuid.ToString & "_input.th")
-                    If oSurvey.Properties.ThreeDModelMode = cProperties.ThreeDModelModeEnum.Simple Then
-                        Call oFiles.AddRange(modExport.TherionThExportTo(oSurvey, sTempThInputFilename, oInputdictionary, iThOptions))
-                    Else
-                        Call oFiles.AddRange(modExport.TherionThExportTo(oSurvey, sTempThInputFilename, oInputdictionary, iThOptions Or TherionExportOptionsEnum.UseSubData))
-                    End If
-                    Call oTempThInputFilename.Add(sTempThInputFilename)
-                    For Each oLinkedSurvey As cLinkedSurvey In oSurvey.LinkedSurveys.GetSelected("loch")
-                        Dim sTempThInputLinkedFilename As String = IO.Path.Combine(sTempPath, Guid.NewGuid.ToString & "_input.th")
-
-                        Dim oLinkedSurveyTrigPointsToElaborate As List(Of String) = oLinkedSurvey.LinkedSurvey.Segments.GetTrigPointsNames.ToList
-                        Dim oLinkedSurveyInputdictionary As Dictionary(Of String, String) = Nothing
-                        Dim oLinkedSurveyOutputdictionary As Dictionary(Of String, String) = Nothing
-                        If bThTrigpointSafeName Then
-                            Call modExport.CreateStationDictionary(oLinkedSurveyTrigPointsToElaborate, oLinkedSurveyInputdictionary, oLinkedSurveyOutputdictionary)
-                        End If
-                        'use 3d mode of main survey....
                         If oSurvey.Properties.ThreeDModelMode = cProperties.ThreeDModelModeEnum.Simple Then
-                            Call oFiles.AddRange(modExport.TherionThExportTo(oLinkedSurvey.LinkedSurvey, sTempThInputLinkedFilename, oLinkedSurveyInputdictionary, iThOptions))
+                            Call oFiles.AddRange(modExport.TherionThExportTo(oSurvey, sTempThInputFilename, oInputdictionary, iThOptions))
                         Else
-                            Call oFiles.AddRange(modExport.TherionThExportTo(oLinkedSurvey.LinkedSurvey, sTempThInputLinkedFilename, oLinkedSurveyInputdictionary, iThOptions Or TherionExportOptionsEnum.UseSubData))
+                            Call oFiles.AddRange(modExport.TherionThExportTo(oSurvey, sTempThInputFilename, oInputdictionary, iThOptions Or TherionExportOptionsEnum.UseSubData))
                         End If
-                        Call oTempThInputFilename.Add(sTempThInputLinkedFilename)
-                    Next
-                    Call modExport.TherionCreateConfig(oSurvey, sTempConfigFilename, oTempThInputFilename, "export model -fmt loch -output " & Chr(34) & sTempThOutputFilename & Chr(34))
+                        Call oTempThInputFilename.Add(sTempThInputFilename)
 
-                    iExitCode = modMain.ExecuteProcess(sThProcess, Chr(34) & sTempConfigFilename & Chr(34) & " -l " & Chr(34) & sTempThLogFilename & Chr(34), bThBackgroundProcess, AddressOf pProcessOutputHandler)
-                    If iExitCode = 0 Then
-                        Dim sLochPath As String = Path.GetDirectoryName(sThProcess)
-                        Call Shell(Path.Combine(sLochPath, "loch.exe") & " " & Chr(34) & sTempThOutputFilename & Chr(34), AppWinStyle.MaximizedFocus, True, -1)
-                    Else
-                        Dim oFi As IO.FileInfo = New IO.FileInfo(sTempThLogFilename)
-                        Dim sLines As String = ""
-                        Using oLogSR As IO.StreamReader = oFi.OpenText
-                            sLines = oLogSR.ReadToEnd()
-                            Call oLogSR.Close()
-                        End Using
+                        'remove elevation data export option from linked survey...
+                        iThOptions = iThOptions And Not TherionExportOptionsEnum.ExportSurfaceElevationsData
+                        For Each oLinkedSurvey As cLinkedSurvey In oSurvey.LinkedSurveys.GetSelected("loch")
+                            Dim sTempThInputLinkedFilename As String = IO.Path.Combine(sTempPath, Guid.NewGuid.ToString & "_input.th")
 
-                        For Each sLine As String In Strings.Split(sLines, vbCrLf)
-                            If sLine Like "* error -- *" Then
-                                Dim sErrorMessage As String = sLine.Substring(sLine.IndexOf(" error -- ") + 10)
-                                sErrorMessage = sErrorMessage.Replace(sTempThInputFilename, "").Trim
-                                'todo: error use dictionaries for station...have to be translated...
-                                Call pPopupShow("error", sErrorMessage)
+                            Dim oLinkedSurveyTrigPointsToElaborate As List(Of String) = oLinkedSurvey.LinkedSurvey.Segments.GetTrigPointsNames.ToList
+                            Dim oLinkedSurveyInputdictionary As Dictionary(Of String, String) = Nothing
+                            Dim oLinkedSurveyOutputdictionary As Dictionary(Of String, String) = Nothing
+                            If bThTrigpointSafeName Then
+                                Call modExport.CreateStationDictionary(oLinkedSurveyTrigPointsToElaborate, oLinkedSurveyInputdictionary, oLinkedSurveyOutputdictionary)
                             End If
+                            'use 3d mode of main survey....
+                            If oSurvey.Properties.ThreeDModelMode = cProperties.ThreeDModelModeEnum.Simple Then
+                                Call oFiles.AddRange(modExport.TherionThExportTo(oLinkedSurvey.LinkedSurvey, sTempThInputLinkedFilename, oLinkedSurveyInputdictionary, iThOptions))
+                            Else
+                                Call oFiles.AddRange(modExport.TherionThExportTo(oLinkedSurvey.LinkedSurvey, sTempThInputLinkedFilename, oLinkedSurveyInputdictionary, iThOptions Or TherionExportOptionsEnum.UseSubData))
+                            End If
+                            Call oTempThInputFilename.Add(sTempThInputLinkedFilename)
                         Next
-                    End If
+                        Call modExport.TherionCreateConfig(oSurvey, sTempConfigFilename, oTempThInputFilename, "export model -fmt loch -output " & Chr(34) & sTempThOutputFilename & Chr(34))
 
-                    If bThDeleteTempFile Then
-                        Call DeleteFiles(oFiles)
+                        iExitCode = modMain.ExecuteProcess(sThProcess, Chr(34) & sTempConfigFilename & Chr(34) & " -l " & Chr(34) & sTempThLogFilename & Chr(34), bThBackgroundProcess, AddressOf pProcessOutputHandler)
+                        If iExitCode = 0 Then
+                            Dim sLochPath As String = Path.GetDirectoryName(sThProcess)
+                            Call Shell(Path.Combine(sLochPath, "loch.exe") & " " & Chr(34) & sTempThOutputFilename & Chr(34), AppWinStyle.MaximizedFocus, True, -1)
+                        Else
+                            Dim oFi As IO.FileInfo = New IO.FileInfo(sTempThLogFilename)
+                            Dim sLines As String = ""
+                            Using oLogSR As IO.StreamReader = oFi.OpenText
+                                sLines = oLogSR.ReadToEnd()
+                                Call oLogSR.Close()
+                            End Using
+
+                            For Each sLine As String In Strings.Split(sLines, vbCrLf)
+                                If sLine Like "* error -- *" Then
+                                    Dim sErrorMessage As String = sLine.Substring(sLine.IndexOf(" error -- ") + 10)
+                                    sErrorMessage = sErrorMessage.Replace(sTempThInputFilename, "").Trim
+                                    'todo: error use dictionaries for station...have to be translated...
+                                    Call pPopupShow("error", sErrorMessage)
+                                End If
+                            Next
+                        End If
+
+                        If bThDeleteTempFile Then
+                            Call DeleteFiles(oFiles)
+                        End If
                     End If
                 End If
-            End If
             Call oMousePointer.Pop()
             Call pStatusSet("")
         End If

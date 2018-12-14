@@ -932,9 +932,9 @@ Partial Class frmPreview
         '
         'pnlStatusText
         '
-        resources.ApplyResources(Me.pnlStatusText, "pnlStatusText")
         Me.pnlStatusText.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right
         Me.pnlStatusText.Name = "pnlStatusText"
+        resources.ApplyResources(Me.pnlStatusText, "pnlStatusText")
         Me.pnlStatusText.Spring = True
         '
         'pnlStatusProgress

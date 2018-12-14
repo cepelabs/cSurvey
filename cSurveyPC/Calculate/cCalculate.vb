@@ -1377,7 +1377,7 @@ Namespace cSurvey.Calculate
 
             Dim oBaseStation As cRelocatePoint = RelocateTrigpointsIndex.FirstOrDefault(Function(oitem) oitem.Connection = ConnectionDef)
             If IsNothing(oBaseStation) Then
-                'error?
+                'error..or normal?
             Else
                 For Each oGroup As cSegmentGroup In RelocateTrigpoints.Where(Function(oitem) oitem.Group.Key <> oBaseStation.Group.Key AndAlso oitem.Station = oBaseStation.Station AndAlso oitem.Connection <> ConnectionDef).Select(Function(oitem) oitem.Group).ToList
                     'group with same station but not same group
@@ -1388,6 +1388,7 @@ Namespace cSurvey.Calculate
                         Dim oSameStationInAnotherGroup As cRelocatePoint = RelocateTrigpointsIndex.FirstOrDefault(Function(oitem) oitem.Group.Key = oGroup.Key AndAlso oitem.Station = oBaseStation.Station AndAlso oitem.Connection <> ConnectionDef)
                         If IsNothing(oSameStationInAnotherGroup) Then
                             'error?
+                            Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, "Relocating " & oGroup.ExtendStart & " not possibile: no common station with other groups", True)
                         Else
                             Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, "Autorelocating " & oGroup.ExtendStart & " on " & oBaseStation.Connection.ToString & " to " & oSameStationInAnotherGroup.Connection.ToString, True)
                             Dim dD As Decimal = oBaseStation.Point.D - oSameStationInAnotherGroup.Point.D
@@ -1557,7 +1558,7 @@ Namespace cSurvey.Calculate
 
                             Dim bThSegmentForceDirection As Boolean = oSurvey.GetGlobalSetting("therion.segmentforcedirection", 1)
                             Dim bThSegmentForcePath As Boolean = oSurvey.GetGlobalSetting("therion.segmentforcepath", 1)
-                            Dim iThOptions As modExport.TherionExportOptionsEnum = IIf(bThSegmentForceDirection, modExport.TherionExportOptionsEnum.SegmentForceDirection, 0) Or IIf(bThSegmentForcePath, modExport.TherionExportOptionsEnum.SegmentForcePath, 0) Or TherionExportOptionsEnum.ExportSketch Or TherionExportOptionsEnum.CalculateSplay Or TherionExportOptionsEnum.ExportSurfaceElevationsReferences
+                            Dim iThOptions As modExport.TherionExportOptionsEnum = IIf(bThSegmentForceDirection, modExport.TherionExportOptionsEnum.SegmentForceDirection, 0) Or IIf(bThSegmentForcePath, modExport.TherionExportOptionsEnum.SegmentForcePath, 0) Or TherionExportOptionsEnum.ExportSketch Or TherionExportOptionsEnum.CalculateSplay
                             Dim iLegacyCalculation As Integer
                             If oSurvey.SharedSettings.GetValue("legacycalculation1", "on") = "on" Then
                                 iLegacyCalculation = 1

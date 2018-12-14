@@ -4,28 +4,6 @@ Imports cSurveyPC.cSurvey.Net
 
 Public Class frmSettings
 
-    Private Sub chkTherionEnabled_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkTherionEnabled.CheckedChanged
-        Dim bTherionEnabled As Boolean = chkTherionEnabled.Checked
-        lblTherionPath.Enabled = bTherionEnabled
-        txtTherionPath.Enabled = bTherionEnabled
-        cmdTherionPathBrowse.Enabled = bTherionEnabled
-
-        frmTherionAdvancedSettings.Enabled = bTherionEnabled
-
-        chkTherionLochEnabled.Enabled = bTherionEnabled
-        If bTherionEnabled Then
-            Try
-                If cboDefaultCalculateType.Items(2) <> GetLocalizedString("settings.textpart1") Then
-                    Call cboDefaultCalculateType.Items.Add(GetLocalizedString("settings.textpart1"))
-                End If
-            Catch
-                Call cboDefaultCalculateType.Items.Add(GetLocalizedString("settings.textpart1"))
-            End Try
-        Else
-            cboDefaultCalculateType.Items.RemoveAt(2)
-        End If
-    End Sub
-
     Private Sub cmdTherionPathBrowse_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdTherionPathBrowse.Click
         Dim oOFD As OpenFileDialog = New OpenFileDialog
         With oOFD
@@ -71,10 +49,10 @@ Public Class frmSettings
             Call oReg.SetValue("svg.exportnoclipartbrushes", If(chkSVGExportNoClipartBrushes.Checked, 1, 0))
             Call oReg.SetValue("svg.exportnoclipping", If(chkSVGExportNoClipping.Checked, 1, 0))
 
-            Call oReg.SetValue("therion.enabled", If(chkTherionEnabled.Checked, 1, 0))
             Call oReg.SetValue("therion.path", txtTherionPath.Text)
             Call oReg.SetValue("therion.lock.enabled", If(chkTherionLochEnabled.Checked, 1, 0))
 
+            Call oReg.SetValue("therion.usecadastralidincavenames", If(chkTherionUseCadastralIDInCaveNames.Checked, 1, 0))
             Call oReg.SetValue("therion.backgroundprocess", If(chkTherionBackgroundProcess.Checked, 1, 0))
             Call oReg.SetValue("therion.trigpointsafename", If(chkTherionTrigpointSafename.Checked, 1, 0))
             Call oReg.SetValue("therion.deletetempfiles", If(chkTherionDeleteTempFiles.Checked, 1, 0))
@@ -272,10 +250,9 @@ Public Class frmSettings
             chkSVGExportNoClipartBrushes.Checked = oReg.GetValue("svg.exportnoclipartbrushes", 0)
             chkSVGExportNoClipping.Checked = oReg.GetValue("svg.exportnoclipping", 0)
             txtSVGExportDPI.Value = oReg.GetValue("svg.exportdpi", 90)
-            chkTherionEnabled.Checked = oReg.GetValue("therion.enabled", 1)
-            Call chkTherionEnabled_CheckedChanged(Nothing, Nothing)
             txtTherionPath.Text = oReg.GetValue("therion.path", "")
             chkTherionLochEnabled.Checked = oReg.GetValue("therion.loch.enabled", 1)
+            chkTherionUseCadastralIDInCaveNames.Checked = oReg.GetValue("therion.usecadastralidincavenames", 0)
             chkTherionBackgroundProcess.Checked = oReg.GetValue("therion.backgroundprocess", 1)
             chkTherionTrigpointSafename.Checked = oReg.GetValue("therion.trigpointsafename", 1)
             chkTherionDeleteTempFiles.Checked = oReg.GetValue("therion.deletetempfiles", 1)

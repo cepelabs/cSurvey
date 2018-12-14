@@ -79,7 +79,7 @@ Namespace cSurvey.Calculate
                 Dim oItem As cTrigPoint = New cTrigPoint(oXMLItem)
                 Call oItems.Add(oItem.Name, oItem)
             Next
-            Dim oColors As List(Of Color) = modPaint.GetRainbowColors(100)
+            'Dim oColors As List(Of Color) = modPaint.GetRainbowColors(100)
             oZs = New cMinMaxs(oSurvey, GetType(cTrigPointPoint).GetProperty("Z"), Me)
         End Sub
 
@@ -101,7 +101,7 @@ Namespace cSurvey.Calculate
         Friend Sub New(Survey As cSurvey)
             oSurvey = Survey
             oItems = New Dictionary(Of String, cTrigPoint)
-            Dim oColors As List(Of Color) = modPaint.GetRainbowColors(100)
+            'Dim oColors As List(Of Color) = modPaint.GetRainbowColors(100)
             oZs = New cMinMaxs(oSurvey, GetType(cTrigPointPoint).GetProperty("Z"), Me)
         End Sub
 

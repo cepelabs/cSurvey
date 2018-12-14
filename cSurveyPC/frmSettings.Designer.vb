@@ -47,8 +47,8 @@ Partial Class frmSettings
         Me.cmdTherionPathBrowse = New System.Windows.Forms.Button()
         Me.txtTherionPath = New System.Windows.Forms.TextBox()
         Me.lblTherionPath = New System.Windows.Forms.Label()
-        Me.chkTherionEnabled = New System.Windows.Forms.CheckBox()
         Me.frmTherionAdvancedSettings = New System.Windows.Forms.GroupBox()
+        Me.chkTherionUseCadastralIDInCaveNames = New System.Windows.Forms.CheckBox()
         Me.chkTherionSegmentForcePath = New System.Windows.Forms.CheckBox()
         Me.chkTherionSegmentForceDirection = New System.Windows.Forms.CheckBox()
         Me.chkTherionTrigpointSafename = New System.Windows.Forms.CheckBox()
@@ -238,8 +238,8 @@ Partial Class frmSettings
         '
         resources.ApplyResources(Me.tabSettings, "tabSettings")
         Me.tabSettings.Controls.Add(Me.tabMain)
-        Me.tabSettings.Controls.Add(Me.tabOptions)
         Me.tabSettings.Controls.Add(Me.tabTherion)
+        Me.tabSettings.Controls.Add(Me.tabOptions)
         Me.tabSettings.Controls.Add(Me.tabInterface)
         Me.tabSettings.Controls.Add(Me.tabDesign)
         Me.tabSettings.Controls.Add(Me.tabGrids)
@@ -371,7 +371,6 @@ Partial Class frmSettings
         Me.tabTherion.Controls.Add(Me.cmdTherionPathBrowse)
         Me.tabTherion.Controls.Add(Me.txtTherionPath)
         Me.tabTherion.Controls.Add(Me.lblTherionPath)
-        Me.tabTherion.Controls.Add(Me.chkTherionEnabled)
         Me.tabTherion.Controls.Add(Me.frmTherionAdvancedSettings)
         resources.ApplyResources(Me.tabTherion, "tabTherion")
         Me.tabTherion.Name = "tabTherion"
@@ -379,8 +378,8 @@ Partial Class frmSettings
         '
         'chkTherionLochEnabled
         '
-        resources.ApplyResources(Me.chkTherionLochEnabled, "chkTherionLochEnabled")
         Me.chkTherionLochEnabled.Image = Global.cSurveyPC.My.Resources.Resources.layer_raster_3d
+        resources.ApplyResources(Me.chkTherionLochEnabled, "chkTherionLochEnabled")
         Me.chkTherionLochEnabled.Name = "chkTherionLochEnabled"
         Me.tipStandard.SetToolTip(Me.chkTherionLochEnabled, resources.GetString("chkTherionLochEnabled.ToolTip"))
         Me.chkTherionLochEnabled.UseVisualStyleBackColor = True
@@ -402,16 +401,10 @@ Partial Class frmSettings
         resources.ApplyResources(Me.lblTherionPath, "lblTherionPath")
         Me.lblTherionPath.Name = "lblTherionPath"
         '
-        'chkTherionEnabled
-        '
-        resources.ApplyResources(Me.chkTherionEnabled, "chkTherionEnabled")
-        Me.chkTherionEnabled.Name = "chkTherionEnabled"
-        Me.tipStandard.SetToolTip(Me.chkTherionEnabled, resources.GetString("chkTherionEnabled.ToolTip"))
-        Me.chkTherionEnabled.UseVisualStyleBackColor = True
-        '
         'frmTherionAdvancedSettings
         '
         resources.ApplyResources(Me.frmTherionAdvancedSettings, "frmTherionAdvancedSettings")
+        Me.frmTherionAdvancedSettings.Controls.Add(Me.chkTherionUseCadastralIDInCaveNames)
         Me.frmTherionAdvancedSettings.Controls.Add(Me.chkTherionSegmentForcePath)
         Me.frmTherionAdvancedSettings.Controls.Add(Me.chkTherionSegmentForceDirection)
         Me.frmTherionAdvancedSettings.Controls.Add(Me.chkTherionTrigpointSafename)
@@ -419,6 +412,13 @@ Partial Class frmSettings
         Me.frmTherionAdvancedSettings.Controls.Add(Me.chkTherionDeleteTempFiles)
         Me.frmTherionAdvancedSettings.Name = "frmTherionAdvancedSettings"
         Me.frmTherionAdvancedSettings.TabStop = False
+        '
+        'chkTherionUseCadastralIDInCaveNames
+        '
+        resources.ApplyResources(Me.chkTherionUseCadastralIDInCaveNames, "chkTherionUseCadastralIDInCaveNames")
+        Me.chkTherionUseCadastralIDInCaveNames.Name = "chkTherionUseCadastralIDInCaveNames"
+        Me.tipStandard.SetToolTip(Me.chkTherionUseCadastralIDInCaveNames, resources.GetString("chkTherionUseCadastralIDInCaveNames.ToolTip"))
+        Me.chkTherionUseCadastralIDInCaveNames.UseVisualStyleBackColor = True
         '
         'chkTherionSegmentForcePath
         '
@@ -1545,7 +1545,6 @@ Partial Class frmSettings
     Friend WithEvents cmdTherionPathBrowse As System.Windows.Forms.Button
     Friend WithEvents txtTherionPath As System.Windows.Forms.TextBox
     Friend WithEvents lblTherionPath As System.Windows.Forms.Label
-    Friend WithEvents chkTherionEnabled As System.Windows.Forms.CheckBox
     Friend WithEvents tabDesign As System.Windows.Forms.TabPage
     Friend WithEvents cboDesignMode As System.Windows.Forms.ComboBox
     Friend WithEvents lblDesignMode As System.Windows.Forms.Label
@@ -1706,4 +1705,5 @@ Partial Class frmSettings
     Friend WithEvents grdFileAssociation As GroupBox
     Friend WithEvents cmdFileAssociationCreate As Button
     Friend WithEvents cmdFileAssociationRemove As Button
+    Friend WithEvents chkTherionUseCadastralIDInCaveNames As CheckBox
 End Class

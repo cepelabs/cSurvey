@@ -2,26 +2,26 @@
 
     Private Sub pSettingsLoad()
         Try
-            Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-            cboExportProfile.SelectedIndex = oReg.GetValue("data.export.holos.profile", "0")
-            chkExportLRUD.Checked = oReg.GetValue("data.export.holos.LRUD", "0")
-            chkExportSurface.Checked = oReg.GetValue("data.export.holos.surface", "0")
-            chkExportColors.Checked = oReg.GetValue("data.export.holos.colors", "0")
-            Call oReg.Close()
-            Call oReg.Dispose()
+            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
+                cboExportProfile.SelectedIndex = oReg.GetValue("data.export.holos.profile", "0")
+                chkExportLRUD.Checked = oReg.GetValue("data.export.holos.LRUD", "0")
+                chkExportSurface.Checked = oReg.GetValue("data.export.holos.surface", "0")
+                chkExportColors.Checked = oReg.GetValue("data.export.holos.colors", "0")
+                Call oReg.Close()
+            End Using
         Catch
         End Try
     End Sub
 
     Private Sub pSettingsSave()
         Try
-            Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-            Call oReg.SetValue("data.export.holos.profile", cboExportProfile.SelectedIndex)
-            Call oReg.SetValue("data.export.holos.LRUD", IIf(chkExportLRUD.Checked, "1", "0"))
-            Call oReg.SetValue("data.export.holos.surface", IIf(chkExportSurface.Checked, "1", "0"))
-            Call oReg.SetValue("data.export.holos.colors", IIf(chkExportColors.Checked, "1", "0"))
-            Call oReg.Close()
-            Call oReg.Dispose()
+            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
+                Call oReg.SetValue("data.export.holos.profile", cboExportProfile.SelectedIndex)
+                Call oReg.SetValue("data.export.holos.LRUD", IIf(chkExportLRUD.Checked, "1", "0"))
+                Call oReg.SetValue("data.export.holos.surface", IIf(chkExportSurface.Checked, "1", "0"))
+                Call oReg.SetValue("data.export.holos.colors", IIf(chkExportColors.Checked, "1", "0"))
+                Call oReg.Close()
+            End Using
         Catch
         End Try
     End Sub

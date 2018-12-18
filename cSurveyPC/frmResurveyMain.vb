@@ -37,6 +37,10 @@ Public Class frmResurveyMain
     Private oProfileScalePath As GraphicsPath
     Private oProfileDropScalePath As GraphicsPath
 
+    Private oPlanScaleRealPath As GraphicsPath
+    Private oProfileScaleRealPath As GraphicsPath
+    Private oProfileDropScaleRealPath As GraphicsPath
+
     Private oPaintThread As Threading.Thread
 
     Private oPlanTrigpointsPlaceholders As Dictionary(Of String, cResurvey.cTrigpointPlaceholder)
@@ -118,6 +122,8 @@ Public Class frmResurveyMain
             oOptions.NordCorrection = modNumbers.StringToSingle(modXML.GetAttributeValue(oXMLRoot, "nordcorrection", 0))
             oOptions.SkipInvalidStation = modXML.GetAttributeValue(oXMLRoot, "skipinvalidstation", True)
             oOptions.UseDropForInclination = modXML.GetAttributeValue(oXMLRoot, "usedropforinclination", False)
+            oOptions.PlanScaleType = modXML.GetAttributeValue(oXMLRoot, "planscaletype", cResurvey.cOptions.ScaleTypeEnum.Distance)
+            oOptions.DropScaleType = modXML.GetAttributeValue(oXMLRoot, "dropscaletype", cResurvey.cOptions.ScaleTypeEnum.DeltaY)
 
             oOptions.CalculateLRUD = modXML.GetAttributeValue(oXMLRoot, "calculatelrud", 0)
             oOptions.LRUDBorderWidth = modXML.GetAttributeValue(oXMLRoot, "lrudborderwidth", 3)
@@ -806,6 +812,8 @@ Public Class frmResurveyMain
             Call oXMLRoot.SetAttribute("nordcorrection", modNumbers.NumberToString(oOptions.NordCorrection))
             Call oXMLRoot.SetAttribute("skipinvalidstation", If(oOptions.SkipInvalidStation, "1", "0"))
             Call oXMLRoot.SetAttribute("usedropforinclination", If(oOptions.UseDropForInclination, "1", "0"))
+            If oOptions.PlanScaleType <> cOptions.ScaleTypeEnum.Distance Then Call oXMLRoot.SetAttribute("planscaletype", oOptions.PlanScaleType.ToString("D"))
+            If oOptions.DropScaleType <> cOptions.ScaleTypeEnum.DeltaY Then Call oXMLRoot.SetAttribute("dropscaletype", oOptions.DropScaleType.ToString("D"))
 
             Call oXMLRoot.SetAttribute("calculatelrud", If(oOptions.CalculateLRUD, "1", "0"))
             Call oXMLRoot.SetAttribute("lrudborderwidth", oOptions.LRUDBorderWidth, oOptions.LRUDBorderWidth)
@@ -1154,18 +1162,42 @@ Public Class frmResurveyMain
             If oOptions.UseDropForInclination Then
                 Dim oPlanFirstScalePoint As PointF = pGetPoint(sFirstScalePoint, 0)
                 Dim oPlanSecondScalePoint As PointF = pGetPoint(sSecondScalePoint, 0)
-                sPlanScaleDistance = modPaint.DistancePointToPoint(oPlanFirstScalePoint, oPlanSecondScalePoint)
+                Select Case oOptions.PlanScaleType
+                    Case cOptions.ScaleTypeEnum.DeltaX
+                        sPlanScaleDistance = Math.Abs(oPlanFirstScalePoint.X - oPlanSecondScalePoint.X)
+                    Case cOptions.ScaleTypeEnum.DeltaY
+                        sPlanScaleDistance = Math.Abs(oPlanFirstScalePoint.Y - oPlanSecondScalePoint.Y)
+                    Case cOptions.ScaleTypeEnum.Distance
+                        sPlanScaleDistance = modPaint.DistancePointToPoint(oPlanFirstScalePoint, oPlanSecondScalePoint)
+                End Select
+                'sPlanScaleDistance = modPaint.DistancePointToPoint(oPlanFirstScalePoint, oPlanSecondScalePoint)
                 If oStations.ContainsKey(sSecondScalePoint) Then sScaleSize = oStations(sSecondScalePoint).Scale
             Else
                 If pPointAsData(sFirstScalePoint, 1) Then
                     Dim oProfileFirstScalePoint As PointF = pGetPoint(sFirstScalePoint, 1)
                     Dim oProfileSecondScalePoint As PointF = pGetPoint(sSecondScalePoint, 1)
-                    sPlanScaleDistance = modPaint.DistancePointToPoint(oProfileFirstScalePoint, oProfileSecondScalePoint)
+                    Select Case oOptions.PlanScaleType
+                        Case cOptions.ScaleTypeEnum.DeltaX
+                            sPlanScaleDistance = Math.Abs(oProfileFirstScalePoint.X - oProfileSecondScalePoint.X)
+                        Case cOptions.ScaleTypeEnum.DeltaY
+                            sPlanScaleDistance = Math.Abs(oProfileFirstScalePoint.Y - oProfileSecondScalePoint.Y)
+                        Case cOptions.ScaleTypeEnum.Distance
+                            sPlanScaleDistance = modPaint.DistancePointToPoint(oProfileFirstScalePoint, oProfileSecondScalePoint)
+                    End Select
+                    'sPlanScaleDistance = modPaint.DistancePointToPoint(oProfileFirstScalePoint, oProfileSecondScalePoint)
                     If oStations.ContainsKey(sSecondScalePoint) Then sScaleSize = oStations(sSecondScalePoint).Scale
                 Else
                     Dim oPlanFirstScalePoint As PointF = pGetPoint(sFirstScalePoint, 0)
                     Dim oPlanSecondScalePoint As PointF = pGetPoint(sSecondScalePoint, 0)
-                    sPlanScaleDistance = modPaint.DistancePointToPoint(oPlanFirstScalePoint, oPlanSecondScalePoint)
+                    Select Case oOptions.PlanScaleType
+                        Case cOptions.ScaleTypeEnum.DeltaX
+                            sPlanScaleDistance = Math.Abs(oPlanFirstScalePoint.X - oPlanSecondScalePoint.X)
+                        Case cOptions.ScaleTypeEnum.DeltaY
+                            sPlanScaleDistance = Math.Abs(oPlanFirstScalePoint.Y - oPlanSecondScalePoint.Y)
+                        Case cOptions.ScaleTypeEnum.Distance
+                            sPlanScaleDistance = modPaint.DistancePointToPoint(oPlanFirstScalePoint, oPlanSecondScalePoint)
+                    End Select
+                    'sPlanScaleDistance = modPaint.DistancePointToPoint(oPlanFirstScalePoint, oPlanSecondScalePoint)
                     If oStations.ContainsKey(sSecondScalePoint) Then sScaleSize = oStations(sSecondScalePoint).Scale
                 End If
             End If
@@ -1191,7 +1223,14 @@ Public Class frmResurveyMain
 
             Dim oProfileFirstDropScalePoint As PointF = pGetPoint(sFirstDropScalePoint, 1)
             Dim oProfileSecondScalePoint As PointF = pGetPoint(sSecondDropScalePoint, 1)
-            sProfileScaleDistance = Math.Abs(oProfileFirstDropScalePoint.Y - oProfileSecondScalePoint.Y)
+            Select Case oOptions.DropScaleType
+                Case cOptions.ScaleTypeEnum.DeltaX
+                    sProfileScaleDistance = Math.Abs(oProfileFirstDropScalePoint.X - oProfileSecondScalePoint.X)
+                Case cOptions.ScaleTypeEnum.DeltaY
+                    sProfileScaleDistance = Math.Abs(oProfileFirstDropScalePoint.Y - oProfileSecondScalePoint.Y)
+                Case cOptions.ScaleTypeEnum.Distance
+                    sProfileScaleDistance = modPaint.DistancePointToPoint(oProfileFirstDropScalePoint, oProfileSecondScalePoint)
+            End Select
             If oStations.ContainsKey(sSecondDropScalePoint) Then sProfileScaleSize = oStations(sSecondDropScalePoint).Scale
 
             If sProfileScaleSize = 0 Or sProfileScaleDistance = 0 Then
@@ -1292,8 +1331,30 @@ Public Class frmResurveyMain
                 If oExistingShot.Inclination = 0 And oShot.Inclination <> 0 Then oExistingShot.Inclination = oShot.Inclination Else oShot.Inclination = oExistingShot.Inclination
                 If oExistingShot.Drop = 0 And oShot.Drop <> 0 Then oExistingShot.Drop = oShot.Drop Else oShot.Drop = oExistingShot.Drop
                 If oExistingShot.PlanimetricDistance = 0 And oShot.PlanimetricDistance <> 0 Then oExistingShot.PlanimetricDistance = oShot.PlanimetricDistance Else oShot.PlanimetricDistance = oExistingShot.PlanimetricDistance
+
+                If oExistingShot.Drop < 0 Then
+                    oExistingShot.Drop = Math.Abs(oExistingShot.Drop)
+                    oExistingShot.Distance = Math.Sqrt(oExistingShot.Drop ^ 2 + oExistingShot.PlanimetricDistance ^ 2)
+                    oExistingShot.Inclination = -modPaint.RadiansToDegree(Math.Acos(oExistingShot.PlanimetricDistance / oExistingShot.Distance)) ' ß =  Arcsen (b/a)
+                ElseIf oExistingShot.Drop = 0 Then
+                    oExistingShot.Distance = oExistingShot.PlanimetricDistance
+                Else
+                    oExistingShot.Distance = Math.Sqrt(oExistingShot.Drop ^ 2 + oExistingShot.PlanimetricDistance ^ 2)
+                    oExistingShot.Inclination = modPaint.RadiansToDegree(Math.Acos(oExistingShot.PlanimetricDistance / oExistingShot.Distance)) ' ß =  Arcsen (b/a)
+                End If
             Else
                 Call oNewShots.Add(oShot)
+
+                If oShot.Drop < 0 Then
+                    oShot.Drop = Math.Abs(oShot.Drop)
+                    oShot.Distance = Math.Sqrt(oShot.Drop ^ 2 + oShot.PlanimetricDistance ^ 2)
+                    oShot.Inclination = -modPaint.RadiansToDegree(Math.Acos(oShot.PlanimetricDistance / oShot.Distance)) ' ß =  Arcsen (b/a)
+                ElseIf oShot.Drop = 0 Then
+                    oShot.Distance = oShot.PlanimetricDistance
+                Else
+                    oShot.Distance = Math.Sqrt(oShot.Drop ^ 2 + oShot.PlanimetricDistance ^ 2)
+                    oShot.Inclination = modPaint.RadiansToDegree(Math.Acos(oShot.PlanimetricDistance / oShot.Distance)) ' ß =  Arcsen (b/a)
+                End If
             End If
         Next
         oShots = oNewShots
@@ -1364,34 +1425,18 @@ Public Class frmResurveyMain
                         Dim oProfileToPoint As PointF = pGetPoint(sToStation, 1)
                         Dim sDrop As Single = oProfileFromPoint.Y - oProfileToPoint.Y
                         sDrop = sDrop * Scale
-                        'Dim sInclination As Single = modPaint.GetBearing(oProfileFromPoint, oProfileToPoint)
-                        'If sInclination >= 0 And sInclination <= 90 Then
-                        '    sInclination = 90 - sInclination
-                        'End If
-                        'If sInclination > 90 And sInclination <= 180 Then
-                        '    sInclination = 90 - sInclination
-                        'End If
-                        'If sInclination > 180 And sInclination <= 270 Then
-                        '    sInclination = sInclination - 270
-                        'End If
-                        'If sInclination > 270 And sInclination < 360 Then
-                        '    sInclination = sInclination - 270
-                        'End If
                         sDrop = modNumbers.MathRound(sDrop, 2)
-                        'sInclination = modNumbers.MathRound(sInclination, 2)
                         oShot.Drop = sDrop
-                        If sDrop < 0 Then
-                            sDrop = Math.Abs(sDrop)
-                            oShot.Distance = Math.Sqrt(sDrop ^ 2 + oShot.PlanimetricDistance ^ 2)
-                            oShot.Inclination = -modPaint.RadiansToDegree(Math.Acos(oShot.PlanimetricDistance / oShot.Distance)) ' ß =  Arcsen (b/a)
-                        ElseIf sDrop = 0 Then
-                            oShot.Distance = oShot.PlanimetricDistance
-                        Else
-                            oShot.Distance = Math.Sqrt(sDrop ^ 2 + oShot.PlanimetricDistance ^ 2)
-                            oShot.Inclination = modPaint.RadiansToDegree(Math.Acos(oShot.PlanimetricDistance / oShot.Distance)) ' ß =  Arcsen (b/a)
-                        End If
-
-                        'oShot.Inclination = sInclination
+                        'If sDrop < 0 Then
+                        '    sDrop = Math.Abs(sDrop)
+                        '    oShot.Distance = Math.Sqrt(sDrop ^ 2 + oShot.PlanimetricDistance ^ 2)
+                        '    oShot.Inclination = -modPaint.RadiansToDegree(Math.Acos(oShot.PlanimetricDistance / oShot.Distance)) ' ß =  Arcsen (b/a)
+                        'ElseIf sDrop = 0 Then
+                        '    oShot.Distance = oShot.PlanimetricDistance
+                        'Else
+                        '    oShot.Distance = Math.Sqrt(sDrop ^ 2 + oShot.PlanimetricDistance ^ 2)
+                        '    oShot.Inclination = modPaint.RadiansToDegree(Math.Acos(oShot.PlanimetricDistance / oShot.Distance)) ' ß =  Arcsen (b/a)
+                        'End If
                         oShot.ProfileProcessed = True
                         If oOptions.CalculateLRUD Then pFillUD(oShot, oProfileToPoint, Scale)
                     Else
@@ -1817,12 +1862,15 @@ Public Class frmResurveyMain
             '--------------------------------------------------------------------------
             oPlanStationPath = New GraphicsPath
             oPlanShotsPath = New GraphicsPath
-            oPlanScalePath = New GraphicsPath
             oProfileStationPath = New GraphicsPath
             oProfileShotsPath = New GraphicsPath
-            oProfileScalePath = New GraphicsPath
 
+            oPlanScalePath = New GraphicsPath
+            oProfileScalePath = New GraphicsPath
             oProfileDropScalePath = New GraphicsPath
+            oPlanScaleRealPath = New GraphicsPath
+            oProfileScaleRealPath = New GraphicsPath
+            oProfileDropScaleRealPath = New GraphicsPath
             '--------------------------------------------------------------------------
 
             Dim sFirstScalePoint As String = pGetFirstScalePoint()
@@ -1833,7 +1881,20 @@ Public Class frmResurveyMain
                     Dim oScaleBeginPoint As PointF = oStations(sFirstScalePoint).ProfilePoint
                     Dim oScaleEndPoint As PointF = oStations(sSecondScalePoint).ProfilePoint
                     Call oProfileScalePath.StartFigure()
-                    Call oProfileScalePath.AddLine(oScaleBeginPoint, oScaleEndPoint)
+                    Select Case oOptions.PlanScaleType
+                        Case cOptions.ScaleTypeEnum.DeltaX
+                            Call oProfileScalePath.AddLine(oScaleBeginPoint, oScaleEndPoint)
+                            Call oProfileScalePath.AddLine(oScaleEndPoint, New PointF(oScaleEndPoint.X, oScaleBeginPoint.Y))
+                            Call oProfileScaleRealPath.AddLine(New PointF(oScaleEndPoint.X, oScaleBeginPoint.Y), oScaleBeginPoint)
+                        Case cOptions.ScaleTypeEnum.DeltaY
+                            Call oProfileScalePath.AddLine(oScaleBeginPoint, oScaleEndPoint)
+                            Call oProfileScaleRealPath.AddLine(oScaleEndPoint, New PointF(oScaleEndPoint.X, oScaleBeginPoint.Y))
+                            Call oProfileScalePath.AddLine(New PointF(oScaleEndPoint.X, oScaleBeginPoint.Y), oScaleBeginPoint)
+                        Case cOptions.ScaleTypeEnum.Distance
+                            Call oProfileScalePath.AddLine(oScaleBeginPoint, oScaleEndPoint)
+                            Call oProfileScalePath.AddLine(oScaleEndPoint, New PointF(oScaleEndPoint.X, oScaleBeginPoint.Y))
+                            Call oProfileScaleRealPath.AddLine(New PointF(oScaleEndPoint.X, oScaleBeginPoint.Y), oScaleBeginPoint)
+                    End Select
                 End If
             Catch
             End Try
@@ -1843,7 +1904,20 @@ Public Class frmResurveyMain
                     Dim oScaleBeginPoint As PointF = oStations(sFirstScalePoint).PlanPoint
                     Dim oScaleEndPoint As PointF = oStations(sSecondScalePoint).PlanPoint
                     Call oPlanScalePath.StartFigure()
-                    Call oPlanScalePath.AddLine(oScaleBeginPoint, oScaleEndPoint)
+                    Select Case oOptions.PlanScaleType
+                        Case cOptions.ScaleTypeEnum.DeltaX
+                            Call oPlanScalePath.AddLine(oScaleBeginPoint, oScaleEndPoint)
+                            Call oPlanScalePath.AddLine(oScaleEndPoint, New PointF(oScaleEndPoint.X, oScaleBeginPoint.Y))
+                            Call oPlanScaleRealPath.AddLine(New PointF(oScaleEndPoint.X, oScaleBeginPoint.Y), oScaleBeginPoint)
+                        Case cOptions.ScaleTypeEnum.DeltaY
+                            Call oPlanScalePath.AddLine(oScaleBeginPoint, oScaleEndPoint)
+                            Call oPlanScaleRealPath.AddLine(oScaleEndPoint, New PointF(oScaleEndPoint.X, oScaleBeginPoint.Y))
+                            Call oPlanScalePath.AddLine(New PointF(oScaleEndPoint.X, oScaleBeginPoint.Y), oScaleBeginPoint)
+                        Case cOptions.ScaleTypeEnum.Distance
+                            Call oPlanScaleRealPath.AddLine(oScaleBeginPoint, oScaleEndPoint)
+                            Call oPlanScalePath.AddLine(oScaleEndPoint, New PointF(oScaleEndPoint.X, oScaleBeginPoint.Y))
+                            Call oPlanScalePath.AddLine(New PointF(oScaleEndPoint.X, oScaleBeginPoint.Y), oScaleBeginPoint)
+                    End Select
                 End If
             Catch
             End Try
@@ -1860,15 +1934,30 @@ Public Class frmResurveyMain
                     Dim oDropScaleBeginPoint As PointF = oStations(sFirstDropScalePoint).ProfilePoint
                     Dim oDropScaleEndPoint As PointF = oStations(sSecondDropScalePoint).ProfilePoint
                     Call oProfileDropScalePath.StartFigure()
-                    If oDropScaleBeginPoint.X < oDropScaleEndPoint.X Then
-                        Call oProfileDropScalePath.AddLine(oDropScaleBeginPoint, New PointF(oDropScaleBeginPoint.X, oDropScaleEndPoint.Y))
-                        Call oProfileDropScalePath.AddLine(New PointF(oDropScaleBeginPoint.X, oDropScaleEndPoint.Y), oDropScaleEndPoint)
-                    ElseIf oDropScaleBeginPoint.X > oDropScaleEndPoint.X Then
-                        Call oProfileDropScalePath.AddLine(oDropScaleBeginPoint, New PointF(oDropScaleEndPoint.X, oDropScaleBeginPoint.Y))
-                        Call oProfileDropScalePath.AddLine(New PointF(oDropScaleEndPoint.X, oDropScaleBeginPoint.Y), oDropScaleEndPoint)
-                    Else
-                        Call oProfileDropScalePath.AddLine(oDropScaleBeginPoint, oDropScaleEndPoint)
-                    End If
+                    Select Case oOptions.DropScaleType
+                        Case cOptions.ScaleTypeEnum.DeltaX
+                            Call oProfileDropScalePath.AddLine(oDropScaleBeginPoint, oDropScaleEndPoint)
+                            Call oProfileDropScalePath.AddLine(oDropScaleEndPoint, New PointF(oDropScaleEndPoint.X, oDropScaleBeginPoint.Y))
+                            Call oProfileDropScaleRealPath.AddLine(New PointF(oDropScaleEndPoint.X, oDropScaleBeginPoint.Y), oDropScaleBeginPoint)
+                        Case cOptions.ScaleTypeEnum.DeltaY
+                            Call oProfileDropScalePath.AddLine(oDropScaleBeginPoint, oDropScaleEndPoint)
+                            Call oProfileDropScaleRealPath.AddLine(oDropScaleEndPoint, New PointF(oDropScaleEndPoint.X, oDropScaleBeginPoint.Y))
+                            Call oProfileDropScalePath.AddLine(New PointF(oDropScaleEndPoint.X, oDropScaleBeginPoint.Y), oDropScaleBeginPoint)
+                        Case cOptions.ScaleTypeEnum.Distance
+                            Call oProfileDropScaleRealPath.AddLine(oDropScaleBeginPoint, oDropScaleEndPoint)
+                            Call oProfileDropScalePath.AddLine(oDropScaleEndPoint, New PointF(oDropScaleEndPoint.X, oDropScaleBeginPoint.Y))
+                            Call oProfileDropScalePath.AddLine(New PointF(oDropScaleEndPoint.X, oDropScaleBeginPoint.Y), oDropScaleBeginPoint)
+                    End Select
+
+                    'If oDropScaleBeginPoint.X < oDropScaleEndPoint.X Then
+                    '    Call oProfileDropScalePath.AddLine(oDropScaleBeginPoint, New PointF(oDropScaleBeginPoint.X, oDropScaleEndPoint.Y))
+                    '    Call oProfileDropScalePath.AddLine(New PointF(oDropScaleBeginPoint.X, oDropScaleEndPoint.Y), oDropScaleEndPoint)
+                    'ElseIf oDropScaleBeginPoint.X > oDropScaleEndPoint.X Then
+                    '    Call oProfileDropScalePath.AddLine(oDropScaleBeginPoint, New PointF(oDropScaleEndPoint.X, oDropScaleBeginPoint.Y))
+                    '    Call oProfileDropScalePath.AddLine(New PointF(oDropScaleEndPoint.X, oDropScaleBeginPoint.Y), oDropScaleEndPoint)
+                    'Else
+                    '    Call oProfileDropScalePath.AddLine(oDropScaleBeginPoint, oDropScaleEndPoint)
+                    'End If
                 End If
             Catch
             End Try
@@ -2034,7 +2123,6 @@ Public Class frmResurveyMain
                                                 Call oGraphics.DrawPath(oPlaceholderPen, oPath)
                                                 Call oGraphics.DrawString(oTPH.Name, Font, Brushes.White, oTPH.HotSpot, oSF)
                                             End If
-
                                         End Using
                                     End Using
                                 End Using
@@ -2045,10 +2133,10 @@ Public Class frmResurveyMain
             End Using
 
             If Not oLastLine Is Nothing Then
-                Dim oSelectedShotsPen As Pen = New Pen(Color.FromArgb(220, Color.Coral), 3)
-                oSelectedShotsPen.EndCap = LineCap.ArrowAnchor
-                Call oGraphics.DrawLine(oSelectedShotsPen, oLastLine(0).Point, oLastLine(1).Point)
-                Call oSelectedShotsPen.Dispose()
+                Using oSelectedShotsPen As Pen = New Pen(Color.FromArgb(220, Color.Coral), 3)
+                    oSelectedShotsPen.EndCap = LineCap.ArrowAnchor
+                    Call oGraphics.DrawLine(oSelectedShotsPen, oLastLine(0).Point, oLastLine(1).Point)
+                End Using
             End If
         Catch
         End Try
@@ -2072,10 +2160,17 @@ Public Class frmResurveyMain
             End If
 
             If Not oProfileDropScalePath Is Nothing Then
-                Using oDropScalePen As Pen = New Pen(Color.FromArgb(200, Color.OrangeRed), 2)
+                Using oDropScalePen As Pen = New Pen(Color.FromArgb(120, Color.OrangeRed), 1)
                     oDropScalePen.StartCap = LineCap.Round
                     oDropScalePen.EndCap = LineCap.Round
                     Call oGraphics.DrawPath(oDropScalePen, oProfileDropScalePath)
+                End Using
+            End If
+            If Not oProfileDropScaleRealPath Is Nothing Then
+                Using oDropScaleRealPen As Pen = New Pen(Color.FromArgb(200, Color.OrangeRed), 2)
+                    oDropScaleRealPen.StartCap = LineCap.ArrowAnchor
+                    oDropScaleRealPen.EndCap = LineCap.ArrowAnchor
+                    Call oGraphics.DrawPath(oDropScaleRealPen, oProfileDropScaleRealPath)
                 End Using
             End If
 

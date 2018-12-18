@@ -183,6 +183,10 @@ Module modExport
         Call xml.Save(sTempFilename)
     End Sub
 
+    Public Function FormatCaveBranchNameForSVG(ByVal Cave As String, ByVal Branch As String) As String
+        Return UnAccent(FormatCaveBranchName(Cave, Branch).Replace("\\", "_"))
+    End Function
+
     Public Function FormatCaveBranchName(ByVal Cave As String, ByVal Branch As String) As String
         Dim sKey As String = Cave & If(Branch = "", "", cCaveInfoBranches.sBranchSeparator & Branch)
         sKey = sKey.ToLower
@@ -3157,71 +3161,6 @@ Module modExport
         If sB.Length < 2 Then sB = "0" & sB
         Return "#" & sA & sB & sG & sR
     End Function
-
-    'Public Sub GoogleKmlExportTo(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, Optional Options As GoogleKMLExportOptionsEnum = GoogleKMLExportOptionsEnum.Track Or GoogleKMLExportOptionsEnum.Waypoint)
-    '    Try
-    '        Dim oOrigin As cTrigPoint = Survey.TrigPoints.GetGPSBaseReferencePoint
-    '        If oOrigin Is Nothing Then
-    '            Call MsgBox("Il rilievo non presenta un origine definita o un caposaldo esterno con il relativo posizionamento geografico. Impossibile esportare i dati come traccia GPS.", MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Attenzione:")
-    '        Else
-    '            Dim dLat As Decimal = oOrigin.Coordinate.GetLatitude
-    '            Dim dLong As Decimal = oOrigin.Coordinate.GetLongitude
-    '            Dim sAlt As Decimal = oOrigin.Coordinate.GetAltitude
-    '            If dLat = 0 And dLong = 0 Then
-    '                Call MsgBox("Il punto di origine o di riferimento presenta coordinate nel valide o in un formato non riconosciuto. Impossibile esportare i dati come traccia GPS.", MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Attenzione:")
-    '            Else
-    '                Dim xml As XmlDocument = New XmlDocument
-    '                Dim xmlRoot As XmlElement = xml.CreateElement("kml")
-    '                Dim xmlDocument As XmlElement = xml.CreateElement("Document")
-    '                Call modExport.GoogleKmlAppendNode(xml, xmlDocument, "name", Survey.Name)
-
-    '                Call modExport.GoogleKmlAppendIconStyle(xml, xmlDocument, "track", "0.3", "http://maps.google.com/mapfiles/kml/pal4/icon25.png", "0.3")
-
-    '                Call modExport.GoogleKmlAppendIconStyle(xml, xmlDocument, "waypoint", "0.3", "http://maps.google.com/mapfiles/kml/pal3/icon49.png", "0.3")
-    '                For Each oCave As cCaveInfo In Survey.Properties.CaveInfos
-    '                    Dim oColor As Color
-    '                    If oCave.ColorIsValid Then
-    '                        oColor = oCave.Color
-    '                    Else
-    '                        oColor = Color.White
-    '                    End If
-    '                    Call modExport.GoogleKmlAppendLineStyle(xml, xmlDocument, "line_" & FormatCaveBranchName(oCave.Name, ""), pGetGoogleColor(oColor), 2)
-    '                    For Each obranch As cCaveInfoBranch In oCave.Branches.GetAllBranches.Values
-    '                        If obranch.ColorIsValid Then
-    '                            oColor = obranch.Color
-    '                        Else
-    '                            If oCave.ColorIsValid Then
-    '                                oColor = oCave.Color
-    '                            Else
-    '                                oColor = Color.White
-    '                            End If
-    '                        End If
-    '                        Call modExport.GoogleKmlAppendLineStyle(xml, xmlDocument, "line_" & FormatCaveBranchName(oCave.Name, obranch.Name), pGetGoogleColor(oColor), 2)
-    '                    Next
-    '                Next
-
-    '                Dim xmlFolderTracks As XmlElement = xml.CreateElement("Folder")
-
-    '                Dim sTo As String = oOrigin.Name
-    '                Dim oProcessedTrigPoint As List(Of String) = New List(Of String)
-    '                Dim oTo As cSurvey.Calculate.cTrigPoint = Survey.Calculate.TrigPoints(sTo)
-
-    '                For Each oConnection As cSurvey.Calculate.cTrigPointConnection In oTo.Connections
-    '                    Call modExport.GoogleKmlTrackExportTo(Survey, Options, dLat, dLong, sAlt, oTo, oConnection, xml, xmlFolderTracks, oProcessedTrigPoint)
-    '                Next
-
-    '                Call xmlDocument.AppendChild(xmlFolderTracks)
-    '                Call xmlRoot.AppendChild(xmlDocument)
-    '                Call xml.AppendChild(xmlRoot)
-    '                Call xml.Save(Filename)
-    '                Call GC.Collect()
-    '            End If
-    '        End If
-
-    '    Catch ex As Exception
-
-    '    End Try
-    'End Sub
 
     Public Function VTopoParseLine(ByVal Line As String) As String()
         Dim oItems As List(Of String) = New List(Of String)

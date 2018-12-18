@@ -40,10 +40,10 @@ Namespace cSurvey.Design
                             'nulla
                         Else
                             If oItem.Type = cIItem.cItemTypeEnum.FreeHandArea AndAlso oItem.Category = cIItem.cItemCategoryEnum.Soil AndAlso oItem.Design.Type = cIDesign.cDesignTypeEnum.Profile Then
-                                Dim sClippingKey As String = "invmask_" & modExport.FormatCaveBranchName(oItem.Cave, oItem.Branch)
+                                Dim sClippingKey As String = "invmask_" & modExport.FormatCaveBranchNameForSVG(oItem.Cave, oItem.Branch)
                                 Call oSVGItem.SetAttribute("mask", "url(#" & sClippingKey & ")")
                             Else
-                                Dim sClippingKey As String = "mask_" & modExport.FormatCaveBranchName(oItem.Cave, oItem.Branch)
+                                Dim sClippingKey As String = "mask_" & modExport.FormatCaveBranchNameForSVG(oItem.Cave, oItem.Branch)
                                 Call oSVGItem.SetAttribute("mask", "url(#" & sClippingKey & ")")
                             End If
                         End If
@@ -52,10 +52,10 @@ Namespace cSurvey.Design
                             Case cItem.cItemClippingTypeEnum.None
                                 'senza clipping restituisco sempre TUTTO
                             Case cItem.cItemClippingTypeEnum.InsideBorder
-                                Dim sClippingKey As String = "mask_" & modExport.FormatCaveBranchName(oItem.Cave, oItem.Branch)
+                                Dim sClippingKey As String = "mask_" & modExport.FormatCaveBranchNameForSVG(oItem.Cave, oItem.Branch)
                                 Call oSVGItem.SetAttribute("mask", "url(#" & sClippingKey & ")")
                             Case cItem.cItemClippingTypeEnum.OutsideBorder
-                                Dim sClippingKey As String = "invmask_" & modExport.FormatCaveBranchName(oItem.Cave, oItem.Branch)
+                                Dim sClippingKey As String = "invmask_" & modExport.FormatCaveBranchNameForSVG(oItem.Cave, oItem.Branch)
                                 Call oSVGItem.SetAttribute("mask", "url(#" & sClippingKey & ")")
                         End Select
                     End If

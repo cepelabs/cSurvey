@@ -7,6 +7,46 @@ Imports cSurveyPC.cSurvey.Design.Items
 
 Module modImport
 
+    Public Function ImportWaypointGPX(Filename As String) As cCoordinate
+        Dim oXml As XmlDocument = New XmlDocument
+        Call oXml.Load(Filename)
+        Dim oNodes As XmlNodeList
+        oNodes = oXml.GetElementsByTagName("wpt")
+        If oNodes.Count > 0 Then
+            Dim oXMLPlaceMark As XmlElement = oNodes(0)
+            Dim sLon As String = ""
+            Dim sLat As String = ""
+            Dim sAlt As String = ""
+            sLon = oXMLPlaceMark.GetAttribute("lon")
+            sLat = oXMLPlaceMark.GetAttribute("lat")
+            sAlt = oXMLPlaceMark.Item("ele").InnerText
+            Return New cCoordinate(StringToDecimal(sLat), StringToDecimal(sLon), StringToDecimal(sAlt))
+        Else
+            Return Nothing
+        End If
+    End Function
+
+    Public Function ImportWaypointKML(Filename As String) As cCoordinate
+        Dim oXml As XmlDocument = New XmlDocument
+        Call oXml.Load(Filename)
+        Dim oNodes As XmlNodeList
+        oNodes = oXml.GetElementsByTagName("Placemark")
+        If oNodes.Count > 0 Then
+            Dim oXMLPlaceMark As XmlElement = oNodes(0)
+            Dim sLon As String = ""
+            Dim sLat As String = ""
+            Dim sAlt As String = ""
+            Dim sCoordinate As String = oXMLPlaceMark.Item("Point").Item("coordinates").InnerText
+            Dim sCoordinateParts() As String = sCoordinate.Split(",")
+            sLon = sCoordinateParts(0)
+            sLat = sCoordinateParts(1)
+            sAlt = sCoordinateParts(2)
+            Return New cCoordinate(StringToDecimal(sLat), StringToDecimal(sLon), StringToDecimal(sAlt))
+        Else
+            Return Nothing
+        End If
+    End Function
+
     Friend Class cImportSegments
         Private oItems As List(Of cImportSegment)
 

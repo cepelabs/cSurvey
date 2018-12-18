@@ -24336,6 +24336,47 @@ Public Class frmMain
         Call pMapInvalidate()
     End Sub
 
+    Private Sub tabTrigpointCoordinate_DragDrop(sender As Object, e As DragEventArgs) Handles tabTrigpointCoordinate.DragDrop
+        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+            Dim sFilePaths As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
+            If sFilePaths.Length = 1 Then
+                Dim iDropAction As DropActionEnum = pDropExtensionCheck(sFilePaths(0))
+                If iDropAction = DropActionEnum.ImportKMLData OrElse iDropAction = DropActionEnum.ImportGPXData Then
+                    Dim oCoordinate As cCoordinate = Nothing
+                    Select Case iDropAction
+                        Case DropActionEnum.ImportGPXData
+                            oCoordinate = modImport.ImportWaypointGPX(sFilePaths(0))
+                        Case DropActionEnum.ImportKMLData
+                            oCoordinate = modImport.ImportWaypointKML(sFilePaths(0))
+                    End Select
+                    If Not IsNothing(oCoordinate) Then
+                        cboTrigpointCoordinateFormat.SelectedIndex = 2
+                        cboTrigpointCoordinateGeo.SelectedIndex = 0
+                        txtTrigpointCoordinateLat.Text = oCoordinate.Latitude
+                        txtTrigpointCoordinateLong.Text = oCoordinate.Longitude
+                        txtTrigpointCoordinateAlt.Text = oCoordinate.Altitude
+                    End If
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub tabTrigpointCoordinate_DragOver(sender As Object, e As DragEventArgs) Handles tabTrigpointCoordinate.DragOver
+        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+            Dim sFilePaths As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
+            If sFilePaths.Length = 1 Then
+                Dim iDropAction As DropActionEnum = pDropExtensionCheck(sFilePaths(0))
+                If iDropAction = DropActionEnum.ImportKMLData OrElse iDropAction = DropActionEnum.ImportGPXData Then
+                    e.Effect = DragDropEffects.Copy
+                Else
+                    e.Effect = DragDropEffects.None
+                End If
+            Else
+                e.Effect = DragDropEffects.None
+            End If
+        End If
+    End Sub
+
     'Private Sub cmdSegmentPriorityNew_Click(sender As Object, e As EventArgs) Handles cmdSegmentPriorityNew.Click
     '    cboSegmentPriority.Text = oSurvey.Segments.getnewpriority
     'End Sub

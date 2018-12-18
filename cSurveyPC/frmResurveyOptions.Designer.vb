@@ -26,6 +26,10 @@ Partial Class frmResurveyOptions
         Me.cmdOk = New System.Windows.Forms.Button()
         Me.cmdCancel = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cboDropScaleType = New System.Windows.Forms.ComboBox()
+        Me.lblDropScaleType = New System.Windows.Forms.Label()
+        Me.cboPlanScaleType = New System.Windows.Forms.ComboBox()
+        Me.lblPlanScaleType = New System.Windows.Forms.Label()
         Me.chkUseDropForInclination = New System.Windows.Forms.CheckBox()
         Me.chkSkipInvalidStation = New System.Windows.Forms.CheckBox()
         Me.lblNordCorrectionDegrees = New System.Windows.Forms.Label()
@@ -69,6 +73,10 @@ Partial Class frmResurveyOptions
         'GroupBox1
         '
         resources.ApplyResources(Me.GroupBox1, "GroupBox1")
+        Me.GroupBox1.Controls.Add(Me.cboDropScaleType)
+        Me.GroupBox1.Controls.Add(Me.lblDropScaleType)
+        Me.GroupBox1.Controls.Add(Me.cboPlanScaleType)
+        Me.GroupBox1.Controls.Add(Me.lblPlanScaleType)
         Me.GroupBox1.Controls.Add(Me.chkUseDropForInclination)
         Me.GroupBox1.Controls.Add(Me.chkSkipInvalidStation)
         Me.GroupBox1.Controls.Add(Me.lblNordCorrectionDegrees)
@@ -78,6 +86,32 @@ Partial Class frmResurveyOptions
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.TabStop = False
+        '
+        'cboDropScaleType
+        '
+        Me.cboDropScaleType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        resources.ApplyResources(Me.cboDropScaleType, "cboDropScaleType")
+        Me.cboDropScaleType.FormattingEnabled = True
+        Me.cboDropScaleType.Items.AddRange(New Object() {resources.GetString("cboDropScaleType.Items"), resources.GetString("cboDropScaleType.Items1"), resources.GetString("cboDropScaleType.Items2")})
+        Me.cboDropScaleType.Name = "cboDropScaleType"
+        '
+        'lblDropScaleType
+        '
+        resources.ApplyResources(Me.lblDropScaleType, "lblDropScaleType")
+        Me.lblDropScaleType.Name = "lblDropScaleType"
+        '
+        'cboPlanScaleType
+        '
+        Me.cboPlanScaleType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboPlanScaleType.FormattingEnabled = True
+        Me.cboPlanScaleType.Items.AddRange(New Object() {resources.GetString("cboPlanScaleType.Items"), resources.GetString("cboPlanScaleType.Items1"), resources.GetString("cboPlanScaleType.Items2")})
+        resources.ApplyResources(Me.cboPlanScaleType, "cboPlanScaleType")
+        Me.cboPlanScaleType.Name = "cboPlanScaleType"
+        '
+        'lblPlanScaleType
+        '
+        resources.ApplyResources(Me.lblPlanScaleType, "lblPlanScaleType")
+        Me.lblPlanScaleType.Name = "lblPlanScaleType"
         '
         'chkUseDropForInclination
         '
@@ -98,9 +132,9 @@ Partial Class frmResurveyOptions
         '
         'txtNordCorrection
         '
+        resources.ApplyResources(Me.txtNordCorrection, "txtNordCorrection")
         Me.txtNordCorrection.DecimalPlaces = 1
         Me.txtNordCorrection.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
-        resources.ApplyResources(Me.txtNordCorrection, "txtNordCorrection")
         Me.txtNordCorrection.Maximum = New Decimal(New Integer() {359, 0, 0, 0})
         Me.txtNordCorrection.Minimum = New Decimal(New Integer() {359, 0, 0, -2147483648})
         Me.txtNordCorrection.Name = "txtNordCorrection"
@@ -245,4 +279,8 @@ Partial Class frmResurveyOptions
     Friend WithEvents txtLRUDBorderWidth As System.Windows.Forms.NumericUpDown
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents chkUseDropForInclination As CheckBox
+    Friend WithEvents cboDropScaleType As ComboBox
+    Friend WithEvents lblDropScaleType As Label
+    Friend WithEvents cboPlanScaleType As ComboBox
+    Friend WithEvents lblPlanScaleType As Label
 End Class

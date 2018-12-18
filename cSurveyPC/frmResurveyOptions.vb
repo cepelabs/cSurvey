@@ -14,7 +14,9 @@
         txtNordCorrection.Value = oOptions.NordCorrection
         cboCalculateMode.Enabled = Not [Readonly]
         chkSkipInvalidStation.Checked = oOptions.SkipInvalidStation
-        chkUseDropForInclination.Checked = oOptions.usedropforinclination
+        chkUseDropForInclination.Checked = oOptions.UseDropForInclination
+        cboPlanScaleType.SelectedIndex = oOptions.PlanScaleType
+        cboDropScaleType.SelectedIndex = oOptions.DropScaleType
 
         chkLRUDCalculate.Checked = oOptions.CalculateLRUD
         txtLRUDBorderWidth.Value = oOptions.LRUDBorderWidth
@@ -33,7 +35,9 @@
         oOptions.CalculateMode = cboCalculateMode.SelectedIndex
         oOptions.NordCorrection = txtNordCorrection.Value
         oOptions.SkipInvalidStation = chkSkipInvalidStation.Checked
-        oOptions.usedropforinclination = chkUseDropForInclination.Checked
+        oOptions.UseDropForInclination = chkUseDropForInclination.Checked
+        oOptions.PlanScaleType = cboPlanScaleType.SelectedIndex
+        oOptions.DropScaleType = cboDropScaleType.SelectedIndex
 
         oOptions.CalculateLRUD = chkLRUDCalculate.Checked
         oOptions.LRUDBorderWidth = txtLRUDBorderWidth.Value
@@ -43,5 +47,11 @@
 
     Private Sub cboCalculateMode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCalculateMode.SelectedIndexChanged
         chkUseDropForInclination.Enabled = cboCalculateMode.SelectedIndex = 0
+    End Sub
+
+    Private Sub chkUseDropForInclination_CheckedChanged(sender As Object, e As EventArgs) Handles chkUseDropForInclination.CheckedChanged
+        Dim bEnabled As Boolean = chkUseDropForInclination.Checked
+        lblDropScaleType.Enabled = bEnabled
+        cboDropScaleType.Enabled = bEnabled
     End Sub
 End Class

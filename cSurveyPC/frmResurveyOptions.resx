@@ -126,7 +126,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cmdOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 335</value>
+    <value>112, 394</value>
   </data>
   <data name="cmdOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
@@ -157,7 +157,7 @@
     <value>NoControl</value>
   </data>
   <data name="cmdCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>198, 335</value>
+    <value>198, 394</value>
   </data>
   <data name="cmdCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
@@ -182,6 +182,132 @@
   </data>
   <data name="GroupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
+  </data>
+  <data name="cboDropScaleType.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cboDropScaleType.Items" xml:space="preserve">
+    <value>Horizontal (ΔX)</value>
+  </data>
+  <data name="cboDropScaleType.Items1" xml:space="preserve">
+    <value>Vertical (ΔY)</value>
+  </data>
+  <data name="cboDropScaleType.Items2" xml:space="preserve">
+    <value>Oblique</value>
+  </data>
+  <data name="cboDropScaleType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>147, 103</value>
+  </data>
+  <data name="cboDropScaleType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 21</value>
+  </data>
+  <data name="cboDropScaleType.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;cboDropScaleType.Name" xml:space="preserve">
+    <value>cboDropScaleType</value>
+  </data>
+  <data name="&gt;&gt;cboDropScaleType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboDropScaleType.Parent" xml:space="preserve">
+    <value>GroupBox1</value>
+  </data>
+  <data name="&gt;&gt;cboDropScaleType.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblDropScaleType.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblDropScaleType.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="lblDropScaleType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblDropScaleType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 106</value>
+  </data>
+  <data name="lblDropScaleType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 13</value>
+  </data>
+  <data name="lblDropScaleType.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="lblDropScaleType.Text" xml:space="preserve">
+    <value>Drop scale type:</value>
+  </data>
+  <data name="&gt;&gt;lblDropScaleType.Name" xml:space="preserve">
+    <value>lblDropScaleType</value>
+  </data>
+  <data name="&gt;&gt;lblDropScaleType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblDropScaleType.Parent" xml:space="preserve">
+    <value>GroupBox1</value>
+  </data>
+  <data name="&gt;&gt;lblDropScaleType.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cboPlanScaleType.Items" xml:space="preserve">
+    <value>Horizontal (ΔX)</value>
+  </data>
+  <data name="cboPlanScaleType.Items1" xml:space="preserve">
+    <value>Vertical (ΔY)</value>
+  </data>
+  <data name="cboPlanScaleType.Items2" xml:space="preserve">
+    <value>Oblique</value>
+  </data>
+  <data name="cboPlanScaleType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>147, 76</value>
+  </data>
+  <data name="cboPlanScaleType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 21</value>
+  </data>
+  <data name="cboPlanScaleType.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;cboPlanScaleType.Name" xml:space="preserve">
+    <value>cboPlanScaleType</value>
+  </data>
+  <data name="&gt;&gt;cboPlanScaleType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPlanScaleType.Parent" xml:space="preserve">
+    <value>GroupBox1</value>
+  </data>
+  <data name="&gt;&gt;cboPlanScaleType.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblPlanScaleType.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblPlanScaleType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPlanScaleType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 79</value>
+  </data>
+  <data name="lblPlanScaleType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 13</value>
+  </data>
+  <data name="lblPlanScaleType.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="lblPlanScaleType.Text" xml:space="preserve">
+    <value>Plan/profile scale type:</value>
+  </data>
+  <data name="&gt;&gt;lblPlanScaleType.Name" xml:space="preserve">
+    <value>lblPlanScaleType</value>
+  </data>
+  <data name="&gt;&gt;lblPlanScaleType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPlanScaleType.Parent" xml:space="preserve">
+    <value>GroupBox1</value>
+  </data>
+  <data name="&gt;&gt;lblPlanScaleType.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="chkUseDropForInclination.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -211,13 +337,16 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;chkUseDropForInclination.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>4</value>
+  </data>
+  <data name="chkSkipInvalidStation.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
   <data name="chkSkipInvalidStation.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="chkSkipInvalidStation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 108</value>
+    <value>22, 177</value>
   </data>
   <data name="chkSkipInvalidStation.Size" type="System.Drawing.Size, System.Drawing">
     <value>126, 17</value>
@@ -241,13 +370,16 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;chkSkipInvalidStation.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
+  </data>
+  <data name="lblNordCorrectionDegrees.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
   <data name="lblNordCorrectionDegrees.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="lblNordCorrectionDegrees.Location" type="System.Drawing.Point, System.Drawing">
-    <value>204, 83</value>
+    <value>204, 152</value>
   </data>
   <data name="lblNordCorrectionDegrees.Size" type="System.Drawing.Size, System.Drawing">
     <value>12, 13</value>
@@ -268,10 +400,13 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;lblNordCorrectionDegrees.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
+  </data>
+  <data name="txtNordCorrection.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
   <data name="txtNordCorrection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>147, 81</value>
+    <value>147, 150</value>
   </data>
   <data name="txtNordCorrection.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 21</value>
@@ -292,13 +427,16 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;txtNordCorrection.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
+  </data>
+  <data name="lblNordCorrection.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
   <data name="lblNordCorrection.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="lblNordCorrection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 83</value>
+    <value>22, 152</value>
   </data>
   <data name="lblNordCorrection.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 13</value>
@@ -319,7 +457,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;lblNordCorrection.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="cboCalculateMode.Items" xml:space="preserve">
     <value>Complete (plan and section)</value>
@@ -346,7 +484,7 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;cboCalculateMode.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="Label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -373,13 +511,13 @@
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
   <data name="GroupBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
   </data>
   <data name="GroupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>263, 142</value>
+    <value>263, 209</value>
   </data>
   <data name="GroupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -664,7 +802,7 @@
     <value>9</value>
   </data>
   <data name="GroupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 171</value>
+    <value>12, 227</value>
   </data>
   <data name="GroupBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>263, 152</value>
@@ -694,7 +832,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>287, 368</value>
+    <value>287, 427</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
@@ -763,6 +901,9 @@
         QT8AAABNVH88AABPaXx6dVtGAAAAAFlQVTdFAE5OVktVAP//AADD8AAAweAAAMDAAADAQAAA4AEAAPAD
         AAD4DwAAjAEAAAgAAAAAAAAAAAcAAMEHAADDAAAA4YAAAPBBAAA=
 </value>
+  </data>
+  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

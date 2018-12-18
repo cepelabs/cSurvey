@@ -3531,6 +3531,7 @@ Partial Class frmMain
         '
         'tabTrigpointCoordinate
         '
+        Me.tabTrigpointCoordinate.AllowDrop = True
         Me.tabTrigpointCoordinate.Controls.Add(Me.btnTrigpointCoordinateClear)
         Me.tabTrigpointCoordinate.Controls.Add(Me.lblTrigpointCoordinateFix)
         Me.tabTrigpointCoordinate.Controls.Add(Me.cboTrigpointCoordinateFix)

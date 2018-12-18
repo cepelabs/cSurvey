@@ -8,17 +8,25 @@ Namespace cResurvey
             OnlyPlan = 1
         End Enum
 
+        Public Enum ScaleTypeEnum
+            DeltaX = 0
+            DeltaY = 1
+            Distance = 2
+        End Enum
+
         Private iCalculateMode As CalculateModeEnum
         Private sNordCorrection As Single
         Private bSkipInvalidStation As Boolean
         Private bUseDropForInclination As Boolean
+        Private iPlanScaleType As ScaleTypeEnum
+        Private iDropScaleType As ScaleTypeEnum
 
         Private bCalculateLRUD As Boolean
         Private iLRUDBorderWidth As Integer
         Private sLRMaxValue As Single
         Private sUDMaxValue As Single
 
-        Friend Sub New(Optional CalculateMode As CalculateModeEnum = CalculateModeEnum.Full, Optional NordCorrection As Single = 0, Optional SkipInvalidStation As Boolean = True, Optional CalculateLRUD As Boolean = False, Optional LRUDBorderWidth As Integer = 3, Optional LRMaxValue As Single = 5, Optional UDMaxValue As Single = 10)
+        Friend Sub New(Optional CalculateMode As CalculateModeEnum = CalculateModeEnum.Full, Optional NordCorrection As Single = 0, Optional SkipInvalidStation As Boolean = True, Optional CalculateLRUD As Boolean = False, Optional LRUDBorderWidth As Integer = 3, Optional LRMaxValue As Single = 5, Optional UDMaxValue As Single = 10, Optional PlanScaleType As ScaleTypeEnum = ScaleTypeEnum.DeltaX, Optional DropScaleType As ScaleTypeEnum = ScaleTypeEnum.DeltaY)
             iCalculateMode = CalculateMode
             sNordCorrection = NordCorrection
             bSkipInvalidStation = SkipInvalidStation
@@ -27,6 +35,8 @@ Namespace cResurvey
             iLRUDBorderWidth = LRUDBorderWidth
             sLRMaxValue = LRMaxValue
             sUDMaxValue = UDMaxValue
+            iPlanScaleType = PlanScaleType
+            iDropScaleType = DropScaleType
         End Sub
 
         Public Sub CopyFrom(Options As cOptions)
@@ -38,6 +48,8 @@ Namespace cResurvey
             iLRUDBorderWidth = Options.iLRUDBorderWidth
             sLRMaxValue = Options.sLRMaxValue
             sUDMaxValue = Options.sUDMaxValue
+            iPlanScaleType = Options.iPlanScaleType
+            iDropScaleType = Options.iDropScaleType
         End Sub
 
         Public Property LRUDBorderWidth As Integer
@@ -109,6 +121,24 @@ Namespace cResurvey
             End Get
             Set(value As Boolean)
                 bUseDropForInclination = value
+            End Set
+        End Property
+
+        Public Property PlanScaleType As ScaleTypeEnum
+            Get
+                Return iPlanScaleType
+            End Get
+            Set(value As ScaleTypeEnum)
+                iPlanScaleType = value
+            End Set
+        End Property
+
+        Public Property DropScaleType As ScaleTypeEnum
+            Get
+                Return iDropScaleType
+            End Get
+            Set(value As ScaleTypeEnum)
+                iDropScaleType = value
             End Set
         End Property
     End Class

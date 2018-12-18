@@ -459,7 +459,7 @@ Namespace cSurvey.Design.Items
                                                             Else
                                                                 sText = ""
                                                                 Dim oGPSTrigpoint As cTrigPoint = oSurvey.TrigPoints.GetGPSBaseReferencePoint
-                                                                sValue = oGPSTrigpoint.Coordinate.Altitude - oGPSTrigpoint.Data.Y - oCenterPoint.Y 'oSurvey.TrigPoints.OffsetZ - oCenterPoint.Y
+                                                                sValue = oGPSTrigpoint.Coordinate.GetAltitude + oGPSTrigpoint.Data.Z - oCenterPoint.Y 'oSurvey.TrigPoints.OffsetZ - oCenterPoint.Y
                                                             End If
                                                     End Select
                                                     If Not sText.StartsWith("#") Then

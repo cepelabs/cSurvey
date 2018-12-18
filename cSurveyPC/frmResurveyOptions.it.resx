@@ -249,4 +249,28 @@
   <data name="chkUseDropForInclination.Text" xml:space="preserve">
     <value>Calcola inclinazione dal dislivello</value>
   </data>
+  <data name="lblPlanScaleType.Text" xml:space="preserve">
+    <value>Tipo scala pianta/sezione:</value>
+  </data>
+  <data name="cboPlanScaleType.Items2" xml:space="preserve">
+    <value>Distanza effettiva (obliqua)</value>
+  </data>
+  <data name="cboDropScaleType.Items2" xml:space="preserve">
+    <value>Distanza effettiva (obliqua)</value>
+  </data>
+  <data name="cboDropScaleType.Items1" xml:space="preserve">
+    <value>Verticale (ΔY)</value>
+  </data>
+  <data name="cboDropScaleType.Items" xml:space="preserve">
+    <value>Orizzontale (ΔX)</value>
+  </data>
+  <data name="cboPlanScaleType.Items" xml:space="preserve">
+    <value>Orizzontale (ΔX)</value>
+  </data>
+  <data name="cboPlanScaleType.Items1" xml:space="preserve">
+    <value>Verticale (ΔY)</value>
+  </data>
+  <data name="lblDropScaleType.Text" xml:space="preserve">
+    <value>Scala dislivello:</value>
+  </data>
 </root>

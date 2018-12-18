@@ -299,7 +299,7 @@ Namespace cSurvey.Design
                                                     End If
                                                 End If
 
-                                                Dim sKey As String = modExport.FormatCaveBranchName(oItem.Cave, oItem.Branch)
+                                                Dim sKey As String = modExport.FormatCaveBranchNameForSVG(oItem.Cave, oItem.Branch)
                                                 Call oMaskPaths.AppendPath(sKey, oBorderPath, oCaveBorder.MergeMode)
                                             End If
                                         End If

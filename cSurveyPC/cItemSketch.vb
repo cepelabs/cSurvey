@@ -510,12 +510,13 @@ Namespace cSurvey.Design.Items
                         Else
                             Using oImageAttributes As System.Drawing.Imaging.ImageAttributes = New System.Drawing.Imaging.ImageAttributes
                                 Call oImageAttributes.SetColorKey(modPaint.DarkColor(oTransparentColor, sTransparencyThreshold), modPaint.LightColor(oTransparentColor, sTransparencyThreshold))
-                                Dim oPoints(2) As PointF
-                                oPoints(0) = oBounds.Location
-                                oPoints(1) = New PointF(oBounds.Right, oBounds.Top)
-                                oPoints(2) = New PointF(oBounds.Left, oBounds.Bottom)
-                                Dim oSourceRect As RectangleF = oDesignImage.GetBounds(System.Drawing.GraphicsUnit.Pixel)
-                                Call Graphics.DrawImage(oDesignImage, oPoints, oSourceRect, GraphicsUnit.Pixel, oImageAttributes)
+                                'Dim oPoints(2) As PointF
+                                'oPoints(0) = oBounds.Location
+                                'oPoints(1) = New PointF(oBounds.Right, oBounds.Top)
+                                'oPoints(2) = New PointF(oBounds.Left, oBounds.Bottom)
+                                'Dim oSourceRect As RectangleF = oDesignImage.GetBounds(System.Drawing.GraphicsUnit.Pixel)
+                                'Call Graphics.DrawImage(oDesignImage, oPoints, oSourceRect, GraphicsUnit.Pixel, oImageAttributes)
+                                Call modPaint.DrawStretchedImage(Graphics, oDesignImage, oBounds, oImageAttributes)
                             End Using
                         End If
                         'If Not IsNothing(oState) Then

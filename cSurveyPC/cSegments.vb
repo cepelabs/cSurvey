@@ -140,6 +140,26 @@ Namespace cSurvey
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal File As Storage.cFile, ByVal Segments As XmlElement)
             oSurvey = Survey
+
+            If oSurvey.Properties.CreatorID.ToLower = "topodroid" Then
+                If Not oSurvey.Properties.DataTables.Segments.Contains("distox_g") Then
+                    Dim oField As Data.cDataField = oSurvey.Properties.DataTables.Segments.Add("distox_g", Data.cDataFields.TypeEnum.Single)
+                    oField.Category = "DistoX"
+                End If
+                If Not oSurvey.Properties.DataTables.Segments.Contains("distox_m") Then
+                    Dim oField As Data.cDataField = oSurvey.Properties.DataTables.Segments.Add("distox_m", Data.cDataFields.TypeEnum.Single)
+                    oField.Category = "DistoX"
+                End If
+                If Not oSurvey.Properties.DataTables.Segments.Contains("distox_dip") Then
+                    Dim oField As Data.cDataField = oSurvey.Properties.DataTables.Segments.Add("distox_dip", Data.cDataFields.TypeEnum.Single)
+                    oField.Category = "DistoX"
+                End If
+                If Not oSurvey.Properties.DataTables.Segments.Contains("distox") Then
+                    Dim oField As Data.cDataField = oSurvey.Properties.DataTables.Segments.Add("distox", Data.cDataFields.TypeEnum.Text)
+                    oField.Category = "DistoX"
+                End If
+            End If
+
             oSegments = New cSegmentBaseCollection
             Dim iIndex As Integer = 0
             Dim iCount As Integer = Segments.ChildNodes.Count

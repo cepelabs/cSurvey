@@ -68,7 +68,8 @@ Friend Class cHolosViewer
     Private oCavesHotSpots As Dictionary(Of ModelVisual3D, cHotSpot)
     Private oSurfacesHotSpots As Dictionary(Of ModelVisual3D, cHotSpot)
 
-    Private cmCave As DNetCMCave
+    'Private cmCave As DNetCMCave
+    Dim oCmCaves As Dictionary(Of cSurvey.cSurvey, DNetCMCave)
     Private oOutlineUpdateTimer As System.Windows.Forms.Timer
 
     Public Class cHolosHitTestResult
@@ -1040,6 +1041,8 @@ Friend Class cHolosViewer
         End If
         Call oSurveys.Add(oSurvey)
 
+        Call oCmCaves.Clear()
+        Call oModels.Clear()
         For Each oCurrentSurvey As cSurveyPC.cSurvey.cSurvey In oSurveys
             Dim bIsThisSurvey As Boolean = oCurrentSurvey Is oSurvey
 
@@ -1430,11 +1433,13 @@ Friend Class cHolosViewer
                 If oStationPoints.Points.Count > 0 Then Call oCaves.Add(oStationPoints)
             End If
 
-            Call oModels.Clear()
-            Dim oBuilder As MeshBuilder = New MeshBuilder
+            'Dim oBuilder As MeshBuilder = New MeshBuilder
             If PaintOptions.DrawModel Then
                 Dim oStationToPiketDict = New Dictionary(Of String, Integer)
-                cmCave = New DNetCMCave
+                'If bIsThisSurvey Then
+                Dim cmCave As DNetCMCave = New DNetCMCave
+                'Else
+                'End If
 
                 Dim addStationFunc = Sub(Station As String, extendedElevationX As Double)
                                          If Not oStationToPiketDict.ContainsKey(Station) Then
@@ -1640,19 +1645,23 @@ Friend Class cHolosViewer
                 Next
                 Call oSurvey.RaiseOnProgressEvent("3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
 
-                If (PaintOptions.DrawModelMode = RenderMode.SM_OUTLINE) Then
-                    bModelOutline = True
-                    Call pCavesOutline()
-                Else
-                    bModelOutline = False
-                End If
+                Call oCmCaves.Add(oCurrentSurvey, cmCave)
             End If
         Next
+
+        If PaintOptions.DrawModel Then
+            If (PaintOptions.DrawModelMode = RenderMode.SM_OUTLINE) Then
+                bModelOutline = True
+                Call pCavesOutline()
+            Else
+                bModelOutline = False
+            End If
+        End If
     End Sub
 
-    Private Class cMeshBag
+    Private Class cLinesBag
         Private oColor As Media.Color
-        Private oPositions = New List(Of Point3D)
+        Private oLine As LinesVisual3D
 
         Public ReadOnly Property Color As Media.Color
             Get
@@ -1660,15 +1669,17 @@ Friend Class cHolosViewer
             End Get
         End Property
 
-        Public ReadOnly Property Positions As List(Of Point3D)
+        Public ReadOnly Property Line As LinesVisual3D
             Get
-                Return oPositions
+                Return oLine
             End Get
         End Property
 
-        Public Sub New(Color As Media.Color, Positions As List(Of Point3D))
+        Public Sub New(Color As Media.Color)
             oColor = Color
-            oPositions = Positions
+            oLine = New HelixToolkit.Wpf.LinesVisual3D
+            oLine.Color = oColor
+            oLine.Thickness = 2
         End Sub
     End Class
 
@@ -1689,37 +1700,34 @@ Friend Class cHolosViewer
             Next
             Call oModelOutline.Clear()
 
-            If cmCave IsNot Nothing AndAlso cmCave.getMode() = RenderMode.SM_OUTLINE Then
-                Dim lookDirection = mainViewport.Camera.LookDirection
-                cmCave.setLookDirection(lookDirection.X, lookDirection.Y, lookDirection.Z)
+            Dim oLines As Dictionary(Of Media.Color, cLinesBag) = New Dictionary(Of Media.Color, cLinesBag)
+            For Each CmCave As DNetCMCave In oCmCaves.Values
+                If CmCave IsNot Nothing AndAlso CmCave.getMode() = RenderMode.SM_OUTLINE Then
+                    Dim lookDirection = mainViewport.Camera.LookDirection
+                    CmCave.setLookDirection(lookDirection.X, lookDirection.Y, lookDirection.Z)
 
-                Dim lines = cmCave.getOutputLine(DMOuputType.OT_OUTLINE)
-                Dim lineView As HelixToolkit.Wpf.LinesVisual3D
-                For Each line As DMOutputLine In lines
-                    Dim a = (line.color(0, 3) + line.color(1, 3)) / 2.0 * 255.0
-                    Dim r = (line.color(0, 0) + line.color(1, 0)) / 2.0 * 255.0
-                    Dim g = (line.color(0, 1) + line.color(1, 1)) / 2.0 * 255.0
-                    Dim b = (line.color(0, 2) + line.color(1, 2)) / 2.0 * 255.0
+                    Dim lines = CmCave.getOutputLine(DMOuputType.OT_OUTLINE)
+                    For Each line As DMOutputLine In lines
+                        Dim a = (line.color(0, 3) + line.color(1, 3)) / 2.0 * 255.0
+                        Dim r = (line.color(0, 0) + line.color(1, 0)) / 2.0 * 255.0
+                        Dim g = (line.color(0, 1) + line.color(1, 1)) / 2.0 * 255.0
+                        Dim b = (line.color(0, 2) + line.color(1, 2)) / 2.0 * 255.0
 
-                    Dim col = Media.Color.FromArgb(a, r, g, b)
-                    If lineView Is Nothing OrElse Not lineView.Color = col Then
-                        If Not lineView Is Nothing Then
-                            Call oModelOutline.Add(lineView)
-                            If oAll IsNot Nothing Then Call oAll.Children.Add(lineView)
+                        Dim col = Media.Color.FromArgb(a, r, g, b)
+                        If Not oLines.ContainsKey(col) Then
+                            Dim oLineBag As cLinesBag = New cLinesBag(col)
+                            Call oLines.Add(col, oLineBag)
                         End If
-                        lineView = New HelixToolkit.Wpf.LinesVisual3D
-                        lineView.Color = col
-                        lineView.Thickness = 2
-                    End If
-
-                    Call lineView.Points.Add(New Point3D(line.vertice(0, 0), line.vertice(0, 1), line.vertice(0, 2)))
-                    Call lineView.Points.Add(New Point3D(line.vertice(1, 0), line.vertice(1, 1), line.vertice(1, 2)))
-                Next
-                If (lineView IsNot Nothing) Then
-                    Call oModelOutline.Add(lineView)
-                    If oAll IsNot Nothing Then Call oAll.Children.Add(lineView)
+                        Call oLines(col).Line.Points.Add(New Point3D(line.vertice(0, 0), line.vertice(0, 1), line.vertice(0, 2)))
+                        Call oLines(col).Line.Points.Add(New Point3D(line.vertice(1, 0), line.vertice(1, 1), line.vertice(1, 2)))
+                    Next
                 End If
-            End If
+            Next
+
+            For Each oLine As cLinesBag In oLines.Values
+                Call oModelOutline.Add(oLine.Line)
+                If oAll IsNot Nothing Then Call oAll.Children.Add(oLine.Line)
+            Next
 
             iInvalidated = iInvalidated And Not InvalidateType.CameraMove
         End If
@@ -1918,6 +1926,8 @@ Friend Class cHolosViewer
         oModels = New List(Of ModelVisual3D)
         oPlots = New List(Of ModelVisual3D)
         oModelOutline = New List(Of LinesVisual3D)
+
+        oCmCaves = New Dictionary(Of cSurvey.cSurvey, DNetCMCave)
 
         'aggiungo le luci al viewport...queste dovrebbero restare uguali sempre...
         For Each oModel As ModelVisual3D In pLights()

@@ -636,8 +636,8 @@ Module modExport
                     Call st.WriteLine("Entree " & sEntrance)
                 Next
 
-                'scrivo un segmento fisso per l'origine...se anche ci fosse gia nell'elenco dei segmenti..
-                'poi perfezionerò meglio...tanto l'export in vtopo è gia di per se molto approssimativo...
+                'fixed shot per origin...
+                'is not perfect but visualtopo export could not be perfect due to the different approach to survey of the two software
                 Call st.WriteLine("Param Deca Degd Clino Degd 0.0000 Dir,Dir,Dir Arr Std")
 
                 Dim sFrom As String
@@ -662,7 +662,16 @@ Module modExport
                         For Each oSegment As cSegment In oSegments
                             If oSegment.IsValid Then
                                 If bFirst Then
-                                    Call st.WriteLine("Param Deca " & GetVTopoBearingMeasure(oSession.BearingType) & " Clino " & GetVTopoInclinationMeasure(oSession.InclinationType) & " 0.0000 Dir,Dir,Dir Arr Std")
+                                    Dim sLRUDRef As String
+                                    Select Case oSession.SideMeasuresReferTo
+                                        Case cSegment.SideMeasuresReferToEnum.EndPoint
+                                            sLRUDRef = "Arr"
+                                        Case cSegment.SideMeasuresReferToEnum.StartPoint
+                                            sLRUDRef = "Dep"
+                                        Case Else
+                                            sLRUDRef = "Inc"
+                                    End Select
+                                    Call st.WriteLine("Param Deca " & GetVTopoBearingMeasure(oSession.BearingType) & " Clino " & GetVTopoInclinationMeasure(oSession.InclinationType) & " 0.0000 Dir,Dir,Dir " & sLRUDRef & " Std")
                                     bFirst = False
                                 End If
                                 sFrom = DictionaryTranslate(Dictionary, oSegment.[From])
@@ -1193,6 +1202,16 @@ Module modExport
 
                         oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart141")
 
+                        If bCalculatedData Then
+                            oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = GetLocalizedString("main.textpart34")
+                            oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = GetLocalizedString("main.textpart35")
+                            oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = GetLocalizedString("main.textpart36")
+                        End If
+
+                        For Each oDataField As Data.cDataField In Survey.Properties.DataTables.Segments
+                            oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = If(oDataField.Category = "", "", oDataField.Category & "/") & oDataField.Name
+                        Next
+
                         oXLSSegment.Row(r).Style.Font.Bold = True
 
                         r += 1
@@ -1251,6 +1270,16 @@ Module modExport
 
                     oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = oSegment.Note
 
+                    If bCalculatedData Then
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modNumbers.MathRound(oSegment.Data.Data.Distance, 2)
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modNumbers.MathRound(oSegment.Data.Data.Bearing, 2)
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = modNumbers.MathRound(oSegment.Data.Data.Inclination, 2)
+                    End If
+
+                    For Each oDataField As Data.cDataField In Survey.Properties.DataTables.Segments
+                        oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = oSegment.DataProperties.GetValue(oDataField.Name)
+                    Next
+
                     sLastSession = oSegment.Session
 
                     r += 1
@@ -1279,6 +1308,10 @@ Module modExport
                 oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart116")
                 oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart117")
                 oXLSTrigpoint.Cells(1, pExcelNextColumn(c)).Value = modMain.GetLocalizedString("main.textpart118")
+
+                For Each oDataField As Data.cDataField In Survey.Properties.DataTables.Trigpoints
+                    oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = If(oDataField.Category = "", "", oDataField.Category & "/") & oDataField.Name
+                Next
 
                 oXLSTrigpoint.Row(1).Style.Font.Bold = True
                 For Each oTrigpoint As cTrigPoint In Survey.TrigPoints
@@ -1315,6 +1348,10 @@ Module modExport
                                     End If
                                 End If
                             End If
+
+                            For Each oDataField As Data.cDataField In Survey.Properties.DataTables.Trigpoints
+                                oXLSTrigpoint.Cells(r, pExcelNextColumn(c)).Value = oTrigpoint.DataProperties.GetValue(oDataField.Name)
+                            Next
 
                             r += 1
                         End If
@@ -2772,7 +2809,6 @@ Module modExport
                                                         Call St.WriteLine(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Inclination, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
                                                 End Select
                                             Else
-                                                'Call st.WriteLine(sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Inclination, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
                                                 Call St.WriteLine(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(.Bearing, "0.00") & " " & modText.FormatNumber(modPaint.NormalizeInclination(.Inclination), "0.00") & " " & modText.FormatNumber(.Distance, "0.00") & " [" & modText.FormatNumber(.FromLeft, "0.00") & " " & modText.FormatNumber(.ToLeft, "0.00") & "] [" & modText.FormatNumber(.FromRight, "0.00") & " " & modText.FormatNumber(.ToRight, "0.00") & "] [" & modText.FormatNumber(.FromUp, "0.00") & " " & modText.FormatNumber(.ToUp, "0.00") & "] [" & modText.FormatNumber(.FromDown, "0.00") & " " & modText.FormatNumber(.ToDown, "0.00") & "]")
                                             End If
 

@@ -752,21 +752,26 @@ Namespace cSurvey.Design
             Else
                 If iBindDesignType = BindDesignTypeEnum.CrossSections Then
                     'for crosssection i found one nearest segment for all points...
-                    Dim oNearestSegments As Dictionary(Of cISegment, Integer) = New Dictionary(Of cISegment, Integer)
-                    For Each oPoint As cPoint In oPoints
-                        If Not oPoint.SegmentLocked Then
-                            Dim oSegment As cISegment = oDesign.GetNearestSegment(sCave, sBranch, sCrossSection, oPoint.X, oPoint.Y, iBindDesignType)
-                            If Not IsNothing(oSegment) Then
-                                If oNearestSegments.ContainsKey(oSegment) Then
-                                    Dim iValue As Integer = oNearestSegments(oSegment)
-                                    oNearestSegments(oSegment) = iValue + 1
-                                Else
-                                    Call oNearestSegments.Add(oSegment, 1)
+                    Dim oNearestSegment As cISegment
+                    If CrossSection = "" Then
+                        Dim oNearestSegments As Dictionary(Of cISegment, Integer) = New Dictionary(Of cISegment, Integer)
+                        For Each oPoint As cPoint In oPoints
+                            If Not oPoint.SegmentLocked Then
+                                Dim oSegment As cISegment = oDesign.GetNearestSegment(sCave, sBranch, sCrossSection, oPoint.X, oPoint.Y, iBindDesignType)
+                                If Not IsNothing(oSegment) Then
+                                    If oNearestSegments.ContainsKey(oSegment) Then
+                                        Dim iValue As Integer = oNearestSegments(oSegment)
+                                        oNearestSegments(oSegment) = iValue + 1
+                                    Else
+                                        Call oNearestSegments.Add(oSegment, 1)
+                                    End If
                                 End If
                             End If
-                        End If
-                    Next
-                    Dim oNearestSegment As cISegment = oNearestSegments.OrderBy(Of Integer)(Function(item) item.Value).LastOrDefault().Key
+                        Next
+                        oNearestSegment = oNearestSegments.OrderBy(Of Integer)(Function(item) item.Value).LastOrDefault().Key
+                    Else
+                        oNearestSegment = oSurvey.CrossSections(CrossSection)
+                    End If
                     Threading.Tasks.Parallel.ForEach(Of cPoint)(oPoints, Sub(oPoint)
                                                                              If Not oPoint.SegmentLocked Then
                                                                                  Call oPoint.BindSegment(oNearestSegment)
@@ -969,17 +974,18 @@ Namespace cSurvey.Design
 
                             Dim bFirst As Boolean = True
                             For Each oPoint As cPoint In Item.Points
+                                Dim oNewPoint As cPoint = oPoint.Clone
                                 If bFirst Then
-                                    oPoint.BeginSequence = True
+                                    oNewPoint.BeginSequence = True
                                     bFirst = False
                                 End If
-                                If bSetLineType And oPoint.LineType = cIItemLine.LineTypeEnum.Undefined Then
-                                    oPoint.LineType = iSourceItemLineType
+                                If bSetLineType And oNewPoint.LineType = cIItemLine.LineTypeEnum.Undefined Then
+                                    oNewPoint.LineType = iSourceItemLineType
                                 End If
-                                If bSetPen And oPoint.Pen Is Nothing Then
-                                    oPoint.Pen = oItemPen
+                                If bSetPen And oNewPoint.Pen Is Nothing Then
+                                    oNewPoint.Pen = oItemPen
                                 End If
-                                Call Me.Points.Add(oPoint)
+                                Call Me.Points.Add(oNewPoint)
                             Next
                             Call oLayer.Items.Remove(Item)
                         End If

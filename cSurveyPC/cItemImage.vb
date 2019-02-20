@@ -262,16 +262,44 @@ Namespace cSurvey.Design.Items
             If MyBase.Points.Count > 1 Then
                 Call Render(Graphics, PaintOptions, Options, Selected)
                 Try
-                    Dim oBounds As RectangleF = GetBounds()
                     If Not PaintOptions.IsDesign Or (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then
-                        Select Case iImageResizeMode
-                            Case cIItemImage.ImageResizeModeEnum.Scaled
-                                'in scala
-                                modPaint.DrawScaledImage(Graphics, oImage, oBounds)
-                            Case cIItemImage.ImageResizeModeEnum.Stretched
-                                '"stirata"
-                                Call Graphics.DrawImage(oImage, oBounds)
-                        End Select
+                        Dim oBounds As RectangleF = GetBounds()
+                        If oTransparentColor = Color.Transparent Then
+                            Select Case iImageResizeMode
+                                Case cIItemImage.ImageResizeModeEnum.Scaled
+                                    'in scala
+                                    Call modPaint.DrawScaledImage(Graphics, oImage, oBounds)
+                                Case cIItemImage.ImageResizeModeEnum.Stretched
+                                    '"stirata"
+                                    Call Graphics.DrawImage(oImage, oBounds)
+                            End Select
+                        Else
+                            Using oImageAttributes As System.Drawing.Imaging.ImageAttributes = New System.Drawing.Imaging.ImageAttributes
+                                Call oImageAttributes.SetColorKey(modPaint.DarkColor(oTransparentColor, sTransparencyThreshold), modPaint.LightColor(oTransparentColor, sTransparencyThreshold))
+                                Select Case iImageResizeMode
+                                    Case cIItemImage.ImageResizeModeEnum.Scaled
+                                        'in scala
+                                        Call modPaint.DrawScaledImage(Graphics, oImage, oBounds, oImageAttributes)
+                                    Case cIItemImage.ImageResizeModeEnum.Stretched
+                                        '"stirata"
+                                        Call modPaint.DrawStretchedImage(Graphics, oImage, oBounds, oImageAttributes)
+                                        'Dim oPoints(2) As PointF
+                                        'oPoints(0) = oBounds.Location
+                                        'oPoints(1) = New PointF(oBounds.Right, oBounds.Top)
+                                        'oPoints(2) = New PointF(oBounds.Left, oBounds.Bottom)
+                                        'Dim oSourceRect As RectangleF = oImage.GetBounds(System.Drawing.GraphicsUnit.Pixel)
+                                        'Call Graphics.DrawImage(oImage, oPoints, oSourceRect, GraphicsUnit.Pixel, oImageAttributes)
+                                End Select
+                            End Using
+                        End If
+                        'Select Case iImageResizeMode
+                        '    Case cIItemImage.ImageResizeModeEnum.Scaled
+                        '        'in scala
+                        '        modPaint.DrawScaledImage(Graphics, oImage, oBounds)
+                        '    Case cIItemImage.ImageResizeModeEnum.Stretched
+                        '        '"stirata"
+                        '        Call Graphics.DrawImage(oImage, oBounds)
+                        'End Select
                         Call MyBase.Caches(PaintOptions).Paint(Graphics, PaintOptions, Options)
                     End If
                 Catch

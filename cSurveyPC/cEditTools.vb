@@ -1254,7 +1254,7 @@ Namespace cSurvey.Helper.Editor
         End Function
 
         Private Function pItemToStorage() As XmlDocument
-            Dim oFile As Storage.cFile = New Storage.cFile(Storage.cFile.FileFormatEnum.CSX, Storage.cFile.FileOptionsEnum.EmbedResource)
+            Dim oFile As Storage.cFile = New Storage.cFile(Storage.cFile.FileFormatEnum.CSX, "", Storage.cFile.FileOptionsEnum.EmbedResource)
             Dim oXML As XmlDocument = oFile.Document
             Dim oXMLParent As XmlElement = oXML.CreateElement("parent")
             Call oCurrentItem.SaveTo(oFile, oXML, oXMLParent, cSurvey.SaveOptionsEnum.Silent)

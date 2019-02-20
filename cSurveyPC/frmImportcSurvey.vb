@@ -78,19 +78,18 @@ Public Class frmImportcSurvey
         Dim bEnabled As Boolean = chkcSurveyImportGraphics.Checked
         chkcSurveyImportPlan.Enabled = bEnabled
         chkcSurveyImportProfile.Enabled = bEnabled
-        chkcSurveyImportCaveBranchFromDesign.Enabled = bEnabled
+        chkcSurveyImportCaveBranchFromDesign.Enabled = bEnabled AndAlso chkcSurveyImportData.Enabled AndAlso Not chkcSurveyImportData.Checked
         lblcSurveyImportWarpingMode.Enabled = bEnabled
         cbocSurveyImportWarpingMode.Enabled = bEnabled
     End Sub
 
     Private Sub chkcSurveyImportData_CheckedChanged(sender As Object, e As EventArgs) Handles chkcSurveyImportData.CheckedChanged
-        chkcSurveyImportCaveBranchFromDesign.Enabled = chkcSurveyImportData.Enabled AndAlso Not chkcSurveyImportData.Checked
+        chkcSurveyImportCaveBranchFromDesign.Enabled = chkcSurveyImportGraphics.Checked AndAlso chkcSurveyImportData.Enabled AndAlso Not chkcSurveyImportData.Checked
         Dim bEnabled As Boolean = chkcSurveyImportData.Checked
         chkcSurveyImportDuplicates.Enabled = bEnabled
         lblcSurveyImportDuplicatesMode.Enabled = bEnabled
         cbocSurveyImportDuplicatesMode.Enabled = bEnabled
         chkcSurveyImportDuplicatesStations.Enabled = bEnabled
-        chkcSurveyImportCaveBranchFromDesign.Enabled = Not bEnabled
         chkImportAsBranchOf.Enabled = bEnabled
         cboImportAsBranchOfCave.Enabled = chkImportAsBranchOf.Checked And bEnabled
         cboImportAsBranchOfBranch.Enabled = chkImportAsBranchOf.Checked And bEnabled
@@ -100,6 +99,7 @@ Public Class frmImportcSurvey
     Private Sub chkcSurveyImportDuplicates_CheckedChanged(sender As Object, e As EventArgs) Handles chkcSurveyImportDuplicates.CheckedChanged
         Dim bDuplicatesEnabled As Boolean = chkcSurveyImportDuplicates.Enabled And chkcSurveyImportDuplicates.Checked
         chkcSurveyImportDuplicatesOverwrite.Enabled = bDuplicatesEnabled
+        chkcSurveyImportDuplicatesOverwriteOnlyUsed.Enabled = chkcSurveyImportDuplicatesOverwrite.Checked AndAlso bDuplicatesEnabled
     End Sub
 
     Private Sub chkImportAsBranchOf_CheckedChanged(sender As Object, e As EventArgs) Handles chkImportAsBranchOf.CheckedChanged
@@ -112,7 +112,7 @@ Public Class frmImportcSurvey
     End Sub
 
     Private Sub chkcSurveyImportDuplicatesOverwrite_CheckedChanged(sender As Object, e As EventArgs) Handles chkcSurveyImportDuplicatesOverwrite.CheckedChanged
-        chkcSurveyImportDuplicatesOverwriteOnlyUsed.Enabled = chkcSurveyImportDuplicatesOverwrite.Checked
+        chkcSurveyImportDuplicatesOverwriteOnlyUsed.Enabled = chkcSurveyImportDuplicatesOverwrite.Checked AndAlso chkcSurveyImportDuplicatesOverwrite.Enabled
     End Sub
 
 End Class

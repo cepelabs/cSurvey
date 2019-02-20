@@ -86,12 +86,12 @@ Public Class frmResurveyMain
     Private Function pImageLoad(BasePath As String, Filename As String) As Image
         Dim oFl As FileInfo = New FileInfo(Filename)
         If oFl.Exists Then
-            Return New Bitmap(Filename)
+            Return modPaint.ImageExifRotate(New Bitmap(Filename))
         Else
             Dim sFilename As String = Path.Combine(BasePath, Path.GetFileName(Filename))
             oFl = New FileInfo(sFilename)
             If oFl.Exists Then
-                Return New Bitmap(sFilename)
+                Return modPaint.ImageExifRotate(New Bitmap(sFilename))
             Else
                 Return Nothing
             End If
@@ -758,7 +758,7 @@ Public Class frmResurveyMain
             If .ShowDialog = Windows.Forms.DialogResult.OK Then
                 If pGetCurrentProjection() = 0 Then
                     sPlanImage = .FileName
-                    picPlan.Image = New Bitmap(sPlanImage)
+                    picPlan.Image = modPaint.ImageExifRotate(New Bitmap(sPlanImage))
                     picPlan.AutoSize = False
                     picPlan.Size = picPlan.Image.Size
                     picPlan.SizeMode = PictureBoxSizeMode.Zoom
@@ -766,7 +766,7 @@ Public Class frmResurveyMain
                     sPlanZoom = 1
                 Else
                     sProfileImage = .FileName
-                    picProfile.Image = New Bitmap(sProfileImage)
+                    picProfile.Image = modPaint.ImageExifRotate(New Bitmap(sProfileImage))
                     picProfile.AutoSize = False
                     picProfile.Size = picProfile.Image.Size
                     picProfile.SizeMode = PictureBoxSizeMode.Zoom

@@ -334,13 +334,14 @@ Module modImport
 
             Call Survey.Properties.DataTables.Segments.Add("import_source", Data.cDataFields.TypeEnum.Text)
             Call Survey.Properties.DataTables.Segments.Add("import_date", Data.cDataFields.TypeEnum.Date)
-            Call Survey.Properties.DataTables.DesignItems.Add("import_source", Data.cDataFields.TypeEnum.Text)
-            Call Survey.Properties.DataTables.DesignItems.Add("import_date", Data.cDataFields.TypeEnum.Date)
 
             For Each oSegment As cSegment In Survey.Segments
                 Call oSegment.DataProperties.SetValue("import_source", sID)
                 Call oSegment.DataProperties.SetValue("import_date", dDate)
             Next
+
+            Call Survey.Properties.DataTables.DesignItems.Add("import_source", Data.cDataFields.TypeEnum.Text)
+            Call Survey.Properties.DataTables.DesignItems.Add("import_date", Data.cDataFields.TypeEnum.Date)
             For Each oItem As cItem In Survey.GetAllDesignItems
                 Call oItem.DataProperties.SetValue("import_source", sID)
                 Call oItem.DataProperties.SetValue("import_date", dDate)

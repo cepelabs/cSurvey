@@ -794,14 +794,14 @@ Namespace cSurvey.Design.Items
                                                 End Using
                                             Case cIItemQuota.QuotaTypeEnum.Oblique
                                                 Using oArrowPen As Pen = oPen.Clone
-                                                    Select Case iQuotaCapDecoration
-                                                        Case cIItemQuota.QuotaCapDecorationEnum.Arrow
-                                                            oArrowPen.EndCap = LineCap.Custom
-                                                            oArrowPen.CustomEndCap = New AdjustableArrowCap(5, 5, True)
-                                                        Case cIItemQuota.QuotaCapDecorationEnum.Bars
-                                                            'not supported...
-                                                            oArrowPen.EndCap = LineCap.NoAnchor
-                                                    End Select
+                                                    'Select Case iQuotaCapDecoration
+                                                    'Case cIItemQuota.QuotaCapDecorationEnum.Arrow
+                                                    oArrowPen.EndCap = LineCap.Custom
+                                                    oArrowPen.CustomEndCap = New AdjustableArrowCap(5, 5, True)
+                                                    'Case cIItemQuota.QuotaCapDecorationEnum.Bars
+                                                    'not supported...
+                                                    'oArrowPen.EndCap = LineCap.NoAnchor
+                                                    'End Select
 
                                                     Using oQuotaPath As GraphicsPath = New GraphicsPath
                                                         Dim oMiddlePoint As PointF = modPaint.GetMediumPoint(MyBase.Points(0).Point, MyBase.Points(1).Point)
@@ -1235,7 +1235,7 @@ Namespace cSurvey.Design.Items
 
             sQuotaRelativeTrigPoint = modXML.GetAttributeValue(item, "quotarelativetrigpoint", "")
 
-            If iQuotaType = cIItemQuota.QuotaTypeEnum.HorizontalScale Or iQuotaType = cIItemQuota.QuotaTypeEnum.VerticalScale Or iQuotaType = cIItemQuota.QuotaTypeEnum.GridScale Then
+            If iQuotaType = cIItemQuota.QuotaTypeEnum.HorizontalScale OrElse iQuotaType = cIItemQuota.QuotaTypeEnum.VerticalScale Or iQuotaType = cIItemQuota.QuotaTypeEnum.GridScale Then
                 'Try
                 iQuotaTickFrequency = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "quotatickfrequency", 1))
                 iQuotaTickLabelFrequency = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "quotaticklabelfrequency", 5))
@@ -1247,7 +1247,7 @@ Namespace cSurvey.Design.Items
                 'End Try
             End If
 
-            If iQuotaType = cIItemQuota.QuotaTypeEnum.Horizontal Or iQuotaType = cIItemQuota.QuotaTypeEnum.Vertical Then
+            If iQuotaType = cIItemQuota.QuotaTypeEnum.Horizontal OrElse iQuotaType = cIItemQuota.QuotaTypeEnum.Vertical OrElse iQuotaType = cIItemQuota.QuotaTypeEnum.Oblique Then
                 'Try
                 iQuotaCapDecoration = modXML.GetAttributeValue(item, "quotacapdecoration", cIItemQuota.QuotaCapDecorationEnum.Arrow)
                 sQuotaLeftRefPercent = modNumbers.StringToDecimal(modXML.GetAttributeValue(item, "quotaleftrefpercent", 100))

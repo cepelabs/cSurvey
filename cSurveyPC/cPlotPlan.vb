@@ -754,8 +754,8 @@ Namespace cSurvey.Design
 
         Private Function pGetRelativeSegmentBearing(PointCache As Dictionary(Of String, cPointCacheItem), SegmentList As IEnumerable(Of cISegment), Segment As cSegment, Station As String, PrevOrNext As Boolean) As Decimal
             If Segment.Splay Then
-                Dim oFromPoint As PointF = Segment.Data.Plan.FromPoint
-                Dim oToPoint As PointF = Segment.Data.Plan.ToPoint
+                Dim oFromPoint As PointD = Segment.Data.Plan.FromPoint
+                Dim oToPoint As PointD = Segment.Data.Plan.ToPoint
                 If Math.Abs(Segment.Data.Data.Inclination) > 89.9 Then
                     Return Segment.GetBaseBearing '<---controllare!!!!
                 Else

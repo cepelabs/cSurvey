@@ -37,14 +37,16 @@ Friend Class cItemNamePropertyControl
     End Sub
 
     Private Sub cmdItemNameRegen_Click(sender As Object, e As EventArgs) Handles cmdItemNameRegen.Click
-        Dim sPattern As String = oItem.Survey.Properties.DesignProperties.GetValue("DesignItemNamePattern", "")
-        If TypeOf oItem Is cItemItems Then
-            For Each oSubItem As cItem In DirectCast(oItem, cItemItems)
-                oSubItem.Name = modPaint.ReplaceItemTags(oItem.Survey, oSubItem, sPattern)
-            Next
-        Else
-            Call txtPropName.Focus()
-            txtPropName.Text = modPaint.ReplaceItemTags(oItem.Survey, oItem, sPattern)
+        If Not IsNothing(oItem) Then
+            Dim sPattern As String = oItem.Survey.Properties.DesignProperties.GetValue("DesignItemNamePattern", "")
+            If TypeOf oItem Is cItemItems Then
+                For Each oSubItem As cItem In DirectCast(oItem, cItemItems)
+                    oSubItem.Name = modPaint.ReplaceItemTags(oItem.Survey, oSubItem, sPattern)
+                Next
+            Else
+                Call txtPropName.Focus()
+                txtPropName.Text = modPaint.ReplaceItemTags(oItem.Survey, oItem, sPattern)
+            End If
         End If
     End Sub
 End Class

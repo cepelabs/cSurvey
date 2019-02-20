@@ -698,6 +698,14 @@ Namespace cSurvey
 
             oTempData = oCurrentData
             oOldData = oCurrentData
+
+            If oSurvey.Properties.CreatorID.ToLower = "topodroid" Then
+                If Segment.HasAttribute("g") Then oDataProperties.SetValue("distox_g", modNumbers.StringToSingle(Segment.GetAttribute("g")))
+                If Segment.HasAttribute("m") Then oDataProperties.SetValue("distox_m", modNumbers.StringToSingle(Segment.GetAttribute("m")))
+                If Segment.HasAttribute("dip") Then oDataProperties.SetValue("distox_dip", modNumbers.StringToSingle(Segment.GetAttribute("dip")))
+                If Segment.HasAttribute("distox") Then oDataProperties.SetValue("distox", Segment.GetAttribute("distox"))
+            End If
+
             bChanged = False
         End Sub
 

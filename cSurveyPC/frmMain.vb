@@ -641,10 +641,10 @@ Public Class frmMain
 
             oCurrentDesign = Nothing
             oCurrentOptions = Nothing
-            Call pSurveyRestoreCurrentWorkarea()
-            'Call pSurveyRestoreGridColor()
+
             Call pSurveyShowPlan()
             Call pSurveySetShowBinding()
+            Call pSurveyRestoreCurrentWorkarea()
 
             If Not IsNothing(oDockClipart) Then oDockClipart.SetSurvey(oSurvey)
             If Not IsNothing(oDockText) Then oDockText.SetSurvey(oSurvey)
@@ -1006,10 +1006,10 @@ Public Class frmMain
                         oCurrentDesign = Nothing
                         oCurrentOptions = Nothing
                         Dim bHavePaintInfo As Boolean
-                        Call pSurveyRestoreCurrentWorkarea(bHavePaintInfo)
-                        'Call pSurveyRestoreGridColor()
+
                         Call pSurveyShowPlan()
                         Call pSurveySetShowBinding()
+                        Call pSurveyRestoreCurrentWorkarea(bHavePaintInfo)
 
                         If Not IsNothing(oDockClipart) Then oDockClipart.SetSurvey(oSurvey)
                         If Not IsNothing(oDockText) Then oDockText.SetSurvey(oSurvey)
@@ -1860,10 +1860,10 @@ Public Class frmMain
                         Call .ClearSelection()
                         .Rows(iIndex).Selected = True
                     End If
-                    If ((iIndex < iFirstVisibleRow) Or (iIndex >= iLastVisibleRow)) And .Visible Then
+                    If ((iIndex < iFirstVisibleRow) OrElse (iIndex >= iLastVisibleRow)) AndAlso .Visible AndAlso .Rows(iIndex).Cells(0).Visible Then
                         .FirstDisplayedCell = .Rows(iIndex).Cells(0)
                     End If
-                    If Not bDisableSegmentsChangeEvent Then
+                    If Not bDisableSegmentsChangeEvent AndAlso .Rows(iIndex).Cells(iCurrentColumnIndex).Visible Then
                         .CurrentCell = .Rows(iIndex).Cells(iCurrentColumnIndex)
                     End If
                     Call oTools.SelectSegment(Segment)
@@ -2304,10 +2304,10 @@ Public Class frmMain
                         '        .Inverted = chkSegmentInverted.Checked
                         'End Select
 
-                        .Exclude = chkSegmentExclude.Checked
                         .Splay = chkSegmentSplay.Checked
                         .Cut = chkSegmentCutSplay.Checked
                         .Duplicate = chkSegmentDuplicate.Checked
+                        .Exclude = chkSegmentExclude.Checked
                         .Surface = chkSegmentSurface.Checked
                         .Calibration = chkSegmentCalibration.Checked
                         .ZSurvey = chkSegmentZSurvey.Checked
@@ -2530,7 +2530,7 @@ Public Class frmMain
         Call oMousePointer.Push(Cursors.WaitCursor)
         Dim sHash As String = ""
         Try
-            Dim oFile As Storage.cFile = New Storage.cFile(Storage.cFile.FileFormatEnum.CSX, Storage.cFile.FileOptionsEnum.DontSaveBinary)
+            Dim oFile As Storage.cFile = New Storage.cFile(Storage.cFile.FileFormatEnum.CSX, "", Storage.cFile.FileOptionsEnum.DontSaveBinary)
             Call oSurvey.SaveTo(oFile, cSurvey.cSurvey.SaveOptionsEnum.Silent)
             Using oMs As System.IO.MemoryStream = New System.IO.MemoryStream
                 Call oFile.Document.Save(oMs)
@@ -2912,10 +2912,6 @@ Public Class frmMain
         Else
             Call pSurveyNew()
         End If
-        'If Not bDoNotHash Then
-        '    sLastHash = pSurveyGetHash()
-        '    sNewHash = sLastHash
-        'End If
     End Sub
 
     Private Sub pJumplistCreate()
@@ -5031,6 +5027,7 @@ Public Class frmMain
                 Call lvSegmentInfo.EndUpdate()
 
                 With oCurrentItem
+                    cPropName.Visible = False
                     pnlPropInfo.Visible = False
                     pnlPropProp.Visible = False
                     pnlPropPosition.Visible = False
@@ -5184,6 +5181,7 @@ Public Class frmMain
                 Call lvTrigpointInfo.EndUpdate()
 
                 With oCurrentItem
+                    cPropName.Visible = False
                     pnlPropInfo.Visible = False
                     pnlPropProp.Visible = False
                     pnlPropPosition.Visible = False
@@ -5318,6 +5316,7 @@ Public Class frmMain
                 Call lvTrigpointInfo.EndUpdate()
 
                 With oCurrentItem
+                    cPropName.Visible = False
                     pnlPropInfo.Visible = False
                     pnlPropProp.Visible = False
                     pnlPropPosition.Visible = False
@@ -5812,6 +5811,7 @@ Public Class frmMain
             optPropObjectSequence.Checked = True
             cmdPropParent.Visible = True
 
+            cPropName.Visible = False
             pnlPropInfo.Visible = True
             pnlPropProp.Visible = False
             pnlPropPosition.Visible = True
@@ -6644,13 +6644,18 @@ Public Class frmMain
                     txtPropCrossSectionMarkerDH.Enabled = False
 
                     lblPropCrossSectionMarkerAlign.Enabled = True
-                    cboPropCrossSectionMarkerPlanAlign.Enabled = True
-                    cboPropCrossSectionMarkerPlanAlign.SelectedIndex = oItemPlanCrossSectionMarker.PlanAlignment
-                    cboPropCrossSectionMarkerPlanAlign.Visible = True
+                    cboPropCrossSectionMarkerAlign.Enabled = True
+                    cboPropCrossSectionMarkerAlign.SelectedIndex = oItemPlanCrossSectionMarker.PlanAlignment
+                    cboPropCrossSectionMarkerAlign.Visible = True
+
+                    lblPropCrossSectionMarkerArrowSize.Enabled = True
+                    chkPropCrossSectionMarkerArrowSizeEnabled.Checked = oItemPlanCrossSectionMarker.ArrowSizeEnabled
+                    cboPropCrossSectionMarkerArrowSize.Enabled = chkPropCrossSectionMarkerArrowSizeEnabled.Checked
+                    cboPropCrossSectionMarkerArrowSize.SelectedIndex = oItemPlanCrossSectionMarker.ArrowSize
 
                     lblPropCrossSectionMarkerDeltaAngle.Enabled = True
                     chkPropCrossSectionMarkerDeltaAngleEnabled.Checked = oItemPlanCrossSectionMarker.PlanDeltaAngleEnabled
-                    txtPropCrossSectionMarkerDeltaAngle.Enabled = chkPropCrossSectionMarkerDeltaAngleEnabled.Checked
+                    'txtPropCrossSectionMarkerDeltaAngle.Enabled = chkPropCrossSectionMarkerDeltaAngleEnabled.Checked
                     txtPropCrossSectionMarkerDeltaAngle.Value = oItemPlanCrossSectionMarker.PlanDeltaAngle
 
                     cboPropCrossSectionMarkerProfileAlign.Enabled = False
@@ -6697,12 +6702,17 @@ Public Class frmMain
                     txtPropCrossSectionMarkerDH.Value = oItemProfileCrossSectionMarker.DownHeight
 
                     lblPropCrossSectionMarkerAlign.Enabled = True
-                    cboPropCrossSectionMarkerPlanAlign.Enabled = False
-                    cboPropCrossSectionMarkerPlanAlign.Visible = False
+                    cboPropCrossSectionMarkerAlign.Enabled = False
+                    cboPropCrossSectionMarkerAlign.Visible = False
+
+                    lblPropCrossSectionMarkerArrowSize.Enabled = True
+                    chkPropCrossSectionMarkerArrowSizeEnabled.Checked = oItemProfileCrossSectionMarker.ArrowSizeEnabled
+                    cboPropCrossSectionMarkerArrowSize.Enabled = chkPropCrossSectionMarkerArrowSizeEnabled.Checked
+                    cboPropCrossSectionMarkerArrowSize.SelectedIndex = oItemProfileCrossSectionMarker.ArrowSize
 
                     lblPropCrossSectionMarkerDeltaAngle.Enabled = True
                     chkPropCrossSectionMarkerDeltaAngleEnabled.Checked = oItemProfileCrossSectionMarker.ProfileDeltaAngleEnabled
-                    txtPropCrossSectionMarkerDeltaAngle.Enabled = chkPropCrossSectionMarkerDeltaAngleEnabled.Checked
+                    'txtPropCrossSectionMarkerDeltaAngle.Enabled = chkPropCrossSectionMarkerDeltaAngleEnabled.Checked
                     txtPropCrossSectionMarkerDeltaAngle.Value = oItemProfileCrossSectionMarker.ProfileDeltaAngle
 
                     cboPropCrossSectionMarkerProfileAlign.Enabled = True
@@ -6719,7 +6729,7 @@ Public Class frmMain
                     cboPropCrossSectionMarkerLabelPosition.SelectedIndex = oItemProfileCrossSectionMarker.TextPosition
                     txtPropCrossSectionMarkerLabelDistance.Value = oItemProfileCrossSectionMarker.TextDistance
                     cboPropCrossSectionMarkerDirection.SelectedIndex = oItemProfileCrossSectionMarker.CrossSectionItem.Direction
-                    cboPropCrossSectionMarkerScale.SelectedIndex = oItemProfileCrossSectionMarker.CrossSectionItem.TextSize
+                    cboPropCrossSectionMarkerScale.SelectedIndex = oItemProfileCrossSectionMarker.TextSize
                 Else
                     pnlPropCrossSectionMarker.Visible = False
                 End If
@@ -6896,6 +6906,7 @@ Public Class frmMain
     End Sub
 
     Private Sub pPropertyNull()
+        cPropName.Visible = False
         pnlPropInfo.Visible = False
         pnlPropProp.Visible = False
         pnlPropPosition.Visible = False
@@ -10626,7 +10637,7 @@ Public Class frmMain
         Call pFloatingToolbarHide()
 
         Call pSegmentSave(ToolEventArgs.PreviousSegment)
-        Call pSegmentLoad(ToolEventArgs.Currentsegment)
+        Call pSegmentLoad(ToolEventArgs.CurrentSegment)
 
         Call oSurvey.Plan.Plot.Redraw(oCurrentOptions)
         Call oSurvey.Profile.Plot.Redraw(oCurrentOptions)
@@ -12063,7 +12074,6 @@ Public Class frmMain
     Private Sub btnShowDesignByCaveCurrent_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         oCurrentOptions.HighlightCurrentCave = True
         pGetCurrentDesignTools.SelectCave(cboMainCaveList.Text, cboMainCaveBranchList.Text)
-        'Call pMapInvalidate()
     End Sub
 
     Private Sub pSurveyRestoreCurrentWorkarea(Optional ByRef HavePaintInfo As Boolean = False, Optional ByRef HaveGridColor As Boolean = False)
@@ -13335,17 +13345,17 @@ Public Class frmMain
         Call pMapInvalidate()
     End Sub
 
-    Private Delegate Sub pSurveyHighlightCurrentCaveDelegate()
-
-    Private Sub pSurveyHighlightCurrentCave()
+    Private Delegate Sub pSurveyHighlightCurrentCaveDelegate(ForceRefresh As Boolean)
+    Private Sub pSurveyHighlightCurrentCave(ForceRefresh As Boolean)
         If InvokeRequired Then
-            Call Me.BeginInvoke(New pSurveyHighlightCurrentCaveDelegate(AddressOf pSurveyHighlightCurrentCave))
+            Call Me.BeginInvoke(New pSurveyHighlightCurrentCaveDelegate(AddressOf pSurveyHighlightCurrentCave), {ForceRefresh})
         Else
-            Call pSurveySegmentsAndTrigpointVisibility()
-            Call pSurveyLoadTreeLayers()
-            Call pSurveyRedraw()
-
-            Dim oTimer As Threading.Timer = New Threading.Timer(AddressOf pSurveyDelayedLoadTreeLayers, Nothing, 10, Threading.Timeout.Infinite)
+            If oCurrentOptions.HighlightCurrentCave OrElse ForceRefresh Then
+                Call pSurveySegmentsAndTrigpointVisibility()
+                Call pSurveyLoadTreeLayers()
+                Call pSurveyRedraw()
+                Dim oTimer As Threading.Timer = New Threading.Timer(AddressOf pSurveyDelayedLoadTreeLayers, Nothing, 10, Threading.Timeout.Infinite)
+            End If
         End If
     End Sub
 
@@ -13402,11 +13412,11 @@ Public Class frmMain
         If oCurrentOptions.HighlightCurrentCave Then
             btnDesignHighlight0.Checked = False
             btnDesignHighlight1.Checked = True
-            btnDesignHighlightSegmentsAndTrigpoints.Enabled = True
+            'btnDesignHighlightSegmentsAndTrigpoints.Enabled = True
         Else
             btnDesignHighlight0.Checked = True
             btnDesignHighlight1.Checked = False
-            btnDesignHighlightSegmentsAndTrigpoints.Enabled = False
+            'btnDesignHighlightSegmentsAndTrigpoints.Enabled = False
         End If
         btnDesignHighlightSegmentsAndTrigpoints.Checked = oCurrentOptions.HighlightSegmentsAndTrigpoints
     End Sub
@@ -14378,12 +14388,12 @@ Public Class frmMain
 
     Private Sub btnDesignHighlight0_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesignHighlight0.Click
         oCurrentOptions.HighlightCurrentCave = False
-        Call pSurveyHighlightCurrentCave()
+        Call pSurveyHighlightCurrentCave(True)
     End Sub
 
     Private Sub btnDesignHighlight1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesignHighlight1.Click
         oCurrentOptions.HighlightCurrentCave = True
-        Call pSurveyHighlightCurrentCave()
+        Call pSurveyHighlightCurrentCave(True)
     End Sub
 
     'Private Sub cboMainBindDesignType_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboMainBindDesignType.Click
@@ -14787,61 +14797,61 @@ Public Class frmMain
                     If bThUseCadastralIDinCaveNames Then iThOptions = iThOptions Or TherionExportOptionsEnum.UseCadastralIDinCaveNames
 
                     Dim sTempThInputFilename As String = IO.Path.Combine(sTempPath, Guid.NewGuid.ToString & "_input.th")
+                    If oSurvey.Properties.ThreeDModelMode = cProperties.ThreeDModelModeEnum.Simple Then
+                        Call oFiles.AddRange(modExport.TherionThExportTo(oSurvey, sTempThInputFilename, oInputdictionary, iThOptions))
+                    Else
+                        Call oFiles.AddRange(modExport.TherionThExportTo(oSurvey, sTempThInputFilename, oInputdictionary, iThOptions Or TherionExportOptionsEnum.UseSubData))
+                    End If
+                    Call oTempThInputFilename.Add(sTempThInputFilename)
+
+                    'remove elevation data export option from linked survey...
+                    iThOptions = iThOptions And Not TherionExportOptionsEnum.ExportSurfaceElevationsData
+                    For Each oLinkedSurvey As cLinkedSurvey In oSurvey.LinkedSurveys.GetSelected("loch")
+                        Dim sTempThInputLinkedFilename As String = IO.Path.Combine(sTempPath, Guid.NewGuid.ToString & "_input.th")
+
+                        Dim oLinkedSurveyTrigPointsToElaborate As List(Of String) = oLinkedSurvey.LinkedSurvey.Segments.GetTrigPointsNames.ToList
+                        Dim oLinkedSurveyInputdictionary As Dictionary(Of String, String) = Nothing
+                        Dim oLinkedSurveyOutputdictionary As Dictionary(Of String, String) = Nothing
+                        If bThTrigpointSafeName Then
+                            Call modExport.CreateStationDictionary(oLinkedSurveyTrigPointsToElaborate, oLinkedSurveyInputdictionary, oLinkedSurveyOutputdictionary)
+                        End If
+                        'use 3d mode of main survey....
                         If oSurvey.Properties.ThreeDModelMode = cProperties.ThreeDModelModeEnum.Simple Then
-                            Call oFiles.AddRange(modExport.TherionThExportTo(oSurvey, sTempThInputFilename, oInputdictionary, iThOptions))
+                            Call oFiles.AddRange(modExport.TherionThExportTo(oLinkedSurvey.LinkedSurvey, sTempThInputLinkedFilename, oLinkedSurveyInputdictionary, iThOptions))
                         Else
-                            Call oFiles.AddRange(modExport.TherionThExportTo(oSurvey, sTempThInputFilename, oInputdictionary, iThOptions Or TherionExportOptionsEnum.UseSubData))
+                            Call oFiles.AddRange(modExport.TherionThExportTo(oLinkedSurvey.LinkedSurvey, sTempThInputLinkedFilename, oLinkedSurveyInputdictionary, iThOptions Or TherionExportOptionsEnum.UseSubData))
                         End If
-                        Call oTempThInputFilename.Add(sTempThInputFilename)
+                        Call oTempThInputFilename.Add(sTempThInputLinkedFilename)
+                    Next
+                    Call modExport.TherionCreateConfig(oSurvey, sTempConfigFilename, oTempThInputFilename, "export model -fmt loch -output " & Chr(34) & sTempThOutputFilename & Chr(34))
 
-                        'remove elevation data export option from linked survey...
-                        iThOptions = iThOptions And Not TherionExportOptionsEnum.ExportSurfaceElevationsData
-                        For Each oLinkedSurvey As cLinkedSurvey In oSurvey.LinkedSurveys.GetSelected("loch")
-                            Dim sTempThInputLinkedFilename As String = IO.Path.Combine(sTempPath, Guid.NewGuid.ToString & "_input.th")
+                    iExitCode = modMain.ExecuteProcess(sThProcess, Chr(34) & sTempConfigFilename & Chr(34) & " -l " & Chr(34) & sTempThLogFilename & Chr(34), bThBackgroundProcess, AddressOf pProcessOutputHandler)
+                    If iExitCode = 0 Then
+                        Dim sLochPath As String = Path.GetDirectoryName(sThProcess)
+                        Call Shell(Path.Combine(sLochPath, "loch.exe") & " " & Chr(34) & sTempThOutputFilename & Chr(34), AppWinStyle.MaximizedFocus, True, -1)
+                    Else
+                        Dim oFi As IO.FileInfo = New IO.FileInfo(sTempThLogFilename)
+                        Dim sLines As String = ""
+                        Using oLogSR As IO.StreamReader = oFi.OpenText
+                            sLines = oLogSR.ReadToEnd()
+                            Call oLogSR.Close()
+                        End Using
 
-                            Dim oLinkedSurveyTrigPointsToElaborate As List(Of String) = oLinkedSurvey.LinkedSurvey.Segments.GetTrigPointsNames.ToList
-                            Dim oLinkedSurveyInputdictionary As Dictionary(Of String, String) = Nothing
-                            Dim oLinkedSurveyOutputdictionary As Dictionary(Of String, String) = Nothing
-                            If bThTrigpointSafeName Then
-                                Call modExport.CreateStationDictionary(oLinkedSurveyTrigPointsToElaborate, oLinkedSurveyInputdictionary, oLinkedSurveyOutputdictionary)
+                        For Each sLine As String In Strings.Split(sLines, vbCrLf)
+                            If sLine Like "* error -- *" Then
+                                Dim sErrorMessage As String = sLine.Substring(sLine.IndexOf(" error -- ") + 10)
+                                sErrorMessage = sErrorMessage.Replace(sTempThInputFilename, "").Trim
+                                'todo: error use dictionaries for station...have to be translated...
+                                Call pPopupShow("error", sErrorMessage)
                             End If
-                            'use 3d mode of main survey....
-                            If oSurvey.Properties.ThreeDModelMode = cProperties.ThreeDModelModeEnum.Simple Then
-                                Call oFiles.AddRange(modExport.TherionThExportTo(oLinkedSurvey.LinkedSurvey, sTempThInputLinkedFilename, oLinkedSurveyInputdictionary, iThOptions))
-                            Else
-                                Call oFiles.AddRange(modExport.TherionThExportTo(oLinkedSurvey.LinkedSurvey, sTempThInputLinkedFilename, oLinkedSurveyInputdictionary, iThOptions Or TherionExportOptionsEnum.UseSubData))
-                            End If
-                            Call oTempThInputFilename.Add(sTempThInputLinkedFilename)
                         Next
-                        Call modExport.TherionCreateConfig(oSurvey, sTempConfigFilename, oTempThInputFilename, "export model -fmt loch -output " & Chr(34) & sTempThOutputFilename & Chr(34))
+                    End If
 
-                        iExitCode = modMain.ExecuteProcess(sThProcess, Chr(34) & sTempConfigFilename & Chr(34) & " -l " & Chr(34) & sTempThLogFilename & Chr(34), bThBackgroundProcess, AddressOf pProcessOutputHandler)
-                        If iExitCode = 0 Then
-                            Dim sLochPath As String = Path.GetDirectoryName(sThProcess)
-                            Call Shell(Path.Combine(sLochPath, "loch.exe") & " " & Chr(34) & sTempThOutputFilename & Chr(34), AppWinStyle.MaximizedFocus, True, -1)
-                        Else
-                            Dim oFi As IO.FileInfo = New IO.FileInfo(sTempThLogFilename)
-                            Dim sLines As String = ""
-                            Using oLogSR As IO.StreamReader = oFi.OpenText
-                                sLines = oLogSR.ReadToEnd()
-                                Call oLogSR.Close()
-                            End Using
-
-                            For Each sLine As String In Strings.Split(sLines, vbCrLf)
-                                If sLine Like "* error -- *" Then
-                                    Dim sErrorMessage As String = sLine.Substring(sLine.IndexOf(" error -- ") + 10)
-                                    sErrorMessage = sErrorMessage.Replace(sTempThInputFilename, "").Trim
-                                    'todo: error use dictionaries for station...have to be translated...
-                                    Call pPopupShow("error", sErrorMessage)
-                                End If
-                            Next
-                        End If
-
-                        If bThDeleteTempFile Then
-                            Call DeleteFiles(oFiles)
-                        End If
+                    If bThDeleteTempFile Then
+                        Call DeleteFiles(oFiles)
                     End If
                 End If
+            End If
             Call oMousePointer.Pop()
             Call pStatusSet("")
         End If
@@ -16583,9 +16593,10 @@ Public Class frmMain
                     Call frmIS.lvCheck.Items.Add(modMain.GetLocalizedString("main.textpart107b"), "error")
                 End If
             End If
+            frmIS.chkcSurveyImportGraphics.Enabled = Not bHasErrors
+            frmIS.chkcSurveyImportData.Enabled = Not bHasErrors
             frmIS.chkcSurveyImportSurface.Enabled = Not oImportSurvey.Surface.IsEmpty
-
-            frmIS.cmdOk.Enabled = Not bHasErrors
+            'frmIS.cmdOk.Enabled = Not bHasErrors
 
             If frmIS.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 If frmIS.chkcSurveyImportData.Checked OrElse frmIS.chkcSurveyImportGraphics.Checked OrElse frmIS.chkcSurveyImportSurface.Checked OrElse frmIS.chkcSurveyImportDesignProperties.Checked OrElse frmIS.chkcSurveyImportScaleRules.Checked Then
@@ -16685,7 +16696,7 @@ Public Class frmMain
                                 End If
                             Next
 
-                            'fix this code like above (import caveinfo)
+                            'fix this code like above (import caveinfo) or not? same date...same description...is the same session
                             Dim oSessions As cSessions = oImportSurvey.Properties.Sessions
                             For Each oSession As cSession In oSessions
                                 Dim oNewSession As cSession
@@ -16694,6 +16705,7 @@ Public Class frmMain
                                 Else
                                     oNewSession = oSurvey.Properties.Sessions.Add(oSession.Date, oSession.Description)
                                 End If
+                                'the only problem is that this will override session in this survey with the same in the imported survey
                                 Call oNewSession.CopyFrom(oSession)
                             Next
 
@@ -16905,7 +16917,7 @@ Public Class frmMain
 
                                 Dim iDesign As Integer = oImportItem.Design.Type
                                 Dim iLayer As Integer = oImportItem.Layer.Type
-                                Dim oFile As Storage.cFile = New Storage.cFile(Storage.cFile.FileFormatEnum.CSX, Storage.cFile.FileOptionsEnum.EmbedResource)
+                                Dim oFile As Storage.cFile = New Storage.cFile(Storage.cFile.FileFormatEnum.CSX, "", Storage.cFile.FileOptionsEnum.EmbedResource)
                                 Dim oXML As XmlDocument = oFile.Document
                                 Dim oXMLParent As XmlElement = oXML.CreateElement("parent")
                                 Call oImportItem.SaveTo(oFile, oXML, oXMLParent, cSurvey.cSurvey.SaveOptionsEnum.Silent)
@@ -16950,7 +16962,7 @@ Public Class frmMain
 
                                 Dim iDesign As Integer = oImportItemWithLinks.Design.Type
                                 Dim iLayer As Integer = oImportItemWithLinks.Layer.Type
-                                Dim oFile As Storage.cFile = New Storage.cFile(Storage.cFile.FileFormatEnum.CSX, Storage.cFile.FileOptionsEnum.EmbedResource)
+                                Dim oFile As Storage.cFile = New Storage.cFile(Storage.cFile.FileFormatEnum.CSX, "", Storage.cFile.FileOptionsEnum.EmbedResource)
                                 Dim oXML As XmlDocument = oFile.Document
                                 Dim oXMLParent As XmlElement = oXML.CreateElement("parent")
                                 Call oImportItemWithLinks.SaveTo(oFile, oXML, oXMLParent, cSurvey.cSurvey.SaveOptionsEnum.Silent)
@@ -16980,7 +16992,7 @@ Public Class frmMain
                                         Call oItem.SetBindDesignType(cItem.BindDesignTypeEnum.CrossSections)
                                     Else
                                         Dim oCrosssection As cDesignCrossSection = oSurvey.CrossSections(oCrossSectionsIndex(oImportItemWithLinks.CrossSection))
-                                        Call oItem.SetBindDesignType(cItem.BindDesignTypeEnum.CrossSections, oCrosssection)
+                                        Call oItem.SetBindDesignType(cItem.BindDesignTypeEnum.CrossSections, oCrosssection, True)
                                     End If
                                 End If
                                 Call oImportedItemsIndex.Add(oImportItemWithLinks, oItem)
@@ -17005,7 +17017,7 @@ Public Class frmMain
 
                                 Dim iDesign As Integer = oImportItemsLegend.Design.Type
                                 Dim iLayer As Integer = oImportItemsLegend.Layer.Type
-                                Dim oFile As Storage.cFile = New Storage.cFile(Storage.cFile.FileFormatEnum.CSX, Storage.cFile.FileOptionsEnum.EmbedResource)
+                                Dim oFile As Storage.cFile = New Storage.cFile(Storage.cFile.FileFormatEnum.CSX, "", Storage.cFile.FileOptionsEnum.EmbedResource)
                                 Dim oXML As XmlDocument = oFile.Document
                                 Dim oXMLParent As XmlElement = oXML.CreateElement("parent")
                                 Call oImportItemsLegend.SaveTo(oFile, oXML, oXMLParent, cSurvey.cSurvey.SaveOptionsEnum.Silent)
@@ -17039,10 +17051,14 @@ Public Class frmMain
                                 Dim oNewCrossSection As cDesignCrossSection = oSurvey.CrossSections(sNewCrossSectionID)
                                 Dim oOldCrossSection As cDesignCrossSection = oImportSurvey.CrossSections(sOldCrossSectionID)
                                 If oNewCrossSection.Design.Type = cIDesign.cDesignTypeEnum.Plan Then
-                                    Call oNewCrossSection.WarpItemsEx(New Calculate.Plot.cData.cPlanWarpingFactor(oOldCrossSection, oNewCrossSection), True)
+                                    Dim oPlanWarpingFactor As Calculate.Plot.cData.cPlanWarpingFactor = New Calculate.Plot.cData.cPlanWarpingFactor(oOldCrossSection, oNewCrossSection)
+                                    Call oPlanWarpingFactor.Translate(New SizeF(-oPlanTraslation.Width, -oPlanTraslation.Height))
+                                    Call oNewCrossSection.WarpItemsEx(oPlanWarpingFactor, True)
                                 End If
                                 If oNewCrossSection.Design.Type = cIDesign.cDesignTypeEnum.Profile Then
-                                    Call oNewCrossSection.WarpItemsEx(New Calculate.Plot.cData.cProfileWarpingFactor(oOldCrossSection, oNewCrossSection), True)
+                                    Dim oProfileWarpingFactor As Calculate.Plot.cData.cProfileWarpingFactor = New Calculate.Plot.cData.cProfileWarpingFactor(oOldCrossSection, oNewCrossSection)
+                                    Call oProfileWarpingFactor.Translate(New SizeF(-oProfileTraslation.Width, -oProfileTraslation.Height))
+                                    Call oNewCrossSection.WarpItemsEx(oProfileWarpingFactor, True)
                                 End If
                             Next
 
@@ -18533,32 +18549,32 @@ Public Class frmMain
 
     Private Sub mnuDesignHighlightMode0_Click(sender As System.Object, e As System.EventArgs) Handles mnuDesignHighlightMode0.Click
         oCurrentOptions.HighlightMode = cOptions.HighlightModeEnum.Default
-        Call pSurveyHighlightCurrentCave()
+        Call pSurveyHighlightCurrentCave(False)
     End Sub
 
     Private Sub mnuDesignHighlightMode1_Click(sender As System.Object, e As System.EventArgs) Handles mnuDesignHighlightMode1.Click
         oCurrentOptions.HighlightMode = cOptions.HighlightModeEnum.Hierarchic
-        Call pSurveyHighlightCurrentCave()
+        Call pSurveyHighlightCurrentCave(False)
     End Sub
 
     Private Sub mnuDesignHighlightMode2_Click(sender As System.Object, e As System.EventArgs) Handles mnuDesignHighlightMode2.Click
         oCurrentOptions.HighlightMode = cOptions.HighlightModeEnum.ExactMatch
-        Call pSurveyHighlightCurrentCave()
+        Call pSurveyHighlightCurrentCave(False)
     End Sub
 
     Private Sub btnDesignHighlightMode0_Click(sender As System.Object, e As System.EventArgs) Handles btnDesignHighlightMode0.Click
         oCurrentOptions.HighlightMode = cOptions.HighlightModeEnum.Default
-        Call pSurveyHighlightCurrentCave()
+        Call pSurveyHighlightCurrentCave(False)
     End Sub
 
     Private Sub btnDesignHighlightMode1_Click(sender As System.Object, e As System.EventArgs) Handles btnDesignHighlightMode1.Click
         oCurrentOptions.HighlightMode = cOptions.HighlightModeEnum.Hierarchic
-        Call pSurveyHighlightCurrentCave()
+        Call pSurveyHighlightCurrentCave(False)
     End Sub
 
     Private Sub btnDesignHighlightMode2_Click(sender As System.Object, e As System.EventArgs) Handles btnDesignHighlightMode2.Click
         oCurrentOptions.HighlightMode = cOptions.HighlightModeEnum.ExactMatch
-        Call pSurveyHighlightCurrentCave()
+        Call pSurveyHighlightCurrentCave(False)
     End Sub
 
     Private Sub mnuFileAutoSettings_Click(sender As System.Object, e As System.EventArgs) Handles mnuFileAutoSettings.Click
@@ -22362,7 +22378,7 @@ Public Class frmMain
 
     Private Sub btnDesignHighlightSegmentsAndTrigpoints_Click(sender As Object, e As EventArgs) Handles btnDesignHighlightSegmentsAndTrigpoints.Click
         oCurrentOptions.HighlightSegmentsAndTrigpoints = Not oCurrentOptions.HighlightSegmentsAndTrigpoints
-        Call pSurveyHighlightCurrentCave()
+        Call pSurveyHighlightCurrentCave(False)
     End Sub
 
     Private Sub btnDesignRings_Click(sender As Object, e As EventArgs) Handles btnDesignRings.Click
@@ -22504,12 +22520,42 @@ Public Class frmMain
         End Try
     End Sub
 
-    Private Sub cboPropCrossSectionMarkerPlanAlign_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropCrossSectionMarkerPlanAlign.SelectedIndexChanged
+    Private Sub chkPropCrossSectionMarkerArrowScaleEnabled_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropCrossSectionMarkerArrowSizeEnabled.CheckedChanged
+        Try
+            If Not bDisabledObjectPropertyEvent Then
+                With pGetCurrentDesignTools()
+                    Dim oItem As cIItemCrossSectionMarker = .CurrentItem
+                    oItem.ArrowSizeEnabled = chkPropCrossSectionMarkerArrowSizeEnabled.Checked
+                    Call .TakeUndoSnapshot()
+                End With
+                Call pObjectPropertyLoad()
+                Call pMapInvalidate()
+            End If
+        Catch
+        End Try
+    End Sub
+
+    Private Sub cboPropCrossSectionMarkerArrowScale_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropCrossSectionMarkerArrowSize.SelectedIndexChanged
+        Try
+            If Not bDisabledObjectPropertyEvent Then
+                With pGetCurrentDesignTools()
+                    Dim oItem As cIItemCrossSectionMarker = .CurrentItem
+                    oItem.ArrowSize = cboPropCrossSectionMarkerArrowSize.SelectedIndex
+                    Call .TakeUndoSnapshot()
+                End With
+                Call pObjectPropertyLoad()
+                Call pMapInvalidate()
+            End If
+        Catch
+        End Try
+    End Sub
+
+    Private Sub cboPropCrossSectionMarkerAlign_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropCrossSectionMarkerAlign.SelectedIndexChanged
         Try
             If Not bDisabledObjectPropertyEvent Then
                 With pGetCurrentDesignTools()
                     Dim oItem As cIItemPlanCrossSectionMarker = .CurrentItem
-                    oItem.PlanAlignment = cboPropCrossSectionMarkerPlanAlign.SelectedIndex
+                    oItem.PlanAlignment = cboPropCrossSectionMarkerAlign.SelectedIndex
                     Call .TakeUndoSnapshot()
                 End With
                 Call pObjectPropertyLoad()
@@ -23006,7 +23052,13 @@ Public Class frmMain
     End Sub
 
     Private Sub oPlanTools_OnCaveBranchSelect(Sender As Object, ToolEventArgs As cEditDesignTools.cCaveBranchSelectEventArgs) Handles oPlanTools.OnCaveBranchSelect
-        Call pSurveyHighlightCurrentCave()
+        If cboMainCaveList.Text <> oPlanTools.CurrentCave Then
+            cboMainCaveList.SelectedItem = oSurvey.Properties.GetCaveInfo(oPlanTools.CurrentCave, "")
+        End If
+        If cboMainCaveBranchList.Text <> oPlanTools.CurrentBranch Then
+            cboMainCaveBranchList.SelectedItem = oSurvey.Properties.GetCaveInfo(oPlanTools.CurrentCave, oPlanTools.CurrentBranch)
+        End If
+        Call pSurveyHighlightCurrentCave(False)
         Call pSurveyFillCrossSectionsList(oPlanTools.CurrentCave, oPlanTools.CurrentBranch, cboMainBindDesignType.ComboBox, cboMainBindCrossSections.ComboBox)
         Call pSurveyRestoreCaveBranchLockstate(oPlanTools.CurrentCave, oPlanTools.CurrentBranch)
     End Sub
@@ -23024,7 +23076,7 @@ Public Class frmMain
     End Sub
 
     Private Sub oProfileTools_OnCaveBranchSelect(Sender As Object, ToolEventArgs As cEditDesignTools.cCaveBranchSelectEventArgs) Handles oProfileTools.OnCaveBranchSelect
-        Call pSurveyHighlightCurrentCave()
+        Call pSurveyHighlightCurrentCave(False)
         Call pSurveyFillCrossSectionsList(oProfileTools.CurrentCave, oProfileTools.CurrentBranch, cboMainBindDesignType.ComboBox, cboMainBindCrossSections.ComboBox)
         Call pSurveyRestoreCaveBranchLockstate(oProfileTools.CurrentCave, oProfileTools.CurrentBranch)
     End Sub
@@ -23835,7 +23887,6 @@ Public Class frmMain
         Try
             If Not bDisabledObjectPropertyEvent Then
                 With pGetCurrentDesignTools()
-
                     If TypeOf .CurrentItem Is cIItemPlanCrossSectionMarker Then
                         Dim oItem As cIItemPlanCrossSectionMarker = .CurrentItem
                         oItem.PlanDeltaAngleEnabled = chkPropCrossSectionMarkerDeltaAngleEnabled.Checked

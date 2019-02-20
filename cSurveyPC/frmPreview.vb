@@ -1245,7 +1245,7 @@ Public Class frmPreview
             If Not bEnabled Then
                 If cboScale.SelectedIndex > 0 Then
                     Dim sFactor As String = cboScale.Text
-                    txtScaleManual.Value = sFactor.Substring(sFactor.IndexOf(":") + 1)
+                    txtScaleManual.Value = Integer.Parse(sFactor.Substring(sFactor.IndexOf(":") + 1))
                 End If
             End If
             Call pRefresh()
@@ -2513,7 +2513,6 @@ Public Class frmPreview
             Dim iScale As Integer = 250
             If Not oCurrentOptions Is Nothing Then
                 Using oGr As Graphics = picMap.CreateGraphics
-                    'oGr.PageUnit = GraphicsUnit.Pixel
                     iScale = modPaint.GetScaleFactor(oGr, sPaintZoom)
                     oCurrentOptions.CurrentScale = iScale
                 End Using

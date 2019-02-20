@@ -40,6 +40,12 @@ Namespace cSurvey.Calculate.Plot
             Private oOldLocation As PointF
             Private oNewLocation As PointF
 
+            Public Sub Translate(Size As SizeF)
+                sDeltaX += Size.Width
+                sDeltaY += Size.Height
+                oNewLocation += Size
+            End Sub
+
             Friend Function GetMatrix(OldPlanWarpingFactor As cPlanWarpingFactor) As Drawing2D.Matrix
                 Dim oMatrix As Drawing2D.Matrix = New Drawing2D.Matrix
                 Call oMatrix.Translate(-OldPlanWarpingFactor.OldLocation.X, -OldPlanWarpingFactor.OldLocation.Y, Drawing2D.MatrixOrder.Append)
@@ -176,6 +182,12 @@ Namespace cSurvey.Calculate.Plot
             Private sNewAngle As Single
             Private oOldLocation As PointF
             Private oNewLocation As PointF
+
+            Public Sub Translate(Size As SizeF)
+                sDeltaX += Size.Width
+                sDeltaY += Size.Height
+                oNewLocation += Size
+            End Sub
 
             Public ReadOnly Property DeltaSize As Single Implements cIWarpingFactor.DeltaSize
                 Get
@@ -529,7 +541,7 @@ Namespace cSurvey.Calculate.Plot
                         sFromUp = oSubData.Profile.FromUp
                     End If
                     If oSubData.Profile.FromDown > sAvgDown Then
-                        sFromDown = sAvgRight
+                        sFromDown = sAvgDown
                     Else
                         sFromDown = oSubData.Profile.FromDown
                     End If

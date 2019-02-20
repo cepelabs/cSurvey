@@ -2910,7 +2910,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABU
-        YAAAAk1TRnQBSQFMAgEBFQEAAWQBSwFkAUsBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        YAAAAk1TRnQBSQFMAgEBFQEAAcQBSwHEAUsBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABYAMAAQEBAAEYBgABSCEAA/IJ7gP0rgAD7gGiAZoBjwGXAYoBfwGXAYoBfwGXAYoBfwGrAaUBnQPu
         qAAD8gGXAYoBfwGuAaUBnQHIAcEBuwHGAb8BuQHGAb4BuAGtAaMBmgGXAYoBfwPypQABwwG9AbgBlwGK
         AX8BtgGsAaQJAAHEAbwBtQGtAaMBmgGjAZoBkKUAAcEBuQGzAZcBigF/AwAJ7gMAAcUBwAG4AZcBigF/
@@ -6928,7 +6928,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACC
-        DQAAAk1TRnQBSQFMAgEBBgEAAXABMQFwATEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAdABMQHQATEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -10136,7 +10136,7 @@
     <value>14</value>
   </data>
   <data name="tblDesignProp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>351, 771</value>
+    <value>351, 783</value>
   </data>
   <data name="tblDesignProp.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
@@ -21192,7 +21192,7 @@
     <value>Right</value>
   </data>
   <data name="txtPropCrossSectionSplayProjectionVerticalAngle.ToolTip" xml:space="preserve">
-    <value>Vertical projection angle delta for the splay</value>
+    <value>Vertical projection angle Δ for the splay</value>
   </data>
   <data name="&gt;&gt;txtPropCrossSectionSplayProjectionVerticalAngle.Name" xml:space="preserve">
     <value>txtPropCrossSectionSplayProjectionVerticalAngle</value>
@@ -21491,7 +21491,7 @@
     <value>Right</value>
   </data>
   <data name="txtPropCrossSectionSplayProjectionAngle.ToolTip" xml:space="preserve">
-    <value>Shot's bearing projection angle delta for the splay</value>
+    <value>Shot's bearing projection angle Δ for the splay</value>
   </data>
   <data name="&gt;&gt;txtPropCrossSectionSplayProjectionAngle.Name" xml:space="preserve">
     <value>txtPropCrossSectionSplayProjectionAngle</value>
@@ -22309,6 +22309,117 @@
   <data name="&gt;&gt;pnlPropTrigpointInfo.ZOrder" xml:space="preserve">
     <value>32</value>
   </data>
+  <data name="chkPropCrossSectionMarkerArrowSizeEnabled.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerArrowSizeEnabled.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerArrowSizeEnabled.Location" type="System.Drawing.Point, System.Drawing">
+    <value>205, 264</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerArrowSizeEnabled.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 14</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerArrowSizeEnabled.TabIndex" type="System.Int32, mscorlib">
+    <value>203</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerArrowSizeEnabled.ToolTip" xml:space="preserve">
+    <value>Free arrow scale</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerArrowSizeEnabled.Name" xml:space="preserve">
+    <value>chkPropCrossSectionMarkerArrowSizeEnabled</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerArrowSizeEnabled.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerArrowSizeEnabled.Parent" xml:space="preserve">
+    <value>pnlPropCrossSectionMarker</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerArrowSizeEnabled.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Items" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Items1" xml:space="preserve">
+    <value>XS</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Items2" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Items3" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Items4" xml:space="preserve">
+    <value>L</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Items5" xml:space="preserve">
+    <value>XL</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>223, 262</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 21</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.TabIndex" type="System.Int32, mscorlib">
+    <value>202</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.ToolTip" xml:space="preserve">
+    <value>Arrow scale</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerArrowSize.Name" xml:space="preserve">
+    <value>cboPropCrossSectionMarkerArrowSize</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerArrowSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerArrowSize.Parent" xml:space="preserve">
+    <value>pnlPropCrossSectionMarker</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerArrowSize.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerArrowSize.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerArrowSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerArrowSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>159, 265</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerArrowSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerArrowSize.TabIndex" type="System.Int32, mscorlib">
+    <value>201</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerArrowSize.Text" xml:space="preserve">
+    <value>Scale:</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerArrowSize.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerArrowSize.ToolTip" xml:space="preserve">
+    <value>Free arrow scale</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerArrowSize.Name" xml:space="preserve">
+    <value>lblPropCrossSectionMarkerArrowSize</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerArrowSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerArrowSize.Parent" xml:space="preserve">
+    <value>pnlPropCrossSectionMarker</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerArrowSize.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="chkPropCrossSectionMarkerDeltaAngleEnabled.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -22324,6 +22435,9 @@
   <data name="chkPropCrossSectionMarkerDeltaAngleEnabled.TabIndex" type="System.Int32, mscorlib">
     <value>200</value>
   </data>
+  <data name="chkPropCrossSectionMarkerDeltaAngleEnabled.ToolTip" xml:space="preserve">
+    <value>Free Δ angle</value>
+  </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerDeltaAngleEnabled.Name" xml:space="preserve">
     <value>chkPropCrossSectionMarkerDeltaAngleEnabled</value>
   </data>
@@ -22334,7 +22448,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerDeltaAngleEnabled.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="chkPropCrossSectionMarkerScaleEnabled.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -22348,6 +22462,9 @@
   <data name="chkPropCrossSectionMarkerScaleEnabled.TabIndex" type="System.Int32, mscorlib">
     <value>199</value>
   </data>
+  <data name="chkPropCrossSectionMarkerScaleEnabled.ToolTip" xml:space="preserve">
+    <value>Free size of the symbol</value>
+  </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerScaleEnabled.Name" xml:space="preserve">
     <value>chkPropCrossSectionMarkerScaleEnabled</value>
   </data>
@@ -22358,7 +22475,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerScaleEnabled.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="chkPropCrossSectionMarkerUH.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -22388,7 +22505,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerUH.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="chkPropCrossSectionMarkerDH.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -22418,7 +22535,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerDH.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="chkPropCrossSectionMarkerLW.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -22448,7 +22565,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerLW.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="chkPropCrossSectionMarkerRW.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -22475,7 +22592,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerRW.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="lblPropCrossSectionMarkerUH.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -22508,7 +22625,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerUH.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="lblPropCrossSectionMarkerDH.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -22541,7 +22658,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerDH.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="txtPropCrossSectionMarkerDH.Location" type="System.Drawing.Point, System.Drawing">
     <value>116, 228</value>
@@ -22568,7 +22685,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;txtPropCrossSectionMarkerDH.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>11</value>
   </data>
   <data name="lblPropCrossSectionMarkerDHUM.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -22601,7 +22718,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerDHUM.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="lblPropCrossSectionMarkerLW.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -22634,7 +22751,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerLW.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="lblPropCrossSectionMarkerRWUM.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -22667,7 +22784,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerRWUM.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>14</value>
   </data>
   <data name="lblPropCrossSectionMarkerRW.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -22700,7 +22817,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerRW.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>15</value>
   </data>
   <data name="txtPropCrossSectionMarkerLW.Location" type="System.Drawing.Point, System.Drawing">
     <value>73, 172</value>
@@ -22727,7 +22844,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;txtPropCrossSectionMarkerLW.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>16</value>
   </data>
   <data name="txtPropCrossSectionMarkerRW.Location" type="System.Drawing.Point, System.Drawing">
     <value>200, 172</value>
@@ -22754,7 +22871,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;txtPropCrossSectionMarkerRW.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>17</value>
   </data>
   <data name="lblPropCrossSectionMarkerLWUM.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -22787,7 +22904,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerLWUM.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>18</value>
   </data>
   <data name="txtPropCrossSectionMarkerUH.Location" type="System.Drawing.Point, System.Drawing">
     <value>115, 117</value>
@@ -22814,7 +22931,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;txtPropCrossSectionMarkerUH.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>19</value>
   </data>
   <data name="lblPropCrossSectionMarkerUHUM.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -22847,7 +22964,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerUHUM.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>20</value>
   </data>
   <data name="lblPropCrossSectionMarkerL.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -22880,7 +22997,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerL.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>21</value>
   </data>
   <data name="cboPropCrossSectionMarkerLabelRotation.Items" xml:space="preserve">
     <value>Rotated</value>
@@ -22910,7 +23027,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;cboPropCrossSectionMarkerLabelRotation.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>22</value>
   </data>
   <data name="Label15.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -22943,7 +23060,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;Label15.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>23</value>
   </data>
   <data name="chkPropCrossSectionMarkerLabel.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -22973,7 +23090,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerLabel.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>24</value>
   </data>
   <data name="cboPropCrossSectionMarkerScale.Items" xml:space="preserve">
     <value>Default</value>
@@ -23015,7 +23132,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;cboPropCrossSectionMarkerScale.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>25</value>
   </data>
   <data name="cboPropCrossSectionMarkerDirection.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -23048,7 +23165,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;cboPropCrossSectionMarkerDirection.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>26</value>
   </data>
   <data name="lblPropCrossSectionMarkerScale.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -23081,7 +23198,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerScale.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>27</value>
   </data>
   <data name="lblPropCrossSectionMarkerDirection.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -23114,7 +23231,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerDirection.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>28</value>
   </data>
   <data name="txtPropCrossSectionMarkerLabelDistance.Location" type="System.Drawing.Point, System.Drawing">
     <value>78, 369</value>
@@ -23141,7 +23258,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;txtPropCrossSectionMarkerLabelDistance.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>29</value>
   </data>
   <data name="cmdPropCrossSectionItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -23185,7 +23302,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;cmdPropCrossSectionItem.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>30</value>
   </data>
   <data name="lblPropCrossSectionMarkerLabelDistance.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -23221,7 +23338,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerLabelDistance.ZOrder" xml:space="preserve">
-    <value>28</value>
+    <value>31</value>
   </data>
   <data name="cmdPropCrossSectionMarkerUDFromDesign.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -23264,7 +23381,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;cmdPropCrossSectionMarkerUDFromDesign.ZOrder" xml:space="preserve">
-    <value>29</value>
+    <value>32</value>
   </data>
   <data name="cboPropCrossSectionMarkerLabelPosition.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -23300,7 +23417,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;cboPropCrossSectionMarkerLabelPosition.ZOrder" xml:space="preserve">
-    <value>30</value>
+    <value>33</value>
   </data>
   <data name="lblPropCrossSectionMarkerLabelPosition.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -23333,7 +23450,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerLabelPosition.ZOrder" xml:space="preserve">
-    <value>31</value>
+    <value>34</value>
   </data>
   <data name="cmdPropCrossSectionMarkerLRFromDesign.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -23373,7 +23490,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;cmdPropCrossSectionMarkerLRFromDesign.ZOrder" xml:space="preserve">
-    <value>32</value>
+    <value>35</value>
   </data>
   <data name="lbltxtPropCrossSectionMarkerRUM.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -23406,7 +23523,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;lbltxtPropCrossSectionMarkerRUM.ZOrder" xml:space="preserve">
-    <value>33</value>
+    <value>36</value>
   </data>
   <data name="txtPropCrossSectionMarkerDeltaAngle.Location" type="System.Drawing.Point, System.Drawing">
     <value>96, 289</value>
@@ -23421,7 +23538,7 @@
     <value>Right</value>
   </data>
   <data name="txtPropCrossSectionMarkerDeltaAngle.ToolTip" xml:space="preserve">
-    <value>In the plan the delta between the direction of the marker and the shot linked to the cross-section, in profile the delta between the direction of the marker and the vertical.</value>
+    <value>Δ angle</value>
   </data>
   <data name="&gt;&gt;txtPropCrossSectionMarkerDeltaAngle.Name" xml:space="preserve">
     <value>txtPropCrossSectionMarkerDeltaAngle</value>
@@ -23433,7 +23550,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;txtPropCrossSectionMarkerDeltaAngle.ZOrder" xml:space="preserve">
-    <value>34</value>
+    <value>37</value>
   </data>
   <data name="txtPropCrossSectionMarkerPosition.Location" type="System.Drawing.Point, System.Drawing">
     <value>78, 61</value>
@@ -23457,7 +23574,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;txtPropCrossSectionMarkerPosition.ZOrder" xml:space="preserve">
-    <value>35</value>
+    <value>38</value>
   </data>
   <data name="lblPropCrossSectionMarkerDeltaAngle.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -23480,6 +23597,9 @@
   <data name="lblPropCrossSectionMarkerDeltaAngle.Text" xml:space="preserve">
     <value>Δ angle:</value>
   </data>
+  <data name="lblPropCrossSectionMarkerDeltaAngle.ToolTip" xml:space="preserve">
+    <value>Δ angle</value>
+  </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerDeltaAngle.Name" xml:space="preserve">
     <value>lblPropCrossSectionMarkerDeltaAngle</value>
   </data>
@@ -23490,7 +23610,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerDeltaAngle.ZOrder" xml:space="preserve">
-    <value>36</value>
+    <value>39</value>
   </data>
   <data name="lblPropCrossSectionMarkerD.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -23523,7 +23643,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerD.ZOrder" xml:space="preserve">
-    <value>37</value>
+    <value>40</value>
   </data>
   <data name="Label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -23559,7 +23679,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;Label11.ZOrder" xml:space="preserve">
-    <value>38</value>
+    <value>41</value>
   </data>
   <data name="lblPropCrossSectionMarkerR.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -23592,7 +23712,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerR.ZOrder" xml:space="preserve">
-    <value>39</value>
+    <value>42</value>
   </data>
   <data name="Label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -23625,7 +23745,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;Label12.ZOrder" xml:space="preserve">
-    <value>40</value>
+    <value>43</value>
   </data>
   <data name="Label13.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -23658,7 +23778,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;Label13.ZOrder" xml:space="preserve">
-    <value>41</value>
+    <value>44</value>
   </data>
   <data name="lblPropCrossSectionMarkerU.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -23691,7 +23811,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerU.ZOrder" xml:space="preserve">
-    <value>42</value>
+    <value>45</value>
   </data>
   <data name="txtPropCrossSectionMarkerU.Location" type="System.Drawing.Point, System.Drawing">
     <value>96, 91</value>
@@ -23715,7 +23835,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;txtPropCrossSectionMarkerU.ZOrder" xml:space="preserve">
-    <value>43</value>
+    <value>46</value>
   </data>
   <data name="txtPropCrossSectionMarkerL.Location" type="System.Drawing.Point, System.Drawing">
     <value>53, 144</value>
@@ -23739,7 +23859,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;txtPropCrossSectionMarkerL.ZOrder" xml:space="preserve">
-    <value>44</value>
+    <value>47</value>
   </data>
   <data name="lblPropCrossSectionMarkerAlign.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -23772,7 +23892,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerAlign.ZOrder" xml:space="preserve">
-    <value>45</value>
+    <value>48</value>
   </data>
   <data name="txtPropCrossSectionMarkerR.Location" type="System.Drawing.Point, System.Drawing">
     <value>180, 144</value>
@@ -23796,37 +23916,37 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;txtPropCrossSectionMarkerR.ZOrder" xml:space="preserve">
-    <value>46</value>
+    <value>49</value>
   </data>
-  <data name="cboPropCrossSectionMarkerPlanAlign.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="cboPropCrossSectionMarkerAlign.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
-  <data name="cboPropCrossSectionMarkerPlanAlign.Items" xml:space="preserve">
+  <data name="cboPropCrossSectionMarkerAlign.Items" xml:space="preserve">
     <value>Left</value>
   </data>
-  <data name="cboPropCrossSectionMarkerPlanAlign.Items1" xml:space="preserve">
+  <data name="cboPropCrossSectionMarkerAlign.Items1" xml:space="preserve">
     <value>Right</value>
   </data>
-  <data name="cboPropCrossSectionMarkerPlanAlign.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="cboPropCrossSectionMarkerAlign.Location" type="System.Drawing.Point, System.Drawing">
     <value>78, 262</value>
   </data>
-  <data name="cboPropCrossSectionMarkerPlanAlign.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="cboPropCrossSectionMarkerAlign.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 21</value>
   </data>
-  <data name="cboPropCrossSectionMarkerPlanAlign.TabIndex" type="System.Int32, mscorlib">
+  <data name="cboPropCrossSectionMarkerAlign.TabIndex" type="System.Int32, mscorlib">
     <value>164</value>
   </data>
-  <data name="&gt;&gt;cboPropCrossSectionMarkerPlanAlign.Name" xml:space="preserve">
-    <value>cboPropCrossSectionMarkerPlanAlign</value>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerAlign.Name" xml:space="preserve">
+    <value>cboPropCrossSectionMarkerAlign</value>
   </data>
-  <data name="&gt;&gt;cboPropCrossSectionMarkerPlanAlign.Type" xml:space="preserve">
+  <data name="&gt;&gt;cboPropCrossSectionMarkerAlign.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cboPropCrossSectionMarkerPlanAlign.Parent" xml:space="preserve">
+  <data name="&gt;&gt;cboPropCrossSectionMarkerAlign.Parent" xml:space="preserve">
     <value>pnlPropCrossSectionMarker</value>
   </data>
-  <data name="&gt;&gt;cboPropCrossSectionMarkerPlanAlign.ZOrder" xml:space="preserve">
-    <value>47</value>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerAlign.ZOrder" xml:space="preserve">
+    <value>50</value>
   </data>
   <data name="txtPropCrossSectionMarkerD.Location" type="System.Drawing.Point, System.Drawing">
     <value>96, 201</value>
@@ -23850,7 +23970,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;txtPropCrossSectionMarkerD.ZOrder" xml:space="preserve">
-    <value>48</value>
+    <value>51</value>
   </data>
   <data name="lblPropCrossSectionMarkerDUM.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -23883,7 +24003,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerDUM.ZOrder" xml:space="preserve">
-    <value>49</value>
+    <value>52</value>
   </data>
   <data name="lblPropCrossSectionMarkerUUM.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -23916,7 +24036,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerUUM.ZOrder" xml:space="preserve">
-    <value>50</value>
+    <value>53</value>
   </data>
   <data name="lblPropCrossSectionMarkerLUM.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -23949,7 +24069,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerLUM.ZOrder" xml:space="preserve">
-    <value>51</value>
+    <value>54</value>
   </data>
   <data name="cboPropCrossSectionMarkerProfileAlign.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -23979,7 +24099,7 @@
     <value>pnlPropCrossSectionMarker</value>
   </data>
   <data name="&gt;&gt;cboPropCrossSectionMarkerProfileAlign.ZOrder" xml:space="preserve">
-    <value>52</value>
+    <value>55</value>
   </data>
   <data name="pnlPropCrossSectionMarker.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3850</value>
@@ -32102,7 +32222,7 @@ or a cross-section</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAC2
-        EQAAAk1TRnQBSQFMAgEBAwEAASABLQEgAS0BIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        EQAAAk1TRnQBSQFMAgEBAwEAAYABLQGAAS0BIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABgAMAASADAAEBAQABCAYAARAYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -32194,7 +32314,7 @@ or a cross-section</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABe
-        CgAAAk1TRnQBSQFMAgEBAwEAARQBIwEUASMBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CgAAAk1TRnQBSQFMAgEBAwEAAXQBIwF0ASMBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA

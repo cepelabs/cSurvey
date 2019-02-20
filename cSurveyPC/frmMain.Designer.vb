@@ -876,6 +876,9 @@ Partial Class frmMain
         Me.mnuTrigpointInfoCopyValue = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuTrigpointInfoCopyAllValue = New System.Windows.Forms.ToolStripMenuItem()
         Me.pnlPropCrossSectionMarker = New System.Windows.Forms.Panel()
+        Me.chkPropCrossSectionMarkerArrowSizeEnabled = New System.Windows.Forms.CheckBox()
+        Me.cboPropCrossSectionMarkerArrowSize = New System.Windows.Forms.ComboBox()
+        Me.lblPropCrossSectionMarkerArrowSize = New System.Windows.Forms.Label()
         Me.chkPropCrossSectionMarkerDeltaAngleEnabled = New System.Windows.Forms.CheckBox()
         Me.chkPropCrossSectionMarkerScaleEnabled = New System.Windows.Forms.CheckBox()
         Me.chkPropCrossSectionMarkerUH = New System.Windows.Forms.CheckBox()
@@ -923,7 +926,7 @@ Partial Class frmMain
         Me.txtPropCrossSectionMarkerL = New System.Windows.Forms.NumericUpDown()
         Me.lblPropCrossSectionMarkerAlign = New System.Windows.Forms.Label()
         Me.txtPropCrossSectionMarkerR = New System.Windows.Forms.NumericUpDown()
-        Me.cboPropCrossSectionMarkerPlanAlign = New System.Windows.Forms.ComboBox()
+        Me.cboPropCrossSectionMarkerAlign = New System.Windows.Forms.ComboBox()
         Me.txtPropCrossSectionMarkerD = New System.Windows.Forms.NumericUpDown()
         Me.lblPropCrossSectionMarkerDUM = New System.Windows.Forms.Label()
         Me.lblPropCrossSectionMarkerUUM = New System.Windows.Forms.Label()
@@ -7663,6 +7666,9 @@ Partial Class frmMain
         '
         'pnlPropCrossSectionMarker
         '
+        Me.pnlPropCrossSectionMarker.Controls.Add(Me.chkPropCrossSectionMarkerArrowSizeEnabled)
+        Me.pnlPropCrossSectionMarker.Controls.Add(Me.cboPropCrossSectionMarkerArrowSize)
+        Me.pnlPropCrossSectionMarker.Controls.Add(Me.lblPropCrossSectionMarkerArrowSize)
         Me.pnlPropCrossSectionMarker.Controls.Add(Me.chkPropCrossSectionMarkerDeltaAngleEnabled)
         Me.pnlPropCrossSectionMarker.Controls.Add(Me.chkPropCrossSectionMarkerScaleEnabled)
         Me.pnlPropCrossSectionMarker.Controls.Add(Me.chkPropCrossSectionMarkerUH)
@@ -7710,7 +7716,7 @@ Partial Class frmMain
         Me.pnlPropCrossSectionMarker.Controls.Add(Me.txtPropCrossSectionMarkerL)
         Me.pnlPropCrossSectionMarker.Controls.Add(Me.lblPropCrossSectionMarkerAlign)
         Me.pnlPropCrossSectionMarker.Controls.Add(Me.txtPropCrossSectionMarkerR)
-        Me.pnlPropCrossSectionMarker.Controls.Add(Me.cboPropCrossSectionMarkerPlanAlign)
+        Me.pnlPropCrossSectionMarker.Controls.Add(Me.cboPropCrossSectionMarkerAlign)
         Me.pnlPropCrossSectionMarker.Controls.Add(Me.txtPropCrossSectionMarkerD)
         Me.pnlPropCrossSectionMarker.Controls.Add(Me.lblPropCrossSectionMarkerDUM)
         Me.pnlPropCrossSectionMarker.Controls.Add(Me.lblPropCrossSectionMarkerUUM)
@@ -7719,16 +7725,40 @@ Partial Class frmMain
         resources.ApplyResources(Me.pnlPropCrossSectionMarker, "pnlPropCrossSectionMarker")
         Me.pnlPropCrossSectionMarker.Name = "pnlPropCrossSectionMarker"
         '
+        'chkPropCrossSectionMarkerArrowSizeEnabled
+        '
+        resources.ApplyResources(Me.chkPropCrossSectionMarkerArrowSizeEnabled, "chkPropCrossSectionMarkerArrowSizeEnabled")
+        Me.chkPropCrossSectionMarkerArrowSizeEnabled.Name = "chkPropCrossSectionMarkerArrowSizeEnabled"
+        Me.tipDefault.SetToolTip(Me.chkPropCrossSectionMarkerArrowSizeEnabled, resources.GetString("chkPropCrossSectionMarkerArrowSizeEnabled.ToolTip"))
+        Me.chkPropCrossSectionMarkerArrowSizeEnabled.UseVisualStyleBackColor = True
+        '
+        'cboPropCrossSectionMarkerArrowSize
+        '
+        Me.cboPropCrossSectionMarkerArrowSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        resources.ApplyResources(Me.cboPropCrossSectionMarkerArrowSize, "cboPropCrossSectionMarkerArrowSize")
+        Me.cboPropCrossSectionMarkerArrowSize.FormattingEnabled = True
+        Me.cboPropCrossSectionMarkerArrowSize.Items.AddRange(New Object() {resources.GetString("cboPropCrossSectionMarkerArrowSize.Items"), resources.GetString("cboPropCrossSectionMarkerArrowSize.Items1"), resources.GetString("cboPropCrossSectionMarkerArrowSize.Items2"), resources.GetString("cboPropCrossSectionMarkerArrowSize.Items3"), resources.GetString("cboPropCrossSectionMarkerArrowSize.Items4"), resources.GetString("cboPropCrossSectionMarkerArrowSize.Items5")})
+        Me.cboPropCrossSectionMarkerArrowSize.Name = "cboPropCrossSectionMarkerArrowSize"
+        Me.tipDefault.SetToolTip(Me.cboPropCrossSectionMarkerArrowSize, resources.GetString("cboPropCrossSectionMarkerArrowSize.ToolTip"))
+        '
+        'lblPropCrossSectionMarkerArrowSize
+        '
+        resources.ApplyResources(Me.lblPropCrossSectionMarkerArrowSize, "lblPropCrossSectionMarkerArrowSize")
+        Me.lblPropCrossSectionMarkerArrowSize.Name = "lblPropCrossSectionMarkerArrowSize"
+        Me.tipDefault.SetToolTip(Me.lblPropCrossSectionMarkerArrowSize, resources.GetString("lblPropCrossSectionMarkerArrowSize.ToolTip"))
+        '
         'chkPropCrossSectionMarkerDeltaAngleEnabled
         '
         resources.ApplyResources(Me.chkPropCrossSectionMarkerDeltaAngleEnabled, "chkPropCrossSectionMarkerDeltaAngleEnabled")
         Me.chkPropCrossSectionMarkerDeltaAngleEnabled.Name = "chkPropCrossSectionMarkerDeltaAngleEnabled"
+        Me.tipDefault.SetToolTip(Me.chkPropCrossSectionMarkerDeltaAngleEnabled, resources.GetString("chkPropCrossSectionMarkerDeltaAngleEnabled.ToolTip"))
         Me.chkPropCrossSectionMarkerDeltaAngleEnabled.UseVisualStyleBackColor = True
         '
         'chkPropCrossSectionMarkerScaleEnabled
         '
         resources.ApplyResources(Me.chkPropCrossSectionMarkerScaleEnabled, "chkPropCrossSectionMarkerScaleEnabled")
         Me.chkPropCrossSectionMarkerScaleEnabled.Name = "chkPropCrossSectionMarkerScaleEnabled"
+        Me.tipDefault.SetToolTip(Me.chkPropCrossSectionMarkerScaleEnabled, resources.GetString("chkPropCrossSectionMarkerScaleEnabled.ToolTip"))
         Me.chkPropCrossSectionMarkerScaleEnabled.UseVisualStyleBackColor = True
         '
         'chkPropCrossSectionMarkerUH
@@ -7962,6 +7992,7 @@ Partial Class frmMain
         '
         resources.ApplyResources(Me.lblPropCrossSectionMarkerDeltaAngle, "lblPropCrossSectionMarkerDeltaAngle")
         Me.lblPropCrossSectionMarkerDeltaAngle.Name = "lblPropCrossSectionMarkerDeltaAngle"
+        Me.tipDefault.SetToolTip(Me.lblPropCrossSectionMarkerDeltaAngle, resources.GetString("lblPropCrossSectionMarkerDeltaAngle.ToolTip"))
         '
         'lblPropCrossSectionMarkerD
         '
@@ -8026,12 +8057,12 @@ Partial Class frmMain
         Me.txtPropCrossSectionMarkerR.Name = "txtPropCrossSectionMarkerR"
         Me.txtPropCrossSectionMarkerR.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
-        'cboPropCrossSectionMarkerPlanAlign
+        'cboPropCrossSectionMarkerAlign
         '
-        Me.cboPropCrossSectionMarkerPlanAlign.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        resources.ApplyResources(Me.cboPropCrossSectionMarkerPlanAlign, "cboPropCrossSectionMarkerPlanAlign")
-        Me.cboPropCrossSectionMarkerPlanAlign.Items.AddRange(New Object() {resources.GetString("cboPropCrossSectionMarkerPlanAlign.Items"), resources.GetString("cboPropCrossSectionMarkerPlanAlign.Items1")})
-        Me.cboPropCrossSectionMarkerPlanAlign.Name = "cboPropCrossSectionMarkerPlanAlign"
+        Me.cboPropCrossSectionMarkerAlign.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        resources.ApplyResources(Me.cboPropCrossSectionMarkerAlign, "cboPropCrossSectionMarkerAlign")
+        Me.cboPropCrossSectionMarkerAlign.Items.AddRange(New Object() {resources.GetString("cboPropCrossSectionMarkerAlign.Items"), resources.GetString("cboPropCrossSectionMarkerAlign.Items1")})
+        Me.cboPropCrossSectionMarkerAlign.Name = "cboPropCrossSectionMarkerAlign"
         '
         'txtPropCrossSectionMarkerD
         '
@@ -12965,7 +12996,7 @@ Partial Class frmMain
     Friend WithEvents txtPropCrossSectionMarkerL As NumericUpDown
     Friend WithEvents cboPropCrossSectionMarkerProfileAlign As ComboBox
     Friend WithEvents lblPropCrossSectionMarkerAlign As Label
-    Friend WithEvents cboPropCrossSectionMarkerPlanAlign As ComboBox
+    Friend WithEvents cboPropCrossSectionMarkerAlign As ComboBox
     Friend WithEvents txtPropCrossSectionMarkerDeltaAngle As System.Windows.Forms.NumericUpDown
     Friend WithEvents lblPropCrossSectionMarkerDeltaAngle As System.Windows.Forms.Label
     Friend WithEvents lblPropCrossSectionMarkerD As System.Windows.Forms.Label
@@ -13234,4 +13265,7 @@ Partial Class frmMain
     Friend WithEvents cDesignLinkedSurveys As cDesignLinkedSurveySelectorPropertyControl
     Friend WithEvents c3DLinkedSurveys As cDesignLinkedSurveySelectorPropertyControl
     Friend WithEvents cPropName As cItemNamePropertyControl
+    Friend WithEvents chkPropCrossSectionMarkerArrowSizeEnabled As CheckBox
+    Friend WithEvents cboPropCrossSectionMarkerArrowSize As ComboBox
+    Friend WithEvents lblPropCrossSectionMarkerArrowSize As Label
 End Class

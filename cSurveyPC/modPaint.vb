@@ -25,6 +25,11 @@ Module modPaint
         SpecialPoint = &H3
         GenericPoint = &H4
         BezierControlPoint = &H5
+
+        FirstOfAllPoint = &H1000
+        LastOfAllPoint = &H2000
+        AllMask = &HF000
+
         TypeMask = &HFF
         JoinedPoint = &H100
         JoinedMask = &HF00
@@ -127,6 +132,15 @@ Module modPaint
         Return sDistance <= Range
     End Function
 
+    Public Function GetNormalizedBisection(Angle1 As Decimal, Angle2 As Decimal) As Decimal
+        Dim dAngle As Decimal = NormalizeAngle(Angle2 - Angle1)
+        If dAngle > 180 Then
+            Return (dAngle / 2) + 90 + Angle1
+        Else
+            Return (dAngle / 2) - 90 + Angle1
+        End If
+    End Function
+
     Public Function GetNormalizedBisection(Angle1 As Single, Angle2 As Single) As Single
         Dim sAngle As Single = NormalizeAngle(Angle2 - Angle1)
         If sAngle > 180 Then
@@ -134,47 +148,6 @@ Module modPaint
         Else
             Return (sAngle / 2) - 90 + Angle1
         End If
-        'Return NormalizeAngle((Angle1 + Angle2) / 2 +90)
-
-        'End If
-        'Dim sAngle As Single = (NormalizeAngle(Angle1 + 180) + Angle2) / 2
-        'If Angle1 >= Angle2 Then
-        '    sAngle = sAngle - 180
-        'End If
-        'Return NormalizeAngle(sAngle)
-
-        'Dim sDiff As Single
-        'If Angle1 > Angle2 Then
-        '    sDiff = Angle1 - Angle2
-        '    sAngle = Angle2 + sDiff / 2
-        'Else
-        '    sDiff = Angle2 - Angle1
-        '    sAngle = Angle1 + sDiff / 2
-        'End If
-        'Return sAngle + 90
-
-        'Dim sAngle As Single
-        'Dim sDiff As Single
-        'If Angle2 > Angle1 Then
-        '    sDiff = Angle2 - Angle1
-        '    If sDiff <= 180 Then
-        '        sAngle = Angle2 - sDiff / 2
-        '        sAngle = sAngle + 90
-        '    Else
-        '        sAngle = Angle2 + sDiff / 2
-        '        sAngle = sAngle - 90
-        '    End If
-        'Else
-        '    sDiff = Angle1 - Angle2
-        '    If sDiff <= 180 Then
-        '        sAngle = Angle1 - sDiff / 2
-        '        sAngle = sAngle - 90
-        '    Else
-        '        sAngle = Angle1 + sDiff / 2
-        '        sAngle = sAngle + 90
-        '    End If
-        'End If
-        'Return sAngle
     End Function
 
     Public Function GrayScaleImage(Image As Image) As Image
@@ -205,6 +178,39 @@ Module modPaint
         End Using
         Return oImage
     End Function
+
+    Public Sub DrawStretchedImage(Graphics As Graphics, Image As Image, Bounds As RectangleF, ImageAttributes As System.Drawing.Imaging.ImageAttributes)
+        Dim oPoints(2) As PointF
+        oPoints(0) = Bounds.Location
+        oPoints(1) = New PointF(Bounds.Right, Bounds.Top)
+        oPoints(2) = New PointF(Bounds.Left, Bounds.Bottom)
+        Dim oSourceRect As RectangleF = Image.GetBounds(System.Drawing.GraphicsUnit.Pixel)
+        Call Graphics.DrawImage(Image, oPoints, oSourceRect, GraphicsUnit.Pixel, ImageAttributes)
+    End Sub
+
+    Public Sub DrawScaledImage(Graphics As Graphics, Image As Image, Bounds As RectangleF, ImageAttributes As System.Drawing.Imaging.ImageAttributes)
+        Dim sSrcWidth As Single = Image.Width
+        Dim sSrcHeight As Single = Image.Height
+        Dim sDestWidth As Single = Bounds.Width
+        Dim sDestHeight As Single = Bounds.Height
+
+        Dim sDeltaX As Single = sSrcWidth / sDestWidth
+        Dim sDeltaY As Single = sSrcHeight / sDestHeight
+        Dim sDelta As Single = IIf(sDeltaX > sDeltaY, sDeltaX, sDeltaY)
+
+        Dim sWidth As Single = sSrcWidth / sDelta
+        Dim sHeight As Single = sSrcHeight / sDelta
+
+        Dim oRect As RectangleF = New RectangleF(Bounds.Left + (Bounds.Width - sWidth) / 2, Bounds.Top + (Bounds.Height - sHeight) / 2, sWidth, sHeight)
+
+        Dim oPoints(2) As PointF
+        oPoints(0) = oRect.Location
+        oPoints(1) = New PointF(oRect.Right, oRect.Top)
+        oPoints(2) = New PointF(oRect.Left, oRect.Bottom)
+        Dim oSourceRect As RectangleF = Image.GetBounds(System.Drawing.GraphicsUnit.Pixel)
+
+        Call Graphics.DrawImage(Image, oPoints, oSourceRect, GraphicsUnit.Pixel, ImageAttributes)
+    End Sub
 
     Public Sub DrawScaledImage(Graphics As Graphics, Image As Image, Bounds As RectangleF)
         Dim sSrcWidth As Single = Image.Width
@@ -647,26 +653,38 @@ Module modPaint
         Return Radiant * 180 / Math.PI
     End Function
 
-    Public Function GetZoomFactor(ByVal graphics As Graphics, ByVal Scale As Double) As Double
+    Public Function GetZoomFactor(ByVal graphics As Graphics, ByVal Scale As Decimal) As Decimal
         Select Case graphics.PageUnit
             Case GraphicsUnit.Millimeter
                 Return 1.0 / Scale
             Case GraphicsUnit.Pixel
                 Return graphics.DpiX / (Scale * 0.0254)
-            Case Else
-                Return (10.0 / 9.0) * 1.0 / (Scale * 0.000254)
+            Case Else   'display...
+                'there is no way to detect if graphics is in a printer or screen/image context so I use dpi to dectect this and scale all correctly
+                If graphics.DpiX = 96 Then
+                    Return graphics.DpiX / (Scale * 0.0254)
+                Else
+                    Return 1 / (Scale * 0.000254)
+                End If
         End Select
     End Function
 
-    Public Function GetScaleFactor(ByVal Graphics As Graphics, ByVal Zoom As Double) As Double
+    Public Function GetScaleFactor(ByVal Graphics As Graphics, ByVal Zoom As Decimal) As Integer
+        Dim dScale As Decimal
         Select Case Graphics.PageUnit
             Case GraphicsUnit.Millimeter
-                Return 1 / Zoom
+                dScale = 1 / Zoom
             Case GraphicsUnit.Pixel
-                Return Graphics.DpiX / (Zoom * 0.0254)
-            Case Else
-                Return (10 / 9) * 1 / (Zoom * 0.000254)
+                dScale = Graphics.DpiX / (Zoom * 0.0254)
+            Case Else   'display...
+                'there is no way to detect if graphics is in a printer or screen/image context so I use dpi to dectect this and scale all correctly
+                If Graphics.DpiX = 96 Then
+                    dScale = Graphics.DpiX / (Zoom * 0.0254)
+                Else
+                    dScale = 1 / (Zoom * 0.000254)
+                End If
         End Select
+        Return Math.Round(dScale, 0)
     End Function
 
     Public Function MillimetersToPixel(ByVal DPI As Single, ByVal Millimeters As Single) As Single
@@ -2419,12 +2437,17 @@ Module modPaint
         Try
             Dim sAnchorBaseScale As Single = AnchorsScale * modControls.SystemDPIRatio
             Dim oPaintRect As RectangleF
+
+            If (Type And AnchorRectangleTypeEnum.AllMask) Then
+                oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 7 / Zoom)
+                Graphics.FillEllipse(Survey.EditPaintObjects.StartPointBrush, oPaintRect)
+            End If
+
             Select Case (Type And AnchorRectangleTypeEnum.TypeMask)
                 Case AnchorRectangleTypeEnum.BezierControlPoint
                     oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 4 / Zoom)
                     Graphics.FillRectangle(Survey.EditPaintObjects.BezierControlPointBrush, oPaintRect)
                     Graphics.DrawRectangle(Survey.EditPaintObjects.BezierControlPointPen, oPaintRect.X, oPaintRect.Y, oPaintRect.Width, oPaintRect.Height)
-
                 Case AnchorRectangleTypeEnum.GenericPoint
                     oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 4 / Zoom)
                     Graphics.FillEllipse(Survey.EditPaintObjects.GenericPointBrush, oPaintRect)
@@ -2437,6 +2460,7 @@ Module modPaint
                     oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 4 / Zoom)
                     Graphics.FillEllipse(Survey.EditPaintObjects.StartPointBrush, oPaintRect)
                     Graphics.DrawEllipse(Survey.EditPaintObjects.StartPointPen, oPaintRect)
+
                 Case AnchorRectangleTypeEnum.SpecialPoint
                     oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 7 / Zoom)
                     Graphics.FillEllipse(Survey.EditPaintObjects.SpecialPointBrush, oPaintRect)
@@ -2483,9 +2507,6 @@ Module modPaint
                     oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 4 / Zoom)
                     Graphics.FillEllipse(Survey.EditPaintObjects.CenterOfRotationPointBrush, oPaintRect)
                     Graphics.DrawEllipse(Survey.EditPaintObjects.CenterOfRotationPointPen, oPaintRect)
-                'oPaintRect = modPaint.GetPaintAnchor(Point, 10 / Zoom)
-                'Graphics.DrawLine(Survey.EditPaintObjects.CenterOfRotationPointPen, oPaintRect.Left, oPaintRect.Top + oPaintRect.Height / 2, oPaintRect.Right, oPaintRect.Top + oPaintRect.Height / 2)
-                'Graphics.DrawLine(Survey.EditPaintObjects.CenterOfRotationPointPen, oPaintRect.Left + oPaintRect.Width / 2, oPaintRect.Top, oPaintRect.Left + oPaintRect.Width / 2, oPaintRect.Bottom)
 
                 Case AnchorRectangleTypeEnum.CenterPoint
                     oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 4 / Zoom)
@@ -2497,7 +2518,6 @@ Module modPaint
 
             If (Type And AnchorRectangleTypeEnum.JoinedMask) Then
                 oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 10 / Zoom)
-                'Graphics.FillEllipse(Survey.EditPaintObjects.GenericPointBrush, oPaintRect)
                 Graphics.DrawEllipse(Survey.EditPaintObjects.GenericPointPen, oPaintRect)
             End If
         Catch
@@ -2572,12 +2592,21 @@ Module modPaint
             For Each oPoint As cPoint In Item.Points
                 Dim oPaintPoint As PointF = oPoint.Point()
                 Dim iJoined As AnchorRectangleTypeEnum = IIf(oPoint.IsJoined, AnchorRectangleTypeEnum.JoinedPoint, AnchorRectangleTypeEnum.None)
+                Dim iFirstOrLastAll As AnchorRectangleTypeEnum
+                If (oPoint.Type And cPoint.PointTypeEnum.FirstOfAll) = cPoint.PointTypeEnum.FirstOfAll Then
+                    iFirstOrLastAll = AnchorRectangleTypeEnum.FirstOfAllPoint
+                'ElseIf (oPoint.Type And cPoint.PointTypeEnum.LastOfAll) = cPoint.PointTypeEnum.LastOfAll Then
+                '    iFirstOrLastAll = AnchorRectangleTypeEnum.LastOfAllPoint
+                Else
+                    iFirstOrLastAll = AnchorRectangleTypeEnum.None
+                End If
+
                 If oPoint.BeginSequence Then
                     iSequencePointCount = 0
                     If oPoint Is Tools.CurrentItemPoint Then
-                        Call PaintAnchorRectangle(Graphics, oPaintPoint, AnchorRectangleTypeEnum.SpecialPoint Or iJoined, Survey, Zoom)
+                        Call PaintAnchorRectangle(Graphics, oPaintPoint, AnchorRectangleTypeEnum.SpecialPoint Or iJoined Or iFirstOrLastAll, Survey, Zoom)
                     Else
-                        Call PaintAnchorRectangle(Graphics, oPaintPoint, AnchorRectangleTypeEnum.StartPoint Or iJoined, Survey, Zoom)
+                        Call PaintAnchorRectangle(Graphics, oPaintPoint, AnchorRectangleTypeEnum.StartPoint Or iJoined Or iFirstOrLastAll, Survey, Zoom)
                     End If
                     If bCurrentHaveLineType Then
                         iCurrentLineType = oPoint.LineType
@@ -2590,18 +2619,18 @@ Module modPaint
                         Select Case (iSequencePointCount) Mod 3
                             Case 1
                                 If oPoint Is Tools.CurrentItemPoint Then
-                                    Call PaintAnchorRectangle(Graphics, oPaintPoint, AnchorRectangleTypeEnum.SpecialPoint Or iJoined, Survey, Zoom)
+                                    Call PaintAnchorRectangle(Graphics, oPaintPoint, AnchorRectangleTypeEnum.SpecialPoint Or iJoined Or iFirstOrLastAll, Survey, Zoom)
                                 Else
-                                    Call PaintAnchorRectangle(Graphics, oPaintPoint, AnchorRectangleTypeEnum.BezierControlPoint, Survey, Zoom)
+                                    Call PaintAnchorRectangle(Graphics, oPaintPoint, AnchorRectangleTypeEnum.BezierControlPoint Or iFirstOrLastAll, Survey, Zoom)
                                 End If
                                 If Not oPrevPoint Is Nothing Then
                                     Call Graphics.DrawLine(Survey.EditPaintObjects.BezierControlLinePen, oPaintPoint, oPrevPoint.Point)
                                 End If
                             Case 2
                                 If oPoint Is Tools.CurrentItemPoint Then
-                                    Call PaintAnchorRectangle(Graphics, oPaintPoint, AnchorRectangleTypeEnum.SpecialPoint Or iJoined, Survey, Zoom)
+                                    Call PaintAnchorRectangle(Graphics, oPaintPoint, AnchorRectangleTypeEnum.SpecialPoint Or iJoined Or iFirstOrLastAll, Survey, Zoom)
                                 Else
-                                    Call PaintAnchorRectangle(Graphics, oPaintPoint, AnchorRectangleTypeEnum.BezierControlPoint, Survey, Zoom)
+                                    Call PaintAnchorRectangle(Graphics, oPaintPoint, AnchorRectangleTypeEnum.BezierControlPoint Or iJoined Or iFirstOrLastAll, Survey, Zoom)
                                 End If
                                 Dim oNextPoint As cPoint = Item.Points.Next(oPoint)
                                 If Not oNextPoint Is Nothing Then
@@ -2609,16 +2638,16 @@ Module modPaint
                                 End If
                             Case Else
                                 If oPoint Is Tools.CurrentItemPoint Then
-                                    Call PaintAnchorRectangle(Graphics, oPaintPoint, AnchorRectangleTypeEnum.SpecialPoint Or iJoined, Survey, Zoom)
+                                    Call PaintAnchorRectangle(Graphics, oPaintPoint, AnchorRectangleTypeEnum.SpecialPoint Or iJoined Or iFirstOrLastAll, Survey, Zoom)
                                 Else
-                                    Call PaintAnchorRectangle(Graphics, oPaintPoint, AnchorRectangleTypeEnum.GenericPoint Or iJoined, Survey, Zoom)
+                                    Call PaintAnchorRectangle(Graphics, oPaintPoint, AnchorRectangleTypeEnum.GenericPoint Or iJoined Or iFirstOrLastAll, Survey, Zoom)
                                 End If
                         End Select
                     Else
                         If oPoint Is Tools.CurrentItemPoint Then
-                            Call PaintAnchorRectangle(Graphics, oPaintPoint, AnchorRectangleTypeEnum.SpecialPoint Or iJoined, Survey, Zoom)
+                            Call PaintAnchorRectangle(Graphics, oPaintPoint, AnchorRectangleTypeEnum.SpecialPoint Or iJoined Or iFirstOrLastAll, Survey, Zoom)
                         Else
-                            Call PaintAnchorRectangle(Graphics, oPaintPoint, AnchorRectangleTypeEnum.GenericPoint Or iJoined, Survey, Zoom)
+                            Call PaintAnchorRectangle(Graphics, oPaintPoint, AnchorRectangleTypeEnum.GenericPoint Or iJoined Or iFirstOrLastAll, Survey, Zoom)
                         End If
                     End If
                     'End If

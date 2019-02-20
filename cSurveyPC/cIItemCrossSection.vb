@@ -105,6 +105,9 @@
             OppositeSide = 2
         End Enum
 
+        Property ArrowSizeEnabled As Boolean
+        Property ArrowSize As cIItemText.TextSizeEnum
+
         Property TextShow As Boolean
         Property TextPosition As cIItemCrossSectionMarker.TextPositionEnum
         Property TextDistance As Single

@@ -488,7 +488,7 @@ Namespace cSurvey.Design
             If Not Point.oPointsJoin Is Nothing Then
                 Call Point.oPointsJoin.Append(Me)
             End If
-            oItem = Point.Item
+            'oItem = Point.Item
         End Sub
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal Point As cPoint, ByVal BeginSequence As Boolean, ByVal Pen As cPen, LineType As Items.cIItemLine.LineTypeEnum, ByVal SegmentLocked As Boolean, ByVal BindedSegment As String)
@@ -610,6 +610,7 @@ Namespace cSurvey.Design
         Friend Sub BindSegment(ByVal Segment As cISegment)
             If Not bSegmentLocked Then
                 oBindedSegment = Segment
+                sBindedSegment = ""
             End If
         End Sub
 

@@ -34,9 +34,30 @@ Namespace cSurvey.Design.Items
         Private sProfileDeltaAngle As Single
         Private iProfileAlignment As cIItemProfileCrossSectionMarker.ProfileAlignmentEnum
 
+        Private bArrowSizeEnabled As Boolean
+        Private iArrowSize As cIItemText.TextSizeEnum
+
+        Friend Function GetArrowScaleFactor(PaintOptions As cOptions) As Single
+            Dim sTextScaleFactor As Single = MyBase.GetTextScaleFactor(PaintOptions)
+            Select Case iArrowSize
+                Case cIItemText.TextSizeEnum.Default
+                    Return 1 * sTextScaleFactor
+                Case cIItemText.TextSizeEnum.VerySmall
+                    Return 0.25 * sTextScaleFactor
+                Case cIItemText.TextSizeEnum.Small
+                    Return 0.5 * sTextScaleFactor
+                Case cIItemText.TextSizeEnum.Medium
+                    Return 1 * sTextScaleFactor
+                Case cIItemText.TextSizeEnum.Large
+                    Return 2 * sTextScaleFactor
+                Case cIItemText.TextSizeEnum.VeryLarge
+                    Return 4 * sTextScaleFactor
+            End Select
+        End Function
+
         Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptions) As Single
             Dim sTextScaleFactor As Single = MyBase.GetTextScaleFactor(PaintOptions)
-            Select Case iTextSize
+            Select Case TextSize
                 Case cIItemText.TextSizeEnum.Default
                     Return 1 * sTextScaleFactor
                 Case cIItemText.TextSizeEnum.VerySmall
@@ -83,9 +104,6 @@ Namespace cSurvey.Design.Items
             Set(value As Boolean)
                 If bTextSizeEnabled <> value Then
                     bTextSizeEnabled = value
-                    If bTextSizeEnabled Then
-                        iTextSize = oCrossSectionItem.TextSize
-                    End If
                     Call MyBase.Caches.Invalidate()
                 End If
             End Set
@@ -93,14 +111,43 @@ Namespace cSurvey.Design.Items
 
         Public Property TextSize As cIItemText.TextSizeEnum Implements cIItemCrossSectionMarker.TextSize
             Get
-                Return oCrossSectionItem.TextSize
+                If bTextSizeEnabled Then
+                    Return iTextSize
+                Else
+                    Return oCrossSectionItem.TextSize
+                End If
             End Get
             Set(value As cIItemText.TextSizeEnum)
-                If iTextSize <> value Then
-                    iTextSize = value
-                    If Not bTextSizeEnabled Then
+                If value <> TextSize Then
+                    If bTextSizeEnabled Then
+                        iTextSize = value
+                    Else
                         oCrossSectionItem.TextSize = value
                     End If
+                    Call MyBase.Caches.Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property ArrowSizeEnabled As Boolean Implements cIItemCrossSectionMarker.ArrowSizeEnabled
+            Get
+                Return bArrowSizeEnabled
+            End Get
+            Set(value As Boolean)
+                If bArrowSizeEnabled <> value Then
+                    bArrowSizeEnabled = value
+                    Call MyBase.Caches.Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property ArrowSize As cIItemText.TextSizeEnum Implements cIItemCrossSectionMarker.ArrowSize
+            Get
+                Return iArrowSize
+            End Get
+            Set(value As cIItemText.TextSizeEnum)
+                If bArrowSizeEnabled AndAlso iArrowSize <> value Then
+                    iArrowSize = value
                     Call MyBase.Caches.Invalidate()
                 End If
             End Set
@@ -163,10 +210,6 @@ Namespace cSurvey.Design.Items
             Set(value As Boolean)
                 If bProfileDeltaAngleEnabled <> value Then
                     bProfileDeltaAngleEnabled = value
-                    If bProfileDeltaAngleEnabled Then
-                        sProfileDeltaAngle = oCrossSectionItem.SplayBorderProjectionVerticalAngle
-                    End If
-                    Call oCrossSectionItem.Caches.Invalidate()
                     Call MyBase.Caches.Invalidate()
                 End If
             End Set
@@ -181,11 +224,11 @@ Namespace cSurvey.Design.Items
                 End If
             End Get
             Set(value As Single)
-                If sProfileDeltaAngle <> value Then
-                    sProfileDeltaAngle = value
-                    If Not bProfileDeltaAngleEnabled Then
+                If ProfileDeltaAngle <> value Then
+                    If bProfileDeltaAngleEnabled Then
+                        sProfileDeltaAngle = value
+                    Else
                         oCrossSectionItem.SplayBorderProjectionVerticalAngle = value
-                        Call oCrossSectionItem.Caches.Invalidate()
                     End If
                     Call MyBase.Caches.Invalidate()
                 End If
@@ -530,7 +573,7 @@ Namespace cSurvey.Design.Items
                         Dim oDrawingObject As cOptionsDrawingObjects = PaintOptions.DrawingObjects
                         Dim sScale As Single = GetTextScaleFactor(PaintOptions)
 
-                        Dim sArrowSize As Single = PaintOptions.DrawingObjects.CrossSectionMarkerArrowSize * sScale / MyBase.GetTextScaleFactor(PaintOptions)
+                        Dim sArrowSize As Single = PaintOptions.DrawingObjects.CrossSectionMarkerArrowSize * If(bArrowSizeEnabled, GetArrowScaleFactor(PaintOptions) / MyBase.GetTextScaleFactor(PaintOptions), sScale / MyBase.GetTextScaleFactor(PaintOptions))
 
                         Dim sRefUpHeight As Single
                         If bAutoUpHeight Then
@@ -734,6 +777,11 @@ Namespace cSurvey.Design.Items
             End If
             iTextRotateMode = modXML.GetAttributeValue(item, "textrotatemode", cIItemPlanCrossSectionMarker.TextRotateModeEnum.Fixed)
 
+            bArrowSizeEnabled = modXML.GetAttributeValue(item, "arrowsizeenabled", 0)
+            If bArrowSizeEnabled Then
+                iArrowSize = modXML.GetAttributeValue(item, "arrowsize")
+            End If
+
             bProfileDeltaAngleEnabled = modXML.GetAttributeValue(item, "profiledeltaenabled", "1")
             If bProfileDeltaAngleEnabled Then
                 sProfileDeltaAngle = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "profiledelta", 0.0))
@@ -797,6 +845,11 @@ Namespace cSurvey.Design.Items
             If bTextShow Then Call oItem.SetAttribute("textshow", "1")
             If iTextRotateMode <> cIItemRotableText.TextRotateModeEnum.Fixed Then
                 Call oItem.SetAttribute("textrotatemode", iTextRotateMode)
+            End If
+
+            If bArrowSizeEnabled Then
+                Call oItem.SetAttribute("arrowsizeenabled", "1")
+                If iArrowSize <> cIItemText.TextSizeEnum.Default Then Call oItem.SetAttribute("arrowsize", iArrowSize)
             End If
 
             Call oItem.SetAttribute("profiledeltaenabled", IIf(bProfileDeltaAngleEnabled, "1", "0"))

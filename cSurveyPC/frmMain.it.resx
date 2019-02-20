@@ -14329,7 +14329,7 @@ o ad una sezione trasversale</value>
     <value>Δ angolo:</value>
   </data>
   <data name="txtPropCrossSectionMarkerDeltaAngle.ToolTip" xml:space="preserve">
-    <value>In pianta, il delta tra la direzione del marker e della battuta associata alla sezione trasversale, in sezione il delta tra la direzione del marker e la verticale.</value>
+    <value>Δ angolo</value>
   </data>
   <data name="btnSnapToPoint0.Text" xml:space="preserve">
     <value>Inizia una nuova curva dall'ultimo punto</value>
@@ -14414,5 +14414,32 @@ o ad una sezione trasversale</value>
   </data>
   <data name="cboDesignPlotColorMode.Items2" xml:space="preserve">
     <value>Origine/suborigine</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerAlign.Items" xml:space="preserve">
+    <value>Sinistra</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerAlign.Items1" xml:space="preserve">
+    <value>Destra</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.ToolTip" xml:space="preserve">
+    <value>Scala freccia</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerArrowSize.Text" xml:space="preserve">
+    <value>Scala:</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerArrowSizeEnabled.ToolTip" xml:space="preserve">
+    <value>Scala freccia libera</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerArrowSize.ToolTip" xml:space="preserve">
+    <value>Scala freccia libera</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerScaleEnabled.ToolTip" xml:space="preserve">
+    <value>Dimensione simbolo libera</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerDeltaAngleEnabled.ToolTip" xml:space="preserve">
+    <value>Δ angolo libero</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDeltaAngle.ToolTip" xml:space="preserve">
+    <value>Δ angolo</value>
   </data>
 </root>

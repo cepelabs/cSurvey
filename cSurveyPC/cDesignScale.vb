@@ -38,7 +38,7 @@ Namespace cSurvey.Design
                     Dim sScaleValue As String = PaintOptions.ScaleOptions.Text
                     If Not PaintOptions.ScaleOptions.HideScaleValue Then
                         If sScaleValue <> "" Then sScaleValue = sScaleValue & " "
-                        sScaleValue = sScaleValue & "1:" & modnumbers.mathround(modPaint.GetScaleFactor(Graphics, Zoom), 0)
+                        sScaleValue = sScaleValue & "1:" & modPaint.GetScaleFactor(Graphics, Zoom)
                     End If
                     If sScaleValue = "" Then sScaleValue = " "
                     Dim oScaleValueSize As SizeF = Graphics.MeasureString(sScaleValue, oScaleFont)
@@ -61,7 +61,7 @@ Namespace cSurvey.Design
                             Dim iSteps As Integer = 10
 
                             Dim oScaleFont As Font = PaintOptions.ScaleOptions.Font.GetFont(PaintOptions)
-                            Dim sScaleValue As String = iMeters & " m " & "1:" & modnumbers.mathround(modPaint.GetScaleFactor(Graphics, Zoom), 0)
+                            Dim sScaleValue As String = iMeters & " m " & "1:" & modPaint.GetScaleFactor(Graphics, Zoom)
                             Dim oScaleValueSize As SizeF = Graphics.MeasureString(sScaleValue, oScaleFont)
 
                             Dim oScalePen1 As Pen = New Pen(Color.Gray, -1)
@@ -109,11 +109,10 @@ Namespace cSurvey.Design
                             Dim oScaleFont As Font = PaintOptions.ScaleOptions.Font.GetFont(PaintOptions)
                             Dim oScaleMeterFont As Font = New Font(oScaleFont.Name, oScaleFont.Size * 0.6!, FontStyle.Regular)
 
-                            'Dim sScaleValue As String = iMeters & " m " & "1:" & modnumbers.mathround(modPaint.GetScaleFactor(Graphics, Zoom), 0)
                             Dim sScaleValue As String = PaintOptions.ScaleOptions.Text
                             If Not PaintOptions.ScaleOptions.HideScaleValue Then
                                 If sScaleValue <> "" Then sScaleValue = sScaleValue & " "
-                                sScaleValue = sScaleValue & "1:" & modNumbers.MathRound(modPaint.GetScaleFactor(Graphics, Zoom), 0)
+                                sScaleValue = sScaleValue & "1:" & modPaint.GetScaleFactor(Graphics, Zoom)
                             End If
                             If sScaleValue = "" Then sScaleValue = " "
                             Dim oScaleValueSize As SizeF = Graphics.MeasureString(sScaleValue, oScaleFont)

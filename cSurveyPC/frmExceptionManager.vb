@@ -48,8 +48,9 @@ Public Class frmExceptionManager
         oSurvey = Survey
         sFilename = Filename
 
-        Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-        bSendException = oReg.GetValue("debug.sendexception", 0)
+        Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
+            bSendException = oReg.GetValue("debug.sendexception", 0)
+        End Using
 
         sPackageVersion = modMain.GetPackageVersion()
 
@@ -202,9 +203,7 @@ Public Class frmExceptionManager
             Dim oXML As Xml.XmlDocument = pGetExceptionXML()
             Call XMLAddDeclaration(oXML)
             Call oXML.Save(sTempFilename)
-            'call pUploadFile("file", sTempFilename, "http://cepestorage/csurvey/bugreport/post.php")
             Call pUploadFile("file", sTempFilename, "http://www.csurvey.it/bugreport/post.php")
-            'Call pUploadFile("file", sTempFilename, "http://cepelabs.homeip.net/csurvey/bugreport/post.php")
             Call My.Computer.FileSystem.DeleteFile(sTempFilename)
             LastError = ""
             bResult = True

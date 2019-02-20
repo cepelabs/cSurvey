@@ -41,6 +41,8 @@ Namespace cSurvey
         Friend Sub New(ByVal Survey As cSurvey)
             oSurvey = Survey
             oItems = New Dictionary(Of String, String)(StringComparer.CurrentCultureIgnoreCase)
+            'legacy options...for loaded settings this must be in the file, for new I set it to avoid legacy behaviour
+            Call SetValue("legacycalculation1", "off")
         End Sub
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal SharedSettings As XmlElement)

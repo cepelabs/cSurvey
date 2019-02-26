@@ -141,6 +141,7 @@ Partial Class frmSplay
         Me.txtPropPlanSplayMaxVariationDelta.DecimalPlaces = 1
         Me.txtPropPlanSplayMaxVariationDelta.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
         resources.ApplyResources(Me.txtPropPlanSplayMaxVariationDelta, "txtPropPlanSplayMaxVariationDelta")
+        Me.txtPropPlanSplayMaxVariationDelta.Maximum = New Decimal(New Integer() {100000, 0, 0, 0})
         Me.txtPropPlanSplayMaxVariationDelta.Name = "txtPropPlanSplayMaxVariationDelta"
         '
         'txtPropPlanSplayInclinationRangeMax

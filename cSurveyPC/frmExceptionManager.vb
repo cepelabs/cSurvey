@@ -120,7 +120,7 @@ Public Class frmExceptionManager
         Call pClose()
     End Sub
 
-    Private Sub cmdSaveException_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSaveException.Click
+    Private Sub pExceptionSave()
         Dim sExceptionFilename As String = ""
         Dim osfd As SaveFileDialog = New SaveFileDialog
         With osfd
@@ -141,6 +141,10 @@ Public Class frmExceptionManager
                 End Select
             End If
         End With
+    End Sub
+
+    Private Sub cmdSaveException_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSaveException.Click
+        Call pExceptionSave()
     End Sub
 
     Private Function pGetExceptionXML() As XmlDocument
@@ -171,21 +175,32 @@ Public Class frmExceptionManager
         XML = 2
     End Enum
 
+    Private Sub pExceptionCopy()
+        Cursor = Cursors.WaitCursor
+
+        Dim oClip As DataObject = New DataObject
+        Call oClip.SetData(DataFormats.Text, rtfException.Text)
+        Call oClip.SetData(DataFormats.Rtf, rtfException.Rtf)
+        Call Clipboard.SetDataObject(oClip, True)
+
+        Cursor = Cursors.Default
+    End Sub
+
     Private Sub pExceptionSave(Format As ExceptionFileFormatEnum, Filename As String)
         Cursor = Cursors.WaitCursor
         Select Case Format
             Case ExceptionFileFormatEnum.Text
                 Dim oFi As FileInfo = New FileInfo(Filename)
-                Dim oExStream As StreamWriter = oFi.CreateText()
-                Call oExStream.WriteLine(rtfException.Text)
-                Call oExStream.Close()
-                Call oExStream.Dispose()
+                Using oExStream As StreamWriter = oFi.CreateText()
+                    Call oExStream.WriteLine(rtfException.Text)
+                    Call oExStream.Close()
+                End Using
             Case ExceptionFileFormatEnum.RTF
                 Dim oFi As FileInfo = New FileInfo(Filename)
-                Dim oExStream As StreamWriter = oFi.CreateText()
-                Call oExStream.WriteLine(rtfException.Rtf)
-                Call oExStream.Close()
-                Call oExStream.Dispose()
+                Using oExStream As StreamWriter = oFi.CreateText()
+                    Call oExStream.WriteLine(rtfException.Rtf)
+                    Call oExStream.Close()
+                End Using
             Case ExceptionFileFormatEnum.XML
                 Dim oXML As XmlDocument = pGetExceptionXML()
                 Call XMLAddDeclaration(oXML)
@@ -289,5 +304,25 @@ Public Class frmExceptionManager
             End If
             Call pSendException()
         End If
+    End Sub
+
+    Private Sub cmdCopyException_Click(sender As Object, e As EventArgs) Handles cmdCopyException.Click
+        Call pExceptionCopy()
+    End Sub
+
+    Private Sub mnuExceptionCopy_Click(sender As Object, e As EventArgs) Handles mnuExceptionCopy.Click
+        Call pExceptionCopy()
+    End Sub
+
+    Private Sub mnuExceptionSave_Click(sender As Object, e As EventArgs) Handles mnuExceptionSave.Click
+        Call pExceptionSave()
+    End Sub
+
+    Private Sub mnuExceptionSelectAll_Click(sender As Object, e As EventArgs) Handles mnuExceptionSelectAll.Click
+        Call rtfException.SelectAll()
+    End Sub
+
+    Private Sub mnuExceptionCopyText_Click(sender As Object, e As EventArgs) Handles mnuExceptionCopyText.Click
+        Call rtfException.Copy()
     End Sub
 End Class

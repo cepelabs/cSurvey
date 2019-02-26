@@ -908,7 +908,6 @@ Namespace cSurvey.Design
             Return oBaseRect
         End Function
 
-
         Public Overridable Function GetDesignVisibleBounds(ByVal PaintOptions As cOptions) As RectangleF
             Dim oBaseRect As RectangleF = New RectangleF
             For Each oItem As cItem In GetAllDesignVisibleItems(PaintOptions)
@@ -921,13 +920,13 @@ Namespace cSurvey.Design
                         End If
                     End If
                     If Not Single.IsNaN(oItemRect.Width) And Not Single.IsNaN(oItemRect.Height) Then
-                        If oBaseRect.IsEmpty Then
-                            oBaseRect = oItemRect
-                        Else
-                            oBaseRect = RectangleF.Union(oBaseRect, oItemRect)
+                            If oBaseRect.IsEmpty Then
+                                oBaseRect = oItemRect
+                            Else
+                                oBaseRect = RectangleF.Union(oBaseRect, oItemRect)
+                            End If
                         End If
                     End If
-                End If
             Next
             Return oBaseRect
         End Function

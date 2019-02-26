@@ -178,6 +178,14 @@ Public Class frmSplay
         Call Close()
     End Sub
 
+    Private Sub pSetNumericUpDownValue(Item As NumericUpDown, Value As Integer, DefaultValue As Integer)
+        If Value >= Item.Minimum AndAlso Value <= Item.Maximum Then
+            Item.Value = Value
+        Else
+            Item.Value = DefaultValue
+        End If
+    End Sub
+
     Friend Sub New(Survey As cSurvey.cSurvey, Context As ContextEnum, Tools As Helper.Editor.cEditDesignTools)
 
         ' Chiamata richiesta dalla finestra di progettazione.
@@ -190,12 +198,12 @@ Public Class frmSplay
         If iContext = ContextEnum.Data Then
             Call TabMain.TabPages.Remove(TabPage3)
         Else
-        If oDesign.Type = cIDesign.cDesignTypeEnum.Plan Then
-            Call TabMain.TabPages.Remove(TabPage2)
-            Call TabMain.TabPages.Remove(TabPage3)
-        ElseIf oDesign.Type = cIDesign.cDesignTypeEnum.Profile Then
-            Call TabMain.TabPages.Remove(TabPage1)
-        End If
+            If oDesign.Type = cIDesign.cDesignTypeEnum.Plan Then
+                Call TabMain.TabPages.Remove(TabPage2)
+                Call TabMain.TabPages.Remove(TabPage3)
+            ElseIf oDesign.Type = cIDesign.cDesignTypeEnum.Profile Then
+                Call TabMain.TabPages.Remove(TabPage1)
+            End If
         End If
 
         Dim oSegment As cItemSegment
@@ -203,34 +211,43 @@ Public Class frmSplay
             oSegment = Tools.CurrentItem
         End If
         If IsNothing(oSegment) Then
-            cboPropPlanSplayPlanProjectionType.SelectedIndex = cIItemPlanSplayBorder.PlanSplayBorderProjectionTypeEnum.All
-            txtPropPlanSplayPlanDeltaZ.Value = 0
-            txtPropPlanSplayMaxVariationDelta.Value = 0
-            txtPropPlanSplayInclinationRangeMin.Value = modSegmentsTools.GetDefaultPlanSplayBorderInclinationRange.Width
-            txtPropPlanSplayInclinationRangeMax.Value = modSegmentsTools.GetDefaultPlanSplayBorderInclinationRange.Height
+            Try
+                cboPropPlanSplayPlanProjectionType.SelectedIndex = cIItemPlanSplayBorder.PlanSplayBorderProjectionTypeEnum.All
+                txtPropPlanSplayPlanDeltaZ.Value = 0
+                txtPropPlanSplayMaxVariationDelta.Value = 0
+                txtPropPlanSplayInclinationRangeMin.Value = modSegmentsTools.GetDefaultPlanSplayBorderInclinationRange.Width
+                txtPropPlanSplayInclinationRangeMax.Value = modSegmentsTools.GetDefaultPlanSplayBorderInclinationRange.Height
+            Catch ex As Exception
+            End Try
         Else
-            cboPropPlanSplayPlanProjectionType.SelectedIndex = oSegment.PlanSplayBorderProjectionType
-            txtPropPlanSplayPlanDeltaZ.Value = oSegment.PlanSplayBorderProjectionDeltaZ
-            txtPropPlanSplayMaxVariationDelta.Value = oSegment.PlanSplayBorderMaxDeltaVariation
-            txtPropPlanSplayInclinationRangeMin.Value = oSegment.PlanSplayBorderInclinationRange.Width
-            txtPropPlanSplayInclinationRangeMax.Value = oSegment.PlanSplayBorderInclinationRange.Height
+            Try
+                cboPropPlanSplayPlanProjectionType.SelectedIndex = oSegment.PlanSplayBorderProjectionType
+                Call pSetNumericUpDownValue(txtPropPlanSplayPlanDeltaZ, oSegment.PlanSplayBorderProjectionDeltaZ, 0)
+                Call pSetNumericUpDownValue(txtPropPlanSplayMaxVariationDelta, oSegment.PlanSplayBorderMaxDeltaVariation, 0)
+                Call pSetNumericUpDownValue(txtPropPlanSplayInclinationRangeMin, oSegment.PlanSplayBorderInclinationRange.Width, -90)
+                Call pSetNumericUpDownValue(txtPropPlanSplayInclinationRangeMax, oSegment.PlanSplayBorderInclinationRange.Height, 90)
+            Catch ex As Exception
+            End Try
         End If
 
         If IsNothing(oSegment) Then
-            txtPropProfileSplayProjectionAngle.Value = 0
-            txtPropProfileSplayMaxVariationAngle.Value = 0
-            txtPropProfileSplayPosInclinationRangeMin.Value = modSegmentsTools.GetDefaultProfileSplayBorderPosInclinationRange.Width
-            txtPropProfileSplayPosInclinationRangeMax.Value = modSegmentsTools.GetDefaultProfileSplayBorderPosInclinationRange.Height
-            txtPropProfileSplayNegInclinationRangeMin.Value = modSegmentsTools.GetDefaultProfileSplayBorderNegInclinationRange.Width
-            txtPropProfileSplayNegInclinationRangeMax.Value = modSegmentsTools.GetDefaultProfileSplayBorderNegInclinationRange.Height
+            Try
+                txtPropProfileSplayProjectionAngle.Value = 0
+                txtPropProfileSplayMaxVariationAngle.Value = 0
+                txtPropProfileSplayPosInclinationRangeMin.Value = modSegmentsTools.GetDefaultProfileSplayBorderPosInclinationRange.Width
+                txtPropProfileSplayPosInclinationRangeMax.Value = modSegmentsTools.GetDefaultProfileSplayBorderPosInclinationRange.Height
+                txtPropProfileSplayNegInclinationRangeMin.Value = modSegmentsTools.GetDefaultProfileSplayBorderNegInclinationRange.Width
+                txtPropProfileSplayNegInclinationRangeMax.Value = modSegmentsTools.GetDefaultProfileSplayBorderNegInclinationRange.Height
+            Catch ex As Exception
+            End Try
         Else
             Try
-                txtPropProfileSplayProjectionAngle.Value = oSegment.ProfileSplayBorderProjectionAngle
-                txtPropProfileSplayMaxVariationAngle.Value = oSegment.ProfileSplayBorderMaxAngleVariation
-                txtPropProfileSplayPosInclinationRangeMin.Value = oSegment.ProfileSplayBorderPosInclinationRange.Width
-                txtPropProfileSplayPosInclinationRangeMax.Value = oSegment.ProfileSplayBorderPosInclinationRange.Height
-                txtPropProfileSplayNegInclinationRangeMin.Value = oSegment.ProfileSplayBorderNegInclinationRange.Width
-                txtPropProfileSplayNegInclinationRangeMax.Value = oSegment.ProfileSplayBorderNegInclinationRange.Height
+                Call pSetNumericUpDownValue(txtPropProfileSplayProjectionAngle, oSegment.ProfileSplayBorderProjectionAngle, 0)
+                Call pSetNumericUpDownValue(txtPropProfileSplayMaxVariationAngle, oSegment.ProfileSplayBorderMaxAngleVariation, 0)
+                Call pSetNumericUpDownValue(txtPropProfileSplayPosInclinationRangeMin, oSegment.ProfileSplayBorderPosInclinationRange.Width, 0)
+                Call pSetNumericUpDownValue(txtPropProfileSplayPosInclinationRangeMax, oSegment.ProfileSplayBorderPosInclinationRange.Height, 90)
+                Call pSetNumericUpDownValue(txtPropProfileSplayNegInclinationRangeMin, oSegment.ProfileSplayBorderNegInclinationRange.Width, -90)
+                Call pSetNumericUpDownValue(txtPropProfileSplayNegInclinationRangeMax, oSegment.ProfileSplayBorderNegInclinationRange.Height, 0)
             Catch ex As Exception
             End Try
         End If
@@ -240,18 +257,24 @@ Public Class frmSplay
             oCrossSection = Tools.CurrentItem
         End If
         If IsNothing(oCrossSection) Then
-            txtPropCrossSectionSplayProjectionAngle.Value = 0
-            cboPropCrossSectionSplayLineStyle.SelectedIndex = cOptions.SplayStyleEnum.PointsAndRays
-            txtPropCrossSectionSplayMaxVariationAngle.Value = 20
-            chkPropCrossSectionShowSplayBorder.Checked = False
-            chkPropCrossSectionSplayText.Checked = False
+            Try
+                txtPropCrossSectionSplayProjectionAngle.Value = 0
+                cboPropCrossSectionSplayLineStyle.SelectedIndex = cOptions.SplayStyleEnum.PointsAndRays
+                txtPropCrossSectionSplayMaxVariationAngle.Value = 20
+                chkPropCrossSectionShowSplayBorder.Checked = False
+                chkPropCrossSectionSplayText.Checked = False
+            Catch ex As Exception
+            End Try
         Else
-            txtPropCrossSectionSplayProjectionAngle.Value = oCrossSection.SplayBorderProjectionAngle
-            cboPropCrossSectionSplayLineStyle.SelectedIndex = oCrossSection.SplayBorderLineStyle
-            txtPropCrossSectionSplayMaxVariationAngle.Value = oCrossSection.SplayBorderMaxAngleVariation
-            chkPropCrossSectionShowSplayBorder.Checked = oCrossSection.ShowSplayBorder
-            chkPropCrossSectionSplayText.Checked = oCrossSection.ShowSplayText
-            TabMain.SelectedTab = TabPage3
+            Try
+                Call pSetNumericUpDownValue(txtPropCrossSectionSplayProjectionAngle, oCrossSection.SplayBorderProjectionAngle, 0)
+                cboPropCrossSectionSplayLineStyle.SelectedIndex = oCrossSection.SplayBorderLineStyle
+                Call pSetNumericUpDownValue(txtPropCrossSectionSplayMaxVariationAngle, oCrossSection.SplayBorderMaxAngleVariation, 0)
+                chkPropCrossSectionShowSplayBorder.Checked = oCrossSection.ShowSplayBorder
+                chkPropCrossSectionSplayText.Checked = oCrossSection.ShowSplayText
+                TabMain.SelectedTab = TabPage3
+            Catch ex As Exception
+            End Try
         End If
     End Sub
 

@@ -801,120 +801,121 @@ Public Class frmPreview
             oGr.FillRectangle(Brushes.LightGray, oGr.ClipBounds)
         Else
             'If DrawDesign Then
-            Dim oGr As Graphics = Graphics.FromImage(oImage)
-            oGr.PageUnit = GraphicsUnit.Pixel
+            Using oGr As Graphics = Graphics.FromImage(oImage)
+                oGr.PageUnit = GraphicsUnit.Pixel
 
-            If btnPreviewQuality0.Checked Then
-                'oGr.CompositingMode = CompositingMode.SourceOver
-                oGr.CompositingQuality = CompositingQuality.HighSpeed
-                oGr.SmoothingMode = SmoothingMode.HighSpeed
-                oGr.InterpolationMode = InterpolationMode.Low
-                oGr.TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
-            ElseIf btnPreviewQuality1.Checked Then
-                'oGr.CompositingMode = CompositingMode.SourceOver
-                oGr.CompositingQuality = CompositingQuality.HighSpeed
-                oGr.SmoothingMode = SmoothingMode.AntiAlias
-                oGr.InterpolationMode = InterpolationMode.Default
-                oGr.TextRenderingHint = Drawing.Text.TextRenderingHint.ClearTypeGridFit
-            Else
-                'oGr.CompositingMode = CompositingMode.SourceOver
-                oGr.CompositingQuality = CompositingQuality.HighQuality
-                oGr.SmoothingMode = SmoothingMode.AntiAlias
-                oGr.InterpolationMode = InterpolationMode.HighQualityBicubic
-                oGr.TextRenderingHint = Drawing.Text.TextRenderingHint.ClearTypeGridFit
-            End If
-
-            If oOptions.TransparentBackground Then
-                Call oGr.Clear(Color.Transparent)
-            Else
-                Call oGr.Clear(Color.White)
-            End If
-
-            sPaintZoom = 10
-            Dim oPageRect As RectangleF = New RectangleF(oOptions.Margins.Left, oOptions.Margins.Top, iImageWidth - oOptions.Margins.Left - oOptions.Margins.Right, iImageHeight - oOptions.Margins.Top - oOptions.Margins.Bottom)
-            oPaintTranslation = New PointF(oPageRect.Width / 2, oPageRect.Height / 2)
-            Dim oRect As RectangleF
-            If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
-                oRect = oSurvey.Plan.GetDesignVisibleBounds(oOptions)
-            Else
-                oRect = oSurvey.Profile.GetDesignVisibleBounds(oOptions)
-            End If
-            oRect = modPaint.AdjustBounds(oRect, 1)
-
-            Dim sMaxZoom As Single = modPaint.GetZoomFactor(oGr, txtScaleManual.Minimum)
-            Dim sMinZoom As Single = modPaint.GetZoomFactor(oGr, txtScaleManual.Maximum)
-
-            If cboScale.SelectedIndex = 0 Then
-                Dim sDesignWidth As Single = oRect.Size.Width
-                Dim sDesignHeight As Single = oRect.Size.Height
-                Dim sPageWidth As Single = oPageRect.Size.Width ' (oPageRect.Size.Width / oGr.DpiX) * 0.0254
-                Dim sPageHeight As Single = oPageRect.Size.Height ' (oPageRect.Size.Height / oGr.DpiX) * 0.0254
-                Dim sDeltaX As Single = sPageWidth / sDesignWidth
-                Dim sDeltaY As Single = sPageHeight / sDesignHeight
-                Dim sDelta As Single = IIf(sDeltaX < sDeltaY, sDeltaX, sDeltaY)
-                If Single.IsInfinity(sDelta) Then sDelta = 100
-                sPaintZoom = sDelta
-                If sPaintZoom < sMinZoom Then sPaintZoom = sMinZoom
-                If sPaintZoom > sMaxZoom Then sPaintZoom = sMaxZoom
-                txtScaleManual.Value = modPaint.GetScaleFactor(oGr, sPaintZoom)
-            Else
-                Dim iFactor As Integer
-                If cboScale.SelectedIndex = cboScale.Items.Count - 1 Then
-                    iFactor = txtScaleManual.Value
+                If btnPreviewQuality0.Checked Then
+                    'oGr.CompositingMode = CompositingMode.SourceOver
+                    oGr.CompositingQuality = CompositingQuality.HighSpeed
+                    oGr.SmoothingMode = SmoothingMode.HighSpeed
+                    oGr.InterpolationMode = InterpolationMode.Low
+                    oGr.TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
+                ElseIf btnPreviewQuality1.Checked Then
+                    'oGr.CompositingMode = CompositingMode.SourceOver
+                    oGr.CompositingQuality = CompositingQuality.HighSpeed
+                    oGr.SmoothingMode = SmoothingMode.AntiAlias
+                    oGr.InterpolationMode = InterpolationMode.Default
+                    oGr.TextRenderingHint = Drawing.Text.TextRenderingHint.ClearTypeGridFit
                 Else
-                    Dim sFactor As String = cboScale.Text
-                    If sFactor = "" Then
-                        iFactor = 250
+                    'oGr.CompositingMode = CompositingMode.SourceOver
+                    oGr.CompositingQuality = CompositingQuality.HighQuality
+                    oGr.SmoothingMode = SmoothingMode.AntiAlias
+                    oGr.InterpolationMode = InterpolationMode.HighQualityBicubic
+                    oGr.TextRenderingHint = Drawing.Text.TextRenderingHint.ClearTypeGridFit
+                End If
+
+                If oOptions.TransparentBackground Then
+                    Call oGr.Clear(Color.Transparent)
+                Else
+                    Call oGr.Clear(Color.White)
+                End If
+
+                sPaintZoom = 10
+                Dim oPageRect As RectangleF = New RectangleF(oOptions.Margins.Left, oOptions.Margins.Top, iImageWidth - oOptions.Margins.Left - oOptions.Margins.Right, iImageHeight - oOptions.Margins.Top - oOptions.Margins.Bottom)
+                oPaintTranslation = New PointF(oPageRect.Width / 2, oPageRect.Height / 2)
+                Dim oRect As RectangleF
+                If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
+                    oRect = oSurvey.Plan.GetDesignVisibleBounds(oOptions)
+                Else
+                    oRect = oSurvey.Profile.GetDesignVisibleBounds(oOptions)
+                End If
+                oRect = modPaint.AdjustBounds(oRect, 1)
+
+                Dim sMaxZoom As Single = modPaint.GetZoomFactor(oGr, txtScaleManual.Minimum)
+                Dim sMinZoom As Single = modPaint.GetZoomFactor(oGr, txtScaleManual.Maximum)
+
+                If cboScale.SelectedIndex = 0 Then
+                    Dim sDesignWidth As Single = oRect.Size.Width
+                    Dim sDesignHeight As Single = oRect.Size.Height
+                    Dim sPageWidth As Single = oPageRect.Size.Width ' (oPageRect.Size.Width / oGr.DpiX) * 0.0254
+                    Dim sPageHeight As Single = oPageRect.Size.Height ' (oPageRect.Size.Height / oGr.DpiX) * 0.0254
+                    Dim sDeltaX As Single = sPageWidth / sDesignWidth
+                    Dim sDeltaY As Single = sPageHeight / sDesignHeight
+                    Dim sDelta As Single = IIf(sDeltaX < sDeltaY, sDeltaX, sDeltaY)
+                    If Single.IsInfinity(sDelta) Then sDelta = 100
+                    sPaintZoom = sDelta
+                    If sPaintZoom < sMinZoom Then sPaintZoom = sMinZoom
+                    If sPaintZoom > sMaxZoom Then sPaintZoom = sMaxZoom
+                    txtScaleManual.Value = modPaint.GetScaleFactor(oGr, sPaintZoom)
+                Else
+                    Dim iFactor As Integer
+                    If cboScale.SelectedIndex = cboScale.Items.Count - 1 Then
+                        iFactor = txtScaleManual.Value
                     Else
-                        iFactor = sFactor.Substring(sFactor.IndexOf(":") + 1)
+                        Dim sFactor As String = cboScale.Text
+                        If sFactor = "" Then
+                            iFactor = 250
+                        Else
+                            iFactor = sFactor.Substring(sFactor.IndexOf(":") + 1)
+                        End If
+                        txtScaleManual.Value = iFactor
                     End If
-                    txtScaleManual.Value = iFactor
+                    sPaintZoom = modPaint.GetZoomFactor(oGr, iFactor) ' ((1 / iFactor) / 0.0254) * oGr.DpiX
                 End If
-                sPaintZoom = modPaint.GetZoomFactor(oGr, iFactor) ' ((1 / iFactor) / 0.0254) * oGr.DpiX
-            End If
 
-            oCurrentOptions.CurrentScale = txtScaleManual.Value
+                oCurrentOptions.CurrentScale = txtScaleManual.Value
 
-            oPaintTranslation = New PointF(-oRect.Left * sPaintZoom + oPageRect.Left + (oPageRect.Width - (oRect.Width * sPaintZoom)) / 2, -oRect.Top * sPaintZoom + oPageRect.Top + (oPageRect.Height - (oRect.Height * sPaintZoom)) / 2)
+                oPaintTranslation = New PointF(-oRect.Left * sPaintZoom + oPageRect.Left + (oPageRect.Width - (oRect.Width * sPaintZoom)) / 2, -oRect.Top * sPaintZoom + oPageRect.Top + (oPageRect.Height - (oRect.Height * sPaintZoom)) / 2)
 
-            Using oMatrix As Matrix = New Matrix
-                Call oMatrix.Scale(sPaintZoom, sPaintZoom, MatrixOrder.Append)
-                Call oMatrix.Translate(oPaintTranslation.X, oPaintTranslation.Y, MatrixOrder.Append)
-                oGr.Transform = oMatrix
+                Using oMatrix As Matrix = New Matrix
+                    Call oMatrix.Scale(sPaintZoom, sPaintZoom, MatrixOrder.Append)
+                    Call oMatrix.Translate(oPaintTranslation.X, oPaintTranslation.Y, MatrixOrder.Append)
+                    oGr.Transform = oMatrix
+                End Using
+                'oGr.DrawRectangle(New Pen(Brushes.Black, -1), oRect.X, oRect.Y, oRect.Width, oRect.Height)
+
+                If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
+                    'disegno il "disegno"
+                    Call oSurvey.Plan.Paint(oGr, oOptions, oSelection)
+
+                    'tolgo la matrice del disegno e disegno i gadget aggiuntivi con le apposite classi di servizio (senza matrice)
+                    Call oGr.ResetTransform()
+                    If pnlCompass.Visible AndAlso oOptions.DrawCompass Then
+                        Call oSurvey.Plan.Plot.Compass.Rebind(oGr, oOptions, oPageRect, Nothing)
+                        Call oSurvey.Plan.Plot.Compass.Paint(oGr, oOptions)
+                    End If
+                    If pnlScale.Visible AndAlso oOptions.DrawScale Then
+                        Call oSurvey.Plan.Plot.Scale.Rebind(oGr, oOptions, oPageRect, New cSurvey.Design.cDesignScale.cParameters(sPaintZoom))
+                        Call oSurvey.Plan.Plot.Scale.Paint(oGr, oOptions)
+                    End If
+                    If pnlInformationBox.Visible AndAlso oOptions.DrawBox Then
+                        Call oSurvey.Plan.Plot.InfoBox.Rebind(oGr, oOptions, oPageRect, Nothing)
+                        Call oSurvey.Plan.Plot.InfoBox.Paint(oGr, oOptions)
+                    End If
+                Else
+                    Call oSurvey.Profile.Paint(oGr, oOptions, oSelection)
+                    'tolgo la matrice del disegno e disegno i gadget aggiuntivi con le apposite classi di servizio (senza matrice)
+                    Call oGr.ResetTransform()
+                    If pnlScale.Visible AndAlso oOptions.DrawScale Then
+                        Call oSurvey.Profile.Plot.Scale.Rebind(oGr, oOptions, oPageRect, New cSurvey.Design.cDesignScale.cParameters(sPaintZoom))
+                        Call oSurvey.Profile.Plot.Scale.Paint(oGr, oOptions)
+                    End If
+                    If pnlInformationBox.Visible AndAlso oOptions.DrawBox Then
+                        Call oSurvey.Profile.Plot.InfoBox.Rebind(oGr, oOptions, oPageRect, Nothing)
+                        Call oSurvey.Profile.Plot.InfoBox.Paint(oGr, oOptions)
+                    End If
+                End If
             End Using
-            'oGr.DrawRectangle(New Pen(Brushes.Black, -1), oRect.X, oRect.Y, oRect.Width, oRect.Height)
-
-            If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
-                'disegno il "disegno"
-                Call oSurvey.Plan.Paint(oGr, oOptions, oSelection)
-
-                'tolgo la matrice del disegno e disegno i gadget aggiuntivi con le apposite classi di servizio (senza matrice)
-                Call oGr.ResetTransform()
-                If pnlCompass.Visible AndAlso oOptions.DrawCompass Then
-                    Call oSurvey.Plan.Plot.Compass.Rebind(oGr, oOptions, oPageRect, Nothing)
-                    Call oSurvey.Plan.Plot.Compass.Paint(oGr, oOptions)
-                End If
-                If pnlScale.Visible AndAlso oOptions.DrawScale Then
-                    Call oSurvey.Plan.Plot.Scale.Rebind(oGr, oOptions, oPageRect, New cSurvey.Design.cDesignScale.cParameters(sPaintZoom))
-                    Call oSurvey.Plan.Plot.Scale.Paint(oGr, oOptions)
-                End If
-                If pnlInformationBox.Visible AndAlso oOptions.DrawBox Then
-                    Call oSurvey.Plan.Plot.InfoBox.Rebind(oGr, oOptions, oPageRect, Nothing)
-                    Call oSurvey.Plan.Plot.InfoBox.Paint(oGr, oOptions)
-                End If
-            Else
-                Call oSurvey.Profile.Paint(oGr, oOptions, oSelection)
-                'tolgo la matrice del disegno e disegno i gadget aggiuntivi con le apposite classi di servizio (senza matrice)
-                Call oGr.ResetTransform()
-                If pnlScale.Visible AndAlso oOptions.DrawScale Then
-                    Call oSurvey.Profile.Plot.Scale.Rebind(oGr, oOptions, oPageRect, New cSurvey.Design.cDesignScale.cParameters(sPaintZoom))
-                    Call oSurvey.Profile.Plot.Scale.Paint(oGr, oOptions)
-                End If
-                If pnlInformationBox.Visible AndAlso oOptions.DrawBox Then
-                    Call oSurvey.Profile.Plot.InfoBox.Rebind(oGr, oOptions, oPageRect, Nothing)
-                    Call oSurvey.Profile.Plot.InfoBox.Paint(oGr, oOptions)
-                End If
-            End If
         End If
         'End If
         picExport.Image = oImage

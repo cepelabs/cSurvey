@@ -2680,14 +2680,18 @@ Module modExport
                     If Survey.Properties.GPS.Enabled Then
                         'se ho i dati geografici il nord viene sempre corretto...nel caso i dati siano geografici specifico una declinazione a 0
                         'anche perché non ho capito come dire a therion come NON CORREGGERE i dati
-                        If oSession.NordType = cSegment.NordTypeEnum.Geographic Then
+                        If oSession.DataFormat = cSegment.DataFormatEnum.Cartesian Then
                             Call St.WriteLine(Space(iIndent) & "declination 0.00 deg")
                         Else
-                            If Survey.Properties.CalculateVersion < 2 Then
-                                'nulla...ma era sbagliato...serve gestire la declinazione (o la data...ma non avendo una data...)
+                            If oSession.NordType = cSegment.NordTypeEnum.Geographic Then
+                                Call St.WriteLine(Space(iIndent) & "declination 0.00 deg")
                             Else
-                                If oSession.Date = CDate(Nothing) AndAlso oSession.NordType = cSegment.NordTypeEnum.Magnetic Then
-                                    Call St.WriteLine(Space(iIndent) & "declination " & modText.FormatNumber(oSession.GetDeclination, "0.00") & " deg")
+                                If Survey.Properties.CalculateVersion < 2 Then
+                                    'nulla...ma era sbagliato...serve gestire la declinazione (o la data...ma non avendo una data...)
+                                Else
+                                    If oSession.Date = CDate(Nothing) AndAlso oSession.NordType = cSegment.NordTypeEnum.Magnetic Then
+                                        Call St.WriteLine(Space(iIndent) & "declination " & modText.FormatNumber(oSession.GetDeclination, "0.00") & " deg")
+                                    End If
                                 End If
                             End If
                         End If

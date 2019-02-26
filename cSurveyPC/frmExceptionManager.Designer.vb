@@ -25,6 +25,12 @@ Partial Class frmExceptionManager
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmExceptionManager))
         Me.rtfException = New System.Windows.Forms.RichTextBox()
+        Me.mnuError = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.mnuExceptionSelectAll = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuExceptionCopyText = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.mnuExceptionCopy = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuExceptionSave = New System.Windows.Forms.ToolStripMenuItem()
         Me.cmdSaveAs = New System.Windows.Forms.Button()
         Me.cmdSaveAsAndExit = New System.Windows.Forms.Button()
         Me.cmdExit = New System.Windows.Forms.Button()
@@ -35,15 +41,54 @@ Partial Class frmExceptionManager
         Me.cmdShowDetails = New System.Windows.Forms.Button()
         Me.lblException = New System.Windows.Forms.Label()
         Me.tmrAskToSendException = New System.Windows.Forms.Timer(Me.components)
+        Me.cmdCopyException = New System.Windows.Forms.Button()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.mnuError.SuspendLayout()
         Me.SuspendLayout()
         '
         'rtfException
         '
         resources.ApplyResources(Me.rtfException, "rtfException")
+        Me.rtfException.ContextMenuStrip = Me.mnuError
         Me.rtfException.DetectUrls = False
         Me.rtfException.HideSelection = False
         Me.rtfException.Name = "rtfException"
+        Me.rtfException.ReadOnly = True
         Me.rtfException.ShortcutsEnabled = False
+        '
+        'mnuError
+        '
+        resources.ApplyResources(Me.mnuError, "mnuError")
+        Me.mnuError.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuExceptionSelectAll, Me.mnuExceptionCopyText, Me.ToolStripMenuItem1, Me.mnuExceptionCopy, Me.mnuExceptionSave})
+        Me.mnuError.Name = "mnuError"
+        '
+        'mnuExceptionSelectAll
+        '
+        Me.mnuExceptionSelectAll.Name = "mnuExceptionSelectAll"
+        resources.ApplyResources(Me.mnuExceptionSelectAll, "mnuExceptionSelectAll")
+        '
+        'mnuExceptionCopyText
+        '
+        Me.mnuExceptionCopyText.Image = Global.cSurveyPC.My.Resources.Resources.page_copy
+        Me.mnuExceptionCopyText.Name = "mnuExceptionCopyText"
+        resources.ApplyResources(Me.mnuExceptionCopyText, "mnuExceptionCopyText")
+        '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        resources.ApplyResources(Me.ToolStripMenuItem1, "ToolStripMenuItem1")
+        '
+        'mnuExceptionCopy
+        '
+        Me.mnuExceptionCopy.Image = Global.cSurveyPC.My.Resources.Resources.page_copy
+        Me.mnuExceptionCopy.Name = "mnuExceptionCopy"
+        resources.ApplyResources(Me.mnuExceptionCopy, "mnuExceptionCopy")
+        '
+        'mnuExceptionSave
+        '
+        Me.mnuExceptionSave.Image = Global.cSurveyPC.My.Resources.Resources.script_save
+        Me.mnuExceptionSave.Name = "mnuExceptionSave"
+        resources.ApplyResources(Me.mnuExceptionSave, "mnuExceptionSave")
         '
         'cmdSaveAs
         '
@@ -76,6 +121,7 @@ Partial Class frmExceptionManager
         resources.ApplyResources(Me.cmdSaveException, "cmdSaveException")
         Me.cmdSaveException.Image = Global.cSurveyPC.My.Resources.Resources.script_save
         Me.cmdSaveException.Name = "cmdSaveException"
+        Me.ToolTip1.SetToolTip(Me.cmdSaveException, resources.GetString("cmdSaveException.ToolTip"))
         Me.cmdSaveException.UseVisualStyleBackColor = True
         '
         'cmdSendException
@@ -83,6 +129,7 @@ Partial Class frmExceptionManager
         resources.ApplyResources(Me.cmdSendException, "cmdSendException")
         Me.cmdSendException.Image = Global.cSurveyPC.My.Resources.Resources.email_go
         Me.cmdSendException.Name = "cmdSendException"
+        Me.ToolTip1.SetToolTip(Me.cmdSendException, resources.GetString("cmdSendException.ToolTip"))
         Me.cmdSendException.UseVisualStyleBackColor = True
         '
         'cmdClose
@@ -102,16 +149,26 @@ Partial Class frmExceptionManager
         'lblException
         '
         resources.ApplyResources(Me.lblException, "lblException")
+        Me.lblException.ContextMenuStrip = Me.mnuError
         Me.lblException.Name = "lblException"
         '
         'tmrAskToSendException
         '
+        '
+        'cmdCopyException
+        '
+        resources.ApplyResources(Me.cmdCopyException, "cmdCopyException")
+        Me.cmdCopyException.Image = Global.cSurveyPC.My.Resources.Resources.page_copy
+        Me.cmdCopyException.Name = "cmdCopyException"
+        Me.ToolTip1.SetToolTip(Me.cmdCopyException, resources.GetString("cmdCopyException.ToolTip"))
+        Me.cmdCopyException.UseVisualStyleBackColor = True
         '
         'frmExceptionManager
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdClose
+        Me.Controls.Add(Me.cmdCopyException)
         Me.Controls.Add(Me.lblException)
         Me.Controls.Add(Me.cmdShowDetails)
         Me.Controls.Add(Me.cmdClose)
@@ -125,6 +182,7 @@ Partial Class frmExceptionManager
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmExceptionManager"
+        Me.mnuError.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -140,4 +198,12 @@ Partial Class frmExceptionManager
     Friend WithEvents cmdShowDetails As System.Windows.Forms.Button
     Friend WithEvents lblException As System.Windows.Forms.Label
     Friend WithEvents tmrAskToSendException As System.Windows.Forms.Timer
+    Friend WithEvents cmdCopyException As Button
+    Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents mnuError As ContextMenuStrip
+    Friend WithEvents mnuExceptionCopy As ToolStripMenuItem
+    Friend WithEvents mnuExceptionSave As ToolStripMenuItem
+    Friend WithEvents mnuExceptionSelectAll As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem1 As ToolStripSeparator
+    Friend WithEvents mnuExceptionCopyText As ToolStripMenuItem
 End Class

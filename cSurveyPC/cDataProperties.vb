@@ -1,6 +1,7 @@
 ﻿Imports System.Xml
 Imports System.Linq
 Imports cSurveyPC.cSurvey.Scripting
+Imports System.Collections.ObjectModel
 
 Namespace cSurvey.Data
     Public Interface cIObjectDataProperties
@@ -81,14 +82,16 @@ Namespace cSurvey.Data
                 Next
             Else
                 Dim oValues As List(Of String) = New List(Of String)(Strings.Split(Item.InnerText, "|"))
-                Dim iIndex As Integer = 0
-                For Each oDataField As cDataField In oDataFields
-                    Dim sValue As String = oValues(iIndex)
+                'Dim iIndex As Integer = 0
+                For i As Integer = 0 To oValues.Count - 1
+                    'For Each oDataField As cDataField In oDataFields
+                    Dim sValue As String = oValues(i)
                     If sValue <> "" Then
+                        Dim oDataField As cDataField = oDataFields(i)
                         Dim oValue As Object = oDataField.StringToValue(sValue)
                         Call oItems.Add(oDataField.Name, oValue)
                     End If
-                    iIndex += 1
+                    'iIndex += 1
                 Next
             End If
         End Sub
@@ -206,6 +209,14 @@ Namespace cSurvey.Data
         End Sub
     End Class
 
+    Friend Class cDataFieldsCollection
+        Inherits KeyedCollection(Of String, cDataField)
+
+        Protected Overrides Function GetKeyForItem(ByVal item As cDataField) As String
+            Return item.Name
+        End Function
+    End Class
+
     Public Class cDataFields
         Implements IEnumerable
 
@@ -265,7 +276,7 @@ Namespace cSurvey.Data
         Friend Event OnRename(Sender As cDataFields, Args As cDataFieldsRebindEventArgs)
         Friend Event OnRetype(Sender As cDataFields, Args As cDataFieldsRebindEventArgs)
 
-        Private oItems As SortedDictionary(Of String, cDataField)
+        Private oItems As cDataFieldsCollection
 
         Private sName As String
 
@@ -278,7 +289,7 @@ Namespace cSurvey.Data
                 sCode = sCode & "public sub SetDataProperties(DataProperties as cSurveyPC.cSurvey.Data.cDataProperties)" & vbCrLf
                 sCode = sCode & "oDataProperties=DataProperties" & vbCrLf
                 sCode = sCode & "end sub" & vbCrLf & vbCrLf
-                For Each oDataField As cDataField In oItems.Values
+                For Each oDataField As cDataField In oItems
                     sCode = sCode & oDataField.GetCodeDefinition & vbCrLf
                 Next
                 oClass = New cClass(oSurvey, "_dataproperties", sCode, LanguageEnum.VisualBasic)
@@ -292,7 +303,7 @@ Namespace cSurvey.Data
 
         Public Function CanMergeWith(DataFields As cDataFields) As Boolean
             For Each oDataField As cDataField In DataFields
-                If oItems.ContainsKey(oDataField.Name) Then
+                If oItems.Contains(oDataField.Name) Then
                     'check if type is the same (casting is not supported, for now)
                     If oDataField.Type <> oItems(oDataField.Name).Type Then
                         Return False
@@ -305,10 +316,10 @@ Namespace cSurvey.Data
         Public Sub MergeWith(DataFields As cDataFields)
             Dim bInvalidateClass As Boolean = False
             For Each oDataField As cDataField In DataFields
-                If Not oItems.ContainsKey(oDataField.Name) Then
+                If Not oItems.Contains(oDataField.Name) Then
                     Dim oNewDataField As cDataField = New cDataField(oSurvey, oDataField.Name, oDataField.Type)
                     Call oNewDataField.CopyFrom(oDataField)
-                    Call oItems.Add(oNewDataField.Name, oNewDataField)
+                    Call oItems.Add(oNewDataField)
                     bInvalidateClass = True
                 End If
             Next
@@ -316,15 +327,15 @@ Namespace cSurvey.Data
         End Sub
 
         Public Function Contains(Item As cDataField) As Boolean
-            Return oItems.ContainsValue(Item)
+            Return oItems.Contains(Item)
         End Function
 
         Public Function Contains(Name As String) As Boolean
-            Return oItems.ContainsKey(Name)
+            Return oItems.Contains(Name)
         End Function
 
         Public Function Rename(Name As String, NewName As String) As cDataField
-            If oItems.ContainsKey(NewName) Then
+            If oItems.Contains(NewName) Then
                 Return Nothing
             Else
                 Dim oItem As cDataField = oItems(Name)
@@ -343,7 +354,7 @@ Namespace cSurvey.Data
                 'oNewItem.DefaultValue = oItem.DefaultValue
                 RaiseEvent OnRename(Me, New cDataFieldsRebindEventArgs(oItem, oNewItem))
                 Call oItems.Remove(Name)
-                Call oItems.Add(NewName, oNewItem)
+                Call oItems.Add(oNewItem)
                 Call InvalidateClass()
                 Return oNewItem
             End If
@@ -366,14 +377,14 @@ Namespace cSurvey.Data
                 'oNewItem.DefaultValue = oItem.DefaultValue
                 RaiseEvent OnRetype(Me, New cDataFieldsRebindEventArgs(oItem, oNewItem))
                 Call oItems.Remove(Name)
-                Call oItems.Add(Name, oNewItem)
+                Call oItems.Add(oNewItem)
                 Call InvalidateClass()
                 Return oNewItem
             End If
         End Function
 
         Public Function Add(Name As String, Type As TypeEnum) As cDataField
-            If oItems.ContainsKey(Name) Then
+            If oItems.Contains(Name) Then
                 Return Nothing
             Else
                 Dim oItem As cDataField
@@ -383,7 +394,7 @@ Namespace cSurvey.Data
                     Case Else
                         oItem = New cDataField(oSurvey, Name, Type)
                 End Select
-                Call oItems.Add(Name, oItem)
+                Call oItems.Add(oItem)
                 Call InvalidateClass()
                 RaiseEvent OnAdd(Me, New cDataFieldsEventArgs(oItem))
                 Return oItem
@@ -391,7 +402,7 @@ Namespace cSurvey.Data
         End Function
 
         Public Sub Remove(Item As cDataField)
-            If oItems.ContainsValue(Item) Then
+            If oItems.Contains(Item) Then
                 Dim oItem As cDataField = Item
                 RaiseEvent OnRemove(Me, New cDataFieldsEventArgs(oItem))
                 Call oItems.Remove(oItem.Name)
@@ -400,7 +411,7 @@ Namespace cSurvey.Data
         End Sub
 
         Public Sub Remove(Name As String)
-            If oItems.ContainsKey(Name) Then
+            If oItems.Contains(Name) Then
                 Dim oItem As cDataField = oItems(Name)
                 RaiseEvent OnRemove(Me, New cDataFieldsEventArgs(oItem))
                 Call oItems.Remove(Name)
@@ -427,13 +438,13 @@ Namespace cSurvey.Data
         End Property
 
         Public Function GetEnumerator() As IEnumerator Implements IEnumerable.GetEnumerator
-            Return oItems.Values.GetEnumerator
+            Return oItems.GetEnumerator
         End Function
 
         Friend Sub New(ByVal Survey As cSurvey, Name As String)
             oSurvey = Survey
             sName = Name
-            oItems = New SortedDictionary(Of String, cDataField)
+            oItems = New cDataFieldsCollection
         End Sub
 
         Public ReadOnly Property Name As String
@@ -445,7 +456,7 @@ Namespace cSurvey.Data
         Friend Sub New(ByVal Survey As cSurvey, ByVal Item As XmlElement)
             oSurvey = Survey
             sName = Item.Name
-            oItems = New SortedDictionary(Of String, cDataField)
+            oItems = New cDataFieldsCollection
             For Each oChildItem As XmlElement In Item.ChildNodes
                 Dim oField As cDataField
                 Dim iType As cDataFields.TypeEnum = modXML.GetAttributeValue(oChildItem, "type", cDataFields.TypeEnum.Text)
@@ -455,13 +466,13 @@ Namespace cSurvey.Data
                     Case Else
                         oField = New cDataField(Survey, oChildItem)
                 End Select
-                Call oItems.Add(oField.Name, oField)
+                Call oItems.Add(oField)
             Next
         End Sub
 
         Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLDataFields As XmlElement = Document.CreateElement(sName)
-            For Each oField As cDataField In oItems.Values
+            For Each oField As cDataField In oItems
                 Call oField.SaveTo(File, Document, oXMLDataFields)
             Next
             Call Parent.AppendChild(oXMLDataFields)
@@ -469,7 +480,7 @@ Namespace cSurvey.Data
         End Function
 
         Public Function ToList() As List(Of cDataField)
-            Return oItems.Values.ToList
+            Return oItems.ToList
         End Function
     End Class
 

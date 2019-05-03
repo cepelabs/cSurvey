@@ -315,6 +315,25 @@ Namespace cSurvey
             End Set
         End Property
 
+        Private iDesignWarpingState As cSurvey.DesignWarpingStateEnum
+
+        Public Property DesignWarpingState() As cSurvey.DesignWarpingStateEnum
+            Get
+                Return iDesignWarpingState
+            End Get
+            Set(value As cSurvey.DesignWarpingStateEnum)
+                If value <> iDesignWarpingState Then
+                    iDesignWarpingState = value
+                    Call oSurvey.RaiseOnPropertiesChanged(OnPropertiesChangedEventArgs.PropertiesChangeSourceEnum.DesignWarpingState)
+                    If iDesignWarpingState = DesignWarpingStateEnum.Paused Then
+                        Call oSurvey.RaiseOnLogEvent(LogEntryType.Warning, "Warping paused", True)
+                    Else
+                        Call oSurvey.RaiseOnLogEvent(LogEntryType.Warning, "Warping activated", True)
+                    End If
+                End If
+            End Set
+        End Property
+
         Public Property DesignWarpingMode As cSurvey.DesignWarpingModeEnum
             Get
                 Return iDesignWarpingMode
@@ -761,6 +780,7 @@ Namespace cSurvey
             iRingCorrectionMode = iDefaultRingCorrectionMode
             iDesignBindingMode = iDefaultBindingMode
             iDesignWarpingMode = iDefaultDesignWarpingMode
+            iDesignWarpingState = DesignWarpingStateEnum.Active
             bPlanWarpingDisabled = False
             bProfileWarpingDisabled = False
             bShowWarpingDetails = True
@@ -1031,6 +1051,7 @@ Namespace cSurvey
                 bProfileWarpingDisabled = modXML.GetAttributeValue([Properties], "profilewarpingdisabled", False)
             End If
             bShowWarpingDetails = modXML.GetAttributeValue([Properties], "showwarpingdetails", True)
+            iDesignWarpingState = modXML.GetAttributeValue([Properties], "warpingstate", 0)
 
             iSplayMode = modXML.GetAttributeValue([Properties], "splaymode", cSurvey.SplayModeEnum.None)
             'bBindSplaySegment = modXML.GetAttributeValue([Properties], "bindsplaysegment", False)
@@ -1136,10 +1157,13 @@ Namespace cSurvey
             If Not bShowWarpingDetails Then
                 Call oXmlProperties.SetAttribute("showwarpingdetails", "0")
             End If
+            If iDesignWarpingState <> DesignWarpingStateEnum.Active Then
+                Call oXmlProperties.SetAttribute("warpingstate", iDesignWarpingState.ToString("D"))
+            End If
 
             If iDataFormat <> cSegment.DataFormatEnum.Normal Then Call oXmlProperties.SetAttribute("dataformat", iDataFormat.ToString("D"))
             If iDistanceType <> cSegment.DistanceTypeEnum.Meters Then Call oXmlProperties.SetAttribute("distancetype", iDistanceType.ToString("D"))
-            If iBearingType <> cSegment.BearingTypeEnum.DecimalDegree Then Call oXmlProperties.SetAttribute("Bearingtype", iBearingType.ToString("D"))
+            If iBearingType <> cSegment.BearingTypeEnum.DecimalDegree Then Call oXmlProperties.SetAttribute("bearingtype", iBearingType.ToString("D"))
             If iBearingDirection <> cSegment.MeasureDirectionEnum.Direct Then Call oXmlProperties.SetAttribute("bearingdirection", iBearingDirection.ToString("D"))
             If iInclinationType <> cSegment.InclinationTypeEnum.DecimalDegree Then Call oXmlProperties.SetAttribute("inclinationtype", iInclinationType.ToString("D"))
             If iInclinationDirection <> cSegment.MeasureDirectionEnum.Direct Then Call oXmlProperties.SetAttribute("inclinationdirection", iInclinationDirection.ToString("D"))

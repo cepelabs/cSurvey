@@ -152,18 +152,6 @@
   <data name="ToolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
-  <data name="cmdCalculateSelected.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="cmdCalculateSelected.Text" xml:space="preserve">
-    <value>Calculate</value>
-  </data>
-  <data name="cmdCalculateAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="cmdCalculateAll.Text" xml:space="preserve">
-    <value>Calculate all</value>
-  </data>
   <data name="cmdCalculate.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -205,6 +193,18 @@
   </data>
   <data name="&gt;&gt;tbMain.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="cmdCalculateSelected.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 22</value>
+  </data>
+  <data name="cmdCalculateSelected.Text" xml:space="preserve">
+    <value>Calculate</value>
+  </data>
+  <data name="cmdCalculateAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 22</value>
+  </data>
+  <data name="cmdCalculateAll.Text" xml:space="preserve">
+    <value>Calculate all</value>
   </data>
   <data name="colLinkedSurveysIcon.Text" xml:space="preserve">
     <value> </value>
@@ -250,6 +250,40 @@
   </metadata>
   <data name="mnuContext.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="mnuContext.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 132</value>
+  </data>
+  <data name="&gt;&gt;mnuContext.Name" xml:space="preserve">
+    <value>mnuContext</value>
+  </data>
+  <data name="&gt;&gt;mnuContext.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tvLinkedSurveys.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tvLinkedSurveys.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="tvLinkedSurveys.Size" type="System.Drawing.Size, System.Drawing">
+    <value>284, 237</value>
+  </data>
+  <data name="tvLinkedSurveys.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;tvLinkedSurveys.Name" xml:space="preserve">
+    <value>tvLinkedSurveys</value>
+  </data>
+  <data name="&gt;&gt;tvLinkedSurveys.Type" xml:space="preserve">
+    <value>BrightIdeasSoftware.ObjectListView, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
+  </data>
+  <data name="&gt;&gt;tvLinkedSurveys.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tvLinkedSurveys.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="mnuContextAdd.Size" type="System.Drawing.Size, System.Drawing">
     <value>171, 22</value>
@@ -299,40 +333,6 @@
   <data name="mnucontextRefresh.Text" xml:space="preserve">
     <value>Refresh</value>
   </data>
-  <data name="mnuContext.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 132</value>
-  </data>
-  <data name="&gt;&gt;mnuContext.Name" xml:space="preserve">
-    <value>mnuContext</value>
-  </data>
-  <data name="&gt;&gt;mnuContext.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="tvLinkedSurveys.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tvLinkedSurveys.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 25</value>
-  </data>
-  <data name="tvLinkedSurveys.Size" type="System.Drawing.Size, System.Drawing">
-    <value>284, 237</value>
-  </data>
-  <data name="tvLinkedSurveys.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;tvLinkedSurveys.Name" xml:space="preserve">
-    <value>tvLinkedSurveys</value>
-  </data>
-  <data name="&gt;&gt;tvLinkedSurveys.Type" xml:space="preserve">
-    <value>BrightIdeasSoftware.ObjectListView, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
-  </data>
-  <data name="&gt;&gt;tvLinkedSurveys.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tvLinkedSurveys.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -377,6 +377,24 @@
   </data>
   <data name="&gt;&gt;ToolStripSeparator2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmdCalculate.Name" xml:space="preserve">
+    <value>cmdCalculate</value>
+  </data>
+  <data name="&gt;&gt;cmdCalculate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmdCalculateSelected.Name" xml:space="preserve">
+    <value>cmdCalculateSelected</value>
+  </data>
+  <data name="&gt;&gt;cmdCalculateSelected.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmdCalculateAll.Name" xml:space="preserve">
+    <value>cmdCalculateAll</value>
+  </data>
+  <data name="&gt;&gt;cmdCalculateAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ToolStripSeparator3.Name" xml:space="preserve">
     <value>ToolStripSeparator3</value>
@@ -478,24 +496,6 @@
     <value>mnucontextRefresh</value>
   </data>
   <data name="&gt;&gt;mnucontextRefresh.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdCalculate.Name" xml:space="preserve">
-    <value>cmdCalculate</value>
-  </data>
-  <data name="&gt;&gt;cmdCalculate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdCalculateSelected.Name" xml:space="preserve">
-    <value>cmdCalculateSelected</value>
-  </data>
-  <data name="&gt;&gt;cmdCalculateSelected.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdCalculateAll.Name" xml:space="preserve">
-    <value>cmdCalculateAll</value>
-  </data>
-  <data name="&gt;&gt;cmdCalculateAll.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

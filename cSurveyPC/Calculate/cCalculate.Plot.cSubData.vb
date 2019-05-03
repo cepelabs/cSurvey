@@ -65,6 +65,14 @@ Namespace cSurvey.Calculate.Plot
             End Get
         End Property
 
+        Friend Sub RenameFrom(Newname As String)
+            sFrom = Newname
+        End Sub
+
+        Friend Sub RenameTo(Newname As String)
+            sTo = Newname
+        End Sub
+
         Friend Sub New(Parent As cData, [From] As String, [To] As String, Distance As Decimal, PlanFromPoint As PointD, PlanToPoint As PointD, ProfileFromPoint As PointD, ProfileToPoint As PointD)
             oParent = Parent
             sFrom = [From]

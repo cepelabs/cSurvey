@@ -65,21 +65,26 @@ Public Class frmLinkedSurveys
                                                          End If
                                                      End Function
 
+        tvLinkedSurveys.DragSource = New SimpleDragSource()
+
         Call tvLinkedSurveys.RebuildColumns()
     End Sub
 
     Private Sub tvLinkedSurveys_CanDrop(sender As Object, e As OlvDropEventArgs) Handles tvLinkedSurveys.CanDrop
-        If e.DataObject.ContainsFileDropList Then
-            Dim sFiles As System.Collections.Specialized.StringCollection = e.DataObject.GetFileDropList()
-            For Each sFile As String In sFiles
-                Dim sExtension As String = IO.Path.GetExtension(sFile).ToLower
-                If sExtension = ".csz" OrElse sExtension = ".csx" Then
-                    e.Effect = DragDropEffects.Copy
-                    e.Handled = True
-                    Return
-                End If
-            Next
-        End If
+        Try
+            If e.DataObject.ContainsFileDropList Then
+                Dim sFiles As System.Collections.Specialized.StringCollection = e.DataObject.GetFileDropList()
+                For Each sFile As String In sFiles
+                    Dim sExtension As String = IO.Path.GetExtension(sFile).ToLower
+                    If sExtension = ".csz" OrElse sExtension = ".csx" Then
+                        e.Effect = DragDropEffects.Copy
+                        e.Handled = True
+                        Return
+                    End If
+                Next
+            End If
+        Catch ex As Exception
+        End Try
         e.Effect = DragDropEffects.None
     End Sub
 
@@ -246,4 +251,27 @@ Public Class frmLinkedSurveys
     Private Sub cmdCalculateAll_Click(sender As Object, e As EventArgs) Handles cmdCalculateAll.Click
         Call pCalculateAll()
     End Sub
+
+    Private Sub tvLinkedSurveys_ModelCanDrop(sender As Object, e As ModelDropEventArgs) Handles tvLinkedSurveys.ModelCanDrop
+        If TypeOf e.TargetModel Is cLinkedSurvey Then
+            Dim oLinkedSurvey As cLinkedSurvey = e.TargetModel
+            If Not oLinkedSurvey.Survey Is oSurvey Then
+                Call oSurvey.LinkedSurveys.Add(oLinkedSurvey.Filename)
+            End If
+        End If
+    End Sub
+
+    'Private Sub tvLinkedSurveys_MouseMove(sender As Object, e As MouseEventArgs) Handles tvLinkedSurveys.MouseMove
+    '    If (e.Button And MouseButtons.Left) = MouseButtons.Left Then
+    '        Dim oData As DataObject = New DataObject
+    '        Dim oFiles As Specialized.StringCollection = New Specialized.StringCollection
+    '        For Each oLinkedSurvey As cLinkedSurvey In tvLinkedSurveys.SelectedObjects
+    '            Call oFiles.Add(oLinkedSurvey.Filename)
+    '        Next
+    '        Call oData.SetFileDropList(oFiles)
+    '        If oFiles.Count > 0 Then
+    '            Call tvLinkedSurveys.DoDragDrop(oData, DragDropEffects.All)
+    '        End If
+    '    End If
+    'End Sub
 End Class

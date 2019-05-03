@@ -71,6 +71,11 @@ Namespace cSurvey
             [Manual] = 2
         End Enum
 
+        Public Enum DesignWarpingStateEnum
+            [Active] = 0
+            [Paused] = 1
+        End Enum
+
         Public Enum DesignWarpingModeEnum
             [None] = 0
             [Default] = 1
@@ -298,6 +303,7 @@ Namespace cSurvey
                 Scale = 2
                 MainProperties = 3
                 MasterSlaveSettings = 4
+                DesignWarpingState = 5
             End Enum
 
             Private iSource As PropertiesChangeSourceEnum
@@ -655,9 +661,6 @@ Namespace cSurvey
 
         Friend Sub RaiseOnPropertiesChanged(ByVal Source As OnPropertiesChangedEventArgs.PropertiesChangeSourceEnum)
             RaiseEvent OnBeforePropertiesChange(Me, New OnPropertiesChangedEventArgs(Source))
-            'For Each oOption As cOptions In oOptions
-            '    Call oOption.DrawingObjects.Rebind()
-            'Next
             'Call oPlan.Plot.Caches.Invalidate()
             'Call oProfile.Plot.Caches.Invalidate()
             RaiseEvent OnPropertiesChanged(Me, New OnPropertiesChangedEventArgs(Source))

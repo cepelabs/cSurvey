@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmImportcSurvey
     Inherits cForm
 
     'Form esegue l'override del metodo Dispose per pulire l'elenco dei componenti.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmImportcSurvey
     'NOTA: la procedura che segue è richiesta da Progettazione Windows Form
     'Può essere modificata in Progettazione Windows Form.  
     'Non modificarla nell'editor del codice.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmImportcSurvey))
@@ -55,7 +55,12 @@ Partial Class frmImportcSurvey
         Me.chkcSurveyDisableOriginAsExtendstart = New System.Windows.Forms.CheckBox()
         Me.lblcSurveyImportWarpingMode = New System.Windows.Forms.Label()
         Me.cbocSurveyImportWarpingMode = New System.Windows.Forms.ComboBox()
+        Me.chkcsurveyimportlinkedsurvey = New System.Windows.Forms.CheckBox()
+        Me.pnlcSurveyImportData = New System.Windows.Forms.Panel()
+        Me.pnlcSurveyImportGraphics = New System.Windows.Forms.Panel()
         Me.GroupBox1.SuspendLayout()
+        Me.pnlcSurveyImportData.SuspendLayout()
+        Me.pnlcSurveyImportGraphics.SuspendLayout()
         Me.SuspendLayout()
         '
         'txtFilename
@@ -259,44 +264,67 @@ Partial Class frmImportcSurvey
         Me.cbocSurveyImportWarpingMode.Items.AddRange(New Object() {resources.GetString("cbocSurveyImportWarpingMode.Items"), resources.GetString("cbocSurveyImportWarpingMode.Items1"), resources.GetString("cbocSurveyImportWarpingMode.Items2")})
         Me.cbocSurveyImportWarpingMode.Name = "cbocSurveyImportWarpingMode"
         '
+        'chkcsurveyimportlinkedsurvey
+        '
+        resources.ApplyResources(Me.chkcsurveyimportlinkedsurvey, "chkcsurveyimportlinkedsurvey")
+        Me.chkcsurveyimportlinkedsurvey.Name = "chkcsurveyimportlinkedsurvey"
+        Me.chkcsurveyimportlinkedsurvey.UseVisualStyleBackColor = True
+        '
+        'pnlcSurveyImportData
+        '
+        Me.pnlcSurveyImportData.Controls.Add(Me.chkcSurveyImportDuplicatesOverwriteOnlyUsed)
+        Me.pnlcSurveyImportData.Controls.Add(Me.chkcSurveyImportDuplicatesOverwrite)
+        Me.pnlcSurveyImportData.Controls.Add(Me.chkcSurveyImportDuplicates)
+        Me.pnlcSurveyImportData.Controls.Add(Me.cbocSurveyImportDuplicatesMode)
+        Me.pnlcSurveyImportData.Controls.Add(Me.lblcSurveyImportDuplicatesMode)
+        Me.pnlcSurveyImportData.Controls.Add(Me.chkcSurveyImportDuplicatesStations)
+        resources.ApplyResources(Me.pnlcSurveyImportData, "pnlcSurveyImportData")
+        Me.pnlcSurveyImportData.Name = "pnlcSurveyImportData"
+        '
+        'pnlcSurveyImportGraphics
+        '
+        Me.pnlcSurveyImportGraphics.Controls.Add(Me.chkcSurveyImportPlan)
+        Me.pnlcSurveyImportGraphics.Controls.Add(Me.lblcSurveyImportWarpingMode)
+        Me.pnlcSurveyImportGraphics.Controls.Add(Me.chkcSurveyImportCaveBranchFromDesign)
+        Me.pnlcSurveyImportGraphics.Controls.Add(Me.cbocSurveyImportWarpingMode)
+        Me.pnlcSurveyImportGraphics.Controls.Add(Me.chkcSurveyImportProfile)
+        resources.ApplyResources(Me.pnlcSurveyImportGraphics, "pnlcSurveyImportGraphics")
+        Me.pnlcSurveyImportGraphics.Name = "pnlcSurveyImportGraphics"
+        '
         'frmImportcSurvey
         '
         Me.AcceptButton = Me.cmdOk
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
-        Me.Controls.Add(Me.lblcSurveyImportWarpingMode)
-        Me.Controls.Add(Me.cbocSurveyImportWarpingMode)
+        Me.Controls.Add(Me.pnlcSurveyImportData)
+        Me.Controls.Add(Me.chkcsurveyimportlinkedsurvey)
         Me.Controls.Add(Me.chkcSurveyDisableOriginAsExtendstart)
-        Me.Controls.Add(Me.chkcSurveyImportDuplicatesOverwriteOnlyUsed)
         Me.Controls.Add(Me.chkcSurveyImportCreateNewBranch)
         Me.Controls.Add(Me.chkcSurveyImportUpdateCaveBranchPriority)
         Me.Controls.Add(Me.cboImportAsBranchOfBranch)
         Me.Controls.Add(Me.cboImportAsBranchOfCave)
         Me.Controls.Add(Me.chkImportAsBranchOf)
-        Me.Controls.Add(Me.chkcSurveyImportDuplicatesStations)
-        Me.Controls.Add(Me.chkcSurveyImportDuplicatesOverwrite)
-        Me.Controls.Add(Me.lblcSurveyImportDuplicatesMode)
-        Me.Controls.Add(Me.cbocSurveyImportDuplicatesMode)
-        Me.Controls.Add(Me.chkcSurveyImportDuplicates)
-        Me.Controls.Add(Me.chkcSurveyImportCaveBranchFromDesign)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.chkcSurveyImportScaleRules)
         Me.Controls.Add(Me.chkcSurveyImportDesignProperties)
         Me.Controls.Add(Me.chkcSurveyImportSurface)
-        Me.Controls.Add(Me.chkcSurveyImportProfile)
-        Me.Controls.Add(Me.chkcSurveyImportPlan)
         Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.cmdOk)
         Me.Controls.Add(Me.txtFilename)
         Me.Controls.Add(Me.lblFilename)
         Me.Controls.Add(Me.chkcSurveyImportData)
         Me.Controls.Add(Me.chkcSurveyImportGraphics)
+        Me.Controls.Add(Me.pnlcSurveyImportGraphics)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmImportcSurvey"
         Me.GroupBox1.ResumeLayout(False)
+        Me.pnlcSurveyImportData.ResumeLayout(False)
+        Me.pnlcSurveyImportData.PerformLayout()
+        Me.pnlcSurveyImportGraphics.ResumeLayout(False)
+        Me.pnlcSurveyImportGraphics.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -332,4 +360,7 @@ Partial Class frmImportcSurvey
     Friend WithEvents chkcSurveyDisableOriginAsExtendstart As CheckBox
     Friend WithEvents lblcSurveyImportWarpingMode As Label
     Friend WithEvents cbocSurveyImportWarpingMode As ComboBox
+    Friend WithEvents chkcsurveyimportlinkedsurvey As CheckBox
+    Friend WithEvents pnlcSurveyImportData As Panel
+    Friend WithEvents pnlcSurveyImportGraphics As Panel
 End Class

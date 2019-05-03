@@ -1919,4 +1919,28 @@
   <data name="mnuItemNamePatternTagsIndex.Text" xml:space="preserve">
     <value>Indice elemento nel livello (%I%)</value>
   </data>
+  <data name="ColumnHeader1.Text" xml:space="preserve">
+    <value>Battute</value>
+  </data>
+  <data name="txtDesignExtraScaleFactor.ToolTip" xml:space="preserve">
+    <value>Fattore di scala applicato a legenda, scala, bussola e altro oggetti extra</value>
+  </data>
+  <data name="txtDesignExtraTextScaleFactor.ToolTip" xml:space="preserve">
+    <value>Fattore di scala applicato al testo di legenda, scala, bussola e altro oggetti extra</value>
+  </data>
+  <data name="picSurfacePenColor.ToolTip" xml:space="preserve">
+    <value>Colore di default delle linee delle superficie</value>
+  </data>
+  <data name="optWarpingPaused.Text" xml:space="preserve">
+    <value>In pausa</value>
+  </data>
+  <data name="optWarpingPaused.ToolTip" xml:space="preserve">
+    <value>Mette in pausa la funzione di warping</value>
+  </data>
+  <data name="optWarpingActive.Text" xml:space="preserve">
+    <value>Attivo</value>
+  </data>
+  <data name="optWarpingActive.ToolTip" xml:space="preserve">
+    <value>Attiva la funzione di warping</value>
+  </data>
 </root>

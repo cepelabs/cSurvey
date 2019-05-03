@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("Cepelabs")> 
 <Assembly: AssemblyProduct("cSurvey")>
-<Assembly: AssemblyCopyright("Copyright © Cendron Federico, Petr Koveshnikov 2010-2018")>
+<Assembly: AssemblyCopyright("Copyright © Cendron Federico, Petr Koveshnikov 2010-2019")>
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>

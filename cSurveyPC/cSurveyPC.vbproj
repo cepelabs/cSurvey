@@ -169,11 +169,11 @@
     <Reference Include="clipper_library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Clipper.6.2.10\lib\net40\clipper_library.dll</HintPath>
     </Reference>
-    <Reference Include="Diacritics, Version=2.0.18282.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Diacritics.2.0.18282.1\lib\net45\Diacritics.dll</HintPath>
+    <Reference Include="Diacritics, Version=2.0.18316.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Diacritics.2.0.18316.1\lib\net45\Diacritics.dll</HintPath>
     </Reference>
-    <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
-      <HintPath>packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
+    <Reference Include="EPPlus, Version=4.5.3.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>packages\EPPlus.4.5.3.1\lib\net40\EPPlus.dll</HintPath>
     </Reference>
     <Reference Include="FTTLib, Version=1.0.3.0, Culture=neutral, PublicKeyToken=8c1b2cae191651c7, processorArchitecture=MSIL">
       <HintPath>packages\FTTLib.dll.1.1.0\lib\net20\FTTLib.dll</HintPath>
@@ -181,11 +181,11 @@
     <Reference Include="GeoUtility">
       <HintPath>.\GeoUtility.dll</HintPath>
     </Reference>
-    <Reference Include="HelixToolkit, Version=2.5.2.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
-      <HintPath>packages\HelixToolkit.2.5.2\lib\netstandard1.1\HelixToolkit.dll</HintPath>
+    <Reference Include="HelixToolkit, Version=2.6.1.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
+      <HintPath>packages\HelixToolkit.2.6.1\lib\netstandard1.1\HelixToolkit.dll</HintPath>
     </Reference>
-    <Reference Include="HelixToolkit.Wpf, Version=2.5.2.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
-      <HintPath>packages\HelixToolkit.Wpf.2.5.2\lib\net45\HelixToolkit.Wpf.dll</HintPath>
+    <Reference Include="HelixToolkit.Wpf, Version=2.6.1.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
+      <HintPath>packages\HelixToolkit.Wpf.2.6.1\lib\net45\HelixToolkit.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip">
       <HintPath>.\Ionic.Zip.dll</HintPath>
@@ -1250,6 +1250,7 @@
     <Compile Include="modClipper.vb" />
     <Compile Include="modControls.vb" />
     <Compile Include="modConversion.vb" />
+    <Compile Include="modDesignLRUD.vb" />
     <Compile Include="modDesign.vb" />
     <Compile Include="modExport.vb" />
     <Compile Include="modImport.vb" />
@@ -2601,6 +2602,7 @@
     </Content>
     <Content Include="Objects\Cliparts\Compasses\compass1.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Objects\Cliparts\Compasses\compass2.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -3280,6 +3282,8 @@
     <Content Include="resources.ru.txt" />
     <None Include="Resources\arrow_sync.png" />
     <None Include="Resources\attach.png" />
+    <None Include="Resources\bullet_pause.png" />
+    <None Include="Resources\bullet_arrow_right.png" />
     <Content Include="Resources\compass.png" />
     <None Include="Resources\download.png" />
     <None Include="Resources\inbox_upload.png" />
@@ -3326,6 +3330,7 @@
     <None Include="Resources\link_delete.png" />
     <None Include="Resources\link_break.png" />
     <None Include="Resources\link.png" />
+    <None Include="Resources\control_pause_blue.png" />
     <Content Include="Resources\shape_square_key.png" />
     <None Include="Resources\sort.png" />
     <None Include="Resources\textfield_rename.png" />

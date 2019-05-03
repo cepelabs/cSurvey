@@ -123,7 +123,7 @@ Public Structure SizeD
     End Operator
 
     Public Shared Narrowing Operator CType(ByVal size As SizeD) As PointF
-        Return New PointD(size.Width, size.Height)
+        Return New PointF(size.Width, size.Height)
     End Operator
 
     Public Sub New(ByVal Width As Decimal, ByVal Height As Decimal)

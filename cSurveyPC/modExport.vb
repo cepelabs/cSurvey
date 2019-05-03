@@ -2364,6 +2364,8 @@ Module modExport
                 sText = sText.Replace("!", "")
                 sText = sText.Replace("<", "")
                 sText = sText.Replace(">", "")
+                sText = sText.Replace("°", "")
+                sText = sText.Replace("§", "")
                 sText = sText.Replace("’", "_")
                 sText = sText.Replace(Chr(34), "")
             Case FormatTextForEnum.BaseWithoutSpaces
@@ -2969,7 +2971,7 @@ Module modExport
             Next
 
             'generic centerline section...for extendstart based on origin
-            'additional extendstart have to be managed but I don't know how without braking apart survey by extendstart 
+            'additional extendstart have to be managed but I don't know how without breaking apart survey by extendstart 
             Call st.WriteLine("centerline")
             With Survey.Properties
                 Dim sIndex As String = DictionaryTranslate(Dictionary, .Origin)

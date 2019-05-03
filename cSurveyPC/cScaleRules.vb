@@ -84,12 +84,25 @@ Namespace cSurvey.Scale
             Return oItems.ContainsKey(Scale)
         End Function
 
+        Public Sub MergeWidth(ByVal ScaleRules As cScaleRules)
+            If Not ScaleRules Is Me Then
+                For Each oItem As cScaleRule In ScaleRules
+                    If Not oItems.ContainsKey(oItem.Scale) Then
+                        Dim oNewItem As cScaleRule = New cScaleRule(oSurvey, oItem.Scale, oItem.Categories, oItem.DesignProperties)
+                        Call oItems.Add(oItem.Scale, oItem)
+                    End If
+                Next
+            End If
+        End Sub
+
         Public Sub CopyFrom(ByVal ScaleRules As cScaleRules)
-            Call oItems.Clear()
-            For Each oItem As cScaleRule In ScaleRules
-                Dim oNewItem As cScaleRule = New cScaleRule(oSurvey, oItem.Scale, oItem.Categories, oItem.DesignProperties)
-                Call oItems.Add(oItem.Scale, oItem)
-            Next
+            If Not ScaleRules Is Me Then
+                Call oItems.Clear()
+                For Each oItem As cScaleRule In ScaleRules
+                    Dim oNewItem As cScaleRule = New cScaleRule(oSurvey, oItem.Scale, oItem.Categories, oItem.DesignProperties)
+                    Call oItems.Add(oItem.Scale, oItem)
+                Next
+            End If
         End Sub
 
         Private Sub oScaleRule_OnScaleChange(ByVal Sender As cScaleRule, ByVal Args As cScaleRule.OnScaleChangeEventArgs)

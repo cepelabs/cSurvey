@@ -196,11 +196,11 @@ Namespace cSurvey.Design.Items
                 Else
                     oMarkerCenterPoint = modPaint.PointOnLineByPercentage(oFromPoint, oToPoint, oCrossSectionItem.MarkerPosition)
                 End If
-                Dim oUD As SizeF = modDesign.GetUDFromDesign(PaintOptions, oSegment, oMarkerCenterPoint, GetDesignStationEnum.From)
-                    sUp = oUD.Width * 1.1
-                    sDown = oUD.Height * 1.1
-                    Call MyBase.Caches.Invalidate()
-                End If
+                Dim oUD As SizeF = modDesignLRUD.GetUDFromDesign(PaintOptions, oSegment, oMarkerCenterPoint, GetDesignStationEnum.From)
+                sUp = oUD.Width * 1.1
+                sDown = oUD.Height * 1.1
+                Call MyBase.Caches.Invalidate()
+            End If
         End Sub
 
         Public Property ProfileDeltaAngleEnabled As Boolean Implements cIItemProfileCrossSectionMarker.ProfileDeltaAngleEnabled

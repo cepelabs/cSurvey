@@ -382,6 +382,70 @@ Module modPaint
     '        Return Nothing
     '    End If
     'End Function
+    Public Function ToStraightLinePoints(Survey As cSurvey.cSurvey, Sequence As cSequence, DefaultLineType As Items.cIItemLine.LineTypeEnum, Optional Flatness As Single = 0.1) As List(Of PointF)
+        Dim iLineType As Items.cIItemLine.LineTypeEnum = Sequence.GetLineType(DefaultLineType)
+        If iLineType = cIItemLine.LineTypeEnum.Lines Then
+            Return New List(Of PointF)(Sequence.GetPoints)
+        Else
+            Dim oNewSequence As cSequence = Nothing
+            Dim oSequencePoints() As PointF = Sequence.GetPoints
+            If oSequencePoints.Length > 1 Then
+                Using oPath As GraphicsPath = New GraphicsPath
+                    Select Case iLineType
+                        Case Items.cIItemLine.LineTypeEnum.Beziers
+                            Call modPaint.PointsToBeziers(oSequencePoints, oPath)
+                        Case Items.cIItemLine.LineTypeEnum.Splines
+                            Call oPath.AddCurve(oSequencePoints, sDefaultSplineTension)
+                    End Select
+                    Call oPath.Flatten(Nothing, Flatness)
+                    Return New List(Of PointF)(oPath.PathPoints)
+                End Using
+            Else
+                Return New List(Of PointF)
+            End If
+        End If
+    End Function
+
+    Public Function ToStraightLineForced(Survey As cSurvey.cSurvey, Sequence As cSequence, DefaultLineType As Items.cIItemLine.LineTypeEnum, Optional Flatness As Single = 0.1) As cSequence
+        Dim iLineType As Items.cIItemLine.LineTypeEnum = Sequence.GetLineType(DefaultLineType)
+        If iLineType = cIItemLine.LineTypeEnum.Lines Then
+            Return Sequence
+        Else
+            Dim oNewSequence As cSequence = Nothing
+            Dim oSequencePoints() As PointF = Sequence.GetPoints
+            If oSequencePoints.Length > 1 Then
+                Dim oPath As GraphicsPath = New GraphicsPath
+                Select Case iLineType
+                    Case Items.cIItemLine.LineTypeEnum.Beziers
+                        Call modPaint.PointsToBeziers(oSequencePoints, oPath)
+                    Case Items.cIItemLine.LineTypeEnum.Splines
+                        Call oPath.AddCurve(oSequencePoints, sDefaultSplineTension)
+                End Select
+                Call oPath.Flatten(Nothing, Flatness)
+
+                For Each oPoint As PointF In oPath.PathPoints
+                    If oNewSequence Is Nothing Then
+                        Dim oFirstPoint As cPoint = New cPoint(Survey, oPoint)
+                        oFirstPoint.BeginSequence = True
+                        oFirstPoint.LineType = Items.cIItemLine.LineTypeEnum.Lines
+                        Dim oSourcePoint As cPoint = pToStraightLineGetSourcePoint(Sequence, oFirstPoint)
+                        oFirstPoint.Pen = oSourcePoint.Pen
+                        Call oFirstPoint.BindSegment(oSourcePoint.BindedSegment)
+                        oNewSequence = New cSequence(oFirstPoint)
+                    Else
+                        Dim oNextPoint As cPoint = New cPoint(Survey, oPoint)
+                        Call oNewSequence.Append(oNextPoint)
+                        Dim oSourcePoint As cPoint = pToStraightLineGetSourcePoint(Sequence, oNextPoint)
+                        oNextPoint.Pen = oSourcePoint.Pen
+                        Call oNextPoint.BindSegment(oSourcePoint.BindedSegment)
+                    End If
+                Next
+                Return oNewSequence
+            Else
+                Return Sequence
+            End If
+        End If
+    End Function
 
     Public Function ToStraightLine(Survey As cSurvey.cSurvey, Sequence As cSequence, DefaultLineType As Items.cIItemLine.LineTypeEnum, Optional Flatness As Single = 0.1) As cSequence
         Dim iLineType As Items.cIItemLine.LineTypeEnum = Sequence.GetLineType(DefaultLineType)
@@ -1225,6 +1289,28 @@ Module modPaint
         ' (x1 + t * dx, y1 + t * dy)
     End Function
 
+    Public Function FindSegmentIntersection(ByVal Point11 As PointF, ByVal Point12 As PointF, ByVal Point21 As PointF, ByVal Point22 As PointF, ByRef Intersect As Boolean) As PointF
+        Dim dx1 As Single = Point12.X - Point11.X
+        Dim dy1 As Single = Point12.Y - Point11.Y
+        Dim dx2 As Single = Point22.X - Point21.X
+        Dim dy2 As Single = Point22.Y - Point21.Y
+        Dim d As Single = (dy1 * dx2 - dx1 * dy2)
+        Dim t1 As Single = ((Point11.X - Point21.X) * dy2 + (Point21.Y - Point11.Y) * dx2) / d
+        If Single.IsInfinity(t1) Then
+            Intersect = False
+            Return Nothing
+        Else
+            Dim t2 As Single = ((Point21.X - Point11.X) * dy1 + (Point11.Y - Point21.Y) * dx1) / -d
+            If ((t1 >= 0) AndAlso (t1 <= 1) AndAlso (t2 >= 0) AndAlso (t2 <= 1)) Then
+                Intersect = True
+                Return New PointF(Point11.X + dx1 * t1, Point11.Y + dy1 * t1)
+            Else
+                Intersect = False
+                Return Nothing
+            End If
+        End If
+    End Function
+
     Public Function FindLineIntersection(ByVal Point11 As PointF, ByVal Point12 As PointF, ByVal Point21 As PointF, ByVal Point22 As PointF, ByRef AreParallel As Boolean) As PointF
         Dim dx1 As Single = Point12.X - Point11.X
         Dim dy1 As Single = Point12.Y - Point11.Y
@@ -1243,79 +1329,18 @@ Module modPaint
     End Function
 
     Public Function GetFormattedTrigpointText(Survey As cSurvey.cSurvey, TextStructure As cITextStructure, Trigpoint As cTrigPoint) As String
-        Return pGetFormattedTrigpointText(Survey, TextStructure.TrigPointStructure, Trigpoint)
+        Return pGetFormattedTrigpointText(Survey, Trigpoint, TextStructure.TrigPointStructure)
     End Function
 
     Public Function GetFormattedSpecialTrigpointText(Survey As cSurvey.cSurvey, TextStructure As cITextStructure, Trigpoint As cTrigPoint) As String
-        Return pGetFormattedTrigpointText(Survey, TextStructure.SpecialTrigPointStructure, Trigpoint)
+        Return pGetFormattedTrigpointText(Survey, Trigpoint, TextStructure.SpecialTrigPointStructure)
     End Function
 
-    Private Function pGetFormattedTrigpointText(Survey As cSurvey.cSurvey, Text As String, Trigpoint As cTrigPoint)
+    Private Function pGetFormattedTrigpointText(Survey As cSurvey.cSurvey, Trigpoint As cTrigPoint, Text As String)
         If Text <> "" Then
-            Dim sTemp As String = Text
-            Dim oProperties As cProperties = Survey.Properties
-
-            sTemp = sTemp.Replace("%NAME%", Trigpoint.Name)
-            If Trigpoint.Aliases.Count > 0 Then
-                sTemp = sTemp.Replace("%FIRSTALIAS%", Trigpoint.Aliases(0))
-            Else
-                sTemp = sTemp.Replace("%FIRSTALIAS%", "")
-            End If
-            sTemp = sTemp.Replace("%NOTE%", Trigpoint.Note)
-
-            sTemp = sTemp.Replace("%CAVEID%", oProperties.ID)
-            sTemp = sTemp.Replace("%CAVENAME%", oProperties.Name)
-
-            If Trigpoint.Coordinate.IsEmpty Then
-                sTemp = sTemp.Replace("%GEOPOS%", "")
-                sTemp = sTemp.Replace("%GEOPOSLAT%", "")
-                sTemp = sTemp.Replace("%GEOPOSLONG%", "")
-                sTemp = sTemp.Replace("%GEOPOSALT%", "")
-            Else
-                With Trigpoint
-                    sTemp = sTemp.Replace("%GEOPOS%", modNumbers.NumberToCoordinate(.Coordinate.GetLatitude, CoordinateFormatEnum.DegreesMinutesSeconds OrElse CoordinateFormatEnum.Unsigned, "N", "S") & " " & modNumbers.NumberToCoordinate(.Coordinate.GetLongitude, CoordinateFormatEnum.DegreesMinutesSeconds OrElse CoordinateFormatEnum.Unsigned, "E", "W"))
-                    sTemp = sTemp.Replace("%GEOPOSLAT%", modNumbers.NumberToCoordinate(.Coordinate.GetLatitude, CoordinateFormatEnum.DegreesMinutesSeconds OrElse CoordinateFormatEnum.Unsigned, "N", "S"))
-                    sTemp = sTemp.Replace("%GEOPOSLONG%", modNumbers.NumberToCoordinate(.Coordinate.GetLongitude, CoordinateFormatEnum.DegreesMinutesSeconds OrElse CoordinateFormatEnum.Unsigned, "E", "W"))
-                    sTemp = sTemp.Replace("%GEOPOSALT%", modNumbers.NumberToString(.Coordinate.GetAltitude, "0"))
-                End With
-            End If
-
-            Dim oCalculatedTrigpoint As Calculate.cTrigPoint = Survey.Calculate.TrigPoints(Trigpoint)
-            If oCalculatedTrigpoint.Coordinate.IsEmpty Then
-                sTemp = sTemp.Replace("%GEOPOSCALC%", "")
-                sTemp = sTemp.Replace("%GEOPOSLATCALC%", "")
-                sTemp = sTemp.Replace("%GEOPOSLONGCALC%", "")
-                sTemp = sTemp.Replace("%GEOPOSLONCALC%", "")
-                sTemp = sTemp.Replace("%GEOPOSALTCALC%", "")
-                sTemp = sTemp.Replace("%TOSURFACEV%", "N/D")
-                sTemp = sTemp.Replace("%SURFACEV%", "N/D")
-            Else
-                With oCalculatedTrigpoint
-                    sTemp = sTemp.Replace("%GEOPOSCALC%", modNumbers.NumberToCoordinate(.Coordinate.Latitude, CoordinateFormatEnum.DegreesMinutesSeconds OrElse CoordinateFormatEnum.Unsigned, "N", "S") & " " & modNumbers.NumberToCoordinate(.Coordinate.Longitude, CoordinateFormatEnum.DegreesMinutesSeconds OrElse CoordinateFormatEnum.Unsigned, "E", "W"))
-                    sTemp = sTemp.Replace("%GEOPOSLATCALC%", modNumbers.NumberToCoordinate(.Coordinate.Latitude, CoordinateFormatEnum.DegreesMinutesSeconds OrElse CoordinateFormatEnum.Unsigned, "N", "S"))
-                    sTemp = sTemp.Replace("%GEOPOSLONGCALC%", modNumbers.NumberToCoordinate(.Coordinate.Longitude, CoordinateFormatEnum.DegreesMinutesSeconds OrElse CoordinateFormatEnum.Unsigned, "E", "W"))
-                    sTemp = sTemp.Replace("%GEOPOSLONCALC%", modNumbers.NumberToCoordinate(.Coordinate.Longitude, CoordinateFormatEnum.DegreesMinutesSeconds OrElse CoordinateFormatEnum.Unsigned, "E", "W"))
-                    sTemp = sTemp.Replace("%GEOPOSALTCALC%", modNumbers.NumberToString(.Coordinate.Altitude, "0"))
-
-                    If Survey.Properties.SurfaceProfileElevation Is Nothing Then
-                        sTemp = sTemp.Replace("%TOSURFACEV%", "N/D")
-                        sTemp = sTemp.Replace("%SURFACEV%", "N/D")
-                    Else
-                        Dim sSurfaceV As Single = Survey.Properties.SurfaceProfileElevation.GetElevation(Trigpoint)
-                        If sSurfaceV = Survey.Properties.SurfaceProfileElevation.NoDataValue Then
-                            sTemp = sTemp.Replace("%SURFACEV%", "#")
-                            sTemp = sTemp.Replace("%TOSURFACEV%", "#")
-                        Else
-                            sTemp = sTemp.Replace("%SURFACEV%", modNumbers.NumberToString(sSurfaceV, "0"))
-                            sTemp = sTemp.Replace("%TOSURFACEV%", modNumbers.NumberToString(sSurfaceV - .Coordinate.Altitude, "0"))
-                        End If
-                    End If
-                End With
-            End If
-
-            sTemp = sTemp.Replace("%BR%", vbCrLf)
-            sTemp = sTemp.Replace("%TAB%", vbTab)
-            Return sTemp
+            Text = ReplaceStationTags(Survey, Trigpoint, Text)
+            Text = modPaint.ReplaceGlobalTags(Survey, Text)
+            Return Text
         Else
             Return Trigpoint.Name
         End If
@@ -1356,6 +1381,73 @@ Module modPaint
 
         Text = Text.Replace("%C%", Item.Layer.Items.Count)
         Text = Text.Replace("%I%", Item.Layer.Items.IndexOf(Item))
+
+        Return Text.Trim
+    End Function
+
+    Public Function ReplaceStationTags(Survey As cSurvey.cSurvey, Trigpoint As cTrigPoint, Text As String) As String
+        Dim oProperties As cProperties = Survey.Properties
+
+        Text = Text.Replace("%NAME%", Trigpoint.Name)
+        If Trigpoint.Aliases.Count > 0 Then
+            Text = Text.Replace("%FIRSTALIAS%", Trigpoint.Aliases(0))
+        Else
+            Text = Text.Replace("%FIRSTALIAS%", "")
+        End If
+        Text = Text.Replace("%NOTE%", Trigpoint.Note)
+
+        Text = Text.Replace("%CAVEID%", oProperties.ID)
+        Text = Text.Replace("%CAVENAME%", oProperties.Name)
+
+        If Trigpoint.Coordinate.IsEmpty Then
+            Text = Text.Replace("%GEOPOS%", "")
+            Text = Text.Replace("%GEOPOSLAT%", "")
+            Text = Text.Replace("%GEOPOSLONG%", "")
+            Text = Text.Replace("%GEOPOSALT%", "")
+        Else
+            With Trigpoint
+                Text = Text.Replace("%GEOPOS%", modNumbers.NumberToCoordinate(.Coordinate.GetLatitude, CoordinateFormatEnum.DegreesMinutesSeconds OrElse CoordinateFormatEnum.Unsigned, "N", "S") & " " & modNumbers.NumberToCoordinate(.Coordinate.GetLongitude, CoordinateFormatEnum.DegreesMinutesSeconds OrElse CoordinateFormatEnum.Unsigned, "E", "W"))
+                Text = Text.Replace("%GEOPOSLAT%", modNumbers.NumberToCoordinate(.Coordinate.GetLatitude, CoordinateFormatEnum.DegreesMinutesSeconds OrElse CoordinateFormatEnum.Unsigned, "N", "S"))
+                Text = Text.Replace("%GEOPOSLONG%", modNumbers.NumberToCoordinate(.Coordinate.GetLongitude, CoordinateFormatEnum.DegreesMinutesSeconds OrElse CoordinateFormatEnum.Unsigned, "E", "W"))
+                Text = Text.Replace("%GEOPOSALT%", modNumbers.NumberToString(.Coordinate.GetAltitude, "0"))
+            End With
+        End If
+
+        Dim oCalculatedTrigpoint As Calculate.cTrigPoint = Survey.Calculate.TrigPoints(Trigpoint)
+        If oCalculatedTrigpoint.Coordinate.IsEmpty Then
+            Text = Text.Replace("%GEOPOSCALC%", "")
+            Text = Text.Replace("%GEOPOSLATCALC%", "")
+            Text = Text.Replace("%GEOPOSLONGCALC%", "")
+            Text = Text.Replace("%GEOPOSLONCALC%", "")
+            Text = Text.Replace("%GEOPOSALTCALC%", "")
+            Text = Text.Replace("%TOSURFACEV%", "N/D")
+            Text = Text.Replace("%SURFACEV%", "N/D")
+        Else
+            With oCalculatedTrigpoint
+                Text = Text.Replace("%GEOPOSCALC%", modNumbers.NumberToCoordinate(.Coordinate.Latitude, CoordinateFormatEnum.DegreesMinutesSeconds OrElse CoordinateFormatEnum.Unsigned, "N", "S") & " " & modNumbers.NumberToCoordinate(.Coordinate.Longitude, CoordinateFormatEnum.DegreesMinutesSeconds OrElse CoordinateFormatEnum.Unsigned, "E", "W"))
+                Text = Text.Replace("%GEOPOSLATCALC%", modNumbers.NumberToCoordinate(.Coordinate.Latitude, CoordinateFormatEnum.DegreesMinutesSeconds OrElse CoordinateFormatEnum.Unsigned, "N", "S"))
+                Text = Text.Replace("%GEOPOSLONGCALC%", modNumbers.NumberToCoordinate(.Coordinate.Longitude, CoordinateFormatEnum.DegreesMinutesSeconds OrElse CoordinateFormatEnum.Unsigned, "E", "W"))
+                Text = Text.Replace("%GEOPOSLONCALC%", modNumbers.NumberToCoordinate(.Coordinate.Longitude, CoordinateFormatEnum.DegreesMinutesSeconds OrElse CoordinateFormatEnum.Unsigned, "E", "W"))
+                Text = Text.Replace("%GEOPOSALTCALC%", modNumbers.NumberToString(.Coordinate.Altitude, "0"))
+
+                If Survey.Properties.SurfaceProfileElevation Is Nothing Then
+                    Text = Text.Replace("%TOSURFACEV%", "N/D")
+                    Text = Text.Replace("%SURFACEV%", "N/D")
+                Else
+                    Dim sSurfaceV As Single = Survey.Properties.SurfaceProfileElevation.GetElevation(Trigpoint)
+                    If sSurfaceV = Survey.Properties.SurfaceProfileElevation.NoDataValue Then
+                        Text = Text.Replace("%SURFACEV%", "#")
+                        Text = Text.Replace("%TOSURFACEV%", "#")
+                    Else
+                        Text = Text.Replace("%SURFACEV%", modNumbers.NumberToString(sSurfaceV, "0"))
+                        Text = Text.Replace("%TOSURFACEV%", modNumbers.NumberToString(sSurfaceV - .Coordinate.Altitude, "0"))
+                    End If
+                End If
+            End With
+        End If
+
+        Text = Text.Replace("%BR%", vbCrLf)
+        Text = Text.Replace("%TAB%", vbTab)
 
         Return Text.Trim
     End Function

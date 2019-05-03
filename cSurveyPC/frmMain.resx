@@ -2910,7 +2910,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABU
-        YAAAAk1TRnQBSQFMAgEBFQEAAcQBSwHEAUsBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        YAAAAk1TRnQBSQFMAgEBFQEAAQwBTAEMAUwBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABYAMAAQEBAAEYBgABSCEAA/IJ7gP0rgAD7gGiAZoBjwGXAYoBfwGXAYoBfwGXAYoBfwGrAaUBnQPu
         qAAD8gGXAYoBfwGuAaUBnQHIAcEBuwHGAb8BuQHGAb4BuAGtAaMBmgGXAYoBfwPypQABwwG9AbgBlwGK
         AX8BtgGsAaQJAAHEAbwBtQGtAaMBmgGjAZoBkKUAAcEBuQGzAZcBigF/AwAJ7gMAAcUBwAG4AZcBigF/
@@ -6928,7 +6928,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACC
-        DQAAAk1TRnQBSQFMAgEBBgEAAdABMQHQATEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAARgBMgEYATIBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -10136,7 +10136,7 @@
     <value>14</value>
   </data>
   <data name="tblDesignProp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>351, 783</value>
+    <value>351, 792</value>
   </data>
   <data name="tblDesignProp.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
@@ -28098,7 +28098,7 @@ or a cross-section</value>
     <value>False</value>
   </data>
   <data name="pnlStatusText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1023, 17</value>
+    <value>1215, 17</value>
   </data>
   <data name="pnlStatusText.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -28156,6 +28156,12 @@ or a cross-section</value>
     <value>False</value>
   </data>
   <data name="pnlStatusHistoryEnabled.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 17</value>
+  </data>
+  <data name="pnlStatusDesignWarping.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="pnlStatusDesignWarping.Size" type="System.Drawing.Size, System.Drawing">
     <value>20, 17</value>
   </data>
   <data name="pnlStatusDesignWarpingState.AutoSize" type="System.Boolean, mscorlib">
@@ -32222,7 +32228,7 @@ or a cross-section</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAC2
-        EQAAAk1TRnQBSQFMAgEBAwEAAYABLQGAAS0BIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        EQAAAk1TRnQBSQFMAgEBAwEAAcgBLQHIAS0BIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABgAMAASADAAEBAQABCAYAARAYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -32314,7 +32320,7 @@ or a cross-section</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABe
-        CgAAAk1TRnQBSQFMAgEBAwEAAXQBIwF0ASMBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CgAAAk1TRnQBSQFMAgEBAwEAAbwBIwG8ASMBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -34509,9 +34515,6 @@ or a cross-section</value>
         Qcf/rEHn/6xB
 </value>
   </data>
-  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>cSurvey</value>
   </data>
@@ -36433,6 +36436,12 @@ or a cross-section</value>
     <value>pnlStatusHistoryEnabled</value>
   </data>
   <data name="&gt;&gt;pnlStatusHistoryEnabled.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlStatusDesignWarping.Name" xml:space="preserve">
+    <value>pnlStatusDesignWarping</value>
+  </data>
+  <data name="&gt;&gt;pnlStatusDesignWarping.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;pnlStatusDesignWarpingState.Name" xml:space="preserve">

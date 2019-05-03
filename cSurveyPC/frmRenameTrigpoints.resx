@@ -130,7 +130,7 @@
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cmdCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="cmdCancel.Text" xml:space="preserve">
     <value>Cancel</value>
@@ -157,7 +157,7 @@
     <value>80, 25</value>
   </data>
   <data name="cmdOk.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="cmdOk.Text" xml:space="preserve">
     <value>Ok</value>
@@ -184,7 +184,7 @@
     <value>65, 24</value>
   </data>
   <data name="cboOld.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;cboOld.Name" xml:space="preserve">
     <value>cboOld</value>
@@ -208,7 +208,7 @@
     <value>35, 29</value>
   </data>
   <data name="lblOldTrigPoint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 13</value>
+    <value>45, 13</value>
   </data>
   <data name="lblOldTrigPoint.TabIndex" type="System.Int32, mscorlib">
     <value>56</value>
@@ -238,7 +238,7 @@
     <value>35, 69</value>
   </data>
   <data name="lblNewTrigPoint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 13</value>
+    <value>63, 13</value>
   </data>
   <data name="lblNewTrigPoint.TabIndex" type="System.Int32, mscorlib">
     <value>58</value>
@@ -268,7 +268,7 @@
     <value>65, 22</value>
   </data>
   <data name="txtNew.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;txtNew.Name" xml:space="preserve">
     <value>txtNew</value>
@@ -359,6 +359,9 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/fwAA/B8AAP//AAA=
 </value>
   </data>
+  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
@@ -369,6 +372,6 @@
     <value>frmRenameTrigpoints</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

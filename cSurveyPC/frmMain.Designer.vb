@@ -1119,6 +1119,7 @@ Partial Class frmMain
         Me.pnlStatusCurrentRule = New System.Windows.Forms.ToolStripStatusLabel()
         Me.pnlStatusWMSOnLine = New System.Windows.Forms.ToolStripStatusLabel()
         Me.pnlStatusHistoryEnabled = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.pnlStatusDesignWarping = New System.Windows.Forms.ToolStripStatusLabel()
         Me.pnlStatusDesignWarpingState = New System.Windows.Forms.ToolStripStatusLabel()
         Me.pnlStatusDesignGeographicState = New System.Windows.Forms.ToolStripStatusLabel()
         Me.pnlStatusDesignInfo = New System.Windows.Forms.ToolStripStatusLabel()
@@ -9202,7 +9203,7 @@ Partial Class frmMain
         'sbMain
         '
         resources.ApplyResources(Me.sbMain, "sbMain")
-        Me.sbMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.pnlStatusMasterSlave, Me.pnlStatusText, Me.pnlStatusProgress, Me.pnlStatusCurrentRule, Me.pnlStatusWMSOnLine, Me.pnlStatusHistoryEnabled, Me.pnlStatusDesignWarpingState, Me.pnlStatusDesignGeographicState, Me.pnlStatusDesignInfo, Me.pnlStatusDesignZoom, Me.pnlStatusDesignSnapToGrid, Me.ToolStripStatusLabel2})
+        Me.sbMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.pnlStatusMasterSlave, Me.pnlStatusText, Me.pnlStatusProgress, Me.pnlStatusCurrentRule, Me.pnlStatusWMSOnLine, Me.pnlStatusHistoryEnabled, Me.pnlStatusDesignWarping, Me.pnlStatusDesignWarpingState, Me.pnlStatusDesignGeographicState, Me.pnlStatusDesignInfo, Me.pnlStatusDesignZoom, Me.pnlStatusDesignSnapToGrid, Me.ToolStripStatusLabel2})
         Me.sbMain.Name = "sbMain"
         Me.sbMain.ShowItemToolTips = True
         '
@@ -9242,6 +9243,12 @@ Partial Class frmMain
         Me.pnlStatusHistoryEnabled.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right
         Me.pnlStatusHistoryEnabled.DoubleClickEnabled = True
         Me.pnlStatusHistoryEnabled.Name = "pnlStatusHistoryEnabled"
+        '
+        'pnlStatusDesignWarping
+        '
+        resources.ApplyResources(Me.pnlStatusDesignWarping, "pnlStatusDesignWarping")
+        Me.pnlStatusDesignWarping.DoubleClickEnabled = True
+        Me.pnlStatusDesignWarping.Name = "pnlStatusDesignWarping"
         '
         'pnlStatusDesignWarpingState
         '
@@ -12841,7 +12848,7 @@ Partial Class frmMain
     Friend WithEvents txtPropCrossSectionWidth As System.Windows.Forms.NumericUpDown
     Friend WithEvents lblPropCrossSectionCross As System.Windows.Forms.Label
     Friend WithEvents mnuDesignItemPaste As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents pnlStatusDesignWarpingState As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents pnlStatusDesignWarping As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents cboPropQuotaFormat As System.Windows.Forms.ComboBox
     Friend WithEvents lblPropQuotaFormat As System.Windows.Forms.Label
     Friend WithEvents btnViewMetricGrid As System.Windows.Forms.ToolStripDropDownButton
@@ -13268,4 +13275,5 @@ Partial Class frmMain
     Friend WithEvents chkPropCrossSectionMarkerArrowSizeEnabled As CheckBox
     Friend WithEvents cboPropCrossSectionMarkerArrowSize As ComboBox
     Friend WithEvents lblPropCrossSectionMarkerArrowSize As Label
+    Friend WithEvents pnlStatusDesignWarpingState As ToolStripStatusLabel
 End Class

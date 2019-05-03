@@ -816,9 +816,10 @@ Namespace cSurvey.Design
 
             'warping design...
             If PerformWarping Then
-                Dim iIndex As Integer
-                Dim iCount As Integer
-                If oSurvey.Properties.DesignWarpingMode = cSurvey.DesignWarpingModeEnum.Default AndAlso Not oSurvey.Properties.ProfileWarpingDisabled Then
+                If oSurvey.Properties.DesignWarpingMode = cSurvey.DesignWarpingModeEnum.Default AndAlso Not oSurvey.Properties.ProfileWarpingDisabled AndAlso oSurvey.Properties.DesignWarpingState = cSurvey.DesignWarpingStateEnum.Active Then
+                    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, Now & vbTab & "Warping plan design", True)
+                    Dim iIndex As Integer
+                    Dim iCount As Integer
                     If Not oSurvey.Profile.IsEmpty Then
                         Dim oSegments As cSegmentCollection = oSurvey.Segments.GetChangedSegments(cIDesign.cDesignTypeEnum.Profile, True)
                         Dim oBindedSegments As cISegmentCollection = oSurvey.Segments.GetBindedSegments(cIDesign.cDesignTypeEnum.Profile)
@@ -842,6 +843,8 @@ Namespace cSurvey.Design
                                     Call oSegment.Data.Profile.ResetChange()
                                 Next
                                 Call oSurvey.RaiseOnProgressEvent("calculate.plot.profile", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, GetLocalizedString("plotprofile.progressend1"), 0)
+                            ElseIf iResult = DialogResult.Ignore Then
+                                oSurvey.Properties.DesignWarpingState = cSurvey.DesignWarpingStateEnum.Paused
                             ElseIf iResult = DialogResult.Abort Then
                                 oSurvey.Properties.DesignWarpingMode = cSurvey.DesignWarpingModeEnum.None
                             End If

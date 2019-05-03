@@ -410,12 +410,32 @@ Namespace cSurvey.Calculate.Plot
         Friend Sub RenameFrom(ByVal NewName As String)
             Call oSourceData.RenameFrom(NewName)
             Call oData.RenameFrom(NewName)
+            'renaming a station in subdata, substation keep original name...
+            If oData.Reversed Then
+                If oSubDatas.Count > 0 Then
+                    Call oSubDatas(oSubDatas.Count - 1).RenameTo(NewName)
+                End If
+            Else
+                If oSubDatas.Count > 0 Then
+                    Call oSubDatas(0).RenameFrom(NewName)
+                End If
+            End If
             Call oOldData.RenameFrom(NewName)
         End Sub
 
         Friend Sub RenameTo(ByVal NewName As String)
             Call oSourceData.RenameTo(NewName)
             Call oData.RenameTo(NewName)
+            'renaming a station in subdata, substation keep original name...
+            If oData.Reversed Then
+                If oSubDatas.Count > 0 Then
+                    Call oSubDatas(0).RenameFrom(NewName)
+                End If
+            Else
+                If oSubDatas.Count > 0 Then
+                    Call oSubDatas(oSubDatas.Count - 1).RenameTo(NewName)
+                End If
+            End If
             Call oOldData.RenameTo(NewName)
         End Sub
 

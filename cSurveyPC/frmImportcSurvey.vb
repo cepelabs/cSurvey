@@ -26,6 +26,8 @@ Public Class frmImportcSurvey
                 chkcSurveyImportCreateNewBranch.Checked = oReg.GetValue("data.import.csurvey.createasnewbranch", 1)
                 chkcSurveyImportUpdateCaveBranchPriority.Checked = oReg.GetValue("data.import.csurvey.updatepriority", 1)
                 chkcSurveyDisableOriginAsExtendstart.Checked = oReg.GetValue("data.import.csurvey.disableoriginasextendstart", 0)
+
+                chkcsurveyimportlinkedsurvey.Checked = oReg.GetValue("data.import.csurvey.linkedsurvey", 1)
                 Call oReg.Close()
             End Using
         Catch
@@ -35,27 +37,29 @@ Public Class frmImportcSurvey
     Private Sub pSettingsSave()
         Try
             Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                Call oReg.SetValue("data.import.csurvey.data", IIf(chkcSurveyImportData.Checked, 1, 0))
-                Call oReg.SetValue("data.import.csurvey.duplicates", IIf(chkcSurveyImportDuplicates.Checked, 1, 0))
-                Call oReg.SetValue("data.import.csurvey.duplicates.overwrite", IIf(chkcSurveyImportDuplicatesOverwrite.Checked, 1, 0))
-                Call oReg.SetValue("data.import.csurvey.duplicates.overwrite.onlyused", IIf(chkcSurveyImportDuplicatesOverwriteOnlyUsed.Checked, 1, 0))
+                Call oReg.SetValue("data.import.csurvey.data", If(chkcSurveyImportData.Checked, 1, 0))
+                Call oReg.SetValue("data.import.csurvey.duplicates", If(chkcSurveyImportDuplicates.Checked, 1, 0))
+                Call oReg.SetValue("data.import.csurvey.duplicates.overwrite", If(chkcSurveyImportDuplicatesOverwrite.Checked, 1, 0))
+                Call oReg.SetValue("data.import.csurvey.duplicates.overwrite.onlyused", If(chkcSurveyImportDuplicatesOverwriteOnlyUsed.Checked, 1, 0))
                 Call oReg.SetValue("data.import.csurvey.duplicates.findmode", cbocSurveyImportDuplicatesMode.SelectedIndex)
-                Call oReg.SetValue("data.import.csurvey.duplicatesstations", IIf(chkcSurveyImportDuplicatesStations.Checked, 1, 0))
-                Call oReg.SetValue("data.import.csurvey.disableoriginasextendstart", IIf(chkcSurveyDisableOriginAsExtendstart.Checked, 1, 0))
+                Call oReg.SetValue("data.import.csurvey.duplicatesstations", If(chkcSurveyImportDuplicatesStations.Checked, 1, 0))
+                Call oReg.SetValue("data.import.csurvey.disableoriginasextendstart", If(chkcSurveyDisableOriginAsExtendstart.Checked, 1, 0))
 
-                Call oReg.SetValue("data.import.csurvey.graphics", IIf(chkcSurveyImportGraphics.Checked, 1, 0))
-                Call oReg.SetValue("data.import.csurvey.importplan", IIf(chkcSurveyImportPlan.Checked, 1, 0))
-                Call oReg.SetValue("data.import.csurvey.importprofile", IIf(chkcSurveyImportProfile.Checked, 1, 0))
-                Call oReg.SetValue("data.import.csurvey.importsurface", IIf(chkcSurveyImportSurface.Checked, 1, 0))
-                Call oReg.SetValue("data.import.csurvey.importcavebranchfromdesign", IIf(chkcSurveyImportCaveBranchFromDesign.Checked, 1, 0))
+                Call oReg.SetValue("data.import.csurvey.graphics", If(chkcSurveyImportGraphics.Checked, 1, 0))
+                Call oReg.SetValue("data.import.csurvey.importplan", If(chkcSurveyImportPlan.Checked, 1, 0))
+                Call oReg.SetValue("data.import.csurvey.importprofile", If(chkcSurveyImportProfile.Checked, 1, 0))
+                Call oReg.SetValue("data.import.csurvey.importsurface", If(chkcSurveyImportSurface.Checked, 1, 0))
+                Call oReg.SetValue("data.import.csurvey.importcavebranchfromdesign", If(chkcSurveyImportCaveBranchFromDesign.Checked, 1, 0))
 
                 Call oReg.SetValue("data.import.csurvey.warpingmode", cbocSurveyImportWarpingMode.SelectedIndex)
 
-                Call oReg.SetValue("data.import.csurvey.designproperties", IIf(chkcSurveyImportDesignProperties.Checked, 1, 0))
-                Call oReg.SetValue("data.import.csurvey.scalerules", IIf(chkcSurveyImportScaleRules.Checked, 1, 0))
+                Call oReg.SetValue("data.import.csurvey.designproperties", If(chkcSurveyImportDesignProperties.Checked, 1, 0))
+                Call oReg.SetValue("data.import.csurvey.scalerules", If(chkcSurveyImportScaleRules.Checked, 1, 0))
 
-                Call oReg.SetValue("data.import.csurvey.createasnewbranch", IIf(chkcSurveyImportCreateNewBranch.Checked, 1, 0))
-                Call oReg.SetValue("data.import.csurvey.updatepriority", IIf(chkcSurveyImportUpdateCaveBranchPriority.Checked, 1, 0))
+                Call oReg.SetValue("data.import.csurvey.createasnewbranch", If(chkcSurveyImportCreateNewBranch.Checked, 1, 0))
+                Call oReg.SetValue("data.import.csurvey.updatepriority", If(chkcSurveyImportUpdateCaveBranchPriority.Checked, 1, 0))
+
+                Call oReg.SetValue("data.import.csurvey.linkedsurvey", If(chkcsurveyimportlinkedsurvey.Checked, 1, 0))
 
                 Call oReg.Close()
             End Using
@@ -74,8 +78,10 @@ Public Class frmImportcSurvey
         Call pSettingsSave()
     End Sub
 
-    Private Sub chkcSurveyImportGraphics_CheckedChanged(sender As Object, e As EventArgs) Handles chkcSurveyImportGraphics.CheckedChanged
-        Dim bEnabled As Boolean = chkcSurveyImportGraphics.Checked
+    Private Sub pImportGraphicsChanged()
+        Dim bEnabled As Boolean = chkcSurveyImportGraphics.Checked AndAlso chkcSurveyImportGraphics.Enabled
+        pnlcSurveyImportGraphics.Enabled = bEnabled
+
         chkcSurveyImportPlan.Enabled = bEnabled
         chkcSurveyImportProfile.Enabled = bEnabled
         chkcSurveyImportCaveBranchFromDesign.Enabled = bEnabled AndAlso chkcSurveyImportData.Enabled AndAlso Not chkcSurveyImportData.Checked
@@ -83,9 +89,15 @@ Public Class frmImportcSurvey
         cbocSurveyImportWarpingMode.Enabled = bEnabled
     End Sub
 
-    Private Sub chkcSurveyImportData_CheckedChanged(sender As Object, e As EventArgs) Handles chkcSurveyImportData.CheckedChanged
+    Private Sub chkcSurveyImportGraphics_CheckedChanged(sender As Object, e As EventArgs) Handles chkcSurveyImportGraphics.CheckedChanged
+        Call pImportGraphicsChanged()
+    End Sub
+
+    Private Sub pImportDataChanged()
         chkcSurveyImportCaveBranchFromDesign.Enabled = chkcSurveyImportGraphics.Checked AndAlso chkcSurveyImportData.Enabled AndAlso Not chkcSurveyImportData.Checked
-        Dim bEnabled As Boolean = chkcSurveyImportData.Checked
+        Dim bEnabled As Boolean = chkcSurveyImportData.Checked AndAlso chkcSurveyImportData.Enabled
+        pnlcSurveyImportData.Enabled = bEnabled
+
         chkcSurveyImportDuplicates.Enabled = bEnabled
         lblcSurveyImportDuplicatesMode.Enabled = bEnabled
         cbocSurveyImportDuplicatesMode.Enabled = bEnabled
@@ -94,6 +106,10 @@ Public Class frmImportcSurvey
         cboImportAsBranchOfCave.Enabled = chkImportAsBranchOf.Checked And bEnabled
         cboImportAsBranchOfBranch.Enabled = chkImportAsBranchOf.Checked And bEnabled
         Call chkcSurveyImportDuplicates_CheckedChanged(Nothing, Nothing)
+    End Sub
+
+    Private Sub chkcSurveyImportData_CheckedChanged(sender As Object, e As EventArgs) Handles chkcSurveyImportData.CheckedChanged
+        Call pImportDataChanged
     End Sub
 
     Private Sub chkcSurveyImportDuplicates_CheckedChanged(sender As Object, e As EventArgs) Handles chkcSurveyImportDuplicates.CheckedChanged
@@ -115,4 +131,16 @@ Public Class frmImportcSurvey
         chkcSurveyImportDuplicatesOverwriteOnlyUsed.Enabled = chkcSurveyImportDuplicatesOverwrite.Checked AndAlso chkcSurveyImportDuplicatesOverwrite.Enabled
     End Sub
 
+    Private Sub chkcSurveyImportData_EnabledChanged(sender As Object, e As EventArgs) Handles chkcSurveyImportData.EnabledChanged
+        Call pImportDataChanged()
+    End Sub
+
+    Private Sub chkcSurveyImportGraphics_EnabledChanged(sender As Object, e As EventArgs) Handles chkcSurveyImportGraphics.EnabledChanged
+        Call pImportGraphicsChanged()
+    End Sub
+
+    Private Sub frmImportcSurvey_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        Call pImportDataChanged()
+        Call pImportGraphicsChanged()
+    End Sub
 End Class

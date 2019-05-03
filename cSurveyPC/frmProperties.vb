@@ -233,6 +233,9 @@ Public Class frmProperties
             chkCalculateMode.Checked = .CalculateMode = cSurvey.cSurvey.CalculateModeEnum.Automatic
             cboDesignBindingMode.SelectedIndex = .DesignBindingMode
             cboDesignWarpingMode.SelectedIndex = .DesignWarpingMode
+            optWarpingActive.Checked = .DesignWarpingState = cSurvey.cSurvey.DesignWarpingStateEnum.Active
+            optWarpingPaused.Checked = .DesignWarpingState = cSurvey.cSurvey.DesignWarpingStateEnum.Paused
+
             chkPlanWarpingEnabled.Checked = Not .PlanWarpingDisabled
             chkProfileWarpingEnabled.Checked = Not .ProfileWarpingDisabled
             chkShowWarpingDetails.Checked = .ShowWarpingDetails
@@ -686,6 +689,7 @@ Public Class frmProperties
 
             .DesignBindingMode = cboDesignBindingMode.SelectedIndex
             .DesignWarpingMode = cboDesignWarpingMode.SelectedIndex
+            .DesignWarpingState = If(optWarpingActive.Checked, cSurvey.cSurvey.DesignWarpingStateEnum.Active, cSurvey.cSurvey.DesignWarpingStateEnum.Paused)
             .PlanWarpingDisabled = Not chkPlanWarpingEnabled.Checked
             .ProfileWarpingDisabled = Not chkProfileWarpingEnabled.Checked
             .ShowWarpingDetails = chkShowWarpingDetails.Checked
@@ -1537,6 +1541,13 @@ Public Class frmProperties
                 Case "defaultsession"
                     lblSessionDate.Enabled = False
                     txtSessionDate.Enabled = False
+                    If oSurvey.Properties.CalculateVersion >= 2 Then
+                        txtSessionDate.Visible = False
+                        pnlSessionDate.Visible = True
+                    Else
+                        txtSessionDate.Visible = True
+                        pnlSessionDate.Visible = False
+                    End If
                     lblSessionDescription.Enabled = False
                     txtSessionDescription.Enabled = False
                     lblSessionColor.Enabled = False
@@ -1583,6 +1594,9 @@ Public Class frmProperties
                 Case "session"
                     lblSessionDate.Enabled = True
                     txtSessionDate.Enabled = True
+                    pnlSessionDate.Visible = False
+                    txtSessionDate.Visible = True
+
                     lblSessionDescription.Enabled = True
                     txtSessionDescription.Enabled = True
                     lblSessionColor.Enabled = True
@@ -2015,10 +2029,14 @@ Public Class frmProperties
                 lblDesignWarpingModeEnabledIn.Enabled = False
                 chkPlanWarpingEnabled.Enabled = False
                 chkProfileWarpingEnabled.Enabled = False
+                optWarpingActive.Enabled = False
+                optWarpingActive.Enabled = False
             Case cSurvey.cSurvey.DesignWarpingModeEnum.Default
                 lblDesignWarpingModeEnabledIn.Enabled = True
                 chkPlanWarpingEnabled.Enabled = True
                 chkProfileWarpingEnabled.Enabled = True
+                optWarpingActive.Enabled = True
+                optWarpingActive.Enabled = True
         End Select
     End Sub
 
@@ -3073,5 +3091,9 @@ Public Class frmProperties
 
     Private Sub cmdItemNamePatternAdd_Click(sender As Object, e As EventArgs) Handles cmdItemNamePatternAdd.Click
         Call mnuItemNamePatternTags.Show(Cursor.Position)
+    End Sub
+
+    Private Sub optWarpingActive_CheckedChanged(sender As Object, e As EventArgs) Handles optWarpingActive.CheckedChanged
+
     End Sub
 End Class

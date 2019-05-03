@@ -116,6 +116,19 @@ Namespace cSurvey.Calculate
             Call oZs.Clear()
         End Sub
 
+        Friend Sub Rename(OldName As String, NewName As String)
+            If oItems.ContainsKey(OldName) Then
+                Dim oItem As cTrigPoint = oItems(OldName)
+                Call oItem.rename(NewName)
+                Call oItems.Add(NewName, oItem)
+                For Each oTrigpoint As cTrigPoint In oItems.Values.Where(Function(item) item.Connections.Contains(OldName))
+                    With oTrigpoint.Connections
+                        Call .Rename(OldName, NewName)
+                    End With
+                Next
+            End If
+        End Sub
+
         Friend Function Append(ByVal Name As String) As cTrigPoint
             If oItems.ContainsKey(Name) Then
                 Return oItems(Name)

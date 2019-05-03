@@ -212,6 +212,7 @@ Namespace cSurvey
                 Call oTrigPoints.Add(NewName, oItem)
 
                 'change connections
+                Call oSurvey.Calculate.TrigPoints.Rename(OldName, NewName)
                 For Each oTrigpoint As cTrigPoint In oTrigPoints.Values.Where(Function(item) item.Connections.Contains(OldName))
                     With oTrigpoint.Connections
                         Dim bIgnore As Boolean = .Get(OldName)
@@ -219,6 +220,7 @@ Namespace cSurvey
                         Call .[Set](NewName, bIgnore)
                     End With
                 Next
+
 
                 'change shots
                 For Each oSegment As cSegment In oSurvey.Segments.ToList.Where(Function(item) item.[From] = OldName)
@@ -230,9 +232,9 @@ Namespace cSurvey
 
                 'change graphical object with station references
                 '- quote...
-                For Each oItemQUota As cItemQuota In oSurvey.GetAllDesignItems.Where(Function(item) item.Type = Design.Items.cIItem.cItemTypeEnum.Quota)
-                    If oItemQUota.QuotaRelativeTrigpoint = OldName Then
-                        oItemQUota.QuotaRelativeTrigpoint = NewName
+                For Each oItemQuota As cItemQuota In oSurvey.GetAllDesignItems.Where(Function(item) item.Type = Design.Items.cIItem.cItemTypeEnum.Quota)
+                    If oItemQuota.QuotaRelativeTrigpoint = OldName Then
+                        oItemQuota.QuotaRelativeTrigpoint = NewName
                     End If
                 Next
                 '- sketch: no...use station object

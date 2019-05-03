@@ -29,9 +29,11 @@ Public Class cLinkedSurveySelectorControl
     End Sub
 
     Private Sub oSurvey_OnLinkedSurveysRefresh(Sender As Object, e As EventArgs)
-        Call tvLinkedSurveys.BeginUpdate()
-        Call tvLinkedSurveys.BuildList(True)
-        Call tvLinkedSurveys.EndUpdate()
+        If Not tvLinkedSurveys.IsDisposed Then
+            Call tvLinkedSurveys.BeginUpdate()
+            Call tvLinkedSurveys.BuildList(True)
+            Call tvLinkedSurveys.EndUpdate()
+        End If
     End Sub
 
     Private Sub pSetupLinkedSurveys()

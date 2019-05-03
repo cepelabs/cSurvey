@@ -101,7 +101,7 @@ Namespace cSurvey.Calculate
             Call Append(dDeclinationDate, dDeclinationValue)
         End Sub
 
-        Friend Sub setMeridianConvergence(MeridianConvergence As Decimal)
+        Friend Sub SetMeridianConvergence(MeridianConvergence As Decimal)
             dMeridianConvergence = MeridianConvergence
             dMeridianConvergenceRadians = modPaint.DegreeToRadians(dMeridianConvergence)
         End Sub

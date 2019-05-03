@@ -48,7 +48,6 @@ Public Class frmMain
 
     Private WithEvents frmF As frmFind
     Private WithEvents frmV As frmPreview
-    Private WithEvents frmLS As frmLinkedSurveys
     Private WithEvents frmS As frmScriptEditor
     Private WithEvents frmThP As frmTherionPad
     Private WithEvents frmProg As frmProgress
@@ -2398,9 +2397,13 @@ Public Class frmMain
                 Dim oSessionColor As Color
                 Dim oCaveBranchColor As Color
                 If oSegment.Session = "" Then
+                    If Not oSegment.IsEquate Then
+                        If sErrorText <> "" Then sErrorText = sErrorText & vbCrLf
+                        sErrorText = sErrorText & GetLocalizedString("main.textpart153")
+                    End If
                     oSessionColor = grdSegments.BackgroundColor
-                Else
-                    Dim oColor As Color = oSurvey.Properties.Sessions.GetColor(oSegment, Color.Transparent)
+                    Else
+                        Dim oColor As Color = oSurvey.Properties.Sessions.GetColor(oSegment, Color.Transparent)
                     If Not (oColor = Color.Transparent) Then
                         oSessionColor = oColor
                     Else
@@ -2590,51 +2593,52 @@ Public Class frmMain
     End Sub
 
     Private Sub pSurveyCleanUp()
-        Dim frmSCUP As frmSurveyCleanUp = New frmSurveyCleanUp
-        If frmSCUP.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-            With frmSCUP
-                If .chkPlotSegments.Checked Then
-                    Call oSurvey.Segments.CleanUp()
-                End If
-                If .chkSplayNames.Checked Then
-                    Call oSurvey.Segments.RefreshSplayNames()
-                End If
-                If .chkSplayFlagsAndNames.Checked Then
-                    Call oSurvey.Segments.CheckSplayFlags()
-                End If
-                If .chkDesignClipart.Checked Then
-                    Call oSurvey.Cliparts.Cliparts.CleanUp()
-                End If
-                If .chkDesignSign.Checked Then
-                    Call oSurvey.Signs.Cliparts.CleanUp()
-                End If
-                Dim oFlags As cDesign.CleanUpFlagsEnum
-                If .chkDesignPointReduction.Checked Then oFlags = oFlags Or cDesign.CleanUpFlagsEnum.PointsReduction
-                If .chkDesignPointsCleanUp.Checked Then oFlags = oFlags Or cDesign.CleanUpFlagsEnum.PointsCleanUp
-                If .chkDesignCaveBranchCheck.Checked Then oFlags = oFlags Or cDesign.CleanUpFlagsEnum.CaveBranchCheck
-                'If .chkDesignConnectToCheck.Checked And .chkDesignConnectToCheck.Enabled Then oFlags = oFlags Or cDesign.CleanUpFlagsEnum.ConnectToCheck
-                Select Case .cboDesignContext.SelectedIndex
-                    Case 0
-                        Dim oUndefinedCave As Dictionary(Of String, cDesign.cCleanUpUndefinedCaveAndBranchItem) = New Dictionary(Of String, cDesign.cCleanUpUndefinedCaveAndBranchItem)
-                        Call oSurvey.Plan.CleanUp(oFlags, .txtDesignPointReductionFactor.Value, oUndefinedCave)
-                        Call oSurvey.Profile.CleanUp(oFlags, .txtDesignPointReductionFactor.Value, oUndefinedCave)
-                    Case 1
-                        Call oSurvey.Plan.CleanUp(oFlags, .txtDesignPointReductionFactor.Value)
-                    Case 2
-                        Call oSurvey.Profile.CleanUp(oFlags, .txtDesignPointReductionFactor.Value)
-                End Select
-                If .chkDesignRemoveInvalidItem.Checked Then
-                    'delete item in wrong level...(some topodroid version create file with problem like this...)
-                    For Each oItem As cItem In oSurvey.GetAllDesignItems(cIItem.cItemTypeEnum.CrossSection)
-                        If oItem.Layer.Type <> cLayers.LayerTypeEnum.Signs Then
-                            Call oItem.Layer.Items.Remove(oItem)
-                        End If
-                    Next
-                End If
-                Call pSurveySegmentsRefresh()
-                Call pMapInvalidate()
-            End With
-        End If
+        Using frmSCUP As frmSurveyCleanUp = New frmSurveyCleanUp
+            If frmSCUP.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                With frmSCUP
+                    If .chkPlotSegments.Checked Then
+                        Call oSurvey.Segments.CleanUp()
+                    End If
+                    If .chkSplayNames.Checked Then
+                        Call oSurvey.Segments.RefreshSplayNames()
+                    End If
+                    If .chkSplayFlagsAndNames.Checked Then
+                        Call oSurvey.Segments.CheckSplayFlags()
+                    End If
+                    If .chkDesignClipart.Checked Then
+                        Call oSurvey.Cliparts.Cliparts.CleanUp()
+                    End If
+                    If .chkDesignSign.Checked Then
+                        Call oSurvey.Signs.Cliparts.CleanUp()
+                    End If
+                    Dim oFlags As cDesign.CleanUpFlagsEnum
+                    If .chkDesignPointReduction.Checked Then oFlags = oFlags Or cDesign.CleanUpFlagsEnum.PointsReduction
+                    If .chkDesignPointsCleanUp.Checked Then oFlags = oFlags Or cDesign.CleanUpFlagsEnum.PointsCleanUp
+                    If .chkDesignCaveBranchCheck.Checked Then oFlags = oFlags Or cDesign.CleanUpFlagsEnum.CaveBranchCheck
+                    'If .chkDesignConnectToCheck.Checked And .chkDesignConnectToCheck.Enabled Then oFlags = oFlags Or cDesign.CleanUpFlagsEnum.ConnectToCheck
+                    Select Case .cboDesignContext.SelectedIndex
+                        Case 0
+                            Dim oUndefinedCave As Dictionary(Of String, cDesign.cCleanUpUndefinedCaveAndBranchItem) = New Dictionary(Of String, cDesign.cCleanUpUndefinedCaveAndBranchItem)
+                            Call oSurvey.Plan.CleanUp(oFlags, .txtDesignPointReductionFactor.Value, oUndefinedCave)
+                            Call oSurvey.Profile.CleanUp(oFlags, .txtDesignPointReductionFactor.Value, oUndefinedCave)
+                        Case 1
+                            Call oSurvey.Plan.CleanUp(oFlags, .txtDesignPointReductionFactor.Value)
+                        Case 2
+                            Call oSurvey.Profile.CleanUp(oFlags, .txtDesignPointReductionFactor.Value)
+                    End Select
+                    If .chkDesignRemoveInvalidItem.Checked Then
+                        'delete item in wrong level...(some topodroid version create file with problem like this...)
+                        For Each oItem As cItem In oSurvey.GetAllDesignItems(cIItem.cItemTypeEnum.CrossSection)
+                            If oItem.Layer.Type <> cLayers.LayerTypeEnum.Signs Then
+                                Call oItem.Layer.Items.Remove(oItem)
+                            End If
+                        Next
+                    End If
+                    Call pSurveySegmentsRefresh()
+                    Call pMapInvalidate()
+                End With
+            End If
+        End Using
     End Sub
 
     Private Sub pDesignPointsUnjoin(Optional All As Boolean = False)
@@ -2717,8 +2721,9 @@ Public Class frmMain
                 End If
             Case Keys.F
                 If e.Control And e.Alt Then
-                    Dim frmCR As frmCaveRegister = New frmCaveRegister(oSurvey, oSurvey.CaveRegister)
-                    frmCR.ShowDialog(Me)
+                    Using frmCR As frmCaveRegister = New frmCaveRegister(oSurvey, oSurvey.CaveRegister)
+                        frmCR.ShowDialog(Me)
+                    End Using
                 End If
             Case Keys.D
                 If e.Control And e.Alt Then
@@ -3298,9 +3303,10 @@ Public Class frmMain
 
             If modMain.CompareVersion(sNewVersion, sCurrentVersion) Then
                 'la versione online è piu recente...avviso che esiste un aggiornamento
-                Dim frmNU As frmNotifyUpdate = New frmNotifyUpdate(NightBuild)
-                frmNU.lblMessage.Text = String.Format(GetLocalizedString("main.warning21"), sNewVersion)
-                Call frmNU.ShowDialog(Me)
+                Using frmNU As frmNotifyUpdate = New frmNotifyUpdate(NightBuild)
+                    frmNU.lblMessage.Text = String.Format(GetLocalizedString("main.warning21"), sNewVersion)
+                    Call frmNU.ShowDialog(Me)
+                End Using
             End If
             Return True
         Catch ex As Exception
@@ -7134,12 +7140,13 @@ Public Class frmMain
     End Sub
 
     Private Sub pSurveyProperty(Optional SelectedTabIndex As Integer? = Nothing)
-        Dim frmP As frmProperties = New frmProperties(oSurvey, SelectedTabIndex, iFunctionLanguage)
-        AddHandler frmP.OnApply, AddressOf frmProperties_OnApply
-        AddHandler frmP.OnSegmentSelect, AddressOf frmProperties_OnSegmentSelect
-        If frmP.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-            Call pSurveyUpdateProperty()
-        End If
+        Using frmP As frmProperties = New frmProperties(oSurvey, SelectedTabIndex, iFunctionLanguage)
+            AddHandler frmP.OnApply, AddressOf frmProperties_OnApply
+            AddHandler frmP.OnSegmentSelect, AddressOf frmProperties_OnSegmentSelect
+            If frmP.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                Call pSurveyUpdateProperty()
+            End If
+        End Using
     End Sub
 
     Private Sub mnuFileProp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuFileProp.Click
@@ -7287,6 +7294,8 @@ Public Class frmMain
                     pnlStatusCurrentRule.Text = modMain.GetLocalizedString("main.textpart57") & Strings.Format(iScale, "#,##0")
                 End If
                 Call pStatusSet(modMain.GetLocalizedString("main.textpart58"))
+            ElseIf Args.Source = cSurvey.cSurvey.OnPropertiesChangedEventArgs.PropertiesChangeSourceEnum.DesignWarpingState Then
+                Call pSurveyMainPropertiesPanelsRefresh()
             ElseIf Args.Source = cSurvey.cSurvey.OnPropertiesChangedEventArgs.PropertiesChangeSourceEnum.MainProperties Then
                 Call modWMSManager.WMSDownloadFileReset()
             ElseIf Args.Source = cSurvey.cSurvey.OnPropertiesChangedEventArgs.PropertiesChangeSourceEnum.MasterSlaveSettings Then
@@ -7343,9 +7352,7 @@ Public Class frmMain
     Private Sub pSurveyCalculate(ByVal Force As Boolean)
         If oSurvey.Properties.CalculateMode = cSurvey.cSurvey.CalculateModeEnum.Automatic Or Force Then ' Or oSurvey.Invalidated Then
             Call oMousePointer.Push(Cursors.WaitCursor)
-
             Call pSurveyCheckOrigin()
-
             Call pStatusSet(GetLocalizedString("main.textpart44"))
             If Force Then
                 Call oSurvey.Invalidate()
@@ -7794,7 +7801,11 @@ Public Class frmMain
             oHSB.Visible = False
 
             tbLayers.Enabled = False
-            tbDesign.Enabled = False
+            mnuLayers.Enabled = False
+
+            mnuDesignEditScaleRules.Enabled = False
+            mnuDesignPlot.Enabled = False
+            mnuDesignDeleteAll.Enabled = False
 
             Call pSurveySetCurrentCaveBranch(pGetCurrentDesignTools.CurrentCave, pGetCurrentDesignTools.CurrentBranch)
             Call pSurveyRestoreCaveBranchLockstate(pGetCurrentDesignTools.CurrentCave, pGetCurrentDesignTools.CurrentBranch)
@@ -7891,6 +7902,12 @@ Public Class frmMain
             oHSB.Visible = True
 
             tbLayers.Enabled = True
+            mnuLayers.Enabled = True
+
+            mnuDesignEditScaleRules.Enabled = True
+            mnuDesignPlot.Enabled = True
+            mnuDesignDeleteAll.Enabled = True
+
             If pGetCurrentDesignTools.CurrentLayer Is Nothing Then
                 Call btnLayer_Base.PerformClick()
             Else
@@ -8024,6 +8041,12 @@ Public Class frmMain
             oHSB.Visible = True
 
             tbLayers.Enabled = True
+            mnuLayers.Enabled = True
+
+            mnuDesignEditScaleRules.Enabled = True
+            mnuDesignPlot.Enabled = True
+            mnuDesignDeleteAll.Enabled = True
+
             If pGetCurrentDesignTools.CurrentLayer Is Nothing Then
                 Call btnLayer_Base.PerformClick()
             Else
@@ -8045,7 +8068,6 @@ Public Class frmMain
                 End Select
             End If
 
-            tbDesign.Enabled = True
             For Each oButton As ToolStripItem In tbDesign.Items
                 If TypeOf oButton.Tag Is cEditToolsBag Then
                     Dim oBag As cEditToolsBag = oButton.Tag
@@ -8876,17 +8898,18 @@ Public Class frmMain
                             Call pGetCurrentDesignTools.SelectLayer(oLayer)
                             oItem = oLayer.GetType.GetMethod(Bag.Method).Invoke(oLayer, Bag.GetInvokeParameters("cave", sCave, "branch", sBranch, "image", oImage))
                             Call oItem.SetBindDesignType(cboMainBindDesignType.SelectedIndex, oSurvey.CrossSections.GetBindItem(cboMainBindCrossSections.SelectedItem), False)
-                            Dim frmSE As frmSketchEdit = New frmSketchEdit(oSurvey, oItem)
-                            If frmSE.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                                Call pSurveyInvalidate()
-                                Call pGetCurrentDesignTools.SelectItem(oItem)
-                                Call pSurveyLoadTreeLayers(oItem.Layer, oItem)
-                            Else
-                                Call oLayer.Items.Remove(oItem)
-                                Call pGetCurrentDesignTools.EndItem()
-                                Call oSurvey.Sketches.Rebind()
-                                bCancel = True
-                            End If
+                            Using frmSE As frmSketchEdit = New frmSketchEdit(oSurvey, oItem)
+                                If frmSE.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                                    Call pSurveyInvalidate()
+                                    Call pGetCurrentDesignTools.SelectItem(oItem)
+                                    Call pSurveyLoadTreeLayers(oItem.Layer, oItem)
+                                Else
+                                    Call oLayer.Items.Remove(oItem)
+                                    Call pGetCurrentDesignTools.EndItem()
+                                    Call oSurvey.Sketches.Rebind()
+                                    bCancel = True
+                                End If
+                            End Using
                         Catch
                         End Try
                     End If
@@ -8916,15 +8939,16 @@ Public Class frmMain
                         Call pGetCurrentDesignTools.SelectLayer(oLayer)
                         oItem = oLayer.GetType.GetMethod(Bag.Method).Invoke(oLayer, Bag.GetInvokeParameters("cave", sCave, "branch", sBranch, "image", oImage))
                         Call oItem.SetBindDesignType(cboMainBindDesignType.SelectedIndex, oSurvey.CrossSections.GetBindItem(cboMainBindCrossSections.SelectedItem), False)
-                        Dim frmIE As frmImageEdit = New frmImageEdit(oSurvey, oItem)
-                        If frmIE.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                            Call pGetCurrentDesignTools.EditItem(oItem, True)
-                            'Call pMapInvalidate()
-                        Else
-                            Call pGetCurrentDesignTools.EndItem()
-                            Call oLayer.Items.Remove(oItem)
-                            bCancel = True
-                        End If
+                        Using frmIE As frmImageEdit = New frmImageEdit(oSurvey, oItem)
+                            If frmIE.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                                Call pGetCurrentDesignTools.EditItem(oItem, True)
+                                'Call pMapInvalidate()
+                            Else
+                                Call pGetCurrentDesignTools.EndItem()
+                                Call oLayer.Items.Remove(oItem)
+                                bCancel = True
+                            End If
+                        End Using
                     Catch
                     End Try
                 End If
@@ -9205,12 +9229,13 @@ Public Class frmMain
     Private Sub mnuDesignItemImageChange_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuDesignItemImageChange.Click
         With pGetCurrentDesignTools()
             Dim oItemImage As cIItemImage = .CurrentItem
-            Dim frmIE As frmImageEdit = New frmImageEdit(oSurvey, oItemImage)
-            If frmIE.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                Call .TakeUndoSnapshot()
-                Call pObjectPropertyLoad()
-                Call pMapInvalidate()
-            End If
+            Using frmIE As frmImageEdit = New frmImageEdit(oSurvey, oItemImage)
+                If frmIE.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                    Call .TakeUndoSnapshot()
+                    Call pObjectPropertyLoad()
+                    Call pMapInvalidate()
+                End If
+            End Using
         End With
     End Sub
 
@@ -10255,12 +10280,13 @@ Public Class frmMain
     Private Sub cmdPropImageBrowse_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdPropImageBrowse.Click
         With pGetCurrentDesignTools()
             Dim oItemImage As cIItemImage = .CurrentItem
-            Dim frmIE As frmImageEdit = New frmImageEdit(oSurvey, oItemImage)
-            If frmIE.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                Call .TakeUndoSnapshot()
-                Call pObjectPropertyLoad()
-                Call pMapInvalidate()
-            End If
+            Using frmIE As frmImageEdit = New frmImageEdit(oSurvey, oItemImage)
+                If frmIE.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                    Call .TakeUndoSnapshot()
+                    Call pObjectPropertyLoad()
+                    Call pMapInvalidate()
+                End If
+            End Using
         End With
     End Sub
 
@@ -10416,8 +10442,9 @@ Public Class frmMain
     End Function
 
     Private Sub mnuHelpInfo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuHelpInfo.Click
-        Dim frmA As frmAbout = New frmAbout
-        Call frmA.ShowDialog(Me)
+        Using frmA As frmAbout = New frmAbout
+            Call frmA.ShowDialog(Me)
+        End Using
     End Sub
 
     'Private Sub cboPropLineType_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -11654,10 +11681,10 @@ Public Class frmMain
                                         iFromOrTo = GetDesignStationEnum.To
                                     End If
                                 End If
-                                Dim oLR As SizeF = modDesign.GetLRFromDesign(oSurvey.Options("_design.plan"), oSegment, iFromOrTo)
+                                Dim oLR As SizeF = modDesignLRUD.GetLRFromDesign(oSurvey.Options("_design.plan"), oSegment, iFromOrTo)
                                 oSegment.Left = modNumbers.MathRound(oLR.Width, 2)
                                 oSegment.Right = modNumbers.MathRound(oLR.Height, 2)
-                                Dim oUD As SizeF = modDesign.GetUDFromDesign(oSurvey.Options("_design.profile"), oSegment, iFromOrTo)
+                                Dim oUD As SizeF = modDesignLRUD.GetUDFromDesign(oSurvey.Options("_design.profile"), oSegment, iFromOrTo)
                                 oSegment.Up = modNumbers.MathRound(oUD.Width, 2)
                                 oSegment.Down = modNumbers.MathRound(oUD.Height, 2)
 
@@ -11735,74 +11762,75 @@ Public Class frmMain
         Dim oRows As List(Of DataGridViewRow) = pGridRowsFromGridSelection()
         Call oMousePointer.Pop()
 
-        Dim frmSRI As frmSegmentsReplicateInfo = New frmSegmentsReplicateInfo(oSurvey, oSession, oCave, oCaveBranch, iOldDirection, oRows.Count, iFunctionLanguage)
-        With frmSRI
-            If .ShowDialog(Me) = vbOK Then
-                oMousePointer.Push(Cursors.WaitCursor)
-                Call oTools.SelectSegment(Nothing)
+        Using frmSRI As frmSegmentsReplicateInfo = New frmSegmentsReplicateInfo(oSurvey, oSession, oCave, oCaveBranch, iOldDirection, oRows.Count, iFunctionLanguage)
+            With frmSRI
+                If .ShowDialog(Me) = vbOK Then
+                    oMousePointer.Push(Cursors.WaitCursor)
+                    Call oTools.SelectSegment(Nothing)
 
-                Dim bReplicateSession As Boolean = .chkSession.Checked
-                Dim bReplicateCave As Boolean = .chkCave.Checked
-                Dim bReplicateDirection As Boolean = .chkDirection.Checked
-                Dim bReplicateFormula As Integer = .chkFormula.Checked
-                Dim oReplicateFormula As cScript = Nothing
+                    Dim bReplicateSession As Boolean = .chkSession.Checked
+                    Dim bReplicateCave As Boolean = .chkCave.Checked
+                    Dim bReplicateDirection As Boolean = .chkDirection.Checked
+                    Dim bReplicateFormula As Integer = .chkFormula.Checked
+                    Dim oReplicateFormula As cScript = Nothing
 
-                Dim bRebind As Boolean = .chkRebind.Checked
+                    Dim bRebind As Boolean = .chkRebind.Checked
 
-                Dim sSession As String = ""
-                Dim sCave As String = ""
-                Dim sBranch As String = ""
-                Dim iDirection As cSegment.DirectionEnum
-                Dim iPriority As Integer = -1
-                'Dim sFormula As String = ""
-                Try : sSession = .cboSessionList.SelectedItem.id : Catch : End Try  'pGetCurrentDesignTools.CurrentSegment.Session
-                Try : sCave = .cboCaveList.SelectedItem.name : Catch : End Try '"" & pGetCurrentDesignTools.CurrentSegment.Cave
-                Try : sBranch = .cboCaveBranchList.SelectedItem.path : Catch : End Try '"" & pGetCurrentDesignTools.CurrentSegment.Branch
-                iDirection = .cboDirection.SelectedIndex
+                    Dim sSession As String = ""
+                    Dim sCave As String = ""
+                    Dim sBranch As String = ""
+                    Dim iDirection As cSegment.DirectionEnum
+                    Dim iPriority As Integer = -1
+                    'Dim sFormula As String = ""
+                    Try : sSession = .cboSessionList.SelectedItem.id : Catch : End Try  'pGetCurrentDesignTools.CurrentSegment.Session
+                    Try : sCave = .cboCaveList.SelectedItem.name : Catch : End Try '"" & pGetCurrentDesignTools.CurrentSegment.Cave
+                    Try : sBranch = .cboCaveBranchList.SelectedItem.path : Catch : End Try '"" & pGetCurrentDesignTools.CurrentSegment.Branch
+                    iDirection = .cboDirection.SelectedIndex
 
-                'Try : sFormula = .Formula : Catch : End Try
-                If bReplicateFormula Then
-                    oReplicateFormula = frmSRI.GetScript
-                    bDisableSegmentsChangeEvent = True
-                End If
-
-                'Dim oSegment As cSegment
-                'cerco il segmento...
-                'If iReplicateTo = 4 Then
-                For Each oSegment As cSegment In pSegmentsGetSelections(.cboReplicateTo.SelectedIndex)
-                    If bReplicateSession Then
-                        Call oSegment.SetSession(sSession)
+                    'Try : sFormula = .Formula : Catch : End Try
+                    If bReplicateFormula Then
+                        oReplicateFormula = frmSRI.GetScript
+                        bDisableSegmentsChangeEvent = True
                     End If
-                    If bReplicateCave Then
-                        Call oSegment.SetCave(sCave, sBranch)
-                    End If
-                    If bReplicateDirection Then
-                        Dim bEnabled As Boolean = Not oSegment.IsProfileBinded
-                        If bEnabled Then
-                            If bReplicateDirection Then
-                                oSegment.Direction = iDirection
+
+                    'Dim oSegment As cSegment
+                    'cerco il segmento...
+                    'If iReplicateTo = 4 Then
+                    For Each oSegment As cSegment In pSegmentsGetSelections(.cboReplicateTo.SelectedIndex)
+                        If bReplicateSession Then
+                            Call oSegment.SetSession(sSession)
+                        End If
+                        If bReplicateCave Then
+                            Call oSegment.SetCave(sCave, sBranch)
+                        End If
+                        If bReplicateDirection Then
+                            Dim bEnabled As Boolean = Not oSegment.IsProfileBinded
+                            If bEnabled Then
+                                If bReplicateDirection Then
+                                    oSegment.Direction = iDirection
+                                End If
                             End If
                         End If
+                        If bReplicateFormula AndAlso Not oReplicateFormula Is Nothing Then
+                            Call oReplicateFormula.Eval("ReplicateFormula", {oSegment})
+                        End If
+                    Next
+                    Call oSurvey.Segments.SaveAll(bRebind)
+                    If bReplicateFormula Then
+                        bDisableSegmentsChangeEvent = False
                     End If
-                    If bReplicateFormula AndAlso Not oReplicateFormula Is Nothing Then
-                        Call oReplicateFormula.Eval("ReplicateFormula", {oSegment})
-                    End If
-                Next
-                Call oSurvey.Segments.SaveAll(bRebind)
-                If bReplicateFormula Then
-                    bDisableSegmentsChangeEvent = False
+                    Call oMousePointer.Pop()
+
+                    Call pSurveySegmentsRefresh(False)
+                    Call pSurveySegmentsValidate()
+                    'Call pSegmentsRefresh()
+
+                    Call pSurveyInvalidate()
+
+                    Call pMapInvalidate()
                 End If
-                Call oMousePointer.Pop()
-
-                Call pSurveySegmentsRefresh(False)
-                Call pSurveySegmentsValidate()
-                'Call pSegmentsRefresh()
-
-                Call pSurveyInvalidate()
-
-                Call pMapInvalidate()
-            End If
-        End With
+            End With
+        End Using
     End Sub
 
     Private Sub oDockClipart_OnItemCreate(ByVal Sender As frmClipartPopup, ByVal e As frmClipartPopup.OnItemEventArgs) Handles oDockClipart.OnItemCreate
@@ -12231,65 +12259,67 @@ Public Class frmMain
 
     Private Sub pTrigpointsTrigPointRename()
         Dim oTrigPoint As cTrigPoint = pGetCurrentTools.CurrentTrigpoint
-        Dim frmRTP As frmRenameTrigpoints = New frmRenameTrigpoints(oSurvey)
-        With frmRTP
-            Dim iColumn As Integer = grdTrigPoints.CurrentCellAddress.X
-            If iColumn = 0 Then
-                .cboOld.Text = grdTrigPoints.CurrentCell.Value
-            ElseIf iColumn = 1 Then
-                .cboOld.Text = grdTrigPoints.CurrentCell.Value
-            End If
-            If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                Dim oCurrentSegment As cSegment = oTools.CurrentSegment
-                Dim oCurrentTrigpoint As cTrigPoint = oTools.CurrentTrigpoint
-                Call pGetCurrentTools.SelectSegment(Nothing)
-                Call pGetCurrentTools.SelectTrigpoint(Nothing)
+        Using frmRTP As frmRenameTrigpoints = New frmRenameTrigpoints(oSurvey)
+            With frmRTP
+                Dim iColumn As Integer = grdTrigPoints.CurrentCellAddress.X
+                If iColumn = 0 Then
+                    .cboOld.Text = grdTrigPoints.CurrentCell.Value
+                ElseIf iColumn = 1 Then
+                    .cboOld.Text = grdTrigPoints.CurrentCell.Value
+                End If
+                If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                    Dim oCurrentSegment As cSegment = oTools.CurrentSegment
+                    Dim oCurrentTrigpoint As cTrigPoint = oTools.CurrentTrigpoint
+                    Call pGetCurrentTools.SelectSegment(Nothing)
+                    Call pGetCurrentTools.SelectTrigpoint(Nothing)
 
-                Dim sOld As String = .cboOld.Text
-                Dim sNew As String = .txtNew.Text
-                Call oSurvey.TrigPoints.RenameTrigPoint(sOld, sNew)
+                    Dim sOld As String = .cboOld.Text
+                    Dim sNew As String = .txtNew.Text
+                    Call oSurvey.TrigPoints.RenameTrigPoint(sOld, sNew)
 
-                Call pSurveySegmentsRefresh()
-                Call pSurveyTrigpointsRefresh()
+                    Call pSurveySegmentsRefresh()
+                    Call pSurveyTrigpointsRefresh()
 
-                Call pSegmentSelect(oCurrentSegment, False, False)
-                Call pTrigPointSelect(oCurrentTrigpoint, False, False)
+                    Call pSegmentSelect(oCurrentSegment, False, False)
+                    Call pTrigPointSelect(oCurrentTrigpoint, False, False)
 
-                Call pSurveyTrigpointsRefresh()
-            End If
-        End With
+                    Call pSurveyTrigpointsRefresh()
+                End If
+            End With
+        End Using
     End Sub
 
     Private Sub pSegmentsTrigPointRename()
         Dim oSegment As cSegment = pGetCurrentTools.CurrentSegment
-        Dim frmRTP As frmRenameTrigpoints = New frmRenameTrigpoints(oSurvey)
-        With frmRTP
-            Dim iColumn As Integer = grdSegments.CurrentCellAddress.X
-            If iColumn = 2 Then
-                .cboOld.Text = grdSegments.CurrentCell.Value
-            ElseIf iColumn = 3 Then
-                .cboOld.Text = grdSegments.CurrentCell.Value
-            End If
-            If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                Dim oCurrentSegment As cSegment = oTools.CurrentSegment
-                Dim oCurrentTrigpoint As cTrigPoint = oTools.CurrentTrigpoint
+        Using frmRTP As frmRenameTrigpoints = New frmRenameTrigpoints(oSurvey)
+            With frmRTP
+                Dim iColumn As Integer = grdSegments.CurrentCellAddress.X
+                If iColumn = 2 Then
+                    .cboOld.Text = grdSegments.CurrentCell.Value
+                ElseIf iColumn = 3 Then
+                    .cboOld.Text = grdSegments.CurrentCell.Value
+                End If
+                If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                    Dim oCurrentSegment As cSegment = oTools.CurrentSegment
+                    Dim oCurrentTrigpoint As cTrigPoint = oTools.CurrentTrigpoint
 
-                Call pGetCurrentTools.SelectSegment(Nothing)
-                Call pGetCurrentTools.SelectTrigpoint(Nothing)
+                    Call pGetCurrentTools.SelectSegment(Nothing)
+                    Call pGetCurrentTools.SelectTrigpoint(Nothing)
 
-                Dim sOld As String = .cboOld.Text.ToUpper
-                Dim sNew As String = .txtNew.Text.ToUpper
-                Call oSurvey.TrigPoints.RenameTrigPoint(sOld, sNew)
+                    Dim sOld As String = .cboOld.Text.ToUpper
+                    Dim sNew As String = .txtNew.Text.ToUpper
+                    Call oSurvey.TrigPoints.RenameTrigPoint(sOld, sNew)
 
-                Call pSurveySegmentsRefresh()
-                Call pSurveyTrigpointsRefresh()
+                    Call pSurveySegmentsRefresh()
+                    Call pSurveyTrigpointsRefresh()
 
-                Call pSegmentSelect(oCurrentSegment, False, False)
-                Call pTrigPointSelect(oCurrentTrigpoint, False, False)
+                    Call pSegmentSelect(oCurrentSegment, False, False)
+                    Call pTrigPointSelect(oCurrentTrigpoint, False, False)
 
-                Call pTrigpointsRefresh()
-            End If
-        End With
+                    Call pTrigpointsRefresh()
+                End If
+            End With
+        End Using
     End Sub
 
     Private Sub mnuSegmentsRenameTrigpoints_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuSegmentsRenameTrigpoints.Click
@@ -12333,24 +12363,6 @@ Public Class frmMain
             End If
         Catch
         End Try
-    End Sub
-
-    Private Sub mnuView_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuView.Click
-
-    End Sub
-
-    Private Sub pSurveySetWorkmode(ByVal Workmode As Integer)
-        Select Case Workmode
-            Case 0
-                tbLayers.Enabled = False
-                tbDesign.Enabled = False
-            Case 1
-                tbLayers.Enabled = True
-                tbDesign.Enabled = True
-            Case 2
-                tbLayers.Enabled = False
-                tbDesign.Enabled = False
-        End Select
     End Sub
 
     Private Sub mnuViewPlotShowPointText_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuViewPlotShowStationText.Click
@@ -13389,11 +13401,12 @@ Public Class frmMain
 
     Private Sub mnuFileSettings_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuFileSettings.Click
         Call pSettingsSave()
-        Dim frmS As frmSettings = New frmSettings()
-        If frmS.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-            Call pSettingsLoad()
-            Call pMapInvalidate()
-        End If
+        Using frmS As frmSettings = New frmSettings()
+            If frmS.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                Call pSettingsLoad()
+                Call pMapInvalidate()
+            End If
+        End Using
     End Sub
 
     Private Sub btnExportData_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExportData.Click
@@ -14418,21 +14431,22 @@ Public Class frmMain
     Private Sub cmdPropCrossSectionSegment_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdPropCrossSectionSegment.Click
         With pGetCurrentDesignTools()
             Dim oItem As cItemCrossSection = .CurrentItem
-            Dim frmSB As frmSegmentBrowser = New frmSegmentBrowser(oSurvey, oItem.Segment)
-            If frmSB.ShowDialog(Me) = vbOK Then
-                Dim bOk As Boolean
-                If IsNothing(frmSB.cboSegments.SelectedItem) AndAlso oItem.DesignCrossSection.HaveMarkers Then
-                    bOk = MsgBox(modMain.GetLocalizedString("main.warning29"), MsgBoxStyle.YesNo Or MsgBoxStyle.Critical Or MsgBoxStyle.DefaultButton2, GetLocalizedString("main.warningtitle")) = MsgBoxResult.Yes
-                Else
-                    bOk = True
+            Using frmSB As frmSegmentBrowser = New frmSegmentBrowser(oSurvey, oItem.Segment)
+                If frmSB.ShowDialog(Me) = vbOK Then
+                    Dim bOk As Boolean
+                    If IsNothing(frmSB.cboSegments.SelectedItem) AndAlso oItem.DesignCrossSection.HaveMarkers Then
+                        bOk = MsgBox(modMain.GetLocalizedString("main.warning29"), MsgBoxStyle.YesNo Or MsgBoxStyle.Critical Or MsgBoxStyle.DefaultButton2, GetLocalizedString("main.warningtitle")) = MsgBoxResult.Yes
+                    Else
+                        bOk = True
+                    End If
+                    If bOk Then
+                        oItem.Segment = frmSB.cboSegments.SelectedItem
+                        Call .TakeUndoSnapshot()
+                        Call pObjectPropertyLoad()
+                        Call pMapInvalidate()
+                    End If
                 End If
-                If bOk Then
-                    oItem.Segment = frmSB.cboSegments.SelectedItem
-                    Call .TakeUndoSnapshot()
-                    Call pObjectPropertyLoad()
-                    Call pMapInvalidate()
-                End If
-            End If
+            End Using
         End With
     End Sub
 
@@ -14616,18 +14630,18 @@ Public Class frmMain
         'Try : iCurrentTrigpoint = grdTrigPoints.CurrentRow.Index : Catch : iCurrentTrigpoint = -1 : End Try
         Call pGetCurrentTools.SelectSegment(Nothing)
         Call pGetCurrentTools.SelectTrigpoint(Nothing)
-        Dim frmPT As frmPrefixTrigPoints = New frmPrefixTrigPoints(oSurvey, oSelectedTrigpoints)
-        With frmPT
-            If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                Call pSurveySegmentsRefresh()
-                Call pSurveyTrigpointsRefresh()
-                Call pSegmentSelect(oCurrentSegment, False, False)
-                Call pTrigPointSelect(oCurrentTrigpoint, False, False)
-                Call pSegmentsRefresh()
-                Call pTrigpointsRefresh()
-            End If
-        End With
-
+        Using frmPT As frmPrefixTrigPoints = New frmPrefixTrigPoints(oSurvey, oSelectedTrigpoints)
+            With frmPT
+                If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                    Call pSurveySegmentsRefresh()
+                    Call pSurveyTrigpointsRefresh()
+                    Call pSegmentSelect(oCurrentSegment, False, False)
+                    Call pTrigPointSelect(oCurrentTrigpoint, False, False)
+                    Call pSegmentsRefresh()
+                    Call pTrigpointsRefresh()
+                End If
+            End With
+        End Using
     End Sub
 
     Private Sub mnuPlotPrefixTrigpoints_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPlotPrefixTrigpoints.Click
@@ -14768,89 +14782,91 @@ Public Class frmMain
             Dim iSegmentsCount As Integer = oSurvey.Segments.GetValidSegments.Count
 
             If iTrigPointsCount > 1 And iSegmentsCount > 0 Then
-                Dim frmLD As frmLochDialog = New frmLochDialog(oSurvey)
-                If frmLD.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                    Dim iThOptions As modExport.TherionExportOptionsEnum = TherionExportOptionsEnum.Default Or TherionExportOptionsEnum.ExportSurfaceElevationsData ' IIf(oSurvey.Surface.Elevations.ShowIn3D, TherionExportOptionsEnum.ExportSurfaceElevationsData, 0)
+                Using frmLD As frmLochDialog = New frmLochDialog(oSurvey)
+                    If frmLD.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                        Dim iThOptions As modExport.TherionExportOptionsEnum = TherionExportOptionsEnum.Default Or TherionExportOptionsEnum.ExportSurfaceElevationsData ' IIf(oSurvey.Surface.Elevations.ShowIn3D, TherionExportOptionsEnum.ExportSurfaceElevationsData, 0)
 
-                    'use 3d mode of main survey....
-                    If oSurvey.Properties.ThreeDModelMode > cProperties.ThreeDModelModeEnum.Simple Then
-                        Call oSurvey.Calculate.CalculateDataFromDesigns(oTrigPointsToElaborate)
-                        For Each oLinkedSurvey As cLinkedSurvey In oSurvey.LinkedSurveys.GetSelected("loch")
-                            Dim oLinkedSurveyTrigPointsToElaborate As List(Of String) = oLinkedSurvey.LinkedSurvey.Segments.GetTrigPointsNames.ToList
-                            Call oLinkedSurvey.LinkedSurvey.Calculate.CalculateDataFromDesigns(oLinkedSurveyTrigPointsToElaborate, oSurvey.Properties.ThreeDModelMode)
-                        Next
-                    Else
-                        'splay could be visibile only without 3d model...
-                        If oSurvey.Properties.ThreeDLochShowSplay Then iThOptions = iThOptions Or TherionExportOptionsEnum.CalculateSplay
-                    End If
-
-                    '---------------------------------------------------------------------------------------------------------
-                    'creo due dizionari di codifica per i capisaldi...
-                    Dim oInputdictionary As Dictionary(Of String, String) = Nothing
-                    Dim oOutputdictionary As Dictionary(Of String, String) = Nothing
-                    If bThTrigpointSafeName Then
-                        Call modExport.CreateStationDictionary(oTrigPointsToElaborate, oInputdictionary, oOutputdictionary)
-                    End If
-                    '---------------------------------------------------------------------------------------------------------
-
-                    If bThTrigpointSafeName Then iThOptions = iThOptions Or TherionExportOptionsEnum.TrigpointExportNameAsComment
-                    If bThUseCadastralIDinCaveNames Then iThOptions = iThOptions Or TherionExportOptionsEnum.UseCadastralIDinCaveNames
-
-                    Dim sTempThInputFilename As String = IO.Path.Combine(sTempPath, Guid.NewGuid.ToString & "_input.th")
-                    If oSurvey.Properties.ThreeDModelMode = cProperties.ThreeDModelModeEnum.Simple Then
-                        Call oFiles.AddRange(modExport.TherionThExportTo(oSurvey, sTempThInputFilename, oInputdictionary, iThOptions))
-                    Else
-                        Call oFiles.AddRange(modExport.TherionThExportTo(oSurvey, sTempThInputFilename, oInputdictionary, iThOptions Or TherionExportOptionsEnum.UseSubData))
-                    End If
-                    Call oTempThInputFilename.Add(sTempThInputFilename)
-
-                    'remove elevation data export option from linked survey...
-                    iThOptions = iThOptions And Not TherionExportOptionsEnum.ExportSurfaceElevationsData
-                    For Each oLinkedSurvey As cLinkedSurvey In oSurvey.LinkedSurveys.GetSelected("loch")
-                        Dim sTempThInputLinkedFilename As String = IO.Path.Combine(sTempPath, Guid.NewGuid.ToString & "_input.th")
-
-                        Dim oLinkedSurveyTrigPointsToElaborate As List(Of String) = oLinkedSurvey.LinkedSurvey.Segments.GetTrigPointsNames.ToList
-                        Dim oLinkedSurveyInputdictionary As Dictionary(Of String, String) = Nothing
-                        Dim oLinkedSurveyOutputdictionary As Dictionary(Of String, String) = Nothing
-                        If bThTrigpointSafeName Then
-                            Call modExport.CreateStationDictionary(oLinkedSurveyTrigPointsToElaborate, oLinkedSurveyInputdictionary, oLinkedSurveyOutputdictionary)
-                        End If
                         'use 3d mode of main survey....
-                        If oSurvey.Properties.ThreeDModelMode = cProperties.ThreeDModelModeEnum.Simple Then
-                            Call oFiles.AddRange(modExport.TherionThExportTo(oLinkedSurvey.LinkedSurvey, sTempThInputLinkedFilename, oLinkedSurveyInputdictionary, iThOptions))
+                        If oSurvey.Properties.ThreeDModelMode > cProperties.ThreeDModelModeEnum.Simple Then
+                            Call oSurvey.Calculate.CalculateDataFromDesigns(oTrigPointsToElaborate)
+                            For Each oLinkedSurvey As cLinkedSurvey In oSurvey.LinkedSurveys.GetSelected("loch")
+                                Call pStatusSet(String.Format(GetLocalizedString("main.textpart152"), oLinkedSurvey.GetName))
+                                Dim oLinkedSurveyTrigPointsToElaborate As List(Of String) = oLinkedSurvey.LinkedSurvey.Segments.GetTrigPointsNames.ToList
+                                Call oLinkedSurvey.LinkedSurvey.Calculate.CalculateDataFromDesigns(oLinkedSurveyTrigPointsToElaborate, oSurvey.Properties.ThreeDModelMode)
+                            Next
                         Else
-                            Call oFiles.AddRange(modExport.TherionThExportTo(oLinkedSurvey.LinkedSurvey, sTempThInputLinkedFilename, oLinkedSurveyInputdictionary, iThOptions Or TherionExportOptionsEnum.UseSubData))
+                            'splay could be visibile only without 3d model...
+                            If oSurvey.Properties.ThreeDLochShowSplay Then iThOptions = iThOptions Or TherionExportOptionsEnum.CalculateSplay
                         End If
-                        Call oTempThInputFilename.Add(sTempThInputLinkedFilename)
-                    Next
-                    Call modExport.TherionCreateConfig(oSurvey, sTempConfigFilename, oTempThInputFilename, "export model -fmt loch -output " & Chr(34) & sTempThOutputFilename & Chr(34))
 
-                    iExitCode = modMain.ExecuteProcess(sThProcess, Chr(34) & sTempConfigFilename & Chr(34) & " -l " & Chr(34) & sTempThLogFilename & Chr(34), bThBackgroundProcess, AddressOf pProcessOutputHandler)
-                    If iExitCode = 0 Then
-                        Dim sLochPath As String = Path.GetDirectoryName(sThProcess)
-                        Call Shell(Path.Combine(sLochPath, "loch.exe") & " " & Chr(34) & sTempThOutputFilename & Chr(34), AppWinStyle.MaximizedFocus, True, -1)
-                    Else
-                        Dim oFi As IO.FileInfo = New IO.FileInfo(sTempThLogFilename)
-                        Dim sLines As String = ""
-                        Using oLogSR As IO.StreamReader = oFi.OpenText
-                            sLines = oLogSR.ReadToEnd()
-                            Call oLogSR.Close()
-                        End Using
+                        '---------------------------------------------------------------------------------------------------------
+                        'creo due dizionari di codifica per i capisaldi...
+                        Dim oInputdictionary As Dictionary(Of String, String) = Nothing
+                        Dim oOutputdictionary As Dictionary(Of String, String) = Nothing
+                        If bThTrigpointSafeName Then
+                            Call modExport.CreateStationDictionary(oTrigPointsToElaborate, oInputdictionary, oOutputdictionary)
+                        End If
+                        '---------------------------------------------------------------------------------------------------------
 
-                        For Each sLine As String In Strings.Split(sLines, vbCrLf)
-                            If sLine Like "* error -- *" Then
-                                Dim sErrorMessage As String = sLine.Substring(sLine.IndexOf(" error -- ") + 10)
-                                sErrorMessage = sErrorMessage.Replace(sTempThInputFilename, "").Trim
-                                'todo: error use dictionaries for station...have to be translated...
-                                Call pPopupShow("error", sErrorMessage)
+                        If bThTrigpointSafeName Then iThOptions = iThOptions Or TherionExportOptionsEnum.TrigpointExportNameAsComment
+                        If bThUseCadastralIDinCaveNames Then iThOptions = iThOptions Or TherionExportOptionsEnum.UseCadastralIDinCaveNames
+
+                        Dim sTempThInputFilename As String = IO.Path.Combine(sTempPath, Guid.NewGuid.ToString & "_input.th")
+                        If oSurvey.Properties.ThreeDModelMode = cProperties.ThreeDModelModeEnum.Simple Then
+                            Call oFiles.AddRange(modExport.TherionThExportTo(oSurvey, sTempThInputFilename, oInputdictionary, iThOptions))
+                        Else
+                            Call oFiles.AddRange(modExport.TherionThExportTo(oSurvey, sTempThInputFilename, oInputdictionary, iThOptions Or TherionExportOptionsEnum.UseSubData))
+                        End If
+                        Call oTempThInputFilename.Add(sTempThInputFilename)
+
+                        'remove elevation data export option from linked survey...
+                        iThOptions = iThOptions And Not TherionExportOptionsEnum.ExportSurfaceElevationsData
+                        For Each oLinkedSurvey As cLinkedSurvey In oSurvey.LinkedSurveys.GetSelected("loch")
+                            Dim sTempThInputLinkedFilename As String = IO.Path.Combine(sTempPath, Guid.NewGuid.ToString & "_input.th")
+
+                            Dim oLinkedSurveyTrigPointsToElaborate As List(Of String) = oLinkedSurvey.LinkedSurvey.Segments.GetTrigPointsNames.ToList
+                            Dim oLinkedSurveyInputdictionary As Dictionary(Of String, String) = Nothing
+                            Dim oLinkedSurveyOutputdictionary As Dictionary(Of String, String) = Nothing
+                            If bThTrigpointSafeName Then
+                                Call modExport.CreateStationDictionary(oLinkedSurveyTrigPointsToElaborate, oLinkedSurveyInputdictionary, oLinkedSurveyOutputdictionary)
                             End If
+                            'use 3d mode of main survey....
+                            If oSurvey.Properties.ThreeDModelMode = cProperties.ThreeDModelModeEnum.Simple Then
+                                Call oFiles.AddRange(modExport.TherionThExportTo(oLinkedSurvey.LinkedSurvey, sTempThInputLinkedFilename, oLinkedSurveyInputdictionary, iThOptions))
+                            Else
+                                Call oFiles.AddRange(modExport.TherionThExportTo(oLinkedSurvey.LinkedSurvey, sTempThInputLinkedFilename, oLinkedSurveyInputdictionary, iThOptions Or TherionExportOptionsEnum.UseSubData))
+                            End If
+                            Call oTempThInputFilename.Add(sTempThInputLinkedFilename)
                         Next
-                    End If
+                        Call modExport.TherionCreateConfig(oSurvey, sTempConfigFilename, oTempThInputFilename, "export model -fmt loch -output " & Chr(34) & sTempThOutputFilename & Chr(34))
 
-                    If bThDeleteTempFile Then
-                        Call DeleteFiles(oFiles)
+                        iExitCode = modMain.ExecuteProcess(sThProcess, Chr(34) & sTempConfigFilename & Chr(34) & " -l " & Chr(34) & sTempThLogFilename & Chr(34), bThBackgroundProcess, AddressOf pProcessOutputHandler)
+                        If iExitCode = 0 Then
+                            Dim sLochPath As String = Path.GetDirectoryName(sThProcess)
+                            Call Shell(Path.Combine(sLochPath, "loch.exe") & " " & Chr(34) & sTempThOutputFilename & Chr(34), AppWinStyle.MaximizedFocus, True, -1)
+                        Else
+                            Dim oFi As IO.FileInfo = New IO.FileInfo(sTempThLogFilename)
+                            Dim sLines As String = ""
+                            Using oLogSR As IO.StreamReader = oFi.OpenText
+                                sLines = oLogSR.ReadToEnd()
+                                Call oLogSR.Close()
+                            End Using
+
+                            For Each sLine As String In Strings.Split(sLines, vbCrLf)
+                                If sLine Like "* error -- *" Then
+                                    Dim sErrorMessage As String = sLine.Substring(sLine.IndexOf(" error -- ") + 10)
+                                    sErrorMessage = sErrorMessage.Replace(sTempThInputFilename, "").Trim
+                                    'todo: error use dictionaries for station...have to be translated...
+                                    Call pPopupShow("error", sErrorMessage)
+                                End If
+                            Next
+                        End If
+
+                        If bThDeleteTempFile Then
+                            Call DeleteFiles(oFiles)
+                        End If
                     End If
-                End If
+                End Using
             End If
             Call oMousePointer.Pop()
             Call pStatusSet("")
@@ -14866,12 +14882,13 @@ Public Class frmMain
         Try
             With pGetCurrentDesignTools()
                 Dim oItemSketch As cIItemSketch = .CurrentItem
-                Dim frmSB As frmSketchEdit = New frmSketchEdit(oSurvey, oItemSketch)
-                If frmSB.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                    Call .TakeUndoSnapshot()
-                    Call pObjectPropertyLoad()
-                    Call pSurveyInvalidate()
-                End If
+                Using frmSB As frmSketchEdit = New frmSketchEdit(oSurvey, oItemSketch)
+                    If frmSB.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                        Call .TakeUndoSnapshot()
+                        Call pObjectPropertyLoad()
+                        Call pSurveyInvalidate()
+                    End If
+                End Using
             End With
         Catch ex As Exception
         End Try
@@ -14881,12 +14898,13 @@ Public Class frmMain
         Try
             With pGetCurrentDesignTools()
                 Dim oItemSketch As cIItemSketch = .CurrentItem
-                Dim frmSB As frmSketchEdit = New frmSketchEdit(oSurvey, oItemSketch)
-                If frmSB.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                    Call .TakeUndoSnapshot()
-                    Call pSurveyInvalidate()
-                    'Call pMapInvalidate()
-                End If
+                Using frmSB As frmSketchEdit = New frmSketchEdit(oSurvey, oItemSketch)
+                    If frmSB.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                        Call .TakeUndoSnapshot()
+                        Call pSurveyInvalidate()
+                        'Call pMapInvalidate()
+                    End If
+                End Using
             End With
         Catch ex As Exception
         End Try
@@ -16530,9 +16548,11 @@ Public Class frmMain
             Else
                 Call frmIS.lvCheck.Items.Add(modMain.GetLocalizedString("main.textpart97b"), "warning")
             End If
-            frmIS.chkcSurveyImportPlan.Enabled = oImportSurvey.Plan.GetAllItems.Count > 0
-            frmIS.chkcSurveyImportProfile.Enabled = oImportSurvey.Profile.GetAllItems.Count > 0
-            frmIS.chkcSurveyImportGraphics.Enabled = frmIS.chkcSurveyImportPlan.Enabled OrElse frmIS.chkcSurveyImportProfile.Enabled
+            Dim bImportPlanEnabled As Boolean = oImportSurvey.Plan.GetAllItems.Count > 0
+            Dim bImportProfileEnabled As Boolean = oImportSurvey.Profile.GetAllItems.Count > 0
+            frmIS.chkcSurveyImportGraphics.Enabled = bImportPlanEnabled OrElse bImportProfileEnabled
+            frmIS.chkcSurveyImportPlan.Enabled = bImportPlanEnabled
+            frmIS.chkcSurveyImportProfile.Enabled = bImportProfileEnabled
             Dim bHasBindedSegments As Boolean
             Dim bHasPlanWarping As Boolean
             Dim bHasProfileWarping As Boolean
@@ -16593,13 +16613,13 @@ Public Class frmMain
                     Call frmIS.lvCheck.Items.Add(modMain.GetLocalizedString("main.textpart107b"), "error")
                 End If
             End If
-            frmIS.chkcSurveyImportGraphics.Enabled = Not bHasErrors
-            frmIS.chkcSurveyImportData.Enabled = Not bHasErrors
+            If bHasErrors Then frmIS.chkcSurveyImportGraphics.Enabled = False
+            If bHasErrors Then frmIS.chkcSurveyImportData.Enabled = False
+
             frmIS.chkcSurveyImportSurface.Enabled = Not oImportSurvey.Surface.IsEmpty
-            'frmIS.cmdOk.Enabled = Not bHasErrors
 
             If frmIS.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                If frmIS.chkcSurveyImportData.Checked OrElse frmIS.chkcSurveyImportGraphics.Checked OrElse frmIS.chkcSurveyImportSurface.Checked OrElse frmIS.chkcSurveyImportDesignProperties.Checked OrElse frmIS.chkcSurveyImportScaleRules.Checked Then
+                If (frmIS.chkcSurveyImportData.Checked AndAlso frmIS.chkcSurveyImportData.Enabled) OrElse (frmIS.chkcSurveyImportGraphics.Checked AndAlso frmIS.chkcSurveyImportGraphics.Enabled) OrElse frmIS.chkcSurveyImportSurface.Checked OrElse frmIS.chkcSurveyImportDesignProperties.Checked OrElse frmIS.chkcSurveyImportScaleRules.Checked OrElse frmIS.chkcsurveyimportlinkedsurvey.Checked Then
 
                     'check if there are no segment with same id
                     'check if there are almost one common station between the two surveys
@@ -16633,7 +16653,7 @@ Public Class frmMain
 
                     Dim oDuplicatedSegments As Dictionary(Of String, String) = New Dictionary(Of String, String)
 
-                    If frmIS.chkcSurveyImportData.Checked Then
+                    If frmIS.chkcSurveyImportData.Checked AndAlso frmIS.chkcSurveyImportData.Enabled Then
                         Call oMousePointer.Push(Cursors.WaitCursor)
                         bDisabledCaveBranchChangeEvent = True
 
@@ -16836,7 +16856,7 @@ Public Class frmMain
                         Call oMousePointer.Pop()
                     End If
 
-                    If frmIS.chkcSurveyImportGraphics.Enabled AndAlso frmIS.chkcSurveyImportGraphics.Checked Then
+                    If frmIS.chkcSurveyImportGraphics.Checked AndAlso frmIS.chkcSurveyImportGraphics.Enabled Then
                         Dim oPlanTraslation As SizeF
                         Dim oProfileTraslation As SizeF
                         Try
@@ -17075,12 +17095,17 @@ Public Class frmMain
                         End If
                     End If
 
-                    If frmIS.chkcSurveyImportDesignProperties.Checked Then
-                        oSurvey.Properties.DesignProperties.CopyFrom(oImportSurvey.Properties.DesignProperties)
+                    If frmIS.chkcSurveyImportDesignProperties.Enabled And frmIS.chkcSurveyImportDesignProperties.Checked Then
+                        Call oSurvey.Properties.DesignProperties.MergeWith(oImportSurvey.Properties.DesignProperties)
                     End If
 
-                    If frmIS.chkcSurveyImportScaleRules.Checked Then
-                        Call oSurvey.ScaleRules.CopyFrom(oImportSurvey.ScaleRules)
+                    If frmIS.chkcSurveyImportScaleRules.Enabled And frmIS.chkcSurveyImportScaleRules.Checked Then
+                        Call oSurvey.ScaleRules.MergeWidth(oImportSurvey.ScaleRules)
+                    End If
+
+                    If frmIS.chkcsurveyimportlinkedsurvey.Enabled And frmIS.chkcsurveyimportlinkedsurvey.Checked Then
+                        Call oSurvey.LinkedSurveys.MergeWith(oImportSurvey.LinkedSurveys)
+                        Call oDockLS.tvLinkedSurveys.BuildList()
                     End If
 
                     Call pSurveyFillSessionList(False)
@@ -17867,8 +17892,9 @@ Public Class frmMain
 
     Private Sub mnuPlotInfoOrientation_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPlotInfoOrientation.Click
         Dim sCave As String = pGetCurrentDesignTools.CurrentCave
-        Dim frmIO As frmInfoOrientation = New frmInfoOrientation(oSurvey, sCave)
-        Call frmIO.ShowDialog(Me)
+        Using frmIO As frmInfoOrientation = New frmInfoOrientation(oSurvey, sCave)
+            Call frmIO.ShowDialog(Me)
+        End Using
     End Sub
 
     Private Sub mnuSegmentInfoCopy_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuSegmentInfoCopy.Click
@@ -17961,33 +17987,36 @@ Public Class frmMain
     End Sub
 
     Private Function pScaleRulesEdit() As Boolean
-        Dim frmSR As frmScaleRules = New frmScaleRules(oSurvey)
-        If frmSR.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-            Call pMapInvalidate()
-            Return True
-        Else
-            Return False
-        End If
+        Using frmSR As frmScaleRules = New frmScaleRules(oSurvey)
+            If frmSR.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                Call pMapInvalidate()
+                Return True
+            Else
+                Return False
+            End If
+        End Using
     End Function
 
     Private Function pScaleRulestemScaleVisibilityEdit(Item As cItem) As Boolean
-        Dim frmSR As frmItemScaleVisibility = New frmItemScaleVisibility(Item)
-        If frmSR.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-            Call pMapInvalidate()
-            Return True
-        Else
-            Return False
-        End If
+        Using frmSR As frmItemScaleVisibility = New frmItemScaleVisibility(Item)
+            If frmSR.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                Call pMapInvalidate()
+                Return True
+            Else
+                Return False
+            End If
+        End Using
     End Function
 
     Private Function pProfileVisibilityEdit(Item As cItem) As Boolean
-        Dim frmSR As frmItemProfileVisibility = New frmItemProfileVisibility(Item)
-        If frmSR.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-            Call pMapInvalidate()
-            Return True
-        Else
-            Return False
-        End If
+        Using frmSR As frmItemProfileVisibility = New frmItemProfileVisibility(Item)
+            If frmSR.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                Call pMapInvalidate()
+                Return True
+            Else
+                Return False
+            End If
+        End Using
     End Function
 
     Private Sub mnuDesignEditScaleRules_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuDesignEditScaleRules.Click
@@ -18399,8 +18428,9 @@ Public Class frmMain
 
     Private Sub mnuPlotInfoDistances_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPlotInfoDistances.Click
         Dim sCave As String = pGetCurrentDesignTools.CurrentCave
-        Dim frmID As frmInfoDistances = New frmInfoDistances(oSurvey, sCave)
-        Call frmID.ShowDialog(Me)
+        Using frmID As frmInfoDistances = New frmInfoDistances(oSurvey, sCave)
+            Call frmID.ShowDialog(Me)
+        End Using
     End Sub
 
     Private Sub cboPropMergeMode_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboPropMergeMode.SelectedIndexChanged
@@ -18582,11 +18612,12 @@ Public Class frmMain
     End Sub
 
     Private Sub pAutoSettings()
-        Dim frmAS As frmAutoSettings = New frmAutoSettings
-        If frmAS.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-            Call pSettingsLoad()
-            Call pMapInvalidate()
-        End If
+        Using frmAS As frmAutoSettings = New frmAutoSettings
+            If frmAS.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                Call pSettingsLoad()
+                Call pMapInvalidate()
+            End If
+        End Using
     End Sub
 
     Private Sub btnPlotInfoCave_Click(sender As System.Object, e As System.EventArgs) Handles btnPlotInfoCave.Click
@@ -18617,12 +18648,13 @@ Public Class frmMain
             If Not bDisabledObjectPropertyEvent Then
                 With pGetCurrentDesignTools()
                     Dim oItem As cIItemQuota = .CurrentItem
-                    Dim frmQP As frmQuotaProperties = New frmQuotaProperties(oItem)
-                    If frmQP.ShowDialog(Me) = vbOK Then
-                        Call .TakeUndoSnapshot()
-                        Call pObjectPropertyLoad()
-                        Call pMapInvalidate()
-                    End If
+                    Using frmQP As frmQuotaProperties = New frmQuotaProperties(oItem)
+                        If frmQP.ShowDialog(Me) = vbOK Then
+                            Call .TakeUndoSnapshot()
+                            Call pObjectPropertyLoad()
+                            Call pMapInvalidate()
+                        End If
+                    End Using
                 End With
             End If
         Catch
@@ -18634,13 +18666,14 @@ Public Class frmMain
             If Not bDisabledObjectPropertyEvent Then
                 With pGetCurrentDesignTools()
                     Dim oItem As cIItemQuota = .CurrentItem
-                    Dim frmTB As frmTrigpointBrowser = New frmTrigpointBrowser(oSurvey, txtPropQuotaRelativeTrigpoint.Text, True)
-                    If frmTB.ShowDialog(Me) = vbOK Then
-                        oItem.QuotaRelativeTrigPoint = frmTB.cboTrigpoints.Text
-                        Call .TakeUndoSnapshot()
-                        Call pObjectPropertyLoad()
-                        Call pMapInvalidate()
-                    End If
+                    Using frmTB As frmTrigpointBrowser = New frmTrigpointBrowser(oSurvey, txtPropQuotaRelativeTrigpoint.Text, True)
+                        If frmTB.ShowDialog(Me) = vbOK Then
+                            oItem.QuotaRelativeTrigPoint = frmTB.cboTrigpoints.Text
+                            Call .TakeUndoSnapshot()
+                            Call pObjectPropertyLoad()
+                            Call pMapInvalidate()
+                        End If
+                    End Using
                 End With
             End If
         Catch
@@ -18966,73 +18999,75 @@ Public Class frmMain
     End Sub
 
     Private Sub pResurvey()
-        Dim frmRM As frmResurveyMain = New frmResurveyMain
-        If frmRM.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-            Dim frmIR As frmImportResurvey = New frmImportResurvey
-            If frmIR.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                Dim sForcedCaveName As String = frmIR.txtCaveName.Text
-                Dim sPrefix As String = frmIR.txtPrefix.Text.Trim
-                Dim iNordType As cSegment.NordTypeEnum = frmIR.cboNordType.SelectedIndex
+        Using frmRM As frmResurveyMain = New frmResurveyMain
+            If frmRM.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                Using frmIR As frmImportResurvey = New frmImportResurvey
+                    If frmIR.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                        Dim sForcedCaveName As String = frmIR.txtCaveName.Text
+                        Dim sPrefix As String = frmIR.txtPrefix.Text.Trim
+                        Dim iNordType As cSegment.NordTypeEnum = frmIR.cboNordType.SelectedIndex
 
-                bDisableSegmentsChangeEvent = True
-                bDisableTrigpointsChangeEvent = True
+                        bDisableSegmentsChangeEvent = True
+                        bDisableTrigpointsChangeEvent = True
 
-                Dim sCaveName As String = sForcedCaveName
-                Dim sCaveBranchName As String = ""
+                        Dim sCaveName As String = sForcedCaveName
+                        Dim sCaveBranchName As String = ""
 
-                If Not oSurvey.Properties.CaveInfos.Contains(sCaveName) Then
-                    Call oSurvey.Properties.CaveInfos.Add(sCaveName)
-                End If
+                        If Not oSurvey.Properties.CaveInfos.Contains(sCaveName) Then
+                            Call oSurvey.Properties.CaveInfos.Add(sCaveName)
+                        End If
 
-                Dim oSession As cSession = oSurvey.Properties.Sessions.Add(Date.Today, oSurvey.Properties.Sessions.GetUniqueID(Date.Today, GetLocalizedString("main.defaultresurveysessionname")))
-                oSession.SideMeasuresReferTo = cSegment.SideMeasuresReferToEnum.EndPoint
-                oSession.SideMeasuresType = cSegment.SideMeasuresTypeEnum.PerpendicularToPrevious
-                oSession.NordType = iNordType
+                        Dim oSession As cSession = oSurvey.Properties.Sessions.Add(Date.Today, oSurvey.Properties.Sessions.GetUniqueID(Date.Today, GetLocalizedString("main.defaultresurveysessionname")))
+                        oSession.SideMeasuresReferTo = cSegment.SideMeasuresReferToEnum.EndPoint
+                        oSession.SideMeasuresType = cSegment.SideMeasuresTypeEnum.PerpendicularToPrevious
+                        oSession.NordType = iNordType
 
-                For Each oShot As cResurvey.cShot In frmRM.Shots
-                    Dim oSegment As cSegment = oSurvey.Segments.Append()
-                    Call oSegment.SetCave(sCaveName, sCaveBranchName)
-                    Call oSegment.SetSession(oSession)
+                        For Each oShot As cResurvey.cShot In frmRM.Shots
+                            Dim oSegment As cSegment = oSurvey.Segments.Append()
+                            Call oSegment.SetCave(sCaveName, sCaveBranchName)
+                            Call oSegment.SetSession(oSession)
 
-                    oSegment.From = sPrefix & oShot.[From]
-                    oSegment.To = sPrefix & oShot.[To]
-                    oSegment.Distance = oShot.Distance
-                    oSegment.Bearing = oShot.Bearing
-                    oSegment.Inclination = oShot.Inclination
+                            oSegment.From = sPrefix & oShot.[From]
+                            oSegment.To = sPrefix & oShot.[To]
+                            oSegment.Distance = oShot.Distance
+                            oSegment.Bearing = oShot.Bearing
+                            oSegment.Inclination = oShot.Inclination
 
-                    oSegment.Left = oShot.Left
-                    oSegment.Right = oShot.Right
-                    oSegment.Up = oShot.Up
-                    oSegment.Down = oShot.Down
+                            oSegment.Left = oShot.Left
+                            oSegment.Right = oShot.Right
+                            oSegment.Up = oShot.Up
+                            oSegment.Down = oShot.Down
 
-                    oSegment.Note = ""
+                            oSegment.Note = ""
 
-                    oSegment.Inverted = False
-                    oSegment.Exclude = False
+                            oSegment.Inverted = False
+                            oSegment.Exclude = False
 
-                    Call oSegment.Save()
-                Next
+                            Call oSegment.Save()
+                        Next
 
-                If oSurvey.Properties.Origin = "" Then
-                    oSurvey.Properties.Origin = sPrefix & frmRM.GetOrigin
-                End If
+                        If oSurvey.Properties.Origin = "" Then
+                            oSurvey.Properties.Origin = sPrefix & frmRM.GetOrigin
+                        End If
 
-                bDisableSegmentsChangeEvent = False
-                bDisableTrigpointsChangeEvent = False
+                        bDisableSegmentsChangeEvent = False
+                        bDisableTrigpointsChangeEvent = False
 
-                Call pStatusProgress(0, GetLocalizedString("main.progressend2"))
-                Call oMousePointer.Pop()
+                        Call pStatusProgress(0, GetLocalizedString("main.progressend2"))
+                        Call oMousePointer.Pop()
 
-                Call pSurveyFillSessionList(False)
-                Call pSurveyFillCaveList(False)
+                        Call pSurveyFillSessionList(False)
+                        Call pSurveyFillCaveList(False)
 
-                Call pSurveyCaption()
-                Call pSurveySegmentsRefresh()
-                Call pSurveyTrigpointsRefresh()
+                        Call pSurveyCaption()
+                        Call pSurveySegmentsRefresh()
+                        Call pSurveyTrigpointsRefresh()
 
-                Call pMapInvalidate()
+                        Call pMapInvalidate()
+                    End If
+                End Using
             End If
-        End If
+        End Using
     End Sub
 
     Private Sub grdSegments_RowValidating(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellCancelEventArgs) Handles grdSegments.RowValidating
@@ -19261,13 +19296,14 @@ Public Class frmMain
     End Sub
 
     Private Sub mnuPlotGrades_Click(sender As System.Object, e As System.EventArgs) Handles mnuPlotGrades.Click
-        Dim frmG As frmGrades = New frmGrades(oSurvey)
-        With frmG
-            AddHandler frmG.OnApply, AddressOf frmGrades_OnApply
-            If .ShowDialog(Me) = vbOK Then
-                'nulla
-            End If
-        End With
+        Using frmG As frmGrades = New frmGrades(oSurvey)
+            With frmG
+                AddHandler frmG.OnApply, AddressOf frmGrades_OnApply
+                If .ShowDialog(Me) = vbOK Then
+                    'nulla
+                End If
+            End With
+        End Using
     End Sub
 
     Private Sub frmGrades_OnApply(ByVal Sender As frmGrades)
@@ -20712,21 +20748,23 @@ Public Class frmMain
     End Sub
 
     Private Sub mnuSegmentsDataPropertiesEdit_Click(sender As System.Object, e As System.EventArgs) Handles mnuSegmentsDataPropertiesEdit.Click
-        Dim frmDFE As frmDataFieldsEditor = New frmDataFieldsEditor(oSurvey.Properties.DataTables.Segments)
-        If frmDFE.ShowDialog(Me) = vbOK Then
-            If oTools.CurrentTrigpoint Is Nothing Then
-                prpSegmentDataProperties.SelectedObject = Nothing
-            Else
-                prpSegmentDataProperties.SelectedObject = oTools.CurrentSegment.DataProperties.GetClass
+        Using frmDFE As frmDataFieldsEditor = New frmDataFieldsEditor(oSurvey.Properties.DataTables.Segments)
+            If frmDFE.ShowDialog(Me) = vbOK Then
+                If oTools.CurrentTrigpoint Is Nothing Then
+                    prpSegmentDataProperties.SelectedObject = Nothing
+                Else
+                    prpSegmentDataProperties.SelectedObject = oTools.CurrentSegment.DataProperties.GetClass
+                End If
             End If
-        End If
+        End Using
     End Sub
 
     Private Sub mnuDesignDataPropertiesEdit_Click(sender As System.Object, e As System.EventArgs) Handles mnuDesignDataPropertiesEdit.Click
-        Dim frmDFE As frmDataFieldsEditor = New frmDataFieldsEditor(oSurvey.Properties.DataTables.DesignItems)
-        If frmDFE.ShowDialog(Me) = vbOK Then
-            prpPropDesignDataProperties.SelectedObject = pGetCurrentDesignTools.CurrentItem.DataProperties.GetClass
-        End If
+        Using frmDFE As frmDataFieldsEditor = New frmDataFieldsEditor(oSurvey.Properties.DataTables.DesignItems)
+            If frmDFE.ShowDialog(Me) = vbOK Then
+                prpPropDesignDataProperties.SelectedObject = pGetCurrentDesignTools.CurrentItem.DataProperties.GetClass
+            End If
+        End Using
     End Sub
 
     Private Sub mnuDesignDataPropertiesDelete_Click(sender As System.Object, e As System.EventArgs) Handles mnuDesignDataPropertiesDelete.Click
@@ -20745,14 +20783,15 @@ Public Class frmMain
     End Sub
 
     Private Sub mnuTrigpointDataPropertiesEdit_Click(sender As Object, e As EventArgs) Handles mnuTrigpointDataPropertiesEdit.Click
-        Dim frmDFE As frmDataFieldsEditor = New frmDataFieldsEditor(oSurvey.Properties.DataTables.Trigpoints)
-        If frmDFE.ShowDialog(Me) = vbOK Then
-            If oTools.CurrentTrigpoint Is Nothing Then
-                prpTrigpointDataProperties.SelectedObject = Nothing
-            Else
-                prpTrigpointDataProperties.SelectedObject = oTools.CurrentTrigpoint.DataProperties.GetClass
+        Using frmDFE As frmDataFieldsEditor = New frmDataFieldsEditor(oSurvey.Properties.DataTables.Trigpoints)
+            If frmDFE.ShowDialog(Me) = vbOK Then
+                If oTools.CurrentTrigpoint Is Nothing Then
+                    prpTrigpointDataProperties.SelectedObject = Nothing
+                Else
+                    prpTrigpointDataProperties.SelectedObject = oTools.CurrentTrigpoint.DataProperties.GetClass
+                End If
             End If
-        End If
+        End Using
     End Sub
 
     Private Sub mnuTrigpointDataPropertiesDelete_Click(sender As Object, e As EventArgs) Handles mnuTrigpointDataPropertiesDelete.Click
@@ -20819,9 +20858,10 @@ Public Class frmMain
     End Sub
 
     Private Sub pSurveyLayersFilterEdit()
-        Dim frmF As frmItemsFilter = New frmItemsFilter(oSurvey, pGetCurrentDesignTools.Filter)
-        AddHandler frmF.OnApply, AddressOf frmItemsFilter_OnApply
-        Call frmF.ShowDialog(Me)
+        Using frmF As frmItemsFilter = New frmItemsFilter(oSurvey, pGetCurrentDesignTools.Filter)
+            AddHandler frmF.OnApply, AddressOf frmItemsFilter_OnApply
+            Call frmF.ShowDialog(Me)
+        End Using
     End Sub
 
     Private Sub pSurveyLayersFilterApply(Optional FullRefresh As Boolean = True)
@@ -21189,9 +21229,10 @@ Public Class frmMain
     End Sub
 
     Private Sub pSplayReplicateData()
-        Dim frmS As frmSplay = New frmSplay(oSurvey, frmSplay.ContextEnum.Design, pGetCurrentDesignTools)
-        AddHandler frmS.OnApply, AddressOf frmSplay_OnApply
-        Call frmS.ShowDialog(Me)
+        Using frmS As frmSplay = New frmSplay(oSurvey, frmSplay.ContextEnum.Design, pGetCurrentDesignTools)
+            AddHandler frmS.OnApply, AddressOf frmSplay_OnApply
+            Call frmS.ShowDialog(Me)
+        End Using
     End Sub
 
     Private Sub mnuDesignItemSegmentSplayReplicate_Click(sender As Object, e As EventArgs) Handles mnuDesignItemSegmentSplayReplicate.Click
@@ -21232,12 +21273,13 @@ Public Class frmMain
             If Not bDisabledObjectPropertyEvent Then
                 With pGetCurrentDesignTools()
                     Dim oItem As cIItemSign = .CurrentItem
-                    Dim frmSP As frmSignProperties = New frmSignProperties(oItem)
-                    If frmSP.ShowDialog(Me) = vbOK Then
-                        Call .TakeUndoSnapshot()
-                        Call pObjectPropertyLoad()
-                        Call pMapInvalidate()
-                    End If
+                    Using frmSP As frmSignProperties = New frmSignProperties(oItem)
+                        If frmSP.ShowDialog(Me) = vbOK Then
+                            Call .TakeUndoSnapshot()
+                            Call pObjectPropertyLoad()
+                            Call pMapInvalidate()
+                        End If
+                    End Using
                 End With
             End If
         Catch
@@ -21445,23 +21487,37 @@ Public Class frmMain
                 pnlStatusDesignGeographicState.Image = My.Resources._error
                 pnlStatusDesignGeographicState.ToolTipText = modMain.GetLocalizedString("main.textpart61")
             End If
-            If oSurvey.Properties.DesignWarpingMode = cSurvey.cSurvey.DesignWarpingModeEnum.None Or oCurrentDesign Is Nothing Then
-                pnlStatusDesignWarpingState.Image = My.Resources._error
+            If oSurvey.Properties.DesignWarpingMode = cSurvey.cSurvey.DesignWarpingModeEnum.None OrElse IsNothing(oCurrentDesign) Then
+                pnlStatusDesignWarping.Image = My.Resources._error
+                pnlStatusDesignWarpingState.Image = My.Resources.control_stop_blue
+                pnlStatusDesignWarping.ToolTipText = modMain.GetLocalizedString("main.textpart59")
                 pnlStatusDesignWarpingState.ToolTipText = modMain.GetLocalizedString("main.textpart59")
+                pnlStatusDesignWarping.Visible = False
+                pnlStatusDesignWarpingState.Visible = False
             Else
                 If oCurrentDesign.Type = cIDesign.cDesignTypeEnum.Plan AndAlso Not oSurvey.Properties.PlanWarpingDisabled Then
-                    pnlStatusDesignWarpingState.Image = My.Resources.transform_path
+                    pnlStatusDesignWarping.Image = My.Resources.transform_path
+                    pnlStatusDesignWarpingState.Image = If(oSurvey.Properties.DesignWarpingState = cSurvey.cSurvey.DesignWarpingStateEnum.Active, My.Resources.control_play_blue, My.Resources.control_pause_blue)
+                    pnlStatusDesignWarping.ToolTipText = modMain.GetLocalizedString("main.textpart60")
                     pnlStatusDesignWarpingState.ToolTipText = modMain.GetLocalizedString("main.textpart60")
+                    pnlStatusDesignWarping.Visible = True
                     pnlStatusDesignWarpingState.Visible = True
                 ElseIf oCurrentDesign.Type = cIDesign.cDesignTypeEnum.Profile AndAlso Not oSurvey.Properties.ProfileWarpingDisabled Then
-                    pnlStatusDesignWarpingState.Image = My.Resources.transform_path
+                    pnlStatusDesignWarping.Image = My.Resources.transform_path
+                    pnlStatusDesignWarpingState.Image = If(oSurvey.Properties.DesignWarpingState = cSurvey.cSurvey.DesignWarpingStateEnum.Active, My.Resources.control_play_blue, My.Resources.control_pause_blue)
+                    pnlStatusDesignWarping.ToolTipText = modMain.GetLocalizedString("main.textpart60")
                     pnlStatusDesignWarpingState.ToolTipText = modMain.GetLocalizedString("main.textpart60")
+                    pnlStatusDesignWarping.Visible = True
                     pnlStatusDesignWarpingState.Visible = True
                 ElseIf oCurrentDesign.Type = cIDesign.cDesignTypeEnum.ThreeDModel Then
+                    pnlStatusDesignWarping.Visible = False
                     pnlStatusDesignWarpingState.Visible = False
                 Else
-                    pnlStatusDesignWarpingState.Image = My.Resources._error
+                    pnlStatusDesignWarping.Image = My.Resources._error
+                    pnlStatusDesignWarpingState.Image = My.Resources.control_stop_blue
+                    pnlStatusDesignWarping.ToolTipText = modMain.GetLocalizedString("main.textpart59")
                     pnlStatusDesignWarpingState.ToolTipText = modMain.GetLocalizedString("main.textpart59")
+                    pnlStatusDesignWarping.Visible = True
                     pnlStatusDesignWarpingState.Visible = True
                 End If
             End If
@@ -21498,6 +21554,10 @@ Public Class frmMain
     End Sub
 
     Private Sub pnlStatusDesignWarpingState_DoubleClick(sender As Object, e As EventArgs) Handles pnlStatusDesignWarpingState.DoubleClick
+        Call pSurveyProperty(3)
+    End Sub
+
+    Private Sub pnlStatusDesignWarping_DoubleClick(sender As Object, e As EventArgs) Handles pnlStatusDesignWarping.DoubleClick
         Call pSurveyProperty(3)
     End Sub
 
@@ -21642,10 +21702,11 @@ Public Class frmMain
     End Sub
 
     Private Sub mnuFileHistory_Click(sender As Object, e As EventArgs) Handles mnuFileHistory.Click
-        Dim frmH As frmHistory = New frmHistory(oSurvey, sFilename)
-        AddHandler frmH.OnRestore, AddressOf oHistory_OnRestore
-        AddHandler frmH.OnAdd, AddressOf oHistory_OnAdd
-        Call frmH.ShowDialog(Me)
+        Using frmH As frmHistory = New frmHistory(oSurvey, sFilename)
+            AddHandler frmH.OnRestore, AddressOf oHistory_OnRestore
+            AddHandler frmH.OnAdd, AddressOf oHistory_OnAdd
+            Call frmH.ShowDialog(Me)
+        End Using
     End Sub
 
     Private Sub oHistory_OnAdd(Sender As frmHistory, Args As frmHistory.OnAddEventArgs)
@@ -21908,10 +21969,11 @@ Public Class frmMain
             Dim sID As String = oNode.Name
             Dim oCurrentOptions As cOptions3D = DirectCast(Me.oCurrentOptions, cOptions3D)
             Dim oItem As cSurface3DOptions.cSurface3DOptionsItem = oCurrentOptions.SurfaceOptions(sID)
-            Dim frmSLP As frmSurface3DLayerProperties = New frmSurface3DLayerProperties(oItem)
-            If frmSLP.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                Call pSurvey3DRedraw(cHolosViewer.InvalidateType.SurfaceTexture)
-            End If
+            Using frmSLP As frmSurface3DLayerProperties = New frmSurface3DLayerProperties(oItem)
+                If frmSLP.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                    Call pSurvey3DRedraw(cHolosViewer.InvalidateType.SurfaceTexture)
+                End If
+            End Using
         End If
     End Sub
 
@@ -21920,10 +21982,11 @@ Public Class frmMain
         If Not oNode Is Nothing Then
             Dim sID As String = oNode.Name
             Dim oItem As cSurfaceOptions.cSurfaceOptionsItem = oCurrentOptions.SurfaceOptions(sID)
-            Dim frmSLP As frmSurfaceLayerProperties = New frmSurfaceLayerProperties(oItem)
-            If frmSLP.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                Call pSurveyRedraw()
-            End If
+            Using frmSLP As frmSurfaceLayerProperties = New frmSurfaceLayerProperties(oItem)
+                If frmSLP.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                    Call pSurveyRedraw()
+                End If
+            End Using
         End If
     End Sub
 
@@ -23066,8 +23129,8 @@ Public Class frmMain
     Private Sub pSurveyRestoreCaveBranchLockstate(Cave As String, Branch As String)
         Dim oCaveInfo As cICaveInfoBranches = oSurvey.Properties.GetCaveInfo(Cave, Branch)
         Dim bEnabled As Boolean = IsNothing(oCaveInfo) OrElse Not oCaveInfo.GetLocked
-        tbDesign.Enabled = bEnabled
-        mnuDesignAdd.Enabled = bEnabled
+        tbDesign.Enabled = bEnabled AndAlso oCurrentDesign.Type <> cIDesign.cDesignTypeEnum.ThreeDModel
+        mnuDesignAdd.Enabled = bEnabled AndAlso oCurrentDesign.Type <> cIDesign.cDesignTypeEnum.ThreeDModel
         btnSegmentAdd.Enabled = bEnabled
         btnSegmentDelete.Enabled = bEnabled
         mnuSegmentsAdd.Enabled = bEnabled

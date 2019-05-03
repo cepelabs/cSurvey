@@ -158,6 +158,8 @@ Partial Class frmProperties
         Me.txtSurfacePenWidth = New System.Windows.Forms.NumericUpDown()
         Me.cboSurfacePenStyle = New System.Windows.Forms.ComboBox()
         Me.picSurfacePenColor = New System.Windows.Forms.PictureBox()
+        Me.optWarpingActive = New System.Windows.Forms.RadioButton()
+        Me.optWarpingPaused = New System.Windows.Forms.RadioButton()
         Me.cmdApply = New System.Windows.Forms.Button()
         Me.mnuTrigPointTags = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem()
@@ -332,6 +334,7 @@ Partial Class frmProperties
         Me.lblCaveInfoPriority = New System.Windows.Forms.Label()
         Me.chkCaveInfoPriority = New System.Windows.Forms.CheckBox()
         Me.tabInfoSessions = New System.Windows.Forms.TabPage()
+        Me.pnlSessionDate = New System.Windows.Forms.TextBox()
         Me.cmdSessionColorChange = New System.Windows.Forms.Button()
         Me.cmdSessionColorReset = New System.Windows.Forms.Button()
         Me.lblSessionColor = New System.Windows.Forms.Label()
@@ -1588,6 +1591,24 @@ Partial Class frmProperties
         Me.picSurfacePenColor.TabStop = False
         Me.tipStandard.SetToolTip(Me.picSurfacePenColor, resources.GetString("picSurfacePenColor.ToolTip"))
         '
+        'optWarpingActive
+        '
+        resources.ApplyResources(Me.optWarpingActive, "optWarpingActive")
+        Me.optWarpingActive.Image = Global.cSurveyPC.My.Resources.Resources.control_play_blue
+        Me.optWarpingActive.Name = "optWarpingActive"
+        Me.optWarpingActive.TabStop = True
+        Me.tipStandard.SetToolTip(Me.optWarpingActive, resources.GetString("optWarpingActive.ToolTip"))
+        Me.optWarpingActive.UseVisualStyleBackColor = True
+        '
+        'optWarpingPaused
+        '
+        resources.ApplyResources(Me.optWarpingPaused, "optWarpingPaused")
+        Me.optWarpingPaused.Image = Global.cSurveyPC.My.Resources.Resources.control_pause_blue
+        Me.optWarpingPaused.Name = "optWarpingPaused"
+        Me.optWarpingPaused.TabStop = True
+        Me.tipStandard.SetToolTip(Me.optWarpingPaused, resources.GetString("optWarpingPaused.ToolTip"))
+        Me.optWarpingPaused.UseVisualStyleBackColor = True
+        '
         'cmdApply
         '
         resources.ApplyResources(Me.cmdApply, "cmdApply")
@@ -2770,6 +2791,7 @@ Partial Class frmProperties
         '
         'tabInfoSessions
         '
+        Me.tabInfoSessions.Controls.Add(Me.pnlSessionDate)
         Me.tabInfoSessions.Controls.Add(Me.cmdSessionColorChange)
         Me.tabInfoSessions.Controls.Add(Me.cmdSessionColorReset)
         Me.tabInfoSessions.Controls.Add(Me.lblSessionColor)
@@ -2784,6 +2806,12 @@ Partial Class frmProperties
         resources.ApplyResources(Me.tabInfoSessions, "tabInfoSessions")
         Me.tabInfoSessions.Name = "tabInfoSessions"
         Me.tabInfoSessions.UseVisualStyleBackColor = True
+        '
+        'pnlSessionDate
+        '
+        resources.ApplyResources(Me.pnlSessionDate, "pnlSessionDate")
+        Me.pnlSessionDate.Name = "pnlSessionDate"
+        Me.pnlSessionDate.ReadOnly = True
         '
         'cmdSessionColorChange
         '
@@ -3211,6 +3239,8 @@ Partial Class frmProperties
         '
         'tabInfoOptions
         '
+        Me.tabInfoOptions.Controls.Add(Me.optWarpingPaused)
+        Me.tabInfoOptions.Controls.Add(Me.optWarpingActive)
         Me.tabInfoOptions.Controls.Add(Me.chkShowWarpingDetails)
         Me.tabInfoOptions.Controls.Add(Me.cmdUpdateCalculateVersion)
         Me.tabInfoOptions.Controls.Add(Me.cboCalculateVersion)
@@ -4330,4 +4360,7 @@ Partial Class frmProperties
     Friend WithEvents ToolStripSeparator13 As ToolStripSeparator
     Friend WithEvents mnuItemNamePatternTagsCount As ToolStripMenuItem
     Friend WithEvents mnuItemNamePatternTagsIndex As ToolStripMenuItem
+    Friend WithEvents optWarpingPaused As RadioButton
+    Friend WithEvents optWarpingActive As RadioButton
+    Friend WithEvents pnlSessionDate As TextBox
 End Class

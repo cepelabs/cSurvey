@@ -165,7 +165,7 @@ Namespace cSurvey.Design.Items
                 Else
                     oMarkerCenterPoint = modPaint.PointOnLineByPercentage(oFromPoint, oToPoint, oCrossSectionItem.MarkerPosition)
                 End If
-                Dim oLR As SizeF = modDesign.GetLRFromDesign(PaintOptions, oSegment, oMarkerCenterPoint, GetDesignStationEnum.From)
+                Dim oLR As SizeF = modDesignLRUD.GetLRFromDesign(PaintOptions, oSegment, oMarkerCenterPoint, GetDesignStationEnum.From)
                 sRight = oLR.Height * 1.1
                 sLeft = oLR.Width * 1.1
                 Call MyBase.Caches.Invalidate()

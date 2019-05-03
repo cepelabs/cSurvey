@@ -275,8 +275,8 @@ Namespace cSurvey.Calculate
                         Dim oPlanOptions As cOptionsDesign = oSurvey.Options("_design.plan")
                         Dim oProfileOptions As cOptionsDesign = oSurvey.Options("_design.profile")
 
-                        Using oPlanCache As modDesign.cLRFromDesignCache = New modDesign.cLRFromDesignCache(oSurvey, oSurvey.Plan, oPlanOptions)
-                            Using oProfileCache As modDesign.cUDFromDesignCache = New modDesign.cUDFromDesignCache(oSurvey, oSurvey.Profile, oProfileOptions)
+                        Using oPlanCache As modDesignLRUD.cLRFromDesignCache = New modDesignLRUD.cLRFromDesignCache(oSurvey, oSurvey.Plan, oPlanOptions)
+                            Using oProfileCache As modDesignLRUD.cUDFromDesignCache = New modDesignLRUD.cUDFromDesignCache(oSurvey, oSurvey.Profile, oProfileOptions)
 
                                 Call oSurvey.RaiseOnProgressEvent("3dsubdata", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("calculate.progressbegin4"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageImport Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow)
 
@@ -318,19 +318,19 @@ Namespace cSurvey.Calculate
 
                                             Dim oSegmentSubData As cSurveyPC.cSurvey.Calculate.Plot.cSubData = oSegment.Data.SubDatas.Add(sFrom, sTo, oSegment.Data.Data.Distance, dFromBearingLeft, dFromBearingRight, dToBearingLeft, dToBearingRight)
 
-                                            Dim oFromLR As SizeF = modDesign.GetLRFromDesign(oSurvey, oPlanCache, oSegment, oSegmentSubData.Plan, oLastPlanSubPoint, GetDesignStationEnum.From)
-                                            Dim oToLR As SizeF = modDesign.GetLRFromDesign(oSurvey, oPlanCache, oSegment, oSegmentSubData.Plan, oPlanSubPoint, GetDesignStationEnum.To)
+                                            Dim oFromLR As SizeF = modDesignLRUD.GetLRFromDesign(oSurvey, oPlanCache, oSegment, oSegmentSubData.Plan, oLastPlanSubPoint, GetDesignStationEnum.From)
+                                            Dim oToLR As SizeF = modDesignLRUD.GetLRFromDesign(oSurvey, oPlanCache, oSegment, oSegmentSubData.Plan, oPlanSubPoint, GetDesignStationEnum.To)
                                             Dim oFromUD As SizeF
                                             Dim oToUD As SizeF
                                             'If Math.Abs(oSegment.Data.Data.Inclination) > sVThreshold Then
                                             '    oFromUD = modDesign.GetFBFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData, oLastProfileSubPoint, GetDesignStationEnum.From)
                                             'Else
-                                            oFromUD = modDesign.GetUDFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData.Profile, oLastProfileSubPoint, GetDesignStationEnum.From)
+                                            oFromUD = modDesignLRUD.GetUDFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData.Profile, oLastProfileSubPoint, GetDesignStationEnum.From)
                                             'End If
                                             'If Math.Abs(oSegment.Data.Data.Inclination) > sVThreshold Then
                                             '    oToUD = modDesign.GetFBFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData, oProfileSubPoint, GetDesignStationEnum.To)
                                             'Else
-                                            oToUD = modDesign.GetUDFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData.Profile, oProfileSubPoint, GetDesignStationEnum.To)
+                                            oToUD = modDesignLRUD.GetUDFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData.Profile, oProfileSubPoint, GetDesignStationEnum.To)
                                             'End If
                                             Call oSegmentSubData.SetLRUD(oFromLR.Width, oFromLR.Height, oFromUD.Width, oFromUD.Height, oToLR.Width, oToLR.Height, oToUD.Width, oToUD.Height)
 
@@ -358,8 +358,8 @@ Namespace cSurvey.Calculate
                         Dim oPlanOptions As cOptionsDesign = oSurvey.Options("_design.plan")
                         Dim oProfileOptions As cOptionsDesign = oSurvey.Options("_design.profile")
 
-                        Using oPlanCache As modDesign.cLRFromDesignCache = New modDesign.cLRFromDesignCache(oSurvey, oSurvey.Plan, oPlanOptions)
-                            Using oProfileCache As modDesign.cUDFromDesignCache = New modDesign.cUDFromDesignCache(oSurvey, oSurvey.Profile, oProfileOptions)
+                        Using oPlanCache As modDesignLRUD.cLRFromDesignCache = New modDesignLRUD.cLRFromDesignCache(oSurvey, oSurvey.Plan, oPlanOptions)
+                            Using oProfileCache As modDesignLRUD.cUDFromDesignCache = New modDesignLRUD.cUDFromDesignCache(oSurvey, oSurvey.Profile, oProfileOptions)
 
                                 Call oSurvey.RaiseOnProgressEvent("3dsubdata", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("calculate.progressbegin4"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageImport Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow)
 
@@ -403,19 +403,19 @@ Namespace cSurvey.Calculate
 
                                                 Dim oSegmentSubData As cSurveyPC.cSurvey.Calculate.Plot.cSubData = oSegment.Data.SubDatas.Add(sFrom, sTo, oSegment.Data.Data.Distance, dFromBearingLeft, dFromBearingRight, dToBearingLeft, dToBearingRight)
 
-                                                Dim oFromLR As SizeF = modDesign.GetLRFromDesign(oSurvey, oPlanCache, oSegment, oSegmentSubData.Plan, oLastPlanSubPoint, GetDesignStationEnum.From)
-                                                Dim oToLR As SizeF = modDesign.GetLRFromDesign(oSurvey, oPlanCache, oSegment, oSegmentSubData.Plan, oPlanSubPoint, GetDesignStationEnum.To)
+                                                Dim oFromLR As SizeF = modDesignLRUD.GetLRFromDesign(oSurvey, oPlanCache, oSegment, oSegmentSubData.Plan, oLastPlanSubPoint, GetDesignStationEnum.From)
+                                                Dim oToLR As SizeF = modDesignLRUD.GetLRFromDesign(oSurvey, oPlanCache, oSegment, oSegmentSubData.Plan, oPlanSubPoint, GetDesignStationEnum.To)
                                                 Dim oFromUD As SizeF
                                                 Dim oToUD As SizeF
                                                 'If Math.Abs(oSegmentSubData.Inclination) > sVThreshold Then
                                                 '    oFromUD = modDesign.GetFBFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData, oLastProfileSubPoint, GetDesignStationEnum.From)
                                                 'Else
-                                                oFromUD = modDesign.GetUDFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData.Profile, oLastProfileSubPoint, GetDesignStationEnum.From)
+                                                oFromUD = modDesignLRUD.GetUDFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData.Profile, oLastProfileSubPoint, GetDesignStationEnum.From)
                                                 'End If
                                                 'If Math.Abs(oSegmentSubData.Inclination) > sVThreshold Then
                                                 '    oToUD = modDesign.GetFBFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData, oProfileSubPoint, GetDesignStationEnum.To)
                                                 'Else
-                                                oToUD = modDesign.GetUDFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData.Profile, oProfileSubPoint, GetDesignStationEnum.To)
+                                                oToUD = modDesignLRUD.GetUDFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData.Profile, oProfileSubPoint, GetDesignStationEnum.To)
                                                 'End If
                                                 Call oSegmentSubData.SetLRUD(oFromLR.Width, oFromLR.Height, oFromUD.Width, oFromUD.Height, oToLR.Width, oToLR.Height, oToUD.Width, oToUD.Height)
 
@@ -479,19 +479,19 @@ Namespace cSurvey.Calculate
                                                     oProfileSubPoint = modPaint.PointOnLineByPercentage(oProfileFromPoint, oProfileToPoint, sDistance / sTotDistance)
                                                     oSegmentSubData = oSegment.Data.SubDatas.Add(sFrom, sTo, sStep, oLastPlanSubPoint, oPlanSubPoint, oLastProfileSubPoint, oProfileSubPoint, dFromBearingLeft, dFromBearingRight, dToBearingLeft, dToBearingRight)
 
-                                                    Dim oFromLR As SizeF = modDesign.GetLRFromDesign(oSurvey, oPlanCache, oSegment, oSegmentSubData.Plan, oLastPlanSubPoint, GetDesignStationEnum.From)
-                                                    Dim oToLR As SizeF = modDesign.GetLRFromDesign(oSurvey, oPlanCache, oSegment, oSegmentSubData.Plan, oPlanSubPoint, GetDesignStationEnum.To)
+                                                    Dim oFromLR As SizeF = modDesignLRUD.GetLRFromDesign(oSurvey, oPlanCache, oSegment, oSegmentSubData.Plan, oLastPlanSubPoint, GetDesignStationEnum.From)
+                                                    Dim oToLR As SizeF = modDesignLRUD.GetLRFromDesign(oSurvey, oPlanCache, oSegment, oSegmentSubData.Plan, oPlanSubPoint, GetDesignStationEnum.To)
                                                     Dim oFromUD As SizeF
                                                     Dim oToUD As SizeF
                                                     'If Math.Abs(oSegmentSubData.Inclination) > sVThreshold Then
                                                     '    oFromUD = modDesign.GetFBFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData, oLastProfileSubPoint, GetDesignStationEnum.From)
                                                     'Else
-                                                    oFromUD = modDesign.GetUDFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData.Profile, oLastProfileSubPoint, GetDesignStationEnum.From)
+                                                    oFromUD = modDesignLRUD.GetUDFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData.Profile, oLastProfileSubPoint, GetDesignStationEnum.From)
                                                     'End If
                                                     'If Math.Abs(oSegmentSubData.Inclination) > sVThreshold Then
                                                     '    oToUD = modDesign.GetFBFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData, oProfileSubPoint, GetDesignStationEnum.To)
                                                     'Else
-                                                    oToUD = modDesign.GetUDFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData.Profile, oProfileSubPoint, GetDesignStationEnum.To)
+                                                    oToUD = modDesignLRUD.GetUDFromDesign(oSurvey, oProfileCache, oSegment, oSegmentSubData.Profile, oProfileSubPoint, GetDesignStationEnum.To)
                                                     'End If
                                                     Call oSegmentSubData.SetLRUD(oFromLR.Width, oFromLR.Height, oFromUD.Width, oFromUD.Height, oToLR.Width, oToLR.Height, oToUD.Width, oToUD.Height)
 
@@ -507,7 +507,7 @@ Namespace cSurvey.Calculate
                                 Next
                             End Using
                         End Using
-                            Call oSurvey.RaiseOnProgressEvent("3dsubdata", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, modMain.GetLocalizedString("calculate.progressend4"), 0)
+                        Call oSurvey.RaiseOnProgressEvent("3dsubdata", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, modMain.GetLocalizedString("calculate.progressend4"), 0)
                     End If
                     bDataFromDesignsInvalidated = False
                     iLastThreeDModelMode = iThreeDModelMode
@@ -542,6 +542,22 @@ Namespace cSurvey.Calculate
                     If oOrigin Is Nothing Then
                         Return New cActionResult(False, "calculate", GetLocalizedString("calculate.textpart1"))
                     Else
+                        If oSurvey.Properties.GPS.Enabled Then
+                            If oSurvey.Properties.GPS.RefPointOnOrigin Then
+                                If oOrigin.Coordinate.IsEmpty OrElse oOrigin.Coordinate.IsInError Then
+                                    Return New cActionResult(False, "calculate", String.Format(GetLocalizedString("calculate.textpart12"), oOrigin.Name))
+                                End If
+                            Else
+                                Dim oGPSTrigpoint As cSurveyPC.cSurvey.cTrigPoint = oSurvey.TrigPoints(oSurvey.Properties.GPS.CustomRefPoint)
+                                If IsNothing(oGPSTrigpoint) Then
+                                    Return New cActionResult(False, "calculate", String.Format(GetLocalizedString("calculate.textpart13"), oSurvey.Properties.GPS.CustomRefPoint))
+                                Else
+                                    If oGPSTrigpoint.Coordinate.IsEmpty OrElse oGPSTrigpoint.Coordinate.IsInError Then
+                                        Return New cActionResult(False, "calculate", String.Format(GetLocalizedString("calculate.textpart12"), oSurvey.Properties.GPS.CustomRefPoint))
+                                    End If
+                                End If
+                            End If
+                        End If
                         Call oSurvey.RaiseOnProgressEvent("calculate", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("calculate.progressbegin1"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageCalculate)
 
                         Call pSurfaceElevationTrigpointRemove()
@@ -574,6 +590,9 @@ Namespace cSurvey.Calculate
                             bPerformWarping = PerformWarping
                         End If
 
+                        'if warping is in pause and calculate is right...reactivate it
+                        If oSurvey.Properties.DesignWarpingState = cSurvey.DesignWarpingStateEnum.Paused Then oSurvey.Properties.DesignWarpingState = cSurvey.DesignWarpingStateEnum.Active
+
                         Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, Now & vbTab & "Calculate plan centerline data", True)
                         Call oSurvey.RaiseOnProgressEvent("", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("calculate.progress1"), 0)
                         Call oSurvey.RaiseOnProgressEvent("calculate.plot.plan", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("calculate.progressbegin2"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageCalculate)
@@ -605,14 +624,16 @@ Namespace cSurvey.Calculate
             Catch exCalculation As cCalculateException
                 'managed exception
                 Call oSurvey.RaiseOnProgressEvent("calculate", cSurvey.OnProgressEventArgs.ProgressActionEnum.Reset, GetLocalizedString("calculate.progressend1"), 0)
-                oSurvey.Properties.DesignWarpingMode = cSurvey.DesignWarpingModeEnum.None
+                oSurvey.Properties.DesignWarpingState = cSurvey.DesignWarpingStateEnum.Paused
+                'oSurvey.Properties.DesignWarpingMode = cSurvey.DesignWarpingModeEnum.None
                 Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, Now & vbTab & "Calculate completed with error: " & exCalculation.Message, True)
                 RaiseEvent OnCalculateComplete(Me, New EventArgs)
                 Return New cActionResult(False, "csurvey.calculate", String.Format(GetLocalizedString("calculate.textpart2"), exCalculation.Message))
             Catch ex As Exception
                 'real unmanaged exception
                 Call oSurvey.RaiseOnProgressEvent("calculate", cSurvey.OnProgressEventArgs.ProgressActionEnum.Reset, GetLocalizedString("calculate.progressend1"), 0)
-                oSurvey.Properties.DesignWarpingMode = cSurvey.DesignWarpingModeEnum.None
+                oSurvey.Properties.DesignWarpingState = cSurvey.DesignWarpingStateEnum.Paused
+                'oSurvey.Properties.DesignWarpingMode = cSurvey.DesignWarpingModeEnum.None
                 Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, Now & vbTab & "Calculate completed with error: " & ex.Message, True)
                 RaiseEvent OnCalculateComplete(Me, New EventArgs)
                 Call My.Application.ManageUnhandledException(ex)
@@ -1047,7 +1068,6 @@ Namespace cSurvey.Calculate
 
             Dim oNextTrigPoint As List(Of cTrigPointCalculateItem) = New List(Of cTrigPointCalculateItem)
             Dim oCalculatedSegments As List(Of cSegment) = New List(Of cSegment)
-            Dim oCalculatedTrigpoints As Dictionary(Of String, cTrigPointPoint) = New Dictionary(Of String, cTrigPointPoint)(StringComparer.OrdinalIgnoreCase)
 
             Dim oRelocateTrigpoints As List(Of cRelocatePoint) = New List(Of cRelocatePoint)
             Dim oRelocateTrigpointsByGroup As Dictionary(Of String, List(Of String)) = New Dictionary(Of String, List(Of String))
@@ -1072,9 +1092,11 @@ Namespace cSurvey.Calculate
                     Call oTrigPoints.Clear()
                     Call oTrigPoints.Insert(0, New cTrigPointCalculateItem(sExtendStart, 1))
                     'bRelocate = True
-                    If Not oCalculatedTrigpoints.ContainsKey(sExtendStart) Then
-                        Call oCalculatedTrigpoints.Add(sExtendStart, New cTrigPointPoint(oTPs(sExtendStart).Point, iLeft))
-                    End If
+                    Dim oCalculatedTrigpoints As Dictionary(Of String, cTrigPointPoint) = New Dictionary(Of String, cTrigPointPoint)(StringComparer.OrdinalIgnoreCase)
+                    'If Not oCalculatedTrigpoints.ContainsKey(sExtendStart) Then
+                    Call oCalculatedTrigpoints.Add(sExtendStart, New cTrigPointPoint(oTPs(sExtendStart).Point, iLeft))
+                    'End If
+                    'this is only for debug...have to be not relevant...
                     iLeft += 500
                     iGroupIndex += 1
 
@@ -1228,7 +1250,8 @@ Namespace cSurvey.Calculate
 
                 Call oNextTrigPoint.Clear()
                 Call oCalculatedSegments.Clear()
-                Call oCalculatedTrigpoints.Clear()
+                Dim oCalculatedTrigpoints As Dictionary(Of String, cTrigPointPoint) = New Dictionary(Of String, cTrigPointPoint)(StringComparer.OrdinalIgnoreCase)
+                'Call oCalculatedTrigpoints.Clear()
 
                 oOriginTP = oTPs(Origin.From).GetPoints.FirstOrDefault() 'New cTrigPointPoint(0, 0, 0, 0)
                 If IsNothing(oOriginTP) Then
@@ -1343,7 +1366,14 @@ Namespace cSurvey.Calculate
                                                                                                           Call oRelocateTrigpoint.ChangeGroup(oBaseStation.Group)
                                                                                                       End Sub)
                             Else
+                                'For Each oRelocateTrigpoint In oPointToRelocate
+                                '    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, " -relocating " & oRelocateTrigpoint.tostring & " by " & dD, True)
+                                '    Call oRelocateTrigpoint.Point.MoveBy(0, 0, 0, dD)
+                                '    Call oRelocateTrigpoint.ChangeGroup(oBaseStation.Group)
+                                'Next
+
                                 Threading.Tasks.Parallel.ForEach(Of cRelocatePoint)(oPointToRelocate, Sub(oRelocateTrigpoint)
+                                                                                                          'Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, " -relocating " & oRelocateTrigpoint.Station & " by " & dD, True)
                                                                                                           Call oRelocateTrigpoint.Point.MoveBy(0, 0, 0, dD)
                                                                                                           Call oRelocateTrigpoint.ChangeGroup(oBaseStation.Group)
                                                                                                       End Sub)
@@ -1352,7 +1382,6 @@ Namespace cSurvey.Calculate
                     End If
                 Next
             End If
-
 
             ''autoconnection for group without connection's stations
             'For Each oGroup As cSegmentGroup In RelocateTrigpoints.Where(Function(oitem) oitem.Station = ConnectionDef.Station AndAlso oitem.Connection <> ConnectionDef).Select(Function(oitem) oitem.Group).ToList

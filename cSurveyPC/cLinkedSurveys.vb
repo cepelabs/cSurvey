@@ -67,6 +67,15 @@ Namespace cSurvey
             Call Refresh()
         End Sub
 
+        Friend Sub New(ByVal Survey As cSurvey, ByVal LinkedSurvey As cLinkedSurvey)
+            oSurvey = Survey
+
+            sFilename = LinkedSurvey.sFilename
+            sNote = LinkedSurvey.sNote
+            oSelected = New List(Of String)(LinkedSurvey.oSelected)
+            Call Refresh()
+        End Sub
+
         Public Sub New(Survey As cSurvey, Filename As String)
             oSurvey = Survey
 
@@ -153,6 +162,35 @@ Namespace cSurvey
 
         Private oSurvey As cSurvey
         Private oItems As List(Of cLinkedSurvey)
+
+        Public Sub MergeWith(ByVal LinkedSurveys As cLinkedSurveys)
+            If Not LinkedSurveys Is Me Then
+                For Each oItem As cLinkedSurvey In LinkedSurveys
+                    If Not IsNothing(oItem.LinkedSurvey) Then
+                        If pExist(oItem.LinkedSurvey.ID) Then
+                            Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, "Survey file """ & oItem.Filename & """ is already linked", True)
+                        Else
+                            Dim oNewItem As cLinkedSurvey = New cLinkedSurvey(oSurvey, oItem)
+                            Call oItems.Add(oNewItem)
+                            Call oSurvey.RaiseOnLinkedSurveysAdd(oNewItem)
+                            Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, "Survey file """ & oNewItem.Filename & """ successfully linked", True)
+                        End If
+                    End If
+                Next
+            End If
+        End Sub
+
+        Public Sub CopyFrom(ByVal LinkedSurveys As cLinkedSurveys)
+            If Not LinkedSurveys Is Me Then
+                Call oItems.Clear()
+                For Each oItem As cLinkedSurvey In LinkedSurveys
+                    Dim oNewItem As cLinkedSurvey = New cLinkedSurvey(oSurvey, oItem)
+                    Call oItems.Add(oNewItem)
+                    Call oSurvey.RaiseOnLinkedSurveysAdd(oNewItem)
+                    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, "Survey file """ & oNewItem.Filename & """ successfully linked", True)
+                Next
+            End If
+        End Sub
 
         Public Function GetUsable() As List(Of cLinkedSurvey)
             Return oItems.Where(Function(item) item.IsUsable).ToList

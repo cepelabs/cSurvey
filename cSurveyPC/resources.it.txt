@@ -881,3 +881,7 @@ main.textpart149=Note
 main.textpart150=Ingresso
 main.textpart151=Fix
 calculate.textpart11=[{0}]: caposaldo non collegato o non esistente.
+calculate.textpart12=Errore: il caposaldo {0} impostato come riferimento per le funzioni geografiche non ha coordinate valide
+calculate.textpart13=Errore: il caposaldo {0} impostato come riferimento per le funzioni geografiche non esiste
+main.textpart152=Creazione modello 3D dal disegno del rilievo collegato {0}...
+main.textpart153=La tratta non è associata ad alcuna sessione. Non potrà essere corretta a Nord geografico automaticamente.

@@ -8,7 +8,7 @@ Public Class frmRenameTrigpoints
         Dim sNew As String = txtNew.Text.ToUpper
         e.Cancel = oTrigPoints.Contains(sNew)
         If e.Cancel Then
-            MsgBox(GetLocalizedString("renametrigpoints.warning1"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("renametrigpoints.warningtitle"))
+            Call MsgBox(GetLocalizedString("renametrigpoints.warning1"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("renametrigpoints.warningtitle"))
         End If
     End Sub
 

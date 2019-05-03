@@ -880,3 +880,7 @@ main.textpart149=Note
 main.textpart150=Entrance
 main.textpart151=Fix
 calculate.textpart11=[{0}]: station not connected or not existing.
+calculate.textpart12=Error: station {0} set as reference for geographic functions is invalid
+calculate.textpart13=Error: station {0} set as reference for geographic functions has no valid coordinates
+main.textpart152=Creating 3D model from design of linked survey {0}...
+main.textpart153=The shot is not associated to any cave. Will not be automatically changed to Geographic North.

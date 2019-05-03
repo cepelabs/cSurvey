@@ -60,6 +60,10 @@ Namespace cSurvey.Calculate
             End If
         End Function
 
+        Friend Sub Rename(NewName As String)
+            sName = NewName
+        End Sub
+
         Public ReadOnly Property Name As String
             Get
                 Return sName

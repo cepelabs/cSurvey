@@ -12,6 +12,10 @@ Namespace cSurvey.Calculate
         Private bProcessed As Boolean
         Private oSideMeasure As cTrigPointSideMeasure
 
+        Friend Sub Rename(NewName As String)
+            sName = NewName
+        End Sub
+
         Friend Sub New(ByVal Name As String)
             sName = Name
             oConnections = New cTrigPointConnections

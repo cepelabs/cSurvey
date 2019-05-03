@@ -9,6 +9,15 @@ Namespace cSurvey.Calculate
 
         Private oItems As Dictionary(Of String, cTrigPointConnection)
 
+        Friend Sub Rename(OldName As String, NewName As String)
+            If oItems.ContainsKey(OldName) Then
+                Dim oItem As cTrigPointConnection = oItems(OldName)
+                Call oItems.Remove(OldName)
+                Call oItem.rename(NewName)
+                Call oItems.Add(NewName, oItem)
+            End If
+        End Sub
+
         Public Function GetCenterlineShots() As List(Of String)
             Return oItems.Values.Where(Function(item) Not item.Splay).Select(Function(item) item.Name).ToList
         End Function

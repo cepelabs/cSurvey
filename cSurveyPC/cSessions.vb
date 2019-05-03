@@ -173,8 +173,10 @@ Namespace cSurvey
 
             oSession.DataFormat = oSurvey.Properties.DataFormat
             oSession.BearingType = oSurvey.Properties.BearingType
+            oSession.BearingDirection = oSurvey.Properties.BearingDirection
             oSession.DistanceType = oSurvey.Properties.DistanceType
             oSession.InclinationType = oSurvey.Properties.InclinationType
+            oSession.InclinationDirection = oSurvey.Properties.InclinationDirection
 
             oSession.Grade = oSurvey.Properties.Grade
 

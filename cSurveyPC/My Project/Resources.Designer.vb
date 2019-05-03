@@ -443,6 +443,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Public ReadOnly Property bullet_arrow_right() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("bullet_arrow_right", resourceCulture)
+                Return CType(obj, System.Drawing.Bitmap)
+            End Get
+        End Property
+
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Public ReadOnly Property bullet_delete() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("bullet_delete", resourceCulture)
@@ -456,6 +466,16 @@ Namespace My.Resources
         Public ReadOnly Property bullet_error() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("bullet_error", resourceCulture)
+                Return CType(obj, System.Drawing.Bitmap)
+            End Get
+        End Property
+
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Public ReadOnly Property bullet_pause() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("bullet_pause", resourceCulture)
                 Return CType(obj, System.Drawing.Bitmap)
             End Get
         End Property
@@ -597,6 +617,16 @@ Namespace My.Resources
             Get
                 Dim obj As Object = ResourceManager.GetObject("console", resourceCulture)
                 Return CType(obj, System.Drawing.Icon)
+            End Get
+        End Property
+
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Public ReadOnly Property control_pause_blue() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("control_pause_blue", resourceCulture)
+                Return CType(obj, System.Drawing.Bitmap)
             End Get
         End Property
 

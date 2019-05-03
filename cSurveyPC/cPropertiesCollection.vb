@@ -47,14 +47,28 @@ Namespace cSurvey
             Next
         End Sub
 
+        Public Sub MergeWith(ByVal PropertyCollection As cPropertiesCollection)
+            If Not PropertyCollection Is Me Then
+                For Each oItem As KeyValuePair(Of String, Object) In PropertyCollection.oItems
+                    Dim sName As String = oItem.Key
+                    If Not oItems.ContainsKey(sName) Then
+                        Call oItems.Add(sName, oItem.Value)
+                    End If
+                Next
+            End If
+        End Sub
+
         Public Sub CopyFrom(ByVal PropertyCollection As cPropertiesCollection)
-            For Each oItem As KeyValuePair(Of String, Object) In PropertyCollection.oItems
-                Dim sName As String = oItem.Key
-                If oItems.ContainsKey(sName) Then
-                    Call oItems.Remove(sname)
-                End If
-                Call oItems.Add(sName, oItem.Value)
-            Next
+            If Not PropertyCollection Is Me Then
+                Call oItems.Clear()
+                For Each oItem As KeyValuePair(Of String, Object) In PropertyCollection.oItems
+                    'Dim sName As String = oItem.Key
+                    'If oItems.ContainsKey(sName) Then
+                    '    Call oItems.Remove(sName)
+                    'End If
+                    Call oItems.Add(oItem.Key, oItem.Value)
+                Next
+            End If
         End Sub
 
         Public Sub Add(ByVal Name As String, ByVal Value As Object)

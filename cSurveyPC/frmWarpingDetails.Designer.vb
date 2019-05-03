@@ -22,6 +22,7 @@ Partial Class frmWarpingDetails
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmWarpingDetails))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -39,6 +40,8 @@ Partial Class frmWarpingDetails
         Me.colDeltaX = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colDeltaY = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colDeltaAngle = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cmdCancelAndPause = New System.Windows.Forms.Button()
+        Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         CType(Me.grdStations, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -53,7 +56,9 @@ Partial Class frmWarpingDetails
         '
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.OK
+        Me.cmdCancel.Image = Global.cSurveyPC.My.Resources.Resources.control_stop_blue
         Me.cmdCancel.Name = "cmdCancel"
+        Me.ToolTip.SetToolTip(Me.cmdCancel, resources.GetString("cmdCancel.ToolTip"))
         Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'chkDontShowWarpingDetails
@@ -128,11 +133,21 @@ Partial Class frmWarpingDetails
         Me.colDeltaAngle.Name = "colDeltaAngle"
         Me.colDeltaAngle.ReadOnly = True
         '
+        'cmdCancelAndPause
+        '
+        resources.ApplyResources(Me.cmdCancelAndPause, "cmdCancelAndPause")
+        Me.cmdCancelAndPause.DialogResult = System.Windows.Forms.DialogResult.OK
+        Me.cmdCancelAndPause.Image = Global.cSurveyPC.My.Resources.Resources.control_pause_blue
+        Me.cmdCancelAndPause.Name = "cmdCancelAndPause"
+        Me.ToolTip.SetToolTip(Me.cmdCancelAndPause, resources.GetString("cmdCancelAndPause.ToolTip"))
+        Me.cmdCancelAndPause.UseVisualStyleBackColor = True
+        '
         'frmWarpingDetails
         '
         Me.AcceptButton = Me.cmdApply
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.cmdCancelAndPause)
         Me.Controls.Add(Me.chkDontShowWarpingDetails)
         Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.cmdApply)
@@ -155,4 +170,6 @@ Partial Class frmWarpingDetails
     Friend WithEvents colDeltaY As DataGridViewTextBoxColumn
     Friend WithEvents colDeltaAngle As DataGridViewTextBoxColumn
     Friend WithEvents chkDontShowWarpingDetails As CheckBox
+    Friend WithEvents cmdCancelAndPause As Button
+    Friend WithEvents ToolTip As ToolTip
 End Class

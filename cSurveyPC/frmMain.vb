@@ -1392,8 +1392,8 @@ Public Class frmMain
                 If oNetHistory.CreateSet(oSurvey.ID, oSurvey.Name, iSetID) Then
                     Dim iDataID As Integer
                     Call oNetHistory.Upload(iSetID, 0, IO.Path.GetFileName(sHistoryFilename), sHistoryFilename, "application/octet-stream", dNow, iDataID)
-                    Dim iResult As Integer
-                    Call oNetHistory.Explode(iSetID, iDataID, iResult)
+                    'Dim iResult As Integer
+                    'Call oNetHistory.Explode(iSetID, iDataID, iResult)
                 End If
             End If
             Call pStatusProgress(0, GetLocalizedString("main.progressend12"))
@@ -1491,9 +1491,9 @@ Public Class frmMain
                 If oCurrentOptions.HighlightCurrentCave AndAlso oCurrentOptions.HighlightSegmentsAndTrigpoints Then
                     '---------------------------------------------------------------
                     spSegmentsAndTrigpoints.Enabled = False
-                    Call pSurveyProgress("applyfilter", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, 0, "Applicazione filtro...", cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageFilter Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow)
+                    Call pSurveyProgress("applyfilter", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, 0, GetLocalizedString("main.progressbegin14"), cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageFilter Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow)
                     Dim iIndex As Integer = 0
-                    Dim iCount As Integer = grdSegments.Rows.Count + grdTrigPoints.Rows.Count
+                    Dim iCount As Integer = grdSegments.Rows.Count + lvTrigPoints.Items.Count ' grdTrigPoints.Rows.Count
 
                     Dim oFirstSegment As cSegment = Nothing
                     Dim oStations As List(Of String) = New List(Of String)
@@ -1515,16 +1515,14 @@ Public Class frmMain
                         End If
 
                         iIndex += 1
-                        If iIndex Mod 20 = 0 Then Call oSurvey.RaiseOnProgressEvent("applyfilter", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "Applicazione filtro segmenti...", iIndex / iCount)
+                        If iIndex Mod 20 = 0 Then Call oSurvey.RaiseOnProgressEvent("applyfilter", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("main.progress14"), iIndex / iCount)
                     Next
                     '---------------------------------------------------------------
-                    For Each oRow As DataGridViewRow In grdTrigPoints.Rows
-                        Dim sStation As String = oRow.Cells(0).Value.ToString.ToUpper
-                        oRow.Visible = oStations.Contains(sStation)
-
-                        iIndex += 1
-                        If iIndex Mod 100 = 0 Then Call oSurvey.RaiseOnProgressEvent("applyfilter", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "Applicazione filtro capisaldi...", iIndex / iCount)
-                    Next
+                    'station filtering...
+                    lvTrigPoints.ModelFilter = New ModelFilter(Function(item)
+                                                                   Return oStations.Contains(DirectCast(item, cTrigPoint).Name)
+                                                               End Function)
+                    lvTrigPoints.UseFiltering = True
                     '---------------------------------------------------------------
                     If Not pGetCurrentDesignTools.CurrentItem Is Nothing AndAlso pGetCurrentDesignTools.CurrentItem.Type = cIItem.cItemTypeEnum.Segment Then
                         If oStations.Count > 0 AndAlso Not oStations.Contains(oTools.CurrentTrigpoint.Name) Then
@@ -1540,7 +1538,7 @@ Public Class frmMain
                     End If
                     '---------------------------------------------------------------
                     spSegmentsAndTrigpoints.Enabled = True
-                    Call pSurveyProgress("applyfilter", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, 0, "")
+                    Call pSurveyProgress("applyfilter", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, 0, GetLocalizedString("main.progressend14"))
                     '---------------------------------------------------------------
                 Else
                     '---------------------------------------------------------------
@@ -1552,11 +1550,9 @@ Public Class frmMain
                         End If
                     Next
                     '---------------------------------------------------------------
-                    For Each oRow As DataGridViewRow In grdTrigPoints.Rows
-                        oRow.Visible = True
-                    Next
+                    lvTrigPoints.UseFiltering = False
                     '---------------------------------------------------------------
-                    'non cambio selezione dei segmenti perché quelli selezionati sono comunque visibili...
+                    'is not userfull refreshing selected shot cause the selected shot have to be visible here...
                     '---------------------------------------------------------------
                     spSegmentsAndTrigpoints.Enabled = True
                     '---------------------------------------------------------------
@@ -1659,67 +1655,140 @@ Public Class frmMain
         Call oMousePointer.Pop()
     End Sub
 
-    Private oTrigpointRowIndex As Dictionary(Of String, Integer) = New Dictionary(Of String, Integer)
+    'Private oTrigpointRowIndex As Dictionary(Of String, Integer) = New Dictionary(Of String, Integer)
+
+    Private Sub pSurveySetupTrigpoints()
+        lvTrigPoints.Dock = DockStyle.Fill
+        colTrigpointsStation.AspectGetter = Function(Value As Object)
+                                                Return DirectCast(Value, cTrigPoint).Name
+                                            End Function
+        colTrigpointsX.AspectGetter = Function(Value As Object)
+                                          Return Strings.Format(DirectCast(Value, cTrigPoint).Data.X, "0.00")
+                                      End Function
+        colTrigpointsY.AspectGetter = Function(Value As Object)
+                                          Return Strings.Format(DirectCast(Value, cTrigPoint).Data.Y, "0.00")
+                                      End Function
+        colTrigpointsZ.AspectGetter = Function(Value As Object)
+                                          Return Strings.Format(DirectCast(Value, cTrigPoint).Data.Z, "0.00")
+                                      End Function
+
+        colTrigpointsNote.ImageGetter = Function(Value As Object)
+                                            Return If(DirectCast(Value, cTrigPoint).Note <> "", My.Resources.note, Nothing)
+                                        End Function
+        colTrigpointsCoordinate.ImageGetter = Function(Value As Object)
+                                                  Return If(DirectCast(Value, cTrigPoint).Coordinate.IsEmpty, Nothing, If(DirectCast(Value, cTrigPoint).Coordinate.Fix = cCoordinate.FixEnum.Default, My.Resources.map_world, My.Resources.map))
+                                              End Function
+        colTrigpointsEntrance.ImageGetter = Function(Value As Object)
+                                                Return If(DirectCast(Value, cTrigPoint).Entrance = cTrigPoint.EntranceTypeEnum.None, Nothing, My.Resources.weather_sun)
+                                            End Function
+        colTrigpointsEntrance.Text = lblTrigpointEntrance.Text
+        colTrigpointsSpecial.ImageGetter = Function(Value As Object)
+                                               Return If(DirectCast(Value, cTrigPoint).IsSpecial, My.Resources.asterisk_yellow, Nothing)
+                                           End Function
+        colTrigpointsSpecial.Text = chkTrigpointIsSpecial.Text
+        colTrigpointInExploration.ImageGetter = Function(Value As Object)
+                                                    Return If(DirectCast(Value, cTrigPoint).IsInExploration, My.Resources.check_box, Nothing)
+                                                End Function
+        colTrigpointInExploration.Text = chkTrigpointIsInExploration.Text
+        colTrigpointsLatitude.AspectGetter = Function(Value As Object)
+                                                 Dim oTrigpoint As cTrigPoint = (DirectCast(Value, cTrigPoint))
+                                                 If oSurvey.Calculate.TrigPoints.Contains(oTrigpoint) Then
+                                                     Return oSurvey.Calculate.TrigPoints(oTrigpoint).Coordinate.Latitude
+                                                 End If
+                                             End Function
+        colTrigpointsLongitude.AspectGetter = Function(Value As Object)
+                                                  Dim oTrigpoint As cTrigPoint = (DirectCast(Value, cTrigPoint))
+                                                  If oSurvey.Calculate.TrigPoints.Contains(oTrigpoint) Then
+                                                      Return oSurvey.Calculate.TrigPoints(oTrigpoint).Coordinate.Longitude
+                                                  End If
+                                              End Function
+        colTrigpointsAltitude.AspectGetter = Function(Value As Object)
+                                                 Dim oTrigpoint As cTrigPoint = (DirectCast(Value, cTrigPoint))
+                                                 If oSurvey.Calculate.TrigPoints.Contains(oTrigpoint) Then
+                                                     Return oSurvey.Calculate.TrigPoints(oTrigpoint).Coordinate.Altitude
+                                                 End If
+                                             End Function
+
+        'Dim oHeaderStyle As HeaderFormatStyle = New HeaderFormatStyle
+        'Call oHeaderStyle.SetBackColor(SystemColors.ButtonFace)
+        'For Each oColumn As OLVColumn In lvTrigPoints.Columns
+        '    oColumn.HeaderFormatStyle = oHeaderStyle
+        'Next
+
+        For Each oColumn As OLVColumn In lvTrigPoints.AllColumns
+            Dim sText As String = oColumn.Text.Trim
+            'this not suitable for all language but, for now, is good avoiding : at the end of the column header text
+            If sText.EndsWith(":") Then sText = sText.Substring(0, sText.Length - 1)
+            oColumn.ToolTipText = sText
+        Next
+
+        Call lvTrigPoints.RebuildColumns()
+    End Sub
 
     Private Sub pSurveyTrigpointsRefresh(Optional ByVal RemoveOrphans As Boolean = False)
         bDisableTrigpointsChangeEvent = True
         Call oMousePointer.Push(Cursors.WaitCursor)
 
-        Dim sLastTrigpoint As String = ""
-        If Not grdTrigPoints.CurrentRow Is Nothing Then
-            sLastTrigpoint = grdTrigPoints.CurrentRow.Cells(0).Value
-            Call oTools.SelectTrigpoint(Nothing)
-        End If
+        'Dim sLastTrigpoint As String = ""
+        'If Not grdTrigPoints.CurrentRow Is Nothing Then
+        '    sLastTrigpoint = grdTrigPoints.CurrentRow.Cells(0).Value
+        '    Call oTools.SelectTrigpoint(Nothing)
+        'End If
 
         Call oSurvey.TrigPoints.Rebind(RemoveOrphans)
 
-        Call grdTrigPoints.SuspendLayout()
-        Call grdTrigPoints.Rows.Clear()
-        Call oTrigpointRowIndex.Clear()
-        Dim oRow(8) As Object
-        Dim oTrigPoint As cTrigPoint
-        For Each oTrigPoint In oSurvey.TrigPoints
-            Dim sName As String = oTrigPoint.Name
-            oRow(0) = sName
-            oRow(1) = Strings.Format(oTrigPoint.Data.X, "0.00")
-            oRow(2) = Strings.Format(oTrigPoint.Data.Y, "0.00")
-            oRow(3) = Strings.Format(oTrigPoint.Data.Z, "0.00")
+        Call lvTrigPoints.BeginUpdate()
+        Call lvTrigPoints.SetObjects(oSurvey.TrigPoints.ToList)
+        Call lvTrigPoints.SelectObject(oTools.CurrentTrigpoint)
+        Call lvTrigPoints.EndUpdate()
 
-            If oTrigPoint.Coordinate.IsEmpty Then
-                oRow(4) = Nothing
-            Else
-                If oTrigPoint.Coordinate.Fix = cCoordinate.FixEnum.Default Then
-                    oRow(4) = My.Resources.map_world
-                Else
-                    oRow(4) = My.Resources.map
-                End If
-            End If
-            If oTrigPoint.Note = "" Then
-                oRow(5) = Nothing
-            Else
-                oRow(5) = My.Resources.note
-            End If
+        'Call grdTrigPoints.SuspendLayout()
+        'Call grdTrigPoints.Rows.Clear()
+        'Call oTrigpointRowIndex.Clear()
+        'Dim oRow(8) As Object
+        'Dim oTrigPoint As cTrigPoint
+        'For Each oTrigPoint In oSurvey.TrigPoints
+        '    Dim sName As String = oTrigPoint.Name
+        '    oRow(0) = sName
+        '    oRow(1) = Strings.Format(oTrigPoint.Data.X, "0.00")
+        '    oRow(2) = Strings.Format(oTrigPoint.Data.Y, "0.00")
+        '    oRow(3) = Strings.Format(oTrigPoint.Data.Z, "0.00")
 
-            If oSurvey.Calculate.TrigPoints.Contains(oTrigPoint) Then
-                oRow(6) = oSurvey.Calculate.TrigPoints(oTrigPoint).Coordinate.Latitude
-                oRow(7) = oSurvey.Calculate.TrigPoints(oTrigPoint).Coordinate.Longitude
-                oRow(8) = oSurvey.Calculate.TrigPoints(oTrigPoint).Coordinate.Altitude
-            End If
+        '    If oTrigPoint.Coordinate.IsEmpty Then
+        '        oRow(4) = Nothing
+        '    Else
+        '        If oTrigPoint.Coordinate.Fix = cCoordinate.FixEnum.Default Then
+        '            oRow(4) = My.Resources.map_world
+        '        Else
+        '            oRow(4) = My.Resources.map
+        '        End If
+        '    End If
+        '    If oTrigPoint.Note = "" Then
+        '        oRow(5) = Nothing
+        '    Else
+        '        oRow(5) = My.Resources.note
+        '    End If
 
-            Dim iRowIndex As Integer = grdTrigPoints.Rows.Add(oRow)
-            Call oTrigpointRowIndex.Add(sName, iRowIndex)
-        Next
+        '    If oSurvey.Calculate.TrigPoints.Contains(oTrigPoint) Then
+        '        oRow(6) = oSurvey.Calculate.TrigPoints(oTrigPoint).Coordinate.Latitude
+        '        oRow(7) = oSurvey.Calculate.TrigPoints(oTrigPoint).Coordinate.Longitude
+        '        oRow(8) = oSurvey.Calculate.TrigPoints(oTrigPoint).Coordinate.Altitude
+        '    End If
 
-        Call grdTrigPoints.ResumeLayout()
+        '    Dim iRowIndex As Integer = grdTrigPoints.Rows.Add(oRow)
+        '    Call oTrigpointRowIndex.Add(sName, iRowIndex)
+        'Next
 
-        If grdTrigPoints.Rows.Count > 0 Then
-            If sLastTrigpoint = "" Then
-                oTrigPoint = oSurvey.TrigPoints(grdTrigPoints.Rows(0).Cells(0).Value)
-            Else
-                oTrigPoint = oSurvey.TrigPoints(sLastTrigpoint)
-            End If
-            Call oTools.SelectTrigpoint(oTrigPoint)
-        End If
+        'Call grdTrigPoints.ResumeLayout()
+
+        'If grdTrigPoints.Rows.Count > 0 Then
+        '    If sLastTrigpoint = "" Then
+        '        oTrigPoint = oSurvey.TrigPoints(grdTrigPoints.Rows(0).Cells(0).Value)
+        '    Else
+        '        oTrigPoint = oSurvey.TrigPoints(sLastTrigpoint)
+        '    End If
+        '    Call oTools.SelectTrigpoint(oTrigPoint)
+        'End If
 
         bDisableTrigpointsChangeEvent = False
         Call oMousePointer.Pop()
@@ -1814,34 +1883,39 @@ Public Class frmMain
     End Sub
 
     Private Sub pTrigPointSelect(Trigpoint As cTrigPoint, [Select] As Boolean, BringToTop As Boolean)
-        With grdTrigPoints
-            If Not .FirstDisplayedCell Is Nothing AndAlso Not Trigpoint Is Nothing Then
-                Dim sTrigpoint As String = Trigpoint.Name
-                If oTrigpointRowIndex.ContainsKey(sTrigpoint) Then
-                    Dim iIndex As Integer = oTrigpointRowIndex(sTrigpoint)
-                    If .CurrentCellAddress.Y <> iIndex And .Rows.Count > iIndex Then
-                        Dim iCurrentColumnIndex As Integer = .CurrentCellAddress.X
-                        If iCurrentColumnIndex < 0 Then iCurrentColumnIndex = 0
-                        Dim iFirstVisibleRow As Integer = .FirstDisplayedCell.RowIndex
-                        Dim iLastVisibleRow As Integer = iFirstVisibleRow + .DisplayedRowCount(True)
-                        If [Select] Then
-                            Call .ClearSelection()
-                            .Rows(iIndex).Selected = True
-                        End If
-                        If ((iIndex < iFirstVisibleRow) Or (iIndex >= iLastVisibleRow)) And .Visible Then
-                            .FirstDisplayedCell = .Rows(iIndex).Cells(0)
-                        End If
-                        If Not bDisableTrigpointsChangeEvent Then
-                            .CurrentCell = .Rows(iIndex).Cells(iCurrentColumnIndex)
-                        End If
-                        Call oTools.SelectTrigpoint(Trigpoint)
-                        Call pMapInvalidate()
-                        Call pTrigpointsRefresh()
-                    End If
-                End If
-            End If
-        End With
-        If BringToTop AndAlso Not grdTrigPoints.Visible Then
+        'lvTrigPoints.FocusedObject = Trigpoint
+        lvTrigPoints.SelectedObject = Trigpoint
+        Call lvTrigPoints.EnsureModelVisible(Trigpoint)
+
+        'With grdTrigPoints
+        '    If Not .FirstDisplayedCell Is Nothing AndAlso Not Trigpoint Is Nothing Then
+        '        Dim sTrigpoint As String = Trigpoint.Name
+        '        If oTrigpointRowIndex.ContainsKey(sTrigpoint) Then
+        '            Dim iIndex As Integer = oTrigpointRowIndex(sTrigpoint)
+        '            If .CurrentCellAddress.Y <> iIndex And .Rows.Count > iIndex Then
+        '                Dim iCurrentColumnIndex As Integer = .CurrentCellAddress.X
+        '                If iCurrentColumnIndex < 0 Then iCurrentColumnIndex = 0
+        '                Dim iFirstVisibleRow As Integer = .FirstDisplayedCell.RowIndex
+        '                Dim iLastVisibleRow As Integer = iFirstVisibleRow + .DisplayedRowCount(True)
+        '                If [Select] Then
+        '                    Call .ClearSelection()
+        '                    .Rows(iIndex).Selected = True
+        '                End If
+        '                If ((iIndex < iFirstVisibleRow) Or (iIndex >= iLastVisibleRow)) And .Visible Then
+        '                    .FirstDisplayedCell = .Rows(iIndex).Cells(0)
+        '                End If
+        '                If Not bDisableTrigpointsChangeEvent Then
+        '                    .CurrentCell = .Rows(iIndex).Cells(iCurrentColumnIndex)
+        '                End If
+        '                Call oTools.SelectTrigpoint(Trigpoint)
+        '                Call pMapInvalidate()
+        '                Call pTrigpointsRefresh()
+        '            End If
+        '        End If
+        '    End If
+        'End With
+        If BringToTop AndAlso Not lvTrigPoints.Visible Then
+            'If BringToTop AndAlso Not grdTrigPoints.Visible Then
             Call btnTrigPoints.PerformClick()
         End If
     End Sub
@@ -1962,7 +2036,7 @@ Public Class frmMain
         txtSegmentNote.Text = ""
 
         Call tvSegmentAttachments.BeginUpdate()
-        tvSegmentAttachments.SetObjects(Nothing)
+        Call tvSegmentAttachments.SetObjects(Nothing)
         Call tvSegmentAttachments.BuildList(True)
         Call tvSegmentAttachments.EndUpdate()
 
@@ -2050,7 +2124,7 @@ Public Class frmMain
 
                 Call tvSegmentAttachments.BeginUpdate()
                 tvSegmentAttachments.VirtualMode = False
-                tvSegmentAttachments.SetObjects(.Attachments)
+                Call tvSegmentAttachments.SetObjects(.Attachments)
                 Call tvSegmentAttachments.BuildList(True)
                 Call tvSegmentAttachments.EndUpdate()
 
@@ -2348,19 +2422,20 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub pTrigPointValidate(ByVal Index As Integer)
-        Dim sErrorText As String = ""
-        Dim sTrigPoint As String = grdTrigPoints.Rows(Index).Cells(0).Value
-        Dim oTrigpoint As cTrigPoint = oSurvey.TrigPoints(sTrigPoint)
-        If Not oTrigpoint Is Nothing Then
-            With grdTrigPoints.Rows(Index)
-                If oTrigpoint.Coordinate.IsInError Then
-                    If sErrorText <> "" Then sErrorText = sErrorText & vbCrLf
-                    sErrorText = sErrorText & oTrigpoint.Coordinate.LastError
-                End If
-                .ErrorText = sErrorText
-            End With
-        End If
+    Private Sub pTrigPointValidate(TrigPoint As cTrigPoint)
+        'TO DO
+        'Dim sErrorText As String = ""
+        'Dim sTrigPoint As String = grdTrigPoints.Rows(Index).Cells(0).Value
+        'Dim oTrigpoint As cTrigPoint = oSurvey.TrigPoints(sTrigPoint)
+        'If Not oTrigpoint Is Nothing Then
+        '    With grdTrigPoints.Rows(Index)
+        '        If oTrigpoint.Coordinate.IsInError Then
+        '            If sErrorText <> "" Then sErrorText = sErrorText & vbCrLf
+        '            sErrorText = sErrorText & oTrigpoint.Coordinate.LastError
+        '        End If
+        '        .ErrorText = sErrorText
+        '    End With
+        'End If
     End Sub
 
     Private Function pSurveyCheckOrigin() As Boolean
@@ -2402,8 +2477,8 @@ Public Class frmMain
                         sErrorText = sErrorText & GetLocalizedString("main.textpart153")
                     End If
                     oSessionColor = grdSegments.BackgroundColor
-                    Else
-                        Dim oColor As Color = oSurvey.Properties.Sessions.GetColor(oSegment, Color.Transparent)
+                Else
+                    Dim oColor As Color = oSurvey.Properties.Sessions.GetColor(oSegment, Color.Transparent)
                     If Not (oColor = Color.Transparent) Then
                         oSessionColor = oColor
                     Else
@@ -2479,25 +2554,25 @@ Public Class frmMain
     End Sub
 
     Private Sub pTrigPointUpdate(TrigPoint As cTrigPoint)
-        Dim iIndex As Integer = TrigPoint.Index
-        With grdTrigPoints.Rows(iIndex)
-            .Cells(0).Value = TrigPoint.Name
-            .Cells(1).Value = Strings.Format(TrigPoint.Data.X, "0.00")
-            .Cells(2).Value = Strings.Format(TrigPoint.Data.Y, "0.00")
-            .Cells(3).Value = Strings.Format(TrigPoint.Data.Z, "0.00")
-            If TrigPoint.Coordinate.IsEmpty Then
-                .Cells(4).Value = Nothing
-            Else
-                If TrigPoint.Coordinate.Fix = cCoordinate.FixEnum.Default Then
-                    .Cells(4).Value = My.Resources.map_world
-                Else
-                    .Cells(4).Value = My.Resources.map
-                End If
-            End If
+        'Dim iIndex As Integer = TrigPoint.Index
+        'With grdTrigPoints.Rows(iIndex)
+        '    .Cells(0).Value = TrigPoint.Name
+        '    .Cells(1).Value = Strings.Format(TrigPoint.Data.X, "0.00")
+        '    .Cells(2).Value = Strings.Format(TrigPoint.Data.Y, "0.00")
+        '    .Cells(3).Value = Strings.Format(TrigPoint.Data.Z, "0.00")
+        '    If TrigPoint.Coordinate.IsEmpty Then
+        '        .Cells(4).Value = Nothing
+        '    Else
+        '        If TrigPoint.Coordinate.Fix = cCoordinate.FixEnum.Default Then
+        '            .Cells(4).Value = My.Resources.map_world
+        '        Else
+        '            .Cells(4).Value = My.Resources.map
+        '        End If
+        '    End If
 
-            .Cells(5).Value = IIf(TrigPoint.Note = "", Nothing, My.Resources.note)
-            Call pTrigPointValidate(iIndex)
-        End With
+        '    .Cells(5).Value = IIf(TrigPoint.Note = "", Nothing, My.Resources.note)
+        Call pTrigPointValidate(TrigPoint)
+        'End With
     End Sub
 
     Private Sub pSegmentUpdate(ByVal Segment As cSegment)
@@ -2862,43 +2937,9 @@ Public Class frmMain
     Private WithEvents oDockLS As frmLinkedSurveys
 
     Private Sub frmMain_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        'dock restore...
-        If Not IsNothing(bDockState) Then
-            If bDockState.Length <> 0 Then
-                Using oMS As MemoryStream = New MemoryStream
-                    Call oMS.Write(bDockState, 0, bDockState.Length)
-                    oDockData.DockPanel = Nothing
-                    oDockDesigner.DockPanel = Nothing
-                    oDockLayers.DockPanel = Nothing
-                    oDockProperties.DockPanel = Nothing
-                    oDockConsole.DockPanel = Nothing
-                    oDockClipart.DockPanel = Nothing
-                    oDockText.DockPanel = Nothing
-                    oDockJoinPoints.DockPanel = Nothing
-                    oDockAV.DockPanel = Nothing
-                    oDockIV.DockPanel = Nothing
-                    oDockLS.DockPanel = Nothing
-                    oMS.Position = 0
-                    Call oDockPanel.LoadFromXml(oMS, New WeifenLuo.WinFormsUI.Docking.DeserializeDockContent(AddressOf GetContentFromPersistString))
-                End Using
-            End If
-            bDockState = Nothing
-        End If
-
-        If oDockData.DockState = DockState.Unknown Then oDockData.DockPanel = oDockPanel : oDockData.Show(oDockPanel, WeifenLuo.WinFormsUI.Docking.DockState.Document)
-        If oDockDesigner.DockState = DockState.Unknown Then oDockDesigner.DockPanel = oDockPanel : oDockDesigner.Show(oDockPanel, WeifenLuo.WinFormsUI.Docking.DockState.Document)
-        If oDockLayers.DockState = DockState.Unknown Then oDockLayers.DockPanel = oDockPanel : oDockLayers.Show(oDockPanel, WeifenLuo.WinFormsUI.Docking.DockState.DockRight)
-        If oDockProperties.DockState = DockState.Unknown Then oDockProperties.DockPanel = oDockPanel : oDockProperties.Show(oDockPanel, WeifenLuo.WinFormsUI.Docking.DockState.DockRight)
-        If oDockConsole.DockState = DockState.Unknown Then oDockConsole.DockPanel = oDockPanel
-
-        If oDockClipart.DockState = DockState.Unknown Then oDockClipart.DockPanel = oDockPanel : oDockClipart.Show(oDockPanel, WeifenLuo.WinFormsUI.Docking.DockState.Float) : oDockClipart.Hide()
-        If oDockText.DockState = DockState.Unknown Then oDockText.DockPanel = oDockPanel : oDockText.Show(oDockPanel, WeifenLuo.WinFormsUI.Docking.DockState.Float) : oDockText.Hide()
-        If oDockJoinPoints.DockState = DockState.Unknown Then oDockJoinPoints.DockPanel = oDockPanel : oDockJoinPoints.Show(oDockPanel, WeifenLuo.WinFormsUI.Docking.DockState.Float) : oDockJoinPoints.Hide()
-
-        If oDockAV.DockState = DockState.Unknown Then oDockAV.DockPanel = oDockPanel : oDockAV.Show(oDockPanel, WeifenLuo.WinFormsUI.Docking.DockState.DockRight) : oDockAV.Hide()
-        If oDockIV.DockState = DockState.Unknown Then oDockIV.DockPanel = oDockPanel : oDockIV.Show(oDockPanel, WeifenLuo.WinFormsUI.Docking.DockState.DockRight) : oDockIV.Hide()
-
-        If oDockLS.DockState = DockState.Unknown Then oDockLS.DockPanel = oDockPanel : oDockLS.Show(oDockPanel, WeifenLuo.WinFormsUI.Docking.DockState.DockRight) : oDockLS.Hide()
+        Call pDockStateload()
+        Call pToolbarStateLoad()
+        Call pWorkspacesMenuAndToolbarUpdate()
 
         'Dim bDoNotHash As Boolean
         If oCommandLine.Count = 1 Then
@@ -2917,6 +2958,132 @@ Public Class frmMain
         Else
             Call pSurveyNew()
         End If
+    End Sub
+
+    Private Sub pToolbarStateLoad(Optional RestoreToDefault As Boolean = False)
+        Call SuspendLayout()
+        Call tsMain.SuspendLayout()
+        Call tsMain.TopToolStripPanel.SuspendLayout()
+        Call tsMain.LeftToolStripPanel.SuspendLayout()
+        Call tsMain.RightToolStripPanel.SuspendLayout()
+        Call tsMain.BottomToolStripPanel.SuspendLayout()
+        Call tsMain.ContentPanel.SuspendLayout()
+
+        Call tbMain.SuspendLayout()
+        Call tbView.SuspendLayout()
+        Call tbLayers.SuspendLayout()
+        Call tbDesign.SuspendLayout()
+        Call tbPens.SuspendLayout()
+        Call tbWorkspaces.SuspendLayout()
+
+        If RestoreToDefault Then
+            'reload default posizione for all toolbars
+
+            tbMain.Visible = True
+            tbView.Visible = True
+            tbLayers.Visible = True
+            tbDesign.Visible = True
+            tbPens.Visible = False
+            tbWorkspaces.Visible = True
+
+            Call modToolbars.LoadToolbarPosition(tsMain, tbMain, "1,3,0")
+            Call modToolbars.LoadToolbarPosition(tsMain, tbView, "1,3,26")
+            Call modToolbars.LoadToolbarPosition(tsMain, tbLayers, "1,3,50")
+            Call modToolbars.LoadToolbarPosition(tsMain, tbDesign, "1,3,75")
+            Call modToolbars.LoadToolbarPosition(tsMain, tbPens, "1,3,100")
+            Call modToolbars.LoadToolbarPosition(tsMain, tbWorkspaces, "1,590,0")
+        Else
+            'restore position from main reg key
+            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
+                tbMain.Visible = oReg.GetValue("user.viewmainbar", 1)
+                tbView.Visible = oReg.GetValue("user.viewviewbar", 1)
+                tbLayers.Visible = oReg.GetValue("user.viewlayerbar", 1)
+                tbDesign.Visible = oReg.GetValue("user.viewtoolsbar", 1)
+                tbPens.Visible = oReg.GetValue("user.viewpensbar", 0)
+                tbWorkspaces.Visible = oReg.GetValue("user.viewworkspacesbar", 0)
+
+                Call modToolbars.LoadToolbarPosition(tsMain, tbMain, oReg.GetValue("user.viewmainbar.position", ""))
+                Call modToolbars.LoadToolbarPosition(tsMain, tbView, oReg.GetValue("user.viewviewbar.position", ""))
+                Call modToolbars.LoadToolbarPosition(tsMain, tbLayers, oReg.GetValue("user.viewlayerbar.position", ""))
+                Call modToolbars.LoadToolbarPosition(tsMain, tbDesign, oReg.GetValue("user.viewtoolsbar.position", ""))
+                Call modToolbars.LoadToolbarPosition(tsMain, tbPens, oReg.GetValue("user.viewpensbar.position", ""))
+                Call modToolbars.LoadToolbarPosition(tsMain, tbWorkspaces, oReg.GetValue("user.viewworkspacesbar.position", ""))
+                Call oReg.Close()
+            End Using
+        End If
+
+        Call tbMain.ResumeLayout()
+        Call tbView.ResumeLayout()
+        Call tbLayers.ResumeLayout()
+        Call tbDesign.ResumeLayout()
+        Call tbPens.ResumeLayout()
+        Call tbWorkspaces.ResumeLayout()
+
+        Call tsMain.ResumeLayout()
+        Call tsMain.TopToolStripPanel.ResumeLayout()
+        Call tsMain.LeftToolStripPanel.ResumeLayout()
+        Call tsMain.RightToolStripPanel.ResumeLayout()
+        Call tsMain.BottomToolStripPanel.ResumeLayout()
+        Call tsMain.ContentPanel.ResumeLayout()
+        Call ResumeLayout()
+    End Sub
+
+    Private Sub pDockStateLoad(Optional RestoreToDefault As Boolean = False)
+        If RestoreToDefault Then
+            oDockData.DockState = DockState.Unknown
+            oDockDesigner.DockState = DockState.Unknown
+            oDockLayers.DockState = DockState.Unknown
+            oDockProperties.DockState = DockState.Unknown
+            oDockConsole.DockState = DockState.Unknown
+
+            oDockClipart.DockState = DockState.Unknown
+            oDockText.DockState = DockState.Unknown
+            oDockJoinPoints.DockState = DockState.Unknown
+
+            oDockAV.DockState = DockState.Unknown
+            oDockIV.DockState = DockState.Unknown
+
+            oDockLS.DockState = DockState.Unknown
+        Else
+            'dock restore...
+            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
+                Dim bDockState As Byte() = oReg.GetValue("user.dockstate", Nothing)
+                If Not IsNothing(bDockState) Then
+                    If bDockState.Length <> 0 Then
+                        Using oMS As MemoryStream = New MemoryStream(bDockState)
+                            oDockData.DockPanel = Nothing
+                            oDockDesigner.DockPanel = Nothing
+                            oDockLayers.DockPanel = Nothing
+                            oDockProperties.DockPanel = Nothing
+                            oDockConsole.DockPanel = Nothing
+                            oDockClipart.DockPanel = Nothing
+                            oDockText.DockPanel = Nothing
+                            oDockJoinPoints.DockPanel = Nothing
+                            oDockAV.DockPanel = Nothing
+                            oDockIV.DockPanel = Nothing
+                            oDockLS.DockPanel = Nothing
+                            oMS.Position = 0
+                            Call oDockPanel.LoadFromXml(oMS, New WeifenLuo.WinFormsUI.Docking.DeserializeDockContent(AddressOf GetContentFromPersistString))
+                        End Using
+                    End If
+                End If
+            End Using
+        End If
+
+        If oDockData.DockState = DockState.Unknown Then oDockData.DockPanel = oDockPanel : oDockData.Show(oDockPanel, WeifenLuo.WinFormsUI.Docking.DockState.Document)
+        If oDockDesigner.DockState = DockState.Unknown Then oDockDesigner.DockPanel = oDockPanel : oDockDesigner.Show(oDockPanel, WeifenLuo.WinFormsUI.Docking.DockState.Document)
+        If oDockLayers.DockState = DockState.Unknown Then oDockLayers.DockPanel = oDockPanel : oDockLayers.Show(oDockPanel, WeifenLuo.WinFormsUI.Docking.DockState.DockRight)
+        If oDockProperties.DockState = DockState.Unknown Then oDockProperties.DockPanel = oDockPanel : oDockProperties.Show(oDockPanel, WeifenLuo.WinFormsUI.Docking.DockState.DockRight)
+        If oDockConsole.DockState = DockState.Unknown Then oDockConsole.DockPanel = oDockPanel
+
+        If oDockClipart.DockState = DockState.Unknown Then oDockClipart.DockPanel = oDockPanel : oDockClipart.Show(oDockPanel, WeifenLuo.WinFormsUI.Docking.DockState.Float) : oDockClipart.Hide()
+        If oDockText.DockState = DockState.Unknown Then oDockText.DockPanel = oDockPanel : oDockText.Show(oDockPanel, WeifenLuo.WinFormsUI.Docking.DockState.Float) : oDockText.Hide()
+        If oDockJoinPoints.DockState = DockState.Unknown Then oDockJoinPoints.DockPanel = oDockPanel : oDockJoinPoints.Show(oDockPanel, WeifenLuo.WinFormsUI.Docking.DockState.Float) : oDockJoinPoints.Hide()
+
+        If oDockAV.DockState = DockState.Unknown Then oDockAV.DockPanel = oDockPanel : oDockAV.Show(oDockPanel, WeifenLuo.WinFormsUI.Docking.DockState.DockRight) : oDockAV.Hide()
+        If oDockIV.DockState = DockState.Unknown Then oDockIV.DockPanel = oDockPanel : oDockIV.Show(oDockPanel, WeifenLuo.WinFormsUI.Docking.DockState.DockRight) : oDockIV.Hide()
+
+        If oDockLS.DockState = DockState.Unknown Then oDockLS.DockPanel = oDockPanel : oDockLS.Show(oDockPanel, WeifenLuo.WinFormsUI.Docking.DockState.DockRight) : oDockLS.Hide()
     End Sub
 
     Private Sub pJumplistCreate()
@@ -3030,20 +3197,20 @@ Public Class frmMain
 
             modMain.iMaxDrawItemCount = oReg.GetValue("design.maxdrawitemcount", 20)
 
-            tbMain.Visible = oReg.GetValue("user.viewmainbar", 1)
-            tbView.Visible = oReg.GetValue("user.viewviewbar", 1)
-            tbLayers.Visible = oReg.GetValue("user.viewlayerbar", 1)
-            tbDesign.Visible = oReg.GetValue("user.viewtoolsbar", 1)
-            tbPens.Visible = oReg.GetValue("user.viewpensbar", 0)
-            oDockConsole.Visible = oReg.GetValue("user.viewlogbar", 0)
-            tbWorkspaces.Visible = oReg.GetValue("user.viewworkspacesbar", 0)
+            'tbMain.Visible = oReg.GetValue("user.viewmainbar", 1)
+            'tbView.Visible = oReg.GetValue("user.viewviewbar", 1)
+            'tbLayers.Visible = oReg.GetValue("user.viewlayerbar", 1)
+            'tbDesign.Visible = oReg.GetValue("user.viewtoolsbar", 1)
+            'tbPens.Visible = oReg.GetValue("user.viewpensbar", 0)
+            'oDockConsole.Visible = oReg.GetValue("user.viewlogbar", 0)
+            'tbWorkspaces.Visible = oReg.GetValue("user.viewworkspacesbar", 0)
 
-            Call modToolbars.LoadToolbarPosition(tsMain, tbMain, oReg.GetValue("user.viewmainbar.position", ""))
-            Call modToolbars.LoadToolbarPosition(tsMain, tbView, oReg.GetValue("user.viewviewbar.position", ""))
-            Call modToolbars.LoadToolbarPosition(tsMain, tbLayers, oReg.GetValue("user.viewlayerbar.position", ""))
-            Call modToolbars.LoadToolbarPosition(tsMain, tbDesign, oReg.GetValue("user.viewtoolsbar.position", ""))
-            Call modToolbars.LoadToolbarPosition(tsMain, tbPens, oReg.GetValue("user.viewpensbar.position", ""))
-            Call modToolbars.LoadToolbarPosition(tsMain, tbWorkspaces, oReg.GetValue("user.viewworkspacesbar.position", ""))
+            'Call modToolbars.LoadToolbarPosition(tsMain, tbMain, oReg.GetValue("user.viewmainbar.position", ""))
+            'Call modToolbars.LoadToolbarPosition(tsMain, tbView, oReg.GetValue("user.viewviewbar.position", ""))
+            'Call modToolbars.LoadToolbarPosition(tsMain, tbLayers, oReg.GetValue("user.viewlayerbar.position", ""))
+            'Call modToolbars.LoadToolbarPosition(tsMain, tbDesign, oReg.GetValue("user.viewtoolsbar.position", ""))
+            'Call modToolbars.LoadToolbarPosition(tsMain, tbPens, oReg.GetValue("user.viewpensbar.position", ""))
+            'Call modToolbars.LoadToolbarPosition(tsMain, tbWorkspaces, oReg.GetValue("user.viewworkspacesbar.position", ""))
 
             bShowPenBar = oReg.GetValue("user.viewpenbar", 0)
             bEditPointByPoint = oReg.GetValue("user.editpointtopoint", 0)
@@ -3146,7 +3313,7 @@ Public Class frmMain
             bLinkedSurveysShowInCaveInfo = oReg.GetValue("linkedsurveys.showincaveinfo", "0")
             bLinkedSurveysRecursiveLoad = oReg.GetValue("linkedsurveys.recursiveload", "0")
 
-            'questa parte è un bugfix che prima o poi dovrà essere rimosso...
+            'bugfix...to be removed in future...
             Dim sCurrentVersion As String = "" & oReg.GetValue("currentversion", "")
             If sCurrentVersion <> "1.04" Then
                 Dim iLineType As Items.cIItemLine.LineTypeEnum = oReg.GetValue("design.linetype", Items.cIItemLine.LineTypeEnum.Lines)
@@ -3168,7 +3335,7 @@ Public Class frmMain
 
             bCheckNewVersion = oReg.GetValue("debug.checknewversion", 0)
 
-            bDockState = oReg.GetValue("user.dockstate", Nothing)
+            'bDockState = oReg.GetValue("user.dockstate", Nothing)
 
             Call oReg.Close()
         End Using
@@ -3176,8 +3343,6 @@ Public Class frmMain
         Call tsMain.ResumeLayout(True)
         Call ResumeLayout()
     End Sub
-
-    Private bDockState As Byte()
 
     Private Function GetContentFromPersistString(persistString As String) As WeifenLuo.WinFormsUI.Docking.IDockContent
         Debug.Print(persistString)
@@ -3318,85 +3483,80 @@ Public Class frmMain
 
     Private Sub pSettingsSave()
         Try
-            Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
+            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
 
-            Dim iFieldDataViewMode As Integer
-            If btnSegments.Checked Then
-                iFieldDataViewMode = 0
-            ElseIf btnTrigPoints.Checked Then
-                iFieldDataViewMode = 1
-            ElseIf btnSegmentsAndTrigPoints.Checked Then
-                iFieldDataViewMode = 2
-            End If
-
-            Call oReg.SetValue("user.fielddataviewmode", iFieldDataViewMode)
-
-            'Call oReg.SetValue("user.viewfielddata", IIf(bShowFieldData, 1, 0))
-            'Call oReg.SetValue("user.viewdesignarea", IIf(bShowDesignArea, 1, 0))
-            'Call oReg.SetValue("user.viewobjectprop", IIf(bShowObjectProp, 1, 0))
-
-            Call oReg.SetValue("user.segmentsandtrigpointssplitter", spSegmentsAndTrigpoints.SplitterDistance)
-            'Call oReg.SetValue("user.maindetailssplitter", spMainDetails.SplitterDistance)
-            If bAllowResizablePanels Then
-                'Call oReg.SetValue("user.maindesignersplitter", spMainDesigner.SplitterDistance)
-                Call oReg.SetValue("user.segmentssplitter", spSegments.SplitterDistance)
-                Call oReg.SetValue("user.trigpointssplitter", spTrigPoints.SplitterDistance)
-            End If
-
-            Call oReg.SetValue("design.quality", Integer.Parse(iDesignQuality))
-            Call oReg.SetValue("design.rulers", IIf(bDrawRulers, 1, 0))
-            Call oReg.SetValue("design.metricgrid", iDrawMetricGrid)
-            'Call oReg.SetValue("design.multithreading", IIf(bDrawMultithreading, 1, 0))
-
-            Dim oLayersVisibleColumns As List(Of String) = New List(Of String)
-            For Each oColumn As OLVColumn In tvLayers2.AllColumns
-                If oColumn.IsVisible Then
-                    Call oLayersVisibleColumns.Add(oColumn.Tag.ToLower.Replace("collayers", ""))
+                Dim iFieldDataViewMode As Integer
+                If btnSegments.Checked Then
+                    iFieldDataViewMode = 0
+                ElseIf btnTrigPoints.Checked Then
+                    iFieldDataViewMode = 1
+                ElseIf btnSegmentsAndTrigPoints.Checked Then
+                    iFieldDataViewMode = 2
                 End If
-            Next
-            Dim sLayersVisibleColumns As String = String.Join(",", oLayersVisibleColumns)
-            If sLayersVisibleColumns <> "cavebranchcolor,type,hiddenindesign,name" Then
-                Call oReg.SetValue("layers.visiblecolumns", sLayersVisibleColumns)
-            End If
-            If colLayersType.IsVisible Then Call oReg.SetValue("layers.columns.type.width", colLayersType.Width)
-            If colLayersName.IsVisible Then Call oReg.SetValue("layers.columns.name.width", colLayersName.Width)
-            If colLayersCave.IsVisible Then Call oReg.SetValue("layers.columns.cave.width", colLayersCave.Width)
-            If colLayersBranch.IsVisible Then Call oReg.SetValue("layers.columns.branch.width", colLayersBranch.Width)
 
-            Call oReg.SetValue("user.viewmainbar", IIf(tbMain.Visible, 1, 0))
-            Call oReg.SetValue("user.viewviewbar", IIf(tbView.Visible, 1, 0))
-            Call oReg.SetValue("user.viewlayerbar", IIf(tbLayers.Visible, 1, 0))
-            Call oReg.SetValue("user.viewtoolsbar", IIf(tbDesign.Visible, 1, 0))
-            Call oReg.SetValue("user.viewpensbar", IIf(tbPens.Visible, 1, 0))
-            Call oReg.SetValue("user.viewlogbar", IIf(oDockConsole.Visible, 1, 0))
-            Call oReg.SetValue("user.viewworkspacesbar", IIf(tbWorkspaces.Visible, 1, 0))
+                Call oReg.SetValue("user.fielddataviewmode", iFieldDataViewMode)
 
-            Call oReg.SetValue("user.viewmainbar.position", modToolbars.SaveToolbarPosition(tbMain))
-            Call oReg.SetValue("user.viewviewbar.position", modToolbars.SaveToolbarPosition(tbView))
-            Call oReg.SetValue("user.viewlayerbar.position", modToolbars.SaveToolbarPosition(tbLayers))
-            Call oReg.SetValue("user.viewtoolsbar.position", modToolbars.SaveToolbarPosition(tbDesign))
-            Call oReg.SetValue("user.viewpensbar.position", modToolbars.SaveToolbarPosition(tbPens))
-            Call oReg.SetValue("user.viewworkspacesbar.position", modToolbars.SaveToolbarPosition(tbWorkspaces))
+                'Call oReg.SetValue("user.viewfielddata", IIf(bShowFieldData, 1, 0))
+                'Call oReg.SetValue("user.viewdesignarea", IIf(bShowDesignArea, 1, 0))
+                'Call oReg.SetValue("user.viewobjectprop", IIf(bShowObjectProp, 1, 0))
 
-            Call oReg.SetValue("user.viewpenbar", IIf(bShowPenBar, 1, 0))
+                Call oReg.SetValue("user.segmentsandtrigpointssplitter", spSegmentsAndTrigpoints.SplitterDistance)
+                'Call oReg.SetValue("user.maindetailssplitter", spMainDetails.SplitterDistance)
+                If bAllowResizablePanels Then
+                    'Call oReg.SetValue("user.maindesignersplitter", spMainDesigner.SplitterDistance)
+                    Call oReg.SetValue("user.segmentssplitter", spSegments.SplitterDistance)
+                    Call oReg.SetValue("user.trigpointssplitter", spTrigPoints.SplitterDistance)
+                End If
 
-            Call oReg.SetValue("pens.smooth", modNumbers.NumberToString(sPointPrecision))
-            'Call oReg.SetValue("user.verticallayout", IIf(spMainDetails.Orientation = Orientation.Vertical, 1, 0))
+                Call oReg.SetValue("design.quality", Integer.Parse(iDesignQuality))
+                Call oReg.SetValue("design.rulers", IIf(bDrawRulers, 1, 0))
+                Call oReg.SetValue("design.metricgrid", iDrawMetricGrid)
+                'Call oReg.SetValue("design.multithreading", IIf(bDrawMultithreading, 1, 0))
 
-            'Call oReg.SetValue("user.gallerypopupposition", modWindow.WindowSettingsToString(frmCP))
-            'Call oReg.SetValue("user.textpopupposition", modWindow.WindowSettingsToString(frmTP))
+                Dim oLayersVisibleColumns As List(Of String) = New List(Of String)
+                For Each oColumn As OLVColumn In tvLayers2.AllColumns
+                    If oColumn.IsVisible Then
+                        Call oLayersVisibleColumns.Add(oColumn.Tag.ToLower.Replace("collayers", ""))
+                    End If
+                Next
+                Dim sLayersVisibleColumns As String = String.Join(",", oLayersVisibleColumns)
+                If sLayersVisibleColumns <> "cavebranchcolor,type,hiddenindesign,name" Then
+                    Call oReg.SetValue("layers.visiblecolumns", sLayersVisibleColumns)
+                End If
+                If colLayersType.IsVisible Then Call oReg.SetValue("layers.columns.type.width", colLayersType.Width)
+                If colLayersName.IsVisible Then Call oReg.SetValue("layers.columns.name.width", colLayersName.Width)
+                If colLayersCave.IsVisible Then Call oReg.SetValue("layers.columns.cave.width", colLayersCave.Width)
+                If colLayersBranch.IsVisible Then Call oReg.SetValue("layers.columns.branch.width", colLayersBranch.Width)
 
-            'Call oReg.SetValue("user.pointsjoinpopupposition", modWindow.WindowSettingsToString(frmJ))
+                'Call oReg.SetValue("user.viewmainbar", IIf(tbMain.Visible, 1, 0))
+                'Call oReg.SetValue("user.viewviewbar", IIf(tbView.Visible, 1, 0))
+                'Call oReg.SetValue("user.viewlayerbar", IIf(tbLayers.Visible, 1, 0))
+                'Call oReg.SetValue("user.viewtoolsbar", IIf(tbDesign.Visible, 1, 0))
+                'Call oReg.SetValue("user.viewpensbar", IIf(tbPens.Visible, 1, 0))
+                'Call oReg.SetValue("user.viewlogbar", IIf(oDockConsole.Visible, 1, 0))
+                'Call oReg.SetValue("user.viewworkspacesbar", IIf(tbWorkspaces.Visible, 1, 0))
+                'Call oReg.SetValue("user.viewpenbar", If(bShowPenBar, 1, 0))
 
-            Call oReg.SetValue("user.editpointtopoint", IIf(bEditPointByPoint, 1, 0))
+                'Call oReg.SetValue("user.viewmainbar.position", modToolbars.SaveToolbarPosition(tbMain))
+                'Call oReg.SetValue("user.viewviewbar.position", modToolbars.SaveToolbarPosition(tbView))
+                'Call oReg.SetValue("user.viewlayerbar.position", modToolbars.SaveToolbarPosition(tbLayers))
+                'Call oReg.SetValue("user.viewtoolsbar.position", modToolbars.SaveToolbarPosition(tbDesign))
+                'Call oReg.SetValue("user.viewpensbar.position", modToolbars.SaveToolbarPosition(tbPens))
+                'Call oReg.SetValue("user.viewworkspacesbar.position", modToolbars.SaveToolbarPosition(tbWorkspaces))
 
-            Using oMS As MemoryStream = New MemoryStream
-                Call oDockPanel.SaveAsXml(oMS, System.Text.Encoding.UTF8)
-                Call oReg.SetValue("user.dockstate", oMS.ToArray, Microsoft.Win32.RegistryValueKind.Binary)
+                'Using oMS As MemoryStream = New MemoryStream
+                '    Call oDockPanel.SaveAsXml(oMS, System.Text.Encoding.UTF8)
+                '    Call oReg.SetValue("user.dockstate", oMS.ToArray, Microsoft.Win32.RegistryValueKind.Binary)
+                'End Using
+
+                Call oReg.SetValue("pens.smooth", modNumbers.NumberToString(sPointPrecision))
+                Call oReg.SetValue("user.editpointtopoint", IIf(bEditPointByPoint, 1, 0))
+
+                Call oReg.Close()
             End Using
 
-            Call oReg.Close()
-            Call oReg.Dispose()
+            Call pToolbarStateSave()
+            Call pDockStateSave()
         Catch
         End Try
     End Sub
@@ -7812,6 +7972,8 @@ Public Class frmMain
             cboMainBindDesignType.Visible = False
             cboPropBindDesignType.Visible = False
 
+            Call pSurveyHighlightCurrentCave(True)
+
             Call pSurveyMainPropertiesPanelsRefresh()
 
             Call pObjectPropertyLoad()
@@ -7951,6 +8113,7 @@ Public Class frmMain
             cboMainBindDesignType.Visible = True
             cboPropBindDesignType.Visible = True
             Call pSurveyLayersFilterApply(False)
+            Call pSurveyHighlightCurrentCave(True)
 
             Call pSurveyMainPropertiesPanelsRefresh()
 
@@ -8091,6 +8254,7 @@ Public Class frmMain
             cboMainBindDesignType.Visible = True
             cboPropBindDesignType.Visible = True
             Call pSurveyLayersFilterApply(False)
+            Call pSurveyHighlightCurrentCave(True)
 
             Call pSurveyMainPropertiesPanelsRefresh()
 
@@ -8553,7 +8717,7 @@ Public Class frmMain
         spSegmentsAndTrigpoints.Panel2Collapsed = Not Visible
         btnSegmentAndTrigpointGridColor.Visible = False
         btnSegmentAndTrigpointGridColorSep.Visible = False
-        Call grdTrigPoints.Focus()
+        Call lvTrigPoints.Focus()
     End Sub
 
     Private Sub pSegmentsShow(ByVal Visible As Boolean)
@@ -12261,11 +12425,8 @@ Public Class frmMain
         Dim oTrigPoint As cTrigPoint = pGetCurrentTools.CurrentTrigpoint
         Using frmRTP As frmRenameTrigpoints = New frmRenameTrigpoints(oSurvey)
             With frmRTP
-                Dim iColumn As Integer = grdTrigPoints.CurrentCellAddress.X
-                If iColumn = 0 Then
-                    .cboOld.Text = grdTrigPoints.CurrentCell.Value
-                ElseIf iColumn = 1 Then
-                    .cboOld.Text = grdTrigPoints.CurrentCell.Value
+                If Not lvTrigPoints.FocusedObject Is Nothing Then
+                    .cboOld.Text = DirectCast(lvTrigPoints.FocusedObject, cTrigPoint).Name
                 End If
                 If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                     Dim oCurrentSegment As cSegment = oTools.CurrentSegment
@@ -13073,8 +13234,9 @@ Public Class frmMain
                     bShow = True
             End Select
             If bShow Then
-                lblPopupWarning.Text = Text
-                Call tipDefault.SetToolTip(lblPopupWarning, Text & IIf(Details <> "", vbCrLf & Details, ""))
+                Dim sText As String = If(Text.Length > 2048, Text.Substring(0, 2048), Text)
+                lblPopupWarning.Text = sText
+                Call tipDefault.SetToolTip(lblPopupWarning, sText & IIf(Details <> "", vbCrLf & Details, ""))
 
                 .Parent = tsMain.ContentPanel
                 .Dock = DockStyle.Top
@@ -14068,7 +14230,8 @@ Public Class frmMain
     Private Function pSurveyFindTrigPoint(ByVal TrigPoint As String) As Boolean
         TrigPoint = TrigPoint.ToUpper
         Call btnTrigPoints_Click(Nothing, Nothing)
-        If oTrigpointRowIndex.ContainsKey(TrigPoint) Then
+        'if oTrigpointRowIndex.ContainsKey(TrigPoint) Then
+        If oSurvey.TrigPoints.Contains(TrigPoint) Then
             Dim oTrigpoint As cTrigPoint = oSurvey.TrigPoints(TrigPoint)
             Call oTools.SelectTrigpoint(oTrigpoint)
             Return True
@@ -14268,7 +14431,7 @@ Public Class frmMain
             mnuEditSelectAll.Visible = True
             mnuEditSelectAllInDesign.Visible = False
             mnuEditSelectAllInCurrentLevelInDesign.Visible = False
-        ElseIf grdTrigPoints.Focused Then
+        ElseIf lvTrigPoints.Focused Then
             mnuEditSelectAllSep.Visible = False
             mnuEditSelectAll.Visible = False
             mnuEditSelectAllInDesign.Visible = False
@@ -14596,15 +14759,21 @@ Public Class frmMain
 
     Private Sub pTrigpointsTrigpointPrefix()
         Dim oSelectedTrigpoints As List(Of String) = New List(Of String)
-        If grdTrigPoints.Focused Then
+        If lvTrigPoints.Focused Then
             Dim sTrigpoint As String
-            For Each oCell As DataGridViewCell In grdTrigPoints.SelectedCells
-                Dim oRow As DataGridViewRow = grdTrigPoints.Rows(oCell.RowIndex)
-                sTrigpoint = oRow.Cells(0).Value
+            For Each oTrigpoint As cTrigPoint In lvTrigPoints.SelectedObjects
+                sTrigpoint = oTrigpoint.Name
                 If Not oSelectedTrigpoints.Contains(sTrigpoint) Then
                     Call oSelectedTrigpoints.Add(sTrigpoint)
                 End If
             Next
+            'For Each oCell As DataGridViewCell In grdTrigPoints.SelectedCells
+            '    Dim oRow As DataGridViewRow = grdTrigPoints.Rows(oCell.RowIndex)
+            '    sTrigpoint = oRow.Cells(0).Value
+            '    If Not oSelectedTrigpoints.Contains(sTrigpoint) Then
+            '        Call oSelectedTrigpoints.Add(sTrigpoint)
+            '    End If
+            'Next
         ElseIf grdSegments.Focused Then
             Dim sTrigpoint As String
             For Each oSegment As cSegment In pSegmentsFromGridSelection()
@@ -14964,7 +15133,7 @@ Public Class frmMain
         If Where = -1 Then
             If grdSegments.Focused Then
                 frmF.cboFindWhere.SelectedIndex = 0
-            ElseIf grdTrigPoints.Focused Then
+            ElseIf lvTrigPoints.Focused Then
                 frmF.cboFindWhere.SelectedIndex = 1
             Else
                 frmF.cboFindWhere.SelectedIndex = 0
@@ -15008,71 +15177,111 @@ Public Class frmMain
         Dim bFound As Boolean = False
         Dim bFromBegin As Boolean = False
 
-        Dim grd As cGrid
         Select Case Where
             Case frmFind.FindWhereEnum.Segments
-                grd = grdSegments
                 Call pSegmentsShow(True)
+                Dim oCurrentCell As Point = grdSegments.CurrentCellAddress
+                Dim iRow As Integer = oCurrentCell.Y
+                Dim iColumn As Integer = oCurrentCell.X
+                Dim iColumns As Integer = grdSegments.Columns.Count
+                Dim iRows As Integer = grdSegments.Rows.Count
+                Do
+                    Do While iRow < iRows - 1
+                        Call pStatusSet(String.Format(modMain.GetLocalizedString("main.textpart92"), iRow))
+                        Do While iColumn < iColumns - 1
+                            If GetAsyncKeyState(Keys.Escape) Then Cancel = True
+                            iColumn += 1
+                            Dim oValue As Object = grdSegments.Rows(iRow).Cells(iColumn).Value
+                            Dim sValue As String
+                            Try
+                                sValue = oValue.ToString
+                            Catch ex As Exception
+                                sValue = ""
+                            End Try
+                            If UseJollyChar Then
+                                bFound = (sValue.ToLower Like Text)
+                            Else
+                                If WholeWord Then
+                                    bFound = (sValue.ToLower = Text)
+                                Else
+                                    bFound = (sValue.ToLower Like "*" & Text & "*")
+                                End If
+                            End If
+                            If bFound Or Cancel Then Exit Do
+                        Loop
+                        If bFound Or Cancel Then Exit Do
+                        iRow += 1
+                        iColumn = -1
+                    Loop
+                    If Not Cancel Then
+                        If bFound Then
+                            grdSegments.CurrentCell = grdSegments.Rows(iRow).Cells(iColumn)
+                            Call grdSegments.Focus()
+                            Exit Do
+                        Else
+                            If bFromBegin Then
+                                Exit Do
+                            Else
+                                If MsgBox(GetLocalizedString("main.warning7"), MsgBoxStyle.YesNo Or MsgBoxStyle.Question, GetLocalizedString("main.warningtitle")) = MsgBoxResult.Yes Then
+                                    iRow = 0
+                                    bFromBegin = True
+                                Else
+                                    Exit Do
+                                End If
+                            End If
+                        End If
+                    Else
+                        Exit Do
+                    End If
+                Loop
             Case frmFind.FindWhereEnum.TrigPoints
-                grd = grdTrigPoints
                 Call pTrigpointsShow(True)
+
+                Dim iRow As Integer = lvTrigPoints.SelectedIndex + 1
+                Dim iRows As Integer = lvTrigPoints.Items.Count
+                Do
+                    Do While iRow < iRows - 1
+                        Call pStatusSet(String.Format(modMain.GetLocalizedString("main.textpart92"), iRow))
+                        For Each oColumn As OLVColumn In lvTrigPoints.Columns
+                            If GetAsyncKeyState(Keys.Escape) Then Cancel = True
+                            Dim sValue As String = lvTrigPoints.GetItem(iRow).SubItems(oColumn.Index).Text
+                            If UseJollyChar Then
+                                bFound = (sValue.ToLower Like Text)
+                            Else
+                                If WholeWord Then
+                                    bFound = (sValue.ToLower = Text)
+                                Else
+                                    bFound = (sValue.ToLower Like "*" & Text & "*")
+                                End If
+                            End If
+                            If bFound Or Cancel Then Exit For
+                        Next
+                        If bFound Or Cancel Then Exit Do
+                        iRow += 1
+                    Loop
+                    If Not Cancel Then
+                        If bFound Then
+                            lvTrigPoints.SelectedObject = lvTrigPoints.GetItem(iRow).RowObject
+                            Call grdSegments.Focus()
+                            Exit Do
+                        Else
+                            If bFromBegin Then
+                                Exit Do
+                            Else
+                                If MsgBox(GetLocalizedString("main.warning7"), MsgBoxStyle.YesNo Or MsgBoxStyle.Question, GetLocalizedString("main.warningtitle")) = MsgBoxResult.Yes Then
+                                    iRow = 0
+                                    bFromBegin = True
+                                Else
+                                    Exit Do
+                                End If
+                            End If
+                        End If
+                    Else
+                        Exit Do
+                    End If
+                Loop
         End Select
 
-        Dim oCurrentCell As Point = grd.CurrentCellAddress
-        Dim iRow As Integer = oCurrentCell.Y
-        Dim iColumn As Integer = oCurrentCell.X
-        Dim iColumns As Integer = grd.Columns.Count
-        Dim iRows As Integer = grd.Rows.Count
-        Do
-            Do While iRow < iRows - 1
-                Call pStatusSet(String.Format(modMain.GetLocalizedString("main.textpart92"), iRow))
-                Do While iColumn < iColumns - 1
-                    'If Windows.Input.Keyboard.IsKeyDown(Keys.Escape) Then Exit Do
-                    If GetAsyncKeyState(Keys.Escape) Then Cancel = True
-                    iColumn += 1
-                    Dim oValue As Object = grd.Rows(iRow).Cells(iColumn).Value
-                    Dim sValue As String
-                    Try
-                        sValue = oValue.ToString
-                    Catch ex As Exception
-                        sValue = ""
-                    End Try
-                    If UseJollyChar Then
-                        bFound = (sValue.ToLower Like Text)
-                    Else
-                        If WholeWord Then
-                            bFound = (sValue.ToLower = Text)
-                        Else
-                            bFound = (sValue.ToLower Like "*" & Text & "*")
-                        End If
-                    End If
-                    If bFound Or Cancel Then Exit Do
-                Loop
-                If bFound Or Cancel Then Exit Do
-                iRow += 1
-                iColumn = -1
-            Loop
-            If Not Cancel Then
-                If bFound Then
-                    grd.CurrentCell = grd.Rows(iRow).Cells(iColumn)
-                    Call grd.Focus()
-                    Exit Do
-                Else
-                    If bFromBegin Then
-                        Exit Do
-                    Else
-                        If MsgBox(GetLocalizedString("main.warning7"), MsgBoxStyle.YesNo Or MsgBoxStyle.Question, GetLocalizedString("main.warningtitle")) = MsgBoxResult.Yes Then
-                            iRow = 0
-                            bFromBegin = True
-                        Else
-                            Exit Do
-                        End If
-                    End If
-                End If
-            Else
-                Exit Do
-            End If
-        Loop
         Call oMousePointer.Push(Cursors.Default)
     End Sub
 
@@ -15247,7 +15456,7 @@ Public Class frmMain
                 mnuDesignItemPaste.Enabled = bEnabled
                 mnuDesignItemPasteSpecial.Enabled = bEnabled
                 frmMFT.btnPenPaste.Enabled = False
-            ElseIf oActiveControl Is grdTrigPoints Then
+            ElseIf oActiveControl Is lvTrigPoints Then
                 mnuEditCut.Enabled = False
                 mnuEditCopy.Enabled = False
                 mnuEditPaste.Enabled = False
@@ -18142,7 +18351,7 @@ Public Class frmMain
 
         Call SuspendLayout()
         Call modMain.SetGridDefaultValueForColumnImage(grdSegments)
-        Call modMain.SetGridDefaultValueForColumnImage(grdTrigPoints)
+        'Call modMain.SetGridDefaultValueForColumnImage(grdTrigPoints)
 
         '-----------------------------------------------------------------------------------------------
         oDockPanel = New WeifenLuo.WinFormsUI.Docking.DockPanel
@@ -18234,7 +18443,6 @@ Public Class frmMain
         oDockLS.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockTop Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom Or WeifenLuo.WinFormsUI.Docking.DockAreas.Float
         oDockLS.HideOnClose = True
         oDockLS.DockPanel = oDockPanel
-
         '-----------------------------------------------------------------------------------------------
         trkZoom.Parent = Me
         trkZoom.BringToFront()
@@ -18257,6 +18465,7 @@ Public Class frmMain
         'layer's tree setup...
         Call pSurveySetupTreeLayers()
         Call pSurveySetupSegmentAttachments()
+        Call pSurveySetupTrigpoints()
 
         'delegates for wms download
         Call modWMSManager.WMSSetDelegate(AddressOf pWMSChangeState, AddressOf pWMSDownloadAsyncProgress, AddressOf pWMSDownloadAsyncCompleted, AddressOf pWMSLog)
@@ -18791,40 +19000,40 @@ Public Class frmMain
         Call pTrigPointSave(oTools.CurrentTrigpoint)
     End Sub
 
-    Private Sub grdTrigPoints_RowValidated(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles grdTrigPoints.RowValidated
-        If Not oSurvey Is Nothing Then
-            Try
-                Dim sTrigPoint As String = grdTrigPoints.Rows(e.RowIndex).Cells(0).Value
-                If oSurvey.TrigPoints.Contains(sTrigPoint) Then
-                    Dim oTrigpoint As cTrigPoint = oSurvey.TrigPoints(sTrigPoint)
-                    If oTrigpoint.Changed Then
-                        Call pTrigPointSave(oTrigpoint)
-                        Call pTrigpointLoad(oTrigpoint)
-                    End If
-                End If
-            Catch
-            End Try
-        End If
-    End Sub
+    'Private Sub grdTrigPoints_RowValidated(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles grdTrigPoints.RowValidated
+    '    If Not oSurvey Is Nothing Then
+    '        Try
+    '            Dim sTrigPoint As String = grdTrigPoints.Rows(e.RowIndex).Cells(0).Value
+    '            If oSurvey.TrigPoints.Contains(sTrigPoint) Then
+    '                Dim oTrigpoint As cTrigPoint = oSurvey.TrigPoints(sTrigPoint)
+    '                If oTrigpoint.Changed Then
+    '                    Call pTrigPointSave(oTrigpoint)
+    '                    Call pTrigpointLoad(oTrigpoint)
+    '                End If
+    '            End If
+    '        Catch
+    '        End Try
+    '    End If
+    'End Sub
 
-    Private Sub grdTrigPoints_SelectionChanged(sender As Object, e As System.EventArgs) Handles grdTrigPoints.SelectionChanged
-        Try
-            If Not bDisableTrigpointsChangeEvent Then
-                bDisableTrigpointsChangeEvent = True
-                Dim iRowIndex As Integer = grdTrigPoints.SelectedCells(0).RowIndex
-                Dim sTrigPoint As String = grdTrigPoints.Rows(iRowIndex).Cells(0).Value
-                If oSurvey.TrigPoints.Contains(sTrigPoint) Then
-                    Dim oTrigpoint As cTrigPoint = oSurvey.TrigPoints(sTrigPoint)
-                    Call oTools.SelectTrigpoint(oTrigpoint)
-                Else
-                    Call oTools.SelectTrigpoint(Nothing)
-                End If
-                Call pTrigpointsRefresh()
-                bDisableTrigpointsChangeEvent = False
-            End If
-        Catch
-        End Try
-    End Sub
+    'Private Sub grdTrigPoints_SelectionChanged(sender As Object, e As System.EventArgs) Handles grdTrigPoints.SelectionChanged
+    '    Try
+    '        If Not bDisableTrigpointsChangeEvent Then
+    '            bDisableTrigpointsChangeEvent = True
+    '            Dim iRowIndex As Integer = grdTrigPoints.SelectedCells(0).RowIndex
+    '            Dim sTrigPoint As String = grdTrigPoints.Rows(iRowIndex).Cells(0).Value
+    '            If oSurvey.TrigPoints.Contains(sTrigPoint) Then
+    '                Dim oTrigpoint As cTrigPoint = oSurvey.TrigPoints(sTrigPoint)
+    '                Call oTools.SelectTrigpoint(oTrigpoint)
+    '            Else
+    '                Call oTools.SelectTrigpoint(Nothing)
+    '            End If
+    '            Call pTrigpointsRefresh()
+    '            bDisableTrigpointsChangeEvent = False
+    '        End If
+    '    Catch
+    '    End Try
+    'End Sub
 
     Private Sub btnPopupClose_Click(sender As System.Object, e As System.EventArgs) Handles btnPopupClose.Click
         Call pPopupHide()
@@ -21161,9 +21370,9 @@ Public Class frmMain
         Call SetGridDefaultValueForColumnImage(grdSegments, e.Row)
     End Sub
 
-    Private Sub grdtrigpoints_DefaultValuesNeeded(sender As Object, e As DataGridViewRowEventArgs) Handles grdTrigPoints.DefaultValuesNeeded
-        Call SetGridDefaultValueForColumnImage(grdTrigPoints, e.Row)
-    End Sub
+    'Private Sub grdtrigpoints_DefaultValuesNeeded(sender As Object, e As DataGridViewRowEventArgs) Handles grdTrigPoints.DefaultValuesNeeded
+    '    Call SetGridDefaultValueForColumnImage(grdTrigPoints, e.Row)
+    'End Sub
 
     Private Sub mnuViewWorkspacesAll_Click(sender As Object, e As EventArgs) Handles mnuViewWorkspacesAll.Click
         Call pWorkspaceAll()
@@ -22441,7 +22650,7 @@ Public Class frmMain
 
     Private Sub btnDesignHighlightSegmentsAndTrigpoints_Click(sender As Object, e As EventArgs) Handles btnDesignHighlightSegmentsAndTrigpoints.Click
         oCurrentOptions.HighlightSegmentsAndTrigpoints = Not oCurrentOptions.HighlightSegmentsAndTrigpoints
-        Call pSurveyHighlightCurrentCave(False)
+        Call pSurveyHighlightCurrentCave(oCurrentOptions.HighlightCurrentCave)
     End Sub
 
     Private Sub btnDesignRings_Click(sender As Object, e As EventArgs) Handles btnDesignRings.Click
@@ -22490,7 +22699,7 @@ Public Class frmMain
     End Sub
 
     Private Sub mnuTrigPointsExport_Click(sender As Object, e As EventArgs) Handles mnuTrigPointsExport.Click
-        Call modExport.GridExportTo(oSurvey, grdTrigPoints, btnTrigPoints.Text, "", Me)
+        Call modExport.ListviewExportTo(oSurvey, lvTrigPoints, btnTrigPoints.Text, "", Me)
     End Sub
 
     Private Sub txtPropCrossSectionMarkerPosition_ValueChanged(sender As Object, e As EventArgs) Handles txtPropCrossSectionMarkerPosition.ValueChanged
@@ -24155,7 +24364,7 @@ Public Class frmMain
     Private Function pGetCurrentDesignTools() As Helper.Editor.cEditDesignTools
         If oCurrentDesign Is oSurvey.Plan Then
             Return oPlanTools
-        ElseIf oCurrentDesign Is oSurvey.profile Then
+        ElseIf oCurrentDesign Is oSurvey.Profile Then
             Return oProfileTools
         Else
             Return o3DTools
@@ -24432,7 +24641,7 @@ Public Class frmMain
         End Select
     End Sub
 
-    Private Sub oSurvey_onLinkedSurveysAdd(Sender As cSurvey.cSurvey, Args As cSurvey.cSurvey.onLinkedSurveysAddEventargs) Handles oSurvey.onLinkedSurveysAdd
+    Private Sub oSurvey_onLinkedSurveysAdd(Sender As cSurvey.cSurvey, Args As cSurvey.cSurvey.OnLinkedSurveysAddEventargs) Handles oSurvey.OnLinkedSurveysAdd
         If bLinkedSurveysSelectOnAdd Then
             Call Args.NewItem.SetSelected("loch", True)
             Call Args.NewItem.SetSelected("design.plan", True)
@@ -24491,32 +24700,195 @@ Public Class frmMain
         End If
     End Sub
 
-    'Private Sub cmdSegmentPriorityNew_Click(sender As Object, e As EventArgs) Handles cmdSegmentPriorityNew.Click
-    '    cboSegmentPriority.Text = oSurvey.Segments.getnewpriority
-    'End Sub
+    Private Sub lblPopupWarning_Click(sender As Object, e As EventArgs) Handles lblPopupWarning.Click
+        Call pConsoleShow(True)
+    End Sub
 
-    'Private Sub cboSegmentPriority_DropDown(sender As Object, e As EventArgs) Handles cboSegmentPriority.DropDown
-    '    Call cboSegmentPriority.Items.Clear()
-    '    Dim oPriorities As List(Of Integer) = oSurvey.Segments.GetPriorities
-    '    If Not oPriorities.Contains(-1) Then oPriorities.Insert(0, -1)
-    '    Call cboSegmentPriority.Items.AddRange(oPriorities.Cast(Of Object).ToArray)
-    'End Sub
+    Private Sub lvTrigPoints_SelectionChanged(sender As Object, e As EventArgs) Handles lvTrigPoints.SelectionChanged
+        Try
+            If Not bDisableTrigpointsChangeEvent Then
+                bDisableTrigpointsChangeEvent = True
+                If lvTrigPoints.FocusedObject Is Nothing Then
+                    Call oTools.SelectTrigpoint(Nothing)
+                Else
+                    Dim oTrigpoint As cTrigPoint = lvTrigPoints.FocusedObject
+                    Call oTools.SelectTrigpoint(oTrigpoint)
+                End If
+                Call pTrigpointsRefresh()
+                bDisableTrigpointsChangeEvent = False
+            End If
+        Catch
+        End Try
+    End Sub
 
-    'Private Sub oSurvey_OnArrangePriority(sender As cSurvey.cSurvey, Args As cSurvey.cSurvey.OnArrangePriorityEventArgs) Handles oSurvey.OnArrangePriority
-    '    If Not IsNothing(oTools.CurrentSegment) Then
-    '        Dim iPriority As Integer = -1
-    '        Call Integer.TryParse(cboSegmentPriority.Text, iPriority)
-    '        If iPriority <> oTools.CurrentSegment.Priority Then
-    '            cboSegmentPriority.Text = oTools.CurrentSegment.Priority
-    '        End If
-    '    End If
-    'End Sub
+    Private Sub lvTrigPoints_FormatRow(sender As Object, e As FormatRowEventArgs) Handles lvTrigPoints.FormatRow
+        Dim oTrigpoint As cTrigPoint = DirectCast(e.Model, cTrigPoint)
+        If oTrigpoint.Data.IsSplay Then
+            e.Item.ForeColor = SystemColors.ControlLight
+        Else
+            If oTrigpoint.Data.IsOrphan Then
+                e.Item.ForeColor = SystemColors.GrayText
+            End If
+        End If
+    End Sub
 
-    'Private Sub cboSegmentPriority_Validating(sender As Object, e As CancelEventArgs) Handles cboSegmentPriority.Validating
-    '    Dim iPriority As Integer
-    '    e.Cancel = Not Integer.TryParse(cboSegmentPriority.Text, iPriority)
-    'End Sub
+    Private Sub mnuViewWorkspacesRestore_Click(sender As Object, e As EventArgs) Handles mnuViewWorkspacesRestore.Click
+        If MsgBox(modMain.GetLocalizedString("main.warning33"), MsgBoxStyle.OkCancel, GetLocalizedString("main.warningtitle")) = MsgBoxResult.Ok Then
+            Call pDockStateLoad(True)
+            Call pToolbarStateLoad(True)
+        End If
+    End Sub
 
+    Private Sub pWorkspacesManage()
+        Using frmMW As frmManageWorkspaces = New frmManageWorkspaces()
+            AddHandler frmMW.OnGetWorkspaceState, AddressOf frmManagekWorkspaces_OnGetWorkspaceState
+            AddHandler frmMW.OnSetWorkspaceState, AddressOf frmManagekWorkspaces_OnSetWorkspaceState
+            AddHandler frmMW.OnRestoreDefaultWorkspace, AddressOf frmManagekWorkspaces_OnRestoreDefaultWorkspace
+            Call frmMW.ShowDialog(Me)
+            'refresh workspace menu...
+            Call pWorkspacesMenuAndToolbarUpdate()
+            RemoveHandler frmMW.OnGetWorkspaceState, AddressOf frmManagekWorkspaces_OnGetWorkspaceState
+            RemoveHandler frmMW.OnSetWorkspaceState, AddressOf frmManagekWorkspaces_OnSetWorkspaceState
+            RemoveHandler frmMW.OnRestoreDefaultWorkspace, AddressOf frmManagekWorkspaces_OnRestoreDefaultWorkspace
+        End Using
+    End Sub
+
+    Private Sub mnuViewWorkspacesManage_Click(sender As Object, e As EventArgs) Handles mnuViewWorkspacesManage.Click
+        Call pWorkspacesManage()
+    End Sub
+
+    Private Sub mnuViewWorkspacesItem_click(sender As Object, e As EventArgs)
+        Try
+            Call pWorkspaceApply(frmManageWorkspaces.LoadWorkspace(DirectCast(sender, ToolStripItem).Name.Substring(18)))
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    Private Sub pWorkspacesMenuAndToolbarUpdate()
+        'here update workspaces menu and toolbar
+        Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
+            Dim oShowInToolbar As List(Of String) = New List(Of String)
+            Call oShowInToolbar.AddRange(oReg.GetValue("workspaces.showintoolbar", "").ToString.Split({";"}, StringSplitOptions.RemoveEmptyEntries))
+
+            For iIndex As Integer = mnuViewWorkspaces.DropDownItems.Count - 1 To 0 Step -1
+                If mnuViewWorkspaces.DropDownItems(iIndex).Name Like "mnuworkspacesitem_*" Then
+                    mnuViewWorkspaces.DropDownItems.RemoveAt(iIndex)
+                End If
+            Next
+            For Each sShowInToolbar As String In oShowInToolbar
+                Dim oNewItem As ToolStripMenuItem = New ToolStripMenuItem(sShowInToolbar, Nothing, AddressOf mnuViewWorkspacesItem_click, "mnuworkspacesitem_" & sShowInToolbar)
+                mnuViewWorkspaces.DropDownItems.Insert(mnuViewWorkspaces.DropDownItems.IndexOf(mnuViewWorkspacesSep2), oNewItem)
+            Next
+            mnuViewWorkspacesSep2.Visible = oShowInToolbar.Count > 0
+
+            For iIndex As Integer = tbWorkspaces.Items.Count - 1 To 0 Step -1
+                If tbWorkspaces.Items(iIndex).Name Like "btnworkspacesitem_*" Then
+                    tbWorkspaces.Items.RemoveAt(iIndex)
+                End If
+            Next
+
+            For Each sShowInToolbar As String In oShowInToolbar
+                Dim oNewItem As ToolStripButton = New ToolStripButton(sShowInToolbar, Nothing, AddressOf mnuViewWorkspacesItem_click, "btnworkspacesitem_" & sShowInToolbar)
+                tbWorkspaces.Items.Insert(tbWorkspaces.Items.IndexOf(btnWorkspaceSep2), oNewItem)
+            Next
+            btnWorkspaceSep2.Visible = oShowInToolbar.Count > 0
+        End Using
+    End Sub
+
+    Private Sub frmManagekWorkspaces_OnRestoreDefaultWorkspace(sender As Object, e As EventArgs)
+        Call mnuViewWorkspacesRestore_Click(sender, e)
+    End Sub
+
+    Private Sub pDockStateSave()
+        Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
+            Using oMS As MemoryStream = New MemoryStream
+                Call oDockPanel.SaveAsXml(oMS, System.Text.Encoding.UTF8)
+                Call oReg.SetValue("user.dockstate", oMS.ToArray, Microsoft.Win32.RegistryValueKind.Binary)
+                Call oReg.Close()
+            End Using
+        End Using
+    End Sub
+
+    Private Sub pToolbarStateSave()
+        Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
+            Call oReg.SetValue("user.viewmainbar", If(tbMain.Visible, 1, 0))
+            Call oReg.SetValue("user.viewviewbar", If(tbView.Visible, 1, 0))
+            Call oReg.SetValue("user.viewlayerbar", If(tbLayers.Visible, 1, 0))
+            Call oReg.SetValue("user.viewtoolsbar", If(tbDesign.Visible, 1, 0))
+            Call oReg.SetValue("user.viewpensbar", If(tbPens.Visible, 1, 0))
+            Call oReg.SetValue("user.viewworkspacesbar", If(tbWorkspaces.Visible, 1, 0))
+            Call oReg.SetValue("user.viewpenbar", If(bShowPenBar, 1, 0))
+
+            Call oReg.SetValue("user.viewmainbar.position", modToolbars.SaveToolbarPosition(tbMain))
+            Call oReg.SetValue("user.viewviewbar.position", modToolbars.SaveToolbarPosition(tbView))
+            Call oReg.SetValue("user.viewlayerbar.position", modToolbars.SaveToolbarPosition(tbLayers))
+            Call oReg.SetValue("user.viewtoolsbar.position", modToolbars.SaveToolbarPosition(tbDesign))
+            Call oReg.SetValue("user.viewpensbar.position", modToolbars.SaveToolbarPosition(tbPens))
+            Call oReg.SetValue("user.viewworkspacesbar.position", modToolbars.SaveToolbarPosition(tbWorkspaces))
+
+            Call oReg.Close()
+        End Using
+    End Sub
+
+    Private Sub pWorkspaceApply(Document As XmlDocument)
+        Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
+            Call oReg.SetValue("user.viewmainbar", modXML.GetAttributeValue(Document.DocumentElement, "viewmainbar", 1))
+            Call oReg.SetValue("user.viewviewbar", modXML.GetAttributeValue(Document.DocumentElement, "viewviewbar", 1))
+            Call oReg.SetValue("user.viewlayerbar", modXML.GetAttributeValue(Document.DocumentElement, "viewlayerbar", 1))
+            Call oReg.SetValue("user.viewtoolsbar", modXML.GetAttributeValue(Document.DocumentElement, "viewtoolsbar", 1))
+            Call oReg.SetValue("user.viewpensbar", modXML.GetAttributeValue(Document.DocumentElement, "viewpensbar", 0))
+            Call oReg.SetValue("user.viewworkspacesbar", modXML.GetAttributeValue(Document.DocumentElement, "viewworkspacesbar", 0))
+            Call oReg.SetValue("user.viewpenbar", modXML.GetAttributeValue(Document.DocumentElement, "viewpensbar", 0))
+
+            Call oReg.SetValue("user.viewmainbar.position", modXML.GetAttributeValue(Document.DocumentElement, "viewmainbar_position", ""))
+            Call oReg.SetValue("user.viewviewbar.position", modXML.GetAttributeValue(Document.DocumentElement, "viewviewbar_position", ""))
+            Call oReg.SetValue("user.viewlayerbar.position", modXML.GetAttributeValue(Document.DocumentElement, "viewlayerbar_position", ""))
+            Call oReg.SetValue("user.viewtoolsbar.position", modXML.GetAttributeValue(Document.DocumentElement, "viewtoolsbar_position", ""))
+            Call oReg.SetValue("user.viewpensbar.position", modXML.GetAttributeValue(Document.DocumentElement, "viewpensbar_position", ""))
+            Call oReg.SetValue("user.viewworkspacesbar.position", modXML.GetAttributeValue(Document.DocumentElement, "viewworkspacesbar_position", ""))
+
+            Using oMS As MemoryStream = New MemoryStream
+                Call oReg.SetValue("user.dockstate", Convert.FromBase64String(Document.DocumentElement.GetAttribute("dockstate")), Microsoft.Win32.RegistryValueKind.Binary)
+            End Using
+
+            Call oReg.Close()
+        End Using
+
+        Call pDockStateLoad()
+        Call pToolbarStateLoad()
+    End Sub
+
+    Private Sub frmManagekWorkspaces_OnSetWorkspaceState(Sender As Object, e As frmManageWorkspaces.cManageWorkspacesStateEventArgs)
+        Call pWorkspaceApply(e.Document)
+    End Sub
+
+    Private Sub frmManagekWorkspaces_OnGetWorkspaceState(Sender As Object, e As frmManageWorkspaces.cManageWorkspacesStateEventArgs)
+        Dim oXmlRoot As XmlElement = e.Document.DocumentElement
+        Call oXmlRoot.SetAttribute("viewmainbar", If(tbMain.Visible, 1, 0))
+        Call oXmlRoot.SetAttribute("viewviewbar", IIf(tbView.Visible, 1, 0))
+        Call oXmlRoot.SetAttribute("viewlayerbar", IIf(tbLayers.Visible, 1, 0))
+        Call oXmlRoot.SetAttribute("viewtoolsbar", IIf(tbDesign.Visible, 1, 0))
+        Call oXmlRoot.SetAttribute("viewpensbar", IIf(tbPens.Visible, 1, 0))
+        Call oXmlRoot.SetAttribute("viewlogbar", IIf(oDockConsole.Visible, 1, 0))
+        Call oXmlRoot.SetAttribute("viewworkspacesbar", IIf(tbWorkspaces.Visible, 1, 0))
+        Call oXmlRoot.SetAttribute("viewpenbar", If(bShowPenBar, 1, 0))
+
+        Call oXmlRoot.SetAttribute("viewmainbar_position", modToolbars.SaveToolbarPosition(tbMain))
+        Call oXmlRoot.SetAttribute("viewviewbar_position", modToolbars.SaveToolbarPosition(tbView))
+        Call oXmlRoot.SetAttribute("viewlayerbar_position", modToolbars.SaveToolbarPosition(tbLayers))
+        Call oXmlRoot.SetAttribute("viewtoolsbar_position", modToolbars.SaveToolbarPosition(tbDesign))
+        Call oXmlRoot.SetAttribute("viewpensbar_position", modToolbars.SaveToolbarPosition(tbPens))
+        Call oXmlRoot.SetAttribute("viewworkspacesbar_position", modToolbars.SaveToolbarPosition(tbWorkspaces))
+
+        Using oMS As MemoryStream = New MemoryStream
+            Call oDockPanel.SaveAsXml(oMS, System.Text.Encoding.UTF8)
+            Call oXmlRoot.SetAttribute("dockstate", Convert.ToBase64String(oMS.ToArray))
+        End Using
+    End Sub
+
+    Private Sub btnWorkspacesManage_Click(sender As Object, e As EventArgs) Handles btnWorkspacesManage.Click
+        Call pWorkspacesManage()
+    End Sub
 End Class
 
 

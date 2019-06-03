@@ -233,16 +233,19 @@ Partial Class frmMain
         Me.cboSessionList = New System.Windows.Forms.ComboBox()
         Me.lblSession = New System.Windows.Forms.Label()
         Me.spTrigPoints = New System.Windows.Forms.SplitContainer()
-        Me.grdTrigPoints = New cSurveyPC.cGrid()
-        Me.colTrigPoint = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colX = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colY = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colZ = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colGPS = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.colNote = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.colGeoLat = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colGeoLon = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colGeoAlt = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lvTrigPoints = New BrightIdeasSoftware.FastObjectListView()
+        Me.colTrigpointsStation = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
+        Me.colTrigpointsX = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
+        Me.colTrigpointsY = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
+        Me.colTrigpointsZ = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
+        Me.colTrigpointsEntrance = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
+        Me.colTrigpointsCoordinate = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
+        Me.colTrigpointsNote = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
+        Me.colTrigpointInExploration = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
+        Me.colTrigpointsSpecial = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
+        Me.colTrigpointsLatitude = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
+        Me.colTrigpointsLongitude = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
+        Me.colTrigpointsAltitude = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
         Me.mnuTrigPoints = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.mnuTrigPointsRebind = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuTrigPointsRemoveOrphans = New System.Windows.Forms.ToolStripMenuItem()
@@ -260,6 +263,16 @@ Partial Class frmMain
         Me.mnuTrigPointsFind = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem102 = New System.Windows.Forms.ToolStripSeparator()
         Me.mnuTrigPointsExport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.grdTrigPoints = New cSurveyPC.cGrid()
+        Me.colTrigPoint = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colX = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colY = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colZ = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colGPS = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.colNote = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.colGeoLat = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colGeoLon = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colGeoAlt = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.pnlTrigPoint = New System.Windows.Forms.Panel()
         Me.tabTrigpointProperty = New System.Windows.Forms.TabControl()
         Me.tabTrigpointMain = New System.Windows.Forms.TabPage()
@@ -1002,36 +1015,6 @@ Partial Class frmMain
         Me.cmd3DSurfaceLayersUp = New System.Windows.Forms.Button()
         Me.tv3DSurfaceElevationsLayers = New System.Windows.Forms.TreeView()
         Me.cmd3DSurfaceLayersDown = New System.Windows.Forms.Button()
-        Me.tbWorkspaces = New System.Windows.Forms.ToolStrip()
-        Me.btnWorkspaceData = New System.Windows.Forms.ToolStripButton()
-        Me.btnWorkspaceDesign = New System.Windows.Forms.ToolStripButton()
-        Me.btnWorkspaceAll = New System.Windows.Forms.ToolStripButton()
-        Me.tbPens = New System.Windows.Forms.ToolStrip()
-        Me.lblPensStyle = New System.Windows.Forms.ToolStripLabel()
-        Me.ToolStripSeparator29 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnPenSmooting = New System.Windows.Forms.ToolStripButton()
-        Me.cboPensSmooting = New System.Windows.Forms.ToolStripComboBox()
-        Me.ToolStripSeparator15 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnPenLine = New System.Windows.Forms.ToolStripButton()
-        Me.btnPenSpline = New System.Windows.Forms.ToolStripButton()
-        Me.btnPenBezier = New System.Windows.Forms.ToolStripButton()
-        Me.tbLayers = New System.Windows.Forms.ToolStrip()
-        Me.btnLayer_Base = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator10 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnLayer_Soil = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator21 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnLayer_Water = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator22 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnLayer_Rocks = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator23 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnLayer_TerrainLevel = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator24 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnLayer_Borders = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator25 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnLayer_Signs = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator20 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnLayerManageLevels = New System.Windows.Forms.ToolStripButton()
-        Me.tbDesign = New System.Windows.Forms.ToolStrip()
         Me.tbMain = New System.Windows.Forms.ToolStrip()
         Me.btnSurveyNew = New System.Windows.Forms.ToolStripButton()
         Me.btnSurveyOpen = New System.Windows.Forms.ToolStripButton()
@@ -1083,6 +1066,37 @@ Partial Class frmMain
         Me.btnZoomToFit = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator9 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnProperty = New System.Windows.Forms.ToolStripButton()
+        Me.tbLayers = New System.Windows.Forms.ToolStrip()
+        Me.btnLayer_Base = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator10 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnLayer_Soil = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator21 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnLayer_Water = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator22 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnLayer_Rocks = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator23 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnLayer_TerrainLevel = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator24 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnLayer_Borders = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator25 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnLayer_Signs = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator20 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnLayerManageLevels = New System.Windows.Forms.ToolStripButton()
+        Me.tbDesign = New System.Windows.Forms.ToolStrip()
+        Me.tbPens = New System.Windows.Forms.ToolStrip()
+        Me.lblPensStyle = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStripSeparator29 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnPenSmooting = New System.Windows.Forms.ToolStripButton()
+        Me.cboPensSmooting = New System.Windows.Forms.ToolStripComboBox()
+        Me.ToolStripSeparator15 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnPenLine = New System.Windows.Forms.ToolStripButton()
+        Me.btnPenSpline = New System.Windows.Forms.ToolStripButton()
+        Me.btnPenBezier = New System.Windows.Forms.ToolStripButton()
+        Me.tbWorkspaces = New System.Windows.Forms.ToolStrip()
+        Me.btnWorkspaceData = New System.Windows.Forms.ToolStripButton()
+        Me.btnWorkspaceDesign = New System.Windows.Forms.ToolStripButton()
+        Me.btnWorkspaceAll = New System.Windows.Forms.ToolStripButton()
+        Me.btnWorkspaceSep1 = New System.Windows.Forms.ToolStripSeparator()
         Me.tbView = New System.Windows.Forms.ToolStrip()
         Me.btnShowFieldData = New System.Windows.Forms.ToolStripButton()
         Me.btnShowObjectProp = New System.Windows.Forms.ToolStripButton()
@@ -1204,7 +1218,10 @@ Partial Class frmMain
         Me.mnuViewWorkspacesData = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuViewWorkspacesDesign = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuViewWorkspacesAll = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem56 = New System.Windows.Forms.ToolStripSeparator()
+        Me.mnuViewWorkspacesSep2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.mnuViewWorkspacesSep1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.mnuViewWorkspacesRestore = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem115 = New System.Windows.Forms.ToolStripSeparator()
         Me.mnuViewWorkspacesManage = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuViewFieldData = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuViewDesignArea = New System.Windows.Forms.ToolStripMenuItem()
@@ -1551,6 +1568,8 @@ Partial Class frmMain
         Me.ntiMain = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.bwMain = New System.ComponentModel.BackgroundWorker()
+        Me.btnWorkspaceSep2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnWorkspacesManage = New System.Windows.Forms.ToolStripButton()
         Me.tsMain.ContentPanel.SuspendLayout()
         Me.tsMain.TopToolStripPanel.SuspendLayout()
         Me.tsMain.SuspendLayout()
@@ -1591,8 +1610,9 @@ Partial Class frmMain
         Me.spTrigPoints.Panel1.SuspendLayout()
         Me.spTrigPoints.Panel2.SuspendLayout()
         Me.spTrigPoints.SuspendLayout()
-        CType(Me.grdTrigPoints, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.lvTrigPoints, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.mnuTrigPoints.SuspendLayout()
+        CType(Me.grdTrigPoints, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlTrigPoint.SuspendLayout()
         Me.tabTrigpointProperty.SuspendLayout()
         Me.tabTrigpointMain.SuspendLayout()
@@ -1753,10 +1773,10 @@ Partial Class frmMain
         Me.pnl3DSurfaceContainer.SuspendLayout()
         Me.pnl3DSurface.SuspendLayout()
         CType(Me.txt3DSurfaceTransparency, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tbWorkspaces.SuspendLayout()
-        Me.tbPens.SuspendLayout()
-        Me.tbLayers.SuspendLayout()
         Me.tbMain.SuspendLayout()
+        Me.tbLayers.SuspendLayout()
+        Me.tbPens.SuspendLayout()
+        Me.tbWorkspaces.SuspendLayout()
         Me.tbView.SuspendLayout()
         Me.sbMain.SuspendLayout()
         Me.mnuMain.SuspendLayout()
@@ -1784,11 +1804,11 @@ Partial Class frmMain
         '
         'tsMain.TopToolStripPanel
         '
-        Me.tsMain.TopToolStripPanel.Controls.Add(Me.tbWorkspaces)
-        Me.tsMain.TopToolStripPanel.Controls.Add(Me.tbPens)
+        Me.tsMain.TopToolStripPanel.Controls.Add(Me.tbMain)
         Me.tsMain.TopToolStripPanel.Controls.Add(Me.tbLayers)
         Me.tsMain.TopToolStripPanel.Controls.Add(Me.tbDesign)
-        Me.tsMain.TopToolStripPanel.Controls.Add(Me.tbMain)
+        Me.tsMain.TopToolStripPanel.Controls.Add(Me.tbPens)
+        Me.tsMain.TopToolStripPanel.Controls.Add(Me.tbWorkspaces)
         Me.tsMain.TopToolStripPanel.Controls.Add(Me.tbView)
         '
         'pnlConsole
@@ -1841,6 +1861,7 @@ Partial Class frmMain
         '
         resources.ApplyResources(Me.btnPopupClose, "btnPopupClose")
         Me.btnPopupClose.BackColor = System.Drawing.Color.Transparent
+        Me.btnPopupClose.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnPopupClose.FlatAppearance.BorderSize = 0
         Me.btnPopupClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
         Me.btnPopupClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
@@ -1851,6 +1872,8 @@ Partial Class frmMain
         'lblPopupWarning
         '
         resources.ApplyResources(Me.lblPopupWarning, "lblPopupWarning")
+        Me.lblPopupWarning.AutoEllipsis = True
+        Me.lblPopupWarning.Cursor = System.Windows.Forms.Cursors.Hand
         Me.lblPopupWarning.Name = "lblPopupWarning"
         '
         'picPopupWarning
@@ -3009,11 +3032,184 @@ Partial Class frmMain
         '
         'spTrigPoints.Panel1
         '
+        Me.spTrigPoints.Panel1.Controls.Add(Me.lvTrigPoints)
         Me.spTrigPoints.Panel1.Controls.Add(Me.grdTrigPoints)
         '
         'spTrigPoints.Panel2
         '
         Me.spTrigPoints.Panel2.Controls.Add(Me.pnlTrigPoint)
+        '
+        'lvTrigPoints
+        '
+        Me.lvTrigPoints.AllColumns.Add(Me.colTrigpointsStation)
+        Me.lvTrigPoints.AllColumns.Add(Me.colTrigpointsX)
+        Me.lvTrigPoints.AllColumns.Add(Me.colTrigpointsY)
+        Me.lvTrigPoints.AllColumns.Add(Me.colTrigpointsZ)
+        Me.lvTrigPoints.AllColumns.Add(Me.colTrigpointsEntrance)
+        Me.lvTrigPoints.AllColumns.Add(Me.colTrigpointsCoordinate)
+        Me.lvTrigPoints.AllColumns.Add(Me.colTrigpointsNote)
+        Me.lvTrigPoints.AllColumns.Add(Me.colTrigpointInExploration)
+        Me.lvTrigPoints.AllColumns.Add(Me.colTrigpointsSpecial)
+        Me.lvTrigPoints.AllColumns.Add(Me.colTrigpointsLatitude)
+        Me.lvTrigPoints.AllColumns.Add(Me.colTrigpointsLongitude)
+        Me.lvTrigPoints.AllColumns.Add(Me.colTrigpointsAltitude)
+        Me.lvTrigPoints.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.lvTrigPoints.CellEditUseWholeCell = False
+        Me.lvTrigPoints.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colTrigpointsStation, Me.colTrigpointsEntrance, Me.colTrigpointsCoordinate, Me.colTrigpointsNote, Me.colTrigpointInExploration, Me.colTrigpointsSpecial})
+        Me.lvTrigPoints.ContextMenuStrip = Me.mnuTrigPoints
+        Me.lvTrigPoints.Cursor = System.Windows.Forms.Cursors.Default
+        Me.lvTrigPoints.FullRowSelect = True
+        Me.lvTrigPoints.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
+        Me.lvTrigPoints.HideSelection = False
+        resources.ApplyResources(Me.lvTrigPoints, "lvTrigPoints")
+        Me.lvTrigPoints.Name = "lvTrigPoints"
+        Me.lvTrigPoints.ShowGroups = False
+        Me.lvTrigPoints.UseCompatibleStateImageBehavior = False
+        Me.lvTrigPoints.UseHotControls = False
+        Me.lvTrigPoints.View = System.Windows.Forms.View.Details
+        Me.lvTrigPoints.VirtualMode = True
+        '
+        'colTrigpointsStation
+        '
+        resources.ApplyResources(Me.colTrigpointsStation, "colTrigpointsStation")
+        '
+        'colTrigpointsX
+        '
+        resources.ApplyResources(Me.colTrigpointsX, "colTrigpointsX")
+        Me.colTrigpointsX.IsVisible = False
+        '
+        'colTrigpointsY
+        '
+        resources.ApplyResources(Me.colTrigpointsY, "colTrigpointsY")
+        Me.colTrigpointsY.IsVisible = False
+        '
+        'colTrigpointsZ
+        '
+        resources.ApplyResources(Me.colTrigpointsZ, "colTrigpointsZ")
+        Me.colTrigpointsZ.IsVisible = False
+        '
+        'colTrigpointsEntrance
+        '
+        resources.ApplyResources(Me.colTrigpointsEntrance, "colTrigpointsEntrance")
+        '
+        'colTrigpointsCoordinate
+        '
+        resources.ApplyResources(Me.colTrigpointsCoordinate, "colTrigpointsCoordinate")
+        '
+        'colTrigpointsNote
+        '
+        resources.ApplyResources(Me.colTrigpointsNote, "colTrigpointsNote")
+        '
+        'colTrigpointInExploration
+        '
+        resources.ApplyResources(Me.colTrigpointInExploration, "colTrigpointInExploration")
+        '
+        'colTrigpointsSpecial
+        '
+        resources.ApplyResources(Me.colTrigpointsSpecial, "colTrigpointsSpecial")
+        '
+        'colTrigpointsLatitude
+        '
+        resources.ApplyResources(Me.colTrigpointsLatitude, "colTrigpointsLatitude")
+        Me.colTrigpointsLatitude.IsVisible = False
+        '
+        'colTrigpointsLongitude
+        '
+        resources.ApplyResources(Me.colTrigpointsLongitude, "colTrigpointsLongitude")
+        Me.colTrigpointsLongitude.IsVisible = False
+        '
+        'colTrigpointsAltitude
+        '
+        resources.ApplyResources(Me.colTrigpointsAltitude, "colTrigpointsAltitude")
+        Me.colTrigpointsAltitude.IsVisible = False
+        '
+        'mnuTrigPoints
+        '
+        resources.ApplyResources(Me.mnuTrigPoints, "mnuTrigPoints")
+        Me.mnuTrigPoints.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuTrigPointsRebind, Me.mnuTrigPointsRemoveOrphans, Me.ToolStripMenuItem42, Me.mnuTrigPointsEntrance, Me.ToolStripMenuItem43, Me.mnuTrigPointsPrefixTrigpoints, Me.mnuTrigPointsRenameTrigpoints, Me.ToolStripMenuItem52, Me.mnuTrigPointsFind, Me.ToolStripMenuItem102, Me.mnuTrigPointsExport})
+        Me.mnuTrigPoints.Name = "mnuTrigPoints"
+        '
+        'mnuTrigPointsRebind
+        '
+        Me.mnuTrigPointsRebind.BackColor = System.Drawing.SystemColors.Control
+        resources.ApplyResources(Me.mnuTrigPointsRebind, "mnuTrigPointsRebind")
+        Me.mnuTrigPointsRebind.Name = "mnuTrigPointsRebind"
+        '
+        'mnuTrigPointsRemoveOrphans
+        '
+        Me.mnuTrigPointsRemoveOrphans.Name = "mnuTrigPointsRemoveOrphans"
+        resources.ApplyResources(Me.mnuTrigPointsRemoveOrphans, "mnuTrigPointsRemoveOrphans")
+        '
+        'ToolStripMenuItem42
+        '
+        Me.ToolStripMenuItem42.Name = "ToolStripMenuItem42"
+        resources.ApplyResources(Me.ToolStripMenuItem42, "ToolStripMenuItem42")
+        '
+        'mnuTrigPointsEntrance
+        '
+        Me.mnuTrigPointsEntrance.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuTrigPointsEntrance0, Me.mnuTrigPointsEntrance1, Me.mnuTrigPointsEntrance2, Me.mnuTrigPointsEntrance3, Me.mnuTrigPointsEntrance4})
+        Me.mnuTrigPointsEntrance.Name = "mnuTrigPointsEntrance"
+        resources.ApplyResources(Me.mnuTrigPointsEntrance, "mnuTrigPointsEntrance")
+        '
+        'mnuTrigPointsEntrance0
+        '
+        Me.mnuTrigPointsEntrance0.Name = "mnuTrigPointsEntrance0"
+        resources.ApplyResources(Me.mnuTrigPointsEntrance0, "mnuTrigPointsEntrance0")
+        '
+        'mnuTrigPointsEntrance1
+        '
+        Me.mnuTrigPointsEntrance1.Name = "mnuTrigPointsEntrance1"
+        resources.ApplyResources(Me.mnuTrigPointsEntrance1, "mnuTrigPointsEntrance1")
+        '
+        'mnuTrigPointsEntrance2
+        '
+        Me.mnuTrigPointsEntrance2.Name = "mnuTrigPointsEntrance2"
+        resources.ApplyResources(Me.mnuTrigPointsEntrance2, "mnuTrigPointsEntrance2")
+        '
+        'mnuTrigPointsEntrance3
+        '
+        Me.mnuTrigPointsEntrance3.Name = "mnuTrigPointsEntrance3"
+        resources.ApplyResources(Me.mnuTrigPointsEntrance3, "mnuTrigPointsEntrance3")
+        '
+        'mnuTrigPointsEntrance4
+        '
+        Me.mnuTrigPointsEntrance4.Name = "mnuTrigPointsEntrance4"
+        resources.ApplyResources(Me.mnuTrigPointsEntrance4, "mnuTrigPointsEntrance4")
+        '
+        'ToolStripMenuItem43
+        '
+        Me.ToolStripMenuItem43.Name = "ToolStripMenuItem43"
+        resources.ApplyResources(Me.ToolStripMenuItem43, "ToolStripMenuItem43")
+        '
+        'mnuTrigPointsPrefixTrigpoints
+        '
+        Me.mnuTrigPointsPrefixTrigpoints.Name = "mnuTrigPointsPrefixTrigpoints"
+        resources.ApplyResources(Me.mnuTrigPointsPrefixTrigpoints, "mnuTrigPointsPrefixTrigpoints")
+        '
+        'mnuTrigPointsRenameTrigpoints
+        '
+        Me.mnuTrigPointsRenameTrigpoints.Name = "mnuTrigPointsRenameTrigpoints"
+        resources.ApplyResources(Me.mnuTrigPointsRenameTrigpoints, "mnuTrigPointsRenameTrigpoints")
+        '
+        'ToolStripMenuItem52
+        '
+        Me.ToolStripMenuItem52.Name = "ToolStripMenuItem52"
+        resources.ApplyResources(Me.ToolStripMenuItem52, "ToolStripMenuItem52")
+        '
+        'mnuTrigPointsFind
+        '
+        Me.mnuTrigPointsFind.Name = "mnuTrigPointsFind"
+        resources.ApplyResources(Me.mnuTrigPointsFind, "mnuTrigPointsFind")
+        '
+        'ToolStripMenuItem102
+        '
+        Me.ToolStripMenuItem102.Name = "ToolStripMenuItem102"
+        resources.ApplyResources(Me.ToolStripMenuItem102, "ToolStripMenuItem102")
+        '
+        'mnuTrigPointsExport
+        '
+        Me.mnuTrigPointsExport.Name = "mnuTrigPointsExport"
+        resources.ApplyResources(Me.mnuTrigPointsExport, "mnuTrigPointsExport")
         '
         'grdTrigPoints
         '
@@ -3110,94 +3306,6 @@ Partial Class frmMain
         resources.ApplyResources(Me.colGeoAlt, "colGeoAlt")
         Me.colGeoAlt.Name = "colGeoAlt"
         Me.colGeoAlt.ReadOnly = True
-        '
-        'mnuTrigPoints
-        '
-        resources.ApplyResources(Me.mnuTrigPoints, "mnuTrigPoints")
-        Me.mnuTrigPoints.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuTrigPointsRebind, Me.mnuTrigPointsRemoveOrphans, Me.ToolStripMenuItem42, Me.mnuTrigPointsEntrance, Me.ToolStripMenuItem43, Me.mnuTrigPointsPrefixTrigpoints, Me.mnuTrigPointsRenameTrigpoints, Me.ToolStripMenuItem52, Me.mnuTrigPointsFind, Me.ToolStripMenuItem102, Me.mnuTrigPointsExport})
-        Me.mnuTrigPoints.Name = "mnuTrigPoints"
-        '
-        'mnuTrigPointsRebind
-        '
-        Me.mnuTrigPointsRebind.BackColor = System.Drawing.SystemColors.Control
-        resources.ApplyResources(Me.mnuTrigPointsRebind, "mnuTrigPointsRebind")
-        Me.mnuTrigPointsRebind.Name = "mnuTrigPointsRebind"
-        '
-        'mnuTrigPointsRemoveOrphans
-        '
-        Me.mnuTrigPointsRemoveOrphans.Name = "mnuTrigPointsRemoveOrphans"
-        resources.ApplyResources(Me.mnuTrigPointsRemoveOrphans, "mnuTrigPointsRemoveOrphans")
-        '
-        'ToolStripMenuItem42
-        '
-        Me.ToolStripMenuItem42.Name = "ToolStripMenuItem42"
-        resources.ApplyResources(Me.ToolStripMenuItem42, "ToolStripMenuItem42")
-        '
-        'mnuTrigPointsEntrance
-        '
-        Me.mnuTrigPointsEntrance.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuTrigPointsEntrance0, Me.mnuTrigPointsEntrance1, Me.mnuTrigPointsEntrance2, Me.mnuTrigPointsEntrance3, Me.mnuTrigPointsEntrance4})
-        Me.mnuTrigPointsEntrance.Name = "mnuTrigPointsEntrance"
-        resources.ApplyResources(Me.mnuTrigPointsEntrance, "mnuTrigPointsEntrance")
-        '
-        'mnuTrigPointsEntrance0
-        '
-        Me.mnuTrigPointsEntrance0.Name = "mnuTrigPointsEntrance0"
-        resources.ApplyResources(Me.mnuTrigPointsEntrance0, "mnuTrigPointsEntrance0")
-        '
-        'mnuTrigPointsEntrance1
-        '
-        Me.mnuTrigPointsEntrance1.Name = "mnuTrigPointsEntrance1"
-        resources.ApplyResources(Me.mnuTrigPointsEntrance1, "mnuTrigPointsEntrance1")
-        '
-        'mnuTrigPointsEntrance2
-        '
-        Me.mnuTrigPointsEntrance2.Name = "mnuTrigPointsEntrance2"
-        resources.ApplyResources(Me.mnuTrigPointsEntrance2, "mnuTrigPointsEntrance2")
-        '
-        'mnuTrigPointsEntrance3
-        '
-        Me.mnuTrigPointsEntrance3.Name = "mnuTrigPointsEntrance3"
-        resources.ApplyResources(Me.mnuTrigPointsEntrance3, "mnuTrigPointsEntrance3")
-        '
-        'mnuTrigPointsEntrance4
-        '
-        Me.mnuTrigPointsEntrance4.Name = "mnuTrigPointsEntrance4"
-        resources.ApplyResources(Me.mnuTrigPointsEntrance4, "mnuTrigPointsEntrance4")
-        '
-        'ToolStripMenuItem43
-        '
-        Me.ToolStripMenuItem43.Name = "ToolStripMenuItem43"
-        resources.ApplyResources(Me.ToolStripMenuItem43, "ToolStripMenuItem43")
-        '
-        'mnuTrigPointsPrefixTrigpoints
-        '
-        Me.mnuTrigPointsPrefixTrigpoints.Name = "mnuTrigPointsPrefixTrigpoints"
-        resources.ApplyResources(Me.mnuTrigPointsPrefixTrigpoints, "mnuTrigPointsPrefixTrigpoints")
-        '
-        'mnuTrigPointsRenameTrigpoints
-        '
-        Me.mnuTrigPointsRenameTrigpoints.Name = "mnuTrigPointsRenameTrigpoints"
-        resources.ApplyResources(Me.mnuTrigPointsRenameTrigpoints, "mnuTrigPointsRenameTrigpoints")
-        '
-        'ToolStripMenuItem52
-        '
-        Me.ToolStripMenuItem52.Name = "ToolStripMenuItem52"
-        resources.ApplyResources(Me.ToolStripMenuItem52, "ToolStripMenuItem52")
-        '
-        'mnuTrigPointsFind
-        '
-        Me.mnuTrigPointsFind.Name = "mnuTrigPointsFind"
-        resources.ApplyResources(Me.mnuTrigPointsFind, "mnuTrigPointsFind")
-        '
-        'ToolStripMenuItem102
-        '
-        Me.ToolStripMenuItem102.Name = "ToolStripMenuItem102"
-        resources.ApplyResources(Me.ToolStripMenuItem102, "ToolStripMenuItem102")
-        '
-        'mnuTrigPointsExport
-        '
-        Me.mnuTrigPointsExport.Name = "mnuTrigPointsExport"
-        resources.ApplyResources(Me.mnuTrigPointsExport, "mnuTrigPointsExport")
         '
         'pnlTrigPoint
         '
@@ -3760,6 +3868,7 @@ Partial Class frmMain
         '
         Me.btnSegmentAndTrigpointGridColor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.btnSegmentAndTrigpointGridColor.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnSegmentAndTrigpointGridColor3, Me.btnSegmentAndTrigpointGridColor2, Me.btnSegmentAndTrigpointGridColor1, Me.ToolStripMenuItem104, Me.btnSegmentAndTrigpointGridColor0})
+        Me.btnSegmentAndTrigpointGridColor.Image = Global.cSurveyPC.My.Resources.Resources.asterisk_yellow
         resources.ApplyResources(Me.btnSegmentAndTrigpointGridColor, "btnSegmentAndTrigpointGridColor")
         Me.btnSegmentAndTrigpointGridColor.Name = "btnSegmentAndTrigpointGridColor"
         '
@@ -8586,172 +8695,6 @@ Partial Class frmMain
         Me.tipDefault.SetToolTip(Me.cmd3DSurfaceLayersDown, resources.GetString("cmd3DSurfaceLayersDown.ToolTip"))
         Me.cmd3DSurfaceLayersDown.UseVisualStyleBackColor = True
         '
-        'tbWorkspaces
-        '
-        resources.ApplyResources(Me.tbWorkspaces, "tbWorkspaces")
-        Me.tbWorkspaces.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnWorkspaceData, Me.btnWorkspaceDesign, Me.btnWorkspaceAll})
-        Me.tbWorkspaces.Name = "tbWorkspaces"
-        '
-        'btnWorkspaceData
-        '
-        Me.btnWorkspaceData.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        resources.ApplyResources(Me.btnWorkspaceData, "btnWorkspaceData")
-        Me.btnWorkspaceData.Name = "btnWorkspaceData"
-        '
-        'btnWorkspaceDesign
-        '
-        Me.btnWorkspaceDesign.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        resources.ApplyResources(Me.btnWorkspaceDesign, "btnWorkspaceDesign")
-        Me.btnWorkspaceDesign.Name = "btnWorkspaceDesign"
-        '
-        'btnWorkspaceAll
-        '
-        Me.btnWorkspaceAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        resources.ApplyResources(Me.btnWorkspaceAll, "btnWorkspaceAll")
-        Me.btnWorkspaceAll.Name = "btnWorkspaceAll"
-        '
-        'tbPens
-        '
-        resources.ApplyResources(Me.tbPens, "tbPens")
-        Me.tbPens.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblPensStyle, Me.ToolStripSeparator29, Me.btnPenSmooting, Me.cboPensSmooting, Me.ToolStripSeparator15, Me.btnPenLine, Me.btnPenSpline, Me.btnPenBezier})
-        Me.tbPens.Name = "tbPens"
-        '
-        'lblPensStyle
-        '
-        Me.lblPensStyle.Name = "lblPensStyle"
-        resources.ApplyResources(Me.lblPensStyle, "lblPensStyle")
-        '
-        'ToolStripSeparator29
-        '
-        Me.ToolStripSeparator29.Name = "ToolStripSeparator29"
-        resources.ApplyResources(Me.ToolStripSeparator29, "ToolStripSeparator29")
-        '
-        'btnPenSmooting
-        '
-        Me.btnPenSmooting.Checked = True
-        Me.btnPenSmooting.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.btnPenSmooting.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        resources.ApplyResources(Me.btnPenSmooting, "btnPenSmooting")
-        Me.btnPenSmooting.Name = "btnPenSmooting"
-        '
-        'cboPensSmooting
-        '
-        resources.ApplyResources(Me.cboPensSmooting, "cboPensSmooting")
-        Me.cboPensSmooting.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboPensSmooting.DropDownWidth = 60
-        Me.cboPensSmooting.Items.AddRange(New Object() {resources.GetString("cboPensSmooting.Items"), resources.GetString("cboPensSmooting.Items1"), resources.GetString("cboPensSmooting.Items2"), resources.GetString("cboPensSmooting.Items3"), resources.GetString("cboPensSmooting.Items4"), resources.GetString("cboPensSmooting.Items5"), resources.GetString("cboPensSmooting.Items6"), resources.GetString("cboPensSmooting.Items7"), resources.GetString("cboPensSmooting.Items8"), resources.GetString("cboPensSmooting.Items9"), resources.GetString("cboPensSmooting.Items10"), resources.GetString("cboPensSmooting.Items11"), resources.GetString("cboPensSmooting.Items12"), resources.GetString("cboPensSmooting.Items13"), resources.GetString("cboPensSmooting.Items14"), resources.GetString("cboPensSmooting.Items15")})
-        Me.cboPensSmooting.Name = "cboPensSmooting"
-        '
-        'ToolStripSeparator15
-        '
-        Me.ToolStripSeparator15.Name = "ToolStripSeparator15"
-        resources.ApplyResources(Me.ToolStripSeparator15, "ToolStripSeparator15")
-        '
-        'btnPenLine
-        '
-        Me.btnPenLine.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        resources.ApplyResources(Me.btnPenLine, "btnPenLine")
-        Me.btnPenLine.Name = "btnPenLine"
-        '
-        'btnPenSpline
-        '
-        Me.btnPenSpline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        resources.ApplyResources(Me.btnPenSpline, "btnPenSpline")
-        Me.btnPenSpline.Name = "btnPenSpline"
-        '
-        'btnPenBezier
-        '
-        Me.btnPenBezier.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        resources.ApplyResources(Me.btnPenBezier, "btnPenBezier")
-        Me.btnPenBezier.Name = "btnPenBezier"
-        '
-        'tbLayers
-        '
-        resources.ApplyResources(Me.tbLayers, "tbLayers")
-        Me.tbLayers.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnLayer_Base, Me.ToolStripSeparator10, Me.btnLayer_Soil, Me.ToolStripSeparator21, Me.btnLayer_Water, Me.ToolStripSeparator22, Me.btnLayer_Rocks, Me.ToolStripSeparator23, Me.btnLayer_TerrainLevel, Me.ToolStripSeparator24, Me.btnLayer_Borders, Me.ToolStripSeparator25, Me.btnLayer_Signs, Me.ToolStripSeparator20, Me.btnLayerManageLevels})
-        Me.tbLayers.Name = "tbLayers"
-        '
-        'btnLayer_Base
-        '
-        resources.ApplyResources(Me.btnLayer_Base, "btnLayer_Base")
-        Me.btnLayer_Base.Name = "btnLayer_Base"
-        '
-        'ToolStripSeparator10
-        '
-        Me.ToolStripSeparator10.Name = "ToolStripSeparator10"
-        resources.ApplyResources(Me.ToolStripSeparator10, "ToolStripSeparator10")
-        '
-        'btnLayer_Soil
-        '
-        resources.ApplyResources(Me.btnLayer_Soil, "btnLayer_Soil")
-        Me.btnLayer_Soil.Name = "btnLayer_Soil"
-        '
-        'ToolStripSeparator21
-        '
-        Me.ToolStripSeparator21.Name = "ToolStripSeparator21"
-        resources.ApplyResources(Me.ToolStripSeparator21, "ToolStripSeparator21")
-        '
-        'btnLayer_Water
-        '
-        resources.ApplyResources(Me.btnLayer_Water, "btnLayer_Water")
-        Me.btnLayer_Water.Name = "btnLayer_Water"
-        '
-        'ToolStripSeparator22
-        '
-        Me.ToolStripSeparator22.Name = "ToolStripSeparator22"
-        resources.ApplyResources(Me.ToolStripSeparator22, "ToolStripSeparator22")
-        '
-        'btnLayer_Rocks
-        '
-        resources.ApplyResources(Me.btnLayer_Rocks, "btnLayer_Rocks")
-        Me.btnLayer_Rocks.Name = "btnLayer_Rocks"
-        '
-        'ToolStripSeparator23
-        '
-        Me.ToolStripSeparator23.Name = "ToolStripSeparator23"
-        resources.ApplyResources(Me.ToolStripSeparator23, "ToolStripSeparator23")
-        '
-        'btnLayer_TerrainLevel
-        '
-        resources.ApplyResources(Me.btnLayer_TerrainLevel, "btnLayer_TerrainLevel")
-        Me.btnLayer_TerrainLevel.Name = "btnLayer_TerrainLevel"
-        '
-        'ToolStripSeparator24
-        '
-        Me.ToolStripSeparator24.Name = "ToolStripSeparator24"
-        resources.ApplyResources(Me.ToolStripSeparator24, "ToolStripSeparator24")
-        '
-        'btnLayer_Borders
-        '
-        resources.ApplyResources(Me.btnLayer_Borders, "btnLayer_Borders")
-        Me.btnLayer_Borders.Name = "btnLayer_Borders"
-        '
-        'ToolStripSeparator25
-        '
-        Me.ToolStripSeparator25.Name = "ToolStripSeparator25"
-        resources.ApplyResources(Me.ToolStripSeparator25, "ToolStripSeparator25")
-        '
-        'btnLayer_Signs
-        '
-        resources.ApplyResources(Me.btnLayer_Signs, "btnLayer_Signs")
-        Me.btnLayer_Signs.Name = "btnLayer_Signs"
-        '
-        'ToolStripSeparator20
-        '
-        Me.ToolStripSeparator20.Name = "ToolStripSeparator20"
-        resources.ApplyResources(Me.ToolStripSeparator20, "ToolStripSeparator20")
-        '
-        'btnLayerManageLevels
-        '
-        Me.btnLayerManageLevels.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        resources.ApplyResources(Me.btnLayerManageLevels, "btnLayerManageLevels")
-        Me.btnLayerManageLevels.Name = "btnLayerManageLevels"
-        '
-        'tbDesign
-        '
-        resources.ApplyResources(Me.tbDesign, "tbDesign")
-        Me.tbDesign.Name = "tbDesign"
-        '
         'tbMain
         '
         resources.ApplyResources(Me.tbMain, "tbMain")
@@ -9032,6 +8975,177 @@ Partial Class frmMain
         Me.btnProperty.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         resources.ApplyResources(Me.btnProperty, "btnProperty")
         Me.btnProperty.Name = "btnProperty"
+        '
+        'tbLayers
+        '
+        resources.ApplyResources(Me.tbLayers, "tbLayers")
+        Me.tbLayers.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnLayer_Base, Me.ToolStripSeparator10, Me.btnLayer_Soil, Me.ToolStripSeparator21, Me.btnLayer_Water, Me.ToolStripSeparator22, Me.btnLayer_Rocks, Me.ToolStripSeparator23, Me.btnLayer_TerrainLevel, Me.ToolStripSeparator24, Me.btnLayer_Borders, Me.ToolStripSeparator25, Me.btnLayer_Signs, Me.ToolStripSeparator20, Me.btnLayerManageLevels})
+        Me.tbLayers.Name = "tbLayers"
+        '
+        'btnLayer_Base
+        '
+        resources.ApplyResources(Me.btnLayer_Base, "btnLayer_Base")
+        Me.btnLayer_Base.Name = "btnLayer_Base"
+        '
+        'ToolStripSeparator10
+        '
+        Me.ToolStripSeparator10.Name = "ToolStripSeparator10"
+        resources.ApplyResources(Me.ToolStripSeparator10, "ToolStripSeparator10")
+        '
+        'btnLayer_Soil
+        '
+        resources.ApplyResources(Me.btnLayer_Soil, "btnLayer_Soil")
+        Me.btnLayer_Soil.Name = "btnLayer_Soil"
+        '
+        'ToolStripSeparator21
+        '
+        Me.ToolStripSeparator21.Name = "ToolStripSeparator21"
+        resources.ApplyResources(Me.ToolStripSeparator21, "ToolStripSeparator21")
+        '
+        'btnLayer_Water
+        '
+        resources.ApplyResources(Me.btnLayer_Water, "btnLayer_Water")
+        Me.btnLayer_Water.Name = "btnLayer_Water"
+        '
+        'ToolStripSeparator22
+        '
+        Me.ToolStripSeparator22.Name = "ToolStripSeparator22"
+        resources.ApplyResources(Me.ToolStripSeparator22, "ToolStripSeparator22")
+        '
+        'btnLayer_Rocks
+        '
+        resources.ApplyResources(Me.btnLayer_Rocks, "btnLayer_Rocks")
+        Me.btnLayer_Rocks.Name = "btnLayer_Rocks"
+        '
+        'ToolStripSeparator23
+        '
+        Me.ToolStripSeparator23.Name = "ToolStripSeparator23"
+        resources.ApplyResources(Me.ToolStripSeparator23, "ToolStripSeparator23")
+        '
+        'btnLayer_TerrainLevel
+        '
+        resources.ApplyResources(Me.btnLayer_TerrainLevel, "btnLayer_TerrainLevel")
+        Me.btnLayer_TerrainLevel.Name = "btnLayer_TerrainLevel"
+        '
+        'ToolStripSeparator24
+        '
+        Me.ToolStripSeparator24.Name = "ToolStripSeparator24"
+        resources.ApplyResources(Me.ToolStripSeparator24, "ToolStripSeparator24")
+        '
+        'btnLayer_Borders
+        '
+        resources.ApplyResources(Me.btnLayer_Borders, "btnLayer_Borders")
+        Me.btnLayer_Borders.Name = "btnLayer_Borders"
+        '
+        'ToolStripSeparator25
+        '
+        Me.ToolStripSeparator25.Name = "ToolStripSeparator25"
+        resources.ApplyResources(Me.ToolStripSeparator25, "ToolStripSeparator25")
+        '
+        'btnLayer_Signs
+        '
+        resources.ApplyResources(Me.btnLayer_Signs, "btnLayer_Signs")
+        Me.btnLayer_Signs.Name = "btnLayer_Signs"
+        '
+        'ToolStripSeparator20
+        '
+        Me.ToolStripSeparator20.Name = "ToolStripSeparator20"
+        resources.ApplyResources(Me.ToolStripSeparator20, "ToolStripSeparator20")
+        '
+        'btnLayerManageLevels
+        '
+        Me.btnLayerManageLevels.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        resources.ApplyResources(Me.btnLayerManageLevels, "btnLayerManageLevels")
+        Me.btnLayerManageLevels.Name = "btnLayerManageLevels"
+        '
+        'tbDesign
+        '
+        resources.ApplyResources(Me.tbDesign, "tbDesign")
+        Me.tbDesign.Name = "tbDesign"
+        '
+        'tbPens
+        '
+        resources.ApplyResources(Me.tbPens, "tbPens")
+        Me.tbPens.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblPensStyle, Me.ToolStripSeparator29, Me.btnPenSmooting, Me.cboPensSmooting, Me.ToolStripSeparator15, Me.btnPenLine, Me.btnPenSpline, Me.btnPenBezier})
+        Me.tbPens.Name = "tbPens"
+        '
+        'lblPensStyle
+        '
+        Me.lblPensStyle.Name = "lblPensStyle"
+        resources.ApplyResources(Me.lblPensStyle, "lblPensStyle")
+        '
+        'ToolStripSeparator29
+        '
+        Me.ToolStripSeparator29.Name = "ToolStripSeparator29"
+        resources.ApplyResources(Me.ToolStripSeparator29, "ToolStripSeparator29")
+        '
+        'btnPenSmooting
+        '
+        Me.btnPenSmooting.Checked = True
+        Me.btnPenSmooting.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.btnPenSmooting.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        resources.ApplyResources(Me.btnPenSmooting, "btnPenSmooting")
+        Me.btnPenSmooting.Name = "btnPenSmooting"
+        '
+        'cboPensSmooting
+        '
+        resources.ApplyResources(Me.cboPensSmooting, "cboPensSmooting")
+        Me.cboPensSmooting.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboPensSmooting.DropDownWidth = 60
+        Me.cboPensSmooting.Items.AddRange(New Object() {resources.GetString("cboPensSmooting.Items"), resources.GetString("cboPensSmooting.Items1"), resources.GetString("cboPensSmooting.Items2"), resources.GetString("cboPensSmooting.Items3"), resources.GetString("cboPensSmooting.Items4"), resources.GetString("cboPensSmooting.Items5"), resources.GetString("cboPensSmooting.Items6"), resources.GetString("cboPensSmooting.Items7"), resources.GetString("cboPensSmooting.Items8"), resources.GetString("cboPensSmooting.Items9"), resources.GetString("cboPensSmooting.Items10"), resources.GetString("cboPensSmooting.Items11"), resources.GetString("cboPensSmooting.Items12"), resources.GetString("cboPensSmooting.Items13"), resources.GetString("cboPensSmooting.Items14"), resources.GetString("cboPensSmooting.Items15")})
+        Me.cboPensSmooting.Name = "cboPensSmooting"
+        '
+        'ToolStripSeparator15
+        '
+        Me.ToolStripSeparator15.Name = "ToolStripSeparator15"
+        resources.ApplyResources(Me.ToolStripSeparator15, "ToolStripSeparator15")
+        '
+        'btnPenLine
+        '
+        Me.btnPenLine.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        resources.ApplyResources(Me.btnPenLine, "btnPenLine")
+        Me.btnPenLine.Name = "btnPenLine"
+        '
+        'btnPenSpline
+        '
+        Me.btnPenSpline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        resources.ApplyResources(Me.btnPenSpline, "btnPenSpline")
+        Me.btnPenSpline.Name = "btnPenSpline"
+        '
+        'btnPenBezier
+        '
+        Me.btnPenBezier.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        resources.ApplyResources(Me.btnPenBezier, "btnPenBezier")
+        Me.btnPenBezier.Name = "btnPenBezier"
+        '
+        'tbWorkspaces
+        '
+        resources.ApplyResources(Me.tbWorkspaces, "tbWorkspaces")
+        Me.tbWorkspaces.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnWorkspaceData, Me.btnWorkspaceDesign, Me.btnWorkspaceAll, Me.btnWorkspaceSep1, Me.btnWorkspaceSep2, Me.btnWorkspacesManage})
+        Me.tbWorkspaces.Name = "tbWorkspaces"
+        '
+        'btnWorkspaceData
+        '
+        Me.btnWorkspaceData.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        resources.ApplyResources(Me.btnWorkspaceData, "btnWorkspaceData")
+        Me.btnWorkspaceData.Name = "btnWorkspaceData"
+        '
+        'btnWorkspaceDesign
+        '
+        Me.btnWorkspaceDesign.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        resources.ApplyResources(Me.btnWorkspaceDesign, "btnWorkspaceDesign")
+        Me.btnWorkspaceDesign.Name = "btnWorkspaceDesign"
+        '
+        'btnWorkspaceAll
+        '
+        Me.btnWorkspaceAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        resources.ApplyResources(Me.btnWorkspaceAll, "btnWorkspaceAll")
+        Me.btnWorkspaceAll.Name = "btnWorkspaceAll"
+        '
+        'btnWorkspaceSep1
+        '
+        Me.btnWorkspaceSep1.Name = "btnWorkspaceSep1"
+        resources.ApplyResources(Me.btnWorkspaceSep1, "btnWorkspaceSep1")
         '
         'tbView
         '
@@ -9666,7 +9780,7 @@ Partial Class frmMain
         '
         'mnuViewWorkspaces
         '
-        Me.mnuViewWorkspaces.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuViewWorkspacesData, Me.mnuViewWorkspacesDesign, Me.mnuViewWorkspacesAll, Me.ToolStripMenuItem56, Me.mnuViewWorkspacesManage})
+        Me.mnuViewWorkspaces.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuViewWorkspacesData, Me.mnuViewWorkspacesDesign, Me.mnuViewWorkspacesAll, Me.mnuViewWorkspacesSep1, Me.mnuViewWorkspacesSep2, Me.mnuViewWorkspacesRestore, Me.ToolStripMenuItem115, Me.mnuViewWorkspacesManage})
         Me.mnuViewWorkspaces.Name = "mnuViewWorkspaces"
         resources.ApplyResources(Me.mnuViewWorkspaces, "mnuViewWorkspaces")
         '
@@ -9685,13 +9799,29 @@ Partial Class frmMain
         Me.mnuViewWorkspacesAll.Name = "mnuViewWorkspacesAll"
         resources.ApplyResources(Me.mnuViewWorkspacesAll, "mnuViewWorkspacesAll")
         '
-        'ToolStripMenuItem56
+        'mnuViewWorkspacesSep2
         '
-        Me.ToolStripMenuItem56.Name = "ToolStripMenuItem56"
-        resources.ApplyResources(Me.ToolStripMenuItem56, "ToolStripMenuItem56")
+        Me.mnuViewWorkspacesSep2.Name = "mnuViewWorkspacesSep2"
+        resources.ApplyResources(Me.mnuViewWorkspacesSep2, "mnuViewWorkspacesSep2")
+        '
+        'mnuViewWorkspacesSep1
+        '
+        Me.mnuViewWorkspacesSep1.Name = "mnuViewWorkspacesSep1"
+        resources.ApplyResources(Me.mnuViewWorkspacesSep1, "mnuViewWorkspacesSep1")
+        '
+        'mnuViewWorkspacesRestore
+        '
+        Me.mnuViewWorkspacesRestore.Name = "mnuViewWorkspacesRestore"
+        resources.ApplyResources(Me.mnuViewWorkspacesRestore, "mnuViewWorkspacesRestore")
+        '
+        'ToolStripMenuItem115
+        '
+        Me.ToolStripMenuItem115.Name = "ToolStripMenuItem115"
+        resources.ApplyResources(Me.ToolStripMenuItem115, "ToolStripMenuItem115")
         '
         'mnuViewWorkspacesManage
         '
+        Me.mnuViewWorkspacesManage.Image = Global.cSurveyPC.My.Resources.Resources.monitor_window
         Me.mnuViewWorkspacesManage.Name = "mnuViewWorkspacesManage"
         resources.ApplyResources(Me.mnuViewWorkspacesManage, "mnuViewWorkspacesManage")
         '
@@ -11470,6 +11600,18 @@ Partial Class frmMain
         Me.bwMain.WorkerReportsProgress = True
         Me.bwMain.WorkerSupportsCancellation = True
         '
+        'btnWorkspaceSep2
+        '
+        Me.btnWorkspaceSep2.Name = "btnWorkspaceSep2"
+        resources.ApplyResources(Me.btnWorkspaceSep2, "btnWorkspaceSep2")
+        '
+        'btnWorkspacesManage
+        '
+        Me.btnWorkspacesManage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnWorkspacesManage.Image = Global.cSurveyPC.My.Resources.Resources.monitor_window
+        resources.ApplyResources(Me.btnWorkspacesManage, "btnWorkspacesManage")
+        Me.btnWorkspacesManage.Name = "btnWorkspacesManage"
+        '
         'frmMain
         '
         resources.ApplyResources(Me, "$this")
@@ -11531,8 +11673,9 @@ Partial Class frmMain
         Me.spTrigPoints.Panel2.ResumeLayout(False)
         CType(Me.spTrigPoints, System.ComponentModel.ISupportInitialize).EndInit()
         Me.spTrigPoints.ResumeLayout(False)
-        CType(Me.grdTrigPoints, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lvTrigPoints, System.ComponentModel.ISupportInitialize).EndInit()
         Me.mnuTrigPoints.ResumeLayout(False)
+        CType(Me.grdTrigPoints, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlTrigPoint.ResumeLayout(False)
         Me.tabTrigpointProperty.ResumeLayout(False)
         Me.tabTrigpointMain.ResumeLayout(False)
@@ -11756,14 +11899,14 @@ Partial Class frmMain
         Me.pnl3DSurface.ResumeLayout(False)
         Me.pnl3DSurface.PerformLayout()
         CType(Me.txt3DSurfaceTransparency, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.tbWorkspaces.ResumeLayout(False)
-        Me.tbWorkspaces.PerformLayout()
-        Me.tbPens.ResumeLayout(False)
-        Me.tbPens.PerformLayout()
-        Me.tbLayers.ResumeLayout(False)
-        Me.tbLayers.PerformLayout()
         Me.tbMain.ResumeLayout(False)
         Me.tbMain.PerformLayout()
+        Me.tbLayers.ResumeLayout(False)
+        Me.tbLayers.PerformLayout()
+        Me.tbPens.ResumeLayout(False)
+        Me.tbPens.PerformLayout()
+        Me.tbWorkspaces.ResumeLayout(False)
+        Me.tbWorkspaces.PerformLayout()
         Me.tbView.ResumeLayout(False)
         Me.tbView.PerformLayout()
         Me.sbMain.ResumeLayout(False)
@@ -12330,7 +12473,7 @@ Partial Class frmMain
     Friend WithEvents lblPropSequence As System.Windows.Forms.Label
     Friend WithEvents mnuViewWorkspaces As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuViewDesignArea As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem56 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents mnuViewWorkspacesSep1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents mnuViewWorkspacesManage As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuViewPlotLRUD As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuViewPlotShowStyle0 As System.Windows.Forms.ToolStripMenuItem
@@ -13276,4 +13419,23 @@ Partial Class frmMain
     Friend WithEvents cboPropCrossSectionMarkerArrowSize As ComboBox
     Friend WithEvents lblPropCrossSectionMarkerArrowSize As Label
     Friend WithEvents pnlStatusDesignWarpingState As ToolStripStatusLabel
+    Friend WithEvents lvTrigPoints As BrightIdeasSoftware.FastObjectListView
+    Friend WithEvents colTrigpointsStation As BrightIdeasSoftware.OLVColumn
+    Friend WithEvents colTrigpointsX As BrightIdeasSoftware.OLVColumn
+    Friend WithEvents colTrigpointsY As BrightIdeasSoftware.OLVColumn
+    Friend WithEvents colTrigpointsZ As BrightIdeasSoftware.OLVColumn
+    Friend WithEvents colTrigpointsCoordinate As BrightIdeasSoftware.OLVColumn
+    Friend WithEvents colTrigpointsNote As BrightIdeasSoftware.OLVColumn
+    Friend WithEvents colTrigpointsLatitude As BrightIdeasSoftware.OLVColumn
+    Friend WithEvents colTrigpointsLongitude As BrightIdeasSoftware.OLVColumn
+    Friend WithEvents colTrigpointsAltitude As BrightIdeasSoftware.OLVColumn
+    Friend WithEvents colTrigpointsEntrance As BrightIdeasSoftware.OLVColumn
+    Friend WithEvents colTrigpointInExploration As BrightIdeasSoftware.OLVColumn
+    Friend WithEvents colTrigpointsSpecial As BrightIdeasSoftware.OLVColumn
+    Friend WithEvents mnuViewWorkspacesRestore As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem115 As ToolStripSeparator
+    Friend WithEvents mnuViewWorkspacesSep2 As ToolStripSeparator
+    Friend WithEvents btnWorkspaceSep1 As ToolStripSeparator
+    Friend WithEvents btnWorkspaceSep2 As ToolStripSeparator
+    Friend WithEvents btnWorkspacesManage As ToolStripButton
 End Class

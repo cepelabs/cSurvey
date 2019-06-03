@@ -35,7 +35,7 @@ Partial Class frmResurveyProperties
         Me.lblConnectedTo = New System.Windows.Forms.Label()
         Me.lblProfilePosition = New System.Windows.Forms.Label()
         Me.lblScaleUM = New System.Windows.Forms.Label()
-        Me.txtScaleSize = New System.Windows.Forms.NumericUpDown()
+        Me.txtScaleSize = New cNumericUpDown()
         Me.lblScaleSize = New System.Windows.Forms.Label()
         Me.cmdApply = New System.Windows.Forms.Button()
         Me.tpDefault = New System.Windows.Forms.ToolTip(Me.components)
@@ -116,6 +116,7 @@ Partial Class frmResurveyProperties
         '
         'txtScaleSize
         '
+        Me.txtScaleSize.DecimalPlaces = 2
         resources.ApplyResources(Me.txtScaleSize, "txtScaleSize")
         Me.txtScaleSize.Name = "txtScaleSize"
         '
@@ -186,7 +187,6 @@ Partial Class frmResurveyProperties
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
-        Me.Controls.Add(Me.tabConnectedTo)
         Me.Controls.Add(Me.cmdApply)
         Me.Controls.Add(Me.cmdOk)
         Me.Controls.Add(Me.cmdCancel)
@@ -203,6 +203,7 @@ Partial Class frmResurveyProperties
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtPlanPosition)
         Me.Controls.Add(Me.lblPosition)
+        Me.Controls.Add(Me.tabConnectedTo)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmResurveyProperties"
@@ -225,7 +226,7 @@ Partial Class frmResurveyProperties
     Friend WithEvents lblConnectedTo As System.Windows.Forms.Label
     Friend WithEvents lblProfilePosition As System.Windows.Forms.Label
     Friend WithEvents lblScaleUM As System.Windows.Forms.Label
-    Friend WithEvents txtScaleSize As System.Windows.Forms.NumericUpDown
+    Friend WithEvents txtScaleSize As cNumericUpDown
     Friend WithEvents lblScaleSize As System.Windows.Forms.Label
     Friend WithEvents cmdApply As System.Windows.Forms.Button
     Friend WithEvents tpDefault As System.Windows.Forms.ToolTip

@@ -431,70 +431,70 @@ Namespace cSurvey.Net
             Return bResult
         End Function
 
-        Public Function Explode(SetID As Integer, DataID As Integer, ByRef Result As Integer) As Boolean 'Implements cINetHistory.Upload
-            Dim oResult As MemoryStream = modNetwork.PostValues(Me, oSession, "explode.php", modNetwork.CreatePostParameters("setid", SetID, "dataid", DataID), True)
-            'Dim sResult As String = ASCIIEncoding.ASCII.GetString(bData)
-            'Debug.Print(sResult)
+        'Public Function Explode(SetID As Integer, DataID As Integer, ByRef Result As Integer) As Boolean 'Implements cINetHistory.Upload
+        '    Dim oResult As MemoryStream = modNetwork.PostValues(Me, oSession, "explode.php", modNetwork.CreatePostParameters("setid", SetID, "dataid", DataID), True)
+        '    'Dim sResult As String = ASCIIEncoding.ASCII.GetString(bData)
+        '    'Debug.Print(sResult)
 
-            Dim bResult As Boolean
-            Dim oXML As XmlDocument = New XmlDocument
-            Call oXML.Load(oResult)
-            With oXML.Item("csurvey").Item("response")
-                bResult = .GetAttribute("result")
-                Result = .GetAttribute("value")
-                sLastMessage = .GetAttribute("message")
-            End With
-            Return bResult
-        End Function
+        '    Dim bResult As Boolean
+        '    Dim oXML As XmlDocument = New XmlDocument
+        '    Call oXML.Load(oResult)
+        '    With oXML.Item("csurvey").Item("response")
+        '        bResult = .GetAttribute("result")
+        '        Result = .GetAttribute("value")
+        '        sLastMessage = .GetAttribute("message")
+        '    End With
+        '    Return bResult
+        'End Function
 
-        Public Function Implode(SetID As Integer, DataID As Integer, ByRef Result As String) As Boolean 'Implements cINetHistory.Upload
-            Dim oResult As MemoryStream = modNetwork.PostValues(Me, oSession, "implode.php", modNetwork.CreatePostParameters("setid", SetID, "dataid", DataID), True)
-            Try
-                Dim bResult As Boolean
-                Dim oXML As XmlDocument = New XmlDocument
-                Call oXML.Load(oResult)
-                With oXML.Item("csurvey").Item("response")
-                    bResult = .GetAttribute("result")
-                    Result = .GetAttribute("value")
-                    sLastMessage = .GetAttribute("message")
-                End With
-                Return bResult
-            Catch
-                Dim sTempFilename As String = My.Computer.FileSystem.GetTempFileName & ".csz"
-                Dim oFi As FileInfo = New FileInfo(sTempFilename)
-                Dim oFs As FileStream = oFi.Create
-                oResult.Position = 0
-                Call oResult.WriteTo(oFs)
-                Call oFs.Close()
-                Call oFs.Dispose()
-                Result = sTempFilename
-                Return True
-            End Try
+        'Public Function Implode(SetID As Integer, DataID As Integer, ByRef Result As String) As Boolean 'Implements cINetHistory.Upload
+        '    Dim oResult As MemoryStream = modNetwork.PostValues(Me, oSession, "implode.php", modNetwork.CreatePostParameters("setid", SetID, "dataid", DataID), True)
+        '    Try
+        '        Dim bResult As Boolean
+        '        Dim oXML As XmlDocument = New XmlDocument
+        '        Call oXML.Load(oResult)
+        '        With oXML.Item("csurvey").Item("response")
+        '            bResult = .GetAttribute("result")
+        '            Result = .GetAttribute("value")
+        '            sLastMessage = .GetAttribute("message")
+        '        End With
+        '        Return bResult
+        '    Catch
+        '        Dim sTempFilename As String = My.Computer.FileSystem.GetTempFileName & ".csz"
+        '        Dim oFi As FileInfo = New FileInfo(sTempFilename)
+        '        Dim oFs As FileStream = oFi.Create
+        '        oResult.Position = 0
+        '        Call oResult.WriteTo(oFs)
+        '        Call oFs.Close()
+        '        Call oFs.Dispose()
+        '        Result = sTempFilename
+        '        Return True
+        '    End Try
 
-            'oggetti item nel db...serve poi capire quali sono gli oggetti layer e relativi items per poter fare la merge...
-            'Select Case* from(
-            'SELECT id,
-            '(select name from cs_dataitems as parentitems where id=cs_dataitems.parentid) As parent,
-            '(select value from cs_dataitemsattr where cs_dataitemsattr.name='type' and itemsID=cs_dataitems.id) as type,
-            '(select value from cs_dataitemsattr where cs_dataitemsattr.name='cave' and itemsID=cs_dataitems.id) as cave,
-            '(select value from cs_dataitemsattr where cs_dataitemsattr.name='branch' and itemsID=cs_dataitems.id) as branch
-            'From cs_dataitems
-            'Where cs_dataitems.name ='item'
-            ') as tmp Where parent ='items'
+        '    'oggetti item nel db...serve poi capire quali sono gli oggetti layer e relativi items per poter fare la merge...
+        '    'Select Case* from(
+        '    'SELECT id,
+        '    '(select name from cs_dataitems as parentitems where id=cs_dataitems.parentid) As parent,
+        '    '(select value from cs_dataitemsattr where cs_dataitemsattr.name='type' and itemsID=cs_dataitems.id) as type,
+        '    '(select value from cs_dataitemsattr where cs_dataitemsattr.name='cave' and itemsID=cs_dataitems.id) as cave,
+        '    '(select value from cs_dataitemsattr where cs_dataitemsattr.name='branch' and itemsID=cs_dataitems.id) as branch
+        '    'From cs_dataitems
+        '    'Where cs_dataitems.name ='item'
+        '    ') as tmp Where parent ='items'
 
-            'Dim sResult As String = ASCIIEncoding.ASCII.GetString(bData)
-            'Debug.Print(sResult)
+        '    'Dim sResult As String = ASCIIEncoding.ASCII.GetString(bData)
+        '    'Debug.Print(sResult)
 
-            'Dim bResult As Boolean
-            'Dim oXML As XmlDocument = New XmlDocument
-            'Call oXML.Load(oResult)
-            'With oXML.Item("csurvey").Item("response")
-            '    bResult = .GetAttribute("result")
-            '    Result = .GetAttribute("value")
-            '    sLastMessage = .GetAttribute("message")
-            'End With
-            'Return bResult
-        End Function
+        '    'Dim bResult As Boolean
+        '    'Dim oXML As XmlDocument = New XmlDocument
+        '    'Call oXML.Load(oResult)
+        '    'With oXML.Item("csurvey").Item("response")
+        '    '    bResult = .GetAttribute("result")
+        '    '    Result = .GetAttribute("value")
+        '    '    sLastMessage = .GetAttribute("message")
+        '    'End With
+        '    'Return bResult
+        'End Function
 
         Public Sub New(URL As String, MaxCopies As Integer, DailyCopies As Integer)
             sURL = URL

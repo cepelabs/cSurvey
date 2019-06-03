@@ -415,21 +415,21 @@ Public Class frmHistory
         Cursor = Cursors.Default
     End Sub
 
-    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
-        Dim iSetID As Integer = 94
-        Dim iDataID As Integer = 56
-        Dim oNetHistory As cNetHistory = New cNetHistory(sHistoryWebURL, iHistoryMaxCopies, iHistoryDailyCopies)
-        If oNetHistory.Login(sHistoryWebUsername, sHistoryWebPassword) Then
-            Call oNetHistory.Explode(iSetID, iDataID, 0)
-        End If
-    End Sub
+    'Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
+    '    Dim iSetID As Integer = 94
+    '    Dim iDataID As Integer = 56
+    '    Dim oNetHistory As cNetHistory = New cNetHistory(sHistoryWebURL, iHistoryMaxCopies, iHistoryDailyCopies)
+    '    If oNetHistory.Login(sHistoryWebUsername, sHistoryWebPassword) Then
+    '        Call oNetHistory.Explode(iSetID, iDataID, 0)
+    '    End If
+    'End Sub
 
-    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
-        Dim iSetID As Integer = 94
-        Dim iDataID As Integer = 56
-        Dim oNetHistory As cNetHistory = New cNetHistory(sHistoryWebURL, iHistoryMaxCopies, iHistoryDailyCopies)
-        If oNetHistory.Login(sHistoryWebUsername, sHistoryWebPassword) Then
-            Call oNetHistory.Implode(iSetID, iDataID, 0)
-        End If
-    End Sub
+    'Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
+    '    Dim iSetID As Integer = 94
+    '    Dim iDataID As Integer = 56
+    '    Dim oNetHistory As cNetHistory = New cNetHistory(sHistoryWebURL, iHistoryMaxCopies, iHistoryDailyCopies)
+    '    If oNetHistory.Login(sHistoryWebUsername, sHistoryWebPassword) Then
+    '        Call oNetHistory.Implode(iSetID, iDataID, 0)
+    '    End If
+    'End Sub
 End Class

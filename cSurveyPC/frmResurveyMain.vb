@@ -1344,16 +1344,17 @@ Public Class frmResurveyMain
                 End If
             Else
                 Call oNewShots.Add(oShot)
-
-                If oShot.Drop < 0 Then
-                    oShot.Drop = Math.Abs(oShot.Drop)
-                    oShot.Distance = Math.Sqrt(oShot.Drop ^ 2 + oShot.PlanimetricDistance ^ 2)
-                    oShot.Inclination = -modPaint.RadiansToDegree(Math.Acos(oShot.PlanimetricDistance / oShot.Distance)) ' ß =  Arcsen (b/a)
-                ElseIf oShot.Drop = 0 Then
-                    oShot.Distance = oShot.PlanimetricDistance
-                Else
-                    oShot.Distance = Math.Sqrt(oShot.Drop ^ 2 + oShot.PlanimetricDistance ^ 2)
-                    oShot.Inclination = modPaint.RadiansToDegree(Math.Acos(oShot.PlanimetricDistance / oShot.Distance)) ' ß =  Arcsen (b/a)
+                If oOptions.UseDropForInclination Then
+                    If oShot.Drop < 0 Then
+                        oShot.Drop = Math.Abs(oShot.Drop)
+                        oShot.Distance = Math.Sqrt(oShot.Drop ^ 2 + oShot.PlanimetricDistance ^ 2)
+                        oShot.Inclination = -modPaint.RadiansToDegree(Math.Acos(oShot.PlanimetricDistance / oShot.Distance)) ' ß =  Arcsen (b/a)
+                    ElseIf oShot.Drop = 0 Then
+                        oShot.Distance = oShot.PlanimetricDistance
+                    Else
+                        oShot.Distance = Math.Sqrt(oShot.Drop ^ 2 + oShot.PlanimetricDistance ^ 2)
+                        oShot.Inclination = modPaint.RadiansToDegree(Math.Acos(oShot.PlanimetricDistance / oShot.Distance)) ' ß =  Arcsen (b/a)
+                    End If
                 End If
             End If
         Next

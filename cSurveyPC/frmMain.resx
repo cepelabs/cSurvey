@@ -2910,7 +2910,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABU
-        YAAAAk1TRnQBSQFMAgEBFQEAAQwBTAEMAUwBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        YAAAAk1TRnQBSQFMAgEBFQEAAewBTAHsAUwBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABYAMAAQEBAAEYBgABSCEAA/IJ7gP0rgAD7gGiAZoBjwGXAYoBfwGXAYoBfwGXAYoBfwGrAaUBnQPu
         qAAD8gGXAYoBfwGuAaUBnQHIAcEBuwHGAb8BuQHGAb4BuAGtAaMBmgGXAYoBfwPypQABwwG9AbgBlwGK
         AX8BtgGsAaQJAAHEAbwBtQGtAaMBmgGjAZoBkKUAAcEBuQGzAZcBigF/AwAJ7gMAAcUBwAG4AZcBigF/
@@ -3840,95 +3840,77 @@
   <data name="spTrigPoints.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <metadata name="colTrigPoint.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colTrigPoint.HeaderText" xml:space="preserve">
+  <data name="colTrigpointsStation.Text" xml:space="preserve">
     <value>Station</value>
   </data>
-  <data name="colTrigPoint.Width" type="System.Int32, mscorlib">
-    <value>70</value>
+  <data name="colTrigpointsStation.Width" type="System.Int32, mscorlib">
+    <value>90</value>
   </data>
-  <metadata name="colX.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colX.HeaderText" xml:space="preserve">
+  <data name="colTrigpointsX.DisplayIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="colTrigpointsX.Text" xml:space="preserve">
     <value>X</value>
   </data>
-  <data name="colX.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="colTrigpointsY.DisplayIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="colX.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <metadata name="colY.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colY.HeaderText" xml:space="preserve">
+  <data name="colTrigpointsY.Text" xml:space="preserve">
     <value>Y</value>
   </data>
-  <data name="colY.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="colTrigpointsZ.DisplayIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="colY.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <metadata name="colZ.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colZ.HeaderText" xml:space="preserve">
+  <data name="colTrigpointsZ.Text" xml:space="preserve">
     <value>Z</value>
   </data>
-  <data name="colZ.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="colTrigpointsEntrance.Text" xml:space="preserve">
+    <value>Entrance</value>
   </data>
-  <data name="colZ.Width" type="System.Int32, mscorlib">
-    <value>60</value>
+  <data name="colTrigpointsEntrance.Width" type="System.Int32, mscorlib">
+    <value>20</value>
   </data>
-  <metadata name="colGPS.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colGPS.HeaderText" xml:space="preserve">
+  <data name="colTrigpointsCoordinate.Text" xml:space="preserve">
     <value>Coordinate</value>
   </data>
-  <data name="colGPS.Width" type="System.Int32, mscorlib">
+  <data name="colTrigpointsCoordinate.Width" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
-  <metadata name="colNote.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colNote.HeaderText" xml:space="preserve">
+  <data name="colTrigpointsNote.Text" xml:space="preserve">
     <value>Note</value>
   </data>
-  <data name="colNote.Width" type="System.Int32, mscorlib">
+  <data name="colTrigpointsNote.Width" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
-  <metadata name="colGeoLat.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colGeoLat.HeaderText" xml:space="preserve">
+  <data name="colTrigpointInExploration.Text" xml:space="preserve">
+    <value>To be explored</value>
+  </data>
+  <data name="colTrigpointInExploration.Width" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="colTrigpointsSpecial.Text" xml:space="preserve">
+    <value>Special station</value>
+  </data>
+  <data name="colTrigpointsSpecial.Width" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="colTrigpointsLatitude.DisplayIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="colTrigpointsLatitude.Text" xml:space="preserve">
     <value>Latitude</value>
   </data>
-  <data name="colGeoLat.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="colTrigpointsLongitude.DisplayIndex" type="System.Int32, mscorlib">
+    <value>7</value>
   </data>
-  <metadata name="colGeoLon.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colGeoLon.HeaderText" xml:space="preserve">
+  <data name="colTrigpointsLongitude.Text" xml:space="preserve">
     <value>Longitude</value>
   </data>
-  <data name="colGeoLon.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="colTrigpointsAltitude.DisplayIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
-  <metadata name="colGeoAlt.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colGeoAlt.HeaderText" xml:space="preserve">
+  <data name="colTrigpointsAltitude.Text" xml:space="preserve">
     <value>Altitude</value>
-  </data>
-  <data name="colGeoAlt.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <metadata name="mnuTrigPoints.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>783, 50</value>
@@ -4045,6 +4027,117 @@
   <data name="&gt;&gt;mnuTrigPoints.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="lvTrigPoints.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 36</value>
+  </data>
+  <data name="lvTrigPoints.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 103</value>
+  </data>
+  <data name="lvTrigPoints.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;lvTrigPoints.Name" xml:space="preserve">
+    <value>lvTrigPoints</value>
+  </data>
+  <data name="&gt;&gt;lvTrigPoints.Type" xml:space="preserve">
+    <value>BrightIdeasSoftware.FastObjectListView, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
+  </data>
+  <data name="&gt;&gt;lvTrigPoints.Parent" xml:space="preserve">
+    <value>spTrigPoints.Panel1</value>
+  </data>
+  <data name="&gt;&gt;lvTrigPoints.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="colTrigPoint.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="colTrigPoint.HeaderText" xml:space="preserve">
+    <value>Station</value>
+  </data>
+  <data name="colTrigPoint.Width" type="System.Int32, mscorlib">
+    <value>70</value>
+  </data>
+  <metadata name="colX.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="colX.HeaderText" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="colX.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="colX.Width" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <metadata name="colY.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="colY.HeaderText" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="colY.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="colY.Width" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <metadata name="colZ.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="colZ.HeaderText" xml:space="preserve">
+    <value>Z</value>
+  </data>
+  <data name="colZ.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="colZ.Width" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <metadata name="colGPS.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="colGPS.HeaderText" xml:space="preserve">
+    <value>Coordinate</value>
+  </data>
+  <data name="colGPS.Width" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <metadata name="colNote.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="colNote.HeaderText" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="colNote.Width" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <metadata name="colGeoLat.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="colGeoLat.HeaderText" xml:space="preserve">
+    <value>Latitude</value>
+  </data>
+  <data name="colGeoLat.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <metadata name="colGeoLon.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="colGeoLon.HeaderText" xml:space="preserve">
+    <value>Longitude</value>
+  </data>
+  <data name="colGeoLon.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <metadata name="colGeoAlt.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="colGeoAlt.HeaderText" xml:space="preserve">
+    <value>Altitude</value>
+  </data>
+  <data name="colGeoAlt.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="grdTrigPoints.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -4067,7 +4160,7 @@
     <value>spTrigPoints.Panel1</value>
   </data>
   <data name="&gt;&gt;grdTrigPoints.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;spTrigPoints.Panel1.Name" xml:space="preserve">
     <value>spTrigPoints.Panel1</value>
@@ -6413,21 +6506,6 @@
   <data name="btnSegmentAndTrigpointGridColor0.Text" xml:space="preserve">
     <value>Default</value>
   </data>
-  <data name="btnSegmentAndTrigpointGridColor.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIQSURBVDhPjVNbS1RRGN2gGPQQEQU9Vga92IV8iKyIyeih
-        f6Bvo9NFiKLSSKQII5TAAl8Eo3pwEHoVdF/OOXNpSugiUsT0oA8NpEgM3iYxHWz17e8cmw4j6YLFPt/5
-        9lp78Z2zhZRyTisFLUtUUkIqoh4hSiitYPeJjWDFW4Emk0AShj3R4uTYHYjxMzj16S4mJ7MYrptHXABD
-        J/Lc12YTAys+/L0V4stZ5H/k8IrE2evAAK0Wjmc2NlCBQeTrA4jPEZyf6MTs3AyS9SucwIkscd/1XMSa
-        Y0gkkjDalGYiA4PCfBErtPdnYQ35hQJmfhHXljC9vMB910niRf8AP1sopf1EMhhirrUZEwe3Idd2CbO/
-        gWIqBrysxGoiyv2kM4qamEDP2zqulfxroPlF9kAlFi/UIltdBQ79vIpU54BnFdxPue9xsV2gyfOH8o+B
-        n2C64yqZVGCqowUUAHjTAvSTOHOF+ylvFEcuC/SN13NtZ8cGSvsJNkMmnUZvz1OsLhe5piH6BlrrRUUp
-        bBJlDIzj0MAcimzw2nOQJmbSLuKD77B912203f/GBor+VDYgHCPWrrMpGqWTHmN3QxeOX+vCnsZuqh9i
-        594bOHT6CfYfHSszCMGj721x8wOwIw7c+sgl7j2awj4St3eWJwjBbHEm9g4FkjDWZ2JvpJIjTGlXOrFE
-        urW0L5CUITST/5D2CfEHtwdvoopQGD8AAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="btnSegmentAndTrigpointGridColor.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -6928,7 +7006,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACC
-        DQAAAk1TRnQBSQFMAgEBBgEAARgBMgEYATIBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAfgBMgH4ATIBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -10136,7 +10214,7 @@
     <value>14</value>
   </data>
   <data name="tblDesignProp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>351, 792</value>
+    <value>351, 820</value>
   </data>
   <data name="tblDesignProp.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
@@ -26373,7 +26451,7 @@
     <value>5</value>
   </data>
   <data name="tsMain.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1638, 874</value>
+    <value>1638, 849</value>
   </data>
   <data name="&gt;&gt;tsMain.ContentPanel.Name" xml:space="preserve">
     <value>tsMain.ContentPanel</value>
@@ -26422,571 +26500,6 @@
   </data>
   <data name="tsMain.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="tsMain.Text" xml:space="preserve">
-    <value>ToolStripContainer1</value>
-  </data>
-  <metadata name="tbWorkspaces.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>319, 20</value>
-  </metadata>
-  <data name="tbWorkspaces.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="tbWorkspaces.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="btnWorkspaceData.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnWorkspaceData.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnWorkspaceData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 22</value>
-  </data>
-  <data name="btnWorkspaceData.Text" xml:space="preserve">
-    <value>Data</value>
-  </data>
-  <data name="btnWorkspaceDesign.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnWorkspaceDesign.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnWorkspaceDesign.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 22</value>
-  </data>
-  <data name="btnWorkspaceDesign.Text" xml:space="preserve">
-    <value>Design</value>
-  </data>
-  <data name="btnWorkspaceAll.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnWorkspaceAll.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnWorkspaceAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>27, 22</value>
-  </data>
-  <data name="btnWorkspaceAll.Text" xml:space="preserve">
-    <value>Full</value>
-  </data>
-  <data name="tbWorkspaces.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
-  </data>
-  <data name="tbWorkspaces.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 25</value>
-  </data>
-  <data name="tbWorkspaces.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;tbWorkspaces.Name" xml:space="preserve">
-    <value>tbWorkspaces</value>
-  </data>
-  <data name="&gt;&gt;tbWorkspaces.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbWorkspaces.Parent" xml:space="preserve">
-    <value>tsMain.TopToolStripPanel</value>
-  </data>
-  <data name="&gt;&gt;tbWorkspaces.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="tbPens.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 77</value>
-  </metadata>
-  <data name="tbPens.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="tbPens.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="lblPensStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 22</value>
-  </data>
-  <data name="lblPensStyle.Text" xml:space="preserve">
-    <value>Style:</value>
-  </data>
-  <data name="ToolStripSeparator29.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="btnPenSmooting.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKUSURBVDhPjZNJTJNBFMcb48mbHrwYjRyUUqW09MIF64Lx
-        IIQoJIUggQS1HkyIoOIWGqMmLhBjgqVSyoWEECrIEnbtB0V2oe1XAgLSVuDDFmm615alf6eLiYogv+Rd
-        Zt7vvXkzGdZOGJcerffNlN92jRae9AzcOMB8uroHlGQ3INkVSdkarSxqxf1ZOm1W57cyKvEji/py+nJ3
-        Nn+xQ3TQ3pG+L5L2bygZe8PCNPodI4WO7/3XDOaevJ6l7mw50yW6Z2xKyZ1RCpMjqWHoimPQyWJCoZEe
-        gX/+HShKuGEczlmzDeS4rOrcJYsqc2K+5fyH2bqkt8NSblVEZbF0smjA2o+1pRasmqrhMyjgnSyBW3Mf
-        Esn1gPFjztpKb5ZvoTPVYagVWsbKuF+JdigisxH41gzL+2yszjdglWmFd+oV3PRjuMbuwDEoJkUuBagu
-        4cZEPWedKuP7iXY8JOsrY0nXdphVYjinqmDtuwKn5gk5fgPcWgmcQ2LY+7JgV2eAaU4ihXgBosWH5CCj
-        L+N+mJrSYNWVwzVSAEZdDM/4XTi1D+GdlhI5E7ZeEYmLWKhPBF0Zj4gaproo+pmOXJ5v8gVM7XnwzUrx
-        pfYEbJrncA7mYrkrFVZVKuxUChaUCdAr/ipA2K9X8MC0pcFvrMGc8jTGpdHwaApg6UhGtyQKQ6WxsLSd
-        gamGh4kqwaYCQQR0JRdzdafI87Hh1d6EjUpDZ/FhDJRwsNiQCHNjAuhwd0FY2YxAK+OQUZ7C2SfCcCmb
-        iGfh0d6CQ32BzM7fVmbp3nDgN8jh7M+AroIbmlWv4IOW8/4vB4+/zijhCsmxeJ3PLiLLQeH32JpZ5Tlr
-        UKTlcai4EfOALO0N7+ycOBK/Om3/w/6AxfoJF6uodFP749AAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnPenSmooting.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnPenSmooting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnPenSmooting.Text" xml:space="preserve">
-    <value>Line smoothing</value>
-  </data>
-  <data name="cboPensSmooting.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="cboPensSmooting.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="cboPensSmooting.Items" xml:space="preserve">
-    <value>0.01</value>
-  </data>
-  <data name="cboPensSmooting.Items1" xml:space="preserve">
-    <value>0.02</value>
-  </data>
-  <data name="cboPensSmooting.Items2" xml:space="preserve">
-    <value>0.03</value>
-  </data>
-  <data name="cboPensSmooting.Items3" xml:space="preserve">
-    <value>0.04</value>
-  </data>
-  <data name="cboPensSmooting.Items4" xml:space="preserve">
-    <value>0.05</value>
-  </data>
-  <data name="cboPensSmooting.Items5" xml:space="preserve">
-    <value>0.07</value>
-  </data>
-  <data name="cboPensSmooting.Items6" xml:space="preserve">
-    <value>0.10</value>
-  </data>
-  <data name="cboPensSmooting.Items7" xml:space="preserve">
-    <value>0.12</value>
-  </data>
-  <data name="cboPensSmooting.Items8" xml:space="preserve">
-    <value>0.15</value>
-  </data>
-  <data name="cboPensSmooting.Items9" xml:space="preserve">
-    <value>0.17</value>
-  </data>
-  <data name="cboPensSmooting.Items10" xml:space="preserve">
-    <value>0.20</value>
-  </data>
-  <data name="cboPensSmooting.Items11" xml:space="preserve">
-    <value>0.25</value>
-  </data>
-  <data name="cboPensSmooting.Items12" xml:space="preserve">
-    <value>0.30</value>
-  </data>
-  <data name="cboPensSmooting.Items13" xml:space="preserve">
-    <value>0.50</value>
-  </data>
-  <data name="cboPensSmooting.Items14" xml:space="preserve">
-    <value>0.75</value>
-  </data>
-  <data name="cboPensSmooting.Items15" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="cboPensSmooting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 21</value>
-  </data>
-  <data name="cboPensSmooting.ToolTipText" xml:space="preserve">
-    <value>Smooting factor (m)</value>
-  </data>
-  <data name="ToolStripSeparator15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="btnPenLine.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACkSURBVDhPY6AJKCoqWpefl/e/MDf7f1xlx3+oMPEApPnx
-        40f/nzx6+L80L4t0AwqANj8BGvD0yeP/8fHxv6HCxAHXeaf/J1a0/y/Ky/mfn5//3cHBYTdUijAAabbt
-        3QZysjEQK4FoEB8kDpLHC9A0IwPChrjOO4NLMwzgNsRp+mFCmmEApyEgjYQ0wwDxYYIHQA05Q7khIO9D
-        +WQBUrw+eAEDAwBGr2eBYFOYmgAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnPenLine.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnPenLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnPenSpline.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFuSURBVDhPYyAE6uvrmUAYyqUzmJmWxgqk2IGYAyxACmio
-        q4gHUorWHTuTLdu3n7Bp3/ZCq37bH7v2bf+RMUQ1EigqKlqXn5f3Lzk5+VtcZf0/i7Ztt/Sz+mv4lfUd
-        gNLGWDAqAGr+//jxo/9PHj38X5qXBbJBG4iFgZgZJI8XNFRXRxbkZv9/AjTg6ZPH/4uKCr9CpQgDYFTx
-        ASm1xIr2/0V5OSDN/xwcHK6HhIRwAsUZoRgrYAS6EyQpZN6+28Gscx/I2SC/6QcEBCiDFPz//x+u2djY
-        GBQzKIBxVWgo2H9WTVu3mFYu3QgWBQIkxYxIhjBaWFhwenh4gFwMBiAJsAG27dv/62X1J4HYUADXBMZA
-        Q6AGMbq6unKDZZABKF6VfNLkoFwQgGgEAahGoM3soUAXa2lpsYHFkQE0YaBHF8QAIABpBFIsQAyiMfMH
-        1pSFZABBgMMAEAA7397eHmQ7XoCZNCEApBHkZzQDGBgAHb9864M+u1IAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnPenSpline.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnPenSpline.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnPenBezier.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEHSURBVDhPYyAE6mpr/oMwlEs6aKqp+N9SU06eAa0QjcZQ
-        TBporK0Ca7Zq351r077ltm379v927dswMEQ1EigqKlqXn5f3vzA3+39cZcd/i7Ztt/Sz+mv4lfUdgNIw
-        1yBjVADS/Pjxo/9PHj38X5qXBbJBG4iFgZgZJI8XNNRU/S8A2vwEaMDTJ4//x8fH/4ZKEQag0AZSxokV
-        7f+L8nL+5+fnf3dwcNgNkcUDamtr/zfUVoM1m3buczbr3AdmA7GWj4+PPUgNXgBKJFDbGayatm4xrVy6
-        ESxBAoCHJiiq9LL6k0BssgAoXpV80uSgXNIBNGEQji5cAGvKIgVQbAAQYCZNvICBAQBteXnA9TuArwAA
-        AABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnPenBezier.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnPenBezier.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="tbPens.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 25</value>
-  </data>
-  <data name="tbPens.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 25</value>
-  </data>
-  <data name="tbPens.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="tbPens.Text" xml:space="preserve">
-    <value>Design</value>
-  </data>
-  <data name="&gt;&gt;tbPens.Name" xml:space="preserve">
-    <value>tbPens</value>
-  </data>
-  <data name="&gt;&gt;tbPens.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbPens.Parent" xml:space="preserve">
-    <value>tsMain.TopToolStripPanel</value>
-  </data>
-  <data name="&gt;&gt;tbPens.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <metadata name="tbLayers.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>112, 18</value>
-  </metadata>
-  <data name="tbLayers.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="tbLayers.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="btnLayer_Base.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFxSURBVDhPnZJLLwNhGIXnv1ha+lcWlP4OC7GQiBAhggUh
-        LkEsXdJ72mpVW9emelFKaYvWcc58STNlNGKSJzlnzvud+fJmLO9uueTZLmJo6+9oXucsPTKtNlB/Bxof
-        wFvLIO3mm9TtT9gldsEwG6tN4DgH+PPAuM/gvzN0eeZjJ0CNH9O5TkG5DoQKQLQETIYM0m5+IgBUGt8K
-        Cq/AVBiYjgDxskHazcdYkn9xFHgobp6BmSgwS07vDdJuXmVXT9xBp4DLSD8y4FCyAszHDdJufi4GZKuO
-        JUokH4AEwzOymDCkqIXTK1+Q5nynYIQizmAlZThnKJaphdMr121jvG1XQZQv1tLAKslwQEi7eV0/wj3o
-        XKcgyM1mGChczxqkf/NhzncV+IvAJTcrNi8NvXzgRwFf7N8Ae9fAbc0g7eZz1D5ngXeniBCXeMRbiEP+
-        kaKXD3Je5+yCwaXEgcwoG/+K5j0btxd2AZ8+MvAP+i3Lsr4AuGoZ6FEf8UMAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnLayer_Base.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnLayer_Base.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 22</value>
-  </data>
-  <data name="btnLayer_Base.Text" xml:space="preserve">
-    <value>Base</value>
-  </data>
-  <data name="btnLayer_Base.ToolTipText" xml:space="preserve">
-    <value>Base level (survey images)</value>
-  </data>
-  <data name="ToolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="btnLayer_Soil.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFxSURBVDhPnZJLLwNhGIXnv1ha+lcWlP4OC7GQiBAhggUh
-        LkEsXdJ72mpVW9emelFKaYvWcc58STNlNGKSJzlnzvud+fJmLO9uueTZLmJo6+9oXucsPTKtNlB/Bxof
-        wFvLIO3mm9TtT9gldsEwG6tN4DgH+PPAuM/gvzN0eeZjJ0CNH9O5TkG5DoQKQLQETIYM0m5+IgBUGt8K
-        Cq/AVBiYjgDxskHazcdYkn9xFHgobp6BmSgwS07vDdJuXmVXT9xBp4DLSD8y4FCyAszHDdJufi4GZKuO
-        JUokH4AEwzOymDCkqIXTK1+Q5nynYIQizmAlZThnKJaphdMr121jvG1XQZQv1tLAKslwQEi7eV0/wj3o
-        XKcgyM1mGChczxqkf/NhzncV+IvAJTcrNi8NvXzgRwFf7N8Ae9fAbc0g7eZz1D5ngXeniBCXeMRbiEP+
-        kaKXD3Je5+yCwaXEgcwoG/+K5j0btxd2AZ8+MvAP+i3Lsr4AuGoZ6FEf8UMAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnLayer_Soil.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnLayer_Soil.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 22</value>
-  </data>
-  <data name="btnLayer_Soil.Text" xml:space="preserve">
-    <value>Soil</value>
-  </data>
-  <data name="btnLayer_Soil.ToolTipText" xml:space="preserve">
-    <value>Soil layer</value>
-  </data>
-  <data name="ToolStripSeparator21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="btnLayer_Water.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFxSURBVDhPnZJLLwNhGIXnv1ha+lcWlP4OC7GQiBAhggUh
-        LkEsXdJ72mpVW9emelFKaYvWcc58STNlNGKSJzlnzvud+fJmLO9uueTZLmJo6+9oXucsPTKtNlB/Bxof
-        wFvLIO3mm9TtT9gldsEwG6tN4DgH+PPAuM/gvzN0eeZjJ0CNH9O5TkG5DoQKQLQETIYM0m5+IgBUGt8K
-        Cq/AVBiYjgDxskHazcdYkn9xFHgobp6BmSgwS07vDdJuXmVXT9xBp4DLSD8y4FCyAszHDdJufi4GZKuO
-        JUokH4AEwzOymDCkqIXTK1+Q5nynYIQizmAlZThnKJaphdMr121jvG1XQZQv1tLAKslwQEi7eV0/wj3o
-        XKcgyM1mGChczxqkf/NhzncV+IvAJTcrNi8NvXzgRwFf7N8Ae9fAbc0g7eZz1D5ngXeniBCXeMRbiEP+
-        kaKXD3Je5+yCwaXEgcwoG/+K5j0btxd2AZ8+MvAP+i3Lsr4AuGoZ6FEf8UMAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnLayer_Water.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnLayer_Water.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 22</value>
-  </data>
-  <data name="btnLayer_Water.Text" xml:space="preserve">
-    <value>Water and floor morphologies</value>
-  </data>
-  <data name="btnLayer_Water.ToolTipText" xml:space="preserve">
-    <value>Water and floor morphologies layer</value>
-  </data>
-  <data name="ToolStripSeparator22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="btnLayer_Rocks.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFxSURBVDhPnZJLLwNhGIXnv1ha+lcWlP4OC7GQiBAhggUh
-        LkEsXdJ72mpVW9emelFKaYvWcc58STNlNGKSJzlnzvud+fJmLO9uueTZLmJo6+9oXucsPTKtNlB/Bxof
-        wFvLIO3mm9TtT9gldsEwG6tN4DgH+PPAuM/gvzN0eeZjJ0CNH9O5TkG5DoQKQLQETIYM0m5+IgBUGt8K
-        Cq/AVBiYjgDxskHazcdYkn9xFHgobp6BmSgwS07vDdJuXmVXT9xBp4DLSD8y4FCyAszHDdJufi4GZKuO
-        JUokH4AEwzOymDCkqIXTK1+Q5nynYIQizmAlZThnKJaphdMr121jvG1XQZQv1tLAKslwQEi7eV0/wj3o
-        XKcgyM1mGChczxqkf/NhzncV+IvAJTcrNi8NvXzgRwFf7N8Ae9fAbc0g7eZz1D5ngXeniBCXeMRbiEP+
-        kaKXD3Je5+yCwaXEgcwoG/+K5j0btxd2AZ8+MvAP+i3Lsr4AuGoZ6FEf8UMAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnLayer_Rocks.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnLayer_Rocks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
-  </data>
-  <data name="btnLayer_Rocks.Text" xml:space="preserve">
-    <value>Rocks and concretions</value>
-  </data>
-  <data name="btnLayer_Rocks.ToolTipText" xml:space="preserve">
-    <value>Rocks and concretions layer</value>
-  </data>
-  <data name="ToolStripSeparator23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="btnLayer_TerrainLevel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFxSURBVDhPnZJLLwNhGIXnv1ha+lcWlP4OC7GQiBAhggUh
-        LkEsXdJ72mpVW9emelFKaYvWcc58STNlNGKSJzlnzvud+fJmLO9uueTZLmJo6+9oXucsPTKtNlB/Bxof
-        wFvLIO3mm9TtT9gldsEwG6tN4DgH+PPAuM/gvzN0eeZjJ0CNH9O5TkG5DoQKQLQETIYM0m5+IgBUGt8K
-        Cq/AVBiYjgDxskHazcdYkn9xFHgobp6BmSgwS07vDdJuXmVXT9xBp4DLSD8y4FCyAszHDdJufi4GZKuO
-        JUokH4AEwzOymDCkqIXTK1+Q5nynYIQizmAlZThnKJaphdMr121jvG1XQZQv1tLAKslwQEi7eV0/wj3o
-        XKcgyM1mGChczxqkf/NhzncV+IvAJTcrNi8NvXzgRwFf7N8Ae9fAbc0g7eZz1D5ngXeniBCXeMRbiEP+
-        kaKXD3Je5+yCwaXEgcwoG/+K5j0btxd2AZ8+MvAP+i3Lsr4AuGoZ6FEf8UMAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnLayer_TerrainLevel.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnLayer_TerrainLevel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
-  </data>
-  <data name="btnLayer_TerrainLevel.Text" xml:space="preserve">
-    <value>Ceiling morphologies</value>
-  </data>
-  <data name="btnLayer_TerrainLevel.ToolTipText" xml:space="preserve">
-    <value>Ceiling morphologies layer</value>
-  </data>
-  <data name="ToolStripSeparator24.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="btnLayer_Borders.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFxSURBVDhPnZJLLwNhGIXnv1ha+lcWlP4OC7GQiBAhggUh
-        LkEsXdJ72mpVW9emelFKaYvWcc58STNlNGKSJzlnzvud+fJmLO9uueTZLmJo6+9oXucsPTKtNlB/Bxof
-        wFvLIO3mm9TtT9gldsEwG6tN4DgH+PPAuM/gvzN0eeZjJ0CNH9O5TkG5DoQKQLQETIYM0m5+IgBUGt8K
-        Cq/AVBiYjgDxskHazcdYkn9xFHgobp6BmSgwS07vDdJuXmVXT9xBp4DLSD8y4FCyAszHDdJufi4GZKuO
-        JUokH4AEwzOymDCkqIXTK1+Q5nynYIQizmAlZThnKJaphdMr121jvG1XQZQv1tLAKslwQEi7eV0/wj3o
-        XKcgyM1mGChczxqkf/NhzncV+IvAJTcrNi8NvXzgRwFf7N8Ae9fAbc0g7eZz1D5ngXeniBCXeMRbiEP+
-        kaKXD3Je5+yCwaXEgcwoG/+K5j0btxd2AZ8+MvAP+i3Lsr4AuGoZ6FEf8UMAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnLayer_Borders.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnLayer_Borders.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 22</value>
-  </data>
-  <data name="btnLayer_Borders.Text" xml:space="preserve">
-    <value>Borders</value>
-  </data>
-  <data name="btnLayer_Borders.ToolTipText" xml:space="preserve">
-    <value>Borders layer</value>
-  </data>
-  <data name="ToolStripSeparator25.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="btnLayer_Signs.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFxSURBVDhPnZJLLwNhGIXnv1ha+lcWlP4OC7GQiBAhggUh
-        LkEsXdJ72mpVW9emelFKaYvWcc58STNlNGKSJzlnzvud+fJmLO9uueTZLmJo6+9oXucsPTKtNlB/Bxof
-        wFvLIO3mm9TtT9gldsEwG6tN4DgH+PPAuM/gvzN0eeZjJ0CNH9O5TkG5DoQKQLQETIYM0m5+IgBUGt8K
-        Cq/AVBiYjgDxskHazcdYkn9xFHgobp6BmSgwS07vDdJuXmVXT9xBp4DLSD8y4FCyAszHDdJufi4GZKuO
-        JUokH4AEwzOymDCkqIXTK1+Q5nynYIQizmAlZThnKJaphdMr121jvG1XQZQv1tLAKslwQEi7eV0/wj3o
-        XKcgyM1mGChczxqkf/NhzncV+IvAJTcrNi8NvXzgRwFf7N8Ae9fAbc0g7eZz1D5ngXeniBCXeMRbiEP+
-        kaKXD3Je5+yCwaXEgcwoG/+K5j0btxd2AZ8+MvAP+i3Lsr4AuGoZ6FEf8UMAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnLayer_Signs.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnLayer_Signs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 22</value>
-  </data>
-  <data name="btnLayer_Signs.Text" xml:space="preserve">
-    <value>Signs</value>
-  </data>
-  <data name="btnLayer_Signs.ToolTipText" xml:space="preserve">
-    <value>Signs borders layer</value>
-  </data>
-  <data name="ToolStripSeparator20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="btnLayerManageLevels.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIPSURBVDhPpZFdSNNRGMbPdYFhXVjeRTcRlOIKo0u7KDTo
-        zgLLGhaJUOick0ytRvnRjQkRmDCwKc0xtkJxm83K6bKyBGVEpmuxNnL7uzVDVLboac/8L9hYEPXCD16e
-        j8M5HJE5DSMhk9oWRDYabCGjHMs+KmvwUderGAbcgG4uHWr06q1f/XI8fVi+/zYGZwAwLwCWReCxDHdq
-        9Ji5PBz0ybXNYVk3G8N8FFAavCjqeI2DnW9w6M50Eu7U6DHD7O9DNPaQxTQfRzQO6Kcl3Bj24LbVizbb
-        Z7TLcKdGj5nAOsCOxiZJouV5BE1jEWiehqEZXU6iHY/gqiOMJhnu1BplvzGRZYddXkJB9taYRsr1Htx9
-        t4paRxR1z1agkuFOjR4z+1RDH1I9HiAU15xepTmAJ76fON49i/0qBwrqx9KgRo8ZZtlJlg9rXVKt4xvc
-        G8CDiSXopsKwfIxnhV7v5BJergB1iQ674sitKRTfdKGodQKFzU4caB5HwR+gV9jihOL6JIq1LrAr9pSp
-        K3cqTpbuutD//ti9OaiHfCh/uIhTGVCjx0xOVe9afsnF07tLr5zhK7bmnu/rK+megW7mOyoG/Thr9KMy
-        A2r0mDmayOae0y8kultEXrXBfKLHjRdffsD+aQN2z3qS0QxSOjPMsrOjelAS+TVG5F0yYHvVALYp+/8K
-        Ztlhl09I/ee/8j8jxC8uTjqKyjOxJAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnLayerManageLevels.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnLayerManageLevels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnLayerManageLevels.Text" xml:space="preserve">
-    <value>Manage levels</value>
-  </data>
-  <data name="tbLayers.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 50</value>
-  </data>
-  <data name="tbLayers.Size" type="System.Drawing.Size, System.Drawing">
-    <value>713, 25</value>
-  </data>
-  <data name="tbLayers.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="tbLayers.Text" xml:space="preserve">
-    <value>Layers</value>
-  </data>
-  <data name="&gt;&gt;tbLayers.Name" xml:space="preserve">
-    <value>tbLayers</value>
-  </data>
-  <data name="&gt;&gt;tbLayers.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbLayers.Parent" xml:space="preserve">
-    <value>tsMain.TopToolStripPanel</value>
-  </data>
-  <data name="&gt;&gt;tbLayers.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <metadata name="tbDesign.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>213, 47</value>
-  </metadata>
-  <data name="tbDesign.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="tbDesign.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="tbDesign.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 75</value>
-  </data>
-  <data name="tbDesign.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 25</value>
-  </data>
-  <data name="tbDesign.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="tbDesign.Text" xml:space="preserve">
-    <value>Design</value>
-  </data>
-  <data name="&gt;&gt;tbDesign.Name" xml:space="preserve">
-    <value>tbDesign</value>
-  </data>
-  <data name="&gt;&gt;tbDesign.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbDesign.Parent" xml:space="preserve">
-    <value>tsMain.TopToolStripPanel</value>
-  </data>
-  <data name="&gt;&gt;tbDesign.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <metadata name="tbMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -27695,7 +27208,7 @@
     <value>Properties</value>
   </data>
   <data name="tbMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 75</value>
+    <value>3, 0</value>
   </data>
   <data name="tbMain.Size" type="System.Drawing.Size, System.Drawing">
     <value>579, 25</value>
@@ -27716,6 +27229,583 @@
     <value>tsMain.TopToolStripPanel</value>
   </data>
   <data name="&gt;&gt;tbMain.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="tbLayers.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>112, 18</value>
+  </metadata>
+  <data name="tbLayers.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="tbLayers.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="btnLayer_Base.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFxSURBVDhPnZJLLwNhGIXnv1ha+lcWlP4OC7GQiBAhggUh
+        LkEsXdJ72mpVW9emelFKaYvWcc58STNlNGKSJzlnzvud+fJmLO9uueTZLmJo6+9oXucsPTKtNlB/Bxof
+        wFvLIO3mm9TtT9gldsEwG6tN4DgH+PPAuM/gvzN0eeZjJ0CNH9O5TkG5DoQKQLQETIYM0m5+IgBUGt8K
+        Cq/AVBiYjgDxskHazcdYkn9xFHgobp6BmSgwS07vDdJuXmVXT9xBp4DLSD8y4FCyAszHDdJufi4GZKuO
+        JUokH4AEwzOymDCkqIXTK1+Q5nynYIQizmAlZThnKJaphdMr121jvG1XQZQv1tLAKslwQEi7eV0/wj3o
+        XKcgyM1mGChczxqkf/NhzncV+IvAJTcrNi8NvXzgRwFf7N8Ae9fAbc0g7eZz1D5ngXeniBCXeMRbiEP+
+        kaKXD3Je5+yCwaXEgcwoG/+K5j0btxd2AZ8+MvAP+i3Lsr4AuGoZ6FEf8UMAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnLayer_Base.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnLayer_Base.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 22</value>
+  </data>
+  <data name="btnLayer_Base.Text" xml:space="preserve">
+    <value>Base</value>
+  </data>
+  <data name="btnLayer_Base.ToolTipText" xml:space="preserve">
+    <value>Base level (survey images)</value>
+  </data>
+  <data name="ToolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="btnLayer_Soil.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFxSURBVDhPnZJLLwNhGIXnv1ha+lcWlP4OC7GQiBAhggUh
+        LkEsXdJ72mpVW9emelFKaYvWcc58STNlNGKSJzlnzvud+fJmLO9uueTZLmJo6+9oXucsPTKtNlB/Bxof
+        wFvLIO3mm9TtT9gldsEwG6tN4DgH+PPAuM/gvzN0eeZjJ0CNH9O5TkG5DoQKQLQETIYM0m5+IgBUGt8K
+        Cq/AVBiYjgDxskHazcdYkn9xFHgobp6BmSgwS07vDdJuXmVXT9xBp4DLSD8y4FCyAszHDdJufi4GZKuO
+        JUokH4AEwzOymDCkqIXTK1+Q5nynYIQizmAlZThnKJaphdMr121jvG1XQZQv1tLAKslwQEi7eV0/wj3o
+        XKcgyM1mGChczxqkf/NhzncV+IvAJTcrNi8NvXzgRwFf7N8Ae9fAbc0g7eZz1D5ngXeniBCXeMRbiEP+
+        kaKXD3Je5+yCwaXEgcwoG/+K5j0btxd2AZ8+MvAP+i3Lsr4AuGoZ6FEf8UMAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnLayer_Soil.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnLayer_Soil.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 22</value>
+  </data>
+  <data name="btnLayer_Soil.Text" xml:space="preserve">
+    <value>Soil</value>
+  </data>
+  <data name="btnLayer_Soil.ToolTipText" xml:space="preserve">
+    <value>Soil layer</value>
+  </data>
+  <data name="ToolStripSeparator21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="btnLayer_Water.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFxSURBVDhPnZJLLwNhGIXnv1ha+lcWlP4OC7GQiBAhggUh
+        LkEsXdJ72mpVW9emelFKaYvWcc58STNlNGKSJzlnzvud+fJmLO9uueTZLmJo6+9oXucsPTKtNlB/Bxof
+        wFvLIO3mm9TtT9gldsEwG6tN4DgH+PPAuM/gvzN0eeZjJ0CNH9O5TkG5DoQKQLQETIYM0m5+IgBUGt8K
+        Cq/AVBiYjgDxskHazcdYkn9xFHgobp6BmSgwS07vDdJuXmVXT9xBp4DLSD8y4FCyAszHDdJufi4GZKuO
+        JUokH4AEwzOymDCkqIXTK1+Q5nynYIQizmAlZThnKJaphdMr121jvG1XQZQv1tLAKslwQEi7eV0/wj3o
+        XKcgyM1mGChczxqkf/NhzncV+IvAJTcrNi8NvXzgRwFf7N8Ae9fAbc0g7eZz1D5ngXeniBCXeMRbiEP+
+        kaKXD3Je5+yCwaXEgcwoG/+K5j0btxd2AZ8+MvAP+i3Lsr4AuGoZ6FEf8UMAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnLayer_Water.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnLayer_Water.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 22</value>
+  </data>
+  <data name="btnLayer_Water.Text" xml:space="preserve">
+    <value>Water and floor morphologies</value>
+  </data>
+  <data name="btnLayer_Water.ToolTipText" xml:space="preserve">
+    <value>Water and floor morphologies layer</value>
+  </data>
+  <data name="ToolStripSeparator22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="btnLayer_Rocks.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFxSURBVDhPnZJLLwNhGIXnv1ha+lcWlP4OC7GQiBAhggUh
+        LkEsXdJ72mpVW9emelFKaYvWcc58STNlNGKSJzlnzvud+fJmLO9uueTZLmJo6+9oXucsPTKtNlB/Bxof
+        wFvLIO3mm9TtT9gldsEwG6tN4DgH+PPAuM/gvzN0eeZjJ0CNH9O5TkG5DoQKQLQETIYM0m5+IgBUGt8K
+        Cq/AVBiYjgDxskHazcdYkn9xFHgobp6BmSgwS07vDdJuXmVXT9xBp4DLSD8y4FCyAszHDdJufi4GZKuO
+        JUokH4AEwzOymDCkqIXTK1+Q5nynYIQizmAlZThnKJaphdMr121jvG1XQZQv1tLAKslwQEi7eV0/wj3o
+        XKcgyM1mGChczxqkf/NhzncV+IvAJTcrNi8NvXzgRwFf7N8Ae9fAbc0g7eZz1D5ngXeniBCXeMRbiEP+
+        kaKXD3Je5+yCwaXEgcwoG/+K5j0btxd2AZ8+MvAP+i3Lsr4AuGoZ6FEf8UMAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnLayer_Rocks.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnLayer_Rocks.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 22</value>
+  </data>
+  <data name="btnLayer_Rocks.Text" xml:space="preserve">
+    <value>Rocks and concretions</value>
+  </data>
+  <data name="btnLayer_Rocks.ToolTipText" xml:space="preserve">
+    <value>Rocks and concretions layer</value>
+  </data>
+  <data name="ToolStripSeparator23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="btnLayer_TerrainLevel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFxSURBVDhPnZJLLwNhGIXnv1ha+lcWlP4OC7GQiBAhggUh
+        LkEsXdJ72mpVW9emelFKaYvWcc58STNlNGKSJzlnzvud+fJmLO9uueTZLmJo6+9oXucsPTKtNlB/Bxof
+        wFvLIO3mm9TtT9gldsEwG6tN4DgH+PPAuM/gvzN0eeZjJ0CNH9O5TkG5DoQKQLQETIYM0m5+IgBUGt8K
+        Cq/AVBiYjgDxskHazcdYkn9xFHgobp6BmSgwS07vDdJuXmVXT9xBp4DLSD8y4FCyAszHDdJufi4GZKuO
+        JUokH4AEwzOymDCkqIXTK1+Q5nynYIQizmAlZThnKJaphdMr121jvG1XQZQv1tLAKslwQEi7eV0/wj3o
+        XKcgyM1mGChczxqkf/NhzncV+IvAJTcrNi8NvXzgRwFf7N8Ae9fAbc0g7eZz1D5ngXeniBCXeMRbiEP+
+        kaKXD3Je5+yCwaXEgcwoG/+K5j0btxd2AZ8+MvAP+i3Lsr4AuGoZ6FEf8UMAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnLayer_TerrainLevel.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnLayer_TerrainLevel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 22</value>
+  </data>
+  <data name="btnLayer_TerrainLevel.Text" xml:space="preserve">
+    <value>Ceiling morphologies</value>
+  </data>
+  <data name="btnLayer_TerrainLevel.ToolTipText" xml:space="preserve">
+    <value>Ceiling morphologies layer</value>
+  </data>
+  <data name="ToolStripSeparator24.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="btnLayer_Borders.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFxSURBVDhPnZJLLwNhGIXnv1ha+lcWlP4OC7GQiBAhggUh
+        LkEsXdJ72mpVW9emelFKaYvWcc58STNlNGKSJzlnzvud+fJmLO9uueTZLmJo6+9oXucsPTKtNlB/Bxof
+        wFvLIO3mm9TtT9gldsEwG6tN4DgH+PPAuM/gvzN0eeZjJ0CNH9O5TkG5DoQKQLQETIYM0m5+IgBUGt8K
+        Cq/AVBiYjgDxskHazcdYkn9xFHgobp6BmSgwS07vDdJuXmVXT9xBp4DLSD8y4FCyAszHDdJufi4GZKuO
+        JUokH4AEwzOymDCkqIXTK1+Q5nynYIQizmAlZThnKJaphdMr121jvG1XQZQv1tLAKslwQEi7eV0/wj3o
+        XKcgyM1mGChczxqkf/NhzncV+IvAJTcrNi8NvXzgRwFf7N8Ae9fAbc0g7eZz1D5ngXeniBCXeMRbiEP+
+        kaKXD3Je5+yCwaXEgcwoG/+K5j0btxd2AZ8+MvAP+i3Lsr4AuGoZ6FEf8UMAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnLayer_Borders.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnLayer_Borders.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 22</value>
+  </data>
+  <data name="btnLayer_Borders.Text" xml:space="preserve">
+    <value>Borders</value>
+  </data>
+  <data name="btnLayer_Borders.ToolTipText" xml:space="preserve">
+    <value>Borders layer</value>
+  </data>
+  <data name="ToolStripSeparator25.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="btnLayer_Signs.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFxSURBVDhPnZJLLwNhGIXnv1ha+lcWlP4OC7GQiBAhggUh
+        LkEsXdJ72mpVW9emelFKaYvWcc58STNlNGKSJzlnzvud+fJmLO9uueTZLmJo6+9oXucsPTKtNlB/Bxof
+        wFvLIO3mm9TtT9gldsEwG6tN4DgH+PPAuM/gvzN0eeZjJ0CNH9O5TkG5DoQKQLQETIYM0m5+IgBUGt8K
+        Cq/AVBiYjgDxskHazcdYkn9xFHgobp6BmSgwS07vDdJuXmVXT9xBp4DLSD8y4FCyAszHDdJufi4GZKuO
+        JUokH4AEwzOymDCkqIXTK1+Q5nynYIQizmAlZThnKJaphdMr121jvG1XQZQv1tLAKslwQEi7eV0/wj3o
+        XKcgyM1mGChczxqkf/NhzncV+IvAJTcrNi8NvXzgRwFf7N8Ae9fAbc0g7eZz1D5ngXeniBCXeMRbiEP+
+        kaKXD3Je5+yCwaXEgcwoG/+K5j0btxd2AZ8+MvAP+i3Lsr4AuGoZ6FEf8UMAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnLayer_Signs.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnLayer_Signs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 22</value>
+  </data>
+  <data name="btnLayer_Signs.Text" xml:space="preserve">
+    <value>Signs</value>
+  </data>
+  <data name="btnLayer_Signs.ToolTipText" xml:space="preserve">
+    <value>Signs borders layer</value>
+  </data>
+  <data name="ToolStripSeparator20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="btnLayerManageLevels.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIPSURBVDhPpZFdSNNRGMbPdYFhXVjeRTcRlOIKo0u7KDTo
+        zgLLGhaJUOick0ytRvnRjQkRmDCwKc0xtkJxm83K6bKyBGVEpmuxNnL7uzVDVLboac/8L9hYEPXCD16e
+        j8M5HJE5DSMhk9oWRDYabCGjHMs+KmvwUderGAbcgG4uHWr06q1f/XI8fVi+/zYGZwAwLwCWReCxDHdq
+        9Ji5PBz0ybXNYVk3G8N8FFAavCjqeI2DnW9w6M50Eu7U6DHD7O9DNPaQxTQfRzQO6Kcl3Bj24LbVizbb
+        Z7TLcKdGj5nAOsCOxiZJouV5BE1jEWiehqEZXU6iHY/gqiOMJhnu1BplvzGRZYddXkJB9taYRsr1Htx9
+        t4paRxR1z1agkuFOjR4z+1RDH1I9HiAU15xepTmAJ76fON49i/0qBwrqx9KgRo8ZZtlJlg9rXVKt4xvc
+        G8CDiSXopsKwfIxnhV7v5BJergB1iQ674sitKRTfdKGodQKFzU4caB5HwR+gV9jihOL6JIq1LrAr9pSp
+        K3cqTpbuutD//ti9OaiHfCh/uIhTGVCjx0xOVe9afsnF07tLr5zhK7bmnu/rK+megW7mOyoG/Thr9KMy
+        A2r0mDmayOae0y8kultEXrXBfKLHjRdffsD+aQN2z3qS0QxSOjPMsrOjelAS+TVG5F0yYHvVALYp+/8K
+        Ztlhl09I/ee/8j8jxC8uTjqKyjOxJAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnLayerManageLevels.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnLayerManageLevels.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnLayerManageLevels.Text" xml:space="preserve">
+    <value>Manage levels</value>
+  </data>
+  <data name="tbLayers.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 25</value>
+  </data>
+  <data name="tbLayers.Size" type="System.Drawing.Size, System.Drawing">
+    <value>713, 25</value>
+  </data>
+  <data name="tbLayers.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tbLayers.Text" xml:space="preserve">
+    <value>Layers</value>
+  </data>
+  <data name="&gt;&gt;tbLayers.Name" xml:space="preserve">
+    <value>tbLayers</value>
+  </data>
+  <data name="&gt;&gt;tbLayers.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbLayers.Parent" xml:space="preserve">
+    <value>tsMain.TopToolStripPanel</value>
+  </data>
+  <data name="&gt;&gt;tbLayers.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="tbDesign.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>213, 47</value>
+  </metadata>
+  <data name="tbDesign.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="tbDesign.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="tbDesign.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 50</value>
+  </data>
+  <data name="tbDesign.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 25</value>
+  </data>
+  <data name="tbDesign.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="tbDesign.Text" xml:space="preserve">
+    <value>Design</value>
+  </data>
+  <data name="&gt;&gt;tbDesign.Name" xml:space="preserve">
+    <value>tbDesign</value>
+  </data>
+  <data name="&gt;&gt;tbDesign.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbDesign.Parent" xml:space="preserve">
+    <value>tsMain.TopToolStripPanel</value>
+  </data>
+  <data name="&gt;&gt;tbDesign.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="tbPens.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 77</value>
+  </metadata>
+  <data name="tbPens.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="tbPens.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="lblPensStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 22</value>
+  </data>
+  <data name="lblPensStyle.Text" xml:space="preserve">
+    <value>Style:</value>
+  </data>
+  <data name="ToolStripSeparator29.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="btnPenSmooting.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKUSURBVDhPjZNJTJNBFMcb48mbHrwYjRyUUqW09MIF64Lx
+        IIQoJIUggQS1HkyIoOIWGqMmLhBjgqVSyoWEECrIEnbtB0V2oe1XAgLSVuDDFmm615alf6eLiYogv+Rd
+        Zt7vvXkzGdZOGJcerffNlN92jRae9AzcOMB8uroHlGQ3INkVSdkarSxqxf1ZOm1W57cyKvEji/py+nJ3
+        Nn+xQ3TQ3pG+L5L2bygZe8PCNPodI4WO7/3XDOaevJ6l7mw50yW6Z2xKyZ1RCpMjqWHoimPQyWJCoZEe
+        gX/+HShKuGEczlmzDeS4rOrcJYsqc2K+5fyH2bqkt8NSblVEZbF0smjA2o+1pRasmqrhMyjgnSyBW3Mf
+        Esn1gPFjztpKb5ZvoTPVYagVWsbKuF+JdigisxH41gzL+2yszjdglWmFd+oV3PRjuMbuwDEoJkUuBagu
+        4cZEPWedKuP7iXY8JOsrY0nXdphVYjinqmDtuwKn5gk5fgPcWgmcQ2LY+7JgV2eAaU4ihXgBosWH5CCj
+        L+N+mJrSYNWVwzVSAEZdDM/4XTi1D+GdlhI5E7ZeEYmLWKhPBF0Zj4gaproo+pmOXJ5v8gVM7XnwzUrx
+        pfYEbJrncA7mYrkrFVZVKuxUChaUCdAr/ipA2K9X8MC0pcFvrMGc8jTGpdHwaApg6UhGtyQKQ6WxsLSd
+        gamGh4kqwaYCQQR0JRdzdafI87Hh1d6EjUpDZ/FhDJRwsNiQCHNjAuhwd0FY2YxAK+OQUZ7C2SfCcCmb
+        iGfh0d6CQ32BzM7fVmbp3nDgN8jh7M+AroIbmlWv4IOW8/4vB4+/zijhCsmxeJ3PLiLLQeH32JpZ5Tlr
+        UKTlcai4EfOALO0N7+ycOBK/Om3/w/6AxfoJF6uodFP749AAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnPenSmooting.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnPenSmooting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnPenSmooting.Text" xml:space="preserve">
+    <value>Line smoothing</value>
+  </data>
+  <data name="cboPensSmooting.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cboPensSmooting.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="cboPensSmooting.Items" xml:space="preserve">
+    <value>0.01</value>
+  </data>
+  <data name="cboPensSmooting.Items1" xml:space="preserve">
+    <value>0.02</value>
+  </data>
+  <data name="cboPensSmooting.Items2" xml:space="preserve">
+    <value>0.03</value>
+  </data>
+  <data name="cboPensSmooting.Items3" xml:space="preserve">
+    <value>0.04</value>
+  </data>
+  <data name="cboPensSmooting.Items4" xml:space="preserve">
+    <value>0.05</value>
+  </data>
+  <data name="cboPensSmooting.Items5" xml:space="preserve">
+    <value>0.07</value>
+  </data>
+  <data name="cboPensSmooting.Items6" xml:space="preserve">
+    <value>0.10</value>
+  </data>
+  <data name="cboPensSmooting.Items7" xml:space="preserve">
+    <value>0.12</value>
+  </data>
+  <data name="cboPensSmooting.Items8" xml:space="preserve">
+    <value>0.15</value>
+  </data>
+  <data name="cboPensSmooting.Items9" xml:space="preserve">
+    <value>0.17</value>
+  </data>
+  <data name="cboPensSmooting.Items10" xml:space="preserve">
+    <value>0.20</value>
+  </data>
+  <data name="cboPensSmooting.Items11" xml:space="preserve">
+    <value>0.25</value>
+  </data>
+  <data name="cboPensSmooting.Items12" xml:space="preserve">
+    <value>0.30</value>
+  </data>
+  <data name="cboPensSmooting.Items13" xml:space="preserve">
+    <value>0.50</value>
+  </data>
+  <data name="cboPensSmooting.Items14" xml:space="preserve">
+    <value>0.75</value>
+  </data>
+  <data name="cboPensSmooting.Items15" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cboPensSmooting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 21</value>
+  </data>
+  <data name="cboPensSmooting.ToolTipText" xml:space="preserve">
+    <value>Smooting factor (m)</value>
+  </data>
+  <data name="ToolStripSeparator15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="btnPenLine.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACkSURBVDhPY6AJKCoqWpefl/e/MDf7f1xlx3+oMPEApPnx
+        40f/nzx6+L80L4t0AwqANj8BGvD0yeP/8fHxv6HCxAHXeaf/J1a0/y/Ky/mfn5//3cHBYTdUijAAabbt
+        3QZysjEQK4FoEB8kDpLHC9A0IwPChrjOO4NLMwzgNsRp+mFCmmEApyEgjYQ0wwDxYYIHQA05Q7khIO9D
+        +WQBUrw+eAEDAwBGr2eBYFOYmgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnPenLine.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnPenLine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnPenSpline.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFuSURBVDhPYyAE6uvrmUAYyqUzmJmWxgqk2IGYAyxACmio
+        q4gHUorWHTuTLdu3n7Bp3/ZCq37bH7v2bf+RMUQ1EigqKlqXn5f3Lzk5+VtcZf0/i7Ztt/Sz+mv4lfUd
+        gNLGWDAqAGr+//jxo/9PHj38X5qXBbJBG4iFgZgZJI8XNFRXRxbkZv9/AjTg6ZPH/4uKCr9CpQgDYFTx
+        ASm1xIr2/0V5OSDN/xwcHK6HhIRwAsUZoRgrYAS6EyQpZN6+28Gscx/I2SC/6QcEBCiDFPz//x+u2djY
+        GBQzKIBxVWgo2H9WTVu3mFYu3QgWBQIkxYxIhjBaWFhwenh4gFwMBiAJsAG27dv/62X1J4HYUADXBMZA
+        Q6AGMbq6unKDZZABKF6VfNLkoFwQgGgEAahGoM3soUAXa2lpsYHFkQE0YaBHF8QAIABpBFIsQAyiMfMH
+        1pSFZABBgMMAEAA7397eHmQ7XoCZNCEApBHkZzQDGBgAHb9864M+u1IAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnPenSpline.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnPenSpline.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnPenBezier.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEHSURBVDhPYyAE6mpr/oMwlEs6aKqp+N9SU06eAa0QjcZQ
+        TBporK0Ca7Zq351r077ltm379v927dswMEQ1EigqKlqXn5f3vzA3+39cZcd/i7Ztt/Sz+mv4lfUdgNIw
+        1yBjVADS/Pjxo/9PHj38X5qXBbJBG4iFgZgZJI8XNNRU/S8A2vwEaMDTJ4//x8fH/4ZKEQag0AZSxokV
+        7f+L8nL+5+fnf3dwcNgNkcUDamtr/zfUVoM1m3buczbr3AdmA7GWj4+PPUgNXgBKJFDbGayatm4xrVy6
+        ESxBAoCHJiiq9LL6k0BssgAoXpV80uSgXNIBNGEQji5cAGvKIgVQbAAQYCZNvICBAQBteXnA9TuArwAA
+        AABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnPenBezier.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnPenBezier.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="tbPens.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 75</value>
+  </data>
+  <data name="tbPens.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 25</value>
+  </data>
+  <data name="tbPens.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="tbPens.Text" xml:space="preserve">
+    <value>Design</value>
+  </data>
+  <data name="&gt;&gt;tbPens.Name" xml:space="preserve">
+    <value>tbPens</value>
+  </data>
+  <data name="&gt;&gt;tbPens.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbPens.Parent" xml:space="preserve">
+    <value>tsMain.TopToolStripPanel</value>
+  </data>
+  <data name="&gt;&gt;tbPens.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <metadata name="tbWorkspaces.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>319, 20</value>
+  </metadata>
+  <data name="tbWorkspaces.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="tbWorkspaces.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="btnWorkspaceData.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnWorkspaceData.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnWorkspaceData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 22</value>
+  </data>
+  <data name="btnWorkspaceData.Text" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="btnWorkspaceDesign.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnWorkspaceDesign.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnWorkspaceDesign.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 22</value>
+  </data>
+  <data name="btnWorkspaceDesign.Text" xml:space="preserve">
+    <value>Design</value>
+  </data>
+  <data name="btnWorkspaceAll.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnWorkspaceAll.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnWorkspaceAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 22</value>
+  </data>
+  <data name="btnWorkspaceAll.Text" xml:space="preserve">
+    <value>Full</value>
+  </data>
+  <data name="btnWorkspaceSep1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="btnWorkspaceSep2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="btnWorkspacesManage.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnWorkspacesManage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnWorkspacesManage.Text" xml:space="preserve">
+    <value>ToolStripButton2</value>
+  </data>
+  <data name="tbWorkspaces.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 100</value>
+  </data>
+  <data name="tbWorkspaces.Size" type="System.Drawing.Size, System.Drawing">
+    <value>151, 25</value>
+  </data>
+  <data name="tbWorkspaces.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;tbWorkspaces.Name" xml:space="preserve">
+    <value>tbWorkspaces</value>
+  </data>
+  <data name="&gt;&gt;tbWorkspaces.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbWorkspaces.Parent" xml:space="preserve">
+    <value>tsMain.TopToolStripPanel</value>
+  </data>
+  <data name="&gt;&gt;tbWorkspaces.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <metadata name="tbView.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -28029,7 +28119,7 @@ or a cross-section</value>
     <value>Object properties</value>
   </data>
   <data name="tbView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 100</value>
+    <value>3, 125</value>
   </data>
   <data name="tbView.Size" type="System.Drawing.Size, System.Drawing">
     <value>1005, 25</value>
@@ -28098,7 +28188,7 @@ or a cross-section</value>
     <value>False</value>
   </data>
   <data name="pnlStatusText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1215, 17</value>
+    <value>1003, 17</value>
   </data>
   <data name="pnlStatusText.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -29099,37 +29189,46 @@ or a cross-section</value>
     <value>218, 6</value>
   </data>
   <data name="mnuViewWorkspacesData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 22</value>
+    <value>255, 22</value>
   </data>
   <data name="mnuViewWorkspacesData.Text" xml:space="preserve">
     <value>Data</value>
   </data>
   <data name="mnuViewWorkspacesDesign.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 22</value>
+    <value>255, 22</value>
   </data>
   <data name="mnuViewWorkspacesDesign.Text" xml:space="preserve">
     <value>Design</value>
   </data>
   <data name="mnuViewWorkspacesAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 22</value>
+    <value>255, 22</value>
   </data>
   <data name="mnuViewWorkspacesAll.Text" xml:space="preserve">
     <value>Full</value>
   </data>
-  <data name="ToolStripMenuItem56.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 6</value>
+  <data name="mnuViewWorkspacesSep1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 6</value>
   </data>
-  <data name="ToolStripMenuItem56.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="mnuViewWorkspacesSep2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 6</value>
+  </data>
+  <data name="mnuViewWorkspacesRestore.Size" type="System.Drawing.Size, System.Drawing">
+    <value>255, 22</value>
+  </data>
+  <data name="mnuViewWorkspacesRestore.Text" xml:space="preserve">
+    <value>Restore to default positions</value>
+  </data>
+  <data name="ToolStripMenuItem115.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 6</value>
+  </data>
+  <data name="mnuViewWorkspacesManage.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Shift+W</value>
   </data>
   <data name="mnuViewWorkspacesManage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 22</value>
+    <value>255, 22</value>
   </data>
   <data name="mnuViewWorkspacesManage.Text" xml:space="preserve">
     <value>Manage workspaces...</value>
-  </data>
-  <data name="mnuViewWorkspacesManage.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="mnuViewWorkspaces.Size" type="System.Drawing.Size, System.Drawing">
     <value>221, 22</value>
@@ -32228,7 +32327,7 @@ or a cross-section</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAC2
-        EQAAAk1TRnQBSQFMAgEBAwEAAcgBLQHIAS0BIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        EQAAAk1TRnQBSQFMAgEBAwEAAagBLgGoAS4BIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABgAMAASADAAEBAQABCAYAARAYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -32320,7 +32419,7 @@ or a cross-section</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABe
-        CgAAAk1TRnQBSQFMAgEBAwEAAbwBIwG8ASMBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CgAAAk1TRnQBSQFMAgEBAwEAAZwBJAGcASQBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -34515,6 +34614,9 @@ or a cross-section</value>
         Qcf/rEHn/6xB
 </value>
   </data>
+  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>cSurvey</value>
   </data>
@@ -35118,59 +35220,77 @@ or a cross-section</value>
   <data name="&gt;&gt;iml.Type" xml:space="preserve">
     <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;colTrigPoint.Name" xml:space="preserve">
-    <value>colTrigPoint</value>
+  <data name="&gt;&gt;colTrigpointsStation.Name" xml:space="preserve">
+    <value>colTrigpointsStation</value>
   </data>
-  <data name="&gt;&gt;colTrigPoint.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colTrigpointsStation.Type" xml:space="preserve">
+    <value>BrightIdeasSoftware.OLVColumn, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
   </data>
-  <data name="&gt;&gt;colX.Name" xml:space="preserve">
-    <value>colX</value>
+  <data name="&gt;&gt;colTrigpointsX.Name" xml:space="preserve">
+    <value>colTrigpointsX</value>
   </data>
-  <data name="&gt;&gt;colX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colTrigpointsX.Type" xml:space="preserve">
+    <value>BrightIdeasSoftware.OLVColumn, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
   </data>
-  <data name="&gt;&gt;colY.Name" xml:space="preserve">
-    <value>colY</value>
+  <data name="&gt;&gt;colTrigpointsY.Name" xml:space="preserve">
+    <value>colTrigpointsY</value>
   </data>
-  <data name="&gt;&gt;colY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colTrigpointsY.Type" xml:space="preserve">
+    <value>BrightIdeasSoftware.OLVColumn, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
   </data>
-  <data name="&gt;&gt;colZ.Name" xml:space="preserve">
-    <value>colZ</value>
+  <data name="&gt;&gt;colTrigpointsZ.Name" xml:space="preserve">
+    <value>colTrigpointsZ</value>
   </data>
-  <data name="&gt;&gt;colZ.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colTrigpointsZ.Type" xml:space="preserve">
+    <value>BrightIdeasSoftware.OLVColumn, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
   </data>
-  <data name="&gt;&gt;colGPS.Name" xml:space="preserve">
-    <value>colGPS</value>
+  <data name="&gt;&gt;colTrigpointsEntrance.Name" xml:space="preserve">
+    <value>colTrigpointsEntrance</value>
   </data>
-  <data name="&gt;&gt;colGPS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colTrigpointsEntrance.Type" xml:space="preserve">
+    <value>BrightIdeasSoftware.OLVColumn, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
   </data>
-  <data name="&gt;&gt;colNote.Name" xml:space="preserve">
-    <value>colNote</value>
+  <data name="&gt;&gt;colTrigpointsCoordinate.Name" xml:space="preserve">
+    <value>colTrigpointsCoordinate</value>
   </data>
-  <data name="&gt;&gt;colNote.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colTrigpointsCoordinate.Type" xml:space="preserve">
+    <value>BrightIdeasSoftware.OLVColumn, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
   </data>
-  <data name="&gt;&gt;colGeoLat.Name" xml:space="preserve">
-    <value>colGeoLat</value>
+  <data name="&gt;&gt;colTrigpointsNote.Name" xml:space="preserve">
+    <value>colTrigpointsNote</value>
   </data>
-  <data name="&gt;&gt;colGeoLat.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colTrigpointsNote.Type" xml:space="preserve">
+    <value>BrightIdeasSoftware.OLVColumn, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
   </data>
-  <data name="&gt;&gt;colGeoLon.Name" xml:space="preserve">
-    <value>colGeoLon</value>
+  <data name="&gt;&gt;colTrigpointInExploration.Name" xml:space="preserve">
+    <value>colTrigpointInExploration</value>
   </data>
-  <data name="&gt;&gt;colGeoLon.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colTrigpointInExploration.Type" xml:space="preserve">
+    <value>BrightIdeasSoftware.OLVColumn, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
   </data>
-  <data name="&gt;&gt;colGeoAlt.Name" xml:space="preserve">
-    <value>colGeoAlt</value>
+  <data name="&gt;&gt;colTrigpointsSpecial.Name" xml:space="preserve">
+    <value>colTrigpointsSpecial</value>
   </data>
-  <data name="&gt;&gt;colGeoAlt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colTrigpointsSpecial.Type" xml:space="preserve">
+    <value>BrightIdeasSoftware.OLVColumn, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
+  </data>
+  <data name="&gt;&gt;colTrigpointsLatitude.Name" xml:space="preserve">
+    <value>colTrigpointsLatitude</value>
+  </data>
+  <data name="&gt;&gt;colTrigpointsLatitude.Type" xml:space="preserve">
+    <value>BrightIdeasSoftware.OLVColumn, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
+  </data>
+  <data name="&gt;&gt;colTrigpointsLongitude.Name" xml:space="preserve">
+    <value>colTrigpointsLongitude</value>
+  </data>
+  <data name="&gt;&gt;colTrigpointsLongitude.Type" xml:space="preserve">
+    <value>BrightIdeasSoftware.OLVColumn, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
+  </data>
+  <data name="&gt;&gt;colTrigpointsAltitude.Name" xml:space="preserve">
+    <value>colTrigpointsAltitude</value>
+  </data>
+  <data name="&gt;&gt;colTrigpointsAltitude.Type" xml:space="preserve">
+    <value>BrightIdeasSoftware.OLVColumn, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
   </data>
   <data name="&gt;&gt;mnuTrigPointsRebind.Name" xml:space="preserve">
     <value>mnuTrigPointsRebind</value>
@@ -35267,6 +35387,60 @@ or a cross-section</value>
   </data>
   <data name="&gt;&gt;mnuTrigPointsExport.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colTrigPoint.Name" xml:space="preserve">
+    <value>colTrigPoint</value>
+  </data>
+  <data name="&gt;&gt;colTrigPoint.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colX.Name" xml:space="preserve">
+    <value>colX</value>
+  </data>
+  <data name="&gt;&gt;colX.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colY.Name" xml:space="preserve">
+    <value>colY</value>
+  </data>
+  <data name="&gt;&gt;colY.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colZ.Name" xml:space="preserve">
+    <value>colZ</value>
+  </data>
+  <data name="&gt;&gt;colZ.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colGPS.Name" xml:space="preserve">
+    <value>colGPS</value>
+  </data>
+  <data name="&gt;&gt;colGPS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colNote.Name" xml:space="preserve">
+    <value>colNote</value>
+  </data>
+  <data name="&gt;&gt;colNote.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colGeoLat.Name" xml:space="preserve">
+    <value>colGeoLat</value>
+  </data>
+  <data name="&gt;&gt;colGeoLat.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colGeoLon.Name" xml:space="preserve">
+    <value>colGeoLon</value>
+  </data>
+  <data name="&gt;&gt;colGeoLon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colGeoAlt.Name" xml:space="preserve">
+    <value>colGeoAlt</value>
+  </data>
+  <data name="&gt;&gt;colGeoAlt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;DataGridViewTextBoxColumn3.Name" xml:space="preserve">
     <value>DataGridViewTextBoxColumn3</value>
@@ -35778,162 +35952,6 @@ or a cross-section</value>
   <data name="&gt;&gt;colValue.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnWorkspaceData.Name" xml:space="preserve">
-    <value>btnWorkspaceData</value>
-  </data>
-  <data name="&gt;&gt;btnWorkspaceData.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnWorkspaceDesign.Name" xml:space="preserve">
-    <value>btnWorkspaceDesign</value>
-  </data>
-  <data name="&gt;&gt;btnWorkspaceDesign.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnWorkspaceAll.Name" xml:space="preserve">
-    <value>btnWorkspaceAll</value>
-  </data>
-  <data name="&gt;&gt;btnWorkspaceAll.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPensStyle.Name" xml:space="preserve">
-    <value>lblPensStyle</value>
-  </data>
-  <data name="&gt;&gt;lblPensStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator29.Name" xml:space="preserve">
-    <value>ToolStripSeparator29</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator29.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnPenSmooting.Name" xml:space="preserve">
-    <value>btnPenSmooting</value>
-  </data>
-  <data name="&gt;&gt;btnPenSmooting.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboPensSmooting.Name" xml:space="preserve">
-    <value>cboPensSmooting</value>
-  </data>
-  <data name="&gt;&gt;cboPensSmooting.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator15.Name" xml:space="preserve">
-    <value>ToolStripSeparator15</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator15.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnPenLine.Name" xml:space="preserve">
-    <value>btnPenLine</value>
-  </data>
-  <data name="&gt;&gt;btnPenLine.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnPenSpline.Name" xml:space="preserve">
-    <value>btnPenSpline</value>
-  </data>
-  <data name="&gt;&gt;btnPenSpline.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnPenBezier.Name" xml:space="preserve">
-    <value>btnPenBezier</value>
-  </data>
-  <data name="&gt;&gt;btnPenBezier.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnLayer_Base.Name" xml:space="preserve">
-    <value>btnLayer_Base</value>
-  </data>
-  <data name="&gt;&gt;btnLayer_Base.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator10.Name" xml:space="preserve">
-    <value>ToolStripSeparator10</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnLayer_Soil.Name" xml:space="preserve">
-    <value>btnLayer_Soil</value>
-  </data>
-  <data name="&gt;&gt;btnLayer_Soil.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator21.Name" xml:space="preserve">
-    <value>ToolStripSeparator21</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator21.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnLayer_Water.Name" xml:space="preserve">
-    <value>btnLayer_Water</value>
-  </data>
-  <data name="&gt;&gt;btnLayer_Water.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator22.Name" xml:space="preserve">
-    <value>ToolStripSeparator22</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator22.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnLayer_Rocks.Name" xml:space="preserve">
-    <value>btnLayer_Rocks</value>
-  </data>
-  <data name="&gt;&gt;btnLayer_Rocks.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator23.Name" xml:space="preserve">
-    <value>ToolStripSeparator23</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator23.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnLayer_TerrainLevel.Name" xml:space="preserve">
-    <value>btnLayer_TerrainLevel</value>
-  </data>
-  <data name="&gt;&gt;btnLayer_TerrainLevel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator24.Name" xml:space="preserve">
-    <value>ToolStripSeparator24</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator24.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnLayer_Borders.Name" xml:space="preserve">
-    <value>btnLayer_Borders</value>
-  </data>
-  <data name="&gt;&gt;btnLayer_Borders.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator25.Name" xml:space="preserve">
-    <value>ToolStripSeparator25</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator25.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnLayer_Signs.Name" xml:space="preserve">
-    <value>btnLayer_Signs</value>
-  </data>
-  <data name="&gt;&gt;btnLayer_Signs.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator20.Name" xml:space="preserve">
-    <value>ToolStripSeparator20</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator20.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnLayerManageLevels.Name" xml:space="preserve">
-    <value>btnLayerManageLevels</value>
-  </data>
-  <data name="&gt;&gt;btnLayerManageLevels.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;btnSurveyNew.Name" xml:space="preserve">
     <value>btnSurveyNew</value>
   </data>
@@ -36233,6 +36251,168 @@ or a cross-section</value>
   </data>
   <data name="&gt;&gt;btnProperty.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnLayer_Base.Name" xml:space="preserve">
+    <value>btnLayer_Base</value>
+  </data>
+  <data name="&gt;&gt;btnLayer_Base.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator10.Name" xml:space="preserve">
+    <value>ToolStripSeparator10</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnLayer_Soil.Name" xml:space="preserve">
+    <value>btnLayer_Soil</value>
+  </data>
+  <data name="&gt;&gt;btnLayer_Soil.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator21.Name" xml:space="preserve">
+    <value>ToolStripSeparator21</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator21.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnLayer_Water.Name" xml:space="preserve">
+    <value>btnLayer_Water</value>
+  </data>
+  <data name="&gt;&gt;btnLayer_Water.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator22.Name" xml:space="preserve">
+    <value>ToolStripSeparator22</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator22.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnLayer_Rocks.Name" xml:space="preserve">
+    <value>btnLayer_Rocks</value>
+  </data>
+  <data name="&gt;&gt;btnLayer_Rocks.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator23.Name" xml:space="preserve">
+    <value>ToolStripSeparator23</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator23.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnLayer_TerrainLevel.Name" xml:space="preserve">
+    <value>btnLayer_TerrainLevel</value>
+  </data>
+  <data name="&gt;&gt;btnLayer_TerrainLevel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator24.Name" xml:space="preserve">
+    <value>ToolStripSeparator24</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator24.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnLayer_Borders.Name" xml:space="preserve">
+    <value>btnLayer_Borders</value>
+  </data>
+  <data name="&gt;&gt;btnLayer_Borders.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator25.Name" xml:space="preserve">
+    <value>ToolStripSeparator25</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator25.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnLayer_Signs.Name" xml:space="preserve">
+    <value>btnLayer_Signs</value>
+  </data>
+  <data name="&gt;&gt;btnLayer_Signs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator20.Name" xml:space="preserve">
+    <value>ToolStripSeparator20</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator20.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnLayerManageLevels.Name" xml:space="preserve">
+    <value>btnLayerManageLevels</value>
+  </data>
+  <data name="&gt;&gt;btnLayerManageLevels.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPensStyle.Name" xml:space="preserve">
+    <value>lblPensStyle</value>
+  </data>
+  <data name="&gt;&gt;lblPensStyle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator29.Name" xml:space="preserve">
+    <value>ToolStripSeparator29</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator29.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPenSmooting.Name" xml:space="preserve">
+    <value>btnPenSmooting</value>
+  </data>
+  <data name="&gt;&gt;btnPenSmooting.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPensSmooting.Name" xml:space="preserve">
+    <value>cboPensSmooting</value>
+  </data>
+  <data name="&gt;&gt;cboPensSmooting.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator15.Name" xml:space="preserve">
+    <value>ToolStripSeparator15</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPenLine.Name" xml:space="preserve">
+    <value>btnPenLine</value>
+  </data>
+  <data name="&gt;&gt;btnPenLine.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPenSpline.Name" xml:space="preserve">
+    <value>btnPenSpline</value>
+  </data>
+  <data name="&gt;&gt;btnPenSpline.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPenBezier.Name" xml:space="preserve">
+    <value>btnPenBezier</value>
+  </data>
+  <data name="&gt;&gt;btnPenBezier.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnWorkspaceData.Name" xml:space="preserve">
+    <value>btnWorkspaceData</value>
+  </data>
+  <data name="&gt;&gt;btnWorkspaceData.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnWorkspaceDesign.Name" xml:space="preserve">
+    <value>btnWorkspaceDesign</value>
+  </data>
+  <data name="&gt;&gt;btnWorkspaceDesign.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnWorkspaceAll.Name" xml:space="preserve">
+    <value>btnWorkspaceAll</value>
+  </data>
+  <data name="&gt;&gt;btnWorkspaceAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnWorkspaceSep1.Name" xml:space="preserve">
+    <value>btnWorkspaceSep1</value>
+  </data>
+  <data name="&gt;&gt;btnWorkspaceSep1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnShowFieldData.Name" xml:space="preserve">
     <value>btnShowFieldData</value>
@@ -36906,10 +37086,28 @@ or a cross-section</value>
   <data name="&gt;&gt;mnuViewWorkspacesAll.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem56.Name" xml:space="preserve">
-    <value>ToolStripMenuItem56</value>
+  <data name="&gt;&gt;mnuViewWorkspacesSep2.Name" xml:space="preserve">
+    <value>mnuViewWorkspacesSep2</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem56.Type" xml:space="preserve">
+  <data name="&gt;&gt;mnuViewWorkspacesSep2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mnuViewWorkspacesSep1.Name" xml:space="preserve">
+    <value>mnuViewWorkspacesSep1</value>
+  </data>
+  <data name="&gt;&gt;mnuViewWorkspacesSep1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mnuViewWorkspacesRestore.Name" xml:space="preserve">
+    <value>mnuViewWorkspacesRestore</value>
+  </data>
+  <data name="&gt;&gt;mnuViewWorkspacesRestore.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem115.Name" xml:space="preserve">
+    <value>ToolStripMenuItem115</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem115.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;mnuViewWorkspacesManage.Name" xml:space="preserve">
@@ -38957,6 +39155,18 @@ or a cross-section</value>
   </data>
   <data name="&gt;&gt;bwMain.Type" xml:space="preserve">
     <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnWorkspaceSep2.Name" xml:space="preserve">
+    <value>btnWorkspaceSep2</value>
+  </data>
+  <data name="&gt;&gt;btnWorkspaceSep2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnWorkspacesManage.Name" xml:space="preserve">
+    <value>btnWorkspacesManage</value>
+  </data>
+  <data name="&gt;&gt;btnWorkspacesManage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmMain</value>

@@ -356,6 +356,12 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="cLinkedSurveys.vb" />
+    <Compile Include="cNumericUpDown.Designer.vb">
+      <DependentUpon>cNumericUpDown.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cNumericUpDown.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="cPropertyControl.vb" />
     <Compile Include="cItemClipartSubItems.vb" />
     <Compile Include="cItemGroup.vb" />
@@ -634,6 +640,12 @@
       <DependentUpon>frmManageLRUD.vb</DependentUpon>
     </Compile>
     <Compile Include="frmManageLRUD.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageWorkspaces.Designer.vb">
+      <DependentUpon>frmManageWorkspaces.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmManageWorkspaces.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMasterSlaveManager.Designer.vb">
@@ -1658,6 +1670,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageLRUD.ru.resx">
       <DependentUpon>frmManageLRUD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageWorkspaces.it.resx">
+      <DependentUpon>frmManageWorkspaces.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageWorkspaces.resx">
+      <DependentUpon>frmManageWorkspaces.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageWorkspaces.ru.resx">
+      <DependentUpon>frmManageWorkspaces.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMasterSlaveManager.resx">
       <DependentUpon>frmMasterSlaveManager.vb</DependentUpon>
@@ -3284,6 +3305,8 @@
     <None Include="Resources\attach.png" />
     <None Include="Resources\bullet_pause.png" />
     <None Include="Resources\bullet_arrow_right.png" />
+    <None Include="Resources\check_box.png" />
+    <None Include="Resources\asterisk_yellow.png" />
     <Content Include="Resources\compass.png" />
     <None Include="Resources\download.png" />
     <None Include="Resources\inbox_upload.png" />
@@ -3331,6 +3354,7 @@
     <None Include="Resources\link_break.png" />
     <None Include="Resources\link.png" />
     <None Include="Resources\control_pause_blue.png" />
+    <None Include="Resources\monitor_window.png" />
     <Content Include="Resources\shape_square_key.png" />
     <None Include="Resources\sort.png" />
     <None Include="Resources\textfield_rename.png" />
@@ -3345,6 +3369,7 @@
     <None Include="Resources\zoom_fit.png" />
     <None Include="Resources\zoom_actual.png" />
     <None Include="Resources\stamp_pattern.png" />
+    <None Include="Resources\weather_sun.png" />
     <Content Include="version.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

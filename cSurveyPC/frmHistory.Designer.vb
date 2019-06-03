@@ -57,9 +57,9 @@ Partial Class frmHistory
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnRefresh = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.sbMain = New System.Windows.Forms.StatusStrip()
         Me.pnlStatus = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -279,6 +279,12 @@ Partial Class frmHistory
         resources.ApplyResources(Me.ToolStripButton1, "ToolStripButton1")
         Me.ToolStripButton1.Name = "ToolStripButton1"
         '
+        'ToolStripButton2
+        '
+        Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        resources.ApplyResources(Me.ToolStripButton2, "ToolStripButton2")
+        Me.ToolStripButton2.Name = "ToolStripButton2"
+        '
         'sbMain
         '
         resources.ApplyResources(Me.sbMain, "sbMain")
@@ -290,12 +296,6 @@ Partial Class frmHistory
         Me.pnlStatus.Name = "pnlStatus"
         resources.ApplyResources(Me.pnlStatus, "pnlStatus")
         Me.pnlStatus.Spring = True
-        '
-        'ToolStripButton2
-        '
-        Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        resources.ApplyResources(Me.ToolStripButton2, "ToolStripButton2")
-        Me.ToolStripButton2.Name = "ToolStripButton2"
         '
         'frmHistory
         '

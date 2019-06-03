@@ -2029,14 +2029,16 @@ Public Class frmProperties
                 lblDesignWarpingModeEnabledIn.Enabled = False
                 chkPlanWarpingEnabled.Enabled = False
                 chkProfileWarpingEnabled.Enabled = False
+                chkShowWarpingDetails.Enabled = False
                 optWarpingActive.Enabled = False
-                optWarpingActive.Enabled = False
+                optWarpingPaused.Enabled = False
             Case cSurvey.cSurvey.DesignWarpingModeEnum.Default
                 lblDesignWarpingModeEnabledIn.Enabled = True
                 chkPlanWarpingEnabled.Enabled = True
                 chkProfileWarpingEnabled.Enabled = True
+                chkShowWarpingDetails.Enabled = True
                 optWarpingActive.Enabled = True
-                optWarpingActive.Enabled = True
+                optWarpingPaused.Enabled = True
         End Select
     End Sub
 

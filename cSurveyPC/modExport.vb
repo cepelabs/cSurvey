@@ -7,6 +7,7 @@ Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports System.Text.RegularExpressions
 Imports Diacritics.Extensions
+Imports BrightIdeasSoftware
 
 Module modExport
     'Public Const dMeridianConvergence As Decimal = 1.669
@@ -1041,10 +1042,10 @@ Module modExport
     'main.textpart40=[Predefinito]
     'main.textpart41=Personalizzato
 
-    Public Delegate Sub GetCellValueDelegate(Cell As DataGridViewCell, ByRef Value As Object)
-    Public Delegate Sub GetHeaderValueDelegate(Column As DataGridViewColumn, ByRef Value As Object)
+    Public Delegate Sub GetGridCellValueDelegate(Cell As DataGridViewCell, ByRef Value As Object)
+    Public Delegate Sub GetGridHeaderValueDelegate(Column As DataGridViewColumn, ByRef Value As Object)
 
-    Public Sub GridExportToCSV(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Grid As DataGridView, Name As String, ByVal Filename As String, Optional GetCellValueDelegate As GetCellValueDelegate = Nothing, Optional GetHeaderValueDelegate As GetHeaderValueDelegate = Nothing)
+    Public Sub GridExportToCSV(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Grid As DataGridView, Name As String, ByVal Filename As String, Optional GetCellValueDelegate As GetGridCellValueDelegate = Nothing, Optional GetHeaderValueDelegate As GetGridHeaderValueDelegate = Nothing)
         Dim oFileinfo As IO.FileInfo = New IO.FileInfo(Filename)
         If oFileinfo.Exists Then oFileinfo.Delete()
 
@@ -1087,7 +1088,117 @@ Module modExport
         End Using
     End Sub
 
-    Public Sub GridExportToExcel(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Grid As DataGridView, Name As String, ByVal Filename As String, Optional GetCellValueDelegate As GetCellValueDelegate = Nothing, Optional GetHeaderValueDelegate As GetHeaderValueDelegate = Nothing)
+    Public Sub ListviewExportToCSV(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Listview As BrightIdeasSoftware.ObjectListView, Name As String, ByVal Filename As String, Optional GetCellValueDelegate As GetOLVCellValueDelegate = Nothing, Optional GetHeaderValueDelegate As GetOLVHeaderValueDelegate = Nothing)
+        Dim oFileinfo As IO.FileInfo = New IO.FileInfo(Filename)
+        If oFileinfo.Exists Then oFileinfo.Delete()
+
+        Using oSW As StreamWriter = oFileinfo.CreateText
+            Dim r As Integer = 1
+            Dim c As Integer = 1
+            For Each oColumn As OLVColumn In Listview.Columns
+                Dim oValue As Object = oColumn.Text
+                If Not IsNothing(GetHeaderValueDelegate) Then
+                    Call GetHeaderValueDelegate(oColumn, oValue)
+                End If
+                Call oSW.Write(String.Format("""{0}"";", oValue.ToString.Replace("""", """""")))
+                c += 1
+            Next
+            Call oSW.WriteLine("")
+            r += 1
+            c = 1
+            Dim iIndex As Integer
+            Do While iIndex < Listview.GetItemCount()
+                Dim oItem As OLVListItem = Listview.GetItem(iIndex)
+                For Each oColumn As OLVColumn In Listview.Columns
+                    Dim oValue As Object = oItem.SubItems(oColumn.Index).Text
+                    If Not IsNothing(GetCellValueDelegate) Then
+                        Call GetCellValueDelegate(oItem.RowObject, oColumn, oValue)
+                    End If
+                    Dim sValue As String
+                    If oValue Is Nothing Then
+                        sValue = ""
+                    Else
+                        sValue = oValue.ToString
+                    End If
+                    Call oSW.Write(String.Format("""{0}"";", sValue.Replace("""", """""")))
+                    c += 1
+                Next
+                Call oSW.WriteLine("")
+                c = 1
+                r += 1
+                iIndex += 1
+            Loop
+            Call oSW.Close()
+        End Using
+    End Sub
+
+    Public Sub ListviewExportTo(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Listview As BrightIdeasSoftware.ObjectListView, Name As String, Optional ByVal Filename As String = "", Optional Owner As IWin32Window = Nothing, Optional GetCellValueDelegate As GetOLVCellValueDelegate = Nothing, Optional GetHeaderValueDelegate As GetOLVHeaderValueDelegate = Nothing)
+        If Filename = "" Then
+            Using oSFD As SaveFileDialog = New SaveFileDialog
+                With oSFD
+                    .Title = GetLocalizedString("main.exportgriddialog")
+                    .Filter = GetLocalizedString("main.filetypeXLSX") & " (*.XLSX)|*.XLSX|" & GetLocalizedString("main.filetypeCSV") & " (*.CSV)|*.CSV"
+                    .FilterIndex = 1
+                    .OverwritePrompt = True
+                    .CheckPathExists = True
+                    If .ShowDialog(Owner) = Windows.Forms.DialogResult.OK Then
+                        Filename = .FileName
+                    End If
+                End With
+            End Using
+        End If
+        If Filename <> "" Then
+            Select Case IO.Path.GetExtension(Filename).ToLower
+                Case ".xlsx"
+                    Call ListViewExportToExcel(Survey, Listview, Name, Filename, GetCellValueDelegate, GetHeaderValueDelegate)
+                Case Else
+                    Call ListViewExportToCSV(Survey, Listview, Name, Filename, GetCellValueDelegate, GetHeaderValueDelegate)
+            End Select
+        End If
+    End Sub
+
+    Public Delegate Sub GetOLVCellValueDelegate(Item As Object, Column As OLVColumn, ByRef Value As Object)
+    Public Delegate Sub GetOLVHeaderValueDelegate(Column As OLVColumn, ByRef Value As Object)
+
+    Public Sub ListViewExportToExcel(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Listview As BrightIdeasSoftware.ObjectListView, Name As String, ByVal Filename As String, Optional GetCellValueDelegate As GetOLVCellValueDelegate = Nothing, Optional GetHeaderValueDelegate As GetOLVHeaderValueDelegate = Nothing)
+        Dim oFileinfo As IO.FileInfo = New IO.FileInfo(Filename)
+        If oFileinfo.Exists Then oFileinfo.Delete()
+        Using oXLS As OfficeOpenXml.ExcelPackage = New OfficeOpenXml.ExcelPackage(oFileinfo)
+            Using oXLSSheet As OfficeOpenXml.ExcelWorksheet = oXLS.Workbook.Worksheets.Add(Name)
+                Dim r As Integer = 1
+                Dim c As Integer = 1
+                For Each oColumn As OLVColumn In Listview.Columns
+                    Dim oValue As Object = oColumn.Text
+                    If Not IsNothing(GetHeaderValueDelegate) Then
+                        Call GetHeaderValueDelegate(oColumn, oValue)
+                    End If
+                    oXLSSheet.Cells(r, c).Value = oValue
+                    c += 1
+                Next
+                oXLSSheet.Row(r).Style.Font.Bold = True
+                r += 1
+                c = 1
+                Dim iIndex As Integer = 0
+                Do While iIndex < Listview.GetItemCount()
+                    Dim oItem As OLVListItem = Listview.GetItem(iIndex)
+                    For Each oColumn As OLVColumn In Listview.Columns
+                        Dim oValue As Object = oItem.SubItems(oColumn.Index).Text
+                        If Not IsNothing(GetCellValueDelegate) Then
+                            Call GetCellValueDelegate(oItem.RowObject, oColumn, oValue)
+                        End If
+                        oXLSSheet.Cells(r, c).Value = oValue
+                        c += 1
+                    Next
+                    c = 1
+                    r += 1
+                    iIndex += 1
+                Loop
+                Call oXLS.Save()
+            End Using
+        End Using
+    End Sub
+
+    Public Sub GridExportToExcel(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Grid As DataGridView, Name As String, ByVal Filename As String, Optional GetCellValueDelegate As GetGridCellValueDelegate = Nothing, Optional GetHeaderValueDelegate As GetGridHeaderValueDelegate = Nothing)
         Dim oFileinfo As IO.FileInfo = New IO.FileInfo(Filename)
         If oFileinfo.Exists Then oFileinfo.Delete()
         Using oXLS As OfficeOpenXml.ExcelPackage = New OfficeOpenXml.ExcelPackage(oFileinfo)
@@ -1124,7 +1235,7 @@ Module modExport
         End Using
     End Sub
 
-    Public Sub GridExportTo(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Grid As DataGridView, Name As String, Optional ByVal Filename As String = "", Optional Owner As IWin32Window = Nothing, Optional GetCellValueDelegate As GetCellValueDelegate = Nothing, Optional GetHeaderValueDelegate As GetHeaderValueDelegate = Nothing)
+    Public Sub GridExportTo(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Grid As DataGridView, Name As String, Optional ByVal Filename As String = "", Optional Owner As IWin32Window = Nothing, Optional GetCellValueDelegate As GetGridCellValueDelegate = Nothing, Optional GetHeaderValueDelegate As GetGridHeaderValueDelegate = Nothing)
         If Filename = "" Then
             Using oSFD As SaveFileDialog = New SaveFileDialog
                 With oSFD

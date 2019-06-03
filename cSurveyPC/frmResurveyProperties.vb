@@ -119,4 +119,5 @@
         Call pSaveProperties()
         RaiseEvent OnApply(Me, New cResurveyPropertiesEventArgs(oStation))
     End Sub
+
 End Class

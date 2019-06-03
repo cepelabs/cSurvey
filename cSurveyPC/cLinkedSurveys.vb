@@ -43,6 +43,14 @@ Namespace cSurvey
             End Set
         End Property
 
+        Public Function GetID() As String
+            If IsValid() Then
+                Return oLinkedSurvey.ID
+            Else
+                Return ""
+            End If
+        End Function
+
         Public Function GetName() As String
             If IsValid() Then
                 Return oLinkedSurvey.Name
@@ -78,7 +86,6 @@ Namespace cSurvey
 
         Public Sub New(Survey As cSurvey, Filename As String)
             oSurvey = Survey
-
             sFilename = Filename.ToLower    'tolower...path is not case sensitive and due to relative path management is better with no capital letter...
             sNote = ""
             oSelected = New List(Of String)
@@ -93,6 +100,12 @@ Namespace cSurvey
                 If Not oResult.Result Then
                     oLastException = New Exception(oResult.ErrorMessage)
                     oLinkedSurvey = Nothing
+                Else
+                    Dim bIsDuplicated As Boolean = Not oSurvey.LinkedSurveys.FirstOrDefault(Function(oitem) Not oitem Is Me AndAlso oitem.GetID = oLinkedSurvey.ID) Is Nothing
+                    If bIsDuplicated Then
+                        oLastException = New Exception(String.Format(modMain.GetLocalizedString("linkedsurveys.textpart3"), sFilename, oLinkedSurvey.ID))
+                        oLinkedSurvey = Nothing
+                    End If
                 End If
             Catch ex As Exception
                 oLinkedSurvey = Nothing
@@ -216,7 +229,7 @@ Namespace cSurvey
                 Return True
             Else
                 For Each oItem As cLinkedSurvey In oItems
-                    If oItem.LinkedSurvey.ID = ID Then
+                    If oItem.GetID = ID Then
                         Return True
                     End If
                 Next

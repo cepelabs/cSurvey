@@ -160,6 +160,8 @@ Partial Class frmProperties
         Me.picSurfacePenColor = New System.Windows.Forms.PictureBox()
         Me.optWarpingActive = New System.Windows.Forms.RadioButton()
         Me.optWarpingPaused = New System.Windows.Forms.RadioButton()
+        Me.cmdOriginRefreshStations = New System.Windows.Forms.Button()
+        Me.cmdGPSCustomRefPointRefreshStations = New System.Windows.Forms.Button()
         Me.cmdApply = New System.Windows.Forms.Button()
         Me.mnuTrigPointTags = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem()
@@ -1608,6 +1610,22 @@ Partial Class frmProperties
         Me.optWarpingPaused.TabStop = True
         Me.tipStandard.SetToolTip(Me.optWarpingPaused, resources.GetString("optWarpingPaused.ToolTip"))
         Me.optWarpingPaused.UseVisualStyleBackColor = True
+        '
+        'cmdOriginRefreshStations
+        '
+        Me.cmdOriginRefreshStations.Image = Global.cSurveyPC.My.Resources.Resources.arrow_refresh
+        resources.ApplyResources(Me.cmdOriginRefreshStations, "cmdOriginRefreshStations")
+        Me.cmdOriginRefreshStations.Name = "cmdOriginRefreshStations"
+        Me.tipStandard.SetToolTip(Me.cmdOriginRefreshStations, resources.GetString("cmdOriginRefreshStations.ToolTip"))
+        Me.cmdOriginRefreshStations.UseVisualStyleBackColor = True
+        '
+        'cmdGPSCustomRefPointRefreshStations
+        '
+        Me.cmdGPSCustomRefPointRefreshStations.Image = Global.cSurveyPC.My.Resources.Resources.arrow_refresh
+        resources.ApplyResources(Me.cmdGPSCustomRefPointRefreshStations, "cmdGPSCustomRefPointRefreshStations")
+        Me.cmdGPSCustomRefPointRefreshStations.Name = "cmdGPSCustomRefPointRefreshStations"
+        Me.tipStandard.SetToolTip(Me.cmdGPSCustomRefPointRefreshStations, resources.GetString("cmdGPSCustomRefPointRefreshStations.ToolTip"))
+        Me.cmdGPSCustomRefPointRefreshStations.UseVisualStyleBackColor = True
         '
         'cmdApply
         '
@@ -3161,6 +3179,7 @@ Partial Class frmProperties
         '
         'tabInfoGPS
         '
+        Me.tabInfoGPS.Controls.Add(Me.cmdGPSCustomRefPointRefreshStations)
         Me.tabInfoGPS.Controls.Add(Me.optGPSCustomRefPoint)
         Me.tabInfoGPS.Controls.Add(Me.optGPSRefPointOnOrigin)
         Me.tabInfoGPS.Controls.Add(Me.chkGPSEnabled)
@@ -3239,6 +3258,7 @@ Partial Class frmProperties
         '
         'tabInfoOptions
         '
+        Me.tabInfoOptions.Controls.Add(Me.cmdOriginRefreshStations)
         Me.tabInfoOptions.Controls.Add(Me.optWarpingPaused)
         Me.tabInfoOptions.Controls.Add(Me.optWarpingActive)
         Me.tabInfoOptions.Controls.Add(Me.chkShowWarpingDetails)
@@ -4363,4 +4383,6 @@ Partial Class frmProperties
     Friend WithEvents optWarpingPaused As RadioButton
     Friend WithEvents optWarpingActive As RadioButton
     Friend WithEvents pnlSessionDate As TextBox
+    Friend WithEvents cmdGPSCustomRefPointRefreshStations As Button
+    Friend WithEvents cmdOriginRefreshStations As Button
 End Class

@@ -4,7 +4,7 @@
         If txtName.Text <> "" Then
             DialogResult = Windows.Forms.DialogResult.OK
         Else
-            Call MsgBox("Specificare il nome dell'ortofoto.", MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, "Attenzione:")
+            Call MsgBox(GetLocalizedString("surface.warning6"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("surface.warningtitle"))
         End If
     End Sub
 
@@ -28,14 +28,15 @@
     End Sub
 
     Private Sub cmdBackgroundColor_Click(sender As Object, e As EventArgs) Handles cmdBackgroundColor.Click
-        Dim oCD As ColorDialog = New ColorDialog
-        With oCD
-            .FullOpen = True
-            .AnyColor = True
-            .Color = picBackgroundColor.BackColor
-            If .ShowDialog = Windows.Forms.DialogResult.OK Then
-                picBackgroundColor.BackColor = .Color
-            End If
-        End With
+        Using oCD As ColorDialog = New ColorDialog
+            With oCD
+                .FullOpen = True
+                .AnyColor = True
+                .Color = picBackgroundColor.BackColor
+                If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                    picBackgroundColor.BackColor = .Color
+                End If
+            End With
+        End Using
     End Sub
 End Class

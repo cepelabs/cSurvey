@@ -74,6 +74,17 @@ Partial Class frmResurveyMain
         Me.mnuGridStationSetOrigin = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuGridStationProperties = New System.Windows.Forms.ToolStripMenuItem()
         Me.grdPlot = New System.Windows.Forms.DataGridView()
+        Me.colPlotFrom = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colPlotTo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colPlotPlanimetricDistance = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colPlotDrop = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colPlotDistance = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colPlotBearing = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colPlotInclination = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Sinistra = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Destra = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Alto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Basso = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tbSegmentsAndTrigpoints = New System.Windows.Forms.ToolStrip()
         Me.btnStations = New System.Windows.Forms.ToolStripButton()
         Me.btnPlot = New System.Windows.Forms.ToolStripButton()
@@ -104,6 +115,8 @@ Partial Class frmResurveyMain
         Me.btnZoomToFit1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnZoomToFit2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnShowRulers = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnCalculate = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnExport = New System.Windows.Forms.ToolStripButton()
@@ -117,17 +130,6 @@ Partial Class frmResurveyMain
         Me.pnlDistance = New System.Windows.Forms.ToolStripStatusLabel()
         Me.pnlAngle = New System.Windows.Forms.ToolStripStatusLabel()
         Me.imlPopup = New System.Windows.Forms.ImageList(Me.components)
-        Me.colPlotFrom = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colPlotTo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colPlotPlanimetricDistance = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colPlotDrop = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colPlotDistance = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colPlotBearing = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colPlotInclination = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Sinistra = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Destra = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Alto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Basso = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.spMain, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.spMain.Panel1.SuspendLayout()
         Me.spMain.Panel2.SuspendLayout()
@@ -412,6 +414,78 @@ Partial Class frmResurveyMain
         Me.grdPlot.ReadOnly = True
         Me.grdPlot.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         '
+        'colPlotFrom
+        '
+        resources.ApplyResources(Me.colPlotFrom, "colPlotFrom")
+        Me.colPlotFrom.Name = "colPlotFrom"
+        Me.colPlotFrom.ReadOnly = True
+        '
+        'colPlotTo
+        '
+        resources.ApplyResources(Me.colPlotTo, "colPlotTo")
+        Me.colPlotTo.Name = "colPlotTo"
+        Me.colPlotTo.ReadOnly = True
+        '
+        'colPlotPlanimetricDistance
+        '
+        resources.ApplyResources(Me.colPlotPlanimetricDistance, "colPlotPlanimetricDistance")
+        Me.colPlotPlanimetricDistance.Name = "colPlotPlanimetricDistance"
+        Me.colPlotPlanimetricDistance.ReadOnly = True
+        '
+        'colPlotDrop
+        '
+        resources.ApplyResources(Me.colPlotDrop, "colPlotDrop")
+        Me.colPlotDrop.Name = "colPlotDrop"
+        Me.colPlotDrop.ReadOnly = True
+        '
+        'colPlotDistance
+        '
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.colPlotDistance.DefaultCellStyle = DataGridViewCellStyle1
+        resources.ApplyResources(Me.colPlotDistance, "colPlotDistance")
+        Me.colPlotDistance.Name = "colPlotDistance"
+        Me.colPlotDistance.ReadOnly = True
+        '
+        'colPlotBearing
+        '
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.colPlotBearing.DefaultCellStyle = DataGridViewCellStyle2
+        resources.ApplyResources(Me.colPlotBearing, "colPlotBearing")
+        Me.colPlotBearing.Name = "colPlotBearing"
+        Me.colPlotBearing.ReadOnly = True
+        '
+        'colPlotInclination
+        '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.colPlotInclination.DefaultCellStyle = DataGridViewCellStyle3
+        resources.ApplyResources(Me.colPlotInclination, "colPlotInclination")
+        Me.colPlotInclination.Name = "colPlotInclination"
+        Me.colPlotInclination.ReadOnly = True
+        '
+        'Sinistra
+        '
+        resources.ApplyResources(Me.Sinistra, "Sinistra")
+        Me.Sinistra.Name = "Sinistra"
+        Me.Sinistra.ReadOnly = True
+        '
+        'Destra
+        '
+        resources.ApplyResources(Me.Destra, "Destra")
+        Me.Destra.Name = "Destra"
+        Me.Destra.ReadOnly = True
+        '
+        'Alto
+        '
+        resources.ApplyResources(Me.Alto, "Alto")
+        Me.Alto.Name = "Alto"
+        Me.Alto.ReadOnly = True
+        '
+        'Basso
+        '
+        resources.ApplyResources(Me.Basso, "Basso")
+        Me.Basso.Name = "Basso"
+        Me.Basso.ReadOnly = True
+        '
         'tbSegmentsAndTrigpoints
         '
         Me.tbSegmentsAndTrigpoints.BackColor = System.Drawing.Color.Transparent
@@ -479,7 +553,7 @@ Partial Class frmResurveyMain
         'tbMain
         '
         resources.ApplyResources(Me.tbMain, "tbMain")
-        Me.tbMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnLoad, Me.btnSave, Me.ToolStripSeparator5, Me.btnOptions, Me.ToolStripSeparator2, Me.btnLoadImage, Me.ToolStripSeparator7, Me.btnPlan, Me.btnProfile, Me.btnBoth, Me.btnVerticalLayout, Me.btnHorizontalLayout, Me.ToolStripSeparator6, Me.btnZoomIn, Me.btnZoomOut, Me.btnZoomFit, Me.ToolStripSeparator1, Me.btnCalculate, Me.ToolStripSeparator3, Me.btnExport, Me.ToolStripSeparator4, Me.btnConfirm, Me.btnClose})
+        Me.tbMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnLoad, Me.btnSave, Me.ToolStripSeparator5, Me.btnOptions, Me.ToolStripSeparator2, Me.btnLoadImage, Me.ToolStripSeparator7, Me.btnPlan, Me.btnProfile, Me.btnBoth, Me.btnVerticalLayout, Me.btnHorizontalLayout, Me.ToolStripSeparator6, Me.btnZoomIn, Me.btnZoomOut, Me.btnZoomFit, Me.ToolStripSeparator1, Me.btnShowRulers, Me.ToolStripSeparator8, Me.btnCalculate, Me.ToolStripSeparator3, Me.btnExport, Me.ToolStripSeparator4, Me.btnConfirm, Me.btnClose})
         Me.tbMain.Name = "tbMain"
         '
         'btnNew
@@ -604,6 +678,18 @@ Partial Class frmResurveyMain
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         resources.ApplyResources(Me.ToolStripSeparator1, "ToolStripSeparator1")
         '
+        'btnShowRulers
+        '
+        Me.btnShowRulers.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnShowRulers.Image = Global.cSurveyPC.My.Resources.Resources.measure
+        resources.ApplyResources(Me.btnShowRulers, "btnShowRulers")
+        Me.btnShowRulers.Name = "btnShowRulers"
+        '
+        'ToolStripSeparator8
+        '
+        Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
+        resources.ApplyResources(Me.ToolStripSeparator8, "ToolStripSeparator8")
+        '
         'btnCalculate
         '
         resources.ApplyResources(Me.btnCalculate, "btnCalculate")
@@ -679,78 +765,6 @@ Partial Class frmResurveyMain
         Me.imlPopup.Images.SetKeyName(0, "warning")
         Me.imlPopup.Images.SetKeyName(1, "calculate")
         Me.imlPopup.Images.SetKeyName(2, "error")
-        '
-        'colPlotFrom
-        '
-        resources.ApplyResources(Me.colPlotFrom, "colPlotFrom")
-        Me.colPlotFrom.Name = "colPlotFrom"
-        Me.colPlotFrom.ReadOnly = True
-        '
-        'colPlotTo
-        '
-        resources.ApplyResources(Me.colPlotTo, "colPlotTo")
-        Me.colPlotTo.Name = "colPlotTo"
-        Me.colPlotTo.ReadOnly = True
-        '
-        'colPlotPlanimetricDistance
-        '
-        resources.ApplyResources(Me.colPlotPlanimetricDistance, "colPlotPlanimetricDistance")
-        Me.colPlotPlanimetricDistance.Name = "colPlotPlanimetricDistance"
-        Me.colPlotPlanimetricDistance.ReadOnly = True
-        '
-        'colPlotDrop
-        '
-        resources.ApplyResources(Me.colPlotDrop, "colPlotDrop")
-        Me.colPlotDrop.Name = "colPlotDrop"
-        Me.colPlotDrop.ReadOnly = True
-        '
-        'colPlotDistance
-        '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.colPlotDistance.DefaultCellStyle = DataGridViewCellStyle1
-        resources.ApplyResources(Me.colPlotDistance, "colPlotDistance")
-        Me.colPlotDistance.Name = "colPlotDistance"
-        Me.colPlotDistance.ReadOnly = True
-        '
-        'colPlotBearing
-        '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.colPlotBearing.DefaultCellStyle = DataGridViewCellStyle2
-        resources.ApplyResources(Me.colPlotBearing, "colPlotBearing")
-        Me.colPlotBearing.Name = "colPlotBearing"
-        Me.colPlotBearing.ReadOnly = True
-        '
-        'colPlotInclination
-        '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.colPlotInclination.DefaultCellStyle = DataGridViewCellStyle3
-        resources.ApplyResources(Me.colPlotInclination, "colPlotInclination")
-        Me.colPlotInclination.Name = "colPlotInclination"
-        Me.colPlotInclination.ReadOnly = True
-        '
-        'Sinistra
-        '
-        resources.ApplyResources(Me.Sinistra, "Sinistra")
-        Me.Sinistra.Name = "Sinistra"
-        Me.Sinistra.ReadOnly = True
-        '
-        'Destra
-        '
-        resources.ApplyResources(Me.Destra, "Destra")
-        Me.Destra.Name = "Destra"
-        Me.Destra.ReadOnly = True
-        '
-        'Alto
-        '
-        resources.ApplyResources(Me.Alto, "Alto")
-        Me.Alto.Name = "Alto"
-        Me.Alto.ReadOnly = True
-        '
-        'Basso
-        '
-        resources.ApplyResources(Me.Basso, "Basso")
-        Me.Basso.Name = "Basso"
-        Me.Basso.ReadOnly = True
         '
         'frmResurveyMain
         '
@@ -890,4 +904,6 @@ Partial Class frmResurveyMain
     Friend WithEvents Destra As DataGridViewTextBoxColumn
     Friend WithEvents Alto As DataGridViewTextBoxColumn
     Friend WithEvents Basso As DataGridViewTextBoxColumn
+    Friend WithEvents btnShowRulers As ToolStripButton
+    Friend WithEvents ToolStripSeparator8 As ToolStripSeparator
 End Class

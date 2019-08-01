@@ -8858,7 +8858,7 @@ o ad una sezione trasversale</value>
     <value>132, 22</value>
   </data>
   <data name="mnuFileExport3D.Text" xml:space="preserve">
-    <value>3D</value>
+    <value>3D...</value>
   </data>
   <data name="mnuFileExport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -14463,5 +14463,8 @@ o ad una sezione trasversale</value>
   </data>
   <data name="btnWorkspacesManage.Text" xml:space="preserve">
     <value>Gestisci workspaces...</value>
+  </data>
+  <data name="btnExport3D.Text" xml:space="preserve">
+    <value>3D...</value>
   </data>
 </root>

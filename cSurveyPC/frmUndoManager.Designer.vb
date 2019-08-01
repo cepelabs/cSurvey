@@ -41,32 +41,26 @@ Partial Class frmUndoManager
         'lvUndoStack
         '
         Me.lvUndoStack.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colUndoAction, Me.colUndoDescription, Me.colUndoDateStamp})
-        Me.lvUndoStack.Dock = System.Windows.Forms.DockStyle.Fill
+        resources.ApplyResources(Me.lvUndoStack, "lvUndoStack")
         Me.lvUndoStack.FullRowSelect = True
         Me.lvUndoStack.HideSelection = False
-        Me.lvUndoStack.Location = New System.Drawing.Point(0, 25)
         Me.lvUndoStack.MultiSelect = False
         Me.lvUndoStack.Name = "lvUndoStack"
-        Me.lvUndoStack.Size = New System.Drawing.Size(443, 223)
         Me.lvUndoStack.SmallImageList = Me.iml
-        Me.lvUndoStack.TabIndex = 0
         Me.lvUndoStack.UseCompatibleStateImageBehavior = False
         Me.lvUndoStack.View = System.Windows.Forms.View.Details
         '
         'colUndoAction
         '
-        Me.colUndoAction.Text = "Azione"
-        Me.colUndoAction.Width = 77
+        resources.ApplyResources(Me.colUndoAction, "colUndoAction")
         '
         'colUndoDescription
         '
-        Me.colUndoDescription.Text = "Descrizione"
-        Me.colUndoDescription.Width = 200
+        resources.ApplyResources(Me.colUndoDescription, "colUndoDescription")
         '
         'colUndoDateStamp
         '
-        Me.colUndoDateStamp.Text = "Data/ora"
-        Me.colUndoDateStamp.Width = 135
+        resources.ApplyResources(Me.colUndoDateStamp, "colUndoDateStamp")
         '
         'iml
         '
@@ -79,66 +73,50 @@ Partial Class frmUndoManager
         '
         'tbMain
         '
-        Me.tbMain.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        resources.ApplyResources(Me.tbMain, "tbMain")
         Me.tbMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.tbMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnUndo, Me.ToolStripSeparator3, Me.btnClean, Me.ToolStripSeparator1, Me.btnCancel})
-        Me.tbMain.Location = New System.Drawing.Point(0, 0)
         Me.tbMain.Name = "tbMain"
-        Me.tbMain.Size = New System.Drawing.Size(443, 25)
-        Me.tbMain.TabIndex = 4
-        Me.tbMain.Text = "ToolStrip1"
         '
         'btnUndo
         '
         Me.btnUndo.Image = Global.cSurveyPC.My.Resources.Resources.arrow_undo
-        Me.btnUndo.ImageTransparentColor = System.Drawing.Color.Magenta
+        resources.ApplyResources(Me.btnUndo, "btnUndo")
         Me.btnUndo.Name = "btnUndo"
-        Me.btnUndo.Size = New System.Drawing.Size(62, 22)
-        Me.btnUndo.Text = "Annulla"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
+        resources.ApplyResources(Me.ToolStripSeparator3, "ToolStripSeparator3")
         '
         'btnClean
         '
         Me.btnClean.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.btnClean.Image = CType(resources.GetObject("btnClean.Image"), System.Drawing.Image)
-        Me.btnClean.ImageTransparentColor = System.Drawing.Color.Magenta
+        resources.ApplyResources(Me.btnClean, "btnClean")
         Me.btnClean.Name = "btnClean"
-        Me.btnClean.Size = New System.Drawing.Size(39, 22)
-        Me.btnClean.Text = "Pulisci"
-        Me.btnClean.Visible = False
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        resources.ApplyResources(Me.ToolStripSeparator1, "ToolStripSeparator1")
         '
         'btnCancel
         '
         Me.btnCancel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.btnCancel.Image = CType(resources.GetObject("btnCancel.Image"), System.Drawing.Image)
-        Me.btnCancel.ImageTransparentColor = System.Drawing.Color.Magenta
+        resources.ApplyResources(Me.btnCancel, "btnCancel")
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(40, 22)
-        Me.btnCancel.Text = "Chiudi"
         '
         'frmUndoManager
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(443, 248)
         Me.Controls.Add(Me.lvUndoStack)
         Me.Controls.Add(Me.tbMain)
-        Me.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmUndoManager"
         Me.ShowInTaskbar = False
-        Me.Text = "Undo manager"
         Me.tbMain.ResumeLayout(False)
         Me.tbMain.PerformLayout()
         Me.ResumeLayout(False)

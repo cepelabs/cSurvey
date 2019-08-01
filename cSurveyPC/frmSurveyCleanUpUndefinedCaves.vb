@@ -112,6 +112,6 @@ Public Class frmSurveyCleanUpUndefinedCaves
     End Sub
 
     Private Sub grdUndefinedCaves_DataError(sender As Object, e As DataGridViewDataErrorEventArgs) Handles grdUndefinedCaves.DataError
-        'non cancellare
+        'do not delete
     End Sub
 End Class

@@ -98,13 +98,13 @@ Namespace cSurvey
 
         Public Sub Rebind(Optional ByVal RemoveOrphans As Boolean = False)
             Dim oTrigpointNames As SortedSet(Of String) = oSurvey.Segments.GetTrigPointsNames()
-            'aggiungo i capisaldi mancanti
+            'adding missing stations
             For Each sTrigPointName As String In oTrigpointNames
                 If Not oTrigPoints.ContainsKey(sTrigPointName) Then
                     Call Add(sTrigPointName)
                 End If
             Next
-            'verifico quelli orfani e li marco come tali
+            'set not found station as orphan
             Dim sTrigPointsToRemove As List(Of String) = New List(Of String)
             For Each oTrigPoint As cTrigPoint In oTrigPoints.Values
                 If Not oTrigpointNames.Contains(oTrigPoint.Name) And Not oTrigPoint.IsSystem Then
@@ -115,7 +115,7 @@ Namespace cSurvey
                 End If
             Next
             If RemoveOrphans Then
-                'cancello i capisaldi orfani
+                'delete orphan stations
                 For Each sTrigPointToRemove As String In sTrigPointsToRemove
                     Call oTrigPoints.Remove(sTrigPointToRemove)
                 Next

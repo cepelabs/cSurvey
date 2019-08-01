@@ -837,4 +837,7 @@
   <data name="colPlotDrop.HeaderText" xml:space="preserve">
     <value>Dislivello</value>
   </data>
+  <data name="btnShowRulers.Text" xml:space="preserve">
+    <value>Righelli e guide</value>
+  </data>
 </root>

@@ -78,7 +78,7 @@ Public Class frmSurface
             End With
         End If
 
-        btnClear.Enabled = lvOrthoPhotos.Items.Count > 0 Or lvElevations.Items.Count > 0 Or lvWMSs.Items.Count > 0
+        'btnClear.Enabled = lvOrthoPhotos.Items.Count > 0 Or lvElevations.Items.Count > 0 Or lvWMSs.Items.Count > 0
 
         bDisableChangeEvent = False
         Call pShowInfo()
@@ -96,18 +96,16 @@ Public Class frmSurface
         Cursor = Cursors.WaitCursor
         bDisableChangeEvent = True
 
-        'elevazione...
-        If lvElevations.SelectedItems.Count > 0 Then
-            Dim oElevation As cElevation = lvElevations.SelectedItems(0).Tag
+        'elevation...
+        If Not pGetSelectedItem(lvElevations) Is Nothing Then
+            Dim oElevation As cElevation = pGetSelectedItem(lvElevations).Tag
             With oElevation
                 If .IsEmpty Then
                     picElevationsPreview.Image = Nothing
                     txtElevationInformation.Text = GetLocalizedString("surface.textpart1")
-                    'chkShowSurfaceIn3D.Enabled = False
                     cboColorSchema.Enabled = False
                     chkElevationDefault.Enabled = False
                 Else
-                    'chkShowSurfaceIn3D.Enabled = True
                     cboColorSchema.Enabled = True
                     chkElevationDefault.Enabled = True
 
@@ -122,7 +120,6 @@ Public Class frmSurface
                     sText = sText & String.Format(GetLocalizedString("surface.textpart4"), .XSize, .YSize) & vbCrLf
                     sText = sText & String.Format(GetLocalizedString("surface.textpart5"), modNumbers.MathRound(.Columns * .XSize, 0), modNumbers.MathRound(.Rows * .YSize, 0))
                     txtElevationInformation.Text = sText
-                    'chkShowSurfaceIn3D.Checked = .ShowIn3D
                     cboColorSchema.SelectedIndex = .ColorSchema
                     chkElevationDefault.Checked = .Default
                 End If
@@ -135,14 +132,13 @@ Public Class frmSurface
             chkElevationDefault.Enabled = False
         End If
 
-        'ortofoto...
-        If lvOrthoPhotos.SelectedItems.Count > 0 Then
-            Dim oOrthoPhoto As cOrthoPhoto = lvOrthoPhotos.SelectedItems(0).Tag
+        'orthophoto...
+        If Not pGetSelectedItem(lvOrthoPhotos) Is Nothing Then
+            Dim oOrthoPhoto As cOrthoPhoto = pGetSelectedItem(lvOrthoPhotos).Tag
             With oOrthoPhoto
                 If .IsEmpty Then
                     picOrthoPhotoPreview.Image = Nothing
                     txtOrthoPhotoInformation.Text = GetLocalizedString("surface.textpart1")
-                    'chkShowPhotoIn3D.Enabled = False
                     chkOrthoPhotoDefault.Enabled = False
                 Else
                     picOrthoPhotoPreview.Image = .Photo
@@ -160,8 +156,6 @@ Public Class frmSurface
                     sText = sText & String.Format(GetLocalizedString("surface.textpart4"), .XSize, .YSize) & vbCrLf
                     sText = sText & String.Format(GetLocalizedString("surface.textpart5"), modNumbers.MathRound(.Photo.Width * .XSize, 0), modNumbers.MathRound(.Photo.Height * .YSize, 0))
                     txtOrthoPhotoInformation.Text = sText
-                    'chkShowPhotoIn3D.Enabled = True
-                    'chkShowPhotoIn3D.Checked = .ShowIn3D
                     chkOrthoPhotoDefault.Enabled = True
                     chkOrthoPhotoDefault.Checked = .Default
                 End If
@@ -169,19 +163,22 @@ Public Class frmSurface
         Else
             picOrthoPhotoPreview.Image = Nothing
             txtOrthoPhotoInformation.Text = GetLocalizedString("surface.textpart1")
-            'chkShowPhotoIn3D.Enabled = False
             chkOrthoPhotoDefault.Enabled = False
         End If
 
         'wms....
 
+        Call pRefreshElevationButtons()
+        Call pRefreshOrthophotoButtons()
+        Call pRefreshWMSButtons()
+
         bDisableChangeEvent = False
         Cursor = Cursors.Default
     End Sub
 
-    Private Function pClearAllEnabled() As Boolean
-        Return lvOrthoPhotos.Items.Count > 0 Or lvElevations.Items.Count > 0 Or lvWMSs.Items.Count > 0
-    End Function
+    'Private Function pClearAllEnabled() As Boolean
+    '    Return lvOrthoPhotos.Items.Count > 0 Or lvElevations.Items.Count > 0 Or lvWMSs.Items.Count > 0
+    'End Function
 
     Private Sub pRemoveData()
         If Not IsNothing(lvElevations.FocusedItem) Then
@@ -191,7 +188,7 @@ Public Class frmSurface
                 Call lvElevations.Items.Remove(oItem)
                 Call imlElevations.Images.RemoveByKey(oElevation.ID)
                 Call oSurface.Elevations.Remove(oElevation)
-                btnClear.Enabled = pClearAllEnabled()
+                'btnClear.Enabled = pClearAllEnabled()
                 Call pShowInfo()
             End If
         End If
@@ -199,58 +196,50 @@ Public Class frmSurface
 
     Private Sub pLoadElevationData()
         tabMain.SelectedTab = tabData
-        Dim oOfd As OpenFileDialog = New OpenFileDialog
-        With oOfd
-            .Title = GetLocalizedString("surface.openelevationdialog")
-            .Filter = GetLocalizedString("surface.filetypeASC") & " (*.ASC;*.TXT)|*.ASC;*.TXT"
-            .FilterIndex = 1
-            If .ShowDialog = Windows.Forms.DialogResult.OK Then
-                Try
-                    Dim frmSIASCOptions As frmSurfaceImportASCOptions = New frmSurfaceImportASCOptions
-                    Dim oOptions As Surface.cElevation.cElevationImportOptions = New Surface.cElevation.cElevationImportOptions
-                    If frmSIASCOptions.ShowDialog = Windows.Forms.DialogResult.OK Then
-                        oOptions.System = frmSIASCOptions.cboCoordinateSystem.SelectedIndex
-                        Select Case DirectCast(frmSIASCOptions.cboCoordinateSystem.SelectedIndex, Surface.cElevation.cElevationImportOptions.CoordinateSystemEnum)
-                            Case Surface.cElevation.cElevationImportOptions.CoordinateSystemEnum.UTMWGS84
-                                Call oOptions.Parameters.Add("utmzone", frmSIASCOptions.cboUTMZone.Text)
-                                Call oOptions.Parameters.Add("utmband", frmSIASCOptions.cboUTMBand.Text)
-                        End Select
+        Using oOfd As OpenFileDialog = New OpenFileDialog
+            With oOfd
+                .Title = GetLocalizedString("surface.openelevationdialog")
+                .Filter = GetLocalizedString("surface.filetypeASC") & " (*.ASC;*.TXT)|*.ASC;*.TXT"
+                .FilterIndex = 1
+                If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                    Try
+                        Dim frmSIASCOptions As frmSurfaceImportASCOptions = New frmSurfaceImportASCOptions
+                        Dim oOptions As Surface.cElevation.cElevationImportOptions = New Surface.cElevation.cElevationImportOptions
+                        If frmSIASCOptions.ShowDialog = Windows.Forms.DialogResult.OK Then
+                            oOptions.System = frmSIASCOptions.cboCoordinateSystem.SelectedIndex
+                            Select Case DirectCast(frmSIASCOptions.cboCoordinateSystem.SelectedIndex, Surface.cElevation.cElevationImportOptions.CoordinateSystemEnum)
+                                Case Surface.cElevation.cElevationImportOptions.CoordinateSystemEnum.UTMWGS84
+                                    Call oOptions.Parameters.Add("utmzone", frmSIASCOptions.cboUTMZone.Text)
+                                    Call oOptions.Parameters.Add("utmband", frmSIASCOptions.cboUTMBand.Text)
+                            End Select
 
-                        Dim oElevation As cElevation = oSurface.Elevations.Add(.FilterIndex - 1, .FileName, oOptions)
-                        If Not oElevation Is Nothing Then
-                            Call imlElevations.Images.Add(oElevation.ID, oElevation.GetImage(oThumbSize))
-                            Dim oItem As ListViewItem = New ListViewItem
-                            oItem.Text = oElevation.Name '& vbCrLf & oElevation.XSize & " x " & oElevation.YSize & " m"
-                            oItem.ImageKey = oElevation.ID
-                            oItem.Tag = oElevation
-                            Call lvElevations.Items.Add(oItem)
-                            Call oItem.EnsureVisible()
-                            oItem.Focused = True
-                            oItem.Selected = True
-                            Call pShowInfo()
+                            Dim oElevation As cElevation = oSurface.Elevations.Add(.FilterIndex - 1, .FileName, oOptions)
+                            If Not oElevation Is Nothing Then
+                                Call imlElevations.Images.Add(oElevation.ID, oElevation.GetImage(oThumbSize))
+                                Dim oItem As ListViewItem = New ListViewItem
+                                oItem.Text = oElevation.Name '& vbCrLf & oElevation.XSize & " x " & oElevation.YSize & " m"
+                                oItem.ImageKey = oElevation.ID
+                                oItem.Tag = oElevation
+                                Call lvElevations.Items.Add(oItem)
+                                Call oItem.EnsureVisible()
+                                oItem.Focused = True
+                                oItem.Selected = True
+                                Call pShowInfo()
+                            End If
                         End If
-                    End If
-                Catch ex As Exception
-                    Call MsgBox(String.Format(GetLocalizedString("surface.warning2"), ex.Message), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("surface.warningtitle"))
-                End Try
-            End If
-        End With
+                    Catch ex As Exception
+                        Call MsgBox(String.Format(GetLocalizedString("surface.warning2"), ex.Message), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("surface.warningtitle"))
+                    End Try
+                End If
+            End With
+        End Using
     End Sub
-
-    'Private Sub chkShowSurfaceIn3D_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkShowSurfaceIn3D.CheckedChanged
-    '    If Not bDisableChangeEvent Then
-    '        If lvElevations.SelectedItems.Count > 0 Then
-    '            Dim oElevation As cElevation = lvElevations.SelectedItems(0).Tag
-    '            oElevation.ShowIn3D = chkShowSurfaceIn3D.Checked
-    '            Call pShowInfo()
-    '        End If
-    '    End If
-    'End Sub
 
     Private Sub cboColorSchema_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cboColorSchema.SelectedIndexChanged
         If Not bDisableChangeEvent Then
-            If lvElevations.SelectedItems.Count > 0 Then
-                Dim oElevation As cElevation = lvElevations.SelectedItems(0).Tag
+            If Not IsNothing(pGetSelectedItem(lvElevations)) Then
+                Dim oItem As ListViewItem = pGetSelectedItem(lvElevations)
+                Dim oElevation As cElevation = oItem.Tag
                 oElevation.ColorSchema = cboColorSchema.SelectedIndex
                 Call imlElevations.Images.RemoveByKey(oElevation.ID)
                 Call imlElevations.Images.Add(oElevation.ID, oElevation.GetImage(oThumbSize))
@@ -264,27 +253,27 @@ Public Class frmSurface
     End Sub
 
     Private Sub pRemoveWMS()
-        If Not IsNothing(lvWMSs.FocusedItem) Then
-            Dim oItem As ListViewItem = lvWMSs.FocusedItem
-            If MsgBox(GetLocalizedString("surface.warning3"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("surface.warningtitle")) = MsgBoxResult.Yes Then
+        If Not IsNothing(pGetSelectedItem(lvWMSs)) Then
+            Dim oItem As ListViewItem = pGetSelectedItem(lvWMSs)
+            If MsgBox(GetLocalizedString("surface.warning5"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("surface.warningtitle")) = MsgBoxResult.Yes Then
                 Dim oWMS As cWMS = oItem.Tag
                 Call lvWMSs.Items.Remove(oItem)
                 Call oSurface.WMSs.Remove(oWMS)
-                btnClear.Enabled = pClearAllEnabled()
+                Call pRefreshWMSButtons()
                 Call pShowInfo()
             End If
         End If
     End Sub
 
     Private Sub pRemoveOrthoPhoto()
-        If Not IsNothing(lvOrthoPhotos.FocusedItem) Then
-            Dim oItem As ListViewItem = lvOrthoPhotos.FocusedItem
+        If Not IsNothing(pGetSelectedItem(lvOrthoPhotos)) Then
+            Dim oItem As ListViewItem = pGetSelectedItem(lvOrthoPhotos)
             If MsgBox(GetLocalizedString("surface.warning3"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("surface.warningtitle")) = MsgBoxResult.Yes Then
                 Dim oOrthoPhoto As cOrthoPhoto = oItem.Tag
                 Call lvOrthoPhotos.Items.Remove(oItem)
                 Call imlOrthoPhotos.Images.RemoveByKey(oOrthoPhoto.ID)
                 Call oSurface.OrthoPhotos.Remove(oOrthoPhoto)
-                btnClear.Enabled = pClearAllEnabled()
+                Call pRefreshOrthophotoButtons()
                 Call pShowInfo()
             End If
         End If
@@ -292,79 +281,70 @@ Public Class frmSurface
 
     Private Sub pLoadWMS()
         tabMain.SelectedTab = tabWMS
-        Dim frmSAWMS As frmSurfaceAddWMS = New frmSurfaceAddWMS
-        If frmSAWMS.ShowDialog = Windows.Forms.DialogResult.OK Then
-            With frmSAWMS
-                Dim sName As String = .txtName.Text
-                Dim sURL As String = .txtURL.Text
-                Dim sLayer As String = .GetLayer()
-                Dim sSRS As String = .getoverridesrs()
-                Dim oWMS As cWMS = oSurface.WMSs.Add(cWMS.WMSDataTypeEnum.WMSDefaultType, sName, sURL, sLayer, sSRS, New cWMS.cWMSImportOptions)
+        Using frmSAWMS As frmSurfaceAddWMS = New frmSurfaceAddWMS
+            If frmSAWMS.ShowDialog = Windows.Forms.DialogResult.OK Then
+                With frmSAWMS
+                    Dim sName As String = .txtName.Text
+                    Dim sURL As String = .txtURL.Text
+                    Dim sLayer As String = .GetLayer()
+                    Dim sSRS As String = .getoverridesrs()
+                    Dim oWMS As cWMS = oSurface.WMSs.Add(cWMS.WMSDataTypeEnum.WMSDefaultType, sName, sURL, sLayer, sSRS, New cWMS.cWMSImportOptions)
 
-                Dim oItem As ListViewItem = New ListViewItem
-                oItem.Text = oWMS.Name '& vbCrLf & oOrthoPhoto.Photo.Width & " x " & oOrthoPhoto.Photo.Height & " px" & vbCrLf & oOrthoPhoto.XSize & " x " & oOrthoPhoto.YSize & " m"
-                Call oItem.SubItems.Add(oWMS.URL)
-                Call oItem.SubItems.Add(oWMS.Layer)
-                oItem.ImageKey = "layer_wms"
-                oItem.Tag = oWMS
-                Call lvWMSs.Items.Add(oItem)
-                Call oItem.EnsureVisible()
-                oItem.Focused = True
-                oItem.Selected = True
-                Call pShowInfo()
-            End With
-        End If
+                    Dim oItem As ListViewItem = New ListViewItem
+                    oItem.Text = oWMS.Name '& vbCrLf & oOrthoPhoto.Photo.Width & " x " & oOrthoPhoto.Photo.Height & " px" & vbCrLf & oOrthoPhoto.XSize & " x " & oOrthoPhoto.YSize & " m"
+                    Call oItem.SubItems.Add(oWMS.URL)
+                    Call oItem.SubItems.Add(oWMS.Layer)
+                    oItem.ImageKey = "layer_wms"
+                    oItem.Tag = oWMS
+                    Call lvWMSs.Items.Add(oItem)
+                    Call oItem.EnsureVisible()
+                    oItem.Focused = True
+                    oItem.Selected = True
+                    Call pShowInfo()
+                End With
+            End If
+        End Using
     End Sub
 
     Private Sub pLoadOrthoPhoto()
         tabMain.SelectedTab = tabPhoto
-        Dim oOfd As OpenFileDialog = New OpenFileDialog
-        With oOfd
-            .Title = GetLocalizedString("surface.openorthophotodialog")
-            .Filter = GetLocalizedString("surface.filetypeIMAGES") & " (*.JPG;*.TIF;*.PNG)|*.JPG;*.TIF;*.PNG"
-            .FilterIndex = 1
-            If .ShowDialog = Windows.Forms.DialogResult.OK Then
-                Try
-                    Dim frmSIASCOptions As frmSurfaceImportASCOptions = New frmSurfaceImportASCOptions
-                    Dim oOptions As Surface.cOrthoPhoto.cOrthoPhotoImportOptions = New Surface.cOrthoPhoto.cOrthoPhotoImportOptions
-                    If frmSIASCOptions.ShowDialog = Windows.Forms.DialogResult.OK Then
-                        oOptions.System = frmSIASCOptions.cboCoordinateSystem.SelectedIndex
-                        Select Case DirectCast(frmSIASCOptions.cboCoordinateSystem.SelectedIndex, Surface.cElevation.cElevationImportOptions.CoordinateSystemEnum)
-                            Case Surface.cOrthoPhoto.cOrthoPhotoImportOptions.CoordinateSystemEnum.UTMWGS84
-                                Call oOptions.Parameters.Add("utmzone", frmSIASCOptions.cboUTMZone.Text)
-                                Call oOptions.Parameters.Add("utmband", frmSIASCOptions.cboUTMBand.Text)
-                        End Select
-                        Dim oOrthoPhoto As cOrthoPhoto = oSurface.OrthoPhotos.Add(.FilterIndex - 1, .FileName, oOptions)
-                        If Not oOrthoPhoto Is Nothing Then
-                            Call imlOrthoPhotos.Images.Add(oOrthoPhoto.ID, oOrthoPhoto.GetImage(oThumbSize))
-                            Dim oItem As ListViewItem = New ListViewItem
-                            oItem.Text = oOrthoPhoto.Name '& vbCrLf & oOrthoPhoto.Photo.Width & " x " & oOrthoPhoto.Photo.Height & " px" & vbCrLf & oOrthoPhoto.XSize & " x " & oOrthoPhoto.YSize & " m"
-                            oItem.ImageKey = oOrthoPhoto.ID
-                            oItem.Tag = oOrthoPhoto
-                            Call lvOrthoPhotos.Items.Add(oItem)
-                            Call oItem.EnsureVisible()
-                            oItem.Focused = True
-                            oItem.Selected = True
-                            Call pShowInfo()
+        Using oOfd As OpenFileDialog = New OpenFileDialog
+            With oOfd
+                .Title = GetLocalizedString("surface.openorthophotodialog")
+                .Filter = GetLocalizedString("surface.filetypeIMAGES") & " (*.JPG;*.TIF;*.PNG)|*.JPG;*.TIF;*.PNG"
+                .FilterIndex = 1
+                If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                    Try
+                        Dim frmSIASCOptions As frmSurfaceImportASCOptions = New frmSurfaceImportASCOptions
+                        Dim oOptions As Surface.cOrthoPhoto.cOrthoPhotoImportOptions = New Surface.cOrthoPhoto.cOrthoPhotoImportOptions
+                        If frmSIASCOptions.ShowDialog = Windows.Forms.DialogResult.OK Then
+                            oOptions.System = frmSIASCOptions.cboCoordinateSystem.SelectedIndex
+                            Select Case DirectCast(frmSIASCOptions.cboCoordinateSystem.SelectedIndex, Surface.cElevation.cElevationImportOptions.CoordinateSystemEnum)
+                                Case Surface.cOrthoPhoto.cOrthoPhotoImportOptions.CoordinateSystemEnum.UTMWGS84
+                                    Call oOptions.Parameters.Add("utmzone", frmSIASCOptions.cboUTMZone.Text)
+                                    Call oOptions.Parameters.Add("utmband", frmSIASCOptions.cboUTMBand.Text)
+                            End Select
+                            Dim oOrthoPhoto As cOrthoPhoto = oSurface.OrthoPhotos.Add(.FilterIndex - 1, .FileName, oOptions)
+                            If Not oOrthoPhoto Is Nothing Then
+                                Call imlOrthoPhotos.Images.Add(oOrthoPhoto.ID, oOrthoPhoto.GetImage(oThumbSize))
+                                Dim oItem As ListViewItem = New ListViewItem
+                                oItem.Text = oOrthoPhoto.Name '& vbCrLf & oOrthoPhoto.Photo.Width & " x " & oOrthoPhoto.Photo.Height & " px" & vbCrLf & oOrthoPhoto.XSize & " x " & oOrthoPhoto.YSize & " m"
+                                oItem.ImageKey = oOrthoPhoto.ID
+                                oItem.Tag = oOrthoPhoto
+                                Call lvOrthoPhotos.Items.Add(oItem)
+                                Call oItem.EnsureVisible()
+                                oItem.Focused = True
+                                oItem.Selected = True
+                                Call pShowInfo()
+                            End If
                         End If
-                    End If
-                Catch ex As Exception
-                    Call MsgBox(String.Format(GetLocalizedString("surface.warning2"), ex.Message), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("surface.warningtitle"))
-                End Try
-            End If
-        End With
+                    Catch ex As Exception
+                        Call MsgBox(String.Format(GetLocalizedString("surface.warning2"), ex.Message), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("surface.warningtitle"))
+                    End Try
+                End If
+            End With
+        End Using
     End Sub
-
-    'Private Sub chkShowPhotoIn3D_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkShowPhotoIn3D.CheckedChanged
-    '    If Not bDisableChangeEvent Then
-    '        Try
-    '            Dim oOrthoPhoto As cOrthoPhoto = lvOrthoPhotos.SelectedItems(0).Tag
-    '            oOrthoPhoto.ShowIn3D = chkShowPhotoIn3D.Checked
-    '        Catch
-    '        End Try
-    '        Call pShowInfo()
-    '    End If
-    'End Sub
 
     Private Sub lvOrthoPhotos_AfterLabelEdit(sender As Object, e As System.Windows.Forms.LabelEditEventArgs) Handles lvOrthoPhotos.AfterLabelEdit
         If Not bDisableChangeEvent Then
@@ -377,9 +357,24 @@ Public Class frmSurface
         End If
     End Sub
 
+    Private Function pGetSelectedItem(ListView As ListView) As ListViewItem
+        'If ListView.FocusedItem Is Nothing Then
+        If ListView.SelectedItems.Count > 0 Then
+            Return ListView.SelectedItems(0)
+        End If
+        'Else
+        '    Return ListView.FocusedItem
+        'End If
+    End Function
+
+
+    Private Sub pRefreshOrthophotoButtons()
+        btnOrthophotoDelete.Enabled = Not pGetSelectedItem(lvOrthoPhotos) Is Nothing
+        btnOrthophotoDeleteAll.Enabled = lvOrthoPhotos.Items.Count > 0
+    End Sub
+
     Private Sub lvOrthoPhotos_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles lvOrthoPhotos.SelectedIndexChanged
-        btnRemove.Enabled = lvOrthoPhotos.SelectedItems.Count > 0
-        btnClear.Enabled = pClearAllEnabled()
+        Call pRefreshOrthophotoButtons()
         Call pShowInfo()
     End Sub
 
@@ -394,9 +389,17 @@ Public Class frmSurface
         End If
     End Sub
 
+    Private Sub pRefreshElevationButtons()
+        Dim bEnabled As Boolean = not pGetSelectedItem(lvElevations) Is Nothing
+        btnDataDelete.Enabled = bEnabled
+        btnDataDeleteAll.Enabled = lvElevations.Items.Count > 0
+        btnElevationsPreviewElevationSavePreview.Enabled = bEnabled
+        btnElevationsPreviewExportData.Enabled = bEnabled
+        btnElevationsPreviewRemoveNODATA.Enabled = bEnabled
+    End Sub
+
     Private Sub lvElevations_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles lvElevations.SelectedIndexChanged
-        btnRemove.Enabled = lvElevations.SelectedItems.Count > 0
-        btnClear.Enabled = pClearAllEnabled()
+        Call pRefreshElevationButtons()
         Call pShowInfo()
     End Sub
 
@@ -449,97 +452,106 @@ Public Class frmSurface
         mnuElevationsPreviewElevationOrthoPhotoFromWMS.Enabled = lvWMSs.Items.Count
     End Sub
 
-    Private Sub mnuElevationsPreviewExportData_Click(sender As System.Object, e As System.EventArgs) Handles mnuElevationsPreviewExportData.Click
+    Private Sub pElevationExportData()
         Try
-            Dim oSFD As SaveFileDialog = New SaveFileDialog
-            With oSFD
-                .Title = GetLocalizedString("surface.exportelevationdatadialog")
-                .Filter = GetLocalizedString("surface.filetypeHOLOS") & " (*.elevation.xml)|*.elevation.xml"
-                .FilterIndex = 1
-                If .ShowDialog = Windows.Forms.DialogResult.OK Then
-                    Select Case .FilterIndex
-                        Case 1
-                            Dim oXML As XmlDocument = New XmlDocument
-                            Dim oXMLRoot As XmlElement = oXML.CreateElement("holos")
-                            Dim oXMLElevation As XmlElement = oXML.CreateElement("elevation")
-                            Dim oElevation As cElevation = lvElevations.SelectedItems(0).Tag
-                            Dim oTopLeft As modUTM.UTM = modUTM.WGS84ToUTM(oElevation.GetCoordinate(cElevation.GetCoordinateCornerEnum.TopLeft))
-                            Call oXMLElevation.SetAttribute("pos", modNumbers.NumberToString(oTopLeft.East) & ";" & modNumbers.NumberToString(oTopLeft.North) & ";0")
-                            'Call oXMLElevation.SetAttribute("tr", modUTM.WGS84ToUTM(oElevation.GetCoordinate(cElevation.GetCoordinateCornerEnum.TopRight)).ToString)
-                            'Call oXMLElevation.SetAttribute("bl", modUTM.WGS84ToUTM(oElevation.GetCoordinate(cElevation.GetCoordinateCornerEnum.BottomLeft)).ToString)
-                            'Call oXMLElevation.SetAttribute("br", modUTM.WGS84ToUTM(oElevation.GetCoordinate(cElevation.GetCoordinateCornerEnum.BottomRight)).ToString)
-                            Call oXMLElevation.SetAttribute("rows", oElevation.Rows)
-                            Call oXMLElevation.SetAttribute("cols", oElevation.Columns)
-                            Call oXMLElevation.SetAttribute("sizex", modNumbers.NumberToString(oElevation.XSize))
-                            Call oXMLElevation.SetAttribute("sizey", modNumbers.NumberToString(oElevation.YSize))
-                            Call oXMLElevation.SetAttribute("nodatavalue", modNumbers.NumberToString(oElevation.NoDataValue))
-                            Dim odata As StringBuilder = New StringBuilder
-                            For iy As Integer = 0 To oElevation.Rows - 1
-                                For ix As Integer = 0 To oElevation.Columns - 1
-                                    Dim iAlt As Integer = oElevation.Data(iy, ix)   'arrotondata al metro!
-                                    Call odata.Append(modNumbers.NumberToString(iAlt, "0") & " ")
+            Using oSFD As SaveFileDialog = New SaveFileDialog
+                With oSFD
+                    .Title = GetLocalizedString("surface.exportelevationdatadialog")
+                    .Filter = GetLocalizedString("surface.filetypeHOLOS") & " (*.elevation.xml)|*.elevation.xml"
+                    .FilterIndex = 1
+                    If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                        Select Case .FilterIndex
+                            Case 1
+                                Dim oXML As XmlDocument = New XmlDocument
+                                Dim oXMLRoot As XmlElement = oXML.CreateElement("holos")
+                                Dim oXMLElevation As XmlElement = oXML.CreateElement("elevation")
+                                Dim oElevation As cElevation = lvElevations.SelectedItems(0).Tag
+                                Dim oTopLeft As modUTM.UTM = modUTM.WGS84ToUTM(oElevation.GetCoordinate(cElevation.GetCoordinateCornerEnum.TopLeft))
+                                Call oXMLElevation.SetAttribute("pos", modNumbers.NumberToString(oTopLeft.East) & ";" & modNumbers.NumberToString(oTopLeft.North) & ";0")
+                                'Call oXMLElevation.SetAttribute("tr", modUTM.WGS84ToUTM(oElevation.GetCoordinate(cElevation.GetCoordinateCornerEnum.TopRight)).ToString)
+                                'Call oXMLElevation.SetAttribute("bl", modUTM.WGS84ToUTM(oElevation.GetCoordinate(cElevation.GetCoordinateCornerEnum.BottomLeft)).ToString)
+                                'Call oXMLElevation.SetAttribute("br", modUTM.WGS84ToUTM(oElevation.GetCoordinate(cElevation.GetCoordinateCornerEnum.BottomRight)).ToString)
+                                Call oXMLElevation.SetAttribute("rows", oElevation.Rows)
+                                Call oXMLElevation.SetAttribute("cols", oElevation.Columns)
+                                Call oXMLElevation.SetAttribute("sizex", modNumbers.NumberToString(oElevation.XSize))
+                                Call oXMLElevation.SetAttribute("sizey", modNumbers.NumberToString(oElevation.YSize))
+                                Call oXMLElevation.SetAttribute("nodatavalue", modNumbers.NumberToString(cElevation.NoDataValue))
+                                Dim odata As StringBuilder = New StringBuilder
+                                For iy As Integer = 0 To oElevation.Rows - 1
+                                    For ix As Integer = 0 To oElevation.Columns - 1
+                                        Dim iAlt As Integer = oElevation.Data(iy, ix)   'rounded to meters
+                                        Call odata.Append(modNumbers.NumberToString(iAlt, "0") & " ")
+                                    Next
+                                    Call odata.Append(vbCrLf)
                                 Next
-                                Call odata.Append(vbCrLf)
-                            Next
-                            oXMLElevation.InnerText = odata.ToString
-                            Call oXMLRoot.AppendChild(oXMLElevation)
-                            Call oXML.AppendChild(oXMLRoot)
-                            Call oXML.Save(.FileName)
-                    End Select
-                End If
-            End With
+                                oXMLElevation.InnerText = odata.ToString
+                                Call oXMLRoot.AppendChild(oXMLElevation)
+                                Call oXML.AppendChild(oXMLRoot)
+                                Call oXML.Save(.FileName)
+                        End Select
+                    End If
+                End With
+            End Using
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
     End Sub
 
+    Private Sub mnuElevationsPreviewExportData_Click(sender As System.Object, e As System.EventArgs) Handles mnuElevationsPreviewExportData.Click
+        Call pElevationExportData()
+    End Sub
+
     Private Sub mnuElevationsPreviewRemoveNODATA_Click(sender As Object, e As EventArgs) Handles mnuElevationsPreviewRemoveNODATA.Click
+        Call pElevationRemoveNoData()
+    End Sub
+
+    Private Sub pElevationRemoveNoData()
         Dim oElevation As cElevation = lvElevations.SelectedItems(0).Tag
         Call oElevation.RemoveNodata()
         Call pShowInfo()
     End Sub
 
-    Private Sub btnElevationsRemoveData_Click(sender As System.Object, e As System.EventArgs) Handles btnRemove.Click
-        If tabMain.SelectedTab Is tabData Then
-            Call pRemoveData()
-        End If
-        If tabMain.SelectedTab Is tabPhoto Then
-            Call pRemoveOrthoPhoto()
-        End If
-        If tabMain.SelectedTab Is tabWMS Then
-            Call pRemoveWMS()
-        End If
-    End Sub
+    'Private Sub btnElevationsRemoveData_Click(sender As System.Object, e As System.EventArgs) Handles btnRemove.Click
+    '    If tabMain.SelectedTab Is tabData Then
+    '        Call pRemoveData()
+    '    End If
+    '    If tabMain.SelectedTab Is tabPhoto Then
+    '        Call pRemoveOrthoPhoto()
+    '    End If
+    '    If tabMain.SelectedTab Is tabWMS Then
+    '        Call pRemoveWMS()
+    '    End If
+    'End Sub
 
-    Private Sub tabMain_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles tabMain.SelectedIndexChanged
-        If tabMain.SelectedTab Is tabData Then
-            btnRemove.Enabled = lvElevations.SelectedItems.Count > 0
-        End If
-        If tabMain.SelectedTab Is tabPhoto Then
-            btnRemove.Enabled = lvOrthoPhotos.SelectedItems.Count > 0
-        End If
-    End Sub
+    'Private Sub tabMain_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles tabMain.SelectedIndexChanged
+    '    If tabMain.SelectedTab Is tabData Then
+    '        btnRemove.Enabled = lvElevations.SelectedItems.Count > 0
+    '    End If
+    '    If tabMain.SelectedTab Is tabPhoto Then
+    '        btnRemove.Enabled = lvOrthoPhotos.SelectedItems.Count > 0
+    '    End If
+    'End Sub
 
-    Private Sub btnImportOrthoPhoto_Click(sender As System.Object, e As System.EventArgs) Handles btnImportOrthoPhoto.Click
+    Private Sub btnImportOrthoPhoto_Click(sender As System.Object, e As System.EventArgs)
         Call pLoadOrthoPhoto()
     End Sub
 
-    Private Sub btnImportElevationData_Click(sender As System.Object, e As System.EventArgs) Handles btnImportElevationData.Click
+    Private Sub btnImportElevationData_Click(sender As System.Object, e As System.EventArgs)
         Call pLoadElevationData()
     End Sub
 
-    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
-        Call oSurface.OrthoPhotos.Clear()
-        Call oSurface.Elevations.Clear()
-        Call oSurface.WMSs.Clear()
+    'Private Sub btnClear_Click(sender As Object, e As EventArgs)
+    '    Call oSurface.OrthoPhotos.Clear()
+    '    Call oSurface.Elevations.Clear()
+    '    Call oSurface.WMSs.Clear()
 
-        Call lvOrthoPhotos.Items.Clear()
-        Call lvElevations.Items.Clear()
-        Call lvWMSs.Items.Clear()
-        Call pShowInfo()
+    '    Call lvOrthoPhotos.Items.Clear()
+    '    Call lvElevations.Items.Clear()
+    '    Call lvWMSs.Items.Clear()
+    '    Call pShowInfo()
 
-        btnClear.Enabled = pClearAllEnabled()
-    End Sub
+    '    btnClear.Enabled = pClearAllEnabled()
+    'End Sub
 
     Private Sub btnPopupClose_Click(sender As System.Object, e As System.EventArgs) Handles btnPopupClose.Click
         Call pPopupHide()
@@ -576,17 +588,17 @@ Public Class frmSurface
         Call pnlPopup.Hide()
     End Sub
 
-    Private Sub mnuImportShapeFile_Click(sender As Object, e As EventArgs) Handles mnuImportShapeFile.Click
+    Private Sub mnuImportShapeFile_Click(sender As Object, e As EventArgs)
 
     End Sub
 
-    Private Sub mnuImportWMS_Click(sender As Object, e As EventArgs) Handles mnuImportWMS.Click
+    Private Sub mnuImportWMS_Click(sender As Object, e As EventArgs)
         Call pLoadWMS()
     End Sub
 
     Private Sub pEditWMS()
-        If Not IsNothing(lvWMSs.FocusedItem) Then
-            Dim oItem As ListViewItem = lvWMSs.FocusedItem
+        If Not IsNothing(pGetSelectedItem(lvWMSs)) Then
+            Dim oItem As ListViewItem = pGetSelectedItem(lvWMSs)
             Dim oWms As cWMS = oItem.Tag
             Dim frmSAWMS As frmSurfaceAddWMS = New frmSurfaceAddWMS(oWms.Name, oWms.URL, oWms.Layer, oWms.SRSOverride)
             If frmSAWMS.ShowDialog = Windows.Forms.DialogResult.OK Then
@@ -607,9 +619,13 @@ Public Class frmSurface
         Call pEditWMS()
     End Sub
 
+    Private Sub pRefreshWMSButtons()
+        btnWMSDelete.Enabled = Not pGetSelectedItem(lvWMSs) Is Nothing
+        btnWMSDeleteAll.Enabled = lvWMSs.Items.Count > 0
+    End Sub
+
     Private Sub lvWMSs_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lvWMSs.SelectedIndexChanged
-        btnRemove.Enabled = lvWMSs.SelectedItems.Count > 0
-        btnClear.Enabled = pClearAllEnabled()
+        Call pRefreshWMSButtons()
         Call pShowInfo()
     End Sub
 
@@ -694,7 +710,7 @@ Public Class frmSurface
     End Sub
 
     Private Sub mnuWMSs_Opening(sender As Object, e As CancelEventArgs) Handles mnuWMSs.Opening
-        Dim bEnabled As Boolean = Not IsNothing(lvWMSs.FocusedItem)
+        Dim bEnabled As Boolean = Not IsNothing(pGetSelectedItem(lvWMSs))
         mnuWMSsEdit.Enabled = bEnabled
         mnuWMSsDelete.Enabled = bEnabled
     End Sub
@@ -704,6 +720,63 @@ Public Class frmSurface
     End Sub
 
     Private Sub mnuOrthophotos_Opening(sender As Object, e As CancelEventArgs) Handles mnuOrthophotos.Opening
-        mnuOrthophotosDelete.Enabled = Not IsNothing(lvOrthoPhotos.FocusedItem)
+        mnuOrthophotosDelete.Enabled = Not IsNothing(pGetSelectedItem(lvOrthoPhotos))
+    End Sub
+
+    Private Sub cmdWMSAdd_Click(sender As Object, e As EventArgs) Handles cmdWMSAdd.Click
+        Call pLoadWMS()
+    End Sub
+
+    Private Sub btnWMSDelete_Click(sender As Object, e As EventArgs) Handles btnWMSDelete.Click
+        Call pRemoveWMS()
+    End Sub
+
+    Private Sub btnWMSDeleteAll_Click(sender As Object, e As EventArgs) Handles btnWMSDeleteAll.Click
+        Call oSurface.WMSs.Clear()
+        Call lvWMSs.Items.Clear()
+        Call pShowInfo()
+        Call pRefreshWMSBUttons()
+    End Sub
+
+    Private Sub btnOrthophotoAdd_Click(sender As Object, e As EventArgs) Handles btnOrthophotoAdd.Click
+        Call pLoadOrthoPhoto()
+    End Sub
+
+    Private Sub btnOrthophotoDelete_Click(sender As Object, e As EventArgs) Handles btnOrthophotoDelete.Click
+        Call pRemoveOrthoPhoto()
+    End Sub
+
+    Private Sub btnOrthophotoDeleteAll_Click(sender As Object, e As EventArgs) Handles btnOrthophotoDeleteAll.Click
+        Call oSurface.OrthoPhotos.Clear()
+        Call lvOrthoPhotos.Items.Clear()
+        Call pShowInfo()
+        Call pRefreshOrthophotoButtons()
+    End Sub
+
+    Private Sub btnDataDelete_Click(sender As Object, e As EventArgs) Handles btnDataDelete.Click
+        Call pRemoveData()
+    End Sub
+
+    Private Sub btnDataDeleteAll_Click(sender As Object, e As EventArgs) Handles btnDataDeleteAll.Click
+        Call oSurface.Elevations.Clear()
+        Call lvElevations.Items.Clear()
+        Call pShowInfo()
+        Call pRefreshElevationButtons()
+    End Sub
+
+    Private Sub btnDataAdd_Click(sender As Object, e As EventArgs) Handles btnDataAdd.Click
+        Call pLoadElevationData()
+    End Sub
+
+    Private Sub btnElevationsPreviewRemoveNODATA_Click(sender As Object, e As EventArgs) Handles btnElevationsPreviewRemoveNODATA.Click
+        Call pElevationRemoveNoData()
+    End Sub
+
+    Private Sub btnElevationsPreviewElevationSavePreview_Click(sender As Object, e As EventArgs) Handles btnElevationsPreviewElevationSavePreview.Click
+        Call pElevationsSavePreview()
+    End Sub
+
+    Private Sub btnElevationsPreviewExportData_Click(sender As Object, e As EventArgs) Handles btnElevationsPreviewExportData.Click
+        Call pElevationExportData()
     End Sub
 End Class

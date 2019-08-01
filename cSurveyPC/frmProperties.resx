@@ -125,7 +125,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB+
-        EwAAAk1TRnQBSQFMAgEBBwEAAUQBBwFEAQcBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        EwAAAk1TRnQBSQFMAgEBBwEAAVQBBwFUAQcBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABIAMAAQEBAAEYBgABGE4ABu4D/X4AA+8n7gPvCQAD7gaKA94eAAPvJ+4D7zMAArcBtQKwAa4CrwGs
         Aq4BrAGuAa8BrAGuAa8BrAGuAa8BrAGuAa8BrAGuAa8BrAGuAa8BrAGuAa8BrAKuAawCrwGsArABrgK3
         AbUGAAPuA4UG/wKGAYUD7hsAA7YDrwOuA60VrgOtA64DrwO2MwACsAGuJ/8CsAGuAwAD7gOGBf8B+gL/
@@ -2018,7 +2018,7 @@
     <value>tabInfoGPS</value>
   </data>
   <data name="&gt;&gt;cboGPSCustomRefPoint.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="cboCoordinateGeo.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -2120,7 +2120,7 @@
     <value>tabInfoGPS</value>
   </data>
   <data name="&gt;&gt;chkGPSSendToTherion.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="chkGPSEnabled.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2153,7 +2153,7 @@
     <value>tabInfoGPS</value>
   </data>
   <data name="&gt;&gt;chkGPSEnabled.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="cboDesignWarpingMode.Items" xml:space="preserve">
     <value>None</value>
@@ -2183,7 +2183,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;cboDesignWarpingMode.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>26</value>
   </data>
   <data name="cboDesignBindingMode.Items" xml:space="preserve">
     <value>Automatic</value>
@@ -2216,7 +2216,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;cboDesignBindingMode.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="cboOrigin.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 9.75pt, style=Bold</value>
@@ -2243,7 +2243,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;cboOrigin.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="cmdChangeInversionModeAndSetDirections.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2283,7 +2283,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;cmdChangeInversionModeAndSetDirections.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="txtName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -2928,7 +2928,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;cmdUpdateCalculateVersion.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="txtDesignTextureScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 51</value>
@@ -3465,7 +3465,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;optWarpingActive.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="optWarpingPaused.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
     <value>Button</value>
@@ -3504,6 +3504,60 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;optWarpingPaused.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cmdOriginRefreshStations.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdOriginRefreshStations.Location" type="System.Drawing.Point, System.Drawing">
+    <value>223, 12</value>
+  </data>
+  <data name="cmdOriginRefreshStations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdOriginRefreshStations.TabIndex" type="System.Int32, mscorlib">
+    <value>126</value>
+  </data>
+  <data name="cmdOriginRefreshStations.ToolTip" xml:space="preserve">
+    <value>Set the reverse on the 'absolute' preserving the current direction of the drawn</value>
+  </data>
+  <data name="&gt;&gt;cmdOriginRefreshStations.Name" xml:space="preserve">
+    <value>cmdOriginRefreshStations</value>
+  </data>
+  <data name="&gt;&gt;cmdOriginRefreshStations.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmdOriginRefreshStations.Parent" xml:space="preserve">
+    <value>tabInfoOptions</value>
+  </data>
+  <data name="&gt;&gt;cmdOriginRefreshStations.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cmdGPSCustomRefPointRefreshStations.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdGPSCustomRefPointRefreshStations.Location" type="System.Drawing.Point, System.Drawing">
+    <value>157, 85</value>
+  </data>
+  <data name="cmdGPSCustomRefPointRefreshStations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdGPSCustomRefPointRefreshStations.TabIndex" type="System.Int32, mscorlib">
+    <value>127</value>
+  </data>
+  <data name="cmdGPSCustomRefPointRefreshStations.ToolTip" xml:space="preserve">
+    <value>Set the reverse on the 'absolute' preserving the current direction of the drawn</value>
+  </data>
+  <data name="&gt;&gt;cmdGPSCustomRefPointRefreshStations.Name" xml:space="preserve">
+    <value>cmdGPSCustomRefPointRefreshStations</value>
+  </data>
+  <data name="&gt;&gt;cmdGPSCustomRefPointRefreshStations.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmdGPSCustomRefPointRefreshStations.Parent" xml:space="preserve">
+    <value>tabInfoGPS</value>
+  </data>
+  <data name="&gt;&gt;cmdGPSCustomRefPointRefreshStations.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="cmdApply.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -5442,7 +5496,7 @@
     <value>Both</value>
   </data>
   <data name="txtDesignItemNamePattern.Size" type="System.Drawing.Size, System.Drawing">
-    <value>26, 21</value>
+    <value>0, 21</value>
   </data>
   <data name="txtDesignItemNamePattern.TabIndex" type="System.Int32, mscorlib">
     <value>124</value>
@@ -9357,7 +9411,7 @@
     <value>tabInfoGPS</value>
   </data>
   <data name="&gt;&gt;optGPSCustomRefPoint.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="optGPSRefPointOnOrigin.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -9387,7 +9441,7 @@
     <value>tabInfoGPS</value>
   </data>
   <data name="&gt;&gt;optGPSRefPointOnOrigin.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="frmGPSDefaults.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
@@ -9582,7 +9636,7 @@
     <value>tabInfoGPS</value>
   </data>
   <data name="&gt;&gt;frmGPSDefaults.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="lblGPSCustomRefPoint.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -9612,7 +9666,7 @@
     <value>tabInfoGPS</value>
   </data>
   <data name="&gt;&gt;lblGPSCustomRefPoint.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="tabInfoGPS.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -9666,7 +9720,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;chkShowWarpingDetails.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="cboCalculateVersion.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -9699,7 +9753,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;cboCalculateVersion.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="lblCalculateVersion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -9732,7 +9786,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;lblCalculateVersion.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="lblDesignWarpingModeEnabledIn.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -9762,7 +9816,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;lblDesignWarpingModeEnabledIn.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="chkProfileWarpingEnabled.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -9792,7 +9846,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;chkProfileWarpingEnabled.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="chkPlanWarpingEnabled.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -9822,7 +9876,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;chkPlanWarpingEnabled.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="chkBindCrossSection.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -9852,7 +9906,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;chkBindCrossSection.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="lblNordCorrectionWarning.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -9883,7 +9937,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;lblNordCorrectionWarning.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="picNordCorrectionWarning.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -9910,7 +9964,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;picNordCorrectionWarning.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="lblSplayMode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -9940,7 +9994,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;lblSplayMode.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="cboSplayMode.Items" xml:space="preserve">
     <value>None</value>
@@ -9967,7 +10021,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;cboSplayMode.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="Label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -9997,7 +10051,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;Label5.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="lblDesignBindingMode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10027,7 +10081,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;lblDesignBindingMode.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="Label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10060,7 +10114,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;Label3.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="cboInversionMode.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -10093,7 +10147,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;cboInversionMode.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>21</value>
   </data>
   <data name="chkCalculateMode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10123,7 +10177,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;chkCalculateMode.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>22</value>
   </data>
   <data name="lblNordCorrection.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10153,7 +10207,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;lblNordCorrection.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>23</value>
   </data>
   <data name="cboNordCorrection.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -10183,7 +10237,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;cboNordCorrection.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>24</value>
   </data>
   <data name="lblDesignWarpingMode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10213,7 +10267,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;lblDesignWarpingMode.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>25</value>
   </data>
   <data name="lblCalculateMode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10246,7 +10300,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;lblCalculateMode.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>27</value>
   </data>
   <data name="cboCalculateType.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -10279,7 +10333,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;cboCalculateType.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>28</value>
   </data>
   <data name="lblRingCorrectionMode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10312,7 +10366,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;lblRingCorrectionMode.ZOrder" xml:space="preserve">
-    <value>28</value>
+    <value>29</value>
   </data>
   <data name="cboRingCorrectionMode.Items" xml:space="preserve">
     <value>None</value>
@@ -10345,7 +10399,7 @@
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;cboRingCorrectionMode.ZOrder" xml:space="preserve">
-    <value>29</value>
+    <value>30</value>
   </data>
   <data name="tabInfoOptions.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -11569,9 +11623,6 @@
         Vk4AAAAAAAA1GhorUldWU1JSAAAAAAAAAAAAMBoZGRkZGf//AAAADwAAAA8AAAAPAAAADwAAAA8AAAAD
         AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8AAAA/AAAAP+AAAA=
 </value>
-  </data>
-  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

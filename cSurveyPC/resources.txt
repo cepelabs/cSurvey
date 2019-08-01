@@ -896,3 +896,6 @@ manageworkspace.warning2=The [.] name is reserved
 manageworkspace.warning3=A configuration with this name already exist. Overwrite it?
 manageworkspace.warning4=Delete workspace's configuration?
 main.filetypeCWORKSPACE=cSurvey workspace file 
+surface.warning5=Delete the WMS selected?
+surface.warning6=Insert a name for the new orthophoto
+surface.warning7=Fill all fields and select at least one level

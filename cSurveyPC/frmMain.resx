@@ -2910,7 +2910,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABU
-        YAAAAk1TRnQBSQFMAgEBFQEAAewBTAHsAUwBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        YAAAAk1TRnQBSQFMAgEBFQEAAfwBTAH8AUwBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABYAMAAQEBAAEYBgABSCEAA/IJ7gP0rgAD7gGiAZoBjwGXAYoBfwGXAYoBfwGXAYoBfwGrAaUBnQPu
         qAAD8gGXAYoBfwGuAaUBnQHIAcEBuwHGAb8BuQHGAb4BuAGtAaMBmgGXAYoBfwPypQABwwG9AbgBlwGK
         AX8BtgGsAaQJAAHEAbwBtQGtAaMBmgGjAZoBkKUAAcEBuQGzAZcBigF/AwAJ7gMAAcUBwAG4AZcBigF/
@@ -4047,120 +4047,6 @@
   </data>
   <data name="&gt;&gt;lvTrigPoints.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <metadata name="colTrigPoint.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colTrigPoint.HeaderText" xml:space="preserve">
-    <value>Station</value>
-  </data>
-  <data name="colTrigPoint.Width" type="System.Int32, mscorlib">
-    <value>70</value>
-  </data>
-  <metadata name="colX.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colX.HeaderText" xml:space="preserve">
-    <value>X</value>
-  </data>
-  <data name="colX.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="colX.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <metadata name="colY.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colY.HeaderText" xml:space="preserve">
-    <value>Y</value>
-  </data>
-  <data name="colY.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="colY.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <metadata name="colZ.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colZ.HeaderText" xml:space="preserve">
-    <value>Z</value>
-  </data>
-  <data name="colZ.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="colZ.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <metadata name="colGPS.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colGPS.HeaderText" xml:space="preserve">
-    <value>Coordinate</value>
-  </data>
-  <data name="colGPS.Width" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <metadata name="colNote.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colNote.HeaderText" xml:space="preserve">
-    <value>Note</value>
-  </data>
-  <data name="colNote.Width" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <metadata name="colGeoLat.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colGeoLat.HeaderText" xml:space="preserve">
-    <value>Latitude</value>
-  </data>
-  <data name="colGeoLat.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <metadata name="colGeoLon.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colGeoLon.HeaderText" xml:space="preserve">
-    <value>Longitude</value>
-  </data>
-  <data name="colGeoLon.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <metadata name="colGeoAlt.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colGeoAlt.HeaderText" xml:space="preserve">
-    <value>Altitude</value>
-  </data>
-  <data name="colGeoAlt.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="grdTrigPoints.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="grdTrigPoints.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="grdTrigPoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 192</value>
-  </data>
-  <data name="grdTrigPoints.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;grdTrigPoints.Name" xml:space="preserve">
-    <value>grdTrigPoints</value>
-  </data>
-  <data name="&gt;&gt;grdTrigPoints.Type" xml:space="preserve">
-    <value>cSurveyPC.cGrid, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;grdTrigPoints.Parent" xml:space="preserve">
-    <value>spTrigPoints.Panel1</value>
-  </data>
-  <data name="&gt;&gt;grdTrigPoints.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="&gt;&gt;spTrigPoints.Panel1.Name" xml:space="preserve">
     <value>spTrigPoints.Panel1</value>
@@ -7006,7 +6892,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACC
-        DQAAAk1TRnQBSQFMAgEBBgEAAfgBMgH4ATIBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAQgBMwEIATMBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -10214,7 +10100,7 @@
     <value>14</value>
   </data>
   <data name="tblDesignProp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>351, 820</value>
+    <value>351, 822</value>
   </data>
   <data name="tblDesignProp.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
@@ -26584,37 +26470,37 @@
     <value>6, 25</value>
   </data>
   <data name="btnExportData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="btnExportData.Text" xml:space="preserve">
     <value>Data...</value>
   </data>
   <data name="ToolStripMenuItem49.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="btnExportTrack.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="btnExportTrack.Text" xml:space="preserve">
     <value>Track...</value>
   </data>
   <data name="ToolStripMenuItem50.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="btnExportImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="btnExportImage.Text" xml:space="preserve">
     <value>Image...</value>
   </data>
   <data name="ToolStripMenuItem101.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="btnExport3D.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="btnExport3D.Text" xml:space="preserve">
-    <value>3D</value>
+    <value>3D...</value>
   </data>
   <data name="btnExport.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
@@ -27211,7 +27097,7 @@
     <value>3, 0</value>
   </data>
   <data name="tbMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>579, 25</value>
+    <value>639, 25</value>
   </data>
   <data name="tbMain.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -32327,7 +32213,7 @@ or a cross-section</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAC2
-        EQAAAk1TRnQBSQFMAgEBAwEAAagBLgGoAS4BIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        EQAAAk1TRnQBSQFMAgEBAwEAAbgBLgG4AS4BIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABgAMAASADAAEBAQABCAYAARAYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -32419,7 +32305,7 @@ or a cross-section</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABe
-        CgAAAk1TRnQBSQFMAgEBAwEAAZwBJAGcASQBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CgAAAk1TRnQBSQFMAgEBAwEAAawBJAGsASQBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -35388,60 +35274,6 @@ or a cross-section</value>
   <data name="&gt;&gt;mnuTrigPointsExport.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;colTrigPoint.Name" xml:space="preserve">
-    <value>colTrigPoint</value>
-  </data>
-  <data name="&gt;&gt;colTrigPoint.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colX.Name" xml:space="preserve">
-    <value>colX</value>
-  </data>
-  <data name="&gt;&gt;colX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colY.Name" xml:space="preserve">
-    <value>colY</value>
-  </data>
-  <data name="&gt;&gt;colY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colZ.Name" xml:space="preserve">
-    <value>colZ</value>
-  </data>
-  <data name="&gt;&gt;colZ.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colGPS.Name" xml:space="preserve">
-    <value>colGPS</value>
-  </data>
-  <data name="&gt;&gt;colGPS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colNote.Name" xml:space="preserve">
-    <value>colNote</value>
-  </data>
-  <data name="&gt;&gt;colNote.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colGeoLat.Name" xml:space="preserve">
-    <value>colGeoLat</value>
-  </data>
-  <data name="&gt;&gt;colGeoLat.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colGeoLon.Name" xml:space="preserve">
-    <value>colGeoLon</value>
-  </data>
-  <data name="&gt;&gt;colGeoLon.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colGeoAlt.Name" xml:space="preserve">
-    <value>colGeoAlt</value>
-  </data>
-  <data name="&gt;&gt;colGeoAlt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;DataGridViewTextBoxColumn3.Name" xml:space="preserve">
     <value>DataGridViewTextBoxColumn3</value>
   </data>
@@ -36414,6 +36246,18 @@ or a cross-section</value>
   <data name="&gt;&gt;btnWorkspaceSep1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;btnWorkspaceSep2.Name" xml:space="preserve">
+    <value>btnWorkspaceSep2</value>
+  </data>
+  <data name="&gt;&gt;btnWorkspaceSep2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnWorkspacesManage.Name" xml:space="preserve">
+    <value>btnWorkspacesManage</value>
+  </data>
+  <data name="&gt;&gt;btnWorkspacesManage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;btnShowFieldData.Name" xml:space="preserve">
     <value>btnShowFieldData</value>
   </data>
@@ -37086,16 +36930,16 @@ or a cross-section</value>
   <data name="&gt;&gt;mnuViewWorkspacesAll.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;mnuViewWorkspacesSep2.Name" xml:space="preserve">
-    <value>mnuViewWorkspacesSep2</value>
-  </data>
-  <data name="&gt;&gt;mnuViewWorkspacesSep2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;mnuViewWorkspacesSep1.Name" xml:space="preserve">
     <value>mnuViewWorkspacesSep1</value>
   </data>
   <data name="&gt;&gt;mnuViewWorkspacesSep1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mnuViewWorkspacesSep2.Name" xml:space="preserve">
+    <value>mnuViewWorkspacesSep2</value>
+  </data>
+  <data name="&gt;&gt;mnuViewWorkspacesSep2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;mnuViewWorkspacesRestore.Name" xml:space="preserve">
@@ -39155,18 +38999,6 @@ or a cross-section</value>
   </data>
   <data name="&gt;&gt;bwMain.Type" xml:space="preserve">
     <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnWorkspaceSep2.Name" xml:space="preserve">
-    <value>btnWorkspaceSep2</value>
-  </data>
-  <data name="&gt;&gt;btnWorkspaceSep2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnWorkspacesManage.Name" xml:space="preserve">
-    <value>btnWorkspacesManage</value>
-  </data>
-  <data name="&gt;&gt;btnWorkspacesManage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmMain</value>

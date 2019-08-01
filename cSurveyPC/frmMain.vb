@@ -1655,8 +1655,6 @@ Public Class frmMain
         Call oMousePointer.Pop()
     End Sub
 
-    'Private oTrigpointRowIndex As Dictionary(Of String, Integer) = New Dictionary(Of String, Integer)
-
     Private Sub pSurveySetupTrigpoints()
         lvTrigPoints.Dock = DockStyle.Fill
         colTrigpointsStation.AspectGetter = Function(Value As Object)
@@ -1676,7 +1674,8 @@ Public Class frmMain
                                             Return If(DirectCast(Value, cTrigPoint).Note <> "", My.Resources.note, Nothing)
                                         End Function
         colTrigpointsCoordinate.ImageGetter = Function(Value As Object)
-                                                  Return If(DirectCast(Value, cTrigPoint).Coordinate.IsEmpty, Nothing, If(DirectCast(Value, cTrigPoint).Coordinate.Fix = cCoordinate.FixEnum.Default, My.Resources.map_world, My.Resources.map))
+                                                  Dim oTrigpoint As cTrigPoint = DirectCast(Value, cTrigPoint)
+                                                  Return If(oTrigpoint.Coordinate.IsEmpty, Nothing, If(oTrigpoint.Coordinate.IsInError, My.Resources._error, If(oTrigpoint.Coordinate.Fix = cCoordinate.FixEnum.Default, My.Resources.map_world, My.Resources.map)))
                                               End Function
         colTrigpointsEntrance.ImageGetter = Function(Value As Object)
                                                 Return If(DirectCast(Value, cTrigPoint).Entrance = cTrigPoint.EntranceTypeEnum.None, Nothing, My.Resources.weather_sun)
@@ -1725,70 +1724,19 @@ Public Class frmMain
         Call lvTrigPoints.RebuildColumns()
     End Sub
 
-    Private Sub pSurveyTrigpointsRefresh(Optional ByVal RemoveOrphans As Boolean = False)
-        bDisableTrigpointsChangeEvent = True
-        Call oMousePointer.Push(Cursors.WaitCursor)
-
-        'Dim sLastTrigpoint As String = ""
-        'If Not grdTrigPoints.CurrentRow Is Nothing Then
-        '    sLastTrigpoint = grdTrigPoints.CurrentRow.Cells(0).Value
-        '    Call oTools.SelectTrigpoint(Nothing)
-        'End If
-
-        Call oSurvey.TrigPoints.Rebind(RemoveOrphans)
-
+    Private Sub pSurveyTrigpointsSetObjects()
         Call lvTrigPoints.BeginUpdate()
         Call lvTrigPoints.SetObjects(oSurvey.TrigPoints.ToList)
         Call lvTrigPoints.SelectObject(oTools.CurrentTrigpoint)
         Call lvTrigPoints.EndUpdate()
+    End Sub
 
-        'Call grdTrigPoints.SuspendLayout()
-        'Call grdTrigPoints.Rows.Clear()
-        'Call oTrigpointRowIndex.Clear()
-        'Dim oRow(8) As Object
-        'Dim oTrigPoint As cTrigPoint
-        'For Each oTrigPoint In oSurvey.TrigPoints
-        '    Dim sName As String = oTrigPoint.Name
-        '    oRow(0) = sName
-        '    oRow(1) = Strings.Format(oTrigPoint.Data.X, "0.00")
-        '    oRow(2) = Strings.Format(oTrigPoint.Data.Y, "0.00")
-        '    oRow(3) = Strings.Format(oTrigPoint.Data.Z, "0.00")
+    Private Sub pSurveyTrigpointsRefresh(Optional ByVal RemoveOrphans As Boolean = False)
+        bDisableTrigpointsChangeEvent = True
+        Call oMousePointer.Push(Cursors.WaitCursor)
+        Call oSurvey.TrigPoints.Rebind(RemoveOrphans)
 
-        '    If oTrigPoint.Coordinate.IsEmpty Then
-        '        oRow(4) = Nothing
-        '    Else
-        '        If oTrigPoint.Coordinate.Fix = cCoordinate.FixEnum.Default Then
-        '            oRow(4) = My.Resources.map_world
-        '        Else
-        '            oRow(4) = My.Resources.map
-        '        End If
-        '    End If
-        '    If oTrigPoint.Note = "" Then
-        '        oRow(5) = Nothing
-        '    Else
-        '        oRow(5) = My.Resources.note
-        '    End If
-
-        '    If oSurvey.Calculate.TrigPoints.Contains(oTrigPoint) Then
-        '        oRow(6) = oSurvey.Calculate.TrigPoints(oTrigPoint).Coordinate.Latitude
-        '        oRow(7) = oSurvey.Calculate.TrigPoints(oTrigPoint).Coordinate.Longitude
-        '        oRow(8) = oSurvey.Calculate.TrigPoints(oTrigPoint).Coordinate.Altitude
-        '    End If
-
-        '    Dim iRowIndex As Integer = grdTrigPoints.Rows.Add(oRow)
-        '    Call oTrigpointRowIndex.Add(sName, iRowIndex)
-        'Next
-
-        'Call grdTrigPoints.ResumeLayout()
-
-        'If grdTrigPoints.Rows.Count > 0 Then
-        '    If sLastTrigpoint = "" Then
-        '        oTrigPoint = oSurvey.TrigPoints(grdTrigPoints.Rows(0).Cells(0).Value)
-        '    Else
-        '        oTrigPoint = oSurvey.TrigPoints(sLastTrigpoint)
-        '    End If
-        '    Call oTools.SelectTrigpoint(oTrigPoint)
-        'End If
+        Call pSurveyTrigpointsSetObjects()
 
         bDisableTrigpointsChangeEvent = False
         Call oMousePointer.Pop()
@@ -2423,7 +2371,7 @@ Public Class frmMain
     End Sub
 
     Private Sub pTrigPointValidate(TrigPoint As cTrigPoint)
-        'TO DO
+        'MOVED TO ASPECTGETTER OF COORDINATE COLUMN...
         'Dim sErrorText As String = ""
         'Dim sTrigPoint As String = grdTrigPoints.Rows(Index).Cells(0).Value
         'Dim oTrigpoint As cTrigPoint = oSurvey.TrigPoints(sTrigPoint)
@@ -2436,6 +2384,7 @@ Public Class frmMain
         '        .ErrorText = sErrorText
         '    End With
         'End If
+        Call lvTrigPoints.RefreshObject(TrigPoint)
     End Sub
 
     Private Function pSurveyCheckOrigin() As Boolean
@@ -3620,23 +3569,8 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub grdTrigPoints_CellBeginEdit(sender As Object, e As System.Windows.Forms.DataGridViewCellCancelEventArgs) Handles grdTrigPoints.CellBeginEdit
+    Private Sub grdTrigPoints_CellBeginEdit(sender As Object, e As System.Windows.Forms.DataGridViewCellCancelEventArgs)
         bTrigpointChanged = True
-    End Sub
-
-    Private Sub grdTrigPoints_RowEnter(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles grdTrigPoints.RowEnter
-        If Not bDisableTrigpointsChangeEvent Then
-            bDisableTrigpointsChangeEvent = True
-            Dim sTrigPoint As String = grdTrigPoints.Rows(e.RowIndex).Cells(0).Value
-            If oSurvey.TrigPoints.Contains(sTrigPoint) Then
-                Dim oTrigpoint As cTrigPoint = oSurvey.TrigPoints(sTrigPoint)
-                Call oTools.SelectTrigpoint(oTrigpoint)
-            Else
-                Call oTools.SelectTrigpoint(Nothing)
-            End If
-            Call pTrigpointsRefresh()
-            bDisableTrigpointsChangeEvent = False
-        End If
     End Sub
 
     Private Function pSegmentsAddNewRow() As cSegment
@@ -7499,6 +7433,8 @@ Public Class frmMain
                     Case cSurvey.cSurvey.TrigpointsChangeActionEnum.Change
                         'Call pSurveyCalculate(False)
                         Call pPropertyItemTrigpoint()
+                    Case cSurvey.cSurvey.TrigpointsChangeActionEnum.Rebind
+                        Call pSurveyTrigpointsSetObjects()
                 End Select
             End If
         End If
@@ -12393,6 +12329,7 @@ Public Class frmMain
         Dim otrigpoint As cTrigPoint = pGetCurrentTools.CurrentTrigpoint
         If Not otrigpoint Is Nothing Then
             cboTrigpointEntrance.SelectedIndex = cTrigPoint.EntranceTypeEnum.None
+            bTrigpointChanged = True
             Call pTrigPointSave(otrigpoint)
         End If
     End Sub
@@ -12401,6 +12338,7 @@ Public Class frmMain
         Dim otrigpoint As cTrigPoint = pGetCurrentTools.CurrentTrigpoint
         If Not otrigpoint Is Nothing Then
             cboTrigpointEntrance.SelectedIndex = cTrigPoint.EntranceTypeEnum.OtherCaveEntrance
+            bTrigpointChanged = True
             Call pTrigPointSave(otrigpoint)
         End If
     End Sub
@@ -12409,6 +12347,7 @@ Public Class frmMain
         Dim otrigpoint As cTrigPoint = pGetCurrentTools.CurrentTrigpoint
         If Not otrigpoint Is Nothing Then
             cboTrigpointEntrance.SelectedIndex = cTrigPoint.EntranceTypeEnum.MainCaveEntrace
+            bTrigpointChanged = True
             Call pTrigPointSave(otrigpoint)
         End If
     End Sub
@@ -12417,6 +12356,7 @@ Public Class frmMain
         Dim otrigpoint As cTrigPoint = pGetCurrentTools.CurrentTrigpoint
         If Not otrigpoint Is Nothing Then
             cboTrigpointEntrance.SelectedIndex = cTrigPoint.EntranceTypeEnum.MainComplexEntrance
+            bTrigpointChanged = True
             Call pTrigPointSave(otrigpoint)
         End If
     End Sub
@@ -13075,7 +13015,6 @@ Public Class frmMain
                     Return picMap.PointToScreen(New Point(oPenToolsPointF.X - 4, oPenToolsPointF.Y - frmMFT.Height - 24))
                 End If
         End Select
-
     End Function
 
     Private Sub pSurveyDrawTools(Graphics As Graphics)
@@ -13947,12 +13886,14 @@ Public Class frmMain
         If InvokeRequired Then
             Call Me.BeginInvoke(New pFloatingToolbarShowDelegate(AddressOf pFloatingToolbarShow))
         Else
-            Call pFloatingToolbarSetTools()
-            frmMFT.Location = pFloatingToolbarGetLocation()
-            If oDockPanel.ActiveDocument Is oDockDesigner AndAlso Not frmMFT.Visible Then
-                Call frmMFT.Show(Me)
-                Call frmMFT.BringToFront()
-                Call Activate()
+            If Not pGetCurrentDesignTools() Is o3DTools Then
+                If oDockPanel.ActiveDocument Is oDockDesigner AndAlso Not frmMFT.Visible Then
+                    Call pFloatingToolbarSetTools()
+                    frmMFT.Location = pFloatingToolbarGetLocation()
+                    Call frmMFT.Show(Me)
+                    Call frmMFT.BringToFront()
+                    Call Activate()
+                End If
             End If
         End If
     End Sub
@@ -17066,6 +17007,8 @@ Public Class frmMain
                     End If
 
                     If frmIS.chkcSurveyImportGraphics.Checked AndAlso frmIS.chkcSurveyImportGraphics.Enabled Then
+                        Call oSurvey.Properties.DataTables.DesignItems.MergeWith(oImportSurvey.Properties.DataTables.DesignItems)
+
                         Dim oPlanTraslation As SizeF
                         Dim oProfileTraslation As SizeF
                         Try
@@ -17956,87 +17899,88 @@ Public Class frmMain
                 Call oSurvey.Properties.DataTables.Segments.Add("import_date", Data.cDataFields.TypeEnum.Date)
 
                 Dim fi As FileInfo = New FileInfo(Filename)
-                Dim sr As StreamReader = New StreamReader(fi.FullName, System.Text.Encoding.ASCII)
-                Dim sLine As String = ""
-                Dim iLineCount As Integer = 0
-                Dim iCaveLineCount As Integer = 0
+                Using sr As StreamReader = New StreamReader(fi.FullName, System.Text.Encoding.ASCII)
+                    Dim sLine As String = ""
+                    Dim iLineCount As Integer = 0
+                    Dim iCaveLineCount As Integer = 0
 
-                Dim sConversion As Single
-                sLine = sr.ReadLine
-                If sLine Like "Unit=*" Then
-                    'unita di misura...
-                    Select Case sLine.Substring(5).ToLower
-                        Case "feet"
-                            sConversion = 0.3048
-                        Case Else
-                            sConversion = 1
-                    End Select
-                End If
-
-                sLine = sr.ReadLine
-                If sLine Like "GPS:*" Then
-                    'per ora ignoro i dati GPS...
+                    Dim sConversion As Single
                     sLine = sr.ReadLine
-                End If
-
-                Do Until sLine = "" Or sr.EndOfStream
-                    Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, sr.BaseStream.Position / sr.BaseStream.Length, GetLocalizedString("main.progress8"))
-                    sLine = sr.ReadLine
-
-                    Dim sLineParts() As String = sLine.Split({vbTab}, StringSplitOptions.RemoveEmptyEntries)
-                    Dim sFrom As String
-                    Dim sTo As String
-                    Dim dDist As Decimal
-                    Dim dDir As Decimal
-                    Dim dIncl As Decimal
-                    Dim dLeft As Decimal
-                    Dim dRight As Decimal
-                    Dim dUp As Decimal
-                    Dim dDown As Decimal
-                    Dim sNote As String
-                    Dim bSplay As Boolean
-
-                    Try : sFrom = modNumbers.FieldUnformat(sLineParts(0)) : Catch : sFrom = "" : End Try
-                    Try : sTo = modNumbers.FieldUnformat(sLineParts(1)) : Catch : sTo = "" : End Try
-                    If sTo.Contains(":") Then
-                        bSplay = True
-                    Else
-                        bSplay = False
+                    If sLine Like "Unit=*" Then
+                        'unita di misura...
+                        Select Case sLine.Substring(5).ToLower
+                            Case "feet"
+                                sConversion = 0.3048
+                            Case Else
+                                sConversion = 1
+                        End Select
                     End If
 
-                    Try : dDist = modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(2))) * sConversion : Catch : dDist = 0 : End Try
-                    Try : dDir = modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(3))) : Catch : dDir = 0 : End Try
-                    Try : dIncl = modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(4))) : Catch : dIncl = 0 : End Try
+                    sLine = sr.ReadLine
+                    If sLine Like "GPS:*" Then
+                        'per ora ignoro i dati GPS...
+                        sLine = sr.ReadLine
+                    End If
 
-                    Dim oSegment As cSegment = oSurvey.Segments.Append()
-                    Call oSegment.SetCave(oCurrentCave.Name)
-                    oSegment.From = sFrom
-                    oSegment.To = sTo
+                    Do Until sLine = "" Or sr.EndOfStream
+                        Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, sr.BaseStream.Position / sr.BaseStream.Length, GetLocalizedString("main.progress8"))
+                        sLine = sr.ReadLine
 
-                    oSegment.Distance = dDist
-                    oSegment.Bearing = dDir
-                    oSegment.Inclination = dIncl
+                        Dim sLineParts() As String = sLine.Split({vbTab}, StringSplitOptions.RemoveEmptyEntries)
+                        Dim sFrom As String
+                        Dim sTo As String
+                        Dim dDist As Decimal
+                        Dim dDir As Decimal
+                        Dim dIncl As Decimal
+                        Dim dLeft As Decimal
+                        Dim dRight As Decimal
+                        Dim dUp As Decimal
+                        Dim dDown As Decimal
+                        Dim sNote As String
+                        Dim bSplay As Boolean
 
-                    oSegment.Left = dLeft
-                    oSegment.Right = dRight
-                    oSegment.Up = dUp
-                    oSegment.Down = dDown
+                        Try : sFrom = modNumbers.FieldUnformat(sLineParts(0)) : Catch : sFrom = "" : End Try
+                        Try : sTo = modNumbers.FieldUnformat(sLineParts(1)) : Catch : sTo = "" : End Try
+                        If sTo.Contains(":") Then
+                            bSplay = True
+                        Else
+                            bSplay = False
+                        End If
 
-                    oSegment.Note = sNote
+                        Try : dDist = modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(2))) * sConversion : Catch : dDist = 0 : End Try
+                        Try : dDir = modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(3))) : Catch : dDir = 0 : End Try
+                        Try : dIncl = modNumbers.StringToDecimal(modNumbers.FieldUnformat(sLineParts(4))) : Catch : dIncl = 0 : End Try
 
-                    oSegment.Inverted = False
-                    oSegment.Exclude = False
+                        Dim oSegment As cSegment = oSurvey.Segments.Append()
+                        Call oSegment.SetCave(oCurrentCave.Name)
+                        oSegment.From = sFrom
+                        oSegment.To = sTo
 
-                    oSegment.Splay = bSplay
+                        oSegment.Distance = dDist
+                        oSegment.Bearing = dDir
+                        oSegment.Inclination = dIncl
 
-                    Call oSegment.DataProperties.SetValue("import_source", "caveexplorer")
-                    Call oSegment.DataProperties.SetValue("import_date", dNow)
+                        oSegment.Left = dLeft
+                        oSegment.Right = dRight
+                        oSegment.Up = dUp
+                        oSegment.Down = dDown
 
-                    Call oSegment.Save()
+                        oSegment.Note = sNote
 
-                    iCaveLineCount += 1
-                    iLineCount += 1
-                Loop
+                        oSegment.Inverted = False
+                        oSegment.Exclude = False
+
+                        oSegment.Splay = bSplay
+
+                        Call oSegment.DataProperties.SetValue("import_source", "caveexplorer")
+                        Call oSegment.DataProperties.SetValue("import_date", dNow)
+
+                        Call oSegment.Save()
+
+                        iCaveLineCount += 1
+                        iLineCount += 1
+                    Loop
+                End Using
 
                 bDisableSegmentsChangeEvent = False
                 bDisableTrigpointsChangeEvent = False
@@ -24888,6 +24832,14 @@ Public Class frmMain
 
     Private Sub btnWorkspacesManage_Click(sender As Object, e As EventArgs) Handles btnWorkspacesManage.Click
         Call pWorkspacesManage()
+    End Sub
+
+    Private Sub mnuFileExport_DropDownOpening(sender As Object, e As EventArgs) Handles mnuFileExport.DropDownOpening
+        mnuFileExport3D.Enabled = oHolos.RedrawCount > 0
+    End Sub
+
+    Private Sub btnExport_DropDownOpening(sender As Object, e As EventArgs) Handles btnExport.DropDownOpening
+        btnExport3D.Enabled = oHolos.RedrawCount > 0
     End Sub
 End Class
 

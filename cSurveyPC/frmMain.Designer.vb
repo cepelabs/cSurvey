@@ -45,15 +45,6 @@ Partial Class frmMain
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.tsMain = New System.Windows.Forms.ToolStripContainer()
         Me.pnlConsole = New System.Windows.Forms.Panel()
         Me.rtfConsole = New System.Windows.Forms.RichTextBox()
@@ -263,16 +254,6 @@ Partial Class frmMain
         Me.mnuTrigPointsFind = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem102 = New System.Windows.Forms.ToolStripSeparator()
         Me.mnuTrigPointsExport = New System.Windows.Forms.ToolStripMenuItem()
-        Me.grdTrigPoints = New cSurveyPC.cGrid()
-        Me.colTrigPoint = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colX = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colY = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colZ = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colGPS = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.colNote = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.colGeoLat = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colGeoLon = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colGeoAlt = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.pnlTrigPoint = New System.Windows.Forms.Panel()
         Me.tabTrigpointProperty = New System.Windows.Forms.TabControl()
         Me.tabTrigpointMain = New System.Windows.Forms.TabPage()
@@ -1097,6 +1078,8 @@ Partial Class frmMain
         Me.btnWorkspaceDesign = New System.Windows.Forms.ToolStripButton()
         Me.btnWorkspaceAll = New System.Windows.Forms.ToolStripButton()
         Me.btnWorkspaceSep1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnWorkspaceSep2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnWorkspacesManage = New System.Windows.Forms.ToolStripButton()
         Me.tbView = New System.Windows.Forms.ToolStrip()
         Me.btnShowFieldData = New System.Windows.Forms.ToolStripButton()
         Me.btnShowObjectProp = New System.Windows.Forms.ToolStripButton()
@@ -1218,8 +1201,8 @@ Partial Class frmMain
         Me.mnuViewWorkspacesData = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuViewWorkspacesDesign = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuViewWorkspacesAll = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuViewWorkspacesSep2 = New System.Windows.Forms.ToolStripSeparator()
         Me.mnuViewWorkspacesSep1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.mnuViewWorkspacesSep2 = New System.Windows.Forms.ToolStripSeparator()
         Me.mnuViewWorkspacesRestore = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem115 = New System.Windows.Forms.ToolStripSeparator()
         Me.mnuViewWorkspacesManage = New System.Windows.Forms.ToolStripMenuItem()
@@ -1568,8 +1551,6 @@ Partial Class frmMain
         Me.ntiMain = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.bwMain = New System.ComponentModel.BackgroundWorker()
-        Me.btnWorkspaceSep2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnWorkspacesManage = New System.Windows.Forms.ToolStripButton()
         Me.tsMain.ContentPanel.SuspendLayout()
         Me.tsMain.TopToolStripPanel.SuspendLayout()
         Me.tsMain.SuspendLayout()
@@ -1612,7 +1593,6 @@ Partial Class frmMain
         Me.spTrigPoints.SuspendLayout()
         CType(Me.lvTrigPoints, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.mnuTrigPoints.SuspendLayout()
-        CType(Me.grdTrigPoints, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlTrigPoint.SuspendLayout()
         Me.tabTrigpointProperty.SuspendLayout()
         Me.tabTrigpointMain.SuspendLayout()
@@ -3033,7 +3013,6 @@ Partial Class frmMain
         'spTrigPoints.Panel1
         '
         Me.spTrigPoints.Panel1.Controls.Add(Me.lvTrigPoints)
-        Me.spTrigPoints.Panel1.Controls.Add(Me.grdTrigPoints)
         '
         'spTrigPoints.Panel2
         '
@@ -3063,6 +3042,8 @@ Partial Class frmMain
         Me.lvTrigPoints.HideSelection = False
         resources.ApplyResources(Me.lvTrigPoints, "lvTrigPoints")
         Me.lvTrigPoints.Name = "lvTrigPoints"
+        Me.lvTrigPoints.SelectColumnsOnRightClick = False
+        Me.lvTrigPoints.SelectColumnsOnRightClickBehaviour = BrightIdeasSoftware.ObjectListView.ColumnSelectBehaviour.None
         Me.lvTrigPoints.ShowGroups = False
         Me.lvTrigPoints.UseCompatibleStateImageBehavior = False
         Me.lvTrigPoints.UseHotControls = False
@@ -3211,102 +3192,6 @@ Partial Class frmMain
         Me.mnuTrigPointsExport.Name = "mnuTrigPointsExport"
         resources.ApplyResources(Me.mnuTrigPointsExport, "mnuTrigPointsExport")
         '
-        'grdTrigPoints
-        '
-        Me.grdTrigPoints.AllowUserToAddRows = False
-        Me.grdTrigPoints.AllowUserToDeleteRows = False
-        Me.grdTrigPoints.AllowUserToResizeRows = False
-        Me.grdTrigPoints.BackgroundColor = System.Drawing.SystemColors.Control
-        Me.grdTrigPoints.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.grdTrigPoints.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdTrigPoints.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colTrigPoint, Me.colX, Me.colY, Me.colZ, Me.colGPS, Me.colNote, Me.colGeoLat, Me.colGeoLon, Me.colGeoAlt})
-        Me.grdTrigPoints.ContextMenuStrip = Me.mnuTrigPoints
-        resources.ApplyResources(Me.grdTrigPoints, "grdTrigPoints")
-        Me.grdTrigPoints.GridColor = System.Drawing.SystemColors.ControlLight
-        Me.grdTrigPoints.MultiSelect = False
-        Me.grdTrigPoints.Name = "grdTrigPoints"
-        '
-        'colTrigPoint
-        '
-        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Info
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.colTrigPoint.DefaultCellStyle = DataGridViewCellStyle12
-        resources.ApplyResources(Me.colTrigPoint, "colTrigPoint")
-        Me.colTrigPoint.Name = "colTrigPoint"
-        Me.colTrigPoint.ReadOnly = True
-        Me.colTrigPoint.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'colX
-        '
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle13.Format = "N3"
-        Me.colX.DefaultCellStyle = DataGridViewCellStyle13
-        resources.ApplyResources(Me.colX, "colX")
-        Me.colX.Name = "colX"
-        Me.colX.ReadOnly = True
-        Me.colX.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'colY
-        '
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle14.Format = "N3"
-        Me.colY.DefaultCellStyle = DataGridViewCellStyle14
-        resources.ApplyResources(Me.colY, "colY")
-        Me.colY.Name = "colY"
-        Me.colY.ReadOnly = True
-        Me.colY.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'colZ
-        '
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle15.Format = "N3"
-        DataGridViewCellStyle15.NullValue = Nothing
-        Me.colZ.DefaultCellStyle = DataGridViewCellStyle15
-        resources.ApplyResources(Me.colZ, "colZ")
-        Me.colZ.Name = "colZ"
-        Me.colZ.ReadOnly = True
-        Me.colZ.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'colGPS
-        '
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.colGPS.DefaultCellStyle = DataGridViewCellStyle16
-        resources.ApplyResources(Me.colGPS, "colGPS")
-        Me.colGPS.Name = "colGPS"
-        Me.colGPS.ReadOnly = True
-        '
-        'colNote
-        '
-        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.colNote.DefaultCellStyle = DataGridViewCellStyle17
-        resources.ApplyResources(Me.colNote, "colNote")
-        Me.colNote.Name = "colNote"
-        Me.colNote.ReadOnly = True
-        '
-        'colGeoLat
-        '
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.colGeoLat.DefaultCellStyle = DataGridViewCellStyle18
-        resources.ApplyResources(Me.colGeoLat, "colGeoLat")
-        Me.colGeoLat.Name = "colGeoLat"
-        Me.colGeoLat.ReadOnly = True
-        '
-        'colGeoLon
-        '
-        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.colGeoLon.DefaultCellStyle = DataGridViewCellStyle19
-        resources.ApplyResources(Me.colGeoLon, "colGeoLon")
-        Me.colGeoLon.Name = "colGeoLon"
-        Me.colGeoLon.ReadOnly = True
-        '
-        'colGeoAlt
-        '
-        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.colGeoAlt.DefaultCellStyle = DataGridViewCellStyle20
-        resources.ApplyResources(Me.colGeoAlt, "colGeoAlt")
-        Me.colGeoAlt.Name = "colGeoAlt"
-        Me.colGeoAlt.ReadOnly = True
-        '
         'pnlTrigPoint
         '
         Me.pnlTrigPoint.Controls.Add(Me.tabTrigpointProperty)
@@ -3377,9 +3262,9 @@ Partial Class frmMain
         '
         'DataGridViewTextBoxColumn3
         '
-        DataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Info
-        DataGridViewCellStyle21.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle21
+        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Info
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle12
         resources.ApplyResources(Me.DataGridViewTextBoxColumn3, "DataGridViewTextBoxColumn3")
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         Me.DataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
@@ -3868,7 +3753,7 @@ Partial Class frmMain
         '
         Me.btnSegmentAndTrigpointGridColor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.btnSegmentAndTrigpointGridColor.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnSegmentAndTrigpointGridColor3, Me.btnSegmentAndTrigpointGridColor2, Me.btnSegmentAndTrigpointGridColor1, Me.ToolStripMenuItem104, Me.btnSegmentAndTrigpointGridColor0})
-        Me.btnSegmentAndTrigpointGridColor.Image = Global.cSurveyPC.My.Resources.Resources.asterisk_yellow
+        Me.btnSegmentAndTrigpointGridColor.Image = Global.cSurveyPC.My.Resources.Resources.color_swatches
         resources.ApplyResources(Me.btnSegmentAndTrigpointGridColor, "btnSegmentAndTrigpointGridColor")
         Me.btnSegmentAndTrigpointGridColor.Name = "btnSegmentAndTrigpointGridColor"
         '
@@ -9147,6 +9032,18 @@ Partial Class frmMain
         Me.btnWorkspaceSep1.Name = "btnWorkspaceSep1"
         resources.ApplyResources(Me.btnWorkspaceSep1, "btnWorkspaceSep1")
         '
+        'btnWorkspaceSep2
+        '
+        Me.btnWorkspaceSep2.Name = "btnWorkspaceSep2"
+        resources.ApplyResources(Me.btnWorkspaceSep2, "btnWorkspaceSep2")
+        '
+        'btnWorkspacesManage
+        '
+        Me.btnWorkspacesManage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnWorkspacesManage.Image = Global.cSurveyPC.My.Resources.Resources.monitor_window
+        resources.ApplyResources(Me.btnWorkspacesManage, "btnWorkspacesManage")
+        Me.btnWorkspacesManage.Name = "btnWorkspacesManage"
+        '
         'tbView
         '
         resources.ApplyResources(Me.tbView, "tbView")
@@ -9799,15 +9696,15 @@ Partial Class frmMain
         Me.mnuViewWorkspacesAll.Name = "mnuViewWorkspacesAll"
         resources.ApplyResources(Me.mnuViewWorkspacesAll, "mnuViewWorkspacesAll")
         '
-        'mnuViewWorkspacesSep2
-        '
-        Me.mnuViewWorkspacesSep2.Name = "mnuViewWorkspacesSep2"
-        resources.ApplyResources(Me.mnuViewWorkspacesSep2, "mnuViewWorkspacesSep2")
-        '
         'mnuViewWorkspacesSep1
         '
         Me.mnuViewWorkspacesSep1.Name = "mnuViewWorkspacesSep1"
         resources.ApplyResources(Me.mnuViewWorkspacesSep1, "mnuViewWorkspacesSep1")
+        '
+        'mnuViewWorkspacesSep2
+        '
+        Me.mnuViewWorkspacesSep2.Name = "mnuViewWorkspacesSep2"
+        resources.ApplyResources(Me.mnuViewWorkspacesSep2, "mnuViewWorkspacesSep2")
         '
         'mnuViewWorkspacesRestore
         '
@@ -11600,18 +11497,6 @@ Partial Class frmMain
         Me.bwMain.WorkerReportsProgress = True
         Me.bwMain.WorkerSupportsCancellation = True
         '
-        'btnWorkspaceSep2
-        '
-        Me.btnWorkspaceSep2.Name = "btnWorkspaceSep2"
-        resources.ApplyResources(Me.btnWorkspaceSep2, "btnWorkspaceSep2")
-        '
-        'btnWorkspacesManage
-        '
-        Me.btnWorkspacesManage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnWorkspacesManage.Image = Global.cSurveyPC.My.Resources.Resources.monitor_window
-        resources.ApplyResources(Me.btnWorkspacesManage, "btnWorkspacesManage")
-        Me.btnWorkspacesManage.Name = "btnWorkspacesManage"
-        '
         'frmMain
         '
         resources.ApplyResources(Me, "$this")
@@ -11675,7 +11560,6 @@ Partial Class frmMain
         Me.spTrigPoints.ResumeLayout(False)
         CType(Me.lvTrigPoints, System.ComponentModel.ISupportInitialize).EndInit()
         Me.mnuTrigPoints.ResumeLayout(False)
-        CType(Me.grdTrigPoints, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlTrigPoint.ResumeLayout(False)
         Me.tabTrigpointProperty.ResumeLayout(False)
         Me.tabTrigpointMain.ResumeLayout(False)
@@ -12379,7 +12263,6 @@ Partial Class frmMain
     Friend WithEvents cmdPropSegmentsLock As System.Windows.Forms.Button
     Friend WithEvents cmdPropSegmentsUnlock As System.Windows.Forms.Button
     Friend WithEvents ToolStripMenuItem26 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents grdTrigPoints As cSurveyPC.cGrid
     Friend WithEvents pnlTrigPoint As System.Windows.Forms.Panel
     Friend WithEvents txtTrigPointName As System.Windows.Forms.TextBox
     Friend WithEvents lblTrigPointName As System.Windows.Forms.Label
@@ -13305,15 +13188,6 @@ Partial Class frmMain
     Friend WithEvents pnlPropVisibility As Panel
     Friend WithEvents cboPropCrossSectionRefStation As ComboBox
     Friend WithEvents lblPropCrossSectionRefStation As Label
-    Friend WithEvents colTrigPoint As DataGridViewTextBoxColumn
-    Friend WithEvents colX As DataGridViewTextBoxColumn
-    Friend WithEvents colY As DataGridViewTextBoxColumn
-    Friend WithEvents colZ As DataGridViewTextBoxColumn
-    Friend WithEvents colGPS As DataGridViewImageColumn
-    Friend WithEvents colNote As DataGridViewImageColumn
-    Friend WithEvents colGeoLat As DataGridViewTextBoxColumn
-    Friend WithEvents colGeoLon As DataGridViewTextBoxColumn
-    Friend WithEvents colGeoAlt As DataGridViewTextBoxColumn
     Friend WithEvents tvLayers2 As BrightIdeasSoftware.TreeListView
     Friend WithEvents colLayersType As BrightIdeasSoftware.OLVColumn
     Friend WithEvents colLayersName As BrightIdeasSoftware.OLVColumn

@@ -1,6 +1,56 @@
 ﻿Imports System.Collections.ObjectModel
 
 Namespace cResurvey
+    Friend Class cScale
+        Private sPlanScale As Single
+        Private sPlanScaleDistance As Single
+        Private sProfileScale As Single = 1
+        Private sProfileScaleDistance As Single
+
+        Private bPlanError As Boolean
+        Private bProfileError As Boolean
+        Public ReadOnly Property PlanScaleDistance As Single
+            Get
+                Return sPlanScaleDistance
+            End Get
+        End Property
+
+        Public ReadOnly Property PlanScale As Single
+            Get
+                Return sPlanScale
+            End Get
+        End Property
+        Public ReadOnly Property ProfileScaleDistance As Single
+            Get
+                Return sProfileScaleDistance
+            End Get
+        End Property
+
+        Public ReadOnly Property ProfileScale As Single
+            Get
+                Return sProfileScale
+            End Get
+        End Property
+        Public ReadOnly Property PlanError As Boolean
+            Get
+                Return bPlanError
+            End Get
+        End Property
+        Public ReadOnly Property ProfileError As Boolean
+            Get
+                Return bprofileerror
+            End Get
+        End Property
+
+        Public Sub New(PlanScale As Single, PlanScaleDistance As Single, PlanError As Boolean, ProfileScale As Single, ProfileScaleDistance As Single, ProfileError As Boolean)
+            sPlanScale = PlanScale
+            sPlanScaleDistance = PlanScaleDistance
+            bplanerror = PlanError
+            sProfileScale = ProfileScale
+            sProfileScaleDistance = ProfileScaleDistance
+            bprofileerror = ProfileError
+        End Sub
+    End Class
 
     Friend Class cOptions
         Public Enum CalculateModeEnum

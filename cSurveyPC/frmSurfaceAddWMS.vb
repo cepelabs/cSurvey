@@ -105,7 +105,7 @@ Public Class frmSurfaceAddWMS
         If txtName.Text <> "" And txtURL.Text <> "" And lvLayers.CheckedItems.Count > 0 Then
             DialogResult = Windows.Forms.DialogResult.OK
         Else
-            Call MsgBox("Compilare i campi e selezionare almeno un livello.", MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, "Attenzione:")
+            Call MsgBox(GetLocalizedString("surface.warning7"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("surface.warningtitle"))
         End If
     End Sub
 

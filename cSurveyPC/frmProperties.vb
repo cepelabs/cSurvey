@@ -1069,12 +1069,6 @@ Public Class frmProperties
                 cboRingCorrectionMode.Enabled = False
                 cboRingCorrectionMode.SelectedIndex = 0
 
-                'Dim bEnabled As Boolean = Not chkGPSSendToTherion.Checked
-                'chkGPSRefPointOnOrigin.Enabled = bEnabled
-                'cboGPSCustomRefPoint.Enabled = bEnabled
-                'lblGPSCustomRefPoint.Enabled = bEnabled
-                'chkGPSSendToTherion.Enabled = True
-
                 optGPSRefPointOnOrigin.Enabled = True
                 optGPSCustomRefPoint.Enabled = True
 
@@ -1946,7 +1940,7 @@ Public Class frmProperties
     End Sub
 
     Private Sub chkGPSSendToTherion_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkGPSSendToTherion.CheckedChanged
-        Dim bEnabled As Boolean = Not chkGPSSendToTherion.Checked
+        'Dim bEnabled As Boolean = Not chkGPSSendToTherion.Checked
         'chkGPSRefPointOnOrigin.Enabled = bEnabled
         'cboGPSCustomRefPoint.Enabled = bEnabled
         'lblGPSCustomRefPoint.Enabled = bEnabled
@@ -3097,5 +3091,21 @@ Public Class frmProperties
 
     Private Sub optWarpingActive_CheckedChanged(sender As Object, e As EventArgs) Handles optWarpingActive.CheckedChanged
 
+    End Sub
+
+    Private Sub cmdGPSCustomRefPointRefreshStations_Click(sender As Object, e As EventArgs) Handles cmdGPSCustomRefPointRefreshStations.Click
+        Call pRefreshStations()
+    End Sub
+
+    Private Sub pRefreshStations()
+        Call oSurvey.TrigPoints.Rebind()
+    End Sub
+
+    Private Sub cboGPSCustomRefPoint_EnabledChanged(sender As Object, e As EventArgs) Handles cboGPSCustomRefPoint.EnabledChanged
+        cmdGPSCustomRefPointRefreshStations.Enabled = cboGPSCustomRefPoint.Enabled
+    End Sub
+
+    Private Sub cboOrigin_EnabledChanged(sender As Object, e As EventArgs) Handles cboOrigin.EnabledChanged
+        cmdOriginRefreshStations.Enabled = cboOrigin.Enabled
     End Sub
 End Class

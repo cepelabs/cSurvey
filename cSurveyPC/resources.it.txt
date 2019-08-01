@@ -896,3 +896,6 @@ manageworkspace.warning2=Il nome [.] è riservato
 manageworkspace.warning3=Una configurazione con questo nome esiste già. Sovrascriverlo?
 manageworkspace.warning4=Eliminare la configurazione dello spazio di lavoro?
 main.filetypeCWORKSPACE=File workspace di cSurvey
+surface.warning5=Eliminare il WMS selezionato?
+surface.warning6=Specificare un nome per la nuova ortofoto.
+surface.warning7=Compila tutti i campi e seleziona almeno un livello.

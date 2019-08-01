@@ -425,41 +425,53 @@ Module modExport
                                 Call GoogleKmlAppendNode(xml, xmlPlacemark, "description", oBranch.Description)
                                 Call GoogleKmlAppendNode(xml, xmlPlacemark, "styleUrl", "#" & sBorderStyle)
 
-                                Dim xmlPolygon As XmlElement = xml.CreateElement("MultiGeometry")
+                                Dim xmlPolygon As XmlElement = xml.CreateElement("Polygon")
                                 Call GoogleKmlAppendNode(xml, xmlPolygon, "tessellate", "1")
-                                For Each oItem As Items.cItemInvertedFreeHandArea In oBordersItems
-                                    If oItem.Points.Count > 1 Then
-                                        For Each oSequence As cSequence In oItem.Points.GetSequences()
-                                            Dim oSequencePoints() As PointF = oSequence.GetPoints
-                                            If oSequencePoints.Length > 1 Then
-                                                Dim xmlLineString As XmlElement = xml.CreateElement("LineString")
-                                                Dim sCoordinates As String = ""
-                                                Using oPath As GraphicsPath = New GraphicsPath
-                                                    Select Case oSequence.GetLineType(oItem.LineType)
-                                                        Case Items.cIItemLine.LineTypeEnum.Beziers
-                                                            Call modPaint.PointsToBeziers(oSequencePoints, oPath)
-                                                        Case Items.cIItemLine.LineTypeEnum.Splines
-                                                            Call oPath.AddCurve(oSequencePoints, sDefaultSplineTension)
-                                                        Case Else
-                                                            Call oPath.AddLines(oSequencePoints)
-                                                    End Select
-                                                    Call oPath.Flatten(Nothing, 0.01)
+                                Dim xmlouterBoundaryIs As XmlElement = xml.CreateElement("outerBoundaryIs")
+                                Using oSuperPath As GraphicsPath = New GraphicsPath
+                                    For Each oItem As Items.cItemInvertedFreeHandArea In oBordersItems
+                                        If oItem.Points.Count > 1 Then
+                                            For Each oSequence As cSequence In oItem.Points.GetSequences()
+                                                Dim oSequencePoints() As PointF = oSequence.GetPoints
+                                                If oSequencePoints.Length > 1 Then
+                                                    Using oPath As GraphicsPath = New GraphicsPath
+                                                        Select Case oSequence.GetLineType(oItem.LineType)
+                                                            Case Items.cIItemLine.LineTypeEnum.Beziers
+                                                                Call modPaint.PointsToBeziers(oSequencePoints, oPath)
+                                                            Case Items.cIItemLine.LineTypeEnum.Splines
+                                                                Call oPath.AddCurve(oSequencePoints, sDefaultSplineTension)
+                                                            Case Else
+                                                                Call oPath.AddLines(oSequencePoints)
+                                                        End Select
+                                                        Call oPath.Flatten(Nothing, 0.01)
+                                                        oSuperPath.AddPath(oPath, True)
+                                                    End Using
+                                                End If
+                                            Next
+                                        End If
+                                    Next
+                                    oSuperPath.CloseAllFigures()
 
-                                                    For iPoint As Integer = 0 To oPath.PointCount - 1
-                                                        Dim oPoint As PointF = modPaint.RotatePointByRadians(oPath.PathPoints(iPoint), sMC)
-                                                        Dim oRefPoint As modUTM.UTM = New modUTM.UTM(oUTMOrigin)
-                                                        oRefPoint.East = oRefPoint.East + CDec(oPoint.X)
-                                                        oRefPoint.North = oRefPoint.North - CDec(oPoint.Y)
-                                                        Dim oRefPointWGS84 As modUTM.WGS84 = modUTM.UTMToWGS84(oRefPoint)
-                                                        sCoordinates = sCoordinates & modNumbers.NumberToString(oRefPointWGS84.Longitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oRefPointWGS84.Latitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(0, DefaultAltitudeFormat) & vbCrLf
-                                                    Next
-                                                    Call GoogleKmlAppendNode(xml, xmlLineString, "coordinates", sCoordinates)
-                                                    Call xmlPolygon.AppendChild(xmlLineString)
-                                                End Using
-                                            End If
-                                        Next
-                                    End If
-                                Next
+                                    Dim xmlLinearRing As XmlElement = xml.CreateElement("LinearRing")
+                                    Dim sCoordinates As String = ""
+                                    Dim oPoints As List(Of PointF) = New List(Of PointF)
+                                    For iPoint As Integer = 0 To oSuperPath.PointCount - 1
+                                        Call oPoints.Add(oSuperPath.PathPoints(iPoint))
+                                    Next
+                                    oPoints = oPoints.OrderBy(Function(point) Math.Atan2(point.X, point.Y)).ToList()
+
+                                    For iPoint As Integer = 0 To oPoints.Count - 1
+                                        Dim oPoint As PointF = modPaint.RotatePointByRadians(oPoints(iPoint), sMC)
+                                        Dim oRefPoint As modUTM.UTM = New modUTM.UTM(oUTMOrigin)
+                                        oRefPoint.East = oRefPoint.East + CDec(oPoint.X)
+                                        oRefPoint.North = oRefPoint.North - CDec(oPoint.Y)
+                                        Dim oRefPointWGS84 As modUTM.WGS84 = modUTM.UTMToWGS84(oRefPoint)
+                                        sCoordinates = sCoordinates & modNumbers.NumberToString(oRefPointWGS84.Longitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oRefPointWGS84.Latitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(0, DefaultAltitudeFormat) & vbCrLf
+                                    Next
+                                    Call GoogleKmlAppendNode(xml, xmlLinearRing, "coordinates", sCoordinates)
+                                    Call xmlouterBoundaryIs.AppendChild(xmlLinearRing)
+                                End Using
+                                Call xmlPolygon.AppendChild(xmlouterBoundaryIs)
                                 Call xmlPlacemark.AppendChild(xmlPolygon)
                                 Call xmlFolderBorder.AppendChild(xmlPlacemark)
                             End If

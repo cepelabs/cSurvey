@@ -927,6 +927,7 @@ Partial Class frmPreview
         'sbMain
         '
         resources.ApplyResources(Me.sbMain, "sbMain")
+        Me.sbMain.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.sbMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.pnlStatusText, Me.pnlStatusProgress, Me.pnlStatusCurrentRule, Me.pnlStatusDesignZoom, Me.pnlStatusDesignZoom100, Me.pnlStatusDesignZoom200, Me.pnlStatusDesignZoom250, Me.pnlStatusDesignZoom500, Me.pnlStatusDesignZoom1000})
         Me.sbMain.Name = "sbMain"
         '
@@ -1020,6 +1021,7 @@ Partial Class frmPreview
         'mnuLvContext
         '
         resources.ApplyResources(Me.mnuLvContext, "mnuLvContext")
+        Me.mnuLvContext.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.mnuLvContext.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuLvContextAdd, Me.mnuLvContextAddSep, Me.mnuLvContextDelete, Me.mnuLvContextDeleteSep, Me.mnuLvContextImport, Me.mnuLvContextExport})
         Me.mnuLvContext.Name = "mnuLvContext"
         '

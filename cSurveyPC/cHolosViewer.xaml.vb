@@ -723,16 +723,17 @@ Friend Class cHolosViewer
         Try
             Dim sSaveFilename As String = Filename
             If sSaveFilename = "" Then
-                Dim osfd As SaveFileDialog = New SaveFileDialog
-                With osfd
-                    .FileName = sSaveFilename
-                    .Filter = GetLocalizedString("holos.filetypeSTL") & " (*.STL)|*.STL|" & GetLocalizedString("holos.filetypeDAE") & " (*.DAE)|*.DAE|" & GetLocalizedString("holos.filetypeX3D") & " (*.X3D)|*.X3D|" & GetLocalizedString("holos.filetypeOBJ") & " (*.OBJ)|*.OBJ" '|" & GetLocalizedString("holos.filetypeXAML") & " (*.XAML)|*.XAML|" & GetLocalizedString("holos.filetypeXML") & " (*.XML)|*.XML"
-                    .FilterIndex = modMain.FilterRestoreLast("export.3d", 1)
-                    If .ShowDialog = Windows.Forms.DialogResult.OK Then
-                        Call modMain.FilterSaveLast("export.3d", .FilterIndex)
-                        sSaveFilename = .FileName
-                    End If
-                End With
+                Using osfd As SaveFileDialog = New SaveFileDialog
+                    With osfd
+                        .FileName = sSaveFilename
+                        .Filter = GetLocalizedString("holos.filetypeSTL") & " (*.STL)|*.STL|" & GetLocalizedString("holos.filetypeDAE") & " (*.DAE)|*.DAE|" & GetLocalizedString("holos.filetypeX3D") & " (*.X3D)|*.X3D|" & GetLocalizedString("holos.filetypeOBJ") & " (*.OBJ)|*.OBJ" '|" & GetLocalizedString("holos.filetypeXAML") & " (*.XAML)|*.XAML|" & GetLocalizedString("holos.filetypeXML") & " (*.XML)|*.XML"
+                        .FilterIndex = modMain.FilterRestoreLast("export.3d", 1)
+                        If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                            Call modMain.FilterSaveLast("export.3d", .FilterIndex)
+                            sSaveFilename = .FileName
+                        End If
+                    End With
+                End Using
             End If
 
             If sSaveFilename <> "" Then

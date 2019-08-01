@@ -51,6 +51,14 @@ Public Class frmResurveyMain
     Private oGenericColor As Color = Color.Red
     Private oOriginColor As Color = Color.Blue
 
+    Private oRulesColor As Color = Color.FromArgb(120, Color.Gray)
+    Private oRulesPen As Pen
+    Private oRulesSecondaryPen
+    Private oRulesLabelPen As Pen
+    Private oRulesLabelBrush As SolidBrush
+    Private oRulesBrush As SolidBrush
+    Private oRulesFillBrush As SolidBrush
+
     Private iDefaultCalculateMode As cResurvey.cOptions.CalculateModeEnum
 
     Private sPlanZoom As Single = 1
@@ -1142,19 +1150,13 @@ Public Class frmResurveyMain
         Return pGetFirstStation()
     End Function
 
-    Private Sub pPerformCalculate(Optional Paint As Boolean = True)
-        Me.SuspendLayout()
-        Call pPopupHide()
-        oLastLine = Nothing
-
-        Call oShots.Clear()
-        Call grdPlot.Rows.Clear()
-
+    Private Function pGetScale() As cResurvey.cScale
         Dim sPlanScale As Single = 1
         Dim sPlanScaleDistance As Single
-
+        Dim bPlanError As Boolean
         Dim sProfileScale As Single = 1
         Dim sProfileScaleDistance As Single
+        Dim bProfileError As Boolean
         Try
             Dim sFirstScalePoint As String = pGetFirstScalePoint()
             Dim sSecondScalePoint As String = pGetSecondScalePoint()
@@ -1170,7 +1172,6 @@ Public Class frmResurveyMain
                     Case cOptions.ScaleTypeEnum.Distance
                         sPlanScaleDistance = modPaint.DistancePointToPoint(oPlanFirstScalePoint, oPlanSecondScalePoint)
                 End Select
-                'sPlanScaleDistance = modPaint.DistancePointToPoint(oPlanFirstScalePoint, oPlanSecondScalePoint)
                 If oStations.ContainsKey(sSecondScalePoint) Then sScaleSize = oStations(sSecondScalePoint).Scale
             Else
                 If pPointAsData(sFirstScalePoint, 1) Then
@@ -1202,12 +1203,13 @@ Public Class frmResurveyMain
                 End If
             End If
             If sScaleSize = 0 Or sPlanScaleDistance = 0 Then
-                Call pPopupShow("warning", GetLocalizedString("resurvey.warning2"))
+                bPlanError = True
                 sPlanScale = 1
             Else
                 sPlanScale = sScaleSize / sPlanScaleDistance
+                sPlanScale = sScaleSize / sPlanScaleDistance
                 If Math.Round(sPlanScale, 6) = 0 Then
-                    Call pPopupShow("warning", GetLocalizedString("resurvey.warning2"))
+                    bPlanError = True
                     sPlanScale = 1
                 End If
             End If
@@ -1234,17 +1236,37 @@ Public Class frmResurveyMain
             If oStations.ContainsKey(sSecondDropScalePoint) Then sProfileScaleSize = oStations(sSecondDropScalePoint).Scale
 
             If sProfileScaleSize = 0 Or sProfileScaleDistance = 0 Then
-                Call pPopupShow("warning", GetLocalizedString("resurvey.warning2a"))
+                bProfileError = True
                 sProfileScale = 1
             Else
                 sProfileScale = sProfileScaleSize / sProfileScaleDistance
                 If Math.Round(sProfileScale, 6) = 0 Then
-                    Call pPopupShow("warning", GetLocalizedString("resurvey.warning2a"))
+                    bProfileError = True
                     sProfileScale = 1
                 End If
             End If
         Else
             sProfileScale = sPlanScale
+            sProfileScaleDistance = sPlanScaleDistance
+            bProfileError = bPlanError
+        End If
+
+        Return New cScale(sPlanScale, sPlanScaleDistance, bPlanError, sProfileScale, sProfileScaleDistance, bProfileError)
+    End Function
+
+    Private Sub pPerformCalculate(Optional Paint As Boolean = True)
+        Call pPopupHide()
+        oLastLine = Nothing
+
+        Call oShots.Clear()
+        Call grdPlot.Rows.Clear()
+
+        Dim oScale As cResurvey.cScale = pGetScale()
+        If oScale.PlanError Then
+            Call pPopupShow("warning", GetLocalizedString("resurvey.warning2"))
+        End If
+        If oScale.ProfileError Then
+            Call pPopupShow("warning", GetLocalizedString("resurvey.warning2a"))
         End If
 
         For Each oTPH As cResurvey.cTrigpointPlaceholder In oPlanTrigpointsPlaceholders.Values
@@ -1259,10 +1281,10 @@ Public Class frmResurveyMain
             Call pPopupShow("error", GetLocalizedString("resurvey.warning3"))
         Else
             Try
-                Call pCalculateFromPlan(sStation, sPlanScale)
+                Call pCalculateFromPlan(sStation, oScale.PlanScale)
                 Call pCalculateCleanShots()
                 If oOptions.CalculateMode = cResurvey.cOptions.CalculateModeEnum.Full Then
-                    Call pCalculateFromProfile(sStation, sProfileScale)
+                    Call pCalculateFromProfile(sStation, oScale.ProfileScale)
                     Call pCalculateCleanShots()
                 End If
             Catch ex As Exception
@@ -1299,7 +1321,6 @@ Public Class frmResurveyMain
                 End If
             Next
         End If
-        Me.ResumeLayout()
         If Paint Then Call pDelayedPerformPaint()
     End Sub
 
@@ -2000,20 +2021,22 @@ Public Class frmResurveyMain
 
     Private Sub pSettingsLoad()
         Try
-            Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-            iDefaultCalculateMode = oReg.GetValue("resurvey.options.calculatemode", cResurvey.cOptions.CalculateModeEnum.Full)
-            Call oReg.Close()
-            Call oReg.Dispose()
+            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
+                iDefaultCalculateMode = oReg.GetValue("resurvey.options.calculatemode", cResurvey.cOptions.CalculateModeEnum.Full)
+                btnShowRulers.Checked = oReg.GetValue("resurvey.options.showrulers", 0)
+                Call oReg.Close()
+            End Using
         Catch
         End Try
     End Sub
 
     Private Sub pSettingsSave()
         Try
-            Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-            Call oReg.SetValue("resurvey.options.calculatemode", Convert.ToInt32(iDefaultCalculateMode))
-            Call oReg.Close()
-            Call oReg.Dispose()
+            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
+                Call oReg.SetValue("resurvey.options.calculatemode", Convert.ToInt32(iDefaultCalculateMode))
+                Call oReg.SetValue("resurvey.options.showrulers", If(btnShowRulers.Checked, 1, 0))
+                Call oReg.Close()
+            End Using
         Catch
         End Try
     End Sub
@@ -2098,6 +2121,9 @@ Public Class frmResurveyMain
                 oSF.LineAlignment = StringAlignment.Center
                 For Each oTPH As cResurvey.cTrigpointPlaceholder In oPlanTrigpointsPlaceholders.Values
                     If oTPH.Visible Then
+                        Dim oProfileTPH As cTrigpointPlaceholder = If(oProfileTrigpointsPlaceholders.ContainsKey(pGetRealStation(oTPH.Name)), oProfileTrigpointsPlaceholders(pGetRealStation(oTPH.Name)), Nothing)
+                        Dim oStation As cStation = If(oStations.ContainsKey(oTPH.Name), oStations(oTPH.Name), Nothing)
+
                         Dim oNameSize As SizeF = oGraphics.MeasureString(oTPH.Name, Font)
 
                         Using oPath As GraphicsPath = New GraphicsPath
@@ -2113,12 +2139,42 @@ Public Class frmResurveyMain
                                 Using oPlaceholderSelectedbrush As Brush = New SolidBrush(Color.FromArgb(210, oTPH.BackColor))
                                     Using oPlaceholderPen As Pen = New Pen(Color.FromArgb(140, oTPH.BackColor), 1)
                                         Using oPlaceholderbrush As Brush = New SolidBrush(Color.FromArgb(140, oTPH.BackColor))
-
                                             If oTPH Is oLastPlaceHolder Then
-                                                Debug.Print(oLastPlaceHolder.Name)
                                                 Call oGraphics.FillPath(oPlaceholderSelectedbrush, oPath)
                                                 Call oGraphics.DrawPath(oPlaceholderSelectedPen, oPath)
                                                 Call oGraphics.DrawString(oTPH.Name, Font, Brushes.White, oTPH.HotSpot, oSF)
+
+                                                'check connected stations and if there are planimetric distance draw line for each stations
+                                                If Not IsNothing(oProfileTPH) AndAlso btnShowRulers.Checked Then
+                                                    Dim oScale As cScale = pGetScale()
+                                                    If Not (oScale.PlanError OrElse oScale.ProfileError) Then
+                                                        Dim iIndex As Integer = 0
+                                                        Dim oConnectedTPHs As List(Of cTrigpointPlaceholder) = New List(Of cTrigpointPlaceholder)
+                                                        Call oConnectedTPHs.AddRange(oProfileTrigpointsPlaceholders.Where(Function(item) cResurvey.cStation.GetConnectedToCollection(oStation.ProfileConnectedTo).Contains(item.Key)).Select(Function(item) item.Value))
+                                                        Call oConnectedTPHs.AddRange(oProfileTrigpointsPlaceholders.Where(Function(item) cResurvey.cStation.GetConnectedToCollection(oStations(item.Key).ProfileConnectedTo).Contains(oStation.Name)).Select(Function(item) item.Value))
+                                                        For Each oConnectedTPH As cTrigpointPlaceholder In    oConnectedTPHs.Distinct.ToList
+                                                            iIndex -= 10
+                                                            'If oProfileTrigpointsPlaceholders.ContainsKey(oConnectedTPH.Name) Then
+                                                            Dim oConnectedProfileTPH As cTrigpointPlaceholder = oProfileTrigpointsPlaceholders(oConnectedTPH.Name)
+                                                            Dim sDistance As Single = Math.Abs(oProfileTPH.Point.X - oConnectedProfileTPH.Point.X)
+                                                            sDistance = sDistance * oScale.ProfileScale / oScale.PlanScale
+                                                            Dim sText As String = oConnectedTPH.Name '& " - " & Strings.Format(modNumbers.MathRound(sDistance * oScale.ProfileScale, 2), "0.00") & " m"
+                                                            Dim oLabelSize As SizeF = oGraphics.MeasureString(sText, Font, 64, oSF)
+                                                            oLabelSize.Width += 2
+                                                            oLabelSize.Height += 2
+                                                            Using oRotateMatrix As Matrix = New Matrix
+                                                                Call oRotateMatrix.RotateAt(iIndex, oTPH.Point)
+                                                                oGraphics.Transform = oRotateMatrix
+                                                                Call oGraphics.DrawEllipse(oRulesPen, New RectangleF(oTPH.Point.X - sDistance, oTPH.Point.Y - sDistance, sDistance * 2, sDistance * 2))
+                                                                Dim oLabelBox As Rectangle = New Rectangle(oTPH.Point.X + sDistance - oLabelSize.Width / 2, oTPH.Point.Y - oLabelSize.Height / 2, oLabelSize.Width, oLabelSize.Height)
+                                                                Call oGraphics.FillRectangle(oRulesLabelBrush, oLabelBox)
+                                                                Call oGraphics.DrawRectangle(oRulesLabelPen, oLabelBox)
+                                                                Call oGraphics.DrawString(sText, Font, oRulesBrush, oLabelBox, oSF) 'New Rectangle(oTPH.Point.X + sDistance - oLabelSize.Width / 2 + 1, oTPH.Point.Y - oLabelSize.Height / 2 + 1, oLabelSize.Width, oLabelSize.Height), oSF)
+                                                                Call oGraphics.ResetTransform()
+                                                            End Using
+                                                        Next
+                                                    End If
+                                                End If
                                             Else
                                                 Call oGraphics.FillPath(oPlaceholderbrush, oPath)
                                                 Call oGraphics.DrawPath(oPlaceholderPen, oPath)
@@ -2132,6 +2188,11 @@ Public Class frmResurveyMain
                     End If
                 Next
             End Using
+
+            If btnShowRulers.Checked AndAlso Not oLastPlaceHolder Is Nothing Then
+                Call oGraphics.DrawLine(oRulesSecondaryPen, New Point(oGraphics.VisibleClipBounds.Left, oLastPlaceHolder.Point.Y), New Point(oGraphics.VisibleClipBounds.Right, oLastPlaceHolder.Point.Y))
+                Call oGraphics.DrawLine(oRulesSecondaryPen, New Point(oLastPlaceHolder.Point.X, oGraphics.VisibleClipBounds.Top), New Point(oLastPlaceHolder.Point.X, oGraphics.VisibleClipBounds.Bottom))
+            End If
 
             If Not oLastLine Is Nothing Then
                 Using oSelectedShotsPen As Pen = New Pen(Color.FromArgb(220, Color.Coral), 3)
@@ -2188,6 +2249,8 @@ Public Class frmResurveyMain
                 oSF.LineAlignment = StringAlignment.Center
                 For Each oTPH As cResurvey.cTrigpointPlaceholder In oProfileTrigpointsPlaceholders.Values
                     If oTPH.Visible Then
+                        Dim oPlanTPH As cTrigpointPlaceholder = If(oPlanTrigpointsPlaceholders.ContainsKey(oTPH.Name), oPlanTrigpointsPlaceholders(oTPH.Name), Nothing)
+                        Dim oStation As cStation = If(oStations.ContainsKey(oTPH.Name), oStations(oTPH.Name), Nothing)
                         Dim oNameSize As SizeF = oGraphics.MeasureString(oTPH.Name, Font)
                         Using oPath As GraphicsPath = New GraphicsPath
                             Call oPath.AddLine(oTPH.Area.Left, oTPH.Area.Top, oTPH.Area.Left, oTPH.Area.Top + oTPH.Area.Height \ 2)
@@ -2206,6 +2269,39 @@ Public Class frmResurveyMain
                                                 Call oGraphics.FillPath(oPlaceholderSelectedbrush, oPath)
                                                 Call oGraphics.DrawPath(oPlaceholderSelectedPen, oPath)
                                                 Call oGraphics.DrawString(oTPH.Name, Font, Brushes.White, oTPH.HotSpot, oSF)
+
+                                                'check connected stations and if there are planimetric distance draw line for each stations
+                                                If Not IsNothing(oPlanTPH) AndAlso btnShowRulers.Checked Then
+                                                    Dim oScale As cScale = pGetScale()
+                                                    If Not (oScale.PlanError OrElse oScale.ProfileError) Then
+                                                        Dim iIndex As Integer = 0
+                                                        Dim oConnectedTPHs As List(Of cTrigpointPlaceholder) = New List(Of cTrigpointPlaceholder)
+                                                        Call oConnectedTPHs.AddRange(oPlanTrigpointsPlaceholders.Where(Function(item) cResurvey.cStation.GetConnectedToCollection(oStation.PlanConnectedTo).Contains(item.Key)).Select(Function(item) item.Value))
+                                                        Call oConnectedTPHs.AddRange(oPlanTrigpointsPlaceholders.Where(Function(item) cResurvey.cStation.GetConnectedToCollection(oStations(item.Key).PlanConnectedTo).Contains(oStation.Name)).Select(Function(item) item.Value))
+                                                        For Each oConnectedTPH As cTrigpointPlaceholder In oConnectedTPHs.Distinct.ToList
+                                                            iIndex += 16
+                                                            Dim oConnectedPlanTPH As cTrigpointPlaceholder = oPlanTrigpointsPlaceholders(oConnectedTPH.Name)
+                                                            Dim sDistance As Single = modPaint.DistancePointToPoint(oPlanTPH.Point, oConnectedPlanTPH.Point)
+                                                            sDistance = sDistance * oScale.PlanScale / oScale.ProfileScale
+                                                            Dim sText As String = oConnectedTPH.Name '& " - " & Strings.Format(modNumbers.MathRound(sDistance * oScale.ProfileScale, 2), "0.00") & " m"
+                                                            Dim oLabelSize As SizeF = oGraphics.MeasureString(sText, Font, 64, oSF)
+                                                            oLabelSize.Width += 2
+                                                            oLabelSize.Height += 2
+
+                                                            Call oGraphics.DrawLine(oRulesPen, New Point(oTPH.Point.X + sDistance, oGraphics.VisibleClipBounds.Bottom), New Point(oTPH.Point.X + sDistance, oGraphics.VisibleClipBounds.Top))
+                                                            Dim oLabelBox As Rectangle = New Rectangle(oTPH.Point.X + sDistance - oLabelSize.Width / 2, oTPH.Point.Y - oLabelSize.Height / 2 + iIndex, oLabelSize.Width, oLabelSize.Height)
+                                                            Call oGraphics.FillRectangle(oRulesLabelBrush, oLabelBox)
+                                                            Call oGraphics.DrawRectangle(oRulesLabelPen, oLabelBox)                                                            'Call oGraphics.FillEllipse(oRulesFillBrush, New Rectangle(oTPH.Point.X + sDistance - sSize / 2, oTPH.Point.Y - sSize / 2 - sSize * iindex, sSize, sSize))
+                                                            Call oGraphics.DrawString(sText, Font, oRulesBrush, oLabelBox, oSF) ' New Rectangle(oTPH.Point.X + sDistance - oLabelSize.Width / 2, oTPH.Point.Y - oLabelSize.Height / 2, oLabelSize.Width, oLabelSize.Height), oSF)
+
+                                                            Call oGraphics.DrawLine(oRulesPen, New Point(oTPH.Point.X - sDistance, oGraphics.VisibleClipBounds.Bottom), New Point(oTPH.Point.X - sDistance, oGraphics.VisibleClipBounds.Top))
+                                                            oLabelBox = New Rectangle(oTPH.Point.X - sDistance - oLabelSize.Width / 2, oTPH.Point.Y - oLabelSize.Height / 2 - iIndex, oLabelSize.Width, oLabelSize.Height)
+                                                            Call oGraphics.FillRectangle(oRulesLabelBrush, oLabelBox)
+                                                            Call oGraphics.DrawRectangle(oRulesLabelPen, oLabelBox)                                                            'Call oGraphics.FillEllipse(oRulesFillBrush, New Rectangle(oTPH.Point.X + sDistance - sSize / 2, oTPH.Point.Y - sSize / 2 - sSize * iindex, sSize, sSize))
+                                                            Call oGraphics.DrawString(sText, Font, oRulesBrush, oLabelBox, oSF) ' New Rectangle(oTPH.Point.X - sDistance - oLabelSize.Width / 2 + 1, oTPH.Point.Y - oLabelSize.Height / 2 + 1, oLabelSize.Width, oLabelSize.Height), oSF)
+                                                        Next
+                                                    End If
+                                                End If
                                             Else
                                                 Call oGraphics.FillPath(oPlaceholderbrush, oPath)
                                                 Call oGraphics.DrawPath(oPlaceholderPen, oPath)
@@ -2219,6 +2315,11 @@ Public Class frmResurveyMain
                     End If
                 Next
             End Using
+
+            If btnShowRulers.Checked AndAlso Not oLastPlaceHolder Is Nothing Then
+                Call oGraphics.DrawLine(oRulesSecondaryPen, New Point(oGraphics.VisibleClipBounds.Left, oLastPlaceHolder.Point.Y), New Point(oGraphics.VisibleClipBounds.Right, oLastPlaceHolder.Point.Y))
+                Call oGraphics.DrawLine(oRulesSecondaryPen, New Point(oLastPlaceHolder.Point.X, oGraphics.VisibleClipBounds.Top), New Point(oLastPlaceHolder.Point.X, oGraphics.VisibleClipBounds.Bottom))
+            End If
 
             If Not oLastLine Is Nothing Then
                 Using oSelectedShotsPen As Pen = New Pen(Color.FromArgb(220, Color.Coral), 3)
@@ -2527,6 +2628,15 @@ Public Class frmResurveyMain
         oShots = New cResurvey.cShots
         oStations = New Dictionary(Of String, cResurvey.cStation)
 
+        oRulesSecondaryPen = New Pen(oRulesColor, -1)
+        oRulesSecondaryPen.DashStyle = DashStyle.Dash
+        oRulesPen = New Pen(oRulesColor, -1)
+        oRulesPen.DashStyle = DashStyle.Dot
+        oRulesLabelPen = New Pen(oRulesColor, -1)
+        oRulesLabelBrush = New SolidBrush(Color.FromArgb(180, Color.White))
+        oRulesBrush = New SolidBrush(oRulesColor)
+        oRulesFillBrush = New SolidBrush(Color.FromArgb(120, Color.WhiteSmoke))
+
         picPlan.AllowDrop = True
         picProfile.AllowDrop = True
 
@@ -2792,8 +2902,8 @@ Public Class frmResurveyMain
             mnuGridStationDelete.Enabled = True
             mnuGridStationProperties.Enabled = True
             Dim sType As String = ""
-            Try : stype = oStations(oLastPlaceHolder.Name).Type : Catch : End Try
-            mnuGridStationSetOrigin.Enabled = stype = ""
+            Try : sType = oStations(oLastPlaceHolder.Name).Type : Catch : End Try
+            mnuGridStationSetOrigin.Enabled = sType = ""
         End If
     End Sub
 
@@ -2849,7 +2959,21 @@ Public Class frmResurveyMain
             End If
 
             If Not oLastPlaceHolder Is Nothing Then
-                pnlDistance.Text = "Δ: " & modPaint.DistancePointToPoint(oLastPlaceHolder.Point, oPoint) & " px"
+                Dim dDistance As Decimal = modPaint.DistancePointToPoint(oLastPlaceHolder.Point, oPoint)
+                pnlDistance.Text = "Δ: " & dDistance & " px"
+                Dim oScale As cScale = pGetScale()
+                Dim dScaledDistance As Decimal
+                If iCurrentProject = 0 Then
+                    If Not oScale.PlanError Then
+                        dScaledDistance = modNumbers.MathRound(dDistance * oScale.PlanScale, 2)
+                        pnlDistance.Text &= " - " & dScaledDistance & " m"
+                    End If
+                Else
+                    If Not oScale.ProfileError Then
+                        dScaledDistance = modNumbers.MathRound(dDistance * oScale.ProfileScale, 2)
+                        pnlDistance.Text &= " - " & dScaledDistance & " m"
+                    End If
+                End If
                 pnlAngle.Text = "α:" & modPaint.GetBearing(oLastPlaceHolder.Point, oPoint) & " °"
                 If ((e.Button And MouseButtons.Left) = MouseButtons.Left) Then
                     If (Rectangle.op_Inequality(oDragboxFromMouseDown, Rectangle.Empty) And Not oDragboxFromMouseDown.Contains(oPoint)) Then
@@ -3483,5 +3607,10 @@ Public Class frmResurveyMain
 
     Private Sub btnVerticalLayout_Click(sender As Object, e As EventArgs) Handles btnVerticalLayout.Click
         Call pSetViewMode(2, 0)
+    End Sub
+
+    Private Sub btnShowRulers_Click(sender As Object, e As EventArgs) Handles btnShowRulers.Click
+        btnShowRulers.Checked = Not btnShowRulers.Checked
+        Call pInvalidateCurrentView()
     End Sub
 End Class

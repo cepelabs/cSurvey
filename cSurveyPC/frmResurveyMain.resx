@@ -1258,6 +1258,18 @@
   <data name="ToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
+  <data name="btnShowRulers.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnShowRulers.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnShowRulers.Text" xml:space="preserve">
+    <value>Rulers</value>
+  </data>
+  <data name="ToolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
   <data name="btnCalculate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -1390,7 +1402,7 @@
     <value>1160, 22</value>
   </metadata>
   <data name="pnlStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>571, 17</value>
+    <value>511, 17</value>
   </data>
   <data name="pnlStatus.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -1408,7 +1420,7 @@
     <value>False</value>
   </data>
   <data name="pnlCoordinates.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 17</value>
+    <value>140, 17</value>
   </data>
   <data name="pnlCoordinates.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -1417,7 +1429,7 @@
     <value>False</value>
   </data>
   <data name="pnlDistance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 17</value>
+    <value>120, 17</value>
   </data>
   <data name="pnlDistance.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -1460,7 +1472,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABe
-        CgAAAk1TRnQBSQFMAgEBAwEAAWgBAgFoAQIBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CgAAAk1TRnQBSQFMAgEBAwEAAYABAgGAAQIBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1811,6 +1823,72 @@
   <data name="&gt;&gt;mnuGridStationProperties.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;colPlotFrom.Name" xml:space="preserve">
+    <value>colPlotFrom</value>
+  </data>
+  <data name="&gt;&gt;colPlotFrom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colPlotTo.Name" xml:space="preserve">
+    <value>colPlotTo</value>
+  </data>
+  <data name="&gt;&gt;colPlotTo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colPlotPlanimetricDistance.Name" xml:space="preserve">
+    <value>colPlotPlanimetricDistance</value>
+  </data>
+  <data name="&gt;&gt;colPlotPlanimetricDistance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colPlotDrop.Name" xml:space="preserve">
+    <value>colPlotDrop</value>
+  </data>
+  <data name="&gt;&gt;colPlotDrop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colPlotDistance.Name" xml:space="preserve">
+    <value>colPlotDistance</value>
+  </data>
+  <data name="&gt;&gt;colPlotDistance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colPlotBearing.Name" xml:space="preserve">
+    <value>colPlotBearing</value>
+  </data>
+  <data name="&gt;&gt;colPlotBearing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colPlotInclination.Name" xml:space="preserve">
+    <value>colPlotInclination</value>
+  </data>
+  <data name="&gt;&gt;colPlotInclination.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Sinistra.Name" xml:space="preserve">
+    <value>Sinistra</value>
+  </data>
+  <data name="&gt;&gt;Sinistra.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Destra.Name" xml:space="preserve">
+    <value>Destra</value>
+  </data>
+  <data name="&gt;&gt;Destra.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Alto.Name" xml:space="preserve">
+    <value>Alto</value>
+  </data>
+  <data name="&gt;&gt;Alto.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Basso.Name" xml:space="preserve">
+    <value>Basso</value>
+  </data>
+  <data name="&gt;&gt;Basso.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;btnStations.Name" xml:space="preserve">
     <value>btnStations</value>
   </data>
@@ -1949,6 +2027,18 @@
   <data name="&gt;&gt;ToolStripSeparator1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;btnShowRulers.Name" xml:space="preserve">
+    <value>btnShowRulers</value>
+  </data>
+  <data name="&gt;&gt;btnShowRulers.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator8.Name" xml:space="preserve">
+    <value>ToolStripSeparator8</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;btnCalculate.Name" xml:space="preserve">
     <value>btnCalculate</value>
   </data>
@@ -2020,72 +2110,6 @@
   </data>
   <data name="&gt;&gt;imlPopup.Type" xml:space="preserve">
     <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colPlotFrom.Name" xml:space="preserve">
-    <value>colPlotFrom</value>
-  </data>
-  <data name="&gt;&gt;colPlotFrom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colPlotTo.Name" xml:space="preserve">
-    <value>colPlotTo</value>
-  </data>
-  <data name="&gt;&gt;colPlotTo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colPlotPlanimetricDistance.Name" xml:space="preserve">
-    <value>colPlotPlanimetricDistance</value>
-  </data>
-  <data name="&gt;&gt;colPlotPlanimetricDistance.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colPlotDrop.Name" xml:space="preserve">
-    <value>colPlotDrop</value>
-  </data>
-  <data name="&gt;&gt;colPlotDrop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colPlotDistance.Name" xml:space="preserve">
-    <value>colPlotDistance</value>
-  </data>
-  <data name="&gt;&gt;colPlotDistance.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colPlotBearing.Name" xml:space="preserve">
-    <value>colPlotBearing</value>
-  </data>
-  <data name="&gt;&gt;colPlotBearing.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colPlotInclination.Name" xml:space="preserve">
-    <value>colPlotInclination</value>
-  </data>
-  <data name="&gt;&gt;colPlotInclination.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Sinistra.Name" xml:space="preserve">
-    <value>Sinistra</value>
-  </data>
-  <data name="&gt;&gt;Sinistra.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Destra.Name" xml:space="preserve">
-    <value>Destra</value>
-  </data>
-  <data name="&gt;&gt;Destra.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Alto.Name" xml:space="preserve">
-    <value>Alto</value>
-  </data>
-  <data name="&gt;&gt;Alto.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Basso.Name" xml:space="preserve">
-    <value>Basso</value>
-  </data>
-  <data name="&gt;&gt;Basso.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmResurveyMain</value>

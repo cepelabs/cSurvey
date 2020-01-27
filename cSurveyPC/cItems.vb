@@ -87,7 +87,7 @@ Namespace cSurvey.Design
 
         Default Public ReadOnly Property Item(ByVal Index As Integer) As cItem
             Get
-                If Index >= 0 And Index < oItems.Count Then
+                If Index >= 0 AndAlso Index < oItems.Count Then
                     Return oItems(Index)
                 Else
                     Return Nothing
@@ -95,7 +95,16 @@ Namespace cSurvey.Design
             End Get
         End Property
 
-        Friend Sub Remove(ByVal Item As cItem)
+        Public Sub RemoveRange(Items As IEnumerable(Of cItem))
+            For Each oItem As cItem In Items
+                If oItems.Contains(oItem) Then
+                    Call oItem.SetDeleted()
+                    Call oItems.Remove(oItem)
+                End If
+            Next
+        End Sub
+
+        Public Sub Remove(ByVal Item As cItem)
             If Not Item Is Nothing Then
                 If oItems.Contains(Item) Then
                     Call Item.SetDeleted()
@@ -104,8 +113,8 @@ Namespace cSurvey.Design
             End If
         End Sub
 
-        Friend Sub Remove(ByVal Index As Integer)
-            If Index >= 0 And Index < oItems.Count Then
+        Public Sub Remove(ByVal Index As Integer)
+            If Index >= 0 AndAlso Index < oItems.Count Then
                 Dim oItem As cItem = oItems(Index)
                 Call oItem.SetDeleted()
                 Call oItems.RemoveAt(Index)
@@ -135,7 +144,7 @@ Namespace cSurvey.Design
                 Dim oItemItems As cItemItems = Item
                 Dim bContains As Boolean = True
                 For Each oSubItem As cItem In oItemItems
-                    bContains = bContains And oItems.Contains(oSubItem)
+                    bContains = bContains AndAlso oItems.Contains(oSubItem)
                     If Not bContains Then Exit For
                 Next
                 Return bContains
@@ -208,7 +217,7 @@ Namespace cSurvey.Design
                         oItem = New cItemQuota(oSurvey, oDesign, oLayer, File, oXMLItem)
                     Case cIItem.cItemTypeEnum.Legend
                         oItem = New cItemLegend(oSurvey, oDesign, oLayer, File, oXMLItem)
-                    Case cIItem.cItemTypeEnum.informationBoxText
+                    Case cIItem.cItemTypeEnum.InformationBoxText
                         oItem = New cItemInformationBoxText(oSurvey, oDesign, oLayer, File, oXMLItem)
                     Case cIItem.cItemTypeEnum.Scale
                         oItem = New cItemScale(oSurvey, oDesign, oLayer, File, oXMLItem)
@@ -228,7 +237,7 @@ Namespace cSurvey.Design
             Dim iStep As Integer = IIf(iCount > 20, iCount \ 20, 1)
             For Each oItem As cItem In oItems
                 iIndex += 1
-                If (Options And cSurvey.SaveOptionsEnum.Silent) = 0 Then If (iIndex Mod iStep) = 0 Then Call oSurvey.RaiseOnProgressEvent("save", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, String.Format(modMain.GetLocalizedString("items.textpart2"), If(oDesign.Type = cIDesign.cDesignTypeEnum.Plan, modMain.GetLocalizedString("items.textpart3"), modMain.GetLocalizedString("items.textpart4"))), iIndex / iCount)
+                If (Options AndAlso cSurvey.SaveOptionsEnum.Silent) = 0 Then If (iIndex Mod iStep) = 0 Then Call oSurvey.RaiseOnProgressEvent("save", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, String.Format(modMain.GetLocalizedString("items.textpart2"), If(oDesign.Type = cIDesign.cDesignTypeEnum.Plan, modMain.GetLocalizedString("items.textpart3"), modMain.GetLocalizedString("items.textpart4"))), iIndex / iCount)
                 Call oItem.SaveTo(File, Document, oXmlItems, Options)
             Next
             Call Parent.AppendChild(oXmlItems)
@@ -325,7 +334,7 @@ Namespace cSurvey.Design
         Public Sub MoveTo(ByVal Index As Integer, ByVal Item As cItem)
             If oItems.Contains(Item) Then
                 Dim iIndex As Integer = oItems.IndexOf(Item)
-                If Index <> iIndex And Index >= 0 And Index < oItems.Count Then
+                If Index <> iIndex AndAlso Index >= 0 AndAlso Index < oItems.Count Then
                     Call oItems.Remove(Item)
                     Call oItems.Insert(Index, Item)
                 End If
@@ -354,10 +363,10 @@ Namespace cSurvey.Design
                                     oDestItem = New cItemInvertedFreeHandArea(oSurvey, oDesign, oLayer, SourceItem.Category)
                             End Select
                             Call oDestItem.SetCave(SourceItem.Cave, SourceItem.Branch, False)
-                            If oDestItem.HaveBrush And SourceItem.HaveBrush Then Call oDestItem.Brush.CopyFrom(SourceItem.Brush)
-                            If oDestItem.HavePen And SourceItem.HavePen Then oDestItem.Pen.CopyFrom(SourceItem.Pen)
+                            If oDestItem.HaveBrush AndAlso SourceItem.HaveBrush Then Call oDestItem.Brush.CopyFrom(SourceItem.Brush)
+                            If oDestItem.HavePen AndAlso SourceItem.HavePen Then oDestItem.Pen.CopyFrom(SourceItem.Pen)
                             'cerco di riportare altre proprietà non comuni a tutti gli oggetti.......
-                            If oDestItem.HaveLineType And SourceItem.HaveLineType Then DirectCast(oDestItem, cIItemLine).LineType = DirectCast(SourceItem, cIItemLine).LineType
+                            If oDestItem.HaveLineType AndAlso SourceItem.HaveLineType Then DirectCast(oDestItem, cIItemLine).LineType = DirectCast(SourceItem, cIItemLine).LineType
                             For Each oPoint As cPoint In oSequence
                                 Call oDestItem.Points.Add(oPoint.Clone)
                             Next
@@ -378,7 +387,7 @@ Namespace cSurvey.Design
                     Dim bFirst As Boolean = True
                     Dim oDestItem As cItem = Nothing
                     For Each opoint As cPoint In SourceItem.Points
-                        If bFirst Or opoint.BeginSequence Then
+                        If bFirst OrElse opoint.BeginSequence Then
                             bFirst = False
                             If Not oDestItem Is Nothing Then
                                 Call oItems.Add(oDestItem)
@@ -394,10 +403,10 @@ Namespace cSurvey.Design
                                     oDestItem = New cItemInvertedFreeHandArea(oSurvey, oDesign, oLayer, SourceItem.Category)
                             End Select
                             Call oDestItem.SetCave(SourceItem.Cave, SourceItem.Branch, False)
-                            If oDestItem.HaveBrush And SourceItem.HaveBrush Then Call oDestItem.Brush.CopyFrom(SourceItem.Brush)
-                            If oDestItem.HavePen And SourceItem.HavePen Then oDestItem.Pen.CopyFrom(SourceItem.Pen)
+                            If oDestItem.HaveBrush AndAlso SourceItem.HaveBrush Then Call oDestItem.Brush.CopyFrom(SourceItem.Brush)
+                            If oDestItem.HavePen AndAlso SourceItem.HavePen Then oDestItem.Pen.CopyFrom(SourceItem.Pen)
                             'cerco di riportare altre proprietà non comuni a tutti gli oggetti.......
-                            If oDestItem.HaveLineType And SourceItem.HaveLineType Then DirectCast(oDestItem, cIItemLine).LineType = DirectCast(SourceItem, cIItemLine).LineType
+                            If oDestItem.HaveLineType AndAlso SourceItem.HaveLineType Then DirectCast(oDestItem, cIItemLine).LineType = DirectCast(SourceItem, cIItemLine).LineType
                             'e i dati utente
                             Call oDestItem.DataProperties.CopyFrom(SourceItem.DataProperties)
                         End If

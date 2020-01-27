@@ -207,4 +207,7 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Esportazione traccia in formato Google KML:</value>
   </data>
+  <data name="lblCaveBordersTransparency.Text" xml:space="preserve">
+    <value>Trasparenza:</value>
+  </data>
 </root>

@@ -13,9 +13,9 @@ Namespace cSurvey
             Try
                 Dim oXmlItem As XmlElement = Document.CreateElement("exportprofiles")
                 For Each oItem As cExportProfile In oItems
-                    If Not oItem.IsSystem Then
-                        Call oItem.SaveTo(File, Document, oXmlItem)
-                    End If
+                    'If Not oItem.IsSystem Then
+                    Call oItem.SaveTo(File, Document, oXmlItem)
+                    'End If
                 Next
                 Call Parent.AppendChild(oXmlItem)
                 Return oXmlItem
@@ -34,12 +34,21 @@ Namespace cSurvey
         Friend Sub New(Survey As cSurvey, ByVal File As Storage.cFile, Profiles As XmlElement)
             oSurvey = Survey
             oItems = New List(Of cExportProfile)
-            Call oItems.Add(New cExportProfile(oSurvey, oSurvey.Options("_export.plan"), cIDesign.cDesignTypeEnum.Plan))
-            Call oItems.Add(New cExportProfile(oSurvey, oSurvey.Options("_export.profile"), cIDesign.cDesignTypeEnum.Profile))
+            Dim bPlanExist As Boolean = False
+            Dim bProfileExist As Boolean = False
             For Each oXMLProfile As XmlElement In Profiles.ChildNodes
                 Dim oItem As cExportProfile = New cExportProfile(oSurvey, File, oXMLProfile)
+                If oItem.IsSystem Then
+                    If oItem.IsPlan Then
+                        bPlanExist = True
+                    Else
+                        bProfileExist = True
+                    End If
+                End If
                 Call oItems.Add(oItem)
             Next
+            If Not bPlanExist Then Call oItems.Insert(0, New cExportProfile(oSurvey, oSurvey.Options("_export.plan"), cIDesign.cDesignTypeEnum.Plan))
+            If Not bProfileExist Then Call oItems.Insert(1, New cExportProfile(oSurvey, oSurvey.Options("_export.profile"), cIDesign.cDesignTypeEnum.Profile))
         End Sub
 
         Public Function AddAsCopy(Profile As cIProfile, Name As String) As cIProfile Implements cIProfiles.AddAsCopy
@@ -178,22 +187,27 @@ Namespace cSurvey
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal File As Storage.cFile, ByVal Profile As XmlElement)
             oSurvey = Survey
-            sName = Profile.GetAttribute("name")
             iDesign = Profile.GetAttribute("design")
-            oOptions = New cOptionsExport(oSurvey, Profile.Item("options"))
+            If modXML.GetAttributeValue(Profile, "s", 0) = 0 Then
+                sName = Profile.GetAttribute("name")
+                oOptions = New cOptionsExport(oSurvey, Profile.Item("options"))
+                bIsSystem = False
+            Else
+                Select Case iDesign
+                    Case cIDesign.cDesignTypeEnum.Plan
+                        sName = GetLocalizedString("exportprofile.textpart1")
+                    Case cIDesign.cDesignTypeEnum.Profile
+                        sName = GetLocalizedString("exportprofile.textpart2")
+                End Select
+                oOptions = oSurvey.Options(Profile.GetAttribute("so"))
+                bIsSystem = True
+            End If
             Try
                 oItems = New cVisibilityItems(oSurvey, Profile.Item("vis"))
             Catch ex As Exception
                 oItems = New cVisibilityItems(oSurvey)
             End Try
-            bIsSystem = False
         End Sub
-
-        Public ReadOnly Property Items As cVisibilityItems Implements cIProfile.Items
-            Get
-                Return oItems
-            End Get
-        End Property
 
         Friend Sub New(Survey As cSurvey, [Options] As cOptionsExport, Design As cIDesign.cDesignTypeEnum)
             oSurvey = Survey
@@ -225,27 +239,38 @@ Namespace cSurvey
 
         Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlItem As XmlElement = Document.CreateElement("profile")
-            Call oXmlItem.SetAttribute("name", sName)
             Call oXmlItem.SetAttribute("design", iDesign)
-            Dim oXMLOptions As XmlElement = oOptions.SaveTo(File, Document, oXmlItem)
-            If oOptions.Name <> "options" Then
-                Call RenameElement(oXMLOptions, "options")
+            If bIsSystem Then
+                Call oXmlItem.SetAttribute("s", "1")
+                Call oXmlItem.SetAttribute("so", Options.Name)
+            Else
+                Call oXmlItem.SetAttribute("name", sName)
+                Dim oXMLOptions As XmlElement = oOptions.SaveTo(File, Document, oXmlItem)
+                If oOptions.Name <> "options" Then
+                    Call RenameElement(oXMLOptions, "options")
+                End If
             End If
-            Call oItems.SaveTo(File, Document, oXmlItem)
+            If oItems.count > 0 Then Call oItems.SaveTo(File, Document, oXmlItem)
             Call Parent.AppendChild(oXmlItem)
             Return oXmlItem
         End Function
 
         Public Function IsPlan() As Boolean Implements cIProfile.IsPlan
-            Return iDesign = cIDesign.cDesignTypeEnum.Plan 'Or iDesign = cIDesign.cDesignTypeEnum.Both
+            Return iDesign = cIDesign.cDesignTypeEnum.Plan
         End Function
 
         Public Function IsProfile() As Boolean Implements cIProfile.IsProfile
-            Return iDesign = cIDesign.cDesignTypeEnum.Profile 'Or iDesign = cIDesign.cDesignTypeEnum.Both
+            Return iDesign = cIDesign.cDesignTypeEnum.Profile
         End Function
 
         Private Sub oOptions_OnGetParent(Sender As Object, Args As cOptions.GetParentEventArgs) Handles oOptions.OnGetParent
             Args.Parent = Me
         End Sub
+
+        Public ReadOnly Property Items As cVisibilityItems Implements cIProfile.Items
+            Get
+                Return oItems
+            End Get
+        End Property
     End Class
 End Namespace

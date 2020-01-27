@@ -260,18 +260,4 @@ Public Class frmLinkedSurveys
             End If
         End If
     End Sub
-
-    'Private Sub tvLinkedSurveys_MouseMove(sender As Object, e As MouseEventArgs) Handles tvLinkedSurveys.MouseMove
-    '    If (e.Button And MouseButtons.Left) = MouseButtons.Left Then
-    '        Dim oData As DataObject = New DataObject
-    '        Dim oFiles As Specialized.StringCollection = New Specialized.StringCollection
-    '        For Each oLinkedSurvey As cLinkedSurvey In tvLinkedSurveys.SelectedObjects
-    '            Call oFiles.Add(oLinkedSurvey.Filename)
-    '        Next
-    '        Call oData.SetFileDropList(oFiles)
-    '        If oFiles.Count > 0 Then
-    '            Call tvLinkedSurveys.DoDragDrop(oData, DragDropEffects.All)
-    '        End If
-    '    End If
-    'End Sub
 End Class

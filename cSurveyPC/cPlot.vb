@@ -66,6 +66,12 @@ Namespace cSurvey.Design
             Return False
         End Function
 
+        Public Function Remove(Point As PointF) As Boolean
+            If Exist(Point) Then
+                Call oColl.Remove(Point)
+            End If
+        End Function
+
         Public Function Exist(ByVal X As Single, ByVal Y As Single) As Boolean
             Return Exist(New PointF(X, Y))
         End Function
@@ -236,6 +242,7 @@ Namespace cSurvey.Design
 
         Friend MustOverride Sub Calculate(ByVal SegmentsColl As List(Of cSegment), Optional ByVal PerformWarping As Boolean = True)
         Friend MustOverride Sub CalculateSplay()
+        Friend MustOverride Sub ResetChanges()
 
         Friend Function GetAllVisibleSegments(PaintOptions As cOptions) As List(Of cISegment)
             Dim oVisibleSegments As List(Of cISegment) = New List(Of cISegment)

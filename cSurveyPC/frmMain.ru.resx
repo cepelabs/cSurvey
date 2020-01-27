@@ -2393,7 +2393,7 @@
 </value>
   </data>
   <data name="chkLayerFiltered.ToolTip" xml:space="preserve">
-    <value>Применить текущий фильтр</value>
+    <value>Применить фильтр</value>
   </data>
   <data name="cmdLayerFilterEdit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4915,9 +4915,6 @@
   </data>
   <data name="lblPropMergeMode.Text" xml:space="preserve">
     <value>Комбинировать:</value>
-  </data>
-  <data name="txtPropTransparency.ToolTip" xml:space="preserve">
-    <value>Толщина (px) (0=штрих)</value>
   </data>
   <data name="lblPropTransparency.Size" type="System.Drawing.Size, System.Drawing">
     <value>82, 13</value>

@@ -20,6 +20,14 @@ Module modMain
 
     Private sApplicationPath As String = ""
 
+    Public Function IsPrintEnabled()
+        Try
+            Return Printing.PrinterSettings.InstalledPrinters.Count > 0
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
+
     Public Function GetApplicationPath() As String
         'note: change with path of the main assembly...this to prevent problems when user set startpath different than program's folder.
         'Return IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly.Location)

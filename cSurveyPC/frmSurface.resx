@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -174,6 +174,60 @@
   <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="mnuOrthophotosPreview.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1466, 17</value>
+  </metadata>
+  <data name="mnuOrthophotosPreview.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="mnuOrthophotoPreviewElevationFromOrthophoto.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 22</value>
+  </data>
+  <data name="mnuOrthophotoPreviewElevationFromOrthophoto.Text" xml:space="preserve">
+    <value>Create elevation data from this orthophoto</value>
+  </data>
+  <data name="mnuOrthophotosPreviewNewReduced50.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="mnuOrthophotosPreviewNewReduced50.Text" xml:space="preserve">
+    <value>50%</value>
+  </data>
+  <data name="mnuOrthophotosPreviewNewReduced33.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="mnuOrthophotosPreviewNewReduced33.Text" xml:space="preserve">
+    <value>33%</value>
+  </data>
+  <data name="mnuOrthophotosPreviewNewReduced25.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="mnuOrthophotosPreviewNewReduced25.Text" xml:space="preserve">
+    <value>25%</value>
+  </data>
+  <data name="mnuOrthophotosPreviewNewReduced.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 22</value>
+  </data>
+  <data name="mnuOrthophotosPreviewNewReduced.Text" xml:space="preserve">
+    <value>Create orthophoto from this reduced by</value>
+  </data>
+  <data name="ToolStripMenuItem8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>278, 6</value>
+  </data>
+  <data name="mnuOrthophotosPreviewInvertColors.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 22</value>
+  </data>
+  <data name="mnuOrthophotosPreviewInvertColors.Text" xml:space="preserve">
+    <value>Invert colors</value>
+  </data>
+  <data name="mnuOrthophotosPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>282, 76</value>
+  </data>
+  <data name="&gt;&gt;mnuOrthophotosPreview.Name" xml:space="preserve">
+    <value>mnuOrthophotosPreview</value>
+  </data>
+  <data name="&gt;&gt;mnuOrthophotosPreview.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="picOrthoPhotoPreview.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -298,7 +352,7 @@
     <value>1</value>
   </data>
   <metadata name="mnuOrthophotos.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 52</value>
+    <value>1106, 17</value>
   </metadata>
   <data name="mnuOrthophotos.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
@@ -322,7 +376,7 @@
     <value>Top</value>
   </data>
   <metadata name="imlOrthoPhotos.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>107, 17</value>
+    <value>124, 17</value>
   </metadata>
   <data name="imlOrthoPhotos.ImageSize" type="System.Drawing.Size, System.Drawing">
     <value>64, 64</value>
@@ -349,7 +403,7 @@
     <value>2</value>
   </data>
   <metadata name="ToolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>366, 52</value>
+    <value>17, 17</value>
   </metadata>
   <data name="ToolStrip2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
@@ -410,6 +464,36 @@
   <data name="btnOrthophotoDeleteAll.Text" xml:space="preserve">
     <value>Delete all</value>
   </data>
+  <data name="ToolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="btnOrthophotosPreviewNewReduced.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnOrthophotosPreviewNewReduced.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnOrthophotosPreviewNewReduced.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 22</value>
+  </data>
+  <data name="btnOrthophotosPreviewNewReduced.Text" xml:space="preserve">
+    <value>Create elevation from this reduced by</value>
+  </data>
+  <data name="ToolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="btnOrthophotoPreviewInvertColors.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnOrthophotoPreviewInvertColors.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnOrthophotoPreviewInvertColors.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnOrthophotoPreviewInvertColors.Text" xml:space="preserve">
+    <value>Invert colors</value>
+  </data>
   <data name="ToolStrip2.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -417,7 +501,7 @@
     <value>614, 25</value>
   </data>
   <data name="ToolStrip2.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
+    <value>24</value>
   </data>
   <data name="&gt;&gt;ToolStrip2.Name" xml:space="preserve">
     <value>ToolStrip2</value>
@@ -456,13 +540,13 @@
     <value>1</value>
   </data>
   <metadata name="mnuElevationsPreview.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>368, 17</value>
+    <value>385, 17</value>
   </metadata>
   <data name="mnuElevationsPreview.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
   </data>
   <data name="mnuElevationsPreviewElevationOrthoPhotoFromWMSItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="mnuElevationsPreviewElevationOrthoPhotoFromWMSItem.Text" xml:space="preserve">
     <value>WMS</value>
@@ -472,6 +556,30 @@
   </data>
   <data name="mnuElevationsPreviewElevationOrthoPhotoFromWMS.Text" xml:space="preserve">
     <value>Create orthophoto from WMS cutted on this area</value>
+  </data>
+  <data name="mnuElevationsPreviewNewReduced50.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="mnuElevationsPreviewNewReduced50.Text" xml:space="preserve">
+    <value>50%</value>
+  </data>
+  <data name="mnuElevationsPreviewNewReduced33.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="mnuElevationsPreviewNewReduced33.Text" xml:space="preserve">
+    <value>33%</value>
+  </data>
+  <data name="mnuElevationsPreviewNewReduced25.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="mnuElevationsPreviewNewReduced25.Text" xml:space="preserve">
+    <value>25%</value>
+  </data>
+  <data name="mnuElevationsPreviewNewReduced.Size" type="System.Drawing.Size, System.Drawing">
+    <value>310, 22</value>
+  </data>
+  <data name="mnuElevationsPreviewNewReduced.Text" xml:space="preserve">
+    <value>Create elevation from this reduced by</value>
   </data>
   <data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>307, 6</value>
@@ -498,7 +606,7 @@
     <value>Remove NODATA</value>
   </data>
   <data name="mnuElevationsPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>311, 104</value>
+    <value>311, 126</value>
   </data>
   <data name="&gt;&gt;mnuElevationsPreview.Name" xml:space="preserve">
     <value>mnuElevationsPreview</value>
@@ -690,7 +798,7 @@
     <value>1</value>
   </data>
   <metadata name="mnuElevations.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>986, 13</value>
+    <value>975, 17</value>
   </metadata>
   <data name="mnuElevations.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
@@ -714,7 +822,7 @@
     <value>Top</value>
   </data>
   <metadata name="imlElevations.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>245, 17</value>
+    <value>262, 17</value>
   </metadata>
   <data name="imlElevations.ImageSize" type="System.Drawing.Size, System.Drawing">
     <value>64, 64</value>
@@ -741,7 +849,7 @@
     <value>2</value>
   </data>
   <metadata name="ToolStrip3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>511, 52</value>
+    <value>1359, 17</value>
   </metadata>
   <data name="ToolStrip3.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
@@ -805,6 +913,21 @@
   <data name="ToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
+  <data name="btnElevationsPreviewNewReduced.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnElevationsPreviewNewReduced.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnElevationsPreviewNewReduced.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 22</value>
+  </data>
+  <data name="btnElevationsPreviewNewReduced.Text" xml:space="preserve">
+    <value>Create elevation from this reduced by</value>
+  </data>
+  <data name="ToolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
   <data name="btnElevationsPreviewElevationSavePreview.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -828,6 +951,9 @@
   </data>
   <data name="btnElevationsPreviewExportData.Text" xml:space="preserve">
     <value>Export data...</value>
+  </data>
+  <data name="ToolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
   </data>
   <data name="btnElevationsPreviewRemoveNODATA.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -971,7 +1097,7 @@
     <value>210</value>
   </data>
   <metadata name="mnuWMSs.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>875, 13</value>
+    <value>864, 17</value>
   </metadata>
   <data name="mnuWMSs.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
@@ -1010,14 +1136,14 @@
     <value>614, 410</value>
   </data>
   <metadata name="imlWMS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>778, 13</value>
+    <value>767, 17</value>
   </metadata>
   <data name="imlWMS.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABe
-        CAAAAk1TRnQBSQFMAwEBAAHoAQAB6AEAARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMA
+        CAAAAk1TRnQBSQFMAwEBAAFoAQEBaAEBARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMA
         AUADAAEQAwABAQEAAQgGAAEEGAABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHAAdwBwAEA
         AfABygGmAQABMwUAATMBAAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANCAQADOQEA
         AYABfAH/AQACUAH/AQABkwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/ATMDAAFm
@@ -1071,7 +1197,7 @@
     <value>0</value>
   </data>
   <metadata name="ToolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>221, 52</value>
+    <value>1252, 17</value>
   </metadata>
   <data name="ToolStrip1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
@@ -1307,20 +1433,20 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pnlPopup.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <metadata name="tipDefault.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>553, 16</value>
+    <value>558, 17</value>
   </metadata>
   <metadata name="imlPopup.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>674, 13</value>
+    <value>663, 17</value>
   </metadata>
   <data name="imlPopup.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABe
-        CgAAAk1TRnQBSQFMAgEBAwEAAdQBDQHUAQ0BEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CgAAAk1TRnQBSQFMAgEBAwEAAVQBDgFUAQ4BEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1389,7 +1515,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Panel1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1471,11 +1597,26 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAA8AcAAPw/AAA=
 </value>
   </data>
+  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Surface:</value>
+  </data>
+  <data name="&gt;&gt;mnuOrthophotoPreviewElevationFromOrthophoto.Name" xml:space="preserve">
+    <value>mnuOrthophotoPreviewElevationFromOrthophoto</value>
+  </data>
+  <data name="&gt;&gt;mnuOrthophotoPreviewElevationFromOrthophoto.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mnuOrthophotosPreviewInvertColors.Name" xml:space="preserve">
+    <value>mnuOrthophotosPreviewInvertColors</value>
+  </data>
+  <data name="&gt;&gt;mnuOrthophotosPreviewInvertColors.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;mnuOrthophotosDelete.Name" xml:space="preserve">
     <value>mnuOrthophotosDelete</value>
@@ -1513,6 +1654,18 @@
   <data name="&gt;&gt;btnOrthophotoDeleteAll.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;ToolStripSeparator5.Name" xml:space="preserve">
+    <value>ToolStripSeparator5</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnOrthophotoPreviewInvertColors.Name" xml:space="preserve">
+    <value>btnOrthophotoPreviewInvertColors</value>
+  </data>
+  <data name="&gt;&gt;btnOrthophotoPreviewInvertColors.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;mnuElevationsPreviewElevationOrthoPhotoFromWMS.Name" xml:space="preserve">
     <value>mnuElevationsPreviewElevationOrthoPhotoFromWMS</value>
   </data>
@@ -1523,6 +1676,30 @@
     <value>mnuElevationsPreviewElevationOrthoPhotoFromWMSItem</value>
   </data>
   <data name="&gt;&gt;mnuElevationsPreviewElevationOrthoPhotoFromWMSItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mnuElevationsPreviewNewReduced.Name" xml:space="preserve">
+    <value>mnuElevationsPreviewNewReduced</value>
+  </data>
+  <data name="&gt;&gt;mnuElevationsPreviewNewReduced.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mnuElevationsPreviewNewReduced50.Name" xml:space="preserve">
+    <value>mnuElevationsPreviewNewReduced50</value>
+  </data>
+  <data name="&gt;&gt;mnuElevationsPreviewNewReduced50.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mnuElevationsPreviewNewReduced33.Name" xml:space="preserve">
+    <value>mnuElevationsPreviewNewReduced33</value>
+  </data>
+  <data name="&gt;&gt;mnuElevationsPreviewNewReduced33.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mnuElevationsPreviewNewReduced25.Name" xml:space="preserve">
+    <value>mnuElevationsPreviewNewReduced25</value>
+  </data>
+  <data name="&gt;&gt;mnuElevationsPreviewNewReduced25.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ToolStripMenuItem1.Name" xml:space="preserve">
@@ -1597,6 +1774,18 @@
   <data name="&gt;&gt;ToolStripSeparator1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;btnElevationsPreviewNewReduced.Name" xml:space="preserve">
+    <value>btnElevationsPreviewNewReduced</value>
+  </data>
+  <data name="&gt;&gt;btnElevationsPreviewNewReduced.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator6.Name" xml:space="preserve">
+    <value>ToolStripSeparator6</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;btnElevationsPreviewElevationSavePreview.Name" xml:space="preserve">
     <value>btnElevationsPreviewElevationSavePreview</value>
   </data>
@@ -1608,6 +1797,12 @@
   </data>
   <data name="&gt;&gt;btnElevationsPreviewExportData.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator7.Name" xml:space="preserve">
+    <value>ToolStripSeparator7</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnElevationsPreviewRemoveNODATA.Name" xml:space="preserve">
     <value>btnElevationsPreviewRemoveNODATA</value>
@@ -1693,10 +1888,55 @@
   <data name="&gt;&gt;imlPopup.Type" xml:space="preserve">
     <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;mnuOrthophotosPreviewNewReduced.Name" xml:space="preserve">
+    <value>mnuOrthophotosPreviewNewReduced</value>
+  </data>
+  <data name="&gt;&gt;mnuOrthophotosPreviewNewReduced.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mnuOrthophotosPreviewNewReduced50.Name" xml:space="preserve">
+    <value>mnuOrthophotosPreviewNewReduced50</value>
+  </data>
+  <data name="&gt;&gt;mnuOrthophotosPreviewNewReduced50.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mnuOrthophotosPreviewNewReduced33.Name" xml:space="preserve">
+    <value>mnuOrthophotosPreviewNewReduced33</value>
+  </data>
+  <data name="&gt;&gt;mnuOrthophotosPreviewNewReduced33.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mnuOrthophotosPreviewNewReduced25.Name" xml:space="preserve">
+    <value>mnuOrthophotosPreviewNewReduced25</value>
+  </data>
+  <data name="&gt;&gt;mnuOrthophotosPreviewNewReduced25.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem8.Name" xml:space="preserve">
+    <value>ToolStripMenuItem8</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnOrthophotosPreviewNewReduced.Name" xml:space="preserve">
+    <value>btnOrthophotosPreviewNewReduced</value>
+  </data>
+  <data name="&gt;&gt;btnOrthophotosPreviewNewReduced.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator8.Name" xml:space="preserve">
+    <value>ToolStripSeparator8</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmSurface</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="mnuOrthophotoPreviewInvertColors.Text" xml:space="preserve">
+    <value>Invert colors</value>
   </data>
 </root>

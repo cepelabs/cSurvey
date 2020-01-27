@@ -32,65 +32,43 @@ Partial Class frmSurface3DLayerProperties
         '
         'cmdCancel
         '
-        Me.cmdCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancel.Location = New System.Drawing.Point(192, 49)
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.Size = New System.Drawing.Size(80, 25)
-        Me.cmdCancel.TabIndex = 1
-        Me.cmdCancel.Text = "Annulla"
         Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'cmdOk
         '
-        Me.cmdOk.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.cmdOk.Location = New System.Drawing.Point(106, 49)
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.Size = New System.Drawing.Size(80, 25)
-        Me.cmdOk.TabIndex = 0
-        Me.cmdOk.Text = "Ok"
         Me.cmdOk.UseVisualStyleBackColor = True
         '
         'txtTransparency
         '
-        Me.txtTransparency.Location = New System.Drawing.Point(135, 12)
+        resources.ApplyResources(Me.txtTransparency, "txtTransparency")
         Me.txtTransparency.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.txtTransparency.Name = "txtTransparency"
-        Me.txtTransparency.Size = New System.Drawing.Size(58, 21)
-        Me.txtTransparency.TabIndex = 129
-        Me.txtTransparency.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'lblPropTransparency
         '
-        Me.lblPropTransparency.AutoSize = True
-        Me.lblPropTransparency.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblPropTransparency.Location = New System.Drawing.Point(28, 14)
+        resources.ApplyResources(Me.lblPropTransparency, "lblPropTransparency")
         Me.lblPropTransparency.Name = "lblPropTransparency"
-        Me.lblPropTransparency.Size = New System.Drawing.Size(71, 13)
-        Me.lblPropTransparency.TabIndex = 128
-        Me.lblPropTransparency.Text = "Trasparenza:"
-        Me.lblPropTransparency.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'frmSurface3DLayerProperties
         '
         Me.AcceptButton = Me.cmdOk
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
-        Me.ClientSize = New System.Drawing.Size(284, 86)
         Me.Controls.Add(Me.txtTransparency)
         Me.Controls.Add(Me.lblPropTransparency)
         Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.cmdOk)
-        Me.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSurface3DLayerProperties"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Proprietà superficie:"
         CType(Me.txtTransparency, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

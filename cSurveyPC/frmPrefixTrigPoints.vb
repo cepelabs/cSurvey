@@ -69,18 +69,18 @@
                 If optAdd.Checked Then
                     For Each sTrigpoint As String In ListBox2.Items
                         Call oSurvey.TrigPoints.RenameTrigPoint(sTrigpoint, sPrefix & sTrigpoint)
-                        If oSurvey.Properties.Origin = sTrigpoint Then
-                            Call oSurvey.Properties.RenameOrigin(sPrefix & sTrigpoint)
-                        End If
+                        'If oSurvey.Properties.Origin = sTrigpoint Then
+                        '    Call oSurvey.Properties.RenameOrigin(sPrefix & sTrigpoint)
+                        'End If
                     Next
                 Else
                     For Each sTrigpoint As String In ListBox2.Items
                         If sTrigpoint.StartsWith(sPrefix) Then
                             Dim sNewTrigpoint As String = sTrigpoint.Substring(sPrefix.Length)
                             Call oSurvey.TrigPoints.RenameTrigPoint(sTrigpoint, sNewTrigpoint)
-                            If oSurvey.Properties.Origin = sTrigpoint Then
-                                Call oSurvey.Properties.RenameOrigin(sNewTrigpoint)
-                            End If
+                            'If oSurvey.Properties.Origin = sTrigpoint Then
+                            '    Call oSurvey.Properties.RenameOrigin(sNewTrigpoint)
+                            'End If
                         End If
                     Next
                 End If

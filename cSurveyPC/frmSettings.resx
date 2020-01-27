@@ -3427,39 +3427,6 @@ The data must then be corrected manually after the import.</value>
   <data name="&gt;&gt;btnWMSClearCache.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="Label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Label2.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="Label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="Label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>293, 23</value>
-  </data>
-  <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 13</value>
-  </data>
-  <data name="Label2.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="Label2.Text" xml:space="preserve">
-    <value>Max copies:</value>
-  </data>
-  <data name="&gt;&gt;Label2.Name" xml:space="preserve">
-    <value>Label2</value>
-  </data>
-  <data name="&gt;&gt;Label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label2.Parent" xml:space="preserve">
-    <value>GroupBox5</value>
-  </data>
-  <data name="&gt;&gt;Label2.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="txtWMSCacheMaxSize.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -3488,7 +3455,7 @@ The data must then be corrected manually after the import.</value>
     <value>GroupBox5</value>
   </data>
   <data name="&gt;&gt;txtWMSCacheMaxSize.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="lblWMSCacheMaxSize.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3518,7 +3485,7 @@ The data must then be corrected manually after the import.</value>
     <value>GroupBox5</value>
   </data>
   <data name="&gt;&gt;lblWMSCacheMaxSize.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="chkWMSCacheEnabled.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3549,7 +3516,7 @@ The data must then be corrected manually after the import.</value>
     <value>GroupBox5</value>
   </data>
   <data name="&gt;&gt;chkWMSCacheEnabled.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="GroupBox5.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 8</value>
@@ -4955,9 +4922,6 @@ No personal data or survey data will be send.</value>
         BAAWJSQgICAgICAgICAjJRYAGxcWFhYWFhYWFhYWFhcbAP//AAD/5wAA/wEAAAABAAAAAAAAAAAAAAAB
         AAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAA=
 </value>
-  </data>
-  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

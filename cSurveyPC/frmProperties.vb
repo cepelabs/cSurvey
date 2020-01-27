@@ -228,6 +228,7 @@ Public Class frmProperties
             If .GPS.Band <> "" Then cboCoordinateBand.Text = .GPS.Band
             If .GPS.Zone <> "" Then cboCoordinateZone.Text = .GPS.Zone
             chkGPSSendToTherion.Checked = .GPS.SendToTherion
+            chkGPSAllowManualDeclinations.Checked = .GPS.AllowManualDeclinations
 
             cboCalculateVersion.SelectedIndex = .CalculateVersion
             chkCalculateMode.Checked = .CalculateMode = cSurvey.cSurvey.CalculateModeEnum.Automatic
@@ -867,6 +868,7 @@ Public Class frmProperties
                         .Format = cboCoordinateFormat.Text
                 End Select
                 .SendToTherion = chkGPSSendToTherion.Checked
+                .AllowManualDeclinations = chkGPSAllowManualDeclinations.Checked
             End With
 
             Call .DesignProperties.SetValue("clipborder", cboClipBorder.SelectedIndex)
@@ -1854,9 +1856,12 @@ Public Class frmProperties
     'End Sub
 
     Private Sub cboSessionNordType_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboSessionNordType.SelectedIndexChanged
-        Dim bEnabled As Boolean = (cboSessionNordType.SelectedIndex = 0) And Not chkGPSEnabled.Checked
+        Dim bEnabled As Boolean = (cboSessionNordType.SelectedIndex = 0) And ((Not chkGPSEnabled.Checked) Or (chkGPSEnabled.Checked And chkGPSAllowManualDeclinations.Checked))
         chkSessionDecMag.Enabled = bEnabled
         txtSessionDecMag.Enabled = bEnabled And chkSessionDecMag.Checked
+
+        chkGlobalDecMag.Enabled = bEnabled
+        txtGlobalDecMag.Enabled = bEnabled And chkGlobalDecMag.Checked
     End Sub
 
     Private Sub cmdPlotPenColor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdPlotPenColor.Click
@@ -1957,7 +1962,7 @@ Public Class frmProperties
     'End Sub
 
     Private Sub chkSessionDecMag_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkSessionDecMag.CheckedChanged
-        Dim bEnabled As Boolean = (cboSessionNordType.SelectedIndex = 0)
+        Dim bEnabled As Boolean = ((cboSessionNordType.SelectedIndex = 0) And (Not chkGPSEnabled.Checked)) Or (chkGPSEnabled.Checked And chkGPSAllowManualDeclinations.Checked)
         txtSessionDecMag.Enabled = bEnabled And chkSessionDecMag.Checked
     End Sub
 
@@ -2092,22 +2097,12 @@ Public Class frmProperties
 
     Private Sub chkGPSEnabled_CheckedChanged(sender As Object, e As System.EventArgs) Handles chkGPSEnabled.CheckedChanged
         Dim bEnabled As Boolean = chkGPSEnabled.Checked
+        pnlGPS.Enabled = bEnabled
+
         lblNordCorrection.Enabled = Not bEnabled
         cboNordCorrection.Enabled = Not bEnabled
 
-        'chkGlobalDecMag.Enabled = Not Enabled
-        'txtGlobalDecMag.Enabled = Not Enabled
-
-        'Call cboNordType_SelectedIndexChanged(Nothing, Nothing)
         Call cboSessionNordType_SelectedIndexChanged(Nothing, Nothing)
-        'Dim bDecMagEnabled As Boolean = (cboNordType.SelectedIndex = 0) 'And Not chkGPSEnabled.Checked
-        'chkDecMag.Enabled = bEnabled
-        'txtDecMag.Enabled = bEnabled And chkDecMag.Checked
-
-        'chkDecMag.Enabled = True 'Not bEnabled
-        'txtDecMag.Enabled = (cboNordType.SelectedIndex = 0) And chkDecMag.Checked 'And Not bEnabled
-        'chkSessionDecMag.Enabled = Not bEnabled
-        'txtSessionDecMag.Enabled = (cboSessionNordType.SelectedIndex = 0) And chkSessionDecMag.Checked And Not bEnabled
 
         lblNordCorrectionWarning.Visible = bEnabled
         picNordCorrectionWarning.Visible = bEnabled
@@ -3107,5 +3102,13 @@ Public Class frmProperties
 
     Private Sub cboOrigin_EnabledChanged(sender As Object, e As EventArgs) Handles cboOrigin.EnabledChanged
         cmdOriginRefreshStations.Enabled = cboOrigin.Enabled
+    End Sub
+
+    Private Sub cboNordCorrection_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboNordCorrection.SelectedIndexChanged
+            Call cboSessionNordType_SelectedIndexChanged(Nothing, Nothing)
+    End Sub
+
+    Private Sub chkGPSAllowManualDeclinations_CheckedChanged(sender As Object, e As EventArgs) Handles chkGPSAllowManualDeclinations.CheckedChanged
+        Call cboSessionNordType_SelectedIndexChanged(Nothing, Nothing)
     End Sub
 End Class

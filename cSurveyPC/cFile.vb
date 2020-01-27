@@ -2,6 +2,8 @@
 
 Namespace cSurvey.Storage
     Public Class cFile
+        Implements IDisposable
+
         Private oStorage As cStorage
         Private oDocument As Xml.XmlDocument
 
@@ -79,13 +81,13 @@ Namespace cSurvey.Storage
 
         Public Sub Save()
             If sFilename <> "" Then
-                Call xSaveTo(sFilename)
+                Call SaveTo(sFilename)
             Else
                 Throw New Exception("Filename is missing")
             End If
         End Sub
 
-        Public Sub xSaveTo(ByVal Filename As String)
+        Public Sub SaveTo(ByVal Filename As String)
             sFilename = Filename
             Select Case iFileFormat
                 Case FileFormatEnum.CSX
@@ -119,6 +121,28 @@ Namespace cSurvey.Storage
                 Return oDocument
             End Get
         End Property
+
+#Region "IDisposable Support"
+        Private disposedValue As Boolean ' To detect redundant calls
+
+        ' IDisposable
+        Protected Overridable Sub Dispose(disposing As Boolean)
+            If Not disposedValue Then
+                If disposing Then
+                    If Not oStorage Is Nothing Then
+                        Call oStorage.Dispose()
+                        oStorage = Nothing
+                    End If
+                End If
+            End If
+            disposedValue = True
+        End Sub
+
+        ' This code added by Visual Basic to correctly implement the disposable pattern.
+        Public Sub Dispose() Implements IDisposable.Dispose
+            Dispose(True)
+        End Sub
+#End Region
     End Class
 
     Public Interface cIStorageItem
@@ -198,6 +222,7 @@ Namespace cSurvey.Storage
 
     Public Class cStorageItemFile
         Inherits cStorageItem
+        Implements IDisposable
 
         Private oStream As MemoryStream
 
@@ -222,10 +247,31 @@ Namespace cSurvey.Storage
                 Return cIStorageItem.StorageItemTypeEnum.File
             End Get
         End Property
+
+#Region "IDisposable Support"
+        Private disposedValue As Boolean ' To detect redundant calls
+
+        ' IDisposable
+        Protected Overridable Sub Dispose(disposing As Boolean)
+            If Not disposedValue Then
+                If disposing Then
+                    Call oStream.Dispose()
+                    oStream = Nothing
+                End If
+            End If
+            disposedValue = True
+        End Sub
+
+        ' This code added by Visual Basic to correctly implement the disposable pattern.
+        Public Sub Dispose() Implements IDisposable.Dispose
+            Dispose(True)
+        End Sub
+#End Region
     End Class
 
     Public Class cStorage
         Implements cIStorageItemDirectory
+        Implements IDisposable
 
         Private oItems As Dictionary(Of String, cStorageItem)
 
@@ -238,9 +284,7 @@ Namespace cSurvey.Storage
         End Property
 
         Public Function AddFile(ByVal Name As String) As cStorageItemFile
-            If oItems.ContainsKey(Name) Then
-                Call oItems.Remove(Name)
-            End If
+            Call Remove(Name)
             Dim oItem As cStorageItemFile = New cStorageItemFile(Me, Name)
             If oItem.Path <> "" Then
                 If Not oItems.ContainsKey(oItem.Path) Then
@@ -252,9 +296,7 @@ Namespace cSurvey.Storage
         End Function
 
         Public Function AddDirectory(ByVal Name As String) As cStorageItemDirectory
-            If oItems.ContainsKey(Name) Then
-                Call oItems.Remove(Name)
-            End If
+            Call Remove(Name)
             Dim oItem As cStorageItemDirectory = New cStorageItemDirectory(Me, Name)
             If oItem.Path <> "" Then
                 If Not oItems.ContainsKey(oItem.Path) Then
@@ -267,6 +309,10 @@ Namespace cSurvey.Storage
 
         Public Sub Remove(ByVal Name As String)
             If oItems.ContainsKey(Name) Then
+                Dim oItem As cStorageItem = oItems(Name)
+                If TypeOf oItem Is cStorageItemFile Then
+                    DirectCast(oItem, cStorageItemFile).Dispose()
+                End If
                 Call oItems.Remove(Name)
             End If
         End Sub
@@ -278,49 +324,52 @@ Namespace cSurvey.Storage
         End Property
 
         Public Sub Clear()
+            For Each oFileItem As cStorageItemFile In oItems.Values.Where(Function(oitem) TypeOf oitem Is cStorageItemFile)
+                Call oFileItem.Dispose()
+            Next
             Call oItems.Clear()
         End Sub
 
         Friend Sub SaveTo(ByVal Stream As IO.Stream)
-            Dim oZip As Ionic.Zip.ZipFile = New Ionic.Zip.ZipFile()
-            oZip.CompressionLevel = Ionic.Zlib.CompressionLevel.BestSpeed
-            For Each oItem As cStorageItem In oItems.Values
-                If oItem.Type = cIStorageItem.StorageItemTypeEnum.Directory Then
-                    Call oZip.AddDirectoryByName(oItem.Name)
-                End If
-            Next
-            For Each oItem As cStorageItem In oItems.Values
-                If oItem.Type = cIStorageItem.StorageItemTypeEnum.File Then
-                    Dim oFileItem As cStorageItemFile = oItem
-                    oFileItem.Stream.Position = 0
-                    Call oZip.AddEntry(oFileItem.Name, oFileItem.Stream)
-                End If
-            Next
-            Call oZip.Save(Stream)
-            Call oZip.Dispose()
-        End Sub
-
-        Friend Sub SaveTo(ByVal Filename As String)
-            Dim oZip As Ionic.Zip.ZipFile = New Ionic.Zip.ZipFile()
-            oZip.CompressionLevel = Ionic.Zlib.CompressionLevel.BestSpeed
-            For Each oItem As cStorageItem In oItems.Values
-                If Not oItem Is Nothing Then
+            Using oZip As Ionic.Zip.ZipFile = New Ionic.Zip.ZipFile()
+                oZip.CompressionLevel = Ionic.Zlib.CompressionLevel.BestSpeed
+                For Each oItem As cStorageItem In oItems.Values
                     If oItem.Type = cIStorageItem.StorageItemTypeEnum.Directory Then
                         Call oZip.AddDirectoryByName(oItem.Name)
                     End If
-                End If
-            Next
-            For Each oItem As cStorageItem In oItems.Values
-                If Not oItem Is Nothing Then
+                Next
+                For Each oItem As cStorageItem In oItems.Values
                     If oItem.Type = cIStorageItem.StorageItemTypeEnum.File Then
                         Dim oFileItem As cStorageItemFile = oItem
                         oFileItem.Stream.Position = 0
                         Call oZip.AddEntry(oFileItem.Name, oFileItem.Stream)
                     End If
-                End If
-            Next
-            Call oZip.Save(Filename)
-            Call oZip.Dispose()
+                Next
+                Call oZip.Save(Stream)
+            End Using
+        End Sub
+
+        Friend Sub SaveTo(ByVal Filename As String)
+            Using oZip As Ionic.Zip.ZipFile = New Ionic.Zip.ZipFile()
+                oZip.CompressionLevel = Ionic.Zlib.CompressionLevel.BestSpeed
+                For Each oItem As cStorageItem In oItems.Values
+                    If Not oItem Is Nothing Then
+                        If oItem.Type = cIStorageItem.StorageItemTypeEnum.Directory Then
+                            Call oZip.AddDirectoryByName(oItem.Name)
+                        End If
+                    End If
+                Next
+                For Each oItem As cStorageItem In oItems.Values
+                    If Not oItem Is Nothing Then
+                        If oItem.Type = cIStorageItem.StorageItemTypeEnum.File Then
+                            Dim oFileItem As cStorageItemFile = oItem
+                            oFileItem.Stream.Position = 0
+                            Call oZip.AddEntry(oFileItem.Name, oFileItem.Stream)
+                        End If
+                    End If
+                Next
+                Call oZip.Save(Filename)
+            End Using
         End Sub
 
         Friend Sub New()
@@ -329,21 +378,21 @@ Namespace cSurvey.Storage
 
         Friend Sub New(ByVal Filename As String)
             oItems = New Dictionary(Of String, cStorageItem)
-            Dim oZip As Ionic.Zip.ZipFile = New Ionic.Zip.ZipFile(Filename)
-            For Each oEntry As Ionic.Zip.ZipEntry In oZip.Entries
-                Dim sName As String = oEntry.FileName
-                sName = sName.Replace("/", Path.DirectorySeparatorChar)
-                If oEntry.IsDirectory Then
-                    Dim oDirectoryItem As cStorageItemDirectory = New cStorageItemDirectory(Me, sName)
-                    Call oItems.Add(sName, oDirectoryItem)
-                Else
-                    Dim oFileItem As cStorageItemFile = New cStorageItemFile(Me, sName, oEntry.UncompressedSize)
-                    Call oEntry.Extract(oFileItem.Stream)
-                    oFileItem.Stream.Position = 0
-                    Call oItems.Add(sName, oFileItem)
-                End If
-            Next
-            Call oZip.Dispose()
+            Using oZip As Ionic.Zip.ZipFile = New Ionic.Zip.ZipFile(Filename)
+                For Each oEntry As Ionic.Zip.ZipEntry In oZip.Entries
+                    Dim sName As String = oEntry.FileName
+                    sName = sName.Replace("/", Path.DirectorySeparatorChar)
+                    If oEntry.IsDirectory Then
+                        Dim oDirectoryItem As cStorageItemDirectory = New cStorageItemDirectory(Me, sName)
+                        Call oItems.Add(sName, oDirectoryItem)
+                    Else
+                        Dim oFileItem As cStorageItemFile = New cStorageItemFile(Me, sName, oEntry.UncompressedSize)
+                        Call oEntry.Extract(oFileItem.Stream)
+                        oFileItem.Stream.Position = 0
+                        Call oItems.Add(sName, oFileItem)
+                    End If
+                Next
+            End Using
         End Sub
 
         Public Function GetFiles() As List(Of cStorageItemFile) Implements cIStorageItemDirectory.GetFiles
@@ -385,5 +434,24 @@ Namespace cSurvey.Storage
             Next
             Return oDirectories
         End Function
+
+#Region "IDisposable Support"
+        Private disposedValue As Boolean ' To detect redundant calls
+
+        ' IDisposable
+        Protected Overridable Sub Dispose(disposing As Boolean)
+            If Not disposedValue Then
+                If disposing Then
+                    Call Clear()
+                End If
+            End If
+            disposedValue = True
+        End Sub
+
+        ' This code added by Visual Basic to correctly implement the disposable pattern.
+        Public Sub Dispose() Implements IDisposable.Dispose
+            Dispose(True)
+        End Sub
+#End Region
     End Class
 End Namespace

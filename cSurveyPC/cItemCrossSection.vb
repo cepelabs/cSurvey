@@ -12,6 +12,7 @@ Namespace cSurvey.Design.Items
         Implements cIItemCrossSection
         Implements cIItemCrossSectionSplayBorder
         Implements cIItemSegment
+        Implements cIItemSizable
 
         Private oSurvey As cSurvey
 
@@ -22,7 +23,7 @@ Namespace cSurvey.Design.Items
         Private sText As String
 
         Private WithEvents oFont As cItemFont
-        Private iTextSize As cIItemText.TextSizeEnum
+        Private iTextSize As cIItemSizable.SizeEnum
         Private iTextPosition As cIItemCrossSection.TextPositionEnum
         Private sTextDistance As Single
 
@@ -464,18 +465,34 @@ Namespace cSurvey.Design.Items
         Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptions) As Single
             Dim sTextScaleFactor As Single = MyBase.GetTextScaleFactor(PaintOptions)
             Select Case iTextSize
-                Case cIItemText.TextSizeEnum.Default
+                Case cIItemSizable.SizeEnum.Default
                     Return 1 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.VerySmall
+                Case cIItemSizable.SizeEnum.VerySmall
                     Return 0.25 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Small
+                Case cIItemSizable.SizeEnum.Small
                     Return 0.5 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Medium
+                Case cIItemSizable.SizeEnum.Medium
                     Return 1 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Large
+                Case cIItemSizable.SizeEnum.Large
                     Return 2 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.VeryLarge
+                Case cIItemSizable.SizeEnum.VeryLarge
                     Return 4 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x6
+                    Return 6 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x8
+                    Return 8 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x10
+                    Return 10 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x12
+                    Return 12 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x16
+                    Return 16 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x20
+                    Return 20 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x24
+                    Return 24 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x32
+                    Return 32 * sTextScaleFactor
             End Select
         End Function
 
@@ -598,7 +615,7 @@ Namespace cSurvey.Design.Items
                                     sMarkerWidth = oCrossSection.PlanMarker.Left + oCrossSection.PlanMarker.Right
                                 Else
                                     sMarkerWidth = 0.1
-                                    sMarkerX = oBasePoint.X -sMarkerWidth/2
+                                    sMarkerX = oBasePoint.X - sMarkerWidth / 2
                                 End If
                                 If oCrossSection.HaveProfileMarker AndAlso oCrossSection.ProfileMarker.ProfileDeltaAngle = iSplayBorderProjectionVerticalAngle Then
                                     sMarkerY = oBasePoint.Y - oCrossSection.ProfileMarker.Up
@@ -770,7 +787,9 @@ Namespace cSurvey.Design.Items
         Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As Storage.cFile, ByVal item As XmlElement)
             Call MyBase.New(Survey, Design, Layer, File, item)
             oSurvey = Survey
-            oSegment = oSurvey.GetSegment(modXML.GetAttributeValue(item, "segment", ""))
+            Dim sSegment As String = modXML.GetAttributeValue(item, "segment", "")
+            If sSegment <> "" Then Debug.Print(sSegment)
+            oSegment = oSurvey.GetSegment(sSegment)
             Try
                 oFont = New cItemFont(oSurvey, item.Item("font"))
             Catch ex As Exception
@@ -845,11 +864,11 @@ Namespace cSurvey.Design.Items
             End Set
         End Property
 
-        Public Property TextSize() As cIItemText.TextSizeEnum Implements cIItemText.TextSize
+        Public Property TextSize() As cIItemSizable.SizeEnum Implements cIItemSizable.Size
             Get
                 Return iTextSize
             End Get
-            Set(ByVal value As cIItemText.TextSizeEnum)
+            Set(ByVal value As cIItemSizable.SizeEnum)
                 If iTextSize <> value Then
                     iTextSize = value
                     Call MyBase.Caches.Invalidate()
@@ -880,7 +899,7 @@ Namespace cSurvey.Design.Items
             Call oItem.SetAttribute("direction", iDirection)
             Call oItem.SetAttribute("text", sText)
             Call oFont.SaveTo(File, Document, oItem, "font")
-            If iTextSize <> cIItemText.TextSizeEnum.Default Then Call oItem.SetAttribute("textsize", iTextSize)
+            If iTextSize <> cIItemSizable.SizeEnum.Default Then Call oItem.SetAttribute("textsize", iTextSize)
             If iTextPosition <> cIItemCrossSection.TextPositionEnum.TopLeft Then
                 Call oItem.SetAttribute("textposition", iTextPosition)
             End If

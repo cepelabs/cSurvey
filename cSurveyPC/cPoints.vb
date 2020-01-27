@@ -489,9 +489,7 @@ Namespace cSurvey.Design
             Return oMetas
         End Function
 
-        Friend Sub New(ByVal Survey As cSurvey, Item As cItem, ByVal Points As XmlElement)
-            oSurvey = Survey
-            oItem = Item
+        Public Sub Parse(Points As XmlElement)
             oPoints = New List(Of cPoint)
             If Points.HasAttribute("data") Then
                 'data attribute is for 'new' survey...
@@ -600,40 +598,25 @@ Namespace cSurvey.Design
                             End If
                         End If
 
-                        'If bIsClosed AndAlso bBeginSequence AndAlso Not IsNothing(oLastPoint) AndAlso Not IsNothing(oFirstSequencePoint) Then
-                        '    Dim oCloseSequencePoint As cPoint = oFirstSequencePoint.Clone
-                        '    Call pAdd(oCloseSequencePoint)
-                        '    Call oFirstSequencePoint.Join(oCloseSequencePoint)
-                        'End If
-
                         Dim oPoint As cPoint = New cPoint(oSurvey, New PointF(sX, sY), bBeginSequence, oPen, iLineType, bSegmentLocked, sBindedSegment)
 
                         Call pAdd(oPoint)
-
-                        'If bFirst Then
-                        '    oFirstPoint = oPoint
-                        '    bFirst = False
-                        'End If
-                        'If bBeginSequence Then
-                        '    oFirstSequencePoint = oPoint
-                        'End If
-                        'oLastPoint = oPoint
                     Loop Until iChar >= sData.Length
-
-                    'If bIsClosed Then
-                    '    Dim oClosePoint As cPoint = oFirstPoint.Clone
-                    '    Call pAdd(oClosePoint)
-                    '    Call oLastPoint.Join(oClosePoint)
-                    'End If
                 End If
             Else
-                'carico i dati nel formato 'vecchio'...
+                'load data in old format....
                 For Each oXMLPoint As XmlElement In Points.ChildNodes
-                    Dim oPoint As cPoint = New cPoint(Survey, oXMLPoint)
+                    Dim oPoint As cPoint = New cPoint(oSurvey, oXMLPoint)
                     Call pAdd(oPoint)
                 Next
             End If
             Call pBindPoints()
+        End Sub
+
+        Friend Sub New(ByVal Survey As cSurvey, Item As cItem, ByVal Points As XmlElement)
+            oSurvey = Survey
+            oItem = Item
+            Call Parse(Points)
         End Sub
 
         Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement

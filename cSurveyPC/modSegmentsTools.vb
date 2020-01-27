@@ -173,16 +173,14 @@ Module modSegmentsTools
             Case cSurveyPC.cSurvey.Design.cIDesign.cDesignTypeEnum.Profile
                 oDesign = Survey.Profile
         End Select
-        For Each oLayer As Design.cLayer In oDesign.Layers
-            For Each oitem As Design.cItem In oLayer.Items
-                For Each oPoint As Design.cPoint In oitem.Points
-                    Dim oSegment As cISegment = oPoint.BindedSegment
-                    If Not oSegment Is Nothing Then
-                        If Not oSegmentColl.Contains(oSegment) Then
-                            Call oSegmentColl.Append(oSegment)
-                        End If
+        For Each oitem As Design.cItem In oDesign.GetAllItems
+            For Each oPoint As Design.cPoint In oitem.Points
+                Dim oSegment As cISegment = oPoint.BindedSegment
+                If Not oSegment Is Nothing Then
+                    If Not oSegmentColl.Contains(oSegment) Then
+                        Call oSegmentColl.Append(oSegment)
                     End If
-                Next
+                End If
             Next
         Next
         Return oSegmentColl
@@ -394,7 +392,7 @@ Module modSegmentsTools
 
         Dim oSolution As List(Of List(Of IntPoint)) = New List(Of List(Of IntPoint))
         If oClipper.Execute(ClipType.ctUnion, oSolution, PolyFillType.pftNonZero, PolyFillType.pftNonZero) Then
-            Return modClipper.FromIntPolygon(oSolution(0), 100)
+            Return modClipper.FromIntPolygonToPointD(oSolution(0), 100)
         End If
         Return Nothing
     End Function
@@ -418,7 +416,7 @@ Module modSegmentsTools
         Next
         Dim oSolution As List(Of List(Of IntPoint)) = New List(Of List(Of IntPoint))
         If oClipper.Execute(ClipType.ctUnion, oSolution, PolyFillType.pftNonZero, PolyFillType.pftNonZero) Then
-            Return modClipper.FromIntPolygons(oSolution, 100)
+            Return modClipper.FromIntPolygonsToPointD(oSolution, 100)
         End If
         Return Nothing
     End Function

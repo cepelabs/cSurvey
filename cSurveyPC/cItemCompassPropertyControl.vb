@@ -18,7 +18,8 @@ Friend Class cItemCompassPropertyControl
 
         picCompassClipartImage.Image = oItem.Clipart.Clipart.GetThumbnailImage(picCompassClipartImage.Width, picCompassClipartImage.Height)
         txtCompassClipartZoomFactor.Value = oItem.ClipartScale
-
+        chkUseClipartScaleOnText.Checked = oItem.UseClipartScaleOnText
+        chkUseTextScaleOnClipart.Checked = oItem.UseTextScaleOnClipart
         cboCompassMode.SelectedIndex = oItem.Mode
         cboCompassNorth.SelectedIndex = oItem.North
         If oItem.Year = 0 Then
@@ -26,6 +27,7 @@ Friend Class cItemCompassPropertyControl
         Else
             txtCompassYear.Value = oItem.Year
         End If
+        chkHideNorthValue.Checked = oItem.HideNorthValue
         Call pSetEnabled()
     End Sub
 
@@ -102,6 +104,42 @@ Friend Class cItemCompassPropertyControl
                 oItem.Year = txtCompassYear.Value
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("year")
+                Call MyBase.MapInvalidate()
+            End If
+        Catch
+        End Try
+    End Sub
+
+    Private Sub chkUseTextScaleOnClipart_CheckedChanged(sender As Object, e As EventArgs) Handles chkUseTextScaleOnClipart.CheckedChanged
+        Try
+            If Not DisabledObjectProperty() Then
+                oItem.UseTextScaleOnClipart = chkUseTextScaleOnClipart.Checked
+                Call MyBase.TakeUndoSnapshot()
+                Call MyBase.PropertyChanged("usetextscaleonclipart")
+                Call MyBase.MapInvalidate()
+            End If
+        Catch
+        End Try
+    End Sub
+
+    Private Sub chkUseClipartScaleOnText_CheckedChanged(sender As Object, e As EventArgs) Handles chkUseClipartScaleOnText.CheckedChanged
+        Try
+            If Not DisabledObjectProperty() Then
+                oItem.UseClipartScaleOnText = chkUseClipartScaleOnText.Checked
+                Call MyBase.TakeUndoSnapshot()
+                Call MyBase.PropertyChanged("useclipartscaleontext")
+                Call MyBase.MapInvalidate()
+            End If
+        Catch
+        End Try
+    End Sub
+
+    Private Sub chkHideNorthValue_CheckedChanged(sender As Object, e As EventArgs) Handles chkHideNorthValue.CheckedChanged
+        Try
+            If Not DisabledObjectProperty() Then
+                oItem.HideNorthValue = chkHideNorthValue.Checked
+                Call MyBase.TakeUndoSnapshot()
+                Call MyBase.PropertyChanged("hidescalevalue")
                 Call MyBase.MapInvalidate()
             End If
         Catch

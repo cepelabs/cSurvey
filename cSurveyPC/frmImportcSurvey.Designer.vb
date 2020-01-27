@@ -76,6 +76,7 @@ Partial Class frmImportcSurvey
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOk.Name = "cmdOk"
+        Me.tipDefault.SetToolTip(Me.cmdOk, resources.GetString("cmdOk.ToolTip"))
         Me.cmdOk.UseVisualStyleBackColor = True
         '
         'cmdCancel
@@ -83,6 +84,7 @@ Partial Class frmImportcSurvey
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
+        Me.tipDefault.SetToolTip(Me.cmdCancel, resources.GetString("cmdCancel.ToolTip"))
         Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'GroupBox1
@@ -91,6 +93,7 @@ Partial Class frmImportcSurvey
         Me.GroupBox1.Controls.Add(Me.lvCheck)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.TabStop = False
+        Me.tipDefault.SetToolTip(Me.GroupBox1, resources.GetString("GroupBox1.ToolTip"))
         '
         'lvCheck
         '
@@ -100,8 +103,10 @@ Partial Class frmImportcSurvey
         Me.lvCheck.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colText})
         Me.lvCheck.FullRowSelect = True
         Me.lvCheck.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None
+        Me.lvCheck.HideSelection = False
         Me.lvCheck.Name = "lvCheck"
         Me.lvCheck.SmallImageList = Me.iml
+        Me.tipDefault.SetToolTip(Me.lvCheck, resources.GetString("lvCheck.ToolTip"))
         Me.lvCheck.UseCompatibleStateImageBehavior = False
         Me.lvCheck.View = System.Windows.Forms.View.Details
         '
@@ -116,180 +121,207 @@ Partial Class frmImportcSurvey
         Me.iml.Images.SetKeyName(0, "ok")
         Me.iml.Images.SetKeyName(1, "warning")
         Me.iml.Images.SetKeyName(2, "error")
+        Me.iml.Images.SetKeyName(3, "topodroid")
         '
         'chkcSurveyImportScaleRules
         '
         resources.ApplyResources(Me.chkcSurveyImportScaleRules, "chkcSurveyImportScaleRules")
         Me.chkcSurveyImportScaleRules.Name = "chkcSurveyImportScaleRules"
+        Me.tipDefault.SetToolTip(Me.chkcSurveyImportScaleRules, resources.GetString("chkcSurveyImportScaleRules.ToolTip"))
         Me.chkcSurveyImportScaleRules.UseVisualStyleBackColor = True
         '
         'chkcSurveyImportDesignProperties
         '
         resources.ApplyResources(Me.chkcSurveyImportDesignProperties, "chkcSurveyImportDesignProperties")
         Me.chkcSurveyImportDesignProperties.Name = "chkcSurveyImportDesignProperties"
+        Me.tipDefault.SetToolTip(Me.chkcSurveyImportDesignProperties, resources.GetString("chkcSurveyImportDesignProperties.ToolTip"))
         Me.chkcSurveyImportDesignProperties.UseVisualStyleBackColor = True
         '
         'chkcSurveyImportSurface
         '
         resources.ApplyResources(Me.chkcSurveyImportSurface, "chkcSurveyImportSurface")
         Me.chkcSurveyImportSurface.Name = "chkcSurveyImportSurface"
+        Me.tipDefault.SetToolTip(Me.chkcSurveyImportSurface, resources.GetString("chkcSurveyImportSurface.ToolTip"))
         Me.chkcSurveyImportSurface.UseVisualStyleBackColor = True
         '
         'chkcSurveyImportProfile
         '
         resources.ApplyResources(Me.chkcSurveyImportProfile, "chkcSurveyImportProfile")
         Me.chkcSurveyImportProfile.Name = "chkcSurveyImportProfile"
+        Me.tipDefault.SetToolTip(Me.chkcSurveyImportProfile, resources.GetString("chkcSurveyImportProfile.ToolTip"))
         Me.chkcSurveyImportProfile.UseVisualStyleBackColor = True
         '
         'chkcSurveyImportPlan
         '
         resources.ApplyResources(Me.chkcSurveyImportPlan, "chkcSurveyImportPlan")
         Me.chkcSurveyImportPlan.Name = "chkcSurveyImportPlan"
+        Me.tipDefault.SetToolTip(Me.chkcSurveyImportPlan, resources.GetString("chkcSurveyImportPlan.ToolTip"))
         Me.chkcSurveyImportPlan.UseVisualStyleBackColor = True
         '
         'lblFilename
         '
         resources.ApplyResources(Me.lblFilename, "lblFilename")
         Me.lblFilename.Name = "lblFilename"
+        Me.tipDefault.SetToolTip(Me.lblFilename, resources.GetString("lblFilename.ToolTip"))
         '
         'chkcSurveyImportData
         '
         resources.ApplyResources(Me.chkcSurveyImportData, "chkcSurveyImportData")
         Me.chkcSurveyImportData.Name = "chkcSurveyImportData"
+        Me.tipDefault.SetToolTip(Me.chkcSurveyImportData, resources.GetString("chkcSurveyImportData.ToolTip"))
         Me.chkcSurveyImportData.UseVisualStyleBackColor = True
         '
         'chkcSurveyImportGraphics
         '
         resources.ApplyResources(Me.chkcSurveyImportGraphics, "chkcSurveyImportGraphics")
         Me.chkcSurveyImportGraphics.Name = "chkcSurveyImportGraphics"
+        Me.tipDefault.SetToolTip(Me.chkcSurveyImportGraphics, resources.GetString("chkcSurveyImportGraphics.ToolTip"))
         Me.chkcSurveyImportGraphics.UseVisualStyleBackColor = True
         '
         'chkcSurveyImportCaveBranchFromDesign
         '
         resources.ApplyResources(Me.chkcSurveyImportCaveBranchFromDesign, "chkcSurveyImportCaveBranchFromDesign")
         Me.chkcSurveyImportCaveBranchFromDesign.Name = "chkcSurveyImportCaveBranchFromDesign"
+        Me.tipDefault.SetToolTip(Me.chkcSurveyImportCaveBranchFromDesign, resources.GetString("chkcSurveyImportCaveBranchFromDesign.ToolTip"))
         Me.chkcSurveyImportCaveBranchFromDesign.UseVisualStyleBackColor = True
         '
         'chkcSurveyImportDuplicates
         '
         resources.ApplyResources(Me.chkcSurveyImportDuplicates, "chkcSurveyImportDuplicates")
         Me.chkcSurveyImportDuplicates.Name = "chkcSurveyImportDuplicates"
+        Me.tipDefault.SetToolTip(Me.chkcSurveyImportDuplicates, resources.GetString("chkcSurveyImportDuplicates.ToolTip"))
         Me.chkcSurveyImportDuplicates.UseVisualStyleBackColor = True
         '
         'cbocSurveyImportDuplicatesMode
         '
+        resources.ApplyResources(Me.cbocSurveyImportDuplicatesMode, "cbocSurveyImportDuplicatesMode")
         Me.cbocSurveyImportDuplicatesMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbocSurveyImportDuplicatesMode.DropDownWidth = 320
         Me.cbocSurveyImportDuplicatesMode.FormattingEnabled = True
         Me.cbocSurveyImportDuplicatesMode.Items.AddRange(New Object() {resources.GetString("cbocSurveyImportDuplicatesMode.Items"), resources.GetString("cbocSurveyImportDuplicatesMode.Items1")})
-        resources.ApplyResources(Me.cbocSurveyImportDuplicatesMode, "cbocSurveyImportDuplicatesMode")
         Me.cbocSurveyImportDuplicatesMode.Name = "cbocSurveyImportDuplicatesMode"
+        Me.tipDefault.SetToolTip(Me.cbocSurveyImportDuplicatesMode, resources.GetString("cbocSurveyImportDuplicatesMode.ToolTip"))
         '
         'lblcSurveyImportDuplicatesMode
         '
         resources.ApplyResources(Me.lblcSurveyImportDuplicatesMode, "lblcSurveyImportDuplicatesMode")
         Me.lblcSurveyImportDuplicatesMode.Name = "lblcSurveyImportDuplicatesMode"
+        Me.tipDefault.SetToolTip(Me.lblcSurveyImportDuplicatesMode, resources.GetString("lblcSurveyImportDuplicatesMode.ToolTip"))
         '
         'chkcSurveyImportDuplicatesOverwrite
         '
         resources.ApplyResources(Me.chkcSurveyImportDuplicatesOverwrite, "chkcSurveyImportDuplicatesOverwrite")
         Me.chkcSurveyImportDuplicatesOverwrite.Name = "chkcSurveyImportDuplicatesOverwrite"
+        Me.tipDefault.SetToolTip(Me.chkcSurveyImportDuplicatesOverwrite, resources.GetString("chkcSurveyImportDuplicatesOverwrite.ToolTip"))
         Me.chkcSurveyImportDuplicatesOverwrite.UseVisualStyleBackColor = True
         '
         'chkcSurveyImportDuplicatesStations
         '
         resources.ApplyResources(Me.chkcSurveyImportDuplicatesStations, "chkcSurveyImportDuplicatesStations")
         Me.chkcSurveyImportDuplicatesStations.Name = "chkcSurveyImportDuplicatesStations"
+        Me.tipDefault.SetToolTip(Me.chkcSurveyImportDuplicatesStations, resources.GetString("chkcSurveyImportDuplicatesStations.ToolTip"))
         Me.chkcSurveyImportDuplicatesStations.UseVisualStyleBackColor = True
         '
         'chkImportAsBranchOf
         '
         resources.ApplyResources(Me.chkImportAsBranchOf, "chkImportAsBranchOf")
         Me.chkImportAsBranchOf.Name = "chkImportAsBranchOf"
+        Me.tipDefault.SetToolTip(Me.chkImportAsBranchOf, resources.GetString("chkImportAsBranchOf.ToolTip"))
         Me.chkImportAsBranchOf.UseVisualStyleBackColor = True
         '
         'cboImportAsBranchOfCave
         '
+        resources.ApplyResources(Me.cboImportAsBranchOfCave, "cboImportAsBranchOfCave")
         Me.cboImportAsBranchOfCave.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.cboImportAsBranchOfCave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        resources.ApplyResources(Me.cboImportAsBranchOfCave, "cboImportAsBranchOfCave")
         Me.cboImportAsBranchOfCave.FormattingEnabled = True
         Me.cboImportAsBranchOfCave.Name = "cboImportAsBranchOfCave"
+        Me.tipDefault.SetToolTip(Me.cboImportAsBranchOfCave, resources.GetString("cboImportAsBranchOfCave.ToolTip"))
         Me.cboImportAsBranchOfCave.Workmode = cSurveyPC.cCaveInfoCombobox.WorkmodeEnum.View
         '
         'cboImportAsBranchOfBranch
         '
+        resources.ApplyResources(Me.cboImportAsBranchOfBranch, "cboImportAsBranchOfBranch")
         Me.cboImportAsBranchOfBranch.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.cboImportAsBranchOfBranch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        resources.ApplyResources(Me.cboImportAsBranchOfBranch, "cboImportAsBranchOfBranch")
         Me.cboImportAsBranchOfBranch.FormattingEnabled = True
         Me.cboImportAsBranchOfBranch.Name = "cboImportAsBranchOfBranch"
+        Me.tipDefault.SetToolTip(Me.cboImportAsBranchOfBranch, resources.GetString("cboImportAsBranchOfBranch.ToolTip"))
         Me.cboImportAsBranchOfBranch.Workmode = cSurveyPC.cCaveInfoCombobox.WorkmodeEnum.View
         '
         'chkcSurveyImportUpdateCaveBranchPriority
         '
         resources.ApplyResources(Me.chkcSurveyImportUpdateCaveBranchPriority, "chkcSurveyImportUpdateCaveBranchPriority")
         Me.chkcSurveyImportUpdateCaveBranchPriority.Name = "chkcSurveyImportUpdateCaveBranchPriority"
+        Me.tipDefault.SetToolTip(Me.chkcSurveyImportUpdateCaveBranchPriority, resources.GetString("chkcSurveyImportUpdateCaveBranchPriority.ToolTip"))
         Me.chkcSurveyImportUpdateCaveBranchPriority.UseVisualStyleBackColor = True
         '
         'chkcSurveyImportCreateNewBranch
         '
         resources.ApplyResources(Me.chkcSurveyImportCreateNewBranch, "chkcSurveyImportCreateNewBranch")
         Me.chkcSurveyImportCreateNewBranch.Name = "chkcSurveyImportCreateNewBranch"
+        Me.tipDefault.SetToolTip(Me.chkcSurveyImportCreateNewBranch, resources.GetString("chkcSurveyImportCreateNewBranch.ToolTip"))
         Me.chkcSurveyImportCreateNewBranch.UseVisualStyleBackColor = True
         '
         'chkcSurveyImportDuplicatesOverwriteOnlyUsed
         '
         resources.ApplyResources(Me.chkcSurveyImportDuplicatesOverwriteOnlyUsed, "chkcSurveyImportDuplicatesOverwriteOnlyUsed")
         Me.chkcSurveyImportDuplicatesOverwriteOnlyUsed.Name = "chkcSurveyImportDuplicatesOverwriteOnlyUsed"
+        Me.tipDefault.SetToolTip(Me.chkcSurveyImportDuplicatesOverwriteOnlyUsed, resources.GetString("chkcSurveyImportDuplicatesOverwriteOnlyUsed.ToolTip"))
         Me.chkcSurveyImportDuplicatesOverwriteOnlyUsed.UseVisualStyleBackColor = True
         '
         'chkcSurveyDisableOriginAsExtendstart
         '
         resources.ApplyResources(Me.chkcSurveyDisableOriginAsExtendstart, "chkcSurveyDisableOriginAsExtendstart")
         Me.chkcSurveyDisableOriginAsExtendstart.Name = "chkcSurveyDisableOriginAsExtendstart"
+        Me.tipDefault.SetToolTip(Me.chkcSurveyDisableOriginAsExtendstart, resources.GetString("chkcSurveyDisableOriginAsExtendstart.ToolTip"))
         Me.chkcSurveyDisableOriginAsExtendstart.UseVisualStyleBackColor = True
         '
         'lblcSurveyImportWarpingMode
         '
         resources.ApplyResources(Me.lblcSurveyImportWarpingMode, "lblcSurveyImportWarpingMode")
         Me.lblcSurveyImportWarpingMode.Name = "lblcSurveyImportWarpingMode"
+        Me.tipDefault.SetToolTip(Me.lblcSurveyImportWarpingMode, resources.GetString("lblcSurveyImportWarpingMode.ToolTip"))
         '
         'cbocSurveyImportWarpingMode
         '
+        resources.ApplyResources(Me.cbocSurveyImportWarpingMode, "cbocSurveyImportWarpingMode")
         Me.cbocSurveyImportWarpingMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbocSurveyImportWarpingMode.DropDownWidth = 320
-        resources.ApplyResources(Me.cbocSurveyImportWarpingMode, "cbocSurveyImportWarpingMode")
         Me.cbocSurveyImportWarpingMode.FormattingEnabled = True
         Me.cbocSurveyImportWarpingMode.Items.AddRange(New Object() {resources.GetString("cbocSurveyImportWarpingMode.Items"), resources.GetString("cbocSurveyImportWarpingMode.Items1"), resources.GetString("cbocSurveyImportWarpingMode.Items2")})
         Me.cbocSurveyImportWarpingMode.Name = "cbocSurveyImportWarpingMode"
+        Me.tipDefault.SetToolTip(Me.cbocSurveyImportWarpingMode, resources.GetString("cbocSurveyImportWarpingMode.ToolTip"))
         '
         'chkcsurveyimportlinkedsurvey
         '
         resources.ApplyResources(Me.chkcsurveyimportlinkedsurvey, "chkcsurveyimportlinkedsurvey")
         Me.chkcsurveyimportlinkedsurvey.Name = "chkcsurveyimportlinkedsurvey"
+        Me.tipDefault.SetToolTip(Me.chkcsurveyimportlinkedsurvey, resources.GetString("chkcsurveyimportlinkedsurvey.ToolTip"))
         Me.chkcsurveyimportlinkedsurvey.UseVisualStyleBackColor = True
         '
         'pnlcSurveyImportData
         '
+        resources.ApplyResources(Me.pnlcSurveyImportData, "pnlcSurveyImportData")
         Me.pnlcSurveyImportData.Controls.Add(Me.chkcSurveyImportDuplicatesOverwriteOnlyUsed)
         Me.pnlcSurveyImportData.Controls.Add(Me.chkcSurveyImportDuplicatesOverwrite)
         Me.pnlcSurveyImportData.Controls.Add(Me.chkcSurveyImportDuplicates)
         Me.pnlcSurveyImportData.Controls.Add(Me.cbocSurveyImportDuplicatesMode)
         Me.pnlcSurveyImportData.Controls.Add(Me.lblcSurveyImportDuplicatesMode)
         Me.pnlcSurveyImportData.Controls.Add(Me.chkcSurveyImportDuplicatesStations)
-        resources.ApplyResources(Me.pnlcSurveyImportData, "pnlcSurveyImportData")
         Me.pnlcSurveyImportData.Name = "pnlcSurveyImportData"
+        Me.tipDefault.SetToolTip(Me.pnlcSurveyImportData, resources.GetString("pnlcSurveyImportData.ToolTip"))
         '
         'pnlcSurveyImportGraphics
         '
+        resources.ApplyResources(Me.pnlcSurveyImportGraphics, "pnlcSurveyImportGraphics")
         Me.pnlcSurveyImportGraphics.Controls.Add(Me.chkcSurveyImportPlan)
         Me.pnlcSurveyImportGraphics.Controls.Add(Me.lblcSurveyImportWarpingMode)
         Me.pnlcSurveyImportGraphics.Controls.Add(Me.chkcSurveyImportCaveBranchFromDesign)
         Me.pnlcSurveyImportGraphics.Controls.Add(Me.cbocSurveyImportWarpingMode)
         Me.pnlcSurveyImportGraphics.Controls.Add(Me.chkcSurveyImportProfile)
-        resources.ApplyResources(Me.pnlcSurveyImportGraphics, "pnlcSurveyImportGraphics")
         Me.pnlcSurveyImportGraphics.Name = "pnlcSurveyImportGraphics"
+        Me.tipDefault.SetToolTip(Me.pnlcSurveyImportGraphics, resources.GetString("pnlcSurveyImportGraphics.ToolTip"))
         '
         'frmImportcSurvey
         '
@@ -320,6 +352,7 @@ Partial Class frmImportcSurvey
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmImportcSurvey"
+        Me.tipDefault.SetToolTip(Me, resources.GetString("$this.ToolTip"))
         Me.GroupBox1.ResumeLayout(False)
         Me.pnlcSurveyImportData.ResumeLayout(False)
         Me.pnlcSurveyImportData.PerformLayout()

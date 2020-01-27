@@ -134,41 +134,41 @@ Namespace cSurvey
             'If iInversionMode <> cSurvey.InversioneModeEnum.Absolute Then
             iInversionMode = cSurvey.InversioneModeEnum.Absolute
 
-                Dim iIndex As Integer = 0
-                Dim iCount As Integer = oSurvey.Segments.Count
-                Call oSurvey.RaiseOnProgressEvent("properties.changedirections", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("properties.progressbegin1"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageCalculate)
-                For Each oSegment As cSegment In oSurvey.Segments
-                    iIndex += 1
-                    If iIndex Mod 20 = 0 Then oSurvey.RaiseOnProgressEvent("properties.changedirections", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, String.Format(GetLocalizedString("properties.progress1"), iIndex, iCount), iIndex / iCount)
+            Dim iIndex As Integer = 0
+            Dim iCount As Integer = oSurvey.Segments.Count
+            Call oSurvey.RaiseOnProgressEvent("properties.changedirections", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("properties.progressbegin1"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageCalculate)
+            For Each oSegment As cSegment In oSurvey.Segments
+                iIndex += 1
+                If iIndex Mod 20 = 0 Then oSurvey.RaiseOnProgressEvent("properties.changedirections", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, String.Format(GetLocalizedString("properties.progress1"), iIndex, iCount), iIndex / iCount)
 
-                    If Not oSegment.Splay Then
-                        Dim sFrom As String = oSegment.Data.SourceData.From
-                        Dim sTo As String = oSegment.Data.SourceData.To
-                        Dim oFromPoint As PointF
-                        Dim oToPoint As PointF
-                        If oSegment.Data.Data.Reversed Then
-                            oFromPoint = oSegment.Data.Profile.ToPoint
-                            oToPoint = oSegment.Data.Profile.FromPoint
-                        Else
-                            oFromPoint = oSegment.Data.Profile.FromPoint
-                            oToPoint = oSegment.Data.Profile.ToPoint
-                        End If
-                        Dim iDirection As cSegment.DirectionEnum
-                        If oFromPoint.X <= oToPoint.X Then
-                            iDirection = cSegment.DirectionEnum.Right
-                        Else
-                            iDirection = cSegment.DirectionEnum.Left
-                        End If
-
-                        If oSegment.Direction <> iDirection Then
-                            Call oSegment.SetDirection(iDirection)
-                        End If
+                If Not oSegment.Splay Then
+                    Dim sFrom As String = oSegment.Data.SourceData.From
+                    Dim sTo As String = oSegment.Data.SourceData.To
+                    Dim oFromPoint As PointF
+                    Dim oToPoint As PointF
+                    If oSegment.Data.Data.Reversed Then
+                        oFromPoint = oSegment.Data.Profile.ToPoint
+                        oToPoint = oSegment.Data.Profile.FromPoint
+                    Else
+                        oFromPoint = oSegment.Data.Profile.FromPoint
+                        oToPoint = oSegment.Data.Profile.ToPoint
                     End If
-                Next
-                Call oSurvey.Segments.SaveAll()
-                Call oSurvey.RaiseOnProgressEvent("properties.changedirections", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
+                    Dim iDirection As cSurvey.DirectionEnum
+                    If oFromPoint.X <= oToPoint.X Then
+                        iDirection = cSurvey.DirectionEnum.Right
+                    Else
+                        iDirection = cSurvey.DirectionEnum.Left
+                    End If
 
-                Call oSurvey.Invalidate()
+                    If oSegment.Direction <> iDirection Then
+                        Call oSegment.SetDirection(iDirection)
+                    End If
+                End If
+            Next
+            Call oSurvey.Segments.SaveAll()
+            Call oSurvey.RaiseOnProgressEvent("properties.changedirections", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
+
+            Call oSurvey.Invalidate()
             'End If
         End Sub
 
@@ -1136,6 +1136,7 @@ Namespace cSurvey
             If sCreatorID <> "" Then Call oXmlProperties.SetAttribute("creatid", sCreatorID)
             If sCreatorVersion <> "" Then Call oXmlProperties.SetAttribute("creatversion", sCreatorVersion)
             If dCreationDate.HasValue Then Call oXmlProperties.SetAttribute("creatdate", dCreationDate.Value.ToString("O"))
+            If sCreatorID <> "" Then Call oXmlProperties.SetAttribute("creat_postprocessed", 1)
 
             If sNote <> "" Then Call oXmlProperties.SetAttribute("note", sNote)
 

@@ -86,11 +86,11 @@ Module modDesignLRUD
                 Call oItems.Clear()
                 Dim bDone As Boolean
                 For Each oCaveBranchPlaceholder As cCaveBranchPlaceholder In CaveAndBraches.Values
-                    Dim sCave As String = oCaveBranchPlaceholder.Cave
-                    Dim sBranch As String = oCaveBranchPlaceholder.Branch
+                    Dim sCave As String = oCaveBranchPlaceholder.Cave.ToLower
+                    Dim sBranch As String = oCaveBranchPlaceholder.Branch.ToLower
                     Do
                         For Each oItem As cItemInvertedFreeHandArea In oAllItems
-                            If oItem.Cave = sCave AndAlso oItem.Branch = sBranch AndAlso Not oItems.Contains(oItem) Then
+                            If oItem.Cave.ToLower = sCave AndAlso oItem.Branch.ToLower = sBranch AndAlso Not oItems.Contains(oItem) Then
                                 Call oItems.Add(oItem)
                             End If
                         Next
@@ -122,7 +122,7 @@ Module modDesignLRUD
             End Get
         End Property
 
-        Public Sub New(Survey As cSurvey.cSurvey, Plan As cDesignPlan, PaintOptions As cOptions, Optional Flatness As Single = 0.1)
+        Public Sub New(Survey As cSurvey.cSurvey, Plan As cDesignPlan, PaintOptions As cOptions, Optional Flatness As Single = 0.01)
             oSurvey = Survey
 
             Dim oRealBounds As RectangleF = Plan.GetBounds(PaintOptions)
@@ -439,8 +439,6 @@ Module modDesignLRUD
                 dBearingRight = SegmentData.ToBearingRight
             End If
 
-            'Debug.Print(Segment.ToString & " left=" & dBearingLeft & " right=" & dBearingRight)
-
             Dim oResultPoint As PointF
             Dim sResult As Single
             Dim oLeftPoint As PointF = GenericPoint + modPaint.Trigo(dMaxWidth, dBearingLeft)
@@ -512,15 +510,14 @@ Module modDesignLRUD
                 Call oItems.Clear()
                 Dim bDone As Boolean
                 For Each oCaveBranchPlaceholder As cCaveBranchPlaceholder In CaveAndBraches.Values
-                    Dim sCave As String = oCaveBranchPlaceholder.Cave
-                    Dim sBranch As String = oCaveBranchPlaceholder.Branch
+                    Dim sCave As String = oCaveBranchPlaceholder.Cave.ToLower
+                    Dim sBranch As String = oCaveBranchPlaceholder.Branch.ToLower
                     Do
                         For Each oItem As cItemInvertedFreeHandArea In oAllItems
-                            If oItem.Cave = sCave AndAlso oItem.Branch = sBranch AndAlso Not oItems.Contains(oItem) Then
+                            If oItem.Cave.ToLower = sCave AndAlso oItem.Branch.ToLower = sBranch AndAlso Not oItems.Contains(oItem) Then
                                 Call oItems.Add(oItem)
                             End If
                         Next
-
                         If sBranch = "" Then
                             bDone = True
                         Else
@@ -548,7 +545,7 @@ Module modDesignLRUD
             End Get
         End Property
 
-        Public Sub New(Survey As cSurvey.cSurvey, Profile As cDesignProfile, PaintOptions As cOptions, Optional Flatness As Single = 0.1)
+        Public Sub New(Survey As cSurvey.cSurvey, Profile As cDesignProfile, PaintOptions As cOptions, Optional Flatness As Single = 0.01)
             oSurvey = Survey
 
             Dim oRealBounds As RectangleF = Profile.GetBounds(PaintOptions)

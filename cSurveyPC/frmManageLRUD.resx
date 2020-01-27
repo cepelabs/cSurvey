@@ -126,7 +126,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cmdCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>349, 598</value>
+    <value>349, 614</value>
   </data>
   <data name="cmdCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
@@ -262,7 +262,7 @@
     <value>3</value>
   </data>
   <data name="frmRestore.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 382</value>
+    <value>63, 401</value>
   </data>
   <data name="frmRestore.Size" type="System.Drawing.Size, System.Drawing">
     <value>347, 86</value>
@@ -367,7 +367,7 @@
     <value>2</value>
   </data>
   <data name="frmBackup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 525</value>
+    <value>63, 544</value>
   </data>
   <data name="frmBackup.Size" type="System.Drawing.Size, System.Drawing">
     <value>347, 61</value>
@@ -397,7 +397,7 @@
     <value>NoControl</value>
   </data>
   <data name="RadioButton4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 359</value>
+    <value>28, 378</value>
   </data>
   <data name="RadioButton4.Size" type="System.Drawing.Size, System.Drawing">
     <value>172, 17</value>
@@ -427,7 +427,7 @@
     <value>NoControl</value>
   </data>
   <data name="chkBackup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 502</value>
+    <value>28, 521</value>
   </data>
   <data name="chkBackup.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 17</value>
@@ -457,7 +457,7 @@
     <value>NoControl</value>
   </data>
   <data name="cmdOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>263, 598</value>
+    <value>263, 614</value>
   </data>
   <data name="cmdOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
@@ -487,7 +487,7 @@
     <value>NoControl</value>
   </data>
   <data name="RadioButton3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 336</value>
+    <value>28, 355</value>
   </data>
   <data name="RadioButton3.Size" type="System.Drawing.Size, System.Drawing">
     <value>310, 17</value>
@@ -831,6 +831,60 @@
   <data name="&gt;&gt;Panel1.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
+  <data name="lblSplayMode.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblSplayMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblSplayMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 26</value>
+  </data>
+  <data name="lblSplayMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 13</value>
+  </data>
+  <data name="lblSplayMode.TabIndex" type="System.Int32, mscorlib">
+    <value>128</value>
+  </data>
+  <data name="lblSplayMode.Text" xml:space="preserve">
+    <value>Mode:</value>
+  </data>
+  <data name="&gt;&gt;lblSplayMode.Name" xml:space="preserve">
+    <value>lblSplayMode</value>
+  </data>
+  <data name="&gt;&gt;lblSplayMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblSplayMode.Parent" xml:space="preserve">
+    <value>frmMode2</value>
+  </data>
+  <data name="&gt;&gt;lblSplayMode.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cboMode2Mode.Items" xml:space="preserve">
+    <value>Use splay data as LRUD</value>
+  </data>
+  <data name="cboMode2Mode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>89, 23</value>
+  </data>
+  <data name="cboMode2Mode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 21</value>
+  </data>
+  <data name="cboMode2Mode.TabIndex" type="System.Int32, mscorlib">
+    <value>127</value>
+  </data>
+  <data name="&gt;&gt;cboMode2Mode.Name" xml:space="preserve">
+    <value>cboMode2Mode</value>
+  </data>
+  <data name="&gt;&gt;cboMode2Mode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboMode2Mode.Parent" xml:space="preserve">
+    <value>frmMode2</value>
+  </data>
+  <data name="&gt;&gt;cboMode2Mode.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="Label26.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -838,7 +892,7 @@
     <value>NoControl</value>
   </data>
   <data name="Label26.Location" type="System.Drawing.Point, System.Drawing">
-    <value>234, 28</value>
+    <value>229, 55</value>
   </data>
   <data name="Label26.Size" type="System.Drawing.Size, System.Drawing">
     <value>12, 13</value>
@@ -862,10 +916,10 @@
     <value>frmMode2</value>
   </data>
   <data name="&gt;&gt;Label26.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="txtMode2V.Location" type="System.Drawing.Point, System.Drawing">
-    <value>182, 24</value>
+    <value>182, 51</value>
   </data>
   <data name="txtMode2V.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 21</value>
@@ -886,7 +940,7 @@
     <value>frmMode2</value>
   </data>
   <data name="&gt;&gt;txtMode2V.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="Label35.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -895,7 +949,7 @@
     <value>NoControl</value>
   </data>
   <data name="Label35.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 28</value>
+    <value>13, 55</value>
   </data>
   <data name="Label35.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 13</value>
@@ -919,10 +973,10 @@
     <value>frmMode2</value>
   </data>
   <data name="&gt;&gt;Label35.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="txtMode2H.Location" type="System.Drawing.Point, System.Drawing">
-    <value>135, 24</value>
+    <value>135, 51</value>
   </data>
   <data name="txtMode2H.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 21</value>
@@ -943,13 +997,13 @@
     <value>frmMode2</value>
   </data>
   <data name="&gt;&gt;txtMode2H.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="chkMode2OnlyCutSplay.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="chkMode2OnlyCutSplay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 56</value>
+    <value>16, 83</value>
   </data>
   <data name="chkMode2OnlyCutSplay.Size" type="System.Drawing.Size, System.Drawing">
     <value>118, 17</value>
@@ -970,13 +1024,13 @@
     <value>frmMode2</value>
   </data>
   <data name="&gt;&gt;chkMode2OnlyCutSplay.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="frmMode2.Location" type="System.Drawing.Point, System.Drawing">
     <value>63, 240</value>
   </data>
   <data name="frmMode2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>347, 90</value>
+    <value>347, 109</value>
   </data>
   <data name="frmMode2.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -1003,7 +1057,7 @@
     <value>NoControl</value>
   </data>
   <data name="chkMarkAsCalculated.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 479</value>
+    <value>28, 498</value>
   </data>
   <data name="chkMarkAsCalculated.Size" type="System.Drawing.Size, System.Drawing">
     <value>114, 17</value>
@@ -1033,7 +1087,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>441, 635</value>
+    <value>441, 651</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
@@ -1051,6 +1105,6 @@
     <value>frmManageLRUD</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cForm, cSurveyPC, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

@@ -36,9 +36,14 @@ Namespace cSurvey.Design
 
     Public Interface cIOptionPrintAndExportArea
         Inherits cIOptions
+        Enum DesignStyleEnum
+            None = 0
+            Schematics = 1
+        End Enum
         Function GetPrintOrExportProfile(CurrentDesign As cIDesign) As cIProfile
         Sub SetPrintOrExportProfile(Value As cIProfile)
         Property DrawPrintOrExportArea As Boolean
+        Property DrawPrintOrExportAreaDesignStyle As DesignStyleEnum
     End Interface
 
     Public Class cOptions
@@ -98,6 +103,23 @@ Namespace cSurvey.Design
 
         Private oDrawingObjects As cOptionsDrawingObjects
         Private oPaintObjects As cPaintObjects
+
+        Public Enum DesignAffinityEnum
+            All = 0
+            Design = 1
+            Extra = 2
+        End Enum
+
+        Private iDesignAffinity As DesignAffinityEnum
+
+        Public Overridable Property DesignAffinity As DesignAffinityEnum
+            Get
+                Return iDesignAffinity
+            End Get
+            Set(value As DesignAffinityEnum)
+                iDesignAffinity = value
+            End Set
+        End Property
 
         Public Overridable Function GetOption() As cIOptions Implements cIOptions.GetOption
             Return Me
@@ -983,122 +1005,9 @@ Namespace cSurvey.Design
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal Options As XmlElement, ByVal Mode As cIOptions.ModeEnum)
             oSurvey = Survey
-
             sName = Options.Name
             iMode = Mode
-
             Call Import(Options)
-
-            'bDrawPlot = modXML.GetAttributeValue(Options, "drawplot", True)
-            'bDrawDesign = modXML.GetAttributeValue(Options, "drawdesign", True)
-            'bDrawSpecialPoints = modXML.GetAttributeValue(Options, "drawspecialpoints", False)
-
-            'iSplayStyle = modXML.GetAttributeValue(Options, "splaystyle")
-            'iDesignStyle = modXML.GetAttributeValue(Options, "designstyle", DesignStyleEnum.Design)
-            'iDrawStyle = modXML.GetAttributeValue(Options, "drawstyle")
-            ''iColorStyle = modXML.GetAttributeValue(Options, "colorstyle")
-
-            'bDrawLRUD = modXML.GetAttributeValue(Options, "drawlrud", True)
-            'bDrawSplay = modXML.GetAttributeValue(Options, "drawsplay", True)
-            'bDrawRings = modXML.GetAttributeValue(Options, "drawrings", False)
-            'bDrawSegments = modXML.GetAttributeValue(Options, "drawsegments")
-            'iDrawSegmentsOptions = modXML.GetAttributeValue(Options, "drawsegmentsoptions", DrawSegmentsOptionsEnum.None)
-
-            'bDrawPointNames = modXML.GetAttributeValue(Options, "drawpointnames", True)
-            'bDrawPoints = modXML.GetAttributeValue(Options, "drawpoints", True)
-
-            'bDrawScale = modXML.GetAttributeValue(Options, "drawscale")
-            'iScaleStyle = modXML.GetAttributeValue(Options, "scalestyle")
-            'iScalePosition = modXML.GetAttributeValue(Options, "scaleposition")
-
-            'bDrawBox = modXML.GetAttributeValue(Options, "drawbox")
-            'iBoxPosition = modXML.GetAttributeValue(Options, "boxposition")
-
-            'bDrawCompass = modXML.GetAttributeValue(Options, "drawcompass")
-            'iCompassStyle = modXML.GetAttributeValue(Options, "compassstyle")
-            'iCompassPosition = modXML.GetAttributeValue(Options, "compassposition")
-
-            'bDrawImages = modXML.GetAttributeValue(Options, "drawimages", False)
-            'bDrawSketches = modXML.GetAttributeValue(Options, "drawsketches", False)
-
-            'bHighlightCurrentCave = modXML.GetAttributeValue(Options, "highlightcurrentcave")
-            'iHighlightMode = modXML.GetAttributeValue(Options, "highlightmode", HighlightModeEnum.Default)
-            'iUnselectedCaveDrawStyle = modXML.GetAttributeValue(Options, "unselectedcavedrawstyle")
-            'bHighlightSegmentsAndTrigpoints = modXML.GetAttributeValue(Options, "highlightsegmentsandtrigpoints")
-
-            'bShowPointInformation = modXML.GetAttributeValue(Options, "showpointinformation")
-            'bShowPointText = modXML.GetAttributeValue(Options, "showpointtext", True)
-            'bShowSplayText = modXML.GetAttributeValue(Options, "showsplaytext", False)
-
-            'bShowAdvancedBrushes = modXML.GetAttributeValue(Options, "showadvancedbrushes", True)
-            'bShowSurface = modXML.GetAttributeValue(Options, "showsurface", False)
-            'bShowElevation = modXML.GetAttributeValue(Options, "showelevation", False)
-
-            'sCurrentCaveVisibilityProfile = modXML.GetAttributeValue(Options, "currentcavevisibilityprofile", "")
-
-            'bUseDrawingZOrder = modXML.GetAttributeValue(Options, "usedrawingzorder", 0)
-            'iZOrderMode = modXML.GetAttributeValue(Options, "zordermode", zordermodeenum.Free)
-
-            'Try
-            '    oCompassOptions = New cCompassOptions(oSurvey, Options.Item("compassoptions"))
-            'Catch ex As Exception
-            '    oCompassOptions = New cCompassOptions(oSurvey)
-            'End Try
-            'Try
-            '    oInfoboxOptions = New cInfoBoxOptions(oSurvey, Options.Item("infoboxoptions"))
-            'Catch ex As Exception
-            '    oInfoboxOptions = New cInfoBoxOptions(oSurvey)
-            'End Try
-            'Try
-            '    oScaleOptions = New cScaleOptions(oSurvey, Options.Item("scaleoptions"))
-            'Catch ex As Exception
-            '    oScaleOptions = New cScaleOptions(oSurvey)
-            'End Try
-
-            'bDrawTranslation = modXML.GetAttributeValue(Options, "drawtranslation", True)
-            'Try
-            '    oTranslationsOptions = New cTranslationsOptions(oSurvey, Options.Item("translationsoptions"))
-            'Catch ex As Exception
-            '    oTranslationsOptions = New cTranslationsOptions(oSurvey)
-            'End Try
-
-            'bDrawHLs = modXML.GetAttributeValue(Options, "drawhls", False)
-            'Try
-            '    oHLsOptions = New cHighlightsOptions(oSurvey, Options.Item("hlsoptions"))
-            'Catch ex As Exception
-            '    oHLsOptions = New cHighlightsOptions(oSurvey)
-            'End Try
-
-            'iCombineColorMode = modXML.GetAttributeValue(Options, "combinecolormode")
-            'bCombineColorGray = modXML.GetAttributeValue(Options, "combinecolorgray")
-
-            'iCenterlineColorMode = modXML.GetAttributeValue(Options, "centerlinecolormode")
-            'bCenterlineColorGray = modXML.GetAttributeValue(Options, "centerlinecolorgray")
-
-            'oDrawingObjects = New cOptionsDrawingObjects(oSurvey, Me)
-            'oPaintObjects = New cPaintObjects(oSurvey)
-
-            'If sName <> "" Then
-            '    oDefaultOptions = New cOptions(oSurvey, "", iMode)
-            'End If
-
-            'iCurrentScale = iDefaultDesignScale
-            'oCurrentRule = oSurvey.ScaleRules.FindRule(iCurrentScale)
-
-            'Dim oDesignProperties As cPropertiesCollection = oCurrentRule.DesignProperties
-            'sPenHeavyWidth = oDesignProperties.GetValue("BaseHeavyLinesScaleFactor", 8)
-            'sPenMediumWidth = oDesignProperties.GetValue("BaseMediumLinesScaleFactor", 3)
-            'sPenLightWidth = oDesignProperties.GetValue("BaseLightLinesScaleFactor", 1)
-            'sPenUltralightWidth = oDesignProperties.GetValue("BaseUltraLightLinesScaleFactor", 0.3)
-            'oDefaultTextFont = oSurvey.Properties.DesignProperties.GetValue("DesignTextFont", New cFont(oSurvey, "Tahoma", 8, Color.Black))
-
-            'bDrawSurfaceProfile = modXML.GetAttributeValue(Options, "drawsurfaceprofile", True)
-
-            'Try
-            '    oSurfaceOptions = New cSurfaceOptions(oSurvey, Options.Item("surfaceoptions"))
-            'Catch ex As Exception
-            '    oSurfaceOptions = New cSurfaceOptions(oSurvey)
-            'End Try
         End Sub
 
         Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
@@ -1191,14 +1100,14 @@ Namespace cSurvey.Design
             End Set
         End Property
 
-        Public Function CurrentRule() As cIScaleRule
+        Friend Function CurrentRule() As cIScaleRule
             If oCurrentRule Is Nothing Then
                 oCurrentRule = oSurvey.ScaleRules.FindRule(iCurrentScale)
             End If
             Return oCurrentRule
         End Function
 
-        Public Property CurrentScale As Integer
+        Friend Property CurrentScale As Integer
             Get
                 Return iCurrentScale
             End Get
@@ -1208,11 +1117,9 @@ Namespace cSurvey.Design
                     Dim oNewScaleRule As cIScaleRule = oSurvey.ScaleRules.FindRule(iCurrentScale)
                     If Not oCurrentRule Is oNewScaleRule Then
                         oCurrentRule = oNewScaleRule
-
                         Call Rebind()
                         Call oSurvey.Plan.Redraw(Me)
                         Call oSurvey.Profile.Redraw(Me)
-
                         Call oSurvey.RaiseOnPropertiesChanged(cSurvey.OnPropertiesChangedEventArgs.PropertiesChangeSourceEnum.Scale)
                     End If
                 End If

@@ -120,16 +120,25 @@
   <data name="txtFilename.ToolTip" xml:space="preserve">
     <value>Nome del file VisualTopo da importare</value>
   </data>
+  <data name="cmdOk.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="cmdCancel.Text" xml:space="preserve">
     <value>Annulla</value>
+  </data>
+  <data name="cmdCancel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colText.Text" xml:space="preserve">
+    <value>Testo</value>
   </data>
   <data name="iml.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABM
-        CgAAAk1TRnQBSQFMAgEBAwEAAVABAAFQAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
-        AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAC2
+        CwAAAk1TRnQBSQFMAgEBBAEAASABAQEgAQEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
         AWYDAAGZAwABzAIAATMDAAIzAgABMwFmAgABMwGZAgABMwHMAgABMwH/AgABZgMAAWYBMwIAAmYCAAFm
@@ -156,82 +165,124 @@
         AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
         AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
         AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
-        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD/wUAAf8B9ATzAfQB/zcA
-        AfQB8AFzBC4BcwHwAfQDABDzAwAC8wYAAvMVAAH0AXgILwEcAfQCAAFSDkwBUgIAAfMCRgHzBAAB8wJG
-        AfMTAAH/ARwCLwY2Ai8BHAH/AQABUgZ6AuUGegFSAQAB8wFGAhYBRgHzAgAB8wFGAhYBRgHzEgAB8gEv
-        CTYCLwHyAQABGgF5AXoEWQJmBFkBegF5ARoBAAFGARYC4wEWAUYC8wFGARYC4wEWAUYSAAFzAS8DNgP/
-        BDYBLwFzAgABUgGaBFkC6gRZAZoBUgIAAUYBFgPjARYCRgEWA+MBFgFGEgABLgFXAjYF/wM2AS8BLgIA
-        AfQBdAGgCFkBoAF0AfQDAAFGARYDFwIWAxcBFgFGEwABLgF5ATYD/wE2A/8CNgEvAS4DAAKZAXoCWQJm
-        AlkBegKZBQABRgGUBhcBlAFGFAABLgF5ATYC/wM2A/8BNgEvAS4EAAFSAcMBegFZAhIBWQF6AcMBUgcA
-        AUYBlAQXAZQBRhUAAS4BeQc2Av8BNgEvAS4EAAEbAXQBwwFZAuoBWQHDAXQBGwYAAfMBRgGUBBcBlAFG
-        AfMUAAJ4AVgHNgH/ATYBLwF4BQABdAGaAaAC6gGgAZoBdAYAAfMBRgGUBk0BlAFGAfMTAAH0AS8BoAFX
-        CDYBLwH0BQAB/wFSARoCmQEaAVIB/wUAAfMBRgGUA00ClANNAZQBRgHzEwABmAFQAcMBeQQ2AlcBLwGZ
-        BwABGwF0AsMBdAEbBgABRgGaA0YBmgJGAZoDRgGaAUYUAAGZAS8BeQKfAnkBVwEvAZgJAAF0ApoBdAcA
-        AUYBvQJGAb0BRgIAAUYBvQJGAb0BRhUAAfQBeAQuAXgB9AoAAfYCUgH2CAABRgK9AUYEAAFGAr0BRjUA
-        AkYGAAJGEwABQgFNAT4HAAE+AwABKAMAAUADAAEQAwABAQEAAQEFAAGAFwAD/wEAAfABDwT/AgAB4AEH
-        AgAC5wIAAcABAwIAAsMCAAGAAQECAAKBAgABgAEBAgABgAEBAgABgAEBAYABAQGAAQECAAGAAQEBgAEB
-        AcABAwIAAYABAQHAAQMB4AEHAgABgAEBAeABBwHwAQ8CAAGAAQEB4AEHAeABBwIAAYABAQHwAQ8BwAED
-        AgABgAEBAfABDwGAAQECAAHAAQMB+AEfAYABAQIAAeABBwH8AT8CgQIAAfABDwH8AT8CwwIABP8C5wIA
-        Cw==
+        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD//8A/wD/AP8ACQAB/wH0
+        BPMB9AH/KAAB9gGZAfYB/wGZAbwB7wgAAfQB8AFzBC4BcwHwAfQDABDzAwAC8wYAAvMHAAEbAVcBCAG8
+        AusB6gH0BgAB9AF4CC8BHAH0AgABUg5MAVICAAHzAkYB8wQAAfMCRgHzBgABGwFzAu0D7AEHBQAB/wEc
+        Ai8GNgIvARwB/wEAAVIGegLlBnoBUgEAAfMBRgIWAUYB8wIAAfMBRgIWAUYB8wMAAf8BGgF5AW0D9wPs
+        Af8EAAHyAS8JNgIvAfIBAAEaAXkBegRZAmYEWQF6AXkBGgEAAUYBFgLjARYBRgLzAUYBFgLjARYBRgIA
+        Av8CVwFzAvcC7QLsAfAB/wMAAXMBLwM2A/8ENgEvAXMCAAFSAZoEWQLqBFkBmgFSAgABRgEWA+MBFgJG
+        ARYD4wEWAUYBAAHzAVcBGgJXAVgB7AH3AZIC7QHsAUsBGwMAAS4BVwI2Bf8DNgEvAS4CAAH0AXQBoAhZ
+        AaABdAH0AwABRgEWAxcCFgMXARYBRgIAARsBVwGZA1cBcwHvAfcB7QHsAesBbQEIAwABLgF5ATYD/wE2
+        A/8CNgEvAS4DAAKZAXoCWQJmAlkBegKZBQABRgGUBhcBlAFGAwABGwFXAZkDVwFYAZIB7QH3ARoB7AHr
+        Ae8DAAEuAXkBNgL/AzYD/wE2AS8BLgQAAVIBwwF6AVkCEgFZAXoBwwFSBwABRgGUBBcBlAFGBAABGwFX
+        AZkEVwF0Au0B9wHvAfcBbgH/AgABLgF5BzYC/wE2AS8BLgQAARsBdAHDAVkC6gFZAcMBdAEbBgAB8wFG
+        AZQEFwGUAUYB8wMAARsBVwGZBFcBUQH3AcIBuwLvAesB8QIAAngBWAc2Af8BNgEvAXgFAAF0AZoBoALq
+        AaABmgF0BgAB8wFGAZQGTQGUAUYB8wIAAf8BGgH0BZkBbgIIAe8B7QLsAgAB9AEvAaABVwg2AS8B9AUA
+        Af8BUgEaApkBGgFSAf8FAAHzAUYBlANNApQDTQGUAUYB8wMAAf8FVwFLAfcBBwH3Au0BRAH0AgABmAFQ
+        AcMBeQQ2AlcBLwGZBwABGwF0AsMBdAEbBgABRgGaA0YBmgJGAZoDRgGaAUYEAAGZAXkBmQJXAXkBbQH3
+        Au0B6gEPARwDAAGZAS8BeQKfAnkBVwEvAZgJAAF0ApoBdAcAAUYBvQJGAb0BRgIAAUYBvQJGAb0BRgQA
+        Af8BmQRXAUsB6wHqAkQBCwHrBAAB9AF4BC4BeAH0CgAB9gJSAfYIAAFGAr0BRgQAAUYCvQFGBgAB9AEb
+        AggBGwEcA0QBbQHwAf8jAAJGBgACRgcAAfYEAAH0AesB7wH0AwABQgFNAT4HAAE+AwABKAMAAUADAAEg
+        AwABAQEAAQEGAAEBFgAD/4EAAfABDwT/AfABHwHgAQcCAALnAfABDwHAAQMCAALDAfABDwGAAQECAAKB
+        AcABBwGAAQECAAGAAQEBgAEDAYABAQGAAQEBgAEBAQABAwGAAQEBgAEBAcABAwEAAQMBgAEBAcABAwHg
+        AQcBAAEDAYABAQHgAQcB8AEPAQABAQGAAQEB4AEHAeABBwEAAQEBgAEBAfABDwHAAQMBAAEBAYABAQHw
+        AQ8BgAEBAcABAAHAAQMB+AEfAYABAQHgAQAB4AEHAfwBPwKBAeABAAHwAQ8B/AE/AsMB8AEABP8C5wH3
+        AYcL
 </value>
+  </data>
+  <data name="lvCheck.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="GroupBox1.Text" xml:space="preserve">
     <value>Analisi rilievo:</value>
   </data>
+  <data name="GroupBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="chkcSurveyImportScaleRules.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 17</value>
+    <value>171, 17</value>
   </data>
   <data name="chkcSurveyImportScaleRules.Text" xml:space="preserve">
     <value>Importa impostazioni per scala</value>
   </data>
+  <data name="chkcSurveyImportScaleRules.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="chkcSurveyImportDesignProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 17</value>
+    <value>167, 17</value>
   </data>
   <data name="chkcSurveyImportDesignProperties.Text" xml:space="preserve">
     <value>Importa impostazioni grafiche</value>
   </data>
+  <data name="chkcSurveyImportDesignProperties.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="chkcSurveyImportSurface.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 17</value>
+    <value>134, 17</value>
   </data>
   <data name="chkcSurveyImportSurface.Text" xml:space="preserve">
     <value>Importa dati superficie</value>
   </data>
+  <data name="chkcSurveyImportSurface.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="chkcSurveyImportProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 17</value>
+    <value>103, 17</value>
   </data>
   <data name="chkcSurveyImportProfile.Text" xml:space="preserve">
     <value>Importa sezione</value>
   </data>
+  <data name="chkcSurveyImportProfile.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="chkcSurveyImportPlan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 17</value>
+    <value>97, 17</value>
   </data>
   <data name="chkcSurveyImportPlan.Text" xml:space="preserve">
     <value>Importa pianta</value>
   </data>
+  <data name="chkcSurveyImportPlan.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblFilename.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="chkcSurveyImportData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 17</value>
+    <value>85, 17</value>
   </data>
   <data name="chkcSurveyImportData.Text" xml:space="preserve">
     <value>Importa dati</value>
   </data>
+  <data name="chkcSurveyImportData.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="chkcSurveyImportGraphics.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 17</value>
+    <value>100, 17</value>
   </data>
   <data name="chkcSurveyImportGraphics.Text" xml:space="preserve">
     <value>Importa grafica</value>
   </data>
+  <data name="chkcSurveyImportGraphics.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="chkcSurveyImportCaveBranchFromDesign.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 17</value>
+    <value>249, 17</value>
   </data>
   <data name="chkcSurveyImportCaveBranchFromDesign.Text" xml:space="preserve">
     <value>Importa grotte/rami associati ad oggetti grafici</value>
   </data>
+  <data name="chkcSurveyImportCaveBranchFromDesign.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="chkcSurveyImportDuplicates.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 17</value>
+    <value>163, 17</value>
   </data>
   <data name="chkcSurveyImportDuplicates.Text" xml:space="preserve">
     <value>Importa battute già esistenti</value>
+  </data>
+  <data name="chkcSurveyImportDuplicates.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="cbocSurveyImportDuplicatesMode.Items" xml:space="preserve">
     <value>per ID battuta uguale</value>
@@ -239,17 +290,116 @@
   <data name="cbocSurveyImportDuplicatesMode.Items1" xml:space="preserve">
     <value>per dati uguali</value>
   </data>
+  <data name="cbocSurveyImportDuplicatesMode.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="lblcSurveyImportDuplicatesMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 13</value>
+    <value>128, 13</value>
   </data>
   <data name="lblcSurveyImportDuplicatesMode.Text" xml:space="preserve">
     <value>Ricerca battute esistenti:</value>
   </data>
+  <data name="lblcSurveyImportDuplicatesMode.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="chkcSurveyImportDuplicatesOverwrite.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 17</value>
+    <value>120, 17</value>
   </data>
   <data name="chkcSurveyImportDuplicatesOverwrite.Text" xml:space="preserve">
     <value>Sovrascrivi duplicati</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesOverwrite.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="chkcSurveyImportDuplicatesStations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 17</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesStations.Text" xml:space="preserve">
+    <value>Importa e sovrascrivi stazioni già esistenti</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesStations.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="chkImportAsBranchOf.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 17</value>
+  </data>
+  <data name="chkImportAsBranchOf.Text" xml:space="preserve">
+    <value>Importa come ramo di:</value>
+  </data>
+  <data name="chkImportAsBranchOf.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cboImportAsBranchOfCave.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cboImportAsBranchOfBranch.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="chkcSurveyImportUpdateCaveBranchPriority.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 17</value>
+  </data>
+  <data name="chkcSurveyImportUpdateCaveBranchPriority.Text" xml:space="preserve">
+    <value>Aggiorna priorità di grotta/ramo</value>
+  </data>
+  <data name="chkcSurveyImportUpdateCaveBranchPriority.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="chkcSurveyImportCreateNewBranch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 17</value>
+  </data>
+  <data name="chkcSurveyImportCreateNewBranch.Text" xml:space="preserve">
+    <value>Importa tutto come nuova grotta/ramo</value>
+  </data>
+  <data name="chkcSurveyImportCreateNewBranch.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="chkcSurveyImportDuplicatesOverwriteOnlyUsed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>257, 17</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesOverwriteOnlyUsed.Text" xml:space="preserve">
+    <value>Sovrascrivi solo battute collegate ad ogg. grafici</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesOverwriteOnlyUsed.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="chkcSurveyDisableOriginAsExtendstart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 17</value>
+  </data>
+  <data name="chkcSurveyDisableOriginAsExtendstart.Text" xml:space="preserve">
+    <value>Non impostare origine come sub-origine</value>
+  </data>
+  <data name="chkcSurveyDisableOriginAsExtendstart.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblcSurveyImportWarpingMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 13</value>
+  </data>
+  <data name="lblcSurveyImportWarpingMode.Text" xml:space="preserve">
+    <value>Modalità di warping:</value>
+  </data>
+  <data name="lblcSurveyImportWarpingMode.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbocSurveyImportWarpingMode.Items" xml:space="preserve">
+    <value>Automatica</value>
+  </data>
+  <data name="cbocSurveyImportWarpingMode.Items1" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="cbocSurveyImportWarpingMode.Items2" xml:space="preserve">
+    <value>Traslazione semplice</value>
+  </data>
+  <data name="cbocSurveyImportWarpingMode.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="chkcsurveyimportlinkedsurvey.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pnlcSurveyImportData.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pnlcSurveyImportGraphics.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -319,40 +469,7 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Importazione da cSurvey:</value>
   </data>
-  <data name="colText.Text" xml:space="preserve">
-    <value>Testo</value>
-  </data>
-  <data name="lblFilename.Text" xml:space="preserve">
-    <value>File:</value>
-  </data>
-  <data name="chkcSurveyImportDuplicatesStations.Text" xml:space="preserve">
-    <value>Importa e sovrascrivi stazioni già esistenti</value>
-  </data>
-  <data name="chkImportAsBranchOf.Text" xml:space="preserve">
-    <value>Importa come ramo di:</value>
-  </data>
-  <data name="chkcSurveyImportUpdateCaveBranchPriority.Text" xml:space="preserve">
-    <value>Aggiorna priorità di grotta/ramo</value>
-  </data>
-  <data name="chkcSurveyImportCreateNewBranch.Text" xml:space="preserve">
-    <value>Importa tutto come nuova grotta/ramo</value>
-  </data>
-  <data name="chkcSurveyImportDuplicatesOverwriteOnlyUsed.Text" xml:space="preserve">
-    <value>Sovrascrivi solo battute collegate ad ogg. grafici</value>
-  </data>
-  <data name="chkcSurveyDisableOriginAsExtendstart.Text" xml:space="preserve">
-    <value>Non impostare origine come sub-origine</value>
-  </data>
-  <data name="lblcSurveyImportWarpingMode.Text" xml:space="preserve">
-    <value>Modalità di warping:</value>
-  </data>
-  <data name="cbocSurveyImportWarpingMode.Items" xml:space="preserve">
-    <value>Automatica</value>
-  </data>
-  <data name="cbocSurveyImportWarpingMode.Items1" xml:space="preserve">
-    <value>Standard</value>
-  </data>
-  <data name="cbocSurveyImportWarpingMode.Items2" xml:space="preserve">
-    <value>Traslazione semplice</value>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>

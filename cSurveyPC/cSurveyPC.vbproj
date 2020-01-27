@@ -169,8 +169,8 @@
     <Reference Include="clipper_library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Clipper.6.2.10\lib\net40\clipper_library.dll</HintPath>
     </Reference>
-    <Reference Include="Diacritics, Version=2.0.18316.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Diacritics.2.0.18316.1\lib\net45\Diacritics.dll</HintPath>
+    <Reference Include="Diacritics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Diacritics.2.1.19293.1\lib\net45\Diacritics.dll</HintPath>
     </Reference>
     <Reference Include="EPPlus, Version=4.5.3.2, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>packages\EPPlus.4.5.3.2\lib\net40\EPPlus.dll</HintPath>
@@ -181,11 +181,11 @@
     <Reference Include="GeoUtility">
       <HintPath>.\GeoUtility.dll</HintPath>
     </Reference>
-    <Reference Include="HelixToolkit, Version=2.8.0.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
-      <HintPath>packages\HelixToolkit.2.8.0\lib\netstandard1.1\HelixToolkit.dll</HintPath>
+    <Reference Include="HelixToolkit, Version=2.10.0.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
+      <HintPath>packages\HelixToolkit.2.10.0\lib\netstandard1.1\HelixToolkit.dll</HintPath>
     </Reference>
-    <Reference Include="HelixToolkit.Wpf, Version=2.8.0.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
-      <HintPath>packages\HelixToolkit.Wpf.2.8.0\lib\net45\HelixToolkit.Wpf.dll</HintPath>
+    <Reference Include="HelixToolkit.Wpf, Version=2.10.0.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
+      <HintPath>packages\HelixToolkit.Wpf.2.10.0\lib\net45\HelixToolkit.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip">
       <HintPath>.\Ionic.Zip.dll</HintPath>
@@ -301,7 +301,9 @@
     <Compile Include="cCaveInfoCombobox.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="cClipartHelper.vb" />
     <Compile Include="cClipartOnPath2.vb" />
+    <Compile Include="cClipperHelper.vb" />
     <Compile Include="cConnectionDef.vb" />
     <Compile Include="cDesignPrintOrExportAreaControl.Designer.vb">
       <DependentUpon>cDesignPrintOrExportAreaControl.vb</DependentUpon>
@@ -312,6 +314,7 @@
     <Compile Include="cDockContent.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="cDrawOptions.vb" />
     <Compile Include="cForm.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -322,6 +325,7 @@
     <Compile Include="cIItemCompass.vb" />
     <Compile Include="cIItemScale.vb" />
     <Compile Include="cIItemLegend.vb" />
+    <Compile Include="cImportTopoDroidHelper.vb" />
     <Compile Include="cItemCompassPropertyControl.Designer.vb">
       <DependentUpon>cItemCompassPropertyControl.vb</DependentUpon>
     </Compile>
@@ -389,6 +393,13 @@
     <Compile Include="cMasterSurvey.vb" />
     <Compile Include="cSegmentImage.vb" />
     <Compile Include="cSegmentImages.vb" />
+    <Compile Include="cSingsImportHelper.vb" />
+    <Compile Include="cTransparentPanel.Designer.vb">
+      <DependentUpon>cTransparentPanel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cTransparentPanel.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="cTrigPointLeftRightSideMeasure.vb" />
     <Compile Include="cTrigPointUpDownSideMeasure.vb" />
     <Compile Include="Calculate\cCalculate.Plot.cStationData.vb" />
@@ -681,6 +692,12 @@
     <Compile Include="frmSketchEditDistance.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmSurfaceAddElevationFromOrthoPhoto.designer.vb">
+      <DependentUpon>frmSurfaceAddElevationFromOrthoPhoto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSurfaceAddElevationFromOrthoPhoto.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmSurfaceAddOrthoPhotoFromWMS.designer.vb">
       <DependentUpon>frmSurfaceAddOrthoPhotoFromWMS.vb</DependentUpon>
     </Compile>
@@ -923,6 +940,12 @@
       <DependentUpon>frmSurveyGrade.vb</DependentUpon>
     </Compile>
     <Compile Include="frmSurveyGrade.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTemplates.Designer.vb">
+      <DependentUpon>frmTemplates.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTemplates.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmtest.Designer.vb">
@@ -1323,6 +1346,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="cDesignPrintOrExportAreaControl.resx">
       <DependentUpon>cDesignPrintOrExportAreaControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cItemCompassPropertyControl.en.resx">
+      <DependentUpon>cItemCompassPropertyControl.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cItemCompassPropertyControl.it.resx">
       <DependentUpon>cItemCompassPropertyControl.vb</DependentUpon>
@@ -1801,6 +1827,18 @@
     <EmbeddedResource Include="frmSurface.ru.resx">
       <DependentUpon>frmSurface.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSurface3DLayerProperties.it.resx">
+      <DependentUpon>frmSurface3DLayerProperties.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSurfaceAddElevationFromOrthoPhoto.it.resx">
+      <DependentUpon>frmSurfaceAddElevationFromOrthoPhoto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSurfaceAddElevationFromOrthoPhoto.resx">
+      <DependentUpon>frmSurfaceAddElevationFromOrthoPhoto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSurfaceAddElevationFromOrthoPhoto.ru.resx">
+      <DependentUpon>frmSurfaceAddElevationFromOrthoPhoto.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSurfaceAddOrthoPhotoFromWMS.it.resx">
       <DependentUpon>frmSurfaceAddOrthoPhotoFromWMS.vb</DependentUpon>
     </EmbeddedResource>
@@ -2040,6 +2078,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSVGImportOptions.ru.resx">
       <DependentUpon>frmSVGImportOptions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTemplates.it.resx">
+      <DependentUpon>frmTemplates.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTemplates.resx">
+      <DependentUpon>frmTemplates.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmtest.resx">
       <DependentUpon>frmtest.vb</DependentUpon>
@@ -3304,6 +3348,7 @@
     <Content Include="Objects\Icons\icon_water_small.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Objects\TopoDroidImport\itemmap.xml" />
     <Content Include="resources.ru.txt" />
     <None Include="Resources\arrow_sync.png" />
     <None Include="Resources\attach.png" />
@@ -3360,6 +3405,17 @@
     <None Include="Resources\control_pause_blue.png" />
     <None Include="Resources\monitor_window.png" />
     <None Include="Resources\picture_save.png" />
+    <None Include="Resources\filter_revert.png" />
+    <None Include="Resources\contrast_increase.png" />
+    <None Include="Resources\contrast_decrease.png" />
+    <None Include="Resources\contrast.png" />
+    <None Include="Resources\resize_picture.png" />
+    <None Include="Resources\connections_1_1.png" />
+    <None Include="Resources\connections_1_2.png" />
+    <None Include="Resources\connections_1_3ormore.png" />
+    <None Include="Resources\connections_custom.png" />
+    <None Include="Resources\connections_default.png" />
+    <None Include="Resources\connections_1_0.png" />
     <Content Include="Resources\shape_square_key.png" />
     <None Include="Resources\sort.png" />
     <None Include="Resources\textfield_rename.png" />
@@ -3375,6 +3431,7 @@
     <None Include="Resources\zoom_actual.png" />
     <None Include="Resources\stamp_pattern.png" />
     <None Include="Resources\weather_sun.png" />
+    <None Include="Resources\whiteboard_empty.png" />
     <Content Include="version.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

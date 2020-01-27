@@ -39,6 +39,30 @@ Namespace cSurvey.Surface
         Friend Event OnDefaultSet(ByVal Sender As cOrthoPhoto, Args As cDefaultArgs)
         Friend Event OnDefaultGet(ByVal Sender As cOrthoPhoto, Args As cDefaultArgs)
 
+        Public Sub InvertColors()
+            Dim oNewPhoto As Bitmap = New Bitmap(oPhoto.Width, oPhoto.Height)
+            Using oGr As Graphics = Graphics.FromImage(oNewPhoto)
+                Dim oColorMatrix As Imaging.ColorMatrix = New Imaging.ColorMatrix(New Single()() {New Single() {-1, 0, 0, 0, 0}, New Single() {0, -1, 0, 0, 0}, New Single() {0, 0, -1, 0, 0}, New Single() {0, 0, 0, 1, 0}, New Single() {1, 1, 1, 0, 1}})
+                Using oAttributes As Imaging.ImageAttributes = New Imaging.ImageAttributes
+                    oAttributes.SetColorMatrix(oColorMatrix)
+                    Call oGr.DrawImage(oPhoto, New Rectangle(0, 0, oPhoto.Width, oPhoto.Height), 0, 0, oPhoto.Width, oPhoto.Height, GraphicsUnit.Pixel, oAttributes)
+                    Call oPhoto.Dispose()
+                    oPhoto = oNewPhoto
+                End Using
+            End Using
+        End Sub
+
+        Public Function Reduce(Percentage As Single) As cOrthoPhoto
+            Dim oImage As Bitmap = oPhoto
+            Dim sFactor As Decimal = (100 / Percentage)
+            Dim iNewHeight As Integer = oImage.Height / sFactor
+            Dim iNewWidth As Integer = oImage.Width / sFactor
+            Dim iProgressIndex As Integer = 0
+            Using oScaledImage As Bitmap = modPaint.ScaleImage(oImage, New Drawing.Size(iNewWidth, iNewHeight), Color.White)
+                Return New cOrthoPhoto(oSurvey, sName, oCoordinate, oScaledImage, sXSize * sFactor, sYSize * sFactor)
+            End Using
+        End Function
+
         Friend Function GetTLPoint() As PointF
             Dim oOrigin As Calculate.cTrigPointCoordinate = oSurvey.Calculate.TrigPoints(oSurvey.Properties.Origin).Coordinate
             Dim oPoint As Calculate.cTrigPointCoordinate = New Calculate.cTrigPointCoordinate(GetCoordinate(GetCoordinateCornerEnum.TopLeft))
@@ -99,20 +123,23 @@ Namespace cSurvey.Surface
             sID = modXML.GetAttributeValue(OrthoPhoto, "id")
             oCoordinate = New cCoordinate(OrthoPhoto.Item("coordinate"))
             iSystem = modXML.GetAttributeValue(OrthoPhoto, "system", cSurface.CoordinateSystemEnum.UTMWGS84)
-            sXSize = modNumbers.StringToSingle(modXML.GetAttributeValue(OrthoPhoto, "xsize", 0))
-            sYSize = modNumbers.StringToSingle(modXML.GetAttributeValue(OrthoPhoto, "ysize", 0))
+            sXSize = modNumbers.StringToDecimal(modXML.GetAttributeValue(OrthoPhoto, "xsize", 0))
+            sYSize = modNumbers.StringToDecimal(modXML.GetAttributeValue(OrthoPhoto, "ysize", 0))
             Select Case File.FileFormat
                 Case Storage.cFile.FileFormatEnum.CSX
                     Try
-                        Dim oms As IO.MemoryStream = New IO.MemoryStream(Convert.FromBase64String(modXML.GetAttributeValue(OrthoPhoto, "photo")))
-                        oPhoto = New Bitmap(oms)
+                        Using oMs As IO.MemoryStream = New IO.MemoryStream(Convert.FromBase64String(modXML.GetAttributeValue(OrthoPhoto, "photo")))
+                            'oPhoto = New Bitmap(oms)
+                            oPhoto = modPaint.SafeBitmapFromStream(oMs)
+                        End Using
                         'Call oms.Dispose()
                     Catch
                     End Try
                 Case Storage.cFile.FileFormatEnum.CSZ
                     Try
                         Dim sDataPath As String = modXML.GetAttributeValue(OrthoPhoto, "photo")
-                        oPhoto = New Bitmap(DirectCast(File.Data(sDataPath), Storage.cStorageItemFile).Stream)
+                        'oPhoto = New Bitmap(DirectCast(File.Data(sDataPath), Storage.cStorageItemFile).Stream)
+                        oPhoto = modPaint.SafeBitmapFromStream(DirectCast(File.Data(sDataPath), Storage.cStorageItemFile).Stream)
                     Catch
                     End Try
             End Select
@@ -162,13 +189,16 @@ Namespace cSurvey.Surface
                 If Not (File.Options And Storage.cFile.FileOptionsEnum.DontSaveBinary) = Storage.cFile.FileOptionsEnum.DontSaveBinary Then
                     Select Case File.FileFormat
                         Case Storage.cFile.FileFormatEnum.CSX
-                            Dim oms As IO.MemoryStream = New IO.MemoryStream
-                            Call oPhoto.Save(oms, Drawing.Imaging.ImageFormat.Jpeg)
-                            Call oXmlItem.SetAttribute("photo", Convert.ToBase64String(oms.ToArray()))
+                            Using oms As IO.MemoryStream = New IO.MemoryStream
+                                'Call oPhoto.Save(oms, Drawing.Imaging.ImageFormat.Jpeg)
+                                Call modPaint.SafeBitmapSaveToStream(oPhoto, oms, Drawing.Imaging.ImageFormat.Jpeg)
+                                Call oXmlItem.SetAttribute("photo", Convert.ToBase64String(oms.ToArray()))
+                            End Using
                         Case Storage.cFile.FileFormatEnum.CSZ
                             Dim sDataPath As String = "_data\surface\orthophotos\" & sID & ".jpg"
                             Dim oDataStorage As Storage.cStorageItemFile = File.Data.AddFile(sDataPath)
-                            Call oPhoto.Save(oDataStorage.Stream, Drawing.Imaging.ImageFormat.Jpeg)
+                            'Call oPhoto.Save(oDataStorage.Stream, Drawing.Imaging.ImageFormat.Jpeg)
+                            Call modPaint.SafeBitmapSaveToStream(oPhoto, oDataStorage.Stream, Drawing.Imaging.ImageFormat.Jpeg)
                             Call oXmlItem.SetAttribute("photo", sDataPath)
                     End Select
                 End If
@@ -307,9 +337,10 @@ Namespace cSurvey.Surface
             Next
         End Sub
 
-        Friend Sub New(Survey As cSurvey, Coordinate As cCoordinate, Image As Image, XSize As Single, YSize As Single)
+        Friend Sub New(Survey As cSurvey, Name As String, Coordinate As cCoordinate, Image As Image, XSize As Decimal, YSize As Decimal)
             oSurvey = Survey
             sID = Guid.NewGuid.ToString
+            sName = Name
             oCoordinate = New cCoordinate(Coordinate)
             iSystem = cSurface.CoordinateSystemEnum.UTMWGS84
             oPhoto = Image.Clone
@@ -399,12 +430,12 @@ Namespace cSurvey.Surface
             Dim bResult As Boolean
             Select Case DataType
                 Case OrthoPhotoDataTypeEnum.RasterImageWithWorldFile
-                    'file ArcASCIIGrid...
                     Call oSurvey.RaiseOnProgressEvent("orthophoto.import", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, modMain.GetLocalizedString("surface.progressbegin1"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageLoad)
                     Try
+                        sName = IO.Path.GetFileNameWithoutExtension(Filename)
                         Select Case Path.GetExtension(Filename).ToLower
                             Case ".jpg", ".png", ".tif"
-                                oPhoto = New Bitmap(Filename)
+                                oPhoto = modPaint.SafeBitmapFromFile(Filename)
                                 Dim sWorldFiles As String = pGetWorldFileFromImageFilename(Filename)
                                 If sWorldFiles = "" Then
                                     Call MsgBox(String.Format(modMain.GetLocalizedString("surface.warning2"), modMain.GetLocalizedString("surface.warning4")), MsgBoxStyle.OkOnly Or MsgBoxStyle.Exclamation, modMain.GetLocalizedString("surface.warningtitle"))

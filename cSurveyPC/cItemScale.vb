@@ -23,9 +23,11 @@ Namespace cSurvey.Design.Items
 
         Private bHideScaleValue As Boolean
 
-        Private iTextSize As cIItemText.TextSizeEnum
+        Private iTextSize As cIItemSizable.SizeEnum
         Private iTextVerticalAlignment As cIItemVerticalLineableText.TextVerticalAlignmentEnum
         Private iTextAlignment As cIItemLineableText.TextAlignmentEnum
+        Private sScaleHeightFactor As Single
+        Private iScaleFillStyle As cIItemScale.ScaleFillStyleEnum
 
         Public Overrides ReadOnly Property CanBeHiddenInDesign As Boolean
             Get
@@ -223,13 +225,15 @@ Namespace cSurvey.Design.Items
             oSurvey = Survey
             oFont = New cItemFont(oSurvey, cItemFont.FontTypeEnum.Generic)
             sText = "" & Text
-            iTextSize = cIItemText.TextSizeEnum.Default
+            iTextSize = cIItemSizable.SizeEnum.Default
             iTextAlignment = cIItemLineableText.TextAlignmentEnum.Left
             iTextVerticalAlignment = cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle
 
             iLength = 10
             iSteps = 5
             iStepLength = 1
+            sScaleHeightFactor = 1
+            iScaleFillStyle = cIItemScale.ScaleFillStyleEnum.Solid
             sText = ""
             bHideScaleValue = False
 
@@ -239,31 +243,47 @@ Namespace cSurvey.Design.Items
         Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptions) As Single
             Dim sTextScaleFactor As Single = MyBase.GetTextScaleFactor(PaintOptions)
             Select Case iTextSize
-                Case cIItemText.TextSizeEnum.Default
+                Case cIItemSizable.SizeEnum.Default
                     Return 1 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.VerySmall
+                Case cIItemSizable.SizeEnum.VerySmall
                     Return 0.25 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Small
+                Case cIItemSizable.SizeEnum.Small
                     Return 0.5 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Medium
+                Case cIItemSizable.SizeEnum.Medium
                     Return 1 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Large
+                Case cIItemSizable.SizeEnum.Large
                     Return 2 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.VeryLarge
+                Case cIItemSizable.SizeEnum.VeryLarge
                     Return 4 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x6
+                    Return 6 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x8
+                    Return 8 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x10
+                    Return 10 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x12
+                    Return 12 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x16
+                    Return 16 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x20
+                    Return 20 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x24
+                    Return 24 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x32
+                    Return 32 * sTextScaleFactor
             End Select
         End Function
 
         Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
-            Dim oMatrix As Matrix = New Matrix
-            If PaintOptions.DrawTranslation Then
-                Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
-                Call oMatrix.Translate(oTranslation.Width, oTranslation.Height)
-            End If
-            Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
-            Call oSVGItem.SetAttribute("name", MyBase.Name)
-            Call oMatrix.Dispose()
-            Return oSVGItem
+            Using oMatrix As Matrix = New Matrix
+                If PaintOptions.DrawTranslation Then
+                    Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
+                    Call oMatrix.Translate(oTranslation.Width, oTranslation.Height)
+                End If
+                Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
+                Call oSVGItem.SetAttribute("name", MyBase.Name)
+                Return oSVGItem
+            End Using
         End Function
 
         Public Overrides Sub ResizeTo(ByVal Size As SizeF)
@@ -302,15 +322,12 @@ Namespace cSurvey.Design.Items
                     End If
 
                     Dim oTextFont As Font = oFont.GetFont(PaintOptions)
-                    Dim oScaleValueSize As SizeF = Graphics.MeasureString(sScaleText, oTextFont)
+                    Dim oScaleValueSize As SizeF = Graphics.MeasureString(If(sScaleText.Trim = "", "OOOOO", sScaleText), oTextFont)
                     Dim oScaledScaleValueSize As SizeF = New SizeF(oScaleValueSize.Width * sScale, oScaleValueSize.Height * sScale)
                     Using oScaleMeterFont As cItemFont = oFont.Clone
                         oScaleMeterFont.FontSize = oTextFont.Size * 0.6!
                         Using oSF As StringFormat = New StringFormat
-                            oSF.Alignment =StringAlignment.Center 
-                            'Dim oScalePen As Pen = New Pen(PaintOptions.ScaleOptions.Color, -1)
-                            'Dim oScaleBrush1 As Brush = New SolidBrush(PaintOptions.ScaleOptions.Color)
-                            'Dim oScalebrush2 As Brush = New SolidBrush(Color.White)
+                            oSF.Alignment = StringAlignment.Center
                             Dim oBorderPen As cPen = PaintOptions.PaintObjects.GenericPens.GenericPen
                             Dim oBorderBrush As cBrush = PaintOptions.PaintObjects.GenericBrushes.SignSolid
 
@@ -323,27 +340,52 @@ Namespace cSurvey.Design.Items
                             Dim bFilled As Boolean = False
                             Dim iMeter As Integer = 0
                             Dim sMeter As String = ""
-                            Dim sScaleHeight As Single = oScaledScaleValueSize.Height
-                            Dim sHalfScaleHeight As Single = sScaleHeight / 2
+                            Dim sScaleHeight As Single = oScaledScaleValueSize.Height / 2 * If(sScaleHeightFactor <= 0, 1, sScaleHeightFactor)
+                            'Dim sHalfScaleHeight As Single = sScaleHeight / 2
+                            Dim sOffsetScaleHeight As Single = oScaleMeterFont.MeasureString(Graphics, PaintOptions, "O").Height * sScale / 2.0
                             For iScaleStepIndex As Integer = 0 To (iLength / iSteps) - 1
                                 If iScaleStepIndex = 0 Then
                                     Dim iScaleSubStepWidth As Single = sScaleWidth * iStepLength / iLength
                                     For iSubScaleStepIndex = 0 To iDetailedSteps - iStepLength Step iStepLength
                                         bFilled = Not bFilled
                                         If bFilled Then
-                                            Using oPath As GraphicsPath = New GraphicsPath
-                                                Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY, iScaleSubStepWidth, sHalfScaleHeight))
-                                                Call oBorderBrush.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
-                                                Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
-                                            End Using
+                                            If iScaleFillStyle = cIItemScale.ScaleFillStyleEnum.Alternate Then
+                                                Using oPath As GraphicsPath = New GraphicsPath
+                                                    Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY, iScaleSubStepWidth, sScaleHeight / 2))
+                                                    Call oBorderBrush.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                    Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                End Using
+                                                Using oPath As GraphicsPath = New GraphicsPath
+                                                    Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY + sScaleHeight / 2, iScaleSubStepWidth, sScaleHeight / 2))
+                                                    Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                End Using
+                                            Else
+                                                Using oPath As GraphicsPath = New GraphicsPath
+                                                    Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY, iScaleSubStepWidth, sScaleHeight))
+                                                    Call oBorderBrush.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                    Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                End Using
+                                            End If
                                         Else
-                                            Using oPath As GraphicsPath = New GraphicsPath
-                                                Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY, iScaleSubStepWidth, sHalfScaleHeight))
-                                                Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
-                                            End Using
+                                            If iScaleFillStyle = cIItemScale.ScaleFillStyleEnum.Alternate Then
+                                                Using oPath As GraphicsPath = New GraphicsPath
+                                                    Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY, iScaleSubStepWidth, sScaleHeight / 2))
+                                                    Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                End Using
+                                                Using oPath As GraphicsPath = New GraphicsPath
+                                                    Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY + sScaleHeight / 2, iScaleSubStepWidth, sScaleHeight / 2))
+                                                    Call oBorderBrush.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                    Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                End Using
+                                            Else
+                                                Using oPath As GraphicsPath = New GraphicsPath
+                                                    Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY, iScaleSubStepWidth, sScaleHeight))
+                                                    Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                End Using
+                                            End If
                                         End If
                                         Using oPath As GraphicsPath = New GraphicsPath
-                                            Call oPath.AddLine(sScaleStepLeftX, sScaleLeftY + sHalfScaleHeight, sScaleStepLeftX, sScaleLeftY + sScaleHeight)
+                                            Call oPath.AddLine(sScaleStepLeftX, sScaleLeftY + sScaleHeight, sScaleStepLeftX, sScaleLeftY + sScaleHeight + sOffsetScaleHeight)
                                             Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
                                         End Using
                                         Using oPath As GraphicsPath = New GraphicsPath
@@ -351,7 +393,7 @@ Namespace cSurvey.Design.Items
                                             Using oTextPath As GraphicsPath = oScaleMeterFont.GetPath(PaintOptions, sMeter, oSF)
                                                 Using oTextMatrix = New Matrix
                                                     Call oTextMatrix.Scale(sScale, sScale, MatrixOrder.Append)
-                                                    Call oTextMatrix.Translate(sScaleStepLeftX, sScaleLeftY + sScaleHeight, MatrixOrder.Append)
+                                                    Call oTextMatrix.Translate(sScaleStepLeftX, sScaleLeftY + sScaleHeight + sOffsetScaleHeight, MatrixOrder.Append)
                                                     Call oTextPath.Transform(oTextMatrix)
                                                 End Using
                                                 Call oPath.AddPath(oTextPath, False)
@@ -364,19 +406,43 @@ Namespace cSurvey.Design.Items
                                 Else
                                     bFilled = Not bFilled
                                     If bFilled Then
-                                        Using oPath As GraphicsPath = New GraphicsPath
-                                            Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY, iDetailedSteps, sHalfScaleHeight))
-                                            Call oBorderBrush.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
-                                            Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
-                                        End Using
+                                        If iScaleFillStyle = cIItemScale.ScaleFillStyleEnum.Alternate Then
+                                            Using oPath As GraphicsPath = New GraphicsPath
+                                                Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY, iDetailedSteps, sScaleHeight / 2))
+                                                Call oBorderBrush.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                            End Using
+                                            Using oPath As GraphicsPath = New GraphicsPath
+                                                Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY + sScaleHeight / 2, iDetailedSteps, sScaleHeight / 2))
+                                                Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                            End Using
+                                        Else
+                                            Using oPath As GraphicsPath = New GraphicsPath
+                                                Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY, iDetailedSteps, sScaleHeight))
+                                                Call oBorderBrush.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                            End Using
+                                        End If
                                     Else
-                                        Using oPath As GraphicsPath = New GraphicsPath
-                                            Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY, iDetailedSteps, sHalfScaleHeight))
-                                            Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
-                                        End Using
+                                        If iScaleFillStyle = cIItemScale.ScaleFillStyleEnum.Alternate Then
+                                            Using oPath As GraphicsPath = New GraphicsPath
+                                                Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY, iDetailedSteps, sScaleHeight / 2))
+                                                Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                            End Using
+                                            Using oPath As GraphicsPath = New GraphicsPath
+                                                Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY + sScaleHeight / 2, iDetailedSteps, sScaleHeight / 2))
+                                                Call oBorderBrush.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                                Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                            End Using
+                                        Else
+                                            Using oPath As GraphicsPath = New GraphicsPath
+                                                Call oPath.AddRectangle(New RectangleF(sScaleStepLeftX, sScaleLeftY, iDetailedSteps, sScaleHeight))
+                                                Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
+                                            End Using
+                                        End If
                                     End If
                                     Using oPath As GraphicsPath = New GraphicsPath
-                                        Call oPath.AddLine(sScaleStepLeftX, sScaleLeftY + sHalfScaleHeight, sScaleStepLeftX, sScaleLeftY + sScaleHeight)
+                                        Call oPath.AddLine(sScaleStepLeftX, sScaleLeftY + sScaleHeight, sScaleStepLeftX, sScaleLeftY + sScaleHeight + sOffsetScaleHeight)
                                         Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
                                     End Using
                                     Using oPath As GraphicsPath = New GraphicsPath
@@ -385,7 +451,7 @@ Namespace cSurvey.Design.Items
                                         Using oTextPath As GraphicsPath = oScaleMeterFont.GetPath(PaintOptions, sMeter, oSF)
                                             Using oTextMatrix = New Matrix
                                                 Call oTextMatrix.Scale(sScale, sScale, MatrixOrder.Append)
-                                                Call oTextMatrix.Translate(sScaleStepLeftX, sScaleLeftY + sScaleHeight, MatrixOrder.Append)
+                                                Call oTextMatrix.Translate(sScaleStepLeftX, sScaleLeftY + sScaleHeight + sOffsetScaleHeight, MatrixOrder.Append)
                                                 Call oTextPath.Transform(oTextMatrix)
                                             End Using
                                             Call oPath.AddPath(oTextPath, False)
@@ -397,12 +463,11 @@ Namespace cSurvey.Design.Items
                                 End If
                             Next
                             Using oPath As GraphicsPath = New GraphicsPath
-                                'dimensiono il testo se rischiesto (il fattore di scala sarà da parametrizzare in qualche modo)
                                 sMeter = iMeter & "m"
                                 Using oTextPath As GraphicsPath = oScaleMeterFont.GetPath(PaintOptions, sMeter, oSF)
                                     Using oTextMatrix = New Matrix
                                         Call oTextMatrix.Scale(sScale, sScale, MatrixOrder.Append)
-                                        Call oTextMatrix.Translate(sScaleStepLeftX, sScaleLeftY + sScaleHeight, MatrixOrder.Append)
+                                        Call oTextMatrix.Translate(sScaleStepLeftX, sScaleLeftY + sScaleHeight + sOffsetScaleHeight, MatrixOrder.Append)
                                         Call oTextPath.Transform(oTextMatrix)
                                     End Using
                                     Call oPath.AddPath(oTextPath, False)
@@ -412,20 +477,22 @@ Namespace cSurvey.Design.Items
 
                             Dim sScaleRightX As Single = sScaleStepLeftX
                             Using oPath As GraphicsPath = New GraphicsPath
-                                Call oPath.AddLine(sScaleStepLeftX, sScaleLeftY + sHalfScaleHeight, sScaleStepLeftX, sScaleLeftY + sScaleHeight)
+                                Call oPath.AddLine(sScaleStepLeftX, sScaleLeftY + sScaleHeight, sScaleStepLeftX, sScaleLeftY + sScaleHeight + sOffsetScaleHeight)
                                 Call oBorderPen.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
                             End Using
-                            Using oPath As GraphicsPath = New GraphicsPath
-                                Using oTextPath As GraphicsPath = oFont.GetPath(PaintOptions, sScaleText, oSF)
-                                    Using oTextMatrix = New Matrix
-                                        Call oTextMatrix.Scale(sScale, sScale, MatrixOrder.Append)
-                                        Call oTextMatrix.Translate(sScaleLeftX + sScaleWidth / 2, 0, MatrixOrder.Append)
-                                        Call oTextPath.Transform(oTextMatrix)
+                            If sScaleText <> "" Then
+                                Using oPath As GraphicsPath = New GraphicsPath
+                                    Using oTextPath As GraphicsPath = oFont.GetPath(PaintOptions, sScaleText, oSF)
+                                        Using oTextMatrix = New Matrix
+                                            Call oTextMatrix.Scale(sScale, sScale, MatrixOrder.Append)
+                                            Call oTextMatrix.Translate(sScaleLeftX + sScaleWidth / 2, 0, MatrixOrder.Append)
+                                            Call oTextPath.Transform(oTextMatrix)
+                                        End Using
+                                        Call oPath.AddPath(oTextPath, False)
                                     End Using
-                                    Call oPath.AddPath(oTextPath, False)
+                                    Call oBorderBrush.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
                                 End Using
-                                Call oBorderBrush.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
-                            End Using
+                            End If
                         End Using
                     End Using
 
@@ -482,6 +549,30 @@ Namespace cSurvey.Design.Items
             End Set
         End Property
 
+        Public Property ScaleFillStyle As cIItemScale.ScaleFillStyleEnum Implements cIItemScale.ScaleFillStyle
+            Get
+                Return iScaleFillStyle
+            End Get
+            Set(value As cIItemScale.ScaleFillStyleEnum)
+                If iScaleFillStyle <> value Then
+                    iScaleFillStyle = value
+                    Call MyBase.Caches.Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property ScaleHeightFactor As Single Implements cIItemScale.ScaleHeightFactor
+            Get
+                Return sScaleHeightFactor
+            End Get
+            Set(value As Single)
+                If sScaleHeightFactor <> value Then
+                    sScaleHeightFactor = value
+                    Call MyBase.Caches.Invalidate()
+                End If
+            End Set
+        End Property
+
         Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             If MyBase.Points.Count > 0 Then
                 Call Render(Graphics, PaintOptions, Options, Selected)
@@ -510,6 +601,8 @@ Namespace cSurvey.Design.Items
             iLength = modXML.GetAttributeValue(item, "l", 10)
             iSteps = modXML.GetAttributeValue(item, "s", 5)
             iStepLength = modXML.GetAttributeValue(item, "sl", 1)
+            sScaleHeightFactor = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "shf", 1))
+            iScaleFillStyle = modXML.GetAttributeValue(item, "sfs", 0)
 
             bHideScaleValue = modXML.GetAttributeValue(item, "hsv", 0)
         End Sub
@@ -518,7 +611,7 @@ Namespace cSurvey.Design.Items
             Dim oItem As XmlElement = MyBase.SaveTo(File, Document, Parent, Options)
             If "" & sText <> "" Then Call oItem.SetAttribute("text", "" & sText)
             Call oFont.SaveTo(File, Document, oItem, "font")
-            If iTextSize <> cIItemText.TextSizeEnum.Default Then
+            If iTextSize <> cIItemSizable.SizeEnum.Default Then
                 Call oItem.SetAttribute("textsize", iTextSize)
             End If
             If iTextAlignment <> cIItemLineableText.TextAlignmentEnum.Center Then
@@ -531,17 +624,19 @@ Namespace cSurvey.Design.Items
             Call oItem.SetAttribute("l", iLength)
             Call oItem.SetAttribute("s", iSteps)
             Call oItem.SetAttribute("sl", iStepLength)
+            If sScaleHeightFactor <> 1 Then Call oItem.SetAttribute("shf", modNumbers.NumberToString(sScaleHeightFactor))
+            If iScaleFillStyle <> cIItemScale.ScaleFillStyleEnum.Solid Then Call oItem.SetAttribute("sfs", iScaleFillStyle.ToString("D"))
 
             If bHideScaleValue Then Call oItem.SetAttribute("hsv", "1")
 
             Return oItem
         End Function
 
-        Public Property TextSize() As cIItemText.TextSizeEnum Implements cIItemText.TextSize
+        Public Property TextSize() As cIItemSizable.SizeEnum Implements cIItemSizable.Size
             Get
                 Return iTextSize
             End Get
-            Set(ByVal value As cIItemText.TextSizeEnum)
+            Set(ByVal value As cIItemSizable.SizeEnum)
                 If iTextSize <> value Then
                     iTextSize = value
                     Call MyBase.Caches.Invalidate()

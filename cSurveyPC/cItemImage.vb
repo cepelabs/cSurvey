@@ -163,7 +163,7 @@ Namespace cSurvey.Design.Items
             Call MyBase.New(Survey, Design, Layer, cIItem.cItemTypeEnum.Image, Category)
             sImageID = Guid.NewGuid.ToString
 
-            oImage = Image
+            oImage = New Bitmap(Image)
 
             oTransparentColor = Color.Transparent
             sTransparencyThreshold = sDefaultTransparencyThreshold
@@ -313,18 +313,12 @@ Namespace cSurvey.Design.Items
             If sImageID = "" Then sImageID = Guid.NewGuid.ToString
             Select Case File.FileFormat
                 Case Storage.cFile.FileFormatEnum.CSX
-                    Try
-                        Dim oms As IO.MemoryStream = New IO.MemoryStream(Convert.FromBase64String(modXML.GetAttributeValue(item, "image")))
-                        oImage = New Bitmap(oms)
-                        'Call oms.Dispose()
-                    Catch
-                    End Try
+                    Using oMs As IO.MemoryStream = New IO.MemoryStream(Convert.FromBase64String(modXML.GetAttributeValue(item, "image")))
+                        oImage = modPaint.SafeBitmapFromStream(oMs)
+                    End Using
                 Case Storage.cFile.FileFormatEnum.CSZ
-                    Try
-                        Dim sImagePath As String = modXML.GetAttributeValue(item, "image")
-                        oImage = New Bitmap(DirectCast(File.Data(sImagePath), Storage.cStorageItemFile).Stream)
-                    Catch
-                    End Try
+                    Dim sImagePath As String = modXML.GetAttributeValue(item, "image")
+                    oImage = New Bitmap(DirectCast(File.Data(sImagePath), Storage.cStorageItemFile).Stream)
             End Select
             oTransparentColor = modXML.GetAttributeColor(item, "transparentcolor", Color.Transparent)
             sTransparencyThreshold = modXML.GetAttributeValue(item, "transparencythreshold", sDefaultTransparencyThreshold)
@@ -337,20 +331,15 @@ Namespace cSurvey.Design.Items
             If Not (File.Options And Storage.cFile.FileOptionsEnum.DontSaveBinary) = Storage.cFile.FileOptionsEnum.DontSaveBinary Then
                 Select Case File.FileFormat
                     Case Storage.cFile.FileFormatEnum.CSX
-                        Using oms As IO.MemoryStream = New IO.MemoryStream
-                            Using oTemp As Bitmap = New Bitmap(oImage)
-                                Call oTemp.Save(oms, Drawing.Imaging.ImageFormat.Png)
-                                Call oItem.SetAttribute("image", Convert.ToBase64String(oms.ToArray()))
-                                Call oms.Close()
-                            End Using
+                        Using oMs As IO.MemoryStream = New IO.MemoryStream
+                            Call modPaint.SafeBitmapSaveToStream(oImage, oMs, Drawing.Imaging.ImageFormat.Png)
+                            Call oItem.SetAttribute("image", Convert.ToBase64String(oMs.ToArray()))
                         End Using
                     Case Storage.cFile.FileFormatEnum.CSZ
                         Dim sImagePath As String = "_data\design\" & sImageID & ".png"
                         Dim oImageStorage As Storage.cStorageItemFile = File.Data.AddFile(sImagePath)
-                        Using oTemp As Bitmap = New Bitmap(oImage)
-                            Call oTemp.Save(oImageStorage.Stream, Drawing.Imaging.ImageFormat.Png)
-                            Call oItem.SetAttribute("image", sImagePath)
-                        End Using
+                        Call modPaint.SafeBitmapSaveToStream(oImage, oImageStorage.Stream, Drawing.Imaging.ImageFormat.Png)
+                        Call oItem.SetAttribute("image", sImagePath)
                 End Select
             End If
             If Not oTransparentColor = Color.Transparent Then Call oItem.SetAttribute("transparentcolor", oTransparentColor.ToArgb)

@@ -101,6 +101,8 @@ Partial Class frmMain
         Me.btnFilterEdit = New System.Windows.Forms.ToolStripButton()
         Me.btnFilterFiltered = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator16 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnFilterWhiteboard = New System.Windows.Forms.ToolStripButton()
+        Me.btnFilterInvertFilter = New System.Windows.Forms.ToolStripButton()
         Me.pnlData = New System.Windows.Forms.Panel()
         Me.spSegmentsAndTrigpoints = New System.Windows.Forms.SplitContainer()
         Me.spSegments = New System.Windows.Forms.SplitContainer()
@@ -237,6 +239,9 @@ Partial Class frmMain
         Me.colTrigpointsLatitude = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
         Me.colTrigpointsLongitude = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
         Me.colTrigpointsAltitude = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
+        Me.colTrigpointsConnections = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
+        Me.colTrigpointsConnectionsCount = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
+        Me.colTrigpointsCustomConnections = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
         Me.mnuTrigPoints = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.mnuTrigPointsRebind = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuTrigPointsRemoveOrphans = New System.Windows.Forms.ToolStripMenuItem()
@@ -345,6 +350,8 @@ Partial Class frmMain
         Me.Button1 = New System.Windows.Forms.Button()
         Me.trkZoom = New System.Windows.Forms.TrackBar()
         Me.pnlObjectLayers = New System.Windows.Forms.Panel()
+        Me.chkLayerInvertFilter = New System.Windows.Forms.Button()
+        Me.chkLayerWhiteboard = New System.Windows.Forms.CheckBox()
         Me.cmdLayerSync = New System.Windows.Forms.Button()
         Me.tvLayers2 = New BrightIdeasSoftware.TreeListView()
         Me.colLayersCaveBranchColor = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
@@ -512,6 +519,8 @@ Partial Class frmMain
         Me.cmdPropShapeCloseAllSequences = New System.Windows.Forms.Button()
         Me.cmdPropShapeCombineAllSequences = New System.Windows.Forms.Button()
         Me.pnlPropSign = New System.Windows.Forms.Panel()
+        Me.cboPropSignFlip = New System.Windows.Forms.ComboBox()
+        Me.lblPropSignFlip = New System.Windows.Forms.Label()
         Me.cmdPropSignOtherOptions = New System.Windows.Forms.Button()
         Me.cboPropSign = New System.Windows.Forms.ComboBox()
         Me.lblPropSign = New System.Windows.Forms.Label()
@@ -677,13 +686,13 @@ Partial Class frmMain
         Me.cboPropTextFontSize = New System.Windows.Forms.ComboBox()
         Me.lblPropTextFontSize = New System.Windows.Forms.Label()
         Me.pnlPropTextStyle = New System.Windows.Forms.Panel()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.optPropTextVAlignBottom = New System.Windows.Forms.RadioButton()
-        Me.optPropTextVAlignTop = New System.Windows.Forms.RadioButton()
-        Me.optPropTextVAlignCenter = New System.Windows.Forms.RadioButton()
-        Me.optPropTextAlignRight = New System.Windows.Forms.RadioButton()
-        Me.optPropTextAlignCenter = New System.Windows.Forms.RadioButton()
-        Me.optPropTextAlignLeft = New System.Windows.Forms.RadioButton()
+        Me.pnlPropTextStyleVAlign = New System.Windows.Forms.Panel()
+        Me.optPropTextVAlignBottom = New System.Windows.Forms.CheckBox()
+        Me.optPropTextVAlignTop = New System.Windows.Forms.CheckBox()
+        Me.optPropTextVAlignCenter = New System.Windows.Forms.CheckBox()
+        Me.optPropTextAlignRight = New System.Windows.Forms.CheckBox()
+        Me.optPropTextAlignCenter = New System.Windows.Forms.CheckBox()
+        Me.optPropTextAlignLeft = New System.Windows.Forms.CheckBox()
         Me.cboPropTextSize = New System.Windows.Forms.ComboBox()
         Me.lblPropTextSize = New System.Windows.Forms.Label()
         Me.lblPropText = New System.Windows.Forms.Label()
@@ -1137,6 +1146,7 @@ Partial Class frmMain
         Me.mnuFileRollback = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuFileSave = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuFileSaveAs = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuFileSaveAsTemplate = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem97 = New System.Windows.Forms.ToolStripSeparator()
         Me.mnuFileHistory = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuFileCleanUp = New System.Windows.Forms.ToolStripMenuItem()
@@ -1169,6 +1179,8 @@ Partial Class frmMain
         Me.mnuFileSettings = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuFileAutoSettings = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripSeparator()
+        Me.mnuFileManageTemplates = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem56 = New System.Windows.Forms.ToolStripSeparator()
         Me.mnuFileRecent = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem74 = New System.Windows.Forms.ToolStripSeparator()
         Me.mnuFileHideInTray = New System.Windows.Forms.ToolStripMenuItem()
@@ -1681,7 +1693,7 @@ Partial Class frmMain
         Me.pnlPropTextFont.SuspendLayout()
         CType(Me.picPropFontColor, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlPropTextStyle.SuspendLayout()
-        Me.Panel1.SuspendLayout()
+        Me.pnlPropTextStyleVAlign.SuspendLayout()
         Me.pnlPropCrossSection.SuspendLayout()
         CType(Me.txtPropCrossSectionHeight, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropCrossSectionWidth, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1874,7 +1886,7 @@ Partial Class frmMain
         Me.tbViews.BackColor = System.Drawing.Color.Transparent
         resources.ApplyResources(Me.tbViews, "tbViews")
         Me.tbViews.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.tbViews.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnView_Plan, Me.btnView_Profile, Me.ToolStripSeparator14, Me.btnView_3D, Me.ToolStripSeparator17, Me.btnCursorMode, Me.btnScrollMode, Me.btnAltMode, Me.btnMultiSelMode1, Me.btnMultiSelMode2, Me.btnSepSnapToPoint, Me.btnSnapToPointNone, Me.btnSnapToPoint0, Me.btnSnapToPoint1, Me.btnSnapToPoint2, Me.btnSepMode, Me.btnViewRulers, Me.btnViewMetricGrid, Me.btnViewMetricGridSep, Me.btnEditDrawing, Me.btnEditPointToPoint, Me.btnEditSep, Me.btnEndEdit, Me.btn3DSep, Me.btn3dViewTop, Me.btn3dViewBottom, Me.btn3dViewSN, Me.btn3dViewNS, Me.btn3dViewEO, Me.btn3dViewOE, Me.btn3DCameraSep, Me.btn3DCameraType, Me.btn3DCameraMode, Me.btnFilterSeparator, Me.btnFilterEdit, Me.btnFilterFiltered, Me.ToolStripSeparator16})
+        Me.tbViews.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnView_Plan, Me.btnView_Profile, Me.ToolStripSeparator14, Me.btnView_3D, Me.ToolStripSeparator17, Me.btnCursorMode, Me.btnScrollMode, Me.btnAltMode, Me.btnMultiSelMode1, Me.btnMultiSelMode2, Me.btnSepSnapToPoint, Me.btnSnapToPointNone, Me.btnSnapToPoint0, Me.btnSnapToPoint1, Me.btnSnapToPoint2, Me.btnSepMode, Me.btnViewRulers, Me.btnViewMetricGrid, Me.btnViewMetricGridSep, Me.btnEditDrawing, Me.btnEditPointToPoint, Me.btnEditSep, Me.btnEndEdit, Me.btn3DSep, Me.btn3dViewTop, Me.btn3dViewBottom, Me.btn3dViewSN, Me.btn3dViewNS, Me.btn3dViewEO, Me.btn3dViewOE, Me.btn3DCameraSep, Me.btn3DCameraType, Me.btn3DCameraMode, Me.btnFilterSeparator, Me.btnFilterEdit, Me.btnFilterFiltered, Me.ToolStripSeparator16, Me.btnFilterWhiteboard, Me.btnFilterInvertFilter})
         Me.tbViews.Name = "tbViews"
         '
         'btnView_Plan
@@ -2145,6 +2157,20 @@ Partial Class frmMain
         Me.ToolStripSeparator16.Name = "ToolStripSeparator16"
         resources.ApplyResources(Me.ToolStripSeparator16, "ToolStripSeparator16")
         '
+        'btnFilterWhiteboard
+        '
+        Me.btnFilterWhiteboard.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnFilterWhiteboard.Image = Global.cSurveyPC.My.Resources.Resources.whiteboard_empty
+        resources.ApplyResources(Me.btnFilterWhiteboard, "btnFilterWhiteboard")
+        Me.btnFilterWhiteboard.Name = "btnFilterWhiteboard"
+        '
+        'btnFilterInvertFilter
+        '
+        Me.btnFilterInvertFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnFilterInvertFilter.Image = Global.cSurveyPC.My.Resources.Resources.filter_revert
+        resources.ApplyResources(Me.btnFilterInvertFilter, "btnFilterInvertFilter")
+        Me.btnFilterInvertFilter.Name = "btnFilterInvertFilter"
+        '
         'pnlData
         '
         Me.pnlData.Controls.Add(Me.spSegmentsAndTrigpoints)
@@ -2294,6 +2320,7 @@ Partial Class frmMain
         '
         resources.ApplyResources(Me.colInverted, "colInverted")
         Me.colInverted.Name = "colInverted"
+        Me.colInverted.ThreeState = True
         '
         'colExclude
         '
@@ -2600,7 +2627,7 @@ Partial Class frmMain
         Me.cboSegmentDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboSegmentDirection.DropDownWidth = 320
         Me.cboSegmentDirection.FormattingEnabled = True
-        Me.cboSegmentDirection.Items.AddRange(New Object() {resources.GetString("cboSegmentDirection.Items"), resources.GetString("cboSegmentDirection.Items1")})
+        Me.cboSegmentDirection.Items.AddRange(New Object() {resources.GetString("cboSegmentDirection.Items"), resources.GetString("cboSegmentDirection.Items1"), resources.GetString("cboSegmentDirection.Items2")})
         resources.ApplyResources(Me.cboSegmentDirection, "cboSegmentDirection")
         Me.cboSegmentDirection.Name = "cboSegmentDirection"
         Me.tipDefault.SetToolTip(Me.cboSegmentDirection, resources.GetString("cboSegmentDirection.ToolTip"))
@@ -3032,9 +3059,12 @@ Partial Class frmMain
         Me.lvTrigPoints.AllColumns.Add(Me.colTrigpointsLatitude)
         Me.lvTrigPoints.AllColumns.Add(Me.colTrigpointsLongitude)
         Me.lvTrigPoints.AllColumns.Add(Me.colTrigpointsAltitude)
+        Me.lvTrigPoints.AllColumns.Add(Me.colTrigpointsConnections)
+        Me.lvTrigPoints.AllColumns.Add(Me.colTrigpointsConnectionsCount)
+        Me.lvTrigPoints.AllColumns.Add(Me.colTrigpointsCustomConnections)
         Me.lvTrigPoints.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.lvTrigPoints.CellEditUseWholeCell = False
-        Me.lvTrigPoints.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colTrigpointsStation, Me.colTrigpointsEntrance, Me.colTrigpointsCoordinate, Me.colTrigpointsNote, Me.colTrigpointInExploration, Me.colTrigpointsSpecial})
+        Me.lvTrigPoints.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colTrigpointsStation, Me.colTrigpointsEntrance, Me.colTrigpointsCoordinate, Me.colTrigpointsNote, Me.colTrigpointInExploration, Me.colTrigpointsSpecial, Me.colTrigpointsConnections, Me.colTrigpointsConnectionsCount, Me.colTrigpointsCustomConnections})
         Me.lvTrigPoints.ContextMenuStrip = Me.mnuTrigPoints
         Me.lvTrigPoints.Cursor = System.Windows.Forms.Cursors.Default
         Me.lvTrigPoints.FullRowSelect = True
@@ -3103,6 +3133,18 @@ Partial Class frmMain
         '
         resources.ApplyResources(Me.colTrigpointsAltitude, "colTrigpointsAltitude")
         Me.colTrigpointsAltitude.IsVisible = False
+        '
+        'colTrigpointsConnections
+        '
+        resources.ApplyResources(Me.colTrigpointsConnections, "colTrigpointsConnections")
+        '
+        'colTrigpointsConnectionsCount
+        '
+        resources.ApplyResources(Me.colTrigpointsConnectionsCount, "colTrigpointsConnectionsCount")
+        '
+        'colTrigpointsCustomConnections
+        '
+        resources.ApplyResources(Me.colTrigpointsCustomConnections, "colTrigpointsCustomConnections")
         '
         'mnuTrigPoints
         '
@@ -3820,6 +3862,8 @@ Partial Class frmMain
         '
         resources.ApplyResources(Me.pnlObjectLayers, "pnlObjectLayers")
         Me.pnlObjectLayers.BackColor = System.Drawing.SystemColors.Window
+        Me.pnlObjectLayers.Controls.Add(Me.chkLayerInvertFilter)
+        Me.pnlObjectLayers.Controls.Add(Me.chkLayerWhiteboard)
         Me.pnlObjectLayers.Controls.Add(Me.cmdLayerSync)
         Me.pnlObjectLayers.Controls.Add(Me.tvLayers2)
         Me.pnlObjectLayers.Controls.Add(Me.chkLayerFiltered)
@@ -3831,6 +3875,22 @@ Partial Class frmMain
         Me.pnlObjectLayers.Controls.Add(Me.cmdLayerObjectProperty)
         Me.pnlObjectLayers.Controls.Add(Me.cmdLayerRefresh)
         Me.pnlObjectLayers.Name = "pnlObjectLayers"
+        '
+        'chkLayerInvertFilter
+        '
+        Me.chkLayerInvertFilter.Image = Global.cSurveyPC.My.Resources.Resources.filter_revert
+        resources.ApplyResources(Me.chkLayerInvertFilter, "chkLayerInvertFilter")
+        Me.chkLayerInvertFilter.Name = "chkLayerInvertFilter"
+        Me.tipDefault.SetToolTip(Me.chkLayerInvertFilter, resources.GetString("chkLayerInvertFilter.ToolTip"))
+        Me.chkLayerInvertFilter.UseVisualStyleBackColor = True
+        '
+        'chkLayerWhiteboard
+        '
+        resources.ApplyResources(Me.chkLayerWhiteboard, "chkLayerWhiteboard")
+        Me.chkLayerWhiteboard.Image = Global.cSurveyPC.My.Resources.Resources.whiteboard_empty
+        Me.chkLayerWhiteboard.Name = "chkLayerWhiteboard"
+        Me.tipDefault.SetToolTip(Me.chkLayerWhiteboard, resources.GetString("chkLayerWhiteboard.ToolTip"))
+        Me.chkLayerWhiteboard.UseVisualStyleBackColor = True
         '
         'cmdLayerSync
         '
@@ -4787,8 +4847,8 @@ Partial Class frmMain
         '
         'cDesignPrintOrExportArea
         '
-        resources.ApplyResources(Me.cDesignPrintOrExportArea, "cDesignPrintOrExportArea")
         Me.cDesignPrintOrExportArea.BackColor = System.Drawing.SystemColors.Window
+        resources.ApplyResources(Me.cDesignPrintOrExportArea, "cDesignPrintOrExportArea")
         Me.cDesignPrintOrExportArea.Name = "cDesignPrintOrExportArea"
         '
         'cDesignLinkedSurveys
@@ -4872,6 +4932,7 @@ Partial Class frmMain
         Me.lvPropConvertTo.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1})
         Me.lvPropConvertTo.FullRowSelect = True
         Me.lvPropConvertTo.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None
+        Me.lvPropConvertTo.HideSelection = False
         Me.lvPropConvertTo.LargeImageList = Me.imlGeneric
         Me.lvPropConvertTo.MultiSelect = False
         Me.lvPropConvertTo.Name = "lvPropConvertTo"
@@ -5026,6 +5087,8 @@ Partial Class frmMain
         'pnlPropSign
         '
         Me.pnlPropSign.BackColor = System.Drawing.Color.Transparent
+        Me.pnlPropSign.Controls.Add(Me.cboPropSignFlip)
+        Me.pnlPropSign.Controls.Add(Me.lblPropSignFlip)
         Me.pnlPropSign.Controls.Add(Me.cmdPropSignOtherOptions)
         Me.pnlPropSign.Controls.Add(Me.cboPropSign)
         Me.pnlPropSign.Controls.Add(Me.lblPropSign)
@@ -5035,6 +5098,20 @@ Partial Class frmMain
         Me.pnlPropSign.Controls.Add(Me.lblPropSignRotateMode)
         resources.ApplyResources(Me.pnlPropSign, "pnlPropSign")
         Me.pnlPropSign.Name = "pnlPropSign"
+        '
+        'cboPropSignFlip
+        '
+        Me.cboPropSignFlip.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboPropSignFlip.FormattingEnabled = True
+        Me.cboPropSignFlip.Items.AddRange(New Object() {resources.GetString("cboPropSignFlip.Items"), resources.GetString("cboPropSignFlip.Items1"), resources.GetString("cboPropSignFlip.Items2"), resources.GetString("cboPropSignFlip.Items3")})
+        resources.ApplyResources(Me.cboPropSignFlip, "cboPropSignFlip")
+        Me.cboPropSignFlip.Name = "cboPropSignFlip"
+        Me.tipDefault.SetToolTip(Me.cboPropSignFlip, resources.GetString("cboPropSignFlip.ToolTip"))
+        '
+        'lblPropSignFlip
+        '
+        resources.ApplyResources(Me.lblPropSignFlip, "lblPropSignFlip")
+        Me.lblPropSignFlip.Name = "lblPropSignFlip"
         '
         'cmdPropSignOtherOptions
         '
@@ -5060,7 +5137,7 @@ Partial Class frmMain
         '
         Me.cboPropSignSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboPropSignSize.FormattingEnabled = True
-        Me.cboPropSignSize.Items.AddRange(New Object() {resources.GetString("cboPropSignSize.Items"), resources.GetString("cboPropSignSize.Items1"), resources.GetString("cboPropSignSize.Items2"), resources.GetString("cboPropSignSize.Items3"), resources.GetString("cboPropSignSize.Items4"), resources.GetString("cboPropSignSize.Items5"), resources.GetString("cboPropSignSize.Items6"), resources.GetString("cboPropSignSize.Items7"), resources.GetString("cboPropSignSize.Items8"), resources.GetString("cboPropSignSize.Items9"), resources.GetString("cboPropSignSize.Items10")})
+        Me.cboPropSignSize.Items.AddRange(New Object() {resources.GetString("cboPropSignSize.Items"), resources.GetString("cboPropSignSize.Items1"), resources.GetString("cboPropSignSize.Items2"), resources.GetString("cboPropSignSize.Items3"), resources.GetString("cboPropSignSize.Items4"), resources.GetString("cboPropSignSize.Items5"), resources.GetString("cboPropSignSize.Items6"), resources.GetString("cboPropSignSize.Items7"), resources.GetString("cboPropSignSize.Items8"), resources.GetString("cboPropSignSize.Items9"), resources.GetString("cboPropSignSize.Items10"), resources.GetString("cboPropSignSize.Items11"), resources.GetString("cboPropSignSize.Items12"), resources.GetString("cboPropSignSize.Items13")})
         resources.ApplyResources(Me.cboPropSignSize, "cboPropSignSize")
         Me.cboPropSignSize.Name = "cboPropSignSize"
         Me.tipDefault.SetToolTip(Me.cboPropSignSize, resources.GetString("cboPropSignSize.ToolTip"))
@@ -6126,6 +6203,7 @@ Partial Class frmMain
         Me.lvPropSegmentsBinded.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colPropSegmentsBindedSegment})
         Me.lvPropSegmentsBinded.FullRowSelect = True
         Me.lvPropSegmentsBinded.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None
+        Me.lvPropSegmentsBinded.HideSelection = False
         Me.lvPropSegmentsBinded.Name = "lvPropSegmentsBinded"
         Me.tipDefault.SetToolTip(Me.lvPropSegmentsBinded, resources.GetString("lvPropSegmentsBinded.ToolTip"))
         Me.lvPropSegmentsBinded.UseCompatibleStateImageBehavior = False
@@ -6256,7 +6334,7 @@ Partial Class frmMain
         '
         resources.ApplyResources(Me.pnlPropTextStyle, "pnlPropTextStyle")
         Me.pnlPropTextStyle.BackColor = System.Drawing.Color.Transparent
-        Me.pnlPropTextStyle.Controls.Add(Me.Panel1)
+        Me.pnlPropTextStyle.Controls.Add(Me.pnlPropTextStyleVAlign)
         Me.pnlPropTextStyle.Controls.Add(Me.optPropTextAlignRight)
         Me.pnlPropTextStyle.Controls.Add(Me.optPropTextAlignCenter)
         Me.pnlPropTextStyle.Controls.Add(Me.optPropTextAlignLeft)
@@ -6270,13 +6348,13 @@ Partial Class frmMain
         Me.pnlPropTextStyle.Controls.Add(Me.lblPropTextRotateMode)
         Me.pnlPropTextStyle.Name = "pnlPropTextStyle"
         '
-        'Panel1
+        'pnlPropTextStyleVAlign
         '
-        Me.Panel1.Controls.Add(Me.optPropTextVAlignBottom)
-        Me.Panel1.Controls.Add(Me.optPropTextVAlignTop)
-        Me.Panel1.Controls.Add(Me.optPropTextVAlignCenter)
-        resources.ApplyResources(Me.Panel1, "Panel1")
-        Me.Panel1.Name = "Panel1"
+        Me.pnlPropTextStyleVAlign.Controls.Add(Me.optPropTextVAlignBottom)
+        Me.pnlPropTextStyleVAlign.Controls.Add(Me.optPropTextVAlignTop)
+        Me.pnlPropTextStyleVAlign.Controls.Add(Me.optPropTextVAlignCenter)
+        resources.ApplyResources(Me.pnlPropTextStyleVAlign, "pnlPropTextStyleVAlign")
+        Me.pnlPropTextStyleVAlign.Name = "pnlPropTextStyleVAlign"
         '
         'optPropTextVAlignBottom
         '
@@ -6296,8 +6374,8 @@ Partial Class frmMain
         '
         resources.ApplyResources(Me.optPropTextVAlignCenter, "optPropTextVAlignCenter")
         Me.optPropTextVAlignCenter.Checked = True
+        Me.optPropTextVAlignCenter.CheckState = System.Windows.Forms.CheckState.Checked
         Me.optPropTextVAlignCenter.Name = "optPropTextVAlignCenter"
-        Me.optPropTextVAlignCenter.TabStop = True
         Me.tipDefault.SetToolTip(Me.optPropTextVAlignCenter, resources.GetString("optPropTextVAlignCenter.ToolTip"))
         Me.optPropTextVAlignCenter.UseVisualStyleBackColor = True
         '
@@ -6312,8 +6390,8 @@ Partial Class frmMain
         '
         resources.ApplyResources(Me.optPropTextAlignCenter, "optPropTextAlignCenter")
         Me.optPropTextAlignCenter.Checked = True
+        Me.optPropTextAlignCenter.CheckState = System.Windows.Forms.CheckState.Checked
         Me.optPropTextAlignCenter.Name = "optPropTextAlignCenter"
-        Me.optPropTextAlignCenter.TabStop = True
         Me.tipDefault.SetToolTip(Me.optPropTextAlignCenter, resources.GetString("optPropTextAlignCenter.ToolTip"))
         Me.optPropTextAlignCenter.UseVisualStyleBackColor = True
         '
@@ -6328,7 +6406,7 @@ Partial Class frmMain
         '
         Me.cboPropTextSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboPropTextSize.FormattingEnabled = True
-        Me.cboPropTextSize.Items.AddRange(New Object() {resources.GetString("cboPropTextSize.Items"), resources.GetString("cboPropTextSize.Items1"), resources.GetString("cboPropTextSize.Items2"), resources.GetString("cboPropTextSize.Items3"), resources.GetString("cboPropTextSize.Items4"), resources.GetString("cboPropTextSize.Items5")})
+        Me.cboPropTextSize.Items.AddRange(New Object() {resources.GetString("cboPropTextSize.Items"), resources.GetString("cboPropTextSize.Items1"), resources.GetString("cboPropTextSize.Items2"), resources.GetString("cboPropTextSize.Items3"), resources.GetString("cboPropTextSize.Items4"), resources.GetString("cboPropTextSize.Items5"), resources.GetString("cboPropTextSize.Items6"), resources.GetString("cboPropTextSize.Items7"), resources.GetString("cboPropTextSize.Items8"), resources.GetString("cboPropTextSize.Items9"), resources.GetString("cboPropTextSize.Items10"), resources.GetString("cboPropTextSize.Items11"), resources.GetString("cboPropTextSize.Items12"), resources.GetString("cboPropTextSize.Items13")})
         resources.ApplyResources(Me.cboPropTextSize, "cboPropTextSize")
         Me.cboPropTextSize.Name = "cboPropTextSize"
         Me.tipDefault.SetToolTip(Me.cboPropTextSize, resources.GetString("cboPropTextSize.ToolTip"))
@@ -6765,7 +6843,6 @@ Partial Class frmMain
         resources.ApplyResources(Me.txtPropTransparency, "txtPropTransparency")
         Me.txtPropTransparency.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.txtPropTransparency.Name = "txtPropTransparency"
-        Me.tipDefault.SetToolTip(Me.txtPropTransparency, resources.GetString("txtPropTransparency.ToolTip"))
         '
         'lblPropTransparency
         '
@@ -6801,6 +6878,7 @@ Partial Class frmMain
         Me.lvPropObjectsBinded.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader2})
         Me.lvPropObjectsBinded.FullRowSelect = True
         Me.lvPropObjectsBinded.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None
+        Me.lvPropObjectsBinded.HideSelection = False
         Me.lvPropObjectsBinded.Name = "lvPropObjectsBinded"
         Me.lvPropObjectsBinded.SmallImageList = Me.imlLayers
         Me.tipDefault.SetToolTip(Me.lvPropObjectsBinded, resources.GetString("lvPropObjectsBinded.ToolTip"))
@@ -7513,6 +7591,7 @@ Partial Class frmMain
         Me.lvSegmentInfo.ContextMenuStrip = Me.mnuSegmentInfo
         Me.lvSegmentInfo.FullRowSelect = True
         Me.lvSegmentInfo.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None
+        Me.lvSegmentInfo.HideSelection = False
         Me.lvSegmentInfo.Name = "lvSegmentInfo"
         Me.lvSegmentInfo.SmallImageList = Me.iml
         Me.lvSegmentInfo.UseCompatibleStateImageBehavior = False
@@ -7615,6 +7694,7 @@ Partial Class frmMain
         Me.lvTrigpointInfo.ContextMenuStrip = Me.mnuTrigpointInfo
         Me.lvTrigpointInfo.FullRowSelect = True
         Me.lvTrigpointInfo.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None
+        Me.lvTrigpointInfo.HideSelection = False
         Me.lvTrigpointInfo.Name = "lvTrigpointInfo"
         Me.lvTrigpointInfo.SmallImageList = Me.iml
         Me.lvTrigpointInfo.UseCompatibleStateImageBehavior = False
@@ -7732,7 +7812,7 @@ Partial Class frmMain
         Me.cboPropCrossSectionMarkerArrowSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboPropCrossSectionMarkerArrowSize, "cboPropCrossSectionMarkerArrowSize")
         Me.cboPropCrossSectionMarkerArrowSize.FormattingEnabled = True
-        Me.cboPropCrossSectionMarkerArrowSize.Items.AddRange(New Object() {resources.GetString("cboPropCrossSectionMarkerArrowSize.Items"), resources.GetString("cboPropCrossSectionMarkerArrowSize.Items1"), resources.GetString("cboPropCrossSectionMarkerArrowSize.Items2"), resources.GetString("cboPropCrossSectionMarkerArrowSize.Items3"), resources.GetString("cboPropCrossSectionMarkerArrowSize.Items4"), resources.GetString("cboPropCrossSectionMarkerArrowSize.Items5")})
+        Me.cboPropCrossSectionMarkerArrowSize.Items.AddRange(New Object() {resources.GetString("cboPropCrossSectionMarkerArrowSize.Items"), resources.GetString("cboPropCrossSectionMarkerArrowSize.Items1"), resources.GetString("cboPropCrossSectionMarkerArrowSize.Items2"), resources.GetString("cboPropCrossSectionMarkerArrowSize.Items3"), resources.GetString("cboPropCrossSectionMarkerArrowSize.Items4"), resources.GetString("cboPropCrossSectionMarkerArrowSize.Items5"), resources.GetString("cboPropCrossSectionMarkerArrowSize.Items6"), resources.GetString("cboPropCrossSectionMarkerArrowSize.Items7"), resources.GetString("cboPropCrossSectionMarkerArrowSize.Items8"), resources.GetString("cboPropCrossSectionMarkerArrowSize.Items9"), resources.GetString("cboPropCrossSectionMarkerArrowSize.Items10"), resources.GetString("cboPropCrossSectionMarkerArrowSize.Items11"), resources.GetString("cboPropCrossSectionMarkerArrowSize.Items12"), resources.GetString("cboPropCrossSectionMarkerArrowSize.Items13")})
         Me.cboPropCrossSectionMarkerArrowSize.Name = "cboPropCrossSectionMarkerArrowSize"
         Me.tipDefault.SetToolTip(Me.cboPropCrossSectionMarkerArrowSize, resources.GetString("cboPropCrossSectionMarkerArrowSize.ToolTip"))
         '
@@ -8123,6 +8203,7 @@ Partial Class frmMain
         Me.lvPropTrigpointDistances.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colName, Me.colValue})
         Me.lvPropTrigpointDistances.FullRowSelect = True
         Me.lvPropTrigpointDistances.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
+        Me.lvPropTrigpointDistances.HideSelection = False
         Me.lvPropTrigpointDistances.Name = "lvPropTrigpointDistances"
         Me.lvPropTrigpointDistances.UseCompatibleStateImageBehavior = False
         Me.lvPropTrigpointDistances.View = System.Windows.Forms.View.Details
@@ -8268,8 +8349,8 @@ Partial Class frmMain
         '
         'pnlPropScale
         '
-        resources.ApplyResources(Me.pnlPropScale, "pnlPropScale")
         Me.pnlPropScale.Controls.Add(Me.cPropScaleItems)
+        resources.ApplyResources(Me.pnlPropScale, "pnlPropScale")
         Me.pnlPropScale.Name = "pnlPropScale"
         '
         'cPropScaleItems
@@ -9336,7 +9417,7 @@ Partial Class frmMain
         '
         'mnuFile
         '
-        Me.mnuFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuFileNew, Me.mnuFileNewFromTemplate, Me.mnuFileOpen, Me.mnuFileRollback, Me.mnuFileSave, Me.mnuFileSaveAs, Me.ToolStripMenuItem97, Me.mnuFileHistory, Me.mnuFileCleanUp, Me.ToolStripMenuItem89, Me.mnuFileImport, Me.mnuFileExport, Me.ToolStripMenuItem87, Me.mnuFileResurvey, Me.ToolStripMenuItem1, Me.mnuFile3D, Me.mnuFileTherion, Me.ToolStripMenuItem2, Me.mnuFilePrint, Me.ToolStripMenuItem18, Me.mnuFileProp, Me.mnuFileSurface, Me.ToolStripMenuItem48, Me.mnuFileSettings, Me.mnuFileAutoSettings, Me.ToolStripMenuItem5, Me.mnuFileRecent, Me.ToolStripMenuItem74, Me.mnuFileHideInTray, Me.mnuFileExit})
+        Me.mnuFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuFileNew, Me.mnuFileNewFromTemplate, Me.mnuFileOpen, Me.mnuFileRollback, Me.mnuFileSave, Me.mnuFileSaveAs, Me.mnuFileSaveAsTemplate, Me.ToolStripMenuItem97, Me.mnuFileHistory, Me.mnuFileCleanUp, Me.ToolStripMenuItem89, Me.mnuFileImport, Me.mnuFileExport, Me.ToolStripMenuItem87, Me.mnuFileResurvey, Me.ToolStripMenuItem1, Me.mnuFile3D, Me.mnuFileTherion, Me.ToolStripMenuItem2, Me.mnuFilePrint, Me.ToolStripMenuItem18, Me.mnuFileProp, Me.mnuFileSurface, Me.ToolStripMenuItem48, Me.mnuFileSettings, Me.mnuFileAutoSettings, Me.ToolStripMenuItem5, Me.mnuFileManageTemplates, Me.ToolStripMenuItem56, Me.mnuFileRecent, Me.ToolStripMenuItem74, Me.mnuFileHideInTray, Me.mnuFileExit})
         Me.mnuFile.Name = "mnuFile"
         resources.ApplyResources(Me.mnuFile, "mnuFile")
         '
@@ -9367,8 +9448,14 @@ Partial Class frmMain
         '
         'mnuFileSaveAs
         '
+        Me.mnuFileSaveAs.Image = Global.cSurveyPC.My.Resources.Resources.save_as1
         Me.mnuFileSaveAs.Name = "mnuFileSaveAs"
         resources.ApplyResources(Me.mnuFileSaveAs, "mnuFileSaveAs")
+        '
+        'mnuFileSaveAsTemplate
+        '
+        Me.mnuFileSaveAsTemplate.Name = "mnuFileSaveAsTemplate"
+        resources.ApplyResources(Me.mnuFileSaveAsTemplate, "mnuFileSaveAsTemplate")
         '
         'ToolStripMenuItem97
         '
@@ -9531,6 +9618,16 @@ Partial Class frmMain
         '
         Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
         resources.ApplyResources(Me.ToolStripMenuItem5, "ToolStripMenuItem5")
+        '
+        'mnuFileManageTemplates
+        '
+        Me.mnuFileManageTemplates.Name = "mnuFileManageTemplates"
+        resources.ApplyResources(Me.mnuFileManageTemplates, "mnuFileManageTemplates")
+        '
+        'ToolStripMenuItem56
+        '
+        Me.ToolStripMenuItem56.Name = "ToolStripMenuItem56"
+        resources.ApplyResources(Me.ToolStripMenuItem56, "ToolStripMenuItem56")
         '
         'mnuFileRecent
         '
@@ -11685,7 +11782,7 @@ Partial Class frmMain
         CType(Me.picPropFontColor, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlPropTextStyle.ResumeLayout(False)
         Me.pnlPropTextStyle.PerformLayout()
-        Me.Panel1.ResumeLayout(False)
+        Me.pnlPropTextStyleVAlign.ResumeLayout(False)
         Me.pnlPropCrossSection.ResumeLayout(False)
         Me.pnlPropCrossSection.PerformLayout()
         CType(Me.txtPropCrossSectionHeight, System.ComponentModel.ISupportInitialize).EndInit()
@@ -12703,12 +12800,12 @@ Partial Class frmMain
     Friend WithEvents pnlPropProp As System.Windows.Forms.Panel
     Friend WithEvents cboPropCategories As System.Windows.Forms.ComboBox
     Friend WithEvents lblPropCategory As System.Windows.Forms.Label
-    Friend WithEvents optPropTextAlignRight As System.Windows.Forms.RadioButton
-    Friend WithEvents optPropTextAlignCenter As System.Windows.Forms.RadioButton
-    Friend WithEvents optPropTextAlignLeft As System.Windows.Forms.RadioButton
-    Friend WithEvents optPropTextVAlignBottom As System.Windows.Forms.RadioButton
-    Friend WithEvents optPropTextVAlignCenter As System.Windows.Forms.RadioButton
-    Friend WithEvents optPropTextVAlignTop As System.Windows.Forms.RadioButton
+    Friend WithEvents optPropTextAlignRight As System.Windows.Forms.CheckBox
+    Friend WithEvents optPropTextAlignCenter As System.Windows.Forms.CheckBox
+    Friend WithEvents optPropTextAlignLeft As System.Windows.Forms.CheckBox
+    Friend WithEvents optPropTextVAlignBottom As System.Windows.Forms.CheckBox
+    Friend WithEvents optPropTextVAlignCenter As System.Windows.Forms.CheckBox
+    Friend WithEvents optPropTextVAlignTop As System.Windows.Forms.CheckBox
     Friend WithEvents pnlStatusDesignSnapToGrid As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents pnlDesignSnapToGrid As System.Windows.Forms.Panel
     Friend WithEvents txtDesignSnapToGrid As System.Windows.Forms.NumericUpDown
@@ -13205,7 +13302,7 @@ Partial Class frmMain
     Friend WithEvents pnlData As Panel
     Friend WithEvents pnlProperties As Panel
     Friend WithEvents Button1 As Button
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents pnlPropTextStyleVAlign As Panel
     Friend WithEvents ToolStripMenuItem6 As ToolStripSeparator
     Friend WithEvents mnuViewConsole As ToolStripMenuItem
     Friend WithEvents cboPropBindCrossSections As ComboBox
@@ -13260,21 +13357,6 @@ Partial Class frmMain
     Friend WithEvents cPropScaleItems As cItemScalePropertyControl
     Friend WithEvents pnlPropCompass As Panel
     Friend WithEvents cPropCompassItems As cItemCompassPropertyControl
-    Friend WithEvents colSegmentSession As DataGridViewTextBoxColumn
-    Friend WithEvents colCaveBranchColor As DataGridViewTextBoxColumn
-    Friend WithEvents colFrom As DataGridViewTextBoxColumn
-    Friend WithEvents colTo As DataGridViewTextBoxColumn
-    Friend WithEvents colDist As DataGridViewTextBoxColumn
-    Friend WithEvents colDirezione As DataGridViewTextBoxColumn
-    Friend WithEvents colInclinazione As DataGridViewTextBoxColumn
-    Friend WithEvents colSinistra As DataGridViewTextBoxColumn
-    Friend WithEvents colDestra As DataGridViewTextBoxColumn
-    Friend WithEvents colAlto As DataGridViewTextBoxColumn
-    Friend WithEvents colBasso As DataGridViewTextBoxColumn
-    Friend WithEvents colInverted As DataGridViewCheckBoxColumn
-    Friend WithEvents colExclude As DataGridViewCheckBoxColumn
-    Friend WithEvents colSegmentNote As DataGridViewImageColumn
-    Friend WithEvents colSegmentImage As DataGridViewImageColumn
     Friend WithEvents mnuDesignItemPointConvertToSpline As ToolStripMenuItem
     Friend WithEvents chkPropSequenceLineType2 As CheckBox
     Friend WithEvents chkPropSequenceLineType1 As CheckBox
@@ -13312,4 +13394,31 @@ Partial Class frmMain
     Friend WithEvents btnWorkspaceSep1 As ToolStripSeparator
     Friend WithEvents btnWorkspaceSep2 As ToolStripSeparator
     Friend WithEvents btnWorkspacesManage As ToolStripButton
+    Friend WithEvents chkLayerWhiteboard As CheckBox
+    Friend WithEvents chkLayerInvertFilter As Button
+    Friend WithEvents btnFilterWhiteboard As ToolStripButton
+    Friend WithEvents btnFilterInvertFilter As ToolStripButton
+    Friend WithEvents cboPropSignFlip As ComboBox
+    Friend WithEvents lblPropSignFlip As Label
+    Friend WithEvents colSegmentSession As DataGridViewTextBoxColumn
+    Friend WithEvents colCaveBranchColor As DataGridViewTextBoxColumn
+    Friend WithEvents colFrom As DataGridViewTextBoxColumn
+    Friend WithEvents colTo As DataGridViewTextBoxColumn
+    Friend WithEvents colDist As DataGridViewTextBoxColumn
+    Friend WithEvents colDirezione As DataGridViewTextBoxColumn
+    Friend WithEvents colInclinazione As DataGridViewTextBoxColumn
+    Friend WithEvents colSinistra As DataGridViewTextBoxColumn
+    Friend WithEvents colDestra As DataGridViewTextBoxColumn
+    Friend WithEvents colAlto As DataGridViewTextBoxColumn
+    Friend WithEvents colBasso As DataGridViewTextBoxColumn
+    Friend WithEvents colInverted As DataGridViewCheckBoxColumn
+    Friend WithEvents colExclude As DataGridViewCheckBoxColumn
+    Friend WithEvents colSegmentNote As DataGridViewImageColumn
+    Friend WithEvents colSegmentImage As DataGridViewImageColumn
+    Friend WithEvents mnuFileSaveAsTemplate As ToolStripMenuItem
+    Friend WithEvents mnuFileManageTemplates As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem56 As ToolStripSeparator
+    Friend WithEvents colTrigpointsConnections As BrightIdeasSoftware.OLVColumn
+    Friend WithEvents colTrigpointsCustomConnections As BrightIdeasSoftware.OLVColumn
+    Friend WithEvents colTrigpointsConnectionsCount As BrightIdeasSoftware.OLVColumn
 End Class

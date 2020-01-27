@@ -20,8 +20,8 @@ Namespace cSurvey.Design.Items
         Private sTextDistance As Single
         Private bTextShow As Boolean
         Private bTextSizeEnabled As Boolean
-        Private iTextSize As cIItemText.TextSizeEnum
-        Private iTextRotateMode As cIItemPlanCrossSectionMarker.TextRotateModeEnum
+        Private iTextSize As cIItemSizable.SizeEnum
+        Private iTextRotateMode As cIItemPlanCrossSectionMarker.RotateModeEnum
 
         Private sLeft As Single
         Private sRight As Single
@@ -35,13 +35,13 @@ Namespace cSurvey.Design.Items
         Private iPlanAlignment As cIItemPlanCrossSectionMarker.PlanAlignmentEnum
 
         Private bArrowSizeEnabled As Boolean
-        Private iArrowSize As cIItemText.TextSizeEnum
+        Private iArrowSize As cIItemSizable.SizeEnum
 
-        Public Property TextRotateMode As cIItemPlanCrossSectionMarker.TextRotateModeEnum Implements cIItemPlanCrossSectionMarker.TextRotateMode
+        Public Property TextRotateMode As cIItemPlanCrossSectionMarker.RotateModeEnum Implements cIItemPlanCrossSectionMarker.RotateMode
             Get
                 Return iTextRotateMode
             End Get
-            Set(value As cIItemPlanCrossSectionMarker.TextRotateModeEnum)
+            Set(value As cIItemPlanCrossSectionMarker.RotateModeEnum)
                 If iTextRotateMode <> value Then
                     iTextRotateMode = value
                     Call MyBase.Caches.Invalidate()
@@ -61,7 +61,7 @@ Namespace cSurvey.Design.Items
             End Set
         End Property
 
-        Public Property TextSize As cIItemText.TextSizeEnum Implements cIItemCrossSectionMarker.TextSize
+        Public Property TextSize As cIItemSizable.SizeEnum Implements cIItemCrossSectionMarker.TextSize, cIItemSizable.Size
             Get
                 If bTextSizeEnabled Then
                     Return iTextSize
@@ -69,7 +69,7 @@ Namespace cSurvey.Design.Items
                     Return oCrossSectionItem.TextSize
                 End If
             End Get
-            Set(value As cIItemText.TextSizeEnum)
+            Set(value As cIItemSizable.SizeEnum)
                 If value <> TextSize Then
                     If bTextSizeEnabled Then
                         iTextSize = value
@@ -93,11 +93,11 @@ Namespace cSurvey.Design.Items
             End Set
         End Property
 
-        Public Property ArrowSize As cIItemText.TextSizeEnum Implements cIItemCrossSectionMarker.ArrowSize
+        Public Property ArrowSize As cIItemSizable.SizeEnum Implements cIItemCrossSectionMarker.ArrowSize
             Get
                 Return iArrowSize
             End Get
-            Set(value As cIItemText.TextSizeEnum)
+            Set(value As cIItemSizable.SizeEnum)
                 If bArrowSizeEnabled AndAlso iArrowSize <> value Then
                     iArrowSize = value
                     Call MyBase.Caches.Invalidate()
@@ -476,7 +476,7 @@ Namespace cSurvey.Design.Items
             bTextShow = True
             iTextPosition = cIItemCrossSection.TextPositionEnum.TopLeft
             sTextDistance = 0
-            iTextRotateMode = cIItemRotableText.TextRotateModeEnum.Fixed
+            iTextRotateMode = cIItemRotable.RotateModeEnum.Fixed
 
             bAutoLeftWidth = True
             bAutoRightWidth = True
@@ -544,7 +544,7 @@ Namespace cSurvey.Design.Items
                             End If
 
                             Dim oSegment As cSegment = oCrossSectionItem.Segment
-                            Dim iSegmentSign As Integer = IIf(oCrossSectionItem.Direction = cIItemCrossSection.DirectionEnum.Direct, 1, -1)
+                            Dim iSegmentSign As Integer = If(oCrossSectionItem.Direction = cIItemCrossSection.DirectionEnum.Direct, 1, -1)
                             Dim sAngle As Single = oSegment.Data.Data.Bearing - 90 + PlanDeltaAngle
                             Dim oFromPoint As PointF = oSegment.Data.Plan.FromPoint
                             Dim oToPoint As PointF = oSegment.Data.Plan.ToPoint
@@ -661,7 +661,7 @@ Namespace cSurvey.Design.Items
                                             End Using
 
                                             Call oPath.Transform(oRotateMatrix)
-                                            If iTextRotateMode = cIItemRotableText.TextRotateModeEnum.Fixed Then
+                                            If iTextRotateMode = cIItemRotable.RotateModeEnum.Fixed Then
                                                 Using oRemoveRotateMatrix As Matrix = New Matrix()
                                                     Call oRemoveRotateMatrix.RotateAt(-sAngle, modPaint.GetCenterPoint(oPath.GetBounds))
                                                     Call oPath.Transform(oRemoveRotateMatrix)
@@ -707,7 +707,7 @@ Namespace cSurvey.Design.Items
                                     Dim oEndPointR As PointF = oMarkerCenterPoint + New SizeF(0, sR + sRefRightWidth)
 
                                     oCacheItem = oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
-                                    Call oCacheItem.SetPen(PaintOptions.DrawingObjects.invalidpen) 'PaintOptions.DrawingObjects.CrossSectionMarkerPen)
+                                    Call oCacheItem.SetPen(PaintOptions.DrawingObjects.InvalidPen) 'PaintOptions.DrawingObjects.CrossSectionMarkerPen)
                                     Call oCacheItem.SetWireframePen(PaintOptions.PaintObjects.Pens.GenericPen.WireframePen)
 
                                     Call oCacheItem.AddLine(oStartPointR, oEndPointR)
@@ -726,36 +726,68 @@ Namespace cSurvey.Design.Items
         Friend Function GetArrowScaleFactor(PaintOptions As cOptions) As Single
             Dim sTextScaleFactor As Single = MyBase.GetTextScaleFactor(PaintOptions)
             Select Case iArrowSize
-                Case cIItemText.TextSizeEnum.Default
+                Case cIItemSizable.SizeEnum.Default
                     Return 1 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.VerySmall
+                Case cIItemSizable.SizeEnum.VerySmall
                     Return 0.25 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Small
+                Case cIItemSizable.SizeEnum.Small
                     Return 0.5 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Medium
+                Case cIItemSizable.SizeEnum.Medium
                     Return 1 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Large
+                Case cIItemSizable.SizeEnum.Large
                     Return 2 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.VeryLarge
+                Case cIItemSizable.SizeEnum.VeryLarge
                     Return 4 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x6
+                    Return 6 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x8
+                    Return 8 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x10
+                    Return 10 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x12
+                    Return 12 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x16
+                    Return 16 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x20
+                    Return 20 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x24
+                    Return 24 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x32
+                    Return 32 * sTextScaleFactor
             End Select
         End Function
 
         Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptions) As Single
             Dim sTextScaleFactor As Single = MyBase.GetTextScaleFactor(PaintOptions)
-            Select Case TextSize
-                Case cIItemText.TextSizeEnum.Default
+            Select Case iTextSize
+                Case cIItemSizable.SizeEnum.Default
                     Return 1 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.VerySmall
+                Case cIItemSizable.SizeEnum.VerySmall
                     Return 0.25 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Small
+                Case cIItemSizable.SizeEnum.Small
                     Return 0.5 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Medium
+                Case cIItemSizable.SizeEnum.Medium
                     Return 1 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Large
+                Case cIItemSizable.SizeEnum.Large
                     Return 2 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.VeryLarge
+                Case cIItemSizable.SizeEnum.VeryLarge
                     Return 4 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x6
+                    Return 6 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x8
+                    Return 8 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x10
+                    Return 10 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x12
+                    Return 12 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x16
+                    Return 16 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x20
+                    Return 20 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x24
+                    Return 24 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x32
+                    Return 32 * sTextScaleFactor
             End Select
         End Function
 
@@ -809,7 +841,7 @@ Namespace cSurvey.Design.Items
             If bTextSizeEnabled Then
                 iTextSize = modXML.GetAttributeValue(item, "textsize")
             End If
-            iTextRotateMode = modXML.GetAttributeValue(item, "textrotatemode", cIItemPlanCrossSectionMarker.TextRotateModeEnum.Fixed)
+            iTextRotateMode = modXML.GetAttributeValue(item, "textrotatemode", cIItemPlanCrossSectionMarker.RotateModeEnum.Fixed)
 
             bArrowSizeEnabled = modXML.GetAttributeValue(item, "arrowsizeenabled", 0)
             If bArrowSizeEnabled Then
@@ -886,16 +918,16 @@ Namespace cSurvey.Design.Items
             If sTextDistance <> 0 Then Call oItem.SetAttribute("textdistance", modNumbers.NumberToString(sTextDistance))
             If bTextSizeEnabled Then
                 Call oItem.SetAttribute("textsizeenabled", "1")
-                If iTextSize <> cIItemText.TextSizeEnum.Default Then Call oItem.SetAttribute("textsize", iTextSize)
+                If iTextSize <> cIItemSizable.SizeEnum.Default Then Call oItem.SetAttribute("textsize", iTextSize)
             End If
             If bTextShow Then Call oItem.SetAttribute("textshow", "1")
-            If iTextRotateMode <> cIItemRotableText.TextRotateModeEnum.Fixed Then
+            If iTextRotateMode <> cIItemRotable.RotateModeEnum.Fixed Then
                 Call oItem.SetAttribute("textrotatemode", iTextRotateMode)
             End If
 
             If bArrowSizeEnabled Then
                 Call oItem.SetAttribute("arrowsizeenabled", "1")
-                If iArrowSize <> cIItemText.TextSizeEnum.Default Then Call oItem.SetAttribute("arrowsize", iArrowSize)
+                If iArrowSize <> cIItemSizable.SizeEnum.Default Then Call oItem.SetAttribute("arrowsize", iArrowSize)
             End If
 
             If bPlanDeltaAngleEnabled Then

@@ -7,17 +7,17 @@ Namespace cSurvey.Design.Items
     Public Class cItemText
         Inherits cItem
         Implements cIItemText
-        Implements cIItemRotableText
         Implements cIItemLineableText
         Implements cIItemVerticalLineableText
+        Implements cIItemRotable
 
         Private oSurvey As cSurvey
 
         Private sText As String
         Private WithEvents oFont As cItemFont
 
-        Private iTextSize As cIItemText.TextSizeEnum
-        Private iTextRotateMode As cIItemRotableText.TextRotateModeEnum
+        Private iTextSize As cIItemSizable.SizeEnum
+        Private iTextRotateMode As cIItemRotable.RotateModeEnum
         Private iTextAlignment As cIItemLineableText.TextAlignmentEnum
         Private iTextVerticalAlignment As cIItemVerticalLineableText.TextVerticalAlignmentEnum
 
@@ -196,7 +196,7 @@ Namespace cSurvey.Design.Items
 
         Public Overrides ReadOnly Property CanBeRotated As Boolean
             Get
-                Return iTextRotateMode = cIItemRotableText.TextRotateModeEnum.Rotable
+                Return iTextRotateMode = cIItemRotable.RotateModeEnum.Rotable
             End Get
         End Property
 
@@ -248,11 +248,27 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
+        Public Enum cItemTextTypes
+            Text = 0
+            InformationBox = 1
+        End Enum
+
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, Type As cItemTextTypes, ByVal Category As cIItem.cItemCategoryEnum, ByVal Text As String)
+            Call MyBase.New(Survey, Design, Layer, If(Type = cItemTextTypes.Text, cIItem.cItemTypeEnum.Text, cIItem.cItemTypeEnum.InformationBoxText), Category)
+            oSurvey = Survey
+            oFont = New cItemFont(oSurvey, cItemFont.FontTypeEnum.Generic)
+            iTextRotateMode = Survey.Properties.DesignProperties.GetValue("DesignTextRotateMode", cIItemRotable.RotateModeEnum.Fixed)
+            iTextAlignment = cIItemLineableText.TextAlignmentEnum.Center
+            iTextVerticalAlignment = cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle
+            sText = Text
+            Call FixBound()
+        End Sub
+
         Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal Category As cIItem.cItemCategoryEnum, ByVal Text As String)
             Call MyBase.New(Survey, Design, Layer, cIItem.cItemTypeEnum.Text, Category)
             oSurvey = Survey
             oFont = New cItemFont(oSurvey, cItemFont.FontTypeEnum.Generic)
-            iTextRotateMode = Survey.Properties.DesignProperties.GetValue("DesignTextRotateMode", cIItemRotableText.TextRotateModeEnum.Fixed)
+            iTextRotateMode = Survey.Properties.DesignProperties.GetValue("DesignTextRotateMode", cIItemRotable.RotateModeEnum.Fixed)
             iTextAlignment = cIItemLineableText.TextAlignmentEnum.Center
             iTextVerticalAlignment = cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle
             sText = Text
@@ -262,18 +278,34 @@ Namespace cSurvey.Design.Items
         Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptions) As Single
             Dim sTextScaleFactor As Single = MyBase.GetTextScaleFactor(PaintOptions)
             Select Case iTextSize
-                Case cIItemText.TextSizeEnum.Default
+                Case cIItemSizable.SizeEnum.Default
                     Return 1 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.VerySmall
+                Case cIItemSizable.SizeEnum.VerySmall
                     Return 0.25 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Small
+                Case cIItemSizable.SizeEnum.Small
                     Return 0.5 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Medium
+                Case cIItemSizable.SizeEnum.Medium
                     Return 1 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Large
+                Case cIItemSizable.SizeEnum.Large
                     Return 2 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.VeryLarge
+                Case cIItemSizable.SizeEnum.VeryLarge
                     Return 4 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x6
+                    Return 6 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x8
+                    Return 8 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x10
+                    Return 10 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x12
+                    Return 12 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x16
+                    Return 16 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x20
+                    Return 20 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x24
+                    Return 24 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x32
+                    Return 32 * sTextScaleFactor
             End Select
         End Function
 
@@ -336,6 +368,31 @@ Namespace cSurvey.Design.Items
 
                         Dim oPathRect As RectangleF = oPath.GetBounds
 
+                        ''draw a ref for alignment in design mode (I do it here cause have to be aligned with text)
+                        'If PaintOptions.IsDesign Then
+                        '    Dim sRefX As Single
+                        '    Dim sRefY As Single
+                        '    Dim sRefWidth As Single = 2
+                        '    Dim sRefHeight As Single = 2
+                        '    Select Case iTextAlignment
+                        '        Case cIItemLineableText.TextAlignmentEnum.Center
+                        '            sRefX = oPathRect.Width / 2 - sRefWidth / 2
+                        '        Case cIItemLineableText.TextAlignmentEnum.Left
+                        '            sRefX = oPathRect.Left
+                        '        Case cIItemLineableText.TextAlignmentEnum.Right
+                        '            sRefX = oPathRect.Right - sRefWidth
+                        '    End Select
+                        '    Select Case iTextVerticalAlignment
+                        '        Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Top
+                        '            sRefY = oPathRect.Top
+                        '        Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle
+                        '            sRefY = oPathRect.Height / 2 - sRefHeight / 2
+                        '        Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Bottom
+                        '            sRefY = oPathRect.Bottom - sRefHeight
+                        '    End Select
+                        '    Call oPath.AddRectangle(New RectangleF(sRefX, sRefY, sRefWidth, sRefHeight))
+                        'End If
+
                         'riallineo il testo (se richiesto dall'allineamento)
                         Dim sX As Single
                         Dim sY As Single
@@ -352,15 +409,14 @@ Namespace cSurvey.Design.Items
                                 sY = oPathRect.Height
                         End Select
                         If sX <> 0 Or sY <> 0 Then
-                            Using oTranslateMatrix = New Matrix
+                            Using oTranslateMatrix As Matrix = New Matrix
                                 Call oTranslateMatrix.Translate(sX, sY, MatrixOrder.Append)
                                 Call oPath.Transform(oTranslateMatrix)
                             End Using
-                            'oPathRect = oPath.GetBounds
                         End If
 
                         'dimensiono il testo se rischiesto (il fattore di scala sarà da parametrizzare in qualche modo)
-                        Using oScaleMatrix = New Matrix
+                        Using oScaleMatrix As Matrix = New Matrix
                             Dim sScale As Single = GetTextScaleFactor(PaintOptions)
                             Call oScaleMatrix.Scale(sScale, sScale, MatrixOrder.Append)
                             Call oPath.Transform(oScaleMatrix)
@@ -369,7 +425,6 @@ Namespace cSurvey.Design.Items
                         oPathRect = oPath.GetBounds
 
                         'sposto il testo scalato nel punto di disegno
-                        'Dim oTranslatePoint As PointF
                         Select Case iTextAlignment
                             Case cIItemLineableText.TextAlignmentEnum.Center
                                 sX = MyBase.Points(0).Point.X - oPathRect.Width / 2 ', MyBase.Points(0).Point.Y - oPathRect.Height / 2)
@@ -392,18 +447,8 @@ Namespace cSurvey.Design.Items
                         End Using
 
                         'ruoto la clipart dell'angolo determinato da quanto sopra
-                        If iTextRotateMode = cIItemRotableText.TextRotateModeEnum.Rotable Then
-                            'Dim oPathMovedRect As RectangleF = oPath.GetBounds
-                            'Dim oMovedCenterPoint As PointF '= New PointF(oPathMovedRect.Left + oPathMovedRect.Width / 2, oPathMovedRect.Top + oPathMovedRect.Height / 2)
+                        If iTextRotateMode = cIItemRotable.RotateModeEnum.Rotable Then
                             Dim oMovedCenterPoint As PointF = MyBase.Points(0).Point
-                            'Select Case iTextAlignment
-                            '    Case cIItemLineableText.TextAlignmentEnum.Center
-                            '        oMovedCenterPoint = MyBase.Points(0).Point
-                            '    Case cIItemLineableText.TextAlignmentEnum.Left
-                            '        oMovedCenterPoint = MyBase.Points(0).Point
-                            '    Case cIItemLineableText.TextAlignmentEnum.Right
-                            '        oMovedCenterPoint = MyBase.Points(0).Point
-                            'End Select
                             Using oRotateMatrix As Matrix = New Matrix
                                 Call oRotateMatrix.RotateAt(sAngle, oMovedCenterPoint, MatrixOrder.Append)
                                 Call oPath.Transform(oRotateMatrix)
@@ -468,7 +513,7 @@ Namespace cSurvey.Design.Items
             Dim oItem As XmlElement = MyBase.SaveTo(File, Document, Parent, Options)
             Call oItem.SetAttribute("text", sText)
             Call oFont.SaveTo(File, Document, oItem, "font")
-            If iTextSize <> cIItemText.TextSizeEnum.Default Then
+            If iTextSize <> cIItemSizable.SizeEnum.Default Then
                 Call oItem.SetAttribute("textsize", iTextSize)
             End If
             If iTextAlignment <> cIItemLineableText.TextAlignmentEnum.Center Then
@@ -477,7 +522,7 @@ Namespace cSurvey.Design.Items
             If iTextVerticalAlignment <> cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle Then
                 Call oItem.SetAttribute("textverticalalignment", iTextVerticalAlignment)
             End If
-            If iTextRotateMode <> cIItemRotableText.TextRotateModeEnum.Rotable Then
+            If iTextRotateMode <> cIItemRotable.RotateModeEnum.Rotable Then
                 Call oItem.SetAttribute("textrotatemode", iTextRotateMode)
             End If
             If sAngle <> 0 Then
@@ -486,11 +531,11 @@ Namespace cSurvey.Design.Items
             Return oItem
         End Function
 
-        Public Overridable Property TextRotateMode() As cIItemRotableText.TextRotateModeEnum Implements cIItemRotableText.TextRotateMode
+        Public Overridable Property TextRotateMode() As cIItemRotable.RotateModeEnum Implements cIItemRotable.RotateMode
             Get
                 Return iTextRotateMode
             End Get
-            Set(ByVal value As cIItemRotableText.TextRotateModeEnum)
+            Set(ByVal value As cIItemRotable.RotateModeEnum)
                 If iTextRotateMode <> value Then
                     iTextRotateMode = value
                     Call MyBase.Caches.Invalidate()
@@ -498,11 +543,11 @@ Namespace cSurvey.Design.Items
             End Set
         End Property
 
-        Public Overridable Property TextSize() As cIItemText.TextSizeEnum Implements cIItemText.TextSize
+        Public Overridable Property TextSize() As cIItemSizable.SizeEnum Implements cIItemSizable.Size
             Get
                 Return iTextSize
             End Get
-            Set(ByVal value As cIItemText.TextSizeEnum)
+            Set(ByVal value As cIItemSizable.SizeEnum)
                 If iTextSize <> value Then
                     iTextSize = value
                     Call MyBase.Caches.Invalidate()

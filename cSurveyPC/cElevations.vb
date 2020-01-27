@@ -90,6 +90,15 @@ Namespace cSurvey.Surface
             End If
         End Function
 
+        Friend Function Add(Name As String, Coordinate As cCoordinate, Rows As Integer, Columns As Integer, XSize As Single, YSize As Single, System As cSurface.CoordinateSystemEnum, Data As Single(,), ColorSchema As cElevation.ColorSchemaEnum) As cElevation
+            Dim oElevation As cElevation = New cElevation(oSurvey, Name, Coordinate, Rows, Columns, XSize, YSize, System, Data, ColorSchema)
+            AddHandler oElevation.OnChange, AddressOf oElevation_onchange
+            AddHandler oElevation.OnDefaultSet, AddressOf oElevation_ondefaultset
+            AddHandler oElevation.OnDefaultGet, AddressOf oElevation_ondefaultget
+            Call oItems.Add(oElevation)
+            Return oElevation
+        End Function
+
         Friend Function Add() As cElevation
             Dim oElevation As cElevation = New cElevation(oSurvey)
             AddHandler oElevation.OnChange, AddressOf oElevation_onchange

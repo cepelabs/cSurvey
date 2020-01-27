@@ -405,7 +405,7 @@ Namespace cSurvey
             End Set
         End Property
 
-        Public Function GetDeclination() As Single
+        Public Function GetDeclination() As Single?
             If bDeclinationEnabled Then
                 Return sDeclination
             Else
@@ -413,7 +413,7 @@ Namespace cSurvey
                     If .GlobalDeclinationEnabled Then
                         Return .GlobalDeclination
                     Else
-                        Return 0
+                        Return Nothing
                     End If
                 End With
             End If

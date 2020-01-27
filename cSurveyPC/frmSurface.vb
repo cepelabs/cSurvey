@@ -201,11 +201,11 @@ Public Class frmSurface
                 .Title = GetLocalizedString("surface.openelevationdialog")
                 .Filter = GetLocalizedString("surface.filetypeASC") & " (*.ASC;*.TXT)|*.ASC;*.TXT"
                 .FilterIndex = 1
-                If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                     Try
                         Dim frmSIASCOptions As frmSurfaceImportASCOptions = New frmSurfaceImportASCOptions
                         Dim oOptions As Surface.cElevation.cElevationImportOptions = New Surface.cElevation.cElevationImportOptions
-                        If frmSIASCOptions.ShowDialog = Windows.Forms.DialogResult.OK Then
+                        If frmSIASCOptions.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                             oOptions.System = frmSIASCOptions.cboCoordinateSystem.SelectedIndex
                             Select Case DirectCast(frmSIASCOptions.cboCoordinateSystem.SelectedIndex, Surface.cElevation.cElevationImportOptions.CoordinateSystemEnum)
                                 Case Surface.cElevation.cElevationImportOptions.CoordinateSystemEnum.UTMWGS84
@@ -229,6 +229,7 @@ Public Class frmSurface
                         End If
                     Catch ex As Exception
                         Call MsgBox(String.Format(GetLocalizedString("surface.warning2"), ex.Message), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("surface.warningtitle"))
+                        Call oSurvey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Error, ex.Message, True)
                     End Try
                 End If
             End With
@@ -282,7 +283,7 @@ Public Class frmSurface
     Private Sub pLoadWMS()
         tabMain.SelectedTab = tabWMS
         Using frmSAWMS As frmSurfaceAddWMS = New frmSurfaceAddWMS
-            If frmSAWMS.ShowDialog = Windows.Forms.DialogResult.OK Then
+            If frmSAWMS.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 With frmSAWMS
                     Dim sName As String = .txtName.Text
                     Dim sURL As String = .txtURL.Text
@@ -313,11 +314,11 @@ Public Class frmSurface
                 .Title = GetLocalizedString("surface.openorthophotodialog")
                 .Filter = GetLocalizedString("surface.filetypeIMAGES") & " (*.JPG;*.TIF;*.PNG)|*.JPG;*.TIF;*.PNG"
                 .FilterIndex = 1
-                If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                     Try
                         Dim frmSIASCOptions As frmSurfaceImportASCOptions = New frmSurfaceImportASCOptions
                         Dim oOptions As Surface.cOrthoPhoto.cOrthoPhotoImportOptions = New Surface.cOrthoPhoto.cOrthoPhotoImportOptions
-                        If frmSIASCOptions.ShowDialog = Windows.Forms.DialogResult.OK Then
+                        If frmSIASCOptions.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                             oOptions.System = frmSIASCOptions.cboCoordinateSystem.SelectedIndex
                             Select Case DirectCast(frmSIASCOptions.cboCoordinateSystem.SelectedIndex, Surface.cElevation.cElevationImportOptions.CoordinateSystemEnum)
                                 Case Surface.cOrthoPhoto.cOrthoPhotoImportOptions.CoordinateSystemEnum.UTMWGS84
@@ -328,7 +329,7 @@ Public Class frmSurface
                             If Not oOrthoPhoto Is Nothing Then
                                 Call imlOrthoPhotos.Images.Add(oOrthoPhoto.ID, oOrthoPhoto.GetImage(oThumbSize))
                                 Dim oItem As ListViewItem = New ListViewItem
-                                oItem.Text = oOrthoPhoto.Name '& vbCrLf & oOrthoPhoto.Photo.Width & " x " & oOrthoPhoto.Photo.Height & " px" & vbCrLf & oOrthoPhoto.XSize & " x " & oOrthoPhoto.YSize & " m"
+                                oItem.Text = oOrthoPhoto.Name
                                 oItem.ImageKey = oOrthoPhoto.ID
                                 oItem.Tag = oOrthoPhoto
                                 Call lvOrthoPhotos.Items.Add(oItem)
@@ -340,6 +341,7 @@ Public Class frmSurface
                         End If
                     Catch ex As Exception
                         Call MsgBox(String.Format(GetLocalizedString("surface.warning2"), ex.Message), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("surface.warningtitle"))
+                        Call oSurvey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Error, ex.Message, True)
                     End Try
                 End If
             End With
@@ -358,19 +360,17 @@ Public Class frmSurface
     End Sub
 
     Private Function pGetSelectedItem(ListView As ListView) As ListViewItem
-        'If ListView.FocusedItem Is Nothing Then
         If ListView.SelectedItems.Count > 0 Then
             Return ListView.SelectedItems(0)
         End If
-        'Else
-        '    Return ListView.FocusedItem
-        'End If
     End Function
 
-
     Private Sub pRefreshOrthophotoButtons()
-        btnOrthophotoDelete.Enabled = Not pGetSelectedItem(lvOrthoPhotos) Is Nothing
+        Dim bEnabled As Boolean = Not pGetSelectedItem(lvOrthoPhotos) Is Nothing
+        btnOrthophotoDelete.Enabled = bEnabled
         btnOrthophotoDeleteAll.Enabled = lvOrthoPhotos.Items.Count > 0
+        btnOrthophotoPreviewInvertColors.Enabled = bEnabled
+        btnOrthophotosPreviewNewReduced.Enabled = bEnabled
     End Sub
 
     Private Sub lvOrthoPhotos_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles lvOrthoPhotos.SelectedIndexChanged
@@ -390,10 +390,12 @@ Public Class frmSurface
     End Sub
 
     Private Sub pRefreshElevationButtons()
-        Dim bEnabled As Boolean = not pGetSelectedItem(lvElevations) Is Nothing
+        Dim bEnabled As Boolean = Not pGetSelectedItem(lvElevations) Is Nothing
         btnDataDelete.Enabled = bEnabled
         btnDataDeleteAll.Enabled = lvElevations.Items.Count > 0
+        btnElevationsPreviewNewReduced.Enabled = bEnabled
         btnElevationsPreviewElevationSavePreview.Enabled = bEnabled
+        btnElevationsPreviewExportData.Visible = modMain.bIsInDebug
         btnElevationsPreviewExportData.Enabled = bEnabled
         btnElevationsPreviewRemoveNODATA.Enabled = bEnabled
     End Sub
@@ -427,16 +429,18 @@ Public Class frmSurface
 
     Private Sub pElevationsSavePreview()
         Try
-            Dim oSFD As SaveFileDialog = New SaveFileDialog
-            With oSFD
-                .Title = GetLocalizedString("surface.saveelevationpreviewdialog")
-                .Filter = GetLocalizedString("surface.filetypeJPG") & " (*.JPG)|*.JPG"
-                .FilterIndex = 1
-                If .ShowDialog = Windows.Forms.DialogResult.OK Then
-                    Call picElevationsPreview.Image.Save(.FileName)
-                End If
-            End With
-        Catch
+            Using oSFD As SaveFileDialog = New SaveFileDialog
+                With oSFD
+                    .Title = GetLocalizedString("surface.saveelevationpreviewdialog")
+                    .Filter = GetLocalizedString("surface.filetypeJPG") & " (*.JPG)|*.JPG"
+                    .FilterIndex = 1
+                    If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                        Call picElevationsPreview.Image.Save(.FileName)
+                    End If
+                End With
+            End Using
+        Catch ex As Exception
+            Call oSurvey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Error, ex.Message, True)
         End Try
     End Sub
 
@@ -445,11 +449,13 @@ Public Class frmSurface
     End Sub
 
     Private Sub mnuElevationsPreview_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mnuElevationsPreview.Opening
-        mnuElevationsPreviewElevationSavePreview.Enabled = Not picElevationsPreview.Image Is Nothing
-        mnuElevationsPreviewRemoveNODATA.Enabled = mnuElevationsPreviewElevationSavePreview.Enabled
-        mnuElevationsPreviewExportData.Enabled = mnuElevationsPreviewElevationSavePreview.Enabled
+        Dim bEnabled As Boolean = Not picElevationsPreview.Image Is Nothing
+        mnuElevationsPreviewElevationSavePreview.Enabled = bEnabled
+        mnuElevationsPreviewRemoveNODATA.Enabled = bEnabled
         mnuElevationsPreviewExportData.Visible = modMain.bIsInDebug
-        mnuElevationsPreviewElevationOrthoPhotoFromWMS.Enabled = lvWMSs.Items.Count
+        mnuElevationsPreviewExportData.Enabled = bEnabled
+        mnuElevationsPreviewElevationOrthoPhotoFromWMS.Enabled = mnuElevationsPreviewElevationSavePreview.Enabled AndAlso lvWMSs.Items.Count
+        mnuElevationsPreviewNewReduced.Enabled = bEnabled
     End Sub
 
     Private Sub pElevationExportData()
@@ -459,7 +465,7 @@ Public Class frmSurface
                     .Title = GetLocalizedString("surface.exportelevationdatadialog")
                     .Filter = GetLocalizedString("surface.filetypeHOLOS") & " (*.elevation.xml)|*.elevation.xml"
                     .FilterIndex = 1
-                    If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                    If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                         Select Case .FilterIndex
                             Case 1
                                 Dim oXML As XmlDocument = New XmlDocument
@@ -493,7 +499,7 @@ Public Class frmSurface
                 End With
             End Using
         Catch ex As Exception
-            MsgBox(ex.Message)
+            Call oSurvey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Error, ex.Message, True)
         End Try
     End Sub
 
@@ -601,8 +607,9 @@ Public Class frmSurface
             Dim oItem As ListViewItem = pGetSelectedItem(lvWMSs)
             Dim oWms As cWMS = oItem.Tag
             Dim frmSAWMS As frmSurfaceAddWMS = New frmSurfaceAddWMS(oWms.Name, oWms.URL, oWms.Layer, oWms.SRSOverride)
-            If frmSAWMS.ShowDialog = Windows.Forms.DialogResult.OK Then
+            If frmSAWMS.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 With frmSAWMS
+                    Cursor = Cursors.WaitCursor
                     oWms.Name = .txtName.Text
                     oWms.URL = .txtURL.Text
                     oWms.Layer = .GetLayer
@@ -610,6 +617,9 @@ Public Class frmSurface
                     oItem.Text = oWms.Name
                     oItem.SubItems(1).Text = oWms.URL
                     oItem.SubItems(2).Text = oWms.Layer
+
+                    Call modWMSManager.WMSClearCache(oWms)
+                    Cursor = Cursors.Default
                 End With
             End If
         End If
@@ -631,37 +641,38 @@ Public Class frmSurface
 
     Private Sub oOrthophotoFromWMS_click(Sender As Object, e As EventArgs)
         Dim oWMS As cWMS = Sender.tag
-        Dim frmAOPWMS As frmSurfaceAddOrthoPhotoFromWMS = New frmSurfaceAddOrthoPhotoFromWMS(oWMS.Name)
-        With frmAOPWMS
-            If .ShowDialog() = Windows.Forms.DialogResult.OK Then
-                Cursor = Cursors.WaitCursor
-                Dim oBackground As Color = .picBackgroundColor.BackColor
-                Dim iRatio As Integer = .txtRatio.Value
-                Dim oElevation As cElevation = lvElevations.SelectedItems(0).Tag
-                Dim oTL As cCoordinate = oElevation.GetCoordinate(cElevation.GetCoordinateCornerEnum.TopLeft)
-                Dim oBR As cCoordinate = oElevation.GetCoordinate(cElevation.GetCoordinateCornerEnum.BottomRight)
-                Try
-                    Dim oImage As Image = oWMS.GetImage(oTL, oBR, iRatio, oBackground)
-                    Dim oOrthoPhoto As cOrthoPhoto = oSurface.OrthoPhotos.Add(oImage, oTL, iRatio, iRatio)
-                    If Not oOrthoPhoto Is Nothing Then
-                        oOrthoPhoto.Name = oWMS.Name
-                        Call imlOrthoPhotos.Images.Add(oOrthoPhoto.ID, oOrthoPhoto.GetImage(oThumbSize))
-                        Dim oItem As ListViewItem = New ListViewItem
-                        oItem.Text = oOrthoPhoto.Name '& vbCrLf & oOrthoPhoto.Photo.Width & " x " & oOrthoPhoto.Photo.Height & " px" & vbCrLf & oOrthoPhoto.XSize & " x " & oOrthoPhoto.YSize & " m"
-                        oItem.ImageKey = oOrthoPhoto.ID
-                        oItem.Tag = oOrthoPhoto
-                        Call lvOrthoPhotos.Items.Add(oItem)
-                        Call oItem.EnsureVisible()
-                        oItem.Focused = True
-                        oItem.Selected = True
-                        Call pShowInfo()
-                    End If
-                Catch ex As Exception
-                    Call pPopupShow("warning", modMain.GetLocalizedString("surface.textpart11"), "")
-                End Try
-                Cursor = Cursors.Default
-            End If
-        End With
+        Using frmAOPWMS As frmSurfaceAddOrthoPhotoFromWMS = New frmSurfaceAddOrthoPhotoFromWMS(oWMS.Name)
+            With frmAOPWMS
+                If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                    Cursor = Cursors.WaitCursor
+                    Dim oBackground As Color = .picBackgroundColor.BackColor
+                    Dim iRatio As Integer = .txtRatio.Value
+                    Dim oElevation As cElevation = lvElevations.SelectedItems(0).Tag
+                    Dim oTL As cCoordinate = oElevation.GetCoordinate(cElevation.GetCoordinateCornerEnum.TopLeft)
+                    Dim oBR As cCoordinate = oElevation.GetCoordinate(cElevation.GetCoordinateCornerEnum.BottomRight)
+                    Try
+                        Using oImage As Image = oWMS.GetImage(oTL, oBR, iRatio, oBackground)
+                            Dim oOrthoPhoto As cOrthoPhoto = oSurface.OrthoPhotos.Add(oImage, oWMS.Name, oTL, iRatio, iRatio)
+                            If Not oOrthoPhoto Is Nothing Then
+                                Call imlOrthoPhotos.Images.Add(oOrthoPhoto.ID, oOrthoPhoto.GetImage(oThumbSize))
+                                Dim oItem As ListViewItem = New ListViewItem
+                                oItem.Text = oOrthoPhoto.Name '& vbCrLf & oOrthoPhoto.Photo.Width & " x " & oOrthoPhoto.Photo.Height & " px" & vbCrLf & oOrthoPhoto.XSize & " x " & oOrthoPhoto.YSize & " m"
+                                oItem.ImageKey = oOrthoPhoto.ID
+                                oItem.Tag = oOrthoPhoto
+                                Call lvOrthoPhotos.Items.Add(oItem)
+                                Call oItem.EnsureVisible()
+                                oItem.Focused = True
+                                oItem.Selected = True
+                                Call pShowInfo()
+                            End If
+                        End Using
+                    Catch ex As Exception
+                        Call pPopupShow("warning", modMain.GetLocalizedString("surface.textpart11"), "")
+                    End Try
+                    Cursor = Cursors.Default
+                End If
+            End With
+        End Using
     End Sub
 
     Private Sub mnuElevationsPreviewElevationOrthoPhotoFromWMS_DropDownOpening(sender As Object, e As EventArgs) Handles mnuElevationsPreviewElevationOrthoPhotoFromWMS.DropDownOpening
@@ -778,5 +789,218 @@ Public Class frmSurface
 
     Private Sub btnElevationsPreviewExportData_Click(sender As Object, e As EventArgs) Handles btnElevationsPreviewExportData.Click
         Call pElevationExportData()
+    End Sub
+
+    Private Sub mnuOrthophotosPreview_Opening(sender As Object, e As CancelEventArgs) Handles mnuOrthophotosPreview.Opening
+        Dim bEnabled As Boolean = Not picOrthoPhotoPreview.Image Is Nothing
+        mnuOrthophotoPreviewElevationFromOrthophoto.Visible = bEnabled AndAlso bIsInDebug
+        mnuOrthophotosPreviewInvertColors.Enabled = bEnabled
+        mnuOrthophotosPreviewNewReduced.Enabled = bEnabled
+    End Sub
+
+    Private Sub frmEFO_GetHue(sender As Object, e As frmSurfaceAddElevationFromOrthoPhoto.GetHueEventArgs)
+        Cursor = Cursors.WaitCursor
+        Dim oOrthophoto As cOrthoPhoto = lvOrthoPhotos.SelectedItems(0).Tag
+        Dim oImage As Bitmap = oOrthophoto.Photo
+        Dim iRows As Integer = oImage.Height
+        Dim iColumns As Integer = oImage.Width
+
+        Dim iProgressIndex As Integer = 0
+        Dim iProgressCount As Integer = iRows * iColumns
+        Call oSurvey.RaiseOnProgressEvent("elevation.fromorthophoto", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, modMain.GetLocalizedString("surface.progressbegin5"), 0, cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageLoad)
+        For iRow As Integer = 0 To iRows - 1
+            For icolumn As Integer = 0 To iColumns - 1
+                iProgressIndex += 1
+                If iProgressIndex Mod 2000 = 0 Then Call oSurvey.RaiseOnProgressEvent("elevation.fromorthophoto", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("surface.progress5"), iProgressIndex / iProgressCount)
+                Dim sHue As Single = oImage.GetPixel(icolumn, iRow).GetHue '  modPaint.GrayColor(oImage.GetPixel(icolumn, iRow)).R * 10
+                If sHue < e.MinHue Then e.MinHue = sHue
+                If sHue > e.MaxHue Then e.MaxHue = sHue
+            Next
+        Next
+        Call oSurvey.RaiseOnProgressEvent("elevation.fromorthophoto", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, modMain.GetLocalizedString("surface.progressend5"), 0)
+
+        Cursor = Cursors.Default
+    End Sub
+
+    Private Sub mnuOrthophotoPreviewElevationFromOrthophoto_Click(sender As Object, e As EventArgs) Handles mnuOrthophotoPreviewElevationFromOrthophoto.Click
+        Cursor = Cursors.WaitCursor
+        Dim oOrthophoto As cOrthoPhoto = lvOrthoPhotos.SelectedItems(0).Tag
+        Using frmEFO As frmSurfaceAddElevationFromOrthoPhoto = New frmSurfaceAddElevationFromOrthoPhoto(oOrthophoto.Name)
+            AddHandler frmEFO.GetHue, AddressOf frmEFO_GetHue
+            If frmEFO.ShowDialog(Me) = DialogResult.OK Then
+
+                Dim oImage As Bitmap = oOrthophoto.Photo
+                Dim iRows As Integer = oImage.Height
+                Dim iColumns As Integer = oImage.Width
+                Dim oData(iRows, iColumns) As Single
+
+                Select Case frmEFO.cboMode.SelectedIndex
+                    Case 0  'hue
+                        'red=0
+                        'green=120...see paint net for scale...use scale on ui and add a reverse flag
+                        Dim bCounterclockwise As Boolean = frmEFO.chkHueCounterclockwise.Checked
+                        Dim sMinHue As Single = frmEFO.picHueColorFrom.BackColor.GetHue
+                        Dim sMinAlt As Single = frmEFO.txtHueAltFrom.Value
+                        Dim sMaxHue As Single = frmEFO.picHueColorTo.BackColor.GetHue
+                        Dim sMaxAlt As Single = frmEFO.txtHueAltTo.Value
+                        Dim sDeltaAlt As Single = sMaxAlt - sMinAlt
+                        Dim sDeltaHue As Single = modPaint.GetAngleDiff(sMinHue, sMaxHue, bCounterclockwise)
+                        If bCounterclockwise Then
+                            If sMinHue < sMaxHue Then
+                                sMinHue += 260
+                            End If
+                        Else
+                            If sMinHue > sMaxHue Then
+                                sMaxHue += 360
+                            End If
+                        End If
+
+                        Dim iProgressIndex As Integer = 0
+                        Dim iProgressCount As Integer = iRows * iColumns
+                        Call oSurvey.RaiseOnProgressEvent("elevation.fromorthophoto", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, modMain.GetLocalizedString("surface.progressbegin5"), 0, cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageLoad)
+                        For iRow As Integer = 0 To iRows - 1
+                            For icolumn As Integer = 0 To iColumns - 1
+                                iProgressIndex += 1
+                                If iProgressIndex Mod 2000 = 0 Then Call oSurvey.RaiseOnProgressEvent("elevation.fromorthophoto", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("surface.progress5"), iProgressIndex / iProgressCount)
+                                Dim sPseutoHeight As Single = oImage.GetPixel(icolumn, iRow).GetHue '  modPaint.GrayColor(oImage.GetPixel(icolumn, iRow)).R * 10
+                                'Debug.Print(sPseutoHeight)
+                                Dim sAlt As Single
+                                If bCounterclockwise Then
+                                    sAlt = sMinAlt + (((sMaxHue - sPseutoHeight) / sDeltaHue) * sDeltaAlt)
+                                Else
+                                    sAlt = sMinAlt + (((sPseutoHeight - sMinHue) / sDeltaHue) * sDeltaAlt)
+                                End If
+                                'If bCounterclockwise Then
+                                '    If sMinHue > sMaxHue Then
+                                '        sAlt = sMinAlt - (((sMaxHue - sPseutoHeight) / sDeltaHue) * sDeltaAlt)
+                                '    Else
+                                '        If sPseutoHeight > sMinHue - sDeltaHue / 2 Then
+                                '            sAlt = sMinAlt + (((sPseutoHeight - sMinHue) / sDeltaHue) * sDeltaAlt)
+                                '        Else
+                                '            sAlt = sMinAlt + (((360 - sMinHue + sPseutoHeight) / sDeltaHue) * sDeltaAlt)
+                                '        End If
+                                '    End If
+                                'Else
+                                '    If sMinHue < sMaxHue Then
+                                '        sAlt = sMinAlt + (((sPseutoHeight - sMinHue) / sDeltaHue) * sDeltaAlt)
+                                '    Else
+                                '        If sPseutoHeight > sMinHue - sDeltaHue / 2 Then
+                                '            sAlt = sMinAlt + (((sPseutoHeight - sMinHue) / sDeltaHue) * sDeltaAlt)
+                                '        Else
+                                '            sAlt = sMinAlt + (((360 - sMinHue + sPseutoHeight) / sDeltaHue) * sDeltaAlt)
+                                '        End If
+                                '    End If
+                                'End If
+                                'If sPseutoHeight = 240 * 10 Then sPseutoHeight = cElevation.NoDataValue
+                                oData(iRow, icolumn) = sAlt
+                            Next
+                        Next
+                        Call oSurvey.RaiseOnProgressEvent("elevation.fromorthophoto", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, modMain.GetLocalizedString("surface.progressend5"), 0)
+                End Select
+
+                Dim oNewElevation As cElevation = oSurface.Elevations.Add(oOrthophoto.Name, oOrthophoto.GetCoordinate(cOrthoPhoto.GetCoordinateCornerEnum.BottomLeft), iRows, iColumns, oOrthophoto.XSize, oOrthophoto.YSize, oOrthophoto.System, oData, cElevation.ColorSchemaEnum.BlackToWhite)
+                If Not oNewElevation Is Nothing Then
+                    Call imlElevations.Images.Add(oNewElevation.ID, oNewElevation.GetImage(oThumbSize))
+                    Dim oItem As ListViewItem = New ListViewItem
+                    oItem.Text = oNewElevation.Name
+                    oItem.ImageKey = oNewElevation.ID
+                    oItem.Tag = oNewElevation
+                    Call lvElevations.Items.Add(oItem)
+                    Call oItem.EnsureVisible()
+                    oItem.Focused = True
+                    oItem.Selected = True
+                    Call pShowInfo()
+                End If
+            End If
+            RemoveHandler frmEFO.GetHue, AddressOf frmEFO_GetHue
+        End Using
+
+        Cursor = Cursors.Default
+    End Sub
+
+    Private Sub pReduceElevation(Percentage As Single)
+        Cursor = Cursors.WaitCursor
+        Dim oElevation As cElevation = lvElevations.SelectedItems(0).Tag
+        Dim oNewElevation As cElevation = oElevation.Reduce(Percentage)
+        If Not oNewElevation Is Nothing Then
+            Call imlElevations.Images.Add(oNewElevation.ID, oNewElevation.GetImage(oThumbSize))
+            Dim oItem As ListViewItem = New ListViewItem
+            oItem.Text = oNewElevation.Name
+            oItem.ImageKey = oNewElevation.ID
+            oItem.Tag = oNewElevation
+            Call lvElevations.Items.Add(oItem)
+            Call oItem.EnsureVisible()
+            oItem.Focused = True
+            oItem.Selected = True
+            Call pShowInfo()
+        End If
+        Cursor = Cursors.Default
+    End Sub
+
+    Private Sub pReduceOrthophoto(Percentage As Single)
+        Cursor = Cursors.WaitCursor
+        Dim oOrthoPhoto As cOrthoPhoto = lvOrthoPhotos.SelectedItems(0).Tag
+        Dim oNewOrthoPhoto As cOrthoPhoto = oOrthoPhoto.Reduce(Percentage)
+        If Not oNewOrthoPhoto Is Nothing Then
+            Call imlOrthoPhotos.Images.Add(oNewOrthoPhoto.ID, oNewOrthoPhoto.GetImage(oThumbSize))
+            Dim oItem As ListViewItem = New ListViewItem
+            oItem.Text = oNewOrthoPhoto.Name
+            oItem.ImageKey = oNewOrthoPhoto.ID
+            oItem.Tag = oNewOrthoPhoto
+            Call lvOrthoPhotos.Items.Add(oItem)
+            Call oItem.EnsureVisible()
+            oItem.Focused = True
+            oItem.Selected = True
+            Call pShowInfo()
+        End If
+        Cursor = Cursors.Default
+    End Sub
+
+    Private Sub pInvertColors()
+        Cursor = Cursors.WaitCursor
+        Dim oOrthophoto As cOrthoPhoto = lvOrthoPhotos.SelectedItems(0).Tag
+        Call oOrthophoto.InvertColors()
+        Call pShowInfo()
+        Cursor = Cursors.Default
+    End Sub
+
+    Private Sub mnuOrthophotoPreviewInvertColors_Click(sender As Object, e As EventArgs) Handles mnuOrthophotosPreviewInvertColors.Click
+        Call pInvertColors()
+    End Sub
+
+    Private Sub mnuElevationsPreviewNewReduced50_Click(sender As Object, e As EventArgs) Handles mnuElevationsPreviewNewReduced50.Click
+        Call pReduceElevation(50)
+    End Sub
+
+    Private Sub mnuElevationsPreviewNewReduced33_Click(sender As Object, e As EventArgs) Handles mnuElevationsPreviewNewReduced33.Click
+        Call pReduceElevation(33)
+    End Sub
+
+    Private Sub mnuElevationsPreviewNewReduced25_Click(sender As Object, e As EventArgs) Handles mnuElevationsPreviewNewReduced25.Click
+        Call pReduceElevation(25)
+    End Sub
+
+    Private Sub btnOrthophotoPreviewInvertColors_Click(sender As Object, e As EventArgs) Handles btnOrthophotoPreviewInvertColors.Click
+        Call pInvertColors()
+    End Sub
+
+    Private Sub btnElevationsPreviewNewReduced_DropDownOpening(sender As Object, e As EventArgs) Handles btnElevationsPreviewNewReduced.DropDownOpening
+        btnElevationsPreviewNewReduced.DropDown = mnuElevationsPreviewNewReduced.DropDown
+    End Sub
+
+    Private Sub mnuOrthophotoPreviewNewReduced50_Click(sender As Object, e As EventArgs) Handles mnuOrthophotosPreviewNewReduced50.Click
+        Call pReduceOrthophoto(50)
+    End Sub
+
+    Private Sub mnuOrthophotoPreviewNewReduced33_Click(sender As Object, e As EventArgs) Handles mnuOrthophotosPreviewNewReduced33.Click
+        Call pReduceOrthophoto(33)
+    End Sub
+
+    Private Sub mnuOrthophotoPreviewNewReduced25_Click(sender As Object, e As EventArgs) Handles mnuOrthophotosPreviewNewReduced25.Click
+        Call pReduceOrthophoto(25)
+    End Sub
+
+    Private Sub btnOrthophotosPreviewNewReduced_DropDownOpening(sender As Object, e As EventArgs) Handles btnOrthophotosPreviewNewReduced.DropDownOpening
+        btnOrthophotosPreviewNewReduced.DropDown = mnuOrthophotosPreviewNewReduced.DropDown
     End Sub
 End Class

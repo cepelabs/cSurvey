@@ -13,8 +13,8 @@ Namespace cSurvey.Design
         Private oSurvey As cSurvey
         Private oPlot As cPlotProfile
 
-        Public Overrides Sub Paint(Graphics As Graphics, PaintOptions As cOptions, Selection As Helper.Editor.cIEditDesignSelection)
-            Call MyBase.Paint(Graphics, PaintOptions, Selection)
+        Public Overrides Sub Paint(Graphics As Graphics, PaintOptions As cOptions, DrawOptions As cDrawOptions, Selection As Helper.Editor.cIEditDesignSelection)
+            Call MyBase.Paint(Graphics, PaintOptions, DrawOptions, Selection)
         End Sub
 
         Public Overrides ReadOnly Property Type As cIDesign.cDesignTypeEnum
@@ -34,11 +34,11 @@ Namespace cSurvey.Design
             Call MyBase.new(Survey, File, Design)
             oSurvey = Survey
             iType = cIDesign.cDesignTypeEnum.Profile
-            Try
-                oPlot = New cPlotProfile(oSurvey, Design.Item("plot"))
-            Catch
-                oPlot = New cPlotProfile(oSurvey)
-            End Try
+            If modXML.ChildElementExist(Design, "plot") Then
+                oPlot = New cPlotProfile(Survey, Design.Item("plot"))
+            Else
+                oPlot = New cPlotProfile(Survey)
+            End If
         End Sub
 
         Friend Overrides Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement

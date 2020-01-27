@@ -22,24 +22,40 @@ Namespace cSurvey.Design.Items
 
         Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptions) As Single
             Dim sTextScaleFactor As Single = MyBase.GetTextScaleFactor(PaintOptions)
-            Select Case MyBase.TextSize
-                Case cIItemText.TextSizeEnum.Default
+            Select Case TextSize
+                Case cIItemSizable.SizeEnum.Default
                     Return 1 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.VerySmall
+                Case cIItemSizable.SizeEnum.VerySmall
                     Return 0.25 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Small
+                Case cIItemSizable.SizeEnum.Small
                     Return 0.5 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Medium
+                Case cIItemSizable.SizeEnum.Medium
                     Return 1 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Large
+                Case cIItemSizable.SizeEnum.Large
                     Return 2 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.VeryLarge
+                Case cIItemSizable.SizeEnum.VeryLarge
                     Return 4 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x6
+                    Return 6 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x8
+                    Return 8 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x10
+                    Return 10 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x12
+                    Return 12 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x16
+                    Return 16 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x20
+                    Return 20 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x24
+                    Return 24 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x32
+                    Return 32 * sTextScaleFactor
             End Select
         End Function
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal Category As cIItem.cItemCategoryEnum)
-            Call MyBase.New(Survey, Design, Layer, Category, "")
+            Call MyBase.New(Survey, Design, Layer, cItemTextTypes.InformationBox, Category, "")
             MyBase.DesignAffinity = DesignAffinityEnum.Extra
         End Sub
 

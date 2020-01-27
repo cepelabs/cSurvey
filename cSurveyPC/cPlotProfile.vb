@@ -203,6 +203,12 @@ Namespace cSurvey.Design
             End If
         End Function
 
+        Friend Overrides Sub ResetChanges()
+            Threading.Tasks.Parallel.ForEach(Of cISegment)(oSurvey.Segments.Where(Function(oSegment) oSegment.Data.Profile.Changed), Sub(oSegment)
+                                                                                                                                         Call oSegment.Data.Profile.ResetChange()
+                                                                                                                                     End Sub)
+        End Sub
+
         Friend Overrides Sub CalculateSplay()
             Dim oSplaySegments As List(Of cISegment) = New List(Of cISegment)(oSurvey.Segments.GetSplaySegments())
             For Each oSegment As cSegment In oSurvey.Segments
@@ -586,19 +592,25 @@ Namespace cSurvey.Design
                                         'linee di traslazione
                                         If (Not PaintOptions.IsDesign AndAlso PaintOptions.DrawTranslation AndAlso PaintOptions.TranslationsOptions.DrawTranslationsLine AndAlso oTranslationTrigPoint.Count > 1 AndAlso oSurvey.TrigPoints(oTranslationTrigPoint.Name).DrawTranslationsLine) OrElse (PaintOptions.IsDesign AndAlso oSurvey.TrigPoints(oTranslationTrigPoint.Name).DrawTranslationsLine) Then
                                             Dim oFromPoint As PointF = oTranslationTrigPoint(0)
-                                            For i As Integer = 1 To oTranslationTrigPoint.Count - 1
+                                            Dim i As Integer = 1
+                                            Do While i < oTranslationTrigPoint.Count
                                                 oCacheItem = oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
                                                 Dim oToPoint As PointF = oTranslationTrigPoint(i)
-                                                If (oToPoint.X <> oFromPoint.X) AndAlso (oToPoint.Y <> oFromPoint.Y) Then
-                                                    Dim oMidPoint As PointF = New PointF(oFromPoint.X, oToPoint.Y)
-                                                    Call oCacheItem.SetPen(oDrawingObject.TranslationPen)
-                                                    Call oCacheItem.AddLine(oFromPoint, oMidPoint)
-                                                    Call oCacheItem.AddLine(oMidPoint, oToPoint)
+                                                If (sTTH = 0 OrElse modPaint.DistancePointToPoint(oToPoint, oFromPoint) > sTTH) Then
+                                                    If (oToPoint.X <> oFromPoint.X) AndAlso (oToPoint.Y <> oFromPoint.Y) Then
+                                                        Dim oMidPoint As PointF = New PointF(oFromPoint.X, oToPoint.Y)
+                                                        Call oCacheItem.SetPen(oDrawingObject.TranslationPen)
+                                                        Call oCacheItem.AddLine(oFromPoint, oMidPoint)
+                                                        Call oCacheItem.AddLine(oMidPoint, oToPoint)
+                                                    Else
+                                                        Call oCacheItem.SetPen(oDrawingObject.TranslationPen)
+                                                        Call oCacheItem.AddLine(oFromPoint, oToPoint)
+                                                    End If
+                                                    i += 1
                                                 Else
-                                                    Call oCacheItem.SetPen(oDrawingObject.TranslationPen)
-                                                    Call oCacheItem.AddLine(oFromPoint, oToPoint)
+                                                    Call oTranslationTrigPoint.Remove(oToPoint)
                                                 End If
-                                            Next
+                                            Loop
                                         End If
 
                                         Dim oTrigPoint As cTrigPoint = oSurvey.TrigPoints(oTranslationTrigPoint.Name)
@@ -817,7 +829,7 @@ Namespace cSurvey.Design
             'warping design...
             If PerformWarping Then
                 If oSurvey.Properties.DesignWarpingMode = cSurvey.DesignWarpingModeEnum.Default AndAlso Not oSurvey.Properties.ProfileWarpingDisabled AndAlso oSurvey.Properties.DesignWarpingState = cSurvey.DesignWarpingStateEnum.Active Then
-                    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, Now & vbTab & "Warping plan design", True)
+                    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, Now & vbTab & "Warping profile design", True)
                     Dim iIndex As Integer
                     Dim iCount As Integer
                     If Not oSurvey.Profile.IsEmpty Then

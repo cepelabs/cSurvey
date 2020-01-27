@@ -98,7 +98,7 @@ Public Class frmSegmentsReplicateInfo
         End Try
     End Sub
 
-    Public Sub New(Survey As cSurveyPC.cSurvey.cSurvey, Optional Session As cSession = Nothing, Optional Cave As cCaveInfo = Nothing, Optional CaveBranch As cCaveInfoBranch = Nothing, Optional Direction As cSegment.DirectionEnum = cSegment.DirectionEnum.Right, Optional Rows As Integer = 1, Optional FunctionLanguage As LanguageEnum = LanguageEnum.VisualBasic)
+    Public Sub New(Survey As cSurveyPC.cSurvey.cSurvey, Optional Session As cSession = Nothing, Optional Cave As cCaveInfo = Nothing, Optional CaveBranch As cCaveInfoBranch = Nothing, Optional Direction As cSurvey.cSurvey.DirectionEnum = cSurvey.cSurvey.DirectionEnum.Right, Optional Rows As Integer = 1, Optional FunctionLanguage As LanguageEnum = LanguageEnum.VisualBasic)
         ' Chiamata richiesta dalla finestra di progettazione.
         InitializeComponent()
 

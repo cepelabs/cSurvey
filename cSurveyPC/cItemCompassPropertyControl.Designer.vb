@@ -40,6 +40,9 @@ Partial Class cItemCompassPropertyControl
         Me.lblCompassNorth = New System.Windows.Forms.Label()
         Me.lblCompassYear = New System.Windows.Forms.Label()
         Me.txtCompassYear = New System.Windows.Forms.NumericUpDown()
+        Me.chkUseTextScaleOnClipart = New System.Windows.Forms.CheckBox()
+        Me.chkUseClipartScaleOnText = New System.Windows.Forms.CheckBox()
+        Me.chkHideNorthValue = New System.Windows.Forms.CheckBox()
         CType(Me.picCompassColor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picCompassClipartImage, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCompassClipartZoomFactor, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -150,11 +153,32 @@ Partial Class cItemCompassPropertyControl
         Me.txtCompassYear.Name = "txtCompassYear"
         Me.txtCompassYear.Value = New Decimal(New Integer() {1700, 0, 0, 0})
         '
+        'chkUseTextScaleOnClipart
+        '
+        resources.ApplyResources(Me.chkUseTextScaleOnClipart, "chkUseTextScaleOnClipart")
+        Me.chkUseTextScaleOnClipart.Name = "chkUseTextScaleOnClipart"
+        Me.chkUseTextScaleOnClipart.UseVisualStyleBackColor = True
+        '
+        'chkUseClipartScaleOnText
+        '
+        resources.ApplyResources(Me.chkUseClipartScaleOnText, "chkUseClipartScaleOnText")
+        Me.chkUseClipartScaleOnText.Name = "chkUseClipartScaleOnText"
+        Me.chkUseClipartScaleOnText.UseVisualStyleBackColor = True
+        '
+        'chkHideNorthValue
+        '
+        resources.ApplyResources(Me.chkHideNorthValue, "chkHideNorthValue")
+        Me.chkHideNorthValue.Name = "chkHideNorthValue"
+        Me.chkHideNorthValue.UseVisualStyleBackColor = True
+        '
         'cItemCompassPropertyControl
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Window
+        Me.Controls.Add(Me.chkHideNorthValue)
+        Me.Controls.Add(Me.chkUseClipartScaleOnText)
+        Me.Controls.Add(Me.chkUseTextScaleOnClipart)
         Me.Controls.Add(Me.txtCompassYear)
         Me.Controls.Add(Me.lblCompassYear)
         Me.Controls.Add(Me.cboCompassNorth)
@@ -198,4 +222,7 @@ Partial Class cItemCompassPropertyControl
     Friend WithEvents lblCompassNorth As Label
     Friend WithEvents lblCompassYear As Label
     Friend WithEvents txtCompassYear As NumericUpDown
+    Friend WithEvents chkUseTextScaleOnClipart As CheckBox
+    Friend WithEvents chkUseClipartScaleOnText As CheckBox
+    Friend WithEvents chkHideNorthValue As CheckBox
 End Class

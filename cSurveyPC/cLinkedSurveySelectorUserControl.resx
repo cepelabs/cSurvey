@@ -146,29 +146,32 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="mnuContext.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
   <data name="mnuContextSelectAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="mnuContextSelectAll.Text" xml:space="preserve">
     <value>Select all</value>
   </data>
   <data name="mnuContextDeselectAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="mnuContextDeselectAll.Text" xml:space="preserve">
     <value>Deselect all</value>
   </data>
   <data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="mnuContextRefresh.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="mnuContextRefresh.Text" xml:space="preserve">
     <value>Refresh</value>
   </data>
   <data name="mnuContext.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 76</value>
+    <value>181, 98</value>
   </data>
   <data name="&gt;&gt;mnuContext.Name" xml:space="preserve">
     <value>mnuContext</value>

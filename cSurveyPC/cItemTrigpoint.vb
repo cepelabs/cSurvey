@@ -258,22 +258,18 @@ Namespace cSurvey.Design.Items
                 If oSegments.Count > 0 Then
                     If MyBase.Design.Type = cIDesign.cDesignTypeEnum.Plan Then
                         Dim oData As cPlanProjectedData = oSegments(0).Data.Plan
-                        Dim oRect As RectangleF
                         If oData.From = oTrigPoint.Name Then
-                            oRect = modPaint.GetRectanglefFomPoint(oData.FromPoint, 1)
+                            Return modPaint.GetRectanglefFomPoint(oData.FromPoint, 1)
                         Else
-                            oRect = modPaint.GetRectanglefFomPoint(oData.ToPoint, 1)
+                            Return modPaint.GetRectanglefFomPoint(oData.ToPoint, 1)
                         End If
-                        Return oRect
                     Else
                         Dim oData As cProfileProjectedData = oSegments(0).Data.Profile
-                        Dim oRect As RectangleF
                         If oData.From = oTrigPoint.Name Then
-                            oRect = modPaint.GetRectanglefFomPoint(oData.FromPoint, 1)
+                            Return modPaint.GetRectanglefFomPoint(oData.FromPoint, 1)
                         Else
-                            oRect = modPaint.GetRectanglefFomPoint(oData.ToPoint, 1)
+                            Return modPaint.GetRectanglefFomPoint(oData.ToPoint, 1)
                         End If
-                        Return oRect
                     End If
                 Else
                     Return New RectangleF

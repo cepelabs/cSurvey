@@ -11,11 +11,6 @@ Namespace cSurvey
         Implements cISurfaceProfile
         Implements Data.cIObjectDataProperties
 
-        Public Enum DirectionEnum
-            Right = 0
-            Left = 1
-        End Enum
-
         Private oSurvey As cSurvey
 
         Private sID As String
@@ -37,7 +32,7 @@ Namespace cSurvey
             Public Right As Decimal
             Public Left As Decimal
 
-            Public Direction As DirectionEnum
+            Public Direction As cSurvey.DirectionEnum
 
             Public UnBindable As Boolean
             Public Exclude As Boolean
@@ -383,7 +378,7 @@ Namespace cSurvey
             oCurrentData.Down = 0
             oCurrentData.Right = 0
             oCurrentData.Left = 0
-            oCurrentData.Direction = DirectionEnum.Right
+            oCurrentData.Direction = cSurvey.DirectionEnum.Right
             oCurrentData.Virtual = False
 
             oCurrentData.Exclude = False
@@ -632,14 +627,13 @@ Namespace cSurvey
             oCurrentData.Virtual = modXML.GetAttributeValue(Segment, "virtual", 0)
 
             If Segment.HasAttribute("inverted") Then
-                oCurrentData.Direction = modXML.GetAttributeValue(Segment, "inverted")
+                'this is for legacy old csurvey file format using relative inversion (no more supported)
+                oCurrentData.Direction = If(modXML.GetAttributeValue(Segment, "inverted"), cSurvey.DirectionEnum.Left, cSurvey.DirectionEnum.Right)
             Else
-                oCurrentData.Direction = modXML.GetAttributeValue(Segment, "direction", DirectionEnum.Right.ToString("D"))
+                oCurrentData.Direction = modXML.GetAttributeValue(Segment, "direction", cSurvey.DirectionEnum.Right.ToString("D"))
             End If
-            'controllo direction perchè sia conforme...
-            If oCurrentData.Direction > 1 Then
-                oCurrentData.Direction = DirectionEnum.Right
-            End If
+            'check direction (I don't remember why this have to be done...)
+            If oCurrentData.Direction > cSurvey.DirectionEnum.Vertical Then oCurrentData.Direction = cSurvey.DirectionEnum.Right
 
             oCurrentData.Exclude = modXML.GetAttributeValue(Segment, "exclude")
             oCurrentData.Splay = modXML.GetAttributeValue(Segment, "splay")
@@ -726,7 +720,7 @@ Namespace cSurvey
             If oCurrentData.Down <> 0 Then Call oXmlSegment.SetAttribute("d", modNumbers.NumberToString(oCurrentData.Down))
 
             If oCurrentData.Virtual Then Call oXmlSegment.SetAttribute("virtual", "1")
-            If oCurrentData.Direction <> DirectionEnum.Right Then Call oXmlSegment.SetAttribute("direction", oCurrentData.Direction.ToString("D"))
+            If oCurrentData.Direction <> cSurvey.DirectionEnum.Right Then Call oXmlSegment.SetAttribute("direction", oCurrentData.Direction.ToString("D"))
 
             If oCurrentData.Exclude Then Call oXmlSegment.SetAttribute("exclude", "1")
             If oCurrentData.Splay Then Call oXmlSegment.SetAttribute("splay", "1")
@@ -986,7 +980,7 @@ Namespace cSurvey
             CaveBranchSplayAutoAssignmentDisable = &H100
         End Enum
 
-        <Description("For special use only")> Friend Sub SetDirection(Direction As DirectionEnum)
+        <Description("For special use only")> Friend Sub SetDirection(Direction As cSurvey.DirectionEnum)
             oTempData.Direction = Direction
             oCurrentData.Direction = Direction
             bChanged = True
@@ -1181,18 +1175,18 @@ Namespace cSurvey
             End Set
         End Property
 
-        Public Property Inverted() As Boolean
-            Get
-                Return oTempData.Direction = DirectionEnum.Left
-            End Get
-            Set(ByVal value As Boolean)
-                Dim iNewValue As DirectionEnum = IIf(value, DirectionEnum.Left, DirectionEnum.Right)
-                If oTempData.Direction <> iNewValue Then
-                    oTempData.Direction = iNewValue
-                    bChanged = True
-                End If
-            End Set
-        End Property
+        'Public Property Inverted() As Boolean
+        '    Get
+        '        Return oTempData.Direction = cSurvey.DirectionEnum.Left
+        '    End Get
+        '    Set(ByVal value As Boolean)
+        '        Dim iNewValue As cSurvey.DirectionEnum = If(value, cSurvey.DirectionEnum.Left, cSurvey.DirectionEnum.Right)
+        '        If oTempData.Direction <> iNewValue Then
+        '            oTempData.Direction = iNewValue
+        '            bChanged = True
+        '        End If
+        '    End Set
+        'End Property
 
         Public Property Distance() As Decimal
             Get
@@ -1412,11 +1406,11 @@ Namespace cSurvey
             End If
         End Function
 
-        Public Property Direction As DirectionEnum
+        Public Property Direction As cSurvey.DirectionEnum
             Get
                 Return oTempData.Direction
             End Get
-            Set(value As DirectionEnum)
+            Set(value As cSurvey.DirectionEnum)
                 If value <> oTempData.Direction Then
                     oTempData.Direction = value
                     bChanged = True
@@ -1506,5 +1500,17 @@ Namespace cSurvey
                 Return iSurfaceProfileShow = cISurfaceProfile.SurfaceProfileShowEnum.Visible
             End If
         End Function
+
+        Public ReadOnly Property FromSplays As cSegmentCollection
+            Get
+                Return oSurvey.Segments.GetSplaySegments(oCurrentData.From)
+            End Get
+        End Property
+
+        Public ReadOnly Property ToSplays As cSegmentCollection
+            Get
+                Return oSurvey.Segments.GetSplaySegments(oCurrentData.To)
+            End Get
+        End Property
     End Class
 End Namespace

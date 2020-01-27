@@ -2660,37 +2660,37 @@
     <value>Tahoma, 8.25pt</value>
   </data>
   <data name="mnuLvContextAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 30</value>
+    <value>160, 22</value>
   </data>
   <data name="mnuLvContextAdd.Text" xml:space="preserve">
     <value>Add...</value>
   </data>
   <data name="mnuLvContextAddSep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 6</value>
+    <value>157, 6</value>
   </data>
   <data name="mnuLvContextDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 30</value>
+    <value>160, 22</value>
   </data>
   <data name="mnuLvContextDelete.Text" xml:space="preserve">
     <value>Remove</value>
   </data>
   <data name="mnuLvContextDeleteSep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 6</value>
+    <value>157, 6</value>
   </data>
   <data name="mnuLvContextImport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 30</value>
+    <value>160, 22</value>
   </data>
   <data name="mnuLvContextImport.Text" xml:space="preserve">
     <value>Import from file...</value>
   </data>
   <data name="mnuLvContextExport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 30</value>
+    <value>160, 22</value>
   </data>
   <data name="mnuLvContextExport.Text" xml:space="preserve">
     <value>Export to file...</value>
   </data>
   <data name="mnuLvContext.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 136</value>
+    <value>161, 104</value>
   </data>
   <data name="&gt;&gt;mnuLvContext.Name" xml:space="preserve">
     <value>mnuLvContext</value>
@@ -2709,7 +2709,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACs
-        EAAAAk1TRnQBSQFMAgEBAwEAAYwBBQGMAQUBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        EAAAAk1TRnQBSQFMAgEBAwEAAaQBBQGkAQUBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABgAMAASADAAEBAQABCAYAARAYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA

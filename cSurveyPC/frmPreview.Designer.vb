@@ -1021,7 +1021,6 @@ Partial Class frmPreview
         'mnuLvContext
         '
         resources.ApplyResources(Me.mnuLvContext, "mnuLvContext")
-        Me.mnuLvContext.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.mnuLvContext.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuLvContextAdd, Me.mnuLvContextAddSep, Me.mnuLvContextDelete, Me.mnuLvContextDeleteSep, Me.mnuLvContextImport, Me.mnuLvContextExport})
         Me.mnuLvContext.Name = "mnuLvContext"
         '

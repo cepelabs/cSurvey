@@ -773,7 +773,7 @@ Public Class frmPreview
 
         Dim oImage As Image
         Try
-            If (picExport.Image Is Nothing) Or (oImage.Width <> iImageWidth) Or (oImage.Height <> iImageHeight) Then
+            If (picExport.Image Is Nothing) OrElse (oImage.Width <> iImageWidth) OrElse (oImage.Height <> iImageHeight) Then
                 Try
                     oImage = New Bitmap(iImageWidth, iImageHeight) ', Drawing.Imaging.PixelFormat.Format32bppArgb)
                 Catch
@@ -797,27 +797,24 @@ Public Class frmPreview
         End Try
 
         If bManualRefresh And bFirstRendering Then
-            Dim oGr As Graphics = Graphics.FromImage(oImage)
-            oGr.FillRectangle(Brushes.LightGray, oGr.ClipBounds)
+            Using oGr As Graphics = Graphics.FromImage(oImage)
+                oGr.FillRectangle(Brushes.LightGray, oGr.ClipBounds)
+            End Using
         Else
-            'If DrawDesign Then
             Using oGr As Graphics = Graphics.FromImage(oImage)
                 oGr.PageUnit = GraphicsUnit.Pixel
 
                 If btnPreviewQuality0.Checked Then
-                    'oGr.CompositingMode = CompositingMode.SourceOver
                     oGr.CompositingQuality = CompositingQuality.HighSpeed
                     oGr.SmoothingMode = SmoothingMode.HighSpeed
                     oGr.InterpolationMode = InterpolationMode.Low
                     oGr.TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
                 ElseIf btnPreviewQuality1.Checked Then
-                    'oGr.CompositingMode = CompositingMode.SourceOver
                     oGr.CompositingQuality = CompositingQuality.HighSpeed
                     oGr.SmoothingMode = SmoothingMode.AntiAlias
                     oGr.InterpolationMode = InterpolationMode.Default
                     oGr.TextRenderingHint = Drawing.Text.TextRenderingHint.ClearTypeGridFit
                 Else
-                    'oGr.CompositingMode = CompositingMode.SourceOver
                     oGr.CompositingQuality = CompositingQuality.HighQuality
                     oGr.SmoothingMode = SmoothingMode.AntiAlias
                     oGr.InterpolationMode = InterpolationMode.HighQualityBicubic
@@ -886,7 +883,7 @@ Public Class frmPreview
 
                 If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
                     'disegno il "disegno"
-                    Call oSurvey.Plan.Paint(oGr, oOptions, oSelection)
+                    Call oSurvey.Plan.Paint(oGr, oOptions, cDrawOptions.Empty, oSelection)
 
                     'tolgo la matrice del disegno e disegno i gadget aggiuntivi con le apposite classi di servizio (senza matrice)
                     Call oGr.ResetTransform()
@@ -903,7 +900,7 @@ Public Class frmPreview
                         Call oSurvey.Plan.Plot.InfoBox.Paint(oGr, oOptions)
                     End If
                 Else
-                    Call oSurvey.Profile.Paint(oGr, oOptions, oSelection)
+                    Call oSurvey.Profile.Paint(oGr, oOptions, cDrawOptions.Empty, oSelection)
                     'tolgo la matrice del disegno e disegno i gadget aggiuntivi con le apposite classi di servizio (senza matrice)
                     Call oGr.ResetTransform()
                     If pnlScale.Visible AndAlso oOptions.DrawScale Then
@@ -1013,7 +1010,7 @@ Public Class frmPreview
                 End Using
 
                 If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
-                    Call oSurvey.Plan.Paint(oGr, oOptions, oSelection)
+                    Call oSurvey.Plan.Paint(oGr, oOptions, cDrawOptions.Empty, oSelection)
                     'tolgo la matrice del disegno e disegno i gadget aggiuntivi con le apposite classi di servizio (senza matrice)
                     Call oGr.ResetTransform()
                     If pnlCompass.Visible AndAlso oOptions.DrawCompass Then
@@ -1029,7 +1026,7 @@ Public Class frmPreview
                         Call oSurvey.Plan.Plot.InfoBox.Paint(oGr, oOptions)
                     End If
                 Else
-                    Call oSurvey.Profile.Paint(oGr, oOptions, oSelection)
+                    Call oSurvey.Profile.Paint(oGr, oOptions, cDrawOptions.Empty, oSelection)
                     'tolgo la matrice del disegno e disegno i gadget aggiuntivi con le apposite classi di servizio (senza matrice)
                     Call oGr.ResetTransform()
                     If pnlScale.Visible AndAlso oOptions.DrawScale Then
@@ -1352,150 +1349,140 @@ Public Class frmPreview
     End Sub
 
     Private Sub pExport()
-        Dim oSD As SaveFileDialog = New SaveFileDialog
-        With oSD
-            Dim oOptions As cSurvey.Design.cOptionsExport = oCurrentOptions
-
-            .Title = GetLocalizedString("preview.saveimagedialog")
-            Dim sExtension As String = oOptions.FileFormat
-            If sLastFilename = "" Then
-                sLastFilename = IIf(oSurvey.Name <> "", oSurvey.Name, GetLocalizedString("preview.textpart1")) & IIf(oCurrentProfile.Name <> "", " - " & oCurrentProfile.Name, "") & "." & sExtension
-            Else
-                sLastFilename = IO.Path.GetFileNameWithoutExtension(sLastFilename) & "." & sExtension
-            End If
-            .FileName = sLastFilename
-            .Filter = String.Format(GetLocalizedString("preview.filetypeIMAGES"), oOptions.FileFormat) & " (*." & sExtension & ")|*." & sExtension
-            .FilterIndex = 1
-            'JPG()
-            'TIF()
-            'PNG()
-            'BMP()
-            'SVG()
-            If .ShowDialog = Windows.Forms.DialogResult.OK Then
-                Dim sExt As String = IO.Path.GetExtension(.FileName).ToLower
-                Select Case sExt
-                    Case ".jpg", ".tif", ".png", ".bmp"
-                        Call oMousePointer.Push(Cursors.WaitCursor)
-                        If bManualRefresh Then pRefresh(True)
-                        sLastFilename = .FileName
-                        Dim iImageFormat As System.Drawing.Imaging.ImageFormat
-                        Select Case sExt
-                            Case ".jpg"
-                                iImageFormat = System.Drawing.Imaging.ImageFormat.Jpeg
-                            Case ".tif"
-                                iImageFormat = System.Drawing.Imaging.ImageFormat.Tiff
-                            Case ".png"
-                                iImageFormat = System.Drawing.Imaging.ImageFormat.Png
-                            Case ".bmp"
-                                iImageFormat = System.Drawing.Imaging.ImageFormat.Bmp
-                        End Select
-                        Call picExport.Image.Save(sLastFilename, iImageFormat)
-                        If oOptions.GPS.ExportData Then
-                            Select Case oOptions.GPS.DataFormat
-                                Case Options.cGPSOptions.GPSDataFormatEnum.GoogleEarthImageOverlay
-                                    Try
-                                        Dim oOrigin As cTrigPoint = oSurvey.TrigPoints.GetGPSBaseReferencePoint
-                                        If oOrigin Is Nothing Then
-                                            Call MsgBox(GetLocalizedString("preview.warning2"), MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, GetLocalizedString("preview.warningtitle"))
-                                        Else
-                                            Dim dLat As Double = oOrigin.Coordinate.GetLatitude
-                                            Dim dLong As Double = oOrigin.Coordinate.GetLongitude
-
-                                            If dLat = 0 And dLong = 0 Then
-                                                Call MsgBox(GetLocalizedString("preview.warning3"), MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, GetLocalizedString("preview.warningtitle"))
-                                            Else
-                                                Dim oPoint As PointF = oOrigin.GetSegments(0).Data.Plan.ToPoint
-                                                Dim oTopLeft As PointF = modPaint.FromPaintPoint(New PointF(0, 0), sPaintZoom, oPaintTranslation)
-                                                Dim oBottomRight As PointF = modPaint.FromPaintPoint(New PointF(picExport.Image.Width, picExport.Image.Height), sPaintZoom, oPaintTranslation)
-
-                                                Dim dMC As Decimal = oSurvey.Calculate.GeoMagDeclinationData.MeridianConvergence
-                                                Dim dTopLeftDistance As Single = modPaint.DistancePointToPoint(oPoint, oTopLeft)
-                                                Dim dBottomRightDistance As Single = modPaint.DistancePointToPoint(oPoint, oBottomRight)
-                                                Dim dTopLeftAngle As Single = modPaint.AddAngle(modPaint.GetBearing(oPoint, oTopLeft), dMC)
-                                                Dim dBottomRightAngle As Single = modPaint.AddAngle(modPaint.GetBearing(oPoint, oBottomRight), dMC)
-
-                                                Dim dTopLeftLat As Decimal
-                                                Dim dTopLeftLong As Decimal
-                                                Call CalculateCoordinates(oSurvey, dLat, dLong, dTopLeftDistance, dTopLeftAngle, dTopLeftLat, dTopLeftLong)
-                                                Dim dBottomRightLat As Decimal
-                                                Dim dBottomRightLong As Decimal
-                                                Call CalculateCoordinates(oSurvey, dLat, dLong, dBottomRightDistance, dBottomRightAngle, dBottomRightLat, dBottomRightLong)
-
-                                                Call modExport.GoogleKmlOverlayExportTo(oSurvey, sLastFilename, dTopLeftLat, dTopLeftLong, dBottomRightLat, dBottomRightLong)
-                                            End If
-                                        End If
-                                    Catch
-                                    End Try
+        Using oSD As SaveFileDialog = New SaveFileDialog
+            With oSD
+                Dim oOptions As cSurvey.Design.cOptionsExport = oCurrentOptions
+                .Title = GetLocalizedString("preview.saveimagedialog")
+                Dim sExtension As String = oOptions.FileFormat
+                If sLastFilename = "" Then
+                    sLastFilename = IIf(oSurvey.Name <> "", oSurvey.Name, GetLocalizedString("preview.textpart1")) & IIf(oCurrentProfile.Name <> "", " - " & oCurrentProfile.Name, "") & "." & sExtension
+                Else
+                    sLastFilename = IO.Path.GetFileNameWithoutExtension(sLastFilename) & "." & sExtension
+                End If
+                .FileName = sLastFilename
+                .Filter = String.Format(GetLocalizedString("preview.filetypeIMAGES"), oOptions.FileFormat) & " (*." & sExtension & ")|*." & sExtension
+                .FilterIndex = 1
+                If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                    Dim sExt As String = IO.Path.GetExtension(.FileName).ToLower
+                    Select Case sExt
+                        Case ".jpg", ".tif", ".png", ".bmp"
+                            Call oMousePointer.Push(Cursors.WaitCursor)
+                            If bManualRefresh Then pRefresh(True)
+                            sLastFilename = .FileName
+                            Dim iImageFormat As System.Drawing.Imaging.ImageFormat
+                            Select Case sExt
+                                Case ".jpg"
+                                    iImageFormat = System.Drawing.Imaging.ImageFormat.Jpeg
+                                Case ".tif"
+                                    iImageFormat = System.Drawing.Imaging.ImageFormat.Tiff
+                                Case ".png"
+                                    iImageFormat = System.Drawing.Imaging.ImageFormat.Png
+                                Case ".bmp"
+                                    iImageFormat = System.Drawing.Imaging.ImageFormat.Bmp
                             End Select
-                        End If
-                        Call oMousePointer.Pop()
-                    Case ".svg"
-                        Call oMousePointer.Push(Cursors.WaitCursor)
-                        If bManualRefresh Then pRefresh(True)
+                            Call picExport.Image.Save(sLastFilename, iImageFormat)
+                            If oOptions.GPS.ExportData Then
+                                Select Case oOptions.GPS.DataFormat
+                                    Case Options.cGPSOptions.GPSDataFormatEnum.GoogleEarthImageOverlay
+                                        Try
+                                            Dim oOrigin As cTrigPoint = oSurvey.TrigPoints.GetGPSBaseReferencePoint
+                                            If oOrigin Is Nothing Then
+                                                Call MsgBox(GetLocalizedString("preview.warning2"), MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, GetLocalizedString("preview.warningtitle"))
+                                            Else
+                                                Dim dLat As Double = oOrigin.Coordinate.GetLatitude
+                                                Dim dLong As Double = oOrigin.Coordinate.GetLongitude
 
-                        Dim iImageWidth As Integer = oOptions.ImageWidth  '4096
-                        Dim iImageHeight As Integer = oOptions.ImageHeight '4096
+                                                If dLat = 0 And dLong = 0 Then
+                                                    Call MsgBox(GetLocalizedString("preview.warning3"), MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, GetLocalizedString("preview.warningtitle"))
+                                                Else
+                                                    Dim oPoint As PointF = oOrigin.GetSegments(0).Data.Plan.ToPoint
+                                                    Dim oTopLeft As PointF = modPaint.FromPaintPoint(New PointF(0, 0), sPaintZoom, oPaintTranslation)
+                                                    Dim oBottomRight As PointF = modPaint.FromPaintPoint(New PointF(picExport.Image.Width, picExport.Image.Height), sPaintZoom, oPaintTranslation)
 
-                        Dim sPaintZoom As Single = 10
-                        Dim oPageRect As RectangleF = New RectangleF(oOptions.Margins.Left, oOptions.Margins.Top, iImageWidth - oOptions.Margins.Left - oOptions.Margins.Right, iImageHeight - oOptions.Margins.Top - oOptions.Margins.Bottom)
-                        'oPaintTranslation = New PointF(oPageRect.Width / 2, oPageRect.Height / 2)
-                        Dim oRect As RectangleF
-                        If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
-                            oRect = oSurvey.Plan.GetVisibleBounds(oOptions)
-                        Else
-                            oRect = oSurvey.Profile.GetVisibleBounds(oOptions)
-                        End If
-                        oRect = modPaint.AdjustBounds(oRect, 1)
+                                                    Dim dMC As Decimal = oSurvey.Calculate.GeoMagDeclinationData.MeridianConvergence
+                                                    Dim dTopLeftDistance As Single = modPaint.DistancePointToPoint(oPoint, oTopLeft)
+                                                    Dim dBottomRightDistance As Single = modPaint.DistancePointToPoint(oPoint, oBottomRight)
+                                                    Dim dTopLeftAngle As Single = modPaint.AddAngle(modPaint.GetBearing(oPoint, oTopLeft), dMC)
+                                                    Dim dBottomRightAngle As Single = modPaint.AddAngle(modPaint.GetBearing(oPoint, oBottomRight), dMC)
 
-                        If cboScale.SelectedIndex = 0 Then
-                            Dim sDesignWidth As Single = oRect.Size.Width
-                            Dim sDesignHeight As Single = oRect.Size.Height
-                            Dim sPageWidth As Single = oPageRect.Size.Width '* 0.000254
-                            Dim sPageHeight As Single = oPageRect.Size.Height '* 0.000254
-                            Dim sDeltaX As Single = sPageWidth / sDesignWidth
-                            Dim sDeltaY As Single = sPageHeight / sDesignHeight
-                            Dim sDelta As Single = IIf(sDeltaX < sDeltaY, sDeltaX, sDeltaY)
-                            If Single.IsInfinity(sDelta) Then sDelta = 100
-                            sPaintZoom = sDelta
-                        Else
-                            Dim iFactor As Integer = txtScaleManual.Value
-                            'Dim oGraphic As Graphics = Me.picExport.CreateGraphics
-                            sPaintZoom = ((1 / iFactor) / 0.0254) * oSurvey.GetGlobalSetting("svg.exportdpi", 90)
-                        End If
-                        'End If
-                        Dim oPaintTranslation As PointF = New PointF(-oRect.Left * sPaintZoom + oPageRect.Left + (oPageRect.Width - (oRect.Width * sPaintZoom)) / 2, -oRect.Top * sPaintZoom + oPageRect.Top + (oPageRect.Height - (oRect.Height * sPaintZoom)) / 2)
-                        Dim oViewArea As RectangleF = New RectangleF(0, 0, iImageWidth, iImageHeight)
+                                                    Dim dTopLeftLat As Decimal
+                                                    Dim dTopLeftLong As Decimal
+                                                    Call CalculateCoordinates(oSurvey, dLat, dLong, dTopLeftDistance, dTopLeftAngle, dTopLeftLat, dTopLeftLong)
+                                                    Dim dBottomRightLat As Decimal
+                                                    Dim dBottomRightLong As Decimal
+                                                    Call CalculateCoordinates(oSurvey, dLat, dLong, dBottomRightDistance, dBottomRightAngle, dBottomRightLat, dBottomRightLong)
 
-                        sLastFilename = .FileName
-                        Dim oXML As XmlDocument
-                        Dim oSVGOptions As cSurvey.Design.cItem.SVGOptionsEnum
-                        If oSurvey.GetGlobalSetting("svg.exportnoclipping", 0) = 0 Then
-                            oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.Clipping
-                        End If
-                        If oSurvey.GetGlobalSetting("svg.exportnoclipartbrushes", 0) = 0 Then
-                            oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.ClipartBrushes
-                        End If
-                        If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
-                            oXML = oSurvey.Plan.ToSvg(oOptions, oSVGOptions, oViewArea, sPaintZoom, oPaintTranslation)
-                        Else
-                            oXML = oSurvey.Profile.ToSvg(oOptions, oSVGOptions, oViewArea, sPaintZoom, oPaintTranslation)
-                        End If
+                                                    Call modExport.GoogleKmlOverlayExportTo(oSurvey, sLastFilename, dTopLeftLat, dTopLeftLong, dBottomRightLat, dBottomRightLong)
+                                                End If
+                                            End If
+                                        Catch
+                                        End Try
+                                End Select
+                            End If
+                            Call oMousePointer.Pop()
+                        Case ".svg"
+                            Call oMousePointer.Push(Cursors.WaitCursor)
+                            If bManualRefresh Then pRefresh(True)
 
-                        Call XMLAddDeclaration(oXML)
-                        Call oXML.Save(.FileName)
+                            Dim iImageWidth As Integer = oOptions.ImageWidth  '4096
+                            Dim iImageHeight As Integer = oOptions.ImageHeight '4096
 
-                        Call oMousePointer.Pop()
-                End Select
-            End If
-        End With
+                            Dim sPaintZoom As Single = 10
+                            Dim oPageRect As RectangleF = New RectangleF(oOptions.Margins.Left, oOptions.Margins.Top, iImageWidth - oOptions.Margins.Left - oOptions.Margins.Right, iImageHeight - oOptions.Margins.Top - oOptions.Margins.Bottom)
+                            'oPaintTranslation = New PointF(oPageRect.Width / 2, oPageRect.Height / 2)
+                            Dim oRect As RectangleF
+                            If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
+                                oRect = oSurvey.Plan.GetVisibleBounds(oOptions)
+                            Else
+                                oRect = oSurvey.Profile.GetVisibleBounds(oOptions)
+                            End If
+                            oRect = modPaint.AdjustBounds(oRect, 1)
+
+                            If cboScale.SelectedIndex = 0 Then
+                                Dim sDesignWidth As Single = oRect.Size.Width
+                                Dim sDesignHeight As Single = oRect.Size.Height
+                                Dim sPageWidth As Single = oPageRect.Size.Width '* 0.000254
+                                Dim sPageHeight As Single = oPageRect.Size.Height '* 0.000254
+                                Dim sDeltaX As Single = sPageWidth / sDesignWidth
+                                Dim sDeltaY As Single = sPageHeight / sDesignHeight
+                                Dim sDelta As Single = IIf(sDeltaX < sDeltaY, sDeltaX, sDeltaY)
+                                If Single.IsInfinity(sDelta) Then sDelta = 100
+                                sPaintZoom = sDelta
+                            Else
+                                Dim iFactor As Integer = txtScaleManual.Value
+                                'Dim oGraphic As Graphics = Me.picExport.CreateGraphics
+                                sPaintZoom = ((1 / iFactor) / 0.0254) * oSurvey.GetGlobalSetting("svg.exportdpi", 90)
+                            End If
+                            'End If
+                            Dim oPaintTranslation As PointF = New PointF(-oRect.Left * sPaintZoom + oPageRect.Left + (oPageRect.Width - (oRect.Width * sPaintZoom)) / 2, -oRect.Top * sPaintZoom + oPageRect.Top + (oPageRect.Height - (oRect.Height * sPaintZoom)) / 2)
+                            Dim oViewArea As RectangleF = New RectangleF(0, 0, iImageWidth, iImageHeight)
+
+                            sLastFilename = .FileName
+                            Dim oXML As XmlDocument
+                            Dim oSVGOptions As cSurvey.Design.cItem.SVGOptionsEnum
+                            If oSurvey.GetGlobalSetting("svg.exportnoclipping", 0) = 0 Then
+                                oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.Clipping
+                            End If
+                            If oSurvey.GetGlobalSetting("svg.exportnoclipartbrushes", 0) = 0 Then
+                                oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.ClipartBrushes
+                            End If
+                            If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
+                                oXML = oSurvey.Plan.ToSvg(oOptions, oSVGOptions, oViewArea, sPaintZoom, oPaintTranslation)
+                            Else
+                                oXML = oSurvey.Profile.ToSvg(oOptions, oSVGOptions, oViewArea, sPaintZoom, oPaintTranslation)
+                            End If
+
+                            Call XMLAddDeclaration(oXML)
+                            Call oXML.Save(.FileName)
+
+                            Call oMousePointer.Pop()
+                    End Select
+                End If
+            End With
+        End Using
     End Sub
 
     Private Sub cboFileFormat_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboFileFormat.SelectedIndexChanged
-        'JPG()
-        'TIF()
-        'PNG()
-        'BMP()
-        'SVG()
         Select Case cboFileFormat.SelectedIndex
             Case 2
                 chkBackgroundTransparent.Enabled = True
@@ -2323,7 +2310,7 @@ Public Class frmPreview
                 Dim oOptions As cSurvey.Design.cOptions = oCurrentOptions
 
                 Call MapDrawPrintOrExportArea(Graphics, oCurrentOptions, oSurvey, oCurrentDesign, sPaintZoom)
-                Call oCurrentDesign.Paint(Graphics, oOptions, oSelection)
+                Call oCurrentDesign.Paint(Graphics, oOptions, cDrawOptions.Empty, oSelection)
 
                 Graphics.SmoothingMode = SmoothingMode.None
                 If bDrawRulers Then

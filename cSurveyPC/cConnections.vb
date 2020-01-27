@@ -106,6 +106,10 @@ Namespace cSurvey
             End Get
         End Property
 
+        Public Function IsCustomized() As Boolean
+            Return oConnections.Values.FirstOrDefault(Function(oitem) oitem)
+        End Function
+
         Public Function Contains(ByVal TrigPoint As String) As Boolean
             Return oConnections.ContainsKey(TrigPoint)
         End Function

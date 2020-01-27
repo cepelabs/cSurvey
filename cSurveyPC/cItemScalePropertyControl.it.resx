@@ -132,4 +132,16 @@
   <data name="chkHideScaleValue.Text" xml:space="preserve">
     <value>Nascondi valore</value>
   </data>
+  <data name="lblScaleScaleHeightFactor.Text" xml:space="preserve">
+    <value>Scala altezza:</value>
+  </data>
+  <data name="cboPropScaleFillStyle.Items" xml:space="preserve">
+    <value>Solido</value>
+  </data>
+  <data name="cboPropScaleFillStyle.Items1" xml:space="preserve">
+    <value>Alternato</value>
+  </data>
+  <data name="lblPropScaleFillStyle.Text" xml:space="preserve">
+    <value>Stile:</value>
+  </data>
 </root>

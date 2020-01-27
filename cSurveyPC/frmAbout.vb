@@ -35,7 +35,7 @@
         Text = String.Format(GetLocalizedString("about.infoabout.textpart1"), ApplicationTitle)
         Dim oProcess As Process = Process.GetCurrentProcess()
         Dim sMemoryUsage As String = GetLocalizedString("about.infoabout.textpart2") & ": Working Set: " & oProcess.WorkingSet64 / 1024 & " Kb" ', Totale: " & GC.GetTotalMemory(True) / 1024 & " Kb"
-        lblInfo.Text = My.Application.Info.ProductName & vbCrLf & String.Format(GetLocalizedString("about.infoabout.textpart3"), modMain.GetPackageVersion, modMain.GetReleaseDate.ToString("d")) & vbCrLf & My.Application.Info.Copyright & vbCrLf & sMemoryUsage & vbCrLf & IIf(Environment.Is64BitOperatingSystem, GetLocalizedString("about.infoabout.textpart4a"), GetLocalizedString("about.infoabout.textpart4b")) & " - " & IIf(Environment.Is64BitProcess, "cSurvey 64 bit", "cSurvey 32 bit") & vbCrLf & "Riga di comando: " & Environment.CommandLine
+        lblInfo.Text = My.Application.Info.ProductName & vbCrLf & String.Format(GetLocalizedString("about.infoabout.textpart3"), modMain.GetPackageVersion, modMain.GetReleaseDate.ToString("d")) & vbCrLf & My.Application.Info.Copyright & vbCrLf & sMemoryUsage & vbCrLf & IIf(Environment.Is64BitOperatingSystem, GetLocalizedString("about.infoabout.textpart4a"), GetLocalizedString("about.infoabout.textpart4b")) & " - " & IIf(Environment.Is64BitProcess, "cSurvey 64 bit", "cSurvey 32 bit") & vbCrLf
         rtfCopyrights.Text = String.Format(sCopyrights, GetLocalizedString("about.infoabout.textpart5"), GetLocalizedString("about.infoabout.textpart6"))
     End Sub
 

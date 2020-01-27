@@ -488,7 +488,8 @@ Namespace cSurvey.Design
                                             'linee di traslazione
                                             If Not PaintOptions.IsDesign AndAlso PaintOptions.DrawTranslation AndAlso PaintOptions.TranslationsOptions.DrawTranslationsLine AndAlso oTranslationTrigPoint.Count > 1 AndAlso oSurvey.TrigPoints(oTranslationTrigPoint.Name).DrawTranslationsLine Then
                                                 Dim oFromPoint As PointF = oTranslationTrigPoint(0)
-                                                For i As Integer = 1 To oTranslationTrigPoint.Count - 1
+                                                Dim i As Integer = 1
+                                                Do While i < oTranslationTrigPoint.Count
                                                     oCacheItem = oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
                                                     Dim oToPoint As PointF = oTranslationTrigPoint(i)
                                                     If (sTTH = 0 OrElse modPaint.DistancePointToPoint(oToPoint, oFromPoint) > sTTH) Then
@@ -501,8 +502,11 @@ Namespace cSurvey.Design
                                                             Call oCacheItem.SetPen(oDrawingObject.TranslationPen)
                                                             Call oCacheItem.AddLine(oFromPoint, oToPoint)
                                                         End If
+                                                        i += 1
+                                                    Else
+                                                        Call oTranslationTrigPoint.Remove(oToPoint)
                                                     End If
-                                                Next
+                                                Loop
                                             End If
                                             If oSurvey.TrigPoints.Contains(oTranslationTrigPoint.Name) Then
                                                 Dim oTrigPoint As cTrigPoint = oSurvey.TrigPoints(oTranslationTrigPoint.Name)
@@ -636,6 +640,12 @@ Namespace cSurvey.Design
             End If
             Call Render(Graphics, PaintOptions, Selection)
             Call MyBase.Caches(PaintOptions).Paint(Graphics, PaintOptions, cItem.PaintOptionsEnum.None)
+        End Sub
+
+        Friend Overrides Sub ResetChanges()
+            Threading.Tasks.Parallel.ForEach(Of cISegment)(oSurvey.Segments.Where(Function(oSegment) oSegment.Data.Plan.Changed), Sub(oSegment)
+                                                                                                                                      Call oSegment.Data.Plan.ResetChange()
+                                                                                                                                  End Sub)
         End Sub
 
         Friend Overrides Sub CalculateSplay()
@@ -859,7 +869,7 @@ Namespace cSurvey.Design
                 End If
             Next
 
-            'imposto i topoint e i frompoint ai segmenti...
+            'set topoint and frompoint to shots
             For Each oSegment As cSegment In SegmentsColl 'oSurvey.Segments
                 If oSegment.IsValid AndAlso Not oSegment.IsSelfDefined Then
                     Dim sFrom As String = oSegment.Data.Data.From

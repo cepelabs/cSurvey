@@ -15,8 +15,8 @@ Namespace cSurvey.Design
         Private oSurvey As cSurvey
         Private oPlot As cPlotPlan
 
-        Public Overrides Sub Paint(Graphics As Graphics, PaintOptions As cOptions, Selection As Helper.Editor.cIEditDesignSelection)
-            MyBase.Paint(Graphics, PaintOptions, Selection)
+        Public Overrides Sub Paint(Graphics As Graphics, PaintOptions As cOptions, DrawOptions As cDrawOptions, Selection As Helper.Editor.cIEditDesignSelection)
+            MyBase.Paint(Graphics, PaintOptions, DrawOptions, Selection)
         End Sub
 
         Public Overrides ReadOnly Property Type As cIDesign.cDesignTypeEnum
@@ -46,11 +46,11 @@ Namespace cSurvey.Design
             Call MyBase.New(Survey, File, Design)
             oSurvey = Survey
             iType = cIDesign.cDesignTypeEnum.Plan
-            Try
+            If modXML.ChildElementExist(Design, "plot") Then
                 oPlot = New cPlotPlan(Survey, Design.Item("plot"))
-            Catch
+            Else
                 oPlot = New cPlotPlan(Survey)
-            End Try
+            End If
         End Sub
 
         Friend Overrides Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
@@ -242,8 +242,18 @@ Namespace cSurvey.Design
                     Dim iDesignPointIndex As Integer = 0
                     Dim oJoins As List(Of cPoint) = New List(Of cPoint)
                     For Each oDesignpoint As cPoint In oDesignPointArray
-                        If Not oJoins.Contains(oDesignpoint) Then
+                        If oJoins.Contains(oDesignpoint) Then
+                            Debug.Print("skipped joined point")
+                        Else
                             Call oDesignpoint.MoveTo(oPoints(iDesignPointIndex).X, oPoints(iDesignPointIndex).Y)
+                            'Call oDesignpoint.MoveToFromJoin(oPoints(iDesignPointIndex))
+                            'If oDesignpoint.IsJoined Then
+                            '    Call oJoins.Add(oDesignpoint)
+                            '    For Each oJoinedPoint As cPoint In oDesignpoint.PointsJoin.ToArray(oDesignpoint)
+                            '        Call oJoinedPoint.MoveToFromJoin(oPoints(iDesignPointIndex))
+                            '        Call oJoins.Add(oJoinedPoint)
+                            '    Next
+                            'End If
                             If oDesignpoint.IsJoined Then
                                 Call oJoins.AddRange(oDesignpoint.PointsJoin.ToArray)
                             End If
@@ -407,7 +417,6 @@ Namespace cSurvey.Design
                                                 End Using
                                             End If
                                         End If
-
                                         Dim oSVGAreaItem As XmlElement = modSVG.CreateItem(SVG, PaintOptions, oBorderPath)
                                         Call modSVG.AppendItemStyle(SVG, oSVGAreaItem, oBrush, Nothing)
                                         Call modSVG.AppendItem(SVG, oSVGArea, oSVGAreaItem)

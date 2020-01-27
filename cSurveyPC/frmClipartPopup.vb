@@ -293,6 +293,14 @@ Public Class frmClipartPopup
         Return -1
     End Function
 
+    Friend Function GetGalleryItems(Index As Integer) As List(Of Object)
+        Dim oResults As List(Of Object) = New List(Of Object)
+        For Each oItem As ListViewItem In DirectCast(tabGallery.TabPages(Index).Controls("listview_" & GetGalleryName(Index)), ListView).Items
+            Call oResults.Add(oItem.Tag)
+        Next
+        Return oResults
+    End Function
+
     Friend Function GetGalleryBag(Index As Integer) As Object
         Return tabGallery.TabPages(Index).Controls("listview_" & GetGalleryName(Index)).Tag
     End Function
@@ -381,7 +389,7 @@ Public Class frmClipartPopup
         Next
     End Sub
 
-    Public Sub pClipboardLoadItems(ByVal Path As String, ByVal Name As String, Groupable As Boolean)
+    Private Sub pClipartLoadItems(ByVal Path As String, ByVal Name As String, Groupable As Boolean)
         Call oMousePointer.Push(Cursors.WaitCursor)
         Dim oLv As ListView = Controls.Find("listview_" & Name, True)(0)
         oLv.Enabled = False
@@ -554,7 +562,7 @@ Public Class frmClipartPopup
         Dim sPath As String = oData(0)
         Dim sName As String = oData(1)
         Dim bGroupable As Boolean = oData(2)
-        Call pClipboardLoadItems(sPath, sName, bGroupable)
+        Call pClipartLoadItems(sPath, sName, bGroupable)
     End Sub
 
     Private Sub btnRefresh_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRefresh.Click
@@ -605,17 +613,21 @@ Public Class frmClipartPopup
     Private Sub btnViewGallery_Click(sender As System.Object, e As System.EventArgs) Handles btnViewGallery.Click
         iView = ViewModeEnum.Gallery
         Call pSetViewState()
-        Call pClipboardLoad()
+        Call pClipartLoad()
     End Sub
 
     Private Sub btnViewSurvey_Click(sender As System.Object, e As System.EventArgs) Handles btnViewSurvey.Click
         iView = ViewModeEnum.Survey
         Call pSetViewState()
-        Call pClipboardLoad()
+        Call pClipartLoad()
     End Sub
 
-    Private Sub pClipboardLoad()
-        If Not modMain.bIsInDebug Then
+    Public Sub LoadGalleries()
+        Call pClipartLoad(True)
+    End Sub
+
+    Private Sub pClipartLoad(Optional Force As Boolean = False)
+        If Force OrElse Not modMain.bIsInDebug Then
             For Each oTab As TabPage In tabGallery.TabPages
                 Dim oCurrentLv As ListView = oTab.Controls(0)
                 If oCurrentLv.Items.Count = 0 Then
@@ -623,14 +635,14 @@ Public Class frmClipartPopup
                     Dim sPath As String = oData(0)
                     Dim sName As String = oData(1)
                     Dim bGroupable As Boolean = oData(2)
-                    Call pClipboardLoadItems(sPath, sName, bGroupable)
+                    Call pClipartLoadItems(sPath, sName, bGroupable)
                 End If
             Next
         End If
     End Sub
 
     Private Sub frmClipartPopup_Shown(sender As Object, e As System.EventArgs) Handles Me.Shown
-        Call pClipboardLoad()
+        Call pClipartLoad()
     End Sub
 
     Private Sub mnuLvContextEditMetadata_Click(sender As Object, e As EventArgs) Handles mnuLvContextEditMetadata.Click

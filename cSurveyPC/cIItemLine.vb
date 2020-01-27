@@ -5,9 +5,6 @@
             Lines = &H0
             Splines = &H1
             Beziers = &H2
-            'ClosedLines = &H10
-            'ClosedSplines = &H11
-            'ClosedBeziers = &H12
         End Enum
 
         Property LineType As LineTypeEnum

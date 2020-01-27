@@ -397,8 +397,8 @@ Namespace cSurvey.Design.Items
             sImageID = Guid.NewGuid.ToString
             sDesignImageID = Guid.NewGuid.ToString
 
-            oImage = New Bitmap(Image) 'Image.Clone
-            oDesignImage = New Bitmap(Image) 'Image.Clone
+            oImage = New Bitmap(Image)
+            oDesignImage = New Bitmap(Image)
 
             oTransparentColor = Color.Transparent
             sTransparencyThreshold = sDefaultTransparencyThreshold
@@ -543,31 +543,24 @@ Namespace cSurvey.Design.Items
 
             Select Case File.FileFormat
                 Case Storage.cFile.FileFormatEnum.CSX
+                    Using oMs As IO.MemoryStream = New IO.MemoryStream(Convert.FromBase64String(modXML.GetAttributeValue(item, "image")))
+                        oImage = modPaint.SafeBitmapFromStream(oMs)
+                    End Using
                     Try
-                        Dim oms As IO.MemoryStream = New IO.MemoryStream(Convert.FromBase64String(modXML.GetAttributeValue(item, "image")))
-                        oImage = New Bitmap(oms)
-                        'Call oms.Dispose()
+                        Using oMs As IO.MemoryStream = New IO.MemoryStream(Convert.FromBase64String(modXML.GetAttributeValue(item, "designimage")))
+                            oDesignImage = modPaint.SafeBitmapFromStream(oMs)
+                        End Using
                     Catch
-                    End Try
-                    Try
-                        Dim oms As IO.MemoryStream = New IO.MemoryStream(Convert.FromBase64String(modXML.GetAttributeValue(item, "designimage")))
-                        oDesignImage = New Bitmap(oms)
-                        'Call oms.Dispose()
-                    Catch
-                        If Not oImage Is Nothing Then oDesignImage = New Bitmap(oImage) 'oImage.Clone
+                        If Not oImage Is Nothing Then oDesignImage = New Bitmap(oImage)
                     End Try
                 Case Storage.cFile.FileFormatEnum.CSZ
-                    Try
-                        Dim sImagePath As String = modXML.GetAttributeValue(item, "image")
-                        oImage = New Bitmap(DirectCast(File.Data(sImagePath), Storage.cStorageItemFile).Stream)
-                    Catch
-                    End Try
-
+                    Dim sImagePath As String = modXML.GetAttributeValue(item, "image")
+                    oImage = modPaint.SafeBitmapFromStream(DirectCast(File.Data(sImagePath), Storage.cStorageItemFile).Stream)
                     Try
                         Dim sDesignImagePath As String = modXML.GetAttributeValue(item, "designimage")
-                        oDesignImage = New Bitmap(DirectCast(File.Data(sDesignImagePath), Storage.cStorageItemFile).Stream)
+                        oDesignImage = modPaint.SafeBitmapFromStream(DirectCast(File.Data(sDesignImagePath), Storage.cStorageItemFile).Stream)
                     Catch
-                        If Not oImage Is Nothing Then oDesignImage = New Bitmap(oImage) 'oImage.Clone
+                        If Not oImage Is Nothing Then oDesignImage = New Bitmap(oImage)
                     End Try
             End Select
 
@@ -597,36 +590,25 @@ Namespace cSurvey.Design.Items
             If Not (File.Options And Storage.cFile.FileOptionsEnum.DontSaveBinary) = Storage.cFile.FileOptionsEnum.DontSaveBinary Then
                 Select Case File.FileFormat
                     Case Storage.cFile.FileFormatEnum.CSX
-                        Using oTemp As Bitmap = New Bitmap(oImage)
-                            Using oms As IO.MemoryStream = New IO.MemoryStream
-                                Call oTemp.Save(oms, Drawing.Imaging.ImageFormat.Png)
-                                Call oItem.SetAttribute("image", Convert.ToBase64String(oms.ToArray()))
-                                Call oms.Close()
-                            End Using
+                        Using oMs As IO.MemoryStream = New IO.MemoryStream
+                            Call modPaint.SafeBitmapSaveToStream(oImage, oMs, Drawing.Imaging.ImageFormat.Png)
+                            Call oItem.SetAttribute("image", Convert.ToBase64String(oMs.ToArray()))
                         End Using
 
-                        Using oTemp As Bitmap = New Bitmap(oDesignImage)
-                            Using oms As IO.MemoryStream = New IO.MemoryStream
-                                Call oTemp.Save(oms, Drawing.Imaging.ImageFormat.Png)
-                                Call oItem.SetAttribute("designimage", Convert.ToBase64String(oms.ToArray()))
-                                Call oms.Close()
-                            End Using
+                        Using oMs As IO.MemoryStream = New IO.MemoryStream
+                            Call modPaint.SafeBitmapSaveToStream(oDesignImage, oMs, Drawing.Imaging.ImageFormat.Png)
+                            Call oItem.SetAttribute("designimage", Convert.ToBase64String(oMs.ToArray()))
                         End Using
 
                     Case Storage.cFile.FileFormatEnum.CSZ
                         Dim sImagePath As String = "_data\design\" & sImageID & ".png"
                         Dim oImageStorage As Storage.cStorageItemFile = File.Data.AddFile(sImagePath)
-                        Using oTemp As Bitmap = New Bitmap(oImage)
-                            Call oTemp.Save(oImageStorage.Stream, Drawing.Imaging.ImageFormat.Png)
-                            Call oItem.SetAttribute("image", sImagePath)
-                        End Using
-
+                        Call modPaint.SafeBitmapSaveToStream(oImage, oImageStorage.Stream, Drawing.Imaging.ImageFormat.Png)
+                        Call oItem.SetAttribute("image", sImagePath)
                         Dim sDesignImagePath As String = "_data\design\" & sDesignImageID & ".png"
                         Dim oDesignImageStorage As Storage.cStorageItemFile = File.Data.AddFile(sDesignImagePath)
-                        Using oTemp As Bitmap = New Bitmap(oDesignImage)
-                            Call oTemp.Save(oDesignImageStorage.Stream, Drawing.Imaging.ImageFormat.Png)
-                            Call oItem.SetAttribute("designimage", sDesignImagePath)
-                        End Using
+                        Call modPaint.SafeBitmapSaveToStream(oDesignImage, oDesignImageStorage.Stream, Drawing.Imaging.ImageFormat.Png)
+                        Call oItem.SetAttribute("designimage", sDesignImagePath)
                 End Select
             End If
 

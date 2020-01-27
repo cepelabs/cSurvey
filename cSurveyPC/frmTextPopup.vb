@@ -15,7 +15,7 @@ Public Class frmTextPopup
         Private oBag As Object
         Private iType As cItemFont.FontTypeEnum
         Private sText As String
-        Private iSize As Items.cIItemText.TextSizeEnum
+        Private iSize As Items.cIItemSizable.SizeEnum
 
         Public ReadOnly Property Bag As Object
             Get
@@ -35,13 +35,13 @@ Public Class frmTextPopup
             End Get
         End Property
 
-        Public ReadOnly Property Size As Items.cIItemText.TextSizeEnum
+        Public ReadOnly Property Size As Items.cIItemSizable.SizeEnum
             Get
                 Return iSize
             End Get
         End Property
 
-        Friend Sub New(ByVal Bag As Object, ByVal Text As String, ByVal Type As cItemFont.FontTypeEnum, ByVal Size As Items.cIItemText.TextSizeEnum)
+        Friend Sub New(ByVal Bag As Object, ByVal Text As String, ByVal Type As cItemFont.FontTypeEnum, ByVal Size As Items.cIItemSizable.SizeEnum)
             oBag = Bag
             sText = Text
             iType = Type
@@ -112,7 +112,7 @@ Public Class frmTextPopup
         Try
             Dim sText As String = txtText.Text
             Dim iType As cItemFont.FontTypeEnum = cboPropTextStyle.SelectedItem.type
-            Dim iSize As Items.cIItemText.TextSizeEnum = cboPropTextSize.SelectedIndex
+            Dim iSize As Items.cIItemSizable.SizeEnum = cboPropTextSize.SelectedIndex
             RaiseEvent OnItemCreate(Me, New OnItemEventArgs(oBag, sText, iType, iSize))
         Catch
         End Try

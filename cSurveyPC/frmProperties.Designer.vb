@@ -389,8 +389,6 @@ Partial Class frmProperties
         Me.tabSessionSegments = New System.Windows.Forms.TabPage()
         Me.tabSessionCalibrationSegments = New System.Windows.Forms.TabPage()
         Me.tabInfoGPS = New System.Windows.Forms.TabPage()
-        Me.optGPSCustomRefPoint = New System.Windows.Forms.RadioButton()
-        Me.optGPSRefPointOnOrigin = New System.Windows.Forms.RadioButton()
         Me.frmGPSDefaults = New System.Windows.Forms.GroupBox()
         Me.cboCoordinateBand = New System.Windows.Forms.ComboBox()
         Me.cboCoordinateZone = New System.Windows.Forms.ComboBox()
@@ -398,7 +396,11 @@ Partial Class frmProperties
         Me.lblCoordinateBand = New System.Windows.Forms.Label()
         Me.lblCoordinateZone = New System.Windows.Forms.Label()
         Me.lblCoordinateFormat = New System.Windows.Forms.Label()
+        Me.pnlGPS = New System.Windows.Forms.Panel()
+        Me.chkGPSAllowManualDeclinations = New System.Windows.Forms.CheckBox()
         Me.lblGPSCustomRefPoint = New System.Windows.Forms.Label()
+        Me.optGPSCustomRefPoint = New System.Windows.Forms.RadioButton()
+        Me.optGPSRefPointOnOrigin = New System.Windows.Forms.RadioButton()
         Me.tabInfoOptions = New System.Windows.Forms.TabPage()
         Me.chkShowWarpingDetails = New System.Windows.Forms.CheckBox()
         Me.cboCalculateVersion = New System.Windows.Forms.ComboBox()
@@ -575,6 +577,7 @@ Partial Class frmProperties
         Me.tabSessionCalibrationSegments.SuspendLayout()
         Me.tabInfoGPS.SuspendLayout()
         Me.frmGPSDefaults.SuspendLayout()
+        Me.pnlGPS.SuspendLayout()
         Me.tabInfoOptions.SuspendLayout()
         CType(Me.picNordCorrectionWarning, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabInfoNote.SuspendLayout()
@@ -1185,6 +1188,7 @@ Partial Class frmProperties
         Me.lvCaveInfoSegments.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colPropSegmentsBindedSegment})
         Me.lvCaveInfoSegments.FullRowSelect = True
         Me.lvCaveInfoSegments.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None
+        Me.lvCaveInfoSegments.HideSelection = False
         Me.lvCaveInfoSegments.Name = "lvCaveInfoSegments"
         Me.tipStandard.SetToolTip(Me.lvCaveInfoSegments, resources.GetString("lvCaveInfoSegments.ToolTip"))
         Me.lvCaveInfoSegments.UseCompatibleStateImageBehavior = False
@@ -1472,6 +1476,7 @@ Partial Class frmProperties
         Me.lvSessionSegments.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1})
         Me.lvSessionSegments.FullRowSelect = True
         Me.lvSessionSegments.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None
+        Me.lvSessionSegments.HideSelection = False
         Me.lvSessionSegments.Name = "lvSessionSegments"
         Me.tipStandard.SetToolTip(Me.lvSessionSegments, resources.GetString("lvSessionSegments.ToolTip"))
         Me.lvSessionSegments.UseCompatibleStateImageBehavior = False
@@ -1503,6 +1508,7 @@ Partial Class frmProperties
         Me.lvSessionCalibrationSegments.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader2})
         Me.lvSessionCalibrationSegments.FullRowSelect = True
         Me.lvSessionCalibrationSegments.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None
+        Me.lvSessionCalibrationSegments.HideSelection = False
         Me.lvSessionCalibrationSegments.Name = "lvSessionCalibrationSegments"
         Me.tipStandard.SetToolTip(Me.lvSessionCalibrationSegments, resources.GetString("lvSessionCalibrationSegments.ToolTip"))
         Me.lvSessionCalibrationSegments.UseCompatibleStateImageBehavior = False
@@ -3179,31 +3185,12 @@ Partial Class frmProperties
         '
         'tabInfoGPS
         '
-        Me.tabInfoGPS.Controls.Add(Me.cmdGPSCustomRefPointRefreshStations)
-        Me.tabInfoGPS.Controls.Add(Me.optGPSCustomRefPoint)
-        Me.tabInfoGPS.Controls.Add(Me.optGPSRefPointOnOrigin)
         Me.tabInfoGPS.Controls.Add(Me.chkGPSEnabled)
-        Me.tabInfoGPS.Controls.Add(Me.chkGPSSendToTherion)
         Me.tabInfoGPS.Controls.Add(Me.frmGPSDefaults)
-        Me.tabInfoGPS.Controls.Add(Me.cboGPSCustomRefPoint)
-        Me.tabInfoGPS.Controls.Add(Me.lblGPSCustomRefPoint)
+        Me.tabInfoGPS.Controls.Add(Me.pnlGPS)
         resources.ApplyResources(Me.tabInfoGPS, "tabInfoGPS")
         Me.tabInfoGPS.Name = "tabInfoGPS"
         Me.tabInfoGPS.UseVisualStyleBackColor = True
-        '
-        'optGPSCustomRefPoint
-        '
-        resources.ApplyResources(Me.optGPSCustomRefPoint, "optGPSCustomRefPoint")
-        Me.optGPSCustomRefPoint.Name = "optGPSCustomRefPoint"
-        Me.optGPSCustomRefPoint.TabStop = True
-        Me.optGPSCustomRefPoint.UseVisualStyleBackColor = True
-        '
-        'optGPSRefPointOnOrigin
-        '
-        resources.ApplyResources(Me.optGPSRefPointOnOrigin, "optGPSRefPointOnOrigin")
-        Me.optGPSRefPointOnOrigin.Name = "optGPSRefPointOnOrigin"
-        Me.optGPSRefPointOnOrigin.TabStop = True
-        Me.optGPSRefPointOnOrigin.UseVisualStyleBackColor = True
         '
         'frmGPSDefaults
         '
@@ -3251,10 +3238,42 @@ Partial Class frmProperties
         resources.ApplyResources(Me.lblCoordinateFormat, "lblCoordinateFormat")
         Me.lblCoordinateFormat.Name = "lblCoordinateFormat"
         '
+        'pnlGPS
+        '
+        Me.pnlGPS.Controls.Add(Me.chkGPSAllowManualDeclinations)
+        Me.pnlGPS.Controls.Add(Me.lblGPSCustomRefPoint)
+        Me.pnlGPS.Controls.Add(Me.cmdGPSCustomRefPointRefreshStations)
+        Me.pnlGPS.Controls.Add(Me.cboGPSCustomRefPoint)
+        Me.pnlGPS.Controls.Add(Me.optGPSCustomRefPoint)
+        Me.pnlGPS.Controls.Add(Me.chkGPSSendToTherion)
+        Me.pnlGPS.Controls.Add(Me.optGPSRefPointOnOrigin)
+        resources.ApplyResources(Me.pnlGPS, "pnlGPS")
+        Me.pnlGPS.Name = "pnlGPS"
+        '
+        'chkGPSAllowManualDeclinations
+        '
+        resources.ApplyResources(Me.chkGPSAllowManualDeclinations, "chkGPSAllowManualDeclinations")
+        Me.chkGPSAllowManualDeclinations.Name = "chkGPSAllowManualDeclinations"
+        Me.chkGPSAllowManualDeclinations.UseVisualStyleBackColor = True
+        '
         'lblGPSCustomRefPoint
         '
         resources.ApplyResources(Me.lblGPSCustomRefPoint, "lblGPSCustomRefPoint")
         Me.lblGPSCustomRefPoint.Name = "lblGPSCustomRefPoint"
+        '
+        'optGPSCustomRefPoint
+        '
+        resources.ApplyResources(Me.optGPSCustomRefPoint, "optGPSCustomRefPoint")
+        Me.optGPSCustomRefPoint.Name = "optGPSCustomRefPoint"
+        Me.optGPSCustomRefPoint.TabStop = True
+        Me.optGPSCustomRefPoint.UseVisualStyleBackColor = True
+        '
+        'optGPSRefPointOnOrigin
+        '
+        resources.ApplyResources(Me.optGPSRefPointOnOrigin, "optGPSRefPointOnOrigin")
+        Me.optGPSRefPointOnOrigin.Name = "optGPSRefPointOnOrigin"
+        Me.optGPSRefPointOnOrigin.TabStop = True
+        Me.optGPSRefPointOnOrigin.UseVisualStyleBackColor = True
         '
         'tabInfoOptions
         '
@@ -3917,6 +3936,8 @@ Partial Class frmProperties
         Me.tabInfoGPS.PerformLayout()
         Me.frmGPSDefaults.ResumeLayout(False)
         Me.frmGPSDefaults.PerformLayout()
+        Me.pnlGPS.ResumeLayout(False)
+        Me.pnlGPS.PerformLayout()
         Me.tabInfoOptions.ResumeLayout(False)
         Me.tabInfoOptions.PerformLayout()
         CType(Me.picNordCorrectionWarning, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4385,4 +4406,6 @@ Partial Class frmProperties
     Friend WithEvents pnlSessionDate As TextBox
     Friend WithEvents cmdGPSCustomRefPointRefreshStations As Button
     Friend WithEvents cmdOriginRefreshStations As Button
+    Friend WithEvents chkGPSAllowManualDeclinations As CheckBox
+    Friend WithEvents pnlGPS As Panel
 End Class

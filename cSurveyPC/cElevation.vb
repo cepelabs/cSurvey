@@ -60,17 +60,47 @@ Namespace cSurvey.Surface
             ByAverage = 2
         End Enum
 
+        Public Function Reduce(Percentage As Single) As cElevation
+            Dim oRange As SizeF = GetHeightRange()
+            Dim sRange As Decimal = oRange.Height - oRange.Width
+            Dim oImage As Bitmap = GetImage(iColumns, iRows)
+            Dim sFactor As Decimal = (100 / Percentage)
+            Dim iNewRows As Integer = iRows / sFactor
+            Dim iNewColumns As Integer = iColumns / sFactor
+            Dim oData(iNewRows, iNewColumns) As Single
+            Dim iProgressIndex As Integer = 0
+            Dim iProgressCount As Integer = iNewRows * iNewColumns
+            Dim sPseutoHeight As Single
+            Call oSurvey.RaiseOnProgressEvent("elevation.reduceset", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, modMain.GetLocalizedString("surface.progressbegin4"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageLoad)
+            Using oScaledImage As Bitmap = modPaint.ScaleImage(oImage, New Drawing.Size(iNewColumns, iNewRows), Color.White)
+                For iNewRow As Integer = 0 To iNewRows - 1
+                    For iNewColumn As Integer = 0 To iNewColumns - 1
+                        iProgressIndex += 1
+                        If iProgressIndex Mod 2000 = 0 Then Call oSurvey.RaiseOnProgressEvent("elevation.reduceset", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("surface.progress4"), iProgressIndex / iProgressCount)
+                        If iColorSchema = cElevation.ColorSchemaEnum.BlackToWhite Then
+                            sPseutoHeight = (oScaledImage.GetPixel(iNewColumn, iNewRow).R / 255) * sRange + oRange.Width
+                        Else
+                            sPseutoHeight = ((255 - oScaledImage.GetPixel(iNewColumn, iNewRow).R) / 255) * sRange + oRange.Width
+                        End If
+                        oData(iNewRow, iNewColumn) = sPseutoHeight
+                    Next
+                Next
+            End Using
+            Call oSurvey.RaiseOnProgressEvent("elevation.reduceset", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, modMain.GetLocalizedString("surface.progressend4"), 0)
+            Return New cElevation(oSurvey, sName, GetCoordinate(cOrthoPhoto.GetCoordinateCornerEnum.BottomLeft), iNewRows, iNewColumns, sXSize * sFactor, sYSize * sFactor, iSystem, oData, iColorSchema)
+        End Function
+
         Public Sub RemoveNodata(Optional RemoveNoDataMode As RemoveNodataModeEnum = RemoveNodataModeEnum.ByAverage)
             If Not IsEmpty() Then
                 Dim iProgressIndex As Integer = 0
                 Dim iProgressCount As Integer = iRows * iColumns
-                Call oSurvey.RaiseOnProgressEvent("elevation.nodataremove", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, "Rimozione valori NODATA...", 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageLoad)
+                Call oSurvey.RaiseOnProgressEvent("elevation.nodataremove", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, modMain.GetLocalizedString("surface.progressbegin3"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageLoad)
                 Dim oRange As SizeF = GetHeightRange()
                 If RemoveNoDataMode = RemoveNodataModeEnum.ByAverage Then
                     For iRow As Integer = 0 To iRows - 1
                         For iColumn As Integer = 0 To iColumns - 1
                             iProgressIndex += 1
-                            If iProgressIndex Mod 1000 = 0 Then Call oSurvey.RaiseOnProgressEvent("elevation.nodataremove", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "Rimozione valori NODATA...", iProgressIndex / iProgressCount)
+                            If iProgressIndex Mod 1000 = 0 Then Call oSurvey.RaiseOnProgressEvent("elevation.nodataremove", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("surface.progress3"), iProgressIndex / iProgressCount)
 
                             Dim sHeight As Single = oData(iRow, iColumn)
                             If sHeight = NoDataValue Then
@@ -115,7 +145,7 @@ Namespace cSurvey.Surface
                                 For iRow As Integer = 0 To iRows - 1
                                     For icolumn As Integer = 0 To iColumns - 1
                                         iProgressIndex += 1
-                                        If iProgressIndex Mod 100 = 0 Then Call oSurvey.RaiseOnProgressEvent("elevation.nodataremove", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "Rimozione valori NODATA...", iProgressIndex / iProgressCount)
+                                        If iProgressIndex Mod 100 = 0 Then Call oSurvey.RaiseOnProgressEvent("elevation.nodataremove", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("surface.progress3"), iProgressIndex / iProgressCount)
 
                                         Dim sHeight As Single = oData(iRow, icolumn)
                                         Dim oRect As RectangleF
@@ -154,7 +184,7 @@ Namespace cSurvey.Surface
 
                 Call pImagesClear
                 bChanged = True
-                Call oSurvey.RaiseOnProgressEvent("elevation.nodataremove", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
+                Call oSurvey.RaiseOnProgressEvent("elevation.nodataremove", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, modMain.GetLocalizedString("surface.progressend3"), 0)
                 RaiseEvent OnChange(Me)
             End If
         End Sub
@@ -257,6 +287,23 @@ Namespace cSurvey.Surface
             End Get
         End Property
 
+        Friend Sub New(Survey As cSurvey, Name As String, Coordinate As cCoordinate, Rows As Integer, Columns As Integer, XSize As Decimal, YSize As Decimal, System As cSurface.CoordinateSystemEnum, Data As Single(,), ColorSchema As ColorSchemaEnum)
+            oSurvey = Survey
+            sID = Guid.NewGuid.ToString
+            sName = Name
+            oCoordinate = Coordinate
+            iRows = Rows
+            iColumns = Columns
+            sXSize = XSize
+            sYSize = YSize
+            iSystem = System
+            oData = Data
+            oRange = GetHeightRange()
+            iColorSchema = ColorSchema
+            oImagesCaches = New Dictionary(Of Size, Image)
+            bChanged = True
+        End Sub
+
         Friend Sub CopyFrom(Elevation As cElevation)
             sID = Elevation.sID
             sName = Elevation.sName
@@ -318,8 +365,8 @@ Namespace cSurvey.Surface
             iRows = modXML.GetAttributeValue(Elevation, "rows")
             iColumns = modXML.GetAttributeValue(Elevation, "columns")
             iSystem = modXML.GetAttributeValue(Elevation, "system", cSurface.CoordinateSystemEnum.UTMWGS84)
-            sXSize = modNumbers.StringToSingle(modXML.GetAttributeValue(Elevation, "xsize"))
-            sYSize = modNumbers.StringToSingle(modXML.GetAttributeValue(Elevation, "ysize"))
+            sXSize = modNumbers.StringToDecimal(modXML.GetAttributeValue(Elevation, "xsize"))
+            sYSize = modNumbers.StringToDecimal(modXML.GetAttributeValue(Elevation, "ysize"))
             Select Case File.FileFormat
                 Case Storage.cFile.FileFormatEnum.CSX
                     Dim oms As IO.MemoryStream = New IO.MemoryStream(Convert.FromBase64String(Elevation.GetAttribute("data")))
@@ -331,10 +378,8 @@ Namespace cSurvey.Surface
                     oData = oFormatter.Deserialize(DirectCast(File.Data(sDataPath), Storage.cStorageItemFile).Stream)
             End Select
             iColorSchema = modXML.GetAttributeValue(Elevation, "colorschema", ColorSchemaEnum.WhiteToBlack)
-            'bShowIn3D = modXML.GetAttributeValue(Elevation, "showin3d", True)
             oImagesCaches = New Dictionary(Of Size, Image)
             bChanged = True
-            'bImageChanged = True
         End Sub
 
         Public Property ColorSchema As ColorSchemaEnum
@@ -626,7 +671,7 @@ Namespace cSurvey.Surface
                 Call oPath.AddPolygon(oPoints)
                 Using oMatrix As Matrix = New Matrix
                     Call oMatrix.Translate(-oTLUTM.East, -oTLUTM.North, MatrixOrder.Append)
-                    Call oMatrix.Scale(1 / dStep, -1 / dStep, MatrixOrder.Append)
+                    'Call oMatrix.Scale(1 / dStep, -1 / dStep, MatrixOrder.Append)
                     Call oPath.Transform(oMatrix)
                 End Using
                 'Dim dMeridianConvergence = modUTM.GetMeridianConvergence(oCoordinate)
@@ -891,10 +936,11 @@ Namespace cSurvey.Surface
             If Not (File.Options And Storage.cFile.FileOptionsEnum.DontSaveBinary) = Storage.cFile.FileOptionsEnum.DontSaveBinary Then
                 Select Case File.FileFormat
                     Case Storage.cFile.FileFormatEnum.CSX
-                        Dim oms As IO.MemoryStream = New IO.MemoryStream
-                        Dim oFormatter As Binary.BinaryFormatter = New Binary.BinaryFormatter()
-                        Call oFormatter.Serialize(oms, oData)
-                        Call oXmlItem.SetAttribute("data", Convert.ToBase64String(oms.ToArray()))
+                        Using oMs As IO.MemoryStream = New IO.MemoryStream
+                            Dim oFormatter As Binary.BinaryFormatter = New Binary.BinaryFormatter()
+                            Call oFormatter.Serialize(oMs, oData)
+                            Call oXmlItem.SetAttribute("data", Convert.ToBase64String(oMs.ToArray()))
+                        End Using
                     Case Storage.cFile.FileFormatEnum.CSZ
                         Dim sDataPath As String = "_data\surface\" & sID & ".dat"
                         Dim oDataStorage As Storage.cStorageItemFile = File.Data.AddFile(sDataPath)
@@ -903,9 +949,6 @@ Namespace cSurvey.Surface
                         Call oXmlItem.SetAttribute("data", sDataPath)
                 End Select
             End If
-            'If bShowIn3D Then
-            '    Call oXmlItem.SetAttribute("showin3d", "1")
-            'End If
             Call Parent.AppendChild(oXmlItem)
             Return oXmlItem
         End Function

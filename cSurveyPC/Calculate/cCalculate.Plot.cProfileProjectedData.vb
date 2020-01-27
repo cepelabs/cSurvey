@@ -153,19 +153,6 @@ Namespace cSurvey.Calculate.Plot
             End Get
         End Property
 
-        'Friend Sub SetDirection(ByVal Direction As DirectionEnum)
-        '    If iDirection <> Direction Then
-        '        iDirection = Direction
-        '        bChanged = True
-        '    End If
-        'End Sub
-
-        'Public ReadOnly Property Direction As DirectionEnum Implements cIProfileProjectedDataWithSplay.Direction
-        '    Get
-        '        Return iDirection
-        '    End Get
-        'End Property
-
         Public ReadOnly Property FromSplays As cSplayProfileProjectedDatas Implements cIProfileProjectedDataWithSplay.FromSplays
             Get
                 Return oFromSplays
@@ -230,19 +217,6 @@ Namespace cSurvey.Calculate.Plot
             End Get
         End Property
 
-        'Public ReadOnly Property Reversed As Boolean Implements cIProfileProjectedDataWithSplay.Reversed
-        '    Get
-        '        Return bReversed
-        '    End Get
-        'End Property
-
-        'Friend Sub SetIgnore(ByVal Ignore As cSurvey.IgnoreEnum)
-        '    If iIgnore <> Ignore Then
-        '        iIgnore = Ignore
-        '        bChanged = True
-        '    End If
-        'End Sub
-
         Friend Sub SetPoints([From] As String, [To] As String, ByVal FromPoint As PointD, ByVal ToPoint As PointD, Optional ByVal DisableBackup As Boolean = False)
             If Not DisableBackup And Not (oFromPoint.IsEmpty And oToPoint.IsEmpty) Then
                 sOldFrom = sFrom
@@ -257,13 +231,15 @@ Namespace cSurvey.Calculate.Plot
             oToPoint = ToPoint
             dProjectedDistance = Nothing
 
-            If sOldFrom = sTo And sOldTo = sFrom Then
-                bChanged = bChanged Or oOldFromPoint <> oToPoint Or oOldToPoint <> oFromPoint
+            If sOldFrom = sTo AndAlso sOldTo = sFrom Then
+                bChanged = bChanged OrElse oOldFromPoint <> oToPoint OrElse oOldToPoint <> oFromPoint
                 bReversed = True
             Else
-                bChanged = bChanged Or oOldFromPoint <> oFromPoint Or oOldToPoint <> oToPoint
+                bChanged = bChanged OrElse oOldFromPoint <> oFromPoint OrElse oOldToPoint <> oToPoint
                 bReversed = False
             End If
+
+            'If bChanged Then Stop
         End Sub
 
         Friend Sub SetSidePoints(ByVal FromSidePointDown As PointD, ByVal FromSidePointUp As PointD, ByVal ToSidePointDown As PointD, ByVal ToSidePointUp As PointD, Optional ByVal DisableBackup As Boolean = False)

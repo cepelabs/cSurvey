@@ -1635,7 +1635,7 @@
 		<value>Dimensione del simbolo del caposaldo</value>
 	</data>
   <data name="txtDesignBackgroundTransparencyThreshold.ToolTip" xml:space="preserve">
-		<value>Indice di trasparenza usato per sfumare l'area della cavità in visualizzazione combinata</value>
+		<value>Indice di trasparenza usato per sfumare l'area della cavità</value>
 	</data>
   <data name="txtDesignEditLowerLayersTransparencyThreshold.ToolTip" xml:space="preserve">
 		<value>Indice di trasparenza usato per il livelli inferiori a quello attivo</value>
@@ -1723,7 +1723,7 @@
 		<value>Descrizione</value>
 	</data>
   <data name="txtDesignOriginalPositionTransparencyThreshold.ToolTip" xml:space="preserve">
-		<value>Indice di trasparenza usato per sfumare l'area della cavità in visualizzazione combinata</value>
+		<value>Indice di trasparenza usato per sfumare l'area della posizione originale della cavità</value>
 	</data>
   <data name="txtPlotSplaySelectedPenWidth.ToolTip" xml:space="preserve">
 		<value>Spessore predefinito per le linee di poligonale quando evidenziate

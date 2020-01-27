@@ -13,8 +13,18 @@ Namespace cSurvey
         Private sFormat As String
 
         Private bSendToTherion As Boolean
+        Private bAllowManualDeclinations As Boolean
 
         Private bEnabled As Boolean
+
+        Public Property AllowManualDeclinations As Boolean
+            Get
+                Return bAllowManualDeclinations
+            End Get
+            Set(value As Boolean)
+                bAllowManualDeclinations = value
+            End Set
+        End Property
 
         Friend Sub New(ByVal Survey As cSurvey)
             oSurvey = Survey
@@ -25,6 +35,7 @@ Namespace cSurvey
             sFormat = ""
             sZone = ""
             sBand = ""
+            bAllowManualDeclinations = False
         End Sub
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal GPSProperties As XmlElement)
@@ -41,6 +52,7 @@ Namespace cSurvey
                     sFormat = modXML.GetAttributeValue(GPSProperties, "format", "")
             End Select
             bSendToTherion = modXML.GetAttributeValue(GPSProperties, "sendtotherion", False)
+            bAllowManualDeclinations = modXML.GetAttributeValue(GPSProperties, "amd", False)
         End Sub
 
         Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
@@ -57,6 +69,7 @@ Namespace cSurvey
                     Call oXmlGPSProperties.SetAttribute("format", sFormat)
             End Select
             If bSendToTherion Then oXmlGPSProperties.SetAttribute("sendtotherion", "1")
+            If bAllowManualDeclinations Then oXmlGPSProperties.SetAttribute("amd", "1")
             Call Parent.AppendChild(oXmlGPSProperties)
             Return oXmlGPSProperties
         End Function
@@ -152,6 +165,7 @@ Namespace cSurvey
             sFormat = ""
             sBand = ""
             sZone = ""
+            bAllowManualDeclinations = False
         End Sub
     End Class
 End Namespace

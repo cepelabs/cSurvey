@@ -29,6 +29,24 @@ Namespace cSurvey.Design.Layers
             Return oItem
         End Function
 
+        Public Function CreateSign(ByVal Cave As String, ByVal Branch As String, Sign As cIItemSign.SignEnum) As cItemSign
+            Dim oItem As cItemSign
+            If Sign = cIItemSign.SignEnum.Undefined Then
+                oItem = MyBase.CreateItem(cIItem.cItemTypeEnum.Sign, cIItem.cItemCategoryEnum.Sign, My.Resources.error_svg, cIItemClipartBase.cClipartDataFormatEnum.SVGData)
+            Else
+                Dim oData As cClipartPlaceholder = cClipartHelper.FindByAttribute(cClipartHelper.GetGallery("signs"), "sign", Sign.ToString("D")).FirstOrDefault
+                If oData Is Nothing Then
+                    oItem = MyBase.CreateItem(cIItem.cItemTypeEnum.Sign, cIItem.cItemCategoryEnum.Sign, My.Resources.error_svg, cIItemClipartBase.cClipartDataFormatEnum.SVGData)
+                Else
+                    oItem = MyBase.CreateItem(cIItem.cItemTypeEnum.Sign, cIItem.cItemCategoryEnum.Sign, oData.Filename, cIItemClipartBase.cClipartDataFormatEnum.SVGFile)
+                End If
+            End If
+            oItem.Pen.Type = cPen.PenTypeEnum.TightPen
+            oItem.Brush.Type = cBrush.BrushTypeEnum.SignSolid
+            Call oItem.SetCave(Cave, Branch)
+            Return oItem
+        End Function
+
         Public Function CreateSign(ByVal Cave As String, ByVal Branch As String, ByVal Data As Object, ByVal DataFormat As cIItemClipartBase.cClipartDataFormatEnum) As cItemSign
             Dim oItem As cItemSign = MyBase.CreateItem(cIItem.cItemTypeEnum.Sign, cIItem.cItemCategoryEnum.Sign, Data, DataFormat)
             oItem.Pen.Type = cPen.PenTypeEnum.TightPen

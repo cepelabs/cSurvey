@@ -2,23 +2,11 @@
     Public Interface cIItemSign
         Inherits cIItemClipartBase
 
-        Enum SignSizeEnum
-            [Default] = 0
-            VerySmall = 1
-            Small = 2
-            Medium = 3
-            Large = 4
-            VeryLarge = 5
-            x6 = 6
-            x8 = 7
-            x10 = 8
-            x12 = 9
-            x16 = 10
-        End Enum
-
-        Enum SignRotateModeEnum
-            Rotable = 0
-            Fixed = 1
+        Enum SignFlipEnum
+            None = 0
+            Horizontal = 1
+            Vertical = 2
+            Both = 3
         End Enum
 
         'symbolic passage fills:13 bedrock, sand, raft, clay, pebbles, debris, blocks, water,
@@ -130,8 +118,7 @@
             Rock = 1291
         End Enum
 
-        Property SignRotateMode() As SignRotateModeEnum
-        Property SignSize As SignSizeEnum
+        Property SignFlip As SignFlipEnum
 
         Property Sign As SignEnum
 

@@ -19,6 +19,7 @@ Public Class cDesignPrintOrExportAreaControl
             Call cboDesignPrintOrExportAreaProfile.Items.Add(oProfile)
         Next
         cboDesignPrintOrExportAreaProfile.SelectedItem = oOptions.GetPrintOrExportProfile(oDesign)
+        cboDesignPrintOrExportAreaProfileDesignStyle.SelectedIndex = oOptions.DrawPrintOrExportAreaDesignStyle
     End Sub
 
     Private Sub chkDesignPrintOrExportArea_CheckedChanged(sender As Object, e As EventArgs) Handles chkDesignPrintOrExportArea.CheckedChanged
@@ -69,5 +70,14 @@ Public Class cDesignPrintOrExportAreaControl
             End If
         Catch
         End Try
+    End Sub
+
+    Private Sub cboDesignPrintOrExportAreaProfileDesignStyle_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboDesignPrintOrExportAreaProfileDesignStyle.SelectedIndexChanged
+        If Not DisabledObjectProperty() Then
+            oOptions.DrawPrintOrExportAreaDesignStyle = cboDesignPrintOrExportAreaProfileDesignStyle.SelectedIndex
+            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.PropertyChanged("PrintOrExportProfile")
+            Call MyBase.DrawInvalidate()
+        End If
     End Sub
 End Class

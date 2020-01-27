@@ -17,16 +17,12 @@ Public Class frmParametersTranslations
         Private sBranch As String
         Private sX As Single
         Private sY As Single
-        'Private iPriority As cTranslation.cTranslationPriorityEnum
-        'Private sBreakPercentage As Single
 
-        Friend Sub New(ByVal Cave As String, ByVal Branch As String, ByVal X As Single, ByVal Y As Single) ', Priority As cTranslation.cTranslationPriorityEnum, BreakPercentage As Single)
+        Friend Sub New(ByVal Cave As String, ByVal Branch As String, ByVal X As Single, ByVal Y As Single)
             sCave = Cave
             sBranch = Branch
             sX = X
             sY = Y
-            'iPriority = Priority
-            'sBreakPercentage = BreakPercentage
         End Sub
 
         Public ReadOnly Property Cave As String
@@ -83,44 +79,47 @@ Public Class frmParametersTranslations
 
         Private oItems As List(Of cTranslationsBagItem)
 
-        Public Sub Apply(ByVal Survey As cSurvey.cSurvey, ByVal ApplyTo As cSurvey.Design.cIDesign.cDesignTypeEnum)
+        Public Sub Apply(ByVal Survey As cSurvey.cSurvey, TranslationsOptions As Options.cTranslationsOptions, ByVal ApplyTo As cSurvey.Design.cIDesign.cDesignTypeEnum)
             For Each oItem As cTranslationsBagItem In oItems
                 Dim sCave As String = oItem.Cave
                 Dim sBranch As String = oItem.Branch
                 Dim sX As Single = oItem.X
                 Dim sY As Single = oItem.Y
-                'Dim iPriority As cTranslation.cTranslationPriorityEnum = oItem.Priority
-                'Dim sBreakPercentage As Single = oItem.BreakPercentage
                 Try
-                    If sBranch = "" Then
-                        Dim oCaveInfo As cCaveInfo = Survey.Properties.CaveInfos(sCave)
-                        Dim oTranslation As cTranslation
-                        Select Case ApplyTo
-                            Case cIDesign.cDesignTypeEnum.Profile
-                                oTranslation = oCaveInfo.Translations.Profile
-                            Case Else
-                                oTranslation = oCaveInfo.Translations.Plan
-                        End Select
-                        oTranslation.X = sX
-                        oTranslation.Y = sY
+                    If sCave = "" Then
+                        TranslationsOptions.OriginalPositionTranslation.X = sX
+                        TranslationsOptions.OriginalPositionTranslation.Y = sY
                     Else
-                        Dim oCaveInfoBranch As cCaveInfoBranch = Survey.Properties.CaveInfos(sCave).Branches(sBranch)
-                        Dim oTranslation As cTranslation
-                        Select Case ApplyTo
-                            Case cIDesign.cDesignTypeEnum.Profile
-                                oTranslation = oCaveInfoBranch.Translations.Profile
-                            Case Else
-                                oTranslation = oCaveInfoBranch.Translations.Plan
-                        End Select
-                        oTranslation.X = sX
-                        oTranslation.Y = sY
+                        If sBranch = "" Then
+                            Dim oCaveInfo As cCaveInfo = Survey.Properties.CaveInfos(sCave)
+                            Dim oTranslation As cTranslation
+                            Select Case ApplyTo
+                                Case cIDesign.cDesignTypeEnum.Profile
+                                    oTranslation = oCaveInfo.Translations.Profile
+                                Case Else
+                                    oTranslation = oCaveInfo.Translations.Plan
+                            End Select
+                            oTranslation.X = sX
+                            oTranslation.Y = sY
+                        Else
+                            Dim oCaveInfoBranch As cCaveInfoBranch = Survey.Properties.CaveInfos(sCave).Branches(sBranch)
+                            Dim oTranslation As cTranslation
+                            Select Case ApplyTo
+                                Case cIDesign.cDesignTypeEnum.Profile
+                                    oTranslation = oCaveInfoBranch.Translations.Profile
+                                Case Else
+                                    oTranslation = oCaveInfoBranch.Translations.Plan
+                            End Select
+                            oTranslation.X = sX
+                            oTranslation.Y = sY
+                        End If
                     End If
                 Catch
                 End Try
             Next
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal ApplyTo As cSurvey.Design.cIDesign.cDesignTypeEnum)
+        Friend Sub New(ByVal Survey As cSurveyPC.cSurvey.cSurvey, TranslationsOptions As Options.cTranslationsOptions, ByVal ApplyTo As cSurvey.Design.cIDesign.cDesignTypeEnum)
             oItems = New List(Of cTranslationsBagItem)
             For Each oCaveInfo As cCaveInfo In Survey.Properties.CaveInfos
                 Dim oTranslation As cTranslation
@@ -133,6 +132,7 @@ Public Class frmParametersTranslations
                 Call Append(oCaveInfo.Name, "", oTranslation.X, oTranslation.Y) ', oTranslation.Priority, oTranslation.BreakPercentage)
                 Call pAppendBranches(ApplyTo, oCaveInfo.Branches)
             Next
+            Call Append("", "", TranslationsOptions.OriginalPositionTranslation.X, TranslationsOptions.OriginalPositionTranslation.Y)
         End Sub
 
         Private Sub pAppendBranches(ByVal ApplyTo As cSurvey.Design.cIDesign.cDesignTypeEnum, Branches As cCaveInfoBranches)
@@ -188,13 +188,14 @@ Public Class frmParametersTranslations
         chkShowLine.Checked = oOptions.TranslationsOptions.DrawTranslationsLine
         chkShowOriginalPosition.Checked = oOptions.TranslationsOptions.DrawOriginalPosition
         chkShowOriginalPosition.Enabled = True
+        txtTranslationsThreshold.Value = oOptions.TranslationsOptions.TranslationsThreshold
         cboOriginalPositionColorMode.SelectedIndex = oOptions.TranslationsOptions.OriginalPositionColorMode
         chkOriginalPositionColorGray.Checked = oOptions.TranslationsOptions.OriginalPositionColorGray
         chkOriginalPositionOnlyTranslated.Checked = oOptions.TranslationsOptions.OriginalPositionOnlyTranslated
         chkOriginalPositionOverDesign.Checked = oOptions.TranslationsOptions.OriginalPositionOverDesign
 
         bDisabledEvent = True
-        oTransactionsBag = New cTranslationsBag(oOptions.Survey, ApplyTo)
+        oTransactionsBag = New cTranslationsBag(oOptions.Survey, Options.TranslationsOptions, ApplyTo)
 
         'Dim oComboColumn As DataGridViewComboBoxColumn = grdTraslations.Columns(4)
         'oComboColumn.Items.Add(New KeyValuePair(Of cTranslation.cTranslationPriorityEnum, String)(cTranslation.cTranslationPriorityEnum.Default, "Non definito"))
@@ -254,12 +255,15 @@ Public Class frmParametersTranslations
     Private Sub pTransactionsBagToGrid()
         For Each oItem As cTranslationsBagItem In oTransactionsBag
             Dim oRow(3) As Object
-            oRow(0) = oItem.Cave
-            oRow(1) = oItem.Branch
+            If oItem.Cave = "" AndAlso oItem.Branch = "" Then
+                oRow(0) = modMain.GetLocalizedString("translations.originalposition")
+                oRow(1) = ""
+            Else
+                oRow(0) = oItem.Cave
+                oRow(1) = oItem.Branch
+            End If
             oRow(2) = oItem.X
             oRow(3) = oItem.Y
-            'oRow(4) = oItem.Priority
-            'oRow(5) = oItem.BreakPercentage
             Dim iRow As Integer = grdTraslations.Rows.Add(oRow)
             grdTraslations.Rows(iRow).Tag = oItem
         Next
@@ -270,8 +274,6 @@ Public Class frmParametersTranslations
             Dim oItem As cTranslationsBagItem = oRow.Tag
             oItem.X = oRow.Cells(2).Value
             oItem.Y = oRow.Cells(3).Value
-            'oItem.Priority = oRow.Cells(4).Value
-            'oItem.BreakPercentage = oRow.Cells(5).Value
         Next
     End Sub
 
@@ -282,15 +284,15 @@ Public Class frmParametersTranslations
 
     Private Sub pSave()
         oOptions.TranslationsOptions.DrawTranslationsLine = chkShowLine.Checked
+        oOptions.TranslationsOptions.TranslationsThreshold = txtTranslationsThreshold.Value
         oOptions.TranslationsOptions.DrawOriginalPosition = chkShowOriginalPosition.Checked
         oOptions.TranslationsOptions.OriginalPositionColorMode = cboOriginalPositionColorMode.SelectedIndex
         oOptions.TranslationsOptions.OriginalPositionColorGray = chkOriginalPositionColorGray.Checked
-        oOptions.TranslationsOptions.TranslationsThreshold = txtTranslationsThreshold.Value
         oOptions.TranslationsOptions.OriginalPositionOnlyTranslated = chkOriginalPositionOnlyTranslated.Checked
         oOptions.TranslationsOptions.OriginalPositionOverDesign = chkOriginalPositionOverDesign.Checked
 
         Call pGridToTransactionsBag()
-        Call oTransactionsBag.Apply(oOptions.Survey, iapplyto)
+        Call oTransactionsBag.Apply(oOptions.Survey, oOptions.TranslationsOptions, iApplyTo)
     End Sub
 
     Private Sub cmdOk_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdOk.Click

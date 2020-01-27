@@ -11,19 +11,20 @@ Public Class frmExceptionManager
     Private sExceptionFilename As String
 
     Private Function pSaveAs() As Boolean
-        Dim osfd As SaveFileDialog = New SaveFileDialog
-        With osfd
-            .FileName = sFilename
-            .Filter = GetLocalizedString("settings.filetypeCSZ") & " (*.CSZ)|*.CSZ|" & GetLocalizedString("settings.filetypeCSX") & " (*.CSX)|*.CSX"
-            .FilterIndex = 1
-            If .ShowDialog = Windows.Forms.DialogResult.OK Then
-                sFilename = .FileName
-                Call oSurvey.SaveTo(sFilename, cSurvey.cSurvey.SaveOptionsEnum.Silent)
-                Return True
-            Else
-                Return False
-            End If
-        End With
+        Using osfd As SaveFileDialog = New SaveFileDialog
+            With osfd
+                .FileName = sFilename
+                .Filter = GetLocalizedString("exceptionmanager.filetypeCSZ") & " (*.CSZ)|*.CSZ|" & GetLocalizedString("exceptionmanager.filetypeCSX") & " (*.CSX)|*.CSX"
+                .FilterIndex = 1
+                If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                    sFilename = .FileName
+                    Call oSurvey.SaveTo(sFilename, cSurvey.cSurvey.SaveOptionsEnum.Silent)
+                    Return True
+                Else
+                    Return False
+                End If
+            End With
+        End Using
     End Function
 
     Private Sub cmdSaveAs_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSaveAs.Click

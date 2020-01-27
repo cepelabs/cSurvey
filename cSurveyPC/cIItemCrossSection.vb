@@ -99,6 +99,8 @@
     'End Interface
 
     Public Interface cIItemCrossSectionMarker
+        Inherits cIItemSizable
+
         Enum TextPositionEnum
             AsArrow = 0
             Middle = 1
@@ -106,12 +108,12 @@
         End Enum
 
         Property ArrowSizeEnabled As Boolean
-        Property ArrowSize As cIItemText.TextSizeEnum
+        Property ArrowSize As cIItemSizable.SizeEnum
 
         Property TextShow As Boolean
         Property TextPosition As cIItemCrossSectionMarker.TextPositionEnum
         Property TextDistance As Single
-        Property TextSize As cIItemText.TextSizeEnum
+        Property TextSize As cIItemSizable.SizeEnum
         Property TextSizeEnabled As Boolean
 
         Property Position As Single
@@ -122,7 +124,7 @@
 
     Public Interface cIItemPlanCrossSectionMarker
         Inherits cIItemCrossSectionMarker
-        Inherits cIItemRotableText
+        Inherits cIItemRotable
 
         Property PlanDeltaAngleEnabled As Boolean
         Property PlanDeltaAngle As Single
@@ -145,7 +147,7 @@
 
     Public Interface cIItemProfileCrossSectionMarker
         Inherits cIItemCrossSectionMarker
-        Inherits cIItemRotableText
+        Inherits cIItemRotable
 
         Property Up As Single
         Property Down As Single

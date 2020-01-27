@@ -34,13 +34,13 @@ Namespace cSurvey.Helper.Editor
         Private oCurrentTrigpoint As cTrigPoint
 
         Public Sub New(CurrentSurvey As cSurvey, CurrentSegment As cSegment, CurrentTrigpoint As cTrigPoint)
-            ocurrentsurvey = CurrentSurvey
+            ocurrentSurvey = CurrentSurvey
             oCurrentSegment = CurrentSegment
             oCurrentTrigpoint = CurrentTrigpoint
         End Sub
 
         Public Sub New(Selection As cIEditSelection)
-            ocurrentsurvey = Selection.Currentsurvey
+            ocurrentSurvey = Selection.CurrentSurvey
             oCurrentSegment = Selection.CurrentSegment
             oCurrentTrigpoint = Selection.CurrentTrigpoint
         End Sub
@@ -300,9 +300,9 @@ Namespace cSurvey.Helper.Editor
         Public Function GetDesignTools(Design As cDesign) As cEditDesignTools
             If Design Is oPlanTools.Design Then
                 Return oPlanTools
-            ElseIf Design Is oProfileTools.design Then
+            ElseIf Design Is oProfileTools.Design Then
                 Return oProfileTools
-            ElseIf Design Is oThreeDTools.design Then
+            ElseIf Design Is oThreeDTools.Design Then
                 Return oThreeDTools
             End If
         End Function
@@ -637,15 +637,18 @@ Namespace cSurvey.Helper.Editor
                     If oField.Type = Data.cDataFields.TypeEnum.Text Then
                         Dim sItemValue As String = Item.DataProperties.GetValue(oField.Name, Nothing)
                         Dim sValue As String = oValue.ToString
-                        bOk = bOk And sItemValue Like sValue
+                        bOk = bOk And (sItemValue Like sValue)
                     Else
                         Dim oItemValue As Object = Item.DataProperties.GetValue(oField.Name, Nothing)
                         bOk = bOk And oItemValue = oValue
                     End If
                 End If
             Next
-            If bReversed Then bOk = Not bOk
-            Return bOk
+            If bReversed Then
+                Return bOk
+            Else
+                Return Not bOk
+            End If
         End Function
 
         Public Property Reversed As Boolean
@@ -768,9 +771,26 @@ Namespace cSurvey.Helper.Editor
 
         Private oFilter As cFilter
         Private bIsFiltered As Boolean
+        Private bFilterWhiteBoard As Boolean
 
-        Friend Event OnFilterApplied(ByVal Sender As Object, ByVal ToolEventArgs As EventArgs)
-        Friend Event OnFilterRemoved(ByVal Sender As Object, ByVal ToolEventArgs As EventArgs)
+        Friend Class cFilterEventArgs
+            Inherits EventArgs
+
+            Private bRefresh As Boolean
+
+            Friend Sub New(Refresh As Boolean)
+                bRefresh = Refresh
+            End Sub
+
+            Public ReadOnly Property Refresh As Boolean
+                Get
+                    Return bRefresh
+                End Get
+            End Property
+        End Class
+
+        Friend Event OnFilterApplied(ByVal Sender As Object, ByVal ToolEventArgs As cFilterEventArgs)
+        Friend Event OnFilterRemoved(ByVal Sender As Object, ByVal ToolEventArgs As cFilterEventArgs)
 
         Public ReadOnly Property Undo As cUndo
             Get
@@ -784,14 +804,26 @@ Namespace cSurvey.Helper.Editor
             End Get
         End Property
 
-        Public Sub FilterApply()
+        Public Property FilterWhiteBoard As Boolean
+            Get
+                Return bFilterWhiteBoard
+            End Get
+            Set(value As Boolean)
+                If value <> bFilterWhiteBoard Then
+                    bFilterWhiteBoard = value
+                    RaiseEvent OnFilterApplied(Me, New cFilterEventArgs(True))
+                End If
+            End Set
+        End Property
+
+        Public Sub FilterApply(Optional Refresh As Boolean = True)
             bIsFiltered = True
-            RaiseEvent OnFilterApplied(Me, New EventArgs)
+            RaiseEvent OnFilterApplied(Me, New cFilterEventArgs(Refresh))
         End Sub
 
-        Public Sub FilterRemove()
+        Public Sub FilterRemove(Optional Refresh As Boolean = True)
             bIsFiltered = False
-            RaiseEvent OnFilterRemoved(Me, New EventArgs)
+            RaiseEvent OnFilterRemoved(Me, New cFilterEventArgs(Refresh))
         End Sub
 
         Public Sub FilterToggle()
@@ -930,6 +962,8 @@ Namespace cSurvey.Helper.Editor
             End Property
         End Class
 
+        Friend Event OnRefreshDesign(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs)
+
         Friend Event OnItemSelect(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs)
         Friend Event OnItemCombine(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs)
         Friend Event OnItemEdit(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs)
@@ -950,7 +984,7 @@ Namespace cSurvey.Helper.Editor
         Public Sub SelectLayer(ByVal Layer As cLayer)
             If IsNothing(Layer) OrElse (Layer.Design Is oDesign) Then
                 If Not Layer Is oCurrentLayer Then
-                    Call [EndItem]()
+                    Call [EndItem](False)
                     oCurrentLayer = Layer
                     RaiseEvent OnLayerSelect(Me, New cEditDesignToolsEventArgs(Me))
                 End If
@@ -970,6 +1004,7 @@ Namespace cSurvey.Helper.Editor
 
         Public Sub [SelectItem](ByVal Item As cItem)
             If IsNothing(Item) OrElse (Item.Design Is oDesign) Then
+                Dim bOnlyRefresh As Boolean
                 If oCurrentItem Is Item Then
                     If Not oCurrentItem Is Nothing Then
                         If oCurrentItem.HaveEditablePoints Then
@@ -980,8 +1015,9 @@ Namespace cSurvey.Helper.Editor
                     Else
                         bIsInPointEdit = False
                     End If
+                    bOnlyRefresh = bIsInPointEdit OrElse (Not bIsInPointEdit AndAlso oCurrentItemPoint Is Nothing)
                 Else
-                    Call [EndItem]()
+                    Call [EndItem](False)
                     bIsInPointEdit = False
                     If Not Item Is Nothing AndAlso Not oCurrentLayer Is Item.Layer AndAlso Not Item.Layer Is Nothing Then
                         oCurrentLayer = Item.Layer
@@ -995,7 +1031,11 @@ Namespace cSurvey.Helper.Editor
                 bIsInCombine = False
                 bIsNewItem = False
                 bStarted = False
-                RaiseEvent OnItemSelect(Me, New cEditDesignToolsEventArgs(Me))
+                If bOnlyrefresh Then
+                    RaiseEvent OnRefreshDesign(Me, New cEditDesignToolsEventArgs(Me))
+                Else
+                    RaiseEvent OnItemSelect(Me, New cEditDesignToolsEventArgs(Me))
+                End If
                 If Not oCurrentItem Is Nothing Then
                     Call oParent.Undo.Push("Modifica oggetto", cUndo.ActionEnum.Update, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
                 End If
@@ -1056,7 +1096,7 @@ Namespace cSurvey.Helper.Editor
         End Sub
 
         Public Sub EditItem(ByVal Item As cItem, Optional ByVal IsNewItem As Boolean = False)
-            Call [EndItem]()
+            Call [EndItem](False)
             oCurrentItem = Item
             If Not oCurrentLayer Is Item.Layer And Not Item.Layer Is Nothing Then
                 oCurrentLayer = Item.Layer
@@ -1078,7 +1118,7 @@ Namespace cSurvey.Helper.Editor
         End Sub
 
         Public Sub CombineItem(ByVal Item As cItem)
-            Call [EndItem]()
+            Call [EndItem](False)
             oCurrentItem = Item
             oCurrentItemPoint = Nothing
             'bIsInEdit = False
@@ -1090,10 +1130,21 @@ Namespace cSurvey.Helper.Editor
 
         Public Sub EndAndSelectItem()
             Dim oItem As cItem = oCurrentItem
-            Call EndItem()
+            '-----------------------------------------------
+            'END
+            Call pEndItem()
+            '-----------------------------------------------
             If Not oItem Is Nothing Then
                 If Not oItem.Deleted Then
-                    Call SelectItem(oItem)
+                    oCurrentItem = oItem
+                    'Call SelectItem(oItem)
+                    Call RefreshTools()
+                    bIsInEdit = False
+                    bIsInCombine = False
+                    bIsNewItem = False
+                    bStarted = False
+                    RaiseEvent OnRefreshDesign(Me, New cEditDesignToolsEventArgs(Me))
+
                     Call oParent.Undo.Push("Modifica oggetto", cUndo.ActionEnum.Update, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
                 End If
             End If
@@ -1170,7 +1221,8 @@ Namespace cSurvey.Helper.Editor
                         Else
                             oPastedItem = pItemFromStorage(oXML, oCurrentLayer.Design, True)
                             If Not Location.IsEmpty Then Call oPastedItem.MoveTo(Location)
-                            Call oPastedItem.SetCave(sCurrentCave, sCurrentBranch)
+                            Call oPastedItem.SetCave(sCurrentCave, sCurrentBranch, False)
+                            Call oPastedItem.SetBindDesignType(iCurrentBindDesignType, oSurvey.CrossSections.GetBindItem(sCurrentCrossSection), True)
                             Call SelectItem(oPastedItem)
                         End If
                     ElseIf Clipboard.ContainsData("image/svg+xml") Then
@@ -1178,6 +1230,7 @@ Namespace cSurvey.Helper.Editor
                         'tento la creazione di un oggetto GENERIC...
                         Dim sData As String = modSVG.GetSVGDataFromClipboard
                         Dim oItem As Items.cItemGeneric = oCurrentLayer.CreateGeneric(sCurrentCave, sCurrentBranch, sData, Items.cItemGeneric.cItemGenericDataFormatEnum.SVGData)
+                        Call oItem.SetBindDesignType(iCurrentBindDesignType, oSurvey.CrossSections.GetBindItem(sCurrentCrossSection), False)
                         Call oItem.MoveTo(Location)
                         Call EditItem(oItem, True)  'simulo un edit cosi da scatenare l'undo e tutto il resto...
                         Call EndItem()
@@ -1190,6 +1243,7 @@ Namespace cSurvey.Helper.Editor
                         sText = sText.Trim
                         If sText <> "" Then
                             Dim oItem As Items.cItemText = oLayer.CreateText(sCurrentCave, sCurrentBranch, sText)
+                            Call oItem.SetBindDesignType(iCurrentBindDesignType, oSurvey.CrossSections.GetBindItem(sCurrentCrossSection), False)
                             Call oItem.FixBound(True)
                             Call oItem.MoveTo(Location)
                             Call EditItem(oItem, True)  'simulo un edit cosi da scatenare l'undo e tutto il resto...
@@ -1209,6 +1263,7 @@ Namespace cSurvey.Helper.Editor
                                 Dim oLayerRocks As Layers.cLayerRocks = oCurrentLayer.Design.Layers(cLayers.LayerTypeEnum.RocksAndConcretion)
                                 Call SelectLayer(oLayerRocks)
                                 Dim oItem As Items.cItemClipart = oLayerRocks.CreateRockFromClipart(sCurrentCave, sCurrentBranch, sData, cIItemClipartBase.cClipartDataFormatEnum.SVGData)
+                                Call oItem.SetBindDesignType(iCurrentBindDesignType, oSurvey.CrossSections.GetBindItem(sCurrentCrossSection), False)
                                 Call oItem.FixBound(True)
                                 Call oItem.MoveTo(Location)
                                 Call EditItem(oItem, True)  'simulo un edit cosi da scatenare l'undo e tutto il resto...
@@ -1223,6 +1278,7 @@ Namespace cSurvey.Helper.Editor
                                 Dim sText As String = Clipboard.GetText.Trim
                                 If sText <> "" Then
                                     Dim oItem As Items.cItemText = oLayerSigns.CreateText(sCurrentCave, sCurrentBranch, sText)
+                                    Call oItem.SetBindDesignType(iCurrentBindDesignType, oSurvey.CrossSections.GetBindItem(sCurrentCrossSection), False)
                                     Call oItem.FixBound(True)
                                     Call oItem.MoveTo(Location)
                                     Call EditItem(oItem, True)  'simulo un edit cosi da scatenare l'undo e tutto il resto...
@@ -1239,6 +1295,7 @@ Namespace cSurvey.Helper.Editor
                                 Dim sData As String = modSVG.GetSVGDataFromClipboard
                                 Dim oClipart As cDrawClipArt = New cDrawClipArt(sData)
                                 Dim oItem As Items.cItemGeneric = oCurrentLayer.CreateGeneric(sCurrentCave, sCurrentBranch, oClipart, oOptions)
+                                Call oItem.SetBindDesignType(iCurrentBindDesignType, oSurvey.CrossSections.GetBindItem(sCurrentCrossSection), False)
                                 Call oItem.MoveTo(Location)
                                 Call EditItem(oItem, True)  'simulo un edit cosi da scatenare l'undo e tutto il resto...
                                 Call EndItem()
@@ -1370,7 +1427,7 @@ Namespace cSurvey.Helper.Editor
             End If
         End Sub
 
-        Public Sub [EndItem]()
+        Private Function pEndItem() As Boolean
             Dim bRaiseEvent As Boolean
             If Not oCurrentItem Is Nothing Then
                 Call oCurrentItem.Points.CleanUp()
@@ -1392,6 +1449,13 @@ Namespace cSurvey.Helper.Editor
             bIsNewItem = False
             oCurrentItem = Nothing
             oCurrentItemPoint = Nothing
+            Return bRaiseEvent
+        End Function
+
+        Public Sub [EndItem](Optional ItemSelect As Boolean = True)
+            If pEndItem() AndAlso ItemSelect Then
+                RaiseEvent OnItemSelect(Me, New cEditDesignToolsEventArgs(Me))
+            End If
         End Sub
 
         Public Sub EndPoint()

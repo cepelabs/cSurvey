@@ -81,8 +81,8 @@ Namespace cSurvey.Surface
             End If
         End Function
 
-        Friend Function Add(Image As Image, Coordinate As cCoordinate, XSize As Single, YSize As Single) As cOrthoPhoto
-            Dim oOrthophoto As cOrthoPhoto = New cOrthoPhoto(oSurvey, Coordinate, Image, XSize, YSize)
+        Friend Function Add(Image As Image, Name As String, Coordinate As cCoordinate, XSize As Single, YSize As Single) As cOrthoPhoto
+            Dim oOrthophoto As cOrthoPhoto = New cOrthoPhoto(oSurvey, Name, Coordinate, Image, XSize, YSize)
             AddHandler oOrthophoto.OnChange, AddressOf oOrthophoto_onchange
             AddHandler oOrthophoto.OnDefaultSet, AddressOf oOrthophoto_ondefaultset
             AddHandler oOrthophoto.OnDefaultGet, AddressOf oOrthophoto_ondefaultGet

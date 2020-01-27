@@ -37,6 +37,7 @@ Namespace cSurvey.Design
         Public Class cXVIImage
             Public Location As PointF
             Public Image As Drawing.Image
+
             Public Sub New(ByVal Location As PointF, ByVal Image As Drawing.Image)
                 Me.Location = Location
                 Me.Image = Image
@@ -90,11 +91,6 @@ Namespace cSurvey.Design
                                             If Not oStations.Stations.ContainsKey(sName) Then
                                                 Call oStations.Stations.Add(sName, oStation)
                                             End If
-                                            'If oStations.Stations.ContainsKey(sName) Then
-                                            '    Debug.Print(sName)
-                                            'Else
-                                            '    Call oStations.Stations.Add(sName, oStation)
-                                            'End If
                                             Call pGetNextData(sDatas, iDataIndex)
                                         Else
                                             Exit Do
@@ -114,9 +110,7 @@ Namespace cSurvey.Design
                                                     Dim sImageDataItem As String = pGetNextData(sDatas, iDataIndex)
                                                     If sImageDataItem = "}" Then
                                                         Dim bBuffer() As Byte = Convert.FromBase64String(sImageData.ToString)
-                                                        Dim oImageStream As MemoryStream = New MemoryStream(bBuffer)
-                                                        oImageData = New Drawing.Bitmap(oImageStream)
-                                                        Call oImageStream.Dispose()
+                                                        oImageData = New Drawing.Bitmap(New MemoryStream(bBuffer))
                                                         Exit Do
                                                     Else
                                                         Call sImageData.Append(sImageDataItem)

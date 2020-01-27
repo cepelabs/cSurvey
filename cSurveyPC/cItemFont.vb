@@ -209,6 +209,11 @@ Namespace cSurvey.Design
             End Try
         End Sub
 
+        Friend Function MeasureString(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, Text As String) As SizeF
+            If bInvalidated Then pRender(PaintOptions)
+            Return Graphics.MeasureString(Text, oFont)
+        End Function
+
         Friend Function GetPath(ByVal PaintOptions As cOptions, ByVal Text As String, ByVal StringFormat As StringFormat) As GraphicsPath
             Try
                 If Text <> "" Then

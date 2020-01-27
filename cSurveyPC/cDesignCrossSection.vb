@@ -360,8 +360,8 @@ Namespace cSurvey.Design
             iPlanCrossSectionMarker = modXML.GetAttributeValue(CrossSection, "planmarker", -1)
             iProfileCrossSectionMarker = modXML.GetAttributeValue(CrossSection, "profilemarker", -1)
 
-            'only for file generate with other software (TopoDroid)
             If modXML.ChildElementExist(CrossSection, "layers") Then
+                'topodroid first file format (for legacy...no more supported)
                 Dim oDesign As cDesign = Nothing
                 If iDesign = cIDesign.cDesignTypeEnum.Profile Then
                     oDesign = oSurvey.Profile

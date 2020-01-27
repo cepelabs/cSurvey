@@ -123,4 +123,13 @@
   <data name="chkDesignPrintOrExportArea.Text" xml:space="preserve">
     <value>Area stampa/esport.:</value>
   </data>
+  <data name="lblDesignPrintOrExportAreaProfileDesignStyle.Text" xml:space="preserve">
+    <value>Disegno:</value>
+  </data>
+  <data name="cboDesignPrintOrExportAreaProfileDesignStyle.Items" xml:space="preserve">
+    <value>Nessuno</value>
+  </data>
+  <data name="cboDesignPrintOrExportAreaProfileDesignStyle.Items1" xml:space="preserve">
+    <value>Schematico</value>
+  </data>
 </root>

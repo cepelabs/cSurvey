@@ -23,16 +23,16 @@ Namespace cSurvey.Design
 
         Private oGPS As cGPSOptions
 
-        Private bDrawSolidRock As Boolean
+        'Private bDrawSolidRock As Boolean
 
-        Public Overridable Property DrawSolidRock As Boolean Implements cIOptionsPreview.DrawSolidRock
-            Get
-                Return bDrawSolidRock
-            End Get
-            Set(value As Boolean)
-                bDrawSolidRock = value
-            End Set
-        End Property
+        'Public Overridable Property DrawSolidRock As Boolean Implements cIOptionsPreview.DrawSolidRock
+        '    Get
+        '        Return bDrawSolidRock
+        '    End Get
+        '    Set(value As Boolean)
+        '        bDrawSolidRock = value
+        '    End Set
+        'End Property
 
         Public Property ScaleMode() As cIOptionsPreview.ScaleModeEnum Implements cIOptionsPreview.ScaleMode
             Get
@@ -142,7 +142,7 @@ Namespace cSurvey.Design
 
             Call oGPS.SaveTo(File, Document, oXMLOptions, "gps")
 
-            Call oXMLOptions.SetAttribute("drawsolidrock", IIf(bDrawSolidRock, 1, 0))
+            'Call oXMLOptions.SetAttribute("drawsolidrock", IIf(bDrawSolidRock, 1, 0))
 
             Return oXMLOptions
         End Function
@@ -159,7 +159,7 @@ Namespace cSurvey.Design
             oMargins = New Drawing.Printing.Margins(32, 32, 32, 32)
             sfileformat = "JPG"
             oGPS = New cGPSOptions
-            bDrawSolidRock = False
+            'bDrawSolidRock = False
         End Sub
 
         Public Overrides Sub Import(Options As XmlElement)
@@ -187,7 +187,7 @@ Namespace cSurvey.Design
             Else
                 oGPS = New cGPSOptions
             End If
-            bDrawSolidRock = modXML.GetAttributeValue(Options, "drawsolidrock", False)
+            'bDrawSolidRock = modXML.GetAttributeValue(Options, "drawsolidrock", False)
         End Sub
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal Options As XmlElement)
@@ -217,7 +217,7 @@ Namespace cSurvey.Design
             Else
                 oGPS = New cGPSOptions
             End If
-            bDrawSolidRock = modXML.GetAttributeValue(Options, "drawsolidrock", False)
+            'bDrawSolidRock = modXML.GetAttributeValue(Options, "drawsolidrock", False)
         End Sub
 
         Public Property AdvancedClippingMode As cIOptionsPreview.AdvancedClippingModeEnum Implements cIOptionsPreview.AdvancedClippingMode

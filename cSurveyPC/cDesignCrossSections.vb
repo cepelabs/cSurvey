@@ -227,6 +227,19 @@ Namespace cSurvey.Design
             For Each oItem As cDesignCrossSection In oItems
                 Call oItem.RebindCrossSection()
             Next
+            'delete invalid markers
+            Call pDeleteOrphans(oSurvey.Plan.Layers(cLayers.LayerTypeEnum.Signs))
+            Call pDeleteOrphans(oSurvey.Profile.Layers(cLayers.LayerTypeEnum.Signs))
+        End Sub
+
+        Private Sub pDeleteOrphans(Layer As cLayer)
+            With Layer
+                For Each oItem As cIItemCrossSectionMarker In .GetAllItems(cIItem.cItemTypeEnum.CrossSectionMarker)
+                    If oItem.CrossSectionItem Is Nothing OrElse oItem.DesignCrossSection Is Nothing Then
+                        Call .Items.Remove(oItem)
+                    End If
+                Next
+            End With
         End Sub
 
         Friend Sub CollectGarbage()

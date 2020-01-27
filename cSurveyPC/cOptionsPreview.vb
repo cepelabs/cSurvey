@@ -16,16 +16,16 @@ Namespace cSurvey.Design
         Private iScaleMode As cIOptionsPreview.ScaleModeEnum
         Private iScale As Integer
 
-        Private bDrawSolidRock As Boolean
+        'Private bDrawSolidRock As Boolean
 
-        Public Overridable Property DrawSolidRock As Boolean Implements cIOptionsPreview.DrawSolidRock
-            Get
-                Return bDrawSolidRock
-            End Get
-            Set(value As Boolean)
-                bDrawSolidRock = value
-            End Set
-        End Property
+        'Public Overridable Property DrawSolidRock As Boolean Implements cIOptionsPreview.DrawSolidRock
+        '    Get
+        '        Return bDrawSolidRock
+        '    End Get
+        '    Set(value As Boolean)
+        '        bDrawSolidRock = value
+        '    End Set
+        'End Property
 
         Public Property ScaleMode() As cIOptionsPreview.ScaleModeEnum Implements cIOptionsPreview.ScaleMode
             Get
@@ -96,7 +96,7 @@ Namespace cSurvey.Design
 
             Call oXMLOptions.SetAttribute("advancedclippingmode", iAdvancedClippingMode)
 
-            Call oXMLOptions.SetAttribute("drawsolidrock", IIf(bDrawSolidRock, 1, 0))
+            'Call oXMLOptions.SetAttribute("drawsolidrock", If(bDrawSolidRock, 1, 0))
 
             'If bUseDrawingZOrder Then
             '    Call oXMLOptions.SetAttribute("usedrawingzorder", "1")
@@ -115,7 +115,7 @@ Namespace cSurvey.Design
             iScaleMode = modXML.GetAttributeValue(Options, "scalemode")
             iScale = modXML.GetAttributeValue(Options, "scale")
             iAdvancedClippingMode = modXML.GetAttributeValue(Options, "advancedclippingmode")
-            bDrawSolidRock = modXML.GetAttributeValue(Options, "drawsolidrock", False)
+            'bDrawSolidRock = modXML.GetAttributeValue(Options, "drawsolidrock", False)
         End Sub
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal Name As String)
@@ -124,7 +124,7 @@ Namespace cSurvey.Design
             CompassStyle = CompassStyleEnum.Advanced
             ScaleStyle = ScaleStyleEnum.Advanced
             oPageMargins = New Drawing.Printing.Margins
-            bDrawSolidRock = False
+            'bDrawSolidRock = False
         End Sub
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal Options As XmlElement)
@@ -142,7 +142,7 @@ Namespace cSurvey.Design
             iScaleMode = modXML.GetAttributeValue(Options, "scalemode")
             iScale = modXML.GetAttributeValue(Options, "scale")
             iAdvancedClippingMode = modXML.GetAttributeValue(Options, "advancedclippingmode")
-            bDrawSolidRock = modXML.GetAttributeValue(Options, "drawsolidrock", False)
+            'bDrawSolidRock = modXML.GetAttributeValue(Options, "drawsolidrock", False)
         End Sub
 
         Public Property AdvancedClippingMode As cIOptionsPreview.AdvancedClippingModeEnum Implements cIOptionsPreview.AdvancedClippingMode

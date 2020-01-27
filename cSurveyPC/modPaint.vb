@@ -11,6 +11,7 @@ Imports cSurveyPC.cSurvey.Design.Options
 Imports cSurveyPC.cSurvey.Design.Items
 Imports cSurveyPC.cSurvey.Drawings
 Imports System.IO
+Imports System.Runtime.CompilerServices
 
 Module modPaint
     Public Const sLineWidth As Single = 0.01
@@ -88,6 +89,45 @@ Module modPaint
     Private sDefaultFontSize As Single = 8
     Private oDefaultFont As cFont
 
+    Public Sub SafeBitmapSaveToStream(Bitmap As Bitmap, Stream As Stream, format As ImageFormat)
+        Try
+            Call Bitmap.Save(Stream, format)
+        Catch ex As Exception
+            Using oBitmap As Bitmap = New Bitmap(Bitmap)
+                Call oBitmap.Save(Stream, format)
+            End Using
+        End Try
+    End Sub
+
+    'Public Function BitmapFromFileUnlocked(Bytes As Byte()) As Bitmap
+    '    Return New Bitmap(New MemoryStream(Bytes))
+    'End Function
+
+    'Public Function BitmapFromFileUnlocked(Filename As String) As Bitmap
+    '    Return New Bitmap(New MemoryStream(My.Computer.FileSystem.ReadAllBytes(Filename)))
+    'End Function
+
+    Public Function SafeBitmapFromFileUnlocked(Filename As String) As Bitmap
+        'safebitmapfromfile have to unlock the file but I use this function cause I have no time to test if this is right or not...
+        Using oMs As MemoryStream = New MemoryStream(My.Computer.FileSystem.ReadAllBytes(Filename))
+            Using oBitmap As Bitmap = Bitmap.FromStream(oMs)
+                Return New Bitmap(oBitmap)
+            End Using
+        End Using
+    End Function
+
+    Public Function SafeBitmapFromFile(Filename As String) As Bitmap
+        Using oBitmap As Bitmap = Bitmap.FromFile(Filename)
+            Return New Bitmap(oBitmap)
+        End Using
+    End Function
+
+    Public Function SafeBitmapFromStream(Stream As Stream) As Bitmap
+        Using oBitmap As Bitmap = Bitmap.FromStream(Stream)
+            Return New Bitmap(oBitmap)
+        End Using
+    End Function
+
     Public Function PenStylePatternToString(Pattern As Single()) As String
         Dim sTemp As String = ""
         For Each sValue As Single In Pattern
@@ -99,6 +139,22 @@ Module modPaint
     Public Function StringToPenStylePattern(Text As String) As Single()
         Dim sValues As String() = Text.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
         Return sValues.Cast(Of Single)()
+    End Function
+
+    Public Function GetAngleDiff(Angle1 As Single, Angle2 As Single, CounterClockwise As Boolean) As Single
+        If CounterClockwise Then
+            If Angle1 < Angle2 Then
+                Return Angle2 - Angle1
+            Else
+                Return 360 - Angle2 + Angle1
+            End If
+        Else
+            If Angle1 < Angle2 Then
+                Return Angle2 - Angle1
+            Else
+                Return 360 - Angle1 + Angle2
+            End If
+        End If
     End Function
 
     Public Function GetDefaultFont() As cFont
@@ -861,6 +917,31 @@ Module modPaint
     '    End If
     '    Return sBearing
     'End Function
+    Public Function GetInclination(ByVal p0 As PointD, ByVal p1 As PointD) As Decimal
+        Dim dDirection As Decimal
+        Dim dBearing As Decimal = GetBearing(p0, p1)
+        If dBearing >= 0 AndAlso dBearing <= 180 Then
+            dBearing -= 90
+            dDirection = dBearing * -1
+        Else
+            dBearing -= 270
+            dDirection = dBearing
+        End If
+        Return dDirection
+    End Function
+
+    Public Function GetInclination(ByVal p0 As PointF, ByVal p1 As PointF) As Single
+        Dim sDirection As Single
+        Dim sBearing As Single = GetBearing(p0, p1)
+        If sBearing >= 0 AndAlso sBearing <= 180 Then
+            sBearing -= 90
+            sDirection = sBearing * -1
+        Else
+            sBearing -= 270
+            sDirection = sBearing
+        End If
+        Return sDirection
+    End Function
 
     Public Function GetInclination(ByVal p0 As Point, ByVal p1 As Point) As Integer
         Dim iDirection As Integer
@@ -1592,7 +1673,7 @@ Module modPaint
             Dim sDefaultPlanimetricLength As String = modNumbers.MathRound(oSpeleometric.DefaultPlanimetricLength, iDistanceDecimalPlace)
             Text = Text.Replace("%SVILPLAN(" & sPath & ")%", sDefaultPlanimetricLength & " " & sDistanceSimbol)
             Text = Text.Replace("%PLANLEN(" & sPath & ")%", sDefaultPlanimetricLength & " " & sDistanceSimbol)
-
+             
             Dim sDefaultPositiveVerticalRange As String = modNumbers.MathRound(oSpeleometric.DefaultPositiveVerticalRange.GetValueOrDefault(0), iDistanceDecimalPlace)
             Text = Text.Replace("%DISPOS(" & sPath & ")%", sDefaultPositiveVerticalRange & " " & sDistanceSimbol)
             Text = Text.Replace("%PVRNG(" & sPath & ")%", sDefaultPositiveVerticalRange & " " & sDistanceSimbol)
@@ -2687,8 +2768,8 @@ Module modPaint
                 Dim iFirstOrLastAll As AnchorRectangleTypeEnum
                 If (oPoint.Type And cPoint.PointTypeEnum.FirstOfAll) = cPoint.PointTypeEnum.FirstOfAll Then
                     iFirstOrLastAll = AnchorRectangleTypeEnum.FirstOfAllPoint
-                'ElseIf (oPoint.Type And cPoint.PointTypeEnum.LastOfAll) = cPoint.PointTypeEnum.LastOfAll Then
-                '    iFirstOrLastAll = AnchorRectangleTypeEnum.LastOfAllPoint
+                    'ElseIf (oPoint.Type And cPoint.PointTypeEnum.LastOfAll) = cPoint.PointTypeEnum.LastOfAll Then
+                    '    iFirstOrLastAll = AnchorRectangleTypeEnum.LastOfAllPoint
                 Else
                     iFirstOrLastAll = AnchorRectangleTypeEnum.None
                 End If
@@ -3103,14 +3184,6 @@ Module modPaint
         End If
     End Sub
 
-    Public Function BitmapFromFileUnlocked(Bytes As Byte()) As Bitmap
-        Return New Bitmap(New MemoryStream(Bytes))
-    End Function
-
-    Public Function BitmapFromFileUnlocked(Filename As String) As Bitmap
-        Return New Bitmap(New MemoryStream(My.Computer.FileSystem.ReadAllBytes(Filename)))
-    End Function
-
     Public Sub MapDrawWMS(ByVal Graphics As Graphics, ByVal Survey As cSurvey.cSurvey, WMS As Surface.cWMS, Options As cSurface3DOptions.cSurface3DOptionsItem, OriginCoordinate As Calculate.cTrigPointCoordinate, TextureLOD As Single)
         Dim sOrigin As String = Survey.Properties.Origin
         If Survey.Calculate.TrigPoints.Contains(sOrigin) AndAlso Not Survey.Calculate.TrigPoints(Survey.Properties.Origin).Coordinate Is Nothing AndAlso Not WMS.IsEmpty Then
@@ -3251,10 +3324,12 @@ Module modPaint
 
     Public Sub MapDrawPrintOrExportArea(ByVal Graphics As Graphics, PaintOptions As cOptions, ByVal Survey As cSurvey.cSurvey, ByVal CurrentDesign As cDesign, ByVal PaintZoom As Single)
         Dim bDraw As Boolean
+        Dim iDesignStyle As cIOptionPrintAndExportArea.DesignStyleEnum
         Dim oProfile As cIProfile
         If TypeOf PaintOptions Is cIOptionPrintAndExportArea Then
             Dim oPaintOptions As cIOptionPrintAndExportArea = PaintOptions
             bDraw = oPaintOptions.DrawPrintOrExportArea
+            iDesignStyle = oPaintOptions.DrawPrintOrExportAreaDesignStyle
             oProfile = oPaintOptions.GetPrintOrExportProfile(CurrentDesign)
         Else
             bDraw = True
@@ -3314,6 +3389,14 @@ Module modPaint
                             Call Graphics.DrawPath(PaintOptions.PaintObjects.PrintOrExportMarginsBounds, oPath)
                         End Using
                     End Using
+
+                    If iDesignStyle = cIOptionPrintAndExportArea.DesignStyleEnum.Schematics Then
+                        If CurrentDesign.Type = cIDesign.cDesignTypeEnum.Plan Then
+                            Call Survey.Plan.Paint(Graphics, oPreviewOptions, cDrawOptions.Schematic, Helper.Editor.cEmptyEditDesignSelection.Empty)
+                        ElseIf CurrentDesign.Type = cIDesign.cDesignTypeEnum.Profile Then
+                            Call Survey.Profile.Paint(Graphics, oPreviewOptions, cDrawOptions.Schematic, Helper.Editor.cEmptyEditDesignSelection.Empty)
+                        End If
+                    End If
                 ElseIf TypeOf oProfile Is cExportProfile Then
                     Dim oExportOptions As cSurvey.Design.cOptionsExport = oProfile.Options
                     Dim oPageRect As RectangleF = New RectangleF(0, 0, oExportOptions.ImageWidth, oExportOptions.ImageHeight)
@@ -3361,6 +3444,14 @@ Module modPaint
                             Call Graphics.DrawPath(PaintOptions.PaintObjects.PrintOrExportMarginsBounds, oPath)
                         End Using
                     End Using
+
+                    If iDesignStyle = cIOptionPrintAndExportArea.DesignStyleEnum.Schematics Then
+                        If CurrentDesign.Type = cIDesign.cDesignTypeEnum.Plan Then
+                            Call Survey.Plan.Paint(Graphics, oExportOptions, cDrawOptions.Schematic, Helper.Editor.cEmptyEditDesignSelection.Empty)
+                        ElseIf CurrentDesign.Type = cIDesign.cDesignTypeEnum.Profile Then
+                            Call Survey.Profile.Paint(Graphics, oExportOptions, cDrawOptions.Schematic, Helper.Editor.cEmptyEditDesignSelection.Empty)
+                        End If
+                    End If
                 End If
             Catch ex As Exception
                 Call Survey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Error, "print area drawing error: " & ex.Message)
@@ -3801,8 +3892,8 @@ Module modPaint
             Dim oNewSequence As cSequence = New cSequence()
             Dim oPath As GraphicsPath
             If modPaint.SequenceToPath(oSequence, iLineType, oPath) Then
-                Using oPen As Pen = New Pen(Brushes.Black, Width)
-                    Call oPath.Widen(oPen)
+                Using oPen As Pen = New Pen(Brushes.Black, Width / 2)
+                    Call oPath.Widen(oPen, Nothing, ReductionDelta)
                     For Each oPoint As PointF In oPath.PathPoints
                         Call oNewSequence.Append(New cPoint(oSurvey, oPoint))
                     Next

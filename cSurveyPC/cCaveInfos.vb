@@ -361,9 +361,19 @@ Namespace cSurvey
             Return oColor
         End Function
 
+        Public Function GetAll() As List(Of cICaveInfoBranches)
+            Dim oAll As List(Of cICaveInfoBranches) = New List(Of cICaveInfoBranches)
+            For Each oCaveInfo As cICaveInfoBranches In oCaveInfos.Values
+                Call oAll.Add(oCaveInfo)
+                Call oAll.AddRange(oCaveInfo.Branches.GetAllBranches.Values)
+            Next
+            Return oAll
+        End Function
+
         Public Function GetAllWithEmpty() As List(Of cICaveInfoBranches)
             Dim oAll As List(Of cICaveInfoBranches) = New List(Of cICaveInfoBranches)
             For Each oCaveInfo As cICaveInfoBranches In GetWithEmpty.Values
+                'Call oAll.Add(oCaveInfo)   'this is ambiguous...empty value and this are basically the same but empty branch is a branch...this is a cave...for not I don't add this...
                 Call oAll.AddRange(oCaveInfo.Branches.GetAllBranchesWithEmpty.Values)
             Next
             Return oAll

@@ -164,33 +164,43 @@ Namespace cSurvey.Design
         End Sub
 
         Friend Function GetItemsByRectangle(ByVal Rectangle As RectangleF, ByVal PaintOptions As cOptions, ByVal CurrentCave As String, ByVal CurrentBranch As String) As List(Of cItem)
-            Dim oResultItems As List(Of cItem) = New List(Of cItem)
-            If Not bHiddenInDesign Then
-                For Each oItem As cItem In oItems
-                    If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) Then
-                        If modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, CurrentCave, CurrentBranch) Then
-                            If Rectangle.Contains(oItem.GetBounds) Then
-                                Call oResultItems.Add(oItem)
-                            End If
-                        End If
-                    End If
-                Next
+            If bHiddenInDesign Then
+                Return New List(Of cItem)
+            Else
+                Return oItems.Where(Function(oItem) modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) AndAlso modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, CurrentCave, CurrentBranch) AndAlso Rectangle.Contains(oItem.GetBounds)).ToList
             End If
-            Return oResultItems
+            'Dim oResultItems As List(Of cItem) = New List(Of cItem)
+            'If Not bHiddenInDesign Then
+            '    For Each oItem As cItem In oItems
+            '        If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) Then
+            '            If modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, CurrentCave, CurrentBranch) Then
+            '                If Rectangle.Contains(oItem.GetBounds) Then
+            '                    Call oResultItems.Add(oItem)
+            '                End If
+            '            End If
+            '        End If
+            '    Next
+            'End If
+            'Return oResultItems
         End Function
 
         Friend Function GetItemsByRectangle(ByVal Rectangle As RectangleF, ByVal PaintOptions As cOptions) As List(Of cItem)
-            Dim oResultItems As List(Of cItem) = New List(Of cItem)
-            If Not bHiddenInDesign Then
-                For Each oItem As cItem In oItems
-                    If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) Then
-                        If Rectangle.Contains(oItem.GetBounds) Then
-                            Call oResultItems.Add(oItem)
-                        End If
-                    End If
-                Next
+            If bHiddenInDesign Then
+                Return New List(Of cItem)
+            Else
+                Return oItems.Where(Function(oItem) modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) AndAlso Rectangle.Contains(oItem.GetBounds)).ToList
             End If
-            Return oResultItems
+            'Dim oResultItems As List(Of cItem) = New List(Of cItem)
+            'If Not bHiddenInDesign Then
+            '    For Each oItem As cItem In oItems
+            '        If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) Then
+            '            If Rectangle.Contains(oItem.GetBounds) Then
+            '                Call oResultItems.Add(oItem)
+            '            End If
+            '        End If
+            '    Next
+            'End If
+            'Return oResultItems
         End Function
 
         Friend Function CreateItem(ByVal File As Storage.cFile, ByVal Item As XmlElement) As cItem
@@ -345,23 +355,25 @@ Namespace cSurvey.Design
         End Property
 
         Friend Overridable Function GetAllDesignVisibleItems(PaintOptions As cOptions, ByVal CurrentCave As String, ByVal CurrentBranch As String) As List(Of cItem)
-            Dim oResultItems As List(Of cItem) = New List(Of cItem)
-            For Each oItem As cItem In GetAllDesignVisibleItems(PaintOptions)
-                If modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, CurrentCave, CurrentBranch) Then
-                    Call oResultItems.Add(oItem)
-                End If
-            Next
-            Return oResultItems
+            Return GetAllDesignVisibleItems(PaintOptions).Where(Function(oitem) modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oitem, CurrentCave, CurrentBranch)).ToList
+            'Dim oResultItems As List(Of cItem) = New List(Of cItem)
+            'For Each oItem As cItem In GetAllDesignVisibleItems(PaintOptions)
+            '    If modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, CurrentCave, CurrentBranch) Then
+            '        Call oResultItems.Add(oItem)
+            '    End If
+            'Next
+            'Return oResultItems
         End Function
 
         Friend Overridable Function GetAllVisibleItems(PaintOptions As cOptions, ByVal CurrentCave As String, ByVal CurrentBranch As String) As List(Of cItem)
-            Dim oResultItems As List(Of cItem) = New List(Of cItem)
-            For Each oItem As cItem In GetAllVisibleItems(PaintOptions)
-                If modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, CurrentCave, CurrentBranch) Then
-                    Call oResultItems.Add(oItem)
-                End If
-            Next
-            Return oResultItems
+            Return GetAllVisibleItems(PaintOptions).Where(Function(oitem) modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oitem, CurrentCave, CurrentBranch)).tolist
+            'Dim oResultItems As List(Of cItem) = New List(Of cItem)
+            'For Each oItem As cItem In GetAllVisibleItems(PaintOptions)
+            '    If modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, CurrentCave, CurrentBranch) Then
+            '        Call oResultItems.Add(oItem)
+            '    End If
+            'Next
+            'Return oResultItems
         End Function
 
         Friend Overridable Function GetAllDesignVisibleItems(PaintOptions As cOptions) As List(Of cItem)
@@ -372,33 +384,36 @@ Namespace cSurvey.Design
             Dim oVisibleItems As List(Of cItem) = New List(Of cItem)
             Dim sCurrentProfile As String = PaintOptions.CurrentCaveVisibilityProfile
             If sCurrentProfile = "" Then
-                For Each oItem As cItem In oItems
-                    If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) Then
-                        Call oVisibleItems.Add(oItem)
-                    End If
-                Next
+                Call oVisibleItems.AddRange(oItems.Where(Function(oitem) modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oitem)))
+                'For Each oItem As cItem In oItems
+                '    If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) Then
+                '        Call oVisibleItems.Add(oItem)
+                '    End If
+                'Next
             Else
                 Dim sItemsQuery As String = oSurvey.Properties.CaveVisibilityProfiles.GetItemsQuery(sCurrentProfile)
                 If sItemsQuery = "" Then
-                    For Each oItem As cItem In oItems
-                        If oSurvey.Properties.CaveVisibilityProfiles.GetVisible(sCurrentProfile, oItem.Cave, oItem.Branch) Then
-                            If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) Then
-                                Call oVisibleItems.Add(oItem)
-                            End If
-                        End If
-                    Next
+                    Call oVisibleItems.AddRange(oItems.Where(Function(oitem) oSurvey.Properties.CaveVisibilityProfiles.GetVisible(sCurrentProfile, oitem.Cave, oitem.Branch) AndAlso modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oitem)))
+                    'For Each oItem As cItem In oItems
+                    '    If oSurvey.Properties.CaveVisibilityProfiles.GetVisible(sCurrentProfile, oItem.Cave, oItem.Branch) Then
+                    '        If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) Then
+                    '            Call oVisibleItems.Add(oItem)
+                    '        End If
+                    '    End If
+                    'Next
                 Else
                     Try
                         Dim oQueryItems = From oItem As cItem In oItems.ToArray.AsQueryable.Where(sItemsQuery) Select oItem
-                        For Each oItem As cItem In oQueryItems
-                            If oSurvey.Properties.CaveVisibilityProfiles.GetVisible(sCurrentProfile, oItem.Cave, oItem.Branch) Then
-                                If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) Then
-                                    Call oVisibleItems.Add(oItem)
-                                End If
-                            End If
-                        Next
-                    Catch 'ex As Exception
-                        'MsgBox(ex.Message, MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, "Attenzione:")
+                        Call oVisibleItems.AddRange(oQueryItems.Where(Function(oitem) oSurvey.Properties.CaveVisibilityProfiles.GetVisible(sCurrentProfile, oitem.Cave, oitem.Branch) AndAlso modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oitem)))
+                        'For Each oItem As cItem In oQueryItems
+                        '    If oSurvey.Properties.CaveVisibilityProfiles.GetVisible(sCurrentProfile, oItem.Cave, oItem.Branch) Then
+                        '        If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) Then
+                        '            Call oVisibleItems.Add(oItem)
+                        '        End If
+                        '    End If
+                        'Next
+                    Catch ex As Exception
+                        Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, "cLayer.GetAllVisibleItems -> " & ex.Message, True)
                     End Try
                 End If
             End If
@@ -422,8 +437,8 @@ Namespace cSurvey.Design
                     End If
 
                     For Each oItem As cItem In oItems
-                        If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) Then
-                            If modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, Selection.CurrentCave, Selection.CurrentBranch) Then
+                        'If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) Then
+                        If modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, Selection.CurrentCave, Selection.CurrentBranch) Then
                                 Dim iSelectionMode As cItem.SelectionModeEnum
                                 If PaintOptions.IsDesign Then
                                     If TypeOf oCurrentItem Is cItemItems Then
@@ -483,20 +498,22 @@ Namespace cSurvey.Design
                                 End If
                                 Call Graphics.Restore(oState)
                             End If
-                        End If
+                        'End If
                     Next
                 End If
             Catch ex As Exception
-                Debug.Print("cLayer.Paint>" & ex.Message)
+                Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, "cLayer.Paint -> " & ex.Message, True)
             End Try
         End Sub
 
         Public Overridable Function HitTest(ByVal PaintOptions As cOptions, ByVal CurrentCave As String, ByVal CurrentBranch As String, ByVal Point As PointF, ByVal Wide As Single, First As Boolean) As List(Of cItem)
             Dim oHitTestItems As List(Of cItem) = New List(Of cItem)
             If Not bHiddenInDesign Then
-                Dim oReversedItems() As cItem = oItems.ToArray
-                Call Array.Reverse(oReversedItems)
-                For Each oItem As cItem In oReversedItems
+                'Dim oReversedItems() As cItem = oItems.ToArray
+                'Call Array.Reverse(oReversedItems)
+                'For Each oItem As cItem In oReversedItems
+                For i = oItems.Count - 1 To 0 Step -1
+                    Dim oItem As cItem = oItems(i)
                     If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) Then
                         If modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, CurrentCave, CurrentBranch) Then
                             If oItem.HitTest(PaintOptions, Point, Wide) Then
@@ -519,7 +536,7 @@ Namespace cSurvey.Design
         End Function
 
         Friend Function GetAllItems(Type As cIItem.cItemTypeEnum) As List(Of cItem)
-            Return oItems.Where(Function(item) item.Type = Type).ToList
+            Return oItems.Where(Function(oItem) oItem.Type = Type).ToList
         End Function
     End Class
 End Namespace

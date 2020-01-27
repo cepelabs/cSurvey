@@ -6,7 +6,7 @@ Imports cSurveyPC.cSurvey.CaveRegister
 
 Namespace cSurvey
     Public Class cSurvey
-        Public Const Version As String = "1.09"
+        Public Const Version As String = "1.11"
 
         Private sID As String
 
@@ -57,6 +57,7 @@ Namespace cSurvey
         Public Enum DirectionEnum
             Right = 0
             Left = 1
+            Vertical = 2
         End Enum
 
         Public Enum IgnoreEnum
@@ -320,6 +321,43 @@ Namespace cSurvey
         End Class
         Public Event OnBeforePropertiesChange(ByVal Sender As cSurvey, ByVal Args As OnPropertiesChangedEventArgs)
         Public Event OnPropertiesChanged(ByVal Sender As cSurvey, ByVal Args As OnPropertiesChangedEventArgs)
+
+        Public Class OnGetDefaultSignFromGalleryEventArgs
+            Inherits EventArgs
+
+            Private iSign As Items.cIItemSign.SignEnum
+            Private sFilename As String = Nothing
+            Private iDataFormat As Items.cIItemClipartBase.cClipartDataFormatEnum
+
+            Public ReadOnly Property Sign As Items.cIItemSign.SignEnum
+                Get
+                    Return iSign
+                End Get
+            End Property
+
+            Public Property DataFormat As Items.cIItemClipartBase.cClipartDataFormatEnum
+                Get
+                    Return iDataFormat
+                End Get
+                Set(value As Items.cIItemClipartBase.cClipartDataFormatEnum)
+                    iDataFormat = value
+                End Set
+            End Property
+
+            Public Property Filename As String
+                Get
+                    Return sFilename
+                End Get
+                Set(value As String)
+                    sFilename = value
+                End Set
+            End Property
+
+            Friend Sub New(ByVal Sign As Items.cIItemSign.SignEnum)
+                iSign = Sign
+            End Sub
+        End Class
+        Public Event OnGetDefaultSignFromGallery(Sender As cSurvey, Args As OnGetDefaultSignFromGalleryEventArgs)
 
         Public Class OnSurfaceChangedEventArgs
             Inherits EventArgs
@@ -659,6 +697,13 @@ Namespace cSurvey
             Call oProfile.Redraw(Options)
         End Sub
 
+        Friend Sub RaiseOnGetDefaultSignFromGallery(Sign As Items.cIItemSign.SignEnum, ByRef Filename As String, ByRef DataFormat As Items.cIItemClipartBase.cClipartDataFormatEnum)
+            Dim oArgs As OnGetDefaultSignFromGalleryEventArgs = New OnGetDefaultSignFromGalleryEventArgs(Sign)
+            RaiseEvent OnGetDefaultSignFromGallery(Me, oArgs)
+            Filename = oArgs.Filename
+            DataFormat = oArgs.DataFormat
+        End Sub
+
         Friend Sub RaiseOnPropertiesChanged(ByVal Source As OnPropertiesChangedEventArgs.PropertiesChangeSourceEnum)
             RaiseEvent OnBeforePropertiesChange(Me, New OnPropertiesChangedEventArgs(Source))
             'Call oPlan.Plot.Caches.Invalidate()
@@ -688,26 +733,27 @@ Namespace cSurvey
         Public Function Check(ByVal filename As String) As cActionResult
             Try
                 If My.Computer.FileSystem.FileExists(filename) Then
-                    Dim oFile As Storage.cFile = New Storage.cFile(filename)
-                    Dim oXml As XmlDocument = oFile.Document
-                    Dim oXmlRoot As XmlElement = oXml.Item("csurvey")
-                    Try
-                        Dim oXmlProperties As XmlElement = oXmlRoot.Item("properties")
-                        Dim iCalculateMode As CalculateTypeEnum = oXmlProperties.GetAttribute("calculatemode")
-                        If iCalculateMode = CalculateTypeEnum.Therion Then
-                            Dim sThProcess As String = GetGlobalSetting("therion.path", "")
-                            If sThProcess = "" Then
-                                Return New cActionResult(False, "survey.check", modMain.GetLocalizedString("csurvey.textpart101"))
+                    Using oFile As Storage.cFile = New Storage.cFile(filename)
+                        Dim oXml As XmlDocument = oFile.Document
+                        Dim oXmlRoot As XmlElement = oXml.Item("csurvey")
+                        Try
+                            Dim oXmlProperties As XmlElement = oXmlRoot.Item("properties")
+                            Dim iCalculateMode As CalculateTypeEnum = oXmlProperties.GetAttribute("calculatemode")
+                            If iCalculateMode = CalculateTypeEnum.Therion Then
+                                Dim sThProcess As String = GetGlobalSetting("therion.path", "")
+                                If sThProcess = "" Then
+                                    Return New cActionResult(False, "survey.check", modMain.GetLocalizedString("csurvey.textpart101"))
+                                End If
                             End If
-                        End If
-                        Dim iInversionMode As InversioneModeEnum = oXmlProperties.GetAttribute("inversionmode")
-                        If iInversionMode <> InversioneModeEnum.Absolute Then
-                            If Not (My.Computer.Keyboard.ShiftKeyDown And My.Computer.Keyboard.CtrlKeyDown) Then
-                                Return New cActionResult(False, "survey.check", modMain.GetLocalizedString("csurvey.textpart123"))
+                            Dim iInversionMode As InversioneModeEnum = oXmlProperties.GetAttribute("inversionmode")
+                            If iInversionMode <> InversioneModeEnum.Absolute Then
+                                If Not (My.Computer.Keyboard.ShiftKeyDown And My.Computer.Keyboard.CtrlKeyDown) Then
+                                    Return New cActionResult(False, "survey.check", modMain.GetLocalizedString("csurvey.textpart123"))
+                                End If
                             End If
-                        End If
-                    Catch
-                    End Try
+                        Catch
+                        End Try
+                    End Using
                     'more future controls here....
                 Else
                     Return New cActionResult(False, "survey.check", String.Format(modMain.GetLocalizedString("csurvey.textpart102a"), filename))
@@ -729,544 +775,578 @@ Namespace cSurvey
         <Flags> Public Enum LoadOptionsEnum
             None = &H0
             FixTopoDroid = &H100
+            Update = &H10
         End Enum
 
         Public Function Load(ByVal Filename As String, Optional LoadOptions As LoadOptionsEnum = LoadOptionsEnum.None) As cActionResult
             Call RaiseOnLogEvent(LogEntryType.Information, "loading: " & Filename)
             Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Begin, String.Format(modMain.GetLocalizedString("csurvey.textpart100"), Filename), 0, OnProgressEventArgs.ProgressOptionsEnum.ImageLoad Or OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow)
 
-            Dim oFile As Storage.cFile = New Storage.cFile(Filename)
-            Dim oXml As XmlDocument = oFile.Document
+            Using oFile As Storage.cFile = New Storage.cFile(Filename)
+                Dim oXml As XmlDocument = oFile.Document
 
-            If (pGetFileCreatID(oXml) = "topodroid" OrElse (LoadOptions And LoadOptionsEnum.FixTopoDroid) = LoadOptionsEnum.FixTopoDroid) OrElse modOpeningFlags.OFRegenerateSegmentsID Then
-                Call modImport.FixTopodroidCSX(oXml)
-            End If
+                If ((pGetFileCreatID(oXml) = "topodroid" AndAlso Not pGetFileCreatPostProcessed(oXml)) OrElse (LoadOptions And LoadOptionsEnum.FixTopoDroid) = LoadOptionsEnum.FixTopoDroid) OrElse modOpeningFlags.OFRegenerateSegmentsID Then
+                    Call modImport.FixTopodroidCSX(oXml)
+                End If
 
-            Dim bOk As Boolean
-            Dim bCancel As Boolean
-            Dim bRequested As Boolean
-            Dim sCurrentVersion As String = pGetFileVersion(oXml)
-            Do
-                Select Case sCurrentVersion
-                    Case Version, "-1"  '-1 is meta version for file generated from other software that does not include calculate data...
-                        bOk = True
-                    Case "1.00"
-                        Dim oArgs As cFileConversionEventArgs = New cFileConversionEventArgs(sCurrentVersion, Version)
-                        If Not bRequested Then
-                            RaiseEvent OnFileConversionRequest(Me, oArgs)
-                        End If
-                        If oArgs.Cancel Then
-                            bCancel = True
-                        Else
-                            bRequested = True
-                            Dim oSegments As XmlElement = oXml.Item("csurvey").Item("segments")
-                            Dim iIndex As Integer = 0
-                            Dim iCount As Integer = oSegments.ChildNodes.Count
-                            For Each oSegment As XmlElement In oSegments
-                                iIndex += 1
-                                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("csurvey.textpart10"), iIndex / iCount)
-                                Dim dDirection As Decimal = modNumbers.StringToDecimal(modXML.GetAttributeValue(oSegment, "direction", 0))
-                                Call oSegment.SetAttribute("bearing", modNumbers.NumberToString(dDirection))
-                                Dim bDirection As Boolean = modXML.GetAttributeValue(oSegment, "inverted", False)
-                                Call oSegment.SetAttribute("direction", IIf(bDirection, "1", "0"))
-                            Next
-                            sCurrentVersion = "1.01"
-                        End If
-                    Case "1.01"
-                        Dim oArgs As cFileConversionEventArgs = New cFileConversionEventArgs(sCurrentVersion, Version)
-                        If Not bRequested Then
-                            RaiseEvent OnFileConversionRequest(Me, oArgs)
-                        End If
-                        If oArgs.Cancel Then
-                            bCancel = True
-                        Else
-                            bRequested = True
-                            Dim oSegments As XmlElement = oXml.Item("csurvey").Item("segments")
-                            Dim iIndex As Integer = 0
-                            Dim iCount As Integer = oSegments.ChildNodes.Count
-                            For Each oSegment As XmlElement In oSegments
-                                iIndex += 1
-                                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("csurvey.textpart11"), iIndex / iCount)
-                                Dim dLeft As Decimal = modNumbers.StringToDecimal(modXML.GetAttributeValue(oSegment, "sx", 0))
-                                Call oSegment.SetAttribute("l", modNumbers.NumberToString(dLeft))
-                                Dim dRight As Decimal = modNumbers.StringToDecimal(modXML.GetAttributeValue(oSegment, "dx", 0))
-                                Call oSegment.SetAttribute("r", modNumbers.NumberToString(dRight))
-                                Dim dUp As Decimal = modNumbers.StringToDecimal(modXML.GetAttributeValue(oSegment, "top", 0))
-                                Call oSegment.SetAttribute("u", modNumbers.NumberToString(dUp))
-                                Dim dDown As Decimal = modNumbers.StringToDecimal(modXML.GetAttributeValue(oSegment, "bottom", 0))
-                                Call oSegment.SetAttribute("d", modNumbers.NumberToString(dDown))
-                            Next
-                            sCurrentVersion = "1.02"
-                        End If
-                    Case "1.02"
-                        Dim oArgs As cFileConversionEventArgs = New cFileConversionEventArgs(sCurrentVersion, Version)
-                        If Not bRequested Then
-                            RaiseEvent OnFileConversionRequest(Me, oArgs)
-                        End If
-                        If oArgs.Cancel Then
-                            bCancel = True
-                        Else
-                            bRequested = True
-                            Dim oProperties As XmlElement = oXml.Item("csurvey").Item("properties")
-                            Dim sGrade As String = modXML.GetAttributeValue(oProperties, "grade", "")
-                            Dim sAccuracy As String = modXML.GetAttributeValue(oProperties, "accuracy", "")
-                            If sGrade <> "" Then
-                                Call oProperties.SetAttribute("defgrade", sGrade)
-                                Call oProperties.RemoveAttribute("grade")
+                Dim bOk As Boolean
+                Dim bCancel As Boolean
+                Dim bRequested As Boolean = (LoadOptions And LoadOptionsEnum.Update) = LoadOptionsEnum.Update
+                Dim sCurrentVersion As String = pGetFileVersion(oXml)
+                Do
+                    Select Case sCurrentVersion
+                        Case Version, "-1"  '-1 is meta version for file generated from other software that does not include calculate data...
+                            bOk = True
+                        Case "1.00"
+                            Dim oArgs As cFileConversionEventArgs = New cFileConversionEventArgs(sCurrentVersion, Version)
+                            If Not bRequested Then
+                                RaiseEvent OnFileConversionRequest(Me, oArgs)
                             End If
-                            If sAccuracy <> "" Then
-                                Call oProperties.SetAttribute("defaccuracy", sAccuracy)
-                                Call oProperties.RemoveAttribute("accuracy")
+                            If oArgs.Cancel Then
+                                bCancel = True
+                            Else
+                                bRequested = True
+                                Dim oSegments As XmlElement = oXml.Item("csurvey").Item("segments")
+                                Dim iIndex As Integer = 0
+                                Dim iCount As Integer = oSegments.ChildNodes.Count
+                                For Each oSegment As XmlElement In oSegments
+                                    iIndex += 1
+                                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("csurvey.textpart10"), iIndex / iCount)
+                                    Dim dDirection As Decimal = modNumbers.StringToDecimal(modXML.GetAttributeValue(oSegment, "direction", 0))
+                                    Call oSegment.SetAttribute("bearing", modNumbers.NumberToString(dDirection))
+                                    Dim bDirection As Boolean = modXML.GetAttributeValue(oSegment, "inverted", False)
+                                    Call oSegment.SetAttribute("direction", IIf(bDirection, "1", "0"))
+                                Next
+                                sCurrentVersion = "1.01"
                             End If
-                            sCurrentVersion = "1.03"
-                        End If
-                    Case "1.03"
-                        Dim oArgs As cFileConversionEventArgs = New cFileConversionEventArgs(sCurrentVersion, Version)
-                        If Not bRequested Then
-                            RaiseEvent OnFileConversionRequest(Me, oArgs)
-                        End If
-                        If oArgs.Cancel Then
-                            bCancel = True
-                        Else
-                            bRequested = True
-
-                            Dim iLineType As Items.cIItemLine.LineTypeEnum
-                            Dim iNewLineType As Items.cIItemLine.LineTypeEnum
-
-                            Dim oDesignProperties As XmlElement = oXml.Item("csurvey").Item("properties").Item("designproperties")
-                            If Not oDesignProperties Is Nothing AndAlso Not oDesignProperties.Item("linetype") Is Nothing Then
-                                iLineType = Integer.Parse(oDesignProperties.InnerText)
-                                If iLineType = 2 Then iNewLineType = Items.cIItemLine.LineTypeEnum.Splines
-                                If iLineType = 1 Then iNewLineType = Items.cIItemLine.LineTypeEnum.Beziers
-                                If iLineType <> iNewLineType Then
-                                    oDesignProperties.InnerText = modNumbers.NumberToString(iNewLineType)
+                        Case "1.01"
+                            Dim oArgs As cFileConversionEventArgs = New cFileConversionEventArgs(sCurrentVersion, Version)
+                            If Not bRequested Then
+                                RaiseEvent OnFileConversionRequest(Me, oArgs)
+                            End If
+                            If oArgs.Cancel Then
+                                bCancel = True
+                            Else
+                                bRequested = True
+                                Dim oSegments As XmlElement = oXml.Item("csurvey").Item("segments")
+                                Dim iIndex As Integer = 0
+                                Dim iCount As Integer = oSegments.ChildNodes.Count
+                                For Each oSegment As XmlElement In oSegments
+                                    iIndex += 1
+                                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("csurvey.textpart11"), iIndex / iCount)
+                                    Dim dLeft As Decimal = modNumbers.StringToDecimal(modXML.GetAttributeValue(oSegment, "sx", 0))
+                                    Call oSegment.SetAttribute("l", modNumbers.NumberToString(dLeft))
+                                    Dim dRight As Decimal = modNumbers.StringToDecimal(modXML.GetAttributeValue(oSegment, "dx", 0))
+                                    Call oSegment.SetAttribute("r", modNumbers.NumberToString(dRight))
+                                    Dim dUp As Decimal = modNumbers.StringToDecimal(modXML.GetAttributeValue(oSegment, "top", 0))
+                                    Call oSegment.SetAttribute("u", modNumbers.NumberToString(dUp))
+                                    Dim dDown As Decimal = modNumbers.StringToDecimal(modXML.GetAttributeValue(oSegment, "bottom", 0))
+                                    Call oSegment.SetAttribute("d", modNumbers.NumberToString(dDown))
+                                Next
+                                sCurrentVersion = "1.02"
+                            End If
+                        Case "1.02"
+                            Dim oArgs As cFileConversionEventArgs = New cFileConversionEventArgs(sCurrentVersion, Version)
+                            If Not bRequested Then
+                                RaiseEvent OnFileConversionRequest(Me, oArgs)
+                            End If
+                            If oArgs.Cancel Then
+                                bCancel = True
+                            Else
+                                bRequested = True
+                                Dim oProperties As XmlElement = oXml.Item("csurvey").Item("properties")
+                                Dim sGrade As String = modXML.GetAttributeValue(oProperties, "grade", "")
+                                Dim sAccuracy As String = modXML.GetAttributeValue(oProperties, "accuracy", "")
+                                If sGrade <> "" Then
+                                    Call oProperties.SetAttribute("defgrade", sGrade)
+                                    Call oProperties.RemoveAttribute("grade")
                                 End If
+                                If sAccuracy <> "" Then
+                                    Call oProperties.SetAttribute("defaccuracy", sAccuracy)
+                                    Call oProperties.RemoveAttribute("accuracy")
+                                End If
+                                sCurrentVersion = "1.03"
                             End If
-
-                            Dim iIndex As Integer = 0
-                            Dim iCount As Integer = 0
-
-                            Dim oPlanLayers As XmlElement
-                            If Not oXml.Item("csurvey").Item("plan") Is Nothing Then
-                                oPlanLayers = oXml.Item("csurvey").Item("plan").Item("layers")
-                                For Each oLayer As XmlElement In oPlanLayers.ChildNodes
-                                    iCount += oLayer.Item("items").ChildNodes.Count
-                                Next
+                        Case "1.03"
+                            Dim oArgs As cFileConversionEventArgs = New cFileConversionEventArgs(sCurrentVersion, Version)
+                            If Not bRequested Then
+                                RaiseEvent OnFileConversionRequest(Me, oArgs)
                             End If
-                            Dim oProfileLayers As XmlElement
-                            If Not oXml.Item("csurvey").Item("profile") Is Nothing Then
-                                oProfileLayers = oXml.Item("csurvey").Item("profile").Item("layers")
-                                For Each oLayer As XmlElement In oProfileLayers.ChildNodes
-                                    iCount += oLayer.Item("items").ChildNodes.Count
-                                Next
-                            End If
+                            If oArgs.Cancel Then
+                                bCancel = True
+                            Else
+                                bRequested = True
 
-                            If Not oPlanLayers Is Nothing Then
-                                For Each oLayer As XmlElement In oPlanLayers.ChildNodes
-                                    For Each oitem As XmlElement In oLayer.Item("items").ChildNodes
-                                        If iIndex Mod 20 = 0 Then Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("csurvey.textpart12"), iIndex / iCount)
-                                        If oitem.HasAttribute("linetype") Then
-                                            iLineType = modXML.GetAttributeValue(oitem, "linetype", Items.cIItemLine.LineTypeEnum.Lines)
-                                            If iLineType = 2 Then iNewLineType = Items.cIItemLine.LineTypeEnum.Splines
-                                            If iLineType = 1 Then iNewLineType = Items.cIItemLine.LineTypeEnum.Beziers
-                                            If iLineType <> iNewLineType Then
-                                                Call oitem.SetAttribute("linetype", iNewLineType.ToString("D"))
-                                            End If
-                                        End If
-                                        If oitem.HasAttribute("binddesigntype") Then
-                                            Dim iBindDesignType As cItem.BindDesignTypeEnum = modXML.GetAttributeValue(oitem, "binddesigntype", cItem.BindDesignTypeEnum.MainDesign)
-                                            If iBindDesignType = 1 Then
-                                                Call oitem.SetAttribute("binddesigntype", cItem.BindDesignTypeEnum.MainDesign)
-                                            End If
-                                            If iBindDesignType = 2 Then
-                                                Call oitem.SetAttribute("binddesigntype", cItem.BindDesignTypeEnum.CrossSections)
-                                            End If
-                                        End If
-                                        iIndex += 1
+                                Dim iLineType As Items.cIItemLine.LineTypeEnum
+                                Dim iNewLineType As Items.cIItemLine.LineTypeEnum
+
+                                Dim oDesignProperties As XmlElement = oXml.Item("csurvey").Item("properties").Item("designproperties")
+                                If Not oDesignProperties Is Nothing AndAlso Not oDesignProperties.Item("linetype") Is Nothing Then
+                                    iLineType = Integer.Parse(oDesignProperties.InnerText)
+                                    If iLineType = 2 Then iNewLineType = Items.cIItemLine.LineTypeEnum.Splines
+                                    If iLineType = 1 Then iNewLineType = Items.cIItemLine.LineTypeEnum.Beziers
+                                    If iLineType <> iNewLineType Then
+                                        oDesignProperties.InnerText = modNumbers.NumberToString(iNewLineType)
+                                    End If
+                                End If
+
+                                Dim iIndex As Integer = 0
+                                Dim iCount As Integer = 0
+
+                                Dim oPlanLayers As XmlElement
+                                If Not oXml.Item("csurvey").Item("plan") Is Nothing Then
+                                    oPlanLayers = oXml.Item("csurvey").Item("plan").Item("layers")
+                                    For Each oLayer As XmlElement In oPlanLayers.ChildNodes
+                                        iCount += oLayer.Item("items").ChildNodes.Count
                                     Next
-                                Next
-                            End If
-
-                            If Not oProfileLayers Is Nothing Then
-                                For Each oLayer As XmlElement In oProfileLayers.ChildNodes
-                                    For Each oitem As XmlElement In oLayer.Item("items").ChildNodes
-                                        If iIndex Mod 20 = 0 Then Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("csurvey.textpart12"), iIndex / iCount)
-                                        If oitem.HasAttribute("linetype") Then
-                                            iLineType = modXML.GetAttributeValue(oitem, "linetype", Items.cIItemLine.LineTypeEnum.Lines)
-                                            If iLineType = 2 Then iNewLineType = Items.cIItemLine.LineTypeEnum.Splines
-                                            If iLineType = 1 Then iNewLineType = Items.cIItemLine.LineTypeEnum.Beziers
-                                            If iLineType <> iNewLineType Then
-                                                Call oitem.SetAttribute("linetype", iNewLineType.ToString("D"))
-                                            End If
-                                        End If
-                                        If oitem.HasAttribute("binddesigntype") Then
-                                            Dim iBindDesignType As cItem.BindDesignTypeEnum = modXML.GetAttributeValue(oitem, "binddesigntype", cItem.BindDesignTypeEnum.MainDesign)
-                                            If iBindDesignType = 2 Then
-                                                Call oitem.SetAttribute("binddesigntype", cItem.BindDesignTypeEnum.CrossSections)
-                                            End If
-                                        End If
-                                        iIndex += 1
+                                End If
+                                Dim oProfileLayers As XmlElement
+                                If Not oXml.Item("csurvey").Item("profile") Is Nothing Then
+                                    oProfileLayers = oXml.Item("csurvey").Item("profile").Item("layers")
+                                    For Each oLayer As XmlElement In oProfileLayers.ChildNodes
+                                        iCount += oLayer.Item("items").ChildNodes.Count
                                     Next
-                                Next
+                                End If
+
+                                If Not oPlanLayers Is Nothing Then
+                                    For Each oLayer As XmlElement In oPlanLayers.ChildNodes
+                                        For Each oitem As XmlElement In oLayer.Item("items").ChildNodes
+                                            If iIndex Mod 20 = 0 Then Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("csurvey.textpart12"), iIndex / iCount)
+                                            If oitem.HasAttribute("linetype") Then
+                                                iLineType = modXML.GetAttributeValue(oitem, "linetype", Items.cIItemLine.LineTypeEnum.Lines)
+                                                If iLineType = 2 Then iNewLineType = Items.cIItemLine.LineTypeEnum.Splines
+                                                If iLineType = 1 Then iNewLineType = Items.cIItemLine.LineTypeEnum.Beziers
+                                                If iLineType <> iNewLineType Then
+                                                    Call oitem.SetAttribute("linetype", iNewLineType.ToString("D"))
+                                                End If
+                                            End If
+                                            If oitem.HasAttribute("binddesigntype") Then
+                                                Dim iBindDesignType As cItem.BindDesignTypeEnum = modXML.GetAttributeValue(oitem, "binddesigntype", cItem.BindDesignTypeEnum.MainDesign)
+                                                If iBindDesignType = 1 Then
+                                                    Call oitem.SetAttribute("binddesigntype", cItem.BindDesignTypeEnum.MainDesign)
+                                                End If
+                                                If iBindDesignType = 2 Then
+                                                    Call oitem.SetAttribute("binddesigntype", cItem.BindDesignTypeEnum.CrossSections)
+                                                End If
+                                            End If
+                                            iIndex += 1
+                                        Next
+                                    Next
+                                End If
+
+                                If Not oProfileLayers Is Nothing Then
+                                    For Each oLayer As XmlElement In oProfileLayers.ChildNodes
+                                        For Each oitem As XmlElement In oLayer.Item("items").ChildNodes
+                                            If iIndex Mod 20 = 0 Then Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("csurvey.textpart12"), iIndex / iCount)
+                                            If oitem.HasAttribute("linetype") Then
+                                                iLineType = modXML.GetAttributeValue(oitem, "linetype", Items.cIItemLine.LineTypeEnum.Lines)
+                                                If iLineType = 2 Then iNewLineType = Items.cIItemLine.LineTypeEnum.Splines
+                                                If iLineType = 1 Then iNewLineType = Items.cIItemLine.LineTypeEnum.Beziers
+                                                If iLineType <> iNewLineType Then
+                                                    Call oitem.SetAttribute("linetype", iNewLineType.ToString("D"))
+                                                End If
+                                            End If
+                                            If oitem.HasAttribute("binddesigntype") Then
+                                                Dim iBindDesignType As cItem.BindDesignTypeEnum = modXML.GetAttributeValue(oitem, "binddesigntype", cItem.BindDesignTypeEnum.MainDesign)
+                                                If iBindDesignType = 2 Then
+                                                    Call oitem.SetAttribute("binddesigntype", cItem.BindDesignTypeEnum.CrossSections)
+                                                End If
+                                            End If
+                                            iIndex += 1
+                                        Next
+                                    Next
+                                End If
+
+                                sCurrentVersion = "1.04"
                             End If
+                        Case "1.04"
+                            Dim oArgs As cFileConversionEventArgs = New cFileConversionEventArgs(sCurrentVersion, Version)
+                            If Not bRequested Then
+                                RaiseEvent OnFileConversionRequest(Me, oArgs)
+                            End If
+                            If oArgs.Cancel Then
+                                bCancel = True
+                            Else
+                                bRequested = True
+                                'this is a proforma version...to stabilize file format...
+                                sCurrentVersion = "1.05"
+                            End If
+                        Case "1.05"
+                            Dim oArgs As cFileConversionEventArgs = New cFileConversionEventArgs(sCurrentVersion, Version)
+                            If Not bRequested Then
+                                RaiseEvent OnFileConversionRequest(Me, oArgs)
+                            End If
+                            If oArgs.Cancel Then
+                                bCancel = True
+                            Else
+                                bRequested = True
+                                'the file structure is basically the same but in 1.06 crosssection could be designed in plan and in profile (not only in profile as in the previous versions)
+                                sCurrentVersion = "1.06"
+                            End If
+                        Case "1.06"
+                            Dim oArgs As cFileConversionEventArgs = New cFileConversionEventArgs(sCurrentVersion, Version)
+                            If Not bRequested Then
+                                RaiseEvent OnFileConversionRequest(Me, oArgs)
+                            End If
+                            If oArgs.Cancel Then
+                                bCancel = True
+                            Else
+                                bRequested = True
+                                'the file structure is basically the same but in 1.07 there are supports for attachments
+                                sCurrentVersion = "1.07"
+                            End If
+                        Case "1.07"
+                            Dim oArgs As cFileConversionEventArgs = New cFileConversionEventArgs(sCurrentVersion, Version)
+                            If Not bRequested Then
+                                RaiseEvent OnFileConversionRequest(Me, oArgs)
+                            End If
+                            If oArgs.Cancel Then
+                                bCancel = True
+                            Else
+                                bRequested = True
+                                Call oXml.Item("csurvey").Item("properties").SetAttribute("slpeo", "1")
+                                sCurrentVersion = "1.08"
+                            End If
+                        Case "1.08"
+                            Dim oArgs As cFileConversionEventArgs = New cFileConversionEventArgs(sCurrentVersion, Version)
+                            If Not bRequested Then
+                                RaiseEvent OnFileConversionRequest(Me, oArgs)
+                            End If
+                            If oArgs.Cancel Then
+                                bCancel = True
+                            Else
+                                bRequested = True
+                                'the file structure is basically the same but in 1.08 there are supports for extendstart in cave/branch...
+                                sCurrentVersion = "1.09"
+                            End If
+                        Case "1.09"
+                            Dim oArgs As cFileConversionEventArgs = New cFileConversionEventArgs(sCurrentVersion, Version)
+                            If Not bRequested Then
+                                RaiseEvent OnFileConversionRequest(Me, oArgs)
+                            End If
+                            If oArgs.Cancel Then
+                                bCancel = True
+                            Else
+                                bRequested = True
+                                'the file structure is basically the same but in 1.09 there are supports for items visibility for profiles...
+                                sCurrentVersion = "1.10"
+                            End If
+                        Case "1.10"
+                            Dim oArgs As cFileConversionEventArgs = New cFileConversionEventArgs(sCurrentVersion, Version)
+                            If Not bRequested Then
+                                RaiseEvent OnFileConversionRequest(Me, oArgs)
+                            End If
+                            If oArgs.Cancel Then
+                                bCancel = True
+                            Else
+                                bRequested = True
+                                'the file structure is basically the same but in 1.10 there are supports for e-e direction vertical
+                                sCurrentVersion = "1.11"
+                            End If
+                        Case Else
+                            bOk = False
+                            bCancel = False
+                    End Select
+                Loop Until bOk Or bCancel
 
-                            sCurrentVersion = "1.04"
-                        End If
-                    Case "1.04"
-                        Dim oArgs As cFileConversionEventArgs = New cFileConversionEventArgs(sCurrentVersion, Version)
-                        If Not bRequested Then
-                            RaiseEvent OnFileConversionRequest(Me, oArgs)
-                        End If
-                        If oArgs.Cancel Then
-                            bCancel = True
-                        Else
-                            bRequested = True
-                            'this is a proforma version...to stabilize file format...
-                            sCurrentVersion = "1.05"
-                        End If
-                    Case "1.05"
-                        Dim oArgs As cFileConversionEventArgs = New cFileConversionEventArgs(sCurrentVersion, Version)
-                        If Not bRequested Then
-                            RaiseEvent OnFileConversionRequest(Me, oArgs)
-                        End If
-                        If oArgs.Cancel Then
-                            bCancel = True
-                        Else
-                            bRequested = True
-                            'the file structure is basically the same but in 1.06 crosssection could be designed in plan and in profile (not only in profile as in the previous versions)
-                            sCurrentVersion = "1.06"
-                        End If
-                    Case "1.06"
-                        Dim oArgs As cFileConversionEventArgs = New cFileConversionEventArgs(sCurrentVersion, Version)
-                        If Not bRequested Then
-                            RaiseEvent OnFileConversionRequest(Me, oArgs)
-                        End If
-                        If oArgs.Cancel Then
-                            bCancel = True
-                        Else
-                            bRequested = True
-                            'the file structure is basically the same but in 1.07 but there are supports for attachments
-                            sCurrentVersion = "1.07"
-                        End If
-                    Case "1.07"
-                        Dim oArgs As cFileConversionEventArgs = New cFileConversionEventArgs(sCurrentVersion, Version)
-                        If Not bRequested Then
-                            RaiseEvent OnFileConversionRequest(Me, oArgs)
-                        End If
-                        If oArgs.Cancel Then
-                            bCancel = True
-                        Else
-                            bRequested = True
-                            Call oXml.Item("csurvey").Item("properties").SetAttribute("slpeo", "1")
-                            sCurrentVersion = "1.08"
-                        End If
-                    Case "1.08"
-                        Dim oArgs As cFileConversionEventArgs = New cFileConversionEventArgs(sCurrentVersion, Version)
-                        If Not bRequested Then
-                            RaiseEvent OnFileConversionRequest(Me, oArgs)
-                        End If
-                        If oArgs.Cancel Then
-                            bCancel = True
-                        Else
-                            bRequested = True
-                            'the file structure is basically the same but in 1.08 but there are supports for extendstart in cave/branch...
-                            sCurrentVersion = "1.09"
-                        End If
-                    Case Else
-                        bOk = False
-                        bCancel = False
-                End Select
-            Loop Until bOk Or bCancel
+                If bOk Then
+                    Dim oXmlRoot As XmlElement = oXml.Item("csurvey")
 
-            If bOk Then
-                Dim oXmlRoot As XmlElement = oXml.Item("csurvey")
+                    sID = oXmlRoot.GetAttribute("id")
+                    If sID = "" Then
+                        sID = Guid.NewGuid.ToString
+                    End If
 
-                sID = oXmlRoot.GetAttribute("id")
-                If sID = "" Then
-                    sID = Guid.NewGuid.ToString
-                End If
-
-                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("csurvey.textpart103"), 0)
-                Try
-                    If modXML.ChildElementExist(oXmlRoot, "grades") Then
-                        oGrades = New cGrades(Me, oXmlRoot.Item("grades"))
-                    Else
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("csurvey.textpart103"), 0)
+                    Try
+                        If modXML.ChildElementExist(oXmlRoot, "grades") Then
+                            oGrades = New cGrades(Me, oXmlRoot.Item("grades"))
+                        Else
+                            oGrades = New cGrades(Me)
+                        End If
+                    Catch
                         oGrades = New cGrades(Me)
-                    End If
-                Catch
-                    oGrades = New cGrades(Me)
-                End Try
+                    End Try
 
-                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("csurvey.textpart104"), 0)
-                Try
-                    If modXML.ChildElementExist(oXmlRoot, "properties") Then
-                        oProperties = New cProperties(Me, oXmlRoot.Item("properties"))
-                    Else
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("csurvey.textpart104"), 0)
+                    Try
+                        If modXML.ChildElementExist(oXmlRoot, "properties") Then
+                            oProperties = New cProperties(Me, oXmlRoot.Item("properties"))
+                        Else
+                            oProperties = New cProperties(Me)
+                        End If
+                    Catch
                         oProperties = New cProperties(Me)
-                    End If
-                Catch
-                    oProperties = New cProperties(Me)
-                End Try
+                    End Try
 
-                'Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart110"), 0)
-                Try
-                    If ChildElementExist(oXmlRoot, "attachments") Then
-                        oAttachments = New cAttachments(Me, oFile, oXmlRoot.Item("attachments"))
-                    Else
+                    'Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart110"), 0)
+                    Try
+                        If ChildElementExist(oXmlRoot, "attachments") Then
+                            oAttachments = New cAttachments(Me, oFile, oXmlRoot.Item("attachments"))
+                        Else
+                            oAttachments = New cAttachments(Me)
+                        End If
+                    Catch
                         oAttachments = New cAttachments(Me)
-                    End If
-                Catch
-                    oAttachments = New cAttachments(Me)
-                End Try
+                    End Try
 
-                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("csurvey.textpart105"), 0)
-                oSegments = New cSegments(Me, oFile, oXmlRoot.Item("segments"))
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("csurvey.textpart105"), 0)
+                    oSegments = New cSegments(Me, oFile, oXmlRoot.Item("segments"))
 
-                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("csurvey.textpart106"), 0)
-                If modXML.ChildElementExist(oXmlRoot, "trigpoints") Then
-                    oTrigPoints = New cTrigPoints(Me, oXmlRoot.Item("trigpoints"))
-                Else
-                    oTrigPoints = New cTrigPoints(Me)
-                End If
-
-                oEditPaintObjects = New cEditPaintObjects(Me)
-
-                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart107"), 0)
-                Try
-                    If modXML.ChildElementExist(oXmlRoot, "options") Then
-                        oOptions = New cOptionsCollection(Me, oXmlRoot.Item("options"))
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("csurvey.textpart106"), 0)
+                    If modXML.ChildElementExist(oXmlRoot, "trigpoints") Then
+                        oTrigPoints = New cTrigPoints(Me, oXmlRoot.Item("trigpoints"))
                     Else
+                        oTrigPoints = New cTrigPoints(Me)
+                    End If
+
+                    oEditPaintObjects = New cEditPaintObjects(Me)
+
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart107"), 0)
+                    Try
+                        If modXML.ChildElementExist(oXmlRoot, "options") Then
+                            oOptions = New cOptionsCollection(Me, oXmlRoot.Item("options"))
+                        Else
+                            oOptions = New cOptionsCollection(Me)
+                        End If
+                    Catch
                         oOptions = New cOptionsCollection(Me)
-                    End If
-                Catch
-                    oOptions = New cOptionsCollection(Me)
-                End Try
+                    End Try
 
-                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart108"), 0)
-                Try
-                    If modXML.ChildElementExist(oXmlRoot, "crosssections") Then
-                        oCrossSections = New cDesignCrossSections(Me, oFile, oXmlRoot.Item("crosssections"))
-                    Else
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart108"), 0)
+                    Try
+                        If modXML.ChildElementExist(oXmlRoot, "crosssections") Then
+                            oCrossSections = New cDesignCrossSections(Me, oFile, oXmlRoot.Item("crosssections"))
+                        Else
+                            oCrossSections = New cDesignCrossSections(Me)
+                        End If
+                    Catch
                         oCrossSections = New cDesignCrossSections(Me)
-                    End If
-                Catch
-                    oCrossSections = New cDesignCrossSections(Me)
-                End Try
+                    End Try
 
-                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart109"), 0)
-                Try
-                    If modXML.ChildElementExist(oXmlRoot, "sketches") Then
-                        oSketches = New cDesignSketches(Me, oXmlRoot.Item("sketches"))
-                    Else
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart109"), 0)
+                    Try
+                        If modXML.ChildElementExist(oXmlRoot, "sketches") Then
+                            oSketches = New cDesignSketches(Me, oXmlRoot.Item("sketches"))
+                        Else
+                            oSketches = New cDesignSketches(Me)
+                        End If
+                    Catch
                         oSketches = New cDesignSketches(Me)
-                    End If
-                Catch
-                    oSketches = New cDesignSketches(Me)
-                End Try
+                    End Try
 
-                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart110"), 0)
-                Try
-                    If ChildElementExist(oXmlRoot, "cliparts") Then
-                        oCliparts = New cCliparts(Me, oFile, oXmlRoot.Item("cliparts"))
-                    Else
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart110"), 0)
+                    Try
+                        If ChildElementExist(oXmlRoot, "cliparts") Then
+                            oCliparts = New cCliparts(Me, oFile, oXmlRoot.Item("cliparts"))
+                        Else
+                            oCliparts = New cCliparts(Me)
+                        End If
+                    Catch
                         oCliparts = New cCliparts(Me)
-                    End If
-                Catch
-                    oCliparts = New cCliparts(Me)
-                End Try
+                    End Try
 
-                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart111"), 0)
-                Try
-                    If ChildElementExist(oXmlRoot, "signs") Then
-                        oSigns = New cSigns(Me, oFile, oXmlRoot.Item("signs"))
-                    Else
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart111"), 0)
+                    Try
+                        If ChildElementExist(oXmlRoot, "signs") Then
+                            oSigns = New cSigns(Me, oFile, oXmlRoot.Item("signs"))
+                        Else
+                            oSigns = New cSigns(Me)
+                        End If
+                    Catch
                         oSigns = New cSigns(Me)
-                    End If
-                Catch
-                    oSigns = New cSigns(Me)
-                End Try
+                    End Try
 
-                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart112"), 0)
-                Call RaiseOnProgressEvent("load.design.plan", OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("csurvey.textpart113"), 0, OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
-                If ChildElementExist(oXmlRoot, "plan") Then
-                    oPlan = New cDesignPlan(Me, oFile, oXmlRoot.Item("plan"))
-                Else
-                    oPlan = New cDesignPlan(Me)
-                End If
-                Call RaiseOnProgressEvent("load.design.plan", OnProgressEventArgs.ProgressActionEnum.End, "", 0)
-
-                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart112"), 0.5)
-                Call RaiseOnProgressEvent("load.design.profile", OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("csurvey.textpart114"), 0, OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
-                If ChildElementExist(oXmlRoot, "profile") Then
-                    oProfile = New cDesignProfile(Me, oFile, oXmlRoot.Item("profile"))
-                Else
-                    oProfile = New cDesignProfile(Me)
-                End If
-                Call RaiseOnProgressEvent("load.design.profile", OnProgressEventArgs.ProgressActionEnum.End, "", 0)
-
-                Call RaiseOnProgressEvent("load.design.crosssection", OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("csurvey.textpart115"), 0)
-                Call oCrossSections.RebindCrossSections()
-                Call oCrossSections.Rebind(True)
-                Call RaiseOnProgressEvent("load.design.crosssection", OnProgressEventArgs.ProgressActionEnum.End, GetLocalizedString("csurvey.textpart115a"), 0)
-
-                Call RaiseOnProgressEvent("load.design.sketches", OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("csurvey.textpart116"), 0)
-                Call oSketches.RebindSketches()
-                Call oSketches.Rebind(True)
-                Call RaiseOnProgressEvent("load.design.sketches", OnProgressEventArgs.ProgressActionEnum.End, GetLocalizedString("csurvey.textpart116a"), 0)
-
-                Try
-                    If modXML.ChildElementExist(oXmlRoot, "scalerules") Then
-                        oScaleRules = New cScaleRules(Me, oXmlRoot.Item("scalerules"))
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart112"), 0)
+                    Call RaiseOnProgressEvent("load.design.plan", OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("csurvey.textpart113"), 0, OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
+                    If ChildElementExist(oXmlRoot, "plan") Then
+                        oPlan = New cDesignPlan(Me, oFile, oXmlRoot.Item("plan"))
                     Else
+                        oPlan = New cDesignPlan(Me)
+                    End If
+                    'If (pGetFileCreatID(oXml) = "topodroid" OrElse (LoadOptions And LoadOptionsEnum.FixTopoDroid) = LoadOptionsEnum.FixTopoDroid) Then
+                    '    Call modImport.FixTopodroidDesign(Me, oPlan, oXmlRoot.Item("plan"))
+                    'End If
+                    Call RaiseOnProgressEvent("load.design.plan", OnProgressEventArgs.ProgressActionEnum.End, "", 0)
+
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart112"), 0.5)
+                    Call RaiseOnProgressEvent("load.design.profile", OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("csurvey.textpart114"), 0, OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
+                    If ChildElementExist(oXmlRoot, "profile") Then
+                        oProfile = New cDesignProfile(Me, oFile, oXmlRoot.Item("profile"))
+                    Else
+                        oProfile = New cDesignProfile(Me)
+                    End If
+                    'If (pGetFileCreatID(oXml) = "topodroid" OrElse (LoadOptions And LoadOptionsEnum.FixTopoDroid) = LoadOptionsEnum.FixTopoDroid) Then
+                    '    Call modImport.FixTopodroidDesign(Me, oProfile, oXmlRoot.Item("profile"))
+                    'End If
+                    Call RaiseOnProgressEvent("load.design.profile", OnProgressEventArgs.ProgressActionEnum.End, "", 0)
+
+                    Call RaiseOnProgressEvent("load.design.crosssection", OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("csurvey.textpart115"), 0)
+                    Call oCrossSections.RebindCrossSections()
+                    Call oCrossSections.Rebind(True)
+                    Call RaiseOnProgressEvent("load.design.crosssection", OnProgressEventArgs.ProgressActionEnum.End, GetLocalizedString("csurvey.textpart115a"), 0)
+
+                    Call RaiseOnProgressEvent("load.design.sketches", OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("csurvey.textpart116"), 0)
+                    Call oSketches.RebindSketches()
+                    Call oSketches.Rebind(True)
+                    Call RaiseOnProgressEvent("load.design.sketches", OnProgressEventArgs.ProgressActionEnum.End, GetLocalizedString("csurvey.textpart116a"), 0)
+
+                    Try
+                        If modXML.ChildElementExist(oXmlRoot, "scalerules") Then
+                            oScaleRules = New cScaleRules(Me, oXmlRoot.Item("scalerules"))
+                        Else
+                            oScaleRules = New cScaleRules(Me)
+                        End If
+                    Catch
                         oScaleRules = New cScaleRules(Me)
-                    End If
-                Catch
-                    oScaleRules = New cScaleRules(Me)
-                End Try
+                    End Try
 
-                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart117"), 0)
-                Call RaiseOnProgressEvent("load.profile.preview", OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("csurvey.textpart118"), 0)
-                Try
-                    If modXML.ChildElementExist(oXmlRoot, "previewprofiles") Then
-                        oPreviewProfiles = New cPreviewProfiles(Me, oFile, oXmlRoot.Item("previewprofiles"))
-                    Else
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart117"), 0)
+                    Call RaiseOnProgressEvent("load.profile.preview", OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("csurvey.textpart118"), 0)
+                    Try
+                        If modXML.ChildElementExist(oXmlRoot, "previewprofiles") Then
+                            oPreviewProfiles = New cPreviewProfiles(Me, oFile, oXmlRoot.Item("previewprofiles"))
+                        Else
+                            oPreviewProfiles = New cPreviewProfiles(Me)
+                        End If
+                    Catch
                         oPreviewProfiles = New cPreviewProfiles(Me)
-                    End If
-                Catch
-                    oPreviewProfiles = New cPreviewProfiles(Me)
-                End Try
-                Call RaiseOnProgressEvent("load.profile.preview", OnProgressEventArgs.ProgressActionEnum.End, GetLocalizedString("csurvey.textpart118a"), 0)
+                    End Try
+                    Call RaiseOnProgressEvent("load.profile.preview", OnProgressEventArgs.ProgressActionEnum.End, GetLocalizedString("csurvey.textpart118a"), 0)
 
-                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart117"), 0.33)
-                Call RaiseOnProgressEvent("load.profile.export", OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("csurvey.textpart119"), 0)
-                Try
-                    If modXML.ChildElementExist(oXmlRoot, "exportprofiles") Then
-                        oExportProfiles = New cExportProfiles(Me, oFile, oXmlRoot.Item("exportprofiles"))
-                    Else
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart117"), 0.33)
+                    Call RaiseOnProgressEvent("load.profile.export", OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("csurvey.textpart119"), 0)
+                    Try
+                        If modXML.ChildElementExist(oXmlRoot, "exportprofiles") Then
+                            oExportProfiles = New cExportProfiles(Me, oFile, oXmlRoot.Item("exportprofiles"))
+                        Else
+                            oExportProfiles = New cExportProfiles(Me)
+                        End If
+                    Catch
                         oExportProfiles = New cExportProfiles(Me)
-                    End If
-                Catch
-                    oExportProfiles = New cExportProfiles(Me)
-                End Try
-                Call RaiseOnProgressEvent("load.profile.export", OnProgressEventArgs.ProgressActionEnum.End, GetLocalizedString("csurvey.textpart119a"), 0)
+                    End Try
+                    Call RaiseOnProgressEvent("load.profile.export", OnProgressEventArgs.ProgressActionEnum.End, GetLocalizedString("csurvey.textpart119a"), 0)
 
-                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart117"), 0.66)
-                Call RaiseOnProgressEvent("load.profile.view", OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("csurvey.textpart120"), 0)
-                Try
-                    If modXML.ChildElementExist(oXmlRoot, "viewerprofiles") Then
-                        oViewerProfiles = New cViewerProfiles(Me, oFile, oXmlRoot.Item("viewerprofiles"))
-                    Else
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart117"), 0.66)
+                    Call RaiseOnProgressEvent("load.profile.view", OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("csurvey.textpart120"), 0)
+                    Try
+                        If modXML.ChildElementExist(oXmlRoot, "viewerprofiles") Then
+                            oViewerProfiles = New cViewerProfiles(Me, oFile, oXmlRoot.Item("viewerprofiles"))
+                        Else
+                            oViewerProfiles = New cViewerProfiles(Me)
+                        End If
+                    Catch
                         oViewerProfiles = New cViewerProfiles(Me)
-                    End If
-                Catch
-                    oViewerProfiles = New cViewerProfiles(Me)
-                End Try
-                Call RaiseOnProgressEvent("load.profile.view", OnProgressEventArgs.ProgressActionEnum.End, GetLocalizedString("csurvey.textpart120a"), 0)
+                    End Try
+                    Call RaiseOnProgressEvent("load.profile.view", OnProgressEventArgs.ProgressActionEnum.End, GetLocalizedString("csurvey.textpart120a"), 0)
 
-                Try
-                    If modXML.ChildElementExist(oXmlRoot, "linkedsurveys") Then
-                        oLinkedSurveys = New cLinkedSurveys(Me, oFile, oXmlRoot.Item("linkedsurveys"))
-                    Else
+                    Try
+                        If modXML.ChildElementExist(oXmlRoot, "linkedsurveys") Then
+                            oLinkedSurveys = New cLinkedSurveys(Me, oFile, oXmlRoot.Item("linkedsurveys"))
+                        Else
+                            oLinkedSurveys = New cLinkedSurveys(Me)
+                        End If
+                    Catch
                         oLinkedSurveys = New cLinkedSurveys(Me)
-                    End If
-                Catch
-                    oLinkedSurveys = New cLinkedSurveys(Me)
-                End Try
+                    End Try
 
-                Try
-                    If modXML.ChildElementExist(oXmlRoot, "sharedsettings") Then
-                        oSharedSettings = New cSharedSettings(Me, oXmlRoot.Item("sharedsettings"))
-                    Else
+                    Try
+                        If modXML.ChildElementExist(oXmlRoot, "sharedsettings") Then
+                            oSharedSettings = New cSharedSettings(Me, oXmlRoot.Item("sharedsettings"))
+                        Else
+                            oSharedSettings = New cSharedSettings(Me)
+                        End If
+                    Catch
                         oSharedSettings = New cSharedSettings(Me)
-                    End If
-                Catch
-                    oSharedSettings = New cSharedSettings(Me)
-                End Try
+                    End Try
 
-                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart121"), 0)
-                Try
-                    If modXML.ChildElementExist(oXmlRoot, "surface") Then
-                        oSurface = New cSurface(Me, oFile, oXmlRoot.Item("surface"))
-                    Else
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart121"), 0)
+                    Try
+                        If modXML.ChildElementExist(oXmlRoot, "surface") Then
+                            oSurface = New cSurface(Me, oFile, oXmlRoot.Item("surface"))
+                        Else
+                            oSurface = New cSurface(Me)
+                        End If
+                    Catch
                         oSurface = New cSurface(Me)
-                    End If
-                Catch
-                    oSurface = New cSurface(Me)
-                End Try
-                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart121a"), 0)
+                    End Try
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart121a"), 0)
 
-                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart122"), 0)
-                Try
-                    If modXML.ChildElementExist(oXmlRoot, "masterslave") Then
-                        oMasterSlave = New Master.cMasterSlave(Me, oFile, oXmlRoot.Item("masterslave"))
-                    Else
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart122"), 0)
+                    Try
+                        If modXML.ChildElementExist(oXmlRoot, "masterslave") Then
+                            oMasterSlave = New Master.cMasterSlave(Me, oFile, oXmlRoot.Item("masterslave"))
+                        Else
+                            oMasterSlave = New Master.cMasterSlave(Me)
+                        End If
+                    Catch
                         oMasterSlave = New Master.cMasterSlave(Me)
-                    End If
-                Catch
-                    oMasterSlave = New Master.cMasterSlave(Me)
-                End Try
-                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart122a"), 0)
+                    End Try
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart122a"), 0)
 
-                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart122"), 0)
-                Try
-                    If modXML.ChildElementExist(oXmlRoot, "caveregister") Then
-                        oCaveRegister = New cCaveRegister(Me, oFile, oXmlRoot.Item("caveregister"))
-                    Else
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart122"), 0)
+                    Try
+                        If modXML.ChildElementExist(oXmlRoot, "caveregister") Then
+                            oCaveRegister = New cCaveRegister(Me, oFile, oXmlRoot.Item("caveregister"))
+                        Else
+                            oCaveRegister = New cCaveRegister(Me)
+                        End If
+                    Catch
                         oCaveRegister = New cCaveRegister(Me)
+                    End Try
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart122a"), 0)
+
+                    Dim bDoCalculate As Boolean
+                    If modXML.ChildElementExist(oXmlRoot, "calculate") Then
+                        oCalc = New cCalculate(Me, oXmlRoot.Item("calculate"))
+                        bDoCalculate = False
+                    Else
+                        oCalc = New cCalculate(Me)
+                        bDoCalculate = True
                     End If
-                Catch
-                    oCaveRegister = New cCaveRegister(Me)
-                End Try
-                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart122a"), 0)
 
-                Dim bDoCalculate As Boolean
-                If modXML.ChildElementExist(oXmlRoot, "calculate") Then
-                    oCalc = New cCalculate(Me, oXmlRoot.Item("calculate"))
-                    bDoCalculate = False
+                    If oProperties.Origin = "" Then
+                        Call oProperties.AutoSetOrigin()
+                    End If
+
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.End, "", 0)
+
+                    If bDoCalculate Then
+                        Call Invalidate()
+                        Call oCalc.Calculate(False)
+                        Call oCalc.ResetChanges()
+                    Else
+                        iInvalidated = cCalculate.InvalidateEnum.None
+                    End If
+
+                    'Call oUndo.Clear()
+
+                    'oTool = New cEditBaseTools(Me)
+
+                    If modOpeningFlags.OFUpgradeCalculateVersion Then
+                        Call oProperties.UpgradeCalculateVersion()
+                    End If
+                    If modOpeningFlags.OFUpgradeInversionMode Then
+                        Call oProperties.UpgradeInversionMode()
+                    End If
+
+                    If ((pGetFileCreatID(oXml) = "topodroid" AndAlso Not pGetFileCreatPostProcessed(oXml)) OrElse (LoadOptions And LoadOptionsEnum.FixTopoDroid) = LoadOptionsEnum.FixTopoDroid) OrElse modOpeningFlags.OFRegenerateSegmentsID Then
+                        Call modImport.FixTopodroidDesign(Me, oPlan, oXmlRoot.Item("plan"))
+                        Call modImport.FixTopodroidDesign(Me, oProfile, oXmlRoot.Item("profile"))
+                        Call modImport.FixTopodroidSurvey(Me, oXmlRoot)
+                    End If
+
+                    Return New cActionResult(True, "", "")
                 Else
-                    oCalc = New cCalculate(Me)
-                    bDoCalculate = True
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.End, "", 0)
+
+                    If bCancel Then
+                        Return New cActionResult(False, "survey.load", modMain.GetLocalizedString("csurvey.textpart2"))
+                    Else
+                        Return New cActionResult(False, "survey.load", modMain.GetLocalizedString("csurvey.textpart3"))
+                    End If
                 End If
-
-                If oProperties.Origin = "" Then
-                    Call oProperties.AutoSetOrigin()
-                End If
-
-                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.End, "", 0)
-
-                If bDoCalculate Then
-                    Call Invalidate()
-                    Call oCalc.Calculate(False)
-                Else
-                    iInvalidated = cCalculate.InvalidateEnum.None
-                End If
-
-                'Call oUndo.Clear()
-
-                'oTool = New cEditBaseTools(Me)
-
-                If modOpeningFlags.OFUpgradeCalculateVersion Then
-                    Call oProperties.UpgradeCalculateVersion()
-                End If
-                If modOpeningFlags.OFUpgradeInversionMode Then
-                    Call oProperties.UpgradeInversionMode()
-                End If
-
-                If (pGetFileCreatID(oXml) = "topodroid" OrElse (LoadOptions And LoadOptionsEnum.FixTopoDroid) = LoadOptionsEnum.FixTopoDroid) OrElse modOpeningFlags.OFRegenerateSegmentsID Then
-                    Call modImport.FixTopodroidSurvey(Me)
-                End If
-
-                Return New cActionResult(True, "", "")
-            Else
-                Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.End, "", 0)
-
-                If bCancel Then
-                    Return New cActionResult(False, "survey.load", modMain.GetLocalizedString("csurvey.textpart2"))
-                Else
-                    Return New cActionResult(False, "survey.load", modMain.GetLocalizedString("csurvey.textpart3"))
-                End If
-            End If
-
+            End Using
         End Function
 
         Friend Function GetSegment(ByVal ID As String) As cISegment
@@ -1413,6 +1493,14 @@ Namespace cSurvey
             End Set
         End Property
 
+        Private Function pGetFileCreatPostProcessed(ByVal XML As XmlDocument) As Boolean
+            Try
+                Return modXML.GetAttributeValue(XML.Item("csurvey").Item("properties"), "creat_postprocessed", 0)
+            Catch
+                Return True
+            End Try
+        End Function
+
         Private Function pGetFileCreatID(ByVal XML As XmlDocument) As String
             Try
                 Return XML.Item("csurvey").Item("properties").GetAttribute("creatid").ToString.ToLower
@@ -1517,17 +1605,19 @@ Namespace cSurvey
         End Sub
 
         Public Sub SaveTo(ByVal Stream As System.IO.Stream, Optional Options As SaveOptionsEnum = SaveOptionsEnum.None)
-            Dim oFile As Storage.cFile = New Storage.cFile(Storage.cFile.FileFormatEnum.CSZ)
-            Call pSaveTo(oFile, oFile.Document, Options)
-            Call oFile.SaveTo(Stream)
+            Using oFile As Storage.cFile = New Storage.cFile(Storage.cFile.FileFormatEnum.CSZ)
+                Call pSaveTo(oFile, oFile.Document, Options)
+                Call oFile.SaveTo(Stream)
+            End Using
         End Sub
 
         Public Sub SaveTo(ByVal Filename As String, Optional Options As SaveOptionsEnum = SaveOptionsEnum.None)
             Dim iFileFormat As Storage.cFile.FileFormatEnum = Storage.cFile.FileFormatEnum.CSZ
             If IO.Path.GetExtension(Filename).ToLower = ".csx" Then iFileFormat = Storage.cFile.FileFormatEnum.CSX
-            Dim oFile As Storage.cFile = New Storage.cFile(iFileFormat, Filename)
-            Call pSaveTo(oFile, oFile.Document, Options)
-            Call oFile.Save()
+            Using oFile As Storage.cFile = New Storage.cFile(iFileFormat, Filename)
+                Call pSaveTo(oFile, oFile.Document, Options)
+                Call oFile.Save()
+            End Using
         End Sub
 
         Private Sub oSegments_OnSegmentAppend(ByVal Sender As cSegments, ByVal Args As cSegments.OnSegmentEventArgs) Handles oSegments.OnSegmentAppend

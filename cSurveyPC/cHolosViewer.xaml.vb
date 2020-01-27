@@ -23,6 +23,8 @@ Friend Class cHolosViewer
     Private oSurvey As cSurvey.cSurvey
 
     Friend Class cItemSelectEventArgs
+        Inherits EventArgs
+
         Public SelectedItem As Object
 
         Public Sub New(SelectedItem As Object)
@@ -34,6 +36,8 @@ Friend Class cHolosViewer
     End Class
 
     Friend Class cSceneInfoChangeEventArgs
+        Inherits EventArgs
+
         Public Bearing As Single
         Public Inclination As Single
 
@@ -61,6 +65,7 @@ Friend Class cHolosViewer
     Private oSurfaces As List(Of ModelVisual3D)
     Private oSurfaceModel As HelixToolkit.Wpf.cSurveySpecialized.TerrainVisual3D
     Private bModelOutline As Boolean
+    Private bModelOutlineDisabled As Boolean
     Private oModelOutline As List(Of LinesVisual3D)
     Private oAll As SortingVisual3D
 
@@ -619,6 +624,7 @@ Friend Class cHolosViewer
         oSelectors = Nothing
         Call oModels.Clear()
         bModelOutline = False
+        bModelOutlineDisabled = False
         Call oModelOutline.Clear()
 
         oSurfaceModel = Nothing
@@ -1404,7 +1410,7 @@ Friend Class cHolosViewer
                         End If
 
                         If oStation.Data.IsSplay Then
-                            If PaintOptions.ShowSplayText Then
+                            If PaintOptions.DrawSplay AndAlso PaintOptions.ShowSplayText Then
                                 Dim oStationLabel As HelixToolkit.Wpf.BillboardTextItem = New HelixToolkit.Wpf.BillboardTextItem
                                 oStationLabel.Text = oStation.Name
                                 oStationLabel.Position = oPoints(oStation.Name)(0)
@@ -1695,7 +1701,8 @@ Friend Class cHolosViewer
     End Sub
 
     Private Sub pCavesOutline()
-        If bModelOutline Then
+        If bModelOutline AndAlso Not bModelOutlineDisabled Then
+            Call oSurvey.RaiseOnProgressEvent("3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("holos.outlinerenderingtext"), 0)
             For Each line As HelixToolkit.Wpf.LinesVisual3D In oModelOutline
                 Call oAll.Children.Remove(line)
             Next
@@ -1721,6 +1728,8 @@ Friend Class cHolosViewer
                         End If
                         Call oLines(col).Line.Points.Add(New Point3D(line.vertice(0, 0), line.vertice(0, 1), line.vertice(0, 2)))
                         Call oLines(col).Line.Points.Add(New Point3D(line.vertice(1, 0), line.vertice(1, 1), line.vertice(1, 2)))
+                        If modWindow.GetAsyncKeyState(Keys.Escape) Then bModelOutlineDisabled = True
+                        If bModelOutlineDisabled Then Exit For
                     Next
                 End If
             Next
@@ -1731,6 +1740,7 @@ Friend Class cHolosViewer
             Next
 
             iInvalidated = iInvalidated And Not InvalidateType.CameraMove
+            Call oSurvey.RaiseOnProgressEvent("3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "", 0)
         End If
     End Sub
 

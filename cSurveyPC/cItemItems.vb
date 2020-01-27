@@ -395,13 +395,11 @@ Namespace cSurvey.Design.Items
         End Property
 
         Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
-            'non fa nulla...sono gli oggetti interni ad essere disegnati...
-            'ATTENZIONE: items è un elemento 'fittizio', serve solo all'interno dell'editor
+            'do nothing...items is a UI element only for editor, item inside will be rendered
         End Sub
 
         Friend Overrides Sub Paint(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
-            'non fa nulla...sono gli oggetti interni ad essere disegnati...
-            'ATTENZIONE: items è un elemento 'fittizio', serve solo all'interno dell'editor 
+            'do nothing...items is a UI element only for editor, item inside will be painted
         End Sub
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal Category As cIItem.cItemCategoryEnum)

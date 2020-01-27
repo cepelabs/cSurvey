@@ -10,12 +10,15 @@ Namespace cSurvey.Design.Items
         Implements cIItemVerticalLineableText
         Implements cIItemLineableText
         Implements cIItemCompass
+        Implements cIItemSizable
 
         Private oSurvey As cSurvey
 
         Private oClipart As cClipart
         Private oDataBounds As RectangleF
         Private sClipartScale As Single
+        Private bUseClipartScaleOnText As Boolean
+        Private bUseTextScaleOnClipart As Boolean
 
         Private iMode As cIItemCompass.CompassModeEnum
         Private iNorth As cIItemCompass.NorthTypeEnum
@@ -24,9 +27,11 @@ Namespace cSurvey.Design.Items
         Private sText As String
         Private WithEvents oFont As cItemFont
 
-        Private iTextSize As cIItemText.TextSizeEnum
+        Private iTextSize As cIItemSizable.SizeEnum
         Private iTextVerticalAlignment As cIItemVerticalLineableText.TextVerticalAlignmentEnum
         Private iTextAlignment As cIItemLineableText.TextAlignmentEnum
+
+        Private bHideNorthValue As Boolean
 
         Private Sub oFont_OnChanged(ByVal Sender As cItemFont) Handles oFont.OnChanged
             Call MyBase.Caches.Invalidate()
@@ -93,6 +98,30 @@ Namespace cSurvey.Design.Items
             Set(value As Single)
                 If sClipartScale <> value Then
                     sClipartScale = value
+                    Call MyBase.Caches.Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property UseClipartScaleOnText As Boolean
+            Get
+                Return bUseClipartScaleOnText
+            End Get
+            Set(value As Boolean)
+                If bUseClipartScaleOnText <> value Then
+                    bUseClipartScaleOnText = value
+                    Call MyBase.Caches.Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property UseTextScaleOnClipart As Boolean
+            Get
+                Return bUseTextScaleOnClipart
+            End Get
+            Set(value As Boolean)
+                If bUseTextScaleOnClipart <> value Then
+                    bUseTextScaleOnClipart = value
                     Call MyBase.Caches.Invalidate()
                 End If
             End Set
@@ -166,7 +195,7 @@ Namespace cSurvey.Design.Items
 
         Public Overrides ReadOnly Property HaveText As Boolean
             Get
-                Return true
+                Return True
             End Get
         End Property
 
@@ -253,7 +282,9 @@ Namespace cSurvey.Design.Items
                 Case Else
                     oClipart = oSurvey.Signs.Cliparts(Data)
             End Select
-            sClipartScale = 10
+            sClipartScale = 1
+            bUseTextScaleOnClipart = True
+            bUseClipartScaleOnText = False
 
             iNorth = cIItemCompass.NorthTypeEnum.Geographic
             iMode = cIItemCompass.CompassModeEnum.Auto
@@ -261,9 +292,11 @@ Namespace cSurvey.Design.Items
 
             oFont = New cItemFont(oSurvey, cItemFont.FontTypeEnum.Title)
             sText = ""
-            iTextSize = cIItemText.TextSizeEnum.Default
+            iTextSize = cIItemSizable.SizeEnum.Default
             iTextAlignment = cIItemLineableText.TextAlignmentEnum.Left
             iTextVerticalAlignment = cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle
+
+            bHideNorthValue = False
 
             MyBase.DesignAffinity = DesignAffinityEnum.Extra
 
@@ -295,52 +328,51 @@ Namespace cSurvey.Design.Items
                         oSF.LineAlignment = StringAlignment.Far
                         Using oPath As GraphicsPath = New GraphicsPath
                             'dimensiono il testo se rischiesto (il fattore di scala sarà da parametrizzare in qualche modo)
-                            Dim sNorthText As String
-                            If iMode = cIItemCompass.CompassModeEnum.Auto Then
-                                If Not MyBase.Survey.Properties.GPS.Enabled AndAlso MyBase.Survey.Properties.NordCorrectionMode = cSurvey.NordCorrectionModeEnum.None Then
-                                    sNorthText = "Nm"
-                                    Dim oYears As List(Of Integer) = MyBase.Survey.Properties.Sessions.GetSurveyYears
-                                    If oYears.Count = 1 Then
-                                        sNorthText &= " " & oYears(0)
-                                    ElseIf oYears.count > 1 Then
-                                        sNorthText &= " #error#"
+                            Dim sNorthText As String = modPaint.ReplaceGlobalTags(oSurvey, sText)
+                            If Not bHideNorthValue Then
+                                If sNorthText <> "" Then sNorthText = sNorthText & " "
+                                If iMode = cIItemCompass.CompassModeEnum.Auto Then
+                                    If Not MyBase.Survey.Properties.GPS.Enabled AndAlso MyBase.Survey.Properties.NordCorrectionMode = cSurvey.NordCorrectionModeEnum.None Then
+                                        sNorthText &= "Nm"
+                                        Dim oYears As List(Of Integer) = MyBase.Survey.Properties.Sessions.GetSurveyYears
+                                        If oYears.Count = 1 Then
+                                            sNorthText &= " " & oYears(0)
+                                        ElseIf oYears.Count > 1 Then
+                                            sNorthText &= " #error#"
+                                        Else
+                                            sNorthText &= " " & Today.Year
+                                        End If
                                     Else
-                                        sNorthText &= " " & Today.Year
+                                        sNorthText = "N"
                                     End If
                                 Else
-                                    sNorthText = "N"
-                                End If
-                            Else
-                                If sText = "" Then
                                     Select Case iNorth
                                         Case cIItemCompass.NorthTypeEnum.Geographic
-                                            sNorthText = "N"
-                                    'Case cIItemCompass.NorthTypeEnum.GeographicOldStyle
-                                    '    sText = "N*"
+                                            sNorthText &= "N"
                                         Case cIItemCompass.NorthTypeEnum.Magnetic
-                                            sNorthText = "Nm"
+                                            sNorthText &= "Nm"
                                             If iYear = 0 Then
                                                 sNorthText &= " " & Today.Year
                                             Else
                                                 sNorthText &= " " & iYear
                                             End If
                                     End Select
-                                Else
-                                    sNorthText = modPaint.ReplaceGlobalTags(oSurvey, sText)
                                 End If
                             End If
-                            Using oTextPath As GraphicsPath = oFont.GetPath(PaintOptions, sNorthText, oSF)
-                                Using oTextMatrix = New Matrix
-                                    Call oTextMatrix.Scale(sTextScale, sTextScale, MatrixOrder.Append)
-                                    Call oTextPath.Transform(oTextMatrix)
+                            If sNorthText <> "" Then
+                                Using oTextPath As GraphicsPath = oFont.GetPath(PaintOptions, sNorthText, oSF)
+                                    Using oTextMatrix = New Matrix
+                                        Call oTextMatrix.Scale(sTextScale, sTextScale, MatrixOrder.Append)
+                                        Call oTextPath.Transform(oTextMatrix)
+                                    End Using
+                                    Dim oTextBound As RectangleF = oTextPath.GetBounds
+                                    Using oTextMatrix = New Matrix
+                                        Call oTextMatrix.Translate(oCache.GetBounds.Width / 2, oCache.GetBounds.Top, MatrixOrder.Append)
+                                        Call oTextPath.Transform(oTextMatrix)
+                                    End Using
+                                    Call oPath.AddPath(oTextPath, False)
                                 End Using
-                                Dim oTextBound As RectangleF = oTextPath.GetBounds
-                                Using oTextMatrix = New Matrix
-                                    Call oTextMatrix.Translate(oCache.GetBounds.Width / 2, oCache.GetBounds.Top, MatrixOrder.Append)
-                                    Call oTextPath.Transform(oTextMatrix)
-                                End Using
-                                Call oPath.AddPath(oTextPath, False)
-                            End Using
+                            End If
                             Call MyBase.Brush.Render(Graphics, PaintOptions, Options, False, oPath, oCache)
                         End Using
                     End Using
@@ -425,7 +457,10 @@ Namespace cSurvey.Design.Items
                 'oClipart = oSurvey.Signs.Cliparts.Add("", My.Resources.error_svg)
                 oClipart = oSurvey.Signs.Cliparts.Add("defaultcompass", My.Resources.default_compass)
             End If
-            sClipartScale = modXML.GetAttributeValue(item, "cs", 10)
+            sClipartScale = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "cs", 1.0))
+            If sClipartScale = 0 Then sClipartScale = 1
+            bUseTextScaleOnClipart = modXML.GetAttributeValue(item, "utsc", 1)
+            bUseClipartScaleOnText = modXML.GetAttributeValue(item, "ucst", 0)
 
             iMode = modXML.GetAttributeValue(item, "m", Items.cIItemCompass.CompassModeEnum.Auto)
             iNorth = modXML.GetAttributeValue(item, "n", Items.cIItemCompass.NorthTypeEnum.Geographic)
@@ -441,6 +476,8 @@ Namespace cSurvey.Design.Items
             iTextAlignment = modXML.GetAttributeValue(item, "textalignment", cIItemLineableText.TextAlignmentEnum.Center)
             iTextVerticalAlignment = modXML.GetAttributeValue(item, "textverticalalignment", cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle)
 
+            bHideNorthValue = modXML.GetAttributeValue(item, "hnv", 0)
+
             Call pLoadData()
             Call FixBound()
         End Sub
@@ -455,7 +492,9 @@ Namespace cSurvey.Design.Items
                 Call oItem.SetAttribute("dataformat", cIItemClipartBase.cClipartDataFormatEnum.SVGResource.ToString("D"))
             End If
 
-            If sClipartScale <> 10 Then Call oItem.SetAttribute("cs", modNumbers.NumberToString(sClipartScale, "0.00"))
+            If sClipartScale <> 1 Then Call oItem.SetAttribute("cs", modNumbers.NumberToString(sClipartScale, "0.00"))
+            If Not bUseTextScaleOnClipart Then Call oItem.SetAttribute("utsc", "0")
+            If bUseClipartScaleOnText Then Call oItem.SetAttribute("ucst", "1")
 
             If iMode <> Items.cIItemCompass.CompassModeEnum.Auto Then Call oItem.SetAttribute("m", iMode.ToString("D"))
             If iNorth <> Items.cIItemCompass.NorthTypeEnum.Geographic Then Call oItem.SetAttribute("n", iNorth.ToString("D"))
@@ -463,7 +502,7 @@ Namespace cSurvey.Design.Items
 
             If "" & sText <> "" Then Call oItem.SetAttribute("text", "" & sText)
             Call oFont.SaveTo(File, Document, oItem, "font")
-            If iTextSize <> cIItemText.TextSizeEnum.Default Then
+            If iTextSize <> cIItemSizable.SizeEnum.Default Then
                 Call oItem.SetAttribute("textsize", iTextSize)
             End If
             If iTextAlignment <> cIItemLineableText.TextAlignmentEnum.Center Then
@@ -473,49 +512,98 @@ Namespace cSurvey.Design.Items
                 Call oItem.SetAttribute("textverticalalignment", iTextVerticalAlignment)
             End If
 
+            If bHideNorthValue Then Call oItem.SetAttribute("hnv", "1")
+
             Return oItem
         End Function
+
+        Public Property HideNorthValue As Boolean Implements cIItemCompass.HideNorthValue
+            Get
+                Return bHideNorthValue
+            End Get
+            Set(value As Boolean)
+                If bHideNorthValue <> value Then
+                    bHideNorthValue = value
+                    Call MyBase.Caches.Invalidate()
+                End If
+            End Set
+        End Property
 
         Private Sub pLoadData()
             oDataBounds = oClipart.Clipart.GetBounds
         End Sub
 
         Friend Overrides Function GetClipartScaleFactor(PaintOptions As cOptions) As Single
-            Dim sDesignClipartScaleFactor As Single = MyBase.GetClipartScaleFactor(PaintOptions)
-            Select Case iTextSize
-                Case cIItemText.TextSizeEnum.Default
-                    Return 1 * sDesignClipartScaleFactor
-                Case cIItemText.TextSizeEnum.VerySmall
-                    Return 0.25 * sDesignClipartScaleFactor
-                Case cIItemText.TextSizeEnum.Small
-                    Return 0.5 * sDesignClipartScaleFactor
-                Case cIItemText.TextSizeEnum.Medium
-                    Return 1 * sDesignClipartScaleFactor
-                Case cIItemText.TextSizeEnum.Large
-                    Return 2 * sDesignClipartScaleFactor
-                Case cIItemText.TextSizeEnum.VeryLarge
-                    Return 4 * sDesignClipartScaleFactor
-            End Select
+            Dim sDesignClipartScaleFactor As Single = sClipartScale * MyBase.GetClipartScaleFactor(PaintOptions)
+            If bUseTextScaleOnClipart Then
+                Select Case iTextSize
+                    Case cIItemSizable.SizeEnum.Default
+                        Return 1 * sDesignClipartScaleFactor
+                    Case cIItemSizable.SizeEnum.VerySmall
+                        Return 0.25 * sDesignClipartScaleFactor
+                    Case cIItemSizable.SizeEnum.Small
+                        Return 0.5 * sDesignClipartScaleFactor
+                    Case cIItemSizable.SizeEnum.Medium
+                        Return 1 * sDesignClipartScaleFactor
+                    Case cIItemSizable.SizeEnum.Large
+                        Return 2 * sDesignClipartScaleFactor
+                    Case cIItemSizable.SizeEnum.VeryLarge
+                        Return 4 * sDesignClipartScaleFactor
+                    Case cIItemSizable.SizeEnum.x6
+                        Return 6 * sDesignClipartScaleFactor
+                    Case cIItemSizable.SizeEnum.x8
+                        Return 8 * sDesignClipartScaleFactor
+                    Case cIItemSizable.SizeEnum.x10
+                        Return 10 * sDesignClipartScaleFactor
+                    Case cIItemSizable.SizeEnum.x12
+                        Return 12 * sDesignClipartScaleFactor
+                    Case cIItemSizable.SizeEnum.x16
+                        Return 16 * sDesignClipartScaleFactor
+                    Case cIItemSizable.SizeEnum.x20
+                        Return 20 * sDesignClipartScaleFactor
+                    Case cIItemSizable.SizeEnum.x24
+                        Return 24 * sDesignClipartScaleFactor
+                    Case cIItemSizable.SizeEnum.x32
+                        Return 32 * sDesignClipartScaleFactor
+                End Select
+            Else
+                Return sDesignClipartScaleFactor
+            End If
         End Function
 
         Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptions) As Single
-            Dim sTextScaleFactor As Single = MyBase.GetTextScaleFactor(PaintOptions)
+            Dim sTextScaleFactor As Single = If(bUseClipartScaleOnText, sClipartScale, 1) * MyBase.GetTextScaleFactor(PaintOptions)
             Select Case iTextSize
-                Case cIItemText.TextSizeEnum.Default
+                Case cIItemSizable.SizeEnum.Default
                     Return 1 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.VerySmall
+                Case cIItemSizable.SizeEnum.VerySmall
                     Return 0.25 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Small
+                Case cIItemSizable.SizeEnum.Small
                     Return 0.5 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Medium
+                Case cIItemSizable.SizeEnum.Medium
                     Return 1 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Large
+                Case cIItemSizable.SizeEnum.Large
                     Return 2 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.VeryLarge
+                Case cIItemSizable.SizeEnum.VeryLarge
                     Return 4 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x6
+                    Return 6 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x8
+                    Return 8 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x10
+                    Return 10 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x12
+                    Return 12 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x16
+                    Return 16 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x20
+                    Return 20 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x24
+                    Return 24 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x32
+                    Return 32 * sTextScaleFactor
             End Select
         End Function
-
 
         Friend Overrides Sub BindSegments()
             If MyBase.Cave = "" Then
@@ -644,11 +732,11 @@ Namespace cSurvey.Design.Items
             End Set
         End Property
 
-        Public Property TextSize() As cIItemText.TextSizeEnum Implements cIItemText.TextSize
+        Public Property TextSize() As cIItemSizable.SizeEnum Implements cIItemSizable.Size
             Get
                 Return iTextSize
             End Get
-            Set(ByVal value As cIItemText.TextSizeEnum)
+            Set(ByVal value As cIItemSizable.SizeEnum)
                 If iTextSize <> value Then
                     iTextSize = value
                     Call MyBase.Caches.Invalidate()

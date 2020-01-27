@@ -472,22 +472,15 @@ Namespace cSurvey.Design
                     If sTextureID = "" Then sTextureID = Guid.NewGuid.ToString
                     Select Case File.FileFormat
                         Case Storage.cFile.FileFormatEnum.CSX
-                            Try
-                                Dim oms As IO.MemoryStream = New IO.MemoryStream(Convert.FromBase64String(modXML.GetAttributeValue(item, "texture")))
-                                oTexture = New Bitmap(oms)
-                            Catch
-                            End Try
+                            Using oms As IO.MemoryStream = New IO.MemoryStream(Convert.FromBase64String(modXML.GetAttributeValue(item, "texture")))
+                                oTexture = modPaint.SafeBitmapFromStream(oms) 'New Bitmap(oms)
+                            End Using
                         Case Storage.cFile.FileFormatEnum.CSZ
-                            Try
-                                Dim sImagePath As String = modXML.GetAttributeValue(item, "texture")
-                                oTexture = New Bitmap(DirectCast(File.Data(sImagePath), Storage.cStorageItemFile).Stream)
-                            Catch
-                            End Try
+                            Dim sImagePath As String = modXML.GetAttributeValue(item, "texture")
+                            oTexture = modPaint.SafeBitmapFromStream(DirectCast(File.Data(sImagePath), Storage.cStorageItemFile).Stream)
                     End Select
                     iTextureWrapMode = modXML.GetAttributeValue(item, "texturewrapmode")
-                End If
-
-                If iHatchType = HatchTypeEnum.Clipart Then
+                ElseIf iHatchType = HatchTypeEnum.Clipart Then
                     Dim oXMLClipart As XmlElement = item.Item("clipart")
                     If oXMLClipart Is Nothing Then
                         oClipart = New cDrawClipArt()
@@ -507,9 +500,7 @@ Namespace cSurvey.Design
                         oSeed = New cBrushSeed(oXMLSeed)
                     End If
                     oClipartAlternativeColor = modXML.GetAttributeColor(item, "clipartalternativecolor", Drawing.Color.Gray)
-                End If
-
-                If iHatchType = HatchTypeEnum.Pattern Then
+                ElseIf iHatchType = HatchTypeEnum.Pattern Then
                     iPatternType = modXML.GetAttributeValue(item, "patterntype")
                     iPatternPenStyle = modXML.GetAttributeValue(item, "patternpenstyle")
                     sClipartDensity = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "clipartdensity"))
@@ -546,25 +537,23 @@ Namespace cSurvey.Design
                             Dim oTemp As Bitmap 'vedi commento in sketch...
                             Select Case File.FileFormat
                                 Case Storage.cFile.FileFormatEnum.CSX
-                                    Dim oms As IO.MemoryStream = New IO.MemoryStream
-                                    oTemp = oTexture.Clone
-                                    Call oTemp.Save(oms, Drawing.Imaging.ImageFormat.Png)
-                                    Call oItem.SetAttribute("texture", Convert.ToBase64String(oms.ToArray()))
+                                    Using oms As IO.MemoryStream = New IO.MemoryStream
+                                        Call modPaint.SafeBitmapSaveToStream(oTexture, oms, Drawing.Imaging.ImageFormat.Png)
+                                        Call oItem.SetAttribute("texture", Convert.ToBase64String(oms.ToArray()))
+                                    End Using
                                 Case Storage.cFile.FileFormatEnum.CSZ
                                     Dim sImagePath As String = "_data\texture\" & sTextureID & ".png"
                                     Dim oImageStorage As Storage.cStorageItemFile = File.Data.AddFile(sImagePath)
-                                    oTemp = oTexture.Clone
-                                    Call oTemp.Save(oImageStorage.Stream, Drawing.Imaging.ImageFormat.Png)
+                                    Call modPaint.SafeBitmapSaveToStream(oTexture, oImageStorage.Stream, Drawing.Imaging.ImageFormat.Png)
                                     Call oItem.SetAttribute("texture", sImagePath)
                             End Select
                         End If
                     End If
                     Call oItem.SetAttribute("texturewrapmode", iTextureWrapMode.ToString("D"))
-                End If
-                If iHatchType = HatchTypeEnum.Clipart Then
+                ElseIf iHatchType = HatchTypeEnum.Clipart Then
                     If Not oClipart Is Nothing Then Call oClipart.SaveTo(File, Document, oItem)
                     Call oItem.SetAttribute("clipartdensity", modNumbers.NumberToString(sClipartDensity))
-                    Call oItem.SetAttribute("clipartzoomfactor", modNumbers.NumberToString(sClipartZoomFactor))
+                    Call oItem.SetAttribute("clipartzoomfactor", modNumbers.NumberToString(sClipartZoomFactor, "0.0000"))
                     Call oItem.SetAttribute("clipartanglemode", iClipartAngleMode.ToString("D"))
                     If iClipartAngleMode = ClipartAngleModeEnum.Fixed Then
                         Call oItem.SetAttribute("clipartangle", iClipartAngle)
@@ -577,8 +566,7 @@ Namespace cSurvey.Design
                     End If
                     Call oItem.SetAttribute("clipartalternativecolor", oClipartAlternativeColor.ToArgb)
                     Call oSeed.SaveTo(File, Document, oItem)
-                End If
-                If iHatchType = HatchTypeEnum.Pattern Then
+                ElseIf iHatchType = HatchTypeEnum.Pattern Then
                     Call oItem.SetAttribute("patterntype", iPatternType.ToString("D"))
                     Call oItem.SetAttribute("patternpenstyle", iPatternPenStyle.ToString("D"))
                     Call oItem.SetAttribute("clipartdensity", modNumbers.NumberToString(sClipartDensity))
@@ -737,7 +725,6 @@ Namespace cSurvey.Design
                 If Selected = cItem.SelectionModeEnum.InEdit Then
                     Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, Path, Nothing, Nothing, oClipartAlternativeBrush2)
                 Else
-                    'If (Options And cItem.PaintOptionsEnum.Wireframe) <> cItem.PaintOptionsEnum.Wireframe Then
                     If sClipartDensity > 0 And Not oClipart Is Nothing And Path.PointCount > 2 Then
                         Dim sZoomFactor As Single = GetPaintZoomFactor(PaintOptions)
                         Dim sCurrentDensity As Single = sClipartDensity * sZoomFactor
@@ -997,8 +984,7 @@ Namespace cSurvey.Design
                         Call Cache.ResetClip()
                     End If
                 End If
-                'End If
-            Else
+                    Else
                 Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, Path, Nothing, Nothing, oClipartAlternativeBrush1)
             End If
         End Sub

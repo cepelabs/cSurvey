@@ -21,6 +21,7 @@ Public Class frmSettings
 
             Call oReg.SetValue("default.club", txtDefaultClub.Text)
             Call oReg.SetValue("default.team", txtDefaultTeam.Text)
+            Call oReg.SetValue("default.designer", txtDefaultDesigner.Text)
 
             Call oReg.SetValue("default.calculatemode", If(chkCalculateMode.Checked, 1, 0))
             Call oReg.SetValue("default.calculatetype", cboDefaultCalculateType.SelectedIndex)

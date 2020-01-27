@@ -25,6 +25,48 @@ Namespace cSurvey.Design
             Signs = 6
         End Enum
 
+        Public ReadOnly Property RocksAndConcretionLayer() As cLayerRocks
+            Get
+                Return oLayers(LayerTypeEnum.RocksAndConcretion)
+            End Get
+        End Property
+
+        Public ReadOnly Property CeilingMorphologiesLayer() As cLayerCeilingMorphologies
+            Get
+                Return oLayers(LayerTypeEnum.CeilingMorphologies)
+            End Get
+        End Property
+
+        Public ReadOnly Property BordersLayer() As cLayerBorders
+            Get
+                Return oLayers(LayerTypeEnum.Borders)
+            End Get
+        End Property
+
+        Public ReadOnly Property SignsLayer() As cLayerSigns
+            Get
+                Return oLayers(LayerTypeEnum.Signs)
+            End Get
+        End Property
+
+        Public ReadOnly Property WaterAndFloorMorphologiesLayer() As cLayerWaterAndFloorMorphologies
+            Get
+                Return oLayers(LayerTypeEnum.WaterAndFloorMorphologies)
+            End Get
+        End Property
+
+        Public ReadOnly Property SoilLayer() As cLayerSoil
+            Get
+                Return oLayers(LayerTypeEnum.Soil)
+            End Get
+        End Property
+
+        Public ReadOnly Property BaseLayer() As cLayerBase
+            Get
+                Return oLayers(LayerTypeEnum.Base)
+            End Get
+        End Property
+
         Friend Sub MergeWith(Layers As cLayers)
             For Each oLayer As cLayer In Layers
                 Call oLayers(oLayer.Type).Items.AddRange(oLayer.Items)

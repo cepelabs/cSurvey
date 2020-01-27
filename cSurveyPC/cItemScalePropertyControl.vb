@@ -18,7 +18,9 @@ Friend Class cItemScalePropertyControl
         txtScaleMeters.Value = oItem.Length
         txtScaleSteps.Value = oItem.Steps
         txtScaleStep.Value = oItem.StepLength
+        txtScaleScaleHeightFactor.Value = oItem.ScaleHeightFactor
         chkHideScaleValue.Checked = oItem.HideScaleValue
+        cboPropScaleFillStyle.SelectedIndex = oItem.ScaleFillStyle
     End Sub
 
     Private Sub txtScaleMeters_ValueChanged(sender As Object, e As EventArgs) Handles txtScaleMeters.ValueChanged
@@ -81,5 +83,29 @@ Friend Class cItemScalePropertyControl
                 'Call MyBase.MapInvalidate()
             End If
         End Using
+    End Sub
+
+    Private Sub txtScaleScaleHeightFactor_ValueChanged(sender As Object, e As EventArgs) Handles txtScaleScaleHeightFactor.ValueChanged
+        Try
+            If Not DisabledObjectProperty() Then
+                oItem.ScaleHeightFactor = txtScaleScaleHeightFactor.Value
+                Call MyBase.TakeUndoSnapshot()
+                Call MyBase.PropertyChanged("scaleheightfactor")
+                Call MyBase.MapInvalidate()
+            End If
+        Catch
+        End Try
+    End Sub
+
+    Private Sub cboPropScaleFillStyle_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropScaleFillStyle.SelectedIndexChanged
+        Try
+            If Not DisabledObjectProperty() Then
+                oItem.ScaleFillStyle = cboPropScaleFillStyle.SelectedIndex
+                Call MyBase.TakeUndoSnapshot()
+                Call MyBase.PropertyChanged("ScaleFillStyle")
+                Call MyBase.MapInvalidate()
+            End If
+        Catch
+        End Try
     End Sub
 End Class

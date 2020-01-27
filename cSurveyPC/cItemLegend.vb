@@ -17,7 +17,7 @@ Namespace cSurvey.Design.Items
         Private sText As String
         Private WithEvents oFont As cItemFont
 
-        Private iTextSize As cIItemText.TextSizeEnum
+        Private iTextSize As cIItemSizable.SizeEnum
         Private iTextVerticalAlignment As cIItemVerticalLineableText.TextVerticalAlignmentEnum
         Private iTextAlignment As cIItemLineableText.TextAlignmentEnum
 
@@ -276,7 +276,7 @@ Namespace cSurvey.Design.Items
             oItems = New List(Of cLegendItem)
             oFont = New cItemFont(oSurvey, cItemFont.FontTypeEnum.Generic)
             sText = "" & Text
-            iTextSize = cIItemText.TextSizeEnum.Default
+            iTextSize = cIItemSizable.SizeEnum.Default
             iTextAlignment = cIItemLineableText.TextAlignmentEnum.Left
             iTextVerticalAlignment = cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle
             iItemAlignment = ItemAlignmentEnum.Left
@@ -291,59 +291,37 @@ Namespace cSurvey.Design.Items
             MyBase.DesignAffinity = DesignAffinityEnum.Extra
         End Sub
 
-        'Friend Overrides Function GetSignScaleFactor(PaintOptions As cOptions) As Single
-        '    Dim sDesignSignScaleFactor As Single = MyBase.GetSignScaleFactor(PaintOptions)
-        '    sDesignSignScaleFactor = sDesignSignScaleFactor * sItemScale
-        '    Select Case iTextSize
-        '        Case cIItemText.TextSizeEnum.Default
-        '            Return 1 * sDesignSignScaleFactor
-        '        Case cIItemText.TextSizeEnum.VerySmall
-        '            Return 0.25 * sDesignSignScaleFactor
-        '        Case cIItemText.TextSizeEnum.Small
-        '            Return 0.5 * sDesignSignScaleFactor
-        '        Case cIItemText.TextSizeEnum.Medium
-        '            Return 1 * sDesignSignScaleFactor
-        '        Case cIItemText.TextSizeEnum.Large
-        '            Return 2 * sDesignSignScaleFactor
-        '        Case cIItemText.TextSizeEnum.VeryLarge
-        '            Return 4 * sDesignSignScaleFactor
-        '    End Select
-        'End Function
-
-        'Friend Overrides Function GetClipartScaleFactor(PaintOptions As cOptions) As Single
-        '    Dim sDesignClipartScaleFactor As Single = MyBase.GetClipartScaleFactor(PaintOptions)
-        '    sDesignClipartScaleFactor = sDesignClipartScaleFactor * sItemScale
-        '    Select Case iTextSize
-        '        Case cIItemText.TextSizeEnum.Default
-        '            Return 1 * sDesignClipartScaleFactor
-        '        Case cIItemText.TextSizeEnum.VerySmall
-        '            Return 0.25 * sDesignClipartScaleFactor
-        '        Case cIItemText.TextSizeEnum.Small
-        '            Return 0.5 * sDesignClipartScaleFactor
-        '        Case cIItemText.TextSizeEnum.Medium
-        '            Return 1 * sDesignClipartScaleFactor
-        '        Case cIItemText.TextSizeEnum.Large
-        '            Return 2 * sDesignClipartScaleFactor
-        '        Case cIItemText.TextSizeEnum.VeryLarge
-        '            Return 4 * sDesignClipartScaleFactor
-        '    End Select
-        'End Function
-
         Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptions) As Single
             Dim sTextScaleFactor As Single = MyBase.GetTextScaleFactor(PaintOptions)
             Select Case iTextSize
-                Case cIItemText.TextSizeEnum.Default
+                Case cIItemSizable.SizeEnum.Default
                     Return 1 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.VerySmall
+                Case cIItemSizable.SizeEnum.VerySmall
                     Return 0.25 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Small
+                Case cIItemSizable.SizeEnum.Small
                     Return 0.5 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Medium
+                Case cIItemSizable.SizeEnum.Medium
                     Return 1 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Large
+                Case cIItemSizable.SizeEnum.Large
                     Return 2 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.VeryLarge
+                Case cIItemSizable.SizeEnum.VeryLarge
                     Return 4 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x6
+                    Return 6 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x8
+                    Return 8 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x10
+                    Return 10 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x12
+                    Return 12 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x16
+                    Return 16 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x20
+                    Return 20 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x24
+                    Return 24 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x32
+                    Return 32 * sTextScaleFactor
             End Select
         End Function
 
@@ -604,7 +582,7 @@ Namespace cSurvey.Design.Items
                     If Not IsNothing(oItem) AndAlso Not IsNothing(oItem.Item) Then
                         Dim iPenType As cPen.PenTypeEnum = oItem.Item.Pen.Type
                         If oItem.Type = cLegendItem.ItemTypeEnum.LineItem AndAlso (Not oPenList.Contains(iPenType) OrElse iPenType = cPen.PenTypeEnum.Custom) Then
-                            Call oPenList.Add(iPentype)
+                            Call oPenList.Add(iPenType)
                             Dim sName As String = oItem.Item.Pen.Name   'some doubt...name for custom is not editable...may be better use item name?
                             If Not oNames.Contains(sName.ToLower) Then Call oNames.Add(sName.ToLower)
                         End If
@@ -1006,7 +984,7 @@ Namespace cSurvey.Design.Items
             Dim oItem As XmlElement = MyBase.SaveTo(File, Document, Parent, Options)
             If "" & sText <> "" Then Call oItem.SetAttribute("text", "" & sText)
             Call oFont.SaveTo(File, Document, oItem, "font")
-            If iTextSize <> cIItemText.TextSizeEnum.Default Then
+            If iTextSize <> cIItemSizable.SizeEnum.Default Then
                 Call oItem.SetAttribute("textsize", iTextSize)
             End If
             If iTextAlignment <> cIItemLineableText.TextAlignmentEnum.Center Then
@@ -1037,11 +1015,11 @@ Namespace cSurvey.Design.Items
             Return oItem
         End Function
 
-        Public Property TextSize() As cIItemText.TextSizeEnum Implements cIItemText.TextSize
+        Public Property TextSize() As cIItemSizable.SizeEnum Implements cIItemSizable.Size
             Get
                 Return iTextSize
             End Get
-            Set(ByVal value As cIItemText.TextSizeEnum)
+            Set(ByVal value As cIItemSizable.SizeEnum)
                 If iTextSize <> value Then
                     iTextSize = value
                     Call MyBase.Caches.Invalidate()

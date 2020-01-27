@@ -8,17 +8,12 @@ Namespace cSurvey.Design.Items
         Inherits cItem
         Implements cIItemQuota
 
-        Public Enum TextRotateModeEnum
-            Rotable = 0
-            Fixed = 1
-        End Enum
-
         Private oSurvey As cSurvey
 
         Private sText As String
         Private WithEvents oFont As cItemFont
 
-        Private iTextSize As cIItemText.TextSizeEnum
+        Private iTextSize As cIItemSizable.SizeEnum
 
         Private sAngle As Single
 
@@ -220,7 +215,7 @@ Namespace cSurvey.Design.Items
 
         Public Overrides ReadOnly Property CanBeRotated As Boolean
             Get
-                Return iQuotaType = cIItemQuota.QuotaTypeEnum.Oblique  ' iTextRotateMode = TextRotateModeEnum.Rotable
+                Return iQuotaType = cIItemQuota.QuotaTypeEnum.Oblique
             End Get
         End Property
 
@@ -299,18 +294,34 @@ Namespace cSurvey.Design.Items
         Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptions) As Single
             Dim sTextScaleFactor As Single = MyBase.GetTextScaleFactor(PaintOptions)
             Select Case iTextSize
-                Case cIItemText.TextSizeEnum.Default
+                Case cIItemSizable.SizeEnum.Default
                     Return 1 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.VerySmall
+                Case cIItemSizable.SizeEnum.VerySmall
                     Return 0.25 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Small
+                Case cIItemSizable.SizeEnum.Small
                     Return 0.5 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Medium
+                Case cIItemSizable.SizeEnum.Medium
                     Return 1 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.Large
+                Case cIItemSizable.SizeEnum.Large
                     Return 2 * sTextScaleFactor
-                Case cIItemText.TextSizeEnum.VeryLarge
+                Case cIItemSizable.SizeEnum.VeryLarge
                     Return 4 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x6
+                    Return 6 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x8
+                    Return 8 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x10
+                    Return 10 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x12
+                    Return 12 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x16
+                    Return 16 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x20
+                    Return 20 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x24
+                    Return 24 * sTextScaleFactor
+                Case cIItemSizable.SizeEnum.x32
+                    Return 32 * sTextScaleFactor
             End Select
         End Function
 
@@ -1266,7 +1277,7 @@ Namespace cSurvey.Design.Items
             Dim oItem As XmlElement = MyBase.SaveTo(File, Document, Parent, Options)
             Call oItem.SetAttribute("text", "" & sText)
             Call oFont.SaveTo(File, Document, oItem, "font")
-            If iTextSize <> cIItemText.TextSizeEnum.Default Then Call oItem.SetAttribute("textsize", iTextSize.ToString("D"))
+            If iTextSize <> cIItemSizable.SizeEnum.Default Then Call oItem.SetAttribute("textsize", iTextSize.ToString("D"))
 
             If sAngle <> 0 Then Call oItem.SetAttribute("angle", modNumbers.NumberToString(sAngle))
 
@@ -1293,20 +1304,11 @@ Namespace cSurvey.Design.Items
             Return oItem
         End Function
 
-        'Public Property TextRotateMode() As cIItemText.TextRotateModeEnum Implements cIItemText.TextRotateMode
-        '    Get
-        '        Return cIItemText.TextRotateModeEnum.Fixed
-        '    End Get
-        '    Set(ByVal value As cIItemText.TextRotateModeEnum)
-
-        '    End Set
-        'End Property
-
-        Public Property TextSize() As cIItemText.TextSizeEnum Implements cIItemText.TextSize
+        Public Property TextSize() As cIItemSizable.SizeEnum Implements cIItemSizable.Size
             Get
                 Return iTextSize
             End Get
-            Set(ByVal value As cIItemText.TextSizeEnum)
+            Set(ByVal value As cIItemSizable.SizeEnum)
                 If iTextSize <> value Then
                     iTextSize = value
                     Call MyBase.Caches.Invalidate()

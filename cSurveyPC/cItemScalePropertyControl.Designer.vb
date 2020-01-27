@@ -38,10 +38,15 @@ Partial Class cItemScalePropertyControl
         Me.chkHideScaleValue = New System.Windows.Forms.CheckBox()
         Me.lblScaleMetersUM = New System.Windows.Forms.Label()
         Me.lblScaleStepUM = New System.Windows.Forms.Label()
+        Me.txtScaleScaleHeightFactor = New System.Windows.Forms.NumericUpDown()
+        Me.lblScaleScaleHeightFactor = New System.Windows.Forms.Label()
+        Me.cboPropScaleFillStyle = New System.Windows.Forms.ComboBox()
+        Me.lblPropScaleFillStyle = New System.Windows.Forms.Label()
         CType(Me.txtScaleStep, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picScaleColor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtScaleSteps, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtScaleMeters, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtScaleScaleHeightFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblScaleStep
@@ -133,11 +138,42 @@ Partial Class cItemScalePropertyControl
         resources.ApplyResources(Me.lblScaleStepUM, "lblScaleStepUM")
         Me.lblScaleStepUM.Name = "lblScaleStepUM"
         '
+        'txtScaleScaleHeightFactor
+        '
+        Me.txtScaleScaleHeightFactor.DecimalPlaces = 2
+        Me.txtScaleScaleHeightFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+        resources.ApplyResources(Me.txtScaleScaleHeightFactor, "txtScaleScaleHeightFactor")
+        Me.txtScaleScaleHeightFactor.Minimum = New Decimal(New Integer() {1, 0, 0, 196608})
+        Me.txtScaleScaleHeightFactor.Name = "txtScaleScaleHeightFactor"
+        Me.txtScaleScaleHeightFactor.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'lblScaleScaleHeightFactor
+        '
+        resources.ApplyResources(Me.lblScaleScaleHeightFactor, "lblScaleScaleHeightFactor")
+        Me.lblScaleScaleHeightFactor.Name = "lblScaleScaleHeightFactor"
+        '
+        'cboPropScaleFillStyle
+        '
+        Me.cboPropScaleFillStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboPropScaleFillStyle.FormattingEnabled = True
+        Me.cboPropScaleFillStyle.Items.AddRange(New Object() {resources.GetString("cboPropScaleFillStyle.Items"), resources.GetString("cboPropScaleFillStyle.Items1")})
+        resources.ApplyResources(Me.cboPropScaleFillStyle, "cboPropScaleFillStyle")
+        Me.cboPropScaleFillStyle.Name = "cboPropScaleFillStyle"
+        '
+        'lblPropScaleFillStyle
+        '
+        resources.ApplyResources(Me.lblPropScaleFillStyle, "lblPropScaleFillStyle")
+        Me.lblPropScaleFillStyle.Name = "lblPropScaleFillStyle"
+        '
         'cItemScalePropertyControl
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Window
+        Me.Controls.Add(Me.cboPropScaleFillStyle)
+        Me.Controls.Add(Me.lblPropScaleFillStyle)
+        Me.Controls.Add(Me.txtScaleScaleHeightFactor)
+        Me.Controls.Add(Me.lblScaleScaleHeightFactor)
         Me.Controls.Add(Me.lblScaleStepUM)
         Me.Controls.Add(Me.lblScaleMetersUM)
         Me.Controls.Add(Me.chkHideScaleValue)
@@ -158,6 +194,7 @@ Partial Class cItemScalePropertyControl
         CType(Me.picScaleColor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtScaleSteps, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtScaleMeters, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtScaleScaleHeightFactor, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -177,4 +214,8 @@ Partial Class cItemScalePropertyControl
     Friend WithEvents chkHideScaleValue As CheckBox
     Friend WithEvents lblScaleMetersUM As Label
     Friend WithEvents lblScaleStepUM As Label
+    Friend WithEvents txtScaleScaleHeightFactor As NumericUpDown
+    Friend WithEvents lblScaleScaleHeightFactor As Label
+    Friend WithEvents cboPropScaleFillStyle As ComboBox
+    Friend WithEvents lblPropScaleFillStyle As Label
 End Class

@@ -231,4 +231,16 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>cSurveyPC.cDesignPropertyControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="lblPropAffinity.Text" xml:space="preserve">
+    <value>Affinity:</value>
+  </data>
+  <data name="lblPropVisibleIn.Text" xml:space="preserve">
+    <value>Visible in:</value>
+  </data>
+  <data name="cboPropAffinity.Items" xml:space="preserve">
+    <value>Design</value>
+  </data>
+  <data name="cboPropAffinity.Items1" xml:space="preserve">
+    <value>Extra</value>
+  </data>
 </root>

@@ -454,4 +454,28 @@
   <data name="btnElevationsPreviewExportData.Text" xml:space="preserve">
     <value>Esporta dati...</value>
   </data>
+  <data name="mnuOrthophotoPreviewElevationFromOrthophoto.Text" xml:space="preserve">
+    <value>Crea set dati di elevazione usando i dati di questa ortofoto</value>
+  </data>
+  <data name="mnuOrthophotoPreviewInvertColors.Text" xml:space="preserve">
+    <value>Inverti colori</value>
+  </data>
+  <data name="mnuElevationsPreviewNewReduced.Text" xml:space="preserve">
+    <value>Crea set di dati riducendo questo al</value>
+  </data>
+  <data name="btnElevationsPreviewNewReduced.Text" xml:space="preserve">
+    <value>Crea set di dati riducendo questo al</value>
+  </data>
+  <data name="btnOrthophotoPreviewInvertColors.Text" xml:space="preserve">
+    <value>Inverti colori</value>
+  </data>
+  <data name="mnuOrthophotosPreviewNewReduced.Text" xml:space="preserve">
+    <value>Crea ortofoto riducendo questa al</value>
+  </data>
+  <data name="mnuOrthophotosPreviewInvertColors.Text" xml:space="preserve">
+    <value>Inverti colori</value>
+  </data>
+  <data name="btnOrthophotosPreviewNewReduced.Text" xml:space="preserve">
+    <value>Crea ortofoto riducendo questa al</value>
+  </data>
 </root>

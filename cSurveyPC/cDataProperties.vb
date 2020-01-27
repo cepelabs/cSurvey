@@ -76,22 +76,27 @@ Namespace cSurvey.Data
                     Dim sField As String = oFields(i)
                     Dim sValue As String = oValues(i)
                     If sValue <> "" Then
-                        Dim oValue As Object = oDataFields.Item(sField).StringToValue(sValue)
-                        Call oItems.Add(sField, oValue)
+                        Try
+                            Dim oValue As Object = oDataFields.Item(sField).StringToValue(sValue)
+                            Call oItems.Add(sField, oValue)
+                        Catch ex As Exception
+                            Call Survey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, Now & vbTab & "User property [" & sField & "] could not be loaded (" & ex.Message & ")", True)
+                        End Try
                     End If
                 Next
             Else
                 Dim oValues As List(Of String) = New List(Of String)(Strings.Split(Item.InnerText, "|"))
-                'Dim iIndex As Integer = 0
                 For i As Integer = 0 To oValues.Count - 1
-                    'For Each oDataField As cDataField In oDataFields
                     Dim sValue As String = oValues(i)
                     If sValue <> "" Then
                         Dim oDataField As cDataField = oDataFields(i)
-                        Dim oValue As Object = oDataField.StringToValue(sValue)
-                        Call oItems.Add(oDataField.Name, oValue)
+                        Try
+                            Dim oValue As Object = oDataField.StringToValue(sValue)
+                            Call oItems.Add(oDataField.Name, oValue)
+                        Catch ex As Exception
+                            Call Survey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, Now & vbTab & "User property [" & oDataField.Name & "] could not be loaded (" & ex.Message & ")", True)
+                        End Try
                     End If
-                    'iIndex += 1
                 Next
             End If
         End Sub

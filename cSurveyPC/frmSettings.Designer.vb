@@ -38,10 +38,6 @@ Partial Class frmSettings
         Me.lblDefaultTeam = New System.Windows.Forms.Label()
         Me.txtDefaultClub = New System.Windows.Forms.TextBox()
         Me.lblDefaultClub = New System.Windows.Forms.Label()
-        Me.tabOptions = New System.Windows.Forms.TabPage()
-        Me.chkCalculateMode = New System.Windows.Forms.CheckBox()
-        Me.lblDefaultCalculateMode = New System.Windows.Forms.Label()
-        Me.cboDefaultCalculateType = New System.Windows.Forms.ComboBox()
         Me.tabTherion = New System.Windows.Forms.TabPage()
         Me.chkTherionLochEnabled = New System.Windows.Forms.CheckBox()
         Me.cmdTherionPathBrowse = New System.Windows.Forms.Button()
@@ -54,6 +50,10 @@ Partial Class frmSettings
         Me.chkTherionTrigpointSafename = New System.Windows.Forms.CheckBox()
         Me.chkTherionBackgroundProcess = New System.Windows.Forms.CheckBox()
         Me.chkTherionDeleteTempFiles = New System.Windows.Forms.CheckBox()
+        Me.tabOptions = New System.Windows.Forms.TabPage()
+        Me.chkCalculateMode = New System.Windows.Forms.CheckBox()
+        Me.lblDefaultCalculateMode = New System.Windows.Forms.Label()
+        Me.cboDefaultCalculateType = New System.Windows.Forms.ComboBox()
         Me.tabInterface = New System.Windows.Forms.TabPage()
         Me.chkAlwaysUseShellForAttchments = New System.Windows.Forms.CheckBox()
         Me.txtDesignAnchorScale = New System.Windows.Forms.NumericUpDown()
@@ -141,7 +141,6 @@ Partial Class frmSettings
         Me.lblWMSCacheCurrentSizeValue = New System.Windows.Forms.Label()
         Me.lblWMSCacheCurrentSize = New System.Windows.Forms.Label()
         Me.btnWMSClearCache = New System.Windows.Forms.Button()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.txtWMSCacheMaxSize = New System.Windows.Forms.NumericUpDown()
         Me.lblWMSCacheMaxSize = New System.Windows.Forms.Label()
         Me.chkWMSCacheEnabled = New System.Windows.Forms.CheckBox()
@@ -194,9 +193,9 @@ Partial Class frmSettings
         Me.tabSettings.SuspendLayout()
         Me.tabMain.SuspendLayout()
         Me.grdFileAssociation.SuspendLayout()
-        Me.tabOptions.SuspendLayout()
         Me.tabTherion.SuspendLayout()
         Me.frmTherionAdvancedSettings.SuspendLayout()
+        Me.tabOptions.SuspendLayout()
         Me.tabInterface.SuspendLayout()
         CType(Me.txtDesignAnchorScale, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
@@ -337,34 +336,6 @@ Partial Class frmSettings
         resources.ApplyResources(Me.lblDefaultClub, "lblDefaultClub")
         Me.lblDefaultClub.Name = "lblDefaultClub"
         '
-        'tabOptions
-        '
-        Me.tabOptions.Controls.Add(Me.chkCalculateMode)
-        Me.tabOptions.Controls.Add(Me.lblDefaultCalculateMode)
-        Me.tabOptions.Controls.Add(Me.cboDefaultCalculateType)
-        resources.ApplyResources(Me.tabOptions, "tabOptions")
-        Me.tabOptions.Name = "tabOptions"
-        Me.tabOptions.UseVisualStyleBackColor = True
-        '
-        'chkCalculateMode
-        '
-        resources.ApplyResources(Me.chkCalculateMode, "chkCalculateMode")
-        Me.chkCalculateMode.Name = "chkCalculateMode"
-        Me.chkCalculateMode.UseVisualStyleBackColor = True
-        '
-        'lblDefaultCalculateMode
-        '
-        resources.ApplyResources(Me.lblDefaultCalculateMode, "lblDefaultCalculateMode")
-        Me.lblDefaultCalculateMode.Name = "lblDefaultCalculateMode"
-        '
-        'cboDefaultCalculateType
-        '
-        Me.cboDefaultCalculateType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        resources.ApplyResources(Me.cboDefaultCalculateType, "cboDefaultCalculateType")
-        Me.cboDefaultCalculateType.FormattingEnabled = True
-        Me.cboDefaultCalculateType.Items.AddRange(New Object() {resources.GetString("cboDefaultCalculateType.Items"), resources.GetString("cboDefaultCalculateType.Items1"), resources.GetString("cboDefaultCalculateType.Items2")})
-        Me.cboDefaultCalculateType.Name = "cboDefaultCalculateType"
-        '
         'tabTherion
         '
         Me.tabTherion.Controls.Add(Me.chkTherionLochEnabled)
@@ -454,6 +425,34 @@ Partial Class frmSettings
         Me.chkTherionDeleteTempFiles.Name = "chkTherionDeleteTempFiles"
         Me.tipStandard.SetToolTip(Me.chkTherionDeleteTempFiles, resources.GetString("chkTherionDeleteTempFiles.ToolTip"))
         Me.chkTherionDeleteTempFiles.UseVisualStyleBackColor = True
+        '
+        'tabOptions
+        '
+        Me.tabOptions.Controls.Add(Me.chkCalculateMode)
+        Me.tabOptions.Controls.Add(Me.lblDefaultCalculateMode)
+        Me.tabOptions.Controls.Add(Me.cboDefaultCalculateType)
+        resources.ApplyResources(Me.tabOptions, "tabOptions")
+        Me.tabOptions.Name = "tabOptions"
+        Me.tabOptions.UseVisualStyleBackColor = True
+        '
+        'chkCalculateMode
+        '
+        resources.ApplyResources(Me.chkCalculateMode, "chkCalculateMode")
+        Me.chkCalculateMode.Name = "chkCalculateMode"
+        Me.chkCalculateMode.UseVisualStyleBackColor = True
+        '
+        'lblDefaultCalculateMode
+        '
+        resources.ApplyResources(Me.lblDefaultCalculateMode, "lblDefaultCalculateMode")
+        Me.lblDefaultCalculateMode.Name = "lblDefaultCalculateMode"
+        '
+        'cboDefaultCalculateType
+        '
+        Me.cboDefaultCalculateType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        resources.ApplyResources(Me.cboDefaultCalculateType, "cboDefaultCalculateType")
+        Me.cboDefaultCalculateType.FormattingEnabled = True
+        Me.cboDefaultCalculateType.Items.AddRange(New Object() {resources.GetString("cboDefaultCalculateType.Items"), resources.GetString("cboDefaultCalculateType.Items1"), resources.GetString("cboDefaultCalculateType.Items2")})
+        Me.cboDefaultCalculateType.Name = "cboDefaultCalculateType"
         '
         'tabInterface
         '
@@ -581,6 +580,7 @@ Partial Class frmSettings
         Me.lvClipboardFormats.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colClipboardFormat})
         Me.lvClipboardFormats.FullRowSelect = True
         Me.lvClipboardFormats.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None
+        Me.lvClipboardFormats.HideSelection = False
         resources.ApplyResources(Me.lvClipboardFormats, "lvClipboardFormats")
         Me.lvClipboardFormats.Name = "lvClipboardFormats"
         Me.lvClipboardFormats.ShowItemToolTips = True
@@ -1080,7 +1080,6 @@ Partial Class frmSettings
         Me.GroupBox5.Controls.Add(Me.lblWMSCacheCurrentSizeValue)
         Me.GroupBox5.Controls.Add(Me.lblWMSCacheCurrentSize)
         Me.GroupBox5.Controls.Add(Me.btnWMSClearCache)
-        Me.GroupBox5.Controls.Add(Me.Label2)
         Me.GroupBox5.Controls.Add(Me.txtWMSCacheMaxSize)
         Me.GroupBox5.Controls.Add(Me.lblWMSCacheMaxSize)
         Me.GroupBox5.Controls.Add(Me.chkWMSCacheEnabled)
@@ -1113,11 +1112,6 @@ Partial Class frmSettings
         Me.btnWMSClearCache.Name = "btnWMSClearCache"
         Me.tipStandard.SetToolTip(Me.btnWMSClearCache, resources.GetString("btnWMSClearCache.ToolTip"))
         Me.btnWMSClearCache.UseVisualStyleBackColor = True
-        '
-        'Label2
-        '
-        resources.ApplyResources(Me.Label2, "Label2")
-        Me.Label2.Name = "Label2"
         '
         'txtWMSCacheMaxSize
         '
@@ -1483,12 +1477,12 @@ Partial Class frmSettings
         Me.tabMain.ResumeLayout(False)
         Me.tabMain.PerformLayout()
         Me.grdFileAssociation.ResumeLayout(False)
-        Me.tabOptions.ResumeLayout(False)
-        Me.tabOptions.PerformLayout()
         Me.tabTherion.ResumeLayout(False)
         Me.tabTherion.PerformLayout()
         Me.frmTherionAdvancedSettings.ResumeLayout(False)
         Me.frmTherionAdvancedSettings.PerformLayout()
+        Me.tabOptions.ResumeLayout(False)
+        Me.tabOptions.PerformLayout()
         Me.tabInterface.ResumeLayout(False)
         Me.tabInterface.PerformLayout()
         CType(Me.txtDesignAnchorScale, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1666,7 +1660,6 @@ Partial Class frmSettings
     Friend WithEvents chkHistoryWebArchiveOnSave As System.Windows.Forms.CheckBox
     Friend WithEvents tabWMS As System.Windows.Forms.TabPage
     Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
-    Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents txtWMSCacheMaxSize As System.Windows.Forms.NumericUpDown
     Friend WithEvents lblWMSCacheMaxSize As System.Windows.Forms.Label
     Friend WithEvents chkWMSCacheEnabled As System.Windows.Forms.CheckBox

@@ -525,6 +525,11 @@ Namespace cSurvey.Calculate
         Private bDataFromDesignsInvalidated As Boolean
         Private iLastThreeDModelMode As cProperties.ThreeDModelModeEnum
 
+        Friend Sub ResetChanges()
+            Call oSurvey.Plan.Plot.ResetChanges()
+            Call oSurvey.Profile.Plot.ResetChanges()
+        End Sub
+
         Friend Function Calculate(Optional ByVal PerformWarping As Boolean = True) As cActionResult
             Try
                 Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, Now & vbTab & "Calculate started", True)
@@ -928,141 +933,6 @@ Namespace cSurvey.Calculate
             End If
         End Sub
 
-        'Private Sub pCalculateDAndSideMeasures(ByVal Origin As cTrigPointCalculateItem, ByVal SegmentsColl As List(Of cSegment))
-        '    Dim oTrigPoints As List(Of cTrigPointCalculateItem) = New List(Of cTrigPointCalculateItem)
-        '    Call oTrigPoints.Add(Origin)
-
-        '    Dim oNextTrigPoint As List(Of cTrigPointCalculateItem) = New List(Of cTrigPointCalculateItem)
-        '    Dim oCalculatedSegments As List(Of cSegment) = New List(Of cSegment)
-        '    Dim oCalculatedTrigpoints As List(Of String) = New List(Of String)
-
-        '    Dim oCaveAndBranches As List(Of cICaveInfoBranches) = oSurvey.Properties.CaveInfos.GetAllWithEmpty
-        '    Do Until oCaveAndBranches.Count = 0
-        '        Dim oCaveAndBranch As cICaveInfoBranches = oCaveAndBranches(0)
-        '        Dim oSubSegmentColl As List(Of cSegment) = oCaveAndBranch.GetSegments.Cast(Of cSegment).ToList
-        '        If oSubSegmentColl.Count = 0 Then
-        '            Call oCaveAndBranches.Remove(oCaveAndBranch)
-        '        Else
-        '            Dim sExtentStart As String = oCaveAndBranch.ExtendStart.ToUpper
-        '            If sExtentStart = "" Then
-        '                If oTrigPoints.Count = 0 Then
-        '                    For Each sTrigpoint In oSubSegmentColl.Select(Function(segment) segment.From).Union(oSubSegmentColl.Select(Function(segment) segment.To)).Distinct
-        '                        If oCalculatedTrigpoints.Contains(sTrigpoint) Then
-        '                            Call oTrigPoints.Add(New cTrigPointCalculateItem(sTrigpoint, 1))
-        '                        End If
-        '                    Next
-        '                End If
-        '            Else
-        '                Call oTrigPoints.Insert(0, New cTrigPointCalculateItem(sExtentStart, 1))
-        '            End If
-
-        '            Do Until oTrigPoints.Count = 0 OrElse SegmentsColl.Count = 0
-        '                For Each oTrigPointCalculateItem As cTrigPointCalculateItem In oTrigPoints
-        '                    Dim sFrom As String = oTrigPointCalculateItem.[From]
-        '                    If Not oCalculatedTrigpoints.Contains(sFrom) Then oCalculatedTrigpoints.Add(sFrom)
-        '                    Dim sSign As Decimal = oTrigPointCalculateItem.Sign
-        '                    For Each oSegment As cSegment In oSubSegmentColl
-        '                        If oSegment.Data.Data.From = sFrom Then
-        '                            Dim sTo As String = oSegment.Data.Data.To
-        '                            Dim bIgnore As Boolean = False
-        '                            If oSurvey.TrigPoints.Contains(sFrom) Then
-        '                                If oSurvey.TrigPoints(sFrom).Connections.Contains(sTo) Then
-        '                                    bIgnore = oSurvey.TrigPoints(sFrom).Connections.Get(sTo)
-        '                                End If
-        '                            End If
-
-        '                            Dim oFromTP As cTrigPoint = oTPs(sFrom)
-        '                            Dim oToTP As cTrigPoint = oTPs(sTo)
-        '                            Dim oFromPoint As cTrigPointPoint = oFromTP.Point
-        '                            Dim oToPoint As cTrigPointPoint = oToTP.Point
-        '                            Dim sNewSign As Decimal
-
-        '                            If oSegment.Splay Then
-        '                                sNewSign = 1
-        '                            Else
-        '                                'Select Case iInversionMode
-        '                                '    Case cSurvey.InversioneModeEnum.Relative
-        '                                '        sNewSign = sSign * IIf(oSegment.Data.SourceData.Direction = cSurvey.DirectionEnum.Left, -1, 1)
-        '                                '    Case cSurvey.InversioneModeEnum.Absolute
-        '                                sNewSign = IIf(oSegment.Data.Data.Direction = cSurvey.DirectionEnum.Left, -1, 1)
-        '                                'End Select
-        '                                If oSurvey.Properties.CalculateVersion > 0 Then
-        '                                    sNewSign = sNewSign * IIf(oSegment.Data.Data.Reversed, -1, 1)
-        '                                End If
-        '                            End If
-
-        '                            With oToTP
-        '                                'devo ricalcolare d...
-        '                                Dim oPlanFromPoint As PointD = oFromPoint.To2DPoint(cTrigPointPoint.ProjectionEnum.FromTop)
-        '                                Dim oPlanToPoint As PointD = oToPoint.To2DPoint(cTrigPointPoint.ProjectionEnum.FromTop)
-        '                                Dim sD As Decimal = modPaint.DistancePointToPoint(oPlanFromPoint, oPlanToPoint)
-        '                                Dim oNewToPoint As cTrigPointPoint = New cTrigPointPoint(oToPoint, oFromPoint.D + sD * sNewSign)
-        '                                If oToPoint.D = 0 AndAlso sTo <> Origin.[From] Then
-        '                                    Call .SetPoint(oNewToPoint, False)
-        '                                End If
-        '                                Call .Connections.SetPoint(sFrom, oNewToPoint)
-        '                            End With
-
-        '                            If oSegment.Splay Then
-        '                                'splay data are always at the end point...
-        '                                If oSegment.Data.Data.Reversed Then
-        '                                    Call oFromTP.SideMeasure.AppendUpDown(sTo, oSegment.GetBaseUp, oSegment.GetBaseDown)
-        '                                    Call oFromTP.SideMeasure.AppendLeftRight(sTo, oSegment.GetBaseLeft, oSegment.GetBaseRight, oSegment.GetSideMeasuresType)
-        '                                Else
-        '                                    Call oToTP.SideMeasure.AppendUpDown(sFrom, oSegment.GetBaseUp, oSegment.GetBaseDown)
-        '                                    Call oToTP.SideMeasure.AppendLeftRight(sFrom, oSegment.GetBaseLeft, oSegment.GetBaseRight, oSegment.GetSideMeasuresType)
-        '                                End If
-        '                            Else
-        '                                If oSegment.GetSideMeasuresReferTo = cSegment.SideMeasuresReferToEnum.StartPoint Then
-        '                                    If oSegment.Data.Data.Reversed Then
-        '                                        Call oToTP.SideMeasure.AppendUpDown(sFrom, oSegment.GetBaseUp, oSegment.GetBaseDown)
-        '                                        Call oToTP.SideMeasure.AppendLeftRight(sFrom, oSegment.GetBaseLeft, oSegment.GetBaseRight, oSegment.GetSideMeasuresType)
-        '                                    Else
-        '                                        Call oFromTP.SideMeasure.AppendUpDown(sTo, oSegment.GetBaseUp, oSegment.GetBaseDown)
-        '                                        Call oFromTP.SideMeasure.AppendLeftRight(sTo, oSegment.GetBaseLeft, oSegment.GetBaseRight, oSegment.GetSideMeasuresType)
-        '                                    End If
-        '                                Else
-        '                                    'end point...
-        '                                    If oSegment.Data.Data.Reversed Then
-        '                                        Call oFromTP.SideMeasure.AppendUpDown(sTo, oSegment.GetBaseUp, oSegment.GetBaseDown)
-        '                                        Call oFromTP.SideMeasure.AppendLeftRight(sTo, oSegment.GetBaseLeft, oSegment.GetBaseRight, oSegment.GetSideMeasuresType)
-        '                                    Else
-        '                                        Call oToTP.SideMeasure.AppendUpDown(sFrom, oSegment.GetBaseUp, oSegment.GetBaseDown)
-        '                                        Call oToTP.SideMeasure.AppendLeftRight(sFrom, oSegment.GetBaseLeft, oSegment.GetBaseRight, oSegment.GetSideMeasuresType)
-        '                                    End If
-        '                                End If
-        '                            End If
-
-        '                            If Not bIgnore Then
-        '                                'aggiungo il segmento a quelli gia processati 
-        '                                Call oCalculatedSegments.Add(oSegment)
-        '                                'se ho indicato di non proseguire da qui...non metto la stazione tra quella come da processare al giro dopo...
-        '                                Call oNextTrigPoint.Add(New cTrigPointCalculateItem(sTo, sNewSign))
-        '                            End If
-        '                        End If
-        '                    Next
-        '                    For Each oSegment As cSegment In oCalculatedSegments
-        '                        Call SegmentsColl.Remove(oSegment)
-        '                        Call oSubSegmentColl.Remove(oSegment)
-        '                    Next
-        '                    Call oCalculatedSegments.Clear()
-        '                Next
-        '                Call oTrigPoints.Clear()
-        '                Call oTrigPoints.AddRange(oNextTrigPoint)
-        '                Call oNextTrigPoint.Clear()
-        '            Loop
-        '            Call oCaveAndBranches.Remove(oCaveAndBranch)
-        '        End If
-        '    Loop
-
-        '    'test...find station with more than one point
-        '    'For Each oTrigpoint As cTrigPoint In oTPs
-        '    '    If oTrigpoint.GetPoints.Count > 1 Then
-        '    '        Debug.Print("station with gap: " & oTrigpoint.Name)
-        '    '    End If
-        '    'Next
-        'End Sub
-
         Private Sub pCalculateDAndSideMeasures(ByVal Origin As cTrigPointCalculateItem, Groups As cSegmentGroupCollection)
             Dim oTrigPoints As List(Of cTrigPointCalculateItem) = New List(Of cTrigPointCalculateItem)
 
@@ -1127,15 +997,18 @@ Namespace cSurvey.Calculate
                                                 bIgnore = oSurvey.TrigPoints(sFrom).Connections.Get(sTo) 'AndAlso Not oSurvey.TrigPoints(sTo).Connections.Get(sFrom)
                                             End If
                                         End If
-                                        sNewSign = IIf(oSegment.Data.Data.Direction = cSurvey.DirectionEnum.Left, -1, 1)
+                                        sNewSign = If(oSegment.Data.Data.Direction = cSurvey.DirectionEnum.Left, -1, 1)
                                         If oSurvey.Properties.CalculateVersion > 0 Then
-                                            sNewSign = sNewSign * IIf(oSegment.Data.Data.Reversed, -1, 1)
+                                            sNewSign = sNewSign * If(oSegment.Data.Data.Reversed, -1, 1)
                                         End If
                                     End If
 
-                                    Dim oPlanFromPoint As PointD = oFromPoint.To2DPoint(cTrigPointPoint.ProjectionEnum.FromTop)
-                                    Dim oPlanToPoint As PointD = oToPoint.To2DPoint(cTrigPointPoint.ProjectionEnum.FromTop)
-                                    Dim sD As Decimal = modPaint.DistancePointToPoint(oPlanFromPoint, oPlanToPoint)
+                                    Dim sD As Decimal = 0
+                                    If oSegment.Data.Data.Direction <> cSurvey.DirectionEnum.Vertical Then
+                                        Dim oPlanFromPoint As PointD = oFromPoint.To2DPoint(cTrigPointPoint.ProjectionEnum.FromTop)
+                                        Dim oPlanToPoint As PointD = oToPoint.To2DPoint(cTrigPointPoint.ProjectionEnum.FromTop)
+                                        sD = modPaint.DistancePointToPoint(oPlanFromPoint, oPlanToPoint)
+                                    End If
                                     Dim oToEEPoint As cTrigPointPoint = New cTrigPointPoint(oToPoint, oFromEEPoint.D + sD * sNewSign)
                                     If Not oCalculatedTrigpoints.ContainsKey(sTo) Then Call oCalculatedTrigpoints.Add(sTo, oToEEPoint)
                                     With oToTP
@@ -1495,7 +1368,7 @@ Namespace cSurvey.Calculate
 
                         Dim sTempPath As String = My.Computer.FileSystem.SpecialDirectories.Temp
 
-                        Dim sBaseName As String = "_therion" & IIf(modMain.bIsInDebug, "", "_" & Guid.NewGuid.ToString)
+                        Dim sBaseName As String = "_therion" & If(modMain.bIsInDebug, "", "_" & Guid.NewGuid.ToString)
 
                         Dim sTempThInputFilename As String = IO.Path.Combine(sTempPath, sBaseName & "_input.th")
                         Call oFiles.Add(sTempThInputFilename)
@@ -1519,13 +1392,22 @@ Namespace cSurvey.Calculate
                         If iTrigPointsCount > 1 AndAlso iSegmentsCount > 0 Then
                             Dim oInputdictionary As Dictionary(Of String, String) = Nothing
                             Dim oOutputdictionary As Dictionary(Of String, String) = Nothing
-                            'creo due dizionari di codifica per i capisaldi...
+                            'create 2 dictionary for save station names...
                             Dim bThTrigpointSafeName As Boolean = oSurvey.GetGlobalSetting("therion.trigpointsafename", 1)
                             If bThTrigpointSafeName Then
+                                'create an key exclusion collection with branch with "integer" names...
+                                Dim oKeyToExclude As List(Of Integer) = oSurvey.Properties.CaveInfos.GetAllWithEmpty.Select(Function(oitem) oitem.Name).Where(Function(oitem)
+                                                                                                                                                                  Dim bResult As Boolean
+                                                                                                                                                                  Call Integer.TryParse(oitem, bResult)
+                                                                                                                                                                  Return bResult
+                                                                                                                                                              End Function).Select(Function(sitem) Integer.Parse(sitem)).Distinct.ToList
                                 oInputdictionary = New Dictionary(Of String, String)
                                 oOutputdictionary = New Dictionary(Of String, String)
                                 Dim iIndex As Integer = 0
                                 For Each sTrigPoint As String In oTrigPointsToElaborate
+                                    Do While oKeyToExclude.Contains(iIndex)
+                                        iIndex += 1
+                                    Loop
                                     Call oInputdictionary.Add(sTrigPoint, iIndex)
                                     Call oOutputdictionary.Add(iIndex, sTrigPoint)
                                     iIndex += 1
@@ -1534,7 +1416,7 @@ Namespace cSurvey.Calculate
 
                             Dim bThSegmentForceDirection As Boolean = oSurvey.GetGlobalSetting("therion.segmentforcedirection", 1)
                             Dim bThSegmentForcePath As Boolean = oSurvey.GetGlobalSetting("therion.segmentforcepath", 1)
-                            Dim iThOptions As modExport.TherionExportOptionsEnum = IIf(bThSegmentForceDirection, modExport.TherionExportOptionsEnum.SegmentForceDirection, 0) Or IIf(bThSegmentForcePath, modExport.TherionExportOptionsEnum.SegmentForcePath, 0) Or TherionExportOptionsEnum.ExportSketch Or TherionExportOptionsEnum.CalculateSplay
+                            Dim iThOptions As modExport.TherionExportOptionsEnum = If(bThSegmentForceDirection, modExport.TherionExportOptionsEnum.SegmentForceDirection, 0) Or If(bThSegmentForcePath, modExport.TherionExportOptionsEnum.SegmentForcePath, 0) Or TherionExportOptionsEnum.ExportSketch Or TherionExportOptionsEnum.CalculateSplay
                             Dim iLegacyCalculation As Integer
                             If oSurvey.SharedSettings.GetValue("legacycalculation1", "on") = "on" Then
                                 iLegacyCalculation = 1
@@ -1794,7 +1676,6 @@ Namespace cSurvey.Calculate
                                                                 sScaledX = ((oSketchReaderImage.Location.X / sScaleX) - sTranslateX)
                                                                 sScaledY = -1 * ((oSketchReaderImage.Location.Y / sScaleY) - sTranslateY)
                                                                 If Math.Abs(sScaledY) > 100000 Then
-                                                                    'sScaleY = sScaleY + 4906468.42
                                                                     sScaledY = 0
                                                                 End If
                                                             End If
@@ -1895,6 +1776,7 @@ Namespace cSurvey.Calculate
                         Else
                             sBearing = modPaint.GetBearing(oFromPoint, oToPoint)
                         End If
+
                         With oSegment.Data
                             Call .BackupData()
                             Call .SetData(sDistance, sBearing, sInclination, oSegment.Direction)

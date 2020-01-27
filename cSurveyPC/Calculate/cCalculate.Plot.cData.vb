@@ -457,14 +457,14 @@ Namespace cSurvey.Calculate.Plot
             With Segment
                 oSourceData.SetData(.[From], .[To], .GetDistance, .GetInclination, .GetBearing, .Direction, False)
             End With
-            Call oData.SetData(oSourceData.From, oSourceData.To, oSourceData.Reversed)
+            Call oData.SetData(oSourceData.From, oSourceData.To, oSourceData.Direction, oSourceData.Reversed)
         End Sub
 
         Friend Sub ReverseData(ByVal Segment As cSegment)
             With Segment
                 oSourceData.SetData(.[To], .[From], .GetDistance, - .GetInclination, .GetBearing - 180, .Direction, True)
             End With
-            Call oData.SetData(oSourceData.From, oSourceData.To, oSourceData.Reversed)
+            Call oData.SetData(oSourceData.From, oSourceData.To, oSourceData.Direction, oSourceData.Reversed)
         End Sub
 
         Friend Sub BackupData()

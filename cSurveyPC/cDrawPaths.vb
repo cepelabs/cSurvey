@@ -77,7 +77,7 @@ Namespace cSurvey.Drawings
         End Property
 
         Public Function GetEnumerator() As IEnumerator Implements IEnumerable.GetEnumerator
-            Return oData.Values.GetEnumerator
+            Return oData.GetEnumerator
         End Function
     End Class
 

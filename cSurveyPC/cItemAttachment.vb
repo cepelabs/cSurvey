@@ -255,6 +255,7 @@ Namespace cSurvey.Design.Items
                 Try
                     If Not PaintOptions.IsDesign Or (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then
                         Dim oPoint As PointF = MyBase.Points(0).Point
+                        Debug.Print(PaintOptions.CurrentScale)
                         Dim oBounds As RectangleF = New RectangleF(oPoint.X - oDataBounds.Width / 2, oPoint.Y - oDataBounds.Height / 2, oDataBounds.Width, oDataBounds.Height)
                         If (Options And PaintOptionsEnum.Wireframe) = PaintOptionsEnum.Wireframe Then
                             Call Graphics.DrawImage(oAttachment.Attachment.GetThumbnail(True), oBounds)

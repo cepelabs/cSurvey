@@ -2751,7 +2751,7 @@
 </value>
   </data>
   <data name="chkLayerFiltered.ToolTip" xml:space="preserve">
-    <value>Attiva il filtro</value>
+    <value>Applica filtro</value>
   </data>
   <data name="cmdLayerFilterEdit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5780,9 +5780,6 @@
   </data>
   <data name="pnlPropMergeMode.ToolTip" xml:space="preserve">
     <value />
-  </data>
-  <data name="txtPropTransparency.ToolTip" xml:space="preserve">
-    <value>Spessore (px) (0=filetto)</value>
   </data>
   <data name="lblPropTransparency.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 13</value>
@@ -14466,5 +14463,41 @@ o ad una sezione trasversale</value>
   </data>
   <data name="btnExport3D.Text" xml:space="preserve">
     <value>3D...</value>
+  </data>
+  <data name="chkLayerWhiteboard.ToolTip" xml:space="preserve">
+    <value>Filtro a lavagna luminosa</value>
+  </data>
+  <data name="chkLayerInvertFilter.ToolTip" xml:space="preserve">
+    <value>Inverti filtro</value>
+  </data>
+  <data name="btnFilterInvertFilter.Text" xml:space="preserve">
+    <value>Inverti filtro</value>
+  </data>
+  <data name="btnFilterWhiteboard.Text" xml:space="preserve">
+    <value>Filtro a lavagna luminosa</value>
+  </data>
+  <data name="cboPropSignFlip.Items" xml:space="preserve">
+    <value>Non invertire</value>
+  </data>
+  <data name="cboPropSignFlip.Items1" xml:space="preserve">
+    <value>Inverti in verticale</value>
+  </data>
+  <data name="cboPropSignFlip.Items2" xml:space="preserve">
+    <value>Inverti in verticale</value>
+  </data>
+  <data name="cboPropSignFlip.Items3" xml:space="preserve">
+    <value>Inverti in entrambe le direzioni</value>
+  </data>
+  <data name="cboPropSignFlip.ToolTip" xml:space="preserve">
+    <value>Inverti il simbolo</value>
+  </data>
+  <data name="lblPropSignFlip.Text" xml:space="preserve">
+    <value>Inverti:</value>
+  </data>
+  <data name="cboSegmentDirection.Items2" xml:space="preserve">
+    <value>Verticale</value>
+  </data>
+  <data name="mnuFileSaveAsTemplate.Text" xml:space="preserve">
+    <value>Salva come modello...</value>
   </data>
 </root>

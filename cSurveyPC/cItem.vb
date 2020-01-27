@@ -126,32 +126,33 @@ Namespace cSurvey.Design
         End Function
 
         Public Overridable Function GetThumbnailImage(ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal thumbWidth As Integer, ByVal thumbHeight As Integer, ByVal ForeColor As Color, ByVal Backcolor As Color) As Image
+            'citem have to implement idisposable...
             If oThumbnailImage Is Nothing Then oThumbnailImage = New Dictionary(Of String, Image)
             Dim sThumbKey As String = thumbWidth & "x" & thumbHeight
             Try
                 If Not oThumbnailImage.ContainsKey(sThumbKey) Then
                     Dim oBounds As RectangleF = New RectangleF(0, 0, thumbWidth, thumbHeight)
                     Dim oImage As Image = New Bitmap(thumbWidth, thumbHeight)
-                    Dim oGr As Graphics = Graphics.FromImage(oImage)
-                    oGr.SmoothingMode = SmoothingMode.AntiAlias
-                    oGr.CompositingQuality = CompositingQuality.HighQuality
-                    oGr.InterpolationMode = InterpolationMode.HighQualityBicubic
-                    Call oGr.Clear(Backcolor)
-                    Dim sScale As Single
-                    Call Render(oGr, PaintOptions, PaintOptionsEnum.None, Selected)
-                    Dim oCurrentBounds As RectangleF = GetBounds()
-                    Dim sScaleX As Single = oBounds.Width / oCurrentBounds.Width
-                    Dim sScaleY As Single = oBounds.Height / oCurrentBounds.Height
-                    If sScaleX > sScaleY Then sScale = sScaleY Else sScale = sScaleX
-                    sScale = sScale * 0.95
-                    Call oGr.TranslateTransform(-oCurrentBounds.X, -oCurrentBounds.Y, MatrixOrder.Append)
-                    Call oGr.ScaleTransform(sScale, sScale, MatrixOrder.Append)
-                    Dim sTranslateX As Single = (thumbWidth - oCurrentBounds.Width * sScale) / 2
-                    Dim sTranslateY As Single = (thumbHeight - oCurrentBounds.Height * sScale) / 2
-                    Call oGr.TranslateTransform(sTranslateX, sTranslateY, MatrixOrder.Append)
-                    Call Paint(oGr, PaintOptions, cItem.PaintOptionsEnum.None, Selected)
-                    Call oGr.Dispose()
-                    oThumbnailImage.Add(sThumbKey, oImage)
+                    Using oGr As Graphics = Graphics.FromImage(oImage)
+                        oGr.SmoothingMode = SmoothingMode.AntiAlias
+                        oGr.CompositingQuality = CompositingQuality.HighQuality
+                        oGr.InterpolationMode = InterpolationMode.HighQualityBicubic
+                        Call oGr.Clear(Backcolor)
+                        Dim sScale As Single
+                        Call Render(oGr, PaintOptions, PaintOptionsEnum.None, Selected)
+                        Dim oCurrentBounds As RectangleF = GetBounds()
+                        Dim sScaleX As Single = oBounds.Width / oCurrentBounds.Width
+                        Dim sScaleY As Single = oBounds.Height / oCurrentBounds.Height
+                        If sScaleX > sScaleY Then sScale = sScaleY Else sScale = sScaleX
+                        sScale = sScale * 0.95
+                        Call oGr.TranslateTransform(-oCurrentBounds.X, -oCurrentBounds.Y, MatrixOrder.Append)
+                        Call oGr.ScaleTransform(sScale, sScale, MatrixOrder.Append)
+                        Dim sTranslateX As Single = (thumbWidth - oCurrentBounds.Width * sScale) / 2
+                        Dim sTranslateY As Single = (thumbHeight - oCurrentBounds.Height * sScale) / 2
+                        Call oGr.TranslateTransform(sTranslateX, sTranslateY, MatrixOrder.Append)
+                        Call Paint(oGr, PaintOptions, cItem.PaintOptionsEnum.None, Selected)
+                    End Using
+                    Call oThumbnailImage.Add(sThumbKey, oImage)
                     Return oImage
                 Else
                     Return oThumbnailImage(sThumbKey)
@@ -517,8 +518,8 @@ Namespace cSurvey.Design
             If sCrossSection <> "" Then Call oXmlItem.SetAttribute("crosssection", sCrossSection)
             If iBindDesignType <> BindDesignTypeEnum.MainDesign Then Call oXmlItem.SetAttribute("binddesigntype", iBindDesignType.ToString("D"))
 
-            Call oXmlItem.SetAttribute("type", Type.ToString("D"))
-            Call oXmlItem.SetAttribute("category", Category.ToString("D"))
+            Call oXmlItem.SetAttribute("type", iType.ToString("D"))
+            Call oXmlItem.SetAttribute("category", iCategory.ToString("D"))
 
             If bHiddenInDesign Then Call oXmlItem.SetAttribute("hiddenindesign", "1")
             If bHiddenInPreview Then Call oXmlItem.SetAttribute("hiddeninpreview", "1")
@@ -528,7 +529,7 @@ Namespace cSurvey.Design
 
             If HavePen Then Call oPen.SaveTo(File, Document, oXmlItem)
             If HaveBrush Then Call oBrush.SaveTo(File, Document, oXmlItem)
-            If HaveTransparency Then If Transparency <> 0 Then Call oXmlItem.SetAttribute("transparency", modNumbers.NumberToString(Transparency, "0.00"))
+            If HaveTransparency Then If sTransparency <> 0 Then Call oXmlItem.SetAttribute("transparency", modNumbers.NumberToString(sTransparency, "0.00"))
 
             Call oPoints.SaveTo(File, Document, oXmlItem)
 
@@ -753,7 +754,7 @@ Namespace cSurvey.Design
                 If iBindDesignType = BindDesignTypeEnum.CrossSections Then
                     'for crosssection i found one nearest segment for all points...
                     Dim oNearestSegment As cISegment
-                    If CrossSection = "" Then
+                    If sCrossSection = "" Then
                         Dim oNearestSegments As Dictionary(Of cISegment, Integer) = New Dictionary(Of cISegment, Integer)
                         For Each oPoint As cPoint In oPoints
                             If Not oPoint.SegmentLocked Then
@@ -770,7 +771,9 @@ Namespace cSurvey.Design
                         Next
                         oNearestSegment = oNearestSegments.OrderBy(Of Integer)(Function(item) item.Value).LastOrDefault().Key
                     Else
-                        oNearestSegment = oSurvey.CrossSections(CrossSection)
+                        If oSurvey.CrossSections.Contains(sCrossSection) Then
+                            oNearestSegment = oSurvey.CrossSections(sCrossSection)
+                        End If
                     End If
                     Threading.Tasks.Parallel.ForEach(Of cPoint)(oPoints, Sub(oPoint)
                                                                              If Not oPoint.SegmentLocked Then

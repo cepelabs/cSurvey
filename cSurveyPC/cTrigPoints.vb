@@ -221,7 +221,6 @@ Namespace cSurvey
                     End With
                 Next
 
-
                 'change shots
                 For Each oSegment As cSegment In oSurvey.Segments.ToList.Where(Function(item) item.[From] = OldName)
                     Call oSegment.RenameFrom(NewName)
@@ -233,15 +232,17 @@ Namespace cSurvey
                 'change graphical object with station references
                 '- quote...
                 For Each oItemQuota As cItemQuota In oSurvey.GetAllDesignItems.Where(Function(item) item.Type = Design.Items.cIItem.cItemTypeEnum.Quota)
-                    If oItemQuota.QuotaRelativeTrigpoint = OldName Then
-                        oItemQuota.QuotaRelativeTrigpoint = NewName
-                    End If
+                    If ("" & oItemQuota.QuotaRelativeTrigpoint).ToUpper = OldName Then oItemQuota.QuotaRelativeTrigpoint = NewName
                 Next
                 '- sketch: no...use station object
 
                 'change origin and geopoint...in future change this property from string to station(trigpoint)
                 If oSurvey.Properties.Origin.ToUpper = OldName Then oSurvey.Properties.RenameOrigin(NewName)
                 If oSurvey.Properties.GPS.CustomRefPoint = OldName Then oSurvey.Properties.GPS.RenameCustomRefPoint(NewName)
+                For Each oCaveBranch As cICaveInfoBranches In oSurvey.Properties.CaveInfos.GetAll
+                    'Debug.Print(oCaveBranch.Cave & "|" & oCaveBranch.Path & "->" & oCaveBranch.ExtendStart)
+                    If ("" & oCaveBranch.ExtendStart).ToUpper = OldName Then oCaveBranch.ExtendStart = NewName
+                Next
 
                 'invalidate data...
                 Call oSurvey.Invalidate(Calculate.cCalculate.InvalidateEnum.FullCalculate)

@@ -463,18 +463,7 @@ Public Class frmResurveyMain
             oRow = grdStations.Rows(grdStations.SelectedRows(0).Index)
         Catch
         End Try
-        'Dim oRow As DataGridViewRow
-        'Try
-        '    oRow = grdStations.Rows(grdStations.SelectedRows(0).Index)
-        'Catch
-        '    Try
-        '        oRow = grdStations.Rows(0)
-        '    Catch
-        '        Dim iNewRowIndex As Integer = grdStations.Rows.Add()
-        '        grdStations.Rows(iNewRowIndex).Selected = True
-        '        oRow = grdStations.Rows(iNewRowIndex)
-        '    End Try
-        'End Try
+
         Dim oNewRow As DataGridViewRow
         Dim sPrevType As String = ""
         If Not oRow Is Nothing Then

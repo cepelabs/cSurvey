@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmParametersTranslations
     Inherits cForm
 
     'Form esegue l'override del metodo Dispose per pulire l'elenco dei componenti.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmParametersTranslations
     'NOTA: la procedura che segue è richiesta da Progettazione Windows Form
     'Può essere modificata in Progettazione Windows Form.  
     'Non modificarla nell'editor del codice.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmParametersTranslations))
@@ -56,6 +56,7 @@ Partial Class frmParametersTranslations
         Me.lblTranslationsThreshold = New System.Windows.Forms.Label()
         Me.chkOriginalPositionOnlyTranslated = New System.Windows.Forms.CheckBox()
         Me.chkOriginalPositionOverDesign = New System.Windows.Forms.CheckBox()
+        Me.lblTranslationsThresholdUM = New System.Windows.Forms.Label()
         Me.mnuTraslationsGrid.SuspendLayout()
         CType(Me.grdStations, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdTraslations, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -152,8 +153,8 @@ Partial Class frmParametersTranslations
         '
         'Column3
         '
-        resources.ApplyResources(Me.Column3, "Column3")
         Me.Column3.Name = "Column3"
+        resources.ApplyResources(Me.Column3, "Column3")
         '
         'DataGridViewTextBoxColumn1
         '
@@ -254,10 +255,16 @@ Partial Class frmParametersTranslations
         Me.chkOriginalPositionOverDesign.Name = "chkOriginalPositionOverDesign"
         Me.chkOriginalPositionOverDesign.UseVisualStyleBackColor = True
         '
+        'lblTranslationsThresholdUM
+        '
+        resources.ApplyResources(Me.lblTranslationsThresholdUM, "lblTranslationsThresholdUM")
+        Me.lblTranslationsThresholdUM.Name = "lblTranslationsThresholdUM"
+        '
         'frmParametersTranslations
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.Controls.Add(Me.lblTranslationsThresholdUM)
         Me.Controls.Add(Me.chkOriginalPositionOverDesign)
         Me.Controls.Add(Me.chkOriginalPositionOnlyTranslated)
         Me.Controls.Add(Me.lblTranslationsThreshold)
@@ -314,4 +321,5 @@ Partial Class frmParametersTranslations
     Friend WithEvents lblTranslationsThreshold As Label
     Friend WithEvents chkOriginalPositionOnlyTranslated As CheckBox
     Friend WithEvents chkOriginalPositionOverDesign As CheckBox
+    Friend WithEvents lblTranslationsThresholdUM As Label
 End Class

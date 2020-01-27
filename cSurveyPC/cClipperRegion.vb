@@ -14,17 +14,8 @@ Namespace cSurvey.Drawings
             Call oIntPaths.Add(oIntPath)
             Return oIntPaths
         End Function
-
-        'Public Shared Function Union(Polygon1 As List(Of List(Of IntPoint)), Poligon2 As List(Of List(Of IntPoint))) As List(Of List(Of IntPoint))
-        '    Dim oClipper As Clipper = New Clipper
-        '    Call oClipper.Clear()
-        '    Call oClipper.AddPaths(Polygon1, PolyType.ptClip, False)
-        '    Call oClipper.AddPaths(Poligon2, PolyType.ptSubject, False)
-        '    Dim oResultPaths As List(Of List(Of IntPoint)) = New List(Of List(Of IntPoint))
-        '    Call oClipper.Execute(ClipType.ctUnion, oResultPaths)
-        '    Return oResultPaths
-        'End Function
     End Class
+
     Public Class cClipperRegion
         Implements IDisposable
         Implements cIRegion

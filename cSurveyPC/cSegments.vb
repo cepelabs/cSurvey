@@ -548,7 +548,7 @@ Namespace cSurvey
             End If
         End Function
 
-        Public Function GetTrigPoints() As cITrigPointCollection Implements cISegmentCollection.GetTrigPoints
+        Public Function GetTrigPoints() As cITrigPointCollection Implements cISegmentCollection.GetTrigpoints
             Return oSurvey.TrigPoints
         End Function
 

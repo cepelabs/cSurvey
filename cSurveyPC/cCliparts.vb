@@ -84,10 +84,11 @@ Namespace cSurvey
 
             Dim sDX As Single = oRect.Width / sScale
             Dim sDY As Single = oRect.Height / sScale
-            Dim sD As Single = 1 / IIf(sDX > sDY, sDX, sDY)
-            Dim oMatrix As Matrix = New Matrix
-            Call oMatrix.Scale(sD, sD)
-            Call Clipart.Clipart.Transform(oMatrix)
+            Dim sD As Single = 1 / If(sDX > sDY, sDX, sDY)
+            Using oMatrix As Matrix = New Matrix
+                Call oMatrix.Scale(sD, sD)
+                Call Clipart.Clipart.Transform(oMatrix)
+            End Using
         End Sub
     End Class
 
@@ -169,16 +170,17 @@ Namespace cSurvey
             'flatten the clipart...cliparts are different from signs, cliparts can be free resized so have to be flatten to use warp function without bad results...
             'in future warp in clipart have to be replaced with a dedicated resize code and this code removed
             For Each oDrawPath As cDrawPath In Clipart.Clipart.Paths
-                Call oDrawPath.Path.Flatten(Nothing, 0.01)
+                Call oDrawPath.Path.Flatten(Nothing, 0.001)
             Next
 
             Dim oRect As RectangleF = Clipart.Clipart.GetBounds
             Dim sDX As Single = oRect.Width / 1
             Dim sDY As Single = oRect.Height / 1
-            Dim sD As Single = 1 / IIf(sDX > sDY, sDX, sDY)
-            Dim oMatrix As Matrix = New Matrix
-            Call oMatrix.Scale(sD, sD)
-            Call Clipart.Clipart.Transform(oMatrix)
+            Dim sD As Single = 1 / If(sDX > sDY, sDX, sDY)
+            Using oMatrix As Matrix = New Matrix
+                Call oMatrix.Scale(sD, sD)
+                Call Clipart.Clipart.Transform(oMatrix)
+            End Using
         End Sub
     End Class
 
@@ -353,6 +355,40 @@ Namespace cSurvey
                 Call oItems.Remove(sID)
             Next
             Call oSurvey.RaiseOnProgressEvent("cleanup", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
+        End Sub
+    End Class
+
+    Public Class cClipartPlaceholder
+        Private sFilename As String
+        Private sFolder As String
+
+        Private oUserData As Drawings.cDrawUserdata
+
+        Public ReadOnly Property UserData As Drawings.cDrawUserdata
+            Get
+                Return oUserData
+            End Get
+        End Property
+
+        Public ReadOnly Property Folder As String
+            Get
+                Return sFolder
+            End Get
+        End Property
+
+        Public ReadOnly Property Filename As String
+            Get
+                Return sFilename
+            End Get
+        End Property
+
+        Public Sub New(Filename As String)
+            sFilename = Filename.ToLower
+            sFolder = IO.Path.GetFileName(IO.Path.GetDirectoryName(sFilename))
+            oUserData = New Drawings.cDrawUserdata
+            Dim oXml As XmlDocument = New XmlDocument
+            oXml.Load(sFilename)
+            Call oUserData.LoadSVG(oXml.DocumentElement)
         End Sub
     End Class
 

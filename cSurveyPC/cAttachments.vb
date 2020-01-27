@@ -75,7 +75,7 @@ Namespace cSurvey
         Private Sub pRefreshThumbnail(Grayscale As Boolean)
             Try
                 Using oMs As MemoryStream = New MemoryStream(oData)
-                    Using oImage As Bitmap = New Bitmap(oMs)
+                    Using oImage As Bitmap = modPaint.SafeBitmapFromStream(oMs)
                         If Grayscale Then
                             oGrayscaleThumbnail = modPaint.GrayScaleImage(modPaint.GetImageThumbnail(oImage, 32, 32))
                         Else
@@ -111,7 +111,6 @@ Namespace cSurvey
                     Case FTTLib.FileCategory.Audio
                         Return My.Resources.sound
                     Case FTTLib.FileCategory.Image
-                        'Return My.Resources.image
                         If IsNothing(oThumbnail) Then
                             Call pRefreshThumbnail(Grayscale)
                         End If

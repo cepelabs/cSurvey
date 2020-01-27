@@ -123,7 +123,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cmdCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>225, 161</value>
+    <value>341, 247</value>
   </data>
   <data name="cmdCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
@@ -145,13 +145,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="cmdOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="cmdOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 161</value>
+    <value>255, 247</value>
   </data>
   <data name="cmdOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
@@ -172,19 +172,76 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
   </data>
   <metadata name="tipDefault.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="txtCaveBordersTransparency.Location" type="System.Drawing.Point, System.Drawing">
+    <value>92, 8</value>
+  </data>
+  <data name="txtCaveBordersTransparency.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 21</value>
+  </data>
+  <data name="txtCaveBordersTransparency.TabIndex" type="System.Int32, mscorlib">
+    <value>117</value>
+  </data>
+  <data name="txtCaveBordersTransparency.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtCaveBordersTransparency.Name" xml:space="preserve">
+    <value>txtCaveBordersTransparency</value>
+  </data>
+  <data name="&gt;&gt;txtCaveBordersTransparency.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCaveBordersTransparency.Parent" xml:space="preserve">
+    <value>pnlCaveBordersTransparency</value>
+  </data>
+  <data name="&gt;&gt;txtCaveBordersTransparency.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkExportUseCadastralIDInCaveNames.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkExportUseCadastralIDInCaveNames.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkExportUseCadastralIDInCaveNames.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 134</value>
+  </data>
+  <data name="chkExportUseCadastralIDInCaveNames.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 17</value>
+  </data>
+  <data name="chkExportUseCadastralIDInCaveNames.TabIndex" type="System.Int32, mscorlib">
+    <value>137</value>
+  </data>
+  <data name="chkExportUseCadastralIDInCaveNames.Text" xml:space="preserve">
+    <value>Use cadastral ID in cave names</value>
+  </data>
+  <data name="chkExportUseCadastralIDInCaveNames.ToolTip" xml:space="preserve">
+    <value>Use a dictionary to convert the names of the stations (to avoid problems of incompatibility with Therion)</value>
+  </data>
+  <data name="&gt;&gt;chkExportUseCadastralIDInCaveNames.Name" xml:space="preserve">
+    <value>chkExportUseCadastralIDInCaveNames</value>
+  </data>
+  <data name="&gt;&gt;chkExportUseCadastralIDInCaveNames.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkExportUseCadastralIDInCaveNames.Parent" xml:space="preserve">
+    <value>TabPage1</value>
+  </data>
+  <data name="&gt;&gt;chkExportUseCadastralIDInCaveNames.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="chkExportWaypoint.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="chkExportWaypoint.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
+    <value>6, 6</value>
   </data>
   <data name="chkExportWaypoint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 17</value>
+    <value>131, 17</value>
   </data>
   <data name="chkExportWaypoint.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -199,10 +256,10 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;chkExportWaypoint.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>TabPage1</value>
   </data>
   <data name="&gt;&gt;chkExportWaypoint.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="chkExportTrack.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -211,10 +268,10 @@
     <value>NoControl</value>
   </data>
   <data name="chkExportTrack.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 35</value>
+    <value>6, 29</value>
   </data>
   <data name="chkExportTrack.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 17</value>
+    <value>75, 17</value>
   </data>
   <data name="chkExportTrack.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -229,10 +286,10 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;chkExportTrack.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>TabPage1</value>
   </data>
   <data name="&gt;&gt;chkExportTrack.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
   </data>
   <data name="chkExportCaveBorders.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -241,10 +298,10 @@
     <value>NoControl</value>
   </data>
   <data name="chkExportCaveBorders.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 58</value>
+    <value>6, 52</value>
   </data>
   <data name="chkExportCaveBorders.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 17</value>
+    <value>91, 17</value>
   </data>
   <data name="chkExportCaveBorders.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -259,9 +316,198 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;chkExportCaveBorders.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>TabPage1</value>
   </data>
   <data name="&gt;&gt;chkExportCaveBorders.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="TabControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="lblCaveBordersTransparency.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblCaveBordersTransparency.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblCaveBordersTransparency.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 11</value>
+  </data>
+  <data name="lblCaveBordersTransparency.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 13</value>
+  </data>
+  <data name="lblCaveBordersTransparency.TabIndex" type="System.Int32, mscorlib">
+    <value>116</value>
+  </data>
+  <data name="lblCaveBordersTransparency.Text" xml:space="preserve">
+    <value>Transparency:</value>
+  </data>
+  <data name="lblCaveBordersTransparency.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lblCaveBordersTransparency.Name" xml:space="preserve">
+    <value>lblCaveBordersTransparency</value>
+  </data>
+  <data name="&gt;&gt;lblCaveBordersTransparency.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCaveBordersTransparency.Parent" xml:space="preserve">
+    <value>pnlCaveBordersTransparency</value>
+  </data>
+  <data name="&gt;&gt;lblCaveBordersTransparency.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pnlCaveBordersTransparency.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="pnlCaveBordersTransparency.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 43</value>
+  </data>
+  <data name="pnlCaveBordersTransparency.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 36</value>
+  </data>
+  <data name="pnlCaveBordersTransparency.TabIndex" type="System.Int32, mscorlib">
+    <value>136</value>
+  </data>
+  <data name="&gt;&gt;pnlCaveBordersTransparency.Name" xml:space="preserve">
+    <value>pnlCaveBordersTransparency</value>
+  </data>
+  <data name="&gt;&gt;pnlCaveBordersTransparency.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlCaveBordersTransparency.Parent" xml:space="preserve">
+    <value>TabPage1</value>
+  </data>
+  <data name="&gt;&gt;pnlCaveBordersTransparency.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkExportLinkedSurveys.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkExportLinkedSurveys.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkExportLinkedSurveys.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 96</value>
+  </data>
+  <data name="chkExportLinkedSurveys.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 17</value>
+  </data>
+  <data name="chkExportLinkedSurveys.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="chkExportLinkedSurveys.Text" xml:space="preserve">
+    <value>Linked surveys</value>
+  </data>
+  <data name="&gt;&gt;chkExportLinkedSurveys.Name" xml:space="preserve">
+    <value>chkExportLinkedSurveys</value>
+  </data>
+  <data name="&gt;&gt;chkExportLinkedSurveys.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkExportLinkedSurveys.Parent" xml:space="preserve">
+    <value>TabPage1</value>
+  </data>
+  <data name="&gt;&gt;chkExportLinkedSurveys.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="TabPage1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="TabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="TabPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>401, 203</value>
+  </data>
+  <data name="TabPage1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="TabPage1.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="&gt;&gt;TabPage1.Name" xml:space="preserve">
+    <value>TabPage1</value>
+  </data>
+  <data name="&gt;&gt;TabPage1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TabPage1.Parent" xml:space="preserve">
+    <value>TabControl1</value>
+  </data>
+  <data name="&gt;&gt;TabPage1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="linkedSurveys.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="linkedSurveys.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="linkedSurveys.Size" type="System.Drawing.Size, System.Drawing">
+    <value>395, 197</value>
+  </data>
+  <data name="linkedSurveys.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;linkedSurveys.Name" xml:space="preserve">
+    <value>linkedSurveys</value>
+  </data>
+  <data name="&gt;&gt;linkedSurveys.Type" xml:space="preserve">
+    <value>cSurveyPC.cLinkedSurveySelectorControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;linkedSurveys.Parent" xml:space="preserve">
+    <value>TabPage2</value>
+  </data>
+  <data name="&gt;&gt;linkedSurveys.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TabPage2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="TabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="TabPage2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>401, 203</value>
+  </data>
+  <data name="TabPage2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="TabPage2.Text" xml:space="preserve">
+    <value>Linked surveys</value>
+  </data>
+  <data name="&gt;&gt;TabPage2.Name" xml:space="preserve">
+    <value>TabPage2</value>
+  </data>
+  <data name="&gt;&gt;TabPage2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TabPage2.Parent" xml:space="preserve">
+    <value>TabControl1</value>
+  </data>
+  <data name="&gt;&gt;TabPage2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="TabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>409, 229</value>
+  </data>
+  <data name="TabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>169</value>
+  </data>
+  <data name="&gt;&gt;TabControl1.Name" xml:space="preserve">
+    <value>TabControl1</value>
+  </data>
+  <data name="&gt;&gt;TabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TabControl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;TabControl1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -271,7 +517,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>317, 198</value>
+    <value>433, 284</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
@@ -341,6 +587,9 @@
         AAAAAwAAAAcAAAAHAAAABwAAAAcAAAAHAAAADwAAAB8AAAA/AAA=
 </value>
   </data>
+  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
@@ -357,6 +606,6 @@
     <value>frmExportGoogleKML</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

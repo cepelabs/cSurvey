@@ -262,6 +262,22 @@ Module modWMSManager
         End Try
     End Function
 
+    Public Sub WMSClearCache(WMS As cSurvey.Surface.cWMS)
+        Call WMSCache.Clear()
+        If Not My.Computer.FileSystem.DirectoryExists(WMSCachePath) Then
+            Call My.Computer.FileSystem.CreateDirectory(WMSCachePath)
+        Else
+            For Each oFile As IO.FileInfo In My.Computer.FileSystem.GetDirectoryInfo(WMSCachePath).GetFiles()
+                If oFile.Name.StartsWith(WMS.ID) Then
+                    Try
+                        Call oFile.Delete()
+                    Catch ex As Exception
+                    End Try
+                End If
+            Next
+        End If
+    End Sub
+
     Public Sub WMSClearCache()
         Call WMSCache.Clear()
         If Not My.Computer.FileSystem.DirectoryExists(WMSCachePath) Then
@@ -283,14 +299,14 @@ Module modWMSManager
             Dim oFiles As IO.FileInfo() = My.Computer.FileSystem.GetDirectoryInfo(WMSCachePath).GetFiles()
             Dim lSize As Long = oFiles.Sum(Function(fileinfo) fileinfo.Length)
             If lSize > MaxSize Then
-                'elimino i file più vecchi fino ad arrivare alle dimensioni massime consentite...
+                'delete oldest file until size limit
                 For Each oFile As IO.FileInfo In oFiles.OrderBy(Function(fileinfo) fileinfo.LastWriteTime)
                     Dim lFileSize As Long
                     Try
                         lFileSize = oFile.Length
                         Call oFile.Delete()
                     Catch ex As Exception
-                        'nulla...ma non conto la dimensione del file...
+                        'nothing...file size ignored...
                     Finally
                         lSize -= lFileSize
                     End Try
@@ -335,7 +351,7 @@ Module modWMSManager
             Case Else
                 'use WGS84/UTM...
                 If UTM.Band >= "N" Then
-                    iSystem = 32600 + UTM.Zone
+                    iSystem = 32600 + 32 ' UTM.Zone
                 Else
                     iSystem = 32700 + UTM.Zone
                 End If
@@ -400,7 +416,6 @@ Module modWMSManager
                 Call oWMSLog(New cWMSLogArgs(EventLogEntryType.Warning, "WMS to offline: " & except.Message))
                 Call WMSSetState(WMSStateEnum.Offline)
             End Try
-
             'If My.Computer.Network.Ping("www.csurvey.it", 19000) Then
             '    Call WMSSetState(WMSStateEnum.Online)
             'Else
@@ -435,7 +450,7 @@ Module modWMSManager
             Dim sFilename As String = IO.Path.Combine(WMSCachePath, Filename & ".png")
             If My.Computer.FileSystem.FileExists(sFilename) Then
                 Try
-                    Dim oImage As Image = modPaint.BitmapFromFileUnlocked(sFilename) ' New Bitmap(sFilename)
+                    Dim oImage As Image = modPaint.SafeBitmapFromFileUnlocked(sFilename)
                     Call WMSCache.Add(Filename, oImage)
                     Return oImage
                 Catch ex1 As Exception
@@ -500,7 +515,7 @@ Module modWMSManager
             End If
             Dim sFilename As String = IO.Path.Combine(WMSCachePath, Filename & ".png")
             If My.Computer.FileSystem.FileExists(sFilename) Then
-                Dim oImage As Image = modPaint.BitmapFromFileUnlocked(sFilename) 'New Bitmap(sFilename)
+                Dim oImage As Image = modPaint.SafeBitmapFromFileUnlocked(sFilename)
                 Call WMSCache.Add(Filename, oImage)
                 Return oImage
             Else
@@ -511,19 +526,15 @@ Module modWMSManager
                         Dim oResult As cDownloadResult = pDownload(URL, sTempFilename)
                         If oResult.Result Then
                             Call My.Computer.FileSystem.MoveFile(sTempFilename, Filename, True)
-                            Dim oImage As Image = modPaint.BitmapFromFileUnlocked(Filename) 'New Bitmap(Filename)
+                            Dim oImage As Image = modPaint.SafeBitmapFromFileUnlocked(Filename)
                             Call WMSCache.Add(Filename, oImage)
                             Return oImage
                         Else
                             Call oWMSLog(New cWMSLogArgs(EventLogEntryType.Error, "WMS download tile error: " & oResult.Message))
-                            'iWMSErrorCount += 1
-                            'Call pCheckErrors()
                         End If
                         Call My.Computer.FileSystem.MoveFile(sTempFilename, Filename, True)
                     Catch ex As Exception
                         Call oWMSLog(New cWMSLogArgs(EventLogEntryType.Error, "WMS download tile error: " & ex.Message))
-                        'iWMSErrorCount += 1
-                        'Call pCheckErrors()
                         Return pGetOfflineImage()
                     End Try
                 Else
@@ -563,7 +574,12 @@ Module modWMSManager
                 Dim oXML As Xml.XmlDocument = New Xml.XmlDocument
                 Call oXML.Load(oResponse.GetResponseStream)
                 Return New cDownloadResult(False, oXML.DocumentElement.ChildNodes(0).InnerText)
-            ElseIf oResponse.ContentType.ToLower = "image/png" Then
+            ElseIf oResponse.ContentType.ToLower.StartsWith("image/png") Then
+                Using oFS As FileStream = File.OpenWrite(Filename)
+                    Call oResponse.GetResponseStream.CopyTo(oFS)
+                End Using
+                Return New cDownloadResult(True)
+            ElseIf oResponse.ContentType.ToLower.StartsWith("image/jpeg") Then
                 Using oFS As FileStream = File.OpenWrite(Filename)
                     Call oResponse.GetResponseStream.CopyTo(oFS)
                 End Using
@@ -610,62 +626,47 @@ Module modWMSManager
             Dim iIndex As Integer
             Dim iCount As Integer = oWMSTileToDownload.Count
             If iCount > 0 Then
-                'Using oWC As WebClient = New cWebClient(30000)
                 Do While oWMSTileToDownload.Count AndAlso Not e.Cancel
-                        Dim oItem As cWMSTileToDownload = oWMSTileToDownload(0)
-                        If (iIndex Mod 5) = 0 Then oWMSDownloadAsyncProgress.Invoke(New cWMSDownloadAsyncProgressArgs(iIndex / iCount, oItem.WMSName))
-                        Dim sTempFilename As String = My.Computer.FileSystem.GetTempFileName
-                        Try
-                            'due to some possibile parallelism (also with other cSurvey instance) I check if file exists...
-                            If Not My.Computer.FileSystem.FileExists(oItem.Filename) Then
-                                'Call oWC.DownloadFile(oItem.URL, sTempFilename)
-                                Dim oResult As cDownloadResult = pDownload(oItem.URL, sTempFilename)
-                                If oResult.Result Then
-                                    Call My.Computer.FileSystem.MoveFile(sTempFilename, oItem.Filename, True)
-                                    'this is a strange check but some time (when cancel and restart work) this have to be checked...
-                                    If Not WMSCache.ContainsKey(oItem.Filename) Then
-                                        Dim oImage As Image = modPaint.BitmapFromFileUnlocked(oItem.Filename) 'New Bitmap(oItem.Filename)
-                                        Call WMSCache.Add(oItem.Filename, oImage)
-                                    End If
-                                Else
-                                    Call oWMSLog(New cWMSLogArgs(EventLogEntryType.Error, "WMS download tile error: " & oResult.Message))
-                                    iWMSErrorCount += 1
-                                    Call pCheckErrors()
+                    Dim oItem As cWMSTileToDownload = oWMSTileToDownload(0)
+                    If (iIndex Mod 5) = 0 Then oWMSDownloadAsyncProgress.Invoke(New cWMSDownloadAsyncProgressArgs(iIndex / iCount, oItem.WMSName))
+                    Dim sTempFilename As String = My.Computer.FileSystem.GetTempFileName
+                    Try
+                        'due to some possibile parallelism (also with other cSurvey instance) I check if file exists...
+                        If Not My.Computer.FileSystem.FileExists(oItem.Filename) Then
+                            Dim oResult As cDownloadResult = pDownload(oItem.URL, sTempFilename)
+                            If oResult.Result Then
+                                Call My.Computer.FileSystem.MoveFile(sTempFilename, oItem.Filename, True)
+                                'this is a strange check but some time (when cancel and restart work) this have to be checked...
+                                If Not WMSCache.ContainsKey(oItem.Filename) Then
+                                    Dim oImage As Image = modPaint.SafeBitmapFromFileUnlocked(oItem.Filename)
+                                    Call WMSCache.Add(oItem.Filename, oImage)
                                 End If
+                            Else
+                                Call oWMSLog(New cWMSLogArgs(EventLogEntryType.Error, "WMS download tile error: " & oResult.Message))
+                                iWMSErrorCount += 1
+                                Call pCheckErrors()
                             End If
-                        Catch ex As Exception
-                            Call oWMSLog(New cWMSLogArgs(EventLogEntryType.Error, "WMS download tile error: " & ex.Message))
-                            iWMSErrorCount += 1
-                            Call pCheckErrors()
-                        End Try
-                        'Catch ex1 As Exception
-                        '    Call oWMSLog(New cWMSLogArgs(EventLogEntryType.Warning, "WMS download tile warning: " & ex1.Message))
-                        '    Try
-                        '        Dim sXML As String = My.Computer.FileSystem.ReadAllText(oItem.Filename)
-                        '        Call oWMSLog(New cWMSLogArgs(EventLogEntryType.Error, "WMS XML error: " & sXML))
-                        '        Call My.Computer.FileSystem.DeleteFile(oItem.Filename)
-                        '        iWMSErrorCount += 1
-                        '        Call pCheckErrors()
-                        '    Catch ex2 As Exception
-                        '        Call oWMSLog(New cWMSLogArgs(EventLogEntryType.Error, "WMS download tile error: " & ex2.Message))
-                        '    End Try
-                        'End Try
-                        If oWMSTileToDownload.Count Then Call oWMSTileToDownload.RemoveAt(0)
-
-                        If oBWWMSTileDownloader.CancellationPending Then
-                            e.Cancel = True
-                            Call oWMSTileToDownload.Clear()
                         End If
+                    Catch ex As Exception
+                        Call oWMSLog(New cWMSLogArgs(EventLogEntryType.Error, "WMS download tile error: " & ex.Message))
+                        iWMSErrorCount += 1
+                        Call pCheckErrors()
+                    End Try
+                    If oWMSTileToDownload.Count Then Call oWMSTileToDownload.RemoveAt(0)
 
-                        iIndex += 1
+                    If oBWWMSTileDownloader.CancellationPending Then
+                        e.Cancel = True
+                        Call oWMSTileToDownload.Clear()
+                    End If
 
-                        'verifico che l'insieme non sia cambiato...se si resetto il conteggio...
-                        If oWMSTileToDownload.Count <> iCount - iIndex Then
-                            iIndex = 0
-                            iCount = oWMSTileToDownload.Count
-                        End If
-                    Loop
-                'End Using
+                    iIndex += 1
+
+                    'verifico che l'insieme non sia cambiato...se si resetto il conteggio...
+                    If oWMSTileToDownload.Count <> iCount - iIndex Then
+                        iIndex = 0
+                        iCount = oWMSTileToDownload.Count
+                    End If
+                Loop
 
                 Call oWMSDownloadAsyncCompleted.Invoke(New cWMSDownloadAsyncCompletedArgs(e.Cancel))
                 Call oBWWMSTileDownloaderDoneEvent.Set()

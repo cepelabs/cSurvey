@@ -17,14 +17,14 @@ Public Class frmParametersDesign
         bDisabledEvent = True
 
         cboAdvancedClippingMode.SelectedIndex = oOptions.AdvancedClippingMode
-        chkDrawSolidRock.Checked = oOptions.DrawSolidRock
+        'chkDrawSolidRock.Checked = oOptions.DrawSolidRock
 
         bDisabledEvent = False
     End Sub
 
     Private Sub pSave()
         oOptions.AdvancedClippingMode = cboAdvancedClippingMode.SelectedIndex
-        oOptions.DrawSolidRock = chkDrawSolidRock.Checked
+        'oOptions.DrawSolidRock = chkDrawSolidRock.Checked
     End Sub
 
     Private Sub cmdOk_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdOk.Click

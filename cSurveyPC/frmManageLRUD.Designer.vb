@@ -55,6 +55,8 @@ Partial Class frmManageLRUD
         Me.txtMode2H = New System.Windows.Forms.NumericUpDown()
         Me.chkMode2OnlyCutSplay = New System.Windows.Forms.CheckBox()
         Me.chkMarkAsCalculated = New System.Windows.Forms.CheckBox()
+        Me.lblSplayMode = New System.Windows.Forms.Label()
+        Me.cboMode2Mode = New System.Windows.Forms.ComboBox()
         Me.frmRestore.SuspendLayout()
         Me.frmBackup.SuspendLayout()
         Me.frmMode1.SuspendLayout()
@@ -237,6 +239,8 @@ Partial Class frmManageLRUD
         '
         'frmMode2
         '
+        Me.frmMode2.Controls.Add(Me.lblSplayMode)
+        Me.frmMode2.Controls.Add(Me.cboMode2Mode)
         Me.frmMode2.Controls.Add(Me.Label26)
         Me.frmMode2.Controls.Add(Me.txtMode2V)
         Me.frmMode2.Controls.Add(Me.Label35)
@@ -283,6 +287,19 @@ Partial Class frmManageLRUD
         resources.ApplyResources(Me.chkMarkAsCalculated, "chkMarkAsCalculated")
         Me.chkMarkAsCalculated.Name = "chkMarkAsCalculated"
         Me.chkMarkAsCalculated.UseVisualStyleBackColor = True
+        '
+        'lblSplayMode
+        '
+        resources.ApplyResources(Me.lblSplayMode, "lblSplayMode")
+        Me.lblSplayMode.Name = "lblSplayMode"
+        '
+        'cboMode2Mode
+        '
+        Me.cboMode2Mode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboMode2Mode.FormattingEnabled = True
+        Me.cboMode2Mode.Items.AddRange(New Object() {resources.GetString("cboMode2Mode.Items")})
+        resources.ApplyResources(Me.cboMode2Mode, "cboMode2Mode")
+        Me.cboMode2Mode.Name = "cboMode2Mode"
         '
         'frmManageLRUD
         '
@@ -355,4 +372,6 @@ Partial Class frmManageLRUD
     Friend WithEvents chkMarkAsCalculated As CheckBox
     Friend WithEvents chkShotWithCalculatedLRUD As CheckBox
     Friend WithEvents chkShotWithLRUD As CheckBox
+    Friend WithEvents lblSplayMode As Label
+    Friend WithEvents cboMode2Mode As ComboBox
 End Class

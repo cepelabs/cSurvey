@@ -16,7 +16,7 @@ Namespace cSurvey.Design
         Property ScaleMode() As ScaleModeEnum
         Property Scale() As Integer
 
-        Property DrawSolidRock As Boolean
+        'Property DrawSolidRock As Boolean
 
         Enum AdvancedClippingModeEnum
             Standard = 0

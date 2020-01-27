@@ -7,6 +7,8 @@ Namespace cSurvey.Design.Items
     Public Class cItemSign
         Inherits cItem
         Implements cIItemSign
+        Implements cIItemRotable
+        Implements cIItemSizable
 
         Private oSurvey As cSurvey
 
@@ -15,8 +17,9 @@ Namespace cSurvey.Design.Items
         Private oDataBounds As RectangleF
 
         Private iSign As cIItemSign.SignEnum
-        Private iSignSize As cIItemSign.SignSizeEnum
-        Private iSignRotateMode As cIItemSign.SignRotateModeEnum
+        Private iSignSize As cIItemSizable.SizeEnum
+        Private iSignRotateMode As cIItemRotable.RotateModeEnum
+        Private iSignFlip As cIItemSign.SignFlipEnum
 
         Private sAngle As Single
 
@@ -162,7 +165,7 @@ Namespace cSurvey.Design.Items
 
         Public Overrides ReadOnly Property CanBeRotated As Boolean
             Get
-                Return iSignRotateMode = cIItemSign.SignRotateModeEnum.Rotable
+                Return iSignRotateMode = cIItemRotable.RotateModeEnum.Rotable
             End Get
         End Property
 
@@ -243,7 +246,7 @@ Namespace cSurvey.Design.Items
             Else
                 iSign = cIItemSign.SignEnum.Undefined
             End If
-            iSignRotateMode = Survey.Properties.DesignProperties.GetValue("DesignSignRotateMode", cIItemSign.SignRotateModeEnum.Rotable)
+            iSignRotateMode = Survey.Properties.DesignProperties.GetValue("DesignSignRotateMode", cIItemRotable.RotateModeEnum.Rotable)
             Call pLoadData()
             Call FixBound()
         End Sub
@@ -265,41 +268,56 @@ Namespace cSurvey.Design.Items
                 If .Invalidated Then
                     Call .Clear()
                     Using oPaths As cDrawPaths = oClipart.Clipart.ClonePaths
-                        'dimensiono la clipart
-                        Using oScaleMatrix As Matrix = New Matrix
-                            Dim sScale As Single = GetSignScaleFactor(PaintOptions)
-                            Call oScaleMatrix.Scale(sScale, sScale, MatrixOrder.Append)
-                            Call oPaths.Transform(oScaleMatrix)
-                        End Using
+                        'flip clipart
+                        Select Case iSignFlip
+                            Case cIItemSign.SignFlipEnum.None
+                            Case cIItemSign.SignFlipEnum.Vertical
+                                Using oFlipMatrix As Matrix = New Matrix
+                                    Call oFlipMatrix.Scale(1, -1)
+                                    Call oPaths.Transform(oFlipMatrix)
+                                End Using
+                            Case cIItemSign.SignFlipEnum.Horizontal
+                                Using oFlipMatrix As Matrix = New Matrix
+                                    Call oFlipMatrix.Scale(-1, 1)
+                                    Call oPaths.Transform(oFlipMatrix)
+                                End Using
+                            Case cIItemSign.SignFlipEnum.Both
+                                Using oFlipMatrix As Matrix = New Matrix
+                                    Call oFlipMatrix.Scale(-1, -1)
+                                    Call oPaths.Transform(oFlipMatrix)
+                                End Using
+                        End Select
 
-                        'sposto la clipart scalata nel punto di disegno
+                        'size clipart
+                        Dim sScale As Single = GetSignScaleFactor(PaintOptions)
+                        If sScale <> 1.0 Then
+                            Using oScaleMatrix As Matrix = New Matrix
+                                Call oScaleMatrix.Scale(sScale, sScale)
+                                Call oPaths.Transform(oScaleMatrix)
+                            End Using
+                        End If
+
+                        'move it to point
                         Dim oPathRect As RectangleF = oPaths.GetBounds
                         Dim oTranslatePoint As PointF = New PointF(MyBase.Points(0).Point.X - oPathRect.Width / 2, MyBase.Points(0).Point.Y - oPathRect.Height / 2)
-                        Using oTranslateMatrix As Matrix = New Matrix
-                            Call oTranslateMatrix.Translate(oTranslatePoint.X, oTranslatePoint.Y, MatrixOrder.Append)
-                            Call oPaths.Transform(oTranslateMatrix)
-                        End Using
+                        If Not oTranslatePoint.IsEmpty Then
+                            Using oTranslateMatrix As Matrix = New Matrix
+                                Call oTranslateMatrix.Translate(oTranslatePoint.X, oTranslatePoint.Y)
+                                Call oPaths.Transform(oTranslateMatrix)
+                            End Using
+                        End If
 
-                        'ruoto la clipart dell'angolo determinato da quanto sopra
-                        If iSignRotateMode = cIItemSign.SignRotateModeEnum.Rotable And sAngle <> 0 Then
+                        'and rotate
+                        If iSignRotateMode = cIItemRotable.RotateModeEnum.Rotable AndAlso sAngle <> 0.0 Then
                             Dim oPathMovedRect As RectangleF = oPaths.GetBounds
                             Dim oMovedCenterPoint As PointF = New PointF(oPathMovedRect.Left + oPathMovedRect.Width / 2, oPathMovedRect.Top + oPathMovedRect.Height / 2)
                             Using oRotateMatrix As Matrix = New Matrix
-                                Call oRotateMatrix.RotateAt(sAngle, oMovedCenterPoint, MatrixOrder.Append)
+                                Call oRotateMatrix.RotateAt(sAngle, oMovedCenterPoint)
                                 Call oPaths.Transform(oRotateMatrix)
                             End Using
                         End If
 
                         Call oPaths.Render(Me, Graphics, PaintOptions, Options, SelectionModeEnum.Selected, oCache)
-                        'For Each oDrawPath As cDrawPath In oPaths
-                        '    Using oPath As GraphicsPath = oDrawPath.Path
-                        '        Dim sFill As String = oDrawPath.GetStyle("fill", "none")
-                        '        If sFill <> "none" Then
-                        '            Call MyBase.Brush.Render(Graphics, PaintOptions, Options, Selected, oPath, oCache)
-                        '        End If
-                        '        Call MyBase.Pen.Render(Graphics, PaintOptions, Options, Selected, oPath, oCache)
-                        '    End Using
-                        'Next
                     End Using
                     Call .Rendered()
                 End If
@@ -340,21 +358,38 @@ Namespace cSurvey.Design.Items
             Call MyBase.New(Survey, Design, Layer, File, item)
             oSurvey = Survey
             Dim sData As String = modXML.GetAttributeValue(item, "data", "")
-            Dim iDataFormat As cIItemClipartBase.cClipartDataFormatEnum = modXML.GetAttributeValue(item, "dataformat", cIItemClipartBase.cClipartDataFormatEnum.SVGResource)
-            Select Case iDataFormat
-                Case cIItemClipartBase.cClipartDataFormatEnum.SVGFile
-                    oClipart = oSurvey.Signs.Cliparts.Add(sData)
-                Case cIItemClipartBase.cClipartDataFormatEnum.SVGData
-                    oClipart = oSurvey.Signs.Cliparts.Add("", sData)
-                Case cIItemClipartBase.cClipartDataFormatEnum.SVGResource
-                    oClipart = oSurvey.Signs.Cliparts(sData)
-            End Select
-            If IsNothing(oClipart) Then
-                oClipart = oSurvey.Signs.Cliparts.Add("", My.Resources.error_svg)
+            If sData <> "" Then
+                Dim iDataFormat As cIItemClipartBase.cClipartDataFormatEnum = modXML.GetAttributeValue(item, "dataformat", cIItemClipartBase.cClipartDataFormatEnum.SVGResource)
+                Select Case iDataFormat
+                    Case cIItemClipartBase.cClipartDataFormatEnum.SVGFile
+                        oClipart = oSurvey.Signs.Cliparts.Add(sData)
+                    Case cIItemClipartBase.cClipartDataFormatEnum.SVGData
+                        oClipart = oSurvey.Signs.Cliparts.Add("", sData)
+                    Case cIItemClipartBase.cClipartDataFormatEnum.SVGResource
+                        oClipart = oSurvey.Signs.Cliparts(sData)
+                End Select
             End If
             iSign = modXML.GetAttributeValue(item, "sign", Items.cIItemSign.SignEnum.Undefined)
-            iSignSize = modXML.GetAttributeValue(item, "signsize", Items.cIItemSign.SignSizeEnum.Default)
-            iSignRotateMode = modXML.GetAttributeValue(item, "signrotatemode", Items.cIItemSign.SignRotateModeEnum.Rotable)
+            If IsNothing(oClipart) Then
+                Dim iDataFormat As cIItemClipartBase.cClipartDataFormatEnum
+                Call Survey.RaiseOnGetDefaultSignFromGallery(iSign, sData, iDataFormat)
+                If sData <> "" Then
+                    Select Case iDataFormat
+                        Case cIItemClipartBase.cClipartDataFormatEnum.SVGFile
+                            oClipart = oSurvey.Signs.Cliparts.Add(sData)
+                        Case cIItemClipartBase.cClipartDataFormatEnum.SVGData
+                            oClipart = oSurvey.Signs.Cliparts.Add("", sData)
+                        Case cIItemClipartBase.cClipartDataFormatEnum.SVGResource
+                            oClipart = oSurvey.Signs.Cliparts(sData)
+                    End Select
+                End If
+                If IsNothing(oClipart) Then
+                    oClipart = oSurvey.Signs.Cliparts.Add("", My.Resources.error_svg)
+                End If
+            End If
+            iSignSize = modXML.GetAttributeValue(item, "signsize", Items.cIItemSizable.SizeEnum.Default)
+            iSignRotateMode = modXML.GetAttributeValue(item, "signrotatemode", Items.cIItemRotable.RotateModeEnum.Rotable)
+            iSignFlip = modXML.GetAttributeValue(item, "signflip", Items.cIItemSign.SignFlipEnum.None)
             Call pLoadData()
             sAngle = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "angle", 0))
             Call FixBound()
@@ -372,8 +407,9 @@ Namespace cSurvey.Design.Items
             If iSign <> cIItemSign.SignEnum.Undefined Then
                 Call oItem.SetAttribute("sign", iSign.ToString("D"))
             End If
-            If iSignSize <> cIItemSign.SignSizeEnum.Default Then Call oItem.SetAttribute("signsize", iSignSize.ToString("D"))
-            If iSignRotateMode <> cIItemSign.SignRotateModeEnum.Rotable Then Call oItem.SetAttribute("signrotatemode", iSignRotateMode.ToString("D"))
+            If iSignSize <> cIItemSizable.SizeEnum.Default Then Call oItem.SetAttribute("signsize", iSignSize.ToString("D"))
+            If iSignRotateMode <> cIItemRotable.RotateModeEnum.Rotable Then Call oItem.SetAttribute("signrotatemode", iSignRotateMode.ToString("D"))
+            If iSignFlip <> cIItemSign.SignFlipEnum.None Then Call oItem.SetAttribute("signflip", iSignFlip.ToString("D"))
             If sAngle <> 0 Then Call oItem.SetAttribute("angle", modNumbers.NumberToString(sAngle))
             Return oItem
         End Function
@@ -385,36 +421,42 @@ Namespace cSurvey.Design.Items
         Friend Overrides Function GetSignScaleFactor(PaintOptions As cOptions) As Single
             Dim sDesignSignScaleFactor As Single = MyBase.GetSignScaleFactor(PaintOptions)
             Select Case iSignSize
-                Case cIItemSign.SignSizeEnum.Default
+                Case cIItemSizable.SizeEnum.Default
                     Return 1 * sDesignSignScaleFactor
-                Case cIItemSign.SignSizeEnum.VerySmall
+                Case cIItemSizable.SizeEnum.VerySmall
                     Return 0.25 * sDesignSignScaleFactor
-                Case cIItemSign.SignSizeEnum.Small
+                Case cIItemSizable.SizeEnum.Small
                     Return 0.5 * sDesignSignScaleFactor
-                Case cIItemSign.SignSizeEnum.Medium
+                Case cIItemSizable.SizeEnum.Medium
                     Return 1 * sDesignSignScaleFactor
-                Case cIItemSign.SignSizeEnum.Large
+                Case cIItemSizable.SizeEnum.Large
                     Return 2 * sDesignSignScaleFactor
-                Case cIItemSign.SignSizeEnum.VeryLarge
+                Case cIItemSizable.SizeEnum.VeryLarge
                     Return 4 * sDesignSignScaleFactor
-                Case cIItemSign.SignSizeEnum.x6
+                Case cIItemSizable.SizeEnum.x6
                     Return 6 * sDesignSignScaleFactor
-                Case cIItemSign.SignSizeEnum.x8
+                Case cIItemSizable.SizeEnum.x8
                     Return 8 * sDesignSignScaleFactor
-                Case cIItemSign.SignSizeEnum.x10
+                Case cIItemSizable.SizeEnum.x10
                     Return 10 * sDesignSignScaleFactor
-                Case cIItemSign.SignSizeEnum.x12
+                Case cIItemSizable.SizeEnum.x12
                     Return 12 * sDesignSignScaleFactor
-                Case cIItemSign.SignSizeEnum.x16
+                Case cIItemSizable.SizeEnum.x16
                     Return 16 * sDesignSignScaleFactor
+                Case cIItemSizable.SizeEnum.x20
+                    Return 20 * sDesignSignScaleFactor
+                Case cIItemSizable.SizeEnum.x24
+                    Return 24 * sDesignSignScaleFactor
+                Case cIItemSizable.SizeEnum.x32
+                    Return 32 * sDesignSignScaleFactor
             End Select
         End Function
 
-        Public Property SignRotateMode() As cIItemSign.SignRotateModeEnum Implements cIItemSign.SignRotateMode
+        Public Property SignRotateMode() As cIItemRotable.RotateModeEnum Implements cIItemRotable.RotateMode ', cIItemSign.SignRotateMode
             Get
                 Return iSignRotateMode
             End Get
-            Set(ByVal value As cIItemSign.SignRotateModeEnum)
+            Set(ByVal value As cIItemRotable.RotateModeEnum)
                 If iSignRotateMode <> value Then
                     iSignRotateMode = value
                     Call MyBase.Caches.Invalidate()
@@ -422,11 +464,23 @@ Namespace cSurvey.Design.Items
             End Set
         End Property
 
-        Public Property SignSize() As cIItemSign.SignSizeEnum Implements cIItemSign.SignSize
+        Public Property SignFlip() As cIItemSign.SignFlipEnum Implements cIItemSign.SignFlip
+            Get
+                Return iSignFlip
+            End Get
+            Set(ByVal value As cIItemSign.SignFlipEnum)
+                If iSignFlip <> value Then
+                    iSignFlip = value
+                    Call MyBase.Caches.Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property SignSize() As cIItemSizable.SizeEnum Implements cIItemSizable.Size
             Get
                 Return iSignSize
             End Get
-            Set(ByVal value As cIItemSign.SignSizeEnum)
+            Set(ByVal value As cIItemSizable.SizeEnum)
                 If iSignSize <> value Then
                     iSignSize = value
                     Call MyBase.Caches.Invalidate()

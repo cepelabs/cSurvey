@@ -17,5 +17,7 @@
         Property North As NorthTypeEnum
         Property Year As Integer
 
+        Property HideNorthValue As Boolean
+
     End Interface
 End Namespace

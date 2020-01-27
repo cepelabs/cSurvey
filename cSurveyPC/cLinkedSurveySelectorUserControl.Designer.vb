@@ -52,6 +52,7 @@ Partial Class cLinkedSurveySelectorControl
         Me.tvLinkedSurveys.Cursor = System.Windows.Forms.Cursors.Default
         resources.ApplyResources(Me.tvLinkedSurveys, "tvLinkedSurveys")
         Me.tvLinkedSurveys.FullRowSelect = True
+        Me.tvLinkedSurveys.HideSelection = False
         Me.tvLinkedSurveys.Name = "tvLinkedSurveys"
         Me.tvLinkedSurveys.ShowGroups = False
         Me.tvLinkedSurveys.ShowImagesOnSubItems = True
@@ -81,9 +82,9 @@ Partial Class cLinkedSurveySelectorControl
         '
         'mnuContext
         '
+        resources.ApplyResources(Me.mnuContext, "mnuContext")
         Me.mnuContext.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuContextSelectAll, Me.mnuContextDeselectAll, Me.ToolStripMenuItem1, Me.mnuContextRefresh})
         Me.mnuContext.Name = "mnuContext"
-        resources.ApplyResources(Me.mnuContext, "mnuContext")
         '
         'mnuContextSelectAll
         '

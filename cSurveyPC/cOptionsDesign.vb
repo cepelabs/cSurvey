@@ -26,6 +26,7 @@ Namespace cSurvey.Design
             None = 2
         End Enum
 
+        Private iDrawPrintOrExportArea As cIOptionPrintAndExportArea.DesignStyleEnum
         Private bDrawPrintOrExportArea As Boolean
         Private iPrintOrExportProfileType As Integer
         Private iPrintOrExportProfileIndex As Integer
@@ -80,6 +81,15 @@ Namespace cSurvey.Design
         Public Sub SetPrintOrExportProfile(Value As cIProfile) Implements cIOptionPrintAndExportArea.SetPrintOrExportProfile
             oPrintOrExportProfile = Value
         End Sub
+
+        Public Property DrawPrintOrExportAreaDesignStyle As cIOptionPrintAndExportArea.DesignStyleEnum Implements cIOptionPrintAndExportArea.DrawPrintOrExportAreaDesignStyle
+            Get
+                Return iDrawPrintOrExportArea
+            End Get
+            Set(value As cIOptionPrintAndExportArea.DesignStyleEnum)
+                iDrawPrintOrExportArea = value
+            End Set
+        End Property
 
         Public Property DrawPrintOrExportArea As Boolean Implements cIOptionPrintAndExportArea.DrawPrintOrExportArea
             Get
@@ -138,6 +148,7 @@ Namespace cSurvey.Design
             Call oXMLOptions.SetAttribute("unselectedleveldrawingmode", iUnselectedLevelDrawingMode.ToString("D"))
             Call oXMLOptions.SetAttribute("splayeditmode", iSplayEditMode.ToString("D"))
             If bDrawPrintOrExportArea Then Call oXMLOptions.SetAttribute("printorexportarea", "1")
+            If iDrawPrintOrExportArea <> cIOptionPrintAndExportArea.DesignStyleEnum.None Then Call oXMLOptions.SetAttribute("peads", iDrawPrintOrExportArea.ToString("D"))
             If Not IsNothing(oPrintOrExportProfile) Then
                 If TypeOf oPrintOrExportProfile Is cPreviewProfile Then
                     Call oXMLOptions.SetAttribute("printorexportprofiletype", "0")
@@ -206,6 +217,7 @@ Namespace cSurvey.Design
             iUnselectedLevelDrawingMode = modXML.GetAttributeValue(Options, "unselectedleveldrawingmode", UnselectedLevelDrawingModeEnum.Wireframe)
             iSplayEditMode = modXML.GetAttributeValue(Options, "splayeditmode", SplayEditModeEnum.All)
             bDrawPrintOrExportArea = modXML.GetAttributeValue(Options, "printorexportarea", 0)
+            iDrawPrintOrExportArea = modXML.GetAttributeValue(Options, "peads", cIOptionPrintAndExportArea.DesignStyleEnum.None)
             iPrintOrExportProfileType = modXML.GetAttributeValue(Options, "printorexportprofiletype", -1)
             iPrintOrExportProfileIndex = modXML.GetAttributeValue(Options, "printorexportprofileindex", -1)
             '---------------------

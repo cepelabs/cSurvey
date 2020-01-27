@@ -10,25 +10,6 @@ Imports Diacritics.Extensions
 Imports BrightIdeasSoftware
 
 Module modExport
-    'Public Const dMeridianConvergence As Decimal = 1.669
-
-    'Public Function GetTherionDataDef(cSurvey As cSurveyPC.cSurvey.cSurvey, Optional Session As cSession = Nothing) As String
-    '    If Session Is Nothing Then
-    '        Select Case cSurvey.Properties.DataFormat
-    '            Case cSegment.DataFormatEnum.Normal
-    '                Return "data normal "
-    '            Case cSegment.DataFormatEnum.Cartesian
-    '                Return "data cartesian "
-    '        End Select
-    '    Else
-    '        Select Case Session.DataFormat
-    '            Case cSegment.DataFormatEnum.Normal
-    '                Return "data normal "
-    '            Case cSegment.DataFormatEnum.Cartesian
-    '                Return "data cartesian "
-    '        End Select
-    '    End If
-    'End Function
     Public Sub CreateStationDictionary(TrigPointsToElaborate As List(Of String), ByRef InputDictionary As Dictionary(Of String, String), ByRef OutputDictionary As Dictionary(Of String, String))
         '---------------------------------------------------------------------------------------------------------
         InputDictionary = New Dictionary(Of String, String)
@@ -144,13 +125,20 @@ Module modExport
     Public Sub GoogleKmlAppendPoligonStyle(ByVal XML As XmlDocument, ByVal parent As XmlElement, ByVal ID As String, ByVal BorderColor As String, ByVal BorderWidth As String, FillerColor As String)
         Dim xmlNode As XmlElement = XML.CreateElement("Style")
         xmlNode.SetAttribute("id", ID)
-        Dim xmlNodeStyle As XmlElement = XML.CreateElement("LineStyle")
-        Call GoogleKmlAppendNode(XML, xmlNodeStyle, "color", BorderColor)
-        Call GoogleKmlAppendNode(XML, xmlNodeStyle, "width", BorderWidth)
-        Call xmlNode.AppendChild(xmlNodeStyle)
-        xmlNodeStyle = XML.CreateElement("PolyStyle")
-        Call GoogleKmlAppendNode(XML, xmlNodeStyle, "color", FillerColor)
-        Call xmlNode.AppendChild(xmlNodeStyle)
+        If Not BorderColor Is Nothing Then
+            Dim xmlNodeStyle As XmlElement = XML.CreateElement("LineStyle")
+            Call GoogleKmlAppendNode(XML, xmlNodeStyle, "color", BorderColor)
+            Call GoogleKmlAppendNode(XML, xmlNodeStyle, "width", BorderWidth)
+            Call xmlNode.AppendChild(xmlNodeStyle)
+        End If
+        If Not FillerColor Is Nothing Then
+            Dim xmlNodeStyle As XmlElement = XML.CreateElement("PolyStyle")
+            Call GoogleKmlAppendNode(XML, xmlNodeStyle, "color", FillerColor)
+            If BorderColor Is Nothing Then
+                Call GoogleKmlAppendNode(XML, xmlNodeStyle, "outline", "0")
+            End If
+            Call xmlNode.AppendChild(xmlNodeStyle)
+        End If
         Call parent.AppendChild(xmlNode)
     End Sub
 
@@ -236,256 +224,335 @@ Module modExport
         Call xml.Save(Filename)
     End Sub
 
-    Public Sub GoogleKmlExportTo2(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, Optional Options As GoogleKMLExportOptionsEnum = GoogleKMLExportOptionsEnum.Track Or GoogleKMLExportOptionsEnum.Waypoint)
-        'Try
-        Dim oGPSBase As cTrigPoint = Survey.TrigPoints.GetGPSBaseReferencePoint
-        If oGPSBase Is Nothing Then
-            Call MsgBox(modMain.GetLocalizedString("export.warning1"), MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, modMain.GetLocalizedString("export.warningtitle"))
-        Else
-            'Dim dLat As Decimal = oOrigin.Coordinate.GetLatitude
-            'Dim dLong As Decimal = oOrigin.Coordinate.GetLongitude
-            'Dim sAlt As Decimal = oOrigin.Coordinate.GetAltitude
-            If oGPSBase.Coordinate.IsEmpty Then
-                Call MsgBox(modMain.GetLocalizedString("export.warning2"), MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, modMain.GetLocalizedString("export.warningtitle"))
-            Else
-                Dim xml As XmlDocument = New XmlDocument
-                Dim xmlRoot As XmlElement = xml.CreateElement("kml")
-                Dim xmlDocument As XmlElement = xml.CreateElement("Document")
-                Call modExport.GoogleKmlAppendNode(xml, xmlDocument, "name", Survey.Name)
+    Public Sub GoogleKmlAppendDocumentDetails(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Xml As XmlDocument, Parent As XmlElement, Options As GoogleKMLExportOptionsEnum, Optional BorderTransparency As Single = 0)
+        Dim bUseCadastralIDInCaveNames As Boolean = (Options And GoogleKMLExportOptionsEnum.UseCadastralIDInCaveNames) = GoogleKMLExportOptionsEnum.UseCadastralIDInCaveNames
 
-                Call modExport.GoogleKmlAppendIconStyle(xml, xmlDocument, "splay", "0.4", "http://maps.google.com/mapfiles/kml/pushpin/wht-pushpin.png", "0.4")
-                Call modExport.GoogleKmlAppendIconStyle(xml, xmlDocument, "station", "0.4", "http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png", "0.4")
-                Call modExport.GoogleKmlAppendIconStyle(xml, xmlDocument, "entrance", "0.5", "http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png", "0.5")
+        If (Options And GoogleKMLExportOptionsEnum.Waypoint) = GoogleKMLExportOptionsEnum.Waypoint Then
+            Dim xmlFolderStations As XmlElement = Xml.CreateElement("Folder")
+            Call GoogleKmlAppendNode(Xml, xmlFolderStations, "name", modMain.GetLocalizedString("export.textpart1"))
 
-                If (Options And GoogleKMLExportOptionsEnum.Waypoint) = GoogleKMLExportOptionsEnum.Waypoint Then
-                    Dim xmlFolderStations As XmlElement = xml.CreateElement("Folder")
-                    Call GoogleKmlAppendNode(xml, xmlFolderStations, "name", modMain.GetLocalizedString("export.textpart1"))
+            Dim xmlFolderStationsGeneric As XmlElement = Xml.CreateElement("Folder")
+            Call GoogleKmlAppendNode(Xml, xmlFolderStationsGeneric, "name", modMain.GetLocalizedString("export.textpart2"))
+            Call GoogleKmlAppendNode(Xml, xmlFolderStationsGeneric, "visibility", "0")
 
-                    Dim xmlFolderStationsGeneric As XmlElement = xml.CreateElement("Folder")
-                    Call GoogleKmlAppendNode(xml, xmlFolderStationsGeneric, "name", modMain.GetLocalizedString("export.textpart2"))
-                    Call GoogleKmlAppendNode(xml, xmlFolderStationsGeneric, "visibility", "0")
+            Dim xmlFolderStationsEntrances As XmlElement = Xml.CreateElement("Folder")
+            Call GoogleKmlAppendNode(Xml, xmlFolderStationsEntrances, "name", modMain.GetLocalizedString("export.textpart3"))
 
-                    Dim xmlFolderStationsEntrances As XmlElement = xml.CreateElement("Folder")
-                    Call GoogleKmlAppendNode(xml, xmlFolderStationsEntrances, "name", modMain.GetLocalizedString("export.textpart3"))
+            Dim xmlFolderStationsSplay As XmlElement = Xml.CreateElement("Folder")
+            Call GoogleKmlAppendNode(Xml, xmlFolderStationsSplay, "name", modMain.GetLocalizedString("export.textpart4"))
+            Call GoogleKmlAppendNode(Xml, xmlFolderStationsSplay, "visibility", "0")
 
-                    Dim xmlFolderStationsSplay As XmlElement = xml.CreateElement("Folder")
-                    Call GoogleKmlAppendNode(xml, xmlFolderStationsSplay, "name", modMain.GetLocalizedString("export.textpart4"))
-                    Call GoogleKmlAppendNode(xml, xmlFolderStationsSplay, "visibility", "0")
+            For Each oTrigpoint As cTrigPoint In Survey.Segments.GetTrigPoints
+                If Survey.Calculate.TrigPoints.Contains(oTrigpoint) Then
+                    If Not oTrigpoint.IsSystem Then
+                        Dim xmlPlacemark As XmlElement = Xml.CreateElement("Placemark")
+                        Call GoogleKmlAppendNode(Xml, xmlPlacemark, "name", oTrigpoint.Name)
+                        Call GoogleKmlAppendNode(Xml, xmlPlacemark, "visibility", "0")
 
-                    For Each oTrigpoint As cTrigPoint In Survey.Segments.GetTrigPoints
-                        If Survey.Calculate.TrigPoints.Contains(oTrigpoint) Then
-                            If Not oTrigpoint.IsSystem Then
-                                Dim xmlPlacemark As XmlElement = xml.CreateElement("Placemark")
-                                Call GoogleKmlAppendNode(xml, xmlPlacemark, "name", oTrigpoint.Name)
-                                Call GoogleKmlAppendNode(xml, xmlPlacemark, "visibility", "0")
+                        Dim xmlPoint As XmlElement = Xml.CreateElement("Point")
+                        Dim oPoint As Calculate.cTrigPoint = Survey.Calculate.TrigPoints(oTrigpoint)
+                        Dim sCoordinates As String = modNumbers.NumberToString(oPoint.Coordinate.Longitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oPoint.Coordinate.Latitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oPoint.Coordinate.Altitude, DefaultAltitudeFormat)
+                        Call GoogleKmlAppendNode(Xml, xmlPoint, "coordinates", sCoordinates)
+                        Call xmlPlacemark.AppendChild(xmlPoint)
 
-                                Dim xmlPoint As XmlElement = xml.CreateElement("Point")
-                                Dim oPoint As Calculate.cTrigPoint = Survey.Calculate.TrigPoints(oTrigpoint)
-                                Dim sCoordinates As String = modNumbers.NumberToString(oPoint.Coordinate.Longitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oPoint.Coordinate.Latitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oPoint.Coordinate.Altitude, DefaultAltitudeFormat)
-                                Call GoogleKmlAppendNode(xml, xmlPoint, "coordinates", sCoordinates)
-                                Call xmlPlacemark.AppendChild(xmlPoint)
+                        If oTrigpoint.Data.IsSplay Then
+                            Call GoogleKmlAppendNode(Xml, xmlPlacemark, "styleUrl", "#splay")
+                            Call xmlFolderStationsSplay.AppendChild(xmlPlacemark)
+                        Else
+                            If oTrigpoint.Entrance <> cTrigPoint.EntranceTypeEnum.None Then
+                                Call GoogleKmlAppendNode(Xml, xmlPlacemark, "styleUrl", "#entrance")
+                                Call xmlFolderStationsEntrances.AppendChild(xmlPlacemark)
+                            Else
+                                Call GoogleKmlAppendNode(Xml, xmlPlacemark, "styleUrl", "#station")
+                                Call xmlFolderStationsGeneric.AppendChild(xmlPlacemark)
+                            End If
+                        End If
+                    End If
+                End If
+            Next
+            Call xmlFolderStations.AppendChild(xmlFolderStationsGeneric)
+            Call xmlFolderStations.AppendChild(xmlFolderStationsEntrances)
+            Call xmlFolderStations.AppendChild(xmlFolderStationsSplay)
+            Call Parent.AppendChild(xmlFolderStations)
+        End If
 
-                                If oTrigpoint.Data.IsSplay Then
-                                    Call GoogleKmlAppendNode(xml, xmlPlacemark, "styleUrl", "#splay")
-                                    Call xmlFolderStationsSplay.AppendChild(xmlPlacemark)
-                                Else
-                                    If oTrigpoint.Entrance <> cTrigPoint.EntranceTypeEnum.None Then
-                                        Call GoogleKmlAppendNode(xml, xmlPlacemark, "styleUrl", "#entrance")
-                                        Call xmlFolderStationsEntrances.AppendChild(xmlPlacemark)
+        If (Options And GoogleKMLExportOptionsEnum.Track) = GoogleKMLExportOptionsEnum.Track Then
+            Dim xmlFolderCenterlines As XmlElement = Xml.CreateElement("Folder")
+            Call GoogleKmlAppendNode(Xml, xmlFolderCenterlines, "name", modMain.GetLocalizedString("export.textpart5"))
+
+            Dim xmlFolderCenterlinesGeneric As XmlElement = Xml.CreateElement("Folder")
+            Call GoogleKmlAppendNode(Xml, xmlFolderCenterlinesGeneric, "name", modMain.GetLocalizedString("export.textpart6"))
+            For Each oCave As cCaveInfo In Survey.Properties.CaveInfos.GetWithEmpty.Values
+                Dim xmlFolderCenterline As XmlElement = Xml.CreateElement("Folder")
+                Call GoogleKmlAppendNode(Xml, xmlFolderCenterline, "name", If(bUseCadastralIDInCaveNames AndAlso oCave.ID <> "", oCave.ID & " - ", "") & oCave.Name)
+                For Each oBranch As cCaveInfoBranch In oCave.Branches.GetAllBranchesWithEmpty.Values
+                    Dim oSegments As cISegmentCollection = oBranch.GetSegments(cOptions.HighlightModeEnum.ExactMatch)
+                    If oSegments.Count > 0 Then
+                        Dim oColor As Color = oBranch.GetColor(Color.White)
+                        Dim sMainLineStyle As String = "line_" & FormatCaveBranchName(oCave.Name, oBranch.Path)
+                        Call modExport.GoogleKmlAppendLineStyle(Xml, Parent, sMainLineStyle, pGetGoogleColor(oColor), 2)
+                        Dim xmlMainPlacemark As XmlElement = Xml.CreateElement("Placemark")
+                        Call GoogleKmlAppendNode(Xml, xmlMainPlacemark, "name", oCave.Name & cCaveInfoBranches.sBranchSeparator & oBranch.Path)
+                        Call GoogleKmlAppendNode(Xml, xmlMainPlacemark, "description", oBranch.Description)
+                        Call GoogleKmlAppendNode(Xml, xmlMainPlacemark, "styleUrl", "#" & sMainLineStyle)
+                        Dim xmlMainMultiGeometry As XmlElement = Xml.CreateElement("MultiGeometry")
+                        For Each oSegment As cSegment In oSegments
+                            If oSegment.IsValid AndAlso Not oSegment.Splay Then
+                                Dim xmlMainLineString As XmlElement = Xml.CreateElement("LineString")
+                                Call GoogleKmlAppendNode(Xml, xmlMainLineString, "tessellate", "1")
+                                Dim oFrom As Calculate.cTrigPoint = Survey.Calculate.TrigPoints(oSegment.From)
+                                Dim oTo As Calculate.cTrigPoint = Survey.Calculate.TrigPoints(oSegment.To)
+                                Dim sCoordinates As String = modNumbers.NumberToString(oFrom.Coordinate.Longitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oFrom.Coordinate.Latitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oFrom.Coordinate.Altitude, DefaultAltitudeFormat) & vbCrLf
+                                sCoordinates = sCoordinates & modNumbers.NumberToString(oTo.Coordinate.Longitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oTo.Coordinate.Latitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oTo.Coordinate.Altitude, DefaultAltitudeFormat) & vbCrLf
+                                Call GoogleKmlAppendNode(Xml, xmlMainLineString, "coordinates", sCoordinates)
+                                Call xmlMainMultiGeometry.AppendChild(xmlMainLineString)
+                            End If
+                        Next
+                        If xmlMainMultiGeometry.HasChildNodes Then xmlMainPlacemark.AppendChild(xmlMainMultiGeometry)
+                        Call xmlFolderCenterline.AppendChild(xmlMainPlacemark)
+                    End If
+                Next
+                Call xmlFolderCenterlinesGeneric.AppendChild(xmlFolderCenterline)
+            Next
+            Call xmlFolderCenterlines.AppendChild(xmlFolderCenterlinesGeneric)
+
+            Dim xmlFolderCenterlinesSplay As XmlElement = Xml.CreateElement("Folder")
+            Call GoogleKmlAppendNode(Xml, xmlFolderCenterlinesSplay, "name", modMain.GetLocalizedString("export.textpart4"))
+            For Each oCave As cCaveInfo In Survey.Properties.CaveInfos.GetWithEmpty.Values
+                Dim xmlFolderCenterline As XmlElement = Xml.CreateElement("Folder")
+                Call GoogleKmlAppendNode(Xml, xmlFolderCenterline, "name", If(bUseCadastralIDInCaveNames AndAlso oCave.ID <> "", oCave.ID & " - ", "") & oCave.Name)
+                For Each oBranch As cCaveInfoBranch In oCave.Branches.GetAllBranchesWithEmpty.Values
+                    Dim oSegments As cISegmentCollection = oBranch.GetSegments(cOptions.HighlightModeEnum.ExactMatch)
+                    If oSegments.Count > 0 Then
+                        Dim oColor As Color = oBranch.GetColor(Color.White)
+                        Dim sSplayLineStyle As String = "splay_" & FormatCaveBranchName(oCave.Name, oBranch.Path)
+                        Call modExport.GoogleKmlAppendLineStyle(Xml, Parent, sSplayLineStyle, pGetGoogleColor(Color.FromArgb(180, oColor)), 1)
+                        Dim xmlSplayPlacemark As XmlElement = Xml.CreateElement("Placemark")
+                        Call GoogleKmlAppendNode(Xml, xmlSplayPlacemark, "name", oCave.Name & cCaveInfoBranches.sBranchSeparator & oBranch.Path)
+                        Call GoogleKmlAppendNode(Xml, xmlSplayPlacemark, "description", oBranch.Description)
+                        Call GoogleKmlAppendNode(Xml, xmlSplayPlacemark, "styleUrl", "#" & sSplayLineStyle)
+                        If oSegments.Count > 0 Then
+                            Dim xmlSplayMultiGeometry As XmlElement = Xml.CreateElement("MultiGeometry")
+                            For Each oSegment As cSegment In oSegments
+                                If oSegment.IsValid AndAlso oSegment.Splay Then
+                                    Dim xmlSplayLineString As XmlElement = Xml.CreateElement("LineString")
+                                    Call GoogleKmlAppendNode(Xml, xmlSplayLineString, "tessellate", "1")
+                                    Dim oFrom As Calculate.cTrigPoint = Survey.Calculate.TrigPoints(oSegment.From)
+                                    Dim oTo As Calculate.cTrigPoint = Survey.Calculate.TrigPoints(oSegment.To)
+                                    Dim sCoordinates As String = modNumbers.NumberToString(oFrom.Coordinate.Longitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oFrom.Coordinate.Latitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oFrom.Coordinate.Altitude, DefaultAltitudeFormat) & vbCrLf
+                                    sCoordinates = sCoordinates & modNumbers.NumberToString(oTo.Coordinate.Longitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oTo.Coordinate.Latitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oTo.Coordinate.Altitude, DefaultAltitudeFormat) & vbCrLf
+                                    Call GoogleKmlAppendNode(Xml, xmlSplayLineString, "coordinates", sCoordinates)
+                                    Call xmlSplayMultiGeometry.AppendChild(xmlSplayLineString)
+                                End If
+                            Next
+                            If xmlSplayMultiGeometry.HasChildNodes Then Call xmlSplayPlacemark.AppendChild(xmlSplayMultiGeometry)
+                        End If
+                        Call xmlFolderCenterline.AppendChild(xmlSplayPlacemark)
+                    End If
+                Next
+                Call xmlFolderCenterlinesSplay.AppendChild(xmlFolderCenterline)
+            Next
+            Call xmlFolderCenterlines.AppendChild(xmlFolderCenterlinesSplay)
+            Call Parent.AppendChild(xmlFolderCenterlines)
+        End If
+
+        Dim oOrigin As cTrigPoint = Survey.TrigPoints.GetOrigin
+        Dim oUTMOrigin As modUTM.UTM = modUTM.WGS84ToUTM(Survey.Calculate.TrigPoints(oOrigin).Coordinate)
+        If (Options And GoogleKMLExportOptionsEnum.CaveBorders) = GoogleKMLExportOptionsEnum.CaveBorders Then
+            Dim xmlFolderBorders As XmlElement = Xml.CreateElement("Folder")
+            Call GoogleKmlAppendNode(Xml, xmlFolderBorders, "name", modMain.GetLocalizedString("export.textpart7"))
+
+            Dim oClipperBorder As Clipper = New Clipper
+            Dim oHoleClipperBorder As Clipper = New Clipper
+
+            Dim sMC As Single = Survey.Calculate.GeoMagDeclinationData.MeridianConvergenceRadians
+            For Each oCave As cCaveInfo In Survey.Properties.CaveInfos.GetWithEmpty.Values
+                Dim xmlFolderBorder As XmlElement = Xml.CreateElement("Folder")
+                Call GoogleKmlAppendNode(Xml, xmlFolderBorder, "name", If(bUseCadastralIDInCaveNames AndAlso oCave.ID <> "", oCave.ID & " - ", "") & oCave.Name)
+
+                Dim oColor As Color
+                For Each oBranch As cCaveInfoBranch In oCave.Branches.GetAllBranchesWithEmpty.Values
+                    oClipperBorder.Clear()
+                    oHoleClipperBorder.Clear()
+
+                    Dim oItems As List(Of cItem) = oBranch.GetItems(cIDesign.cDesignTypeEnum.Plan)
+                    Dim oBordersItems As List(Of cItem) = New List(Of cItem)
+                    Dim oHoleBordersItems As List(Of cItem) = New List(Of cItem)
+                    For Each oItem As cItem In oItems
+                        If Not oItem.Deleted Then
+                            If oItem.Type = Items.cIItem.cItemTypeEnum.InvertedFreeHandArea Then
+                                If oItem.BindDesignType = cItem.BindDesignTypeEnum.MainDesign Then
+                                    Dim oBorderItem As Items.cItemInvertedFreeHandArea = oItem
+                                    If oBorderItem.MergeMode = Items.cIItemMergeableArea.MergeModeEnum.Add Then
+                                        Call oBordersItems.Add(oBorderItem)
                                     Else
-                                        Call GoogleKmlAppendNode(xml, xmlPlacemark, "styleUrl", "#station")
-                                        Call xmlFolderStationsGeneric.AppendChild(xmlPlacemark)
+                                        Call oHoleBordersItems.Add(oBorderItem)
                                     End If
                                 End If
                             End If
                         End If
                     Next
-                    Call xmlFolderStations.AppendChild(xmlFolderStationsGeneric)
-                    Call xmlFolderStations.AppendChild(xmlFolderStationsEntrances)
-                    Call xmlFolderStations.AppendChild(xmlFolderStationsSplay)
-                    Call xmlDocument.AppendChild(xmlFolderStations)
-                End If
 
-                If (Options And GoogleKMLExportOptionsEnum.Track) = GoogleKMLExportOptionsEnum.Track Then
-                    Dim xmlFolderCenterlines As XmlElement = xml.CreateElement("Folder")
-                    Call GoogleKmlAppendNode(xml, xmlFolderCenterlines, "name", modMain.GetLocalizedString("export.textpart5"))
+                    If oBordersItems.Count > 0 Then
+                        oColor = oBranch.GetColor(Color.White)
+                        oColor = Color.FromArgb(255 - BorderTransparency, oColor)
+                        Dim sBorderStyle As String = "borders_" & FormatCaveBranchName(oCave.Name, oBranch.Path)
+                        Call modExport.GoogleKmlAppendPoligonStyle(Xml, Parent, sBorderStyle, Nothing, 0, pGetGoogleColor(oColor))
 
-                    Dim xmlFolderCenterlinesGeneric As XmlElement = xml.CreateElement("Folder")
-                    Call GoogleKmlAppendNode(xml, xmlFolderCenterlinesGeneric, "name", modMain.GetLocalizedString("export.textpart6"))
-                    For Each oCave As cCaveInfo In Survey.Properties.CaveInfos.GetWithEmpty.Values
-                        Dim xmlFolderCenterline As XmlElement = xml.CreateElement("Folder")
-                        Call GoogleKmlAppendNode(xml, xmlFolderCenterline, "name", oCave.Name)
-                        For Each oBranch As cCaveInfoBranch In oCave.Branches.GetAllBranchesWithEmpty.Values
-                            Dim oSegments As cISegmentCollection = oBranch.GetSegments(cOptions.HighlightModeEnum.ExactMatch)
-                            If oSegments.Count > 0 Then
-                                Dim oColor As Color = oBranch.GetColor(Color.White)
-                                Dim sMainLineStyle As String = "line_" & FormatCaveBranchName(oCave.Name, oBranch.Path)
-                                Call modExport.GoogleKmlAppendLineStyle(xml, xmlDocument, sMainLineStyle, pGetGoogleColor(oColor), 2)
-                                Dim xmlMainPlacemark As XmlElement = xml.CreateElement("Placemark")
-                                Call GoogleKmlAppendNode(xml, xmlMainPlacemark, "name", oCave.Name & cCaveInfoBranches.sBranchSeparator & oBranch.Path)
-                                Call GoogleKmlAppendNode(xml, xmlMainPlacemark, "description", oBranch.Description)
-                                Call GoogleKmlAppendNode(xml, xmlMainPlacemark, "styleUrl", "#" & sMainLineStyle)
-                                Dim xmlMainMultiGeometry As XmlElement = xml.CreateElement("MultiGeometry")
-                                For Each oSegment As cSegment In oSegments
-                                    If oSegment.IsValid AndAlso Not oSegment.Splay Then
-                                        Dim xmlMainLineString As XmlElement = xml.CreateElement("LineString")
-                                        Call GoogleKmlAppendNode(xml, xmlMainLineString, "tessellate", "1")
-                                        Dim oFrom As Calculate.cTrigPoint = Survey.Calculate.TrigPoints(oSegment.From)
-                                        Dim oTo As Calculate.cTrigPoint = Survey.Calculate.TrigPoints(oSegment.To)
-                                        Dim sCoordinates As String = modNumbers.NumberToString(oFrom.Coordinate.Longitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oFrom.Coordinate.Latitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oFrom.Coordinate.Altitude, DefaultAltitudeFormat) & vbCrLf
-                                        sCoordinates = sCoordinates & modNumbers.NumberToString(oTo.Coordinate.Longitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oTo.Coordinate.Latitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oTo.Coordinate.Altitude, DefaultAltitudeFormat) & vbCrLf
-                                        Call GoogleKmlAppendNode(xml, xmlMainLineString, "coordinates", sCoordinates)
-                                        Call xmlMainMultiGeometry.AppendChild(xmlMainLineString)
+                        Dim xmlPlacemark As XmlElement = Xml.CreateElement("Placemark")
+                        Call GoogleKmlAppendNode(Xml, xmlPlacemark, "name", oCave.Name & cCaveInfoBranches.sBranchSeparator & oBranch.Path)
+                        Call GoogleKmlAppendNode(Xml, xmlPlacemark, "description", oBranch.Description)
+                        Call GoogleKmlAppendNode(Xml, xmlPlacemark, "styleUrl", "#" & sBorderStyle)
+
+                        Dim xmlMultiGeometry As XmlElement = Xml.CreateElement("MultiGeometry")
+
+                        For Each oItem As Items.cItemInvertedFreeHandArea In oBordersItems
+                            Dim oPoints As List(Of PointF) = New List(Of PointF)
+                            If oItem.Points.Count > 1 Then
+                                For Each oSequence As cSequence In oItem.Points.GetSequences()
+                                    Dim oSequencePoints() As PointF = oSequence.GetPoints
+                                    If oSequencePoints.Length > 1 Then
+                                        Using oPath As GraphicsPath = New GraphicsPath
+                                            Select Case oSequence.GetLineType(oItem.LineType)
+                                                Case Items.cIItemLine.LineTypeEnum.Beziers
+                                                    Call modPaint.PointsToBeziers(oSequencePoints, oPath)
+                                                Case Items.cIItemLine.LineTypeEnum.Splines
+                                                    Call oPath.AddCurve(oSequencePoints, sDefaultSplineTension)
+                                                Case Else
+                                                    Call oPath.AddLines(oSequencePoints)
+                                            End Select
+                                            Call oPath.Flatten(Nothing, 0.01)
+                                            Call oPoints.AddRange(oPath.PathPoints)
+                                        End Using
                                     End If
                                 Next
-                                If xmlMainMultiGeometry.HasChildNodes Then xmlMainPlacemark.AppendChild(xmlMainMultiGeometry)
-                                Call xmlFolderCenterline.AppendChild(xmlMainPlacemark)
                             End If
+                            Call oClipperBorder.AddPath(modClipper.ToIntPolygon(oPoints, 100), PolyType.ptSubject, True)
                         Next
-                        Call xmlFolderCenterlinesGeneric.AppendChild(xmlFolderCenterline)
-                    Next
-                    Call xmlFolderCenterlines.AppendChild(xmlFolderCenterlinesGeneric)
 
-                    Dim xmlFolderCenterlinesSplay As XmlElement = xml.CreateElement("Folder")
-                    Call GoogleKmlAppendNode(xml, xmlFolderCenterlinesSplay, "name", modMain.GetLocalizedString("export.textpart4"))
-                    For Each oCave As cCaveInfo In Survey.Properties.CaveInfos.GetWithEmpty.Values
-                        Dim xmlFolderCenterline As XmlElement = xml.CreateElement("Folder")
-                        Call GoogleKmlAppendNode(xml, xmlFolderCenterline, "name", oCave.Name)
-                        For Each oBranch As cCaveInfoBranch In oCave.Branches.GetAllBranchesWithEmpty.Values
-                            Dim oSegments As cISegmentCollection = oBranch.GetSegments(cOptions.HighlightModeEnum.ExactMatch)
-                            If oSegments.Count > 0 Then
-                                Dim oColor As Color = oBranch.GetColor(Color.White)
-                                Dim sSplayLineStyle As String = "splay_" & FormatCaveBranchName(oCave.Name, oBranch.Path)
-                                Call modExport.GoogleKmlAppendLineStyle(xml, xmlDocument, sSplayLineStyle, pGetGoogleColor(Color.FromArgb(180, oColor)), 1)
-                                Dim xmlSplayPlacemark As XmlElement = xml.CreateElement("Placemark")
-                                Call GoogleKmlAppendNode(xml, xmlSplayPlacemark, "name", oCave.Name & cCaveInfoBranches.sBranchSeparator & oBranch.Path)
-                                Call GoogleKmlAppendNode(xml, xmlSplayPlacemark, "description", oBranch.Description)
-                                Call GoogleKmlAppendNode(xml, xmlSplayPlacemark, "styleUrl", "#" & sSplayLineStyle)
-                                If oSegments.Count > 0 Then
-                                    Dim xmlSplayMultiGeometry As XmlElement = xml.CreateElement("MultiGeometry")
-                                    For Each oSegment As cSegment In oSegments
-                                        If oSegment.IsValid AndAlso oSegment.Splay Then
-                                            Dim xmlSplayLineString As XmlElement = xml.CreateElement("LineString")
-                                            Call GoogleKmlAppendNode(xml, xmlSplayLineString, "tessellate", "1")
-                                            Dim oFrom As Calculate.cTrigPoint = Survey.Calculate.TrigPoints(oSegment.From)
-                                            Dim oTo As Calculate.cTrigPoint = Survey.Calculate.TrigPoints(oSegment.To)
-                                            Dim sCoordinates As String = modNumbers.NumberToString(oFrom.Coordinate.Longitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oFrom.Coordinate.Latitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oFrom.Coordinate.Altitude, DefaultAltitudeFormat) & vbCrLf
-                                            sCoordinates = sCoordinates & modNumbers.NumberToString(oTo.Coordinate.Longitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oTo.Coordinate.Latitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oTo.Coordinate.Altitude, DefaultAltitudeFormat) & vbCrLf
-                                            Call GoogleKmlAppendNode(xml, xmlSplayLineString, "coordinates", sCoordinates)
-                                            Call xmlSplayMultiGeometry.AppendChild(xmlSplayLineString)
-                                        End If
-                                    Next
-                                    If xmlSplayMultiGeometry.HasChildNodes Then Call xmlSplayPlacemark.AppendChild(xmlSplayMultiGeometry)
-                                End If
-                                Call xmlFolderCenterline.AppendChild(xmlSplayPlacemark)
-                            End If
-                        Next
-                        Call xmlFolderCenterlinesSplay.AppendChild(xmlFolderCenterline)
-                    Next
-                    Call xmlFolderCenterlines.AppendChild(xmlFolderCenterlinesSplay)
-                    Call xmlDocument.AppendChild(xmlFolderCenterlines)
-                End If
-
-                Dim oOrigin As cTrigPoint = Survey.TrigPoints.GetOrigin
-                Dim oUTMOrigin As modUTM.UTM = modUTM.WGS84ToUTM(Survey.Calculate.TrigPoints(oOrigin).Coordinate)
-                If (Options And GoogleKMLExportOptionsEnum.CaveBorders) = GoogleKMLExportOptionsEnum.CaveBorders Then
-                    Dim xmlFolderBorders As XmlElement = xml.CreateElement("Folder")
-                    Call GoogleKmlAppendNode(xml, xmlFolderBorders, "name", modMain.GetLocalizedString("export.textpart7"))
-                    For Each oCave As cCaveInfo In Survey.Properties.CaveInfos.GetWithEmpty.Values
-                        Dim xmlFolderBorder As XmlElement = xml.CreateElement("Folder")
-                        Call GoogleKmlAppendNode(xml, xmlFolderBorder, "name", oCave.Name)
-
-                        Dim oColor As Color
-                        For Each oBranch As cCaveInfoBranch In oCave.Branches.GetAllBranchesWithEmpty.Values
-                            Dim oItems As List(Of cItem) = oBranch.GetItems(cIDesign.cDesignTypeEnum.Plan)
-                            Dim oBordersItems As List(Of cItem) = New List(Of cItem)
-                            For Each oItem As cItem In oItems
-                                If Not oItem.Deleted Then
-                                    If oItem.Type = Items.cIItem.cItemTypeEnum.InvertedFreeHandArea Then
-                                        If oItem.BindDesignType = cItem.BindDesignTypeEnum.MainDesign Then
-                                            Dim oBorderItem As Items.cItemInvertedFreeHandArea = oItem
-                                            If oBorderItem.MergeMode = Items.cIItemMergeableArea.MergeModeEnum.Add Then
-                                                Call oBordersItems.Add(oBorderItem)
-                                            End If
-                                        End If
+                        For Each oItem As Items.cItemInvertedFreeHandArea In oHoleBordersItems
+                            Dim oPoints As List(Of PointF) = New List(Of PointF)
+                            If oItem.Points.Count > 1 Then
+                                For Each oSequence As cSequence In oItem.Points.GetSequences()
+                                    Dim oSequencePoints() As PointF = oSequence.GetPoints
+                                    If oSequencePoints.Length > 1 Then
+                                        Using oPath As GraphicsPath = New GraphicsPath
+                                            Select Case oSequence.GetLineType(oItem.LineType)
+                                                Case Items.cIItemLine.LineTypeEnum.Beziers
+                                                    Call modPaint.PointsToBeziers(oSequencePoints, oPath)
+                                                Case Items.cIItemLine.LineTypeEnum.Splines
+                                                    Call oPath.AddCurve(oSequencePoints, sDefaultSplineTension)
+                                                Case Else
+                                                    Call oPath.AddLines(oSequencePoints)
+                                            End Select
+                                            Call oPath.Flatten(Nothing, 0.01)
+                                            Call oPoints.AddRange(oPath.PathPoints)
+                                        End Using
                                     End If
-                                End If
+                                Next
+                            End If
+                            Call oHoleClipperBorder.AddPath(modClipper.ToIntPolygon(oPoints, 100), PolyType.ptSubject, True)
+                        Next
+
+                        Dim oResPoly As List(Of List(Of IntPoint)) = New List(Of List(Of IntPoint))
+                        oClipperBorder.Execute(ClipType.ctUnion, oResPoly, PolyFillType.pftNonZero, PolyFillType.pftNonZero)
+                        Dim oResPoints As List(Of List(Of PointF)) = modClipper.FromIntPolygonsToPointF(oResPoly, 100)
+
+                        Dim oHoleResPoly As List(Of List(Of IntPoint)) = New List(Of List(Of IntPoint))
+                        oHoleClipperBorder.Execute(ClipType.ctUnion, oHoleResPoly, PolyFillType.pftNonZero, PolyFillType.pftNonZero)
+                        Dim oHoleResPoints As List(Of List(Of PointF)) = modClipper.FromIntPolygonsToPointF(oHoleResPoly, 100)
+
+                        For Each oResSubpoints As List(Of PointF) In oResPoints
+                            Dim xmlPolygon As XmlElement = Xml.CreateElement("Polygon")
+                            Call GoogleKmlAppendNode(Xml, xmlPolygon, "tessellate", "1")
+                            Dim xmlouterBoundaryIs As XmlElement = Xml.CreateElement("outerBoundaryIs")
+
+                            Dim xmlLinearRing As XmlElement = Xml.CreateElement("LinearRing")
+
+                            Dim oCoordinates As System.Text.StringBuilder = New System.Text.StringBuilder
+                            For iPoint As Integer = 0 To oResSubpoints.Count - 1
+                                Dim oPoint As PointF = modPaint.RotatePointByRadians(oResSubpoints(iPoint), sMC)
+                                Dim oRefPoint As modUTM.UTM = New modUTM.UTM(oUTMOrigin)
+                                oRefPoint.East = oRefPoint.East + CDec(oPoint.X)
+                                oRefPoint.North = oRefPoint.North - CDec(oPoint.Y)
+                                Dim oRefPointWGS84 As modUTM.WGS84 = modUTM.UTMToWGS84(oRefPoint)
+                                Call oCoordinates.AppendLine(modNumbers.NumberToString(oRefPointWGS84.Longitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oRefPointWGS84.Latitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(0, DefaultAltitudeFormat))
                             Next
 
-                            If oBordersItems.Count > 0 Then
-                                Dim sMC As Single = Survey.Calculate.GeoMagDeclinationData.MeridianConvergenceRadians
+                            Call GoogleKmlAppendNode(Xml, xmlLinearRing, "coordinates", oCoordinates.ToString)
+                            Call xmlouterBoundaryIs.AppendChild(xmlLinearRing)
+                            Call xmlPolygon.AppendChild(xmlouterBoundaryIs)
 
-                                oColor = oBranch.GetColor(Color.White)
-                                oColor = Color.FromArgb(120, oColor)
-                                Dim sBorderStyle As String = "borders_" & FormatCaveBranchName(oCave.Name, oBranch.Path)
-                                Call modExport.GoogleKmlAppendPoligonStyle(xml, xmlDocument, sBorderStyle, pGetGoogleColor(oColor), 1, pGetGoogleColor(oColor))
-
-                                Dim xmlPlacemark As XmlElement = xml.CreateElement("Placemark")
-                                Call GoogleKmlAppendNode(xml, xmlPlacemark, "name", oCave.Name & cCaveInfoBranches.sBranchSeparator & oBranch.Path)
-                                Call GoogleKmlAppendNode(xml, xmlPlacemark, "description", oBranch.Description)
-                                Call GoogleKmlAppendNode(xml, xmlPlacemark, "styleUrl", "#" & sBorderStyle)
-
-                                Dim xmlPolygon As XmlElement = xml.CreateElement("Polygon")
-                                Call GoogleKmlAppendNode(xml, xmlPolygon, "tessellate", "1")
-                                Dim xmlouterBoundaryIs As XmlElement = xml.CreateElement("outerBoundaryIs")
-                                Using oSuperPath As GraphicsPath = New GraphicsPath
-                                    For Each oItem As Items.cItemInvertedFreeHandArea In oBordersItems
-                                        If oItem.Points.Count > 1 Then
-                                            For Each oSequence As cSequence In oItem.Points.GetSequences()
-                                                Dim oSequencePoints() As PointF = oSequence.GetPoints
-                                                If oSequencePoints.Length > 1 Then
-                                                    Using oPath As GraphicsPath = New GraphicsPath
-                                                        Select Case oSequence.GetLineType(oItem.LineType)
-                                                            Case Items.cIItemLine.LineTypeEnum.Beziers
-                                                                Call modPaint.PointsToBeziers(oSequencePoints, oPath)
-                                                            Case Items.cIItemLine.LineTypeEnum.Splines
-                                                                Call oPath.AddCurve(oSequencePoints, sDefaultSplineTension)
-                                                            Case Else
-                                                                Call oPath.AddLines(oSequencePoints)
-                                                        End Select
-                                                        Call oPath.Flatten(Nothing, 0.01)
-                                                        oSuperPath.AddPath(oPath, True)
-                                                    End Using
-                                                End If
-                                            Next
-                                        End If
-                                    Next
-                                    oSuperPath.CloseAllFigures()
-
-                                    Dim xmlLinearRing As XmlElement = xml.CreateElement("LinearRing")
-                                    Dim sCoordinates As String = ""
-                                    Dim oPoints As List(Of PointF) = New List(Of PointF)
-                                    For iPoint As Integer = 0 To oSuperPath.PointCount - 1
-                                        Call oPoints.Add(oSuperPath.PathPoints(iPoint))
-                                    Next
-                                    oPoints = oPoints.OrderBy(Function(point) Math.Atan2(point.X, point.Y)).ToList()
-
-                                    For iPoint As Integer = 0 To oPoints.Count - 1
-                                        Dim oPoint As PointF = modPaint.RotatePointByRadians(oPoints(iPoint), sMC)
+                            For Each oHoleResSubpoints As List(Of PointF) In oHoleResPoints
+                                If modPath.Contains(oResSubpoints, oHoleResSubpoints) Then
+                                    Dim xmlInnerBoundaryIs As XmlElement = Xml.CreateElement("innerBoundaryIs")
+                                    Dim xmlInnerLinearRing As XmlElement = Xml.CreateElement("LinearRing")
+                                    Dim oInnerCoordinates As System.Text.StringBuilder = New System.Text.StringBuilder
+                                    For iPoint As Integer = 0 To oHoleResSubpoints.Count - 1
+                                        Dim oPoint As PointF = modPaint.RotatePointByRadians(oHoleResSubpoints(iPoint), sMC)
                                         Dim oRefPoint As modUTM.UTM = New modUTM.UTM(oUTMOrigin)
                                         oRefPoint.East = oRefPoint.East + CDec(oPoint.X)
                                         oRefPoint.North = oRefPoint.North - CDec(oPoint.Y)
                                         Dim oRefPointWGS84 As modUTM.WGS84 = modUTM.UTMToWGS84(oRefPoint)
-                                        sCoordinates = sCoordinates & modNumbers.NumberToString(oRefPointWGS84.Longitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oRefPointWGS84.Latitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(0, DefaultAltitudeFormat) & vbCrLf
+                                        Call oInnerCoordinates.AppendLine(modNumbers.NumberToString(oRefPointWGS84.Longitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(oRefPointWGS84.Latitude, DefaultCoordinateFormat) & "," & modNumbers.NumberToString(0, DefaultAltitudeFormat))
                                     Next
-                                    Call GoogleKmlAppendNode(xml, xmlLinearRing, "coordinates", sCoordinates)
-                                    Call xmlouterBoundaryIs.AppendChild(xmlLinearRing)
-                                End Using
-                                Call xmlPolygon.AppendChild(xmlouterBoundaryIs)
-                                Call xmlPlacemark.AppendChild(xmlPolygon)
-                                Call xmlFolderBorder.AppendChild(xmlPlacemark)
-                            End If
-                        Next
-                        Call xmlFolderBorders.AppendChild(xmlFolderBorder)
-                    Next
-                    Call xmlDocument.AppendChild(xmlFolderBorders)
-                End If
+                                    Call GoogleKmlAppendNode(Xml, xmlInnerLinearRing, "coordinates", oInnerCoordinates.ToString)
+                                    Call xmlInnerBoundaryIs.AppendChild(xmlInnerLinearRing)
+                                    Call xmlPolygon.AppendChild(xmlInnerBoundaryIs)
+                                End If
+                            Next
 
-                Call xmlRoot.AppendChild(xmlDocument)
-                Call xml.AppendChild(xmlRoot)
-                Call XMLAddDeclaration(xml)
-                Call xml.Save(Filename)
+                            xmlMultiGeometry.AppendChild(xmlPolygon)
+                        Next
+
+                        Call xmlPlacemark.AppendChild(xmlMultiGeometry)
+                        Call xmlFolderBorder.AppendChild(xmlPlacemark)
+                    End If
+                Next
+                Call xmlFolderBorders.AppendChild(xmlFolderBorder)
+            Next
+            Call Parent.AppendChild(xmlFolderBorders)
+        End If
+
+    End Sub
+
+    Public Sub GoogleKmlExportTo2(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, Optional Options As GoogleKMLExportOptionsEnum = GoogleKMLExportOptionsEnum.Track Or GoogleKMLExportOptionsEnum.Waypoint, Optional BorderTransparency As Single = 0)
+        'Try
+        Dim oGPSBase As cTrigPoint = Survey.TrigPoints.GetGPSBaseReferencePoint
+        If Not Survey.Properties.GPS.Enabled OrElse oGPSBase Is Nothing OrElse oGPSBase.Coordinate.IsEmpty Then
+            Call MsgBox(modMain.GetLocalizedString("export.warning1"), MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, modMain.GetLocalizedString("export.warningtitle"))
+        Else
+            Dim xml As XmlDocument = New XmlDocument
+            Dim xmlRoot As XmlElement = xml.CreateElement("kml")
+
+            Dim xmlDocuments As XmlElement = xml.CreateElement("Folder")
+            Call GoogleKmlAppendNode(xml, xmlDocuments, "name", modMain.GetLocalizedString("export.textpart8"))
+            Call GoogleKmlAppendNode(xml, xmlDocuments, "visibility", "1")
+            Call GoogleKmlAppendNode(xml, xmlDocuments, "open", "1")
+
+            Dim oSurveys As List(Of cSurveyPC.cSurvey.cSurvey) = New List(Of cSurveyPC.cSurvey.cSurvey)
+            Call oSurveys.Add(Survey)
+            If (Options And GoogleKMLExportOptionsEnum.LinkedSurveys) = GoogleKMLExportOptionsEnum.LinkedSurveys Then
+                Call oSurveys.AddRange(Survey.LinkedSurveys.Select(Function(oItem) oItem.LinkedSurvey))
             End If
+
+            Dim bUseCadastralIDInCaveNames As Boolean = (Options And GoogleKMLExportOptionsEnum.UseCadastralIDInCaveNames) = GoogleKMLExportOptionsEnum.UseCadastralIDInCaveNames
+
+            For Each oSurvey As cSurveyPC.cSurvey.cSurvey In oSurveys
+                Dim xmlDocument As XmlElement = xml.CreateElement("Document")
+                Call modExport.GoogleKmlAppendNode(xml, xmlDocument, "name", If(bUseCadastralIDInCaveNames AndAlso oSurvey.Properties.ID <> "", oSurvey.Properties.ID & " - ", "") & oSurvey.Name)
+                If oSurvey.Properties.Description <> "" Then Call modExport.GoogleKmlAppendNode(xml, xmlDocument, "description", oSurvey.Properties.Description)
+                Call modExport.GoogleKmlAppendIconStyle(xml, xmlDocument, "splay", "0.4", "http://maps.google.com/mapfiles/kml/pushpin/wht-pushpin.png", "0.4")
+                Call modExport.GoogleKmlAppendIconStyle(xml, xmlDocument, "station", "0.4", "http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png", "0.4")
+                Call modExport.GoogleKmlAppendIconStyle(xml, xmlDocument, "entrance", "0.5", "http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png", "0.5")
+                Call GoogleKmlAppendDocumentDetails(oSurvey, xml, xmlDocument, Options, BorderTransparency)
+                Call xmlDocuments.AppendChild(xmlDocument)
+            Next
+            Call xmlRoot.AppendChild(xmlDocuments)
+
+            Call xml.AppendChild(xmlRoot)
+            Call XMLAddDeclaration(xml)
+            Call xml.Save(Filename)
         End If
     End Sub
 
@@ -525,10 +592,10 @@ Module modExport
         NewAlt = Alt + sAlt
     End Sub
 
-    Public Sub CalculateCoordinates(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Lat As Decimal, ByVal [Long] As Decimal, ByVal Distance As Decimal, ByVal Bearing As Decimal, ByRef [NewLat] As Decimal, ByRef [NewLong] As Decimal)
+    Public Sub CalculateCoordinates(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Lat As Decimal, ByVal [Lon] As Decimal, ByVal Distance As Decimal, ByVal Bearing As Decimal, ByRef [NewLat] As Decimal, ByRef [NewLong] As Decimal)
         'calcolo le coordinate del nuovo punto partendo da quelle del precedente...
         Dim dLat As Decimal = [Lat]
-        Dim dLong As Decimal = [Long]
+        Dim dLong As Decimal = [Lon]
 
         Dim dR As Decimal = 6378137 '6371.01 * 1000
         Dim dlat1 As Decimal = modPaint.DegreeToRadians(dLat)
@@ -547,6 +614,8 @@ Module modExport
         [Waypoint] = &H1
         [Track] = &H2
         CaveBorders = &H4
+        LinkedSurveys = &H8
+        UseCadastralIDInCaveNames = &H10
     End Enum
 
     <FlagsAttribute()> Public Enum VTopoExportOptionsEnum
@@ -1382,7 +1451,7 @@ Module modExport
                     oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = oSegment.Up
                     oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = oSegment.Down
 
-                    oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = If(oSegment.Direction = cSegment.DirectionEnum.Right, modMain.GetLocalizedString("main.textpart20a"), modMain.GetLocalizedString("main.textpart20b"))
+                    oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = If(oSegment.Direction = cSurvey.cSurvey.DirectionEnum.Right, modMain.GetLocalizedString("main.textpart20a"), If(oSegment.Direction = cSurvey.cSurvey.DirectionEnum.Left, modMain.GetLocalizedString("main.textpart20b"), modMain.GetLocalizedString("main.textpart20e")))
                     oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = If(oSegment.Exclude, "✔", "")
                     oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = If(oSegment.Splay, "✔", "")
                     oXLSSegment.Cells(r, pExcelNextColumn(c)).Value = If(oSegment.Surface, "✔", "")
@@ -2159,15 +2228,15 @@ Module modExport
         If Item.Type = Items.cIItem.cItemTypeEnum.Sign Then
             Dim sScale As String = ""
             Select Case DirectCast(Item, Items.cItemSign).SignSize
-                Case Items.cIItemSign.SignSizeEnum.VerySmall
+                Case Items.cIItemSizable.SizeEnum.VerySmall
                     sScale = "xs"
-                Case Items.cIItemSign.SignSizeEnum.Small
+                Case Items.cIItemSizable.SizeEnum.Small
                     sScale = "s"
-                Case Items.cIItemSign.SignSizeEnum.Medium, Items.cIItemSign.SignSizeEnum.Default
+                Case Items.cIItemSizable.SizeEnum.Medium, Items.cIItemSizable.SizeEnum.Default
                     sScale = "m"
-                Case Items.cIItemSign.SignSizeEnum.Large
+                Case Items.cIItemSizable.SizeEnum.Large
                     sScale = "l"
-                Case Else ' Items.cIItemSign.SignSizeEnum.VeryLarge
+                Case Else ' Items.ciItemSizable.sizeenum.VeryLarge
                     'da rivedere...mancano gli altri fattori di scala 'aggiuntivi'
                     sScale = "xl"
             End Select
@@ -2186,15 +2255,15 @@ Module modExport
             Dim oTextItem As Items.cItemText = Item
             Dim sScale As String
             Select Case oTextItem.TextSize
-                Case Items.cIItemText.TextSizeEnum.VerySmall
+                Case Items.cIItemSizable.SizeEnum.VerySmall
                     sScale = "xs"
-                Case Items.cIItemText.TextSizeEnum.Small
+                Case Items.cIItemSizable.SizeEnum.Small
                     sScale = "s"
-                Case Items.cIItemText.TextSizeEnum.Medium, Items.cIItemText.TextSizeEnum.Default
+                Case Items.cIItemSizable.SizeEnum.Medium, Items.cIItemSizable.SizeEnum.Default
                     sScale = "m"
-                Case Items.cIItemText.TextSizeEnum.Large
+                Case Items.cIItemSizable.SizeEnum.Large
                     sScale = "l"
-                Case Items.cIItemText.TextSizeEnum.VeryLarge
+                Case Items.cIItemSizable.SizeEnum.VeryLarge
                     sScale = "xl"
             End Select
             Return sScale
@@ -2462,6 +2531,7 @@ Module modExport
         Select Case Format
             Case FormatTextForEnum.Base
                 sText = UnAccent(Text)
+                sText = Web.HttpUtility.UrlEncode(Text)
                 sText = sText.Replace("(", "")
                 sText = sText.Replace(")", "")
                 sText = sText.Replace(".", "")
@@ -2574,7 +2644,7 @@ Module modExport
                     Call st.WriteLine("declination 0.00 deg")
                 Else
                     If oSession.DeclinationEnabled And oSession.NordType = cSegment.NordTypeEnum.Magnetic Then
-                        Call st.WriteLine("declination " & modText.FormatNumber(oSession.GetDeclination, "0.00") & " deg")
+                        Call st.WriteLine("declination " & modText.FormatNumber(oSession.GetDeclination.GetValueOrDefault, "0.00") & " deg")
                     End If
                 End If
 
@@ -2803,19 +2873,24 @@ Module modExport
                     Call St.WriteLine(Space(iIndent) & "vthreshold " & oSession.GetVThreshold & " deg")
 
                     If Survey.Properties.GPS.Enabled Then
-                        'se ho i dati geografici il nord viene sempre corretto...nel caso i dati siano geografici specifico una declinazione a 0
-                        'anche perché non ho capito come dire a therion come NON CORREGGERE i dati
+                        'with geo function north is always corrected
+                        'for geographic north and cartesian data I set declination to 0
                         If oSession.DataFormat = cSegment.DataFormatEnum.Cartesian Then
+                            'this may be redundant
                             Call St.WriteLine(Space(iIndent) & "declination 0.00 deg")
                         Else
                             If oSession.NordType = cSegment.NordTypeEnum.Geographic Then
                                 Call St.WriteLine(Space(iIndent) & "declination 0.00 deg")
                             Else
                                 If Survey.Properties.CalculateVersion < 2 Then
-                                    'nulla...ma era sbagliato...serve gestire la declinazione (o la data...ma non avendo una data...)
+                                    'nothing...was wrong...declination is mandatory (or date...but there was no date)
                                 Else
-                                    If oSession.Date = CDate(Nothing) AndAlso oSession.NordType = cSegment.NordTypeEnum.Magnetic Then
-                                        Call St.WriteLine(Space(iIndent) & "declination " & modText.FormatNumber(oSession.GetDeclination, "0.00") & " deg")
+                                    If oSession.Date = CDate(Nothing) Then
+                                        'this is a strange case...I don't remember when program go here
+                                        Call St.WriteLine(Space(iIndent) & "declination " & modText.FormatNumber(oSession.GetDeclination.GetValueOrDefault, "0.00") & " deg")
+                                    ElseIf Survey.Properties.GPS.AllowManualDeclinations AndAlso oSession.GetDeclination.HasValue Then
+                                        'if is magnetic nord and geofunction enable use manual declination if allowed
+                                        Call St.WriteLine(Space(iIndent) & "declination " & modText.FormatNumber(oSession.GetDeclination.GetValueOrDefault, "0.00") & " deg")
                                     End If
                                 End If
                             End If
@@ -2830,10 +2905,10 @@ Module modExport
                             If oSession.NordType = cSegment.NordTypeEnum.Magnetic Then
                                 'se ho una declinazione manuale la imposto...altrimenti dovrebbe prendere quella associata al tag 'survey'
                                 If oSession.DeclinationEnabled Then
-                                    Call St.WriteLine(Space(iIndent) & "declination " & modText.FormatNumber(oSession.GetDeclination, "0.00") & " deg")
+                                    Call St.WriteLine(Space(iIndent) & "declination " & modText.FormatNumber(oSession.GetDeclination.GetValueOrDefault, "0.00") & " deg")
                                 End If
                             Else
-                                'metto la declinazione 0 essendo nord geografico...anche qua sarebbe opportuno capire l'arcano
+                                'geographic north
                                 Call St.WriteLine(Space(iIndent) & "declination 0.00 deg")
                             End If
                         End If

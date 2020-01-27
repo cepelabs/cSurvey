@@ -8,6 +8,10 @@ Namespace cSurvey
         Private oSurvey As cSurvey
         Private oItems As Dictionary(Of cItem, Boolean)
 
+        Public Function Count() As Integer
+            Return oItems.Count
+        End Function
+
         Public Sub New(ByVal Survey As cSurvey)
             oSurvey = Survey
             oItems = New Dictionary(Of cItem, Boolean)

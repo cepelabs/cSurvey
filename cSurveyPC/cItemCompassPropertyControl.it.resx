@@ -117,14 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="Label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, -218</value>
+  </data>
+  <data name="Label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, -191</value>
+  </data>
+  <data name="Label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, -164</value>
+  </data>
+  <data name="lblCompassColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 13</value>
+  </data>
   <data name="lblCompassColor.Text" xml:space="preserve">
     <value>Colore:</value>
   </data>
   <data name="lblCompassClipartZoomFactor.Text" xml:space="preserve">
     <value>Scala:</value>
   </data>
-  <data name="lblCompassClipart.Text" xml:space="preserve">
-    <value>Clipart:</value>
+  <data name="lblCompassMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 150</value>
+  </data>
+  <data name="lblCompassMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 13</value>
   </data>
   <data name="lblCompassMode.Text" xml:space="preserve">
     <value>Modalità:</value>
@@ -135,16 +151,69 @@
   <data name="cboCompassMode.Items1" xml:space="preserve">
     <value>Manuale</value>
   </data>
+  <data name="cboCompassMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 147</value>
+  </data>
   <data name="cboCompassNorth.Items" xml:space="preserve">
     <value>Geografico</value>
   </data>
   <data name="cboCompassNorth.Items1" xml:space="preserve">
     <value>Magnetico</value>
   </data>
+  <data name="cboCompassNorth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 174</value>
+  </data>
+  <data name="lblCompassNorth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 177</value>
+  </data>
+  <data name="lblCompassNorth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 13</value>
+  </data>
   <data name="lblCompassNorth.Text" xml:space="preserve">
     <value>Nord:</value>
   </data>
+  <data name="lblCompassYear.Location" type="System.Drawing.Point, System.Drawing">
+    <value>226, 177</value>
+  </data>
+  <data name="lblCompassYear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 13</value>
+  </data>
   <data name="lblCompassYear.Text" xml:space="preserve">
     <value>Anno:</value>
+  </data>
+  <data name="txtCompassYear.Location" type="System.Drawing.Point, System.Drawing">
+    <value>265, 174</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="chkUseTextScaleOnClipart.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="chkUseTextScaleOnClipart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkUseTextScaleOnClipart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 17</value>
+  </data>
+  <data name="chkUseTextScaleOnClipart.Text" xml:space="preserve">
+    <value>Usa scala del testo sulla clipart</value>
+  </data>
+  <data name="chkUseClipartScaleOnText.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkUseClipartScaleOnText.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkUseClipartScaleOnText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 17</value>
+  </data>
+  <data name="chkUseClipartScaleOnText.Text" xml:space="preserve">
+    <value>Usa scala clipart sul testo</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>321, 204</value>
+  </data>
+  <data name="chkHideNorthValue.Text" xml:space="preserve">
+    <value>Nascondi valore</value>
   </data>
 </root>

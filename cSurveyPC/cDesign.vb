@@ -495,10 +495,15 @@ Namespace cSurvey.Design
         Friend Sub New(ByVal Survey As cSurvey, ByVal File As Storage.cFile, ByVal Design As XmlElement)
             oSurvey = Survey
             oCaches = New cDrawCaches
-            oLayers = New cLayers(oSurvey, Me, File, Design.Item("layers"))
-            If modXML.ChildElementExist(Design, "pointsjoins") Then
-                oPointsJoins = New cPointsJoins(oSurvey, Me, File, Design.Item("pointsjoins"))
+            If modXML.ChildElementExist(Design, "layers") Then
+                oLayers = New cLayers(oSurvey, Me, File, Design.Item("layers"))
+                If modXML.ChildElementExist(Design, "pointsjoins") Then
+                    oPointsJoins = New cPointsJoins(oSurvey, Me, File, Design.Item("pointsjoins"))
+                Else
+                    oPointsJoins = New cPointsJoins(oSurvey, Me)
+                End If
             Else
+                oLayers = New cLayers(oSurvey, Me)
                 oPointsJoins = New cPointsJoins(oSurvey, Me)
             End If
         End Sub
@@ -652,20 +657,6 @@ Namespace cSurvey.Design
                     Call oItem.Layer.Items.Remove(oItem)
                 Next
             End If
-
-            'If Me.Type = cIDesign.cDesignTypeEnum.Plan Then
-            '    If CleanUpFlags And CleanUpFlagsEnum.ConnectToCheck Then
-            '        iIndex = 0
-            '        iCount = oItems.Count
-            '        For Each oItem As cItem In oItems
-            '            iIndex += 1
-            '            If (iIndex Mod 10) = 0 Then Call oSurvey.RaiseOnProgressEvent("cleanup", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "Controllo associazione 'connetti a' per gli oggetti grafici...", iIndex / iCount)
-            '            If oItem.BindDesignType <> cItem.BindDesignTypeEnum.MainDesign Then
-            '                Call oItem.SetBindDesignType(cItem.BindDesignTypeEnum.MainDesign, Nothing, True)
-            '            End If
-            '        Next
-            '    End If
-            'End If
 
             If CleanUpFlags And CleanUpFlagsEnum.CaveBranchCheck Then
                 Dim bRaiseEvent As Boolean
@@ -950,6 +941,12 @@ Namespace cSurvey.Design
                 'e commissiono il disegno coppia per coppia
                 Dim bClippingDraw As Boolean
                 Dim oClippingColor As Color
+                Dim oTranslation As SizeF = PaintOptions.TranslationsOptions.OriginalPositionTranslation.GetSize
+                Dim oState As GraphicsState = Nothing
+                If Not oTranslation.IsEmpty Then
+                    oState = Graphics.Save
+                    Call Graphics.TranslateTransform(oTranslation.Width, oTranslation.Height, Drawing2D.MatrixOrder.Prepend)
+                End If
                 For Each oCaveBranchPlaceholder As cCaveBranchPlaceholder In DrawingOrder
                     Dim oClippingPath As GraphicsPath = oClippingPaths(oCaveBranchPlaceholder.Cave, oCaveBranchPlaceholder.Branch)
                     If Not oClippingPath Is Nothing Then
@@ -968,30 +965,29 @@ Namespace cSurvey.Design
                             If PaintOptions.TranslationsOptions.OriginalPositionColorGray Then
                                 oClippingColor = modPaint.GrayColor(oClippingColor)
                             End If
+                            'If PaintOptions.TranslationsOptions.OriginalPositionTransparency <> 0 Then
+                            '    oClippingColor = Color.FromArgb(255 * PaintOptions.TranslationsOptions.OriginalPositionTransparency, oClippingColor)
+                            'End If
                             Using oBrush As SolidBrush = New SolidBrush(Color.FromArgb(iOriginalPositionTransparencyThreshold, oClippingColor))
                                 Graphics.FillPath(oBrush, oClippingPath)
                             End Using
+
                         End If
                     End If
                 Next
+                If Not IsNothing(oState) Then
+                    Call Graphics.Restore(oState)
+                End If
             End Using
         End Sub
 
-        Public Overridable Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, Selection As Helper.Editor.cIEditDesignSelection)
+        Public Overridable Sub Paint(Graphics As Graphics, PaintOptions As cOptions, DrawOptions As cdrawoptions, Selection As Helper.Editor.cIEditDesignSelection)
             Try
                 Dim sOrigin As String = oSurvey.Properties.Origin
                 Dim bIsThisSurvey As Boolean = PaintOptions.Survey Is oSurvey
+                Dim bSchematic As Boolean = (DrawOptions.DrawOptions And cDrawOptions.cdrawoptionsenum.Schematic) = cDrawOptions.cdrawoptionsenum.Schematic
 
-                'Dim bPrintExportAreaPreview As Boolean = False
-                'If bIsThisSurvey AndAlso PaintOptions.IsDesign Then
-                '    Dim oDesignOptions As cOptionsDesign = PaintOptions
-                '    If oDesignOptions.DrawPrintOrExportArea Then
-                '        PaintOptions = oDesignOptions.GetPrintOrExportProfile(Me).Options
-                '        bPrintExportAreaPreview = True
-                '    End If
-                'End If
-
-                If bIsThisSurvey Then
+                If bIsThisSurvey AndAlso Not bSchematic Then
                     If Type = cIDesign.cDesignTypeEnum.Plan AndAlso sOrigin <> "" AndAlso oSurvey.Properties.GPS.Enabled AndAlso PaintOptions.SurfaceOptions.DrawSurface Then
                         Dim iBackupSmoothingMode As SmoothingMode = Graphics.SmoothingMode
                         Graphics.SmoothingMode = SmoothingMode.None
@@ -1049,7 +1045,7 @@ Namespace cSurvey.Design
                                                 Call Graphics.TranslateTransform(oMoveBy.Width, -oMoveBy.Height, MatrixOrder.Prepend)
                                             End If
                                             Try
-                                                Call oLinkedsurvey.LinkedSurvey.Plan.Paint(Graphics, PaintOptions, Selection)
+                                                Call oLinkedsurvey.LinkedSurvey.Plan.Paint(Graphics, PaintOptions, cDrawOptions.Empty, Selection)
                                             Catch ex As Exception
                                                 Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, ex.Message, True)
                                             End Try
@@ -1062,7 +1058,7 @@ Namespace cSurvey.Design
                                                 Call Graphics.TranslateTransform(oMoveBy.Width, -oMoveBy.Height, MatrixOrder.Prepend)
                                             End If
                                             Try
-                                                Call oLinkedsurvey.LinkedSurvey.Profile.Paint(Graphics, PaintOptions, Selection)
+                                                Call oLinkedsurvey.LinkedSurvey.Profile.Paint(Graphics, PaintOptions, cDrawOptions.Empty, Selection)
                                             Catch ex As Exception
                                                 Debug.Print("cDesign.Paint[" & oLinkedsurvey.Filename & "]>" & ex.Message)
                                                 Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, ex.Message, True)
@@ -1081,7 +1077,7 @@ Namespace cSurvey.Design
                 End If
 
                 If PaintOptions.DrawDesign Then
-                    'CREO UN ELENCO DELLE GROTTE/RAMI DA DISEGNARE...ordinato nel caso sia stata specificata l'opzione corrispondente
+                    'cave/branch to be designes...ordered if needed
                     Dim oDrawingOrder As List(Of cCaveBranchPlaceholder) = New List(Of cCaveBranchPlaceholder)
                     If Not PaintOptions.IsDesign Then
                         Call modCaveAndBranch.AppendCaves(oSurvey, oDrawingOrder)
@@ -1148,9 +1144,8 @@ Namespace cSurvey.Design
                     '----------------------------------------------------------------------
 
                     If PaintOptions.DesignStyle = cOptions.DesignStyleEnum.Design OrElse PaintOptions.DesignStyle = cOptions.DesignStyleEnum.Combined Then
-                        'DISEGNO VERO E PROPRIO
                         If PaintOptions.IsDesign Then
-                            'RENDERING PER EDITOR (SEMPLIFICATO E SENZA CLIPPING)
+                            'RENDERING for EDITOR (semplified and without clipping)
                             Dim oDesignOptions As cOptionsDesign = PaintOptions
                             Using oClippingRegions As cClippingRegions = New cClippingRegions(oSurvey)
                                 Dim bLayerBeforeCurrent As Boolean = True
@@ -1188,55 +1183,70 @@ Namespace cSurvey.Design
                                 Next
                             End Using
                         Else
-                            'RENDERING PER PREVIEW, EXPORT E VIEWER
-
-                            'DISEGNO LO SFONDO E GLI OGGETTI GRAFICI
-                            Dim oClippingPaths As cClippingPaths = GetCaveClippingPaths(Graphics, PaintOptions, ClippingPathsOptions.OnlyVisiblePen)
-                            Dim iBackgroundTransparencyThreshold = oSurvey.Properties.DesignProperties.GetValue("DesignBackgroundTransparencyThreshold", 0)
-                            Dim oBackcolor As Color = Color.White
-                            Using oBackbrush As SolidBrush = New SolidBrush(Color.FromArgb(iBackgroundTransparencyThreshold, oBackcolor))
-                                '0=trasparenza,255=opacità
+                            'RENDERING for PREVIEW, EXPORT E VIEWER
+                            'Backgrounds
+                            Using oClippingPaths As cClippingPaths = GetCaveClippingPaths(Graphics, PaintOptions, ClippingPathsOptions.OnlyVisiblePen)
+                                Dim iBackgroundTransparencyThreshold = oSurvey.Properties.DesignProperties.GetValue("DesignBackgroundTransparencyThreshold", 0)
+                                Dim oBackcolor As Color = Color.White
                                 If iBackgroundTransparencyThreshold > 0 Then
-                                    For Each oCaveBranchPlaceholder As cCaveBranchPlaceholder In oDrawingOrder
-                                        Dim oClippingPath As GraphicsPath = oClippingPaths(oCaveBranchPlaceholder.Cave, oCaveBranchPlaceholder.Branch)
-                                        If Not oClippingPath Is Nothing Then
-                                            Dim oState As GraphicsState = Graphics.Save
-                                            If PaintOptions.DrawTranslation Then
-                                                Dim oTranslation As SizeF = GetTranslation(oCaveBranchPlaceholder.Cave, oCaveBranchPlaceholder.Branch)
-                                                If Not oTranslation.IsEmpty Then
-                                                    Call Graphics.TranslateTransform(oTranslation.Width, oTranslation.Height, Drawing2D.MatrixOrder.Prepend)
+                                    Using oBackbrush As SolidBrush = New SolidBrush(Color.FromArgb(iBackgroundTransparencyThreshold, oBackcolor))
+                                        For Each oCaveBranchPlaceholder As cCaveBranchPlaceholder In oDrawingOrder
+                                            Dim oClippingPath As GraphicsPath = oClippingPaths(oCaveBranchPlaceholder.Cave, oCaveBranchPlaceholder.Branch)
+                                            If Not oClippingPath Is Nothing Then
+                                                Dim oState As GraphicsState = Graphics.Save
+                                                If PaintOptions.DrawTranslation Then
+                                                    Dim oTranslation As SizeF = GetTranslation(oCaveBranchPlaceholder.Cave, oCaveBranchPlaceholder.Branch)
+                                                    If Not oTranslation.IsEmpty Then
+                                                        Call Graphics.TranslateTransform(oTranslation.Width, oTranslation.Height, Drawing2D.MatrixOrder.Prepend)
+                                                    End If
                                                 End If
+                                                Call Graphics.FillPath(oBackbrush, oClippingPath)
+                                                Call Graphics.Restore(oState)
                                             End If
-                                            Call Graphics.FillPath(oBackbrush, oClippingPath)
-                                            Call Graphics.Restore(oState)
-                                        End If
-                                    Next
+                                        Next
+                                    End Using
                                 End If
                             End Using
 
-                            Using oClippingRegions As cClippingRegions = GetCaveClippingRegions(Graphics, PaintOptions)
-                                'attivo il filtro per grotta/ramo (non attivo nelle opzioni di stampa/esportazione)
-                                'e commissiono il disegno coppia per coppia
-                                PaintOptions.HighlightCurrentCave = True
-                                PaintOptions.HighlightMode = cOptions.HighlightModeEnum.ExactMatch
-                                Dim iIndex As Integer = 0
-                                Dim iCount As Integer = oDrawingOrder.Count
-                                Call oSurvey.RaiseOnProgressEvent("paint.design", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, "Rendering...", 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
-                                For Each oCaveBranchPlaceholder As cCaveBranchPlaceholder In oDrawingOrder
-                                    Call oSurvey.RaiseOnProgressEvent("", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "Rendering " & oCaveBranchPlaceholder.Cave & " " & oCaveBranchPlaceholder.Branch, iIndex / iCount, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
-                                    For Each oLayer As cLayer In oLayers
-                                        Call oLayer.Paint(Graphics, PaintOptions, cItem.PaintOptionsEnum.Solid, oClippingRegions, New Helper.Editor.cEditDesignSelection(Selection, oCaveBranchPlaceholder.Cave, oCaveBranchPlaceholder.Branch))
+                            If bSchematic Then
+                                Using oClippingRegions As cClippingRegions = GetCaveClippingRegions(Graphics, PaintOptions)
+                                    'attivo il filtro per grotta/ramo (non attivo nelle opzioni di stampa/esportazione)
+                                    'e commissiono il disegno coppia per coppia
+                                    PaintOptions.HighlightCurrentCave = True
+                                    PaintOptions.HighlightMode = cOptions.HighlightModeEnum.ExactMatch
+                                    For Each oCaveBranchPlaceholder As cCaveBranchPlaceholder In oDrawingOrder
+                                        For Each oLayer As cLayer In oLayers
+                                            Call oLayer.Paint(Graphics, PaintOptions, cItem.PaintOptionsEnum.Wireframe, oClippingRegions, New Helper.Editor.cEditDesignSelection(Selection, oCaveBranchPlaceholder.Cave, oCaveBranchPlaceholder.Branch))
+                                        Next
                                     Next
-                                    iIndex += 1
-                                Next
-                                Call oSurvey.RaiseOnProgressEvent("paint.design", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
-                                PaintOptions.HighlightCurrentCave = False
-                                PaintOptions.HighlightMode = cOptions.HighlightModeEnum.Default
-                            End Using
+                                    PaintOptions.HighlightCurrentCave = False
+                                    PaintOptions.HighlightMode = cOptions.HighlightModeEnum.Default
+                                End Using
+                            Else
+                                Using oClippingRegions As cClippingRegions = GetCaveClippingRegions(Graphics, PaintOptions)
+                                    'attivo il filtro per grotta/ramo (non attivo nelle opzioni di stampa/esportazione)
+                                    'e commissiono il disegno coppia per coppia
+                                    PaintOptions.HighlightCurrentCave = True
+                                    PaintOptions.HighlightMode = cOptions.HighlightModeEnum.ExactMatch
+                                    Dim iIndex As Integer = 0
+                                    Dim iCount As Integer = oDrawingOrder.Count
+                                    Call oSurvey.RaiseOnProgressEvent("paint.design", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, "Rendering...", 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
+                                    For Each oCaveBranchPlaceholder As cCaveBranchPlaceholder In oDrawingOrder
+                                        Call oSurvey.RaiseOnProgressEvent("", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "Rendering " & oCaveBranchPlaceholder.Cave & " " & oCaveBranchPlaceholder.Branch, iIndex / iCount, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
+                                        For Each oLayer As cLayer In oLayers
+                                            Call oLayer.Paint(Graphics, PaintOptions, cItem.PaintOptionsEnum.Solid, oClippingRegions, New Helper.Editor.cEditDesignSelection(Selection, oCaveBranchPlaceholder.Cave, oCaveBranchPlaceholder.Branch))
+                                        Next
+                                        iIndex += 1
+                                    Next
+                                    Call oSurvey.RaiseOnProgressEvent("paint.design", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
+                                    PaintOptions.HighlightCurrentCave = False
+                                    PaintOptions.HighlightMode = cOptions.HighlightModeEnum.Default
+                                End Using
+                            End If
                         End If
                     End If
 
-                    'DISEGNO PER AREE O COMBINATO
+                    'area or combined design
                     Dim iCombinedAreaTransparencyThreshold As Integer
                     If PaintOptions.IsDesign Then
                         iCombinedAreaTransparencyThreshold = oSurvey.Properties.DesignProperties.GetValue("DesignEditCombinedAreaTransparencyThreshold", 120)
@@ -1245,51 +1255,52 @@ Namespace cSurvey.Design
                     End If
                     If PaintOptions.DesignStyle = cOptions.DesignStyleEnum.Areas OrElse (PaintOptions.DesignStyle = cOptions.DesignStyleEnum.Combined AndAlso iCombinedAreaTransparencyThreshold > 0) Then
                         If PaintOptions.IsDesign Then
-                            'RENDERING PER EDITOR (SEMPLIFICATO...o quasi)
                             Dim oBordersLayer As cSurveyPC.cSurvey.Design.Layers.cLayerBorders = oLayers(cLayers.LayerTypeEnum.Borders)
                             For Each oItem As cItem In oBordersLayer.Items
                                 If oItem.Type = cIItem.cItemTypeEnum.InvertedFreeHandArea Then
                                     If oItem.Points.Count > 1 Then
-                                        Dim oBorderItem As Design.Items.cItemInvertedFreeHandArea = oItem
-                                        Dim oColor As Color
-                                        Select Case PaintOptions.CombineColorMode
-                                            Case cOptions.CombineColorModeEnum.CavesAndBranches
-                                                oColor = oSurvey.Properties.CaveInfos.GetColor(oBorderItem.Cave, oBorderItem.Branch, Color.LightGray)
-                                            Case cOptions.CombineColorModeEnum.OnlyCaves
-                                                oColor = oSurvey.Properties.CaveInfos.GetColor(oBorderItem.Cave, "", Color.LightGray)
-                                            Case cOptions.CombineColorModeEnum.ExtendStart
-                                                oColor = oSurvey.Properties.CaveInfos.GetOriginColor(oBorderItem.Cave, oBorderItem.Branch, Color.LightGray)
-                                        End Select
-                                        If PaintOptions.CombineColorGray Then
-                                            oColor = modPaint.GrayColor(oColor)
-                                        End If
+                                        If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) Then
+                                            Dim oBorderItem As Design.Items.cItemInvertedFreeHandArea = oItem
+                                            Dim oColor As Color
+                                            Select Case PaintOptions.CombineColorMode
+                                                Case cOptions.CombineColorModeEnum.CavesAndBranches
+                                                    oColor = oSurvey.Properties.CaveInfos.GetColor(oBorderItem.Cave, oBorderItem.Branch, Color.LightGray)
+                                                Case cOptions.CombineColorModeEnum.OnlyCaves
+                                                    oColor = oSurvey.Properties.CaveInfos.GetColor(oBorderItem.Cave, "", Color.LightGray)
+                                                Case cOptions.CombineColorModeEnum.ExtendStart
+                                                    oColor = oSurvey.Properties.CaveInfos.GetOriginColor(oBorderItem.Cave, oBorderItem.Branch, Color.LightGray)
+                                            End Select
+                                            If PaintOptions.CombineColorGray Then
+                                                oColor = modPaint.GrayColor(oColor)
+                                            End If
 
-                                        Using oBrush As SolidBrush = If(PaintOptions.DesignStyle = cOptions.DesignStyleEnum.Combined, New SolidBrush(Color.FromArgb(iCombinedAreaTransparencyThreshold, oColor)), New SolidBrush(oColor))
-                                            Dim oLastPoint As PointF
-                                            Dim oSequences As List(Of cSequence) = oItem.Points.GetSequences
-                                            Using oBorderPath As GraphicsPath = New GraphicsPath
-                                                oBorderPath.FillMode = FillMode.Winding
-                                                For Each oSequence As cSequence In oSequences
-                                                    Dim oSequencePoints() As PointF = oSequence.GetPoints
-                                                    If oSequencePoints.Length > 0 Then
-                                                        If Not oLastPoint.IsEmpty Then
-                                                            Call oBorderPath.AddLine(oLastPoint, oSequencePoints(0))
+                                            Using oBrush As SolidBrush = If(PaintOptions.DesignStyle = cOptions.DesignStyleEnum.Combined, New SolidBrush(Color.FromArgb(iCombinedAreaTransparencyThreshold, oColor)), New SolidBrush(oColor))
+                                                Dim oLastPoint As PointF
+                                                Dim oSequences As List(Of cSequence) = oItem.Points.GetSequences
+                                                Using oBorderPath As GraphicsPath = New GraphicsPath
+                                                    oBorderPath.FillMode = FillMode.Winding
+                                                    For Each oSequence As cSequence In oSequences
+                                                        Dim oSequencePoints() As PointF = oSequence.GetPoints
+                                                        If oSequencePoints.Length > 0 Then
+                                                            If Not oLastPoint.IsEmpty Then
+                                                                Call oBorderPath.AddLine(oLastPoint, oSequencePoints(0))
+                                                            End If
+                                                            If oSequencePoints.Length > 1 Then
+                                                                Select Case oSequence.GetLineType(oBorderItem.LineType)
+                                                                    Case Items.cIItemLine.LineTypeEnum.Beziers
+                                                                        Call modPaint.PointsToBeziers(oSequencePoints, oBorderPath)
+                                                                    Case Items.cIItemLine.LineTypeEnum.Splines
+                                                                        Call oBorderPath.AddCurve(oSequencePoints, sDefaultSplineTension)
+                                                                    Case Else
+                                                                        Call oBorderPath.AddLines(oSequencePoints)
+                                                                End Select
+                                                            End If
                                                         End If
-                                                        If oSequencePoints.Length > 1 Then
-                                                            Select Case oSequence.GetLineType(oBorderItem.LineType)
-                                                                Case Items.cIItemLine.LineTypeEnum.Beziers
-                                                                    Call modPaint.PointsToBeziers(oSequencePoints, oBorderPath)
-                                                                Case Items.cIItemLine.LineTypeEnum.Splines
-                                                                    Call oBorderPath.AddCurve(oSequencePoints, sDefaultSplineTension)
-                                                                Case Else
-                                                                    Call oBorderPath.AddLines(oSequencePoints)
-                                                            End Select
-                                                        End If
-                                                    End If
-                                                Next
-                                                Call Graphics.FillPath(oBrush, oBorderPath)
+                                                    Next
+                                                    Call Graphics.FillPath(oBrush, oBorderPath)
+                                                End Using
                                             End Using
-                                        End Using
+                                        End If
                                     End If
                                 End If
                             Next
@@ -1311,7 +1322,10 @@ Namespace cSurvey.Design
                                             If PaintOptions.CombineColorGray Then
                                                 oColor = modPaint.GrayColor(oColor)
                                             End If
-                                            Using oBrush As SolidBrush = If(PaintOptions.DesignStyle = cOptions.DesignStyleEnum.Combined, New SolidBrush(Color.FromArgb(iCombinedAreaTransparencyThreshold, oColor)), New SolidBrush(oColor))
+                                            If bSchematic Then
+                                                oColor = modPaint.LightColor(oColor, 0.85)
+                                            End If
+                                            Using oBrush As Brush = If(bSchematic, New HatchBrush(HatchStyle.BackwardDiagonal, oColor, Color.Transparent), If(PaintOptions.DesignStyle = cOptions.DesignStyleEnum.Combined, New SolidBrush(Color.FromArgb(iCombinedAreaTransparencyThreshold, oColor)), New SolidBrush(oColor)))
                                                 Dim oState As GraphicsState = Graphics.Save
                                                 If Not PaintOptions.IsDesign And PaintOptions.DrawTranslation Then
                                                     Dim oTranslation As SizeF = GetTranslation(oCaveBranchPlaceholder.Cave, oCaveBranchPlaceholder.Branch)
@@ -1326,6 +1340,42 @@ Namespace cSurvey.Design
                                     End If
                                 Next
                             End Using
+                            If PaintOptions.DesignStyle = cOptions.DesignStyleEnum.Areas Then
+                                'draw only affinity=extra objects
+                                PaintOptions.DesignAffinity = cOptions.DesignAffinityEnum.Extra
+                                PaintOptions.HighlightCurrentCave = True
+                                PaintOptions.HighlightMode = cOptions.HighlightModeEnum.ExactMatch
+                                If bSchematic Then
+                                    Using oClippingRegions As cClippingRegions = GetCaveClippingRegions(Graphics, PaintOptions)
+                                        'attivo il filtro per grotta/ramo (non attivo nelle opzioni di stampa/esportazione)
+                                        'e commissiono il disegno coppia per coppia
+                                        For Each oCaveBranchPlaceholder As cCaveBranchPlaceholder In oDrawingOrder
+                                            For Each oLayer As cLayer In oLayers
+                                                Call oLayer.Paint(Graphics, PaintOptions, cItem.PaintOptionsEnum.Wireframe, oClippingRegions, New Helper.Editor.cEditDesignSelection(Selection, oCaveBranchPlaceholder.Cave, oCaveBranchPlaceholder.Branch))
+                                            Next
+                                        Next
+                                    End Using
+                                Else
+                                    Using oClippingRegions As cClippingRegions = GetCaveClippingRegions(Graphics, PaintOptions)
+                                        'attivo il filtro per grotta/ramo (non attivo nelle opzioni di stampa/esportazione)
+                                        'e commissiono il disegno coppia per coppia
+                                        Dim iIndex As Integer = 0
+                                        Dim iCount As Integer = oDrawingOrder.Count
+                                        Call oSurvey.RaiseOnProgressEvent("paint.design", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, "Rendering...", 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
+                                        For Each oCaveBranchPlaceholder As cCaveBranchPlaceholder In oDrawingOrder
+                                            Call oSurvey.RaiseOnProgressEvent("", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "Rendering " & oCaveBranchPlaceholder.Cave & " " & oCaveBranchPlaceholder.Branch, iIndex / iCount, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
+                                            For Each oLayer As cLayer In oLayers
+                                                Call oLayer.Paint(Graphics, PaintOptions, cItem.PaintOptionsEnum.Solid, oClippingRegions, New Helper.Editor.cEditDesignSelection(Selection, oCaveBranchPlaceholder.Cave, oCaveBranchPlaceholder.Branch))
+                                            Next
+                                            iIndex += 1
+                                        Next
+                                        Call oSurvey.RaiseOnProgressEvent("paint.design", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
+                                    End Using
+                                End If
+                                PaintOptions.HighlightCurrentCave = False
+                                PaintOptions.HighlightMode = cOptions.HighlightModeEnum.Default
+                                PaintOptions.DesignAffinity = cOptions.DesignAffinityEnum.All
+                            End If
                         End If
                     End If
 
@@ -1335,7 +1385,7 @@ Namespace cSurvey.Design
                     End If
                 End If
 
-                If PaintOptions.DrawPlot OrElse PaintOptions.DrawSpecialPoints OrElse (PaintOptions.DrawTranslation AndAlso PaintOptions.TranslationsOptions.DrawTranslationsLine) OrElse PaintOptions.DrawSurfaceProfile Then
+                If Not bSchematic AndAlso (PaintOptions.DrawPlot OrElse PaintOptions.DrawSpecialPoints OrElse (PaintOptions.DrawTranslation AndAlso PaintOptions.TranslationsOptions.DrawTranslationsLine) OrElse PaintOptions.DrawSurfaceProfile) Then
                     Call Plot.Paint(Graphics, PaintOptions, Selection)
                 End If
             Catch ex As Exception

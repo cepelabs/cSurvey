@@ -24,6 +24,8 @@ Partial Class cDesignPrintOrExportAreaControl
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(cDesignPrintOrExportAreaControl))
         Me.pnlDesignPrintOrExportArea = New System.Windows.Forms.Panel()
+        Me.lblDesignPrintOrExportAreaProfileDesignStyle = New System.Windows.Forms.Label()
+        Me.cboDesignPrintOrExportAreaProfileDesignStyle = New System.Windows.Forms.ComboBox()
         Me.cboDesignPrintOrExportAreaProfile = New System.Windows.Forms.ComboBox()
         Me.lblDesignPrintOrExportAreaProfile = New System.Windows.Forms.Label()
         Me.chkDesignPrintOrExportArea = New System.Windows.Forms.CheckBox()
@@ -33,9 +35,24 @@ Partial Class cDesignPrintOrExportAreaControl
         'pnlDesignPrintOrExportArea
         '
         resources.ApplyResources(Me.pnlDesignPrintOrExportArea, "pnlDesignPrintOrExportArea")
+        Me.pnlDesignPrintOrExportArea.Controls.Add(Me.lblDesignPrintOrExportAreaProfileDesignStyle)
+        Me.pnlDesignPrintOrExportArea.Controls.Add(Me.cboDesignPrintOrExportAreaProfileDesignStyle)
         Me.pnlDesignPrintOrExportArea.Controls.Add(Me.cboDesignPrintOrExportAreaProfile)
         Me.pnlDesignPrintOrExportArea.Controls.Add(Me.lblDesignPrintOrExportAreaProfile)
         Me.pnlDesignPrintOrExportArea.Name = "pnlDesignPrintOrExportArea"
+        '
+        'lblDesignPrintOrExportAreaProfileDesignStyle
+        '
+        resources.ApplyResources(Me.lblDesignPrintOrExportAreaProfileDesignStyle, "lblDesignPrintOrExportAreaProfileDesignStyle")
+        Me.lblDesignPrintOrExportAreaProfileDesignStyle.Name = "lblDesignPrintOrExportAreaProfileDesignStyle"
+        '
+        'cboDesignPrintOrExportAreaProfileDesignStyle
+        '
+        resources.ApplyResources(Me.cboDesignPrintOrExportAreaProfileDesignStyle, "cboDesignPrintOrExportAreaProfileDesignStyle")
+        Me.cboDesignPrintOrExportAreaProfileDesignStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboDesignPrintOrExportAreaProfileDesignStyle.FormattingEnabled = True
+        Me.cboDesignPrintOrExportAreaProfileDesignStyle.Items.AddRange(New Object() {resources.GetString("cboDesignPrintOrExportAreaProfileDesignStyle.Items"), resources.GetString("cboDesignPrintOrExportAreaProfileDesignStyle.Items1")})
+        Me.cboDesignPrintOrExportAreaProfileDesignStyle.Name = "cboDesignPrintOrExportAreaProfileDesignStyle"
         '
         'cboDesignPrintOrExportAreaProfile
         '
@@ -75,4 +92,6 @@ Partial Class cDesignPrintOrExportAreaControl
     Friend WithEvents cboDesignPrintOrExportAreaProfile As ComboBox
     Friend WithEvents lblDesignPrintOrExportAreaProfile As Label
     Friend WithEvents chkDesignPrintOrExportArea As CheckBox
+    Friend WithEvents lblDesignPrintOrExportAreaProfileDesignStyle As Label
+    Friend WithEvents cboDesignPrintOrExportAreaProfileDesignStyle As ComboBox
 End Class

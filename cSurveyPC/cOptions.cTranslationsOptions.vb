@@ -32,10 +32,15 @@ Namespace cSurvey.Design.Options
 
         Private bDrawTranslationsLine As Boolean
         Private bDrawOriginalPosition As Boolean
-
-        'Friend Event OnChange(ByVal Sender As cTranslationsOptions)
+        Private oOriginalPositionTranslation As cTranslationBase
 
         Public Property Stations As List(Of cTraslationsStation)
+
+        Public ReadOnly Property OriginalPositionTranslation As cTranslationBase
+            Get
+                Return oOriginalPositionTranslation
+            End Get
+        End Property
 
         Public Property DrawTranslationsLine As Boolean
             Get
@@ -67,7 +72,6 @@ Namespace cSurvey.Design.Options
         Private bOriginalPositionColorGray As Boolean
         Private bOriginalPositionOnlyTranslated As Boolean
         Private bOriginalPositionOverDesign As Boolean
-
         Private sTranslationsThreshold As Single
 
         Public Property OriginalPositionOverDesign As Boolean
@@ -106,7 +110,6 @@ Namespace cSurvey.Design.Options
             End Set
         End Property
 
-
         Public Overridable Property OriginalPositionColorGray As Boolean
             Get
                 Return bOriginalPositionColorGray
@@ -124,6 +127,7 @@ Namespace cSurvey.Design.Options
             bOriginalPositionOnlyTranslated = TranslationsOptions.bOriginalPositionOnlyTranslated
             bOriginalPositionOverDesign = TranslationsOptions.bOriginalPositionOverDesign
             sTranslationsThreshold = TranslationsOptions.sTranslationsThreshold
+            oOriginalPositionTranslation = New cTranslationBase(TranslationsOptions.oOriginalPositionTranslation)
         End Sub
 
         Friend Function Clone() As cTranslationsOptions
@@ -138,6 +142,7 @@ Namespace cSurvey.Design.Options
             bOriginalPositionColorGray = True
             bOriginalPositionOnlyTranslated = False
             bOriginalPositionOverDesign = False
+            oOriginalPositionTranslation = New cTranslationBase(0, 0)
         End Sub
 
         Friend ReadOnly Property Survey As cSurvey
@@ -154,6 +159,11 @@ Namespace cSurvey.Design.Options
             bOriginalPositionOnlyTranslated = modXML.GetAttributeValue(TranslationsOptions, "originalpositiononlytranslated", False)
             bOriginalPositionOverDesign = modXML.GetAttributeValue(TranslationsOptions, "originalpositionoverdesign", False)
             sTranslationsThreshold = modXML.GetAttributeValue(TranslationsOptions, "tth", 0)
+            If ChildElementExist(TranslationsOptions, "optx") Then
+                oOriginalPositionTranslation = New cTranslationBase(TranslationsOptions.Item("optx"))
+            Else
+                oOriginalPositionTranslation = New cTranslationBase(0, 0)
+            End If
         End Sub
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal TranslationsOptions As XmlElement)
@@ -170,6 +180,10 @@ Namespace cSurvey.Design.Options
             If bOriginalPositionOverDesign Then Call oXMLTranslationsOptions.SetAttribute("originalpositionoverdesign", "1")
 
             If sTranslationsThreshold <> 0 Then oXMLTranslationsOptions.SetAttribute("tth", modNumbers.NumberToString(sTranslationsThreshold, "0.0"))
+
+            If Not oOriginalPositionTranslation.IsEmpty Then
+                oOriginalPositionTranslation.SaveTo(File, Document, oXMLTranslationsOptions, "optx")
+            End If
 
             Call Parent.AppendChild(oXMLTranslationsOptions)
             Return oXMLTranslationsOptions

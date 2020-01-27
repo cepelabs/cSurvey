@@ -251,33 +251,33 @@ Module modImport
         ConvertBezierToSpline = &H20
     End Enum
 
-    Private Function pTherionDrawingScaleToTextSize(Scale As String) As Items.cIItemText.TextSizeEnum
+    Private Function pTherionDrawingScaleToTextSize(Scale As String) As Items.cIItemSizable.SizeEnum
         Select Case Scale.ToLower
             Case "xl"
-                Return cIItemText.TextSizeEnum.VeryLarge
+                Return cIItemSizable.SizeEnum.VeryLarge
             Case "l"
-                Return cIItemText.TextSizeEnum.Large
+                Return cIItemSizable.SizeEnum.Large
             Case "s"
-                Return cIItemText.TextSizeEnum.Small
+                Return cIItemSizable.SizeEnum.Small
             Case "xs"
-                Return cIItemText.TextSizeEnum.VerySmall
+                Return cIItemSizable.SizeEnum.VerySmall
             Case Else
-                Return cIItemText.TextSizeEnum.Default
+                Return cIItemSizable.SizeEnum.Default
         End Select
     End Function
 
-    Private Function pTherionDrawingScaleToSignSize(Scale As String) As Items.cIItemSign.SignSizeEnum
+    Private Function pTherionDrawingScaleToSignSize(Scale As String) As Items.cIItemSizable.SizeEnum
         Select Case Scale.ToLower
             Case "xl"
-                Return cIItemSign.SignSizeEnum.VeryLarge
+                Return cIItemSizable.SizeEnum.VeryLarge
             Case "l"
-                Return cIItemSign.SignSizeEnum.Large
+                Return cIItemSizable.SizeEnum.Large
             Case "s"
-                Return cIItemSign.SignSizeEnum.Small
+                Return cIItemSizable.SizeEnum.Small
             Case "xs"
-                Return cIItemSign.SignSizeEnum.VerySmall
+                Return cIItemSizable.SizeEnum.VerySmall
             Case Else
-                Return cIItemSign.SignSizeEnum.Default
+                Return cIItemSizable.SizeEnum.Default
         End Select
     End Function
 
@@ -327,7 +327,11 @@ Module modImport
         End Select
     End Function
 
-    Public Sub FixTopodroidSurvey(Survey As cSurvey.cSurvey)
+    Public Sub FixTopodroidDesign(Survey As cSurvey.cSurvey, Design As cDesign, Items As XmlElement)
+        Call cImportTopoDroidHelper.ConvertDesign(Survey, Design.Layers, Items)
+    End Sub
+
+    Public Sub FixTopodroidSurvey(Survey As cSurvey.cSurvey, XMLRoot As XmlElement)
         If Not Survey.Properties.DataTables.Segments.Contains("import_source") AndAlso Not Survey.Properties.DataTables.Segments.Contains("import_date") Then
             Dim sID As String = If(Survey.Properties.CreatorID = "", "topodroid", Survey.Properties.CreatorID)
             Dim dDate As Date = If(Survey.Properties.CreationDate.HasValue, Survey.Properties.CreationDate.Value, Now)
@@ -347,20 +351,32 @@ Module modImport
                 Call oItem.DataProperties.SetValue("import_date", dDate)
             Next
 
-            For Each oItem As cItem In Survey.GetAllDesignItems
-                'check for meta commands...
-                If Not IsNothing(oItem.Points.Metas) Then
-                    'if points have meta commands read it...
-                    'at now only C meta command is supported:
-                    'C=close all point's sequences
-                    If oItem.Points.Metas.Where(Function(ometa) ometa.Text = "C" AndAlso Not ometa.PointIndex.HasValue).Count > 0 Then
-                        Call oItem.Points.CloseSequences()
+            If modXML.ChildElementExist(XMLRoot.Item("plan"), "layers") Then
+                'for  csx generated from old topodroid version
+                For Each oItem As cItem In Survey.GetAllDesignItems
+                    'check for meta commands...
+                    If Not IsNothing(oItem.Points.Metas) Then
+                        'if points have meta commands read it...
+                        'at now only C meta command is supported:
+                        'C=close all point's sequences
+                        If oItem.Points.Metas.Where(Function(ometa) ometa.Text = "C" AndAlso Not ometa.PointIndex.HasValue).Count > 0 Then
+                            Call oItem.Points.CloseSequences()
+                        End If
+                        Call oItem.Points.Metas.Clear()
                     End If
-                    Call oItem.Points.Metas.Clear()
-                End If
-                'force rebinding of all design item to centerline...topodroid don't do it itself
-                Call oItem.BindSegments()
-            Next
+                    'force rebinding of all design item to centerline...topodroid don't do it itself
+                    Call oItem.BindSegments()
+                Next
+            Else
+                For Each oItem As cItem In Survey.GetAllDesignItems
+                    'check for meta commands...
+                    If Not IsNothing(oItem.Points.Metas) Then
+                        Call oItem.Points.Metas.Clear()
+                    End If
+                    'force rebinding of all design item to centerline...topodroid don't do it itself
+                    Call oItem.BindSegments()
+                Next
+            End If
 
         End If
     End Sub
@@ -389,7 +405,7 @@ Module modImport
             Call oXMLSegment.SetAttribute("to", oXMLSegment.GetAttribute("to").ToString.ToUpper)
         Next
 
-        'search for segment with not guid id
+        'search for segment with not guid id (from old topodroid version)
         If modXML.ChildElementExist(oXMLRoot, "crosssections") Then
             For Each oXMLCrossSection As XmlElement In oXMLRoot.Item("crosssections").ChildNodes
                 Dim oGuid As Guid
@@ -404,11 +420,19 @@ Module modImport
             Next
         End If
 
-        If modXML.ChildElementExist(oXMLRoot, "plan") Then
-            Call pFixTopodroidCSXReplaceID(Document, oSegmentIDs, oXMLRoot.Item("plan").Item("layers"))
+        If oSegmentIDs.Count > 0 AndAlso modXML.ChildElementExist(oXMLRoot, "plan") Then
+            Dim oXMlPlan As XmlElement = oXMLRoot.Item("plan")
+            If modXML.ChildElementExist(oXMlPlan, "layers") Then
+                'csx generated from old topodroid version
+                Call pFixTopodroidCSXReplaceID(Document, oSegmentIDs, oXMlPlan.Item("layers"))
+            End If
         End If
-        If modXML.ChildElementExist(oXMLRoot, "profile") Then
-            Call pFixTopodroidCSXReplaceID(Document, oSegmentIDs, oXMLRoot.Item("profile").Item("layers"))
+        If oSegmentIDs.Count > 0 AndAlso modXML.ChildElementExist(oXMLRoot, "profile") Then
+            Dim oXMlProfile As XmlElement = oXMLRoot.Item("profile")
+            If modXML.ChildElementExist(oXMlProfile, "layers") Then
+                'csx generated from old topodroid version
+                Call pFixTopodroidCSXReplaceID(Document, oSegmentIDs, oXMlProfile.Item("layers"))
+            End If
         End If
     End Sub
 

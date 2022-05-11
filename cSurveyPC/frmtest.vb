@@ -1,4 +1,4 @@
-﻿Public Class frmtest
+﻿friend Class frmtest
     Private oSurvey As cSurvey.cSurvey
 
     Public Sub New(Survey As cSurvey.cSurvey)

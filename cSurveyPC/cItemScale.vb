@@ -274,17 +274,17 @@ Namespace cSurvey.Design.Items
             End Select
         End Function
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
-            Using oMatrix As Matrix = New Matrix
-                If PaintOptions.DrawTranslation Then
-                    Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
-                    Call oMatrix.Translate(oTranslation.Width, oTranslation.Height)
-                End If
-                Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
-                Call oSVGItem.SetAttribute("name", MyBase.Name)
-                Return oSVGItem
-            End Using
-        End Function
+        'Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        '    Using oMatrix As Matrix = New Matrix
+        '        If PaintOptions.DrawTranslation Then
+        '            Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
+        '            Call oMatrix.Translate(oTranslation.Width, oTranslation.Height)
+        '        End If
+        '        Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
+        '        If MyBase.Name <> "" Then Call oSVGItem.SetAttribute("name", MyBase.Name)
+        '        Return oSVGItem
+        '    End Using
+        'End Function
 
         Public Overrides Sub ResizeTo(ByVal Size As SizeF)
             Call ResizeTo(Size.Width, Size.Height)
@@ -294,11 +294,11 @@ Namespace cSurvey.Design.Items
             Call ResizeBy(Size.Width, Size.Height)
         End Sub
 
-        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
-            Dim oSVG As XmlDocument = modSVG.CreateSVG
-            Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
-            Return oSVG
-        End Function
+        'Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
+        '    Dim oSVG As XmlDocument = modSVG.CreateSVG
+        '    Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
+        '    Return oSVG
+        'End Function
 
         Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             Dim oCache As cDrawCache = MyBase.Caches(PaintOptions)
@@ -576,7 +576,7 @@ Namespace cSurvey.Design.Items
         Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             If MyBase.Points.Count > 0 Then
                 Call Render(Graphics, PaintOptions, Options, Selected)
-                If Not PaintOptions.IsDesign Or (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then '
+                If Not PaintOptions.IsDesign OrElse (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then '
                     MyBase.HavePaintProblem = Not MyBase.Caches(PaintOptions).Paint(Graphics, PaintOptions, Options)
                     If PaintOptions.ShowSegmentBindings Then
                         Call modPaint.PaintPointToSegmentBindings(Graphics, oSurvey, Me, Selected)
@@ -585,7 +585,7 @@ Namespace cSurvey.Design.Items
             End If
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As Storage.cFile, ByVal item As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As cFile, ByVal item As XmlElement)
             Call MyBase.New(Survey, Design, Layer, File, item)
             oSurvey = Survey
             sText = modXML.GetAttributeValue(item, "text", "")
@@ -607,7 +607,7 @@ Namespace cSurvey.Design.Items
             bHideScaleValue = modXML.GetAttributeValue(item, "hsv", 0)
         End Sub
 
-        Friend Overrides Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+        Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oItem As XmlElement = MyBase.SaveTo(File, Document, Parent, Options)
             If "" & sText <> "" Then Call oItem.SetAttribute("text", "" & sText)
             Call oFont.SaveTo(File, Document, oItem, "font")

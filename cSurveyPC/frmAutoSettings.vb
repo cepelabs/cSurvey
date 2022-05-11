@@ -4,7 +4,7 @@ Imports System.Globalization
 Imports System.Threading
 Imports System.ComponentModel
 
-Public Class frmAutoSettings
+friend Class frmAutoSettings
     Private sCurrentLanguage As String
 
     Public Sub New()
@@ -13,20 +13,20 @@ Public Class frmAutoSettings
         InitializeComponent()
 
         ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
-        Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-        sCurrentLanguage = oReg.GetValue("language", "")
-        Select Case sCurrentLanguage
-            Case "it"
-                cboLanguage.SelectedIndex = 3
-            Case "ru"
-                cboLanguage.SelectedIndex = 2
-            Case "en"
-                cboLanguage.SelectedIndex = 1
-            Case Else
-                cboLanguage.SelectedIndex = 0
-        End Select
-        Call oReg.Close()
-        Call oReg.Dispose()
+        Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
+            sCurrentLanguage = oReg.GetValue("language", "")
+            Select Case sCurrentLanguage
+                Case "it"
+                    cboLanguage.SelectedIndex = 3
+                Case "ru"
+                    cboLanguage.SelectedIndex = 2
+                Case "en"
+                    cboLanguage.SelectedIndex = 1
+                Case Else
+                    cboLanguage.SelectedIndex = 0
+            End Select
+            Call oReg.Close()
+        End Using
     End Sub
 
     Private Sub cmdAutoConfig_Click(sender As System.Object, e As System.EventArgs) Handles cmdAutoConfig.Click
@@ -104,40 +104,40 @@ Public Class frmAutoSettings
             Call Close()
         Else
             Call pSetProgress(GetLocalizedString("autosettigs.steptitle1"))
-            Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
+            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
 
-            Call oReg.SetValue("default.calculatemode", 1)
-            Call oReg.SetValue("default.calculatetype", 2)
+                Call oReg.SetValue("default.calculatemode", 1)
+                Call oReg.SetValue("default.calculatetype", 2)
 
-            Call oReg.SetValue("design.quality", 1)
-            Call oReg.SetValue("design.rulers", 1)
-            Call oReg.SetValue("design.rulers.style", 1)
-            Call oReg.SetValue("design.metricgrid", 0)
-            Call oReg.SetValue("design.multithreading", 0)
-            Call oReg.SetValue("design.clipborder", 1)
-            Call oReg.SetValue("design.linetype", 2)
-            Call oReg.SetValue("design.useonlyanchortomove", 1)
+                Call oReg.SetValue("design.quality", 1)
+                Call oReg.SetValue("design.rulers", 1)
+                Call oReg.SetValue("design.rulers.style", 1)
+                Call oReg.SetValue("design.metricgrid", 0)
+                Call oReg.SetValue("design.multithreading", 0)
+                Call oReg.SetValue("design.clipborder", 1)
+                Call oReg.SetValue("design.linetype", 2)
+                Call oReg.SetValue("design.useonlyanchortomove", 1)
 
-            Call oReg.SetValue("therion.enabled", 1)
-            Call oReg.SetValue("therion.path", sTherionPath)
-            Call oReg.SetValue("therion.lock.enabled", 1)
+                Call oReg.SetValue("therion.enabled", 1)
+                Call oReg.SetValue("therion.path", sTherionPath)
+                Call oReg.SetValue("therion.lock.enabled", 1)
 
-            Call oReg.SetValue("therion.backgroundprocess", 1)
-            Call oReg.SetValue("therion.trigpointsafename", 1)
-            Call oReg.SetValue("therion.deletetempfiles", 1)
-            Call oReg.SetValue("therion.segmentforcedirection", 1)
-            Call oReg.SetValue("therion.segmentforcepath", 1)
+                Call oReg.SetValue("therion.backgroundprocess", 1)
+                Call oReg.SetValue("therion.trigpointsafename", 1)
+                Call oReg.SetValue("therion.deletetempfiles", 1)
+                Call oReg.SetValue("therion.segmentforcedirection", 1)
+                Call oReg.SetValue("therion.segmentforcepath", 1)
 
-            Call oReg.SetValue("zoom.type", 1)
+                Call oReg.SetValue("zoom.type", 1)
 
-            Call oReg.SetValue("debug.autosave", 1)
+                Call oReg.SetValue("debug.autosave", 1)
 
-            Dim sLanguage As String = pGetLanguage()
-            Call oReg.SetValue("language", sLanguage)
-            sCurrentLanguage = sLanguage
+                Dim sLanguage As String = pGetLanguage()
+                Call oReg.SetValue("language", sLanguage)
+                sCurrentLanguage = sLanguage
 
-            Call oReg.Close()
-            Call oReg.Dispose()
+                Call oReg.Close()
+            End Using
 
             Call pSetProgress(GetLocalizedString("autosettigs.steptitle2"))
 
@@ -181,10 +181,10 @@ Public Class frmAutoSettings
         If e.CloseReason = CloseReason.UserClosing Then
             Dim sLanguage As String = pGetLanguage()
             If sCurrentLanguage <> sLanguage Then
-                Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                Call oReg.SetValue("language", sLanguage)
-                Call oReg.Close()
-                Call oReg.Dispose()
+                Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
+                    Call oReg.SetValue("language", sLanguage)
+                    Call oReg.Close()
+                End Using
 
                 Call MsgBox(GetLocalizedString("autosettings.warning2"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Information, GetLocalizedString("autosettigs.warningtitle"))
             End If

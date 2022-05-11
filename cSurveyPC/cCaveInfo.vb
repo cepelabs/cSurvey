@@ -410,7 +410,7 @@ Namespace cSurvey
             If modXML.ChildElementExist(CaveInfo, "cn") Then oConnection = New cConnectionDef(CaveInfo("cn"))
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement)
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement)
             Dim oXmlCaveInfo As XmlElement = Document.CreateElement("caveinfo")
             Call oXmlCaveInfo.SetAttribute("id", sID)
             Call oXmlCaveInfo.SetAttribute("name", sName)

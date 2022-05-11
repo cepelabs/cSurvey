@@ -37,7 +37,7 @@ Namespace cSurvey.Data
             oDesignItems = New cDataFields(Survey, Item.Item("designitems"))
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLDataTables As XmlElement = Document.CreateElement("datatables")
             Call oSegments.SaveTo(File, Document, oXMLDataTables)
             Call oTrigpoints.SaveTo(File, Document, oXMLDataTables)

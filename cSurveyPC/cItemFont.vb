@@ -52,9 +52,9 @@ Namespace cSurvey.Design
         Public ReadOnly Property FontStyle As FontStyle Implements cIFont.FontStyle
             Get
                 Dim iFontStyle As FontStyle
-                iFontStyle = IIf(bFontBold, iFontStyle Or FontStyle.Bold, iFontStyle)
-                iFontStyle = IIf(bFontItalic, iFontStyle Or FontStyle.Italic, iFontStyle)
-                iFontStyle = IIf(bFontUnderline, iFontStyle Or FontStyle.Underline, iFontStyle)
+                iFontStyle = If(bFontBold, iFontStyle Or FontStyle.Bold, iFontStyle)
+                iFontStyle = If(bFontItalic, iFontStyle Or FontStyle.Italic, iFontStyle)
+                iFontStyle = If(bFontUnderline, iFontStyle Or FontStyle.Underline, iFontStyle)
                 Return iFontStyle
             End Get
         End Property
@@ -64,7 +64,7 @@ Namespace cSurvey.Design
         End Function
 
         Public Overrides Function ToString() As String
-            Return sFontName & ", " & modNumbers.NumberToString(sFontSize) & "," & IIf(bFontBold, " " & GetLocalizedString("itemfont.textpart1"), "") & IIf(bFontItalic, " " & GetLocalizedString("itemfont.textpart2"), "") & IIf(FontUnderline, " " & GetLocalizedString("itemfont.textpart3"), "")
+            Return sFontName & ", " & modNumbers.NumberToString(sFontSize) & "," & If(bFontBold, " " & GetLocalizedString("itemfont.textpart1"), "") & If(bFontItalic, " " & GetLocalizedString("itemfont.textpart2"), "") & If(FontUnderline, " " & GetLocalizedString("itemfont.textpart3"), "")
         End Function
 
         Friend Sub New(ByVal Font As cItemFont)
@@ -226,7 +226,7 @@ Namespace cSurvey.Design
             End Try
         End Function
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, ByVal Name As String) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, ByVal Name As String) As XmlElement
             Dim oItem As XmlElement = Document.CreateElement(Name)
             Call oItem.SetAttribute("type", iType)
             If iType = FontTypeEnum.Custom Then
@@ -237,13 +237,13 @@ Namespace cSurvey.Design
                 Call oItem.SetAttribute("fontname", sFontName)
                 Call oItem.SetAttribute("fontsize", modNumbers.NumberToString(sFontSize))
                 If bFontBold Then
-                    Call oItem.SetAttribute("fontbold", IIf(bFontBold, 1, 0))
+                    Call oItem.SetAttribute("fontbold", If(bFontBold, 1, 0))
                 End If
                 If bFontItalic Then
-                    Call oItem.SetAttribute("fontitalic", IIf(bFontBold, 1, 0))
+                    Call oItem.SetAttribute("fontitalic", If(bFontBold, 1, 0))
                 End If
                 If bFontUnderline Then
-                    Call oItem.SetAttribute("fontunderline", IIf(bFontBold, 1, 0))
+                    Call oItem.SetAttribute("fontunderline", If(bFontBold, 1, 0))
                 End If
             End If
             Call Parent.AppendChild(oItem)
@@ -365,6 +365,11 @@ Namespace cSurvey.Design
             Return oBrush
         End Function
 
+        Friend Function GetWireframePen(PaintOptions As cOptions) As Pen
+            If bInvalidated Then pRender(PaintOptions)
+            Return oWireframePen
+        End Function
+
         Friend Sub Render(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache)
             If bInvalidated Then pRender(PaintOptions)
             Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, Path, Nothing, oWireframePen, oBrush)
@@ -386,7 +391,7 @@ Namespace cSurvey.Design
             Dim sTempFontName As String = sFontName
             Dim sTempFontSize As Single = sFontSize
             If sTempFontName = "" Or sTempFontSize <= 0 Then
-                Dim oDesignTextFont As cIFont = PaintOptions.CurrentRule.DesignProperties.GetValue("DesignTextFont", oSurvey.Properties.DesignProperties.GetValue("DesignTextFont", modPaint.GetDefaultFont))
+                Dim oDesignTextFont As cIFont = PaintOptions.GetCurrentDesignPropertiesValue("DesignTextFont", modPaint.GetDefaultFont)
                 If sTempFontName = "" Then
                     sTempFontName = oDesignTextFont.FontName
                 End If
@@ -405,7 +410,7 @@ Namespace cSurvey.Design
 
             Dim sLineWidth As Single
             If sLocalLineWidth = 0 Then
-                sLineWidth = PaintOptions.CurrentRule.DesignProperties.GetValue("BaseLineWidthScaleFactor", oSurvey.Properties.DesignProperties.GetValue("BaseLineWidthScaleFactor", 0.01))
+                sLineWidth = PaintOptions.GetCurrentDesignPropertiesValue("BaseLineWidthScaleFactor", 0.01)
             Else
                 sLineWidth = sLocalLineWidth
             End If

@@ -25,30 +25,32 @@ Partial Class cDesignLinkedSurveySelectorPropertyControl
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(cDesignLinkedSurveySelectorPropertyControl))
         Me.linkedSurveys = New cSurveyPC.cLinkedSurveySelectorControl()
-        Me.chkDesignDrawLinkedSurveys = New System.Windows.Forms.CheckBox()
-        Me.cmdDesignLinkedSurveys = New System.Windows.Forms.Button()
+        Me.chkDesignDrawLinkedSurveys = New DevExpress.XtraEditors.CheckEdit()
+        Me.cmdDesignLinkedSurveys = New DevExpress.XtraEditors.SimpleButton()
         Me.tipMain = New System.Windows.Forms.ToolTip(Me.components)
+        CType(Me.chkDesignDrawLinkedSurveys.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'linkedSurveys
         '
         resources.ApplyResources(Me.linkedSurveys, "linkedSurveys")
-        Me.linkedSurveys.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.linkedSurveys.Name = "linkedSurveys"
         '
         'chkDesignDrawLinkedSurveys
         '
         resources.ApplyResources(Me.chkDesignDrawLinkedSurveys, "chkDesignDrawLinkedSurveys")
         Me.chkDesignDrawLinkedSurveys.Name = "chkDesignDrawLinkedSurveys"
-        Me.chkDesignDrawLinkedSurveys.UseVisualStyleBackColor = True
+        Me.chkDesignDrawLinkedSurveys.Properties.AutoWidth = True
+        Me.chkDesignDrawLinkedSurveys.Properties.Caption = resources.GetString("chkDesignDrawLinkedSurveys.Properties.Caption")
         '
         'cmdDesignLinkedSurveys
         '
         resources.ApplyResources(Me.cmdDesignLinkedSurveys, "cmdDesignLinkedSurveys")
-        Me.cmdDesignLinkedSurveys.Image = Global.cSurveyPC.My.Resources.Resources.link
+        Me.cmdDesignLinkedSurveys.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdDesignLinkedSurveys.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.link1
+        Me.cmdDesignLinkedSurveys.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.cmdDesignLinkedSurveys.Name = "cmdDesignLinkedSurveys"
-        Me.tipMain.SetToolTip(Me.cmdDesignLinkedSurveys, resources.GetString("cmdDesignLinkedSurveys.ToolTip"))
-        Me.cmdDesignLinkedSurveys.UseVisualStyleBackColor = True
+        Me.tipMain.SetToolTip(Me.cmdDesignLinkedSurveys, resources.GetString("cmdDesignLinkedSurveys.ToolTip1"))
         '
         'cDesignLinkedSurveySelectorPropertyControl
         '
@@ -58,13 +60,14 @@ Partial Class cDesignLinkedSurveySelectorPropertyControl
         Me.Controls.Add(Me.chkDesignDrawLinkedSurveys)
         Me.Controls.Add(Me.linkedSurveys)
         Me.Name = "cDesignLinkedSurveySelectorPropertyControl"
+        CType(Me.chkDesignDrawLinkedSurveys.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents linkedSurveys As cLinkedSurveySelectorControl
-    Friend WithEvents chkDesignDrawLinkedSurveys As CheckBox
-    Friend WithEvents cmdDesignLinkedSurveys As Button
+    Friend WithEvents chkDesignDrawLinkedSurveys As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents cmdDesignLinkedSurveys As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents tipMain As ToolTip
 End Class

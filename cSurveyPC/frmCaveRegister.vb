@@ -3,7 +3,7 @@ Imports cSurveyPC.cSurvey.Net
 Imports cSurveyPC.cSurvey.CaveRegister
 Imports cSurveyPC.cSurvey.Scripting
 
-Public Class frmCaveRegister
+friend Class frmCaveRegister
 
     Private oSurvey As cSurvey.cSurvey
     Private oRegister As cCaveRegister

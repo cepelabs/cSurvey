@@ -29,10 +29,15 @@ Namespace My
             Me.SaveMySettingsOnExit = true
             Me.ShutDownStyle = Global.Microsoft.VisualBasic.ApplicationServices.ShutdownMode.AfterMainFormCloses
         End Sub
-        
-        <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
+
+        <Global.System.Diagnostics.DebuggerStepThroughAttribute()>
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.cSurveyPC.frmMain
+            Dim oParameters As cCommandLineParameters = New cCommandLineParameters(Environment.CommandLine)
+            If oParameters.GetValue("debug", "0") = "1" Then
+                Me.MainForm = Global.cSurveyPC.frmMain2
+            Else
+                Me.MainForm = Global.cSurveyPC.frmMain
+            End If
         End Sub
     End Class
 End Namespace

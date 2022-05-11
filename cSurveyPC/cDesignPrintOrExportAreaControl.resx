@@ -121,19 +121,77 @@
   <data name="pnlDesignPrintOrExportArea.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
+  <data name="cboDesignPrintOrExportAreaProfile.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="cboDesignPrintOrExportAreaProfile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>94, 6</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v20.2" name="DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="cboDesignPrintOrExportAreaProfile2.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v20.2">
+    <value>Combo</value>
+  </data>
+  <metadata name="iml.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="cboDesignPrintOrExportAreaProfile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 20</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lblDesignPrintOrExportAreaProfileDesignStyle.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="cboDesignPrintOrExportAreaProfile.TabIndex" type="System.Int32, mscorlib">
+    <value>160</value>
+  </data>
+  <data name="&gt;&gt;cboDesignPrintOrExportAreaProfile.Name" xml:space="preserve">
+    <value>cboDesignPrintOrExportAreaProfile</value>
+  </data>
+  <data name="&gt;&gt;cboDesignPrintOrExportAreaProfile.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ImageComboBoxEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboDesignPrintOrExportAreaProfile.Parent" xml:space="preserve">
+    <value>pnlDesignPrintOrExportArea</value>
+  </data>
+  <data name="&gt;&gt;cboDesignPrintOrExportAreaProfile.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cmdDesignBaseRule.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="cmdDesignBaseRule.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdDesignBaseRule.Location" type="System.Drawing.Point, System.Drawing">
+    <value>262, 4</value>
+  </data>
+  <data name="cmdDesignBaseRule.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdDesignBaseRule.TabIndex" type="System.Int32, mscorlib">
+    <value>159</value>
+  </data>
+  <data name="cmdDesignBaseRule.ToolTip" xml:space="preserve">
+    <value>Base profile settings</value>
+  </data>
+  <data name="&gt;&gt;cmdDesignBaseRule.Name" xml:space="preserve">
+    <value>cmdDesignBaseRule</value>
+  </data>
+  <data name="&gt;&gt;cmdDesignBaseRule.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdDesignBaseRule.Parent" xml:space="preserve">
+    <value>pnlDesignPrintOrExportArea</value>
+  </data>
+  <data name="&gt;&gt;cmdDesignBaseRule.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="lblDesignPrintOrExportAreaProfileDesignStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="lblDesignPrintOrExportAreaProfileDesignStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 34</value>
+    <value>7, 34</value>
   </data>
   <data name="lblDesignPrintOrExportAreaProfileDesignStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 13</value>
+    <value>36, 13</value>
   </data>
   <data name="lblDesignPrintOrExportAreaProfileDesignStyle.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -141,35 +199,32 @@
   <data name="lblDesignPrintOrExportAreaProfileDesignStyle.Text" xml:space="preserve">
     <value>Design:</value>
   </data>
-  <data name="lblDesignPrintOrExportAreaProfileDesignStyle.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
   <data name="&gt;&gt;lblDesignPrintOrExportAreaProfileDesignStyle.Name" xml:space="preserve">
     <value>lblDesignPrintOrExportAreaProfileDesignStyle</value>
   </data>
   <data name="&gt;&gt;lblDesignPrintOrExportAreaProfileDesignStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignPrintOrExportAreaProfileDesignStyle.Parent" xml:space="preserve">
     <value>pnlDesignPrintOrExportArea</value>
   </data>
   <data name="&gt;&gt;lblDesignPrintOrExportAreaProfileDesignStyle.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="cboDesignPrintOrExportAreaProfileDesignStyle.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="cboDesignPrintOrExportAreaProfileDesignStyle.Items" xml:space="preserve">
-    <value>None</value>
-  </data>
-  <data name="cboDesignPrintOrExportAreaProfileDesignStyle.Items1" xml:space="preserve">
-    <value>Schematics</value>
+    <value>2</value>
   </data>
   <data name="cboDesignPrintOrExportAreaProfileDesignStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>69, 31</value>
+    <value>94, 31</value>
+  </data>
+  <data name="cboDesignPrintOrExportAreaProfileDesignStyle.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v20.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboDesignPrintOrExportAreaProfileDesignStyle.Properties.Items" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="cboDesignPrintOrExportAreaProfileDesignStyle.Properties.Items1" xml:space="preserve">
+    <value>Schematics</value>
   </data>
   <data name="cboDesignPrintOrExportAreaProfileDesignStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 21</value>
+    <value>145, 20</value>
   </data>
   <data name="cboDesignPrintOrExportAreaProfileDesignStyle.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -178,49 +233,22 @@
     <value>cboDesignPrintOrExportAreaProfileDesignStyle</value>
   </data>
   <data name="&gt;&gt;cboDesignPrintOrExportAreaProfileDesignStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboDesignPrintOrExportAreaProfileDesignStyle.Parent" xml:space="preserve">
     <value>pnlDesignPrintOrExportArea</value>
   </data>
   <data name="&gt;&gt;cboDesignPrintOrExportAreaProfileDesignStyle.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="cboDesignPrintOrExportAreaProfile.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="cboDesignPrintOrExportAreaProfile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>69, 4</value>
-  </data>
-  <data name="cboDesignPrintOrExportAreaProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 22</value>
-  </data>
-  <data name="cboDesignPrintOrExportAreaProfile.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;cboDesignPrintOrExportAreaProfile.Name" xml:space="preserve">
-    <value>cboDesignPrintOrExportAreaProfile</value>
-  </data>
-  <data name="&gt;&gt;cboDesignPrintOrExportAreaProfile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboDesignPrintOrExportAreaProfile.Parent" xml:space="preserve">
-    <value>pnlDesignPrintOrExportArea</value>
-  </data>
-  <data name="&gt;&gt;cboDesignPrintOrExportAreaProfile.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="lblDesignPrintOrExportAreaProfile.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>3</value>
   </data>
   <data name="lblDesignPrintOrExportAreaProfile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblDesignPrintOrExportAreaProfile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 7</value>
+    <value>7, 8</value>
   </data>
   <data name="lblDesignPrintOrExportAreaProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 13</value>
+    <value>34, 13</value>
   </data>
   <data name="lblDesignPrintOrExportAreaProfile.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -228,29 +256,26 @@
   <data name="lblDesignPrintOrExportAreaProfile.Text" xml:space="preserve">
     <value>Profile:</value>
   </data>
-  <data name="lblDesignPrintOrExportAreaProfile.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
   <data name="&gt;&gt;lblDesignPrintOrExportAreaProfile.Name" xml:space="preserve">
     <value>lblDesignPrintOrExportAreaProfile</value>
   </data>
   <data name="&gt;&gt;lblDesignPrintOrExportAreaProfile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignPrintOrExportAreaProfile.Parent" xml:space="preserve">
     <value>pnlDesignPrintOrExportArea</value>
   </data>
   <data name="&gt;&gt;lblDesignPrintOrExportAreaProfile.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="pnlDesignPrintOrExportArea.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="pnlDesignPrintOrExportArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 27</value>
+    <value>24, 29</value>
   </data>
   <data name="pnlDesignPrintOrExportArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>283, 56</value>
+    <value>289, 57</value>
   </data>
   <data name="pnlDesignPrintOrExportArea.TabIndex" type="System.Int32, mscorlib">
     <value>157</value>
@@ -259,7 +284,7 @@
     <value>pnlDesignPrintOrExportArea</value>
   </data>
   <data name="&gt;&gt;pnlDesignPrintOrExportArea.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlDesignPrintOrExportArea.Parent" xml:space="preserve">
     <value>$this</value>
@@ -267,29 +292,26 @@
   <data name="&gt;&gt;pnlDesignPrintOrExportArea.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="chkDesignPrintOrExportArea.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="chkDesignPrintOrExportArea.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkDesignPrintOrExportArea.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 3</value>
   </data>
+  <data name="chkDesignPrintOrExportArea.Properties.Caption" xml:space="preserve">
+    <value>Print/export area:</value>
+  </data>
   <data name="chkDesignPrintOrExportArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 17</value>
+    <value>110, 20</value>
   </data>
   <data name="chkDesignPrintOrExportArea.TabIndex" type="System.Int32, mscorlib">
     <value>156</value>
-  </data>
-  <data name="chkDesignPrintOrExportArea.Text" xml:space="preserve">
-    <value>Print/export area:</value>
   </data>
   <data name="&gt;&gt;chkDesignPrintOrExportArea.Name" xml:space="preserve">
     <value>chkDesignPrintOrExportArea</value>
   </data>
   <data name="&gt;&gt;chkDesignPrintOrExportArea.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignPrintOrExportArea.Parent" xml:space="preserve">
     <value>$this</value>
@@ -305,6 +327,12 @@
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>313, 86</value>
+  </data>
+  <data name="&gt;&gt;iml.Name" xml:space="preserve">
+    <value>iml</value>
+  </data>
+  <data name="&gt;&gt;iml.Type" xml:space="preserve">
+    <value>DevExpress.Utils.SvgImageCollection, DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>cDesignPrintOrExportAreaControl</value>

@@ -3,31 +3,27 @@ Imports cSurveyPC.cSurvey.Design.Items
 Imports cSurveyPC.cSurvey.Drawings
 
 Friend Class cItemCompassPropertyControl
-    Private oItem As cItemCompass
+    Public Overloads ReadOnly Property Item As cItemCompass
+        Get
+            Return MyBase.Item
+        End Get
+    End Property
 
-    Public Sub New()
+    Public Overloads Sub Rebind(Item As cItemCompass)
+        Call MyBase.Rebind(Item)
 
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-    End Sub
-
-    Public Overrides Sub Rebind(Item As cItem)
-        oItem = Item
-
-        picCompassClipartImage.Image = oItem.Clipart.Clipart.GetThumbnailImage(picCompassClipartImage.Width, picCompassClipartImage.Height)
-        txtCompassClipartZoomFactor.Value = oItem.ClipartScale
-        chkUseClipartScaleOnText.Checked = oItem.UseClipartScaleOnText
-        chkUseTextScaleOnClipart.Checked = oItem.UseTextScaleOnClipart
-        cboCompassMode.SelectedIndex = oItem.Mode
-        cboCompassNorth.SelectedIndex = oItem.North
-        If oItem.Year = 0 Then
+        picCompassClipartImage.Image = Item.Clipart.Clipart.GetThumbnailImage(picCompassClipartImage.Width, picCompassClipartImage.Height)
+        txtCompassClipartZoomFactor.Value = Item.ClipartScale
+        chkUseClipartScaleOnText.Checked = Item.UseClipartScaleOnText
+        chkUseTextScaleOnClipart.Checked = Item.UseTextScaleOnClipart
+        cboCompassMode.SelectedIndex = Item.Mode
+        cboCompassNorth.SelectedIndex = Item.North
+        If Item.Year = 0 Then
             txtCompassYear.Value = Today.Year
         Else
-            txtCompassYear.Value = oItem.Year
+            txtCompassYear.Value = Item.Year
         End If
-        chkHideNorthValue.Checked = oItem.HideNorthValue
+        chkHideNorthValue.Checked = Item.HideNorthValue
         Call pSetEnabled()
     End Sub
 
@@ -39,8 +35,8 @@ Friend Class cItemCompassPropertyControl
                 .FilterIndex = 1
                 If .ShowDialog = Windows.Forms.DialogResult.OK Then
                     Try
-                        oItem.Clipart = oItem.Survey.Signs.Cliparts.Add(.FileName)
-                        picCompassClipartImage.Image = oItem.Clipart.Clipart.GetThumbnailImage(picCompassClipartImage.Width, picCompassClipartImage.Height)
+                        Item.Clipart = Item.Survey.Signs.Cliparts.Add(.FileName)
+                        picCompassClipartImage.Image = Item.Clipart.Clipart.GetThumbnailImage(picCompassClipartImage.Width, picCompassClipartImage.Height)
                     Catch
                         picCompassClipartImage.Image = Nothing
                     End Try
@@ -54,7 +50,7 @@ Friend Class cItemCompassPropertyControl
     Private Sub txtCompassClipartZoomFactor_ValueChanged(sender As Object, e As EventArgs) Handles txtCompassClipartZoomFactor.ValueChanged
         Try
             If Not DisabledObjectProperty() Then
-                oItem.ClipartScale = txtCompassClipartZoomFactor.Value
+                Item.ClipartScale = txtCompassClipartZoomFactor.Value
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("clipartscale")
                 Call MyBase.MapInvalidate()
@@ -66,7 +62,7 @@ Friend Class cItemCompassPropertyControl
     Private Sub cboCompassNorth_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCompassNorth.SelectedIndexChanged
         Try
             If Not DisabledObjectProperty() Then
-                oItem.North = cboCompassNorth.SelectedIndex
+                Item.North = cboCompassNorth.SelectedIndex
                 Call pSetEnabled()
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("north")
@@ -88,7 +84,7 @@ Friend Class cItemCompassPropertyControl
     Private Sub cboCompassMode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCompassMode.SelectedIndexChanged
         Try
             If Not DisabledObjectProperty() Then
-                oItem.Mode = cboCompassMode.SelectedIndex
+                Item.Mode = cboCompassMode.SelectedIndex
                 Call pSetEnabled()
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("mode")
@@ -101,7 +97,7 @@ Friend Class cItemCompassPropertyControl
     Private Sub txtCompassYear_ValueChanged(sender As Object, e As EventArgs) Handles txtCompassYear.ValueChanged
         Try
             If Not DisabledObjectProperty() Then
-                oItem.Year = txtCompassYear.Value
+                Item.Year = txtCompassYear.Value
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("year")
                 Call MyBase.MapInvalidate()
@@ -113,7 +109,7 @@ Friend Class cItemCompassPropertyControl
     Private Sub chkUseTextScaleOnClipart_CheckedChanged(sender As Object, e As EventArgs) Handles chkUseTextScaleOnClipart.CheckedChanged
         Try
             If Not DisabledObjectProperty() Then
-                oItem.UseTextScaleOnClipart = chkUseTextScaleOnClipart.Checked
+                Item.UseTextScaleOnClipart = chkUseTextScaleOnClipart.Checked
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("usetextscaleonclipart")
                 Call MyBase.MapInvalidate()
@@ -125,7 +121,7 @@ Friend Class cItemCompassPropertyControl
     Private Sub chkUseClipartScaleOnText_CheckedChanged(sender As Object, e As EventArgs) Handles chkUseClipartScaleOnText.CheckedChanged
         Try
             If Not DisabledObjectProperty() Then
-                oItem.UseClipartScaleOnText = chkUseClipartScaleOnText.Checked
+                Item.UseClipartScaleOnText = chkUseClipartScaleOnText.Checked
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("useclipartscaleontext")
                 Call MyBase.MapInvalidate()
@@ -137,7 +133,7 @@ Friend Class cItemCompassPropertyControl
     Private Sub chkHideNorthValue_CheckedChanged(sender As Object, e As EventArgs) Handles chkHideNorthValue.CheckedChanged
         Try
             If Not DisabledObjectProperty() Then
-                oItem.HideNorthValue = chkHideNorthValue.Checked
+                Item.HideNorthValue = chkHideNorthValue.Checked
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("hidescalevalue")
                 Call MyBase.MapInvalidate()

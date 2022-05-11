@@ -24,7 +24,7 @@ Namespace cSurvey.Calculate.Plot
             oProfile = New cProfileSubData(Me, Item.Item("profilesd"))
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlSD As XmlElement = Document.CreateElement("sd")
             Call oXmlSD.SetAttribute("sf", sFrom)
             Call oXmlSD.SetAttribute("st", sTo)

@@ -183,7 +183,7 @@ Partial Class frmImageEdit
         '
         'mnuPreviewStop
         '
-        Me.mnuPreviewStop.Image = Global.cSurveyPC.My.Resources.Resources._stop
+        Me.mnuPreviewStop.Image = Global.cSurveyPC.My.Resources.Resources.stop2
         Me.mnuPreviewStop.Name = "mnuPreviewStop"
         resources.ApplyResources(Me.mnuPreviewStop, "mnuPreviewStop")
         '
@@ -246,7 +246,7 @@ Partial Class frmImageEdit
         'btnZoomOut
         '
         Me.btnZoomOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnZoomOut.Image = Global.cSurveyPC.My.Resources.Resources.magifier_zoom_out
+        Me.btnZoomOut.Image = Global.cSurveyPC.My.Resources.Resources.magnifier_zoom_out
         resources.ApplyResources(Me.btnZoomOut, "btnZoomOut")
         Me.btnZoomOut.Name = "btnZoomOut"
         '
@@ -384,7 +384,7 @@ Partial Class frmImageEdit
         'btnStop
         '
         Me.btnStop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnStop.Image = Global.cSurveyPC.My.Resources.Resources._stop
+        Me.btnStop.Image = Global.cSurveyPC.My.Resources.Resources.stop2
         resources.ApplyResources(Me.btnStop, "btnStop")
         Me.btnStop.Name = "btnStop"
         '

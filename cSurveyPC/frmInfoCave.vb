@@ -1,7 +1,7 @@
 ﻿Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
 
-Public Class frmInfoCave
+friend Class frmInfoCave
     Private oSurvey As cSurvey.cSurvey
 
     Friend Sub New(ByVal Survey As cSurvey.cSurvey, ShowLinkedSurveys As Boolean, Optional ByVal Cave As String = "", Optional Branch As String = "")

@@ -1,0 +1,26 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg x="0px" y="0px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" id="Layer_1" style="enable-background:new 0 0 32 32">
+  <style type="text/css">
+	.Red{fill:#D11C1C;}
+	.Yellow{fill:#FFB115;}
+	.Blue{fill:#1177D7;}
+	.Green{fill:#039C23;}
+	.Black{fill:#727272;}
+	.White{fill:#FFFFFF;}
+	.st0{opacity:0.5;}
+	.st1{opacity:0.75;}
+	.st2{opacity:0.35;}
+	.st3{opacity:0.65;}
+</style>
+  <g id="Area3DStacked">
+    <g class="st0">
+      <path d="M12,8l-4,4L2,6l4-4L12,8z M18,2l-4,4l12,10l4-4L18,2z" class="Red" />
+    </g>
+    <g class="st1">
+      <polygon points="14,6 8,12 2,6 2,20 8,20 14,14 26,26 26,16   " class="Red" />
+      <polygon points="26,30 2,30 2,20 8,20 14,14 26,26   " class="Yellow" />
+    </g>
+    <polygon points="26,26 30,22 30,12 26,16  " class="Red" />
+    <polygon points="30,26 26,30 26,26 30,22  " class="Yellow" />
+  </g>
+</svg>

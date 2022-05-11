@@ -139,9 +139,6 @@
   <data name="Label1.Text" xml:space="preserve">
     <value>Tipo:</value>
   </data>
-  <data name="GroupBox1.Text" xml:space="preserve">
-    <value>Calcolo:</value>
-  </data>
   <data name="Label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 13</value>
   </data>
@@ -238,7 +235,7 @@
     <value>0, 0</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Opzioni:</value>
+    <value>Parametri</value>
   </data>
   <data name="cboCalculateMode.Items" xml:space="preserve">
 		<value>Completo (pianta e sezione)</value>
@@ -272,5 +269,53 @@
   </data>
   <data name="lblDropScaleType.Text" xml:space="preserve">
     <value>Scala dislivello:</value>
+  </data>
+  <data name="cboProfileType.Items" xml:space="preserve">
+    <value>Longitudinale/estesa</value>
+  </data>
+  <data name="cboProfileType.Items1" xml:space="preserve">
+    <value>Proiettata</value>
+  </data>
+  <data name="lblProfileType.Text" xml:space="preserve">
+    <value>Tipo sezione:</value>
+  </data>
+  <data name="tabSession.Text" xml:space="preserve">
+    <value>Sessione</value>
+  </data>
+  <data name="tabLRUD.Text" xml:space="preserve">
+    <value>Dati LRUD</value>
+  </data>
+  <data name="tabCalculation.Text" xml:space="preserve">
+    <value>Calcolo</value>
+  </data>
+  <data name="GroupControl1.Text" xml:space="preserve">
+    <value>Dati LRUD dalle immagini:</value>
+  </data>
+  <data name="cboLRUDStation.Items" xml:space="preserve">
+    <value>Non gestiti</value>
+  </data>
+  <data name="cboLRUDStation.Items1" xml:space="preserve">
+    <value>Caposaldo finale</value>
+  </data>
+  <data name="cboLRUDStation.Items2" xml:space="preserve">
+    <value>Caposaldo iniziale</value>
+  </data>
+  <data name="cboShotDirection.Items" xml:space="preserve">
+    <value>Dai capisaldi ordinati alfabeticamente ponderato</value>
+  </data>
+  <data name="chkLRUDCalculate.Properties.Caption" xml:space="preserve">
+    <value>Rileva dati LRUD</value>
+  </data>
+  <data name="chkSkipInvalidStation.Properties.Caption" xml:space="preserve">
+    <value>Salta capisaldi incompleti</value>
+  </data>
+  <data name="chkUseDropForInclination.Properties.Caption" xml:space="preserve">
+    <value>Calcola inclinazione dal dislivello</value>
+  </data>
+  <data name="frmLRUDFromImages.Text" xml:space="preserve">
+    <value>Dati LRUD dalle immagini:</value>
+  </data>
+  <data name="lblLRUDStation.Text" xml:space="preserve">
+    <value>LRUD riferiti a:</value>
   </data>
 </root>

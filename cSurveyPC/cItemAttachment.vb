@@ -217,15 +217,15 @@ Namespace cSurvey.Design.Items
             Call FixBound()
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal Category As cIItem.cItemCategoryEnum, ByVal Data As Object, ByVal DataFormat As cAttachmentLinks.cAttachmentDataFormatEnum)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal Category As cIItem.cItemCategoryEnum, ByVal Data As Object, ByVal DataFormat As cAttachmentsLinks.cAttachmentDataFormatEnum)
             Call MyBase.New(Survey, Design, Layer, cIItem.cItemTypeEnum.Attachment, Category)
             oSurvey = Survey
             Select Case DataFormat
-                Case cAttachmentLinks.cAttachmentDataFormatEnum.File
+                Case cAttachmentsLinks.cAttachmentDataFormatEnum.File
                     oAttachment = New cAttachmentsLink(oSurvey, Me, DirectCast(oSurvey.Attachments.Add(Data), cAttachment))
-                Case cAttachmentLinks.cAttachmentDataFormatEnum.Data
+                Case cAttachmentsLinks.cAttachmentDataFormatEnum.Data
                     oAttachment = New cAttachmentsLink(oSurvey, Me, DirectCast(oSurvey.Attachments.Add("", Data), cAttachment))
-                Case cAttachmentLinks.cAttachmentDataFormatEnum.Resource
+                Case cAttachmentsLinks.cAttachmentDataFormatEnum.Resource
                     oAttachment = New cAttachmentsLink(oSurvey, Me, DirectCast(oSurvey.Attachments(Data), cAttachment))
                 Case Else
                     oAttachment = New cAttachmentsLink(oSurvey, Me, DirectCast(oSurvey.Attachments(Data), cAttachment))
@@ -253,7 +253,7 @@ Namespace cSurvey.Design.Items
             If MyBase.Points.Count > 0 Then
                 Call Render(Graphics, PaintOptions, Options, Selected)
                 Try
-                    If Not PaintOptions.IsDesign Or (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then
+                    If Not PaintOptions.IsDesign OrElse (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then
                         Dim oPoint As PointF = MyBase.Points(0).Point
                         Debug.Print(PaintOptions.CurrentScale)
                         Dim oBounds As RectangleF = New RectangleF(oPoint.X - oDataBounds.Width / 2, oPoint.Y - oDataBounds.Height / 2, oDataBounds.Width, oDataBounds.Height)
@@ -290,7 +290,7 @@ Namespace cSurvey.Design.Items
             End If
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As Storage.cFile, ByVal item As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As cFile, ByVal item As XmlElement)
             Call MyBase.New(Survey, Design, Layer, File, item)
             oSurvey = Survey
             If modXML.ChildElementExist(item, "attachment") Then
@@ -300,7 +300,7 @@ Namespace cSurvey.Design.Items
             Call FixBound()
         End Sub
 
-        Friend Overrides Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+        Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oItem As XmlElement = MyBase.SaveTo(File, Document, Parent, Options)
             Call oAttachment.SaveTo(File, Document, oItem)
             Return oItem
@@ -348,16 +348,16 @@ Namespace cSurvey.Design.Items
         End Function
 
         Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
-            Dim oMatrix As Matrix = New Matrix
-            If PaintOptions.DrawTranslation Then
-                Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
-                Call oMatrix.Translate(oTranslation.Width, oTranslation.Height)
-            End If
-            Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
-            Call oSVGItem.SetAttribute("name", MyBase.Name)
-            Call modSVG.AppendItemStyle(SVG, oSVGItem, MyBase.Brush, MyBase.Pen)
-            Call oMatrix.Dispose()
-            Return oSVGItem
+            Using oMatrix As Matrix = New Matrix
+                If PaintOptions.DrawTranslation Then
+                    Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
+                    Call oMatrix.Translate(oTranslation.Width, oTranslation.Height)
+                End If
+                Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
+                If MyBase.Name <> "" Then Call oSVGItem.SetAttribute("name", MyBase.Name)
+                Call modSVG.AppendItemStyle(SVG, oSVGItem, MyBase.Brush, MyBase.Pen)
+                Return oSVGItem
+            End Using
         End Function
 
         Public Overrides ReadOnly Property CanImportGeneric As Boolean

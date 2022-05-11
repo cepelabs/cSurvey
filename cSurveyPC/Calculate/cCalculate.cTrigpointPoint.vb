@@ -41,7 +41,7 @@ Namespace cSurvey.Calculate
             dD = modNumbers.StringToDecimal(modXML.GetAttributeValue(Item, "d", 0))
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, ByVal Name As String) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, ByVal Name As String) As XmlElement
             Dim oXmlTrigpointPoint As XmlElement = Document.CreateElement(Name)
             Call oXmlTrigpointPoint.SetAttribute("x", modNumbers.NumberToString(dX, ""))
             Call oXmlTrigpointPoint.SetAttribute("y", modNumbers.NumberToString(dY, ""))

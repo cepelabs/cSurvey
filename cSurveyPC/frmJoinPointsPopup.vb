@@ -2,7 +2,7 @@
 Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Helper.Editor
 
-Public Class frmJoinPointsPopup
+friend Class frmJoinPointsPopup
 
     Private oSurvey As cSurvey.cSurvey
     Private oTool As cEditDesignTools

@@ -319,7 +319,7 @@ Namespace cSurvey
             bVThresholdEnabled = modXML.GetAttributeValue(Session, "vthresholdenabled", False)
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlSession As XmlElement = document.CreateElement("session")
             Call oXmlSession.SetAttribute("date", dDate.ToString("O"))
             Call oXmlSession.SetAttribute("description", sDescription)

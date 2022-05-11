@@ -337,21 +337,6 @@
   <data name="mnuGridStation.Size" type="System.Drawing.Size, System.Drawing">
     <value>164, 104</value>
   </data>
-  <data name="colPlotFrom.HeaderText" xml:space="preserve">
-    <value>Da</value>
-  </data>
-  <data name="colPlotTo.HeaderText" xml:space="preserve">
-    <value>A</value>
-  </data>
-  <data name="colPlotDistance.HeaderText" xml:space="preserve">
-    <value>Distanza</value>
-  </data>
-  <data name="colPlotBearing.HeaderText" xml:space="preserve">
-    <value>Direzione</value>
-  </data>
-  <data name="colPlotInclination.HeaderText" xml:space="preserve">
-    <value>Inclinazione</value>
-  </data>
   <data name="Sinistra.HeaderText" xml:space="preserve">
     <value>Sinistra</value>
   </data>
@@ -382,9 +367,6 @@
   <data name="btnStations.Size" type="System.Drawing.Size, System.Drawing">
     <value>114, 22</value>
   </data>
-  <data name="btnStations.Text" xml:space="preserve">
-    <value>Capisaldi/segnaposto</value>
-  </data>
   <data name="btnPlot.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -402,9 +384,6 @@
   </data>
   <data name="btnPlot.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 22</value>
-  </data>
-  <data name="btnPlot.Text" xml:space="preserve">
-    <value>Poligonale</value>
   </data>
   <data name="mnuTabsLoadImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -444,7 +423,7 @@
         dai3rT132vsbRL3G834AeqauK0rjGRUAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnNew.Text" xml:space="preserve">
+  <data name="btnNew.Caption" xml:space="preserve">
     <value>Nuovo</value>
   </data>
   <data name="btnLoad.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -462,7 +441,7 @@
         xKv6G/voXyxJ+gHvoxswNGb61QAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnLoad.Text" xml:space="preserve">
+  <data name="btnLoad.Caption" xml:space="preserve">
     <value>Apri...</value>
   </data>
   <data name="btnSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -482,7 +461,7 @@
         i+yoZateLUr9b21P8Yu5uR0IAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="btnSave.Text" xml:space="preserve">
+  <data name="btnSave.Caption" xml:space="preserve">
     <value>Salva</value>
   </data>
   <data name="btnOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -504,7 +483,7 @@
         /SBOcD0A+TV3RxQY53/YHTldjIhfAwHxtYI9SBIAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnOptions.Text" xml:space="preserve">
+  <data name="btnOptions.Caption" xml:space="preserve">
     <value>Parametri...</value>
   </data>
   <data name="btnLoadImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -527,7 +506,7 @@
   <data name="btnLoadImage.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 22</value>
   </data>
-  <data name="btnLoadImage.Text" xml:space="preserve">
+  <data name="btnLoadImage.Caption" xml:space="preserve">
     <value>Carica immagine...</value>
   </data>
   <data name="btnPlan.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -548,9 +527,6 @@
   <data name="btnPlan.Size" type="System.Drawing.Size, System.Drawing">
     <value>31, 22</value>
   </data>
-  <data name="btnPlan.Text" xml:space="preserve">
-    <value>Pianta</value>
-  </data>
   <data name="btnProfile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -569,7 +545,7 @@
   <data name="btnProfile.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 22</value>
   </data>
-  <data name="btnProfile.Text" xml:space="preserve">
+  <data name="btnProfile.Caption" xml:space="preserve">
     <value>Sezione</value>
   </data>
   <data name="btnBoth.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -590,7 +566,7 @@
   <data name="btnBoth.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 22</value>
   </data>
-  <data name="btnBoth.Text" xml:space="preserve">
+  <data name="btnBoth.Caption" xml:space="preserve">
     <value>Entrambe</value>
   </data>
   <data name="btnZoomFit.Text" xml:space="preserve">
@@ -614,7 +590,7 @@
   <data name="btnCalculate.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 22</value>
   </data>
-  <data name="btnCalculate.Text" xml:space="preserve">
+  <data name="btnCalculate.Caption" xml:space="preserve">
     <value>Calcola</value>
   </data>
   <data name="btnExport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -631,7 +607,7 @@
         H/D53SrG2Xht9pQ5YoglE/+jCKJfx9Ckq1hGhPIAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnExport.Text" xml:space="preserve">
+  <data name="btnExport.Caption" xml:space="preserve">
     <value>Esporta dati...</value>
   </data>
   <data name="btnConfirm.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -652,7 +628,7 @@
   <data name="btnConfirm.Size" type="System.Drawing.Size, System.Drawing">
     <value>46, 22</value>
   </data>
-  <data name="btnConfirm.Text" xml:space="preserve">
+  <data name="btnConfirm.Caption" xml:space="preserve">
     <value>Conferma</value>
   </data>
   <data name="btnClose.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -673,7 +649,7 @@
   <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 22</value>
   </data>
-  <data name="btnClose.Text" xml:space="preserve">
+  <data name="btnClose.Caption" xml:space="preserve">
     <value>Chiudi</value>
   </data>
   <data name="imlPopup.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
@@ -820,24 +796,246 @@
 </value>
   </data>
   <data name="btnZoomToFit2.Text" xml:space="preserve">
-    <value>1:1</value>
-  </data>
-  <data name="btnZoomToFit1.Text" xml:space="preserve">
     <value>Zoom al contenuto</value>
   </data>
-  <data name="btnZoomOut.Text" xml:space="preserve">
+  <data name="btnZoomOut.Caption" xml:space="preserve">
     <value>Zoom out</value>
   </data>
-  <data name="btnZoomIn.Text" xml:space="preserve">
+  <data name="btnZoomIn.Caption" xml:space="preserve">
     <value>Zoom in</value>
   </data>
-  <data name="colPlotPlanimetricDistance.HeaderText" xml:space="preserve">
+  <data name="btnZoomToFit.Caption" xml:space="preserve">
+    <value>Zoom al contenuto</value>
+  </data>
+  <data name="btnPlan.Caption" xml:space="preserve">
+    <value>Pianta</value>
+  </data>
+  <data name="btnShowRulers.Caption" xml:space="preserve">
+    <value>Righelli e guide</value>
+  </data>
+  <data name="tabStations.Text" xml:space="preserve">
+    <value>Capisaldi/segnaposto</value>
+  </data>
+  <data name="tabPlot.Text" xml:space="preserve">
+    <value>Poligonale</value>
+  </data>
+  <data name="btnHorizontalLayout.Caption" xml:space="preserve">
+    <value>Affianca in orizzontale</value>
+  </data>
+  <data name="btnVerticalLayout.Caption" xml:space="preserve">
+    <value>Affianca in verticale</value>
+  </data>
+  <data name="colShotsTo.Caption" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="colShotsInclination.Caption" xml:space="preserve">
+    <value>Inclinazione</value>
+  </data>
+  <data name="colShotsPlanimetricDistance.Caption" xml:space="preserve">
     <value>Distanza planimetrica</value>
   </data>
-  <data name="colPlotDrop.HeaderText" xml:space="preserve">
+  <data name="colShotsFrom.Caption" xml:space="preserve">
+    <value>Da</value>
+  </data>
+  <data name="colShotsDrop.Caption" xml:space="preserve">
     <value>Dislivello</value>
   </data>
-  <data name="btnShowRulers.Text" xml:space="preserve">
-    <value>Righelli e guide</value>
+  <data name="colShotsDistance.Caption" xml:space="preserve">
+    <value>Distanza</value>
+  </data>
+  <data name="colShotsBearing.Caption" xml:space="preserve">
+    <value>Direzione</value>
+  </data>
+  <data name="btnAdd2.Caption" xml:space="preserve">
+    <value>Aggiungi caposaldo/segnaposto:</value>
+  </data>
+  <data name="btnImageBWThreshold.Caption" xml:space="preserve">
+    <value>Bianco e nero</value>
+  </data>
+  <data name="btnImageInvertColor.Caption" xml:space="preserve">
+    <value>Inverti colori</value>
+  </data>
+  <data name="btnImageToGrayScale.Caption" xml:space="preserve">
+    <value>Scala di grigio</value>
+  </data>
+  <data name="btnSetOrigin2.Caption" xml:space="preserve">
+    <value>Imposta come origine</value>
+  </data>
+  <data name="btnPlanShowAll.Caption" xml:space="preserve">
+    <value>Mostra tutti in pianta</value>
+  </data>
+  <data name="btnProfileShowAll.Caption" xml:space="preserve">
+    <value>Mostra tutti in sezione</value>
+  </data>
+  <data name="mnuPreviewRuler.Text" xml:space="preserve">
+    <value>Rigello</value>
+  </data>
+  <data name="btnShowRuler.Caption" xml:space="preserve">
+    <value>Righello</value>
+  </data>
+  <data name="btnProperties2.Caption" xml:space="preserve">
+    <value>Proprietà...</value>
+  </data>
+  <data name="docProfile.Caption" xml:space="preserve">
+    <value>Sezione</value>
+  </data>
+  <data name="colPlaceholdersProfilePoint.Caption" xml:space="preserve">
+    <value>Sezione</value>
+  </data>
+  <data name="dockProfile.Text" xml:space="preserve">
+    <value>Sezione</value>
+  </data>
+  <data name="dockPlan.Text" xml:space="preserve">
+    <value>Pianta</value>
+  </data>
+  <data name="docPlan.Caption" xml:space="preserve">
+    <value>Pianta</value>
+  </data>
+  <data name="colPlaceholdersPlanPoint.Caption" xml:space="preserve">
+    <value>Pianta</value>
+  </data>
+  <data name="btnProfileHideAll.Caption" xml:space="preserve">
+    <value>Nascondi tutti i sezione</value>
+  </data>
+  <data name="btnPlanHideAll.Caption" xml:space="preserve">
+    <value>Nascondi tutti in pianta</value>
+  </data>
+  <data name="btnDelete2.Caption" xml:space="preserve">
+    <value>Elimina caposaldo</value>
+  </data>
+  <data name="btnRemove2.Caption" xml:space="preserve">
+    <value>Rimuovi segnaposto</value>
+  </data>
+  <data name="btnDeleteLink.Caption" xml:space="preserve">
+    <value>Elimina collegamento</value>
+  </data>
+  <data name="btnDeleteAll2.Caption" xml:space="preserve">
+    <value>Elimina tutti i capisaldi</value>
+  </data>
+  <data name="btnRemoveAll2.Caption" xml:space="preserve">
+    <value>Rimuovi tutti i segnaposto</value>
+  </data>
+  <data name="mnuPreviewRulerCenterHere.Text" xml:space="preserve">
+    <value>Centra qui</value>
+  </data>
+  <data name="btnRulerCenterHere.Caption" xml:space="preserve">
+    <value>Centra qui</value>
+  </data>
+  <data name="btnRulerAlignTo.Caption" xml:space="preserve">
+    <value>Allinea a</value>
+  </data>
+  <data name="mnuPreviewRulerAlignHere.Text" xml:space="preserve">
+    <value>Allinea a</value>
+  </data>
+  <data name="colPlaceholdersPlanConnectedTo.Caption" xml:space="preserve">
+    <value>Successivo (in pianta)</value>
+  </data>
+  <data name="colPlaceholdersProfileConnectedTo.Caption" xml:space="preserve">
+    <value>Successivo (in sezione)</value>
+  </data>
+  <data name="dockPlot.Text" xml:space="preserve">
+    <value>Poligonale</value>
+  </data>
+  <data name="colPlaceholdersName.Caption" xml:space="preserve">
+    <value>Caposaldo</value>
+  </data>
+  <data name="dockStations.Text" xml:space="preserve">
+    <value>Capisaldi/segnaposti</value>
+  </data>
+  <data name="colPlaceholdersType.Caption" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="colShotsDown.Caption" xml:space="preserve">
+    <value>Sotto</value>
+  </data>
+  <data name="colShotsLeft.Caption" xml:space="preserve">
+    <value>Sinistra</value>
+  </data>
+  <data name="colShotsRight.Caption" xml:space="preserve">
+    <value>Destra</value>
+  </data>
+  <data name="colShotsUp.Caption" xml:space="preserve">
+    <value>Sopra</value>
+  </data>
+  <data name="btnSaveAs.Caption" xml:space="preserve">
+    <value>Salva come...</value>
+  </data>
+  <data name="btnLeftEdit.Caption" xml:space="preserve">
+    <value>Sinistra</value>
+  </data>
+  <data name="btnMagnifier.Caption" xml:space="preserve">
+    <value>Lente</value>
+  </data>
+  <data name="btnRightEdit.Caption" xml:space="preserve">
+    <value>Destra</value>
+  </data>
+  <data name="btnUpEdit.Caption" xml:space="preserve">
+    <value>Sopra</value>
+  </data>
+  <data name="btnVisibility.Caption" xml:space="preserve">
+    <value>Visibilità</value>
+  </data>
+  <data name="btnVisible.Caption" xml:space="preserve">
+    <value>Visibile</value>
+  </data>
+  <data name="colPlaceholdersPlanVisible.Caption" xml:space="preserve">
+    <value>Visibile in pianta</value>
+  </data>
+  <data name="colPlaceholdersProfileVisible.Caption" xml:space="preserve">
+    <value>Visibile in sezione</value>
+  </data>
+  <data name="colShotsUserDown.Caption" xml:space="preserve">
+    <value>Sotto (manuale)</value>
+  </data>
+  <data name="colShotsUserLeft.Caption" xml:space="preserve">
+    <value>Sinistra (manuale)</value>
+  </data>
+  <data name="colShotsUserRight.Caption" xml:space="preserve">
+    <value>Destra (manuale)</value>
+  </data>
+  <data name="colShotsUserUp.Caption" xml:space="preserve">
+    <value>Sopra (manuale)</value>
+  </data>
+  <data name="dockMagnifier.Text" xml:space="preserve">
+    <value>Lente</value>
+  </data>
+  <data name="pageWorkflow.Text" xml:space="preserve">
+    <value>Lavoro</value>
+  </data>
+  <data name="pageMain.Text" xml:space="preserve">
+    <value>Generale</value>
+  </data>
+  <data name="btnShowRuler.Text" xml:space="preserve">
+    <value>Righello</value>
+  </data>
+  <data name="grpCommands.Text" xml:space="preserve">
+    <value>Comandi</value>
+  </data>
+  <data name="grpWorkflowCommands.Text" xml:space="preserve">
+    <value>Comandi</value>
+  </data>
+  <data name="grpLinks.Text" xml:space="preserve">
+    <value>Collegamenti</value>
+  </data>
+  <data name="grpPlaceholders.Text" xml:space="preserve">
+    <value>Segnaposti</value>
+  </data>
+  <data name="grpStations.Text" xml:space="preserve">
+    <value>Capisaldi</value>
+  </data>
+  <data name="grpView.Text" xml:space="preserve">
+    <value>Visualizza</value>
+  </data>
+  <data name="grpImageColors.Text" xml:space="preserve">
+    <value>Colori</value>
+  </data>
+  <data name="grpImageCommands.Text" xml:space="preserve">
+    <value>Comandi</value>
+  </data>
+  <data name="grpIntegration.Text" xml:space="preserve">
+    <value>Azioni</value>
+  </data>
+  <data name="pageImage.Text" xml:space="preserve">
+    <value>Immagine</value>
   </data>
 </root>

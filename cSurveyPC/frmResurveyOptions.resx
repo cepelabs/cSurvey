@@ -126,7 +126,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cmdOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 394</value>
+    <value>336, 7</value>
   </data>
   <data name="cmdOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
@@ -142,13 +142,13 @@
     <value>cmdOk</value>
   </data>
   <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>Panel1</value>
   </data>
   <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="cmdCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -157,7 +157,7 @@
     <value>NoControl</value>
   </data>
   <data name="cmdCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>198, 394</value>
+    <value>422, 7</value>
   </data>
   <data name="cmdCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
@@ -172,16 +172,70 @@
     <value>cmdCancel</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>Panel1</value>
   </data>
   <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cboProfileType.Items" xml:space="preserve">
+    <value>Extended elevation</value>
+  </data>
+  <data name="cboProfileType.Items1" xml:space="preserve">
+    <value>Projected</value>
+  </data>
+  <data name="cboProfileType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 122</value>
+  </data>
+  <data name="cboProfileType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 21</value>
+  </data>
+  <data name="cboProfileType.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;cboProfileType.Name" xml:space="preserve">
+    <value>cboProfileType</value>
+  </data>
+  <data name="&gt;&gt;cboProfileType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboProfileType.Parent" xml:space="preserve">
+    <value>tabCalculation</value>
+  </data>
+  <data name="&gt;&gt;cboProfileType.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="GroupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="lblProfileType.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblProfileType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblProfileType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 125</value>
+  </data>
+  <data name="lblProfileType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 13</value>
+  </data>
+  <data name="lblProfileType.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="lblProfileType.Text" xml:space="preserve">
+    <value>Profile type:</value>
+  </data>
+  <data name="&gt;&gt;lblProfileType.Name" xml:space="preserve">
+    <value>lblProfileType</value>
+  </data>
+  <data name="&gt;&gt;lblProfileType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblProfileType.Parent" xml:space="preserve">
+    <value>tabCalculation</value>
+  </data>
+  <data name="&gt;&gt;lblProfileType.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="cboDropScaleType.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -196,10 +250,10 @@
     <value>Oblique</value>
   </data>
   <data name="cboDropScaleType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>147, 103</value>
+    <value>138, 95</value>
   </data>
   <data name="cboDropScaleType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 21</value>
+    <value>143, 21</value>
   </data>
   <data name="cboDropScaleType.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -211,10 +265,10 @@
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cboDropScaleType.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
+    <value>tabCalculation</value>
   </data>
   <data name="&gt;&gt;cboDropScaleType.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>6</value>
   </data>
   <data name="lblDropScaleType.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -226,7 +280,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblDropScaleType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 106</value>
+    <value>13, 98</value>
   </data>
   <data name="lblDropScaleType.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 13</value>
@@ -244,10 +298,10 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lblDropScaleType.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
+    <value>tabCalculation</value>
   </data>
   <data name="&gt;&gt;lblDropScaleType.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>8</value>
   </data>
   <data name="cboPlanScaleType.Items" xml:space="preserve">
     <value>Horizontal (ΔX)</value>
@@ -259,10 +313,10 @@
     <value>Oblique</value>
   </data>
   <data name="cboPlanScaleType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>147, 76</value>
+    <value>138, 68</value>
   </data>
   <data name="cboPlanScaleType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 21</value>
+    <value>143, 21</value>
   </data>
   <data name="cboPlanScaleType.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -274,10 +328,10 @@
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cboPlanScaleType.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
+    <value>tabCalculation</value>
   </data>
   <data name="&gt;&gt;cboPlanScaleType.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>10</value>
   </data>
   <data name="lblPlanScaleType.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -286,7 +340,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPlanScaleType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 79</value>
+    <value>13, 71</value>
   </data>
   <data name="lblPlanScaleType.Size" type="System.Drawing.Size, System.Drawing">
     <value>117, 13</value>
@@ -304,58 +358,52 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lblPlanScaleType.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
+    <value>tabCalculation</value>
   </data>
   <data name="&gt;&gt;lblPlanScaleType.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="chkUseDropForInclination.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>11</value>
   </data>
   <data name="chkUseDropForInclination.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkUseDropForInclination.Location" type="System.Drawing.Point, System.Drawing">
-    <value>59, 53</value>
+    <value>138, 42</value>
+  </data>
+  <data name="chkUseDropForInclination.Properties.Caption" xml:space="preserve">
+    <value>Use drop for inclination</value>
   </data>
   <data name="chkUseDropForInclination.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 17</value>
+    <value>136, 20</value>
   </data>
   <data name="chkUseDropForInclination.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
-  </data>
-  <data name="chkUseDropForInclination.Text" xml:space="preserve">
-    <value>Use drop for inclination</value>
   </data>
   <data name="&gt;&gt;chkUseDropForInclination.Name" xml:space="preserve">
     <value>chkUseDropForInclination</value>
   </data>
   <data name="&gt;&gt;chkUseDropForInclination.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkUseDropForInclination.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
+    <value>tabCalculation</value>
   </data>
   <data name="&gt;&gt;chkUseDropForInclination.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>13</value>
   </data>
   <data name="chkSkipInvalidStation.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
-  <data name="chkSkipInvalidStation.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="chkSkipInvalidStation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 177</value>
+    <value>13, 202</value>
+  </data>
+  <data name="chkSkipInvalidStation.Properties.Caption" xml:space="preserve">
+    <value>Skip incorrect station</value>
   </data>
   <data name="chkSkipInvalidStation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 17</value>
+    <value>126, 20</value>
   </data>
   <data name="chkSkipInvalidStation.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
-  </data>
-  <data name="chkSkipInvalidStation.Text" xml:space="preserve">
-    <value>Skip incorrect station</value>
   </data>
   <data name="chkSkipInvalidStation.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -364,13 +412,13 @@
     <value>chkSkipInvalidStation</value>
   </data>
   <data name="&gt;&gt;chkSkipInvalidStation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkSkipInvalidStation.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
+    <value>tabCalculation</value>
   </data>
   <data name="&gt;&gt;chkSkipInvalidStation.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>14</value>
   </data>
   <data name="lblNordCorrectionDegrees.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -379,7 +427,7 @@
     <value>True</value>
   </data>
   <data name="lblNordCorrectionDegrees.Location" type="System.Drawing.Point, System.Drawing">
-    <value>204, 152</value>
+    <value>218, 167</value>
   </data>
   <data name="lblNordCorrectionDegrees.Size" type="System.Drawing.Size, System.Drawing">
     <value>12, 13</value>
@@ -397,37 +445,10 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lblNordCorrectionDegrees.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
+    <value>tabCalculation</value>
   </data>
   <data name="&gt;&gt;lblNordCorrectionDegrees.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="txtNordCorrection.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="txtNordCorrection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>147, 150</value>
-  </data>
-  <data name="txtNordCorrection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 21</value>
-  </data>
-  <data name="txtNordCorrection.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="txtNordCorrection.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtNordCorrection.Name" xml:space="preserve">
-    <value>txtNordCorrection</value>
-  </data>
-  <data name="&gt;&gt;txtNordCorrection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtNordCorrection.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;txtNordCorrection.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>12</value>
   </data>
   <data name="lblNordCorrection.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -436,7 +457,7 @@
     <value>True</value>
   </data>
   <data name="lblNordCorrection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 152</value>
+    <value>13, 167</value>
   </data>
   <data name="lblNordCorrection.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 13</value>
@@ -454,10 +475,10 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lblNordCorrection.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
+    <value>tabCalculation</value>
   </data>
   <data name="&gt;&gt;lblNordCorrection.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="cboCalculateMode.Items" xml:space="preserve">
     <value>Complete (plan and section)</value>
@@ -466,7 +487,7 @@
     <value>Plan (only the plan)</value>
   </data>
   <data name="cboCalculateMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>59, 26</value>
+    <value>138, 15</value>
   </data>
   <data name="cboCalculateMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 21</value>
@@ -481,16 +502,16 @@
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cboCalculateMode.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
+    <value>tabCalculation</value>
   </data>
   <data name="&gt;&gt;cboCalculateMode.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>5</value>
   </data>
   <data name="Label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 29</value>
+    <value>13, 18</value>
   </data>
   <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 13</value>
@@ -508,43 +529,16 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
+    <value>tabCalculation</value>
   </data>
   <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="GroupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="GroupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>263, 209</value>
-  </data>
-  <data name="GroupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="GroupBox1.Text" xml:space="preserve">
-    <value>Calculation:</value>
-  </data>
-  <data name="&gt;&gt;GroupBox1.Name" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;GroupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GroupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;GroupBox1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="GroupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+    <value>7</value>
   </data>
   <data name="Label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="Label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>204, 114</value>
+    <value>198, 129</value>
   </data>
   <data name="Label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 13</value>
@@ -562,40 +556,16 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Label6.Parent" xml:space="preserve">
-    <value>GroupBox2</value>
+    <value>frmLRUDFromImages</value>
   </data>
   <data name="&gt;&gt;Label6.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtUDMaxValue.Location" type="System.Drawing.Point, System.Drawing">
-    <value>147, 112</value>
-  </data>
-  <data name="txtUDMaxValue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 21</value>
-  </data>
-  <data name="txtUDMaxValue.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="txtUDMaxValue.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtUDMaxValue.Name" xml:space="preserve">
-    <value>txtUDMaxValue</value>
-  </data>
-  <data name="&gt;&gt;txtUDMaxValue.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtUDMaxValue.Parent" xml:space="preserve">
-    <value>GroupBox2</value>
-  </data>
-  <data name="&gt;&gt;txtUDMaxValue.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="Label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="Label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 114</value>
+    <value>13, 129</value>
   </data>
   <data name="Label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 13</value>
@@ -613,16 +583,16 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Label7.Parent" xml:space="preserve">
-    <value>GroupBox2</value>
+    <value>frmLRUDFromImages</value>
   </data>
   <data name="&gt;&gt;Label7.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="Label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="Label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>204, 87</value>
+    <value>198, 102</value>
   </data>
   <data name="Label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 13</value>
@@ -640,40 +610,16 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Label4.Parent" xml:space="preserve">
-    <value>GroupBox2</value>
+    <value>frmLRUDFromImages</value>
   </data>
   <data name="&gt;&gt;Label4.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="txtLRMaxValue.Location" type="System.Drawing.Point, System.Drawing">
-    <value>147, 85</value>
-  </data>
-  <data name="txtLRMaxValue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 21</value>
-  </data>
-  <data name="txtLRMaxValue.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
-  </data>
-  <data name="txtLRMaxValue.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtLRMaxValue.Name" xml:space="preserve">
-    <value>txtLRMaxValue</value>
-  </data>
-  <data name="&gt;&gt;txtLRMaxValue.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtLRMaxValue.Parent" xml:space="preserve">
-    <value>GroupBox2</value>
-  </data>
-  <data name="&gt;&gt;txtLRMaxValue.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="Label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="Label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 87</value>
+    <value>13, 102</value>
   </data>
   <data name="Label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 13</value>
@@ -691,43 +637,40 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Label5.Parent" xml:space="preserve">
-    <value>GroupBox2</value>
+    <value>frmLRUDFromImages</value>
   </data>
   <data name="&gt;&gt;Label5.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="chkLRUDCalculate.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>9</value>
   </data>
   <data name="chkLRUDCalculate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 29</value>
+    <value>16, 44</value>
+  </data>
+  <data name="chkLRUDCalculate.Properties.Caption" xml:space="preserve">
+    <value>Get LRUD data</value>
   </data>
   <data name="chkLRUDCalculate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 17</value>
+    <value>97, 20</value>
   </data>
   <data name="chkLRUDCalculate.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
-  </data>
-  <data name="chkLRUDCalculate.Text" xml:space="preserve">
-    <value>Get LRUD data</value>
   </data>
   <data name="&gt;&gt;chkLRUDCalculate.Name" xml:space="preserve">
     <value>chkLRUDCalculate</value>
   </data>
   <data name="&gt;&gt;chkLRUDCalculate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkLRUDCalculate.Parent" xml:space="preserve">
-    <value>GroupBox2</value>
+    <value>frmLRUDFromImages</value>
   </data>
   <data name="&gt;&gt;chkLRUDCalculate.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>4</value>
   </data>
   <data name="Label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="Label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>204, 60</value>
+    <value>198, 75</value>
   </data>
   <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>19, 13</value>
@@ -745,40 +688,16 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Label2.Parent" xml:space="preserve">
-    <value>GroupBox2</value>
+    <value>frmLRUDFromImages</value>
   </data>
   <data name="&gt;&gt;Label2.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="txtLRUDBorderWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>147, 58</value>
-  </data>
-  <data name="txtLRUDBorderWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 21</value>
-  </data>
-  <data name="txtLRUDBorderWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="txtLRUDBorderWidth.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtLRUDBorderWidth.Name" xml:space="preserve">
-    <value>txtLRUDBorderWidth</value>
-  </data>
-  <data name="&gt;&gt;txtLRUDBorderWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtLRUDBorderWidth.Parent" xml:space="preserve">
-    <value>GroupBox2</value>
-  </data>
-  <data name="&gt;&gt;txtLRUDBorderWidth.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
   <data name="Label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="Label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 60</value>
+    <value>13, 75</value>
   </data>
   <data name="Label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 13</value>
@@ -796,33 +715,382 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Label3.Parent" xml:space="preserve">
-    <value>GroupBox2</value>
+    <value>frmLRUDFromImages</value>
   </data>
   <data name="&gt;&gt;Label3.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>5</value>
   </data>
-  <data name="GroupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 227</value>
+  <data name="Panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
   </data>
-  <data name="GroupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>263, 152</value>
+  <data name="Panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 416</value>
   </data>
-  <data name="GroupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+  <data name="Panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>511, 40</value>
   </data>
-  <data name="GroupBox2.Text" xml:space="preserve">
-    <value>LRUD data:</value>
+  <data name="Panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
   </data>
-  <data name="&gt;&gt;GroupBox2.Name" xml:space="preserve">
-    <value>GroupBox2</value>
+  <data name="&gt;&gt;Panel1.Name" xml:space="preserve">
+    <value>Panel1</value>
   </data>
-  <data name="&gt;&gt;GroupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;GroupBox2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Panel1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;GroupBox2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;Panel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="XtraTabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="XtraTabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 8</value>
+  </data>
+  <data name="cboShotDirection.Items" xml:space="preserve">
+    <value>From station's names ordered smart alphabetically</value>
+  </data>
+  <data name="cboShotDirection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 260</value>
+  </data>
+  <data name="cboShotDirection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>269, 21</value>
+  </data>
+  <data name="cboShotDirection.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;cboShotDirection.Name" xml:space="preserve">
+    <value>cboShotDirection</value>
+  </data>
+  <data name="&gt;&gt;cboShotDirection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboShotDirection.Parent" xml:space="preserve">
+    <value>tabCalculation</value>
+  </data>
+  <data name="&gt;&gt;cboShotDirection.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblShotDirection.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblShotDirection.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblShotDirection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 263</value>
+  </data>
+  <data name="lblShotDirection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 13</value>
+  </data>
+  <data name="lblShotDirection.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="lblShotDirection.Text" xml:space="preserve">
+    <value>Shot direction:</value>
+  </data>
+  <data name="&gt;&gt;lblShotDirection.Name" xml:space="preserve">
+    <value>lblShotDirection</value>
+  </data>
+  <data name="&gt;&gt;lblShotDirection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblShotDirection.Parent" xml:space="preserve">
+    <value>tabCalculation</value>
+  </data>
+  <data name="&gt;&gt;lblShotDirection.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtNordCorrection.EditValue" type="System.Decimal, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="txtNordCorrection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 164</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v20.2" name="DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="txtNordCorrection.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v20.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtNordCorrection.Properties.Mask.EditMask" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="txtNordCorrection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 20</value>
+  </data>
+  <data name="txtNordCorrection.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;txtNordCorrection.Name" xml:space="preserve">
+    <value>txtNordCorrection</value>
+  </data>
+  <data name="&gt;&gt;txtNordCorrection.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtNordCorrection.Parent" xml:space="preserve">
+    <value>tabCalculation</value>
+  </data>
+  <data name="&gt;&gt;txtNordCorrection.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabCalculation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>493, 371</value>
+  </data>
+  <data name="tabCalculation.Text" xml:space="preserve">
+    <value>Calculation</value>
+  </data>
+  <data name="&gt;&gt;tabCalculation.Name" xml:space="preserve">
+    <value>tabCalculation</value>
+  </data>
+  <data name="&gt;&gt;tabCalculation.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabCalculation.Parent" xml:space="preserve">
+    <value>XtraTabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabCalculation.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="XtraTabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>495, 400</value>
+  </data>
+  <data name="XtraTabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="cboLRUDStation.Items" xml:space="preserve">
+    <value>Not managed</value>
+  </data>
+  <data name="cboLRUDStation.Items1" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="cboLRUDStation.Items2" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="cboLRUDStation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 15</value>
+  </data>
+  <data name="cboLRUDStation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 21</value>
+  </data>
+  <data name="cboLRUDStation.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;cboLRUDStation.Name" xml:space="preserve">
+    <value>cboLRUDStation</value>
+  </data>
+  <data name="&gt;&gt;cboLRUDStation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboLRUDStation.Parent" xml:space="preserve">
+    <value>tabLRUD</value>
+  </data>
+  <data name="&gt;&gt;cboLRUDStation.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblLRUDStation.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblLRUDStation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblLRUDStation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 18</value>
+  </data>
+  <data name="lblLRUDStation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 13</value>
+  </data>
+  <data name="lblLRUDStation.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="lblLRUDStation.Text" xml:space="preserve">
+    <value>LRUD refers to:</value>
+  </data>
+  <data name="&gt;&gt;lblLRUDStation.Name" xml:space="preserve">
+    <value>lblLRUDStation</value>
+  </data>
+  <data name="&gt;&gt;lblLRUDStation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblLRUDStation.Parent" xml:space="preserve">
+    <value>tabLRUD</value>
+  </data>
+  <data name="&gt;&gt;lblLRUDStation.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtUDMaxValue.EditValue" type="System.Decimal, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="txtUDMaxValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 126</value>
+  </data>
+  <data name="txtUDMaxValue.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v20.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtUDMaxValue.Properties.Mask.EditMask" xml:space="preserve">
+    <value>N1</value>
+  </data>
+  <data name="txtUDMaxValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 20</value>
+  </data>
+  <data name="txtUDMaxValue.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;txtUDMaxValue.Name" xml:space="preserve">
+    <value>txtUDMaxValue</value>
+  </data>
+  <data name="&gt;&gt;txtUDMaxValue.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtUDMaxValue.Parent" xml:space="preserve">
+    <value>frmLRUDFromImages</value>
+  </data>
+  <data name="&gt;&gt;txtUDMaxValue.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtLRMaxValue.EditValue" type="System.Decimal, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="txtLRMaxValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 99</value>
+  </data>
+  <data name="txtLRMaxValue.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v20.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtLRMaxValue.Properties.Mask.EditMask" xml:space="preserve">
+    <value>N1</value>
+  </data>
+  <data name="txtLRMaxValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 20</value>
+  </data>
+  <data name="txtLRMaxValue.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;txtLRMaxValue.Name" xml:space="preserve">
+    <value>txtLRMaxValue</value>
+  </data>
+  <data name="&gt;&gt;txtLRMaxValue.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtLRMaxValue.Parent" xml:space="preserve">
+    <value>frmLRUDFromImages</value>
+  </data>
+  <data name="&gt;&gt;txtLRMaxValue.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtLRUDBorderWidth.EditValue" type="System.Decimal, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="txtLRUDBorderWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 72</value>
+  </data>
+  <data name="txtLRUDBorderWidth.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v20.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtLRUDBorderWidth.Properties.Mask.EditMask" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="txtLRUDBorderWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 20</value>
+  </data>
+  <data name="txtLRUDBorderWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;txtLRUDBorderWidth.Name" xml:space="preserve">
+    <value>txtLRUDBorderWidth</value>
+  </data>
+  <data name="&gt;&gt;txtLRUDBorderWidth.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtLRUDBorderWidth.Parent" xml:space="preserve">
+    <value>frmLRUDFromImages</value>
+  </data>
+  <data name="&gt;&gt;txtLRUDBorderWidth.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="frmLRUDFromImages.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="frmLRUDFromImages.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 42</value>
+  </data>
+  <data name="frmLRUDFromImages.Size" type="System.Drawing.Size, System.Drawing">
+    <value>468, 166</value>
+  </data>
+  <data name="frmLRUDFromImages.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="frmLRUDFromImages.Text" xml:space="preserve">
+    <value>LRUD data from images:</value>
+  </data>
+  <data name="&gt;&gt;frmLRUDFromImages.Name" xml:space="preserve">
+    <value>frmLRUDFromImages</value>
+  </data>
+  <data name="&gt;&gt;frmLRUDFromImages.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;frmLRUDFromImages.Parent" xml:space="preserve">
+    <value>tabLRUD</value>
+  </data>
+  <data name="&gt;&gt;frmLRUDFromImages.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabLRUD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>493, 371</value>
+  </data>
+  <data name="tabLRUD.Text" xml:space="preserve">
+    <value>LRUD data</value>
+  </data>
+  <data name="&gt;&gt;tabLRUD.Name" xml:space="preserve">
+    <value>tabLRUD</value>
+  </data>
+  <data name="&gt;&gt;tabLRUD.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabLRUD.Parent" xml:space="preserve">
+    <value>XtraTabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabLRUD.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;XtraTabControl1.Name" xml:space="preserve">
+    <value>XtraTabControl1</value>
+  </data>
+  <data name="&gt;&gt;XtraTabControl1.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabControl, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;XtraTabControl1.Parent" xml:space="preserve">
+    <value>Panel2</value>
+  </data>
+  <data name="&gt;&gt;XtraTabControl1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="Panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="Panel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 8, 8, 8</value>
+  </data>
+  <data name="Panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>511, 416</value>
+  </data>
+  <data name="Panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;Panel2.Name" xml:space="preserve">
+    <value>Panel2</value>
+  </data>
+  <data name="&gt;&gt;Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Panel2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Panel2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -832,12 +1100,9 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>287, 427</value>
+    <value>511, 456</value>
   </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="frmResurveyOptions.IconOptions.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAHd1cwBxcXUAeXd1AHp4dgB8engAfnx6ALN/GACAfXsAgX58ALWB
@@ -902,9 +1167,6 @@
         AAD4DwAAjAEAAAgAAAAAAAAAAAcAAMEHAADDAAAA4YAAAPBBAAA=
 </value>
   </data>
-  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
@@ -915,6 +1177,6 @@
     <value>frmResurveyOptions</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>DevExpress.XtraEditors.XtraForm, DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
 </root>

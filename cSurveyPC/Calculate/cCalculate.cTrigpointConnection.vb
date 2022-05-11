@@ -9,13 +9,29 @@ Namespace cSurvey.Calculate
         Private dDistance As Decimal
         Private oPoint As cTrigPointPoint
         Private bSplay As Boolean
+        Private bEquate As Boolean
+
+        Friend Sub New(ByVal Name As String)
+            sName = Name
+            dDistance = 0
+            bSplay = False
+            oPoint = New cTrigPointPoint(0, 0, 0)
+            bEquate = True
+        End Sub
 
         Friend Sub New(ByVal Name As String, ByVal Distance As Decimal, Optional Splay As Boolean = False)
             sName = Name
             dDistance = Distance
             bSplay = Splay
             oPoint = New cTrigPointPoint(0, 0, 0)
+            bEquate = False
         End Sub
+
+        Public ReadOnly Property Equate() As Boolean
+            Get
+                Return bEquate
+            End Get
+        End Property
 
         Friend Sub New(ByVal Item As XmlElement)
             sName = Item.GetAttribute("n")
@@ -26,14 +42,16 @@ Namespace cSurvey.Calculate
                 oPoint = New cTrigPointPoint(0, 0, 0)
             End If
             bSplay = modXML.GetAttributeValue(Item, "s", 0)
+            bEquate = modXML.GetAttributeValue(Item, "e", 0)
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlTrigpointConnection As XmlElement = Document.CreateElement("tcon")
             Call oXmlTrigpointConnection.SetAttribute("n", sName)
-            Call oXmlTrigpointConnection.SetAttribute("dst", modNumbers.NumberToString(dDistance, ""))
+            If dDistance <> 0 Then Call oXmlTrigpointConnection.SetAttribute("dst", modNumbers.NumberToString(dDistance, ""))
             If Not oPoint Is Nothing Then Call oPoint.SaveTo(File, Document, oXmlTrigpointConnection, "p")
             If bSplay Then Call oXmlTrigpointConnection.SetAttribute("s", "1")
+            If bEquate Then Call oXmlTrigpointConnection.SetAttribute("e", "1")
             Call Parent.AppendChild(oXmlTrigpointConnection)
             Return oXmlTrigpointConnection
         End Function

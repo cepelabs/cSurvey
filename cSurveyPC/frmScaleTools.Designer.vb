@@ -59,6 +59,7 @@ Partial Class frmScaleTools
         Me.lv.FullRowSelect = True
         Me.lv.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {CType(resources.GetObject("lv.Groups"), System.Windows.Forms.ListViewGroup), CType(resources.GetObject("lv.Groups1"), System.Windows.Forms.ListViewGroup), CType(resources.GetObject("lv.Groups2"), System.Windows.Forms.ListViewGroup)})
         Me.lv.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None
+        Me.lv.HideSelection = False
         resources.ApplyResources(Me.lv, "lv")
         Me.lv.Name = "lv"
         Me.lv.UseCompatibleStateImageBehavior = False
@@ -95,6 +96,8 @@ Partial Class frmScaleTools
         Me.Controls.Add(Me.txtScale)
         Me.Controls.Add(Me.lblScale1)
         Me.Controls.Add(Me.lblScale)
+        Me.IconOptions.Icon = CType(resources.GetObject("frmScaleTools.IconOptions.Icon"), System.Drawing.Icon)
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.icon_scale
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmScaleTools"

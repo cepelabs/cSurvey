@@ -22,7 +22,7 @@
 '            End Get
 '        End Property
 
-'        Friend Sub New(ByVal Survey As cSurvey, ByVal File As Storage.cFile, ByVal Model3D As XmlElement)
+'        Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal Model3D As XmlElement)
 '            oSurvey = Survey
 '            oItems = New cItems3D(oSurvey, Me, File, Model3D.Item("items"))
 '        End Sub
@@ -32,7 +32,7 @@
 '            oItems = New cItems3D(oSurvey, Me)
 '        End Sub
 
-'        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+'        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
 '            Dim oXmlModel3D As XmlElement = Document.CreateElement("model3d")
 '            Call oItems.SaveTo(File, Document, oXmlModel3D, Options)
 '            Call Parent.AppendChild(oXmlModel3D)
@@ -68,7 +68,7 @@
 '            End Get
 '        End Property
 
-'        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+'        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
 '            Dim oXmlItems As XmlElement = Document.CreateElement("items")
 '            Dim iIndex As Integer = 0
 '            Dim iCount As Integer = oItems.Count
@@ -82,7 +82,7 @@
 '            Return oXmlItems
 '        End Function
 
-'        Friend Sub New(ByVal Survey As cSurvey, ByVal Model3D As cModel3D, ByVal File As Storage.cFile, ByVal Items As XmlElement)
+'        Friend Sub New(ByVal Survey As cSurvey, ByVal Model3D As cModel3D, ByVal File As cFile, ByVal Items As XmlElement)
 '            oSurvey = Survey
 '            oModel3D = Model3D
 '            oSurvey = Survey
@@ -130,7 +130,7 @@
 '            End Get
 '        End Property
 
-'        Friend Sub New(ByVal Survey As cSurvey, ByVal File As Storage.cFile, ByVal Item As XmlElement)
+'        Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal Item As XmlElement)
 '            Call MyBase.New(Survey, File, Item)
 '        End Sub
 
@@ -205,7 +205,7 @@
 '                'oDesignPoint = New PointF(Station.GetAttribute("designx"), Station.GetAttribute("designy"))
 '            End Sub
 
-'            Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+'            Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
 '                Dim oXmlStation As XmlElement = Document.CreateElement("station")
 '                Call oXmlStation.SetAttribute("x", Point.X)
 '                Call oXmlStation.SetAttribute("y", Point.Y)
@@ -275,7 +275,7 @@
 '                Next
 '            End Sub
 
-'            Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+'            Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
 '                Dim oXmlStations As XmlElement = Document.CreateElement("stations")
 '                For Each oStation As cStation3D In oItems
 '                    Call oStation.SaveTo(File, Document, oXmlStations)
@@ -321,7 +321,7 @@
 
 '        Public MustOverride ReadOnly Property MaxPointsCount() As Integer
 
-'        Friend Sub New(ByVal Survey As cSurvey, ByVal File As Storage.cFile, ByVal Item As XmlElement)
+'        Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal Item As XmlElement)
 '            oSurvey = Survey
 '            sName = modXML.GetAttributeValue(Item, "name", "")
 '            iType = modXML.GetAttributeValue(Item, "type")
@@ -341,7 +341,7 @@
 '            oStations = New cStations3D(Survey)
 '        End Sub
 
-'        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+'        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
 '            Dim oXmlItem As XmlElement = Document.CreateElement("item")
 '            If sName <> "" Then Call oXmlItem.SetAttribute("name", sName)
 '            Call oXmlItem.SetAttribute("type", iType.ToString("D"))

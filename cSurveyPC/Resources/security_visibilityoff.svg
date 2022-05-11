@@ -1,0 +1,14 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg x="0px" y="0px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" id="Layer_1" style="enable-background:new 0 0 32 32">
+  <style type="text/css">
+	.Black{fill:#727272;}
+	.Red{fill:#D11C1C;}
+	.Yellow{fill:#FFB115;}
+	.Green{fill:#039C23;}
+</style>
+  <g id="VisibilityOff">
+    <path d="M6,8l2.4,2.4C4.5,12.7,2,16,2,16s6,8,14,8c1.8,0,3.4-0.4,5-1l3,3l2-2L8,6L6,8z M10.9,12.9l1.5,1.5   C12.1,14.9,12,15.4,12,16c0,2.2,1.8,4,4,4c0.6,0,1.1-0.1,1.6-0.4l1.5,1.5c-0.9,0.6-2,0.9-3.1,0.9c-3.3,0-6-2.7-6-6   C10,14.9,10.3,13.8,10.9,12.9z" class="Black" />
+    <path d="M16,12l4,4C20,13.8,18.2,12,16,12z" class="Black" />
+    <path d="M16,8c-1.2,0-2.4,0.2-3.5,0.5l1.7,1.7c0.6-0.2,1.1-0.3,1.7-0.3c3.3,0,6,2.7,6,6c0,0.6-0.1,1.2-0.3,1.7   l3.1,3.1C28,18.6,30,16,30,16S24,8,16,8z" class="Black" />
+  </g>
+</svg>

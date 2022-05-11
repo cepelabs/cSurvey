@@ -18,6 +18,93 @@ Module modPaint
     Public Const sDefaultSplineTension As Single = 0.5
     Public Const iDefaultDesignScale As Integer = 250
 
+    Public Function SVGToBitmap(SvgImage As DevExpress.Utils.Svg.SvgImage, Size As Size, LookAndFeel As DevExpress.Skins.ISkinProvider) As Bitmap
+        Dim oSvgBitmap As DevExpress.Utils.Svg.SvgBitmap = New DevExpress.Utils.Svg.SvgBitmap(SvgImage)
+        Return oSvgBitmap.Render(Size, DevExpress.Utils.Svg.SvgPaletteHelper.GetSvgPalette(LookAndFeel, DevExpress.Utils.Drawing.ObjectState.Normal))
+    End Function
+
+    Public Enum Quadrant
+        None = 0
+        TopLeft = 1
+        TopRight = 2
+        BottomRight = 3
+        BottomLeft = 4
+    End Enum
+
+    Public Function ShowImageExportDialog(Owner As IWin32Window, Image As Image) As DialogResult
+        Using oSFD As SaveFileDialog = New SaveFileDialog
+            With oSFD
+                .Filter = GetLocalizedString("main.filetypeIMAGES") & " (*.JPG;*.PNG;*.TIF;*.BMP;*.GIF)|*.JPG;*.PNG;*.TIF;*.BMP;*.GIF"
+                .FilterIndex = 1
+                If .ShowDialog(Owner) = DialogResult.OK Then
+                    Dim iImageFormat As Imaging.ImageFormat = Imaging.ImageFormat.Jpeg
+                    Select Case IO.Path.GetExtension(oSFD.FileName)
+                        Case ".gif"
+                            iImageFormat = Imaging.ImageFormat.Gif
+                        Case ".bmp"
+                            iImageFormat = Imaging.ImageFormat.Bmp
+                        Case ".tif"
+                            iImageFormat = Imaging.ImageFormat.Tiff
+                        Case ".png"
+                            iImageFormat = Imaging.ImageFormat.Png
+                        Case ".jpg", ".jpeg"
+                            iImageFormat = Imaging.ImageFormat.Jpeg
+                    End Select
+                    Call Image.Save(oSFD.FileName, iImageFormat)
+                    Return DialogResult.OK
+                Else
+                    Return DialogResult.Cancel
+                End If
+            End With
+        End Using
+    End Function
+
+    Public Function GetQuadrant(Rectangle As RectangleF, Point As PointF) As Quadrant
+        If Rectangle.Contains(Point) Then
+            Dim oRect1 As RectangleF = New RectangleF(Rectangle.Left, Rectangle.Top, Rectangle.Width / 2, Rectangle.Height / 2)
+            If oRect1.Contains(Point) Then
+                Return Quadrant.TopLeft
+            Else
+                Dim oRect2 As RectangleF = New RectangleF(Rectangle.Left + Rectangle.Width / 2, Rectangle.Top, Rectangle.Width / 2, Rectangle.Height / 2)
+                If oRect2.Contains(Point) Then
+                    Return Quadrant.TopRight
+                Else
+                    Dim oRect3 As RectangleF = New RectangleF(Rectangle.Left + Rectangle.Width / 2, Rectangle.Top + Rectangle.Height / 2, Rectangle.Width / 2, Rectangle.Height / 2)
+                    If oRect3.Contains(Point) Then
+                        Return Quadrant.BottomRight
+                    Else
+                        Return Quadrant.BottomLeft
+                    End If
+                End If
+            End If
+        Else
+            Return Quadrant.None
+        End If
+    End Function
+
+    Public Function GetQuadrant(Rectangle As Rectangle, Point As Point) As Quadrant
+        If Rectangle.Contains(Point) Then
+            Dim oRect1 As Rectangle = New Rectangle(Rectangle.Left, Rectangle.Top, Rectangle.Width / 2, Rectangle.Height / 2)
+            If oRect1.Contains(Point) Then
+                Return Quadrant.TopLeft
+            Else
+                Dim oRect2 As Rectangle = New Rectangle(Rectangle.Left + Rectangle.Width / 2, Rectangle.Top, Rectangle.Width / 2, Rectangle.Height / 2)
+                If oRect2.Contains(Point) Then
+                    Return Quadrant.TopRight
+                Else
+                    Dim oRect3 As Rectangle = New Rectangle(Rectangle.Left + Rectangle.Width / 2, Rectangle.Top + Rectangle.Height / 2, Rectangle.Width / 2, Rectangle.Height / 2)
+                    If oRect3.Contains(Point) Then
+                        Return Quadrant.BottomRight
+                    Else
+                        Return Quadrant.BottomLeft
+                    End If
+                End If
+            End If
+        Else
+            Return Quadrant.None
+        End If
+    End Function
+
     Public Enum AnchorRectangleTypeEnum
         None = &H0
 
@@ -191,22 +278,22 @@ Module modPaint
     Public Function GetNormalizedBisection(Angle1 As Decimal, Angle2 As Decimal) As Decimal
         Dim dAngle As Decimal = NormalizeAngle(Angle2 - Angle1)
         If dAngle > 180 Then
-            Return (dAngle / 2) + 90 + Angle1
+            Return (dAngle / 2D) + 90D + Angle1
         Else
-            Return (dAngle / 2) - 90 + Angle1
+            Return (dAngle / 2D) - 90D + Angle1
         End If
     End Function
 
     Public Function GetNormalizedBisection(Angle1 As Single, Angle2 As Single) As Single
         Dim sAngle As Single = NormalizeAngle(Angle2 - Angle1)
         If sAngle > 180 Then
-            Return (sAngle / 2) + 90 + Angle1
+            Return (sAngle / 2.0F) + 90.0F + Angle1
         Else
-            Return (sAngle / 2) - 90 + Angle1
+            Return (sAngle / 2.0F) - 90.0F + Angle1
         End If
     End Function
 
-    Public Function GrayScaleImage(Image As Image) As Image
+    Public Function GrayScaleImage(Image As Image, Optional BlackAndWhiteThreshold As Single? = Nothing) As Image
         Try
             Dim cm As ColorMatrix = New ColorMatrix(New Single()() {New Single() {0.299, 0.299, 0.299, 0, 0}, New Single() {0.587, 0.587, 0.587, 0, 0}, New Single() {0.114, 0.114, 0.114, 0, 0}, New Single() {0, 0, 0, 1, 0}, New Single() {0, 0, 0, 0, 1}})
             Dim oNewImage As Bitmap = New Bitmap(Image)
@@ -214,6 +301,7 @@ Module modPaint
                 Dim oRect As Rectangle = New Rectangle(0, 0, oNewImage.Width, oNewImage.Height)
                 Using oGraphics As Graphics = Graphics.FromImage(oNewImage)
                     Call oCurrentImageAttribute.SetColorMatrix(cm)
+                    If BlackAndWhiteThreshold.HasValue Then Call oCurrentImageAttribute.SetThreshold(BlackAndWhiteThreshold.Value)
                     Call oGraphics.DrawImage(oNewImage, oRect, 0, 0, Image.Width, Image.Height, GraphicsUnit.Pixel, oCurrentImageAttribute)
                 End Using
                 Return oNewImage
@@ -557,8 +645,8 @@ Module modPaint
             End If
 
             Dim oNewSequence As cSequence
-            Dim sTension As Single = 0.5
-            Dim A As Single = sTension / 0.5 * 0.175
+            Dim sTension As Single = 0.5F
+            Dim A As Single = sTension / 0.5F * 0.175F
             Dim pt, pt_before, pt_after, pt_after2, Di, DiPlus1 As PointF
             Dim p1, p2, p3, p4 As PointF
             For i As Integer = 0 To Sequence.Count - 2
@@ -599,52 +687,65 @@ Module modPaint
     End Function
 
     Public Function GetRectanglefFomPoint(Point As PointF, Size As Single) As RectangleF
-        Dim sHalfSize As Single = Size / 2
+        Dim sHalfSize As Single = Size / 2.0F
         Return New RectangleF(Point.X - sHalfSize, Point.Y - sHalfSize, Size, Size)
     End Function
 
     Public Function GetMediumPoint(Point1 As PointF, Point2 As PointF) As PointF
-        Return New PointF((Point1.X + Point2.X) / 2, (Point1.Y + Point2.Y) / 2)
+        Return New PointF((Point1.X + Point2.X) / 2.0F, (Point1.Y + Point2.Y) / 2.0F)
     End Function
 
     Public Function GetMediumPoint(Point1 As Point, Point2 As Point) As Point
         Return New Point((Point1.X + Point2.X) / 2, (Point1.Y + Point2.Y) / 2)
     End Function
 
+    Public Function BearingToInclination(Bearing As Decimal) As Decimal
+        Dim dDegree As Decimal = NormalizeAngle(Bearing)
+        If dDegree >= 0D AndAlso dDegree <= 90D Then
+            Return 90D - dDegree
+        ElseIf dDegree > 90D AndAlso dDegree <= 180D Then
+            Return 90D - dDegree
+        ElseIf dDegree > 180D AndAlso dDegree <= 270D Then
+            Return -1D * (270D - dDegree)
+        Else
+            Return dDegree - 270D
+        End If
+    End Function
+
     Public Function NormalizeInclination(Degree As Decimal) As Decimal
-        If Degree >= -90 AndAlso Degree <= 90 Then
+        If Degree >= -90D AndAlso Degree <= 90D Then
             Return Degree
         Else
-            If Degree < 0 Then
-                Return -1 * (180 + Degree)
+            If Degree < 0D Then
+                Return -1D * (180D + Degree)
             Else
-                Return 180 - Degree
+                Return 180D - Degree
             End If
         End If
     End Function
 
     Public Function NormalizeAngle(ByVal Degree As Decimal) As Decimal
-        Degree = Degree Mod 360
-        If Degree < 0 Then
-            Return Degree + 360
+        Degree = Degree Mod 360D
+        If Degree < 0D Then
+            Return Degree + 360D
         Else
             Return Degree
         End If
     End Function
 
     Public Function NormalizeAngle(ByVal Degree As Double) As Double
-        Degree = Degree Mod 360
-        If Degree < 0 Then
-            Return Degree + 360
+        Degree = Degree Mod 360.0
+        If Degree < 0.0 Then
+            Return Degree + 360.0
         Else
             Return Degree
         End If
     End Function
 
     Public Function NormalizeAngle(ByVal Degree As Single) As Single
-        Degree = Degree Mod 360
-        If Degree < 0 Then
-            Return Degree + 360
+        Degree = Degree Mod 360.0F
+        If Degree < 0F Then
+            Return Degree + 360.0F
         Else
             Return Degree
         End If
@@ -727,50 +828,50 @@ Module modPaint
 
     Public Function ReverseAngle(ByVal Degree As Decimal) As Decimal
         If Degree > 180 Then
-            Return Degree - 180
+            Return Degree - 180.0
         Else
-            Return Degree + 180
+            Return Degree + 180.0
         End If
     End Function
 
     Public Function ReverseAngle(ByVal Degree As Double) As Double
         If Degree > 180 Then
-            Return Degree - 180
+            Return Degree - 180.0
         Else
-            Return Degree + 180
+            Return Degree + 180.0
         End If
     End Function
 
     Public Function ReverseAngle(ByVal Degree As Single) As Single
         If Degree > 180 Then
-            Return Degree - 180
+            Return Degree - 180.0F
         Else
-            Return Degree + 180
+            Return Degree + 180.0F
         End If
     End Function
 
     Public Function DegreeToRadians(ByVal Degree As Double) As Double
-        Return Math.PI * Degree / 180
+        Return Math.PI * Degree / 180.0
     End Function
 
     Public Function RadiansToDegree(ByVal Radiant As Double) As Double
-        Return Radiant * 180 / Math.PI
+        Return Radiant * 180.0 / Math.PI
     End Function
 
     Public Function DegreeToRadians(ByVal Degree As Single) As Single
-        Return Math.PI * Degree / 180
+        Return Math.PI * Degree / 180.0F
     End Function
 
     Public Function RadiansToDegree(ByVal Radiant As Single) As Single
-        Return Radiant * 180 / Math.PI
+        Return Radiant * 180.0F / Math.PI
     End Function
 
     Public Function DegreeToRadians(ByVal Degree As Decimal) As Decimal
-        Return Math.PI * Degree / 180
+        Return Math.PI * Degree / 180.0F
     End Function
 
     Public Function RadiansToDegree(ByVal Radiant As Decimal) As Decimal
-        Return Radiant * 180 / Math.PI
+        Return Radiant * 180.0 / Math.PI
     End Function
 
     Public Function GetZoomFactor(ByVal graphics As Graphics, ByVal Scale As Decimal) As Decimal
@@ -793,7 +894,7 @@ Module modPaint
         Dim dScale As Decimal
         Select Case Graphics.PageUnit
             Case GraphicsUnit.Millimeter
-                dScale = 1 / Zoom
+                dScale = 1.0 / Zoom
             Case GraphicsUnit.Pixel
                 dScale = Graphics.DpiX / (Zoom * 0.0254)
             Case Else   'display...
@@ -845,6 +946,10 @@ Module modPaint
 
     Public Function FromPaintPoint(ByVal Point As PointF, ByVal Zoom As Single, ByVal Translation As PointF) As PointF
         Return New PointF((Point.X - Translation.X) / Zoom, (Point.Y - Translation.Y) / Zoom)
+    End Function
+
+    Public Function ToPaintRectangle(ByVal Rectangle As RectangleF, ByVal Zoom As Single, ByVal Translation As PointF) As RectangleF
+        Return New RectangleF((Rectangle.X * Zoom) + Translation.X, (Rectangle.Y * Zoom) + Translation.Y, Rectangle.Width * Zoom, Rectangle.Height * Zoom)
     End Function
 
     Public Function FromPaintRectangle(ByVal Rectangle As RectangleF, ByVal Zoom As Single, ByVal Translation As PointF) As RectangleF
@@ -943,44 +1048,44 @@ Module modPaint
         Return sDirection
     End Function
 
-    Public Function GetInclination(ByVal p0 As Point, ByVal p1 As Point) As Integer
-        Dim iDirection As Integer
-        Dim iBearing As Integer = GetBearing(p0, p1)
-        If iBearing >= 0 AndAlso iBearing <= 180 Then
-            iBearing -= 90
-            iDirection = iBearing * -1
+    Public Function GetInclination(ByVal p0 As Point, ByVal p1 As Point) As Single
+        Dim sDirection As Single
+        Dim sBearing As Single = GetBearing(p0, p1)
+        If sBearing >= 0 AndAlso sBearing <= 180 Then
+            sBearing -= 90
+            sDirection = sBearing * -1
         Else
-            iBearing -= 270
-            iDirection = iBearing
+            sBearing -= 270
+            sDirection = sBearing
         End If
-        Return iDirection
+        Return sDirection
     End Function
 
-    Public Function GetBearing(ByVal p0 As Point, ByVal p1 As Point) As Integer
-        Dim iBearing As Integer
+    Public Function GetBearing(ByVal p0 As Point, ByVal p1 As Point) As Single
+        Dim sBearing As Single
         If p0.Y = p1.Y Then
             If p0.X < p1.X Then
-                iBearing = 90 '270
+                sBearing = 90 '270
             Else
-                iBearing = 270 '90
+                sBearing = 270 '90
             End If
         Else
-            iBearing = modPaint.GetAngleBetweenSegment(p0, New Point(p0.X, p1.Y), p0, p1)
+            sBearing = modPaint.GetAngleBetweenSegment(p0, New Point(p0.X, p1.Y), p0, p1)
             If p0.Y > p1.Y Then
                 If p0.X > p1.X Then
-                    iBearing = 360 - iBearing
+                    sBearing = 360 - sBearing
                 Else
                     'sBearing = 180 + sBearing
                 End If
             Else
                 If p0.X < p1.X Then
-                    iBearing = 180 - iBearing
+                    sBearing = 180 - sBearing
                 Else
-                    iBearing = 180 + iBearing
+                    sBearing = 180 + sBearing
                 End If
             End If
         End If
-        Return iBearing
+        Return sBearing
     End Function
 
     Public Function InclinationIsInRange(Angle As Decimal, Min As Decimal, Max As Decimal) As Boolean
@@ -1534,6 +1639,10 @@ Module modPaint
     End Function
 
     Public Function ReplaceGlobalTags(Survey As cSurvey.cSurvey, Text As String) As String
+        For Each oText As cText In Survey.Texts
+            Text = Text.Replace("%TEXT(" & oText.Name.ToUpper & ")%", oText.Text)
+        Next
+
         Dim oProperties As cProperties = Survey.Properties
         Text = Text.Replace("%ID%", oProperties.ID)
         Text = Text.Replace("%NAME%", oProperties.Name)
@@ -1673,7 +1782,7 @@ Module modPaint
             Dim sDefaultPlanimetricLength As String = modNumbers.MathRound(oSpeleometric.DefaultPlanimetricLength, iDistanceDecimalPlace)
             Text = Text.Replace("%SVILPLAN(" & sPath & ")%", sDefaultPlanimetricLength & " " & sDistanceSimbol)
             Text = Text.Replace("%PLANLEN(" & sPath & ")%", sDefaultPlanimetricLength & " " & sDistanceSimbol)
-             
+
             Dim sDefaultPositiveVerticalRange As String = modNumbers.MathRound(oSpeleometric.DefaultPositiveVerticalRange.GetValueOrDefault(0), iDistanceDecimalPlace)
             Text = Text.Replace("%DISPOS(" & sPath & ")%", sDefaultPositiveVerticalRange & " " & sDistanceSimbol)
             Text = Text.Replace("%PVRNG(" & sPath & ")%", sDefaultPositiveVerticalRange & " " & sDistanceSimbol)
@@ -1735,7 +1844,7 @@ Module modPaint
     End Function
 
     Public Function GetCenterPoint(Point1 As PointD, Point2 As PointD) As PointD
-        Return New PointD((Point1.X + Point2.X) / 2, (Point1.Y + Point2.Y) / 2)
+        Return New PointD((Point1.X + Point2.X) / 2.0, (Point1.Y + Point2.Y) / 2.0)
     End Function
 
     Public Function GetCenterPoint(Point1 As Point, Point2 As Point) As Point
@@ -1743,11 +1852,11 @@ Module modPaint
     End Function
 
     Public Function GetCenterPoint(Point1 As PointF, Point2 As PointF) As PointF
-        Return New PointF((Point1.X + Point2.X) / 2, (Point1.Y + Point2.Y) / 2)
+        Return New PointF((Point1.X + Point2.X) / 2.0, (Point1.Y + Point2.Y) / 2.0)
     End Function
 
     Public Function GetCenterPoint(Rectangle As RectangleF) As PointF
-        Return New PointF(Rectangle.Location.X + Rectangle.Size.Width / 2, Rectangle.Location.Y + Rectangle.Size.Height / 2)
+        Return New PointF(Rectangle.Location.X + Rectangle.Size.Width / 2.0, Rectangle.Location.Y + Rectangle.Size.Height / 2.0)
     End Function
 
     Public Function GetCenterPoint(Rectangle As Rectangle) As Point
@@ -1767,6 +1876,7 @@ Module modPaint
     End Function
 
     Public Function LightColor(ByVal Color As Color, ByVal Percentage As Single) As Color
+        'Return ControlPaint.Light(Color, Percentage)
         Dim r As Integer = Color.R
         Dim g As Integer = Color.G
         Dim b As Integer = Color.B
@@ -1780,15 +1890,16 @@ Module modPaint
     End Function
 
     Public Function DarkColor(ByVal Color As Color, ByVal Percentage As Single) As Color
+        'Return ControlPaint.Dark(Color, Percentage)
         Dim r As Integer = Color.R
         Dim g As Integer = Color.G
         Dim b As Integer = Color.B
         Dim dr As Integer = r * Percentage
         Dim dg As Integer = g * Percentage
         Dim db As Integer = b * Percentage
-        r = r + dr : If r > 255 Then r = 255
-        g = g + dg : If g > 255 Then g = 255
-        b = b + db : If b > 255 Then b = 255
+        r = r - dr : If r > 255 Then r = 255 : If r <= 0 Then r = 0
+        g = g - dg : If g > 255 Then g = 255 : If g <= 0 Then g = 0
+        b = b - db : If b > 255 Then b = 255 : If b <= 0 Then b = 0
         Return Color.FromArgb(Color.A, r, g, b)
     End Function
 
@@ -2188,7 +2299,7 @@ Module modPaint
     '        Return 0
     '    End If
     'End Function
-    Public Function GetAngleBetweenSegment(ByVal p1 As Point, ByVal p2 As Point, ByVal p3 As Point, ByVal p4 As Point) As Integer
+    Public Function GetAngleBetweenSegment(ByVal p1 As Point, ByVal p2 As Point, ByVal p3 As Point, ByVal p4 As Point) As Single
         Dim a As Integer = p1.X - p2.X
         Dim b As Integer = p1.Y - p2.Y
         Dim c As Integer = p3.X - p4.X
@@ -2197,11 +2308,11 @@ Module modPaint
         Dim smag_v1 As Single = Math.Sqrt(a * a + b * b)
         Dim smag_v2 As Single = Math.Sqrt(c * c + d * d)
 
-        Dim scos_angle As Single = (a * c + b * d) / (smag_v1 * smag_v2)
-        Dim sangle As Single = Math.Acos(scos_angle)
-        sangle = sangle * 180.0 / Math.PI
+        Dim sCos_angle As Single = (a * c + b * d) / (smag_v1 * smag_v2)
+        Dim sAngle As Single = Math.Acos(sCos_angle)
+        sAngle = sAngle * 180.0 / Math.PI
 
-        Return sangle
+        Return sAngle
     End Function
 
     Public Function GetAngleBetweenSegment(ByVal p1 As PointF, ByVal p2 As PointF, ByVal p3 As PointF, ByVal p4 As PointF) As Single
@@ -2448,8 +2559,7 @@ Module modPaint
                     Call modPaint.PathAddCrossFromPoint(oPath, oPoint, sPointSize)
 
                     If PaintOptions.ShowSplayText Then
-                        Dim oCacheItem As Drawings.cDrawCacheItem = Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
-                        oCacheItem.SetBrush(PaintOptions.DrawingObjects.SplayBrush)
+                        Dim oCacheItem As Drawings.cDrawCacheItem = Cache.AddBorder(Nothing, Nothing, Nothing, PaintOptions.DrawingObjects.SplayBrush)
                         oCacheItem.AddString(oItem.To, PaintOptions.DrawingObjects.SplayFont, oPoint)
                         Call oCacheItem.Transform(TranslationMatrix)
                     End If
@@ -2459,8 +2569,7 @@ Module modPaint
                         If oLeftPoint <> oPoint Then
                             Call modPaint.PathAddCrossFromPoint(oPath, oLeftPoint, sSidePointSize)
                             If PaintOptions.ShowSplayText Then
-                                Dim oCacheItem As Drawings.cDrawCacheItem = Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
-                                oCacheItem.SetBrush(PaintOptions.DrawingObjects.SplayBrush)
+                                Dim oCacheItem As Drawings.cDrawCacheItem = Cache.AddBorder(Nothing, Nothing, Nothing, PaintOptions.DrawingObjects.SplayBrush)
                                 oCacheItem.AddString(oItem.To & LorUPrefix, PaintOptions.DrawingObjects.SplayFont, oLeftPoint)
                                 Call oCacheItem.Transform(TranslationMatrix)
                             End If
@@ -2470,8 +2579,7 @@ Module modPaint
                         If oRightPoint <> oPoint Then
                             Call modPaint.PathAddCrossFromPoint(oPath, oRightPoint, sSidePointSize)
                             If PaintOptions.ShowSplayText Then
-                                Dim oCacheItem As Drawings.cDrawCacheItem = Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
-                                oCacheItem.SetBrush(PaintOptions.DrawingObjects.SplayBrush)
+                                Dim oCacheItem As Drawings.cDrawCacheItem = Cache.AddBorder(Nothing, Nothing, Nothing, PaintOptions.DrawingObjects.SplayBrush)
                                 oCacheItem.AddString(oItem.To & RorDPrefix, PaintOptions.DrawingObjects.SplayFont, oRightPoint)
                                 Call oCacheItem.Transform(TranslationMatrix)
                             End If
@@ -2479,7 +2587,7 @@ Module modPaint
                     End If
                 Next
 
-                Dim oCacheCrossItem As Drawings.cDrawCacheItem = Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
+                Dim oCacheCrossItem As Drawings.cDrawCacheItem = Cache.AddBorder()
                 If CurrentSegment Is Segment Then
                     PaintOptions.DrawingObjects.SplaySelectedPen.Color = Color
                     Call oCacheCrossItem.SetPen(PaintOptions.DrawingObjects.SplaySelectedPen)
@@ -2492,17 +2600,14 @@ Module modPaint
                 Call oCacheCrossItem.Transform(TranslationMatrix)
             End Using
         ElseIf PaintOptions.SplayStyle = cOptions.SplayStyleEnum.Rays Then
-            Using oPath As GraphicsPath = New GraphicsPath
-                For Each oItem As Calculate.Plot.cISplayProjectedData In Splays
-                    Dim oPoint As PointF = oItem.ToPoint
-                    If PaintOptions.ShowSplayText Then
-                        Dim oCacheItem As Drawings.cDrawCacheItem = Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
-                        oCacheItem.SetBrush(PaintOptions.DrawingObjects.SplayBrush)
-                        oCacheItem.AddString(oItem.To, PaintOptions.DrawingObjects.SplayFont, oPoint)
-                        Call oCacheItem.Transform(TranslationMatrix)
-                    End If
-                Next
-            End Using
+            For Each oItem As Calculate.Plot.cISplayProjectedData In Splays
+                Dim oPoint As PointF = oItem.ToPoint
+                If PaintOptions.ShowSplayText Then
+                    Dim oCacheItem As Drawings.cDrawCacheItem = Cache.AddBorder(Nothing, Nothing, Nothing, PaintOptions.DrawingObjects.SplayBrush)
+                    oCacheItem.AddString(oItem.To, PaintOptions.DrawingObjects.SplayFont, oPoint)
+                    Call oCacheItem.Transform(TranslationMatrix)
+                End If
+            Next
         End If
 
         If PaintOptions.SplayStyle = cOptions.SplayStyleEnum.PointsAndRays OrElse PaintOptions.SplayStyle = cOptions.SplayStyleEnum.Rays Then
@@ -2526,15 +2631,13 @@ Module modPaint
                         End If
                     End If
                 Next
-                Dim oCacheRayItem = Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
+                Dim oCacheRayItem = Cache.AddBorder(oRayPath)
                 If CurrentSegment Is Segment Then
                     PaintOptions.DrawingObjects.SplaySelectedPen.Color = Color
                     Call oCacheRayItem.SetPen(PaintOptions.DrawingObjects.SplaySelectedPen)
-                    Call oCacheRayItem.AddPath(oRayPath)
                 Else
                     PaintOptions.DrawingObjects.SplayPen.Color = Color
                     Call oCacheRayItem.SetPen(PaintOptions.DrawingObjects.SplayPen)
-                    Call oCacheRayItem.AddPath(oRayPath)
                 End If
                 Call oCacheRayItem.Transform(TranslationMatrix)
             End Using
@@ -3322,6 +3425,20 @@ Module modPaint
 
     Private oPs As Printing.PrinterSettings
 
+    Public Function ToPixel(Unit As String, Value As Single) As Integer
+        Select Case Unit
+            Case "cm"
+                Return (Value * 0.393701) * 96.0
+            Case "mm"
+                Return (Value * 0.0393701) * 96.0
+            Case "in"
+                Return Value * 96.0
+            Case Else
+                'source are pixel
+                Return Value
+        End Select
+    End Function
+
     Public Sub MapDrawPrintOrExportArea(ByVal Graphics As Graphics, PaintOptions As cOptions, ByVal Survey As cSurvey.cSurvey, ByVal CurrentDesign As cDesign, ByVal PaintZoom As Single)
         Dim bDraw As Boolean
         Dim iDesignStyle As cIOptionPrintAndExportArea.DesignStyleEnum
@@ -3399,8 +3516,13 @@ Module modPaint
                     End If
                 ElseIf TypeOf oProfile Is cExportProfile Then
                     Dim oExportOptions As cSurvey.Design.cOptionsExport = oProfile.Options
-                    Dim oPageRect As RectangleF = New RectangleF(0, 0, oExportOptions.ImageWidth, oExportOptions.ImageHeight)
-                    Dim oPageWithMarginRect As RectangleF = New RectangleF(oPageRect.Left + oExportOptions.Margins.Left, oPageRect.Top + oExportOptions.Margins.Top, oPageRect.Width - oExportOptions.Margins.Left - oExportOptions.Margins.Right, oPageRect.Height - oExportOptions.Margins.Top - oExportOptions.Margins.Bottom)
+
+                    'fallback unit to pixel to generate preview
+                    Dim iImageWidth As Integer = modPaint.ToPixel(oExportOptions.ImageUnit, oExportOptions.ImageWidth)
+                    Dim iImageHeight As Integer = modPaint.ToPixel(oExportOptions.ImageUnit, oExportOptions.ImageHeight)
+                    Dim oMargins As System.Drawing.Printing.Margins = New System.Drawing.Printing.Margins(modPaint.ToPixel(oExportOptions.ImageUnit, oExportOptions.Margins.Left), modPaint.ToPixel(oExportOptions.ImageUnit, oExportOptions.Margins.Top), modPaint.ToPixel(oExportOptions.ImageUnit, oExportOptions.Margins.Right), modPaint.ToPixel(oExportOptions.ImageUnit, oExportOptions.Margins.Bottom))
+                    Dim oPageRect As RectangleF = New RectangleF(0, 0, iImageWidth, iImageHeight)
+                    Dim oPageWithMarginRect As RectangleF = New RectangleF(oPageRect.Left + oMargins.Left, oPageRect.Top + oMargins.Top, oPageRect.Width - oMargins.Left - oMargins.Right, oPageRect.Height - oMargins.Top - oMargins.Bottom)
 
                     Dim oRect As RectangleF = CurrentDesign.GetDesignVisibleBounds(oExportOptions)
                     oRect = AdjustBounds(oRect, 1)
@@ -3934,5 +4056,56 @@ Module modPaint
             End If
         Next codec
         Return Nothing
+    End Function
+
+    Public Function RotateImage(ByVal Image As Image, ByVal Angle As Single, ByVal Upsize As Boolean, ByVal backgroundColor As Color) As Bitmap
+        If Angle = 0F Then Return CType(Image.Clone(), Bitmap)
+        Dim iOldWidth As Integer = Image.Width
+        Dim iOldHeight As Integer = Image.Height
+        Dim iNewWidth As Integer = iOldWidth
+        Dim iNewHeight As Integer = iOldHeight
+        Dim sScaleFactor As Single = 1.0F
+
+        If Upsize Then
+            Dim dAngleRad As Double = DegreeToRadians(Angle)
+            Dim dCos As Double = Math.Abs(Math.Cos(dAngleRad))
+            Dim dSin As Double = Math.Abs(Math.Sin(dAngleRad))
+            iNewWidth = CInt(Math.Round(iOldWidth * dCos + iOldHeight * dSin))
+            iNewHeight = CInt(Math.Round(iOldWidth * dSin + iOldHeight * dCos))
+        Else
+            sScaleFactor = Math.Min(CSng(iOldWidth) / iNewWidth, CSng(iOldHeight) / iNewHeight)
+            'iNewWidth = iOldWidth
+            'iNewHeight = iOldHeight
+        End If
+
+        Dim oNewImage As Bitmap = New Bitmap(iNewWidth, iNewHeight, If(backgroundColor = Color.Transparent, Imaging.PixelFormat.Format32bppArgb, Imaging.PixelFormat.Format24bppRgb))
+        oNewImage.SetResolution(Image.HorizontalResolution, Image.VerticalResolution)
+
+        Using oGraphics As Graphics = Graphics.FromImage(oNewImage)
+            oGraphics.InterpolationMode = InterpolationMode.HighQualityBicubic
+            oGraphics.PixelOffsetMode = PixelOffsetMode.HighQuality
+            oGraphics.SmoothingMode = SmoothingMode.HighQuality
+            If backgroundColor <> Color.Transparent Then oGraphics.Clear(backgroundColor)
+            Call oGraphics.TranslateTransform(iNewWidth / 2.0F, iNewHeight / 2.0F)
+            If sScaleFactor <> 1.0F Then oGraphics.ScaleTransform(sScaleFactor, sScaleFactor)
+            Call oGraphics.RotateTransform(Angle)
+            Call oGraphics.TranslateTransform(-iOldWidth / 2.0F, -iOldHeight / 2.0F)
+            Call oGraphics.DrawImage(Image, 0, 0)
+        End Using
+
+        Return oNewImage
+    End Function
+
+    Public Function InvertColors(Image As Bitmap) As Bitmap
+        Dim oNewPhoto As Bitmap = New Bitmap(Image.Width, Image.Height)
+        Using oGr As Graphics = Graphics.FromImage(oNewPhoto)
+            Dim oColorMatrix As Imaging.ColorMatrix = New Imaging.ColorMatrix(New Single()() {New Single() {-1, 0, 0, 0, 0}, New Single() {0, -1, 0, 0, 0}, New Single() {0, 0, -1, 0, 0}, New Single() {0, 0, 0, 1, 0}, New Single() {1, 1, 1, 0, 1}})
+            Using oAttributes As Imaging.ImageAttributes = New Imaging.ImageAttributes
+                oAttributes.SetColorMatrix(oColorMatrix)
+                Call oGr.DrawImage(Image, New Rectangle(0, 0, Image.Width, Image.Height), 0, 0, Image.Width, Image.Height, GraphicsUnit.Pixel, oAttributes)
+                Call Image.Dispose()
+                Return oNewPhoto
+            End Using
+        End Using
     End Function
 End Module

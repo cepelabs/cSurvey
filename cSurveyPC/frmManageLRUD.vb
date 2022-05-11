@@ -1,22 +1,15 @@
 ﻿Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Data
 
-Public Class frmManageLRUD
+friend Class frmManageLRUD
     Private oSurvey As cSurvey.cSurvey
 
     Private Sub pSettingsLoad()
         Try
             Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-                Select Case oReg.GetValue("editor.managelrud.option", "0")
-                    Case 0
-                        RadioButton1.Checked = True
-                    Case 1
-                        RadioButton2.Checked = True
-                    Case 2
-                        RadioButton3.Checked = True
-                    Case 3
-                        RadioButton4.Checked = True
-                End Select
+                cboAction.SelectedIndex = oReg.GetValue("editor.managelrud.option", "0")
+                Call pRadioButtonEnabled()
+
                 Select Case oReg.GetValue("editor.managelrud.option0", "0")
                     Case 0
                         RadioButton1a.Checked = True
@@ -46,7 +39,7 @@ Public Class frmManageLRUD
     Private Sub pSettingsSave()
         Try
             Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                Call oReg.SetValue("editor.managelrud.option", If(RadioButton1.Checked, 0, IIf(RadioButton2.Checked, 1, IIf(RadioButton3.Checked, 2, IIf(RadioButton4.Checked, 4, "")))))
+                Call oReg.SetValue("editor.managelrud.option", cboAction.SelectedIndex)
                 Call oReg.SetValue("editor.managelrud.option0", If(RadioButton1a.Checked, "0", IIf(RadioButton1b.Checked, "1", "")))
                 Call oReg.SetValue("editor.managelrud.deleteafterrestore", IIf(chkRestoreDeleteBackupAfterRestore.Checked, "1", "0"))
                 Call oReg.SetValue("editor.managelrud.backup", If(chkBackup.Checked, "1", "0"))
@@ -72,6 +65,8 @@ Public Class frmManageLRUD
         ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
         oSurvey = Survey
 
+        TableLayoutPanel1.AutoScroll = False
+
         If Rows > 0 Then
             cboReplicateTo.SelectedIndex = 3
         Else
@@ -93,14 +88,8 @@ Public Class frmManageLRUD
 
     Public Sub Backup(Segment As cSegment)
         Dim sProfile As String = sBackupBasename & cboBackupName.Text
-        'Call oSurvey.Properties.DataTables.Segments.Add(sProfile, Data.cDataFields.TypeEnum.Text)
-        'For Each oSegment As cSegment In oSurvey.Segments
-        '    If oSegment.IsValid Then
-        '        If oSegment.Left <> 0 Or oSegment.Right <> 0 Or oSegment.Up <> 0 Or oSegment.Down <> 0 Then
+        Call oSurvey.Properties.DataTables.Segments.Add(sProfile, Data.cDataFields.TypeEnum.Text)
         Call Segment.DataProperties.SetValue(sProfile, modNumbers.NumberToString(Segment.Left) & ";" & modNumbers.NumberToString(Segment.Right) & ";" & modNumbers.NumberToString(Segment.Up) & ";" & modNumbers.NumberToString(Segment.Down))
-        '        End If
-        '    End If
-        'Next
     End Sub
 
     'Public Sub Backup()
@@ -116,7 +105,7 @@ Public Class frmManageLRUD
     'End Sub
 
     Public Sub Restore()
-        Dim sProfile As String = sBackupBasename & cboBackupName.Text
+        Dim sProfile As String = sBackupBasename & cboRestoreName.Text
         If oSurvey.Properties.DataTables.Segments.Contains(sProfile) Then
             For Each oSegment As cSegment In oSurvey.Segments
                 If oSegment.IsValid Then
@@ -156,16 +145,16 @@ Public Class frmManageLRUD
         End If
     End Sub
 
-    Private Sub RadioButton4_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton4.CheckedChanged
-        Call pRadioButtonEnabled()
-    End Sub
+    'Private Sub RadioButton4_CheckedChanged(sender As Object, e As EventArgs)
+    '    Call pRadioButtonEnabled()
+    'End Sub
 
-    Private Sub RadioButton3_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton3.CheckedChanged
-        Call pRadioButtonEnabled()
-    End Sub
+    'Private Sub RadioButton3_CheckedChanged(sender As Object, e As EventArgs)
+    '    Call pRadioButtonEnabled()
+    'End Sub
 
     Private Sub pRadioButtonEnabled()
-        If RadioButton1.Checked Then
+        If cboAction.SelectedIndex = 0 Then
             frmRestore.Enabled = False
             chkBackup.Enabled = True
             frmBackup.Enabled = True
@@ -173,7 +162,7 @@ Public Class frmManageLRUD
 
             frmMode1.Enabled = True
             frmMode2.Enabled = False
-        ElseIf RadioButton2.Checked Then
+        ElseIf cboAction.SelectedIndex = 1 Then
             frmRestore.Enabled = False
             chkBackup.Enabled = True
             frmBackup.Enabled = True
@@ -181,7 +170,7 @@ Public Class frmManageLRUD
 
             frmMode1.Enabled = False
             frmMode2.Enabled = True
-        ElseIf RadioButton3.Checked Then
+        ElseIf cboAction.SelectedIndex = 2 Then
             frmRestore.Enabled = False
             chkBackup.Enabled = True
             frmBackup.Enabled = True
@@ -190,7 +179,7 @@ Public Class frmManageLRUD
             frmMode1.Enabled = False
             frmMode2.Enabled = False
         Else
-            Dim bEnabled As Boolean = RadioButton4.Checked
+            Dim bEnabled As Boolean = cboAction.SelectedIndex = 3
             frmRestore.Enabled = bEnabled
             chkBackup.Enabled = False
             frmBackup.Enabled = False
@@ -204,13 +193,13 @@ Public Class frmManageLRUD
         End If
     End Sub
 
-    Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton1.CheckedChanged
-        Call pRadioButtonEnabled()
-    End Sub
+    'Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs)
+    '    Call pRadioButtonEnabled()
+    'End Sub
 
-    Private Sub RadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton2.CheckedChanged
-        Call pRadioButtonEnabled()
-    End Sub
+    'Private Sub RadioButton2_CheckedChanged(sender As Object, e As EventArgs)
+    '    Call pRadioButtonEnabled()
+    'End Sub
 
     Private Sub chkBackup_CheckedChanged(sender As Object, e As EventArgs) Handles chkBackup.CheckedChanged
         Call pRadioButtonEnabled()
@@ -218,5 +207,27 @@ Public Class frmManageLRUD
 
     Private Sub frmManageLRUD_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Call pSettingsSave()
+    End Sub
+
+    Private Sub cboAction_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboAction.SelectedIndexChanged
+        Select Case cboAction.SelectedIndex
+            Case 0
+                pnlOption0.Visible = True
+                pnlOption1.Visible = False
+                pnlOption3.Visible = False
+            Case 1
+                pnlOption0.Visible = False
+                pnlOption1.Visible = True
+                pnlOption3.Visible = False
+            Case 2
+                pnlOption0.Visible = False
+                pnlOption1.Visible = False
+                pnlOption3.Visible = False
+            Case 3
+                pnlOption0.Visible = False
+                pnlOption1.Visible = False
+                pnlOption3.Visible = True
+        End Select
+        Call pRadioButtonEnabled()
     End Sub
 End Class

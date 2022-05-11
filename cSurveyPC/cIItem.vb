@@ -62,5 +62,6 @@
         ReadOnly Property Category As cIItem.cItemCategoryEnum
 
         Sub SetCave(ByVal Cave As String, Optional ByVal Branch As String = "", Optional ByVal BindSegment As Boolean = True)
+        Sub SetCave(ByVal Cave As cCaveInfo, Optional ByVal Branch As cCaveInfoBranch = Nothing, Optional ByVal BindSegment As Boolean = True)
     End Interface
 End Namespace

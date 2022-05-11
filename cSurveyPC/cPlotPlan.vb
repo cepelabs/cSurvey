@@ -24,8 +24,8 @@ Namespace cSurvey.Design
                 For Each oSegment As cSegment In oVisibleSegments
                     If modDesign.GetIfSegmentMustBeDrawedByCaveAndBranch(PaintOptions, oSegment, CurrentCave, CurrentBranch) Then
                         If oSegment.IsValid AndAlso Not oSegment.IsSelfDefined AndAlso Not oSegment.Splay Then
-                            Dim oPoints() As PointF = oSegment.Data.Plan.GetVectorLine
-                            Dim dDistance As Decimal = modPaint.DistancePointToSegment(Point, oPoints(0), oPoints(1))
+                            Dim oPoints() As PointD = oSegment.Data.Plan.GetVectorLine
+                            Dim dDistance As Decimal = modPaint.DistancePointToSegment(CType(Point, PointD), oPoints(0), oPoints(1))
                             If dDistance < dMinDistance Then
                                 oFoundSegment = oSegment
                                 dMinDistance = dDistance
@@ -36,9 +36,9 @@ Namespace cSurvey.Design
 
                 If Not oFoundSegment Is Nothing Then
                     Dim sTrigpointDistance As Single = 0.5
-                    Dim oPoints() As PointF = oFoundSegment.Data.Plan.GetVectorLine
-                    Dim dDistance0 As Decimal = modPaint.DistancePointToPoint(Point, oPoints(0))
-                    Dim dDistance1 As Decimal = modPaint.DistancePointToPoint(Point, oPoints(1))
+                    Dim oPoints() As PointD = oFoundSegment.Data.Plan.GetVectorLine
+                    Dim dDistance0 As Decimal = modPaint.DistancePointToPoint(CType(Point, PointD), oPoints(0))
+                    Dim dDistance1 As Decimal = modPaint.DistancePointToPoint(CType(Point, PointD), oPoints(1))
                     If PaintOptions.DrawPoints AndAlso (dDistance0 < sTrigpointDistance OrElse dDistance1 < sTrigpointDistance) Then
                         If dDistance0 < dDistance1 Then
                             If oFoundSegment.Data.Data.Reversed Then
@@ -333,53 +333,54 @@ Namespace cSurvey.Design
 
                                             If Not oColor = Color.White Then
                                                 If PaintOptions.DrawStyle = cOptions.DrawStyleEnum.OnlySegment Then
-                                                    Dim oAreaLine As GraphicsPath = modPlot.GetPlanAreaLine(oSegment)
-                                                    If Not oAreaLine Is Nothing Then
-                                                        oCacheItem = oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
-                                                        If oCurrentSegment Is oSegment Then
-                                                            oDrawingObject.LRUDSelectedPen.Color = oColor
-                                                            Call oCacheItem.SetPen(oDrawingObject.LRUDSelectedPen)
-                                                            Call oCacheItem.AddPath(oAreaLine)
-                                                        Else
-                                                            oDrawingObject.LRUDPen.Color = oColor
-                                                            Call oCacheItem.SetPen(oDrawingObject.LRUDPen)
-                                                            Call oCacheItem.AddPath(oAreaLine)
+                                                    Using oAreaLine As GraphicsPath = modPlot.GetPlanAreaLine(oSegment)
+                                                        If Not oAreaLine Is Nothing Then
+                                                            oCacheItem = oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
+                                                            If oCurrentSegment Is oSegment Then
+                                                                oDrawingObject.LRUDSelectedPen.Color = oColor
+                                                                Call oCacheItem.SetPen(oDrawingObject.LRUDSelectedPen)
+                                                                Call oCacheItem.AddPath(oAreaLine)
+                                                            Else
+                                                                oDrawingObject.LRUDPen.Color = oColor
+                                                                Call oCacheItem.SetPen(oDrawingObject.LRUDPen)
+                                                                Call oCacheItem.AddPath(oAreaLine)
+                                                            End If
+                                                            Call oCacheItem.Transform(oTranslationMatrix)
                                                         End If
-                                                        Call oCacheItem.Transform(oTranslationMatrix)
-                                                        Call oAreaLine.Dispose()
-                                                    End If
+                                                    End Using
                                                 Else
-                                                    Dim oAreaPoly As GraphicsPath = modPlot.GetPlanAreaPolygon(oSegment)
-                                                    If Not oAreaPoly Is Nothing Then
-                                                        oCacheItem = oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
-                                                        If oCurrentSegment Is oSegment Then
-                                                            If oDrawingObject.EnableBrushes Then
-                                                                If oDrawingObject.EnableTransparence Then
-                                                                    oDrawingObject.LRUDSelectedBrush.Color = modPaint.TransparentColor(modPaint.LightColor(oColor, 0.5), oDrawingObject.DarkTransparentLevel)
-                                                                Else
-                                                                    oDrawingObject.LRUDSelectedBrush.Color = modPaint.LightColor(oColor, 0.5)
+                                                    Using oAreaPoly As GraphicsPath = modPlot.GetPlanAreaPolygon(oSegment)
+                                                        If Not oAreaPoly Is Nothing Then
+                                                            oCacheItem = oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
+                                                            If oCurrentSegment Is oSegment Then
+                                                                If oDrawingObject.EnableBrushes Then
+                                                                    If oDrawingObject.EnableTransparence Then
+                                                                        oDrawingObject.LRUDSelectedBrush.Color = modPaint.TransparentColor(modPaint.LightColor(oColor, 0.5), oDrawingObject.DarkTransparentLevel)
+                                                                    Else
+                                                                        oDrawingObject.LRUDSelectedBrush.Color = modPaint.LightColor(oColor, 0.5)
+                                                                    End If
+                                                                    Call oCacheItem.SetBrush(oDrawingObject.LRUDSelectedBrush)
                                                                 End If
-                                                                Call oCacheItem.SetBrush(oDrawingObject.LRUDSelectedBrush)
-                                                            End If
-                                                            oDrawingObject.LRUDSelectedPen.Color = oColor
-                                                            Call oCacheItem.SetPen(oDrawingObject.LRUDSelectedPen)
-                                                            Call oCacheItem.AddPath(oAreaPoly)
-                                                        Else
-                                                            If oDrawingObject.EnableBrushes Then
-                                                                If oDrawingObject.EnableTransparence Then
-                                                                    oDrawingObject.LRUDBrush.Color = modPaint.TransparentColor(modPaint.LightColor(oColor, 0.8), oDrawingObject.LightTransparentLevel)
-                                                                Else
-                                                                    oDrawingObject.LRUDBrush.Color = modPaint.LightColor(oColor, 0.8)
+                                                                oDrawingObject.LRUDSelectedPen.Color = oColor
+                                                                Call oCacheItem.SetPen(oDrawingObject.LRUDSelectedPen)
+                                                                Call oCacheItem.AddPath(oAreaPoly)
+                                                            Else
+                                                                If oDrawingObject.EnableBrushes Then
+                                                                    If oDrawingObject.EnableTransparence Then
+                                                                        oDrawingObject.LRUDBrush.Color = modPaint.TransparentColor(modPaint.LightColor(oColor, 0.8), oDrawingObject.LightTransparentLevel)
+                                                                    Else
+                                                                        oDrawingObject.LRUDBrush.Color = modPaint.LightColor(oColor, 0.8)
+                                                                    End If
+                                                                    Call oCacheItem.SetBrush(oDrawingObject.LRUDBrush)
                                                                 End If
-                                                                Call oCacheItem.SetBrush(oDrawingObject.LRUDBrush)
+                                                                oDrawingObject.LRUDPen.Color = oColor
+                                                                Call oCacheItem.SetPen(oDrawingObject.LRUDPen)
+                                                                Call oCacheItem.AddPath(oAreaPoly)
                                                             End If
-                                                            oDrawingObject.LRUDPen.Color = oColor
-                                                            Call oCacheItem.SetPen(oDrawingObject.LRUDPen)
-                                                            Call oCacheItem.AddPath(oAreaPoly)
+                                                            Call oCacheItem.Transform(oTranslationMatrix)
+                                                            'Call oAreaPoly.Dispose()
                                                         End If
-                                                        Call oCacheItem.Transform(oTranslationMatrix)
-                                                        Call oAreaPoly.Dispose()
-                                                    End If
+                                                    End Using
                                                 End If
                                             End If
                                         End If
@@ -621,17 +622,16 @@ Namespace cSurvey.Design
         End Sub
 
         Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
-            Dim oMatrix As Matrix = New Matrix
-            Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
-            Call oSVGItem.SetAttribute("name", "plot.plan")
-            Return oSVGItem
+            Dim oSVGGroup As XmlElement = modSVG.CreateLayer(SVG, "plot", "plot")
+            Call modSVG.AppendItem(SVG, oSVGGroup, MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options))
+            Return oSVGGroup
         End Function
 
-        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
-            Dim oSVG As XmlDocument = modSVG.CreateSVG
-            Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
-            Return oSVG
-        End Function
+        'Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, Size As SizeF, PageBox As RectangleF, ByVal ViewBox As RectangleF) As XmlDocument
+        '    Dim oSVG As XmlDocument = modSVG.CreateSVG
+        '    Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options, Size, ViewBox))
+        '    Return oSVG
+        'End Function
 
         Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, Selection As Helper.Editor.cIEditSelection)
             If Not PaintOptions.IsDesign Then
@@ -803,7 +803,6 @@ Namespace cSurvey.Design
 
         Friend Overrides Sub Calculate(ByVal SegmentsColl As List(Of cSegment), Optional ByVal PerformWarping As Boolean = True)
             Dim oPointCache As Dictionary(Of String, cPointCacheItem) = New Dictionary(Of String, cPointCacheItem)
-            'Dim oSegmentsList As List(Of cISegment) = SegmentsColl ' oSurvey.Segments.ToList
             For Each oSegment As cSegment In SegmentsColl ' oSegmentsList
                 If oSegment.IsValid Then ' AndAlso Not oSegment.IsSelfDefined Then
                     Dim iSideMeasureType As cSegment.SideMeasuresTypeEnum
@@ -1166,7 +1165,7 @@ Namespace cSurvey.Design
             oSurvey = Survey
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement)
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement)
             Dim oXmlPlot As XmlElement = Document.CreateElement("plot")
             Call Parent.AppendChild(oXmlPlot)
             Return oXmlPlot

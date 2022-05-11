@@ -1,6 +1,10 @@
 ﻿Imports System.Xml
 
 Namespace cSurvey
+    Public Interface cIDesignProperties
+        ReadOnly Property DesignProperties As cPropertiesCollection
+    End Interface
+
     Public Class cPropertiesCollection
         Implements IEnumerable
 
@@ -9,13 +13,13 @@ Namespace cSurvey
         Private oItems As Dictionary(Of String, Object)
 
         Friend Sub New(ByVal Survey As cSurvey)
-            osurvey = Survey
-            oItems = New Dictionary(Of String, Object)
+            oSurvey = Survey
+            oItems = New Dictionary(Of String, Object)(StringComparer.OrdinalIgnoreCase)
         End Sub
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal PropertiesCollections As XmlElement)
             oSurvey = Survey
-            oItems = New Dictionary(Of String, Object)
+            oItems = New Dictionary(Of String, Object)(StringComparer.OrdinalIgnoreCase)
             For Each oXMLItem As XmlElement In PropertiesCollections.ChildNodes
                 Dim sName As String = oXMLItem.GetAttribute("name")
                 Dim sType As String = oXMLItem.GetAttribute("type")
@@ -62,22 +66,17 @@ Namespace cSurvey
             If Not PropertyCollection Is Me Then
                 Call oItems.Clear()
                 For Each oItem As KeyValuePair(Of String, Object) In PropertyCollection.oItems
-                    'Dim sName As String = oItem.Key
-                    'If oItems.ContainsKey(sName) Then
-                    '    Call oItems.Remove(sName)
-                    'End If
                     Call oItems.Add(oItem.Key, oItem.Value)
                 Next
             End If
         End Sub
 
         Public Sub Add(ByVal Name As String, ByVal Value As Object)
-            Dim sName As String = Name.ToLower
-            If oItems.ContainsKey(sName) Then
-                Call oItems.Remove(sName)
+            If oItems.ContainsKey(Name) Then
+                Call oItems.Remove(Name)
             End If
             If Not Value Is Nothing Then
-                Call oItems.Add(sName, Value)
+                Call oItems.Add(Name, Value)
             End If
         End Sub
 
@@ -86,17 +85,15 @@ Namespace cSurvey
         End Sub
 
         Public Sub Remove(ByVal Name As String)
-            Dim sName As String = Name.ToLower
-            If oItems.ContainsKey(sName) Then
-                Call oItems.Remove(sName)
+            If oItems.ContainsKey(Name) Then
+                Call oItems.Remove(Name)
             End If
         End Sub
 
         Default Public Property Item(ByVal Name As String) As Object
             Get
-                Dim sName As String = Name.ToLower
-                If oItems.ContainsKey(sName) Then
-                    Return oItems(sName)
+                If oItems.ContainsKey(Name) Then
+                    Return oItems(Name)
                 Else
                     Return Nothing
                 End If
@@ -113,12 +110,19 @@ Namespace cSurvey
         End Property
 
         Public Function GetValue(ByVal Name As String, Optional ByVal DefaultValue As Object = Nothing) As Object
-            Dim sName As String = Name.ToLower
-            If oItems.ContainsKey(sName) Then
-                Return oItems(sName)
+            If oItems.ContainsKey(Name) Then
+                Return oItems(Name)
             Else
                 Return DefaultValue
             End If
+        End Function
+
+        Public Function HasValues() As Boolean
+            Return oItems.Count > 0
+        End Function
+
+        Public Function HasValue(Name As String) As Boolean
+            Return oItems.ContainsKey(Name)
         End Function
 
         Public Sub SetValue(ByVal Name As String, ByVal Value As Object)
@@ -129,7 +133,7 @@ Namespace cSurvey
             Return oItems.Values.GetEnumerator
         End Function
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Name As String, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Name As String, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlPropertiesCollection As XmlElement = Document.CreateElement(Name)
             For Each sName As String In oItems.Keys
                 Dim oValue As Object = oItems(sName)
@@ -148,7 +152,7 @@ Namespace cSurvey
                         Dim oValueColor As Color = oValue
                         oXmlPropertiesCollectionItem.InnerText = oValueColor.ToArgb
                     Case "single", "double", "decimal"
-                        oXmlPropertiesCollectionItem.InnerText = modNumbers.NumberToString(oValue)
+                        oXmlPropertiesCollectionItem.InnerText = modNumbers.NumberToString(oValue, "")
                     Case Else
                         oXmlPropertiesCollectionItem.InnerText = oValue
                 End Select

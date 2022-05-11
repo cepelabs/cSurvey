@@ -1,4 +1,4 @@
-﻿Public Class frmImportCaveExporer
+﻿friend Class frmImportCaveExporer
 
     Private Sub pSettingsLoad()
         Try

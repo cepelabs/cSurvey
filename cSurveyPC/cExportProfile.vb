@@ -9,7 +9,7 @@ Namespace cSurvey
         Private oSurvey As cSurvey
         Private oItems As List(Of cExportProfile)
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Try
                 Dim oXmlItem As XmlElement = Document.CreateElement("exportprofiles")
                 For Each oItem As cExportProfile In oItems
@@ -31,7 +31,7 @@ Namespace cSurvey
             Call oItems.Add(New cExportProfile(oSurvey, oSurvey.Options("_export.profile"), cIDesign.cDesignTypeEnum.Profile))
         End Sub
 
-        Friend Sub New(Survey As cSurvey, ByVal File As Storage.cFile, Profiles As XmlElement)
+        Friend Sub New(Survey As cSurvey, ByVal File As cFile, Profiles As XmlElement)
             oSurvey = Survey
             oItems = New List(Of cExportProfile)
             Dim bPlanExist As Boolean = False
@@ -53,10 +53,8 @@ Namespace cSurvey
 
         Public Function AddAsCopy(Profile As cIProfile, Name As String) As cIProfile Implements cIProfiles.AddAsCopy
             Try
-                Dim oXML As XmlDocument = New XmlDocument
-                Dim oXMLRoot As XmlElement = oXML.CreateElement("root")
-                Call DirectCast(Profile, cExportProfile).SaveTo(Nothing, oXML, oXMLRoot)
-                Dim oItem As cExportProfile = New cExportProfile(oSurvey, Nothing, oXMLRoot.ChildNodes(0))
+                Dim oSourceProfile As cExportProfile = DirectCast(Profile, cExportProfile)
+                Dim oItem As cExportProfile = oSourceProfile.Clone
                 oItem.Name = Name
                 Call oItems.Add(oItem)
                 Return oItem
@@ -136,6 +134,17 @@ Namespace cSurvey
 
         Public Event OnDelete(Sender As Object, e As EventArgs) Implements cIProfile.OnDelete
 
+        Public Function Clone() As cExportProfile
+            Dim oXML As XmlDocument = New XmlDocument
+            Dim oXMLRoot As XmlElement = oXML.CreateElement("root")
+            Dim bBackupIsSystem As Boolean = bIsSystem
+            If bBackupIsSystem Then bIsSystem = False
+            Call Me.SaveTo(Nothing, oXML, oXMLRoot)
+            Dim oItem As cExportProfile = New cExportProfile(oSurvey, Nothing, oXMLRoot.ChildNodes(0))
+            If bBackupIsSystem Then bIsSystem = True
+            Return oItem
+        End Function
+
         Friend Sub OnDeleting() Implements cIProfile.OnDeleting
             RaiseEvent OnDelete(Me, New EventArgs)
         End Sub
@@ -185,7 +194,7 @@ Namespace cSurvey
             End Get
         End Property
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal File As Storage.cFile, ByVal Profile As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal Profile As XmlElement)
             oSurvey = Survey
             iDesign = Profile.GetAttribute("design")
             If modXML.GetAttributeValue(Profile, "s", 0) = 0 Then
@@ -203,7 +212,11 @@ Namespace cSurvey
                 bIsSystem = True
             End If
             Try
-                oItems = New cVisibilityItems(oSurvey, Profile.Item("vis"))
+                If modXML.ChildElementExist(Profile, "vis") Then
+                    oItems = New cVisibilityItems(oSurvey, Profile.Item("vis"))
+                Else
+                    oItems = New cVisibilityItems(oSurvey)
+                End If
             Catch ex As Exception
                 oItems = New cVisibilityItems(oSurvey)
             End Try
@@ -237,7 +250,7 @@ Namespace cSurvey
             bIsSystem = False
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlItem As XmlElement = Document.CreateElement("profile")
             Call oXmlItem.SetAttribute("design", iDesign)
             If bIsSystem Then

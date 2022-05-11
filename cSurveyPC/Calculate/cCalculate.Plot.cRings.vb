@@ -75,7 +75,7 @@ Namespace cSurvey.Calculate
             Next
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlRings As XmlElement = Document.CreateElement("rngs")
             Call oXmlRings.SetAttribute("aep", modNumbers.NumberToString(dAverageErrorPercent, ""))
             For Each oItem As cRing In oItems

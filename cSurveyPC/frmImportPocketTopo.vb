@@ -1,4 +1,4 @@
-﻿Public Class frmImportPocketTopo
+﻿friend Class frmImportPocketTopo
 
     Private Sub pSettingsLoad()
         Try

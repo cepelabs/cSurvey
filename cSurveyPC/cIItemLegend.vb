@@ -21,5 +21,19 @@
         Property ItemHeight As Single
 
         Property ItemScale As Single
+
+        Enum ItemAlignmentEnum
+            Left = 0
+            Right = 1
+        End Enum
+
+        Enum FlowDirectionEnum
+            Vertical = 0
+            Horizontal = 1
+        End Enum
+
+        Property ItemAlignment As ItemAlignmentEnum
+        Property FlowDirection As FlowDirectionEnum
+        Property MaxItems As Integer
     End Interface
 End Namespace

@@ -2,7 +2,7 @@
 Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Design.Items
 
-Public Class frmSplay
+friend Class frmSplay
     Private oSurvey As cSurvey.cSurvey
     Private oDesign As cDesign
 

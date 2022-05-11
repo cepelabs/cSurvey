@@ -1,4 +1,6 @@
-﻿Public Class frmResurveyOptions
+﻿Imports DevExpress.XtraBars.Navigation
+
+friend Class frmResurveyOptions
     Private oOptions As cResurvey.cOptions
 
     Friend Sub New(Options As cResurvey.cOptions, [Readonly] As Boolean)
@@ -11,6 +13,7 @@
         Call oOptions.CopyFrom(Options)
 
         cboCalculateMode.SelectedIndex = oOptions.CalculateMode
+        cboProfileType.SelectedIndex = oOptions.ProfileType
         txtNordCorrection.Value = oOptions.NordCorrection
         cboCalculateMode.Enabled = Not [Readonly]
         chkSkipInvalidStation.Checked = oOptions.SkipInvalidStation
@@ -22,7 +25,9 @@
         txtLRUDBorderWidth.Value = oOptions.LRUDBorderWidth
         txtLRMaxValue.Value = oOptions.LRMaxValue
         txtUDMaxValue.Value = oOptions.UDMaxValue
-        'cmdOk.Enabled = Not [Readonly]
+        cboLRUDStation.SelectedIndex = oOptions.LRUDStation
+
+        cboShotDirection.SelectedIndex = 0
     End Sub
 
     Friend ReadOnly Property CurrentOptions As cResurvey.cOptions
@@ -33,6 +38,7 @@
 
     Private Sub cmdOk_Click(sender As Object, e As System.EventArgs) Handles cmdOk.Click
         oOptions.CalculateMode = cboCalculateMode.SelectedIndex
+        oOptions.ProfileType = cboProfileType.SelectedIndex
         oOptions.NordCorrection = txtNordCorrection.Value
         oOptions.SkipInvalidStation = chkSkipInvalidStation.Checked
         oOptions.UseDropForInclination = chkUseDropForInclination.Checked
@@ -43,15 +49,23 @@
         oOptions.LRUDBorderWidth = txtLRUDBorderWidth.Value
         oOptions.LRMaxValue = txtLRMaxValue.Value
         oOptions.UDMaxValue = txtUDMaxValue.Value
+        oOptions.LRUDStation = cboLRUDStation.SelectedIndex
     End Sub
 
     Private Sub cboCalculateMode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCalculateMode.SelectedIndexChanged
-        chkUseDropForInclination.Enabled = cboCalculateMode.SelectedIndex = 0
+        Dim bEnabled As Boolean = cboCalculateMode.SelectedIndex = 0
+        chkUseDropForInclination.Enabled = bEnabled
+        lblProfileType.Enabled = bEnabled
+        cboProfileType.Enabled = bEnabled
     End Sub
 
     Private Sub chkUseDropForInclination_CheckedChanged(sender As Object, e As EventArgs) Handles chkUseDropForInclination.CheckedChanged
         Dim bEnabled As Boolean = chkUseDropForInclination.Checked
         lblDropScaleType.Enabled = bEnabled
         cboDropScaleType.Enabled = bEnabled
+    End Sub
+
+    Private Sub cboLRUDStation_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboLRUDStation.SelectedIndexChanged
+        frmLRUDFromImages.Enabled = cboLRUDStation.SelectedIndex > 0
     End Sub
 End Class

@@ -1,7 +1,7 @@
 ﻿Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
 
-Public Class frmParametersZOrder
+friend Class frmParametersZOrder
     Friend Event OnChangeOptions(ByVal Sender As Object, ByVal Options As cOptions)
 
     Private oOptions As cOptions

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="UpdateField"
+   x="0px"
+   y="0px"
+   viewBox="0 0 32 32"
+   style="enable-background:new 0 0 32 32;"
+   xml:space="preserve"
+   sodipodi:docname="fielddeleted.svg"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"><metadata
+   id="metadata21"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs19" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="2560"
+   inkscape:window-height="1017"
+   id="namedview17"
+   showgrid="false"
+   inkscape:zoom="12.930137"
+   inkscape:cx="9.8869796"
+   inkscape:cy="17.130405"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="UpdateField" />
+<style
+   type="text/css"
+   id="style2">
+	.Yellow{fill:#FFB115;}
+	.Green{fill:#039C23;}
+</style>
+
+
+<style
+   type="text/css"
+   id="style846">
+	.Yellow{fill:#FFB115;}
+	.Red{fill:#D11C1C;}
+</style><g
+   id="g862"
+   transform="matrix(1,0,0,0.96542688,4.0108062,0.26804748)"><path
+     id="path848"
+     style="fill:#ffb115;fill-opacity:1;stroke-width:1.01557"
+     d="m -0.9990874,5.9999358 c -0.6000001,0 -1,0.4119296 -1,1.0307584 V 21.471746 c 0,0.618829 0.3999999,1.030758 1,1.030758 h 3.0000002 6.0000002 7.199219 l -2.59961,-2.681224 c -0.8,-0.825105 -0.8,-2.062688 0,-2.887793 l 2,-2.063604 c 0.4,-0.412552 0.900391,-0.619706 1.400391,-0.619706 0.5,0 0.998437,0.207154 1.398437,0.619706 l 2.601563,2.681225 2,-2.061518 V 7.0306942 c 0,-0.6188288 -0.4,-1.0307584 -1,-1.0307584 z" /></g><polygon
+   class="Red"
+   points="28,16 24,20 20,16 18,18 22,22 18,26 20,28 24,24 28,28 30,26 26,22 30,18 "
+   id="polygon850"
+   style="fill:#d11c1c"
+   transform="translate(-0.17967908,-0.11314722)" /></svg>

@@ -9,21 +9,21 @@
 '    Event OnSetFlags(Sender As Object, e As FlagEventArgs)
 'End Interface
 
-Public Class PropertyChangeEventArgs
-    Inherits EventArgs
+'Public Class PropertyChangeEventArgs
+'    Inherits EventArgs
 
-    Private sName As String
+'    Private sName As String
 
-    Public ReadOnly Property Name As String
-        Get
-            Return sName
-        End Get
-    End Property
+'    Public ReadOnly Property Name As String
+'        Get
+'            Return sName
+'        End Get
+'    End Property
 
-    Public Sub New(Name As String)
-        sName = Name
-    End Sub
-End Class
+'    Public Sub New(Name As String)
+'        sName = Name
+'    End Sub
+'End Class
 
 Public Class DoCommandEventArgs
     Inherits EventArgs

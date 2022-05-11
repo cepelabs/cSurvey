@@ -133,7 +133,7 @@ Namespace cSurvey.Design.Options
             Call Import(CompassOptions)
         End Sub
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLCompassOptions As XmlElement = Document.CreateElement("compassoptions")
             Call oFont.SaveTo(File, Document, oXMLCompassOptions, "font")
             Call oXMLCompassOptions.SetAttribute("text", sText)

@@ -2,7 +2,7 @@
 Imports System.IO
 Imports cSurveyPC.cSurvey.Net
 
-Public Class frmHistory
+friend Class frmHistory
     Private oSurvey As cSurvey.cSurvey
     Private sFilename As String
 

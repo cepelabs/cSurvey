@@ -33,8 +33,11 @@ Namespace cSurvey.Design
         <Flags()> Public Enum SVGOptionsEnum As Integer
             None = &H0
             Clipping = &H1
-            ClipartBrushes = &H10
-            Silent = &H1000
+            ClipartBrushes = &H2
+            Silent = &H4
+            Images = &H8
+            AddSourceReference = &H10
+            TextAsPath = &H100
         End Enum
 
         Public Enum BindModeEnum As Integer
@@ -132,7 +135,7 @@ Namespace cSurvey.Design
             Try
                 If Not oThumbnailImage.ContainsKey(sThumbKey) Then
                     Dim oBounds As RectangleF = New RectangleF(0, 0, thumbWidth, thumbHeight)
-                    Dim oImage As Image = New Bitmap(thumbWidth, thumbHeight)
+                    Dim oImage As Bitmap = New Bitmap(thumbWidth, thumbHeight)
                     Using oGr As Graphics = Graphics.FromImage(oImage)
                         oGr.SmoothingMode = SmoothingMode.AntiAlias
                         oGr.CompositingQuality = CompositingQuality.HighQuality
@@ -152,6 +155,7 @@ Namespace cSurvey.Design
                         Call oGr.TranslateTransform(sTranslateX, sTranslateY, MatrixOrder.Append)
                         Call Paint(oGr, PaintOptions, cItem.PaintOptionsEnum.None, Selected)
                     End Using
+                    oImage.MakeTransparent(Backcolor)
                     Call oThumbnailImage.Add(sThumbKey, oImage)
                     Return oImage
                 Else
@@ -273,8 +277,26 @@ Namespace cSurvey.Design
             End Get
         End Property
 
-        Friend MustOverride Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
-        Friend MustOverride Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
+        Friend Overridable Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
+            Dim oSVG As XmlDocument = modSVG.CreateSVG
+            Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
+            Return oSVG
+        End Function
+
+        Friend Overridable Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+            Using oMatrix As Matrix = New Matrix
+                If PaintOptions.DrawTranslation Then
+                    Dim oTranslation As SizeF = oDesign.GetItemTranslation(Me)
+                    Call oMatrix.Translate(oTranslation.Width, oTranslation.Height)
+                End If
+                Dim oSVGItem As XmlElement = oCaches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
+
+                'Call modSVG.AppendItemStyle(SVG, oSVGItem, oBrush, oPen)
+                Call modSVG.AddSourceReference(Me, oSVGItem, Options)
+
+                Return oSVGItem
+            End Using
+        End Function
 
         Public Overridable Function GetCenterPoint() As PointF
             Return modPaint.GetCenterPoint(GetBounds)
@@ -448,7 +470,7 @@ Namespace cSurvey.Design
             iDesignAffinity = DesignAffinityEnum.Design
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As Storage.cFile, ByVal Item As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As cFile, ByVal Item As XmlElement)
             oSurvey = Survey
             oDesign = Design
             oLayer = Layer
@@ -508,7 +530,7 @@ Namespace cSurvey.Design
             oCaches = New cDrawCaches
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oXmlItem As XmlElement = Document.CreateElement("item")
             Call oXmlItem.SetAttribute("layer", oLayer.Type.ToString("D"))
 
@@ -569,6 +591,10 @@ Namespace cSurvey.Design
             End Get
         End Property
 
+        Friend Overridable Sub RenameCave(ByVal Cave As String)
+            sCave = Cave
+        End Sub
+
         Friend Overridable Sub RenameCave(ByVal Cave As String, ByVal Branch As String)
             sCave = Cave
             sBranch = Branch
@@ -589,6 +615,14 @@ Namespace cSurvey.Design
                 If BindSegment Then
                     Call BindSegments()
                 End If
+            End If
+        End Sub
+
+        Public Overridable Sub SetCave(ByVal Cave As cCaveInfo, Optional ByVal Branch As cCaveInfoBranch = Nothing, Optional ByVal BindSegment As Boolean = True) Implements cIItem.SetCave
+            If Cave Is Nothing Then
+                Call SetCave("", "", BindSegment)
+            Else
+                Call SetCave(Cave.Name, If(Branch Is Nothing, "", Branch.Path), BindSegment)
             End If
         End Sub
 
@@ -688,29 +722,29 @@ Namespace cSurvey.Design
 #Region "Scale"
 
         Friend Overridable Function GetAttachmentScaleFactor(PaintOptions As cOptions) As Single
-            Return PaintOptions.CurrentRule.DesignProperties.GetValue("DesignAttachmentScaleFactor", oSurvey.Properties.DesignProperties.GetValue("DesignAttachmentScaleFactor", 2))
+            Return PaintOptions.GetCurrentDesignPropertiesValue("DesignAttachmentScaleFactor", 2)
         End Function
 
         Friend Overridable Function GetClipartScaleFactor(PaintOptions As cOptions) As Single
-            Dim sDesignClipartScaleFactor As Single = PaintOptions.CurrentRule.DesignProperties.GetValue("DesignClipartScaleFactor", oSurvey.Properties.DesignProperties.GetValue("DesignClipartScaleFactor", 1))
+            Dim sDesignClipartScaleFactor As Single = PaintOptions.GetCurrentDesignPropertiesValue("DesignClipartScaleFactor", 1)
             If DesignAffinity = DesignAffinityEnum.Extra Then
-                sDesignClipartScaleFactor = sDesignClipartScaleFactor * PaintOptions.CurrentRule.DesignProperties.GetValue("DesignExtraScaleFactor", oSurvey.Properties.DesignProperties.GetValue("DesignExtraScaleFactor", 1))
+                sDesignClipartScaleFactor = sDesignClipartScaleFactor * PaintOptions.GetCurrentDesignPropertiesValue("DesignExtraScaleFactor", 1)
             End If
             Return sDesignClipartScaleFactor
         End Function
 
         Friend Overridable Function GetSignScaleFactor(PaintOptions As cOptions) As Single
-            Dim sDesignSignScaleFactor As Single = PaintOptions.CurrentRule.DesignProperties.GetValue("DesignSignScaleFactor", oSurvey.Properties.DesignProperties.GetValue("DesignSignScaleFactor", 1))
+            Dim sDesignSignScaleFactor As Single = PaintOptions.GetCurrentDesignPropertiesValue("DesignSignScaleFactor", 1)
             If DesignAffinity = DesignAffinityEnum.Extra Then
-                sDesignSignScaleFactor = sDesignSignScaleFactor * PaintOptions.CurrentRule.DesignProperties.GetValue("DesignExtraScaleFactor", oSurvey.Properties.DesignProperties.GetValue("DesignExtraScaleFactor", 1))
+                sDesignSignScaleFactor = sDesignSignScaleFactor * PaintOptions.GetCurrentDesignPropertiesValue("DesignExtraScaleFactor", 1)
             End If
             Return sDesignSignScaleFactor
         End Function
 
         Friend Overridable Function GetTextScaleFactor(PaintOptions As cOptions) As Single
-            Dim sTextScaleFactor As Single = PaintOptions.CurrentRule.DesignProperties.GetValue("DesignTextScaleFactor", oSurvey.Properties.DesignProperties.GetValue("DesignTextScaleFactor", 0.05))
+            Dim sTextScaleFactor As Single = PaintOptions.GetCurrentDesignPropertiesValue("DesignTextScaleFactor", 0.05)
             If DesignAffinity = DesignAffinityEnum.Extra Then
-                sTextScaleFactor = sTextScaleFactor * PaintOptions.CurrentRule.DesignProperties.GetValue("DesignExtraTextScaleFactor", oSurvey.Properties.DesignProperties.GetValue("DesignExtraTextScaleFactor", 1))
+                sTextScaleFactor = sTextScaleFactor * PaintOptions.GetCurrentDesignPropertiesValue("DesignExtraTextScaleFactor", 1)
             End If
             Return sTextScaleFactor
         End Function

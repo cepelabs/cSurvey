@@ -5,7 +5,7 @@ Namespace cSurvey.Design.Layers
     Public Class cLayerSigns
         Inherits cLayer
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal File As Storage.cFile, ByVal Layer As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal File As cFile, ByVal Layer As XmlElement)
             MyBase.new(Survey, Design, File, Layer)
         End Sub
 
@@ -23,7 +23,7 @@ Namespace cSurvey.Design.Layers
             Return oItem
         End Function
 
-        Public Function CreateAttachment(ByVal Cave As String, ByVal Branch As String, ByVal Data As Object, ByVal DataFormat As cAttachmentLinks.cAttachmentDataFormatEnum) As cItemAttachment
+        Public Function CreateAttachment(ByVal Cave As String, ByVal Branch As String, ByVal Data As Object, ByVal DataFormat As cAttachmentsLinks.cAttachmentDataFormatEnum) As cItemAttachment
             Dim oItem As cItemAttachment = MyBase.CreateItem(cIItem.cItemTypeEnum.Attachment, cIItem.cItemCategoryEnum.Sign, Data, DataFormat)
             Call oItem.SetCave(Cave, Branch)
             Return oItem
@@ -32,11 +32,11 @@ Namespace cSurvey.Design.Layers
         Public Function CreateSign(ByVal Cave As String, ByVal Branch As String, Sign As cIItemSign.SignEnum) As cItemSign
             Dim oItem As cItemSign
             If Sign = cIItemSign.SignEnum.Undefined Then
-                oItem = MyBase.CreateItem(cIItem.cItemTypeEnum.Sign, cIItem.cItemCategoryEnum.Sign, My.Resources.error_svg, cIItemClipartBase.cClipartDataFormatEnum.SVGData)
+                oItem = MyBase.CreateItem(cIItem.cItemTypeEnum.Sign, cIItem.cItemCategoryEnum.Sign, My.Resources.clipart_error, cIItemClipartBase.cClipartDataFormatEnum.SVGData)
             Else
                 Dim oData As cClipartPlaceholder = cClipartHelper.FindByAttribute(cClipartHelper.GetGallery("signs"), "sign", Sign.ToString("D")).FirstOrDefault
                 If oData Is Nothing Then
-                    oItem = MyBase.CreateItem(cIItem.cItemTypeEnum.Sign, cIItem.cItemCategoryEnum.Sign, My.Resources.error_svg, cIItemClipartBase.cClipartDataFormatEnum.SVGData)
+                    oItem = MyBase.CreateItem(cIItem.cItemTypeEnum.Sign, cIItem.cItemCategoryEnum.Sign, My.Resources.clipart_error, cIItemClipartBase.cClipartDataFormatEnum.SVGData)
                 Else
                     oItem = MyBase.CreateItem(cIItem.cItemTypeEnum.Sign, cIItem.cItemCategoryEnum.Sign, oData.Filename, cIItemClipartBase.cClipartDataFormatEnum.SVGFile)
                 End If

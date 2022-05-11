@@ -2,7 +2,7 @@
 Imports cSurveyPC.cSurvey.Data
 Imports cSurveyPC.cSurvey.CaveRegister
 
-Public Class frmCaveRegisterSettings
+Friend Class frmCaveRegisterSettings
     Private oSurvey As cSurvey.cSurvey
     Private oSettings As cCaveRegisterSettings
 
@@ -136,7 +136,7 @@ Public Class frmCaveRegisterSettings
     End Function
 
     Private Sub cmdOk_Click(sender As Object, e As EventArgs) Handles cmdOk.Click
-        If pValidate Then
+        If pValidate() Then
             Cursor = Cursors.WaitCursor
             For Each oNode As TreeNode In tvSettings.Nodes
                 Dim oPH As cSettingPlaceHolder = oNode.Tag

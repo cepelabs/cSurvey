@@ -4,7 +4,7 @@ Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.XSystem.Linq.Dynamic
 Imports System.Linq.Expressions
 
-Public Class frmCaveBranchesSelector
+friend Class frmCaveBranchesSelector
     Private oSurvey As cSurvey.cSurvey
     Private oSelection As List(Of String)
     Private bEventDisabled As Boolean

@@ -4,6 +4,7 @@ Imports System.Collections.Generic
 Imports System.Collections.ObjectModel
 
 Imports cSurveyPC.cSurvey.Design.Layers
+Imports System.ComponentModel
 
 Namespace cSurvey.Design
     Public Class cLayers
@@ -13,7 +14,13 @@ Namespace cSurvey.Design
         Private oSurvey As cSurvey
         Private oDesign As cDesign
 
-        Private oLayers As List(Of cLayer)
+        Private oLayers As BindingList(Of cLayer)
+
+        Friend ReadOnly Property List As BindingList(Of cLayer)
+            Get
+                Return oLayers
+            End Get
+        End Property
 
         Public Enum LayerTypeEnum
             Base = 0
@@ -79,7 +86,7 @@ Namespace cSurvey.Design
             Next
         End Sub
 
-        Private Function pAdd(ByVal LayerType As LayerTypeEnum, ByVal File As Storage.cFile, ByVal Layer As XmlElement) As cLayer
+        Private Function pAdd(ByVal LayerType As LayerTypeEnum, ByVal File As cFile, ByVal Layer As XmlElement) As cLayer
             Dim oLayer As cLayer
             Select Case LayerType
                 Case LayerTypeEnum.Base
@@ -147,10 +154,10 @@ Namespace cSurvey.Design
             End Get
         End Property
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal File As Storage.cFile, ByVal Layers As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal File As cFile, ByVal Layers As XmlElement)
             oSurvey = Survey
             oDesign = Design
-            oLayers = New List(Of cLayer)
+            oLayers = New BindingList(Of cLayer)
 
             Dim oLayerColl As SortedList(Of LayerTypeEnum, cLayer) = New SortedList(Of LayerTypeEnum, cLayer)
 
@@ -186,7 +193,7 @@ Namespace cSurvey.Design
             Next
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum)
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum)
             Dim oXmlLayers As XmlElement = Document.CreateElement("layers")
             For Each oLayer As cLayer In oLayers
                 Call oLayer.SaveTo(File, Document, oXmlLayers, Options)
@@ -198,7 +205,7 @@ Namespace cSurvey.Design
         Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign)
             oSurvey = Survey
             oDesign = Design
-            oLayers = New List(Of cLayer)
+            oLayers = New BindingList(Of cLayer)
             Call pAdd(LayerTypeEnum.Base)
             Call pAdd(LayerTypeEnum.Soil)
             Call pAdd(LayerTypeEnum.WaterAndFloorMorphologies)

@@ -36,7 +36,7 @@ Namespace cSurvey.Properties
             If Not oItems.ContainsKey(ShotByAlt) Then Call oItems.Add(ShotByAlt, New cHighlightsDetail(oSurvey, ShotByAlt, modMain.GetLocalizedString("properties.highlights.shotByAlt"), System.Drawing.Color.Gray, 10, 140, cHighlightsDetail.ApplyToEnum.Shots, "vb#>>public function GetHighlight(Details as cShotHighlightDetails) as boolean" & vbCrLf & "Details.meters.colors = {Survey.calculate.trigpoints.zs.GetScaleColor(Survey.calculate.trigpoints(Details.element.getfromtrigpoint).point.z), Survey.calculate.trigpoints.zs.GetScaleColor(Survey.calculate.trigpoints(Details.element.gettotrigpoint).point.z)}" & vbCrLf & "Return True" & vbCrLf & "end function", True))
         End Sub
 
-        Public Function Add(Item As cHighlightsDetail)
+        Public Function Add(Item As cHighlightsDetail) As cHighlightsDetail
             Return Add(Item.Name, Item.Color, Item.Size, Item.Opacity, Item.ApplyTo, Item.Condition)
         End Function
 
@@ -74,7 +74,7 @@ Namespace cSurvey.Properties
             Return oItems.Values.GetEnumerator
         End Function
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLHighlightsDetails As XmlElement = Document.CreateElement("hlsds")
             For Each oItem As cHighlightsDetail In oItems.Values
                 'If Not oItem.System Then

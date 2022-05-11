@@ -169,11 +169,26 @@
     <Reference Include="clipper_library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Clipper.6.2.10\lib\net40\clipper_library.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.BonusSkins.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v20.2.Core, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.Desktop.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v20.2.Core, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v20.2.Core, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v20.2.Win, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Diacritics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Diacritics.2.1.19293.1\lib\net45\Diacritics.dll</HintPath>
+      <HintPath>packages\Diacritics.2.1.20036.1\lib\net45\Diacritics.dll</HintPath>
     </Reference>
-    <Reference Include="EPPlus, Version=4.5.3.2, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
-      <HintPath>packages\EPPlus.4.5.3.2\lib\net40\EPPlus.dll</HintPath>
+    <Reference Include="EPPlus, Version=4.5.3.3, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>packages\EPPlus.4.5.3.3\lib\net40\EPPlus.dll</HintPath>
     </Reference>
     <Reference Include="FTTLib, Version=1.0.3.0, Culture=neutral, PublicKeyToken=8c1b2cae191651c7, processorArchitecture=MSIL">
       <HintPath>packages\FTTLib.dll.1.1.0\lib\net20\FTTLib.dll</HintPath>
@@ -181,11 +196,11 @@
     <Reference Include="GeoUtility">
       <HintPath>.\GeoUtility.dll</HintPath>
     </Reference>
-    <Reference Include="HelixToolkit, Version=2.10.0.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
-      <HintPath>packages\HelixToolkit.2.10.0\lib\netstandard1.1\HelixToolkit.dll</HintPath>
+    <Reference Include="HelixToolkit, Version=2.12.0.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
+      <HintPath>packages\HelixToolkit.2.12.0\lib\netstandard1.1\HelixToolkit.dll</HintPath>
     </Reference>
-    <Reference Include="HelixToolkit.Wpf, Version=2.10.0.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
-      <HintPath>packages\HelixToolkit.Wpf.2.10.0\lib\net45\HelixToolkit.Wpf.dll</HintPath>
+    <Reference Include="HelixToolkit.Wpf, Version=2.12.0.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
+      <HintPath>packages\HelixToolkit.Wpf.2.12.0\lib\net45\HelixToolkit.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip">
       <HintPath>.\Ionic.Zip.dll</HintPath>
@@ -205,8 +220,8 @@
     <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
     </Reference>
-    <Reference Include="NAudio, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\NAudio.1.9.0\lib\net35\NAudio.dll</HintPath>
+    <Reference Include="NAudio, Version=1.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.1.10.0\lib\net35\NAudio.dll</HintPath>
     </Reference>
     <Reference Include="ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4, processorArchitecture=MSIL">
       <HintPath>packages\ObjectListView.Official.2.9.1\lib\net20\ObjectListView.dll</HintPath>
@@ -217,8 +232,10 @@
       <HintPath>packages\jacobslusser.ScintillaNET.3.6.3\lib\net40\ScintillaNET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
@@ -226,7 +243,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Net.Http.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -238,6 +257,7 @@
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationClient" />
     <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=3.0.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
       <HintPath>packages\DockPanelSuite.3.0.0\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
     </Reference>
@@ -305,6 +325,36 @@
     <Compile Include="cClipartOnPath2.vb" />
     <Compile Include="cClipperHelper.vb" />
     <Compile Include="cConnectionDef.vb" />
+    <Compile Include="cDesign3DModelControl.Designer.vb">
+      <DependentUpon>cDesign3DModelControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cDesign3DModelControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cDesignSurfaceControl.Designer.vb">
+      <DependentUpon>cDesignSurfaceControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cDesignSurfaceControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cDesignCenterlineControl.Designer.vb">
+      <DependentUpon>cDesignCenterlineControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cDesignCenterlineControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cDesignStyleControl.Designer.vb">
+      <DependentUpon>cDesignStyleControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cDesignStyleControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cDesignSurfaceProfileControl.Designer.vb">
+      <DependentUpon>cDesignSurfaceProfileControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cDesignSurfaceProfileControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="cDesignPrintOrExportAreaControl.Designer.vb">
       <DependentUpon>cDesignPrintOrExportAreaControl.vb</DependentUpon>
     </Compile>
@@ -315,6 +365,58 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="cDrawOptions.vb" />
+    <Compile Include="cElevationDropDown.Designer.vb">
+      <DependentUpon>cElevationDropDown.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cElevationDropDown.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cISession.vb" />
+    <Compile Include="cItemPointLineTypePropertyControl2.Designer.vb">
+      <DependentUpon>cItemPointLineTypePropertyControl2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cItemPointLineTypePropertyControl2.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cItemLineTypePropertyControl2.Designer.vb">
+      <DependentUpon>cItemLineTypePropertyControl2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cItemLineTypePropertyControl2.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cItemNamePropertyControl2.Designer.vb">
+      <DependentUpon>cItemNamePropertyControl2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cItemNamePropertyControl2.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cItemPointPropertyControl.Designer.vb">
+      <DependentUpon>cItemPointPropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cItemPointPropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cItemTransparencyPropertyControl2.Designer.vb">
+      <DependentUpon>cItemTransparencyPropertyControl2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cItemTransparencyPropertyControl2.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cDesign3DElevationFactor.Designer.vb">
+      <DependentUpon>cDesign3DElevationFactor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cDesign3DElevationFactor.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cItemVisibilityPropertyControl2.Designer.vb">
+      <DependentUpon>cItemVisibilityPropertyControl2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cItemVisibilityPropertyControl2.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cRibbonForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="cForm.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -351,6 +453,12 @@
       <DependentUpon>cDesignLinkedSurveySelectorPropertyControl.vb</DependentUpon>
     </Compile>
     <Compile Include="cDesignLinkedSurveySelectorPropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cItemTextPropertyControl.Designer.vb">
+      <DependentUpon>cItemTextPropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cItemTextPropertyControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="cItemVisibilityPropertyControl.Designer.vb">
@@ -391,15 +499,88 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="cMasterSurvey.vb" />
+    <Compile Include="cRibbonMiniToolbar.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="cSegmentImage.vb" />
     <Compile Include="cSegmentImages.vb" />
+    <Compile Include="cUIHelpers.vb" />
     <Compile Include="cSingsImportHelper.vb" />
+    <Compile Include="cTemplateEntry.vb" />
+    <Compile Include="cTexts.vb" />
     <Compile Include="cTransparentPanel.Designer.vb">
       <DependentUpon>cTransparentPanel.vb</DependentUpon>
     </Compile>
     <Compile Include="cTransparentPanel.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="cDockClipart.Designer.vb">
+      <DependentUpon>cDockClipart.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cDockClipart.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cDockAudioViewer.Designer.vb">
+      <DependentUpon>cDockAudioViewer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cDockAudioViewer.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cDockImageViewer.Designer.vb">
+      <DependentUpon>cDockImageViewer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cDockImageViewer.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cDockJoinPoints.Designer.vb">
+      <DependentUpon>cDockJoinPoints.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cDockJoinPoints.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cDockLevels.Designer.vb">
+      <DependentUpon>cDockLevels.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cDockLevels.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cDockLinkedSurveys.Designer.vb">
+      <DependentUpon>cDockLinkedSurveys.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cDockLinkedSurveys.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmMain2.Designer.vb">
+      <DependentUpon>frmMain2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLevels.Designer.vb">
+      <DependentUpon>frmLevels.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLevels.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cDockText.Designer.vb">
+      <DependentUpon>cDockText.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cDockText.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cDockTexts.Designer.vb">
+      <DependentUpon>cDockTexts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cDockTexts.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmTexts.Designer.vb">
+      <DependentUpon>frmTexts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTexts.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modDevExpress.vb" />
     <Compile Include="cTrigPointLeftRightSideMeasure.vb" />
     <Compile Include="cTrigPointUpDownSideMeasure.vb" />
     <Compile Include="Calculate\cCalculate.Plot.cStationData.vb" />
@@ -645,6 +826,12 @@
       <DependentUpon>frmItemScaleVisibility.vb</DependentUpon>
     </Compile>
     <Compile Include="frmItemScaleVisibility.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLinkedSurveysRelink.Designer.vb">
+      <DependentUpon>frmLinkedSurveysRelink.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLinkedSurveysRelink.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmManageLRUD.Designer.vb">
@@ -1308,7 +1495,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
     </Compile>
-    <Compile Include="My Project\Resources.Designer.vb" />
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="My Project\Settings.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -1341,11 +1532,44 @@
       <DependentUpon>cCaveRegisterForm.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="cDesign3DModelControl.it.resx">
+      <DependentUpon>cDesign3DModelControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDesign3DModelControl.resx">
+      <DependentUpon>cDesign3DModelControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDesignSurfaceControl.it.resx">
+      <DependentUpon>cDesignSurfaceControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDesignSurfaceControl.resx">
+      <DependentUpon>cDesignSurfaceControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDesignCenterlineControl.it.resx">
+      <DependentUpon>cDesignCenterlineControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDesignCenterlineControl.resx">
+      <DependentUpon>cDesignCenterlineControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDesignStyleControl.it.resx">
+      <DependentUpon>cDesignStyleControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDesignStyleControl.resx">
+      <DependentUpon>cDesignStyleControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDesignSurfaceProfileControl.it.resx">
+      <DependentUpon>cDesignSurfaceProfileControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDesignSurfaceProfileControl.resx">
+      <DependentUpon>cDesignSurfaceProfileControl.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="cDesignPrintOrExportAreaControl.it.resx">
       <DependentUpon>cDesignPrintOrExportAreaControl.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cDesignPrintOrExportAreaControl.resx">
       <DependentUpon>cDesignPrintOrExportAreaControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cElevationDropDown.resx">
+      <DependentUpon>cElevationDropDown.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cItemCompassPropertyControl.en.resx">
       <DependentUpon>cItemCompassPropertyControl.vb</DependentUpon>
@@ -1365,6 +1589,33 @@
     <EmbeddedResource Include="cItemLegendPropertyControl.ru.resx">
       <DependentUpon>cItemLegendPropertyControl.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="cItemPointLineTypePropertyControl2.it.resx">
+      <DependentUpon>cItemPointLineTypePropertyControl2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cItemPointLineTypePropertyControl2.resx">
+      <DependentUpon>cItemPointLineTypePropertyControl2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cItemPointLineTypePropertyControl2.ru.resx">
+      <DependentUpon>cItemPointLineTypePropertyControl2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cItemLineTypePropertyControl2.it.resx">
+      <DependentUpon>cItemLineTypePropertyControl2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cItemLineTypePropertyControl2.resx">
+      <DependentUpon>cItemLineTypePropertyControl2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cItemLineTypePropertyControl2.ru.resx">
+      <DependentUpon>cItemLineTypePropertyControl2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cItemNamePropertyControl2.it.resx">
+      <DependentUpon>cItemNamePropertyControl2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cItemNamePropertyControl2.resx">
+      <DependentUpon>cItemNamePropertyControl2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cItemNamePropertyControl2.ru.resx">
+      <DependentUpon>cItemNamePropertyControl2.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="cItemNamePropertyControl.it.resx">
       <DependentUpon>cItemNamePropertyControl.vb</DependentUpon>
     </EmbeddedResource>
@@ -1373,6 +1624,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="cItemNamePropertyControl.ru.resx">
       <DependentUpon>cItemNamePropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cItemPointPropertyControl.resx">
+      <DependentUpon>cItemPointPropertyControl.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cItemScalePropertyControl.it.resx">
       <DependentUpon>cItemScalePropertyControl.vb</DependentUpon>
@@ -1401,6 +1655,42 @@
     <EmbeddedResource Include="cDesignLinkedSurveySelectorPropertyControl.ru.resx">
       <DependentUpon>cDesignLinkedSurveySelectorPropertyControl.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="cItemTextPropertyControl.it.resx">
+      <DependentUpon>cItemTextPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cItemTextPropertyControl.resx">
+      <DependentUpon>cItemTextPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cItemTextPropertyControl.ru.resx">
+      <DependentUpon>cItemTextPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cItemTransparencyPropertyControl2.it.resx">
+      <DependentUpon>cItemTransparencyPropertyControl2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cItemTransparencyPropertyControl2.resx">
+      <DependentUpon>cItemTransparencyPropertyControl2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cItemTransparencyPropertyControl2.ru.resx">
+      <DependentUpon>cItemTransparencyPropertyControl2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDesign3DElevationFactor.it.resx">
+      <DependentUpon>cDesign3DElevationFactor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDesign3DElevationFactor.resx">
+      <DependentUpon>cDesign3DElevationFactor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDesign3DElevationFactor.ru.resx">
+      <DependentUpon>cDesign3DElevationFactor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cItemVisibilityPropertyControl2.it.resx">
+      <DependentUpon>cItemVisibilityPropertyControl2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cItemVisibilityPropertyControl2.resx">
+      <DependentUpon>cItemVisibilityPropertyControl2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cItemVisibilityPropertyControl2.ru.resx">
+      <DependentUpon>cItemVisibilityPropertyControl2.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="cItemVisibilityPropertyControl.it.resx">
       <DependentUpon>cItemVisibilityPropertyControl.vb</DependentUpon>
     </EmbeddedResource>
@@ -1422,6 +1712,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAbout.ru.resx">
       <DependentUpon>frmAbout.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDockAudioViewer.it.resx">
+      <DependentUpon>cDockAudioViewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDockAudioViewer.resx">
+      <DependentUpon>cDockAudioViewer.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDockAudioViewer.ru.resx">
+      <DependentUpon>cDockAudioViewer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAudioViewer.it.resx">
       <DependentUpon>frmAudioViewer.vb</DependentUpon>
@@ -1468,6 +1768,15 @@
     <EmbeddedResource Include="frmCaveVisibilityManager.ru.resx">
       <DependentUpon>frmCaveVisibilityManager.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="cDockClipart.it.resx">
+      <DependentUpon>cDockClipart.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDockClipart.resx">
+      <DependentUpon>cDockClipart.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDockClipart.ru.resx">
+      <DependentUpon>cDockClipart.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmClipartPopup.ru.resx">
       <DependentUpon>frmClipartPopup.vb</DependentUpon>
     </EmbeddedResource>
@@ -1482,6 +1791,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDataFieldsEditor.it.resx">
       <DependentUpon>frmDataFieldsEditor.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDataFieldsEditor.resx">
       <DependentUpon>frmDataFieldsEditor.vb</DependentUpon>
@@ -1496,6 +1806,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDataFieldsEditor.ru.resx">
       <DependentUpon>frmDataFieldsEditor.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDisto.it.resx">
       <DependentUpon>frmDisto.vb</DependentUpon>
@@ -1559,6 +1870,95 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmImageEdit.ru.resx">
       <DependentUpon>frmImageEdit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDockImageViewer.it.resx">
+      <DependentUpon>cDockImageViewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDockImageViewer.resx">
+      <DependentUpon>cDockImageViewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDockImageViewer.ru.resx">
+      <DependentUpon>cDockImageViewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportcSurvey.en.resx">
+      <DependentUpon>frmImportcSurvey.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDockJoinPoints.it.resx">
+      <DependentUpon>cDockJoinPoints.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDockJoinPoints.resx">
+      <DependentUpon>cDockJoinPoints.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDockJoinPoints.ru.resx">
+      <DependentUpon>cDockJoinPoints.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDockLevels.it.resx">
+      <DependentUpon>cDockLevels.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDockLevels.resx">
+      <DependentUpon>cDockLevels.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDockLevels.ru.resx">
+      <DependentUpon>cDockLevels.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDockLinkedSurveys.it.resx">
+      <DependentUpon>cDockLinkedSurveys.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDockLinkedSurveys.resx">
+      <DependentUpon>cDockLinkedSurveys.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDockLinkedSurveys.ru.resx">
+      <DependentUpon>cDockLinkedSurveys.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain2.it.resx">
+      <DependentUpon>frmMain2.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain2.resx">
+      <DependentUpon>frmMain2.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain2.ru.resx">
+      <DependentUpon>frmMain2.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLevels.it.resx">
+      <DependentUpon>frmLevels.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLevels.resx">
+      <DependentUpon>frmLevels.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLevels.ru.resx">
+      <DependentUpon>frmLevels.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDockText.it.resx">
+      <DependentUpon>cDockText.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDockText.resx">
+      <DependentUpon>cDockText.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDockText.ru.resx">
+      <DependentUpon>cDockText.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDockTexts.it.resx">
+      <DependentUpon>cDockTexts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDockTexts.resx">
+      <DependentUpon>cDockTexts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cDockTexts.ru.resx">
+      <DependentUpon>cDockTexts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTexts.it.resx">
+      <DependentUpon>frmTexts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTexts.resx">
+      <DependentUpon>frmTexts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTexts.ru.resx">
+      <DependentUpon>frmTexts.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLinkedSurveys.it.resx">
       <DependentUpon>frmLinkedSurveys.vb</DependentUpon>
@@ -1669,6 +2069,12 @@
     <EmbeddedResource Include="frmJoinPointsPopup.ru.resx">
       <DependentUpon>frmJoinPointsPopup.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLinkedSurveysRelink.it.resx">
+      <DependentUpon>frmLinkedSurveysRelink.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLinkedSurveysRelink.resx">
+      <DependentUpon>frmLinkedSurveysRelink.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLochDialog.ru.resx">
       <DependentUpon>frmLochDialog.vb</DependentUpon>
     </EmbeddedResource>
@@ -1687,6 +2093,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageLRUD.resx">
       <DependentUpon>frmManageLRUD.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageLRUD.ru.resx">
       <DependentUpon>frmManageLRUD.vb</DependentUpon>
@@ -2019,6 +2426,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmResurveyMain.resx">
       <DependentUpon>frmResurveyMain.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmResurveyOptions.it.resx">
       <DependentUpon>frmResurveyOptions.vb</DependentUpon>
@@ -2322,14 +2730,14 @@
     <EmbeddedResource Include="frmWarpingDetails.resx">
       <DependentUpon>frmWarpingDetails.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="My Project\Resources.resx">
-      <Generator>PublicVbMyResourcesResXFileCodeGenerator</Generator>
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
-      <SubType>Designer</SubType>
-      <LastGenOutput>Resources1.Designer.vb</LastGenOutput>
-    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="cLinkedSurveySelectorUserControl.resx">
       <DependentUpon>cLinkedSurveySelectorUserControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -2360,130 +2768,9 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\magnifier_zoom_in.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\magifier_zoom_out.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\magnifier.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\page_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\page.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\disk.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\folder_page.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\folder.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\resultset_first.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\resultset_previous.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\resultset_next.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\resultset_last.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\add.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\vector_delete.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\delete.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\vector_add.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\shape_square_edit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\shape_square_edit1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\shape_handles.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\shape_square.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\printer.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\shape_move_front.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\shape_move_backwards.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\shape_move_back.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\shape_move_forwards.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon_rocks.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon_water.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icon1.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon_sand.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon_genericsoil.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon_cliff.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon_gradient.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon_caveborder.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon_border.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon_supposedborder.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon_ciotoli.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon_image.ico" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="My Project\DataSources\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cut.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\page_paste.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\page_copy.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\page_paste1.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
@@ -2508,87 +2795,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cross.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\page_white_magnify.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\application_form.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\lock.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\shape_square_link.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\bullet_add.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\bullet_delete.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\lock_open.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon_symbols.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\page_white_put.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\page_white_horizontal.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\tag_blue.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\arrow_refresh_small.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\arrow_undo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\text_bold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\text_italic.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\text_underline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\pencil_add.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\pencil_go.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\wand.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\resultset_previous1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\printersettings.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\application_form_edit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\calculator.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\calculator_edit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\calculator1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\disk_multiple.png" />
-    <None Include="Resources\network_clouds.png" />
-    <None Include="Resources\folder_explorer.png" />
     <None Include="arrow_in_red.png" />
     <None Include="arrow_join_red.png" />
     <EmbeddedResource Include="cCaveRegisterData.xml">
@@ -2597,6 +2803,8 @@
     </EmbeddedResource>
     <None Include="application_edit.ico" />
     <None Include="console.ico" />
+    <None Include="clock_history_frame.ico" />
+    <Content Include="Action_Copy_CellValue.svg" />
     <Content Include="cSurvey.ico" />
     <Content Include="designtools_debug.xml">
       <SubType>Designer</SubType>
@@ -2606,51 +2814,21 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Resources\interface_preferences.png" />
-    <None Include="Resources\application_tile_horizontal.png" />
-    <None Include="Resources\application_tile_vertical.png" />
-    <None Include="Resources\edit_mathematics.png" />
-    <None Include="Resources\database_user.png" />
-    <None Include="Resources\filter_advanced.png" />
-    <None Include="Resources\filter_reapply.png" />
-    <None Include="Resources\filter_clear.png" />
-    <None Include="Resources\filter.png" />
     <Resource Include="resources.txt">
       <Generator>resgen.exe</Generator>
     </Resource>
     <Resource Include="resources.it.txt">
       <Generator>resgen.exe</Generator>
     </Resource>
-    <None Include="Resources\note.png" />
-    <None Include="Resources\map.png" />
-    <None Include="Resources\grid.png" />
-    <None Include="Resources\draw_points.png" />
-    <None Include="Resources\shape_align_left.png" />
-    <None Include="Resources\shape_align_middle.png" />
-    <None Include="Resources\shape_align_right.png" />
-    <None Include="Resources\shape_align_top.png" />
-    <None Include="Resources\shape_align_bottom.png" />
-    <None Include="Resources\shape_align_center.png" />
-    <None Include="Resources\multitool.png" />
-    <None Include="Resources\table_replace.png" />
-    <None Include="Resources\table.png" />
-    <None Include="Resources\table_select_row.png" />
-    <None Include="Resources\accept.png" />
-    <None Include="Resources\transform_path.png" />
-    <None Include="Resources\map_world.ico" />
-    <None Include="Resources\map_world.png" />
-    <None Include="Resources\arrow_join.png" />
-    <None Include="Resources\arrow_divide.png" />
-    <None Include="Resources\world_link.png" />
-    <None Include="Resources\clock_history_frame.png" />
-    <None Include="Resources\arrow_down.png" />
-    <Resource Include="Resources\arrow_refresh.png" />
-    <None Include="Resources\arrow_up.png" />
-    <None Include="Resources\camera_lens.png" />
-    <None Include="Resources\box_open.png" />
-    <None Include="Resources\box_closed.png" />
-    <None Include="Resources\color_swatches.png" />
     <None Include="layers.ico" />
+    <None Include="edit_mathematics.ico" />
+    <None Include="form.ico" />
+    <None Include="gps_handheld.ico" />
+    <None Include="layer_edit.ico" />
+    <None Include="layers_map.ico" />
+    <None Include="link_edit.ico" />
+    <None Include="loch.ico" />
+    <None Include="multitool.ico" />
     <Content Include="Objects\Cliparts\Brushes\boh.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -2954,10 +3132,12 @@
     <Content Include="Objects\Cliparts\Signs\bivacco.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Objects\Cliparts\Signs\blocks.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Objects\Cliparts\Signs\breakdownchoke.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Objects\Cliparts\Signs\bussola 1.svg" />
     <Content Include="Objects\Cliparts\Signs\camino.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -3349,191 +3529,567 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Objects\TopoDroidImport\itemmap.xml" />
+    <None Include="page_white_wrench.ico" />
+    <Content Include="papersizes.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="resources.ru.txt" />
-    <None Include="Resources\arrow_sync.png" />
-    <None Include="Resources\attach.png" />
-    <None Include="Resources\bullet_pause.png" />
-    <None Include="Resources\bullet_arrow_right.png" />
-    <None Include="Resources\check_box.png" />
-    <None Include="Resources\asterisk_yellow.png" />
-    <Content Include="Resources\compass.png" />
-    <None Include="Resources\download.png" />
-    <None Include="Resources\inbox_upload.png" />
-    <None Include="Resources\inbox_download.png" />
-    <None Include="Resources\inbox_empty.png" />
-    <None Include="Resources\database.png" />
-    <None Include="Resources\save_as1.png" />
-    <None Include="Resources\run_macros.png" />
-    <None Include="Resources\layer_edit.png" />
-    <Resource Include="Resources\error32.png" />
-    <None Include="Resources\map_torn.png" />
-    <None Include="Resources\connect.png" />
-    <None Include="Resources\disconnect.png" />
-    <Resource Include="Resources\cross32.png" />
-    <None Include="Resources\controller.png" />
-    <None Include="Resources\highlighter.png" />
-    <None Include="Resources\layer_resize_replicate_h.png" />
-    <None Include="Resources\layer_resize_replicate_v.png" />
-    <None Include="Resources\script.png" />
-    <None Include="Resources\script_flash.png" />
-    <None Include="Resources\edit_splinepath.png" />
-    <None Include="Resources\edit_bezierpath.png" />
-    <None Include="Resources\edit_linepath.png" />
-    <None Include="Resources\edit_bezierpath1.png" />
-    <None Include="Resources\edit_splinepath1.png" />
-    <None Include="Resources\edit_linepath1.png" />
-    <None Include="Resources\lightning.png" />
-    <None Include="Resources\plotchart.png" />
-    <None Include="Resources\error.svg" />
-    <None Include="Resources\file_extension_pdf.png" />
-    <None Include="Resources\file_extension_jpeg.png" />
-    <None Include="Resources\file_extension_tif.png" />
-    <None Include="Resources\file_extension_wav.png" />
-    <None Include="Resources\image.png" />
-    <None Include="Resources\file_extension_png.png" />
-    <None Include="Resources\document_image.png" />
-    <None Include="Resources\control_play_blue.png" />
-    <None Include="Resources\control_stop_blue.png" />
-    <None Include="Resources\image1.png" />
-    <None Include="Resources\document_image1.png" />
-    <None Include="Resources\fill.png" />
-    <None Include="Resources\plus.png" />
-    <None Include="Resources\link_add.png" />
-    <None Include="Resources\link_delete.png" />
-    <None Include="Resources\link_break.png" />
-    <None Include="Resources\link.png" />
-    <None Include="Resources\control_pause_blue.png" />
-    <None Include="Resources\monitor_window.png" />
-    <None Include="Resources\picture_save.png" />
-    <None Include="Resources\filter_revert.png" />
-    <None Include="Resources\contrast_increase.png" />
-    <None Include="Resources\contrast_decrease.png" />
-    <None Include="Resources\contrast.png" />
-    <None Include="Resources\resize_picture.png" />
-    <None Include="Resources\connections_1_1.png" />
-    <None Include="Resources\connections_1_2.png" />
-    <None Include="Resources\connections_1_3ormore.png" />
-    <None Include="Resources\connections_custom.png" />
-    <None Include="Resources\connections_default.png" />
-    <None Include="Resources\connections_1_0.png" />
-    <Content Include="Resources\shape_square_key.png" />
-    <None Include="Resources\sort.png" />
-    <None Include="Resources\textfield_rename.png" />
     <None Include="table.ico" />
     <None Include="sidebox.ico" />
-    <None Include="Resources\sound.png" />
-    <None Include="Resources\sound1.png" />
     <None Include="snaptopoint.png" />
     <None Include="snaptopoint1.png" />
     <None Include="snaptopoint2.png" />
     <None Include="snaptopointnone.png" />
     <None Include="Resources\zoom_fit.png" />
-    <None Include="Resources\zoom_actual.png" />
-    <None Include="Resources\stamp_pattern.png" />
+    <None Include="Resources\vector.png" />
+    <None Include="Resources\vector_add.png" />
+    <None Include="Resources\vector_delete.png" />
+    <None Include="Resources\wand.png" />
     <None Include="Resources\weather_sun.png" />
     <None Include="Resources\whiteboard_empty.png" />
+    <None Include="Resources\world_link.png" />
+    <None Include="Resources\wrench.png" />
+    <None Include="Resources\zoom_actual.png" />
+    <None Include="Resources\0.png" />
+    <None Include="Resources\1.png" />
+    <None Include="Resources\2.png" />
+    <None Include="Resources\1286375687_point.png" />
+    <None Include="Resources\accept.png" />
+    <None Include="Resources\add.png" />
+    <None Include="Resources\align_above.png" />
+    <None Include="Resources\align_middle.png" />
+    <None Include="Resources\application_edit.png" />
+    <None Include="Resources\application_form.png" />
+    <None Include="Resources\application_form_edit.png" />
+    <None Include="Resources\application_osx_terminal.png" />
+    <None Include="Resources\application_side_boxes_reversed.png" />
+    <None Include="Resources\application_side_list.png" />
+    <None Include="Resources\application_tile_horizontal.png" />
+    <None Include="Resources\application_tile_vertical.png" />
+    <None Include="Resources\application_view_gallery.png" />
+    <None Include="Resources\application_view_icons.png" />
+    <None Include="Resources\arrow_divide.png" />
+    <None Include="Resources\arrow_down.png" />
+    <None Include="Resources\arrow_join.png" />
+    <Resource Include="Resources\arrow_refresh.png" />
+    <None Include="Resources\arrow_refresh_small.png" />
+    <None Include="Resources\arrow_sync.png" />
+    <None Include="Resources\arrow_undo.png" />
+    <None Include="Resources\arrow_up.png" />
+    <None Include="Resources\asterisk_yellow.png" />
+    <None Include="Resources\attach.png" />
+    <None Include="Resources\box_closed.png" />
+    <None Include="Resources\box_open.png" />
+    <None Include="Resources\bug_go.png" />
+    <None Include="Resources\bullet_add.png" />
+    <None Include="Resources\bullet_arrow_right.png" />
+    <None Include="Resources\bullet_delete.png" />
+    <None Include="Resources\bullet_error.png" />
+    <None Include="Resources\bullet_pause.png" />
+    <None Include="Resources\bullet_toggle_minus.png" />
+    <None Include="Resources\bullet_toggle_plus.png" />
+    <None Include="Resources\calculator.png" />
+    <None Include="Resources\calculator_edit.png" />
+    <None Include="Resources\calculator_error.png" />
+    <None Include="Resources\calculator1.png" />
+    <None Include="Resources\camera_lens.png" />
+    <None Include="Resources\check_box.png" />
+    <None Include="Resources\clear_formatting.png" />
+    <None Include="Resources\clipboard_sign.png" />
+    <None Include="Resources\clock_history_frame.png" />
+    <None Include="Resources\collapse_all_16.png" />
+    <None Include="Resources\color_picker.png" />
+    <None Include="Resources\color_swatches.png" />
+    <None Include="Resources\compass.png" />
+    <None Include="Resources\compass1.png" />
+    <None Include="Resources\connect.png" />
+    <None Include="Resources\connections_1_0.png" />
+    <None Include="Resources\connections_1_1.png" />
+    <None Include="Resources\connections_1_2.png" />
+    <None Include="Resources\connections_1_3ormore.png" />
+    <None Include="Resources\connections_custom.png" />
+    <None Include="Resources\connections_default.png" />
+    <None Include="Resources\contrast.png" />
+    <None Include="Resources\contrast_decrease.png" />
+    <None Include="Resources\contrast_increase.png" />
+    <None Include="Resources\control_pause_blue.png" />
+    <None Include="Resources\control_play_blue.png" />
+    <None Include="Resources\control_stop_blue.png" />
+    <None Include="Resources\controller.png" />
+    <None Include="Resources\convert_color_to_gray.png" />
+    <None Include="Resources\cross.png" />
+    <Resource Include="Resources\cross32.png" />
+    <None Include="Resources\cursor.png" />
+    <None Include="Resources\cut.png" />
+    <None Include="Resources\database.png" />
+    <None Include="Resources\database_user.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\disconnect.png" />
+    <None Include="Resources\disk.png" />
+    <None Include="Resources\disk_multiple.png" />
+    <None Include="Resources\disk1.png" />
+    <None Include="Resources\distribution_partnerships.png" />
+    <None Include="Resources\document_image.png" />
+    <None Include="Resources\document_image1.png" />
+    <None Include="Resources\document_margins.png" />
+    <None Include="Resources\document_margins1.png" />
+    <None Include="Resources\door_out.png" />
+    <None Include="Resources\download.png" />
+    <None Include="Resources\draw_eraser.png" />
+    <None Include="Resources\draw_points.png" />
+    <None Include="Resources\draw_ring.png" />
+    <None Include="Resources\draw_smudge.png" />
+    <None Include="Resources\edit_bezierpath.png" />
+    <None Include="Resources\edit_bezierpath1.png" />
+    <None Include="Resources\edit_linepath.png" />
+    <None Include="Resources\edit_linepath1.png" />
+    <None Include="Resources\edit_mathematics.png" />
+    <None Include="Resources\edit_splinepath.png" />
+    <None Include="Resources\edit_splinepath1.png" />
+    <None Include="Resources\email_go.png" />
+    <None Include="Resources\error.png" />
+    <Resource Include="Resources\error32.png" />
+    <None Include="Resources\expand_all_16.png" />
+    <None Include="Resources\extract_foreground_objects.png" />
+    <None Include="Resources\file_extension_jpeg.png" />
+    <None Include="Resources\file_extension_pdf.png" />
+    <None Include="Resources\file_extension_png.png" />
+    <None Include="Resources\file_extension_tif.png" />
+    <None Include="Resources\file_extension_wav.png" />
+    <None Include="Resources\fill.png" />
+    <None Include="Resources\filter.png" />
+    <None Include="Resources\filter_advanced.png" />
+    <None Include="Resources\filter_clear.png" />
+    <None Include="Resources\filter_reapply.png" />
+    <None Include="Resources\filter_revert.png" />
+    <None Include="Resources\find.png" />
+    <None Include="Resources\folder.png" />
+    <None Include="Resources\folder_explorer.png" />
+    <None Include="Resources\folder_page.png" />
+    <None Include="Resources\folder_picture.png" />
+    <None Include="Resources\google_map.png" />
+    <None Include="Resources\grid.png" />
+    <None Include="Resources\hand_property.png" />
+    <None Include="Resources\highlighter.png" />
+    <None Include="Resources\image.png" />
+    <None Include="Resources\image1.png" />
+    <None Include="Resources\inbox_download.png" />
+    <None Include="Resources\inbox_empty.png" />
+    <None Include="Resources\inbox_upload.png" />
+    <None Include="Resources\information.png" />
+    <None Include="Resources\interface_preferences.png" />
+    <None Include="Resources\layer.png" />
+    <None Include="Resources\layer_arrange.png" />
+    <None Include="Resources\layer_edit.png" />
+    <None Include="Resources\layer_grid.png" />
+    <None Include="Resources\layer_raster_3d.png" />
+    <None Include="Resources\layer_raster_3d1.png" />
+    <None Include="Resources\layer_resize_replicate_h.png" />
+    <None Include="Resources\layer_resize_replicate_v.png" />
+    <None Include="Resources\layers.png" />
+    <None Include="Resources\layers_map.png" />
+    <None Include="Resources\layer-select-point.png" />
+    <None Include="Resources\lightning.png" />
+    <None Include="Resources\link.png" />
+    <None Include="Resources\link_add.png" />
+    <None Include="Resources\link_break.png" />
+    <None Include="Resources\link_delete.png" />
+    <None Include="Resources\link_edit.png" />
+    <None Include="Resources\location_pin.png" />
+    <None Include="Resources\lock.png" />
+    <None Include="Resources\lock_open.png" />
+    <None Include="Resources\lock_open1.png" />
+    <None Include="Resources\lock1.png" />
+    <None Include="Resources\magifier_zoom_out.png" />
+    <None Include="Resources\magnifier.png" />
+    <None Include="Resources\magnifier_zoom_in.png" />
+    <None Include="Resources\magnifier_zoom_out.png" />
+    <None Include="Resources\map.png" />
+    <None Include="Resources\map_edit.png" />
+    <None Include="Resources\map_go.png" />
+    <None Include="Resources\map_torn.png" />
+    <None Include="Resources\map_world.png" />
+    <None Include="Resources\measure.png" />
+    <None Include="Resources\monitor.png" />
+    <None Include="Resources\monitor_window.png" />
+    <None Include="Resources\mouse_2.png" />
+    <None Include="Resources\multitool.png" />
+    <None Include="Resources\network_clouds.png" />
+    <None Include="Resources\note.png" />
+    <None Include="Resources\page.png" />
+    <None Include="Resources\page_copy.png" />
+    <None Include="Resources\page_paste.png" />
+    <None Include="Resources\page_paste1.png" />
+    <None Include="Resources\page_refresh.png" />
+    <None Include="Resources\page_white.png" />
+    <None Include="Resources\page_white_edit.png" />
+    <None Include="Resources\page_white_get.png" />
+    <None Include="Resources\page_white_horizontal.png" />
+    <None Include="Resources\page_white_link.png" />
+    <None Include="Resources\page_white_magnify.png" />
+    <None Include="Resources\page_white_put.png" />
+    <None Include="Resources\page_white_wrench.png" />
+    <None Include="Resources\pencil.png" />
+    <None Include="Resources\pencil_add.png" />
+    <None Include="Resources\pencil_go.png" />
+    <None Include="Resources\pencil_ruler.png" />
+    <None Include="Resources\picture.png" />
+    <None Include="Resources\picture_edit.png" />
+    <None Include="Resources\picture_save.png" />
+    <None Include="Resources\plotchart.png" />
+    <None Include="Resources\plus.png" />
+    <None Include="Resources\printer.png" />
+    <None Include="Resources\processor.png" />
+    <None Include="Resources\resize_picture.png" />
+    <None Include="Resources\resultset_first.png" />
+    <None Include="Resources\resultset_last.png" />
+    <None Include="Resources\resultset_next.png" />
+    <None Include="Resources\resultset_previous.png" />
+    <None Include="Resources\resultset_previous1.png" />
+    <None Include="Resources\routing_turn_u.png" />
+    <None Include="Resources\ruler.png" />
+    <None Include="Resources\run_macros.png" />
+    <None Include="Resources\save_as.png" />
+    <None Include="Resources\save_as1.png" />
+    <None Include="Resources\scale_image.png" />
+    <None Include="Resources\script.png" />
+    <None Include="Resources\script_flash.png" />
+    <None Include="Resources\script_go.png" />
+    <None Include="Resources\script_go1.png" />
+    <None Include="Resources\script_save.png" />
+    <None Include="Resources\select_by_adding_to_selection.png" />
+    <None Include="Resources\select_by_adding_to_selection_dark.png" />
+    <None Include="Resources\select_continuous_area.png" />
+    <None Include="Resources\shape_align_bottom.png" />
+    <None Include="Resources\shape_align_center.png" />
+    <None Include="Resources\shape_align_left.png" />
+    <None Include="Resources\shape_align_middle.png" />
+    <None Include="Resources\shape_align_right.png" />
+    <None Include="Resources\shape_align_top.png" />
+    <None Include="Resources\shape_flip_horizontal.png" />
+    <None Include="Resources\shape_flip_vertical.png" />
+    <None Include="Resources\shape_group.png" />
+    <None Include="Resources\shape_handles.png" />
+    <None Include="Resources\shape_move_back.png" />
+    <None Include="Resources\shape_move_backwards.png" />
+    <None Include="Resources\shape_move_forwards.png" />
+    <None Include="Resources\shape_move_front.png" />
+    <None Include="Resources\shape_rotate_anticlockwise.png" />
+    <None Include="Resources\shape_rotate_anticlockwise1.png" />
+    <None Include="Resources\shape_rotate_clockwise.png" />
+    <None Include="Resources\shape_rotate_clockwise1.png" />
+    <None Include="Resources\shape_square.png" />
+    <None Include="Resources\shape_square_edit.png" />
+    <None Include="Resources\shape_square_edit1.png" />
+    <None Include="Resources\shape_square_go.png" />
+    <None Include="Resources\shape_square_key.png" />
+    <None Include="Resources\shape_square_link.png" />
+    <None Include="Resources\shape_ungroup.png" />
+    <None Include="Resources\size_horizontal.png" />
+    <None Include="Resources\soil_layers.png" />
+    <None Include="Resources\sort.png" />
+    <None Include="Resources\sound.png" />
+    <None Include="Resources\sound1.png" />
+    <None Include="Resources\stamp_pattern.png" />
+    <None Include="Resources\table.png" />
+    <None Include="Resources\table_replace.png" />
+    <None Include="Resources\table_row_delete.png" />
+    <None Include="Resources\table_row_insert.png" />
+    <None Include="Resources\table_select_row.png" />
+    <None Include="Resources\tag_blue.png" />
+    <None Include="Resources\text_align_center.png" />
+    <None Include="Resources\text_align_left.png" />
+    <None Include="Resources\text_align_right.png" />
+    <None Include="Resources\text_bold.png" />
+    <None Include="Resources\text_italic.png" />
+    <None Include="Resources\text_underline.png" />
+    <None Include="Resources\textfield_rename.png" />
+    <None Include="Resources\to_do_list.png" />
+    <None Include="Resources\transform_crop.png" />
+    <None Include="Resources\transform_move.png" />
+    <None Include="Resources\transform_path.png" />
+    <None Include="Resources\error1.png" />
+    <None Include="Resources\vector.ico" />
+    <None Include="Resources\0.ico" />
+    <None Include="Resources\1.ico" />
+    <None Include="Resources\2.ico" />
+    <None Include="Resources\3.ico" />
+    <None Include="Resources\collapse_all_16.ico" />
+    <None Include="Resources\expand_all_16.ico" />
+    <None Include="Resources\icon_border.ico" />
+    <None Include="Resources\icon_caveborder.ico" />
+    <None Include="Resources\icon_ciotoli.ico" />
+    <None Include="Resources\icon_cliff.ico" />
+    <None Include="Resources\icon_genericsoil.ico" />
+    <None Include="Resources\icon_gradient.ico" />
+    <None Include="Resources\icon_image.ico" />
+    <None Include="Resources\icon_rocks.ico" />
+    <None Include="Resources\icon_sand.ico" />
+    <None Include="Resources\icon_sand2.ico" />
+    <None Include="Resources\icon_supposedborder.ico" />
+    <None Include="Resources\icon_symbols.ico" />
+    <None Include="Resources\icon_text.ico" />
+    <None Include="Resources\icon_water.ico" />
+    <None Include="Resources\Icon1.ico" />
+    <None Include="Resources\printersettings.ico" />
+    <None Include="run_macros.ico" />
+    <None Include="save_close.ico" />
+    <None Include="script.ico" />
+    <None Include="script_code.ico" />
+    <None Include="script_flash.ico" />
+    <None Include="setting_tools.ico" />
+    <None Include="to_do_list.ico" />
+    <None Include="transform_path.ico" />
+    <None Include="Resources\3.png" />
+    <None Include="Resources\stop.png" />
+    <None Include="Resources\clipart_error.svg" />
+    <None Include="Resources\clipart_defaultcompass.svg" />
+    <None Include="Resources\clipart_defaultcompass_legacy.svg" />
+    <None Include="Resources\about.svg" />
+    <None Include="Resources\actions_add.svg" />
+    <None Include="Resources\actions_refresh.svg" />
+    <None Include="Resources\addfile.svg" />
+    <None Include="Resources\addprefix.svg" />
+    <None Include="Resources\automaticupdates.svg" />
+    <None Include="Resources\bindings.svg" />
+    <None Include="Resources\bo_list.svg" />
+    <None Include="Resources\bo_statemachine.svg" />
+    <None Include="Resources\calculatenow.svg" />
+    <None Include="Resources\charttype_area3dstacked.svg" />
+    <None Include="Resources\charttype_rangebar.svg" />
+    <None Include="Resources\clearall.svg" />
+    <None Include="Resources\clipart_error1.svg" />
+    <None Include="Resources\close.svg" />
+    <None Include="Resources\copy.svg" />
+    <None Include="Resources\customercontactdirectory.svg" />
+    <None Include="Resources\customizemergefield.svg" />
+    <None Include="Resources\cut.svg" />
+    <None Include="Resources\delete.svg" />
+    <None Include="Resources\deletebindings.svg" />
+    <None Include="Resources\editfilter.svg" />
+    <None Include="Resources\error2.svg" />
+    <None Include="Resources\exportfile.svg" />
+    <None Include="Resources\filter.svg" />
+    <None Include="Resources\filtesettings.svg" />
+    <None Include="Resources\find.svg" />
+    <None Include="Resources\flipimage_horizontal.svg" />
+    <None Include="Resources\flipimage_vertical.svg" />
+    <None Include="Resources\handtool.svg" />
+    <None Include="Resources\import.svg" />
+    <None Include="Resources\insertsheetrows.svg" />
+    <None Include="Resources\inserttable.svg" />
+    <None Include="Resources\invertfilter.svg" />
+    <None Include="Resources\layer.svg" />
+    <None Include="Resources\layerrmanager.svg" />
+    <None Include="Resources\link.svg" />
+    <None Include="Resources\linktoprevious.svg" />
+    <None Include="Resources\managequeries.svg" />
+    <None Include="Resources\marqueezoom.svg" />
+    <None Include="Resources\navigation.svg" />
+    <None Include="Resources\new.svg" />
+    <None Include="Resources\open.svg" />
+    <None Include="Resources\panandzoompanel.svg" />
+    <None Include="Resources\parameters.svg" />
+    <None Include="Resources\paste.svg" />
+    <None Include="Resources\paymentrefund.svg" />
+    <None Include="Resources\pointer.svg" />
+    <None Include="Resources\pointercenterline.svg" />
+    <None Include="Resources\pointerselectalllevel.svg" />
+    <None Include="Resources\pointerselectcurrentlevel.svg" />
+    <None Include="Resources\pointnone.svg" />
+    <None Include="Resources\print.svg" />
+    <None Include="Resources\print1.svg" />
+    <None Include="Resources\productquickcomparisons.svg" />
+    <None Include="Resources\profileview.svg" />
+    <None Include="Resources\properties.svg" />
+    <None Include="Resources\propertiespanel.svg" />
+    <None Include="Resources\propertiespanel1.svg" />
+    <None Include="Resources\refreshbindings.svg" />
+    <None Include="Resources\removedataitems.svg" />
+    <None Include="Resources\removesheetrows.svg" />
+    <None Include="Resources\renamequery.svg" />
+    <None Include="Resources\rotate_left90.svg" />
+    <None Include="Resources\rotate_right90.svg" />
+    <None Include="Resources\rulerhorizontal.svg" />
+    <None Include="Resources\rulers.svg" />
+    <None Include="Resources\save.svg" />
+    <None Include="Resources\saveas.svg" />
+    <None Include="Resources\scale.svg" />
+    <None Include="Resources\Security_Lock.svg" />
+    <None Include="Resources\Security_Unlock.svg" />
+    <None Include="Resources\security_visibilityoff.svg" />
+    <None Include="Resources\select.svg" />
+    <None Include="Resources\selectall.svg" />
+    <None Include="Resources\selectdatasource.svg" />
+    <None Include="Resources\showgridlines.svg" />
+    <None Include="Resources\snap_to_point0.svg" />
+    <None Include="Resources\snap_to_point1.svg" />
+    <None Include="Resources\snap_to_point2.svg" />
+    <None Include="Resources\splay.svg" />
+    <None Include="Resources\stop.svg" />
+    <None Include="Resources\TableFilter.svg" />
+    <None Include="Resources\time.svg" />
+    <None Include="Resources\undo.svg" />
+    <None Include="Resources\viewall.svg" />
+    <None Include="Resources\viewselected.svg" />
+    <None Include="Resources\warning.svg" />
+    <None Include="Resources\whiteboard.svg" />
+    <None Include="Resources\zoom.svg" />
+    <None Include="Resources\zoomall.svg" />
+    <None Include="Resources\zoomall2.svg" />
+    <None Include="Resources\zoomin.svg" />
+    <None Include="Resources\zoomlocked.svg" />
+    <None Include="Resources\zoomout.svg" />
+    <None Include="Resources\zoomselection.svg" />
+    <None Include="Resources\SnapToPointNone.svg" />
+    <None Include="Resources\rulers1.svg" />
+    <None Include="Resources\mouse.svg" />
+    <None Include="Resources\mouseclick.svg" />
+    <None Include="Resources\Action_Copy_CellValue.svg" />
+    <None Include="Resources\replicatesplaydata.svg" />
+    <None Include="Resources\camera.svg" />
+    <None Include="Resources\controller.svg" />
+    <None Include="Resources\swissknife.svg" />
+    <None Include="Resources\lrud.svg" />
+    <None Include="Resources\console.svg" />
+    <None Include="Resources\viewer.svg" />
+    <None Include="Resources\designer.svg" />
+    <None Include="Resources\script.svg" />
+    <None Include="Resources\sharedtexts.svg" />
+    <None Include="Resources\localcolors.svg" />
+    <None Include="Resources\beziers.svg" />
+    <None Include="Resources\splines.svg" />
+    <None Include="Resources\straightlines.svg" />
+    <None Include="Resources\bo_localization.svg" />
+    <None Include="Resources\caveentrance.svg" />
+    <None Include="Resources\sticky note 1.svg" />
+    <None Include="Resources\prioritized.svg" />
+    <None Include="Resources\Actions_Question.svg" />
+    <None Include="Resources\station.svg" />
+    <None Include="Resources\attachments.svg" />
+    <None Include="Resources\addSheetRows.svg" />
+    <None Include="Resources\inserttablerowsabove.svg" />
+    <None Include="Resources\inserttablerowsbelow.svg" />
+    <None Include="Resources\arrowturnleft.svg" />
+    <None Include="Resources\update.svg" />
+    <None Include="Resources\managedatasource.svg" />
+    <None Include="Resources\shapespanel.svg" />
+    <None Include="Resources\editdatasource.svg" />
+    <None Include="Resources\curvedconnector.svg" />
+    <None Include="Resources\namemanager.svg" />
+    <None Include="Resources\layers4.svg" />
+    <None Include="Resources\layers2.svg" />
+    <None Include="Resources\layers3.svg" />
+    <None Include="Resources\layers1.svg" />
+    <None Include="Resources\exporttogallery.svg" />
+    <None Include="Resources\Group.svg" />
+    <None Include="Resources\Ungroup.svg" />
+    <None Include="Resources\reorder.svg" />
+    <None Include="Resources\reverssort.svg" />
+    <None Include="Resources\reduce points.svg" />
+    <None Include="Resources\merge.svg" />
+    <None Include="Resources\createrock.svg" />
+    <None Include="Resources\createconcretion.svg" />
+    <None Include="Resources\create sign.svg" />
+    <None Include="Resources\add point.svg" />
+    <None Include="Resources\delete point.svg" />
+    <None Include="Resources\divide sequence.svg" />
+    <None Include="Resources\divide and link.svg" />
+    <None Include="Resources\merge sequence.svg" />
+    <None Include="Resources\close sequence.svg" />
+    <None Include="Resources\delete sequence.svg" />
+    <None Include="Resources\revert sequence.svg" />
+    <None Include="Resources\copy to new item.svg" />
+    <None Include="Resources\move to new item.svg" />
+    <None Include="Resources\reorder sequence.svg" />
+    <None Include="Resources\merge with.svg" />
+    <None Include="Resources\sendto.svg" />
+    <None Include="Resources\flipimage_horizontal1.svg" />
+    <None Include="Resources\flipimage_vertical1.svg" />
+    <None Include="Resources\rotate_right901.svg" />
+    <None Include="Resources\rotate_left901.svg" />
+    <None Include="Resources\alignverticalleft.svg" />
+    <None Include="Resources\alignverticalcenter.svg" />
+    <None Include="Resources\alignverticalright.svg" />
+    <None Include="Resources\alignhorizontaltop.svg" />
+    <None Include="Resources\alignhorizontalcenter.svg" />
+    <None Include="Resources\alignhorizontalbottom.svg" />
+    <None Include="Resources\distributerowsevenly.svg" />
+    <None Include="Resources\distributecolumnsevenly.svg" />
+    <None Include="Resources\locknavigation.svg" />
+    <None Include="Resources\page_size.png" />
+    <None Include="Resources\page.svg" />
+    <None Include="Resources\landscape.svg" />
+    <None Include="Resources\size.svg" />
+    <None Include="Resources\icon_scale.svg" />
+    <None Include="Resources\linecolor.svg" />
+    <None Include="Resources\designervisibility.svg" />
+    <None Include="Resources\printvisibility.svg" />
+    <None Include="Resources\preview.svg" />
+    <None Include="Resources\affinitydesign.svg" />
+    <None Include="Resources\affinityextra.svg" />
+    <None Include="Resources\joinpoint_unjoinall.svg" />
+    <None Include="Resources\joinpoint_unjoin.svg" />
+    <None Include="Resources\joinpoint_addtolist.svg" />
+    <None Include="Resources\joinpoint_addtolistandmerge.svg" />
+    <None Include="Resources\smoothing.svg" />
+    <None Include="Resources\defaultlinestyle.svg" />
+    <None Include="Resources\edit.svg" />
+    <None Include="Resources\moveup.svg" />
+    <None Include="Resources\movedown.svg" />
+    <None Include="Resources\highlightfields.svg" />
+    <None Include="Resources\expandfieldpivottable.svg" />
+    <None Include="Resources\collapsefieldpivottable.svg" />
+    <None Include="Resources\alignbottomcenter.svg" />
+    <None Include="Resources\alignmiddlecenter.svg" />
+    <None Include="Resources\aligntopcenter.svg" />
+    <None Include="Resources\imageviewer.svg" />
+    <None Include="Resources\filtermode.svg" />
+    <None Include="Resources\italic.svg" />
+    <None Include="Resources\bold.svg" />
+    <None Include="Resources\underline.svg" />
+    <None Include="Resources\levelup.svg" />
+    <None Include="Resources\stop1.svg" />
+    <None Include="Resources\next.svg" />
+    <None Include="Resources\textfromclipboard.svg" />
+    <None Include="Resources\ModelEditor_ImageSources.svg" />
+    <None Include="Resources\textbox.svg" />
+    <None Include="Resources\audioviewer.svg" />
+    <None Include="Resources\JoinPoints.svg" />
+    <None Include="Resources\pastebrush.svg" />
+    <None Include="Resources\pastepen.svg" />
+    <None Include="Resources\enableclustering.svg" />
+    <None Include="Resources\morphingdisabled.svg" />
+    <None Include="Resources\arrowturnright.svg" />
+    <None Include="Resources\selecttablerow.svg" />
+    <None Include="Resources\fixstation.svg" />
+    <None Include="Resources\fixstationfrommarker.svg" />
+    <None Include="Resources\shape merge with.svg" />
+    <None Include="Resources\gaugestylehalfcircular.svg" />
+    <None Include="Resources\security_visibility.svg" />
+    <None Include="Resources\convertto.svg" />
+    <None Include="Resources\cancel.svg" />
+    <None Include="Resources\joinpoints_join.svg" />
+    <None Include="Resources\magicwand.svg" />
+    <None Include="Resources\unlinkedfile.svg" />
+    <None Include="Resources\linkedfile.svg" />
+    <None Include="Resources\email.svg" />
+    <None Include="Resources\security_bug.svg" />
+    <None Include="Resources\field.svg" />
+    <None Include="Resources\fielddeleted.svg" />
+    <None Include="Resources\loch_LOCHICON.ico" />
+    <None Include="Resources\therion_THICON.ico" />
+    <None Include="Resources\exporttoxlsx.svg" />
+    <None Include="Resources\snap to grid.svg" />
+    <None Include="Resources\map_wms.svg" />
+    <None Include="Resources\map_raster.svg" />
+    <None Include="Resources\soilmodeldata.svg" />
+    <None Include="Resources\soilmodel.svg" />
+    <None Include="Resources\documentexport.svg" />
+    <None Include="Resources\documentprint.svg" />
     <Content Include="version.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\align_bellow.png" />
-    <None Include="Resources\align_middle.png" />
-    <None Include="Resources\align_above.png" />
-    <None Include="Resources\text_align_right.png" />
-    <None Include="Resources\text_align_center.png" />
-    <None Include="Resources\text_align_left.png" />
-    <None Include="Resources\layer_arrange.png" />
-    <None Include="Resources\email_go.png" />
-    <None Include="Resources\application_view_icons.png" />
-    <None Include="Resources\application_view_gallery.png" />
-    <None Include="Resources\distribution_partnerships.png" />
-    <None Include="Resources\layers_map.png" />
-    <None Include="Resources\scale_image.png" />
-    <None Include="Resources\shape_flip_horizontal.png" />
-    <None Include="Resources\shape_flip_vertical.png" />
-    <None Include="Resources\picture_edit.png" />
-    <None Include="Resources\to_do_list.png" />
-    <None Include="Resources\size_horizontal.png" />
-    <None Include="Resources\table_row_delete.png" />
-    <None Include="Resources\table_row_insert.png" />
-    <None Include="Resources\soil_layers.png" />
-    <None Include="Resources\expand_all_16.png" />
-    <None Include="Resources\collapse_all_16.png" />
-    <None Include="Resources\expand_all_16.ico" />
-    <None Include="Resources\collapse_all_16.ico" />
-    <None Include="Resources\bullet_toggle_plus.png" />
-    <None Include="Resources\bullet_toggle_minus.png" />
-    <None Include="Resources\transform_crop.png" />
-    <None Include="Resources\document_margins1.png" />
-    <None Include="Resources\script_go1.png" />
-    <None Include="Resources\save_as.png" />
-    <None Include="Resources\script_go.png" />
-    <None Include="Resources\script_save.png" />
-    <None Include="Resources\bug_go.png" />
-    <None Include="Resources\door_out.png" />
-    <None Include="Resources\disk1.png" />
-    <None Include="Resources\page_white_link.png" />
-    <None Include="Resources\page_white_edit.png" />
-    <None Include="Resources\application_osx_terminal.png" />
-    <None Include="Resources\draw_ring.png" />
-    <None Include="Resources\select_continuous_area.png" />
-    <None Include="Resources\processor.png" />
-    <None Include="Resources\layer_raster_3d1.png" />
-    <None Include="Resources\map_go.png" />
-    <None Include="Resources\find.png" />
-    <None Include="Resources\document_margins.png" />
-    <None Include="Resources\monitor.png" />
-    <None Include="Resources\color_picker.png" />
-    <None Include="Resources\convert_color_to_gray.png" />
-    <None Include="Resources\draw_smudge.png" />
-    <None Include="Resources\3.jpg" />
-    <None Include="Resources\2.png" />
-    <None Include="Resources\1.png" />
-    <None Include="Resources\0.png" />
-    <None Include="Resources\draw_eraser.png" />
-    <None Include="Resources\location_pin.png" />
-    <None Include="Resources\google_map.png" />
-    <None Include="Resources\layer_raster_3d.png" />
-    <None Include="Resources\lock1.png" />
-    <None Include="Resources\lock_open1.png" />
-    <None Include="Resources\vector.png" />
-    <None Include="Resources\routing_turn_u.png" />
-    <None Include="Resources\information.png" />
-    <Resource Include="Resources\error.png" />
-    <None Include="Resources\page_refresh.png" />
-    <None Include="Resources\clipboard_sign.png" />
-    <None Include="Resources\layer.png" />
-    <None Include="Resources\bullet_error.png" />
-    <None Include="Resources\page_white_get.png" />
-    <None Include="Resources\shape_square_go.png" />
-    <None Include="Resources\folder_picture.png" />
-    <None Include="Resources\calculator_error.png" />
-    <None Include="Resources\select_by_adding_to_selection_dark.png" />
-    <None Include="Resources\cursor.png" />
-    <None Include="Resources\select_by_adding_to_selection.png" />
-    <None Include="Resources\page_white_wrench.png" />
-    <None Include="Resources\shape_rotate_anticlockwise1.png" />
-    <None Include="Resources\shape_rotate_clockwise1.png" />
-    <None Include="Resources\layers.png" />
-    <None Include="Resources\wrench.png" />
-    <None Include="Resources\transform_move.png" />
-    <None Include="Resources\stop.png" />
-    <None Include="Resources\pencil.png" />
-    <None Include="Resources\shape_rotate_clockwise.png" />
-    <None Include="Resources\shape_rotate_anticlockwise.png" />
-    <None Include="Resources\measure.png" />
-    <None Include="Resources\picture.png" />
-    <None Include="Resources\layer_grid.png" />
-    <None Include="Resources\application_edit.png" />
-    <None Include="Resources\shape_ungroup.png" />
-    <None Include="Resources\shape_group.png" />
-    <None Include="Resources\application_side_boxes_reversed.png" />
-    <None Include="Resources\application_side_list.png" />
-    <None Include="Resources\hand_property.png" />
-    <None Include="Resources\extract_foreground_objects.png" />
-    <None Include="Resources\mouse_2.png" />
-    <None Include="Resources\layer-select-point.png" />
-    <None Include="Resources\1286375687_point.png" />
-    <None Include="Resources\map_edit.png" />
   </ItemGroup>
   <ItemGroup>
     <FileAssociation Include=".CSX">

@@ -18,7 +18,7 @@ Namespace cSurvey.Design.Layers
             Call MyBase.Paint(Graphics, PaintOptions, Options, Clipping, Selection)
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal File As Storage.cFile, ByVal Layer As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal File As cFile, ByVal Layer As XmlElement)
             Call MyBase.new(Survey, Design, File, Layer)
         End Sub
 

@@ -1,6 +1,6 @@
 ﻿Imports cSurveyPC.cSurvey.Surface
 
-Public Class frmSurfaceAddWMS
+friend Class frmSurfaceAddWMS
 
     Public Sub SetLayer(Layer As String)
         Dim iIndex As Integer = 0

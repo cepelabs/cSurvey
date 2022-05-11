@@ -53,7 +53,7 @@ Namespace cSurvey
             Next
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLSharedSettings As XmlElement = Document.CreateElement("sharedsettings")
             Dim oXMLValues As XmlElement = Document.CreateElement("values")
             For Each sName As String In oItems.Keys

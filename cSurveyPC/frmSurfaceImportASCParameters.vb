@@ -1,4 +1,4 @@
-﻿Public Class frmSurfaceImportASCOptions
+﻿friend Class frmSurfaceImportASCOptions
 
     Private Sub cboCoordinateSystem_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cboCoordinateSystem.SelectedIndexChanged
         If cboCoordinateSystem.Text.Contains("UTM") Then    'to do better in future...

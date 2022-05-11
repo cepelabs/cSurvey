@@ -164,7 +164,7 @@ Namespace cSurvey
             End If
         End Function
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlCaveVisibilityProfiles As XmlElement = Document.CreateElement("cavevisibilityprofiles")
             For Each oCaveVisibilityProfile As cCaveVisibilityProfile In oColl.Values
                 Call oCaveVisibilityProfile.SaveTo(File, Document, oXmlCaveVisibilityProfiles)
@@ -337,7 +337,7 @@ Namespace cSurvey
             Return oColl.GetEnumerator
         End Function
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement)
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement)
             Dim oXmlCaveVisibilityProfile As XmlElement = Document.CreateElement("cavevisibilityprofile")
             Call oXmlCaveVisibilityProfile.SetAttribute("name", sName)
             If sSegmentsQuery <> "" Then Call oXmlCaveVisibilityProfile.SetAttribute("segmentsquery", sSegmentsQuery)

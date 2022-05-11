@@ -21,7 +21,7 @@ Namespace cSurvey.Calculate
             dDown = modNumbers.StringToDecimal(Item.GetAttribute("d"))
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlTrigPointUpDownSideMeasure As XmlElement = Document.CreateElement("smud")
             Call oXmlTrigPointUpDownSideMeasure.SetAttribute("c", sConnection)
             Call oXmlTrigPointUpDownSideMeasure.SetAttribute("u", modNumbers.NumberToString(dUp, ""))

@@ -1,10 +1,10 @@
-﻿Public Class frmResurveyProperties
-    Private oStations As Dictionary(Of String, cResurvey.cStation)
-    Private oStationsList As List(Of cResurvey.cStation)
+﻿friend Class frmResurveyProperties
+    Private oStations As cResurvey.cStations
 
     Private oStation As cResurvey.cStation
 
     Friend Class cResurveyPropertiesEventArgs
+        Inherits EventArgs
         Private oStation As cResurvey.cStation
 
         Friend Sub New(station As cResurvey.cStation)
@@ -19,22 +19,27 @@
     End Class
 
     Friend Event OnApply(Sender As frmResurveyProperties, Args As cResurveyPropertiesEventArgs)
+    'Friend Event OnSelectionChanged(Sender As frmResurveyProperties, Args As cResurveyPropertiesEventArgs)
 
-    Friend Sub New(Stations As Dictionary(Of String, cResurvey.cStation), Station As cResurvey.cStation)
+    Friend Sub New(Stations As cResurvey.cStations, Station As cResurvey.cStation)
         ' Chiamata richiesta dalla finestra di progettazione.
         InitializeComponent()
 
         ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
         oStations = Stations
-        oStationsList = New List(Of cResurvey.cStation)(oStations.Values)
 
-        Call lstPlanConnectedTo.Items.Clear()
-        For Each oStation As cResurvey.cStation In oStations.Values
-            If oStation.Type = "" Or oStation.Type = "O" Then
-                Call lstPlanConnectedTo.Items.Add(oStation.Name)
-                Call lstProfileConnectedTo.Items.Add(oStation.Name)
-            End If
-        Next
+        'Call lstPlanConnectedTo.Items.Clear()
+        'For Each oStation As cResurvey.cStation In oStations
+        '    If oStation.Type = "" Or oStation.Type = "O" Then
+        '        Call lstPlanConnectedTo.Items.Add(oStation.Name)
+        '        Call lstProfileConnectedTo.Items.Add(oStation.Name)
+        '    End If
+        'Next
+
+        Call tknPlan.Properties.Tokens.AddRange(oStations.ToList.Select(Function(oItem) New DevExpress.XtraEditors.TokenEditToken(oItem.Name, oItem)))
+        Call tknProfile.Properties.Tokens.AddRange(oStations.ToList.Select(Function(oItem) New DevExpress.XtraEditors.TokenEditToken(oItem.Name, oItem)))
+
+        pnlScale.Location = pnlNextStations.Location
 
         Call pLoadProperties(Station)
     End Sub
@@ -45,44 +50,94 @@
         txtName.Text = oStation.Name
         txtPlanPosition.Text = oStation.PlanPoint.X & ";" & oStation.PlanPoint.Y
         txtProfilePosition.Text = oStation.ProfilePoint.X & ";" & oStation.ProfilePoint.Y
+        tknPlan.EditValue = Nothing
+        tknProfile.EditValue = Nothing
 
         Select Case oStation.Type
-            Case "SB", "DSB"
-                lblConnectedTo.Visible = False
-                tabConnectedTo.Visible = False
+            Case "SB"
+                lblPlanPosition.Visible = True
+                txtPlanPosition.Visible = True
+                lblProfilePosition.Visible = False
+                txtProfilePosition.Visible = False
 
-                lblScaleSize.Visible = False
-                txtScaleSize.Visible = False
-                lblScaleUM.Visible = False
-            Case "SE", "DSE"
-                lblConnectedTo.Visible = False
-                tabConnectedTo.Visible = False
+                pnlNextStations.Visible = False
+                pnlScale.Visible = False
+            Case "DSB"
+                lblPlanPosition.Visible = False
+                txtPlanPosition.Visible = False
+                lblProfilePosition.Visible = True
+                txtProfilePosition.Visible = True
 
-                lblScaleSize.Visible = True
-                txtScaleSize.Visible = True
-                lblScaleUM.Visible = True
+                pnlNextStations.Visible = False
+                pnlScale.Visible = False
+            Case "SE"
+                lblPlanPosition.Visible = True
+                txtPlanPosition.Visible = True
+                lblProfilePosition.Visible = False
+                txtProfilePosition.Visible = False
+
+                pnlNextStations.Visible = False
+                pnlScale.Visible = True
 
                 txtScaleSize.Value = oStation.Scale
+            Case "DSE"
+                lblPlanPosition.Visible = False
+                txtPlanPosition.Visible = False
+                lblProfilePosition.Visible = True
+                txtProfilePosition.Visible = True
+
+                pnlNextStations.Visible = False
+                pnlScale.Visible = True
+
+                txtScaleSize.Value = oStation.Scale
+            Case "¤PL"
+                'plan splay
+                lblPlanPosition.Visible = True
+                txtPlanPosition.Visible = True
+                lblProfilePosition.Visible = False
+                txtProfilePosition.Visible = False
+
+                pnlNextStations.Visible = False
+                pnlScale.Visible = False
+
+                txtProfilePosition.Visible = False
+            Case "¤PR"
+                'profile splay
+                lblPlanPosition.Visible = False
+                txtPlanPosition.Visible = False
+                lblProfilePosition.Visible = True
+                txtProfilePosition.Visible = True
+
+                pnlNextStations.Visible = False
+                pnlScale.Visible = False
+            Case "¤"
+                'user splay
+                lblPlanPosition.Visible = True
+                txtPlanPosition.Visible = True
+                lblProfilePosition.Visible = True
+                txtProfilePosition.Visible = True
+
+                pnlNextStations.Visible = False
+                pnlScale.Visible = False
             Case Else
-                lblConnectedTo.Visible = True
-                tabConnectedTo.Visible = True
+                lblPlanPosition.Visible = True
+                txtPlanPosition.Visible = True
+                lblProfilePosition.Visible = True
+                txtProfilePosition.Visible = True
 
-                lblScaleSize.Visible = False
-                txtScaleSize.Visible = False
-                lblScaleUM.Visible = False
+                pnlNextStations.Visible = True
+                pnlScale.Visible = False
 
-                Dim oPlanConnectedTo As List(Of String) = cResurvey.cStation.GetConnectedToCollection(oStation.PlanConnectedTo)
-                Dim oProfileConnectedTo As List(Of String) = cResurvey.cStation.GetConnectedToCollection(oStation.ProfileConnectedTo)
-                For Each oStation As cResurvey.cStation In oStations.Values
+                For Each oStation As cResurvey.cStation In oStations
                     If oStation.Type = "" Or oStation.Type = "O" Then
-                        Call lstPlanConnectedTo.SetItemChecked(lstPlanConnectedTo.Items.IndexOf(oStation.Name), oPlanConnectedTo.Contains(oStation.Name))
-                        Call lstProfileConnectedTo.SetItemChecked(lstProfileConnectedTo.Items.IndexOf(oStation.Name), oProfileConnectedTo.Contains(oStation.Name))
+                        If Station.PlanConnectedTo.Contains(oStation.Name) Then tknPlan.SelectItem(oStation)
+                        If Station.ProfileConnectedTo.Contains(oStation.Name) Then tknProfile.SelectItem(oStation)
                     End If
                 Next
         End Select
 
-        cmdPrev.Enabled = Not oStationsList.First Is oStation
-        cmdNext.Enabled = Not oStationsList.Last Is oStation
+        cmdPrev.Enabled = Not oStations.First Is oStation
+        cmdNext.Enabled = Not oStations.Last Is oStation
     End Sub
 
     Private Sub cmdOk_Click(sender As System.Object, e As System.EventArgs) Handles cmdOk.Click
@@ -94,24 +149,30 @@
             Case "SE", "DSE"
                 oStation.Scale = txtScaleSize.Value
             Case Else
-                oStation.PlanConnectedTo = cResurvey.cStation.SetConnectedToFromCollection(New List(Of String)(lstPlanConnectedTo.CheckedItems.Cast(Of String)))
-                oStation.ProfileConnectedTo = cResurvey.cStation.SetConnectedToFromCollection(New List(Of String)(lstProfileConnectedTo.CheckedItems.Cast(Of String)))
-                oStation.Row.Cells(4).Value = oStation.PlanConnectedTo
-                oStation.Row.Cells(5).Value = oStation.ProfileConnectedTo
+                Call oStation.PlanConnectedTo.Clear()
+                Call tknPlan.SelectedItems.ToList.ForEach(Function(oitem) oStation.PlanConnectedTo.Add(oitem.Value.ToString))
+                Call oStation.ProfileConnectedTo.Clear()
+                Call tknProfile.SelectedItems.ToList.ForEach(Function(oitem) oStation.ProfileConnectedTo.Add(oitem.Value.ToString))
         End Select
     End Sub
 
     Private Sub cmdPropNext_Click(sender As System.Object, e As System.EventArgs) Handles cmdNext.Click
-        Dim iCurrentIndex As Integer = oStationsList.IndexOf(oStation)
-        If oStationsList.Count - 1 > iCurrentIndex Then
-            Call pLoadProperties(oStationsList(iCurrentIndex + 1))
+        Dim iCurrentIndex As Integer = oStations.IndexOf(oStation)
+        iCurrentIndex += 1
+        If oStations.Count  > iCurrentIndex Then
+            Dim oNewStation As cResurvey.cStation = oStations(iCurrentIndex)
+            'RaiseEvent OnSelectionChanged(Me, New cResurveyPropertiesEventArgs(oNewStation))
+            Call pLoadProperties(oNewStation)
         End If
     End Sub
 
     Private Sub cmdPropPrev_Click(sender As System.Object, e As System.EventArgs) Handles cmdPrev.Click
-        Dim iCurrentIndex As Integer = oStationsList.IndexOf(oStation)
-        If iCurrentIndex > 0 Then
-            Call pLoadProperties(oStationsList(iCurrentIndex - 1))
+        Dim iCurrentIndex As Integer = oStations.IndexOf(oStation)
+        iCurrentIndex -= 1
+        If iCurrentIndex >= 0 Then
+            Dim oNewStation As cResurvey.cStation = oStations(iCurrentIndex)
+            'RaiseEvent OnSelectionChanged(Me, New cResurveyPropertiesEventArgs(oNewStation))
+            Call pLoadProperties(oNewStation)
         End If
     End Sub
 

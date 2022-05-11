@@ -149,7 +149,7 @@ Namespace cSurvey.Data
             End If
         End Function
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oXMLDataRow As XmlElement = Document.CreateElement("datarow")
             If (Options And cSurvey.SaveOptionsEnum.ForClipboard) = cSurvey.SaveOptionsEnum.ForClipboard Then
                 oXMLDataRow.SetAttribute("fields", Strings.Join(oDataFields.ToList.Select(Function(item) item.Name).ToArray, "|"))
@@ -475,7 +475,7 @@ Namespace cSurvey.Data
             Next
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLDataFields As XmlElement = Document.CreateElement(sName)
             For Each oField As cDataField In oItems
                 Call oField.SaveTo(File, Document, oXMLDataFields)
@@ -537,7 +537,7 @@ Namespace cSurvey.Data
             oValues = New Dictionary(Of Integer, String)
         End Sub
 
-        Friend Overrides Function SaveTo(File As Storage.cFile, Document As XmlDocument, Parent As XmlElement) As XmlElement
+        Friend Overrides Function SaveTo(File As cFile, Document As XmlDocument, Parent As XmlElement) As XmlElement
             Dim oXMLItem As XmlElement = MyBase.SaveTo(File, Document, Parent)
             Dim oXMLValues As XmlElement = Document.CreateElement("values")
             For Each oValue As KeyValuePair(Of Integer, String) In oValues
@@ -760,7 +760,7 @@ Namespace cSurvey.Data
             'oDefaultValue = StringToValue(modXML.GetAttributeValue(Item, "defaultvalue"))
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLDataField As XmlElement = Document.CreateElement("datafield")
             Call oXMLDataField.SetAttribute("name", sName)
             Call oXMLDataField.SetAttribute("type", iType)

@@ -8,12 +8,13 @@ Namespace cSurvey.Design
         Implements cIOptionsPreview
 
         Private iAdvancedClippingMode As cIOptionsPreview.AdvancedClippingModeEnum
-        Private sfileformat As String
+        Private sFileFormat As String
 
-        Private iImageWidth As Integer
-        Private iImageHeight As Integer
-        Private iDPIx As Integer
-        Private iDPIy As Integer
+        Private sImageWidth As Single
+        Private sImageHeight As Single
+        Private sImageUnit As String
+
+        Private iDPI As Integer
         Private oMargins As Drawing.Printing.Margins
 
         Private bTransparentBackground As Boolean
@@ -67,39 +68,52 @@ Namespace cSurvey.Design
             End Set
         End Property
 
-        Public Property DPIy As Integer
+        Public Property DPI As Integer
             Get
-                Return iDPIy
+                Return iDPI
             End Get
             Set(ByVal value As Integer)
-                iDPIy = value
+                If iDPI <> value AndAlso value > 10 Then
+                    iDPI = value
+                End If
             End Set
         End Property
 
-        Public Property DPIx As Integer
+        Public Property ImageUnit As String
             Get
-                Return iDPIx
+                Return sImageUnit
             End Get
-            Set(ByVal value As Integer)
-                iDPIx = value
+            Set(value As String)
+                Dim svalue As String = value.ToLower.Trim
+                Select Case svalue
+                    Case "mm"
+                        sImageUnit = "mm"
+                    Case "cm"
+                        sImageUnit = "cm"
+                    Case "in", "inch"
+                        sImageUnit = "in"
+                    Case Else
+                        sImageUnit = "px"
+                End Select
+                sImageUnit = value
             End Set
         End Property
 
-        Public Property ImageWidth As Integer
+        Public Property ImageWidth As Single
             Get
-                Return iImageWidth
+                Return sImageWidth
             End Get
-            Set(ByVal value As Integer)
-                iImageWidth = value
+            Set(ByVal value As Single)
+                sImageWidth = value
             End Set
         End Property
 
-        Public Property ImageHeight As Integer
+        Public Property ImageHeight As Single
             Get
-                Return iImageHeight
+                Return sImageHeight
             End Get
-            Set(ByVal value As Integer)
-                iImageHeight = value
+            Set(ByVal value As Single)
+                sImageHeight = value
             End Set
         End Property
 
@@ -121,14 +135,14 @@ Namespace cSurvey.Design
             End Set
         End Property
 
-        Friend Overrides Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLOptions As XmlElement = MyBase.SaveTo(File, Document, Parent)
 
             Call oXMLOptions.SetAttribute("fileformat", sfileformat)
-            Call oXMLOptions.SetAttribute("imagewidth", iImageWidth)
-            Call oXMLOptions.SetAttribute("imageheight", iImageHeight)
-            Call oXMLOptions.SetAttribute("dpix", iDPIx)
-            Call oXMLOptions.SetAttribute("dpiy", iDPIy)
+            Call oXMLOptions.SetAttribute("imagewidth", modNumbers.NumberToString(sImageWidth, ""))
+            Call oXMLOptions.SetAttribute("imageheight", modNumbers.NumberToString(sImageHeight, ""))
+            If sImageUnit <> "px" Then Call oXMLOptions.SetAttribute("imageunit", sImageUnit)
+            If iDPI <> 96 Then Call oXMLOptions.SetAttribute("dpi", iDPI)
 
             If bTransparentBackground Then Call oXMLOptions.SetAttribute("transparentbackground", 1)
 
@@ -151,10 +165,10 @@ Namespace cSurvey.Design
             Call MyBase.New(Survey, Name, cIOptions.ModeEnum.Preview)
             CompassStyle = CompassStyleEnum.Advanced
             ScaleStyle = ScaleStyleEnum.Advanced
-            iImageWidth = 4096
-            iImageHeight = 3072
-            iDPIx = 96
-            iDPIy = 96
+            sImageWidth = 4096.0F
+            sImageHeight = 3072.0F
+            sImageUnit = "px"
+            iDPI = 96
             bTransparentBackground = False
             oMargins = New Drawing.Printing.Margins(32, 32, 32, 32)
             sfileformat = "JPG"
@@ -165,15 +179,15 @@ Namespace cSurvey.Design
         Public Overrides Sub Import(Options As XmlElement)
             Call MyBase.Import(Options)
             sfileformat = modXML.GetAttributeValue(Options, "fileformat")
-            iImageWidth = modXML.GetAttributeValue(Options, "imagewidth")
-            iImageHeight = modXML.GetAttributeValue(Options, "imageheight")
-            iDPIx = modXML.GetAttributeValue(Options, "dpix")
-            iDPIy = modXML.GetAttributeValue(Options, "dpiy")
-            If iImageWidth = 0 Then
-                iImageWidth = 4096
+            sImageWidth = modXML.GetAttributeValue(Options, "imagewidth")
+            sImageHeight = modXML.GetAttributeValue(Options, "imageheight")
+            sImageUnit = modXML.GetAttributeValue(Options, "imageunit")
+            iDPI = modXML.GetAttributeValue(Options, "dpi", 96)
+            If sImageWidth = 0F Then
+                sImageWidth = 4096.0F
             End If
-            If iImageHeight = 0 Then
-                iImageHeight = 3072
+            If sImageHeight = 0F Then
+                sImageHeight = 3072.0F
             End If
             bTransparentBackground = modXML.GetAttributeValue(Options, "transparentbackground", 0)
             Dim oConverter As Drawing.Printing.MarginsConverter = New Drawing.Printing.MarginsConverter
@@ -195,15 +209,15 @@ Namespace cSurvey.Design
             CompassStyle = CompassStyleEnum.Advanced
             ScaleStyle = ScaleStyleEnum.Advanced
             sfileformat = modXML.GetAttributeValue(Options, "fileformat")
-            iImageWidth = modXML.GetAttributeValue(Options, "imagewidth")
-            iImageHeight = modXML.GetAttributeValue(Options, "imageheight")
-            iDPIx = modXML.GetAttributeValue(Options, "dpix")
-            iDPIy = modXML.GetAttributeValue(Options, "dpiy")
-            If iImageWidth = 0 Then
-                iImageWidth = 4096
+            sImageWidth = modXML.GetAttributeValue(Options, "imagewidth")
+            sImageHeight = modXML.GetAttributeValue(Options, "imageheight")
+            sImageUnit = modXML.GetAttributeValue(Options, "imageunit", "px")
+            iDPI = modXML.GetAttributeValue(Options, "dpi", 96)
+            If sImageWidth = 0F Then
+                sImageWidth = 4096.0F
             End If
-            If iImageHeight = 0 Then
-                iImageHeight = 3072
+            If sImageHeight = 0F Then
+                sImageHeight = 3072.0F
             End If
             bTransparentBackground = modXML.GetAttributeValue(Options, "transparentbackground")
             Dim oConverter As Drawing.Printing.MarginsConverter = New Drawing.Printing.MarginsConverter

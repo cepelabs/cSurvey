@@ -1,4 +1,4 @@
-﻿Public Class frmExportGoogleKML
+﻿friend Class frmExportGoogleKML
     Private oSurvey As cSurvey.cSurvey
 
     Private Sub pSettingsLoad()

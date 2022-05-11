@@ -40,7 +40,7 @@ Namespace cSurvey
                 Next
             End Sub
 
-            Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+            Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
                 Dim oXmlAliases As XmlElement = Document.CreateElement("aliases")
                 For Each sAlias As String In oItems
                     Dim oXMLAlias As XmlElement = Document.CreateElement("alias")
@@ -63,6 +63,12 @@ Namespace cSurvey
 
             Public Sub Clear()
                 Call oItems.Clear()
+            End Sub
+
+            Public Sub AddRange(Aliases As IEnumerable(Of String))
+                For Each sAlias In Aliases
+                    Call oItems.Add(sAlias)
+                Next
             End Sub
 
             Public Function Add(ByVal [Alias] As String) As Integer
@@ -133,13 +139,13 @@ Namespace cSurvey
             Forced = 1
         End Enum
 
-        Friend Structure cData
-            Public Distance As Decimal
-        End Structure
+        'Friend Structure cData
+        '    Public Distance As Decimal
+        'End Structure
 
-        Private oTempData As cData
-        Private oCurrentData As cData
-        Private oOldData As cData
+        'Private oTempData As cData
+        'Private oCurrentData As cData
+        'Private oOldData As cData
 
         Private iEntrance As EntranceTypeEnum
         Private iType As TrigPointTypeEnum
@@ -511,7 +517,7 @@ Namespace cSurvey
             Return iEntrance <> EntranceTypeEnum.None
         End Function
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oXmlTrigPoint As XmlElement = Document.CreateElement("trigpoint")
             If oAliases.Count > 0 Then Call oAliases.SaveTo(File, Document, oXmlTrigPoint)
             If oConnections.Count > 0 Then Call oConnections.SaveTo(File, Document, oXmlTrigPoint)

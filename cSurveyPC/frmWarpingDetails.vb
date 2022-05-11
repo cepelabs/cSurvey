@@ -1,10 +1,81 @@
-﻿Imports cSurveyPC.cSurvey.Calculate.Plot.cData
+﻿Imports cSurveyPC
+Imports cSurveyPC.cSurvey.Calculate.Plot.cData
 Imports cSurveyPC.cSurvey.Design
+Imports DevExpress.XtraBars
+Imports DevExpress.XtraGrid.Views.Grid
 
-Public Class frmWarpingDetails
+friend Class frmWarpingDetails
+    Private iDesignType As cIDesign.cDesignTypeEnum
     Private sDeltaSizeLimit As Single = 0.05
     Private sDeltaXYLimit As Single = 0.05
     Private sDeltaAngleLimit As Single = 0.05
+
+    Private Class cWarpingDetails
+        Private oSegment As cSurvey.cSegment
+        Private oDetails As cIWarpingFactor
+
+        Public ReadOnly Property Segment As cSurvey.cSegment
+            Get
+                Return oSegment
+            End Get
+        End Property
+
+        Public ReadOnly Property Details As cIWarpingFactor
+            Get
+                Return oDetails
+            End Get
+        End Property
+
+        Public Sub New(Segment As cSurvey.cSegment, Details As cIWarpingFactor)
+            oSegment = Segment
+            oDetails = Details
+        End Sub
+    End Class
+
+    Private Sub gridviewDetails_RowCellStyle(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs) Handles gridviewDetails.RowCellStyle
+        If e.Column Is colDetailsDeltaSize Then
+            Dim oDetail As cWarpingDetails = gridviewDetails.GetRow(e.RowHandle)
+            If oDetail.Details.DeltaSize <> 1 Then
+                If Math.Abs(oDetail.Details.DeltaSize) > 0 Then
+                    If Math.Abs(1 - oDetail.Details.DeltaSize) > sDeltaSizeLimit Then
+                        e.Appearance.BackColor = Color.PeachPuff
+                    Else
+                        e.Appearance.BackColor = Color.LightGreen
+                    End If
+                End If
+            End If
+        ElseIf e.Column Is colDetailsDeltaX Then
+            Dim oDetail As cWarpingDetails = gridviewDetails.GetRow(e.RowHandle)
+            If Math.Abs(oDetail.Details.DeltaX) > 0 Then
+                If Math.Abs(oDetail.Details.DeltaX) > sDeltaXYLimit Then
+                    e.Appearance.BackColor = Color.PeachPuff
+                Else
+                    e.Appearance.BackColor = Color.LightGreen
+                End If
+            End If
+        ElseIf e.Column Is colDetailsDeltaY Then
+            Dim oDetail As cWarpingDetails = gridviewDetails.GetRow(e.RowHandle)
+            If Math.Abs(oDetail.Details.DeltaX) > 0 Then
+                If Math.Abs(oDetail.Details.DeltaX) > sDeltaXYLimit Then
+                    e.Appearance.BackColor = Color.PeachPuff
+                Else
+                    e.Appearance.BackColor = Color.LightGreen
+                End If
+            End If
+        ElseIf e.Column Is colDetailsDeltaAngle Then
+            Dim oDetail As cWarpingDetails = gridviewDetails.GetRow(e.RowHandle)
+            If Math.Abs(oDetail.Details.DeltaAngle) > 0 Then
+                If Math.Abs(oDetail.Details.DeltaAngle) > sDeltaAngleLimit Then
+                    e.Appearance.BackColor = Color.PeachPuff
+                Else
+                    e.Appearance.BackColor = Color.LightGreen
+                End If
+            End If
+        ElseIf e.Column Is colDetailsNewSize OrElse e.Column Is colDetailsOldSize Then
+            Dim oDetail As cWarpingDetails = gridviewDetails.GetRow(e.RowHandle)
+            If oDetail.Details.IsCritical Then e.Appearance.BackColor = Color.PeachPuff
+        End If
+    End Sub
 
     Public Sub New(Segments As cSurvey.cISegmentCollection, DesignType As cIDesign.cDesignTypeEnum)
 
@@ -12,44 +83,14 @@ Public Class frmWarpingDetails
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        For Each oSegment As cSurvey.cSegment In Segments
-            Dim oFactor As cIWarpingFactor
-            If DesignType = cIDesign.cDesignTypeEnum.Plan Then
-                oFactor = oSegment.Data.PlanWarpingFactor
-            Else
-                oFactor = oSegment.Data.ProfileWarpingFactor
-            End If
-            Dim oData() = {oSegment.From, oSegment.To, oFactor.DeltaSize, oFactor.DeltaX, oFactor.DeltaY, oFactor.DeltaAngle}
-            Dim iRow As Integer = grdStations.Rows.Add(oData)
-            If oFactor.DeltaSize <> 1 Then
-                If Math.Abs(1 - oFactor.DeltaSize) > sDeltaSizeLimit Then
-                    grdStations.Rows(iRow).Cells(2).Style.BackColor = Color.PeachPuff
-                Else
-                    grdStations.Rows(iRow).Cells(2).Style.BackColor = Color.LightGreen
-                End If
-            End If
-            If oFactor.DeltaX <> 0 Then
-                If Math.Abs(oFactor.DeltaX / oSegment.Data.Data.Distance) > sDeltaXYLimit Then
-                    grdStations.Rows(iRow).Cells(3).Style.BackColor = Color.PeachPuff
-                Else
-                    grdStations.Rows(iRow).Cells(3).Style.BackColor = Color.LightGreen
-                End If
-            End If
-            If oFactor.DeltaY <> 0 Then
-                If Math.Abs(oFactor.DeltaX / oSegment.Data.Data.Distance) > sDeltaXYLimit Then
-                    grdStations.Rows(iRow).Cells(4).Style.BackColor = Color.PeachPuff
-                Else
-                    grdStations.Rows(iRow).Cells(4).Style.BackColor = Color.LightGreen
-                End If
-            End If
-            If oFactor.DeltaAngle <> 0 Then
-                If Math.Abs(oFactor.DeltaAngle / oSegment.Data.Data.Bearing) > sDeltaAngleLimit Then
-                    grdStations.Rows(iRow).Cells(5).Style.BackColor = Color.PeachPuff
-                Else
-                    grdStations.Rows(iRow).Cells(5).Style.BackColor = Color.LightGreen
-                End If
-            End If
-        Next
+        iDesignType = DesignType
+        grdDetails.DataSource = Segments.ToList.Select(Function(oSegment)
+                                                           If DesignType = cIDesign.cDesignTypeEnum.Plan Then
+                                                               Return New cWarpingDetails(oSegment, oSegment.Data.PlanWarpingFactor)
+                                                           Else
+                                                               Return New cWarpingDetails(oSegment, oSegment.Data.ProfileWarpingFactor)
+                                                           End If
+                                                       End Function).ToList
     End Sub
 
     Private Sub cmdApply_Click(sender As Object, e As EventArgs) Handles cmdApply.Click
@@ -65,5 +106,46 @@ Public Class frmWarpingDetails
     Private Sub cmdCancelAndPause_Click(sender As Object, e As EventArgs) Handles cmdCancelAndPause.Click
         DialogResult = DialogResult.Ignore
         Call Close()
+    End Sub
+
+    Private Sub gridviewDetails_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles gridviewDetails.PopupMenuShowing
+        e.Allow = False
+        Call mnuDetails.ShowPopup(grdDetails.PointToScreen(e.Point))
+    End Sub
+
+    Private Sub btnShowMoreDetails_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btnShowMoreDetails.CheckedChanged
+        Dim bVisible As Boolean = btnShowMoreDetails.Checked
+        colDetailsNewSize.Visible = bVisible
+        colDetailsOldSize.Visible = bVisible
+        colDetailsNewX.Visible = bVisible
+        colDetailsOldX.Visible = bVisible
+        colDetailsNewY.Visible = bVisible
+        colDetailsOldY.Visible = bVisible
+        colDetailsNewAngle.Visible = bVisible
+        colDetailsOldAngle.Visible = bVisible
+    End Sub
+
+    Private Sub frmWarpingDetails_FormSettingsLoad(Sender As Object, e As FormSettingsEventArgs) Handles Me.FormSettingsLoad
+        btnShowMoreDetails.Checked = e.GetValue("showmoredetails", 0)
+    End Sub
+
+    Private Sub frmWarpingDetails_FormSettingsSave(Sender As Object, e As FormSettingsEventArgs) Handles Me.FormSettingsSave
+        Call e.SetValue("showmoredetails", If(btnShowMoreDetails.Checked, "1", "0"))
+    End Sub
+
+    Private Sub gridviewDetails_CustomUnboundColumnData(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs) Handles gridviewDetails.CustomUnboundColumnData
+        If e.IsGetData Then
+            If e.Column Is colDetailsState Then
+                Dim oDetail As cWarpingDetails = e.Row
+                e.Value = If(oDetail.Details.IsCritical, My.Resources.error2, Nothing)
+            End If
+        End If
+    End Sub
+
+    Private Sub gridviewDetails_RowStyle(sender As Object, e As RowStyleEventArgs) Handles gridviewDetails.RowStyle
+        Dim oDetail As cWarpingDetails = gridviewDetails.GetRow(e.RowHandle)
+        If Not IsNothing(oDetail) Then
+            If oDetail.Details.IsCritical Then e.Appearance.BackColor = Color.FromArgb(200, Color.PeachPuff)
+        End If
     End Sub
 End Class

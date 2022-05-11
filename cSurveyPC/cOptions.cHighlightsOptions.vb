@@ -91,7 +91,7 @@ Namespace cSurvey.Design.Options
             oItems = New List(Of String)(oItems.Where(Function(item) oSurvey.Properties.HighlightsDetails.Contains(item)))
         End Sub
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Call Rebind()
             Dim oXMLHighlightsOptions As XmlElement = Document.CreateElement("hlsoptions")
             Call oXMLHighlightsOptions.SetAttribute("v", String.Join("|", oItems))

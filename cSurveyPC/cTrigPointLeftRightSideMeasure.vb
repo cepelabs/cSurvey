@@ -23,7 +23,7 @@ Namespace cSurvey.Calculate
             iSideMeasureType = modXML.GetAttributeValue(Item, "smt", cSegment.SideMeasuresTypeEnum.PerpendicularToPrevious)
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlTrigPointLeftRightSideMeasure As XmlElement = Document.CreateElement("smlr")
             Call oXmlTrigPointLeftRightSideMeasure.SetAttribute("c", sConnection)
             Call oXmlTrigPointLeftRightSideMeasure.SetAttribute("l", modNumbers.NumberToString(dLeft, ""))

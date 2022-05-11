@@ -55,7 +55,7 @@ Namespace cSurvey
             sFromStation = ConnectionDef.GetAttribute("sf")
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Name As String) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Name As String) As XmlElement
             Dim oXmlConnectionDef As XmlElement = Document.CreateElement(Name)
             Call oXmlConnectionDef.SetAttribute("s", sStation)
             Call oXmlConnectionDef.SetAttribute("sf", sFromStation)

@@ -1,4 +1,4 @@
-﻿Public Class frmSurfaceAddElevationFromOrthoPhoto
+﻿friend Class frmSurfaceAddElevationFromOrthoPhoto
 
     Private Sub cmdOk_Click(sender As Object, e As EventArgs) Handles cmdOk.Click
         If txtName.Text <> "" Then

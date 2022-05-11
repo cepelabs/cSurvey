@@ -185,4 +185,7 @@
   <data name="grpSurface.Text" xml:space="preserve">
 		<value>Superficie:</value>
 	</data>
+  <data name="cboSplayStyle.Items2" xml:space="preserve">
+    <value>Raggiera</value>
+  </data>
 </root>

@@ -18,7 +18,9 @@ Namespace cSurvey.Drawings
             Call oData.Clear()
             For Each oAttribute As XmlAttribute In Element.Attributes
                 If oAttribute.Prefix = "csurvey" Then
-                    Call oData.Add(oAttribute.LocalName, oAttribute.Value)
+                    If oAttribute.Value <> "" Then
+                        Call oData.Add(oAttribute.LocalName, oAttribute.Value)
+                    End If
                 End If
             Next
         End Sub
@@ -182,7 +184,7 @@ Namespace cSurvey.Drawings
             End Get
         End Property
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oClipart As XmlElement = Document.CreateElement("clipart")
             Call oClipart.SetAttribute("data", sData)
             Call Parent.AppendChild(oClipart)
@@ -196,11 +198,11 @@ Namespace cSurvey.Drawings
             Call pSVGLoadPath(oXMLRoot)
             'elimino un eventuale offset ....
             Dim oBounds As RectangleF = GetBounds()
-            If oBounds.Left <> 0 Or oBounds.Top <> 0 Then
-                Dim oMatrix As Matrix = New Matrix
-                Call oMatrix.Translate(-oBounds.Left, -oBounds.Top)
-                Call Transform(oMatrix)
-                Call oMatrix.Dispose()
+            If oBounds.Left <> 0F OrElse oBounds.Top <> 0F Then
+                Using oMatrix As Matrix = New Matrix
+                    Call oMatrix.Translate(-oBounds.Left, -oBounds.Top)
+                    Call Transform(oMatrix)
+                End Using
             End If
         End Sub
 
@@ -358,6 +360,8 @@ Namespace cSurvey.Drawings
                             Dim iAction As Integer
                             Dim bDecimal As Boolean
 
+                            Dim oStartPoint As PointF
+                            Dim oControlPoint As PointF
                             Dim oPoint As PointF = New PointF
                             Dim iCount As Integer = 0
                             Dim sPath As String = oItem.GetAttribute("d") & " "
@@ -366,10 +370,10 @@ Namespace cSurvey.Drawings
                             '* L = lineto
                             '* H = horizontal lineto
                             '* V = vertical lineto
-                            '* C = curveto
-                            '* S = smooth curveto
+                            '* C = curve
+                            '* S = end curve
                             '* Q = quadratic Belzier curve
-                            '* T = smooth quadratic Belzier curveto
+                            '* T = end quadratic Belzier curveto
                             '* A = elliptical Arc
                             '* Z = closepath
 
@@ -378,14 +382,46 @@ Namespace cSurvey.Drawings
                                 Dim sChar As Char = sPath.Chars(i)
                                 'Dim sValue As String = ""
                                 Select Case sChar
-                                    Case "t"
+                                    Case "q"
                                         iAction = 1
                                         bAbsolute = False
                                         i += 1
                                         Do While i < sPath.Length
                                             Dim oPoint1 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
-                                            Call oPath.AddCurve({oPoint, oPoint1}, sDefaultSplineTension)
-                                            oPoint = oPoint1
+                                            Dim oPoint2 As PointF = oPoint1
+                                            Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
+                                            Call oPath.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
+                                            oControlPoint = oPoint2
+                                            oPoint = oPoint3
+                                            sChar = pSVGSkipSpaces(sPath, i)
+                                            If Char.IsLetter(sChar) Then Exit Do
+                                        Loop
+                                    Case "Q"
+                                        iAction = 1
+                                        bAbsolute = True
+                                        i += 1
+                                        Do While i < sPath.Length
+                                            Dim oPoint1 As PointF = pSVGGetPoint(sPath, i, 0, 0)
+                                            Dim oPoint2 As PointF = oPoint1
+                                            Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, 0, 0)
+                                            Call oPath.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
+                                            oControlPoint = oPoint2
+                                            oPoint = oPoint3
+                                            sChar = pSVGSkipSpaces(sPath, i)
+                                            If Char.IsLetter(sChar) Then Exit Do
+                                        Loop
+
+                                    Case "t"
+                                        iAction = 1
+                                        bAbsolute = False
+                                        i += 1
+                                        Do While i < sPath.Length
+                                            Dim oNewControlPoint As PointF = New PointF(oPoint.X + (oPoint.X - oControlPoint.X), oPoint.Y + (oPoint.Y - oControlPoint.Y))
+                                            Dim oPoint1 As PointF = oNewControlPoint
+                                            Dim oPoint2 As PointF = oNewControlPoint
+                                            Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
+                                            Call oPath.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
+                                            oPoint = oPoint3
 
                                             sChar = pSVGSkipSpaces(sPath, i)
                                             If Char.IsLetter(sChar) Then Exit Do
@@ -396,9 +432,43 @@ Namespace cSurvey.Drawings
                                         bAbsolute = True
                                         i += 1
                                         Do While i < sPath.Length
-                                            Dim oPoint1 As PointF = pSVGGetPoint(sPath, i, 0, 0)
-                                            Call oPath.AddCurve({oPoint, oPoint1}, sDefaultSplineTension)
-                                            oPoint = oPoint1
+                                            Dim oNewControlPoint As PointF = New PointF(oPoint.X + (oPoint.X - oControlPoint.X), oPoint.Y + (oPoint.Y - oControlPoint.Y))
+                                            Dim oPoint1 As PointF = oNewControlPoint
+                                            Dim oPoint2 As PointF = oNewControlPoint
+                                            Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, 0, 0)
+                                            Call oPath.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
+                                            oPoint = oPoint3
+                                            sChar = pSVGSkipSpaces(sPath, i)
+                                            If Char.IsLetter(sChar) Then Exit Do
+                                        Loop
+
+                                    Case "s"
+                                        iAction = 1
+                                        bAbsolute = False
+                                        i += 1
+                                        Do While i < sPath.Length
+                                            Dim oNewControlPoint As PointF = New PointF(oPoint.X + (oPoint.X - oControlPoint.X), oPoint.Y + (oPoint.Y - oControlPoint.Y))
+                                            Dim oPoint1 As PointF = oNewControlPoint
+                                            Dim oPoint2 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
+                                            Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
+                                            Call oPath.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
+                                            oPoint = oPoint3
+
+                                            sChar = pSVGSkipSpaces(sPath, i)
+                                            If Char.IsLetter(sChar) Then Exit Do
+                                        Loop
+
+                                    Case "S"
+                                        iAction = 1
+                                        bAbsolute = True
+                                        i += 1
+                                        Do While i < sPath.Length
+                                            Dim oNewControlPoint As PointF = New PointF(oPoint.X + (oPoint.X - oControlPoint.X), oPoint.Y + (oPoint.Y - oControlPoint.Y))
+                                            Dim oPoint1 As PointF = oNewControlPoint
+                                            Dim oPoint2 As PointF = pSVGGetPoint(sPath, i, 0, 0)
+                                            Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, 0, 0)
+                                            Call oPath.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
+                                            oPoint = oPoint3
                                             sChar = pSVGSkipSpaces(sPath, i)
                                             If Char.IsLetter(sChar) Then Exit Do
                                         Loop
@@ -505,6 +575,7 @@ Namespace cSurvey.Drawings
                                         i += 1
                                         oPoint = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
                                         Call oPath.StartFigure()
+                                        oStartPoint = oPoint
 
                                         Do While i < sPath.Length
                                             sChar = pSVGSkipSpaces(sPath, i)
@@ -523,6 +594,7 @@ Namespace cSurvey.Drawings
                                         i += 1
                                         oPoint = pSVGGetPoint(sPath, i, 0, 0)
                                         Call oPath.StartFigure()
+                                        oStartPoint = oPoint
 
                                         Do While i < sPath.Length
                                             sChar = pSVGSkipSpaces(sPath, i)
@@ -536,6 +608,7 @@ Namespace cSurvey.Drawings
                                             If Char.IsLetter(sChar) Then Exit Do
                                         Loop
                                     Case "z", "Z"
+                                        oPoint = oStartPoint
                                         iAction = 2
                                         bDecimal = False
                                         i += 1
@@ -549,6 +622,7 @@ Namespace cSurvey.Drawings
                                             Dim oPoint2 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
                                             Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
                                             Call oPath.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
+                                            oControlPoint = oPoint2
                                             oPoint = oPoint3
                                             sChar = pSVGSkipSpaces(sPath, i)
                                             If Char.IsLetter(sChar) Then Exit Do
@@ -563,6 +637,7 @@ Namespace cSurvey.Drawings
                                             Dim oPoint2 As PointF = pSVGGetPoint(sPath, i, 0, 0)
                                             Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, 0, 0)
                                             Call oPath.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
+                                            oControlPoint = oPoint2
                                             oPoint = oPoint3
                                             sChar = pSVGSkipSpaces(sPath, i)
                                             If Char.IsLetter(sChar) Then Exit Do
@@ -870,6 +945,7 @@ Namespace cSurvey.Drawings
                 End If
             Loop
             oPoint.Y = StringToSingle(sValue)
+
             oPoint.X += RelativeX
             oPoint.Y += RelativeY
             Index = iIndex
@@ -928,8 +1004,8 @@ Namespace cSurvey.Drawings
                 Dim oRect As RectangleF = GetBounds()
                 Dim sDX As Single = oRect.Width / thumbWidth
                 Dim sDY As Single = oRect.Height / thumbHeight
-                Dim sD As Single = 1 / IIf(sDX > sDY, sDX, sDY)
-                Call Paint(oGraphics, ForeColor, Backcolor, sD, New PointF(0, 0))
+                Dim sD As Single = 1 / If(sDX > sDY, sDX, sDY)
+                Call Paint(oGraphics, ForeColor, Backcolor, sD, New PointF((thumbWidth - oRect.Width * sD) / 2, (thumbHeight - oRect.Height * sD) / 2))
             End Using
             Return oImage
         End Function
@@ -1103,11 +1179,28 @@ Namespace cSurvey.Drawings
         End Sub
 
         Public Function GetBounds() As RectangleF
+            'Dim oRect As RectangleF
+            'If oItems.Count > 0 Then
+            '    Using oFlatPath As GraphicsPath = oItems(0).Path.Clone
+            '        Call oFlatPath.Flatten(Nothing, 0.0001F)
+            '        oRect = oFlatPath.GetBounds
+            '        For i As Integer = 1 To oItems.Count - 1
+            '            Using oFlatNewPath As GraphicsPath = oItems(i).Path.Clone
+            '                Call oFlatNewPath.Flatten(Nothing, 0.0001F)
+            '                Dim oNewRect As RectangleF = oFlatNewPath.GetBounds()
+            '                If Not modPaint.IsRectangleEmpty(oNewRect) Then
+            '                    oRect = RectangleF.Union(oRect, oNewRect)
+            '                End If
+            '            End Using
+            '        Next
+            '    End Using
+            'End If
+            'Return oRect
             Dim oRect As RectangleF
             If oItems.Count > 0 Then
                 oRect = oItems(0).Path.GetBounds
                 For i As Integer = 1 To oItems.Count - 1
-                    Dim oNewRect As RectangleF = oItems(i).Path.GetBounds
+                    Dim oNewRect As RectangleF = oItems(i).Path.GetBounds()
                     If Not modPaint.IsRectangleEmpty(oNewRect) Then
                         oRect = RectangleF.Union(oRect, oNewRect)
                     End If
@@ -1116,11 +1209,18 @@ Namespace cSurvey.Drawings
             Return oRect
         End Function
 
+
         Public Sub Warp(DestPoint As PointF(), SrcRect As RectangleF)
             For Each oPath As cDrawPath In oItems
-                Call oPath.Path.Warp(DestPoint, SrcRect)
+                Call oPath.Path.WarpQ(DestPoint, SrcRect)
             Next
         End Sub
+
+        'Public Sub Warp(DestPoint As PointF(), SrcRect As RectangleF)
+        '    For Each oPath As cDrawPath In oItems
+        '        Call oPath.Path.Warp(DestPoint, SrcRect)
+        '    Next
+        'End Sub
 
         Public Sub Transform(ByVal Matrix As Matrix)
             For Each oPath As cDrawPath In oItems

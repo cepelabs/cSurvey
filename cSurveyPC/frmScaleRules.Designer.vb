@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmScaleRules
     Inherits cForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,11 +20,11 @@ Partial Class frmScaleRules
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmScaleRules))
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.cmdApply = New System.Windows.Forms.Button()
         Me.cmdCancel = New System.Windows.Forms.Button()
         Me.cmdOk = New System.Windows.Forms.Button()
@@ -54,6 +54,14 @@ Partial Class frmScaleRules
         Me.txtBaseLineWidthScaleFactor = New System.Windows.Forms.NumericUpDown()
         Me.lblBaseLineWidthScaleFactor = New System.Windows.Forms.Label()
         Me.frrmDesign = New System.Windows.Forms.GroupBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.lblDesignCrossSectionTextScaleFactor = New System.Windows.Forms.Label()
+        Me.txtDesignCrossSectionTextScaleFactor = New System.Windows.Forms.NumericUpDown()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.lblDesignCrossSectionMarkerTextScaleFactor = New System.Windows.Forms.Label()
+        Me.txtDesignCrossSectionMarkerTextScaleFactor = New System.Windows.Forms.NumericUpDown()
+        Me.txtDesignCrossSectionMarkerArrowScaleFactor = New System.Windows.Forms.NumericUpDown()
+        Me.lblDesignCrossSectionMarkerArrowScaleFactor = New System.Windows.Forms.Label()
         Me.GroupBox10 = New System.Windows.Forms.GroupBox()
         Me.txtDesignExtraScaleFactor = New System.Windows.Forms.NumericUpDown()
         Me.lblDesignExtraTextScaleFactor = New System.Windows.Forms.Label()
@@ -125,7 +133,6 @@ Partial Class frmScaleRules
         Me.lblPlotPointSize = New System.Windows.Forms.Label()
         Me.lblPlotPointSymbol = New System.Windows.Forms.Label()
         Me.frmPlotPen = New System.Windows.Forms.GroupBox()
-        Me.chkPlotCenterlineVectors = New System.Windows.Forms.CheckBox()
         Me.cmdPlotPenColor = New System.Windows.Forms.Button()
         Me.lblPlotPenColor = New System.Windows.Forms.Label()
         Me.picPlotPenColor = New System.Windows.Forms.PictureBox()
@@ -140,10 +147,12 @@ Partial Class frmScaleRules
         Me.txtAddScale = New System.Windows.Forms.ToolStripTextBox()
         Me.btnAdd = New System.Windows.Forms.ToolStripButton()
         Me.btnAddAsCopy = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.sep1 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnRemove = New System.Windows.Forms.ToolStripButton()
         Me.btnRemoveAll = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.sep2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnClear = New System.Windows.Forms.ToolStripButton()
+        Me.sep3 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnExport = New System.Windows.Forms.ToolStripButton()
         Me.btnImport = New System.Windows.Forms.ToolStripButton()
         Me.tabInfo.SuspendLayout()
@@ -160,6 +169,11 @@ Partial Class frmScaleRules
         CType(Me.txtBaseHeavyLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtBaseLineWidthScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.frrmDesign.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
+        CType(Me.txtDesignCrossSectionTextScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox3.SuspendLayout()
+        CType(Me.txtDesignCrossSectionMarkerTextScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignCrossSectionMarkerArrowScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox10.SuspendLayout()
         CType(Me.txtDesignExtraScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtDesignExtraTextScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -261,7 +275,6 @@ Partial Class frmScaleRules
         '
         'picScaleWarning
         '
-        Me.picScaleWarning.Image = Global.cSurveyPC.My.Resources.Resources._error
         resources.ApplyResources(Me.picScaleWarning, "picScaleWarning")
         Me.picScaleWarning.Name = "picScaleWarning"
         Me.picScaleWarning.TabStop = False
@@ -302,8 +315,8 @@ Partial Class frmScaleRules
         '
         'colCategoryIndex
         '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        Me.colCategoryIndex.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        Me.colCategoryIndex.DefaultCellStyle = DataGridViewCellStyle1
         resources.ApplyResources(Me.colCategoryIndex, "colCategoryIndex")
         Me.colCategoryIndex.Name = "colCategoryIndex"
         Me.colCategoryIndex.ReadOnly = True
@@ -321,9 +334,9 @@ Partial Class frmScaleRules
         '
         'tabInfODesign
         '
+        resources.ApplyResources(Me.tabInfODesign, "tabInfODesign")
         Me.tabInfODesign.Controls.Add(Me.GroupBox1)
         Me.tabInfODesign.Controls.Add(Me.frrmDesign)
-        resources.ApplyResources(Me.tabInfODesign, "tabInfODesign")
         Me.tabInfODesign.Name = "tabInfODesign"
         Me.tabInfODesign.UseVisualStyleBackColor = True
         '
@@ -347,16 +360,19 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.Label8, "Label8")
         Me.Label8.Name = "Label8"
+        Me.Label8.Tag = "txtBaseUltraLightLinesScaleFactor"
         '
         'Label7
         '
         resources.ApplyResources(Me.Label7, "Label7")
         Me.Label7.Name = "Label7"
+        Me.Label7.Tag = "txtBaseLightLinesScaleFactor"
         '
         'Label4
         '
         resources.ApplyResources(Me.Label4, "Label4")
         Me.Label4.Name = "Label4"
+        Me.Label4.Tag = "txtBaseMediumLinesScaleFactor"
         '
         'txtBaseMediumLinesScaleFactor
         '
@@ -398,6 +414,7 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblBaseLinesScaleFactor, "lblBaseLinesScaleFactor")
         Me.lblBaseLinesScaleFactor.Name = "lblBaseLinesScaleFactor"
+        Me.lblBaseLinesScaleFactor.Tag = "txtBaseHeavyLinesScaleFactor"
         '
         'txtBaseLineWidthScaleFactor
         '
@@ -412,9 +429,11 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblBaseLineWidthScaleFactor, "lblBaseLineWidthScaleFactor")
         Me.lblBaseLineWidthScaleFactor.Name = "lblBaseLineWidthScaleFactor"
+        Me.lblBaseLineWidthScaleFactor.Tag = "txtBaseLineWidthScaleFactor"
         '
         'frrmDesign
         '
+        Me.frrmDesign.Controls.Add(Me.GroupBox2)
         Me.frrmDesign.Controls.Add(Me.GroupBox10)
         Me.frrmDesign.Controls.Add(Me.lblDesignTextureScale)
         Me.frrmDesign.Controls.Add(Me.txtDesignTextureScaleFactor)
@@ -434,6 +453,64 @@ Partial Class frmScaleRules
         resources.ApplyResources(Me.frrmDesign, "frrmDesign")
         Me.frrmDesign.Name = "frrmDesign"
         Me.frrmDesign.TabStop = False
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.lblDesignCrossSectionTextScaleFactor)
+        Me.GroupBox2.Controls.Add(Me.txtDesignCrossSectionTextScaleFactor)
+        Me.GroupBox2.Controls.Add(Me.GroupBox3)
+        resources.ApplyResources(Me.GroupBox2, "GroupBox2")
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.TabStop = False
+        '
+        'lblDesignCrossSectionTextScaleFactor
+        '
+        resources.ApplyResources(Me.lblDesignCrossSectionTextScaleFactor, "lblDesignCrossSectionTextScaleFactor")
+        Me.lblDesignCrossSectionTextScaleFactor.Name = "lblDesignCrossSectionTextScaleFactor"
+        Me.lblDesignCrossSectionTextScaleFactor.Tag = "txtDesignCrossSectionTextScaleFactor"
+        '
+        'txtDesignCrossSectionTextScaleFactor
+        '
+        Me.txtDesignCrossSectionTextScaleFactor.DecimalPlaces = 2
+        Me.txtDesignCrossSectionTextScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+        resources.ApplyResources(Me.txtDesignCrossSectionTextScaleFactor, "txtDesignCrossSectionTextScaleFactor")
+        Me.txtDesignCrossSectionTextScaleFactor.Name = "txtDesignCrossSectionTextScaleFactor"
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.lblDesignCrossSectionMarkerTextScaleFactor)
+        Me.GroupBox3.Controls.Add(Me.txtDesignCrossSectionMarkerTextScaleFactor)
+        Me.GroupBox3.Controls.Add(Me.txtDesignCrossSectionMarkerArrowScaleFactor)
+        Me.GroupBox3.Controls.Add(Me.lblDesignCrossSectionMarkerArrowScaleFactor)
+        resources.ApplyResources(Me.GroupBox3, "GroupBox3")
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.TabStop = False
+        '
+        'lblDesignCrossSectionMarkerTextScaleFactor
+        '
+        resources.ApplyResources(Me.lblDesignCrossSectionMarkerTextScaleFactor, "lblDesignCrossSectionMarkerTextScaleFactor")
+        Me.lblDesignCrossSectionMarkerTextScaleFactor.Name = "lblDesignCrossSectionMarkerTextScaleFactor"
+        Me.lblDesignCrossSectionMarkerTextScaleFactor.Tag = "txtDesignCrossSectionMarkerTextScaleFactor"
+        '
+        'txtDesignCrossSectionMarkerTextScaleFactor
+        '
+        Me.txtDesignCrossSectionMarkerTextScaleFactor.DecimalPlaces = 2
+        Me.txtDesignCrossSectionMarkerTextScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+        resources.ApplyResources(Me.txtDesignCrossSectionMarkerTextScaleFactor, "txtDesignCrossSectionMarkerTextScaleFactor")
+        Me.txtDesignCrossSectionMarkerTextScaleFactor.Name = "txtDesignCrossSectionMarkerTextScaleFactor"
+        '
+        'txtDesignCrossSectionMarkerArrowScaleFactor
+        '
+        Me.txtDesignCrossSectionMarkerArrowScaleFactor.DecimalPlaces = 2
+        Me.txtDesignCrossSectionMarkerArrowScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+        resources.ApplyResources(Me.txtDesignCrossSectionMarkerArrowScaleFactor, "txtDesignCrossSectionMarkerArrowScaleFactor")
+        Me.txtDesignCrossSectionMarkerArrowScaleFactor.Name = "txtDesignCrossSectionMarkerArrowScaleFactor"
+        '
+        'lblDesignCrossSectionMarkerArrowScaleFactor
+        '
+        resources.ApplyResources(Me.lblDesignCrossSectionMarkerArrowScaleFactor, "lblDesignCrossSectionMarkerArrowScaleFactor")
+        Me.lblDesignCrossSectionMarkerArrowScaleFactor.Name = "lblDesignCrossSectionMarkerArrowScaleFactor"
+        Me.lblDesignCrossSectionMarkerArrowScaleFactor.Tag = "txtDesignCrossSectionMarkerArrowScaleFactor"
         '
         'GroupBox10
         '
@@ -456,11 +533,13 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblDesignExtraTextScaleFactor, "lblDesignExtraTextScaleFactor")
         Me.lblDesignExtraTextScaleFactor.Name = "lblDesignExtraTextScaleFactor"
+        Me.lblDesignExtraTextScaleFactor.Tag = "txtDesignExtraTextScaleFactor"
         '
         'lblDesignExtraScaleFactor
         '
         resources.ApplyResources(Me.lblDesignExtraScaleFactor, "lblDesignExtraScaleFactor")
         Me.lblDesignExtraScaleFactor.Name = "lblDesignExtraScaleFactor"
+        Me.lblDesignExtraScaleFactor.Tag = "txtDesignExtraScaleFactor"
         '
         'txtDesignExtraTextScaleFactor
         '
@@ -473,6 +552,7 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblDesignTextureScale, "lblDesignTextureScale")
         Me.lblDesignTextureScale.Name = "lblDesignTextureScale"
+        Me.lblDesignTextureScale.Tag = "txtDesignTextureScaleFactor"
         '
         'txtDesignTextureScaleFactor
         '
@@ -497,11 +577,13 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblDesignTextFont, "lblDesignTextFont")
         Me.lblDesignTextFont.Name = "lblDesignTextFont"
+        Me.lblDesignTextFont.Tag = "cmdDesignTextFont;txtDesignTextFont"
         '
         'lblDesignSoilScale
         '
         resources.ApplyResources(Me.lblDesignSoilScale, "lblDesignSoilScale")
         Me.lblDesignSoilScale.Name = "lblDesignSoilScale"
+        Me.lblDesignSoilScale.Tag = "txtDesignSoilScaleFactor"
         '
         'txtDesignSoilScaleFactor
         '
@@ -514,6 +596,7 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblDesignClipartScaleFactor, "lblDesignClipartScaleFactor")
         Me.lblDesignClipartScaleFactor.Name = "lblDesignClipartScaleFactor"
+        Me.lblDesignClipartScaleFactor.Tag = "txtDesignClipartScaleFactor"
         '
         'txtDesignClipartScaleFactor
         '
@@ -526,6 +609,7 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblDesignTextScaleFactor, "lblDesignTextScaleFactor")
         Me.lblDesignTextScaleFactor.Name = "lblDesignTextScaleFactor"
+        Me.lblDesignTextScaleFactor.Tag = "txtDesignTextScaleFactor"
         '
         'txtDesignTextScaleFactor
         '
@@ -538,6 +622,7 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblDesignSignScaleFactor, "lblDesignSignScaleFactor")
         Me.lblDesignSignScaleFactor.Name = "lblDesignSignScaleFactor"
+        Me.lblDesignSignScaleFactor.Tag = "txtDesignSignScaleFactor"
         '
         'txtDesignSignScaleFactor
         '
@@ -550,6 +635,7 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblDesignTerrainLevelScaleFactor, "lblDesignTerrainLevelScaleFactor")
         Me.lblDesignTerrainLevelScaleFactor.Name = "lblDesignTerrainLevelScaleFactor"
+        Me.lblDesignTerrainLevelScaleFactor.Tag = "txtDesignTerrainLevelScaleFactor"
         '
         'txtDesignTerrainLevelScaleFactor
         '
@@ -600,6 +686,7 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblPlotNoteTextFont, "lblPlotNoteTextFont")
         Me.lblPlotNoteTextFont.Name = "lblPlotNoteTextFont"
+        Me.lblPlotNoteTextFont.Tag = "cmdPlotNoteTextFont;txtPlotNoteTextFont"
         '
         'cmdPlotNoteTextColor
         '
@@ -611,6 +698,7 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblPlotNoteTextColor, "lblPlotNoteTextColor")
         Me.lblPlotNoteTextColor.Name = "lblPlotNoteTextColor"
+        Me.lblPlotNoteTextColor.Tag = "cmdPlotNoteTextColor;picPlotNoteTextColor"
         '
         'picPlotNoteTextColor
         '
@@ -629,6 +717,7 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblPlotNoteTextScaleFactor, "lblPlotNoteTextScaleFactor")
         Me.lblPlotNoteTextScaleFactor.Name = "lblPlotNoteTextScaleFactor"
+        Me.lblPlotNoteTextScaleFactor.Tag = "txtPlotNoteTextScaleFactor"
         '
         'GroupBox6
         '
@@ -646,6 +735,7 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblPlotSplaySelectedPenWidth, "lblPlotSplaySelectedPenWidth")
         Me.lblPlotSplaySelectedPenWidth.Name = "lblPlotSplaySelectedPenWidth"
+        Me.lblPlotSplaySelectedPenWidth.Tag = "txtPlotSplaySelectedPenWidth"
         '
         'txtPlotSplaySelectedPenWidth
         '
@@ -669,6 +759,7 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblPlotSplayPenWidth, "lblPlotSplayPenWidth")
         Me.lblPlotSplayPenWidth.Name = "lblPlotSplayPenWidth"
+        Me.lblPlotSplayPenWidth.Tag = "txtPlotSplayPenWidth"
         '
         'cboPlotSplayPenStyle
         '
@@ -682,6 +773,7 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblPlotSplayPenStyle, "lblPlotSplayPenStyle")
         Me.lblPlotSplayPenStyle.Name = "lblPlotSplayPenStyle"
+        Me.lblPlotSplayPenStyle.Tag = "cboPlotSplayPenStyle"
         '
         'frmPlotLRUD
         '
@@ -699,6 +791,7 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblPlotLRUDSelectedPenWidth, "lblPlotLRUDSelectedPenWidth")
         Me.lblPlotLRUDSelectedPenWidth.Name = "lblPlotLRUDSelectedPenWidth"
+        Me.lblPlotLRUDSelectedPenWidth.Tag = "txtPlotLRUDSelectedPenWidth"
         '
         'txtPlotLRUDSelectedPenWidth
         '
@@ -722,6 +815,7 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblPlotLRUDPenWidth, "lblPlotLRUDPenWidth")
         Me.lblPlotLRUDPenWidth.Name = "lblPlotLRUDPenWidth"
+        Me.lblPlotLRUDPenWidth.Tag = "txtPlotLRUDPenWidth"
         '
         'cboPlotLRUDPenStyle
         '
@@ -735,6 +829,7 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblPlotLRUDPenStyle, "lblPlotLRUDPenStyle")
         Me.lblPlotLRUDPenStyle.Name = "lblPlotLRUDPenStyle"
+        Me.lblPlotLRUDPenStyle.Tag = "cboPlotLRUDPenStyle"
         '
         'frmPlotTranslationLine
         '
@@ -759,6 +854,7 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblPlotTranslationLinePenColor, "lblPlotTranslationLinePenColor")
         Me.lblPlotTranslationLinePenColor.Name = "lblPlotTranslationLinePenColor"
+        Me.lblPlotTranslationLinePenColor.Tag = "cmdPlotTranslationLinePenColor;picPlotTranslationLinePenColor"
         '
         'picPlotTranslationLinePenColor
         '
@@ -779,6 +875,7 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblPlotTranslationLinePenSize, "lblPlotTranslationLinePenSize")
         Me.lblPlotTranslationLinePenSize.Name = "lblPlotTranslationLinePenSize"
+        Me.lblPlotTranslationLinePenSize.Tag = "txtPlotTranslationLinePenWidth"
         '
         'cboPlotTranslationLinePenStyle
         '
@@ -792,6 +889,7 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblPlotTranslationLinePenStyle, "lblPlotTranslationLinePenStyle")
         Me.lblPlotTranslationLinePenStyle.Name = "lblPlotTranslationLinePenStyle"
+        Me.lblPlotTranslationLinePenStyle.Tag = "cboPlotTranslationLinePenStyle"
         '
         'frmPlotPoint
         '
@@ -838,11 +936,13 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblPlotTextFont, "lblPlotTextFont")
         Me.lblPlotTextFont.Name = "lblPlotTextFont"
+        Me.lblPlotTextFont.Tag = "txtPlotTextFont;cmdPlotTextFont"
         '
         'lblPlotPointColor
         '
         resources.ApplyResources(Me.lblPlotPointColor, "lblPlotPointColor")
         Me.lblPlotPointColor.Name = "lblPlotPointColor"
+        Me.lblPlotPointColor.Tag = "cmdPlotPointColor;picPlotPointColor"
         '
         'cmdPlotTextColor
         '
@@ -860,6 +960,7 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblPlotTextColor, "lblPlotTextColor")
         Me.lblPlotTextColor.Name = "lblPlotTextColor"
+        Me.lblPlotTextColor.Tag = "cmdPlotTextColor;picPlotTextColor"
         '
         'cboPlotPointSymbol
         '
@@ -867,6 +968,7 @@ Partial Class frmScaleRules
         resources.ApplyResources(Me.cboPlotPointSymbol, "cboPlotPointSymbol")
         Me.cboPlotPointSymbol.Items.AddRange(New Object() {resources.GetString("cboPlotPointSymbol.Items"), resources.GetString("cboPlotPointSymbol.Items1"), resources.GetString("cboPlotPointSymbol.Items2"), resources.GetString("cboPlotPointSymbol.Items3"), resources.GetString("cboPlotPointSymbol.Items4"), resources.GetString("cboPlotPointSymbol.Items5"), resources.GetString("cboPlotPointSymbol.Items6"), resources.GetString("cboPlotPointSymbol.Items7")})
         Me.cboPlotPointSymbol.Name = "cboPlotPointSymbol"
+        Me.cboPlotPointSymbol.Tag = "cboPlotPointSymbol"
         '
         'picPlotTextColor
         '
@@ -899,25 +1001,28 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblPlotTextScaleFactor, "lblPlotTextScaleFactor")
         Me.lblPlotTextScaleFactor.Name = "lblPlotTextScaleFactor"
+        Me.lblPlotTextScaleFactor.Tag = "txtPlotTextScaleFactor"
         '
         'lblPlotSelectedPointSize
         '
         resources.ApplyResources(Me.lblPlotSelectedPointSize, "lblPlotSelectedPointSize")
         Me.lblPlotSelectedPointSize.Name = "lblPlotSelectedPointSize"
+        Me.lblPlotSelectedPointSize.Tag = "txtPlotSelectedPointSize"
         '
         'lblPlotPointSize
         '
         resources.ApplyResources(Me.lblPlotPointSize, "lblPlotPointSize")
         Me.lblPlotPointSize.Name = "lblPlotPointSize"
+        Me.lblPlotPointSize.Tag = "txtPlotPointSize"
         '
         'lblPlotPointSymbol
         '
         resources.ApplyResources(Me.lblPlotPointSymbol, "lblPlotPointSymbol")
         Me.lblPlotPointSymbol.Name = "lblPlotPointSymbol"
+        Me.lblPlotPointSymbol.Tag = "cboPlotPointSymbol"
         '
         'frmPlotPen
         '
-        Me.frmPlotPen.Controls.Add(Me.chkPlotCenterlineVectors)
         Me.frmPlotPen.Controls.Add(Me.cmdPlotPenColor)
         Me.frmPlotPen.Controls.Add(Me.lblPlotPenColor)
         Me.frmPlotPen.Controls.Add(Me.picPlotPenColor)
@@ -931,12 +1036,6 @@ Partial Class frmScaleRules
         Me.frmPlotPen.Name = "frmPlotPen"
         Me.frmPlotPen.TabStop = False
         '
-        'chkPlotCenterlineVectors
-        '
-        resources.ApplyResources(Me.chkPlotCenterlineVectors, "chkPlotCenterlineVectors")
-        Me.chkPlotCenterlineVectors.Name = "chkPlotCenterlineVectors"
-        Me.chkPlotCenterlineVectors.UseVisualStyleBackColor = True
-        '
         'cmdPlotPenColor
         '
         resources.ApplyResources(Me.cmdPlotPenColor, "cmdPlotPenColor")
@@ -947,6 +1046,7 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblPlotPenColor, "lblPlotPenColor")
         Me.lblPlotPenColor.Name = "lblPlotPenColor"
+        Me.lblPlotPenColor.Tag = "picPlotPenColor;cmdPlotPenColor"
         '
         'picPlotPenColor
         '
@@ -967,11 +1067,13 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblPlotPenWidth, "lblPlotPenWidth")
         Me.lblPlotPenWidth.Name = "lblPlotPenWidth"
+        Me.lblPlotPenWidth.Tag = "txtPlotPenWidth"
         '
         'lblPlotSelectedPenWidth
         '
         resources.ApplyResources(Me.lblPlotSelectedPenWidth, "lblPlotSelectedPenWidth")
         Me.lblPlotSelectedPenWidth.Name = "lblPlotSelectedPenWidth"
+        Me.lblPlotSelectedPenWidth.Tag = "txtPlotSelectedPenWidth"
         '
         'cboPlotPenStyle
         '
@@ -994,12 +1096,13 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.lblPlotPenStyle, "lblPlotPenStyle")
         Me.lblPlotPenStyle.Name = "lblPlotPenStyle"
+        Me.lblPlotPenStyle.Tag = "cboPlotPenStyle"
         '
         'tbMain
         '
         resources.ApplyResources(Me.tbMain, "tbMain")
         Me.tbMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.tbMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblAddScale, Me.txtAddScale, Me.btnAdd, Me.btnAddAsCopy, Me.ToolStripSeparator1, Me.btnRemove, Me.btnRemoveAll, Me.ToolStripSeparator2, Me.btnExport, Me.btnImport})
+        Me.tbMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblAddScale, Me.txtAddScale, Me.btnAdd, Me.btnAddAsCopy, Me.sep1, Me.btnRemove, Me.btnRemoveAll, Me.sep2, Me.btnClear, Me.sep3, Me.btnExport, Me.btnImport})
         Me.tbMain.Name = "tbMain"
         '
         'lblAddScale
@@ -1015,20 +1118,18 @@ Partial Class frmScaleRules
         '
         'btnAdd
         '
-        Me.btnAdd.Image = Global.cSurveyPC.My.Resources.Resources.add
         resources.ApplyResources(Me.btnAdd, "btnAdd")
         Me.btnAdd.Name = "btnAdd"
         '
         'btnAddAsCopy
         '
-        Me.btnAddAsCopy.Image = Global.cSurveyPC.My.Resources.Resources.add
         resources.ApplyResources(Me.btnAddAsCopy, "btnAddAsCopy")
         Me.btnAddAsCopy.Name = "btnAddAsCopy"
         '
-        'ToolStripSeparator1
+        'sep1
         '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        resources.ApplyResources(Me.ToolStripSeparator1, "ToolStripSeparator1")
+        Me.sep1.Name = "sep1"
+        resources.ApplyResources(Me.sep1, "sep1")
         '
         'btnRemove
         '
@@ -1040,10 +1141,21 @@ Partial Class frmScaleRules
         resources.ApplyResources(Me.btnRemoveAll, "btnRemoveAll")
         Me.btnRemoveAll.Name = "btnRemoveAll"
         '
-        'ToolStripSeparator2
+        'sep2
         '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        resources.ApplyResources(Me.ToolStripSeparator2, "ToolStripSeparator2")
+        Me.sep2.Name = "sep2"
+        resources.ApplyResources(Me.sep2, "sep2")
+        '
+        'btnClear
+        '
+        Me.btnClear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        resources.ApplyResources(Me.btnClear, "btnClear")
+        Me.btnClear.Name = "btnClear"
+        '
+        'sep3
+        '
+        Me.sep3.Name = "sep3"
+        resources.ApplyResources(Me.sep3, "sep3")
         '
         'btnExport
         '
@@ -1069,6 +1181,8 @@ Partial Class frmScaleRules
         Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.cmdOk)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.IconOptions.Icon = CType(resources.GetObject("frmScaleRules.IconOptions.Icon"), System.Drawing.Icon)
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.scale
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmScaleRules"
@@ -1089,6 +1203,13 @@ Partial Class frmScaleRules
         CType(Me.txtBaseLineWidthScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
         Me.frrmDesign.ResumeLayout(False)
         Me.frrmDesign.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
+        CType(Me.txtDesignCrossSectionTextScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
+        CType(Me.txtDesignCrossSectionMarkerTextScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignCrossSectionMarkerArrowScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox10.ResumeLayout(False)
         Me.GroupBox10.PerformLayout()
         CType(Me.txtDesignExtraScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1150,14 +1271,14 @@ Partial Class frmScaleRules
     Friend WithEvents iml As System.Windows.Forms.ImageList
     Friend WithEvents lblAddScale As System.Windows.Forms.ToolStripLabel
     Friend WithEvents txtAddScale As System.Windows.Forms.ToolStripTextBox
-    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents sep1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents tanInfoCategories As System.Windows.Forms.TabPage
     Friend WithEvents lblScaleWarning As System.Windows.Forms.Label
     Friend WithEvents picScaleWarning As System.Windows.Forms.PictureBox
     Friend WithEvents grdCategoriesVisibility As cSurveyPC.cGrid
     Friend WithEvents btnAddAsCopy As System.Windows.Forms.ToolStripButton
     Friend WithEvents btnRemoveAll As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents sep3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents btnExport As System.Windows.Forms.ToolStripButton
     Friend WithEvents btnImport As System.Windows.Forms.ToolStripButton
     Friend WithEvents GroupBox7 As System.Windows.Forms.GroupBox
@@ -1210,7 +1331,6 @@ Partial Class frmScaleRules
     Friend WithEvents lblPlotPointSize As System.Windows.Forms.Label
     Friend WithEvents lblPlotPointSymbol As System.Windows.Forms.Label
     Friend WithEvents frmPlotPen As System.Windows.Forms.GroupBox
-    Friend WithEvents chkPlotCenterlineVectors As System.Windows.Forms.CheckBox
     Friend WithEvents cmdPlotPenColor As System.Windows.Forms.Button
     Friend WithEvents lblPlotPenColor As System.Windows.Forms.Label
     Friend WithEvents picPlotPenColor As System.Windows.Forms.PictureBox
@@ -1255,4 +1375,14 @@ Partial Class frmScaleRules
     Friend WithEvents lblBaseLinesScaleFactor As Label
     Friend WithEvents txtBaseLineWidthScaleFactor As NumericUpDown
     Friend WithEvents lblBaseLineWidthScaleFactor As Label
+    Friend WithEvents btnClear As ToolStripButton
+    Friend WithEvents sep2 As ToolStripSeparator
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents txtDesignCrossSectionMarkerArrowScaleFactor As NumericUpDown
+    Friend WithEvents lblDesignCrossSectionTextScaleFactor As Label
+    Friend WithEvents lblDesignCrossSectionMarkerArrowScaleFactor As Label
+    Friend WithEvents txtDesignCrossSectionTextScaleFactor As NumericUpDown
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents lblDesignCrossSectionMarkerTextScaleFactor As Label
+    Friend WithEvents txtDesignCrossSectionMarkerTextScaleFactor As NumericUpDown
 End Class

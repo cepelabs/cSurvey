@@ -130,7 +130,7 @@
     <value>27, 27</value>
   </data>
   <data name="linkedSurveys.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 134</value>
+    <value>288, 134</value>
   </data>
   <data name="linkedSurveys.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -147,29 +147,26 @@
   <data name="&gt;&gt;linkedSurveys.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="chkDesignDrawLinkedSurveys.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="chkDesignDrawLinkedSurveys.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkDesignDrawLinkedSurveys.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 3</value>
   </data>
+  <data name="chkDesignDrawLinkedSurveys.Properties.Caption" xml:space="preserve">
+    <value>Linked surveys:</value>
+  </data>
   <data name="chkDesignDrawLinkedSurveys.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 17</value>
+    <value>98, 20</value>
   </data>
   <data name="chkDesignDrawLinkedSurveys.TabIndex" type="System.Int32, mscorlib">
     <value>157</value>
-  </data>
-  <data name="chkDesignDrawLinkedSurveys.Text" xml:space="preserve">
-    <value>Linked surveys:</value>
   </data>
   <data name="&gt;&gt;chkDesignDrawLinkedSurveys.Name" xml:space="preserve">
     <value>chkDesignDrawLinkedSurveys</value>
   </data>
   <data name="&gt;&gt;chkDesignDrawLinkedSurveys.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignDrawLinkedSurveys.Parent" xml:space="preserve">
     <value>$this</value>
@@ -184,7 +181,7 @@
     <value>NoControl</value>
   </data>
   <data name="cmdDesignLinkedSurveys.Location" type="System.Drawing.Point, System.Drawing">
-    <value>286, 3</value>
+    <value>321, 3</value>
   </data>
   <data name="cmdDesignLinkedSurveys.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
@@ -192,17 +189,20 @@
   <data name="cmdDesignLinkedSurveys.TabIndex" type="System.Int32, mscorlib">
     <value>158</value>
   </data>
+  <data name="cmdDesignLinkedSurveys.ToolTip" xml:space="preserve">
+    <value>Go to linked surveys</value>
+  </data>
   <metadata name="tipMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="cmdDesignLinkedSurveys.ToolTip" xml:space="preserve">
+  <data name="cmdDesignLinkedSurveys.ToolTip1" xml:space="preserve">
     <value>Go to linked surveys</value>
   </data>
   <data name="&gt;&gt;cmdDesignLinkedSurveys.Name" xml:space="preserve">
     <value>cmdDesignLinkedSurveys</value>
   </data>
   <data name="&gt;&gt;cmdDesignLinkedSurveys.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdDesignLinkedSurveys.Parent" xml:space="preserve">
     <value>$this</value>
@@ -217,7 +217,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>313, 164</value>
+    <value>348, 164</value>
   </data>
   <data name="&gt;&gt;tipMain.Name" xml:space="preserve">
     <value>tipMain</value>
@@ -230,17 +230,5 @@
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>cSurveyPC.cDesignPropertyControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="lblPropAffinity.Text" xml:space="preserve">
-    <value>Affinity:</value>
-  </data>
-  <data name="lblPropVisibleIn.Text" xml:space="preserve">
-    <value>Visible in:</value>
-  </data>
-  <data name="cboPropAffinity.Items" xml:space="preserve">
-    <value>Design</value>
-  </data>
-  <data name="cboPropAffinity.Items1" xml:space="preserve">
-    <value>Extra</value>
   </data>
 </root>

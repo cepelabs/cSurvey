@@ -219,6 +219,7 @@ Namespace cSurvey.Helper.Editor
         Private WithEvents oUndo As cUndo
 
         Private oCurrentSegment As cSegment
+        Private oSegments As UIHelpers.cSegmentsBindingList
         Private oCurrentSegments As cISegmentCollection
         Private oCurrentTrigpoint As cTrigPoint
 
@@ -271,6 +272,12 @@ Namespace cSurvey.Helper.Editor
                 End Get
             End Property
         End Class
+
+        Public ReadOnly Property Segments As UIHelpers.cSegmentsBindingList
+            Get
+                Return oSegments
+            End Get
+        End Property
 
         Friend Event OnSegmentSelect(ByVal Sender As Object, ByVal ToolEventArgs As cEditBaseToolsEventArgs)
         Friend Event OnTrigPointSelect(ByVal Sender As Object, ByVal ToolEventArgs As cEditBaseToolsEventArgs)
@@ -374,6 +381,7 @@ Namespace cSurvey.Helper.Editor
 
         Friend Sub New(ByVal Survey As cSurvey)
             oSurvey = Survey
+            oSegments = New UIHelpers.cSegmentsBindingList(oSurvey.Segments)
             oCurrentSegments = oSurvey.Segments
 
             oUndo = New cUndo(oSurvey, Me)
@@ -413,43 +421,44 @@ Namespace cSurvey.Helper.Editor
             Try
                 If Clipboard.ContainsData("csurvey.segments") Then
                     Dim bCleanPastedStation As Boolean = oSurvey.GetGlobalSetting("clipboard.cleanpastedstation", 0)
-                    Dim oFile As Storage.cFile = New Storage.cFile(Storage.cFile.FileFormatEnum.CSX)
-                    Dim oXML As XmlDocument = New XmlDocument
-                    oXML.LoadXml(Clipboard.GetData("csurvey.segments"))
-                    Dim oXMLParent As XmlElement = oXML.Item("parent")
-                    Dim bIsSameSurvey As Boolean = oXMLParent.GetAttribute("_id") = oSurvey.ID
-                    If Not bIsSameSurvey Then
-                        Dim oPastedDataFields As Data.cDataFields = New Data.cDataFields(oSurvey, oXMLParent.Item("datatables").Item("segments"))
-                        Call oSurvey.Properties.DataTables.Segments.MergeWith(oPastedDataFields)
-                    End If
-                    For Each oXMLItem As XmlElement In oXMLParent.Item("segments")
-                        Dim oSegment As cSegment = New cSegment(oSurvey, oFile, oXMLItem)
-                        If Not oSurvey.Segments.Find(oSegment.To, oSegment.From) Is Nothing And bCleanPastedStation Then
-                            oSegment.From = ""
-                            oSegment.To = ""
+                    Using oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, "", cFile.FileOptionsEnum.EmbedResource)
+                        Dim oXML As XmlDocument = New XmlDocument
+                        oXML.LoadXml(Clipboard.GetData("csurvey.segments"))
+                        Dim oXMLParent As XmlElement = oXML.Item("parent")
+                        Dim bIsSameSurvey As Boolean = oXMLParent.GetAttribute("_id") = oSurvey.ID
+                        If Not bIsSameSurvey Then
+                            Dim oPastedDataFields As Data.cDataFields = New Data.cDataFields(oSurvey, oXMLParent.Item("datatables").Item("segments"))
+                            Call oSurvey.Properties.DataTables.Segments.MergeWith(oPastedDataFields)
                         End If
-                        If Not oSurvey.Properties.CaveInfos.Contains(oSegment.Cave) Then
-                            Call oSegment.SetCave("", "")
-                        Else
-                            If Not oSurvey.Properties.CaveInfos(oSegment.Cave).Branches.Contains(oSegment.Branch) Then
-                                Call oSegment.SetCave(oSegment.Cave, "")
+                        For Each oXMLItem As XmlElement In oXMLParent.Item("segments")
+                            Dim oSegment As cSegment = New cSegment(oSurvey, oFile, oXMLItem)
+                            If Not oSurvey.Segments.Find(oSegment.To, oSegment.From) Is Nothing And bCleanPastedStation Then
+                                oSegment.From = ""
+                                oSegment.To = ""
                             End If
-                        End If
-                        If bIsSameSurvey Then
-                            If Not oSurvey.Properties.Sessions.Contains(oSegment.Session) Then
+                            If Not oSurvey.Properties.CaveInfos.Contains(oSegment.Cave) Then
+                                Call oSegment.SetCave("", "")
+                            Else
+                                If Not oSurvey.Properties.CaveInfos(oSegment.Cave).Branches.Contains(oSegment.Branch) Then
+                                    Call oSegment.SetCave(oSegment.Cave, "")
+                                End If
+                            End If
+                            If bIsSameSurvey Then
+                                If Not oSurvey.Properties.Sessions.Contains(oSegment.Session) Then
+                                    Call oSegment.SetSession("")
+                                End If
+                            Else
                                 Call oSegment.SetSession("")
                             End If
-                        Else
-                            Call oSegment.SetSession("")
-                        End If
-                        If InsertAt = -1 Then
-                            Call oSurvey.Segments.Append(oSegment)
-                        Else
-                            Call oSurvey.Segments.Insert(InsertAt, oSegment)
-                            InsertAt += 1
-                        End If
-                        Call oPastedSegments.Add(oSegment)
-                    Next
+                            If InsertAt = -1 Then
+                                Call oSurvey.Segments.Append(oSegment)
+                            Else
+                                Call oSurvey.Segments.Insert(InsertAt, oSegment)
+                                InsertAt += 1
+                            End If
+                            Call oPastedSegments.Add(oSegment)
+                        Next
+                    End Using
                 ElseIf Clipboard.ContainsText Then
                     Dim sLines() As Object = Strings.Split(Clipboard.GetText, vbCrLf)
                     For Each sLine As String In sLines
@@ -542,66 +551,68 @@ Namespace cSurvey.Helper.Editor
         End Function
 
         Public Sub CopySegments(ByVal Segments As cSegmentCollection)
-            Dim oFile As Storage.cFile = New Storage.cFile(Storage.cFile.FileFormatEnum.CSX)
-            Dim oXML As XmlDocument = oFile.Document
-            Dim oXMLParent As XmlElement = oXML.CreateElement("parent")
-            Call oXMLParent.SetAttribute("_id", oSurvey.ID)
+            Using oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, "", cFile.FileOptionsEnum.EmbedResource)
+                Dim oXML As XmlDocument = oFile.Document
+                Dim oXMLParent As XmlElement = oXML.CreateElement("parent")
+                Call oXMLParent.SetAttribute("_id", oSurvey.ID)
 
-            Dim oXMLDataTables As XmlElement = oXML.CreateElement("datatables")
-            Call oSurvey.Properties.DataTables.Segments.SaveTo(oFile, oXML, oXMLDataTables)
-            Call oXMLParent.AppendChild(oXMLDataTables)
+                Dim oXMLDataTables As XmlElement = oXML.CreateElement("datatables")
+                Call oSurvey.Properties.DataTables.Segments.SaveTo(oFile, oXML, oXMLDataTables)
+                Call oXMLParent.AppendChild(oXMLDataTables)
 
-            Dim oXMLSegments As XmlElement = oXML.CreateElement("segments")
-            For Each oSegment As cSegment In Segments
-                Call oSegment.SaveTo(oFile, oXML, oXMLSegments, cSurvey.SaveOptionsEnum.ForClipboard)
-            Next
-            Call oXMLParent.AppendChild(oXMLSegments)
+                Dim oXMLSegments As XmlElement = oXML.CreateElement("segments")
+                For Each oSegment As cSegment In Segments
+                    Call oSegment.SaveTo(oFile, oXML, oXMLSegments, cSurvey.SaveOptionsEnum.ForClipboard)
+                Next
+                Call oXMLParent.AppendChild(oXMLSegments)
 
-            Call oXML.AppendChild(oXMLParent)
+                Call oXML.AppendChild(oXMLParent)
 
-            Dim oDataObject As DataObject = New DataObject
-            Call oDataObject.SetData("csurvey.segments", oXML.InnerXml)
+                Dim oDataObject As DataObject = New DataObject
+                Call oDataObject.SetData("csurvey.segments", oXML.InnerXml)
 
-            Dim sExtFormats As String = oSurvey.GetGlobalSetting("clipboard.segments.extformats", "")
-            Dim bUseLocalFormat As Boolean = oSurvey.GetGlobalSetting("clipboard.uselocalformat", False)
-            If sExtFormats.Contains("csv") Then
-                Dim bBuffer() As Byte = System.Text.Encoding.UTF8.GetBytes(Segments.ToCSV(bUseLocalFormat))
-                Dim oMS As System.IO.MemoryStream = New System.IO.MemoryStream(bBuffer)
-                Call oDataObject.SetData(System.Windows.Forms.DataFormats.CommaSeparatedValue, oMS)
-                'Call oDataObject.SetText(Segments.ToCSV(bUseLocalFormat), TextDataFormat.CommaSeparatedValue)
-            End If
-            If sExtFormats.Contains("txt") Then
-                Call oDataObject.SetText(Segments.ToTSV(bUseLocalFormat), TextDataFormat.Text)
-            End If
-            Call Clipboard.SetDataObject(oDataObject)
+                Dim sExtFormats As String = oSurvey.GetGlobalSetting("clipboard.segments.extformats", "")
+                Dim bUseLocalFormat As Boolean = oSurvey.GetGlobalSetting("clipboard.uselocalformat", False)
+                If sExtFormats.Contains("csv") Then
+                    Dim bBuffer() As Byte = System.Text.Encoding.UTF8.GetBytes(Segments.ToCSV(bUseLocalFormat))
+                    Dim oMS As System.IO.MemoryStream = New System.IO.MemoryStream(bBuffer)
+                    Call oDataObject.SetData(System.Windows.Forms.DataFormats.CommaSeparatedValue, oMS)
+                    'Call oDataObject.SetText(Segments.ToCSV(bUseLocalFormat), TextDataFormat.CommaSeparatedValue)
+                End If
+                If sExtFormats.Contains("txt") Then
+                    Call oDataObject.SetText(Segments.ToTSV(bUseLocalFormat), TextDataFormat.Text)
+                End If
+                Call Clipboard.SetDataObject(oDataObject)
+            End Using
         End Sub
 
         Public Sub CutSegments(ByVal Segments As cSegmentCollection)
-            Dim oFile As Storage.cFile = New Storage.cFile
-            Dim oXML As XmlDocument = oFile.Document
-            Dim oXMLParent As XmlElement = oXML.CreateElement("parent")
-            Call oXMLParent.SetAttribute("_id", oSurvey.ID)
-            For Each oSegment As cSegment In Segments
-                Call oSegment.SaveTo(oFile, oXML, oXMLParent, cSurvey.SaveOptionsEnum.ForClipboard)
-            Next
-            Call oXML.AppendChild(oXMLParent)
+            Using oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, "", cFile.FileOptionsEnum.EmbedResource)
+                Dim oXML As XmlDocument = oFile.Document
+                Dim oXMLParent As XmlElement = oXML.CreateElement("parent")
+                Call oXMLParent.SetAttribute("_id", oSurvey.ID)
+                For Each oSegment As cSegment In Segments
+                    Call oSegment.SaveTo(oFile, oXML, oXMLParent, cSurvey.SaveOptionsEnum.ForClipboard)
+                Next
+                Call oXML.AppendChild(oXMLParent)
 
-            Dim oDataObject As DataObject = New DataObject
-            Call oDataObject.SetData("csurvey.segments", oXML.InnerXml)
+                Dim oDataObject As DataObject = New DataObject
+                Call oDataObject.SetData("csurvey.segments", oXML.InnerXml)
 
-            Dim sExtFormats As String = oSurvey.GetGlobalSetting("clipboard.segments.extformats", "")
-            Dim bUseLocalFormat As Boolean = oSurvey.GetGlobalSetting("clipboard.uselocalformat", False)
-            If sExtFormats.Contains("csv") Then
-                Dim bBuffer() As Byte = System.Text.Encoding.UTF8.GetBytes(Segments.ToCSV(bUseLocalFormat))
-                Dim oMS As System.IO.MemoryStream = New System.IO.MemoryStream(bBuffer)
-                Call oDataObject.SetData(System.Windows.Forms.DataFormats.CommaSeparatedValue, oMS)
-                'Call oDataObject.SetText(Segments.ToCSV(bUseLocalformat), TextDataFormat.CommaSeparatedValue)
-            End If
-            If sExtFormats.Contains("txt") Then
-                Call oDataObject.SetText(Segments.ToTSV(bUseLocalFormat), TextDataFormat.Text)
-            End If
-            Call Clipboard.SetDataObject(oDataObject)
-            Call DeleteSegment()
+                Dim sExtFormats As String = oSurvey.GetGlobalSetting("clipboard.segments.extformats", "")
+                Dim bUseLocalFormat As Boolean = oSurvey.GetGlobalSetting("clipboard.uselocalformat", False)
+                If sExtFormats.Contains("csv") Then
+                    Dim bBuffer() As Byte = System.Text.Encoding.UTF8.GetBytes(Segments.ToCSV(bUseLocalFormat))
+                    Dim oMS As System.IO.MemoryStream = New System.IO.MemoryStream(bBuffer)
+                    Call oDataObject.SetData(System.Windows.Forms.DataFormats.CommaSeparatedValue, oMS)
+                    'Call oDataObject.SetText(Segments.ToCSV(bUseLocalformat), TextDataFormat.CommaSeparatedValue)
+                End If
+                If sExtFormats.Contains("txt") Then
+                    Call oDataObject.SetText(Segments.ToTSV(bUseLocalFormat), TextDataFormat.Text)
+                End If
+                Call Clipboard.SetDataObject(oDataObject)
+                Call DeleteSegment()
+            End Using
         End Sub
     End Class
 
@@ -656,7 +667,9 @@ Namespace cSurvey.Helper.Editor
                 Return bReversed
             End Get
             Set(value As Boolean)
-                bReversed = value
+                If bReversed <> value Then
+                    bReversed = value
+                End If
             End Set
         End Property
 
@@ -665,7 +678,9 @@ Namespace cSurvey.Helper.Editor
                 Return sName
             End Get
             Set(value As String)
-                sName = value
+                If sName <> value Then
+                    sName = value
+                End If
             End Set
         End Property
 
@@ -674,7 +689,9 @@ Namespace cSurvey.Helper.Editor
                 Return sCave
             End Get
             Set(value As String)
-                sCave = value
+                If sCave <> value Then
+                    sCave = value
+                End If
             End Set
         End Property
 
@@ -683,7 +700,9 @@ Namespace cSurvey.Helper.Editor
                 Return sBranch
             End Get
             Set(value As String)
-                sBranch = value
+                If sBranch <> value Then
+                    sBranch = value
+                End If
             End Set
         End Property
 
@@ -692,7 +711,9 @@ Namespace cSurvey.Helper.Editor
                 Return iCategory
             End Get
             Set(value As cIItem.cItemCategoryEnum?)
-                iCategory = value
+                If iCategory <> value Then
+                    iCategory = value
+                End If
             End Set
         End Property
 
@@ -769,7 +790,7 @@ Namespace cSurvey.Helper.Editor
 
         Private WithEvents oCurrentMarkedDesktopPoint As cMarkedDesktopPoint
 
-        Private oFilter As cFilter
+        Private WithEvents oFilter As cFilter
         Private bIsFiltered As Boolean
         Private bFilterWhiteBoard As Boolean
 
@@ -804,6 +825,19 @@ Namespace cSurvey.Helper.Editor
             End Get
         End Property
 
+        'use this property in UI to bind a button for reversing filter
+        Public Property FilterReversed As Boolean
+            Get
+                Return oFilter.Reversed
+            End Get
+            Set(value As Boolean)
+                If value <> oFilter.Reversed Then
+                    oFilter.Reversed = value
+                    RaiseEvent OnFilterApplied(Me, New cFilterEventArgs(True))
+                End If
+            End Set
+        End Property
+
         Public Property FilterWhiteBoard As Boolean
             Get
                 Return bFilterWhiteBoard
@@ -818,11 +852,18 @@ Namespace cSurvey.Helper.Editor
 
         Public Sub FilterApply(Optional Refresh As Boolean = True)
             bIsFiltered = True
+            Threading.Tasks.Parallel.ForEach(Of cItem)(oDesign.GetAllItems, Sub(oItem)
+                                                                                oItem.FilteredInDesign = Filter.Apply(oItem)
+                                                                            End Sub)
             RaiseEvent OnFilterApplied(Me, New cFilterEventArgs(Refresh))
         End Sub
 
         Public Sub FilterRemove(Optional Refresh As Boolean = True)
             bIsFiltered = False
+            Threading.Tasks.Parallel.ForEach(Of cItem)(oDesign.GetAllItems, Sub(oItem)
+                                                                                oItem.FilteredInDesign = False
+                                                                            End Sub)
+
             RaiseEvent OnFilterRemoved(Me, New cFilterEventArgs(Refresh))
         End Sub
 
@@ -1071,7 +1112,7 @@ Namespace cSurvey.Helper.Editor
             If CaveBranch Is Nothing Then
                 Call SelectCave("", "")
             Else
-                Call SelectCave(CaveBranch.Cave, CaveBranch.Name)
+                Call SelectCave(CaveBranch.Cave, CaveBranch.Path)
             End If
         End Sub
 
@@ -1080,6 +1121,14 @@ Namespace cSurvey.Helper.Editor
                 Call SelectCave("", "")
             Else
                 Call SelectCave(Cave.Name, "")
+            End If
+        End Sub
+
+        Public Sub [SelectCave](ByVal Cave As cCaveInfo, Optional ByVal CaveBranch As cCaveInfoBranch = Nothing)
+            If Cave Is Nothing Then
+                Call SelectCave("")
+            Else
+                Call SelectCave(Cave.Name, If(CaveBranch Is Nothing, "", CaveBranch.Path))
             End If
         End Sub
 
@@ -1159,7 +1208,7 @@ Namespace cSurvey.Helper.Editor
                 For Each oXmlSubItem As XmlElement In oXMLItem.Item("items")
                     Try
                         Dim iLayerType As cLayers.LayerTypeEnum = oXmlSubItem.GetAttribute("layer")
-                        Dim oFile As Storage.cFile = New Storage.cFile(Storage.cFile.FileFormatEnum.CSX)
+                        Dim oFile As cFile = New cFile(cFile.FileFormatEnum.CSX)
                         Dim oItem As cItem = Design.Layers(iLayerType).CreateItem(oFile, oXmlSubItem)
                         If PerformEditItem Then Call EditItem(oItem, True)  'simulo un edit cosi da scatenare l'undo e tutto il resto...
                         Call oItems.Add(oItem)
@@ -1175,7 +1224,7 @@ Namespace cSurvey.Helper.Editor
                 End If
             Else
                 Dim iLayerType As cLayers.LayerTypeEnum = oXMLItem.GetAttribute("layer")
-                Dim oFile As Storage.cFile = New Storage.cFile(Storage.cFile.FileFormatEnum.CSX)
+                Dim oFile As cFile = New cFile(cFile.FileFormatEnum.CSX)
                 Dim oItem As cItem = Design.Layers(iLayerType).CreateItem(oFile, oXMLItem)
                 If oItem.Type = cIItem.cItemTypeEnum.CrossSection Then
                     Call oSurvey.CrossSections.Add(oItem)
@@ -1223,7 +1272,7 @@ Namespace cSurvey.Helper.Editor
                             If Not Location.IsEmpty Then Call oPastedItem.MoveTo(Location)
                             Call oPastedItem.SetCave(sCurrentCave, sCurrentBranch, False)
                             Call oPastedItem.SetBindDesignType(iCurrentBindDesignType, oSurvey.CrossSections.GetBindItem(sCurrentCrossSection), True)
-                            Call SelectItem(oPastedItem)
+                            'Call SelectItem(oPastedItem)
                         End If
                     ElseIf Clipboard.ContainsData("image/svg+xml") Then
                         'si tratta di svg...
@@ -1236,6 +1285,19 @@ Namespace cSurvey.Helper.Editor
                         Call EndItem()
                         oPastedItem = oItem
                         Call SelectItem(oPastedItem)
+                    ElseIf Clipboard.ContainsImage Then
+                        Dim oLayer As Layers.cLayerBase = oCurrentLayer.Design.Layers(cLayers.LayerTypeEnum.Base)
+                        Call SelectLayer(oLayer)
+                        Dim oImage As Image = Clipboard.GetImage
+                        If Not oImage Is Nothing Then
+                            Dim oItem As Items.cItemImage = oLayer.CreateImage(sCurrentCave, sCurrentBranch, oImage)
+                            Call oItem.SetBindDesignType(iCurrentBindDesignType, oSurvey.CrossSections.GetBindItem(sCurrentCrossSection), False)
+                            Call oItem.MoveTo(Location)
+                            Call EditItem(oItem, True)  'simulo un edit cosi da scatenare l'undo e tutto il resto...
+                            Call EndItem()
+                            oPastedItem = oItem
+                            Call SelectItem(oPastedItem)
+                        End If
                     ElseIf Clipboard.ContainsText Then
                         Dim oLayer As Layers.cLayerSigns = oCurrentLayer.Design.Layers(cLayers.LayerTypeEnum.Signs)
                         Call SelectLayer(oLayer)
@@ -1311,7 +1373,7 @@ Namespace cSurvey.Helper.Editor
         End Function
 
         Private Function pItemToStorage() As XmlDocument
-            Dim oFile As Storage.cFile = New Storage.cFile(Storage.cFile.FileFormatEnum.CSX, "", Storage.cFile.FileOptionsEnum.EmbedResource)
+            Dim oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, "", cFile.FileOptionsEnum.EmbedResource)
             Dim oXML As XmlDocument = oFile.Document
             Dim oXMLParent As XmlElement = oXML.CreateElement("parent")
             Call oCurrentItem.SaveTo(oFile, oXML, oXMLParent, cSurvey.SaveOptionsEnum.Silent)
@@ -1346,7 +1408,7 @@ Namespace cSurvey.Helper.Editor
         End Sub
 
         Public Sub CutItem()
-            'Dim oFile As Storage.cFile = New Storage.cFile
+            'Dim oFile As cFile = New cFile
             'Dim oXML As XmlDocument = oFile.Document
             'Dim oXMLParent As XmlElement = oXML.CreateElement("parent")
             'Call oCurrentItem.SaveTo(oFile, oXML, oXMLParent)
@@ -1687,5 +1749,217 @@ Namespace cSurvey.Helper.Editor
         Public Function IsInEditing() As Boolean Implements cIEditDesignSelection.IsInEditing
             Return IsInEdit OrElse IsInPointEdit OrElse Started
         End Function
+    End Class
+
+    Public Class cEditToolsBag
+        Public Type As String
+        Public Subtype As String
+
+        Public Name As String
+        Public Caption As String
+        Public Image As String
+        Public ToolTip As String
+        Public Style As Integer
+
+        Public Layer As cLayers.LayerTypeEnum
+        Public Category As cIItem.cItemCategoryEnum
+        Public Cliparts As String
+
+        Public Gallery As String
+
+        Public Filename As String
+
+        Public Text As String
+
+        Public Method As String
+        Public Parameters As String
+
+        Public AvaiableInPlan As Boolean
+        Public AvaiableInProfile As Boolean
+
+        Public Hidden As Boolean
+
+        Public Function GetInvokeParameters(ByVal ParamArray Values As Object()) As Object()
+            Dim oParameters As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
+            Dim oList As List(Of Object) = New List(Of Object)
+            For iValueIndex As Integer = 0 To Values.Count - 1 Step 2
+                Try
+                    Dim sKey As String = Values(iValueIndex)
+                    Dim oValue As Object = Values(iValueIndex + 1)
+                    Call oParameters.Add(sKey, oValue)
+                Catch
+                End Try
+            Next
+            Dim sParameters() As String = Parameters.Split(",")
+            For Each sParameter As String In sParameters
+                sParameter = sParameter.Trim
+                Try
+                    Call oList.Add(oParameters(sParameter))
+                Catch
+                    Call oList.Add(Nothing)
+                End Try
+            Next
+            Return oList.ToArray
+        End Function
+
+        Private Function pGetCaptionNode(Parent As XmlElement) As XmlElement
+            Dim oNodes As XmlNodeList = Parent.SelectNodes("caption[@lang='" & My.Application.CurrentLanguage & "']")
+            If oNodes.Count > 0 Then
+                Return oNodes(0)
+            Else
+                Return Parent
+            End If
+        End Function
+
+        Public Sub New(ByVal Tool As XmlElement)
+            With Tool
+                Type = .GetAttribute("type")
+                Hidden = modXML.GetAttributeValue(Tool, "hidden", False)
+                Select Case Type
+                    Case "separator", "-"
+
+                    Case "texteditor"
+                        Dim oCaptionNode As XmlElement = pGetCaptionNode(Tool)
+                        Caption = oCaptionNode.GetAttribute("caption")
+                        ToolTip = oCaptionNode.GetAttribute("tooltip")
+
+                        Name = .GetAttribute("name")
+                        Image = .GetAttribute("image")
+                        Style = .GetAttribute("style")
+
+                        Layer = .GetAttribute("layer")
+
+                        Method = .GetAttribute("method")
+                        Parameters = .GetAttribute("parameters")
+
+                    Case "gallery"
+                        Subtype = .GetAttribute("subtype")
+
+                        Dim oCaptionNode As XmlElement = pGetCaptionNode(Tool)
+                        Caption = oCaptionNode.GetAttribute("caption")
+                        ToolTip = oCaptionNode.GetAttribute("tooltip")
+
+                        Name = .GetAttribute("name")
+                        Image = .GetAttribute("image")
+                        Style = .GetAttribute("style")
+
+                        Layer = .GetAttribute("layer")
+                        Category = .GetAttribute("category")
+                        Cliparts = .GetAttribute("cliparts")
+
+                        Gallery = .GetAttribute("gallery")
+
+                        Method = .GetAttribute("method")
+                        Parameters = .GetAttribute("parameters")
+                    Case "clipart", "sign"
+                        Dim oCaptionNode As XmlElement = pGetCaptionNode(Tool)
+                        Caption = oCaptionNode.GetAttribute("caption")
+                        ToolTip = oCaptionNode.GetAttribute("tooltip")
+
+                        Name = .GetAttribute("name")
+                        Image = .GetAttribute("image")
+                        Style = .GetAttribute("style")
+
+                        Layer = .GetAttribute("layer")
+
+                        Filename = .GetAttribute("filename")
+
+                        Method = .GetAttribute("method")
+                        Parameters = .GetAttribute("parameters")
+                    Case "text"
+                        Dim oCaptionNode As XmlElement = pGetCaptionNode(Tool)
+                        Caption = oCaptionNode.GetAttribute("caption")
+                        ToolTip = oCaptionNode.GetAttribute("tooltip")
+
+                        Name = .GetAttribute("name")
+                        Image = .GetAttribute("image")
+                        Style = .GetAttribute("style")
+
+                        Layer = .GetAttribute("layer")
+
+                        Text = .GetAttribute("text")
+
+                        Method = .GetAttribute("method")
+                        Parameters = .GetAttribute("parameters")
+                    Case Else
+                        Dim oCaptionNode As XmlElement = pGetCaptionNode(Tool)
+                        Caption = oCaptionNode.GetAttribute("caption")
+                        ToolTip = oCaptionNode.GetAttribute("tooltip")
+
+                        Name = .GetAttribute("name")
+                        Image = .GetAttribute("image")
+                        Style = .GetAttribute("style")
+
+                        Layer = .GetAttribute("layer")
+
+                        Method = .GetAttribute("method")
+                        Parameters = .GetAttribute("parameters")
+                End Select
+
+                Dim sDesign As String = modXML.GetAttributeValue(Tool, "design", "")
+                If sDesign = "" Then
+                    AvaiableInPlan = True
+                    AvaiableInProfile = True
+                Else
+                    AvaiableInPlan = sDesign.Contains("plan")
+                    AvaiableInProfile = sDesign.Contains("profile")
+                End If
+            End With
+        End Sub
+    End Class
+
+    Public Class cConvertToToolsBag
+        Public Type As String
+        Public Name As String
+        Public Caption As String
+        Public Image As String
+        Public ToolTip As String
+        Public Layer As cLayers.LayerTypeEnum
+
+        Public Method As String
+        Public Parameters As String
+
+        Public Function GetInvokeParameters(ByVal ParamArray Values As Object()) As Object()
+            Dim oParameters As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
+            Dim oList As List(Of Object) = New List(Of Object)
+            For iValueIndex As Integer = 0 To Values.Count Step 2
+                Try
+                    Dim sKey As String = Values(iValueIndex)
+                    Dim oValue As Object = Values(iValueIndex + 1)
+                    Call oParameters.Add(sKey, oValue)
+                Catch
+                End Try
+            Next
+            Dim sParameters() As String = Parameters.Split(",")
+            For Each sParameter As String In sParameters
+                sParameter = sParameter.Trim
+                Try
+                    Call oList.Add(oParameters(sParameter))
+                Catch
+                    Call oList.Add(Nothing)
+                End Try
+            Next
+            Return oList.ToArray
+        End Function
+
+        Public Sub New(ByVal Tool As XmlElement)
+            With Tool
+                Type = .GetAttribute("type")
+                Select Case Type
+                    Case "separator", "-"
+                        'lasciato per compatilità...o uso futuro
+                    Case "clipartgallery", "signgallery", "gallery"
+                        'lasciato per compatilità...NO USO FUTURO
+                    Case Else
+                        Name = .GetAttribute("name")
+                        Caption = .GetAttribute("caption")
+                        Image = .GetAttribute("image")
+                        ToolTip = .GetAttribute("tooltip")
+                        Layer = .GetAttribute("layer")
+                        Method = .GetAttribute("method")
+                        Parameters = .GetAttribute("parameters")
+                End Select
+            End With
+        End Sub
     End Class
 End Namespace

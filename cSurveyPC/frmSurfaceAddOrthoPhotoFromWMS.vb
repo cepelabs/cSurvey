@@ -1,4 +1,4 @@
-﻿Public Class frmSurfaceAddOrthoPhotoFromWMS
+﻿friend Class frmSurfaceAddOrthoPhotoFromWMS
 
     Private Sub cmdOk_Click(sender As Object, e As EventArgs) Handles cmdOk.Click
         If txtName.Text <> "" Then

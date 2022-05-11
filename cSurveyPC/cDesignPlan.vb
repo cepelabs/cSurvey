@@ -42,7 +42,7 @@ Namespace cSurvey.Design
             End If
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal File As Storage.cFile, ByVal Design As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal Design As XmlElement)
             Call MyBase.New(Survey, File, Design)
             oSurvey = Survey
             iType = cIDesign.cDesignTypeEnum.Plan
@@ -53,7 +53,7 @@ Namespace cSurvey.Design
             End If
         End Sub
 
-        Friend Overrides Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+        Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oXmlDesign As XmlElement = Document.CreateElement("plan")
             Call MyBase.Layers.SaveTo(File, Document, oXmlDesign, Options)
             Call MyBase.PointsJoins.SaveTo(File, Document, oXmlDesign)
@@ -205,61 +205,67 @@ Namespace cSurvey.Design
         End Sub
 
         Friend Sub WarpItemsEx(ByVal Segment As cISegment, PlanWarpingFactor As cPlanWarpingFactor, Force As Boolean)
-            If Segment.Data.PlanWarpingFactor.IsChanged OrElse Force Then
-                Dim oDesignPointArray As List(Of cPoint) = New List(Of cPoint)
-                Dim oPointArray As List(Of PointF) = New List(Of PointF)
-                For Each oLayer As cLayer In MyBase.Layers
-                    For Each oitem As cItem In oLayer.Items
-                        If oitem.CanBeWarped AndAlso oitem.DesignAffinity = cItem.DesignAffinityEnum.Design Then
-                            For Each oPoint As cPoint In oitem.Points
-                                If oPoint.BindedSegment Is Segment Then
-                                    Call oDesignPointArray.Add(oPoint)
-                                    Call oPointArray.Add(New PointF(oPoint.X, oPoint.Y))
-                                End If
-                            Next
-                        End If
-                    Next
-                Next
-
-                If oDesignPointArray.Count > 0 Then
-                    Dim oPoints() As PointF = oPointArray.ToArray
-
-                    Using oMatrix As Matrix = New Matrix
-                        Call oMatrix.Translate(-PlanWarpingFactor.OldLocation.X, -PlanWarpingFactor.OldLocation.Y, MatrixOrder.Append)
-                        If PlanWarpingFactor.OldAngle <> 0 Then
-                            Call oMatrix.Rotate(-PlanWarpingFactor.OldAngle, MatrixOrder.Append)
-                        End If
-                        If PlanWarpingFactor.DeltaSize <> 1 Then
-                            Call oMatrix.Scale(1, PlanWarpingFactor.DeltaSize, MatrixOrder.Append)
-                        End If
-                        If PlanWarpingFactor.NewAngle <> 0 Then
-                            Call oMatrix.Rotate(PlanWarpingFactor.NewAngle, MatrixOrder.Append)
-                        End If
-                        Call oMatrix.Translate(PlanWarpingFactor.NewLocation.X, PlanWarpingFactor.NewLocation.Y, MatrixOrder.Append)
-                        Call oMatrix.TransformPoints(oPoints)
-                    End Using
-
-                    Dim iDesignPointIndex As Integer = 0
-                    Dim oJoins As List(Of cPoint) = New List(Of cPoint)
-                    For Each oDesignpoint As cPoint In oDesignPointArray
-                        If oJoins.Contains(oDesignpoint) Then
-                            Debug.Print("skipped joined point")
-                        Else
-                            Call oDesignpoint.MoveTo(oPoints(iDesignPointIndex).X, oPoints(iDesignPointIndex).Y)
-                            'Call oDesignpoint.MoveToFromJoin(oPoints(iDesignPointIndex))
-                            'If oDesignpoint.IsJoined Then
-                            '    Call oJoins.Add(oDesignpoint)
-                            '    For Each oJoinedPoint As cPoint In oDesignpoint.PointsJoin.ToArray(oDesignpoint)
-                            '        Call oJoinedPoint.MoveToFromJoin(oPoints(iDesignPointIndex))
-                            '        Call oJoins.Add(oJoinedPoint)
-                            '    Next
-                            'End If
-                            If oDesignpoint.IsJoined Then
-                                Call oJoins.AddRange(oDesignpoint.PointsJoin.ToArray)
+            If Not PlanWarpingFactor.IsCritical Then
+                If PlanWarpingFactor.IsChanged OrElse Force Then
+                    Dim oDesignPointArray As List(Of cPoint) = New List(Of cPoint)
+                    Dim oPointArray As List(Of PointF) = New List(Of PointF)
+                    For Each oLayer As cLayer In MyBase.Layers
+                        For Each oitem As cItem In oLayer.Items
+                            If oitem.CanBeWarped AndAlso oitem.DesignAffinity = cItem.DesignAffinityEnum.Design Then
+                                For Each oPoint As cPoint In oitem.Points
+                                    If oPoint.BindedSegment Is Segment Then
+                                        Call oDesignPointArray.Add(oPoint)
+                                        Call oPointArray.Add(New PointF(oPoint.X, oPoint.Y))
+                                    End If
+                                Next
                             End If
-                        End If
-                        iDesignPointIndex += 1
+                        Next
                     Next
+
+                    If oDesignPointArray.Count > 0 Then
+                        Dim oPoints() As PointF = oPointArray.ToArray
+
+                        Using oMatrix As Matrix = New Matrix
+                            If Not -PlanWarpingFactor.OldLocation.IsEmpty Then
+                                Call oMatrix.Translate(-PlanWarpingFactor.OldLocation.X, -PlanWarpingFactor.OldLocation.Y, MatrixOrder.Append)
+                            End If
+                            If PlanWarpingFactor.OldAngle <> 0 Then
+                                Call oMatrix.Rotate(-PlanWarpingFactor.OldAngle, MatrixOrder.Append)
+                            End If
+                            If PlanWarpingFactor.DeltaSize <> 1 Then
+                                Call oMatrix.Scale(1, PlanWarpingFactor.DeltaSize, MatrixOrder.Append)
+                            End If
+                            If PlanWarpingFactor.NewAngle <> 0 Then
+                                Call oMatrix.Rotate(PlanWarpingFactor.NewAngle, MatrixOrder.Append)
+                            End If
+                            If Not PlanWarpingFactor.NewLocation.IsEmpty Then
+                                Call oMatrix.Translate(PlanWarpingFactor.NewLocation.X, PlanWarpingFactor.NewLocation.Y, MatrixOrder.Append)
+                            End If
+                            Call oMatrix.TransformPoints(oPoints)
+                        End Using
+
+                        Dim iDesignPointIndex As Integer = 0
+                        Dim oJoins As List(Of cPoint) = New List(Of cPoint)
+                        For Each oDesignpoint As cPoint In oDesignPointArray
+                            If oJoins.Contains(oDesignpoint) Then
+                                Debug.Print("skipped joined point")
+                            Else
+                                Call oDesignpoint.MoveTo(oPoints(iDesignPointIndex).X, oPoints(iDesignPointIndex).Y)
+                                'Call oDesignpoint.MoveToFromJoin(oPoints(iDesignPointIndex))
+                                'If oDesignpoint.IsJoined Then
+                                '    Call oJoins.Add(oDesignpoint)
+                                '    For Each oJoinedPoint As cPoint In oDesignpoint.PointsJoin.ToArray(oDesignpoint)
+                                '        Call oJoinedPoint.MoveToFromJoin(oPoints(iDesignPointIndex))
+                                '        Call oJoins.Add(oJoinedPoint)
+                                '    Next
+                                'End If
+                                If oDesignpoint.IsJoined Then
+                                    Call oJoins.AddRange(oDesignpoint.PointsJoin.ToArray)
+                                End If
+                            End If
+                            iDesignPointIndex += 1
+                        Next
+                    End If
                 End If
             End If
         End Sub
@@ -268,15 +274,15 @@ Namespace cSurvey.Design
             Call WarpItemsEx(Segment, Segment.Data.PlanWarpingFactor, False)
         End Sub
 
-        Friend Overrides Sub AppendSvgItem(ByVal SVG As XmlDocument, ByVal Parent As XmlElement, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, ByVal ViewArea As RectangleF, ByVal Zoom As Single, ByVal Translate As PointF)
+        Private Sub pAppendSvgItem(ByVal SVG As XmlDocument, ByVal Parent As XmlElement, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum)
             Dim oBound As RectangleF = GetBounds(PaintOptions)
 
-            Dim sExportScaleFactor As Single = modNumbers.StringToSingle(oSurvey.GetGlobalSetting("svg.exportscale", 1))
-            Dim sScale As Single = Zoom * sExportScaleFactor
-            Call Parent.SetAttribute("transform", "translate(" & modNumbers.NumberToString(Translate.X) & "," & modNumbers.NumberToString(Translate.Y) & ") scale(" & modNumbers.NumberToString(sScale) & ")")
+            'Dim sExportScaleFactor As Single = modNumbers.StringToSingle(oSurvey.GetGlobalSetting("svg.exportscale", 1))
+            'Dim sScale As Single = Zoom * sExportScaleFactor
+            'Call Parent.SetAttribute("transform", "translate(" & modNumbers.NumberToString(Translate.X) & "," & modNumbers.NumberToString(Translate.Y) & ") scale(" & modNumbers.NumberToString(sScale) & ")")
 
             If PaintOptions.DrawDesign Then
-                If PaintOptions.DesignStyle = cOptions.DesignStyleEnum.Design Or PaintOptions.DesignStyle = cOptions.DesignStyleEnum.Combined Then
+                If PaintOptions.DesignStyle = cOptions.DesignStyleEnum.Design OrElse PaintOptions.DesignStyle = cOptions.DesignStyleEnum.Combined Then
                     If (Options And cItem.SVGOptionsEnum.Clipping) = cItem.SVGOptionsEnum.Clipping Then
                         Using oMaskPaths As cMaskPaths = New cMaskPaths
                             Dim oBorderLayer As Layers.cLayerBorders = MyBase.Layers.Item(cLayers.LayerTypeEnum.Borders)
@@ -322,13 +328,6 @@ Namespace cSurvey.Design
                             iBorderCount = oMaskPaths.Count
                             For Each sKey As String In oMaskPaths.Keys
                                 Call oSurvey.RaiseOnProgressEvent("svg", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("design.svgexport.progress2"), iBorderIndex / iBorderCount)
-
-                                'Dim oSVGClipPath As XmlElement = modSVG.CreateClipPath(SVG, "clip_" & sKey)
-                                'Dim oMaskPaths As List(Of cMaskPath) = oClippingPaths(sKey)
-                                'For Each oMaskPath As cMaskPath In oMaskPaths
-                                '    Dim oSVGItem As XmlElement = modSVG.AppendItem(SVG, oSVGClipPath, PaintOptions, oMaskPath.Path)
-                                'Next
-                                'Call modSVG.AppendItem(SVG, Parent, oSVGClipPath)
 
                                 Dim oSVGMaskPath As XmlElement = modSVG.CreateMaskPath(SVG, "mask_" & sKey)
                                 Dim oDirectMaskPaths As List(Of cMaskPath) = oMaskPaths(sKey)
@@ -429,38 +428,49 @@ Namespace cSurvey.Design
                 Next
                 Call modSVG.AppendItem(SVG, Parent, oSVGArea)
             End If
-
-            'export centerline...
-            If PaintOptions.DrawPlot Or PaintOptions.DrawSpecialPoints Then
-                Call modSVG.AppendItem(SVG, Parent, oPlot.ToSvgItem(SVG, PaintOptions, Options))
-            End If
         End Sub
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, ByVal ViewArea As RectangleF, ByVal Zoom As Single, ByVal Translate As PointF) As XmlElement
-            Dim oSVGGroup As XmlElement = modSVG.CreateGroup(SVG, "plan")
-            Call AppendSvgItem(SVG, oSVGGroup, PaintOptions, Options, ViewArea, Zoom, Translate)
+        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+            Dim oSVGGroup As XmlElement = modSVG.CreateLayer(SVG, "design", "design")
+            Call pAppendSvgItem(SVG, oSVGGroup, PaintOptions, Options)
             Return oSVGGroup
         End Function
 
-        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, ByVal ViewArea As RectangleF, ByVal Zoom As Single, ByVal Translate As PointF) As XmlDocument
+        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, Size As SizeF, PageBox As RectangleF, Unit As SizeUnit, ByVal ViewBox As RectangleF) As XmlDocument
             Call oSurvey.RaiseOnProgressEvent("svg", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, modMain.GetLocalizedString("design.svgexport.progressbegin1"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageExport Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage)
 
-            Dim oSVG As XmlDocument = modSVG.CreateSVG(oSurvey.Name, ViewArea.Width, ViewArea.Height, SizeUnit.Pixel, SVGCreateFlagsEnum.AddInkScapeSettings)
-            Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options, ViewArea, Zoom, Translate))
+            Dim oBounds As RectangleF = New RectangleF(0, 0, Size.Width, Size.Height)
 
-            If PaintOptions.DrawPlot Or PaintOptions.DrawSpecialPoints Then
-                Call modSVG.AppendItem(oSVG, Nothing, oPlot.ToSvgItem(oSVG, PaintOptions, Options))
+            Dim bLegacyObjects As Boolean = PaintOptions.DrawScale OrElse PaintOptions.DrawCompass OrElse PaintOptions.DrawBox
+
+            Dim oSVG As XmlDocument
+            Dim oDesign As XmlElement
+            If bLegacyObjects Then
+                oSVG = modSVG.CreateSVG(oSurvey.Name, Size, Unit, oBounds, SVGCreateFlagsEnum.AddInkScapeSettings)
+                oDesign = modSVG.CreateSubSVG(oSVG, "plan", PageBox, SizeUnit.none, ViewBox)
+            Else
+                oSVG = modSVG.CreateSVG(oSurvey.Name, Size, Unit, ViewBox, SVGCreateFlagsEnum.AddInkScapeSettings)
+                oDesign = modSVG.CreateLayer(oSVG, "plan", "plan")
             End If
-            'questi oggetti sono scalati in funzione dell'area di rendering...
-            'devo adattarli all'area di esportazione
-            If PaintOptions.DrawScale Then
-                Call modSVG.AppendItem(oSVG, Nothing, oPlot.Scale.ToSvgItem(oSVG, PaintOptions, Options))
+            'Call modSVG.AppendRectangle(oSVG, oDesign, ViewBox, Nothing, PaintOptions.DrawingObjects.TranslationPen)
+            Call modSVG.AppendItem(oSVG, oDesign, ToSvgItem(oSVG, PaintOptions, Options))
+            If PaintOptions.DrawPlot OrElse PaintOptions.DrawSpecialPoints Then
+                Call modSVG.AppendItem(oSVG, oDesign, oPlot.ToSvgItem(oSVG, PaintOptions, Options))
             End If
-            If PaintOptions.DrawCompass Then
-                Call modSVG.AppendItem(oSVG, Nothing, oPlot.Compass.ToSvgItem(oSVG, PaintOptions, Options))
-            End If
-            If PaintOptions.DrawBox Then
-                Call modSVG.AppendItem(oSVG, Nothing, oPlot.InfoBox.ToSvgItem(oSVG, PaintOptions, Options))
+            Call modSVG.AppendItem(oSVG, Nothing, oDesign)
+
+            If bLegacyObjects Then
+                Dim oGadget As XmlElement = modSVG.CreateSubSVG(oSVG, "legacyobjects", oBounds, SizeUnit.none, oBounds)
+                If PaintOptions.DrawScale Then
+                    Call modSVG.AppendItem(oSVG, oGadget, oPlot.Scale.ToSvgItem(oSVG, PaintOptions, Options))
+                End If
+                If PaintOptions.DrawCompass Then
+                    Call modSVG.AppendItem(oSVG, oGadget, oPlot.Compass.ToSvgItem(oSVG, PaintOptions, Options))
+                End If
+                If PaintOptions.DrawBox Then
+                    Call modSVG.AppendItem(oSVG, oGadget, oPlot.InfoBox.ToSvgItem(oSVG, PaintOptions, Options))
+                End If
+                Call modSVG.AppendItem(oSVG, Nothing, oGadget)
             End If
 
             Call oSurvey.RaiseOnProgressEvent("svg", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, modMain.GetLocalizedString("design.svgexport.progressend1"), 0)

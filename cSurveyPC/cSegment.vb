@@ -73,7 +73,7 @@ Namespace cSurvey
 
         Private iSurfaceProfileShow As cISurfaceProfile.SurfaceProfileShowEnum
 
-        Private oAttachments As cAttachmentLinks
+        Private oAttachments As cAttachmentsLinks
 
         Friend Event OnSplayChange(ByVal Sender As cSegment)
         Friend Event OnChange(ByVal Sender As cSegment)
@@ -197,7 +197,7 @@ Namespace cSurvey
             End If
         End Function
 
-        Public ReadOnly Property Attachments As cAttachmentLinks
+        Public ReadOnly Property Attachments As cAttachmentsLinks
             Get
                 Return oAttachments
             End Get
@@ -409,7 +409,7 @@ Namespace cSurvey
 
             oPlotData = New Calculate.Plot.cData(oSurvey)
 
-            oAttachments = New cAttachmentLinks(oSurvey, Me)
+            oAttachments = New cAttachmentsLinks(oSurvey, Me)
 
             oDataProperties = New Data.cDataProperties(oSurvey, oSurvey.Properties.DataTables.Segments)
 
@@ -496,7 +496,7 @@ Namespace cSurvey
 
             oPlotData = New Calculate.Plot.cData(oSurvey)
 
-            oAttachments = New cAttachmentLinks(oSurvey, Segment.oAttachments)
+            oAttachments = New cAttachmentsLinks(oSurvey, Me, Segment.oAttachments)
 
             oDataProperties = New Data.cDataProperties(oSurvey, oSurvey.Properties.DataTables.Segments)
             Call oDataProperties.CopyFrom(Segment.oDataProperties)
@@ -606,7 +606,7 @@ Namespace cSurvey
             End Set
         End Property
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal File As Storage.cFile, ByVal Segment As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal Segment As XmlElement)
             oSurvey = Survey
 
             sID = modXML.GetAttributeValue(Segment, "id", "")
@@ -679,9 +679,9 @@ Namespace cSurvey
             End If
 
             If modXML.ChildElementExist(Segment, "attachments") Then
-                oAttachments = New cAttachmentLinks(oSurvey, Me, Segment.Item("attachments"))
+                oAttachments = New cAttachmentsLinks(oSurvey, Me, Segment.Item("attachments"))
             Else
-                oAttachments = New cAttachmentLinks(oSurvey, Me)
+                oAttachments = New cAttachmentsLinks(oSurvey, Me)
             End If
 
             If modXML.ChildElementExist(Segment, "datarow") Then
@@ -703,7 +703,7 @@ Namespace cSurvey
             bChanged = False
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oXmlSegment As XmlElement = Document.CreateElement("segment")
 
             Call oXmlSegment.SetAttribute("id", sID)
@@ -774,6 +774,11 @@ Namespace cSurvey
             End Get
         End Property
 
+        Friend Sub RenameCave(ByVal Cave As String)
+            oCurrentData.Cave = Cave
+            oTempData.Cave = Cave
+        End Sub
+
         Friend Sub RenameCave(ByVal Cave As String, ByVal Branch As String)
             oCurrentData.Cave = Cave
             oTempData.Cave = Cave
@@ -821,6 +826,14 @@ Namespace cSurvey
             Next
         End Sub
 
+        Public Overridable Sub SetCave(ByVal Cave As cCaveInfo, Optional ByVal Branch As cCaveInfoBranch = Nothing)
+            If Cave Is Nothing Then
+                Call SetCave("")
+            Else
+                Call SetCave(Cave.Name, If(Branch Is Nothing, "", Branch.Path))
+            End If
+        End Sub
+
         Public Overridable Sub SetCave(ByVal Cave As String, Optional ByVal Branch As String = "")
             If ((Cave <> oTempData.Cave) OrElse (Branch <> oTempData.Branch)) AndAlso Not oTempData.Calibration Then
                 oTempData.Cave = Cave
@@ -836,6 +849,10 @@ Namespace cSurvey
             Else
                 Return oCaveInfo.GetLocked
             End If
+        End Function
+
+        Public Function GetSession() As cSession
+            Return oSurvey.Properties.Sessions.getsession(Me)
         End Function
 
         Public Function GetCaveInfo() As cICaveInfoBranches
@@ -926,7 +943,7 @@ Namespace cSurvey
         End Sub
 
         Public Function IsEquate() As Boolean Implements cISegment.IsEquate
-            Return oCurrentData.Distance = 0 AndAlso oCurrentData.Bearing = 0 AndAlso oCurrentData.Inclination = 0
+            Return oCurrentData.Distance = 0 AndAlso oCurrentData.Bearing = 0 AndAlso oCurrentData.Inclination = 0 AndAlso not oCurrentData.Virtual 
         End Function
 
         Public Function IsSelfDefined() As Boolean Implements cISegment.IsSelfDefined

@@ -1,4 +1,4 @@
-﻿Public Class frmNotifyUpdate
+﻿friend Class frmNotifyUpdate
     Private bNightBuild As Boolean
 
     Private Sub cmdOk_Click(sender As Object, e As EventArgs) Handles cmdOk.Click

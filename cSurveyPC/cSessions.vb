@@ -7,6 +7,10 @@ Namespace cSurvey
         Private oSurvey As cSurvey
         Private oSessions As SortedDictionary(Of String, cSession)
 
+        Public Function GetSession(Session As cISession) As cSession
+            Return oSessions(Session)
+        End Function
+
         Public Function GetSurveyYears() As List(Of Integer)
             Dim oYears As List(Of Integer) = New List(Of Integer)
             For Each oSession As cSession In oSessions.Values
@@ -165,7 +169,43 @@ Namespace cSurvey
             Next
         End Sub
 
-        Friend Function GetEmptySession(Optional ByVal [Date] As Date = Nothing, Optional ByVal Description As String = "") As cSession
+        Private oEmptySession As cSession
+
+        Public ReadOnly Property EmptySession As cSession
+            Get
+                If oEmptySession Is Nothing Then
+                    Dim oSession As cSession = New cSession(oSurvey, Nothing, "")
+                    oSession.Team = oSurvey.Properties.Team
+                    oSession.Club = oSurvey.Properties.Club
+                    oSession.Designer = oSurvey.Properties.Designer
+
+                    oSession.DataFormat = oSurvey.Properties.DataFormat
+                    oSession.BearingType = oSurvey.Properties.BearingType
+                    oSession.BearingDirection = oSurvey.Properties.BearingDirection
+                    oSession.DistanceType = oSurvey.Properties.DistanceType
+                    oSession.InclinationType = oSurvey.Properties.InclinationType
+                    oSession.InclinationDirection = oSurvey.Properties.InclinationDirection
+
+                    oSession.Grade = oSurvey.Properties.Grade
+
+                    oSession.NordType = oSurvey.Properties.NordType
+                    oSession.DeclinationEnabled = oSurvey.Properties.DeclinationEnabled
+                    oSession.Declination = oSurvey.Properties.Declination
+
+                    oSession.SideMeasuresType = oSurvey.Properties.SideMeasuresType
+                    oSession.SideMeasuresReferTo = oSurvey.Properties.SideMeasuresReferTo
+
+                    oEmptySession = oSession
+                End If
+                Return oEmptySession
+            End Get
+        End Property
+
+        Friend Function GetEmptySession() As cSession
+            Return EmptySession
+        End Function
+
+        Friend Function GetEmptySession(ByVal [Date] As Date, ByVal Description As String) As cSession
             Dim oSession As cSession = New cSession(oSurvey, [Date], Description)
             oSession.Team = oSurvey.Properties.Team
             oSession.Club = oSurvey.Properties.Club
@@ -198,7 +238,7 @@ Namespace cSurvey
             Next
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlSessions As XmlElement = document.CreateElement("sessions")
             For Each oSession As cSession In oSessions.Values
                 Call oSession.SaveTo(File, document, oXmlSessions)

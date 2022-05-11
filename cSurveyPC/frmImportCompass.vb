@@ -1,4 +1,4 @@
-﻿Public Class frmImportCompass
+﻿friend Class frmImportCompass
 
     Private Sub pSettingsLoad()
         Try

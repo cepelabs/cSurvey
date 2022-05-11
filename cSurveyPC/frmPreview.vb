@@ -6,8 +6,9 @@ Imports System.Drawing.Drawing2D
 
 Imports System.Xml
 Imports cSurveyPC
+Imports DevExpress.XtraEditors.Controls
 
-Public Class frmPreview
+Friend Class frmPreview
     Private WithEvents frmPC As frmParametersCompass
     Private WithEvents frmPIB As frmParametersInfoBox
     Private WithEvents frmPS As frmParametersScale
@@ -52,6 +53,8 @@ Public Class frmPreview
     Private oCurrentProfile As cSurvey.cIProfile
     Private oCurrentOptions As cSurvey.Design.cOptions
 
+    Private bDisableImageSizeEvent As Boolean
+
     Public Sub New(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Mode As PreviewModeEnum, ByVal View As ViewModeEnum)
         ' This call is required by the Windows Form Designer.
         InitializeComponent()
@@ -61,7 +64,7 @@ Public Class frmPreview
 
         bEventDisabled = True
         oSurvey = Survey
-        oSelection = Helper.Editor.cEmptyEditDesignSelection.Empty
+        oSelection = cSurveyPC.cSurvey.Helper.Editor.cEmptyEditDesignSelection.Empty
         iMode = Mode
 
         bManualRefresh = (oSurvey.SharedSettings.GetValue("preview.manualrefresh", "0") = "1") Or (My.Computer.Keyboard.AltKeyDown Or My.Computer.Keyboard.CtrlKeyDown)
@@ -74,7 +77,7 @@ Public Class frmPreview
         Call pFillPrintersList()
 
         pnlPrintOptions.Location = New Point(1, 1)
-        pnlExportOptions.Location = New Point(1, 1)
+        pnlExportOptionsOther.Location = New Point(1, 1)
         Select Case iMode
             Case PreviewModeEnum.Viewer
                 btnAdd.Visible = False
@@ -201,6 +204,20 @@ Public Class frmPreview
                     Call lv.Items.Add(oItem)
                 Next
 
+                Dim oCustomItem As ImageComboBoxItem = New ImageComboBoxItem({Nothing, Nothing}, 0)
+                oCustomItem.Description = "Custom" 'TODO:localize
+                cboSize.Properties.Items.Add(oCustomItem)
+
+                Dim oXml As XmlDocument = New XmlDocument
+                Call oXml.Load(IO.Path.Combine(modMain.GetApplicationPath, "papersizes.xml"))
+                For Each oXMLSize As XmlElement In oXml.DocumentElement.ChildNodes
+                    Dim sName As String = oXMLSize.GetAttribute("name")
+                    Dim oItemSize As SizeF = New SizeF(modNumbers.StringToDecimal(oXMLSize.GetAttribute("w")), modNumbers.StringToDecimal(oXMLSize.GetAttribute("h")))
+                    Dim oItem As ImageComboBoxItem = New ImageComboBoxItem({oItemSize, oXMLSize.GetAttribute("u")}, 0)
+                    oItem.Description = sName
+                    cboSize.Properties.Items.Add(oItem)
+                Next
+
                 'per ora seleziono pianta o sezione standard a seconda di cosa richiesto in apertura...poi selezionerò, se esiste, l'ultimo selezionato in precedenza
                 lv.Items(View).Selected = True
             Case PreviewModeEnum.Preview
@@ -282,20 +299,67 @@ Public Class frmPreview
 
     Private Sub pPageFormatRefresh(PrinterSettings As PrinterSettings)
         Dim sCurrentPageFormat As String = PrinterSettings.DefaultPageSettings.PaperSize.PaperName
-        Call cboPageFormat.Items.Clear()
+
+        Call cboPageFormat.Properties.Items.Clear()
+        'Call cboPageFormat.Items.Clear()
         Dim oPageSizes As List(Of String) = New List(Of String)
         For Each oPaperSize As PaperSize In PrinterSettings.PaperSizes
             Call oPageSizes.Add(oPaperSize.PaperName)
-            Call cboPageFormat.Items.Add(oPaperSize.PaperName)
+            'Call cboPageFormat.Items.Add(oPaperSize.PaperName)
+
+            Dim sName As String = oPaperSize.PaperName
+            Dim oItem As ImageComboBoxItem = New ImageComboBoxItem(sName, sName, 0)
+            cboPageFormat.Properties.Items.Add(oItem)
         Next
         If sCurrentPageFormat <> "" AndAlso oPageSizes.Contains(sCurrentPageFormat) Then
-            cboPageFormat.Text = sCurrentPageFormat
+            'cboPageFormat.Text = sCurrentPageFormat
+            cboPageFormat.EditValue = sCurrentPageFormat
         Else
             Dim oPrinterSettings As PrinterSettings = New PrinterSettings
             oPrinterSettings.PrinterName = PrinterSettings.PrinterName
-            cboPageFormat.Text = oPrinterSettings.DefaultPageSettings.PaperSize.PaperName
+            'cboPageFormat.Text = oPrinterSettings.DefaultPageSettings.PaperSize.PaperName
+            cboPageFormat.EditValue = oPrinterSettings.DefaultPageSettings.PaperSize.PaperName
         End If
     End Sub
+
+    Private Function pFromImageUnit(Unit As String) As Integer
+        Select Case Unit
+            Case "cm"
+                Return 1
+            Case "mm"
+                Return 2
+            Case "in"
+                Return 3
+            Case Else
+                Return 0
+        End Select
+    End Function
+
+    Private Function pToSizeUnit(Index As Integer) As SizeUnit
+        Select Case Index
+            Case 1
+                Return SizeUnit.cm
+            Case 2
+                Return SizeUnit.mm
+            Case 3
+                Return SizeUnit.inch
+            Case Else
+                Return SizeUnit.pixel
+        End Select
+    End Function
+
+    Private Function pToImageUnit(Index As Integer) As String
+        Select Case Index
+            Case 1
+                Return "cm"
+            Case 2
+                Return "mm"
+            Case 3
+                Return "in"
+            Case Else
+                Return "px"
+        End Select
+    End Function
 
     Public Sub pOptionsSave()
         If InvokeRequired Then
@@ -360,8 +424,10 @@ Public Class frmPreview
                 With oOptions
                     .FileFormat = cboFileFormat.Text
 
-                    .ImageWidth = txtImageWidth.Text
-                    .ImageHeight = txtImageHeight.Text
+                    .ImageWidth = txtImageWidth.Value
+                    .ImageHeight = txtImageHeight.Value
+                    .ImageUnit = pToImageUnit(cboImageUM.SelectedIndex)
+                    .DPI = txtImageDPI.Value
 
                     .TransparentBackground = chkBackgroundTransparent.Checked
 
@@ -473,6 +539,32 @@ Public Class frmPreview
         End If
     End Function
 
+    Private Sub pImageSelectPage()
+        bDisableImageSizeEvent = True
+        Dim oSize As SizeF = New Size(txtImageWidth.Value, txtImageHeight.Value)
+        Dim sUM As String = cboImageUM.Text.ToLower
+        For Each oItem As ImageComboBoxItem In cboSize.Properties.Items
+            If Not oItem.Value(0) Is Nothing Then
+                Dim oItemSize As SizeF = oItem.Value(0)
+                Dim sItemUM As String = oItem.Value(1)
+                If sItemUM.ToLower = sUM Then
+                    If oItemSize = oSize Then
+                        cboSize.SelectedItem = oItem
+                        chkImageOrientationPortrait.Checked = True
+                    ElseIf oItemSize.Width = oSize.Height AndAlso oItemSize.Height = oSize.Width Then
+                        cboSize.SelectedItem = oItem
+                        chkImageOrientationLandscape.Checked = True
+                    End If
+                End If
+            End If
+        Next
+        If cboSize.SelectedItem Is Nothing Then
+            cboSize.SelectedIndex = 0
+        End If
+        Call pApplySVGSize(False)
+        bDisableImageSizeEvent = False
+    End Sub
+
     Private oCurrentPrinterSettings As Printing.PrinterSettings
 
     Private Function pOptionsRestore() As cSurvey.Design.cOptions
@@ -488,7 +580,10 @@ Public Class frmPreview
 
             pnlPrintOptions.Visible = True
             pnlScaleOptions.Visible = True
-            pnlExportOptions.Visible = False
+            pnlExportOptionsFormat.Visible = False
+            pnlExportOptionsSize.Visible = False
+            pnlExportOptionsPage.Visible = False
+            pnlExportOptionsOther.Visible = False
             btnDesignDetails.Visible = True
 
             pnlProfile.Visible = True
@@ -545,8 +640,8 @@ Public Class frmPreview
                 'oDoc.DefaultPageSettings.Landscape = .PageLandscape
 
                 'cboPageFormat.Text = sPaperName
-                optPageVertical.Checked = Not oCurrentPrinterSettings.DefaultPageSettings.Landscape
-                optPageHorizontal.Checked = oCurrentPrinterSettings.DefaultPageSettings.Landscape
+                chkPageVertical.Checked = Not oCurrentPrinterSettings.DefaultPageSettings.Landscape
+                chkPageHorizontal.Checked = oCurrentPrinterSettings.DefaultPageSettings.Landscape
 
                 If .ScaleMode = cSurvey.Design.cIOptionsPreview.ScaleModeEnum.sManual Then
                     cboScale.SelectedIndex = cboScale.Items.Count - 1
@@ -604,7 +699,7 @@ Public Class frmPreview
 
             pnlPrintOptions.Visible = False
             pnlScaleOptions.Visible = True
-            pnlExportOptions.Visible = True
+            pnlExportOptionsOther.Visible = True
             btnDesignDetails.Visible = True
 
             pnlProfile.Visible = True
@@ -624,10 +719,14 @@ Public Class frmPreview
                 If cboFileFormat.Text = "" Then
                     cboFileFormat.Text = "JPG"
                 End If
-                txtImageWidth.Text = .ImageWidth
-                txtImageHeight.Text = .ImageHeight
-
+                cboImageUM.SelectedIndex = pFromImageUnit(.ImageUnit)
+                Call pImageUnitChanged()
+                txtImageWidth.Value = .ImageWidth
+                txtImageHeight.Value = .ImageHeight
                 chkBackgroundTransparent.Checked = .TransparentBackground
+
+                Call cboFileFormat_SelectedIndexChanged(cboFileFormat, EventArgs.Empty)
+                Call pImageSelectPage()
 
                 If .ScaleMode = cSurvey.Design.cIOptionsPreview.ScaleModeEnum.sManual Then
                     cboScale.SelectedIndex = cboScale.Items.Count - 1
@@ -698,7 +797,7 @@ Public Class frmPreview
 
             pnlPrintOptions.Visible = False
             pnlScaleOptions.Visible = False
-            pnlExportOptions.Visible = False
+            pnlExportOptionsOther.Visible = False
             btnDesignDetails.Visible = False
 
             pnlProfile.Visible = True
@@ -768,12 +867,13 @@ Public Class frmPreview
         Call pOptionsSave()
         Dim oOptions As cSurvey.Design.cOptionsExport = oCurrentOptions 'pExportOptionsSave()
 
-        Dim iImageWidth As Integer = oOptions.ImageWidth  '4096
-        Dim iImageHeight As Integer = oOptions.ImageHeight '4096
+        'fallback unit to pixel to generate preview
+        Dim iImageWidth As Integer = modPaint.ToPixel(oOptions.ImageUnit, oOptions.ImageWidth)
+        Dim iImageHeight As Integer = modPaint.ToPixel(oOptions.ImageUnit, oOptions.ImageHeight)
 
-        Dim oImage As Image
+        Dim oImage As Bitmap
         Try
-            If (picExport.Image Is Nothing) OrElse (oImage.Width <> iImageWidth) OrElse (oImage.Height <> iImageHeight) Then
+            If (picExport.Image Is Nothing) OrElse (Not picExport.Image Is Nothing AndAlso ((picExport.Image.Width <> iImageWidth) OrElse (picExport.Image.Height <> iImageHeight))) Then
                 Try
                     oImage = New Bitmap(iImageWidth, iImageHeight) ', Drawing.Imaging.PixelFormat.Format32bppArgb)
                 Catch
@@ -781,7 +881,6 @@ Public Class frmPreview
                     iImageHeight = 2048
                     oImage = New Bitmap(iImageWidth, iImageHeight)
                 End Try
-                picExport.Size = New Size(iImageWidth * sViewZoom, iImageHeight * sViewZoom)
             Else
                 oImage = picExport.Image
             End If
@@ -793,8 +892,9 @@ Public Class frmPreview
                 iImageHeight = 2048
                 oImage = New Bitmap(iImageWidth, iImageHeight)
             End Try
-            picExport.Size = New Size(iImageWidth * sViewZoom, iImageHeight * sViewZoom)
         End Try
+        If modMain.Is64Bit OrElse modMain.bIsInDebug Then oImage.SetResolution(txtImageDPI.Value, txtImageDPI.Value)
+        picExport.Size = New Size(iImageWidth * sViewZoom, iImageHeight * sViewZoom)
 
         If bManualRefresh And bFirstRendering Then
             Using oGr As Graphics = Graphics.FromImage(oImage)
@@ -827,8 +927,10 @@ Public Class frmPreview
                     Call oGr.Clear(Color.White)
                 End If
 
+                Dim oMargins As System.Drawing.Printing.Margins = New System.Drawing.Printing.Margins(modPaint.ToPixel(oOptions.ImageUnit, oOptions.Margins.Left), modPaint.ToPixel(oOptions.ImageUnit, oOptions.Margins.Top), modPaint.ToPixel(oOptions.ImageUnit, oOptions.Margins.Right), modPaint.ToPixel(oOptions.ImageUnit, oOptions.Margins.Bottom))
+
                 sPaintZoom = 10
-                Dim oPageRect As RectangleF = New RectangleF(oOptions.Margins.Left, oOptions.Margins.Top, iImageWidth - oOptions.Margins.Left - oOptions.Margins.Right, iImageHeight - oOptions.Margins.Top - oOptions.Margins.Bottom)
+                Dim oPageRect As RectangleF = New RectangleF(oMargins.Left, oMargins.Top, iImageWidth - oMargins.Left - oMargins.Right, iImageHeight - oMargins.Top - oMargins.Bottom)
                 oPaintTranslation = New PointF(oPageRect.Width / 2, oPageRect.Height / 2)
                 Dim oRect As RectangleF
                 If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
@@ -848,7 +950,7 @@ Public Class frmPreview
                     Dim sPageHeight As Single = oPageRect.Size.Height ' (oPageRect.Size.Height / oGr.DpiX) * 0.0254
                     Dim sDeltaX As Single = sPageWidth / sDesignWidth
                     Dim sDeltaY As Single = sPageHeight / sDesignHeight
-                    Dim sDelta As Single = IIf(sDeltaX < sDeltaY, sDeltaX, sDeltaY)
+                    Dim sDelta As Single = If(sDeltaX < sDeltaY, sDeltaX, sDeltaY)
                     If Single.IsInfinity(sDelta) Then sDelta = 100
                     sPaintZoom = sDelta
                     If sPaintZoom < sMinZoom Then sPaintZoom = sMinZoom
@@ -879,13 +981,10 @@ Public Class frmPreview
                     Call oMatrix.Translate(oPaintTranslation.X, oPaintTranslation.Y, MatrixOrder.Append)
                     oGr.Transform = oMatrix
                 End Using
-                'oGr.DrawRectangle(New Pen(Brushes.Black, -1), oRect.X, oRect.Y, oRect.Width, oRect.Height)
 
                 If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
-                    'disegno il "disegno"
                     Call oSurvey.Plan.Paint(oGr, oOptions, cDrawOptions.Empty, oSelection)
 
-                    'tolgo la matrice del disegno e disegno i gadget aggiuntivi con le apposite classi di servizio (senza matrice)
                     Call oGr.ResetTransform()
                     If pnlCompass.Visible AndAlso oOptions.DrawCompass Then
                         Call oSurvey.Plan.Plot.Compass.Rebind(oGr, oOptions, oPageRect, Nothing)
@@ -901,7 +1000,7 @@ Public Class frmPreview
                     End If
                 Else
                     Call oSurvey.Profile.Paint(oGr, oOptions, cDrawOptions.Empty, oSelection)
-                    'tolgo la matrice del disegno e disegno i gadget aggiuntivi con le apposite classi di servizio (senza matrice)
+
                     Call oGr.ResetTransform()
                     If pnlScale.Visible AndAlso oOptions.DrawScale Then
                         Call oSurvey.Profile.Plot.Scale.Rebind(oGr, oOptions, oPageRect, New cSurvey.Design.cDesignScale.cParameters(sPaintZoom))
@@ -975,7 +1074,7 @@ Public Class frmPreview
                 Dim sPageHeight As Single = oPageRect.Size.Height '* 0.000254
                 Dim sDeltaX As Single = sPageWidth / sDesignWidth
                 Dim sDeltaY As Single = sPageHeight / sDesignHeight
-                Dim sDelta As Single = IIf(sDeltaX < sDeltaY, sDeltaX, sDeltaY)
+                Dim sDelta As Single = If(sDeltaX < sDeltaY, sDeltaX, sDeltaY)
                 If Single.IsInfinity(sDelta) Then sDelta = 100
                 sPaintZoom = sDelta * 0.9
                 If sPaintZoom < sMinZoom Then sPaintZoom = sMinZoom
@@ -999,7 +1098,6 @@ Public Class frmPreview
 
             oCurrentOptions.CurrentScale = txtScaleManual.Value
             oRect = modPaint.FullScaleRectangle(oRect, sPaintZoom, sPaintZoom)
-            'oPaintTranslation = New PointF(-oRect.Left * sPaintZoom + oPageRect.Left + (oPageRect.Width - (oRect.Width * sPaintZoom)) / 2, -oRect.Top * sPaintZoom + oPageRect.Top + (oPageRect.Height - (oRect.Height * sPaintZoom)) / 2)
             oPaintTranslation = New PointF(-oRect.Left + oPageRect.Left + (oPageRect.Width - (oRect.Width)) / 2, -oRect.Top + oPageRect.Top + (oPageRect.Height - (oRect.Height)) / 2)
 
             Try
@@ -1052,7 +1150,7 @@ Public Class frmPreview
         prDialog.UseEXDialog = True
         If prDialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
             If bManualRefresh Then pRefresh(True)
-            oDoc.DocumentName = IIf(oSurvey.Name <> "", oSurvey.Name, GetLocalizedString("preview.textpart1")) & IIf(oCurrentProfile.IsPlan, " - " & GetLocalizedString("preview.textpart2"), " - " & GetLocalizedString("preview.textpart3"))
+            oDoc.DocumentName = If(oSurvey.Name <> "", oSurvey.Name, GetLocalizedString("preview.textpart1")) & If(oCurrentProfile.IsPlan, " - " & GetLocalizedString("preview.textpart2"), " - " & GetLocalizedString("preview.textpart3"))
             Call oDoc.Print()
             oDoc.DocumentName = oSurvey.Name
         End If
@@ -1074,7 +1172,7 @@ Public Class frmPreview
     End Sub
 
     Private Sub pRefresh(Optional ForceRefresh As Boolean = False, Optional FirstRefresh As Boolean = False)
-        If (bManualRefresh And (ForceRefresh Or FirstRefresh)) Or Not bManualRefresh Then
+        If (bManualRefresh AndAlso (ForceRefresh OrElse FirstRefresh)) OrElse Not bManualRefresh Then
             If Not bEventDisabled And Not oCurrentProfile Is Nothing Then
                 If Not FirstRefresh Then Call pInvalidateReset()
                 Call oMousePointer.Push(Cursors.AppStarting)
@@ -1185,30 +1283,6 @@ Public Class frmPreview
         Call pRefresh()
     End Sub
 
-    Private Sub optPageHorizontal_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles optPageHorizontal.CheckedChanged
-        If Not bEventDisabled Then
-            Try
-                If Not oCurrentPrinterSettings Is Nothing Then
-                    oCurrentPrinterSettings.DefaultPageSettings.Landscape = optPageHorizontal.Checked
-                End If
-            Catch
-            End Try
-            Call pRefresh()
-        End If
-    End Sub
-
-    Private Sub optPageVertical_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles optPageVertical.CheckedChanged
-        If Not bEventDisabled Then
-            Try
-                If Not oCurrentPrinterSettings Is Nothing Then
-                    oCurrentPrinterSettings.DefaultPageSettings.Landscape = optPageHorizontal.Checked
-                End If
-            Catch
-            End Try
-            Call pRefresh()
-        End If
-    End Sub
-
     Private Sub btnPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPrint.Click
         Call pPrint()
     End Sub
@@ -1273,7 +1347,7 @@ Public Class frmPreview
     Private Sub pPreview_MouseWheel(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles pPreview.MouseWheel
         Dim iVal As Integer = e.Delta / 120
         Dim iAbs As Integer = Math.Abs(iVal)
-        Dim iSegno As Integer = IIf(iAbs <> 0, iVal / iAbs, 0)
+        Dim iSegno As Integer = If(iAbs <> 0, iVal / iAbs, 0)
         If (iAbs < 20) And (((iSegno > 0) And (pPreview.Zoom > 0.1)) Or ((iSegno < 0) And (pPreview.Zoom < 100))) Then
             For j As Integer = 1 To iAbs
                 If iSegno > 0 Then
@@ -1285,15 +1359,15 @@ Public Class frmPreview
         End If
     End Sub
 
-    Private Sub cboPageFormat_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboPageFormat.SelectedIndexChanged
-        If Not bEventDisabled Then
-            Dim oPaperSize As PaperSize = pFindPaperSize(cboPageFormat.Text)
-            If oPaperSize.PaperName <> oCurrentPrinterSettings.DefaultPageSettings.PaperSize.PaperName Then
-                oCurrentPrinterSettings.DefaultPageSettings.PaperSize = oPaperSize
-                Call pRefresh()
-            End If
-        End If
-    End Sub
+    'Private Sub cboPageFormat_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    If Not bEventDisabled Then
+    '        Dim oPaperSize As PaperSize = pFindPaperSize(cboPageFormat.Text)
+    '        If oPaperSize.PaperName <> oCurrentPrinterSettings.DefaultPageSettings.PaperSize.PaperName Then
+    '            oCurrentPrinterSettings.DefaultPageSettings.PaperSize = oPaperSize
+    '            Call pRefresh()
+    '        End If
+    '    End If
+    'End Sub
 
     Private Sub cmdSetMargins_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSetMargins.Click
         Dim frmPM As frmPreviewMargins = New frmPreviewMargins("mm")
@@ -1355,7 +1429,7 @@ Public Class frmPreview
                 .Title = GetLocalizedString("preview.saveimagedialog")
                 Dim sExtension As String = oOptions.FileFormat
                 If sLastFilename = "" Then
-                    sLastFilename = IIf(oSurvey.Name <> "", oSurvey.Name, GetLocalizedString("preview.textpart1")) & IIf(oCurrentProfile.Name <> "", " - " & oCurrentProfile.Name, "") & "." & sExtension
+                    sLastFilename = If(oSurvey.Name <> "", oSurvey.Name, GetLocalizedString("preview.textpart1")) & If(oCurrentProfile.Name <> "", " - " & oCurrentProfile.Name, "") & "." & sExtension
                 Else
                     sLastFilename = IO.Path.GetFileNameWithoutExtension(sLastFilename) & "." & sExtension
                 End If
@@ -1424,56 +1498,98 @@ Public Class frmPreview
                             Call oMousePointer.Push(Cursors.WaitCursor)
                             If bManualRefresh Then pRefresh(True)
 
-                            Dim iImageWidth As Integer = oOptions.ImageWidth  '4096
-                            Dim iImageHeight As Integer = oOptions.ImageHeight '4096
+                            Dim sImageWidth As Single = oOptions.ImageWidth  '4096
+                            Dim sImageHeight As Single = oOptions.ImageHeight '4096
 
                             Dim sPaintZoom As Single = 10
-                            Dim oPageRect As RectangleF = New RectangleF(oOptions.Margins.Left, oOptions.Margins.Top, iImageWidth - oOptions.Margins.Left - oOptions.Margins.Right, iImageHeight - oOptions.Margins.Top - oOptions.Margins.Bottom)
+                            Dim oPageRect As RectangleF = New RectangleF(oOptions.Margins.Left, oOptions.Margins.Top, sImageWidth - oOptions.Margins.Left - oOptions.Margins.Right, sImageHeight - oOptions.Margins.Top - oOptions.Margins.Bottom)
                             'oPaintTranslation = New PointF(oPageRect.Width / 2, oPageRect.Height / 2)
                             Dim oRect As RectangleF
                             If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
-                                oRect = oSurvey.Plan.GetVisibleBounds(oOptions)
+                                oRect = oSurvey.Plan.GetDesignVisibleBounds(oOptions)
                             Else
-                                oRect = oSurvey.Profile.GetVisibleBounds(oOptions)
+                                oRect = oSurvey.Profile.GetDesignVisibleBounds(oOptions)
                             End If
                             oRect = modPaint.AdjustBounds(oRect, 1)
 
                             If cboScale.SelectedIndex = 0 Then
                                 Dim sDesignWidth As Single = oRect.Size.Width
                                 Dim sDesignHeight As Single = oRect.Size.Height
-                                Dim sPageWidth As Single = oPageRect.Size.Width '* 0.000254
-                                Dim sPageHeight As Single = oPageRect.Size.Height '* 0.000254
+                                Dim sPageWidth As Single = oPageRect.Size.Width ' (oPageRect.Size.Width / oGr.DpiX) * 0.0254
+                                Dim sPageHeight As Single = oPageRect.Size.Height ' (oPageRect.Size.Height / oGr.DpiX) * 0.0254
                                 Dim sDeltaX As Single = sPageWidth / sDesignWidth
                                 Dim sDeltaY As Single = sPageHeight / sDesignHeight
-                                Dim sDelta As Single = IIf(sDeltaX < sDeltaY, sDeltaX, sDeltaY)
+                                Dim sDelta As Single = If(sDeltaX < sDeltaY, sDeltaX, sDeltaY)
                                 If Single.IsInfinity(sDelta) Then sDelta = 100
                                 sPaintZoom = sDelta
+                                Using oGr As Graphics = picExport.CreateGraphics
+                                    txtScaleManual.Value = modPaint.GetScaleFactor(oGr, sPaintZoom)
+                                End Using
                             Else
-                                Dim iFactor As Integer = txtScaleManual.Value
-                                'Dim oGraphic As Graphics = Me.picExport.CreateGraphics
-                                sPaintZoom = ((1 / iFactor) / 0.0254) * oSurvey.GetGlobalSetting("svg.exportdpi", 90)
+                                Dim iFactor As Integer
+                                If cboScale.SelectedIndex = cboScale.Items.Count - 1 Then
+                                    iFactor = txtScaleManual.Value
+                                Else
+                                    Dim sFactor As String = cboScale.Text
+                                    If sFactor = "" Then
+                                        iFactor = 250
+                                    Else
+                                        iFactor = sFactor.Substring(sFactor.IndexOf(":") + 1)
+                                    End If
+                                    txtScaleManual.Value = iFactor
+                                End If
+                                Using oGr As Graphics = picExport.CreateGraphics
+                                    sPaintZoom = modPaint.GetZoomFactor(oGr, iFactor) ' ((1 / iFactor) / 0.0254) * oGr.DpiX
+                                End Using
                             End If
-                            'End If
+                            'oRect = modPaint.ScaleRectangle(oRect, sPaintZoom)
+
                             Dim oPaintTranslation As PointF = New PointF(-oRect.Left * sPaintZoom + oPageRect.Left + (oPageRect.Width - (oRect.Width * sPaintZoom)) / 2, -oRect.Top * sPaintZoom + oPageRect.Top + (oPageRect.Height - (oRect.Height * sPaintZoom)) / 2)
-                            Dim oViewArea As RectangleF = New RectangleF(0, 0, iImageWidth, iImageHeight)
+
+                            'scale page coordinate to real coordinate (without margins....to prevent some svg viewer cutting objects outside viewbox)
+                            Dim oPageInPixels As RectangleF = New RectangleF(0, 0, sImageWidth, sImageHeight)
+                            Dim oPageInMeters As RectangleF = New RectangleF(0, 0, sImageWidth, sImageHeight)
+                            oPageInMeters = modPaint.FullScaleRectangle(oPageInMeters, 1 / sPaintZoom)
+                            oPageInMeters = New RectangleF(oPageInMeters.X - oPaintTranslation.X / sPaintZoom, oPageInMeters.Y - oPaintTranslation.Y / sPaintZoom, oPageInMeters.Width, oPageInMeters.Height)
+
+                            Dim oSize As SizeF = New SizeF(sImageWidth, sImageHeight)
+                            Dim iUnit As SizeUnit = pToSizeUnit(cboImageUM.SelectedIndex)
 
                             sLastFilename = .FileName
+
                             Dim oXML As XmlDocument
                             Dim oSVGOptions As cSurvey.Design.cItem.SVGOptionsEnum
+                            If oSurvey.GetGlobalSetting("svg.exporttextaspath", 0) <> 0 Then
+                                oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.TextAsPath
+                            End If
+                            If oSurvey.GetGlobalSetting("svg.exportcsurveyreferences", 1) <> 0 Then
+                                oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.AddSourceReference
+                            End If
+                            If oSurvey.GetGlobalSetting("svg.exportimages", 1) <> 0 Then
+                                oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.Images
+                            End If
                             If oSurvey.GetGlobalSetting("svg.exportnoclipping", 0) = 0 Then
                                 oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.Clipping
                             End If
                             If oSurvey.GetGlobalSetting("svg.exportnoclipartbrushes", 0) = 0 Then
                                 oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.ClipartBrushes
                             End If
+
                             If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
-                                oXML = oSurvey.Plan.ToSvg(oOptions, oSVGOptions, oViewArea, sPaintZoom, oPaintTranslation)
+                                oXML = oSurvey.Plan.ToSvg(oOptions, oSVGOptions, oSize, oPageInPixels, iUnit, oPageInMeters)
                             Else
-                                oXML = oSurvey.Profile.ToSvg(oOptions, oSVGOptions, oViewArea, sPaintZoom, oPaintTranslation)
+                                oXML = oSurvey.Profile.ToSvg(oOptions, oSVGOptions, oSize, oPageInPixels, iUnit, oPageInMeters)
                             End If
 
-                            Call XMLAddDeclaration(oXML)
-                            Call oXML.Save(.FileName)
+                            'Call XMLAddDeclaration(oXML)
+
+                            Dim oXMLWriterSettings As XmlWriterSettings = New XmlWriterSettings
+                            oXMLWriterSettings.Indent = False
+                            oXMLWriterSettings.Encoding = System.Text.Encoding.UTF8
+                            Using oXMLWriter As XmlWriter = XmlWriter.Create(.FileName, oXMLWriterSettings)
+                                Call oXML.Save(oXMLWriter)
+                            End Using
+                            'Call oXML.Save(.FileName)
 
                             Call oMousePointer.Pop()
                     End Select
@@ -1488,14 +1604,37 @@ Public Class frmPreview
                 chkBackgroundTransparent.Enabled = True
                 chkExportGPS.Enabled = True
                 Call chkExportGPS_CheckedChanged(Nothing, Nothing)
+
+                pnlExportOptionsPage.Visible = False
+                pnlExportOptionsSize.Visible = True
+                pnlExportOptionsOther.Visible = True
+
+                cboImageUM.SelectedItem = 0
+                cboImageUM.Enabled = False
+                txtImageDPI.Enabled = modMain.Is64Bit OrElse modMain.bIsInDebug
             Case 0, 1, 3
                 chkBackgroundTransparent.Enabled = False
                 chkExportGPS.Enabled = True
                 Call chkExportGPS_CheckedChanged(Nothing, Nothing)
+
+                pnlExportOptionsPage.Visible = False
+                pnlExportOptionsSize.Visible = True
+                pnlExportOptionsOther.Visible = True
+
+                cboImageUM.SelectedItem = 0
+                cboImageUM.Enabled = False
+                txtImageDPI.Enabled = modMain.Is64Bit OrElse modMain.bIsInDebug
             Case 4
                 chkBackgroundTransparent.Enabled = False
                 chkExportGPS.Enabled = False
                 Call chkExportGPS_CheckedChanged(Nothing, Nothing)
+
+                pnlExportOptionsPage.Visible = True
+                pnlExportOptionsSize.Visible = True
+                pnlExportOptionsOther.Visible = False
+
+                cboImageUM.Enabled = True
+                txtImageDPI.Enabled = False
         End Select
         'Call pRefresh()
     End Sub
@@ -1675,14 +1814,15 @@ Public Class frmPreview
 
     Private Sub cmdSetImageMargins_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSetImageMargins.Click
         Dim oOptions As cSurvey.Design.cOptionsExport = oCurrentOptions
-        Dim frmPM As frmPreviewMargins = New frmPreviewMargins("pixel")
-        With frmPM
-            .Margins = oOptions.Margins.Clone
-            If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                oOptions.Margins = .Margins.Clone
-                Call pRefresh()
-            End If
-        End With
+        Using frmPM As frmPreviewMargins = New frmPreviewMargins(cboImageUM.Text)
+            With frmPM
+                .Margins = oOptions.Margins.Clone
+                If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                    oOptions.Margins = .Margins.Clone
+                    Call pRefresh()
+                End If
+            End With
+        End Using
     End Sub
 
     Private Sub cboPrintDesignStyle_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboPrintDesignStyle.SelectedIndexChanged
@@ -1832,7 +1972,7 @@ Public Class frmPreview
     Private Sub btnManualRefresh_CheckedChanged(sender As Object, e As System.EventArgs) Handles btnManualRefresh.CheckedChanged
         If Not bEventDisabled Then
             bManualRefresh = btnManualRefresh.Checked
-            Call oSurvey.SharedSettings.SetValue("preview.manualrefresh", IIf(bManualRefresh, "1", "0"))
+            Call oSurvey.SharedSettings.SetValue("preview.manualrefresh", If(bManualRefresh, "1", "0"))
             If Not bManualRefresh And pnlPopup.Visible Then
                 Call pRefresh(True)
             End If
@@ -2154,7 +2294,7 @@ Public Class frmPreview
     End Sub
 
     Private Sub pScaleUpdate()
-        Dim iScale As Integer = oCurrentOptions.CurrentRule.Scale
+        Dim iScale As Integer = oCurrentOptions.GetCurrentScale
         If iScale = 0 Then
             pnlStatusCurrentRule.Text = GetLocalizedString("preview.textpart4")
         Else
@@ -2225,11 +2365,11 @@ Public Class frmPreview
     Private Delegate Sub oDrawRefreshThread_callbackDelegate()
 
     Private Sub oDrawRefreshThread_callback()
-        'If InvokeRequired Then
-        '    Call Invoke(New oDrawRefreshThread_callbackDelegate(AddressOf oDrawRefreshThread_callback))
-        'Else
-        Call pSurveyDraw(picMap.CreateGraphics)
-        'End If
+        Try
+            Call pSurveyDraw(picMap.CreateGraphics)
+        Catch ex As Exception
+            Call Debug.Print(ex.Message)
+        End Try
     End Sub
 
     Private oDrawRefreshThread As Threading.Thread
@@ -2277,7 +2417,6 @@ Public Class frmPreview
         If Not bDrawing Then
             bDrawing = True
             Call oMousePointer.Push(Cursors.AppStarting)
-            Call pOptionsSave()
 
             Try
                 Dim iWidth As Integer = picMap.Width - oVSB.Width
@@ -2368,11 +2507,8 @@ Public Class frmPreview
     End Sub
 
     Private Sub pMapInvalidate()
-        'If Not bDrawing Then
-        'btnStop_Click(Nothing, Nothing)
         Call pDrawingStop(True)
         Call picMap.Invalidate()
-        'End If
     End Sub
 
     Private Sub pMapBindScrollbars()
@@ -2400,19 +2536,24 @@ Public Class frmPreview
 
     Private Sub picMap_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles picMap.Paint
         Call pMapBindScrollbars()
-        'Call pSurveyDraw(e.Graphics)
         Call pDrawingStop(False)
         If Not bDrawing Then
-            Call pDrawingThreadStop()
-            Call pDrawingThreadStart()
+            Call pDrawingStart()
         End If
     End Sub
 
+    Private Sub pDrawingStart()
+        Call pOptionsSave()
+        Call pDrawingThreadStart()
+    End Sub
+
     Private Sub pDrawingThreadStart()
-        oDrawRefreshThread = New Threading.Thread(AddressOf oDrawRefreshThread_callback)
-        oDrawRefreshThread.Priority = Threading.ThreadPriority.Lowest
-        btnStop.Visible = True
-        Call oDrawRefreshThread.Start()
+        If oDrawRefreshThread Is Nothing Then
+            oDrawRefreshThread = New Threading.Thread(AddressOf oDrawRefreshThread_callback)
+            oDrawRefreshThread.Priority = Threading.ThreadPriority.Lowest
+            btnStop.Visible = True
+            Call oDrawRefreshThread.Start()
+        End If
     End Sub
 
     Private Sub pMapZoomOut()
@@ -2718,7 +2859,7 @@ Public Class frmPreview
                 iDeltaIncrement = trkZoom.Value / 10
             End If
             If iDeltaIncrement = 0 Then iDeltaIncrement = 1
-            Dim iDelta As Integer = IIf(e.Delta > 0, iDeltaIncrement, -iDeltaIncrement)
+            Dim iDelta As Integer = If(e.Delta > 0, iDeltaIncrement, -iDeltaIncrement)
             If trkZoom.Value + iDelta > trkZoom.Maximum Then
                 trkZoom.Value = trkZoom.Maximum
             ElseIf trkZoom.Value + iDelta < trkZoom.Minimum Then
@@ -2734,15 +2875,11 @@ Public Class frmPreview
         Call pMapInvalidate()
     End Sub
 
-    Private Sub picMap_Click(sender As System.Object, e As System.EventArgs) Handles picMap.Click
-
-    End Sub
-
     Private Sub btnSidePanel_Click(sender As System.Object, e As System.EventArgs) Handles btnSidePanel.Click
         btnSidePanel.Checked = Not btnSidePanel.Checked
         pnlOptions.Visible = btnSidePanel.Checked
 
-        Call oSurvey.SharedSettings.SetValue("preview.sidepanel.visible", IIf(btnSidePanel.Checked, "1", "0"))
+        Call oSurvey.SharedSettings.SetValue("preview.sidepanel.visible", If(btnSidePanel.Checked, "1", "0"))
     End Sub
 
     Private Sub frmPreview_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
@@ -2842,8 +2979,8 @@ Public Class frmPreview
             If oDrawRefreshThread.ThreadState = Threading.ThreadState.Running Then
                 Call oDrawRefreshThread.Abort()
                 Call oSurvey.RaiseOnProgressEvent("", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Reset, "", 0)
-                oDrawRefreshThread = Nothing
             End If
+            oDrawRefreshThread = Nothing
         End If
     End Sub
 
@@ -2935,6 +3072,203 @@ Public Class frmPreview
     Private Sub pnlStatusDesignZoom1000_Click(sender As Object, e As EventArgs) Handles pnlStatusDesignZoom1000.Click
         Call pScaleZoom(1000)
     End Sub
+
+    Private Sub btnBaseRule_Click(sender As Object, e As EventArgs) Handles btnBaseRule.Click
+        Using frmSR As frmScaleRules = New frmScaleRules(oSurvey, frmScaleRules.EditStyleEnum.BaseRule, oCurrentOptions)
+            If frmSR.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                Call pRefresh()
+            End If
+        End Using
+    End Sub
+
+    Private Sub txtImageWidth_Leave(sender As Object, e As EventArgs) Handles txtImageWidth.Leave
+        Call pRefresh()
+    End Sub
+
+    Private Sub pImageUnitChanged()
+        Dim sWidth As Single = txtImageWidth.Value
+        Dim sHeight As Single = txtImageHeight.Value
+        Select Case cboImageUM.SelectedIndex
+            Case 0
+                txtImageWidth.DecimalPlaces = 0
+                txtImageHeight.DecimalPlaces = 0
+                txtImageWidth.Increment = 1
+                txtImageHeight.Increment = 1
+
+                'txtImageWidth.BeginInit()
+                'txtImageWidth.Minimum = 120
+                'txtImageHeight.Minimum = 120
+                'txtImageWidth.Value = txtImageWidth.Minimum
+                'txtImageHeight.Value = txtImageHeight.Minimum
+                'txtImageWidth.Maximum = 8.192
+                'txtImageHeight.Maximum = 8.192
+                'txtImageWidth.EndInit()
+            Case Else
+                txtImageWidth.DecimalPlaces = 2
+                txtImageHeight.DecimalPlaces = 2
+                txtImageWidth.Increment = 1
+                txtImageHeight.Increment = 1
+
+                'txtImageWidth.Value = 1
+                'txtImageHeight.Value = 1
+                'txtImageWidth.Minimum = 1
+                'txtImageHeight.Minimum = 1
+                'txtImageWidth.Maximum = 64000
+                'txtImageHeight.Maximum = 64000
+        End Select
+
+        txtImageWidth.Value = sWidth
+        txtImageHeight.Value = sHeight
+    End Sub
+
+    Private Sub cboImageUM_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboImageUM.SelectedIndexChanged
+        Call pImageUnitChanged()
+        Call pRefresh()
+    End Sub
+
+    Private Sub txtImageDPI_Leave(sender As Object, e As EventArgs) Handles txtImageDPI.Leave
+        Call pRefresh()
+    End Sub
+
+    'Private Sub cboSize_QueryPopUp(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles cboSize.QueryPopUp
+    '    Dim oOptions As cSurvey.Design.cOptionsExport = oCurrentOptions
+    '    With oOptions
+    '        Dim oSize As SizeF = New SizeF(oOptions.ImageWidth, oOptions.ImageHeight)
+
+    '        Dim oCustomItem As ImageComboBoxItem = New ImageComboBoxItem({Nothing, Nothing}, 0)
+    '        oCustomItem.Description = "Custom" 'TODO:localize
+    '        cboSize.Properties.Items.Add(oCustomItem)
+
+    '        Dim oXml As XmlDocument = New XmlDocument
+    '        Call oXml.Load(IO.Path.Combine(modMain.GetApplicationPath, "papersizes.xml"))
+    '        For Each oXMLSize As XmlElement In oXml.DocumentElement.ChildNodes
+    '            Dim sName As String = oXMLSize.GetAttribute("name")
+    '            Dim oItemSize As SizeF = New SizeF(modNumbers.StringToDecimal(oXMLSize.GetAttribute("w")), modNumbers.StringToDecimal(oXMLSize.GetAttribute("h")))
+    '            Dim oItem As ImageComboBoxItem = New ImageComboBoxItem({oItemSize, oXMLSize.GetAttribute("u")}, 0)
+    '            oItem.Description = sName
+    '            cboSize.Properties.Items.Add(oItem)
+    '            If oItemSize = oSize Then
+    '                cboSize.SelectedItem = oItem
+    '                chkImageOrientationPortrait.Checked = True
+    '            ElseIf oItemSize.Width = oSize.Height AndAlso oItemSize.Height = oSize.Width Then
+    '                cboSize.SelectedItem = oItem
+    '                chkImageOrientationLandscape.Checked = True
+    '            End If
+    '        Next
+    '        If cboSize.SelectedItem Is Nothing Then
+    '            cboSize.SelectedItem = cboSize.Properties.Items(0)
+    '        End If
+    '    End With
+    'End Sub
+
+    Private Sub pApplySVGSize(ApplySize As Boolean)
+        Dim oOptions As cSurvey.Design.cOptionsExport = oCurrentOptions
+        With oOptions
+            Dim oItem As ImageComboBoxItem = cboSize.SelectedItem
+            If Not oItem Is Nothing Then
+                If oItem.Value(0) Is Nothing Then
+                    lblImageOrientation.Enabled = False
+                    chkImageOrientationPortrait.Enabled = False
+                    chkImageOrientationLandscape.Enabled = False
+                    txtImageWidth.Enabled = True
+                    txtImageHeight.Enabled = True
+                    cboImageUM.Enabled = True
+                Else
+                    lblImageOrientation.Enabled = True
+                    chkImageOrientationPortrait.Enabled = True
+                    chkImageOrientationLandscape.Enabled = True
+                    txtImageWidth.Enabled = False
+                    txtImageHeight.Enabled = False
+                    cboImageUM.Enabled = False
+
+                    If ApplySize Then
+                        Dim sW As Single = oItem.Value(0).width
+                        Dim sH As Single = oItem.Value(0).height
+                        If chkImageOrientationLandscape.Checked Then
+                            Dim sT As Single = sW
+                            sW = sH
+                            sH = sT
+                        End If
+                        .ImageWidth = sW
+                        .ImageHeight = sH
+                        .ImageUnit = oItem.Value(1)
+
+                        txtImageWidth.Value = .ImageWidth
+                        txtImageHeight.Value = .ImageHeight
+                        cboImageUM.SelectedIndex = pFromImageUnit(.ImageUnit)
+                        Call pRefresh()
+                    End If
+                End If
+            End If
+        End With
+    End Sub
+
+    Private Sub cboSize_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboSize.SelectedIndexChanged
+        If Not bDisableImageSizeEvent Then
+            Call pApplySVGSize(True)
+        End If
+    End Sub
+
+    Private Sub chkImageOrientationLandscape_CheckedChanged(sender As Object, e As EventArgs) Handles chkImageOrientationLandscape.CheckedChanged
+        Call cboSize_SelectedIndexChanged(sender, e)
+    End Sub
+
+    Private Sub chkImageOrientationPortrait_CheckedChanged(sender As Object, e As EventArgs) Handles chkImageOrientationPortrait.CheckedChanged
+        Call cboSize_SelectedIndexChanged(sender, e)
+    End Sub
+
+    Private Sub chkPageVertical_CheckedChanged(sender As Object, e As EventArgs) Handles chkPageVertical.CheckedChanged
+        If Not bEventDisabled Then
+            Try
+                If Not oCurrentPrinterSettings Is Nothing Then
+                    oCurrentPrinterSettings.DefaultPageSettings.Landscape = chkPageHorizontal.Checked
+                End If
+            Catch
+            End Try
+            Call pRefresh()
+        End If
+    End Sub
+
+    Private Sub chkPageHorizontal_CheckedChanged(sender As Object, e As EventArgs) Handles chkPageHorizontal.CheckedChanged
+        If Not bEventDisabled Then
+            Try
+                If Not oCurrentPrinterSettings Is Nothing Then
+                    oCurrentPrinterSettings.DefaultPageSettings.Landscape = chkPageHorizontal.Checked
+                End If
+            Catch
+            End Try
+            Call pRefresh()
+        End If
+    End Sub
+
+    Private Sub cboPageFormat_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPageFormat.SelectedIndexChanged
+        If Not bEventDisabled Then
+            Dim oPaperSize As PaperSize = pFindPaperSize(cboPageFormat.Text)
+            If oPaperSize.PaperName <> oCurrentPrinterSettings.DefaultPageSettings.PaperSize.PaperName Then
+                oCurrentPrinterSettings.DefaultPageSettings.PaperSize = oPaperSize
+                Call pRefresh()
+            End If
+        End If
+    End Sub
+
+    'Private Sub mnuImageSizeFromPageSize_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mnuImageSizeFromPageSize.Opening
+    '    Call mnuImageSizeFromPageSize.Items.Clear()
+    '    Dim oXml As XmlDocument = New XmlDocument
+    '    Call oXml.Load(IO.Path.Combine(modMain.GetApplicationPath, "papersizes.xml"))
+    '    For Each oXMLSize As XmlElement In oXml.DocumentElement.ChildNodes
+    '        Dim oMenuItem As ToolStripMenuItem = New ToolStripMenuItem(oXMLSize.GetAttribute("name"))
+    '        oMenuItem.Tag = {modNumbers.StringToDecimal(oXMLSize.GetAttribute("w")), modNumbers.StringToDecimal(oXMLSize.GetAttribute("h")), oXMLSize.GetAttribute("u")}
+    '        AddHandler oMenuItem.Click, AddressOf oImageSizeFromPageSizeItem_Click
+    '        Call mnuImageSizeFromPageSize.Items.Add(oMenuItem)
+    '    Next
+    'End Sub
+
+    'Private Sub oImageSizeFromPageSizeItem_Click(sender As Object, e As EventArgs)
+    '    cboImageUM.SelectedIndex = pFromImageUnit(sender.tag(2))
+    '    txtImageWidth.Value = sender.tag(0)
+    '    txtImageHeight.Value = sender.tag(1)
+    '    Call pRefresh()
+    'End Sub
 
     'Private Sub cDesignPrintOrExportArea_OnMapInvalidate(Sender As Object, e As EventArgs)
     '    Call pRefresh()

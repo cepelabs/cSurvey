@@ -32,6 +32,10 @@ Namespace cSurvey.Design
         Private iPrintOrExportProfileIndex As Integer
         Private WithEvents oPrintOrExportProfile As cIProfile
 
+        Public Overrides Function GetCurrentDesignPropertiesValue(Name As String, DefaultValue As Object)
+            Return GetOption.DesignProperties.GetValue(Name, CurrentRule.DesignProperties.GetValue(Name, MyBase.Survey.Properties.DesignProperties.GetValue(Name, DefaultValue)))
+        End Function
+
         Public Overrides Function GetOption() As cIOptions Implements cIOptions.GetOption
             If bDrawPrintOrExportArea AndAlso Not IsNothing(oPrintOrExportProfile) Then
                 Return oPrintOrExportProfile.Options
@@ -143,7 +147,7 @@ Namespace cSurvey.Design
             End If
         End Function
 
-        Friend Overrides Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLOptions As XmlElement = MyBase.SaveTo(File, Document, Parent)
             Call oXMLOptions.SetAttribute("unselectedleveldrawingmode", iUnselectedLevelDrawingMode.ToString("D"))
             Call oXMLOptions.SetAttribute("splayeditmode", iSplayEditMode.ToString("D"))

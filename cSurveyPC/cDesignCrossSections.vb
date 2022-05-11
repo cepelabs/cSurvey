@@ -39,9 +39,20 @@ Namespace cSurvey.Design
         Friend Event OnCrossSectionAdd(ByVal Sender As Object, ByVal Args As OnDesignCrossSectionEventArgs)
         Friend Event OnCrossSectionRemove(ByVal Sender As Object, ByVal Args As OnDesignCrossSectionEventArgs)
 
+        Private oEmptyCrossSection As cDesignCrossSection
+
+        Public ReadOnly Property EmptyCrossSection As cDesignCrossSection
+            Get
+                If oEmptyCrossSection Is Nothing Then
+                    Dim oCrossSection As cItemCrossSection = Nothing
+                    oEmptyCrossSection = New cDesignCrossSection(oSurvey, oCrossSection)
+                End If
+                Return oEmptyCrossSection
+            End Get
+        End Property
+
         Friend Function GetEmptyCrossSection() As cDesignCrossSection
-            Dim oCrossSection As cItemCrossSection = Nothing
-            Return New cDesignCrossSection(oSurvey, oCrossSection)
+            Return EmptyCrossSection
         End Function
 
         Public Function GetCaveSegments(ByVal Cave As String, Optional ByVal Branch As String = "") As cSegmentCollection
@@ -293,7 +304,7 @@ Namespace cSurvey.Design
         '    End If
         'End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal File As Storage.cFile, ByVal CrossSections As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal CrossSections As XmlElement)
             oSurvey = Survey
             oItems = New cDesignCrossSectionBaseCollection
             For Each oXMLItem As XmlElement In CrossSections.ChildNodes
@@ -307,7 +318,7 @@ Namespace cSurvey.Design
             oItems = New cDesignCrossSectionBaseCollection
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Call CollectGarbage()
             Dim oXmlCrossSections As XmlElement = Document.CreateElement("crosssections")
             For Each oItem As cDesignCrossSection In oItems

@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
+  <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,82 +59,70 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="metadata">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" />
-							</xsd:sequence>
-							<xsd:attribute name="name" use="required" type="xsd:string" />
-							<xsd:attribute name="type" type="xsd:string" />
-							<xsd:attribute name="mimetype" type="xsd:string" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="assembly">
-						<xsd:complexType>
-							<xsd:attribute name="alias" type="xsd:string" />
-							<xsd:attribute name="name" type="xsd:string" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-	<data name="btnDataFieldAdd.Size" type="System.Drawing.Size, System.Drawing">
-		<value>91, 22</value>
-	</data>
-	<data name="btnDataFieldAdd.Text" xml:space="preserve">
-    <value>Aggiungi proprietà</value>
-  </data>
-	<data name="btnDataFieldDelete.Size" type="System.Drawing.Size, System.Drawing">
-		<value>58, 22</value>
-	</data>
-	<data name="btnDataFieldDelete.Text" xml:space="preserve">
-    <value>Elimina</value>
-  </data>
-	<data name="lblDataFieldName.Text" xml:space="preserve">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblDataFieldName.Text" xml:space="preserve">
     <value>Nome:</value>
   </data>
-	<data name="iml.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-		<value>
+  <data name="iml.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACQ
@@ -176,67 +164,39 @@
         AQABAQUAAYAXAAP/AwAC/wYAAucGAALDBgACgQYAAYABAQYAAYABAQYAAcABAwYAAeABBwYAAfABDwYA
         AeABBwYAAcABAwYAAYABAQYAAYABAQYAAoEGAALDBgAC5wQACw==
 </value>
-	</data>
-	<data name="lblDataFieldDescription.Size" type="System.Drawing.Size, System.Drawing">
-		<value>64, 13</value>
-	</data>
-	<data name="lblDataFieldDescription.Text" xml:space="preserve">
+  </data>
+  <data name="lblDataFieldDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 13</value>
+  </data>
+  <data name="lblDataFieldDescription.Text" xml:space="preserve">
     <value>Descrizione:</value>
   </data>
-	<data name="cboDataFieldType.Items" xml:space="preserve">
-    <value>Testo</value>
+  <data name="lblDataFieldType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 13</value>
   </data>
-	<data name="cboDataFieldType.Items1" xml:space="preserve">
-    <value>Numero intero</value>
-  </data>
-	<data name="cboDataFieldType.Items2" xml:space="preserve">
-    <value>Numero con virgola di precisione singola</value>
-  </data>
-	<data name="cboDataFieldType.Items3" xml:space="preserve">
-    <value>Numero con virgola di precisione doppia</value>
-  </data>
-	<data name="cboDataFieldType.Items4" xml:space="preserve">
-    <value>Numero decimale</value>
-  </data>
-	<data name="cboDataFieldType.Items5" xml:space="preserve">
-    <value>Data</value>
-  </data>
-	<data name="cboDataFieldType.Items6" xml:space="preserve">
-    <value>Si/No</value>
-  </data>
-	<data name="cboDataFieldType.Items7" xml:space="preserve">
-    <value>Colore</value>
-  </data>
-	<data name="cboDataFieldType.Items8" xml:space="preserve">
-    <value>Elenco di valori</value>
-  </data>
-	<data name="lblDataFieldType.Size" type="System.Drawing.Size, System.Drawing">
-		<value>59, 13</value>
-	</data>
-	<data name="lblDataFieldType.Text" xml:space="preserve">
+  <data name="lblDataFieldType.Text" xml:space="preserve">
     <value>Tipo di dati:</value>
   </data>
-	<data name="Label11.Text" xml:space="preserve">
-    <value>Attenzione: inserire un valore per ogni riga.
-Non è possibile inserire valori numerici.</value>
+  <data name="Label11.Text" xml:space="preserve">
+    <value>&lt;image=warning&gt; &lt;b&gt;Attenzione&lt;/b&gt;: inserire un valore per ogni riga. Non è possibile inserire valori numerici.</value>
   </data>
-	<data name="lblDataFieldEnumValues.Size" type="System.Drawing.Size, System.Drawing">
-		<value>27, 13</value>
-	</data>
-	<data name="lblDataFieldEnumValues.Text" xml:space="preserve">
+  <data name="lblDataFieldEnumValues.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="lblDataFieldEnumValues.Text" xml:space="preserve">
     <value>Elenco:</value>
   </data>
-	<data name="cmdCancel.Text" xml:space="preserve">
+  <data name="cmdCancel.Text" xml:space="preserve">
     <value>Annulla</value>
   </data>
-	<data name="lblDataFieldCategory.Size" type="System.Drawing.Size, System.Drawing">
-		<value>56, 13</value>
-	</data>
-	<data name="lblDataFieldCategory.Text" xml:space="preserve">
+  <data name="lblDataFieldCategory.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 13</value>
+  </data>
+  <data name="lblDataFieldCategory.Text" xml:space="preserve">
     <value>Categoria:</value>
   </data>
-	<data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAK5VAACwWQIAsFoFALJcBgC8WwAAuF8HALJcCQC5YQsAtHoHALR6
         CAC1fAoAtn4OAMBiBgC5hyMAyqZbAMuaYwDLnGgAzZ5pAMudbQDSnWIAzJ9wAM2hbgDToGcAzaFzAM6k
@@ -299,11 +259,47 @@ Non è possibile inserire valori numerici.</value>
         PwsMPz8/Pz8/Pz8/Pz8/Pz8MDQwLCQsLCwsLCwwLCwsMDf//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
 </value>
-	</data>
-	<data name="$this.Text" xml:space="preserve">
+  </data>
+  <data name="$this.Text" xml:space="preserve">
     <value>Modifica proprietà aggiuntive:</value>
   </data>
-	<data name="cmdOk.Text" xml:space="preserve">
+  <data name="cmdOk.Text" xml:space="preserve">
     <value>Ok</value>
+  </data>
+  <data name="btnDataFieldDelete.Caption" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="btnDataFieldAdd.Caption" xml:space="preserve">
+    <value>Aggiungi proprietà</value>
+  </data>
+  <data name="cboDataFieldType.Properties.Items" xml:space="preserve">
+    <value>Testo</value>
+  </data>
+  <data name="cboDataFieldType.Properties.Items1" xml:space="preserve">
+    <value>Numero intero</value>
+  </data>
+  <data name="cboDataFieldType.Properties.Items2" xml:space="preserve">
+    <value>Numero con virgola di precisione singola</value>
+  </data>
+  <data name="cboDataFieldType.Properties.Items3" xml:space="preserve">
+    <value>Numero con virgola di precisione doppia</value>
+  </data>
+  <data name="cboDataFieldType.Properties.Items4" xml:space="preserve">
+    <value>Numero decimale</value>
+  </data>
+  <data name="cboDataFieldType.Properties.Items5" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="cboDataFieldType.Properties.Items6" xml:space="preserve">
+    <value>Si/no</value>
+  </data>
+  <data name="cboDataFieldType.Properties.Items7" xml:space="preserve">
+    <value>Colore</value>
+  </data>
+  <data name="cboDataFieldType.Properties.Items8" xml:space="preserve">
+    <value>Elenco di valori</value>
+  </data>
+  <data name="colName.Caption" xml:space="preserve">
+    <value>Proprietà</value>
   </data>
 </root>

@@ -93,7 +93,7 @@ Namespace cSurvey.Design.Options
                 Return oItem
             End Function
 
-            Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+            Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
                 Dim oXMLSurfaceOptionsItem As XmlElement = Document.CreateElement("surfaceoptionsitem")
                 Call oXMLSurfaceOptionsItem.SetAttribute("id", sID)
                 Call oXMLSurfaceOptionsItem.SetAttribute("visible", IIf(bVisible, "1", "0"))
@@ -177,6 +177,10 @@ Namespace cSurvey.Design.Options
             End Get
         End Property
 
+        Public Function IndexOf(Item As cSurfaceOptionsItem) As Integer
+            Return oItems.IndexOf(Item)
+        End Function
+
         Default Public ReadOnly Property Item(SurfaceItem As Surface.cISurfaceItem) As cSurfaceOptionsItem
             Get
                 Return Item(SurfaceItem.ID)
@@ -233,7 +237,7 @@ Namespace cSurvey.Design.Options
             Call Import(SurfaceOptions)
         End Sub
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLSurfaceOptions As XmlElement = Document.CreateElement("surfaceoptions")
             If bVisible Then oXMLSurfaceOptions.SetAttribute("visible", 1)
             For Each oItem As cSurfaceOptionsItem In oItems

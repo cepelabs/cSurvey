@@ -15,17 +15,16 @@ Module modRender
     Friend Sub RenderEntrancePoint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal PaintPoint As PointF, ByVal Cache As cDrawCache, ShowEntrance As Boolean)
         If ShowEntrance Then
             Dim sSize As Single = 0.5
-            Dim oPointsColl As List(Of PointF) = New List(Of PointF)
-            Dim oArrowPoint As PointF = PaintPoint
-            Call oPointsColl.Add(oArrowPoint)
-            Call oPointsColl.Add(New PointF(oArrowPoint.X - sSize, oArrowPoint.Y - sSize * 2))
-            Call oPointsColl.Add(New PointF(oArrowPoint.X - sSize * 2, oArrowPoint.Y - sSize))
-            Dim oPoints As PointF() = oPointsColl.ToArray
-            Dim oBrush As SolidBrush = New SolidBrush(Color.DimGray)
-            Dim oItem As cDrawCacheItem = Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
-            Call oItem.SetBrush(oBrush)
-            Call oItem.AddPolygon(oPoints)
-            Call oBrush.Dispose()
+            'Dim oPointsColl As List(Of PointF) = New List(Of PointF)
+            'Dim oArrowPoint As PointF = PaintPoint
+            'Call oPointsColl.Add(oArrowPoint)
+            'Call oPointsColl.Add(New PointF(oArrowPoint.X - sSize, oArrowPoint.Y - sSize * 2))
+            'Call oPointsColl.Add(New PointF(oArrowPoint.X - sSize * 2, oArrowPoint.Y - sSize))
+            'Dim oPoints As PointF() = oPointsColl.ToArray
+            Using oBrush As SolidBrush = New SolidBrush(Color.DimGray)
+                Dim oItem As cDrawCacheItem = Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, Nothing, Nothing, Nothing, oBrush)
+                Call oItem.AddPolygon({PaintPoint, New PointF(PaintPoint.X - sSize, PaintPoint.Y - sSize * 2), New PointF(PaintPoint.X - sSize * 2, PaintPoint.Y - sSize)})
+            End Using
         End If
         'If PaintOptions.DrawHighlights AndAlso PaintOptions.HighlightsOptions.Entrance Then
         '    With PaintOptions.Survey.Properties.HighlightsDetails(Properties.cHighlightsDetails.EntranceKey)
@@ -37,85 +36,28 @@ Module modRender
     Friend Sub RenderHighlightShot(Graphics As Graphics, ByVal PaintOptions As cOptions, FromPaintPoint As PointF, ToPaintPoint As PointF, Cache As cDrawCache, HighlightDetailMeters As Properties.cHighlightsDetailMeters)
         If FromPaintPoint <> ToPaintPoint Then
             With HighlightDetailMeters
-                Dim oBrush As Brush
-                If .Colors.Length = 1 Then
-                    oBrush = New SolidBrush(.Color)
-                Else
-                    oBrush = New LinearGradientBrush(FromPaintPoint, ToPaintPoint, .Colors(0), .Colors(1))
-                End If
-                Dim oSegmentItem As cDrawCacheItem = Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler)
-                Dim oPen As Pen = New Pen(oBrush, .Size / 2)
-                'oPen.StartCap = LineCap.Round
-                'oPen.EndCap = LineCap.Round
-                Call oSegmentItem.SetPen(oPen)
-                Call oSegmentItem.AddLine(FromPaintPoint, ToPaintPoint)
-                Call oBrush.Dispose()
-                Call oPen.Dispose()
+                Using oBrush As Brush = If(.Colors.Length = 1, New SolidBrush(.Color), New LinearGradientBrush(FromPaintPoint, ToPaintPoint, .Colors(0), .Colors(1)))
+                    Using oPen As Pen = New Pen(oBrush, .Size / 2)
+                        Dim oItem As cDrawCacheItem = Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, Nothing, oPen)
+                        Call oItem.AddLine(FromPaintPoint, ToPaintPoint)
+                    End Using
+                End Using
             End With
         End If
     End Sub
 
     Friend Sub RenderHighlightStation(Graphics As Graphics, ByVal PaintOptions As cOptions, PaintPoint As PointF, Cache As cDrawCache, HighlightDetailMeters As Properties.cHighlightsDetailMeters)
         With HighlightDetailMeters
-            Dim oBrush1 As SolidBrush = New SolidBrush(Color.FromArgb(.Opacity / 3, .Color))
-            Dim oRect1 As RectangleF = modPaint.GetRectanglefFomPoint(PaintPoint, .Size)
-            Dim oBrush2 As SolidBrush = New SolidBrush(Color.FromArgb(.Opacity, .Color))
-            Dim oRect2 As RectangleF = modPaint.GetRectanglefFomPoint(PaintPoint, .Size / 3)
-            Dim oSpotItem1 As cDrawCacheItem = Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler)
-            Call oSpotItem1.SetBrush(oBrush1)
-            Call oSpotItem1.AddEllipse(oRect1)
-            Dim oSpotItem2 As cDrawCacheItem = Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler)
-            Call oSpotItem2.SetBrush(oBrush2)
-            Call oSpotItem2.AddEllipse(oRect2)
-            Call oBrush1.Dispose()
-            Call oBrush2.Dispose()
+            Using oBrush1 As SolidBrush = New SolidBrush(Color.FromArgb(.Opacity / 3, .Color))
+                Dim oItem As cDrawCacheItem = Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, Nothing, Nothing, Nothing, oBrush1)
+                Call oItem.AddEllipse(modPaint.GetRectanglefFomPoint(PaintPoint, .Size))
+            End Using
+            Using oBrush2 As SolidBrush = New SolidBrush(Color.FromArgb(.Opacity, .Color))
+                Dim oItem As cDrawCacheItem = Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, Nothing, Nothing, Nothing, oBrush2)
+                Call oItem.AddEllipse(modPaint.GetRectanglefFomPoint(PaintPoint, .Size / 3))
+            End Using
         End With
     End Sub
-
-    'Friend Sub RenderSpot(Graphics As Graphics, PaintPoint As PointF, Cache As cDrawCache, Color As Color, Size As Single, Opacity As Byte)
-    '    Dim oBrush1 As SolidBrush = New SolidBrush(Color.FromArgb(Opacity / 3, Color))
-    '    Dim oRect1 As RectangleF = modPaint.GetRectanglefFomPoint(PaintPoint, Size)
-    '    Dim oBrush2 As SolidBrush = New SolidBrush(Color.FromArgb(Opacity, Color))
-    '    Dim oRect2 As RectangleF = modPaint.GetRectanglefFomPoint(PaintPoint, Size / 3)
-    '    Dim oSpotItem1 As cDrawCacheItem = Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler)
-    '    Call oSpotItem1.SetBrush(oBrush1)
-    '    Call oSpotItem1.AddEllipse(oRect1)
-    '    Dim oSpotItem2 As cDrawCacheItem = Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler)
-    '    Call oSpotItem2.SetBrush(oBrush2)
-    '    Call oSpotItem2.AddEllipse(oRect2)
-    '    Call oBrush1.Dispose()
-    '    Call oBrush2.Dispose()
-    'End Sub
-
-    'Friend Sub RenderGPSPoint(Graphics As Graphics, ByVal PaintOptions As cOptions, PaintPoint As PointF, Cache As cDrawCache, Fix As cCoordinate.FixEnum)
-    '    If PaintOptions.DrawHighlights Then
-    '        If PaintOptions.HighlightsOptions.StationWithGPSDefaultFix AndAlso Fix = cCoordinate.FixEnum.Default Then
-    '            With PaintOptions.Survey.Properties.HighlightsDetails(Properties.cHighlightsDetails.GPSDefaultFix)
-    '                Call RenderSpot(Graphics, PaintPoint, Cache, .Color, .Size, .Opacity)
-    '            End With
-    '        ElseIf PaintOptions.HighlightsOptions.StationWithGPSManualFix AndAlso Fix = cCoordinate.FixEnum.Manual Then
-    '            With PaintOptions.Survey.Properties.HighlightsDetails(Properties.cHighlightsDetails.GPSManualFix)
-    '                Call RenderSpot(Graphics, PaintPoint, Cache, .Color, .Size, .Opacity)
-    '            End With
-    '        End If
-    '    End If
-    'End Sub
-
-    'Friend Sub RenderPointWithNote(Graphics As Graphics, ByVal PaintOptions As cOptions, PaintPoint As PointF, Cache As cDrawCache)
-    '    If PaintOptions.DrawHighlights AndAlso PaintOptions.HighlightsOptions.StationWithNote Then
-    '        With PaintOptions.Survey.Properties.HighlightsDetails(Properties.cHighlightsDetails.StationWithNote)
-    '            Call RenderSpot(Graphics, PaintPoint, Cache, .Color, .Size, .Opacity)
-    '        End With
-    '    End If
-    'End Sub
-
-    'Friend Sub RenderExplorationPoint(Graphics As Graphics, ByVal PaintOptions As cOptions, PaintPoint As PointF, Cache As cDrawCache)
-    '    If PaintOptions.DrawHighlights AndAlso PaintOptions.HighlightsOptions.Exploration Then
-    '        With PaintOptions.Survey.Properties.HighlightsDetails(Properties.cHighlightsDetails.ExplorationKey)
-    '            Call RenderSpot(Graphics, PaintPoint, Cache, .Color, .Size, .Opacity)
-    '        End With
-    '    End If
-    'End Sub
 
     Friend Sub RenderTrigPointName(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal TrigPoint As cTrigPoint, ByVal Position As PointF, ByVal Cache As cDrawCache)
         Dim oDrawingObject As cOptionsDrawingObjects = PaintOptions.DrawingObjects
@@ -126,9 +68,11 @@ Module modRender
             sName = PaintOptions.Survey.Properties.GetFormattedTrigpointText(TrigPoint)
         End If
         Dim oLabelPosition As PointF = GetLabelPosition(Graphics, oDrawingObject.Font, sName, TrigPoint, Position, oDrawingObject.Font.GetHeight(Graphics) * (TrigPoint.LabelDistance / 10) / 2, oDrawingObject.Font.GetHeight(Graphics) * (TrigPoint.LabelDistance / 10) / 2)
-        Dim oItem As cDrawCacheItem = Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
-        Call oItem.SetBrush(oDrawingObject.TextBrush)
+
+        Dim oItem As cDrawCacheItem = Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, Nothing, Nothing, Nothing, oDrawingObject.TextBrush)
         Call oItem.AddString(sName, oDrawingObject.Font, oLabelPosition)
+        'Dim oItem As cDrawCacheItem = Cache.AddString(sName, oDrawingObject.Font, oLabelPosition)
+        'Call oItem.SetBrush(oDrawingObject.TextBrush)
     End Sub
 
     Friend Sub RenderTrigPoint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal TrigPoint As cTrigPoint, ByVal Position As PointF, ByVal PointSize As Single, ByVal PointBrush As Brush, ByVal PointPen As Pen, ByVal Cache As cDrawCache)
@@ -147,17 +91,12 @@ Module modRender
                 Dim oSize As SizeF = modPaint.Trigo(sR, 30)
                 Dim oPoints() As PointF = {New PointF(Position.X, Position.Y - sR), New PointF(Position.X - oSize.Height, Position.Y + oSize.Width), New PointF(Position.X + oSize.Height, Position.Y + oSize.Width), New PointF(Position.X, Position.Y - sR)}
                 Call oItem.AddPolygon(oPoints)
-                'Call oItem.AddLine(New PointF(Position.X - oSize.Height, Position.Y + oSize.Width), New PointF(Position.X + oSize.Height, Position.Y + oSize.Width))
-                'Call oItem.AddLine(New PointF(Position.X + oSize.Height, Position.Y + oSize.Width), New PointF(Position.X, Position.Y - (PointSize / 2)))
             Case cTrigPoint.TrigPointLabelSymbolEnum.EmptyTriangle
                 Call oItem.SetPen(PointPen)
                 Dim sR As Single = PointSize / 1.1!
                 Dim oSize As SizeF = modPaint.Trigo(sR, 30)
                 Dim oPoints() As PointF = {New PointF(Position.X, Position.Y - sR), New PointF(Position.X - oSize.Height, Position.Y + oSize.Width), New PointF(Position.X + oSize.Height, Position.Y + oSize.Width), New PointF(Position.X, Position.Y - sR)}
                 Call oItem.AddPolygon(oPoints)
-                'Call oItem.AddLine(New PointF(Position.X, Position.Y - (PointSize / 2)), New PointF(Position.X - oSize.Height, Position.Y + oSize.Width))
-                'Call oItem.AddLine(New PointF(Position.X - oSize.Height, Position.Y + oSize.Width), New PointF(Position.X + oSize.Height, Position.Y + oSize.Width))
-                'Call oItem.AddLine(New PointF(Position.X + oSize.Height, Position.Y + oSize.Width), New PointF(Position.X, Position.Y - (PointSize / 2)))
             Case cTrigPoint.TrigPointLabelSymbolEnum.Square
                 Dim oRect As RectangleF = New RectangleF(Position.X - (PointSize / 2), Position.Y - (PointSize / 2), PointSize, PointSize)
                 Call oItem.SetBrush(PointBrush)
@@ -171,10 +110,12 @@ Module modRender
             Case cTrigPoint.TrigPointLabelSymbolEnum.Plus
                 Call oItem.SetPen(PointPen)
                 Call oItem.AddLine(New PointF(Position.X - (PointSize / 2), Position.Y), New PointF(Position.X + (PointSize / 2), Position.Y))
+                Call oItem.StartFigure()
                 Call oItem.AddLine(New PointF(Position.X, Position.Y - (PointSize / 2)), New PointF(Position.X, Position.Y + (PointSize / 2)))
             Case cTrigPoint.TrigPointLabelSymbolEnum.Cross
                 Call oItem.SetPen(PointPen)
                 Call oItem.AddLine(New PointF(Position.X - (PointSize / 2), Position.Y - (PointSize / 2)), New PointF(Position.X + (PointSize / 2), Position.Y + (PointSize / 2)))
+                Call oItem.StartFigure()
                 Call oItem.AddLine(New PointF(Position.X + (PointSize / 2), Position.Y - (PointSize / 2)), New PointF(Position.X - (PointSize / 2), Position.Y + (PointSize / 2)))
             Case cTrigPoint.TrigPointLabelSymbolEnum.EmptySquare
                 Dim oRect As RectangleF = New RectangleF(Position.X - (PointSize / 2), Position.Y - (PointSize / 2), PointSize, PointSize)

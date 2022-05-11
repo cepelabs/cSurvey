@@ -139,7 +139,7 @@
     <value>cmdCancel</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -166,7 +166,7 @@
     <value>cmdOk</value>
   </data>
   <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
     <value>$this</value>
@@ -177,6 +177,39 @@
   <metadata name="tipDefault.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="chkExportUseCadastralIDInCaveNames.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkExportUseCadastralIDInCaveNames.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 140</value>
+  </data>
+  <data name="chkExportUseCadastralIDInCaveNames.Properties.Caption" xml:space="preserve">
+    <value>Use cadastral ID in cave names</value>
+  </data>
+  <data name="chkExportUseCadastralIDInCaveNames.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 20</value>
+  </data>
+  <data name="chkExportUseCadastralIDInCaveNames.TabIndex" type="System.Int32, mscorlib">
+    <value>137</value>
+  </data>
+  <data name="chkExportUseCadastralIDInCaveNames.ToolTip" xml:space="preserve">
+    <value>Use a dictionary to convert the names of the stations (to avoid problems of incompatibility with Therion)</value>
+  </data>
+  <data name="chkExportUseCadastralIDInCaveNames.ToolTip1" xml:space="preserve">
+    <value>Use a dictionary to convert the names of the stations (to avoid problems of incompatibility with Therion)</value>
+  </data>
+  <data name="&gt;&gt;chkExportUseCadastralIDInCaveNames.Name" xml:space="preserve">
+    <value>chkExportUseCadastralIDInCaveNames</value>
+  </data>
+  <data name="&gt;&gt;chkExportUseCadastralIDInCaveNames.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkExportUseCadastralIDInCaveNames.Parent" xml:space="preserve">
+    <value>XtraTabPage1</value>
+  </data>
+  <data name="&gt;&gt;chkExportUseCadastralIDInCaveNames.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="txtCaveBordersTransparency.Location" type="System.Drawing.Point, System.Drawing">
     <value>92, 8</value>
   </data>
@@ -201,128 +234,83 @@
   <data name="&gt;&gt;txtCaveBordersTransparency.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="chkExportUseCadastralIDInCaveNames.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkExportUseCadastralIDInCaveNames.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="chkExportUseCadastralIDInCaveNames.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 134</value>
-  </data>
-  <data name="chkExportUseCadastralIDInCaveNames.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 17</value>
-  </data>
-  <data name="chkExportUseCadastralIDInCaveNames.TabIndex" type="System.Int32, mscorlib">
-    <value>137</value>
-  </data>
-  <data name="chkExportUseCadastralIDInCaveNames.Text" xml:space="preserve">
-    <value>Use cadastral ID in cave names</value>
-  </data>
-  <data name="chkExportUseCadastralIDInCaveNames.ToolTip" xml:space="preserve">
-    <value>Use a dictionary to convert the names of the stations (to avoid problems of incompatibility with Therion)</value>
-  </data>
-  <data name="&gt;&gt;chkExportUseCadastralIDInCaveNames.Name" xml:space="preserve">
-    <value>chkExportUseCadastralIDInCaveNames</value>
-  </data>
-  <data name="&gt;&gt;chkExportUseCadastralIDInCaveNames.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkExportUseCadastralIDInCaveNames.Parent" xml:space="preserve">
-    <value>TabPage1</value>
-  </data>
-  <data name="&gt;&gt;chkExportUseCadastralIDInCaveNames.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="chkExportWaypoint.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="chkExportWaypoint.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
+    <value>12, 12</value>
+  </data>
+  <data name="chkExportWaypoint.Properties.Caption" xml:space="preserve">
+    <value>Stations as waypoints</value>
   </data>
   <data name="chkExportWaypoint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 17</value>
+    <value>128, 20</value>
   </data>
   <data name="chkExportWaypoint.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="chkExportWaypoint.Text" xml:space="preserve">
-    <value>Stations as waypoints</value>
   </data>
   <data name="&gt;&gt;chkExportWaypoint.Name" xml:space="preserve">
     <value>chkExportWaypoint</value>
   </data>
   <data name="&gt;&gt;chkExportWaypoint.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkExportWaypoint.Parent" xml:space="preserve">
-    <value>TabPage1</value>
+    <value>XtraTabPage1</value>
   </data>
   <data name="&gt;&gt;chkExportWaypoint.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="chkExportTrack.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>1</value>
   </data>
   <data name="chkExportTrack.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkExportTrack.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 29</value>
+    <value>12, 38</value>
+  </data>
+  <data name="chkExportTrack.Properties.Caption" xml:space="preserve">
+    <value>Centerline</value>
   </data>
   <data name="chkExportTrack.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 17</value>
+    <value>72, 20</value>
   </data>
   <data name="chkExportTrack.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="chkExportTrack.Text" xml:space="preserve">
-    <value>Centerline</value>
   </data>
   <data name="&gt;&gt;chkExportTrack.Name" xml:space="preserve">
     <value>chkExportTrack</value>
   </data>
   <data name="&gt;&gt;chkExportTrack.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkExportTrack.Parent" xml:space="preserve">
-    <value>TabPage1</value>
+    <value>XtraTabPage1</value>
   </data>
   <data name="&gt;&gt;chkExportTrack.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="chkExportCaveBorders.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>3</value>
   </data>
   <data name="chkExportCaveBorders.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkExportCaveBorders.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 52</value>
+    <value>12, 64</value>
+  </data>
+  <data name="chkExportCaveBorders.Properties.Caption" xml:space="preserve">
+    <value>Cave borders</value>
   </data>
   <data name="chkExportCaveBorders.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 17</value>
+    <value>88, 20</value>
   </data>
   <data name="chkExportCaveBorders.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
-  </data>
-  <data name="chkExportCaveBorders.Text" xml:space="preserve">
-    <value>Cave borders</value>
   </data>
   <data name="&gt;&gt;chkExportCaveBorders.Name" xml:space="preserve">
     <value>chkExportCaveBorders</value>
   </data>
   <data name="&gt;&gt;chkExportCaveBorders.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkExportCaveBorders.Parent" xml:space="preserve">
-    <value>TabPage1</value>
+    <value>XtraTabPage1</value>
   </data>
   <data name="&gt;&gt;chkExportCaveBorders.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="TabControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+    <value>5</value>
   </data>
   <data name="lblCaveBordersTransparency.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -361,7 +349,7 @@
     <value>False</value>
   </data>
   <data name="pnlCaveBordersTransparency.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 43</value>
+    <value>129, 55</value>
   </data>
   <data name="pnlCaveBordersTransparency.Size" type="System.Drawing.Size, System.Drawing">
     <value>170, 36</value>
@@ -376,76 +364,49 @@
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;pnlCaveBordersTransparency.Parent" xml:space="preserve">
-    <value>TabPage1</value>
+    <value>XtraTabPage1</value>
   </data>
   <data name="&gt;&gt;pnlCaveBordersTransparency.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
-  <data name="chkExportLinkedSurveys.AutoSize" type="System.Boolean, mscorlib">
+  <data name="chkExportLinkedSurveys.EditValue" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="chkExportLinkedSurveys.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkExportLinkedSurveys.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 96</value>
+    <value>12, 102</value>
+  </data>
+  <data name="chkExportLinkedSurveys.Properties.Caption" xml:space="preserve">
+    <value>Linked surveys</value>
   </data>
   <data name="chkExportLinkedSurveys.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 17</value>
+    <value>94, 20</value>
   </data>
   <data name="chkExportLinkedSurveys.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
-  </data>
-  <data name="chkExportLinkedSurveys.Text" xml:space="preserve">
-    <value>Linked surveys</value>
   </data>
   <data name="&gt;&gt;chkExportLinkedSurveys.Name" xml:space="preserve">
     <value>chkExportLinkedSurveys</value>
   </data>
   <data name="&gt;&gt;chkExportLinkedSurveys.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkExportLinkedSurveys.Parent" xml:space="preserve">
-    <value>TabPage1</value>
+    <value>XtraTabPage1</value>
   </data>
   <data name="&gt;&gt;chkExportLinkedSurveys.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="TabPage1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="TabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="TabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>401, 203</value>
-  </data>
-  <data name="TabPage1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="TabPage1.Text" xml:space="preserve">
-    <value>General</value>
-  </data>
-  <data name="&gt;&gt;TabPage1.Name" xml:space="preserve">
-    <value>TabPage1</value>
-  </data>
-  <data name="&gt;&gt;TabPage1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TabPage1.Parent" xml:space="preserve">
-    <value>TabControl1</value>
-  </data>
-  <data name="&gt;&gt;TabPage1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="linkedSurveys.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="linkedSurveys.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>0, 0</value>
   </data>
   <data name="linkedSurveys.Size" type="System.Drawing.Size, System.Drawing">
-    <value>395, 197</value>
+    <value>407, 192</value>
   </data>
   <data name="linkedSurveys.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -457,57 +418,66 @@
     <value>cSurveyPC.cLinkedSurveySelectorControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;linkedSurveys.Parent" xml:space="preserve">
-    <value>TabPage2</value>
+    <value>XtraTabPage2</value>
   </data>
   <data name="&gt;&gt;linkedSurveys.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="TabPage2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="TabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="TabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>401, 203</value>
-  </data>
-  <data name="TabPage2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="TabPage2.Text" xml:space="preserve">
-    <value>Linked surveys</value>
-  </data>
-  <data name="&gt;&gt;TabPage2.Name" xml:space="preserve">
-    <value>TabPage2</value>
-  </data>
-  <data name="&gt;&gt;TabPage2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TabPage2.Parent" xml:space="preserve">
-    <value>TabControl1</value>
-  </data>
-  <data name="&gt;&gt;TabPage2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="TabControl1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="XtraTabControl1.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
   </data>
-  <data name="TabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>409, 229</value>
+  <data name="XtraTabPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>407, 192</value>
   </data>
-  <data name="TabControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>169</value>
+  <data name="XtraTabPage1.Text" xml:space="preserve">
+    <value>General</value>
   </data>
-  <data name="&gt;&gt;TabControl1.Name" xml:space="preserve">
-    <value>TabControl1</value>
+  <data name="&gt;&gt;XtraTabPage1.Name" xml:space="preserve">
+    <value>XtraTabPage1</value>
   </data>
-  <data name="&gt;&gt;TabControl1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;XtraTabPage1.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;TabControl1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;XtraTabPage1.Parent" xml:space="preserve">
+    <value>XtraTabControl1</value>
+  </data>
+  <data name="&gt;&gt;XtraTabPage1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="XtraTabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>409, 221</value>
+  </data>
+  <data name="XtraTabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>170</value>
+  </data>
+  <data name="XtraTabPage2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>407, 192</value>
+  </data>
+  <data name="XtraTabPage2.Text" xml:space="preserve">
+    <value>Linked surveys</value>
+  </data>
+  <data name="&gt;&gt;XtraTabPage2.Name" xml:space="preserve">
+    <value>XtraTabPage2</value>
+  </data>
+  <data name="&gt;&gt;XtraTabPage2.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;XtraTabPage2.Parent" xml:space="preserve">
+    <value>XtraTabControl1</value>
+  </data>
+  <data name="&gt;&gt;XtraTabPage2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;XtraTabControl1.Name" xml:space="preserve">
+    <value>XtraTabControl1</value>
+  </data>
+  <data name="&gt;&gt;XtraTabControl1.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabControl, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;XtraTabControl1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;TabControl1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;XtraTabControl1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -519,10 +489,7 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>433, 284</value>
   </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="frmExportGoogleKML.IconOptions.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4KwAAfTEAAH41AAB/OgAAhTwAAIJAAACHQwAAiEUAAIlJAACO
@@ -586,9 +553,6 @@
         AAAkT09PT09PT080LAAAAAAAJyUjIyMjIiMkJwAAAAAAAP//AAAABwAAAAMAAAABAAAAAAAAAAAAAAAD
         AAAAAwAAAAcAAAAHAAAABwAAAAcAAAAHAAAADwAAAB8AAAA/AAA=
 </value>
-  </data>
-  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

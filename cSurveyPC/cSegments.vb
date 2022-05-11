@@ -1,4 +1,5 @@
-﻿Imports System.Xml
+﻿Imports System.ComponentModel
+Imports System.Xml
 
 Namespace cSurvey
     Public Class cSegments
@@ -23,6 +24,23 @@ Namespace cSurvey
 
             Friend Sub New(ByVal Indexes As List(Of Integer))
                 oIndexes = Indexes
+            End Sub
+        End Class
+
+        Friend Class OnSegmentMoveEventArgs
+            Inherits OnSegmentEventArgs
+
+            Private iOldIndex As Integer
+
+            Public ReadOnly Property OldIndex As Integer
+                Get
+                    Return iOldIndex
+                End Get
+            End Property
+
+            Friend Sub New(ByVal Segment As cSegment, ByVal OldIndex As Integer, ByVal Index As Integer)
+                MyBase.New(Segment, Index)
+                iOldIndex = OldIndex
             End Sub
         End Class
 
@@ -74,18 +92,19 @@ Namespace cSurvey
             End Property
         End Class
 
-        Friend Event OnSegmentBeforeAppend(Sender As cSegments, ByVal Args As OnSegmentEventArgs)
-        Friend Event OnSegmentAppend(ByVal Sender As cSegments, ByVal Args As OnSegmentEventArgs)
-        Friend Event OnSegmentInsert(ByVal Sender As cSegments, ByVal Args As OnSegmentEventArgs)
-        Friend Event OnSegmentRemove(ByVal Sender As cSegments, ByVal Args As OnSegmentEventArgs)
-        Friend Event OnSegmentRemoveRange(ByVal Sender As cSegments, ByVal Args As OnSegmentsEventArgs)
-        Friend Event OnSegmentChange(ByVal Sender As cSegments, ByVal Args As OnSegmentEventArgs)
-        Friend Event OnSegmentReassigned(ByVal Sender As cSegments, ByVal Args As OnSegmentEventArgs)
-        Friend Event OnSegmentSplayChange(ByVal Sender As cSegments, ByVal Args As OnSegmentEventArgs)
+        Friend Event OnSegmentBeforeAppend(Sender As cSegments, ByVal e As OnSegmentEventArgs)
+        Friend Event OnSegmentAppend(ByVal Sender As cSegments, ByVal e As OnSegmentEventArgs)
+        Friend Event OnSegmentInsert(ByVal Sender As cSegments, ByVal e As OnSegmentEventArgs)
+        Friend Event OnSegmentRemove(ByVal Sender As cSegments, ByVal e As OnSegmentEventArgs)
+        Friend Event OnSegmentMove(ByVal Sender As cSegments, ByVal e As OnSegmentMoveEventArgs)
+        Friend Event OnSegmentRemoveRange(ByVal Sender As cSegments, ByVal e As OnSegmentsEventArgs)
+        Friend Event OnSegmentChange(ByVal Sender As cSegments, ByVal e As OnSegmentEventArgs)
+        Friend Event OnSegmentReassigned(ByVal Sender As cSegments, ByVal e As OnSegmentEventArgs)
+        Friend Event OnSegmentSplayChange(ByVal Sender As cSegments, ByVal e As OnSegmentEventArgs)
 
         Friend Event OnClear(ByVal Sender As cSegments)
 
-        Friend Event OnSegmentLoad(ByVal Sender As cSegments, ByVal Args As OnSegmentLoadEventArgs)
+        Friend Event OnSegmentLoad(ByVal Sender As cSegments, ByVal e As OnSegmentLoadEventArgs)
 
         'Public Function GetPriorities() As List(Of Integer)
         '    Return oSegments.Cast(Of cSegment).Select(Function(segment) segment.Priority).Distinct.ToList
@@ -111,9 +130,10 @@ Namespace cSurvey
         Public Sub MoveTo(ByVal Index As Integer, ByVal Segment As cSegment)
             Try
                 Dim iIndex As Integer = oSegments.IndexOf(Segment)
-                If Index <> iIndex And Index >= 0 And Index < oSegments.Count Then
+                If Index <> iIndex AndAlso Index >= 0 AndAlso Index < oSegments.Count Then
                     Call oSegments.Remove(Segment)
                     Call oSegments.Insert(Index, Segment)
+                    RaiseEvent OnSegmentMove(Me, New OnSegmentMoveEventArgs(Segment, iIndex, Index))
                 End If
             Catch
             End Try
@@ -138,7 +158,7 @@ Namespace cSurvey
             Return oSegments.Contains(ID)
         End Function
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal File As Storage.cFile, ByVal Segments As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal Segments As XmlElement)
             oSurvey = Survey
 
             If oSurvey.Properties.CreatorID.ToLower = "topodroid" Then
@@ -176,7 +196,7 @@ Namespace cSurvey
             Next
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum)
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum)
             Dim oXmlSegments As XmlElement = Document.CreateElement("segments")
             Dim iIndex As Integer = 0
             Dim iCount As Integer = oSegments.Count
@@ -229,7 +249,7 @@ Namespace cSurvey
             AddHandler oSegment.OnChange, AddressOf oSegment_OnChange
             AddHandler oSegment.OnSplayChange, AddressOf oSegment_OnSplayChange
             AddHandler oSegment.OnReassigned, AddressOf oSegment_OnReassigned
-            AddHandler oSegment.OnGetSplayName, AddressOf osegment_ongetsplayname
+            AddHandler oSegment.OnGetSplayName, AddressOf oSegment_OnGetSplayName
             RaiseEvent OnSegmentAppend(Me, New cSegments.OnSegmentEventArgs(oSegment, oSegments.Count - 1))
             Return oSegment
         End Function
@@ -328,12 +348,15 @@ Namespace cSurvey
             End If
         End Sub
 
-        Public Sub Remove(ByVal Segment As cSegment)
-            Dim iIndex As Integer = Segment.Index
-            Call oSegments.Remove(Segment)
-            Call Segment.Attachments.Clear()
-            RaiseEvent OnSegmentRemove(Me, New cSegments.OnSegmentEventArgs(Segment, iIndex))
-        End Sub
+        Public Function Remove(ByVal Segment As cSegment) As Boolean
+            If oSegments.Contains(Segment) Then
+                Dim iIndex As Integer = oSegments.IndexOf(Segment)
+                Call oSegments.Remove(Segment)
+                Call Segment.Attachments.Clear()
+                RaiseEvent OnSegmentRemove(Me, New cSegments.OnSegmentEventArgs(Segment, iIndex))
+                Return True
+            End If
+        End Function
 
         Public Sub Remove(ByVal Index As Integer)
             Dim oSegment As cSegment = oSegments(Index)
@@ -342,7 +365,7 @@ Namespace cSurvey
             RaiseEvent OnSegmentRemove(Me, New cSegments.OnSegmentEventArgs(oSegment, Index))
         End Sub
 
-        Friend Function GetTrigPointsNames() As SortedSet(Of String) Implements cISegmentCollection.GetTrigPointsNames
+        Friend Function GetTrigPointsNames() As SortedSet(Of String) Implements cISegmentCollection.GetTrigpointsNames
             Dim oTable As SortedSet(Of String) = New SortedSet(Of String)
             Dim sName As String
             For Each oSegment As cSegment In oSegments
@@ -566,6 +589,15 @@ Namespace cSurvey
                 sSb &= oSegment.ToTSV & vbCrLf
             Next
             Return sSb
+        End Function
+
+        Public Function ToBindingList() As BindingList(Of cSegment) 'cSegmentsBindinglist
+            Dim oBindingList As BindingList(Of cSegment) = New BindingList(Of cSegment)
+            For Each osegment As cSegment In oSegments
+                Call oBindingList.Add(osegment)
+            Next
+            Return oBindingList
+            'Return New cSegmentsBindinglist(Me)
         End Function
 
         Public Function ToList() As List(Of cISegment) Implements cISegmentCollection.ToList

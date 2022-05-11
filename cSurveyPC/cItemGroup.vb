@@ -352,12 +352,12 @@ Namespace cSurvey.Design.Items
             oItems = New cItems(Survey, Design, Layer)
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As Storage.cFile, ByVal item As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As cFile, ByVal item As XmlElement)
             Call MyBase.New(Survey, Design, Layer, File, item)
             oItems = New cItems(Survey, Design, Layer, File, item.Item("items"))
         End Sub
 
-        Friend Overrides Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+        Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oXMLItem As XmlElement = MyBase.SaveTo(File, Document, Parent, Options)
             Call oItems.SaveTo(File, Document, oXMLItem, Options)
             Return oXMLItem

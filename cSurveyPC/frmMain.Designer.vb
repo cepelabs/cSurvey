@@ -529,6 +529,8 @@ Partial Class frmMain
         Me.cboPropSignRotateMode = New System.Windows.Forms.ComboBox()
         Me.lblPropSignRotateMode = New System.Windows.Forms.Label()
         Me.pnlPropImage = New System.Windows.Forms.Panel()
+        Me.txtPropImageRotateAngle = New System.Windows.Forms.NumericUpDown()
+        Me.lblPropImageRotateAngle = New System.Windows.Forms.Label()
         Me.cmdPropImageView = New System.Windows.Forms.Button()
         Me.Label34 = New System.Windows.Forms.Label()
         Me.txtPropImageScaleFree = New System.Windows.Forms.NumericUpDown()
@@ -613,6 +615,7 @@ Partial Class frmMain
         Me.lblPropTopUM = New System.Windows.Forms.Label()
         Me.lblPropPosition = New System.Windows.Forms.Label()
         Me.pnlPropRotation = New System.Windows.Forms.Panel()
+        Me.chkPropRotateCenterOnOrigin = New System.Windows.Forms.CheckBox()
         Me.cmdPropRotateLeftByDegree = New System.Windows.Forms.Button()
         Me.cmdPropRotateRightByDegree = New System.Windows.Forms.Button()
         Me.cmdPropRotateRight = New System.Windows.Forms.Button()
@@ -1278,6 +1281,7 @@ Partial Class frmMain
         Me.ToolStripMenuItem103 = New System.Windows.Forms.ToolStripSeparator()
         Me.mnuViewScript = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem114 = New System.Windows.Forms.ToolStripSeparator()
+        Me.mnuViewSharedTexts = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuViewLinkedSurveys = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem6 = New System.Windows.Forms.ToolStripSeparator()
         Me.mnuViewConsole = New System.Windows.Forms.ToolStripMenuItem()
@@ -1563,221 +1567,222 @@ Partial Class frmMain
         Me.ntiMain = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.bwMain = New System.ComponentModel.BackgroundWorker()
-        Me.tsMain.ContentPanel.SuspendLayout()
-        Me.tsMain.TopToolStripPanel.SuspendLayout()
-        Me.tsMain.SuspendLayout()
-        Me.pnlConsole.SuspendLayout()
-        Me.pnlDesigner.SuspendLayout()
-        Me.pnl3D.SuspendLayout()
-        Me.pnlPopup.SuspendLayout()
-        CType(Me.picPopupWarning, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picMap, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tbViews.SuspendLayout()
-        Me.pnlData.SuspendLayout()
-        CType(Me.spSegmentsAndTrigpoints, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.spSegmentsAndTrigpoints.Panel1.SuspendLayout()
-        Me.spSegmentsAndTrigpoints.Panel2.SuspendLayout()
-        Me.spSegmentsAndTrigpoints.SuspendLayout()
-        CType(Me.spSegments, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.spSegments.Panel1.SuspendLayout()
-        Me.spSegments.Panel2.SuspendLayout()
-        Me.spSegments.SuspendLayout()
-        CType(Me.grdSegments, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.mnuSegments.SuspendLayout()
-        Me.pnlSegment.SuspendLayout()
-        Me.tabSegmentProperty.SuspendLayout()
-        Me.tabSegmentPropertyMain.SuspendLayout()
-        Me.pnlSegmentSurfaceProfile.SuspendLayout()
-        Me.tabSegmentPropertyData.SuspendLayout()
-        Me.mnuSegmentsDataProperties.SuspendLayout()
-        Me.tabSegmentPropertyLayout.SuspendLayout()
-        CType(Me.picSegmentColor, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabSegmentPropertyNote.SuspendLayout()
-        Me.tabSegmentPropertyImage.SuspendLayout()
-        CType(Me.tvSegmentAttachments, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.mnuAttachments.SuspendLayout()
-        Me.pnlSegmentFromAndTo.SuspendLayout()
-        Me.pnlSegmentCaveBranches.SuspendLayout()
-        Me.pnlSegmentSession.SuspendLayout()
-        CType(Me.spTrigPoints, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.spTrigPoints.Panel1.SuspendLayout()
-        Me.spTrigPoints.Panel2.SuspendLayout()
-        Me.spTrigPoints.SuspendLayout()
-        CType(Me.lvTrigPoints, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.mnuTrigPoints.SuspendLayout()
-        Me.pnlTrigPoint.SuspendLayout()
-        Me.tabTrigpointProperty.SuspendLayout()
-        Me.tabTrigpointMain.SuspendLayout()
-        CType(Me.grdTrigPointAliases, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.mnuAliases.SuspendLayout()
-        Me.tabTrigpointPropertyData.SuspendLayout()
-        Me.mnuTrigpointDataProperties.SuspendLayout()
-        Me.tabTrigpointLayout.SuspendLayout()
-        CType(Me.txtTrigPointLabelDistance, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picTrigpointFontColor, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabTrigpointConnections.SuspendLayout()
-        CType(Me.grdTrigpointConnections, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabTrigpointCoordinate.SuspendLayout()
-        Me.pnlTrigpointCoordinateWGS84.SuspendLayout()
-        Me.pnlTrigpointCoordinateUTM.SuspendLayout()
-        Me.tabTrigpointNote.SuspendLayout()
-        Me.pnlTrigpointName.SuspendLayout()
-        Me.tbSegmentsAndTrigpoints.SuspendLayout()
-        CType(Me.trkZoom, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlObjectLayers.SuspendLayout()
-        CType(Me.tvLayers2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.mnuLayersAndItems.SuspendLayout()
-        CType(Me.piclayerItemPreview, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlProperties.SuspendLayout()
-        Me.tabObjectProp.SuspendLayout()
-        Me.tabObjectPropDesign.SuspendLayout()
-        Me.tblDesignProp.SuspendLayout()
-        Me.pnlDesignSize.SuspendLayout()
-        CType(Me.txtDesignScaleHeight, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDesignScaleWidth, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlDesignPosition.SuspendLayout()
-        Me.pnlDesignRotation.SuspendLayout()
-        Me.pnlDesignStyle.SuspendLayout()
-        Me.pnlDesignCombineColorMode.SuspendLayout()
-        Me.pnlDesignSnapToGrid.SuspendLayout()
-        CType(Me.txtDesignSnapToGrid, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlDesignPlotContainer.SuspendLayout()
-        Me.pnlDesignPlot.SuspendLayout()
-        Me.pnlDesignSurfaceContainer.SuspendLayout()
-        Me.pnlDesignSurface.SuspendLayout()
-        Me.mnuDesignSurfaceLayers.SuspendLayout()
-        Me.pnlDesignSurfaceProfile.SuspendLayout()
-        Me.pnlDesignPrintOrExportAreaContainer.SuspendLayout()
-        Me.tabObjectPropMain.SuspendLayout()
-        Me.tblObjectProp.SuspendLayout()
-        Me.pnlPropConvertTo.SuspendLayout()
-        Me.pnlPropClipping.SuspendLayout()
-        Me.pnlPropShape.SuspendLayout()
-        Me.pnlPropShapeSequences.SuspendLayout()
-        CType(Me.txtPropLinePointReductionFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlPropSign.SuspendLayout()
-        Me.pnlPropImage.SuspendLayout()
-        CType(Me.txtPropImageScaleFree, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picPropImage, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlPropInfo.SuspendLayout()
-        Me.pnlPropCaveBranches.SuspendLayout()
-        Me.pnlPropPen.SuspendLayout()
-        Me.tblPropPen.SuspendLayout()
-        Me.pnlPropPenGeneric.SuspendLayout()
-        Me.pnlPropPenCustom.SuspendLayout()
-        CType(Me.txtPropPenDecorationScale, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropPenDecorationSpacePercentage, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picPropPenColor, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlPropSize.SuspendLayout()
-        CType(Me.txtPropScaleHeight, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropScaleWidth, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlPropPosition.SuspendLayout()
-        Me.pnlPropPositionSubPanel1.SuspendLayout()
-        Me.pnlPropRotation.SuspendLayout()
-        Me.pnlPropLineType.SuspendLayout()
-        Me.pnlPropBrush.SuspendLayout()
-        Me.tblPropBrush.SuspendLayout()
-        Me.pnlPropBrushGeneric.SuspendLayout()
-        Me.pnlPropBrushCustom.SuspendLayout()
-        CType(Me.picPropBrushAlternativeBrushColor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropBrushClipartAngle, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picPropBrushColor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picPropBrushClipartImage, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropBrushClipartZoomFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropBrushClipartDensity, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlPropSegmentBinding.SuspendLayout()
-        Me.pnlPropSegmentsBinding.SuspendLayout()
-        Me.pnlPropText.SuspendLayout()
-        Me.tblPropText.SuspendLayout()
-        Me.pnlPropTextFont.SuspendLayout()
-        CType(Me.picPropFontColor, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlPropTextStyle.SuspendLayout()
-        Me.pnlPropTextStyleVAlign.SuspendLayout()
-        Me.pnlPropCrossSection.SuspendLayout()
-        CType(Me.txtPropCrossSectionHeight, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropCrossSectionWidth, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropProfileTextDistance, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlPropQuota.SuspendLayout()
-        Me.pnlPropSketch.SuspendLayout()
-        CType(Me.picPropSketch, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlPropMergeMode.SuspendLayout()
-        Me.pnlPropTransparency.SuspendLayout()
-        CType(Me.txtPropTransparency, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlPropObjectsBinding.SuspendLayout()
-        Me.pnlPropPointsSequences.SuspendLayout()
-        Me.pnlPropSequenceLineType.SuspendLayout()
-        Me.pnlPropProp.SuspendLayout()
-        Me.pnlPropItems.SuspendLayout()
-        Me.pnlPropPopup.SuspendLayout()
-        CType(Me.picPropPopupWarning, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlPropProfileSplayBorder.SuspendLayout()
-        CType(Me.txtPropProfileSplayNegInclinationRangeMax, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropProfileSplayNegInclinationRangeMin, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropProfileSplayPosInclinationRangeMax, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropProfileSplayPosInclinationRangeMin, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropProfileSplayMaxVariationAngle, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropProfileSplayProjectionAngle, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picPropProfileProjectionSchema, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlPropPlanSplayBorder.SuspendLayout()
-        CType(Me.txtPropPlanSplayInclinationRangeMax, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropPlanSplayInclinationRangeMin, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropPlanSplayPlanDeltaZ, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropPlanSplayMaxVariationDelta, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picPropPlanProjectionSchema, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlPropDataProperties.SuspendLayout()
-        Me.mnuDesignDataProperties.SuspendLayout()
-        Me.pnlPropCrossSectionSplayBorder.SuspendLayout()
-        CType(Me.txtPropCrossSectionSplayProjectionVerticalAngle, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropCrossSectionSplayMaxVariationAngle, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropCrossSectionSplayProjectionAngle, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picPropCrossSectionProjectionSchema, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlPropSegmentInfo.SuspendLayout()
-        Me.mnuSegmentInfo.SuspendLayout()
-        Me.pnlPropTrigpointInfo.SuspendLayout()
-        Me.mnuTrigpointInfo.SuspendLayout()
-        Me.pnlPropCrossSectionMarker.SuspendLayout()
-        CType(Me.txtPropCrossSectionMarkerDH, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropCrossSectionMarkerLW, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropCrossSectionMarkerRW, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropCrossSectionMarkerUH, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropCrossSectionMarkerLabelDistance, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropCrossSectionMarkerDeltaAngle, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropCrossSectionMarkerPosition, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropCrossSectionMarkerU, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropCrossSectionMarkerL, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropCrossSectionMarkerR, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropCrossSectionMarkerD, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlPropTrigpointsDistances.SuspendLayout()
-        Me.pnlPropVisibility.SuspendLayout()
-        Me.pnlPropAttachment.SuspendLayout()
-        CType(Me.picPropAttachmentPreview, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlPropLegend.SuspendLayout()
-        Me.pnlPropScale.SuspendLayout()
-        Me.pnlPropCompass.SuspendLayout()
-        Me.tabObjectProp3D.SuspendLayout()
-        Me.tbl3DProp.SuspendLayout()
-        Me.pnl3DMain.SuspendLayout()
-        CType(Me.txt3DSurfaceElevationAmp, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnl3DPlotContainer.SuspendLayout()
-        Me.pnl3dPlotModel.SuspendLayout()
-        Me.pnl3DPlot.SuspendLayout()
-        Me.pnl3DSurfaceContainer.SuspendLayout()
-        Me.pnl3DSurface.SuspendLayout()
-        CType(Me.txt3DSurfaceTransparency, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tbMain.SuspendLayout()
-        Me.tbLayers.SuspendLayout()
-        Me.tbPens.SuspendLayout()
-        Me.tbWorkspaces.SuspendLayout()
-        Me.tbView.SuspendLayout()
-        Me.sbMain.SuspendLayout()
-        Me.mnuMain.SuspendLayout()
-        Me.mnuDesignNone.SuspendLayout()
-        Me.mnuDesignItem.SuspendLayout()
-        Me.mnuDesignItemPoint.SuspendLayout()
-        Me.mnuMapDrop.SuspendLayout()
-        Me.mnuTray.SuspendLayout()
-        Me.SuspendLayout()
+        Me.tsMain.ContentPanel.SuspendLayout
+        Me.tsMain.TopToolStripPanel.SuspendLayout
+        Me.tsMain.SuspendLayout
+        Me.pnlConsole.SuspendLayout
+        Me.pnlDesigner.SuspendLayout
+        Me.pnl3D.SuspendLayout
+        Me.pnlPopup.SuspendLayout
+        CType(Me.picPopupWarning, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.picMap, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tbViews.SuspendLayout
+        Me.pnlData.SuspendLayout
+        CType(Me.spSegmentsAndTrigpoints, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.spSegmentsAndTrigpoints.Panel1.SuspendLayout
+        Me.spSegmentsAndTrigpoints.Panel2.SuspendLayout
+        Me.spSegmentsAndTrigpoints.SuspendLayout
+        CType(Me.spSegments, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.spSegments.Panel1.SuspendLayout
+        Me.spSegments.Panel2.SuspendLayout
+        Me.spSegments.SuspendLayout
+        CType(Me.grdSegments, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.mnuSegments.SuspendLayout
+        Me.pnlSegment.SuspendLayout
+        Me.tabSegmentProperty.SuspendLayout
+        Me.tabSegmentPropertyMain.SuspendLayout
+        Me.pnlSegmentSurfaceProfile.SuspendLayout
+        Me.tabSegmentPropertyData.SuspendLayout
+        Me.mnuSegmentsDataProperties.SuspendLayout
+        Me.tabSegmentPropertyLayout.SuspendLayout
+        CType(Me.picSegmentColor, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabSegmentPropertyNote.SuspendLayout
+        Me.tabSegmentPropertyImage.SuspendLayout
+        CType(Me.tvSegmentAttachments, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.mnuAttachments.SuspendLayout
+        Me.pnlSegmentFromAndTo.SuspendLayout
+        Me.pnlSegmentCaveBranches.SuspendLayout
+        Me.pnlSegmentSession.SuspendLayout
+        CType(Me.spTrigPoints, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.spTrigPoints.Panel1.SuspendLayout
+        Me.spTrigPoints.Panel2.SuspendLayout
+        Me.spTrigPoints.SuspendLayout
+        CType(Me.lvTrigPoints, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.mnuTrigPoints.SuspendLayout
+        Me.pnlTrigPoint.SuspendLayout
+        Me.tabTrigpointProperty.SuspendLayout
+        Me.tabTrigpointMain.SuspendLayout
+        CType(Me.grdTrigPointAliases, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.mnuAliases.SuspendLayout
+        Me.tabTrigpointPropertyData.SuspendLayout
+        Me.mnuTrigpointDataProperties.SuspendLayout
+        Me.tabTrigpointLayout.SuspendLayout
+        CType(Me.txtTrigPointLabelDistance, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.picTrigpointFontColor, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabTrigpointConnections.SuspendLayout
+        CType(Me.grdTrigpointConnections, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabTrigpointCoordinate.SuspendLayout
+        Me.pnlTrigpointCoordinateWGS84.SuspendLayout
+        Me.pnlTrigpointCoordinateUTM.SuspendLayout
+        Me.tabTrigpointNote.SuspendLayout
+        Me.pnlTrigpointName.SuspendLayout
+        Me.tbSegmentsAndTrigpoints.SuspendLayout
+        CType(Me.trkZoom, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlObjectLayers.SuspendLayout
+        CType(Me.tvLayers2, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.mnuLayersAndItems.SuspendLayout
+        CType(Me.piclayerItemPreview, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlProperties.SuspendLayout
+        Me.tabObjectProp.SuspendLayout
+        Me.tabObjectPropDesign.SuspendLayout
+        Me.tblDesignProp.SuspendLayout
+        Me.pnlDesignSize.SuspendLayout
+        CType(Me.txtDesignScaleHeight, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtDesignScaleWidth, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlDesignPosition.SuspendLayout
+        Me.pnlDesignRotation.SuspendLayout
+        Me.pnlDesignStyle.SuspendLayout
+        Me.pnlDesignCombineColorMode.SuspendLayout
+        Me.pnlDesignSnapToGrid.SuspendLayout
+        CType(Me.txtDesignSnapToGrid, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlDesignPlotContainer.SuspendLayout
+        Me.pnlDesignPlot.SuspendLayout
+        Me.pnlDesignSurfaceContainer.SuspendLayout
+        Me.pnlDesignSurface.SuspendLayout
+        Me.mnuDesignSurfaceLayers.SuspendLayout
+        Me.pnlDesignSurfaceProfile.SuspendLayout
+        Me.pnlDesignPrintOrExportAreaContainer.SuspendLayout
+        Me.tabObjectPropMain.SuspendLayout
+        Me.tblObjectProp.SuspendLayout
+        Me.pnlPropConvertTo.SuspendLayout
+        Me.pnlPropClipping.SuspendLayout
+        Me.pnlPropShape.SuspendLayout
+        Me.pnlPropShapeSequences.SuspendLayout
+        CType(Me.txtPropLinePointReductionFactor, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlPropSign.SuspendLayout
+        Me.pnlPropImage.SuspendLayout
+        CType(Me.txtPropImageRotateAngle, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropImageScaleFree, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.picPropImage, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlPropInfo.SuspendLayout
+        Me.pnlPropCaveBranches.SuspendLayout
+        Me.pnlPropPen.SuspendLayout
+        Me.tblPropPen.SuspendLayout
+        Me.pnlPropPenGeneric.SuspendLayout
+        Me.pnlPropPenCustom.SuspendLayout
+        CType(Me.txtPropPenDecorationScale, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropPenWidth, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropPenDecorationSpacePercentage, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.picPropPenColor, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlPropSize.SuspendLayout
+        CType(Me.txtPropScaleHeight, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropScaleWidth, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlPropPosition.SuspendLayout
+        Me.pnlPropPositionSubPanel1.SuspendLayout
+        Me.pnlPropRotation.SuspendLayout
+        Me.pnlPropLineType.SuspendLayout
+        Me.pnlPropBrush.SuspendLayout
+        Me.tblPropBrush.SuspendLayout
+        Me.pnlPropBrushGeneric.SuspendLayout
+        Me.pnlPropBrushCustom.SuspendLayout
+        CType(Me.picPropBrushAlternativeBrushColor, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropBrushClipartAngle, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.picPropBrushColor, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.picPropBrushClipartImage, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropBrushClipartZoomFactor, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropBrushClipartDensity, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlPropSegmentBinding.SuspendLayout
+        Me.pnlPropSegmentsBinding.SuspendLayout
+        Me.pnlPropText.SuspendLayout
+        Me.tblPropText.SuspendLayout
+        Me.pnlPropTextFont.SuspendLayout
+        CType(Me.picPropFontColor, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlPropTextStyle.SuspendLayout
+        Me.pnlPropTextStyleVAlign.SuspendLayout
+        Me.pnlPropCrossSection.SuspendLayout
+        CType(Me.txtPropCrossSectionHeight, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropCrossSectionWidth, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropProfileTextDistance, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlPropQuota.SuspendLayout
+        Me.pnlPropSketch.SuspendLayout
+        CType(Me.picPropSketch, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlPropMergeMode.SuspendLayout
+        Me.pnlPropTransparency.SuspendLayout
+        CType(Me.txtPropTransparency, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlPropObjectsBinding.SuspendLayout
+        Me.pnlPropPointsSequences.SuspendLayout
+        Me.pnlPropSequenceLineType.SuspendLayout
+        Me.pnlPropProp.SuspendLayout
+        Me.pnlPropItems.SuspendLayout
+        Me.pnlPropPopup.SuspendLayout
+        CType(Me.picPropPopupWarning, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlPropProfileSplayBorder.SuspendLayout
+        CType(Me.txtPropProfileSplayNegInclinationRangeMax, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropProfileSplayNegInclinationRangeMin, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropProfileSplayPosInclinationRangeMax, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropProfileSplayPosInclinationRangeMin, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropProfileSplayMaxVariationAngle, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropProfileSplayProjectionAngle, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.picPropProfileProjectionSchema, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlPropPlanSplayBorder.SuspendLayout
+        CType(Me.txtPropPlanSplayInclinationRangeMax, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropPlanSplayInclinationRangeMin, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropPlanSplayPlanDeltaZ, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropPlanSplayMaxVariationDelta, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.picPropPlanProjectionSchema, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlPropDataProperties.SuspendLayout
+        Me.mnuDesignDataProperties.SuspendLayout
+        Me.pnlPropCrossSectionSplayBorder.SuspendLayout
+        CType(Me.txtPropCrossSectionSplayProjectionVerticalAngle, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropCrossSectionSplayMaxVariationAngle, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropCrossSectionSplayProjectionAngle, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.picPropCrossSectionProjectionSchema, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlPropSegmentInfo.SuspendLayout
+        Me.mnuSegmentInfo.SuspendLayout
+        Me.pnlPropTrigpointInfo.SuspendLayout
+        Me.mnuTrigpointInfo.SuspendLayout
+        Me.pnlPropCrossSectionMarker.SuspendLayout
+        CType(Me.txtPropCrossSectionMarkerDH, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropCrossSectionMarkerLW, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropCrossSectionMarkerRW, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropCrossSectionMarkerUH, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropCrossSectionMarkerLabelDistance, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropCrossSectionMarkerDeltaAngle, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropCrossSectionMarkerPosition, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropCrossSectionMarkerU, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropCrossSectionMarkerL, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropCrossSectionMarkerR, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtPropCrossSectionMarkerD, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlPropTrigpointsDistances.SuspendLayout
+        Me.pnlPropVisibility.SuspendLayout
+        Me.pnlPropAttachment.SuspendLayout
+        CType(Me.picPropAttachmentPreview, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlPropLegend.SuspendLayout
+        Me.pnlPropScale.SuspendLayout
+        Me.pnlPropCompass.SuspendLayout
+        Me.tabObjectProp3D.SuspendLayout
+        Me.tbl3DProp.SuspendLayout
+        Me.pnl3DMain.SuspendLayout
+        CType(Me.txt3DSurfaceElevationAmp, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnl3DPlotContainer.SuspendLayout
+        Me.pnl3dPlotModel.SuspendLayout
+        Me.pnl3DPlot.SuspendLayout
+        Me.pnl3DSurfaceContainer.SuspendLayout
+        Me.pnl3DSurface.SuspendLayout
+        CType(Me.txt3DSurfaceTransparency, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tbMain.SuspendLayout
+        Me.tbLayers.SuspendLayout
+        Me.tbPens.SuspendLayout
+        Me.tbWorkspaces.SuspendLayout
+        Me.tbView.SuspendLayout
+        Me.sbMain.SuspendLayout
+        Me.mnuMain.SuspendLayout
+        Me.mnuDesignNone.SuspendLayout
+        Me.mnuDesignItem.SuspendLayout
+        Me.mnuDesignItemPoint.SuspendLayout
+        Me.mnuMapDrop.SuspendLayout
+        Me.mnuTray.SuspendLayout
+        Me.SuspendLayout
         '
         'tsMain
         '
@@ -2160,14 +2165,12 @@ Partial Class frmMain
         'btnFilterWhiteboard
         '
         Me.btnFilterWhiteboard.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnFilterWhiteboard.Image = Global.cSurveyPC.My.Resources.Resources.whiteboard_empty
         resources.ApplyResources(Me.btnFilterWhiteboard, "btnFilterWhiteboard")
         Me.btnFilterWhiteboard.Name = "btnFilterWhiteboard"
         '
         'btnFilterInvertFilter
         '
         Me.btnFilterInvertFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnFilterInvertFilter.Image = Global.cSurveyPC.My.Resources.Resources.filter_revert
         resources.ApplyResources(Me.btnFilterInvertFilter, "btnFilterInvertFilter")
         Me.btnFilterInvertFilter.Name = "btnFilterInvertFilter"
         '
@@ -2509,6 +2512,7 @@ Partial Class frmMain
         '
         'tabSegmentPropertyMain
         '
+        resources.ApplyResources(Me.tabSegmentPropertyMain, "tabSegmentPropertyMain")
         Me.tabSegmentPropertyMain.Controls.Add(Me.chkSegmentCalibration)
         Me.tabSegmentPropertyMain.Controls.Add(Me.chkSegmentCutSplay)
         Me.tabSegmentPropertyMain.Controls.Add(Me.chkSegmentZSurvey)
@@ -2536,7 +2540,6 @@ Partial Class frmMain
         Me.tabSegmentPropertyMain.Controls.Add(Me.lblSegmentInclination)
         Me.tabSegmentPropertyMain.Controls.Add(Me.lblSegmentDirection)
         Me.tabSegmentPropertyMain.Controls.Add(Me.chkSegmentInverted)
-        resources.ApplyResources(Me.tabSegmentPropertyMain, "tabSegmentPropertyMain")
         Me.tabSegmentPropertyMain.Name = "tabSegmentPropertyMain"
         Me.tabSegmentPropertyMain.UseVisualStyleBackColor = True
         '
@@ -3256,6 +3259,7 @@ Partial Class frmMain
         '
         'tabTrigpointMain
         '
+        resources.ApplyResources(Me.tabTrigpointMain, "tabTrigpointMain")
         Me.tabTrigpointMain.Controls.Add(Me.chkTrigpointZTurn)
         Me.tabTrigpointMain.Controls.Add(Me.chkTrigpointIsInExploration)
         Me.tabTrigpointMain.Controls.Add(Me.chkTrigpointShowEntrance)
@@ -3265,7 +3269,6 @@ Partial Class frmMain
         Me.tabTrigpointMain.Controls.Add(Me.lblTrigpointType)
         Me.tabTrigpointMain.Controls.Add(Me.cboTrigpointEntrance)
         Me.tabTrigpointMain.Controls.Add(Me.lblTrigpointEntrance)
-        resources.ApplyResources(Me.tabTrigpointMain, "tabTrigpointMain")
         Me.tabTrigpointMain.Name = "tabTrigpointMain"
         Me.tabTrigpointMain.UseVisualStyleBackColor = True
         '
@@ -3400,6 +3403,7 @@ Partial Class frmMain
         '
         'tabTrigpointLayout
         '
+        resources.ApplyResources(Me.tabTrigpointLayout, "tabTrigpointLayout")
         Me.tabTrigpointLayout.Controls.Add(Me.chkTrigpointDrawTranslationsLine)
         Me.tabTrigpointLayout.Controls.Add(Me.lblTrigpointFontchar)
         Me.tabTrigpointLayout.Controls.Add(Me.cmdTrigpointColorReset)
@@ -3418,7 +3422,6 @@ Partial Class frmMain
         Me.tabTrigpointLayout.Controls.Add(Me.chkTrigpointFontBold)
         Me.tabTrigpointLayout.Controls.Add(Me.cmdTrigpointFontColor)
         Me.tabTrigpointLayout.Controls.Add(Me.lblTextFontSize)
-        resources.ApplyResources(Me.tabTrigpointLayout, "tabTrigpointLayout")
         Me.tabTrigpointLayout.Name = "tabTrigpointLayout"
         Me.tabTrigpointLayout.UseVisualStyleBackColor = True
         '
@@ -3571,6 +3574,7 @@ Partial Class frmMain
         'tabTrigpointCoordinate
         '
         Me.tabTrigpointCoordinate.AllowDrop = True
+        resources.ApplyResources(Me.tabTrigpointCoordinate, "tabTrigpointCoordinate")
         Me.tabTrigpointCoordinate.Controls.Add(Me.btnTrigpointCoordinateClear)
         Me.tabTrigpointCoordinate.Controls.Add(Me.lblTrigpointCoordinateFix)
         Me.tabTrigpointCoordinate.Controls.Add(Me.cboTrigpointCoordinateFix)
@@ -3580,7 +3584,6 @@ Partial Class frmMain
         Me.tabTrigpointCoordinate.Controls.Add(Me.lblTrigpointCoordinateGeo)
         Me.tabTrigpointCoordinate.Controls.Add(Me.cboTrigpointCoordinateGeo)
         Me.tabTrigpointCoordinate.Controls.Add(Me.pnlTrigpointCoordinateUTM)
-        resources.ApplyResources(Me.tabTrigpointCoordinate, "tabTrigpointCoordinate")
         Me.tabTrigpointCoordinate.Name = "tabTrigpointCoordinate"
         Me.tabTrigpointCoordinate.UseVisualStyleBackColor = True
         '
@@ -3795,7 +3798,6 @@ Partial Class frmMain
         '
         Me.btnSegmentAndTrigpointGridColor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.btnSegmentAndTrigpointGridColor.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnSegmentAndTrigpointGridColor3, Me.btnSegmentAndTrigpointGridColor2, Me.btnSegmentAndTrigpointGridColor1, Me.ToolStripMenuItem104, Me.btnSegmentAndTrigpointGridColor0})
-        Me.btnSegmentAndTrigpointGridColor.Image = Global.cSurveyPC.My.Resources.Resources.color_swatches
         resources.ApplyResources(Me.btnSegmentAndTrigpointGridColor, "btnSegmentAndTrigpointGridColor")
         Me.btnSegmentAndTrigpointGridColor.Name = "btnSegmentAndTrigpointGridColor"
         '
@@ -3878,7 +3880,6 @@ Partial Class frmMain
         '
         'chkLayerInvertFilter
         '
-        Me.chkLayerInvertFilter.Image = Global.cSurveyPC.My.Resources.Resources.filter_revert
         resources.ApplyResources(Me.chkLayerInvertFilter, "chkLayerInvertFilter")
         Me.chkLayerInvertFilter.Name = "chkLayerInvertFilter"
         Me.tipDefault.SetToolTip(Me.chkLayerInvertFilter, resources.GetString("chkLayerInvertFilter.ToolTip"))
@@ -3887,7 +3888,6 @@ Partial Class frmMain
         'chkLayerWhiteboard
         '
         resources.ApplyResources(Me.chkLayerWhiteboard, "chkLayerWhiteboard")
-        Me.chkLayerWhiteboard.Image = Global.cSurveyPC.My.Resources.Resources.whiteboard_empty
         Me.chkLayerWhiteboard.Name = "chkLayerWhiteboard"
         Me.tipDefault.SetToolTip(Me.chkLayerWhiteboard, resources.GetString("chkLayerWhiteboard.ToolTip"))
         Me.chkLayerWhiteboard.UseVisualStyleBackColor = True
@@ -3946,6 +3946,7 @@ Partial Class frmMain
         'colLayersHiddenInDesign
         '
         Me.colLayersHiddenInDesign.CheckBoxes = True
+        Me.colLayersHiddenInDesign.HeaderImageKey = "edit"
         Me.colLayersHiddenInDesign.MaximumWidth = 28
         Me.colLayersHiddenInDesign.MinimumWidth = 28
         Me.colLayersHiddenInDesign.ShowTextInHeader = False
@@ -3955,6 +3956,7 @@ Partial Class frmMain
         'colLayersHiddenInPreview
         '
         Me.colLayersHiddenInPreview.CheckBoxes = True
+        Me.colLayersHiddenInPreview.HeaderImageKey = "print"
         Me.colLayersHiddenInPreview.MaximumWidth = 28
         Me.colLayersHiddenInPreview.MinimumWidth = 28
         Me.colLayersHiddenInPreview.ShowTextInHeader = False
@@ -4847,14 +4849,12 @@ Partial Class frmMain
         '
         'cDesignPrintOrExportArea
         '
-        Me.cDesignPrintOrExportArea.BackColor = System.Drawing.SystemColors.Window
         resources.ApplyResources(Me.cDesignPrintOrExportArea, "cDesignPrintOrExportArea")
         Me.cDesignPrintOrExportArea.Name = "cDesignPrintOrExportArea"
         '
         'cDesignLinkedSurveys
         '
         resources.ApplyResources(Me.cDesignLinkedSurveys, "cDesignLinkedSurveys")
-        Me.cDesignLinkedSurveys.BackColor = System.Drawing.SystemColors.Window
         Me.cDesignLinkedSurveys.Name = "cDesignLinkedSurveys"
         '
         'tabObjectPropMain
@@ -5165,6 +5165,8 @@ Partial Class frmMain
         '
         resources.ApplyResources(Me.pnlPropImage, "pnlPropImage")
         Me.pnlPropImage.BackColor = System.Drawing.Color.Transparent
+        Me.pnlPropImage.Controls.Add(Me.txtPropImageRotateAngle)
+        Me.pnlPropImage.Controls.Add(Me.lblPropImageRotateAngle)
         Me.pnlPropImage.Controls.Add(Me.cmdPropImageView)
         Me.pnlPropImage.Controls.Add(Me.Label34)
         Me.pnlPropImage.Controls.Add(Me.txtPropImageScaleFree)
@@ -5179,6 +5181,21 @@ Partial Class frmMain
         Me.pnlPropImage.Controls.Add(Me.cmdPropImageBrowse)
         Me.pnlPropImage.Controls.Add(Me.Label32)
         Me.pnlPropImage.Name = "pnlPropImage"
+        '
+        'txtPropImageRotateAngle
+        '
+        Me.txtPropImageRotateAngle.DecimalPlaces = 1
+        resources.ApplyResources(Me.txtPropImageRotateAngle, "txtPropImageRotateAngle")
+        Me.txtPropImageRotateAngle.Maximum = New Decimal(New Integer() {360, 0, 0, 0})
+        Me.txtPropImageRotateAngle.Minimum = New Decimal(New Integer() {360, 0, 0, -2147483648})
+        Me.txtPropImageRotateAngle.Name = "txtPropImageRotateAngle"
+        Me.tipDefault.SetToolTip(Me.txtPropImageRotateAngle, resources.GetString("txtPropImageRotateAngle.ToolTip"))
+        '
+        'lblPropImageRotateAngle
+        '
+        resources.ApplyResources(Me.lblPropImageRotateAngle, "lblPropImageRotateAngle")
+        Me.lblPropImageRotateAngle.Name = "lblPropImageRotateAngle"
+        Me.tipDefault.SetToolTip(Me.lblPropImageRotateAngle, resources.GetString("lblPropImageRotateAngle.ToolTip"))
         '
         'cmdPropImageView
         '
@@ -5790,6 +5807,7 @@ Partial Class frmMain
         'pnlPropRotation
         '
         Me.pnlPropRotation.BackColor = System.Drawing.Color.Transparent
+        Me.pnlPropRotation.Controls.Add(Me.chkPropRotateCenterOnOrigin)
         Me.pnlPropRotation.Controls.Add(Me.cmdPropRotateLeftByDegree)
         Me.pnlPropRotation.Controls.Add(Me.cmdPropRotateRightByDegree)
         Me.pnlPropRotation.Controls.Add(Me.cmdPropRotateRight)
@@ -5799,6 +5817,12 @@ Partial Class frmMain
         Me.pnlPropRotation.Controls.Add(Me.Label25)
         resources.ApplyResources(Me.pnlPropRotation, "pnlPropRotation")
         Me.pnlPropRotation.Name = "pnlPropRotation"
+        '
+        'chkPropRotateCenterOnOrigin
+        '
+        resources.ApplyResources(Me.chkPropRotateCenterOnOrigin, "chkPropRotateCenterOnOrigin")
+        Me.chkPropRotateCenterOnOrigin.Name = "chkPropRotateCenterOnOrigin"
+        Me.chkPropRotateCenterOnOrigin.UseVisualStyleBackColor = True
         '
         'cmdPropRotateLeftByDegree
         '
@@ -7972,9 +7996,9 @@ Partial Class frmMain
         'cboPropCrossSectionMarkerScale
         '
         Me.cboPropCrossSectionMarkerScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboPropCrossSectionMarkerScale.FormattingEnabled = True
-        Me.cboPropCrossSectionMarkerScale.Items.AddRange(New Object() {resources.GetString("cboPropCrossSectionMarkerScale.Items"), resources.GetString("cboPropCrossSectionMarkerScale.Items1"), resources.GetString("cboPropCrossSectionMarkerScale.Items2"), resources.GetString("cboPropCrossSectionMarkerScale.Items3"), resources.GetString("cboPropCrossSectionMarkerScale.Items4"), resources.GetString("cboPropCrossSectionMarkerScale.Items5")})
         resources.ApplyResources(Me.cboPropCrossSectionMarkerScale, "cboPropCrossSectionMarkerScale")
+        Me.cboPropCrossSectionMarkerScale.FormattingEnabled = True
+        Me.cboPropCrossSectionMarkerScale.Items.AddRange(New Object() {resources.GetString("cboPropCrossSectionMarkerScale.Items"), resources.GetString("cboPropCrossSectionMarkerScale.Items1"), resources.GetString("cboPropCrossSectionMarkerScale.Items2"), resources.GetString("cboPropCrossSectionMarkerScale.Items3"), resources.GetString("cboPropCrossSectionMarkerScale.Items4"), resources.GetString("cboPropCrossSectionMarkerScale.Items5"), resources.GetString("cboPropCrossSectionMarkerScale.Items6"), resources.GetString("cboPropCrossSectionMarkerScale.Items7"), resources.GetString("cboPropCrossSectionMarkerScale.Items8"), resources.GetString("cboPropCrossSectionMarkerScale.Items9"), resources.GetString("cboPropCrossSectionMarkerScale.Items10"), resources.GetString("cboPropCrossSectionMarkerScale.Items11"), resources.GetString("cboPropCrossSectionMarkerScale.Items12"), resources.GetString("cboPropCrossSectionMarkerScale.Items13")})
         Me.cboPropCrossSectionMarkerScale.Name = "cboPropCrossSectionMarkerScale"
         Me.tipDefault.SetToolTip(Me.cboPropCrossSectionMarkerScale, resources.GetString("cboPropCrossSectionMarkerScale.ToolTip"))
         '
@@ -8001,6 +8025,7 @@ Partial Class frmMain
         Me.txtPropCrossSectionMarkerLabelDistance.DecimalPlaces = 2
         Me.txtPropCrossSectionMarkerLabelDistance.Increment = New Decimal(New Integer() {10, 0, 0, 131072})
         resources.ApplyResources(Me.txtPropCrossSectionMarkerLabelDistance, "txtPropCrossSectionMarkerLabelDistance")
+        Me.txtPropCrossSectionMarkerLabelDistance.Minimum = New Decimal(New Integer() {10, 0, 0, -2147483648})
         Me.txtPropCrossSectionMarkerLabelDistance.Name = "txtPropCrossSectionMarkerLabelDistance"
         Me.tipDefault.SetToolTip(Me.txtPropCrossSectionMarkerLabelDistance, resources.GetString("txtPropCrossSectionMarkerLabelDistance.ToolTip"))
         '
@@ -8051,6 +8076,7 @@ Partial Class frmMain
         '
         'txtPropCrossSectionMarkerDeltaAngle
         '
+        Me.txtPropCrossSectionMarkerDeltaAngle.DecimalPlaces = 1
         resources.ApplyResources(Me.txtPropCrossSectionMarkerDeltaAngle, "txtPropCrossSectionMarkerDeltaAngle")
         Me.txtPropCrossSectionMarkerDeltaAngle.Maximum = New Decimal(New Integer() {90, 0, 0, 0})
         Me.txtPropCrossSectionMarkerDeltaAngle.Minimum = New Decimal(New Integer() {90, 0, 0, -2147483648})
@@ -8243,7 +8269,6 @@ Partial Class frmMain
         '
         'chkPropVisibleByProfile
         '
-        Me.chkPropVisibleByProfile.Image = Global.cSurveyPC.My.Resources.Resources.to_do_list
         resources.ApplyResources(Me.chkPropVisibleByProfile, "chkPropVisibleByProfile")
         Me.chkPropVisibleByProfile.Name = "chkPropVisibleByProfile"
         Me.tipDefault.SetToolTip(Me.chkPropVisibleByProfile, resources.GetString("chkPropVisibleByProfile.ToolTip"))
@@ -8251,7 +8276,6 @@ Partial Class frmMain
         '
         'chkPropVisibleByScale
         '
-        Me.chkPropVisibleByScale.Image = Global.cSurveyPC.My.Resources.Resources.layers_map
         resources.ApplyResources(Me.chkPropVisibleByScale, "chkPropVisibleByScale")
         Me.chkPropVisibleByScale.Name = "chkPropVisibleByScale"
         Me.tipDefault.SetToolTip(Me.chkPropVisibleByScale, resources.GetString("chkPropVisibleByScale.ToolTip"))
@@ -8396,7 +8420,6 @@ Partial Class frmMain
         'c3DLinkedSurveys
         '
         resources.ApplyResources(Me.c3DLinkedSurveys, "c3DLinkedSurveys")
-        Me.c3DLinkedSurveys.BackColor = System.Drawing.SystemColors.Window
         Me.c3DLinkedSurveys.Name = "c3DLinkedSurveys"
         '
         'pnl3DMain
@@ -9121,7 +9144,6 @@ Partial Class frmMain
         'btnWorkspacesManage
         '
         Me.btnWorkspacesManage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnWorkspacesManage.Image = Global.cSurveyPC.My.Resources.Resources.monitor_window
         resources.ApplyResources(Me.btnWorkspacesManage, "btnWorkspacesManage")
         Me.btnWorkspacesManage.Name = "btnWorkspacesManage"
         '
@@ -9448,9 +9470,8 @@ Partial Class frmMain
         '
         'mnuFileSaveAs
         '
-        Me.mnuFileSaveAs.Image = Global.cSurveyPC.My.Resources.Resources.save_as1
-        Me.mnuFileSaveAs.Name = "mnuFileSaveAs"
         resources.ApplyResources(Me.mnuFileSaveAs, "mnuFileSaveAs")
+        Me.mnuFileSaveAs.Name = "mnuFileSaveAs"
         '
         'mnuFileSaveAsTemplate
         '
@@ -9717,7 +9738,7 @@ Partial Class frmMain
         '
         'mnuView
         '
-        Me.mnuView.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuViewBars, Me.ToolStripMenuItem34, Me.mnuViewWorkspaces, Me.mnuViewFieldData, Me.mnuViewDesignArea, Me.mnuViewObjectProp, Me.ToolStripMenuItem11, Me.mnuViewGraphics, Me.ToolStripMenuItem14, Me.mnuViewDesign, Me.mnuViewPlot, Me.ToolStripMenuItem7, Me.mnuViewPlan, Me.mnuViewProfile, Me.mnuView3D, Me.ToolStripMenuItem33, Me.mnuViewViewer, Me.ToolStripMenuItem103, Me.mnuViewScript, Me.ToolStripMenuItem114, Me.mnuViewLinkedSurveys, Me.ToolStripMenuItem6, Me.mnuViewConsole})
+        Me.mnuView.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuViewBars, Me.ToolStripMenuItem34, Me.mnuViewWorkspaces, Me.mnuViewFieldData, Me.mnuViewDesignArea, Me.mnuViewObjectProp, Me.ToolStripMenuItem11, Me.mnuViewGraphics, Me.ToolStripMenuItem14, Me.mnuViewDesign, Me.mnuViewPlot, Me.ToolStripMenuItem7, Me.mnuViewPlan, Me.mnuViewProfile, Me.mnuView3D, Me.ToolStripMenuItem33, Me.mnuViewViewer, Me.ToolStripMenuItem103, Me.mnuViewScript, Me.ToolStripMenuItem114, Me.mnuViewSharedTexts, Me.mnuViewLinkedSurveys, Me.ToolStripMenuItem6, Me.mnuViewConsole})
         Me.mnuView.Name = "mnuView"
         resources.ApplyResources(Me.mnuView, "mnuView")
         '
@@ -9815,9 +9836,8 @@ Partial Class frmMain
         '
         'mnuViewWorkspacesManage
         '
-        Me.mnuViewWorkspacesManage.Image = Global.cSurveyPC.My.Resources.Resources.monitor_window
-        Me.mnuViewWorkspacesManage.Name = "mnuViewWorkspacesManage"
         resources.ApplyResources(Me.mnuViewWorkspacesManage, "mnuViewWorkspacesManage")
+        Me.mnuViewWorkspacesManage.Name = "mnuViewWorkspacesManage"
         '
         'mnuViewFieldData
         '
@@ -10128,11 +10148,15 @@ Partial Class frmMain
         Me.ToolStripMenuItem114.Name = "ToolStripMenuItem114"
         resources.ApplyResources(Me.ToolStripMenuItem114, "ToolStripMenuItem114")
         '
+        'mnuViewSharedTexts
+        '
+        Me.mnuViewSharedTexts.Name = "mnuViewSharedTexts"
+        resources.ApplyResources(Me.mnuViewSharedTexts, "mnuViewSharedTexts")
+        '
         'mnuViewLinkedSurveys
         '
-        Me.mnuViewLinkedSurveys.Image = Global.cSurveyPC.My.Resources.Resources.link_break
-        Me.mnuViewLinkedSurveys.Name = "mnuViewLinkedSurveys"
         resources.ApplyResources(Me.mnuViewLinkedSurveys, "mnuViewLinkedSurveys")
+        Me.mnuViewLinkedSurveys.Name = "mnuViewLinkedSurveys"
         '
         'ToolStripMenuItem6
         '
@@ -11562,6 +11586,24 @@ Partial Class frmMain
         Me.imlNotify.Images.SetKeyName(0, "warning")
         Me.imlNotify.Images.SetKeyName(1, "calculate")
         Me.imlNotify.Images.SetKeyName(2, "error")
+        Me.imlNotify.Images.SetKeyName(3, "")
+        Me.imlNotify.Images.SetKeyName(4, "")
+        Me.imlNotify.Images.SetKeyName(5, "")
+        Me.imlNotify.Images.SetKeyName(6, "")
+        Me.imlNotify.Images.SetKeyName(7, "")
+        Me.imlNotify.Images.SetKeyName(8, "")
+        Me.imlNotify.Images.SetKeyName(9, "")
+        Me.imlNotify.Images.SetKeyName(10, "")
+        Me.imlNotify.Images.SetKeyName(11, "")
+        Me.imlNotify.Images.SetKeyName(12, "")
+        Me.imlNotify.Images.SetKeyName(13, "")
+        Me.imlNotify.Images.SetKeyName(14, "")
+        Me.imlNotify.Images.SetKeyName(15, "")
+        Me.imlNotify.Images.SetKeyName(16, "")
+        Me.imlNotify.Images.SetKeyName(17, "")
+        Me.imlNotify.Images.SetKeyName(18, "")
+        Me.imlNotify.Images.SetKeyName(19, "")
+        Me.imlNotify.Images.SetKeyName(20, "")
         '
         'tmrClipboard
         '
@@ -11602,305 +11644,310 @@ Partial Class frmMain
         Me.Controls.Add(Me.sbMain)
         Me.Controls.Add(Me.mnuMain)
         Me.DoubleBuffered = True
+        Me.IconOptions.Icon = CType(resources.GetObject("frmMain.IconOptions.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.MainMenuStrip = Me.mnuMain
         Me.Name = "frmMain"
         Me.tsMain.ContentPanel.ResumeLayout(False)
         Me.tsMain.TopToolStripPanel.ResumeLayout(False)
-        Me.tsMain.TopToolStripPanel.PerformLayout()
+        Me.tsMain.TopToolStripPanel.PerformLayout
         Me.tsMain.ResumeLayout(False)
-        Me.tsMain.PerformLayout()
+        Me.tsMain.PerformLayout
         Me.pnlConsole.ResumeLayout(False)
         Me.pnlDesigner.ResumeLayout(False)
-        Me.pnlDesigner.PerformLayout()
+        Me.pnlDesigner.PerformLayout
         Me.pnl3D.ResumeLayout(False)
         Me.pnlPopup.ResumeLayout(False)
-        CType(Me.picPopupWarning, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picMap, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picPopupWarning, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.picMap, System.ComponentModel.ISupportInitialize).EndInit
         Me.tbViews.ResumeLayout(False)
-        Me.tbViews.PerformLayout()
+        Me.tbViews.PerformLayout
         Me.pnlData.ResumeLayout(False)
-        Me.pnlData.PerformLayout()
+        Me.pnlData.PerformLayout
         Me.spSegmentsAndTrigpoints.Panel1.ResumeLayout(False)
         Me.spSegmentsAndTrigpoints.Panel2.ResumeLayout(False)
-        CType(Me.spSegmentsAndTrigpoints, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.spSegmentsAndTrigpoints, System.ComponentModel.ISupportInitialize).EndInit
         Me.spSegmentsAndTrigpoints.ResumeLayout(False)
         Me.spSegments.Panel1.ResumeLayout(False)
         Me.spSegments.Panel2.ResumeLayout(False)
-        CType(Me.spSegments, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.spSegments, System.ComponentModel.ISupportInitialize).EndInit
         Me.spSegments.ResumeLayout(False)
-        CType(Me.grdSegments, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdSegments, System.ComponentModel.ISupportInitialize).EndInit
         Me.mnuSegments.ResumeLayout(False)
         Me.pnlSegment.ResumeLayout(False)
         Me.tabSegmentProperty.ResumeLayout(False)
         Me.tabSegmentPropertyMain.ResumeLayout(False)
-        Me.tabSegmentPropertyMain.PerformLayout()
+        Me.tabSegmentPropertyMain.PerformLayout
         Me.pnlSegmentSurfaceProfile.ResumeLayout(False)
-        Me.pnlSegmentSurfaceProfile.PerformLayout()
+        Me.pnlSegmentSurfaceProfile.PerformLayout
         Me.tabSegmentPropertyData.ResumeLayout(False)
         Me.mnuSegmentsDataProperties.ResumeLayout(False)
         Me.tabSegmentPropertyLayout.ResumeLayout(False)
-        CType(Me.picSegmentColor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picSegmentColor, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabSegmentPropertyNote.ResumeLayout(False)
-        Me.tabSegmentPropertyNote.PerformLayout()
+        Me.tabSegmentPropertyNote.PerformLayout
         Me.tabSegmentPropertyImage.ResumeLayout(False)
-        CType(Me.tvSegmentAttachments, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tvSegmentAttachments, System.ComponentModel.ISupportInitialize).EndInit
         Me.mnuAttachments.ResumeLayout(False)
         Me.pnlSegmentFromAndTo.ResumeLayout(False)
-        Me.pnlSegmentFromAndTo.PerformLayout()
+        Me.pnlSegmentFromAndTo.PerformLayout
         Me.pnlSegmentCaveBranches.ResumeLayout(False)
-        Me.pnlSegmentCaveBranches.PerformLayout()
+        Me.pnlSegmentCaveBranches.PerformLayout
         Me.pnlSegmentSession.ResumeLayout(False)
         Me.spTrigPoints.Panel1.ResumeLayout(False)
         Me.spTrigPoints.Panel2.ResumeLayout(False)
-        CType(Me.spTrigPoints, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.spTrigPoints, System.ComponentModel.ISupportInitialize).EndInit
         Me.spTrigPoints.ResumeLayout(False)
-        CType(Me.lvTrigPoints, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lvTrigPoints, System.ComponentModel.ISupportInitialize).EndInit
         Me.mnuTrigPoints.ResumeLayout(False)
         Me.pnlTrigPoint.ResumeLayout(False)
         Me.tabTrigpointProperty.ResumeLayout(False)
         Me.tabTrigpointMain.ResumeLayout(False)
-        Me.tabTrigpointMain.PerformLayout()
-        CType(Me.grdTrigPointAliases, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabTrigpointMain.PerformLayout
+        CType(Me.grdTrigPointAliases, System.ComponentModel.ISupportInitialize).EndInit
         Me.mnuAliases.ResumeLayout(False)
         Me.tabTrigpointPropertyData.ResumeLayout(False)
         Me.mnuTrigpointDataProperties.ResumeLayout(False)
         Me.tabTrigpointLayout.ResumeLayout(False)
-        Me.tabTrigpointLayout.PerformLayout()
-        CType(Me.txtTrigPointLabelDistance, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picTrigpointFontColor, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabTrigpointLayout.PerformLayout
+        CType(Me.txtTrigPointLabelDistance, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.picTrigpointFontColor, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabTrigpointConnections.ResumeLayout(False)
-        CType(Me.grdTrigpointConnections, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdTrigpointConnections, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabTrigpointCoordinate.ResumeLayout(False)
-        Me.tabTrigpointCoordinate.PerformLayout()
+        Me.tabTrigpointCoordinate.PerformLayout
         Me.pnlTrigpointCoordinateWGS84.ResumeLayout(False)
-        Me.pnlTrigpointCoordinateWGS84.PerformLayout()
+        Me.pnlTrigpointCoordinateWGS84.PerformLayout
         Me.pnlTrigpointCoordinateUTM.ResumeLayout(False)
-        Me.pnlTrigpointCoordinateUTM.PerformLayout()
+        Me.pnlTrigpointCoordinateUTM.PerformLayout
         Me.tabTrigpointNote.ResumeLayout(False)
-        Me.tabTrigpointNote.PerformLayout()
+        Me.tabTrigpointNote.PerformLayout
         Me.pnlTrigpointName.ResumeLayout(False)
-        Me.pnlTrigpointName.PerformLayout()
+        Me.pnlTrigpointName.PerformLayout
         Me.tbSegmentsAndTrigpoints.ResumeLayout(False)
-        Me.tbSegmentsAndTrigpoints.PerformLayout()
-        CType(Me.trkZoom, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tbSegmentsAndTrigpoints.PerformLayout
+        CType(Me.trkZoom, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlObjectLayers.ResumeLayout(False)
-        CType(Me.tvLayers2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tvLayers2, System.ComponentModel.ISupportInitialize).EndInit
         Me.mnuLayersAndItems.ResumeLayout(False)
-        CType(Me.piclayerItemPreview, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.piclayerItemPreview, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlProperties.ResumeLayout(False)
         Me.tabObjectProp.ResumeLayout(False)
         Me.tabObjectPropDesign.ResumeLayout(False)
+        Me.tabObjectPropDesign.PerformLayout
         Me.tblDesignProp.ResumeLayout(False)
         Me.pnlDesignSize.ResumeLayout(False)
-        Me.pnlDesignSize.PerformLayout()
-        CType(Me.txtDesignScaleHeight, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDesignScaleWidth, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlDesignSize.PerformLayout
+        CType(Me.txtDesignScaleHeight, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtDesignScaleWidth, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlDesignPosition.ResumeLayout(False)
-        Me.pnlDesignPosition.PerformLayout()
+        Me.pnlDesignPosition.PerformLayout
         Me.pnlDesignRotation.ResumeLayout(False)
-        Me.pnlDesignRotation.PerformLayout()
+        Me.pnlDesignRotation.PerformLayout
         Me.pnlDesignStyle.ResumeLayout(False)
-        Me.pnlDesignStyle.PerformLayout()
+        Me.pnlDesignStyle.PerformLayout
         Me.pnlDesignCombineColorMode.ResumeLayout(False)
-        Me.pnlDesignCombineColorMode.PerformLayout()
+        Me.pnlDesignCombineColorMode.PerformLayout
         Me.pnlDesignSnapToGrid.ResumeLayout(False)
-        Me.pnlDesignSnapToGrid.PerformLayout()
-        CType(Me.txtDesignSnapToGrid, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlDesignSnapToGrid.PerformLayout
+        CType(Me.txtDesignSnapToGrid, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlDesignPlotContainer.ResumeLayout(False)
-        Me.pnlDesignPlotContainer.PerformLayout()
+        Me.pnlDesignPlotContainer.PerformLayout
         Me.pnlDesignPlot.ResumeLayout(False)
-        Me.pnlDesignPlot.PerformLayout()
+        Me.pnlDesignPlot.PerformLayout
         Me.pnlDesignSurfaceContainer.ResumeLayout(False)
-        Me.pnlDesignSurfaceContainer.PerformLayout()
+        Me.pnlDesignSurfaceContainer.PerformLayout
         Me.pnlDesignSurface.ResumeLayout(False)
         Me.mnuDesignSurfaceLayers.ResumeLayout(False)
         Me.pnlDesignSurfaceProfile.ResumeLayout(False)
-        Me.pnlDesignSurfaceProfile.PerformLayout()
+        Me.pnlDesignSurfaceProfile.PerformLayout
         Me.pnlDesignPrintOrExportAreaContainer.ResumeLayout(False)
         Me.tabObjectPropMain.ResumeLayout(False)
+        Me.tabObjectPropMain.PerformLayout
         Me.tblObjectProp.ResumeLayout(False)
         Me.pnlPropConvertTo.ResumeLayout(False)
-        Me.pnlPropConvertTo.PerformLayout()
+        Me.pnlPropConvertTo.PerformLayout
         Me.pnlPropClipping.ResumeLayout(False)
-        Me.pnlPropClipping.PerformLayout()
+        Me.pnlPropClipping.PerformLayout
         Me.pnlPropShape.ResumeLayout(False)
-        Me.pnlPropShape.PerformLayout()
+        Me.pnlPropShape.PerformLayout
         Me.pnlPropShapeSequences.ResumeLayout(False)
-        Me.pnlPropShapeSequences.PerformLayout()
-        CType(Me.txtPropLinePointReductionFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlPropShapeSequences.PerformLayout
+        CType(Me.txtPropLinePointReductionFactor, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlPropSign.ResumeLayout(False)
-        Me.pnlPropSign.PerformLayout()
+        Me.pnlPropSign.PerformLayout
         Me.pnlPropImage.ResumeLayout(False)
-        Me.pnlPropImage.PerformLayout()
-        CType(Me.txtPropImageScaleFree, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picPropImage, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlPropImage.PerformLayout
+        CType(Me.txtPropImageRotateAngle, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropImageScaleFree, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.picPropImage, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlPropInfo.ResumeLayout(False)
-        Me.pnlPropInfo.PerformLayout()
+        Me.pnlPropInfo.PerformLayout
         Me.pnlPropCaveBranches.ResumeLayout(False)
         Me.pnlPropPen.ResumeLayout(False)
         Me.tblPropPen.ResumeLayout(False)
         Me.pnlPropPenGeneric.ResumeLayout(False)
-        Me.pnlPropPenGeneric.PerformLayout()
+        Me.pnlPropPenGeneric.PerformLayout
         Me.pnlPropPenCustom.ResumeLayout(False)
-        Me.pnlPropPenCustom.PerformLayout()
-        CType(Me.txtPropPenDecorationScale, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropPenWidth, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropPenDecorationSpacePercentage, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picPropPenColor, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlPropPenCustom.PerformLayout
+        CType(Me.txtPropPenDecorationScale, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropPenWidth, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropPenDecorationSpacePercentage, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.picPropPenColor, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlPropSize.ResumeLayout(False)
-        Me.pnlPropSize.PerformLayout()
-        CType(Me.txtPropScaleHeight, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropScaleWidth, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlPropSize.PerformLayout
+        CType(Me.txtPropScaleHeight, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropScaleWidth, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlPropPosition.ResumeLayout(False)
-        Me.pnlPropPosition.PerformLayout()
+        Me.pnlPropPosition.PerformLayout
         Me.pnlPropPositionSubPanel1.ResumeLayout(False)
         Me.pnlPropRotation.ResumeLayout(False)
-        Me.pnlPropRotation.PerformLayout()
+        Me.pnlPropRotation.PerformLayout
         Me.pnlPropLineType.ResumeLayout(False)
-        Me.pnlPropLineType.PerformLayout()
+        Me.pnlPropLineType.PerformLayout
         Me.pnlPropBrush.ResumeLayout(False)
         Me.tblPropBrush.ResumeLayout(False)
         Me.pnlPropBrushGeneric.ResumeLayout(False)
-        Me.pnlPropBrushGeneric.PerformLayout()
+        Me.pnlPropBrushGeneric.PerformLayout
         Me.pnlPropBrushCustom.ResumeLayout(False)
-        Me.pnlPropBrushCustom.PerformLayout()
-        CType(Me.picPropBrushAlternativeBrushColor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropBrushClipartAngle, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picPropBrushColor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picPropBrushClipartImage, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropBrushClipartZoomFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropBrushClipartDensity, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlPropBrushCustom.PerformLayout
+        CType(Me.picPropBrushAlternativeBrushColor, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropBrushClipartAngle, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.picPropBrushColor, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.picPropBrushClipartImage, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropBrushClipartZoomFactor, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropBrushClipartDensity, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlPropSegmentBinding.ResumeLayout(False)
-        Me.pnlPropSegmentBinding.PerformLayout()
+        Me.pnlPropSegmentBinding.PerformLayout
         Me.pnlPropSegmentsBinding.ResumeLayout(False)
-        Me.pnlPropSegmentsBinding.PerformLayout()
+        Me.pnlPropSegmentsBinding.PerformLayout
         Me.pnlPropText.ResumeLayout(False)
         Me.tblPropText.ResumeLayout(False)
         Me.pnlPropTextFont.ResumeLayout(False)
-        Me.pnlPropTextFont.PerformLayout()
-        CType(Me.picPropFontColor, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlPropTextFont.PerformLayout
+        CType(Me.picPropFontColor, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlPropTextStyle.ResumeLayout(False)
-        Me.pnlPropTextStyle.PerformLayout()
+        Me.pnlPropTextStyle.PerformLayout
         Me.pnlPropTextStyleVAlign.ResumeLayout(False)
         Me.pnlPropCrossSection.ResumeLayout(False)
-        Me.pnlPropCrossSection.PerformLayout()
-        CType(Me.txtPropCrossSectionHeight, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropCrossSectionWidth, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropProfileTextDistance, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlPropCrossSection.PerformLayout
+        CType(Me.txtPropCrossSectionHeight, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropCrossSectionWidth, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropProfileTextDistance, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlPropQuota.ResumeLayout(False)
-        Me.pnlPropQuota.PerformLayout()
+        Me.pnlPropQuota.PerformLayout
         Me.pnlPropSketch.ResumeLayout(False)
-        Me.pnlPropSketch.PerformLayout()
-        CType(Me.picPropSketch, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlPropSketch.PerformLayout
+        CType(Me.picPropSketch, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlPropMergeMode.ResumeLayout(False)
-        Me.pnlPropMergeMode.PerformLayout()
+        Me.pnlPropMergeMode.PerformLayout
         Me.pnlPropTransparency.ResumeLayout(False)
-        Me.pnlPropTransparency.PerformLayout()
-        CType(Me.txtPropTransparency, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlPropTransparency.PerformLayout
+        CType(Me.txtPropTransparency, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlPropObjectsBinding.ResumeLayout(False)
-        Me.pnlPropObjectsBinding.PerformLayout()
+        Me.pnlPropObjectsBinding.PerformLayout
         Me.pnlPropPointsSequences.ResumeLayout(False)
-        Me.pnlPropPointsSequences.PerformLayout()
+        Me.pnlPropPointsSequences.PerformLayout
         Me.pnlPropSequenceLineType.ResumeLayout(False)
-        Me.pnlPropSequenceLineType.PerformLayout()
+        Me.pnlPropSequenceLineType.PerformLayout
         Me.pnlPropProp.ResumeLayout(False)
-        Me.pnlPropProp.PerformLayout()
+        Me.pnlPropProp.PerformLayout
         Me.pnlPropItems.ResumeLayout(False)
-        Me.pnlPropItems.PerformLayout()
+        Me.pnlPropItems.PerformLayout
         Me.pnlPropPopup.ResumeLayout(False)
-        CType(Me.picPropPopupWarning, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picPropPopupWarning, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlPropProfileSplayBorder.ResumeLayout(False)
-        Me.pnlPropProfileSplayBorder.PerformLayout()
-        CType(Me.txtPropProfileSplayNegInclinationRangeMax, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropProfileSplayNegInclinationRangeMin, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropProfileSplayPosInclinationRangeMax, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropProfileSplayPosInclinationRangeMin, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropProfileSplayMaxVariationAngle, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropProfileSplayProjectionAngle, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picPropProfileProjectionSchema, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlPropProfileSplayBorder.PerformLayout
+        CType(Me.txtPropProfileSplayNegInclinationRangeMax, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropProfileSplayNegInclinationRangeMin, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropProfileSplayPosInclinationRangeMax, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropProfileSplayPosInclinationRangeMin, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropProfileSplayMaxVariationAngle, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropProfileSplayProjectionAngle, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.picPropProfileProjectionSchema, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlPropPlanSplayBorder.ResumeLayout(False)
-        Me.pnlPropPlanSplayBorder.PerformLayout()
-        CType(Me.txtPropPlanSplayInclinationRangeMax, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropPlanSplayInclinationRangeMin, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropPlanSplayPlanDeltaZ, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropPlanSplayMaxVariationDelta, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picPropPlanProjectionSchema, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlPropPlanSplayBorder.PerformLayout
+        CType(Me.txtPropPlanSplayInclinationRangeMax, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropPlanSplayInclinationRangeMin, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropPlanSplayPlanDeltaZ, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropPlanSplayMaxVariationDelta, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.picPropPlanProjectionSchema, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlPropDataProperties.ResumeLayout(False)
-        Me.pnlPropDataProperties.PerformLayout()
+        Me.pnlPropDataProperties.PerformLayout
         Me.mnuDesignDataProperties.ResumeLayout(False)
         Me.pnlPropCrossSectionSplayBorder.ResumeLayout(False)
-        Me.pnlPropCrossSectionSplayBorder.PerformLayout()
-        CType(Me.txtPropCrossSectionSplayProjectionVerticalAngle, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropCrossSectionSplayMaxVariationAngle, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropCrossSectionSplayProjectionAngle, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picPropCrossSectionProjectionSchema, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlPropCrossSectionSplayBorder.PerformLayout
+        CType(Me.txtPropCrossSectionSplayProjectionVerticalAngle, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropCrossSectionSplayMaxVariationAngle, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropCrossSectionSplayProjectionAngle, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.picPropCrossSectionProjectionSchema, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlPropSegmentInfo.ResumeLayout(False)
-        Me.pnlPropSegmentInfo.PerformLayout()
+        Me.pnlPropSegmentInfo.PerformLayout
         Me.mnuSegmentInfo.ResumeLayout(False)
         Me.pnlPropTrigpointInfo.ResumeLayout(False)
-        Me.pnlPropTrigpointInfo.PerformLayout()
+        Me.pnlPropTrigpointInfo.PerformLayout
         Me.mnuTrigpointInfo.ResumeLayout(False)
         Me.pnlPropCrossSectionMarker.ResumeLayout(False)
-        Me.pnlPropCrossSectionMarker.PerformLayout()
-        CType(Me.txtPropCrossSectionMarkerDH, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropCrossSectionMarkerLW, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropCrossSectionMarkerRW, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropCrossSectionMarkerUH, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropCrossSectionMarkerLabelDistance, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropCrossSectionMarkerDeltaAngle, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropCrossSectionMarkerPosition, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropCrossSectionMarkerU, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropCrossSectionMarkerL, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropCrossSectionMarkerR, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropCrossSectionMarkerD, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlPropCrossSectionMarker.PerformLayout
+        CType(Me.txtPropCrossSectionMarkerDH, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropCrossSectionMarkerLW, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropCrossSectionMarkerRW, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropCrossSectionMarkerUH, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropCrossSectionMarkerLabelDistance, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropCrossSectionMarkerDeltaAngle, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropCrossSectionMarkerPosition, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropCrossSectionMarkerU, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropCrossSectionMarkerL, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropCrossSectionMarkerR, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtPropCrossSectionMarkerD, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlPropTrigpointsDistances.ResumeLayout(False)
-        Me.pnlPropTrigpointsDistances.PerformLayout()
+        Me.pnlPropTrigpointsDistances.PerformLayout
         Me.pnlPropVisibility.ResumeLayout(False)
-        Me.pnlPropVisibility.PerformLayout()
+        Me.pnlPropVisibility.PerformLayout
         Me.pnlPropAttachment.ResumeLayout(False)
-        Me.pnlPropAttachment.PerformLayout()
-        CType(Me.picPropAttachmentPreview, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlPropAttachment.PerformLayout
+        CType(Me.picPropAttachmentPreview, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlPropLegend.ResumeLayout(False)
         Me.pnlPropScale.ResumeLayout(False)
         Me.pnlPropCompass.ResumeLayout(False)
         Me.tabObjectProp3D.ResumeLayout(False)
+        Me.tabObjectProp3D.PerformLayout
         Me.tbl3DProp.ResumeLayout(False)
         Me.pnl3DMain.ResumeLayout(False)
-        Me.pnl3DMain.PerformLayout()
-        CType(Me.txt3DSurfaceElevationAmp, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnl3DMain.PerformLayout
+        CType(Me.txt3DSurfaceElevationAmp, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnl3DPlotContainer.ResumeLayout(False)
-        Me.pnl3DPlotContainer.PerformLayout()
+        Me.pnl3DPlotContainer.PerformLayout
         Me.pnl3dPlotModel.ResumeLayout(False)
-        Me.pnl3dPlotModel.PerformLayout()
+        Me.pnl3dPlotModel.PerformLayout
         Me.pnl3DPlot.ResumeLayout(False)
-        Me.pnl3DPlot.PerformLayout()
+        Me.pnl3DPlot.PerformLayout
         Me.pnl3DSurfaceContainer.ResumeLayout(False)
-        Me.pnl3DSurfaceContainer.PerformLayout()
+        Me.pnl3DSurfaceContainer.PerformLayout
         Me.pnl3DSurface.ResumeLayout(False)
-        Me.pnl3DSurface.PerformLayout()
-        CType(Me.txt3DSurfaceTransparency, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnl3DSurface.PerformLayout
+        CType(Me.txt3DSurfaceTransparency, System.ComponentModel.ISupportInitialize).EndInit
         Me.tbMain.ResumeLayout(False)
-        Me.tbMain.PerformLayout()
+        Me.tbMain.PerformLayout
         Me.tbLayers.ResumeLayout(False)
-        Me.tbLayers.PerformLayout()
+        Me.tbLayers.PerformLayout
         Me.tbPens.ResumeLayout(False)
-        Me.tbPens.PerformLayout()
+        Me.tbPens.PerformLayout
         Me.tbWorkspaces.ResumeLayout(False)
-        Me.tbWorkspaces.PerformLayout()
+        Me.tbWorkspaces.PerformLayout
         Me.tbView.ResumeLayout(False)
-        Me.tbView.PerformLayout()
+        Me.tbView.PerformLayout
         Me.sbMain.ResumeLayout(False)
-        Me.sbMain.PerformLayout()
+        Me.sbMain.PerformLayout
         Me.mnuMain.ResumeLayout(False)
-        Me.mnuMain.PerformLayout()
+        Me.mnuMain.PerformLayout
         Me.mnuDesignNone.ResumeLayout(False)
         Me.mnuDesignItem.ResumeLayout(False)
         Me.mnuDesignItemPoint.ResumeLayout(False)
         Me.mnuMapDrop.ResumeLayout(False)
         Me.mnuTray.ResumeLayout(False)
         Me.ResumeLayout(False)
-        Me.PerformLayout()
+        Me.PerformLayout
 
     End Sub
     Friend WithEvents tsMain As System.Windows.Forms.ToolStripContainer
@@ -13421,4 +13468,8 @@ Partial Class frmMain
     Friend WithEvents colTrigpointsConnections As BrightIdeasSoftware.OLVColumn
     Friend WithEvents colTrigpointsCustomConnections As BrightIdeasSoftware.OLVColumn
     Friend WithEvents colTrigpointsConnectionsCount As BrightIdeasSoftware.OLVColumn
+    Friend WithEvents txtPropImageRotateAngle As NumericUpDown
+    Friend WithEvents lblPropImageRotateAngle As Label
+    Friend WithEvents chkPropRotateCenterOnOrigin As CheckBox
+    Friend WithEvents mnuViewSharedTexts As ToolStripMenuItem
 End Class

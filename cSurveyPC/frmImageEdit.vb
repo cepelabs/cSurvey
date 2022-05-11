@@ -8,7 +8,7 @@ Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Design.Items
 
-Public Class frmImageEdit
+friend Class frmImageEdit
     Private oSurvey As cSurvey.cSurvey
     Private oImage As cItemImage
     Private iDesignType As cIDesign.cDesignTypeEnum
@@ -127,18 +127,6 @@ Public Class frmImageEdit
 
     Public Function pGrayScaleImage()
         oCurrentImage = modPaint.GrayScaleImage(oCurrentImage)
-        'Try
-        '    Dim cm As ColorMatrix = New ColorMatrix(New Single()() {New Single() {0.299, 0.299, 0.299, 0, 0}, New Single() {0.587, 0.587, 0.587, 0, 0}, New Single() {0.114, 0.114, 0.114, 0, 0}, New Single() {0, 0, 0, 1, 0}, New Single() {0, 0, 0, 0, 1}})
-        '    Dim oNewImage As Bitmap = New Bitmap(oCurrentImage)
-        '    Dim oCurrentImageAttribute As ImageAttributes = New ImageAttributes
-        '    Dim oRect As Rectangle = New Rectangle(0, 0, oNewImage.Width, oNewImage.Height)
-        '    Using oGraphics As Graphics = Graphics.FromImage(oNewImage)
-        '        Call oCurrentImageAttribute.SetColorMatrix(cm)
-        '        Call oGraphics.DrawImage(oNewImage, oRect, 0, 0, oCurrentImage.Width, oCurrentImage.Height, GraphicsUnit.Pixel, oCurrentImageAttribute)
-        '    End Using
-        '    oCurrentImage = oNewImage
-        'Catch
-        'End Try
     End Function
 
     Public Sub New(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Image As cItemImage)

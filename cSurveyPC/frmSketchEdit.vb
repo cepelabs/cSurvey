@@ -9,7 +9,7 @@ Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Design.Items
 Imports System.ComponentModel
 
-Public Class frmSketchEdit
+friend Class frmSketchEdit
     Private oSurvey As cSurvey.cSurvey
     Private oSketch As cItemSketch
     Private iDesignType As cIDesign.cDesignTypeEnum
@@ -619,7 +619,7 @@ Public Class frmSketchEdit
 
             Using imgAttributes As System.Drawing.Imaging.ImageAttributes = New System.Drawing.Imaging.ImageAttributes
                 If Not oTransparentColor = Color.Transparent Then
-                    Call imgAttributes.SetColorKey(modPaint.DarkColor(oTransparentColor, sTransparencyThreshold), modPaint.LightColor(oTransparentColor, sTransparencyThreshold))
+                    Call imgAttributes.SetColorKey(modPaint.DarkColor(oTransparentColor, 1.0 - sTransparencyThreshold), modPaint.LightColor(oTransparentColor, 1.0 - sTransparencyThreshold))
                 End If
                 Call oGraphics.DrawImage(oCurrentImage, New Rectangle(0, 0, picPreview.Width, picPreview.Height), 0, 0, oCurrentImage.Width, oCurrentImage.Height, GraphicsUnit.Pixel, imgAttributes)
             End Using
@@ -916,6 +916,7 @@ Public Class frmSketchEdit
         mnuPreviewTransparentThreshold8.Checked = False
         mnuPreviewTransparentThreshold9.Checked = False
         mnuPreviewTransparentThreshold10.Checked = False
+        mnuPreviewTransparentThreshold11.Checked = False
         Select Case sTransparencyThreshold
             Case 0.99
                 mnuPreviewTransparentThreshold1.Checked = True

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -240,7 +240,7 @@
     <value>3</value>
   </data>
   <data name="pnlCompass.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 462</value>
+    <value>3, 575</value>
   </data>
   <data name="pnlCompass.Size" type="System.Drawing.Size, System.Drawing">
     <value>229, 57</value>
@@ -372,7 +372,7 @@
     <value>3</value>
   </data>
   <data name="pnlScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 399</value>
+    <value>3, 512</value>
   </data>
   <data name="pnlScale.Size" type="System.Drawing.Size, System.Drawing">
     <value>229, 57</value>
@@ -504,7 +504,7 @@
     <value>3</value>
   </data>
   <data name="pnlInformationBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 336</value>
+    <value>3, 449</value>
   </data>
   <data name="pnlInformationBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>229, 57</value>
@@ -531,7 +531,7 @@
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
+    <value>5, 8</value>
   </data>
   <data name="lblScale.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 13</value>
@@ -591,10 +591,10 @@
     <value>Custom</value>
   </data>
   <data name="cboScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>72, 8</value>
+    <value>69, 8</value>
   </data>
   <data name="cboScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 21</value>
+    <value>128, 21</value>
   </data>
   <data name="cboScale.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -694,7 +694,7 @@
     <value>4</value>
   </data>
   <data name="pnlScaleOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 229</value>
+    <value>3, 342</value>
   </data>
   <data name="pnlScaleOptions.Size" type="System.Drawing.Size, System.Drawing">
     <value>229, 65</value>
@@ -1511,7 +1511,7 @@
     <value>26</value>
   </data>
   <data name="pnlMainOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 525</value>
+    <value>3, 638</value>
   </data>
   <data name="pnlMainOptions.Size" type="System.Drawing.Size, System.Drawing">
     <value>229, 418</value>
@@ -1531,8 +1531,108 @@
   <data name="&gt;&gt;pnlMainOptions.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="cboPageFormat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>71, 64</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v20.2" name="DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="cboPageFormat.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v20.2">
+    <value>Combo</value>
+  </data>
+  <metadata name="SvgImageCollection.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>997, 17</value>
+  </metadata>
+  <data name="cboPageFormat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 34</value>
+  </data>
+  <data name="cboPageFormat.TabIndex" type="System.Int32, mscorlib">
+    <value>146</value>
+  </data>
+  <data name="&gt;&gt;cboPageFormat.Name" xml:space="preserve">
+    <value>cboPageFormat</value>
+  </data>
+  <data name="&gt;&gt;cboPageFormat.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ImageComboBoxEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboPageFormat.Parent" xml:space="preserve">
+    <value>pnlPrintOptions</value>
+  </data>
+  <data name="&gt;&gt;cboPageFormat.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="LabelControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 39</value>
+  </data>
+  <data name="LabelControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 13</value>
+  </data>
+  <data name="LabelControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>145</value>
+  </data>
+  <data name="LabelControl1.Text" xml:space="preserve">
+    <value>Orientation:</value>
+  </data>
+  <data name="&gt;&gt;LabelControl1.Name" xml:space="preserve">
+    <value>LabelControl1</value>
+  </data>
+  <data name="&gt;&gt;LabelControl1.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;LabelControl1.Parent" xml:space="preserve">
+    <value>pnlPrintOptions</value>
+  </data>
+  <data name="&gt;&gt;LabelControl1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkPageHorizontal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>102, 33</value>
+  </data>
+  <data name="chkPageHorizontal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="chkPageHorizontal.TabIndex" type="System.Int32, mscorlib">
+    <value>144</value>
+  </data>
+  <data name="chkPageHorizontal.ToolTip" xml:space="preserve">
+    <value>Landscape</value>
+  </data>
+  <data name="&gt;&gt;chkPageHorizontal.Name" xml:space="preserve">
+    <value>chkPageHorizontal</value>
+  </data>
+  <data name="&gt;&gt;chkPageHorizontal.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPageHorizontal.Parent" xml:space="preserve">
+    <value>pnlPrintOptions</value>
+  </data>
+  <data name="&gt;&gt;chkPageHorizontal.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="chkPageVertical.Location" type="System.Drawing.Point, System.Drawing">
+    <value>71, 33</value>
+  </data>
+  <data name="chkPageVertical.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="chkPageVertical.TabIndex" type="System.Int32, mscorlib">
+    <value>143</value>
+  </data>
+  <data name="chkPageVertical.ToolTip" xml:space="preserve">
+    <value>Portrait</value>
+  </data>
+  <data name="&gt;&gt;chkPageVertical.Name" xml:space="preserve">
+    <value>chkPageVertical</value>
+  </data>
+  <data name="&gt;&gt;chkPageVertical.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPageVertical.Parent" xml:space="preserve">
+    <value>pnlPrintOptions</value>
+  </data>
+  <data name="&gt;&gt;chkPageVertical.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="cmdSetMargins.Location" type="System.Drawing.Point, System.Drawing">
-    <value>202, 82</value>
+    <value>202, 68</value>
   </data>
   <data name="cmdSetMargins.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
@@ -1550,7 +1650,7 @@
     <value>pnlPrintOptions</value>
   </data>
   <data name="&gt;&gt;cmdSetMargins.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="cboPrinter.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 9pt</value>
@@ -1574,28 +1674,7 @@
     <value>pnlPrintOptions</value>
   </data>
   <data name="&gt;&gt;cboPrinter.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="cboPageFormat.Location" type="System.Drawing.Point, System.Drawing">
-    <value>71, 85</value>
-  </data>
-  <data name="cboPageFormat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 21</value>
-  </data>
-  <data name="cboPageFormat.TabIndex" type="System.Int32, mscorlib">
-    <value>127</value>
-  </data>
-  <data name="&gt;&gt;cboPageFormat.Name" xml:space="preserve">
-    <value>cboPageFormat</value>
-  </data>
-  <data name="&gt;&gt;cboPageFormat.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboPageFormat.Parent" xml:space="preserve">
-    <value>pnlPrintOptions</value>
-  </data>
-  <data name="&gt;&gt;cboPageFormat.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="lblPrinter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1625,7 +1704,7 @@
     <value>pnlPrintOptions</value>
   </data>
   <data name="&gt;&gt;lblPrinter.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="lblPageFormat.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1634,7 +1713,7 @@
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblPageFormat.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 89</value>
+    <value>11, 74</value>
   </data>
   <data name="lblPageFormat.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 13</value>
@@ -1655,82 +1734,13 @@
     <value>pnlPrintOptions</value>
   </data>
   <data name="&gt;&gt;lblPageFormat.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="optPageHorizontal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>79, 16</value>
-  </data>
-  <data name="optPageHorizontal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 26</value>
-  </data>
-  <data name="optPageHorizontal.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;optPageHorizontal.Name" xml:space="preserve">
-    <value>optPageHorizontal</value>
-  </data>
-  <data name="&gt;&gt;optPageHorizontal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;optPageHorizontal.Parent" xml:space="preserve">
-    <value>grpOrientation</value>
-  </data>
-  <data name="&gt;&gt;optPageHorizontal.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="optPageVertical.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 16</value>
-  </data>
-  <data name="optPageVertical.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 26</value>
-  </data>
-  <data name="optPageVertical.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="optPageVertical.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageBeforeText</value>
-  </data>
-  <data name="&gt;&gt;optPageVertical.Name" xml:space="preserve">
-    <value>optPageVertical</value>
-  </data>
-  <data name="&gt;&gt;optPageVertical.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;optPageVertical.Parent" xml:space="preserve">
-    <value>grpOrientation</value>
-  </data>
-  <data name="&gt;&gt;optPageVertical.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="grpOrientation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>70, 33</value>
-  </data>
-  <data name="grpOrientation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 46</value>
-  </data>
-  <data name="grpOrientation.TabIndex" type="System.Int32, mscorlib">
-    <value>118</value>
-  </data>
-  <data name="grpOrientation.Text" xml:space="preserve">
-    <value>Orientation:</value>
-  </data>
-  <data name="&gt;&gt;grpOrientation.Name" xml:space="preserve">
-    <value>grpOrientation</value>
-  </data>
-  <data name="&gt;&gt;grpOrientation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpOrientation.Parent" xml:space="preserve">
-    <value>pnlPrintOptions</value>
-  </data>
-  <data name="&gt;&gt;grpOrientation.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="pnlPrintOptions.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
   <data name="pnlPrintOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>229, 121</value>
+    <value>229, 103</value>
   </data>
   <data name="pnlPrintOptions.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1747,38 +1757,107 @@
   <data name="&gt;&gt;pnlPrintOptions.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="cmdSetImageMargins.Location" type="System.Drawing.Point, System.Drawing">
-    <value>202, 33</value>
+  <data name="lblImageResolutionUM.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="cmdSetImageMargins.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
+  <data name="lblImageResolutionUM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="cmdSetImageMargins.TabIndex" type="System.Int32, mscorlib">
-    <value>130</value>
+  <data name="lblImageResolutionUM.Location" type="System.Drawing.Point, System.Drawing">
+    <value>145, 5</value>
   </data>
-  <data name="&gt;&gt;cmdSetImageMargins.Name" xml:space="preserve">
-    <value>cmdSetImageMargins</value>
+  <data name="lblImageResolutionUM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 13</value>
   </data>
-  <data name="&gt;&gt;cmdSetImageMargins.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="lblImageResolutionUM.TabIndex" type="System.Int32, mscorlib">
+    <value>133</value>
   </data>
-  <data name="&gt;&gt;cmdSetImageMargins.Parent" xml:space="preserve">
-    <value>pnlExportOptions</value>
+  <data name="lblImageResolutionUM.Text" xml:space="preserve">
+    <value>DPI</value>
   </data>
-  <data name="&gt;&gt;cmdSetImageMargins.ZOrder" xml:space="preserve">
+  <data name="lblImageResolutionUM.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lblImageResolutionUM.Name" xml:space="preserve">
+    <value>lblImageResolutionUM</value>
+  </data>
+  <data name="&gt;&gt;lblImageResolutionUM.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblImageResolutionUM.Parent" xml:space="preserve">
+    <value>pnlExportOptionsOther</value>
+  </data>
+  <data name="&gt;&gt;lblImageResolutionUM.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="lblImageResolution.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblImageResolution.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblImageResolution.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 5</value>
+  </data>
+  <data name="lblImageResolution.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 13</value>
+  </data>
+  <data name="lblImageResolution.TabIndex" type="System.Int32, mscorlib">
+    <value>132</value>
+  </data>
+  <data name="lblImageResolution.Text" xml:space="preserve">
+    <value>Resolution:</value>
+  </data>
+  <data name="lblImageResolution.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lblImageResolution.Name" xml:space="preserve">
+    <value>lblImageResolution</value>
+  </data>
+  <data name="&gt;&gt;lblImageResolution.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblImageResolution.Parent" xml:space="preserve">
+    <value>pnlExportOptionsOther</value>
+  </data>
+  <data name="&gt;&gt;lblImageResolution.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtImageDPI.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 3</value>
+  </data>
+  <data name="txtImageDPI.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 21</value>
+  </data>
+  <data name="txtImageDPI.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="txtImageDPI.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtImageDPI.Name" xml:space="preserve">
+    <value>txtImageDPI</value>
+  </data>
+  <data name="&gt;&gt;txtImageDPI.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtImageDPI.Parent" xml:space="preserve">
+    <value>pnlExportOptionsOther</value>
+  </data>
+  <data name="&gt;&gt;txtImageDPI.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="chkBackgroundTransparent.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="chkBackgroundTransparent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>70, 66</value>
+    <value>69, 30</value>
   </data>
   <data name="chkBackgroundTransparent.Size" type="System.Drawing.Size, System.Drawing">
     <value>144, 17</value>
   </data>
   <data name="chkBackgroundTransparent.TabIndex" type="System.Int32, mscorlib">
-    <value>123</value>
+    <value>5</value>
   </data>
   <data name="chkBackgroundTransparent.Text" xml:space="preserve">
     <value>Transparent background</value>
@@ -1790,243 +1869,30 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;chkBackgroundTransparent.Parent" xml:space="preserve">
-    <value>pnlExportOptions</value>
+    <value>pnlExportOptionsOther</value>
   </data>
   <data name="&gt;&gt;chkBackgroundTransparent.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="txtImageWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>71, 36</value>
-  </data>
-  <data name="txtImageWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 21</value>
-  </data>
-  <data name="txtImageWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>119</value>
-  </data>
-  <data name="txtImageWidth.Text" xml:space="preserve">
-    <value>4096</value>
-  </data>
-  <data name="txtImageWidth.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtImageWidth.Name" xml:space="preserve">
-    <value>txtImageWidth</value>
-  </data>
-  <data name="&gt;&gt;txtImageWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtImageWidth.Parent" xml:space="preserve">
-    <value>pnlExportOptions</value>
-  </data>
-  <data name="&gt;&gt;txtImageWidth.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="txtImageHeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>122, 36</value>
-  </data>
-  <data name="txtImageHeight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 21</value>
-  </data>
-  <data name="txtImageHeight.TabIndex" type="System.Int32, mscorlib">
-    <value>120</value>
-  </data>
-  <data name="txtImageHeight.Text" xml:space="preserve">
-    <value>3072</value>
-  </data>
-  <data name="txtImageHeight.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtImageHeight.Name" xml:space="preserve">
-    <value>txtImageHeight</value>
-  </data>
-  <data name="&gt;&gt;txtImageHeight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtImageHeight.Parent" xml:space="preserve">
-    <value>pnlExportOptions</value>
-  </data>
-  <data name="&gt;&gt;txtImageHeight.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="Label71.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="pnlExportOptionsOther.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 286</value>
   </data>
-  <data name="Label71.Location" type="System.Drawing.Point, System.Drawing">
-    <value>109, 39</value>
+  <data name="pnlExportOptionsOther.Size" type="System.Drawing.Size, System.Drawing">
+    <value>229, 50</value>
   </data>
-  <data name="Label71.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 13</value>
-  </data>
-  <data name="Label71.TabIndex" type="System.Int32, mscorlib">
-    <value>121</value>
-  </data>
-  <data name="Label71.Text" xml:space="preserve">
-    <value>x</value>
-  </data>
-  <data name="Label71.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;Label71.Name" xml:space="preserve">
-    <value>Label71</value>
-  </data>
-  <data name="&gt;&gt;Label71.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label71.Parent" xml:space="preserve">
-    <value>pnlExportOptions</value>
-  </data>
-  <data name="&gt;&gt;Label71.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="Label72.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Label72.Location" type="System.Drawing.Point, System.Drawing">
-    <value>164, 40</value>
-  </data>
-  <data name="Label72.Size" type="System.Drawing.Size, System.Drawing">
-    <value>19, 13</value>
-  </data>
-  <data name="Label72.TabIndex" type="System.Int32, mscorlib">
-    <value>122</value>
-  </data>
-  <data name="Label72.Text" xml:space="preserve">
-    <value>px</value>
-  </data>
-  <data name="Label72.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;Label72.Name" xml:space="preserve">
-    <value>Label72</value>
-  </data>
-  <data name="&gt;&gt;Label72.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label72.Parent" xml:space="preserve">
-    <value>pnlExportOptions</value>
-  </data>
-  <data name="&gt;&gt;Label72.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="lblSize.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 39</value>
-  </data>
-  <data name="lblSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 13</value>
-  </data>
-  <data name="lblSize.TabIndex" type="System.Int32, mscorlib">
-    <value>118</value>
-  </data>
-  <data name="lblSize.Text" xml:space="preserve">
-    <value>Size:</value>
-  </data>
-  <data name="lblSize.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;lblSize.Name" xml:space="preserve">
-    <value>lblSize</value>
-  </data>
-  <data name="&gt;&gt;lblSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblSize.Parent" xml:space="preserve">
-    <value>pnlExportOptions</value>
-  </data>
-  <data name="&gt;&gt;lblSize.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="cboFileFormat.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 9pt</value>
-  </data>
-  <data name="cboFileFormat.Items" xml:space="preserve">
-    <value>JPG</value>
-  </data>
-  <data name="cboFileFormat.Items1" xml:space="preserve">
-    <value>TIF</value>
-  </data>
-  <data name="cboFileFormat.Items2" xml:space="preserve">
-    <value>PNG</value>
-  </data>
-  <data name="cboFileFormat.Items3" xml:space="preserve">
-    <value>BMP</value>
-  </data>
-  <data name="cboFileFormat.Items4" xml:space="preserve">
-    <value>SVG</value>
-  </data>
-  <data name="cboFileFormat.Location" type="System.Drawing.Point, System.Drawing">
-    <value>70, 5</value>
-  </data>
-  <data name="cboFileFormat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 22</value>
-  </data>
-  <data name="cboFileFormat.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cboFileFormat.Name" xml:space="preserve">
-    <value>cboFileFormat</value>
-  </data>
-  <data name="&gt;&gt;cboFileFormat.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboFileFormat.Parent" xml:space="preserve">
-    <value>pnlExportOptions</value>
-  </data>
-  <data name="&gt;&gt;cboFileFormat.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="Label7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
-  </data>
-  <data name="Label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 9</value>
-  </data>
-  <data name="Label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 13</value>
-  </data>
-  <data name="Label7.TabIndex" type="System.Int32, mscorlib">
-    <value>117</value>
-  </data>
-  <data name="Label7.Text" xml:space="preserve">
-    <value>Format:</value>
-  </data>
-  <data name="&gt;&gt;Label7.Name" xml:space="preserve">
-    <value>Label7</value>
-  </data>
-  <data name="&gt;&gt;Label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label7.Parent" xml:space="preserve">
-    <value>pnlExportOptions</value>
-  </data>
-  <data name="&gt;&gt;Label7.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="pnlExportOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 130</value>
-  </data>
-  <data name="pnlExportOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>229, 93</value>
-  </data>
-  <data name="pnlExportOptions.TabIndex" type="System.Int32, mscorlib">
+  <data name="pnlExportOptionsOther.TabIndex" type="System.Int32, mscorlib">
     <value>130</value>
   </data>
-  <data name="&gt;&gt;pnlExportOptions.Name" xml:space="preserve">
-    <value>pnlExportOptions</value>
+  <data name="&gt;&gt;pnlExportOptionsOther.Name" xml:space="preserve">
+    <value>pnlExportOptionsOther</value>
   </data>
-  <data name="&gt;&gt;pnlExportOptions.Type" xml:space="preserve">
+  <data name="&gt;&gt;pnlExportOptionsOther.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;pnlExportOptions.Parent" xml:space="preserve">
+  <data name="&gt;&gt;pnlExportOptionsOther.Parent" xml:space="preserve">
     <value>tblOptions</value>
   </data>
-  <data name="&gt;&gt;pnlExportOptions.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;pnlExportOptionsOther.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
   <data name="txtCurrentProfile.Location" type="System.Drawing.Point, System.Drawing">
@@ -2102,7 +1968,7 @@
     <value>2</value>
   </data>
   <data name="pnlProfile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 300</value>
+    <value>3, 413</value>
   </data>
   <data name="pnlProfile.Size" type="System.Drawing.Size, System.Drawing">
     <value>229, 30</value>
@@ -2122,6 +1988,399 @@
   <data name="&gt;&gt;pnlProfile.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="cboFileFormat.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 9pt</value>
+  </data>
+  <data name="cboFileFormat.Items" xml:space="preserve">
+    <value>JPG</value>
+  </data>
+  <data name="cboFileFormat.Items1" xml:space="preserve">
+    <value>TIF</value>
+  </data>
+  <data name="cboFileFormat.Items2" xml:space="preserve">
+    <value>PNG</value>
+  </data>
+  <data name="cboFileFormat.Items3" xml:space="preserve">
+    <value>BMP</value>
+  </data>
+  <data name="cboFileFormat.Items4" xml:space="preserve">
+    <value>SVG</value>
+  </data>
+  <data name="cboFileFormat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 3</value>
+  </data>
+  <data name="cboFileFormat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 22</value>
+  </data>
+  <data name="cboFileFormat.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cboFileFormat.Name" xml:space="preserve">
+    <value>cboFileFormat</value>
+  </data>
+  <data name="&gt;&gt;cboFileFormat.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboFileFormat.Parent" xml:space="preserve">
+    <value>pnlExportOptionsFormat</value>
+  </data>
+  <data name="&gt;&gt;cboFileFormat.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Label7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="Label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 7</value>
+  </data>
+  <data name="Label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 13</value>
+  </data>
+  <data name="Label7.TabIndex" type="System.Int32, mscorlib">
+    <value>117</value>
+  </data>
+  <data name="Label7.Text" xml:space="preserve">
+    <value>Format:</value>
+  </data>
+  <data name="&gt;&gt;Label7.Name" xml:space="preserve">
+    <value>Label7</value>
+  </data>
+  <data name="&gt;&gt;Label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label7.Parent" xml:space="preserve">
+    <value>pnlExportOptionsFormat</value>
+  </data>
+  <data name="&gt;&gt;Label7.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pnlExportOptionsFormat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 112</value>
+  </data>
+  <data name="pnlExportOptionsFormat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>229, 29</value>
+  </data>
+  <data name="pnlExportOptionsFormat.TabIndex" type="System.Int32, mscorlib">
+    <value>160</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsFormat.Name" xml:space="preserve">
+    <value>pnlExportOptionsFormat</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsFormat.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsFormat.Parent" xml:space="preserve">
+    <value>tblOptions</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsFormat.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="lblImageOrientation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 49</value>
+  </data>
+  <data name="lblImageOrientation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 13</value>
+  </data>
+  <data name="lblImageOrientation.TabIndex" type="System.Int32, mscorlib">
+    <value>143</value>
+  </data>
+  <data name="lblImageOrientation.Text" xml:space="preserve">
+    <value>Orientation:</value>
+  </data>
+  <data name="&gt;&gt;lblImageOrientation.Name" xml:space="preserve">
+    <value>lblImageOrientation</value>
+  </data>
+  <data name="&gt;&gt;lblImageOrientation.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblImageOrientation.Parent" xml:space="preserve">
+    <value>pnlExportOptionsPage</value>
+  </data>
+  <data name="&gt;&gt;lblImageOrientation.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkImageOrientationLandscape.Location" type="System.Drawing.Point, System.Drawing">
+    <value>100, 43</value>
+  </data>
+  <data name="chkImageOrientationLandscape.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="chkImageOrientationLandscape.TabIndex" type="System.Int32, mscorlib">
+    <value>142</value>
+  </data>
+  <data name="chkImageOrientationLandscape.ToolTip" xml:space="preserve">
+    <value>Landscape</value>
+  </data>
+  <data name="&gt;&gt;chkImageOrientationLandscape.Name" xml:space="preserve">
+    <value>chkImageOrientationLandscape</value>
+  </data>
+  <data name="&gt;&gt;chkImageOrientationLandscape.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkImageOrientationLandscape.Parent" xml:space="preserve">
+    <value>pnlExportOptionsPage</value>
+  </data>
+  <data name="&gt;&gt;chkImageOrientationLandscape.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cmdSetImageMargins.Location" type="System.Drawing.Point, System.Drawing">
+    <value>202, 7</value>
+  </data>
+  <data name="cmdSetImageMargins.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdSetImageMargins.TabIndex" type="System.Int32, mscorlib">
+    <value>130</value>
+  </data>
+  <data name="&gt;&gt;cmdSetImageMargins.Name" xml:space="preserve">
+    <value>cmdSetImageMargins</value>
+  </data>
+  <data name="&gt;&gt;cmdSetImageMargins.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmdSetImageMargins.Parent" xml:space="preserve">
+    <value>pnlExportOptionsPage</value>
+  </data>
+  <data name="&gt;&gt;cmdSetImageMargins.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="chkImageOrientationPortrait.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 43</value>
+  </data>
+  <data name="chkImageOrientationPortrait.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="chkImageOrientationPortrait.TabIndex" type="System.Int32, mscorlib">
+    <value>141</value>
+  </data>
+  <data name="chkImageOrientationPortrait.ToolTip" xml:space="preserve">
+    <value>Portrait</value>
+  </data>
+  <data name="&gt;&gt;chkImageOrientationPortrait.Name" xml:space="preserve">
+    <value>chkImageOrientationPortrait</value>
+  </data>
+  <data name="&gt;&gt;chkImageOrientationPortrait.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkImageOrientationPortrait.Parent" xml:space="preserve">
+    <value>pnlExportOptionsPage</value>
+  </data>
+  <data name="&gt;&gt;chkImageOrientationPortrait.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="Label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 13</value>
+  </data>
+  <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 13</value>
+  </data>
+  <data name="Label1.TabIndex" type="System.Int32, mscorlib">
+    <value>136</value>
+  </data>
+  <data name="Label1.Text" xml:space="preserve">
+    <value>Page:</value>
+  </data>
+  <data name="Label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;Label1.Name" xml:space="preserve">
+    <value>Label1</value>
+  </data>
+  <data name="&gt;&gt;Label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
+    <value>pnlExportOptionsPage</value>
+  </data>
+  <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cboSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 3</value>
+  </data>
+  <data name="cboSize.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v20.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 34</value>
+  </data>
+  <data name="cboSize.TabIndex" type="System.Int32, mscorlib">
+    <value>135</value>
+  </data>
+  <data name="&gt;&gt;cboSize.Name" xml:space="preserve">
+    <value>cboSize</value>
+  </data>
+  <data name="&gt;&gt;cboSize.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ImageComboBoxEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboSize.Parent" xml:space="preserve">
+    <value>pnlExportOptionsPage</value>
+  </data>
+  <data name="&gt;&gt;cboSize.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="pnlExportOptionsPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 147</value>
+  </data>
+  <data name="pnlExportOptionsPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>229, 72</value>
+  </data>
+  <data name="pnlExportOptionsPage.TabIndex" type="System.Int32, mscorlib">
+    <value>161</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsPage.Name" xml:space="preserve">
+    <value>pnlExportOptionsPage</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsPage.Parent" xml:space="preserve">
+    <value>tblOptions</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsPage.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="txtImageWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 3</value>
+  </data>
+  <data name="txtImageWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 21</value>
+  </data>
+  <data name="txtImageWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="txtImageWidth.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtImageWidth.Name" xml:space="preserve">
+    <value>txtImageWidth</value>
+  </data>
+  <data name="&gt;&gt;txtImageWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtImageWidth.Parent" xml:space="preserve">
+    <value>pnlExportOptionsSize</value>
+  </data>
+  <data name="&gt;&gt;txtImageWidth.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblSize.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 5</value>
+  </data>
+  <data name="lblSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 13</value>
+  </data>
+  <data name="lblSize.TabIndex" type="System.Int32, mscorlib">
+    <value>118</value>
+  </data>
+  <data name="lblSize.Text" xml:space="preserve">
+    <value>Size:</value>
+  </data>
+  <data name="lblSize.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lblSize.Name" xml:space="preserve">
+    <value>lblSize</value>
+  </data>
+  <data name="&gt;&gt;lblSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblSize.Parent" xml:space="preserve">
+    <value>pnlExportOptionsSize</value>
+  </data>
+  <data name="&gt;&gt;lblSize.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cboImageUM.Items" xml:space="preserve">
+    <value>px</value>
+  </data>
+  <data name="cboImageUM.Items1" xml:space="preserve">
+    <value>cm</value>
+  </data>
+  <data name="cboImageUM.Items2" xml:space="preserve">
+    <value>mm</value>
+  </data>
+  <data name="cboImageUM.Items3" xml:space="preserve">
+    <value>inch</value>
+  </data>
+  <data name="cboImageUM.Location" type="System.Drawing.Point, System.Drawing">
+    <value>145, 17</value>
+  </data>
+  <data name="cboImageUM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 21</value>
+  </data>
+  <data name="cboImageUM.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;cboImageUM.Name" xml:space="preserve">
+    <value>cboImageUM</value>
+  </data>
+  <data name="&gt;&gt;cboImageUM.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboImageUM.Parent" xml:space="preserve">
+    <value>pnlExportOptionsSize</value>
+  </data>
+  <data name="&gt;&gt;cboImageUM.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtImageHeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 30</value>
+  </data>
+  <data name="txtImageHeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 21</value>
+  </data>
+  <data name="txtImageHeight.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="txtImageHeight.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtImageHeight.Name" xml:space="preserve">
+    <value>txtImageHeight</value>
+  </data>
+  <data name="&gt;&gt;txtImageHeight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtImageHeight.Parent" xml:space="preserve">
+    <value>pnlExportOptionsSize</value>
+  </data>
+  <data name="&gt;&gt;txtImageHeight.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="pnlExportOptionsSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 225</value>
+  </data>
+  <data name="pnlExportOptionsSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>229, 55</value>
+  </data>
+  <data name="pnlExportOptionsSize.TabIndex" type="System.Int32, mscorlib">
+    <value>162</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsSize.Name" xml:space="preserve">
+    <value>pnlExportOptionsSize</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsSize.Parent" xml:space="preserve">
+    <value>tblOptions</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsSize.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
   <data name="tblOptions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -2129,7 +2388,7 @@
     <value>0, 0</value>
   </data>
   <data name="tblOptions.RowCount" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="tblOptions.Size" type="System.Drawing.Size, System.Drawing">
     <value>254, 578</value>
@@ -2150,7 +2409,7 @@
     <value>0</value>
   </data>
   <data name="tblOptions.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="pnlCompass" Row="7" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlScale" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlInformationBox" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlScaleOptions" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlMainOptions" Row="8" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlPrintOptions" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlExportOptions" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlProfile" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="pnlCompass" Row="10" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlScale" Row="9" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlInformationBox" Row="8" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlScaleOptions" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlMainOptions" Row="11" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlPrintOptions" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlExportOptionsOther" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlProfile" Row="7" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlExportOptionsFormat" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlExportOptionsPage" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlExportOptionsSize" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="pnlOptions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -2174,7 +2433,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pnlOptions.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="pPreview.Location" type="System.Drawing.Point, System.Drawing">
     <value>414, 303</value>
@@ -2195,7 +2454,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pPreview.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <metadata name="tbMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -2247,6 +2506,18 @@
   </data>
   <data name="btnProperty.Text" xml:space="preserve">
     <value>Properties</value>
+  </data>
+  <data name="ToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="btnBaseRule.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnBaseRule.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnBaseRule.Text" xml:space="preserve">
+    <value>Base profile settings</value>
   </data>
   <data name="sep7.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
@@ -2483,7 +2754,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tbMain.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <metadata name="prDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>401, 17</value>
@@ -2534,7 +2805,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pnlExport.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <metadata name="sbMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>500, 17</value>
@@ -2651,7 +2922,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;sbMain.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <metadata name="mnuLvContext.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>659, 17</value>
@@ -2709,7 +2980,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACs
-        EAAAAk1TRnQBSQFMAgEBAwEAAaQBBQGkAQUBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        EAAAAk1TRnQBSQFMAgEBAwEAAcQBBwHEAQcBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABgAMAASADAAEBAQABCAYAARAYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -2802,7 +3073,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lv.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="picInvalidated.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2935,7 +3206,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pnlPopup.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="picMap.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2983,7 +3254,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pnlMap.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="trkZoom.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -3016,7 +3287,25 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;trkZoom.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
+  </data>
+  <metadata name="mnuImageSizeFromPageSize.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>789, 17</value>
+  </metadata>
+  <data name="mnuImageSizeFromPageSize.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="mnuImageSizeFromPageSizeItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 22</value>
+  </data>
+  <data name="mnuImageSizeFromPageSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 26</value>
+  </data>
+  <data name="&gt;&gt;mnuImageSizeFromPageSize.Name" xml:space="preserve">
+    <value>mnuImageSizeFromPageSize</value>
+  </data>
+  <data name="&gt;&gt;mnuImageSizeFromPageSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -3027,10 +3316,7 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1103, 707</value>
   </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="frmPreview.IconOptions.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAICAAAAEAIACoEAAAJgAAABAQAAABACAAaAQAAM4QAAAoAAAAIAAAAEAAAAABACAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA0AAAAVAAAAFgAA
@@ -3131,6 +3417,12 @@
   <data name="$this.Text" xml:space="preserve">
     <value>- cSurvey - Preview</value>
   </data>
+  <data name="&gt;&gt;SvgImageCollection.Name" xml:space="preserve">
+    <value>SvgImageCollection</value>
+  </data>
+  <data name="&gt;&gt;SvgImageCollection.Type" xml:space="preserve">
+    <value>DevExpress.Utils.SvgImageCollection, DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="&gt;&gt;btnAdd.Name" xml:space="preserve">
     <value>btnAdd</value>
   </data>
@@ -3165,6 +3457,18 @@
     <value>btnProperty</value>
   </data>
   <data name="&gt;&gt;btnProperty.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator1.Name" xml:space="preserve">
+    <value>ToolStripSeparator1</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnBaseRule.Name" xml:space="preserve">
+    <value>btnBaseRule</value>
+  </data>
+  <data name="&gt;&gt;btnBaseRule.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;sep7.Name" xml:space="preserve">
@@ -3418,6 +3722,12 @@
   </data>
   <data name="&gt;&gt;iml.Type" xml:space="preserve">
     <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mnuImageSizeFromPageSizeItem.Name" xml:space="preserve">
+    <value>mnuImageSizeFromPageSizeItem</value>
+  </data>
+  <data name="&gt;&gt;mnuImageSizeFromPageSizeItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmPreview</value>

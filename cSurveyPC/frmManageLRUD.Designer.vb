@@ -33,15 +33,11 @@ Partial Class frmManageLRUD
         Me.Label3 = New System.Windows.Forms.Label()
         Me.cboBackupName = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.RadioButton4 = New System.Windows.Forms.RadioButton()
         Me.chkBackup = New System.Windows.Forms.CheckBox()
         Me.cmdOk = New System.Windows.Forms.Button()
-        Me.RadioButton3 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.frmMode1 = New System.Windows.Forms.GroupBox()
         Me.RadioButton1b = New System.Windows.Forms.RadioButton()
         Me.RadioButton1a = New System.Windows.Forms.RadioButton()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.chkShotWithLRUD = New System.Windows.Forms.CheckBox()
         Me.cboReplicateTo = New System.Windows.Forms.ComboBox()
@@ -49,14 +45,23 @@ Partial Class frmManageLRUD
         Me.Label1 = New System.Windows.Forms.Label()
         Me.chkShotWithoutLRUD = New System.Windows.Forms.CheckBox()
         Me.frmMode2 = New System.Windows.Forms.GroupBox()
+        Me.lblSplayMode = New System.Windows.Forms.Label()
+        Me.cboMode2Mode = New System.Windows.Forms.ComboBox()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.txtMode2V = New System.Windows.Forms.NumericUpDown()
         Me.Label35 = New System.Windows.Forms.Label()
         Me.txtMode2H = New System.Windows.Forms.NumericUpDown()
         Me.chkMode2OnlyCutSplay = New System.Windows.Forms.CheckBox()
         Me.chkMarkAsCalculated = New System.Windows.Forms.CheckBox()
-        Me.lblSplayMode = New System.Windows.Forms.Label()
-        Me.cboMode2Mode = New System.Windows.Forms.ComboBox()
+        Me.cboAction = New System.Windows.Forms.ComboBox()
+        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.lblAction = New System.Windows.Forms.Label()
+        Me.pnlOption0 = New DevExpress.XtraEditors.PanelControl()
+        Me.pnlOption1 = New DevExpress.XtraEditors.PanelControl()
+        Me.pnlOption3 = New DevExpress.XtraEditors.PanelControl()
+        Me.pnlOptionOther = New DevExpress.XtraEditors.PanelControl()
+        Me.pnlBottom = New DevExpress.XtraEditors.PanelControl()
         Me.frmRestore.SuspendLayout()
         Me.frmBackup.SuspendLayout()
         Me.frmMode1.SuspendLayout()
@@ -64,6 +69,19 @@ Partial Class frmManageLRUD
         Me.frmMode2.SuspendLayout()
         CType(Me.txtMode2V, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtMode2H, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TableLayoutPanel1.SuspendLayout()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl1.SuspendLayout()
+        CType(Me.pnlOption0, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlOption0.SuspendLayout()
+        CType(Me.pnlOption1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlOption1.SuspendLayout()
+        CType(Me.pnlOption3, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlOption3.SuspendLayout()
+        CType(Me.pnlOptionOther, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlOptionOther.SuspendLayout()
+        CType(Me.pnlBottom, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlBottom.SuspendLayout()
         Me.SuspendLayout()
         '
         'cmdCancel
@@ -131,12 +149,6 @@ Partial Class frmManageLRUD
         resources.ApplyResources(Me.Label2, "Label2")
         Me.Label2.Name = "Label2"
         '
-        'RadioButton4
-        '
-        resources.ApplyResources(Me.RadioButton4, "RadioButton4")
-        Me.RadioButton4.Name = "RadioButton4"
-        Me.RadioButton4.UseVisualStyleBackColor = True
-        '
         'chkBackup
         '
         resources.ApplyResources(Me.chkBackup, "chkBackup")
@@ -148,18 +160,6 @@ Partial Class frmManageLRUD
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.Name = "cmdOk"
         Me.cmdOk.UseVisualStyleBackColor = True
-        '
-        'RadioButton3
-        '
-        resources.ApplyResources(Me.RadioButton3, "RadioButton3")
-        Me.RadioButton3.Name = "RadioButton3"
-        Me.RadioButton3.UseVisualStyleBackColor = True
-        '
-        'RadioButton2
-        '
-        resources.ApplyResources(Me.RadioButton2, "RadioButton2")
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.UseVisualStyleBackColor = True
         '
         'frmMode1
         '
@@ -183,23 +183,15 @@ Partial Class frmManageLRUD
         Me.RadioButton1a.TabStop = True
         Me.RadioButton1a.UseVisualStyleBackColor = True
         '
-        'RadioButton1
-        '
-        resources.ApplyResources(Me.RadioButton1, "RadioButton1")
-        Me.RadioButton1.Checked = True
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.UseVisualStyleBackColor = True
-        '
         'Panel1
         '
-        resources.ApplyResources(Me.Panel1, "Panel1")
         Me.Panel1.BackColor = System.Drawing.Color.White
         Me.Panel1.Controls.Add(Me.chkShotWithLRUD)
         Me.Panel1.Controls.Add(Me.cboReplicateTo)
         Me.Panel1.Controls.Add(Me.chkShotWithCalculatedLRUD)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.chkShotWithoutLRUD)
+        resources.ApplyResources(Me.Panel1, "Panel1")
         Me.Panel1.Name = "Panel1"
         '
         'chkShotWithLRUD
@@ -250,6 +242,19 @@ Partial Class frmManageLRUD
         Me.frmMode2.Name = "frmMode2"
         Me.frmMode2.TabStop = False
         '
+        'lblSplayMode
+        '
+        resources.ApplyResources(Me.lblSplayMode, "lblSplayMode")
+        Me.lblSplayMode.Name = "lblSplayMode"
+        '
+        'cboMode2Mode
+        '
+        Me.cboMode2Mode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboMode2Mode.FormattingEnabled = True
+        Me.cboMode2Mode.Items.AddRange(New Object() {resources.GetString("cboMode2Mode.Items")})
+        resources.ApplyResources(Me.cboMode2Mode, "cboMode2Mode")
+        Me.cboMode2Mode.Name = "cboMode2Mode"
+        '
         'Label26
         '
         resources.ApplyResources(Me.Label26, "Label26")
@@ -288,38 +293,86 @@ Partial Class frmManageLRUD
         Me.chkMarkAsCalculated.Name = "chkMarkAsCalculated"
         Me.chkMarkAsCalculated.UseVisualStyleBackColor = True
         '
-        'lblSplayMode
+        'cboAction
         '
-        resources.ApplyResources(Me.lblSplayMode, "lblSplayMode")
-        Me.lblSplayMode.Name = "lblSplayMode"
+        Me.cboAction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboAction.FormattingEnabled = True
+        Me.cboAction.Items.AddRange(New Object() {resources.GetString("cboAction.Items"), resources.GetString("cboAction.Items1"), resources.GetString("cboAction.Items2"), resources.GetString("cboAction.Items3")})
+        resources.ApplyResources(Me.cboAction, "cboAction")
+        Me.cboAction.Name = "cboAction"
         '
-        'cboMode2Mode
+        'TableLayoutPanel1
         '
-        Me.cboMode2Mode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboMode2Mode.FormattingEnabled = True
-        Me.cboMode2Mode.Items.AddRange(New Object() {resources.GetString("cboMode2Mode.Items")})
-        resources.ApplyResources(Me.cboMode2Mode, "cboMode2Mode")
-        Me.cboMode2Mode.Name = "cboMode2Mode"
+        resources.ApplyResources(Me.TableLayoutPanel1, "TableLayoutPanel1")
+        Me.TableLayoutPanel1.Controls.Add(Me.PanelControl1, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.pnlOption0, 0, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.pnlOption1, 0, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.pnlOption3, 0, 3)
+        Me.TableLayoutPanel1.Controls.Add(Me.pnlOptionOther, 0, 4)
+        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
+        '
+        'PanelControl1
+        '
+        Me.PanelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.PanelControl1.Controls.Add(Me.lblAction)
+        Me.PanelControl1.Controls.Add(Me.cboAction)
+        resources.ApplyResources(Me.PanelControl1, "PanelControl1")
+        Me.PanelControl1.Name = "PanelControl1"
+        '
+        'lblAction
+        '
+        resources.ApplyResources(Me.lblAction, "lblAction")
+        Me.lblAction.BackColor = System.Drawing.Color.Transparent
+        Me.lblAction.Name = "lblAction"
+        '
+        'pnlOption0
+        '
+        Me.pnlOption0.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlOption0.Controls.Add(Me.frmMode1)
+        resources.ApplyResources(Me.pnlOption0, "pnlOption0")
+        Me.pnlOption0.Name = "pnlOption0"
+        '
+        'pnlOption1
+        '
+        Me.pnlOption1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlOption1.Controls.Add(Me.frmMode2)
+        resources.ApplyResources(Me.pnlOption1, "pnlOption1")
+        Me.pnlOption1.Name = "pnlOption1"
+        '
+        'pnlOption3
+        '
+        Me.pnlOption3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlOption3.Controls.Add(Me.frmRestore)
+        resources.ApplyResources(Me.pnlOption3, "pnlOption3")
+        Me.pnlOption3.Name = "pnlOption3"
+        '
+        'pnlOptionOther
+        '
+        Me.pnlOptionOther.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlOptionOther.Controls.Add(Me.chkMarkAsCalculated)
+        Me.pnlOptionOther.Controls.Add(Me.chkBackup)
+        Me.pnlOptionOther.Controls.Add(Me.frmBackup)
+        resources.ApplyResources(Me.pnlOptionOther, "pnlOptionOther")
+        Me.pnlOptionOther.Name = "pnlOptionOther"
+        '
+        'pnlBottom
+        '
+        Me.pnlBottom.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlBottom.Controls.Add(Me.cmdCancel)
+        Me.pnlBottom.Controls.Add(Me.cmdOk)
+        resources.ApplyResources(Me.pnlBottom, "pnlBottom")
+        Me.pnlBottom.Name = "pnlBottom"
         '
         'frmManageLRUD
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
-        Me.Controls.Add(Me.chkMarkAsCalculated)
-        Me.Controls.Add(Me.frmMode2)
-        Me.Controls.Add(Me.frmRestore)
-        Me.Controls.Add(Me.frmBackup)
-        Me.Controls.Add(Me.RadioButton4)
-        Me.Controls.Add(Me.chkBackup)
-        Me.Controls.Add(Me.cmdCancel)
-        Me.Controls.Add(Me.cmdOk)
-        Me.Controls.Add(Me.RadioButton3)
-        Me.Controls.Add(Me.RadioButton2)
-        Me.Controls.Add(Me.frmMode1)
-        Me.Controls.Add(Me.RadioButton1)
+        Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.pnlBottom)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.lrud
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmManageLRUD"
@@ -335,21 +388,31 @@ Partial Class frmManageLRUD
         Me.frmMode2.PerformLayout()
         CType(Me.txtMode2V, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtMode2H, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TableLayoutPanel1.ResumeLayout(False)
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl1.ResumeLayout(False)
+        Me.PanelControl1.PerformLayout()
+        CType(Me.pnlOption0, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlOption0.ResumeLayout(False)
+        CType(Me.pnlOption1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlOption1.ResumeLayout(False)
+        CType(Me.pnlOption3, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlOption3.ResumeLayout(False)
+        CType(Me.pnlOptionOther, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlOptionOther.ResumeLayout(False)
+        Me.pnlOptionOther.PerformLayout()
+        CType(Me.pnlBottom, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlBottom.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents RadioButton1 As RadioButton
     Friend WithEvents frmMode1 As GroupBox
     Friend WithEvents RadioButton1b As RadioButton
     Friend WithEvents RadioButton1a As RadioButton
-    Friend WithEvents RadioButton2 As RadioButton
-    Friend WithEvents RadioButton3 As RadioButton
     Friend WithEvents cmdCancel As Button
     Friend WithEvents cmdOk As Button
     Friend WithEvents chkBackup As CheckBox
-    Friend WithEvents RadioButton4 As RadioButton
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents cboReplicateTo As System.Windows.Forms.ComboBox
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
@@ -374,4 +437,13 @@ Partial Class frmManageLRUD
     Friend WithEvents chkShotWithLRUD As CheckBox
     Friend WithEvents lblSplayMode As Label
     Friend WithEvents cboMode2Mode As ComboBox
+    Friend WithEvents cboAction As ComboBox
+    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents lblAction As Label
+    Friend WithEvents pnlOption0 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlOption1 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlOption3 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlOptionOther As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlBottom As DevExpress.XtraEditors.PanelControl
 End Class

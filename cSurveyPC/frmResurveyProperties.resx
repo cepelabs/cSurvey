@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -126,14 +126,14 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cmdOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>153, 305</value>
+    <value>153, 245</value>
   </data>
   <data name="cmdOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cmdOk.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="cmdOk.Text" xml:space="preserve">
     <value>Ok</value>
@@ -142,13 +142,13 @@
     <value>cmdOk</value>
   </data>
   <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="cmdCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -157,13 +157,13 @@
     <value>NoControl</value>
   </data>
   <data name="cmdCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 305</value>
+    <value>239, 245</value>
   </data>
   <data name="cmdCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
   </data>
   <data name="cmdCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="cmdCancel.Text" xml:space="preserve">
     <value>Cancel</value>
@@ -172,19 +172,19 @@
     <value>cmdCancel</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="txtPlanPosition.Location" type="System.Drawing.Point, System.Drawing">
     <value>133, 71</value>
   </data>
   <data name="txtPlanPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 21</value>
+    <value>111, 20</value>
   </data>
   <data name="txtPlanPosition.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -193,16 +193,19 @@
     <value>txtPlanPosition</value>
   </data>
   <data name="&gt;&gt;txtPlanPosition.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtPlanPosition.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtPlanPosition.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>11</value>
   </data>
   <data name="lblPosition.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="lblPosition.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="lblPosition.Location" type="System.Drawing.Point, System.Drawing">
     <value>25, 74</value>
@@ -226,16 +229,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPosition.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="txtName.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 12pt, style=Bold</value>
+    <value>12</value>
   </data>
   <data name="txtName.Location" type="System.Drawing.Point, System.Drawing">
     <value>133, 12</value>
   </data>
+  <data name="txtName.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 12pt, style=Bold</value>
+  </data>
   <data name="txtName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 27</value>
+    <value>111, 26</value>
   </data>
   <data name="txtName.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -244,16 +247,19 @@
     <value>txtName</value>
   </data>
   <data name="&gt;&gt;txtName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtName.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtName.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>9</value>
   </data>
   <data name="Label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="Label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>25, 20</value>
@@ -277,13 +283,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>10</value>
   </data>
   <data name="txtProfilePosition.Location" type="System.Drawing.Point, System.Drawing">
-    <value>285, 71</value>
+    <value>270, 71</value>
   </data>
   <data name="txtProfilePosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 21</value>
+    <value>111, 20</value>
   </data>
   <data name="txtProfilePosition.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -292,16 +298,19 @@
     <value>txtProfilePosition</value>
   </data>
   <data name="&gt;&gt;txtProfilePosition.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtProfilePosition.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtProfilePosition.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>7</value>
   </data>
   <data name="lblPlanPosition.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="lblPlanPosition.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="lblPlanPosition.Location" type="System.Drawing.Point, System.Drawing">
     <value>130, 55</value>
@@ -325,13 +334,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPlanPosition.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>8</value>
   </data>
   <data name="lblConnectedTo.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="lblConnectedTo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="lblConnectedTo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 109</value>
+    <value>13, 13</value>
   </data>
   <data name="lblConnectedTo.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 13</value>
@@ -349,16 +361,19 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lblConnectedTo.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>pnlNextStations</value>
   </data>
   <data name="&gt;&gt;lblConnectedTo.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>2</value>
   </data>
   <data name="lblProfilePosition.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="lblProfilePosition.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="lblProfilePosition.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 55</value>
+    <value>267, 55</value>
   </data>
   <data name="lblProfilePosition.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 13</value>
@@ -379,13 +394,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblProfilePosition.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>6</value>
   </data>
   <data name="lblScaleUM.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="lblScaleUM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="lblScaleUM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>213, 110</value>
+    <value>201, 11</value>
   </data>
   <data name="lblScaleUM.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 13</value>
@@ -396,9 +414,6 @@
   <data name="lblScaleUM.Text" xml:space="preserve">
     <value>m</value>
   </data>
-  <data name="lblScaleUM.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="&gt;&gt;lblScaleUM.Name" xml:space="preserve">
     <value>lblScaleUM</value>
   </data>
@@ -406,43 +421,19 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lblScaleUM.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>pnlScale</value>
   </data>
   <data name="&gt;&gt;lblScaleUM.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="txtScaleSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>134, 106</value>
-  </data>
-  <data name="txtScaleSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 21</value>
-  </data>
-  <data name="txtScaleSize.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="txtScaleSize.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="txtScaleSize.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;txtScaleSize.Name" xml:space="preserve">
-    <value>txtScaleSize</value>
-  </data>
-  <data name="&gt;&gt;txtScaleSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtScaleSize.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;txtScaleSize.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>1</value>
   </data>
   <data name="lblScaleSize.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="lblScaleSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="lblScaleSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 109</value>
+    <value>14, 11</value>
   </data>
   <data name="lblScaleSize.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 13</value>
@@ -453,9 +444,6 @@
   <data name="lblScaleSize.Text" xml:space="preserve">
     <value>Scale:</value>
   </data>
-  <data name="lblScaleSize.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="&gt;&gt;lblScaleSize.Name" xml:space="preserve">
     <value>lblScaleSize</value>
   </data>
@@ -463,10 +451,10 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lblScaleSize.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>pnlScale</value>
   </data>
   <data name="&gt;&gt;lblScaleSize.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>2</value>
   </data>
   <data name="cmdApply.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -475,13 +463,13 @@
     <value>NoControl</value>
   </data>
   <data name="cmdApply.Location" type="System.Drawing.Point, System.Drawing">
-    <value>325, 305</value>
+    <value>325, 245</value>
   </data>
   <data name="cmdApply.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
   </data>
   <data name="cmdApply.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
+    <value>10</value>
   </data>
   <data name="cmdApply.Text" xml:space="preserve">
     <value>Apply</value>
@@ -490,13 +478,13 @@
     <value>cmdApply</value>
   </data>
   <data name="&gt;&gt;cmdApply.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdApply.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdApply.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <metadata name="tpDefault.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>180, 17</value>
@@ -504,29 +492,33 @@
   <data name="cmdNext.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
-  <data name="cmdNext.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <assembly alias="DevExpress.Data.v20.2" name="DevExpress.Data.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="cmdNext.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v20.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABMklEQVQ4T6WRPUvDUBSG85MEwU2a9GPU
-        Ubd20f9h0oii4mA7FV2sCLZOGdooDmJrlRYDRWhBWhTUVNRFCi4Kr/cEiuacDikeeJYn73nv5UYD8C/G
-        ykkQIrV66sTtE/VFDs8SQhiWi1r/DbMrVVHCs4QQMdOFcztA2XtGzAyX8CwhBC0deT5mNi5Q8h6h/ynh
-        WUII3aqi2BogkWsimW9i/+rhS1e3ilxgqILCtY+53Tbm99rIHHZQOL/7pIflWUIIKsg3XrBQ7GDxoIul
-        4x52zrqTFWxfviJd6iNTvkeu7o/eYZpnCSEMq4L1+juWnSds1XwYZiVYjvwGcVVgNz6w2Rqqk3+XaXiW
-        ECKRdbF28x06eTQ8SwiRyrrDpB38ttAyDc8SUmjalEIs0/BskB8nowPtB1Ashh+Jtes5AAAAAElFTkSu
-        QmCC
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE5LjIsIFZlcnNpb249MTkuMi43
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAALcBAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iTmV4dCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzIg
+        MzIiPg0KICA8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLkJsdWV7ZmlsbDojMTE3N0Q3O30KPC9zdHls
+        ZT4NCiAgPHBhdGggZD0iTTguOSw0LjFDOC40LDMuOCw4LDQuMSw4LDQuNnYyMC43YzAsMC42LDAuNCww
+        LjgsMC45LDAuNWwxNi44LTEwLjNjMC41LTAuMywwLjUtMC44LDAtMS4xTDguOSw0LjF6IiBjbGFzcz0i
+        Qmx1ZSIgLz4NCjwvc3ZnPgs=
 </value>
   </data>
   <data name="cmdNext.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="cmdNext.Location" type="System.Drawing.Point, System.Drawing">
-    <value>38, 305</value>
+    <value>38, 245</value>
   </data>
   <data name="cmdNext.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
   </data>
   <data name="cmdNext.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
+    <value>7</value>
   </data>
   <data name="cmdNext.ToolTip" xml:space="preserve">
     <value>Next object or point</value>
@@ -535,39 +527,43 @@
     <value>cmdNext</value>
   </data>
   <data name="&gt;&gt;cmdNext.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdNext.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdNext.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="cmdPrev.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
-  <data name="cmdPrev.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="cmdPrev.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v20.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABKElEQVQ4T6WST0sCURTF/UjCgLvw/7KW
-        tdNNfY9GJ4qKFulKbJMhpK1mMTNFi0izUByQQCESBW2UahOCG4PTfY8gZ94sZuwHZ3PueYf7Hi8A4F9y
-        Nf1INFyIKddI7t2ozizPC4aDtV0dtf4HohmDxvYsk2gsEZZ1VM03qM8ThGWfBRE6XDFHCB3e49K0qECn
-        sT3LJBr8sIHzx+EikW8inmui1JogkvFYwB6scPcyT5e72DjrYL3YQeHJojfwUXB625tvX71i66KHzVIX
-        +cbUewEhsfvn6hbS1QFSlT5OHt59FTCkqKzhuGZhRx3joP5JBRqN7Vkm0fiDNtFw1JpBaXwhtkIBg2+y
-        3/5GPLvCR/pFSigGkllj5szyvGC4I5GCzizPu5nehcAPAJiGH594zX4AAAAASUVORK5CYII=
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE5LjIsIFZlcnNpb249MTkuMi43
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAALwBAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iUHJldiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzIg
+        MzIiPg0KICA8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLkJsdWV7ZmlsbDojMTE3N0Q3O30KPC9zdHls
+        ZT4NCiAgPHBhdGggZD0iTTIzLjEsNC4xQzIzLjYsMy44LDI0LDQuMSwyNCw0LjZ2MjAuN2MwLDAuNi0w
+        LjQsMC44LTAuOSwwLjVMNi40LDE1LjVjLTAuNS0wLjMtMC41LTAuOCwwLTEuMUwyMy4xLDQuMXoiIGNs
+        YXNzPSJCbHVlIiAvPg0KPC9zdmc+Cw==
 </value>
   </data>
   <data name="cmdPrev.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="cmdPrev.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 305</value>
+    <value>12, 245</value>
   </data>
   <data name="cmdPrev.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
   </data>
   <data name="cmdPrev.TabIndex" type="System.Int32, mscorlib">
-    <value>45</value>
+    <value>6</value>
   </data>
   <data name="cmdPrev.ToolTip" xml:space="preserve">
     <value>Previous object or point</value>
@@ -576,145 +572,128 @@
     <value>cmdPrev</value>
   </data>
   <data name="&gt;&gt;cmdPrev.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPrev.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdPrev.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="tknPlan.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 10</value>
+  </data>
+  <data name="tknPlan.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 20</value>
+  </data>
+  <data name="tknPlan.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tknPlan.Name" xml:space="preserve">
+    <value>tknPlan</value>
+  </data>
+  <data name="&gt;&gt;tknPlan.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.TokenEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tknPlan.Parent" xml:space="preserve">
+    <value>pnlNextStations</value>
+  </data>
+  <data name="&gt;&gt;tknPlan.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tknProfile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>258, 10</value>
+  </data>
+  <data name="tknProfile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 20</value>
+  </data>
+  <data name="tknProfile.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="lstPlanConnectedTo.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="&gt;&gt;tknProfile.Name" xml:space="preserve">
+    <value>tknProfile</value>
   </data>
-  <data name="lstPlanConnectedTo.IntegralHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;tknProfile.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.TokenEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="lstPlanConnectedTo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+  <data name="&gt;&gt;tknProfile.Parent" xml:space="preserve">
+    <value>pnlNextStations</value>
   </data>
-  <data name="lstPlanConnectedTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>257, 161</value>
-  </data>
-  <data name="lstPlanConnectedTo.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
-  </data>
-  <data name="&gt;&gt;lstPlanConnectedTo.Name" xml:space="preserve">
-    <value>lstPlanConnectedTo</value>
-  </data>
-  <data name="&gt;&gt;lstPlanConnectedTo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckedListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lstPlanConnectedTo.Parent" xml:space="preserve">
-    <value>TabPage1</value>
-  </data>
-  <data name="&gt;&gt;lstPlanConnectedTo.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tknProfile.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="lstProfileConnectedTo.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="pnlNextStations.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 98</value>
   </data>
-  <data name="lstProfileConnectedTo.IntegralHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="pnlNextStations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>393, 66</value>
   </data>
-  <data name="lstProfileConnectedTo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+  <data name="pnlNextStations.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
   </data>
-  <data name="lstProfileConnectedTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>257, 161</value>
+  <data name="&gt;&gt;pnlNextStations.Name" xml:space="preserve">
+    <value>pnlNextStations</value>
   </data>
-  <data name="lstProfileConnectedTo.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
+  <data name="&gt;&gt;pnlNextStations.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lstProfileConnectedTo.Name" xml:space="preserve">
-    <value>lstProfileConnectedTo</value>
-  </data>
-  <data name="&gt;&gt;lstProfileConnectedTo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckedListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lstProfileConnectedTo.Parent" xml:space="preserve">
-    <value>TabPage2</value>
-  </data>
-  <data name="&gt;&gt;lstProfileConnectedTo.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabConnectedTo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="TabPage1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="TabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="TabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>263, 167</value>
-  </data>
-  <data name="TabPage1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="TabPage1.Text" xml:space="preserve">
-    <value>Plan</value>
-  </data>
-  <data name="&gt;&gt;TabPage1.Name" xml:space="preserve">
-    <value>TabPage1</value>
-  </data>
-  <data name="&gt;&gt;TabPage1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TabPage1.Parent" xml:space="preserve">
-    <value>tabConnectedTo</value>
-  </data>
-  <data name="&gt;&gt;TabPage1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="TabPage2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="TabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="TabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>263, 167</value>
-  </data>
-  <data name="TabPage2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="TabPage2.Text" xml:space="preserve">
-    <value>Section</value>
-  </data>
-  <data name="&gt;&gt;TabPage2.Name" xml:space="preserve">
-    <value>TabPage2</value>
-  </data>
-  <data name="&gt;&gt;TabPage2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TabPage2.Parent" xml:space="preserve">
-    <value>tabConnectedTo</value>
-  </data>
-  <data name="&gt;&gt;TabPage2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabConnectedTo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>134, 106</value>
-  </data>
-  <data name="tabConnectedTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>271, 193</value>
-  </data>
-  <data name="tabConnectedTo.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
-  </data>
-  <data name="&gt;&gt;tabConnectedTo.Name" xml:space="preserve">
-    <value>tabConnectedTo</value>
-  </data>
-  <data name="&gt;&gt;tabConnectedTo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabConnectedTo.Parent" xml:space="preserve">
+  <data name="&gt;&gt;pnlNextStations.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;tabConnectedTo.ZOrder" xml:space="preserve">
-    <value>16</value>
+  <data name="&gt;&gt;pnlNextStations.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="txtScaleSize.EditValue" type="System.Decimal, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="txtScaleSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 10</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v20.2" name="DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="txtScaleSize.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v20.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtScaleSize.Properties.Mask.EditMask" xml:space="preserve">
+    <value>N2</value>
+  </data>
+  <data name="txtScaleSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 20</value>
+  </data>
+  <data name="txtScaleSize.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;txtScaleSize.Name" xml:space="preserve">
+    <value>txtScaleSize</value>
+  </data>
+  <data name="&gt;&gt;txtScaleSize.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtScaleSize.Parent" xml:space="preserve">
+    <value>pnlScale</value>
+  </data>
+  <data name="&gt;&gt;txtScaleSize.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="pnlScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 170</value>
+  </data>
+  <data name="pnlScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>393, 40</value>
+  </data>
+  <data name="pnlScale.TabIndex" type="System.Int32, mscorlib">
+    <value>52</value>
+  </data>
+  <data name="&gt;&gt;pnlScale.Name" xml:space="preserve">
+    <value>pnlScale</value>
+  </data>
+  <data name="&gt;&gt;pnlScale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlScale.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlScale.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -723,12 +702,9 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>417, 342</value>
+    <value>417, 282</value>
   </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="frmResurveyProperties.IconOptions.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAHJwbAB/fXsAgH57AIB+fAA9aZMANXa0ADt8uQBSe6AAPoS/AFiG
@@ -793,9 +769,6 @@
         AAAAAAAAAAMAAAAAAAAAAAAAAAEAAAAHAAAADwAAAB8AAAA/AAA=
 </value>
   </data>
-  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
@@ -812,6 +785,6 @@
     <value>frmResurveyProperties</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>DevExpress.XtraEditors.XtraForm, DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
 </root>

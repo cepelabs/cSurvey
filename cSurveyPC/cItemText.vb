@@ -321,23 +321,211 @@ Namespace cSurvey.Design.Items
             Call MyBase.Caches.Invalidate()
         End Sub
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
-            Using oMatrix As Matrix = New Matrix
-                If PaintOptions.DrawTranslation Then
-                    Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
-                    Call oMatrix.Translate(oTranslation.Width, oTranslation.Height)
-                End If
-                Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
-                Call oSVGItem.SetAttribute("name", MyBase.Name)
-                Return oSVGItem
-            End Using
-        End Function
+        'Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        '    Using oMatrix As Matrix = New Matrix
+        '        If PaintOptions.DrawTranslation Then
+        '            Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
+        '            Call oMatrix.Translate(oTranslation.Width, oTranslation.Height)
+        '        End If
+        '        Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
+        '        If MyBase.Name <> "" Then Call oSVGItem.SetAttribute("name", MyBase.Name)
+        '        Return oSVGItem
+        '    End Using
+        'End Function
 
-        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
-            Dim oSVG As XmlDocument = modSVG.CreateSVG
-            Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
-            Return oSVG
-        End Function
+        'Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
+        '    Dim oSVG As XmlDocument = modSVG.CreateSVG
+        '    Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
+        '    Return oSVG
+        'End Function
+
+
+        'Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        '    If (Options And SVGOptionsEnum.TextAsPath) = SVGOptionsEnum.TextAsPath Then
+        '        Return MyBase.ToSvgItem(SVG, PaintOptions, Options)
+        '    Else
+        '        Dim oXMLGroup As XmlElement = modSVG.CreateGroup(SVG)
+        '        'Call oXMLGroup.AppendChild(MyBase.ToSvgItem(SVG, PaintOptions, Options))
+
+        '        Using oPath As GraphicsPath = New GraphicsPath
+
+        '            Dim sRealText As String = modPaint.ReplaceGlobalTags(oSurvey, Text)
+
+        '            Using oSF As StringFormat = New StringFormat
+        '                Select Case iTextAlignment
+        '                    Case cIItemLineableText.TextAlignmentEnum.Center
+        '                        oSF.Alignment = StringAlignment.Center
+        '                    Case cIItemLineableText.TextAlignmentEnum.Left
+        '                        oSF.Alignment = StringAlignment.Near
+        '                    Case cIItemLineableText.TextAlignmentEnum.Right
+        '                        oSF.Alignment = StringAlignment.Far
+        '                End Select
+        '                Select Case iTextVerticalAlignment
+        '                    Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Top
+        '                        oSF.LineAlignment = StringAlignment.Near
+        '                    Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle
+        '                        oSF.LineAlignment = StringAlignment.Center
+        '                    Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Bottom
+        '                        oSF.LineAlignment = StringAlignment.Far
+        '                End Select
+        '                Call oFont.AddToPath(PaintOptions, oPath, sRealText, New PointF(0, 0), oSF)
+        '            End Using
+
+        '            Dim sScale As Single = GetTextScaleFactor(PaintOptions)
+
+        '            Using oScaleMatrix As Matrix = New Matrix
+        '                Call oScaleMatrix.Scale(sScale, sScale, MatrixOrder.Append)
+        '                Call oPath.Transform(oScaleMatrix)
+        '            End Using
+
+        '            Dim oPathRect As RectangleF = oPath.GetBounds
+
+        '            Dim oRealFont As Font = oFont.GetFont(PaintOptions)
+        '            Dim sFontSize As Single = sScale * oRealFont.Size * 100.0F / 96.0F '/ 19.5819258
+
+        '            Dim sX As Single = MyBase.Points(0).Point.X
+        '            Dim sY As Single = MyBase.Points(0).Point.Y
+
+        '            Select Case iTextVerticalAlignment
+        '                Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle
+        '                    sY = sY - oPathRect.Height / 2
+        '                Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Bottom
+        '                    sY = sY - oPathRect.Height
+        '            End Select
+
+        '            Dim oXMLText As XmlElement = modSVG.CreateGeneric(SVG, "text")
+        '            Dim iLineCount As Integer = 0
+        '            Dim sLineY As Single = sY
+        '            For Each sRealTextLine In sRealText.Split(vbCrLf)
+        '                Dim oXMLTextLine As XmlElement = modSVG.CreateGeneric(SVG, "tspan")
+        '                If modXML.HasAttribute(SVG.DocumentElement, "xmlns:inkscape") Then
+        '                    Call oXMLTextLine.SetAttribute("role", modSVG.sodipodiNamespace, "line")
+        '                End If
+        '                Call oXMLTextLine.SetAttribute("x", modNumbers.NumberToString(sX, ""))
+        '                Call oXMLTextLine.SetAttribute("y", modNumbers.NumberToString(sLineY, ""))
+
+        '                Select Case iTextAlignment
+        '                    Case cIItemLineableText.TextAlignmentEnum.Center
+        '                        Call oXMLTextLine.SetAttribute("text-anchor", "middle")
+        '                        'Call oXMLTextLine.SetAttribute("text-align", "center")
+        '                    Case cIItemLineableText.TextAlignmentEnum.Right
+        '                        Call oXMLTextLine.SetAttribute("text-anchor", "end")
+        '                        'Call oXMLTextLine.SetAttribute("text-align", "right")
+        '                End Select
+
+        '                oXMLTextLine.InnerText = sRealTextLine.Replace(vbCr, "").Replace(vbLf, "")
+        '                oXMLText.AppendChild(oXMLTextLine)
+        '                sLineY += sFontSize * 1.1
+        '            Next
+
+        '            Call oXMLText.SetAttribute("x", modNumbers.NumberToString(sX, ""))
+        '            Call oXMLText.SetAttribute("y", modNumbers.NumberToString(sY, ""))
+        '            Call oXMLText.SetAttribute("dominant-baseline", "hanging")
+
+        '            Call oXMLText.SetAttribute("style", "font-family:" & oRealFont.FontFamily.Name & ";font-size:" & modNumbers.NumberToString(sFontSize, "") & "px")
+        '            If oRealFont.Bold Then
+        '                Call modSVG.AppendItemStyle(SVG, oXMLText, "font-weight", "bold")
+        '            End If
+        '            If oRealFont.Italic Then
+        '                Call modSVG.AppendItemStyle(SVG, oXMLText, "font-style", "italic")
+        '            End If
+        '            If oRealFont.Underline Then
+        '                Call modSVG.AppendItemStyle(SVG, oXMLText, "text-decoration", "underline")
+        '            End If
+        '            Select Case iTextAlignment
+        '                Case cIItemLineableText.TextAlignmentEnum.Center
+        '                    Call modSVG.AppendItemStyle(SVG, oXMLText, "text-anchor", "middle")
+        '                    'Call modSVG.AppendItemStyle(SVG, oXMLText, "text-align", "center")
+        '                Case cIItemLineableText.TextAlignmentEnum.Right
+        '                    Call modSVG.AppendItemStyle(SVG, oXMLText, "text-anchor", "end")
+        '                    'Call modSVG.AppendItemStyle(SVG, oXMLText, "text-align", "end")
+        '            End Select
+
+        '            Dim sTransform As String = ""
+        '            If PaintOptions.DrawTranslation Then
+        '                Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
+        '                If Not oTranslation.IsEmpty Then
+        '                    sTransform &= " translate(" & modSVG.PointToSVGString(oTranslation.ToPointF) & ")"
+        '                End If
+        '            End If
+        '            If iTextRotateMode = cIItemRotable.RotateModeEnum.Rotable Then
+        '                Dim oMovedCenterPoint As PointF = MyBase.Points(0).Point
+        '                sTransform &= " rotate(" & modNumbers.NumberToString(sAngle, "") & " " & modSVG.PointToSVGString(oMovedCenterPoint) & ")"
+        '            End If
+        '            If sTransform <> "" Then
+        '                Call oXMLText.SetAttribute("transform", sTransform.Trim)
+        '            End If
+
+        '            Call modSVG.AddSourceReference(Me, oXMLText, Options)
+
+        '            Call oXMLGroup.AppendChild(oXMLText)
+
+        '            Return oXMLGroup
+
+        '            'riallineo il testo (se richiesto dall'allineamento)
+        '            'Dim sX As Single
+        '            'Dim sY As Single
+        '            'Select Case iTextAlignment
+        '            '    Case cIItemLineableText.TextAlignmentEnum.Center
+        '            '        sX = oPathRect.Width / 2
+        '            '    Case cIItemLineableText.TextAlignmentEnum.Right
+        '            '        sX = oPathRect.Width
+        '            'End Select
+        '            'Select Case iTextVerticalAlignment
+        '            '    Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle
+        '            '        sY = oPathRect.Height / 2
+        '            '    Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Bottom
+        '            '        sY = oPathRect.Height
+        '            'End Select
+        '            'If sX <> 0 Or sY <> 0 Then
+        '            '    Using oTranslateMatrix As Matrix = New Matrix
+        '            '        Call oTranslateMatrix.Translate(sX, sY, MatrixOrder.Append)
+        '            '        Call oPath.Transform(oTranslateMatrix)
+        '            '    End Using
+        '            'End If
+
+        '            ''dimensiono il testo se rischiesto (il fattore di scala sarà da parametrizzare in qualche modo)
+        '            ''Using oScaleMatrix As Matrix = New Matrix
+        '            ''    Dim sScale As Single = GetTextScaleFactor(PaintOptions)
+        '            ''    Call oScaleMatrix.Scale(sScale, sScale, MatrixOrder.Append)
+        '            ''    Call oPath.Transform(oScaleMatrix)
+        '            ''End Using
+
+        '            'oPathRect = oPath.GetBounds
+
+        '            ''sposto il testo scalato nel punto di disegno
+        '            'Select Case iTextAlignment
+        '            '    Case cIItemLineableText.TextAlignmentEnum.Center
+        '            '        sX = MyBase.Points(0).Point.X - oPathRect.Width / 2 ', MyBase.Points(0).Point.Y - oPathRect.Height / 2)
+        '            '    Case cIItemLineableText.TextAlignmentEnum.Left
+        '            '        sX = MyBase.Points(0).Point.X ', MyBase.Points(0).Point.Y - oPathRect.Height / 2)
+        '            '    Case cIItemLineableText.TextAlignmentEnum.Right
+        '            '        sX = MyBase.Points(0).Point.X - oPathRect.Width ', MyBase.Points(0).Point.Y - oPathRect.Height / 2)
+        '            'End Select
+        '            'Select Case iTextVerticalAlignment
+        '            '    Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Top
+        '            '        sY = MyBase.Points(0).Point.Y
+        '            '    Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle
+        '            '        sY = MyBase.Points(0).Point.Y - oPathRect.Height / 2
+        '            '    Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Bottom
+        '            '        sY = MyBase.Points(0).Point.Y - oPathRect.Height
+        '            'End Select
+        '            'Using oTranslateMatrix = New Matrix
+        '            '    Call oTranslateMatrix.Translate(sX, sY, MatrixOrder.Append)
+        '            '    Call oPath.Transform(oTranslateMatrix)
+        '            'End Using
+
+        '            ''ruoto la clipart dell'angolo determinato da quanto sopra
+        '            'If iTextRotateMode = cIItemRotable.RotateModeEnum.Rotable Then
+        '            '    Dim oMovedCenterPoint As PointF = MyBase.Points(0).Point
+        '            '    Using oRotateMatrix As Matrix = New Matrix
+        '            '        Call oRotateMatrix.RotateAt(sAngle, oMovedCenterPoint, MatrixOrder.Append)
+        '            '        Call oPath.Transform(oRotateMatrix)
+        '            '    End Using
+        '            'End If
+        '        End Using
+        '    End If
+        'End Function
 
         Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             Dim oCache As cDrawCache = MyBase.Caches(PaintOptions)
@@ -345,7 +533,16 @@ Namespace cSurvey.Design.Items
                 If .Invalidated Then
                     Call .Clear()
 
+                    'for debug: add cross to see base point
+                    'Using oCrossPath As GraphicsPath = New GraphicsPath
+                    '    Dim oItem As cDrawCacheItem = .Add(cDrawCacheItem.cDrawCacheItemType.Border)
+                    '    Call oItem.SetPen(PaintOptions.DrawingObjects.LRUDPen)
+                    '    Call modPaint.PathAddCrossFromPoint(oCrossPath, MyBase.Points(0).Point, 1)
+                    '    Call oItem.AddPath(oCrossPath)
+                    'End Using
+
                     Using oPath As GraphicsPath = New GraphicsPath
+
                         Using oSF As StringFormat = New StringFormat
                             Select Case iTextAlignment
                                 Case cIItemLineableText.TextAlignmentEnum.Center
@@ -364,97 +561,116 @@ Namespace cSurvey.Design.Items
                                     oSF.LineAlignment = StringAlignment.Far
                             End Select
                             Call oFont.AddToPath(PaintOptions, oPath, modPaint.ReplaceGlobalTags(oSurvey, Text), New PointF(0, 0), oSF)
-                        End Using
 
-                        Dim oPathRect As RectangleF = oPath.GetBounds
+                            Dim oPathRect As RectangleF = oPath.GetBounds
 
-                        ''draw a ref for alignment in design mode (I do it here cause have to be aligned with text)
-                        'If PaintOptions.IsDesign Then
-                        '    Dim sRefX As Single
-                        '    Dim sRefY As Single
-                        '    Dim sRefWidth As Single = 2
-                        '    Dim sRefHeight As Single = 2
-                        '    Select Case iTextAlignment
-                        '        Case cIItemLineableText.TextAlignmentEnum.Center
-                        '            sRefX = oPathRect.Width / 2 - sRefWidth / 2
-                        '        Case cIItemLineableText.TextAlignmentEnum.Left
-                        '            sRefX = oPathRect.Left
-                        '        Case cIItemLineableText.TextAlignmentEnum.Right
-                        '            sRefX = oPathRect.Right - sRefWidth
-                        '    End Select
-                        '    Select Case iTextVerticalAlignment
-                        '        Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Top
-                        '            sRefY = oPathRect.Top
-                        '        Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle
-                        '            sRefY = oPathRect.Height / 2 - sRefHeight / 2
-                        '        Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Bottom
-                        '            sRefY = oPathRect.Bottom - sRefHeight
-                        '    End Select
-                        '    Call oPath.AddRectangle(New RectangleF(sRefX, sRefY, sRefWidth, sRefHeight))
-                        'End If
+                            'draw a ref for alignment in design mode (I do it here cause have to be aligned with text)
+                            'same as above...bah...
+                            'If PaintOptions.IsDesign Then
+                            '    Dim sRefX As Single
+                            '    Dim sRefY As Single
+                            '    Dim sRefWidth As Single = 2
+                            '    Dim sRefHeight As Single = 2
+                            '    Select Case iTextAlignment
+                            '        Case cIItemLineableText.TextAlignmentEnum.Center
+                            '            sRefX = oPathRect.Width / 2 - sRefWidth / 2
+                            '        Case cIItemLineableText.TextAlignmentEnum.Left
+                            '            sRefX = oPathRect.Left
+                            '        Case cIItemLineableText.TextAlignmentEnum.Right
+                            '            sRefX = oPathRect.Right - sRefWidth
+                            '    End Select
+                            '    Select Case iTextVerticalAlignment
+                            '        Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Top
+                            '            sRefY = oPathRect.Top
+                            '        Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle
+                            '            sRefY = oPathRect.Height / 2 - sRefHeight / 2
+                            '        Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Bottom
+                            '            sRefY = oPathRect.Bottom - sRefHeight
+                            '    End Select
+                            '    Call oPath.AddRectangle(New RectangleF(sRefX, sRefY, sRefWidth, sRefHeight))
+                            'End If
 
-                        'riallineo il testo (se richiesto dall'allineamento)
-                        Dim sX As Single
-                        Dim sY As Single
-                        Select Case iTextAlignment
-                            Case cIItemLineableText.TextAlignmentEnum.Center
-                                sX = oPathRect.Width / 2
-                            Case cIItemLineableText.TextAlignmentEnum.Right
-                                sX = oPathRect.Width
-                        End Select
-                        Select Case iTextVerticalAlignment
-                            Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle
-                                sY = oPathRect.Height / 2
-                            Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Bottom
-                                sY = oPathRect.Height
-                        End Select
-                        If sX <> 0 Or sY <> 0 Then
-                            Using oTranslateMatrix As Matrix = New Matrix
+                            'text align
+                            Dim sX As Single
+                            Dim sY As Single
+                            Select Case iTextAlignment
+                                Case cIItemLineableText.TextAlignmentEnum.Center
+                                    sX = oPathRect.Width / 2
+                                Case cIItemLineableText.TextAlignmentEnum.Right
+                                    sX = oPathRect.Width
+                            End Select
+                            Select Case iTextVerticalAlignment
+                                Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle
+                                    sY = oPathRect.Height / 2
+                                Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Bottom
+                                    sY = oPathRect.Height
+                            End Select
+                            If sX <> 0 Or sY <> 0 Then
+                                Using oTranslateMatrix As Matrix = New Matrix
+                                    Call oTranslateMatrix.Translate(sX, sY, MatrixOrder.Append)
+                                    Call oPath.Transform(oTranslateMatrix)
+                                End Using
+                            End If
+
+                            'text size
+                            Using oScaleMatrix As Matrix = New Matrix
+                                Dim sScale As Single = GetTextScaleFactor(PaintOptions)
+                                Call oScaleMatrix.Scale(sScale, sScale, MatrixOrder.Append)
+                                Call oPath.Transform(oScaleMatrix)
+                            End Using
+
+                            oPathRect = oPath.GetBounds
+
+                            'move to final point
+                            Select Case iTextAlignment
+                                Case cIItemLineableText.TextAlignmentEnum.Center
+                                    sX = MyBase.Points(0).Point.X - oPathRect.Width / 2 ', MyBase.Points(0).Point.Y - oPathRect.Height / 2)
+                                Case cIItemLineableText.TextAlignmentEnum.Left
+                                    sX = MyBase.Points(0).Point.X ', MyBase.Points(0).Point.Y - oPathRect.Height / 2)
+                                Case cIItemLineableText.TextAlignmentEnum.Right
+                                    sX = MyBase.Points(0).Point.X - oPathRect.Width ', MyBase.Points(0).Point.Y - oPathRect.Height / 2)
+                            End Select
+                            Select Case iTextVerticalAlignment
+                                Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Top
+                                    sY = MyBase.Points(0).Point.Y
+                                Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle
+                                    sY = MyBase.Points(0).Point.Y - oPathRect.Height / 2
+                                Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Bottom
+                                    sY = MyBase.Points(0).Point.Y - oPathRect.Height
+                            End Select
+                            Using oTranslateMatrix = New Matrix
                                 Call oTranslateMatrix.Translate(sX, sY, MatrixOrder.Append)
                                 Call oPath.Transform(oTranslateMatrix)
                             End Using
-                        End If
 
-                        'dimensiono il testo se rischiesto (il fattore di scala sarà da parametrizzare in qualche modo)
-                        Using oScaleMatrix As Matrix = New Matrix
-                            Dim sScale As Single = GetTextScaleFactor(PaintOptions)
-                            Call oScaleMatrix.Scale(sScale, sScale, MatrixOrder.Append)
-                            Call oPath.Transform(oScaleMatrix)
+                            'and rotate
+                            If iTextRotateMode = cIItemRotable.RotateModeEnum.Rotable Then
+                                Dim oMovedCenterPoint As PointF = MyBase.Points(0).Point
+                                Using oRotateMatrix As Matrix = New Matrix
+                                    Call oRotateMatrix.RotateAt(sAngle, oMovedCenterPoint, MatrixOrder.Append)
+                                    Call oPath.Transform(oRotateMatrix)
+                                End Using
+                            End If
+
+                            Call oFont.Render(Graphics, PaintOptions, Options, oPath, oCache)
+
+                            'Using oRealFont As Font = oFont.GetFont(PaintOptions).Clone
+                            '    Dim oItem As cDrawCacheItemText = oCache.AddString(sText, oFont.GetFont(PaintOptions), MyBase.Points(0).Point, oSF)
+                            '    oItem.SetBrush(oFont.GetBrush(PaintOptions))
+                            '    oItem.SetWireframePen(oFont.GetWireframePen(PaintOptions))
+                            '    Using oScaleMatrix As Matrix = New Matrix
+                            '        Dim sScale As Single = GetTextScaleFactor(PaintOptions)
+                            '        Call oScaleMatrix.Scale(sScale, sScale, MatrixOrder.Append)
+                            '        Call oItem.Transform(oScaleMatrix)
+                            '    End Using
+                            '    If iTextRotateMode = cIItemRotable.RotateModeEnum.Rotable Then
+                            '        Dim oMovedCenterPoint As PointF = MyBase.Points(0).Point
+                            '        Using oRotateMatrix As Matrix = New Matrix
+                            '            Call oItem.Transform(oRotateMatrix)
+                            '        End Using
+                            '    End If
+                            'End Using
                         End Using
-
-                        oPathRect = oPath.GetBounds
-
-                        'sposto il testo scalato nel punto di disegno
-                        Select Case iTextAlignment
-                            Case cIItemLineableText.TextAlignmentEnum.Center
-                                sX = MyBase.Points(0).Point.X - oPathRect.Width / 2 ', MyBase.Points(0).Point.Y - oPathRect.Height / 2)
-                            Case cIItemLineableText.TextAlignmentEnum.Left
-                                sX = MyBase.Points(0).Point.X ', MyBase.Points(0).Point.Y - oPathRect.Height / 2)
-                            Case cIItemLineableText.TextAlignmentEnum.Right
-                                sX = MyBase.Points(0).Point.X - oPathRect.Width ', MyBase.Points(0).Point.Y - oPathRect.Height / 2)
-                        End Select
-                        Select Case iTextVerticalAlignment
-                            Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Top
-                                sY = MyBase.Points(0).Point.Y
-                            Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle
-                                sY = MyBase.Points(0).Point.Y - oPathRect.Height / 2
-                            Case cIItemVerticalLineableText.TextVerticalAlignmentEnum.Bottom
-                                sY = MyBase.Points(0).Point.Y - oPathRect.Height
-                        End Select
-                        Using oTranslateMatrix = New Matrix
-                            Call oTranslateMatrix.Translate(sX, sY, MatrixOrder.Append)
-                            Call oPath.Transform(oTranslateMatrix)
-                        End Using
-
-                        'ruoto la clipart dell'angolo determinato da quanto sopra
-                        If iTextRotateMode = cIItemRotable.RotateModeEnum.Rotable Then
-                            Dim oMovedCenterPoint As PointF = MyBase.Points(0).Point
-                            Using oRotateMatrix As Matrix = New Matrix
-                                Call oRotateMatrix.RotateAt(sAngle, oMovedCenterPoint, MatrixOrder.Append)
-                                Call oPath.Transform(oRotateMatrix)
-                            End Using
-                        End If
-                        Call oFont.Render(Graphics, PaintOptions, Options, oPath, oCache)
                     End Using
 
                     Call .Rendered()
@@ -465,7 +681,7 @@ Namespace cSurvey.Design.Items
         Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             If MyBase.Points.Count > 0 Then
                 Call Render(Graphics, PaintOptions, Options, Selected)
-                If Not PaintOptions.IsDesign Or (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then '
+                If Not PaintOptions.IsDesign OrElse (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then '
                     MyBase.HavePaintProblem = Not MyBase.Caches(PaintOptions).Paint(Graphics, PaintOptions, Options)
                     If PaintOptions.ShowSegmentBindings Then
                         Call modPaint.PaintPointToSegmentBindings(Graphics, oSurvey, Me, Selected)
@@ -492,7 +708,7 @@ Namespace cSurvey.Design.Items
             End If
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As Storage.cFile, ByVal item As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As cFile, ByVal item As XmlElement)
             Call MyBase.New(Survey, Design, Layer, File, item)
             oSurvey = Survey
             sText = modXML.GetAttributeValue(item, "text", "")
@@ -509,7 +725,7 @@ Namespace cSurvey.Design.Items
             sAngle = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "angle", 0))
         End Sub
 
-        Friend Overrides Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+        Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oItem As XmlElement = MyBase.SaveTo(File, Document, Parent, Options)
             Call oItem.SetAttribute("text", sText)
             Call oFont.SaveTo(File, Document, oItem, "font")

@@ -8,7 +8,7 @@ Namespace cSurvey.Design.Layers
 
         Private oDesign As cDesign
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal File As Storage.cFile, ByVal Layer As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal File As cFile, ByVal Layer As XmlElement)
             MyBase.new(Survey, Design, File, Layer)
             oDesign = Design
         End Sub

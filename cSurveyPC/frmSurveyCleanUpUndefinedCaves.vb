@@ -1,7 +1,7 @@
 ﻿Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
 
-Public Class frmSurveyCleanUpUndefinedCaves
+friend Class frmSurveyCleanUpUndefinedCaves
 
     Private oSurvey As cSurveyPC.cSurvey.cSurvey
 

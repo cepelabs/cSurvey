@@ -100,6 +100,7 @@ Partial Class frmQuotaProperties
         Me.txtQuotaticksize.Increment = New Decimal(New Integer() {5, 0, 0, 65536})
         Me.txtQuotaticksize.Location = New System.Drawing.Point(167, 78)
         Me.txtQuotaticksize.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
+        Me.txtQuotaticksize.Minimum = New Decimal(New Integer() {1, 0, 0, 65536})
         Me.txtQuotaticksize.Name = "txtQuotaticksize"
         Me.txtQuotaticksize.Size = New System.Drawing.Size(78, 21)
         Me.txtQuotaticksize.TabIndex = 2
@@ -231,6 +232,7 @@ Partial Class frmQuotaProperties
         Me.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Location = New System.Drawing.Point(0, 0)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmQuotaProperties"

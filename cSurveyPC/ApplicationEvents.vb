@@ -37,6 +37,7 @@ Namespace My
         End Function
 
         Private Sub MyApplication_Startup(sender As Object, e As Microsoft.VisualBasic.ApplicationServices.StartupEventArgs) Handles Me.Startup
+            Call DevExpress.XtraEditors.WindowsFormsSettings.LoadApplicationSettings
             Call pLanguageSet()
         End Sub
 
@@ -49,11 +50,11 @@ Namespace My
             Catch
             End Try
             If sCurrentLanguage <> "" Then
-                'If bIsInDebug Then
-                ''in debug...force this process to run with the culture's settings of the selected language...
-                Threading.Thread.CurrentThread.CurrentCulture = New System.Globalization.CultureInfo(sCurrentLanguage)
+                If bIsInDebug Then
+                    ''in debug...force this process to run with the culture's settings of the selected language...
+                    Threading.Thread.CurrentThread.CurrentCulture = New System.Globalization.CultureInfo(sCurrentLanguage)
+                End If
                 Threading.Thread.CurrentThread.CurrentUICulture = New System.Globalization.CultureInfo(sCurrentLanguage)
-                'End If
             End If
             Call modMain.LoadLocalizedStrings(sCurrentLanguage)
         End Sub

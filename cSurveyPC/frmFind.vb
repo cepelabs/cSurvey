@@ -1,8 +1,10 @@
-﻿Public Class frmFind
+﻿friend Class frmFind
 
     Public Enum FindWhereEnum
+        [Default] = -1
         Segments = 0
         TrigPoints = 1
+        Design = 2
     End Enum
 
     Friend Class cFindEventArg

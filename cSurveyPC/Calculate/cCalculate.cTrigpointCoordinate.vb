@@ -71,7 +71,7 @@ Namespace cSurvey.Calculate
             End Set
         End Property
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, ByVal Name As String) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, ByVal Name As String) As XmlElement
             Dim oXmlCoordinate As XmlElement = Document.CreateElement(Name)
             Call oXmlCoordinate.SetAttribute("alt", modNumbers.NumberToString(dAltitude, ""))
             Call oXmlCoordinate.SetAttribute("lat", modNumbers.NumberToString(dLatitude, ""))

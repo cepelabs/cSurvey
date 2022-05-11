@@ -12,7 +12,7 @@ Namespace cSurvey.Helper.Editor
 
         Private oSurvey As cSurveyPC.cSurvey.cSurvey
         Private oParent As cEditTools
-        Private oFile As Storage.cFile
+        Private oFile As cFile
         Private oItems As Stack(Of cUndoItem)
 
         Private sLastSourceData As String
@@ -183,7 +183,7 @@ Namespace cSurvey.Helper.Editor
             oSurvey = Survey
             oParent = Parent
             oItems = New Stack(Of cUndoItem)(iUndoMaxItems)
-            oFile = New Storage.cFile()
+            oFile = New cFile()
         End Sub
 
         Public Function GetEnumerator() As System.Collections.IEnumerator Implements System.Collections.IEnumerable.GetEnumerator

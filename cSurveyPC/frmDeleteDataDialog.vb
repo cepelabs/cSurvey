@@ -1,2 +1,2 @@
-﻿Public Class frmDeleteDataDialog
+﻿friend Class frmDeleteDataDialog
 End Class

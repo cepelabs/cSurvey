@@ -190,7 +190,7 @@ Namespace cSurvey
             Return oBranches.Values.GetEnumerator
         End Function
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlBranches As XmlElement = Document.CreateElement("branches")
             For Each oBranch As cCaveInfoBranch In oBranches.Values
                 Call oBranch.SaveTo(File, Document, oXmlBranches)
@@ -219,33 +219,6 @@ Namespace cSurvey
                 Call oBranches.Add(sNewName, oBranch)
                 If CheckBindings Then
                     Call cCaveInfos.CheckBindings(oSurvey, sCave, sPath, sCave, sNewPath)
-                    'For Each oSegment As cSegment In oSurvey.Segments
-                    '    If oSegment.Cave.ToLower = sCave.ToLower Then
-                    '        If oSegment.Branch.ToLower = sPath.ToLower Then
-                    '            Call oSegment.RenameCave(sCave, sNewPath)
-                    '        ElseIf oSegment.Branch.ToLower.StartsWith(sPath.ToLower & cCaveInfoBranches.sBranchSeparator) Then
-                    '            Call oSegment.RenameCave(sCave, oSegment.Branch.Replace(sPath & cCaveInfoBranches.sBranchSeparator, sNewPath & cCaveInfoBranches.sBranchSeparator))
-                    '        End If
-                    '    End If
-                    'Next
-                    'For Each oItem As cItem In oSurvey.Plan.GetAllItems
-                    '    If oItem.Cave.ToLower = sCave.ToLower Then
-                    '        If oItem.Branch.ToLower = sPath.ToLower Then
-                    '            Call oItem.RenameCave(sCave, sNewPath)
-                    '        ElseIf oItem.Branch.ToLower.StartsWith(sPath.ToLower & cCaveInfoBranches.sBranchSeparator) Then
-                    '            Call oItem.RenameCave(sCave, oItem.Branch.Replace(sPath & cCaveInfoBranches.sBranchSeparator, sNewPath & cCaveInfoBranches.sBranchSeparator))
-                    '        End If
-                    '    End If
-                    'Next
-                    'For Each oItem As cItem In oSurvey.Profile.GetAllItems
-                    '    If oItem.Cave.ToLower = sCave.ToLower Then
-                    '        If oItem.Branch.ToLower = sPath.ToLower Then
-                    '            Call oItem.RenameCave(sCave, sNewPath)
-                    '        ElseIf oItem.Branch.ToLower.StartsWith(sPath.ToLower & cCaveInfoBranches.sBranchSeparator) Then
-                    '            Call oItem.RenameCave(sCave, oItem.Branch.Replace(sPath & cCaveInfoBranches.sBranchSeparator, sNewPath & cCaveInfoBranches.sBranchSeparator))
-                    '        End If
-                    '    End If
-                    'Next
                 End If
                 Return True
             Else

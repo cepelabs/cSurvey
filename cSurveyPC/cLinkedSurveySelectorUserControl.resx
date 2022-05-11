@@ -117,69 +117,238 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="colLinkedSurveysIcon.Text" xml:space="preserve">
+  <metadata name="iml.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>136, 17</value>
+  </metadata>
+  <metadata name="BarManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>329, 17</value>
+  </metadata>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="barDockControlTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="barDockControlTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="barDockControlTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>358, 0</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.Name" xml:space="preserve">
+    <value>barDockControlTop</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="barDockControlBottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="barDockControlBottom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 150</value>
+  </data>
+  <data name="barDockControlBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>358, 0</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Name" xml:space="preserve">
+    <value>barDockControlBottom</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="barDockControlLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="barDockControlLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="barDockControlLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 150</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Name" xml:space="preserve">
+    <value>barDockControlLeft</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="barDockControlRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="barDockControlRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>358, 0</value>
+  </data>
+  <data name="barDockControlRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 150</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Name" xml:space="preserve">
+    <value>barDockControlRight</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="colLinkSelected.Caption" xml:space="preserve">
     <value> </value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="colLinkedSurveysIcon.Width" type="System.Int32, mscorlib">
-    <value>36</value>
+  <data name="chkLinkSelected.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="colLinkedSurveysGPS.Text" xml:space="preserve">
-    <value>Geographically referenced</value>
-  </data>
-  <data name="colLinkedSurveysGPS.Width" type="System.Int32, mscorlib">
+  <data name="colLinkSelected.MaxWidth" type="System.Int32, mscorlib">
     <value>24</value>
   </data>
-  <data name="colLinkedSurveysName.Text" xml:space="preserve">
+  <data name="colLinkSelected.MinWidth" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="colLinkSelected.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colLinkSelected.VisibleIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="colLinkSelected.Width" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="colLinkIcon.Caption" xml:space="preserve">
+    <value>  </value>
+  </data>
+  <data name="cboLinkIcon.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v20.2" name="DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="cboLinkIcon.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v20.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboLinkIcon.Items" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cboLinkIcon.Items1" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cboLinkIcon.Items2" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="cboLinkIcon.Items3" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cboLinkIcon.Items4" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cboLinkIcon.Items5" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="colLinkIcon.MaxWidth" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="colLinkIcon.MinWidth" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="colLinkIcon.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colLinkIcon.VisibleIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="colLinkIcon.Width" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="cboLinkGPS.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cboLinkGPS.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v20.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboLinkGPS.Items" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cboLinkGPS.Items1" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cboLinkGPS.Items2" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="cboLinkGPS.Items3" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cboLinkGPS.Items4" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cboLinkGPS.Items5" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="colLinkGPS.ImageOptions.Alignment" type="System.Drawing.StringAlignment, System.Drawing">
+    <value>Center</value>
+  </data>
+  <data name="colLinkGPS.MaxWidth" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="colLinkGPS.MinWidth" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="colLinkGPS.ToolTip" xml:space="preserve">
+    <value>Geographically referenced</value>
+  </data>
+  <data name="colLinkGPS.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colLinkGPS.VisibleIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="colLinkGPS.Width" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="colLinkName.Caption" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="colLinkedSurveysName.Width" type="System.Int32, mscorlib">
-    <value>120</value>
+  <data name="colLinkName.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="colLinkedSurveysFilename.Text" xml:space="preserve">
+  <data name="colLinkName.VisibleIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="colLinkName.Width" type="System.Int32, mscorlib">
+    <value>130</value>
+  </data>
+  <data name="colLinkFilename.Caption" xml:space="preserve">
     <value>Filename</value>
   </data>
-  <data name="colLinkedSurveysFilename.Width" type="System.Int32, mscorlib">
-    <value>120</value>
+  <data name="colLinkFilename.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <metadata name="mnuContext.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="mnuContext.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
+  <data name="colLinkFilename.VisibleIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
-  <data name="mnuContextSelectAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="colLinkFilename.Width" type="System.Int32, mscorlib">
+    <value>129</value>
   </data>
-  <data name="mnuContextSelectAll.Text" xml:space="preserve">
-    <value>Select all</value>
-  </data>
-  <data name="mnuContextDeselectAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="mnuContextDeselectAll.Text" xml:space="preserve">
-    <value>Deselect all</value>
-  </data>
-  <data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
-  </data>
-  <data name="mnuContextRefresh.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="mnuContextRefresh.Text" xml:space="preserve">
-    <value>Refresh</value>
-  </data>
-  <data name="mnuContext.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 98</value>
-  </data>
-  <data name="&gt;&gt;mnuContext.Name" xml:space="preserve">
-    <value>mnuContext</value>
-  </data>
-  <data name="&gt;&gt;mnuContext.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tvLinkedSurveys.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -190,81 +359,141 @@
     <value>358, 150</value>
   </data>
   <data name="tvLinkedSurveys.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>12</value>
   </data>
   <data name="&gt;&gt;tvLinkedSurveys.Name" xml:space="preserve">
     <value>tvLinkedSurveys</value>
   </data>
   <data name="&gt;&gt;tvLinkedSurveys.Type" xml:space="preserve">
-    <value>BrightIdeasSoftware.ObjectListView, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
+    <value>DevExpress.XtraTreeList.TreeList, DevExpress.XtraTreeList.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tvLinkedSurveys.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tvLinkedSurveys.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+    <value>0</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>358, 150</value>
   </data>
-  <data name="&gt;&gt;colLinkedSurveysIcon.Name" xml:space="preserve">
-    <value>colLinkedSurveysIcon</value>
+  <data name="&gt;&gt;iml.Name" xml:space="preserve">
+    <value>iml</value>
   </data>
-  <data name="&gt;&gt;colLinkedSurveysIcon.Type" xml:space="preserve">
-    <value>BrightIdeasSoftware.OLVColumn, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
+  <data name="&gt;&gt;iml.Type" xml:space="preserve">
+    <value>DevExpress.Utils.SvgImageCollection, DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;colLinkedSurveysGPS.Name" xml:space="preserve">
-    <value>colLinkedSurveysGPS</value>
+  <data name="&gt;&gt;BarManager.Name" xml:space="preserve">
+    <value>BarManager</value>
   </data>
-  <data name="&gt;&gt;colLinkedSurveysGPS.Type" xml:space="preserve">
-    <value>BrightIdeasSoftware.OLVColumn, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
+  <data name="&gt;&gt;BarManager.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;colLinkedSurveysName.Name" xml:space="preserve">
-    <value>colLinkedSurveysName</value>
+  <data name="&gt;&gt;btnSelectAll.Name" xml:space="preserve">
+    <value>btnSelectAll</value>
   </data>
-  <data name="&gt;&gt;colLinkedSurveysName.Type" xml:space="preserve">
-    <value>BrightIdeasSoftware.OLVColumn, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
+  <data name="&gt;&gt;btnSelectAll.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;colLinkedSurveysFilename.Name" xml:space="preserve">
-    <value>colLinkedSurveysFilename</value>
+  <data name="&gt;&gt;btnDeselectAll.Name" xml:space="preserve">
+    <value>btnDeselectAll</value>
   </data>
-  <data name="&gt;&gt;colLinkedSurveysFilename.Type" xml:space="preserve">
-    <value>BrightIdeasSoftware.OLVColumn, ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4</value>
+  <data name="&gt;&gt;btnDeselectAll.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuContextSelectAll.Name" xml:space="preserve">
-    <value>mnuContextSelectAll</value>
+  <data name="&gt;&gt;btnRefresh.Name" xml:space="preserve">
+    <value>btnRefresh</value>
   </data>
-  <data name="&gt;&gt;mnuContextSelectAll.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnRefresh.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuContextDeselectAll.Name" xml:space="preserve">
-    <value>mnuContextDeselectAll</value>
+  <data name="&gt;&gt;mnuContext.Name" xml:space="preserve">
+    <value>mnuContext</value>
   </data>
-  <data name="&gt;&gt;mnuContextDeselectAll.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;mnuContext.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem1.Name" xml:space="preserve">
-    <value>ToolStripMenuItem1</value>
+  <data name="&gt;&gt;colLinkSelected.Name" xml:space="preserve">
+    <value>colLinkSelected</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colLinkSelected.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuContextRefresh.Name" xml:space="preserve">
-    <value>mnuContextRefresh</value>
+  <data name="&gt;&gt;chkLinkSelected.Name" xml:space="preserve">
+    <value>chkLinkSelected</value>
   </data>
-  <data name="&gt;&gt;mnuContextRefresh.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;chkLinkSelected.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colLinkIcon.Name" xml:space="preserve">
+    <value>colLinkIcon</value>
+  </data>
+  <data name="&gt;&gt;colLinkIcon.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboLinkIcon.Name" xml:space="preserve">
+    <value>cboLinkIcon</value>
+  </data>
+  <data name="&gt;&gt;cboLinkIcon.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colLinkGPS.Name" xml:space="preserve">
+    <value>colLinkGPS</value>
+  </data>
+  <data name="&gt;&gt;colLinkGPS.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboLinkGPS.Name" xml:space="preserve">
+    <value>cboLinkGPS</value>
+  </data>
+  <data name="&gt;&gt;cboLinkGPS.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colLinkName.Name" xml:space="preserve">
+    <value>colLinkName</value>
+  </data>
+  <data name="&gt;&gt;colLinkName.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colLinkFilename.Name" xml:space="preserve">
+    <value>colLinkFilename</value>
+  </data>
+  <data name="&gt;&gt;colLinkFilename.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>cLinkedSurveySelectorControl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.XtraUserControl, DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="btnSelectAll.AccessibleName" xml:space="preserve">
+    <value>mnuContextSelectAll</value>
+  </data>
+  <data name="btnSelectAll.Caption" xml:space="preserve">
+    <value>Select all</value>
+  </data>
+  <data name="btnSelectAll.Hint" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="btnDeselectAll.AccessibleName" xml:space="preserve">
+    <value>mnuContextDeselectAll</value>
+  </data>
+  <data name="btnDeselectAll.Caption" xml:space="preserve">
+    <value>Deselect all</value>
+  </data>
+  <data name="btnDeselectAll.Hint" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="btnRefresh.AccessibleName" xml:space="preserve">
+    <value>mnuContextRefresh</value>
+  </data>
+  <data name="btnRefresh.Caption" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="btnRefresh.Hint" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <metadata name="mnuContext.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>447, 17</value>
+  </metadata>
 </root>

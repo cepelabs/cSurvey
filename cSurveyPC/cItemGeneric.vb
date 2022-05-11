@@ -156,15 +156,16 @@ Namespace cSurvey.Design.Items
         End Property
 
         Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
-            Dim oMatrix As Matrix = New Matrix
-            If PaintOptions.DrawTranslation Then
-                Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
-                Call oMatrix.Translate(oTranslation.Width, oTranslation.Height)
-            End If
-            Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
-            Call oSVGItem.SetAttribute("name", MyBase.Name)
-            Call modSVG.AppendItemStyle(SVG, oSVGItem, MyBase.Brush, MyBase.Pen)
-            Return oSVGItem
+            Using oMatrix As Matrix = New Matrix
+                If PaintOptions.DrawTranslation Then
+                    Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
+                    Call oMatrix.Translate(oTranslation.Width, oTranslation.Height)
+                End If
+                Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
+                If MyBase.Name <> "" Then Call oSVGItem.SetAttribute("name", MyBase.Name)
+                Call modSVG.AppendItemStyle(SVG, oSVGItem, MyBase.Brush, MyBase.Pen)
+                Return oSVGItem
+            End Using
         End Function
 
         Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
@@ -389,12 +390,12 @@ Namespace cSurvey.Design.Items
             End Select
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As Storage.cFile, ByVal item As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As cFile, ByVal item As XmlElement)
             Call MyBase.New(Survey, Design, Layer, File, item)
             iLineType = modXML.GetAttributeValue(item, "linetype", Items.cIItemLine.LineTypeEnum.Splines)
         End Sub
 
-        Friend Overrides Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+        Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oItem As XmlElement = MyBase.SaveTo(File, Document, Parent, Options)
             Call oItem.SetAttribute("linetype", iLineType.ToString("D"))
             Return oItem

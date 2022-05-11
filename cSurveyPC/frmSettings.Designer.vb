@@ -104,6 +104,8 @@ Partial Class frmSettings
         Me.chkShotsGridExportSplayNames = New System.Windows.Forms.CheckBox()
         Me.tabSVG = New System.Windows.Forms.TabPage()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.chkSVGExportcSurveyReference = New System.Windows.Forms.CheckBox()
+        Me.chkSVGExportImages = New System.Windows.Forms.CheckBox()
         Me.lblSVGExportDPI = New System.Windows.Forms.Label()
         Me.txtSVGExportDPI = New System.Windows.Forms.NumericUpDown()
         Me.chkSVGExportNoClipartBrushes = New System.Windows.Forms.CheckBox()
@@ -123,6 +125,8 @@ Partial Class frmSettings
         Me.chkVTopoImportSetAsBranch = New System.Windows.Forms.CheckBox()
         Me.chkVTopoImportIncompatibleSet = New System.Windows.Forms.CheckBox()
         Me.tabLinkedSurveys = New System.Windows.Forms.TabPage()
+        Me.chkLinkedSurveysRefreshOnLoad = New System.Windows.Forms.CheckBox()
+        Me.chkLinkedSurveysRecursiveLoadPrioritizeChildren = New System.Windows.Forms.CheckBox()
         Me.chkLinkedSurveysRecursiveLoad = New System.Windows.Forms.CheckBox()
         Me.chkLinkedSurveysShowInCaveInfo = New System.Windows.Forms.CheckBox()
         Me.chkLinkedSurveysSelectOnAdd = New System.Windows.Forms.CheckBox()
@@ -190,6 +194,7 @@ Partial Class frmSettings
         Me.cmdCancel = New System.Windows.Forms.Button()
         Me.cmdOk = New System.Windows.Forms.Button()
         Me.tipStandard = New System.Windows.Forms.ToolTip(Me.components)
+        Me.chkSVGExportTextAsPath = New System.Windows.Forms.CheckBox()
         Me.tabSettings.SuspendLayout()
         Me.tabMain.SuspendLayout()
         Me.grdFileAssociation.SuspendLayout()
@@ -830,6 +835,9 @@ Partial Class frmSettings
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.chkSVGExportTextAsPath)
+        Me.GroupBox2.Controls.Add(Me.chkSVGExportcSurveyReference)
+        Me.GroupBox2.Controls.Add(Me.chkSVGExportImages)
         Me.GroupBox2.Controls.Add(Me.lblSVGExportDPI)
         Me.GroupBox2.Controls.Add(Me.txtSVGExportDPI)
         Me.GroupBox2.Controls.Add(Me.chkSVGExportNoClipartBrushes)
@@ -839,6 +847,20 @@ Partial Class frmSettings
         resources.ApplyResources(Me.GroupBox2, "GroupBox2")
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.TabStop = False
+        '
+        'chkSVGExportcSurveyReference
+        '
+        resources.ApplyResources(Me.chkSVGExportcSurveyReference, "chkSVGExportcSurveyReference")
+        Me.chkSVGExportcSurveyReference.Name = "chkSVGExportcSurveyReference"
+        Me.tipStandard.SetToolTip(Me.chkSVGExportcSurveyReference, resources.GetString("chkSVGExportcSurveyReference.ToolTip"))
+        Me.chkSVGExportcSurveyReference.UseVisualStyleBackColor = True
+        '
+        'chkSVGExportImages
+        '
+        resources.ApplyResources(Me.chkSVGExportImages, "chkSVGExportImages")
+        Me.chkSVGExportImages.Name = "chkSVGExportImages"
+        Me.tipStandard.SetToolTip(Me.chkSVGExportImages, resources.GetString("chkSVGExportImages.ToolTip"))
+        Me.chkSVGExportImages.UseVisualStyleBackColor = True
         '
         'lblSVGExportDPI
         '
@@ -978,12 +1000,26 @@ Partial Class frmSettings
         '
         'tabLinkedSurveys
         '
+        Me.tabLinkedSurveys.Controls.Add(Me.chkLinkedSurveysRefreshOnLoad)
+        Me.tabLinkedSurveys.Controls.Add(Me.chkLinkedSurveysRecursiveLoadPrioritizeChildren)
         Me.tabLinkedSurveys.Controls.Add(Me.chkLinkedSurveysRecursiveLoad)
         Me.tabLinkedSurveys.Controls.Add(Me.chkLinkedSurveysShowInCaveInfo)
         Me.tabLinkedSurveys.Controls.Add(Me.chkLinkedSurveysSelectOnAdd)
         resources.ApplyResources(Me.tabLinkedSurveys, "tabLinkedSurveys")
         Me.tabLinkedSurveys.Name = "tabLinkedSurveys"
         Me.tabLinkedSurveys.UseVisualStyleBackColor = True
+        '
+        'chkLinkedSurveysRefreshOnLoad
+        '
+        resources.ApplyResources(Me.chkLinkedSurveysRefreshOnLoad, "chkLinkedSurveysRefreshOnLoad")
+        Me.chkLinkedSurveysRefreshOnLoad.Name = "chkLinkedSurveysRefreshOnLoad"
+        Me.chkLinkedSurveysRefreshOnLoad.UseVisualStyleBackColor = True
+        '
+        'chkLinkedSurveysRecursiveLoadPrioritizeChildren
+        '
+        resources.ApplyResources(Me.chkLinkedSurveysRecursiveLoadPrioritizeChildren, "chkLinkedSurveysRecursiveLoadPrioritizeChildren")
+        Me.chkLinkedSurveysRecursiveLoadPrioritizeChildren.Name = "chkLinkedSurveysRecursiveLoadPrioritizeChildren"
+        Me.chkLinkedSurveysRecursiveLoadPrioritizeChildren.UseVisualStyleBackColor = True
         '
         'chkLinkedSurveysRecursiveLoad
         '
@@ -1408,7 +1444,7 @@ Partial Class frmSettings
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = Global.cSurveyPC.My.Resources.Resources._error
+        Me.PictureBox1.Image = Global.cSurveyPC.My.Resources.Resources.error3
         resources.ApplyResources(Me.PictureBox1, "PictureBox1")
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.TabStop = False
@@ -1427,7 +1463,7 @@ Partial Class frmSettings
         '
         'picSendExceptionWarning
         '
-        Me.picSendExceptionWarning.Image = Global.cSurveyPC.My.Resources.Resources._error
+        Me.picSendExceptionWarning.Image = Global.cSurveyPC.My.Resources.Resources.error3
         resources.ApplyResources(Me.picSendExceptionWarning, "picSendExceptionWarning")
         Me.picSendExceptionWarning.Name = "picSendExceptionWarning"
         Me.picSendExceptionWarning.TabStop = False
@@ -1460,6 +1496,13 @@ Partial Class frmSettings
         Me.cmdOk.Name = "cmdOk"
         Me.cmdOk.UseVisualStyleBackColor = True
         '
+        'chkSVGExportTextAsPath
+        '
+        resources.ApplyResources(Me.chkSVGExportTextAsPath, "chkSVGExportTextAsPath")
+        Me.chkSVGExportTextAsPath.Name = "chkSVGExportTextAsPath"
+        Me.tipStandard.SetToolTip(Me.chkSVGExportTextAsPath, resources.GetString("chkSVGExportTextAsPath.ToolTip"))
+        Me.chkSVGExportTextAsPath.UseVisualStyleBackColor = True
+        '
         'frmSettings
         '
         Me.AcceptButton = Me.cmdOk
@@ -1470,6 +1513,7 @@ Partial Class frmSettings
         Me.Controls.Add(Me.cmdOk)
         Me.Controls.Add(Me.tabSettings)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.IconOptions.Icon = CType(resources.GetObject("frmSettings.IconOptions.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSettings"
@@ -1699,4 +1743,9 @@ Partial Class frmSettings
     Friend WithEvents cmdFileAssociationCreate As Button
     Friend WithEvents cmdFileAssociationRemove As Button
     Friend WithEvents chkTherionUseCadastralIDInCaveNames As CheckBox
+    Friend WithEvents chkLinkedSurveysRecursiveLoadPrioritizeChildren As CheckBox
+    Friend WithEvents chkLinkedSurveysRefreshOnLoad As CheckBox
+    Friend WithEvents chkSVGExportcSurveyReference As CheckBox
+    Friend WithEvents chkSVGExportImages As CheckBox
+    Friend WithEvents chkSVGExportTextAsPath As CheckBox
 End Class

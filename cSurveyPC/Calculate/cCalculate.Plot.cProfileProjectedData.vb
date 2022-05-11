@@ -93,7 +93,7 @@ Namespace cSurvey.Calculate.Plot
             oSubDatas = New cProfileSubDatas()
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlProfilePD As XmlElement = Document.CreateElement("profilepd")
             '------------------------------------------------------------------------
             If bChanged Then oXmlProfilePD.SetAttribute("c", 1)
@@ -285,15 +285,15 @@ Namespace cSurvey.Calculate.Plot
             bChanged = False
         End Sub
 
-        Friend Function GetVectorLine() As PointF()
-            Dim oPoints(1) As PointF
+        Friend Function GetVectorLine() As PointD()
+            Dim oPoints(1) As PointD
             oPoints(0) = oFromPoint
             oPoints(1) = oToPoint
             Return oPoints
         End Function
 
-        Friend Function GetLine() As PointF()
-            Dim oPoints(1) As PointF
+        Friend Function GetLine() As PointD()
+            Dim oPoints(1) As PointD
             If bReversed Then
                 oPoints(0) = oToPoint
                 oPoints(1) = oFromPoint
@@ -304,8 +304,8 @@ Namespace cSurvey.Calculate.Plot
             Return oPoints
         End Function
 
-        Friend Function GetPolygon() As PointF()
-            Dim oPolygon(3) As PointF
+        Friend Function GetPolygon() As PointD()
+            Dim oPolygon(3) As PointD
             oPolygon(0) = oToSidePointUp
             oPolygon(1) = oToSidePointDown
             oPolygon(2) = oFromSidePointUp
@@ -313,15 +313,15 @@ Namespace cSurvey.Calculate.Plot
             Return oPolygon
         End Function
 
-        Friend Function GetOldLine() As PointF()
-            Dim oPoints(1) As PointF
+        Friend Function GetOldLine() As PointD()
+            Dim oPoints(1) As PointD
             oPoints(0) = oOldFromPoint
             oPoints(1) = oOldToPoint
             Return oPoints
         End Function
 
-        Friend Function GetOldPolygon() As PointF()
-            Dim oPolygon(3) As PointF
+        Friend Function GetOldPolygon() As PointD()
+            Dim oPolygon(3) As PointD
             oPolygon(0) = oOldToSidePointUp
             oPolygon(1) = oOldToSidePointDown
             oPolygon(2) = oOldFromSidePointUp

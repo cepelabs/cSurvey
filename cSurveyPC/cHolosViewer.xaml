@@ -10,14 +10,57 @@
         <h:HelixViewport3D Background="White" Name="mainViewport" CameraRotationMode="Turnball" ZoomExtentsWhenLoaded="False" ClipToBounds="False" Margin="0,0,0,0" ShowCoordinateSystem="True" ShowCameraInfo="False" IsChangeFieldOfViewEnabled="False" />
         <Canvas Name="overlay2d" IsHitTestVisible="False" ClipToBounds="False"/>
         <Grid x:Name="pnlInvalidated" Height="40" VerticalAlignment="Top" Background="LemonChiffon" Opacity="0.8" >
-            <Image x:Name="imgInvalidatedCaption" Margin="4,4,0,0" Source="pack://application:,,,/Resources/error32.png" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="32" />
+            <Canvas x:Name="imgWarning" Margin="4,4,0,0" Canvas.Left="0" Canvas.Top="0" Width="32" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0"/>
+                </Canvas.RenderTransform>
+                <Canvas.Resources/>
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="#FFB115">
+                    <Path.Data>
+                        <PathGeometry Figures="M29.7 26.2L17 4.8c-0.6-1-1.5-1-2.1 0L3 26.2c-0.6 1-0.2 1.8 1 1.8h24.7C29.8 28 30.3 27.2 29.7 26.2z   M16 26c-1.1 0-2-0.9-2-2s0.9-2 2-2s2 0.9 2 2S17.1 26 16 26z M18 20h-4v-7c0-0.6 0.4-1 1-1h2c0.6 0 1 0.4 1 1V20z" FillRule="NonZero"/>
+                    </Path.Data>
+                </Path>
+            </Canvas>
+            <Canvas x:Name="imgError" Margin="4,4,0,0" Canvas.Left="0" Canvas.Top="0" Width="32" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0"/>
+                </Canvas.RenderTransform>
+                <Canvas.Resources/>
+                <Canvas Name="WarningCircled1">
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="#D11C1C">
+                        <Path.Data>
+                            <PathGeometry Figures="M16 2C8.3 2 2 8.3 2 16s6.3 14 14 14s14-6.3 14-14S23.7 2 16 2z M16 24c-1.1 0-2-0.9-2-2c0-1.1 0.9-2 2-2   s2 0.9 2 2C18 23.1 17.1 24 16 24z M18 18h-4V8h4V18z" FillRule="NonZero"/>
+                        </Path.Data>
+                    </Path>
+                </Canvas>
+            </Canvas>
             <Label x:Name="lblInvalidatedCaption" Margin="48,4,101,4"></Label>
-            <Button x:Name="cmdRefresh" Height="24" Margin="0,8,8,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="80" FontFamily="Tahoma" FontSize="10.667">
+            <Button x:Name="cmdRefresh" Height="24" Margin="0,8,8,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="80" FontFamily="Tahoma" FontSize="8pt">
                 <StackPanel Orientation="Horizontal">
-                    <Image Width="16" Height="16" Source="pack://application:,,,/Resources/arrow_refresh.png"></Image>
-                    <Label x:Name="lblRefresh" Height="22">Aggiorna</Label>
+                    <Canvas Canvas.Left="0" Canvas.Top="0" Width="16" Height="16">
+                        <Canvas.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="0.5" ScaleY="0.5"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform X="0" Y="0"/>
+                            </TransformGroup>
+                       </Canvas.RenderTransform>
+                        <Canvas.Resources/>
+                        <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="#039C23">
+                            <Path.Data>
+                                <PathGeometry Figures="M16 26c-3.3 0-6.2-1.6-8-4l4-4H6.2h-4H2v10l3.2-3.2C7.7 28 11.6 30 16 30c7.1 0 12.9-5.2 13.8-12h-4  C24.9 22.6 20.8 26 16 26z" FillRule="NonZero"/>
+                            </Path.Data>
+                        </Path>
+                        <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="#039C23" RenderTransformOrigin="0.5,0.5">
+                            <Path.Data>
+                                <PathGeometry Figures="M26.8 7.2C24.3 4 20.4 2 16 2C8.9 2 3.1 7.2 2.2 14h4c0.9-4.6 5-8 9.8-8c3.3 0 6.2 1.6 8 4l-4 4h5.8h4H30V4  L26.8 7.2z" FillRule="NonZero"/>
+                            </Path.Data>
+                        </Path>
+                    </Canvas>
+                    <Label x:Name="lblRefresh" Height="23">Aggiorna</Label>
                 </StackPanel>
-            </Button> 
+            </Button>
         </Grid>
     </Grid>
 </UserControl>

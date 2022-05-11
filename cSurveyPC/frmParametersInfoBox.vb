@@ -2,7 +2,7 @@
 Imports cSurveyPC.cSurvey.Design.Options
 Imports cSurveyPC.cSurvey.Drawings
 
-Public Class frmParametersInfoBox
+friend Class frmParametersInfoBox
     Friend Event OnChangeOptions(ByVal Sender As Object, Options As cOptions) ' ByVal InfoBoxOptions As cOptionsPreview.cInfoBoxOptions)
 
     Private oOptions As cOptions

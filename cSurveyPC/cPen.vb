@@ -316,7 +316,7 @@ Namespace cSurvey.Design
             End Set
         End Property
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oItem As XmlElement = Document.CreateElement("pen")
             Call oItem.SetAttribute("type", iType)
 
@@ -464,7 +464,7 @@ Namespace cSurvey.Design
         Friend Function GetPaintZoomFactor(PaintOptions As cOptions) As Single
             Dim sZoomFactor As Single
             If sLocalZoomFactor = 0 Then
-                sZoomFactor = PaintOptions.CurrentRule.DesignProperties.GetValue("DesignTerrainLevelScaleFactor", oSurvey.Properties.DesignProperties.GetValue("DesignTerrainLevelScaleFactor", 1))
+                sZoomFactor = PaintOptions.GetCurrentDesignPropertiesValue("DesignTerrainLevelScaleFactor", 1)
             Else
                 sZoomFactor = sLocalZoomFactor
             End If
@@ -474,7 +474,7 @@ Namespace cSurvey.Design
         Friend Function GetPaintLineWidth(PaintOptions As cOptions) As Single
             Dim sLineWidth As Single
             If sLocalLineWidth = 0 Then
-                sLineWidth = PaintOptions.CurrentRule.DesignProperties.GetValue("BaseLineWidthScaleFactor", oSurvey.Properties.DesignProperties.GetValue("BaseLineWidthScaleFactor", 0.01))
+                sLineWidth = PaintOptions.GetCurrentDesignPropertiesValue("BaseLineWidthScaleFactor", 0.01)
             Else
                 sLineWidth = sLocalLineWidth
             End If
@@ -498,7 +498,7 @@ Namespace cSurvey.Design
             Dim oRenderArgs As cRenderArgs = New cRenderArgs
             RaiseEvent OnRender(Me, oRenderArgs)
 
-            Dim oPaintColor As Color = IIf(oAlternativeColor.IsEmpty, oColor, oAlternativeColor)
+            Dim oPaintColor As Color = If(oAlternativeColor.IsEmpty, oColor, oAlternativeColor)
             oPaintColor = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oPaintColor)
             Dim sPenWidth As Single = GetPaintPenWidth(PaintOptions)
             oPen = New Pen(oPaintColor, sPenWidth)
@@ -527,7 +527,7 @@ Namespace cSurvey.Design
 
             oBrush = New SolidBrush(oPaintColor)
 
-            oPaintColor = IIf(oAlternativeColor.IsEmpty, Color.Black, oAlternativeColor)
+            oPaintColor = If(oAlternativeColor.IsEmpty, Color.Black, oAlternativeColor)
             oWireframePen = New Pen(oPaintColor, -1 * sLineWidth)
             oWireframePen.SetLineCap(Drawing2D.LineCap.Round, Drawing2D.LineCap.Round, Drawing2D.DashCap.Round)
             oWireframePen.LineJoin = Drawing2D.LineJoin.Round
@@ -558,82 +558,82 @@ Namespace cSurvey.Design
             If bInvalidated Then pRender(PaintOptions)
             If Path.PointCount > 1 Then
                 If iType = PenTypeEnum.None Then
-                    Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, Path, Nothing, oWireframePen)
+                    Call Cache.AddBorder(Path, Nothing, oWireframePen)
                 Else
                     Dim sZoomFactor As Single = GetPaintZoomFactor(PaintOptions)
                     Select Case DecorationStyle
                         Case DecorationStylesEnum.None
-                            Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, Path, oPen, oWireframePen)
+                            Call Cache.AddBorder(Path, oPen, oWireframePen)
                         Case DecorationStylesEnum.UpArrow
                             Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, modPenClipart.ClipartArrowUp, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, oColor, oColor, sDecorationScale * sZoomFactor)
                                 If Not oPath Is Nothing Then
-                                    Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oPath, oPen, Nothing, oBrush)
+                                    Call Cache.AddBorder(oPath, oPen, Nothing, oBrush)
                                 End If
                             End Using
-                            Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, Path, oPen, oWireframePen)
+                            Call Cache.AddBorder(Path, oPen, oWireframePen)
                         Case DecorationStylesEnum.DownArrow
                             Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, modPenClipart.ClipartArrowDown, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, oColor, oColor, sDecorationScale * sZoomFactor)
                                 If Not oPath Is Nothing Then
-                                    Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oPath, oPen, Nothing, oBrush)
+                                    Call Cache.AddBorder(oPath, oPen, Nothing, oBrush)
                                 End If
                             End Using
-                            Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, Path, oPen, oWireframePen)
+                            Call Cache.AddBorder(Path, oPen, oWireframePen)
                         Case DecorationStylesEnum.Dash
                             Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, modPenClipart.ClipartDash, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, oColor, oColor, sDecorationScale * sZoomFactor)
                                 If Not oPath Is Nothing Then
-                                    Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oPath, oPen, Nothing, oBrush)
+                                    Call Cache.AddBorder(oPath, oPen, Nothing, oBrush)
                                 End If
                             End Using
-                            Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, Path, oPen, oWireframePen)
+                            Call Cache.AddBorder(Path, oPen, oWireframePen)
                         Case DecorationStylesEnum.Triangle
                             Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, modPenClipart.ClipartTriangleUp, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, oColor, oColor, sDecorationScale * sZoomFactor)
                                 If Not oPath Is Nothing Then
-                                    Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oPath, oPen, Nothing, oBrush)
+                                    Call Cache.AddBorder(oPath, oPen, Nothing, oBrush)
                                 End If
                             End Using
-                            Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, Path, oPen, oWireframePen)
+                            Call Cache.AddBorder(Path, oPen, oWireframePen)
                         Case DecorationStylesEnum.DownTriangle
                             Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, modPenClipart.ClipartTriangleDown, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, oColor, oColor, sDecorationScale * sZoomFactor)
                                 If Not oPath Is Nothing Then
-                                    Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oPath, oPen, Nothing, oBrush)
+                                    Call Cache.AddBorder(oPath, oPen, Nothing, oBrush)
                                 End If
                             End Using
-                            Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, Path, oPen, oWireframePen)
+                            Call Cache.AddBorder(Path, oPen, oWireframePen)
                         Case DecorationStylesEnum.UpTriangle
                             Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, modPenClipart.ClipartTriangleUp, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, oColor, oColor, sDecorationScale * sZoomFactor)
                                 If Not oPath Is Nothing Then
-                                    Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oPath, oPen, Nothing, oBrush)
+                                    Call Cache.AddBorder(oPath, oPen, Nothing, oBrush)
                                 End If
                             End Using
-                            Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, Path, oPen, oWireframePen)
+                            Call Cache.AddBorder(Path, oPen, oWireframePen)
                         Case DecorationStylesEnum.Ice
                             Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, modPenClipart.Ice, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, oColor, oColor, sDecorationScale * sZoomFactor)
                                 If Not oPath Is Nothing Then
-                                    Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oPath, oPen, Nothing, Nothing)
+                                    Call Cache.AddBorder(oPath, oPen, Nothing, Nothing)
                                 End If
                             End Using
-                            Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, Path, oPen, oWireframePen)
+                            Call Cache.AddBorder(Path, oPen, oWireframePen)
                         Case DecorationStylesEnum.EmptyDownTriangle
                             Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, modPenClipart.ClipartTriangleDown, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, oColor, oColor, sDecorationScale * sZoomFactor)
                                 If Not oPath Is Nothing Then
-                                    Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oPath, oPen, Nothing, Nothing)
+                                    Call Cache.AddBorder(oPath, oPen, Nothing, Nothing)
                                 End If
                             End Using
-                            Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, Path, oPen, oWireframePen)
+                            Call Cache.AddBorder(Path, oPen, oWireframePen)
                         Case DecorationStylesEnum.EmptyUpTriangle
                             Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, modPenClipart.ClipartTriangleUp, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, oColor, oColor, sDecorationScale * sZoomFactor)
                                 If Not oPath Is Nothing Then
-                                    Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oPath, oPen, Nothing, Nothing)
+                                    Call Cache.AddBorder(oPath, oPen, Nothing, Nothing)
                                 End If
                             End Using
-                            Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, Path, oPen, oWireframePen)
+                            Call Cache.AddBorder(Path, oPen, oWireframePen)
                         Case DecorationStylesEnum.Custom
                             Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, oClipart, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, oColor, oColor, sDecorationScale * sZoomFactor)
                                 If Not oPath Is Nothing Then
-                                    Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oPath, oPen, Nothing, Nothing)
+                                    Call Cache.AddBorder(oPath, oPen, Nothing, Nothing)
                                 End If
                             End Using
-                            Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, Path, Nothing, oWireframePen)
+                            Call Cache.AddBorder(Path, Nothing, oWireframePen)
                     End Select
                 End If
             End If

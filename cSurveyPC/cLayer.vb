@@ -6,6 +6,7 @@ Imports cSurveyPC.cSurvey.Design.Items
 
 Imports cSurveyPC.XSystem.Linq.Dynamic
 Imports System.Linq.Expressions
+Imports System.ComponentModel
 
 Namespace cSurvey.Design
     Public Class cLayer
@@ -22,44 +23,43 @@ Namespace cSurvey.Design
 #Region "SVG"
 
         Friend Overridable Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
-            Dim oSVGLayer As XmlElement = modSVG.CreateLayer(SVG, iType, iType.ToString)
+            Dim oSVGLayer As XmlElement = modSVG.CreateLayer(SVG, "layer" & iType.ToString("D"), iType.ToString)
             Dim oVisibleItems As List(Of cItem) = GetAllVisibleItems(PaintOptions)
             Dim iIndex As Integer = 0
             Dim iCount As Integer = oVisibleItems.Count
-            Dim iStep As Integer = IIf(iCount > 20, iCount \ 20, 1)
+            Dim iStep As Integer = If(iCount > 20, iCount \ 20, 1)
             For Each oItem As cItem In oVisibleItems
                 iIndex += 1
                 If (Options And cItem.SVGOptionsEnum.Silent) = 0 Then If (iIndex Mod iStep) = 0 Then Call oSurvey.RaiseOnProgressEvent("svg", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "Esportazione livello " & iType & "...", iIndex / iCount)
-                'If GetIfItemVisible(PaintOptions, oItem) Then
                 If modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, "", "") Then
                     Dim oSVGItem As XmlElement = oItem.ToSvgItem(SVG, PaintOptions, Options)
-                    'occhio qua devo definire come clippare l'oggetto....
-                    Dim iClipBorder As cClippingRegions.ClipBorderEnum = oSurvey.Properties.DesignProperties.GetValue("ClipBorder", oSurvey.GetGlobalSetting("design.clipborder", cClippingRegions.ClipBorderEnum.ClipBorder))
-                    If oItem.ClippingType = cItem.cItemClippingTypeEnum.Default Then
-                        If (oItem.Type = cIItem.cItemTypeEnum.InvertedFreeHandArea And iType = cLayers.LayerTypeEnum.Borders) Or (iType > cLayers.LayerTypeEnum.Borders) Or (iClipBorder = cClippingRegions.ClipBorderEnum.DontClipBorder And iType = cLayers.LayerTypeEnum.Borders) Then
-                            'nulla
-                        Else
-                            If oItem.Type = cIItem.cItemTypeEnum.FreeHandArea AndAlso oItem.Category = cIItem.cItemCategoryEnum.Soil AndAlso oItem.Design.Type = cIDesign.cDesignTypeEnum.Profile Then
-                                Dim sClippingKey As String = "invmask_" & modExport.FormatCaveBranchNameForSVG(oItem.Cave, oItem.Branch)
-                                Call oSVGItem.SetAttribute("mask", "url(#" & sClippingKey & ")")
+                    If oItem.CanBeClipped Then
+                        Dim iClipBorder As cClippingRegions.ClipBorderEnum = oSurvey.Properties.DesignProperties.GetValue("ClipBorder", oSurvey.GetGlobalSetting("design.clipborder", cClippingRegions.ClipBorderEnum.ClipBorder))
+                        If oItem.ClippingType = cItem.cItemClippingTypeEnum.Default Then
+                            If (oItem.Type = cIItem.cItemTypeEnum.InvertedFreeHandArea AndAlso iType = cLayers.LayerTypeEnum.Borders) OrElse (iType > cLayers.LayerTypeEnum.Borders) OrElse (iClipBorder = cClippingRegions.ClipBorderEnum.DontClipBorder AndAlso iType = cLayers.LayerTypeEnum.Borders) Then
+                                'nothing
                             Else
-                                Dim sClippingKey As String = "mask_" & modExport.FormatCaveBranchNameForSVG(oItem.Cave, oItem.Branch)
-                                Call oSVGItem.SetAttribute("mask", "url(#" & sClippingKey & ")")
+                                If oItem.Type = cIItem.cItemTypeEnum.FreeHandArea AndAlso oItem.Category = cIItem.cItemCategoryEnum.Soil AndAlso oItem.Design.Type = cIDesign.cDesignTypeEnum.Profile Then
+                                    Dim sClippingKey As String = "invmask_" & modExport.FormatCaveBranchNameForSVG(oItem.Cave, oItem.Branch)
+                                    Call oSVGItem.SetAttribute("mask", "url(#" & sClippingKey & ")")
+                                Else
+                                    Dim sClippingKey As String = "mask_" & modExport.FormatCaveBranchNameForSVG(oItem.Cave, oItem.Branch)
+                                    Call oSVGItem.SetAttribute("mask", "url(#" & sClippingKey & ")")
+                                End If
                             End If
+                        Else
+                            Select Case oItem.ClippingType
+                                Case cItem.cItemClippingTypeEnum.None
+                                    'without clipping...
+                                Case cItem.cItemClippingTypeEnum.InsideBorder
+                                    Dim sClippingKey As String = "mask_" & modExport.FormatCaveBranchNameForSVG(oItem.Cave, oItem.Branch)
+                                    Call oSVGItem.SetAttribute("mask", "url(#" & sClippingKey & ")")
+                                Case cItem.cItemClippingTypeEnum.OutsideBorder
+                                    Dim sClippingKey As String = "invmask_" & modExport.FormatCaveBranchNameForSVG(oItem.Cave, oItem.Branch)
+                                    Call oSVGItem.SetAttribute("mask", "url(#" & sClippingKey & ")")
+                            End Select
                         End If
-                    Else
-                        Select Case oItem.ClippingType
-                            Case cItem.cItemClippingTypeEnum.None
-                                'senza clipping restituisco sempre TUTTO
-                            Case cItem.cItemClippingTypeEnum.InsideBorder
-                                Dim sClippingKey As String = "mask_" & modExport.FormatCaveBranchNameForSVG(oItem.Cave, oItem.Branch)
-                                Call oSVGItem.SetAttribute("mask", "url(#" & sClippingKey & ")")
-                            Case cItem.cItemClippingTypeEnum.OutsideBorder
-                                Dim sClippingKey As String = "invmask_" & modExport.FormatCaveBranchNameForSVG(oItem.Cave, oItem.Branch)
-                                Call oSVGItem.SetAttribute("mask", "url(#" & sClippingKey & ")")
-                        End Select
                     End If
-
                     Call modSVG.AppendItem(SVG, oSVGLayer, oSVGItem)
                 End If
             Next
@@ -73,6 +73,12 @@ Namespace cSurvey.Design
         End Function
 
 #End Region
+
+        Public ReadOnly Property ItemsList() As BindingList(Of cItem)
+            Get
+                Return oItems.List
+            End Get
+        End Property
 
         Public ReadOnly Property Survey() As cSurvey
             Get
@@ -134,7 +140,7 @@ Namespace cSurvey.Design
             End Get
         End Property
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal File As Storage.cFile, ByVal Layer As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal File As cFile, ByVal Layer As XmlElement)
             oSurvey = Survey
             oDesign = Design
             sName = modXML.GetAttributeValue(Layer, "name")
@@ -144,12 +150,12 @@ Namespace cSurvey.Design
             oItems = New cItems(oSurvey, Design, Me, File, Layer.Item("items"))
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oXmlLayer As XmlElement = Document.CreateElement("layer")
             Call oXmlLayer.SetAttribute("name", sName)
             Call oXmlLayer.SetAttribute("type", iType)
-            If bHiddenInDesign Then Call oXmlLayer.SetAttribute("hiddenindesign", IIf(bHiddenInDesign, 1, 0))
-            If bHiddenInPreview Then Call oXmlLayer.SetAttribute("hiddeninpreview", IIf(bHiddenInPreview, 1, 0))
+            If bHiddenInDesign Then Call oXmlLayer.SetAttribute("hiddenindesign", If(bHiddenInDesign, 1, 0))
+            If bHiddenInPreview Then Call oXmlLayer.SetAttribute("hiddeninpreview", If(bHiddenInPreview, 1, 0))
             Call oItems.SaveTo(File, Document, oXmlLayer, Options)
             Call Parent.AppendChild(oXmlLayer)
             Return oXmlLayer
@@ -203,7 +209,7 @@ Namespace cSurvey.Design
             'Return oResultItems
         End Function
 
-        Friend Function CreateItem(ByVal File As Storage.cFile, ByVal Item As XmlElement) As cItem
+        Friend Function CreateItem(ByVal File As cFile, ByVal Item As XmlElement) As cItem
             Dim oItem As cItem = Nothing
             Select Case Item.GetAttribute("type")
                 Case cIItem.cItemTypeEnum.Generic
@@ -318,7 +324,7 @@ Namespace cSurvey.Design
             Return oItem
         End Function
 
-        Friend Function CreateItem(ByVal Type As cIItem.cItemTypeEnum, ByVal Category As cIItem.cItemCategoryEnum, ByVal Data As Object, ByVal DataFormat As cAttachmentLinks.cAttachmentDataFormatEnum) As cItem
+        Friend Function CreateItem(ByVal Type As cIItem.cItemTypeEnum, ByVal Category As cIItem.cItemCategoryEnum, ByVal Data As Object, ByVal DataFormat As cAttachmentsLinks.cAttachmentDataFormatEnum) As cItem
             Dim oItem As cItem = Nothing
             Select Case Type
                 Case cIItem.cItemTypeEnum.Attachment
@@ -366,7 +372,7 @@ Namespace cSurvey.Design
         End Function
 
         Friend Overridable Function GetAllVisibleItems(PaintOptions As cOptions, ByVal CurrentCave As String, ByVal CurrentBranch As String) As List(Of cItem)
-            Return GetAllVisibleItems(PaintOptions).Where(Function(oitem) modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oitem, CurrentCave, CurrentBranch)).tolist
+            Return GetAllVisibleItems(PaintOptions).Where(Function(oitem) modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oitem, CurrentCave, CurrentBranch)).ToList
             'Dim oResultItems As List(Of cItem) = New List(Of cItem)
             'For Each oItem As cItem In GetAllVisibleItems(PaintOptions)
             '    If modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, CurrentCave, CurrentBranch) Then
@@ -439,65 +445,65 @@ Namespace cSurvey.Design
                     For Each oItem As cItem In oItems
                         'If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) Then
                         If modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, Selection.CurrentCave, Selection.CurrentBranch) Then
-                                Dim iSelectionMode As cItem.SelectionModeEnum
-                                If PaintOptions.IsDesign Then
-                                    If TypeOf oCurrentItem Is cItemItems Then
-                                        If DirectCast(oCurrentItem, cItemItems).Contains(oItem) Then
-                                            iSelectionMode = cItem.SelectionModeEnum.Selected
-                                            bCurrentItem = True
-                                        Else
-                                            iSelectionMode = cItem.SelectionModeEnum.None
-                                            bCurrentItem = False
-                                        End If
+                            Dim iSelectionMode As cItem.SelectionModeEnum
+                            If PaintOptions.IsDesign Then
+                                If TypeOf oCurrentItem Is cItemItems Then
+                                    If DirectCast(oCurrentItem, cItemItems).Contains(oItem) Then
+                                        iSelectionMode = cItem.SelectionModeEnum.Selected
+                                        bCurrentItem = True
                                     Else
-                                        If oItem Is oCurrentItem Then
-                                            If bCurrentItemIsInEdit Then
-                                                iSelectionMode = cItem.SelectionModeEnum.InEdit
-                                            Else
-                                                iSelectionMode = cItem.SelectionModeEnum.Selected
-                                            End If
-                                            bCurrentItem = True
+                                        iSelectionMode = cItem.SelectionModeEnum.None
+                                        bCurrentItem = False
+                                    End If
+                                Else
+                                    If oItem Is oCurrentItem Then
+                                        If bCurrentItemIsInEdit Then
+                                            iSelectionMode = cItem.SelectionModeEnum.InEdit
                                         Else
-                                            iSelectionMode = cItem.SelectionModeEnum.None
-                                            bCurrentItem = False
+                                            iSelectionMode = cItem.SelectionModeEnum.Selected
                                         End If
+                                        bCurrentItem = True
+                                    Else
+                                        iSelectionMode = cItem.SelectionModeEnum.None
+                                        bCurrentItem = False
                                     End If
                                 End If
+                            End If
 
-                                oVisibleBounds = oBaseVisibleBounds
+                            oVisibleBounds = oBaseVisibleBounds
 
-                                Dim oState As GraphicsState = Graphics.Save()
-                                If bTraslation Then
-                                    Dim oTranslation As PointF = oDesign.GetItemTranslation(oItem)
-                                    If Not oTranslation.IsEmpty Then
-                                        Call Graphics.TranslateTransform(oTranslation.X, oTranslation.Y, Drawing2D.MatrixOrder.Prepend)
-                                        Call oVisibleBounds.Offset(-oTranslation.X, -oTranslation.Y)
-                                    End If
+                            Dim oState As GraphicsState = Graphics.Save()
+                            If bTraslation Then
+                                Dim oTranslation As PointF = oDesign.GetItemTranslation(oItem)
+                                If Not oTranslation.IsEmpty Then
+                                    Call Graphics.TranslateTransform(oTranslation.X, oTranslation.Y, Drawing2D.MatrixOrder.Prepend)
+                                    Call oVisibleBounds.Offset(-oTranslation.X, -oTranslation.Y)
                                 End If
+                            End If
 
-                                Dim bDraw As Boolean = False
-                                If PaintOptions.IsPreview Then
+                            Dim bDraw As Boolean = False
+                            If PaintOptions.IsPreview Then
+                                bDraw = True
+                            Else
+                                If bCurrentItem Then
                                     bDraw = True
                                 Else
-                                    If bCurrentItem Then
+                                    If oItem.IsInvalidated(PaintOptions) Then
                                         bDraw = True
                                     Else
-                                        If oItem.IsInvalidated(PaintOptions) Then
+                                        If oVisibleBounds.IntersectsWith(oItem.GetBounds) Then
                                             bDraw = True
-                                        Else
-                                            If oVisibleBounds.IntersectsWith(oItem.GetBounds) Then
-                                                bDraw = True
-                                            End If
                                         End If
                                     End If
                                 End If
-
-                                If bDraw Then
-                                    Call Graphics.SetClip(Clipping.GetClip(Graphics, Me, oItem), CombineMode.Replace)
-                                    Call oItem.Paint(Graphics, PaintOptions, Options, iSelectionMode)
-                                End If
-                                Call Graphics.Restore(oState)
                             End If
+
+                            If bDraw Then
+                                Call Graphics.SetClip(Clipping.GetClip(Graphics, Me, oItem), CombineMode.Replace)
+                                Call oItem.Paint(Graphics, PaintOptions, Options, iSelectionMode)
+                            End If
+                            Call Graphics.Restore(oState)
+                        End If
                         'End If
                     Next
                 End If

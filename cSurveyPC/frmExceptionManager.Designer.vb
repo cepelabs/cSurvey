@@ -31,18 +31,17 @@ Partial Class frmExceptionManager
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
         Me.mnuExceptionCopy = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuExceptionSave = New System.Windows.Forms.ToolStripMenuItem()
-        Me.cmdSaveAs = New System.Windows.Forms.Button()
-        Me.cmdSaveAsAndExit = New System.Windows.Forms.Button()
-        Me.cmdExit = New System.Windows.Forms.Button()
+        Me.cmdSaveAs = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdSaveAsAndExit = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.cmdSaveException = New System.Windows.Forms.Button()
-        Me.cmdSendException = New System.Windows.Forms.Button()
-        Me.cmdClose = New System.Windows.Forms.Button()
-        Me.cmdShowDetails = New System.Windows.Forms.Button()
+        Me.cmdSaveException = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdSendException = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdClose = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdShowDetails = New DevExpress.XtraEditors.SimpleButton()
         Me.lblException = New System.Windows.Forms.Label()
         Me.tmrAskToSendException = New System.Windows.Forms.Timer(Me.components)
-        Me.cmdCopyException = New System.Windows.Forms.Button()
-        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.cmdCopyException = New DevExpress.XtraEditors.SimpleButton()
         Me.mnuError.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -93,23 +92,30 @@ Partial Class frmExceptionManager
         'cmdSaveAs
         '
         resources.ApplyResources(Me.cmdSaveAs, "cmdSaveAs")
-        Me.cmdSaveAs.Image = Global.cSurveyPC.My.Resources.Resources.save_as
+        Me.cmdSaveAs.Appearance.Options.UseTextOptions = True
+        Me.cmdSaveAs.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        Me.cmdSaveAs.ImageOptions.Image = Global.cSurveyPC.My.Resources.Resources.save_as
+        Me.cmdSaveAs.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter
+        Me.cmdSaveAs.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.saveas
         Me.cmdSaveAs.Name = "cmdSaveAs"
-        Me.cmdSaveAs.UseVisualStyleBackColor = True
         '
         'cmdSaveAsAndExit
         '
         resources.ApplyResources(Me.cmdSaveAsAndExit, "cmdSaveAsAndExit")
-        Me.cmdSaveAsAndExit.Image = Global.cSurveyPC.My.Resources.Resources.save_as
+        Me.cmdSaveAsAndExit.Appearance.Options.UseTextOptions = True
+        Me.cmdSaveAsAndExit.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        Me.cmdSaveAsAndExit.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter
+        Me.cmdSaveAsAndExit.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.saveas
         Me.cmdSaveAsAndExit.Name = "cmdSaveAsAndExit"
-        Me.cmdSaveAsAndExit.UseVisualStyleBackColor = True
         '
         'cmdExit
         '
         resources.ApplyResources(Me.cmdExit, "cmdExit")
-        Me.cmdExit.Image = Global.cSurveyPC.My.Resources.Resources.door_out
+        Me.cmdExit.Appearance.Options.UseTextOptions = True
+        Me.cmdExit.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        Me.cmdExit.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter
+        Me.cmdExit.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.close
         Me.cmdExit.Name = "cmdExit"
-        Me.cmdExit.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -119,32 +125,31 @@ Partial Class frmExceptionManager
         'cmdSaveException
         '
         resources.ApplyResources(Me.cmdSaveException, "cmdSaveException")
-        Me.cmdSaveException.Image = Global.cSurveyPC.My.Resources.Resources.script_save
+        Me.cmdSaveException.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.save
+        Me.cmdSaveException.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.cmdSaveException.Name = "cmdSaveException"
-        Me.ToolTip1.SetToolTip(Me.cmdSaveException, resources.GetString("cmdSaveException.ToolTip"))
-        Me.cmdSaveException.UseVisualStyleBackColor = True
         '
         'cmdSendException
         '
         resources.ApplyResources(Me.cmdSendException, "cmdSendException")
-        Me.cmdSendException.Image = Global.cSurveyPC.My.Resources.Resources.email_go
+        Me.cmdSendException.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.email
+        Me.cmdSendException.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.cmdSendException.Name = "cmdSendException"
-        Me.ToolTip1.SetToolTip(Me.cmdSendException, resources.GetString("cmdSendException.ToolTip"))
-        Me.cmdSendException.UseVisualStyleBackColor = True
         '
         'cmdClose
         '
         resources.ApplyResources(Me.cmdClose, "cmdClose")
+        Me.cmdClose.Appearance.Options.UseTextOptions = True
+        Me.cmdClose.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
         Me.cmdClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdClose.Image = Global.cSurveyPC.My.Resources.Resources.script_go1
+        Me.cmdClose.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter
+        Me.cmdClose.ImageOptions.SvgImage = CType(resources.GetObject("cmdClose.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.cmdClose.Name = "cmdClose"
-        Me.cmdClose.UseVisualStyleBackColor = True
         '
         'cmdShowDetails
         '
         resources.ApplyResources(Me.cmdShowDetails, "cmdShowDetails")
         Me.cmdShowDetails.Name = "cmdShowDetails"
-        Me.cmdShowDetails.UseVisualStyleBackColor = True
         '
         'lblException
         '
@@ -158,10 +163,9 @@ Partial Class frmExceptionManager
         'cmdCopyException
         '
         resources.ApplyResources(Me.cmdCopyException, "cmdCopyException")
-        Me.cmdCopyException.Image = Global.cSurveyPC.My.Resources.Resources.page_copy
+        Me.cmdCopyException.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.copy
+        Me.cmdCopyException.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.cmdCopyException.Name = "cmdCopyException"
-        Me.ToolTip1.SetToolTip(Me.cmdCopyException, resources.GetString("cmdCopyException.ToolTip"))
-        Me.cmdCopyException.UseVisualStyleBackColor = True
         '
         'frmExceptionManager
         '
@@ -179,6 +183,7 @@ Partial Class frmExceptionManager
         Me.Controls.Add(Me.cmdSaveAsAndExit)
         Me.Controls.Add(Me.cmdSaveAs)
         Me.Controls.Add(Me.rtfException)
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.security_bug
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmExceptionManager"
@@ -188,18 +193,17 @@ Partial Class frmExceptionManager
 
     End Sub
     Friend WithEvents rtfException As System.Windows.Forms.RichTextBox
-    Friend WithEvents cmdSaveAs As System.Windows.Forms.Button
-    Friend WithEvents cmdSaveAsAndExit As System.Windows.Forms.Button
-    Friend WithEvents cmdExit As System.Windows.Forms.Button
+    Friend WithEvents cmdSaveAs As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdSaveAsAndExit As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdExit As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents cmdSaveException As System.Windows.Forms.Button
-    Friend WithEvents cmdSendException As System.Windows.Forms.Button
-    Friend WithEvents cmdClose As System.Windows.Forms.Button
-    Friend WithEvents cmdShowDetails As System.Windows.Forms.Button
+    Friend WithEvents cmdSaveException As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdSendException As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdClose As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdShowDetails As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents lblException As System.Windows.Forms.Label
     Friend WithEvents tmrAskToSendException As System.Windows.Forms.Timer
-    Friend WithEvents cmdCopyException As Button
-    Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents cmdCopyException As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents mnuError As ContextMenuStrip
     Friend WithEvents mnuExceptionCopy As ToolStripMenuItem
     Friend WithEvents mnuExceptionSave As ToolStripMenuItem

@@ -1,22 +1,17 @@
 ﻿Imports cSurveyPC.cSurvey.Design
 
 Public Class cDesignLinkedSurveySelectorPropertyControl
-    Private oDesign As cDesign
-    Private oOptions As cIOptionLinkedSurveys
 
-    Public Sub New()
-
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-    End Sub
+    Public Overloads ReadOnly Property Options As cIOptionLinkedSurveys
+        Get
+            Return MyBase.Options
+        End Get
+    End Property
 
     Public Overrides Sub Rebind(Design As cIDesign, Options As cOptions)
-        oDesign = Design
-        oOptions = Options
+        MyBase.Rebind(Design, Options)
 
-        chkDesignDrawLinkedSurveys.Checked = oOptions.DrawLinkedSurveys
+        chkDesignDrawLinkedSurveys.Checked = Me.Options.DrawLinkedSurveys
         linkedSurveys.Enabled = chkDesignDrawLinkedSurveys.Checked
 
         Dim sDesignType As String = ""
@@ -28,14 +23,16 @@ Public Class cDesignLinkedSurveySelectorPropertyControl
             Case cIDesign.cDesignTypeEnum.ThreeDModel
                 sDesignType = "3d"
         End Select
-        Call linkedSurveys.Rebind(oDesign.Survey.LinkedSurveys, "design." & sDesignType)
+        Call linkedSurveys.Rebind(MyBase.Design.Survey.LinkedSurveys, "design." & sDesignType)
+
+        Visible = MyBase.Design.Survey.LinkedSurveys.Count > 0
     End Sub
 
     Private Sub chkDesignDrawLinkedSurveys_CheckedChanged(sender As Object, e As EventArgs) Handles chkDesignDrawLinkedSurveys.CheckedChanged
         If Not DisabledObjectProperty() Then
-            oOptions.DrawLinkedSurveys = chkDesignDrawLinkedSurveys.Checked
+            Me.Options.DrawLinkedSurveys = chkDesignDrawLinkedSurveys.Checked
             linkedSurveys.Enabled = chkDesignDrawLinkedSurveys.Checked
-            Call MyBase.takeundosnapshot
+            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("DrawLinkedSurveys")
             Call MyBase.MapInvalidate()
         End If

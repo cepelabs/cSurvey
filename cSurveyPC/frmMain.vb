@@ -23,7 +23,7 @@ Imports WeifenLuo.WinFormsUI.Docking
 Imports System.ComponentModel
 Imports cSurveyPC.cSurvey.Helper.Editor
 
-Public Class frmMain
+Friend Class frmMain
     Private sZoomDefault As Single = 500
     Private sZoomRatio As Single = 15
 
@@ -133,6 +133,8 @@ Public Class frmMain
     Private bLinkedSurveysSelectOnAdd As Boolean
     Private bLinkedSurveysShowInCaveInfo As Boolean
     Private bLinkedSurveysRecursiveLoad As Boolean
+    Private bLinkedSurveysRefreshOnLoad As Boolean
+    Private bLinkedSurveysRefreshOnLoadPrioritizeChildren As Boolean
 
     Private WithEvents oClipboardViewer As clipboardChangeNotifier
 
@@ -216,8 +218,6 @@ Public Class frmMain
     Private oCurrentDesign As cDesign
     Private oCurrentOptions As cOptionsDesign
 
-    'Private oDesign3D As cDesign3D
-
     Private bDisableFilterItemEvent As Boolean = True
     Private bDisableSelectItemEvent As Boolean = True
     Private bDisablePaintEvent As Boolean = True
@@ -265,217 +265,217 @@ Public Class frmMain
     Private oOpenHandCursor As Cursor
     Private oClosedHandCursor As Cursor
 
-    Private Class cEditToolsBag
-        Public Type As String
-        Public Subtype As String
+    'Friend Class cEditToolsBag
+    '    Public Type As String
+    '    Public Subtype As String
 
-        Public Name As String
-        Public Caption As String
-        Public Image As String
-        Public ToolTip As String
-        Public Style As Integer
+    '    Public Name As String
+    '    Public Caption As String
+    '    Public Image As String
+    '    Public ToolTip As String
+    '    Public Style As Integer
 
-        Public Layer As cLayers.LayerTypeEnum
-        Public Category As cIItem.cItemCategoryEnum
-        Public Cliparts As String
+    '    Public Layer As cLayers.LayerTypeEnum
+    '    Public Category As cIItem.cItemCategoryEnum
+    '    Public Cliparts As String
 
-        Public Gallery As String
+    '    Public Gallery As String
 
-        Public Filename As String
+    '    Public Filename As String
 
-        Public Text As String
+    '    Public Text As String
 
-        Public Method As String
-        Public Parameters As String
+    '    Public Method As String
+    '    Public Parameters As String
 
-        Public AvaiableInPlan As Boolean
-        Public AvaiableInProfile As Boolean
+    '    Public AvaiableInPlan As Boolean
+    '    Public AvaiableInProfile As Boolean
 
-        Public Hidden As Boolean
+    '    Public Hidden As Boolean
 
-        Public Function GetInvokeParameters(ByVal ParamArray Values As Object()) As Object()
-            Dim oParameters As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
-            Dim oList As List(Of Object) = New List(Of Object)
-            For iValueIndex As Integer = 0 To Values.Count - 1 Step 2
-                Try
-                    Dim sKey As String = Values(iValueIndex)
-                    Dim oValue As Object = Values(iValueIndex + 1)
-                    Call oParameters.Add(sKey, oValue)
-                Catch
-                End Try
-            Next
-            Dim sParameters() As String = Parameters.Split(",")
-            For Each sParameter As String In sParameters
-                sParameter = sParameter.Trim
-                Try
-                    Call oList.Add(oParameters(sParameter))
-                Catch
-                    Call oList.Add(Nothing)
-                End Try
-            Next
-            Return oList.ToArray
-        End Function
+    '    Public Function GetInvokeParameters(ByVal ParamArray Values As Object()) As Object()
+    '        Dim oParameters As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
+    '        Dim oList As List(Of Object) = New List(Of Object)
+    '        For iValueIndex As Integer = 0 To Values.Count - 1 Step 2
+    '            Try
+    '                Dim sKey As String = Values(iValueIndex)
+    '                Dim oValue As Object = Values(iValueIndex + 1)
+    '                Call oParameters.Add(sKey, oValue)
+    '            Catch
+    '            End Try
+    '        Next
+    '        Dim sParameters() As String = Parameters.Split(",")
+    '        For Each sParameter As String In sParameters
+    '            sParameter = sParameter.Trim
+    '            Try
+    '                Call oList.Add(oParameters(sParameter))
+    '            Catch
+    '                Call oList.Add(Nothing)
+    '            End Try
+    '        Next
+    '        Return oList.ToArray
+    '    End Function
 
-        Private Function pGetCaptionNode(Parent As XmlElement) As XmlElement
-            Dim oNodes As XmlNodeList = Parent.SelectNodes("caption[@lang='" & My.Application.CurrentLanguage & "']")
-            If oNodes.Count > 0 Then
-                Return oNodes(0)
-            Else
-                Return Parent
-            End If
-        End Function
+    '    Private Function pGetCaptionNode(Parent As XmlElement) As XmlElement
+    '        Dim oNodes As XmlNodeList = Parent.SelectNodes("caption[@lang='" & My.Application.CurrentLanguage & "']")
+    '        If oNodes.Count > 0 Then
+    '            Return oNodes(0)
+    '        Else
+    '            Return Parent
+    '        End If
+    '    End Function
 
-        Public Sub New(ByVal Tool As XmlElement)
-            With Tool
-                Type = .GetAttribute("type")
-                Hidden = modXML.GetAttributeValue(Tool, "hidden", False)
-                Select Case Type
-                    Case "separator", "-"
+    '    Public Sub New(ByVal Tool As XmlElement)
+    '        With Tool
+    '            Type = .GetAttribute("type")
+    '            Hidden = modXML.GetAttributeValue(Tool, "hidden", False)
+    '            Select Case Type
+    '                Case "separator", "-"
 
-                    Case "texteditor"
-                        Dim oCaptionNode As XmlElement = pGetCaptionNode(Tool)
-                        Caption = oCaptionNode.GetAttribute("caption")
-                        ToolTip = oCaptionNode.GetAttribute("tooltip")
+    '                Case "texteditor"
+    '                    Dim oCaptionNode As XmlElement = pGetCaptionNode(Tool)
+    '                    Caption = oCaptionNode.GetAttribute("caption")
+    '                    ToolTip = oCaptionNode.GetAttribute("tooltip")
 
-                        Name = .GetAttribute("name")
-                        Image = .GetAttribute("image")
-                        Style = .GetAttribute("style")
+    '                    Name = .GetAttribute("name")
+    '                    Image = .GetAttribute("image")
+    '                    Style = .GetAttribute("style")
 
-                        Layer = .GetAttribute("layer")
+    '                    Layer = .GetAttribute("layer")
 
-                        Method = .GetAttribute("method")
-                        Parameters = .GetAttribute("parameters")
+    '                    Method = .GetAttribute("method")
+    '                    Parameters = .GetAttribute("parameters")
 
-                    Case "gallery"
-                        Subtype = .GetAttribute("subtype")
+    '                Case "gallery"
+    '                    Subtype = .GetAttribute("subtype")
 
-                        Dim oCaptionNode As XmlElement = pGetCaptionNode(Tool)
-                        Caption = oCaptionNode.GetAttribute("caption")
-                        ToolTip = oCaptionNode.GetAttribute("tooltip")
+    '                    Dim oCaptionNode As XmlElement = pGetCaptionNode(Tool)
+    '                    Caption = oCaptionNode.GetAttribute("caption")
+    '                    ToolTip = oCaptionNode.GetAttribute("tooltip")
 
-                        Name = .GetAttribute("name")
-                        Image = .GetAttribute("image")
-                        Style = .GetAttribute("style")
+    '                    Name = .GetAttribute("name")
+    '                    Image = .GetAttribute("image")
+    '                    Style = .GetAttribute("style")
 
-                        Layer = .GetAttribute("layer")
-                        Category = .GetAttribute("category")
-                        Cliparts = .GetAttribute("cliparts")
+    '                    Layer = .GetAttribute("layer")
+    '                    Category = .GetAttribute("category")
+    '                    Cliparts = .GetAttribute("cliparts")
 
-                        Gallery = .GetAttribute("gallery")
+    '                    Gallery = .GetAttribute("gallery")
 
-                        Method = .GetAttribute("method")
-                        Parameters = .GetAttribute("parameters")
-                    Case "clipart", "sign"
-                        Dim oCaptionNode As XmlElement = pGetCaptionNode(Tool)
-                        Caption = oCaptionNode.GetAttribute("caption")
-                        ToolTip = oCaptionNode.GetAttribute("tooltip")
+    '                    Method = .GetAttribute("method")
+    '                    Parameters = .GetAttribute("parameters")
+    '                Case "clipart", "sign"
+    '                    Dim oCaptionNode As XmlElement = pGetCaptionNode(Tool)
+    '                    Caption = oCaptionNode.GetAttribute("caption")
+    '                    ToolTip = oCaptionNode.GetAttribute("tooltip")
 
-                        Name = .GetAttribute("name")
-                        Image = .GetAttribute("image")
-                        Style = .GetAttribute("style")
+    '                    Name = .GetAttribute("name")
+    '                    Image = .GetAttribute("image")
+    '                    Style = .GetAttribute("style")
 
-                        Layer = .GetAttribute("layer")
+    '                    Layer = .GetAttribute("layer")
 
-                        Filename = .GetAttribute("filename")
+    '                    Filename = .GetAttribute("filename")
 
-                        Method = .GetAttribute("method")
-                        Parameters = .GetAttribute("parameters")
-                    Case "text"
-                        Dim oCaptionNode As XmlElement = pGetCaptionNode(Tool)
-                        Caption = oCaptionNode.GetAttribute("caption")
-                        ToolTip = oCaptionNode.GetAttribute("tooltip")
+    '                    Method = .GetAttribute("method")
+    '                    Parameters = .GetAttribute("parameters")
+    '                Case "text"
+    '                    Dim oCaptionNode As XmlElement = pGetCaptionNode(Tool)
+    '                    Caption = oCaptionNode.GetAttribute("caption")
+    '                    ToolTip = oCaptionNode.GetAttribute("tooltip")
 
-                        Name = .GetAttribute("name")
-                        Image = .GetAttribute("image")
-                        Style = .GetAttribute("style")
+    '                    Name = .GetAttribute("name")
+    '                    Image = .GetAttribute("image")
+    '                    Style = .GetAttribute("style")
 
-                        Layer = .GetAttribute("layer")
+    '                    Layer = .GetAttribute("layer")
 
-                        Text = .GetAttribute("text")
+    '                    Text = .GetAttribute("text")
 
-                        Method = .GetAttribute("method")
-                        Parameters = .GetAttribute("parameters")
-                    Case Else
-                        Dim oCaptionNode As XmlElement = pGetCaptionNode(Tool)
-                        Caption = oCaptionNode.GetAttribute("caption")
-                        ToolTip = oCaptionNode.GetAttribute("tooltip")
+    '                    Method = .GetAttribute("method")
+    '                    Parameters = .GetAttribute("parameters")
+    '                Case Else
+    '                    Dim oCaptionNode As XmlElement = pGetCaptionNode(Tool)
+    '                    Caption = oCaptionNode.GetAttribute("caption")
+    '                    ToolTip = oCaptionNode.GetAttribute("tooltip")
 
-                        Name = .GetAttribute("name")
-                        Image = .GetAttribute("image")
-                        Style = .GetAttribute("style")
+    '                    Name = .GetAttribute("name")
+    '                    Image = .GetAttribute("image")
+    '                    Style = .GetAttribute("style")
 
-                        Layer = .GetAttribute("layer")
+    '                    Layer = .GetAttribute("layer")
 
-                        Method = .GetAttribute("method")
-                        Parameters = .GetAttribute("parameters")
-                End Select
+    '                    Method = .GetAttribute("method")
+    '                    Parameters = .GetAttribute("parameters")
+    '            End Select
 
-                Dim sDesign As String = modXML.GetAttributeValue(Tool, "design", "")
-                If sDesign = "" Then
-                    AvaiableInPlan = True
-                    AvaiableInProfile = True
-                Else
-                    AvaiableInPlan = sDesign.Contains("plan")
-                    AvaiableInProfile = sDesign.Contains("profile")
-                End If
-            End With
-        End Sub
-    End Class
+    '            Dim sDesign As String = modXML.GetAttributeValue(Tool, "design", "")
+    '            If sDesign = "" Then
+    '                AvaiableInPlan = True
+    '                AvaiableInProfile = True
+    '            Else
+    '                AvaiableInPlan = sDesign.Contains("plan")
+    '                AvaiableInProfile = sDesign.Contains("profile")
+    '            End If
+    '        End With
+    '    End Sub
+    'End Class
 
-    Private Class cConvertToToolsBag
-        Public Type As String
-        Public Name As String
-        Public Caption As String
-        Public Image As String
-        Public ToolTip As String
-        Public Layer As cLayers.LayerTypeEnum
+    'Private Class cConvertToToolsBag
+    '    Public Type As String
+    '    Public Name As String
+    '    Public Caption As String
+    '    Public Image As String
+    '    Public ToolTip As String
+    '    Public Layer As cLayers.LayerTypeEnum
 
-        Public Method As String
-        Public Parameters As String
+    '    Public Method As String
+    '    Public Parameters As String
 
-        Public Function GetInvokeParameters(ByVal ParamArray Values As Object()) As Object()
-            Dim oParameters As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
-            Dim oList As List(Of Object) = New List(Of Object)
-            For iValueIndex As Integer = 0 To Values.Count Step 2
-                Try
-                    Dim sKey As String = Values(iValueIndex)
-                    Dim oValue As Object = Values(iValueIndex + 1)
-                    Call oParameters.Add(sKey, oValue)
-                Catch
-                End Try
-            Next
-            Dim sParameters() As String = Parameters.Split(",")
-            For Each sParameter As String In sParameters
-                sParameter = sParameter.Trim
-                Try
-                    Call oList.Add(oParameters(sParameter))
-                Catch
-                    Call oList.Add(Nothing)
-                End Try
-            Next
-            Return oList.ToArray
-        End Function
+    '    Public Function GetInvokeParameters(ByVal ParamArray Values As Object()) As Object()
+    '        Dim oParameters As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
+    '        Dim oList As List(Of Object) = New List(Of Object)
+    '        For iValueIndex As Integer = 0 To Values.Count Step 2
+    '            Try
+    '                Dim sKey As String = Values(iValueIndex)
+    '                Dim oValue As Object = Values(iValueIndex + 1)
+    '                Call oParameters.Add(sKey, oValue)
+    '            Catch
+    '            End Try
+    '        Next
+    '        Dim sParameters() As String = Parameters.Split(",")
+    '        For Each sParameter As String In sParameters
+    '            sParameter = sParameter.Trim
+    '            Try
+    '                Call oList.Add(oParameters(sParameter))
+    '            Catch
+    '                Call oList.Add(Nothing)
+    '            End Try
+    '        Next
+    '        Return oList.ToArray
+    '    End Function
 
-        Public Sub New(ByVal Tool As XmlElement)
-            With Tool
-                Type = .GetAttribute("type")
-                Select Case Type
-                    Case "separator", "-"
-                        'lasciato per compatilità...o uso futuro
-                    Case "clipartgallery", "signgallery", "gallery"
-                        'lasciato per compatilità...NO USO FUTURO
-                    Case Else
-                        Name = .GetAttribute("name")
-                        Caption = .GetAttribute("caption")
-                        Image = .GetAttribute("image")
-                        ToolTip = .GetAttribute("tooltip")
-                        Layer = .GetAttribute("layer")
-                        Method = .GetAttribute("method")
-                        Parameters = .GetAttribute("parameters")
-                End Select
-            End With
-        End Sub
-    End Class
+    '    Public Sub New(ByVal Tool As XmlElement)
+    '        With Tool
+    '            Type = .GetAttribute("type")
+    '            Select Case Type
+    '                Case "separator", "-"
+    '                    'lasciato per compatilità...o uso futuro
+    '                Case "clipartgallery", "signgallery", "gallery"
+    '                    'lasciato per compatilità...NO USO FUTURO
+    '                Case Else
+    '                    Name = .GetAttribute("name")
+    '                    Caption = .GetAttribute("caption")
+    '                    Image = .GetAttribute("image")
+    '                    ToolTip = .GetAttribute("tooltip")
+    '                    Layer = .GetAttribute("layer")
+    '                    Method = .GetAttribute("method")
+    '                    Parameters = .GetAttribute("parameters")
+    '            End Select
+    '        End With
+    '    End Sub
+    'End Class
 
     Private Enum PaintInfoIndexEnum
         Plan = 0
@@ -652,7 +652,8 @@ Public Class frmMain
             If Not IsNothing(oDockText) Then oDockText.SetSurvey(oSurvey)
             If Not IsNothing(oDockAV) Then oDockAV.SetSurvey(oSurvey)
             If Not IsNothing(oDockIV) Then oDockIV.SetSurvey(oSurvey)
-            If Not IsNothing(oDockLS) Then oDockLS.SetSurvey(oSurvey)
+            If Not IsNothing(oDockLS) Then Call oDockLS.SetSurvey(oSurvey)
+            If Not IsNothing(oDockTexts) Then Call oDockTexts.SetSurvey(oSurvey)
             If Not IsNothing(frmU) Then frmU.SetSurvey(oSurvey, pGetCurrentTools)
 
             Call pObjectPropertyInitialize()
@@ -865,6 +866,10 @@ Public Class frmMain
         End If
     End Sub
 
+    Private Sub pLogAdd(Exception As Exception)
+        Call pConsoleAdd(cSurvey.cSurvey.LogEntryType.Error, Exception.Message & vbCrLf & "in" & Exception.StackTrace)
+    End Sub
+
     Private Sub pLogAdd(ByVal Type As cSurvey.cSurvey.LogEntryType, ByVal Text As String, Optional ByVal ShowInConsole As Boolean = False, Optional ByVal ConsoleText As String = "")
         If ShowInConsole AndAlso (Text <> "" OrElse ConsoleText <> "") Then
             If ConsoleText = "" Then ConsoleText = Text
@@ -1019,6 +1024,7 @@ Public Class frmMain
                         If Not IsNothing(oDockAV) Then oDockAV.SetSurvey(oSurvey)
                         If Not IsNothing(oDockIV) Then oDockIV.SetSurvey(oSurvey)
                         If Not IsNothing(oDockLS) Then oDockLS.SetSurvey(oSurvey)
+                        If Not IsNothing(oDockTexts) Then oDockTexts.SetSurvey(oSurvey)
                         If Not IsNothing(frmU) Then frmU.SetSurvey(oSurvey, pGetCurrentTools)
 
                         Call pObjectPropertyInitialize()
@@ -1357,7 +1363,7 @@ Public Class frmMain
                 Call pSurveySave(Path.Combine(Path.GetDirectoryName(sFilename), Path.GetFileNameWithoutExtension(sFilename) & "_backup" & Path.GetExtension(sFilename)), True, cSurvey.cSurvey.SaveOptionsEnum.Silent Or cSurvey.cSurvey.SaveOptionsEnum.NoHistory)
             End If
         Catch ex As Exception
-
+            Call pLogAdd(ex)
         End Try
     End Sub
 
@@ -1476,7 +1482,7 @@ Public Class frmMain
             bHistoryBusy = False
         Catch ex As Exception
             bHistoryBusy = False
-            Call pLogAdd(cSurvey.cSurvey.LogEntryType.Error, "saving history error: " & ex.Message)
+            Call pLogAdd(ex)
 
             Dim oArgs(2) As Object
             oArgs(0) = "error"
@@ -1688,7 +1694,7 @@ Public Class frmMain
                                         End Function
         colTrigpointsCoordinate.ImageGetter = Function(Value As Object)
                                                   Dim oTrigpoint As cTrigPoint = DirectCast(Value, cTrigPoint)
-                                                  Return If(oTrigpoint.Coordinate.IsEmpty, Nothing, If(oTrigpoint.Coordinate.IsInError, My.Resources._error, If(oTrigpoint.Coordinate.Fix = cCoordinate.FixEnum.Default, My.Resources.map_world, My.Resources.map)))
+                                                  Return If(oTrigpoint.Coordinate.IsEmpty, Nothing, If(oTrigpoint.Coordinate.IsInError, My.Resources.error2, If(oTrigpoint.Coordinate.Fix = cCoordinate.FixEnum.Default, My.Resources.map_world, My.Resources.map)))
                                               End Function
         colTrigpointsEntrance.ImageGetter = Function(Value As Object)
                                                 Return If(DirectCast(Value, cTrigPoint).Entrance = cTrigPoint.EntranceTypeEnum.None, Nothing, My.Resources.weather_sun)
@@ -1748,7 +1754,7 @@ Public Class frmMain
                                                          End If
                                                      End Function
         colTrigpointsCustomConnections.ImageGetter = Function(Value As Object)
-                                                         If DirectCast(Value, cTrigPoint).Connections.Count > 1 Then
+                                                         If DirectCast(Value, cTrigPoint).Connections.Count > 0 Then
                                                              If DirectCast(Value, cTrigPoint).Connections.IsCustomized Then
                                                                  Return My.Resources.connections_custom
                                                              Else
@@ -1978,7 +1984,7 @@ Public Class frmMain
                 End If
             End If
         Catch ex As Exception
-            MsgBox(ex.Message)
+            Call pLogAdd(ex)
             bDisableSelectItemEvent = False
             bDisableSegmentsChangeEvent = False
         End Try
@@ -2531,7 +2537,11 @@ Public Class frmMain
                 End If
                 .ErrorText = sErrorText
                 If oSegment.IsEquate Then
-                    .HeaderCell.Value = "="
+                    If oSegment.IsSelfDefined Then
+                        .HeaderCell.Value = "≡"
+                    Else
+                        .HeaderCell.Value = "="
+                    End If
                 Else
                     .HeaderCell.Value = ""
                 End If
@@ -2594,7 +2604,7 @@ Public Class frmMain
         Call oMousePointer.Push(Cursors.WaitCursor)
         Dim sHash As String = ""
         Try
-            Using oFile As Storage.cFile = New Storage.cFile(Storage.cFile.FileFormatEnum.CSX, "", Storage.cFile.FileOptionsEnum.DontSaveBinary)
+            Using oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, "", cFile.FileOptionsEnum.DontSaveBinary)
                 Call oSurvey.SaveTo(oFile, cSurvey.cSurvey.SaveOptionsEnum.Silent)
                 Using oMs As System.IO.MemoryStream = New System.IO.MemoryStream
                     Call oFile.Document.Save(oMs)
@@ -2602,7 +2612,7 @@ Public Class frmMain
                 End Using
             End Using
         Catch ex As Exception
-            Call pLogAdd(cSurvey.cSurvey.LogEntryType.Error, "hash computing error: " & ex.Message)
+            Call pLogAdd(ex)
         End Try
         Call oMousePointer.Pop()
         Return sHash
@@ -2920,21 +2930,20 @@ Public Class frmMain
 
     Private WithEvents oDockLS As frmLinkedSurveys
 
+    Private WithEvents oDockTexts As frmTexts
+
     Private Sub frmMain_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Call pDockStateload()
         Call pToolbarStateLoad()
         Call pWorkspacesMenuAndToolbarUpdate()
 
-        'Dim bDoNotHash As Boolean
         If oCommandLine.Count = 1 Then
-            If oCommandLine(0).Key <> "" And oCommandLine(0).Value = "" Then
+            If oCommandLine(0).Key <> "" AndAlso oCommandLine(0).Value = "" Then
                 Call pSurveyLoad(oCommandLine(0).Key, False)
-                'bDoNotHash = True
             Else
                 Dim sFilename As String = oCommandLine.GetValue("filename", "")
                 If sFilename <> "" Then
                     Call pSurveyLoad(sFilename, False)
-                    'bDoNotHash = True
                 Else
                     Call pSurveyNew()
                 End If
@@ -3028,6 +3037,8 @@ Public Class frmMain
             oDockIV.DockState = DockState.Unknown
 
             oDockLS.DockState = DockState.Unknown
+
+            oDockTexts.DockState = DockState.Unknown
         Else
             'dock restore...
             Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
@@ -3046,6 +3057,7 @@ Public Class frmMain
                             oDockAV.DockPanel = Nothing
                             oDockIV.DockPanel = Nothing
                             oDockLS.DockPanel = Nothing
+                            oDockTexts.DockPanel = Nothing
                             oMS.Position = 0
                             Call oDockPanel.LoadFromXml(oMS, New WeifenLuo.WinFormsUI.Docking.DeserializeDockContent(AddressOf GetContentFromPersistString))
                         End Using
@@ -3068,6 +3080,8 @@ Public Class frmMain
         If oDockIV.DockState = DockState.Unknown Then oDockIV.DockPanel = oDockPanel : oDockIV.Show(oDockPanel, WeifenLuo.WinFormsUI.Docking.DockState.DockRight) : oDockIV.Hide()
 
         If oDockLS.DockState = DockState.Unknown Then oDockLS.DockPanel = oDockPanel : oDockLS.Show(oDockPanel, WeifenLuo.WinFormsUI.Docking.DockState.DockRight) : oDockLS.Hide()
+
+        If oDockTexts.DockState = DockState.Unknown Then oDockTexts.DockPanel = oDockPanel : oDockTexts.Show(oDockPanel, WeifenLuo.WinFormsUI.Docking.DockState.DockRight) : oDockTexts.Hide()
     End Sub
 
     Private Sub pJumplistCreate()
@@ -3089,7 +3103,7 @@ Public Class frmMain
 
             Call oJL.Refresh()
         Catch ex As Exception
-            Debug.Print(ex.Message)
+            Call pLogAdd(ex)
         End Try
     End Sub
 
@@ -3305,6 +3319,8 @@ Public Class frmMain
             bLinkedSurveysSelectOnAdd = oReg.GetValue("linkedsurveys.selectonadd", "0")
             bLinkedSurveysShowInCaveInfo = oReg.GetValue("linkedsurveys.showincaveinfo", "0")
             bLinkedSurveysRecursiveLoad = oReg.GetValue("linkedsurveys.recursiveload", "0")
+            bLinkedSurveysRefreshOnLoadprioritizechildren = oReg.GetValue("linkedsurveys.recursiveload.prioritizechildren", "0")
+            bLinkedSurveysRefreshOnLoad = oReg.GetValue("linkedsurveys.refreshonload", "0")
 
             'bugfix...to be removed in future...
             Dim sCurrentVersion As String = "" & oReg.GetValue("currentversion", "")
@@ -3363,6 +3379,8 @@ Public Class frmMain
                 Return oDockIV
             Case "linkedsurveys"
                 Return oDockLS
+            Case "texts"
+                Return oDockTexts
         End Select
     End Function
 
@@ -3455,6 +3473,7 @@ Public Class frmMain
                 sNewVersion = oXML.Item("csurvey").GetAttribute("version")
                 sCurrentVersion = modMain.GetPackageVersion
             Catch ex As Exception
+                Call pLogAdd(ex)
             End Try
 
             Call oMousePointer.Pop()
@@ -3468,8 +3487,8 @@ Public Class frmMain
             End If
             Return True
         Catch ex As Exception
-            'per ora non notifico nulla in caso di malfunzionamento degli aggiornamenti
-            ' MsgBox(ex.Message)
+            'for now no warning in this case
+            Call pLogAdd(ex)
         End Try
         Return False
     End Function
@@ -3705,6 +3724,7 @@ Public Class frmMain
             End If
         Else
             If Not pToolsEnd() Then
+                Call pObjectPropertyLoad()
                 Call pObjectPropShow(True)
                 Call tabObjectProp.SelectTab(tabObjectPropMain)
                 If pGetCurrentDesignTools.IsInPointEdit AndAlso Not IsNothing(pGetCurrentDesignTools.CurrentItemPoint) Then
@@ -3721,9 +3741,9 @@ Public Class frmMain
         Dim bShift As Boolean = My.Computer.Keyboard.ShiftKeyDown Or btnMultiSelMode1.Checked Or btnMultiSelMode2.Checked
         Dim bAlt As Boolean = My.Computer.Keyboard.AltKeyDown Or btnAltMode.Checked Or btnMultiSelMode2.Checked
 
-        iSnapToPoint = If(System.Windows.Input.Keyboard.IsKeyDown(Windows.Input.Key.A) Or btnSnapToPoint0.Checked, 1, iSnapToPoint)
-        If iSnapToPoint = 0 Then iSnapToPoint = If(System.Windows.Input.Keyboard.IsKeyDown(Windows.Input.Key.S) Or btnSnapToPoint1.Checked, 2, iSnapToPoint)
-        If iSnapToPoint = 0 Then iSnapToPoint = If(System.Windows.Input.Keyboard.IsKeyDown(Windows.Input.Key.D) Or btnSnapToPoint2.Checked, 3, iSnapToPoint)
+        iSnapToPoint = If(System.Windows.Input.Keyboard.IsKeyDown(Windows.Input.Key.A) OrElse btnSnapToPoint0.Checked, 1, iSnapToPoint)
+        If iSnapToPoint = 0 Then iSnapToPoint = If(System.Windows.Input.Keyboard.IsKeyDown(Windows.Input.Key.S) OrElse btnSnapToPoint1.Checked, 2, iSnapToPoint)
+        If iSnapToPoint = 0 Then iSnapToPoint = If(System.Windows.Input.Keyboard.IsKeyDown(Windows.Input.Key.D) OrElse btnSnapToPoint2.Checked, 3, iSnapToPoint)
         Debug.Print("snaptopoint:" & iSnapToPoint)
 
         Call pMapSetCursor(bCtrl, bShift, bAlt, e.Button)
@@ -4197,39 +4217,6 @@ Public Class frmMain
             Return False
         End Try
     End Function
-
-    Friend Class cTemplateEntry
-        Private oFile As FileInfo
-        Private sName As String
-        Private bDefault As Boolean
-
-        Public ReadOnly Property [Default] As Boolean
-            Get
-                Return bDefault
-            End Get
-        End Property
-
-        Public ReadOnly Property Name As String
-            Get
-                Return sName
-            End Get
-        End Property
-
-        Public ReadOnly Property File As FileInfo
-            Get
-                Return oFile
-            End Get
-        End Property
-
-        Public Sub New(File As FileInfo)
-            oFile = File
-            sName = IO.Path.GetFileNameWithoutExtension(File.Name)
-            If sName.Contains(".default") Then
-                bDefault = True
-                sName = sName.Replace(".default", "")
-            End If
-        End Sub
-    End Class
 
     Private Function pTemplatesEnumerate() As Boolean
         Call oMousePointer.Push(Cursors.WaitCursor)
@@ -4909,6 +4896,7 @@ Public Class frmMain
         colLayersCaveBranchColor.AspectGetter = Function(Value As Object)
                                                     Return " "
                                                 End Function
+        colLayersHiddenInDesign.HeaderImageKey = "edit"
         colLayersHiddenInDesign.ImageIndex = 5
         colLayersHiddenInDesign.AspectGetter = Function(Value As Object)
                                                    If TypeOf Value Is cLayer Then
@@ -4917,6 +4905,7 @@ Public Class frmMain
                                                        Return Not DirectCast(Value, cItem).HiddenInDesign
                                                    End If
                                                End Function
+        colLayersHiddenInPreview.HeaderImageKey = "print"
         colLayersHiddenInPreview.ImageIndex = 4
         colLayersHiddenInPreview.AspectGetter = Function(Value As Object)
                                                     If TypeOf Value Is cLayer Then
@@ -4963,7 +4952,12 @@ Public Class frmMain
                                         If TypeOf Value Is cLayer Then
                                             Return "layer"
                                         Else
-                                            Return "generic"
+                                            Dim oItem As cItem = DirectCast(Value, cItem)
+                                            If oItem.HavePaintProblem Then
+                                                Return "generic_error"
+                                            Else
+                                                Return "generic"
+                                            End If
                                         End If
                                     End Function
         colLayersName.AspectGetter = Function(Value As Object)
@@ -5300,6 +5294,7 @@ Public Class frmMain
                             txtPropProfileSplayNegInclinationRangeMin.Value = oItemSplayBorder.SplayBorderNegInclinationRange.Width
                             txtPropProfileSplayNegInclinationRangeMax.Value = oItemSplayBorder.SplayBorderNegInclinationRange.Height
                         Catch ex As Exception
+                            Call pLogAdd(ex)
                         End Try
                         Call pObjectPropertyProfileDrawProjectionSchema()
                         pnlPropProfileSplayBorder.Visible = True
@@ -5577,18 +5572,16 @@ Public Class frmMain
     End Sub
 
     Private Sub pObjectPropertyDelayedLoad()
-        tbl3DProp.Enabled = False
-        tblDesignProp.Enabled = False
-        tblObjectProp.Enabled = False
+        If InvokeRequired Then
+            Call Me.BeginInvoke(New MethodInvoker(AddressOf pObjectPropertyDelayedLoad))
+        Else
+            tbl3DProp.Enabled = False
+            tblDesignProp.Enabled = False
+            tblObjectProp.Enabled = False
 
-        Call oObjectPropertyTimer.Stop()
-        Call oObjectPropertyTimer.Start()
-        'If Not oObjectPropertyThread Is Nothing Then
-        '    oObjectPropertyThread.Change(Threading.Timeout.Infinite, Threading.Timeout.Infinite)
-        '    Call oObjectPropertyThread.Dispose()
-        '    oObjectPropertyThread = Nothing
-        'End If
-        'oObjectPropertyThread = New Threading.Timer(AddressOf pObjectPropertyDelayedLoad_Callback, Nothing, 500, Threading.Timeout.Infinite)
+            Call oObjectPropertyTimer.Stop()
+            Call oObjectPropertyTimer.Start()
+        End If
     End Sub
 
     Private Sub oObjectPropertyTimer_Tick(sender As Object, e As EventArgs) Handles oObjectPropertyTimer.Tick
@@ -5666,141 +5659,122 @@ Public Class frmMain
     End Sub
 
     Private Sub pObjectDrawSplayProjectionSchemaForProfile(Picture As PictureBox, Bearing As Decimal, ProjectionAngle As Integer, Variation As Integer, FullRange As Boolean)
+        Dim iProjectionAngle As Integer = Bearing + ProjectionAngle
         Dim oRect As Rectangle = Picture.DisplayRectangle
         Dim oImage As Bitmap = New Bitmap(oRect.Width, oRect.Height)
-        Dim oGr As Graphics = Graphics.FromImage(oImage)
-        oGr.CompositingQuality = CompositingQuality.HighQuality
-        oGr.SmoothingMode = SmoothingMode.AntiAlias
-        Call oGr.Clear(Color.White)
+        Using oGr As Graphics = Graphics.FromImage(oImage)
+            oGr.CompositingQuality = CompositingQuality.HighQuality
+            oGr.SmoothingMode = SmoothingMode.AntiAlias
+            Call oGr.Clear(Color.White)
+            iProjectionAngle += 90
+            Call oRect.Inflate(-2, -2)
+            Dim oRect1 As Rectangle = New Rectangle(oRect.Left - oRect.Width \ 2, oRect.Top, oRect.Width, oRect.Height)
+            Dim oRect2 As Rectangle = New Rectangle(oRect.Left + oRect.Width \ 2, oRect.Top, oRect.Width, oRect.Height)
+            Using oMatrix As Matrix = New Matrix
+                Call oMatrix.RotateAt(Bearing + 90, modPaint.GetCenterPoint(oRect))
+                oGr.Transform = oMatrix
+                Using oSegmentPen As Pen = New Pen(Color.FromArgb(220, Color.DimGray), 1)
+                    Using oSegmentBrush As Brush = New SolidBrush(Color.FromArgb(180, Color.DimGray))
+                        Call oGr.DrawPie(oSegmentPen, oRect1, -2, 4)
+                        Call oGr.FillPie(oSegmentBrush, oRect1, -2, 4)
+                        Call oGr.DrawPie(oSegmentPen, oRect2, 180 - 2, 4)
+                        Call oGr.FillPie(oSegmentBrush, oRect2, 180 - 2, 4)
+                    End Using
+                End Using
+            End Using
+            Using oMatrix As Matrix = New Matrix
+                Call oMatrix.RotateAt(iProjectionAngle, modPaint.GetCenterPoint(oRect))
+                oGr.Transform = oMatrix
+                Using oOtherPen As Pen = New Pen(Color.FromArgb(220, Color.Red), 1)
+                    Using oOtherBrush As Brush = New SolidBrush(Color.FromArgb(180, Color.Red))
+                        Using oOtherLightBrush As Brush = New SolidBrush(Color.FromArgb(80, Color.Red))
+                            If Variation > 0 Then
+                                Call oGr.FillPie(oOtherLightBrush, oRect1, 0 - Variation, Variation * 2)
+                            End If
+                            Call oGr.DrawPie(oOtherPen, oRect1, 0 - 2, 4)
+                            Call oGr.FillPie(oOtherBrush, oRect1, 0 - 2, 4)
 
-        Dim iProjectionAngle As Integer = Bearing + ProjectionAngle
-        iProjectionAngle += 90
+                            Call oGr.FillPie(oOtherBrush, oRect, 88, 4)
 
-        Call oRect.Inflate(-2, -2)
-        Dim oRect1 As Rectangle = New Rectangle(oRect.Left - oRect.Width \ 2, oRect.Top, oRect.Width, oRect.Height)
-        Dim oRect2 As Rectangle = New Rectangle(oRect.Left + oRect.Width \ 2, oRect.Top, oRect.Width, oRect.Height)
-
-        Dim oMatrix As Matrix
-        oMatrix = New Matrix
-        Call oMatrix.RotateAt(Bearing + 90, modPaint.GetCenterPoint(oRect))
-        oGr.Transform = oMatrix
-
-        Dim oSegmentPen As Pen = New Pen(Color.FromArgb(220, Color.DimGray), 1)
-        Dim oSegmentBrush As Brush = New SolidBrush(Color.FromArgb(180, Color.DimGray))
-        Call oGr.DrawPie(oSegmentPen, oRect1, -2, 4)
-        Call oGr.FillPie(oSegmentBrush, oRect1, -2, 4)
-        Call oGr.DrawPie(oSegmentPen, oRect2, 180 - 2, 4)
-        Call oGr.FillPie(oSegmentBrush, oRect2, 180 - 2, 4)
-        Call oSegmentPen.Dispose()
-        Call oSegmentBrush.Dispose()
-
-        Call oMatrix.Dispose()
-        oMatrix = New Matrix
-        Call oMatrix.RotateAt(iProjectionAngle, modPaint.GetCenterPoint(oRect))
-        oGr.Transform = oMatrix
-
-        Dim oOtherPen As Pen = New Pen(Color.FromArgb(220, Color.Red), 1)
-        Dim oOtherBrush As Brush = New SolidBrush(Color.FromArgb(180, Color.Red))
-        Dim oOtherLightBrush As Brush = New SolidBrush(Color.FromArgb(80, Color.Red))
-        If Variation > 0 Then
-            Call oGr.FillPie(oOtherLightBrush, oRect1, 0 - Variation, Variation * 2)
-        End If
-        Call oGr.DrawPie(oOtherPen, oRect1, 0 - 2, 4)
-        Call oGr.FillPie(oOtherBrush, oRect1, 0 - 2, 4)
-
-        Call oGr.FillPie(oOtherBrush, oRect, 88, 4)
-
-        If Variation > 0 Then
-            Call oGr.FillPie(oOtherLightBrush, oRect2, 180 - Variation, Variation * 2)
-        End If
-        Call oGr.DrawPie(oOtherPen, oRect2, 180 - 2, 4)
-        Call oGr.FillPie(oOtherBrush, oRect2, 180 - 2, 4)
-
-        Call oOtherPen.Dispose()
-        Call oOtherBrush.Dispose()
-        Call oOtherLightBrush.Dispose()
-
-        Picture.Image = oImage
-
-        Call oGr.Dispose()
-        Call oMatrix.Dispose()
+                            If Variation > 0 Then
+                                Call oGr.FillPie(oOtherLightBrush, oRect2, 180 - Variation, Variation * 2)
+                            End If
+                            Call oGr.DrawPie(oOtherPen, oRect2, 180 - 2, 4)
+                            Call oGr.FillPie(oOtherBrush, oRect2, 180 - 2, 4)
+                        End Using
+                    End Using
+                End Using
+                Picture.Image = oImage
+            End Using
+        End Using
     End Sub
 
     Private Sub pObjectDrawSplayProjectionSchemaForCrossSection(Picture As PictureBox, Bearing As Decimal, ProjectionAngle As Integer, Variation As Integer, VerticalProjectionAngle As Integer, FullRange As Boolean)
+        Dim iProjectionAngle As Integer = Bearing + ProjectionAngle
         Dim oRect As Rectangle = Picture.DisplayRectangle
         Dim oImage As Bitmap = New Bitmap(oRect.Width, oRect.Height)
-        Dim oGr As Graphics = Graphics.FromImage(oImage)
-        oGr.CompositingQuality = CompositingQuality.HighQuality
-        oGr.SmoothingMode = SmoothingMode.AntiAlias
-        Call oGr.Clear(Color.White)
-        Call oRect.Inflate(-2, -2)
-        Dim oRect1 As Rectangle = New Rectangle(oRect.Left - oRect.Width \ 2, oRect.Top, oRect.Width, oRect.Height)
-        Dim oRect2 As Rectangle = New Rectangle(oRect.Left + oRect.Width \ 2, oRect.Top, oRect.Width, oRect.Height)
+        Using oGr As Graphics = Graphics.FromImage(oImage)
+            oGr.CompositingQuality = CompositingQuality.HighQuality
+            oGr.SmoothingMode = SmoothingMode.AntiAlias
+            Call oGr.Clear(Color.White)
+            Call oRect.Inflate(-2, -2)
+            Dim oRect1 As Rectangle = New Rectangle(oRect.Left - oRect.Width \ 2, oRect.Top, oRect.Width, oRect.Height)
+            Dim oRect2 As Rectangle = New Rectangle(oRect.Left + oRect.Width \ 2, oRect.Top, oRect.Width, oRect.Height)
 
-        Dim iProjectionAngle As Integer = Bearing + ProjectionAngle
+            Using oMatrix As Matrix = New Matrix
+                Call oMatrix.RotateAt(Bearing + 90, modPaint.GetCenterPoint(oRect))
+                oGr.Transform = oMatrix
+                Using oSegmentPen As Pen = New Pen(Color.FromArgb(220, Color.DimGray), 1)
+                    Using oSegmentBrush As Brush = New SolidBrush(Color.FromArgb(180, Color.DimGray))
+                        Call oGr.DrawPie(oSegmentPen, oRect1, -2, 4)
+                        Call oGr.FillPie(oSegmentBrush, oRect1, -2, 4)
+                        Call oGr.DrawPie(oSegmentPen, oRect2, 180 - 2, 4)
+                        Call oGr.FillPie(oSegmentBrush, oRect2, 180 - 2, 4)
+                    End Using
+                End Using
+            End Using
+            Using oMatrix As Matrix = New Matrix
+                Call oMatrix.RotateAt(iProjectionAngle, modPaint.GetCenterPoint(oRect))
+                oGr.Transform = oMatrix
+                'Dim oOtherPen As Pen = New Pen(Color.FromArgb(220, Color.DimGray), 1)
+                'Dim oOtherBrush As Brush = New SolidBrush(Color.FromArgb(180, Color.Red))
+                'Dim oOtherLightBrush As Brush = New SolidBrush(Color.FromArgb(80, Color.Red))
+                'If Variation > 0 Then
+                '    Call oGr.FillPie(oOtherLightBrush, oRect, iProjectionAngle - 90 - Variation, Variation * 2)
+                '    If FullRange Then
+                '        Call oGr.FillPie(oOtherLightBrush, oRect, iProjectionAngle + 90 - Variation, Variation * 2)
+                '    End If
+                'End If
+                'Call oGr.DrawPie(oOtherPen, oRect, iProjectionAngle - 90 - 2, 4)
+                'Call oGr.FillPie(oOtherBrush, oRect, iProjectionAngle - 90 - 2, 4)
+                'If FullRange Then
+                '    Call oGr.FillPie(oOtherBrush, oRect, iProjectionAngle + 90 - 2, 4)
+                'End If
+                'Call oOtherPen.Dispose()
+                'Call oOtherBrush.Dispose()
+                'Call oOtherLightBrush.Dispose()
+                Using oOtherPen As Pen = New Pen(Color.FromArgb(220, Color.Red), 1)
+                    Using oOtherBrush As Brush = New SolidBrush(Color.FromArgb(180, Color.Red))
+                        Using oOtherLightBrush As Brush = New SolidBrush(Color.FromArgb(80, Color.Red))
+                            If Variation > 0 Then
+                                Call oGr.FillPie(oOtherLightBrush, oRect, 180 - Variation, Variation * 2)
+                            End If
+                            Call oGr.DrawPie(oOtherPen, oRect1, -2, 4)
+                            Call oGr.FillPie(oOtherBrush, oRect1, -2, 4)
 
-        Dim oMatrix As Matrix
-        oMatrix = New Matrix
-        Call oMatrix.RotateAt(Bearing + 90, modPaint.GetCenterPoint(oRect))
-        oGr.Transform = oMatrix
+                            Call oGr.FillPie(oOtherBrush, oRect, 88, 4)
 
-        Dim oSegmentPen As Pen = New Pen(Color.FromArgb(220, Color.DimGray), 1)
-        Dim oSegmentBrush As Brush = New SolidBrush(Color.FromArgb(180, Color.DimGray))
-        Call oGr.DrawPie(oSegmentPen, oRect1, -2, 4)
-        Call oGr.FillPie(oSegmentBrush, oRect1, -2, 4)
-        Call oGr.DrawPie(oSegmentPen, oRect2, 180 - 2, 4)
-        Call oGr.FillPie(oSegmentBrush, oRect2, 180 - 2, 4)
-        Call oSegmentPen.Dispose()
-        Call oSegmentBrush.Dispose()
-
-        Call oMatrix.Dispose()
-        oMatrix = New Matrix
-        Call oMatrix.RotateAt(iProjectionAngle, modPaint.GetCenterPoint(oRect))
-        oGr.Transform = oMatrix
-
-        'Dim oOtherPen As Pen = New Pen(Color.FromArgb(220, Color.DimGray), 1)
-        'Dim oOtherBrush As Brush = New SolidBrush(Color.FromArgb(180, Color.Red))
-        'Dim oOtherLightBrush As Brush = New SolidBrush(Color.FromArgb(80, Color.Red))
-        'If Variation > 0 Then
-        '    Call oGr.FillPie(oOtherLightBrush, oRect, iProjectionAngle - 90 - Variation, Variation * 2)
-        '    If FullRange Then
-        '        Call oGr.FillPie(oOtherLightBrush, oRect, iProjectionAngle + 90 - Variation, Variation * 2)
-        '    End If
-        'End If
-        'Call oGr.DrawPie(oOtherPen, oRect, iProjectionAngle - 90 - 2, 4)
-        'Call oGr.FillPie(oOtherBrush, oRect, iProjectionAngle - 90 - 2, 4)
-        'If FullRange Then
-        '    Call oGr.FillPie(oOtherBrush, oRect, iProjectionAngle + 90 - 2, 4)
-        'End If
-        'Call oOtherPen.Dispose()
-        'Call oOtherBrush.Dispose()
-        'Call oOtherLightBrush.Dispose()
-
-        Dim oOtherPen As Pen = New Pen(Color.FromArgb(220, Color.Red), 1)
-        Dim oOtherBrush As Brush = New SolidBrush(Color.FromArgb(180, Color.Red))
-        Dim oOtherLightBrush As Brush = New SolidBrush(Color.FromArgb(80, Color.Red))
-        If Variation > 0 Then
-            Call oGr.FillPie(oOtherLightBrush, oRect, 180 - Variation, Variation * 2)
-        End If
-        Call oGr.DrawPie(oOtherPen, oRect1, -2, 4)
-        Call oGr.FillPie(oOtherBrush, oRect1, -2, 4)
-
-        Call oGr.FillPie(oOtherBrush, oRect, 88, 4)
-
-        If Variation > 0 Then
-            Call oGr.FillPie(oOtherLightBrush, oRect, 0 - Variation, Variation * 2)
-        End If
-        Call oGr.DrawPie(oOtherPen, oRect2, 180 - 2, 4)
-        Call oGr.FillPie(oOtherBrush, oRect2, 180 - 2, 4)
-
-        Call oOtherPen.Dispose()
-        Call oOtherBrush.Dispose()
-        Call oOtherLightBrush.Dispose()
-
-        Picture.Image = oImage
-
-        Call oGr.Dispose()
-        Call oMatrix.Dispose()
+                            If Variation > 0 Then
+                                Call oGr.FillPie(oOtherLightBrush, oRect, 0 - Variation, Variation * 2)
+                            End If
+                            Call oGr.DrawPie(oOtherPen, oRect2, 180 - 2, 4)
+                            Call oGr.FillPie(oOtherBrush, oRect2, 180 - 2, 4)
+                        End Using
+                    End Using
+                End Using
+                Picture.Image = oImage
+            End Using
+        End Using
     End Sub
 
     Private Sub pObjectPropertyPlanDrawProjectionSchema()
@@ -6203,19 +6177,28 @@ Public Class frmMain
 
     Private Sub pPropertyItemBounds(Optional ByRef PropPopupShowed As Boolean = False)
         Dim oCurrentItem As cItem = pGetCurrentDesignTools.CurrentItem
-        With oCurrentItem
-            Dim oBounds As RectangleF = .GetBounds
-            If modPaint.IsRectangleEmpty(oBounds) Then
-                Call pPropPopupShow("warning", modMain.GetLocalizedString("main.textpart54"))
-                PropPopupShowed = PropPopupShowed Or True
-            End If
-            Dim oLocation As PointF = oBounds.Location
-            txtPropLeft.Text = Strings.Format(modNumbers.MathRound(oLocation.X, 3), DefaultPointFormat)
-            txtPropTop.Text = Strings.Format(modNumbers.MathRound(-1 * oLocation.Y, 3), DefaultPointFormat)
-            Dim oSize As SizeF = oBounds.Size
-            txtPropWidth.Text = Strings.Format(modNumbers.MathRound(oSize.Width, 3), DefaultPointFormat)
-            txtPropHeight.Text = Strings.Format(modNumbers.MathRound(oSize.Height, 3), DefaultPointFormat)
-        End With
+        If oCurrentItem Is Nothing Then
+            Call pPropPopupShow("warning", modMain.GetLocalizedString("main.textpart54"))
+            PropPopupShowed = PropPopupShowed Or True
+            txtPropLeft.Text = Strings.Format(0, DefaultPointFormat)
+            txtPropTop.Text = Strings.Format(0, DefaultPointFormat)
+            txtPropWidth.Text = Strings.Format(0, DefaultPointFormat)
+            txtPropHeight.Text = Strings.Format(0, DefaultPointFormat)
+        Else
+            With oCurrentItem
+                Dim oBounds As RectangleF = .GetBounds
+                If modPaint.IsRectangleEmpty(oBounds) Then
+                    Call pPropPopupShow("warning", modMain.GetLocalizedString("main.textpart54"))
+                    PropPopupShowed = PropPopupShowed Or True
+                End If
+                Dim oLocation As PointF = oBounds.Location
+                txtPropLeft.Text = Strings.Format(modNumbers.MathRound(oLocation.X, 3), DefaultPointFormat)
+                txtPropTop.Text = Strings.Format(modNumbers.MathRound(-1 * oLocation.Y, 3), DefaultPointFormat)
+                Dim oSize As SizeF = oBounds.Size
+                txtPropWidth.Text = Strings.Format(modNumbers.MathRound(oSize.Width, 3), DefaultPointFormat)
+                txtPropHeight.Text = Strings.Format(modNumbers.MathRound(oSize.Height, 3), DefaultPointFormat)
+            End With
+        End If
     End Sub
 
     Private Sub pPropertyItem()
@@ -6610,6 +6593,7 @@ Public Class frmMain
                     picPropImage.Image = oItemImage.Image
                     cboPropImageResizeMode.SelectedIndex = oItemImage.ImageResizeMode
                     txtPropImageResolution.Text = oItemImage.ImageSize.Width & "x" & oItemImage.ImageSize.Height & "px " & oItemImage.ImageResolution.X & "x" & oItemImage.ImageResolution.Y & " dpi"
+                    txtPropImageRotateAngle.Value = oItemImage.RotateBy
                     pnlPropImage.Visible = True
                 Else
                     picPropImage.Image = Nothing
@@ -6743,24 +6727,24 @@ Public Class frmMain
                     pnlPropAttachment.Visible = False
                 End If
 
-                If TypeOf oCurrentItem Is cIItemCompass Then
-                    Dim oItemCompass As cIItemCompass = oCurrentItem
+                If TypeOf oCurrentItem Is cItemCompass Then
+                    Dim oItemCompass As cItemCompass = oCurrentItem
                     Call cPropCompassItems.Rebind(oItemCompass)
                     pnlPropCompass.Visible = True
                 Else
                     pnlPropCompass.Visible = False
                 End If
 
-                If TypeOf oCurrentItem Is cIItemLegend Then
-                    Dim oItemLegend As cIItemLegend = oCurrentItem
+                If TypeOf oCurrentItem Is cItemLegend Then
+                    Dim oItemLegend As cItemLegend = oCurrentItem
                     Call cPropLegendItems.Rebind(oItemLegend)
                     pnlPropLegend.Visible = True
                 Else
                     pnlPropLegend.Visible = False
                 End If
 
-                If TypeOf oCurrentItem Is cIItemScale Then
-                    Dim oItemScale As cIItemScale = oCurrentItem
+                If TypeOf oCurrentItem Is cItemScale Then
+                    Dim oItemScale As cItemScale = oCurrentItem
                     Call cPropScaleItems.Rebind(oItemScale)
                     pnlPropScale.Visible = True
                 Else
@@ -7213,47 +7197,65 @@ Public Class frmMain
         Else
             If Not bDisabledObjectPropertyEvent Then
                 bDisabledObjectPropertyEvent = True
-                'Call pPropPopupHide()
-                Dim bThereIsDesign As Boolean = oCurrentDesign IsNot Nothing
-                If bThereIsDesign Then
-                    Dim bThereIsItem As Boolean
-                    Dim bThereIsItemPoint As Boolean
+                Try
+                    Dim bThereIsDesign As Boolean = oCurrentDesign IsNot Nothing
                     If bThereIsDesign Then
-                        bThereIsItem = pGetCurrentDesignTools.CurrentItem IsNot Nothing
-                        bThereIsItemPoint = pGetCurrentDesignTools.CurrentItemPoint IsNot Nothing
-                    End If
-                    If (bThereIsItem Or bThereIsItemPoint) Then
-                        If bThereIsItemPoint Then
-                            Call pPropertyItemPoint()
-                        Else
-                            Call pPropertyItem()
+                        Dim bThereIsItem As Boolean
+                        Dim bThereIsItemPoint As Boolean
+                        If bThereIsDesign Then
+                            bThereIsItem = pGetCurrentDesignTools.CurrentItem IsNot Nothing
+                            bThereIsItemPoint = bThereIsItem AndAlso pGetCurrentDesignTools.CurrentItemPoint IsNot Nothing
                         End If
+                        If bThereIsItem Then
+                            Try
+                                If bThereIsItemPoint Then
+                                    Call pPropertyItemPoint()
+                                Else
+                                    Call pPropertyItem()
+                                End If
+                            Catch ex As Exception
+                                Call pLogAdd(ex)
+                            End Try
+                            tbl3DProp.Visible = False
+                            tblDesignProp.Visible = False
+                            tblObjectProp.Visible = True
+                            tblObjectProp.Enabled = True
+                        Else
+                            If oCurrentDesign.Type = cIDesign.cDesignTypeEnum.ThreeDModel Then
+                                Try
+                                    Call pProperty3D()
+                                Catch ex As Exception
+                                    Call pLogAdd(ex)
+                                End Try
+                                tbl3DProp.Visible = True
+                                tbl3DProp.Enabled = True
+                                tblDesignProp.Visible = False
+                                tblObjectProp.Visible = False
+                            Else
+                                Try
+                                    Call pPropertyDesign()
+                                Catch ex As Exception
+                                    Call pLogAdd(ex)
+                                End Try
+                                tbl3DProp.Visible = False
+                                tblDesignProp.Visible = True
+                                tblDesignProp.Enabled = True
+                                tblObjectProp.Visible = False
+                            End If
+                        End If
+                    Else
+                        Try
+                            Call pPropertyNull()
+                        Catch ex As Exception
+                            Call pLogAdd(ex)
+                        End Try
                         tbl3DProp.Visible = False
                         tblDesignProp.Visible = False
-                        tblObjectProp.Visible = True
-                        tblObjectProp.Enabled = True
-                    Else
-                        If oCurrentDesign.Type = cIDesign.cDesignTypeEnum.ThreeDModel Then
-                            Call pProperty3D()
-                            tbl3DProp.Visible = True
-                            tblDesignProp.Visible = False
-                            tblObjectProp.Visible = False
-                            tbl3DProp.Enabled = True
-                        Else
-                            Call pPropertyDesign()
-                            tbl3DProp.Visible = False
-                            tblDesignProp.Visible = True
-                            tblObjectProp.Visible = False
-
-                            tblDesignProp.Enabled = True
-                        End If
+                        tblObjectProp.Visible = False
                     End If
-                Else
-                    Call pPropertyNull()
-                    tbl3DProp.Visible = False
-                    tblDesignProp.Visible = False
-                    tblObjectProp.Visible = False
-                End If
+                Catch ex As Exception
+                    Call pLogAdd(ex)
+                End Try
                 bDisabledObjectPropertyEvent = False
             End If
         End If
@@ -7321,18 +7323,9 @@ Public Class frmMain
     'End Sub
 
     Private Sub pSurveyMainProperties()
-        'Select Case oSurvey.Properties.InversionMode
-        '    Case cSurvey.cSurvey.InversioneModeEnum.Absolute
-        'chkSegmentInverted.Visible = False
-        lblSegmentDirection.Visible = True
-        cboSegmentDirection.Visible = True
-        grdSegments.Columns(11).HeaderText = "Dx/sx"
-        '    Case cSurvey.cSurvey.InversioneModeEnum.Relative
-        '        chkSegmentInverted.Visible = True
-        '        lblSegmentDirection.Visible = False
-        '        cboSegmentDirection.Visible = False
-        '        grdSegments.Columns(11).HeaderText = "Inverti"
-        'End Select
+        'lblSegmentDirection.Visible = True
+        'cboSegmentDirection.Visible = True
+        'grdSegments.Columns(11).HeaderText = "Dx/sx"
         Call pSurveyMainPropertiesPanelsRefresh()
     End Sub
 
@@ -7535,7 +7528,7 @@ Public Class frmMain
             Call Invoke(New oSurvey_OnPropertiesChangedDelegate(AddressOf oSurvey_OnPropertiesChanged), {Sender, Args})
         Else
             If Args.Source = cSurvey.cSurvey.OnPropertiesChangedEventArgs.PropertiesChangeSourceEnum.Scale Then
-                Dim iScale As Integer = oCurrentOptions.CurrentRule.Scale
+                Dim iScale As Integer = oCurrentOptions.GetCurrentScale
                 If iScale = 0 Then
                     pnlStatusCurrentRule.Text = modMain.GetLocalizedString("main.textpart56")
                 Else
@@ -8189,16 +8182,16 @@ Public Class frmMain
 
             tbDesign.Enabled = True
             For Each oButton As ToolStripItem In tbDesign.Items
-                If TypeOf oButton.Tag Is cEditToolsBag Then
-                    Dim oBag As cEditToolsBag = oButton.Tag
+                If TypeOf oButton.Tag Is cSurvey.Helper.Editor.cEditToolsBag Then
+                    Dim oBag As cSurvey.Helper.Editor.cEditToolsBag = oButton.Tag
                     oButton.Visible = oBag.AvaiableInProfile
                 Else
                     oButton.Visible = True
                 End If
             Next
             For Each oButton As ToolStripItem In mnuDesignAdd.DropDownItems
-                If TypeOf oButton.Tag Is cEditToolsBag Then
-                    Dim oBag As cEditToolsBag = oButton.Tag
+                If TypeOf oButton.Tag Is cSurvey.Helper.Editor.cEditToolsBag Then
+                    Dim oBag As cSurvey.Helper.Editor.cEditToolsBag = oButton.Tag
                     oButton.Visible = oBag.AvaiableInProfile
                 Else
                     oButton.Visible = True
@@ -9094,13 +9087,13 @@ Public Class frmMain
             End If
             Call pSurveyDesignToolsLoadSequenceToAreaItems(oXMLDesign.Item("tools"))
         Catch ex As Exception
-
+            Call pLogAdd(ex)
         End Try
 
         Try
             Call pSurveyDesignToolsLoadSubToolbarItem(oXMLDesign.Item("tools"), tbDesign.Items)
         Catch ex As Exception
-            MsgBox(ex.Message)
+            Call pLogAdd(ex)
         End Try
         Call pSurveyDesignToolsLoadSubMenuItem(oXMLDesign.Item("tools"), mnuDesignAdd.DropDownItems)
     End Sub
@@ -9109,7 +9102,7 @@ Public Class frmMain
         Return Layer.GetType.GetMethods.FirstOrDefault(Function(oitem) oitem.Name.ToLower = MethodName.ToLower AndAlso oitem.GetParameters.Count = ParametersCount)
     End Function
 
-    Private Sub pDesignTools_CreateItem(ByVal Bag As cEditToolsBag, Optional ByVal UseSubtype As Boolean = False, Optional ByVal Point As PointF = Nothing, Optional ByVal Filename As String = "", Optional ByVal Text As String = "", Optional ByVal Size As cIItemSizable.SizeEnum = cIItemSizable.SizeEnum.Default, Optional ByVal FontType As cItemFont.FontTypeEnum = cItemFont.FontTypeEnum.Generic)
+    Private Sub pDesignTools_CreateItem(ByVal Bag As cSurvey.Helper.Editor.cEditToolsBag, Optional ByVal UseSubtype As Boolean = False, Optional ByVal Point As PointF = Nothing, Optional ByVal Filename As String = "", Optional ByVal Text As String = "", Optional ByVal Size As cIItemSizable.SizeEnum = cIItemSizable.SizeEnum.Default, Optional ByVal FontType As cItemFont.FontTypeEnum = cItemFont.FontTypeEnum.Generic)
         Dim bCancel As Boolean = False
 
         Dim sType As String = ""
@@ -9131,7 +9124,7 @@ Public Class frmMain
                 Call oDockText.txtText.Focus()
             Case "gallery"
                 Call pClipartShow(True)
-                oDockClipart.tabGallery.SelectedTab = oDockClipart.tabGallery.TabPages("tabpage_" & Bag.Gallery.Split(",")(0))
+                oDockClipart.tabGallery.SelectedPage = oDockClipart.tabGallery.Pages.FirstOrDefault(Function(oTab) oTab.Name = "tabpage_" & Bag.Gallery.Split(",")(0))
             Case "sketch"
                 If oSurvey.TrigPoints.Count > 1 Then
                     If Filename = "" Then
@@ -9312,27 +9305,27 @@ Public Class frmMain
                 Dim sBranch As String = cboMainCaveBranchList.Text
                 Call pGetCurrentDesignTools.SelectLayer(oLayer)
                 Dim sFilename As String = ""
-                Dim iDataFormatEnum As cAttachmentLinks.cAttachmentDataFormatEnum
+                Dim iDataFormatEnum As cAttachmentsLinks.cAttachmentDataFormatEnum
                 If Filename = "" Then
                     sFilename = Bag.Filename
-                    iDataFormatEnum = cAttachmentLinks.cAttachmentDataFormatEnum.File
+                    iDataFormatEnum = cAttachmentsLinks.cAttachmentDataFormatEnum.File
                 Else
                     sFilename = Filename
-                    iDataFormatEnum = cAttachmentLinks.cAttachmentDataFormatEnum.File
+                    iDataFormatEnum = cAttachmentsLinks.cAttachmentDataFormatEnum.File
                 End If
                 If sFilename = "" Then
                     Using oOFD As OpenFileDialog = New OpenFileDialog
                         If oOFD.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                             sFilename = oOFD.FileName
-                            iDataFormatEnum = cAttachmentLinks.cAttachmentDataFormatEnum.File
+                            iDataFormatEnum = cAttachmentsLinks.cAttachmentDataFormatEnum.File
                         End If
                     End Using
                 ElseIf sFilename.StartsWith("file://") Then
                     sFilename = sFilename.Substring(7)
-                    iDataFormatEnum = cAttachmentLinks.cAttachmentDataFormatEnum.File
+                    iDataFormatEnum = cAttachmentsLinks.cAttachmentDataFormatEnum.File
                 ElseIf sFilename.StartsWith("id://") Then
                     sFilename = sFilename.Substring(5)
-                    iDataFormatEnum = cAttachmentLinks.cAttachmentDataFormatEnum.Resource
+                    iDataFormatEnum = cAttachmentsLinks.cAttachmentDataFormatEnum.Resource
                 End If
                 If sFilename <> "" Then
                     oItem = oLayer.GetType.GetMethod(Bag.Method).Invoke(oLayer, Bag.GetInvokeParameters("cave", sCave, "branch", sBranch, "data", sFilename, "dataformat", iDataFormatEnum))
@@ -10570,7 +10563,11 @@ Public Class frmMain
     Private Sub txtPropRotate_PreviewKeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles txtPropRotate.PreviewKeyDown
         If e.KeyCode = Keys.Enter Then
             With pGetCurrentDesignTools()
-                Call .CurrentItem.Rotate(txtPropRotate.Text)
+                If chkPropRotateCenterOnOrigin.Checked Then
+                    Call .CurrentItem.RotateAt(New PointF(0, 0), txtPropRotate.Text)
+                Else
+                    Call .CurrentItem.Rotate(txtPropRotate.Text)
+                End If
                 Call pPropertyItemBounds()
                 Call .TakeUndoSnapshot()
             End With
@@ -10580,7 +10577,11 @@ Public Class frmMain
 
     Private Sub cmdPropRotateRight_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdPropRotateRight.Click
         With pGetCurrentDesignTools()
-            Call .CurrentItem.Rotate(90)
+            If chkPropRotateCenterOnOrigin.Checked Then
+                Call .CurrentItem.RotateAt(New PointF(0, 0), 90)
+            Else
+                Call .CurrentItem.Rotate(90)
+            End If
             Call pPropertyItemBounds()
             Call .TakeUndoSnapshot()
         End With
@@ -10589,7 +10590,11 @@ Public Class frmMain
 
     Private Sub cmdPropRotateLeft_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdPropRotateLeft.Click
         With pGetCurrentDesignTools()
-            Call .CurrentItem.Rotate(-90)
+            If chkPropRotateCenterOnOrigin.Checked Then
+                Call .CurrentItem.RotateAt(New PointF(0, 0), -90)
+            Else
+                Call .CurrentItem.Rotate(-90)
+            End If
             Call pPropertyItemBounds()
             Call .TakeUndoSnapshot()
         End With
@@ -10884,6 +10889,7 @@ Public Class frmMain
             Try
                 Call pGetCurrentDesignTools.CutItem()
             Catch ex As Exception
+                Call pLogAdd(ex)
             End Try
             Call pMapInvalidate()
         End If
@@ -11495,17 +11501,19 @@ Public Class frmMain
 
             Dim oFont As cItemFont = cboPropTextStyle.Items(e.Index)
 
-            Dim oPath As GraphicsPath = New GraphicsPath
-            Dim oLabelRect As RectangleF = New RectangleF(e.Bounds.Left + 2, e.Bounds.Top, e.Bounds.Right - 2, e.Bounds.Height)
-            Dim oSF As StringFormat = New StringFormat
-            oSF.LineAlignment = StringAlignment.Center
-            oSF.Trimming = StringTrimming.EllipsisCharacter
-            oSF.FormatFlags = StringFormatFlags.NoWrap
-            If bSelected Then
-                Call oGr.DrawString(oFont.Name, oFont.GetSampleFont, SystemBrushes.HighlightText, oLabelRect, oSF)
-            Else
-                Call oGr.DrawString(oFont.Name, oFont.GetSampleFont, SystemBrushes.WindowText, oLabelRect, oSF)
-            End If
+            Using oPath As GraphicsPath = New GraphicsPath
+                Dim oLabelRect As RectangleF = New RectangleF(e.Bounds.Left + 2, e.Bounds.Top, e.Bounds.Right - 2, e.Bounds.Height)
+                Using oSF As StringFormat = New StringFormat
+                    oSF.LineAlignment = StringAlignment.Center
+                    oSF.Trimming = StringTrimming.EllipsisCharacter
+                    oSF.FormatFlags = StringFormatFlags.NoWrap
+                    If bSelected Then
+                        Call oGr.DrawString(oFont.Name, oFont.GetSampleFont, SystemBrushes.HighlightText, oLabelRect, oSF)
+                    Else
+                        Call oGr.DrawString(oFont.Name, oFont.GetSampleFont, SystemBrushes.WindowText, oLabelRect, oSF)
+                    End If
+                End Using
+            End Using
         Catch
         End Try
     End Sub
@@ -11694,7 +11702,7 @@ Public Class frmMain
                         Call oSurvey.Properties.DataTables.Segments.Add("LRUD_calculated", Data.cDataFields.TypeEnum.Boolean)
                         Call oSurvey.Properties.DataTables.Segments.Add("LRUD_source", Data.cDataFields.TypeEnum.Text)
                     End If
-                    If .RadioButton1.Checked Then
+                    If .cboAction.SelectedIndex = 0 Then
                         Dim oSessions As SortedDictionary(Of String, cSession) = oSurvey.Properties.Sessions.GetWithEmpty()
                         For Each oSegment As cSegment In pSegmentsGetSelections(.cboReplicateTo.SelectedIndex)
                             If Not oSegment.Splay AndAlso pSegmentsLRUDIsInRange(oSegment, frmMLRUD) Then
@@ -11707,6 +11715,7 @@ Public Class frmMain
                                 End If
                                 If oSplay.Count >= 4 Then
                                     If bBackup Then Call .Backup(oSegment)
+
                                     If .RadioButton1a.Checked Then
                                         oSegment.Left = modNumbers.MathRound(oSplay(0).Data.Data.Distance, 2)
                                         oSegment.Right = modNumbers.MathRound(oSplay(1).Data.Data.Distance, 2)
@@ -11727,13 +11736,12 @@ Public Class frmMain
                             End If
                         Next
                         Call oSurvey.Segments.SaveAll()
-                    ElseIf .RadioButton2.Checked Then
+                    ElseIf .cboAction.SelectedIndex = 1 Then
                         Select Case .cboMode2Mode.SelectedIndex
                             Case 0
                                 Dim oSessions As SortedDictionary(Of String, cSession) = oSurvey.Properties.Sessions.GetWithEmpty()
                                 For Each oSegment As cSegment In pSegmentsGetSelections(.cboReplicateTo.SelectedIndex)
                                     If Not oSegment.Splay AndAlso pSegmentsLRUDIsInRange(oSegment, frmMLRUD) Then
-
                                         If bBackup Then Call .Backup(oSegment)
 
                                         Dim iFromOrTo As GetDesignStationEnum
@@ -11967,10 +11975,12 @@ Public Class frmMain
                         'Next
                         'Call oSurvey.Segments.SaveAll()
 
-                    ElseIf .RadioButton3.Checked Then
+                    ElseIf .cboAction.SelectedIndex = 2 Then
                         Dim oSessions As SortedDictionary(Of String, cSession) = oSurvey.Properties.Sessions.GetWithEmpty()
                         For Each oSegment As cSegment In pSegmentsGetSelections(.cboReplicateTo.SelectedIndex)
                             If Not oSegment.Splay AndAlso pSegmentsLRUDIsInRange(oSegment, frmMLRUD) Then
+                                If bBackup Then Call .Backup(oSegment)
+
                                 Dim iFromOrTo As GetDesignStationEnum
                                 Dim oSegmentSession As cSession = oSessions(oSegment.Session)
                                 If oSegmentSession.SideMeasuresReferTo = cSegment.SideMeasuresReferToEnum.StartPoint Then
@@ -13932,7 +13942,11 @@ Public Class frmMain
 
     Private Sub cmdPropRotateLeftByDegree_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdPropRotateLeftByDegree.Click
         With pGetCurrentDesignTools()
-            Call .CurrentItem.Rotate(-txtPropRotate.Text)
+            If chkPropRotateCenterOnOrigin.Checked Then
+                Call .CurrentItem.RotateAt(New PointF(0, 0), -txtPropRotate.Text)
+            Else
+                Call .CurrentItem.Rotate(-txtPropRotate.Text)
+            End If
             Call pPropertyItemBounds()
             Call .TakeUndoSnapshot()
         End With
@@ -13941,7 +13955,11 @@ Public Class frmMain
 
     Private Sub cmdPropRotateRightByDegree_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdPropRotateRightByDegree.Click
         With pGetCurrentDesignTools()
-            Call .CurrentItem.Rotate(txtPropRotate.Text)
+            If chkPropRotateCenterOnOrigin.Checked Then
+                Call .CurrentItem.RotateAt(New PointF(0, 0), txtPropRotate.Text)
+            Else
+                Call .CurrentItem.Rotate(txtPropRotate.Text)
+            End If
             Call pPropertyItemBounds()
             Call .TakeUndoSnapshot()
         End With
@@ -15122,7 +15140,8 @@ Public Class frmMain
 
             If iTrigPointsCount > 1 AndAlso iSegmentsCount > 0 Then
                 Using frmLD As frmLochDialog = New frmLochDialog(oSurvey)
-                    If frmLD.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                    Dim iRes As DialogResult = frmLD.ShowDialog(Me)
+                    If iRes = Windows.Forms.DialogResult.OK OrElse iRes = Windows.Forms.DialogResult.Retry Then
                         Dim iThOptions As modExport.TherionExportOptionsEnum = TherionExportOptionsEnum.Default Or TherionExportOptionsEnum.ExportSurfaceElevationsData
 
                         'use 3d mode of main survey....
@@ -15135,7 +15154,7 @@ Public Class frmMain
                             Next
                         Else
                             'splay could be visibile only without 3d model...
-                            If oSurvey.Properties.ThreeDLochShowSplay Then iThOptions = iThOptions Or TherionExportOptionsEnum.CalculateSplay
+                            If oSurvey.Properties.ThreeDLochShowSplay Then iThOptions = iThOptions Or TherionExportOptionsEnum.CalculateSplay Or TherionExportOptionsEnum.ExportSplay
                         End If
 
                         '---------------------------------------------------------------------------------------------------------
@@ -15181,8 +15200,21 @@ Public Class frmMain
 
                         iExitCode = modMain.ExecuteProcess(sThProcess, Chr(34) & sTempConfigFilename & Chr(34) & " -l " & Chr(34) & sTempThLogFilename & Chr(34), bThBackgroundProcess, AddressOf pProcessOutputHandler)
                         If iExitCode = 0 Then
-                            Dim sLochPath As String = Path.GetDirectoryName(sThProcess)
-                            Call Shell(Path.Combine(sLochPath, "loch.exe") & " " & Chr(34) & sTempThOutputFilename & Chr(34), AppWinStyle.MaximizedFocus, True, -1)
+                            If iRes = DialogResult.OK Then
+                                Dim sLochPath As String = Path.GetDirectoryName(sThProcess)
+                                Call Shell(Path.Combine(sLochPath, "loch.exe") & " " & Chr(34) & sTempThOutputFilename & Chr(34), AppWinStyle.MaximizedFocus, True, -1)
+                            Else
+                                Using oSFD As SaveFileDialog = New SaveFileDialog
+                                    With oSFD
+                                        .Title = GetLocalizedString("main.saveloch")
+                                        .Filter = GetLocalizedString("main.filetypeLOX") & " (*.LOX)|*.LOX|" & GetLocalizedString("main.filetypeALL") & " (*.*)|*.*"
+                                        .FilterIndex = 1
+                                        If .ShowDialog = DialogResult.OK Then
+                                            Call My.Computer.FileSystem.MoveFile(sTempThOutputFilename, .FileName)
+                                        End If
+                                    End With
+                                End Using
+                            End If
                         Else
                             Dim oFi As IO.FileInfo = New IO.FileInfo(sTempThLogFilename)
                             Dim sLines As String = ""
@@ -16024,6 +16056,77 @@ Public Class frmMain
                 Dim sPrevStationName As String = ""
                 Dim sStationName As String = ""
 
+                'Dim bImportTrack As Boolean = True
+                'If bImportTrack Then
+                '    Dim oPrevStationUTM As modUTM.UTM
+                '    Dim oStationUTM As modUTM.UTM
+                '    'test for track
+                '    Dim oTracksNodes As XmlNodeList
+                '    Select Case FilterIndex
+                '        Case 2
+                '            oTracksNodes = oXml.GetElementsByTagName("trk")
+                '    End Select
+                '    Dim iTrackIndex As Integer = 0
+                '    For Each oXMLTracks As XmlElement In oTracksNodes
+                '        Dim sLon As String = ""
+                '        Dim sLat As String = ""
+                '        Dim sAlt As String = ""
+                '        Dim iTrackPointIndex As Integer = 0
+                '        For Each oXMLTrackPoint As XmlElement In oXMLTracks.GetElementsByTagName("trkpt")
+                '            sLon = oXMLTrackPoint.GetAttribute("lon")
+                '            sLat = oXMLTrackPoint.GetAttribute("lat")
+                '            sAlt = oXMLTrackPoint.Item("ele").InnerText
+
+                '            sStationName = iTrackIndex & "_" & iTrackPointIndex
+                '            iTrackPointIndex += 1
+
+                '            Dim oTrigpoint As cTrigPoint = oSurvey.TrigPoints.Add(sStationName)
+                '            With oTrigpoint
+                '                .Coordinate.Format = "dd.ddddddd n"
+                '                .Coordinate.Longitude = sLon
+                '                .Coordinate.Latitude = sLat
+                '                .Coordinate.Altitude = sAlt
+                '                If bImportCreateCaveForWaypoint Then
+                '                    .Entrance = cTrigPoint.EntranceTypeEnum.MainCaveEntrace
+                '                Else
+                '                    .Entrance = cTrigPoint.EntranceTypeEnum.OutSide
+                '                End If
+                '                Call .Save()
+                '                oStationUTM = modUTM.WGS84ToUTM(.Coordinate)
+                '            End With
+
+                '            If sPrevStationName <> "" Then
+                '                Dim oSegment As cSegment = oSurvey.Segments.Append()
+
+                '                oSegment.From = sPrevStationName
+                '                oSegment.To = sStationName
+
+                '                oSegment.Distance = 1
+                '                oSegment.Bearing = 0
+                '                oSegment.Inclination = 0
+
+                '                oSegment.Left = 0
+                '                oSegment.Right = 0
+                '                oSegment.Up = 0
+                '                oSegment.Down = 0
+
+                '                oSegment.Direction = cSurvey.cSurvey.DirectionEnum.Right
+                '                oSegment.Exclude = True
+                '                oSegment.Surface = True
+
+                '                Call oSegment.DataProperties.SetValue("import_source", sFilename)
+                '                Call oSegment.DataProperties.SetValue("import_date", dNow)
+                '                Call oSegment.DataProperties.SetValue("import_source_type", "trk/link")
+
+                '                Call oSegment.Save()
+                '            End If
+
+                '            sPrevStationName = sStationName
+                '            oPrevStationUTM = oStationUTM
+                '        Next
+                '    Next
+                'End If
+
                 If bImportWaypoint Then
                     Call oSurvey.Properties.DataTables.Segments.Add("import_source", Data.cDataFields.TypeEnum.Text)
                     Call oSurvey.Properties.DataTables.DesignItems.Add("import_date", Data.cDataFields.TypeEnum.Date)
@@ -16361,7 +16464,7 @@ Public Class frmMain
                         End Using
                     End Using
                 Catch ex As Exception
-                    Call pLogAdd(cSurvey.cSurvey.LogEntryType.Error, ex.Message, True)
+                    Call pLogAdd(ex)
                 End Try
                 If bAutoSplay Then
                     oSurvey.Properties.SplayMode = iSplay
@@ -16553,7 +16656,7 @@ Public Class frmMain
                         Loop
                     End If
                 Catch ex As Exception
-                    Call pLogAdd(cSurvey.cSurvey.LogEntryType.Error, ex.Message, True)
+                    Call pLogAdd(ex)
                 End Try
                 If bAutoSplay Then
                     oSurvey.Properties.SplayMode = iSplay
@@ -16901,12 +17004,14 @@ Public Class frmMain
         Using frmIS As frmImportcSurvey = New frmImportcSurvey
             frmIS.txtFilename.Text = Filename
 
+            Call oMousePointer.Push(Cursors.WaitCursor)
             Dim oImportSurvey As cSurvey.cSurvey = New cSurvey.cSurvey
             Call oImportSurvey.Load(Filename, cSurvey.cSurvey.LoadOptionsEnum.FixTopoDroid)
             If Not oImportSurvey.Calculate.LoadedFromFile Then
                 Call oImportSurvey.Invalidate()
                 Call oImportSurvey.Calculate.Calculate(True)
             End If
+            Call oMousePointer.Pop()
 
             Call frmIS.cboImportAsBranchOfCave.Rebind(oSurvey.Properties.CaveInfos, True, False)
 
@@ -17025,6 +17130,11 @@ Public Class frmMain
 
                     'check if there are no segment with same id
                     'check if there are almost one common station between the two surveys
+                    If frmIS.chkcSurveyImportTexts.Enabled AndAlso frmIS.chkcSurveyImportTexts.Checked Then
+                        Call oMousePointer.Push(Cursors.WaitCursor)
+                        Call oSurvey.Texts.MergeWith(oImportSurvey.Texts)
+                        Call oMousePointer.Pop()
+                    End If
 
                     If frmIS.chkcSurveyImportSurface.Enabled AndAlso frmIS.chkcSurveyImportSurface.Checked Then
                         Call oMousePointer.Push(Cursors.WaitCursor)
@@ -17150,7 +17260,7 @@ Public Class frmMain
                                 Call pSurveyProgress("import", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, iIndex / iCount, GetLocalizedString("main.progress5"))
                                 iIndex += 1
 
-                                Using oFile As Storage.cFile = New Storage.cFile(Storage.cFile.FileFormatEnum.CSX)
+                                Using oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, "", cFile.FileOptionsEnum.EmbedResource)
                                     Dim oXML As XmlDocument = oFile.Document
                                     Dim oXMLParent As XmlElement = oXML.CreateElement("parent")
                                     Call oImportSegment.SaveTo(oFile, oXML, oXMLParent, cSurvey.cSurvey.SaveOptionsEnum.Silent Or cSurvey.cSurvey.SaveOptionsEnum.ForClipboard)
@@ -17248,6 +17358,7 @@ Public Class frmMain
                             Next
                             bDisableTrigpointsChangeEvent = False
                         Catch ex As Exception
+                            Call pLogAdd(ex)
                         End Try
 
                         'mark exclusion for shared station except first one...
@@ -17342,7 +17453,7 @@ Public Class frmMain
 
                                 Dim iDesign As Integer = oImportItem.Design.Type
                                 Dim iLayer As Integer = oImportItem.Layer.Type
-                                Using oFile As Storage.cFile = New Storage.cFile(Storage.cFile.FileFormatEnum.CSX, "", Storage.cFile.FileOptionsEnum.EmbedResource)
+                                Using oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, "", cFile.FileOptionsEnum.EmbedResource)
                                     Dim oXML As XmlDocument = oFile.Document
                                     Dim oXMLParent As XmlElement = oXML.CreateElement("parent")
                                     Call oImportItem.SaveTo(oFile, oXML, oXMLParent, cSurvey.cSurvey.SaveOptionsEnum.Silent Or cSurvey.cSurvey.SaveOptionsEnum.ForClipboard)
@@ -17388,7 +17499,7 @@ Public Class frmMain
 
                                 Dim iDesign As Integer = oImportItemWithLinks.Design.Type
                                 Dim iLayer As Integer = oImportItemWithLinks.Layer.Type
-                                Using oFile As Storage.cFile = New Storage.cFile(Storage.cFile.FileFormatEnum.CSX, "", Storage.cFile.FileOptionsEnum.EmbedResource)
+                                Using oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, "", cFile.FileOptionsEnum.EmbedResource)
                                     Dim oXML As XmlDocument = oFile.Document
                                     Dim oXMLParent As XmlElement = oXML.CreateElement("parent")
                                     Call oImportItemWithLinks.SaveTo(oFile, oXML, oXMLParent, cSurvey.cSurvey.SaveOptionsEnum.Silent)
@@ -17444,7 +17555,7 @@ Public Class frmMain
 
                                 Dim iDesign As Integer = oImportItemsLegend.Design.Type
                                 Dim iLayer As Integer = oImportItemsLegend.Layer.Type
-                                Using oFile As Storage.cFile = New Storage.cFile(Storage.cFile.FileFormatEnum.CSX, "", Storage.cFile.FileOptionsEnum.EmbedResource)
+                                Using oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, "", cFile.FileOptionsEnum.EmbedResource)
                                     Dim oXML As XmlDocument = oFile.Document
                                     Dim oXMLParent As XmlElement = oXML.CreateElement("parent")
                                     Call oImportItemsLegend.SaveTo(oFile, oXML, oXMLParent, cSurvey.cSurvey.SaveOptionsEnum.Silent)
@@ -17808,7 +17919,7 @@ Public Class frmMain
                         End If
                     End If
                 Catch ex As Exception
-                    Call pLogAdd(cSurvey.cSurvey.LogEntryType.Error, ex.Message, True)
+                    Call pLogAdd(ex)
                 End Try
                 oSurvey.Properties.SplayMode = iSplay
 
@@ -18385,6 +18496,7 @@ Public Class frmMain
                 Call pMapInvalidate()
             End If
         Catch ex As Exception
+            Call pLogAdd(ex)
         End Try
     End Sub
 
@@ -18407,7 +18519,7 @@ Public Class frmMain
     End Sub
 
     Private Function pScaleRulesEdit() As Boolean
-        Using frmSR As frmScaleRules = New frmScaleRules(oSurvey)
+        Using frmSR As frmScaleRules = New frmScaleRules(oSurvey, frmScaleRules.EditStyleEnum.ScaleRule)
             If frmSR.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 Call pMapInvalidate()
                 Return True
@@ -18653,6 +18765,12 @@ Public Class frmMain
         oDockLS.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockTop Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom Or WeifenLuo.WinFormsUI.Docking.DockAreas.Float
         oDockLS.HideOnClose = True
         oDockLS.DockPanel = oDockPanel
+
+
+        oDockTexts = New frmTexts
+        oDockTexts.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockTop Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom Or WeifenLuo.WinFormsUI.Docking.DockAreas.Float
+        oDockTexts.HideOnClose = True
+        oDockTexts.DockPanel = oDockPanel
         '-----------------------------------------------------------------------------------------------
         trkZoom.Parent = Me
         trkZoom.BringToFront()
@@ -18699,7 +18817,7 @@ Public Class frmMain
             h3D.BringToFront()
             bHolos = True
         Catch ex As Exception
-            Debug.Print(ex.Message)
+            Call pLogAdd(ex)
             mnuView3D.Enabled = False
             btnView_3D.Enabled = False
             mnuFileExport3D.Enabled = False
@@ -19129,6 +19247,7 @@ Public Class frmMain
             Next
             Call My.Computer.Clipboard.SetText(sText)
         Catch ex As Exception
+            Call pLogAdd(ex)
         End Try
     End Sub
 
@@ -19432,8 +19551,13 @@ Public Class frmMain
                         End If
 
                         Dim oSession As cSession = oSurvey.Properties.Sessions.Add(Date.Today, oSurvey.Properties.Sessions.GetUniqueID(Date.Today, GetLocalizedString("main.defaultresurveysessionname")))
-                        oSession.SideMeasuresReferTo = cSegment.SideMeasuresReferToEnum.EndPoint
-                        oSession.SideMeasuresType = cSegment.SideMeasuresTypeEnum.PerpendicularToPrevious
+                        If frmRM.Options.LRUDStation = cResurvey.cOptions.LRUDStationEnum.FromStation Then
+                            oSession.SideMeasuresReferTo = cSegment.SideMeasuresReferToEnum.StartPoint
+                            oSession.SideMeasuresType = cSegment.SideMeasuresTypeEnum.PerpendicularToNext
+                        Else
+                            oSession.SideMeasuresReferTo = cSegment.SideMeasuresReferToEnum.EndPoint
+                            oSession.SideMeasuresType = cSegment.SideMeasuresTypeEnum.PerpendicularToPrevious
+                        End If
                         oSession.NordType = iNordType
 
                         For Each oShot As cResurvey.cShot In frmRM.Shots
@@ -19447,10 +19571,12 @@ Public Class frmMain
                             oSegment.Bearing = oShot.Bearing
                             oSegment.Inclination = oShot.Inclination
 
-                            oSegment.Left = oShot.Left
-                            oSegment.Right = oShot.Right
-                            oSegment.Up = oShot.Up
-                            oSegment.Down = oShot.Down
+                            If frmRM.Options.LRUDStation = cResurvey.cOptions.LRUDStationEnum.FromStation OrElse frmRM.Options.LRUDStation = cResurvey.cOptions.LRUDStationEnum.ToStation Then
+                                oSegment.Left = oShot.GetLeft
+                                oSegment.Right = oShot.GetRight
+                                oSegment.Up = oShot.GetUp
+                                oSegment.Down = oShot.GetDown
+                            End If
 
                             oSegment.Note = ""
 
@@ -19739,6 +19865,10 @@ Public Class frmMain
         Call pImageViewerShow(pGetCurrentDesignTools.CurrentItem)
     End Sub
 
+    Private Sub pTextsShow()
+        Call pDockContentShow(oDockTexts, True)
+    End Sub
+
     Private Sub pLinkedSurveyShow()
         Call pDockContentShow(oDockLS, True)
     End Sub
@@ -19774,6 +19904,7 @@ Public Class frmMain
             Call pObjectPropertyLoad()
             Call pMapInvalidate()
         Catch ex As Exception
+            Call pLogAdd(ex)
         End Try
     End Sub
 
@@ -19806,6 +19937,7 @@ Public Class frmMain
             Call pObjectPropertyLoad()
             Call pMapInvalidate()
         Catch ex As Exception
+            Call pLogAdd(ex)
         End Try
     End Sub
 
@@ -20008,6 +20140,20 @@ Public Class frmMain
         Dim bHandled As Boolean
         Dim sStep As Single
         Select Case e.KeyCode
+            Case Keys.B
+                If e.Control AndAlso e.Alt Then
+                    bDisabledObjectPropertyEvent = False
+                    Call pObjectPropertyLoad()
+                End If
+            Case Keys.Q
+                Call btnSnapToPointNone_Click(Nothing, EventArgs.Empty)
+            Case Keys.A
+                Call btnSnapToPoint0_Click(Nothing, EventArgs.Empty)
+            Case Keys.S
+                Call btnSnapToPoint1_Click(Nothing, EventArgs.Empty)
+            Case Keys.D
+                Call btnSnapToPoint2_Click(Nothing, EventArgs.Empty)
+
             Case Keys.Oemplus
                 With pGetCurrentDesignTools()
                     If .IsInPointEdit Then
@@ -20052,6 +20198,7 @@ Public Class frmMain
                     Call pObjectPropertyDelayedLoad()
                     Call pMapInvalidate()
                 Catch ex As Exception
+                    Call pLogAdd(ex)
                 End Try
                 bHandled = True
                 bPicMapPreventChangeFocus = True
@@ -20096,6 +20243,7 @@ Public Class frmMain
                     Call pObjectPropertyDelayedLoad()
                     Call pMapInvalidate()
                 Catch ex As Exception
+                    Call pLogAdd(ex)
                 End Try
                 bHandled = True
                 bPicMapPreventChangeFocus = True
@@ -20140,6 +20288,7 @@ Public Class frmMain
                     Call pObjectPropertyDelayedLoad()
                     Call pMapInvalidate()
                 Catch ex As Exception
+                    Call pLogAdd(ex)
                 End Try
                 bHandled = True
                 bPicMapPreventChangeFocus = True
@@ -20181,6 +20330,7 @@ Public Class frmMain
                     Call pObjectPropertyDelayedLoad()
                     Call pMapInvalidate()
                 Catch ex As Exception
+                    Call pLogAdd(ex)
                 End Try
                 bHandled = True
                 bPicMapPreventChangeFocus = True
@@ -21834,11 +21984,11 @@ Public Class frmMain
                 pnlStatusDesignGeographicState.Image = My.Resources.map
                 pnlStatusDesignGeographicState.ToolTipText = modMain.GetLocalizedString("main.textpart62")
             Else
-                pnlStatusDesignGeographicState.Image = My.Resources._error
+                pnlStatusDesignGeographicState.Image = My.Resources.error1
                 pnlStatusDesignGeographicState.ToolTipText = modMain.GetLocalizedString("main.textpart61")
             End If
             If oSurvey.Properties.DesignWarpingMode = cSurvey.cSurvey.DesignWarpingModeEnum.None OrElse IsNothing(oCurrentDesign) Then
-                pnlStatusDesignWarping.Image = My.Resources._error
+                pnlStatusDesignWarping.Image = My.Resources.error1
                 pnlStatusDesignWarpingState.Image = My.Resources.control_stop_blue
                 pnlStatusDesignWarping.ToolTipText = modMain.GetLocalizedString("main.textpart59")
                 pnlStatusDesignWarpingState.ToolTipText = modMain.GetLocalizedString("main.textpart59")
@@ -21863,7 +22013,7 @@ Public Class frmMain
                     pnlStatusDesignWarping.Visible = False
                     pnlStatusDesignWarpingState.Visible = False
                 Else
-                    pnlStatusDesignWarping.Image = My.Resources._error
+                    pnlStatusDesignWarping.Image = My.Resources.error1
                     pnlStatusDesignWarpingState.Image = My.Resources.control_stop_blue
                     pnlStatusDesignWarping.ToolTipText = modMain.GetLocalizedString("main.textpart59")
                     pnlStatusDesignWarpingState.ToolTipText = modMain.GetLocalizedString("main.textpart59")
@@ -21875,7 +22025,7 @@ Public Class frmMain
                 pnlStatusHistoryEnabled.Image = My.Resources.clock_history_frame
                 pnlStatusHistoryEnabled.ToolTipText = modMain.GetLocalizedString("main.textpart74")
             Else
-                pnlStatusHistoryEnabled.Image = My.Resources._error
+                pnlStatusHistoryEnabled.Image = My.Resources.error1
                 pnlStatusHistoryEnabled.ToolTipText = modMain.GetLocalizedString("main.textpart73")
             End If
 
@@ -22051,6 +22201,7 @@ Public Class frmMain
                     Call pHistorySaveMode1(sFilename)
             End Select
         Catch ex As Exception
+            Call pLogAdd(ex)
             Args.Cancelled = True
             Args.LastException = ex
         End Try
@@ -24362,7 +24513,7 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub grdPropLegendItems_OnMapInvalidate(Sender As Object, e As EventArgs) Handles cPropLegendItems.OnMapInvalidate, cDesignPrintOrExportArea.OnMapInvalidate, cPropScaleItems.OnMapInvalidate, cPropCompassItems.OnMapInvalidate, cDesignLinkedSurveys.OnMapInvalidate, c3DLinkedSurveys.OnMapInvalidate, cPropName.OnMapInvalidate
+    Private Sub ObjectProperty_OnMapInvalidate(Sender As Object, e As EventArgs) Handles cPropLegendItems.OnMapInvalidate, cDesignPrintOrExportArea.OnMapInvalidate, cPropScaleItems.OnMapInvalidate, cPropCompassItems.OnMapInvalidate, cDesignLinkedSurveys.OnMapInvalidate, c3DLinkedSurveys.OnMapInvalidate, cPropName.OnMapInvalidate
         If oCurrentDesign.Type = cIDesign.cDesignTypeEnum.ThreeDModel Then
             Call oHolos.Invalidate()
         Else
@@ -24370,14 +24521,14 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub grdPropLegendItems_OnGetFlags(Sender As Object, e As FlagEventArgs) Handles cPropLegendItems.OnGetFlags, cDesignPrintOrExportArea.OnGetFlags, cPropScaleItems.OnGetFlags, cPropCompassItems.OnGetFlags, cDesignLinkedSurveys.OnGetFlags, c3DLinkedSurveys.OnGetFlags, cPropName.OnGetFlags
+    Private Sub ObjectProperty_OnGetFlags(Sender As Object, e As FlagEventArgs) Handles cPropLegendItems.OnGetFlags, cDesignPrintOrExportArea.OnGetFlags, cPropScaleItems.OnGetFlags, cPropCompassItems.OnGetFlags, cDesignLinkedSurveys.OnGetFlags, c3DLinkedSurveys.OnGetFlags, cPropName.OnGetFlags
         Select Case e.Flag
             Case FlagEventArgs.Flags.DisabledObjectPropertyEvent
                 e.Value = bDisabledObjectPropertyEvent
         End Select
     End Sub
 
-    Private Sub cPropScaleItems_OnDrawInvalidate(Sender As Object, e As EventArgs) Handles cPropLegendItems.OnDrawInvalidate, cDesignPrintOrExportArea.OnDrawInvalidate, cPropScaleItems.OnDrawInvalidate, cPropCompassItems.OnDrawInvalidate, cDesignLinkedSurveys.OnDrawInvalidate, c3DLinkedSurveys.OnDrawInvalidate, cPropName.OnDrawInvalidate
+    Private Sub ObjectProperty_OnDrawInvalidate(Sender As Object, e As EventArgs) Handles cPropLegendItems.OnDrawInvalidate, cDesignPrintOrExportArea.OnDrawInvalidate, cPropScaleItems.OnDrawInvalidate, cPropCompassItems.OnDrawInvalidate, cDesignLinkedSurveys.OnDrawInvalidate, c3DLinkedSurveys.OnDrawInvalidate, cPropName.OnDrawInvalidate
         Call oCurrentDesign.Caches.Invalidate()
         If oCurrentDesign.Type = cIDesign.cDesignTypeEnum.ThreeDModel Then
             Call oHolos.Invalidate()
@@ -24386,21 +24537,21 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub grdPropLegendItems_OnSetFlags(Sender As Object, e As FlagEventArgs) Handles cPropLegendItems.OnSetFlags, cDesignPrintOrExportArea.OnSetFlags, cPropScaleItems.OnGetFlags, cPropCompassItems.OnSetFlags, cDesignLinkedSurveys.OnSetFlags, c3DLinkedSurveys.OnSetFlags, cPropName.OnSetFlags
+    Private Sub ObjectProperty_OnSetFlags(Sender As Object, e As FlagEventArgs) Handles cPropLegendItems.OnSetFlags, cDesignPrintOrExportArea.OnSetFlags, cPropScaleItems.OnGetFlags, cPropCompassItems.OnSetFlags, cDesignLinkedSurveys.OnSetFlags, c3DLinkedSurveys.OnSetFlags, cPropName.OnSetFlags
         Select Case e.Flag
             Case FlagEventArgs.Flags.DisabledObjectPropertyEvent
                 bDisabledObjectPropertyEvent = e.Value
         End Select
     End Sub
 
-    Private Sub grdPropLegendItems_OnDoCommand(Sender As Object, e As DoCommandEventArgs) Handles cPropLegendItems.OnDoCommand, cDesignPrintOrExportArea.OnDoCommand, cPropScaleItems.OnDoCommand, cPropCompassItems.OnDoCommand, cDesignLinkedSurveys.OnDoCommand, c3DLinkedSurveys.OnDoCommand, cPropName.OnDoCommand
+    Private Sub ObjectProperty_OnDoCommand(Sender As Object, e As DoCommandEventArgs) Handles cPropLegendItems.OnDoCommand, cDesignPrintOrExportArea.OnDoCommand, cPropScaleItems.OnDoCommand, cPropCompassItems.OnDoCommand, cDesignLinkedSurveys.OnDoCommand, c3DLinkedSurveys.OnDoCommand, cPropName.OnDoCommand
         Select Case e.Command.ToLower
             Case "linkedsurveys"
                 Call pLinkedSurveyShow()
         End Select
     End Sub
 
-    Private Sub grdPropLegendItems_OnObjectPropertyLoad(Sender As Object, e As EventArgs) Handles cPropLegendItems.OnObjectPropertyLoad, cDesignPrintOrExportArea.OnObjectPropertyLoad, cPropScaleItems.OnObjectPropertyLoad, cPropCompassItems.OnObjectPropertyLoad, cDesignLinkedSurveys.OnObjectPropertyLoad, c3DLinkedSurveys.OnObjectPropertyLoad, c3DLinkedSurveys.OnMapInvalidate
+    Private Sub ObjectProperty_OnObjectPropertyLoad(Sender As Object, e As EventArgs) Handles cPropLegendItems.OnObjectPropertyLoad, cDesignPrintOrExportArea.OnObjectPropertyLoad, cPropScaleItems.OnObjectPropertyLoad, cPropCompassItems.OnObjectPropertyLoad, cDesignLinkedSurveys.OnObjectPropertyLoad, c3DLinkedSurveys.OnObjectPropertyLoad, c3DLinkedSurveys.OnMapInvalidate
         Call pObjectPropertyLoad()
     End Sub
 
@@ -24451,7 +24602,7 @@ Public Class frmMain
         ElseIf e.ColumnIndex = colSegmentImage.Index Then
             tabSegmentProperty.SelectedTab = tabSegmentPropertyImage
             If tvSegmentAttachments.Items.Count = 1 Then
-                If IsNothing(tvSegmentAttachments.SelectedObject) Then tvSegmentAttachments.SelectedObject = DirectCast(tvSegmentAttachments.Objects, cAttachmentLinks).FirstOrDefault
+                If IsNothing(tvSegmentAttachments.SelectedObject) Then tvSegmentAttachments.SelectedObject = DirectCast(tvSegmentAttachments.Objects, cAttachmentsLinks).FirstOrDefault
                 Call pSegmentAttachmentOpen()
             End If
         End If
@@ -24560,11 +24711,12 @@ Public Class frmMain
             Call Args.NewItem.SetSelected("design.profile", True)
             Call Args.NewItem.SetSelected("design.3d", True)
         End If
-        If bLinkedSurveysRecursiveLoad AndAlso Args.NewItem.LinkedSurvey.LinkedSurveys.Count > 0 Then
-            For Each oLinkedsurvey As cLinkedSurvey In Args.NewItem.LinkedSurvey.LinkedSurveys
-                Call oSurvey.LinkedSurveys.Add(oLinkedsurvey.Filename)
-            Next
-        End If
+        Args.RecursiveLoad = bLinkedSurveysRecursiveLoad
+        Args.PrioritizeChildren = bLinkedSurveysRefreshOnLoadprioritizechildren
+    End Sub
+
+    Private Sub oSurvey_OnLinkedSurveysLoad(Sender As cSurvey.cSurvey, Args As cSurvey.cSurvey.OnLinkedSurveysLoadEventargs) Handles oSurvey.OnLinkedSurveysLoad
+        Args.RefreshOnLoad = bLinkedSurveysRefreshOnLoad
     End Sub
 
     Private Sub oSurvey_OnLinkedSurveysRefresh(Sender As cSurvey.cSurvey, Args As EventArgs) Handles oSurvey.OnLinkedSurveysRefresh
@@ -24673,6 +24825,7 @@ Public Class frmMain
         Try
             Call pWorkspaceApply(frmManageWorkspaces.LoadWorkspace(DirectCast(sender, ToolStripItem).Name.Substring(18)))
         Catch ex As Exception
+            Call pLogAdd(ex)
         End Try
     End Sub
 
@@ -24849,7 +25002,7 @@ Public Class frmMain
     Private Sub oSurvey_OnGetDefaultSignFromGallery(Sender As cSurvey.cSurvey, Args As cSurvey.cSurvey.OnGetDefaultSignFromGalleryEventArgs) Handles oSurvey.OnGetDefaultSignFromGallery
         If oGalleryIndex Is Nothing Then
             Call oDockClipart.LoadGalleries()
-            Dim oGallery As List(Of Object) = oDockClipart.GetGalleryItems(oDockClipart.GalleryIndexByCategory(cIItem.cItemCategoryEnum.Sign))
+            Dim oGallery As List(Of cGalleryItem) = oDockClipart.GetGalleryItems(oDockClipart.GalleryIndexByCategory(cIItem.cItemCategoryEnum.Sign))
             oGalleryIndex = cSingsImportHelper.CreateIndex(oGallery)
         End If
         If oGalleryIndex.ContainsKey(Args.Sign) Then
@@ -24896,6 +25049,27 @@ Public Class frmMain
                 Call pTemplatesEnumerate()
             End With
         End Using
+    End Sub
+
+    Private Sub txtPropImageRotateAngle_ValueChanged(sender As Object, e As EventArgs) Handles txtPropImageRotateAngle.ValueChanged
+        If Not bDisabledObjectPropertyEvent Then
+            With pGetCurrentDesignTools()
+                Dim oItemImage As cIItemImage = .CurrentItem
+                oItemImage.Rotateby = txtPropImageRotateAngle.Value
+                Call .TakeUndoSnapshot()
+            End With
+            'todo: refresh preview
+            Call pObjectPropertyLoad()
+            Call pMapInvalidate()
+        End If
+    End Sub
+
+    Private Sub oDockLS_OnFilenameRequest(sender As Object, e As frmLinkedSurveys.cFilenameRequestEventArgs) Handles oDockLS.OnFilenameRequest
+        e.Filename = sFilename
+    End Sub
+
+    Private Sub mnuViewSharedTexts_Click(sender As Object, e As EventArgs) Handles mnuViewSharedTexts.Click
+        Call pTextsShow()
     End Sub
 End Class
 

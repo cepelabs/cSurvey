@@ -2,7 +2,7 @@
 Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Calculate
 
-Public Class frmInfoRing
+friend Class frmInfoRing
     Private oSurvey As cSurvey.cSurvey
 
     Friend Sub New(ByVal Survey As cSurvey.cSurvey, Optional ByVal Cave As String = "")

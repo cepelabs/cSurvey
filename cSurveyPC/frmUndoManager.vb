@@ -1,7 +1,7 @@
 ﻿Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
 
-Public Class frmUndoManager
+friend Class frmUndoManager
 
     Private oSurvey As cSurveyPC.cSurvey.cSurvey
     Private WithEvents oUndo As Helper.Editor.cUndo

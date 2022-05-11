@@ -282,14 +282,14 @@ Namespace cSurvey.Design.Items
                     Return New RectangleF
                 Else
                     If MyBase.Design.Type = cIDesign.cDesignTypeEnum.Plan Then
-                        Dim oPoints() As PointF = oSegment.Data.Plan.GetVectorLine
+                        Dim oPoints() As PointD = oSegment.Data.Plan.GetVectorLine
                         Using oPath As GraphicsPath = New GraphicsPath
                             Call oPath.AddLine(oPoints(0), oPoints(1))
                             Dim oRect As RectangleF = oPath.GetBounds
                             Return oRect
                         End Using
                     Else
-                        Dim oPoints() As PointF = oSegment.Data.Profile.GetVectorLine
+                        Dim oPoints() As PointD = oSegment.Data.Profile.GetVectorLine
                         Using oPath As GraphicsPath = New GraphicsPath
                             Call oPath.AddLine(oPoints(0), oPoints(1))
                             Dim oRect As RectangleF = oPath.GetBounds

@@ -19,7 +19,7 @@ Namespace cSurvey.Calculate
             oItems = New Dictionary(Of String, Plot.cData)(StringComparer.OrdinalIgnoreCase)
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlSegments As XmlElement = Document.CreateElement("sgs")
             For Each oItem As KeyValuePair(Of String, Plot.cData) In oItems
                 Dim oXmlSegment As XmlElement = oItem.Value.SaveTo(File, Document, oXmlSegments)

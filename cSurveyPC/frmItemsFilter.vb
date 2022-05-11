@@ -2,7 +2,7 @@
 Imports cSurveyPC.cSurvey.Design.Items
 Imports cSurveyPC.cSurvey.Helper.Editor
 
-Public Class frmItemsFilter
+friend Class frmItemsFilter
     Private oSurvey As cSurveyPC.cSurvey.cSurvey
     Private oSourceFilter As cFilter
     Private oFilter As cFilter

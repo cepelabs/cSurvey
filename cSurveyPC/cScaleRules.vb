@@ -3,44 +3,6 @@ Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Design.Items
 
 Namespace cSurvey.Scale
-    ' public class cScaleRange
-    'Private oSurvey As cSurvey
-    'Private iMinScale As Nullable(Of Integer)
-    'Private iMaxScale As Nullable(Of Integer)
-
-    'Public Sub SetScaleRange(ByVal Min As Nullable(Of Integer), ByVal Max As Nullable(Of Integer))
-    '    iMinScale = Min
-    '    iMaxScale = Max
-    'End Sub
-
-    'Public Function IsInScaleRange(ByVal Scale As Integer) As Boolean
-    '    Dim sMin As Integer
-    '    If iMinScale.HasValue Then
-    '        sMin = iMinScale.Value
-    '    Else
-    '        'sMin = oSurvey.scalerules(iCategory).min
-    '    End If
-    '    Dim sMax As Integer
-    '    If iMaxScale.HasValue Then
-    '        sMax = iMaxScale.Value
-    '    Else
-    '        'sMax = oSurvey.scalerules(iCategory).max
-    '    End If
-    '    Return Scale >= sMin And Scale <= sMax
-    'End Function
-
-    'Friend Sub New(ByVal Survey As cSurvey, ByVal Min As Nullable(Of Integer), ByVal Max As Nullable(Of Integer))
-    '    oSurvey = Survey
-    '    iMinScale = Min
-    '    iMaxScale = Max
-    'End Sub
-
-    'Friend Sub New(ByVal Survey As cSurvey, ByVal ScaleRange As XmlElement)
-    '    oSurvey = Survey
-    '    Try : iMinScale = ScaleRange.GetAttribute("min") : Catch : End Try
-    '    Try : iMaxScale = ScaleRange.GetAttribute("max") : Catch : End Try
-    'End Sub
-    'End Class
 
     Public Class cScaleRules
         Implements IEnumerable
@@ -50,20 +12,14 @@ Namespace cSurvey.Scale
         Private oDefaultItem As cDefaultScaleRule
         Private oItems As SortedDictionary(Of Integer, cScaleRule)
 
-        'Private iCurrentScale As Integer
-        'Private oCurrentRule As cIScaleRule
-
         Public Sub Clear()
             Call oItems.Clear()
-            'oCurrentRule = oDefaultItem
         End Sub
 
         Friend Sub New(ByVal Survey As cSurvey)
             oSurvey = Survey
             oDefaultItem = New cDefaultScaleRule(oSurvey)
             oItems = New SortedDictionary(Of Integer, cScaleRule)
-            'iCurrentScale = iDefaultDesignScale
-            'oCurrentRule = Nothing
         End Sub
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal ScaleRules As XmlElement)
@@ -121,44 +77,27 @@ Namespace cSurvey.Scale
         End Property
 
         Public Function FindRule(ByVal Scale As Integer) As cIScaleRule
-            Dim oItem As cIScaleRule
-            Dim oNewItem As cIScaleRule
-            Dim iIndex As Integer = 0
-            Do
-                If iIndex = 0 Then
-                    oItem = oDefaultItem
-                Else
-                    oItem = oNewItem
-                End If
-                If iIndex >= oItems.Count Then Exit Do
-                oNewItem = oItems.ElementAt(iIndex).Value
-                iIndex += 1
-            Loop While oNewItem.Scale <= Scale
-            Return oItem
+            Dim oItem As cScaleRule = oItems.Values.LastOrDefault(Function(oScaleRule) oScaleRule.Scale < Scale)
+            If oItem Is Nothing Then
+                Return oDefaultItem
+            Else
+                Return oItem
+            End If
+            'Dim oItem As cIScaleRule
+            'Dim oNewItem As cIScaleRule
+            'Dim iIndex As Integer = 0
+            'Do
+            '    If iIndex = 0 Then
+            '        oItem = oDefaultItem
+            '    Else
+            '        oItem = oNewItem
+            '    End If
+            '    If iIndex >= oItems.Count Then Exit Do
+            '    oNewItem = oItems.ElementAt(iIndex).Value
+            '    iIndex += 1
+            'Loop While oNewItem.Scale <= Scale
+            'Return oItem
         End Function
-
-        'Public Function CurrentRule() As cIScaleRule
-        '    If oCurrentRule Is Nothing Then
-        '        oCurrentRule = FindRule(iCurrentScale)
-        '    End If
-        '    Return oCurrentRule
-        'End Function
-
-        'Public Property CurrentScale As Integer
-        '    Get
-        '        Return iCurrentScale
-        '    End Get
-        '    Set(ByVal value As Integer)
-        '        If (value >= 5 And value <= 50000) And (value <> iCurrentScale) Then
-        '            iCurrentScale = value
-        '            Dim oNewScaleRule As cIScaleRule = FindRule(iCurrentScale)
-        '            If Not oCurrentRule Is oNewScaleRule Then
-        '                oCurrentRule = oNewScaleRule
-        '                Call oSurvey.RaiseOnPropertiesChanged(cSurvey.OnPropertiesChangedEventArgs.PropertiesChangeSourceEnum.Scale)
-        '            End If
-        '        End If
-        '    End Set
-        'End Property
 
         Public Function GetRule(ByVal Scale As Integer) As cIScaleRule
             If oItems.ContainsKey(Scale) Then
@@ -202,7 +141,7 @@ Namespace cSurvey.Scale
             Return oItems.Values.GetEnumerator
         End Function
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlItem As XmlElement = Document.CreateElement("scalerules")
             'Call oXmlItem.SetAttribute("currentscale", iCurrentScale)
             For Each oItem As cScaleRule In oItems.Values
@@ -214,9 +153,9 @@ Namespace cSurvey.Scale
     End Class
 
     Public Interface cIScaleRule
+        Inherits cIDesignProperties
         Property Scale As Integer
         ReadOnly Property Categories As cIScaleCategoriesVisibility
-        ReadOnly Property DesignProperties As cPropertiesCollection
         ReadOnly Property Items As cVisibilityItems
     End Interface
 
@@ -226,6 +165,7 @@ Namespace cSurvey.Scale
         Private oSurvey As cSurvey
         Private oCategories As cDefaultScaleCategoriesVisibility
         Private oItems As cVisibilityItems
+        Private oDesignProperties As cPropertiesCollection
 
         Public ReadOnly Property Items As cVisibilityItems Implements cIScaleRule.Items
             Get
@@ -241,7 +181,7 @@ Namespace cSurvey.Scale
 
         Public ReadOnly Property DesignProperties As cPropertiesCollection Implements cIScaleRule.DesignProperties
             Get
-                Return oSurvey.Properties.DesignProperties
+                Return oDesignProperties 'oSurvey.Properties.DesignProperties
             End Get
         End Property
 
@@ -257,6 +197,7 @@ Namespace cSurvey.Scale
             oSurvey = Survey
             oCategories = New cDefaultScaleCategoriesVisibility
             oItems = New cVisibilityItems(oSurvey)
+            oDesignProperties = New cPropertiesCollection(oSurvey)
         End Sub
     End Class
 
@@ -322,7 +263,7 @@ Namespace cSurvey.Scale
             Next
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlItem As XmlElement = Document.CreateElement("categoriesvisibility")
             For Each oKeyValue As KeyValuePair(Of cIItem.cItemCategoryEnum, Boolean) In oCategories
                 Dim iCategory As Integer = oKeyValue.Key
@@ -478,7 +419,7 @@ Namespace cSurvey.Scale
             End Try
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlItem As XmlElement = Document.CreateElement("scalerule")
             Call oXmlItem.SetAttribute("scale", iScale)
             Call oCategories.SaveTo(File, Document, oXmlItem)

@@ -198,16 +198,16 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Esporta dati in Excel:</value>
   </data>
-  <data name="chkExportCalculatedData.Text" xml:space="preserve">
-    <value>Dati calcolati</value>
+  <data name="chkExportNamedSplayStationsData.Properties.Caption" xml:space="preserve">
+    <value>Dati dei capisaldi splay</value>
   </data>
-  <data name="chkExportColor.Text" xml:space="preserve">
-    <value>Colori</value>
-  </data>
-  <data name="chkExportNamedSplayStations.Text" xml:space="preserve">
+  <data name="chkExportNamedSplayStations.Properties.Caption" xml:space="preserve">
     <value>Nomi dei caposaldi splay</value>
   </data>
-  <data name="chkExportNamedSplayStationsData.Text" xml:space="preserve">
-    <value>Dati dei capisaldi splay</value>
+  <data name="chkExportColor.Properties.Caption" xml:space="preserve">
+    <value>Colori</value>
+  </data>
+  <data name="chkExportCalculatedData.Properties.Caption" xml:space="preserve">
+    <value>Dati calcolati</value>
   </data>
 </root>

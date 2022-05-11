@@ -62,7 +62,7 @@ Namespace cSurvey.Design
         '    End Set
         'End Property
 
-        Friend Overrides Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLOptions As XmlElement = MyBase.SaveTo(File, Document, Parent)
             'If bDrawPrintOrExportArea Then Call oXMLOptions.SetAttribute("printorexportarea", "1")
             'If Not IsNothing(oPrintOrExportProfile) Then

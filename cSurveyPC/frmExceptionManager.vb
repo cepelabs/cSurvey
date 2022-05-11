@@ -3,7 +3,7 @@ Imports System.Text
 Imports System.Xml
 Imports System.Net
 
-Public Class frmExceptionManager
+friend Class frmExceptionManager
 
     Private oSurvey As cSurvey.cSurvey
     Private sFilename As String

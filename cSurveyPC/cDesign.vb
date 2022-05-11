@@ -25,10 +25,9 @@ Namespace cSurvey.Design
         Private WithEvents oLayers As cLayers
 
         Public MustOverride ReadOnly Property Type As cIDesign.cDesignTypeEnum Implements cIDesign.Type
-
-        Friend MustOverride Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, ByVal ViewArea As RectangleF, ByVal Zoom As Single, ByVal Translate As PointF) As XmlElement
-        Friend MustOverride Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, ByVal ViewArea As RectangleF, ByVal Zoom As Single, ByVal Translate As PointF) As XmlDocument
-        Friend MustOverride Sub AppendSvgItem(ByVal SVG As XmlDocument, ByVal Parent As XmlElement, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, ByVal ViewArea As RectangleF, ByVal Zoom As Single, ByVal Translate As PointF)
+        Friend MustOverride Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        Friend MustOverride Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, Size As SizeF, PageBox As RectangleF, Unit As SizeUnit, ByVal ViewBox As RectangleF) As XmlDocument
+        'Friend MustOverride Sub AppendSvgItem(ByVal SVG As XmlDocument, ByVal Parent As XmlElement, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, Size As SizeF, ByVal ViewBox As RectangleF)
 
         Private oPointsJoins As cPointsJoins
 
@@ -189,6 +188,15 @@ Namespace cSurvey.Design
             Return oRect
         End Function
 
+        Public Function HasItems() As Boolean
+            For Each oLayer As cLayer In oLayers
+                If oLayer.Items.Count > 0 Then
+                    Return True
+                End If
+            Next
+            Return False
+        End Function
+
         Public Function HasBindedItems() As Boolean
             Dim oItems As List(Of cItem) = New List(Of cItem)
             For Each oLayer As cLayer In oLayers
@@ -278,7 +286,7 @@ Namespace cSurvey.Design
             Return oAllItems
         End Function
 
-        Public ReadOnly Property Survey() As cSurvey
+        Public ReadOnly Property Survey() As cSurvey Implements cIDesign.Survey
             Get
                 Return oSurvey
             End Get
@@ -492,7 +500,7 @@ Namespace cSurvey.Design
             oPointsJoins = New cPointsJoins(oSurvey, Me)
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal File As Storage.cFile, ByVal Design As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal Design As XmlElement)
             oSurvey = Survey
             oCaches = New cDrawCaches
             If modXML.ChildElementExist(Design, "layers") Then
@@ -514,7 +522,7 @@ Namespace cSurvey.Design
             End Get
         End Property
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oXmlDesign As XmlElement = Document.CreateElement("design")
             Call oLayers.SaveTo(File, Document, oXmlDesign, Options)
             Call oPointsJoins.SaveTo(File, Document, oXmlDesign)
@@ -1039,7 +1047,9 @@ Namespace cSurvey.Design
                                         Dim oLinkedOrigin As UTM = modUTM.WGS84ToUTM(oLinked)
                                         If Type = cIDesign.cDesignTypeEnum.Plan Then
                                             Dim oState As GraphicsState = Nothing
-                                            Dim oMoveBy As SizeF = New SizeF(oLinkedOrigin.East - oThisOrigin.East, oLinkedOrigin.North - oThisOrigin.North)
+                                            Dim oSizePoint As SizeF = New SizeD(oLinkedOrigin.East - oThisOrigin.East, oLinkedOrigin.North - oThisOrigin.North)
+                                            Dim oMovePoint As PointD = modPaint.RotatePointByRadians(New PointD(oSizePoint.Width, oSizePoint.Height), oSurvey.Calculate.GeoMagDeclinationData.MeridianConvergenceRadians)
+                                            Dim oMoveBy As SizeF = New SizeF(oMovePoint)
                                             If Not oMoveBy.IsEmpty Then
                                                 oState = Graphics.Save()
                                                 Call Graphics.TranslateTransform(oMoveBy.Width, -oMoveBy.Height, MatrixOrder.Prepend)

@@ -8,7 +8,7 @@ Imports System.IO
 Imports System.Xml
 Imports System.Collections.ObjectModel
 
-Public Class frmManageWorkspaces
+friend Class frmManageWorkspaces
     Public Class cManageWorkspacesStateEventArgs
         Inherits EventArgs
         Private oXml As XmlDocument

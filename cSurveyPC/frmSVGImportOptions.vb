@@ -2,7 +2,7 @@
 Imports System.Drawing.Drawing2D
 Imports cSurveyPC.cSurvey.Drawings
 
-Public Class frmSVGImportOptions
+friend Class frmSVGImportOptions
     Private oSurvey As cSurveyPC.cSurvey.cSurvey
     Private oOptions As cSurveyPC.cSurvey.Design.Items.cItemGeneric.cItemGenericOptions
     Private oClipart As cDrawClipArt

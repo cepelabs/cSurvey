@@ -1,4 +1,4 @@
-﻿Public Class frmImportVisualTopo
+﻿friend Class frmImportVisualTopo
 
     Private Sub pSettingsLoad()
         Try

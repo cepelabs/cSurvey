@@ -14,7 +14,7 @@ Namespace cSurvey.Design
         End Enum
 
         ReadOnly Property Type As cIDesign.cDesignTypeEnum
-
+        ReadOnly Property Survey As cSurvey
 
     End Interface
 End Namespace

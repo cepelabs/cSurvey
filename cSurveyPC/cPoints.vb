@@ -619,7 +619,7 @@ Namespace cSurvey.Design
             Call Parse(Points)
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlPoints As XmlElement = Document.CreateElement("points")
             Dim sLastSegmentBinded As String = ""
             Dim bAppendSpace As Boolean = False

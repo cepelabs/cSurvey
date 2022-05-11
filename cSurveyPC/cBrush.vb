@@ -110,34 +110,29 @@ Namespace cSurvey.Design
             Try
                 Dim oBounds As RectangleF = New RectangleF(0, 0, thumbWidth, thumbHeight)
                 Dim oImage As Image = New Bitmap(thumbWidth, thumbHeight)
-                Dim oGr As Graphics = Graphics.FromImage(oImage)
-                oGr.SmoothingMode = SmoothingMode.AntiAlias
-                oGr.CompositingQuality = CompositingQuality.HighQuality
-                oGr.InterpolationMode = InterpolationMode.HighQualityBicubic
-
-                Dim oBackBrush As SolidBrush = New SolidBrush(Backcolor)
-                Call oGr.FillRectangle(oBackBrush, oBounds)
-
-                Dim sZoom As Single = 0.1
-
-                Dim oPath As GraphicsPath = New GraphicsPath
-                Dim oBrushRect As RectangleF = New RectangleF(oBounds.Left, oBounds.Top, oBounds.Width, oBounds.Height)
-                Call oPath.AddRectangle(oBrushRect)
-                Dim oMatrix As Matrix = New Matrix
-                Call oMatrix.Scale(sZoom, sZoom)
-                Call oPath.Transform(oMatrix)
-                Call oMatrix.Dispose()
-
-                Call oGr.ScaleTransform(1 / sZoom, 1 / sZoom)
-
-                Dim oCache As cDrawCache = New cDrawCache
-                Call Render(oGr, PaintOptions, cItem.PaintOptionsEnum.None, False, oPath, oCache)
-                Call oCache.Paint(oGr, PaintOptions, cItem.PaintOptionsEnum.None)
-
-                Call oPath.Dispose()
-                Call oBackBrush.Dispose()
-                Call oGr.Dispose()
-
+                Using oGr As Graphics = Graphics.FromImage(oImage)
+                    oGr.SmoothingMode = SmoothingMode.AntiAlias
+                    oGr.CompositingQuality = CompositingQuality.HighQuality
+                    oGr.InterpolationMode = InterpolationMode.HighQualityBicubic
+                    Using oBackBrush As SolidBrush = New SolidBrush(Backcolor)
+                        Call oGr.FillRectangle(oBackBrush, oBounds)
+                        Dim sZoom As Single = 0.1
+                        Using oPath As GraphicsPath = New GraphicsPath
+                            Dim oBrushRect As RectangleF = New RectangleF(oBounds.Left, oBounds.Top, oBounds.Width, oBounds.Height)
+                            Call oPath.AddRectangle(oBrushRect)
+                            Using oMatrix As Matrix = New Matrix
+                                Call oMatrix.Scale(sZoom, sZoom)
+                                Call oPath.Transform(oMatrix)
+                            End Using
+                            Call oGr.ScaleTransform(1 / sZoom, 1 / sZoom)
+                            Using oCache As cDrawCache = New cDrawCache
+                                Call Invalidate()
+                                Call Render(oGr, PaintOptions, cItem.PaintOptionsEnum.None, False, oPath, oCache)
+                                Call oCache.Paint(oGr, PaintOptions, cItem.PaintOptionsEnum.None)
+                            End Using
+                        End Using
+                    End Using
+                End Using
                 Return oImage
             Catch
                 Return Nothing
@@ -458,7 +453,7 @@ Namespace cSurvey.Design
             bInvalidated = True
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal File As Storage.cFile, ByVal item As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal item As XmlElement)
             oSurvey = Survey
             oSeed = New cBrushSeed()
             iType = modXML.GetAttributeValue(item, "type", BrushTypeEnum.Custom)
@@ -471,11 +466,11 @@ Namespace cSurvey.Design
                     sTextureID = modXML.GetAttributeValue(item, "textureid", Guid.NewGuid.ToString)
                     If sTextureID = "" Then sTextureID = Guid.NewGuid.ToString
                     Select Case File.FileFormat
-                        Case Storage.cFile.FileFormatEnum.CSX
+                        Case cFile.FileFormatEnum.CSX
                             Using oms As IO.MemoryStream = New IO.MemoryStream(Convert.FromBase64String(modXML.GetAttributeValue(item, "texture")))
                                 oTexture = modPaint.SafeBitmapFromStream(oms) 'New Bitmap(oms)
                             End Using
-                        Case Storage.cFile.FileFormatEnum.CSZ
+                        Case cFile.FileFormatEnum.CSZ
                             Dim sImagePath As String = modXML.GetAttributeValue(item, "texture")
                             oTexture = modPaint.SafeBitmapFromStream(DirectCast(File.Data(sImagePath), Storage.cStorageItemFile).Stream)
                     End Select
@@ -519,7 +514,7 @@ Namespace cSurvey.Design
             bInvalidated = True
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oItem As XmlElement = Document.CreateElement("brush")
             Call oItem.SetAttribute("type", iType)
 
@@ -533,15 +528,15 @@ Namespace cSurvey.Design
                 If iHatchType = HatchTypeEnum.Texture Then
                     If Not oTexture Is Nothing Then
                         Call oItem.SetAttribute("textureid", sTextureID)
-                        If Not (File.Options And Storage.cFile.FileOptionsEnum.DontSaveBinary) = Storage.cFile.FileOptionsEnum.DontSaveBinary Then
+                        If Not (File.Options And cFile.FileOptionsEnum.DontSaveBinary) = cFile.FileOptionsEnum.DontSaveBinary Then
                             Dim oTemp As Bitmap 'vedi commento in sketch...
                             Select Case File.FileFormat
-                                Case Storage.cFile.FileFormatEnum.CSX
+                                Case cFile.FileFormatEnum.CSX
                                     Using oms As IO.MemoryStream = New IO.MemoryStream
                                         Call modPaint.SafeBitmapSaveToStream(oTexture, oms, Drawing.Imaging.ImageFormat.Png)
                                         Call oItem.SetAttribute("texture", Convert.ToBase64String(oms.ToArray()))
                                     End Using
-                                Case Storage.cFile.FileFormatEnum.CSZ
+                                Case cFile.FileFormatEnum.CSZ
                                     Dim sImagePath As String = "_data\texture\" & sTextureID & ".png"
                                     Dim oImageStorage As Storage.cStorageItemFile = File.Data.AddFile(sImagePath)
                                     Call modPaint.SafeBitmapSaveToStream(oTexture, oImageStorage.Stream, Drawing.Imaging.ImageFormat.Png)
@@ -626,11 +621,11 @@ Namespace cSurvey.Design
             If sLocalZoomFactor = 0 Then
                 Select Case iHatchType
                     Case HatchTypeEnum.Texture
-                        sZoomFactor = PaintOptions.CurrentRule.DesignProperties.GetValue("DesignTextureScaleFactor", oSurvey.Properties.DesignProperties.GetValue("DesignTextureScaleFactor", 0.2))
+                        sZoomFactor = PaintOptions.GetCurrentDesignPropertiesValue("DesignTextureScaleFactor", 0.2)
                     Case HatchTypeEnum.Clipart
-                        sZoomFactor = PaintOptions.CurrentRule.DesignProperties.GetValue("DesignSoilScaleFactor", oSurvey.Properties.DesignProperties.GetValue("DesignSoilScaleFactor", 1))
+                        sZoomFactor = PaintOptions.GetCurrentDesignPropertiesValue("DesignSoilScaleFactor", 1)
                     Case Else
-                        sZoomFactor = PaintOptions.CurrentRule.DesignProperties.GetValue("DesignSoilScaleFactor", oSurvey.Properties.DesignProperties.GetValue("DesignSoilScaleFactor", 1))
+                        sZoomFactor = PaintOptions.GetCurrentDesignPropertiesValue("DesignSoilScaleFactor", 1)
                 End Select
             Else
                 sZoomFactor = sLocalZoomFactor
@@ -641,7 +636,7 @@ Namespace cSurvey.Design
         Friend Function GetPaintLineWidth(PaintOptions As cOptions) As Single
             Dim sLineWidth As Single
             If sLocalLineWidth = 0 Then
-                sLineWidth = PaintOptions.CurrentRule.DesignProperties.GetValue("BaseLineWidthScaleFactor", oSurvey.Properties.DesignProperties.GetValue("BaseLineWidthScaleFactor", 0.01))
+                sLineWidth = PaintOptions.GetCurrentDesignPropertiesValue("BaseLineWidthScaleFactor", 0.01)
             Else
                 sLineWidth = sLocalLineWidth
             End If
@@ -700,15 +695,15 @@ Namespace cSurvey.Design
         Private Sub pRenderTexture(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache)
             If PaintOptions.ShowAdvancedBrushes Then
                 If Selected = cItem.SelectionModeEnum.InEdit Then
-                    Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, Path, Nothing, Nothing, oClipartAlternativeBrush2)
+                    Call Cache.AddFiller(Path, Nothing, Nothing, oClipartAlternativeBrush2)
                 Else
                     Dim sZoomFactor As Single = GetPaintZoomFactor(PaintOptions)
                     Call oTextureBrush.ResetTransform()
                     Call oTextureBrush.ScaleTransform(sZoomFactor, sZoomFactor)
-                    Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, Path, Nothing, Nothing, oTextureBrush)
+                    Call Cache.AddFiller(Path, Nothing, Nothing, oTextureBrush)
                 End If
             Else
-                Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, Path, Nothing, Nothing, oClipartAlternativeBrush1)
+                Call Cache.AddFiller(Path, Nothing, Nothing, oClipartAlternativeBrush1)
             End If
         End Sub
 
@@ -725,10 +720,10 @@ Namespace cSurvey.Design
                 If Selected = cItem.SelectionModeEnum.InEdit Then
                     Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, Path, Nothing, Nothing, oClipartAlternativeBrush2)
                 Else
-                    If sClipartDensity > 0 And Not oClipart Is Nothing And Path.PointCount > 2 Then
+                    If sClipartDensity > 0 AndAlso Not oClipart Is Nothing AndAlso Path.PointCount > 2 Then
                         Dim sZoomFactor As Single = GetPaintZoomFactor(PaintOptions)
                         Dim sCurrentDensity As Single = sClipartDensity * sZoomFactor
-                        Call Cache.SetClip(Path)
+                        Call Cache.AddSetClip(Path)
                         Using oClipRegion As cIRegion = pCreateRegion(Path)
                             Using oPenPath As GraphicsPath = New GraphicsPath
                                 Using oFillWhitePath As GraphicsPath = New GraphicsPath
@@ -835,7 +830,7 @@ Namespace cSurvey.Design
                                                             For Each oPath As GraphicsPath In oItemFillWhitePathColl
                                                                 Using oWidenedPath As GraphicsPath = oPath
                                                                     If oClipRegion.Contains(Graphics, oWidenedPath) Then
-                                                                        Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oPath, Nothing, Nothing, Brushes.White)
+                                                                        Call Cache.AddFiller(oPath, Nothing, Nothing, Brushes.White)
                                                                     End If
                                                                 End Using
                                                             Next
@@ -844,7 +839,7 @@ Namespace cSurvey.Design
                                                                 'Try
                                                                 Using oWidenedPath As GraphicsPath = oPath
                                                                     If oClipRegion.Contains(Graphics, oWidenedPath) Then
-                                                                        Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oPath, Nothing, Nothing, oBrush)
+                                                                        Call Cache.AddFiller(oPath, Nothing, Nothing, oBrush)
                                                                     End If
                                                                 End Using
                                                             Next
@@ -852,14 +847,14 @@ Namespace cSurvey.Design
                                                             For Each oPath As GraphicsPath In oItemPenPathColl
                                                                 Using oWidenedPath As GraphicsPath = oPath
                                                                     If oClipRegion.Contains(Graphics, oWidenedPath) Then
-                                                                        Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oPath, oPen, Nothing)
+                                                                        Call Cache.AddFiller(oPath, oPen, Nothing)
                                                                     End If
                                                                 End Using
                                                             Next
 
                                                         End Using
 
-                                                        If Not PaintOptions.IsDesign And modMain.Is32Bit Then
+                                                        If Not PaintOptions.IsDesign AndAlso modMain.Is32Bit Then
                                                             Call GC.Collect()
                                                         End If
                                                     Next
@@ -954,14 +949,14 @@ Namespace cSurvey.Design
                                                                                 End If
 
                                                                                 If bBaseFillWhitePath Then
-                                                                                    Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oItemFillWhitePath, Nothing, Nothing, Brushes.White)
+                                                                                    Call Cache.AddFiller(oItemFillWhitePath, Nothing, Nothing, Brushes.White)
                                                                                     Call oItemFillWhitePath.Dispose()
                                                                                 End If
                                                                                 If bBaseFillPath Then
-                                                                                    Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oItemFillPath, Nothing, Nothing, oBrush)
+                                                                                    Call Cache.AddFiller(oItemFillPath, Nothing, Nothing, oBrush)
                                                                                     Call oItemFillPath.Dispose()
                                                                                 End If
-                                                                                Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oItemPenPath, oPen, Nothing)
+                                                                                Call Cache.AddFiller(oItemPenPath, oPen, Nothing)
                                                                             End If
                                                                         End Using
                                                                     End Using
@@ -971,33 +966,31 @@ Namespace cSurvey.Design
                                                             'If bBaseFillPath Then Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oFillPath, Nothing, Nothing, oBrush)
                                                             'Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oPenPath, oPen, Nothing)
                                                         End If
-
                                                     End Using
                                                 End Using
                                             End Using
-
                                         End If
                                     End Using
                                 End Using
                             End Using
                         End Using
-                        Call Cache.ResetClip()
+                        Call Cache.AddResetclip()
                     End If
                 End If
                     Else
-                Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, Path, Nothing, Nothing, oClipartAlternativeBrush1)
+                Call Cache.AddFiller(Path, Nothing, Nothing, oClipartAlternativeBrush1)
             End If
         End Sub
 
         Private Sub pRenderPattern(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache)
             If PaintOptions.ShowAdvancedBrushes Then
                 If Selected = cItem.SelectionModeEnum.InEdit Then
-                    Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, Path, Nothing, Nothing, oClipartAlternativeBrush2)
+                    Call Cache.AddFiller(Path, Nothing, Nothing, oClipartAlternativeBrush2)
                 Else
                     Dim sZoomFactor As Single = GetPaintZoomFactor(PaintOptions)
                     If sClipartDensity > 0 And Path.PointCount > 2 Then
                         Dim sCurrentDensity As Single = sClipartDensity * sZoomFactor
-                        Call Cache.SetClip(Path)
+                        Call Cache.AddSetClip(Path)
                         Using oPatternPath As GraphicsPath = New GraphicsPath
                             Dim oBounds As RectangleF = Path.GetBounds
                             Using oMatrix As Matrix = New Matrix
@@ -1025,28 +1018,24 @@ Namespace cSurvey.Design
                                 End Select
                                 Call oPatternPath.Transform(oMatrix)
                             End Using
-                            Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oPatternPath, oPatternPen, Nothing)
+                            Call Cache.AddFiller(oPatternPath, oPatternPen, Nothing)
                         End Using
-                        Call Cache.ResetClip()
+                        Call Cache.AddResetclip()
                     End If
                 End If
             Else
-                Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, Path, Nothing, Nothing, oClipartAlternativeBrush1)
+                Call Cache.AddFiller(Path, Nothing, Nothing, oClipartAlternativeBrush1)
             End If
         End Sub
 
         Private Sub pRenderSolid(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache)
-            Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, Path, Nothing, Nothing, oBrush)
+            Call Cache.AddBorder(Path, Nothing, Nothing, oBrush)
         End Sub
 
         Friend Sub Render(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache)
             If bInvalidated Then Call pRender(PaintOptions)
             If iType <> BrushTypeEnum.None Then
                 If Path.PointCount > 1 Then
-                    'If (Options And cItem.PaintOptionsEnum.Wireframe) = cItem.PaintOptionsEnum.Wireframe Or (Options And cItem.PaintOptionsEnum.SchematicLayerDraw) = cItem.PaintOptionsEnum.SchematicLayerDraw Then
-                    '    Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, Path, Nothing, Nothing)
-                    '    bInvalidatedWireframe = False
-                    'Else
                     Select Case iHatchType
                         Case HatchTypeEnum.None
                                 'nulla...
@@ -1059,10 +1048,6 @@ Namespace cSurvey.Design
                         Case HatchTypeEnum.Texture
                             Call pRenderTexture(Graphics, PaintOptions, Options, Selected, Path, Cache)
                     End Select
-
-                    'bInvalidated = False
-                    'bInvalidatedWireframe = False
-                    'End If
                 End If
             End If
         End Sub
@@ -1072,14 +1057,6 @@ Namespace cSurvey.Design
                 Return bInvalidated
             End Get
         End Property
-
-        'Friend Function IsInvalidated(Options As cItem.PaintOptionsEnum) As Boolean
-        '    If (Options And cItem.PaintOptionsEnum.Wireframe) = cItem.PaintOptionsEnum.Wireframe Or (Options And cItem.PaintOptionsEnum.SchematicLayerDraw) = cItem.PaintOptionsEnum.SchematicLayerDraw Then
-        '        Return bInvalidatedWireframe
-        '    Else
-        '        Return bInvalidatedFull Or bInvalidatedWireframe
-        '    End If
-        'End Function
 
         Friend Sub Invalidate()
             bInvalidated = True

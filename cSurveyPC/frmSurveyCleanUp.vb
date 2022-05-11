@@ -1,4 +1,4 @@
-﻿Public Class frmSurveyCleanUp
+﻿friend Class frmSurveyCleanUp
 
     Private Sub frmSurveyCleanUp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cboDesignContext.SelectedIndex = 0

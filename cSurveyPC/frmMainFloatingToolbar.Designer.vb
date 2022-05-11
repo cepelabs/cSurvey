@@ -65,7 +65,7 @@ Partial Class frmMainFloatingToolbar
         '
         Me.btnPenEndEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         resources.ApplyResources(Me.btnPenEndEdit, "btnPenEndEdit")
-        Me.btnPenEndEdit.Image = Global.cSurveyPC.My.Resources.Resources._stop
+        Me.btnPenEndEdit.Image = Global.cSurveyPC.My.Resources.Resources.stop2
         Me.btnPenEndEdit.Name = "btnPenEndEdit"
         '
         'ToolStripSeparator4

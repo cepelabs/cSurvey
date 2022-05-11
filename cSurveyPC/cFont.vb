@@ -85,7 +85,7 @@ Namespace cSurvey
             Call Path.AddString(Text, oFont.FontFamily, oFont.Style, oFont.Size, Point, StringFormat)
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, ByVal Name As String) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, ByVal Name As String) As XmlElement
             Dim oItem As XmlElement = Document.CreateElement(Name)
             Call oItem.SetAttribute("color", oColor.ToArgb)
             Call oItem.SetAttribute("fontname", sFontName)

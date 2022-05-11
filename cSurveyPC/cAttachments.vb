@@ -167,15 +167,15 @@ Namespace cSurvey
             sNote = Note
         End Sub
 
-        Friend Sub New(ByVal File As Storage.cFile, ByVal Attachment As XmlElement)
+        Friend Sub New(ByVal File As cFile, ByVal Attachment As XmlElement)
             sID = modXML.GetAttributeValue(Attachment, "id", "")
             sMimetype = modXML.GetAttributeValue(Attachment, "type", "")
             sName = modXML.GetAttributeValue(Attachment, "name", "")
             sNote = modXML.GetAttributeValue(Attachment, "note", "")
             Select Case File.FileFormat
-                Case Storage.cFile.FileFormatEnum.CSX
+                Case cFile.FileFormatEnum.CSX
                     oData = Convert.FromBase64String(modXML.GetAttributeValue(Attachment, "data"))
-                Case Storage.cFile.FileFormatEnum.CSZ
+                Case cFile.FileFormatEnum.CSZ
                     Dim sDataPath As String = modXML.GetAttributeValue(Attachment, "data")
                     oData = DirectCast(File.Data(sDataPath), Storage.cStorageItemFile).Stream.ToArray
             End Select
@@ -222,17 +222,17 @@ Namespace cSurvey
             Return (IsNothing(oData)) OrElse (oData.Length = 0)
         End Function
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oItem As XmlElement = Document.CreateElement("attachment")
             Call oItem.SetAttribute("id", sID)
             Call oItem.SetAttribute("type", sMimetype)
             If sName <> "" Then Call oItem.SetAttribute("name", sName)
             If sNote <> "" Then Call oItem.SetAttribute("note", sNote)
-            If Not (File.Options And Storage.cFile.FileOptionsEnum.DontSaveBinary) = Storage.cFile.FileOptionsEnum.DontSaveBinary Then
+            If Not (File.Options And cFile.FileOptionsEnum.DontSaveBinary) = cFile.FileOptionsEnum.DontSaveBinary Then
                 Select Case File.FileFormat
-                    Case Storage.cFile.FileFormatEnum.CSX
+                    Case cFile.FileFormatEnum.CSX
                         Call oItem.SetAttribute("data", Convert.ToBase64String(oData))
-                    Case Storage.cFile.FileFormatEnum.CSZ
+                    Case cFile.FileFormatEnum.CSZ
                         Dim sDataPath As String = "_data\attachments\" & sID & "." & GetMimeTypeFileExtensions(sMimetype)
                         Dim oDataStorage As Storage.cStorageItemFile = File.Data.AddFile(sDataPath)
                         Call oDataStorage.Stream.Write(oData, 0, oData.Length)
@@ -324,17 +324,17 @@ Namespace cSurvey
             End Get
         End Property
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement)
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement)
             Dim oXmlAttachment As XmlElement = Document.CreateElement("attachment")
-            If (File.Options And Storage.cFile.FileOptionsEnum.EmbedResource) = Storage.cFile.FileOptionsEnum.EmbedResource Then
+            If (File.Options And cFile.FileOptionsEnum.EmbedResource) = cFile.FileOptionsEnum.EmbedResource Then
                 Call oXmlAttachment.SetAttribute("type", oAttachment.MimeType)
                 If oAttachment.Name <> "" Then Call oXmlAttachment.SetAttribute("name", oAttachment.Name)
                 If oAttachment.Note <> "" Then Call oXmlAttachment.SetAttribute("note", oAttachment.Note)
                 Call oXmlAttachment.SetAttribute("data", Convert.ToBase64String(oAttachment.Data))
-                Call oXmlAttachment.SetAttribute("dataformat", cAttachmentLinks.cAttachmentDataFormatEnum.Data.ToString("D"))
+                Call oXmlAttachment.SetAttribute("dataformat", cAttachmentsLinks.cAttachmentDataFormatEnum.Data.ToString("D"))
             Else
                 Call oXmlAttachment.SetAttribute("data", oAttachment.ID)
-                Call oXmlAttachment.SetAttribute("dataformat", cAttachmentLinks.cAttachmentDataFormatEnum.Resource.ToString("D"))
+                Call oXmlAttachment.SetAttribute("dataformat", cAttachmentsLinks.cAttachmentDataFormatEnum.Resource.ToString("D"))
             End If
             Call Parent.AppendChild(oXmlAttachment)
             Return oXmlAttachment
@@ -344,24 +344,24 @@ Namespace cSurvey
             oSurvey = Survey
             oOwner = Owner
             Dim sData As String = modXML.GetAttributeValue(Attachment, "data", "")
-            Dim iDataFormat As cAttachmentLinks.cAttachmentDataFormatEnum = modXML.GetAttributeValue(Attachment, "dataformat", cAttachmentLinks.cAttachmentDataFormatEnum.Resource)
+            Dim iDataFormat As cAttachmentsLinks.cAttachmentDataFormatEnum = modXML.GetAttributeValue(Attachment, "dataformat", cAttachmentsLinks.cAttachmentDataFormatEnum.Resource)
             Select Case iDataFormat
-                Case cAttachmentLinks.cAttachmentDataFormatEnum.File
+                Case cAttachmentsLinks.cAttachmentDataFormatEnum.File
                     oAttachment = oSurvey.Attachments.Add(sData)
                     Dim sNote As String = modXML.GetAttributeValue(Attachment, "note", "")
                     oAttachment.Note = sNote
-                Case cAttachmentLinks.cAttachmentDataFormatEnum.Data
+                Case cAttachmentsLinks.cAttachmentDataFormatEnum.Data
                     Dim sMimetype As String = modXML.GetAttributeValue(Attachment, "type", "")
                     Dim sName As String = modXML.GetAttributeValue(Attachment, "name", "")
                     Dim sNote As String = modXML.GetAttributeValue(Attachment, "note", "")
                     oAttachment = oSurvey.Attachments.Add(sMimetype, sData, sName, sNote)
-                Case cAttachmentLinks.cAttachmentDataFormatEnum.Resource
+                Case cAttachmentsLinks.cAttachmentDataFormatEnum.Resource
                     oAttachment = oSurvey.Attachments(sData)
             End Select
         End Sub
     End Class
 
-    Public Class cAttachmentLinks
+    Public Class cAttachmentsLinks
         Implements IEnumerable
         Implements IEnumerable(Of cAttachmentsLink)
 
@@ -387,7 +387,7 @@ Namespace cSurvey
             oItems = New List(Of cAttachmentsLink)
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, Owner As Object, Attanchments As cAttachmentLinks)
+        Friend Sub New(ByVal Survey As cSurvey, Owner As Object, Attanchments As cAttachmentsLinks)
             oSurvey = Survey
             oOwner = Owner
             oItems = New List(Of cAttachmentsLink)
@@ -451,7 +451,7 @@ Namespace cSurvey
             Next
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement)
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement)
             Dim oXmlAttachments As XmlElement = Document.CreateElement("attachments")
             For Each oItem As cAttachmentsLink In oItems
                 Call oItem.SaveTo(File, Document, oXmlAttachments)
@@ -558,7 +558,7 @@ Namespace cSurvey
             oItems = New cAttachmentsBaseCollection
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal File As Storage.cFile, ByVal Attachments As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal Attachments As XmlElement)
             oSurvey = Survey
             oItems = New cAttachmentsBaseCollection
             Dim iIndex As Integer = 0
@@ -572,7 +572,7 @@ Namespace cSurvey
             Next
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum)
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum)
             Dim oXmlAttachments As XmlElement = Document.CreateElement("attachments")
             For Each oItem As cAttachment In oItems
                 Call oItem.SaveTo(File, Document, oXmlAttachments)

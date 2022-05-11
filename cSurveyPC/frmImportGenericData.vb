@@ -1,4 +1,4 @@
-﻿Public Class frmImportGenericData
+﻿friend Class frmImportGenericData
 
     Private Sub pSettingsLoad()
         Try

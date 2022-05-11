@@ -165,7 +165,7 @@ Namespace cSurvey.Design.Options
             sWidth = modNumbers.StringToSingle(modXML.GetAttributeValue(InfoBoxOptions, "width", 0))
         End Sub
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLInfoBoxOptions As XmlElement = Document.CreateElement("infoboxoptions")
             Call oXMLInfoBoxOptions.SetAttribute("idvisible", IIf(bIDVisible, 1, 0))
             Call oXMLInfoBoxOptions.SetAttribute("titlevisible", IIf(bTitleVisible, 1, 0))

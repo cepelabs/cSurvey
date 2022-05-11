@@ -4,7 +4,7 @@ Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.XSystem.Linq.Dynamic
 Imports System.Linq.Expressions
 
-Public Class frmCaveVisibilityManager
+Friend Class frmCaveVisibilityManager
     Friend Event OnChangeVisibility(ByVal Sender As Object, ByVal CaveVisibilityProfiles As cCaveVisibilityProfiles, CurrentProfile As String)
 
     Private oSurvey As cSurvey.cSurvey

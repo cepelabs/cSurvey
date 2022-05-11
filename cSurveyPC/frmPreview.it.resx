@@ -1157,4 +1157,13 @@
   <data name="cboPrintCenterlineColorMode.Items2" xml:space="preserve">
     <value>Origine/suborigine</value>
   </data>
+  <data name="btnBaseRule.Text" xml:space="preserve">
+    <value>Impostazioni di base</value>
+  </data>
+  <data name="lblImageResolution.Text" xml:space="preserve">
+    <value>Risoluzione:</value>
+  </data>
+  <data name="lblImageResolutionUM.Text" xml:space="preserve">
+    <value>DPI</value>
+  </data>
 </root>

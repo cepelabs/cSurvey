@@ -1,7 +1,8 @@
 ﻿Imports System.Drawing
 Imports System.Drawing.Drawing2D
+Imports DevExpress.XtraBars
 
-Public Class frmLochDialog
+Friend Class frmLochDialog
     Private oSurvey As cSurvey.cSurvey
 
     Public Sub New(Survey As cSurvey.cSurvey)
@@ -13,28 +14,31 @@ Public Class frmLochDialog
         oSurvey = Survey
 
         If oSurvey.Properties.GPS.Enabled Then
-            Call cboElevationData.Items.Add(New cComboItem(Nothing, ""))
+            Dim iElevation As Integer = 0
+            Call cboElevationData.Properties.Items.Add(New DevExpress.XtraEditors.Controls.ImageComboBoxItem("", Nothing, -1))
             For Each oElevation As cSurvey.Surface.cElevation In oSurvey.Surface.Elevations
-                'If oElevation.ShowIn3D Then
-                Call cboElevationData.Items.Add(New cComboItem(oElevation, oElevation.Name))
+                Call iml.AddImage(oElevation.GetImage(New Size(48, 32)))
+                Dim iElevationIndex As Integer = cboElevationData.Properties.Items.Add(New DevExpress.XtraEditors.Controls.ImageComboBoxItem(oElevation.Name, oElevation, iElevation))
                 If oElevation.Default Then
-                    cboElevationData.SelectedIndex = cboElevationData.Items.Count - 1
+                    cboElevationData.SelectedIndex = iElevationIndex
                 End If
-                'End If
+                iElevation += 1
             Next
-            If cboElevationData.Items.Count > 1 Then
+
+            If iElevation > 0 Then
                 cboElevationData.Enabled = True
                 lblElevationData.Enabled = cboElevationData.Enabled
-                Call cboOrthophoto.Items.Add(New cComboItem(Nothing, ""))
+                Dim iOrthoPhoto As Integer = 0
+                Call cboOrthophoto.Properties.Items.Add(New DevExpress.XtraEditors.Controls.ImageComboBoxItem("", Nothing, -1))
                 For Each oOrthoPhoto As cSurvey.Surface.cOrthoPhoto In oSurvey.Surface.OrthoPhotos
-                    'If oOrthoPhoto.ShowIn3D Then
-                    Call cboOrthophoto.Items.Add(New cComboItem(oOrthoPhoto, oOrthoPhoto.Name))
+                    Call iml.AddImage(oOrthoPhoto.GetImage(New Size(48, 32)))
+                    Dim iOrthoPhotoIndex As Integer = cboOrthophoto.Properties.Items.Add(New DevExpress.XtraEditors.Controls.ImageComboBoxItem(oOrthoPhoto.Name, oOrthoPhoto, iElevation))
                     If oOrthoPhoto.Default Then
-                        cboOrthophoto.SelectedIndex = cboOrthophoto.Items.Count - 1
+                        cboOrthophoto.SelectedIndex = iOrthoPhotoIndex
                     End If
-                    'End If
+                    iOrthoPhoto += 1
                 Next
-                cboOrthophoto.Enabled = cboOrthophoto.Items.Count > 0
+                cboOrthophoto.Enabled = iOrthoPhoto > 0
                 lblOrthophoto.Enabled = cboOrthophoto.Enabled
             Else
                 cboElevationData.Enabled = False
@@ -42,7 +46,6 @@ Public Class frmLochDialog
                 cboOrthophoto.Enabled = False
                 lblOrthophoto.Enabled = cboOrthophoto.Enabled
             End If
-
             Call linkedSurveys.Rebind(oSurvey.LinkedSurveys, "loch")
             linkedSurveys.Enabled = True
         Else
@@ -50,66 +53,18 @@ Public Class frmLochDialog
             lblElevationData.Enabled = cboElevationData.Enabled
             cboOrthophoto.Enabled = False
             lblOrthophoto.Enabled = cboOrthophoto.Enabled
-
             linkedSurveys.Enabled = False
         End If
     End Sub
 
-    Private Sub cboElevationData_DrawItem(sender As Object, e As System.Windows.Forms.DrawItemEventArgs) Handles cboElevationData.DrawItem
-        If e.Index >= 0 Then
-            Dim oGr As Graphics = e.Graphics
-            oGr.CompositingQuality = CompositingQuality.HighQuality
-            oGr.InterpolationMode = InterpolationMode.HighQualityBicubic
-            oGr.SmoothingMode = SmoothingMode.AntiAlias
-            oGr.TextRenderingHint = Drawing.Text.TextRenderingHint.ClearTypeGridFit
-            Dim bSelected As Boolean = (e.State And DrawItemState.Selected) = DrawItemState.Selected
-            Dim oBounds As RectangleF = e.Bounds
-            If bSelected Then
-                Call oGr.FillRectangle(SystemBrushes.Highlight, oBounds)
-                Call oGr.DrawRectangle(SystemPens.Highlight, oBounds.Left, oBounds.Top, oBounds.Width, oBounds.Height)
-            Else
-                Call oGr.FillRectangle(SystemBrushes.Window, oBounds)
-                Call oGr.DrawRectangle(SystemPens.Window, oBounds.Left, oBounds.Top, oBounds.Width, oBounds.Height)
-            End If
-
-            Dim oItem As cComboItem = cboElevationData.Items(e.Index)
-            Dim oElevation As cSurvey.Surface.cElevation = oItem.Source
-            If Not oElevation Is Nothing Then
-                Dim oImage As Image = oElevation.GetImage(New Size(48, 32))
-
-                Call oGr.DrawImageUnscaled(oImage, e.Bounds.Left + 2, e.Bounds.Top + 2)
-                Using oBorderPen As Pen = New Pen(Brushes.DarkGray)
-                    Call oGr.DrawRectangle(oBorderPen, e.Bounds.Left + 2, e.Bounds.Top + 2, 48, e.Bounds.Height - 4)
-                End Using
-
-                Dim oLabelRect As RectangleF = New RectangleF(e.Bounds.Left + 48 + 2, e.Bounds.Top, e.Bounds.Right - (e.Bounds.Left + 48 + 2), e.Bounds.Height)
-
-                Using oSF As StringFormat = New StringFormat
-                    oSF.LineAlignment = StringAlignment.Center
-                    oSF.Trimming = StringTrimming.EllipsisCharacter
-                    If bSelected Then
-                        Call oGr.DrawString(oElevation.Name, cboElevationData.Font, SystemBrushes.HighlightText, oLabelRect, oSF)
-                    Else
-                        Call oGr.DrawString(oElevation.Name, cboElevationData.Font, SystemBrushes.WindowText, oLabelRect, oSF)
-                    End If
-                End Using
-            End If
-        End If
-    End Sub
-
-    Private Sub cboElevationData_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cboElevationData.SelectedIndexChanged
-        cboOrthophoto.Enabled = cboElevationData.SelectedIndex > 0
-        lblOrthophoto.Enabled = cboOrthophoto.Enabled
-    End Sub
-
-    Private Sub cmdOk_Click(sender As System.Object, e As System.EventArgs) Handles cmdOk.Click
-        Call oSurvey.SharedSettings.SetValue("loch.showdialog", IIf(chkDoNotShow.Checked, "0", "1"))
+    Private Sub cmdOk_Click(sender As System.Object, e As System.EventArgs) Handles cmdOkOrSave.Click
+        Call oSurvey.SharedSettings.SetValue("loch.showdialog", If(chkDoNotShow.Checked, "0", "1"))
         If cboElevationData.SelectedIndex > 0 Then
-            Dim oElevation As cSurvey.Surface.cElevation = cboElevationData.SelectedItem.Source
+            Dim oElevation As cSurvey.Surface.cElevation = cboElevationData.SelectedItem.value
             oElevation.Default = True
 
             If cboOrthophoto.SelectedIndex > 0 Then
-                Dim oOrthoPhoto As cSurvey.Surface.cOrthoPhoto = cboOrthophoto.SelectedItem.Source
+                Dim oOrthoPhoto As cSurvey.Surface.cOrthoPhoto = cboOrthophoto.SelectedItem.value
                 oOrthoPhoto.Default = True
             Else
                 For Each oOrthoPhoto As cSurvey.Surface.cOrthoPhoto In oSurvey.Surface.OrthoPhotos
@@ -138,45 +93,17 @@ Public Class frmLochDialog
         End If
     End Sub
 
-    Private Sub cboOrthophoto_DrawItem(sender As Object, e As System.Windows.Forms.DrawItemEventArgs) Handles cboOrthophoto.DrawItem
-        If e.Index >= 0 Then
-            Dim oGr As Graphics = e.Graphics
-            oGr.CompositingQuality = CompositingQuality.HighQuality
-            oGr.InterpolationMode = InterpolationMode.HighQualityBicubic
-            oGr.SmoothingMode = SmoothingMode.AntiAlias
-            oGr.TextRenderingHint = Drawing.Text.TextRenderingHint.ClearTypeGridFit
-            Dim bSelected As Boolean = (e.State And DrawItemState.Selected) = DrawItemState.Selected
-            Dim oBounds As RectangleF = e.Bounds
-            If bSelected Then
-                Call oGr.FillRectangle(SystemBrushes.Highlight, oBounds)
-                Call oGr.DrawRectangle(SystemPens.Highlight, oBounds.Left, oBounds.Top, oBounds.Width, oBounds.Height)
-            Else
-                Call oGr.FillRectangle(SystemBrushes.Window, oBounds)
-                Call oGr.DrawRectangle(SystemPens.Window, oBounds.Left, oBounds.Top, oBounds.Width, oBounds.Height)
-            End If
+    Private Sub cmdMenuOk_ItemClick(sender As Object, e As ItemClickEventArgs) Handles cmdMenuOk.ItemClick
+        DialogResult = DialogResult.OK
+        Call cmdOkOrSave.PerformClick()
+    End Sub
 
-            Dim oItem As cComboItem = cboOrthophoto.Items(e.Index)
-            Dim oOrthoPhoto As cSurvey.Surface.cOrthoPhoto = oItem.Source
-            If Not oOrthoPhoto Is Nothing Then
-                Dim oImage As Image = oOrthoPhoto.GetImage(New Size(48, 32))
+    Private Sub cmdMenuSave_ItemClick(sender As Object, e As ItemClickEventArgs) Handles cmdMenuSave.ItemClick
+        DialogResult = DialogResult.Retry
+    End Sub
 
-                Call oGr.DrawImageUnscaled(oImage, e.Bounds.Left + 2, e.Bounds.Top + 2)
-                Using oBorderPen As Pen = New Pen(Brushes.DarkGray)
-                    Call oGr.DrawRectangle(oBorderPen, e.Bounds.Left + 2, e.Bounds.Top + 2, 48, e.Bounds.Height - 4)
-                End Using
-
-                Dim oLabelRect As RectangleF = New RectangleF(e.Bounds.Left + 48 + 2, e.Bounds.Top, e.Bounds.Right - (e.Bounds.Left + 48 + 2), e.Bounds.Height)
-
-                Using oSF As StringFormat = New StringFormat
-                    oSF.LineAlignment = StringAlignment.Center
-                    oSF.Trimming = StringTrimming.EllipsisCharacter
-                    If bSelected Then
-                        Call oGr.DrawString(oOrthoPhoto.Name, cboElevationData.Font, SystemBrushes.HighlightText, oLabelRect, oSF)
-                    Else
-                        Call oGr.DrawString(oOrthoPhoto.Name, cboElevationData.Font, SystemBrushes.WindowText, oLabelRect, oSF)
-                    End If
-                End Using
-            End If
-        End If
+    Private Sub cboElevationData_SelectedValueChanged(sender As Object, e As EventArgs) Handles cboElevationData.SelectedValueChanged
+        cboOrthophoto.Enabled = cboElevationData.SelectedIndex > 0
+        lblOrthophoto.Enabled = cboOrthophoto.Enabled
     End Sub
 End Class

@@ -616,7 +616,7 @@ Namespace cSurvey
             Call pSetInnerValues()
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlCoordinate As XmlElement = Document.CreateElement("coordinate")
             Call oXmlCoordinate.SetAttribute("latv", modNumbers.NumberToString(sLatValue, DefaultCoordinateFormat))
             Call oXmlCoordinate.SetAttribute("longv", modNumbers.NumberToString(sLongValue, DefaultCoordinateFormat))

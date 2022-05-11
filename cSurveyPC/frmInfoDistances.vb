@@ -1,7 +1,7 @@
 ﻿Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
 
-Public Class frmInfoDistances
+friend Class frmInfoDistances
     Private oSurvey As cSurvey.cSurvey
 
     Private oMousePointer As cMousePointer

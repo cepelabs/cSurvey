@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Zoom"
+   x="0px"
+   y="0px"
+   viewBox="0 0 32 32"
+   style="enable-background:new 0 0 32 32;"
+   xml:space="preserve"
+   sodipodi:docname="zoomall.svg"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"><metadata
+   id="metadata11"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs9" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="2560"
+   inkscape:window-height="1017"
+   id="namedview7"
+   showgrid="false"
+   showguides="true"
+   inkscape:guide-bbox="true"
+   inkscape:zoom="9.3912619"
+   inkscape:cx="2.6210503"
+   inkscape:cy="28.444586"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Zoom"><sodipodi:guide
+     position="20.68,24.317647"
+     orientation="1,0"
+     id="guide848" /><sodipodi:guide
+     position="6.6141176,16.251765"
+     orientation="0,-1"
+     id="guide850" /></sodipodi:namedview>
+<style
+   type="text/css"
+   id="style2">
+	.Black{fill:#727272;}
+</style>
+<path
+   id="rect6-4"
+   style="fill:#999999;stroke-width:0.456209"
+   d="M 7.2917648,10.435294 H 15.50353 v 8.211765 H 7.2917648 Z"
+   class="Blue" /><path
+   id="rect6"
+   style="fill:#1177d7;stroke-width:0.382222"
+   d="m 11.767059,7.2917647 h 6.88 v 6.8800003 h -6.88 z"
+   class="Blue" /><path
+   class="Black"
+   d="M29.7,27.3l-7.9-7.9c1.3-1.8,2.1-4,2.1-6.5c0-6.1-4.9-11-11-11C6.9,2,2,6.9,2,13s4.9,11,11,11  c2.4,0,4.6-0.8,6.5-2.1l7.9,7.9c0.3,0.3,0.9,0.3,1.2,0l1.2-1.2C30.1,28.2,30.1,27.6,29.7,27.3z M4,13c0-5,4-9,9-9c5,0,9,4,9,9  s-4,9-9,9C8,22,4,18,4,13z"
+   id="path4" />
+</svg>

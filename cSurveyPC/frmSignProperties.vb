@@ -1,6 +1,6 @@
 ﻿Imports cSurveyPC.cSurvey.Design.Items
 
-Public Class frmSignProperties
+friend Class frmSignProperties
     Private oItem As cIItemSign
 
     Public Sub New(Item As cIItemSign)

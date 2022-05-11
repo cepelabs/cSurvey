@@ -1943,4 +1943,7 @@
   <data name="optWarpingActive.ToolTip" xml:space="preserve">
     <value>Attiva la funzione di warping</value>
   </data>
+  <data name="cboSessionInclinationType.Items2" xml:space="preserve">
+    <value>Percentuale</value>
+  </data>
 </root>

@@ -408,13 +408,13 @@ Namespace cSurvey.Design.Items
             oDataProperties = New Data.cDataProperties(Survey, Survey.Properties.DataTables.DesignItems)
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As Storage.cFile, ByVal item As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As cFile, ByVal item As XmlElement)
             Call MyBase.New(Survey, Design, Layer, File, item)
             oItems = New List(Of cItem)
             oDataProperties = New Data.cDataProperties(Survey, Survey.Properties.DataTables.DesignItems)
         End Sub
 
-        Friend Overrides Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+        Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oXMLItem As XmlElement = MyBase.SaveTo(File, Document, Parent, Options)
             Dim oXMLItems As XmlElement = Document.CreateElement("items")
             For Each oItem As cItem In oItems
@@ -626,18 +626,18 @@ Namespace cSurvey.Design.Items
 
         Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
             Dim oSVGGroup As XmlElement = modSVG.CreateGroup(SVG, "_items")
-            For Each oItem In oItems
+            For Each oItem As cItem In oItems
                 Dim oSVGItem As XmlElement = oItem.ToSvgItem(SVG, PaintOptions, Options)
                 Call modSVG.AppendItem(SVG, oSVGGroup, oSVGItem)
             Next
             Return oSVGGroup
         End Function
 
-        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
-            Dim oSVG As XmlDocument = modSVG.CreateSVG
-            Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
-            Return oSVG
-        End Function
+        'Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
+        '    Dim oSVG As XmlDocument = modSVG.CreateSVG
+        '    Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
+        '    Return oSVG
+        'End Function
 
         Public Overrides Sub ResizeTo(ByVal Width As Single, ByVal Height As Single)
             Dim oBounds As RectangleF = GetBounds()

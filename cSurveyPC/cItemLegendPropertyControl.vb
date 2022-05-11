@@ -2,7 +2,12 @@
 Imports cSurveyPC.cSurvey.Design.Items
 
 Friend Class cItemLegendPropertyControl
-    Private oItem As cItemLegend
+
+    Public Overloads ReadOnly Property Item As cItemLegend
+        Get
+            Return MyBase.Item
+        End Get
+    End Property
 
     Public Sub New()
 
@@ -18,26 +23,26 @@ Friend Class cItemLegendPropertyControl
         End Try
     End Sub
 
-    Public Overrides Sub Rebind(Item As cItem)
-        oItem = Item
+    Public Overloads Sub Rebind(Item As cItemLegend)
+        MyBase.Rebind(Item)
 
-        txtPropLegendItemWidth.Value = oItem.ItemWidth
-        txtPropLegendItemHeight.Value = oItem.ItemHeight
-        txtPropLegendItemHPadding.Value = oItem.ItemHPadding
-        txtPropLegendItemVPadding.Value = oItem.ItemVPadding
+        txtPropLegendItemWidth.Value = Item.ItemWidth
+        txtPropLegendItemHeight.Value = Item.ItemHeight
+        txtPropLegendItemHPadding.Value = Item.ItemHPadding
+        txtPropLegendItemVPadding.Value = Item.ItemVPadding
 
-        txtPropLegendItemScale.Value = oItem.ItemScale
+        txtPropLegendItemScale.Value = Item.ItemScale
 
-        txtPropLegendItemRowColMaxItems.Value = oItem.MaxItems
-        cboPropLegendItemFlowDirection.SelectedIndex = oItem.FlowDirection
-        cboPropLegendItemAlign.SelectedIndex = oItem.ItemAlignment
+        txtPropLegendItemRowColMaxItems.Value = Item.MaxItems
+        cboPropLegendItemFlowDirection.SelectedIndex = Item.FlowDirection
+        cboPropLegendItemAlign.SelectedIndex = Item.ItemAlignment
 
         Call Reload()
     End Sub
 
     Public Sub Reload()
         Call grdLegendItems.Rows.Clear()
-        For Each olegendItem As cItemLegend.cLegendItem In oItem.Items
+        For Each olegendItem As cItemLegend.cLegendItem In Item.Items
             Dim oData() As Object = {olegendItem.Item.ToString, modMain.GetLocalizedString("itemlegend.type" & olegendItem.Type.ToString("D")), olegendItem.Text, olegendItem.Scale}
             Call grdLegendItems.Rows.Add(oData)
         Next
@@ -46,14 +51,14 @@ Friend Class cItemLegendPropertyControl
 
     Private Sub cmdDeleteAll_Click(sender As Object, e As EventArgs) Handles cmdDeleteAll.Click
         Call grdLegendItems.Rows.Clear()
-        Call oItem.ClearItems()
+        Call Item.ClearItems()
         Call MyBase.MapInvalidate()
     End Sub
 
     Private Sub cmdDelete_Click(sender As Object, e As EventArgs) Handles cmdDelete.Click
         Dim iRow As Integer = grdLegendItems.CurrentCellAddress.Y
         Call grdLegendItems.Rows.RemoveAt(iRow)
-        Call oItem.RemoveItem(iRow)
+        Call Item.RemoveItem(iRow)
         Call MyBase.MapInvalidate()
     End Sub
 
@@ -90,17 +95,17 @@ Friend Class cItemLegendPropertyControl
         Select Case e.ColumnIndex
             Case 1
                 Dim oComboCell As DataGridViewComboBoxCell = grdLegendItems.CurrentCell
-                oItem.Items(e.RowIndex).Type = oComboCell.Items.IndexOf(oComboCell.Value)
+                Item.Items(e.RowIndex).Type = oComboCell.Items.IndexOf(oComboCell.Value)
             Case 2
-                oItem.Items(e.RowIndex).Text = grdLegendItems.CurrentCell.Value
+                Item.Items(e.RowIndex).Text = grdLegendItems.CurrentCell.Value
             Case 3
-                oItem.Items(e.RowIndex).Scale = grdLegendItems.CurrentCell.Value
+                Item.Items(e.RowIndex).Scale = grdLegendItems.CurrentCell.Value
         End Select
         Call MyBase.MapInvalidate()
     End Sub
 
     Private Sub cmdAutofill_Click(sender As Object, e As EventArgs) Handles cmdAutofill.Click
-        Call oItem.AutoFill(Not My.Computer.Keyboard.ShiftKeyDown, cIItemLegend.AutoFillFlagsEnum.None)
+        Call Item.AutoFill(Not My.Computer.Keyboard.ShiftKeyDown, cIItemLegend.AutoFillFlagsEnum.None)
         Call MyBase.MapInvalidate()
         Call Reload()
     End Sub
@@ -108,7 +113,7 @@ Friend Class cItemLegendPropertyControl
     Private Sub txtPropLegendItemWidth_ValueChanged(sender As Object, e As EventArgs) Handles txtPropLegendItemWidth.ValueChanged
         Try
             If Not DisabledObjectProperty() Then
-                oItem.ItemWidth = txtPropLegendItemWidth.Value
+                Item.ItemWidth = txtPropLegendItemWidth.Value
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("ItemWidth")
                 Call MyBase.MapInvalidate()
@@ -120,7 +125,7 @@ Friend Class cItemLegendPropertyControl
     Private Sub txtPropLegendItemHeight_ValueChanged(sender As Object, e As EventArgs) Handles txtPropLegendItemHeight.ValueChanged
         Try
             If Not DisabledObjectProperty() Then
-                oItem.ItemHeight = txtPropLegendItemHeight.Value
+                Item.ItemHeight = txtPropLegendItemHeight.Value
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("ItemHeight")
                 Call MyBase.MapInvalidate()
@@ -132,7 +137,7 @@ Friend Class cItemLegendPropertyControl
     Private Sub txtPropLegendItemVPadding_ValueChanged(sender As Object, e As EventArgs) Handles txtPropLegendItemVPadding.ValueChanged
         Try
             If Not DisabledObjectProperty() Then
-                oItem.ItemVPadding = txtPropLegendItemVPadding.Value
+                Item.ItemVPadding = txtPropLegendItemVPadding.Value
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("ItemVPadding")
                 Call MyBase.MapInvalidate()
@@ -144,7 +149,7 @@ Friend Class cItemLegendPropertyControl
     Private Sub txtPropLegendItemHPadding_ValueChanged(sender As Object, e As EventArgs) Handles txtPropLegendItemHPadding.ValueChanged
         Try
             If Not DisabledObjectProperty() Then
-                oItem.ItemHPadding = txtPropLegendItemHPadding.Value
+                Item.ItemHPadding = txtPropLegendItemHPadding.Value
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("ItemHPadding")
                 Call MyBase.MapInvalidate()
@@ -156,7 +161,7 @@ Friend Class cItemLegendPropertyControl
     Private Sub txtPropLegendItemScale_ValueChanged(sender As Object, e As EventArgs) Handles txtPropLegendItemScale.ValueChanged
         Try
             If Not DisabledObjectProperty() Then
-                oItem.ItemScale = txtPropLegendItemScale.Value
+                Item.ItemScale = txtPropLegendItemScale.Value
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("ItemScale")
                 Call MyBase.MapInvalidate()
@@ -182,7 +187,7 @@ Friend Class cItemLegendPropertyControl
     Private Sub txtPropLegendItemRowColMaxItem_ValueChanged(sender As Object, e As EventArgs) Handles txtPropLegendItemRowColMaxItems.ValueChanged
         Try
             If Not DisabledObjectProperty() Then
-                oItem.MaxItems = txtPropLegendItemRowColMaxItems.Value
+                Item.MaxItems = txtPropLegendItemRowColMaxItems.Value
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("MaxItems")
                 Call MyBase.MapInvalidate()
@@ -194,7 +199,7 @@ Friend Class cItemLegendPropertyControl
     Private Sub cboPropLegendItemFlowDirection_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropLegendItemFlowDirection.SelectedIndexChanged
         Try
             If Not DisabledObjectProperty() Then
-                oItem.FlowDirection = cboPropLegendItemFlowDirection.SelectedIndex
+                Item.FlowDirection = cboPropLegendItemFlowDirection.SelectedIndex
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("FlowDirection")
                 Call MyBase.MapInvalidate()
@@ -206,7 +211,7 @@ Friend Class cItemLegendPropertyControl
     Private Sub cboPropLegendItemAlign_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropLegendItemAlign.SelectedIndexChanged
         Try
             If Not DisabledObjectProperty() Then
-                oItem.ItemAlignment = cboPropLegendItemAlign.SelectedIndex
+                Item.ItemAlignment = cboPropLegendItemAlign.SelectedIndex
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("ItemAlignment")
                 Call MyBase.MapInvalidate()

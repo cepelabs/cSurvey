@@ -19,28 +19,37 @@ Namespace cSurvey.Calculate.Plot
         Private bIsInRing As Boolean
 
         Public Interface cIWarpingFactor
-            ReadOnly Property DeltaSize As Single
-            ReadOnly Property DeltaAngle As Single
-            ReadOnly Property DeltaX As Single
-            ReadOnly Property DeltaY As Single
+            ReadOnly Property DeltaSize As Decimal
+            ReadOnly Property DeltaAngle As Decimal
+            ReadOnly Property DeltaX As Decimal
+            ReadOnly Property DeltaY As Decimal
+
+            ReadOnly Property OldSize As Decimal
+            ReadOnly Property NewSize As Decimal
+            ReadOnly Property OldAngle As Decimal
+            ReadOnly Property NewAngle As Decimal
+            ReadOnly Property OldLocation As PointD
+            ReadOnly Property NewLocation As PointD
+
             Function IsChanged() As Boolean
+            Function IsCritical() As Boolean
         End Interface
 
         Public Class cPlanWarpingFactor
             Implements cIWarpingFactor
-            Private sDeltaSize As Single
-            Private sDeltaX As Single
-            Private sDeltaY As Single
-            Private sDeltaAngle As Single
+            Private sDeltaSize As Decimal
+            Private sDeltaX As Decimal
+            Private sDeltaY As Decimal
+            Private sDeltaAngle As Decimal
 
-            Private sOldSize As Single
-            Private sNewSize As Single
-            Private sOldAngle As Single
-            Private sNewAngle As Single
-            Private oOldLocation As PointF
-            Private oNewLocation As PointF
+            Private sOldSize As Decimal
+            Private sNewSize As Decimal
+            Private sOldAngle As Decimal
+            Private sNewAngle As Decimal
+            Private oOldLocation As PointD
+            Private oNewLocation As PointD
 
-            Public Sub Translate(Size As SizeF)
+            Public Sub Translate(Size As SizeD)
                 sDeltaX += Size.Width
                 sDeltaY += Size.Height
                 oNewLocation += Size
@@ -79,90 +88,96 @@ Namespace cSurvey.Calculate.Plot
                 Return oMatrix
             End Function
 
-            Public ReadOnly Property DeltaSize As Single Implements cIWarpingFactor.DeltaSize
+            Public ReadOnly Property DeltaSize As Decimal Implements cIWarpingFactor.DeltaSize
                 Get
                     Return sDeltaSize
                 End Get
             End Property
 
-            Public ReadOnly Property DeltaAngle As Single Implements cIWarpingFactor.DeltaAngle
+            Public ReadOnly Property DeltaAngle As Decimal Implements cIWarpingFactor.DeltaAngle
                 Get
                     Return sDeltaAngle
                 End Get
             End Property
 
-            Public ReadOnly Property DeltaX As Single Implements cIWarpingFactor.DeltaX
+            Public ReadOnly Property DeltaX As Decimal Implements cIWarpingFactor.DeltaX
                 Get
                     Return sDeltaX
                 End Get
             End Property
 
-            Public ReadOnly Property DeltaY As Single Implements cIWarpingFactor.DeltaY
+            Public ReadOnly Property DeltaY As Decimal Implements cIWarpingFactor.DeltaY
                 Get
                     Return sDeltaY
                 End Get
             End Property
 
             Public Function IsChanged() As Boolean Implements cIWarpingFactor.IsChanged
-                Return sDeltaSize <> 1 OrElse sDeltaX <> 0 OrElse sDeltaY <> 0 OrElse sDeltaAngle <> 0
+                Return sDeltaSize <> 1D OrElse sDeltaX <> 0D OrElse sDeltaY <> 0D OrElse sDeltaAngle <> 0D OrElse ((sNewSize = 0D OrElse sOldSize = 0D) AndAlso (sNewSize <> sOldSize))
+            End Function
+
+            Public Function IsCritical() As Boolean Implements cIWarpingFactor.IsCritical
+                Return (sNewSize = 0D OrElse sOldSize = 0D) AndAlso (sNewSize <> sOldSize)
             End Function
 
             Public Sub New(OldSegment As cISegment, NewSegment As cISegment)
                 Call pNew(OldSegment.Data.Plan.GetLine, NewSegment.Data.Plan.GetLine, OldSegment.Data.Data.Bearing, NewSegment.Data.Data.Bearing)
             End Sub
 
-            Private Sub pNew(OldLine As PointF(), NewLine As PointF(), OldAngle As Single, NewAngle As Single)
+            Private Sub pNew(OldLine As PointD(), NewLine As PointD(), OldAngle As Decimal, NewAngle As Decimal)
+                Dim iPrecision As Integer = 3
                 oOldLocation = OldLine(0)
                 oNewLocation = NewLine(0)
-                sNewSize = Math.Sqrt((oNewLocation.X - NewLine(1).X) ^ 2 + (oNewLocation.Y - NewLine(1).Y) ^ 2)
-                sOldSize = Math.Sqrt((oOldLocation.X - OldLine(1).X) ^ 2 + (oOldLocation.Y - OldLine(1).Y) ^ 2)
-                sDeltaX = Math.Round(oNewLocation.X - oOldLocation.X, 3)
-                sDeltaY = Math.Round(oNewLocation.Y - oOldLocation.Y, 3)
-                If sOldSize = 0 Then
-                    sDeltaSize = 1
+                sNewSize = modNumbers.MathRound(Math.Sqrt((oNewLocation.X - NewLine(1).X) ^ 2 + (oNewLocation.Y - NewLine(1).Y) ^ 2), iPrecision + 1)
+                sOldSize = modNumbers.MathRound(Math.Sqrt((oOldLocation.X - OldLine(1).X) ^ 2 + (oOldLocation.Y - OldLine(1).Y) ^ 2), iPrecision + 1)
+                If sOldSize = 0D OrElse sNewSize = 0D Then
+                    sDeltaSize = 1D
                 Else
-                    sDeltaSize = modNumbers.MathRound(sNewSize / sOldSize, 3)
+                    sDeltaSize = modNumbers.MathRound(sNewSize / sOldSize, iPrecision)
+                    'If sDeltaSize = 1.001D OrElse sDeltaSize = 0.999D Then sDeltaSize = 1D
                 End If
-                sOldAngle = Math.Round(OldAngle, 3)
-                sNewAngle = Math.Round(NewAngle, 3)
-                sDeltaAngle = sNewAngle - sOldAngle
+                sDeltaX = modNumbers.MathRound(oNewLocation.X - oOldLocation.X, iPrecision)
+                sDeltaY = modNumbers.MathRound(oNewLocation.Y - oOldLocation.Y, iPrecision)
+                sOldAngle = modNumbers.MathRound(OldAngle, iPrecision + 1)
+                sNewAngle = modNumbers.MathRound(NewAngle, iPrecision + 1)
+                sDeltaAngle = modNumbers.MathRound(sNewAngle - sOldAngle, iPrecision)
             End Sub
 
-            Public Sub New(OldLine As PointF(), NewLine As PointF(), OldAngle As Single, NewAngle As Single)
+            Public Sub New(OldLine As PointD(), NewLine As PointD(), OldAngle As Decimal, NewAngle As Decimal)
                 Call pNew(OldLine, NewLine, OldAngle, NewAngle)
             End Sub
 
-            Public ReadOnly Property OldSize As Single
+            Public ReadOnly Property OldSize As Decimal Implements cIWarpingFactor.OldSize
                 Get
                     Return sOldSize
                 End Get
             End Property
 
-            Public ReadOnly Property NewSize As Single
+            Public ReadOnly Property NewSize As Decimal Implements cIWarpingFactor.NewSize
                 Get
                     Return sNewSize
                 End Get
             End Property
 
-            Public ReadOnly Property OldAngle As Single
+            Public ReadOnly Property OldAngle As Decimal Implements cIWarpingFactor.OldAngle
                 Get
                     Return sOldAngle
                 End Get
             End Property
 
-            Public ReadOnly Property NewAngle As Single
+            Public ReadOnly Property NewAngle As Decimal Implements cIWarpingFactor.NewAngle
                 Get
                     Return sNewAngle
                 End Get
             End Property
 
-            Public ReadOnly Property OldLocation As PointF
+            Public ReadOnly Property OldLocation As PointD Implements cIWarpingFactor.OldLocation
                 Get
                     Return oOldLocation
                 End Get
             End Property
 
-            Public ReadOnly Property NewLocation As PointF
+            Public ReadOnly Property NewLocation As PointD Implements cIWarpingFactor.NewLocation
                 Get
                     Return oNewLocation
                 End Get
@@ -171,122 +186,125 @@ Namespace cSurvey.Calculate.Plot
 
         Public Class cProfileWarpingFactor
             Implements cIWarpingFactor
-            Private sDeltaSize As Single
-            Private sDeltaX As Single
-            Private sDeltaY As Single
-            Private sDeltaAngle As Single
+            Private sDeltaSize As Decimal
+            Private sDeltaX As Decimal
+            Private sDeltaY As Decimal
+            Private sDeltaAngle As Decimal
 
-            Private sOldSize As Single
-            Private sNewSize As Single
-            Private sOldAngle As Single
-            Private sNewAngle As Single
-            Private oOldLocation As PointF
-            Private oNewLocation As PointF
+            Private sOldSize As Decimal
+            Private sNewSize As Decimal
+            Private sOldAngle As Decimal
+            Private sNewAngle As Decimal
+            Private oOldLocation As PointD
+            Private oNewLocation As PointD
 
-            Public Sub Translate(Size As SizeF)
+            Public Sub Translate(Size As SizeD)
                 sDeltaX += Size.Width
                 sDeltaY += Size.Height
                 oNewLocation += Size
             End Sub
 
-            Public ReadOnly Property DeltaSize As Single Implements cIWarpingFactor.DeltaSize
+            Public ReadOnly Property DeltaSize As Decimal Implements cIWarpingFactor.DeltaSize
                 Get
                     Return sDeltaSize
                 End Get
             End Property
 
-            Public ReadOnly Property DeltaAngle As Single Implements cIWarpingFactor.DeltaAngle
+            Public ReadOnly Property DeltaAngle As Decimal Implements cIWarpingFactor.DeltaAngle
                 Get
                     Return sDeltaAngle
                 End Get
             End Property
 
-            Public ReadOnly Property DeltaX As Single Implements cIWarpingFactor.DeltaX
+            Public ReadOnly Property DeltaX As Decimal Implements cIWarpingFactor.DeltaX
                 Get
                     Return sDeltaX
                 End Get
             End Property
 
-            Public ReadOnly Property DeltaY As Single Implements cIWarpingFactor.DeltaY
+            Public ReadOnly Property DeltaY As Decimal Implements cIWarpingFactor.DeltaY
                 Get
                     Return sDeltaY
                 End Get
             End Property
 
             Public Function IsChanged() As Boolean Implements cIWarpingFactor.IsChanged
-                Return sDeltaSize <> 1 OrElse sDeltaX <> 0 OrElse sDeltaY <> 0 OrElse sDeltaAngle <> 0
+                Return sDeltaSize <> 1D OrElse sDeltaX <> 0D OrElse sDeltaY <> 0D OrElse sDeltaAngle <> 0D OrElse (sNewSize = 0D OrElse sOldSize = 0D)
+            End Function
+
+            Public Function IsCritical() As Boolean Implements cIWarpingFactor.IsCritical
+                Return (sNewSize = 0D OrElse sOldSize = 0D)
             End Function
 
             Public Sub New(OldSegment As cISegment, NewSegment As cISegment)
                 Call pNew(OldSegment.Data.Profile.GetLine, NewSegment.Data.Profile.GetLine, OldSegment.Data.Data.Inclination, NewSegment.Data.Data.Inclination, OldSegment.Data.Data.Reversed, NewSegment.Data.Data.Reversed)
             End Sub
 
-            Public Sub New(OldLine As PointF(), NewLine As PointF(), OldAngle As Single, NewAngle As Single, OldReversed As Boolean, NewReversed As Boolean)
+            Public Sub New(OldLine As PointD(), NewLine As PointD(), OldAngle As Decimal, NewAngle As Decimal, OldReversed As Boolean, NewReversed As Boolean)
                 Call pNew(OldLine, NewLine, OldAngle, NewAngle, OldReversed, NewReversed)
             End Sub
 
-            Private Sub pNew(OldLine As PointF(), NewLine As PointF(), OldAngle As Single, NewAngle As Single, OldReversed As Boolean, NewReversed As Boolean)
+            Private Sub pNew(OldLine As PointD(), NewLine As PointD(), OldAngle As Decimal, NewAngle As Decimal, OldReversed As Boolean, NewReversed As Boolean)
+                Dim iPrecision As Integer = 3
                 oOldLocation = OldLine(0)
-                sNewSize = Math.Sqrt((NewLine(0).X - NewLine(1).X) ^ 2 + (NewLine(0).Y - NewLine(1).Y) ^ 2)
-                sOldSize = Math.Sqrt((oOldLocation.X - OldLine(1).X) ^ 2 + (oOldLocation.Y - OldLine(1).Y) ^ 2)
-                If sOldSize = 0 Then
-                    sDeltaSize = 1
+                sNewSize = modNumbers.MathRound(Math.Sqrt((NewLine(0).X - NewLine(1).X) ^ 2 + (NewLine(0).Y - NewLine(1).Y) ^ 2), iPrecision + 1)
+                sOldSize = modNumbers.MathRound(Math.Sqrt((oOldLocation.X - OldLine(1).X) ^ 2 + (oOldLocation.Y - OldLine(1).Y) ^ 2), iPrecision + 1)
+                If sOldSize = 0D OrElse sNewSize = 0D Then
+                    sDeltaSize = 1D
                 Else
-                    sDeltaSize = modNumbers.MathRound(sNewSize / sOldSize, 3)
+                    sDeltaSize = modNumbers.MathRound(sNewSize / sOldSize, iPrecision)
                 End If
-
-                Dim sLineNewAngle As Single = modNumbers.MathRound(modPaint.GetBearing(NewLine(0), NewLine(1)), 4)
-                Dim sLineOldAngle As Single = modNumbers.MathRound(modPaint.GetBearing(oOldLocation, OldLine(1)), 4)
+                Dim sLineNewAngle As Single = modNumbers.MathRound(modPaint.GetBearing(NewLine(0), NewLine(1)), iPrecision + 1)
+                Dim sLineOldAngle As Single = modNumbers.MathRound(modPaint.GetBearing(oOldLocation, OldLine(1)), iPrecision + 1)
                 If Math.Abs(modNumbers.MathRound(sLineNewAngle - sLineOldAngle, 0)) = 180 Then
-                    sDeltaX = Math.Round(NewLine(1).X - oOldLocation.X, 3)
-                    sDeltaY = Math.Round(NewLine(1).Y - oOldLocation.Y, 3)
+                    sDeltaX = modNumbers.MathRound(NewLine(1).X - oOldLocation.X, iPrecision)
+                    sDeltaY = modNumbers.MathRound(NewLine(1).Y - oOldLocation.Y, iPrecision)
                     oNewLocation = NewLine(1)
                 Else
-                    sDeltaX = Math.Round(NewLine(0).X - oOldLocation.X, 3)
-                    sDeltaY = Math.Round(NewLine(0).Y - oOldLocation.Y, 3)
+                    sDeltaX = modNumbers.MathRound(NewLine(0).X - oOldLocation.X, iPrecision)
+                    sDeltaY = modNumbers.MathRound(NewLine(0).Y - oOldLocation.Y, iPrecision)
                     oNewLocation = NewLine(0)
                 End If
-
                 sNewAngle = modPaint.NormalizeInclination(NewAngle)
                 If NewReversed Then sNewAngle = -sNewAngle
                 sOldAngle = modPaint.NormalizeInclination(OldAngle)
                 If OldReversed Then sOldAngle = -sOldAngle
-                sOldAngle = Math.Round(sOldAngle, 3)
-                sNewAngle = Math.Round(sNewAngle, 3)
-                sDeltaAngle = sNewAngle - sOldAngle
+                sOldAngle = modNumbers.MathRound(sOldAngle, iPrecision + 1)
+                sNewAngle = modNumbers.MathRound(sNewAngle, iPrecision + 1)
+                sDeltaAngle = modNumbers.MathRound(sNewAngle - sOldAngle, iPrecision)
             End Sub
 
-            Public ReadOnly Property OldSize As Single
+            Public ReadOnly Property OldSize As Decimal Implements cIWarpingFactor.OldSize
                 Get
                     Return sOldSize
                 End Get
             End Property
 
-            Public ReadOnly Property NewSize As Single
+            Public ReadOnly Property NewSize As Decimal Implements cIWarpingFactor.NewSize
                 Get
                     Return sNewSize
                 End Get
             End Property
 
-            Public ReadOnly Property OldAngle As Single
+            Public ReadOnly Property OldAngle As Decimal Implements cIWarpingFactor.OldAngle
                 Get
                     Return sOldAngle
                 End Get
             End Property
 
-            Public ReadOnly Property NewAngle As Single
+            Public ReadOnly Property NewAngle As Decimal Implements cIWarpingFactor.NewAngle
                 Get
                     Return sNewAngle
                 End Get
             End Property
 
-            Public ReadOnly Property OldLocation As PointF
+            Public ReadOnly Property OldLocation As PointD Implements cIWarpingFactor.OldLocation
                 Get
                     Return oOldLocation
                 End Get
             End Property
 
-            Public ReadOnly Property NewLocation As PointF
+            Public ReadOnly Property NewLocation As PointD Implements cIWarpingFactor.NewLocation
                 Get
                     Return oNewLocation
                 End Get
@@ -334,7 +352,7 @@ Namespace cSurvey.Calculate.Plot
             bIsInRing = modXML.GetAttributeValue(Item, "ir", "0")
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlData As XmlElement = Document.CreateElement("data")
             Call oSourceData.SaveTo(File, Document, oXmlData, "srcdata")
             Call oOldData.SaveTo(File, Document, oXmlData, "olddata")

@@ -1,6 +1,6 @@
 ﻿Imports cSurveyPC.cSurvey
 
-Public Class frmGrades
+friend Class frmGrades
     Private oSurvey As cSurveyPC.cSurvey.cSurvey
 
     Friend Event OnApply(ByVal Sender As frmGrades)

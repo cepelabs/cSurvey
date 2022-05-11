@@ -137,23 +137,23 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
-            Using oMatrix As Matrix = New Matrix
-                If PaintOptions.DrawTranslation Then
-                    Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
-                    Call oMatrix.Translate(oTranslation.Width, oTranslation.Height)
-                End If
-                Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
-                Call oSVGItem.SetAttribute("name", MyBase.Name)
-                Return oSVGItem
-            End Using
-        End Function
+        'Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        '    Using oMatrix As Matrix = New Matrix
+        '        If PaintOptions.DrawTranslation Then
+        '            Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
+        '            Call oMatrix.Translate(oTranslation.Width, oTranslation.Height)
+        '        End If
+        '        Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
+        '        If MyBase.Name <> "" Then Call oSVGItem.SetAttribute("name", MyBase.Name)
+        '        Return oSVGItem
+        '    End Using
+        'End Function
 
-        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
-            Dim oSVG As XmlDocument = modSVG.CreateSVG
-            Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
-            Return oSVG
-        End Function
+        'Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
+        '    Dim oSVG As XmlDocument = modSVG.CreateSVG
+        '    Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
+        '    Return oSVG
+        'End Function
 
         Public Overrides ReadOnly Property HaveEditablePoints As Boolean
             Get
@@ -278,16 +278,16 @@ Namespace cSurvey.Design.Items
 
             Dim sScale As Single = GetClipartScaleFactor(PaintOptions)
 
-            Dim oPath As GraphicsPath = New GraphicsPath
-            Dim oPoint1 As PointF = New PointF(0, 0)
-            Dim oPoint2 As PointF = New PointF(0, 1)
-            Call oPath.AddLine(oPoint1, oPoint2)
-            Call oPath.Warp(oWarpPoint, oDataBounds)
+            Using oPath As GraphicsPath = New GraphicsPath
+                Dim oPoint1 As PointF = New PointF(0, 0)
+                Dim oPoint2 As PointF = New PointF(0, 1)
+                Call oPath.AddLine(oPoint1, oPoint2)
+                Call oPath.Warp(oWarpPoint, oDataBounds)
 
-            Dim oPoint3 As PointF = New PointF(oPath.PathPoints(1).X - oPath.PathPoints(0).X, oPath.PathPoints(1).Y - oPath.PathPoints(0).Y)
-            Scale = sScale * modPaint.DistancePointToPoint(oPoint1, oPoint3)
-            Angle = modPaint.NormalizeAngle(modPaint.GetBearing(oPoint1, oPoint3) - 180) ' modPaint.GetAngleBetweenSegment(oPoint1, oPoint2, oPoint1, oPoint3)
-            Call oPath.Dispose()
+                Dim oPoint3 As PointF = New PointF(oPath.PathPoints(1).X - oPath.PathPoints(0).X, oPath.PathPoints(1).Y - oPath.PathPoints(0).Y)
+                Scale = sScale * modPaint.DistancePointToPoint(oPoint1, oPoint3)
+                Angle = modPaint.NormalizeAngle(modPaint.GetBearing(oPoint1, oPoint3) - 180.0F) ' modPaint.GetAngleBetweenSegment(oPoint1, oPoint2, oPoint1, oPoint3)
+            End Using
         End Sub
 
         Friend Overrides Sub Render(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
@@ -309,29 +309,18 @@ Namespace cSurvey.Design.Items
                         oWarpPoint(2) = oxPoints(3)
                         oWarpPoint(3) = oxPoints(2)
                     End If
-
                     Using oPaths As cDrawPaths = oClipart.Clipart.ClonePaths
-
-                        'dimensiono la clipart
+                        'apply default scale factor
                         Using oScaleMatrix = New Matrix
                             Dim sScale As Single = GetClipartScaleFactor(PaintOptions)
                             Call oScaleMatrix.Scale(sScale, sScale, MatrixOrder.Append)
                             Call oPaths.Transform(oScaleMatrix)
                         End Using
-
+                        'warping clipart
                         Call oPaths.Warp(oWarpPoint, oDataBounds)
-
                         Call oPaths.Render(Me, Graphics, PaintOptions, Options, SelectionModeEnum.Selected, oCache)
-                        'For Each oDrawPath As cDrawPath In oPaths
-                        '    Using oPath As GraphicsPath = oDrawPath.Path
-                        '        Dim sFill As String = oDrawPath.GetStyle("fill", "none")
-                        '        If sFill <> "none" Then
-                        '            Call MyBase.Brush.Render(Graphics, PaintOptions, Options, Selected, oPath, oCache)
-                        '        End If
-                        '        Call MyBase.Pen.Render(Graphics, PaintOptions, Options, Selected, oPath, oCache)
-                        '    End Using
-                        'Next
                     End Using
+
                     Call .Rendered()
                 End If
             End With
@@ -340,7 +329,7 @@ Namespace cSurvey.Design.Items
         Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             If MyBase.Points.Count > 1 Then
                 Call Render(Graphics, PaintOptions, Options, Selected)
-                If Not PaintOptions.IsDesign Or (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then '
+                If Not PaintOptions.IsDesign OrElse (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then '
                     Call MyBase.Caches(PaintOptions).Paint(Graphics, PaintOptions, Options)
                     If PaintOptions.ShowSegmentBindings Then
                         Call modPaint.PaintPointToSegmentBindings(Graphics, MyBase.Survey, Me, Selected)
@@ -377,7 +366,7 @@ Namespace cSurvey.Design.Items
             End If
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As Storage.cFile, ByVal item As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As cFile, ByVal item As XmlElement)
             Call MyBase.New(Survey, Design, Layer, File, item)
             oSurvey = Survey
             Dim sData As String = modXML.GetAttributeValue(item, "data", "")
@@ -391,16 +380,16 @@ Namespace cSurvey.Design.Items
                     oClipart = oSurvey.Cliparts.Cliparts(sData)
             End Select
             If IsNothing(oClipart) Then
-                oClipart = oSurvey.Signs.Cliparts.Add("", My.Resources.error_svg)
+                oClipart = oSurvey.Signs.Cliparts.Add("", My.Resources.clipart_error)
             End If
             iClipartResizeMode = modXML.GetAttributeValue(item, "clipartresizemode", cIItemClipart.ClipartResizeModeEnum.Stretched)
             Call pLoadData()
             Call FixBound()
         End Sub
 
-        Friend Overrides Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+        Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oItem As XmlElement = MyBase.SaveTo(File, Document, Parent, Options)
-            If (File.Options And Storage.cFile.FileOptionsEnum.[EmbedResource]) = Storage.cFile.FileOptionsEnum.[EmbedResource] Then
+            If (File.Options And cFile.FileOptionsEnum.[EmbedResource]) = cFile.FileOptionsEnum.[EmbedResource] Then
                 Call oItem.SetAttribute("data", oClipart.Clipart.Data)
                 Call oItem.SetAttribute("dataformat", cIItemClipartBase.cClipartDataFormatEnum.SVGData.ToString("D"))
             Else
@@ -408,7 +397,7 @@ Namespace cSurvey.Design.Items
                 Call oItem.SetAttribute("dataformat", cIItemClipartBase.cClipartDataFormatEnum.SVGResource.ToString("D"))
             End If
             'Select Case File.FileFormat
-            '    Case Storage.cFile.FileFormatEnum.CSX
+            '    Case cFile.FileFormatEnum.CSX
             '        Call oItem.SetAttribute("data", oClipart.ID)
             '        Call oItem.SetAttribute("dataformat", cItemClipartDataFormatEnum.SVGResource.ToString("D"))
             '    Case Else

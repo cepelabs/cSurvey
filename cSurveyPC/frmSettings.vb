@@ -2,7 +2,7 @@
 Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Net
 
-Public Class frmSettings
+friend Class frmSettings
 
     Private Sub cmdTherionPathBrowse_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdTherionPathBrowse.Click
         Dim oOFD As OpenFileDialog = New OpenFileDialog
@@ -45,10 +45,13 @@ Public Class frmSettings
             Call oReg.SetValue("svg.importlinetype", cboSVGImportLineType.SelectedIndex)
             Call oReg.SetValue("svg.importautodivide", chkSVGImportAutodivide.Checked)
 
-            Call oReg.SetValue("svg.exportscale", modNumbers.NumberToString(txtSVGExportScale.Value))
-            Call oReg.SetValue("svg.exportdpi", txtSVGExportDPI.Value)
+            'Call oReg.SetValue("svg.exportscale", modNumbers.NumberToString(txtSVGExportScale.Value))
+            'Call oReg.SetValue("svg.exportdpi", txtSVGExportDPI.Value)
             Call oReg.SetValue("svg.exportnoclipartbrushes", If(chkSVGExportNoClipartBrushes.Checked, 1, 0))
             Call oReg.SetValue("svg.exportnoclipping", If(chkSVGExportNoClipping.Checked, 1, 0))
+            Call oReg.SetValue("svg.exportcsurveyreferences", If(chkSVGExportcSurveyReference.Checked, 1, 0))
+            Call oReg.SetValue("svg.exportimages", If(chkSVGExportImages.Checked, 1, 0))
+            Call oReg.SetValue("svg.exporttextaspath", If(chkSVGExportTextAsPath.Checked, 1, 0))
 
             Call oReg.SetValue("therion.path", txtTherionPath.Text)
             Call oReg.SetValue("therion.lock.enabled", If(chkTherionLochEnabled.Checked, 1, 0))
@@ -121,6 +124,8 @@ Public Class frmSettings
             Call oReg.SetValue("linkedsurveys.selectonadd", If(chkLinkedSurveysSelectOnAdd.Checked, "1", "0"))
             Call oReg.SetValue("linkedsurveys.showincaveinfo", If(chkLinkedSurveysShowInCaveInfo.Checked, "1", "0"))
             Call oReg.SetValue("linkedsurveys.recursiveload", If(chkLinkedSurveysRecursiveLoad.Checked, "1", "0"))
+            Call oReg.SetValue("linkedsurveys.recursiveload.prioritizechildren", If(chkLinkedSurveysRecursiveLoadPrioritizeChildren.Checked, "1", "0"))
+            Call oReg.SetValue("linkedsurveys.refreshonload", If(chkLinkedSurveysRefreshOnLoad.Checked, "1", "0"))
 
             Select Case cboLanguage.SelectedIndex
                 Case 0
@@ -247,10 +252,14 @@ Public Class frmSettings
             cboSVGImportLineType.SelectedIndex = oReg.GetValue("svg.importlinetype", cSurvey.Design.Items.cIItemLine.LineTypeEnum.Splines)
             chkSVGImportAutodivide.Checked = oReg.GetValue("svg.importautodivide", False)
 
-            txtSVGExportScale.Value = modNumbers.StringToDecimal(oReg.GetValue("svg.exportscale", 1))
+            'txtSVGExportScale.Value = modNumbers.StringToDecimal(oReg.GetValue("svg.exportscale", 1))
             chkSVGExportNoClipartBrushes.Checked = oReg.GetValue("svg.exportnoclipartbrushes", 0)
             chkSVGExportNoClipping.Checked = oReg.GetValue("svg.exportnoclipping", 0)
-            txtSVGExportDPI.Value = oReg.GetValue("svg.exportdpi", 90)
+            chkSVGExportcSurveyReference.Checked = oReg.GetValue("svg.exportcsurveyreferences", 1)
+            chkSVGExportImages.Checked = oReg.GetValue("svg.exportimages", 1)
+            chkSVGExportTextAsPath.Checked = oReg.GetValue("svg.exporttextaspath", 0)
+
+            'txtSVGExportDPI.Value = oReg.GetValue("svg.exportdpi", 90)
             txtTherionPath.Text = oReg.GetValue("therion.path", "")
             chkTherionLochEnabled.Checked = oReg.GetValue("therion.loch.enabled", 1)
             chkTherionUseCadastralIDInCaveNames.Checked = oReg.GetValue("therion.usecadastralidincavenames", 0)
@@ -318,6 +327,8 @@ Public Class frmSettings
             chkLinkedSurveysSelectOnAdd.Checked = oReg.GetValue("linkedsurveys.selectonadd", "0")
             chkLinkedSurveysShowInCaveInfo.Checked = oReg.GetValue("linkedsurveys.showincaveinfo", "1")
             chkLinkedSurveysRecursiveLoad.Checked = oReg.GetValue("linkedsurveys.recursiveload", "1")
+            chkLinkedSurveysRecursiveLoadPrioritizeChildren.Checked = oReg.GetValue("linkedsurveys.recursiveload.prioritizechildren", "0")
+            chkLinkedSurveysRefreshOnLoad.Checked = oReg.GetValue("linkedsurveys.refreshonload", "1")
 
             Dim sLanguage As String = oReg.GetValue("language", "")
             Select Case sLanguage
@@ -452,6 +463,10 @@ Public Class frmSettings
 
     Private Sub cboDesignShowMetricGrid_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboDesignShowMetricGrid.SelectedIndexChanged
         txtDesignMetricGridOpacity.Enabled = cboDesignShowMetricGrid.SelectedIndex > 0
+    End Sub
+
+    Private Sub chkLinkedSurveysRecursiveLoad_CheckedChanged(sender As Object, e As EventArgs) Handles chkLinkedSurveysRecursiveLoad.CheckedChanged
+        chkLinkedSurveysRecursiveLoadPrioritizeChildren.Enabled = chkLinkedSurveysRecursiveLoad.Checked
     End Sub
 
     'Private Sub cmdFileAssociationCreate_Click(sender As Object, e As EventArgs) Handles cmdFileAssociationCreate.Click

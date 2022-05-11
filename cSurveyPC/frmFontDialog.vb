@@ -1,6 +1,6 @@
 ﻿Imports cSurveyPC.cSurvey
 
-Public Class frmFontDialog
+friend Class frmFontDialog
 
     Private oFont As cIFont
 

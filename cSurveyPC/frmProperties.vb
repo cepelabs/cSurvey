@@ -3,7 +3,7 @@ Imports System.Drawing.Drawing2D
 Imports cSurveyPC.cSurvey.Scripting
 Imports System.ComponentModel
 
-Public Class frmProperties
+Friend Class frmProperties
     Private oSurvey As cSurvey.cSurvey
 
     Friend Event OnSegmentSelect(Sender As frmProperties, Segment As cSegment)
@@ -273,6 +273,10 @@ Public Class frmProperties
             cboTextRotateMode.SelectedIndex = .DesignProperties.GetValue("DesignTextRotateMode", 1)
             cboSignRotateMode.SelectedIndex = .DesignProperties.GetValue("DesignSignRotateMode", 0)
 
+            txtDesignCrossSectionTextScaleFactor.Value = .DesignProperties.GetValue("DesignCrossSectionTextScaleFactor", 1)
+            txtDesignCrossSectionMarkerTextScaleFactor.Value = .DesignProperties.GetValue("DesignCrossSectionMarkerTextScaleFactor", 1)
+            txtDesignCrossSectionMarkerArrowScaleFactor.Value = .DesignProperties.GetValue("DesignCrossSectionMarkerArrowScaleFactor", 1)
+
             'centerline
             txtPlotPointSize.Value = .DesignProperties.GetValue("PlotPointSize", 2)
             txtPlotSelectedPointSize.Value = .DesignProperties.GetValue("PlotSelectedPointSize", 8)
@@ -342,6 +346,7 @@ Public Class frmProperties
             chk3dLochShowDialog.Checked = Integer.Parse(oSurvey.SharedSettings.GetValue("loch.showdialog", 1))
             txt3DNormalizationFactor.Value = .ThreeDNormalizationFactor
             txt3DOversamplingFactor.Value = .ThreeDOversamplingFactor
+            txt3DExportAsImageOversampling.Value = .ThreeDExportAsImageOversamplingFactor
 
             txt3DSurfaceModelLOD.Value = .ThreeDSurfaceModelLod
             txt3DSurfaceTextureLOD.Value = .ThreeDSurfaceTextureLod
@@ -894,6 +899,10 @@ Public Class frmProperties
             Call .DesignProperties.SetValue("DesignTextRotateMode", cboTextRotateMode.SelectedIndex)
             Call .DesignProperties.SetValue("DesignSignRotateMode", cboSignRotateMode.SelectedIndex)
 
+            Call .DesignProperties.SetValue("DesignCrossSectionTextScaleFactor", txtDesignCrossSectionTextScaleFactor.Value)
+            Call .DesignProperties.SetValue("DesignCrossSectionMarkerTextScaleFactor", txtDesignCrossSectionMarkerTextScaleFactor.Value)
+            Call .DesignProperties.SetValue("DesignCrossSectionMarkerArrowScaleFactor", txtDesignCrossSectionMarkerArrowScaleFactor.Value)
+
             Call .DesignProperties.SetValue("PlotPointSize", txtPlotPointSize.Value)
             Call .DesignProperties.SetValue("PlotSelectedPointSize", txtPlotSelectedPointSize.Value)
             Call .DesignProperties.SetValue("PlotPointSymbol", cboPlotPointSymbol.SelectedIndex + 1)
@@ -954,6 +963,7 @@ Public Class frmProperties
             .ThreeDModelMode = cbo3DModelMode.SelectedIndex
             .ThreeDNormalizationFactor = txt3DNormalizationFactor.Value
             .ThreeDOversamplingFactor = txt3DOversamplingFactor.Value
+            .ThreeDExportAsImageOversamplingFactor = txt3DExportAsImageOversampling.Value
 
             .ThreeDSurfaceModelLod = txt3DSurfaceModelLOD.Value
             .ThreeDSurfaceTextureLod = txt3DSurfaceTextureLOD.Value
@@ -1321,7 +1331,7 @@ Public Class frmProperties
     Private Sub btnCaveInfoAddCave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCaveInfoAddCave.Click
         Call tvCaveInfos.Focus()
 
-        Dim oCaveInfo As cCaveInfo = oSurvey.Properties.CaveInfos.GetEmptyCaveInfo(pGetNewNodeName("Grotta", tvCaveInfos.Nodes))
+        Dim oCaveInfo As cCaveInfo = oSurvey.Properties.CaveInfos.GetEmptyCaveInfo(pGetNewNodeName(modMain.GetLocalizedString("properties.textpart4"), tvCaveInfos.Nodes))
         Dim oCaveNode As TreeNode = tvCaveInfos.Nodes.Add(oCaveInfo.Name, oCaveInfo.Name)
         Dim oCI As cCaveInfoPlaceHolder = New cCaveInfoPlaceHolder
         oCI.Name = oCaveInfo.Name
@@ -1346,7 +1356,7 @@ Public Class frmProperties
 
                 Dim sCave As String = oParentNode.Tag.name
                 Dim oBranches As cCaveInfoBranches = oParentNode.Tag.source.branches
-                Dim oCaveInfoBranch As cCaveInfoBranch = oBranches.GetEmptyCaveInfoBranch(pGetNewNodeName("Ramo", oParentNode.Nodes))
+                Dim oCaveInfoBranch As cCaveInfoBranch = oBranches.GetEmptyCaveInfoBranch(pGetNewNodeName(modMain.GetLocalizedString("properties.textpart5"), oParentNode.Nodes))
                 Dim oBranchNode As TreeNode = oParentNode.Nodes.Add(oCaveInfoBranch.Name, oCaveInfoBranch.Name)
                 Dim oCIB As cCaveInfoBranchPlaceHolder = New cCaveInfoBranchPlaceHolder
                 oCIB.Name = oCaveInfoBranch.Name
@@ -3105,7 +3115,7 @@ Public Class frmProperties
     End Sub
 
     Private Sub cboNordCorrection_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboNordCorrection.SelectedIndexChanged
-            Call cboSessionNordType_SelectedIndexChanged(Nothing, Nothing)
+        Call cboSessionNordType_SelectedIndexChanged(Nothing, Nothing)
     End Sub
 
     Private Sub chkGPSAllowManualDeclinations_CheckedChanged(sender As Object, e As EventArgs) Handles chkGPSAllowManualDeclinations.CheckedChanged

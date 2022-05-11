@@ -77,13 +77,16 @@ Namespace cSurvey.Calculate
             oItems = New Dictionary(Of String, cTrigPoint) '(StringComparer.OrdinalIgnoreCase)
             For Each oXMLItem As XmlElement In Item.ChildNodes
                 Dim oItem As cTrigPoint = New cTrigPoint(oXMLItem)
-                Call oItems.Add(oItem.Name, oItem)
+                'this check is a fix for a strange problem with some survey where some station seem to be duplicated...I think this cound be somethings from topodroid (like station with same name but different case, A and a, that for cSurvey are the same...)
+                'but I don't have found any evidence of this at now
+                If Not oItems.ContainsKey(oItem.Name) Then
+                    Call oItems.Add(oItem.Name, oItem)
+                End If
             Next
-            'Dim oColors As List(Of Color) = modPaint.GetRainbowColors(100)
             oZs = New cMinMaxs(oSurvey, GetType(cTrigPointPoint).GetProperty("Z"), Me)
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlTrigpoints As XmlElement = Document.CreateElement("ts")
             For Each oItem As cTrigPoint In oItems.Values
                 Call oItem.SaveTo(File, Document, oXmlTrigpoints)

@@ -1,6 +1,6 @@
 ﻿Imports cSurveyPC.cSurvey
 
-Public Class frmTherionPad
+friend Class frmTherionPad
     'Private oSurvey As cSurvey.cSurvey
 
     Friend Class cOnTherionPadEventArgs
@@ -83,18 +83,18 @@ Public Class frmTherionPad
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-        chkCloseAfterAction.Checked = oReg.GetValue("therion.closepadafteraction", 1)
-        Call oReg.Close()
-        Call oReg.Dispose()
+        Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
+            chkCloseAfterAction.Checked = oReg.GetValue("therion.closepadafteraction", 1)
+            Call oReg.Close()
+        End Using
         'btnConsole.Checked = oReg.GetValue("therion.showconsoleonpad", 0)
     End Sub
 
     Private Sub frmTherionPad_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-        Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-        Call oReg.SetValue("therion.closepadafteraction", IIf(chkCloseAfterAction.Checked, "1", "0"))
-        'Call oReg.SetValue("therion.showconsoleonpad", IIf(btnConsole.Checked, "1", "0"))
-        Call oReg.Close()
-        Call oReg.Dispose()
+        Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
+            Call oReg.SetValue("therion.closepadafteraction", IIf(chkCloseAfterAction.Checked, "1", "0"))
+            'Call oReg.SetValue("therion.showconsoleonpad", IIf(btnConsole.Checked, "1", "0"))
+            Call oReg.Close()
+        End Using
     End Sub
 End Class

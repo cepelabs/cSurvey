@@ -1,7 +1,7 @@
 ﻿Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Scripting
 
-Public Class frmScriptFormulaEditor
+friend Class frmScriptFormulaEditor
     Private oSurvey As cSurvey.cSurvey
     Private iFunctionLanguage As LanguageEnum
 

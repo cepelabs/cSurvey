@@ -1,7 +1,7 @@
 ﻿Imports cSurveyPC.cSurvey.CaveRegister
 Imports cSurveyPC.cSurvey
 
-Public Class frmCaveRegisterAdd
+friend Class frmCaveRegisterAdd
     Private oSurvey As cSurvey.cSurvey
 
     Private Sub cmdOk_Click(sender As Object, e As EventArgs) Handles cmdOk.Click

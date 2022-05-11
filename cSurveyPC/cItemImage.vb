@@ -15,6 +15,18 @@ Namespace cSurvey.Design.Items
         Private sTransparencyThreshold As Single
         Private sDefaultTransparencyThreshold As Single = 0.95
 
+        Private sRotateBy As Single
+        Private oRotatedImage As Bitmap
+
+        Public Property RotateBy As Single Implements cIItemImage.RotateBy
+            Get
+                Return sRotateBy
+            End Get
+            Set(value As Single)
+                sRotateBy = value
+                Call MyBase.Caches.Invalidate()
+            End Set
+        End Property
         Public Overrides ReadOnly Property CanBeHiddenInDesign As Boolean
             Get
                 Return True
@@ -223,16 +235,11 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
-            Dim oSVGGroup As XmlElement = modSVG.CreateGroup(SVG, MyBase.Layer.Type.ToString)
-            Return oSVGGroup
-        End Function
-
-        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
-            Dim oSVG As XmlDocument = modSVG.CreateSVG
-            Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
-            Return oSVG
-        End Function
+        'Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
+        '    Dim oSVG As XmlDocument = modSVG.CreateSVG
+        '    Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
+        '    Return oSVG
+        'End Function
 
         Public Overrides Sub ResizeBy(ByVal ScaleWidth As Single, ByVal ScaleHeight As Single)
             If ScaleWidth < 0 And ScaleHeight > 0 Then
@@ -243,6 +250,7 @@ Namespace cSurvey.Design.Items
                 Call oImage.RotateFlip(RotateFlipType.RotateNoneFlipXY)
             End If
             Call MyBase.ResizeBy(ScaleWidth, ScaleHeight)
+            Call MyBase.Caches.Invalidate()
         End Sub
 
         Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
@@ -252,6 +260,24 @@ Namespace cSurvey.Design.Items
                     Using oPath As GraphicsPath = New GraphicsPath
                         Call oPath.AddLines(MyBase.Points.GetPoints)
                         Call .Add(Drawings.cDrawCacheItem.cDrawCacheItemType.Border, oPath, Nothing, Nothing, Nothing)
+                        If Not oRotatedImage Is Nothing AndAlso Not oRotatedImage Is oImage Then
+                            Call oRotatedImage.Dispose()
+                        End If
+                        Select Case modPaint.NormalizeAngle(sRotateBy)
+                            Case 0.0F
+                                oRotatedImage = oImage
+                            Case 90.0F
+                                oRotatedImage = oImage.Clone
+                                Call oRotatedImage.RotateFlip(RotateFlipType.Rotate90FlipNone)
+                            Case 180.0F
+                                oRotatedImage = oImage.Clone
+                                Call oRotatedImage.RotateFlip(RotateFlipType.Rotate180FlipNone)
+                            Case 270.0F
+                                oRotatedImage = oImage.Clone
+                                Call oRotatedImage.RotateFlip(RotateFlipType.Rotate270FlipNone)
+                            Case Else
+                                oRotatedImage = modPaint.RotateImage(oImage, sRotateBy, True, Color.Transparent)
+                        End Select
                     End Using
                     Call .Rendered()
                 End If
@@ -262,44 +288,26 @@ Namespace cSurvey.Design.Items
             If MyBase.Points.Count > 1 Then
                 Call Render(Graphics, PaintOptions, Options, Selected)
                 Try
-                    If Not PaintOptions.IsDesign Or (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then
+                    If Not PaintOptions.IsDesign OrElse (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then
                         Dim oBounds As RectangleF = GetBounds()
                         If oTransparentColor = Color.Transparent Then
                             Select Case iImageResizeMode
                                 Case cIItemImage.ImageResizeModeEnum.Scaled
-                                    'in scala
-                                    Call modPaint.DrawScaledImage(Graphics, oImage, oBounds)
+                                    Call modPaint.DrawScaledImage(Graphics, oRotatedImage, oBounds)
                                 Case cIItemImage.ImageResizeModeEnum.Stretched
-                                    '"stirata"
-                                    Call Graphics.DrawImage(oImage, oBounds)
+                                    Call Graphics.DrawImage(oRotatedImage, oBounds)
                             End Select
                         Else
                             Using oImageAttributes As System.Drawing.Imaging.ImageAttributes = New System.Drawing.Imaging.ImageAttributes
-                                Call oImageAttributes.SetColorKey(modPaint.DarkColor(oTransparentColor, sTransparencyThreshold), modPaint.LightColor(oTransparentColor, sTransparencyThreshold))
+                                Call oImageAttributes.SetColorKey(modPaint.DarkColor(oTransparentColor, 1 - sTransparencyThreshold), modPaint.LightColor(oTransparentColor, 1 - sTransparencyThreshold))
                                 Select Case iImageResizeMode
                                     Case cIItemImage.ImageResizeModeEnum.Scaled
-                                        'in scala
-                                        Call modPaint.DrawScaledImage(Graphics, oImage, oBounds, oImageAttributes)
+                                        Call modPaint.DrawScaledImage(Graphics, oRotatedImage, oBounds, oImageAttributes)
                                     Case cIItemImage.ImageResizeModeEnum.Stretched
-                                        '"stirata"
-                                        Call modPaint.DrawStretchedImage(Graphics, oImage, oBounds, oImageAttributes)
-                                        'Dim oPoints(2) As PointF
-                                        'oPoints(0) = oBounds.Location
-                                        'oPoints(1) = New PointF(oBounds.Right, oBounds.Top)
-                                        'oPoints(2) = New PointF(oBounds.Left, oBounds.Bottom)
-                                        'Dim oSourceRect As RectangleF = oImage.GetBounds(System.Drawing.GraphicsUnit.Pixel)
-                                        'Call Graphics.DrawImage(oImage, oPoints, oSourceRect, GraphicsUnit.Pixel, oImageAttributes)
+                                        Call modPaint.DrawStretchedImage(Graphics, oRotatedImage, oBounds, oImageAttributes)
                                 End Select
                             End Using
                         End If
-                        'Select Case iImageResizeMode
-                        '    Case cIItemImage.ImageResizeModeEnum.Scaled
-                        '        'in scala
-                        '        modPaint.DrawScaledImage(Graphics, oImage, oBounds)
-                        '    Case cIItemImage.ImageResizeModeEnum.Stretched
-                        '        '"stirata"
-                        '        Call Graphics.DrawImage(oImage, oBounds)
-                        'End Select
                         Call MyBase.Caches(PaintOptions).Paint(Graphics, PaintOptions, Options)
                     End If
                 Catch
@@ -307,41 +315,51 @@ Namespace cSurvey.Design.Items
             End If
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As Storage.cFile, ByVal item As XmlElement)
+        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+            If Options And SVGOptionsEnum.Images Then
+                Dim oBounds As RectangleF = GetBounds()
+                Dim oSVGItem As XmlElement = modSVG.CreateImage(SVG, PaintOptions, oBounds, oRotatedImage, sRotateBy, iImageResizeMode = cIItemImage.ImageResizeModeEnum.Scaled)
+                Return oSVGItem
+            End If
+        End Function
+
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As cFile, ByVal item As XmlElement)
             Call MyBase.New(Survey, Design, Layer, File, item)
             sImageID = modXML.GetAttributeValue(item, "imageid", Guid.NewGuid.ToString)
             If sImageID = "" Then sImageID = Guid.NewGuid.ToString
             Select Case File.FileFormat
-                Case Storage.cFile.FileFormatEnum.CSX
+                Case cFile.FileFormatEnum.CSX
                     Using oMs As IO.MemoryStream = New IO.MemoryStream(Convert.FromBase64String(modXML.GetAttributeValue(item, "image")))
                         oImage = modPaint.SafeBitmapFromStream(oMs)
                     End Using
-                Case Storage.cFile.FileFormatEnum.CSZ
+                Case cFile.FileFormatEnum.CSZ
                     Dim sImagePath As String = modXML.GetAttributeValue(item, "image")
                     oImage = New Bitmap(DirectCast(File.Data(sImagePath), Storage.cStorageItemFile).Stream)
             End Select
+            sRotateBy = modXML.GetAttributeValue(item, "rby", 0.0F)
             oTransparentColor = modXML.GetAttributeColor(item, "transparentcolor", Color.Transparent)
             sTransparencyThreshold = modXML.GetAttributeValue(item, "transparencythreshold", sDefaultTransparencyThreshold)
             iImageResizeMode = modXML.GetAttributeValue(item, "imageresizemode", cIItemImage.ImageResizeModeEnum.Scaled)
         End Sub
 
-        Friend Overrides Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+        Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oItem As XmlElement = MyBase.SaveTo(File, Document, Parent, Options)
             Call oItem.SetAttribute("imageid", sImageID)
-            If Not (File.Options And Storage.cFile.FileOptionsEnum.DontSaveBinary) = Storage.cFile.FileOptionsEnum.DontSaveBinary Then
+            If Not (File.Options And cFile.FileOptionsEnum.DontSaveBinary) = cFile.FileOptionsEnum.DontSaveBinary Then
                 Select Case File.FileFormat
-                    Case Storage.cFile.FileFormatEnum.CSX
+                    Case cFile.FileFormatEnum.CSX
                         Using oMs As IO.MemoryStream = New IO.MemoryStream
                             Call modPaint.SafeBitmapSaveToStream(oImage, oMs, Drawing.Imaging.ImageFormat.Png)
                             Call oItem.SetAttribute("image", Convert.ToBase64String(oMs.ToArray()))
                         End Using
-                    Case Storage.cFile.FileFormatEnum.CSZ
+                    Case cFile.FileFormatEnum.CSZ
                         Dim sImagePath As String = "_data\design\" & sImageID & ".png"
                         Dim oImageStorage As Storage.cStorageItemFile = File.Data.AddFile(sImagePath)
                         Call modPaint.SafeBitmapSaveToStream(oImage, oImageStorage.Stream, Drawing.Imaging.ImageFormat.Png)
                         Call oItem.SetAttribute("image", sImagePath)
                 End Select
             End If
+            If sRotateBy <> 0.0F Then Call oItem.SetAttribute("rby", modNumbers.NumberToString(sRotateBy))
             If Not oTransparentColor = Color.Transparent Then Call oItem.SetAttribute("transparentcolor", oTransparentColor.ToArgb)
             If sTransparencyThreshold <> sDefaultTransparencyThreshold Then Call oItem.SetAttribute("transparencythreshold", sTransparencyThreshold)
             If iImageResizeMode <> cIItemImage.ImageResizeModeEnum.Scaled Then Call oItem.SetAttribute("imageresizemode", iImageResizeMode.ToString("D"))
@@ -352,10 +370,11 @@ Namespace cSurvey.Design.Items
             Dim sNewWidth As Single = oImage.Width * Scale
             Dim sNewHeight As Single = oImage.Height * Scale
             Dim oNewImage As Image = New Bitmap(sNewWidth, sNewHeight, Imaging.PixelFormat.Format24bppRgb)
-            Dim oGraphics As Graphics = Graphics.FromImage(oNewImage)
-            Call oGraphics.DrawImage(oImage, 0, 0, sNewWidth, sNewHeight)
-            oImage = oNewImage
-            Call oGraphics.Dispose()
+            Using oGraphics As Graphics = Graphics.FromImage(oNewImage)
+                Call oGraphics.DrawImage(oImage, 0, 0, sNewWidth, sNewHeight)
+                oImage = oNewImage
+                Call MyBase.Caches.Invalidate()
+            End Using
         End Sub
 
         Public ReadOnly Property ImageSize() As SizeF Implements cIItemImage.ImageSize
@@ -378,6 +397,7 @@ Namespace cSurvey.Design.Items
                 If Not value Is oImage Then
                     sImageID = Guid.NewGuid.ToString
                     oImage = value
+                    Call MyBase.Caches.Invalidate()
                 End If
             End Set
         End Property

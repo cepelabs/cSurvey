@@ -1,0 +1,19 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg x="0px" y="0px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" id="Layer_1" style="enable-background:new 0 0 32 32">
+  <style type="text/css">
+	.Black{fill:#727272;}
+	.Blue{fill:#1177D7;}
+	.Green{fill:#039C23;}
+	.Yellow{fill:#FFB115;}
+	.Red{fill:#D11C1C;}
+	.White{fill:#FFFFFF;}
+	.st0{opacity:0.5;}
+	.st1{opacity:0.75;}
+</style>
+  <g id="DistributeRowsEvenly">
+    <g class="st0">
+      <path d="M14,24H2v-8h12V24z M28,16H16v8h12V16z" class="Black" />
+    </g>
+    <polygon points="30,8 28,8 28,4 26,4 26,8 16,8 16,4 14,4 14,8 4,8 4,4 2,4 2,8 0,8 0,10 2,10 2,14 4,14 4,10 14,10    14,14 16,14 16,10 26,10 26,14 28,14 28,10 30,10  " class="Blue" />
+  </g>
+</svg>

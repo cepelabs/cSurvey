@@ -26,7 +26,6 @@ Partial Class frmParametersTranslations
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmParametersTranslations))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.cmdApply = New System.Windows.Forms.Button()
         Me.cmdOk = New System.Windows.Forms.Button()
         Me.cmdCancel = New System.Windows.Forms.Button()
@@ -40,11 +39,6 @@ Partial Class frmParametersTranslations
         Me.chkOriginalPositionColorGray = New System.Windows.Forms.CheckBox()
         Me.cboOriginalPositionColorMode = New System.Windows.Forms.ComboBox()
         Me.lblOriginalPositionColorMode = New System.Windows.Forms.Label()
-        Me.grdStations = New cSurveyPC.cGrid()
-        Me.Column3 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.grdTraslations = New cSurveyPC.cGrid()
         Me.colCave = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colBranch = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -58,7 +52,6 @@ Partial Class frmParametersTranslations
         Me.chkOriginalPositionOverDesign = New System.Windows.Forms.CheckBox()
         Me.lblTranslationsThresholdUM = New System.Windows.Forms.Label()
         Me.mnuTraslationsGrid.SuspendLayout()
-        CType(Me.grdStations, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdTraslations, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtTranslationsThreshold, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -139,45 +132,6 @@ Partial Class frmParametersTranslations
         resources.ApplyResources(Me.lblOriginalPositionColorMode, "lblOriginalPositionColorMode")
         Me.lblOriginalPositionColorMode.Name = "lblOriginalPositionColorMode"
         '
-        'grdStations
-        '
-        Me.grdStations.AllowUserToAddRows = False
-        Me.grdStations.AllowUserToDeleteRows = False
-        Me.grdStations.AllowUserToResizeRows = False
-        resources.ApplyResources(Me.grdStations, "grdStations")
-        Me.grdStations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdStations.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column3, Me.DataGridViewTextBoxColumn1, Me.Column2, Me.Column1})
-        Me.grdStations.ContextMenuStrip = Me.mnuTraslationsGrid
-        Me.grdStations.Name = "grdStations"
-        Me.grdStations.RowHeadersVisible = False
-        '
-        'Column3
-        '
-        Me.Column3.Name = "Column3"
-        resources.ApplyResources(Me.Column3, "Column3")
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.FillWeight = 162.4366!
-        resources.ApplyResources(Me.DataGridViewTextBoxColumn1, "DataGridViewTextBoxColumn1")
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'Column2
-        '
-        DataGridViewCellStyle1.Format = "N0"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.Column2.DefaultCellStyle = DataGridViewCellStyle1
-        resources.ApplyResources(Me.Column2, "Column2")
-        Me.Column2.Name = "Column2"
-        '
-        'Column1
-        '
-        resources.ApplyResources(Me.Column1, "Column1")
-        Me.Column1.Name = "Column1"
-        '
         'grdTraslations
         '
         Me.grdTraslations.AllowUserToAddRows = False
@@ -208,16 +162,16 @@ Partial Class frmParametersTranslations
         '
         'colX
         '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.colX.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.colX.DefaultCellStyle = DataGridViewCellStyle1
         Me.colX.FillWeight = 6.186547!
         resources.ApplyResources(Me.colX, "colX")
         Me.colX.Name = "colX"
         '
         'colY
         '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.colY.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.colY.DefaultCellStyle = DataGridViewCellStyle2
         Me.colY.FillWeight = 6.186547!
         resources.ApplyResources(Me.colY, "colY")
         Me.colY.Name = "colY"
@@ -269,7 +223,6 @@ Partial Class frmParametersTranslations
         Me.Controls.Add(Me.chkOriginalPositionOnlyTranslated)
         Me.Controls.Add(Me.lblTranslationsThreshold)
         Me.Controls.Add(Me.txtTranslationsThreshold)
-        Me.Controls.Add(Me.grdStations)
         Me.Controls.Add(Me.chkOriginalPositionColorGray)
         Me.Controls.Add(Me.cboOriginalPositionColorMode)
         Me.Controls.Add(Me.lblOriginalPositionColorMode)
@@ -285,7 +238,6 @@ Partial Class frmParametersTranslations
         Me.Name = "frmParametersTranslations"
         Me.mnuTraslationsGrid.ResumeLayout(False)
         Me.mnuTraslationsGrid.PerformLayout()
-        CType(Me.grdStations, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdTraslations, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtTranslationsThreshold, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -306,11 +258,6 @@ Partial Class frmParametersTranslations
     Friend WithEvents txtTraslationsGridFilterBy As System.Windows.Forms.ToolStripTextBox
     Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents mnuTraslationsGridRemoveFilter As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents grdStations As cGrid
-    Friend WithEvents Column3 As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents colCave As DataGridViewTextBoxColumn
     Friend WithEvents colBranch As DataGridViewTextBoxColumn
     Friend WithEvents colX As DataGridViewTextBoxColumn

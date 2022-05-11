@@ -1,0 +1,19 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg x="0px" y="0px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" id="Layer_1" style="enable-background:new 0 0 32 32">
+  <style type="text/css">
+	.Yellow{fill:#FFB115;}
+	.Red{fill:#D11C1C;}
+	.Blue{fill:#1177D7;}
+	.Green{fill:#039C23;}
+	.Black{fill:#727272;}
+	.White{fill:#FFFFFF;}
+	.st0{opacity:0.5;}
+	.st1{display:none;}
+	.st2{display:inline;fill:#039C23;}
+	.st3{display:inline;fill:#D11C1C;}
+	.st4{display:inline;fill:#727272;}
+</style>
+  <g id="Prioritized">
+    <path d="M16,30c-2.2,0-4-1.8-4-4s1.8-4,4-4s4,1.8,4,4S18.2,30,16,30z M16,2c-2.2,0-4,1.8-4,4l2,12.3h0   c0.1,1,1,1.8,2,1.8c1,0,1.9-0.8,2-1.8h0L20,6C20,3.8,18.2,2,16,2z" class="Red" />
+  </g>
+</svg>

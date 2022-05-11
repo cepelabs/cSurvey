@@ -169,7 +169,6 @@ Partial Class cItemScalePropertyControl
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.Window
         Me.Controls.Add(Me.cboPropScaleFillStyle)
         Me.Controls.Add(Me.lblPropScaleFillStyle)
         Me.Controls.Add(Me.txtScaleScaleHeightFactor)

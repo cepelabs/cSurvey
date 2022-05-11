@@ -1,7 +1,7 @@
 ﻿Imports System.Xml
 Imports cSurveyPC.cSurvey.Scripting
 
-Public Class frmScriptEditor
+friend Class frmScriptEditor
     Private sFilename As String
     Private iFunctionLanguage As LanguageEnum
 

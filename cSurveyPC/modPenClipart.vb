@@ -32,7 +32,7 @@ Module modPenClipart
 
         oClipartIce = New cDrawClipArt(modMain.GetApplicationPath & "\Objects\Cliparts\pens\ice.svg")
 
-        oClipartCompass = New cDrawClipArt(My.Resources.default_compass_legacy)
+        oClipartCompass = New cDrawClipArt(My.Resources.clipart_defaultcompass_legacy)
 
         oClipartSand = New cDrawClipArt(modMain.GetApplicationPath & "\Objects\Cliparts\Brushes\Sand.svg")
 

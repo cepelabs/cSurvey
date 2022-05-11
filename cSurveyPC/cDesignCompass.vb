@@ -36,66 +36,64 @@ Namespace cSurvey.Design
                     Dim oItem As cDrawCacheItem
                     Select Case PaintOptions.CompassStyle
                         Case cOptions.CompassStyleEnum.Simple
-                            oItem = oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
+                            oItem = oCache.AddBorder
                             Dim iBorder As Integer = 4
                             Dim iRadius As Integer = 40
                             Dim iRadiusFactor As Integer = 5
                             Dim iSize As Integer = iRadius * 2
-                            Dim oArrowPen As Pen = New Pen(Color.Black, -1)
-                            Dim oArrowBrush As Brush = New SolidBrush(Color.Black)
-                            Dim iPosX As Integer = Location.X + iRadiusFactor + iBorder
-                            Dim iPosY As Integer = Location.Y
-                            Dim oPoints(3) As PointF
-                            oPoints(0) = New Point(iPosX, iPosY - iRadius)
-                            oPoints(1) = New Point(iPosX - iRadius / iRadiusFactor, iPosY + iRadius / iRadiusFactor)
-                            oPoints(2) = New Point(iPosX, iPosY)
-                            oPoints(3) = New Point(iPosX + iRadius / iRadiusFactor, iPosY + iRadius / iRadiusFactor)
-                            Call oItem.SetBrush(oArrowBrush)
-                            Call oItem.SetPen(oArrowPen)
-                            Call oItem.AddPolygon(oPoints)
-                            Dim oSF As StringFormat = New StringFormat
-                            oSF.Alignment = StringAlignment.Center
-                            oSF.LineAlignment = StringAlignment.Center
-                            Call oItem.AddString("N", New Font("Tahoma", 12, FontStyle.Bold), New RectangleF(iPosX - iRadius, iPosY - iRadius - 16, iRadius * 2, 16), oSF)
-                            Call oSF.Dispose()
-                            Call oArrowPen.Dispose()
-                            Call oArrowBrush.Dispose()
+                            Using oArrowPen As Pen = New Pen(Color.Black, -1)
+                                Using oArrowBrush As Brush = New SolidBrush(Color.Black)
+                                    Dim iPosX As Integer = Location.X + iRadiusFactor + iBorder
+                                    Dim iPosY As Integer = Location.Y
+                                    Dim oPoints(3) As PointF
+                                    oPoints(0) = New Point(iPosX, iPosY - iRadius)
+                                    oPoints(1) = New Point(iPosX - iRadius / iRadiusFactor, iPosY + iRadius / iRadiusFactor)
+                                    oPoints(2) = New Point(iPosX, iPosY)
+                                    oPoints(3) = New Point(iPosX + iRadius / iRadiusFactor, iPosY + iRadius / iRadiusFactor)
+                                    Call oItem.SetBrush(oArrowBrush)
+                                    Call oItem.SetPen(oArrowPen)
+                                    Call oItem.AddPolygon(oPoints)
+                                    Using oSF As StringFormat = New StringFormat
+                                        oSF.Alignment = StringAlignment.Center
+                                        oSF.LineAlignment = StringAlignment.Center
+                                        Call oItem.AddString("N", New Font("Tahoma", 12, FontStyle.Bold), New RectangleF(iPosX - iRadius, iPosY - iRadius - 16, iRadius * 2, 16), oSF)
+                                    End Using
+                                End Using
+                            End Using
                         Case cOptions.CompassStyleEnum.Advanced
-                            Dim oPen As Pen = New Pen(PaintOptions.CompassOptions.Color, -1)
-
-                            Dim oForeColorBrush As Brush = New SolidBrush(PaintOptions.CompassOptions.Color)
-                            Dim oBackColorBrush As Brush = New SolidBrush(Color.White) 'PaintOptions.PageColor)
-
-                            Dim oClipart As cDrawClipArt = PaintOptions.CompassOptions.Clipart
-                            Dim oMatrix As Matrix = New Matrix
-                            Call oMatrix.Translate(Location.X, Location.Y)
-                            Call oMatrix.Scale(PaintOptions.CompassOptions.ClipartZoomFactor, PaintOptions.CompassOptions.ClipartZoomFactor)
-
-                            For Each oDrawPath As cDrawPath In oClipart.TransformPaths(oMatrix)
-                                oItem = oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
-                                Dim oPath As GraphicsPath = oDrawPath.Path.Clone
-                                Dim sFill As String = oDrawPath.GetStyle("fill", "none")
-                                If sFill <> "none" Then
-                                    Dim oColor As Color = Color.Transparent
-                                    Try
-                                        oColor = ColorTranslator.FromHtml(sFill)
-                                    Catch
-                                    End Try
-
-                                    If oColor.ToArgb = Color.White.ToArgb Then
-                                        Call oItem.SetBrush(oBackColorBrush)
-                                    Else
-                                        Call oItem.SetBrush(oForeColorBrush)
-                                    End If
-                                End If
-                                Call oItem.SetPen(oPen)
-                                Call oItem.AddPath(oPath)
-                                Call oPath.Dispose()
-                            Next
-                            Call oMatrix.Dispose()
-                            Call oPen.Dispose()
-                            Call oForeColorBrush.Dispose()
-                            Call oBackColorBrush.Dispose()
+                            Using oPen As Pen = New Pen(PaintOptions.CompassOptions.Color, -1)
+                                Using oForeColorBrush As Brush = New SolidBrush(PaintOptions.CompassOptions.Color)
+                                    Using oBackColorBrush As Brush = New SolidBrush(Color.White) 'PaintOptions.PageColor)
+                                        Dim oClipart As cDrawClipArt = PaintOptions.CompassOptions.Clipart
+                                        Using oMatrix As Matrix = New Matrix
+                                            Call oMatrix.Translate(Location.X, Location.Y)
+                                            Call oMatrix.Scale(PaintOptions.CompassOptions.ClipartZoomFactor, PaintOptions.CompassOptions.ClipartZoomFactor)
+                                            Using oPaths As cDrawPaths = oClipart.TransformPaths(oMatrix)
+                                                For Each oDrawPath As cDrawPath In oPaths
+                                                    oItem = oCache.AddBorder
+                                                    Using oPath As GraphicsPath = oDrawPath.Path '.Clone
+                                                        Dim sFill As String = oDrawPath.GetStyle("fill", "none")
+                                                        If sFill <> "none" Then
+                                                            Dim oColor As Color = Color.Transparent
+                                                            Try
+                                                                oColor = ColorTranslator.FromHtml(sFill)
+                                                            Catch
+                                                            End Try
+                                                            If oColor.ToArgb = Color.White.ToArgb Then
+                                                                Call oItem.SetBrush(oBackColorBrush)
+                                                            Else
+                                                                Call oItem.SetBrush(oForeColorBrush)
+                                                            End If
+                                                        End If
+                                                        Call oItem.SetPen(oPen)
+                                                        Call oItem.AddPath(oPath)
+                                                    End Using
+                                                Next
+                                            End Using
+                                        End Using
+                                    End Using
+                                End Using
+                            End Using
                     End Select
                     Call .Rendered()
                 End If

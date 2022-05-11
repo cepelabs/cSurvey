@@ -1,0 +1,13 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg x="0px" y="0px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" id="Expand_Field" style="enable-background:new 0 0 32 32">
+  <style type="text/css">
+	.Black{fill:#727272;}
+	.Green{fill:#039C23;}
+	.st0{opacity:0.75;}
+</style>
+  <polygon points="14,6 10,6 10,2 6,2 6,6 2,6 2,10 6,10 6,14 10,14 10,10 14,10 " class="Green" />
+  <g class="st0">
+    <path d="M22,6h10v2H22V6z M22,12h10v-2H22V12z M22,20h10v-2H22V20z M22,24h10v-2H22V24z" class="Black" />
+  </g>
+  <path d="M18,2h14v2H18V2z M18,16h14v-2H18V16z M18,28h14v-2H18V28z" class="Black" />
+</svg>

@@ -1,4 +1,4 @@
-﻿Public Class frmExportTherion
+﻿friend Class frmExportTherion
 
     Private Sub pSettingsLoad()
         Try

@@ -24,11 +24,13 @@ Partial Class frmExportTherion
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmExportTherion))
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.cmdOk = New System.Windows.Forms.Button()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
         Me.tipDefault = New System.Windows.Forms.ToolTip(Me.components)
-        Me.chkExportDesign = New System.Windows.Forms.CheckBox()
-        Me.chkExportThconfig = New System.Windows.Forms.CheckBox()
+        Me.chkExportDesign = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkExportThconfig = New DevExpress.XtraEditors.CheckEdit()
+        CType(Me.chkExportDesign.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkExportThconfig.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdCancel
@@ -36,26 +38,26 @@ Partial Class frmExportTherion
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'cmdOk
         '
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
         '
         'chkExportDesign
         '
         resources.ApplyResources(Me.chkExportDesign, "chkExportDesign")
         Me.chkExportDesign.Name = "chkExportDesign"
-        Me.chkExportDesign.UseVisualStyleBackColor = True
+        Me.chkExportDesign.Properties.AutoWidth = True
+        Me.chkExportDesign.Properties.Caption = resources.GetString("chkExportDesign.Properties.Caption")
         '
         'chkExportThconfig
         '
         resources.ApplyResources(Me.chkExportThconfig, "chkExportThconfig")
         Me.chkExportThconfig.Name = "chkExportThconfig"
-        Me.chkExportThconfig.UseVisualStyleBackColor = True
+        Me.chkExportThconfig.Properties.AutoWidth = True
+        Me.chkExportThconfig.Properties.Caption = resources.GetString("chkExportThconfig.Properties.Caption")
         '
         'frmExportTherion
         '
@@ -68,16 +70,19 @@ Partial Class frmExportTherion
         Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.cmdOk)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.exportfile
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmExportTherion"
+        CType(Me.chkExportDesign.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkExportThconfig.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents tipDefault As System.Windows.Forms.ToolTip
-    Friend WithEvents chkExportDesign As CheckBox
-    Friend WithEvents chkExportThconfig As CheckBox
+    Friend WithEvents chkExportDesign As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkExportThconfig As DevExpress.XtraEditors.CheckEdit
 End Class

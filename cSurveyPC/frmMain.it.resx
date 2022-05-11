@@ -151,7 +151,7 @@
     <value>Basso</value>
   </data>
   <data name="colInverted.HeaderText" xml:space="preserve">
-    <value>Inverti</value>
+    <value>Direzione</value>
   </data>
   <data name="colExclude.HeaderText" xml:space="preserve">
     <value>Escludi</value>
@@ -1673,7 +1673,7 @@
     <value />
   </data>
   <data name="cboTrigpointFontSize.Items" xml:space="preserve">
-    <value>[Predefinito]</value>
+    <value>Predefinito</value>
   </data>
   <data name="cboTrigpointFontSize.ToolTip" xml:space="preserve">
     <value />
@@ -1818,14 +1818,11 @@
   <data name="lblTrigpointCoordinateZone.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="txtTrigpointCoordinateY.ToolTip" xml:space="preserve">
-    <value>Longitudine</value>
-  </data>
   <data name="cboTrigpointCoordinateZone.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="txtTrigpointCoordinateX.ToolTip" xml:space="preserve">
-    <value>Latitudine</value>
+    <value>X</value>
   </data>
   <data name="lblTrigpointCoordinateY.ToolTip" xml:space="preserve">
     <value />
@@ -3012,9 +3009,6 @@
   </data>
   <data name="chkDesignRotateCenterOnOrigin.Text" xml:space="preserve">
     <value>Centro sull'origine</value>
-  </data>
-  <data name="chkDesignRotateCenterOnOrigin.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="cmdDesignRotateLeftByDegree.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5141,7 +5135,7 @@
     <value />
   </data>
   <data name="cboPropTextFontSize.Items" xml:space="preserve">
-    <value>[Predefinito]</value>
+    <value>Predefinito</value>
   </data>
   <data name="cboPropTextFontSize.ToolTip" xml:space="preserve">
     <value>Dimensione del simbolo</value>
@@ -5255,22 +5249,22 @@
     <value>Allineamento a sinistra</value>
   </data>
   <data name="cboPropTextSize.Items" xml:space="preserve">
-    <value>Predefinita</value>
+    <value>1.00 - Predefinita</value>
   </data>
   <data name="cboPropTextSize.Items1" xml:space="preserve">
-    <value>Molto piccolo</value>
+    <value>0.25 - Molto piccolo</value>
   </data>
   <data name="cboPropTextSize.Items2" xml:space="preserve">
-    <value>Piccolo</value>
+    <value>0.50 - Piccolo</value>
   </data>
   <data name="cboPropTextSize.Items3" xml:space="preserve">
-    <value>Medio</value>
+    <value>1.00 - Medio</value>
   </data>
   <data name="cboPropTextSize.Items4" xml:space="preserve">
-    <value>Grande</value>
+    <value>2.00 - Grande</value>
   </data>
   <data name="cboPropTextSize.Items5" xml:space="preserve">
-    <value>Molto grande</value>
+    <value>4.00 - Molto grande</value>
   </data>
   <data name="cboPropTextSize.ToolTip" xml:space="preserve">
     <value>Dimensione del simbolo</value>
@@ -6879,22 +6873,22 @@
     <value />
   </data>
   <data name="cboPropCrossSectionMarkerScale.Items" xml:space="preserve">
-    <value>Predefinita</value>
+    <value>1.00 - Predefinita</value>
   </data>
   <data name="cboPropCrossSectionMarkerScale.Items1" xml:space="preserve">
-    <value>Molto piccolo</value>
+    <value>0.25 - Molto piccolo</value>
   </data>
   <data name="cboPropCrossSectionMarkerScale.Items2" xml:space="preserve">
-    <value>Piccolo</value>
+    <value>0.50 - Piccolo</value>
   </data>
   <data name="cboPropCrossSectionMarkerScale.Items3" xml:space="preserve">
-    <value>Medio</value>
+    <value>1.00 - Medio</value>
   </data>
   <data name="cboPropCrossSectionMarkerScale.Items4" xml:space="preserve">
-    <value>Grande</value>
+    <value>2.00 - Grande</value>
   </data>
   <data name="cboPropCrossSectionMarkerScale.Items5" xml:space="preserve">
-    <value>Molto grande</value>
+    <value>4.00 - Molto grande</value>
   </data>
   <data name="cboPropCrossSectionMarkerScale.ToolTip" xml:space="preserve">
     <value>Dimensione del simbolo</value>
@@ -14480,7 +14474,7 @@ o ad una sezione trasversale</value>
     <value>Non invertire</value>
   </data>
   <data name="cboPropSignFlip.Items1" xml:space="preserve">
-    <value>Inverti in verticale</value>
+    <value>Inverti in orizzontale</value>
   </data>
   <data name="cboPropSignFlip.Items2" xml:space="preserve">
     <value>Inverti in verticale</value>
@@ -14499,5 +14493,41 @@ o ad una sezione trasversale</value>
   </data>
   <data name="mnuFileSaveAsTemplate.Text" xml:space="preserve">
     <value>Salva come modello...</value>
+  </data>
+  <data name="txtPropImageRotateAngle.ToolTip" xml:space="preserve">
+    <value>Ruota di</value>
+  </data>
+  <data name="lblPropImageRotateAngle.ToolTip" xml:space="preserve">
+    <value>Ruota di</value>
+  </data>
+  <data name="lblPropImageRotateAngle.Text" xml:space="preserve">
+    <value>Ruota di:</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Items2" xml:space="preserve">
+    <value>0.50 - Piccolo</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Items5" xml:space="preserve">
+    <value>4.00 - Molto grande</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Items4" xml:space="preserve">
+    <value>2.00 - Grande</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Items3" xml:space="preserve">
+    <value>1.00 - Medio</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Items1" xml:space="preserve">
+    <value>0.25 - Molto piccolo</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Items" xml:space="preserve">
+    <value>1.00 - Predefinita</value>
+  </data>
+  <data name="cboPropQuotaValueType.Items" xml:space="preserve">
+    <value>Predefinito</value>
+  </data>
+  <data name="chkPropRotateCenterOnOrigin.Text" xml:space="preserve">
+    <value>Centro sull'origine</value>
+  </data>
+  <data name="mnuViewSharedTexts.Text" xml:space="preserve">
+    <value>Testi comuni</value>
   </data>
 </root>

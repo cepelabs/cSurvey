@@ -51,7 +51,7 @@ Namespace cSurvey
             oWMSs = New cWMSs(oSurvey)
         End Sub
 
-        Friend Sub New(Survey As cSurvey, ByVal File As Storage.cFile, ByVal Surface As XmlElement)
+        Friend Sub New(Survey As cSurvey, ByVal File As cFile, ByVal Surface As XmlElement)
             oSurvey = Survey
             oItems = New Dictionary(Of String, cISurfaceItem)()
             Try
@@ -127,7 +127,7 @@ Namespace cSurvey
             End Get
         End Property
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlItem As XmlElement = Document.CreateElement("surface")
             If oElevations.Count <> 0 Then Call oElevations.SaveTo(File, Document, oXmlItem)
             If oOrthoPhotos.Count <> 0 Then Call oOrthoPhotos.SaveTo(File, Document, oXmlItem)

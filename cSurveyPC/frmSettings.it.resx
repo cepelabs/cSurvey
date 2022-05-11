@@ -877,4 +877,10 @@ Non vi è correlazione tra questo codice e alcun dato relativo all'utente.</valu
   <data name="chkLinkedSurveysRecursiveLoad.Text" xml:space="preserve">
     <value>Collega ricorsivamente i rilievi</value>
   </data>
+  <data name="chkLinkedSurveysRecursiveLoadPrioritizeChildren.Text" xml:space="preserve">
+    <value>Priorità ai rilievi collegati</value>
+  </data>
+  <data name="chkLinkedSurveysRefreshOnLoad.Text" xml:space="preserve">
+    <value>Ricarica in apertura</value>
+  </data>
 </root>

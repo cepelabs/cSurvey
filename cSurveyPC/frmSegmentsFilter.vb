@@ -1,3 +1,3 @@
-﻿Public Class frmSegmentsFilter
+﻿friend Class frmSegmentsFilter
 
 End Class

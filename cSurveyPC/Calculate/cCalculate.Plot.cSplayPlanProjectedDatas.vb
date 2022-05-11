@@ -26,7 +26,7 @@ Namespace cSurvey.Calculate.Plot
             Next
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Name As String) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Name As String) As XmlElement
             Dim oXmlSPD As XmlElement = Document.CreateElement(Name)
 
             'for now I save also data required in older version...this data are not used now

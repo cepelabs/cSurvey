@@ -126,18 +126,6 @@
   <data name="chkDontShowWarpingDetails.Text" xml:space="preserve">
     <value>Non mostrare più</value>
   </data>
-  <data name="colFrom.HeaderText" xml:space="preserve">
-    <value>Da</value>
-  </data>
-  <data name="colTo.HeaderText" xml:space="preserve">
-    <value>A</value>
-  </data>
-  <data name="colDeltaSize.HeaderText" xml:space="preserve">
-    <value>Δ dimensione</value>
-  </data>
-  <data name="colDeltaAngle.HeaderText" xml:space="preserve">
-    <value>Δ angolo</value>
-  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Dettagli warping:</value>
   </data>
@@ -149,5 +137,17 @@
   </data>
   <data name="cmdCancelAndPause.ToolTip" xml:space="preserve">
     <value>Annulla e metti in pausa warping</value>
+  </data>
+  <data name="colDetailsDeltaAngle.Caption" xml:space="preserve">
+    <value>Δ angolo</value>
+  </data>
+  <data name="colDetailsDeltaSize.Caption" xml:space="preserve">
+    <value>Δ dimensione</value>
+  </data>
+  <data name="colDetailsFrom.Caption" xml:space="preserve">
+    <value>Da</value>
+  </data>
+  <data name="colDetailsTo.Caption" xml:space="preserve">
+    <value>A</value>
   </data>
 </root>

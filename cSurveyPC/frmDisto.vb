@@ -1,4 +1,4 @@
-﻿Public Class frmDisto
+﻿friend Class frmDisto
 
     Friend Class cOnGetShotArgs
         Public Distance As Decimal

@@ -186,7 +186,7 @@ Namespace cSurvey
             sDescription = ""
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlGrade As XmlElement = Document.CreateElement("grade")
             Call oXmlGrade.SetAttribute("id", sID)
             If sDescription <> "" Then Call oXmlGrade.SetAttribute("description", sDescription)

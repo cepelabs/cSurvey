@@ -2,7 +2,7 @@
 Imports cSurveyPC.cSurvey
 Imports NAudio.Wave
 
-Public Class frmAudioViewer
+friend Class frmAudioViewer
     Private WithEvents oWaveOutDevice As IWavePlayer
     Private oWaveStream As MediaFoundationReader
     Private oSurvey As cSurveyPC.cSurvey.cSurvey

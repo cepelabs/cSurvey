@@ -357,7 +357,7 @@ Namespace cSurvey.Surface
             End Get
         End Property
 
-        Friend Sub New(Survey As cSurvey, ByVal File As Storage.cFile, ByVal Elevation As XmlElement)
+        Friend Sub New(Survey As cSurvey, ByVal File As cFile, ByVal Elevation As XmlElement)
             oSurvey = Survey
             sID = Elevation.GetAttribute("id")
             oCoordinate = New cCoordinate(Elevation.Item("coordinate"))
@@ -368,11 +368,11 @@ Namespace cSurvey.Surface
             sXSize = modNumbers.StringToDecimal(modXML.GetAttributeValue(Elevation, "xsize"))
             sYSize = modNumbers.StringToDecimal(modXML.GetAttributeValue(Elevation, "ysize"))
             Select Case File.FileFormat
-                Case Storage.cFile.FileFormatEnum.CSX
+                Case cFile.FileFormatEnum.CSX
                     Dim oms As IO.MemoryStream = New IO.MemoryStream(Convert.FromBase64String(Elevation.GetAttribute("data")))
                     Dim oFormatter As Binary.BinaryFormatter = New Binary.BinaryFormatter()
                     oData = oFormatter.Deserialize(oms)
-                Case Storage.cFile.FileFormatEnum.CSZ
+                Case cFile.FileFormatEnum.CSZ
                     Dim sDataPath As String = Elevation.GetAttribute("data")
                     Dim oFormatter As Binary.BinaryFormatter = New Binary.BinaryFormatter()
                     oData = oFormatter.Deserialize(DirectCast(File.Data(sDataPath), Storage.cStorageItemFile).Stream)
@@ -923,7 +923,7 @@ Namespace cSurvey.Surface
             End Get
         End Property
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlItem As XmlElement = Document.CreateElement("elevations")
             Call oXmlItem.SetAttribute("name", sName)
             Call oXmlItem.SetAttribute("id", sID)
@@ -933,15 +933,15 @@ Namespace cSurvey.Surface
             If iSystem <> cSurface.CoordinateSystemEnum.UTMWGS84 Then oXmlItem.SetAttribute("system", iSystem.ToString("D"))
             Call oXmlItem.SetAttribute("xsize", modNumbers.NumberToString(sXSize, "0.000000"))
             Call oXmlItem.SetAttribute("ysize", modNumbers.NumberToString(sYSize, "0.000000"))
-            If Not (File.Options And Storage.cFile.FileOptionsEnum.DontSaveBinary) = Storage.cFile.FileOptionsEnum.DontSaveBinary Then
+            If Not (File.Options And cFile.FileOptionsEnum.DontSaveBinary) = cFile.FileOptionsEnum.DontSaveBinary Then
                 Select Case File.FileFormat
-                    Case Storage.cFile.FileFormatEnum.CSX
+                    Case cFile.FileFormatEnum.CSX
                         Using oMs As IO.MemoryStream = New IO.MemoryStream
                             Dim oFormatter As Binary.BinaryFormatter = New Binary.BinaryFormatter()
                             Call oFormatter.Serialize(oMs, oData)
                             Call oXmlItem.SetAttribute("data", Convert.ToBase64String(oMs.ToArray()))
                         End Using
-                    Case Storage.cFile.FileFormatEnum.CSZ
+                    Case cFile.FileFormatEnum.CSZ
                         Dim sDataPath As String = "_data\surface\" & sID & ".dat"
                         Dim oDataStorage As Storage.cStorageItemFile = File.Data.AddFile(sDataPath)
                         Dim oFormatter As Binary.BinaryFormatter = New Binary.BinaryFormatter()

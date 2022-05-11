@@ -1,3 +1,3 @@
-﻿Public Class frmSurveyGrade
+﻿friend Class frmSurveyGrade
 
 End Class

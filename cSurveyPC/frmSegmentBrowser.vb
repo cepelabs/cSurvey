@@ -1,6 +1,6 @@
 ﻿Imports cSurveyPC.cSurvey
 
-Public Class frmSegmentBrowser
+friend Class frmSegmentBrowser
 
     Public ReadOnly Property SegmentsCount As Integer
         Get

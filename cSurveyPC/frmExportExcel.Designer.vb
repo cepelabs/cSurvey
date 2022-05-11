@@ -24,13 +24,17 @@ Partial Class frmExportExcel
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmExportExcel))
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.cmdOk = New System.Windows.Forms.Button()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
         Me.tipDefault = New System.Windows.Forms.ToolTip(Me.components)
-        Me.chkExportCalculatedData = New System.Windows.Forms.CheckBox()
-        Me.chkExportColor = New System.Windows.Forms.CheckBox()
-        Me.chkExportNamedSplayStations = New System.Windows.Forms.CheckBox()
-        Me.chkExportNamedSplayStationsData = New System.Windows.Forms.CheckBox()
+        Me.chkExportCalculatedData = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkExportColor = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkExportNamedSplayStations = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkExportNamedSplayStationsData = New DevExpress.XtraEditors.CheckEdit()
+        CType(Me.chkExportCalculatedData.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkExportColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkExportNamedSplayStations.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkExportNamedSplayStationsData.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdCancel
@@ -38,38 +42,40 @@ Partial Class frmExportExcel
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'cmdOk
         '
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
         '
         'chkExportCalculatedData
         '
         resources.ApplyResources(Me.chkExportCalculatedData, "chkExportCalculatedData")
         Me.chkExportCalculatedData.Name = "chkExportCalculatedData"
-        Me.chkExportCalculatedData.UseVisualStyleBackColor = True
+        Me.chkExportCalculatedData.Properties.AutoWidth = True
+        Me.chkExportCalculatedData.Properties.Caption = resources.GetString("chkExportCalculatedData.Properties.Caption")
         '
         'chkExportColor
         '
         resources.ApplyResources(Me.chkExportColor, "chkExportColor")
         Me.chkExportColor.Name = "chkExportColor"
-        Me.chkExportColor.UseVisualStyleBackColor = True
+        Me.chkExportColor.Properties.AutoWidth = True
+        Me.chkExportColor.Properties.Caption = resources.GetString("chkExportColor.Properties.Caption")
         '
         'chkExportNamedSplayStations
         '
         resources.ApplyResources(Me.chkExportNamedSplayStations, "chkExportNamedSplayStations")
         Me.chkExportNamedSplayStations.Name = "chkExportNamedSplayStations"
-        Me.chkExportNamedSplayStations.UseVisualStyleBackColor = True
+        Me.chkExportNamedSplayStations.Properties.AutoWidth = True
+        Me.chkExportNamedSplayStations.Properties.Caption = resources.GetString("chkExportNamedSplayStations.Properties.Caption")
         '
         'chkExportNamedSplayStationsData
         '
         resources.ApplyResources(Me.chkExportNamedSplayStationsData, "chkExportNamedSplayStationsData")
         Me.chkExportNamedSplayStationsData.Name = "chkExportNamedSplayStationsData"
-        Me.chkExportNamedSplayStationsData.UseVisualStyleBackColor = True
+        Me.chkExportNamedSplayStationsData.Properties.AutoWidth = True
+        Me.chkExportNamedSplayStationsData.Properties.Caption = resources.GetString("chkExportNamedSplayStationsData.Properties.Caption")
         '
         'frmExportExcel
         '
@@ -84,18 +90,23 @@ Partial Class frmExportExcel
         Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.cmdOk)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.exportfile
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmExportExcel"
+        CType(Me.chkExportCalculatedData.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkExportColor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkExportNamedSplayStations.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkExportNamedSplayStationsData.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents tipDefault As System.Windows.Forms.ToolTip
-    Friend WithEvents chkExportCalculatedData As System.Windows.Forms.CheckBox
-    Friend WithEvents chkExportColor As System.Windows.Forms.CheckBox
-    Friend WithEvents chkExportNamedSplayStations As CheckBox
-    Friend WithEvents chkExportNamedSplayStationsData As CheckBox
+    Friend WithEvents chkExportCalculatedData As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkExportColor As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkExportNamedSplayStations As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkExportNamedSplayStationsData As DevExpress.XtraEditors.CheckEdit
 End Class

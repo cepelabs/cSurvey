@@ -162,7 +162,7 @@ Namespace cSurvey.Design.Options
             bHideScaleValue = modXML.GetAttributeValue(ScaleOptions, "hidescalevalue", False)
         End Sub
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLScaleOptions As XmlElement = Document.CreateElement("scaleoptions")
             Call oXMLScaleOptions.SetAttribute("meters", iMeters)
             Call oXMLScaleOptions.SetAttribute("steps", iSteps)

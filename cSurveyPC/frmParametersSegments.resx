@@ -204,24 +204,6 @@
   <data name="GroupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="chkDuplicate.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkDuplicate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="chkDuplicate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 45</value>
-  </data>
-  <data name="chkDuplicate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 17</value>
-  </data>
-  <data name="chkDuplicate.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="chkDuplicate.Text" xml:space="preserve">
-    <value>Duplicated</value>
-  </data>
   <data name="&gt;&gt;chkDuplicate.Name" xml:space="preserve">
     <value>chkDuplicate</value>
   </data>
@@ -233,24 +215,6 @@
   </data>
   <data name="&gt;&gt;chkDuplicate.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="chkSurface.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkSurface.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="chkSurface.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 22</value>
-  </data>
-  <data name="chkSurface.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 17</value>
-  </data>
-  <data name="chkSurface.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="chkSurface.Text" xml:space="preserve">
-    <value>Surface</value>
   </data>
   <data name="&gt;&gt;chkSurface.Name" xml:space="preserve">
     <value>chkSurface</value>
@@ -288,8 +252,116 @@
   <data name="&gt;&gt;GroupBox1.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="chkDuplicate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkDuplicate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkDuplicate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 45</value>
+  </data>
+  <data name="chkDuplicate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 17</value>
+  </data>
+  <data name="chkDuplicate.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="chkDuplicate.Text" xml:space="preserve">
+    <value>Duplicated</value>
+  </data>
+  <data name="&gt;&gt;chkDuplicate.Name" xml:space="preserve">
+    <value>chkDuplicate</value>
+  </data>
+  <data name="&gt;&gt;chkDuplicate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkDuplicate.Parent" xml:space="preserve">
+    <value>GroupBox1</value>
+  </data>
+  <data name="&gt;&gt;chkDuplicate.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkSurface.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkSurface.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkSurface.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 22</value>
+  </data>
+  <data name="chkSurface.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 17</value>
+  </data>
+  <data name="chkSurface.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="chkSurface.Text" xml:space="preserve">
+    <value>Surface</value>
+  </data>
+  <data name="&gt;&gt;chkSurface.Name" xml:space="preserve">
+    <value>chkSurface</value>
+  </data>
+  <data name="&gt;&gt;chkSurface.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkSurface.Parent" xml:space="preserve">
+    <value>GroupBox1</value>
+  </data>
+  <data name="&gt;&gt;chkSurface.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="GroupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;cboSegmentsPaintStyle.Name" xml:space="preserve">
+    <value>cboSegmentsPaintStyle</value>
+  </data>
+  <data name="&gt;&gt;cboSegmentsPaintStyle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboSegmentsPaintStyle.Parent" xml:space="preserve">
+    <value>GroupBox2</value>
+  </data>
+  <data name="&gt;&gt;cboSegmentsPaintStyle.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;Label1.Name" xml:space="preserve">
+    <value>Label1</value>
+  </data>
+  <data name="&gt;&gt;Label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
+    <value>GroupBox2</value>
+  </data>
+  <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="GroupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 93</value>
+  </data>
+  <data name="GroupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 59</value>
+  </data>
+  <data name="GroupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="GroupBox2.Text" xml:space="preserve">
+    <value>LRUD:</value>
+  </data>
+  <data name="&gt;&gt;GroupBox2.Name" xml:space="preserve">
+    <value>GroupBox2</value>
+  </data>
+  <data name="&gt;&gt;GroupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GroupBox2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;GroupBox2.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="cboSegmentsPaintStyle.Items" xml:space="preserve">
     <value>Opaque</value>
@@ -357,30 +429,6 @@
   <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="GroupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 93</value>
-  </data>
-  <data name="GroupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 59</value>
-  </data>
-  <data name="GroupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="GroupBox2.Text" xml:space="preserve">
-    <value>LRUD:</value>
-  </data>
-  <data name="&gt;&gt;GroupBox2.Name" xml:space="preserve">
-    <value>GroupBox2</value>
-  </data>
-  <data name="&gt;&gt;GroupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GroupBox2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;GroupBox2.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="cboSplayStyle.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
@@ -388,7 +436,10 @@
     <value>Only points</value>
   </data>
   <data name="cboSplayStyle.Items1" xml:space="preserve">
-    <value>Points and lines</value>
+    <value>Points and rays</value>
+  </data>
+  <data name="cboSplayStyle.Items2" xml:space="preserve">
+    <value>Rays</value>
   </data>
   <data name="cboSplayStyle.Location" type="System.Drawing.Point, System.Drawing">
     <value>76, 21</value>
@@ -474,24 +525,6 @@
   <data name="GroupBox4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="lvDesignPlotShowHLsDett.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="colNome.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="colNome.Width" type="System.Int32, mscorlib">
-    <value>320</value>
-  </data>
-  <data name="lvDesignPlotShowHLsDett.Location" type="System.Drawing.Point, System.Drawing">
-    <value>94, 20</value>
-  </data>
-  <data name="lvDesignPlotShowHLsDett.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 92</value>
-  </data>
-  <data name="lvDesignPlotShowHLsDett.TabIndex" type="System.Int32, mscorlib">
-    <value>159</value>
-  </data>
   <data name="&gt;&gt;lvDesignPlotShowHLsDett.Name" xml:space="preserve">
     <value>lvDesignPlotShowHLsDett</value>
   </data>
@@ -503,24 +536,6 @@
   </data>
   <data name="&gt;&gt;lvDesignPlotShowHLsDett.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="chkShowHLs.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkShowHLs.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="chkShowHLs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 30</value>
-  </data>
-  <data name="chkShowHLs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 17</value>
-  </data>
-  <data name="chkShowHLs.TabIndex" type="System.Int32, mscorlib">
-    <value>156</value>
-  </data>
-  <data name="chkShowHLs.Text" xml:space="preserve">
-    <value>Highlights</value>
   </data>
   <data name="&gt;&gt;chkShowHLs.Name" xml:space="preserve">
     <value>chkShowHLs</value>
@@ -558,6 +573,66 @@
   <data name="&gt;&gt;GroupBox4.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="lvDesignPlotShowHLsDett.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="lvDesignPlotShowHLsDett.Location" type="System.Drawing.Point, System.Drawing">
+    <value>94, 20</value>
+  </data>
+  <data name="lvDesignPlotShowHLsDett.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 92</value>
+  </data>
+  <data name="lvDesignPlotShowHLsDett.TabIndex" type="System.Int32, mscorlib">
+    <value>159</value>
+  </data>
+  <data name="&gt;&gt;lvDesignPlotShowHLsDett.Name" xml:space="preserve">
+    <value>lvDesignPlotShowHLsDett</value>
+  </data>
+  <data name="&gt;&gt;lvDesignPlotShowHLsDett.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lvDesignPlotShowHLsDett.Parent" xml:space="preserve">
+    <value>GroupBox4</value>
+  </data>
+  <data name="&gt;&gt;lvDesignPlotShowHLsDett.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="colNome.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colNome.Width" type="System.Int32, mscorlib">
+    <value>320</value>
+  </data>
+  <data name="chkShowHLs.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkShowHLs.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkShowHLs.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 30</value>
+  </data>
+  <data name="chkShowHLs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 17</value>
+  </data>
+  <data name="chkShowHLs.TabIndex" type="System.Int32, mscorlib">
+    <value>156</value>
+  </data>
+  <data name="chkShowHLs.Text" xml:space="preserve">
+    <value>Highlights</value>
+  </data>
+  <data name="&gt;&gt;chkShowHLs.Name" xml:space="preserve">
+    <value>chkShowHLs</value>
+  </data>
+  <data name="&gt;&gt;chkShowHLs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkShowHLs.Parent" xml:space="preserve">
+    <value>GroupBox4</value>
+  </data>
+  <data name="&gt;&gt;chkShowHLs.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="chkDesignSurfaceProfile.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -568,7 +643,7 @@
     <value>17, 24</value>
   </data>
   <data name="chkDesignSurfaceProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 17</value>
+    <value>96, 17</value>
   </data>
   <data name="chkDesignSurfaceProfile.TabIndex" type="System.Int32, mscorlib">
     <value>160</value>
@@ -624,9 +699,6 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>308, 470</value>
   </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
@@ -643,6 +715,6 @@
     <value>frmParametersSegments</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cForm, cSurveyPC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

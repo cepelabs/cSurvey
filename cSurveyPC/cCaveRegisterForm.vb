@@ -74,7 +74,7 @@ Public Class cCaveRegisterForm
         Return sURL
     End Function
 
-    'Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+    'Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
     '    Dim oXmlCaveInfos As XmlElement = Document.CreateElement("caveinfos")
     '    For Each oCaveInfo As cCaveInfo In oCaveInfos.Values
     '        Call oCaveInfo.SaveTo(File, Document, oXmlCaveInfos)

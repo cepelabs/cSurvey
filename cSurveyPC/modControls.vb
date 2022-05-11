@@ -2,9 +2,100 @@
 Imports System.Drawing.Drawing2D
 Imports System.Reflection
 Imports System.ComponentModel
+Imports DevExpress.XtraBars
 
 Module modControls
     Public SystemDPIRatio As Single
+
+    Public Class cComboItem(Of T)
+        Private oValue As T
+        Private sDescription As String
+
+        Public Overrides Function ToString() As String
+            Return sDescription
+        End Function
+
+        Public Sub New(Description As String, Value As T)
+            sDescription = Description
+            oValue = Value
+        End Sub
+
+        Public ReadOnly Property Value As T
+            Get
+                Return oValue
+            End Get
+        End Property
+
+        Public ReadOnly Property Description As String
+            Get
+                Return sDescription
+            End Get
+        End Property
+    End Class
+
+    <System.Runtime.CompilerServices.Extension>
+    Public Function CreateOrGetButton(RibbonControl As Ribbon.RibbonControl, Name As String) As BarButtonItem
+        Dim oItem As BarItem = RibbonControl.Items(Name)
+        If oItem Is Nothing Then
+            oItem = New BarButtonItem(RibbonControl.Manager, "")
+        End If
+        Return oItem
+    End Function
+
+    <System.Runtime.CompilerServices.Extension>
+    Public Sub AddRange(ItemLinks As BarItemLinkCollection, items As BarItem(), RibbonItemStyles As Ribbon.RibbonItemStyles, BarItemStyle As BarItemPaintStyle)
+        items.ToList.ForEach(Sub(oitem)
+                                 Dim oLink As BarItemLink = ItemLinks.Add(oitem)
+                                 oLink.UserRibbonStyle = RibbonItemStyles
+                                 oLink.UserPaintStyle = BarItemStyle
+                             End Sub)
+    End Sub
+
+    <System.Runtime.CompilerServices.Extension>
+    Public Function Add(ItemLinks As BarItemLinkCollection, item As BarItem, BeginGroup As Boolean, RibbonItemStyles As Ribbon.RibbonItemStyles) As BarItemLink
+        Dim oLink As BarItemLink = ItemLinks.Add(item)
+        oLink.BeginGroup = BeginGroup
+        oLink.UserRibbonStyle = RibbonItemStyles
+        Return oLink
+    End Function
+
+    <System.Runtime.CompilerServices.Extension>
+    Public Function Add(ItemLinks As BarItemLinkCollection, item As BarItem, BeginGroup As Boolean, RibbonItemStyles As Ribbon.RibbonItemStyles, BarItemStyle As BarItemPaintStyle) As BarItemLink
+        Dim oLink As BarItemLink = ItemLinks.Add(item)
+        oLink.BeginGroup = BeginGroup
+        oLink.UserRibbonStyle = RibbonItemStyles
+        oLink.UserPaintStyle = BarItemStyle
+        Return oLink
+    End Function
+
+    <System.Runtime.CompilerServices.Extension>
+    Public Function Add(ItemLinks As BarItemLinkCollection, item As BarItem, RibbonItemStyles As Ribbon.RibbonItemStyles) As BarItemLink
+        Dim oLink As BarItemLink = ItemLinks.Add(item)
+        oLink.UserRibbonStyle = RibbonItemStyles
+        Return oLink
+    End Function
+
+    <System.Runtime.CompilerServices.Extension>
+    Public Sub ClearItems(Menu As PopupMenu)
+        For Each oLink As BarItemLink In Menu.ItemLinks.ToList
+            Call oLink.Manager.Items.Remove(oLink.Item)
+        Next
+    End Sub
+
+    <System.Runtime.CompilerServices.Extension>
+    Public Sub ClearItems(Group As Ribbon.RibbonPageGroup)
+        For Each oLink As BarItemLink In Group.ItemLinks.ToList
+            Call oLink.Manager.Items.Remove(oLink.Item)
+        Next
+    End Sub
+
+    Public Function VisibleToVisibility(Visible As Boolean) As DevExpress.XtraBars.BarItemVisibility
+        If Visible Then
+            Return DevExpress.XtraBars.BarItemVisibility.Always
+        Else
+            Return DevExpress.XtraBars.BarItemVisibility.Never
+        End If
+    End Function
 
     <System.Runtime.CompilerServices.Extension>
     Public Function Components(Form As Form) As List(Of Component)

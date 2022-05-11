@@ -9,7 +9,7 @@ Namespace cSurvey
         Private oSurvey As cSurvey
         Private oItems As List(Of cViewerProfile)
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Try
                 Dim oXmlItem As XmlElement = Document.CreateElement("viewerprofiles")
                 For Each oItem As cViewerProfile In oItems
@@ -31,7 +31,7 @@ Namespace cSurvey
             Call oItems.Add(New cViewerProfile(oSurvey, oSurvey.Options("_viewer.profile"), cIDesign.cDesignTypeEnum.Profile))
         End Sub
 
-        Friend Sub New(Survey As cSurvey, ByVal File As Storage.cFile, Profiles As XmlElement)
+        Friend Sub New(Survey As cSurvey, ByVal File As cFile, Profiles As XmlElement)
             oSurvey = Survey
             oItems = New List(Of cViewerProfile)
             Call oItems.Add(New cViewerProfile(oSurvey, oSurvey.Options("_viewer.plan"), cIDesign.cDesignTypeEnum.Plan))
@@ -44,10 +44,8 @@ Namespace cSurvey
 
         Public Function AddAsCopy(Profile As cIProfile, Name As String) As cIProfile Implements cIProfiles.AddAsCopy
             Try
-                Dim oXML As XmlDocument = New XmlDocument
-                Dim oXMLRoot As XmlElement = oXML.CreateElement("root")
-                Call DirectCast(Profile, cViewerProfile).SaveTo(Nothing, oXML, oXMLRoot)
-                Dim oItem As cViewerProfile = New cViewerProfile(oSurvey, Nothing, oXMLRoot.ChildNodes(0))
+                Dim oSourceProfile As cViewerProfile = DirectCast(Profile, cViewerProfile)
+                Dim oItem As cViewerProfile = oSourceProfile.Clone
                 oItem.Name = Name
                 Call oItems.Add(oItem)
                 Return oItem
@@ -123,6 +121,17 @@ Namespace cSurvey
 
         Public Event OnDelete(Sender As Object, e As EventArgs) Implements cIProfile.OnDelete
 
+        Public Function Clone() As cViewerProfile
+            Dim oXML As XmlDocument = New XmlDocument
+            Dim oXMLRoot As XmlElement = oXML.CreateElement("root")
+            Dim bBackupIsSystem As Boolean = bIsSystem
+            If bBackupIsSystem Then bIsSystem = False
+            Call Me.SaveTo(Nothing, oXML, oXMLRoot)
+            Dim oItem As cViewerProfile = New cViewerProfile(oSurvey, Nothing, oXMLRoot.ChildNodes(0))
+            If bBackupIsSystem Then bIsSystem = True
+            Return oItem
+        End Function
+
         Friend Sub OnDeleting() Implements cIProfile.OnDeleting
             RaiseEvent OnDelete(Me, New EventArgs)
         End Sub
@@ -170,7 +179,7 @@ Namespace cSurvey
             End Get
         End Property
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal File As Storage.cFile, ByVal Profile As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal Profile As XmlElement)
             oSurvey = Survey
             sName = Profile.GetAttribute("name")
             iDesign = Profile.GetAttribute("design")
@@ -204,7 +213,7 @@ Namespace cSurvey
             bIsSystem = False
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlItem As XmlElement = Document.CreateElement("profile")
             Call oXmlItem.SetAttribute("name", sName)
             Call oXmlItem.SetAttribute("design", iDesign)

@@ -19,11 +19,15 @@ Namespace cSurvey.Calculate
         End Sub
 
         Public Function GetCenterlineShots() As List(Of String)
-            Return oItems.Values.Where(Function(item) Not item.Splay).Select(Function(item) item.Name).ToList
+            Return oItems.Values.Where(Function(item) Not item.Splay AndAlso Not item.Equate).Select(Function(item) item.Name).ToList
         End Function
 
         Public Function GetSplayShots() As List(Of String)
             Return oItems.Values.Where(Function(item) item.Splay).Select(Function(item) item.Name).ToList
+        End Function
+
+        Public Function GetEquateShots() As List(Of String)
+            Return oItems.Values.Where(Function(item) item.Equate).Select(Function(item) item.Name).ToList
         End Function
 
         Public Function Contains(Name As String) As Boolean
@@ -38,7 +42,7 @@ Namespace cSurvey.Calculate
             Next
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlTrigpointConnections As XmlElement = Document.CreateElement("tcons")
             For Each oItem As cTrigPointConnection In oItems.Values
                 Call oItem.SaveTo(File, Document, oXmlTrigpointConnections)
@@ -69,8 +73,20 @@ Namespace cSurvey.Calculate
             End If
         End Function
 
-        Friend Function Append(ByVal Name As String, ByVal Distance As Decimal, Optional Splay As Boolean = False) As cTrigPointConnection
+        Friend Function AppendAsEquate(Name As String) As cTrigPointConnection
             If oItems.ContainsKey(Name) Then
+                'check if exist a connection is of the same type, in case raise an error
+                Return oItems(Name)
+            Else
+                Dim oConnection As cTrigPointConnection = New cTrigPointConnection(Name)
+                Call oItems.Add(Name, oConnection)
+                Return oConnection
+            End If
+        End Function
+
+        Friend Function AppendAsShot(ByVal Name As String, ByVal Distance As Decimal, Optional Splay As Boolean = False) As cTrigPointConnection
+            If oItems.ContainsKey(Name) Then
+                'check if exist a connection is of the same type, in case raise an error
                 Return oItems(Name)
             Else
                 Dim oConnection As cTrigPointConnection = New cTrigPointConnection(Name, Distance, Splay)

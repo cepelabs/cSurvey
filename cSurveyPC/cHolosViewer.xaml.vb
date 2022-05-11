@@ -527,6 +527,22 @@ Friend Class cHolosViewer
         Call mainViewport.ZoomExtents()
     End Sub
 
+    Friend Class cDrawInvalidateEventArgs
+        Inherits EventArgs
+
+        Private iInvalidate As cHolosViewer.InvalidateType
+
+        Public ReadOnly Property Invalidate As cHolosViewer.InvalidateType
+            Get
+                Return iInvalidate
+            End Get
+        End Property
+
+        Public Sub New(Invalidate As cHolosViewer.InvalidateType)
+            iInvalidate = Invalidate
+        End Sub
+    End Class
+
     <Flags> Public Enum InvalidateType
         None = 0
         Selection = 0
@@ -553,7 +569,10 @@ Friend Class cHolosViewer
                     oOutlineUpdateTimer.Start()
                 End If
             Else
-                imgInvalidatedCaption.Source = New Media.Imaging.BitmapImage(New Uri("pack://application:,,,/Resources/error32.png"))
+                'imgInvalidatedCaption.Source = warning
+                'imgInvalidatedCaption.Source = New Media.Imaging.BitmapImage(New Uri("pack://application:,,,/Resources/error32.png"))
+                imgWarning.Visibility = Visibility.Visible
+                imgError.Visibility = Visibility.Hidden
                 lblInvalidatedCaption.Content = modMain.GetLocalizedString("holos.invalidate")
                 pnlInvalidated.Background = System.Windows.Media.Brushes.LemonChiffon
                 pnlInvalidated.Visibility = Windows.Visibility.Visible
@@ -564,7 +583,9 @@ Friend Class cHolosViewer
 
     Public Sub [Error]([Error] As Boolean)
         If [Error] Then
-            imgInvalidatedCaption.Source = New Media.Imaging.BitmapImage(New Uri("pack://application:,,,/Resources/cross32.png"))
+            'imgInvalidatedCaption.Source = New Media.Imaging.BitmapImage(New Uri("pack://application:,,,/Resources/cross32.png"))
+            imgWarning.Visibility = Visibility.Hidden
+            imgError.Visibility = Visibility.Visible
             lblInvalidatedCaption.Content = modMain.GetLocalizedString("holos.error")
             pnlInvalidated.Background = System.Windows.Media.Brushes.PeachPuff
             pnlInvalidated.Visibility = Windows.Visibility.Visible
@@ -732,7 +753,7 @@ Friend Class cHolosViewer
                 Using osfd As SaveFileDialog = New SaveFileDialog
                     With osfd
                         .FileName = sSaveFilename
-                        .Filter = GetLocalizedString("holos.filetypeSTL") & " (*.STL)|*.STL|" & GetLocalizedString("holos.filetypeDAE") & " (*.DAE)|*.DAE|" & GetLocalizedString("holos.filetypeX3D") & " (*.X3D)|*.X3D|" & GetLocalizedString("holos.filetypeOBJ") & " (*.OBJ)|*.OBJ" '|" & GetLocalizedString("holos.filetypeXAML") & " (*.XAML)|*.XAML|" & GetLocalizedString("holos.filetypeXML") & " (*.XML)|*.XML"
+                        .Filter = GetLocalizedString("holos.filetypeSTL") & " (*.STL)|*.STL|" & GetLocalizedString("holos.filetypeDAE") & " (*.DAE)|*.DAE|" & GetLocalizedString("holos.filetypeX3D") & " (*.X3D)|*.X3D|" & GetLocalizedString("holos.filetypeOBJ") & " (*.OBJ)|*.OBJ|" & GetLocalizedString("holos.filetypePNG") & " (*.PNG)|*.PNG|" & GetLocalizedString("holos.filetypeJPG") & " (*.JPG)|*.JPG"
                         .FilterIndex = modMain.FilterRestoreLast("export.3d", 1)
                         If .ShowDialog = Windows.Forms.DialogResult.OK Then
                             Call modMain.FilterSaveLast("export.3d", .FilterIndex)
@@ -741,9 +762,15 @@ Friend Class cHolosViewer
                     End With
                 End Using
             End If
-
             If sSaveFilename <> "" Then
-                Call Viewport3DHelper.Export(mainViewport.Viewport, sSaveFilename)
+                Select Case IO.Path.GetExtension(sSaveFilename).ToLower
+                    Case ".png"
+                        Call Viewport3DHelper.SaveBitmap(mainViewport.Viewport, sSaveFilename, Nothing, oSurvey.Properties.ThreeDExportAsImageOversamplingFactor, BitmapExporter.OutputFormat.Png)
+                    Case ".jpg"
+                        Call Viewport3DHelper.SaveBitmap(mainViewport.Viewport, sSaveFilename, Nothing, oSurvey.Properties.ThreeDExportAsImageOversamplingFactor, BitmapExporter.OutputFormat.Jpg)
+                    Case Else
+                        Call Viewport3DHelper.Export(mainViewport.Viewport, sSaveFilename)
+                End Select
             End If
         Catch ex As Exception
             Call MsgBox(modMain.GetLocalizedString("holos.warning1"), vbOKOnly, modMain.GetLocalizedString("holos.warningtitle"))
@@ -1062,10 +1089,14 @@ Friend Class cHolosViewer
                     Dim oUTM As modUTM.UTM = New modUTM.UTM(oCoordinate)
                     sOriginX = oUTM.East
                     sOriginY = oUTM.North
+                    Dim oSizePoint As SizeF = New SizeD(sOriginX - sMainOriginX, sOriginY - sMainOriginY)
+                    Dim oMovePoint As PointD = modPaint.RotatePointByRadians(New PointD(oSizePoint.Width, oSizePoint.Height), oSurvey.Calculate.GeoMagDeclinationData.MeridianConvergenceRadians)
+                    sOriginX = oMovePoint.X
+                    sOriginY = oMovePoint.Y
                     sOriginZ = .Altitude()
                 End With
             End If
-            Dim oPoints As Dictionary(Of String, List(Of Point3D)) = Get3DPoints(oCurrentSurvey, PaintOptions, (sOriginX - sMainOriginX), (sOriginY - sMainOriginY), sOriginZ, dHeightScale) 'New Dictionary(Of String, List(Of Point3D))
+            Dim oPoints As Dictionary(Of String, List(Of Point3D)) = Get3DPoints(oCurrentSurvey, PaintOptions, sOriginX, sOriginY, sOriginZ, dHeightScale) 'New Dictionary(Of String, List(Of Point3D))
 
             Dim oDrawingObject As cOptionsDrawingObjects = PaintOptions.DrawingObjects
             Dim oShotByColor As Dictionary(Of Color, List(Of cSurvey.cSegment)) = New Dictionary(Of Color, List(Of cSurvey.cSegment))()
@@ -1163,9 +1194,9 @@ Friend Class cHolosViewer
                     If Not bIsThisSurvey Then
                         oFinalColor = modPaint.LightColor(oColor, 0.5) ' Color.FromArgb(150, oColor)
                     Else
-                        ofinalcolor = oColor
+                        oFinalColor = oColor
                     End If
-                    Dim oMediaColor As Media.Color = Media.Color.FromArgb(ofinalcolor.A, ofinalcolor.R, ofinalcolor.G, ofinalcolor.B)
+                    Dim oMediaColor As Media.Color = Media.Color.FromArgb(oFinalColor.A, oFinalColor.R, oFinalColor.G, oFinalColor.B)
 
                     Dim oPlot As HelixToolkit.Wpf.LinesVisual3D = New HelixToolkit.Wpf.LinesVisual3D
                     oPlot.Color = oMediaColor

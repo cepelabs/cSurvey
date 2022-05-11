@@ -109,7 +109,7 @@ Namespace cSurvey.Surface
         Friend Event OnDefaultSet(ByVal Sender As cWMS, Args As cDefaultArgs)
         Friend Event OnDefaultGet(ByVal Sender As cWMS, Args As cDefaultArgs)
 
-        Friend Sub New(Survey As cSurvey, ByVal File As Storage.cFile, ByVal WMS As XmlElement)
+        Friend Sub New(Survey As cSurvey, ByVal File As cFile, ByVal WMS As XmlElement)
             oSurvey = Survey
             sName = modXML.GetAttributeValue(WMS, "name", "")
             sID = modXML.GetAttributeValue(WMS, "id")
@@ -181,7 +181,7 @@ Namespace cSurvey.Surface
             Return oNewImage
         End Function
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlItem As XmlElement = Document.CreateElement("wms")
             Call oXmlItem.SetAttribute("name", sName)
             Call oXmlItem.SetAttribute("id", sID)

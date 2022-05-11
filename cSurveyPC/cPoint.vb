@@ -73,7 +73,7 @@ Namespace cSurvey.Design
             End Get
         End Property
 
-        Friend Sub New(ByVal Survey As cSurvey, Design As cDesign, ByVal File As Storage.cFile, ByVal PointsJoins As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, Design As cDesign, ByVal File As cFile, ByVal PointsJoins As XmlElement)
             oSurvey = Survey
             oDesign = Design
             oItems = New Dictionary(Of String, cPointsJoin)
@@ -89,7 +89,7 @@ Namespace cSurvey.Design
             oItems = New Dictionary(Of String, cPointsJoin)
         End Sub
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlItem As XmlElement = Document.CreateElement("pointsjoins")
             For Each oItem As cPointsJoin In oItems.Values
                 'salvo solo le join con 2 punti (in realtà dovrebbero essere tutte con punti>=2 o 0)...
@@ -130,7 +130,9 @@ Namespace cSurvey.Design
         End Function
 
         Public Sub CleanUp()
+            'remove not valid elements
             Dim oCleanedItems As List(Of cPoint) = New List(Of cPoint)(oItems)
+            oCleanedItems = oCleanedItems.Where(Function(point) Not point Is Nothing).ToList()
             oCleanedItems = oCleanedItems.Where(Function(point) Not point.Item Is Nothing).ToList()
             oCleanedItems = oCleanedItems.Where(Function(point) point.Item.Points.Contains(point)).ToList()
             oItems = oCleanedItems
@@ -152,7 +154,7 @@ Namespace cSurvey.Design
             End If
         End Function
 
-        Friend Sub New(Survey As cSurvey, Design As cDesign, ByVal File As Storage.cFile, ByVal Join As XmlElement)
+        Friend Sub New(Survey As cSurvey, Design As cDesign, ByVal File As cFile, ByVal Join As XmlElement)
             oSurvey = Survey
             sID = Join.GetAttribute("id")
             oItems = New List(Of cPoint)
@@ -165,9 +167,14 @@ Namespace cSurvey.Design
                 Dim iItemIndex As Integer = sDataPartParts(1)
                 Dim iPointIndex As Integer = sDataPartParts(2)
 
-                Dim oPoint As cPoint = Design.Layers(iLayerIndex).Items(iItemIndex).Points(iPointIndex)
-                Call oItems.Add(oPoint)
-                Call oPoint.SetJoin(Me)
+                If iItemIndex >= 0 AndAlso iItemIndex < Design.Layers(iLayerIndex).Items.Count Then
+                    Dim oItem As cItem = Design.Layers(iLayerIndex).Items(iItemIndex)
+                    If iPointIndex >= 0 AndAlso iPointIndex < oItem.Points.Count Then
+                        Dim oPoint As cPoint = oItem.Points(iPointIndex)
+                        Call oItems.Add(oPoint)
+                        Call oPoint.SetJoin(Me)
+                    End If
+                End If
             Next
         End Sub
 
@@ -180,7 +187,7 @@ Namespace cSurvey.Design
             Return oResult
         End Function
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Call CleanUp()
             Dim oXmlItem As XmlElement = Document.CreateElement("pointsjoin")
             Call oXmlItem.SetAttribute("id", sID)
@@ -542,7 +549,7 @@ Namespace cSurvey.Design
             End If
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlPoint As XmlElement = Document.CreateElement("point")
             Call oXmlPoint.SetAttribute("x", Point.X)
             Call oXmlPoint.SetAttribute("y", Point.Y)
@@ -738,7 +745,7 @@ Namespace cSurvey.Design
             iLineType = LineType
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal File As Storage.cFile, ByVal Point As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal Point As XmlElement)
             MyBase.New(Survey, Point)
 
             Dim oXMLPen As XmlElement = Point.Item("pen")
@@ -752,7 +759,7 @@ Namespace cSurvey.Design
             iLineType = modXML.GetAttributeValue(Point, "linetype", Items.cIItemLine.LineTypeEnum.Undefined)
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Call MyBase.SaveTo(File, Document, Parent)
         End Function
 

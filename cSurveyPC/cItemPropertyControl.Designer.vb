@@ -29,7 +29,6 @@ Partial Class cItemPropertyControl
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.Window
         Me.Name = "cItemPropertyControl"
         Me.ResumeLayout(False)
 

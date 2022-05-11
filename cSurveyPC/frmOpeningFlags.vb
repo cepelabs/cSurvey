@@ -1,4 +1,4 @@
-﻿Public Class frmOpeningFlags
+﻿friend Class frmOpeningFlags
     Public Sub New()
 
         ' This call is required by the designer.

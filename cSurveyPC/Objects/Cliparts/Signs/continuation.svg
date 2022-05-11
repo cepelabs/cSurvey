@@ -1,73 +1,28 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="744.09448819"
-   height="1052.3622047"
-   id="svg52781"
-   version="1.1"
-   inkscape:version="0.48.4 r9939"
-   sodipodi:docname="Nuovo documento 4">
-  <defs
-     id="defs52783" />
-  <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="375"
-     inkscape:cy="520"
-     inkscape:document-units="px"
-     inkscape:current-layer="layer1"
-     showgrid="false"
-     inkscape:window-width="518"
-     inkscape:window-height="423"
-     inkscape:window-x="208"
-     inkscape:window-y="208"
-     inkscape:window-maximized="0" />
-  <metadata
-     id="metadata52786">
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)" sodipodi:docname="continuation.svg" id="svg12" version="1.1" viewBox="0 0 210 297" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" height="297mm" width="210mm" xml:space="preserve" xmlns:csurvey="http://www.csurvey.it" csurvey:caption="" csurvey:author="" csurvey:note="" csurvey:sign="257">
+  <metadata id="metadata16">
     <rdf:RDF>
-      <cc:Work
-         rdf:about="">
+      <cc:Work rdf:about="">
         <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <g
-     inkscape:label="Livello 1"
-     inkscape:groupmode="layer"
-     id="layer1">
-    <g
-       id="g17141"
-       transform="matrix(1.6532262,0,0,-1.6532262,278.25287,600.28095)">
-      <path
-         inkscape:connector-curvature="0"
-         d="m 55.52,46.1073 c 0,4.0003 6.0004,4.0003 6.0004,0 0,-2.7924 -3.0002,-4.7074 -3.0002,-7.4999"
-         style="fill:none;stroke:#000000;stroke-width:1.49997997;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none"
-         id="path17143" />
-    </g>
-    <g
-       id="g17145"
-       transform="matrix(1.6532262,0,0,-1.6532262,278.25287,600.28095)">
-      <path
-         inkscape:connector-curvature="0"
-         d="m 58.5202,34.1076 10e-4,0"
-         style="fill:none;stroke:#000000;stroke-width:3.59998012;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none"
-         id="path17147" />
-    </g>
-  </g>
-</svg>
+  <sodipodi:namedview inkscape:current-layer="svg12" inkscape:window-maximized="0" inkscape:window-y="0" inkscape:window-x="0" inkscape:cy="124.46229" inkscape:cx="180.39847" inkscape:zoom="2.1417558" showgrid="false" id="namedview14" inkscape:window-height="1040" inkscape:window-width="1490" inkscape:pageshadow="2" inkscape:pageopacity="0" guidetolerance="10" gridtolerance="10" objecttolerance="10" borderopacity="1" bordercolor="#666666" pagecolor="#ffffff" inkscape:document-rotation="0" xmlns:csurvey="http://www.csurvey.it" csurvey:sign="257" csurvey:author="" csurvey:note="" csurvey:rotationangledelta="0.0" />
+ <defs id="defs4">
+  <style id="style2" type="text/css">
+   <![CDATA[
+    .str0 {stroke:black;stroke-width:0.0529}
+    .str1 {stroke:black;stroke-width:0.2}
+    .fil1 {fill:none}
+    .fil0 {fill:white}
+   ]]>
+  </style>
+ </defs>
+ <g transform="translate(-74.424706,-7.3376471)" id="Livello_x0020_1" style="display:inline">
+  <metadata id="CorelCorpID_0Corel-Layer" />
+  
+  
+ </g>
+<path d="m 19.803186,37.750712 h 5.668616 v 7.092752 h -5.668616 z m 5.501071,-4.10486 h -5.333526 v -4.30033 q 0,-2.820346 0.781878,-4.63542 0.781878,-1.815074 3.295058,-4.216557 l 2.51318,-2.485256 q 1.59168,-1.479983 2.289786,-2.792422 0.72603,-1.312438 0.72603,-2.680725 0,-2.485255 -1.842999,-4.0210872 -1.815074,-1.5358321 -4.83089,-1.5358321 -2.206013,0 -4.719193,0.9773477 -2.485255,0.9773477 -5.193905,2.8482706 V 5.5540876 q 2.624877,-1.5916805 5.305602,-2.3735587 2.708649,-0.7818781 5.584844,-0.7818781 5.138056,0 8.237644,2.7086493 3.127513,2.7086492 3.127513,7.1485999 0,2.122241 -1.005272,4.049012 -1.005272,1.898847 -3.518451,4.30033 l -2.457332,2.401483 q -1.312438,1.312438 -1.870922,2.066392 -0.530561,0.726029 -0.753954,1.424135 -0.167546,0.586409 -0.251318,1.424135 -0.08377,0.837727 -0.08377,2.289786 z" style="stroke-width:1.42972px;fill:#000000" id="path834" /></svg>

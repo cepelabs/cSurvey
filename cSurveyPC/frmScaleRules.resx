@@ -215,7 +215,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAk
-        CwAAAk1TRnQBSQFMAwEBAAGYAQABmAEAASABAAEgAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMA
+        CwAAAk1TRnQBSQFMAwEBAAEQAQEBEAEBASABAAEgAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMA
         AYADAAEgAwABAQEAAQgGAAEQGAABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHAAdwBwAEA
         AfABygGmAQABMwUAATMBAAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANCAQADOQEA
         AYABfAH/AQACUAH/AQABkwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/ATMDAAFm
@@ -289,888 +289,6 @@
   <data name="tabInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="&gt;&gt;lblScaleWarning.Name" xml:space="preserve">
-    <value>lblScaleWarning</value>
-  </data>
-  <data name="&gt;&gt;lblScaleWarning.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblScaleWarning.Parent" xml:space="preserve">
-    <value>tabInfoMain</value>
-  </data>
-  <data name="&gt;&gt;lblScaleWarning.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;picScaleWarning.Name" xml:space="preserve">
-    <value>picScaleWarning</value>
-  </data>
-  <data name="&gt;&gt;picScaleWarning.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;picScaleWarning.Parent" xml:space="preserve">
-    <value>tabInfoMain</value>
-  </data>
-  <data name="&gt;&gt;picScaleWarning.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;txtScale.Name" xml:space="preserve">
-    <value>txtScale</value>
-  </data>
-  <data name="&gt;&gt;txtScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtScale.Parent" xml:space="preserve">
-    <value>tabInfoMain</value>
-  </data>
-  <data name="&gt;&gt;txtScale.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;lblScale.Name" xml:space="preserve">
-    <value>lblScale</value>
-  </data>
-  <data name="&gt;&gt;lblScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblScale.Parent" xml:space="preserve">
-    <value>tabInfoMain</value>
-  </data>
-  <data name="&gt;&gt;lblScale.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="tabInfoMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabInfoMain.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabInfoMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>638, 364</value>
-  </data>
-  <data name="tabInfoMain.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabInfoMain.Text" xml:space="preserve">
-    <value>Main</value>
-  </data>
-  <data name="&gt;&gt;tabInfoMain.Name" xml:space="preserve">
-    <value>tabInfoMain</value>
-  </data>
-  <data name="&gt;&gt;tabInfoMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabInfoMain.Parent" xml:space="preserve">
-    <value>tabInfo</value>
-  </data>
-  <data name="&gt;&gt;tabInfoMain.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;grdCategoriesVisibility.Name" xml:space="preserve">
-    <value>grdCategoriesVisibility</value>
-  </data>
-  <data name="&gt;&gt;grdCategoriesVisibility.Type" xml:space="preserve">
-    <value>cSurveyPC.cGrid, cSurveyPC, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;grdCategoriesVisibility.Parent" xml:space="preserve">
-    <value>tanInfoCategories</value>
-  </data>
-  <data name="&gt;&gt;grdCategoriesVisibility.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tanInfoCategories.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tanInfoCategories.Size" type="System.Drawing.Size, System.Drawing">
-    <value>638, 364</value>
-  </data>
-  <data name="tanInfoCategories.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="tanInfoCategories.Text" xml:space="preserve">
-    <value>Categories</value>
-  </data>
-  <data name="&gt;&gt;tanInfoCategories.Name" xml:space="preserve">
-    <value>tanInfoCategories</value>
-  </data>
-  <data name="&gt;&gt;tanInfoCategories.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tanInfoCategories.Parent" xml:space="preserve">
-    <value>tabInfo</value>
-  </data>
-  <data name="&gt;&gt;tanInfoCategories.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;Label8.Name" xml:space="preserve">
-    <value>Label8</value>
-  </data>
-  <data name="&gt;&gt;Label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label8.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;Label8.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;Label7.Name" xml:space="preserve">
-    <value>Label7</value>
-  </data>
-  <data name="&gt;&gt;Label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label7.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;Label7.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;Label4.Name" xml:space="preserve">
-    <value>Label4</value>
-  </data>
-  <data name="&gt;&gt;Label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label4.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;Label4.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;txtBaseMediumLinesScaleFactor.Name" xml:space="preserve">
-    <value>txtBaseMediumLinesScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;txtBaseMediumLinesScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtBaseMediumLinesScaleFactor.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;txtBaseMediumLinesScaleFactor.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;txtBaseUltraLightLinesScaleFactor.Name" xml:space="preserve">
-    <value>txtBaseUltraLightLinesScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;txtBaseUltraLightLinesScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtBaseUltraLightLinesScaleFactor.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;txtBaseUltraLightLinesScaleFactor.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;txtBaseLightLinesScaleFactor.Name" xml:space="preserve">
-    <value>txtBaseLightLinesScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;txtBaseLightLinesScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtBaseLightLinesScaleFactor.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;txtBaseLightLinesScaleFactor.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;txtBaseHeavyLinesScaleFactor.Name" xml:space="preserve">
-    <value>txtBaseHeavyLinesScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;txtBaseHeavyLinesScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtBaseHeavyLinesScaleFactor.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;txtBaseHeavyLinesScaleFactor.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;lblBaseLinesScaleFactor.Name" xml:space="preserve">
-    <value>lblBaseLinesScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;lblBaseLinesScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblBaseLinesScaleFactor.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;lblBaseLinesScaleFactor.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;txtBaseLineWidthScaleFactor.Name" xml:space="preserve">
-    <value>txtBaseLineWidthScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;txtBaseLineWidthScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtBaseLineWidthScaleFactor.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;txtBaseLineWidthScaleFactor.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;lblBaseLineWidthScaleFactor.Name" xml:space="preserve">
-    <value>lblBaseLineWidthScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;lblBaseLineWidthScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblBaseLineWidthScaleFactor.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;lblBaseLineWidthScaleFactor.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="GroupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 8</value>
-  </data>
-  <data name="GroupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>588, 83</value>
-  </data>
-  <data name="GroupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>140</value>
-  </data>
-  <data name="GroupBox1.Text" xml:space="preserve">
-    <value>Line width (scale):</value>
-  </data>
-  <data name="&gt;&gt;GroupBox1.Name" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;GroupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GroupBox1.Parent" xml:space="preserve">
-    <value>tabInfODesign</value>
-  </data>
-  <data name="&gt;&gt;GroupBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;txtDesignExtraScaleFactor.Name" xml:space="preserve">
-    <value>txtDesignExtraScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;txtDesignExtraScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtDesignExtraScaleFactor.Parent" xml:space="preserve">
-    <value>GroupBox10</value>
-  </data>
-  <data name="&gt;&gt;txtDesignExtraScaleFactor.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lblDesignExtraTextScaleFactor.Name" xml:space="preserve">
-    <value>lblDesignExtraTextScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;lblDesignExtraTextScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblDesignExtraTextScaleFactor.Parent" xml:space="preserve">
-    <value>GroupBox10</value>
-  </data>
-  <data name="&gt;&gt;lblDesignExtraTextScaleFactor.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;lblDesignExtraScaleFactor.Name" xml:space="preserve">
-    <value>lblDesignExtraScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;lblDesignExtraScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblDesignExtraScaleFactor.Parent" xml:space="preserve">
-    <value>GroupBox10</value>
-  </data>
-  <data name="&gt;&gt;lblDesignExtraScaleFactor.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;txtDesignExtraTextScaleFactor.Name" xml:space="preserve">
-    <value>txtDesignExtraTextScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;txtDesignExtraTextScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtDesignExtraTextScaleFactor.Parent" xml:space="preserve">
-    <value>GroupBox10</value>
-  </data>
-  <data name="&gt;&gt;txtDesignExtraTextScaleFactor.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="GroupBox10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 103</value>
-  </data>
-  <data name="GroupBox10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 79</value>
-  </data>
-  <data name="GroupBox10.TabIndex" type="System.Int32, mscorlib">
-    <value>139</value>
-  </data>
-  <data name="GroupBox10.Text" xml:space="preserve">
-    <value>Extra:</value>
-  </data>
-  <data name="&gt;&gt;GroupBox10.Name" xml:space="preserve">
-    <value>GroupBox10</value>
-  </data>
-  <data name="&gt;&gt;GroupBox10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GroupBox10.Parent" xml:space="preserve">
-    <value>frrmDesign</value>
-  </data>
-  <data name="&gt;&gt;GroupBox10.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblDesignTextureScale.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblDesignTextureScale.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblDesignTextureScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 53</value>
-  </data>
-  <data name="lblDesignTextureScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 13</value>
-  </data>
-  <data name="lblDesignTextureScale.TabIndex" type="System.Int32, mscorlib">
-    <value>134</value>
-  </data>
-  <data name="lblDesignTextureScale.Text" xml:space="preserve">
-    <value>Texture brushes:</value>
-  </data>
-  <data name="&gt;&gt;lblDesignTextureScale.Name" xml:space="preserve">
-    <value>lblDesignTextureScale</value>
-  </data>
-  <data name="&gt;&gt;lblDesignTextureScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblDesignTextureScale.Parent" xml:space="preserve">
-    <value>frrmDesign</value>
-  </data>
-  <data name="&gt;&gt;lblDesignTextureScale.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="txtDesignTextureScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>125, 51</value>
-  </data>
-  <data name="txtDesignTextureScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 21</value>
-  </data>
-  <data name="txtDesignTextureScaleFactor.TabIndex" type="System.Int32, mscorlib">
-    <value>133</value>
-  </data>
-  <data name="&gt;&gt;txtDesignTextureScaleFactor.Name" xml:space="preserve">
-    <value>txtDesignTextureScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;txtDesignTextureScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtDesignTextureScaleFactor.Parent" xml:space="preserve">
-    <value>frrmDesign</value>
-  </data>
-  <data name="&gt;&gt;txtDesignTextureScaleFactor.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="txtDesignTextFont.Location" type="System.Drawing.Point, System.Drawing">
-    <value>466, 46</value>
-  </data>
-  <data name="txtDesignTextFont.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
-  </data>
-  <data name="txtDesignTextFont.TabIndex" type="System.Int32, mscorlib">
-    <value>132</value>
-  </data>
-  <data name="&gt;&gt;txtDesignTextFont.Name" xml:space="preserve">
-    <value>txtDesignTextFont</value>
-  </data>
-  <data name="&gt;&gt;txtDesignTextFont.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtDesignTextFont.Parent" xml:space="preserve">
-    <value>frrmDesign</value>
-  </data>
-  <data name="&gt;&gt;txtDesignTextFont.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="cmdDesignTextFont.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cmdDesignTextFont.Location" type="System.Drawing.Point, System.Drawing">
-    <value>548, 47</value>
-  </data>
-  <data name="cmdDesignTextFont.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 21</value>
-  </data>
-  <data name="cmdDesignTextFont.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="cmdDesignTextFont.Text" xml:space="preserve">
-    <value>...</value>
-  </data>
-  <data name="&gt;&gt;cmdDesignTextFont.Name" xml:space="preserve">
-    <value>cmdDesignTextFont</value>
-  </data>
-  <data name="&gt;&gt;cmdDesignTextFont.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdDesignTextFont.Parent" xml:space="preserve">
-    <value>frrmDesign</value>
-  </data>
-  <data name="&gt;&gt;cmdDesignTextFont.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="lblDesignTextFont.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblDesignTextFont.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
-  </data>
-  <data name="lblDesignTextFont.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblDesignTextFont.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, 51</value>
-  </data>
-  <data name="lblDesignTextFont.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 13</value>
-  </data>
-  <data name="lblDesignTextFont.TabIndex" type="System.Int32, mscorlib">
-    <value>131</value>
-  </data>
-  <data name="lblDesignTextFont.Text" xml:space="preserve">
-    <value>Font:</value>
-  </data>
-  <data name="&gt;&gt;lblDesignTextFont.Name" xml:space="preserve">
-    <value>lblDesignTextFont</value>
-  </data>
-  <data name="&gt;&gt;lblDesignTextFont.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblDesignTextFont.Parent" xml:space="preserve">
-    <value>frrmDesign</value>
-  </data>
-  <data name="&gt;&gt;lblDesignTextFont.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="lblDesignSoilScale.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblDesignSoilScale.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblDesignSoilScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 22</value>
-  </data>
-  <data name="lblDesignSoilScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 13</value>
-  </data>
-  <data name="lblDesignSoilScale.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="lblDesignSoilScale.Text" xml:space="preserve">
-    <value>Clipart brushes:</value>
-  </data>
-  <data name="&gt;&gt;lblDesignSoilScale.Name" xml:space="preserve">
-    <value>lblDesignSoilScale</value>
-  </data>
-  <data name="&gt;&gt;lblDesignSoilScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblDesignSoilScale.Parent" xml:space="preserve">
-    <value>frrmDesign</value>
-  </data>
-  <data name="&gt;&gt;lblDesignSoilScale.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="txtDesignSoilScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>125, 20</value>
-  </data>
-  <data name="txtDesignSoilScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 21</value>
-  </data>
-  <data name="txtDesignSoilScaleFactor.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;txtDesignSoilScaleFactor.Name" xml:space="preserve">
-    <value>txtDesignSoilScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;txtDesignSoilScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtDesignSoilScaleFactor.Parent" xml:space="preserve">
-    <value>frrmDesign</value>
-  </data>
-  <data name="&gt;&gt;txtDesignSoilScaleFactor.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="lblDesignClipartScaleFactor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblDesignClipartScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblDesignClipartScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>203, 75</value>
-  </data>
-  <data name="lblDesignClipartScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 13</value>
-  </data>
-  <data name="lblDesignClipartScaleFactor.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="lblDesignClipartScaleFactor.Text" xml:space="preserve">
-    <value>Clipart:</value>
-  </data>
-  <data name="&gt;&gt;lblDesignClipartScaleFactor.Name" xml:space="preserve">
-    <value>lblDesignClipartScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;lblDesignClipartScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblDesignClipartScaleFactor.Parent" xml:space="preserve">
-    <value>frrmDesign</value>
-  </data>
-  <data name="&gt;&gt;lblDesignClipartScaleFactor.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="txtDesignClipartScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>323, 73</value>
-  </data>
-  <data name="txtDesignClipartScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 21</value>
-  </data>
-  <data name="txtDesignClipartScaleFactor.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;txtDesignClipartScaleFactor.Name" xml:space="preserve">
-    <value>txtDesignClipartScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;txtDesignClipartScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtDesignClipartScaleFactor.Parent" xml:space="preserve">
-    <value>frrmDesign</value>
-  </data>
-  <data name="&gt;&gt;txtDesignClipartScaleFactor.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="lblDesignTextScaleFactor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblDesignTextScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblDesignTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, 22</value>
-  </data>
-  <data name="lblDesignTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 13</value>
-  </data>
-  <data name="lblDesignTextScaleFactor.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="lblDesignTextScaleFactor.Text" xml:space="preserve">
-    <value>Text:</value>
-  </data>
-  <data name="&gt;&gt;lblDesignTextScaleFactor.Name" xml:space="preserve">
-    <value>lblDesignTextScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;lblDesignTextScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblDesignTextScaleFactor.Parent" xml:space="preserve">
-    <value>frrmDesign</value>
-  </data>
-  <data name="&gt;&gt;lblDesignTextScaleFactor.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="txtDesignTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>522, 20</value>
-  </data>
-  <data name="txtDesignTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 21</value>
-  </data>
-  <data name="txtDesignTextScaleFactor.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;txtDesignTextScaleFactor.Name" xml:space="preserve">
-    <value>txtDesignTextScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;txtDesignTextScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtDesignTextScaleFactor.Parent" xml:space="preserve">
-    <value>frrmDesign</value>
-  </data>
-  <data name="&gt;&gt;txtDesignTextScaleFactor.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="lblDesignSignScaleFactor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblDesignSignScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblDesignSignScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>203, 49</value>
-  </data>
-  <data name="lblDesignSignScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 13</value>
-  </data>
-  <data name="lblDesignSignScaleFactor.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblDesignSignScaleFactor.Text" xml:space="preserve">
-    <value>Signs:</value>
-  </data>
-  <data name="&gt;&gt;lblDesignSignScaleFactor.Name" xml:space="preserve">
-    <value>lblDesignSignScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;lblDesignSignScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblDesignSignScaleFactor.Parent" xml:space="preserve">
-    <value>frrmDesign</value>
-  </data>
-  <data name="&gt;&gt;lblDesignSignScaleFactor.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="txtDesignSignScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>323, 46</value>
-  </data>
-  <data name="txtDesignSignScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 21</value>
-  </data>
-  <data name="txtDesignSignScaleFactor.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;txtDesignSignScaleFactor.Name" xml:space="preserve">
-    <value>txtDesignSignScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;txtDesignSignScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtDesignSignScaleFactor.Parent" xml:space="preserve">
-    <value>frrmDesign</value>
-  </data>
-  <data name="&gt;&gt;txtDesignSignScaleFactor.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="lblDesignTerrainLevelScaleFactor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblDesignTerrainLevelScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblDesignTerrainLevelScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>203, 22</value>
-  </data>
-  <data name="lblDesignTerrainLevelScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 13</value>
-  </data>
-  <data name="lblDesignTerrainLevelScaleFactor.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="lblDesignTerrainLevelScaleFactor.Text" xml:space="preserve">
-    <value>Borders:</value>
-  </data>
-  <data name="&gt;&gt;lblDesignTerrainLevelScaleFactor.Name" xml:space="preserve">
-    <value>lblDesignTerrainLevelScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;lblDesignTerrainLevelScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblDesignTerrainLevelScaleFactor.Parent" xml:space="preserve">
-    <value>frrmDesign</value>
-  </data>
-  <data name="&gt;&gt;lblDesignTerrainLevelScaleFactor.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="txtDesignTerrainLevelScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>323, 20</value>
-  </data>
-  <data name="txtDesignTerrainLevelScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 21</value>
-  </data>
-  <data name="txtDesignTerrainLevelScaleFactor.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;txtDesignTerrainLevelScaleFactor.Name" xml:space="preserve">
-    <value>txtDesignTerrainLevelScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;txtDesignTerrainLevelScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtDesignTerrainLevelScaleFactor.Parent" xml:space="preserve">
-    <value>frrmDesign</value>
-  </data>
-  <data name="&gt;&gt;txtDesignTerrainLevelScaleFactor.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="frrmDesign.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 97</value>
-  </data>
-  <data name="frrmDesign.Size" type="System.Drawing.Size, System.Drawing">
-    <value>588, 193</value>
-  </data>
-  <data name="frrmDesign.TabIndex" type="System.Int32, mscorlib">
-    <value>114</value>
-  </data>
-  <data name="frrmDesign.Text" xml:space="preserve">
-    <value>Clipart, signs e objects (scale and font):</value>
-  </data>
-  <data name="&gt;&gt;frrmDesign.Name" xml:space="preserve">
-    <value>frrmDesign</value>
-  </data>
-  <data name="&gt;&gt;frrmDesign.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;frrmDesign.Parent" xml:space="preserve">
-    <value>tabInfODesign</value>
-  </data>
-  <data name="&gt;&gt;frrmDesign.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabInfODesign.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabInfODesign.Size" type="System.Drawing.Size, System.Drawing">
-    <value>638, 364</value>
-  </data>
-  <data name="tabInfODesign.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="tabInfODesign.Text" xml:space="preserve">
-    <value>Design</value>
-  </data>
-  <data name="&gt;&gt;tabInfODesign.Name" xml:space="preserve">
-    <value>tabInfODesign</value>
-  </data>
-  <data name="&gt;&gt;tabInfODesign.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabInfODesign.Parent" xml:space="preserve">
-    <value>tabInfo</value>
-  </data>
-  <data name="&gt;&gt;tabInfODesign.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;GroupBox7.Name" xml:space="preserve">
-    <value>GroupBox7</value>
-  </data>
-  <data name="&gt;&gt;GroupBox7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GroupBox7.Parent" xml:space="preserve">
-    <value>tabInfoPlot</value>
-  </data>
-  <data name="&gt;&gt;GroupBox7.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;GroupBox6.Name" xml:space="preserve">
-    <value>GroupBox6</value>
-  </data>
-  <data name="&gt;&gt;GroupBox6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GroupBox6.Parent" xml:space="preserve">
-    <value>tabInfoPlot</value>
-  </data>
-  <data name="&gt;&gt;GroupBox6.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;frmPlotLRUD.Name" xml:space="preserve">
-    <value>frmPlotLRUD</value>
-  </data>
-  <data name="&gt;&gt;frmPlotLRUD.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;frmPlotLRUD.Parent" xml:space="preserve">
-    <value>tabInfoPlot</value>
-  </data>
-  <data name="&gt;&gt;frmPlotLRUD.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;frmPlotTranslationLine.Name" xml:space="preserve">
-    <value>frmPlotTranslationLine</value>
-  </data>
-  <data name="&gt;&gt;frmPlotTranslationLine.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;frmPlotTranslationLine.Parent" xml:space="preserve">
-    <value>tabInfoPlot</value>
-  </data>
-  <data name="&gt;&gt;frmPlotTranslationLine.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;frmPlotPoint.Name" xml:space="preserve">
-    <value>frmPlotPoint</value>
-  </data>
-  <data name="&gt;&gt;frmPlotPoint.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;frmPlotPoint.Parent" xml:space="preserve">
-    <value>tabInfoPlot</value>
-  </data>
-  <data name="&gt;&gt;frmPlotPoint.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;frmPlotPen.Name" xml:space="preserve">
-    <value>frmPlotPen</value>
-  </data>
-  <data name="&gt;&gt;frmPlotPen.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;frmPlotPen.Parent" xml:space="preserve">
-    <value>tabInfoPlot</value>
-  </data>
-  <data name="&gt;&gt;frmPlotPen.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="tabInfoPlot.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabInfoPlot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>638, 364</value>
-  </data>
-  <data name="tabInfoPlot.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="tabInfoPlot.Text" xml:space="preserve">
-    <value>Centerline</value>
-  </data>
-  <data name="&gt;&gt;tabInfoPlot.Name" xml:space="preserve">
-    <value>tabInfoPlot</value>
-  </data>
-  <data name="&gt;&gt;tabInfoPlot.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabInfoPlot.Parent" xml:space="preserve">
-    <value>tabInfo</value>
-  </data>
-  <data name="&gt;&gt;tabInfoPlot.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="tabInfo.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="tabInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 104</value>
-  </data>
-  <data name="tabInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>646, 390</value>
-  </data>
-  <data name="tabInfo.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;tabInfo.Name" xml:space="preserve">
-    <value>tabInfo</value>
-  </data>
-  <data name="&gt;&gt;tabInfo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabInfo.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tabInfo.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="lblScaleWarning.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -1199,6 +317,19 @@ For scale under the minimum defined factor will be used the default design and c
   </data>
   <data name="&gt;&gt;lblScaleWarning.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="picScaleWarning.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGeSURBVDhPpZO9S0JhGMXfuf+iqT0z/Eh0kCAskMwK
+        rC2IwGgMokzUnBsCm1rqL2gKiiKk/LiaS+ZQRF+GRkPRFsTpOa9KqHcIFH543nPOc+9zL1wFoCdUYctp
+        Sj5u7y8mLCDUZh1iahpxu8pELKXPdAKEmp5Zt8swEg6Vj1qXK7sB4ONcQ02PWWe/y8jHbH1G3AFUD3Gf
+        3dNQ02PW2W87cM2srPt2mgTeDxCYD2uo6THrfJS/g6yXi1pny6kZ4OsSyDswFQprqOkxY4fdrgvIeioX
+        G8FPTZ674AcuBjAeXNJQ02PGDrttF2iufvx6tg1UVoD0IGAMwe1b0FBrTzJ22G09SnP1Ye91KgTU5IVl
+        bEDWBZRcqJ/4NNTaYyYddjnDWWXE7LK6G98P+1L0AFde+R8Fbrzwz61qqLWnM4/ucoazcnfbzsvRGnA7
+        CZTlbuUJGRDufHCPLWqotceMHelyhrOqmHQCz8EGj9MNnoSqUBePUNNr5c0+Z+XtO5DdtCOzYUNmnYgm
+        cs5FGjSyps+OnDnDWSU/S0+YfaL/B+oXAtBPxz2hBW8AAAAASUVORK5CYII=
+</value>
   </data>
   <data name="picScaleWarning.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 46</value>
@@ -1275,37 +406,31 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;lblScale.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <metadata name="colCategoryIndex.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colCategoryName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colCategoryVisibility.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="grdCategoriesVisibility.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="tabInfoMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
   </data>
-  <data name="grdCategoriesVisibility.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="tabInfoMain.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
-  <data name="grdCategoriesVisibility.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabInfoMain.Size" type="System.Drawing.Size, System.Drawing">
     <value>638, 364</value>
   </data>
-  <data name="grdCategoriesVisibility.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="tabInfoMain.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;grdCategoriesVisibility.Name" xml:space="preserve">
-    <value>grdCategoriesVisibility</value>
+  <data name="tabInfoMain.Text" xml:space="preserve">
+    <value>Main</value>
   </data>
-  <data name="&gt;&gt;grdCategoriesVisibility.Type" xml:space="preserve">
-    <value>cSurveyPC.cGrid, cSurveyPC, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;tabInfoMain.Name" xml:space="preserve">
+    <value>tabInfoMain</value>
   </data>
-  <data name="&gt;&gt;grdCategoriesVisibility.Parent" xml:space="preserve">
-    <value>tanInfoCategories</value>
+  <data name="&gt;&gt;tabInfoMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;grdCategoriesVisibility.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tabInfoMain.Parent" xml:space="preserve">
+    <value>tabInfo</value>
+  </data>
+  <data name="&gt;&gt;tabInfoMain.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="colCategoryIndex.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -1334,6 +459,57 @@ For scale under the minimum defined factor will be used the default design and c
   </data>
   <data name="colCategoryVisibility.Width" type="System.Int32, mscorlib">
     <value>60</value>
+  </data>
+  <data name="grdCategoriesVisibility.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="grdCategoriesVisibility.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="grdCategoriesVisibility.Size" type="System.Drawing.Size, System.Drawing">
+    <value>638, 364</value>
+  </data>
+  <data name="grdCategoriesVisibility.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;grdCategoriesVisibility.Name" xml:space="preserve">
+    <value>grdCategoriesVisibility</value>
+  </data>
+  <data name="&gt;&gt;grdCategoriesVisibility.Type" xml:space="preserve">
+    <value>cSurveyPC.cGrid, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;grdCategoriesVisibility.Parent" xml:space="preserve">
+    <value>tanInfoCategories</value>
+  </data>
+  <data name="&gt;&gt;grdCategoriesVisibility.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tanInfoCategories.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tanInfoCategories.Size" type="System.Drawing.Size, System.Drawing">
+    <value>638, 364</value>
+  </data>
+  <data name="tanInfoCategories.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="tanInfoCategories.Text" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="&gt;&gt;tanInfoCategories.Name" xml:space="preserve">
+    <value>tanInfoCategories</value>
+  </data>
+  <data name="&gt;&gt;tanInfoCategories.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tanInfoCategories.Parent" xml:space="preserve">
+    <value>tabInfo</value>
+  </data>
+  <data name="&gt;&gt;tanInfoCategories.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabInfODesign.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="Label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1590,6 +766,231 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;lblBaseLineWidthScaleFactor.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="GroupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 8</value>
+  </data>
+  <data name="GroupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>588, 83</value>
+  </data>
+  <data name="GroupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>140</value>
+  </data>
+  <data name="GroupBox1.Text" xml:space="preserve">
+    <value>Line width (scale):</value>
+  </data>
+  <data name="&gt;&gt;GroupBox1.Name" xml:space="preserve">
+    <value>GroupBox1</value>
+  </data>
+  <data name="&gt;&gt;GroupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GroupBox1.Parent" xml:space="preserve">
+    <value>tabInfODesign</value>
+  </data>
+  <data name="&gt;&gt;GroupBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblDesignCrossSectionTextScaleFactor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblDesignCrossSectionTextScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblDesignCrossSectionTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 22</value>
+  </data>
+  <data name="lblDesignCrossSectionTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 13</value>
+  </data>
+  <data name="lblDesignCrossSectionTextScaleFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>138</value>
+  </data>
+  <data name="lblDesignCrossSectionTextScaleFactor.Text" xml:space="preserve">
+    <value>Text:</value>
+  </data>
+  <data name="&gt;&gt;lblDesignCrossSectionTextScaleFactor.Name" xml:space="preserve">
+    <value>lblDesignCrossSectionTextScaleFactor</value>
+  </data>
+  <data name="&gt;&gt;lblDesignCrossSectionTextScaleFactor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblDesignCrossSectionTextScaleFactor.Parent" xml:space="preserve">
+    <value>GroupBox2</value>
+  </data>
+  <data name="&gt;&gt;lblDesignCrossSectionTextScaleFactor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtDesignCrossSectionTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>137, 20</value>
+  </data>
+  <data name="txtDesignCrossSectionTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtDesignCrossSectionTextScaleFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>137</value>
+  </data>
+  <data name="&gt;&gt;txtDesignCrossSectionTextScaleFactor.Name" xml:space="preserve">
+    <value>txtDesignCrossSectionTextScaleFactor</value>
+  </data>
+  <data name="&gt;&gt;txtDesignCrossSectionTextScaleFactor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtDesignCrossSectionTextScaleFactor.Parent" xml:space="preserve">
+    <value>GroupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtDesignCrossSectionTextScaleFactor.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblDesignCrossSectionMarkerTextScaleFactor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblDesignCrossSectionMarkerTextScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblDesignCrossSectionMarkerTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 22</value>
+  </data>
+  <data name="lblDesignCrossSectionMarkerTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 13</value>
+  </data>
+  <data name="lblDesignCrossSectionMarkerTextScaleFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>140</value>
+  </data>
+  <data name="lblDesignCrossSectionMarkerTextScaleFactor.Text" xml:space="preserve">
+    <value>Text:</value>
+  </data>
+  <data name="&gt;&gt;lblDesignCrossSectionMarkerTextScaleFactor.Name" xml:space="preserve">
+    <value>lblDesignCrossSectionMarkerTextScaleFactor</value>
+  </data>
+  <data name="&gt;&gt;lblDesignCrossSectionMarkerTextScaleFactor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblDesignCrossSectionMarkerTextScaleFactor.Parent" xml:space="preserve">
+    <value>GroupBox3</value>
+  </data>
+  <data name="&gt;&gt;lblDesignCrossSectionMarkerTextScaleFactor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtDesignCrossSectionMarkerTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, 20</value>
+  </data>
+  <data name="txtDesignCrossSectionMarkerTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtDesignCrossSectionMarkerTextScaleFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>139</value>
+  </data>
+  <data name="&gt;&gt;txtDesignCrossSectionMarkerTextScaleFactor.Name" xml:space="preserve">
+    <value>txtDesignCrossSectionMarkerTextScaleFactor</value>
+  </data>
+  <data name="&gt;&gt;txtDesignCrossSectionMarkerTextScaleFactor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtDesignCrossSectionMarkerTextScaleFactor.Parent" xml:space="preserve">
+    <value>GroupBox3</value>
+  </data>
+  <data name="&gt;&gt;txtDesignCrossSectionMarkerTextScaleFactor.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtDesignCrossSectionMarkerArrowScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, 47</value>
+  </data>
+  <data name="txtDesignCrossSectionMarkerArrowScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtDesignCrossSectionMarkerArrowScaleFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>135</value>
+  </data>
+  <data name="&gt;&gt;txtDesignCrossSectionMarkerArrowScaleFactor.Name" xml:space="preserve">
+    <value>txtDesignCrossSectionMarkerArrowScaleFactor</value>
+  </data>
+  <data name="&gt;&gt;txtDesignCrossSectionMarkerArrowScaleFactor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtDesignCrossSectionMarkerArrowScaleFactor.Parent" xml:space="preserve">
+    <value>GroupBox3</value>
+  </data>
+  <data name="&gt;&gt;txtDesignCrossSectionMarkerArrowScaleFactor.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblDesignCrossSectionMarkerArrowScaleFactor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblDesignCrossSectionMarkerArrowScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblDesignCrossSectionMarkerArrowScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 49</value>
+  </data>
+  <data name="lblDesignCrossSectionMarkerArrowScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 13</value>
+  </data>
+  <data name="lblDesignCrossSectionMarkerArrowScaleFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>136</value>
+  </data>
+  <data name="lblDesignCrossSectionMarkerArrowScaleFactor.Text" xml:space="preserve">
+    <value>Arrow:</value>
+  </data>
+  <data name="&gt;&gt;lblDesignCrossSectionMarkerArrowScaleFactor.Name" xml:space="preserve">
+    <value>lblDesignCrossSectionMarkerArrowScaleFactor</value>
+  </data>
+  <data name="&gt;&gt;lblDesignCrossSectionMarkerArrowScaleFactor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblDesignCrossSectionMarkerArrowScaleFactor.Parent" xml:space="preserve">
+    <value>GroupBox3</value>
+  </data>
+  <data name="&gt;&gt;lblDesignCrossSectionMarkerArrowScaleFactor.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="GroupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 49</value>
+  </data>
+  <data name="GroupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>244, 85</value>
+  </data>
+  <data name="GroupBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>141</value>
+  </data>
+  <data name="GroupBox3.Text" xml:space="preserve">
+    <value>Markers:</value>
+  </data>
+  <data name="&gt;&gt;GroupBox3.Name" xml:space="preserve">
+    <value>GroupBox3</value>
+  </data>
+  <data name="&gt;&gt;GroupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GroupBox3.Parent" xml:space="preserve">
+    <value>GroupBox2</value>
+  </data>
+  <data name="&gt;&gt;GroupBox3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="GroupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>285, 107</value>
+  </data>
+  <data name="GroupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 140</value>
+  </data>
+  <data name="GroupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>140</value>
+  </data>
+  <data name="GroupBox2.Text" xml:space="preserve">
+    <value>Cross section:</value>
+  </data>
+  <data name="&gt;&gt;GroupBox2.Name" xml:space="preserve">
+    <value>GroupBox2</value>
+  </data>
+  <data name="&gt;&gt;GroupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GroupBox2.Parent" xml:space="preserve">
+    <value>frrmDesign</value>
+  </data>
+  <data name="&gt;&gt;GroupBox2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="txtDesignExtraScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>137, 20</value>
   </data>
@@ -1692,125 +1093,464 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;txtDesignExtraTextScaleFactor.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;txtPlotNoteTextFont.Name" xml:space="preserve">
-    <value>txtPlotNoteTextFont</value>
+  <data name="GroupBox10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 107</value>
   </data>
-  <data name="&gt;&gt;txtPlotNoteTextFont.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="GroupBox10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 79</value>
   </data>
-  <data name="&gt;&gt;txtPlotNoteTextFont.Parent" xml:space="preserve">
-    <value>GroupBox7</value>
+  <data name="GroupBox10.TabIndex" type="System.Int32, mscorlib">
+    <value>139</value>
   </data>
-  <data name="&gt;&gt;txtPlotNoteTextFont.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="GroupBox10.Text" xml:space="preserve">
+    <value>Extra:</value>
   </data>
-  <data name="&gt;&gt;cmdPlotNoteTextFont.Name" xml:space="preserve">
-    <value>cmdPlotNoteTextFont</value>
+  <data name="&gt;&gt;GroupBox10.Name" xml:space="preserve">
+    <value>GroupBox10</value>
   </data>
-  <data name="&gt;&gt;cmdPlotNoteTextFont.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdPlotNoteTextFont.Parent" xml:space="preserve">
-    <value>GroupBox7</value>
-  </data>
-  <data name="&gt;&gt;cmdPlotNoteTextFont.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;lblPlotNoteTextFont.Name" xml:space="preserve">
-    <value>lblPlotNoteTextFont</value>
-  </data>
-  <data name="&gt;&gt;lblPlotNoteTextFont.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPlotNoteTextFont.Parent" xml:space="preserve">
-    <value>GroupBox7</value>
-  </data>
-  <data name="&gt;&gt;lblPlotNoteTextFont.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;cmdPlotNoteTextColor.Name" xml:space="preserve">
-    <value>cmdPlotNoteTextColor</value>
-  </data>
-  <data name="&gt;&gt;cmdPlotNoteTextColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdPlotNoteTextColor.Parent" xml:space="preserve">
-    <value>GroupBox7</value>
-  </data>
-  <data name="&gt;&gt;cmdPlotNoteTextColor.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;lblPlotNoteTextColor.Name" xml:space="preserve">
-    <value>lblPlotNoteTextColor</value>
-  </data>
-  <data name="&gt;&gt;lblPlotNoteTextColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPlotNoteTextColor.Parent" xml:space="preserve">
-    <value>GroupBox7</value>
-  </data>
-  <data name="&gt;&gt;lblPlotNoteTextColor.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;picPlotNoteTextColor.Name" xml:space="preserve">
-    <value>picPlotNoteTextColor</value>
-  </data>
-  <data name="&gt;&gt;picPlotNoteTextColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;picPlotNoteTextColor.Parent" xml:space="preserve">
-    <value>GroupBox7</value>
-  </data>
-  <data name="&gt;&gt;picPlotNoteTextColor.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;txtPlotNoteTextScaleFactor.Name" xml:space="preserve">
-    <value>txtPlotNoteTextScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;txtPlotNoteTextScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtPlotNoteTextScaleFactor.Parent" xml:space="preserve">
-    <value>GroupBox7</value>
-  </data>
-  <data name="&gt;&gt;txtPlotNoteTextScaleFactor.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;lblPlotNoteTextScaleFactor.Name" xml:space="preserve">
-    <value>lblPlotNoteTextScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;lblPlotNoteTextScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPlotNoteTextScaleFactor.Parent" xml:space="preserve">
-    <value>GroupBox7</value>
-  </data>
-  <data name="&gt;&gt;lblPlotNoteTextScaleFactor.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="GroupBox7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, 8</value>
-  </data>
-  <data name="GroupBox7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 111</value>
-  </data>
-  <data name="GroupBox7.TabIndex" type="System.Int32, mscorlib">
-    <value>136</value>
-  </data>
-  <data name="GroupBox7.Text" xml:space="preserve">
-    <value>Notes and information:</value>
-  </data>
-  <data name="&gt;&gt;GroupBox7.Name" xml:space="preserve">
-    <value>GroupBox7</value>
-  </data>
-  <data name="&gt;&gt;GroupBox7.Type" xml:space="preserve">
+  <data name="&gt;&gt;GroupBox10.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;GroupBox7.Parent" xml:space="preserve">
-    <value>tabInfoPlot</value>
+  <data name="&gt;&gt;GroupBox10.Parent" xml:space="preserve">
+    <value>frrmDesign</value>
   </data>
-  <data name="&gt;&gt;GroupBox7.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;GroupBox10.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblDesignTextureScale.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblDesignTextureScale.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblDesignTextureScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 53</value>
+  </data>
+  <data name="lblDesignTextureScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 13</value>
+  </data>
+  <data name="lblDesignTextureScale.TabIndex" type="System.Int32, mscorlib">
+    <value>134</value>
+  </data>
+  <data name="lblDesignTextureScale.Text" xml:space="preserve">
+    <value>Texture brushes:</value>
+  </data>
+  <data name="&gt;&gt;lblDesignTextureScale.Name" xml:space="preserve">
+    <value>lblDesignTextureScale</value>
+  </data>
+  <data name="&gt;&gt;lblDesignTextureScale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblDesignTextureScale.Parent" xml:space="preserve">
+    <value>frrmDesign</value>
+  </data>
+  <data name="&gt;&gt;lblDesignTextureScale.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtDesignTextureScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>125, 51</value>
+  </data>
+  <data name="txtDesignTextureScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtDesignTextureScaleFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>133</value>
+  </data>
+  <data name="&gt;&gt;txtDesignTextureScaleFactor.Name" xml:space="preserve">
+    <value>txtDesignTextureScaleFactor</value>
+  </data>
+  <data name="&gt;&gt;txtDesignTextureScaleFactor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtDesignTextureScaleFactor.Parent" xml:space="preserve">
+    <value>frrmDesign</value>
+  </data>
+  <data name="&gt;&gt;txtDesignTextureScaleFactor.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtDesignTextFont.Location" type="System.Drawing.Point, System.Drawing">
+    <value>466, 46</value>
+  </data>
+  <data name="txtDesignTextFont.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 21</value>
+  </data>
+  <data name="txtDesignTextFont.TabIndex" type="System.Int32, mscorlib">
+    <value>132</value>
+  </data>
+  <data name="&gt;&gt;txtDesignTextFont.Name" xml:space="preserve">
+    <value>txtDesignTextFont</value>
+  </data>
+  <data name="&gt;&gt;txtDesignTextFont.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtDesignTextFont.Parent" xml:space="preserve">
+    <value>frrmDesign</value>
+  </data>
+  <data name="&gt;&gt;txtDesignTextFont.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cmdDesignTextFont.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdDesignTextFont.Location" type="System.Drawing.Point, System.Drawing">
+    <value>548, 47</value>
+  </data>
+  <data name="cmdDesignTextFont.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 21</value>
+  </data>
+  <data name="cmdDesignTextFont.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="cmdDesignTextFont.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="&gt;&gt;cmdDesignTextFont.Name" xml:space="preserve">
+    <value>cmdDesignTextFont</value>
+  </data>
+  <data name="&gt;&gt;cmdDesignTextFont.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmdDesignTextFont.Parent" xml:space="preserve">
+    <value>frrmDesign</value>
+  </data>
+  <data name="&gt;&gt;cmdDesignTextFont.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lblDesignTextFont.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblDesignTextFont.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblDesignTextFont.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblDesignTextFont.Location" type="System.Drawing.Point, System.Drawing">
+    <value>405, 51</value>
+  </data>
+  <data name="lblDesignTextFont.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 13</value>
+  </data>
+  <data name="lblDesignTextFont.TabIndex" type="System.Int32, mscorlib">
+    <value>131</value>
+  </data>
+  <data name="lblDesignTextFont.Text" xml:space="preserve">
+    <value>Font:</value>
+  </data>
+  <data name="&gt;&gt;lblDesignTextFont.Name" xml:space="preserve">
+    <value>lblDesignTextFont</value>
+  </data>
+  <data name="&gt;&gt;lblDesignTextFont.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblDesignTextFont.Parent" xml:space="preserve">
+    <value>frrmDesign</value>
+  </data>
+  <data name="&gt;&gt;lblDesignTextFont.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lblDesignSoilScale.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblDesignSoilScale.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblDesignSoilScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 22</value>
+  </data>
+  <data name="lblDesignSoilScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 13</value>
+  </data>
+  <data name="lblDesignSoilScale.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="lblDesignSoilScale.Text" xml:space="preserve">
+    <value>Clipart brushes:</value>
+  </data>
+  <data name="&gt;&gt;lblDesignSoilScale.Name" xml:space="preserve">
+    <value>lblDesignSoilScale</value>
+  </data>
+  <data name="&gt;&gt;lblDesignSoilScale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblDesignSoilScale.Parent" xml:space="preserve">
+    <value>frrmDesign</value>
+  </data>
+  <data name="&gt;&gt;lblDesignSoilScale.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="txtDesignSoilScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>125, 20</value>
+  </data>
+  <data name="txtDesignSoilScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtDesignSoilScaleFactor.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtDesignSoilScaleFactor.Name" xml:space="preserve">
+    <value>txtDesignSoilScaleFactor</value>
+  </data>
+  <data name="&gt;&gt;txtDesignSoilScaleFactor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtDesignSoilScaleFactor.Parent" xml:space="preserve">
+    <value>frrmDesign</value>
+  </data>
+  <data name="&gt;&gt;txtDesignSoilScaleFactor.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="lblDesignClipartScaleFactor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblDesignClipartScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblDesignClipartScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>203, 75</value>
+  </data>
+  <data name="lblDesignClipartScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 13</value>
+  </data>
+  <data name="lblDesignClipartScaleFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="lblDesignClipartScaleFactor.Text" xml:space="preserve">
+    <value>Clipart:</value>
+  </data>
+  <data name="&gt;&gt;lblDesignClipartScaleFactor.Name" xml:space="preserve">
+    <value>lblDesignClipartScaleFactor</value>
+  </data>
+  <data name="&gt;&gt;lblDesignClipartScaleFactor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblDesignClipartScaleFactor.Parent" xml:space="preserve">
+    <value>frrmDesign</value>
+  </data>
+  <data name="&gt;&gt;lblDesignClipartScaleFactor.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="txtDesignClipartScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>323, 73</value>
+  </data>
+  <data name="txtDesignClipartScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtDesignClipartScaleFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtDesignClipartScaleFactor.Name" xml:space="preserve">
+    <value>txtDesignClipartScaleFactor</value>
+  </data>
+  <data name="&gt;&gt;txtDesignClipartScaleFactor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtDesignClipartScaleFactor.Parent" xml:space="preserve">
+    <value>frrmDesign</value>
+  </data>
+  <data name="&gt;&gt;txtDesignClipartScaleFactor.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="lblDesignTextScaleFactor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblDesignTextScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblDesignTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>405, 22</value>
+  </data>
+  <data name="lblDesignTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 13</value>
+  </data>
+  <data name="lblDesignTextScaleFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="lblDesignTextScaleFactor.Text" xml:space="preserve">
+    <value>Text:</value>
+  </data>
+  <data name="&gt;&gt;lblDesignTextScaleFactor.Name" xml:space="preserve">
+    <value>lblDesignTextScaleFactor</value>
+  </data>
+  <data name="&gt;&gt;lblDesignTextScaleFactor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblDesignTextScaleFactor.Parent" xml:space="preserve">
+    <value>frrmDesign</value>
+  </data>
+  <data name="&gt;&gt;lblDesignTextScaleFactor.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="txtDesignTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>522, 20</value>
+  </data>
+  <data name="txtDesignTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtDesignTextScaleFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;txtDesignTextScaleFactor.Name" xml:space="preserve">
+    <value>txtDesignTextScaleFactor</value>
+  </data>
+  <data name="&gt;&gt;txtDesignTextScaleFactor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtDesignTextScaleFactor.Parent" xml:space="preserve">
+    <value>frrmDesign</value>
+  </data>
+  <data name="&gt;&gt;txtDesignTextScaleFactor.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="lblDesignSignScaleFactor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblDesignSignScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblDesignSignScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>203, 49</value>
+  </data>
+  <data name="lblDesignSignScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 13</value>
+  </data>
+  <data name="lblDesignSignScaleFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblDesignSignScaleFactor.Text" xml:space="preserve">
+    <value>Signs:</value>
+  </data>
+  <data name="&gt;&gt;lblDesignSignScaleFactor.Name" xml:space="preserve">
+    <value>lblDesignSignScaleFactor</value>
+  </data>
+  <data name="&gt;&gt;lblDesignSignScaleFactor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblDesignSignScaleFactor.Parent" xml:space="preserve">
+    <value>frrmDesign</value>
+  </data>
+  <data name="&gt;&gt;lblDesignSignScaleFactor.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="txtDesignSignScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>323, 46</value>
+  </data>
+  <data name="txtDesignSignScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtDesignSignScaleFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtDesignSignScaleFactor.Name" xml:space="preserve">
+    <value>txtDesignSignScaleFactor</value>
+  </data>
+  <data name="&gt;&gt;txtDesignSignScaleFactor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtDesignSignScaleFactor.Parent" xml:space="preserve">
+    <value>frrmDesign</value>
+  </data>
+  <data name="&gt;&gt;txtDesignSignScaleFactor.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="lblDesignTerrainLevelScaleFactor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblDesignTerrainLevelScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblDesignTerrainLevelScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>203, 22</value>
+  </data>
+  <data name="lblDesignTerrainLevelScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 13</value>
+  </data>
+  <data name="lblDesignTerrainLevelScaleFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="lblDesignTerrainLevelScaleFactor.Text" xml:space="preserve">
+    <value>Borders:</value>
+  </data>
+  <data name="&gt;&gt;lblDesignTerrainLevelScaleFactor.Name" xml:space="preserve">
+    <value>lblDesignTerrainLevelScaleFactor</value>
+  </data>
+  <data name="&gt;&gt;lblDesignTerrainLevelScaleFactor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblDesignTerrainLevelScaleFactor.Parent" xml:space="preserve">
+    <value>frrmDesign</value>
+  </data>
+  <data name="&gt;&gt;lblDesignTerrainLevelScaleFactor.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="txtDesignTerrainLevelScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>323, 20</value>
+  </data>
+  <data name="txtDesignTerrainLevelScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtDesignTerrainLevelScaleFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtDesignTerrainLevelScaleFactor.Name" xml:space="preserve">
+    <value>txtDesignTerrainLevelScaleFactor</value>
+  </data>
+  <data name="&gt;&gt;txtDesignTerrainLevelScaleFactor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtDesignTerrainLevelScaleFactor.Parent" xml:space="preserve">
+    <value>frrmDesign</value>
+  </data>
+  <data name="&gt;&gt;txtDesignTerrainLevelScaleFactor.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="frrmDesign.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 97</value>
+  </data>
+  <data name="frrmDesign.Size" type="System.Drawing.Size, System.Drawing">
+    <value>588, 273</value>
+  </data>
+  <data name="frrmDesign.TabIndex" type="System.Int32, mscorlib">
+    <value>114</value>
+  </data>
+  <data name="frrmDesign.Text" xml:space="preserve">
+    <value>Clipart, signs e objects (scale and font):</value>
+  </data>
+  <data name="&gt;&gt;frrmDesign.Name" xml:space="preserve">
+    <value>frrmDesign</value>
+  </data>
+  <data name="&gt;&gt;frrmDesign.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;frrmDesign.Parent" xml:space="preserve">
+    <value>tabInfODesign</value>
+  </data>
+  <data name="&gt;&gt;frrmDesign.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabInfODesign.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabInfODesign.Size" type="System.Drawing.Size, System.Drawing">
+    <value>638, 364</value>
+  </data>
+  <data name="tabInfODesign.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="tabInfODesign.Text" xml:space="preserve">
+    <value>Design</value>
+  </data>
+  <data name="&gt;&gt;tabInfODesign.Name" xml:space="preserve">
+    <value>tabInfODesign</value>
+  </data>
+  <data name="&gt;&gt;tabInfODesign.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabInfODesign.Parent" xml:space="preserve">
+    <value>tabInfo</value>
+  </data>
+  <data name="&gt;&gt;tabInfODesign.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="txtPlotNoteTextFont.Location" type="System.Drawing.Point, System.Drawing">
     <value>71, 49</value>
@@ -1873,13 +1613,13 @@ For scale under the minimum defined factor will be used the default design and c
     <value>7, 54</value>
   </data>
   <data name="lblPlotNoteTextFont.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 13</value>
+    <value>33, 13</value>
   </data>
   <data name="lblPlotNoteTextFont.TabIndex" type="System.Int32, mscorlib">
     <value>128</value>
   </data>
   <data name="lblPlotNoteTextFont.Text" xml:space="preserve">
-    <value>Character:</value>
+    <value>Font:</value>
   </data>
   <data name="&gt;&gt;lblPlotNoteTextFont.Name" xml:space="preserve">
     <value>lblPlotNoteTextFont</value>
@@ -2025,101 +1765,29 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;lblPlotNoteTextScaleFactor.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="&gt;&gt;lblPlotSplaySelectedPenWidth.Name" xml:space="preserve">
-    <value>lblPlotSplaySelectedPenWidth</value>
+  <data name="GroupBox7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>405, 8</value>
   </data>
-  <data name="&gt;&gt;lblPlotSplaySelectedPenWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="GroupBox7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 111</value>
   </data>
-  <data name="&gt;&gt;lblPlotSplaySelectedPenWidth.Parent" xml:space="preserve">
-    <value>GroupBox6</value>
+  <data name="GroupBox7.TabIndex" type="System.Int32, mscorlib">
+    <value>136</value>
   </data>
-  <data name="&gt;&gt;lblPlotSplaySelectedPenWidth.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="GroupBox7.Text" xml:space="preserve">
+    <value>Notes and information:</value>
   </data>
-  <data name="&gt;&gt;txtPlotSplaySelectedPenWidth.Name" xml:space="preserve">
-    <value>txtPlotSplaySelectedPenWidth</value>
+  <data name="&gt;&gt;GroupBox7.Name" xml:space="preserve">
+    <value>GroupBox7</value>
   </data>
-  <data name="&gt;&gt;txtPlotSplaySelectedPenWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSplaySelectedPenWidth.Parent" xml:space="preserve">
-    <value>GroupBox6</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSplaySelectedPenWidth.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSplayPenWidth.Name" xml:space="preserve">
-    <value>txtPlotSplayPenWidth</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSplayPenWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSplayPenWidth.Parent" xml:space="preserve">
-    <value>GroupBox6</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSplayPenWidth.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSplayPenWidth.Name" xml:space="preserve">
-    <value>lblPlotSplayPenWidth</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSplayPenWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSplayPenWidth.Parent" xml:space="preserve">
-    <value>GroupBox6</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSplayPenWidth.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;cboPlotSplayPenStyle.Name" xml:space="preserve">
-    <value>cboPlotSplayPenStyle</value>
-  </data>
-  <data name="&gt;&gt;cboPlotSplayPenStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboPlotSplayPenStyle.Parent" xml:space="preserve">
-    <value>GroupBox6</value>
-  </data>
-  <data name="&gt;&gt;cboPlotSplayPenStyle.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSplayPenStyle.Name" xml:space="preserve">
-    <value>lblPlotSplayPenStyle</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSplayPenStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSplayPenStyle.Parent" xml:space="preserve">
-    <value>GroupBox6</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSplayPenStyle.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="GroupBox6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, 241</value>
-  </data>
-  <data name="GroupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 110</value>
-  </data>
-  <data name="GroupBox6.TabIndex" type="System.Int32, mscorlib">
-    <value>137</value>
-  </data>
-  <data name="GroupBox6.Text" xml:space="preserve">
-    <value>Splay:</value>
-  </data>
-  <data name="&gt;&gt;GroupBox6.Name" xml:space="preserve">
-    <value>GroupBox6</value>
-  </data>
-  <data name="&gt;&gt;GroupBox6.Type" xml:space="preserve">
+  <data name="&gt;&gt;GroupBox7.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;GroupBox6.Parent" xml:space="preserve">
+  <data name="&gt;&gt;GroupBox7.Parent" xml:space="preserve">
     <value>tabInfoPlot</value>
   </data>
-  <data name="&gt;&gt;GroupBox6.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;GroupBox7.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="lblPlotSplaySelectedPenWidth.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2269,13 +1937,13 @@ For scale under the minimum defined factor will be used the default design and c
     <value>6, 79</value>
   </data>
   <data name="lblPlotSplayPenStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 13</value>
+    <value>35, 13</value>
   </data>
   <data name="lblPlotSplayPenStyle.TabIndex" type="System.Int32, mscorlib">
     <value>122</value>
   </data>
   <data name="lblPlotSplayPenStyle.Text" xml:space="preserve">
-    <value>Section:</value>
+    <value>Style:</value>
   </data>
   <data name="lblPlotSplayPenStyle.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -2292,101 +1960,29 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;lblPlotSplayPenStyle.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;lblPlotLRUDSelectedPenWidth.Name" xml:space="preserve">
-    <value>lblPlotLRUDSelectedPenWidth</value>
+  <data name="GroupBox6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>405, 241</value>
   </data>
-  <data name="&gt;&gt;lblPlotLRUDSelectedPenWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPlotLRUDSelectedPenWidth.Parent" xml:space="preserve">
-    <value>frmPlotLRUD</value>
-  </data>
-  <data name="&gt;&gt;lblPlotLRUDSelectedPenWidth.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;txtPlotLRUDSelectedPenWidth.Name" xml:space="preserve">
-    <value>txtPlotLRUDSelectedPenWidth</value>
-  </data>
-  <data name="&gt;&gt;txtPlotLRUDSelectedPenWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtPlotLRUDSelectedPenWidth.Parent" xml:space="preserve">
-    <value>frmPlotLRUD</value>
-  </data>
-  <data name="&gt;&gt;txtPlotLRUDSelectedPenWidth.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;txtPlotLRUDPenWidth.Name" xml:space="preserve">
-    <value>txtPlotLRUDPenWidth</value>
-  </data>
-  <data name="&gt;&gt;txtPlotLRUDPenWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtPlotLRUDPenWidth.Parent" xml:space="preserve">
-    <value>frmPlotLRUD</value>
-  </data>
-  <data name="&gt;&gt;txtPlotLRUDPenWidth.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;lblPlotLRUDPenWidth.Name" xml:space="preserve">
-    <value>lblPlotLRUDPenWidth</value>
-  </data>
-  <data name="&gt;&gt;lblPlotLRUDPenWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPlotLRUDPenWidth.Parent" xml:space="preserve">
-    <value>frmPlotLRUD</value>
-  </data>
-  <data name="&gt;&gt;lblPlotLRUDPenWidth.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;cboPlotLRUDPenStyle.Name" xml:space="preserve">
-    <value>cboPlotLRUDPenStyle</value>
-  </data>
-  <data name="&gt;&gt;cboPlotLRUDPenStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboPlotLRUDPenStyle.Parent" xml:space="preserve">
-    <value>frmPlotLRUD</value>
-  </data>
-  <data name="&gt;&gt;cboPlotLRUDPenStyle.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;lblPlotLRUDPenStyle.Name" xml:space="preserve">
-    <value>lblPlotLRUDPenStyle</value>
-  </data>
-  <data name="&gt;&gt;lblPlotLRUDPenStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPlotLRUDPenStyle.Parent" xml:space="preserve">
-    <value>frmPlotLRUD</value>
-  </data>
-  <data name="&gt;&gt;lblPlotLRUDPenStyle.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="frmPlotLRUD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, 125</value>
-  </data>
-  <data name="frmPlotLRUD.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="GroupBox6.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 110</value>
   </data>
-  <data name="frmPlotLRUD.TabIndex" type="System.Int32, mscorlib">
-    <value>134</value>
+  <data name="GroupBox6.TabIndex" type="System.Int32, mscorlib">
+    <value>137</value>
   </data>
-  <data name="frmPlotLRUD.Text" xml:space="preserve">
-    <value>LRUD:</value>
+  <data name="GroupBox6.Text" xml:space="preserve">
+    <value>Splay:</value>
   </data>
-  <data name="&gt;&gt;frmPlotLRUD.Name" xml:space="preserve">
-    <value>frmPlotLRUD</value>
+  <data name="&gt;&gt;GroupBox6.Name" xml:space="preserve">
+    <value>GroupBox6</value>
   </data>
-  <data name="&gt;&gt;frmPlotLRUD.Type" xml:space="preserve">
+  <data name="&gt;&gt;GroupBox6.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;frmPlotLRUD.Parent" xml:space="preserve">
+  <data name="&gt;&gt;GroupBox6.Parent" xml:space="preserve">
     <value>tabInfoPlot</value>
   </data>
-  <data name="&gt;&gt;frmPlotLRUD.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;GroupBox6.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="lblPlotLRUDSelectedPenWidth.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2536,13 +2132,13 @@ For scale under the minimum defined factor will be used the default design and c
     <value>6, 79</value>
   </data>
   <data name="lblPlotLRUDPenStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 13</value>
+    <value>35, 13</value>
   </data>
   <data name="lblPlotLRUDPenStyle.TabIndex" type="System.Int32, mscorlib">
     <value>122</value>
   </data>
   <data name="lblPlotLRUDPenStyle.Text" xml:space="preserve">
-    <value>Section:</value>
+    <value>Style:</value>
   </data>
   <data name="lblPlotLRUDPenStyle.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -2559,113 +2155,29 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;lblPlotLRUDPenStyle.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;cmdPlotTranslationLinePenColor.Name" xml:space="preserve">
-    <value>cmdPlotTranslationLinePenColor</value>
+  <data name="frmPlotLRUD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>405, 125</value>
   </data>
-  <data name="&gt;&gt;cmdPlotTranslationLinePenColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="frmPlotLRUD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 110</value>
   </data>
-  <data name="&gt;&gt;cmdPlotTranslationLinePenColor.Parent" xml:space="preserve">
-    <value>frmPlotTranslationLine</value>
+  <data name="frmPlotLRUD.TabIndex" type="System.Int32, mscorlib">
+    <value>134</value>
   </data>
-  <data name="&gt;&gt;cmdPlotTranslationLinePenColor.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="frmPlotLRUD.Text" xml:space="preserve">
+    <value>LRUD:</value>
   </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenColor.Name" xml:space="preserve">
-    <value>lblPlotTranslationLinePenColor</value>
+  <data name="&gt;&gt;frmPlotLRUD.Name" xml:space="preserve">
+    <value>frmPlotLRUD</value>
   </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenColor.Parent" xml:space="preserve">
-    <value>frmPlotTranslationLine</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenColor.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;picPlotTranslationLinePenColor.Name" xml:space="preserve">
-    <value>picPlotTranslationLinePenColor</value>
-  </data>
-  <data name="&gt;&gt;picPlotTranslationLinePenColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;picPlotTranslationLinePenColor.Parent" xml:space="preserve">
-    <value>frmPlotTranslationLine</value>
-  </data>
-  <data name="&gt;&gt;picPlotTranslationLinePenColor.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;txtPlotTranslationLinePenWidth.Name" xml:space="preserve">
-    <value>txtPlotTranslationLinePenWidth</value>
-  </data>
-  <data name="&gt;&gt;txtPlotTranslationLinePenWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtPlotTranslationLinePenWidth.Parent" xml:space="preserve">
-    <value>frmPlotTranslationLine</value>
-  </data>
-  <data name="&gt;&gt;txtPlotTranslationLinePenWidth.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenSize.Name" xml:space="preserve">
-    <value>lblPlotTranslationLinePenSize</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenSize.Parent" xml:space="preserve">
-    <value>frmPlotTranslationLine</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenSize.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;cboPlotTranslationLinePenStyle.Name" xml:space="preserve">
-    <value>cboPlotTranslationLinePenStyle</value>
-  </data>
-  <data name="&gt;&gt;cboPlotTranslationLinePenStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboPlotTranslationLinePenStyle.Parent" xml:space="preserve">
-    <value>frmPlotTranslationLine</value>
-  </data>
-  <data name="&gt;&gt;cboPlotTranslationLinePenStyle.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenStyle.Name" xml:space="preserve">
-    <value>lblPlotTranslationLinePenStyle</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenStyle.Parent" xml:space="preserve">
-    <value>frmPlotTranslationLine</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTranslationLinePenStyle.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="frmPlotTranslationLine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>207, 150</value>
-  </data>
-  <data name="frmPlotTranslationLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 163</value>
-  </data>
-  <data name="frmPlotTranslationLine.TabIndex" type="System.Int32, mscorlib">
-    <value>135</value>
-  </data>
-  <data name="frmPlotTranslationLine.Text" xml:space="preserve">
-    <value>Connection lines:</value>
-  </data>
-  <data name="&gt;&gt;frmPlotTranslationLine.Name" xml:space="preserve">
-    <value>frmPlotTranslationLine</value>
-  </data>
-  <data name="&gt;&gt;frmPlotTranslationLine.Type" xml:space="preserve">
+  <data name="&gt;&gt;frmPlotLRUD.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;frmPlotTranslationLine.Parent" xml:space="preserve">
+  <data name="&gt;&gt;frmPlotLRUD.Parent" xml:space="preserve">
     <value>tabInfoPlot</value>
   </data>
-  <data name="&gt;&gt;frmPlotTranslationLine.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;frmPlotLRUD.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="cmdPlotTranslationLinePenColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2845,13 +2357,13 @@ For scale under the minimum defined factor will be used the default design and c
     <value>6, 52</value>
   </data>
   <data name="lblPlotTranslationLinePenStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 13</value>
+    <value>35, 13</value>
   </data>
   <data name="lblPlotTranslationLinePenStyle.TabIndex" type="System.Int32, mscorlib">
     <value>122</value>
   </data>
   <data name="lblPlotTranslationLinePenStyle.Text" xml:space="preserve">
-    <value>Section:</value>
+    <value>Style:</value>
   </data>
   <data name="lblPlotTranslationLinePenStyle.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -2868,233 +2380,29 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;lblPlotTranslationLinePenStyle.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;txtPlotTextFont.Name" xml:space="preserve">
-    <value>txtPlotTextFont</value>
+  <data name="frmPlotTranslationLine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>207, 150</value>
   </data>
-  <data name="&gt;&gt;txtPlotTextFont.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="frmPlotTranslationLine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 163</value>
   </data>
-  <data name="&gt;&gt;txtPlotTextFont.Parent" xml:space="preserve">
-    <value>frmPlotPoint</value>
+  <data name="frmPlotTranslationLine.TabIndex" type="System.Int32, mscorlib">
+    <value>135</value>
   </data>
-  <data name="&gt;&gt;txtPlotTextFont.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="frmPlotTranslationLine.Text" xml:space="preserve">
+    <value>Translation lines:</value>
   </data>
-  <data name="&gt;&gt;cmdPlotTextFont.Name" xml:space="preserve">
-    <value>cmdPlotTextFont</value>
+  <data name="&gt;&gt;frmPlotTranslationLine.Name" xml:space="preserve">
+    <value>frmPlotTranslationLine</value>
   </data>
-  <data name="&gt;&gt;cmdPlotTextFont.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdPlotTextFont.Parent" xml:space="preserve">
-    <value>frmPlotPoint</value>
-  </data>
-  <data name="&gt;&gt;cmdPlotTextFont.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;cmdPlotPointColor.Name" xml:space="preserve">
-    <value>cmdPlotPointColor</value>
-  </data>
-  <data name="&gt;&gt;cmdPlotPointColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdPlotPointColor.Parent" xml:space="preserve">
-    <value>frmPlotPoint</value>
-  </data>
-  <data name="&gt;&gt;cmdPlotPointColor.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTextFont.Name" xml:space="preserve">
-    <value>lblPlotTextFont</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTextFont.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTextFont.Parent" xml:space="preserve">
-    <value>frmPlotPoint</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTextFont.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPointColor.Name" xml:space="preserve">
-    <value>lblPlotPointColor</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPointColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPointColor.Parent" xml:space="preserve">
-    <value>frmPlotPoint</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPointColor.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;cmdPlotTextColor.Name" xml:space="preserve">
-    <value>cmdPlotTextColor</value>
-  </data>
-  <data name="&gt;&gt;cmdPlotTextColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdPlotTextColor.Parent" xml:space="preserve">
-    <value>frmPlotPoint</value>
-  </data>
-  <data name="&gt;&gt;cmdPlotTextColor.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;picPlotPointColor.Name" xml:space="preserve">
-    <value>picPlotPointColor</value>
-  </data>
-  <data name="&gt;&gt;picPlotPointColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;picPlotPointColor.Parent" xml:space="preserve">
-    <value>frmPlotPoint</value>
-  </data>
-  <data name="&gt;&gt;picPlotPointColor.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTextColor.Name" xml:space="preserve">
-    <value>lblPlotTextColor</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTextColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTextColor.Parent" xml:space="preserve">
-    <value>frmPlotPoint</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTextColor.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;cboPlotPointSymbol.Name" xml:space="preserve">
-    <value>cboPlotPointSymbol</value>
-  </data>
-  <data name="&gt;&gt;cboPlotPointSymbol.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboPlotPointSymbol.Parent" xml:space="preserve">
-    <value>frmPlotPoint</value>
-  </data>
-  <data name="&gt;&gt;cboPlotPointSymbol.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;picPlotTextColor.Name" xml:space="preserve">
-    <value>picPlotTextColor</value>
-  </data>
-  <data name="&gt;&gt;picPlotTextColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;picPlotTextColor.Parent" xml:space="preserve">
-    <value>frmPlotPoint</value>
-  </data>
-  <data name="&gt;&gt;picPlotTextColor.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSelectedPointSize.Name" xml:space="preserve">
-    <value>txtPlotSelectedPointSize</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSelectedPointSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSelectedPointSize.Parent" xml:space="preserve">
-    <value>frmPlotPoint</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSelectedPointSize.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;txtPlotTextScaleFactor.Name" xml:space="preserve">
-    <value>txtPlotTextScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;txtPlotTextScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtPlotTextScaleFactor.Parent" xml:space="preserve">
-    <value>frmPlotPoint</value>
-  </data>
-  <data name="&gt;&gt;txtPlotTextScaleFactor.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;txtPlotPointSize.Name" xml:space="preserve">
-    <value>txtPlotPointSize</value>
-  </data>
-  <data name="&gt;&gt;txtPlotPointSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtPlotPointSize.Parent" xml:space="preserve">
-    <value>frmPlotPoint</value>
-  </data>
-  <data name="&gt;&gt;txtPlotPointSize.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTextScaleFactor.Name" xml:space="preserve">
-    <value>lblPlotTextScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTextScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTextScaleFactor.Parent" xml:space="preserve">
-    <value>frmPlotPoint</value>
-  </data>
-  <data name="&gt;&gt;lblPlotTextScaleFactor.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSelectedPointSize.Name" xml:space="preserve">
-    <value>lblPlotSelectedPointSize</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSelectedPointSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSelectedPointSize.Parent" xml:space="preserve">
-    <value>frmPlotPoint</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSelectedPointSize.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPointSize.Name" xml:space="preserve">
-    <value>lblPlotPointSize</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPointSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPointSize.Parent" xml:space="preserve">
-    <value>frmPlotPoint</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPointSize.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPointSymbol.Name" xml:space="preserve">
-    <value>lblPlotPointSymbol</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPointSymbol.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPointSymbol.Parent" xml:space="preserve">
-    <value>frmPlotPoint</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPointSymbol.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="frmPlotPoint.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 8</value>
-  </data>
-  <data name="frmPlotPoint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>390, 136</value>
-  </data>
-  <data name="frmPlotPoint.TabIndex" type="System.Int32, mscorlib">
-    <value>132</value>
-  </data>
-  <data name="frmPlotPoint.Text" xml:space="preserve">
-    <value>Shots:</value>
-  </data>
-  <data name="&gt;&gt;frmPlotPoint.Name" xml:space="preserve">
-    <value>frmPlotPoint</value>
-  </data>
-  <data name="&gt;&gt;frmPlotPoint.Type" xml:space="preserve">
+  <data name="&gt;&gt;frmPlotTranslationLine.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;frmPlotPoint.Parent" xml:space="preserve">
+  <data name="&gt;&gt;frmPlotTranslationLine.Parent" xml:space="preserve">
     <value>tabInfoPlot</value>
   </data>
-  <data name="&gt;&gt;frmPlotPoint.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;frmPlotTranslationLine.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="txtPlotTextFont.Location" type="System.Drawing.Point, System.Drawing">
     <value>268, 49</value>
@@ -3184,13 +2492,13 @@ For scale under the minimum defined factor will be used the default design and c
     <value>204, 54</value>
   </data>
   <data name="lblPlotTextFont.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 13</value>
+    <value>33, 13</value>
   </data>
   <data name="lblPlotTextFont.TabIndex" type="System.Int32, mscorlib">
     <value>128</value>
   </data>
   <data name="lblPlotTextFont.Text" xml:space="preserve">
-    <value>Character:</value>
+    <value>Font:</value>
   </data>
   <data name="&gt;&gt;lblPlotTextFont.Name" xml:space="preserve">
     <value>lblPlotTextFont</value>
@@ -3573,176 +2881,29 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;lblPlotPointSymbol.ZOrder" xml:space="preserve">
     <value>16</value>
   </data>
-  <data name="&gt;&gt;chkPlotCenterlineVectors.Name" xml:space="preserve">
-    <value>chkPlotCenterlineVectors</value>
+  <data name="frmPlotPoint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 8</value>
   </data>
-  <data name="&gt;&gt;chkPlotCenterlineVectors.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="frmPlotPoint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>390, 136</value>
   </data>
-  <data name="&gt;&gt;chkPlotCenterlineVectors.Parent" xml:space="preserve">
-    <value>frmPlotPen</value>
+  <data name="frmPlotPoint.TabIndex" type="System.Int32, mscorlib">
+    <value>132</value>
   </data>
-  <data name="&gt;&gt;chkPlotCenterlineVectors.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="frmPlotPoint.Text" xml:space="preserve">
+    <value>Shots:</value>
   </data>
-  <data name="&gt;&gt;cmdPlotPenColor.Name" xml:space="preserve">
-    <value>cmdPlotPenColor</value>
+  <data name="&gt;&gt;frmPlotPoint.Name" xml:space="preserve">
+    <value>frmPlotPoint</value>
   </data>
-  <data name="&gt;&gt;cmdPlotPenColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdPlotPenColor.Parent" xml:space="preserve">
-    <value>frmPlotPen</value>
-  </data>
-  <data name="&gt;&gt;cmdPlotPenColor.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenColor.Name" xml:space="preserve">
-    <value>lblPlotPenColor</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenColor.Parent" xml:space="preserve">
-    <value>frmPlotPen</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenColor.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;picPlotPenColor.Name" xml:space="preserve">
-    <value>picPlotPenColor</value>
-  </data>
-  <data name="&gt;&gt;picPlotPenColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;picPlotPenColor.Parent" xml:space="preserve">
-    <value>frmPlotPen</value>
-  </data>
-  <data name="&gt;&gt;picPlotPenColor.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;txtPlotPenWidth.Name" xml:space="preserve">
-    <value>txtPlotPenWidth</value>
-  </data>
-  <data name="&gt;&gt;txtPlotPenWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtPlotPenWidth.Parent" xml:space="preserve">
-    <value>frmPlotPen</value>
-  </data>
-  <data name="&gt;&gt;txtPlotPenWidth.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenWidth.Name" xml:space="preserve">
-    <value>lblPlotPenWidth</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenWidth.Parent" xml:space="preserve">
-    <value>frmPlotPen</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenWidth.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSelectedPenWidth.Name" xml:space="preserve">
-    <value>lblPlotSelectedPenWidth</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSelectedPenWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSelectedPenWidth.Parent" xml:space="preserve">
-    <value>frmPlotPen</value>
-  </data>
-  <data name="&gt;&gt;lblPlotSelectedPenWidth.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;cboPlotPenStyle.Name" xml:space="preserve">
-    <value>cboPlotPenStyle</value>
-  </data>
-  <data name="&gt;&gt;cboPlotPenStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboPlotPenStyle.Parent" xml:space="preserve">
-    <value>frmPlotPen</value>
-  </data>
-  <data name="&gt;&gt;cboPlotPenStyle.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSelectedPenWidth.Name" xml:space="preserve">
-    <value>txtPlotSelectedPenWidth</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSelectedPenWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSelectedPenWidth.Parent" xml:space="preserve">
-    <value>frmPlotPen</value>
-  </data>
-  <data name="&gt;&gt;txtPlotSelectedPenWidth.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenStyle.Name" xml:space="preserve">
-    <value>lblPlotPenStyle</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenStyle.Parent" xml:space="preserve">
-    <value>frmPlotPen</value>
-  </data>
-  <data name="&gt;&gt;lblPlotPenStyle.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="frmPlotPen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 150</value>
-  </data>
-  <data name="frmPlotPen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 163</value>
-  </data>
-  <data name="frmPlotPen.TabIndex" type="System.Int32, mscorlib">
-    <value>133</value>
-  </data>
-  <data name="frmPlotPen.Text" xml:space="preserve">
-    <value>Segments:</value>
-  </data>
-  <data name="&gt;&gt;frmPlotPen.Name" xml:space="preserve">
-    <value>frmPlotPen</value>
-  </data>
-  <data name="&gt;&gt;frmPlotPen.Type" xml:space="preserve">
+  <data name="&gt;&gt;frmPlotPoint.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;frmPlotPen.Parent" xml:space="preserve">
+  <data name="&gt;&gt;frmPlotPoint.Parent" xml:space="preserve">
     <value>tabInfoPlot</value>
   </data>
-  <data name="&gt;&gt;frmPlotPen.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="chkPlotCenterlineVectors.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="chkPlotCenterlineVectors.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 132</value>
-  </data>
-  <data name="chkPlotCenterlineVectors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 17</value>
-  </data>
-  <data name="chkPlotCenterlineVectors.TabIndex" type="System.Int32, mscorlib">
-    <value>128</value>
-  </data>
-  <data name="chkPlotCenterlineVectors.Text" xml:space="preserve">
-    <value>Shows vectors</value>
-  </data>
-  <data name="&gt;&gt;chkPlotCenterlineVectors.Name" xml:space="preserve">
-    <value>chkPlotCenterlineVectors</value>
-  </data>
-  <data name="&gt;&gt;chkPlotCenterlineVectors.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkPlotCenterlineVectors.Parent" xml:space="preserve">
-    <value>frmPlotPen</value>
-  </data>
-  <data name="&gt;&gt;chkPlotCenterlineVectors.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;frmPlotPoint.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="cmdPlotPenColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3769,7 +2930,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>frmPlotPen</value>
   </data>
   <data name="&gt;&gt;cmdPlotPenColor.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="lblPlotPenColor.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -3799,7 +2960,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>frmPlotPen</value>
   </data>
   <data name="&gt;&gt;lblPlotPenColor.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="picPlotPenColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3823,7 +2984,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>frmPlotPen</value>
   </data>
   <data name="&gt;&gt;picPlotPenColor.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="txtPlotPenWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>126, 20</value>
@@ -3844,7 +3005,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>frmPlotPen</value>
   </data>
   <data name="&gt;&gt;txtPlotPenWidth.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="lblPlotPenWidth.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3874,7 +3035,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>frmPlotPen</value>
   </data>
   <data name="&gt;&gt;lblPlotPenWidth.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="lblPlotSelectedPenWidth.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3904,7 +3065,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>frmPlotPen</value>
   </data>
   <data name="&gt;&gt;lblPlotSelectedPenWidth.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="cboPlotPenStyle.Items" xml:space="preserve">
     <value>Continuous</value>
@@ -3940,7 +3101,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>frmPlotPen</value>
   </data>
   <data name="&gt;&gt;cboPlotPenStyle.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="txtPlotSelectedPenWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>126, 49</value>
@@ -3961,7 +3122,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>frmPlotPen</value>
   </data>
   <data name="&gt;&gt;txtPlotSelectedPenWidth.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="lblPlotPenStyle.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3973,13 +3134,13 @@ For scale under the minimum defined factor will be used the default design and c
     <value>6, 79</value>
   </data>
   <data name="lblPlotPenStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 13</value>
+    <value>35, 13</value>
   </data>
   <data name="lblPlotPenStyle.TabIndex" type="System.Int32, mscorlib">
     <value>122</value>
   </data>
   <data name="lblPlotPenStyle.Text" xml:space="preserve">
-    <value>Section:</value>
+    <value>Style:</value>
   </data>
   <data name="lblPlotPenStyle.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -3994,34 +3155,85 @@ For scale under the minimum defined factor will be used the default design and c
     <value>frmPlotPen</value>
   </data>
   <data name="&gt;&gt;lblPlotPenStyle.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
+  </data>
+  <data name="frmPlotPen.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 150</value>
+  </data>
+  <data name="frmPlotPen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 163</value>
+  </data>
+  <data name="frmPlotPen.TabIndex" type="System.Int32, mscorlib">
+    <value>133</value>
+  </data>
+  <data name="frmPlotPen.Text" xml:space="preserve">
+    <value>Segments:</value>
+  </data>
+  <data name="&gt;&gt;frmPlotPen.Name" xml:space="preserve">
+    <value>frmPlotPen</value>
+  </data>
+  <data name="&gt;&gt;frmPlotPen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;frmPlotPen.Parent" xml:space="preserve">
+    <value>tabInfoPlot</value>
+  </data>
+  <data name="&gt;&gt;frmPlotPen.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="tabInfoPlot.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabInfoPlot.Size" type="System.Drawing.Size, System.Drawing">
+    <value>638, 364</value>
+  </data>
+  <data name="tabInfoPlot.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="tabInfoPlot.Text" xml:space="preserve">
+    <value>Centerline</value>
+  </data>
+  <data name="&gt;&gt;tabInfoPlot.Name" xml:space="preserve">
+    <value>tabInfoPlot</value>
+  </data>
+  <data name="&gt;&gt;tabInfoPlot.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabInfoPlot.Parent" xml:space="preserve">
+    <value>tabInfo</value>
+  </data>
+  <data name="&gt;&gt;tabInfoPlot.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tabInfo.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tabInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 104</value>
+  </data>
+  <data name="tabInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>646, 390</value>
+  </data>
+  <data name="tabInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;tabInfo.Name" xml:space="preserve">
+    <value>tabInfo</value>
+  </data>
+  <data name="&gt;&gt;tabInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabInfo.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabInfo.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="tbMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <data name="tbMain.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="tbMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tbMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>667, 25</value>
-  </data>
-  <data name="tbMain.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;tbMain.Name" xml:space="preserve">
-    <value>tbMain</value>
-  </data>
-  <data name="&gt;&gt;tbMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbMain.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tbMain.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="lblAddScale.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 22</value>
@@ -4041,6 +3253,21 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="txtAddScale.TextBoxTextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
+  <data name="btnAdd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIJSURBVDhPrVI9TFNhFD1AdGDwbzB1YSBxMybi4s6Pog4U
+        YwJBJhOju6mYOGhMLNCG9A9eS0kMaCJpJS6iQwkIQqQ1am2AwUTCoAMTg4Nux3va91LUdvMkN+/mfvec
+        79z7Pfx3XArjbOcwch1BsN1C364RsDuEnM7cttroGsV4/8Qhvtq8zZ0fj/llL8bC97uc3xrko/nT7I02
+        8XIIGbf9T1wYReb61An+5ALz3wbpvAUjS2D0DZhcBWcKrXRWzvBqvInmZNylVSBrfYlm7v6a47Oijwkj
+        RFZAD1ETS70D0+sHGHztY08EEqmOY3MuPs33c2G7mwlrVIwZyYPyiXVw8r0JLx/kzWnbyQiWXLrNPgyu
+        7QSYLFjDmpHNQXC5KqBctbgJp0wkkC07oEsHbOtc/HqDM8UjLqU+nA/g0Bx4MbRPQM/0ouTnk41jblt9
+        OJ9qCNgLcGr1HJOfwZjdMGY2g2bXg3LV4h9tD8UaI3Q8QH4oe5xO/ignN0CnZAQT8qBctfQmGLZ93Jpu
+        4HnjuHSgrQ9+vz3Nw5eHmSo1Mr1lt5kbD8pVk8NAtqH8jG0D8Lv0Mprb7yHTGwXvPG9kWO9uhNltXzmU
+        qybylZj94tYrToVaRUvnfeSkLouBjInZrArlqunMJbdUKP+i9VQPrmk+LUmbVihXTWfWU5fsQdZOWuhX
+        3R+q/WUb+A1roKW0TmWu+AAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="btnAdd.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -4049,6 +3276,21 @@ For scale under the minimum defined factor will be used the default design and c
   </data>
   <data name="btnAdd.Text" xml:space="preserve">
     <value>Add</value>
+  </data>
+  <data name="btnAddAsCopy.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIJSURBVDhPrVI9TFNhFD1AdGDwbzB1YSBxMybi4s6Pog4U
+        YwJBJhOju6mYOGhMLNCG9A9eS0kMaCJpJS6iQwkIQqQ1am2AwUTCoAMTg4Nux3va91LUdvMkN+/mfvec
+        79z7Pfx3XArjbOcwch1BsN1C364RsDuEnM7cttroGsV4/8Qhvtq8zZ0fj/llL8bC97uc3xrko/nT7I02
+        8XIIGbf9T1wYReb61An+5ALz3wbpvAUjS2D0DZhcBWcKrXRWzvBqvInmZNylVSBrfYlm7v6a47Oijwkj
+        RFZAD1ETS70D0+sHGHztY08EEqmOY3MuPs33c2G7mwlrVIwZyYPyiXVw8r0JLx/kzWnbyQiWXLrNPgyu
+        7QSYLFjDmpHNQXC5KqBctbgJp0wkkC07oEsHbOtc/HqDM8UjLqU+nA/g0Bx4MbRPQM/0ouTnk41jblt9
+        OJ9qCNgLcGr1HJOfwZjdMGY2g2bXg3LV4h9tD8UaI3Q8QH4oe5xO/ignN0CnZAQT8qBctfQmGLZ93Jpu
+        4HnjuHSgrQ9+vz3Nw5eHmSo1Mr1lt5kbD8pVk8NAtqH8jG0D8Lv0Mprb7yHTGwXvPG9kWO9uhNltXzmU
+        qybylZj94tYrToVaRUvnfeSkLouBjInZrArlqunMJbdUKP+i9VQPrmk+LUmbVihXTWfWU5fsQdZOWuhX
+        3R+q/WUb+A1roKW0TmWu+AAAAABJRU5ErkJggg==
+</value>
   </data>
   <data name="btnAddAsCopy.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -4059,7 +3301,7 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="btnAddAsCopy.Text" xml:space="preserve">
     <value>Add as copy</value>
   </data>
-  <data name="ToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="sep1.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
   <data name="btnRemove.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -4100,23 +3342,39 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="btnRemoveAll.Text" xml:space="preserve">
     <value>Remove all</value>
   </data>
-  <data name="ToolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="sep2.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
-  <data name="btnExport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnClear.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnClear.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJUSURBVDhPlZJRT1JhGMf5AN20tj5AH6Abmxd9gdJustri
+        eA50ULMIjpA5a04tUpuaE4QS9HBCQolp66J1IbRRphRkmspFFpmmXYQoIikktf07LxxWU1f22569e/7P
+        +3/2395Xth2FkgWjOJcrlj0qyXtDoWBLdfpqGAxNMBqNkMvpVmm0NyiKeXajqQUaLZd29Dkgp6iwNNob
+        NKOEscuCI4WFZV7vMM5SNKTRvyHxuSo9GhoNxLTP1e/CJa0WJQxzkMzdeutgv+4uBsST9Dsg8RuuG1Cl
+        0wdIb+vpCdfVN+DY6ZOUR2cD1jaBlSQQ38B97s7OZPn4RUUntKRvaWuZ6bCY4OFEczKNVacfsT4/Vh3+
+        7BKn1vJ7Ca1UURfVGjTfaiXifqKptZzPo+4G1rew7g4g/kAs9xjirlH8+BoXl3zD0BX+Obkrk9OMv6b2
+        Gjo6zWi73Ymbza3gBR7J7ynMPw5gYzCE5FAI64NBZJYTiPZ6xcVpOPIpyOepq28Un41GyakzEAQBW5kM
+        xoJBjLwOYsk7gfSjSWRiCSwLT5F6GIKg6SLmAhnLsqWq8vOorqnNCjab7Q1EpqbDeDs1g0nxHA/P4Gc0
+        gZjdJy4ah1PfnTMTaFo5WnlBDZYtf0l6q9W6vPB5EZGPc/gQieDd7HusJBKYHn6BzScTcF3+w0xQlVWg
+        vKISx4uLr0rSYZPJhGh0BYtLX7AmmkcCAcwufMIAt80sQQRSB7JdjgKz2YxUKo3AqxAic/Ow3evd1fw3
+        Ctrb2308z8Mu2P/bnOeQWPmEuyCT/QJdDH4FYVZ7GQAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="btnClear.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnClear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnClear.Text" xml:space="preserve">
+    <value>Reset values</value>
+  </data>
+  <data name="sep3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
   </data>
   <data name="btnExport.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -4151,6 +3409,27 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="btnImport.Text" xml:space="preserve">
     <value>Import...</value>
   </data>
+  <data name="tbMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tbMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>667, 25</value>
+  </data>
+  <data name="tbMain.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;tbMain.Name" xml:space="preserve">
+    <value>tbMain</value>
+  </data>
+  <data name="&gt;&gt;tbMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbMain.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tbMain.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -4160,10 +3439,7 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>667, 534</value>
   </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="frmScaleRules.IconOptions.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAKZYAACoXwgAqmELAL1nGAC7aR8As2UnALRmJwC3aycAuGslALpu
@@ -4228,9 +3504,6 @@ For scale under the minimum defined factor will be used the default design and c
         AACAAQAAwAMAAAAAAAAAAAAAgAEAAMADAADgBwAA8A8AAP//AAA=
 </value>
   </data>
-  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
@@ -4285,10 +3558,10 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;btnAddAsCopy.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStripSeparator1.Name" xml:space="preserve">
-    <value>ToolStripSeparator1</value>
+  <data name="&gt;&gt;sep1.Name" xml:space="preserve">
+    <value>sep1</value>
   </data>
-  <data name="&gt;&gt;ToolStripSeparator1.Type" xml:space="preserve">
+  <data name="&gt;&gt;sep1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnRemove.Name" xml:space="preserve">
@@ -4303,10 +3576,22 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;btnRemoveAll.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStripSeparator2.Name" xml:space="preserve">
-    <value>ToolStripSeparator2</value>
+  <data name="&gt;&gt;sep2.Name" xml:space="preserve">
+    <value>sep2</value>
   </data>
-  <data name="&gt;&gt;ToolStripSeparator2.Type" xml:space="preserve">
+  <data name="&gt;&gt;sep2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnClear.Name" xml:space="preserve">
+    <value>btnClear</value>
+  </data>
+  <data name="&gt;&gt;btnClear.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;sep3.Name" xml:space="preserve">
+    <value>sep3</value>
+  </data>
+  <data name="&gt;&gt;sep3.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnExport.Name" xml:space="preserve">
@@ -4325,6 +3610,6 @@ For scale under the minimum defined factor will be used the default design and c
     <value>frmScaleRules</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cForm, cSurveyPC, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

@@ -3,7 +3,7 @@ Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Design.Items
 
-Public Class frmImageViewer
+friend Class frmImageViewer
     Private oSurvey As cSurveyPC.cSurvey.cSurvey
 
     Private oList As List(Of Bitmap)
@@ -14,8 +14,8 @@ Public Class frmImageViewer
         InitializeComponent()
 
         ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
-        'oList = New List(Of Bitmap)
         picImage.Location = New Point(0, 0)
+        Call pEnabled(False)
     End Sub
 
     Protected Overrides Function GetPersistString() As String
@@ -27,14 +27,20 @@ Public Class frmImageViewer
         picImage.Image = ImageExifRotate(Item.Image.Clone)
         picImage.SizeMode = PictureBoxSizeMode.Zoom
         picImage.Size = pnlContainer.Size
-        tbMain.Enabled = True
+        Call pEnabled(True)
+    End Sub
+
+    Private Sub pEnabled(Enabled As Boolean)
+        For Each oLInk As DevExpress.XtraBars.BarItemLink In barMain.ItemLinks
+            oLInk.Item.Enabled = Enabled
+        Next
     End Sub
 
     Public Sub SetSurvey(Survey As cSurveyPC.cSurvey.cSurvey)
         oSurvey = Survey
         'Call oList.Clear()
         Call pImageDispose()
-        tbMain.Enabled = False
+        Call pEnabled(False)
     End Sub
 
     Public Sub Open(Item As cAttachmentsLink)
@@ -43,7 +49,7 @@ Public Class frmImageViewer
             picImage.Image = ImageExifRotate(New Bitmap(New IO.MemoryStream(Item.Attachment.Data)))
             picImage.SizeMode = PictureBoxSizeMode.Zoom
             picImage.Size = pnlContainer.Size
-            tbMain.Enabled = True
+            Call pEnabled(True)
         End If
     End Sub
 
@@ -56,10 +62,6 @@ Public Class frmImageViewer
 
     Private Sub frmImageViewer_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Call pImageDispose
-        'For Each oImage In oList
-        '    Call oImage.Dispose()
-        'Next
-        'Call oList.Clear()
     End Sub
 
     Private Sub picImage_MouseWheel(sender As Object, e As MouseEventArgs) Handles picImage.MouseWheel
@@ -69,29 +71,8 @@ Public Class frmImageViewer
         End If
     End Sub
 
-    Private Sub cmdExport_Click(sender As Object, e As EventArgs) Handles cmdExport.Click
-        Using oSFD As SaveFileDialog = New SaveFileDialog
-            With oSFD
-                .Filter = GetLocalizedString("main.filetypeIMAGES") & " (*.JPG;*.PNG;*.TIF;*.BMP;*.GIF)|*.JPG;*.PNG;*.TIF;*.BMP;*.GIF"
-                .FilterIndex = 1
-                If .ShowDialog(Me) = DialogResult.OK Then
-                    Dim iImageFormat As Imaging.ImageFormat = Imaging.ImageFormat.Jpeg
-                    Select Case IO.Path.GetExtension(oSFD.FileName)
-                        Case ".gif"
-                            iImageFormat = Imaging.ImageFormat.Gif
-                        Case ".bmp"
-                            iImageFormat = Imaging.ImageFormat.Bmp
-                        Case ".tif"
-                            iImageFormat = Imaging.ImageFormat.Tiff
-                        Case ".png"
-                            iImageFormat = Imaging.ImageFormat.Png
-                        Case ".jpg", ".jpeg"
-                            iImageFormat = Imaging.ImageFormat.Jpeg
-                    End Select
-                    Call picImage.Image.Save(oSFD.FileName, iImageFormat)
-                End If
-            End With
-        End Using
+    Private Sub cmdExport_Click(sender As Object, e As EventArgs)
+        Call modPaint.ShowImageExportDialog(Me, picImage.Image)
     End Sub
 
     Private oPanPosition As Point
@@ -123,14 +104,14 @@ Public Class frmImageViewer
         picImage.Cursor = Cursors.Default
     End Sub
 
-    Private Sub cmdRotateRight_Click(sender As Object, e As EventArgs) Handles cmdRotateRight.Click
+    Private Sub cmdRotateRight_Click(sender As Object, e As EventArgs)
         Call picImage.Image.RotateFlip(RotateFlipType.Rotate90FlipNone)
         Call pImageRefresh()
     End Sub
 
-    Private Sub cmdRotateLeft_Click(sender As Object, e As EventArgs) Handles cmdRotateLeft.Click
+    Private Sub cmdRotateLeft_Click(sender As Object, e As EventArgs)
         Call picImage.Image.RotateFlip(RotateFlipType.Rotate270FlipNone)
-        Call pImageRefresh
+        Call pImageRefresh()
     End Sub
 
     Private Sub pImageRefresh()
@@ -139,21 +120,53 @@ Public Class frmImageViewer
         Call picImage.Refresh()
     End Sub
 
-    Private Sub cmdFlipH_Click(sender As Object, e As EventArgs) Handles cmdFlipH.Click
+    Private Sub cmdFlipH_Click(sender As Object, e As EventArgs)
         Call picImage.Image.RotateFlip(RotateFlipType.RotateNoneFlipX)
         Call pImageRefresh()
     End Sub
 
-    Private Sub cmdShapeV_Click(sender As Object, e As EventArgs) Handles cmdShapeV.Click
+    Private Sub cmdShapeV_Click(sender As Object, e As EventArgs)
         Call picImage.Image.RotateFlip(RotateFlipType.RotateNoneFlipY)
         Call pImageRefresh()
     End Sub
 
-    Private Sub cmdSizeToFit_Click(sender As Object, e As EventArgs) Handles cmdSizeToFit.Click
+    Private Sub cmdSizeToFit_Click(sender As Object, e As EventArgs)
         picImage.Size = pnlContainer.Size
     End Sub
 
-    Private Sub cmdZoomOriginalSize_Click(sender As Object, e As EventArgs) Handles cmdZoomOriginalSize.Click
+    Private Sub cmdZoomOriginalSize_Click(sender As Object, e As EventArgs)
         picImage.Size = picImage.Image.Size
+    End Sub
+
+    Private Sub btnExport_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnExport.ItemClick
+        Call modPaint.ShowImageExportDialog(Me, picImage.Image)
+    End Sub
+
+    Private Sub btnZoomOriginalSize_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnZoomOriginalSize.ItemClick
+        picImage.Size = picImage.Image.Size
+    End Sub
+
+    Private Sub btnSizeToFit_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnSizeToFit.ItemClick
+        picImage.Size = pnlContainer.Size
+    End Sub
+
+    Private Sub btnRotateLeft_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnRotateLeft.ItemClick
+        Call picImage.Image.RotateFlip(RotateFlipType.Rotate270FlipNone)
+        Call pImageRefresh()
+    End Sub
+
+    Private Sub btnRotateRight_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnRotateRight.ItemClick
+        Call picImage.Image.RotateFlip(RotateFlipType.Rotate90FlipNone)
+        Call pImageRefresh()
+    End Sub
+
+    Private Sub btnFlipH_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnFlipH.ItemClick
+        Call picImage.Image.RotateFlip(RotateFlipType.RotateNoneFlipX)
+        Call pImageRefresh()
+    End Sub
+
+    Private Sub btnFlipV_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnFlipV.ItemClick
+        Call picImage.Image.RotateFlip(RotateFlipType.RotateNoneFlipY)
+        Call pImageRefresh()
     End Sub
 End Class

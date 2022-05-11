@@ -9,5 +9,6 @@
         Property ImageResizeMode() As ImageResizeModeEnum
         Sub ImageRescale(ByVal Scale As Single)
 
+        Property RotateBy As Single
     End Interface
 End Namespace

@@ -160,6 +160,14 @@ Public Class cImportTopoDroidHelper
                         If Not Location.IsEmpty Then oItem.MoveBy(Location)
                         Call pConvertItem(Survey, XMLItem, oItem)
                         Return oItem
+                    Case "overhang"
+                        Dim oItem As cItemFreeHandLine = Layers.WaterAndFloorMorphologiesLayer.CreateOverhangCurve(sCave, sBranch)
+                        Call oItem.SetBindDesignType(BindDesignType, CrossSection)
+                        oItem.LineType = cIItemLine.LineTypeEnum.Lines
+                        Call oItem.Points.Parse(XMLItem.Item("points"))
+                        If Not Location.IsEmpty Then oItem.MoveBy(Location)
+                        Call pConvertItem(Survey, XMLItem, oItem)
+                        Return oItem
                     Case "wall"
                         Dim iOutline As Integer = modXML.GetAttributeValue(XMLItem, "outline", 1)
                         If iOutline = 1 OrElse iOutline = -1 Then
@@ -195,7 +203,7 @@ Public Class cImportTopoDroidHelper
                         Call oItem.Points.Parse(XMLItem.Item("points"))
                         If Not Location.IsEmpty Then oItem.MoveBy(Location)
                         Call pConvertItem(Survey, XMLItem, oItem)
-                        Call oItem.Points.Revert()
+                        'Call oItem.Points.Revert()
                         Return oItem
                     Case "chimney"
                         Dim oItem As cItemFreeHandLine = Layers.CeilingMorphologiesLayer.CreateCeilingCliffCurve(sCave, sBranch)
@@ -320,7 +328,7 @@ Public Class cImportTopoDroidHelper
                         oItem.Name = modXML.GetAttributeValue(XMLItem, "sectionname", "")
                         oItem.Text = modXML.GetAttributeValue(XMLItem, "sectiontext", "")
 
-                        Call ConvertCrossSection(Survey, Layers, oItem.DesignCrossSection, XMLItem.Item("crosssection"), New SizeF(0,0)) ' New SizeF(oItem.Points(0).Point.X, oItem.Points(0).Point.Y))
+                        Call ConvertCrossSection(Survey, Layers, oItem.DesignCrossSection, XMLItem.Item("crosssection"), New SizeF(0, 0)) ' New SizeF(oItem.Points(0).Point.X, oItem.Points(0).Point.Y))
 
                         Return oItem
                     Case Else
@@ -330,6 +338,7 @@ Public Class cImportTopoDroidHelper
                             Call oItem.SetBindDesignType(BindDesignType, CrossSection)
                             Call oItem.Points.Parse(XMLItem.Item("points"))
                             If Not Location.IsEmpty Then oItem.MoveBy(Location)
+                            oItem.Sign = iItemType
                             Call pConvertSign(Survey, XMLItem, oItem)
                             Return oItem
                         Else

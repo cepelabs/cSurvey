@@ -1,6 +1,6 @@
 ﻿Imports cSurveyPC.cSurvey
 
-Public Class frmImportcSurvey
+Friend Class frmImportcSurvey
 
     Private Sub pSettingsLoad()
         Try

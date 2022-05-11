@@ -53,7 +53,7 @@ Namespace cSurvey.Master
             sSlaveID = ""
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal File As Storage.cFile, ByVal MasterSlave As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal MasterSlave As XmlElement)
             oSurvey = Survey
             sMasterID = modXML.GetAttributeValue(MasterSlave, "masterid", "")
             sSlaveID = modXML.GetAttributeValue(MasterSlave, "slaveid", "")
@@ -70,7 +70,7 @@ Namespace cSurvey.Master
             End Get
         End Property
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlMasterSlave As XmlElement = Document.CreateElement("masterslave")
             If sMasterID <> "" Then Call oXmlMasterSlave.SetAttribute("masterid", sMasterID)
             If sSlaveID <> "" Then
@@ -122,7 +122,7 @@ Namespace cSurvey.Master
             sAssignedBy = CaveAndBranch.GetAttribute("assignedby")
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLCaveAndBranch As XmlElement = Document.CreateElement("caveandbranch")
             Call oXMLCaveAndBranch.SetAttribute("cave", sCave)
             Call oXMLCaveAndBranch.SetAttribute("branch", sBranch)
@@ -154,7 +154,7 @@ Namespace cSurvey.Master
             Next
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLCaveAndBranches As XmlElement = Document.CreateElement("cavesandbranches")
             For Each oItem As cCaveAndBrancheLockInfo In oItems.Values
                 Call oItem.SaveTo(File, Document, oXMLCaveAndBranches)
@@ -222,7 +222,7 @@ Namespace cSurvey.Master
             oCavesAndBranches = New cCaveAndBrancheLockInfos(User.Item("cavesandbranches"))
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLUser As XmlElement = Document.CreateElement("user")
             Call oXMLUser.SetAttribute("userid", sUserID)
             Call oXMLUser.SetAttribute("name", sName)
@@ -310,7 +310,7 @@ Namespace cSurvey.Master
             Return oItem
         End Function
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLUsers As XmlElement = Document.CreateElement("users")
             For Each oItem As cUser In oItems.Values
                 Call oItem.SaveTo(File, Document, oXMLUsers)

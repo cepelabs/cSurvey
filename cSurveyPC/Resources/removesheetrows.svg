@@ -1,0 +1,14 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg x="0px" y="0px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" id="Remove_Sheet_Rows" style="enable-background:new 0 0 32 32">
+  <style type="text/css">
+	.Black{fill:#727272;}
+	.Red{fill:#D11C1C;}
+	.Blue{fill:#1177D7;}
+	.st0{opacity:0.5;}
+</style>
+  <g class="st0">
+    <path d="M20,4h8v6h-8V4z M10,4v6h8V4H10z M8,10V4H0v6H8z M10,20v6h8v-6H10z M8,26v-6H0v6H8z" class="Black" />
+  </g>
+  <rect x="0" y="12" width="28" height="6" rx="0" ry="0" class="Blue" />
+  <polygon points="32,22 30,20 26,24 22,20 20,22 24,26 20,30 22,32 26,28 30,32 32,30 28,26 " class="Red" />
+</svg>

@@ -23,7 +23,7 @@ Namespace cSurvey.Design.Items
                 sDistance = modNumbers.StringToSingle(modXML.GetAttributeValue(Station, "d", 0))
             End Sub
 
-            Friend Overrides Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+            Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
                 Dim oXmlStation As XmlElement = MyBase.SaveTo(File, Document, Parent)
                 Call oXmlStation.SetAttribute("d", modNumbers.NumberToString(sDistance))
                 Call Parent.AppendChild(oXmlStation)
@@ -105,7 +105,7 @@ Namespace cSurvey.Design.Items
                 oTrigPoint = oSurvey.TrigPoints(Station.GetAttribute("trigpoint"))
             End Sub
 
-            Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+            Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
                 Dim oXmlStation As XmlElement = Document.CreateElement("station")
                 Call oXmlStation.SetAttribute("x", Point.X)
                 Call oXmlStation.SetAttribute("y", Point.Y)
@@ -204,7 +204,7 @@ Namespace cSurvey.Design.Items
                 Next
             End Sub
 
-            Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+            Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
                 Dim oXmlStations As XmlElement = Document.CreateElement("stations")
                 For Each oStation As cStation In GetValidStations()
                     Call oStation.SaveTo(File, Document, oXmlStations)
@@ -462,21 +462,18 @@ Namespace cSurvey.Design.Items
         End Property
 
         Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
-            Dim oSVGGroup As XmlElement = modSVG.CreateGroup(SVG, MyBase.Layer.Type.ToString)
-
-            'Dim oTranslation As SizeF
-            'If PaintOptions.DrawTranslation Then
-            '    oTranslation = MyBase.Design.GetItemTranslation(Me)
-            'End If
-
-            Return oSVGGroup
+            If Options And SVGOptionsEnum.Images Then
+                Dim oBounds As RectangleF = GetBounds()
+                Dim oSVGItem As XmlElement = modSVG.CreateImage(SVG, PaintOptions, oBounds, oDesignImage, 0, True)
+                Return oSVGItem
+            End If
         End Function
 
-        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
-            Dim oSVG As XmlDocument = modSVG.CreateSVG
-            Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
-            Return oSVG
-        End Function
+        'Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
+        '    Dim oSVG As XmlDocument = modSVG.CreateSVG
+        '    Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
+        '    Return oSVG
+        'End Function
 
         Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             With MyBase.Caches(PaintOptions)
@@ -495,34 +492,16 @@ Namespace cSurvey.Design.Items
             If MyBase.Points.Count >= 1 Then
                 Call Render(Graphics, PaintOptions, Options, Selected)
                 Try
-                    If Not PaintOptions.IsDesign Or (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then
+                    If Not PaintOptions.IsDesign OrElse (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then
                         Dim oBounds As RectangleF = GetBounds()
-                        'Dim oState As GraphicsState
-                        'Dim oMatrix As Matrix
-                        'If oSurvey.Calculate.GeoMagDeclinationData.MeridianConvergence <> 0 Then
-                        '    oState = Graphics.Save
-                        '    oMatrix = Graphics.Transform.Clone
-                        '    oMatrix.Rotate(oSurvey.Calculate.GeoMagDeclinationData.MeridianConvergence / 2, MatrixOrder.Prepend) '-oSurvey.Calculate.GeoMagDeclinationData.MeridianConvergence, modPaint.GetCenterPoint(oBounds))
-                        '    Graphics.Transform = oMatrix
-                        'End If
                         If oTransparentColor = Color.Transparent Then
                             Call Graphics.DrawImage(oDesignImage, oBounds)
                         Else
                             Using oImageAttributes As System.Drawing.Imaging.ImageAttributes = New System.Drawing.Imaging.ImageAttributes
-                                Call oImageAttributes.SetColorKey(modPaint.DarkColor(oTransparentColor, sTransparencyThreshold), modPaint.LightColor(oTransparentColor, sTransparencyThreshold))
-                                'Dim oPoints(2) As PointF
-                                'oPoints(0) = oBounds.Location
-                                'oPoints(1) = New PointF(oBounds.Right, oBounds.Top)
-                                'oPoints(2) = New PointF(oBounds.Left, oBounds.Bottom)
-                                'Dim oSourceRect As RectangleF = oDesignImage.GetBounds(System.Drawing.GraphicsUnit.Pixel)
-                                'Call Graphics.DrawImage(oDesignImage, oPoints, oSourceRect, GraphicsUnit.Pixel, oImageAttributes)
+                                Call oImageAttributes.SetColorKey(modPaint.DarkColor(oTransparentColor, 1.0 - sTransparencyThreshold), modPaint.LightColor(oTransparentColor, 1.0 - sTransparencyThreshold))
                                 Call modPaint.DrawStretchedImage(Graphics, oDesignImage, oBounds, oImageAttributes)
                             End Using
                         End If
-                        'If Not IsNothing(oState) Then
-                        '    Call Graphics.Restore(oState)
-                        '    Call oMatrix.Dispose()
-                        'End If
                         If bMorphingDisabled Then
                             Call Graphics.DrawRectangle(New Pen(Color.FromArgb(100, Color.DimGray), -1), oBounds.X, oBounds.Y, oBounds.Width, oBounds.Height)
                         End If
@@ -532,7 +511,7 @@ Namespace cSurvey.Design.Items
             End If
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As Storage.cFile, ByVal item As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As cFile, ByVal item As XmlElement)
             Call MyBase.New(Survey, Design, Layer, File, item)
             oSurvey = Survey
 
@@ -542,7 +521,7 @@ Namespace cSurvey.Design.Items
             If sDesignImageID = "" Then sDesignImageID = Guid.NewGuid.ToString
 
             Select Case File.FileFormat
-                Case Storage.cFile.FileFormatEnum.CSX
+                Case cFile.FileFormatEnum.CSX
                     Using oMs As IO.MemoryStream = New IO.MemoryStream(Convert.FromBase64String(modXML.GetAttributeValue(item, "image")))
                         oImage = modPaint.SafeBitmapFromStream(oMs)
                     End Using
@@ -553,7 +532,7 @@ Namespace cSurvey.Design.Items
                     Catch
                         If Not oImage Is Nothing Then oDesignImage = New Bitmap(oImage)
                     End Try
-                Case Storage.cFile.FileFormatEnum.CSZ
+                Case cFile.FileFormatEnum.CSZ
                     Dim sImagePath As String = modXML.GetAttributeValue(item, "image")
                     oImage = modPaint.SafeBitmapFromStream(DirectCast(File.Data(sImagePath), Storage.cStorageItemFile).Stream)
                     Try
@@ -581,15 +560,15 @@ Namespace cSurvey.Design.Items
             End If
         End Sub
 
-        Friend Overrides Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+        Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oItem As XmlElement = MyBase.SaveTo(File, Document, Parent, Options)
 
             Call oItem.SetAttribute("imageid", sImageID)
             Call oItem.SetAttribute("designimageid", sDesignImageID)
 
-            If Not (File.Options And Storage.cFile.FileOptionsEnum.DontSaveBinary) = Storage.cFile.FileOptionsEnum.DontSaveBinary Then
+            If Not (File.Options And cFile.FileOptionsEnum.DontSaveBinary) = cFile.FileOptionsEnum.DontSaveBinary Then
                 Select Case File.FileFormat
-                    Case Storage.cFile.FileFormatEnum.CSX
+                    Case cFile.FileFormatEnum.CSX
                         Using oMs As IO.MemoryStream = New IO.MemoryStream
                             Call modPaint.SafeBitmapSaveToStream(oImage, oMs, Drawing.Imaging.ImageFormat.Png)
                             Call oItem.SetAttribute("image", Convert.ToBase64String(oMs.ToArray()))
@@ -600,7 +579,7 @@ Namespace cSurvey.Design.Items
                             Call oItem.SetAttribute("designimage", Convert.ToBase64String(oMs.ToArray()))
                         End Using
 
-                    Case Storage.cFile.FileFormatEnum.CSZ
+                    Case cFile.FileFormatEnum.CSZ
                         Dim sImagePath As String = "_data\design\" & sImageID & ".png"
                         Dim oImageStorage As Storage.cStorageItemFile = File.Data.AddFile(sImagePath)
                         Call modPaint.SafeBitmapSaveToStream(oImage, oImageStorage.Stream, Drawing.Imaging.ImageFormat.Png)

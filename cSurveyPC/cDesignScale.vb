@@ -33,19 +33,19 @@ Namespace cSurvey.Design
                     Dim istep As Integer = PaintOptions.ScaleOptions.Step
 
                     Dim oScaleFont As Font = PaintOptions.ScaleOptions.Font.GetFont(PaintOptions)
-                    Dim oScaleMeterFont As Font = New Font(oScaleFont.Name, oScaleFont.Size * 0.6!, FontStyle.Regular)
+                    Using oScaleMeterFont As Font = New Font(oScaleFont.Name, oScaleFont.Size * 0.6!, FontStyle.Regular)
 
-                    Dim sScaleValue As String = PaintOptions.ScaleOptions.Text
-                    If Not PaintOptions.ScaleOptions.HideScaleValue Then
-                        If sScaleValue <> "" Then sScaleValue = sScaleValue & " "
-                        sScaleValue = sScaleValue & "1:" & modPaint.GetScaleFactor(Graphics, Zoom)
-                    End If
-                    If sScaleValue = "" Then sScaleValue = " "
-                    Dim oScaleValueSize As SizeF = Graphics.MeasureString(sScaleValue, oScaleFont)
-                    Dim oScaleMeterSize As SizeF = Graphics.MeasureString(iMeters, oScaleMeterFont)
+                        Dim sScaleValue As String = PaintOptions.ScaleOptions.Text
+                        If Not PaintOptions.ScaleOptions.HideScaleValue Then
+                            If sScaleValue <> "" Then sScaleValue = sScaleValue & " "
+                            sScaleValue = sScaleValue & "1:" & modPaint.GetScaleFactor(Graphics, Zoom)
+                        End If
+                        If sScaleValue = "" Then sScaleValue = " "
+                        Dim oScaleValueSize As SizeF = Graphics.MeasureString(sScaleValue, oScaleFont)
+                        Dim oScaleMeterSize As SizeF = Graphics.MeasureString(iMeters, oScaleMeterFont)
 
-                    Return New RectangleF(0, 0, PaintOptions.ScaleOptions.Meters * sZoom + oScaleMeterSize.Width, oScaleValueSize.Height + oScaleMeterSize.Height + oScaleValueSize.Height / 2 + 8)
-                    Call oScaleMeterFont.Dispose()
+                        Return New RectangleF(0, 0, iMeters * sZoom + oScaleMeterSize.Width * 2, oScaleValueSize.Height + oScaleMeterSize.Height + oScaleValueSize.Height / 2 + 8)
+                    End Using
             End Select
         End Function
 

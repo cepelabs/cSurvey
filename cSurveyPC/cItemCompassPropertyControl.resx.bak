@@ -1,0 +1,540 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cmdCompassBrowseClipart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="cmdCompassBrowseClipart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>148, 3</value>
+  </data>
+  <data name="cmdCompassBrowseClipart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cmdCompassBrowseClipart.TabIndex" type="System.Int32, mscorlib">
+    <value>192</value>
+  </data>
+  <data name="cmdCompassBrowseClipart.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="&gt;&gt;cmdCompassBrowseClipart.Name" xml:space="preserve">
+    <value>cmdCompassBrowseClipart</value>
+  </data>
+  <data name="&gt;&gt;cmdCompassBrowseClipart.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdCompassBrowseClipart.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdCompassBrowseClipart.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="picCompassClipartImage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="picCompassClipartImage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 3</value>
+  </data>
+  <data name="picCompassClipartImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 64</value>
+  </data>
+  <data name="picCompassClipartImage.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="picCompassClipartImage.TabIndex" type="System.Int32, mscorlib">
+    <value>191</value>
+  </data>
+  <data name="&gt;&gt;picCompassClipartImage.Name" xml:space="preserve">
+    <value>picCompassClipartImage</value>
+  </data>
+  <data name="&gt;&gt;picCompassClipartImage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;picCompassClipartImage.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;picCompassClipartImage.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="lblCompassClipartZoomFactor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblCompassClipartZoomFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblCompassClipartZoomFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 75</value>
+  </data>
+  <data name="lblCompassClipartZoomFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 13</value>
+  </data>
+  <data name="lblCompassClipartZoomFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>189</value>
+  </data>
+  <data name="lblCompassClipartZoomFactor.Text" xml:space="preserve">
+    <value>Scale:</value>
+  </data>
+  <data name="lblCompassClipartZoomFactor.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lblCompassClipartZoomFactor.Name" xml:space="preserve">
+    <value>lblCompassClipartZoomFactor</value>
+  </data>
+  <data name="&gt;&gt;lblCompassClipartZoomFactor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCompassClipartZoomFactor.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblCompassClipartZoomFactor.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="txtCompassClipartZoomFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 73</value>
+  </data>
+  <data name="txtCompassClipartZoomFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 21</value>
+  </data>
+  <data name="txtCompassClipartZoomFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>188</value>
+  </data>
+  <data name="txtCompassClipartZoomFactor.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtCompassClipartZoomFactor.Name" xml:space="preserve">
+    <value>txtCompassClipartZoomFactor</value>
+  </data>
+  <data name="&gt;&gt;txtCompassClipartZoomFactor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCompassClipartZoomFactor.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtCompassClipartZoomFactor.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="lblCompassClipart.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblCompassClipart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblCompassClipart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 5</value>
+  </data>
+  <data name="lblCompassClipart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 13</value>
+  </data>
+  <data name="lblCompassClipart.TabIndex" type="System.Int32, mscorlib">
+    <value>190</value>
+  </data>
+  <data name="lblCompassClipart.Text" xml:space="preserve">
+    <value>Clipart:</value>
+  </data>
+  <data name="lblCompassClipart.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lblCompassClipart.Name" xml:space="preserve">
+    <value>lblCompassClipart</value>
+  </data>
+  <data name="&gt;&gt;lblCompassClipart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCompassClipart.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblCompassClipart.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="lblCompassMode.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblCompassMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblCompassMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 154</value>
+  </data>
+  <data name="lblCompassMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 13</value>
+  </data>
+  <data name="lblCompassMode.TabIndex" type="System.Int32, mscorlib">
+    <value>193</value>
+  </data>
+  <data name="lblCompassMode.Text" xml:space="preserve">
+    <value>Mode:</value>
+  </data>
+  <data name="lblCompassMode.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lblCompassMode.Name" xml:space="preserve">
+    <value>lblCompassMode</value>
+  </data>
+  <data name="&gt;&gt;lblCompassMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCompassMode.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblCompassMode.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="cboCompassMode.Items" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="cboCompassMode.Items1" xml:space="preserve">
+    <value>Manual</value>
+  </data>
+  <data name="cboCompassMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 151</value>
+  </data>
+  <data name="cboCompassMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 21</value>
+  </data>
+  <data name="cboCompassMode.TabIndex" type="System.Int32, mscorlib">
+    <value>194</value>
+  </data>
+  <data name="&gt;&gt;cboCompassMode.Name" xml:space="preserve">
+    <value>cboCompassMode</value>
+  </data>
+  <data name="&gt;&gt;cboCompassMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboCompassMode.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboCompassMode.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="cboCompassNorth.Items" xml:space="preserve">
+    <value>Geographic</value>
+  </data>
+  <data name="cboCompassNorth.Items1" xml:space="preserve">
+    <value>Magnetic</value>
+  </data>
+  <data name="cboCompassNorth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 178</value>
+  </data>
+  <data name="cboCompassNorth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 21</value>
+  </data>
+  <data name="cboCompassNorth.TabIndex" type="System.Int32, mscorlib">
+    <value>196</value>
+  </data>
+  <data name="&gt;&gt;cboCompassNorth.Name" xml:space="preserve">
+    <value>cboCompassNorth</value>
+  </data>
+  <data name="&gt;&gt;cboCompassNorth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboCompassNorth.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboCompassNorth.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lblCompassNorth.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblCompassNorth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblCompassNorth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 181</value>
+  </data>
+  <data name="lblCompassNorth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 13</value>
+  </data>
+  <data name="lblCompassNorth.TabIndex" type="System.Int32, mscorlib">
+    <value>195</value>
+  </data>
+  <data name="lblCompassNorth.Text" xml:space="preserve">
+    <value>North:</value>
+  </data>
+  <data name="lblCompassNorth.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lblCompassNorth.Name" xml:space="preserve">
+    <value>lblCompassNorth</value>
+  </data>
+  <data name="&gt;&gt;lblCompassNorth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCompassNorth.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblCompassNorth.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lblCompassYear.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblCompassYear.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="lblCompassYear.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblCompassYear.Location" type="System.Drawing.Point, System.Drawing">
+    <value>226, 181</value>
+  </data>
+  <data name="lblCompassYear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 13</value>
+  </data>
+  <data name="lblCompassYear.TabIndex" type="System.Int32, mscorlib">
+    <value>198</value>
+  </data>
+  <data name="lblCompassYear.Text" xml:space="preserve">
+    <value>Year:</value>
+  </data>
+  <data name="lblCompassYear.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lblCompassYear.Name" xml:space="preserve">
+    <value>lblCompassYear</value>
+  </data>
+  <data name="&gt;&gt;lblCompassYear.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCompassYear.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblCompassYear.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="txtCompassYear.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtCompassYear.Location" type="System.Drawing.Point, System.Drawing">
+    <value>265, 178</value>
+  </data>
+  <data name="txtCompassYear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 21</value>
+  </data>
+  <data name="txtCompassYear.TabIndex" type="System.Int32, mscorlib">
+    <value>199</value>
+  </data>
+  <data name="txtCompassYear.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtCompassYear.Name" xml:space="preserve">
+    <value>txtCompassYear</value>
+  </data>
+  <data name="&gt;&gt;txtCompassYear.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCompassYear.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtCompassYear.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="chkUseTextScaleOnClipart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 100</value>
+  </data>
+  <data name="chkUseTextScaleOnClipart.Properties.Caption" xml:space="preserve">
+    <value>Use text scale on clipart</value>
+  </data>
+  <data name="chkUseTextScaleOnClipart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 20</value>
+  </data>
+  <data name="chkUseTextScaleOnClipart.TabIndex" type="System.Int32, mscorlib">
+    <value>200</value>
+  </data>
+  <data name="&gt;&gt;chkUseTextScaleOnClipart.Name" xml:space="preserve">
+    <value>chkUseTextScaleOnClipart</value>
+  </data>
+  <data name="&gt;&gt;chkUseTextScaleOnClipart.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkUseTextScaleOnClipart.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkUseTextScaleOnClipart.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="chkUseClipartScaleOnText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 123</value>
+  </data>
+  <data name="chkUseClipartScaleOnText.Properties.Caption" xml:space="preserve">
+    <value>Use clipart scale on text</value>
+  </data>
+  <data name="chkUseClipartScaleOnText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 20</value>
+  </data>
+  <data name="chkUseClipartScaleOnText.TabIndex" type="System.Int32, mscorlib">
+    <value>201</value>
+  </data>
+  <data name="&gt;&gt;chkUseClipartScaleOnText.Name" xml:space="preserve">
+    <value>chkUseClipartScaleOnText</value>
+  </data>
+  <data name="&gt;&gt;chkUseClipartScaleOnText.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkUseClipartScaleOnText.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkUseClipartScaleOnText.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkHideNorthValue.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkHideNorthValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 205</value>
+  </data>
+  <data name="chkHideNorthValue.Properties.Caption" xml:space="preserve">
+    <value>Hide value</value>
+  </data>
+  <data name="chkHideNorthValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 20</value>
+  </data>
+  <data name="chkHideNorthValue.TabIndex" type="System.Int32, mscorlib">
+    <value>202</value>
+  </data>
+  <data name="&gt;&gt;chkHideNorthValue.Name" xml:space="preserve">
+    <value>chkHideNorthValue</value>
+  </data>
+  <data name="&gt;&gt;chkHideNorthValue.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkHideNorthValue.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkHideNorthValue.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>321, 230</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>cItemCompassPropertyControl</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>cSurveyPC.cItemPropertyControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+</root>

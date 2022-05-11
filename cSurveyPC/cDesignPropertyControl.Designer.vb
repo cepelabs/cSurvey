@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class cDesignPropertyControl
-    Inherits System.Windows.Forms.UserControl
+    Inherits DevExpress.XtraEditors.XtraUserControl
 
     'UserControl overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -29,7 +29,6 @@ Partial Class cDesignPropertyControl
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.Window
         Me.Name = "cDesignPropertyControl"
         Me.ResumeLayout(False)
 

@@ -1,7 +1,7 @@
 ﻿Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Scripting
 
-Public Class frmSegmentsReplicateInfo
+friend Class frmSegmentsReplicateInfo
     Private oSurvey As cSurvey.cSurvey
     Private oSession As cSession
     Private oCave As cCaveInfo

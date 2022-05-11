@@ -17,6 +17,14 @@ Namespace cSurvey
             oItems = New Dictionary(Of cItem, Boolean)
         End Sub
 
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Items As cVisibilityItems)
+            oSurvey = Survey
+            oItems = New Dictionary(Of cItem, Boolean)
+            For Each oItem As cItem In Items.oItems.Keys
+                Call oItems.Add(oItem, Items.oItems(oItem))
+            Next
+        End Sub
+
         Friend Sub New(ByVal Survey As cSurvey, ByVal Items As XmlElement)
             oSurvey = Survey
             oItems = New Dictionary(Of cItem, Boolean)
@@ -32,7 +40,7 @@ Namespace cSurvey
             Next
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlItems As XmlElement = Document.CreateElement("vis")
             For Each oItem As cItem In oItems.Keys
                 Dim bVisible As Boolean = oItems(oItem)

@@ -1,5 +1,5 @@
-﻿Public Class frmResurveyAddStation
-    Private oStations As Dictionary(Of String, cResurvey.cStation)
+﻿friend Class frmResurveyAddStation
+    Private oStations As cResurvey.cStations
     Private iPlanOrProfile As Integer
 
     Private Sub optNewStation_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles optNewStation.CheckedChanged
@@ -8,6 +8,7 @@
 
     Private Sub pCheckChange()
         cboNewStation.Enabled = optNewStation.Checked
+        cboPrevStation.Enabled = cboNewStation.Enabled
         If cboNewStation.Enabled Then
             Call cboNewStation.Focus()
         End If
@@ -23,7 +24,7 @@
         End If
     End Sub
 
-    Friend Sub New(PlanOrProfile As Integer, Stations As Dictionary(Of String, cResurvey.cStation), PrevStation As String, Location As Point)
+    Friend Sub New(PlanOrProfile As Integer, Stations As cResurvey.cStations, PrevStation As String, Location As Point)
 
         ' Chiamata richiesta dalla finestra di progettazione.
         InitializeComponent()
@@ -34,27 +35,33 @@
         PrevStation = PrevStation.Replace(">", "")
 
         oStations = Stations
-        Call cboPrevStation.Items.Add("")
-        For Each oStation As cResurvey.cStation In oStations.Values
-            If Not oStation.Name.Contains(">") And (oStation.Type <> "SB" And oStation.Type <> "SE" And oStation.Type <> "DSB" And oStation.Type <> "DSE") Then
-                Call cboPrevStation.Items.Add(oStation.Name)
-                Call cboMovedStation.Items.Add(oStation.Name)
-                If iPlanOrProfile = 0 Then
-                    If oStation.PlanPoint.IsEmpty And oStation.Type <> "SB" And oStation.Type <> "SE" And oStation.Type <> "DSB" And oStation.Type <> "DSE" Then
-                        Call cboNewStation.Items.Add(oStation.Name)
-                    End If
-                End If
-                If iPlanOrProfile = 1 Then
-                    If oStation.ProfilePoint.IsEmpty And oStation.Type <> "SB" And oStation.Type <> "SE" And oStation.Type <> "DSB" And oStation.Type <> "DSE" Then
-                        Call cboNewStation.Items.Add(oStation.Name)
-                    End If
-                End If
-            End If
-        Next
-        cboPrevStation.Text = PrevStation
+
+        Dim oItems As List(Of cResurvey.cStation) = oStations.Where(Function(oItem) Not oItem.Name.Contains(">") AndAlso (oItem.Type <> "SB" AndAlso oItem.Type <> "SE" AndAlso oItem.Type <> "DSB" AndAlso oItem.Type <> "DSE")).ToList
+        Dim oNewItems As List(Of cResurvey.cStation) = oItems.Where(Function(oitem) If(iPlanOrProfile = 0, oitem.PlanPoint.IsEmpty, oitem.ProfilePoint.IsEmpty)).ToList
+        cboNewStation.Properties.DataSource = oNewItems
+
+        Call oItems.Add(New cResurvey.cStation())
+        cboMovedStation.Properties.DataSource = oItems
+        cboPrevStation.Properties.DataSource = oItems
+
+        'For Each oStation As cResurvey.cStation In oItems
+        '    If Not oStation.Name.Contains(">") And (oStation.Type <> "SB" And oStation.Type <> "SE" And oStation.Type <> "DSB" And oStation.Type <> "DSE") Then
+        '        If iPlanOrProfile = 0 Then
+        '            If oStation.PlanPoint.IsEmpty And oStation.Type <> "SB" And oStation.Type <> "SE" And oStation.Type <> "DSB" And oStation.Type <> "DSE" Then
+        '                Call cboNewStation.Items.Add(oStation.Name)
+        '            End If
+        '        End If
+        '        If iPlanOrProfile = 1 Then
+        '            If oStation.ProfilePoint.IsEmpty And oStation.Type <> "SB" And oStation.Type <> "SE" And oStation.Type <> "DSB" And oStation.Type <> "DSE" Then
+        '                Call cboNewStation.Items.Add(oStation.Name)
+        '            End If
+        '        End If
+        '    End If
+        'Next
+        cboPrevStation.EditValue = PrevStation
         txtPosition.Text = "X=" & Location.X & ";" & "Y=" & Location.Y
 
-        Call pCheckChange()
+        'Call pCheckChange()
     End Sub
 
     Private Sub cmdOk_Click(sender As System.Object, e As System.EventArgs) Handles cmdOk.Click
@@ -63,7 +70,7 @@
             If sName = "" Or sName.Contains("_") Or sName.Contains(">") Or sName.Contains(" ") Or sName.Contains("|") Or sName.Contains("!") Then
                 Call MsgBox(GetLocalizedString("resurveyaddstation.warning1"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("resurveyaddstation.warningtitle"))
             Else
-                If oStations.ContainsKey(sName) Then
+                If oStations.Contains(sName) Then
                     Dim bOk As Boolean
                     If iPlanOrProfile = 0 Then
                         bOk = oStations(sName).PlanPoint.IsEmpty
@@ -86,28 +93,28 @@
                 End If
             End If
         End If
-            If optMovedStation.Checked Then
-                Dim sName As String = cboMovedStation.Text.ToUpper.Trim
-                If sName = "" Then
+        If optMovedStation.Checked Then
+            Dim sName As String = cboMovedStation.Text.ToUpper.Trim
+            If sName = "" Then
                 Call MsgBox(GetLocalizedString("resurveyaddstation.warning4"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("resurveyaddstation.warningtitle"))
-                Else
-                    DialogResult = Windows.Forms.DialogResult.OK
-                    Close()
-                End If
-            End If
-            If optFirstScale.Checked Then
+            Else
                 DialogResult = Windows.Forms.DialogResult.OK
                 Close()
             End If
-            If optSecondScale.Checked Then
-                Dim iScaleLen As Integer = txtScaleSize.Value
-                If iScaleLen = 0 Then
+        End If
+        If optFirstScale.Checked OrElse optNorthBegin.Checked OrElse optNorthEnd.Checked Then
+            DialogResult = Windows.Forms.DialogResult.OK
+            Close()
+        End If
+        If optSecondScale.Checked Then
+            Dim iScaleLen As Integer = txtScaleSize.Value
+            If iScaleLen = 0 Then
                 Call MsgBox(GetLocalizedString("resurveyaddstation.warning5"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("resurveyaddstation.warningtitle"))
-                Else
-                    DialogResult = Windows.Forms.DialogResult.OK
-                    Close()
-                End If
+            Else
+                DialogResult = Windows.Forms.DialogResult.OK
+                Close()
             End If
+        End If
     End Sub
 
     Private Sub optSecondScale_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles optSecondScale.CheckedChanged
@@ -125,12 +132,8 @@
         End If
     End Sub
 
-    Private Sub cboPrevStation_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cboPrevStation.SelectedIndexChanged
-        Call pFindNext()
-    End Sub
-
     Private Sub pFindNext()
-        Dim sPrevText As String = cboPrevStation.Text
+        Dim sPrevText As String = cboPrevStation.EditValue
 
         Dim sNumber As String = ""
         Dim sPrefix As String = ""
@@ -151,17 +154,28 @@
             Loop
         End If
         If iIndex = sPrevText.Length Then
-            Dim sFormat As String = Strings.StrDup(sNumber.Length, "0")
+            Dim sFormat As String = Strings.StrDup(sPrevText.Length - sPrefix.Length, "0")
             Dim iNumber As Integer
             Integer.TryParse(sNumber, iNumber)
             If iNumber = 0 Then
-                cboNewStation.Text = ""
+                cboNewStation.EditValue = ""
             Else
                 iNumber += 1
-                cboNewStation.Text = Strings.Format(iNumber, sFormat)
+                cboNewStation.EditValue = sPrefix & Strings.Format(iNumber, sFormat)
             End If
         Else
-            cboNewStation.Text = ""
+            cboNewStation.EditValue = ""
         End If
+    End Sub
+
+    Private Sub cboPrevStation_EditValueChanged(sender As Object, e As EventArgs) Handles cboPrevStation.EditValueChanged
+        Call pFindNext()
+    End Sub
+
+    Private Sub frmResurveyAddStation_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
+    End Sub
+
+    Private Sub frmResurveyAddStation_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        Call pCheckChange()
     End Sub
 End Class

@@ -1,6 +1,6 @@
 ﻿Imports System.Drawing.Printing
 
-Public Class frmScaleTools
+friend Class frmScaleTools
     Private oSurvey As cSurvey.cSurvey
     Private oDesign As cSurvey.Design.cDesign
     Private oPaintOptions As cSurvey.Design.cOptions

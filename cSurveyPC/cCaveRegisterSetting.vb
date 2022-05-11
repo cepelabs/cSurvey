@@ -57,7 +57,7 @@ Namespace cSurvey.CaveRegister
             sName = CaveRegisterSetting.GetAttribute("name")
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlCaveRegisterSetting As XmlElement = Document.CreateElement("caveregistersetting")
             Call oXmlCaveRegisterSetting.SetAttribute("id", sID)
             Call oXmlCaveRegisterSetting.SetAttribute("name", sName)
@@ -120,7 +120,7 @@ Namespace cSurvey.CaveRegister
             sPassword = modXML.GetAttributeValue(CaveRegisterSetting, "password")
         End Sub
 
-        Friend Overrides Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlCaveRegisterSetting As XmlElement = MyBase.SaveTo(File, Document, Parent)
             Call oXmlCaveRegisterSetting.SetAttribute("url", sURL)
             If sUsername <> "" Then Call oXmlCaveRegisterSetting.SetAttribute("username", sUsername)

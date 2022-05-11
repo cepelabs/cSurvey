@@ -1,4 +1,4 @@
-﻿Public Class frmSketchEditDistanceWithLRUD
+﻿friend Class frmSketchEditDistanceWithLRUD
     Public Sub New(PlanOrProfile As Boolean, Optional Value As Single = 0.1)
 
         ' This call is required by the designer.

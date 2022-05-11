@@ -6,7 +6,7 @@ Imports cSurveyPC.cSurvey.CaveRegister
 
 Namespace cSurvey
     Public Class cSurvey
-        Public Const Version As String = "1.11"
+        Public Const Version As String = "1.12"
 
         Private sID As String
 
@@ -46,6 +46,14 @@ Namespace cSurvey
         Private WithEvents oSurface As cSurface
 
         Private oCaveRegister As cCaveRegister
+
+        Private oTexts As cTexts
+
+        Public ReadOnly Property Texts As cTexts
+            Get
+                Return oTexts
+            End Get
+        End Property
 
         Public Enum SaveOptionsEnum
             None = 0
@@ -305,6 +313,7 @@ Namespace cSurvey
                 MainProperties = 3
                 MasterSlaveSettings = 4
                 DesignWarpingState = 5
+                ElevationProfile = 6
             End Enum
 
             Private iSource As PropertiesChangeSourceEnum
@@ -575,6 +584,7 @@ Namespace cSurvey
         Public Sub New()
             sID = Guid.NewGuid.ToString
 
+            oTexts = New cTexts(Me)
             oGrades = New cGrades(Me)
             oProperties = New cProperties(Me)
             oAttachments = New cAttachments(Me)
@@ -650,12 +660,12 @@ Namespace cSurvey
             End Get
         End Property
 
-        Public Class OnLinkedSurveysAddEventargs
+        Public Class OnLinkedSurveysEventargs
             Inherits EventArgs
 
             Private oItem As cLinkedSurvey
 
-            Public ReadOnly Property NewItem As cLinkedSurvey
+            Public ReadOnly Property Item As cLinkedSurvey
                 Get
                     Return oItem
                 End Get
@@ -665,17 +675,79 @@ Namespace cSurvey
                 oItem = Item
             End Sub
         End Class
+
+        Public Class OnLinkedSurveysAddEventargs
+            Inherits OnLinkedSurveysEventargs
+
+            Private bRecursiveLoad As Boolean
+            Private bPrioritizeChildren As Boolean
+
+            Public ReadOnly Property NewItem As cLinkedSurvey
+                Get
+                    Return Item
+                End Get
+            End Property
+
+            Public Property PrioritizeChildren As Boolean
+                Get
+                    Return bPrioritizeChildren
+                End Get
+                Set(value As Boolean)
+                    bPrioritizeChildren = value
+                End Set
+            End Property
+
+
+            Public Property RecursiveLoad As Boolean
+                Get
+                    Return bRecursiveLoad
+                End Get
+                Set(value As Boolean)
+                    bRecursiveLoad = value
+                End Set
+            End Property
+
+            Public Sub New(Item As cLinkedSurvey)
+                Call MyBase.New(Item)
+            End Sub
+        End Class
+        Public Class OnLinkedSurveysLoadEventargs
+            Inherits OnLinkedSurveysEventargs
+
+            Private bRefreshOnLoad As Boolean
+
+            Public Property RefreshOnLoad As Boolean
+                Get
+                    Return bRefreshOnLoad
+                End Get
+                Set(value As Boolean)
+                    bRefreshOnLoad = value
+                End Set
+            End Property
+
+            Public Sub New(Item As cLinkedSurvey)
+                Call MyBase.New(Item)
+            End Sub
+        End Class
         Public Event OnLinkedSurveysAdd(Sender As cSurvey, Args As OnLinkedSurveysAddEventargs)
+        Public Event OnLinkedSurveysLoad(Sender As cSurvey, Args As OnLinkedSurveysLoadEventargs)
         Public Event OnLinkedSurveysRefresh(Sender As cSurvey, Args As EventArgs)
 
         Friend Sub RaiseOnLinkedSurveysRefresh()
             RaiseEvent OnLinkedSurveysRefresh(Me, EventArgs.Empty)
         End Sub
 
-        Friend Sub RaiseOnLinkedSurveysAdd(Item As cLinkedSurvey)
-            Dim oArg As onLinkedSurveysAddEventargs = New onLinkedSurveysAddEventargs(Item)
+        Friend Sub RaiseOnLinkedSurveysLoad(Item As cLinkedSurvey, ByRef RefreshOnLoad As Boolean)
+            Dim oArg As OnLinkedSurveysLoadEventargs = New OnLinkedSurveysLoadEventargs(Item)
+            RaiseEvent OnLinkedSurveysLoad(Me, oArg)
+            RefreshOnLoad = oArg.RefreshOnLoad
+        End Sub
+
+        Friend Sub RaiseOnLinkedSurveysAdd(Item As cLinkedSurvey, ByRef RecursiveLoad As Boolean, ByRef PrioritizeChildren As Boolean)
+            Dim oArg As OnLinkedSurveysAddEventargs = New OnLinkedSurveysAddEventargs(Item)
             RaiseEvent OnLinkedSurveysAdd(Me, oArg)
-            RaiseEvent OnLinkedSurveysRefresh(Me, EventArgs.Empty)
+            RecursiveLoad = oArg.RecursiveLoad
+            PrioritizeChildren = oArg.PrioritizeChildren
         End Sub
 
         Friend Function RaiseOnWarpingDetailsEvent(SegmentToProcess As cISegmentCollection, DesignType As cIDesign.cDesignTypeEnum) As DialogResult
@@ -733,7 +805,7 @@ Namespace cSurvey
         Public Function Check(ByVal filename As String) As cActionResult
             Try
                 If My.Computer.FileSystem.FileExists(filename) Then
-                    Using oFile As Storage.cFile = New Storage.cFile(filename)
+                    Using oFile As cFile = New cFile(filename)
                         Dim oXml As XmlDocument = oFile.Document
                         Dim oXmlRoot As XmlElement = oXml.Item("csurvey")
                         Try
@@ -774,6 +846,7 @@ Namespace cSurvey
 
         <Flags> Public Enum LoadOptionsEnum
             None = &H0
+            IsLinkedSurvey = &H1
             FixTopoDroid = &H100
             Update = &H10
         End Enum
@@ -782,7 +855,7 @@ Namespace cSurvey
             Call RaiseOnLogEvent(LogEntryType.Information, "loading: " & Filename)
             Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Begin, String.Format(modMain.GetLocalizedString("csurvey.textpart100"), Filename), 0, OnProgressEventArgs.ProgressOptionsEnum.ImageLoad Or OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow)
 
-            Using oFile As Storage.cFile = New Storage.cFile(Filename)
+            Using oFile As cFile = New cFile(Filename)
                 Dim oXml As XmlDocument = oFile.Document
 
                 If ((pGetFileCreatID(oXml) = "topodroid" AndAlso Not pGetFileCreatPostProcessed(oXml)) OrElse (LoadOptions And LoadOptionsEnum.FixTopoDroid) = LoadOptionsEnum.FixTopoDroid) OrElse modOpeningFlags.OFRegenerateSegmentsID Then
@@ -1043,9 +1116,22 @@ Namespace cSurvey
                                 'the file structure is basically the same but in 1.10 there are supports for e-e direction vertical
                                 sCurrentVersion = "1.11"
                             End If
+                        Case "1.11"
+                            Dim oArgs As cFileConversionEventArgs = New cFileConversionEventArgs(sCurrentVersion, Version)
+                            If Not bRequested Then
+                                RaiseEvent OnFileConversionRequest(Me, oArgs)
+                            End If
+                            If oArgs.Cancel Then
+                                bCancel = True
+                            Else
+                                bRequested = True
+                                'the file structure is basically the same but in 1.11 there are supports for common/shared texts...
+                                sCurrentVersion = "1.12"
+                            End If
                         Case Else
                             bOk = False
                             bCancel = False
+                            Exit Do
                     End Select
                 Loop Until bOk Or bCancel
 
@@ -1077,6 +1163,16 @@ Namespace cSurvey
                         End If
                     Catch
                         oProperties = New cProperties(Me)
+                    End Try
+
+                    Try
+                        If modXML.ChildElementExist(oXmlRoot, "txts") Then
+                            oTexts = New cTexts(Me, oXmlRoot.Item("txts"))
+                        Else
+                            oTexts = New cTexts(Me)
+                        End If
+                    Catch
+                        oTexts = New cTexts(Me)
                     End Try
 
                     'Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart110"), 0)
@@ -1240,6 +1336,7 @@ Namespace cSurvey
                     End Try
                     Call RaiseOnProgressEvent("load.profile.view", OnProgressEventArgs.ProgressActionEnum.End, GetLocalizedString("csurvey.textpart120a"), 0)
 
+                    'If (LoadOptions And LoadOptionsEnum.IsLinkedSurvey) = LoadOptionsEnum.None Then
                     Try
                         If modXML.ChildElementExist(oXmlRoot, "linkedsurveys") Then
                             oLinkedSurveys = New cLinkedSurveys(Me, oFile, oXmlRoot.Item("linkedsurveys"))
@@ -1249,6 +1346,7 @@ Namespace cSurvey
                     Catch
                         oLinkedSurveys = New cLinkedSurveys(Me)
                     End Try
+                    'End If
 
                     Try
                         If modXML.ChildElementExist(oXmlRoot, "sharedsettings") Then
@@ -1272,29 +1370,33 @@ Namespace cSurvey
                     End Try
                     Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart121a"), 0)
 
-                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart122"), 0)
-                    Try
-                        If modXML.ChildElementExist(oXmlRoot, "masterslave") Then
-                            oMasterSlave = New Master.cMasterSlave(Me, oFile, oXmlRoot.Item("masterslave"))
-                        Else
+                    If (LoadOptions And LoadOptionsEnum.IsLinkedSurvey) = LoadOptionsEnum.None Then
+                        Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart122"), 0)
+                        Try
+                            If modXML.ChildElementExist(oXmlRoot, "masterslave") Then
+                                oMasterSlave = New Master.cMasterSlave(Me, oFile, oXmlRoot.Item("masterslave"))
+                            Else
+                                oMasterSlave = New Master.cMasterSlave(Me)
+                            End If
+                        Catch
                             oMasterSlave = New Master.cMasterSlave(Me)
-                        End If
-                    Catch
-                        oMasterSlave = New Master.cMasterSlave(Me)
-                    End Try
-                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart122a"), 0)
+                        End Try
+                        Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart122a"), 0)
+                    End If
 
-                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart122"), 0)
-                    Try
-                        If modXML.ChildElementExist(oXmlRoot, "caveregister") Then
-                            oCaveRegister = New cCaveRegister(Me, oFile, oXmlRoot.Item("caveregister"))
-                        Else
+                    If (LoadOptions And LoadOptionsEnum.IsLinkedSurvey) = LoadOptionsEnum.None Then
+                        Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart122"), 0)
+                        Try
+                            If modXML.ChildElementExist(oXmlRoot, "caveregister") Then
+                                oCaveRegister = New cCaveRegister(Me, oFile, oXmlRoot.Item("caveregister"))
+                            Else
+                                oCaveRegister = New cCaveRegister(Me)
+                            End If
+                        Catch
                             oCaveRegister = New cCaveRegister(Me)
-                        End If
-                    Catch
-                        oCaveRegister = New cCaveRegister(Me)
-                    End Try
-                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart122a"), 0)
+                        End Try
+                        Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart122a"), 0)
+                    End If
 
                     Dim bDoCalculate As Boolean
                     If modXML.ChildElementExist(oXmlRoot, "calculate") Then
@@ -1527,7 +1629,7 @@ Namespace cSurvey
         '    End Try
         'End Function
 
-        Private Sub pSaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, Options As SaveOptionsEnum)
+        Private Sub pSaveTo(ByVal File As cFile, ByVal Document As XmlDocument, Options As SaveOptionsEnum)
             Dim sTextPart1 As String = modMain.GetLocalizedString("csurvey.textpart1")
 
             Dim bSilent As Boolean = (Options And cSurvey.SaveOptionsEnum.Silent) = 0
@@ -1538,6 +1640,7 @@ Namespace cSurvey
 
             If oGrades.Count <> 0 Then Call oGrades.SaveTo(File, Document, oXmlRoot)
             Call oProperties.SaveTo(File, Document, oXmlRoot)
+            If oTexts.Count <> 0 Then Call oTexts.SaveTo(File, Document, oXmlRoot)
 
             If Not bSilent Then Call RaiseOnProgressEvent("save.attachments", OnProgressEventArgs.ProgressActionEnum.Begin, sTextPart1, 0, OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
             Call oAttachments.SaveTo(File, Document, oXmlRoot, Options)
@@ -1600,21 +1703,21 @@ Namespace cSurvey
             If Not bSilent Then Call RaiseOnProgressEvent("save", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
         End Sub
 
-        Public Sub SaveTo(ByVal File As Storage.cFile, Optional Options As SaveOptionsEnum = SaveOptionsEnum.None)
+        Public Sub SaveTo(ByVal File As cFile, Optional Options As SaveOptionsEnum = SaveOptionsEnum.None)
             Call pSaveTo(File, File.Document, Options)
         End Sub
 
         Public Sub SaveTo(ByVal Stream As System.IO.Stream, Optional Options As SaveOptionsEnum = SaveOptionsEnum.None)
-            Using oFile As Storage.cFile = New Storage.cFile(Storage.cFile.FileFormatEnum.CSZ)
+            Using oFile As cFile = New cFile(cFile.FileFormatEnum.CSZ)
                 Call pSaveTo(oFile, oFile.Document, Options)
                 Call oFile.SaveTo(Stream)
             End Using
         End Sub
 
         Public Sub SaveTo(ByVal Filename As String, Optional Options As SaveOptionsEnum = SaveOptionsEnum.None)
-            Dim iFileFormat As Storage.cFile.FileFormatEnum = Storage.cFile.FileFormatEnum.CSZ
-            If IO.Path.GetExtension(Filename).ToLower = ".csx" Then iFileFormat = Storage.cFile.FileFormatEnum.CSX
-            Using oFile As Storage.cFile = New Storage.cFile(iFileFormat, Filename)
+            Dim iFileFormat As cFile.FileFormatEnum = cFile.FileFormatEnum.CSZ
+            If IO.Path.GetExtension(Filename).ToLower = ".csx" Then iFileFormat = cFile.FileFormatEnum.CSX
+            Using oFile As cFile = New cFile(iFileFormat, Filename)
                 Call pSaveTo(oFile, oFile.Document, Options)
                 Call oFile.Save()
             End Using

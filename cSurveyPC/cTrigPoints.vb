@@ -180,7 +180,7 @@ Namespace cSurvey
             End Get
         End Property
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum)
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum)
             Dim oXmlTrigPoints As XmlElement = Document.CreateElement("trigpoints")
             Dim iIndex As Integer = 0
             Dim iCount As Integer = oTrigPoints.Count

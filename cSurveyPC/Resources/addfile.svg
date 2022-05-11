@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg x="0px" y="0px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" id="Layer_1" style="enable-background:new 0 0 32 32">
+  <style type="text/css">
+	.Black{fill:#727272;}
+	.Yellow{fill:#FFB115;}
+	.Blue{fill:#1177D7;}
+	.Red{fill:#D11C1C;}
+	.White{fill:#FFFFFF;}
+	.Green{fill:#039C23;}
+	.st0{fill:#727272;}
+	.st1{opacity:0.5;}
+	.st2{opacity:0.75;}
+</style>
+  <g id="AddFile">
+    <path d="M16,26H6V4h18v14h2V3c0-0.5-0.5-1-1-1H5C4.5,2,4,2.5,4,3v24c0,0.5,0.5,1,1,1h11V26z" class="Black" />
+    <polygon points="30,24 26,24 26,20 22,20 22,24 18,24 18,28 22,28 22,32 26,32 26,28 30,28  " class="Green" />
+  </g>
+</svg>

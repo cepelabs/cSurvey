@@ -50,7 +50,7 @@ Namespace cSurvey.Calculate.Plot
             dToLeft = modNumbers.StringToDecimal(modXML.GetAttributeValue(Item, "tl", 0))
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlPlanSD As XmlElement = Document.CreateElement("plansd")
 
             Call oXmlPlanSD.SetAttribute("fpx", modNumbers.NumberToString(oFromPoint.X, ""))

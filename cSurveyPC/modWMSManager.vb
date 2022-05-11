@@ -351,7 +351,7 @@ Module modWMSManager
             Case Else
                 'use WGS84/UTM...
                 If UTM.Band >= "N" Then
-                    iSystem = 32600 + 32 ' UTM.Zone
+                    iSystem = 32600 + UTM.Zone
                 Else
                     iSystem = 32700 + UTM.Zone
                 End If
@@ -574,12 +574,7 @@ Module modWMSManager
                 Dim oXML As Xml.XmlDocument = New Xml.XmlDocument
                 Call oXML.Load(oResponse.GetResponseStream)
                 Return New cDownloadResult(False, oXML.DocumentElement.ChildNodes(0).InnerText)
-            ElseIf oResponse.ContentType.ToLower.StartsWith("image/png") Then
-                Using oFS As FileStream = File.OpenWrite(Filename)
-                    Call oResponse.GetResponseStream.CopyTo(oFS)
-                End Using
-                Return New cDownloadResult(True)
-            ElseIf oResponse.ContentType.ToLower.StartsWith("image/jpeg") Then
+            ElseIf oResponse.ContentType.ToLower = "image/png" Then
                 Using oFS As FileStream = File.OpenWrite(Filename)
                     Call oResponse.GetResponseStream.CopyTo(oFS)
                 End Using

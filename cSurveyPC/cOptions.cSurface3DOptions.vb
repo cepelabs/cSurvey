@@ -51,7 +51,7 @@ Namespace cSurvey.Design.Options
                 sAltitudeAmplification = modNumbers.StringToSingle(modXML.GetAttributeValue(Item, "altamp", "1"))
             End Sub
 
-            Friend Overrides Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+            Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
                 Dim oXMLSurfaceOptionsItem As XmlElement = MyBase.SaveTo(File, Document, Parent)
                 If sAltitudeAmplification <> 1 Then Call oXMLSurfaceOptionsItem.SetAttribute("altamp", modNumbers.NumberToString(sAltitudeAmplification))
                 Call Parent.AppendChild(oXMLSurfaceOptionsItem)
@@ -115,7 +115,7 @@ Namespace cSurvey.Design.Options
                 Return oItem
             End Function
 
-            Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+            Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
                 Dim oXMLSurfaceOptionsItem As XmlElement = Document.CreateElement("surface3doptionsitem")
                 Call oXMLSurfaceOptionsItem.SetAttribute("id", sID)
                 If bVisible Then Call oXMLSurfaceOptionsItem.SetAttribute("visible", "1")
@@ -189,6 +189,10 @@ Namespace cSurvey.Design.Options
             Next
         End Sub
 
+        Public Function IndexOf(Item As cSurface3DOptionsItem) As Integer
+            Return oItems.IndexOf(Item)
+        End Function
+
         Public Function MoveUp(Item As cSurface3DOptionsItem) As Boolean
             Dim iIndex As Integer = oItems.IndexOf(Item)
             If iIndex > 0 Then
@@ -213,7 +217,7 @@ Namespace cSurvey.Design.Options
 
         Default Public ReadOnly Property Item(Index As Integer) As cSurface3DOptionsItem
             Get
-                If Index >= 0 And Index < oItems.Count Then
+                If Index >= 0 AndAlso Index < oItems.Count Then
                     Return oItems(Index)
                 Else
                     Return Nothing
@@ -298,7 +302,7 @@ Namespace cSurvey.Design.Options
             Call Import(SurfaceOptions)
         End Sub
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLSurfaceOptions As XmlElement = Document.CreateElement("surface3doptions")
             If bVisible Then oXMLSurfaceOptions.SetAttribute("visible", 1)
             For Each oItem As cSurface3DOptionsItem In oItems

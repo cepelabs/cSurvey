@@ -21,7 +21,7 @@ Namespace cSurvey.Calculate
             Next
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlTrigpointSideMeasure As XmlElement = Document.CreateElement("sm")
             Dim oXmlTrigpointSideMeasureLR As XmlElement = Document.CreateElement("smlrs")
             For Each oLRItem As cTrigPointLeftRightSideMeasure In oLeftRight.Values

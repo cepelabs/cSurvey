@@ -1,4 +1,4 @@
-﻿Public Class frmProgress
+﻿friend Class frmProgress
     Private Class TaskBag
         Public Index As Integer
         Public Begins As Integer

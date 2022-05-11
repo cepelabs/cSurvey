@@ -6,7 +6,7 @@ Imports System.Text
 Imports cSurveyPC.cSurvey.Scripting
 Imports System.ComponentModel
 
-Public Class frmSurface
+friend Class frmSurface
     Private oSurvey As cSurvey.cSurvey
     Private oSurface As cSurface
     Private bDisableChangeEvent As Boolean

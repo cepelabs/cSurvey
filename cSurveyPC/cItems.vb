@@ -4,6 +4,7 @@ Imports System.Collections.Generic
 Imports System.Collections.ObjectModel
 
 Imports cSurveyPC.cSurvey.Design.Items
+Imports System.ComponentModel
 
 Namespace cSurvey.Design
     Public Class cItems
@@ -12,7 +13,13 @@ Namespace cSurvey.Design
         Private oDesign As cDesign
         Private oLayer As cLayer
 
-        Private oItems As List(Of cItem)
+        Private oItems As BindingList(Of cItem)
+
+        Friend ReadOnly Property List As BindingList(Of cItem)
+            Get
+                Return oItems
+            End Get
+        End Property
 
         Public ReadOnly Property First() As cItem
             Get
@@ -157,21 +164,21 @@ Namespace cSurvey.Design
             oSurvey = Survey
             oDesign = Design
             oLayer = Layer
-            oItems = New List(Of cItem)
+            oItems = New BindingList(Of cItem)
         End Sub
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal Items As List(Of cItem))
             oSurvey = Survey
             oDesign = Design
             oLayer = Layer
-            oItems = New List(Of cItem)(Items)
+            oItems = New BindingList(Of cItem)(Items)
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As Storage.cFile, ByVal Items As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As cFile, ByVal Items As XmlElement)
             oSurvey = Survey
             oDesign = Design
             oLayer = Layer
-            oItems = New List(Of cItem)
+            oItems = New BindingList(Of cItem)
             Dim iIndex As Integer = 0
             Dim iCount As Integer = Items.ChildNodes.Count
             Dim iStep As Integer = IIf(iCount > 20, iCount \ 20, 1)
@@ -230,7 +237,7 @@ Namespace cSurvey.Design
             Next
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oXmlItems As XmlElement = Document.CreateElement("items")
             Dim iIndex As Integer = 0
             Dim iCount As Integer = oItems.Count

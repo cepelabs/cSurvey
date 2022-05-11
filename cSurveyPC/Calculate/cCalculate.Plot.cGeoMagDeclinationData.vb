@@ -11,7 +11,7 @@ Namespace cSurvey.Calculate
 
         Private oItems As SortedDictionary(Of Date, Decimal)
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlMDD As XmlElement = Document.CreateElement("mdd")
             Call oXmlMDD.SetAttribute("mc", modNumbers.NumberToString(dMeridianConvergence, ""))
             For Each dDate As Date In oItems.Keys

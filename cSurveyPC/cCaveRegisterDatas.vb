@@ -51,7 +51,7 @@ Namespace cSurvey.CaveRegister
             oItems = New Dictionary(Of String, cCaveRegisterData)(System.StringComparer.OrdinalIgnoreCase)
         End Sub
 
-        Friend Sub New(Survey As cSurvey, ByVal File As Storage.cFile, ByVal CaveRegisterDatas As XmlElement)
+        Friend Sub New(Survey As cSurvey, ByVal File As cFile, ByVal CaveRegisterDatas As XmlElement)
             oSurvey = Survey
             oItems = New Dictionary(Of String, cCaveRegisterData)(System.StringComparer.OrdinalIgnoreCase)
             For Each oXMLItem As XmlElement In CaveRegisterDatas.ChildNodes
@@ -60,7 +60,7 @@ Namespace cSurvey.CaveRegister
             Next
         End Sub
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlCaveRegisterDatas As XmlElement = Document.CreateElement("caveregisterdatas")
             For Each oItem As cCaveRegisterData In oItems.Values
                 Call oItem.SaveTo(File, Document, oXmlCaveRegisterDatas)

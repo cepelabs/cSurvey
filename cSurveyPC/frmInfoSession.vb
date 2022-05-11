@@ -1,7 +1,7 @@
 ﻿Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
 
-Public Class frmInfoSession
+friend Class frmInfoSession
     Private oSurvey As cSurvey.cSurvey
 
     Friend Sub New(ByVal Survey As cSurvey.cSurvey, Optional ByVal Session As String = "")

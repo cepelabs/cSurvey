@@ -139,7 +139,7 @@
     <value>cmdCancel</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -166,7 +166,7 @@
     <value>cmdOk</value>
   </data>
   <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
     <value>$this</value>
@@ -177,26 +177,23 @@
   <metadata name="tipDefault.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="chkExportCalculatedData.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="chkExportCalculatedData.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 35</value>
+    <value>12, 38</value>
+  </data>
+  <data name="chkExportCalculatedData.Properties.Caption" xml:space="preserve">
+    <value>Calculated data</value>
   </data>
   <data name="chkExportCalculatedData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 17</value>
+    <value>98, 20</value>
   </data>
   <data name="chkExportCalculatedData.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="chkExportCalculatedData.Text" xml:space="preserve">
-    <value>Calculated data</value>
   </data>
   <data name="&gt;&gt;chkExportCalculatedData.Name" xml:space="preserve">
     <value>chkExportCalculatedData</value>
   </data>
   <data name="&gt;&gt;chkExportCalculatedData.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkExportCalculatedData.Parent" xml:space="preserve">
     <value>$this</value>
@@ -204,29 +201,26 @@
   <data name="&gt;&gt;chkExportCalculatedData.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="chkExportColor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="chkExportColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkExportColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
   </data>
+  <data name="chkExportColor.Properties.Caption" xml:space="preserve">
+    <value>Colors</value>
+  </data>
   <data name="chkExportColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 17</value>
+    <value>53, 20</value>
   </data>
   <data name="chkExportColor.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="chkExportColor.Text" xml:space="preserve">
-    <value>Colors</value>
   </data>
   <data name="&gt;&gt;chkExportColor.Name" xml:space="preserve">
     <value>chkExportColor</value>
   </data>
   <data name="&gt;&gt;chkExportColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkExportColor.Parent" xml:space="preserve">
     <value>$this</value>
@@ -234,38 +228,32 @@
   <data name="&gt;&gt;chkExportColor.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="chkExportNamedSplayStations.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="chkExportNamedSplayStations.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkExportNamedSplayStations.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 58</value>
+    <value>12, 64</value>
+  </data>
+  <data name="chkExportNamedSplayStations.Properties.Caption" xml:space="preserve">
+    <value>Named splay stations</value>
   </data>
   <data name="chkExportNamedSplayStations.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 17</value>
+    <value>125, 20</value>
   </data>
   <data name="chkExportNamedSplayStations.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
-  </data>
-  <data name="chkExportNamedSplayStations.Text" xml:space="preserve">
-    <value>Named splay stations</value>
   </data>
   <data name="&gt;&gt;chkExportNamedSplayStations.Name" xml:space="preserve">
     <value>chkExportNamedSplayStations</value>
   </data>
   <data name="&gt;&gt;chkExportNamedSplayStations.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkExportNamedSplayStations.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkExportNamedSplayStations.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="chkExportNamedSplayStationsData.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="chkExportNamedSplayStationsData.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -274,22 +262,22 @@
     <value>NoControl</value>
   </data>
   <data name="chkExportNamedSplayStationsData.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 81</value>
+    <value>22, 90</value>
+  </data>
+  <data name="chkExportNamedSplayStationsData.Properties.Caption" xml:space="preserve">
+    <value>Splay stations data</value>
   </data>
   <data name="chkExportNamedSplayStationsData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 17</value>
+    <value>115, 20</value>
   </data>
   <data name="chkExportNamedSplayStationsData.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
-  </data>
-  <data name="chkExportNamedSplayStationsData.Text" xml:space="preserve">
-    <value>Splay stations data</value>
   </data>
   <data name="&gt;&gt;chkExportNamedSplayStationsData.Name" xml:space="preserve">
     <value>chkExportNamedSplayStationsData</value>
   </data>
   <data name="&gt;&gt;chkExportNamedSplayStationsData.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkExportNamedSplayStationsData.Parent" xml:space="preserve">
     <value>$this</value>
@@ -305,74 +293,6 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>317, 198</value>
-  </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4KwAAfTEAAH41AAB/OgAAhTwAAIJAAACHQwAAiEUAAIlJAACO
-        TgAWiUwAEI1SAD+UawA6l2wAPpdsAD6YbQAAt3QAALl2AAC9egAAvn8AQqJ1AE2oewBJrH8AAMB/AAC+
-        gAAAvZcAAL2YAE+vgwBYsIUAXbWLAADCgQAAwocAAMeZAADImgAAz5kAANaZAADXnAAA2JoAANybAADb
-        nQAA3Z4AANuhAADeoQAA5KMAAOGnAELhugBv2s8AcdrPAGrb0QBv29AAct7WAG3lzABw5s8ApaWiAKen
-        pACtrasArq6sALCwrQC1r7AAs7OyALWwsAC0tLIAxLO4AMq0uwCT6t0Al+zgAMLCwQDFxcQAy8vKAODf
-        3gDh4N8A4uHgAOTj4gDl5OMA5ublAOjo5wDq6egA7OvrAO7t7QDx8O8A8vHxAPTy8wD09PMA9fX0APj2
-        9gD49/gA+vn5APz5+QD/+/0A+/z8AP7+/gCY/5EAtf+xANT/0QD///8AAAAAABQvAAAiUAAAMHAAAD2Q
-        AABMsAAAWc8AAGfwAAB4/xEAiv8xAJz/UQCu/3EAwP+RANL/sQDk/9EA////AAAAAAAmLwAAQFAAAFpw
-        AAB0kAAAjrAAAKnPAADC8AAA0f8RANj/MQDe/1EA4/9xAOn/kQDv/7EA9v/RAP///wAAAAAALyYAAFBB
-        AABwWwAAkHQAALCOAADPqQAA8MMAAP/SEQD/2DEA/91RAP/kcQD/6pEA//CxAP/20QD///8AAAAAAC8U
-        AABQIgAAcDAAAJA+AACwTQAAz1sAAPBpAAD/eREA/4oxAP+dUQD/r3EA/8GRAP/SsQD/5dEA////AAAA
-        AAAvAwAAUAQAAHAGAACQCQAAsAoAAM8MAADwDgAA/yASAP8+MQD/XFEA/3pxAP+XkQD/trEA/9TRAP//
-        /wAAAAAALwAOAFAAFwBwACEAkAArALAANgDPAEAA8ABJAP8RWgD/MXAA/1GGAP9xnAD/kbIA/7HIAP/R
-        3wD///8AAAAAAC8AIABQADYAcABMAJAAYgCwAHgAzwCOAPAApAD/EbMA/zG+AP9RxwD/cdEA/5HcAP+x
-        5QD/0fAA////AAAAAAAsAC8ASwBQAGkAcACHAJAApQCwAMQAzwDhAPAA8BH/APIx/wD0Uf8A9nH/APeR
-        /wD5sf8A+9H/AP///wAAAAAAGwAvAC0AUAA/AHAAUgCQAGMAsAB2AM8AiADwAJkR/wCmMf8AtFH/AMJx
-        /wDPkf8A3LH/AOvR/wD///8AAAAAAAgALwAOAFAAFQBwABsAkAAhALAAJgDPACwA8AA+Ef8AWDH/AHFR
-        /wCMcf8AppH/AL+x/wDa0f8A////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMCQkOAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAACxgsLB8QAAAAAAAAAAA8Ojk5OTk5OTk5ODk4ODo9Pw0TKScnKxgPAAAA
-        AAAAADpfX19fX19fX19fX19fX18eEicoJCQmKhQQAAAAAAAAOV9fX19fX19fX1tfX19fHREnJiQkJCQm
-        KRkQAAAAAAA4X1taWlpaWlpaWlpbXxwSKyomJSYmJSUqLSAVAAAAADhfWlpaWlpaWlpaWllfAQMEBC4j
-        IyMjLgYJCQoAAAAAOF9XV1dXV1dXV1dXWltfX18DNCEiIiI1BwAAAAAAAAA4X1ZXVldWV1ZXVldWV1hZ
-        XwJBGhsbG0IIAAAAAAAAADhfVlZWVlZWVlZWVlZWVlhfAjEvMDAyMwgAAAAAAAAAOF9UVlRWVFZUVlRW
-        VFVVVlsXAgMCAgMFFgAAAAAAAAA4X1RUVFRUVFRUVFRUVFRUV1lfX19fX0AAAAAAAAAAADhfU1NTU1NT
-        U1NTU1NTU1NUVFVVVVVfOwAAAAAAAAAAOF9SUlFSUVJRUlFSUVJRUlFSUVJRUl84AAAAAAAAAAA4X1FR
-        UVFRUVFRUVFRUVFRUVFRUVFRXzgAAAAAAAAAADhfUFBQUFBQUFBQUFBQUFBQUFBQUFBfOAAAAAAAAAAA
-        OF9QUFBQUFBQUFBQUFBQUFBQUFBQT184AAAAAAAAAAA4X09PT09PT09PT09PT09PT09PT09PXzgAAAAA
-        AAAAADhfTk9OT09OT05PTk9OT05PT09OTk5fOAAAAAAAAAAAOF9OTk5OTk5OTk5OTk5OTk5OTk5OTl84
-        AAAAAAAAAAA4X01OTU1OTk5OTk5OTk5NTU1NTU1MXzgAAAAAAAAAADhfTE1NTU1NTU1NTU1NTFJfX19f
-        X19fOQAAAAAAAAAAOF9MTExMTUxNTE1MTExLX0U3Nzc3Nl86AAAAAAAAAAA5X0tLS0xLS0tLS0tLTEtf
-        N19aVU9fTT4AAAAAAAAAADlfSUtLS0tLS0tLS0tLSV83WlJNX0w+AAAAAAAAAAAAOV9ISkpLSkpKSkpK
-        SkpJXzdUTl9LPgAAAAAAAAAAAAA5X0hISUlJSUlJSUlJSEhfN09fSz4AAAAAAAAAAAAAADlfRkdHR0dH
-        R0dHR0dHRl82X0xDAAAAAAAAAAAAAAAAOl9fX19fX19fX19fX19fX19NQwAAAAAAAAAAAAAAAABEOjk5
-        OTk5OTk5OTk5OTg5OkQAAAAAAAAAAAAAAAD/////////////+H////A/wAAAH8AAAA/AAAAHwAAAA8AA
-        AAPAAAAfwAAAH8AAAB/AAAAfwAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AA
-        AD/AAAA/wAAAP8AAAH/AAAD/wAAB/8AAA//AAAf/wAAP/ygAAAAQAAAAIAAAAAEACAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAHktAAB7MgAAfjMAAH42AACAOAAAhDwAAIdEAACIQwAAiEYAAIlJAACM
-        SwAAsngAALV+AAC5eAAAvX4AN6VzADundgBJrH4AAMF+AFmzhwAAw4IAAMudAADVmgAA3J4AONq2AETR
-        pQBT2LAAZt3QAE/pwQBT68QAfuHYAKWlowCnp6QAra2rAK6urACwr60AsLCtALWvsAC2trQAurKzALq6
-        uADKtLsA0Li/AMrKyADg394AyuDVAOHg3wDj4+IA5OTjAObl5ADo5+YA6enoAOzr6gDt7OsA7+/uAPDv
-        7gDy8fAA9PHxAPP08gD09PMA9vb2APj09AD99PcA+ff4APn4+AD8+foA//n9AP7+/gAAsDYAAM9AAADw
-        SgAR/1sAMf9xAFH/hwBx/50Akf+yALH/yQDR/98A////AAAAAAACLwAABFAAAAZwAAAIkAAACrAAAAvP
-        AAAO8AAAIP8SAD3/MQBb/1EAef9xAJj/kQC1/7EA1P/RAP///wAAAAAAFC8AACJQAAAwcAAAPZAAAEyw
-        AABZzwAAZ/AAAHj/EQCK/zEAnP9RAK7/cQDA/5EA0v+xAOT/0QD///8AAAAAACYvAABAUAAAWnAAAHSQ
-        AACOsAAAqc8AAMLwAADR/xEA2P8xAN7/UQDj/3EA6f+RAO//sQD2/9EA////AAAAAAAvJgAAUEEAAHBb
-        AACQdAAAsI4AAM+pAADwwwAA/9IRAP/YMQD/3VEA/+RxAP/qkQD/8LEA//bRAP///wAAAAAALxQAAFAi
-        AABwMAAAkD4AALBNAADPWwAA8GkAAP95EQD/ijEA/51RAP+vcQD/wZEA/9KxAP/l0QD///8AAAAAAC8D
-        AABQBAAAcAYAAJAJAACwCgAAzwwAAPAOAAD/IBIA/z4xAP9cUQD/enEA/5eRAP+2sQD/1NEA////AAAA
-        AAAvAA4AUAAXAHAAIQCQACsAsAA2AM8AQADwAEkA/xFaAP8xcAD/UYYA/3GcAP+RsgD/scgA/9HfAP//
-        /wAAAAAALwAgAFAANgBwAEwAkABiALAAeADPAI4A8ACkAP8RswD/Mb4A/1HHAP9x0QD/kdwA/7HlAP/R
-        8AD///8AAAAAACwALwBLAFAAaQBwAIcAkAClALAAxADPAOEA8ADwEf8A8jH/APRR/wD2cf8A95H/APmx
-        /wD70f8A////AAAAAAAbAC8ALQBQAD8AcABSAJAAYwCwAHYAzwCIAPAAmRH/AKYx/wC0Uf8AwnH/AM+R
-        /wDcsf8A69H/AP///wAAAAAACAAvAA4AUAAVAHAAGwCQACEAsAAmAM8ALADwAD4R/wBYMf8AcVH/AIxx
-        /wCmkf8Av7H/ANrR/wD///8AAAAAAAAAAAAAAAAAAAAAACkkIyIiIiIiJCgrCAsAAAAlT09PT09PT09P
-        BRMVCgAAI09ERERERE9PAg4YGA8KACJPQUFBQUJPARodFxceGwsiTz09PT1ARBAEDBkWDQkRIk88PDw8
-        PUA8LgQfHAcAACJPOTk5OTk6PkMSAwYUAAAiTzc3Nzg4Nzg6P08qAAAAIk81NjY2NjY1NTZPJgAAACJP
-        NDQ1NDQ7T09PTyMAAAAiTzIzMzMyTywhIE8kAAAAI08wMTExME8hNU80LAAAACNPLS0vLS1PIE80LAAA
-        AAAkT09PT09PT080LAAAAAAAJyUjIyMjIiMkJwAAAAAAAP//AAAABwAAAAMAAAABAAAAAAAAAAAAAAAD
-        AAAAAwAAAAcAAAAHAAAABwAAAAcAAAAHAAAADwAAAB8AAAA/AAA=
-</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

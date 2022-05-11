@@ -114,7 +114,7 @@ Namespace cSurvey.Design
             Return oItems.Values.GetEnumerator
         End Function
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLOptions As XmlElement = Document.CreateElement("options")
             For Each oItem As cOptions In oItems.Values
                 Call oItem.SaveTo(File, Document, oXMLOptions)

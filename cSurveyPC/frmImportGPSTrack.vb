@@ -1,4 +1,4 @@
-﻿Public Class frmImportGPSTrack
+﻿friend Class frmImportGPSTrack
 
     Private Sub pSettingsLoad()
         Try

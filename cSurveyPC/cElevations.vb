@@ -22,10 +22,10 @@ Namespace cSurvey.Surface
         End Function
 
         Friend Function Contains(ID As String) As Boolean
-            Return oItems.Select(Function(elevation) elevation.ID = ID).Count
+            Return oItems.Where(Function(elevation) elevation.ID = ID).Count > 0
         End Function
 
-        Friend Sub New(Survey As cSurvey, ByVal File As Storage.cFile, ByVal Elevations As XmlElement)
+        Friend Sub New(Survey As cSurvey, ByVal File As cFile, ByVal Elevations As XmlElement)
             oSurvey = Survey
             oItems = New List(Of cElevation)
             Dim sDefault As String = modXML.GetAttributeValue(Elevations, "default", "")
@@ -140,7 +140,7 @@ Namespace cSurvey.Surface
             oItems = New List(Of cElevation)
         End Sub
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlElevations As XmlElement = Document.CreateElement("elevations")
             If Not oDefault Is Nothing Then
                 Call oXmlElevations.SetAttribute("default", oDefault.ID)

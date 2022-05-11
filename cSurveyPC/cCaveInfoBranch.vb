@@ -210,7 +210,7 @@ Namespace cSurvey
             If modXML.ChildElementExist(CaveInfoBranch, "cn") Then oConnection = New cConnectionDef(CaveInfoBranch("cn"))
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlBranch As XmlElement = Document.CreateElement("branch")
             Call oXmlBranch.SetAttribute("name", sName)
             If sDescription <> "" Then Call oXmlBranch.SetAttribute("description", sDescription)
@@ -239,6 +239,7 @@ Namespace cSurvey
 
         Friend Sub SetCaveName(ByVal Name As String)
             sCave = Name
+            Call oBranches.SetCave(Name)
         End Sub
 
         Friend Sub SetName(ByVal Name As String)

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmResurveyOptions
-    Inherits cForm
+    Inherits DevExpress.XtraEditors.XtraForm
 
     'Form esegue l'override del metodo Dispose per pulire l'elenco dei componenti.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,40 +20,59 @@ Partial Class frmResurveyOptions
     'NOTA: la procedura che segue è richiesta da Progettazione Windows Form
     'Può essere modificata in Progettazione Windows Form.  
     'Non modificarla nell'editor del codice.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmResurveyOptions))
-        Me.cmdOk = New System.Windows.Forms.Button()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.cboProfileType = New System.Windows.Forms.ComboBox()
+        Me.lblProfileType = New System.Windows.Forms.Label()
         Me.cboDropScaleType = New System.Windows.Forms.ComboBox()
         Me.lblDropScaleType = New System.Windows.Forms.Label()
         Me.cboPlanScaleType = New System.Windows.Forms.ComboBox()
         Me.lblPlanScaleType = New System.Windows.Forms.Label()
-        Me.chkUseDropForInclination = New System.Windows.Forms.CheckBox()
-        Me.chkSkipInvalidStation = New System.Windows.Forms.CheckBox()
+        Me.chkUseDropForInclination = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkSkipInvalidStation = New DevExpress.XtraEditors.CheckEdit()
         Me.lblNordCorrectionDegrees = New System.Windows.Forms.Label()
-        Me.txtNordCorrection = New System.Windows.Forms.NumericUpDown()
         Me.lblNordCorrection = New System.Windows.Forms.Label()
         Me.cboCalculateMode = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.txtUDMaxValue = New System.Windows.Forms.NumericUpDown()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.txtLRMaxValue = New System.Windows.Forms.NumericUpDown()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.chkLRUDCalculate = New System.Windows.Forms.CheckBox()
+        Me.chkLRUDCalculate = New DevExpress.XtraEditors.CheckEdit()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.txtLRUDBorderWidth = New System.Windows.Forms.NumericUpDown()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.GroupBox1.SuspendLayout()
-        CType(Me.txtNordCorrection, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox2.SuspendLayout()
-        CType(Me.txtUDMaxValue, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtLRMaxValue, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtLRUDBorderWidth, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.XtraTabControl1 = New DevExpress.XtraTab.XtraTabControl()
+        Me.tabCalculation = New DevExpress.XtraTab.XtraTabPage()
+        Me.cboShotDirection = New System.Windows.Forms.ComboBox()
+        Me.lblShotDirection = New System.Windows.Forms.Label()
+        Me.txtNordCorrection = New DevExpress.XtraEditors.SpinEdit()
+        Me.tabLRUD = New DevExpress.XtraTab.XtraTabPage()
+        Me.cboLRUDStation = New System.Windows.Forms.ComboBox()
+        Me.lblLRUDStation = New System.Windows.Forms.Label()
+        Me.frmLRUDFromImages = New DevExpress.XtraEditors.GroupControl()
+        Me.txtUDMaxValue = New DevExpress.XtraEditors.SpinEdit()
+        Me.txtLRMaxValue = New DevExpress.XtraEditors.SpinEdit()
+        Me.txtLRUDBorderWidth = New DevExpress.XtraEditors.SpinEdit()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        CType(Me.chkUseDropForInclination.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkSkipInvalidStation.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkLRUDCalculate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
+        CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.XtraTabControl1.SuspendLayout()
+        Me.tabCalculation.SuspendLayout()
+        CType(Me.txtNordCorrection.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabLRUD.SuspendLayout()
+        CType(Me.frmLRUDFromImages, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.frmLRUDFromImages.SuspendLayout()
+        CType(Me.txtUDMaxValue.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtLRMaxValue.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtLRUDBorderWidth.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'cmdOk
@@ -61,31 +80,25 @@ Partial Class frmResurveyOptions
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
         '
         'cmdCancel
         '
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
         '
-        'GroupBox1
+        'cboProfileType
         '
-        resources.ApplyResources(Me.GroupBox1, "GroupBox1")
-        Me.GroupBox1.Controls.Add(Me.cboDropScaleType)
-        Me.GroupBox1.Controls.Add(Me.lblDropScaleType)
-        Me.GroupBox1.Controls.Add(Me.cboPlanScaleType)
-        Me.GroupBox1.Controls.Add(Me.lblPlanScaleType)
-        Me.GroupBox1.Controls.Add(Me.chkUseDropForInclination)
-        Me.GroupBox1.Controls.Add(Me.chkSkipInvalidStation)
-        Me.GroupBox1.Controls.Add(Me.lblNordCorrectionDegrees)
-        Me.GroupBox1.Controls.Add(Me.txtNordCorrection)
-        Me.GroupBox1.Controls.Add(Me.lblNordCorrection)
-        Me.GroupBox1.Controls.Add(Me.cboCalculateMode)
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.TabStop = False
+        Me.cboProfileType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboProfileType.FormattingEnabled = True
+        Me.cboProfileType.Items.AddRange(New Object() {resources.GetString("cboProfileType.Items"), resources.GetString("cboProfileType.Items1")})
+        resources.ApplyResources(Me.cboProfileType, "cboProfileType")
+        Me.cboProfileType.Name = "cboProfileType"
+        '
+        'lblProfileType
+        '
+        resources.ApplyResources(Me.lblProfileType, "lblProfileType")
+        Me.lblProfileType.Name = "lblProfileType"
         '
         'cboDropScaleType
         '
@@ -117,27 +130,18 @@ Partial Class frmResurveyOptions
         '
         resources.ApplyResources(Me.chkUseDropForInclination, "chkUseDropForInclination")
         Me.chkUseDropForInclination.Name = "chkUseDropForInclination"
-        Me.chkUseDropForInclination.UseVisualStyleBackColor = True
+        Me.chkUseDropForInclination.Properties.Caption = resources.GetString("chkUseDropForInclination.Properties.Caption")
         '
         'chkSkipInvalidStation
         '
         resources.ApplyResources(Me.chkSkipInvalidStation, "chkSkipInvalidStation")
         Me.chkSkipInvalidStation.Name = "chkSkipInvalidStation"
-        Me.chkSkipInvalidStation.UseVisualStyleBackColor = True
+        Me.chkSkipInvalidStation.Properties.Caption = resources.GetString("chkSkipInvalidStation.Properties.Caption")
         '
         'lblNordCorrectionDegrees
         '
         resources.ApplyResources(Me.lblNordCorrectionDegrees, "lblNordCorrectionDegrees")
         Me.lblNordCorrectionDegrees.Name = "lblNordCorrectionDegrees"
-        '
-        'txtNordCorrection
-        '
-        resources.ApplyResources(Me.txtNordCorrection, "txtNordCorrection")
-        Me.txtNordCorrection.DecimalPlaces = 1
-        Me.txtNordCorrection.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
-        Me.txtNordCorrection.Maximum = New Decimal(New Integer() {359, 0, 0, 0})
-        Me.txtNordCorrection.Minimum = New Decimal(New Integer() {359, 0, 0, -2147483648})
-        Me.txtNordCorrection.Name = "txtNordCorrection"
         '
         'lblNordCorrection
         '
@@ -157,35 +161,10 @@ Partial Class frmResurveyOptions
         resources.ApplyResources(Me.Label1, "Label1")
         Me.Label1.Name = "Label1"
         '
-        'GroupBox2
-        '
-        resources.ApplyResources(Me.GroupBox2, "GroupBox2")
-        Me.GroupBox2.Controls.Add(Me.Label6)
-        Me.GroupBox2.Controls.Add(Me.txtUDMaxValue)
-        Me.GroupBox2.Controls.Add(Me.Label7)
-        Me.GroupBox2.Controls.Add(Me.Label4)
-        Me.GroupBox2.Controls.Add(Me.txtLRMaxValue)
-        Me.GroupBox2.Controls.Add(Me.Label5)
-        Me.GroupBox2.Controls.Add(Me.chkLRUDCalculate)
-        Me.GroupBox2.Controls.Add(Me.Label2)
-        Me.GroupBox2.Controls.Add(Me.txtLRUDBorderWidth)
-        Me.GroupBox2.Controls.Add(Me.Label3)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.TabStop = False
-        '
         'Label6
         '
         resources.ApplyResources(Me.Label6, "Label6")
         Me.Label6.Name = "Label6"
-        '
-        'txtUDMaxValue
-        '
-        Me.txtUDMaxValue.DecimalPlaces = 1
-        Me.txtUDMaxValue.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
-        resources.ApplyResources(Me.txtUDMaxValue, "txtUDMaxValue")
-        Me.txtUDMaxValue.Minimum = New Decimal(New Integer() {2, 0, 0, 65536})
-        Me.txtUDMaxValue.Name = "txtUDMaxValue"
-        Me.txtUDMaxValue.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'Label7
         '
@@ -197,15 +176,6 @@ Partial Class frmResurveyOptions
         resources.ApplyResources(Me.Label4, "Label4")
         Me.Label4.Name = "Label4"
         '
-        'txtLRMaxValue
-        '
-        Me.txtLRMaxValue.DecimalPlaces = 1
-        Me.txtLRMaxValue.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
-        resources.ApplyResources(Me.txtLRMaxValue, "txtLRMaxValue")
-        Me.txtLRMaxValue.Minimum = New Decimal(New Integer() {2, 0, 0, 65536})
-        Me.txtLRMaxValue.Name = "txtLRMaxValue"
-        Me.txtLRMaxValue.Value = New Decimal(New Integer() {1, 0, 0, 0})
-        '
         'Label5
         '
         resources.ApplyResources(Me.Label5, "Label5")
@@ -215,24 +185,151 @@ Partial Class frmResurveyOptions
         '
         resources.ApplyResources(Me.chkLRUDCalculate, "chkLRUDCalculate")
         Me.chkLRUDCalculate.Name = "chkLRUDCalculate"
-        Me.chkLRUDCalculate.UseVisualStyleBackColor = True
+        Me.chkLRUDCalculate.Properties.Caption = resources.GetString("chkLRUDCalculate.Properties.Caption")
         '
         'Label2
         '
         resources.ApplyResources(Me.Label2, "Label2")
         Me.Label2.Name = "Label2"
         '
-        'txtLRUDBorderWidth
-        '
-        resources.ApplyResources(Me.txtLRUDBorderWidth, "txtLRUDBorderWidth")
-        Me.txtLRUDBorderWidth.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.txtLRUDBorderWidth.Name = "txtLRUDBorderWidth"
-        Me.txtLRUDBorderWidth.Value = New Decimal(New Integer() {1, 0, 0, 0})
-        '
         'Label3
         '
         resources.ApplyResources(Me.Label3, "Label3")
         Me.Label3.Name = "Label3"
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.cmdCancel)
+        Me.Panel1.Controls.Add(Me.cmdOk)
+        resources.ApplyResources(Me.Panel1, "Panel1")
+        Me.Panel1.Name = "Panel1"
+        '
+        'XtraTabControl1
+        '
+        resources.ApplyResources(Me.XtraTabControl1, "XtraTabControl1")
+        Me.XtraTabControl1.Name = "XtraTabControl1"
+        Me.XtraTabControl1.SelectedTabPage = Me.tabCalculation
+        Me.XtraTabControl1.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tabCalculation, Me.tabLRUD})
+        '
+        'tabCalculation
+        '
+        Me.tabCalculation.Controls.Add(Me.cboShotDirection)
+        Me.tabCalculation.Controls.Add(Me.lblShotDirection)
+        Me.tabCalculation.Controls.Add(Me.txtNordCorrection)
+        Me.tabCalculation.Controls.Add(Me.cboProfileType)
+        Me.tabCalculation.Controls.Add(Me.lblProfileType)
+        Me.tabCalculation.Controls.Add(Me.cboCalculateMode)
+        Me.tabCalculation.Controls.Add(Me.cboDropScaleType)
+        Me.tabCalculation.Controls.Add(Me.Label1)
+        Me.tabCalculation.Controls.Add(Me.lblDropScaleType)
+        Me.tabCalculation.Controls.Add(Me.lblNordCorrection)
+        Me.tabCalculation.Controls.Add(Me.cboPlanScaleType)
+        Me.tabCalculation.Controls.Add(Me.lblPlanScaleType)
+        Me.tabCalculation.Controls.Add(Me.lblNordCorrectionDegrees)
+        Me.tabCalculation.Controls.Add(Me.chkUseDropForInclination)
+        Me.tabCalculation.Controls.Add(Me.chkSkipInvalidStation)
+        Me.tabCalculation.Name = "tabCalculation"
+        resources.ApplyResources(Me.tabCalculation, "tabCalculation")
+        '
+        'cboShotDirection
+        '
+        Me.cboShotDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboShotDirection.FormattingEnabled = True
+        Me.cboShotDirection.Items.AddRange(New Object() {resources.GetString("cboShotDirection.Items")})
+        resources.ApplyResources(Me.cboShotDirection, "cboShotDirection")
+        Me.cboShotDirection.Name = "cboShotDirection"
+        '
+        'lblShotDirection
+        '
+        resources.ApplyResources(Me.lblShotDirection, "lblShotDirection")
+        Me.lblShotDirection.Name = "lblShotDirection"
+        '
+        'txtNordCorrection
+        '
+        resources.ApplyResources(Me.txtNordCorrection, "txtNordCorrection")
+        Me.txtNordCorrection.Name = "txtNordCorrection"
+        Me.txtNordCorrection.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtNordCorrection.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtNordCorrection.Properties.DisplayFormat.FormatString = "N2"
+        Me.txtNordCorrection.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtNordCorrection.Properties.EditFormat.FormatString = "N2"
+        Me.txtNordCorrection.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtNordCorrection.Properties.Mask.EditMask = resources.GetString("txtNordCorrection.Properties.Mask.EditMask")
+        '
+        'tabLRUD
+        '
+        Me.tabLRUD.Controls.Add(Me.cboLRUDStation)
+        Me.tabLRUD.Controls.Add(Me.lblLRUDStation)
+        Me.tabLRUD.Controls.Add(Me.frmLRUDFromImages)
+        Me.tabLRUD.Name = "tabLRUD"
+        resources.ApplyResources(Me.tabLRUD, "tabLRUD")
+        '
+        'cboLRUDStation
+        '
+        Me.cboLRUDStation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboLRUDStation.FormattingEnabled = True
+        Me.cboLRUDStation.Items.AddRange(New Object() {resources.GetString("cboLRUDStation.Items"), resources.GetString("cboLRUDStation.Items1"), resources.GetString("cboLRUDStation.Items2")})
+        resources.ApplyResources(Me.cboLRUDStation, "cboLRUDStation")
+        Me.cboLRUDStation.Name = "cboLRUDStation"
+        '
+        'lblLRUDStation
+        '
+        resources.ApplyResources(Me.lblLRUDStation, "lblLRUDStation")
+        Me.lblLRUDStation.Name = "lblLRUDStation"
+        '
+        'frmLRUDFromImages
+        '
+        Me.frmLRUDFromImages.Controls.Add(Me.txtUDMaxValue)
+        Me.frmLRUDFromImages.Controls.Add(Me.txtLRMaxValue)
+        Me.frmLRUDFromImages.Controls.Add(Me.txtLRUDBorderWidth)
+        Me.frmLRUDFromImages.Controls.Add(Me.Label6)
+        Me.frmLRUDFromImages.Controls.Add(Me.chkLRUDCalculate)
+        Me.frmLRUDFromImages.Controls.Add(Me.Label3)
+        Me.frmLRUDFromImages.Controls.Add(Me.Label7)
+        Me.frmLRUDFromImages.Controls.Add(Me.Label4)
+        Me.frmLRUDFromImages.Controls.Add(Me.Label2)
+        Me.frmLRUDFromImages.Controls.Add(Me.Label5)
+        resources.ApplyResources(Me.frmLRUDFromImages, "frmLRUDFromImages")
+        Me.frmLRUDFromImages.Name = "frmLRUDFromImages"
+        '
+        'txtUDMaxValue
+        '
+        resources.ApplyResources(Me.txtUDMaxValue, "txtUDMaxValue")
+        Me.txtUDMaxValue.Name = "txtUDMaxValue"
+        Me.txtUDMaxValue.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtUDMaxValue.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtUDMaxValue.Properties.DisplayFormat.FormatString = "N1"
+        Me.txtUDMaxValue.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtUDMaxValue.Properties.EditFormat.FormatString = "N0"
+        Me.txtUDMaxValue.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtUDMaxValue.Properties.Mask.EditMask = resources.GetString("txtUDMaxValue.Properties.Mask.EditMask")
+        '
+        'txtLRMaxValue
+        '
+        resources.ApplyResources(Me.txtLRMaxValue, "txtLRMaxValue")
+        Me.txtLRMaxValue.Name = "txtLRMaxValue"
+        Me.txtLRMaxValue.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtLRMaxValue.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtLRMaxValue.Properties.DisplayFormat.FormatString = "N1"
+        Me.txtLRMaxValue.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtLRMaxValue.Properties.EditFormat.FormatString = "N0"
+        Me.txtLRMaxValue.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtLRMaxValue.Properties.Mask.EditMask = resources.GetString("txtLRMaxValue.Properties.Mask.EditMask")
+        '
+        'txtLRUDBorderWidth
+        '
+        resources.ApplyResources(Me.txtLRUDBorderWidth, "txtLRUDBorderWidth")
+        Me.txtLRUDBorderWidth.Name = "txtLRUDBorderWidth"
+        Me.txtLRUDBorderWidth.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtLRUDBorderWidth.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtLRUDBorderWidth.Properties.DisplayFormat.FormatString = "N0"
+        Me.txtLRUDBorderWidth.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtLRUDBorderWidth.Properties.EditFormat.FormatString = "N0"
+        Me.txtLRUDBorderWidth.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtLRUDBorderWidth.Properties.IsFloatValue = False
+        Me.txtLRUDBorderWidth.Properties.Mask.EditMask = resources.GetString("txtLRUDBorderWidth.Properties.Mask.EditMask")
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.XtraTabControl1)
+        resources.ApplyResources(Me.Panel2, "Panel2")
+        Me.Panel2.Name = "Panel2"
         '
         'frmResurveyOptions
         '
@@ -240,47 +337,67 @@ Partial Class frmResurveyOptions
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
-        Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.cmdOk)
-        Me.Controls.Add(Me.cmdCancel)
+        Me.Controls.Add(Me.Panel2)
+        Me.Controls.Add(Me.Panel1)
+        Me.IconOptions.Icon = CType(resources.GetObject("frmResurveyOptions.IconOptions.Icon"), System.Drawing.Icon)
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.parameters
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmResurveyOptions"
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        CType(Me.txtNordCorrection, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
-        CType(Me.txtUDMaxValue, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtLRMaxValue, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtLRUDBorderWidth, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkUseDropForInclination.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkSkipInvalidStation.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkLRUDCalculate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.XtraTabControl1.ResumeLayout(False)
+        Me.tabCalculation.ResumeLayout(False)
+        Me.tabCalculation.PerformLayout()
+        CType(Me.txtNordCorrection.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabLRUD.ResumeLayout(False)
+        Me.tabLRUD.PerformLayout()
+        CType(Me.frmLRUDFromImages, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.frmLRUDFromImages.ResumeLayout(False)
+        Me.frmLRUDFromImages.PerformLayout()
+        CType(Me.txtUDMaxValue.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtLRMaxValue.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtLRUDBorderWidth.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cboCalculateMode As System.Windows.Forms.ComboBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents lblNordCorrection As System.Windows.Forms.Label
     Friend WithEvents lblNordCorrectionDegrees As System.Windows.Forms.Label
-    Friend WithEvents txtNordCorrection As System.Windows.Forms.NumericUpDown
-    Friend WithEvents chkSkipInvalidStation As System.Windows.Forms.CheckBox
-    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents chkSkipInvalidStation As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents txtUDMaxValue As System.Windows.Forms.NumericUpDown
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents txtLRMaxValue As System.Windows.Forms.NumericUpDown
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents chkLRUDCalculate As System.Windows.Forms.CheckBox
+    Friend WithEvents chkLRUDCalculate As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents txtLRUDBorderWidth As System.Windows.Forms.NumericUpDown
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents chkUseDropForInclination As CheckBox
+    Friend WithEvents chkUseDropForInclination As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents cboDropScaleType As ComboBox
     Friend WithEvents lblDropScaleType As Label
     Friend WithEvents cboPlanScaleType As ComboBox
     Friend WithEvents lblPlanScaleType As Label
+    Friend WithEvents cboProfileType As ComboBox
+    Friend WithEvents lblProfileType As Label
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents XtraTabControl1 As DevExpress.XtraTab.XtraTabControl
+    Friend WithEvents tabCalculation As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents tabLRUD As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents frmLRUDFromImages As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents txtNordCorrection As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents txtLRUDBorderWidth As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents txtUDMaxValue As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents txtLRMaxValue As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents cboShotDirection As ComboBox
+    Friend WithEvents lblShotDirection As Label
+    Friend WithEvents cboLRUDStation As ComboBox
+    Friend WithEvents lblLRUDStation As Label
 End Class

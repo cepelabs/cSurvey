@@ -270,7 +270,6 @@ Partial Class cItemLegendPropertyControl
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.Window
         Me.Controls.Add(Me.txtPropLegendItemRowColMaxItems)
         Me.Controls.Add(Me.lblPropLegendItemRowColMaxItems)
         Me.Controls.Add(Me.cboPropLegendItemFlowDirection)

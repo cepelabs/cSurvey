@@ -124,7 +124,7 @@
     <value>До</value>
   </data>
   <data name="colDist.HeaderText" xml:space="preserve">
-    <value>Длинна</value>
+    <value>Длина</value>
   </data>
   <data name="colDirezione.HeaderText" xml:space="preserve">
     <value>Азимут</value>
@@ -1481,7 +1481,7 @@
 </value>
   </data>
   <data name="cboTrigpointFontSize.Items" xml:space="preserve">
-    <value>[По умолчанию]</value>
+    <value>По умолчанию</value>
   </data>
   <data name="chkTrigpointFontBold.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1577,12 +1577,6 @@
   </data>
   <data name="lblTrigpointCoordinateZone.Text" xml:space="preserve">
     <value>Зона:</value>
-  </data>
-  <data name="txtTrigpointCoordinateY.ToolTip" xml:space="preserve">
-    <value>Долгота </value>
-  </data>
-  <data name="txtTrigpointCoordinateX.ToolTip" xml:space="preserve">
-    <value>Широта</value>
   </data>
   <data name="tabTrigpointCoordinate.Size" type="System.Drawing.Size, System.Drawing">
     <value>297, 531</value>
@@ -4393,7 +4387,7 @@
     <value>Шрифт:</value>
   </data>
   <data name="cboPropTextFontSize.Items" xml:space="preserve">
-    <value>[По умолчанию]</value>
+    <value>По умолчанию</value>
   </data>
   <data name="cboPropTextFontSize.ToolTip" xml:space="preserve">
     <value>Размер символа</value>
@@ -4498,7 +4492,7 @@
     <value>Выровнять по левому краю</value>
   </data>
   <data name="cboPropTextSize.Items" xml:space="preserve">
-    <value>По умолчанию</value>
+    <value>1.00 - По умолчанию</value>
   </data>
   <data name="cboPropTextSize.ToolTip" xml:space="preserve">
     <value>Размер символа</value>
@@ -5891,7 +5885,7 @@
     <value>Подпись:</value>
   </data>
   <data name="cboPropCrossSectionMarkerScale.Items" xml:space="preserve">
-    <value>По умолчанию</value>
+    <value>1.00 - По умолчанию</value>
   </data>
   <data name="cboPropCrossSectionMarkerScale.ToolTip" xml:space="preserve">
     <value>Размер символа</value>
@@ -13030,5 +13024,38 @@
   </data>
   <data name="btnWorkspacesManage.Text" xml:space="preserve">
     <value>Управление панелями...</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Items2" xml:space="preserve">
+    <value>0.50 - Маленький</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Items3" xml:space="preserve">
+    <value>1.00 - Средний</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Items4" xml:space="preserve">
+    <value>2.00 - Большой</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Items5" xml:space="preserve">
+    <value>4.00 - Очень большой</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.Items5" xml:space="preserve">
+    <value>4.00 - Очень большой</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.Items4" xml:space="preserve">
+    <value>2.00 - Большой</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.Items3" xml:space="preserve">
+    <value>1.00 - Средний</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.Items2" xml:space="preserve">
+    <value>0.50 - Маленький</value>
+  </data>
+  <data name="cboPropTextSize.Items2" xml:space="preserve">
+    <value>0.50 - Маленький</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Items" xml:space="preserve">
+    <value>1.00 - По умолчанию</value>
+  </data>
+  <data name="chkPropRotateCenterOnOrigin.Text" xml:space="preserve">
+    <value>Выровнять на точке отсчета</value>
   </data>
 </root>

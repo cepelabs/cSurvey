@@ -484,22 +484,23 @@ Namespace cSurvey.Design.Items
             Call FixBound()
         End Sub
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
-            Dim oMatrix As Matrix = New Matrix
-            If PaintOptions.DrawTranslation Then
-                Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
-                Call oMatrix.Translate(oTranslation.Width, oTranslation.Height)
-            End If
-            Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
-            Call oSVGItem.SetAttribute("name", MyBase.Name)
-            Return oSVGItem
-        End Function
+        'Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        '    Using oMatrix As Matrix = New Matrix
+        '        If PaintOptions.DrawTranslation Then
+        '            Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
+        '            Call oMatrix.Translate(oTranslation.Width, oTranslation.Height)
+        '        End If
+        '        Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
+        '        If MyBase.Name <> "" Then Call oSVGItem.SetAttribute("name", MyBase.Name)
+        '        Return oSVGItem
+        '    End Using
+        'End Function
 
-        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
-            Dim oSVG As XmlDocument = modSVG.CreateSVG
-            Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
-            Return oSVG
-        End Function
+        'Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
+        '    Dim oSVG As XmlDocument = modSVG.CreateSVG
+        '    Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
+        '    Return oSVG
+        'End Function
 
         Private oFarRect As RectangleF
         Private oNearRect As RectangleF
@@ -527,8 +528,7 @@ Namespace cSurvey.Design.Items
                             Dim oDrawingObject As cOptionsDrawingObjects = PaintOptions.DrawingObjects
                             Dim sScale As Single = GetTextScaleFactor(PaintOptions)
 
-                            'Dim sArrowSize As Single = PaintOptions.DrawingObjects.CrossSectionMarkerArrowSize * sScale / MyBase.GetTextScaleFactor(PaintOptions)
-                            Dim sArrowSize As Single = PaintOptions.DrawingObjects.CrossSectionMarkerArrowSize * If(bArrowSizeEnabled, GetArrowScaleFactor(PaintOptions) / MyBase.GetTextScaleFactor(PaintOptions), sScale / MyBase.GetTextScaleFactor(PaintOptions))
+                            Dim sArrowSize As Single = PaintOptions.DrawingObjects.CrossSectionMarkerArrowSize * PaintOptions.GetCurrentDesignPropertiesValue("DesignCrossSectionMarkerArrowScaleFactor", 1) * If(bArrowSizeEnabled, GetArrowScaleFactor(PaintOptions) / GetTextScaleFactor(PaintOptions), sScale / GetTextScaleFactor(PaintOptions))
 
                             Dim sRefLeftWidth As Single
                             If bAutoLeftWidth Then
@@ -681,7 +681,7 @@ Namespace cSurvey.Design.Items
 
                                 Dim sScale As Single = GetTextScaleFactor(PaintOptions)
 
-                                Dim sArrowSize As Single = PaintOptions.DrawingObjects.CrossSectionMarkerArrowSize * sScale / MyBase.GetTextScaleFactor(PaintOptions)
+                                Dim sArrowSize As Single = PaintOptions.DrawingObjects.CrossSectionMarkerArrowSize * PaintOptions.GetCurrentDesignPropertiesValue("DesignCrossSectionMarkerArrowScaleFactor", 1) * sScale / GetTextScaleFactor(PaintOptions)
                                 Dim sRefLeftWidth As Single = sArrowSize * 4
                                 Dim sRefRightWidth As Single = sArrowSize * 4
 
@@ -724,7 +724,7 @@ Namespace cSurvey.Design.Items
         End Sub
 
         Friend Function GetArrowScaleFactor(PaintOptions As cOptions) As Single
-            Dim sTextScaleFactor As Single = MyBase.GetTextScaleFactor(PaintOptions)
+            Dim sTextScaleFactor As Single = GetTextScaleFactor(PaintOptions)
             Select Case iArrowSize
                 Case cIItemSizable.SizeEnum.Default
                     Return 1 * sTextScaleFactor
@@ -758,7 +758,7 @@ Namespace cSurvey.Design.Items
         End Function
 
         Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptions) As Single
-            Dim sTextScaleFactor As Single = MyBase.GetTextScaleFactor(PaintOptions)
+            Dim sTextScaleFactor As Single = MyBase.GetTextScaleFactor(PaintOptions) * PaintOptions.GetCurrentDesignPropertiesValue("DesignCrossSectionTextScaleFactor", 1) * PaintOptions.GetCurrentDesignPropertiesValue("DesignCrossSectionMarkerTextScaleFactor", 1)
             Select Case iTextSize
                 Case cIItemSizable.SizeEnum.Default
                     Return 1 * sTextScaleFactor
@@ -794,7 +794,7 @@ Namespace cSurvey.Design.Items
         Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             If MyBase.Points.Count > 0 Then
                 Call Render(Graphics, PaintOptions, Options, Selected)
-                If Not PaintOptions.IsDesign Or (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then
+                If Not PaintOptions.IsDesign OrElse (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then
                     Call MyBase.Caches(PaintOptions).Paint(Graphics, PaintOptions, Options)
                     If PaintOptions.ShowSegmentBindings Then
                         Call modPaint.PaintPointToSegmentBindings(Graphics, MyBase.Survey, Me, Selected)
@@ -830,7 +830,7 @@ Namespace cSurvey.Design.Items
             End If
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As Storage.cFile, ByVal item As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As cFile, ByVal item As XmlElement)
             Call MyBase.New(Survey, Design, Layer, File, item)
             oSurvey = Survey
 
@@ -911,36 +911,38 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
-        Friend Overrides Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
-            Dim oItem As XmlElement = MyBase.SaveTo(File, Document, Parent, Options)
+        Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+            If (File.Options And cFile.FileOptionsEnum.EmbedResource) <> cFile.FileOptionsEnum.EmbedResource Then
+                Dim oItem As XmlElement = MyBase.SaveTo(File, Document, Parent, Options)
 
-            If iTextPosition <> cIItemCrossSectionMarker.TextPositionEnum.AsArrow Then Call oItem.SetAttribute("textposition", iTextPosition.ToString("D"))
-            If sTextDistance <> 0 Then Call oItem.SetAttribute("textdistance", modNumbers.NumberToString(sTextDistance))
-            If bTextSizeEnabled Then
-                Call oItem.SetAttribute("textsizeenabled", "1")
-                If iTextSize <> cIItemSizable.SizeEnum.Default Then Call oItem.SetAttribute("textsize", iTextSize)
-            End If
-            If bTextShow Then Call oItem.SetAttribute("textshow", "1")
-            If iTextRotateMode <> cIItemRotable.RotateModeEnum.Fixed Then
-                Call oItem.SetAttribute("textrotatemode", iTextRotateMode)
-            End If
+                If iTextPosition <> cIItemCrossSectionMarker.TextPositionEnum.AsArrow Then Call oItem.SetAttribute("textposition", iTextPosition.ToString("D"))
+                If sTextDistance <> 0 Then Call oItem.SetAttribute("textdistance", modNumbers.NumberToString(sTextDistance))
+                If bTextSizeEnabled Then
+                    Call oItem.SetAttribute("textsizeenabled", "1")
+                    If iTextSize <> cIItemSizable.SizeEnum.Default Then Call oItem.SetAttribute("textsize", iTextSize)
+                End If
+                If bTextShow Then Call oItem.SetAttribute("textshow", "1")
+                If iTextRotateMode <> cIItemRotable.RotateModeEnum.Fixed Then
+                    Call oItem.SetAttribute("textrotatemode", iTextRotateMode)
+                End If
 
-            If bArrowSizeEnabled Then
-                Call oItem.SetAttribute("arrowsizeenabled", "1")
-                If iArrowSize <> cIItemSizable.SizeEnum.Default Then Call oItem.SetAttribute("arrowsize", iArrowSize)
-            End If
+                If bArrowSizeEnabled Then
+                    Call oItem.SetAttribute("arrowsizeenabled", "1")
+                    If iArrowSize <> cIItemSizable.SizeEnum.Default Then Call oItem.SetAttribute("arrowsize", iArrowSize)
+                End If
 
-            If bPlanDeltaAngleEnabled Then
-                Call oItem.SetAttribute("plandeltaenabled", "1")
-                If sPlanDeltaAngle <> 0 Then Call oItem.SetAttribute("plandelta", modNumbers.NumberToString(sPlanDeltaAngle))
-            End If
-            If iPlanAlignment <> 0 Then Call oItem.SetAttribute("planalign", iPlanAlignment)
-            If sLeft <> 0 Then Call oItem.SetAttribute("left", modNumbers.NumberToString(sLeft))
-            If sRight <> 0 Then Call oItem.SetAttribute("right", modNumbers.NumberToString(sRight))
-            If Not bAutoLeftWidth Then Call oItem.SetAttribute("leftw", modNumbers.NumberToString(sLeftWidth))
-            If Not bAutoRightWidth Then Call oItem.SetAttribute("rightw", modNumbers.NumberToString(sRightWidth))
+                If bPlanDeltaAngleEnabled Then
+                    Call oItem.SetAttribute("plandeltaenabled", "1")
+                    If sPlanDeltaAngle <> 0 Then Call oItem.SetAttribute("plandelta", modNumbers.NumberToString(sPlanDeltaAngle))
+                End If
+                If iPlanAlignment <> 0 Then Call oItem.SetAttribute("planalign", iPlanAlignment)
+                If sLeft <> 0 Then Call oItem.SetAttribute("left", modNumbers.NumberToString(sLeft))
+                If sRight <> 0 Then Call oItem.SetAttribute("right", modNumbers.NumberToString(sRight))
+                If Not bAutoLeftWidth Then Call oItem.SetAttribute("leftw", modNumbers.NumberToString(sLeftWidth))
+                If Not bAutoRightWidth Then Call oItem.SetAttribute("rightw", modNumbers.NumberToString(sRightWidth))
 
-            Return oItem
+                Return oItem
+            End If
         End Function
 
         'Private Function pGetLabelPosition(ByVal Graphics As Graphics, ByVal Font As Font, ByVal Point As PointF, ByVal Size As SizeF) As PointF

@@ -1,6 +1,6 @@
 ﻿Imports cSurveyPC.cSurvey
 
-Public Class frmMasterSlaveManager
+friend Class frmMasterSlaveManager
 
     Private oSurvey As cSurvey.cSurvey
 

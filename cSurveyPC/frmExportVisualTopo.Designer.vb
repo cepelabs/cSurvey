@@ -24,8 +24,8 @@ Partial Class frmExportVisualTopo
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmExportVisualTopo))
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.cmdOk = New System.Windows.Forms.Button()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton
         Me.tipDefault = New System.Windows.Forms.ToolTip(Me.components)
         Me.SuspendLayout()
         '
@@ -34,14 +34,12 @@ Partial Class frmExportVisualTopo
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'cmdOk
         '
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
         '
         'frmExportVisualTopo
         '
@@ -51,13 +49,14 @@ Partial Class frmExportVisualTopo
         Me.CancelButton = Me.cmdCancel
         Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.cmdOk)
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.exportfile
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmExportVisualTopo"
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents tipDefault As System.Windows.Forms.ToolTip
 End Class

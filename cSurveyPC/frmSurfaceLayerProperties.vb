@@ -1,6 +1,6 @@
 ﻿Imports cSurveyPC.cSurvey.Design.Options
 
-Public Class frmSurfaceLayerProperties
+friend Class frmSurfaceLayerProperties
     Private oItem As cSurfaceOptions.cSurfaceOptionsItem
 
     Public Sub New(Item As cSurfaceOptions.cSurfaceOptionsItem)

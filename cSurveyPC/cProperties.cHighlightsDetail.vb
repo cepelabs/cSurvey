@@ -302,7 +302,7 @@ Namespace cSurvey.Properties
             bSystem = modXML.GetAttributeValue(HLSDetail, "sys", 0)
         End Sub
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLHLDetail As XmlElement = Document.CreateElement("hlsd")
             Call oXMLHLDetail.SetAttribute("id", sID)
             Call oXMLHLDetail.SetAttribute("n", sName)

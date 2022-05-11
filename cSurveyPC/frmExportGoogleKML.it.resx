@@ -117,27 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cmdCancel.Text" xml:space="preserve">
-    <value>Annulla</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="chkExportWaypoint.Size" type="System.Drawing.Size, System.Drawing">
     <value>131, 17</value>
   </data>
-  <data name="chkExportWaypoint.Text" xml:space="preserve">
-    <value>Capisaldi</value>
-  </data>
   <data name="chkExportTrack.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 17</value>
   </data>
-  <data name="chkExportTrack.Text" xml:space="preserve">
-    <value>Poligonale</value>
-  </data>
   <data name="chkExportCaveBorders.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 17</value>
-  </data>
-  <data name="chkExportCaveBorders.Text" xml:space="preserve">
-    <value>Bordi cavità</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -209,5 +197,29 @@
   </data>
   <data name="lblCaveBordersTransparency.Text" xml:space="preserve">
     <value>Trasparenza:</value>
+  </data>
+  <data name="chkExportUseCadastralIDInCaveNames.Properties.Caption" xml:space="preserve">
+    <value>Usa ID catastali nei nomi delle cavità</value>
+  </data>
+  <data name="chkExportWaypoint.Properties.Caption" xml:space="preserve">
+    <value>Capisaldi</value>
+  </data>
+  <data name="chkExportTrack.Properties.Caption" xml:space="preserve">
+    <value>Poligonale</value>
+  </data>
+  <data name="chkExportCaveBorders.Properties.Caption" xml:space="preserve">
+    <value>Bordi cavità</value>
+  </data>
+  <data name="XtraTabPage1.Text" xml:space="preserve">
+    <value>Generale</value>
+  </data>
+  <data name="XtraTabPage2.Text" xml:space="preserve">
+    <value>Rilievi collegati</value>
+  </data>
+  <data name="chkExportLinkedSurveys.Properties.Caption" xml:space="preserve">
+    <value>Rilievi collegati</value>
+  </data>
+  <data name="cmdCancel.Text" xml:space="preserve">
+    <value>Annulla</value>
   </data>
 </root>

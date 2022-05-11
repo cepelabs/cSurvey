@@ -158,7 +158,8 @@ Namespace cSurvey.Design.Options
             bOriginalPositionColorGray = modXML.GetAttributeValue(TranslationsOptions, "originalpositioncolorgray", True)
             bOriginalPositionOnlyTranslated = modXML.GetAttributeValue(TranslationsOptions, "originalpositiononlytranslated", False)
             bOriginalPositionOverDesign = modXML.GetAttributeValue(TranslationsOptions, "originalpositionoverdesign", False)
-            sTranslationsThreshold = modXML.GetAttributeValue(TranslationsOptions, "tth", 0)
+            sTranslationsThreshold = modNumbers.StringToSingle(modXML.GetAttributeValue(TranslationsOptions, "tth", 0))
+            If sTranslationsThreshold > 10000.0F Then sTranslationsThreshold = 0F
             If ChildElementExist(TranslationsOptions, "optx") Then
                 oOriginalPositionTranslation = New cTranslationBase(TranslationsOptions.Item("optx"))
             Else
@@ -171,7 +172,7 @@ Namespace cSurvey.Design.Options
             Call Import(TranslationsOptions)
         End Sub
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLTranslationsOptions As XmlElement = Document.CreateElement("translationsoptions")
             If bDrawTranslationsLine Then Call oXMLTranslationsOptions.SetAttribute("drawtranslationsline", "1")
             If bDrawOriginalPosition Then Call oXMLTranslationsOptions.SetAttribute("draworiginalposition", "1")

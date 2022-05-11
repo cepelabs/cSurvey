@@ -30,6 +30,8 @@ Partial Class frmSketchEdit
         Me.mnuTrigpoints = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.mnuTrigpointsFilterBy = New System.Windows.Forms.ToolStripTextBox()
         Me.mnuTrigpointsRemoveFilter = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.mnuTrigpointsShowSplay = New System.Windows.Forms.ToolStripMenuItem()
         Me.picPreview = New System.Windows.Forms.PictureBox()
         Me.mnuPreview = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.mnuPreviewAdd = New System.Windows.Forms.ToolStripMenuItem()
@@ -88,8 +90,6 @@ Partial Class frmSketchEdit
         Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnStop = New System.Windows.Forms.ToolStripButton()
         Me.tipStandard = New System.Windows.Forms.ToolTip(Me.components)
-        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.mnuTrigpointsShowSplay = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.pnlPreview, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlPreview.Panel1.SuspendLayout()
         Me.pnlPreview.Panel2.SuspendLayout()
@@ -148,6 +148,16 @@ Partial Class frmSketchEdit
         '
         Me.mnuTrigpointsRemoveFilter.Name = "mnuTrigpointsRemoveFilter"
         resources.ApplyResources(Me.mnuTrigpointsRemoveFilter, "mnuTrigpointsRemoveFilter")
+        '
+        'ToolStripMenuItem3
+        '
+        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
+        resources.ApplyResources(Me.ToolStripMenuItem3, "ToolStripMenuItem3")
+        '
+        'mnuTrigpointsShowSplay
+        '
+        Me.mnuTrigpointsShowSplay.Name = "mnuTrigpointsShowSplay"
+        resources.ApplyResources(Me.mnuTrigpointsShowSplay, "mnuTrigpointsShowSplay")
         '
         'picPreview
         '
@@ -271,7 +281,7 @@ Partial Class frmSketchEdit
         '
         'mnuPreviewStop
         '
-        Me.mnuPreviewStop.Image = Global.cSurveyPC.My.Resources.Resources._stop
+        Me.mnuPreviewStop.Image = Global.cSurveyPC.My.Resources.Resources.stop2
         Me.mnuPreviewStop.Name = "mnuPreviewStop"
         resources.ApplyResources(Me.mnuPreviewStop, "mnuPreviewStop")
         '
@@ -334,7 +344,7 @@ Partial Class frmSketchEdit
         'btnZoomOut
         '
         Me.btnZoomOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnZoomOut.Image = Global.cSurveyPC.My.Resources.Resources.magifier_zoom_out
+        Me.btnZoomOut.Image = Global.cSurveyPC.My.Resources.Resources.magnifier_zoom_out
         resources.ApplyResources(Me.btnZoomOut, "btnZoomOut")
         Me.btnZoomOut.Name = "btnZoomOut"
         '
@@ -472,19 +482,9 @@ Partial Class frmSketchEdit
         'btnStop
         '
         Me.btnStop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnStop.Image = Global.cSurveyPC.My.Resources.Resources._stop
+        Me.btnStop.Image = Global.cSurveyPC.My.Resources.Resources.stop2
         resources.ApplyResources(Me.btnStop, "btnStop")
         Me.btnStop.Name = "btnStop"
-        '
-        'ToolStripMenuItem3
-        '
-        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        resources.ApplyResources(Me.ToolStripMenuItem3, "ToolStripMenuItem3")
-        '
-        'mnuTrigpointsShowSplay
-        '
-        Me.mnuTrigpointsShowSplay.Name = "mnuTrigpointsShowSplay"
-        resources.ApplyResources(Me.mnuTrigpointsShowSplay, "mnuTrigpointsShowSplay")
         '
         'frmSketchEdit
         '
@@ -494,6 +494,7 @@ Partial Class frmSketchEdit
         Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.cmdOk)
         Me.Controls.Add(Me.tbMain)
+        Me.IconOptions.Icon = CType(resources.GetObject("frmSketchEdit.IconOptions.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.Name = "frmSketchEdit"
         Me.pnlPreview.Panel1.ResumeLayout(False)

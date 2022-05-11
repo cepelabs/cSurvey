@@ -1,7 +1,7 @@
 ﻿Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
 
-Public Class frmParametersTranslations
+friend Class frmParametersTranslations
     Friend Event OnChangeOptions(ByVal Sender As Object, ByVal Options As cOptions)
 
     Private oTransactionsBag As cTranslationsBag

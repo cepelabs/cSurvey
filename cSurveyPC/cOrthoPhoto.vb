@@ -40,16 +40,17 @@ Namespace cSurvey.Surface
         Friend Event OnDefaultGet(ByVal Sender As cOrthoPhoto, Args As cDefaultArgs)
 
         Public Sub InvertColors()
-            Dim oNewPhoto As Bitmap = New Bitmap(oPhoto.Width, oPhoto.Height)
-            Using oGr As Graphics = Graphics.FromImage(oNewPhoto)
-                Dim oColorMatrix As Imaging.ColorMatrix = New Imaging.ColorMatrix(New Single()() {New Single() {-1, 0, 0, 0, 0}, New Single() {0, -1, 0, 0, 0}, New Single() {0, 0, -1, 0, 0}, New Single() {0, 0, 0, 1, 0}, New Single() {1, 1, 1, 0, 1}})
-                Using oAttributes As Imaging.ImageAttributes = New Imaging.ImageAttributes
-                    oAttributes.SetColorMatrix(oColorMatrix)
-                    Call oGr.DrawImage(oPhoto, New Rectangle(0, 0, oPhoto.Width, oPhoto.Height), 0, 0, oPhoto.Width, oPhoto.Height, GraphicsUnit.Pixel, oAttributes)
-                    Call oPhoto.Dispose()
-                    oPhoto = oNewPhoto
-                End Using
-            End Using
+            oPhoto = modPaint.InvertColors(oPhoto)
+            'Dim oNewPhoto As Bitmap = New Bitmap(oPhoto.Width, oPhoto.Height)
+            'Using oGr As Graphics = Graphics.FromImage(oNewPhoto)
+            '    Dim oColorMatrix As Imaging.ColorMatrix = New Imaging.ColorMatrix(New Single()() {New Single() {-1, 0, 0, 0, 0}, New Single() {0, -1, 0, 0, 0}, New Single() {0, 0, -1, 0, 0}, New Single() {0, 0, 0, 1, 0}, New Single() {1, 1, 1, 0, 1}})
+            '    Using oAttributes As Imaging.ImageAttributes = New Imaging.ImageAttributes
+            '        oAttributes.SetColorMatrix(oColorMatrix)
+            '        Call oGr.DrawImage(oPhoto, New Rectangle(0, 0, oPhoto.Width, oPhoto.Height), 0, 0, oPhoto.Width, oPhoto.Height, GraphicsUnit.Pixel, oAttributes)
+            '        Call oPhoto.Dispose()
+            '        oPhoto = oNewPhoto
+            '    End Using
+            'End Using
         End Sub
 
         Public Function Reduce(Percentage As Single) As cOrthoPhoto
@@ -117,7 +118,7 @@ Namespace cSurvey.Surface
             End Get
         End Property
 
-        Friend Sub New(Survey As cSurvey, ByVal File As Storage.cFile, ByVal OrthoPhoto As XmlElement)
+        Friend Sub New(Survey As cSurvey, ByVal File As cFile, ByVal OrthoPhoto As XmlElement)
             oSurvey = Survey
             sName = modXML.GetAttributeValue(OrthoPhoto, "name", "")
             sID = modXML.GetAttributeValue(OrthoPhoto, "id")
@@ -126,7 +127,7 @@ Namespace cSurvey.Surface
             sXSize = modNumbers.StringToDecimal(modXML.GetAttributeValue(OrthoPhoto, "xsize", 0))
             sYSize = modNumbers.StringToDecimal(modXML.GetAttributeValue(OrthoPhoto, "ysize", 0))
             Select Case File.FileFormat
-                Case Storage.cFile.FileFormatEnum.CSX
+                Case cFile.FileFormatEnum.CSX
                     Try
                         Using oMs As IO.MemoryStream = New IO.MemoryStream(Convert.FromBase64String(modXML.GetAttributeValue(OrthoPhoto, "photo")))
                             'oPhoto = New Bitmap(oms)
@@ -135,7 +136,7 @@ Namespace cSurvey.Surface
                         'Call oms.Dispose()
                     Catch
                     End Try
-                Case Storage.cFile.FileFormatEnum.CSZ
+                Case cFile.FileFormatEnum.CSZ
                     Try
                         Dim sDataPath As String = modXML.GetAttributeValue(OrthoPhoto, "photo")
                         'oPhoto = New Bitmap(DirectCast(File.Data(sDataPath), Storage.cStorageItemFile).Stream)
@@ -177,7 +178,7 @@ Namespace cSurvey.Surface
             BottomRight = 3
         End Enum
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlItem As XmlElement = Document.CreateElement("orthophoto")
             Call oXmlItem.SetAttribute("name", sName)
             Call oXmlItem.SetAttribute("id", sID)
@@ -186,15 +187,15 @@ Namespace cSurvey.Surface
             Call oXmlItem.SetAttribute("xsize", modNumbers.NumberToString(sXSize, "0.000000"))
             Call oXmlItem.SetAttribute("ysize", modNumbers.NumberToString(sYSize, "0.000000"))
             Try
-                If Not (File.Options And Storage.cFile.FileOptionsEnum.DontSaveBinary) = Storage.cFile.FileOptionsEnum.DontSaveBinary Then
+                If Not (File.Options And cFile.FileOptionsEnum.DontSaveBinary) = cFile.FileOptionsEnum.DontSaveBinary Then
                     Select Case File.FileFormat
-                        Case Storage.cFile.FileFormatEnum.CSX
+                        Case cFile.FileFormatEnum.CSX
                             Using oms As IO.MemoryStream = New IO.MemoryStream
                                 'Call oPhoto.Save(oms, Drawing.Imaging.ImageFormat.Jpeg)
                                 Call modPaint.SafeBitmapSaveToStream(oPhoto, oms, Drawing.Imaging.ImageFormat.Jpeg)
                                 Call oXmlItem.SetAttribute("photo", Convert.ToBase64String(oms.ToArray()))
                             End Using
-                        Case Storage.cFile.FileFormatEnum.CSZ
+                        Case cFile.FileFormatEnum.CSZ
                             Dim sDataPath As String = "_data\surface\orthophotos\" & sID & ".jpg"
                             Dim oDataStorage As Storage.cStorageItemFile = File.Data.AddFile(sDataPath)
                             'Call oPhoto.Save(oDataStorage.Stream, Drawing.Imaging.ImageFormat.Jpeg)

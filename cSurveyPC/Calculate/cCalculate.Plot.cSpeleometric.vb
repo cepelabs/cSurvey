@@ -221,7 +221,7 @@ Namespace cSurvey.Calculate.Plot
             oEntranceCoordinate = EntranceCoordinate
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlSM As XmlElement = Document.CreateElement("sm")
             If sCave <> "" Then Call oXmlSM.SetAttribute("cave", sCave)
             If sBranch <> "" Then Call oXmlSM.SetAttribute("branch", sBranch)

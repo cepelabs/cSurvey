@@ -23,7 +23,7 @@ Module modWindow
         End If
     End Function
 
-    Public Function RelativeToPath(Filename As String, RelativePath As String) As String
+    Public Function RelativeToAbsolutePath(Filename As String, RelativePath As String) As String
         If RelativePath.Trim <> "" Then
             If Not RelativePath.EndsWith(IO.Path.DirectorySeparatorChar) Then RelativePath &= IO.Path.DirectorySeparatorChar
             Dim sAbsolutePath As String = IO.Path.Combine(RelativePath, Filename)
@@ -33,12 +33,18 @@ Module modWindow
         End If
     End Function
 
-    Public Function PathToRelative(Filename As String, RelativePath As String) As String
+    Public Function IsPathFullyQualified(Path As String) As Boolean
+        Dim sRoot As String = IO.Path.GetPathRoot(Path)
+        Return sRoot.StartsWith("\\") OrElse sRoot.EndsWith("\")
+    End Function
+
+    Public Function AbsolutePathToRelative(Filename As String, RelativePath As String) As String
         Dim sFilename As String
-        If RelativePath.Trim <> "" Then
-            If Not RelativePath.EndsWith(IO.Path.DirectorySeparatorChar) Then RelativePath &= IO.Path.DirectorySeparatorChar
+        Dim sRelativePath As String = RelativePath.Trim
+        If sRelativePath <> "" AndAlso IsPathFullyQualified(Filename) Then
+            If Not sRelativePath.EndsWith(IO.Path.DirectorySeparatorChar) Then sRelativePath &= IO.Path.DirectorySeparatorChar
             Dim oFilename As Uri = New Uri(Filename.ToLower, UriKind.RelativeOrAbsolute)
-            Dim oRelativePath As Uri = New Uri(RelativePath.ToLower, UriKind.RelativeOrAbsolute)
+            Dim oRelativePath As Uri = New Uri(sRelativePath.ToLower, UriKind.RelativeOrAbsolute)
             sFilename = Uri.UnescapeDataString(oRelativePath.MakeRelativeUri(oFilename).ToString.Replace("/", IO.Path.DirectorySeparatorChar))
         Else
             sFilename = Filename

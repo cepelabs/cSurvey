@@ -2,7 +2,11 @@
 Imports cSurveyPC.cSurvey.Design.Items
 
 Friend Class cItemScalePropertyControl
-    Private oItem As cItemScale
+    Public Overloads ReadOnly Property Item As cItemScale
+        Get
+            Return MyBase.Item
+        End Get
+    End Property
 
     Public Sub New()
 
@@ -12,21 +16,21 @@ Friend Class cItemScalePropertyControl
         ' Add any initialization after the InitializeComponent() call.
     End Sub
 
-    Public Overrides Sub Rebind(Item As cItem)
-        oItem = Item
+    Public Overloads Sub Rebind(Item As cItemScale)
+        Call MyBase.Rebind(Item)
 
-        txtScaleMeters.Value = oItem.Length
-        txtScaleSteps.Value = oItem.Steps
-        txtScaleStep.Value = oItem.StepLength
-        txtScaleScaleHeightFactor.Value = oItem.ScaleHeightFactor
-        chkHideScaleValue.Checked = oItem.HideScaleValue
-        cboPropScaleFillStyle.SelectedIndex = oItem.ScaleFillStyle
+        txtScaleMeters.Value = Item.Length
+        txtScaleSteps.Value = Item.Steps
+        txtScaleStep.Value = Item.StepLength
+        txtScaleScaleHeightFactor.Value = Item.ScaleHeightFactor
+        chkHideScaleValue.Checked = Item.HideScaleValue
+        cboPropScaleFillStyle.SelectedIndex = Item.ScaleFillStyle
     End Sub
 
     Private Sub txtScaleMeters_ValueChanged(sender As Object, e As EventArgs) Handles txtScaleMeters.ValueChanged
         Try
             If Not DisabledObjectProperty() Then
-                oItem.Length = txtScaleMeters.Value
+                Item.Length = txtScaleMeters.Value
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("meters")
                 Call MyBase.MapInvalidate()
@@ -38,7 +42,7 @@ Friend Class cItemScalePropertyControl
     Private Sub txtScaleSteps_ValueChanged(sender As Object, e As EventArgs) Handles txtScaleSteps.ValueChanged
         Try
             If Not DisabledObjectProperty() Then
-                oItem.Steps = txtScaleSteps.Value
+                Item.Steps = txtScaleSteps.Value
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("steps")
                 Call MyBase.MapInvalidate()
@@ -50,7 +54,7 @@ Friend Class cItemScalePropertyControl
     Private Sub txtScaleStep_ValueChanged(sender As Object, e As EventArgs) Handles txtScaleStep.ValueChanged
         Try
             If Not DisabledObjectProperty() Then
-                oItem.StepLength = txtScaleStep.Value
+                Item.StepLength = txtScaleStep.Value
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("step")
                 Call MyBase.MapInvalidate()
@@ -62,7 +66,7 @@ Friend Class cItemScalePropertyControl
     Private Sub chkHideScaleValue_CheckedChanged(sender As Object, e As EventArgs) Handles chkHideScaleValue.CheckedChanged
         Try
             If Not DisabledObjectProperty() Then
-                oItem.HideScaleValue = chkHideScaleValue.Checked
+                Item.HideScaleValue = chkHideScaleValue.Checked
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("hidescalevalue")
                 Call MyBase.MapInvalidate()
@@ -78,7 +82,7 @@ Friend Class cItemScalePropertyControl
             oCD.Color = picScaleColor.BackColor
             If oCD.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 picScaleColor.BackColor = oCD.Color
-                'oItem.Color = oCD.Color
+                'Item.Color = oCD.Color
                 'Call MyBase.PropertyChanged("color")
                 'Call MyBase.MapInvalidate()
             End If
@@ -88,7 +92,7 @@ Friend Class cItemScalePropertyControl
     Private Sub txtScaleScaleHeightFactor_ValueChanged(sender As Object, e As EventArgs) Handles txtScaleScaleHeightFactor.ValueChanged
         Try
             If Not DisabledObjectProperty() Then
-                oItem.ScaleHeightFactor = txtScaleScaleHeightFactor.Value
+                Item.ScaleHeightFactor = txtScaleScaleHeightFactor.Value
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("scaleheightfactor")
                 Call MyBase.MapInvalidate()
@@ -100,7 +104,7 @@ Friend Class cItemScalePropertyControl
     Private Sub cboPropScaleFillStyle_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropScaleFillStyle.SelectedIndexChanged
         Try
             If Not DisabledObjectProperty() Then
-                oItem.ScaleFillStyle = cboPropScaleFillStyle.SelectedIndex
+                Item.ScaleFillStyle = cboPropScaleFillStyle.SelectedIndex
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("ScaleFillStyle")
                 Call MyBase.MapInvalidate()

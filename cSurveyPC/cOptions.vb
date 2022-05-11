@@ -11,7 +11,33 @@ Imports DotNetCaveModel.RenderMode
 Imports DotNetCaveModel.ColoringMode
 
 Namespace cSurvey.Design
+    Public Class PropertyChangeEventArgs
+        Inherits EventArgs
+
+        Private sName As String
+
+        Public ReadOnly Property Name As String
+            Get
+                Return sName
+            End Get
+        End Property
+
+        Public Sub New(Name As String)
+            sName = Name
+        End Sub
+    End Class
+
+    Public Interface cIUIInteractions
+        Sub MapInvalidate()
+        Sub PropertyChanged(Name As String)
+        Event OnMapInvalidate(Sender As Object, e As EventArgs)
+        Event OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs)
+    End Interface
+
     Public Interface cIOptions
+        Inherits cIDesignProperties
+        Inherits cIUIInteractions
+
         Enum ModeEnum
             Design = 0
             Preview = 1
@@ -104,6 +130,17 @@ Namespace cSurvey.Design
         Private oDrawingObjects As cOptionsDrawingObjects
         Private oPaintObjects As cPaintObjects
 
+        Event OnMapInvalidate(Sender As Object, e As EventArgs) Implements cIOptions.OnMapInvalidate
+        Event OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Implements cIOptions.OnPropertyChanged
+
+        Public Sub MapInvalidate() Implements cIOptions.MapInvalidate
+            RaiseEvent OnMapInvalidate(Me, EventArgs.Empty)
+        End Sub
+
+        Public Sub PropertyChanged(Name As String) Implements cIOptions.PropertyChanged
+            RaiseEvent OnPropertyChanged(Me, New PropertyChangeEventArgs(Name))
+        End Sub
+
         Public Enum DesignAffinityEnum
             All = 0
             Design = 1
@@ -117,7 +154,10 @@ Namespace cSurvey.Design
                 Return iDesignAffinity
             End Get
             Set(value As DesignAffinityEnum)
-                iDesignAffinity = value
+                If iDesignAffinity <> value Then
+                    iDesignAffinity = value
+                    RaiseEvent OnPropertyChanged(Me, EventArgs.Empty)
+                End If
             End Set
         End Property
 
@@ -125,7 +165,7 @@ Namespace cSurvey.Design
             Return Me
         End Function
 
-        Public ReadOnly Property SurfaceOptions As cSurfaceOptions
+        Public Overridable ReadOnly Property SurfaceOptions As cSurfaceOptions
             Get
                 Return oSurfaceOptions
             End Get
@@ -305,6 +345,8 @@ Namespace cSurvey.Design
         Private iCurrentScale As Integer
         Private oCurrentRule As cIScaleRule
 
+        Private oDesignProperties As cPropertiesCollection
+
         '--------------------------------------------------------------------------------------------
         Private sPenHeavyWidth As Single
         Private sPenMediumWidth As Single
@@ -317,6 +359,7 @@ Namespace cSurvey.Design
         Private sInfoBoxStructure As String
         Private sTrigpointStructure As String
         Private sSpecialTrigpointStructure As String
+
         '--------------------------------------------------------------------------------------------
 
         Public Property InfoBoxStructure() As String Implements cITextStructure.InfoBoxStructure
@@ -456,7 +499,10 @@ Namespace cSurvey.Design
                 Return bHighlightSegmentsAndTrigpoints
             End Get
             Set(ByVal value As Boolean)
-                bHighlightSegmentsAndTrigpoints = value
+                If bHighlightSegmentsAndTrigpoints <> value Then
+                    bHighlightSegmentsAndTrigpoints = value
+                    Call PropertyChanged("HighlightSegmentsAndTrigpoints")
+                End If
             End Set
         End Property
 
@@ -465,7 +511,10 @@ Namespace cSurvey.Design
                 Return bHighlightCurrentCave
             End Get
             Set(ByVal value As Boolean)
-                bHighlightCurrentCave = value
+                If bHighlightCurrentCave <> value Then
+                    bHighlightCurrentCave = value
+                    Call PropertyChanged("HighlightCurrentCave")
+                End If
             End Set
         End Property
 
@@ -474,7 +523,10 @@ Namespace cSurvey.Design
                 Return iHighlightMode
             End Get
             Set(ByVal value As HighlightModeEnum)
-                iHighlightMode = value
+                If iHighlightMode <> value Then
+                    iHighlightMode = value
+                    Call PropertyChanged("HighlightMode")
+                End If
             End Set
         End Property
 
@@ -483,7 +535,10 @@ Namespace cSurvey.Design
                 Return iUnselectedCaveDrawStyle
             End Get
             Set(ByVal value As UnselectedCaveDrawStyleEnum)
-                iUnselectedCaveDrawStyle = value
+                If iUnselectedCaveDrawStyle <> value Then
+                    iUnselectedCaveDrawStyle = value
+                    Call PropertyChanged("UnselectedCaveDrawStyle")
+                End If
             End Set
         End Property
 
@@ -492,7 +547,10 @@ Namespace cSurvey.Design
                 Return bDrawScale
             End Get
             Set(ByVal value As Boolean)
-                bDrawScale = value
+                If bDrawScale <> value Then
+                    bDrawScale = value
+                    Call PropertyChanged("DrawScale")
+                End If
             End Set
         End Property
 
@@ -501,7 +559,10 @@ Namespace cSurvey.Design
                 Return iScaleStyle
             End Get
             Set(ByVal value As ScaleStyleEnum)
-                iScaleStyle = value
+                If iScaleStyle <> value Then
+                    iScaleStyle = value
+                    Call PropertyChanged("ScaleStyle")
+                End If
             End Set
         End Property
 
@@ -510,7 +571,10 @@ Namespace cSurvey.Design
                 Return bShowSegmentBindings
             End Get
             Set(ByVal value As Boolean)
-                bShowSegmentBindings = value
+                If bShowSegmentBindings <> value Then
+                    bShowSegmentBindings = value
+                    Call PropertyChanged("ShowSegmentBindings")
+                End If
             End Set
         End Property
 
@@ -519,7 +583,10 @@ Namespace cSurvey.Design
                 Return iScalePosition
             End Get
             Set(ByVal value As AlignmentEnum)
-                iScalePosition = value
+                If iScalePosition <> value Then
+                    iScalePosition = value
+                    Call PropertyChanged("ScalePosition")
+                End If
             End Set
         End Property
 
@@ -528,7 +595,10 @@ Namespace cSurvey.Design
                 Return bDrawCompass
             End Get
             Set(ByVal value As Boolean)
-                bDrawCompass = value
+                If bDrawCompass <> value Then
+                    bDrawCompass = value
+                    Call PropertyChanged("DrawCompass")
+                End If
             End Set
         End Property
 
@@ -537,7 +607,10 @@ Namespace cSurvey.Design
                 Return iCompassPosition
             End Get
             Set(ByVal value As AlignmentEnum)
-                iCompassPosition = value
+                If iCompassPosition <> value Then
+                    iCompassPosition = value
+                    Call PropertyChanged("CompassPosition")
+                End If
             End Set
         End Property
 
@@ -573,7 +646,10 @@ Namespace cSurvey.Design
                 Return iSplayStyle
             End Get
             Set(ByVal value As SplayStyleEnum)
-                iSplayStyle = value
+                If iSplayStyle <> value Then
+                    iSplayStyle = value
+                    Call PropertyChanged("SplayStyle")
+                End If
             End Set
         End Property
 
@@ -600,7 +676,10 @@ Namespace cSurvey.Design
                 Return bDrawSplay
             End Get
             Set(ByVal value As Boolean)
-                bDrawSplay = value
+                If bDrawSplay <> value Then
+                    bDrawSplay = value
+                    Call PropertyChanged("DrawSplay")
+                End If
             End Set
         End Property
 
@@ -609,7 +688,10 @@ Namespace cSurvey.Design
                 Return bDrawLRUD
             End Get
             Set(ByVal value As Boolean)
-                bDrawLRUD = value
+                If bDrawLRUD <> value Then
+                    bDrawLRUD = value
+                    Call PropertyChanged("DrawLRUD")
+                End If
             End Set
         End Property
 
@@ -803,9 +885,6 @@ Namespace cSurvey.Design
             bDrawHLs = False
             oHLsOptions = New cHighlightsOptions(oSurvey)
 
-            oDrawingObjects = New cOptionsDrawingObjects(oSurvey, Me)
-            oPaintObjects = New cPaintObjects(oSurvey)
-
             If sName <> "" Then
                 oDefaultOptions = New cOptions(oSurvey, "", iMode)
             End If
@@ -815,16 +894,21 @@ Namespace cSurvey.Design
 
             bUseDrawingZOrder = False
 
-            Dim oDesignProperties As cPropertiesCollection = oCurrentRule.DesignProperties
-            sPenHeavyWidth = oDesignProperties.GetValue("BaseHeavyLinesScaleFactor", 8)
-            sPenMediumWidth = oDesignProperties.GetValue("BaseMediumLinesScaleFactor", 3)
-            sPenLightWidth = oDesignProperties.GetValue("BaseLightLinesScaleFactor", 1)
-            sPenUltralightWidth = oDesignProperties.GetValue("BaseUltraLightLinesScaleFactor", 0.3)
+            Dim oDefaultDesignProperties As cPropertiesCollection = oCurrentRule.DesignProperties
+            sPenHeavyWidth = oDefaultDesignProperties.GetValue("BaseHeavyLinesScaleFactor", 8)
+            sPenMediumWidth = oDefaultDesignProperties.GetValue("BaseMediumLinesScaleFactor", 3)
+            sPenLightWidth = oDefaultDesignProperties.GetValue("BaseLightLinesScaleFactor", 1)
+            sPenUltralightWidth = oDefaultDesignProperties.GetValue("BaseUltraLightLinesScaleFactor", 0.3)
             oDefaultTextFont = oSurvey.Properties.DesignProperties.GetValue("DesignTextFont", New cFont(oSurvey, "Tahoma", 8, Color.Black))
 
             bDrawSurfaceProfile = True
 
             oSurfaceOptions = New cSurfaceOptions(oSurvey)
+
+            oDesignProperties = New cPropertiesCollection(oSurvey)
+
+            oDrawingObjects = New cOptionsDrawingObjects(oSurvey, Me)
+            oPaintObjects = New cPaintObjects(oSurvey)
         End Sub
 
         Friend ReadOnly Property PaintObjects As cPaintObjects
@@ -963,9 +1047,6 @@ Namespace cSurvey.Design
             iCenterlineColorMode = modXML.GetAttributeValue(Options, "centerlinecolormode")
             bCenterlineColorGray = modXML.GetAttributeValue(Options, "centerlinecolorgray")
 
-            oDrawingObjects = New cOptionsDrawingObjects(oSurvey, Me)
-            oPaintObjects = New cPaintObjects(oSurvey)
-
             If sName <> "" Then
                 oDefaultOptions = New cOptions(oSurvey, "", iMode)
             End If
@@ -973,11 +1054,11 @@ Namespace cSurvey.Design
             iCurrentScale = iDefaultDesignScale
             oCurrentRule = oSurvey.ScaleRules.FindRule(iCurrentScale)
 
-            Dim oDesignProperties As cPropertiesCollection = oCurrentRule.DesignProperties
-            sPenHeavyWidth = oDesignProperties.GetValue("BaseHeavyLinesScaleFactor", 8)
-            sPenMediumWidth = oDesignProperties.GetValue("BaseMediumLinesScaleFactor", 3)
-            sPenLightWidth = oDesignProperties.GetValue("BaseLightLinesScaleFactor", 1)
-            sPenUltralightWidth = oDesignProperties.GetValue("BaseUltraLightLinesScaleFactor", 0.3)
+            Dim oDefaultDesignProperties As cPropertiesCollection = oCurrentRule.DesignProperties
+            sPenHeavyWidth = oDefaultDesignProperties.GetValue("BaseHeavyLinesScaleFactor", 8)
+            sPenMediumWidth = oDefaultDesignProperties.GetValue("BaseMediumLinesScaleFactor", 3)
+            sPenLightWidth = oDefaultDesignProperties.GetValue("BaseLightLinesScaleFactor", 1)
+            sPenUltralightWidth = oDefaultDesignProperties.GetValue("BaseUltraLightLinesScaleFactor", 0.3)
             oDefaultTextFont = oSurvey.Properties.DesignProperties.GetValue("DesignTextFont", New cFont(oSurvey, "Tahoma", 8, Color.Black))
 
             bDrawSurfaceProfile = modXML.GetAttributeValue(Options, "drawsurfaceprofile", True)
@@ -987,6 +1068,19 @@ Namespace cSurvey.Design
             Catch ex As Exception
                 oSurfaceOptions = New cSurfaceOptions(oSurvey)
             End Try
+
+            Try
+                If modXML.ChildElementExist(Options, "designproperties") Then
+                    oDesignProperties = New cPropertiesCollection(oSurvey, Options.Item("designproperties"))
+                Else
+                    oDesignProperties = New cPropertiesCollection(oSurvey)
+                End If
+            Catch
+                oDesignProperties = New cPropertiesCollection(oSurvey)
+            End Try
+
+            oDrawingObjects = New cOptionsDrawingObjects(oSurvey, Me)
+            oPaintObjects = New cPaintObjects(oSurvey)
         End Sub
 
         Friend Class GetParentEventArgs
@@ -1010,7 +1104,7 @@ Namespace cSurvey.Design
             Call Import(Options)
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlOptions As XmlElement = Document.CreateElement(sName)
 
             oXmlOptions.SetAttribute("drawplot", IIf(bDrawPlot, 1, 0))
@@ -1087,6 +1181,8 @@ Namespace cSurvey.Design
 
             Call oSurfaceOptions.SaveTo(File, Document, oXmlOptions)
 
+            Call oDesignProperties.SaveTo(File, Document, "designproperties", oXmlOptions)
+
             Call Parent.AppendChild(oXmlOptions)
             Return oXmlOptions
         End Function
@@ -1112,7 +1208,7 @@ Namespace cSurvey.Design
                 Return iCurrentScale
             End Get
             Set(ByVal value As Integer)
-                If (value >= 5 And value <= 50000) And (value <> iCurrentScale) Then
+                If (value <> iCurrentScale) AndAlso (value >= 5 And value <= 50000) Then
                     iCurrentScale = value
                     Dim oNewScaleRule As cIScaleRule = oSurvey.ScaleRules.FindRule(iCurrentScale)
                     If Not oCurrentRule Is oNewScaleRule Then
@@ -1125,6 +1221,28 @@ Namespace cSurvey.Design
                 End If
             End Set
         End Property
+
+        Public Overridable ReadOnly Property DesignProperties As cPropertiesCollection Implements cIDesignProperties.DesignProperties
+            Get
+                Return oDesignProperties
+            End Get
+        End Property
+
+        Friend Overridable Function GetCurrentScale() As Integer
+            Return CurrentRule.Scale
+        End Function
+
+        Public Overridable Function GetCurrentCategories() As cIScaleCategoriesVisibility
+            Return CurrentRule.Categories
+        End Function
+
+        Public Overridable Function GetCurrentItems() As cVisibilityItems
+            Return CurrentRule.Items
+        End Function
+
+        Public Overridable Function GetCurrentDesignPropertiesValue(Name As String, DefaultValue As Object)
+            Return oDesignProperties.GetValue(Name, CurrentRule.DesignProperties.GetValue(Name, oSurvey.Properties.DesignProperties.GetValue(Name, DefaultValue)))
+        End Function
 
         Friend Function GetFontDefaultSize(ByVal Type As cItemFont.FontTypeEnum) As Single
             Select Case Type

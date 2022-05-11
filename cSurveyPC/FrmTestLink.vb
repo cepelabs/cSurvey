@@ -1,4 +1,4 @@
-﻿Public Class FrmTestLink
+﻿friend Class frmTestLink
 
     Private Sub PropertyGrid1_Click(sender As Object, e As EventArgs) Handles PropertyGrid1.Click
 

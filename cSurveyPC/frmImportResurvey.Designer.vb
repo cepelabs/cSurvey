@@ -96,7 +96,7 @@ Partial Class frmImportResurvey
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = Global.cSurveyPC.My.Resources.Resources._error
+        Me.PictureBox1.Image = Global.cSurveyPC.My.Resources.Resources.error3
         resources.ApplyResources(Me.PictureBox1, "PictureBox1")
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.TabStop = False

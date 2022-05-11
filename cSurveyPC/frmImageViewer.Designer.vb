@@ -22,23 +22,26 @@ Partial Class frmImageViewer
     'Non modificarla nell'editor del codice.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmImageViewer))
         Me.picImage = New System.Windows.Forms.PictureBox()
-        Me.tbMain = New System.Windows.Forms.ToolStrip()
-        Me.cmdExport = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.cmdZoomOriginalSize = New System.Windows.Forms.ToolStripButton()
-        Me.cmdSizeToFit = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.cmdRotateLeft = New System.Windows.Forms.ToolStripButton()
-        Me.cmdRotateRight = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.cmdFlipH = New System.Windows.Forms.ToolStripButton()
-        Me.cmdShapeV = New System.Windows.Forms.ToolStripButton()
         Me.pnlContainer = New System.Windows.Forms.Panel()
+        Me.BarManager = New DevExpress.XtraBars.BarManager(Me.components)
+        Me.barMain = New DevExpress.XtraBars.Bar()
+        Me.btnExport = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnZoomOriginalSize = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnSizeToFit = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnRotateLeft = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnRotateRight = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnFlipH = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnFlipV = New DevExpress.XtraBars.BarButtonItem()
+        Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
         CType(Me.picImage, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tbMain.SuspendLayout()
         Me.pnlContainer.SuspendLayout()
+        CType(Me.BarManager, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'picImage
@@ -47,82 +50,109 @@ Partial Class frmImageViewer
         Me.picImage.Name = "picImage"
         Me.picImage.TabStop = False
         '
-        'tbMain
-        '
-        resources.ApplyResources(Me.tbMain, "tbMain")
-        Me.tbMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.tbMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdExport, Me.ToolStripSeparator1, Me.cmdZoomOriginalSize, Me.cmdSizeToFit, Me.ToolStripSeparator3, Me.cmdRotateLeft, Me.cmdRotateRight, Me.ToolStripSeparator2, Me.cmdFlipH, Me.cmdShapeV})
-        Me.tbMain.Name = "tbMain"
-        '
-        'cmdExport
-        '
-        Me.cmdExport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdExport.Image = Global.cSurveyPC.My.Resources.Resources.save_as1
-        resources.ApplyResources(Me.cmdExport, "cmdExport")
-        Me.cmdExport.Name = "cmdExport"
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        resources.ApplyResources(Me.ToolStripSeparator1, "ToolStripSeparator1")
-        '
-        'cmdZoomOriginalSize
-        '
-        Me.cmdZoomOriginalSize.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdZoomOriginalSize.Image = Global.cSurveyPC.My.Resources.Resources.zoom_actual
-        resources.ApplyResources(Me.cmdZoomOriginalSize, "cmdZoomOriginalSize")
-        Me.cmdZoomOriginalSize.Name = "cmdZoomOriginalSize"
-        '
-        'cmdSizeToFit
-        '
-        Me.cmdSizeToFit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdSizeToFit.Image = Global.cSurveyPC.My.Resources.Resources.zoom_fit
-        resources.ApplyResources(Me.cmdSizeToFit, "cmdSizeToFit")
-        Me.cmdSizeToFit.Name = "cmdSizeToFit"
-        '
-        'ToolStripSeparator3
-        '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        resources.ApplyResources(Me.ToolStripSeparator3, "ToolStripSeparator3")
-        '
-        'cmdRotateLeft
-        '
-        Me.cmdRotateLeft.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdRotateLeft.Image = Global.cSurveyPC.My.Resources.Resources.shape_rotate_anticlockwise
-        resources.ApplyResources(Me.cmdRotateLeft, "cmdRotateLeft")
-        Me.cmdRotateLeft.Name = "cmdRotateLeft"
-        '
-        'cmdRotateRight
-        '
-        Me.cmdRotateRight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdRotateRight.Image = Global.cSurveyPC.My.Resources.Resources.shape_rotate_clockwise
-        resources.ApplyResources(Me.cmdRotateRight, "cmdRotateRight")
-        Me.cmdRotateRight.Name = "cmdRotateRight"
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        resources.ApplyResources(Me.ToolStripSeparator2, "ToolStripSeparator2")
-        '
-        'cmdFlipH
-        '
-        Me.cmdFlipH.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdFlipH.Image = Global.cSurveyPC.My.Resources.Resources.shape_flip_horizontal
-        resources.ApplyResources(Me.cmdFlipH, "cmdFlipH")
-        Me.cmdFlipH.Name = "cmdFlipH"
-        '
-        'cmdShapeV
-        '
-        Me.cmdShapeV.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdShapeV.Image = Global.cSurveyPC.My.Resources.Resources.shape_flip_vertical
-        resources.ApplyResources(Me.cmdShapeV, "cmdShapeV")
-        Me.cmdShapeV.Name = "cmdShapeV"
-        '
         'pnlContainer
         '
         resources.ApplyResources(Me.pnlContainer, "pnlContainer")
         Me.pnlContainer.Controls.Add(Me.picImage)
         Me.pnlContainer.Name = "pnlContainer"
+        '
+        'BarManager
+        '
+        Me.BarManager.Bars.AddRange(New DevExpress.XtraBars.Bar() {Me.barMain})
+        Me.BarManager.DockControls.Add(Me.barDockControlTop)
+        Me.BarManager.DockControls.Add(Me.barDockControlBottom)
+        Me.BarManager.DockControls.Add(Me.barDockControlLeft)
+        Me.BarManager.DockControls.Add(Me.barDockControlRight)
+        Me.BarManager.Form = Me
+        Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnExport, Me.btnZoomOriginalSize, Me.btnSizeToFit, Me.btnRotateLeft, Me.btnRotateRight, Me.btnFlipH, Me.btnFlipV})
+        Me.BarManager.MaxItemId = 22
+        '
+        'barMain
+        '
+        Me.barMain.BarName = "Tools"
+        Me.barMain.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Top
+        Me.barMain.DockCol = 0
+        Me.barMain.DockRow = 0
+        Me.barMain.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
+        Me.barMain.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnExport), New DevExpress.XtraBars.LinkPersistInfo(Me.btnZoomOriginalSize, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnSizeToFit), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRotateLeft, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRotateRight), New DevExpress.XtraBars.LinkPersistInfo(Me.btnFlipH, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnFlipV)})
+        Me.barMain.OptionsBar.AllowQuickCustomization = False
+        Me.barMain.OptionsBar.DisableCustomization = True
+        Me.barMain.OptionsBar.DrawDragBorder = False
+        Me.barMain.OptionsBar.UseWholeRow = True
+        resources.ApplyResources(Me.barMain, "barMain")
+        '
+        'btnExport
+        '
+        resources.ApplyResources(Me.btnExport, "btnExport")
+        Me.btnExport.Id = 15
+        Me.btnExport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.saveas
+        Me.btnExport.Name = "btnExport"
+        '
+        'btnZoomOriginalSize
+        '
+        resources.ApplyResources(Me.btnZoomOriginalSize, "btnZoomOriginalSize")
+        Me.btnZoomOriginalSize.Id = 16
+        Me.btnZoomOriginalSize.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.zoom
+        Me.btnZoomOriginalSize.Name = "btnZoomOriginalSize"
+        '
+        'btnSizeToFit
+        '
+        resources.ApplyResources(Me.btnSizeToFit, "btnSizeToFit")
+        Me.btnSizeToFit.Id = 17
+        Me.btnSizeToFit.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.marqueezoom
+        Me.btnSizeToFit.Name = "btnSizeToFit"
+        '
+        'btnRotateLeft
+        '
+        resources.ApplyResources(Me.btnRotateLeft, "btnRotateLeft")
+        Me.btnRotateLeft.Id = 18
+        Me.btnRotateLeft.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.rotate_left90
+        Me.btnRotateLeft.Name = "btnRotateLeft"
+        '
+        'btnRotateRight
+        '
+        resources.ApplyResources(Me.btnRotateRight, "btnRotateRight")
+        Me.btnRotateRight.Id = 19
+        Me.btnRotateRight.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.rotate_right90
+        Me.btnRotateRight.Name = "btnRotateRight"
+        '
+        'btnFlipH
+        '
+        resources.ApplyResources(Me.btnFlipH, "btnFlipH")
+        Me.btnFlipH.Id = 20
+        Me.btnFlipH.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.flipimage_horizontal
+        Me.btnFlipH.Name = "btnFlipH"
+        '
+        'btnFlipV
+        '
+        resources.ApplyResources(Me.btnFlipV, "btnFlipV")
+        Me.btnFlipV.Id = 21
+        Me.btnFlipV.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.flipimage_vertical
+        Me.btnFlipV.Name = "btnFlipV"
+        '
+        'barDockControlTop
+        '
+        Me.barDockControlTop.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlTop, "barDockControlTop")
+        Me.barDockControlTop.Manager = Me.BarManager
+        '
+        'barDockControlBottom
+        '
+        Me.barDockControlBottom.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlBottom, "barDockControlBottom")
+        Me.barDockControlBottom.Manager = Me.BarManager
+        '
+        'barDockControlLeft
+        '
+        Me.barDockControlLeft.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlLeft, "barDockControlLeft")
+        Me.barDockControlLeft.Manager = Me.BarManager
+        '
+        'barDockControlRight
+        '
+        Me.barDockControlRight.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlRight, "barDockControlRight")
+        Me.barDockControlRight.Manager = Me.BarManager
         '
         'frmImageViewer
         '
@@ -130,30 +160,34 @@ Partial Class frmImageViewer
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.Color.White
         Me.Controls.Add(Me.pnlContainer)
-        Me.Controls.Add(Me.tbMain)
+        Me.Controls.Add(Me.barDockControlLeft)
+        Me.Controls.Add(Me.barDockControlRight)
+        Me.Controls.Add(Me.barDockControlBottom)
+        Me.Controls.Add(Me.barDockControlTop)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
         Me.Name = "frmImageViewer"
         Me.ShowIcon = False
         Me.TopMost = True
         CType(Me.picImage, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.tbMain.ResumeLayout(False)
-        Me.tbMain.PerformLayout()
         Me.pnlContainer.ResumeLayout(False)
+        CType(Me.BarManager, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents picImage As System.Windows.Forms.PictureBox
-    Friend WithEvents tbMain As ToolStrip
-    Friend WithEvents cmdExport As ToolStripButton
     Friend WithEvents pnlContainer As Panel
-    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
-    Friend WithEvents cmdRotateLeft As ToolStripButton
-    Friend WithEvents cmdRotateRight As ToolStripButton
-    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
-    Friend WithEvents cmdFlipH As ToolStripButton
-    Friend WithEvents cmdShapeV As ToolStripButton
-    Friend WithEvents cmdSizeToFit As ToolStripButton
-    Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
-    Friend WithEvents cmdZoomOriginalSize As ToolStripButton
+    Friend WithEvents BarManager As DevExpress.XtraBars.BarManager
+    Friend WithEvents barMain As DevExpress.XtraBars.Bar
+    Friend WithEvents btnExport As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnZoomOriginalSize As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents barDockControlTop As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlBottom As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlLeft As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlRight As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents btnSizeToFit As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnRotateLeft As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnRotateRight As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnFlipH As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnFlipV As DevExpress.XtraBars.BarButtonItem
 End Class

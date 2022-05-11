@@ -26,7 +26,7 @@ Namespace cSurvey.Calculate
         Private bSelected As Boolean
         Private oColor As Color
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlSM As XmlElement = Document.CreateElement("rng")
             Call oXmlSM.SetAttribute("ep", modNumbers.NumberToString(dErrorPercent, ""))
             Call oXmlSM.SetAttribute("e", modNumbers.NumberToString(dError, ""))

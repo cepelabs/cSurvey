@@ -70,7 +70,6 @@ Partial Class cItemNamePropertyControl
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.Window
         Me.Controls.Add(Me.cmdItemNameRegen)
         Me.Controls.Add(Me.lblPropName)
         Me.Controls.Add(Me.Label5)

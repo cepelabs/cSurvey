@@ -4,7 +4,7 @@ Imports cSurveyPC.cSurvey.Design
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
 
-Public Class frmInfoOrientation
+friend Class frmInfoOrientation
     Private oSurvey As cSurvey.cSurvey
 
     Friend Sub New(ByVal Survey As cSurvey.cSurvey, Optional ByVal Cave As String = "")

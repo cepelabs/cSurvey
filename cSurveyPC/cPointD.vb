@@ -1,9 +1,7 @@
-﻿'implemento una struttura compatibile con point e pointF
-'ma con tipo di dati decimal per aumentare la precisione del calcoli...o almeno quella è la mia speranza.
-
+﻿'structure with decimal and same function of point and pointf for better precision
 Public Structure PointD
-    Public X As Decimal
-    Public Y As Decimal
+    Public Property X As Decimal
+    Public Property Y As Decimal
 
     Public Sub New(ByVal x As Decimal, ByVal y As Decimal)
         Me.X = x
@@ -108,15 +106,15 @@ Public Structure PointD
 
     Public ReadOnly Property IsEmpty As Boolean
         Get
-            Return X = 0 And Y = 0
+            Return X = 0D And Y = 0D
         End Get
     End Property
 
 End Structure
 
 Public Structure SizeD
-    Public Width As Decimal
-    Public Height As Decimal
+    Public Property Width As Decimal
+    Public Property Height As Decimal
 
     Public Shared Narrowing Operator CType(ByVal size As SizeD) As PointD
         Return New PointD(size.Width, size.Height)
@@ -233,7 +231,7 @@ Public Structure SizeD
 
     Public ReadOnly Property IsEmpty As Boolean
         Get
-            Return Width = 0 And Height = 0
+            Return Width = 0D And Height = 0D
         End Get
     End Property
 End Structure

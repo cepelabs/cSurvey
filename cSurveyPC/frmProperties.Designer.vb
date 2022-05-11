@@ -189,6 +189,8 @@ Partial Class frmProperties
         Me.ToolStripMenuItem16 = New System.Windows.Forms.ToolStripMenuItem()
         Me.tabInfo3D = New System.Windows.Forms.TabPage()
         Me.GroupBox9 = New System.Windows.Forms.GroupBox()
+        Me.txt3DExportAsImageOversampling = New System.Windows.Forms.NumericUpDown()
+        Me.lbl3DExportAsImageOversampling = New System.Windows.Forms.Label()
         Me.frm3DSurface = New System.Windows.Forms.GroupBox()
         Me.txt3DSurfaceModelLOD = New System.Windows.Forms.NumericUpDown()
         Me.txt3DSurfaceTextureLOD = New System.Windows.Forms.NumericUpDown()
@@ -278,6 +280,14 @@ Partial Class frmProperties
         Me.cboLineType = New System.Windows.Forms.ComboBox()
         Me.Label27 = New System.Windows.Forms.Label()
         Me.frrmDesign = New System.Windows.Forms.GroupBox()
+        Me.GroupBox11 = New System.Windows.Forms.GroupBox()
+        Me.lblDesignCrossSectionTextScaleFactor = New System.Windows.Forms.Label()
+        Me.txtDesignCrossSectionTextScaleFactor = New System.Windows.Forms.NumericUpDown()
+        Me.GroupBox12 = New System.Windows.Forms.GroupBox()
+        Me.lblDesignCrossSectionMarkerTextScaleFactor = New System.Windows.Forms.Label()
+        Me.txtDesignCrossSectionMarkerTextScaleFactor = New System.Windows.Forms.NumericUpDown()
+        Me.txtDesignCrossSectionMarkerArrowScaleFactor = New System.Windows.Forms.NumericUpDown()
+        Me.lblDesignCrossSectionMarkerArrowScaleFactor = New System.Windows.Forms.Label()
         Me.GroupBox10 = New System.Windows.Forms.GroupBox()
         Me.lblDesignExtraTextScaleFactor = New System.Windows.Forms.Label()
         Me.lblDesignExtraScaleFactor = New System.Windows.Forms.Label()
@@ -528,6 +538,7 @@ Partial Class frmProperties
         Me.mnuSpecialTrigPointTags.SuspendLayout()
         Me.tabInfo3D.SuspendLayout()
         Me.GroupBox9.SuspendLayout()
+        CType(Me.txt3DExportAsImageOversampling, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.frm3DSurface.SuspendLayout()
         CType(Me.txt3DSurfaceModelLOD, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt3DSurfaceTextureLOD, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -550,6 +561,11 @@ Partial Class frmProperties
         Me.frmSketchProfile.SuspendLayout()
         Me.frmSketchPlan.SuspendLayout()
         Me.frrmDesign.SuspendLayout()
+        Me.GroupBox11.SuspendLayout()
+        CType(Me.txtDesignCrossSectionTextScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox12.SuspendLayout()
+        CType(Me.txtDesignCrossSectionMarkerTextScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesignCrossSectionMarkerArrowScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox10.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.tabInfoInfoBox.SuspendLayout()
@@ -1169,7 +1185,6 @@ Partial Class frmProperties
         'btnCaveInfoSelectSegment
         '
         resources.ApplyResources(Me.btnCaveInfoSelectSegment, "btnCaveInfoSelectSegment")
-        Me.btnCaveInfoSelectSegment.Image = Global.cSurveyPC.My.Resources.Resources.hand_property
         Me.btnCaveInfoSelectSegment.Name = "btnCaveInfoSelectSegment"
         Me.tipStandard.SetToolTip(Me.btnCaveInfoSelectSegment, resources.GetString("btnCaveInfoSelectSegment.ToolTip"))
         Me.btnCaveInfoSelectSegment.UseVisualStyleBackColor = True
@@ -1177,7 +1192,6 @@ Partial Class frmProperties
         'btnCaveInfoSegmentsRefresh
         '
         resources.ApplyResources(Me.btnCaveInfoSegmentsRefresh, "btnCaveInfoSegmentsRefresh")
-        Me.btnCaveInfoSegmentsRefresh.Image = Global.cSurveyPC.My.Resources.Resources.arrow_refresh
         Me.btnCaveInfoSegmentsRefresh.Name = "btnCaveInfoSegmentsRefresh"
         Me.tipStandard.SetToolTip(Me.btnCaveInfoSegmentsRefresh, resources.GetString("btnCaveInfoSegmentsRefresh.ToolTip"))
         Me.btnCaveInfoSegmentsRefresh.UseVisualStyleBackColor = True
@@ -1435,7 +1449,6 @@ Partial Class frmProperties
         '
         'cmdUpdateCalculateVersion
         '
-        Me.cmdUpdateCalculateVersion.Image = Global.cSurveyPC.My.Resources.Resources.lightning
         resources.ApplyResources(Me.cmdUpdateCalculateVersion, "cmdUpdateCalculateVersion")
         Me.cmdUpdateCalculateVersion.Name = "cmdUpdateCalculateVersion"
         Me.tipStandard.SetToolTip(Me.cmdUpdateCalculateVersion, resources.GetString("cmdUpdateCalculateVersion.ToolTip"))
@@ -1489,7 +1502,6 @@ Partial Class frmProperties
         'btnSessionSegmentsRefresh
         '
         resources.ApplyResources(Me.btnSessionSegmentsRefresh, "btnSessionSegmentsRefresh")
-        Me.btnSessionSegmentsRefresh.Image = Global.cSurveyPC.My.Resources.Resources.arrow_refresh
         Me.btnSessionSegmentsRefresh.Name = "btnSessionSegmentsRefresh"
         Me.tipStandard.SetToolTip(Me.btnSessionSegmentsRefresh, resources.GetString("btnSessionSegmentsRefresh.ToolTip"))
         Me.btnSessionSegmentsRefresh.UseVisualStyleBackColor = True
@@ -1497,7 +1509,6 @@ Partial Class frmProperties
         'btnSessionSelectSegment
         '
         resources.ApplyResources(Me.btnSessionSelectSegment, "btnSessionSelectSegment")
-        Me.btnSessionSelectSegment.Image = Global.cSurveyPC.My.Resources.Resources.hand_property
         Me.btnSessionSelectSegment.Name = "btnSessionSelectSegment"
         Me.tipStandard.SetToolTip(Me.btnSessionSelectSegment, resources.GetString("btnSessionSelectSegment.ToolTip"))
         Me.btnSessionSelectSegment.UseVisualStyleBackColor = True
@@ -1521,7 +1532,6 @@ Partial Class frmProperties
         'btnSessionCalibrationSegmentsRefresh
         '
         resources.ApplyResources(Me.btnSessionCalibrationSegmentsRefresh, "btnSessionCalibrationSegmentsRefresh")
-        Me.btnSessionCalibrationSegmentsRefresh.Image = Global.cSurveyPC.My.Resources.Resources.arrow_refresh
         Me.btnSessionCalibrationSegmentsRefresh.Name = "btnSessionCalibrationSegmentsRefresh"
         Me.tipStandard.SetToolTip(Me.btnSessionCalibrationSegmentsRefresh, resources.GetString("btnSessionCalibrationSegmentsRefresh.ToolTip"))
         Me.btnSessionCalibrationSegmentsRefresh.UseVisualStyleBackColor = True
@@ -1602,7 +1612,6 @@ Partial Class frmProperties
         'optWarpingActive
         '
         resources.ApplyResources(Me.optWarpingActive, "optWarpingActive")
-        Me.optWarpingActive.Image = Global.cSurveyPC.My.Resources.Resources.control_play_blue
         Me.optWarpingActive.Name = "optWarpingActive"
         Me.optWarpingActive.TabStop = True
         Me.tipStandard.SetToolTip(Me.optWarpingActive, resources.GetString("optWarpingActive.ToolTip"))
@@ -1611,7 +1620,6 @@ Partial Class frmProperties
         'optWarpingPaused
         '
         resources.ApplyResources(Me.optWarpingPaused, "optWarpingPaused")
-        Me.optWarpingPaused.Image = Global.cSurveyPC.My.Resources.Resources.control_pause_blue
         Me.optWarpingPaused.Name = "optWarpingPaused"
         Me.optWarpingPaused.TabStop = True
         Me.tipStandard.SetToolTip(Me.optWarpingPaused, resources.GetString("optWarpingPaused.ToolTip"))
@@ -1619,7 +1627,6 @@ Partial Class frmProperties
         '
         'cmdOriginRefreshStations
         '
-        Me.cmdOriginRefreshStations.Image = Global.cSurveyPC.My.Resources.Resources.arrow_refresh
         resources.ApplyResources(Me.cmdOriginRefreshStations, "cmdOriginRefreshStations")
         Me.cmdOriginRefreshStations.Name = "cmdOriginRefreshStations"
         Me.tipStandard.SetToolTip(Me.cmdOriginRefreshStations, resources.GetString("cmdOriginRefreshStations.ToolTip"))
@@ -1627,7 +1634,6 @@ Partial Class frmProperties
         '
         'cmdGPSCustomRefPointRefreshStations
         '
-        Me.cmdGPSCustomRefPointRefreshStations.Image = Global.cSurveyPC.My.Resources.Resources.arrow_refresh
         resources.ApplyResources(Me.cmdGPSCustomRefPointRefreshStations, "cmdGPSCustomRefPointRefreshStations")
         Me.cmdGPSCustomRefPointRefreshStations.Name = "cmdGPSCustomRefPointRefreshStations"
         Me.tipStandard.SetToolTip(Me.cmdGPSCustomRefPointRefreshStations, resources.GetString("cmdGPSCustomRefPointRefreshStations.ToolTip"))
@@ -1791,10 +1797,24 @@ Partial Class frmProperties
         '
         'GroupBox9
         '
+        Me.GroupBox9.Controls.Add(Me.txt3DExportAsImageOversampling)
+        Me.GroupBox9.Controls.Add(Me.lbl3DExportAsImageOversampling)
         Me.GroupBox9.Controls.Add(Me.frm3DSurface)
         resources.ApplyResources(Me.GroupBox9, "GroupBox9")
         Me.GroupBox9.Name = "GroupBox9"
         Me.GroupBox9.TabStop = False
+        '
+        'txt3DExportAsImageOversampling
+        '
+        resources.ApplyResources(Me.txt3DExportAsImageOversampling, "txt3DExportAsImageOversampling")
+        Me.txt3DExportAsImageOversampling.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.txt3DExportAsImageOversampling.Name = "txt3DExportAsImageOversampling"
+        Me.txt3DExportAsImageOversampling.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'lbl3DExportAsImageOversampling
+        '
+        resources.ApplyResources(Me.lbl3DExportAsImageOversampling, "lbl3DExportAsImageOversampling")
+        Me.lbl3DExportAsImageOversampling.Name = "lbl3DExportAsImageOversampling"
         '
         'frm3DSurface
         '
@@ -2418,6 +2438,7 @@ Partial Class frmProperties
         '
         'frrmDesign
         '
+        Me.frrmDesign.Controls.Add(Me.GroupBox11)
         Me.frrmDesign.Controls.Add(Me.GroupBox10)
         Me.frrmDesign.Controls.Add(Me.lblDesignTextureScale)
         Me.frrmDesign.Controls.Add(Me.txtDesignTextureScaleFactor)
@@ -2437,6 +2458,64 @@ Partial Class frmProperties
         resources.ApplyResources(Me.frrmDesign, "frrmDesign")
         Me.frrmDesign.Name = "frrmDesign"
         Me.frrmDesign.TabStop = False
+        '
+        'GroupBox11
+        '
+        Me.GroupBox11.Controls.Add(Me.lblDesignCrossSectionTextScaleFactor)
+        Me.GroupBox11.Controls.Add(Me.txtDesignCrossSectionTextScaleFactor)
+        Me.GroupBox11.Controls.Add(Me.GroupBox12)
+        resources.ApplyResources(Me.GroupBox11, "GroupBox11")
+        Me.GroupBox11.Name = "GroupBox11"
+        Me.GroupBox11.TabStop = False
+        '
+        'lblDesignCrossSectionTextScaleFactor
+        '
+        resources.ApplyResources(Me.lblDesignCrossSectionTextScaleFactor, "lblDesignCrossSectionTextScaleFactor")
+        Me.lblDesignCrossSectionTextScaleFactor.Name = "lblDesignCrossSectionTextScaleFactor"
+        Me.lblDesignCrossSectionTextScaleFactor.Tag = "txtDesignCrossSectionTextScaleFactor"
+        '
+        'txtDesignCrossSectionTextScaleFactor
+        '
+        Me.txtDesignCrossSectionTextScaleFactor.DecimalPlaces = 2
+        Me.txtDesignCrossSectionTextScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+        resources.ApplyResources(Me.txtDesignCrossSectionTextScaleFactor, "txtDesignCrossSectionTextScaleFactor")
+        Me.txtDesignCrossSectionTextScaleFactor.Name = "txtDesignCrossSectionTextScaleFactor"
+        '
+        'GroupBox12
+        '
+        Me.GroupBox12.Controls.Add(Me.lblDesignCrossSectionMarkerTextScaleFactor)
+        Me.GroupBox12.Controls.Add(Me.txtDesignCrossSectionMarkerTextScaleFactor)
+        Me.GroupBox12.Controls.Add(Me.txtDesignCrossSectionMarkerArrowScaleFactor)
+        Me.GroupBox12.Controls.Add(Me.lblDesignCrossSectionMarkerArrowScaleFactor)
+        resources.ApplyResources(Me.GroupBox12, "GroupBox12")
+        Me.GroupBox12.Name = "GroupBox12"
+        Me.GroupBox12.TabStop = False
+        '
+        'lblDesignCrossSectionMarkerTextScaleFactor
+        '
+        resources.ApplyResources(Me.lblDesignCrossSectionMarkerTextScaleFactor, "lblDesignCrossSectionMarkerTextScaleFactor")
+        Me.lblDesignCrossSectionMarkerTextScaleFactor.Name = "lblDesignCrossSectionMarkerTextScaleFactor"
+        Me.lblDesignCrossSectionMarkerTextScaleFactor.Tag = "txtDesignCrossSectionMarkerTextScaleFactor"
+        '
+        'txtDesignCrossSectionMarkerTextScaleFactor
+        '
+        Me.txtDesignCrossSectionMarkerTextScaleFactor.DecimalPlaces = 2
+        Me.txtDesignCrossSectionMarkerTextScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+        resources.ApplyResources(Me.txtDesignCrossSectionMarkerTextScaleFactor, "txtDesignCrossSectionMarkerTextScaleFactor")
+        Me.txtDesignCrossSectionMarkerTextScaleFactor.Name = "txtDesignCrossSectionMarkerTextScaleFactor"
+        '
+        'txtDesignCrossSectionMarkerArrowScaleFactor
+        '
+        Me.txtDesignCrossSectionMarkerArrowScaleFactor.DecimalPlaces = 2
+        Me.txtDesignCrossSectionMarkerArrowScaleFactor.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+        resources.ApplyResources(Me.txtDesignCrossSectionMarkerArrowScaleFactor, "txtDesignCrossSectionMarkerArrowScaleFactor")
+        Me.txtDesignCrossSectionMarkerArrowScaleFactor.Name = "txtDesignCrossSectionMarkerArrowScaleFactor"
+        '
+        'lblDesignCrossSectionMarkerArrowScaleFactor
+        '
+        resources.ApplyResources(Me.lblDesignCrossSectionMarkerArrowScaleFactor, "lblDesignCrossSectionMarkerArrowScaleFactor")
+        Me.lblDesignCrossSectionMarkerArrowScaleFactor.Name = "lblDesignCrossSectionMarkerArrowScaleFactor"
+        Me.lblDesignCrossSectionMarkerArrowScaleFactor.Tag = "txtDesignCrossSectionMarkerArrowScaleFactor"
         '
         'GroupBox10
         '
@@ -2643,13 +2722,11 @@ Partial Class frmProperties
         '
         'btnCaveInfoAddCave
         '
-        Me.btnCaveInfoAddCave.Image = Global.cSurveyPC.My.Resources.Resources.add
         resources.ApplyResources(Me.btnCaveInfoAddCave, "btnCaveInfoAddCave")
         Me.btnCaveInfoAddCave.Name = "btnCaveInfoAddCave"
         '
         'btnCaveInfoAddBranch
         '
-        Me.btnCaveInfoAddBranch.Image = Global.cSurveyPC.My.Resources.Resources.add
         resources.ApplyResources(Me.btnCaveInfoAddBranch, "btnCaveInfoAddBranch")
         Me.btnCaveInfoAddBranch.Name = "btnCaveInfoAddBranch"
         '
@@ -2660,7 +2737,6 @@ Partial Class frmProperties
         '
         'btnCaveInfoDelete
         '
-        Me.btnCaveInfoDelete.Image = Global.cSurveyPC.My.Resources.Resources.cross
         resources.ApplyResources(Me.btnCaveInfoDelete, "btnCaveInfoDelete")
         Me.btnCaveInfoDelete.Name = "btnCaveInfoDelete"
         '
@@ -2863,7 +2939,6 @@ Partial Class frmProperties
         '
         'btnSessionsAddSession
         '
-        Me.btnSessionsAddSession.Image = Global.cSurveyPC.My.Resources.Resources.add
         resources.ApplyResources(Me.btnSessionsAddSession, "btnSessionsAddSession")
         Me.btnSessionsAddSession.Name = "btnSessionsAddSession"
         '
@@ -2874,7 +2949,6 @@ Partial Class frmProperties
         '
         'btnSessionsDelete
         '
-        Me.btnSessionsDelete.Image = Global.cSurveyPC.My.Resources.Resources.cross
         resources.ApplyResources(Me.btnSessionsDelete, "btnSessionsDelete")
         Me.btnSessionsDelete.Name = "btnSessionsDelete"
         '
@@ -3125,7 +3199,7 @@ Partial Class frmProperties
         '
         Me.cboSessionInclinationType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboSessionInclinationType, "cboSessionInclinationType")
-        Me.cboSessionInclinationType.Items.AddRange(New Object() {resources.GetString("cboSessionInclinationType.Items"), resources.GetString("cboSessionInclinationType.Items1")})
+        Me.cboSessionInclinationType.Items.AddRange(New Object() {resources.GetString("cboSessionInclinationType.Items"), resources.GetString("cboSessionInclinationType.Items1"), resources.GetString("cboSessionInclinationType.Items2")})
         Me.cboSessionInclinationType.Name = "cboSessionInclinationType"
         '
         'lblSessionInclinationType
@@ -3323,7 +3397,7 @@ Partial Class frmProperties
         Me.cboCalculateVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboCalculateVersion, "cboCalculateVersion")
         Me.cboCalculateVersion.FormattingEnabled = True
-        Me.cboCalculateVersion.Items.AddRange(New Object() {resources.GetString("cboCalculateVersion.Items"), resources.GetString("cboCalculateVersion.Items1"), resources.GetString("cboCalculateVersion.Items2")})
+        Me.cboCalculateVersion.Items.AddRange(New Object() {resources.GetString("cboCalculateVersion.Items"), resources.GetString("cboCalculateVersion.Items1"), resources.GetString("cboCalculateVersion.Items2"), resources.GetString("cboCalculateVersion.Items3")})
         Me.cboCalculateVersion.Name = "cboCalculateVersion"
         '
         'lblCalculateVersion
@@ -3361,7 +3435,6 @@ Partial Class frmProperties
         '
         'picNordCorrectionWarning
         '
-        Me.picNordCorrectionWarning.Image = Global.cSurveyPC.My.Resources.Resources._error
         resources.ApplyResources(Me.picNordCorrectionWarning, "picNordCorrectionWarning")
         Me.picNordCorrectionWarning.Name = "picNordCorrectionWarning"
         Me.picNordCorrectionWarning.TabStop = False
@@ -3703,7 +3776,6 @@ Partial Class frmProperties
         'btnAddHighlight
         '
         Me.btnAddHighlight.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnAddHighlight0, Me.btnAddHighlight1})
-        Me.btnAddHighlight.Image = Global.cSurveyPC.My.Resources.Resources.add
         resources.ApplyResources(Me.btnAddHighlight, "btnAddHighlight")
         Me.btnAddHighlight.Name = "btnAddHighlight"
         '
@@ -3724,7 +3796,6 @@ Partial Class frmProperties
         '
         'btnDeleteHighlight
         '
-        Me.btnDeleteHighlight.Image = Global.cSurveyPC.My.Resources.Resources.cross
         resources.ApplyResources(Me.btnDeleteHighlight, "btnDeleteHighlight")
         Me.btnDeleteHighlight.Name = "btnDeleteHighlight"
         '
@@ -3792,6 +3863,7 @@ Partial Class frmProperties
         Me.Controls.Add(Me.tabInfo)
         Me.Controls.Add(Me.cmdOk)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.IconOptions.Icon = CType(resources.GetObject("frmProperties.IconOptions.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmProperties"
@@ -3851,6 +3923,8 @@ Partial Class frmProperties
         Me.tabInfo3D.ResumeLayout(False)
         Me.tabInfo3D.PerformLayout()
         Me.GroupBox9.ResumeLayout(False)
+        Me.GroupBox9.PerformLayout()
+        CType(Me.txt3DExportAsImageOversampling, System.ComponentModel.ISupportInitialize).EndInit()
         Me.frm3DSurface.ResumeLayout(False)
         Me.frm3DSurface.PerformLayout()
         CType(Me.txt3DSurfaceModelLOD, System.ComponentModel.ISupportInitialize).EndInit()
@@ -3889,6 +3963,13 @@ Partial Class frmProperties
         Me.frmSketchPlan.PerformLayout()
         Me.frrmDesign.ResumeLayout(False)
         Me.frrmDesign.PerformLayout()
+        Me.GroupBox11.ResumeLayout(False)
+        Me.GroupBox11.PerformLayout()
+        CType(Me.txtDesignCrossSectionTextScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox12.ResumeLayout(False)
+        Me.GroupBox12.PerformLayout()
+        CType(Me.txtDesignCrossSectionMarkerTextScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesignCrossSectionMarkerArrowScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox10.ResumeLayout(False)
         Me.GroupBox10.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
@@ -4408,4 +4489,14 @@ Partial Class frmProperties
     Friend WithEvents cmdOriginRefreshStations As Button
     Friend WithEvents chkGPSAllowManualDeclinations As CheckBox
     Friend WithEvents pnlGPS As Panel
+    Friend WithEvents txt3DExportAsImageOversampling As NumericUpDown
+    Friend WithEvents lbl3DExportAsImageOversampling As Label
+    Friend WithEvents GroupBox11 As GroupBox
+    Friend WithEvents lblDesignCrossSectionTextScaleFactor As Label
+    Friend WithEvents txtDesignCrossSectionTextScaleFactor As NumericUpDown
+    Friend WithEvents GroupBox12 As GroupBox
+    Friend WithEvents lblDesignCrossSectionMarkerTextScaleFactor As Label
+    Friend WithEvents txtDesignCrossSectionMarkerTextScaleFactor As NumericUpDown
+    Friend WithEvents txtDesignCrossSectionMarkerArrowScaleFactor As NumericUpDown
+    Friend WithEvents lblDesignCrossSectionMarkerArrowScaleFactor As Label
 End Class

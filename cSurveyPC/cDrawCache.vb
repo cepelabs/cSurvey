@@ -3,6 +3,7 @@ Imports System.Drawing.Drawing2D
 Imports System.Xml
 
 Imports cSurveyPC.cSurvey.Design
+Imports DevExpress.Utils.Extensions
 
 Namespace cSurvey.Drawings
     Public Class cDrawCache
@@ -30,7 +31,7 @@ Namespace cSurvey.Drawings
                         If oItem.Type = cDrawCacheItem.cDrawCacheItemType.Filler OrElse oItem.Type = cDrawCacheItem.cDrawCacheItemType.Border Then
                             Using oPath As GraphicsPath = oItem.Path.Clone
                                 Using oPen As Pen = If(IsNothing(oItem.Pen), Nothing, oItem.Pen.Clone)
-                                    If Not IsNothing(oPen) Then oPen.Width = 0.2 *25/ Scale 'If(oPen.Width <= 0, 0.1F, oPen.Width) * Scale * Wide * Precision
+                                    If Not IsNothing(oPen) Then oPen.Width = 0.2F * 25.0F / Scale 'If(oPen.Width <= 0, 0.1F, oPen.Width) * Scale * Wide * Precision
                                     oPath.FillMode = FillMode.Winding
                                     Call oPath.Widen(oPen)
                                     If oPath.IsVisible(Point, Graphics) Then
@@ -106,7 +107,36 @@ Namespace cSurvey.Drawings
             iMaxDrawItemCount = modMain.GetMaxDrawItemCount
         End Sub
 
-        Public Function SetClip(ClipPath As GraphicsPath) As cDrawCacheItem
+        'Public Function SetClip(ClipPath As GraphicsPath) As cDrawCacheItem
+        '    Dim oItem As cDrawCacheItem = New cDrawCacheItem(cDrawCacheItem.cDrawCacheItemType.SetClip)
+        '    Call oItem.AddPath(ClipPath)
+        '    Call oItems.Add(oItem)
+        '    bBounds = False
+        '    Return oItem
+        'End Function
+
+        'Public Function ResetClip() As cDrawCacheItem
+        '    Dim oItem As cDrawCacheItem = New cDrawCacheItem(cDrawCacheItem.cDrawCacheItemType.ResetClip)
+        '    Call oItems.Add(oItem)
+        '    bBounds = False
+        '    Return oItem
+        'End Function
+
+        Public Function AddString(ByVal Text As String, ByVal Font As Font, ByVal Point As PointF, Optional ByVal Format As StringFormat = Nothing) As cDrawCacheItem
+            Dim oItem As cDrawCacheItemText = New cDrawCacheItemText(Text, Font, Point, Format)
+            Call oItems.Add(oItem)
+            bBounds = False
+            Return oItem
+        End Function
+
+        Public Function AddString(ByVal Text As String, ByVal Font As Font, ByVal Rectangle As RectangleF, Optional ByVal Format As StringFormat = Nothing) As cDrawCacheItem
+            Dim oItem As cDrawCacheItemText = New cDrawCacheItemText(Text, Font, Rectangle, Format)
+            Call oItems.Add(oItem)
+            bBounds = False
+            Return oItem
+        End Function
+
+        Public Function AddSetClip(ClipPath As GraphicsPath) As cDrawCacheItem
             Dim oItem As cDrawCacheItem = New cDrawCacheItem(cDrawCacheItem.cDrawCacheItemType.SetClip)
             Call oItem.AddPath(ClipPath)
             Call oItems.Add(oItem)
@@ -114,8 +144,22 @@ Namespace cSurvey.Drawings
             Return oItem
         End Function
 
-        Public Function ResetClip() As cDrawCacheItem
+        Public Function AddResetclip() As cDrawCacheItem
             Dim oItem As cDrawCacheItem = New cDrawCacheItem(cDrawCacheItem.cDrawCacheItemType.ResetClip)
+            Call oItems.Add(oItem)
+            bBounds = False
+            Return oItem
+        End Function
+
+        Public Function AddBorder(Optional ByVal Path As GraphicsPath = Nothing, Optional ByVal Pen As Pen = Nothing, Optional ByVal WireframePen As Pen = Nothing, Optional ByVal Brush As Brush = Nothing) As cDrawCacheItem
+            Dim oItem As cDrawCacheItem = New cDrawCacheItem(cDrawCacheItem.cDrawCacheItemType.Border, Path, Pen, WireframePen, Brush)
+            Call oItems.Add(oItem)
+            bBounds = False
+            Return oItem
+        End Function
+
+        Public Function AddFiller(Optional ByVal Path As GraphicsPath = Nothing, Optional ByVal Pen As Pen = Nothing, Optional ByVal WireframePen As Pen = Nothing, Optional ByVal Brush As Brush = Nothing) As cDrawCacheItem
+            Dim oItem As cDrawCacheItem = New cDrawCacheItem(cDrawCacheItem.cDrawCacheItemType.Filler, Path, Pen, WireframePen, Brush)
             Call oItems.Add(oItem)
             bBounds = False
             Return oItem
@@ -251,7 +295,7 @@ Namespace cSurvey.Drawings
                 End If
 
                 For Each oItem As cDrawCacheItem In oItems
-                    If oItem.Type = cDrawCacheItem.cDrawCacheItemType.Border Then
+                    If oItem.Type = cDrawCacheItem.cDrawCacheItemType.Border OrElse oItem.Type = cDrawCacheItem.cDrawCacheItemType.Text Then
                         Call oItem.AppendSvgItem(SVG, oSVGGroup, PaintOptions, Options, Matrix)
                     End If
                 Next
@@ -263,7 +307,8 @@ Namespace cSurvey.Drawings
         Public Function Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum) As Boolean
             Try
                 If oItems.Count > 0 Then
-                    If (Options And cItem.PaintOptionsEnum.Wireframe) = cItem.PaintOptionsEnum.Wireframe Or (Options And cItem.PaintOptionsEnum.SchematicLayerDraw) = cItem.PaintOptionsEnum.SchematicLayerDraw Then
+                    If (Options And cItem.PaintOptionsEnum.Wireframe) = cItem.PaintOptionsEnum.Wireframe OrElse (Options And cItem.PaintOptionsEnum.SchematicLayerDraw) = cItem.PaintOptionsEnum.SchematicLayerDraw Then
+                        'Dim sVisibleScaleFactor As Single = (39.37008F * Graphics.DpiX) / PaintOptions.CurrentScale
                         Dim oItemsToDraw As IEnumerable(Of cDrawCacheItem) = oItems.Where(Function(item) item.IsWireframeOutlined)
                         If Not (Options And cItem.PaintOptionsEnum.IgnoreMaxDrawItemCount) = cItem.PaintOptionsEnum.IgnoreMaxDrawItemCount AndAlso oItemsToDraw.Count > iMaxDrawItemCount Then
                             Dim oItem As cDrawCacheItem = oItemsToDraw.First
@@ -272,7 +317,22 @@ Namespace cSurvey.Drawings
                         Else
                             SyncLock oItemsToDraw
                                 For Each oItem As cDrawCacheItem In oItemsToDraw
-                                    Call Graphics.DrawPath(oItem.WireframePen, oItem.Path)
+                                    'there is a strange gdi behaviour: when and object is very small (> some pixels of screen bounds)
+                                    'gdi, with wireframe pen, raise out of memory error
+                                    'to avoid this I found 2 ways: 
+                                    '-Calculate the real bounds of the object but this requery the overload of scaling
+                                    '-use a try catch
+                                    'testing performace the final result is that try catch is faster that scaling a rect and checking is size so I follow this way
+                                    'Dim oBounds As RectangleF = oItem.Path.GetBounds
+                                    'oBounds = modPaint.ScaleRectangle(oBounds, sVisibleScaleFactor)
+                                    'If oBounds.Width > 2.0F AndAlso oBounds.Height > 2.0F Then
+                                    '    Call Graphics.DrawPath(oItem.WireframePen, oItem.Path)
+                                    'End If
+                                    Try
+                                        Call Graphics.DrawPath(oItem.WireframePen, oItem.Path)
+                                    Catch ex As Exception
+                                        'Call PaintOptions.Survey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, "cache paint warning: " & ex.Message, True)
+                                    End Try
                                 Next
                             End SyncLock
                         End If
@@ -280,25 +340,14 @@ Namespace cSurvey.Drawings
                         Dim oRestores As Stack(Of Boolean) = New Stack(Of Boolean)
                         Dim oStates As Stack(Of GraphicsState) = New Stack(Of GraphicsState)
                         SyncLock oItems
-                            For Each oItem As cDrawCacheItem In oItems ' oItems.Where(Function(Item) Item.Type <= cDrawCacheItem.cDrawCacheItemType.FillerAndClip)
-                                'code for hittesting test...
-                                'If oItem.Type = cDrawCacheItem.cDrawCacheItemType.Filler OrElse oItem.Type = cDrawCacheItem.cDrawCacheItemType.Border Then
-                                '    Using oPath As GraphicsPath = oItem.Path.Clone
-                                '        Using oPen As Pen = If(IsNothing(oItem.Pen), Nothing, oItem.Pen.Clone)
-                                '            If Not IsNothing(oPen) Then oPen.Width = 0.5 'If(oPen.Width <= 0, 0.1F, oPen.Width) * Scale * Wide * Precision
-                                '            oPath.FillMode = FillMode.Winding
-                                '            Call oPath.Widen(oPen)
-                                '            Call Graphics.FillPath(Brushes.Red, oPath)
-                                '        End Using
-                                '    End Using
-                                'End If
+                            For Each oItem As cDrawCacheItem In oItems
                                 If oItem.Type = cDrawCacheItem.cDrawCacheItemType.SetClip Then
                                     Using oClip As Region = New Region(oItem.Path)
-                                        If Not oClip Is Nothing And Not (Options And cItem.PaintOptionsEnum.SchematicLayerDraw) = cItem.PaintOptionsEnum.SchematicLayerDraw Then
-                                            If Not (oClip.IsEmpty(Graphics) Or oClip.IsInfinite(Graphics)) Then
+                                        If Not oClip Is Nothing AndAlso Not (Options And cItem.PaintOptionsEnum.SchematicLayerDraw) = cItem.PaintOptionsEnum.SchematicLayerDraw Then
+                                            If Not (oClip.IsEmpty(Graphics) OrElse oClip.IsInfinite(Graphics)) Then
                                                 Call oRestores.Push(True)
                                                 Call oStates.Push(Graphics.Save)
-                                                If Graphics.Clip.IsEmpty(Graphics) Or Graphics.Clip.IsInfinite(Graphics) Then
+                                                If Graphics.Clip.IsEmpty(Graphics) OrElse Graphics.Clip.IsInfinite(Graphics) Then
                                                     Call Graphics.SetClip(oClip, CombineMode.Replace)
                                                 Else
                                                     Call Graphics.SetClip(oClip, CombineMode.Intersect)
@@ -319,7 +368,7 @@ Namespace cSurvey.Drawings
                                     If oItem.IsOutlined Then
                                         Call Graphics.DrawPath(oItem.Pen, oItem.Path)
                                     End If
-                                ElseIf oItem.Type = cDrawCacheItem.cDrawCacheItemType.Border Then
+                                ElseIf oItem.Type = cDrawCacheItem.cDrawCacheItemType.Border OrElse oItem.Type = cDrawCacheItem.cDrawCacheItemType.Text Then
                                     If oItem.IsFilled Then
                                         Call Graphics.FillPath(oItem.Brush, oItem.Path)
                                     End If
@@ -338,6 +387,7 @@ Namespace cSurvey.Drawings
                 End If
                 Return True
             Catch ex As Exception
+                Call PaintOptions.Survey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, "cache paint error: " & ex.Message, True)
                 Return False
             End Try
         End Function
@@ -373,6 +423,158 @@ Namespace cSurvey.Drawings
 
     End Class
 
+    Public Class cDrawCacheItemText
+        Inherits cDrawCacheItem
+
+        Private sText As String
+        Private oFontFamily As FontFamily
+        Private iFontStyle As FontStyle
+        Private sFontSize As Single
+        Private iFontUnit As GraphicsUnit
+        Private oPoint As PointF
+        Private oSize As SizeF
+        Private oFormat As StringFormat
+
+        Public Sub New(ByVal Text As String, ByVal Font As Font, ByVal Rectangle As RectangleF, Optional ByVal Format As StringFormat = Nothing)
+            MyBase.New(cDrawCacheItemType.Text)
+            sText = Text
+            oFontFamily = Font.FontFamily
+            iFontStyle = Font.Style
+            sFontSize = Font.Size
+            iFontUnit = Font.Unit
+            oPoint = Rectangle.Location
+            oSize = Rectangle.Size
+            oFormat = Format
+            Call MyBase.AddString(sText, Font, Rectangle, oFormat)
+            'MyBase.AddLines({New PointF(oPoint.X - 1, oPoint.Y), New PointF(oPoint.X + 1, oPoint.Y), New PointF(oPoint.X, oPoint.Y - 1), New PointF(oPoint.X, oPoint.Y + 1)})
+        End Sub
+
+        Public Sub New(ByVal Text As String, ByVal Font As Font, ByVal Point As PointF, Optional ByVal Format As StringFormat = Nothing)
+            MyBase.New(cDrawCacheItemType.Text)
+            sText = Text
+            oFontFamily = Font.FontFamily
+            iFontStyle = Font.Style
+            sFontSize = Font.Size
+            iFontUnit = Font.Unit
+            oPoint = Point
+            oSize = New Size(0, 0)
+            oFormat = Format
+            Call MyBase.AddString(sText, Font, oPoint, oFormat)
+            'MyBase.AddLines({New PointF(oPoint.X - 1, oPoint.Y), New PointF(oPoint.X + 1, oPoint.Y), New PointF(oPoint.X, oPoint.Y - 1), New PointF(oPoint.X, oPoint.Y + 1)})
+        End Sub
+
+        Friend Overrides Function AppendSvgItem(ByVal SVG As XmlDocument, ByVal Parent As XmlElement, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, Optional ByVal Matrix As Matrix = Nothing) As XmlElement
+            If sText <> "" Then
+                'Dim oPoints As PointF() = {oPoint}
+                'If Not Matrix Is Nothing Then
+                '    Matrix.TransformPoints(oPoints)
+                'End If
+                'Dim oItem As XmlElement = modSVG.CreateText(SVG, sText, oPoints(0), sFontFamily, iFontStyle, sFontSize, iFontUnit)
+                'Call modSVG.AppendItem(SVG, Parent, oItem)
+                'Return oItem
+
+                Dim oPoints As PointF() = {oPoint}
+                If Not Matrix Is Nothing Then
+                    Matrix.TransformPoints(oPoints)
+                End If
+
+                Using oPath As GraphicsPath = New GraphicsPath
+                    Dim sRealFontSize As Single = sFontSize * 100.0F / 96.0F '/ 19.5819258
+
+                    oPath.AddString(sText, oFontFamily, iFontStyle, sRealFontSize, oPoint, oFormat)
+                    Dim oPathRect As RectangleF = oPath.GetBounds
+
+                    Dim sX As Single = oPoints(0).X
+                    Dim sY As Single = oPoints(0).Y
+
+                    If Not oFormat Is Nothing Then
+                        Select Case oFormat.LineAlignment
+                            Case StringAlignment.Center
+                                sY = sY - oPathRect.Height / 2
+                            Case StringAlignment.Far
+                                sY = sY - oPathRect.Height
+                        End Select
+                    End If
+
+                    Dim oXMLText As XmlElement = modSVG.CreateGeneric(SVG, "text")
+                    Call modSVG.AppendItemStyle(SVG, oXMLText, If(MyBase.IsFilled, MyBase.Brush, Nothing), If(MyBase.IsOutlined, MyBase.Pen, Nothing))
+
+                    Dim iLineCount As Integer = 0
+                    Dim sLineY As Single = sY
+                    For Each sRealTextLine In sText.Split(vbCrLf)
+                        Dim oXMLTextLine As XmlElement = modSVG.CreateGeneric(SVG, "tspan")
+                        If modXML.HasAttribute(SVG.DocumentElement, "xmlns:inkscape") Then
+                            Call oXMLTextLine.SetAttribute("role", modSVG.sodipodiNamespace, "line")
+                        End If
+                        Call oXMLTextLine.SetAttribute("x", modNumbers.NumberToString(sX, ""))
+                        Call oXMLTextLine.SetAttribute("y", modNumbers.NumberToString(sLineY, ""))
+
+                        If Not oFormat Is Nothing Then
+                            Select Case oFormat.Alignment
+                                Case StringAlignment.Center
+                                    Call oXMLTextLine.SetAttribute("text-anchor", "middle")
+                                Case StringAlignment.Far
+                                    Call oXMLTextLine.SetAttribute("text-anchor", "end")
+                            End Select
+                        End If
+
+                        oXMLTextLine.InnerText = sRealTextLine.Replace(vbCr, "").Replace(vbLf, "")
+                        oXMLText.AppendChild(oXMLTextLine)
+                        sLineY += sFontSize * 1.1
+                    Next
+
+                    Call oXMLText.SetAttribute("x", modNumbers.NumberToString(sX, ""))
+                    Call oXMLText.SetAttribute("y", modNumbers.NumberToString(sY, ""))
+                    Call oXMLText.SetAttribute("dominant-baseline", "hanging")
+
+                    Call oXMLText.SetAttribute("style", "font-family:" & oFontFamily.Name & ";font-size:" & modNumbers.NumberToString(sRealFontSize, "") & "px")
+                    If (iFontStyle And FontStyle.Bold) = FontStyle.Bold Then
+                        Call modSVG.AppendItemStyle(SVG, oXMLText, "font-weight", "bold")
+                    End If
+                    If (iFontStyle And FontStyle.Italic) = FontStyle.Italic Then
+                        Call modSVG.AppendItemStyle(SVG, oXMLText, "font-style", "italic")
+                    End If
+                    If (iFontStyle And FontStyle.Underline) = FontStyle.Underline Then
+                        Call modSVG.AppendItemStyle(SVG, oXMLText, "text-decoration", "underline")
+                    End If
+
+                    If Not oFormat Is Nothing Then
+                        Select Case oFormat.Alignment
+                            Case StringAlignment.Center
+                                Call modSVG.AppendItemStyle(SVG, oXMLText, "text-anchor", "middle")
+                            Case StringAlignment.Far
+                                Call modSVG.AppendItemStyle(SVG, oXMLText, "text-anchor", "end")
+                        End Select
+                    End If
+                    Call modSVG.AppendItem(SVG, Parent, oXMLText)
+
+                    Return oXMLText
+
+                    'Dim sTransform As String = ""
+                    'If PaintOptions.DrawTranslation Then
+                    '    Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
+                    '    If Not oTranslation.IsEmpty Then
+                    '        sTransform &= " translate(" & modSVG.PointToSVGString(oTranslation.ToPointF) & ")"
+                    '    End If
+                    'End If
+                    'If iTextRotateMode = cIItemRotable.RotateModeEnum.Rotable Then
+                    '    Dim oMovedCenterPoint As PointF = MyBase.Points(0).Point
+                    '    sTransform &= " rotate(" & modNumbers.NumberToString(sAngle, "") & " " & modSVG.PointToSVGString(oMovedCenterPoint) & ")"
+                    'End If
+                    'If sTransform <> "" Then
+                    '    Call oXMLText.SetAttribute("transform", sTransform.Trim)
+                    'End If
+
+                    'Call modSVG.AddSourceReference(Me, oXMLText, Options)
+
+                    'Call oXMLGroup.AppendChild(oXMLText)
+
+                    'Return oXMLGroup
+                End Using
+            End If
+        End Function
+    End Class
+
     Public Class cDrawCacheItem
         Implements IDisposable
 
@@ -381,6 +583,7 @@ Namespace cSurvey.Drawings
             SetClip = 1
             ResetClip = 2
             Border = 9
+            Text = 10
         End Enum
 
         Private iType As cDrawCacheItemType
@@ -479,20 +682,20 @@ Namespace cSurvey.Drawings
             Call oPath.StartFigure()
         End Sub
 
+        Public Overridable Sub AddString(ByVal Text As String, ByVal Font As Font, ByVal Point As PointF, Optional ByVal Format As StringFormat = Nothing)
+            Call oPath.AddString(Text, Font.FontFamily, Font.Style, Font.Size, Point, Format)
+        End Sub
+
+        Public Overridable Sub AddString(ByVal Text As String, ByVal Font As Font, ByVal Rectangle As RectangleF, Optional ByVal Format As StringFormat = Nothing)
+            Call oPath.AddString(Text, Font.FontFamily, Font.Style, Font.Size, Rectangle, Format)
+        End Sub
+
         Public Sub AddPolygon(ByVal Points() As PointF)
             Call oPath.AddPolygon(Points)
         End Sub
 
         Public Sub AddPath(ByVal Path As GraphicsPath)
             Call oPath.AddPath(Path, False)
-        End Sub
-
-        Public Sub AddString(ByVal Text As String, ByVal Font As Font, ByVal Point As PointF, Optional ByVal Format As StringFormat = Nothing)
-            Call oPath.AddString(Text, Font.FontFamily, Font.Style, Font.Size, Point, Format)
-        End Sub
-
-        Public Sub AddString(ByVal Text As String, ByVal Font As Font, ByVal Rectangle As RectangleF, Optional ByVal Format As StringFormat = Nothing)
-            Call oPath.AddString(Text, Font.FontFamily, Font.Style, Font.Size, Rectangle, Format)
         End Sub
 
         Public Sub AddLine(ByVal X1 As Single, ByVal Y1 As Single, ByVal X2 As Single, ByVal Y2 As Single)
@@ -579,24 +782,17 @@ Namespace cSurvey.Drawings
             End Get
         End Property
 
-        Friend Function AppendSvgItem(ByVal SVG As XmlDocument, ByVal Parent As XmlElement, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, Optional ByVal Matrix As Matrix = Nothing) As XmlElement
-            If bIsFilled Or bIsOutlined Then
-                Dim oSvgPath As GraphicsPath
-                Dim bDispose As Boolean
-                If Matrix Is Nothing Then
-                    oSvgPath = oPath
-                Else
-                    oSvgPath = oPath.Clone
-                    Call oSvgPath.Transform(Matrix)
-                    bDispose = True
-                End If
-                Dim oItem As XmlElement = modSVG.CreateItem(SVG, PaintOptions, oSvgPath)
-                Call modSVG.AppendItemStyle(SVG, oItem, IIf(bIsFilled, oBrush, Nothing), IIf(bIsOutlined, oPen, Nothing))
-                Call modSVG.AppendItem(SVG, Parent, oItem)
-                If bDispose Then
-                    Call oSvgPath.Dispose()
-                End If
-                Return oItem
+        Friend Overridable Function AppendSvgItem(ByVal SVG As XmlDocument, ByVal Parent As XmlElement, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, Optional ByVal Matrix As Matrix = Nothing) As XmlElement
+            If bIsFilled OrElse bIsOutlined Then
+                Using oSvgPath As GraphicsPath = oPath.Clone
+                    If Not Matrix Is Nothing Then
+                        Call oSvgPath.Transform(Matrix)
+                    End If
+                    Dim oItem As XmlElement = modSVG.CreateItem(SVG, PaintOptions, oSvgPath)
+                    Call modSVG.AppendItemStyle(SVG, oItem, If(bIsFilled, oBrush, Nothing), If(bIsOutlined, oPen, Nothing))
+                    Call modSVG.AppendItem(SVG, Parent, oItem)
+                    Return oItem
+                End Using
             End If
         End Function
 

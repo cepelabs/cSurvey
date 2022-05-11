@@ -113,7 +113,7 @@ Partial Class frmParametersSegments
         '
         Me.cboSplayStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboSplayStyle, "cboSplayStyle")
-        Me.cboSplayStyle.Items.AddRange(New Object() {resources.GetString("cboSplayStyle.Items"), resources.GetString("cboSplayStyle.Items1")})
+        Me.cboSplayStyle.Items.AddRange(New Object() {resources.GetString("cboSplayStyle.Items"), resources.GetString("cboSplayStyle.Items1"), resources.GetString("cboSplayStyle.Items2")})
         Me.cboSplayStyle.Name = "cboSplayStyle"
         '
         'lblSplayStyle

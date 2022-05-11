@@ -11,7 +11,7 @@ Module modDesign
     Public Function GetIfItemMustBeDrawedByHiddenFlag(ByVal PaintOptions As cOptions, ByVal Item As cItem) As Boolean
         Dim oProfile As cIProfile = PaintOptions.GetParent
         If IsNothing(oProfile) OrElse (Not IsNothing(oProfile) AndAlso oProfile.Items.IsVisible(Item, True)) Then
-            If PaintOptions.CurrentRule.Items.IsVisible(Item, PaintOptions.CurrentRule.Categories(Item.Category)) Then
+            If PaintOptions.GetCurrentItems.IsVisible(Item, PaintOptions.GetCurrentCategories(Item.Category)) Then
                 If (PaintOptions.DesignAffinity = cOptions.DesignAffinityEnum.All) OrElse (PaintOptions.DesignAffinity = cOptions.DesignAffinityEnum.Design AndAlso Item.DesignAffinity = cItem.DesignAffinityEnum.Design) OrElse (PaintOptions.DesignAffinity = cOptions.DesignAffinityEnum.Extra AndAlso Item.DesignAffinity = cItem.DesignAffinityEnum.Extra) Then
                     If PaintOptions.IsDesign Then
                         'in design layer visibility is taken from current survey...

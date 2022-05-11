@@ -2,7 +2,7 @@
 Imports cSurveyPC.cSurvey.Design.Options
 Imports cSurveyPC.cSurvey.Drawings
 
-Public Class frmParametersCompass
+friend Class frmParametersCompass
     Friend Event OnChangeOptions(ByVal Sender As Object, ByVal Options As cOptions)
 
     Private oOptions As cOptions

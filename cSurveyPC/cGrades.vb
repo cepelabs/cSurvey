@@ -117,7 +117,7 @@ Namespace cSurvey
             End Get
         End Property
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlGrades As XmlElement = document.CreateElement("grades")
             For Each oGrade As cGrade In oItems
                 Call oGrade.SaveTo(File, document, oXmlGrades)

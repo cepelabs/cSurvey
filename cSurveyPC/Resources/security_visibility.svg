@@ -1,0 +1,13 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg x="0px" y="0px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" id="Layer_1" style="enable-background:new 0 0 32 32">
+  <style type="text/css">
+	.Black{fill:#727272;}
+	.Red{fill:#D11C1C;}
+	.Yellow{fill:#FFB115;}
+	.Green{fill:#039C23;}
+</style>
+  <g id="Visibility">
+    <circle cx="16" cy="16" r="4" class="Black" />
+    <path d="M16,8C8,8,2,16,2,16s6,8,14,8s14-8,14-8S24,8,16,8z M16,22c-3.3,0-6-2.7-6-6s2.7-6,6-6s6,2.7,6,6   S19.3,22,16,22z" class="Black" />
+  </g>
+</svg>

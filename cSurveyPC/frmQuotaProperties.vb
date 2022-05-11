@@ -1,6 +1,6 @@
 ﻿Imports cSurveyPC.cSurvey.Design.Items
 
-Public Class frmQuotaProperties
+friend Class frmQuotaProperties
     Private oItem As cIItemQuota
 
     Public Sub New(Item As cIItemQuota)

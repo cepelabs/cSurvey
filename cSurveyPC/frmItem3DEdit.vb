@@ -1,4 +1,4 @@
-﻿Public Class frmItem3DEdit
+﻿friend Class frmItem3DEdit
     Private oHolos As cHolosItemEdit
 
     Private Sub btnLoadModel_Click(sender As Object, e As EventArgs) Handles btnLoadModel.Click

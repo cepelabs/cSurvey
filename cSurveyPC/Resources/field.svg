@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="UpdateField"
+   x="0px"
+   y="0px"
+   viewBox="0 0 32 32"
+   style="enable-background:new 0 0 32 32;"
+   xml:space="preserve"
+   sodipodi:docname="field.svg"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"><metadata
+   id="metadata21"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs19" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="2560"
+   inkscape:window-height="1017"
+   id="namedview17"
+   showgrid="false"
+   inkscape:zoom="12.930137"
+   inkscape:cx="20.814121"
+   inkscape:cy="20.699606"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="UpdateField" />
+<style
+   type="text/css"
+   id="style2">
+	.Yellow{fill:#FFB115;}
+	.Green{fill:#039C23;}
+</style>
+
+
+<style
+   type="text/css"
+   id="style846">
+	.Yellow{fill:#FFB115;}
+	.Red{fill:#D11C1C;}
+</style><g
+   id="g12"
+   transform="matrix(0.85860925,0,0,0.99394804,1.9755127,0.13971616)">
+	<g
+   id="g6">
+		<path
+   class="Yellow"
+   d="M 16.1,22 V 21.7 C 16.7,17.3 20.6,14 25,14 c 1,0 2,0.2 3,0.5 V 7 C 28,6.5 27.5,6 27,6 H 1 C 0.5,6 0,6.5 0,7 v 14 c 0,0.5 0.5,1 1,1 z"
+   id="path4" />
+	</g>
+	<g
+   id="g10">
+		<path
+   class="Yellow"
+   d="m 16.1,22 10.793188,-0.01055 c 0.504298,-0.01139 1.144244,-0.566447 1.14112,-1.144228 L 28,14.5 V 7 C 28,6.5 27.5,6 27,6 H 1 C 0.5,6 0,6.5 0,7 v 14 c 0,0.5 0.5,1 1,1 z"
+   id="path8"
+   sodipodi:nodetypes="ccscssssssc" />
+	</g>
+</g><style
+   type="text/css"
+   id="style2-7">
+	.Yellow{fill:#FFB115;}
+	.Green{fill:#039C23;}
+</style><style
+   type="text/css"
+   id="style846-5">
+	.Yellow{fill:#FFB115;}
+	.Red{fill:#D11C1C;}
+</style></svg>

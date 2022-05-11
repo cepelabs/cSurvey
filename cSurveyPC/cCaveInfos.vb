@@ -76,46 +76,25 @@ Namespace cSurvey
         '    End If
         'End Function
 
+        Friend Shared Sub CheckBindings(Survey As cSurvey, Cave As String, NewCave As String)
+            For Each oSegment As cSegment In Survey.Segments
+                If oSegment.Cave.ToLower = Cave.ToLower Then
+                    Call oSegment.RenameCave(NewCave)
+                End If
+            Next
+            For Each oItem As cItem In Survey.Plan.GetAllItems
+                If oItem.Cave.ToLower = Cave.ToLower Then
+                    Call oItem.RenameCave(NewCave)
+                End If
+            Next
+            For Each oItem As cItem In Survey.Profile.GetAllItems
+                If oItem.Cave.ToLower = Cave.ToLower Then
+                    Call oItem.RenameCave(NewCave)
+                End If
+            Next
+        End Sub
+
         Friend Shared Sub CheckBindings(Survey As cSurvey, Cave As String, Path As String, NewCave As String, NewPath As String)
-            'Threading.Tasks.Parallel.ForEach(Of cSegment)(Survey.Segments, Sub(oSegment)
-            '                                                                   If oSegment.Cave.ToLower = Cave.ToLower Then
-            '                                                                       If Path = "" AndAlso oSegment.Branch = "" Then
-            '                                                                           Call oSegment.RenameCave(NewCave, "")
-            '                                                                       ElseIf Path = "" AndAlso oSegment.Branch <> "" Then
-            '                                                                           Call oSegment.RenameCave(NewCave, NewPath & cCaveInfoBranches.sBranchSeparator & oSegment.Branch)
-            '                                                                       ElseIf oSegment.Branch.ToLower = Path.ToLower Then
-            '                                                                           Call oSegment.RenameCave(NewCave, NewPath)
-            '                                                                       ElseIf oSegment.Branch.ToLower.StartsWith(Path.ToLower & cCaveInfoBranches.sBranchSeparator) Then
-            '                                                                           Call oSegment.RenameCave(NewCave, oSegment.Branch.Replace(Path & cCaveInfoBranches.sBranchSeparator, NewPath & cCaveInfoBranches.sBranchSeparator))
-            '                                                                       End If
-            '                                                                   End If
-            '                                                               End Sub)
-            'Threading.Tasks.Parallel.ForEach(Of cItem)(Survey.Plan.GetAllItems, Sub(oItem)
-            '                                                                        If oItem.Cave.ToLower = Cave.ToLower Then
-            '                                                                            If Path = "" AndAlso oItem.Branch = "" Then
-            '                                                                                Call oItem.RenameCave(NewCave, "")
-            '                                                                            ElseIf Path = "" AndAlso oItem.Branch <> "" Then
-            '                                                                                Call oItem.RenameCave(NewCave, NewPath & cCaveInfoBranches.sBranchSeparator & oItem.Branch)
-            '                                                                            ElseIf oItem.Branch.ToLower = Path.ToLower Then
-            '                                                                                Call oItem.RenameCave(NewCave, NewPath)
-            '                                                                            ElseIf oItem.Branch.ToLower.StartsWith(Path.ToLower & cCaveInfoBranches.sBranchSeparator) Then
-            '                                                                                Call oItem.RenameCave(NewCave, oItem.Branch.Replace(Path & cCaveInfoBranches.sBranchSeparator, NewPath & cCaveInfoBranches.sBranchSeparator))
-            '                                                                            End If
-            '                                                                        End If
-            '                                                                    End Sub)
-            'Threading.Tasks.Parallel.ForEach(Of cItem)(Survey.Profile.GetAllItems, Sub(oItem)
-            '                                                                           If oItem.Cave.ToLower = Cave.ToLower Then
-            '                                                                               If Path = "" AndAlso oItem.Branch = "" Then
-            '                                                                                   Call oItem.RenameCave(NewCave, "")
-            '                                                                               ElseIf Path = "" AndAlso oItem.Branch <> "" Then
-            '                                                                                   Call oItem.RenameCave(NewCave, NewPath & cCaveInfoBranches.sBranchSeparator & oItem.Branch)
-            '                                                                               ElseIf oItem.Branch.ToLower = Path.ToLower Then
-            '                                                                                   Call oItem.RenameCave(NewCave, NewPath)
-            '                                                                               ElseIf oItem.Branch.ToLower.StartsWith(Path.ToLower & cCaveInfoBranches.sBranchSeparator) Then
-            '                                                                                   Call oItem.RenameCave(NewCave, oItem.Branch.Replace(Path & cCaveInfoBranches.sBranchSeparator, NewPath & cCaveInfoBranches.sBranchSeparator))
-            '                                                                               End If
-            '                                                                           End If
-            '                                                                       End Sub)
             For Each oSegment As cSegment In Survey.Segments
                 If oSegment.Cave.ToLower = Cave.ToLower Then
                     If Path = "" AndAlso oSegment.Branch = "" Then
@@ -166,21 +145,7 @@ Namespace cSurvey
                 Call oCaveInfo.SetName(NewName)
                 Call oCaveInfos.Add(sNewName, oCaveInfo)
                 If CheckBindings Then
-                    For Each oSegment As cSegment In oSurvey.Segments
-                        If oSegment.Cave.ToLower = sName Then
-                            Call oSegment.RenameCave(sNewName, oSegment.Branch)
-                        End If
-                    Next
-                    For Each oItem As cItem In oSurvey.Plan.GetAllItems
-                        If oItem.Cave.ToLower = sName Then
-                            Call oItem.RenameCave(sNewName, oItem.Branch)
-                        End If
-                    Next
-                    For Each oItem As cItem In oSurvey.Profile.GetAllItems
-                        If oItem.Cave.ToLower = sName Then
-                            Call oItem.RenameCave(sNewName, oItem.Branch)
-                        End If
-                    Next
+                    Call cCaveInfos.CheckBindings(oSurvey, sName, sNewName)
                 End If
                 Return True
             Else
@@ -266,7 +231,7 @@ Namespace cSurvey
             Next
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlCaveInfos As XmlElement = Document.CreateElement("caveinfos")
             For Each oCaveInfo As cCaveInfo In oCaveInfos.Values
                 Call oCaveInfo.SaveTo(File, Document, oXmlCaveInfos)

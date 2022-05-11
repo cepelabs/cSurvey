@@ -47,7 +47,9 @@ Namespace cSurvey.Calculate.Plot
         Private dOldToBearingLeft As Decimal
 
         Private oFromPoint As PointD
+        Private bFromPoint As Boolean = False
         Private oToPoint As PointD
+        Private bToPoint As Boolean = False
 
         Private oFromSidePointRight As PointD
         Private oFromSidePointLeft As PointD
@@ -91,7 +93,9 @@ Namespace cSurvey.Calculate.Plot
             sTo = Item.GetAttribute("t")
 
             oFromPoint = New PointD(modNumbers.StringToDecimal(modXML.GetAttributeValue(Item, "fpx", 0)), modNumbers.StringToDecimal(modXML.GetAttributeValue(Item, "fpy", 0)))
+            bfromPoint = True
             oToPoint = New PointD(modNumbers.StringToDecimal(modXML.GetAttributeValue(Item, "tpx", 0)), modNumbers.StringToDecimal(modXML.GetAttributeValue(Item, "tpy", 0)))
+            bToPoint = True
 
             oFromSidePointRight = New PointD(modNumbers.StringToDecimal(modXML.GetAttributeValue(Item, "fsprx", 0)), modNumbers.StringToDecimal(modXML.GetAttributeValue(Item, "fspry", 0)))
             oFromSidePointLeft = New PointD(modNumbers.StringToDecimal(modXML.GetAttributeValue(Item, "fsplx", 0)), modNumbers.StringToDecimal(modXML.GetAttributeValue(Item, "fsply", 0)))
@@ -109,7 +113,7 @@ Namespace cSurvey.Calculate.Plot
             oSubDatas = New cPlanSubDatas()
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlPlanPD As XmlElement = Document.CreateElement("planpd")
             '------------------------------------------------------------------------
             If bChanged Then oXmlPlanPD.SetAttribute("c", 1)
@@ -272,26 +276,20 @@ Namespace cSurvey.Calculate.Plot
         End Property
 
         Friend Sub SetPoints([From] As String, [To] As String, ByVal FromPoint As PointD, ByVal ToPoint As PointD, Optional ByVal DisableBackup As Boolean = False)
-            If Not DisableBackup AndAlso Not (oFromPoint.IsEmpty AndAlso oToPoint.IsEmpty ) Then
-                'If Not DisableBackup AndAlso Not (oFromPoint.IsEmpty AndAlso oToPoint.IsEmpty AndAlso oFromSidePointRight.IsEmpty AndAlso oFromSidePointLeft.IsEmpty AndAlso oToSidePointRight.IsEmpty AndAlso oToSidePointLeft.IsEmpty) Then
+            If Not DisableBackup AndAlso (bFromPoint OrElse bToPoint) Then
+                'If Not DisableBackup AndAlso Not (oFromPoint.IsEmpty AndAlso oToPoint.IsEmpty) Then
                 sOldFrom = sFrom
-                    sOldTo = sTo
+                sOldTo = sTo
                 oOldFromPoint = oFromPoint
                 oOldToPoint = oToPoint
-                'oOldFromSidePointRight = oFromSidePointRight
-                'dOldFromBearingRight = dFromBearingRight
-                'oOldFromSidePointLeft = oFromSidePointLeft
-                'dOldFromBearingLeft = dFromBearingLeft
-                'oOldToSidePointRight = oToSidePointRight
-                'dOldToBearingRight = dToBearingRight
-                'oOldToSidePointLeft = oToSidePointLeft
-                'dOldToBearingLeft = dToBearingLeft
             End If
 
             sFrom = [From]
             sTo = [To]
             oFromPoint = FromPoint
+            bFromPoint = True
             oToPoint = ToPoint
+            bToPoint = True
             dProjectedDistance = Nothing
 
             If sOldFrom = sTo And sOldTo = sFrom Then
@@ -355,15 +353,15 @@ Namespace cSurvey.Calculate.Plot
             bChanged = False
         End Sub
 
-        Friend Function GetVectorLine() As PointF()
-            Dim oPoints(1) As PointF
+        Friend Function GetVectorLine() As PointD()
+            Dim oPoints(1) As PointD
             oPoints(0) = oFromPoint
             oPoints(1) = oToPoint
             Return oPoints
         End Function
 
-        Friend Function GetLine() As PointF()
-            Dim oPoints(1) As PointF
+        Friend Function GetLine() As PointD()
+            Dim oPoints(1) As PointD
             If bReversed Then
                 oPoints(0) = oToPoint
                 oPoints(1) = oFromPoint
@@ -374,8 +372,8 @@ Namespace cSurvey.Calculate.Plot
             Return oPoints
         End Function
 
-        Friend Function GetPolygon() As PointF()
-            Dim oPolygon(3) As PointF
+        Friend Function GetPolygon() As PointD()
+            Dim oPolygon(3) As PointD
             oPolygon(0) = oToSidePointLeft
             oPolygon(1) = oToSidePointRight
             oPolygon(2) = oFromSidePointLeft
@@ -383,15 +381,15 @@ Namespace cSurvey.Calculate.Plot
             Return oPolygon
         End Function
 
-        Friend Function GetOldLine() As PointF()
-            Dim oPoints(1) As PointF
+        Friend Function GetOldLine() As PointD()
+            Dim oPoints(1) As PointD
             oPoints(0) = oOldFromPoint
             oPoints(1) = oOldToPoint
             Return oPoints
         End Function
 
-        Friend Function GetOldPolygon() As PointF()
-            Dim oPolygon(3) As PointF
+        Friend Function GetOldPolygon() As PointD()
+            Dim oPolygon(3) As PointD
             oPolygon(0) = oOldToSidePointLeft
             oPolygon(1) = oOldToSidePointRight
             oPolygon(2) = oOldFromSidePointLeft

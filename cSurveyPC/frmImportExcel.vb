@@ -1,4 +1,4 @@
-﻿Public Class frmImportExcel
+﻿friend Class frmImportExcel
 
     Private Sub pSettingsLoad()
         Try

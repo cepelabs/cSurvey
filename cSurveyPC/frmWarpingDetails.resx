@@ -126,7 +126,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cmdApply.Location" type="System.Drawing.Point, System.Drawing">
-    <value>210, 215</value>
+    <value>373, 215</value>
   </data>
   <data name="cmdApply.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
@@ -150,6 +150,9 @@
   <data name="&gt;&gt;cmdApply.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="cmdCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
@@ -157,7 +160,7 @@
     <value>NoControl</value>
   </data>
   <data name="cmdCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>404, 215</value>
+    <value>567, 215</value>
   </data>
   <data name="cmdCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 25</value>
@@ -171,9 +174,6 @@
   <data name="cmdCancel.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>TextBeforeImage</value>
   </data>
-  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="cmdCancel.ToolTip" xml:space="preserve">
     <value>Cancel and disable warping</value>
   </data>
@@ -219,84 +219,6 @@
   <data name="&gt;&gt;chkDontShowWarpingDetails.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="grdStations.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <metadata name="colFrom.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colFrom.HeaderText" xml:space="preserve">
-    <value>From</value>
-  </data>
-  <data name="colFrom.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <metadata name="colTo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colTo.HeaderText" xml:space="preserve">
-    <value>To</value>
-  </data>
-  <data name="colTo.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <metadata name="colDeltaSize.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colDeltaSize.HeaderText" xml:space="preserve">
-    <value>Δ size</value>
-  </data>
-  <data name="colDeltaSize.Width" type="System.Int32, mscorlib">
-    <value>70</value>
-  </data>
-  <metadata name="colDeltaX.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colDeltaX.HeaderText" xml:space="preserve">
-    <value>Δ x</value>
-  </data>
-  <data name="colDeltaX.Width" type="System.Int32, mscorlib">
-    <value>70</value>
-  </data>
-  <metadata name="colDeltaY.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colDeltaY.HeaderText" xml:space="preserve">
-    <value>Δ y</value>
-  </data>
-  <data name="colDeltaY.Width" type="System.Int32, mscorlib">
-    <value>70</value>
-  </data>
-  <metadata name="colDeltaAngle.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colDeltaAngle.HeaderText" xml:space="preserve">
-    <value>Δ angle</value>
-  </data>
-  <data name="colDeltaAngle.Width" type="System.Int32, mscorlib">
-    <value>70</value>
-  </data>
-  <data name="grdStations.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="grdStations.Size" type="System.Drawing.Size, System.Drawing">
-    <value>494, 193</value>
-  </data>
-  <data name="grdStations.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;grdStations.Name" xml:space="preserve">
-    <value>grdStations</value>
-  </data>
-  <data name="&gt;&gt;grdStations.Type" xml:space="preserve">
-    <value>cSurveyPC.cGrid, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;grdStations.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;grdStations.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="cmdCancelAndPause.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
@@ -304,7 +226,7 @@
     <value>NoControl</value>
   </data>
   <data name="cmdCancelAndPause.Location" type="System.Drawing.Point, System.Drawing">
-    <value>296, 215</value>
+    <value>459, 215</value>
   </data>
   <data name="cmdCancelAndPause.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 25</value>
@@ -333,6 +255,213 @@
   <data name="&gt;&gt;cmdCancelAndPause.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="grdDetails.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="grdDetails.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="colDetailsState.Caption" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="picDetailsState.NullText" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="colDetailsState.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colDetailsState.VisibleIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="colDetailsState.Width" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="colDetailsFrom.Caption" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="colDetailsFrom.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colDetailsFrom.VisibleIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="colDetailsTo.Caption" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="colDetailsTo.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colDetailsTo.VisibleIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="colDetailsDeltaSize.Caption" xml:space="preserve">
+    <value>Δ Size</value>
+  </data>
+  <data name="colDetailsDeltaSize.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colDetailsDeltaSize.VisibleIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="colDetailsDeltaX.Caption" xml:space="preserve">
+    <value>Δ X</value>
+  </data>
+  <data name="colDetailsDeltaX.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colDetailsDeltaX.VisibleIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="colDetailsDeltaY.Caption" xml:space="preserve">
+    <value>Δ Y</value>
+  </data>
+  <data name="colDetailsDeltaY.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colDetailsDeltaY.VisibleIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="colDetailsDeltaAngle.Caption" xml:space="preserve">
+    <value>Δ Angle</value>
+  </data>
+  <data name="colDetailsDeltaAngle.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colDetailsDeltaAngle.VisibleIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="colDetailsOldSize.Caption" xml:space="preserve">
+    <value>Old size</value>
+  </data>
+  <data name="colDetailsNewSize.Caption" xml:space="preserve">
+    <value>New size</value>
+  </data>
+  <data name="colDetailsOldX.Caption" xml:space="preserve">
+    <value>Old X</value>
+  </data>
+  <data name="colDetailsNewX.Caption" xml:space="preserve">
+    <value>New X</value>
+  </data>
+  <data name="colDetailsOldY.Caption" xml:space="preserve">
+    <value>Old Y</value>
+  </data>
+  <data name="colDetailsNewY.Caption" xml:space="preserve">
+    <value>New Y</value>
+  </data>
+  <data name="colDetailsOldAngle.Caption" xml:space="preserve">
+    <value>Old angle</value>
+  </data>
+  <data name="colDetailsNewAngle.Caption" xml:space="preserve">
+    <value>New angle</value>
+  </data>
+  <data name="grdDetails.Size" type="System.Drawing.Size, System.Drawing">
+    <value>657, 193</value>
+  </data>
+  <data name="grdDetails.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;grdDetails.Name" xml:space="preserve">
+    <value>grdDetails</value>
+  </data>
+  <data name="&gt;&gt;grdDetails.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;grdDetails.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;grdDetails.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <metadata name="BarManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>244, 17</value>
+  </metadata>
+  <data name="barDockControlTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="barDockControlTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="barDockControlTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>681, 0</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.Name" xml:space="preserve">
+    <value>barDockControlTop</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="barDockControlBottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="barDockControlBottom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 252</value>
+  </data>
+  <data name="barDockControlBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>681, 0</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Name" xml:space="preserve">
+    <value>barDockControlBottom</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="barDockControlLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="barDockControlLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="barDockControlLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 252</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Name" xml:space="preserve">
+    <value>barDockControlLeft</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="barDockControlRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="barDockControlRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>681, 0</value>
+  </data>
+  <data name="barDockControlRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 252</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Name" xml:space="preserve">
+    <value>barDockControlRight</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -340,12 +469,9 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>518, 252</value>
+    <value>681, 252</value>
   </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="frmWarpingDetails.IconOptions.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAF5eXgB3bVsAd25dAGNjYwBmZmYAcnJyAHV1dQB7enkAtoc+ALeI
@@ -410,50 +536,11 @@
         AADM2QAALtsAACEHAADBjwAA4d8AAOD/AAD6AQAA/P8AAPz/AAA=
 </value>
   </data>
-  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Warping details:</value>
-  </data>
-  <data name="&gt;&gt;colFrom.Name" xml:space="preserve">
-    <value>colFrom</value>
-  </data>
-  <data name="&gt;&gt;colFrom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colTo.Name" xml:space="preserve">
-    <value>colTo</value>
-  </data>
-  <data name="&gt;&gt;colTo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colDeltaSize.Name" xml:space="preserve">
-    <value>colDeltaSize</value>
-  </data>
-  <data name="&gt;&gt;colDeltaSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colDeltaX.Name" xml:space="preserve">
-    <value>colDeltaX</value>
-  </data>
-  <data name="&gt;&gt;colDeltaX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colDeltaY.Name" xml:space="preserve">
-    <value>colDeltaY</value>
-  </data>
-  <data name="&gt;&gt;colDeltaY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colDeltaAngle.Name" xml:space="preserve">
-    <value>colDeltaAngle</value>
-  </data>
-  <data name="&gt;&gt;colDeltaAngle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ToolTip.Name" xml:space="preserve">
     <value>ToolTip</value>
@@ -461,10 +548,206 @@
   <data name="&gt;&gt;ToolTip.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;gridviewDetails.Name" xml:space="preserve">
+    <value>gridviewDetails</value>
+  </data>
+  <data name="&gt;&gt;gridviewDetails.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Views.Grid.GridView, DevExpress.XtraGrid.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colDetailsState.Name" xml:space="preserve">
+    <value>colDetailsState</value>
+  </data>
+  <data name="&gt;&gt;colDetailsState.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;picDetailsState.Name" xml:space="preserve">
+    <value>picDetailsState</value>
+  </data>
+  <data name="&gt;&gt;picDetailsState.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colDetailsFrom.Name" xml:space="preserve">
+    <value>colDetailsFrom</value>
+  </data>
+  <data name="&gt;&gt;colDetailsFrom.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colDetailsTo.Name" xml:space="preserve">
+    <value>colDetailsTo</value>
+  </data>
+  <data name="&gt;&gt;colDetailsTo.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colDetailsDeltaSize.Name" xml:space="preserve">
+    <value>colDetailsDeltaSize</value>
+  </data>
+  <data name="&gt;&gt;colDetailsDeltaSize.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colDetailsDeltaX.Name" xml:space="preserve">
+    <value>colDetailsDeltaX</value>
+  </data>
+  <data name="&gt;&gt;colDetailsDeltaX.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colDetailsDeltaY.Name" xml:space="preserve">
+    <value>colDetailsDeltaY</value>
+  </data>
+  <data name="&gt;&gt;colDetailsDeltaY.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colDetailsDeltaAngle.Name" xml:space="preserve">
+    <value>colDetailsDeltaAngle</value>
+  </data>
+  <data name="&gt;&gt;colDetailsDeltaAngle.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colDetailsOldSize.Name" xml:space="preserve">
+    <value>colDetailsOldSize</value>
+  </data>
+  <data name="&gt;&gt;colDetailsOldSize.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colDetailsNewSize.Name" xml:space="preserve">
+    <value>colDetailsNewSize</value>
+  </data>
+  <data name="&gt;&gt;colDetailsNewSize.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colDetailsOldX.Name" xml:space="preserve">
+    <value>colDetailsOldX</value>
+  </data>
+  <data name="&gt;&gt;colDetailsOldX.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colDetailsNewX.Name" xml:space="preserve">
+    <value>colDetailsNewX</value>
+  </data>
+  <data name="&gt;&gt;colDetailsNewX.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colDetailsOldY.Name" xml:space="preserve">
+    <value>colDetailsOldY</value>
+  </data>
+  <data name="&gt;&gt;colDetailsOldY.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colDetailsNewY.Name" xml:space="preserve">
+    <value>colDetailsNewY</value>
+  </data>
+  <data name="&gt;&gt;colDetailsNewY.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colDetailsOldAngle.Name" xml:space="preserve">
+    <value>colDetailsOldAngle</value>
+  </data>
+  <data name="&gt;&gt;colDetailsOldAngle.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colDetailsNewAngle.Name" xml:space="preserve">
+    <value>colDetailsNewAngle</value>
+  </data>
+  <data name="&gt;&gt;colDetailsNewAngle.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;BarManager.Name" xml:space="preserve">
+    <value>BarManager</value>
+  </data>
+  <data name="&gt;&gt;BarManager.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnShowMoreDetails.Name" xml:space="preserve">
+    <value>btnShowMoreDetails</value>
+  </data>
+  <data name="&gt;&gt;btnShowMoreDetails.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtReplacePath.Name" xml:space="preserve">
+    <value>txtReplacePath</value>
+  </data>
+  <data name="&gt;&gt;txtReplacePath.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemBreadCrumbEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;mnuDetails.Name" xml:space="preserve">
+    <value>mnuDetails</value>
+  </data>
+  <data name="&gt;&gt;mnuDetails.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmWarpingDetails</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="btnShowMoreDetails.Caption" xml:space="preserve">
+    <value>Show more details</value>
+  </data>
+  <data name="txtReplacePath.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v20.2" name="DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="txtReplacePath.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v20.2">
+    <value>Glyph</value>
+  </data>
+  <data name="txtReplacePath.Buttons1" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="txtReplacePath.Buttons2" type="System.Int32, mscorlib">
+    <value>-1</value>
+  </data>
+  <data name="txtReplacePath.Buttons3" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="txtReplacePath.Buttons4" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="txtReplacePath.Buttons5" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtReplacePath.Buttons6" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="txtReplacePath.Buttons7" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="txtReplacePath.Buttons8" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="txtReplacePath.Buttons9" type="DevExpress.Utils.ToolTipAnchor, DevExpress.Utils.v20.2">
+    <value>Default</value>
+  </data>
+  <data name="txtReplacePath.Buttons10" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v20.2">
+    <value>Glyph</value>
+  </data>
+  <data name="txtReplacePath.Buttons11" xml:space="preserve">
+    <value>Browse new path...</value>
+  </data>
+  <data name="txtReplacePath.Buttons12" type="System.Int32, mscorlib">
+    <value>-1</value>
+  </data>
+  <data name="txtReplacePath.Buttons13" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="txtReplacePath.Buttons14" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="txtReplacePath.Buttons15" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtReplacePath.Buttons16" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="txtReplacePath.Buttons17" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="txtReplacePath.Buttons18" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="txtReplacePath.Buttons19" type="DevExpress.Utils.ToolTipAnchor, DevExpress.Utils.v20.2">
+    <value>Default</value>
+  </data>
+  <metadata name="mnuDetails.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>362, 17</value>
+  </metadata>
 </root>

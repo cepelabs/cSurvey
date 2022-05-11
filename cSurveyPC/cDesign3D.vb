@@ -31,10 +31,6 @@ Namespace cSurvey.Design
             oSurvey = Survey
         End Sub
 
-        Friend Overrides Sub AppendSvgItem(SVG As XmlDocument, Parent As XmlElement, PaintOptions As cOptions, Options As cItem.SVGOptionsEnum, ViewArea As RectangleF, Zoom As Single, Translate As PointF)
-
-        End Sub
-
         Public Overrides Sub Clear()
 
         End Sub
@@ -57,12 +53,7 @@ Namespace cSurvey.Design
             End Get
         End Property
 
-        Friend Overrides Function ToSvg(PaintOptions As cOptions, Options As cItem.SVGOptionsEnum, ViewArea As RectangleF, Zoom As Single, Translate As PointF) As XmlDocument
-
-        End Function
-
-        Friend Overrides Function ToSvgItem(SVG As XmlDocument, PaintOptions As cOptions, Options As cItem.SVGOptionsEnum, ViewArea As RectangleF, Zoom As Single, Translate As PointF) As XmlElement
-
+        Friend Overrides Function ToSvg(PaintOptions As cOptions, Options As cItem.SVGOptionsEnum, Size As SizeF, PageBox As RectangleF, Unit As SizeUnit, ByVal ViewBox As RectangleF) As XmlDocument
         End Function
 
         Public Overrides ReadOnly Property Type As cIDesign.cDesignTypeEnum
@@ -72,7 +63,9 @@ Namespace cSurvey.Design
         End Property
 
         Friend Overrides Sub WarpItems(Segment As cISegment)
-
         End Sub
+
+        Friend Overrides Function ToSvgItem(SVG As XmlDocument, PaintOptions As cOptions, Options As cItem.SVGOptionsEnum) As XmlElement
+        End Function
     End Class
 End Namespace

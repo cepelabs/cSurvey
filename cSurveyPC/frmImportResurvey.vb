@@ -1,4 +1,4 @@
-﻿Public Class frmImportResurvey
+﻿friend Class frmImportResurvey
 
     Private Sub pSettingsLoad()
         Try

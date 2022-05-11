@@ -1,6 +1,7 @@
 ﻿Imports System.IO
+Imports cSurveyPC.cSurvey.Storage
 
-Namespace cSurvey.Storage
+Namespace cSurvey
     Public Class cFile
         Implements IDisposable
 
@@ -144,7 +145,9 @@ Namespace cSurvey.Storage
         End Sub
 #End Region
     End Class
+End Namespace
 
+Namespace cSurvey.Storage
     Public Interface cIStorageItem
         Enum StorageItemTypeEnum
             File = 0

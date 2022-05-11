@@ -33,7 +33,7 @@ Namespace cSurvey.Calculate
             oSideMeasure = New cTrigPointSideMeasure(Item.Item("sm"))
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlTrigpoint As XmlElement = Document.CreateElement("t")
             Call oXmlTrigpoint.SetAttribute("n", sName)
             Call oConnections.SaveTo(File, Document, oXmlTrigpoint)

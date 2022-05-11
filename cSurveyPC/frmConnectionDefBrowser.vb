@@ -1,6 +1,6 @@
 ﻿Imports cSurveyPC.cSurvey
 
-Public Class frmConnectionDefBrowser
+friend Class frmConnectionDefBrowser
 
     Public Sub New(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal CurrentConnectionDef As cConnectionDef, Optional AllowNull As Boolean = False, Optional Station As String = Nothing, Optional FromStation As String = Nothing, Optional Exclusions As List(Of cConnectionDef) = Nothing)
 

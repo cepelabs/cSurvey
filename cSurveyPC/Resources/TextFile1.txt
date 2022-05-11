@@ -1,0 +1,12 @@
+autocreateorigin=Il rilievo non presenta un origine valida. Utilizzare il caposaldo {0} come caposaldo di origine? Sarà possibile cambiare l'origine dalle proprietà dal rilievo.
+settings.selecttheriondialog=Seleziona il file therion.exe che verrà eseguito quando richiesto dalle funzioni di interfaccia:
+settings.filetypeEXE.name=Applicazioni
+settings.clipboardgroup1.name=Segmenti
+settings.clipboardgroup2.name=Oggetti grafici
+settings.historyfolderdialog=Seleziona la cartella dove archiviare le revisioni dei rilievi:
+settings.backupfolderdialog=Seleziona la cartella predefinita dove archiviare i rilievi:
+about.infoabout.textpart1=Informazioni su {0} 
+about.infoabout.textpart2=Memoria
+about.infoabout.textpart3=Versione {0} del {1}
+about.infoabout.textpart4a=Sistema a 64 bit
+about.infoabout.textpart4b=Sistema a 32 bit

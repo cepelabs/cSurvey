@@ -9,7 +9,7 @@ Module modMain
     Public bIsModernOS As Boolean
     'Public bMultiThreading As Boolean
 
-    Public sBaseVersion As String = "1"
+    Public sBaseVersion As String = "2"
 
     Public DefaultCoordinateFormat As String = "0.0000000"
     Public DefaultAltitudeFormat As String = "0.000"

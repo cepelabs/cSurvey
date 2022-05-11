@@ -1,4 +1,4 @@
-﻿Public Class frmExportHolos
+﻿friend Class frmExportHolos
 
     Private Sub pSettingsLoad()
         Try

@@ -61,7 +61,7 @@ Namespace cSurvey.Calculate
         End Class
 
         Private oSurvey As cSurvey
-        Public Const CalculateVersion As Integer = 2
+        Public Const CalculateVersion As Integer = 3
 
         Private oTPs As cTrigPoints
 
@@ -104,7 +104,7 @@ Namespace cSurvey.Calculate
             bLoadedFromFile = True
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlCalculate As XmlElement = Document.CreateElement("calculate")
             Call oTPs.SaveTo(File, Document, oXmlCalculate)
             'Call oSGs.SaveTo(File, Document, oXmlCalculate)
@@ -577,7 +577,7 @@ Namespace cSurvey.Calculate
                         Select Case oSurvey.Invalidated
                             Case InvalidateEnum.FullCalculate
                                 Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, Now & vbTab & "Trigpoint calculate", True)
-                                Call pTrigPointsCalculate(oSegmentsColl)
+                                Call pTrigPointsCalculate(oOrigin.Name, oSegmentsColl)
                                 Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, Now & vbTab & "Prepare data", True)
                                 Call pCalculatePrepareData(oOriginItem, oGroups)
                                 Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, Now & vbTab & "Therion run and get back results", True)
@@ -653,21 +653,29 @@ Namespace cSurvey.Calculate
                     Dim sPart As String() = sr.ReadLine.Trim.Split(vbTab)
                     Select Case sPart(0)
                         Case "D", "M"
-                            'leggo e converto da piedi a metri
+                            'read feets and get back meters
                             Dim sY As Decimal = modNumbers.MathRound(modNumbers.StringToDecimal(sPart(1)) * -0.3048D, 4)
                             Dim sX As Decimal = modNumbers.MathRound(modNumbers.StringToDecimal(sPart(2)) * 0.3048D, 4)
                             Dim sZ As Decimal = modNumbers.MathRound(modNumbers.StringToDecimal(sPart(3)) * -0.3048D, 4)
-                            'imposto il trigpoint 
+                            'set station location
                             Dim sTrigPoint As String = sPart(4).Substring(1)
-                            With oTPs
-                                sTrigPoint = DictionaryTranslate(Dictionary, sTrigPoint)
-                                If .Contains(sTrigPoint) Then
-                                    With .Item(sTrigPoint)
-                                        Call .MoveTo(sX, sY, sZ)
-                                    End With
-                                    If Not oProcessed.Contains(sTrigPoint) Then oProcessed.Add(sTrigPoint)
-                                End If
-                            End With
+                            sTrigPoint = DictionaryTranslate(Dictionary, sTrigPoint)
+                            If oTPs.Contains(sTrigPoint) Then
+                                With oTPs.Item(sTrigPoint)
+                                    Call .MoveTo(sX, sY, sZ)
+                                    If oSurvey.Properties.CalculateVersion > 2 Then
+                                        For Each sEquateTrigPoint In .Connections.GetEquateShots
+                                            If oTPs.Contains(sEquateTrigPoint) Then
+                                                With oTPs.Item(sEquateTrigPoint)
+                                                    Call .MoveTo(sX, sY, sZ)
+                                                End With
+                                                If Not oProcessed.Contains(sEquateTrigPoint) Then oProcessed.Add(sEquateTrigPoint)
+                                            End If
+                                        Next
+                                    End If
+                                End With
+                                If Not oProcessed.Contains(sTrigPoint) Then oProcessed.Add(sTrigPoint)
+                            End If
                     End Select
                 Loop
                 Call sr.Close()
@@ -1004,10 +1012,12 @@ Namespace cSurvey.Calculate
                                     End If
 
                                     Dim sD As Decimal = 0
-                                    If oSegment.Data.Data.Direction <> cSurvey.DirectionEnum.Vertical Then
-                                        Dim oPlanFromPoint As PointD = oFromPoint.To2DPoint(cTrigPointPoint.ProjectionEnum.FromTop)
-                                        Dim oPlanToPoint As PointD = oToPoint.To2DPoint(cTrigPointPoint.ProjectionEnum.FromTop)
-                                        sD = modPaint.DistancePointToPoint(oPlanFromPoint, oPlanToPoint)
+                                    If Not oSegment.IsEquate Then
+                                        If oSegment.Data.Data.Direction <> cSurvey.DirectionEnum.Vertical Then
+                                            Dim oPlanFromPoint As PointD = oFromPoint.To2DPoint(cTrigPointPoint.ProjectionEnum.FromTop)
+                                            Dim oPlanToPoint As PointD = oToPoint.To2DPoint(cTrigPointPoint.ProjectionEnum.FromTop)
+                                            sD = modPaint.DistancePointToPoint(oPlanFromPoint, oPlanToPoint)
+                                        End If
                                     End If
                                     Dim oToEEPoint As cTrigPointPoint = New cTrigPointPoint(oToPoint, oFromEEPoint.D + sD * sNewSign)
                                     If Not oCalculatedTrigpoints.ContainsKey(sTo) Then Call oCalculatedTrigpoints.Add(sTo, oToEEPoint)
@@ -1089,7 +1099,7 @@ Namespace cSurvey.Calculate
                     End If
                     If IsNothing(oParentSegment) Then
                         'group is wrong...
-                        Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, "Relocating " & oGroup.ExtendStart & " not possibile: parent shot not found or in same group, fallback to autoconnection", True)
+                        Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, "Relocating " & oGroup.ExtendStart & " not possible: parent shot not found or in same group, fallback to autoconnection", True)
                     Else
                         Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, "Relocating " & oGroup.ExtendStart & " on " & oGroup.ParentConnection.ToString & " to " & oGroup.Connection.ToString, True)
                         Dim oSourceGroup As cSegmentGroup = oParentSegment.Data.Group
@@ -1105,12 +1115,8 @@ Namespace cSurvey.Calculate
 
                         Threading.Tasks.Parallel.ForEach(Of cRelocatePoint)(oPointToRelocate, Sub(oRelocateTrigpoint)
                                                                                                   If dD <> 0 Then Call oRelocateTrigpoint.Point.MoveBy(0, 0, 0, dD)
-                                                                                                  'SyncLock oRelocateTrigpoint
                                                                                                   Call oRelocateTrigpoint.ChangeGroup(oSourceGroup)
-                                                                                                  'End SyncLock
                                                                                               End Sub)
-                        'oRelocateTrigpoints = oRelocateTrigpoints.Except(oPointToRelocate).ToList
-
                     End If
                 End If
             Next
@@ -1541,22 +1547,22 @@ Namespace cSurvey.Calculate
                                                             Dim oPaintStation1 As PointF = oTPs(oStations(0).Name).Point.To2DPoint(cTrigPointPoint.ProjectionEnum.FromTop)
                                                             Dim oPaintStation2 As PointF = oTPs(oStations(1).Name).Point.To2DPoint(cTrigPointPoint.ProjectionEnum.FromTop)
 
-                                                            Dim sDistanceX As Single = Math.Abs(oStation1.X - oStation2.X)
-                                                            Dim sPaintDistanceX As Single = Math.Abs(oPaintStation1.X - oPaintStation2.X)
-                                                            Dim sDistanceY As Single = Math.Abs(oStation1.Y - oStation2.Y)
-                                                            Dim sPaintDistanceY As Single = Math.Abs(oPaintStation1.Y - oPaintStation2.Y)
+                                                            Dim sDistanceX As Single = Math.Round(Math.Abs(oStation1.X - oStation2.X), 2)
+                                                            Dim sPaintDistanceX As Single = Math.Round(Math.Abs(oPaintStation1.X - oPaintStation2.X), 2)
+                                                            Dim sDistanceY As Single = Math.Round(Math.Abs(oStation1.Y - oStation2.Y), 2)
+                                                            Dim sPaintDistanceY As Single = Math.Round(Math.Abs(oPaintStation1.Y - oPaintStation2.Y), 2)
 
                                                             Dim sScaleX As Single
                                                             Dim sScaleY As Single
                                                             Dim bUseScaleX As Boolean = False
                                                             Dim bUseScaleY As Boolean = False
-                                                            If sPaintDistanceX = 0 Then
+                                                            If sPaintDistanceX = 0.0F Then
                                                                 sScaleX = oCorrection.Scale
                                                                 bUseScaleY = True
                                                             Else
                                                                 sScaleX = (sDistanceX / sPaintDistanceX) * oCorrection.Scale
                                                             End If
-                                                            If sPaintDistanceY = 0 Then
+                                                            If sPaintDistanceY = 0.0F Then
                                                                 sScaleY = oCorrection.Scale
                                                                 bUseScaleX = True
                                                             Else
@@ -1629,22 +1635,22 @@ Namespace cSurvey.Calculate
                                                             Dim oPaintStation1 As PointF = oTPs(oStations(0).Name).Connections.First.GetPoint.To2DPoint(cTrigPointPoint.ProjectionEnum.Perpendicular)
                                                             Dim oPaintStation2 As PointF = oTPs(oStations(1).Name).Connections.First.GetPoint.To2DPoint(cTrigPointPoint.ProjectionEnum.Perpendicular)
 
-                                                            Dim sDistanceX As Single = Math.Abs(oStation1.X - oStation2.X)
-                                                            Dim sPaintDistanceX As Single = Math.Abs(oPaintStation1.X - oPaintStation2.X)
-                                                            Dim sDistanceY As Single = Math.Abs(oStation1.Y - oStation2.Y)
-                                                            Dim sPaintDistanceY As Single = Math.Abs(oPaintStation1.Y - oPaintStation2.Y)
+                                                            Dim sDistanceX As Single = Math.Round(Math.Abs(oStation1.X - oStation2.X), 2)
+                                                            Dim sPaintDistanceX As Single = Math.Round(Math.Abs(oPaintStation1.X - oPaintStation2.X), 2)
+                                                            Dim sDistanceY As Single = Math.Round(Math.Abs(oStation1.Y - oStation2.Y), 2)
+                                                            Dim sPaintDistanceY As Single = Math.Round(Math.Abs(oPaintStation1.Y - oPaintStation2.Y), 2)
 
                                                             Dim sScaleX As Single
                                                             Dim sScaleY As Single
                                                             Dim bUseScaleX As Boolean = False
                                                             Dim bUseScaleY As Boolean = False
-                                                            If sPaintDistanceX = 0 Then
+                                                            If sPaintDistanceX = 0.0F Then
                                                                 sScaleX = oCorrection.Scale
                                                                 bUseScaleY = True
                                                             Else
                                                                 sScaleX = (sDistanceX / sPaintDistanceX) * oCorrection.Scale
                                                             End If
-                                                            If sPaintDistanceY = 0 Then
+                                                            If sPaintDistanceY = 0.0F Then
                                                                 sScaleY = oCorrection.Scale
                                                                 bUseScaleX = True
                                                             Else
@@ -1804,23 +1810,46 @@ Namespace cSurvey.Calculate
             Return oCurrentStations
         End Function
 
-        Friend Sub pTrigPointsCalculate(ByVal SegmentsColl As List(Of cSegment))
-            'creo la struttura ad albero dei trigpoint...o meglio...il grafo delle connessioni...
+        Friend Sub pTrigPointsCalculate(Origin As String, ByVal SegmentsColl As List(Of cSegment))
+            'creating the graph of connections between stations...
             Call oTPs.Clear()
             For Each oSegment As cSegment In SegmentsColl
                 Dim sFrom As String = oSegment.[From]
                 Dim sTo As String = oSegment.[To]
                 Dim oTP As cTrigPoint
-                'If sFrom = sTo Then
-                '    oTP = oTPs.Append(sFrom)
-                'Else
-                'connessione diretta
+                Dim bEquate As Boolean = oSegment.IsEquate
+                '->
                 oTP = oTPs.Append(sFrom)
-                Call oTP.Connections.Append(sTo, oSegment.Distance, oSegment.Splay)
-                'connessione inversa
+                If bEquate AndAlso oSurvey.Properties.CalculateVersion > 2 Then
+                    Call oTP.Connections.AppendAsEquate(sTo)
+                Else
+                    Call oTP.Connections.AppendAsShot(sTo, oSegment.Distance, oSegment.Splay)
+                End If
+                '<-
                 oTP = oTPs.Append(sTo)
-                Call oTP.Connections.Append(sFrom, oSegment.Distance, oSegment.Splay)
-                'End If
+                If bEquate AndAlso oSurvey.Properties.CalculateVersion > 2 Then
+                    Call oTP.Connections.AppendAsEquate(sFrom)
+                Else
+                    Call oTP.Connections.AppendAsShot(sFrom, oSegment.Distance, oSegment.Splay)
+                End If
+            Next
+            'check connections...starting from origin all station have to be processed
+            Dim oStationsToProcess As HashSet(Of String) = New HashSet(Of String)(oTPs.ToList.Select(Function(oitem) oitem.Name).ToList)
+            Call oStationsToProcess.Remove(Origin)
+            Call pTrigpointcalculategraph(Origin, oStationsToProcess)
+            If oStationsToProcess.Count > 0 Then
+                Throw New cCalculateOrphanStationsException(oStationsToProcess.ToList)
+            End If
+        End Sub
+
+        Private Sub pTrigpointcalculategraph(Station As String, StationsToProcess As HashSet(Of String))
+            For Each oConnection As cTrigPointConnection In oTPs(Station).Connections
+                If StationsToProcess.Contains(oConnection.Name) Then
+                    If Not oSurvey.TrigPoints(Station).Connections.Get(oConnection.Name) Then
+                        Call StationsToProcess.Remove(oConnection.Name)
+                        Call pTrigpointcalculategraph(oConnection.Name, StationsToProcess)
+                    End If
+                End If
             Next
         End Sub
 

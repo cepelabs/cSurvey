@@ -336,17 +336,17 @@ Namespace cSurvey.Design.Items
             Call MyBase.Caches.Invalidate()
         End Sub
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
-            Using oMatrix As Matrix = New Matrix
-                If PaintOptions.DrawTranslation Then
-                    Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
-                    Call oMatrix.Translate(oTranslation.Width, oTranslation.Height)
-                End If
-                Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
-                Call oSVGItem.SetAttribute("name", MyBase.Name)
-                Return oSVGItem
-            End Using
-        End Function
+        'Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        '    Using oMatrix As Matrix = New Matrix
+        '        If PaintOptions.DrawTranslation Then
+        '            Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
+        '            Call oMatrix.Translate(oTranslation.Width, oTranslation.Height)
+        '        End If
+        '        Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
+        '        If MyBase.Name <> "" Then Call oSVGItem.SetAttribute("name", MyBase.Name)
+        '        Return oSVGItem
+        '    End Using
+        'End Function
 
         Public Overrides Sub ResizeBy(ByVal ScaleWidth As Single, ByVal ScaleHeight As Single)
             Select Case iQuotaType
@@ -402,11 +402,11 @@ Namespace cSurvey.Design.Items
             Call MyBase.Caches.Invalidate()
         End Sub
 
-        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
-            Dim oSVG As XmlDocument = modSVG.CreateSVG
-            Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
-            Return oSVG
-        End Function
+        'Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
+        '    Dim oSVG As XmlDocument = modSVG.CreateSVG
+        '    Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
+        '    Return oSVG
+        'End Function
 
         Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             Dim oCache As cDrawCache = MyBase.Caches(PaintOptions)
@@ -524,40 +524,37 @@ Namespace cSurvey.Design.Items
                                                     Dim sQuotaGap As Single = oBounds.Width / 20.0F
                                                     Select Case iQuotaAlign
                                                         Case cIItemQuota.QuotaAlignEnum.Left
-                                                            Using oQuotaPath As GraphicsPath = New GraphicsPath
-                                                                Call oQuotaPath.StartFigure()
-                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left, oBounds.Top), New PointF(oBounds.Left + oBounds.Width * sQuotaLeftRefPercent / 100, oBounds.Top))
-                                                                Call oQuotaPath.StartFigure()
-                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left, oBounds.Bottom), New PointF(oBounds.Left + oBounds.Width * sQuotaRightRefPercent / 100, oBounds.Bottom))
-                                                                Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
+                                                            Using oQuotaItem As cDrawCacheItem = oCache.AddBorder(Nothing, oPen, oWireframePen, Nothing)
+                                                                Call oQuotaItem.StartFigure()
+                                                                Call oQuotaItem.AddLine(New PointF(oBounds.Left, oBounds.Top), New PointF(oBounds.Left + oBounds.Width * sQuotaLeftRefPercent / 100, oBounds.Top))
+                                                                Call oQuotaItem.StartFigure()
+                                                                Call oQuotaItem.AddLine(New PointF(oBounds.Left, oBounds.Bottom), New PointF(oBounds.Left + oBounds.Width * sQuotaRightRefPercent / 100, oBounds.Bottom))
                                                             End Using
 
                                                             If iQuotaCapDecoration = cIItemQuota.QuotaCapDecorationEnum.Bars Then
-                                                                Using oQuotaPath As GraphicsPath = New GraphicsPath
-                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Left + sQuotaGap - sHalfWidth / 10, oBounds.Top), New PointF(oBounds.Left + sQuotaGap + sHalfWidth / 10, oBounds.Top))
+                                                                Using oQuotaItem As cDrawCacheItem = oCache.AddBorder(Nothing, oPen, oWireframePen, Nothing)
+                                                                    Call oQuotaItem.AddLine(New PointF(oBounds.Left + sQuotaGap - sHalfWidth / 10, oBounds.Top), New PointF(oBounds.Left + sQuotaGap + sHalfWidth / 10, oBounds.Top))
                                                                     Using oMatrix As Matrix = New Matrix
                                                                         Call oMatrix.RotateAt(-45.0F, New PointF(oBounds.Left + sQuotaGap, oBounds.Top))
-                                                                        Call oQuotaPath.Transform(oMatrix)
+                                                                        Call oQuotaItem.Transform(oMatrix)
                                                                     End Using
-                                                                    Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
+
                                                                 End Using
-                                                                Using oQuotaPath As GraphicsPath = New GraphicsPath
-                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Left + sQuotaGap - sHalfWidth / 10, oBounds.Bottom), New PointF(oBounds.Left + sQuotaGap + sHalfWidth / 10, oBounds.Bottom))
+                                                                Using oQuotaItem As cDrawCacheItem = oCache.AddBorder(Nothing, oPen, oWireframePen, Nothing)
+                                                                    Call oQuotaItem.AddLine(New PointF(oBounds.Left + sQuotaGap - sHalfWidth / 10, oBounds.Bottom), New PointF(oBounds.Left + sQuotaGap + sHalfWidth / 10, oBounds.Bottom))
                                                                     Using oMatrix As Matrix = New Matrix
                                                                         Call oMatrix.RotateAt(45.0F, New PointF(oBounds.Left + sQuotaGap, oBounds.Bottom))
-                                                                        Call oQuotaPath.Transform(oMatrix)
+                                                                        Call oQuotaItem.Transform(oMatrix)
                                                                     End Using
-                                                                    Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
                                                                 End Using
                                                             End If
 
-                                                            Using oQuotaPath As GraphicsPath = New GraphicsPath
-                                                                Call oQuotaPath.StartFigure()
-                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left + sQuotaGap, oBounds.Top + sHalfHeight - sTextHeight / 2), New PointF(oBounds.Left + sQuotaGap, oBounds.Top))
-                                                                Call oQuotaPath.StartFigure()
-                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left + sQuotaGap, oBounds.Top + sHalfHeight + sTextHeight / 2), New PointF(oBounds.Left + sQuotaGap, oBounds.Bottom))
+                                                            Using oQuotaItem As cDrawCacheItem = oCache.AddBorder(Nothing, oArrowPen, oWireframePen, Nothing)
+                                                                Call oQuotaItem.StartFigure()
+                                                                Call oQuotaItem.AddLine(New PointF(oBounds.Left + sQuotaGap, oBounds.Top + sHalfHeight - sTextHeight / 2), New PointF(oBounds.Left + sQuotaGap, oBounds.Top))
+                                                                Call oQuotaItem.StartFigure()
+                                                                Call oQuotaItem.AddLine(New PointF(oBounds.Left + sQuotaGap, oBounds.Top + sHalfHeight + sTextHeight / 2), New PointF(oBounds.Left + sQuotaGap, oBounds.Bottom))
                                                                 oCenterPoint = New PointF(oBounds.Left + sQuotaGap, oBounds.Top + sHalfHeight)
-                                                                Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oArrowPen, oArrowPen, Nothing)
                                                             End Using
                                                         Case cIItemQuota.QuotaAlignEnum.Right
                                                             Using oQuotaPath As GraphicsPath = New GraphicsPath
@@ -1210,7 +1207,7 @@ Namespace cSurvey.Design.Items
         Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             If MyBase.Points.Count > 1 Then
                 Call Render(Graphics, PaintOptions, Options, Selected)
-                If Not PaintOptions.IsDesign Or (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then '
+                If Not PaintOptions.IsDesign OrElse (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then '
                     MyBase.HavePaintProblem = Not MyBase.Caches(PaintOptions).Paint(Graphics, PaintOptions, Options)
                     If PaintOptions.ShowSegmentBindings Then
                         Call modPaint.PaintPointToSegmentBindings(Graphics, oSurvey, Me, Selected)
@@ -1224,7 +1221,7 @@ Namespace cSurvey.Design.Items
             Return sValue
         End Function
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As Storage.cFile, ByVal item As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As cFile, ByVal item As XmlElement)
             Call MyBase.New(Survey, Design, Layer, File, item)
             oSurvey = Survey
             sText = modXML.GetAttributeValue(item, "text", "")
@@ -1249,8 +1246,11 @@ Namespace cSurvey.Design.Items
             If iQuotaType = cIItemQuota.QuotaTypeEnum.HorizontalScale OrElse iQuotaType = cIItemQuota.QuotaTypeEnum.VerticalScale Or iQuotaType = cIItemQuota.QuotaTypeEnum.GridScale Then
                 'Try
                 iQuotaTickFrequency = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "quotatickfrequency", 1))
+                If iQuotaTickFrequency = 0 Then iQuotaTickFrequency = 1
                 iQuotaTickLabelFrequency = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "quotaticklabelfrequency", 5))
+                If iQuotaTickLabelFrequency = 0 Then iQuotaTickLabelFrequency = 5
                 sQuotaTickSize = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "quotaticksize", 0.3))
+                If sQuotaTickSize = 0 Then sQuotaTickSize = 0.3
                 'Catch ex As Exception
                 '    iQuotaTickFrequency = 1
                 '    iQuotaTickLabelFrequency = 5
@@ -1273,7 +1273,7 @@ Namespace cSurvey.Design.Items
             sAngle = modNumbers.StringToDecimal(modXML.GetAttributeValue(item, "angle", 0))
         End Sub
 
-        Friend Overrides Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+        Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oItem As XmlElement = MyBase.SaveTo(File, Document, Parent, Options)
             Call oItem.SetAttribute("text", "" & sText)
             Call oFont.SaveTo(File, Document, oItem, "font")

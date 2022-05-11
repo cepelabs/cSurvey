@@ -22,10 +22,10 @@ Namespace cSurvey.Surface
         End Function
 
         Friend Function Contains(ID As String) As Boolean
-            Return oItems.Select(Function(elevation) elevation.ID = ID).Count
+            Return oItems.Where(Function(OrthoPhoto) OrthoPhoto.ID = ID).Count > 0
         End Function
 
-        Friend Sub New(Survey As cSurvey, ByVal File As Storage.cFile, ByVal OrthoPhotos As XmlElement)
+        Friend Sub New(Survey As cSurvey, ByVal File As cFile, ByVal OrthoPhotos As XmlElement)
             oSurvey = Survey
             oItems = New List(Of cOrthoPhoto)
             Dim sDefault As String = ""
@@ -140,7 +140,7 @@ Namespace cSurvey.Surface
             oItems = New List(Of cOrthoPhoto)
         End Sub
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlOrthoPhotos As XmlElement = Document.CreateElement("orthophotos")
             If Not oDefault Is Nothing Then
                 Call oXmlOrthoPhotos.SetAttribute("default", oDefault.ID)

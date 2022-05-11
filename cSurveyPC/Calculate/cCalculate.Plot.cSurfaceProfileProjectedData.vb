@@ -17,7 +17,7 @@ Namespace cSurvey.Calculate.Plot
             Next
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlSurfaceProfilePD As XmlElement = Document.CreateElement("surfaceprofilepd")
             For Each oItem As PointF In oItems
                 Dim oXMLProfilePDPoint As XmlElement = Document.CreateElement("p")

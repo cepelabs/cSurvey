@@ -1,6 +1,6 @@
 ﻿Imports System.Drawing.Printing
 
-Public Class frmPreviewMargins
+friend Class frmPreviewMargins
     Public Margins As Drawing.Printing.Margins
 
     Public Sub ConvertToMillimeter()

@@ -61,7 +61,7 @@ Namespace cSurvey.Calculate.Plot
             Return oSegment
         End Function
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlSPD As XmlElement = Document.CreateElement("spd")
             Call oXmlSPD.SetAttribute("sid", GetSplaySegment.ID)
 

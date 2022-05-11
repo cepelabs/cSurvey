@@ -56,7 +56,7 @@ Namespace cSurvey.Design.Options
             iDataFormat = GPSOptions.GetAttribute("dataformat")
         End Sub
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, ByVal Name As String) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, ByVal Name As String) As XmlElement
             Dim oXMLGPSOptions As XmlElement = Document.CreateElement(Name)
             Call oXMLGPSOptions.SetAttribute("exportdata", IIf(bExportData, "1", "0"))
             Call oXMLGPSOptions.SetAttribute("dataformat", iDataFormat)

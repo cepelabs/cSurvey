@@ -1,4 +1,4 @@
-﻿Public Class frmMainFloatingToolbar
+﻿friend Class frmMainFloatingToolbar
     Friend Class MainFloatingToolbarItemClickArgs
         Public ItemKey As String
 

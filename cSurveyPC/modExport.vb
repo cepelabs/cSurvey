@@ -1316,6 +1316,35 @@ Module modExport
         End Using
     End Sub
 
+    Public Sub GridExportTo(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Grid As DevExpress.XtraGrid.GridControl, Name As String, Optional ByVal Filename As String = "", Optional Owner As IWin32Window = Nothing)
+        If Filename = "" Then
+            Using oSFD As SaveFileDialog = New SaveFileDialog
+                With oSFD
+                    .Title = GetLocalizedString("main.exportgriddialog")
+                    .Filter = GetLocalizedString("main.filetypeXLSX") & " (*.XLSX)|*.XLSX|" & GetLocalizedString("main.filetypeCSV") & " (*.CSV)|*.CSV"
+                    .FilterIndex = 1
+                    .OverwritePrompt = True
+                    .CheckPathExists = True
+                    If .ShowDialog(Owner) = Windows.Forms.DialogResult.OK Then
+                        Filename = .FileName
+                    End If
+                End With
+            End Using
+        End If
+        If Filename <> "" Then
+            Select Case IO.Path.GetExtension(Filename).ToLower
+                Case ".xls"
+                    Grid.ExportToXls(Filename)
+                Case ".xlsx"
+                    Grid.ExportToXlsx(Filename)
+                Case ".txt"
+                    Grid.ExportToText(Filename)
+                Case Else
+                    Grid.ExportToCsv(Filename)
+            End Select
+        End If
+    End Sub
+
     Public Sub GridExportTo(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Grid As DataGridView, Name As String, Optional ByVal Filename As String = "", Optional Owner As IWin32Window = Nothing, Optional GetCellValueDelegate As GetGridCellValueDelegate = Nothing, Optional GetHeaderValueDelegate As GetGridHeaderValueDelegate = Nothing)
         If Filename = "" Then
             Using oSFD As SaveFileDialog = New SaveFileDialog
@@ -2670,7 +2699,7 @@ Module modExport
                         Dim sTo As String = DictionaryTranslate(Dictionary, oSegment.Data.Data.[To])
 
                         sFlags = ""
-                        If oSegment.Splay And ((Options And TherionExportOptionsEnum.CalculateSplay) = TherionExportOptionsEnum.CalculateSplay) Then sFlags = sFlags & " splay" Else sFlags = sFlags & " not splay"
+                        If oSegment.Splay AndAlso ((Options And TherionExportOptionsEnum.CalculateSplay) = TherionExportOptionsEnum.CalculateSplay) Then sFlags = sFlags & " splay" Else sFlags = sFlags & " not splay"
                         If oSegment.Duplicate Then sFlags = sFlags & " duplicate" Else sFlags = sFlags & " not duplicate"
                         If oSegment.Surface Then sFlags = sFlags & " surface" Else sFlags = sFlags & " not surface"
                         If sFlags <> sPreviousFlags Then
@@ -2961,7 +2990,7 @@ Module modExport
                     Dim sPreviousFlags As String = ""
                     For Each oSegment As cSegment In oSegments
                         If oSegment.IsValid AndAlso Not oSegment.IsSelfDefined Then
-                            If Not oSegment.Splay OrElse (oSegment.Splay AndAlso (Options And TherionExportOptionsEnum.ExportSplay) = TherionExportOptionsEnum.ExportSplay) Then
+                            If (Not oSegment.Splay OrElse (oSegment.Splay AndAlso (Options And TherionExportOptionsEnum.ExportSplay) = TherionExportOptionsEnum.ExportSplay)) OrElse (Not oSegment.Splay AndAlso Not oSegment.IsEquate AndAlso Survey.Properties.CalculateVersion > 2) Then
                                 If ((Options And TherionExportOptionsEnum.Oversample3D) = TherionExportOptionsEnum.Oversample3D) AndAlso oSegment.Data.SubDatas.Count > 0 Then ' AndAlso Not oSegment.Splay Then
                                     For Each oSubData As cSurvey.Calculate.Plot.cSubData In oSegment.Data.SubDatas
                                         With oSubData
@@ -3027,6 +3056,7 @@ Module modExport
                                         End With
                                     Next
                                 Else
+
                                     Dim sFrom As String = oSegment.Data.SourceData.[From]
                                     Dim sTo As String = oSegment.Data.SourceData.[To]
 
@@ -3052,45 +3082,49 @@ Module modExport
                                     End If
 
                                     sFrom = DictionaryTranslate(Dictionary, sFrom)
-                                    sTo = DictionaryTranslate(Dictionary, sTo) 'oSegment.Data.Data.[To])
+                                    sTo = DictionaryTranslate(Dictionary, sTo)
 
-                                    sFlags = ""
-                                    If oSegment.Splay AndAlso ((Options And TherionExportOptionsEnum.CalculateSplay) = TherionExportOptionsEnum.CalculateSplay) Then sFlags = sFlags & " splay" Else sFlags = sFlags & " not splay"
-                                    If oSegment.Duplicate Then sFlags = sFlags & " duplicate" Else sFlags = sFlags & " not duplicate"
-                                    If oSegment.Surface Then sFlags = sFlags & " surface" Else sFlags = sFlags & " not surface"
-                                    'therion does not allow generic exclusion...passed as 'surface'
-                                    If oSegment.Exclude AndAlso (Not oSegment.Splay AndAlso Not oSegment.Duplicate AndAlso Not oSegment.Surface) Then sFlags = sFlags & " surface"
-
-                                    If sFlags <> sPreviousFlags Then
-                                        Call St.WriteLine(Space(iIndent) & "flags " & sFlags)
-                                        sPreviousFlags = sFlags
-                                    End If
-                                    If oSession.DataFormat = cSegment.DataFormatEnum.Diving Then
-                                        Select Case oSession.DepthType
-                                            Case cSegment.DepthTypeEnum.AbsoluteAtBegin
-                                                Call St.WriteLine(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Inclination, "0.00") & " " & modText.FormatNumber(pGetDepthValue(oDepths, oSegment.Data.SourceData.To), "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
-                                            Case cSegment.DepthTypeEnum.AbsoluteAtEnd
-                                                Call St.WriteLine(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(pGetDepthValue(oDepths, oSegment.Data.SourceData.From), "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Inclination, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
-                                            Case Else
-                                                Call St.WriteLine(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Inclination, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
-                                        End Select
+                                    If oSegment.IsEquate AndAlso Survey.Properties.CalculateVersion > 2 Then
+                                        Call St.WriteLine("equate " & sFrom & " " & sTo)
                                     Else
-                                        Call St.WriteLine(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Inclination, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
-                                    End If
+                                        sFlags = ""
+                                        If oSegment.Splay AndAlso ((Options And TherionExportOptionsEnum.CalculateSplay) = TherionExportOptionsEnum.CalculateSplay) Then sFlags = sFlags & " splay" Else sFlags = sFlags & " not splay"
+                                        If oSegment.Duplicate Then sFlags = sFlags & " duplicate" Else sFlags = sFlags & " not duplicate"
+                                        If oSegment.Surface Then sFlags = sFlags & " surface" Else sFlags = sFlags & " not surface"
+                                        'therion does not allow generic exclusion...passed as 'surface'
+                                        If oSegment.Exclude AndAlso (Not oSegment.Splay AndAlso Not oSegment.Duplicate AndAlso Not oSegment.Surface) Then sFlags = sFlags & " surface"
 
-                                    If (Options And TherionExportOptionsEnum.SegmentForceDirection) = TherionExportOptionsEnum.SegmentForceDirection Then
-                                        'forzo esplicitamente la direzione di ogni segmento...
-                                        If oSegment.Data.SourceData.Direction = cSurvey.cSurvey.DirectionEnum.Left Then
-                                            If oSegment.Data.SourceData.Reversed Then
-                                                Call St.WriteLine(Space(iIndent) & "extend left " & sTo & " " & sFrom)
-                                            Else
-                                                Call St.WriteLine(Space(iIndent) & "extend left " & sFrom & " " & sTo)
-                                            End If
+                                        If sFlags <> sPreviousFlags Then
+                                            Call St.WriteLine(Space(iIndent) & "flags " & sFlags)
+                                            sPreviousFlags = sFlags
+                                        End If
+                                        If oSession.DataFormat = cSegment.DataFormatEnum.Diving Then
+                                            Select Case oSession.DepthType
+                                                Case cSegment.DepthTypeEnum.AbsoluteAtBegin
+                                                    Call St.WriteLine(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Inclination, "0.00") & " " & modText.FormatNumber(pGetDepthValue(oDepths, oSegment.Data.SourceData.To), "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
+                                                Case cSegment.DepthTypeEnum.AbsoluteAtEnd
+                                                    Call St.WriteLine(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(pGetDepthValue(oDepths, oSegment.Data.SourceData.From), "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Inclination, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
+                                                Case Else
+                                                    Call St.WriteLine(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Inclination, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
+                                            End Select
                                         Else
-                                            If oSegment.Data.SourceData.Reversed Then
-                                                Call St.WriteLine(Space(iIndent) & "extend right " & sTo & " " & sFrom)
+                                            Call St.WriteLine(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Inclination, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
+                                        End If
+
+                                        If (Options And TherionExportOptionsEnum.SegmentForceDirection) = TherionExportOptionsEnum.SegmentForceDirection Then
+                                            'forzo esplicitamente la direzione di ogni segmento...
+                                            If oSegment.Data.SourceData.Direction = cSurvey.cSurvey.DirectionEnum.Left Then
+                                                If oSegment.Data.SourceData.Reversed Then
+                                                    Call St.WriteLine(Space(iIndent) & "extend left " & sTo & " " & sFrom)
+                                                Else
+                                                    Call St.WriteLine(Space(iIndent) & "extend left " & sFrom & " " & sTo)
+                                                End If
                                             Else
-                                                Call St.WriteLine(Space(iIndent) & "extend right " & sFrom & " " & sTo)
+                                                If oSegment.Data.SourceData.Reversed Then
+                                                    Call St.WriteLine(Space(iIndent) & "extend right " & sTo & " " & sFrom)
+                                                Else
+                                                    Call St.WriteLine(Space(iIndent) & "extend right " & sFrom & " " & sTo)
+                                                End If
                                             End If
                                         End If
                                     End If

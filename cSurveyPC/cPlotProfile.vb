@@ -12,17 +12,16 @@ Namespace cSurvey.Design
         Private oSurvey As cSurvey
 
         Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
-            Dim oMatrix As Matrix = New Matrix
-            Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
-            Call oSVGItem.SetAttribute("name", "plot.profile")
-            Return oSVGItem
+            Dim oSVGGroup As XmlElement = modSVG.CreateLayer(SVG, "plot", "plot")
+            Call modSVG.AppendItem(SVG, oSVGGroup, MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options))
+            Return oSVGGroup
         End Function
 
-        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
-            Dim oSVG As XmlDocument = modSVG.CreateSVG
-            Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
-            Return oSVG
-        End Function
+        'Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, Size As SizeF, PageBox As RectangleF, ByVal ViewBox As RectangleF) As XmlDocument
+        '    Dim oSVG As XmlDocument = modSVG.CreateSVG
+        '    Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options, Size, ViewBox))
+        '    Return oSVG
+        'End Function
 
         Public Overrides Function HitTest(ByVal PaintOptions As cOptions, ByVal CurrentCave As String, ByVal CurrentBranch As String, ByVal Point As PointF, Optional Wide As Decimal = Decimal.MaxValue) As cPlotHitTestResult
             If PaintOptions.DrawPlot Then
@@ -34,8 +33,8 @@ Namespace cSurvey.Design
                 For Each oSegment As cSegment In oVisibleSegments
                     If modDesign.GetIfSegmentMustBeDrawedByCaveAndBranch(PaintOptions, oSegment, CurrentCave, CurrentBranch) Then
                         If oSegment.IsValid AndAlso Not oSegment.IsSelfDefined AndAlso Not oSegment.Splay Then
-                            Dim oPoints() As PointF = oSegment.Data.Profile.GetVectorLine
-                            Dim dDistance As Decimal = modPaint.DistancePointToSegment(Point, oPoints(0), oPoints(1))
+                            Dim oPoints() As PointD = oSegment.Data.Profile.GetVectorLine
+                            Dim dDistance As Decimal = modPaint.DistancePointToSegment(CType(Point, PointD), oPoints(0), oPoints(1))
                             If dDistance < dMinDistance Then
                                 oFoundSegment = oSegment
                                 dMinDistance = dDistance
@@ -46,9 +45,9 @@ Namespace cSurvey.Design
 
                 If Not oFoundSegment Is Nothing Then
                     Dim sTrigpointDistance As Single = 0.5
-                    Dim oPoints() As PointF = oFoundSegment.Data.Profile.GetVectorLine
-                    Dim dDistance0 As Decimal = modPaint.DistancePointToPoint(Point, oPoints(0))
-                    Dim dDistance1 As Decimal = modPaint.DistancePointToPoint(Point, oPoints(1))
+                    Dim oPoints() As PointD = oFoundSegment.Data.Profile.GetVectorLine
+                    Dim dDistance0 As Decimal = modPaint.DistancePointToPoint(CType(Point, PointD), oPoints(0))
+                    Dim dDistance1 As Decimal = modPaint.DistancePointToPoint(CType(Point, PointD), oPoints(1))
                     If PaintOptions.DrawPoints AndAlso (dDistance0 < sTrigpointDistance OrElse dDistance1 < sTrigpointDistance) Then
                         If dDistance0 < dDistance1 Then
                             If oFoundSegment.Data.Data.Reversed Then
@@ -902,7 +901,7 @@ Namespace cSurvey.Design
             oSurvey = Survey
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement)
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement)
             Dim oXmlPlot As XmlElement = Document.CreateElement("plot")
             Call Parent.AppendChild(oXmlPlot)
             Return oXmlPlot

@@ -1,7 +1,7 @@
 ﻿Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Properties
 
-Public Class frmParametersSegments
+friend Class frmParametersSegments
     Friend Event OnChangeOptions(ByVal Sender As Object, ByVal Options As cOptions)
 
     Private oOptions As cOptions

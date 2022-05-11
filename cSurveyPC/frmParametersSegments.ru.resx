@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
+  <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,136 +59,139 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="metadata">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" />
-							</xsd:sequence>
-							<xsd:attribute name="name" use="required" type="xsd:string" />
-							<xsd:attribute name="type" type="xsd:string" />
-							<xsd:attribute name="mimetype" type="xsd:string" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="assembly">
-						<xsd:complexType>
-							<xsd:attribute name="alias" type="xsd:string" />
-							<xsd:attribute name="name" type="xsd:string" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<data name="cmdApply.Text" xml:space="preserve">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cmdApply.Text" xml:space="preserve">
     <value>Применить</value>
   </data>
-	<data name="cmdCancel.Text" xml:space="preserve">
+  <data name="cmdCancel.Text" xml:space="preserve">
     <value>Отмена</value>
   </data>
-	<data name="GroupBox1.Text" xml:space="preserve">
+  <data name="GroupBox1.Text" xml:space="preserve">
     <value>Показать также исключеные сегменты:</value>
   </data>
-	<assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-	<data name="chkDuplicate.Size" type="System.Drawing.Size, System.Drawing">
-		<value>76, 17</value>
-	</data>
-	<data name="chkDuplicate.Text" xml:space="preserve">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="chkDuplicate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 17</value>
+  </data>
+  <data name="chkDuplicate.Text" xml:space="preserve">
     <value>Дубликаты</value>
   </data>
-	<data name="chkSurface.Size" type="System.Drawing.Size, System.Drawing">
-		<value>63, 17</value>
-	</data>
-	<data name="chkSurface.Text" xml:space="preserve">
+  <data name="chkSurface.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 17</value>
+  </data>
+  <data name="chkSurface.Text" xml:space="preserve">
     <value>Поверхность</value>
   </data>
-	<assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-	<data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-		<value>WindowsDefaultLocation</value>
-	</data>
-	<data name="$this.Text" xml:space="preserve">
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>WindowsDefaultLocation</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
     <value>Нитка хода:</value>
   </data>
-	<data name="cmdOk.Text" xml:space="preserve">
+  <data name="cmdOk.Text" xml:space="preserve">
     <value>Ok</value>
   </data>
-	<data name="cboSegmentsPaintStyle.Items" xml:space="preserve">
+  <data name="cboSegmentsPaintStyle.Items" xml:space="preserve">
 		<value>Видимые</value>
 	</data>
-	<data name="cboSegmentsPaintStyle.Items1" xml:space="preserve">
+  <data name="cboSegmentsPaintStyle.Items1" xml:space="preserve">
 		<value>Прозрачные</value>
 	</data>
-	<data name="cboSegmentsPaintStyle.Items2" xml:space="preserve">
+  <data name="cboSegmentsPaintStyle.Items2" xml:space="preserve">
 		<value>Контуры</value>
 	</data>
-	<data name="cboSegmentsPaintStyle.Items3" xml:space="preserve">
+  <data name="cboSegmentsPaintStyle.Items3" xml:space="preserve">
 		<value>Только сегменты</value>
 	</data>
-	<data name="Label1.Text" xml:space="preserve">
+  <data name="Label1.Text" xml:space="preserve">
 		<value>Стиль:</value>
 	</data>
-	<data name="GroupBox2.Text" xml:space="preserve">
+  <data name="GroupBox2.Text" xml:space="preserve">
 		<value>ЛПВН:</value>
 	</data>
-	<data name="cboSplayStyle.Items" xml:space="preserve">
+  <data name="cboSplayStyle.Items" xml:space="preserve">
 		<value>Только точки</value>
 	</data>
-	<data name="cboSplayStyle.Items1" xml:space="preserve">
+  <data name="cboSplayStyle.Items1" xml:space="preserve">
 		<value>Точки и линии</value>
 	</data>
-	<data name="lblSplayStyle.Text" xml:space="preserve">
+  <data name="lblSplayStyle.Text" xml:space="preserve">
 		<value>Стиль:</value>
 	</data>
-	<data name="GroupBox3.Text" xml:space="preserve">
+  <data name="GroupBox3.Text" xml:space="preserve">
 		<value>Боковой замер:</value>
 	</data>
-	<data name="chkShowHLs.Text" xml:space="preserve">
+  <data name="chkShowHLs.Text" xml:space="preserve">
 		<value>Выделить</value>
 	</data>
-	<data name="GroupBox4.Text" xml:space="preserve">
+  <data name="GroupBox4.Text" xml:space="preserve">
 		<value>Другие опции:</value>
 	</data>
-	<data name="chkDesignSurfaceProfile.Text" xml:space="preserve">
+  <data name="chkDesignSurfaceProfile.Text" xml:space="preserve">
 		<value>Профиль поверхности</value>
 	</data>
-	<data name="grpSurface.Text" xml:space="preserve">
+  <data name="grpSurface.Text" xml:space="preserve">
 		<value>Поверхность:</value>
 	</data>
+  <data name="cboSplayStyle.Items2" xml:space="preserve">
+    <value>Лучи</value>
+  </data>
 </root>

@@ -63,7 +63,7 @@ Namespace cSurvey
             End Get
         End Property
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlTranslations As XmlElement = Document.CreateElement("translations")
             Call oPlan.SaveTo(File, Document, oXmlTranslations)
             Call oProfile.SaveTo(File, Document, oXmlTranslations)

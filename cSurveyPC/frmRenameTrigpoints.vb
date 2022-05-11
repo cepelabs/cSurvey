@@ -1,6 +1,6 @@
 ﻿Imports cSurveyPC.cSurvey
 
-Public Class frmRenameTrigpoints
+friend Class frmRenameTrigpoints
     Private oSurvey As cSurvey.cSurvey
     Private oTrigPoints As SortedSet(Of String)
 

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 32 32"
+   style="enable-background:new 0 0 32 32;"
+   xml:space="preserve"
+   sodipodi:docname="designervisibility.svg"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"><metadata
+   id="metadata14"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs12" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="2560"
+   inkscape:window-height="1017"
+   id="namedview10"
+   showgrid="false"
+   inkscape:zoom="9.1429872"
+   inkscape:cx="33.072822"
+   inkscape:cy="32.256569"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1" />
+<style
+   type="text/css"
+   id="style2">
+	.Black{fill:#727272;}
+	.Red{fill:#D11C1C;}
+	.Yellow{fill:#FFB115;}
+	.Green{fill:#039C23;}
+</style>
+<g
+   id="Visibility"
+   transform="matrix(0.5,0,0,0.5,14.67178,16.312382)">
+	<circle
+   class="Black"
+   cx="16"
+   cy="16"
+   r="4"
+   id="circle4" />
+	<path
+   class="Black"
+   d="M 16,8 C 8,8 2,16 2,16 c 0,0 6,8 14,8 8,0 14,-8 14,-8 0,0 -6,-8 -14,-8 z m 0,14 c -3.3,0 -6,-2.7 -6,-6 0,-3.3 2.7,-6 6,-6 3.3,0 6,2.7 6,6 0,3.3 -2.7,6 -6,6 z"
+   id="path6" />
+</g>
+<style
+   type="text/css"
+   id="style839">
+	.Blue{fill:#1177D7;}
+</style><g
+   id="g858"
+   transform="translate(-0.44928334,-0.14521905)"><path
+     class="Blue"
+     d="M 27.6,8.2 23.8,4.4 c -0.5,-0.5 -1.4,-0.5 -1.9,0 l -2.5,2.5 5.8,5.8 2.5,-2.5 c 0.4,-0.6 0.4,-1.4 -0.1,-2 z"
+     id="path841" /><polygon
+     class="Blue"
+     points="4,22 4,28 10,28 "
+     id="polygon843" /><rect
+     x="5.8000002"
+     y="13.4"
+     transform="matrix(0.707,-0.7072,0.7072,0.707,-8.057,15.457)"
+     class="Blue"
+     width="17.6"
+     height="8.1999998"
+     id="rect845" /></g></svg>

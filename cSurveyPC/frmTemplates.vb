@@ -3,9 +3,9 @@
 Friend Class frmTemplates
 
     Private sTemplatePath As String
-    Private oTemplates As List(Of frmMain.cTemplateEntry)
+    Private oTemplates As List(Of cTemplateEntry)
 
-    Public Sub New(TemplatePath As String, Templates As List(Of frmMain.cTemplateEntry), Optional SaveAs As Boolean = False)
+    Public Sub New(TemplatePath As String, Templates As List(Of cTemplateEntry), Optional SaveAs As Boolean = False)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -15,13 +15,13 @@ Friend Class frmTemplates
         oTemplates = Templates
 
         colName.AspectGetter = Function(Value As Object)
-                                   Return DirectCast(Value, frmMain.cTemplateEntry).Name
+                                   Return DirectCast(Value, cTemplateEntry).Name
                                End Function
         colDefault.AspectGetter = Function(Value As Object)
-                                      Return DirectCast(Value, frmMain.cTemplateEntry).Default
+                                      Return DirectCast(Value, cTemplateEntry).Default
                                   End Function
         colDefault.AspectPutter = Function(rowObject As Object, newValue As Object)
-                                      Call pSetDefault(DirectCast(rowObject, frmMain.cTemplateEntry), newValue)
+                                      Call pSetDefault(DirectCast(rowObject, cTemplateEntry), newValue)
                                   End Function
 
 
@@ -46,16 +46,16 @@ Friend Class frmTemplates
         End If
     End Sub
 
-    Private Sub pSetDefault(Template As frmMain.cTemplateEntry, Value As Boolean)
+    Private Sub pSetDefault(Template As cTemplateEntry, Value As Boolean)
         If Value Then
-            Dim oTemplate As frmMain.cTemplateEntry = oTemplates.FirstOrDefault(Function(oitem) oitem.Default AndAlso Not oitem Is Template)
+            Dim oTemplate As cTemplateEntry = oTemplates.FirstOrDefault(Function(oitem) oitem.Default AndAlso Not oitem Is Template)
             If Not oTemplate Is Nothing Then Call pSetDefault(oTemplate, False)
 
             Dim sOldFilename As String = Template.File.FullName
             Dim sNewFilename As String = IO.Path.GetFileNameWithoutExtension(Template.File.Name) & ".default" & IO.Path.GetExtension(Template.File.Name)
             Dim sNewFullFilename As String = IO.Path.Combine(Template.File.DirectoryName, sNewFilename)
             My.Computer.FileSystem.RenameFile(sOldFilename, sNewFilename)
-            Dim oNewTemplate As frmMain.cTemplateEntry = New frmMain.cTemplateEntry(New IO.FileInfo(sNewFullFilename))
+            Dim oNewTemplate As cTemplateEntry = New cTemplateEntry(New IO.FileInfo(sNewFullFilename))
             Dim iIndex As Integer = oTemplates.IndexOf(Template)
             Call oTemplates.Remove(Template)
             Call oTemplates.Insert(iIndex, oNewTemplate)
@@ -64,7 +64,7 @@ Friend Class frmTemplates
             Dim sNewFilename As String = IO.Path.GetFileNameWithoutExtension(Template.File.Name).Replace(".default", "") & IO.Path.GetExtension(Template.File.Name)
             Dim sNewFullFilename As String = IO.Path.Combine(Template.File.DirectoryName, sNewFilename)
             My.Computer.FileSystem.RenameFile(sOldFilename, sNewFilename)
-            Dim oNewTemplate As frmMain.cTemplateEntry = New frmMain.cTemplateEntry(New IO.FileInfo(sNewFullFilename))
+            Dim oNewTemplate As cTemplateEntry = New cTemplateEntry(New IO.FileInfo(sNewFullFilename))
             Dim iIndex As Integer = oTemplates.IndexOf(Template)
             Call oTemplates.Remove(Template)
             Call oTemplates.Insert(iIndex, oNewTemplate)
@@ -79,7 +79,7 @@ Friend Class frmTemplates
         If lvTemplates.SelectedObject Is Nothing Then
             txtName.Text = ""
         Else
-            txtName.Text = DirectCast(lvTemplates.SelectedObject, frmMain.cTemplateEntry).Name
+            txtName.Text = DirectCast(lvTemplates.SelectedObject, cTemplateEntry).Name
         End If
     End Sub
 
@@ -110,7 +110,7 @@ Friend Class frmTemplates
 
     Private Sub mnuTemplatesDelete_Click(sender As Object, e As EventArgs) Handles mnuTemplatesDelete.Click
         If MsgBox(modMain.GetLocalizedString("templates.warning1"), MsgBoxStyle.YesNo Or MsgBoxStyle.Critical, modMain.GetLocalizedString("templates.warningtitle")) = MsgBoxResult.Yes Then
-            Dim oTemplate As frmMain.cTemplateEntry = lvTemplates.SelectedObject
+            Dim oTemplate As cTemplateEntry = lvTemplates.SelectedObject
             Call My.Computer.FileSystem.DeleteFile(oTemplate.File.FullName, FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.SendToRecycleBin)
             Call oTemplates.Remove(oTemplate)
             Call lvTemplates.BuildList(True)
@@ -119,7 +119,7 @@ Friend Class frmTemplates
 
     Private Sub mnuTemplatesSetAsDefault_Click(sender As Object, e As EventArgs) Handles mnuTemplatesSetAsDefault.Click
         'copy selected template as default.cs*
-        Dim oTemplate As frmMain.cTemplateEntry = lvTemplates.SelectedObject
+        Dim oTemplate As cTemplateEntry = lvTemplates.SelectedObject
         If Not oTemplate.Default Then Call pSetDefault(oTemplate, True)
     End Sub
 
@@ -155,7 +155,7 @@ Friend Class frmTemplates
                 Dim sDestFilePath As String = IO.Path.Combine(sTemplatePath, IO.Path.GetFileName(sFilepath))
                 If Not My.Computer.FileSystem.FileExists(sDestFilePath) Then
                     Call My.Computer.FileSystem.CopyFile(sFilepath, sDestFilePath, True)
-                    Dim oNewTemplate As frmMain.cTemplateEntry = New frmMain.cTemplateEntry(New IO.FileInfo(sDestFilePath))
+                    Dim oNewTemplate As cTemplateEntry = New cTemplateEntry(New IO.FileInfo(sDestFilePath))
                     Call oTemplates.Add(oNewTemplate)
                 End If
             Next

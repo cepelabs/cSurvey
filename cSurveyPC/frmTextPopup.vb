@@ -3,7 +3,7 @@ Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports cSurveyPC.cSurvey.Design
 
-Public Class frmTextPopup
+friend Class frmTextPopup
     Private bLoaded As Boolean
 
     Private oBag As Object

@@ -162,7 +162,7 @@ Namespace cSurvey.Calculate.Plot
             End Get
         End Property
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlSpeleometrics As XmlElement = Document.CreateElement("sms")
             For Each oItem As cSpeleometric In oItems.Values
                 Call oItem.SaveTo(File, Document, oXmlSpeleometrics)

@@ -22,10 +22,10 @@ Namespace cSurvey.Surface
         End Function
 
         Friend Function Contains(ID As String) As Boolean
-            Return oItems.Select(Function(elevation) elevation.ID = ID).Count
+            Return oItems.Where(Function(wms) wms.ID = ID).Count > 0
         End Function
 
-        Friend Sub New(Survey As cSurvey, ByVal File As Storage.cFile, ByVal WMSs As XmlElement)
+        Friend Sub New(Survey As cSurvey, ByVal File As cFile, ByVal WMSs As XmlElement)
             oSurvey = Survey
             oItems = New List(Of cWMS)
             Dim sDefault As String = ""
@@ -131,7 +131,7 @@ Namespace cSurvey.Surface
             oItems = New List(Of cWMS)
         End Sub
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlWMSs As XmlElement = Document.CreateElement("wmss")
             If Not oDefault Is Nothing Then
                 Call oXmlWMSs.SetAttribute("default", oDefault.ID)

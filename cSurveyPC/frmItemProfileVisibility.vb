@@ -2,7 +2,7 @@
 Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Scale
 
-Public Class frmItemProfileVisibility
+friend Class frmItemProfileVisibility
     Private oItem As cItem
 
     Public Sub New(Item As cItem)

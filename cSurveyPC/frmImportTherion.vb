@@ -1,4 +1,4 @@
-﻿Public Class frmImportTherion
+﻿friend Class frmImportTherion
 
     Private Sub pSettingsLoad()
         Try

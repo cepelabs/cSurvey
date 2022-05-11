@@ -1,0 +1,46 @@
+<szs>
+	<sz name="4A0" w="1682" h="2378" u="mm" />
+	<sz name="2A0" w="1189" h="1682" u="mm" />
+	<sz name="A0" w="841" h="1189" u="mm" />
+	<sz name="A1" w="594" h="841" u="mm" />
+	<sz name="A2" w="420" h="594" u="mm" />
+	<sz name="A3" w="297" h="420" u="mm" />
+	<sz name="A4" w="210" h="297" u="mm" />
+	<sz name="A5" w="148" h="210" u="mm" />
+	<sz name="A6" w="105" h="148" u="mm" />
+	<sz name="A7" w="74" h="105" u="mm" />
+	<sz name="A8" w="52" h="74" u="mm" />
+	<sz name="A9" w="37" h="52" u="mm" />
+	<sz name="A10" w="26" h="37" u="mm" />
+
+	<sz name="B0" w="1000" h="1414" u="mm" />
+	<sz name="B1" w="707" h="1000" u="mm" />
+	<sz name="B2" w="500" h="707" u="mm" />
+	<sz name="B3" w="353" h="500" u="mm" />
+	<sz name="B4" w="250" h="353" u="mm" />
+	<sz name="B5" w="176" h="250" u="mm" />
+	<sz name="B6" w="125" h="176" u="mm" />
+	<sz name="B7" w="88" h="125" u="mm" />
+	<sz name="B8" w="62" h="88" u="mm" />
+	<sz name="B9" w="44" h="62" u="mm" />
+	<sz name="B10" w="31" h="44" u="mm" />
+	
+	<sz name="Half Letter" w="5.5" h="8.5" u="in" />
+	<sz name="Letter" w="8.5" h="11" u="in" />
+	<sz name="Legal" w="8.5" h="14" u="in" />
+	<sz name="Junior Legal" w="5" h="8" u="in" />
+	<sz name="Tabloid" w="11" h="17" u="in" />
+	
+	<sz name="A" w="8.5" h="11" u="in" />
+	<sz name="B" w="11" h="17" u="in" />
+	<sz name="C" w="17" h="22" u="in" />
+	<sz name="D" w="22" h="34" u="in" />
+	<sz name="E" w="34" h="44" u="in" />
+
+	<sz name="Arch A" w="9" h="12" u="in" />
+	<sz name="Arch B" w="12" h="18" u="in" />
+	<sz name="Arch C" w="18" h="24" u="in" />
+	<sz name="Arch D" w="24" h="36" u="in" />
+	<sz name="Arch E" w="36" h="48" u="in" />	
+	<sz name="Arch E1" w="30" h="42" u="in" />	
+</szs>

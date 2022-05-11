@@ -207,4 +207,19 @@
   <data name="cboMode2Mode.Items" xml:space="preserve">
     <value>Usa i dati degli splay come LRUD</value>
   </data>
+  <data name="cboAction.Items" xml:space="preserve">
+    <value>Imposta LRUD usando le lunghezze dei primi quattro splay</value>
+  </data>
+  <data name="cboAction.Items1" xml:space="preserve">
+    <value>Calcola LRUD dall'area definita dagli splay</value>
+  </data>
+  <data name="cboAction.Items2" xml:space="preserve">
+    <value>Calcola LRUD dall'area definita dai bordi disegnati</value>
+  </data>
+  <data name="cboAction.Items3" xml:space="preserve">
+    <value>Recupera dati precedentemente salvati</value>
+  </data>
+  <data name="lblAction.Text" xml:space="preserve">
+    <value>Azione:</value>
+  </data>
 </root>

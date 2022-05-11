@@ -1,4 +1,4 @@
-﻿Public NotInheritable Class frmAbout
+﻿Friend NotInheritable Class frmAbout
 
     Private Const sCopyrights As String = "" &
         "Therion" & vbCrLf &

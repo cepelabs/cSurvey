@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmResurveyProperties
-    Inherits cForm
+    Inherits DevExpress.XtraEditors.XtraForm
 
     'Form esegue l'override del metodo Dispose per pulire l'elenco dei componenti.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,36 +20,39 @@ Partial Class frmResurveyProperties
     'NOTA: la procedura che segue è richiesta da Progettazione Windows Form
     'Può essere modificata in Progettazione Windows Form.  
     'Non modificarla nell'editor del codice.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmResurveyProperties))
-        Me.cmdOk = New System.Windows.Forms.Button()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.txtPlanPosition = New System.Windows.Forms.TextBox()
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.txtPlanPosition = New DevExpress.XtraEditors.TextEdit()
         Me.lblPosition = New System.Windows.Forms.Label()
-        Me.txtName = New System.Windows.Forms.TextBox()
+        Me.txtName = New DevExpress.XtraEditors.TextEdit()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.txtProfilePosition = New System.Windows.Forms.TextBox()
+        Me.txtProfilePosition = New DevExpress.XtraEditors.TextEdit()
         Me.lblPlanPosition = New System.Windows.Forms.Label()
         Me.lblConnectedTo = New System.Windows.Forms.Label()
         Me.lblProfilePosition = New System.Windows.Forms.Label()
         Me.lblScaleUM = New System.Windows.Forms.Label()
-        Me.txtScaleSize = New cNumericUpDown()
         Me.lblScaleSize = New System.Windows.Forms.Label()
-        Me.cmdApply = New System.Windows.Forms.Button()
+        Me.cmdApply = New DevExpress.XtraEditors.SimpleButton()
         Me.tpDefault = New System.Windows.Forms.ToolTip(Me.components)
-        Me.cmdNext = New System.Windows.Forms.Button()
-        Me.cmdPrev = New System.Windows.Forms.Button()
-        Me.lstPlanConnectedTo = New System.Windows.Forms.CheckedListBox()
-        Me.lstProfileConnectedTo = New System.Windows.Forms.CheckedListBox()
-        Me.tabConnectedTo = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
-        CType(Me.txtScaleSize, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabConnectedTo.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
-        Me.TabPage2.SuspendLayout()
+        Me.cmdNext = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdPrev = New DevExpress.XtraEditors.SimpleButton()
+        Me.tknPlan = New DevExpress.XtraEditors.TokenEdit()
+        Me.tknProfile = New DevExpress.XtraEditors.TokenEdit()
+        Me.pnlNextStations = New System.Windows.Forms.Panel()
+        Me.pnlScale = New System.Windows.Forms.Panel()
+        Me.txtScaleSize = New DevExpress.XtraEditors.SpinEdit()
+        CType(Me.txtPlanPosition.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtProfilePosition.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tknPlan.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tknProfile.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlNextStations.SuspendLayout()
+        Me.pnlScale.SuspendLayout()
+        CType(Me.txtScaleSize.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdOk
@@ -57,20 +60,18 @@ Partial Class frmResurveyProperties
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
         '
         'cmdCancel
         '
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'txtPlanPosition
         '
         resources.ApplyResources(Me.txtPlanPosition, "txtPlanPosition")
         Me.txtPlanPosition.Name = "txtPlanPosition"
-        Me.txtPlanPosition.ReadOnly = True
+        Me.txtPlanPosition.Properties.ReadOnly = True
         '
         'lblPosition
         '
@@ -81,7 +82,9 @@ Partial Class frmResurveyProperties
         '
         resources.ApplyResources(Me.txtName, "txtName")
         Me.txtName.Name = "txtName"
-        Me.txtName.ReadOnly = True
+        Me.txtName.Properties.Appearance.Font = CType(resources.GetObject("txtName.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.txtName.Properties.Appearance.Options.UseFont = True
+        Me.txtName.Properties.ReadOnly = True
         '
         'Label1
         '
@@ -92,7 +95,7 @@ Partial Class frmResurveyProperties
         '
         resources.ApplyResources(Me.txtProfilePosition, "txtProfilePosition")
         Me.txtProfilePosition.Name = "txtProfilePosition"
-        Me.txtProfilePosition.ReadOnly = True
+        Me.txtProfilePosition.Properties.ReadOnly = True
         '
         'lblPlanPosition
         '
@@ -114,12 +117,6 @@ Partial Class frmResurveyProperties
         resources.ApplyResources(Me.lblScaleUM, "lblScaleUM")
         Me.lblScaleUM.Name = "lblScaleUM"
         '
-        'txtScaleSize
-        '
-        Me.txtScaleSize.DecimalPlaces = 2
-        resources.ApplyResources(Me.txtScaleSize, "txtScaleSize")
-        Me.txtScaleSize.Name = "txtScaleSize"
-        '
         'lblScaleSize
         '
         resources.ApplyResources(Me.lblScaleSize, "lblScaleSize")
@@ -129,57 +126,65 @@ Partial Class frmResurveyProperties
         '
         resources.ApplyResources(Me.cmdApply, "cmdApply")
         Me.cmdApply.Name = "cmdApply"
-        Me.cmdApply.UseVisualStyleBackColor = True
         '
         'cmdNext
         '
         resources.ApplyResources(Me.cmdNext, "cmdNext")
+        Me.cmdNext.ImageOptions.SvgImage = CType(resources.GetObject("cmdNext.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.cmdNext.ImageOptions.SvgImageSize = New System.Drawing.Size(18, 18)
         Me.cmdNext.Name = "cmdNext"
-        Me.tpDefault.SetToolTip(Me.cmdNext, resources.GetString("cmdNext.ToolTip"))
-        Me.cmdNext.UseVisualStyleBackColor = True
+        Me.tpDefault.SetToolTip(Me.cmdNext, resources.GetString("cmdNext.ToolTip1"))
         '
         'cmdPrev
         '
         resources.ApplyResources(Me.cmdPrev, "cmdPrev")
+        Me.cmdPrev.ImageOptions.SvgImage = CType(resources.GetObject("cmdPrev.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.cmdPrev.ImageOptions.SvgImageSize = New System.Drawing.Size(18, 18)
         Me.cmdPrev.Name = "cmdPrev"
-        Me.tpDefault.SetToolTip(Me.cmdPrev, resources.GetString("cmdPrev.ToolTip"))
-        Me.cmdPrev.UseVisualStyleBackColor = True
+        Me.tpDefault.SetToolTip(Me.cmdPrev, resources.GetString("cmdPrev.ToolTip1"))
         '
-        'lstPlanConnectedTo
+        'tknPlan
         '
-        resources.ApplyResources(Me.lstPlanConnectedTo, "lstPlanConnectedTo")
-        Me.lstPlanConnectedTo.FormattingEnabled = True
-        Me.lstPlanConnectedTo.MultiColumn = True
-        Me.lstPlanConnectedTo.Name = "lstPlanConnectedTo"
+        resources.ApplyResources(Me.tknPlan, "tknPlan")
+        Me.tknPlan.Name = "tknPlan"
+        Me.tknPlan.Properties.AutoHeightMode = DevExpress.XtraEditors.TokenEditAutoHeightMode.RestrictedExpand
+        Me.tknPlan.Properties.MaxExpandLines = 2
+        Me.tknPlan.Properties.Separators.AddRange(New String() {","})
         '
-        'lstProfileConnectedTo
+        'tknProfile
         '
-        resources.ApplyResources(Me.lstProfileConnectedTo, "lstProfileConnectedTo")
-        Me.lstProfileConnectedTo.FormattingEnabled = True
-        Me.lstProfileConnectedTo.MultiColumn = True
-        Me.lstProfileConnectedTo.Name = "lstProfileConnectedTo"
+        resources.ApplyResources(Me.tknProfile, "tknProfile")
+        Me.tknProfile.Name = "tknProfile"
+        Me.tknProfile.Properties.AutoHeightMode = DevExpress.XtraEditors.TokenEditAutoHeightMode.Expand
+        Me.tknProfile.Properties.MaxExpandLines = 2
+        Me.tknProfile.Properties.Separators.AddRange(New String() {","})
         '
-        'tabConnectedTo
+        'pnlNextStations
         '
-        resources.ApplyResources(Me.tabConnectedTo, "tabConnectedTo")
-        Me.tabConnectedTo.Controls.Add(Me.TabPage1)
-        Me.tabConnectedTo.Controls.Add(Me.TabPage2)
-        Me.tabConnectedTo.Name = "tabConnectedTo"
-        Me.tabConnectedTo.SelectedIndex = 0
+        Me.pnlNextStations.Controls.Add(Me.tknProfile)
+        Me.pnlNextStations.Controls.Add(Me.tknPlan)
+        Me.pnlNextStations.Controls.Add(Me.lblConnectedTo)
+        resources.ApplyResources(Me.pnlNextStations, "pnlNextStations")
+        Me.pnlNextStations.Name = "pnlNextStations"
         '
-        'TabPage1
+        'pnlScale
         '
-        Me.TabPage1.Controls.Add(Me.lstPlanConnectedTo)
-        resources.ApplyResources(Me.TabPage1, "TabPage1")
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.UseVisualStyleBackColor = True
+        Me.pnlScale.Controls.Add(Me.txtScaleSize)
+        Me.pnlScale.Controls.Add(Me.lblScaleUM)
+        Me.pnlScale.Controls.Add(Me.lblScaleSize)
+        resources.ApplyResources(Me.pnlScale, "pnlScale")
+        Me.pnlScale.Name = "pnlScale"
         '
-        'TabPage2
+        'txtScaleSize
         '
-        Me.TabPage2.Controls.Add(Me.lstProfileConnectedTo)
-        resources.ApplyResources(Me.TabPage2, "TabPage2")
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.UseVisualStyleBackColor = True
+        resources.ApplyResources(Me.txtScaleSize, "txtScaleSize")
+        Me.txtScaleSize.Name = "txtScaleSize"
+        Me.txtScaleSize.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtScaleSize.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtScaleSize.Properties.DisplayFormat.FormatString = "N2"
+        Me.txtScaleSize.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtScaleSize.Properties.EditFormat.FormatString = "N2"
+        Me.txtScaleSize.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtScaleSize.Properties.Mask.EditMask = resources.GetString("txtScaleSize.Properties.Mask.EditMask")
         '
         'frmResurveyProperties
         '
@@ -187,54 +192,57 @@ Partial Class frmResurveyProperties
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
+        Me.Controls.Add(Me.pnlScale)
         Me.Controls.Add(Me.cmdApply)
         Me.Controls.Add(Me.cmdOk)
         Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.cmdNext)
         Me.Controls.Add(Me.cmdPrev)
-        Me.Controls.Add(Me.lblScaleSize)
-        Me.Controls.Add(Me.lblScaleUM)
-        Me.Controls.Add(Me.txtScaleSize)
         Me.Controls.Add(Me.lblProfilePosition)
-        Me.Controls.Add(Me.lblConnectedTo)
         Me.Controls.Add(Me.txtProfilePosition)
         Me.Controls.Add(Me.lblPlanPosition)
         Me.Controls.Add(Me.txtName)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtPlanPosition)
         Me.Controls.Add(Me.lblPosition)
-        Me.Controls.Add(Me.tabConnectedTo)
+        Me.Controls.Add(Me.pnlNextStations)
+        Me.IconOptions.Icon = CType(resources.GetObject("frmResurveyProperties.IconOptions.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmResurveyProperties"
-        CType(Me.txtScaleSize, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.tabConnectedTo.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
-        Me.TabPage2.ResumeLayout(False)
+        CType(Me.txtPlanPosition.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtProfilePosition.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tknPlan.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tknProfile.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlNextStations.ResumeLayout(False)
+        Me.pnlNextStations.PerformLayout()
+        Me.pnlScale.ResumeLayout(False)
+        Me.pnlScale.PerformLayout()
+        CType(Me.txtScaleSize.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents txtPlanPosition As System.Windows.Forms.TextBox
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents txtPlanPosition As DevExpress.XtraEditors.TextEdit
     Friend WithEvents lblPosition As System.Windows.Forms.Label
-    Friend WithEvents txtName As System.Windows.Forms.TextBox
+    Friend WithEvents txtName As DevExpress.XtraEditors.TextEdit
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents txtProfilePosition As System.Windows.Forms.TextBox
+    Friend WithEvents txtProfilePosition As DevExpress.XtraEditors.TextEdit
     Friend WithEvents lblPlanPosition As System.Windows.Forms.Label
     Friend WithEvents lblConnectedTo As System.Windows.Forms.Label
     Friend WithEvents lblProfilePosition As System.Windows.Forms.Label
     Friend WithEvents lblScaleUM As System.Windows.Forms.Label
-    Friend WithEvents txtScaleSize As cNumericUpDown
     Friend WithEvents lblScaleSize As System.Windows.Forms.Label
-    Friend WithEvents cmdApply As System.Windows.Forms.Button
+    Friend WithEvents cmdApply As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents tpDefault As System.Windows.Forms.ToolTip
-    Friend WithEvents lstPlanConnectedTo As System.Windows.Forms.CheckedListBox
-    Friend WithEvents cmdNext As System.Windows.Forms.Button
-    Friend WithEvents cmdPrev As System.Windows.Forms.Button
-    Friend WithEvents lstProfileConnectedTo As System.Windows.Forms.CheckedListBox
-    Friend WithEvents tabConnectedTo As TabControl
-    Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents TabPage2 As TabPage
+    Friend WithEvents cmdNext As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdPrev As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents tknPlan As DevExpress.XtraEditors.TokenEdit
+    Friend WithEvents tknProfile As DevExpress.XtraEditors.TokenEdit
+    Friend WithEvents pnlNextStations As Panel
+    Friend WithEvents pnlScale As Panel
+    Friend WithEvents txtScaleSize As DevExpress.XtraEditors.SpinEdit
 End Class

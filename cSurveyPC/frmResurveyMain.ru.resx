@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
+  <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,67 +59,67 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="metadata">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" />
-							</xsd:sequence>
-							<xsd:attribute name="name" use="required" type="xsd:string" />
-							<xsd:attribute name="type" type="xsd:string" />
-							<xsd:attribute name="mimetype" type="xsd:string" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="assembly">
-						<xsd:complexType>
-							<xsd:attribute name="alias" type="xsd:string" />
-							<xsd:attribute name="name" type="xsd:string" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-	<data name="mnuPreviewAdd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="mnuPreviewAdd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
         JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACHElEQVQ4T6WTPWiTYRSFbys6ZPBvkLh0
         KDgJQsjiXk3tj2gqghE7CaK7xAoOQsWoSUOSpk3SFKRVUBKLi9UhpbW1xSaixtB2ECwddHBy6KDb8Zx8
@@ -132,33 +132,33 @@
         2XIAlKvjluX64oYbz1oR0b3T8HTdXQ3lqsl8LsGfN2flaQRIbb7bVhBdKwZzhPG7KpSrpl7N3CbD3wCp
         /egZu9TJM9Eh6aQVylVTjzNVs9QMILkYRxj65zWGauptCYD9BunhL1NfXGUmAAAAAElFTkSuQmCC
 </value>
-	</data>
-	<data name="mnuPreviewAdd.Size" type="System.Drawing.Size, System.Drawing">
-		<value>200, 22</value>
-	</data>
-	<data name="mnuPreviewAdd.Text" xml:space="preserve">
+  </data>
+  <data name="mnuPreviewAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="mnuPreviewAdd.Text" xml:space="preserve">
     <value>Добавить пикет/метку...</value>
   </data>
-	<data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-		<value>197, 6</value>
-	</data>
-	<data name="mnuPreviewRemove.Size" type="System.Drawing.Size, System.Drawing">
-		<value>200, 22</value>
-	</data>
-	<data name="mnuPreviewRemove.Text" xml:space="preserve">
+  <data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 6</value>
+  </data>
+  <data name="mnuPreviewRemove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="mnuPreviewRemove.Text" xml:space="preserve">
     <value>Удалить метку</value>
   </data>
-	<data name="mnuPreviewRemoveAll.Size" type="System.Drawing.Size, System.Drawing">
-		<value>200, 22</value>
-	</data>
-	<data name="mnuPreviewRemoveAll.Text" xml:space="preserve">
+  <data name="mnuPreviewRemoveAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="mnuPreviewRemoveAll.Text" xml:space="preserve">
     <value>Удалить все метки</value>
   </data>
-	<data name="ToolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-		<value>197, 6</value>
-	</data>
-	<data name="mnuPreviewDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="ToolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 6</value>
+  </data>
+  <data name="mnuPreviewDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
         JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABFElEQVQ4T52QMWsCQRCF7w8JEgsbC9MI
         EkSEWFhYWKQIiJDGRkhhEwtB0miljYWFjZDOlPpXRBARQS+aEBh9c+6wezda+ODBzns73x3rEZFnNE/H
@@ -167,39 +167,39 @@
         X/JizFpmIAJAcPyo0+H1WYwZ+a3OAfw13+i3VmLjjOz8ETwYP6zWC8Bc+n+vsq1lI7W3ARBfUpaNIn0Y
         APEvB0dVTi+A+03eCfYl8BaazUUuAAAAAElFTkSuQmCC
 </value>
-	</data>
-	<data name="mnuPreviewDelete.Size" type="System.Drawing.Size, System.Drawing">
-		<value>200, 22</value>
-	</data>
-	<data name="mnuPreviewDelete.Text" xml:space="preserve">
+  </data>
+  <data name="mnuPreviewDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="mnuPreviewDelete.Text" xml:space="preserve">
     <value>Удалить пикет</value>
   </data>
-	<data name="mnuPreviewDeleteAll.Size" type="System.Drawing.Size, System.Drawing">
-		<value>200, 22</value>
-	</data>
-	<data name="mnuPreviewDeleteAll.Text" xml:space="preserve">
+  <data name="mnuPreviewDeleteAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="mnuPreviewDeleteAll.Text" xml:space="preserve">
     <value>Удалить все пикеты</value>
   </data>
-	<data name="ToolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
-		<value>197, 6</value>
-	</data>
-	<data name="mnuPreviewDeleteLink.Size" type="System.Drawing.Size, System.Drawing">
-		<value>200, 22</value>
-	</data>
-	<data name="mnuPreviewDeleteLink.Text" xml:space="preserve">
+  <data name="ToolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 6</value>
+  </data>
+  <data name="mnuPreviewDeleteLink.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="mnuPreviewDeleteLink.Text" xml:space="preserve">
     <value>Удалить ссылку</value>
   </data>
-	<data name="ToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-		<value>197, 6</value>
-	</data>
-	<data name="mnuPreviewSetOrigin.Size" type="System.Drawing.Size, System.Drawing">
-		<value>200, 22</value>
-	</data>
-	<data name="mnuPreviewSetOrigin.Text" xml:space="preserve">
+  <data name="ToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 6</value>
+  </data>
+  <data name="mnuPreviewSetOrigin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="mnuPreviewSetOrigin.Text" xml:space="preserve">
     <value>Установить как точку отсчета</value>
   </data>
-	<data name="mnuPreviewProperties.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="mnuPreviewProperties.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
         JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACTUlEQVQ4T42T2U8TURTG++YfwpuvvmhE
         jfpoolET3332HzARsdFKAm4VLUoUG+p0o52ZDhMQMdoG3Ait2gVLiCnFtna6YCldpwuf907bmTTB6C/5
@@ -213,81 +213,81 @@
         uwphfpEaaNCLtB8+wxF8t1wgBpfwfvQUQo4hZZ0X5/oNLAzjoxdKuYFkHBfHwy0u4NWjK3inP4o31w9D
         GLsMfsGnFFsYq69bqjJA1Pmm/ye6v4tO9wc1pcWlTGCZAwAAAABJRU5ErkJggg==
 </value>
-	</data>
-	<data name="mnuPreviewProperties.Size" type="System.Drawing.Size, System.Drawing">
-		<value>200, 22</value>
-	</data>
-	<data name="mnuPreviewProperties.Text" xml:space="preserve">
+  </data>
+  <data name="mnuPreviewProperties.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="mnuPreviewProperties.Text" xml:space="preserve">
     <value>Свойства...</value>
   </data>
-	<data name="ToolStripMenuItem4.Size" type="System.Drawing.Size, System.Drawing">
-		<value>197, 6</value>
-	</data>
-	<data name="mnuPreviewHide.Size" type="System.Drawing.Size, System.Drawing">
-		<value>218, 22</value>
-	</data>
-	<data name="mnuPreviewHide.Text" xml:space="preserve">
+  <data name="ToolStripMenuItem4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 6</value>
+  </data>
+  <data name="mnuPreviewHide.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
+  </data>
+  <data name="mnuPreviewHide.Text" xml:space="preserve">
     <value>Скрыть пикет</value>
   </data>
-	<data name="mnuPreviewShowOnlySelected.Size" type="System.Drawing.Size, System.Drawing">
-		<value>218, 22</value>
-	</data>
-	<data name="mnuPreviewShowOnlySelected.Text" xml:space="preserve">
+  <data name="mnuPreviewShowOnlySelected.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
+  </data>
+  <data name="mnuPreviewShowOnlySelected.Text" xml:space="preserve">
     <value>Скрыть все, кроме текущго пикета</value>
   </data>
-	<data name="mnuPreviewHideAll.Size" type="System.Drawing.Size, System.Drawing">
-		<value>218, 22</value>
-	</data>
-	<data name="mnuPreviewHideAll.Text" xml:space="preserve">
+  <data name="mnuPreviewHideAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
+  </data>
+  <data name="mnuPreviewHideAll.Text" xml:space="preserve">
     <value>Скрыть все пикеты</value>
   </data>
-	<data name="ToolStripMenuItem7.Size" type="System.Drawing.Size, System.Drawing">
-		<value>215, 6</value>
-	</data>
-	<data name="mnuPreviewShowHidden.Size" type="System.Drawing.Size, System.Drawing">
-		<value>218, 22</value>
-	</data>
-	<data name="mnuPreviewShowHidden.Text" xml:space="preserve">
+  <data name="ToolStripMenuItem7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 6</value>
+  </data>
+  <data name="mnuPreviewShowHidden.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
+  </data>
+  <data name="mnuPreviewShowHidden.Text" xml:space="preserve">
     <value>Показать скрытые пикеты</value>
   </data>
-	<data name="mnuPreviewShowHide.Size" type="System.Drawing.Size, System.Drawing">
-		<value>200, 22</value>
-	</data>
-	<data name="mnuPreviewShowHide.Text" xml:space="preserve">
+  <data name="mnuPreviewShowHide.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="mnuPreviewShowHide.Text" xml:space="preserve">
     <value>Показать/Скрыть пикет</value>
   </data>
-	<data name="mnuPreview.Size" type="System.Drawing.Size, System.Drawing">
-		<value>201, 232</value>
-	</data>
-	<data name="colStation.HeaderText" xml:space="preserve">
+  <data name="mnuPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 232</value>
+  </data>
+  <data name="colStation.HeaderText" xml:space="preserve">
     <value>Пикет</value>
   </data>
-	<data name="colPlanLocation.HeaderText" xml:space="preserve">
+  <data name="colPlanLocation.HeaderText" xml:space="preserve">
     <value>План</value>
   </data>
-	<data name="colProfileLocation.HeaderText" xml:space="preserve">
+  <data name="colProfileLocation.HeaderText" xml:space="preserve">
     <value>Разрез</value>
   </data>
-	<data name="colPlanNext.HeaderText" xml:space="preserve">
+  <data name="colPlanNext.HeaderText" xml:space="preserve">
     <value>Далее (план)</value>
   </data>
-	<data name="colProfileNext.HeaderText" xml:space="preserve">
+  <data name="colProfileNext.HeaderText" xml:space="preserve">
     <value>Далее (разрез)</value>
   </data>
-	<data name="colTipo.HeaderText" xml:space="preserve">
+  <data name="colTipo.HeaderText" xml:space="preserve">
     <value>Тип</value>
   </data>
-	<data name="mnuGridStationRemove.Size" type="System.Drawing.Size, System.Drawing">
-		<value>163, 22</value>
-	</data>
-	<data name="mnuGridStationRemove.Text" xml:space="preserve">
+  <data name="mnuGridStationRemove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 22</value>
+  </data>
+  <data name="mnuGridStationRemove.Text" xml:space="preserve">
     <value>Удалить метку</value>
   </data>
-	<data name="ToolStripMenuItem6.Size" type="System.Drawing.Size, System.Drawing">
-		<value>160, 6</value>
-	</data>
-	<data name="mnuGridStationDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="ToolStripMenuItem6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 6</value>
+  </data>
+  <data name="mnuGridStationDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
         JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABFElEQVQ4T52QMWsCQRCF7w8JEgsbC9MI
         EkSEWFhYWKQIiJDGRkhhEwtB0miljYWFjZDOlPpXRBARQS+aEBh9c+6wezda+ODBzns73x3rEZFnNE/H
@@ -296,24 +296,24 @@
         X/JizFpmIAJAcPyo0+H1WYwZ+a3OAfw13+i3VmLjjOz8ETwYP6zWC8Bc+n+vsq1lI7W3ARBfUpaNIn0Y
         APEvB0dVTi+A+03eCfYl8BaazUUuAAAAAElFTkSuQmCC
 </value>
-	</data>
-	<data name="mnuGridStationDelete.Size" type="System.Drawing.Size, System.Drawing">
-		<value>163, 22</value>
-	</data>
-	<data name="mnuGridStationDelete.Text" xml:space="preserve">
+  </data>
+  <data name="mnuGridStationDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 22</value>
+  </data>
+  <data name="mnuGridStationDelete.Text" xml:space="preserve">
     <value>Удалить пикет</value>
   </data>
-	<data name="ToolStripMenuItem8.Size" type="System.Drawing.Size, System.Drawing">
-		<value>160, 6</value>
-	</data>
-	<data name="mnuGridStationSetOrigin.Size" type="System.Drawing.Size, System.Drawing">
-		<value>163, 22</value>
-	</data>
-	<data name="mnuGridStationSetOrigin.Text" xml:space="preserve">
+  <data name="ToolStripMenuItem8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 6</value>
+  </data>
+  <data name="mnuGridStationSetOrigin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 22</value>
+  </data>
+  <data name="mnuGridStationSetOrigin.Text" xml:space="preserve">
     <value>Установить как точку отсчета</value>
   </data>
-	<data name="mnuGridStationProperties.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="mnuGridStationProperties.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
         JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACTUlEQVQ4T42T2U8TURTG++YfwpuvvmhE
         jfpoolET3332HzARsdFKAm4VLUoUG+p0o52ZDhMQMdoG3Ait2gVLiCnFtna6YCldpwuf907bmTTB6C/5
@@ -327,45 +327,30 @@
         uwphfpEaaNCLtB8+wxF8t1wgBpfwfvQUQo4hZZ0X5/oNLAzjoxdKuYFkHBfHwy0u4NWjK3inP4o31w9D
         GLsMfsGnFFsYq69bqjJA1Pmm/ye6v4tO9wc1pcWlTGCZAwAAAABJRU5ErkJggg==
 </value>
-	</data>
-	<data name="mnuGridStationProperties.Size" type="System.Drawing.Size, System.Drawing">
-		<value>163, 22</value>
-	</data>
-	<data name="mnuGridStationProperties.Text" xml:space="preserve">
+  </data>
+  <data name="mnuGridStationProperties.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 22</value>
+  </data>
+  <data name="mnuGridStationProperties.Text" xml:space="preserve">
     <value>Свойства...</value>
   </data>
-	<data name="mnuGridStation.Size" type="System.Drawing.Size, System.Drawing">
-		<value>164, 104</value>
-	</data>
-	<data name="colPlotFrom.HeaderText" xml:space="preserve">
-    <value>От</value>
+  <data name="mnuGridStation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 104</value>
   </data>
-	<data name="colPlotTo.HeaderText" xml:space="preserve">
-    <value>До</value>
-  </data>
-	<data name="colPlotDistance.HeaderText" xml:space="preserve">
-    <value>Длинна</value>
-  </data>
-	<data name="colPlotBearing.HeaderText" xml:space="preserve">
-    <value>Азимут</value>
-  </data>
-	<data name="colPlotInclination.HeaderText" xml:space="preserve">
-    <value>Угол</value>
-  </data>
-	<data name="Sinistra.HeaderText" xml:space="preserve">
+  <data name="Sinistra.HeaderText" xml:space="preserve">
     <value>Лево</value>
   </data>
-	<data name="Destra.HeaderText" xml:space="preserve">
+  <data name="Destra.HeaderText" xml:space="preserve">
     <value>Право</value>
   </data>
-	<data name="Alto.HeaderText" xml:space="preserve">
+  <data name="Alto.HeaderText" xml:space="preserve">
     <value>Верх</value>
   </data>
-	<data name="Basso.HeaderText" xml:space="preserve">
+  <data name="Basso.HeaderText" xml:space="preserve">
     <value>Низ</value>
   </data>
-	<data name="btnStations.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="btnStations.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
@@ -378,15 +363,12 @@
         kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
         TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
-	</data>
-	<data name="btnStations.Size" type="System.Drawing.Size, System.Drawing">
-		<value>114, 22</value>
-	</data>
-	<data name="btnStations.Text" xml:space="preserve">
-    <value>Пикеты/Метки</value>
   </data>
-	<data name="btnPlot.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="btnStations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 22</value>
+  </data>
+  <data name="btnPlot.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
@@ -399,15 +381,12 @@
         kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
         TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
-	</data>
-	<data name="btnPlot.Size" type="System.Drawing.Size, System.Drawing">
-		<value>29, 22</value>
-	</data>
-	<data name="btnPlot.Text" xml:space="preserve">
-    <value>Нитка</value>
   </data>
-	<data name="mnuTabsLoadImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="btnPlot.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 22</value>
+  </data>
+  <data name="mnuTabsLoadImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
         JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACuElEQVQ4T32T20tUQRjAz/9Q9OJThURU
         EFhErestsyjTfOmtsKCHQKgoilxJ1wti4n29tEIpVqIZaWlpaitlhYqul9bLrutiqGQKFV7X269vVjcs
@@ -423,18 +402,18 @@
         ZAsjUmabnHm/Qs59QOiXINVX713yPUrdA2+w+jHU3VbX8/S95y3nUl4TKSuoVSKTVH+d9XGdJzgi7mmD
         ZLzls1v4a1tbo+38DTVfu85TLyzVAAAAAElFTkSuQmCC
 </value>
-	</data>
-	<data name="mnuTabsLoadImage.Size" type="System.Drawing.Size, System.Drawing">
-		<value>140, 22</value>
-	</data>
-	<data name="mnuTabsLoadImage.Text" xml:space="preserve">
+  </data>
+  <data name="mnuTabsLoadImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 22</value>
+  </data>
+  <data name="mnuTabsLoadImage.Text" xml:space="preserve">
     <value>Загрузить изображение...</value>
   </data>
-	<data name="mnuTabs.Size" type="System.Drawing.Size, System.Drawing">
-		<value>141, 26</value>
-	</data>
-	<data name="btnNew.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="mnuTabs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 26</value>
+  </data>
+  <data name="btnNew.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEgSURBVDhPlZPRboIwFIZ5lz3C3njMcSEFFl9g1/Mdpg6c
         0CpsSogzkrP+p4WNuEr8ki+19pzf0wgeeJ7NKpEkFEYRTQcKXkUcU5Qkkov/AwVjFEVBoRBPtmUIfhm8
@@ -443,12 +422,12 @@
         +1GBM+BQ16MCZ0DTNKMCZ8DxeNJ+X/HEdZcB9kFq25ba89mtPgcXfyNepFtAvW01PPj+C54uJGM8p/oc
         dai3rT132vsbRL3G834AeqauK0rjGRUAAAAASUVORK5CYII=
 </value>
-	</data>
-	<data name="btnNew.Text" xml:space="preserve">
+  </data>
+  <data name="btnNew.Caption" xml:space="preserve">
     <value>Новый</value>
   </data>
-	<data name="btnLoad.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="btnLoad.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIMSURBVDhPxdLfS1NhGAfw8xf4rzQonWVtNkddRXddldVF
         pU6xUivIIGTe1FLb3CjWLuzCiyTowgvNsu6M2s6Op/2erYE0rEHo1uZ2tvXt+54zWgQSQdALH/ZyxvM8
@@ -461,12 +440,12 @@
         85J+C+pDO4dh5R0v8Db8wI6bPHurzGNz6QL8l01n9QQhj70gTqHMdvOlWSDrrHsKe/g707XN0DY9AZeJ
         xKv6G/voXyxJ+gHvoxswNGb61QAAAABJRU5ErkJggg==
 </value>
-	</data>
-	<data name="btnLoad.Text" xml:space="preserve">
+  </data>
+  <data name="btnLoad.Caption" xml:space="preserve">
     <value>Загрузить...</value>
   </data>
-	<data name="btnSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="btnSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKDSURBVDhPjZJdSFNhGMfPRUTRRVArFLr3pugi6KKrBgmi
         3YQXUXcGQVBBXtmWfdhFFkUXJSWa7sOooIgwdDfehCFoqX04N6XkuDW36eZ2tnnOzsf273meRngh1Av/
@@ -481,12 +460,12 @@
         YC2nw9JNYZhlh13FdenpEy74Trd73+PbbASTM1Gcv3CxVTl2pnVmdgHjU2F8nJqj3rwwzIpDrkKrnnJk
         i+yoZateLUr9b21P8Yu5uR0IAAAAAElFTkSuQmCC
 </value>
-	</data>
-	<data name="btnSave.Text" xml:space="preserve">
-    <value>Сохранить...</value>
   </data>
-	<data name="btnOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="btnSave.Caption" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="btnOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMGSURBVDhPdZNbSJNhGMd3Fd1YUZB5FSkJKWoU3nhZEYRB
         YFYGHaCrhNA8zqVuc56aM80OOtpyedi+zZ3UOd3UMTXJ5tQ2p5FObc5wzsOcJt0E/vveOTOLfvDw8b3/
@@ -503,12 +482,12 @@
         48M17RJi6uz75CARoblSY/RrG64oPXhgWMMZ2glmDEYYk+qLFPQjosKMEyw5Geef8i7hYXmUKVzQh9OV
         /SBOcD0A+TV3RxQY53/YHTldjIhfAwHxtYI9SBIAAAAASUVORK5CYII=
 </value>
-	</data>
-	<data name="btnOptions.Text" xml:space="preserve">
+  </data>
+  <data name="btnOptions.Caption" xml:space="preserve">
     <value>Опции...</value>
   </data>
-	<data name="btnLoadImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="btnLoadImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKXSURBVDhPjZLtS9NRFMf3PxS98ZWGRFggWETN+dwDZZpv
         eldY0AtBsCiKnDTnFCnxeT7ki1JMRBPS0tLUJmWGhm7T5sPmHIZKplDh43z6dH5zxkpfdODDPefee773
@@ -523,15 +502,15 @@
         qw0kve4w+vog9A1B6OoOkdsSy7iPwC47m2liQtpskzcfVpB3HxGGJUnxlXmXrCco/2AvO/+goetS1mvi
         5QTllHiD4m+zHbd4kuPSatq8KbvsoPDXtfZG5f8bIRmBlsN4L5MAAAAASUVORK5CYII=
 </value>
-	</data>
-	<data name="btnLoadImage.Size" type="System.Drawing.Size, System.Drawing">
-		<value>93, 22</value>
-	</data>
-	<data name="btnLoadImage.Text" xml:space="preserve">
+  </data>
+  <data name="btnLoadImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 22</value>
+  </data>
+  <data name="btnLoadImage.Caption" xml:space="preserve">
     <value>Загрузить изображение...</value>
   </data>
-	<data name="btnPlan.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="btnPlan.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
@@ -544,15 +523,12 @@
         kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
         TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
-	</data>
-	<data name="btnPlan.Size" type="System.Drawing.Size, System.Drawing">
-		<value>31, 22</value>
-	</data>
-	<data name="btnPlan.Text" xml:space="preserve">
-    <value>План</value>
   </data>
-	<data name="btnProfile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="btnPlan.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 22</value>
+  </data>
+  <data name="btnProfile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
@@ -565,15 +541,15 @@
         kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
         TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
-	</data>
-	<data name="btnProfile.Size" type="System.Drawing.Size, System.Drawing">
-		<value>41, 22</value>
-	</data>
-	<data name="btnProfile.Text" xml:space="preserve">
+  </data>
+  <data name="btnProfile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 22</value>
+  </data>
+  <data name="btnProfile.Caption" xml:space="preserve">
     <value>Разрез</value>
   </data>
-	<data name="btnBoth.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="btnBoth.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
@@ -586,18 +562,18 @@
         kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
         TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
-	</data>
-	<data name="btnBoth.Size" type="System.Drawing.Size, System.Drawing">
-		<value>33, 22</value>
-	</data>
-	<data name="btnBoth.Text" xml:space="preserve">
+  </data>
+  <data name="btnBoth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 22</value>
+  </data>
+  <data name="btnBoth.Caption" xml:space="preserve">
     <value>Оба</value>
   </data>
-	<data name="btnZoomFit.Text" xml:space="preserve">
+  <data name="btnZoomFit.Text" xml:space="preserve">
     <value>Вместить</value>
   </data>
-	<data name="btnCalculate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="btnCalculate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIVSURBVDhPlZE/b9NQFMXfNwGVlY3PwsSCiqhoEwrMhSYw
         0bRpVYZstpukIQywItgQIwMCpJa2KGkT2bGd2o7/pC5OnRzuffVACqjiSUc+vu/8bm6uBZ/Gdn3QqGlo
@@ -610,15 +586,15 @@
         MZ/LI4lD3NR0qZPQwyndTU3AG51MgNHoDOPxRCpNx/I54ff0DEgTqXSUyOzUV6hUKh+4wF1ZvOGLXqOR
         WTw6ZxVF6WS4PNdIN/5T14UQ4hf26qh5syVyPAAAAABJRU5ErkJggg==
 </value>
-	</data>
-	<data name="btnCalculate.Size" type="System.Drawing.Size, System.Drawing">
-		<value>71, 22</value>
-	</data>
-	<data name="btnCalculate.Text" xml:space="preserve">
+  </data>
+  <data name="btnCalculate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 22</value>
+  </data>
+  <data name="btnCalculate.Caption" xml:space="preserve">
     <value>Вычислить</value>
   </data>
-	<data name="btnExport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="btnExport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHaSURBVDhPlZNNTxNRFIbPf2Fn4gZiYOEO4heJLPgP/gE2
         GpNqjIkf8As0amItXTDTGakYP2KUyKrd4AJDCEhLB5kPoJQO7bTp5PWc2+mUURr1Sd7cOffe951zM3Pp
@@ -630,12 +606,12 @@
         hJ1OX1z3GL7NHbwnPN8kvNjiDj4RLj9kM9EIyUX6F8busnGZcO8r4UrPLLxMp7/I36VuIB8nKbmNJvKL
         H/D53SrG2Xht9pQ5YoglE/+jCKJfx9Ckq1hGhPIAAAAASUVORK5CYII=
 </value>
-	</data>
-	<data name="btnExport.Text" xml:space="preserve">
+  </data>
+  <data name="btnExport.Caption" xml:space="preserve">
     <value>Экспорт данных...</value>
   </data>
-	<data name="btnConfirm.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="btnConfirm.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
@@ -648,15 +624,15 @@
         kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
         TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
-	</data>
-	<data name="btnConfirm.Size" type="System.Drawing.Size, System.Drawing">
-		<value>46, 22</value>
-	</data>
-	<data name="btnConfirm.Text" xml:space="preserve">
+  </data>
+  <data name="btnConfirm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 22</value>
+  </data>
+  <data name="btnConfirm.Caption" xml:space="preserve">
     <value>Применить</value>
   </data>
-	<data name="btnClose.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="btnClose.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
@@ -669,15 +645,15 @@
         kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
         TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
-	</data>
-	<data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
-		<value>37, 22</value>
-	</data>
-	<data name="btnClose.Text" xml:space="preserve">
+  </data>
+  <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 22</value>
+  </data>
+  <data name="btnClose.Caption" xml:space="preserve">
     <value>Закрыть</value>
   </data>
-	<data name="imlPopup.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-		<value>
+  <data name="imlPopup.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABe
@@ -727,9 +703,9 @@
         AgAB8AEPAYABAQHAAQMCAAHwAQ8BgAEBAYABAQIAAfgBHwGAAQEBgAEBAgAB/AE/AYABAQKBAgAB/AE/
         AYABAQLDAgAC/wGAAQEC5wIACw==
 </value>
-	</data>
-	<data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         AAABAAIAMDAAAAEACACoDgAAJgAAABAQAAABAAgAaAUAAM4OAAAoAAAAMAAAAGAAAAABAAgAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB6LQAAezAAAH0xAAB+NABbUEoAQFlrAEZkeQBedH8AcnBuAHdz
         bQB1d2wAcHh8AIh7bwAAgTIAAIUzAACANQAAhjQAAI01AACBOQANlVgAEp1eABafYQA3nG0Ae4ByAAcb
@@ -818,17 +794,80 @@
         ODg4OTk5PUEAAP//AAD8fwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAQAAAAAAAAAAAAAAAQAAAAMAAAAD
         AAAAAwAAAAMAAAADAAA=
 </value>
-	</data>
-	<data name="btnZoomToFit2.Text" xml:space="preserve">
-    <value>1:1</value>
   </data>
-	<data name="btnZoomToFit1.Text" xml:space="preserve">
-    <value>Приблизить</value>
-  </data>
-	<data name="btnZoomOut.Text" xml:space="preserve">
+  <data name="btnZoomOut.Caption" xml:space="preserve">
     <value>Уменьшить</value>
   </data>
-	<data name="btnZoomIn.Text" xml:space="preserve">
+  <data name="btnZoomIn.Caption" xml:space="preserve">
     <value>Увеличить</value>
+  </data>
+  <data name="btnPlan.Caption" xml:space="preserve">
+    <value>План</value>
+  </data>
+  <data name="tabStations.Text" xml:space="preserve">
+    <value>Пикеты/Метки</value>
+  </data>
+  <data name="colShotsTo.Caption" xml:space="preserve">
+    <value>До</value>
+  </data>
+  <data name="colShotsInclination.Caption" xml:space="preserve">
+    <value>Угол</value>
+  </data>
+  <data name="colShotsFrom.Caption" xml:space="preserve">
+    <value>От</value>
+  </data>
+  <data name="colShotsDistance.Caption" xml:space="preserve">
+    <value>Длина</value>
+  </data>
+  <data name="colShotsBearing.Caption" xml:space="preserve">
+    <value>Азимут</value>
+  </data>
+  <data name="btnAdd2.Caption" xml:space="preserve">
+    <value>Добавить пикет/метку:</value>
+  </data>
+  <data name="btnSetOrigin2.Caption" xml:space="preserve">
+    <value>Установить как точку отсчета</value>
+  </data>
+  <data name="btnProperties2.Caption" xml:space="preserve">
+    <value>Свойства...</value>
+  </data>
+  <data name="docProfile.Caption" xml:space="preserve">
+    <value>Разрез</value>
+  </data>
+  <data name="colPlaceholdersProfilePoint.Caption" xml:space="preserve">
+    <value>Разрез</value>
+  </data>
+  <data name="dockProfile.Text" xml:space="preserve">
+    <value>Разрез</value>
+  </data>
+  <data name="dockPlan.Text" xml:space="preserve">
+    <value>План</value>
+  </data>
+  <data name="docPlan.Caption" xml:space="preserve">
+    <value>План</value>
+  </data>
+  <data name="colPlaceholdersPlanPoint.Caption" xml:space="preserve">
+    <value>План</value>
+  </data>
+  <data name="btnDelete2.Caption" xml:space="preserve">
+    <value>Удалить пикет</value>
+  </data>
+  <data name="btnRemove2.Caption" xml:space="preserve">
+    <value>Удалить метку</value>
+  </data>
+  <data name="btnDeleteLink.Caption" xml:space="preserve">
+    <value>Удалить ссылку</value>
+  </data>
+  <data name="btnDeleteAll2.Caption" xml:space="preserve">
+    <value>Удалить все пикеты</value>
+  </data>
+  <data name="btnRemoveAll2.Caption" xml:space="preserve">
+    <value>Удалить все метки</value>
+  </data>
+  <data name="colPlaceholdersType.Caption" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="btnSaveAs.Caption" xml:space="preserve">
+    <value>Сохранить как...</value>
   </data>
 </root>

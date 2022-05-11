@@ -126,7 +126,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cmdCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>349, 614</value>
+    <value>342, 12</value>
   </data>
   <data name="cmdCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
@@ -145,10 +145,82 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>pnlBottom</value>
   </data>
   <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;chkRestoreDeleteBackupAfterRestore.Name" xml:space="preserve">
+    <value>chkRestoreDeleteBackupAfterRestore</value>
+  </data>
+  <data name="&gt;&gt;chkRestoreDeleteBackupAfterRestore.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkRestoreDeleteBackupAfterRestore.Parent" xml:space="preserve">
+    <value>frmRestore</value>
+  </data>
+  <data name="&gt;&gt;chkRestoreDeleteBackupAfterRestore.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;Label4.Name" xml:space="preserve">
+    <value>Label4</value>
+  </data>
+  <data name="&gt;&gt;Label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label4.Parent" xml:space="preserve">
+    <value>frmRestore</value>
+  </data>
+  <data name="&gt;&gt;Label4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cboRestoreName.Name" xml:space="preserve">
+    <value>cboRestoreName</value>
+  </data>
+  <data name="&gt;&gt;cboRestoreName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboRestoreName.Parent" xml:space="preserve">
+    <value>frmRestore</value>
+  </data>
+  <data name="&gt;&gt;cboRestoreName.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;Label5.Name" xml:space="preserve">
+    <value>Label5</value>
+  </data>
+  <data name="&gt;&gt;Label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label5.Parent" xml:space="preserve">
+    <value>frmRestore</value>
+  </data>
+  <data name="&gt;&gt;Label5.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="frmRestore.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 5</value>
+  </data>
+  <data name="frmRestore.Size" type="System.Drawing.Size, System.Drawing">
+    <value>382, 86</value>
+  </data>
+  <data name="frmRestore.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="frmRestore.Text" xml:space="preserve">
+    <value>Restore:</value>
+  </data>
+  <data name="&gt;&gt;frmRestore.Name" xml:space="preserve">
+    <value>frmRestore</value>
+  </data>
+  <data name="&gt;&gt;frmRestore.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;frmRestore.Parent" xml:space="preserve">
+    <value>pnlOption3</value>
+  </data>
+  <data name="&gt;&gt;frmRestore.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="chkRestoreDeleteBackupAfterRestore.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -261,30 +333,6 @@
   <data name="&gt;&gt;Label5.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="frmRestore.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 401</value>
-  </data>
-  <data name="frmRestore.Size" type="System.Drawing.Size, System.Drawing">
-    <value>347, 86</value>
-  </data>
-  <data name="frmRestore.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="frmRestore.Text" xml:space="preserve">
-    <value>Restore:</value>
-  </data>
-  <data name="&gt;&gt;frmRestore.Name" xml:space="preserve">
-    <value>frmRestore</value>
-  </data>
-  <data name="&gt;&gt;frmRestore.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;frmRestore.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;frmRestore.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="Label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -366,11 +414,14 @@
   <data name="&gt;&gt;Label2.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="frmBackup.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="frmBackup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 544</value>
+    <value>25, 51</value>
   </data>
   <data name="frmBackup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>347, 61</value>
+    <value>382, 61</value>
   </data>
   <data name="frmBackup.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -385,40 +436,10 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;frmBackup.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>pnlOptionOther</value>
   </data>
   <data name="&gt;&gt;frmBackup.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="RadioButton4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="RadioButton4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="RadioButton4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 378</value>
-  </data>
-  <data name="RadioButton4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 17</value>
-  </data>
-  <data name="RadioButton4.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="RadioButton4.Text" xml:space="preserve">
-    <value>Restore previously saved data</value>
-  </data>
-  <data name="&gt;&gt;RadioButton4.Name" xml:space="preserve">
-    <value>RadioButton4</value>
-  </data>
-  <data name="&gt;&gt;RadioButton4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RadioButton4.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;RadioButton4.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="chkBackup.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -427,7 +448,7 @@
     <value>NoControl</value>
   </data>
   <data name="chkBackup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 521</value>
+    <value>20, 28</value>
   </data>
   <data name="chkBackup.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 17</value>
@@ -445,10 +466,10 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;chkBackup.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>pnlOptionOther</value>
   </data>
   <data name="&gt;&gt;chkBackup.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>1</value>
   </data>
   <data name="cmdOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -457,7 +478,7 @@
     <value>NoControl</value>
   </data>
   <data name="cmdOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>263, 614</value>
+    <value>256, 12</value>
   </data>
   <data name="cmdOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
@@ -475,70 +496,58 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>pnlBottom</value>
   </data>
   <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>1</value>
   </data>
-  <data name="RadioButton3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;RadioButton1b.Name" xml:space="preserve">
+    <value>RadioButton1b</value>
   </data>
-  <data name="RadioButton3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="RadioButton3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 355</value>
-  </data>
-  <data name="RadioButton3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>310, 17</value>
-  </data>
-  <data name="RadioButton3.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="RadioButton3.Text" xml:space="preserve">
-    <value>Calculates LRUD from the area defined by the edges drawn</value>
-  </data>
-  <data name="&gt;&gt;RadioButton3.Name" xml:space="preserve">
-    <value>RadioButton3</value>
-  </data>
-  <data name="&gt;&gt;RadioButton3.Type" xml:space="preserve">
+  <data name="&gt;&gt;RadioButton1b.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;RadioButton3.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;RadioButton1b.Parent" xml:space="preserve">
+    <value>frmMode1</value>
   </data>
-  <data name="&gt;&gt;RadioButton3.ZOrder" xml:space="preserve">
-    <value>8</value>
+  <data name="&gt;&gt;RadioButton1b.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="RadioButton2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;RadioButton1a.Name" xml:space="preserve">
+    <value>RadioButton1a</value>
   </data>
-  <data name="RadioButton2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="RadioButton2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 217</value>
-  </data>
-  <data name="RadioButton2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 17</value>
-  </data>
-  <data name="RadioButton2.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="RadioButton2.Text" xml:space="preserve">
-    <value>Calculates LRUD from splays</value>
-  </data>
-  <data name="&gt;&gt;RadioButton2.Name" xml:space="preserve">
-    <value>RadioButton2</value>
-  </data>
-  <data name="&gt;&gt;RadioButton2.Type" xml:space="preserve">
+  <data name="&gt;&gt;RadioButton1a.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;RadioButton2.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;RadioButton1a.Parent" xml:space="preserve">
+    <value>frmMode1</value>
   </data>
-  <data name="&gt;&gt;RadioButton2.ZOrder" xml:space="preserve">
-    <value>9</value>
+  <data name="&gt;&gt;RadioButton1a.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="frmMode1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 5</value>
+  </data>
+  <data name="frmMode1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>382, 78</value>
+  </data>
+  <data name="frmMode1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="frmMode1.Text" xml:space="preserve">
+    <value>Mode:</value>
+  </data>
+  <data name="&gt;&gt;frmMode1.Name" xml:space="preserve">
+    <value>frmMode1</value>
+  </data>
+  <data name="&gt;&gt;frmMode1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;frmMode1.Parent" xml:space="preserve">
+    <value>pnlOption0</value>
+  </data>
+  <data name="&gt;&gt;frmMode1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="RadioButton1b.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -600,62 +609,89 @@
   <data name="&gt;&gt;RadioButton1a.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="frmMode1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 124</value>
+  <data name="&gt;&gt;chkShotWithLRUD.Name" xml:space="preserve">
+    <value>chkShotWithLRUD</value>
   </data>
-  <data name="frmMode1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>347, 78</value>
+  <data name="&gt;&gt;chkShotWithLRUD.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="frmMode1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;chkShotWithLRUD.Parent" xml:space="preserve">
+    <value>Panel1</value>
   </data>
-  <data name="frmMode1.Text" xml:space="preserve">
-    <value>Mode:</value>
-  </data>
-  <data name="&gt;&gt;frmMode1.Name" xml:space="preserve">
-    <value>frmMode1</value>
-  </data>
-  <data name="&gt;&gt;frmMode1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;frmMode1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;frmMode1.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="RadioButton1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="RadioButton1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="RadioButton1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 101</value>
-  </data>
-  <data name="RadioButton1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>265, 17</value>
-  </data>
-  <data name="RadioButton1.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;chkShotWithLRUD.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="RadioButton1.Text" xml:space="preserve">
-    <value>Set LRUD using the lengths of the first four splays</value>
+  <data name="&gt;&gt;cboReplicateTo.Name" xml:space="preserve">
+    <value>cboReplicateTo</value>
   </data>
-  <data name="&gt;&gt;RadioButton1.Name" xml:space="preserve">
-    <value>RadioButton1</value>
+  <data name="&gt;&gt;cboReplicateTo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;RadioButton1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;cboReplicateTo.Parent" xml:space="preserve">
+    <value>Panel1</value>
   </data>
-  <data name="&gt;&gt;RadioButton1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;cboReplicateTo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;chkShotWithCalculatedLRUD.Name" xml:space="preserve">
+    <value>chkShotWithCalculatedLRUD</value>
+  </data>
+  <data name="&gt;&gt;chkShotWithCalculatedLRUD.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkShotWithCalculatedLRUD.Parent" xml:space="preserve">
+    <value>Panel1</value>
+  </data>
+  <data name="&gt;&gt;chkShotWithCalculatedLRUD.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;Label1.Name" xml:space="preserve">
+    <value>Label1</value>
+  </data>
+  <data name="&gt;&gt;Label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
+    <value>Panel1</value>
+  </data>
+  <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;chkShotWithoutLRUD.Name" xml:space="preserve">
+    <value>chkShotWithoutLRUD</value>
+  </data>
+  <data name="&gt;&gt;chkShotWithoutLRUD.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkShotWithoutLRUD.Parent" xml:space="preserve">
+    <value>Panel1</value>
+  </data>
+  <data name="&gt;&gt;chkShotWithoutLRUD.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="Panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="Panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="Panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>434, 90</value>
+  </data>
+  <data name="Panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;Panel1.Name" xml:space="preserve">
+    <value>Panel1</value>
+  </data>
+  <data name="&gt;&gt;Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Panel1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;RadioButton1.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="Panel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="&gt;&gt;Panel1.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="chkShotWithLRUD.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -810,26 +846,113 @@
   <data name="&gt;&gt;chkShotWithoutLRUD.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="Panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="&gt;&gt;lblSplayMode.Name" xml:space="preserve">
+    <value>lblSplayMode</value>
   </data>
-  <data name="Panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>440, 90</value>
+  <data name="&gt;&gt;lblSplayMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+  <data name="&gt;&gt;lblSplayMode.Parent" xml:space="preserve">
+    <value>frmMode2</value>
   </data>
-  <data name="&gt;&gt;Panel1.Name" xml:space="preserve">
-    <value>Panel1</value>
+  <data name="&gt;&gt;lblSplayMode.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;cboMode2Mode.Name" xml:space="preserve">
+    <value>cboMode2Mode</value>
   </data>
-  <data name="&gt;&gt;Panel1.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;cboMode2Mode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Panel1.ZOrder" xml:space="preserve">
-    <value>12</value>
+  <data name="&gt;&gt;cboMode2Mode.Parent" xml:space="preserve">
+    <value>frmMode2</value>
+  </data>
+  <data name="&gt;&gt;cboMode2Mode.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;Label26.Name" xml:space="preserve">
+    <value>Label26</value>
+  </data>
+  <data name="&gt;&gt;Label26.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label26.Parent" xml:space="preserve">
+    <value>frmMode2</value>
+  </data>
+  <data name="&gt;&gt;Label26.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtMode2V.Name" xml:space="preserve">
+    <value>txtMode2V</value>
+  </data>
+  <data name="&gt;&gt;txtMode2V.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtMode2V.Parent" xml:space="preserve">
+    <value>frmMode2</value>
+  </data>
+  <data name="&gt;&gt;txtMode2V.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;Label35.Name" xml:space="preserve">
+    <value>Label35</value>
+  </data>
+  <data name="&gt;&gt;Label35.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label35.Parent" xml:space="preserve">
+    <value>frmMode2</value>
+  </data>
+  <data name="&gt;&gt;Label35.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;txtMode2H.Name" xml:space="preserve">
+    <value>txtMode2H</value>
+  </data>
+  <data name="&gt;&gt;txtMode2H.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtMode2H.Parent" xml:space="preserve">
+    <value>frmMode2</value>
+  </data>
+  <data name="&gt;&gt;txtMode2H.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;chkMode2OnlyCutSplay.Name" xml:space="preserve">
+    <value>chkMode2OnlyCutSplay</value>
+  </data>
+  <data name="&gt;&gt;chkMode2OnlyCutSplay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkMode2OnlyCutSplay.Parent" xml:space="preserve">
+    <value>frmMode2</value>
+  </data>
+  <data name="&gt;&gt;chkMode2OnlyCutSplay.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="frmMode2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 5</value>
+  </data>
+  <data name="frmMode2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>382, 109</value>
+  </data>
+  <data name="frmMode2.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="frmMode2.Text" xml:space="preserve">
+    <value>Options:</value>
+  </data>
+  <data name="&gt;&gt;frmMode2.Name" xml:space="preserve">
+    <value>frmMode2</value>
+  </data>
+  <data name="&gt;&gt;frmMode2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;frmMode2.Parent" xml:space="preserve">
+    <value>pnlOption1</value>
+  </data>
+  <data name="&gt;&gt;frmMode2.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="lblSplayMode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1026,30 +1149,6 @@
   <data name="&gt;&gt;chkMode2OnlyCutSplay.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="frmMode2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 240</value>
-  </data>
-  <data name="frmMode2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>347, 109</value>
-  </data>
-  <data name="frmMode2.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="frmMode2.Text" xml:space="preserve">
-    <value>Options:</value>
-  </data>
-  <data name="&gt;&gt;frmMode2.Name" xml:space="preserve">
-    <value>frmMode2</value>
-  </data>
-  <data name="&gt;&gt;frmMode2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;frmMode2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;frmMode2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="chkMarkAsCalculated.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1057,7 +1156,7 @@
     <value>NoControl</value>
   </data>
   <data name="chkMarkAsCalculated.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 498</value>
+    <value>20, 5</value>
   </data>
   <data name="chkMarkAsCalculated.Size" type="System.Drawing.Size, System.Drawing">
     <value>114, 17</value>
@@ -1075,10 +1174,241 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;chkMarkAsCalculated.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>pnlOptionOther</value>
   </data>
   <data name="&gt;&gt;chkMarkAsCalculated.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="cboAction.Items" xml:space="preserve">
+    <value>Set LRUD using the lengths of the first four splays</value>
+  </data>
+  <data name="cboAction.Items1" xml:space="preserve">
+    <value>Calculates LRUD from splays</value>
+  </data>
+  <data name="cboAction.Items2" xml:space="preserve">
+    <value>Calculates LRUD from the area defined by the edges drawn</value>
+  </data>
+  <data name="cboAction.Items3" xml:space="preserve">
+    <value>Restore previously saved data</value>
+  </data>
+  <data name="cboAction.Location" type="System.Drawing.Point, System.Drawing">
+    <value>82, 5</value>
+  </data>
+  <data name="cboAction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>325, 21</value>
+  </data>
+  <data name="cboAction.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;cboAction.Name" xml:space="preserve">
+    <value>cboAction</value>
+  </data>
+  <data name="&gt;&gt;cboAction.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboAction.Parent" xml:space="preserve">
+    <value>PanelControl1</value>
+  </data>
+  <data name="&gt;&gt;cboAction.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TableLayoutPanel1.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TableLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="lblAction.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblAction.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblAction.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 8</value>
+  </data>
+  <data name="lblAction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 13</value>
+  </data>
+  <data name="lblAction.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="lblAction.Text" xml:space="preserve">
+    <value>Action:</value>
+  </data>
+  <data name="&gt;&gt;lblAction.Name" xml:space="preserve">
+    <value>lblAction</value>
+  </data>
+  <data name="&gt;&gt;lblAction.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblAction.Parent" xml:space="preserve">
+    <value>PanelControl1</value>
+  </data>
+  <data name="&gt;&gt;lblAction.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="PanelControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="PanelControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>428, 31</value>
+  </data>
+  <data name="PanelControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;PanelControl1.Name" xml:space="preserve">
+    <value>PanelControl1</value>
+  </data>
+  <data name="&gt;&gt;PanelControl1.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;PanelControl1.Parent" xml:space="preserve">
+    <value>TableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;PanelControl1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="pnlOption0.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 40</value>
+  </data>
+  <data name="pnlOption0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>428, 90</value>
+  </data>
+  <data name="pnlOption0.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;pnlOption0.Name" xml:space="preserve">
+    <value>pnlOption0</value>
+  </data>
+  <data name="&gt;&gt;pnlOption0.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlOption0.Parent" xml:space="preserve">
+    <value>TableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;pnlOption0.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pnlOption1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 136</value>
+  </data>
+  <data name="pnlOption1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>428, 122</value>
+  </data>
+  <data name="pnlOption1.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;pnlOption1.Name" xml:space="preserve">
+    <value>pnlOption1</value>
+  </data>
+  <data name="&gt;&gt;pnlOption1.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlOption1.Parent" xml:space="preserve">
+    <value>TableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;pnlOption1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="pnlOption3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 264</value>
+  </data>
+  <data name="pnlOption3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>428, 98</value>
+  </data>
+  <data name="pnlOption3.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;pnlOption3.Name" xml:space="preserve">
+    <value>pnlOption3</value>
+  </data>
+  <data name="&gt;&gt;pnlOption3.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlOption3.Parent" xml:space="preserve">
+    <value>TableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;pnlOption3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="pnlOptionOther.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 368</value>
+  </data>
+  <data name="pnlOptionOther.Size" type="System.Drawing.Size, System.Drawing">
+    <value>428, 127</value>
+  </data>
+  <data name="pnlOptionOther.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;pnlOptionOther.Name" xml:space="preserve">
+    <value>pnlOptionOther</value>
+  </data>
+  <data name="&gt;&gt;pnlOptionOther.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlOptionOther.Parent" xml:space="preserve">
+    <value>TableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;pnlOptionOther.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="TableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="TableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 90</value>
+  </data>
+  <data name="TableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="TableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>434, 336</value>
+  </data>
+  <data name="TableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;TableLayoutPanel1.Name" xml:space="preserve">
+    <value>TableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;TableLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TableLayoutPanel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;TableLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="PanelControl1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlOption0" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlOption1" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlOption3" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlOptionOther" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="pnlBottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="pnlBottom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 426</value>
+  </data>
+  <data name="pnlBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>434, 49</value>
+  </data>
+  <data name="pnlBottom.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;pnlBottom.Name" xml:space="preserve">
+    <value>pnlBottom</value>
+  </data>
+  <data name="&gt;&gt;pnlBottom.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlBottom.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlBottom.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1086,11 +1416,11 @@
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>96, 96</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>441, 651</value>
+  <data name="$this.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>434, 475</value>
   </data>
   <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>

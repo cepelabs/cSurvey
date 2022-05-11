@@ -331,23 +331,12 @@ Namespace cSurvey.Design
                 Call oCrossSection.RebindCrossSection(Me)
             End If
 
-            'If Not IsNothing(oCrossSection) AndAlso oCrossSection.Points.Count > 0 Then
-            '    Dim oFromPoint As PointD = oCrossSection.Points(0).Point
-            '    Dim oToPoint As PointD = oFromPoint
-            '    If oCrossSection.Design.Type = cIDesign.cDesignTypeEnum.Plan Then
-            '        Call oPlotData.Plan.SetPoints("", "", oFromPoint, oToPoint)
-            '    Else
-            '        Call oPlotData.Profile.SetPoints("", "", oFromPoint, oToPoint)
-            '    End If
-            '    Call oPlotData.ResetWarpingFactor()
-            'End If
-
             iCrossSection = -1
             iPlanCrossSectionMarker = -1
             iProfileCrossSectionMarker = -1
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal File As Storage.cFile, ByVal CrossSection As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal CrossSection As XmlElement)
             oSurvey = Survey
             sID = CrossSection.GetAttribute("id")
             iDesign = modXML.GetAttributeValue(CrossSection, "design", cIDesign.cDesignTypeEnum.Profile)
@@ -438,7 +427,7 @@ Namespace cSurvey.Design
             End If
         End Function
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             If Not IsNothing(oCrossSection) Then
                 Dim oXmlCrossSection As XmlElement = Document.CreateElement("crosssection")
                 Call oXmlCrossSection.SetAttribute("id", sID)

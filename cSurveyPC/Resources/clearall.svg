@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg x="0px" y="0px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" id="Clear" style="enable-background:new 0 0 32 32">
+  <style type="text/css">
+	.Red{fill:#D11C1C;}
+	.Blue{fill:#1177D7;}
+</style>
+  <path d="M16.1,23.1l-4.4,4.4c-0.7,0.7-1.9,0.7-2.6,0l-6.6-6.6c-0.7-0.7-0.7-1.9,0-2.6L6.9,14L16.1,23.1z" class="Blue" />
+  <path d="M27.5,11.8l-10,10l-9.2-9.2l10-10c0.7-0.7,1.9-0.7,2.6,0l6.6,6.6C28.2,9.9,28.2,11,27.5,11.8z" class="Red" />
+</svg>

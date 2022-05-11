@@ -55,7 +55,7 @@ Namespace cSurvey
             bAllowManualDeclinations = modXML.GetAttributeValue(GPSProperties, "amd", False)
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlGPSProperties As XmlElement = Document.CreateElement("gps")
             If bEnabled Then Call oXmlGPSProperties.SetAttribute("enabled", "1")
             If bRefPointOnOrigin Then Call oXmlGPSProperties.SetAttribute("refpointonorigin", "1")

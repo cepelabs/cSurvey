@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 32 32"
+   style="enable-background:new 0 0 32 32;"
+   xml:space="preserve"
+   sodipodi:docname="pastepen.svg"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"><metadata
+   id="metadata13"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs11" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="2560"
+   inkscape:window-height="1017"
+   id="namedview9"
+   showgrid="false"
+   inkscape:zoom="9.3912619"
+   inkscape:cx="17.410641"
+   inkscape:cy="3.2988661"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1" />
+<style
+   type="text/css"
+   id="style2">
+	.Black{fill:#737374;}
+	.Yellow{fill:#FCB01B;}
+	.Green{fill:#129C49;}
+	.Blue{fill:#387CB7;}
+	.Red{fill:#D02127;}
+	.White{fill:#FFFFFF;}
+	.st0{opacity:0.5;}
+	.st1{opacity:0.75;}
+	.st2{opacity:0.25;}
+	.st3{display:none;fill:#737374;}
+</style>
+<path
+   class="Yellow"
+   d="M12,24v4H5c-0.6,0-1-0.4-1-1V3c0-0.6,0.4-1,1-1h3v22H12z M25,2h-3v8h4V2.8C26,2.4,25.6,2,25,2z"
+   id="path4" />
+<path
+   class="Black"
+   d="M 29,12 H 15 c -0.6,0 -1,0.4 -1,1 v 16 c 0,0.6 0.4,1 1,1 h 14 c 0.6,0 1,-0.4 1,-1 V 13 c 0,-0.6 -0.4,-1 -1,-1 z M 28,28 H 16 V 14 H 28 Z M 20,2 v 3 c 0,0.6 -0.4,1 -1,1 H 11 C 10.4,6 10,5.6 10,5 V 2 h 2 V 1 c 0,-0.6 0.4,-1 1,-1 h 4 c 0.6,0 1,0.4 1,1 v 1 z"
+   id="path6"
+   sodipodi:nodetypes="sssssssssccccccssssccsssscc" />
+<g
+   id="g937"
+   transform="matrix(0.375,0,0,0.375,16.181149,15.225175)"><path
+     opacity="0.8"
+     enable-background="new    "
+     d="M 29.7,4 C 29.4,4 29.2,4.1 28.9,4.3 L 17,12 c 0.5,-0.5 1.9,0.3 3.3,1.7 1.4,1.4 2.2,2.8 1.7,3.3 L 30.7,6.1 C 30.9,5.9 31,5.6 31,5.3 31,4.6 30.4,4 29.7,4 Z"
+     id="path921" /><path
+     opacity="0.4"
+     enable-background="new    "
+     d="m 17,12 -3.1,6 1,3.1 L 22,17 C 22.5,16.5 21.7,15.1 20.3,13.7 18.9,12.3 17.5,11.5 17,12 Z"
+     id="path923" /><path
+     fill="#337cb8"
+     d="m 0,27.7 c 0,0 11.7,1.7 16.7,-3.6 4.3,-4.4 0.7,-7.7 0.7,-7.7 0,0 -3.5,-3.1 -7.2,-0.3 C 6.5,18.9 7.3,24.8 0,27.7 Z"
+     id="path925" /></g></svg>

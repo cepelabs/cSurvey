@@ -1,6 +1,6 @@
 ﻿Imports cSurveyPC.cSurvey
 
-Public Class frmTrigpointBrowser
+friend Class frmTrigpointBrowser
 
     Public Sub New(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal CurrentTrigpoint As String, Optional AllowNull As Boolean = False, Optional AllowSplay As Boolean = False, Optional ShowConnection As Boolean = False)
 

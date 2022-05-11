@@ -104,7 +104,7 @@ Partial Class frmSurfaceImportASCOptions
         'picCheckWarning
         '
         resources.ApplyResources(Me.picCheckWarning, "picCheckWarning")
-        Me.picCheckWarning.Image = Global.cSurveyPC.My.Resources.Resources._error
+        Me.picCheckWarning.Image = Global.cSurveyPC.My.Resources.Resources.error3
         Me.picCheckWarning.Name = "picCheckWarning"
         Me.picCheckWarning.TabStop = False
         '

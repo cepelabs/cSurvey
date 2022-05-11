@@ -85,7 +85,7 @@ Namespace cSurvey
             sY = Translation.GetAttribute("y")
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Name As String) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Name As String) As XmlElement
             Dim oXmlTranslation As XmlElement = Document.CreateElement(Name)
             Call oXmlTranslation.SetAttribute("x", sX)
             Call oXmlTranslation.SetAttribute("y", sY)
@@ -227,7 +227,7 @@ Namespace cSurvey
     '        sY = Translation.GetAttribute("y")
     '    End Sub
 
-    '    Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+    '    Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
     '        Dim sName As String = ""
     '        Select Case iApplyTo
     '            Case cTranslationApplyToEnum.Plan
@@ -335,7 +335,7 @@ Namespace cSurvey
             End Select
         End Sub
 
-        Friend Overridable Shadows Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Shadows Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim sName As String = ""
             Select Case iApplyTo
                 Case cTranslationApplyToEnum.Plan

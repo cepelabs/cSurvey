@@ -1,4 +1,4 @@
-﻿Public Class frmPrefixTrigPoints
+﻿friend Class frmPrefixTrigPoints
 
     Private oSurvey As cSurvey.cSurvey
 

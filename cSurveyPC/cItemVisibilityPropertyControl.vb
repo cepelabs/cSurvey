@@ -1,8 +1,6 @@
 ﻿Imports cSurveyPC.cSurvey.Design
 
 Public Class cItemVisibilityPropertyControl
-    Private oItem As cItem
-
     Public Sub New()
 
         ' This call is required by the designer.
@@ -11,20 +9,20 @@ Public Class cItemVisibilityPropertyControl
         ' Add any initialization after the InitializeComponent() call.
     End Sub
 
-    Public Overrides Sub Rebind(Item As cItem)
-        oItem = Item
+    Public Overloads Sub Rebind(Item As cItem)
+        MyBase.Rebind(Item)
 
-        chkPropVisibleInDesign.Checked = Not oItem.HiddenInDesign
-        chkPropVisibleInPreview.Checked = Not oItem.HiddenInPreview
-        chkPropVisibleInDesign.Enabled = oItem.CanBeHiddenInDesign
-        chkPropVisibleInPreview.Enabled = oItem.CanBeHiddenInPreview
+        chkPropVisibleInDesign.Checked = Not Item.HiddenInDesign
+        chkPropVisibleInPreview.Checked = Not Item.HiddenInPreview
+        chkPropVisibleInDesign.Enabled = Item.CanBeHiddenInDesign
+        chkPropVisibleInPreview.Enabled = Item.CanBeHiddenInPreview
 
-        If TypeOf oItem Is Items.cItemSegment Then
+        If TypeOf Item Is Items.cItemSegment Then
             cboPropAffinity.Enabled = False
             chkPropVisibleByProfile.Enabled = False
             chkPropVisibleByScale.Enabled = False
         Else
-            cboPropAffinity.SelectedIndex = oItem.DesignAffinity
+            cboPropAffinity.SelectedIndex = Item.DesignAffinity
             cboPropAffinity.Enabled = True
             chkPropVisibleByProfile.Enabled = True
             chkPropVisibleByScale.Enabled = True
@@ -34,7 +32,7 @@ Public Class cItemVisibilityPropertyControl
     Private Sub chkVisibleInPreview_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropVisibleInPreview.CheckedChanged
         Try
             If Not DisabledObjectProperty() Then
-                oItem.HiddenInPreview = Not chkPropVisibleInPreview.Checked
+                Item.HiddenInPreview = Not chkPropVisibleInPreview.Checked
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("HiddenInPreview")
                 Call MyBase.MapInvalidate()
@@ -46,7 +44,7 @@ Public Class cItemVisibilityPropertyControl
     Private Sub chkVisibleInDesign_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropVisibleInDesign.CheckedChanged
         Try
             If Not DisabledObjectProperty() Then
-                oItem.HiddenInDesign = Not chkPropVisibleInDesign.Checked
+                Item.HiddenInDesign = Not chkPropVisibleInDesign.Checked
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("HiddenInDesign")
                 Call MyBase.MapInvalidate()
@@ -57,7 +55,7 @@ Public Class cItemVisibilityPropertyControl
 
     Private Sub cboPropAffinity_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropAffinity.SelectedIndexChanged
         Try
-            oItem.DesignAffinity = cboPropAffinity.SelectedIndex
+            Item.DesignAffinity = cboPropAffinity.SelectedIndex
             Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("DesignAffinity")
             Call MyBase.MapInvalidate()
@@ -76,7 +74,7 @@ Public Class cItemVisibilityPropertyControl
 
     Private Sub chkPropVisibleByScale_Click(sender As Object, e As EventArgs) Handles chkPropVisibleByScale.Click
         Try
-            If pScaleRulestemScaleVisibilityEdit(oItem) Then
+            If pScaleRulestemScaleVisibilityEdit(Item) Then
                 Call MyBase.MapInvalidate()
             End If
         Catch

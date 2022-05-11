@@ -21,18 +21,8 @@ Namespace cSurvey.Design.Items
         Private iTextVerticalAlignment As cIItemVerticalLineableText.TextVerticalAlignmentEnum
         Private iTextAlignment As cIItemLineableText.TextAlignmentEnum
 
-        Public Enum ItemAlignmentEnum
-            Left = 0
-            Right = 1
-        End Enum
-
-        Public Enum FlowDirectionEnum
-            Vertical = 0
-            Horizontal = 1
-        End Enum
-
-        Private iItemAlignment As ItemAlignmentEnum
-        Private iFlowDirection As FlowDirectionEnum
+        Private iItemAlignment As cIItemLegend.ItemAlignmentEnum
+        Private iFlowDirection As cIItemLegend.FlowDirectionEnum
         Private iMaxItems As Integer
 
         Private sItemWidth As Single
@@ -79,11 +69,11 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
-        Public Property ItemAlignment As ItemAlignmentEnum
+        Public Property ItemAlignment As cIItemLegend.ItemAlignmentEnum Implements cIItemLegend.ItemAlignment
             Get
                 Return iItemAlignment
             End Get
-            Set(value As ItemAlignmentEnum)
+            Set(value As cIItemLegend.ItemAlignmentEnum)
                 If iItemAlignment <> value Then
                     iItemAlignment = value
                     Call MyBase.Caches.Invalidate()
@@ -91,11 +81,11 @@ Namespace cSurvey.Design.Items
             End Set
         End Property
 
-        Public Property FlowDirection As FlowDirectionEnum
+        Public Property FlowDirection As cIItemLegend.FlowDirectionEnum Implements cIItemLegend.FlowDirection
             Get
                 Return iFlowDirection
             End Get
-            Set(value As FlowDirectionEnum)
+            Set(value As cIItemLegend.FlowDirectionEnum)
                 If iFlowDirection <> value Then
                     iFlowDirection = value
                     Call MyBase.Caches.Invalidate()
@@ -103,7 +93,7 @@ Namespace cSurvey.Design.Items
             End Set
         End Property
 
-        Public Property MaxItems As Integer
+        Public Property MaxItems As Integer Implements cIItemLegend.MaxItems
             Get
                 Return iMaxItems
             End Get
@@ -279,8 +269,8 @@ Namespace cSurvey.Design.Items
             iTextSize = cIItemSizable.SizeEnum.Default
             iTextAlignment = cIItemLineableText.TextAlignmentEnum.Left
             iTextVerticalAlignment = cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle
-            iItemAlignment = ItemAlignmentEnum.Left
-            iFlowDirection = FlowDirectionEnum.Vertical
+            iItemAlignment = cIItemLegend.ItemAlignmentEnum.Left
+            iFlowDirection = cIItemLegend.FlowDirectionEnum.Vertical
             iMaxItems = 8
             sItemWidth = 5
             sItemHeight = 0.5
@@ -325,17 +315,17 @@ Namespace cSurvey.Design.Items
             End Select
         End Function
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
-            Dim oMatrix As Matrix = New Matrix
-            If PaintOptions.DrawTranslation Then
-                Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
-                Call oMatrix.Translate(oTranslation.Width, oTranslation.Height)
-            End If
-            Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
-            Call oSVGItem.SetAttribute("name", MyBase.Name)
-            Call oMatrix.Dispose()
-            Return oSVGItem
-        End Function
+        'Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        '    Using oMatrix As Matrix = New Matrix
+        '        If PaintOptions.DrawTranslation Then
+        '            Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
+        '            Call oMatrix.Translate(oTranslation.Width, oTranslation.Height)
+        '        End If
+        '        Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
+        '        If MyBase.Name <> "" Then Call oSVGItem.SetAttribute("name", MyBase.Name)
+        '        Return oSVGItem
+        '    End Using
+        'End Function
 
         Public Overrides Sub ResizeTo(ByVal Size As SizeF)
             Call ResizeTo(Size.Width, Size.Height)
@@ -345,11 +335,11 @@ Namespace cSurvey.Design.Items
             Call ResizeBy(Size.Width, Size.Height)
         End Sub
 
-        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
-            Dim oSVG As XmlDocument = modSVG.CreateSVG
-            Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
-            Return oSVG
-        End Function
+        'Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
+        '    Dim oSVG As XmlDocument = modSVG.CreateSVG
+        '    Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
+        '    Return oSVG
+        'End Function
 
         Public Class cLegendItem
             Public Enum ItemTypeEnum
@@ -461,7 +451,7 @@ Namespace cSurvey.Design.Items
                 sScale = 1
             End Sub
 
-            Friend Sub New(ByVal Survey As cSurvey, ByVal File As Storage.cFile, ByVal item As XmlElement)
+            Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal item As XmlElement)
                 sText = modXML.GetAttributeValue(item, "text", "")
                 iType = modXML.GetAttributeValue(item, "type")
                 sScale = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "scale", 1))
@@ -469,7 +459,7 @@ Namespace cSurvey.Design.Items
                 iItemIndex = modXML.GetAttributeValue(item, "i")
             End Sub
 
-            Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+            Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
                 Dim oXMLItem As XmlElement = Document.CreateElement("item")
                 Call oXMLItem.SetAttribute("text", "" & sText)
                 Call oXMLItem.SetAttribute("type", iType.ToString("D"))
@@ -798,14 +788,14 @@ Namespace cSurvey.Design.Items
                             If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem.Item) Then
                                 Dim sItemItemScale As Single = oItem.Scale * sItemScale
                                 Dim oBordersBounds As RectangleF
-                                If iItemAlignment = ItemAlignmentEnum.Left Then
+                                If iItemAlignment = cIItemLegend.ItemAlignmentEnum.Left Then
                                     oBordersBounds = New RectangleF(sItemLeft, sItemTop, sItemItemHeight, sItemItemHeight)
                                 Else
                                     oBordersBounds = New RectangleF(sItemLeft + sItemItemWidth - sItemItemHeight, sItemTop, sItemItemHeight, sItemItemHeight)
                                 End If
                                 Using oClippingPath As GraphicsPath = New GraphicsPath
                                     Call oClippingPath.AddRectangle(oBordersBounds)
-                                    Call oCache.SetClip(oClippingPath)
+                                    Call oCache.AddSetClip(oClippingPath)
                                     If oItem.Type = cLegendItem.ItemTypeEnum.LineItem AndAlso oItem.Item.HavePen Then
                                         Dim oPen As cPen = oItem.Item.Pen
                                         If Not IsNothing(oPen) Then
@@ -857,7 +847,7 @@ Namespace cSurvey.Design.Items
                                             End Using
                                         End If
                                     End If
-                                    Call oCache.ResetClip()
+                                    Call oCache.AddResetclip()
                                 End Using
 
                                 Using oBordersPath As GraphicsPath = New GraphicsPath
@@ -868,7 +858,7 @@ Namespace cSurvey.Design.Items
                                 Using oSF As StringFormat = New StringFormat
                                     Dim oTextBounds As RectangleF
                                     oSF.LineAlignment = StringAlignment.Center
-                                    If iItemAlignment = ItemAlignmentEnum.Left Then
+                                    If iItemAlignment = cIItemLegend.ItemAlignmentEnum.Left Then
                                         oSF.Alignment = StringAlignment.Near
                                         oTextBounds = New RectangleF(sItemLeft + sItemItemHeight, sItemTop, sItemItemWidth - sItemItemHeight, sItemItemHeight)
                                     Else
@@ -889,14 +879,14 @@ Namespace cSurvey.Design.Items
 
                                 iIndex += 1
                                 Select Case iFlowDirection
-                                    Case FlowDirectionEnum.Vertical
+                                    Case cIItemLegend.FlowDirectionEnum.Vertical
                                         If iIndex Mod iMaxItems = 0 Then
                                             sItemLeft += sItemItemWidth + sItemItemHPadding
                                             sItemTop = sItemItemTop
                                         Else
                                             sItemTop += sItemItemHeight + sItemItemVPadding
                                         End If
-                                    Case FlowDirectionEnum.Horizontal
+                                    Case cIItemLegend.FlowDirectionEnum.Horizontal
                                         If iIndex Mod iMaxItems = 0 Then
                                             sItemTop += sItemItemHeight + sItemItemVPadding
                                             sItemLeft = sItemItemleft
@@ -939,7 +929,7 @@ Namespace cSurvey.Design.Items
         Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             If MyBase.Points.Count > 0 Then
                 Call Render(Graphics, PaintOptions, Options, Selected)
-                If Not PaintOptions.IsDesign Or (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then '
+                If Not PaintOptions.IsDesign OrElse (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then '
                     MyBase.HavePaintProblem = Not MyBase.Caches(PaintOptions).Paint(Graphics, PaintOptions, Options)
                     If PaintOptions.ShowSegmentBindings Then
                         Call modPaint.PaintPointToSegmentBindings(Graphics, oSurvey, Me, Selected)
@@ -948,7 +938,7 @@ Namespace cSurvey.Design.Items
             End If
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As Storage.cFile, ByVal item As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal File As cFile, ByVal item As XmlElement)
             Call MyBase.New(Survey, Design, Layer, File, item)
             oSurvey = Survey
             oItems = New List(Of cLegendItem)
@@ -962,7 +952,7 @@ Namespace cSurvey.Design.Items
             iTextAlignment = modXML.GetAttributeValue(item, "textalignment", cIItemLineableText.TextAlignmentEnum.Center)
             iTextVerticalAlignment = modXML.GetAttributeValue(item, "textverticalalignment", cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle)
             iMaxItems = modXML.GetAttributeValue(item, "maxitems", 8)
-            iFlowDirection = modXML.GetAttributeValue(item, "flowdirection", FlowDirectionEnum.Vertical)
+            iFlowDirection = modXML.GetAttributeValue(item, "flowdirection", cIItemLegend.FlowDirectionEnum.Vertical)
 
             For Each oChildItem As XmlElement In item("legenditems").ChildNodes
                 Dim oLegendItem As cLegendItem = New cLegendItem(Survey, File, oChildItem)
@@ -975,12 +965,12 @@ Namespace cSurvey.Design.Items
             sItemHeight = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "itemheight", 0.5))
             sItemVPadding = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "itemvpadding", 0.1))
             sItemHPadding = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "itemhpadding", 0.1))
-            iItemAlignment = modXML.GetAttributeValue(item, "itemalignment", ItemAlignmentEnum.Left)
+            iItemAlignment = modXML.GetAttributeValue(item, "itemalignment", cIItemLegend.ItemAlignmentEnum.Left)
 
             sItemScale = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "itemscale", 1))
         End Sub
 
-        Friend Overrides Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+        Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oItem As XmlElement = MyBase.SaveTo(File, Document, Parent, Options)
             If "" & sText <> "" Then Call oItem.SetAttribute("text", "" & sText)
             Call oFont.SaveTo(File, Document, oItem, "font")
@@ -994,7 +984,7 @@ Namespace cSurvey.Design.Items
                 Call oItem.SetAttribute("textverticalalignment", iTextVerticalAlignment)
             End If
             If iMaxItems <> 8 Then Call oItem.SetAttribute("maxitems", iMaxItems)
-            If iFlowDirection <> FlowDirectionEnum.Vertical Then Call oItem.SetAttribute("flowdirection", iFlowDirection.ToString("D"))
+            If iFlowDirection <> cIItemLegend.FlowDirectionEnum.Vertical Then Call oItem.SetAttribute("flowdirection", iFlowDirection.ToString("D"))
 
             Dim oLegendItems As XmlElement = Document.CreateElement("legenditems")
             For Each oLegendItem As cLegendItem In oItems
@@ -1007,7 +997,7 @@ Namespace cSurvey.Design.Items
             If sItemHeight <> 0.5 Then Call oItem.SetAttribute("itemheight", modNumbers.NumberToString(sItemHeight, "0.00"))
             If sItemVPadding <> 0.1 Then Call oItem.SetAttribute("itemvpadding", modNumbers.NumberToString(sItemVPadding, "0.00"))
             If sItemHPadding <> 0.1 Then Call oItem.SetAttribute("itemhpadding", modNumbers.NumberToString(sItemHPadding, "0.00"))
-            If iItemAlignment <> ItemAlignmentEnum.Left Then Call oItem.SetAttribute("itemalignment", iItemAlignment.ToString("D"))
+            If iItemAlignment <> cIItemLegend.ItemAlignmentEnum.Left Then Call oItem.SetAttribute("itemalignment", iItemAlignment.ToString("D"))
 
             If sItemScale <> 1 Then Call oItem.SetAttribute("itemscale", modNumbers.NumberToString(sItemScale, "0.00"))
 

@@ -1,3 +1,3 @@
-﻿Public Class frmRefineFixData
+﻿friend Class frmRefineFixData
 
 End Class

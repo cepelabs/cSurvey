@@ -158,14 +158,11 @@ Namespace cSurvey
                         bIgnore = False
                     End If
                     Call oConnections.Add(sTrigPoint, bIgnore)
-                    'Dim oItem As cConnection = New cConnection(sValue)
-                    'Call oConnections.Add(oItem.TrigPoint, oItem)
-                    'AddHandler oItem.OnChanged, AddressOf oItem_OnChanged
                 End If
             Next
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlConnections As XmlElement = Document.CreateElement("connections")
             Call oXmlConnections.SetAttribute("v", ToString)
             Call Parent.AppendChild(oXmlConnections)

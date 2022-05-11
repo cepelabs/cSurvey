@@ -29,13 +29,13 @@ Namespace cSurvey.CaveRegister
             oSettings = New cCaveRegisterSettings(oSurvey)
         End Sub
 
-        Friend Sub New(Survey As cSurvey, ByVal File As Storage.cFile, ByVal CaveRegister As XmlElement)
+        Friend Sub New(Survey As cSurvey, ByVal File As cFile, ByVal CaveRegister As XmlElement)
             oSurvey = Survey
             oDatas = New cCaveRegisterDatas(Survey, File, CaveRegister.Item("caveregisterdatas"))
             oSettings = New cCaveRegisterSettings(Survey, File, CaveRegister.Item("caveregistersettings"))
         End Sub
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlCaveRegister As XmlElement = Document.CreateElement("caveregister")
             Call oDatas.SaveTo(File, Document, oXmlCaveRegister)
             Call oSettings.SaveTo(File, Document, oXmlCaveRegister)

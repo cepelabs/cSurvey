@@ -377,11 +377,11 @@ Namespace cSurvey.Design
         End Property
 
         Friend Sub Rebind()
-            Dim oDesignProperties As cPropertiesCollection = oOptions.CurrentRule.DesignProperties
+            'Dim oDesignProperties As cPropertiesCollection = oOptions.CurrentRule.DesignProperties
             Dim sZoom As Single = 1
 
-            Dim sTextScaleFactor As Single = oDesignProperties.GetValue("PlotTextScaleFactor", 1)
-            Dim oTextFont As cIFont = oDesignProperties.GetValue("PlotTextFont", New cFont(oSurvey, "Tahoma", 8, Color.Black))
+            Dim sTextScaleFactor As Single = oOptions.GetCurrentDesignPropertiesValue("PlotTextScaleFactor", 1)
+            Dim oTextFont As cIFont = oOptions.GetCurrentDesignPropertiesValue("PlotTextFont", New cFont(oSurvey, "Tahoma", 8, Color.Black))
 
             sBaseFontSize = oTextFont.FontSize * sZoom / 15 * sTextScaleFactor
             sBigFontSize = oTextFont.FontSize * 1.2 * sZoom / 15 * sTextScaleFactor
@@ -392,55 +392,55 @@ Namespace cSurvey.Design
             If sSmallFontSize < 0.002 Then sSmallFontSize = 0.002
             If sExtraSmallFontSize < 0.001 Then sExtraSmallFontSize = 0.001
 
-            sLineWidthScaleFactor = oDesignProperties.GetValue("BaseLineWidthScaleFactor", 0.01)
+            sLineWidthScaleFactor = oOptions.GetCurrentDesignPropertiesValue("BaseLineWidthScaleFactor", 0.01)
 
-            sPenWidth = oDesignProperties.GetValue("PlotPenWidth", 2)
-            sSelectedPenWidth = oDesignProperties.GetValue("PlotSelectedPenWidth", 2)
-            iPenStyle = oDesignProperties.GetValue("PlotPenStyle", cPen.PenStylesEnum.Dash)
-            oPenColor = oDesignProperties.GetValue("PlotPenColor", Color.Black)
+            sPenWidth = oOptions.GetCurrentDesignPropertiesValue("PlotPenWidth", 2)
+            sSelectedPenWidth = oOptions.GetCurrentDesignPropertiesValue("PlotSelectedPenWidth", 2)
+            iPenStyle = oOptions.GetCurrentDesignPropertiesValue("PlotPenStyle", cPen.PenStylesEnum.Dash)
+            oPenColor = oOptions.GetCurrentDesignPropertiesValue("PlotPenColor", Color.Black)
 
-            sPointSize = oDesignProperties.GetValue("PlotPointSize", 2) * sZoom / 15
-            sSelectedPointSize = oDesignProperties.GetValue("PlotSelectedPointSize", 8) * sZoom / 15
-            oPointColor = oDesignProperties.GetValue("PlotPointColor", Color.Red)
+            sPointSize = oOptions.GetCurrentDesignPropertiesValue("PlotPointSize", 2) * sZoom / 15
+            sSelectedPointSize = oOptions.GetCurrentDesignPropertiesValue("PlotSelectedPointSize", 8) * sZoom / 15
+            oPointColor = oOptions.GetCurrentDesignPropertiesValue("PlotPointColor", Color.Red)
 
-            oSelectedRingColor = oDesignProperties.GetValue("PlotSelectedRingColor", Color.FromArgb(120, SystemColors.Highlight))
+            oSelectedRingColor = oOptions.GetCurrentDesignPropertiesValue("PlotSelectedRingColor", Color.FromArgb(120, SystemColors.Highlight))
 
-            sTranslationLinePenWidth = oDesignProperties.GetValue("PlotTranslationLinePenWidth", 2)
-            iTranslationLinePenStyle = oDesignProperties.GetValue("PlotTranslationLinePenStyle", cPen.PenStylesEnum.Dot)
-            oTranslationLinePenColor = oDesignProperties.GetValue("PlotTranslationLinePenColor", Color.Black)
+            sTranslationLinePenWidth = oOptions.GetCurrentDesignPropertiesValue("PlotTranslationLinePenWidth", 2)
+            iTranslationLinePenStyle = oOptions.GetCurrentDesignPropertiesValue("PlotTranslationLinePenStyle", cPen.PenStylesEnum.Dot)
+            oTranslationLinePenColor = oOptions.GetCurrentDesignPropertiesValue("PlotTranslationLinePenColor", Color.Black)
 
-            sLRUDPenWidth = oDesignProperties.GetValue("PlotLRUDPenWidth", 0.8)
-            sLRUDSelectedPenWidth = oDesignProperties.GetValue("PlotLRUDSelectedPenWidth", 1.2)
-            iLRUDPenStyle = oDesignProperties.GetValue("PlotLRUDPenStyle", cPen.PenStylesEnum.Dot)
+            sLRUDPenWidth = oOptions.GetCurrentDesignPropertiesValue("PlotLRUDPenWidth", 0.8)
+            sLRUDSelectedPenWidth = oOptions.GetCurrentDesignPropertiesValue("PlotLRUDSelectedPenWidth", 1.2)
+            iLRUDPenStyle = oOptions.GetCurrentDesignPropertiesValue("PlotLRUDPenStyle", cPen.PenStylesEnum.Dot)
             oLRUDPenColor = Color.Black
 
-            sSplayPenWidth = oDesignProperties.GetValue("PlotSplayPenWidth", 0.8)
-            sSplaySelectedPenWidth = oDesignProperties.GetValue("PlotSplaySelectedPenWidth", 1.2)
-            iSplayPenStyle = oDesignProperties.GetValue("PlotSplayPenStyle", cPen.PenStylesEnum.Dot)
+            sSplayPenWidth = oOptions.GetCurrentDesignPropertiesValue("PlotSplayPenWidth", 0.8)
+            sSplaySelectedPenWidth = oOptions.GetCurrentDesignPropertiesValue("PlotSplaySelectedPenWidth", 1.2)
+            iSplayPenStyle = oOptions.GetCurrentDesignPropertiesValue("PlotSplayPenStyle", cPen.PenStylesEnum.Dot)
             oSplayPenColor = Color.DimGray
 
-            sCutSplayPenWidth = oDesignProperties.GetValue("PlotCutSplayPenWidth", 0.9)
-            sCutSplaySelectedPenWidth = oDesignProperties.GetValue("PlotCutSplaySelectedPenWidth", 1.2)
-            iCutSplayPenStyle = oDesignProperties.GetValue("PlotCutSplayPenStyle", cPen.PenStylesEnum.Dot)
+            sCutSplayPenWidth = oOptions.GetCurrentDesignPropertiesValue("PlotCutSplayPenWidth", 0.9)
+            sCutSplaySelectedPenWidth = oOptions.GetCurrentDesignPropertiesValue("PlotCutSplaySelectedPenWidth", 1.2)
+            iCutSplayPenStyle = oOptions.GetCurrentDesignPropertiesValue("PlotCutSplayPenStyle", cPen.PenStylesEnum.Dot)
             oCutSplayPenColor = Color.DarkGray
 
-            oCrossSectionMarkerPenColor = oDesignProperties.GetValue("CrossSectionMarkerPenColor", Color.Black)
+            oCrossSectionMarkerPenColor = oOptions.GetCurrentDesignPropertiesValue("CrossSectionMarkerPenColor", Color.Black)
             oCrossSectionMarkerPen = New Pen(oCrossSectionMarkerPenColor, 0.01)
             oCrossSectionMarkerBrush = New SolidBrush(oCrossSectionMarkerPenColor)
-            sCrossSectionMarkerArrowSize = oDesignProperties.GetValue("CrossSectionMarkerArrowSize", 0.5)
+            sCrossSectionMarkerArrowSize = oOptions.GetCurrentDesignPropertiesValue("CrossSectionMarkerArrowSize", 0.5)
 
-            sSurfacePenWidth = oDesignProperties.GetValue("SurfaceProfilePenWidth", 1)
-            sSurfaceSelectedPenWidth = oDesignProperties.GetValue("SurfaceProfileSelectedPenWidth", 2)
-            oSurfacePenColor = oDesignProperties.GetValue("SurfaceProfilePenColor", Color.Gray)
+            sSurfacePenWidth = oOptions.GetCurrentDesignPropertiesValue("SurfaceProfilePenWidth", 1)
+            sSurfaceSelectedPenWidth = oOptions.GetCurrentDesignPropertiesValue("SurfaceProfileSelectedPenWidth", 2)
+            oSurfacePenColor = oOptions.GetCurrentDesignPropertiesValue("SurfaceProfilePenColor", Color.Gray)
             oSurfaceProfilePen = New Pen(oSurfacePenColor, sLineWidthScaleFactor * sSurfacePenWidth)
-            oSurfaceProfilePen.DashStyle = oDesignProperties.GetValue("SurfaceProfilePenStyle", cPen.PenStylesEnum.Dot)
+            oSurfaceProfilePen.DashStyle = oOptions.GetCurrentDesignPropertiesValue("SurfaceProfilePenStyle", cPen.PenStylesEnum.Dot)
             oSelectedSurfaceProfilePen = New Pen(oSurfacePenColor, sLineWidthScaleFactor * sSurfaceSelectedPenWidth)
             oSelectedSurfaceProfilePen.DashStyle = oSurfaceProfilePen.DashStyle
 
             oInvalidPen = New Pen(Color.IndianRed, -1)
             oInvalidPen.DashStyle = DashStyle.Dot
 
-            oTextColor = oDesignProperties.GetValue("PlotTextColor", Color.Black)
+            oTextColor = oOptions.GetCurrentDesignPropertiesValue("PlotTextColor", Color.Black)
 
             Select Case oOptions.DrawStyle
                 Case cOptions.DrawStyleEnum.Solid, cOptions.DrawStyleEnum.OnlySegment
@@ -627,13 +627,13 @@ Namespace cSurvey.Design
                     bEnableTransparence = False
             End Select
 
-            Dim bShowCenterlineVectors As Boolean = oDesignProperties.GetValue("PlotCenterlineVector", 0)
+            Dim bShowCenterlineVectors As Boolean = oOptions.GetCurrentDesignPropertiesValue("PlotCenterlineVector", 0)
             If bShowCenterlineVectors Then
                 oPen.CustomEndCap = New AdjustableArrowCap(3, 3)
                 oSelectedPen.CustomEndCap = New AdjustableArrowCap(4, 4)
             End If
 
-            bCenterlineForceColor = oDesignProperties.GetValue("PlotCenterlineForceColor", 0)
+            bCenterlineForceColor = oOptions.GetCurrentDesignPropertiesValue("PlotCenterlineForceColor", 0)
         End Sub
 
         Public ReadOnly Property CenterlineForceColor As Boolean

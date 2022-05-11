@@ -121,7 +121,7 @@ Namespace cSurvey.CaveRegister
             End Try
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal File As Storage.cFile, ByVal CaveRegisterData As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal CaveRegisterData As XmlElement)
             oSurvey = Survey
             oData = New XmlDocument
             oStructure = New XmlDocument
@@ -144,7 +144,7 @@ Namespace cSurvey.CaveRegister
             End If
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim sBasePath As String = "_data\caveregister\" & sCaveID
             Dim oXmlCaveRegisterData As XmlElement = Document.CreateElement("caveregisterdata")
             Call oXmlCaveRegisterData.SetAttribute("caveid", sCaveID)

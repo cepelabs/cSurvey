@@ -57,7 +57,7 @@ Namespace cSurvey
             Return oSurvey.GetAllDesignItems.Where(Function(item) item.Category = Category AndAlso TypeOf item Is cIItemClipartBase AndAlso If(ID = "", True, DirectCast(item, cIItemClipartBase).Clipart.ID = ID)).Cast(Of cIItemClipartBase).ToList
         End Function
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal File As Storage.cFile, ByVal Signs As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal Signs As XmlElement)
             oSurvey = Survey
             oCliparts = New cClipartsCollection(oSurvey, File, Signs.Item("cliparts"))
             For Each oClipart As cClipart In oCliparts
@@ -65,7 +65,7 @@ Namespace cSurvey
             Next
         End Sub
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oItem As XmlElement = Document.CreateElement("signs")
             Call oCliparts.SaveTo(File, Document, oItem, Options)
             Call Parent.AppendChild(oItem)
@@ -147,7 +147,7 @@ Namespace cSurvey
             oCliparts = New cClipartsCollection(oSurvey)
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal File As Storage.cFile, ByVal Cliparts As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal Cliparts As XmlElement)
             oSurvey = Survey
             oCliparts = New cClipartsCollection(oSurvey, File, Cliparts.Item("cliparts"))
             For Each oClipart As cClipart In oCliparts
@@ -155,7 +155,7 @@ Namespace cSurvey
             Next
         End Sub
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum) As XmlElement
             Dim oItem As XmlElement = Document.CreateElement("cliparts")
             Call oCliparts.SaveTo(File, Document, oItem, Options)
             Call Parent.AppendChild(oItem)
@@ -169,18 +169,20 @@ Namespace cSurvey
         Private Sub pApplyDefaultTransformation(Clipart As cClipart)
             'flatten the clipart...cliparts are different from signs, cliparts can be free resized so have to be flatten to use warp function without bad results...
             'in future warp in clipart have to be replaced with a dedicated resize code and this code removed
-            For Each oDrawPath As cDrawPath In Clipart.Clipart.Paths
-                Call oDrawPath.Path.Flatten(Nothing, 0.001)
-            Next
+            'For Each oDrawPath As cDrawPath In Clipart.Clipart.Paths
+            '    Call oDrawPath.Path.Flatten(Nothing, 0.001)
+            'Next
 
             Dim oRect As RectangleF = Clipart.Clipart.GetBounds
-            Dim sDX As Single = oRect.Width / 1
-            Dim sDY As Single = oRect.Height / 1
-            Dim sD As Single = 1 / If(sDX > sDY, sDX, sDY)
-            Using oMatrix As Matrix = New Matrix
-                Call oMatrix.Scale(sD, sD)
-                Call Clipart.Clipart.Transform(oMatrix)
-            End Using
+            Dim sDX As Single = oRect.Width / 1.0F
+            Dim sDY As Single = oRect.Height / 1.0F
+            Dim sD As Single = 1.0F / If(sDX > sDY, sDX, sDY)
+            If sD <> 1.0F Then
+                Using oMatrix As Matrix = New Matrix
+                    Call oMatrix.Scale(sD, sD)
+                    Call Clipart.Clipart.Transform(oMatrix)
+                End Using
+            End If
         End Sub
     End Class
 
@@ -207,7 +209,7 @@ Namespace cSurvey
             oItems = New cClipartsBaseCollection
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal File As Storage.cFile, ByVal Cliparts As XmlElement)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal Cliparts As XmlElement)
             oSurvey = Survey
             oItems = New cClipartsBaseCollection
             Dim iIndex As Integer = 0
@@ -222,7 +224,7 @@ Namespace cSurvey
             Next
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum)
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum)
             Dim oXmlCliparts As XmlElement = Document.CreateElement("cliparts")
             For Each oItem As cClipart In oItems
                 Call oItem.SaveTo(File, Document, oXmlCliparts)
@@ -426,14 +428,14 @@ Namespace cSurvey
             End Get
         End Property
 
-        Friend Sub New(ByVal File As Storage.cFile, ByVal Clipart As XmlElement)
+        Friend Sub New(ByVal File As cFile, ByVal Clipart As XmlElement)
             sID = modXML.GetAttributeValue(Clipart, "id", "")
             sName = modXML.GetAttributeValue(Clipart, "name", "")
             Select Case File.FileFormat
-                Case Storage.cFile.FileFormatEnum.CSX
+                Case cFile.FileFormatEnum.CSX
                     oData = New IO.MemoryStream(Convert.FromBase64String(modXML.GetAttributeValue(Clipart, "data")))
                     oClipart = New Drawings.cDrawClipArt(oData)
-                Case Storage.cFile.FileFormatEnum.CSZ
+                Case cFile.FileFormatEnum.CSZ
                     oData = New IO.MemoryStream()
                     Dim sDataPath As String = modXML.GetAttributeValue(Clipart, "data")
                     Call DirectCast(File.Data(sDataPath), Storage.cStorageItemFile).Stream.CopyTo(oData)
@@ -472,15 +474,15 @@ Namespace cSurvey
             sID = modMain.CalculateHash(oData)
         End Sub
 
-        Friend Function SaveTo(ByVal File As Storage.cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+        Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oItem As XmlElement = Document.CreateElement("clipart")
             Call oItem.SetAttribute("id", sID)
             Call oItem.SetAttribute("name", sName)
-            If Not (File.Options And Storage.cFile.FileOptionsEnum.DontSaveBinary) = Storage.cFile.FileOptionsEnum.DontSaveBinary Then
+            If Not (File.Options And cFile.FileOptionsEnum.DontSaveBinary) = cFile.FileOptionsEnum.DontSaveBinary Then
                 Select Case File.FileFormat
-                    Case Storage.cFile.FileFormatEnum.CSX
+                    Case cFile.FileFormatEnum.CSX
                         Call oItem.SetAttribute("data", Convert.ToBase64String(oData.ToArray))
-                    Case Storage.cFile.FileFormatEnum.CSZ
+                    Case cFile.FileFormatEnum.CSZ
                         Dim sDataPath As String = "_data\cliparts\" & sID & ".svg"
                         Dim oDataStorage As Storage.cStorageItemFile = File.Data.AddFile(sDataPath)
                         Call oData.Seek(0, SeekOrigin.Begin)

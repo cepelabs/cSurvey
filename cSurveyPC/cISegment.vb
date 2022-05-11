@@ -1,6 +1,7 @@
 ﻿Namespace cSurvey
     Public Interface cISegment
         Inherits cICaveBranch
+        Inherits cISession
 
         Enum SegmentTypeEnum
             Segment = 0
@@ -8,7 +9,6 @@
         End Enum
 
         ReadOnly Property ID As String
-        ReadOnly Property Session As String
 
         Property [From] As String
         Property [To] As String

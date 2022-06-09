@@ -7,6 +7,14 @@ Imports System.Collections.ObjectModel
 
 Namespace cSurvey.Design.Options
     Public Class cScaleOptions
+        Implements cIUIBaseInteractions
+
+        Public Event OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Implements cIUIBaseInteractions.OnPropertyChanged
+
+        Public Sub PropertyChanged(Name As String) Implements cIUIBaseInteractions.PropertyChanged
+            RaiseEvent OnPropertyChanged(Me, New PropertyChangeEventArgs(Name))
+        End Sub
+
         Private oSurvey As cSurvey
 
         Private oColor As Color
@@ -21,8 +29,6 @@ Namespace cSurvey.Design.Options
 
         Private sText As String
 
-        'Friend Event OnChange(ByVal Sender As cScaleOptions)
-
         Friend Sub CopyFrom(ByVal ScaleOptions As cScaleOptions)
             oSurvey = ScaleOptions.Survey
             oFont = ScaleOptions.Font.Clone
@@ -32,7 +38,6 @@ Namespace cSurvey.Design.Options
             oColor = ScaleOptions.Color
             sText = ScaleOptions.sText
             bHideScaleValue = ScaleOptions.bHideScaleValue
-            'RaiseEvent OnChange(Me)
         End Sub
 
         Friend Function Clone() As cScaleOptions
@@ -67,7 +72,7 @@ Namespace cSurvey.Design.Options
             Set(ByVal value As Integer)
                 If iMeters <> value Then
                     iMeters = value
-                    'RaiseEvent OnChange(Me)
+                    Call PropertyChanged("Meters")
                 End If
             End Set
         End Property
@@ -79,7 +84,7 @@ Namespace cSurvey.Design.Options
             Set(ByVal value As Integer)
                 If iSteps <> value Then
                     iSteps = value
-                    'RaiseEvent OnChange(Me)
+                    Call PropertyChanged("Steps")
                 End If
             End Set
         End Property
@@ -91,6 +96,7 @@ Namespace cSurvey.Design.Options
             Set(value As Boolean)
                 If value <> bHideScaleValue Then
                     bHideScaleValue = value
+                    Call PropertyChanged("HideScaleValue")
                 End If
             End Set
         End Property
@@ -102,7 +108,7 @@ Namespace cSurvey.Design.Options
             Set(ByVal value As Integer)
                 If iStep <> value Then
                     iStep = value
-                    'RaiseEvent OnChange(Me)
+                    Call PropertyChanged("Step")
                 End If
             End Set
         End Property
@@ -120,7 +126,7 @@ Namespace cSurvey.Design.Options
             Set(ByVal value As String)
                 If sText <> value Then
                     sText = value
-                    'RaiseEvent OnChange(Me)
+                    Call PropertyChanged("Text")
                 End If
             End Set
         End Property
@@ -132,7 +138,7 @@ Namespace cSurvey.Design.Options
             Set(ByVal value As Color)
                 If Color <> value Then
                     oColor = value
-                    'RaiseEvent OnChange(Me)
+                    Call PropertyChanged("Color")
                 End If
             End Set
         End Property
@@ -178,6 +184,10 @@ Namespace cSurvey.Design.Options
             Call Parent.AppendChild(oXMLScaleOptions)
             Return oXMLScaleOptions
         End Function
+
+        Private Sub oFont_OnChanged(Sender As cItemFont) Handles oFont.OnChanged
+            Call PropertyChanged("Font")
+        End Sub
 
         'Private Sub oFont_OnChanged(ByVal Sender As cItemFont) Handles oFont.OnChanged
         '    RaiseEvent OnChange(Me)

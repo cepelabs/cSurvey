@@ -43,12 +43,12 @@
                 End If
 
                 With oPanel
-                    .pb.Minimum = 0
-                    .pb.Maximum = 100
+                    .pb.Properties.Minimum = 0
+                    .pb.Properties.Maximum = 100
                     Try
-                        .picAction.Image = iml.Images(ActionImage)
+                        .picAction.SvgImage = SvgImageCollection1.Item(ActionImage)
                     Catch
-                        .picAction.Image = iml.Images("default")
+                        .picAction.SvgImage = SvgImageCollection1.Item("default")
                     End Try
                     .lblTitle.Text = Title
                     If Show Then
@@ -67,7 +67,8 @@
                     Call Me.Show()
                 End If
                 Call Refresh()
-            Catch
+            Catch ex As Exception
+                Debug.Print(ex.Message)
             End Try
         End If
     End Sub
@@ -147,7 +148,7 @@
                 Dim iIndex As Integer = oTasks(Task).Index
                 Dim oPanel As cProgressPanel = tblPanels.Controls("pnl" & iIndex)
                 With oPanel
-                    .pb.Value = Percent * 100
+                    .pb.EditValue = Percent * 100
                     .lblDetails.Text = Details & " " & Strings.Format(Percent, "percent")
                     .Refresh()
                 End With
@@ -166,7 +167,7 @@
         ' Chiamata richiesta dalla finestra di progettazione.
         InitializeComponent()
         ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
-        iPanelHeight = iPanelHeight * DPIRatio
+        iPanelHeight = iPanelHeight * Me.CurrentAutoScaleDimensions.Height / 96.0F
         oTasks = New Dictionary(Of String, TaskBag)
         Call tblPanels.Controls.Remove(pnlDefault)
         Height -= iPanelHeight

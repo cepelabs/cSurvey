@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   id="Create_Stacked_Line_Chart"
+   x="0px"
+   y="0px"
+   viewBox="0 0 32 32"
+   style="enable-background:new 0 0 32 32;"
+   xml:space="preserve"
+   sodipodi:docname="connections_1_0.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"><metadata
+   id="metadata15"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+   id="defs13" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="2560"
+   inkscape:window-height="1017"
+   id="namedview11"
+   showgrid="false"
+   inkscape:zoom="36.571949"
+   inkscape:cx="21.614927"
+   inkscape:cy="15.189237"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="g990"
+   inkscape:document-rotation="0"
+   inkscape:pagecheckerboard="0" />
+<style
+   type="text/css"
+   id="style2">
+	.Blue{fill:#1177D7;}
+	.Yellow{fill:#FFB115;}
+	.Red{fill:#D11C1C;}
+</style>
+
+
+
+<style
+   type="text/css"
+   id="style839">
+	.Black{fill:#727272;}
+</style><style
+   type="text/css"
+   id="style852">
+	.Black{fill:#727272;}
+	.Red_x0020_2{fill:#D11C1C;}
+</style><style
+   type="text/css"
+   id="style2-8">
+	.Blue{fill:#1177D7;}
+	.Yellow{fill:#FFB115;}
+	.Red{fill:#D11C1C;}
+</style><g
+   id="g990"
+   transform="rotate(154.11303,-1.6269202,15.756856)"
+   style="fill:#039c23;fill-opacity:1"><path
+     id="path4-1"
+     style="fill:#039c23;fill-opacity:1"
+     class="Green"
+     d="M 10.771484 11.902344 C 10.33523 11.907708 9.8891329 12.010002 9.4589844 12.21875 C 7.9295673 12.960965 7.3280973 14.697145 8.0703125 16.226562 C 8.8489293 17.895534 10.586954 18.396576 12.212891 17.664062 C 12.932616 17.314785 13.43241 16.737178 13.753906 16.025391 L 15.722656 16.001953 L 15.722656 13.966797 L 13.642578 13.96875 L 13.46875 13.607422 C 12.935283 12.508153 11.886356 11.888635 10.771484 11.902344 z M 10.962891 13.949219 C 11.313782 13.955053 11.622638 14.158188 11.802734 14.529297 C 12.064693 15.069091 11.879638 15.603276 11.339844 15.865234 C 10.800049 16.127193 10.265865 15.942138 10.003906 15.402344 C 9.7419479 14.862549 9.9270026 14.328365 10.466797 14.066406 C 10.635483 13.984544 10.803394 13.946567 10.962891 13.949219 z "
+     transform="rotate(-154.11303,-1.6269202,15.756856)" /><path
+     id="path4-1-4"
+     style="fill:#d11c1c;fill-opacity:1"
+     class="Red"
+     d="m -20.509405,4.0261765 c -0.394836,-0.185609 -0.840816,-0.288377 -1.318941,-0.288377 -1.7,0 -2.999128,1.2993665 -2.999128,2.9993664 -0.02818,1.8414445 1.316692,3.0510274 3.099291,3.1018954 0.799999,0 1.501824,-0.3014393 2.101824,-0.8014392 l 1.781434,0.8384622 0.888544,-1.830942 -1.87223,-0.9063569 0.0014,-0.4009641 c 0,-1.2218754 -0.673195,-2.2371878 -1.682182,-2.7116048 z m -0.721459,1.9250533 c 0.313149,0.1584161 0.502311,0.4760442 0.50231,0.8885444 10e-7,0.6000001 -0.399712,0.9997872 -0.999708,0.9997888 -0.600001,2e-7 -0.999788,-0.3997126 -0.99979,-0.9997091 0,-0.6000006 0.39971,-0.9997885 0.99971,-0.9997892 0.187499,1.9e-6 0.355143,0.039143 0.497478,0.1111651 z" /></g><style
+   type="text/css"
+   id="style827">
+	.Green{fill:#039C23;}
+	.Black{fill:#727272;}
+</style><style
+   type="text/css"
+   id="style1163">
+	.Yellow{fill:#FFB115;}
+	.Red{fill:#D11C1C;}
+	.Blue{fill:#1177D7;}
+	.Green{fill:#039C23;}
+	.Black{fill:#727272;}
+	.White{fill:#FFFFFF;}
+	.st0{opacity:0.5;}
+	.st1{display:none;}
+	.st2{display:inline;fill:#039C23;}
+	.st3{display:inline;fill:#D11C1C;}
+	.st4{display:inline;fill:#727272;}
+</style></svg>

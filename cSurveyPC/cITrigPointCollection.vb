@@ -5,13 +5,14 @@
 
         ReadOnly Property Count() As Integer
 
-        Function GetCaveFirstEntrance(Cave As String, ByVal Entrance As cTrigPoint.EntranceTypeEnum) As cTrigPoint
-        Function GetCaveFirstEntrance(CaveInfo As cCaveInfo, ByVal Entrance As cTrigPoint.EntranceTypeEnum) As cTrigPoint
+        Function GetStations(Splay As Boolean) As cTrigPointCollection
+        'Function GetCaveFirstEntrance(Cave As String, ByVal Entrance As cTrigPoint.EntranceTypeEnum) As cTrigPoint
+        'Function GetCaveFirstEntrance(CaveInfo As cCaveInfo, ByVal Entrance As cTrigPoint.EntranceTypeEnum) As cTrigPoint
         Function GetFirstEntrance(ByVal Entrance As cTrigPoint.EntranceTypeEnum) As cTrigPoint
         Function GetEntrances(ByVal Entrance As cTrigPoint.EntranceTypeEnum) As cTrigPointCollection
         Function GetAllEntrances() As cTrigPointCollection
-        Function GetCaveAllEntrances(CaveInfo As cCaveInfo) As cTrigPointCollection
-        Function GetCaveAllEntrances(Cave As String) As cTrigPointCollection
+        'Function GetCaveAllEntrances(CaveInfo As cCaveInfo) As cTrigPointCollection
+        'Function GetCaveAllEntrances(Cave As String) As cTrigPointCollection
 
         Function Contains(ByVal trigpoint As cTrigPoint) As Boolean
         Function Contains(ByVal Name As String) As Boolean

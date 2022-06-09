@@ -22,30 +22,34 @@ Partial Class frmImportVisualTopo
     'Non modificarla nell'editor del codice.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmImportVisualTopo))
-        Me.txtPrefix = New System.Windows.Forms.TextBox()
-        Me.lblPrefix = New System.Windows.Forms.Label()
-        Me.chkVTopoImportIncompatibleSet = New System.Windows.Forms.CheckBox()
-        Me.txtFilename = New System.Windows.Forms.TextBox()
-        Me.lblFilename = New System.Windows.Forms.Label()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.cmdOk = New System.Windows.Forms.Button()
-        Me.tipDefault = New System.Windows.Forms.ToolTip(Me.components)
-        Me.txtCaveName = New System.Windows.Forms.TextBox()
-        Me.chkVTopoImportSetAsBranch = New System.Windows.Forms.CheckBox()
-        Me.lblCaveName = New System.Windows.Forms.Label()
+        Me.txtPrefix = New DevExpress.XtraEditors.TextEdit()
+        Me.lblPrefix = New DevExpress.XtraEditors.LabelControl()
+        Me.chkVTopoImportIncompatibleSet = New DevExpress.XtraEditors.CheckEdit()
+        Me.txtFilename = New DevExpress.XtraEditors.TextEdit()
+        Me.lblFilename = New DevExpress.XtraEditors.LabelControl()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
+        Me.txtCaveName = New DevExpress.XtraEditors.TextEdit()
+        Me.chkVTopoImportSetAsBranch = New DevExpress.XtraEditors.CheckEdit()
+        Me.lblCaveName = New DevExpress.XtraEditors.LabelControl()
+        CType(Me.txtPrefix.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkVTopoImportIncompatibleSet.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtFilename.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtCaveName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkVTopoImportSetAsBranch.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txtPrefix
         '
-        Me.txtPrefix.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         resources.ApplyResources(Me.txtPrefix, "txtPrefix")
         Me.txtPrefix.Name = "txtPrefix"
-        Me.tipDefault.SetToolTip(Me.txtPrefix, resources.GetString("txtPrefix.ToolTip"))
+        Me.txtPrefix.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         '
         'lblPrefix
         '
+        Me.lblPrefix.Appearance.Font = CType(resources.GetObject("lblPrefix.Appearance.Font"), System.Drawing.Font)
+        Me.lblPrefix.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.lblPrefix, "lblPrefix")
         Me.lblPrefix.Name = "lblPrefix"
         '
@@ -53,19 +57,18 @@ Partial Class frmImportVisualTopo
         '
         resources.ApplyResources(Me.chkVTopoImportIncompatibleSet, "chkVTopoImportIncompatibleSet")
         Me.chkVTopoImportIncompatibleSet.Name = "chkVTopoImportIncompatibleSet"
-        Me.tipDefault.SetToolTip(Me.chkVTopoImportIncompatibleSet, resources.GetString("chkVTopoImportIncompatibleSet.ToolTip"))
-        Me.chkVTopoImportIncompatibleSet.UseVisualStyleBackColor = True
+        Me.chkVTopoImportIncompatibleSet.Properties.Caption = resources.GetString("chkVTopoImportIncompatibleSet.Properties.Caption")
         '
         'txtFilename
         '
-        Me.txtFilename.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         resources.ApplyResources(Me.txtFilename, "txtFilename")
         Me.txtFilename.Name = "txtFilename"
-        Me.txtFilename.ReadOnly = True
-        Me.tipDefault.SetToolTip(Me.txtFilename, resources.GetString("txtFilename.ToolTip"))
+        Me.txtFilename.Properties.ReadOnly = True
         '
         'lblFilename
         '
+        Me.lblFilename.Appearance.Font = CType(resources.GetObject("lblFilename.Appearance.Font"), System.Drawing.Font)
+        Me.lblFilename.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.lblFilename, "lblFilename")
         Me.lblFilename.Name = "lblFilename"
         '
@@ -74,30 +77,28 @@ Partial Class frmImportVisualTopo
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'cmdOk
         '
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
         '
         'txtCaveName
         '
-        Me.txtCaveName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         resources.ApplyResources(Me.txtCaveName, "txtCaveName")
         Me.txtCaveName.Name = "txtCaveName"
-        Me.tipDefault.SetToolTip(Me.txtCaveName, resources.GetString("txtCaveName.ToolTip"))
         '
         'chkVTopoImportSetAsBranch
         '
         resources.ApplyResources(Me.chkVTopoImportSetAsBranch, "chkVTopoImportSetAsBranch")
         Me.chkVTopoImportSetAsBranch.Name = "chkVTopoImportSetAsBranch"
-        Me.chkVTopoImportSetAsBranch.UseVisualStyleBackColor = True
+        Me.chkVTopoImportSetAsBranch.Properties.Caption = resources.GetString("chkVTopoImportSetAsBranch.Properties.Caption")
         '
         'lblCaveName
         '
+        Me.lblCaveName.Appearance.Font = CType(resources.GetObject("lblCaveName.Appearance.Font"), System.Drawing.Font)
+        Me.lblCaveName.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.lblCaveName, "lblCaveName")
         Me.lblCaveName.Name = "lblCaveName"
         '
@@ -118,22 +119,28 @@ Partial Class frmImportVisualTopo
         Me.Controls.Add(Me.txtPrefix)
         Me.Controls.Add(Me.lblPrefix)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.IconOptions.Icon = CType(resources.GetObject("frmImportVisualTopo.IconOptions.Icon"), System.Drawing.Icon)
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.import
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmImportVisualTopo"
+        CType(Me.txtPrefix.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkVTopoImportIncompatibleSet.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtFilename.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtCaveName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkVTopoImportSetAsBranch.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents txtPrefix As System.Windows.Forms.TextBox
-    Friend WithEvents lblPrefix As System.Windows.Forms.Label
-    Friend WithEvents chkVTopoImportIncompatibleSet As System.Windows.Forms.CheckBox
-    Friend WithEvents txtFilename As System.Windows.Forms.TextBox
-    Friend WithEvents lblFilename As System.Windows.Forms.Label
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
-    Friend WithEvents tipDefault As System.Windows.Forms.ToolTip
-    Friend WithEvents chkVTopoImportSetAsBranch As System.Windows.Forms.CheckBox
-    Friend WithEvents txtCaveName As System.Windows.Forms.TextBox
-    Friend WithEvents lblCaveName As System.Windows.Forms.Label
+    Friend WithEvents txtPrefix As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents lblPrefix As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents chkVTopoImportIncompatibleSet As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents txtFilename As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents lblFilename As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents chkVTopoImportSetAsBranch As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents txtCaveName As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents lblCaveName As DevExpress.XtraEditors.LabelControl
 End Class

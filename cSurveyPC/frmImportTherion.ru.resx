@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
+  <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,97 +59,85 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="metadata">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" />
-							</xsd:sequence>
-							<xsd:attribute name="name" use="required" type="xsd:string" />
-							<xsd:attribute name="type" type="xsd:string" />
-							<xsd:attribute name="mimetype" type="xsd:string" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="assembly">
-						<xsd:complexType>
-							<xsd:attribute name="alias" type="xsd:string" />
-							<xsd:attribute name="name" type="xsd:string" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<data name="txtPrefix.ToolTip" xml:space="preserve">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="txtPrefix.ToolTip" xml:space="preserve">
     <value>Префикс, который будет добавлен ко всем номерам пикетов</value>
   </data>
-	<assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-	<data name="lblPrefix.Size" type="System.Drawing.Size, System.Drawing">
-		<value>39, 13</value>
-	</data>
-	<data name="lblPrefix.Text" xml:space="preserve">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblPrefix.Text" xml:space="preserve">
     <value>Префикс:</value>
   </data>
-	<data name="txtFilename.ToolTip" xml:space="preserve">
+  <data name="txtFilename.ToolTip" xml:space="preserve">
     <value>Файл Therion</value>
   </data>
-	<data name="cmdCancel.Text" xml:space="preserve">
+  <data name="cmdCancel.Text" xml:space="preserve">
     <value>Отменить</value>
   </data>
-	<data name="txtCaveName.ToolTip" xml:space="preserve">
+  <data name="txtCaveName.ToolTip" xml:space="preserve">
     <value>Название пещеры (оставьте пустым, если вы хотите импортировать название из файла Therion)</value>
   </data>
-	<data name="lblCaveName.Size" type="System.Drawing.Size, System.Drawing">
-		<value>36, 13</value>
-	</data>
-	<data name="lblCaveName.Text" xml:space="preserve">
+  <data name="lblCaveName.Text" xml:space="preserve">
     <value>Пещера:</value>
   </data>
-	<data name="chkPocketTopoImportData.Size" type="System.Drawing.Size, System.Drawing">
-		<value>83, 17</value>
-	</data>
-	<data name="chkPocketTopoImportGraphics.Size" type="System.Drawing.Size, System.Drawing">
-		<value>101, 17</value>
-	</data>
-	<data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB5KwAAfC8AAH81AACAOQAAgz4AAIU+AACGRgAAiEYAAIlJAACM
         SgAAjk0AHJRdAACecQA8mGgAAKJxAAClcQAAonUAAKx3AACoegAAq30AAK9/AEOYbgBJqX0ATKx+AFGp
@@ -212,32 +200,32 @@
         AAAePz8/Pz8/Pz8wKAAAAAAAIR8dHR0dHB0eIQAAAAAAAP//AAAAAwAAAAMAAAAAAAAAAAAAAAEAAAAD
         AAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAADwAAAB8AAAA/AAA=
 </value>
-	</data>
-	<data name="$this.Text" xml:space="preserve">
+  </data>
+  <data name="$this.Text" xml:space="preserve">
     <value>Импорт данных Therion:</value>
   </data>
-	<data name="cmdOk.Text" xml:space="preserve">
+  <data name="cmdOk.Text" xml:space="preserve">
     <value>Ok</value>
   </data>
-	<data name="lblFilename.Text" xml:space="preserve">
+  <data name="lblFilename.Text" xml:space="preserve">
     <value>Файл:</value>
   </data>
-	<data name="lblTherionScaleFactor.Text" xml:space="preserve">
+  <data name="lblTherionScaleFactor.Text" xml:space="preserve">
     <value>Масштаб:</value>
   </data>
-	<data name="txtTherionScaleFactor.ToolTip" xml:space="preserve">
+  <data name="txtTherionScaleFactor.ToolTip" xml:space="preserve">
     <value>Масштабный коэффициент применяемый при импорте</value>
   </data>
-	<data name="chkTherionMergeAndReorderBorders.Text" xml:space="preserve">
+  <data name="chkTherionMergeAndReorderBorders.Text" xml:space="preserve">
     <value>Объединить и упорядочить границы</value>
   </data>
-	<data name="chkTherionImportprofile.Text" xml:space="preserve">
+  <data name="chkTherionImportprofile.Text" xml:space="preserve">
     <value>Импортировать разрез развертку</value>
   </data>
-	<data name="chkTherionImportplan.Text" xml:space="preserve">
+  <data name="chkTherionImportplan.Text" xml:space="preserve">
     <value>Импортировать план</value>
   </data>
-	<data name="chktherionConvertBezierToSpline.Text" xml:space="preserve">
+  <data name="chktherionConvertBezierToSpline.Text" xml:space="preserve">
     <value>Конвертировать Безье в сплайны</value>
   </data>
 </root>

@@ -22,52 +22,48 @@ Partial Class frmImportResurvey
     'Non modificarla nell'editor del codice.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmImportResurvey))
-        Me.txtPrefix = New System.Windows.Forms.TextBox()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.cmdOk = New System.Windows.Forms.Button()
-        Me.tipDefault = New System.Windows.Forms.ToolTip(Me.components)
-        Me.txtCaveName = New System.Windows.Forms.TextBox()
-        Me.lblCaveName = New System.Windows.Forms.Label()
-        Me.lblPrefix = New System.Windows.Forms.Label()
-        Me.lblNordType = New System.Windows.Forms.Label()
-        Me.cboNordType = New System.Windows.Forms.ComboBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.txtPrefix = New DevExpress.XtraEditors.TextEdit()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
+        Me.txtCaveName = New DevExpress.XtraEditors.TextEdit()
+        Me.lblCaveName = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPrefix = New DevExpress.XtraEditors.LabelControl()
+        Me.lblNordType = New DevExpress.XtraEditors.LabelControl()
+        Me.cboNordType = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.lblMagDecWarning = New DevExpress.XtraEditors.LabelControl()
+        CType(Me.txtPrefix.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtCaveName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboNordType.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txtPrefix
         '
-        Me.txtPrefix.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         resources.ApplyResources(Me.txtPrefix, "txtPrefix")
         Me.txtPrefix.Name = "txtPrefix"
-        Me.tipDefault.SetToolTip(Me.txtPrefix, resources.GetString("txtPrefix.ToolTip"))
+        Me.txtPrefix.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         '
         'cmdCancel
         '
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'cmdOk
         '
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
         '
         'txtCaveName
         '
         resources.ApplyResources(Me.txtCaveName, "txtCaveName")
-        Me.txtCaveName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtCaveName.Name = "txtCaveName"
-        Me.tipDefault.SetToolTip(Me.txtCaveName, resources.GetString("txtCaveName.ToolTip"))
         '
         'lblCaveName
         '
+        Me.lblCaveName.Appearance.Font = CType(resources.GetObject("lblCaveName.Appearance.Font"), System.Drawing.Font)
+        Me.lblCaveName.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.lblCaveName, "lblCaveName")
         Me.lblCaveName.Name = "lblCaveName"
         '
@@ -83,23 +79,22 @@ Partial Class frmImportResurvey
         '
         'cboNordType
         '
-        Me.cboNordType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboNordType.DropDownWidth = 240
         resources.ApplyResources(Me.cboNordType, "cboNordType")
-        Me.cboNordType.Items.AddRange(New Object() {resources.GetString("cboNordType.Items"), resources.GetString("cboNordType.Items1")})
         Me.cboNordType.Name = "cboNordType"
+        Me.cboNordType.Properties.Appearance.Font = CType(resources.GetObject("cboNordType.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.cboNordType.Properties.Appearance.Options.UseFont = True
+        Me.cboNordType.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboNordType.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboNordType.Properties.Items.AddRange(New Object() {resources.GetString("cboNordType.Properties.Items"), resources.GetString("cboNordType.Properties.Items1")})
+        Me.cboNordType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
-        'Label9
+        'lblMagDecWarning
         '
-        resources.ApplyResources(Me.Label9, "Label9")
-        Me.Label9.Name = "Label9"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = Global.cSurveyPC.My.Resources.Resources.error3
-        resources.ApplyResources(Me.PictureBox1, "PictureBox1")
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.TabStop = False
+        Me.lblMagDecWarning.AllowHtmlString = True
+        resources.ApplyResources(Me.lblMagDecWarning, "lblMagDecWarning")
+        Me.lblMagDecWarning.Appearance.Options.UseTextOptions = True
+        Me.lblMagDecWarning.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top
+        Me.lblMagDecWarning.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        Me.lblMagDecWarning.Name = "lblMagDecWarning"
         '
         'frmImportResurvey
         '
@@ -107,8 +102,7 @@ Partial Class frmImportResurvey
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
-        Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.lblMagDecWarning)
         Me.Controls.Add(Me.lblNordType)
         Me.Controls.Add(Me.cboNordType)
         Me.Controls.Add(Me.txtCaveName)
@@ -118,23 +112,25 @@ Partial Class frmImportResurvey
         Me.Controls.Add(Me.lblPrefix)
         Me.Controls.Add(Me.txtPrefix)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.IconOptions.Icon = CType(resources.GetObject("frmImportResurvey.IconOptions.Icon"), System.Drawing.Icon)
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.import
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmImportResurvey"
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPrefix.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtCaveName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboNordType.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents txtPrefix As System.Windows.Forms.TextBox
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
-    Friend WithEvents tipDefault As System.Windows.Forms.ToolTip
-    Friend WithEvents txtCaveName As System.Windows.Forms.TextBox
-    Friend WithEvents lblCaveName As System.Windows.Forms.Label
-    Friend WithEvents lblPrefix As System.Windows.Forms.Label
-    Friend WithEvents lblNordType As System.Windows.Forms.Label
-    Friend WithEvents cboNordType As System.Windows.Forms.ComboBox
-    Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents txtPrefix As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents txtCaveName As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents lblCaveName As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblPrefix As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblNordType As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cboNordType As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents lblMagDecWarning As DevExpress.XtraEditors.LabelControl
 End Class

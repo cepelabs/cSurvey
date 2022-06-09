@@ -37,11 +37,7 @@ friend Class frmScriptFormulaEditor
         End Property
     End Class
 
-    Friend Event OnFormulaCodeRequest(Sender As frmScriptFormulaEditor, ByRef Args As cFormulaCodeRequestEvent)
-
-    Private Sub btnCheckQuerySintax_Click(sender As Object, e As EventArgs) Handles btnCheckQuerySintax.Click
-        Call pCheckSintax(QuietEnum.All)
-    End Sub
+    Friend Event OnFormulaCodeRequest(Sender As Object, ByRef Args As cFormulaCodeRequestEvent)
 
     Friend Enum QuietEnum
         Quiet = 0
@@ -57,7 +53,7 @@ friend Class frmScriptFormulaEditor
         Dim oScript As cScript = New cScript(oSurvey, oArgs.FullCode, iFunctionLanguage)
         If oScript.CompilerErrors.Count = 0 Then
             If Quiet = QuietEnum.All Then
-                Call MsgBox(GetLocalizedString("formulaeditor.warning1"), vbOKOnly Or MsgBoxStyle.Information, GetLocalizedString("formulaeditor.warningtitle"))
+                Call cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("formulaeditor.warning1"), vbOKOnly Or MsgBoxStyle.Information, GetLocalizedString("formulaeditor.warningtitle"))
             End If
             Return True
         Else
@@ -67,15 +63,14 @@ friend Class frmScriptFormulaEditor
                     sMessage = sMessage & " - " & oError.ErrorText & vbCrLf
                 Next
                 sMessage = sMessage & GetLocalizedString("formulaeditor.warning3")
-                Call MsgBox(sMessage, vbOKOnly Or MsgBoxStyle.Critical, GetLocalizedString("formulaeditor.warningtitle"))
+                Call cSurvey.UIHelpers.Dialogs.Msgbox(sMessage, vbOKOnly Or MsgBoxStyle.Critical, GetLocalizedString("formulaeditor.warningtitle"))
             End If
             Return False
         End If
     End Function
 
-    Private Sub btnCleanQuerySintax_Click(sender As Object, e As EventArgs) Handles btnCleanQuerySintax.Click
-        txtFormula.Text = ""
-        btnUnboxed.Checked = False
+    Private Sub btnCleanQuerySintax_Click(sender As Object, e As EventArgs)
+
     End Sub
 
     Public Function GetScriptBag() As cScriptBag
@@ -85,7 +80,7 @@ friend Class frmScriptFormulaEditor
         Else
             sText = sCacheText
         End If
-        Return New cScriptBag(sText, cboFunctionLanguage.SelectedIndex, btnUnboxed.Checked)
+        Return New cScriptBag(sText, btnFunctionLanguage.EditValue, btnUnboxed.Checked)
     End Function
 
     Public Sub New(Survey As cSurvey.cSurvey, Script As cScriptBag)
@@ -94,10 +89,14 @@ friend Class frmScriptFormulaEditor
         InitializeComponent()
 
         ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
+        cboFunctionLanguage.Items(0).Value = LanguageEnum.VisualBasic
+        cboFunctionLanguage.Items(1).Value = LanguageEnum.CSharp
+
         oSurvey = Survey
+
         bDisableChangeEvent = True
         iFunctionLanguage = Script.Language
-        cboFunctionLanguage.SelectedIndex = iFunctionLanguage
+        btnFunctionLanguage.EditValue = iFunctionLanguage
         txtFormula.Text = Script.Code
         btnUnboxed.Checked = Script.Unboxed
         btnUnboxed.Enabled = Not btnUnboxed.Checked
@@ -115,7 +114,7 @@ friend Class frmScriptFormulaEditor
         oSurvey = Survey
         bDisableChangeEvent = True
         iFunctionLanguage = FunctionLanguage
-        cboFunctionLanguage.SelectedIndex = FunctionLanguage
+        btnFunctionLanguage.EditValue = FunctionLanguage
         txtFormula.Text = FormulaText
         btnUnboxed.Checked = Unboxed
         btnUnboxed.Enabled = Not btnUnboxed.Checked
@@ -129,38 +128,37 @@ friend Class frmScriptFormulaEditor
         End If
     End Sub
 
-    Private Sub cboFunctionLanguage_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboFunctionLanguage.SelectedIndexChanged
-        iFunctionLanguage = cboFunctionLanguage.SelectedIndex
-        Call modScript.ApplyFormat(txtFormula, iFunctionLanguage)
-    End Sub
-
     Private sCacheText As String = Nothing
 
     Private Sub frmFormulaEditor_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         sCacheText = txtFormula.Text
     End Sub
 
-    Private Sub btnUnboxed_Click(sender As Object, e As EventArgs) Handles btnUnboxed.Click
-        btnUnboxed.Checked = Not btnUnboxed.Checked
-    End Sub
-
-    Private Sub btnUnboxed_CheckedChanged(sender As Object, e As EventArgs) Handles btnUnboxed.CheckedChanged
+    Private Sub btnUnboxed_CheckedChanged(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnUnboxed.CheckedChanged
         If Not bDisableChangeEvent Then
             If btnUnboxed.Checked Then
-                btnUnboxed.Image = cSurveyPC.My.Resources.Resources.box_open
-
                 Dim sFormula As String = txtFormula.Text
                 Dim oArgs As cFormulaCodeRequestEvent = New cFormulaCodeRequestEvent(sFormula, iFunctionLanguage, False)
                 RaiseEvent OnFormulaCodeRequest(Me, oArgs)
-
                 txtFormula.Text = oArgs.FullCode
-
                 btnUnboxed.Enabled = False
             Else
-                btnUnboxed.Image = cSurveyPC.My.Resources.Resources.box_closed
                 btnUnboxed.Enabled = True
             End If
         End If
     End Sub
 
+    Private Sub btnCheckQuerySintax_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnCheckQuerySintax.ItemClick
+        Call pCheckSintax(QuietEnum.All)
+    End Sub
+
+    Private Sub btnCleanQuerySintax_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnCleanQuerySintax.ItemClick
+        txtFormula.Text = ""
+        btnUnboxed.Checked = False
+    End Sub
+
+    Private Sub btnFunctionLanguage_EditValueChanged(sender As Object, e As EventArgs) Handles btnFunctionLanguage.EditValueChanged
+        iFunctionLanguage = btnFunctionLanguage.EditValue
+        Call modScript.ApplyFormat(txtFormula, iFunctionLanguage)
+    End Sub
 End Class

@@ -121,14 +121,8 @@
     <value>Rette</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblLineType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
-  </data>
   <data name="lblLineType.Text" xml:space="preserve">
     <value>Linea:</value>
-  </data>
-  <data name="lblReductionFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 13</value>
   </data>
   <data name="lblReductionFactor.Text" xml:space="preserve">
     <value>Riduzione punti:</value>
@@ -136,14 +130,8 @@
   <data name="cmdCreate.Text" xml:space="preserve">
     <value>Crea</value>
   </data>
-  <data name="lblItemToCreate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 13</value>
-  </data>
   <data name="lblItemToCreate.Text" xml:space="preserve">
     <value>Oggetto:</value>
-  </data>
-  <data name="lblWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 13</value>
   </data>
   <data name="lblWidth.Text" xml:space="preserve">
     <value>Larghezza:</value>

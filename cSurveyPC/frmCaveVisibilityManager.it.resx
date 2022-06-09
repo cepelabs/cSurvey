@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
+  <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,212 +59,138 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="metadata">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" />
-							</xsd:sequence>
-							<xsd:attribute name="name" use="required" type="xsd:string" />
-							<xsd:attribute name="type" type="xsd:string" />
-							<xsd:attribute name="mimetype" type="xsd:string" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="assembly">
-						<xsd:complexType>
-							<xsd:attribute name="alias" type="xsd:string" />
-							<xsd:attribute name="name" type="xsd:string" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<data name="cmdApply.Text" xml:space="preserve">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cmdApply.Text" xml:space="preserve">
     <value>Applica</value>
   </data>
-	<data name="cmdCancel.Text" xml:space="preserve">
+  <data name="cmdCancel.Text" xml:space="preserve">
     <value>Annulla</value>
   </data>
-	<assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-	<data name="btnAdd.Size" type="System.Drawing.Size, System.Drawing">
-		<value>46, 22</value>
-	</data>
-	<data name="btnAdd.Text" xml:space="preserve">
-    <value>Aggiungi</value>
-  </data>
-	<data name="btnAddAsCopy.Size" type="System.Drawing.Size, System.Drawing">
-		<value>86, 22</value>
-	</data>
-	<data name="btnAddAsCopy.Text" xml:space="preserve">
-    <value>Aggiungi come copia</value>
-  </data>
-	<data name="btnRemove.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD5SURBVDhPY0AGRxwM/oMwlIsB8MqDJL4d3gXG2BThlQcJ
-        fN294f9TT10wBrGRFRGShyjYvPz/c18jOAbxQeL45KDawcAYJPBl9bz/rwLN4RjExyYG1WwM0YoAYEO+
-        Lp7+/02oDVYMksOlGQYghszt//8u0hEFg8QIaQYDkKJv0zr+f4h1Q8EgMagBuAFY88Sm/58TvbFikBxO
-        Q0AS33uq/39N9YdjEB+bGIYhIIEf7WX/v2eGwDGIDxLHJwfVDjHgV1Ph/595kWAMYkMVgAIMHLA45OEA
-        rOhPXQ4YI2mGAULyYABWhEsSCAjJgwHYyRAmVkBInlTAwAAAGRZmoO4izFMAAAAASUVORK5CYII=
-</value>
-	</data>
-	<data name="btnRemove.Size" type="System.Drawing.Size, System.Drawing">
-		<value>66, 22</value>
-	</data>
-	<data name="btnRemove.Text" xml:space="preserve">
-    <value>Rimuovi</value>
-  </data>
-	<data name="btnRemoveAll.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD5SURBVDhPY0AGRxwM/oMwlIsB8MqDJL4d3gXG2BThlQcJ
-        fN294f9TT10wBrGRFRGShyjYvPz/c18jOAbxQeL45KDawcAYJPBl9bz/rwLN4RjExyYG1WwM0YoAYEO+
-        Lp7+/02oDVYMksOlGQYghszt//8u0hEFg8QIaQYDkKJv0zr+f4h1Q8EgMagBuAFY88Sm/58TvbFikBxO
-        Q0AS33uq/39N9YdjEB+bGIYhIIEf7WX/v2eGwDGIDxLHJwfVDjHgV1Ph/595kWAMYkMVgAIMHLA45OEA
-        rOhPXQ4YI2mGAULyYABWhEsSCAjJgwHYyRAmVkBInlTAwAAAGRZmoO4izFMAAAAASUVORK5CYII=
-</value>
-	</data>
-	<data name="btnRemoveAll.Size" type="System.Drawing.Size, System.Drawing">
-		<value>79, 22</value>
-	</data>
-	<data name="btnRemoveAll.Text" xml:space="preserve">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnRemoveAll.Text" xml:space="preserve">
     <value>Rimuovi tutti</value>
   </data>
-	<data name="btnCheckQuerySintax.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFMSURBVDhPnVI9SwNBEJ3fInaW10kCenhJrPwJ5i/YSbQR
-        MfGjEltNCmNQEBQ/ORRBIljESpE0FjYW2gSjgtiM83Z3kjOc5PTBY+e9mTfsHkfA0PQBg0YIVPvF8Aja
-        L50d9850gGaqsBOC/kK4D88NehpQ7fgTrjkARgPgcGH7VDXOWOiwUj05em8QDx0GowEwPbtbh07P7F2p
-        B51ZIgZRA9F3aa3vHTTKnsYbLRK3Ple5/bXG2eXukkTwJfz0McflE+L1Q3rOrcQsyMrVQCc7QPjhbYor
-        58Rbl8RjdiZ6e6KcXKn5nuf79qT8A90lqO9e81yuE1eviYO4MDAuC2o3xBUZarQmeGSeDFHDq0ovWPwl
-        7OAFJeLNW+INGb54SRmihtcvrLBLmrIEi4So4aFnR/rDy0ig9miJGp5tJYeHbwKittbfgeC/wwlA9A0A
-        edmoX1iq5wAAAABJRU5ErkJggg==
-</value>
-	</data>
-	<data name="btnCheckQuerySintax.Size" type="System.Drawing.Size, System.Drawing">
-		<value>88, 22</value>
-	</data>
-	<data name="btnCheckQuerySintax.Text" xml:space="preserve">
-    <value>Verifica sintassi</value>
-  </data>
-	<data name="btnCleanQuerySintax.Size" type="System.Drawing.Size, System.Drawing">
-		<value>36, 22</value>
-	</data>
-	<data name="btnCleanQuerySintax.Text" xml:space="preserve">
-    <value>Cancella</value>
-  </data>
-	<data name="Label1.Text" xml:space="preserve">
+  <data name="Label1.Text" xml:space="preserve">
     <value>Profilo:</value>
   </data>
-	<data name="DataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+  <data name="DataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
     <value>Grotta</value>
   </data>
-	<data name="DataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+  <data name="DataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
     <value>Ramo</value>
   </data>
-	<data name="DataGridViewCheckBoxColumn1.HeaderText" xml:space="preserve">
+  <data name="DataGridViewCheckBoxColumn1.HeaderText" xml:space="preserve">
     <value>Visibile</value>
   </data>
-	<data name="mnuContextProfileSelectAll.Size" type="System.Drawing.Size, System.Drawing">
-		<value>179, 22</value>
-	</data>
-	<data name="mnuContextProfileSelectAll.Text" xml:space="preserve">
-    <value>Seleziona tutti</value>
-  </data>
-	<data name="mnuContextProfileDeselectAll.Size" type="System.Drawing.Size, System.Drawing">
-		<value>179, 22</value>
-	</data>
-	<data name="mnuContextProfileDeselectAll.Text" xml:space="preserve">
-    <value>Deseleziona tutti</value>
-  </data>
-	<data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-		<value>176, 6</value>
-	</data>
-	<data name="mnuContextProfileInvertSelection.Size" type="System.Drawing.Size, System.Drawing">
-		<value>179, 22</value>
-	</data>
-	<data name="mnuContextProfileInvertSelection.Text" xml:space="preserve">
-    <value>Inverti selezione</value>
-  </data>
-	<data name="ToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-		<value>176, 6</value>
-	</data>
-	<data name="mnuContextProfileSelectCurrentCave.Size" type="System.Drawing.Size, System.Drawing">
-		<value>179, 22</value>
-	</data>
-	<data name="mnuContextProfileSelectCurrentCave.Text" xml:space="preserve">
-    <value>Seleziona la grotta corrente</value>
-  </data>
-	<data name="mnuContextProfileDeselectCurrentCave.Size" type="System.Drawing.Size, System.Drawing">
-		<value>179, 22</value>
-	</data>
-	<data name="mnuContextProfileDeselectCurrentCave.Text" xml:space="preserve">
-    <value>Deseleziona la grotta corrente</value>
-  </data>
-	<data name="mnuContextProfile.Size" type="System.Drawing.Size, System.Drawing">
-		<value>180, 126</value>
-	</data>
-	<data name="TabCaves.Text" xml:space="preserve">
-    <value>Grotte e rami</value>
-  </data>
-	<data name="tabSegment.Text" xml:space="preserve">
+  <data name="tabSegment.Text" xml:space="preserve">
     <value>Segmenti</value>
   </data>
-	<data name="tabItems.Text" xml:space="preserve">
+  <data name="tabItems.Text" xml:space="preserve">
     <value>Oggetti grafici</value>
   </data>
-	<data name="$this.Text" xml:space="preserve">
+  <data name="$this.Text" xml:space="preserve">
     <value>Profili di visibilità:</value>
   </data>
-	<data name="cmdOk.Text" xml:space="preserve">
+  <data name="cmdOk.Text" xml:space="preserve">
     <value>Ok</value>
   </data>
-	<data name="colBranch.HeaderText" xml:space="preserve">
+  <data name="colBranch.HeaderText" xml:space="preserve">
     <value>Ramo</value>
   </data>
-	<data name="colCave.HeaderText" xml:space="preserve">
+  <data name="colCave.HeaderText" xml:space="preserve">
     <value>Grotta</value>
   </data>
-	<data name="Visibile.HeaderText" xml:space="preserve">
+  <data name="Visibile.HeaderText" xml:space="preserve">
     <value>Visibile</value>
+  </data>
+  <data name="btnAddAsCopy.Caption" xml:space="preserve">
+    <value>Aggiungi come copia</value>
+  </data>
+  <data name="btnAdd.Caption" xml:space="preserve">
+    <value>Aggiungi</value>
+  </data>
+  <data name="btnCheckQuerySintax.Caption" xml:space="preserve">
+    <value>Verifica sintassi</value>
+  </data>
+  <data name="btnCleanQuerySintax.Caption" xml:space="preserve">
+    <value>Cancella</value>
+  </data>
+  <data name="btnRemove.Caption" xml:space="preserve">
+    <value>Rimuovi</value>
+  </data>
+  <data name="btnSelectCurrentCave.Caption" xml:space="preserve">
+    <value>Seleziona la grotta corrente</value>
+  </data>
+  <data name="btnSelectAll.Caption" xml:space="preserve">
+    <value>Seleziona tutti</value>
+  </data>
+  <data name="btnInvertSelection.Caption" xml:space="preserve">
+    <value>Inverti selezione</value>
+  </data>
+  <data name="btnDeselectCurrentCave.Caption" xml:space="preserve">
+    <value>Deseleziona la grotta corrente</value>
+  </data>
+  <data name="btnDeselectAll.Caption" xml:space="preserve">
+    <value>Deseleziona tutti</value>
+  </data>
+  <data name="tabCaveAndBranches.Text" xml:space="preserve">
+    <value>Grotte e rami</value>
   </data>
 </root>

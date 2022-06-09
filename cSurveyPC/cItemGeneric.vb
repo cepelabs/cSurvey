@@ -155,7 +155,7 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
             Using oMatrix As Matrix = New Matrix
                 If PaintOptions.DrawTranslation Then
                     Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
@@ -168,13 +168,13 @@ Namespace cSurvey.Design.Items
             End Using
         End Function
 
-        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
+        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
             Dim oSVG As XmlDocument = modSVG.CreateSVG
             Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
             Return oSVG
         End Function
 
-        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             Dim oCache As cDrawCache = MyBase.Caches(PaintOptions)
             With oCache
                 If .Invalidated Then
@@ -211,10 +211,10 @@ Namespace cSurvey.Design.Items
             End With
         End Sub
 
-        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             If MyBase.Points.Count > 0 Then
                 Call Render(Graphics, PaintOptions, Options, Selected)
-                If (Graphics.VisibleClipBounds.IntersectsWith(MyBase.GetBounds) Or Not PaintOptions.IsDesign) And Not MyBase.HiddenInDesign Then
+                If (Graphics.VisibleClipBounds.IntersectsWith(MyBase.GetBounds) OrElse Not PaintOptions.IsDesign) AndAlso Not MyBase.HiddenInDesign Then
                     Call MyBase.Caches(PaintOptions).Paint(Graphics, PaintOptions, Options)
                     If PaintOptions.ShowSegmentBindings Then
                         Call modPaint.PaintPointToSegmentBindings(Graphics, MyBase.Survey, Me, Selected)
@@ -250,7 +250,7 @@ Namespace cSurvey.Design.Items
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal Category As cIItem.cItemCategoryEnum)
             Call MyBase.New(Survey, Design, Layer, cIItem.cItemTypeEnum.Generic, Category)
-            iLineType = Survey.Properties.DesignProperties.GetValue("LineType", Survey.GetGlobalSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
+            iLineType = Survey.Properties.DesignProperties.GetValue("LineType", Helper.Editor.cEditDesignEnvironment.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
         End Sub
 
         Public Class cItemGenericOptions
@@ -263,10 +263,10 @@ Namespace cSurvey.Design.Items
 
             Public Sub New(ByVal Survey As cSurvey)
                 oSurvey = Survey
-                iMaxPathLen = oSurvey.GetGlobalSetting("svg.importmaxpathlen", 2000)
-                sScale = modNumbers.StringToSingle(oSurvey.GetGlobalSetting("svg.importscale", 0.05))
-                iLineType = oSurvey.GetGlobalSetting("svg.importlinetype", cIItemLine.LineTypeEnum.Splines)
-                bDivide = oSurvey.GetGlobalSetting("svg.importautodivide", False)
+                iMaxPathLen = Helper.Editor.cEditDesignEnvironment.GetSetting("svg.importmaxpathlen", 2000)
+                sScale = modNumbers.StringToSingle(Helper.Editor.cEditDesignEnvironment.GetSetting("svg.importscale", 0.05))
+                iLineType = Helper.Editor.cEditDesignEnvironment.GetSetting("svg.importlinetype", cIItemLine.LineTypeEnum.Splines)
+                bDivide = Helper.Editor.cEditDesignEnvironment.GetSetting("svg.importautodivide", False)
             End Sub
 
             Public Sub New(ByVal LineType As cIItemLine.LineTypeEnum, ByVal Scale As Single)

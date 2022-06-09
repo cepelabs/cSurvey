@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 24.1.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 32 32"
+   style="enable-background:new 0 0 32 32;"
+   xml:space="preserve"
+   sodipodi:docname="invertcolor.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs19" /><sodipodi:namedview
+   id="namedview17"
+   pagecolor="#505050"
+   bordercolor="#eeeeee"
+   borderopacity="1"
+   inkscape:pageshadow="0"
+   inkscape:pageopacity="0"
+   inkscape:pagecheckerboard="0"
+   showgrid="false"
+   showguides="true"
+   inkscape:guide-bbox="true"
+   inkscape:zoom="9.1923882"
+   inkscape:cx="36.116839"
+   inkscape:cy="25.18388"
+   inkscape:window-width="2560"
+   inkscape:window-height="1017"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1"><sodipodi:guide
+     position="15.923077,28"
+     orientation="0,-1"
+     id="guide1226" /><sodipodi:guide
+     position="4,15.692308"
+     orientation="1,0"
+     id="guide1228" /></sodipodi:namedview>
+<style
+   type="text/css"
+   id="style2">
+	.Black{fill:#737374;}
+	.Yellow{fill:#FCB01B;}
+	.Green{fill:#129C49;}
+	.Blue{fill:#387CB7;}
+	.Red{fill:#D02127;}
+	.White{fill:#FFFFFF;}
+	.st0{opacity:0.5;}
+	.st1{opacity:0.75;}
+	.st2{opacity:0.25;}
+	.st3{display:none;fill:#737374;}
+</style>
+<g
+   id="g1253"
+   transform="matrix(0.5625,0,0,0.5625,2.5,2.5)"><path class="Black"
+     d="M 41.29,41.75 36.58,37.04 24,24.46 16.87,17.33 14.04,14.5 8.54,9 6,11.55 l 5.56,5.56 c -5.1,6.28 -4.72,15.53 1.12,21.38 3.12,3.12 7.22,4.69 11.31,4.69 3.57,0 7.14,-1.19 10.06,-3.56 L 39.45,45 42,42.45 Z M 24,39.17 c -3.21,0 -6.22,-1.25 -8.48,-3.51 C 13.25,33.39 12,30.38 12,27.17 c 0,-2.64 0.86,-5.14 2.42,-7.21 L 24,29.55 Z M 24,10.2 v 9.16 l 14.51,14.51 c 2.73,-5.91 1.68,-13.14 -3.2,-18.02 L 24,4.54 l -7.41,7.41 2.83,2.83 z"
+     id="path1243" /></g></svg>

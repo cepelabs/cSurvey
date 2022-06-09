@@ -1,29 +1,27 @@
-﻿Imports cSurveyPC.cSurvey.Design
+﻿Imports cSurveyPC.cSurvey
+Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Properties
+Imports DevExpress.XtraGrid.Views.Base
 
-friend Class frmParametersSegments
-    Friend Event OnChangeOptions(ByVal Sender As Object, ByVal Options As cOptions)
-
-    Private oOptions As cOptions
-    Private oSurvey As cSurvey.cSurvey
+Friend Class frmParametersSegments
+    Private oOptions As cOptionsCenterline
     Private iApplyTo As cSurvey.Design.cIDesign.cDesignTypeEnum
 
-    Private bDisabledEvent As Boolean
+    Private bEventDisabled As Boolean
 
-    Public Sub New(ByVal Options As cOptions, ByVal ApplyTo As cSurvey.Design.cIDesign.cDesignTypeEnum)
+    Public Sub New(ByVal Options As cOptionsCenterline, ByVal ApplyTo As cSurvey.Design.cIDesign.cDesignTypeEnum)
 
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
         oOptions = Options
-        oSurvey = oOptions.Survey
         iApplyTo = ApplyTo
 
-        bDisabledEvent = True
+        bEventDisabled = True
 
-        chkSurface.Checked = (oOptions.DrawSegmentsOptions And cOptions.DrawSegmentsOptionsEnum.Surface) = cOptions.DrawSegmentsOptionsEnum.Surface
-        chkDuplicate.Checked = (oOptions.DrawSegmentsOptions And cOptions.DrawSegmentsOptionsEnum.Duplicate) = cOptions.DrawSegmentsOptionsEnum.Duplicate
+        chkSurface.Checked = (oOptions.DrawSegmentsOptions And cOptionsDesign.DrawSegmentsOptionsEnum.Surface) = cOptionsDesign.DrawSegmentsOptionsEnum.Surface
+        chkDuplicate.Checked = (oOptions.DrawSegmentsOptions And cOptionsDesign.DrawSegmentsOptionsEnum.Duplicate) = cOptionsDesign.DrawSegmentsOptionsEnum.Duplicate
         cboSegmentsPaintStyle.SelectedIndex = oOptions.DrawStyle
         cboSplayStyle.SelectedIndex = oOptions.SplayStyle
 
@@ -34,53 +32,74 @@ friend Class frmParametersSegments
             grpSurface.Enabled = False
         End If
 
-        lvDesignPlotShowHLsDett.Items.Clear()
-        For Each oDetail As cHighlightsDetail In oSurvey.Properties.HighlightsDetails
-            Dim oItem As ListViewItem = New ListViewItem()
-            oItem.Name = oDetail.ID
-            oItem.Text = oDetail.Name
-            oItem.Checked = oOptions.HighlightsOptions.Get(oDetail)
-            Call lvDesignPlotShowHLsDett.Items.Add(oItem)
-        Next
+        chkShowHLs.Checked = oOptions.DrawHighlights
+        grdHighlights.Enabled = oOptions.DrawHighlights
+        grdHighlights.DataSource = oOptions.Survey.Properties.HighlightsDetails
 
-        bDisabledEvent = False
+        bEventDisabled = False
     End Sub
 
-    Private Sub pSave()
-        oOptions.DrawSegmentsOptions = cOptions.DrawSegmentsOptionsEnum.None
-        oOptions.DrawStyle = cboSegmentsPaintStyle.SelectedIndex
-        If chkSurface.Checked Then oOptions.DrawSegmentsOptions = oOptions.DrawSegmentsOptions Or cOptions.DrawSegmentsOptionsEnum.Surface
-        If chkDuplicate.Checked Then oOptions.DrawSegmentsOptions = oOptions.DrawSegmentsOptions Or cOptions.DrawSegmentsOptionsEnum.Duplicate
-        oOptions.DrawHighlights = chkShowHLs.Checked
-        oOptions.SplayStyle = cboSplayStyle.SelectedIndex
+    Private Sub grdViewHighlights_CustomUnboundColumnData(sender As Object, e As CustomColumnDataEventArgs) Handles grdViewHighlights.CustomUnboundColumnData
+        If e.IsGetData Then
+            If e.Column Is colHLSelected Then
+                e.Value = oOptions.HighlightsOptions.Get(DirectCast(e.Row, Properties.cHighlightsDetail))
+            End If
+        Else
+            If e.Column Is colHLSelected Then
+                Call oOptions.HighlightsOptions.Set(DirectCast(e.Row, Properties.cHighlightsDetail), e.Value)
+            End If
+        End If
     End Sub
 
-    Private Sub cmdOk_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdOk.Click
-        Call pSave()
-        RaiseEvent OnChangeOptions(Me, oOptions)
-        Call Close()
-        Call Dispose()
-    End Sub
-
-    Private Sub cmdCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancel.Click
-        Call Close()
-        Call Dispose()
-    End Sub
-
-    Private Sub cmdApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdApply.Click
-        Call pSave()
-        RaiseEvent OnChangeOptions(Me, oOptions)
-    End Sub
+    'Public Sub Save() Implements cIPrintExportParameters.Save
+    '    oOptions.DrawSegmentsOptions = cOptions.DrawSegmentsOptionsEnum.None
+    '    If chkSurface.Checked Then oOptions.DrawSegmentsOptions = oOptions.DrawSegmentsOptions Or cOptions.DrawSegmentsOptionsEnum.Surface
+    '    If chkDuplicate.Checked Then oOptions.DrawSegmentsOptions = oOptions.DrawSegmentsOptions Or cOptions.DrawSegmentsOptionsEnum.Duplicate
+    '    oOptions.DrawStyle = cboSegmentsPaintStyle.SelectedIndex
+    '    oOptions.DrawHighlights = chkShowHLs.Checked
+    '    oOptions.SplayStyle = cboSplayStyle.SelectedIndex
+    'End Sub
 
     Private Sub chkShowHLs_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowHLs.CheckedChanged
-        lvDesignPlotShowHLsDett.Enabled = chkShowHLs.Checked
-    End Sub
-
-    Private Sub lvDesignPlotShowHLsDett_ItemCheck(sender As Object, e As ItemCheckEventArgs) Handles lvDesignPlotShowHLsDett.ItemCheck
-        Call oOptions.HighlightsOptions.Set(lvDesignPlotShowHLsDett.Items(e.Index).Name, e.NewValue)
+        grdHighlights.Enabled = chkShowHLs.Checked
+        If Not oOptions Is Nothing AndAlso Not bEventDisabled Then
+            oOptions.DrawHighlights = chkShowHLs.Checked
+        End If
     End Sub
 
     Private Sub chkDesignSurfaceProfile_CheckedChanged(sender As Object, e As EventArgs) Handles chkDesignSurfaceProfile.CheckedChanged
-        oOptions.DrawSurfaceProfile = chkDesignSurfaceProfile.Checked
+        If Not oOptions Is Nothing AndAlso Not bEventDisabled Then
+            oOptions.DrawSurfaceProfile = chkDesignSurfaceProfile.Checked
+        End If
+    End Sub
+
+    Private Sub cboSplayStyle_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboSplayStyle.SelectedIndexChanged
+        If Not oOptions Is Nothing AndAlso Not bEventDisabled Then
+            oOptions.SplayStyle = cboSplayStyle.SelectedIndex
+        End If
+    End Sub
+
+    Private Sub cboSegmentsPaintStyle_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboSegmentsPaintStyle.SelectedIndexChanged
+        If Not oOptions Is Nothing AndAlso Not bEventDisabled Then
+            oOptions.DrawStyle = cboSegmentsPaintStyle.SelectedIndex
+        End If
+    End Sub
+
+    Private Sub chkSurface_CheckedChanged(sender As Object, e As EventArgs) Handles chkSurface.CheckedChanged
+        If Not oOptions Is Nothing AndAlso Not bEventDisabled Then
+            If chkSurface.Checked Then
+                oOptions.DrawSegmentsOptions = oOptions.DrawSegmentsOptions Or cOptionsDesign.DrawSegmentsOptionsEnum.Surface
+            Else
+                oOptions.DrawSegmentsOptions = oOptions.DrawSegmentsOptions And Not cOptionsDesign.DrawSegmentsOptionsEnum.Surface
+            End If
+        End If
+    End Sub
+
+    Private Sub chkDuplicate_CheckedChanged(sender As Object, e As EventArgs) Handles chkDuplicate.CheckedChanged
+        If chkDuplicate.Checked Then
+            oOptions.DrawSegmentsOptions = oOptions.DrawSegmentsOptions Or cOptionsDesign.DrawSegmentsOptionsEnum.Duplicate
+        Else
+            oOptions.DrawSegmentsOptions = oOptions.DrawSegmentsOptions And Not cOptionsDesign.DrawSegmentsOptionsEnum.Duplicate
+        End If
     End Sub
 End Class

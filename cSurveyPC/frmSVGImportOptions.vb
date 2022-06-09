@@ -45,7 +45,7 @@ friend Class frmSVGImportOptions
                 'Call oRect.Inflate(-1, -1)
                 Dim sDX As Single = oRect.Width / sWidth
                 Dim sDY As Single = oRect.Height / sHeight
-                Dim sD As Single = 1 / IIf(sDX > sDY, sDX, sDY)
+                Dim sD As Single = 1 / If(sDX > sDY, sDX, sDY)
 
                 Dim oMatrix As Matrix = New Matrix
                 If sD <> 1 Then
@@ -53,7 +53,7 @@ friend Class frmSVGImportOptions
                 End If
                 Call oMatrix.Translate((sWidth - (oRect.Width * sD)) / 2, (sHeight - (oRect.Height * sD)) / 2, MatrixOrder.Append)
 
-                Dim oForePen As Pen = New Pen(Color.Black, -1)
+                Dim oForePen As Pen = New Pen(Color.Black, cSurvey.cEditPaintObjects.FilettoPenWidth)
                 Dim oForeBrush As SolidBrush = New SolidBrush(Color.Black)
                 Dim oBackbrush As SolidBrush = New SolidBrush(Color.White)
                 For Each oDrawPath As cDrawPath In oClipart.Paths

@@ -121,9 +121,6 @@
     <value>Chiudi</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblSurveyInfoCaveBranch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 13</value>
-  </data>
   <data name="lblSurveyInfoCaveBranch.Text" xml:space="preserve">
     <value>Ramo:</value>
   </data>
@@ -132,9 +129,6 @@
   </data>
   <data name="colSurveyInfoValue.HeaderText" xml:space="preserve">
     <value>Valore</value>
-  </data>
-  <data name="lblSurveyInfoCave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 13</value>
   </data>
   <data name="lblSurveyInfoCave.Text" xml:space="preserve">
     <value>Grotta:</value>
@@ -207,16 +201,22 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Informazioni grotta/ramo:</value>
   </data>
-  <data name="mnuSurveyInfoCopy.Text" xml:space="preserve">
-    <value>Copia</value>
-  </data>
-  <data name="mnuSurveyInfoCopyAll.Text" xml:space="preserve">
-    <value>Copia tutto</value>
-  </data>
-  <data name="mnuSurveyInfoExport.Text" xml:space="preserve">
-    <value>Esporta...</value>
-  </data>
   <data name="lblSurveyInfoFilename.Text" xml:space="preserve">
     <value>Nome file:</value>
+  </data>
+  <data name="btnCopy.Caption" xml:space="preserve">
+    <value>Copia</value>
+  </data>
+  <data name="btnCopyAll.Caption" xml:space="preserve">
+    <value>Copia tutto</value>
+  </data>
+  <data name="btnExport.Caption" xml:space="preserve">
+    <value>Esporta...</value>
+  </data>
+  <data name="btnCopyValues.Caption" xml:space="preserve">
+    <value>Copia valori</value>
+  </data>
+  <data name="btnCopyValue.Caption" xml:space="preserve">
+    <value>Copia valore</value>
   </data>
 </root>

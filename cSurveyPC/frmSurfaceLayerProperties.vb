@@ -11,30 +11,30 @@ friend Class frmSurfaceLayerProperties
         ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
         oItem = Item
 
-        txtTransparency.Value = oItem.Transparency * 255
+        trkTransparency.Value = oItem.Transparency * 255
         If oItem.MinScale.HasValue Then
             chkMinScale.Checked = True
-            txtMinScale.Value = oItem.MinScale
+            txtMinScale.EditValue = oItem.MinScale
         Else
             chkMinScale.Checked = False
         End If
         If oItem.MaxScale.HasValue Then
             chkMaxScale.Checked = True
-            txtMaxScale.Value = oItem.MaxScale
+            txtMaxScale.EditValue = oItem.MaxScale
         Else
             chkMaxScale.Checked = False
         End If
     End Sub
 
     Private Sub cmdOk_Click(sender As Object, e As System.EventArgs) Handles cmdOk.Click
-        oItem.Transparency = txtTransparency.Value / 255
+        oItem.Transparency = trkTransparency.EditValue / 255
         If chkMinScale.Checked Then
-            oItem.MinScale = txtMinScale.Value
+            oItem.MinScale = CSng(txtMinScale.EditValue)
         Else
             oItem.MinScale = Nothing
         End If
         If chkMaxScale.Checked Then
-            oItem.MaxScale = txtMaxScale.Value
+            oItem.MaxScale = CSng(txtMaxScale.EditValue)
         Else
             oItem.MaxScale = Nothing
         End If

@@ -167,10 +167,7 @@
 </value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="chkKeepCaveAndBranchGrouped.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 17</value>
-  </data>
-  <data name="chkKeepCaveAndBranchGrouped.Text" xml:space="preserve">
+  <data name="chkKeepCaveAndBranchGrouped.Properties.Caption" xml:space="preserve">
     <value>Mantieni vincoli tra grotte e relativi rami</value>
   </data>
   <data name="cmdMoveUp.Text" xml:space="preserve">

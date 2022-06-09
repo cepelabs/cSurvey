@@ -88,6 +88,12 @@ Namespace cSurvey.Design.Layers
             Return oItem
         End Function
 
+        Public Function CreateImage(ByVal Cave As String, ByVal Branch As String, ByVal Image As Image) As cItemImage
+            Dim oItem As cItemImage = MyBase.CreateItem(cIItem.cItemTypeEnum.Image, cIItem.cItemCategoryEnum.LogoImage, Image)
+            Call oItem.SetCave(Cave, Branch)
+            oItem.DesignAffinity = cItem.DesignAffinityEnum.Extra
+            Return oItem
+        End Function
         Public Function CreateCompass(ByVal Cave As String, ByVal Branch As String, ByVal Data As Object, ByVal DataFormat As cIItemClipartBase.cClipartDataFormatEnum) As cItemCompass
             Dim oItem As cItemCompass = MyBase.CreateItem(cIItem.cItemTypeEnum.Compass, cIItem.cItemCategoryEnum.Compass, Data, DataFormat)
             oItem.Pen.Type = cPen.PenTypeEnum.TightPen

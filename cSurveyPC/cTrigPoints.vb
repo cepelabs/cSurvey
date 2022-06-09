@@ -48,9 +48,9 @@ Namespace cSurvey
             End Get
         End Property
 
-        Friend Function GetTrigPointsArray() As List(Of String)
-            Return oTrigPoints.Keys.ToList
-        End Function
+        'Friend Function GetTrigPointsArray() As List(Of String)
+        '    Return oTrigPoints.Keys.ToList
+        'End Function
 
         Friend Sub New(ByVal Survey As cSurvey)
             oSurvey = Survey
@@ -66,7 +66,7 @@ Namespace cSurvey
             oTrigPoints = New SortedList(Of String, cTrigPoint) '(StringComparer.OrdinalIgnoreCase)
             Dim iIndex As Integer = 0
             Dim iCount As Integer = TrigPoints.ChildNodes.Count
-            Dim iStep As Integer = IIf(iCount > 20, iCount \ 20, 1)
+            Dim iStep As Integer = If(iCount > 20, iCount \ 20, 1)
             For Each oXmlTrigPoint As XmlElement In TrigPoints.ChildNodes
                 iIndex += 1
                 If (iIndex Mod iStep) = 0 Then Call oSurvey.RaiseOnProgressEvent("load", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("trigpoints.load"), iIndex / iCount)
@@ -184,7 +184,7 @@ Namespace cSurvey
             Dim oXmlTrigPoints As XmlElement = Document.CreateElement("trigpoints")
             Dim iIndex As Integer = 0
             Dim iCount As Integer = oTrigPoints.Count
-            Dim iStep As Integer = IIf(iCount > 20, iCount \ 20, 1)
+            Dim iStep As Integer = If(iCount > 20, iCount \ 20, 1)
             For Each oTrigPoint As cTrigPoint In oTrigPoints.Values
                 iIndex += 1
                 If (Options And cSurvey.SaveOptionsEnum.Silent) = 0 Then If (iIndex Mod iStep) = 0 Then Call oSurvey.RaiseOnProgressEvent("save", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("trigpoints.save"), iIndex / iCount)
@@ -295,6 +295,10 @@ Namespace cSurvey
             Return New cTrigPointCollection(oSurvey, oTrigPoints.Values.Where(Function(TrigPoint) Not TrigPoint.Coordinate.IsEmpty And Not TrigPoint.IsSystem).ToDictionary(Function(trigpoint) trigpoint.Name))
         End Function
 
+        Public Function GetStations(Splay As Boolean) As cTrigPointCollection Implements cITrigPointCollection.getstations
+            Return New cTrigPointCollection(oSurvey, oTrigPoints.Values.Where(Function(Trigpoint) Not Trigpoint.Data.IsCalibration AndAlso (Splay OrElse (Not Splay AndAlso Not Trigpoint.Data.IsSplay))).ToDictionary(Function(Trigpoint) Trigpoint.Name))
+        End Function
+
         Public Function GetAllEntrances() As cTrigPointCollection Implements cITrigPointCollection.GetAllEntrances
             Return New cTrigPointCollection(oSurvey, oTrigPoints.Values.Where(Function(TrigPoint) TrigPoint.Entrance > cTrigPoint.EntranceTypeEnum.None And TrigPoint.Entrance < cTrigPoint.EntranceTypeEnum.OutSide).ToDictionary(Function(trigpoint) trigpoint.Name))
         End Function
@@ -307,19 +311,19 @@ Namespace cSurvey
             Return oTrigPoints.Values.FirstOrDefault(Function(TrigPoint) TrigPoint.Entrance >= Entrance And TrigPoint.Entrance < cTrigPoint.EntranceTypeEnum.OutSide)
         End Function
 
-        Public Function GetCaveFirstEntrance(CaveInfo As cCaveInfo, ByVal Entrance As cTrigPoint.EntranceTypeEnum) As cTrigPoint Implements cITrigPointCollection.GetCaveFirstEntrance
+        Public Function GetCaveFirstEntrance(CaveInfo As cCaveInfo, ByVal Entrance As cTrigPoint.EntranceTypeEnum) As cTrigPoint 'Implements cITrigPointCollection.GetCaveFirstEntrance
             Return GetCaveFirstEntrance(CaveInfo.Name, Entrance)
         End Function
 
-        Public Function GetCaveAllEntrances(CaveInfo As cCaveInfo) As cTrigPointCollection Implements cITrigPointCollection.GetCaveAllEntrances
+        Public Function GetCaveAllEntrances(CaveInfo As cCaveInfo) As cTrigPointCollection 'Implements cITrigPointCollection.GetCaveAllEntrances
             Return GetCaveAllEntrances(CaveInfo.Name)
         End Function
 
-        Public Function GetCaveAllEntrances(Cave As String) As cTrigPointCollection Implements cITrigPointCollection.GetCaveAllEntrances
+        Public Function GetCaveAllEntrances(Cave As String) As cTrigPointCollection 'Implements cITrigPointCollection.GetCaveAllEntrances
             Return New cTrigPointCollection(oSurvey, oSurvey.Segments.GetCaveSegments(Cave).GetTrigPoints.ToList.Where(Function(TrigPoint) TrigPoint.Entrance > cTrigPoint.EntranceTypeEnum.None And TrigPoint.Entrance < cTrigPoint.EntranceTypeEnum.OutSide).ToDictionary(Function(trigpoint) trigpoint.Name))
         End Function
 
-        Public Function GetCaveFirstEntrance(Cave As String, ByVal Entrance As cTrigPoint.EntranceTypeEnum) As cTrigPoint Implements cITrigPointCollection.GetCaveFirstEntrance
+        Public Function GetCaveFirstEntrance(Cave As String, ByVal Entrance As cTrigPoint.EntranceTypeEnum) As cTrigPoint 'Implements cITrigPointCollection.GetCaveFirstEntrance
             Return oSurvey.Segments.GetCaveSegments(Cave).GetTrigPoints.ToList.FirstOrDefault(Function(TrigPoint) TrigPoint.Entrance >= Entrance And TrigPoint.Entrance < cTrigPoint.EntranceTypeEnum.OutSide)
         End Function
 

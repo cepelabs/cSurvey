@@ -24,19 +24,10 @@
 
         ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
         txtName.Text = Name
-        picBackgroundColor.BackColor = Color.White
+        txtBackgroundColor.EditValue = Color.White
     End Sub
 
-    Private Sub cmdBackgroundColor_Click(sender As Object, e As EventArgs) Handles cmdBackgroundColor.Click
-        Using oCD As ColorDialog = New ColorDialog
-            With oCD
-                .FullOpen = True
-                .AnyColor = True
-                .Color = picBackgroundColor.BackColor
-                If .ShowDialog = Windows.Forms.DialogResult.OK Then
-                    picBackgroundColor.BackColor = .Color
-                End If
-            End With
-        End Using
+    Private Sub txtName_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtName.Validating
+        e.Cancel = Not txtName.ValidateIfNull
     End Sub
 End Class

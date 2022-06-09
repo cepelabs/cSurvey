@@ -117,7 +117,7 @@ Partial Class frmDataFieldsEditor
         Me.BarMain.DockCol = 0
         Me.BarMain.DockRow = 0
         Me.BarMain.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
-        Me.BarMain.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnDataFieldAdd, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnDataFieldDelete)})
+        Me.BarMain.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnDataFieldAdd, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnDataFieldDelete, True)})
         Me.BarMain.OptionsBar.AllowQuickCustomization = False
         Me.BarMain.OptionsBar.DisableCustomization = True
         Me.BarMain.OptionsBar.DrawDragBorder = False
@@ -276,6 +276,7 @@ Partial Class frmDataFieldsEditor
         Me.tvDataFields.OptionsBehavior.Editable = False
         Me.tvDataFields.OptionsBehavior.ReadOnly = True
         Me.tvDataFields.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus
+        Me.tvDataFields.OptionsView.ShowColumns = False
         Me.tvDataFields.OptionsView.ShowIndicator = False
         Me.tvDataFields.OptionsView.ShowRoot = False
         Me.tvDataFields.SelectImageList = Me.iml

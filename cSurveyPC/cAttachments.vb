@@ -74,14 +74,12 @@ Namespace cSurvey
 
         Private Sub pRefreshThumbnail(Grayscale As Boolean)
             Try
-                Using oMs As MemoryStream = New MemoryStream(oData)
-                    Using oImage As Bitmap = modPaint.SafeBitmapFromStream(oMs)
-                        If Grayscale Then
-                            oGrayscaleThumbnail = modPaint.GrayScaleImage(modPaint.GetImageThumbnail(oImage, 32, 32))
-                        Else
-                            oThumbnail = modPaint.GetImageThumbnail(oImage, 32, 32)
-                        End If
-                    End Using
+                Using oImage As Bitmap = modPaint.ByteArrayToBitmap(oData)
+                    If Grayscale Then
+                        oGrayscaleThumbnail = modPaint.GrayScaleImage(modPaint.GetImageThumbnail(oImage, 32, 32))
+                    Else
+                        oThumbnail = modPaint.GetImageThumbnail(oImage, 32, 32)
+                    End If
                 End Using
             Catch ex As Exception
                 If Grayscale Then
@@ -95,28 +93,23 @@ Namespace cSurvey
         Public Function GetThumbnail(Optional Grayscale As Boolean = False) As Bitmap
             If Grayscale Then
                 Select Case GetCategory()
-                    Case FTTLib.FileCategory.Audio
-                        Return My.Resources.sound1
                     Case FTTLib.FileCategory.Image
-                        'Return My.Resources.image1
                         If IsNothing(oGrayscaleThumbnail) Then
                             Call pRefreshThumbnail(Grayscale)
                         End If
                         Return oGrayscaleThumbnail
                     Case Else
-                        Return My.Resources.document_image1
+                        Return Nothing
                 End Select
             Else
                 Select Case GetCategory()
-                    Case FTTLib.FileCategory.Audio
-                        Return My.Resources.sound
                     Case FTTLib.FileCategory.Image
                         If IsNothing(oThumbnail) Then
                             Call pRefreshThumbnail(Grayscale)
                         End If
                         Return oThumbnail
                     Case Else
-                        Return My.Resources.document_image
+                        Return Nothing
                 End Select
             End If
         End Function
@@ -140,7 +133,6 @@ Namespace cSurvey
 
         Public Shared Function GetMimetype(Filename As String) As String
             Return FTTLib.FTT.GetMimeType(Filename)
-            'application/octet-stream
         End Function
 
         Public Sub New(Filename As String)
@@ -250,6 +242,14 @@ Namespace cSurvey
         Protected Overridable Sub Dispose(disposing As Boolean)
             If Not disposedValue Then
                 If disposing Then
+                    If oThumbnail IsNot Nothing Then
+                        oThumbnail.Dispose()
+                        oThumbnail = Nothing
+                    End If
+                    If oGrayscaleThumbnail IsNot Nothing Then
+                        oGrayscaleThumbnail.Dispose()
+                        oGrayscaleThumbnail = Nothing
+                    End If
                     If Not IsNothing(sTempFilename) Then
                         Try
                             Call My.Computer.FileSystem.DeleteFile(sTempFilename)

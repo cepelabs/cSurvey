@@ -3,19 +3,24 @@ Imports cSurveyPC.cSurvey.Design
 Imports System.Drawing.Printing
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
+Imports System.Linq
 
 Imports System.Xml
 Imports cSurveyPC
 Imports DevExpress.XtraEditors.Controls
+Imports DevExpress.XtraBars
+Imports DevExpress.XtraNavBar
+Imports cSurveyPC.cSurvey.Helper.Editor
+Imports System.ComponentModel
 
 Friend Class frmPreview
-    Private WithEvents frmPC As frmParametersCompass
-    Private WithEvents frmPIB As frmParametersInfoBox
-    Private WithEvents frmPS As frmParametersScale
-    Private WithEvents frmSD As frmParametersSegments
-    Private WithEvents frmPD As frmParametersDesign
-    Private WithEvents frmT As frmParametersTranslations
-    Private WithEvents frmZ As frmParametersZOrder
+    'Private WithEvents frmPC As frmParametersCompass
+    'Private WithEvents frmPIB As frmParametersInfoBox
+    'Private WithEvents frmPS As frmParametersScale
+    'Private WithEvents frmSD As frmParametersSegments
+    'Private WithEvents frmPD As frmParametersDesign
+    'Private WithEvents frmT As frmParametersTranslations
+    'Private WithEvents frmZ As frmParametersZOrder
 
     Private WithEvents oSurvey As cSurveyPC.cSurvey.cSurvey
     Private oSelection As Helper.Editor.cIEditDesignSelection
@@ -28,6 +33,8 @@ Friend Class frmPreview
     Private bInvalidated As Boolean = True
 
     Private oMousePointer As cMousePointer
+
+    Private iDesignQuality As frmMain2.DesignQualityLevelEnum = frmMain2.DesignQualityLevelEnum.MediumQuality
 
     Public Enum ViewModeEnum
         Plan = 0
@@ -51,7 +58,7 @@ Friend Class frmPreview
     Private sPaintZoom As Single
 
     Private oCurrentProfile As cSurvey.cIProfile
-    Private oCurrentOptions As cSurvey.Design.cOptions
+    Private WithEvents oCurrentOptions As cSurvey.Design.cOptionsCenterline
 
     Private bDisableImageSizeEvent As Boolean
 
@@ -60,9 +67,14 @@ Friend Class frmPreview
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
+        Call cEditDesignEnvironment.OnPropertyChangedAppend(AddressOf oEditDesignEnvironment_OnChanged)
+        Call pDesignEnvironmentSet()
+
         oMousePointer = New cMousePointer
+        NavBarControl1.View = New cNavigationPanel.CustomNavPaneViewInfoRegistrator()
 
         bEventDisabled = True
+
         oSurvey = Survey
         oSelection = cSurveyPC.cSurvey.Helper.Editor.cEmptyEditDesignSelection.Empty
         iMode = Mode
@@ -71,7 +83,16 @@ Friend Class frmPreview
         btnManualRefresh.Checked = bManualRefresh
 
         btnSidePanel.Checked = oSurvey.SharedSettings.GetValue("preview.sidepanel.visible", 1) = "1"
+        pnlOptions.Visible = btnSidePanel.Checked
 
+        iDesignQuality = oSurvey.SharedSettings.GetValue("preview.designquality", 1)
+        If iDesignQuality = frmMain2.DesignQualityLevelEnum.Base Then
+            btnDesignGraphics0.Checked = True
+        ElseIf iDesignQuality = frmMain2.DesignQualityLevelEnum.MediumQuality Then
+            btnDesignGraphics1.Checked = True
+        Else
+            btnDesignGraphics2.Checked = True
+        End If
         sViewZoom = 1
 
         Call pFillPrintersList()
@@ -80,18 +101,21 @@ Friend Class frmPreview
         pnlExportOptionsOther.Location = New Point(1, 1)
         Select Case iMode
             Case PreviewModeEnum.Viewer
-                btnAdd.Visible = False
-                btnDelete.Visible = False
+                Me.IconOptions.SvgImage = My.Resources.viewer
 
-                btnPrint.Visible = False
-                btnExport.Visible = False
+                btnProfilesAdd.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+                btnProfilesDelete.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+                btnProfileExportToFile.Enabled = True
+                btnProfileImportFromFile.Enabled = True
+
+                btnPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+                btnExport.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
 
                 pPreview.Visible = False
                 pnlExport.Visible = False
                 pnlMap.Visible = True
 
-                btnProperty.Visible = False
-                sep7.Visible = False
+                btnProperties.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
 
                 pnlMap.Dock = DockStyle.Fill
                 picMap.Dock = DockStyle.Fill
@@ -105,25 +129,33 @@ Friend Class frmPreview
                 bDrawRulers = True
                 bDrawMetricGrid = False
 
-                pnlStatusDesignZoom.Visible = True
+                pnlStatusDesignZoom.Visibility = DevExpress.XtraBars.BarItemVisibility.Always
 
                 sPaintZoom = 500
                 trkZoom.Value = sPaintZoom
 
-                picMap.BringToFront()
-                oVSB = New VScrollBar
-                pnlMap.Controls.Add(oVSB)
-                oVSB.Dock = DockStyle.Right
-                oVSB.SendToBack()
+                Call pnlMap.SuspendLayout()
+                Dim oPanelSize As Size = pnlMap.ClientSize
+                oVSB = New DevExpress.XtraEditors.VScrollBar
+                oHSB = New DevExpress.XtraEditors.HScrollBar
                 oVSB.SmallChange = 1
                 oVSB.LargeChange = 25
-
-                oHSB = New HScrollBar
-                pnlMap.Controls.Add(oHSB)
-                oHSB.Dock = DockStyle.Bottom
-                oHSB.SendToBack()
+                oVSB.Anchor = AnchorStyles.Right Or AnchorStyles.Top Or AnchorStyles.Bottom
+                oVSB.Location = New Point(oPanelSize.Width - oVSB.Width, 0)
+                oVSB.Size = New Size(oVSB.Width, oPanelSize.Height - oHSB.Height)
+                pnlMap.Controls.Add(oVSB)
+                oVSB.SendToBack()
                 oHSB.SmallChange = 1
                 oHSB.LargeChange = 25
+                oHSB.Anchor = AnchorStyles.Left Or AnchorStyles.Right Or AnchorStyles.Bottom
+                oHSB.Location = New Point(0, oPanelSize.Height - oHSB.Height)
+                oHSB.Size = New Size(oPanelSize.Width - oVSB.Width, oHSB.Height)
+                pnlMap.Controls.Add(oHSB)
+                oHSB.SendToBack()
+                picMap.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Right Or AnchorStyles.Bottom
+                picMap.Location = New Point(0, 0)
+                picMap.Size = New Size(oPanelSize.Width - oVSB.Width, oPanelSize.Height - oHSB.Height)
+                Call pnlMap.ResumeLayout()
 
                 trkZoom.BringToFront()
                 '-----------
@@ -136,54 +168,59 @@ Friend Class frmPreview
                 chkExportGPS.Visible = False
 
                 For Each oProfile As cViewerProfile In oSurvey.ViewerProfiles
-                    Dim oItem As ListViewItem = New ListViewItem
-                    oItem.Text = oProfile.Name
-                    oItem.ImageKey = "viewer"
+                    Dim oLink As DevExpress.XtraNavBar.NavBarItemLink = grpMain.AddItem
+                    oLink.Item.Caption = oProfile.Name
+                    oLink.Item.ImageOptions.SvgImage = My.Resources.viewer
+                    oLink.Item.Tag = oProfile
                     If oProfile.IsSystem Then
-                        oItem.Font = New Font(lv.Font, FontStyle.Bold)
+                        oLink.Item.Caption = "<b>" & oLink.Item.Caption & "</b>"
+                    Else
+                        oLink.Item.Caption = oProfile.Name
                     End If
-                    oItem.Tag = oProfile
-                    Call lv.Items.Add(oItem)
                 Next
                 For Each oProfile As cPreviewProfile In oSurvey.PreviewProfiles
-                    Dim oItem As ListViewItem = New ListViewItem
-                    oItem.Text = oProfile.Name
-                    oItem.ImageKey = "preview"
+                    Dim oLink As DevExpress.XtraNavBar.NavBarItemLink = grpMain.AddItem
+                    oLink.Item.Caption = oProfile.Name
+                    oLink.Item.ImageOptions.SvgImage = My.Resources.documentprint
+                    oLink.Item.Tag = oProfile
                     If oProfile.IsSystem Then
-                        oItem.Font = New Font(lv.Font, FontStyle.Bold)
+                        oLink.Item.Caption = "<b>" & oLink.Item.Caption & "</b>"
+                    Else
+                        oLink.Item.Caption = oProfile.Name
                     End If
-                    oItem.Tag = oProfile
-                    Call lv.Items.Add(oItem)
                 Next
                 For Each oProfile As cExportProfile In oSurvey.ExportProfiles
-                    Dim oItem As ListViewItem = New ListViewItem
-                    oItem.Text = oProfile.Name
-                    oItem.ImageKey = "export"
+                    Dim oLink As DevExpress.XtraNavBar.NavBarItemLink = grpMain.AddItem
+                    oLink.Item.Caption = oProfile.Name
+                    oLink.Item.ImageOptions.SvgImage = My.Resources.documentexport
+                    oLink.Item.Tag = oProfile
                     If oProfile.IsSystem Then
-                        oItem.Font = New Font(lv.Font, FontStyle.Bold)
+                        oLink.Item.Caption = "<b>" & oLink.Item.Caption & "</b>"
+                    Else
+                        oLink.Item.Caption = oProfile.Name
                     End If
-                    oItem.Tag = oProfile
-                    Call lv.Items.Add(oItem)
                 Next
 
-                'per ora seleziono pianta o sezione standard a seconda di cosa richiesto in apertura...poi selezionerò, se esiste, l'ultimo selezionato in precedenza
-                lv.Items(View).Selected = True
+                NavBarControl1.SelectedLink = NavBarControl1.Groups(0).ItemLinks(View)
 
             Case PreviewModeEnum.Export
-                btnAdd.Visible = True
-                btnDelete.Visible = True
+                Me.IconOptions.SvgImage = My.Resources.exportfile
 
-                btnPrint.Visible = False
-                btnExport.Visible = True
+                btnProfilesAdd.Visibility = DevExpress.XtraBars.BarItemVisibility.Always
+                btnProfilesDelete.Visibility = DevExpress.XtraBars.BarItemVisibility.Always
+                btnProfileExportToFile.Enabled = True
+                btnProfileImportFromFile.Enabled = True
+
+                btnPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+                btnExport.Visibility = DevExpress.XtraBars.BarItemVisibility.Never = DevExpress.XtraBars.BarItemVisibility.Always
 
                 pPreview.Visible = False
                 pnlExport.Visible = True
                 pnlMap.Visible = False
 
-                btnProperty.Visible = True
-                sep7.Visible = True
+                btnProperties.Visibility = DevExpress.XtraBars.BarItemVisibility.Always
 
-                pnlStatusDesignZoom.Visible = False
+                pnlStatusDesignZoom.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
 
                 pnlExport.Dock = DockStyle.Fill
                 Text = oSurvey.Name & " - cSurvey - " & GetLocalizedString("preview.export.title") & ":"
@@ -194,14 +231,15 @@ Friend Class frmPreview
                 chkExportGPS.Visible = True
 
                 For Each oProfile As cExportProfile In oSurvey.ExportProfiles
-                    Dim oItem As ListViewItem = New ListViewItem
-                    oItem.Text = oProfile.Name
-                    oItem.ImageKey = "export"
+                    Dim oLink As DevExpress.XtraNavBar.NavBarItemLink = grpMain.AddItem
+                    oLink.Item.Caption = oProfile.Name
+                    oLink.Item.ImageOptions.SvgImage = My.Resources.documentexport
+                    oLink.Item.Tag = oProfile
                     If oProfile.IsSystem Then
-                        oItem.Font = New Font(lv.Font, FontStyle.Bold)
+                        oLink.Item.Caption = "<b>" & oLink.Item.Caption & "</b>"
+                    Else
+                        oLink.Item.Caption = oProfile.Name
                     End If
-                    oItem.Tag = oProfile
-                    Call lv.Items.Add(oItem)
                 Next
 
                 Dim oCustomItem As ImageComboBoxItem = New ImageComboBoxItem({Nothing, Nothing}, 0)
@@ -218,23 +256,25 @@ Friend Class frmPreview
                     cboSize.Properties.Items.Add(oItem)
                 Next
 
-                'per ora seleziono pianta o sezione standard a seconda di cosa richiesto in apertura...poi selezionerò, se esiste, l'ultimo selezionato in precedenza
-                lv.Items(View).Selected = True
+                NavBarControl1.SelectedLink = NavBarControl1.Groups(0).ItemLinks(View)
             Case PreviewModeEnum.Preview
-                btnAdd.Visible = True
-                btnDelete.Visible = True
+                Me.IconOptions.SvgImage = My.Resources.print
 
-                btnPrint.Visible = True
-                btnExport.Visible = False
+                btnProfilesAdd.Visibility = DevExpress.XtraBars.BarItemVisibility.Always
+                btnProfilesDelete.Visibility = DevExpress.XtraBars.BarItemVisibility.Always
+                btnProfileExportToFile.Enabled = True
+                btnProfileImportFromFile.Enabled = True
+
+                btnPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Always
+                btnExport.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
 
                 pPreview.Visible = True
                 pnlExport.Visible = False
                 pnlMap.Visible = False
 
-                btnProperty.Visible = True
-                sep7.Visible = True
+                btnProperties.Visibility = DevExpress.XtraBars.BarItemVisibility.Always
 
-                pnlStatusDesignZoom.Visible = False
+                pnlStatusDesignZoom.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
 
                 pPreview.Dock = DockStyle.Fill
                 Text = oSurvey.Name & " - cSurvey - " & GetLocalizedString("preview.preview.title") & ":"
@@ -247,52 +287,48 @@ Friend Class frmPreview
                 'genero l'elenco delle stampanti
                 oDoc = New Printing.PrintDocument
                 oDoc.DocumentName = oSurvey.Name
+                oDoc.PrintController = New cPrintController.PrintControllerNoStatusDialog(oDoc.PrintController)
                 pPreview.Document = oDoc
 
-
-                'Dim sDefaultPrinterName As String = ""
-                'For Each sPrinter As String In PrinterSettings.InstalledPrinters
-                '    Call cboPrinter.Items.Add(sPrinter)
-                '    Dim oSettings As PrinterSettings = New PrinterSettings
-                '    oSettings.PrinterName = sPrinter
-                '    If sPrinter = oDoc.PrinterSettings.PrinterName Then
-                '        cboPrinter.SelectedIndex = cboPrinter.Items.Count - 1
-                '    End If
-                '    If oSettings.IsDefaultPrinter Then
-                '        sDefaultPrinterName = sPrinter
-                '    End If
-                'Next
-
                 For Each oProfile As cPreviewProfile In oSurvey.PreviewProfiles
-                    Dim oItem As ListViewItem = New ListViewItem
-                    oItem.Text = oProfile.Name
-                    oItem.ImageKey = "preview"
+                    Dim oLink As DevExpress.XtraNavBar.NavBarItemLink = grpMain.AddItem
+                    oLink.Item.Caption = oProfile.Name
+                    oLink.Item.ImageOptions.SvgImage = My.Resources.documentprint
+                    oLink.Item.Tag = oProfile
                     If oProfile.IsSystem Then
-                        oItem.Font = New Font(lv.Font, FontStyle.Bold)
+                        oLink.Item.Caption = "<b>" & oLink.Item.Caption & "</b>"
+                    Else
+                        oLink.Item.Caption = oProfile.Name
                     End If
-                    oItem.Tag = oProfile
-                    Call lv.Items.Add(oItem)
                 Next
 
-                'per ora seleziono pianta o sezione standard a seconda di cosa richiesto in apertura...poi selezionerò, se esiste, l'ultimo selezionato in precedenza
-                lv.Items(View).Selected = True
+                NavBarControl1.SelectedLink = NavBarControl1.Groups(0).ItemLinks(View)
+
         End Select
-        sep1.Visible = btnAdd.Visible Or btnDelete.Visible
-        sep4.Visible = btnExport.Visible Or btnPrint.Visible
 
         bEventDisabled = False
 
         'call pRefresh(False, True)
-        Call pProfileSelect(lv.Items(0), False, True)
+        Call pProfileSelect(NavBarControl1.SelectedLink.Item.Tag, False, True)
         If Not bManualRefresh Then pRefresh(True, False)
+    End Sub
+
+    Private Sub pDesignEnvironmentSet()
+        Dim oBackcolor As Color = cEditDesignEnvironment.GetSetting("design.lowerlayersdesignbackcolor", Color.White)
+        picMap.BackColor = oBackcolor
+        pPreview.BackColor = oBackcolor
+    End Sub
+
+    Private Sub oEditDesignEnvironment_OnChanged(Sender As Object, e As PropertyChangeEventArgs)
+        Call pDesignEnvironmentSet()
     End Sub
 
     Private Sub pFillPrintersList()
         Dim sDefaultPrinterName As String = "" & (New PrinterSettings).PrinterName
         For Each sPrinter As String In PrinterSettings.InstalledPrinters
-            Call cboPrinter.Items.Add(sPrinter)
+            Call cboPrinter.Properties.Items.Add(sPrinter)
             If sPrinter = sDefaultPrinterName Then
-                cboPrinter.SelectedIndex = cboPrinter.Items.Count - 1
+                cboPrinter.SelectedIndex = cboPrinter.Properties.Items.Count - 1
             End If
         Next
     End Sub
@@ -372,9 +408,9 @@ Friend Class frmPreview
 
                     .PageFormat = oCurrentPrinterSettings.DefaultPageSettings.PaperSize.PaperName
                     .PageLandscape = oCurrentPrinterSettings.DefaultPageSettings.Landscape
-                    .PageMargins = oCurrentPrinterSettings.DefaultPageSettings.Margins.Clone
+                    .PageMargins = oCurrentPrinterSettings.DefaultPageSettings.Margins
 
-                    If cboScale.SelectedIndex = cboScale.Items.Count - 1 Then
+                    If cboScale.SelectedIndex = cboScale.Properties.Items.Count - 1 Then
                         .ScaleMode = cSurvey.Design.cIOptionsPreview.ScaleModeEnum.sManual
                     Else
                         .ScaleMode = cboScale.SelectedIndex
@@ -431,7 +467,7 @@ Friend Class frmPreview
 
                     .TransparentBackground = chkBackgroundTransparent.Checked
 
-                    If cboScale.SelectedIndex = cboScale.Items.Count - 1 Then
+                    If cboScale.SelectedIndex = cboScale.Properties.Items.Count - 1 Then
                         .ScaleMode = cSurvey.Design.cIOptionsPreview.ScaleModeEnum.sManual
                     Else
                         .ScaleMode = cboScale.SelectedIndex
@@ -571,12 +607,12 @@ Friend Class frmPreview
         Dim oReturnOptions As cSurvey.Design.cOptions
         bEventDisabled = True
         If TypeOf oCurrentOptions Is cOptionsPreview Then
-            pnlStatusDesignZoom100.Visible = False
-            pnlStatusDesignZoom200.Visible = False
-            pnlStatusDesignZoom250.Visible = False
-            pnlStatusDesignZoom500.Visible = False
-            pnlStatusDesignZoom1000.Visible = False
-            pnlStatusDesignZoom.Visible = False
+            btnStatusDesignZoom100.Visibility = BarItemVisibility.Never
+            btnStatusDesignZoom200.Visibility = BarItemVisibility.Never
+            btnStatusDesignZoom250.Visibility = BarItemVisibility.Never
+            btnStatusDesignZoom500.Visibility = BarItemVisibility.Never
+            btnStatusDesignZoom1000.Visibility = BarItemVisibility.Never
+            pnlStatusDesignZoom.Visibility = BarItemVisibility.Never
 
             pnlPrintOptions.Visible = True
             pnlScaleOptions.Visible = True
@@ -619,7 +655,7 @@ Friend Class frmPreview
                 End If
                 oCurrentPrinterSettings.DefaultPageSettings.PaperSize = modPaint.FindPaperSize(oCurrentPrinterSettings, oOptions.PageFormat)
                 oCurrentPrinterSettings.DefaultPageSettings.Landscape = oOptions.PageLandscape
-                oCurrentPrinterSettings.DefaultPageSettings.Margins = oOptions.PageMargins
+                oCurrentPrinterSettings.DefaultPageSettings.Margins = oOptions.PageMargins.ToMargin
 
                 If Not IsNothing(oDoc) Then
                     oDoc.PrinterSettings = oCurrentPrinterSettings
@@ -644,7 +680,7 @@ Friend Class frmPreview
                 chkPageHorizontal.Checked = oCurrentPrinterSettings.DefaultPageSettings.Landscape
 
                 If .ScaleMode = cSurvey.Design.cIOptionsPreview.ScaleModeEnum.sManual Then
-                    cboScale.SelectedIndex = cboScale.Items.Count - 1
+                    cboScale.SelectedIndex = cboScale.Properties.Items.Count - 1
                 Else
                     cboScale.SelectedIndex = .ScaleMode
                 End If
@@ -690,12 +726,12 @@ Friend Class frmPreview
             End With
             oReturnOptions = oOptions
         ElseIf TypeOf oCurrentOptions Is cSurvey.Design.cOptionsExport Then
-            pnlStatusDesignZoom100.Visible = False
-            pnlStatusDesignZoom200.Visible = False
-            pnlStatusDesignZoom250.Visible = False
-            pnlStatusDesignZoom500.Visible = False
-            pnlStatusDesignZoom1000.Visible = False
-            pnlStatusDesignZoom.Visible = False
+            btnStatusDesignZoom100.Visibility = BarItemVisibility.Never
+            btnStatusDesignZoom200.Visibility = BarItemVisibility.Never
+            btnStatusDesignZoom250.Visibility = BarItemVisibility.Never
+            btnStatusDesignZoom500.Visibility = BarItemVisibility.Never
+            btnStatusDesignZoom1000.Visibility = BarItemVisibility.Never
+            pnlStatusDesignZoom.Visibility = BarItemVisibility.Never
 
             pnlPrintOptions.Visible = False
             pnlScaleOptions.Visible = True
@@ -729,7 +765,7 @@ Friend Class frmPreview
                 Call pImageSelectPage()
 
                 If .ScaleMode = cSurvey.Design.cIOptionsPreview.ScaleModeEnum.sManual Then
-                    cboScale.SelectedIndex = cboScale.Items.Count - 1
+                    cboScale.SelectedIndex = cboScale.Properties.Items.Count - 1
                 Else
                     cboScale.SelectedIndex = .ScaleMode
                 End If
@@ -788,15 +824,18 @@ Friend Class frmPreview
             sLastFilename = oExportProfile.Filename
             oReturnOptions = oOptions
         ElseIf TypeOf oCurrentOptions Is cSurvey.Design.cOptionsViewer Then
-            pnlStatusDesignZoom100.Visible = True
-            pnlStatusDesignZoom200.Visible = True
-            pnlStatusDesignZoom250.Visible = True
-            pnlStatusDesignZoom500.Visible = True
-            pnlStatusDesignZoom1000.Visible = True
-            pnlStatusDesignZoom.Visible = True
+            btnStatusDesignZoom100.Visibility = BarItemVisibility.Always
+            btnStatusDesignZoom200.Visibility = BarItemVisibility.Always
+            btnStatusDesignZoom250.Visibility = BarItemVisibility.Always
+            btnStatusDesignZoom500.Visibility = BarItemVisibility.Always
+            btnStatusDesignZoom1000.Visibility = BarItemVisibility.Always
+            pnlStatusDesignZoom.Visibility = BarItemVisibility.Always
 
             pnlPrintOptions.Visible = False
             pnlScaleOptions.Visible = False
+            pnlExportOptionsFormat.Visible = False
+            pnlExportOptionsSize.Visible = False
+            pnlExportOptionsPage.Visible = False
             pnlExportOptionsOther.Visible = False
             btnDesignDetails.Visible = False
 
@@ -904,12 +943,12 @@ Friend Class frmPreview
             Using oGr As Graphics = Graphics.FromImage(oImage)
                 oGr.PageUnit = GraphicsUnit.Pixel
 
-                If btnPreviewQuality0.Checked Then
+                If iDesignQuality = frmMain2.DesignQualityLevelEnum.Base Then
                     oGr.CompositingQuality = CompositingQuality.HighSpeed
                     oGr.SmoothingMode = SmoothingMode.HighSpeed
                     oGr.InterpolationMode = InterpolationMode.Low
                     oGr.TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
-                ElseIf btnPreviewQuality1.Checked Then
+                ElseIf iDesignQuality = frmMain2.DesignQualityLevelEnum.MediumQuality Then
                     oGr.CompositingQuality = CompositingQuality.HighSpeed
                     oGr.SmoothingMode = SmoothingMode.AntiAlias
                     oGr.InterpolationMode = InterpolationMode.Default
@@ -940,8 +979,8 @@ Friend Class frmPreview
                 End If
                 oRect = modPaint.AdjustBounds(oRect, 1)
 
-                Dim sMaxZoom As Single = modPaint.GetZoomFactor(oGr, txtScaleManual.Minimum)
-                Dim sMinZoom As Single = modPaint.GetZoomFactor(oGr, txtScaleManual.Maximum)
+                Dim sMaxZoom As Single = modPaint.GetZoomFactor(oGr, txtScaleManual.Properties.MinValue)
+                Dim sMinZoom As Single = modPaint.GetZoomFactor(oGr, txtScaleManual.Properties.MaxValue)
 
                 If cboScale.SelectedIndex = 0 Then
                     Dim sDesignWidth As Single = oRect.Size.Width
@@ -958,7 +997,7 @@ Friend Class frmPreview
                     txtScaleManual.Value = modPaint.GetScaleFactor(oGr, sPaintZoom)
                 Else
                     Dim iFactor As Integer
-                    If cboScale.SelectedIndex = cboScale.Items.Count - 1 Then
+                    If cboScale.SelectedIndex = cboScale.Properties.Items.Count - 1 Then
                         iFactor = txtScaleManual.Value
                     Else
                         Dim sFactor As String = cboScale.Text
@@ -1023,6 +1062,7 @@ Friend Class frmPreview
         oMousePointer.Push(Cursors.WaitCursor)
         bEventDisabled = True
         Call pOptionsSave()
+
         Dim oOptions As cSurvey.Design.cOptionsPreview = oCurrentOptions
 
         If bManualRefresh And bFirstRendering Then
@@ -1035,13 +1075,13 @@ Friend Class frmPreview
 
             Dim oGr As Graphics = e.Graphics
 
-            If btnPreviewQuality0.Checked Then
+            If iDesignQuality = frmMain2.DesignQualityLevelEnum.Base Then
                 oGr.CompositingMode = CompositingMode.SourceOver
                 oGr.CompositingQuality = CompositingQuality.HighSpeed
                 oGr.SmoothingMode = SmoothingMode.HighSpeed
                 oGr.InterpolationMode = InterpolationMode.Low
                 oGr.TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
-            ElseIf btnPreviewQuality1.Checked Then
+            ElseIf iDesignQuality = frmMain2.DesignQualityLevelEnum.MediumQuality Then
                 oGr.CompositingMode = CompositingMode.SourceOver
                 oGr.CompositingQuality = CompositingQuality.HighSpeed
                 oGr.SmoothingMode = SmoothingMode.AntiAlias
@@ -1064,8 +1104,8 @@ Friend Class frmPreview
             End If
             oRect = modPaint.AdjustBounds(oRect, 1)
 
-            Dim sMaxZoom As Single = modPaint.GetZoomFactor(oGr, txtScaleManual.Minimum)
-            Dim sMinZoom As Single = modPaint.GetZoomFactor(oGr, txtScaleManual.Maximum)
+            Dim sMaxZoom As Single = modPaint.GetZoomFactor(oGr, txtScaleManual.Properties.MinValue)
+            Dim sMinZoom As Single = modPaint.GetZoomFactor(oGr, txtScaleManual.Properties.MaxValue)
 
             If cboScale.SelectedIndex = 0 Then
                 Dim sDesignWidth As Single = oRect.Size.Width
@@ -1082,7 +1122,7 @@ Friend Class frmPreview
                 txtScaleManual.Value = modPaint.GetScaleFactor(oGr, sPaintZoom)
             Else
                 Dim iFactor As Integer
-                If cboScale.SelectedIndex = cboScale.Items.Count - 1 Then
+                If cboScale.SelectedIndex = cboScale.Properties.Items.Count - 1 Then
                     iFactor = txtScaleManual.Value
                 Else
                     Dim sFactor As String = cboScale.Text
@@ -1162,13 +1202,19 @@ Friend Class frmPreview
 
     Private Sub pInvalidate()
         bInvalidated = True
-        pnlPopup.Visible = True
-        lblPopupWarning.Text = GetLocalizedString("preview.warning1")
+        'pnlPopup.Visible = True
+        'lblPopupWarning.Text = GetLocalizedString("preview.warning1")
+
+        cDesignMessageCorner.PopupShow("warning", GetLocalizedString("preview.warning1"))
+        btnRefresh.Visibility = BarItemVisibility.Always
     End Sub
 
     Private Sub pInvalidateReset()
         bInvalidated = False
-        pnlPopup.Visible = False
+        'pnlPopup.Visible = False
+
+        cDesignMessageCorner.PopupHide()
+        btnRefresh.Visibility = BarItemVisibility.Never
     End Sub
 
     Private Sub pRefresh(Optional ForceRefresh As Boolean = False, Optional FirstRefresh As Boolean = False)
@@ -1180,7 +1226,7 @@ Friend Class frmPreview
                 Dim bIsPlan As Boolean = oCurrentProfile.IsPlan
                 chkPrintCompass.Enabled = bIsPlan
                 cboCompassPosition.Enabled = bIsPlan
-                btnCompassDetails.Enabled = bIsPlan And chkPrintCompass.Checked
+                btnCompassDetails.Enabled = bIsPlan 'And chkPrintCompass.Checked
 
                 Call oSurvey.Redraw(oCurrentOptions)
                 Select Case iMode
@@ -1203,7 +1249,7 @@ Friend Class frmPreview
     End Sub
 
     Public Sub ProfileInvalidate()
-        Call pProfileSelect(lv.SelectedItems(0))
+        Call pProfileSelect(NavBarControl1.SelectedLink.Item.Tag)
     End Sub
 
     Public Sub MapInvalidate()
@@ -1283,16 +1329,8 @@ Friend Class frmPreview
         Call pRefresh()
     End Sub
 
-    Private Sub btnPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPrint.Click
-        Call pPrint()
-    End Sub
-
     Private Sub chkPrintImages_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkPrintImages.CheckedChanged
         Call pRefresh()
-    End Sub
-
-    Private Sub cmdClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdClose.Click
-        Call Close()
     End Sub
 
     Private Sub cboPrinter_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboPrinter.SelectedIndexChanged
@@ -1311,7 +1349,7 @@ Friend Class frmPreview
 
     Private Sub cboScale_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboScale.SelectedIndexChanged
         If Not bEventDisabled Then
-            Dim bEnabled As Boolean = cboScale.SelectedIndex = cboScale.Items.Count - 1
+            Dim bEnabled As Boolean = cboScale.SelectedIndex = cboScale.Properties.Items.Count - 1
             txtScaleManual.Enabled = bEnabled
             lblScale1.Enabled = bEnabled
             If Not bEnabled Then
@@ -1370,59 +1408,30 @@ Friend Class frmPreview
     'End Sub
 
     Private Sub cmdSetMargins_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSetMargins.Click
-        Dim frmPM As frmPreviewMargins = New frmPreviewMargins("mm")
         Dim oOptions As cSurvey.Design.cOptionsPreview = oCurrentOptions
-        With frmPM
-            .Margins = oOptions.PageMargins.Clone
-            Call .ConvertToMillimeter()
-            If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                Call .ConvertToThousandthsOfAnInch()
-                oOptions.PageMargins = .Margins.Clone
-                oDoc.DefaultPageSettings.Margins = oOptions.PageMargins.Clone
-                Call pRefresh()
-            End If
-        End With
-    End Sub
+        Dim oParameters As frmPreviewMargins = New frmPreviewMargins(oOptions.PageMargins, "mm")
+        pnlParameters.Controls.Add(oParameters)
+        flyParameters.Size = oParameters.Size
+        oParameters.Dock = DockStyle.Fill
+        flyParameters.OwnerControl = cmdSetMargins
+        flyParameters.ShowBeakForm(True)
 
-    Private Sub btnZoomIn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnZoomIn.Click
-        Select Case iMode
-            Case PreviewModeEnum.Preview
-                If (pPreview.Zoom < 100) Then
-                    sViewZoom *= 1.1
-                    pPreview.Zoom = sViewZoom
-                End If
-            Case PreviewModeEnum.Export
-                sViewZoom *= 1.1
-                picExport.Size = New Size(picExport.Image.Width * sViewZoom, picExport.Image.Height * sViewZoom)
-                Call pnlExport.Invalidate()
-            Case PreviewModeEnum.Viewer
-                Call pMapZoomIn()
-        End Select
-    End Sub
-
-    Private Sub btnZoomOut_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnZoomOut.Click
-        Select Case iMode
-            Case PreviewModeEnum.Preview
-                If (sViewZoom > 0.1) Then
-                    sViewZoom /= 1.1
-                    pPreview.Zoom = sViewZoom
-                End If
-            Case PreviewModeEnum.Export
-                If (sViewZoom > 0.1) Then
-                    sViewZoom /= 1.1
-                    picExport.Size = New Size(picExport.Image.Width * sViewZoom, picExport.Image.Height * sViewZoom)
-                    Call pnlExport.Invalidate()
-                End If
-            Case PreviewModeEnum.Viewer
-                Call pMapZoomOut()
-        End Select
-    End Sub
-
-    Private Sub btnExport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExport.Click
-        Call pExport()
+        'Using frmPM As frmPreviewMargins = New frmPreviewMargins(PageMargins, "mm")
+        '    With frmPM
+        '        .Margins = oOptions.PageMargins.Clone
+        '        Call .ConvertToMillimeter()
+        '        If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+        '            Call .ConvertToThousandthsOfAnInch()
+        '            oOptions.PageMargins = .Margins.Clone
+        '            oDoc.DefaultPageSettings.Margins = oOptions.PageMargins.Clone
+        '            Call pRefresh()
+        '        End If
+        '    End With
+        'End Using
     End Sub
 
     Private Sub pExport()
+        Call pOptionsSave()
         Using oSD As SaveFileDialog = New SaveFileDialog
             With oSD
                 Dim oOptions As cSurvey.Design.cOptionsExport = oCurrentOptions
@@ -1437,163 +1446,166 @@ Friend Class frmPreview
                 .Filter = String.Format(GetLocalizedString("preview.filetypeIMAGES"), oOptions.FileFormat) & " (*." & sExtension & ")|*." & sExtension
                 .FilterIndex = 1
                 If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                    If bInvalidated Then
+                        'Call pRefresh(True, False)
+                    End If
                     Dim sExt As String = IO.Path.GetExtension(.FileName).ToLower
-                    Select Case sExt
-                        Case ".jpg", ".tif", ".png", ".bmp"
-                            Call oMousePointer.Push(Cursors.WaitCursor)
-                            If bManualRefresh Then pRefresh(True)
-                            sLastFilename = .FileName
-                            Dim iImageFormat As System.Drawing.Imaging.ImageFormat
-                            Select Case sExt
-                                Case ".jpg"
-                                    iImageFormat = System.Drawing.Imaging.ImageFormat.Jpeg
-                                Case ".tif"
-                                    iImageFormat = System.Drawing.Imaging.ImageFormat.Tiff
-                                Case ".png"
-                                    iImageFormat = System.Drawing.Imaging.ImageFormat.Png
-                                Case ".bmp"
-                                    iImageFormat = System.Drawing.Imaging.ImageFormat.Bmp
-                            End Select
-                            Call picExport.Image.Save(sLastFilename, iImageFormat)
-                            If oOptions.GPS.ExportData Then
-                                Select Case oOptions.GPS.DataFormat
-                                    Case Options.cGPSOptions.GPSDataFormatEnum.GoogleEarthImageOverlay
-                                        Try
-                                            Dim oOrigin As cTrigPoint = oSurvey.TrigPoints.GetGPSBaseReferencePoint
-                                            If oOrigin Is Nothing Then
-                                                Call MsgBox(GetLocalizedString("preview.warning2"), MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, GetLocalizedString("preview.warningtitle"))
-                                            Else
-                                                Dim dLat As Double = oOrigin.Coordinate.GetLatitude
-                                                Dim dLong As Double = oOrigin.Coordinate.GetLongitude
-
-                                                If dLat = 0 And dLong = 0 Then
-                                                    Call MsgBox(GetLocalizedString("preview.warning3"), MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, GetLocalizedString("preview.warningtitle"))
-                                                Else
-                                                    Dim oPoint As PointF = oOrigin.GetSegments(0).Data.Plan.ToPoint
-                                                    Dim oTopLeft As PointF = modPaint.FromPaintPoint(New PointF(0, 0), sPaintZoom, oPaintTranslation)
-                                                    Dim oBottomRight As PointF = modPaint.FromPaintPoint(New PointF(picExport.Image.Width, picExport.Image.Height), sPaintZoom, oPaintTranslation)
-
-                                                    Dim dMC As Decimal = oSurvey.Calculate.GeoMagDeclinationData.MeridianConvergence
-                                                    Dim dTopLeftDistance As Single = modPaint.DistancePointToPoint(oPoint, oTopLeft)
-                                                    Dim dBottomRightDistance As Single = modPaint.DistancePointToPoint(oPoint, oBottomRight)
-                                                    Dim dTopLeftAngle As Single = modPaint.AddAngle(modPaint.GetBearing(oPoint, oTopLeft), dMC)
-                                                    Dim dBottomRightAngle As Single = modPaint.AddAngle(modPaint.GetBearing(oPoint, oBottomRight), dMC)
-
-                                                    Dim dTopLeftLat As Decimal
-                                                    Dim dTopLeftLong As Decimal
-                                                    Call CalculateCoordinates(oSurvey, dLat, dLong, dTopLeftDistance, dTopLeftAngle, dTopLeftLat, dTopLeftLong)
-                                                    Dim dBottomRightLat As Decimal
-                                                    Dim dBottomRightLong As Decimal
-                                                    Call CalculateCoordinates(oSurvey, dLat, dLong, dBottomRightDistance, dBottomRightAngle, dBottomRightLat, dBottomRightLong)
-
-                                                    Call modExport.GoogleKmlOverlayExportTo(oSurvey, sLastFilename, dTopLeftLat, dTopLeftLong, dBottomRightLat, dBottomRightLong)
-                                                End If
-                                            End If
-                                        Catch
-                                        End Try
+                        Select Case sExt
+                            Case ".jpg", ".tif", ".png", ".bmp"
+                                Call oMousePointer.Push(Cursors.WaitCursor)
+                                If bManualRefresh Then pRefresh(True)
+                                sLastFilename = .FileName
+                                Dim iImageFormat As System.Drawing.Imaging.ImageFormat
+                                Select Case sExt
+                                    Case ".jpg"
+                                        iImageFormat = System.Drawing.Imaging.ImageFormat.Jpeg
+                                    Case ".tif"
+                                        iImageFormat = System.Drawing.Imaging.ImageFormat.Tiff
+                                    Case ".png"
+                                        iImageFormat = System.Drawing.Imaging.ImageFormat.Png
+                                    Case ".bmp"
+                                        iImageFormat = System.Drawing.Imaging.ImageFormat.Bmp
                                 End Select
-                            End If
-                            Call oMousePointer.Pop()
-                        Case ".svg"
-                            Call oMousePointer.Push(Cursors.WaitCursor)
-                            If bManualRefresh Then pRefresh(True)
+                                Call picExport.Image.Save(sLastFilename, iImageFormat)
+                                If oOptions.GPS.ExportData Then
+                                    Select Case oOptions.GPS.DataFormat
+                                        Case Options.cGPSOptions.GPSDataFormatEnum.GoogleEarthImageOverlay
+                                            Try
+                                                Dim oOrigin As cTrigPoint = oSurvey.TrigPoints.GetGPSBaseReferencePoint
+                                                If oOrigin Is Nothing Then
+                                                    Call MsgBox(GetLocalizedString("preview.warning2"), MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, GetLocalizedString("preview.warningtitle"))
+                                                Else
+                                                    Dim dLat As Double = oOrigin.Coordinate.GetLatitude
+                                                    Dim dLong As Double = oOrigin.Coordinate.GetLongitude
 
-                            Dim sImageWidth As Single = oOptions.ImageWidth  '4096
-                            Dim sImageHeight As Single = oOptions.ImageHeight '4096
+                                                    If dLat = 0 And dLong = 0 Then
+                                                        Call MsgBox(GetLocalizedString("preview.warning3"), MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, GetLocalizedString("preview.warningtitle"))
+                                                    Else
+                                                        Dim oPoint As PointF = oOrigin.GetSegments(0).Data.Plan.ToPoint
+                                                        Dim oTopLeft As PointF = modPaint.FromPaintPoint(New PointF(0, 0), sPaintZoom, oPaintTranslation)
+                                                        Dim oBottomRight As PointF = modPaint.FromPaintPoint(New PointF(picExport.Image.Width, picExport.Image.Height), sPaintZoom, oPaintTranslation)
 
-                            Dim sPaintZoom As Single = 10
-                            Dim oPageRect As RectangleF = New RectangleF(oOptions.Margins.Left, oOptions.Margins.Top, sImageWidth - oOptions.Margins.Left - oOptions.Margins.Right, sImageHeight - oOptions.Margins.Top - oOptions.Margins.Bottom)
-                            'oPaintTranslation = New PointF(oPageRect.Width / 2, oPageRect.Height / 2)
-                            Dim oRect As RectangleF
-                            If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
-                                oRect = oSurvey.Plan.GetDesignVisibleBounds(oOptions)
-                            Else
-                                oRect = oSurvey.Profile.GetDesignVisibleBounds(oOptions)
-                            End If
-                            oRect = modPaint.AdjustBounds(oRect, 1)
+                                                        Dim dMC As Decimal = oSurvey.Calculate.GeoMagDeclinationData.MeridianConvergence
+                                                        Dim dTopLeftDistance As Single = modPaint.DistancePointToPoint(oPoint, oTopLeft)
+                                                        Dim dBottomRightDistance As Single = modPaint.DistancePointToPoint(oPoint, oBottomRight)
+                                                        Dim dTopLeftAngle As Single = modPaint.AddAngle(modPaint.GetBearing(oPoint, oTopLeft), dMC)
+                                                        Dim dBottomRightAngle As Single = modPaint.AddAngle(modPaint.GetBearing(oPoint, oBottomRight), dMC)
 
-                            If cboScale.SelectedIndex = 0 Then
-                                Dim sDesignWidth As Single = oRect.Size.Width
-                                Dim sDesignHeight As Single = oRect.Size.Height
-                                Dim sPageWidth As Single = oPageRect.Size.Width ' (oPageRect.Size.Width / oGr.DpiX) * 0.0254
-                                Dim sPageHeight As Single = oPageRect.Size.Height ' (oPageRect.Size.Height / oGr.DpiX) * 0.0254
-                                Dim sDeltaX As Single = sPageWidth / sDesignWidth
-                                Dim sDeltaY As Single = sPageHeight / sDesignHeight
-                                Dim sDelta As Single = If(sDeltaX < sDeltaY, sDeltaX, sDeltaY)
-                                If Single.IsInfinity(sDelta) Then sDelta = 100
-                                sPaintZoom = sDelta
-                                Using oGr As Graphics = picExport.CreateGraphics
-                                    txtScaleManual.Value = modPaint.GetScaleFactor(oGr, sPaintZoom)
-                                End Using
-                            Else
-                                Dim iFactor As Integer
-                                If cboScale.SelectedIndex = cboScale.Items.Count - 1 Then
-                                    iFactor = txtScaleManual.Value
-                                Else
-                                    Dim sFactor As String = cboScale.Text
-                                    If sFactor = "" Then
-                                        iFactor = 250
-                                    Else
-                                        iFactor = sFactor.Substring(sFactor.IndexOf(":") + 1)
-                                    End If
-                                    txtScaleManual.Value = iFactor
+                                                        Dim dTopLeftLat As Decimal
+                                                        Dim dTopLeftLong As Decimal
+                                                        Call CalculateCoordinates(oSurvey, dLat, dLong, dTopLeftDistance, dTopLeftAngle, dTopLeftLat, dTopLeftLong)
+                                                        Dim dBottomRightLat As Decimal
+                                                        Dim dBottomRightLong As Decimal
+                                                        Call CalculateCoordinates(oSurvey, dLat, dLong, dBottomRightDistance, dBottomRightAngle, dBottomRightLat, dBottomRightLong)
+
+                                                        Call modExport.GoogleKmlOverlayExportTo(oSurvey, sLastFilename, dTopLeftLat, dTopLeftLong, dBottomRightLat, dBottomRightLong)
+                                                    End If
+                                                End If
+                                            Catch
+                                            End Try
+                                    End Select
                                 End If
-                                Using oGr As Graphics = picExport.CreateGraphics
-                                    sPaintZoom = modPaint.GetZoomFactor(oGr, iFactor) ' ((1 / iFactor) / 0.0254) * oGr.DpiX
+                                Call oMousePointer.Pop()
+                            Case ".svg"
+                                Call oMousePointer.Push(Cursors.WaitCursor)
+                                If bManualRefresh Then pRefresh(True)
+
+                                Dim sImageWidth As Single = oOptions.ImageWidth  '4096
+                                Dim sImageHeight As Single = oOptions.ImageHeight '4096
+
+                                Dim sPaintZoom As Single = 10
+                                Dim oPageRect As RectangleF = New RectangleF(oOptions.Margins.Left, oOptions.Margins.Top, sImageWidth - oOptions.Margins.Left - oOptions.Margins.Right, sImageHeight - oOptions.Margins.Top - oOptions.Margins.Bottom)
+                                'oPaintTranslation = New PointF(oPageRect.Width / 2, oPageRect.Height / 2)
+                                Dim oRect As RectangleF
+                                If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
+                                    oRect = oSurvey.Plan.GetDesignVisibleBounds(oOptions)
+                                Else
+                                    oRect = oSurvey.Profile.GetDesignVisibleBounds(oOptions)
+                                End If
+                                oRect = modPaint.AdjustBounds(oRect, 1)
+
+                                If cboScale.SelectedIndex = 0 Then
+                                    Dim sDesignWidth As Single = oRect.Size.Width
+                                    Dim sDesignHeight As Single = oRect.Size.Height
+                                    Dim sPageWidth As Single = oPageRect.Size.Width ' (oPageRect.Size.Width / oGr.DpiX) * 0.0254
+                                    Dim sPageHeight As Single = oPageRect.Size.Height ' (oPageRect.Size.Height / oGr.DpiX) * 0.0254
+                                    Dim sDeltaX As Single = sPageWidth / sDesignWidth
+                                    Dim sDeltaY As Single = sPageHeight / sDesignHeight
+                                    Dim sDelta As Single = If(sDeltaX < sDeltaY, sDeltaX, sDeltaY)
+                                    If Single.IsInfinity(sDelta) Then sDelta = 100
+                                    sPaintZoom = sDelta
+                                    Using oGr As Graphics = picExport.CreateGraphics
+                                        txtScaleManual.Value = modPaint.GetScaleFactor(oGr, sPaintZoom)
+                                    End Using
+                                Else
+                                    Dim iFactor As Integer
+                                    If cboScale.SelectedIndex = cboScale.Properties.Items.Count - 1 Then
+                                        iFactor = txtScaleManual.Value
+                                    Else
+                                        Dim sFactor As String = cboScale.Text
+                                        If sFactor = "" Then
+                                            iFactor = 250
+                                        Else
+                                            iFactor = sFactor.Substring(sFactor.IndexOf(":") + 1)
+                                        End If
+                                        txtScaleManual.Value = iFactor
+                                    End If
+                                    Using oGr As Graphics = picExport.CreateGraphics
+                                        sPaintZoom = modPaint.GetZoomFactor(oGr, iFactor) ' ((1 / iFactor) / 0.0254) * oGr.DpiX
+                                    End Using
+                                End If
+                                'oRect = modPaint.ScaleRectangle(oRect, sPaintZoom)
+
+                                Dim oPaintTranslation As PointF = New PointF(-oRect.Left * sPaintZoom + oPageRect.Left + (oPageRect.Width - (oRect.Width * sPaintZoom)) / 2, -oRect.Top * sPaintZoom + oPageRect.Top + (oPageRect.Height - (oRect.Height * sPaintZoom)) / 2)
+
+                                'scale page coordinate to real coordinate (without margins....to prevent some svg viewer cutting objects outside viewbox)
+                                Dim oPageInPixels As RectangleF = New RectangleF(0, 0, sImageWidth, sImageHeight)
+                                Dim oPageInMeters As RectangleF = New RectangleF(0, 0, sImageWidth, sImageHeight)
+                                oPageInMeters = modPaint.FullScaleRectangle(oPageInMeters, 1 / sPaintZoom)
+                                oPageInMeters = New RectangleF(oPageInMeters.X - oPaintTranslation.X / sPaintZoom, oPageInMeters.Y - oPaintTranslation.Y / sPaintZoom, oPageInMeters.Width, oPageInMeters.Height)
+
+                                Dim oSize As SizeF = New SizeF(sImageWidth, sImageHeight)
+                                Dim iUnit As SizeUnit = pToSizeUnit(cboImageUM.SelectedIndex)
+
+                                sLastFilename = .FileName
+
+                                Dim oXML As XmlDocument
+                                Dim oSVGOptions As cSurvey.Design.cItem.SVGOptionsEnum
+                                If cEditDesignEnvironment.GetSetting("svg.exporttextaspath", 0) <> 0 Then
+                                    oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.TextAsPath
+                                End If
+                                If cEditDesignEnvironment.GetSetting("svg.exportcsurveyreferences", 1) <> 0 Then
+                                    oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.AddSourceReference
+                                End If
+                                If cEditDesignEnvironment.GetSetting("svg.exportimages", 1) <> 0 Then
+                                    oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.Images
+                                End If
+                                If cEditDesignEnvironment.GetSetting("svg.exportnoclipping", 0) = 0 Then
+                                    oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.Clipping
+                                End If
+                                If cEditDesignEnvironment.GetSetting("svg.exportnoclipartbrushes", 0) = 0 Then
+                                    oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.ClipartBrushes
+                                End If
+
+                                If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
+                                    oXML = oSurvey.Plan.ToSvg(oOptions, oSVGOptions, oSize, oPageInPixels, iUnit, oPageInMeters)
+                                Else
+                                    oXML = oSurvey.Profile.ToSvg(oOptions, oSVGOptions, oSize, oPageInPixels, iUnit, oPageInMeters)
+                                End If
+
+                                'Call XMLAddDeclaration(oXML)
+
+                                Dim oXMLWriterSettings As XmlWriterSettings = New XmlWriterSettings
+                                oXMLWriterSettings.Indent = False
+                                oXMLWriterSettings.Encoding = System.Text.Encoding.UTF8
+                                Using oXMLWriter As XmlWriter = XmlWriter.Create(.FileName, oXMLWriterSettings)
+                                    Call oXML.Save(oXMLWriter)
                                 End Using
-                            End If
-                            'oRect = modPaint.ScaleRectangle(oRect, sPaintZoom)
+                                'Call oXML.Save(.FileName)
 
-                            Dim oPaintTranslation As PointF = New PointF(-oRect.Left * sPaintZoom + oPageRect.Left + (oPageRect.Width - (oRect.Width * sPaintZoom)) / 2, -oRect.Top * sPaintZoom + oPageRect.Top + (oPageRect.Height - (oRect.Height * sPaintZoom)) / 2)
-
-                            'scale page coordinate to real coordinate (without margins....to prevent some svg viewer cutting objects outside viewbox)
-                            Dim oPageInPixels As RectangleF = New RectangleF(0, 0, sImageWidth, sImageHeight)
-                            Dim oPageInMeters As RectangleF = New RectangleF(0, 0, sImageWidth, sImageHeight)
-                            oPageInMeters = modPaint.FullScaleRectangle(oPageInMeters, 1 / sPaintZoom)
-                            oPageInMeters = New RectangleF(oPageInMeters.X - oPaintTranslation.X / sPaintZoom, oPageInMeters.Y - oPaintTranslation.Y / sPaintZoom, oPageInMeters.Width, oPageInMeters.Height)
-
-                            Dim oSize As SizeF = New SizeF(sImageWidth, sImageHeight)
-                            Dim iUnit As SizeUnit = pToSizeUnit(cboImageUM.SelectedIndex)
-
-                            sLastFilename = .FileName
-
-                            Dim oXML As XmlDocument
-                            Dim oSVGOptions As cSurvey.Design.cItem.SVGOptionsEnum
-                            If oSurvey.GetGlobalSetting("svg.exporttextaspath", 0) <> 0 Then
-                                oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.TextAsPath
-                            End If
-                            If oSurvey.GetGlobalSetting("svg.exportcsurveyreferences", 1) <> 0 Then
-                                oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.AddSourceReference
-                            End If
-                            If oSurvey.GetGlobalSetting("svg.exportimages", 1) <> 0 Then
-                                oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.Images
-                            End If
-                            If oSurvey.GetGlobalSetting("svg.exportnoclipping", 0) = 0 Then
-                                oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.Clipping
-                            End If
-                            If oSurvey.GetGlobalSetting("svg.exportnoclipartbrushes", 0) = 0 Then
-                                oSVGOptions = oSVGOptions Or cSurvey.Design.cItem.SVGOptionsEnum.ClipartBrushes
-                            End If
-
-                            If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
-                                oXML = oSurvey.Plan.ToSvg(oOptions, oSVGOptions, oSize, oPageInPixels, iUnit, oPageInMeters)
-                            Else
-                                oXML = oSurvey.Profile.ToSvg(oOptions, oSVGOptions, oSize, oPageInPixels, iUnit, oPageInMeters)
-                            End If
-
-                            'Call XMLAddDeclaration(oXML)
-
-                            Dim oXMLWriterSettings As XmlWriterSettings = New XmlWriterSettings
-                            oXMLWriterSettings.Indent = False
-                            oXMLWriterSettings.Encoding = System.Text.Encoding.UTF8
-                            Using oXMLWriter As XmlWriter = XmlWriter.Create(.FileName, oXMLWriterSettings)
-                                Call oXML.Save(oXMLWriter)
-                            End Using
-                            'Call oXML.Save(.FileName)
-
-                            Call oMousePointer.Pop()
-                    End Select
-                End If
+                                Call oMousePointer.Pop()
+                        End Select
+                    End If
             End With
         End Using
     End Sub
@@ -1639,7 +1651,7 @@ Friend Class frmPreview
         'Call pRefresh()
     End Sub
 
-    Private Sub btnZoomToFit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnZoomToFit.Click
+    Private Sub btnZoomToFit_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnZoomToFit.ItemClick
         Call pZoomToFit()
     End Sub
 
@@ -1714,66 +1726,78 @@ Friend Class frmPreview
         Else
             sUnitText = "mm"
         End If
-        If frmPIB Is Nothing Then
-            frmPIB = New frmParametersInfoBox(oCurrentOptions, sUnitText)
-            frmPIB.Show(Me)
-        Else
-            If Not frmPIB.Visible Then frmPIB.Show(Me)
-            Call frmPIB.BringToFront()
-        End If
+        Dim oParameters As frmParametersInfoBox = New frmParametersInfoBox(oCurrentOptions, sUnitText)
+        pnlParameters.Controls.Add(oParameters)
+        flyParameters.Size = oParameters.Size
+        oParameters.Dock = DockStyle.Fill
+        flyParameters.OwnerControl = btnInfoBoxDetails
+        flyParameters.ShowBeakForm(True)
     End Sub
 
     Private Sub btnScaleDetails_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnScaleDetails.Click
-        If frmPS Is Nothing Then
-            frmPS = New frmParametersScale(oCurrentOptions)
-            frmPS.Show(Me)
-        Else
-            If Not frmPS.Visible Then frmPS.Show(Me)
-            Call frmPS.BringToFront()
-        End If
+        Dim oParameters As frmParametersScale = New frmParametersScale(oCurrentOptions)
+        pnlParameters.Controls.Add(oParameters)
+        flyParameters.Size = oParameters.Size
+        oParameters.Dock = DockStyle.Fill
+        flyParameters.OwnerControl = btnScaleDetails
+        flyParameters.ShowBeakForm(True)
+
+        'If frmPS Is Nothing Then
+        '    frmPS = New frmParametersScale(oCurrentOptions)
+        '    frmPS.Show(Me)
+        'Else
+        '    If Not frmPS.Visible Then frmPS.Show(Me)
+        '    Call frmPS.BringToFront()
+        'End If
     End Sub
 
     Private Sub btnCompassDetails_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCompassDetails.Click
-        If frmPC Is Nothing Then
-            frmPC = New frmParametersCompass(oCurrentOptions)
-            Call frmPC.Show(Me)
-        Else
-            If Not frmPC.Visible Then frmPC.Show(Me)
-            Call frmPC.BringToFront()
-        End If
+        'If frmPC Is Nothing Then
+        '    frmPC = New frmParametersCompass(oCurrentOptions)
+        '    Call frmPC.Show(Me)
+        'Else
+        '    If Not frmPC.Visible Then frmPC.Show(Me)
+        '    Call frmPC.BringToFront()
+        'End If
+        Dim oParameters As frmParametersCompass = New frmParametersCompass(oCurrentOptions)
+        pnlParameters.Controls.Add(oParameters)
+        flyParameters.Size = oParameters.Size
+        oParameters.Dock = DockStyle.Fill
+        flyParameters.OwnerControl = btnCompassDetails
+        flyParameters.ShowBeakForm(True)
     End Sub
 
-    Private Sub frmPIB_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles frmPIB.FormClosed
-        frmPIB = Nothing
-    End Sub
+    'Private Sub frmPIB_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles frmPIB.FormClosed
+    '    frmPIB = Nothing
+    'End Sub
 
-    Private Sub frmPIB_OnChangeOptions(ByVal Sender As Object, ByVal InfoBoxOptions As cSurveyPC.cSurvey.Design.cOptions) Handles frmPIB.OnChangeOptions
-        Call pRefresh()
-    End Sub
+    'Private Sub frmPIB_OnChangeOptions(ByVal Sender As Object, ByVal InfoBoxOptions As cSurveyPC.cSurvey.Design.cOptions) Handles frmPIB.OnChangeOptions
+    '    Call pRefresh()
+    'End Sub
 
-    Private Sub frmPC_Disposed(sender As Object, e As EventArgs) Handles frmPC.Disposed
-        frmPC = Nothing
-    End Sub
+    'Private Sub frmPC_Disposed(sender As Object, e As EventArgs) Handles frmPC.Disposed
+    '    frmPC = Nothing
+    'End Sub
 
-    Private Sub frmPC_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles frmPC.FormClosed
-        frmPC = Nothing
-    End Sub
+    'Private Sub frmPC_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles frmPC.FormClosed
+    '    frmPC = Nothing
+    'End Sub
 
-    Private Sub frmPC_OnChangeOptions(ByVal Sender As Object, ByVal CompassOptions As cSurveyPC.cSurvey.Design.cOptions) Handles frmPC.OnChangeOptions
-        Call pRefresh()
-    End Sub
+    'Private Sub frmPC_OnChangeOptions(ByVal Sender As Object, ByVal CompassOptions As cSurveyPC.cSurvey.Design.cOptions) Handles frmPC.OnChangeOptions
+    '    Call pRefresh()
+    'End Sub
 
-    Private Sub frmPS_Disposed(sender As Object, e As EventArgs) Handles frmPS.Disposed
-        frmPS = Nothing
-    End Sub
+    'Private Sub frmPS_Disposed(sender As Object, e As EventArgs) Handles frmPS.Disposed
+    '    frmPS = Nothing
+    'End Sub
 
-    Private Sub frmPS_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles frmPS.FormClosed
-        frmPS = Nothing
-    End Sub
+    'Private Sub frmPS_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles frmPS.FormClosed
+    '    frmPS = Nothing
+    'End Sub
 
-    Private Sub frmPS_OnChangeOptions(ByVal Sender As Object, ByVal Options As cSurvey.Design.cOptions) Handles frmPS.OnChangeOptions
-        Call pRefresh()
-    End Sub
+    'Private Sub frmPS_OnChangeOptions(ByVal Sender As Object, ByVal Options As cSurvey.Design.cOptions) Handles frmPS.OnChangeOptions
+    '    Call pRefresh()
+    'End Sub
 
     Private Sub frmPreview_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         Call pDrawingStop(True)
@@ -1781,13 +1805,13 @@ Friend Class frmPreview
         Call pOptionsSave()
         oSurvey = Nothing
 
-        If Not frmPIB Is Nothing Then If Not frmPIB.IsDisposed Then Call frmPIB.Close()
-        If Not frmPC Is Nothing Then If Not frmPC.IsDisposed Then Call frmPC.Close()
-        If Not frmPS Is Nothing Then If Not frmPS.IsDisposed Then Call frmPS.Close()
-        If Not frmPD Is Nothing Then If Not frmPD.IsDisposed Then Call frmPD.Close()
-        If Not frmSD Is Nothing Then If Not frmSD.IsDisposed Then Call frmSD.Close()
-        If Not frmT Is Nothing Then If Not frmT.IsDisposed Then Call frmT.Close()
-        If Not frmZ Is Nothing Then If Not frmZ.IsDisposed Then Call frmZ.Close()
+        'If Not frmPIB Is Nothing Then If Not frmPIB.IsDisposed Then Call frmPIB.Close()
+        'If Not frmPC Is Nothing Then If Not frmPC.IsDisposed Then Call frmPC.Close()
+        'If Not frmPS Is Nothing Then If Not frmPS.IsDisposed Then Call frmPS.Close()
+        'If Not frmPD Is Nothing Then If Not frmPD.IsDisposed Then Call frmPD.Close()
+        'If Not frmSD Is Nothing Then If Not frmSD.IsDisposed Then Call frmSD.Close()
+        'If Not frmT Is Nothing Then If Not frmT.IsDisposed Then Call frmT.Close()
+        'If Not frmZ Is Nothing Then If Not frmZ.IsDisposed Then Call frmZ.Close()
     End Sub
 
     Private Sub chkPrintDesignSpecialPoint_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkPrintDesignSpecialPoint.CheckedChanged
@@ -1814,21 +1838,28 @@ Friend Class frmPreview
 
     Private Sub cmdSetImageMargins_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSetImageMargins.Click
         Dim oOptions As cSurvey.Design.cOptionsExport = oCurrentOptions
-        Using frmPM As frmPreviewMargins = New frmPreviewMargins(cboImageUM.Text)
-            With frmPM
-                .Margins = oOptions.Margins.Clone
-                If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                    oOptions.Margins = .Margins.Clone
-                    Call pRefresh()
-                End If
-            End With
-        End Using
+        Dim oParameters As frmPreviewMargins = New frmPreviewMargins(oOptions.Margins, cboImageUM.Text)
+        pnlParameters.Controls.Add(oParameters)
+        flyParameters.Size = oParameters.Size
+        oParameters.Dock = DockStyle.Fill
+        flyParameters.OwnerControl = cmdSetImageMargins
+        flyParameters.ShowBeakForm(True)
+
+        'Using frmPM As frmPreviewMargins = New frmPreviewMargins(cboImageUM.Text)
+        '    With frmPM
+        '        .Margins = oOptions.Margins.Clone
+        '        If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+        '            oOptions.Margins = .Margins.Clone
+        '            Call pRefresh()
+        '        End If
+        '    End With
+        'End Using
     End Sub
 
     Private Sub cboPrintDesignStyle_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboPrintDesignStyle.SelectedIndexChanged
-        Dim iDesignStyle As cSurvey.Design.cOptions.DesignStyleEnum = cboPrintDesignStyle.SelectedIndex
+        Dim iDesignStyle As cSurvey.Design.cOptionsCenterline.DesignStyleEnum = cboPrintDesignStyle.SelectedIndex
         Select Case iDesignStyle
-            Case cSurvey.Design.cOptions.DesignStyleEnum.Areas, cSurvey.Design.cOptions.DesignStyleEnum.Combined
+            Case cSurvey.Design.cOptionsCenterline.DesignStyleEnum.Areas, cSurvey.Design.cOptionsCenterline.DesignStyleEnum.Combined
                 lblPrintCombineColorMode.Enabled = True
                 cboPrintCombineColorMode.Enabled = True
                 chkPrintCombineColorGray.Enabled = True
@@ -1840,66 +1871,68 @@ Friend Class frmPreview
         Call pRefresh()
     End Sub
 
-    Private Sub btnTranslationsDetails_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnTranslationsDetails.Click
+    Private Sub frmParametersTranslations(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnTranslationsDetails.Click
         Dim iApplyTo As cSurvey.Design.cIDesign.cDesignTypeEnum
-        If frmT Is Nothing Then
-            If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
-                iApplyTo = cSurvey.Design.cIDesign.cDesignTypeEnum.Plan
-            Else
-                iApplyTo = cSurvey.Design.cIDesign.cDesignTypeEnum.Profile
-            End If
-            frmT = New frmParametersTranslations(oCurrentOptions, iApplyTo)
-            Call frmT.Show(Me)
+        If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
+            iApplyTo = cSurvey.Design.cIDesign.cDesignTypeEnum.Plan
         Else
-            If Not frmT.Visible Then frmT.Show(Me)
-            Call frmT.BringToFront()
+            iApplyTo = cSurvey.Design.cIDesign.cDesignTypeEnum.Profile
         End If
+        Dim oParameters As frmParametersTranslations = New frmParametersTranslations(oCurrentOptions.TranslationsOptions, iApplyTo)
+        pnlParameters.Controls.Add(oParameters)
+        flyParameters.Size = oParameters.Size
+        oParameters.Dock = DockStyle.Fill
+        flyParameters.OwnerControl = btnTranslationsDetails
+        flyParameters.ShowBeakForm(True)
+
+        'Dim iApplyTo As cSurvey.Design.cIDesign.cDesignTypeEnum
+        'If frmT Is Nothing Then
+        '    If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
+        '        iApplyTo = cSurvey.Design.cIDesign.cDesignTypeEnum.Plan
+        '    Else
+        '        iApplyTo = cSurvey.Design.cIDesign.cDesignTypeEnum.Profile
+        '    End If
+        '    frmT = New frmParametersTranslations(oCurrentOptions, iApplyTo)
+        '    Call frmT.Show(Me)
+        'Else
+        '    If Not frmT.Visible Then frmT.Show(Me)
+        '    Call frmT.BringToFront()
+        'End If
     End Sub
 
-    Private Sub frmZ_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles frmZ.FormClosed
-        frmZ = Nothing
-    End Sub
+    'Private Sub frmZ_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles frmZ.FormClosed
+    '    frmZ = Nothing
+    'End Sub
 
-    Private Sub frmZ_Disposed(sender As Object, e As EventArgs) Handles frmZ.Disposed
-        frmZ = Nothing
-    End Sub
-
-    Private Sub frmT_Disposed(sender As Object, e As EventArgs) Handles frmT.Disposed
-        frmT = Nothing
-    End Sub
-
-    Private Sub frmT_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles frmT.FormClosed
-        frmT = Nothing
-    End Sub
-
-    Private Sub frmT_OnChangeOptions(ByVal Sender As Object, ByVal Options As cSurvey.Design.cOptions) Handles frmT.OnChangeOptions
-        Call pRefresh()
-    End Sub
+    'Private Sub frmZ_Disposed(sender As Object, e As EventArgs) Handles frmZ.Disposed
+    '    frmZ = Nothing
+    'End Sub
 
     Private Sub chkTranslations_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkTranslations.CheckedChanged
         btnTranslationsDetails.Enabled = chkTranslations.Checked
         Call pRefresh()
     End Sub
 
-    Private Sub btnPreviewQuality0_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPreviewQuality0.Click
-        btnPreviewQuality0.Checked = True
-        btnPreviewQuality1.Checked = False
-        btnPreviewQuality2.Checked = False
-        Call pRefresh()
+    Private Sub btnDesignGraphics0_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btnDesignGraphics0.CheckedChanged
+        Call pSettingsSetDesignQuality(frmMain2.DesignQualityLevelEnum.Base)
     End Sub
 
-    Private Sub btnPreviewQuality1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPreviewQuality1.Click
-        btnPreviewQuality0.Checked = False
-        btnPreviewQuality1.Checked = True
-        btnPreviewQuality2.Checked = False
-        Call pRefresh()
+    Private Sub btnDesignGraphics1_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btnDesignGraphics1.CheckedChanged
+        Call pSettingsSetDesignQuality(frmMain2.DesignQualityLevelEnum.MediumQuality)
     End Sub
 
-    Private Sub btnPreviewQuality2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPreviewQuality2.Click
-        btnPreviewQuality0.Checked = False
-        btnPreviewQuality1.Checked = False
-        btnPreviewQuality2.Checked = True
-        Call pRefresh()
+    Private Sub btnDesignGraphics2_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btnDesignGraphics2.CheckedChanged
+        Call pSettingsSetDesignQuality(frmMain2.DesignQualityLevelEnum.HighQuality)
+    End Sub
+
+    Private Sub pSettingsSetDesignQuality(ByVal Quality As frmMain2.DesignQualityLevelEnum, Optional ByVal ForceSetting As Boolean = False)
+        If Not bEventDisabled Then
+            If Quality <> iDesignQuality OrElse ForceSetting Then
+                iDesignQuality = Quality
+                Call oSurvey.SharedSettings.SetValue("preview.designquality", iDesignQuality.ToString("D"))
+                Call pRefresh()
+            End If
+        End If
     End Sub
 
     Private Sub pExport_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles pnlExport.Paint
@@ -1938,24 +1971,14 @@ Friend Class frmPreview
     Private Sub pStatusProgress(ByVal Percent As Single, Optional ByVal Text As String = "")
         Try
             If InvokeRequired Then
-                Dim oArgs(1) As Object
-                oArgs(0) = Percent
-                oArgs(1) = Text
-                Call Me.BeginInvoke(New pStatusProgressDelegate(AddressOf pStatusProgress), oArgs)
+                Call Me.BeginInvoke(New pStatusProgressDelegate(AddressOf pStatusProgress), {Percent, Text})
             Else
                 If Percent >= 1 Or Percent <= 0 Then
-                    pnlStatusProgress.Visible = False
+                    pnlStatusProgress.Visibility = BarItemVisibility.Never
                     'trkZoom.Visible = pnlStatusDesignZoom.Visible
                 Else
-                    With pnlStatusProgress
-                        If Not .Visible Then
-                            .Minimum = 0
-                            .Maximum = 100
-                            .Visible = True
-                        End If
-                        .Value = Percent * 100
-                    End With
-                    'trkZoom.Visible = False
+                    pnlStatusProgress.Visibility = BarItemVisibility.Always
+                    pnlStatusProgress.EditValue = Percent * 100
                     Text = Text & " " & Strings.Format(Percent, "percent")
                 End If
                 Call pStatusSet(Text)
@@ -1965,15 +1988,15 @@ Friend Class frmPreview
     End Sub
 
     Private Sub pStatusSet(ByVal Text As String)
-        pnlStatusText.Text = Text
-        Call sbMain.Refresh()
+        pnlStatusText.Caption = Text
+        pnlStatusText.Refresh()
     End Sub
 
     Private Sub btnManualRefresh_CheckedChanged(sender As Object, e As System.EventArgs) Handles btnManualRefresh.CheckedChanged
         If Not bEventDisabled Then
             bManualRefresh = btnManualRefresh.Checked
             Call oSurvey.SharedSettings.SetValue("preview.manualrefresh", If(bManualRefresh, "1", "0"))
-            If Not bManualRefresh And pnlPopup.Visible Then
+            If Not bManualRefresh AndAlso cDesignMessageCorner.Visible Then
                 Call pRefresh(True)
             End If
         End If
@@ -1992,7 +2015,7 @@ Friend Class frmPreview
         If cboScale.SelectedIndex = 0 Then
             iScale = 250
         Else
-            If cboScale.SelectedIndex = cboScale.Items.Count - 1 Then
+            If cboScale.SelectedIndex = cboScale.Properties.Items.Count - 1 Then
                 iScale = txtScaleManual.Value
             Else
                 Dim sFactor As String = cboScale.Text
@@ -2057,81 +2080,81 @@ Friend Class frmPreview
                 Call oXML.Load(.FileName)
                 Dim oXMLRoot As XmlElement = oXML.Item("options")
                 Call pProfileAdd(oXMLRoot.GetAttribute("name"))
-                Call pProfileSelect(lv.SelectedItems(0))
+                Call pProfileSelect(NavBarControl1.SelectedLink.Item.Tag)
                 Call oCurrentOptions.Import(oXMLRoot.ChildNodes(0))
                 Call pOptionsRestore()
             End If
         End With
     End Sub
 
-    Private Sub btnImportSettings_DropDownOpening(sender As Object, e As System.EventArgs) Handles btnImportSettings.DropDownOpening
-        If iMode = PreviewModeEnum.Export Then
-            btnImportSettings0.Visible = True
-            btnImportSettings1.Visible = False
-        Else
-            btnImportSettings0.Visible = False
-            btnImportSettings1.Visible = True
-        End If
-        If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
-            btnImportSettings4.Visible = False
-            btnImportSettings5.Visible = True
-        Else
-            btnImportSettings4.Visible = True
-            btnImportSettings5.Visible = False
-        End If
-    End Sub
+    'Private Sub btnImportSettings_DropDownOpening(sender As Object, e As System.EventArgs) Handles btnImportSettings.DropDownOpening
+    '    If iMode = PreviewModeEnum.Export Then
+    '        btnImportSettings0.Visible = True
+    '        btnImportSettings1.Visible = False
+    '    Else
+    '        btnImportSettings0.Visible = False
+    '        btnImportSettings1.Visible = True
+    '    End If
+    '    If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
+    '        btnImportSettings4.Visible = False
+    '        btnImportSettings5.Visible = True
+    '    Else
+    '        btnImportSettings4.Visible = True
+    '        btnImportSettings5.Visible = False
+    '    End If
+    'End Sub
 
-    Private Sub btnImportSettings4_Click(sender As System.Object, e As System.EventArgs) Handles btnImportSettings4.Click
-        If MsgBox("Importare le impostazioni della pianta?", MsgBoxStyle.YesNo Or MsgBoxStyle.Question, "Attenzione:") = MsgBoxResult.Yes Then
-            Dim oXML As XmlDocument = New XmlDocument
-            Dim oXMLRoot As XmlElement = oXML.CreateElement("root")
-            If iMode = PreviewModeEnum.Export Then
-                Call oCurrentOptions.Import(oSurvey.Options("_export.plan").SaveTo(Nothing, oXML, oXMLRoot))
-            Else
-                Call oCurrentOptions.Import(oSurvey.Options("_preview.plan").SaveTo(Nothing, oXML, oXMLRoot))
-            End If
-            Call pOptionsRestore()
-        End If
-    End Sub
+    'Private Sub btnImportSettings4_Click(sender As System.Object, e As System.EventArgs) Handles btnImportSettings4.Click
+    '    If MsgBox("Importare le impostazioni della pianta?", MsgBoxStyle.YesNo Or MsgBoxStyle.Question, "Attenzione:") = MsgBoxResult.Yes Then
+    '        Dim oXML As XmlDocument = New XmlDocument
+    '        Dim oXMLRoot As XmlElement = oXML.CreateElement("root")
+    '        If iMode = PreviewModeEnum.Export Then
+    '            Call oCurrentOptions.Import(oSurvey.Options("_export.plan").SaveTo(Nothing, oXML, oXMLRoot))
+    '        Else
+    '            Call oCurrentOptions.Import(oSurvey.Options("_preview.plan").SaveTo(Nothing, oXML, oXMLRoot))
+    '        End If
+    '        Call pOptionsRestore()
+    '    End If
+    'End Sub
 
-    Private Sub btnImportSettings5_Click(sender As System.Object, e As System.EventArgs) Handles btnImportSettings5.Click
-        If MsgBox("Importare le impostazioni della sezione?", MsgBoxStyle.YesNo Or MsgBoxStyle.Question, "Attenzione:") = MsgBoxResult.Yes Then
-            Dim oXML As XmlDocument = New XmlDocument
-            Dim oXMLRoot As XmlElement = oXML.CreateElement("root")
-            If iMode = PreviewModeEnum.Export Then
-                Call oCurrentOptions.Import(oSurvey.Options("_export.profile").SaveTo(Nothing, oXML, oXMLRoot))
-            Else
-                Call oCurrentOptions.Import(oSurvey.Options("_preview.profile").SaveTo(Nothing, oXML, oXMLRoot))
-            End If
-            Call pOptionsRestore()
-        End If
-    End Sub
+    'Private Sub btnImportSettings5_Click(sender As System.Object, e As System.EventArgs) Handles btnImportSettings5.Click
+    '    If MsgBox("Importare le impostazioni della sezione?", MsgBoxStyle.YesNo Or MsgBoxStyle.Question, "Attenzione:") = MsgBoxResult.Yes Then
+    '        Dim oXML As XmlDocument = New XmlDocument
+    '        Dim oXMLRoot As XmlElement = oXML.CreateElement("root")
+    '        If iMode = PreviewModeEnum.Export Then
+    '            Call oCurrentOptions.Import(oSurvey.Options("_export.profile").SaveTo(Nothing, oXML, oXMLRoot))
+    '        Else
+    '            Call oCurrentOptions.Import(oSurvey.Options("_preview.profile").SaveTo(Nothing, oXML, oXMLRoot))
+    '        End If
+    '        Call pOptionsRestore()
+    '    End If
+    'End Sub
 
-    Private Sub btnImportSettings0_Click(sender As System.Object, e As System.EventArgs) Handles btnImportSettings0.Click
-        If MsgBox("Importare le impostazioni dell'anteprima di stampa?", MsgBoxStyle.YesNo Or MsgBoxStyle.Question, "Attenzione:") = MsgBoxResult.Yes Then
-            Dim oXML As XmlDocument = New XmlDocument
-            Dim oXMLRoot As XmlElement = oXML.CreateElement("root")
-            If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
-                Call oCurrentOptions.Import(oSurvey.Options("_preview.plan").SaveTo(Nothing, oXML, oXMLRoot))
-            Else
-                Call oCurrentOptions.Import(oSurvey.Options("_preview.profile").SaveTo(Nothing, oXML, oXMLRoot))
-            End If
-            Call pOptionsRestore()
-        End If
-    End Sub
+    'Private Sub btnImportSettings0_Click(sender As System.Object, e As System.EventArgs) Handles btnImportSettings0.Click
+    '    If MsgBox("Importare le impostazioni dell'anteprima di stampa?", MsgBoxStyle.YesNo Or MsgBoxStyle.Question, "Attenzione:") = MsgBoxResult.Yes Then
+    '        Dim oXML As XmlDocument = New XmlDocument
+    '        Dim oXMLRoot As XmlElement = oXML.CreateElement("root")
+    '        If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
+    '            Call oCurrentOptions.Import(oSurvey.Options("_preview.plan").SaveTo(Nothing, oXML, oXMLRoot))
+    '        Else
+    '            Call oCurrentOptions.Import(oSurvey.Options("_preview.profile").SaveTo(Nothing, oXML, oXMLRoot))
+    '        End If
+    '        Call pOptionsRestore()
+    '    End If
+    'End Sub
 
-    Private Sub btnImportSettings1_Click(sender As System.Object, e As System.EventArgs) Handles btnImportSettings1.Click
-        If MsgBox("Importare le impostazioni dell'esportazione come immagine?", MsgBoxStyle.YesNo Or MsgBoxStyle.Question, "Attenzione:") = MsgBoxResult.Yes Then
-            Dim oXML As XmlDocument = New XmlDocument
-            Dim oXMLRoot As XmlElement = oXML.CreateElement("root")
-            If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
-                Call oCurrentOptions.Import(oSurvey.Options("_export.plan").SaveTo(Nothing, oXML, oXMLRoot))
-            Else
-                Call oCurrentOptions.Import(oSurvey.Options("_export.profile").SaveTo(Nothing, oXML, oXMLRoot))
-            End If
-            Call pOptionsRestore()
-        End If
-    End Sub
+    'Private Sub btnImportSettings1_Click(sender As System.Object, e As System.EventArgs) Handles btnImportSettings1.Click
+    '    If MsgBox("Importare le impostazioni dell'esportazione come immagine?", MsgBoxStyle.YesNo Or MsgBoxStyle.Question, "Attenzione:") = MsgBoxResult.Yes Then
+    '        Dim oXML As XmlDocument = New XmlDocument
+    '        Dim oXMLRoot As XmlElement = oXML.CreateElement("root")
+    '        If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
+    '            Call oCurrentOptions.Import(oSurvey.Options("_export.plan").SaveTo(Nothing, oXML, oXMLRoot))
+    '        Else
+    '            Call oCurrentOptions.Import(oSurvey.Options("_export.profile").SaveTo(Nothing, oXML, oXMLRoot))
+    '        End If
+    '        Call pOptionsRestore()
+    '    End If
+    'End Sub
 
     Private Sub cmdManageProfile_Click(sender As System.Object, e As System.EventArgs) Handles cmdManageProfile.Click
         Using frmCVM = New frmCaveVisibilityManager(oSurvey, oSurvey.Properties.CaveVisibilityProfiles, txtCurrentProfile.Text)
@@ -2151,67 +2174,30 @@ Friend Class frmPreview
         Call pRefresh()
     End Sub
 
-    Private Sub pProfileSelect(Item As ListViewItem, Optional ForceRefresh As Boolean = False, Optional FirstRefresh As Boolean = False)
-        bEventDisabled = True
-        oCurrentProfile = Item.Tag
-        oCurrentOptions = oCurrentProfile.Options
+    Private Sub pProfileSelect(Item As cIProfile, Optional ForceRefresh As Boolean = False, Optional FirstRefresh As Boolean = False)
+        If oCurrentProfile IsNot Item Then
+            bEventDisabled = True
+            oCurrentProfile = Item
+            oCurrentOptions = oCurrentProfile.Options
 
-        If oCurrentProfile.IsSystem Then
-            btnDelete.Enabled = False
-        Else
-            btnDelete.Enabled = True
+            If oCurrentProfile.IsSystem Then
+                btnProfilesDelete.Enabled = False
+            Else
+                btnProfilesDelete.Enabled = True
+            End If
+
+            Call pOptionsRestore()
+
+            bEventDisabled = False
+            bFirstRendering = True
+
+            Call pRefresh(ForceRefresh, FirstRefresh)
+            Call pZoomToFit()
         End If
-
-        Call pOptionsRestore()
-
-        If Not frmPIB Is Nothing Then
-            Try
-                frmPIB.Close()
-                Call btnInfoBoxDetails.PerformClick()
-            Catch
-            End Try
-        End If
-
-        If Not frmPS Is Nothing Then
-            Try
-                frmPS.Close()
-                Call btnScaleDetails.PerformClick()
-            Catch
-            End Try
-        End If
-
-        If Not frmPC Is Nothing Then
-            Try
-                frmPC.Close()
-                Call btnCompassDetails.PerformClick()
-            Catch
-            End Try
-        End If
-
-        If Not frmT Is Nothing Then
-            Try
-                frmT.Close()
-                Call btnTranslationsDetails.PerformClick()
-            Catch
-            End Try
-        End If
-
-        If Not frmZ Is Nothing Then
-            Try
-                frmZ.Close()
-                Call btnZOrderDetails.PerformClick()
-            Catch
-            End Try
-        End If
-
-        bEventDisabled = False
-        bFirstRendering = True
-        Call pRefresh(ForceRefresh, FirstRefresh)
-        Call pZoomToFit()
     End Sub
 
-    Private Function pGetCurrentItem() As ListViewItem
-        For Each oItem As ListViewItem In lv.Items
+    Private Function pGetCurrentItem() As NavBarItem
+        For Each oItem As NavBarItem In NavBarControl1.Items
             If oItem.Tag Is oCurrentProfile Then
                 Return oItem
             End If
@@ -2219,11 +2205,11 @@ Friend Class frmPreview
         Return Nothing
     End Function
 
-    Private Sub lv_AfterLabelEdit(sender As Object, e As LabelEditEventArgs) Handles lv.AfterLabelEdit
+    Private Sub lv_AfterLabelEdit(sender As Object, e As LabelEditEventArgs)
         oCurrentProfile.Name = e.Label
     End Sub
 
-    Private Sub lv_BeforeLabelEdit(sender As Object, e As LabelEditEventArgs) Handles lv.BeforeLabelEdit
+    Private Sub lv_BeforeLabelEdit(sender As Object, e As LabelEditEventArgs)
         If iMode = PreviewModeEnum.Viewer Then
             e.CancelEdit = True
         Else
@@ -2231,74 +2217,69 @@ Friend Class frmPreview
         End If
     End Sub
 
-    Private Sub lv_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles lv.SelectedIndexChanged
-        Call pOptionsSave()
-
-        If lv.SelectedItems.Count > 0 Then
-            bEventDisabled = True
-            Call pProfileSelect(lv.SelectedItems(0), True, True)
-        End If
-    End Sub
-
     Private Sub pProfileAdd(Optional Name As String = "")
         Dim sName As String = Name
         If sName = "" Then
             Do
-                sName = InputBox(GetLocalizedString("preview.addprofile"), GetLocalizedString("preview.addprofiletitle"), "")
+                sName = DevExpress.XtraEditors.XtraInputBox.Show(GetLocalizedString("preview.addprofile"), GetLocalizedString("preview.addprofiletitle"), "")
+                'sName = InputBox(GetLocalizedString("preview.addprofile"), GetLocalizedString("preview.addprofiletitle"), "")
                 sName = sName.Trim
             Loop Until Not sName.StartsWith("_")
         End If
         If sName <> "" Then
             Select Case iMode
                 Case PreviewModeEnum.Export
+                    bEventDisabled = True
                     Dim oNewProfile As cExportProfile = oSurvey.ExportProfiles.AddAsCopy(oCurrentProfile, sName)
-                    Dim oItem As ListViewItem = New ListViewItem
-                    oItem.Text = oNewProfile.Name
-                    oItem.ImageKey = "export"
-                    oItem.Tag = oNewProfile
-                    Call lv.Items.Add(oItem)
-                    oItem.Selected = True
+                    Dim oLink As DevExpress.XtraNavBar.NavBarItemLink = grpMain.AddItem
+                    oLink.Item.Caption = oNewProfile.Name
+                    oLink.Item.ImageOptions.SvgImage = My.Resources.documentexport
+                    oLink.Item.Tag = oNewProfile
+                    If oNewProfile.IsSystem Then
+                        oLink.Item.Caption = "<b>" & oLink.Item.Caption & "</b>"
+                    Else
+                        oLink.Item.Caption = oNewProfile.Name
+                    End If
+                    bEventDisabled = False
+                    Call pProfileSelect(oNewProfile, True, True)
                 Case PreviewModeEnum.Preview
+                    bEventDisabled = True
                     Dim oNewProfile As cPreviewProfile = oSurvey.PreviewProfiles.AddAsCopy(oCurrentProfile, sName)
-                    Dim oItem As ListViewItem = New ListViewItem
-                    oItem.Text = oNewProfile.Name
-                    oItem.ImageKey = "preview"
-                    oItem.Tag = oNewProfile
-                    Call lv.Items.Add(oItem)
-                    oItem.Selected = True
+                    Dim oLink As DevExpress.XtraNavBar.NavBarItemLink = grpMain.AddItem
+                    oLink.Item.Caption = oNewProfile.Name
+                    oLink.Item.ImageOptions.SvgImage = My.Resources.documentprint
+                    oLink.Item.Tag = oNewProfile
+                    If oNewProfile.IsSystem Then
+                        oLink.Item.Caption = "<b>" & oLink.Item.Caption & "</b>"
+                    Else
+                        oLink.Item.Caption = oNewProfile.Name
+                    End If
+                    bEventDisabled = False
+                    NavBarControl1.SelectedLink = oLink
+                    Call pProfileSelect(oNewProfile, True, True)
             End Select
         End If
     End Sub
 
     Private Sub pProfileDelete()
         If MsgBox(String.Format(GetLocalizedString("preview.warning4"), oCurrentProfile.Name), MsgBoxStyle.YesNo Or MsgBoxStyle.Question, GetLocalizedString("preview.warningtitle")) = MsgBoxResult.Yes Then
-            Dim oItem As ListViewItem = pGetCurrentItem()
-            Dim iIndex As Integer = oItem.Index
-            Call lv.Items.Remove(oItem)
+            Dim oItem As NavBarItem = pGetCurrentItem()
+            NavBarControl1.Items.Remove(oItem)
             Select Case iMode
                 Case PreviewModeEnum.Export
                     Call oSurvey.ExportProfiles.Remove(oCurrentProfile)
                 Case PreviewModeEnum.Preview
                     Call oSurvey.PreviewProfiles.Remove(oCurrentProfile)
             End Select
-            If iIndex > lv.Items.Count - 1 Then
-                lv.Items(lv.Items.Count - 1).Selected = True
-            Else
-                lv.Items(iIndex).Selected = True
-            End If
         End If
-    End Sub
-
-    Private Sub btnAdd_Click(sender As System.Object, e As System.EventArgs) Handles btnAdd.Click
-        Call pProfileAdd()
     End Sub
 
     Private Sub pScaleUpdate()
         Dim iScale As Integer = oCurrentOptions.GetCurrentScale
         If iScale = 0 Then
-            pnlStatusCurrentRule.Text = GetLocalizedString("preview.textpart4")
+            pnlStatusCurrentRule.Caption = GetLocalizedString("preview.textpart4")
         Else
-            pnlStatusCurrentRule.Text = String.Format(GetLocalizedString("preview.textpart5"), Strings.Format(iScale, "#,##0"))
+            pnlStatusCurrentRule.Caption = String.Format(GetLocalizedString("preview.textpart5"), Strings.Format(iScale, "#,##0"))
         End If
     End Sub
 
@@ -2309,22 +2290,28 @@ Friend Class frmPreview
         Call oMousePointer.Pop()
     End Sub
 
-    Private Sub btnDelete_Click(sender As System.Object, e As System.EventArgs) Handles btnDelete.Click
+    Private Sub btnDelete_Click(sender As System.Object, e As System.EventArgs)
         Call pProfileDelete()
     End Sub
 
-    Private Sub frmZ_OnChangeOptions(Sender As Object, Options As cSurvey.Design.cOptions) Handles frmZ.OnChangeOptions
-        Call pRefresh()
-    End Sub
+    'Private Sub frmZ_OnChangeOptions(Sender As Object, Options As cSurvey.Design.cOptions) Handles frmZ.OnChangeOptions
+    '    Call pRefresh()
+    'End Sub
 
     Private Sub btnZOrderDetails_Click(sender As System.Object, e As System.EventArgs) Handles btnZOrderDetails.Click
-        If frmZ Is Nothing Then
-            frmZ = New frmParametersZOrder(oCurrentOptions)
-            Call frmZ.Show(Me)
-        Else
-            If Not frmZ.Visible Then frmZ.Show(Me)
-            Call frmZ.BringToFront()
-        End If
+        Dim oParameters As frmParametersZOrder = New frmParametersZOrder(oCurrentOptions)
+        pnlParameters.Controls.Add(oParameters)
+        flyParameters.Size = oParameters.Size
+        oParameters.Dock = DockStyle.Fill
+        flyParameters.OwnerControl = btnZOrderDetails
+        flyParameters.ShowBeakForm(True)
+        'If frmZ Is Nothing Then
+        '    frmZ = New frmParametersZOrder(oCurrentOptions)
+        '    Call frmZ.Show(Me)
+        'Else
+        '    If Not frmZ.Visible Then frmZ.Show(Me)
+        '    Call frmZ.BringToFront()
+        'End If
     End Sub
 
     Private Sub chkUseDrawingZOrder_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkUseDrawingZOrder.CheckedChanged
@@ -2332,30 +2319,12 @@ Friend Class frmPreview
         Call pRefresh()
     End Sub
 
-    Private Sub cmdRefresh_Click(sender As System.Object, e As System.EventArgs) Handles cmdRefresh.Click
-        If bFirstRendering Then bFirstRendering = False
-        Call pRefresh(True, False)
-    End Sub
-
-    Private Sub btnManualRefresh_Click(sender As Object, e As System.EventArgs) Handles btnManualRefresh.Click
-        btnManualRefresh.Checked = Not btnManualRefresh.Checked
-    End Sub
-
-    Private Sub mnuLvContextAdd_Click(sender As System.Object, e As System.EventArgs) Handles mnuLvContextAdd.Click
+    Private Sub mnuLvContextAdd_Click(sender As System.Object, e As System.EventArgs)
         Call pProfileAdd()
     End Sub
 
-    Private Sub mnuLvContextDelete_Click(sender As System.Object, e As System.EventArgs) Handles mnuLvContextDelete.Click
+    Private Sub mnuLvContextDelete_Click(sender As System.Object, e As System.EventArgs)
         Call pProfileDelete()
-    End Sub
-
-    Private Sub mnuLvContext_Opening(sender As System.Object, e As System.ComponentModel.CancelEventArgs) Handles mnuLvContext.Opening
-        mnuLvContextAdd.Visible = btnAdd.Visible
-        mnuLvContextAddSep.Visible = btnAdd.Visible
-        mnuLvContextAdd.Enabled = btnAdd.Enabled
-        mnuLvContextDelete.Visible = btnDelete.Visible
-        mnuLvContextDelete.Enabled = btnDelete.Enabled
-        mnuLvContextDeleteSep.Visible = btnAdd.Visible
     End Sub
 
     Private Sub chkPrintSketch_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkPrintSketches.CheckedChanged
@@ -2374,7 +2343,7 @@ Friend Class frmPreview
 
     Private oDrawRefreshThread As Threading.Thread
 
-    Private oPaintInfo(1) As frmMain.sPaintInfo
+    Private oPaintInfo(1) As frmMain2.sPaintInfo
 
     Private oOpenHandCursor As Cursor
     Private oClosedHandCursor As Cursor
@@ -2382,11 +2351,11 @@ Friend Class frmPreview
     Private bDisableZoomEvent As Boolean
     Private bCenterOnShow As Boolean
 
-    Private WithEvents oVSB As VScrollBar
-    Private WithEvents oHSB As HScrollBar
+    Private WithEvents oVSB As DevExpress.XtraEditors.VScrollBar
+    Private WithEvents oHSB As DevExpress.XtraEditors.HScrollBar
 
     Private bDrawRulers As Boolean
-    Private iDrawRulesStyle As frmMain.RulersStyleEnum
+    Private iDrawRulesStyle As frmMain2.RulersStyleEnum
     Private bDrawMetricGrid As Boolean
 
     Private bDrawing As Boolean
@@ -2402,7 +2371,7 @@ Friend Class frmPreview
     Private sZoomDefault As Single = 500
     Private sZoomRatio As Single = 15
 
-    Private iZoomType As frmMain.ZoomTypeEnum = frmMain.ZoomTypeEnum.ScaleFactor
+    Private iZoomType As frmMain2.ZoomTypeEnum = frmMain2.ZoomTypeEnum.ScaleFactor
 
     Private Enum MultiSelTypeEnum
         None = 0
@@ -2422,12 +2391,12 @@ Friend Class frmPreview
                 Dim iWidth As Integer = picMap.Width - oVSB.Width
                 Dim iHeight As Integer = picMap.Height - oHSB.Height
 
-                If btnPreviewQuality0.Checked Then
+                If iDesignQuality = frmMain2.DesignQualityLevelEnum.Base Then
                     Graphics.CompositingQuality = CompositingQuality.HighSpeed
                     Graphics.SmoothingMode = SmoothingMode.HighSpeed
                     Graphics.InterpolationMode = InterpolationMode.Low
                     Graphics.TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
-                ElseIf btnPreviewQuality1.Checked Then
+                ElseIf iDesignQuality = frmMain2.DesignQualityLevelEnum.MediumQuality Then
                     Graphics.CompositingQuality = CompositingQuality.HighSpeed
                     Graphics.SmoothingMode = SmoothingMode.AntiAlias
                     Graphics.InterpolationMode = InterpolationMode.Default
@@ -2474,7 +2443,7 @@ Friend Class frmPreview
                 If InvokeRequired Then
                     Call Invoke(New pHideStopButtonDelegate(AddressOf pHideStopButton))
                 Else
-                    btnStop.Visible = False
+                    btnStop.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
                 End If
             End If
         End If
@@ -2551,7 +2520,7 @@ Friend Class frmPreview
         If oDrawRefreshThread Is Nothing Then
             oDrawRefreshThread = New Threading.Thread(AddressOf oDrawRefreshThread_callback)
             oDrawRefreshThread.Priority = Threading.ThreadPriority.Lowest
-            btnStop.Visible = True
+            btnStop.Visibility = DevExpress.XtraBars.BarItemVisibility.Always
             Call oDrawRefreshThread.Start()
         End If
     End Sub
@@ -2571,9 +2540,9 @@ Friend Class frmPreview
     Private Sub pMapCenterAndFit()
         Dim oBounds As RectangleF
         If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
-            oBounds = oSurvey.Plan.GetBounds(oCurrentOptions)
+            oBounds = oSurvey.Plan.GetVisibleBounds(oCurrentOptions)
         Else
-            oBounds = oSurvey.Profile.GetBounds(oCurrentOptions)
+            oBounds = oSurvey.Profile.GetVisibleBounds(oCurrentOptions)
         End If
         Call pMapCenterAndFit(oBounds)
     End Sub
@@ -2649,12 +2618,12 @@ Friend Class frmPreview
 
             Dim sZoomText As String = ""
             Select Case iZoomType
-                Case frmMain.ZoomTypeEnum.ScaleFactor
+                Case frmMain2.ZoomTypeEnum.ScaleFactor
                     sZoomText = "1:" & modNumbers.MathRound(iScale, 0)
-                Case frmMain.ZoomTypeEnum.ZoomFactor
+                Case frmMain2.ZoomTypeEnum.ZoomFactor
                     sZoomText = Strings.Format(sPaintZoom, "0.00 x")
             End Select
-            pnlStatusDesignZoom.Text = sZoomText
+            pnlStatusDesignZoom.Caption = sZoomText
 
             Try
                 Dim oCurrentTranslation As PointF = New PointF(oPaintTranslation.X * sPaintZoom / sOldPaintZoom, oPaintTranslation.Y * sPaintZoom / sOldPaintZoom)
@@ -2875,13 +2844,6 @@ Friend Class frmPreview
         Call pMapInvalidate()
     End Sub
 
-    Private Sub btnSidePanel_Click(sender As System.Object, e As System.EventArgs) Handles btnSidePanel.Click
-        btnSidePanel.Checked = Not btnSidePanel.Checked
-        pnlOptions.Visible = btnSidePanel.Checked
-
-        Call oSurvey.SharedSettings.SetValue("preview.sidepanel.visible", If(btnSidePanel.Checked, "1", "0"))
-    End Sub
-
     Private Sub frmPreview_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         oRulerBackgroundBrush = New SolidBrush(Color.FromArgb(100, 230, 230, 230))
         oRulerUsedBackgroundBrush = New SolidBrush(Color.FromArgb(100, Color.LightBlue))
@@ -2902,75 +2864,84 @@ Friend Class frmPreview
 
     Friend Event OnPropertyChange(Sender As frmPreview)
 
-    Private Sub btnProperty_Click(sender As Object, e As EventArgs) Handles btnProperty.Click
-        Dim frmP As frmProperties = New frmProperties(oSurvey)
-        AddHandler frmP.OnApply, AddressOf frmProperties_OnApply
-        If frmP.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-            Call pRefresh()
-            RaiseEvent OnPropertyChange(Me)
-        End If
-    End Sub
-
     Private Sub frmProperties_OnApply(ByVal Sender As frmProperties)
         Call pRefresh()
         RaiseEvent OnPropertyChange(Me)
     End Sub
 
     Private Sub btnDesignDetails_Click(sender As Object, e As EventArgs) Handles btnDesignDetails.Click
-        If frmPD Is Nothing Then
-            frmPD = New frmParametersDesign(oCurrentOptions)
-            frmPD.Show(Me)
-        Else
-            If Not frmPD.Visible Then frmPD.Show(Me)
-            Call frmPD.BringToFront()
-        End If
+        'If frmPD Is Nothing Then
+        '    frmPD = New frmParametersDesign(oCurrentOptions)
+        '    frmPD.Show(Me)
+        'Else
+        '    If Not frmPD.Visible Then frmPD.Show(Me)
+        '    Call frmPD.BringToFront()
+        'End If
+        Dim oParameters As frmParametersDesign = New frmParametersDesign(oCurrentOptions)
+        pnlParameters.Controls.Add(oParameters)
+        flyParameters.Size = oParameters.Size
+        oParameters.Dock = DockStyle.Fill
+        flyParameters.OwnerControl = btnDesignDetails
+        flyParameters.ShowBeakForm(True)
     End Sub
 
-    Private Sub frmPD_Disposed(sender As Object, e As EventArgs) Handles frmPD.Disposed
-        frmPD = Nothing
-    End Sub
+    'Private Sub frmPD_Disposed(sender As Object, e As EventArgs) Handles frmPD.Disposed
+    '    frmPD = Nothing
+    'End Sub
 
-    Private Sub frmPD_FormClosed(sender As Object, e As FormClosedEventArgs) Handles frmPD.FormClosed
-        frmPD = Nothing
-    End Sub
+    'Private Sub frmPD_FormClosed(sender As Object, e As FormClosedEventArgs) Handles frmPD.FormClosed
+    '    frmPD = Nothing
+    'End Sub
 
-    Private Sub frmPD_OnChangeOptions(Sender As Object, Options As cSurvey.Design.cIOptionsPreview) Handles frmPD.OnChangeOptions
-        Call pRefresh()
-    End Sub
+    'Private Sub frmPD_OnChangeOptions(Sender As Object, Options As cSurvey.Design.cIOptionsPreview) Handles frmPD.OnChangeOptions
+    '    Call pRefresh()
+    'End Sub
 
     Private Sub btnSegmentDetails_Click(sender As Object, e As EventArgs) Handles btnSegmentDetails.Click
         Dim iApplyTo As cSurvey.Design.cIDesign.cDesignTypeEnum
-        If frmSD Is Nothing Then
-            If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
-                iApplyTo = cSurvey.Design.cIDesign.cDesignTypeEnum.Plan
-            Else
-                iApplyTo = cSurvey.Design.cIDesign.cDesignTypeEnum.Profile
-            End If
-            frmSD = New frmParametersSegments(oCurrentOptions, iApplyTo)
-            frmSD.Show(Me)
+        If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
+            iApplyTo = cSurvey.Design.cIDesign.cDesignTypeEnum.Plan
         Else
-            If Not frmSD.Visible Then frmPD.Show(Me)
-            Call frmSD.BringToFront()
+            iApplyTo = cSurvey.Design.cIDesign.cDesignTypeEnum.Profile
         End If
+        Dim oParameters As frmParametersSegments = New frmParametersSegments(oCurrentOptions, iApplyTo)
+        pnlParameters.Controls.Add(oParameters)
+        flyParameters.Size = oParameters.Size
+        oParameters.Dock = DockStyle.Fill
+        flyParameters.OwnerControl = btnSegmentDetails
+        flyParameters.ShowBeakForm(True) '(New Point(oRect.Right, oRect.Top + oRect.Height / 2), True)
+        'Dim iApplyTo As cSurvey.Design.cIDesign.cDesignTypeEnum
+        'If frmSD Is Nothing Then
+        '    If oCurrentProfile.Design = cIDesign.cDesignTypeEnum.Plan Then
+        '        iApplyTo = cSurvey.Design.cIDesign.cDesignTypeEnum.Plan
+        '    Else
+        '        iApplyTo = cSurvey.Design.cIDesign.cDesignTypeEnum.Profile
+        '    End If
+        '    frmSD = New frmParametersSegments(oCurrentOptions, iApplyTo)
+        '    frmSD.Show(Me)
+        'Else
+        '    If Not frmSD.Visible Then frmPD.Show(Me)
+        '    Call frmSD.BringToFront()
+        'End If
     End Sub
 
-    Private Sub frmSD_Disposed(sender As Object, e As EventArgs) Handles frmSD.Disposed
-        frmSD = Nothing
-    End Sub
+    'Private Sub frmSD_Disposed(sender As Object, e As EventArgs) Handles frmSD.Disposed
+    '    frmSD = Nothing
+    'End Sub
 
-    Private Sub frmSD_FormClosed(sender As Object, e As FormClosedEventArgs) Handles frmSD.FormClosed
-        frmSD = Nothing
-    End Sub
+    'Private Sub frmSD_FormClosed(sender As Object, e As FormClosedEventArgs) Handles frmSD.FormClosed
+    '    frmSD = Nothing
+    'End Sub
+    'Private Sub frmSD_OnChangeOptions(Sender As Object, Options As cSurvey.Design.cOptions) Handles frmSD.OnChangeOptions
+    '    Call pRefresh()
+    'End Sub
 
-    Private Sub frmSD_OnChangeOptions(Sender As Object, Options As cSurvey.Design.cOptions) Handles frmSD.OnChangeOptions
-        Call pRefresh()
-    End Sub
 
     Private Sub pDrawingStop(Force As Boolean)
         If bDrawing OrElse Force Then
             Call pDrawingThreadStop()
             bDrawing = False
-            btnStop.Visible = False
+            btnStop.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         End If
     End Sub
 
@@ -2982,18 +2953,6 @@ Friend Class frmPreview
             End If
             oDrawRefreshThread = Nothing
         End If
-    End Sub
-
-    Private Sub btnStop_Click(sender As System.Object, e As System.EventArgs) Handles btnStop.Click
-        Call pDrawingStop(True)
-    End Sub
-
-    Private Sub mnuLvContextExport_Click(sender As Object, e As EventArgs) Handles mnuLvContextExport.Click
-        Call pExportToFile()
-    End Sub
-
-    Private Sub mnuLvContextImport_Click(sender As Object, e As EventArgs) Handles mnuLvContextImport.Click
-        Call pImportFromFile()
     End Sub
 
     Private Sub chkPrintSplay_CheckedChanged(sender As Object, e As EventArgs) Handles chkPrintSplay.CheckedChanged
@@ -3036,48 +2995,20 @@ Friend Class frmPreview
             Call pRefresh(True, False)
         End If
         If e.KeyCode = Keys.F4 Then
-            Call btnZoomToFit_Click(Nothing, Nothing)
+            Call btnZoomToFit_ItemClick(Nothing, Nothing)
         End If
         If e.Control AndAlso (e.KeyCode = Keys.Oemplus OrElse e.KeyCode = Keys.Add) Then
-            Call btnZoomIn_Click(Nothing, Nothing)
+            Call btnZoomIn_ItemClick(Nothing, Nothing)
         End If
         If e.Control AndAlso e.KeyCode = Keys.OemMinus OrElse e.KeyCode = Keys.Subtract Then
-            Call btnZoomOut_Click(Nothing, Nothing)
+            Call btnZoomout_ItemClick(Nothing, Nothing)
         End If
-    End Sub
-
-    Private Sub pnlStatusDesignZoom100_Click(sender As Object, e As EventArgs) Handles pnlStatusDesignZoom100.Click
-        Call pScaleZoom(100)
     End Sub
 
     Private Sub pScaleZoom(Scale)
         Using oGr As Graphics = picMap.CreateGraphics
             Call pMapZoom(modPaint.GetZoomFactor(oGr, Scale))
             Call pMapInvalidate()
-        End Using
-    End Sub
-
-    Private Sub pnlStatusDesignZoom200_Click(sender As Object, e As EventArgs) Handles pnlStatusDesignZoom200.Click
-        Call pScaleZoom(200)
-    End Sub
-
-    Private Sub pnlStatusDesignZoom250_Click(sender As Object, e As EventArgs) Handles pnlStatusDesignZoom250.Click
-        Call pScaleZoom(250)
-    End Sub
-
-    Private Sub pnlStatusDesignZoom500_Click(sender As Object, e As EventArgs) Handles pnlStatusDesignZoom500.Click
-        Call pScaleZoom(500)
-    End Sub
-
-    Private Sub pnlStatusDesignZoom1000_Click(sender As Object, e As EventArgs) Handles pnlStatusDesignZoom1000.Click
-        Call pScaleZoom(1000)
-    End Sub
-
-    Private Sub btnBaseRule_Click(sender As Object, e As EventArgs) Handles btnBaseRule.Click
-        Using frmSR As frmScaleRules = New frmScaleRules(oSurvey, frmScaleRules.EditStyleEnum.BaseRule, oCurrentOptions)
-            If frmSR.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                Call pRefresh()
-            End If
         End Using
     End Sub
 
@@ -3251,6 +3182,177 @@ Friend Class frmPreview
         End If
     End Sub
 
+    Private Sub btnProfilesAdd_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnProfilesAdd.ItemClick
+        Call pProfileAdd()
+    End Sub
+
+    Private Sub btnProfilesDelete_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnProfilesDelete.ItemClick
+        Call pProfileDelete()
+    End Sub
+
+    Private Sub btnBaseRule_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnBaseRule.ItemClick
+        Call pScaleRules()
+    End Sub
+
+    Private Sub pScaleRules()
+        Using frmSR As frmScaleRules = New frmScaleRules(oSurvey, frmScaleRules.EditStyleEnum.BaseRule, oCurrentOptions)
+            If frmSR.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                Call pRefresh()
+            End If
+        End Using
+    End Sub
+
+    Private Sub pProperties()
+        Using frmP As frmProperties = New frmProperties(oSurvey)
+            AddHandler frmP.OnApply, AddressOf frmProperties_OnApply
+            If frmP.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                Call pRefresh()
+                RaiseEvent OnPropertyChange(Me)
+            End If
+            RemoveHandler frmP.OnApply, AddressOf frmProperties_OnApply
+        End Using
+    End Sub
+
+    Private Sub btnProperties_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnProperties.ItemClick
+        Call pProperties()
+    End Sub
+
+    Private Sub btnZoomIn_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnZoomIn.ItemClick
+        Select Case iMode
+            Case PreviewModeEnum.Preview
+                If (pPreview.Zoom < 100) Then
+                    sViewZoom *= 1.1
+                    pPreview.Zoom = sViewZoom
+                End If
+            Case PreviewModeEnum.Export
+                sViewZoom *= 1.1
+                picExport.Size = New Size(picExport.Image.Width * sViewZoom, picExport.Image.Height * sViewZoom)
+                Call pnlExport.Invalidate()
+            Case PreviewModeEnum.Viewer
+                Call pMapZoomIn()
+        End Select
+    End Sub
+
+    Private Sub btnZoomout_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnZoomOut.ItemClick
+        Select Case iMode
+            Case PreviewModeEnum.Preview
+                If (sViewZoom > 0.1) Then
+                    sViewZoom /= 1.1
+                    pPreview.Zoom = sViewZoom
+                End If
+            Case PreviewModeEnum.Export
+                If (sViewZoom > 0.1) Then
+                    sViewZoom /= 1.1
+                    picExport.Size = New Size(picExport.Image.Width * sViewZoom, picExport.Image.Height * sViewZoom)
+                    Call pnlExport.Invalidate()
+                End If
+            Case PreviewModeEnum.Viewer
+                Call pMapZoomOut()
+        End Select
+    End Sub
+
+    Private Sub btnClose_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnClose.ItemClick
+        Call Close()
+    End Sub
+
+    Private Sub btnPrint_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnPrint.ItemClick
+        Call pPrint()
+    End Sub
+
+    Private Sub btnExport_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnExport.ItemClick
+        Call pExport()
+    End Sub
+
+    Private Sub btnRefresh_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnRefresh.ItemClick
+        If bFirstRendering Then bFirstRendering = False
+        Call pRefresh(True, False)
+    End Sub
+
+    Private Sub btnStatusDesignZoom200_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnStatusDesignZoom200.ItemClick
+        Call pScaleZoom(200)
+    End Sub
+
+    Private Sub btnStatusDesignZoom100_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnStatusDesignZoom100.ItemClick
+        Call pScaleZoom(100)
+    End Sub
+
+    Private Sub btnStatusDesignZoom250_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnStatusDesignZoom250.ItemClick
+        Call pScaleZoom(250)
+    End Sub
+
+    Private Sub btnStatusDesignZoom500_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnStatusDesignZoom500.ItemClick
+        Call pScaleZoom(500)
+    End Sub
+
+    Private Sub btnStatusDesignZoom1000_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnStatusDesignZoom1000.ItemClick
+        Call pScaleZoom(1000)
+    End Sub
+
+    Private Sub btnStop_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnStop.ItemClick
+        Call pDrawingStop(True)
+    End Sub
+
+    Private Sub NavBarControl1_SelectedLinkChanged(sender As Object, e As DevExpress.XtraNavBar.ViewInfo.NavBarSelectedLinkChangedEventArgs) Handles NavBarControl1.SelectedLinkChanged
+        If Not bEventDisabled Then
+            Call pOptionsSave()
+            If Not e.Link Is Nothing Then
+                Call pProfileSelect(e.Link.Item.Tag, True, True)
+            End If
+        End If
+    End Sub
+
+    Private Sub btnSidePanel_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btnSidePanel.CheckedChanged
+        If Not bEventDisabled Then
+            pnlOptions.Visible = btnSidePanel.Checked
+            Call oSurvey.SharedSettings.SetValue("preview.sidepanel.visible", If(btnSidePanel.Checked, "1", "0"))
+        End If
+    End Sub
+
+    Private bRefreshFromParameters As Boolean
+
+    Private Sub flyParameters_BeforeHide(sender As Object, e As CancelEventArgs) Handles flyParameters.BeforeHide
+        bRefreshFromParameters = False
+    End Sub
+
+    Private Sub oCurrentOptions_OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Handles oCurrentOptions.OnPropertyChanged
+        If bRefreshFromParameters Then
+            If e.Name.StartsWith("PageMargins.") Then
+                oCurrentPrinterSettings.DefaultPageSettings.Margins = DirectCast(oCurrentOptions, cOptionsPreview).PageMargins.ToMargin
+            End If
+            Call pRefresh()
+            End If
+    End Sub
+
+    Private Sub flyParameters_BeforeShow(sender As Object, e As CancelEventArgs) Handles flyParameters.BeforeShow
+        bRefreshFromParameters = True
+    End Sub
+
+    Private Sub flyParameters_Hidden(sender As Object, e As DevExpress.Utils.FlyoutPanelEventArgs) Handles flyParameters.Hidden
+        Call pnlParameters.Controls.Clear()
+    End Sub
+
+    Private Sub btnProfileImportFromFile_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnProfileImportFromFile.ItemClick
+        Call pImportFromFile()
+    End Sub
+
+    Private Sub btnProfileExportToFile_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnProfileExportToFile.ItemClick
+        Call pExportToFile()
+    End Sub
+
+    'Private Sub NavBarControl1_CustomDrawLink(sender As Object, e As DevExpress.XtraNavBar.ViewInfo.CustomDrawNavBarElementEventArgs) Handles NavBarControl1.CustomDrawLink
+    '    If e.ObjectInfo.State = DevExpress.Utils.Drawing.ObjectState.Pressed Then
+    '        e.Cache.FillRectangle(e.Cache.GetSolidBrush(SystemColors.Highlight), e.RealBounds)
+    '        'e.Handled = True
+    '    End If
+    'End Sub
+
+    'Private Sub pPreview_Paint(sender As Object, e As PaintEventArgs) Handles pPreview.Paint
+    '    Using oAngleBrushes As SolidBrush = New SolidBrush(Color.FromArgb(120, Color.LightYellow))
+    '        Call e.Graphics.FillPolygon(oAngleBrushes, {New PointF(e.ClipRectangle.X, e.ClipRectangle.Y), New PointF(e.ClipRectangle.X + 96, e.ClipRectangle.Y), New PointF(e.ClipRectangle.X, e.ClipRectangle.Y + 96)})
+    '    End Using
+    '    Call e.Graphics.DrawImage(modPaint.SVGToBitmap(My.Resources.warning, New Drawing.Size(e.ClipRectangle.X + 32, e.ClipRectangle.Y + 32), LookAndFeel), 8, 8)
+    'End Sub
+
     'Private Sub mnuImageSizeFromPageSize_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mnuImageSizeFromPageSize.Opening
     '    Call mnuImageSizeFromPageSize.Items.Clear()
     '    Dim oXml As XmlDocument = New XmlDocument
@@ -3284,4 +3386,15 @@ Friend Class frmPreview
     '        pnlProfile.Enabled = Not oOptions.DrawPrintOrExportArea
     '    End If
     'End Sub
+
+    Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
+        If My.Application.CurrentLanguage = "it" Then
+            If keyData = Keys.Decimal Then
+                SendKeys.Send(",")
+                Return True
+            Else
+                Return MyBase.ProcessCmdKey(msg, keyData)
+            End If
+        End If
+    End Function
 End Class

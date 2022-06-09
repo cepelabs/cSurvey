@@ -24,156 +24,158 @@ Partial Class frmScaleRules
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmScaleRules))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.cmdApply = New System.Windows.Forms.Button()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.cmdOk = New System.Windows.Forms.Button()
-        Me.lv = New System.Windows.Forms.ListView()
-        Me.iml = New System.Windows.Forms.ImageList(Me.components)
-        Me.tabInfo = New System.Windows.Forms.TabControl()
-        Me.tabInfoMain = New System.Windows.Forms.TabPage()
-        Me.lblScaleWarning = New System.Windows.Forms.Label()
-        Me.picScaleWarning = New System.Windows.Forms.PictureBox()
-        Me.txtScale = New System.Windows.Forms.NumericUpDown()
-        Me.lblScale = New System.Windows.Forms.Label()
-        Me.tanInfoCategories = New System.Windows.Forms.TabPage()
-        Me.grdCategoriesVisibility = New cSurveyPC.cGrid()
-        Me.colCategoryIndex = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colCategoryName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colCategoryVisibility = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.tabInfODesign = New System.Windows.Forms.TabPage()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.cmdApply = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
+        Me.GroupBox1 = New DevExpress.XtraEditors.GroupControl()
+        Me.Label8 = New DevExpress.XtraEditors.LabelControl()
+        Me.Label7 = New DevExpress.XtraEditors.LabelControl()
+        Me.Label4 = New DevExpress.XtraEditors.LabelControl()
         Me.txtBaseMediumLinesScaleFactor = New System.Windows.Forms.NumericUpDown()
         Me.txtBaseUltraLightLinesScaleFactor = New System.Windows.Forms.NumericUpDown()
         Me.txtBaseLightLinesScaleFactor = New System.Windows.Forms.NumericUpDown()
         Me.txtBaseHeavyLinesScaleFactor = New System.Windows.Forms.NumericUpDown()
-        Me.lblBaseLinesScaleFactor = New System.Windows.Forms.Label()
+        Me.lblBaseLinesScaleFactor = New DevExpress.XtraEditors.LabelControl()
         Me.txtBaseLineWidthScaleFactor = New System.Windows.Forms.NumericUpDown()
-        Me.lblBaseLineWidthScaleFactor = New System.Windows.Forms.Label()
-        Me.frrmDesign = New System.Windows.Forms.GroupBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.lblDesignCrossSectionTextScaleFactor = New System.Windows.Forms.Label()
+        Me.lblBaseLineWidthScaleFactor = New DevExpress.XtraEditors.LabelControl()
+        Me.frrmDesign = New DevExpress.XtraEditors.GroupControl()
+        Me.GroupBox2 = New DevExpress.XtraEditors.GroupControl()
+        Me.lblDesignCrossSectionTextScaleFactor = New DevExpress.XtraEditors.LabelControl()
         Me.txtDesignCrossSectionTextScaleFactor = New System.Windows.Forms.NumericUpDown()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.lblDesignCrossSectionMarkerTextScaleFactor = New System.Windows.Forms.Label()
+        Me.GroupBox3 = New DevExpress.XtraEditors.GroupControl()
+        Me.lblDesignCrossSectionMarkerTextScaleFactor = New DevExpress.XtraEditors.LabelControl()
         Me.txtDesignCrossSectionMarkerTextScaleFactor = New System.Windows.Forms.NumericUpDown()
         Me.txtDesignCrossSectionMarkerArrowScaleFactor = New System.Windows.Forms.NumericUpDown()
-        Me.lblDesignCrossSectionMarkerArrowScaleFactor = New System.Windows.Forms.Label()
-        Me.GroupBox10 = New System.Windows.Forms.GroupBox()
+        Me.lblDesignCrossSectionMarkerArrowScaleFactor = New DevExpress.XtraEditors.LabelControl()
+        Me.GroupBox10 = New DevExpress.XtraEditors.GroupControl()
         Me.txtDesignExtraScaleFactor = New System.Windows.Forms.NumericUpDown()
-        Me.lblDesignExtraTextScaleFactor = New System.Windows.Forms.Label()
-        Me.lblDesignExtraScaleFactor = New System.Windows.Forms.Label()
+        Me.lblDesignExtraTextScaleFactor = New DevExpress.XtraEditors.LabelControl()
+        Me.lblDesignExtraScaleFactor = New DevExpress.XtraEditors.LabelControl()
         Me.txtDesignExtraTextScaleFactor = New System.Windows.Forms.NumericUpDown()
-        Me.lblDesignTextureScale = New System.Windows.Forms.Label()
+        Me.lblDesignTextureScale = New DevExpress.XtraEditors.LabelControl()
         Me.txtDesignTextureScaleFactor = New System.Windows.Forms.NumericUpDown()
         Me.txtDesignTextFont = New System.Windows.Forms.TextBox()
-        Me.cmdDesignTextFont = New System.Windows.Forms.Button()
-        Me.lblDesignTextFont = New System.Windows.Forms.Label()
-        Me.lblDesignSoilScale = New System.Windows.Forms.Label()
+        Me.cmdDesignTextFont = New DevExpress.XtraEditors.SimpleButton()
+        Me.lblDesignTextFont = New DevExpress.XtraEditors.LabelControl()
+        Me.lblDesignSoilScale = New DevExpress.XtraEditors.LabelControl()
         Me.txtDesignSoilScaleFactor = New System.Windows.Forms.NumericUpDown()
-        Me.lblDesignClipartScaleFactor = New System.Windows.Forms.Label()
+        Me.lblDesignClipartScaleFactor = New DevExpress.XtraEditors.LabelControl()
         Me.txtDesignClipartScaleFactor = New System.Windows.Forms.NumericUpDown()
-        Me.lblDesignTextScaleFactor = New System.Windows.Forms.Label()
+        Me.lblDesignTextScaleFactor = New DevExpress.XtraEditors.LabelControl()
         Me.txtDesignTextScaleFactor = New System.Windows.Forms.NumericUpDown()
-        Me.lblDesignSignScaleFactor = New System.Windows.Forms.Label()
+        Me.lblDesignSignScaleFactor = New DevExpress.XtraEditors.LabelControl()
         Me.txtDesignSignScaleFactor = New System.Windows.Forms.NumericUpDown()
-        Me.lblDesignTerrainLevelScaleFactor = New System.Windows.Forms.Label()
+        Me.lblDesignTerrainLevelScaleFactor = New DevExpress.XtraEditors.LabelControl()
         Me.txtDesignTerrainLevelScaleFactor = New System.Windows.Forms.NumericUpDown()
-        Me.tabInfoPlot = New System.Windows.Forms.TabPage()
-        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox7 = New DevExpress.XtraEditors.GroupControl()
         Me.txtPlotNoteTextFont = New System.Windows.Forms.TextBox()
-        Me.cmdPlotNoteTextFont = New System.Windows.Forms.Button()
-        Me.lblPlotNoteTextFont = New System.Windows.Forms.Label()
-        Me.cmdPlotNoteTextColor = New System.Windows.Forms.Button()
-        Me.lblPlotNoteTextColor = New System.Windows.Forms.Label()
+        Me.cmdPlotNoteTextFont = New DevExpress.XtraEditors.SimpleButton()
+        Me.lblPlotNoteTextFont = New DevExpress.XtraEditors.LabelControl()
+        Me.cmdPlotNoteTextColor = New DevExpress.XtraEditors.SimpleButton()
+        Me.lblPlotNoteTextColor = New DevExpress.XtraEditors.LabelControl()
         Me.picPlotNoteTextColor = New System.Windows.Forms.PictureBox()
         Me.txtPlotNoteTextScaleFactor = New System.Windows.Forms.NumericUpDown()
-        Me.lblPlotNoteTextScaleFactor = New System.Windows.Forms.Label()
-        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
-        Me.lblPlotSplaySelectedPenWidth = New System.Windows.Forms.Label()
+        Me.lblPlotNoteTextScaleFactor = New DevExpress.XtraEditors.LabelControl()
+        Me.GroupBox6 = New DevExpress.XtraEditors.GroupControl()
+        Me.lblPlotSplaySelectedPenWidth = New DevExpress.XtraEditors.LabelControl()
         Me.txtPlotSplaySelectedPenWidth = New System.Windows.Forms.NumericUpDown()
         Me.txtPlotSplayPenWidth = New System.Windows.Forms.NumericUpDown()
-        Me.lblPlotSplayPenWidth = New System.Windows.Forms.Label()
+        Me.lblPlotSplayPenWidth = New DevExpress.XtraEditors.LabelControl()
         Me.cboPlotSplayPenStyle = New System.Windows.Forms.ComboBox()
-        Me.lblPlotSplayPenStyle = New System.Windows.Forms.Label()
-        Me.frmPlotLRUD = New System.Windows.Forms.GroupBox()
-        Me.lblPlotLRUDSelectedPenWidth = New System.Windows.Forms.Label()
+        Me.lblPlotSplayPenStyle = New DevExpress.XtraEditors.LabelControl()
+        Me.frmPlotLRUD = New DevExpress.XtraEditors.GroupControl()
+        Me.lblPlotLRUDSelectedPenWidth = New DevExpress.XtraEditors.LabelControl()
         Me.txtPlotLRUDSelectedPenWidth = New System.Windows.Forms.NumericUpDown()
         Me.txtPlotLRUDPenWidth = New System.Windows.Forms.NumericUpDown()
-        Me.lblPlotLRUDPenWidth = New System.Windows.Forms.Label()
+        Me.lblPlotLRUDPenWidth = New DevExpress.XtraEditors.LabelControl()
         Me.cboPlotLRUDPenStyle = New System.Windows.Forms.ComboBox()
-        Me.lblPlotLRUDPenStyle = New System.Windows.Forms.Label()
-        Me.frmPlotTranslationLine = New System.Windows.Forms.GroupBox()
-        Me.cmdPlotTranslationLinePenColor = New System.Windows.Forms.Button()
-        Me.lblPlotTranslationLinePenColor = New System.Windows.Forms.Label()
+        Me.lblPlotLRUDPenStyle = New DevExpress.XtraEditors.LabelControl()
+        Me.frmPlotTranslationLine = New DevExpress.XtraEditors.GroupControl()
+        Me.cmdPlotTranslationLinePenColor = New DevExpress.XtraEditors.SimpleButton()
+        Me.lblPlotTranslationLinePenColor = New DevExpress.XtraEditors.LabelControl()
         Me.picPlotTranslationLinePenColor = New System.Windows.Forms.PictureBox()
         Me.txtPlotTranslationLinePenWidth = New System.Windows.Forms.NumericUpDown()
-        Me.lblPlotTranslationLinePenSize = New System.Windows.Forms.Label()
+        Me.lblPlotTranslationLinePenSize = New DevExpress.XtraEditors.LabelControl()
         Me.cboPlotTranslationLinePenStyle = New System.Windows.Forms.ComboBox()
-        Me.lblPlotTranslationLinePenStyle = New System.Windows.Forms.Label()
-        Me.frmPlotPoint = New System.Windows.Forms.GroupBox()
+        Me.lblPlotTranslationLinePenStyle = New DevExpress.XtraEditors.LabelControl()
+        Me.frmPlotPoint = New DevExpress.XtraEditors.GroupControl()
         Me.txtPlotTextFont = New System.Windows.Forms.TextBox()
-        Me.cmdPlotTextFont = New System.Windows.Forms.Button()
-        Me.cmdPlotPointColor = New System.Windows.Forms.Button()
-        Me.lblPlotTextFont = New System.Windows.Forms.Label()
-        Me.lblPlotPointColor = New System.Windows.Forms.Label()
-        Me.cmdPlotTextColor = New System.Windows.Forms.Button()
+        Me.cmdPlotTextFont = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdPlotPointColor = New DevExpress.XtraEditors.SimpleButton()
+        Me.lblPlotTextFont = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPlotPointColor = New DevExpress.XtraEditors.LabelControl()
+        Me.cmdPlotTextColor = New DevExpress.XtraEditors.SimpleButton()
         Me.picPlotPointColor = New System.Windows.Forms.PictureBox()
-        Me.lblPlotTextColor = New System.Windows.Forms.Label()
+        Me.lblPlotTextColor = New DevExpress.XtraEditors.LabelControl()
         Me.cboPlotPointSymbol = New System.Windows.Forms.ComboBox()
         Me.picPlotTextColor = New System.Windows.Forms.PictureBox()
         Me.txtPlotSelectedPointSize = New System.Windows.Forms.NumericUpDown()
         Me.txtPlotTextScaleFactor = New System.Windows.Forms.NumericUpDown()
         Me.txtPlotPointSize = New System.Windows.Forms.NumericUpDown()
-        Me.lblPlotTextScaleFactor = New System.Windows.Forms.Label()
-        Me.lblPlotSelectedPointSize = New System.Windows.Forms.Label()
-        Me.lblPlotPointSize = New System.Windows.Forms.Label()
-        Me.lblPlotPointSymbol = New System.Windows.Forms.Label()
-        Me.frmPlotPen = New System.Windows.Forms.GroupBox()
-        Me.cmdPlotPenColor = New System.Windows.Forms.Button()
-        Me.lblPlotPenColor = New System.Windows.Forms.Label()
+        Me.lblPlotTextScaleFactor = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPlotSelectedPointSize = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPlotPointSize = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPlotPointSymbol = New DevExpress.XtraEditors.LabelControl()
+        Me.frmPlotPen = New DevExpress.XtraEditors.GroupControl()
+        Me.cmdPlotPenColor = New DevExpress.XtraEditors.SimpleButton()
+        Me.lblPlotPenColor = New DevExpress.XtraEditors.LabelControl()
         Me.picPlotPenColor = New System.Windows.Forms.PictureBox()
         Me.txtPlotPenWidth = New System.Windows.Forms.NumericUpDown()
-        Me.lblPlotPenWidth = New System.Windows.Forms.Label()
-        Me.lblPlotSelectedPenWidth = New System.Windows.Forms.Label()
+        Me.lblPlotPenWidth = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPlotSelectedPenWidth = New DevExpress.XtraEditors.LabelControl()
         Me.cboPlotPenStyle = New System.Windows.Forms.ComboBox()
         Me.txtPlotSelectedPenWidth = New System.Windows.Forms.NumericUpDown()
-        Me.lblPlotPenStyle = New System.Windows.Forms.Label()
-        Me.tbMain = New System.Windows.Forms.ToolStrip()
-        Me.lblAddScale = New System.Windows.Forms.ToolStripLabel()
-        Me.txtAddScale = New System.Windows.Forms.ToolStripTextBox()
-        Me.btnAdd = New System.Windows.Forms.ToolStripButton()
-        Me.btnAddAsCopy = New System.Windows.Forms.ToolStripButton()
-        Me.sep1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnRemove = New System.Windows.Forms.ToolStripButton()
-        Me.btnRemoveAll = New System.Windows.Forms.ToolStripButton()
-        Me.sep2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnClear = New System.Windows.Forms.ToolStripButton()
-        Me.sep3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnExport = New System.Windows.Forms.ToolStripButton()
-        Me.btnImport = New System.Windows.Forms.ToolStripButton()
-        Me.tabInfo.SuspendLayout()
-        Me.tabInfoMain.SuspendLayout()
-        CType(Me.picScaleWarning, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtScale, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tanInfoCategories.SuspendLayout()
-        CType(Me.grdCategoriesVisibility, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabInfODesign.SuspendLayout()
+        Me.lblPlotPenStyle = New DevExpress.XtraEditors.LabelControl()
+        Me.lblScaleWarning = New DevExpress.XtraEditors.LabelControl()
+        Me.iml = New DevExpress.Utils.SvgImageCollection(Me.components)
+        Me.txtScale = New System.Windows.Forms.NumericUpDown()
+        Me.lblScale = New DevExpress.XtraEditors.LabelControl()
+        Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.tvScales = New DevExpress.XtraTreeList.TreeList()
+        Me.colScalesScale = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.BarManager = New DevExpress.XtraBars.BarManager(Me.components)
+        Me.barMain = New DevExpress.XtraBars.Bar()
+        Me.btnAddScale = New DevExpress.XtraBars.BarEditItem()
+        Me.txtAddScale = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
+        Me.btnAdd = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnAddAsCopy = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnRemove = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnRemoveAll = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnClear = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnExport = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnImport = New DevExpress.XtraBars.BarButtonItem()
+        Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
+        Me.tabMain = New DevExpress.XtraTab.XtraTabControl()
+        Me.tabInfoMain = New DevExpress.XtraTab.XtraTabPage()
+        Me.tabInfoCategories = New DevExpress.XtraTab.XtraTabPage()
+        Me.tvCategoriesVisibility = New DevExpress.XtraTreeList.TreeList()
+        Me.colCategoriesVisibilityIndex = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.colCategoriesVisibilityCategory = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.colCategoriesVisibilityVisible = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.chkCategoriesVisibilityVisible = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+        Me.tabInfoDesign = New DevExpress.XtraTab.XtraTabPage()
+        Me.tabInfoPlot = New DevExpress.XtraTab.XtraTabPage()
+        Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
+        CType(Me.GroupBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.txtBaseMediumLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtBaseUltraLightLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtBaseLightLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtBaseHeavyLinesScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtBaseLineWidthScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.frrmDesign, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.frrmDesign.SuspendLayout()
+        CType(Me.GroupBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         CType(Me.txtDesignCrossSectionTextScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GroupBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
         CType(Me.txtDesignCrossSectionMarkerTextScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtDesignCrossSectionMarkerArrowScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GroupBox10, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox10.SuspendLayout()
         CType(Me.txtDesignExtraScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtDesignExtraTextScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -183,162 +185,69 @@ Partial Class frmScaleRules
         CType(Me.txtDesignTextScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtDesignSignScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtDesignTerrainLevelScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabInfoPlot.SuspendLayout()
+        CType(Me.GroupBox7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox7.SuspendLayout()
         CType(Me.picPlotNoteTextColor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPlotNoteTextScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GroupBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox6.SuspendLayout()
         CType(Me.txtPlotSplaySelectedPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPlotSplayPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.frmPlotLRUD, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.frmPlotLRUD.SuspendLayout()
         CType(Me.txtPlotLRUDSelectedPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPlotLRUDPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.frmPlotTranslationLine, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.frmPlotTranslationLine.SuspendLayout()
         CType(Me.picPlotTranslationLinePenColor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPlotTranslationLinePenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.frmPlotPoint, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.frmPlotPoint.SuspendLayout()
         CType(Me.picPlotPointColor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picPlotTextColor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPlotSelectedPointSize, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPlotTextScaleFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPlotPointSize, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.frmPlotPen, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.frmPlotPen.SuspendLayout()
         CType(Me.picPlotPenColor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPlotPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPlotSelectedPenWidth, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tbMain.SuspendLayout()
+        CType(Me.iml, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtScale, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl1.SuspendLayout()
+        CType(Me.tvScales, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BarManager, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtAddScale, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tabMain, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabMain.SuspendLayout()
+        Me.tabInfoMain.SuspendLayout()
+        Me.tabInfoCategories.SuspendLayout()
+        CType(Me.tvCategoriesVisibility, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkCategoriesVisibilityVisible, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabInfoDesign.SuspendLayout()
+        Me.tabInfoPlot.SuspendLayout()
+        CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl2.SuspendLayout()
         Me.SuspendLayout()
         '
         'cmdApply
         '
         resources.ApplyResources(Me.cmdApply, "cmdApply")
         Me.cmdApply.Name = "cmdApply"
-        Me.cmdApply.UseVisualStyleBackColor = True
         '
         'cmdCancel
         '
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'cmdOk
         '
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
-        '
-        'lv
-        '
-        resources.ApplyResources(Me.lv, "lv")
-        Me.lv.BackColor = System.Drawing.SystemColors.ButtonFace
-        Me.lv.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.lv.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None
-        Me.lv.HideSelection = False
-        Me.lv.LargeImageList = Me.iml
-        Me.lv.MultiSelect = False
-        Me.lv.Name = "lv"
-        Me.lv.Sorting = System.Windows.Forms.SortOrder.Ascending
-        Me.lv.UseCompatibleStateImageBehavior = False
-        '
-        'iml
-        '
-        Me.iml.ImageStream = CType(resources.GetObject("iml.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.iml.TransparentColor = System.Drawing.Color.Transparent
-        Me.iml.Images.SetKeyName(0, "impostazioni")
-        '
-        'tabInfo
-        '
-        resources.ApplyResources(Me.tabInfo, "tabInfo")
-        Me.tabInfo.Controls.Add(Me.tabInfoMain)
-        Me.tabInfo.Controls.Add(Me.tanInfoCategories)
-        Me.tabInfo.Controls.Add(Me.tabInfODesign)
-        Me.tabInfo.Controls.Add(Me.tabInfoPlot)
-        Me.tabInfo.Name = "tabInfo"
-        Me.tabInfo.SelectedIndex = 0
-        '
-        'tabInfoMain
-        '
-        Me.tabInfoMain.Controls.Add(Me.lblScaleWarning)
-        Me.tabInfoMain.Controls.Add(Me.picScaleWarning)
-        Me.tabInfoMain.Controls.Add(Me.txtScale)
-        Me.tabInfoMain.Controls.Add(Me.lblScale)
-        resources.ApplyResources(Me.tabInfoMain, "tabInfoMain")
-        Me.tabInfoMain.Name = "tabInfoMain"
-        Me.tabInfoMain.UseVisualStyleBackColor = True
-        '
-        'lblScaleWarning
-        '
-        resources.ApplyResources(Me.lblScaleWarning, "lblScaleWarning")
-        Me.lblScaleWarning.Name = "lblScaleWarning"
-        '
-        'picScaleWarning
-        '
-        resources.ApplyResources(Me.picScaleWarning, "picScaleWarning")
-        Me.picScaleWarning.Name = "picScaleWarning"
-        Me.picScaleWarning.TabStop = False
-        '
-        'txtScale
-        '
-        Me.txtScale.Increment = New Decimal(New Integer() {10, 0, 0, 0})
-        resources.ApplyResources(Me.txtScale, "txtScale")
-        Me.txtScale.Maximum = New Decimal(New Integer() {50000, 0, 0, 0})
-        Me.txtScale.Minimum = New Decimal(New Integer() {5, 0, 0, 0})
-        Me.txtScale.Name = "txtScale"
-        Me.txtScale.Value = New Decimal(New Integer() {5, 0, 0, 0})
-        '
-        'lblScale
-        '
-        resources.ApplyResources(Me.lblScale, "lblScale")
-        Me.lblScale.Name = "lblScale"
-        '
-        'tanInfoCategories
-        '
-        Me.tanInfoCategories.Controls.Add(Me.grdCategoriesVisibility)
-        resources.ApplyResources(Me.tanInfoCategories, "tanInfoCategories")
-        Me.tanInfoCategories.Name = "tanInfoCategories"
-        Me.tanInfoCategories.UseVisualStyleBackColor = True
-        '
-        'grdCategoriesVisibility
-        '
-        Me.grdCategoriesVisibility.AllowUserToAddRows = False
-        Me.grdCategoriesVisibility.AllowUserToDeleteRows = False
-        Me.grdCategoriesVisibility.AllowUserToResizeRows = False
-        Me.grdCategoriesVisibility.BackgroundColor = System.Drawing.SystemColors.Window
-        Me.grdCategoriesVisibility.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.grdCategoriesVisibility.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colCategoryIndex, Me.colCategoryName, Me.colCategoryVisibility})
-        resources.ApplyResources(Me.grdCategoriesVisibility, "grdCategoriesVisibility")
-        Me.grdCategoriesVisibility.Name = "grdCategoriesVisibility"
-        Me.grdCategoriesVisibility.RowHeadersVisible = False
-        Me.grdCategoriesVisibility.ShowEditingIcon = False
-        '
-        'colCategoryIndex
-        '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        Me.colCategoryIndex.DefaultCellStyle = DataGridViewCellStyle1
-        resources.ApplyResources(Me.colCategoryIndex, "colCategoryIndex")
-        Me.colCategoryIndex.Name = "colCategoryIndex"
-        Me.colCategoryIndex.ReadOnly = True
-        '
-        'colCategoryName
-        '
-        resources.ApplyResources(Me.colCategoryName, "colCategoryName")
-        Me.colCategoryName.Name = "colCategoryName"
-        Me.colCategoryName.ReadOnly = True
-        '
-        'colCategoryVisibility
-        '
-        resources.ApplyResources(Me.colCategoryVisibility, "colCategoryVisibility")
-        Me.colCategoryVisibility.Name = "colCategoryVisibility"
-        '
-        'tabInfODesign
-        '
-        resources.ApplyResources(Me.tabInfODesign, "tabInfODesign")
-        Me.tabInfODesign.Controls.Add(Me.GroupBox1)
-        Me.tabInfODesign.Controls.Add(Me.frrmDesign)
-        Me.tabInfODesign.Name = "tabInfODesign"
-        Me.tabInfODesign.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
@@ -354,7 +263,6 @@ Partial Class frmScaleRules
         Me.GroupBox1.Controls.Add(Me.lblBaseLineWidthScaleFactor)
         resources.ApplyResources(Me.GroupBox1, "GroupBox1")
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.TabStop = False
         '
         'Label8
         '
@@ -452,7 +360,6 @@ Partial Class frmScaleRules
         Me.frrmDesign.Controls.Add(Me.txtDesignTerrainLevelScaleFactor)
         resources.ApplyResources(Me.frrmDesign, "frrmDesign")
         Me.frrmDesign.Name = "frrmDesign"
-        Me.frrmDesign.TabStop = False
         '
         'GroupBox2
         '
@@ -461,7 +368,6 @@ Partial Class frmScaleRules
         Me.GroupBox2.Controls.Add(Me.GroupBox3)
         resources.ApplyResources(Me.GroupBox2, "GroupBox2")
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.TabStop = False
         '
         'lblDesignCrossSectionTextScaleFactor
         '
@@ -484,7 +390,6 @@ Partial Class frmScaleRules
         Me.GroupBox3.Controls.Add(Me.lblDesignCrossSectionMarkerArrowScaleFactor)
         resources.ApplyResources(Me.GroupBox3, "GroupBox3")
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.TabStop = False
         '
         'lblDesignCrossSectionMarkerTextScaleFactor
         '
@@ -520,7 +425,6 @@ Partial Class frmScaleRules
         Me.GroupBox10.Controls.Add(Me.txtDesignExtraTextScaleFactor)
         resources.ApplyResources(Me.GroupBox10, "GroupBox10")
         Me.GroupBox10.Name = "GroupBox10"
-        Me.GroupBox10.TabStop = False
         '
         'txtDesignExtraScaleFactor
         '
@@ -571,10 +475,11 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.cmdDesignTextFont, "cmdDesignTextFont")
         Me.cmdDesignTextFont.Name = "cmdDesignTextFont"
-        Me.cmdDesignTextFont.UseVisualStyleBackColor = True
         '
         'lblDesignTextFont
         '
+        Me.lblDesignTextFont.Appearance.Font = CType(resources.GetObject("lblDesignTextFont.Appearance.Font"), System.Drawing.Font)
+        Me.lblDesignTextFont.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.lblDesignTextFont, "lblDesignTextFont")
         Me.lblDesignTextFont.Name = "lblDesignTextFont"
         Me.lblDesignTextFont.Tag = "cmdDesignTextFont;txtDesignTextFont"
@@ -644,18 +549,6 @@ Partial Class frmScaleRules
         resources.ApplyResources(Me.txtDesignTerrainLevelScaleFactor, "txtDesignTerrainLevelScaleFactor")
         Me.txtDesignTerrainLevelScaleFactor.Name = "txtDesignTerrainLevelScaleFactor"
         '
-        'tabInfoPlot
-        '
-        Me.tabInfoPlot.Controls.Add(Me.GroupBox7)
-        Me.tabInfoPlot.Controls.Add(Me.GroupBox6)
-        Me.tabInfoPlot.Controls.Add(Me.frmPlotLRUD)
-        Me.tabInfoPlot.Controls.Add(Me.frmPlotTranslationLine)
-        Me.tabInfoPlot.Controls.Add(Me.frmPlotPoint)
-        Me.tabInfoPlot.Controls.Add(Me.frmPlotPen)
-        resources.ApplyResources(Me.tabInfoPlot, "tabInfoPlot")
-        Me.tabInfoPlot.Name = "tabInfoPlot"
-        Me.tabInfoPlot.UseVisualStyleBackColor = True
-        '
         'GroupBox7
         '
         Me.GroupBox7.Controls.Add(Me.txtPlotNoteTextFont)
@@ -668,7 +561,6 @@ Partial Class frmScaleRules
         Me.GroupBox7.Controls.Add(Me.lblPlotNoteTextScaleFactor)
         resources.ApplyResources(Me.GroupBox7, "GroupBox7")
         Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.TabStop = False
         '
         'txtPlotNoteTextFont
         '
@@ -680,10 +572,11 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.cmdPlotNoteTextFont, "cmdPlotNoteTextFont")
         Me.cmdPlotNoteTextFont.Name = "cmdPlotNoteTextFont"
-        Me.cmdPlotNoteTextFont.UseVisualStyleBackColor = True
         '
         'lblPlotNoteTextFont
         '
+        Me.lblPlotNoteTextFont.Appearance.Font = CType(resources.GetObject("lblPlotNoteTextFont.Appearance.Font"), System.Drawing.Font)
+        Me.lblPlotNoteTextFont.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.lblPlotNoteTextFont, "lblPlotNoteTextFont")
         Me.lblPlotNoteTextFont.Name = "lblPlotNoteTextFont"
         Me.lblPlotNoteTextFont.Tag = "cmdPlotNoteTextFont;txtPlotNoteTextFont"
@@ -692,10 +585,11 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.cmdPlotNoteTextColor, "cmdPlotNoteTextColor")
         Me.cmdPlotNoteTextColor.Name = "cmdPlotNoteTextColor"
-        Me.cmdPlotNoteTextColor.UseVisualStyleBackColor = True
         '
         'lblPlotNoteTextColor
         '
+        Me.lblPlotNoteTextColor.Appearance.Font = CType(resources.GetObject("lblPlotNoteTextColor.Appearance.Font"), System.Drawing.Font)
+        Me.lblPlotNoteTextColor.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.lblPlotNoteTextColor, "lblPlotNoteTextColor")
         Me.lblPlotNoteTextColor.Name = "lblPlotNoteTextColor"
         Me.lblPlotNoteTextColor.Tag = "cmdPlotNoteTextColor;picPlotNoteTextColor"
@@ -729,7 +623,6 @@ Partial Class frmScaleRules
         Me.GroupBox6.Controls.Add(Me.lblPlotSplayPenStyle)
         resources.ApplyResources(Me.GroupBox6, "GroupBox6")
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.TabStop = False
         '
         'lblPlotSplaySelectedPenWidth
         '
@@ -785,7 +678,6 @@ Partial Class frmScaleRules
         Me.frmPlotLRUD.Controls.Add(Me.lblPlotLRUDPenStyle)
         resources.ApplyResources(Me.frmPlotLRUD, "frmPlotLRUD")
         Me.frmPlotLRUD.Name = "frmPlotLRUD"
-        Me.frmPlotLRUD.TabStop = False
         '
         'lblPlotLRUDSelectedPenWidth
         '
@@ -842,16 +734,16 @@ Partial Class frmScaleRules
         Me.frmPlotTranslationLine.Controls.Add(Me.lblPlotTranslationLinePenStyle)
         resources.ApplyResources(Me.frmPlotTranslationLine, "frmPlotTranslationLine")
         Me.frmPlotTranslationLine.Name = "frmPlotTranslationLine"
-        Me.frmPlotTranslationLine.TabStop = False
         '
         'cmdPlotTranslationLinePenColor
         '
         resources.ApplyResources(Me.cmdPlotTranslationLinePenColor, "cmdPlotTranslationLinePenColor")
         Me.cmdPlotTranslationLinePenColor.Name = "cmdPlotTranslationLinePenColor"
-        Me.cmdPlotTranslationLinePenColor.UseVisualStyleBackColor = True
         '
         'lblPlotTranslationLinePenColor
         '
+        Me.lblPlotTranslationLinePenColor.Appearance.Font = CType(resources.GetObject("lblPlotTranslationLinePenColor.Appearance.Font"), System.Drawing.Font)
+        Me.lblPlotTranslationLinePenColor.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.lblPlotTranslationLinePenColor, "lblPlotTranslationLinePenColor")
         Me.lblPlotTranslationLinePenColor.Name = "lblPlotTranslationLinePenColor"
         Me.lblPlotTranslationLinePenColor.Tag = "cmdPlotTranslationLinePenColor;picPlotTranslationLinePenColor"
@@ -912,7 +804,6 @@ Partial Class frmScaleRules
         Me.frmPlotPoint.Controls.Add(Me.lblPlotPointSymbol)
         resources.ApplyResources(Me.frmPlotPoint, "frmPlotPoint")
         Me.frmPlotPoint.Name = "frmPlotPoint"
-        Me.frmPlotPoint.TabStop = False
         '
         'txtPlotTextFont
         '
@@ -924,22 +815,24 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.cmdPlotTextFont, "cmdPlotTextFont")
         Me.cmdPlotTextFont.Name = "cmdPlotTextFont"
-        Me.cmdPlotTextFont.UseVisualStyleBackColor = True
         '
         'cmdPlotPointColor
         '
         resources.ApplyResources(Me.cmdPlotPointColor, "cmdPlotPointColor")
         Me.cmdPlotPointColor.Name = "cmdPlotPointColor"
-        Me.cmdPlotPointColor.UseVisualStyleBackColor = True
         '
         'lblPlotTextFont
         '
+        Me.lblPlotTextFont.Appearance.Font = CType(resources.GetObject("lblPlotTextFont.Appearance.Font"), System.Drawing.Font)
+        Me.lblPlotTextFont.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.lblPlotTextFont, "lblPlotTextFont")
         Me.lblPlotTextFont.Name = "lblPlotTextFont"
         Me.lblPlotTextFont.Tag = "txtPlotTextFont;cmdPlotTextFont"
         '
         'lblPlotPointColor
         '
+        Me.lblPlotPointColor.Appearance.Font = CType(resources.GetObject("lblPlotPointColor.Appearance.Font"), System.Drawing.Font)
+        Me.lblPlotPointColor.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.lblPlotPointColor, "lblPlotPointColor")
         Me.lblPlotPointColor.Name = "lblPlotPointColor"
         Me.lblPlotPointColor.Tag = "cmdPlotPointColor;picPlotPointColor"
@@ -948,7 +841,6 @@ Partial Class frmScaleRules
         '
         resources.ApplyResources(Me.cmdPlotTextColor, "cmdPlotTextColor")
         Me.cmdPlotTextColor.Name = "cmdPlotTextColor"
-        Me.cmdPlotTextColor.UseVisualStyleBackColor = True
         '
         'picPlotPointColor
         '
@@ -958,6 +850,8 @@ Partial Class frmScaleRules
         '
         'lblPlotTextColor
         '
+        Me.lblPlotTextColor.Appearance.Font = CType(resources.GetObject("lblPlotTextColor.Appearance.Font"), System.Drawing.Font)
+        Me.lblPlotTextColor.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.lblPlotTextColor, "lblPlotTextColor")
         Me.lblPlotTextColor.Name = "lblPlotTextColor"
         Me.lblPlotTextColor.Tag = "cmdPlotTextColor;picPlotTextColor"
@@ -1017,6 +911,8 @@ Partial Class frmScaleRules
         '
         'lblPlotPointSymbol
         '
+        Me.lblPlotPointSymbol.Appearance.Font = CType(resources.GetObject("lblPlotPointSymbol.Appearance.Font"), System.Drawing.Font)
+        Me.lblPlotPointSymbol.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.lblPlotPointSymbol, "lblPlotPointSymbol")
         Me.lblPlotPointSymbol.Name = "lblPlotPointSymbol"
         Me.lblPlotPointSymbol.Tag = "cboPlotPointSymbol"
@@ -1034,16 +930,16 @@ Partial Class frmScaleRules
         Me.frmPlotPen.Controls.Add(Me.lblPlotPenStyle)
         resources.ApplyResources(Me.frmPlotPen, "frmPlotPen")
         Me.frmPlotPen.Name = "frmPlotPen"
-        Me.frmPlotPen.TabStop = False
         '
         'cmdPlotPenColor
         '
         resources.ApplyResources(Me.cmdPlotPenColor, "cmdPlotPenColor")
         Me.cmdPlotPenColor.Name = "cmdPlotPenColor"
-        Me.cmdPlotPenColor.UseVisualStyleBackColor = True
         '
         'lblPlotPenColor
         '
+        Me.lblPlotPenColor.Appearance.Font = CType(resources.GetObject("lblPlotPenColor.Appearance.Font"), System.Drawing.Font)
+        Me.lblPlotPenColor.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.lblPlotPenColor, "lblPlotPenColor")
         Me.lblPlotPenColor.Name = "lblPlotPenColor"
         Me.lblPlotPenColor.Tag = "picPlotPenColor;cmdPlotPenColor"
@@ -1098,102 +994,294 @@ Partial Class frmScaleRules
         Me.lblPlotPenStyle.Name = "lblPlotPenStyle"
         Me.lblPlotPenStyle.Tag = "cboPlotPenStyle"
         '
-        'tbMain
+        'lblScaleWarning
         '
-        resources.ApplyResources(Me.tbMain, "tbMain")
-        Me.tbMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.tbMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblAddScale, Me.txtAddScale, Me.btnAdd, Me.btnAddAsCopy, Me.sep1, Me.btnRemove, Me.btnRemoveAll, Me.sep2, Me.btnClear, Me.sep3, Me.btnExport, Me.btnImport})
-        Me.tbMain.Name = "tbMain"
+        Me.lblScaleWarning.AllowHtmlString = True
+        resources.ApplyResources(Me.lblScaleWarning, "lblScaleWarning")
+        Me.lblScaleWarning.Appearance.Options.UseTextOptions = True
+        Me.lblScaleWarning.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top
+        Me.lblScaleWarning.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        Me.lblScaleWarning.HtmlImages = Me.iml
+        Me.lblScaleWarning.Name = "lblScaleWarning"
         '
-        'lblAddScale
+        'iml
         '
-        Me.lblAddScale.Name = "lblAddScale"
-        resources.ApplyResources(Me.lblAddScale, "lblAddScale")
+        Me.iml.Add("icon_scale", "icon_scale", GetType(cSurveyPC.My.Resources.Resources))
+        Me.iml.Add("warning", "warning", GetType(cSurveyPC.My.Resources.Resources))
+        '
+        'txtScale
+        '
+        Me.txtScale.Increment = New Decimal(New Integer() {10, 0, 0, 0})
+        resources.ApplyResources(Me.txtScale, "txtScale")
+        Me.txtScale.Maximum = New Decimal(New Integer() {50000, 0, 0, 0})
+        Me.txtScale.Minimum = New Decimal(New Integer() {5, 0, 0, 0})
+        Me.txtScale.Name = "txtScale"
+        Me.txtScale.Value = New Decimal(New Integer() {5, 0, 0, 0})
+        '
+        'lblScale
+        '
+        resources.ApplyResources(Me.lblScale, "lblScale")
+        Me.lblScale.Name = "lblScale"
+        '
+        'PanelControl1
+        '
+        Me.PanelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.PanelControl1.Controls.Add(Me.cmdCancel)
+        Me.PanelControl1.Controls.Add(Me.cmdOk)
+        Me.PanelControl1.Controls.Add(Me.cmdApply)
+        resources.ApplyResources(Me.PanelControl1, "PanelControl1")
+        Me.PanelControl1.Name = "PanelControl1"
+        '
+        'tvScales
+        '
+        Me.tvScales.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colScalesScale})
+        resources.ApplyResources(Me.tvScales, "tvScales")
+        Me.tvScales.Name = "tvScales"
+        Me.tvScales.OptionsBehavior.Editable = False
+        Me.tvScales.OptionsBehavior.ReadOnly = True
+        Me.tvScales.OptionsCustomization.AllowSort = False
+        Me.tvScales.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus
+        Me.tvScales.OptionsView.ShowColumns = False
+        Me.tvScales.OptionsView.ShowIndentAsRowStyle = True
+        Me.tvScales.OptionsView.ShowIndicator = False
+        Me.tvScales.OptionsView.ShowRoot = False
+        Me.tvScales.SelectImageList = Me.iml
+        '
+        'colScalesScale
+        '
+        resources.ApplyResources(Me.colScalesScale, "colScalesScale")
+        Me.colScalesScale.FieldName = "ScaleText"
+        Me.colScalesScale.FieldNameSort = "Scale"
+        Me.colScalesScale.Name = "colScalesScale"
+        Me.colScalesScale.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value
+        '
+        'BarManager
+        '
+        Me.BarManager.Bars.AddRange(New DevExpress.XtraBars.Bar() {Me.barMain})
+        Me.BarManager.DockControls.Add(Me.barDockControlTop)
+        Me.BarManager.DockControls.Add(Me.barDockControlBottom)
+        Me.BarManager.DockControls.Add(Me.barDockControlLeft)
+        Me.BarManager.DockControls.Add(Me.barDockControlRight)
+        Me.BarManager.Form = Me
+        Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnAddScale, Me.btnAdd, Me.btnAddAsCopy, Me.btnRemove, Me.btnRemoveAll, Me.btnClear, Me.btnExport, Me.btnImport})
+        Me.BarManager.MaxItemId = 8
+        Me.BarManager.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.txtAddScale})
+        '
+        'barMain
+        '
+        Me.barMain.BarName = "Tools"
+        Me.barMain.DockCol = 0
+        Me.barMain.DockRow = 0
+        Me.barMain.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
+        Me.barMain.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnAddScale), New DevExpress.XtraBars.LinkPersistInfo(Me.btnAdd), New DevExpress.XtraBars.LinkPersistInfo(Me.btnAddAsCopy), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRemove, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRemoveAll, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnClear, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnExport, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnImport)})
+        Me.barMain.OptionsBar.AllowQuickCustomization = False
+        Me.barMain.OptionsBar.DisableClose = True
+        Me.barMain.OptionsBar.DisableCustomization = True
+        Me.barMain.OptionsBar.DrawDragBorder = False
+        Me.barMain.OptionsBar.UseWholeRow = True
+        resources.ApplyResources(Me.barMain, "barMain")
+        '
+        'btnAddScale
+        '
+        resources.ApplyResources(Me.btnAddScale, "btnAddScale")
+        Me.btnAddScale.Edit = Me.txtAddScale
+        Me.btnAddScale.Id = 0
+        Me.btnAddScale.Name = "btnAddScale"
+        Me.btnAddScale.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.Caption
         '
         'txtAddScale
         '
         resources.ApplyResources(Me.txtAddScale, "txtAddScale")
+        Me.txtAddScale.DisplayFormat.FormatString = "N0"
+        Me.txtAddScale.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtAddScale.EditFormat.FormatString = "N0"
+        Me.txtAddScale.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.txtAddScale.Name = "txtAddScale"
-        Me.txtAddScale.ShortcutsEnabled = False
         '
         'btnAdd
         '
         resources.ApplyResources(Me.btnAdd, "btnAdd")
+        Me.btnAdd.Enabled = False
+        Me.btnAdd.Id = 1
+        Me.btnAdd.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
         Me.btnAdd.Name = "btnAdd"
         '
         'btnAddAsCopy
         '
         resources.ApplyResources(Me.btnAddAsCopy, "btnAddAsCopy")
+        Me.btnAddAsCopy.Enabled = False
+        Me.btnAddAsCopy.Id = 2
+        Me.btnAddAsCopy.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.copy
         Me.btnAddAsCopy.Name = "btnAddAsCopy"
-        '
-        'sep1
-        '
-        Me.sep1.Name = "sep1"
-        resources.ApplyResources(Me.sep1, "sep1")
         '
         'btnRemove
         '
         resources.ApplyResources(Me.btnRemove, "btnRemove")
+        Me.btnRemove.Enabled = False
+        Me.btnRemove.Id = 3
+        Me.btnRemove.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
         Me.btnRemove.Name = "btnRemove"
         '
         'btnRemoveAll
         '
         resources.ApplyResources(Me.btnRemoveAll, "btnRemoveAll")
+        Me.btnRemoveAll.Enabled = False
+        Me.btnRemoveAll.Id = 4
+        Me.btnRemoveAll.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.clearall
         Me.btnRemoveAll.Name = "btnRemoveAll"
-        '
-        'sep2
-        '
-        Me.sep2.Name = "sep2"
-        resources.ApplyResources(Me.sep2, "sep2")
         '
         'btnClear
         '
-        Me.btnClear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         resources.ApplyResources(Me.btnClear, "btnClear")
+        Me.btnClear.Enabled = False
+        Me.btnClear.Id = 5
+        Me.btnClear.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.reset
         Me.btnClear.Name = "btnClear"
-        '
-        'sep3
-        '
-        Me.sep3.Name = "sep3"
-        resources.ApplyResources(Me.sep3, "sep3")
         '
         'btnExport
         '
-        Me.btnExport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
         resources.ApplyResources(Me.btnExport, "btnExport")
+        Me.btnExport.Enabled = False
+        Me.btnExport.Id = 6
+        Me.btnExport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.exportfile
         Me.btnExport.Name = "btnExport"
         '
         'btnImport
         '
-        Me.btnImport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
         resources.ApplyResources(Me.btnImport, "btnImport")
+        Me.btnImport.Id = 7
+        Me.btnImport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.import
         Me.btnImport.Name = "btnImport"
+        '
+        'barDockControlTop
+        '
+        Me.barDockControlTop.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlTop, "barDockControlTop")
+        Me.barDockControlTop.Manager = Me.BarManager
+        '
+        'barDockControlBottom
+        '
+        Me.barDockControlBottom.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlBottom, "barDockControlBottom")
+        Me.barDockControlBottom.Manager = Me.BarManager
+        '
+        'barDockControlLeft
+        '
+        Me.barDockControlLeft.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlLeft, "barDockControlLeft")
+        Me.barDockControlLeft.Manager = Me.BarManager
+        '
+        'barDockControlRight
+        '
+        Me.barDockControlRight.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlRight, "barDockControlRight")
+        Me.barDockControlRight.Manager = Me.BarManager
+        '
+        'tabMain
+        '
+        resources.ApplyResources(Me.tabMain, "tabMain")
+        Me.tabMain.Name = "tabMain"
+        Me.tabMain.SelectedTabPage = Me.tabInfoMain
+        Me.tabMain.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tabInfoMain, Me.tabInfoCategories, Me.tabInfoDesign, Me.tabInfoPlot})
+        '
+        'tabInfoMain
+        '
+        Me.tabInfoMain.Controls.Add(Me.lblScaleWarning)
+        Me.tabInfoMain.Controls.Add(Me.txtScale)
+        Me.tabInfoMain.Controls.Add(Me.lblScale)
+        Me.tabInfoMain.Name = "tabInfoMain"
+        resources.ApplyResources(Me.tabInfoMain, "tabInfoMain")
+        '
+        'tabInfoCategories
+        '
+        Me.tabInfoCategories.Controls.Add(Me.tvCategoriesVisibility)
+        Me.tabInfoCategories.Name = "tabInfoCategories"
+        resources.ApplyResources(Me.tabInfoCategories, "tabInfoCategories")
+        '
+        'tvCategoriesVisibility
+        '
+        Me.tvCategoriesVisibility.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colCategoriesVisibilityIndex, Me.colCategoriesVisibilityCategory, Me.colCategoriesVisibilityVisible})
+        resources.ApplyResources(Me.tvCategoriesVisibility, "tvCategoriesVisibility")
+        Me.tvCategoriesVisibility.MenuManager = Me.BarManager
+        Me.tvCategoriesVisibility.Name = "tvCategoriesVisibility"
+        Me.tvCategoriesVisibility.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus
+        Me.tvCategoriesVisibility.OptionsView.ShowIndentAsRowStyle = True
+        Me.tvCategoriesVisibility.OptionsView.ShowIndicator = False
+        Me.tvCategoriesVisibility.OptionsView.ShowRoot = False
+        Me.tvCategoriesVisibility.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.chkCategoriesVisibilityVisible})
+        '
+        'colCategoriesVisibilityIndex
+        '
+        resources.ApplyResources(Me.colCategoriesVisibilityIndex, "colCategoriesVisibilityIndex")
+        Me.colCategoriesVisibilityIndex.FieldName = "Index"
+        Me.colCategoriesVisibilityIndex.Name = "colCategoriesVisibilityIndex"
+        Me.colCategoriesVisibilityIndex.OptionsColumn.AllowEdit = False
+        Me.colCategoriesVisibilityIndex.OptionsColumn.ReadOnly = True
+        '
+        'colCategoriesVisibilityCategory
+        '
+        resources.ApplyResources(Me.colCategoriesVisibilityCategory, "colCategoriesVisibilityCategory")
+        Me.colCategoriesVisibilityCategory.FieldName = "Category"
+        Me.colCategoriesVisibilityCategory.Name = "colCategoriesVisibilityCategory"
+        Me.colCategoriesVisibilityCategory.OptionsColumn.AllowEdit = False
+        Me.colCategoriesVisibilityCategory.OptionsColumn.ReadOnly = True
+        '
+        'colCategoriesVisibilityVisible
+        '
+        resources.ApplyResources(Me.colCategoriesVisibilityVisible, "colCategoriesVisibilityVisible")
+        Me.colCategoriesVisibilityVisible.ColumnEdit = Me.chkCategoriesVisibilityVisible
+        Me.colCategoriesVisibilityVisible.FieldName = "Visible"
+        Me.colCategoriesVisibilityVisible.Name = "colCategoriesVisibilityVisible"
+        '
+        'chkCategoriesVisibilityVisible
+        '
+        resources.ApplyResources(Me.chkCategoriesVisibilityVisible, "chkCategoriesVisibilityVisible")
+        Me.chkCategoriesVisibilityVisible.Name = "chkCategoriesVisibilityVisible"
+        '
+        'tabInfoDesign
+        '
+        resources.ApplyResources(Me.tabInfoDesign, "tabInfoDesign")
+        Me.tabInfoDesign.Controls.Add(Me.GroupBox1)
+        Me.tabInfoDesign.Controls.Add(Me.frrmDesign)
+        Me.tabInfoDesign.Name = "tabInfoDesign"
+        '
+        'tabInfoPlot
+        '
+        resources.ApplyResources(Me.tabInfoPlot, "tabInfoPlot")
+        Me.tabInfoPlot.Controls.Add(Me.GroupBox7)
+        Me.tabInfoPlot.Controls.Add(Me.GroupBox6)
+        Me.tabInfoPlot.Controls.Add(Me.frmPlotPen)
+        Me.tabInfoPlot.Controls.Add(Me.frmPlotLRUD)
+        Me.tabInfoPlot.Controls.Add(Me.frmPlotPoint)
+        Me.tabInfoPlot.Controls.Add(Me.frmPlotTranslationLine)
+        Me.tabInfoPlot.Name = "tabInfoPlot"
+        '
+        'PanelControl2
+        '
+        Me.PanelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.PanelControl2.Controls.Add(Me.tabMain)
+        resources.ApplyResources(Me.PanelControl2, "PanelControl2")
+        Me.PanelControl2.Name = "PanelControl2"
         '
         'frmScaleRules
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
-        Me.Controls.Add(Me.tbMain)
-        Me.Controls.Add(Me.tabInfo)
-        Me.Controls.Add(Me.lv)
-        Me.Controls.Add(Me.cmdApply)
-        Me.Controls.Add(Me.cmdCancel)
-        Me.Controls.Add(Me.cmdOk)
+        Me.Controls.Add(Me.PanelControl2)
+        Me.Controls.Add(Me.tvScales)
+        Me.Controls.Add(Me.PanelControl1)
+        Me.Controls.Add(Me.barDockControlLeft)
+        Me.Controls.Add(Me.barDockControlRight)
+        Me.Controls.Add(Me.barDockControlBottom)
+        Me.Controls.Add(Me.barDockControlTop)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.IconOptions.Icon = CType(resources.GetObject("frmScaleRules.IconOptions.Icon"), System.Drawing.Icon)
         Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.scale
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmScaleRules"
-        Me.tabInfo.ResumeLayout(False)
-        Me.tabInfoMain.ResumeLayout(False)
-        Me.tabInfoMain.PerformLayout()
-        CType(Me.picScaleWarning, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtScale, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.tanInfoCategories.ResumeLayout(False)
-        CType(Me.grdCategoriesVisibility, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.tabInfODesign.ResumeLayout(False)
+        CType(Me.GroupBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.txtBaseMediumLinesScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1201,15 +1289,19 @@ Partial Class frmScaleRules
         CType(Me.txtBaseLightLinesScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtBaseHeavyLinesScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtBaseLineWidthScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.frrmDesign, System.ComponentModel.ISupportInitialize).EndInit()
         Me.frrmDesign.ResumeLayout(False)
         Me.frrmDesign.PerformLayout()
+        CType(Me.GroupBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         CType(Me.txtDesignCrossSectionTextScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GroupBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         CType(Me.txtDesignCrossSectionMarkerTextScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtDesignCrossSectionMarkerArrowScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GroupBox10, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox10.ResumeLayout(False)
         Me.GroupBox10.PerformLayout()
         CType(Me.txtDesignExtraScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1220,23 +1312,27 @@ Partial Class frmScaleRules
         CType(Me.txtDesignTextScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtDesignSignScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtDesignTerrainLevelScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.tabInfoPlot.ResumeLayout(False)
+        CType(Me.GroupBox7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox7.ResumeLayout(False)
         Me.GroupBox7.PerformLayout()
         CType(Me.picPlotNoteTextColor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPlotNoteTextScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GroupBox6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
         CType(Me.txtPlotSplaySelectedPenWidth, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPlotSplayPenWidth, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.frmPlotLRUD, System.ComponentModel.ISupportInitialize).EndInit()
         Me.frmPlotLRUD.ResumeLayout(False)
         Me.frmPlotLRUD.PerformLayout()
         CType(Me.txtPlotLRUDSelectedPenWidth, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPlotLRUDPenWidth, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.frmPlotTranslationLine, System.ComponentModel.ISupportInitialize).EndInit()
         Me.frmPlotTranslationLine.ResumeLayout(False)
         Me.frmPlotTranslationLine.PerformLayout()
         CType(Me.picPlotTranslationLinePenColor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPlotTranslationLinePenWidth, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.frmPlotPoint, System.ComponentModel.ISupportInitialize).EndInit()
         Me.frmPlotPoint.ResumeLayout(False)
         Me.frmPlotPoint.PerformLayout()
         CType(Me.picPlotPointColor, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1244,145 +1340,167 @@ Partial Class frmScaleRules
         CType(Me.txtPlotSelectedPointSize, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPlotTextScaleFactor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPlotPointSize, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.frmPlotPen, System.ComponentModel.ISupportInitialize).EndInit()
         Me.frmPlotPen.ResumeLayout(False)
         Me.frmPlotPen.PerformLayout()
         CType(Me.picPlotPenColor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPlotPenWidth, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPlotSelectedPenWidth, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.tbMain.ResumeLayout(False)
-        Me.tbMain.PerformLayout()
+        CType(Me.iml, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtScale, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl1.ResumeLayout(False)
+        CType(Me.tvScales, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BarManager, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtAddScale, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tabMain, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabMain.ResumeLayout(False)
+        Me.tabInfoMain.ResumeLayout(False)
+        Me.tabInfoMain.PerformLayout()
+        Me.tabInfoCategories.ResumeLayout(False)
+        CType(Me.tvCategoriesVisibility, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkCategoriesVisibilityVisible, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabInfoDesign.ResumeLayout(False)
+        Me.tabInfoPlot.ResumeLayout(False)
+        CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl2.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents cmdApply As System.Windows.Forms.Button
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
-    Friend WithEvents lv As System.Windows.Forms.ListView
-    Friend WithEvents tabInfo As System.Windows.Forms.TabControl
-    Friend WithEvents tabInfoMain As System.Windows.Forms.TabPage
-    Friend WithEvents lblScale As System.Windows.Forms.Label
-    Friend WithEvents tabInfODesign As System.Windows.Forms.TabPage
-    Friend WithEvents tabInfoPlot As System.Windows.Forms.TabPage
+    Friend WithEvents cmdApply As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents lblScale As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtScale As System.Windows.Forms.NumericUpDown
-    Friend WithEvents tbMain As System.Windows.Forms.ToolStrip
-    Friend WithEvents btnAdd As System.Windows.Forms.ToolStripButton
-    Friend WithEvents btnRemove As System.Windows.Forms.ToolStripButton
-    Friend WithEvents iml As System.Windows.Forms.ImageList
-    Friend WithEvents lblAddScale As System.Windows.Forms.ToolStripLabel
-    Friend WithEvents txtAddScale As System.Windows.Forms.ToolStripTextBox
-    Friend WithEvents sep1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents tanInfoCategories As System.Windows.Forms.TabPage
-    Friend WithEvents lblScaleWarning As System.Windows.Forms.Label
-    Friend WithEvents picScaleWarning As System.Windows.Forms.PictureBox
-    Friend WithEvents grdCategoriesVisibility As cSurveyPC.cGrid
-    Friend WithEvents btnAddAsCopy As System.Windows.Forms.ToolStripButton
-    Friend WithEvents btnRemoveAll As System.Windows.Forms.ToolStripButton
-    Friend WithEvents sep3 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents btnExport As System.Windows.Forms.ToolStripButton
-    Friend WithEvents btnImport As System.Windows.Forms.ToolStripButton
-    Friend WithEvents GroupBox7 As System.Windows.Forms.GroupBox
+    Friend WithEvents lblScaleWarning As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents GroupBox7 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents txtPlotNoteTextFont As System.Windows.Forms.TextBox
-    Friend WithEvents cmdPlotNoteTextFont As System.Windows.Forms.Button
-    Friend WithEvents lblPlotNoteTextFont As System.Windows.Forms.Label
-    Friend WithEvents cmdPlotNoteTextColor As System.Windows.Forms.Button
-    Friend WithEvents lblPlotNoteTextColor As System.Windows.Forms.Label
+    Friend WithEvents cmdPlotNoteTextFont As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents lblPlotNoteTextFont As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cmdPlotNoteTextColor As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents lblPlotNoteTextColor As DevExpress.XtraEditors.LabelControl
     Friend WithEvents picPlotNoteTextColor As System.Windows.Forms.PictureBox
     Friend WithEvents txtPlotNoteTextScaleFactor As System.Windows.Forms.NumericUpDown
-    Friend WithEvents lblPlotNoteTextScaleFactor As System.Windows.Forms.Label
-    Friend WithEvents GroupBox6 As System.Windows.Forms.GroupBox
-    Friend WithEvents lblPlotSplaySelectedPenWidth As System.Windows.Forms.Label
+    Friend WithEvents lblPlotNoteTextScaleFactor As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents GroupBox6 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents lblPlotSplaySelectedPenWidth As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtPlotSplaySelectedPenWidth As System.Windows.Forms.NumericUpDown
     Friend WithEvents txtPlotSplayPenWidth As System.Windows.Forms.NumericUpDown
-    Friend WithEvents lblPlotSplayPenWidth As System.Windows.Forms.Label
+    Friend WithEvents lblPlotSplayPenWidth As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboPlotSplayPenStyle As System.Windows.Forms.ComboBox
-    Friend WithEvents lblPlotSplayPenStyle As System.Windows.Forms.Label
-    Friend WithEvents frmPlotLRUD As System.Windows.Forms.GroupBox
-    Friend WithEvents lblPlotLRUDSelectedPenWidth As System.Windows.Forms.Label
+    Friend WithEvents lblPlotSplayPenStyle As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents frmPlotLRUD As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents lblPlotLRUDSelectedPenWidth As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtPlotLRUDSelectedPenWidth As System.Windows.Forms.NumericUpDown
     Friend WithEvents txtPlotLRUDPenWidth As System.Windows.Forms.NumericUpDown
-    Friend WithEvents lblPlotLRUDPenWidth As System.Windows.Forms.Label
+    Friend WithEvents lblPlotLRUDPenWidth As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboPlotLRUDPenStyle As System.Windows.Forms.ComboBox
-    Friend WithEvents lblPlotLRUDPenStyle As System.Windows.Forms.Label
-    Friend WithEvents frmPlotTranslationLine As System.Windows.Forms.GroupBox
-    Friend WithEvents cmdPlotTranslationLinePenColor As System.Windows.Forms.Button
-    Friend WithEvents lblPlotTranslationLinePenColor As System.Windows.Forms.Label
+    Friend WithEvents lblPlotLRUDPenStyle As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents frmPlotTranslationLine As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents cmdPlotTranslationLinePenColor As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents lblPlotTranslationLinePenColor As DevExpress.XtraEditors.LabelControl
     Friend WithEvents picPlotTranslationLinePenColor As System.Windows.Forms.PictureBox
     Friend WithEvents txtPlotTranslationLinePenWidth As System.Windows.Forms.NumericUpDown
-    Friend WithEvents lblPlotTranslationLinePenSize As System.Windows.Forms.Label
+    Friend WithEvents lblPlotTranslationLinePenSize As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboPlotTranslationLinePenStyle As System.Windows.Forms.ComboBox
-    Friend WithEvents lblPlotTranslationLinePenStyle As System.Windows.Forms.Label
-    Friend WithEvents frmPlotPoint As System.Windows.Forms.GroupBox
+    Friend WithEvents lblPlotTranslationLinePenStyle As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents frmPlotPoint As DevExpress.XtraEditors.GroupControl
     Friend WithEvents txtPlotTextFont As System.Windows.Forms.TextBox
-    Friend WithEvents cmdPlotTextFont As System.Windows.Forms.Button
-    Friend WithEvents cmdPlotPointColor As System.Windows.Forms.Button
-    Friend WithEvents lblPlotTextFont As System.Windows.Forms.Label
-    Friend WithEvents lblPlotPointColor As System.Windows.Forms.Label
-    Friend WithEvents cmdPlotTextColor As System.Windows.Forms.Button
+    Friend WithEvents cmdPlotTextFont As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdPlotPointColor As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents lblPlotTextFont As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblPlotPointColor As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cmdPlotTextColor As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents picPlotPointColor As System.Windows.Forms.PictureBox
-    Friend WithEvents lblPlotTextColor As System.Windows.Forms.Label
+    Friend WithEvents lblPlotTextColor As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboPlotPointSymbol As System.Windows.Forms.ComboBox
     Friend WithEvents picPlotTextColor As System.Windows.Forms.PictureBox
     Friend WithEvents txtPlotSelectedPointSize As System.Windows.Forms.NumericUpDown
     Friend WithEvents txtPlotTextScaleFactor As System.Windows.Forms.NumericUpDown
     Friend WithEvents txtPlotPointSize As System.Windows.Forms.NumericUpDown
-    Friend WithEvents lblPlotTextScaleFactor As System.Windows.Forms.Label
-    Friend WithEvents lblPlotSelectedPointSize As System.Windows.Forms.Label
-    Friend WithEvents lblPlotPointSize As System.Windows.Forms.Label
-    Friend WithEvents lblPlotPointSymbol As System.Windows.Forms.Label
-    Friend WithEvents frmPlotPen As System.Windows.Forms.GroupBox
-    Friend WithEvents cmdPlotPenColor As System.Windows.Forms.Button
-    Friend WithEvents lblPlotPenColor As System.Windows.Forms.Label
+    Friend WithEvents lblPlotTextScaleFactor As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblPlotSelectedPointSize As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblPlotPointSize As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblPlotPointSymbol As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents frmPlotPen As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents cmdPlotPenColor As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents lblPlotPenColor As DevExpress.XtraEditors.LabelControl
     Friend WithEvents picPlotPenColor As System.Windows.Forms.PictureBox
     Friend WithEvents txtPlotPenWidth As System.Windows.Forms.NumericUpDown
-    Friend WithEvents lblPlotPenWidth As System.Windows.Forms.Label
-    Friend WithEvents lblPlotSelectedPenWidth As System.Windows.Forms.Label
+    Friend WithEvents lblPlotPenWidth As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblPlotSelectedPenWidth As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboPlotPenStyle As System.Windows.Forms.ComboBox
     Friend WithEvents txtPlotSelectedPenWidth As System.Windows.Forms.NumericUpDown
-    Friend WithEvents lblPlotPenStyle As System.Windows.Forms.Label
-    Friend WithEvents colCategoryIndex As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colCategoryName As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colCategoryVisibility As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents frrmDesign As GroupBox
-    Friend WithEvents GroupBox10 As GroupBox
+    Friend WithEvents lblPlotPenStyle As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents frrmDesign As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents GroupBox10 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents txtDesignExtraScaleFactor As NumericUpDown
-    Friend WithEvents lblDesignExtraTextScaleFactor As Label
-    Friend WithEvents lblDesignExtraScaleFactor As Label
+    Friend WithEvents lblDesignExtraTextScaleFactor As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblDesignExtraScaleFactor As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtDesignExtraTextScaleFactor As NumericUpDown
-    Friend WithEvents lblDesignTextureScale As Label
+    Friend WithEvents lblDesignTextureScale As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtDesignTextureScaleFactor As NumericUpDown
     Friend WithEvents txtDesignTextFont As TextBox
-    Friend WithEvents cmdDesignTextFont As Button
-    Friend WithEvents lblDesignTextFont As Label
-    Friend WithEvents lblDesignSoilScale As Label
+    Friend WithEvents cmdDesignTextFont As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents lblDesignTextFont As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblDesignSoilScale As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtDesignSoilScaleFactor As NumericUpDown
-    Friend WithEvents lblDesignClipartScaleFactor As Label
+    Friend WithEvents lblDesignClipartScaleFactor As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtDesignClipartScaleFactor As NumericUpDown
-    Friend WithEvents lblDesignTextScaleFactor As Label
+    Friend WithEvents lblDesignTextScaleFactor As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtDesignTextScaleFactor As NumericUpDown
-    Friend WithEvents lblDesignSignScaleFactor As Label
+    Friend WithEvents lblDesignSignScaleFactor As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtDesignSignScaleFactor As NumericUpDown
-    Friend WithEvents lblDesignTerrainLevelScaleFactor As Label
+    Friend WithEvents lblDesignTerrainLevelScaleFactor As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtDesignTerrainLevelScaleFactor As NumericUpDown
-    Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents Label8 As Label
-    Friend WithEvents Label7 As Label
-    Friend WithEvents Label4 As Label
+    Friend WithEvents GroupBox1 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents Label8 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents Label7 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents Label4 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtBaseMediumLinesScaleFactor As NumericUpDown
     Friend WithEvents txtBaseUltraLightLinesScaleFactor As NumericUpDown
     Friend WithEvents txtBaseLightLinesScaleFactor As NumericUpDown
     Friend WithEvents txtBaseHeavyLinesScaleFactor As NumericUpDown
-    Friend WithEvents lblBaseLinesScaleFactor As Label
+    Friend WithEvents lblBaseLinesScaleFactor As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtBaseLineWidthScaleFactor As NumericUpDown
-    Friend WithEvents lblBaseLineWidthScaleFactor As Label
-    Friend WithEvents btnClear As ToolStripButton
-    Friend WithEvents sep2 As ToolStripSeparator
-    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents lblBaseLineWidthScaleFactor As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents GroupBox2 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents txtDesignCrossSectionMarkerArrowScaleFactor As NumericUpDown
-    Friend WithEvents lblDesignCrossSectionTextScaleFactor As Label
-    Friend WithEvents lblDesignCrossSectionMarkerArrowScaleFactor As Label
+    Friend WithEvents lblDesignCrossSectionTextScaleFactor As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblDesignCrossSectionMarkerArrowScaleFactor As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtDesignCrossSectionTextScaleFactor As NumericUpDown
-    Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents lblDesignCrossSectionMarkerTextScaleFactor As Label
+    Friend WithEvents GroupBox3 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents lblDesignCrossSectionMarkerTextScaleFactor As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtDesignCrossSectionMarkerTextScaleFactor As NumericUpDown
+    Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents tvScales As DevExpress.XtraTreeList.TreeList
+    Friend WithEvents BarManager As DevExpress.XtraBars.BarManager
+    Friend WithEvents barMain As DevExpress.XtraBars.Bar
+    Friend WithEvents barDockControlTop As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlBottom As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlLeft As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlRight As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents colScalesScale As DevExpress.XtraTreeList.Columns.TreeListColumn
+    Friend WithEvents btnAddScale As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents txtAddScale As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
+    Friend WithEvents btnAdd As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnAddAsCopy As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnRemove As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnRemoveAll As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnClear As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnExport As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnImport As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents iml As DevExpress.Utils.SvgImageCollection
+    Friend WithEvents tabMain As DevExpress.XtraTab.XtraTabControl
+    Friend WithEvents tabInfoMain As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents tabInfoCategories As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents tabInfoDesign As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents tabInfoPlot As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents tvCategoriesVisibility As DevExpress.XtraTreeList.TreeList
+    Friend WithEvents colCategoriesVisibilityIndex As DevExpress.XtraTreeList.Columns.TreeListColumn
+    Friend WithEvents colCategoriesVisibilityCategory As DevExpress.XtraTreeList.Columns.TreeListColumn
+    Friend WithEvents colCategoriesVisibilityVisible As DevExpress.XtraTreeList.Columns.TreeListColumn
+    Friend WithEvents chkCategoriesVisibilityVisible As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
+    Friend WithEvents PanelControl2 As DevExpress.XtraEditors.PanelControl
 End Class

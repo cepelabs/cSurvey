@@ -7,6 +7,14 @@ Imports System.Collections.ObjectModel
 
 Namespace cSurvey.Design.Options
     Public Class cCompassOptions
+        Implements cIUIBaseInteractions
+
+        Public Event OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Implements cIUIBaseInteractions.OnPropertyChanged
+
+        Public Sub PropertyChanged(Name As String) Implements cIUIBaseInteractions.PropertyChanged
+            RaiseEvent OnPropertyChanged(Me, New PropertyChangeEventArgs(Name))
+        End Sub
+
         Private oSurvey As cSurvey
 
         Private oColor As Color
@@ -25,7 +33,6 @@ Namespace cSurvey.Design.Options
             sClipartZoomFactor = CompassOptions.ClipartZoomFactor
             oFont = CompassOptions.Font.Clone
             sText = CompassOptions.Text
-            'RaiseEvent OnChange(Me)
         End Sub
 
         Friend Function Clone() As cCompassOptions
@@ -49,7 +56,7 @@ Namespace cSurvey.Design.Options
             Set(ByVal value As cDrawClipArt)
                 If Not oClipart Is value Then
                     oClipart = value
-                    'RaiseEvent OnChange(Me)
+                    Call PropertyChanged("Clipart")
                 End If
             End Set
         End Property
@@ -59,9 +66,9 @@ Namespace cSurvey.Design.Options
                 Return sClipartZoomFactor
             End Get
             Set(ByVal value As Single)
-                If sClipartZoomFactor <> value And sClipartZoomFactor > 0 Then
+                If sClipartZoomFactor <> value AndAlso sClipartZoomFactor > 0 Then
                     sClipartZoomFactor = value
-                    'RaiseEvent OnChange(Me)
+                    Call PropertyChanged("ClipartZoomFactor")
                 End If
             End Set
         End Property
@@ -73,7 +80,7 @@ Namespace cSurvey.Design.Options
             Set(ByVal value As Color)
                 If Color <> value Then
                     oColor = value
-                    'RaiseEvent OnChange(Me)
+                    Call PropertyChanged("Color")
                 End If
             End Set
         End Property
@@ -85,7 +92,7 @@ Namespace cSurvey.Design.Options
             Set(ByVal value As String)
                 If sText <> value Then
                     sText = value
-                    'RaiseEvent OnChange(Me)
+                    Call PropertyChanged("Text")
                 End If
             End Set
         End Property
@@ -144,8 +151,8 @@ Namespace cSurvey.Design.Options
             Return oXMLCompassOptions
         End Function
 
-        'Private Sub oFont_OnChanged(ByVal Sender As cItemFont) Handles oFont.OnChanged
-        '    RaiseEvent OnChange(Me)
-        'End Sub
+        Private Sub oFont_OnChanged(ByVal Sender As cItemFont) Handles oFont.OnChanged
+            Call PropertyChanged("Font")
+        End Sub
     End Class
 End Namespace

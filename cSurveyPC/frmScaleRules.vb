@@ -3,17 +3,15 @@ Imports cSurveyPC.cSurvey.Scale
 Imports System.Xml
 Imports cSurveyPC.cSurvey.Design.Items
 
-friend Class frmScaleRules
+Friend Class frmScaleRules
     Private oSurvey As cSurvey.cSurvey
     Private iMode As EditStyleEnum
-    Private oOptions As Design.cOptions
-    Private oDesignProperties As cPropertiesCollection
-    Private oScaleRules As cScaleRules
-    Private oCurrentItem As ListViewItem
+    Private oOptions As Design.cOptionsCenterline
+    Private WithEvents oDesignProperties As cPropertiesCollection
 
-    Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
+    Private Sub btnAdd_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnAdd.ItemClick
         Try
-            Call pSaveRule(oCurrentItem)
+            Call pSaveRule(DirectCast(tvScales.GetFocusedObject, UIHelpers.cScaleRulePlaceHolder))
         Catch
         End Try
         Call pAdd()
@@ -22,49 +20,53 @@ friend Class frmScaleRules
     Private Sub pAdd(Optional ByVal AsCopy As Boolean = False)
         Dim iScale As Integer
         Try
-            iScale = txtAddScale.Text
+            iScale = btnAddScale.EditValue
             If iScale > 50000 Then
-                txtAddScale.Text = 50000
+                btnAddScale.EditValue = 50000
                 iScale = 50000
             End If
             If iScale < 5 Then
-                txtAddScale.Text = 5
+                btnAddScale.EditValue = 5
                 iScale = 5
             End If
-            If oScaleRules.Contains(iScale) Then
+            Dim oRules As UIHelpers.cScaleRulescBindingList = tvScales.DataSource
+            If oRules.ScaleExist(iScale) Then
                 MsgBox(GetLocalizedString("scalerules.warning1"), MsgBoxStyle.Exclamation Or MsgBoxStyle.OkOnly, GetLocalizedString("scalerules.warningtitle"))
             Else
-                Dim oScaleRule As cScaleRule = oScaleRules.Add(iScale)
+                Dim oItem As UIHelpers.cScaleRulePlaceHolder
+                Dim oCurrentItem As UIHelpers.cScaleRulePlaceHolder = tvScales.GetFocusedObject
                 If AsCopy And Not oCurrentItem Is Nothing Then
                     'copy current scalerule...
-                    oScaleRule.CopyFrom(oCurrentItem.Tag)
+                    oItem = oRules.Add(iScale, oCurrentItem)
+                Else
+                    oItem = oRules.Add(iScale)
                 End If
-                Dim oItem As ListViewItem = New ListViewItem
-                oItem.Name = iScale
-                oItem.Text = GetLocalizedString("scalerules.textpart1") & " 1:" & Strings.Format(iScale, "#,##0")
-                oItem.ImageIndex = 0
-                oItem.Tag = oScaleRule
-                Call oItem.SubItems.Add(Strings.Format(oScaleRule.Scale, "00000"))
-                Call lv.Items.Add(oItem)
-                oItem.Focused = True
-                oItem.Selected = True
+                'Dim oItem As ListViewItem = New ListViewItem
+                'oItem.Name = iScale
+                'oItem.Text = GetLocalizedString("scalerules.textpart1") & " 1:" & Strings.Format(iScale, "#,##0")
+                'oItem.ImageIndex = 0
+                'oItem.Tag = oScaleRule
+                'Call oItem.SubItems.Add(Strings.Format(oScaleRule.Scale, "00000"))
+                'Call lv.Items.Add(oItem)
+                'oItem.Focused = True
+                'oItem.Selected = True
 
-                oCurrentItem = oItem
-                Call ploadRule(oCurrentItem)
+                'oCurrentItem = oItem
+                tvScales.SetFocusedObject(oItem)
+                'Call pLoadRule(oItem)
             End If
-        Catch
+        Catch ex As Exception
             Call MsgBox(GetLocalizedString("scalerules.warning2"), MsgBoxStyle.Exclamation Or MsgBoxStyle.OkOnly, GetLocalizedString("scalerules.warningtitle"))
         End Try
     End Sub
 
-    Private Sub pLoadRule(ByVal Item As ListViewItem)
-        Dim oScaleRule As cScaleRule = Item.Tag
-        Call ploadRule(oScaleRule)
+    Private Sub pLoadRule(ByVal Item As UIHelpers.cScaleRulePlaceHolder)
+        Call ploadRule(Item.ScaleRule)
     End Sub
 
-    Private Function pGetCheckbox(ChildControlName As String) As CheckBox
+    Private Function pGetCheckbox(ChildControlName As String) As DevExpress.XtraEditors.CheckEdit
         Dim sChildControlName As String = ChildControlName.ToLower
-        For Each oCheckBox As CheckBox In oCheckboxes
+        For Each oCheckBox As DevExpress.XtraEditors.CheckEdit In oCheckboxes
             If TypeOf oCheckBox.Tag Is List(Of String) Then
                 If DirectCast(oCheckBox.Tag, List(Of String)).Contains(sChildControlName) Then
                     Return oCheckBox
@@ -74,7 +76,7 @@ friend Class frmScaleRules
     End Function
 
     Private Sub pSetDesignColorValue(DesignProperties As cPropertiesCollection, Name As String, DefaultValue As Color, Control As PictureBox)
-        Dim oCheckbox As CheckBox = pGetCheckbox(Control.Name)
+        Dim oCheckbox As DevExpress.XtraEditors.CheckEdit = pGetCheckbox(Control.Name)
         If DesignProperties.HasValue(Name) Then
             Control.BackColor = DesignProperties.GetValue(Name, DefaultValue)
             If Not oCheckbox Is Nothing Then
@@ -91,7 +93,7 @@ friend Class frmScaleRules
     End Sub
 
     Private Sub pSetDesignComboValue(DesignProperties As cPropertiesCollection, Name As String, DefaultValue As Integer, Delta As Integer, Control As ComboBox)
-        Dim oCheckbox As CheckBox = pGetCheckbox(Control.Name)
+        Dim oCheckbox As DevExpress.XtraEditors.CheckEdit = pGetCheckbox(Control.Name)
         If DesignProperties.HasValue(Name) Then
             Control.SelectedIndex = DesignProperties.GetValue(Name, DefaultValue) + Delta
             If Not oCheckbox Is Nothing Then
@@ -108,7 +110,7 @@ friend Class frmScaleRules
     End Sub
 
     Private Sub pSetDesignFontValue(DesignProperties As cPropertiesCollection, Name As String, DefaultValue As cIFont, Control As TextBox)
-        Dim oCheckbox As CheckBox = pGetCheckbox(Control.Name)
+        Dim oCheckbox As DevExpress.XtraEditors.CheckEdit = pGetCheckbox(Control.Name)
         If DesignProperties.HasValue(Name) Then
             Dim oTextFont As cIFont = DesignProperties.GetValue(Name, DefaultValue)
             Control.Tag = oTextFont
@@ -128,7 +130,7 @@ friend Class frmScaleRules
     End Sub
 
     Private Sub pSetDesignNumericValue(DesignProperties As cPropertiesCollection, Name As String, DefaultValue As Object, Control As NumericUpDown)
-        Dim oCheckbox As CheckBox = pGetCheckbox(Control.Name)
+        Dim oCheckbox As DevExpress.XtraEditors.CheckEdit = pGetCheckbox(Control.Name)
         If DesignProperties.HasValue(Name) Then
             Control.Value = DesignProperties.GetValue(Name, DefaultValue)
             If Not oCheckbox Is Nothing Then
@@ -136,7 +138,7 @@ friend Class frmScaleRules
                 Call oCheckbox_checkchanged(oCheckbox, EventArgs.Empty)
             End If
         Else
-            Control.Value = DefaultValue
+            Control.Value = DesignProperties.GetValue(Name, DefaultValue)
             If Not oCheckbox Is Nothing Then
                 oCheckbox.Checked = False
                 Call oCheckbox_checkchanged(oCheckbox, EventArgs.Empty)
@@ -145,7 +147,11 @@ friend Class frmScaleRules
     End Sub
 
     Private Sub pLoadRule(DesignProperties As cPropertiesCollection)
-        'todo: default values have to be readed from parent settings (if base rule, scale and properties, if scale rule, property)
+        'default came from designproperties parents...
+        'at now (2021/12/05) the hierarchy is 
+        '- survey property design
+        '   - scale rule
+        '       - profile specific rule
         'design
         Call pSetDesignNumericValue(DesignProperties, "BaseLineWidthScaleFactor", 0.01, txtBaseLineWidthScaleFactor)
         Call pSetDesignNumericValue(DesignProperties, "BaseHeavyLinesScaleFactor", 8, txtBaseHeavyLinesScaleFactor)
@@ -197,72 +203,17 @@ friend Class frmScaleRules
         Call pSetDesignNumericValue(DesignProperties, "PlotSplaySelectedPenWidth", 1.2, txtPlotSplaySelectedPenWidth)
         Call pSetDesignComboValue(DesignProperties, "PlotSplayPenStyle", Design.cPen.PenStylesEnum.Dot, 0, cboPlotSplayPenStyle)
 
-        'Else 
-        ''design
-        'txtBaseLineWidthScaleFactor.Value = .DesignProperties.GetValue("BaseLineWidthScaleFactor", 0.01)
-        'txtBaseHeavyLinesScaleFactor.Value = .DesignProperties.GetValue("BaseHeavyLinesScaleFactor", 8)
-        'txtBaseMediumLinesScaleFactor.Value = .DesignProperties.GetValue("BaseMediumLinesScaleFactor", 3)
-        'txtBaseLightLinesScaleFactor.Value = .DesignProperties.GetValue("BaseLightLinesScaleFactor", 1)
-        'txtBaseUltraLightLinesScaleFactor.Value = .DesignProperties.GetValue("BaseUltraLightLinesScaleFactor", 0.3)
-        ''clipart, simboli e testo
-        'txtDesignSoilScaleFactor.Value = .DesignProperties.GetValue("DesignSoilScaleFactor", 1)
-        'txtDesignTextureScaleFactor.Value = .DesignProperties.GetValue("DesignTextureScaleFactor", 0.2)
-        'txtDesignTerrainLevelScaleFactor.Value = .DesignProperties.GetValue("DesignTerrainLevelScaleFactor", 1)
-        'txtDesignSignScaleFactor.Value = .DesignProperties.GetValue("DesignSignScaleFactor", 1)
-        'txtDesignExtraScaleFactor.Value = .DesignProperties.GetValue("DesignExtraScaleFactor", 1)
-        'txtDesignExtraTextScaleFactor.Value = .DesignProperties.GetValue("DesignExtraTextScaleFactor", 1)
-        'txtDesignClipartScaleFactor.Value = .DesignProperties.GetValue("DesignClipartScaleFactor", 1)
-        'txtDesignTextScaleFactor.Value = .DesignProperties.GetValue("DesignTextScaleFactor", 0.05)
-        'Dim oDesignTextFont As cIFont = .DesignProperties.GetValue("DesignTextFont", modPaint.GetDefaultFont)
-        'txtDesignTextFont.Tag = oDesignTextFont
-        'txtDesignTextFont.Text = oDesignTextFont.ToString
-
-        ''centerline
-        'txtPlotPointSize.Value = .DesignProperties.GetValue("PlotPointSize", 2)
-        'txtPlotSelectedPointSize.Value = .DesignProperties.GetValue("PlotSelectedPointSize", 8)
-        'cboPlotPointSymbol.SelectedIndex = .DesignProperties.GetValue("PlotPointSymbol", 7) - 1
-        'picPlotPointColor.BackColor = .DesignProperties.GetValue("PlotPointColor", Color.Red)
-
-        'txtPlotPenWidth.Value = .DesignProperties.GetValue("PlotPenWidth", 2)
-        'txtPlotSelectedPenWidth.Value = .DesignProperties.GetValue("PlotSelectedPenWidth", 8)
-        'cboPlotPenStyle.SelectedIndex = .DesignProperties.GetValue("PlotPenStyle", Design.cPen.PenStylesEnum.Dash)
-        'picPlotPenColor.BackColor = .DesignProperties.GetValue("PlotPenColor", Color.Black)
-
-        'txtPlotTextScaleFactor.Value = .DesignProperties.GetValue("PlotTextScaleFactor", 1)
-        'Dim oPlotTextFont As cIFont = .DesignProperties.GetValue("PlotTextFont", modPaint.GetDefaultFont)
-        'txtPlotTextFont.Tag = oPlotTextFont
-        'txtPlotTextFont.Text = oPlotTextFont.ToString
-        'picPlotTextColor.BackColor = .DesignProperties.GetValue("PlotTextColor", Color.Black)
-
-        'txtPlotNoteTextScaleFactor.Value = .DesignProperties.GetValue("PlotNoteTextScaleFactor", 0.5)
-        'Dim oPlotNoteTextFont As cIFont = .DesignProperties.GetValue("PlotNoteTextFont", modPaint.GetDefaultFont)
-        'txtPlotNoteTextFont.Tag = oPlotNoteTextFont
-        'txtPlotNoteTextFont.Text = oPlotNoteTextFont.ToString
-        'picPlotNoteTextColor.BackColor = .DesignProperties.GetValue("PlotNoteTextColor", Color.Black)
-
-        'txtPlotTranslationLinePenWidth.Value = .DesignProperties.GetValue("PlotTranslationLinePenWidth", 2)
-        'cboPlotTranslationLinePenStyle.SelectedIndex = .DesignProperties.GetValue("PlotTranslationLinePenStyle", Design.cPen.PenStylesEnum.Dot)
-        'picPlotTranslationLinePenColor.BackColor = .DesignProperties.GetValue("PlotTranslationLinePenColor", Color.Black)
-
-        'txtPlotLRUDPenWidth.Value = .DesignProperties.GetValue("PlotLRUDPenWidth", 0.8)
-        'txtPlotLRUDSelectedPenWidth.Value = .DesignProperties.GetValue("PlotLRUDSelectedPenWidth", 1.2)
-        'cboPlotLRUDPenStyle.SelectedIndex = .DesignProperties.GetValue("PlotLRUDPenStyle", Design.cPen.PenStylesEnum.Dot)
-
-        'txtPlotSplayPenWidth.Value = .DesignProperties.GetValue("PlotSplayPenWidth", 0.8)
-        'txtPlotSplaySelectedPenWidth.Value = .DesignProperties.GetValue("PlotSplaySelectedPenWidth", 1.2)
-        'cboPlotSplayPenStyle.SelectedIndex = .DesignProperties.GetValue("PlotSplayPenStyle", Design.cPen.PenStylesEnum.Dot)
-
-        If Not tabInfo.Enabled Then tabInfo.Enabled = True
+        If Not tabMain.Enabled Then tabMain.Enabled = True
     End Sub
 
     Private Sub ploadRule(ByVal ScaleRule As cIScaleRule)
         With ScaleRule
             txtScale.Value = .Scale
 
-            Call grdCategoriesVisibility.Rows.Clear()
+            Call tvCategoriesVisibility.Nodes.Clear()
             For Each iCategory As cIItem.cItemCategoryEnum In [Enum].GetValues(GetType(cIItem.cItemCategoryEnum))
                 Dim oValues() As Object = {DirectCast(iCategory, Integer), iCategory.ToString, .Categories(iCategory)}
-                Call grdCategoriesVisibility.Rows.Add(oValues)
+                Call tvCategoriesVisibility.Nodes.Add(oValues)
             Next
         End With
         Call pLoadRule(ScaleRule.DesignProperties)
@@ -270,6 +221,8 @@ friend Class frmScaleRules
 
     Private Sub pSaveRule(DesignProperties As cPropertiesCollection)
         With DesignProperties
+            .Clear()
+
             If txtBaseLineWidthScaleFactor.Enabled Then Call DesignProperties.SetValue("BaseLineWidthScaleFactor", txtBaseLineWidthScaleFactor.Value)
             If txtBaseHeavyLinesScaleFactor.Enabled Then Call DesignProperties.SetValue("BaseHeavyLinesScaleFactor", txtBaseHeavyLinesScaleFactor.Value)
             If txtBaseMediumLinesScaleFactor.Enabled Then Call DesignProperties.SetValue("BaseMediumLinesScaleFactor", txtBaseMediumLinesScaleFactor.Value)
@@ -322,53 +275,44 @@ friend Class frmScaleRules
         End With
     End Sub
 
-    Private Sub pSaveRule(ByVal Item As ListViewItem)
+    Private Sub pSaveRule(Item As UIHelpers.cScaleRulePlaceHolder)
         If Not Item Is Nothing Then
-            Dim oScaleRule As cScaleRule = Item.Tag
-            With oScaleRule
-                Dim iScale As Integer = txtScale.Value
-                If .Scale <> iScale Then
-                    .Scale = iScale
-                    iScale = .Scale
-                    Item.Text = GetLocalizedString("scalerules.textpart1") & " 1:" & Strings.Format(iScale, "#,##0")
-                    Item.SubItems(1).Text = Strings.Format(iScale, "00000")
-                    Call lv.Sort()
-                End If
-                For Each oRow As DataGridViewRow In grdCategoriesVisibility.Rows
-                    Dim iCategory As cIItem.cItemCategoryEnum = oRow.Cells(0).Value
-                    Dim bVisibility As Boolean = oRow.Cells(2).Value
+            With Item.ScaleRule
+                For Each oNode As DevExpress.XtraTreeList.Nodes.TreeListNode In tvCategoriesVisibility.Nodes
+                    Dim iCategory As cIItem.cItemCategoryEnum = oNode.Item(0)
+                    Dim bVisibility As Boolean = oNode.Item(2)
                     Call .Categories.SetVisibility(iCategory, bVisibility)
                 Next
-                Call pSaveRule(oScaleRule.DesignProperties)
+                Call pSaveRule(.DesignProperties)
             End With
         End If
     End Sub
 
-    Private Class cScaleRuleListViewComparer
-        Implements IComparer
-        Private iColumnIndex As Integer
-        Private iSortOrder As SortOrder
+    'Private Class cScaleRuleListViewComparer
+    '    Implements IComparer
+    '    Private iColumnIndex As Integer
+    '    Private iSortOrder As SortOrder
 
-        Public Sub New(ByVal ColumnIndex As Integer, ByVal SortOrder As SortOrder)
-            iColumnIndex = 1
-            iSortOrder = SortOrder.Ascending
-        End Sub
+    '    Public Sub New(ByVal ColumnIndex As Integer, ByVal SortOrder As SortOrder)
+    '        iColumnIndex = 1
+    '        iSortOrder = SortOrder.Ascending
+    '    End Sub
 
-        Public Function Compare(ByVal x As Object, ByVal y As Object) As Integer Implements System.Collections.IComparer.Compare
-            Dim oItemX As ListViewItem = DirectCast(x, ListViewItem)
-            Dim sX As String = oItemX.SubItems(iColumnIndex).Text
-            Dim oItemY As ListViewItem = DirectCast(y, ListViewItem)
-            Dim sY As String = oItemY.SubItems(iColumnIndex).Text
-            Return String.Compare(sX, sY)
-        End Function
-    End Class
+    '    Public Function Compare(ByVal x As Object, ByVal y As Object) As Integer Implements System.Collections.IComparer.Compare
+    '        Dim oItemX As ListViewItem = DirectCast(x, ListViewItem)
+    '        Dim sX As String = oItemX.SubItems(iColumnIndex).Text
+    '        Dim oItemY As ListViewItem = DirectCast(y, ListViewItem)
+    '        Dim sY As String = oItemY.SubItems(iColumnIndex).Text
+    '        Return String.Compare(sX, sY)
+    '    End Function
+    'End Class
 
     Public Enum EditStyleEnum
         ScaleRule = 0
         BaseRule = 1
     End Enum
 
-    Public Sub New(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Mode As EditStyleEnum, Optional Options As Design.cOptions = Nothing)
+    Public Sub New(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Mode As EditStyleEnum, Optional Options As Design.cOptionsCenterline = Nothing)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -376,56 +320,55 @@ friend Class frmScaleRules
         ' Add any initialization after the InitializeComponent() call.
         oSurvey = Survey
         iMode = Mode
+
+        'create, for each label, a checkbox with same caption and posizion and hide label...
+        'of course I can change every label but for now I prefer to leave the form as is and wait for future implementations...
+        Call pLabelToCheckboxes(tabInfoDesign)
+        Call pLabelToCheckboxes(tabInfoPlot)
+
         Select Case Mode
             Case EditStyleEnum.ScaleRule
-                oScaleRules = New cScaleRules(oSurvey)
-                Call oScaleRules.CopyFrom(oSurvey.ScaleRules)
-                lv.ListViewItemSorter = New cScaleRuleListViewComparer(1, SortOrder.Ascending)
+                tvScales.DataSource = New UIHelpers.cScaleRulescBindingList(oSurvey)
             Case EditStyleEnum.BaseRule
                 oOptions = Options
                 Text = modMain.GetLocalizedString("scalerules.baseruletitle")
                 oDesignProperties = New cPropertiesCollection(oSurvey)
                 Call oDesignProperties.CopyFrom(oOptions.DesignProperties)
 
-                lv.Visible = False
-                'tbMain.Visible = False
-                tabInfo.Location = New Point(12, tbMain.Height + 13)
-                tabInfo.Size = New Size(Me.ClientRectangle.Width - tabInfo.Location.X * 2, Me.ClientRectangle.Height - tabInfo.Location.Y - 12 - 32)
-                lblAddScale.Visible = False
-                txtAddScale.Visible = False
-                btnAdd.Visible = False
-                btnAddAsCopy.Visible = False
-                sep1.Visible = False
-                btnRemove.Visible = False
-                btnRemoveAll.Visible = False
-                sep2.Visible = False
+                tvScales.Visible = False
+                Width -= tvScales.Width
+                tabMain.Enabled = True
+                'tabInfo.Location = New Point(12, tbMain.Height + 13)
+                'tabInfo.Size = New Size(Me.ClientRectangle.Width - tabInfo.Location.X * 2, Me.ClientRectangle.Height - tabInfo.Location.Y - 12 - 32)
+                btnAddScale.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+                btnAdd.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+                btnAddAsCopy.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+                btnRemove.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+                btnRemoveAll.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+                btnClear.Enabled = True
+                btnExport.Enabled = True
 
-                Call tabInfo.TabPages.Remove(tabInfoMain)
-                Call tabInfo.TabPages.Remove(tanInfoCategories)
+                tabInfoMain.PageVisible = False
+                tabInfoCategories.PageVisible = False
         End Select
 
-        'create, for each label, a checkbox with same caption and posizion and hide label...
-        'of course I can change every label but for now I prefer to leave the form as is and wait for future implementations...
-        Call pLabelToCheckboxes(tabInfODesign)
-        Call pLabelToCheckboxes(tabInfoPlot)
-
-        Call tabInfo_SelectedIndexChanged(tabInfo, EventArgs.Empty)
+        tabMain.SelectedTabPage = tabInfoMain
 
         Call pRefresh()
     End Sub
 
     Private bDisabledCheckChange As Boolean
-    Private oCheckboxes As List(Of CheckBox) = New List(Of CheckBox)
+    Private oCheckboxes As List(Of DevExpress.XtraEditors.CheckEdit) = New List(Of DevExpress.XtraEditors.CheckEdit)
 
     Private Sub pLabelToCheckboxes(ParentControl As Control)
         For Each oControl As Control In ParentControl.Controls
-            If TypeOf oControl Is Label Then
-                Dim oLabel As Label = oControl
-                Dim oCheckbox As CheckBox = New CheckBox
+            If TypeOf oControl Is DevExpress.XtraEditors.LabelControl Then
+                Dim oLabel As DevExpress.XtraEditors.LabelControl = oControl
+                Dim oCheckbox As DevExpress.XtraEditors.CheckEdit = New DevExpress.XtraEditors.CheckEdit
                 oCheckbox.Name = "chk" & oLabel.Name
                 oCheckbox.Location = oLabel.Location
+                oCheckbox.Properties.AutoWidth = True
                 'oCheckbox.Size = oLabel.Size    'useful?
-                oCheckbox.AutoSize = True
                 oCheckbox.Text = oLabel.Text
                 If Not IsNothing(oLabel.Tag) Then
                     oCheckbox.Tag = New List(Of String)(oLabel.Tag.ToString.ToLower.Split({";"c}))
@@ -434,6 +377,7 @@ friend Class frmScaleRules
                 oLabel.Visible = False
                 oCheckbox.Visible = True
                 Call ParentControl.Controls.Add(oCheckbox)
+                Call oCheckbox_checkchanged(oCheckbox, EventArgs.Empty)
 
                 Call oCheckboxes.Add(oCheckbox)
             Else
@@ -443,16 +387,16 @@ friend Class frmScaleRules
     End Sub
 
     Private Sub oCheckbox_checkchanged(sender As Object, e As EventArgs)
-        If Not bDisabledCheckChange Then
-            Dim oCheckBox As CheckBox = DirectCast(sender, CheckBox)
-            Dim bEnabled As Boolean = oCheckBox.Checked
-            Dim oChildControls As List(Of String) = oCheckBox.Tag
-            For Each oChildControl As Control In oCheckBox.Parent.Controls
-                If oChildControls.Contains(oChildControl.Name.ToLower) Then
-                    oChildControl.Enabled = bEnabled
-                End If
-            Next
-        End If
+        'If Not bDisabledCheckChange Then
+        Dim oCheckBox As DevExpress.XtraEditors.CheckEdit = DirectCast(sender, DevExpress.XtraEditors.CheckEdit)
+        Dim bEnabled As Boolean = oCheckBox.Checked
+        Dim oChildControls As List(Of String) = oCheckBox.Tag
+        For Each oChildControl As Control In oCheckBox.Parent.Controls
+            If oChildControls.Contains(oChildControl.Name.ToLower) Then
+                oChildControl.Enabled = bEnabled
+            End If
+        Next
+        'End If
     End Sub
 
     Private Sub pRefresh()
@@ -460,61 +404,46 @@ friend Class frmScaleRules
             Case EditStyleEnum.BaseRule
                 Call pLoadRule(oDesignProperties)
             Case EditStyleEnum.ScaleRule
-                Call lv.Items.Clear()
-                For Each oScaleRule As cScaleRule In oScaleRules
-                    Dim oItem As ListViewItem = New ListViewItem
-                    oItem.Name = oScaleRule.Scale
-                    oItem.Text = GetLocalizedString("scalerules.textpart1") & " 1:" & Strings.Format(oScaleRule.Scale, "#,##0")
-                    oItem.ImageIndex = 0
-                    oItem.Tag = oScaleRule
-                    Call oItem.SubItems.Add(Strings.Format(oScaleRule.Scale, "00000"))
-                    Call lv.Items.Add(oItem)
-                Next
-                If lv.Items.Count > 0 Then
-                    lv.Items(0).Selected = True
-                End If
-                Call lv_SelectedIndexChanged(lv, EventArgs.Empty)
+                Call tvScales_FocusedNodeChanged(tvScales, New DevExpress.XtraTreeList.FocusedNodeChangedEventArgs(tvScales.FocusedNode, tvScales.FocusedNode))
+                'Call lv.Items.Clear()
+                'For Each oScaleRule As cScaleRule In oScaleRules
+                '    Dim oItem As ListViewItem = New ListViewItem
+                '    oItem.Name = oScaleRule.Scale
+                '    oItem.Text = GetLocalizedString("scalerules.textpart1") & " 1:" & Strings.Format(oScaleRule.Scale, "#,##0")
+                '    oItem.ImageIndex = 0
+                '    oItem.Tag = oScaleRule
+                '    Call oItem.SubItems.Add(Strings.Format(oScaleRule.Scale, "00000"))
+                '    Call lv.Items.Add(oItem)
+                'Next
+                'If lv.Items.Count > 0 Then
+                '    lv.Items(0).Selected = True
+                'End If
+                'Call lv_SelectedIndexChanged(lv, EventArgs.Empty)
         End Select
     End Sub
 
-    Private Sub btnRemove_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRemove.Click
-        Try
-            Dim oItem As ListViewItem = lv.SelectedItems(0)
-            Dim iIndex As Integer = oItem.Index
-            Dim oScaleRule As cScaleRule = oItem.Tag
-            Call oScaleRules.Remove(oScaleRule)
-            Call oItem.Remove()
-            Try
-                Dim iNewIndex As Integer
-                If iIndex > 0 Then
-                    iNewIndex = iIndex - 1
-                End If
-                Dim oNewItem As ListViewItem = lv.Items(iNewIndex)
-                oNewItem.Selected = True
-                oNewItem.Focused = True
-                Call pLoadRule(oNewItem.Tag)
-            Catch
-            End Try
-            Call lv_SelectedIndexChanged(lv, EventArgs.Empty)
-        Catch
-        End Try
-    End Sub
-
-    Private Sub lv_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lv.SelectedIndexChanged
-        Call pSaveRule(oCurrentItem)
-        If lv.SelectedItems.Count > 0 Then
-            oCurrentItem = lv.SelectedItems(0)
-            Call pLoadRule(oCurrentItem)
-            btnAddAsCopy.Enabled = True
-            btnRemove.Enabled = True
-            Call tabInfo_SelectedIndexChanged(tabInfo, EventArgs.Empty)
-        Else
-            tabInfo.Enabled = False
-            btnAddAsCopy.Enabled = False
-            btnRemove.Enabled = False
-            btnClear.Enabled = False
-        End If
-        btnRemoveAll.Enabled = lv.Items.Count > 0
+    Private Sub btnRemove_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnRemove.ItemClick
+        DirectCast(tvScales.DataSource, UIHelpers.cScaleRulescBindingList).Remove(tvScales.GetFocusedObject.scale)
+        'Try
+        '    Dim oItem As ListViewItem = lv.SelectedItems(0)
+        '    Dim iIndex As Integer = oItem.Index
+        '    Dim oScaleRule As cScaleRule = oItem.Tag
+        '    Call oScaleRules.Remove(oScaleRule)
+        '    Call oItem.Remove()
+        '    Try
+        '        Dim iNewIndex As Integer
+        '        If iIndex > 0 Then
+        '            iNewIndex = iIndex - 1
+        '        End If
+        '        Dim oNewItem As ListViewItem = lv.Items(iNewIndex)
+        '        oNewItem.Selected = True
+        '        oNewItem.Focused = True
+        '        Call pLoadRule(oNewItem.Tag)
+        '    Catch
+        '    End Try
+        '    'Call lv_SelectedIndexChanged(lv, EventArgs.Empty)
+        'Catch
+        'End Try
     End Sub
 
     Private Sub cmdOk_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdOk.Click
@@ -524,8 +453,9 @@ friend Class frmScaleRules
                 Call oOptions.DesignProperties.CopyFrom(oDesignProperties)
                 Call oSurvey.RaiseOnPropertiesChanged(cSurvey.cSurvey.OnPropertiesChangedEventArgs.PropertiesChangeSourceEnum.DefaultProperties)
             Case EditStyleEnum.ScaleRule
-                Call pSaveRule(oCurrentItem)
-                Call oSurvey.ScaleRules.CopyFrom(oScaleRules)
+                Call pSaveRule(DirectCast(tvScales.GetFocusedObject, UIHelpers.cScaleRulePlaceHolder))
+                DirectCast(tvScales.DataSource, UIHelpers.cScaleRulescBindingList).Save()
+                'Call oSurvey.ScaleRules.CopyFrom(oScaleRules)
                 Call oSurvey.RaiseOnPropertiesChanged(cSurvey.cSurvey.OnPropertiesChangedEventArgs.PropertiesChangeSourceEnum.ScaleProperties)
         End Select
         Call Close()
@@ -597,35 +527,36 @@ friend Class frmScaleRules
 
     Private Sub txtScale_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles txtScale.Validating
         Dim iNewScale As Integer = txtScale.Value
-        If oScaleRules.Contains(iNewScale) Then
-            If Not oCurrentItem.Tag Is oScaleRules.GetRule(iNewScale) Then
+        Dim oItems As UIHelpers.cScaleRulescBindingList = tvScales.DataSource
+        Dim oItem As UIHelpers.cScaleRulePlaceHolder = tvScales.GetFocusedObject
+        If oItems.ScaleExist(iNewScale) Then
+            If Not oItem Is oItems.GetRule(iNewScale) Then
                 Call MsgBox(GetLocalizedString("scalerules.warning1"), MsgBoxStyle.Exclamation Or MsgBoxStyle.OkOnly, GetLocalizedString("scalerules.warningtitle"))
                 e.Cancel = True
             End If
         End If
     End Sub
 
-    Private Sub btnAddAsCopy_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAddAsCopy.Click
+    Private Sub btnAddAsCopy_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnAddAsCopy.ItemClick
         Try
-            Call pSaveRule(oCurrentItem)
+            Call pSaveRule(DirectCast(tvScales.GetFocusedObject, UIHelpers.cScaleRulePlaceHolder))
         Catch
         End Try
         Call pAdd(True)
     End Sub
 
-    Private Sub btnRemoveAll_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRemoveAll.Click
+    Private Sub btnRemoveAll_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnRemoveAll.ItemClick
         If MsgBox(GetLocalizedString("scalerules.warning3"), MsgBoxStyle.YesNo Or MsgBoxStyle.Question, GetLocalizedString("scalerules.warningtitle")) = MsgBoxResult.Yes Then
-            Call oScaleRules.Clear()
-            Call lv.Items.Clear()
-            tabInfo.Enabled = False
-            Call lv_SelectedIndexChanged(lv, EventArgs.Empty)
+            Call DirectCast(tvScales.DataSource, UIHelpers.cScaleRulescBindingList).Clear()
+            'Call lv.Items.Clear()
+            tabMain.Enabled = False
+            'Call lv_SelectedIndexChanged(lv, EventArgs.Empty)
         End If
     End Sub
 
-    Private Sub btnExport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExport.Click
+    Private Sub btnExport_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnExport.ItemClick
         Select Case iMode
             Case EditStyleEnum.BaseRule
-                'Call pSaveRule(oDesignProperties)
                 Using oSFD As SaveFileDialog = New SaveFileDialog
                     With oSFD
                         .Title = GetLocalizedString("scalerules.exportdialog")
@@ -642,7 +573,6 @@ friend Class frmScaleRules
                     End With
                 End Using
             Case EditStyleEnum.ScaleRule
-                'Call pSaveRule(oCurrentItem)
                 Using oSFD As SaveFileDialog = New SaveFileDialog
                     With oSFD
                         .Title = GetLocalizedString("scalerules.exportdialog")
@@ -652,6 +582,7 @@ friend Class frmScaleRules
                             Dim oFile As cFile = New cFile
                             Dim oXML As XmlDocument = oFile.Document
                             Dim oXMLRoot As XmlElement = oXML.CreateElement("scalerules")
+                            Dim oScaleRules As cScaleRules = DirectCast(tvScales.DataSource, UIHelpers.cScaleRulescBindingList).Scalerules
                             Call oScaleRules.SaveTo(oFile, oFile.Document, oXMLRoot)
                             Call oXML.AppendChild(oXMLRoot)
                             Call oFile.Document.Save(.FileName)
@@ -661,7 +592,7 @@ friend Class frmScaleRules
         End Select
     End Sub
 
-    Private Sub btnImport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnImport.Click
+    Private Sub btnImport_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnImport.ItemClick
         Using oOFD As OpenFileDialog = New OpenFileDialog
             With oOFD
                 .Title = GetLocalizedString("scalerules.importdialog")
@@ -687,12 +618,13 @@ friend Class frmScaleRules
                                 Dim oXMLRoot As XmlElement = oXML.ChildNodes(0)
                                 Dim oXMLScaleRules As XmlElement = oXMLRoot.Item("scalerules")
                                 Dim oImportedScaleRules As cScaleRules = New cScaleRules(oSurvey, oXMLScaleRules)
+                                Dim oItems As UIHelpers.cScaleRulescBindingList = DirectCast(tvScales.DataSource, UIHelpers.cScaleRulescBindingList)
                                 For Each oImportedScaleRule As cScaleRule In oImportedScaleRules
-                                    If oScaleRules.Contains(oImportedScaleRule.Scale) Then
-                                        Call oScaleRules.Remove(oImportedScaleRule.Scale)
+                                    If oItems.ScaleExist(oImportedScaleRule.Scale) Then
+                                        Call oItems.Remove(oImportedScaleRule.Scale)
                                     End If
-                                    Dim oScaleRule As cScaleRule = oScaleRules.Add(oImportedScaleRule.Scale)
-                                    Call oScaleRule.CopyFrom(oImportedScaleRule)
+                                    Dim oItem As UIHelpers.cScaleRulePlaceHolder = oItems.Add(oImportedScaleRule.Scale)
+                                    Call oItem.CopyFrom(oImportedScaleRule)
                                 Next
                                 Call pRefresh()
                             Catch
@@ -741,28 +673,68 @@ friend Class frmScaleRules
         End Using
     End Sub
 
-    Private Sub txtAddScale_KeyDown(sender As Object, e As KeyEventArgs) Handles txtAddScale.KeyDown
+    Private Sub txtAddScale_KeyDown(sender As Object, e As KeyEventArgs)
         If e.KeyCode = Keys.Enter Then
             Call btnAdd.PerformClick()
         End If
     End Sub
 
-    Private Sub tabInfo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles tabInfo.SelectedIndexChanged
-        Dim bEnabled As Boolean = (tabInfo.SelectedTab Is tabInfODesign OrElse tabInfo.SelectedTab Is tabInfoPlot)
-        btnClear.Enabled = bEnabled
-    End Sub
-
-    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
-        Call pClearRule(tabInfo.SelectedTab)
+    Private Sub btnClear_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnClear.ItemClick
+        Call pClearRule(tabMain.SelectedTabPage)
     End Sub
 
     Private Sub pClearRule(ParentControl As Control)
         For Each oControl As Control In ParentControl.Controls
-            If TypeOf oControl Is CheckBox Then
-                DirectCast(oControl, CheckBox).Checked = False
+            If TypeOf oControl Is DevExpress.XtraEditors.CheckEdit Then
+                DirectCast(oControl, DevExpress.XtraEditors.CheckEdit).Checked = False
             Else
                 Call pClearRule(oControl)
             End If
         Next
+    End Sub
+
+    Private Sub txtAddScale_EditValueChanging(sender As Object, e As DevExpress.XtraEditors.Controls.ChangingEventArgs) Handles txtAddScale.EditValueChanging
+        btnAdd.Enabled = e.NewValue.trim <> ""
+    End Sub
+
+    Private Sub tvScales_FocusedNodeChanged(sender As Object, e As DevExpress.XtraTreeList.FocusedNodeChangedEventArgs) Handles tvScales.FocusedNodeChanged
+        If e.OldNode IsNot Nothing Then
+            Call pSaveRule(DirectCast(tvScales.GetRow(e.OldNode.Id), UIHelpers.cScaleRulePlaceHolder))
+        End If
+        If e.Node Is Nothing Then
+            tabMain.Enabled = False
+            btnAddAsCopy.Enabled = False
+            btnRemove.Enabled = False
+            btnClear.Enabled = False
+            btnExport.Enabled = False
+        Else
+            Call pLoadRule(DirectCast(tvScales.GetRow(e.Node.Id), UIHelpers.cScaleRulePlaceHolder))
+            btnAddAsCopy.Enabled = True
+            btnRemove.Enabled = True
+            btnClear.Enabled = True
+            btnExport.Enabled = True
+        End If
+        btnRemoveAll.Enabled = tvScales.DataSource.count > 0
+    End Sub
+
+    Private Sub tabMain_TabIndexChanged(sender As Object, e As EventArgs) Handles tabMain.TabIndexChanged
+        Dim bEnabled As Boolean = (tabMain.SelectedTabPage Is tabInfoDesign OrElse tabMain.SelectedTabPage Is tabInfoPlot)
+        btnClear.Enabled = bEnabled
+    End Sub
+
+    Private Sub txtScale_ValueChanged(sender As Object, e As EventArgs) Handles txtScale.ValueChanged
+        Dim oItem As UIHelpers.cScaleRulePlaceHolder = tvScales.GetFocusedObject
+        If oItem IsNot Nothing Then
+            Call oItem.SetScale(txtScale.Value)
+            tvScales.RefreshFocusedObject
+        End If
+    End Sub
+
+    Private Sub cmdApply_Click(sender As Object, e As EventArgs) Handles cmdApply.Click
+
+    End Sub
+
+    Private Sub oDesignProperties_OnGetParent(sender As Object, e As cPropertiesCollection.cGetParentEventArgs) Handles oDesignProperties.OnGetParent
+        e.Parent = oOptions.CurrentRule.DesignProperties
     End Sub
 End Class

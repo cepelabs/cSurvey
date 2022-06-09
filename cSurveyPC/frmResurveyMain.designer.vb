@@ -57,6 +57,7 @@ Partial Class frmResurveyMain
         Me.btnClose = New DevExpress.XtraBars.BarButtonItem()
         Me.btnNew = New DevExpress.XtraBars.BarButtonItem()
         Me.btnLoad = New DevExpress.XtraBars.BarButtonItem()
+        Me.mnuRecents = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.btnSave = New DevExpress.XtraBars.BarButtonItem()
         Me.btnLoadImage = New DevExpress.XtraBars.BarButtonItem()
         Me.btnOptions = New DevExpress.XtraBars.BarButtonItem()
@@ -117,15 +118,15 @@ Partial Class frmResurveyMain
         Me.grpFile = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.grpCommands = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.grpIntegration = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.pageImage = New DevExpress.XtraBars.Ribbon.RibbonPage()
-        Me.grpImageCommands = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.grpImageColors = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.pageWorkflow = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.grpView = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.grpStations = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.grpPlaceholders = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.grpLinks = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.grpWorkflowCommands = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.pageImage = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.grpImageCommands = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.grpImageColors = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonStatusBar1 = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.picPlan = New System.Windows.Forms.PictureBox()
         Me.picProfile = New System.Windows.Forms.PictureBox()
@@ -140,24 +141,20 @@ Partial Class frmResurveyMain
         Me.colPlaceholdersType = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colPlaceholdersPlanVisible = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colPlaceholdersProfileVisible = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.pnlPlan = New System.Windows.Forms.Panel()
+        Me.pnlPlan = New DevExpress.XtraEditors.XtraScrollableControl()
         Me.mnuPanel = New DevExpress.XtraBars.PopupMenu(Me.components)
-        Me.pnlProfile = New System.Windows.Forms.Panel()
-        Me.pnlPopup = New System.Windows.Forms.Panel()
-        Me.btnPopupClose = New DevExpress.XtraEditors.SimpleButton()
-        Me.lblPopupWarning = New System.Windows.Forms.Label()
-        Me.picPopupWarning = New System.Windows.Forms.PictureBox()
-        Me.imlPopup = New System.Windows.Forms.ImageList(Me.components)
+        Me.pnlProfile = New DevExpress.XtraEditors.XtraScrollableControl()
         Me.mnuDesign = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.DockManager = New DevExpress.XtraBars.Docking.DockManager(Me.components)
-        Me.dockMagnifier = New DevExpress.XtraBars.Docking.DockPanel()
-        Me.ControlContainer2 = New DevExpress.XtraBars.Docking.ControlContainer()
-        Me.picMagnifier = New System.Windows.Forms.PictureBox()
+        Me.pnlMain = New DevExpress.XtraEditors.XtraUserControl()
         Me.panelContainer1 = New DevExpress.XtraBars.Docking.DockPanel()
         Me.dockStations = New DevExpress.XtraBars.Docking.DockPanel()
         Me.DockPanel3_Container = New DevExpress.XtraBars.Docking.ControlContainer()
         Me.dockPlot = New DevExpress.XtraBars.Docking.DockPanel()
         Me.ControlContainer1 = New DevExpress.XtraBars.Docking.ControlContainer()
+        Me.dockMagnifier = New DevExpress.XtraBars.Docking.DockPanel()
+        Me.ControlContainer2 = New DevExpress.XtraBars.Docking.ControlContainer()
+        Me.picMagnifier = New System.Windows.Forms.PictureBox()
         Me.dockProfile = New DevExpress.XtraBars.Docking.DockPanel()
         Me.DockPanel2_Container = New DevExpress.XtraBars.Docking.ControlContainer()
         Me.dockPlan = New DevExpress.XtraBars.Docking.DockPanel()
@@ -169,12 +166,15 @@ Partial Class frmResurveyMain
         Me.mnuDesignLink = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.WorkspaceManager = New DevExpress.Utils.WorkspaceManager(Me.components)
         Me.tmrMagnifier = New System.Windows.Forms.Timer(Me.components)
+        Me.oMainMessageBar = New cSurveyPC.cMessageBar()
+        Me.DefaultToolTipController = New DevExpress.Utils.DefaultToolTipController(Me.components)
         CType(Me.DocumentGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.docPlan, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.docProfile, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdShots, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gridviewShots, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.mnuRecents, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkVisible, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.trkImageBlackAndWhite, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtLeftEdit, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -188,18 +188,17 @@ Partial Class frmResurveyMain
         Me.pnlPlan.SuspendLayout()
         CType(Me.mnuPanel, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlProfile.SuspendLayout()
-        Me.pnlPopup.SuspendLayout()
-        CType(Me.picPopupWarning, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.mnuDesign, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DockManager, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.dockMagnifier.SuspendLayout()
-        Me.ControlContainer2.SuspendLayout()
-        CType(Me.picMagnifier, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlMain.SuspendLayout()
         Me.panelContainer1.SuspendLayout()
         Me.dockStations.SuspendLayout()
         Me.DockPanel3_Container.SuspendLayout()
         Me.dockPlot.SuspendLayout()
         Me.ControlContainer1.SuspendLayout()
+        Me.dockMagnifier.SuspendLayout()
+        Me.ControlContainer2.SuspendLayout()
+        CType(Me.picMagnifier, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.dockProfile.SuspendLayout()
         Me.DockPanel2_Container.SuspendLayout()
         Me.dockPlan.SuspendLayout()
@@ -223,7 +222,7 @@ Partial Class frmResurveyMain
         Me.docPlan.FloatSize = New System.Drawing.Size(956, 200)
         Me.docPlan.Properties.AllowClose = DevExpress.Utils.DefaultBoolean.[False]
         Me.docPlan.Properties.AllowFloat = DevExpress.Utils.DefaultBoolean.[True]
-        Me.docPlan.Properties.AllowFloatOnDoubleClick = DevExpress.Utils.DefaultBoolean.[False]
+        Me.docPlan.Properties.AllowFloatOnDoubleClick = DevExpress.Utils.DefaultBoolean.[True]
         Me.docPlan.Properties.AllowPin = DevExpress.Utils.DefaultBoolean.[False]
         Me.docPlan.Properties.ShowPinButton = DevExpress.Utils.DefaultBoolean.[False]
         '
@@ -231,12 +230,13 @@ Partial Class frmResurveyMain
         '
         resources.ApplyResources(Me.docProfile, "docProfile")
         Me.docProfile.ControlName = "dockProfile"
-        Me.docProfile.FloatLocation = New System.Drawing.Point(295, 333)
+        Me.docProfile.FloatLocation = New System.Drawing.Point(297, 296)
         Me.docProfile.FloatSize = New System.Drawing.Size(950, 359)
         Me.docProfile.Properties.AllowClose = DevExpress.Utils.DefaultBoolean.[False]
         Me.docProfile.Properties.AllowFloat = DevExpress.Utils.DefaultBoolean.[True]
-        Me.docProfile.Properties.AllowFloatOnDoubleClick = DevExpress.Utils.DefaultBoolean.[False]
+        Me.docProfile.Properties.AllowFloatOnDoubleClick = DevExpress.Utils.DefaultBoolean.[True]
         Me.docProfile.Properties.AllowPin = DevExpress.Utils.DefaultBoolean.[False]
+        Me.docProfile.Properties.ShowPinButton = DevExpress.Utils.DefaultBoolean.[False]
         '
         'grdShots
         '
@@ -407,11 +407,15 @@ Partial Class frmResurveyMain
         Me.RibbonControl.MiniToolbars.Add(Me.tbPlan)
         Me.RibbonControl.MiniToolbars.Add(Me.tbProfile)
         Me.RibbonControl.Name = "RibbonControl"
-        Me.RibbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.pageMain, Me.pageImage, Me.pageWorkflow})
+        Me.RibbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.pageMain, Me.pageWorkflow, Me.pageImage})
         Me.RibbonControl.QuickToolbarItemLinks.Add(Me.btnNew)
         Me.RibbonControl.QuickToolbarItemLinks.Add(Me.btnLoad)
+        Me.RibbonControl.QuickToolbarItemLinks.Add(Me.btnSave, True)
+        Me.RibbonControl.QuickToolbarItemLinks.Add(Me.btnSaveAs)
+        Me.RibbonControl.QuickToolbarItemLinks.Add(Me.btnOptions, True)
         Me.RibbonControl.QuickToolbarItemLinks.Add(Me.btnLoadImage, True)
         Me.RibbonControl.QuickToolbarItemLinks.Add(Me.btnCalculate, True)
+        Me.RibbonControl.QuickToolbarItemLinks.Add(Me.btnExport, True)
         Me.RibbonControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.chkVisible, Me.trkImageBlackAndWhite, Me.txtLeftEdit, Me.txtRightEdit, Me.txtUpEdit, Me.txtDownEdit})
         Me.RibbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.[False]
         Me.RibbonControl.StatusBar = Me.RibbonStatusBar1
@@ -420,7 +424,7 @@ Partial Class frmResurveyMain
         '
         resources.ApplyResources(Me.btnConfirm, "btnConfirm")
         Me.btnConfirm.Id = 16
-        Me.btnConfirm.ImageOptions.SvgImage = CType(resources.GetObject("btnConfirm.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnConfirm.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_checkcircled
         Me.btnConfirm.Name = "btnConfirm"
         '
         'btnClose
@@ -434,73 +438,81 @@ Partial Class frmResurveyMain
         '
         resources.ApplyResources(Me.btnNew, "btnNew")
         Me.btnNew.Id = 1
-        Me.btnNew.ImageOptions.SvgImage = CType(resources.GetObject("btnNew.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnNew.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources._new
         Me.btnNew.Name = "btnNew"
         Me.btnNew.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
         '
         'btnLoad
         '
+        Me.btnLoad.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown
         resources.ApplyResources(Me.btnLoad, "btnLoad")
+        Me.btnLoad.DropDownControl = Me.mnuRecents
         Me.btnLoad.Id = 2
-        Me.btnLoad.ImageOptions.SvgImage = CType(resources.GetObject("btnLoad.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnLoad.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.open
         Me.btnLoad.Name = "btnLoad"
         Me.btnLoad.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'mnuRecents
+        '
+        Me.mnuRecents.Name = "mnuRecents"
+        Me.mnuRecents.Ribbon = Me.RibbonControl
         '
         'btnSave
         '
         resources.ApplyResources(Me.btnSave, "btnSave")
         Me.btnSave.Id = 3
-        Me.btnSave.ImageOptions.SvgImage = CType(resources.GetObject("btnSave.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnSave.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.save
         Me.btnSave.Name = "btnSave"
         '
         'btnLoadImage
         '
         resources.ApplyResources(Me.btnLoadImage, "btnLoadImage")
         Me.btnLoadImage.Id = 4
-        Me.btnLoadImage.ImageOptions.SvgImage = CType(resources.GetObject("btnLoadImage.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnLoadImage.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.imageimport
         Me.btnLoadImage.Name = "btnLoadImage"
         '
         'btnOptions
         '
         resources.ApplyResources(Me.btnOptions, "btnOptions")
         Me.btnOptions.Id = 5
-        Me.btnOptions.ImageOptions.SvgImage = CType(resources.GetObject("btnOptions.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnOptions.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.parameters
         Me.btnOptions.Name = "btnOptions"
         '
         'btnZoomIn
         '
         resources.ApplyResources(Me.btnZoomIn, "btnZoomIn")
         Me.btnZoomIn.Id = 6
-        Me.btnZoomIn.ImageOptions.SvgImage = CType(resources.GetObject("btnZoomIn.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnZoomIn.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.zoomin
         Me.btnZoomIn.Name = "btnZoomIn"
+        Me.btnZoomIn.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
         '
         'btnZoomOut
         '
         resources.ApplyResources(Me.btnZoomOut, "btnZoomOut")
         Me.btnZoomOut.Id = 7
-        Me.btnZoomOut.ImageOptions.SvgImage = CType(resources.GetObject("btnZoomOut.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnZoomOut.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.zoomout
         Me.btnZoomOut.Name = "btnZoomOut"
+        Me.btnZoomOut.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
         '
         'btnCalculate
         '
         resources.ApplyResources(Me.btnCalculate, "btnCalculate")
         Me.btnCalculate.Id = 14
-        Me.btnCalculate.ImageOptions.SvgImage = CType(resources.GetObject("btnCalculate.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnCalculate.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.calculatenow
         Me.btnCalculate.Name = "btnCalculate"
         '
         'btnExport
         '
         resources.ApplyResources(Me.btnExport, "btnExport")
         Me.btnExport.Id = 15
-        Me.btnExport.ImageOptions.SvgImage = CType(resources.GetObject("btnExport.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnExport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.exportfile
         Me.btnExport.Name = "btnExport"
-        Me.btnExport.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
         '
         'btnShowRulers
         '
         resources.ApplyResources(Me.btnShowRulers, "btnShowRulers")
         Me.btnShowRulers.Id = 19
-        Me.btnShowRulers.ImageOptions.SvgImage = CType(resources.GetObject("btnShowRulers.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnShowRulers.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.charttype_polarpoint
         Me.btnShowRulers.Name = "btnShowRulers"
         Me.btnShowRulers.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
         '
@@ -564,7 +576,7 @@ Partial Class frmResurveyMain
         resources.ApplyResources(Me.btnProperties2, "btnProperties2")
         Me.btnProperties2.Enabled = False
         Me.btnProperties2.Id = 27
-        Me.btnProperties2.ImageOptions.SvgImage = CType(resources.GetObject("btnProperties2.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnProperties2.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.properties
         Me.btnProperties2.Name = "btnProperties2"
         '
         'btnShowRuler
@@ -572,7 +584,7 @@ Partial Class frmResurveyMain
         resources.ApplyResources(Me.btnShowRuler, "btnShowRuler")
         Me.btnShowRuler.Enabled = False
         Me.btnShowRuler.Id = 29
-        Me.btnShowRuler.ImageOptions.SvgImage = CType(resources.GetObject("btnShowRuler.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnShowRuler.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.rulerhorizontal
         Me.btnShowRuler.Name = "btnShowRuler"
         Me.btnShowRuler.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
         '
@@ -629,8 +641,9 @@ Partial Class frmResurveyMain
         '
         resources.ApplyResources(Me.btnZoomToFit, "btnZoomToFit")
         Me.btnZoomToFit.Id = 40
-        Me.btnZoomToFit.ImageOptions.SvgImage = CType(resources.GetObject("btnZoomToFit.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnZoomToFit.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.panandzoompanel
         Me.btnZoomToFit.Name = "btnZoomToFit"
+        Me.btnZoomToFit.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
         '
         'btnsZoom
         '
@@ -712,7 +725,7 @@ Partial Class frmResurveyMain
         '
         resources.ApplyResources(Me.btnImageToGrayScale, "btnImageToGrayScale")
         Me.btnImageToGrayScale.Id = 56
-        Me.btnImageToGrayScale.ImageOptions.SvgImage = CType(resources.GetObject("btnImageToGrayScale.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnImageToGrayScale.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.grayscale
         Me.btnImageToGrayScale.Name = "btnImageToGrayScale"
         Me.btnImageToGrayScale.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
@@ -858,7 +871,7 @@ Partial Class frmResurveyMain
         '
         resources.ApplyResources(Me.btnSaveAs, "btnSaveAs")
         Me.btnSaveAs.Id = 67
-        Me.btnSaveAs.ImageOptions.SvgImage = CType(resources.GetObject("btnSaveAs.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnSaveAs.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.saveas
         Me.btnSaveAs.Name = "btnSaveAs"
         Me.btnSaveAs.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
         '
@@ -867,7 +880,7 @@ Partial Class frmResurveyMain
         resources.ApplyResources(Me.btnSaveImage, "btnSaveImage")
         Me.btnSaveImage.Enabled = False
         Me.btnSaveImage.Id = 68
-        Me.btnSaveImage.ImageOptions.SvgImage = CType(resources.GetObject("btnSaveImage.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnSaveImage.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.exportfile
         Me.btnSaveImage.Name = "btnSaveImage"
         '
         'btnClearImage
@@ -875,7 +888,7 @@ Partial Class frmResurveyMain
         resources.ApplyResources(Me.btnClearImage, "btnClearImage")
         Me.btnClearImage.Enabled = False
         Me.btnClearImage.Id = 69
-        Me.btnClearImage.ImageOptions.SvgImage = CType(resources.GetObject("btnClearImage.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnClearImage.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.clearall
         Me.btnClearImage.Name = "btnClearImage"
         '
         'tbPlan
@@ -928,34 +941,12 @@ Partial Class frmResurveyMain
         '
         'grpIntegration
         '
+        Me.grpIntegration.Alignment = DevExpress.XtraBars.Ribbon.RibbonPageGroupAlignment.Far
         Me.grpIntegration.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.grpIntegration.ItemLinks.Add(Me.btnConfirm)
         Me.grpIntegration.ItemLinks.Add(Me.btnClose)
         Me.grpIntegration.Name = "grpIntegration"
         resources.ApplyResources(Me.grpIntegration, "grpIntegration")
-        '
-        'pageImage
-        '
-        Me.pageImage.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.grpImageCommands, Me.grpImageColors})
-        Me.pageImage.Name = "pageImage"
-        resources.ApplyResources(Me.pageImage, "pageImage")
-        '
-        'grpImageCommands
-        '
-        Me.grpImageCommands.ItemLinks.Add(Me.btnLoadImage)
-        Me.grpImageCommands.ItemLinks.Add(Me.btnSaveImage)
-        Me.grpImageCommands.ItemLinks.Add(Me.btnClearImage)
-        Me.grpImageCommands.Name = "grpImageCommands"
-        resources.ApplyResources(Me.grpImageCommands, "grpImageCommands")
-        '
-        'grpImageColors
-        '
-        Me.grpImageColors.Enabled = False
-        Me.grpImageColors.ItemLinks.Add(Me.btnImageInvertColor)
-        Me.grpImageColors.ItemLinks.Add(Me.btnImageToGrayScale)
-        Me.grpImageColors.ItemLinks.Add(Me.btnImageBWThreshold)
-        Me.grpImageColors.Name = "grpImageColors"
-        resources.ApplyResources(Me.grpImageColors, "grpImageColors")
         '
         'pageWorkflow
         '
@@ -1009,6 +1000,29 @@ Partial Class frmResurveyMain
         Me.grpWorkflowCommands.Name = "grpWorkflowCommands"
         resources.ApplyResources(Me.grpWorkflowCommands, "grpWorkflowCommands")
         '
+        'pageImage
+        '
+        Me.pageImage.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.grpImageCommands, Me.grpImageColors})
+        Me.pageImage.Name = "pageImage"
+        resources.ApplyResources(Me.pageImage, "pageImage")
+        '
+        'grpImageCommands
+        '
+        Me.grpImageCommands.ItemLinks.Add(Me.btnLoadImage)
+        Me.grpImageCommands.ItemLinks.Add(Me.btnSaveImage)
+        Me.grpImageCommands.ItemLinks.Add(Me.btnClearImage)
+        Me.grpImageCommands.Name = "grpImageCommands"
+        resources.ApplyResources(Me.grpImageCommands, "grpImageCommands")
+        '
+        'grpImageColors
+        '
+        Me.grpImageColors.Enabled = False
+        Me.grpImageColors.ItemLinks.Add(Me.btnImageInvertColor)
+        Me.grpImageColors.ItemLinks.Add(Me.btnImageToGrayScale)
+        Me.grpImageColors.ItemLinks.Add(Me.btnImageBWThreshold)
+        Me.grpImageColors.Name = "grpImageColors"
+        resources.ApplyResources(Me.grpImageColors, "grpImageColors")
+        '
         'RibbonStatusBar1
         '
         Me.RibbonStatusBar1.ItemLinks.Add(Me.pnlStatus)
@@ -1016,8 +1030,8 @@ Partial Class frmResurveyMain
         Me.RibbonStatusBar1.ItemLinks.Add(Me.pnlCoordinates, True)
         Me.RibbonStatusBar1.ItemLinks.Add(Me.pnlDistance, True)
         Me.RibbonStatusBar1.ItemLinks.Add(Me.pnlAngle, True)
-        Me.RibbonStatusBar1.ItemLinks.Add(Me.pnlZoom)
-        Me.RibbonStatusBar1.ItemLinks.Add(Me.btnZoom25)
+        Me.RibbonStatusBar1.ItemLinks.Add(Me.pnlZoom, True)
+        Me.RibbonStatusBar1.ItemLinks.Add(Me.btnZoom25, True)
         Me.RibbonStatusBar1.ItemLinks.Add(Me.btnZoom50)
         Me.RibbonStatusBar1.ItemLinks.Add(Me.btnZoom100)
         Me.RibbonStatusBar1.ItemLinks.Add(Me.btnZoom200)
@@ -1027,12 +1041,14 @@ Partial Class frmResurveyMain
         '
         'picPlan
         '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.picPlan, CType(resources.GetObject("picPlan.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.picPlan, "picPlan")
         Me.picPlan.Name = "picPlan"
         Me.picPlan.TabStop = False
         '
         'picProfile
         '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.picProfile, CType(resources.GetObject("picProfile.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.picProfile, "picProfile")
         Me.picProfile.Name = "picProfile"
         Me.picProfile.TabStop = False
@@ -1139,8 +1155,9 @@ Partial Class frmResurveyMain
         '
         'pnlPlan
         '
-        resources.ApplyResources(Me.pnlPlan, "pnlPlan")
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlPlan, CType(resources.GetObject("pnlPlan.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.pnlPlan.Controls.Add(Me.picPlan)
+        resources.ApplyResources(Me.pnlPlan, "pnlPlan")
         Me.pnlPlan.Name = "pnlPlan"
         '
         'mnuPanel
@@ -1151,44 +1168,10 @@ Partial Class frmResurveyMain
         '
         'pnlProfile
         '
-        resources.ApplyResources(Me.pnlProfile, "pnlProfile")
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlProfile, CType(resources.GetObject("pnlProfile.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.pnlProfile.Controls.Add(Me.picProfile)
+        resources.ApplyResources(Me.pnlProfile, "pnlProfile")
         Me.pnlProfile.Name = "pnlProfile"
-        '
-        'pnlPopup
-        '
-        Me.pnlPopup.Controls.Add(Me.btnPopupClose)
-        Me.pnlPopup.Controls.Add(Me.lblPopupWarning)
-        Me.pnlPopup.Controls.Add(Me.picPopupWarning)
-        resources.ApplyResources(Me.pnlPopup, "pnlPopup")
-        Me.pnlPopup.Name = "pnlPopup"
-        '
-        'btnPopupClose
-        '
-        resources.ApplyResources(Me.btnPopupClose, "btnPopupClose")
-        Me.btnPopupClose.ImageOptions.SvgImage = CType(resources.GetObject("btnPopupClose.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.btnPopupClose.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.btnPopupClose.Name = "btnPopupClose"
-        Me.btnPopupClose.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
-        '
-        'lblPopupWarning
-        '
-        resources.ApplyResources(Me.lblPopupWarning, "lblPopupWarning")
-        Me.lblPopupWarning.Name = "lblPopupWarning"
-        '
-        'picPopupWarning
-        '
-        resources.ApplyResources(Me.picPopupWarning, "picPopupWarning")
-        Me.picPopupWarning.Name = "picPopupWarning"
-        Me.picPopupWarning.TabStop = False
-        '
-        'imlPopup
-        '
-        Me.imlPopup.ImageStream = CType(resources.GetObject("imlPopup.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.imlPopup.TransparentColor = System.Drawing.Color.Transparent
-        Me.imlPopup.Images.SetKeyName(0, "warning")
-        Me.imlPopup.Images.SetKeyName(1, "calculate")
-        Me.imlPopup.Images.SetKeyName(2, "error")
         '
         'mnuDesign
         '
@@ -1208,12 +1191,75 @@ Partial Class frmResurveyMain
         Me.DockManager.DockingOptions.ShowAutoHideButton = False
         Me.DockManager.DockingOptions.ShowCloseButton = False
         Me.DockManager.DockingOptions.ShowMaximizeButton = False
-        Me.DockManager.Form = Me
+        Me.DockManager.Form = Me.pnlMain
         Me.DockManager.HiddenPanels.AddRange(New DevExpress.XtraBars.Docking.DockPanel() {Me.dockMagnifier})
         Me.DockManager.MenuManager = Me.RibbonControl
         Me.DockManager.RootPanels.AddRange(New DevExpress.XtraBars.Docking.DockPanel() {Me.panelContainer1, Me.dockProfile, Me.dockPlan})
         Me.DockManager.SerializationOptions.RestoreDockPanelsText = False
         Me.DockManager.TopZIndexControls.AddRange(New String() {"DevExpress.XtraBars.BarDockControl", "DevExpress.XtraBars.StandaloneBarDockControl", "System.Windows.Forms.StatusBar", "System.Windows.Forms.MenuStrip", "System.Windows.Forms.StatusStrip", "DevExpress.XtraBars.Ribbon.RibbonStatusBar", "DevExpress.XtraBars.Ribbon.RibbonControl", "DevExpress.XtraBars.Navigation.OfficeNavigationBar", "DevExpress.XtraBars.Navigation.TileNavPane", "DevExpress.XtraBars.TabFormControl", "DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl", "DevExpress.XtraBars.ToolbarForm.ToolbarFormControl"})
+        '
+        'pnlMain
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlMain, CType(resources.GetObject("pnlMain.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlMain.Controls.Add(Me.panelContainer1)
+        resources.ApplyResources(Me.pnlMain, "pnlMain")
+        Me.pnlMain.Name = "pnlMain"
+        '
+        'panelContainer1
+        '
+        Me.panelContainer1.ActiveChild = Me.dockStations
+        Me.panelContainer1.Controls.Add(Me.dockStations)
+        Me.panelContainer1.Controls.Add(Me.dockPlot)
+        Me.panelContainer1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right
+        Me.panelContainer1.ID = New System.Guid("9d927ae8-a1f1-4c46-9e6f-3e9fdc414f65")
+        resources.ApplyResources(Me.panelContainer1, "panelContainer1")
+        Me.panelContainer1.Name = "panelContainer1"
+        Me.panelContainer1.OriginalSize = New System.Drawing.Size(688, 200)
+        Me.panelContainer1.Tabbed = True
+        '
+        'dockStations
+        '
+        Me.dockStations.Controls.Add(Me.DockPanel3_Container)
+        Me.dockStations.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill
+        Me.dockStations.ID = New System.Guid("2c4a71cf-7d1d-485a-96c8-3fa81686cc58")
+        Me.dockStations.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.station
+        Me.dockStations.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.dockStations, "dockStations")
+        Me.dockStations.Name = "dockStations"
+        Me.dockStations.Options.AllowDockAsTabbedDocument = False
+        Me.dockStations.Options.ShowAutoHideButton = False
+        Me.dockStations.Options.ShowCloseButton = False
+        Me.dockStations.Options.ShowMaximizeButton = False
+        Me.dockStations.OriginalSize = New System.Drawing.Size(681, 352)
+        '
+        'DockPanel3_Container
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.DockPanel3_Container, CType(resources.GetObject("DockPanel3_Container.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.DockPanel3_Container.Controls.Add(Me.grdStations)
+        resources.ApplyResources(Me.DockPanel3_Container, "DockPanel3_Container")
+        Me.DockPanel3_Container.Name = "DockPanel3_Container"
+        '
+        'dockPlot
+        '
+        Me.dockPlot.Controls.Add(Me.ControlContainer1)
+        Me.dockPlot.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill
+        Me.dockPlot.ID = New System.Guid("61910ffd-b70c-4ed0-93fa-24d8e0df3744")
+        Me.dockPlot.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.centerline
+        Me.dockPlot.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.dockPlot, "dockPlot")
+        Me.dockPlot.Name = "dockPlot"
+        Me.dockPlot.Options.AllowDockAsTabbedDocument = False
+        Me.dockPlot.Options.ShowAutoHideButton = False
+        Me.dockPlot.Options.ShowCloseButton = False
+        Me.dockPlot.Options.ShowMaximizeButton = False
+        Me.dockPlot.OriginalSize = New System.Drawing.Size(681, 352)
+        '
+        'ControlContainer1
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.ControlContainer1, CType(resources.GetObject("ControlContainer1.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.ControlContainer1.Controls.Add(Me.grdShots)
+        resources.ApplyResources(Me.ControlContainer1, "ControlContainer1")
+        Me.ControlContainer1.Name = "ControlContainer1"
         '
         'dockMagnifier
         '
@@ -1239,71 +1285,23 @@ Partial Class frmResurveyMain
         '
         'ControlContainer2
         '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.ControlContainer2, CType(resources.GetObject("ControlContainer2.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.ControlContainer2.Controls.Add(Me.picMagnifier)
         resources.ApplyResources(Me.ControlContainer2, "ControlContainer2")
         Me.ControlContainer2.Name = "ControlContainer2"
         '
         'picMagnifier
         '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.picMagnifier, CType(resources.GetObject("picMagnifier.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me.picMagnifier, "picMagnifier")
         Me.picMagnifier.Name = "picMagnifier"
         Me.picMagnifier.TabStop = False
-        '
-        'panelContainer1
-        '
-        Me.panelContainer1.ActiveChild = Me.dockStations
-        Me.panelContainer1.Controls.Add(Me.dockStations)
-        Me.panelContainer1.Controls.Add(Me.dockPlot)
-        Me.panelContainer1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right
-        Me.panelContainer1.ID = New System.Guid("9d927ae8-a1f1-4c46-9e6f-3e9fdc414f65")
-        resources.ApplyResources(Me.panelContainer1, "panelContainer1")
-        Me.panelContainer1.Name = "panelContainer1"
-        Me.panelContainer1.OriginalSize = New System.Drawing.Size(690, 200)
-        Me.panelContainer1.Tabbed = True
-        '
-        'dockStations
-        '
-        Me.dockStations.Controls.Add(Me.DockPanel3_Container)
-        Me.dockStations.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill
-        Me.dockStations.ID = New System.Guid("2c4a71cf-7d1d-485a-96c8-3fa81686cc58")
-        resources.ApplyResources(Me.dockStations, "dockStations")
-        Me.dockStations.Name = "dockStations"
-        Me.dockStations.Options.AllowDockAsTabbedDocument = False
-        Me.dockStations.Options.ShowAutoHideButton = False
-        Me.dockStations.Options.ShowCloseButton = False
-        Me.dockStations.Options.ShowMaximizeButton = False
-        Me.dockStations.OriginalSize = New System.Drawing.Size(415, 360)
-        '
-        'DockPanel3_Container
-        '
-        Me.DockPanel3_Container.Controls.Add(Me.grdStations)
-        resources.ApplyResources(Me.DockPanel3_Container, "DockPanel3_Container")
-        Me.DockPanel3_Container.Name = "DockPanel3_Container"
-        '
-        'dockPlot
-        '
-        Me.dockPlot.Controls.Add(Me.ControlContainer1)
-        Me.dockPlot.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill
-        Me.dockPlot.ID = New System.Guid("61910ffd-b70c-4ed0-93fa-24d8e0df3744")
-        resources.ApplyResources(Me.dockPlot, "dockPlot")
-        Me.dockPlot.Name = "dockPlot"
-        Me.dockPlot.Options.AllowDockAsTabbedDocument = False
-        Me.dockPlot.Options.ShowAutoHideButton = False
-        Me.dockPlot.Options.ShowCloseButton = False
-        Me.dockPlot.Options.ShowMaximizeButton = False
-        Me.dockPlot.OriginalSize = New System.Drawing.Size(415, 360)
-        '
-        'ControlContainer1
-        '
-        Me.ControlContainer1.Controls.Add(Me.grdShots)
-        resources.ApplyResources(Me.ControlContainer1, "ControlContainer1")
-        Me.ControlContainer1.Name = "ControlContainer1"
         '
         'dockProfile
         '
         Me.dockProfile.Controls.Add(Me.DockPanel2_Container)
         Me.dockProfile.DockedAsTabbedDocument = True
-        Me.dockProfile.FloatLocation = New System.Drawing.Point(295, 333)
+        Me.dockProfile.FloatLocation = New System.Drawing.Point(297, 296)
         Me.dockProfile.FloatSize = New System.Drawing.Size(950, 359)
         Me.dockProfile.FloatVertical = True
         Me.dockProfile.ID = New System.Guid("49bff736-c58f-49d7-9cab-07efb0de2c64")
@@ -1313,16 +1311,17 @@ Partial Class frmResurveyMain
         Me.dockProfile.Options.AllowDockLeft = False
         Me.dockProfile.Options.AllowDockRight = False
         Me.dockProfile.Options.AllowDockTop = False
-        Me.dockProfile.Options.FloatOnDblClick = False
         Me.dockProfile.Options.ShowAutoHideButton = False
         Me.dockProfile.Options.ShowCloseButton = False
         Me.dockProfile.OriginalSize = New System.Drawing.Size(950, 359)
         Me.dockProfile.SavedIndex = 1
         Me.dockProfile.SavedMdiDocument = True
+        Me.dockProfile.SavedMdiDocumentIndex = 1
         resources.ApplyResources(Me.dockProfile, "dockProfile")
         '
         'DockPanel2_Container
         '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.DockPanel2_Container, CType(resources.GetObject("DockPanel2_Container.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.DockPanel2_Container.Controls.Add(Me.pnlProfile)
         resources.ApplyResources(Me.DockPanel2_Container, "DockPanel2_Container")
         Me.DockPanel2_Container.Name = "DockPanel2_Container"
@@ -1340,7 +1339,6 @@ Partial Class frmResurveyMain
         Me.dockPlan.Options.AllowDockLeft = False
         Me.dockPlan.Options.AllowDockRight = False
         Me.dockPlan.Options.AllowDockTop = False
-        Me.dockPlan.Options.FloatOnDblClick = False
         Me.dockPlan.Options.ShowAutoHideButton = False
         Me.dockPlan.Options.ShowCloseButton = False
         Me.dockPlan.OriginalSize = New System.Drawing.Size(956, 200)
@@ -1350,13 +1348,14 @@ Partial Class frmResurveyMain
         '
         'DockPanel1_Container
         '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.DockPanel1_Container, CType(resources.GetObject("DockPanel1_Container.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.DockPanel1_Container.Controls.Add(Me.pnlPlan)
         resources.ApplyResources(Me.DockPanel1_Container, "DockPanel1_Container")
         Me.DockPanel1_Container.Name = "DockPanel1_Container"
         '
         'DocumentManager
         '
-        Me.DocumentManager.ContainerControl = Me
+        Me.DocumentManager.ContainerControl = Me.pnlMain
         Me.DocumentManager.MenuManager = Me.RibbonControl
         Me.DocumentManager.View = Me.docView
         Me.DocumentManager.ViewCollection.AddRange(New DevExpress.XtraBars.Docking2010.Views.BaseView() {Me.docView})
@@ -1367,7 +1366,7 @@ Partial Class frmResurveyMain
         Me.docView.DocumentGroups.AddRange(New DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup() {Me.DocumentGroup1})
         Me.docView.DocumentProperties.AllowAnimation = False
         Me.docView.DocumentProperties.AllowClose = False
-        Me.docView.Documents.AddRange(New DevExpress.XtraBars.Docking2010.Views.BaseDocument() {Me.docProfile, Me.docPlan})
+        Me.docView.Documents.AddRange(New DevExpress.XtraBars.Docking2010.Views.BaseDocument() {Me.docPlan, Me.docProfile})
         DockingContainer1.Element = Me.DocumentGroup1
         Me.docView.RootContainer.Nodes.AddRange(New DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer() {DockingContainer1})
         Me.docView.UseDocumentSelector = DevExpress.Utils.DefaultBoolean.[False]
@@ -1406,13 +1405,32 @@ Partial Class frmResurveyMain
         '
         Me.tmrMagnifier.Interval = 500
         '
+        'oMainMessageBar
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.oMainMessageBar, CType(resources.GetObject("oMainMessageBar.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.oMainMessageBar.AllowMessageClick = False
+        Me.oMainMessageBar.ButtonStyle = cSurveyPC.cMessageBar.ButtonStyleEnum.Close
+        Me.oMainMessageBar.CaptionForecolor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.oMainMessageBar.CustomButtonCaption = "Refresh"
+        Me.oMainMessageBar.CustomButtonTooltip = ""
+        resources.ApplyResources(Me.oMainMessageBar, "oMainMessageBar")
+        Me.oMainMessageBar.Name = "oMainMessageBar"
+        '
+        'DefaultToolTipController
+        '
+        '
+        '
+        '
+        Me.DefaultToolTipController.DefaultController.ToolTipType = DevExpress.Utils.ToolTipType.SuperTip
+        '
         'frmResurveyMain
         '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me, CType(resources.GetObject("$this.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.Controls.Add(Me.pnlPopup)
-        Me.Controls.Add(Me.panelContainer1)
+        Me.Controls.Add(Me.pnlMain)
         Me.Controls.Add(Me.RibbonStatusBar1)
+        Me.Controls.Add(Me.oMainMessageBar)
         Me.Controls.Add(Me.RibbonControl)
         Me.IconOptions.Icon = CType(resources.GetObject("frmResurveyMain.IconOptions.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
@@ -1426,6 +1444,7 @@ Partial Class frmResurveyMain
         CType(Me.grdShots, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gridviewShots, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.mnuRecents, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkVisible, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.trkImageBlackAndWhite, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtLeftEdit, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1441,18 +1460,17 @@ Partial Class frmResurveyMain
         CType(Me.mnuPanel, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlProfile.ResumeLayout(False)
         Me.pnlProfile.PerformLayout()
-        Me.pnlPopup.ResumeLayout(False)
-        CType(Me.picPopupWarning, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.mnuDesign, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DockManager, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.dockMagnifier.ResumeLayout(False)
-        Me.ControlContainer2.ResumeLayout(False)
-        CType(Me.picMagnifier, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlMain.ResumeLayout(False)
         Me.panelContainer1.ResumeLayout(False)
         Me.dockStations.ResumeLayout(False)
         Me.DockPanel3_Container.ResumeLayout(False)
         Me.dockPlot.ResumeLayout(False)
         Me.ControlContainer1.ResumeLayout(False)
+        Me.dockMagnifier.ResumeLayout(False)
+        Me.ControlContainer2.ResumeLayout(False)
+        CType(Me.picMagnifier, System.ComponentModel.ISupportInitialize).EndInit()
         Me.dockProfile.ResumeLayout(False)
         Me.DockPanel2_Container.ResumeLayout(False)
         Me.dockPlan.ResumeLayout(False)
@@ -1468,11 +1486,6 @@ Partial Class frmResurveyMain
     End Sub
     Friend WithEvents picPlan As System.Windows.Forms.PictureBox
     Friend WithEvents picProfile As System.Windows.Forms.PictureBox
-    Friend WithEvents pnlPopup As System.Windows.Forms.Panel
-    Friend WithEvents btnPopupClose As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents lblPopupWarning As System.Windows.Forms.Label
-    Friend WithEvents picPopupWarning As System.Windows.Forms.PictureBox
-    Friend WithEvents imlPopup As System.Windows.Forms.ImageList
     Friend WithEvents RibbonControl As DevExpress.XtraBars.Ribbon.RibbonControl
     Friend WithEvents pageMain As DevExpress.XtraBars.Ribbon.RibbonPage
     Friend WithEvents grpFile As DevExpress.XtraBars.Ribbon.RibbonPageGroup
@@ -1561,8 +1574,8 @@ Partial Class frmResurveyMain
     Friend WithEvents btnPlanHideAll As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnProfileShowAll As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnProfileHideAll As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents pnlPlan As System.Windows.Forms.Panel
-    Friend WithEvents pnlProfile As System.Windows.Forms.Panel
+    Friend WithEvents pnlPlan As DevExpress.XtraEditors.XtraScrollableControl
+    Friend WithEvents pnlProfile As DevExpress.XtraEditors.XtraScrollableControl
     Friend WithEvents btnVisible As DevExpress.XtraBars.BarEditItem
     Friend WithEvents chkVisible As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
     Friend WithEvents btnImageInvertColor As DevExpress.XtraBars.BarButtonItem
@@ -1603,4 +1616,8 @@ Partial Class frmResurveyMain
     Friend WithEvents btnSaveAs As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnSaveImage As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnClearImage As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents pnlMain As DevExpress.XtraEditors.XtraUserControl
+    Friend WithEvents oMainMessageBar As cMessageBar
+    Friend WithEvents mnuRecents As DevExpress.XtraBars.PopupMenu
+    Friend WithEvents DefaultToolTipController As DevExpress.Utils.DefaultToolTipController
 End Class

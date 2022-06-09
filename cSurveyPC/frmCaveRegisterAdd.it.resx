@@ -195,9 +195,6 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Aggiungi/modifica scheda catastale:</value>
   </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="btnNameRefresh.ToolTip" xml:space="preserve">
 		<value>Rileva nomi dal servizio</value>
 	</data>

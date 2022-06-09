@@ -49,9 +49,6 @@ Namespace cSurvey.Calculate.Plot
         Friend Sub SetData([From] As String, [To] As String, Direction As cSurvey.DirectionEnum, Reversed As Boolean)
             sFrom = [From]
             sTo = [To]
-            'dDistance = Data.dDistance
-            'dInclination = Data.dInclination
-            'dBearing = Data.dBearing
             iDirection = Direction
             bReversed = Reversed
         End Sub

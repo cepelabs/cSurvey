@@ -8,7 +8,7 @@ Namespace cSurvey
         Private oSessions As SortedDictionary(Of String, cSession)
 
         Public Function GetSession(Session As cISession) As cSession
-            Return oSessions(Session)
+            Return oSessions(Session.Session)
         End Function
 
         Public Function GetSurveyYears() As List(Of Integer)
@@ -62,6 +62,10 @@ Namespace cSurvey
             End If
         End Function
 
+        Public Function GetAllSessions() As SortedDictionary(Of String, cSession)
+            Return New SortedDictionary(Of String, cSession)(oSessions)
+        End Function
+
         Public Function GetWithEmpty() As SortedDictionary(Of String, cSession)
             Dim oSessionsWithEmpty As SortedDictionary(Of String, cSession) = New SortedDictionary(Of String, cSession)(oSessions)
             Dim oSession As cSession = GetEmptySession()
@@ -73,22 +77,27 @@ Namespace cSurvey
             Return Rename(Session.ID, NewDate, NewDescription)
         End Function
 
-        Public Function Rename(ByVal ID As String, ByVal NewDate As Date, ByVal NewDescription As String) As Boolean
+        Public Function Rename(ByVal ID As String, NewDate As Date?, NewDescription As String) As Boolean
             Dim sID As String = ID.ToLower
-            Dim sNewID As String = GetID(NewDate, NewDescription)
-            If oSessions.ContainsKey(sID) And Not oSessions.ContainsKey(sNewID) Then
+            If oSessions.ContainsKey(sID) Then
                 Dim oSession As cSession = oSessions(sID)
-                Call oSessions.Remove(sID)
-                Call oSession.SetDate(NewDate)
-                Call oSession.SetDescription(NewDescription)
-                Call oSessions.Add(sNewID, oSession)
-
-                For Each oSegment As cSegment In oSurvey.Segments
-                    If oSegment.Session = sID Then
-                        Call oSegment.RenameSession(sNewID)
-                    End If
-                Next
-                Return True
+                Dim dNewDate As Date = If(NewDate.HasValue, NewDate, oSession.Date)
+                Dim sNewDescription As String = If(NewDescription IsNot Nothing, NewDescription, oSession.Description)
+                Dim sNewID As String = GetID(dNewDate, sNewDescription)
+                If Not oSessions.ContainsKey(sNewID) Then
+                    Call oSessions.Remove(sID)
+                    Call oSession.SetDate(dNewDate)
+                    Call oSession.SetDescription(sNewDescription)
+                    Call oSessions.Add(sNewID, oSession)
+                    For Each oSegment As cSegment In oSurvey.Segments
+                        If oSegment.Session = sID Then
+                            Call oSegment.RenameSession(sNewID)
+                        End If
+                    Next
+                    Return True
+                Else
+                    Return False
+                End If
             Else
                 Return False
             End If
@@ -154,7 +163,7 @@ Namespace cSurvey
         End Property
 
         Public Function Add(ByVal [Date] As Date, ByVal Description As String) As cSession
-            Dim oSession As cSession = New cSession(oSurvey, [Date], Description)
+            Dim oSession As cSession = GetEmptySession([Date], Description)
             Call oSessions.Add(oSession.ID, oSession)
             Return oSession
         End Function

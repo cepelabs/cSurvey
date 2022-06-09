@@ -98,7 +98,7 @@ Namespace cSurvey
             For Each oSegment As cSegment In Survey.Segments
                 If oSegment.Cave.ToLower = Cave.ToLower Then
                     If Path = "" AndAlso oSegment.Branch = "" Then
-                        Call oSegment.RenameCave(NewCave, "")
+                        Call oSegment.RenameCave(NewCave, NewPath)
                     ElseIf Path = "" AndAlso oSegment.Branch <> "" Then
                         Call oSegment.RenameCave(NewCave, NewPath & cCaveInfoBranches.sBranchSeparator & oSegment.Branch)
                     ElseIf oSegment.Branch.ToLower = Path.ToLower Then
@@ -111,7 +111,7 @@ Namespace cSurvey
             For Each oItem As cItem In Survey.Plan.GetAllItems
                 If oItem.Cave.ToLower = Cave.ToLower Then
                     If Path = "" AndAlso oItem.Branch = "" Then
-                        Call oItem.RenameCave(NewCave, "")
+                        Call oItem.RenameCave(NewCave, NewPath)
                     ElseIf Path = "" AndAlso oItem.Branch <> "" Then
                         Call oItem.RenameCave(NewCave, NewPath & cCaveInfoBranches.sBranchSeparator & oItem.Branch)
                     ElseIf oItem.Branch.ToLower = Path.ToLower Then
@@ -124,7 +124,7 @@ Namespace cSurvey
             For Each oItem As cItem In Survey.Profile.GetAllItems
                 If oItem.Cave.ToLower = Cave.ToLower Then
                     If Path = "" AndAlso oItem.Branch = "" Then
-                        Call oItem.RenameCave(NewCave, "")
+                        Call oItem.RenameCave(NewCave, NewPath)
                     ElseIf Path = "" AndAlso oItem.Branch <> "" Then
                         Call oItem.RenameCave(NewCave, NewPath & cCaveInfoBranches.sBranchSeparator & oItem.Branch)
                     ElseIf oItem.Branch.ToLower = Path.ToLower Then
@@ -324,6 +324,14 @@ Namespace cSurvey
                 End If
             End If
             Return oColor
+        End Function
+
+        Public Function GetAllCaves() As SortedDictionary(Of String, cCaveInfo)
+            Dim oAllCaves As SortedDictionary(Of String, cCaveInfo) = New SortedDictionary(Of String, cCaveInfo)(StringComparer.CurrentCultureIgnoreCase)
+            For Each oCaveInfo As cCaveInfo In oCaveInfos.Values
+                Call oAllCaves.Add(oCaveInfo.Name, oCaveInfo)
+            Next
+            Return oAllCaves
         End Function
 
         Public Function GetAll() As List(Of cICaveInfoBranches)

@@ -28,13 +28,21 @@ Namespace cSurvey.Design.Options
     End Class
 
     Public Class cTranslationsOptions
+        Implements cIUIBaseInteractions
+
         Private oSurvey As cSurvey
 
         Private bDrawTranslationsLine As Boolean
         Private bDrawOriginalPosition As Boolean
+
+        'translationbase have to implements UIBaseInteractions but, ad now, translation can be defined only once for plan and once for profile. Not for print/export profile. I will change this when this behaviour change.
         Private oOriginalPositionTranslation As cTranslationBase
 
-        Public Property Stations As List(Of cTraslationsStation)
+        Public Event OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Implements cIUIBaseInteractions.OnPropertyChanged
+
+        Public Sub PropertyChanged(Name As String) Implements cIUIBaseInteractions.PropertyChanged
+            RaiseEvent OnPropertyChanged(Me, New PropertyChangeEventArgs(Name))
+        End Sub
 
         Public ReadOnly Property OriginalPositionTranslation As cTranslationBase
             Get
@@ -49,6 +57,7 @@ Namespace cSurvey.Design.Options
             Set(ByVal value As Boolean)
                 If value <> bDrawTranslationsLine Then
                     bDrawTranslationsLine = value
+                    Call PropertyChanged("DrawTranslationsLine")
                 End If
             End Set
         End Property
@@ -60,6 +69,7 @@ Namespace cSurvey.Design.Options
             Set(ByVal value As Boolean)
                 If value <> bDrawOriginalPosition Then
                     bDrawOriginalPosition = value
+                    Call PropertyChanged("DrawOriginalPosition")
                 End If
             End Set
         End Property
@@ -68,7 +78,7 @@ Namespace cSurvey.Design.Options
             Call CopyFrom(TranslationsOptions)
         End Sub
 
-        Private iOriginalPositionColorMode As cOptions.CombineColorModeEnum
+        Private iOriginalPositionColorMode As cOptionsDesign.CombineColorModeEnum
         Private bOriginalPositionColorGray As Boolean
         Private bOriginalPositionOnlyTranslated As Boolean
         Private bOriginalPositionOverDesign As Boolean
@@ -79,16 +89,22 @@ Namespace cSurvey.Design.Options
                 Return bOriginalPositionOverDesign
             End Get
             Set(value As Boolean)
-                bOriginalPositionOverDesign = value
+                If bOriginalPositionOverDesign <> value Then
+                    bOriginalPositionOverDesign = value
+                    Call PropertyChanged("OriginalPositionOverDesign")
+                End If
             End Set
         End Property
 
-        Public Overridable Property OriginalPositionColorMode As cOptions.CombineColorModeEnum
+        Public Overridable Property OriginalPositionColorMode As cOptionsDesign.CombineColorModeEnum
             Get
                 Return iOriginalPositionColorMode
             End Get
-            Set(value As cOptions.CombineColorModeEnum)
-                iOriginalPositionColorMode = value
+            Set(value As cOptionsDesign.CombineColorModeEnum)
+                If iOriginalPositionColorMode <> value Then
+                    iOriginalPositionColorMode = value
+                    Call PropertyChanged("OriginalPositionColorMode")
+                End If
             End Set
         End Property
 
@@ -97,7 +113,10 @@ Namespace cSurvey.Design.Options
                 Return sTranslationsThreshold
             End Get
             Set(value As Single)
-                sTranslationsThreshold = value
+                If sTranslationsThreshold <> value Then
+                    sTranslationsThreshold = value
+                    Call PropertyChanged("TranslationsThreshold")
+                End If
             End Set
         End Property
 
@@ -106,7 +125,10 @@ Namespace cSurvey.Design.Options
                 Return bOriginalPositionOnlyTranslated
             End Get
             Set(value As Boolean)
-                bOriginalPositionOnlyTranslated = value
+                If bOriginalPositionOnlyTranslated <> value Then
+                    bOriginalPositionOnlyTranslated = value
+                    Call PropertyChanged("OriginalPositionOnlyTranslated")
+                End If
             End Set
         End Property
 
@@ -115,7 +137,10 @@ Namespace cSurvey.Design.Options
                 Return bOriginalPositionColorGray
             End Get
             Set(value As Boolean)
-                bOriginalPositionColorGray = value
+                If bOriginalPositionColorGray <> value Then
+                    bOriginalPositionColorGray = value
+                    Call PropertyChanged("OriginalPositionColorGray")
+                End If
             End Set
         End Property
 
@@ -138,7 +163,7 @@ Namespace cSurvey.Design.Options
             oSurvey = Survey
             bDrawTranslationsLine = True
             bDrawOriginalPosition = False
-            iOriginalPositionColorMode = cOptions.CombineColorModeEnum.OnlyCaves
+            iOriginalPositionColorMode = cOptionsDesign.CombineColorModeEnum.OnlyCaves
             bOriginalPositionColorGray = True
             bOriginalPositionOnlyTranslated = False
             bOriginalPositionOverDesign = False
@@ -154,7 +179,7 @@ Namespace cSurvey.Design.Options
         Friend Sub Import(ByVal TranslationsOptions As XmlElement)
             bDrawTranslationsLine = modXML.GetAttributeValue(TranslationsOptions, "drawtranslationsline")
             bDrawOriginalPosition = modXML.GetAttributeValue(TranslationsOptions, "draworiginalposition")
-            iOriginalPositionColorMode = modXML.GetAttributeValue(TranslationsOptions, "originalpositioncolormode", cOptions.CombineColorModeEnum.OnlyCaves)
+            iOriginalPositionColorMode = modXML.GetAttributeValue(TranslationsOptions, "originalpositioncolormode", cOptionsDesign.CombineColorModeEnum.OnlyCaves)
             bOriginalPositionColorGray = modXML.GetAttributeValue(TranslationsOptions, "originalpositioncolorgray", True)
             bOriginalPositionOnlyTranslated = modXML.GetAttributeValue(TranslationsOptions, "originalpositiononlytranslated", False)
             bOriginalPositionOverDesign = modXML.GetAttributeValue(TranslationsOptions, "originalpositionoverdesign", False)

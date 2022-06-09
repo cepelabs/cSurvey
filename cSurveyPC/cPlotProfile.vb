@@ -11,7 +11,7 @@ Namespace cSurvey.Design
 
         Private oSurvey As cSurvey
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
             Dim oSVGGroup As XmlElement = modSVG.CreateLayer(SVG, "plot", "plot")
             Call modSVG.AppendItem(SVG, oSVGGroup, MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options))
             Return oSVGGroup
@@ -23,10 +23,10 @@ Namespace cSurvey.Design
         '    Return oSVG
         'End Function
 
-        Public Overrides Function HitTest(ByVal PaintOptions As cOptions, ByVal CurrentCave As String, ByVal CurrentBranch As String, ByVal Point As PointF, Optional Wide As Decimal = Decimal.MaxValue) As cPlotHitTestResult
+        Public Overrides Function HitTest(ByVal PaintOptions As cOptionsCenterline, ByVal CurrentCave As String, ByVal CurrentBranch As String, ByVal Point As PointF, Optional Wide As Decimal = Decimal.MaxValue) As cPlotHitTestResult
             If PaintOptions.DrawPlot Then
-                Dim oFoundSegment As cSegment
-                Dim oFoundTrigpoint As cTrigPoint
+                Dim oFoundSegment As cSegment = Nothing
+                Dim oFoundTrigpoint As cTrigPoint = Nothing
                 Dim dMinDistance As Decimal = Wide
 
                 Dim oVisibleSegments As List(Of cISegment) = MyBase.GetAllVisibleSegments(PaintOptions)
@@ -76,127 +76,132 @@ Namespace cSurvey.Design
             End If
         End Function
 
-        Public Overrides Function GetVisibleCaveBounds(PaintOptions As cOptions, ByVal Cave As String, Branch As String) As RectangleF
-            Dim oMinPoint As PointF = New PointF(Single.MaxValue, Single.MaxValue)
-            Dim oMaxPoint As PointF = New PointF(Single.MinValue, Single.MinValue)
+        Public Overrides Function GetVisibleCaveBounds(PaintOptions As cOptionsCenterline, ByVal Cave As String, Branch As String) As RectangleF
             Dim oOrigin As cTrigPoint = oSurvey.TrigPoints.GetOrigin
             If Not oOrigin Is Nothing Then
-                Dim oSegments As cSegmentCollection = oSurvey.Segments.GetVisibleCaveSegments(PaintOptions, Cave, Branch)
-                If oSegments.Count Then
-                    For Each oSegment As cSegment In oSegments
-                        If Not oSegment.IsSelfDefined AndAlso oSegment.IsValid Then
-                            Dim bVisible As Boolean = True
-                            If oSegment.Splay Then
-                                bVisible = PaintOptions.DrawSplay
-                            End If
-                            If oSegment.Surface Then
-                                bVisible = (PaintOptions.DrawSegmentsOptions And cOptions.DrawSegmentsOptionsEnum.Surface) = cOptions.DrawSegmentsOptionsEnum.Surface
-                            End If
-                            If oSegment.Duplicate Then
-                                bVisible = (PaintOptions.DrawSegmentsOptions And cOptions.DrawSegmentsOptionsEnum.Duplicate) = cOptions.DrawSegmentsOptionsEnum.Duplicate
-                            End If
-                            If bVisible Then
-                                Call modPlot.ProfileTranslateAndComparePoint(oSurvey, oSegment.Data.Profile.ToPoint, oSegment, PaintOptions.DrawTranslation, oMinPoint, oMaxPoint)
-                                Call modPlot.ProfileTranslateAndComparePoint(oSurvey, oSegment.Data.Profile.FromPoint, oSegment, PaintOptions.DrawTranslation, oMinPoint, oMaxPoint)
-                            End If
+                Dim oSegments As IEnumerable(Of cISegment) = oSurvey.Segments.GetVisibleCaveSegments(PaintOptions, Cave, Branch).Where(Function(oSegment)
+                                                                                                                                           If Not oSegment.IsSelfDefined AndAlso oSegment.IsValid Then
+                                                                                                                                               Dim bVisible As Boolean = True
+                                                                                                                                               If oSegment.Surface Then
+                                                                                                                                                   bVisible = (PaintOptions.DrawSegmentsOptions And cOptionsCenterline.DrawSegmentsOptionsEnum.Surface) = cOptionsCenterline.DrawSegmentsOptionsEnum.Surface
+                                                                                                                                               End If
+                                                                                                                                               If bVisible Then
+                                                                                                                                                   If oSegment.Duplicate Then
+                                                                                                                                                       bVisible = (PaintOptions.DrawSegmentsOptions And cOptionsCenterline.DrawSegmentsOptionsEnum.Duplicate) = cOptionsCenterline.DrawSegmentsOptionsEnum.Duplicate
+                                                                                                                                                   End If
+                                                                                                                                               End If
+                                                                                                                                               Return bVisible
+                                                                                                                                           End If
+                                                                                                                                       End Function)
+                If oSegments.Count = 0 Then
+                    Return New RectangleF(0, 0, 0, 0)
+                Else
+                    Dim oMinPoint As PointF = New Point(Integer.MaxValue, Integer.MaxValue)
+                    Dim oMaxPoint As PointF = New Point(Integer.MinValue, Integer.MinValue)
+                    For Each oSegment As cISegment In oSegments
+                        Call modPlot.ProfileTranslateAndComparePoint(oSurvey, oSegment.Data.Profile.ToPoint, oSegment, PaintOptions.DrawTranslation, oMinPoint, oMaxPoint)
+                        Call modPlot.ProfileTranslateAndComparePoint(oSurvey, oSegment.Data.Profile.FromPoint, oSegment, PaintOptions.DrawTranslation, oMinPoint, oMaxPoint)
+                        If PaintOptions.DrawSplay Then
+                            For Each oSplayPoint As Plot.cSplayProfileProjectedData In oSegment.Data.Profile.FromSplays.Where(Function(oitem) oitem.InRange)
+                                Call modPlot.ProfileTranslateAndComparePoint(oSurvey, oSplayPoint.ToPoint, oSegment, PaintOptions.DrawTranslation, oMinPoint, oMaxPoint)
+                            Next
+                            For Each oSplayPoint As Plot.cSplayProfileProjectedData In oSegment.Data.Profile.ToSplays.Where(Function(oitem) oitem.InRange)
+                                Call modPlot.ProfileTranslateAndComparePoint(oSurvey, oSplayPoint.ToPoint, oSegment, PaintOptions.DrawTranslation, oMinPoint, oMaxPoint)
+                            Next
                         End If
                     Next
                     Return New RectangleF(oMinPoint, New SizeF(oMaxPoint.X - oMinPoint.X, oMaxPoint.Y - oMinPoint.Y))
-                Else
-                    Return New RectangleF(0, 0, 0, 0)
                 End If
             Else
                 Return New RectangleF(0, 0, 0, 0)
             End If
         End Function
 
-        Public Overrides Function GetCaveBounds(PaintOptions As cOptions, ByVal Cave As String, Branch As String) As RectangleF
-            Dim oMinPoint As PointF = New PointF(Single.MaxValue, Single.MaxValue)
-            Dim oMaxPoint As PointF = New PointF(Single.MinValue, Single.MinValue)
+        Public Overrides Function GetCaveBounds(PaintOptions As cOptionsCenterline, ByVal Cave As String, Branch As String) As RectangleF
             Dim oOrigin As cTrigPoint = oSurvey.TrigPoints.GetOrigin
             If Not oOrigin Is Nothing Then
-                Dim oSegments As cSegmentCollection = oSurvey.Segments.GetCaveSegments(Cave, Branch)
-                If oSegments.Count Then
+                Dim oSegments As IEnumerable(Of cISegment) = oSurvey.Segments.GetCaveSegments(Cave, Branch).Where(Function(oSegment)
+                                                                                                                      Dim bVisible As Boolean = True
+                                                                                                                      If oSegment.Surface Then
+                                                                                                                          bVisible = (PaintOptions.DrawSegmentsOptions AndAlso cOptionsCenterline.DrawSegmentsOptionsEnum.Surface) = cOptionsCenterline.DrawSegmentsOptionsEnum.Surface
+                                                                                                                      End If
+                                                                                                                      If bVisible Then
+                                                                                                                          If oSegment.Duplicate Then
+                                                                                                                              bVisible = (PaintOptions.DrawSegmentsOptions AndAlso cOptionsCenterline.DrawSegmentsOptionsEnum.Duplicate) = cOptionsCenterline.DrawSegmentsOptionsEnum.Duplicate
+                                                                                                                          End If
+                                                                                                                      End If
+                                                                                                                      Return bVisible
+                                                                                                                  End Function)
+                If oSegments.Count = 0 Then
+                    Return New RectangleF(0, 0, 0, 0)
+                Else
+                    Dim oMinPoint As PointF = New Point(Integer.MaxValue, Integer.MaxValue)
+                    Dim oMaxPoint As PointF = New Point(Integer.MinValue, Integer.MinValue)
                     For Each oSegment As cSegment In oSegments
-                        If Not oSegment.IsSelfDefined AndAlso oSegment.IsValid Then
-                            Dim bVisible As Boolean = True
-                            If oSegment.Splay Then
-                                bVisible = PaintOptions.DrawSplay
-                            End If
-                            If oSegment.Surface Then
-                                bVisible = (PaintOptions.DrawSegmentsOptions And cOptions.DrawSegmentsOptionsEnum.Surface) = cOptions.DrawSegmentsOptionsEnum.Surface
-                            End If
-                            If oSegment.Duplicate Then
-                                bVisible = (PaintOptions.DrawSegmentsOptions And cOptions.DrawSegmentsOptionsEnum.Duplicate) = cOptions.DrawSegmentsOptionsEnum.Duplicate
-                            End If
-                            If bVisible Then
-                                Call modPlot.ProfileTranslateAndComparePoint(oSurvey, oSegment.Data.Profile.ToPoint, oSegment, PaintOptions.DrawTranslation, oMinPoint, oMaxPoint)
-                                Call modPlot.ProfileTranslateAndComparePoint(oSurvey, oSegment.Data.Profile.FromPoint, oSegment, PaintOptions.DrawTranslation, oMinPoint, oMaxPoint)
-                            End If
-                        End If
+                        Call modPlot.ProfileTranslateAndComparePoint(oSurvey, oSegment.Data.Profile.ToPoint, oSegment, PaintOptions.DrawTranslation, oMinPoint, oMaxPoint)
+                        Call modPlot.ProfileTranslateAndComparePoint(oSurvey, oSegment.Data.Profile.FromPoint, oSegment, PaintOptions.DrawTranslation, oMinPoint, oMaxPoint)
                     Next
                     Return New RectangleF(oMinPoint, New SizeF(oMaxPoint.X - oMinPoint.X, oMaxPoint.Y - oMinPoint.Y))
-                Else
-                    Return New RectangleF(0, 0, 0, 0)
                 End If
             Else
                 Return New RectangleF(0, 0, 0, 0)
             End If
         End Function
 
-        Public Overrides Function GetVisibleBounds(PaintOptions As cOptions) As RectangleF
-            Dim oMinPoint As PointF = New Point(Integer.MaxValue, Integer.MaxValue)
-            Dim oMaxPoint As PointF = New Point(Integer.MinValue, Integer.MinValue)
+        Public Overrides Function GetVisibleBounds(PaintOptions As cOptionsCenterline) As RectangleF
             Dim oOrigin As cTrigPoint = oSurvey.TrigPoints.GetOrigin
             If Not oOrigin Is Nothing Then
-                For Each oSegment As cSegment In MyBase.GetAllVisibleSegments(PaintOptions)
-                    If Not oSegment.IsSelfDefined AndAlso oSegment.IsValid Then
-                        Dim bVisible As Boolean = True
-                        If oSegment.Splay Then
-                            bVisible = PaintOptions.DrawSplay
+                Dim oSegments As IEnumerable(Of cISegment) = MyBase.GetAllVisibleSegments(PaintOptions)
+                If oSegments.Count = 0 Then
+                    Return New RectangleF(0, 0, 0, 0)
+                Else
+                    Dim oMinPoint As PointF = New Point(Integer.MaxValue, Integer.MaxValue)
+                    Dim oMaxPoint As PointF = New Point(Integer.MinValue, Integer.MinValue)
+                    For Each oSegment As cSegment In oSegments
+                        Call modPlot.ProfileTranslateAndComparePoint(oSurvey, oSegment.Data.Profile.ToPoint, oSegment, PaintOptions.DrawTranslation, oMinPoint, oMaxPoint)
+                        Call modPlot.ProfileTranslateAndComparePoint(oSurvey, oSegment.Data.Profile.FromPoint, oSegment, PaintOptions.DrawTranslation, oMinPoint, oMaxPoint)
+                        If PaintOptions.DrawSplay Then
+                            For Each oSplayPoint As Plot.cSplayProfileProjectedData In oSegment.Data.Profile.FromSplays.Where(Function(oitem) oitem.InRange)
+                                Call modPlot.ProfileTranslateAndComparePoint(oSurvey, oSplayPoint.ToPoint, oSegment, PaintOptions.DrawTranslation, oMinPoint, oMaxPoint)
+                            Next
+                            For Each oSplayPoint As Plot.cSplayProfileProjectedData In oSegment.Data.Profile.ToSplays.Where(Function(oitem) oitem.InRange)
+                                Call modPlot.ProfileTranslateAndComparePoint(oSurvey, oSplayPoint.ToPoint, oSegment, PaintOptions.DrawTranslation, oMinPoint, oMaxPoint)
+                            Next
                         End If
-                        If oSegment.Surface Then
-                            bVisible = (PaintOptions.DrawSegmentsOptions And cOptions.DrawSegmentsOptionsEnum.Surface) = cOptions.DrawSegmentsOptionsEnum.Surface
-                        End If
-                        If oSegment.Duplicate Then
-                            bVisible = (PaintOptions.DrawSegmentsOptions And cOptions.DrawSegmentsOptionsEnum.Duplicate) = cOptions.DrawSegmentsOptionsEnum.Duplicate
-                        End If
-                        If bVisible Then
-                            Call modPlot.ProfileTranslateAndComparePoint(oSurvey, oSegment.Data.Profile.ToPoint, oSegment, PaintOptions.DrawTranslation, oMinPoint, oMaxPoint)
-                            Call modPlot.ProfileTranslateAndComparePoint(oSurvey, oSegment.Data.Profile.FromPoint, oSegment, PaintOptions.DrawTranslation, oMinPoint, oMaxPoint)
-                        End If
-                    End If
-                Next
-                Return New RectangleF(oMinPoint, New SizeF(oMaxPoint.X - oMinPoint.X, oMaxPoint.Y - oMinPoint.Y))
+                    Next
+                    Return New RectangleF(oMinPoint, New SizeF(oMaxPoint.X - oMinPoint.X, oMaxPoint.Y - oMinPoint.Y))
+                End If
             Else
                 Return New RectangleF(0, 0, 0, 0)
             End If
         End Function
 
-        Public Overrides Function GetBounds(PaintOptions As cOptions) As RectangleF
-            Dim oMinPoint As PointF = New Point(Integer.MaxValue, Integer.MaxValue)
-            Dim oMaxPoint As PointF = New Point(Integer.MinValue, Integer.MinValue)
+        Public Overrides Function GetBounds(PaintOptions As cOptionsCenterline) As RectangleF
             Dim oOrigin As cTrigPoint = oSurvey.TrigPoints.GetOrigin
             If Not oOrigin Is Nothing Then
-                For Each oSegment As cSegment In oSurvey.Segments
-                    If Not oSegment.IsSelfDefined AndAlso oSegment.IsValid Then
-                        Dim bVisible As Boolean = True
-                        If oSegment.Splay Then
-                            bVisible = PaintOptions.DrawSplay
-                        End If
-                        If oSegment.Surface Then
-                            bVisible = (PaintOptions.DrawSegmentsOptions And cOptions.DrawSegmentsOptionsEnum.Surface) = cOptions.DrawSegmentsOptionsEnum.Surface
-                        End If
-                        If oSegment.Duplicate Then
-                            bVisible = (PaintOptions.DrawSegmentsOptions And cOptions.DrawSegmentsOptionsEnum.Duplicate) = cOptions.DrawSegmentsOptionsEnum.Duplicate
-                        End If
-                        If bVisible Then
-                            Call modPlot.ProfileTranslateAndComparePoint(oSurvey, oSegment.Data.Profile.ToPoint, oSegment, PaintOptions.DrawTranslation, oMinPoint, oMaxPoint)
-                            Call modPlot.ProfileTranslateAndComparePoint(oSurvey, oSegment.Data.Profile.FromPoint, oSegment, PaintOptions.DrawTranslation, oMinPoint, oMaxPoint)
-                        End If
-                    End If
-                Next
-                Return New RectangleF(oMinPoint, New SizeF(oMaxPoint.X - oMinPoint.X, oMaxPoint.Y - oMinPoint.Y))
+                Dim oSegments As IEnumerable(Of cISegment) = MyBase.GetAllSegments(PaintOptions).Where(Function(oSegment)
+                                                                                                           Dim bVisible As Boolean = True
+                                                                                                           If oSegment.Surface Then
+                                                                                                               bVisible = (PaintOptions.DrawSegmentsOptions AndAlso cOptionsCenterline.DrawSegmentsOptionsEnum.Surface) = cOptionsCenterline.DrawSegmentsOptionsEnum.Surface
+                                                                                                           End If
+                                                                                                           If bVisible Then
+                                                                                                               If oSegment.Duplicate Then
+                                                                                                                   bVisible = (PaintOptions.DrawSegmentsOptions AndAlso cOptionsCenterline.DrawSegmentsOptionsEnum.Duplicate) = cOptionsCenterline.DrawSegmentsOptionsEnum.Duplicate
+                                                                                                               End If
+                                                                                                           End If
+                                                                                                           Return bVisible
+                                                                                                       End Function)
+                If oSegments.Count = 0 Then
+                    Return New RectangleF(0, 0, 0, 0)
+                Else
+                    Dim oMinPoint As PointF = New Point(Integer.MaxValue, Integer.MaxValue)
+                    Dim oMaxPoint As PointF = New Point(Integer.MinValue, Integer.MinValue)
+                    For Each oSegment As cSegment In oSegments
+                        Call modPlot.ProfileTranslateAndComparePoint(oSurvey, oSegment.Data.Profile.ToPoint, oSegment, PaintOptions.DrawTranslation, oMinPoint, oMaxPoint)
+                        Call modPlot.ProfileTranslateAndComparePoint(oSurvey, oSegment.Data.Profile.FromPoint, oSegment, PaintOptions.DrawTranslation, oMinPoint, oMaxPoint)
+                    Next
+                    Return New RectangleF(oMinPoint, New SizeF(oMaxPoint.X - oMinPoint.X, oMaxPoint.Y - oMinPoint.Y))
+                End If
             Else
                 Return New RectangleF(0, 0, 0, 0)
             End If
@@ -230,13 +235,13 @@ Namespace cSurvey.Design
                         '    sSplayTo = sFrom
                         '    oSplayFromPoint = oToPoint
                         '    sSplayFrom = sTo
-                        '    iSplayDir = IIf(oSegment.Data.Data.Direction = cSurvey.DirectionEnum.Right, 1, -1)
+                        '    iSplayDir = if(oSegment.Data.Data.Direction = cSurvey.DirectionEnum.Right, 1, -1)
                         'Else
                         oSplayToPoint = oToPoint
                         sSplayTo = sTo
                         oSplayFromPoint = oFromPoint
                         sSplayFrom = sFrom
-                        iSplayDir = IIf(oSegment.Data.Data.Direction = cSurvey.DirectionEnum.Right, 1, -1)
+                        iSplayDir = If(oSegment.Data.Data.Direction = cSurvey.DirectionEnum.Right, 1, -1)
                         'Dim dBearing As Decimal
                         'If oSegment.Data.Data.Reversed Then
                         '    dBearing = modPaint.NormalizeAngle(oSegment.Data.Data.Bearing + 180)
@@ -245,7 +250,7 @@ Namespace cSurvey.Design
                         'End If
                         'End If
 
-                        Dim dPlaneDirection As Decimal = modPaint.NormalizeAngle(oSegment.Data.Data.Bearing) + IIf(oSegment.Data.Data.Direction = cSurvey.DirectionEnum.Right, -oSegment.ProfileSplayBorderProjectionAngle, oSegment.ProfileSplayBorderProjectionAngle)
+                        Dim dPlaneDirection As Decimal = modPaint.NormalizeAngle(oSegment.Data.Data.Bearing) + If(oSegment.Data.Data.Direction = cSurvey.DirectionEnum.Right, -oSegment.ProfileSplayBorderProjectionAngle, oSegment.ProfileSplayBorderProjectionAngle)
                         Dim dPlaneDirectionForRange As Decimal = modPaint.NormalizeAngle(If(oSegment.Data.Data.Reversed, 180 + dPlaneDirection, dPlaneDirection))
                         'FROM
                         Call .FromSplays.Clear()
@@ -262,7 +267,7 @@ Namespace cSurvey.Design
                                 'Dim oSegmentCateti As SizeF = modPaint.Trigo(oSplaySegment.Data.Data.Distance, oSplaySegment.Data.Data.Inclination)
                                 Dim sSegmentY As Single = oSegmentCateti.Width
                                 Dim sSegmentX As Single = modPaint.Trigo(oSegmentCateti.Height, sSegmentAngle).Height * iSplayDir
-                                'Dim sSegmentX As Single = modPaint.Trigo(oSegmentCateti.Height, sSegmentAngle).Height * IIf(oSegment.Data.Data.Direction = cSurvey.DirectionEnum.Right, 1, -1)
+                                'Dim sSegmentX As Single = modPaint.Trigo(oSegmentCateti.Height, sSegmentAngle).Height * if(oSegment.Data.Data.Direction = cSurvey.DirectionEnum.Right, 1, -1)
                                 Dim oCurrentPoint As PointF = New PointF(oSplayFromPoint.X + sSegmentX, oSplayFromPoint.Y - sSegmentY)
                                 Dim oUpPoint As PointF = New PointF(oCurrentPoint.X, oCurrentPoint.Y - oSplaySegment.Up)
                                 Dim oDownPoint As PointF = New PointF(oCurrentPoint.X, oCurrentPoint.Y + oSplaySegment.Down)
@@ -284,10 +289,10 @@ Namespace cSurvey.Design
                                     OrElse (oSegment.ProfileSplayBorderNegInclinationRange = modSegmentsTools.GetDefaultProfileSplayBorderNegInclinationRange OrElse (oSplaySegment.Data.Data.Inclination >= oSegment.ProfileSplayBorderNegInclinationRange.Width AndAlso oSplaySegment.Data.Data.Inclination <= oSegment.ProfileSplayBorderNegInclinationRange.Height))
                                 Dim sSplayBearing As Single = oSplaySegment.Data.Data.Bearing
                                 bInRange = bInRange And modPaint.IsAngleBetween(sSplayBearing, dPlaneDirectionForRange - oSegment.ProfileSplayBorderMaxAngleVariation, dPlaneDirectionForRange + oSegment.ProfileSplayBorderMaxAngleVariation)
-                                Dim sSegmentAngle As Single = oSplaySegment.Data.Data.Bearing - dPlaneDirection '- IIf(oSplaySegment.Data.Data.Bearing > 180, 360 - dPlaneDirection, dPlaneDirection)
+                                Dim sSegmentAngle As Single = oSplaySegment.Data.Data.Bearing - dPlaneDirection '- if(oSplaySegment.Data.Data.Bearing > 180, 360 - dPlaneDirection, dPlaneDirection)
                                 Dim oSegmentCateti As SizeF = modPaint.Trigo(oSplaySegment.Data.Data.Distance, oSplaySegment.Data.Data.Inclination)
                                 Dim sSegmentY As Single = oSegmentCateti.Width
-                                Dim sSegmentX As Single = -modPaint.Trigo(oSegmentCateti.Height, sSegmentAngle).Height * iSplayDir ' IIf(oSegment.Data.Data.Direction = cSurvey.DirectionEnum.Right, 1, -1)
+                                Dim sSegmentX As Single = -modPaint.Trigo(oSegmentCateti.Height, sSegmentAngle).Height * iSplayDir ' if(oSegment.Data.Data.Direction = cSurvey.DirectionEnum.Right, 1, -1)
                                 Dim oCurrentPoint As PointF = New PointF(oSplayToPoint.X + sSegmentX, oSplayToPoint.Y - sSegmentY)
                                 Dim oUpPoint As PointF = New PointF(oCurrentPoint.X, oCurrentPoint.Y - oSplaySegment.Up)
                                 Dim oDownPoint As PointF = New PointF(oCurrentPoint.X, oCurrentPoint.Y + oSplaySegment.Down)
@@ -300,7 +305,7 @@ Namespace cSurvey.Design
             Next
         End Sub
 
-        Friend Sub Render(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, Selection As Helper.Editor.cIEditDesignSelection)
+        Friend Sub Render(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, Selection As Helper.Editor.cIEditDesignSelection)
             Dim oCache As cDrawCache = MyBase.Caches(PaintOptions)
             With oCache
                 If .Invalidated Then
@@ -316,8 +321,8 @@ Namespace cSurvey.Design
                             iSplayEditMode = cOptionsDesign.SplayEditModeEnum.All
                         End If
 
-                        Dim oCurrentSegment As cSegment = IIf(PaintOptions.IsDesign, Selection.CurrentSegment, Nothing)
-                        Dim oCurrentTrigpoint As cTrigPoint = IIf(PaintOptions.IsDesign, Selection.CurrentTrigpoint, Nothing)
+                        Dim oCurrentSegment As cSegment = If(PaintOptions.IsDesign, Selection.CurrentSegment, Nothing)
+                        Dim oCurrentTrigpoint As cTrigPoint = If(PaintOptions.IsDesign, Selection.CurrentTrigpoint, Nothing)
                         Dim oDrawingObject As cOptionsDrawingObjects = PaintOptions.DrawingObjects
                         Dim oTranslationTrigPoints As cTranslatedTrigPoints = New cTranslatedTrigPoints
                         Dim sTTH As Single = PaintOptions.TranslationsOptions.TranslationsThreshold
@@ -369,7 +374,7 @@ Namespace cSurvey.Design
                                             Dim oFromPoint As PointF = oSegment.Data.Profile.FromPoint
 
                                             Dim oFromSplay As List(Of Plot.cSplayProfileProjectedData)
-                                            If PaintOptions.ShowSplayMode = cOptions.ShowSplayModeEnum.All Then
+                                            If PaintOptions.ShowSplayMode = cOptionsCenterline.ShowSplayModeEnum.All Then
                                                 oFromSplay = oSegment.Data.Profile.FromSplays.GetNotInRangeSplays
                                                 If oFromSplay.Count > 0 Then
                                                     Call modPaint.PaintStationSplays(PaintOptions, oCache, oCurrentSegment, oSegment, oFromPoint, modPaint.LightColor(oColor, 0.85), oTranslationMatrix, "-U", "-D", oFromSplay)
@@ -381,7 +386,7 @@ Namespace cSurvey.Design
                                             End If
 
                                             Dim oToSplays As List(Of Plot.cSplayProfileProjectedData)
-                                            If PaintOptions.ShowSplayMode = cOptions.ShowSplayModeEnum.All Then
+                                            If PaintOptions.ShowSplayMode = cOptionsCenterline.ShowSplayModeEnum.All Then
                                                 oToSplays = oSegment.Data.Profile.ToSplays.GetNotInRangeSplays
                                                 If oToSplays.Count > 0 Then
                                                     Call modPaint.PaintStationSplays(PaintOptions, oCache, oCurrentSegment, oSegment, oToPoint, modPaint.LightColor(oColor, 0.85), oTranslationMatrix, "-U", "-D", oToSplays)
@@ -408,7 +413,7 @@ Namespace cSurvey.Design
                                             End If
 
                                             'If Not oColor = Color.White Then
-                                            If PaintOptions.DrawStyle = cOptions.DrawStyleEnum.OnlySegment Then
+                                            If PaintOptions.DrawStyle = cOptionsCenterline.DrawStyleEnum.OnlySegment Then
                                                 Using oAreaLine As GraphicsPath = modPlot.GetProfileAreaLine(oSegment)
                                                     If Not oAreaLine Is Nothing Then
                                                         oCacheItem = oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
@@ -537,7 +542,7 @@ Namespace cSurvey.Design
                                                                 If .ApplyTo = Properties.cHighlightsDetail.ApplyToEnum.Shots Then
                                                                     Dim oMeters As Properties.cHighlightsDetailMeters = .GetMetres
                                                                     If .GetScript.Eval("GetHighlight", {New Properties.cShotHighlightDetails(oSurvey, oSegment, oMeters)}) Then
-                                                                        Call modRender.RenderHighlightShot(Graphics, PaintOptions, oSegment.Data.Plan.FromPoint, oSegment.Data.Plan.ToPoint, oCache, oMeters)
+                                                                        Call modRender.RenderHighlightShot(Graphics, PaintOptions, oSegment.Data.Profile.FromPoint, oSegment.Data.Profile.ToPoint, oCache, oMeters)
                                                                     End If
                                                                 End If
                                                             End With
@@ -664,7 +669,7 @@ Namespace cSurvey.Design
                     'For Each oItem As cItemCrossSection In oSurvey.Profile.Layers(LayerTypeEnum.Signs).Items.ToArray.Where(Function(item) item.Type = cIItem.cItemTypeEnum.CrossSection)
                     '    If Not oItem.Segment Is Nothing AndAlso oItem.ShowMarker Then
                     '        Dim oSegment As cSegment = oItem.Segment
-                    '        Dim iSegmentSign As Integer = IIf(oSegment.Direction = cSegment.DirectionEnum.Left, -1, 1) * IIf(oItem.Direction = cIItemCrossSection.DirectionEnum.Direct, 1, -1)
+                    '        Dim iSegmentSign As Integer = if(oSegment.Direction = cSegment.DirectionEnum.Left, -1, 1) * if(oItem.Direction = cIItemCrossSection.DirectionEnum.Direct, 1, -1)
                     '        Dim oFromPoint As PointF = oSegment.Data.Profile.FromPoint
                     '        Dim oToPoint As PointF = oSegment.Data.Profile.ToPoint
                     '        Dim oMarkerCenterPoint As PointF = modPaint.PointOnLineByPercentage(oFromPoint, oToPoint, oItem.MarkerPosition)
@@ -714,10 +719,10 @@ Namespace cSurvey.Design
             End With
         End Sub
 
-        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, Selection As Helper.Editor.cIEditSelection)
+        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, Selection As Helper.Editor.cIEditSelection)
             If Not PaintOptions.IsDesign Then
                 PaintOptions.HighlightCurrentCave = False
-                PaintOptions.HighlightMode = cOptions.HighlightModeEnum.Default
+                PaintOptions.HighlightMode = cOptionsCenterline.HighlightModeEnum.Default
             End If
             Call Render(Graphics, PaintOptions, Selection)
             Call MyBase.Caches(PaintOptions).Paint(Graphics, PaintOptions, cItem.PaintOptionsEnum.None)
@@ -828,7 +833,7 @@ Namespace cSurvey.Design
             'warping design...
             If PerformWarping Then
                 If oSurvey.Properties.DesignWarpingMode = cSurvey.DesignWarpingModeEnum.Default AndAlso Not oSurvey.Properties.ProfileWarpingDisabled AndAlso oSurvey.Properties.DesignWarpingState = cSurvey.DesignWarpingStateEnum.Active Then
-                    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, Now & vbTab & "Warping profile design", True)
+                    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, Now & vbTab & "Warping profile design")
                     Dim iIndex As Integer
                     Dim iCount As Integer
                     If Not oSurvey.Profile.IsEmpty Then
@@ -845,7 +850,7 @@ Namespace cSurvey.Design
                                 iResult = DialogResult.OK
                             End If
                             If iResult = DialogResult.OK OrElse iResult = DialogResult.Cancel Then
-                                Dim iStep As Integer = IIf(iCount > 20, iCount \ 20, 1)
+                                Dim iStep As Integer = If(iCount > 20, iCount \ 20, 1)
                                 Call oSurvey.RaiseOnProgressEvent("calculate.plot.profile", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("plotprofile.progressbegin1"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageWarping OrElse cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow)
                                 For Each oSegment As cSegment In oSegmentsToProcess
                                     iIndex += 1
@@ -876,7 +881,7 @@ Namespace cSurvey.Design
                         iIndex = 0
                         iCount = oCrossSections.Count
                         If iCount > 0 Then
-                            Dim iStep As Integer = IIf(iCount > 20, iCount \ 20, 1)
+                            Dim iStep As Integer = If(iCount > 20, iCount \ 20, 1)
                             Call oSurvey.RaiseOnProgressEvent("calculate.plot.profile", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("plotprofile.progressbegin2"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageWarping OrElse cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow)
                             For Each oCrossSection As cDesignCrossSection In oCrossSections
                                 iIndex += 1

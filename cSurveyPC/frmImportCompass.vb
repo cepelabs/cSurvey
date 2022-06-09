@@ -6,6 +6,7 @@
                 txtPrefix.Text = oReg.GetValue("data.import.compass.prefix", "")
                 chkCompassCreateBrachForSession.Checked = oReg.GetValue("data.import.compass.branchforsession", 1)
                 chkCompassImportFlagX.Checked = oReg.GetValue("data.import.compass.importflagx", 1)
+                chkCompassImportSSShotAsSplay.Checked = oReg.GetValue("data.import.compass.importssshotassplay", 0)
                 Call oReg.Close()
             End Using
         Catch
@@ -16,8 +17,9 @@
         Try
             Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
                 Call oReg.SetValue("data.import.compass.prefix", txtPrefix.Text)
-                Call oReg.SetValue("data.import.compass.branchforsession", IIf(chkCompassCreateBrachForSession.Checked, 1, 0))
-                Call oReg.SetValue("data.import.compass.importflagx", IIf(chkCompassImportFlagX.Checked, 1, 0))
+                Call oReg.SetValue("data.import.compass.branchforsession", If(chkCompassCreateBrachForSession.Checked, 1, 0))
+                Call oReg.SetValue("data.import.compass.importflagx", If(chkCompassImportFlagX.Checked, 1, 0))
+                Call oReg.SetValue("data.import.compass.importssshotassplay", If(chkCompassImportSSShotAsSplay.Checked, 1, 0))
                 Call oReg.Close()
             End Using
         Catch

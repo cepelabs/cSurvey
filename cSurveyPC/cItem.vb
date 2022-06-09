@@ -277,13 +277,13 @@ Namespace cSurvey.Design
             End Get
         End Property
 
-        Friend Overridable Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
+        Friend Overridable Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
             Dim oSVG As XmlDocument = modSVG.CreateSVG
             Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
             Return oSVG
         End Function
 
-        Friend Overridable Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        Friend Overridable Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
             Using oMatrix As Matrix = New Matrix
                 If PaintOptions.DrawTranslation Then
                     Dim oTranslation As SizeF = oDesign.GetItemTranslation(Me)
@@ -326,8 +326,8 @@ Namespace cSurvey.Design
             InEdit = 2
         End Enum
 
-        Friend MustOverride Sub Render(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
-        Friend MustOverride Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend MustOverride Sub Render(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend MustOverride Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
 
         Friend Overridable Sub Invalidate(PaintOptions As cOptions)
             Call oCaches.Invalidate(PaintOptions)
@@ -391,7 +391,7 @@ Namespace cSurvey.Design
         End Function
 
         Public Function IsInvalidated(PaintOptions As cOptions) As Boolean
-            If oCaches.contains(PaintOptions) Then
+            If oCaches.Contains(PaintOptions) Then
                 Return oCaches(PaintOptions).Invalidated
             Else
                 Return True
@@ -402,7 +402,7 @@ Namespace cSurvey.Design
             Return HitTest(PaintOptions, New PointF(X, Y), Wide)
         End Function
 
-        Friend Function IsVisible(PaintOptions As cOptions) As Boolean
+        Friend Function IsVisible(PaintOptions As cOptionsCenterline) As Boolean
             If PaintOptions.IsDesign Then
                 Return Not bHiddenInDesign
             Else
@@ -421,7 +421,7 @@ Namespace cSurvey.Design
             End If
         End Function
 
-        Friend Overridable Function HitTest(PaintOptions As cOptions, ByVal Point As PointF, ByVal Wide As Single) As Boolean
+        Friend Overridable Function HitTest(PaintOptions As cOptionsCenterline, ByVal Point As PointF, ByVal Wide As Single) As Boolean
             If IsVisible(PaintOptions) Then
                 Dim oRect As RectangleF = GetBounds()
                 If oRect.Width < 0.1 Or oRect.Height < 0.1 Then
@@ -648,7 +648,16 @@ Namespace cSurvey.Design
             End If
         End Sub
 
-        Public Function GetCaveInfo() As cICaveInfoBranches
+        Public Function GetLocked() As Boolean Implements cIItem.GetLocked
+            Dim oCaveInfo As cICaveInfoBranches = GetCaveInfo()
+            If IsNothing(oCaveInfo) Then
+                Return False
+            Else
+                Return oCaveInfo.GetLocked
+            End If
+        End Function
+
+        Public Function GetCaveInfo() As cICaveInfoBranches Implements cIItem.GetCaveInfo
             Return oSurvey.Properties.GetCaveInfo(Me)
         End Function
 
@@ -721,11 +730,11 @@ Namespace cSurvey.Design
 
 #Region "Scale"
 
-        Friend Overridable Function GetAttachmentScaleFactor(PaintOptions As cOptions) As Single
+        Friend Overridable Function GetAttachmentScaleFactor(PaintOptions As cOptionsCenterline) As Single
             Return PaintOptions.GetCurrentDesignPropertiesValue("DesignAttachmentScaleFactor", 2)
         End Function
 
-        Friend Overridable Function GetClipartScaleFactor(PaintOptions As cOptions) As Single
+        Friend Overridable Function GetClipartScaleFactor(PaintOptions As cOptionsCenterline) As Single
             Dim sDesignClipartScaleFactor As Single = PaintOptions.GetCurrentDesignPropertiesValue("DesignClipartScaleFactor", 1)
             If DesignAffinity = DesignAffinityEnum.Extra Then
                 sDesignClipartScaleFactor = sDesignClipartScaleFactor * PaintOptions.GetCurrentDesignPropertiesValue("DesignExtraScaleFactor", 1)
@@ -733,7 +742,7 @@ Namespace cSurvey.Design
             Return sDesignClipartScaleFactor
         End Function
 
-        Friend Overridable Function GetSignScaleFactor(PaintOptions As cOptions) As Single
+        Friend Overridable Function GetSignScaleFactor(PaintOptions As cOptionsCenterline) As Single
             Dim sDesignSignScaleFactor As Single = PaintOptions.GetCurrentDesignPropertiesValue("DesignSignScaleFactor", 1)
             If DesignAffinity = DesignAffinityEnum.Extra Then
                 sDesignSignScaleFactor = sDesignSignScaleFactor * PaintOptions.GetCurrentDesignPropertiesValue("DesignExtraScaleFactor", 1)
@@ -741,7 +750,7 @@ Namespace cSurvey.Design
             Return sDesignSignScaleFactor
         End Function
 
-        Friend Overridable Function GetTextScaleFactor(PaintOptions As cOptions) As Single
+        Friend Overridable Function GetTextScaleFactor(PaintOptions As cOptionsCenterline) As Single
             Dim sTextScaleFactor As Single = PaintOptions.GetCurrentDesignPropertiesValue("DesignTextScaleFactor", 0.05)
             If DesignAffinity = DesignAffinityEnum.Extra Then
                 sTextScaleFactor = sTextScaleFactor * PaintOptions.GetCurrentDesignPropertiesValue("DesignExtraTextScaleFactor", 1)
@@ -943,7 +952,7 @@ Namespace cSurvey.Design
             Call pInvalidate()
         End Sub
 
-        Private Sub oPen_OnChanged(ByVal Sender As cPen) Handles oPen.OnChanged
+        Private Sub oPen_OnChanged(ByVal Sender As Object, e As EventArgs) Handles oPen.OnChanged
             Call pInvalidate()
         End Sub
 

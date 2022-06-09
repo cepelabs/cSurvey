@@ -5,8 +5,856 @@ Imports cSurveyPC.cSurvey.Drawings
 Imports System.Xml
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
+Imports System.IO
 
 Namespace cSurvey.Design
+
+    Public Class cCustomPen
+        Implements IDisposable
+
+        Private WithEvents oSurvey As cSurvey
+
+        Private sID As String
+
+        Private sName As String
+        Private iType As cPen.PenTypeEnum
+
+        Private oColor As Color
+        Private oAlternativeColor As Color
+        Private sWidth As Single
+        Private iStyle As cPen.PenStylesEnum
+        Private sStylePattern As Single()
+        Private iDecorationStyle As cPen.DecorationStylesEnum
+        Private iDecorationPosition As cPen.DecorationPositionEnum
+        Private iDecorationAlignment As cPen.DecorationAlignmentEnum
+        Private sDecorationSpacePercentage As Single
+        Private sDecorationScale As Single
+
+        Private oClipart As cDrawClipArt
+        Private iClipartPenMode As cPen.clipartpenmodeenum
+        Private sClipartPenWidth As Single
+        Private iClipartPenStyle As cPen.PenStylesEnum
+        Private sClipartStylePattern As Single()
+        Private oClipartPenColor As Color
+
+        Private oClipartPen As Pen
+        Private oPen As Pen
+        Private oBrush As SolidBrush
+        Private oWireframePen As Pen
+
+        Private sLocalLineWidth As Single
+        Private sLocalZoomFactor As Single
+
+        Private bInvalidated As Boolean
+
+        Friend Event OnChanged(ByVal Sender As Object, e As EventArgs)
+
+        Friend Class cRenderArgs
+            Inherits EventArgs
+            Public Transparency As Single
+        End Class
+        Friend Event OnRender(sender As Object, RenderArgs As cRenderArgs)
+
+        Public Function GetThumbnailSVG(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal thumbWidth As Integer, ByVal thumbHeight As Integer, ByVal ForeColor As Color, ByVal Backcolor As Color) As XmlDocument
+            Dim oBounds As RectangleF = New RectangleF(0, 0, thumbWidth, thumbHeight)
+            Dim oSVG As XmlDocument = modSVG.CreateSVG("", New Size(thumbWidth, thumbHeight), SizeUnit.pixel, oBounds, SVGCreateFlagsEnum.None)
+            Using oImage As Image = New Bitmap(thumbWidth, thumbHeight)
+                Using oGr As Graphics = Graphics.FromImage(oImage)
+                    Using oPath As GraphicsPath = New GraphicsPath
+                        Dim oP0 As PointF = New PointF(oBounds.Left, oBounds.Top + oBounds.Height / 2)
+                        Dim oP1 As PointF = New PointF(oBounds.Right, oBounds.Top + oBounds.Height / 2)
+                        Call oPath.AddLine(oP0, oP1)
+                        Using oCache As cDrawCache = New cDrawCache
+                            Dim sBackupLocalZoomFactor As Single = sLocalZoomFactor
+                            sLocalZoomFactor = 6
+                            bInvalidated = True
+                            Call Render(oGr, PaintOptions, cItem.PaintOptionsEnum.None, False, oPath, oCache)
+                            sLocalZoomFactor = sBackupLocalZoomFactor
+                            bInvalidated = True
+
+                            Call oCache.Paint(oGr, PaintOptions, cItem.PaintOptionsEnum.None)
+
+                            Dim oBoxBounds As RectangleF = New RectangleF(0, 0, thumbWidth - 0.5F, thumbHeight - 0.5F)
+
+                            Using oBackgroundBrush As SolidBrush = New SolidBrush(Backcolor)
+                                Using oForegroundPen As Pen = New Pen(ForeColor, 2)
+                                    oForegroundPen.LineJoin = LineJoin.Miter
+                                    Call modSVG.AppendRectangle(oSVG, oSVG.DocumentElement, oBounds, oBackgroundBrush, Nothing)
+                                    Call oSVG.DocumentElement.AppendChild(oCache.ToSvgItem(oSVG, PaintOptions, cItem.SVGOptionsEnum.ClipartBrushes))
+                                    If iType = cPen.PenTypeEnum.User Then
+                                        Using oForegroundBrush As SolidBrush = New SolidBrush(Color.FromArgb(120, ForeColor))
+                                            Call modSVG.AppendPolygon(oSVG, oSVG.DocumentElement, {New PointF(0, 0), New PointF(thumbWidth / 4.0F, 0), New PointF(0, thumbHeight / 4.0F)}, oForegroundBrush, Nothing)
+                                        End Using
+                                    End If
+                                    Call modSVG.AppendRectangle(oSVG, oSVG.DocumentElement, oBoxBounds, Nothing, oForegroundPen)
+                                End Using
+                            End Using
+                        End Using
+                    End Using
+                End Using
+            End Using
+            Return oSVG
+        End Function
+
+        Public Function GetThumbnailImage(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal thumbWidth As Integer, ByVal thumbHeight As Integer) As Image
+            Return GetThumbnailImage(PaintOptions, Options, Selected, thumbHeight, thumbHeight, Color.Black, Color.White)
+        End Function
+
+        Public Function GetThumbnailImage(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal thumbWidth As Integer, ByVal thumbHeight As Integer, ByVal ForeColor As Color, ByVal Backcolor As Color) As Image
+            Try
+                Dim oBounds As RectangleF = New RectangleF(0, 0, thumbWidth, thumbHeight)
+                Dim oImage As Image = New Bitmap(thumbWidth, thumbHeight)
+                Using oGr As Graphics = Graphics.FromImage(oImage)
+                    oGr.SmoothingMode = SmoothingMode.AntiAlias
+                    oGr.CompositingQuality = CompositingQuality.HighQuality
+                    oGr.InterpolationMode = InterpolationMode.HighQualityBicubic
+                    Call oGr.Clear(Backcolor)
+                    Using oPath As GraphicsPath = New GraphicsPath
+                        Dim oP0 As PointF = New PointF(oBounds.Left + 1, oBounds.Top + oBounds.Height / 2)
+                        Dim oP1 As PointF = New PointF(oBounds.Right - 1, oBounds.Top + oBounds.Height / 2)
+                        Call oPath.AddLine(oP0, oP1)
+                        Using oCache As cDrawCache = New cDrawCache
+                            Call Render(oGr, PaintOptions, cItem.PaintOptionsEnum.None, False, oPath, oCache)
+                            Call oCache.Paint(oGr, PaintOptions, cItem.PaintOptionsEnum.None)
+                        End Using
+                    End Using
+                End Using
+                Return oImage
+            Catch ex As Exception
+                Debug.Print(ex.Message)
+            End Try
+        End Function
+
+        Friend ReadOnly Property Survey As cSurvey
+            Get
+                Return oSurvey
+            End Get
+        End Property
+
+        Public Property ID As String
+            Get
+                If iType = cPen.PenTypeEnum.User Then
+                    Return sID
+                Else
+                    Return "_" & iType.ToString("D")
+                End If
+            End Get
+            Set(value As String)
+                If value Is Nothing Then
+                    Throw New Exception("Pen ID cannot be Nothing")
+                Else
+                    If value.StartsWith("_") Then
+                        Dim iType As cPen.PenTypeEnum = Integer.Parse(value.Substring(1))
+                        sID = ""
+                        CopyFrom(oSurvey.Pens.FromType(iType))
+                    Else
+                        CopyFrom(oSurvey.Pens(value))
+                    End If
+                End If
+            End Set
+        End Property
+
+        Friend Sub CopyFrom(ByVal Pen As cCustomPen)
+            If iType <> cPen.PenTypeEnum.User Then iType = Pen.iType
+            If Pen.iType = cPen.PenTypeEnum.User Then
+                sID = Pen.sID
+            Else
+                sID = ""
+            End If
+
+            sName = Pen.sName
+            oColor = Pen.oColor
+            sWidth = Pen.sWidth
+            iStyle = Pen.iStyle
+            sStylePattern = Pen.sStylePattern
+            If IsNothing(Pen.Clipart) Then
+                oClipart = Nothing
+            Else
+                oClipart = Pen.oClipart.Clone
+            End If
+            iDecorationAlignment = Pen.iDecorationAlignment
+            iDecorationPosition = Pen.iDecorationPosition
+            iDecorationStyle = Pen.iDecorationStyle
+            sDecorationSpacePercentage = Pen.sDecorationSpacePercentage
+            sDecorationScale = Pen.sDecorationScale
+            sLocalLineWidth = Pen.sLocalLineWidth
+
+            iClipartPenMode = Pen.iClipartPenMode
+            iClipartPenStyle = Pen.iClipartPenStyle
+            sClipartStylePattern = Pen.sClipartStylePattern
+            sClipartPenWidth = Pen.sClipartPenWidth
+            oClipartPenColor = Pen.oClipartPenColor
+
+            If iType = cPen.PenTypeEnum.User Then
+                If sID Is Nothing OrElse sID = "" Then
+                    sID = cCustomPen.CalculateHash(Me)
+                Else
+                    sID = ID
+                End If
+            End If
+
+            Call Invalidate()
+        End Sub
+
+        Friend Property LocalZoomFactor As Single
+            Get
+                Return sLocalZoomFactor
+            End Get
+            Set(ByVal value As Single)
+                If sLocalZoomFactor <> value Then
+                    sLocalZoomFactor = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Friend Property LocalLineWidth As Single
+            Get
+                Return sLocalLineWidth
+            End Get
+            Set(ByVal value As Single)
+                If sLocalLineWidth <> value Then
+                    sLocalLineWidth = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property Name() As String
+            Get
+                Return sName
+            End Get
+            Set(ByVal value As String)
+                If sName <> value Then
+                    If iType <> cPen.PenTypeEnum.Custom Then
+                        Call CopyFrom(oSurvey.Pens.FromID(ID))
+                        iType = cPen.PenTypeEnum.Custom
+                    End If
+                    sName = value
+                End If
+            End Set
+        End Property
+
+        Public Shared Function CalculateHash(Pen As cCustomPen) As String
+            Using oMs As MemoryStream = New MemoryStream
+                Using oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, "", cFile.FileOptionsEnum.EmbedResource)
+                    Dim oXML As XmlDocument = oFile.Document
+                    Dim oXMLRoot As XmlElement = oXML.CreateElement("cpen")
+                    Dim oXMLItem As XmlElement = Pen.SaveTo(oFile, oXML, oXMLRoot)
+                    'hash is calculate without name and type
+                    Call oXMLItem.RemoveAttribute("type")
+                    Call oXMLItem.RemoveAttribute("name")
+                    Call oXMLRoot.AppendChild(oXMLItem)
+                    Call oXML.AppendChild(oXMLRoot)
+                    Call oFile.SaveTo(oMs)
+                    Return modMain.CalculateHash(oMs)
+                End Using
+            End Using
+        End Function
+
+        Public ReadOnly Property Type() As cPen.PenTypeEnum
+            Get
+                Return iType
+            End Get
+            'Set(ByVal value As cPen.PenTypeEnum)
+            '    If value = cPen.PenTypeEnum.User Then
+            '        Throw New Exception("User pen type cannot be set directly")
+            '    Else
+            '        If iType <> value Then
+            '            If iType <> cPen.PenTypeEnum.Custom AndAlso value = cPen.PenTypeEnum.Custom Then
+            '                If iType = cPen.PenTypeEnum.User Then
+            '                    Call CopyFrom(oSurvey.Pens.FromID(sID))
+            '                Else
+            '                    Call CopyFrom(oSurvey.Pens.FromType(iType))
+            '                End If
+            '            Else
+            '                Call CopyFrom(oSurvey.Pens.FromType(value))
+            '            End If
+            '            iType = value
+            '        End If
+            '    End If
+            'End Set
+        End Property
+
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Type As cPen.PenTypeEnum)
+            oSurvey = Survey
+            Call CopyFrom(Survey.Pens.FromType(iType))
+            bInvalidated = True
+        End Sub
+
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Pen As cPen)
+            oSurvey = Survey
+            Call CopyFrom(Pen.GetBasePen)
+            bInvalidated = True
+        End Sub
+
+        Friend Shared Function CopyAsCustom(Survey As cSurvey, ByVal Pen As cCustomPen) As cCustomPen
+            Dim oNewPen As cCustomPen = New cCustomPen(Survey, Pen)
+            oNewPen.iType = cPen.PenTypeEnum.Custom
+            oNewPen.sID = ""
+            Return oNewPen
+        End Function
+
+        Friend Shared Function CopyAsUser(Survey As cSurvey, ByVal Pen As cCustomPen) As cCustomPen
+            Dim oNewPen As cCustomPen = New cCustomPen(Survey, Pen)
+            oNewPen.iType = cPen.PenTypeEnum.User
+            oNewPen.sID = CalculateHash(oNewPen)
+            Return oNewPen
+        End Function
+
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Pen As cCustomPen)
+            oSurvey = Survey
+            Call CopyFrom(Pen)
+            bInvalidated = True
+        End Sub
+
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Type As cPen.PenTypeEnum, ID As String, ByVal Name As String, ByVal Color As Color, Optional ByVal Width As Single = 1, Optional ByVal Style As cPen.PenStylesEnum = cPen.PenStylesEnum.Solid, Optional Clipart As cDrawClipArt = Nothing, Optional ByVal DecorationStyle As cPen.DecorationStylesEnum = cPen.DecorationStylesEnum.None, Optional ByVal DecorationSpacePercentage As Single = 100, Optional ByVal DecorationAlignment As cPen.DecorationAlignmentEnum = cPen.DecorationStylesEnum.None, Optional ByVal DecorationScale As Single = 1, Optional StylePattern As Single() = Nothing)
+            oSurvey = Survey
+            sName = Name
+            iType = Type
+            oColor = Color
+            sWidth = Width
+            iStyle = Style
+            If iStyle = cPen.PenStylesEnum.Custom Then
+                If StylePattern Is Nothing Then
+                    sStylePattern = {2, 2}
+                Else
+                    sStylePattern = StylePattern
+                End If
+            End If
+            oClipart = Clipart
+            iDecorationStyle = DecorationStyle
+            sDecorationSpacePercentage = DecorationSpacePercentage
+            iDecorationAlignment = DecorationAlignment
+            iDecorationPosition = DecorationPosition
+            sDecorationScale = DecorationScale
+            iClipartPenMode = cPen.ClipartPenModeEnum.AsParent
+            oClipartPenColor = Color.Black
+
+            If iType = cPen.PenTypeEnum.User Then
+                If ID Is Nothing OrElse ID = "" Then
+                    sID = cCustomPen.CalculateHash(Me)
+                Else
+                    sID = ID
+                End If
+            End If
+
+            bInvalidated = True
+        End Sub
+
+        Friend Sub New(ByVal Survey As cSurvey)
+            oSurvey = Survey
+            iType = cPen.PenTypeEnum.Custom
+            oColor = Color.Black
+            sWidth = 1
+            sDecorationSpacePercentage = 100
+            sDecorationScale = 1
+            iClipartPenMode = cPen.ClipartPenModeEnum.AsParent
+            oClipartPenColor = Color.Black
+            bInvalidated = True
+        End Sub
+
+        Friend Sub New(ByVal Survey As cSurvey, ByVal item As XmlElement)
+            oSurvey = Survey
+            iType = modXML.GetAttributeValue(item, "type", cPen.PenTypeEnum.Custom)
+            If iType = cPen.PenTypeEnum.User Then
+                sID = item.GetAttribute("id")
+            End If
+
+            sName = modXML.GetAttributeValue(item, "name", "")
+            oColor = modXML.GetAttributeColor(item, "color", Color.Black)
+            iStyle = modXML.GetAttributeValue(item, "style")
+            If iStyle = cPen.PenStylesEnum.Custom Then
+                sStylePattern = modPaint.StringToPenStylePattern(modXML.GetAttributeValue(item, "stylepattern"))
+            End If
+            sWidth = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "width"))
+            Dim oXMLClipart As XmlElement = item.Item("clipart")
+            If oXMLClipart Is Nothing Then
+                oClipart = New cDrawClipArt()
+            Else
+                oClipart = New cDrawClipArt(oXMLClipart)
+            End If
+            iDecorationStyle = modXML.GetAttributeValue(item, "decorationstyle")
+            sDecorationSpacePercentage = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "decorationspacepercentage"))
+            If sDecorationSpacePercentage = 0 Then sDecorationSpacePercentage = 100
+            iDecorationAlignment = modXML.GetAttributeValue(item, "decorationalignment")
+            iDecorationPosition = modXML.GetAttributeValue(item, "decorationposition")
+            sDecorationScale = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "decorationscale"))
+            If sDecorationScale = 0F Then sDecorationScale = 1.0F
+
+            iClipartPenMode = modXML.GetAttributeValue(item, "clipartpenmode", cPen.ClipartPenModeEnum.AsParent)
+            If iClipartPenMode = cPen.ClipartPenModeEnum.Custom Then
+                sClipartPenWidth = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "clipartpenwidth"))
+                iClipartPenStyle = modXML.GetAttributeValue(item, "clipartpenstyle")
+                If iClipartPenStyle = cPen.PenStylesEnum.Custom Then
+                    sClipartStylePattern = modPaint.StringToPenStylePattern(modXML.GetAttributeValue(item, "clipartstylepattern"))
+                End If
+                oClipartPenColor = modXML.GetAttributeColor(item, "clipartpencolor", Color.Black)
+            Else
+                oClipartPenColor = Color.Black
+            End If
+
+
+            Call Invalidate()
+        End Sub
+
+        Public Property Clipart() As cDrawClipArt
+            Get
+                Return oClipart
+            End Get
+            Set(ByVal Value As cDrawClipArt)
+                If Not oClipart Is Value Then
+                    oClipart = Value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public ReadOnly Property IsWriteable As Boolean
+            Get
+                Return iType = cPen.PenTypeEnum.User OrElse iType = cPen.PenTypeEnum.Custom
+            End Get
+        End Property
+
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+            Dim oItem As XmlElement = Document.CreateElement("pen")
+            Call oItem.SetAttribute("type", iType)
+            If iType = cPen.PenTypeEnum.User Then
+                Call oItem.SetAttribute("id", sID)
+            End If
+
+            If sName <> "" Then
+                Call oItem.SetAttribute("name", sName)
+            End If
+            Call oItem.SetAttribute("color", oColor.ToArgb)
+            Call oItem.SetAttribute("style", iStyle.ToString("D"))
+            If iStyle = cPen.PenStylesEnum.Custom Then
+                Call oItem.SetAttribute("stylepattern", modPaint.PenStylePatternToString(sStylePattern))
+            End If
+            Call oItem.SetAttribute("width", modNumbers.NumberToString(sWidth, "0.00"))
+            If Not oClipart Is Nothing Then Call oClipart.SaveTo(File, Document, oItem)
+            Call oItem.SetAttribute("decorationstyle", iDecorationStyle.ToString("D"))
+            Call oItem.SetAttribute("decorationspacepercentage", modNumbers.NumberToString(sDecorationSpacePercentage, "0.0"))
+            Call oItem.SetAttribute("decorationalignment", iDecorationAlignment.ToString("D"))
+            If iDecorationPosition <> cPen.DecorationPositionEnum.Behind Then Call oItem.SetAttribute("decorationposition", iDecorationPosition.ToString("D"))
+            Call oItem.SetAttribute("decorationscale", modNumbers.NumberToString(sDecorationScale, "0.00"))
+
+            If iClipartPenMode = cPen.ClipartPenModeEnum.Custom Then
+                Call oItem.SetAttribute("clipartpenmode", iClipartPenMode.ToString("D"))
+                Call oItem.SetAttribute("clipartpenwidth", modNumbers.NumberToString(sClipartPenWidth, "0.00"))
+                Call oItem.SetAttribute("clipartpenstyle", iClipartPenStyle.ToString("D"))
+                If iClipartPenStyle = cPen.PenStylesEnum.Custom Then
+                    Call oItem.SetAttribute("clipartstylepattern", modPaint.PenStylePatternToString(sClipartStylePattern))
+                End If
+                Call oItem.SetAttribute("clipartpencolor", oClipartPenColor.ToArgb)
+            End If
+
+            Call Parent.AppendChild(oItem)
+            Return oItem
+        End Function
+
+        Public Property ClipartPenMode() As cPen.ClipartPenModeEnum
+            Get
+                Return iClipartPenMode
+            End Get
+            Set(value As cPen.ClipartPenModeEnum)
+                If iClipartPenMode <> value Then
+                    iClipartPenMode = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property ClipartPenStyle() As cPen.PenStylesEnum
+            Get
+                Return iClipartPenStyle
+            End Get
+            Set(value As cPen.PenStylesEnum)
+                If iClipartPenStyle <> value Then
+                    iClipartPenStyle = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property ClipartPenWidth() As Single
+            Get
+                Return sClipartPenWidth
+            End Get
+            Set(value As Single)
+                If sClipartPenWidth <> value Then
+                    sClipartPenWidth = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+        Public Property Width() As Single
+            Get
+                Return sWidth
+            End Get
+            Set(ByVal value As Single)
+                If sWidth <> value Then
+                    sWidth = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property Style() As cPen.PenStylesEnum
+            Get
+                Return iStyle
+            End Get
+            Set(ByVal value As cPen.PenStylesEnum)
+                If iStyle <> value Then
+                    iStyle = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property ClipartPenColor() As Color
+            Get
+                Return oClipartPenColor
+            End Get
+            Set(ByVal value As Color)
+                If oClipartPenColor <> value Then
+                    oClipartPenColor = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property Color() As Color
+            Get
+                Return oColor
+            End Get
+            Set(ByVal value As Color)
+                If oColor <> value Then
+                    oColor = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property AlternativeColor() As Color
+            Get
+                Return oAlternativeColor
+            End Get
+            Set(ByVal value As Color)
+                If oAlternativeColor <> value Then
+                    oAlternativeColor = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property DecorationStyle() As cPen.DecorationStylesEnum
+            Get
+                Return iDecorationStyle
+            End Get
+            Set(ByVal value As cPen.DecorationStylesEnum)
+                If iDecorationStyle <> value Then
+                    iDecorationStyle = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property DecorationPosition() As cPen.DecorationPositionEnum
+            Get
+                Return iDecorationPosition
+            End Get
+            Set(value As cPen.DecorationPositionEnum)
+                If iDecorationPosition <> value Then
+                    iDecorationPosition = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property DecorationAlignment() As cPen.DecorationAlignmentEnum
+            Get
+                Return iDecorationAlignment
+            End Get
+            Set(ByVal value As cPen.DecorationAlignmentEnum)
+                If iDecorationAlignment <> value Then
+                    iDecorationAlignment = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property DecorationSpacePercentage() As Single
+            Get
+                Return sDecorationSpacePercentage
+            End Get
+            Set(ByVal value As Single)
+                If sDecorationSpacePercentage <> value Then
+                    sDecorationSpacePercentage = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property DecorationScale() As Single
+            Get
+                Return sDecorationScale
+            End Get
+            Set(ByVal value As Single)
+                If sDecorationScale <> value Then
+                    sDecorationScale = value
+                    Call Invalidate()
+                End If
+            End Set
+        End Property
+
+        Friend ReadOnly Property Invalidated As Boolean
+            Get
+                Return bInvalidated
+            End Get
+        End Property
+
+        Friend Sub Invalidate()
+            bInvalidated = True
+            RaiseEvent OnChanged(Me, EventArgs.Empty)
+        End Sub
+
+        Friend Function GetPaintZoomFactor(PaintOptions As cOptionsCenterline) As Single
+            Dim sZoomFactor As Single
+            If sLocalZoomFactor = 0 Then
+                sZoomFactor = PaintOptions.GetCurrentDesignPropertiesValue("DesignTerrainLevelScaleFactor", 1)
+            Else
+                sZoomFactor = sLocalZoomFactor
+            End If
+            Return sZoomFactor
+        End Function
+
+        Friend Function GetPaintLineWidth(PaintOptions As cOptionsCenterline) As Single
+            Dim sLineWidth As Single
+            If sLocalLineWidth = 0 Then
+                sLineWidth = PaintOptions.GetCurrentDesignPropertiesValue("BaseLineWidthScaleFactor", 0.01) * GetPaintZoomFactor(PaintOptions)
+            Else
+                sLineWidth = sLocalLineWidth * GetPaintZoomFactor(PaintOptions)
+            End If
+            Return sLineWidth
+        End Function
+
+        Friend Function GetPaintPenWidth(PaintOptions As cOptionsCenterline, BaseWidth As Single) As Single
+            Dim sLineWidth As Single = GetPaintLineWidth(PaintOptions)
+            Dim sPenWidth As Single = 0
+            '20211014: due to a fix from microsoft pens with width <=1 are correctly scaled, before this fix pens with width<=1 or negative are not scaled
+            If BaseWidth < 0 Then
+                sPenWidth = BaseWidth
+            ElseIf BaseWidth = 0 Then
+                sPenWidth = PaintOptions.GetPenDefaultWidth(iType) * sLineWidth
+            Else
+                sPenWidth = BaseWidth * sLineWidth
+            End If
+            Return sPenWidth
+        End Function
+
+        Private Sub pRender(PaintOptions As cOptionsCenterline)
+            Dim oRenderArgs As cRenderArgs = New cRenderArgs
+            RaiseEvent OnRender(Me, oRenderArgs)
+
+            Dim oTempPenColor As Color = If(oAlternativeColor.IsEmpty, oColor, oAlternativeColor)
+            oTempPenColor = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oTempPenColor)
+
+            If iStyle = cPen.PenStylesEnum.None Then
+                If oPen IsNot Nothing Then oPen.Dispose()
+                oPen = Nothing
+            Else
+                Dim sTempPenWidth As Single = GetPaintPenWidth(PaintOptions, sWidth)
+                oPen = New Pen(oTempPenColor, sTempPenWidth)
+                Call oPen.SetLineCap(Drawing2D.LineCap.Round, Drawing2D.LineCap.Round, Drawing2D.DashCap.Round)
+                oPen.LineJoin = Drawing2D.LineJoin.Round
+                Select Case iStyle
+                    Case cPen.PenStylesEnum.Solid
+                        oPen.DashStyle = DashStyle.Solid
+                    Case cPen.PenStylesEnum.Dot
+                        oPen.DashStyle = DashStyle.Dot
+                    Case cPen.PenStylesEnum.Dash
+                        oPen.DashStyle = DashStyle.Dash
+                    Case cPen.PenStylesEnum.DashDot
+                        oPen.DashStyle = DashStyle.DashDot
+
+                    Case cPen.PenStylesEnum.LargeDashLargeSpace
+                        oPen.DashPattern = {6.0F, 6.0F}
+                    Case cPen.PenStylesEnum.LargeDashMediumSpace
+                        oPen.DashPattern = {6.0F, 4.0F}
+                    Case cPen.PenStylesEnum.LargeDashSmallSpace
+                        oPen.DashPattern = {6.0F, 2.0F}
+
+                    Case cPen.PenStylesEnum.Custom
+                        oPen.DashPattern = sStylePattern
+                End Select
+            End If
+
+            If iClipartPenMode = cPen.ClipartPenModeEnum.Custom Then
+                Dim oTempClipartPenColor As Color = If(oAlternativeColor.IsEmpty, oClipartPenColor, oAlternativeColor)
+                oTempClipartPenColor = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oTempClipartPenColor)
+                If iClipartPenStyle <> cPen.PenStylesEnum.None Then
+                    Dim sTempClipartPenWidth As Single = GetPaintPenWidth(PaintOptions, sClipartPenWidth)
+                    oClipartPen = New Pen(oTempClipartPenColor, sTempClipartPenWidth)
+                    Call oClipartPen.SetLineCap(Drawing2D.LineCap.Round, Drawing2D.LineCap.Round, Drawing2D.DashCap.Round)
+                    oClipartPen.LineJoin = Drawing2D.LineJoin.Round
+                    Select Case iClipartPenStyle
+                        Case cPen.PenStylesEnum.Solid
+                            oClipartPen.DashStyle = DashStyle.Solid
+                        Case cPen.PenStylesEnum.Dot
+                            oClipartPen.DashStyle = DashStyle.Dot
+                        Case cPen.PenStylesEnum.Dash
+                            oClipartPen.DashStyle = DashStyle.Dash
+                        Case cPen.PenStylesEnum.DashDot
+                            oClipartPen.DashStyle = DashStyle.DashDot
+
+                        Case cPen.PenStylesEnum.LargeDashLargeSpace
+                            oClipartPen.DashPattern = {6.0F, 6.0F}
+                        Case cPen.PenStylesEnum.LargeDashMediumSpace
+                            oClipartPen.DashPattern = {6.0F, 4.0F}
+                        Case cPen.PenStylesEnum.LargeDashSmallSpace
+                            oClipartPen.DashPattern = {6.0F, 2.0F}
+
+                        Case cPen.PenStylesEnum.Custom
+                            oClipartPen.DashPattern = sStylePattern
+                    End Select
+                End If
+                'TODO: custom clipart brush
+            Else
+                If oPen Is Nothing Then
+                    oClipartPen = Nothing
+                Else
+                    oClipartPen = oPen.Clone
+                End If
+            End If
+
+            'TODO: see above
+            oBrush = New SolidBrush(oTempPenColor)
+
+            Dim oWireframePenColor As Color = If(oAlternativeColor.IsEmpty, Color.Black, oAlternativeColor)
+            oWireframePen = New Pen(oWireframePenColor, cEditPaintObjects.FilettoPenWidth)
+            oWireframePen.SetLineCap(Drawing2D.LineCap.Round, Drawing2D.LineCap.Round, Drawing2D.DashCap.Round)
+            oWireframePen.LineJoin = Drawing2D.LineJoin.Round
+            oWireframePen.DashStyle = DashStyle.Dot
+
+            bInvalidated = True
+        End Sub
+
+        Friend ReadOnly Property Pen As Pen
+            Get
+                Return oPen
+            End Get
+        End Property
+
+        Friend ReadOnly Property WireframePen As Pen
+            Get
+                Return oWireframePen
+            End Get
+        End Property
+
+        Friend ReadOnly Property Brush As Brush
+            Get
+                Return oBrush
+            End Get
+        End Property
+
+        Friend Sub Render(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As Boolean, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache)
+            If bInvalidated Then pRender(PaintOptions)
+            If Path.PointCount > 1 Then
+                If iType = cPen.PenTypeEnum.None Then
+                    Call Cache.AddBorder(Path, Nothing, oWireframePen)
+                Else
+                    Dim sZoomFactor As Single = GetPaintZoomFactor(PaintOptions)
+                    If iDecorationPosition = cPen.DecorationPositionEnum.Above Then
+                        Call Cache.AddBorder(Path, oPen, oWireframePen)
+                    End If
+                    If DecorationStyle <> cPen.DecorationStylesEnum.None Then
+                        Dim oTmpClipart As cDrawClipArt
+                        Dim bUsePen As Boolean = True
+                        Dim bUseBrush As Boolean = True
+                        Select Case DecorationStyle
+                            Case cPen.DecorationStylesEnum.UpArrow
+                                oTmpClipart = modPenClipart.ClipartArrowUp
+                            Case cPen.DecorationStylesEnum.DownArrow
+                                oTmpClipart = modPenClipart.ClipartArrowDown
+                            Case cPen.DecorationStylesEnum.Dash
+                                oTmpClipart = modPenClipart.ClipartDash
+                                bUseBrush = False
+                            Case cPen.DecorationStylesEnum.Triangle
+                                oTmpClipart = modPenClipart.ClipartTriangleUp
+                            Case cPen.DecorationStylesEnum.DownTriangle
+                                oTmpClipart = modPenClipart.ClipartTriangleDown
+                            Case cPen.DecorationStylesEnum.UpTriangle
+                                oTmpClipart = modPenClipart.ClipartTriangleUp
+                            Case cPen.DecorationStylesEnum.Ice
+                                oTmpClipart = modPenClipart.Ice
+                                bUseBrush = False
+                            Case cPen.DecorationStylesEnum.EmptyDownTriangle
+                                oTmpClipart = modPenClipart.ClipartTriangleDown
+                                bUseBrush = False
+                            Case cPen.DecorationStylesEnum.EmptyUpTriangle
+                                oTmpClipart = modPenClipart.ClipartTriangleUp
+                                bUseBrush = False
+                            Case Else
+                                oTmpClipart = oClipart
+                        End Select
+                        Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, oTmpClipart, iDecorationAlignment, sDecorationSpacePercentage, oColor, oColor, sDecorationScale * sZoomFactor)
+                            If Not oPath Is Nothing Then
+                                Call Cache.AddBorder(oPath, If(bUsePen, oClipartPen, Nothing), Nothing, If(bUseBrush, oBrush, Nothing))
+                            End If
+                        End Using
+                    End If
+                    If iDecorationPosition = cPen.DecorationPositionEnum.Behind Then
+                        Call Cache.AddBorder(Path, oPen, oWireframePen)
+                    End If
+                End If
+            End If
+        End Sub
+
+        Private Sub oSurvey_OnPropertiesChanged(ByVal Sender As cSurvey, ByVal Args As cSurvey.OnPropertiesChangedEventArgs) Handles oSurvey.OnPropertiesChanged
+            Call Invalidate()
+        End Sub
+
+#Region "IDisposable Support"
+        Private disposedValue As Boolean ' Per rilevare chiamate ridondanti
+
+        ' IDisposable
+        Protected Overridable Sub Dispose(disposing As Boolean)
+            If Not disposedValue Then
+                If disposing Then
+                    If Not oPen Is Nothing Then
+                        Call oPen.Dispose()
+                        oPen = Nothing
+                    End If
+                    If Not oWireframePen Is Nothing Then
+                        Call oWireframePen.Dispose()
+                        oWireframePen = Nothing
+                    End If
+                    If Not oBrush Is Nothing Then
+                        Call oBrush.Dispose()
+                        oBrush = Nothing
+                    End If
+                    If Not oClipartPen Is Nothing Then
+                        Call oClipartPen.Dispose()
+                        oClipartPen = Nothing
+                    End If
+                End If
+            End If
+            disposedValue = True
+        End Sub
+
+        ' Questo codice viene aggiunto da Visual Basic per implementare in modo corretto il criterio Disposable.
+        Public Sub Dispose() Implements IDisposable.Dispose
+            ' Non modificare questo codice. Inserire sopra il codice di pulizia in Dispose(disposing As Boolean).
+            Dispose(True)
+        End Sub
+#End Region
+    End Class
+
+    Public Interface cIPen
+
+    End Interface
+
     Public Class cPen
         Implements IDisposable
 
@@ -46,7 +894,13 @@ Namespace cSurvey.Design
             IcePen = 23
             PresumedIcePen = 24
 
+            User = 98
             Custom = 99
+        End Enum
+
+        Public Enum ClipartPenModeEnum
+            AsParent = 0
+            Custom = 1
         End Enum
 
         Public Enum PenStylesEnum
@@ -62,6 +916,11 @@ Namespace cSurvey.Design
 
             None = 98
             Custom = 99
+        End Enum
+
+        Public Enum DecorationPositionEnum
+            Behind = 0
+            Above = 1
         End Enum
 
         Public Enum DecorationStylesEnum
@@ -87,70 +946,26 @@ Namespace cSurvey.Design
 
         Private WithEvents oSurvey As cSurvey
 
-        Private sName As String
-        Private iType As PenTypeEnum
+        Friend Event OnChanged(ByVal Sender As Object, e As EventArgs)
 
-        Private oColor As Color
-        Private oAlternativeColor As Color
-        Private sWidth As Single
-        Private iStyle As PenStylesEnum
-        Private sStylePattern As Single()
-        Private iDecorationStyle As DecorationStylesEnum
-        Private iDecorationAlignment As DecorationAlignmentEnum
-        Private sDecorationSpacePercentage As Single
-        Private sDecorationScale As Single
-
-        Private oClipart As cDrawClipArt
-
-        Private oPen As Pen
-        Private oBrush As SolidBrush
-        Private oWireframePen As Pen
-
-        Private sLocalLineWidth As Single
-        Private sLocalZoomFactor As Single
-
-        Private bInvalidated As Boolean
-
-        Friend Event OnChanged(ByVal Sender As cPen)
+        Private WithEvents oBasePen As cCustomPen
 
         Friend Class cRenderArgs
+            Inherits EventArgs
             Public Transparency As Single
         End Class
         Friend Event OnRender(sender As cPen, RenderArgs As cRenderArgs)
 
-        Public Function GetThumbnailImage(ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal thumbWidth As Integer, ByVal thumbHeight As Integer) As Image
+        Public Function GetThumbnailSVG(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal thumbWidth As Integer, ByVal thumbHeight As Integer, ByVal ForeColor As Color, ByVal Backcolor As Color) As XmlDocument
+            Return oBasePen.GetThumbnailSVG(PaintOptions, Options, cItem.SelectionModeEnum.Selected, thumbWidth, thumbHeight, ForeColor, Backcolor)
+        End Function
+
+        Public Function GetThumbnailImage(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal thumbWidth As Integer, ByVal thumbHeight As Integer) As Image
             Return GetThumbnailImage(PaintOptions, Options, Selected, thumbHeight, thumbHeight, Color.Black, Color.White)
         End Function
 
-        Public Function GetThumbnailImage(ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal thumbWidth As Integer, ByVal thumbHeight As Integer, ByVal ForeColor As Color, ByVal Backcolor As Color) As Image
-            Try
-                Dim oBounds As RectangleF = New RectangleF(0, 0, thumbWidth, thumbHeight)
-                Dim oImage As Image = New Bitmap(thumbWidth, thumbHeight)
-                Dim oGr As Graphics = Graphics.FromImage(oImage)
-                oGr.SmoothingMode = SmoothingMode.AntiAlias
-                oGr.CompositingQuality = CompositingQuality.HighQuality
-                oGr.InterpolationMode = InterpolationMode.HighQualityBicubic
-
-                Dim oBackBrush As SolidBrush = New SolidBrush(Backcolor)
-                Call oGr.FillRectangle(oBackBrush, oBounds)
-
-                Dim oPath As GraphicsPath = New GraphicsPath
-                Dim oP0 As PointF = New PointF(oBounds.Left + 1, oBounds.Top + oBounds.Height / 2)
-                Dim oP1 As PointF = New PointF(oBounds.Right - 1, oBounds.Top + oBounds.Height / 2)
-                Call oPath.AddLine(oP0, oP1)
-
-                Dim oCache As cDrawCache = New cDrawCache
-                Call Render(oGr, PaintOptions, cItem.PaintOptionsEnum.None, False, oPath, oCache)
-                Call oCache.Paint(oGr, PaintOptions, cItem.PaintOptionsEnum.None)
-
-                Call oPath.Dispose()
-                Call oBackBrush.Dispose()
-                Call oGr.Dispose()
-
-                Return oImage
-            Catch ex As Exception
-                Debug.Print(ex.Message)
-            End Try
+        Public Function GetThumbnailImage(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal thumbWidth As Integer, ByVal thumbHeight As Integer, ByVal ForeColor As Color, ByVal Backcolor As Color) As Image
+            Return oBasePen.GetThumbnailImage(PaintOptions, Options, Selected, thumbWidth, thumbHeight)
         End Function
 
         Friend ReadOnly Property Survey As cSurvey
@@ -159,484 +974,311 @@ Namespace cSurvey.Design
             End Get
         End Property
 
+        Public Property ID As String
+            Get
+                Return oBasePen.ID
+            End Get
+            Set(value As String)
+                If value <> oBasePen.ID Then
+                    If value Is Nothing OrElse value = "" Then
+                        Throw New Exception("Pen ID cannot be nothing or empty string")
+                    Else
+                        If value.StartsWith("_") Then
+                            Dim iType As cPen.PenTypeEnum = Integer.Parse(value.Substring(1))
+                            If iType = PenTypeEnum.Custom Then
+                                oBasePen = cCustomPen.CopyAsCustom(oSurvey, oBasePen)
+                                Call Invalidate()
+                            ElseIf iType = PenTypeEnum.User Then
+                                Throw New Exception("Pen type cannot be directly set to user")
+                            Else
+                                oBasePen = oSurvey.Pens.FromType(iType)
+                                Call Invalidate()
+                            End If
+                        Else
+                            oBasePen = oSurvey.Pens.FromID(value)
+                            Call Invalidate()
+                        End If
+                    End If
+                End If
+            End Set
+        End Property
+
         Public Sub CopyFrom(ByVal Pen As cPen)
-            sName = Pen.sName
-            iType = Pen.iType
-            oColor = Pen.oColor
-            sWidth = Pen.sWidth
-            iStyle = Pen.iStyle
-            If IsNothing(Pen.Clipart) Then
-                oClipart = Nothing
-            Else
-                oClipart = Pen.oClipart.Clone
-            End If
-            iDecorationAlignment = Pen.iDecorationAlignment
-            iDecorationStyle = Pen.iDecorationStyle
-            sDecorationSpacePercentage = Pen.sDecorationSpacePercentage
-            sDecorationScale = Pen.sDecorationScale
-            sLocalLineWidth = Pen.sLocalLineWidth
+            oBasePen = Pen.oBasePen
             Call Invalidate()
         End Sub
 
-        Friend Property LocalZoomFactor As Single
+        Friend Function GetBasePen() As cCustomPen
+            Return oBasePen
+        End Function
+
+        Public ReadOnly Property Name() As String
             Get
-                Return sLocalZoomFactor
+                Return oBasePen.Name
             End Get
-            Set(ByVal value As Single)
-                If sLocalZoomFactor <> value Then
-                    sLocalZoomFactor = value
-                    Call Invalidate()
-                End If
-            End Set
         End Property
 
-        Friend Property LocalLineWidth As Single
-            Get
-                Return sLocalLineWidth
-            End Get
-            Set(ByVal value As Single)
-                If sLocalLineWidth <> value Then
-                    sLocalLineWidth = value
-                    Call Invalidate()
-                End If
-            End Set
-        End Property
+        Public Shared Function IsUserPenID(ID As String) As Boolean
+            If ID Is Nothing OrElse ID = "" Then
+                Return False
+            Else
+                Return Not ID.StartsWith("_")
+            End If
+        End Function
 
-        Public Property Name() As String
-            Get
-                Return sName
-            End Get
-            Set(ByVal value As String)
-                If sName <> value Then
-                    iType = PenTypeEnum.Custom
-                    sName = value
-                End If
-            End Set
-        End Property
+        Public Shared Function IsStandardPenID(ID As String) As Boolean
+            If ID Is Nothing OrElse ID = "" Then
+                Return False
+            Else
+                Return ID.StartsWith("_")
+            End If
+        End Function
+
+        Public Shared Function CalculateHash(Pen As cPen) As String
+            Using oMs As MemoryStream = New MemoryStream
+                Using oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, "", cFile.FileOptionsEnum.EmbedResource)
+                    Dim oXML As XmlDocument = oFile.Document
+                    Dim oXMLRoot As XmlElement = oXML.CreateElement("cpen")
+                    Dim oXMLItem As XmlElement = Pen.GetBasePen.SaveTo(oFile, oXML, oXMLRoot)
+                    'hash is calculate without name and type
+                    Call oXMLItem.RemoveAttribute("type")
+                    Call oXMLItem.RemoveAttribute("name")
+                    Call oXML.AppendChild(oXMLRoot)
+                    Call oFile.SaveTo(oMs)
+                    Return modMain.CalculateHash(oMs)
+                End Using
+            End Using
+        End Function
 
         Public Property Type() As PenTypeEnum
             Get
-                Return iType
+                Return oBasePen.Type
             End Get
-            Set(ByVal value As PenTypeEnum)
-                If iType <> value Then
-                    If iType <> PenTypeEnum.Custom AndAlso value = PenTypeEnum.Custom Then
-                        Call CopyFrom(oSurvey.EditPaintObjects.Pens.FromType(iType))
+            Set(value As PenTypeEnum)
+                If value <> Type Then
+                    If value = PenTypeEnum.User Then
+                        'user pen cannot be created changing type
+                        Throw New Exception("Pen type cannot be directly set to user")
                     Else
-                        Call CopyFrom(oSurvey.EditPaintObjects.Pens.FromType(value))
+                        If value = PenTypeEnum.Custom Then
+                            'create a custom copy of the current pen 
+                            oBasePen = cCustomPen.copyascustom(oSurvey, oBasePen)
+                        Else
+                            oBasePen = oSurvey.Pens.FromType(value)
+                        End If
                     End If
-                    iType = value
                 End If
             End Set
         End Property
-
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Type As PenTypeEnum)
-            oSurvey = Survey
-            Call CopyFrom(Survey.EditPaintObjects.Pens.FromType(iType))
-            bInvalidated = True
-        End Sub
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal Pen As cPen)
             oSurvey = Survey
             Call CopyFrom(Pen)
-            bInvalidated = True
-        End Sub
-
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Name As String, ByVal Type As PenTypeEnum, ByVal Color As Color, Optional ByVal Width As Single = 1, Optional ByVal Style As PenStylesEnum = PenStylesEnum.Solid, Optional Clipart As cDrawClipArt = Nothing, Optional ByVal DecorationStyle As DecorationStylesEnum = DecorationStylesEnum.None, Optional ByVal DecorationSpacePercentage As Single = 100, Optional ByVal DecorationAlignment As DecorationAlignmentEnum = DecorationStylesEnum.None, Optional ByVal DecorationScale As Single = 1, Optional StylePattern As Single() = Nothing)
-            oSurvey = Survey
-            sName = Name
-            iType = Type
-            oColor = Color
-            sWidth = Width
-            iStyle = Style
-            If iStyle = PenStylesEnum.Custom Then
-                If StylePattern Is Nothing Then
-                    sStylePattern = {2, 2}
-                Else
-                    sStylePattern = StylePattern
-                End If
-            End If
-            oClipart = Clipart
-            iDecorationStyle = DecorationStyle
-            sDecorationSpacePercentage = DecorationSpacePercentage
-            iDecorationAlignment = DecorationAlignment
-            sDecorationScale = DecorationScale
-            bInvalidated = True
         End Sub
 
         Friend Sub New(ByVal Survey As cSurvey)
             oSurvey = Survey
-            iType = PenTypeEnum.Custom
-            oColor = Color.Black
-            sWidth = 1
-            sDecorationSpacePercentage = 100
-            sDecorationScale = 1
-            bInvalidated = True
+            oBasePen = New cCustomPen(Survey)
         End Sub
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal item As XmlElement)
             oSurvey = Survey
-            iType = modXML.GetAttributeValue(item, "type", PenTypeEnum.Custom)
+            Dim iType As PenTypeEnum = item.GetAttribute("type")
             If iType = PenTypeEnum.Custom Then
-                sName = modXML.GetAttributeValue(item, "name", "")
-                oColor = modXML.GetAttributeColor(item, "color", Color.Black)
-                iStyle = modXML.GetAttributeValue(item, "style")
-                If iStyle = PenStylesEnum.Custom Then
-                    sStylePattern = modPaint.StringToPenStylePattern(modXML.GetAttributeValue(item, "stylepattern"))
-                End If
-                sWidth = modXML.GetAttributeValue(item, "width")
-                Dim oXMLClipart As XmlElement = item.Item("clipart")
-                If oXMLClipart Is Nothing Then
-                    oClipart = New cDrawClipArt()
-                Else
-                    oClipart = New cDrawClipArt(oXMLClipart)
-                End If
-                iDecorationStyle = modXML.GetAttributeValue(item, "decorationstyle")
-                sDecorationSpacePercentage = modXML.GetAttributeValue(item, "decorationspacepercentage")
-                If sDecorationSpacePercentage = 0 Then sDecorationSpacePercentage = 100
-                iDecorationAlignment = modXML.GetAttributeValue(item, "decorationalignment")
-                sDecorationScale = modXML.GetAttributeValue(item, "decorationscale")
-                If sDecorationScale = 0 Then sDecorationScale = 1
+                'custom pen are saved in line
+                oBasePen = New cCustomPen(oSurvey, item)
             Else
-                Call CopyFrom(oSurvey.EditPaintObjects.Pens.FromType(iType))
+                If iType = PenTypeEnum.User Then
+                    'user pen are saved in pens collection
+                    Dim sID As String = item.GetAttribute("id")
+                    oBasePen = oSurvey.Pens.FromID(sID)
+                Else
+                    oBasePen = oSurvey.Pens.FromType(iType)
+                End If
             End If
-            Call Invalidate()
         End Sub
 
         Public Property Clipart() As cDrawClipArt
             Get
-                Return oClipart
+                Return oBasePen.Clipart
             End Get
-            Set(ByVal Value As cDrawClipArt)
-                If Not oClipart Is Value Then
-                    iType = PenTypeEnum.Custom
-                    oClipart = Value
-                    Call Invalidate()
+            Set(value As cDrawClipArt)
+                If oBasePen.IsWriteable Then
+                    oBasePen.Clipart = value
                 End If
             End Set
         End Property
 
         Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
-            Dim oItem As XmlElement = Document.CreateElement("pen")
-            Call oItem.SetAttribute("type", iType)
-
-            If iType = PenTypeEnum.Custom Then
-                If sName <> "" Then
-                    Call oItem.SetAttribute("name", sName)
+            If oBasePen.Type = cPen.PenTypeEnum.Custom Then
+                Return oBasePen.SaveTo(File, Document, Parent)
+            Else
+                Dim oItem As XmlElement = Document.CreateElement("pen")
+                Call oItem.SetAttribute("type", oBasePen.Type)
+                If oBasePen.Type = cPen.PenTypeEnum.User Then
+                    Call oItem.SetAttribute("id", oBasePen.ID)
                 End If
-                Call oItem.SetAttribute("color", oColor.ToArgb)
-                Call oItem.SetAttribute("style", iStyle)
-                If iStyle = PenStylesEnum.Custom Then
-                    Call oItem.SetAttribute("stylepattern", modPaint.PenStylePatternToString(sStylePattern))
-                End If
-                Call oItem.SetAttribute("width", sWidth)
-                If Not oClipart Is Nothing Then Call oClipart.SaveTo(File, Document, oItem)
-                Call oItem.SetAttribute("decorationstyle", iDecorationStyle)
-                Call oItem.SetAttribute("decorationspacepercentage", sDecorationSpacePercentage)
-                Call oItem.SetAttribute("decorationalignment", iDecorationAlignment)
-                Call oItem.SetAttribute("decorationscale", sDecorationScale)
+                Parent.AppendChild(oItem)
+                Return oItem
             End If
-
-            Call Parent.AppendChild(oItem)
-            Return oItem
         End Function
+        Public Property ClipartPenMode() As cPen.ClipartPenModeEnum
+            Get
+                Return oBasePen.ClipartPenMode
+            End Get
+            Set(value As cPen.ClipartPenModeEnum)
+                If oBasePen.IsWriteable Then
+                    oBasePen.ClipartPenMode = value
+                End If
+            End Set
+        End Property
+
+        Public Property ClipartPenStyle() As cPen.PenStylesEnum
+            Get
+                Return oBasePen.ClipartPenStyle
+            End Get
+            Set(value As cPen.PenStylesEnum)
+                If oBasePen.IsWriteable Then
+                    oBasePen.ClipartPenStyle = value
+                End If
+            End Set
+        End Property
+
+        Public Property ClipartPenWidth() As Single
+            Get
+                Return oBasePen.ClipartPenWidth
+            End Get
+            Set(value As Single)
+                If oBasePen.IsWriteable Then
+                    oBasePen.ClipartPenWidth = value
+                End If
+            End Set
+        End Property
 
         Public Property Width() As Single
             Get
-                Return sWidth
+                Return oBasePen.Width
             End Get
-            Set(ByVal value As Single)
-                If sWidth <> value Then
-                    iType = PenTypeEnum.Custom
-                    sWidth = value
-                    Call Invalidate()
+            Set(value As Single)
+                If oBasePen.IsWriteable Then
+                    oBasePen.Width = value
                 End If
             End Set
         End Property
 
         Public Property Style() As PenStylesEnum
             Get
-                Return iStyle
+                Return oBasePen.Style
             End Get
-            Set(ByVal value As PenStylesEnum)
-                If iStyle <> value Then
-                    iType = PenTypeEnum.Custom
-                    iStyle = value
-                    Call Invalidate()
+            Set(value As PenStylesEnum)
+                If oBasePen.IsWriteable Then
+                    oBasePen.Style = value
                 End If
             End Set
         End Property
 
-        Public Property Color() As Color
+        Public Property ClipartPenColor() As Color
             Get
-                Return oColor
+                Return oBasePen.ClipartPenColor
             End Get
             Set(ByVal value As Color)
-                If Color <> value Then
-                    iType = PenTypeEnum.Custom
-                    oColor = value
-                    Call Invalidate()
+                If oBasePen.IsWriteable Then
+                    oBasePen.ClipartPenColor = value
+                End If
+            End Set
+        End Property
+        Public Property Color() As Color
+            Get
+                Return oBasePen.Color
+            End Get
+            Set(value As Color)
+                If oBasePen.IsWriteable Then
+                    oBasePen.Color = value
                 End If
             End Set
         End Property
 
         Public Property AlternativeColor() As Color
             Get
-                Return oAlternativeColor
+                Return oBasePen.AlternativeColor
             End Get
-            Set(ByVal value As Color)
-                oAlternativeColor = value
-                Call Invalidate()
+            Set(value As Color)
+                If oBasePen.IsWriteable Then
+                    oBasePen.AlternativeColor = value
+                End If
             End Set
         End Property
 
         Public Property DecorationStyle() As DecorationStylesEnum
             Get
-                Return iDecorationStyle
+                Return oBasePen.DecorationStyle
             End Get
-            Set(ByVal value As DecorationStylesEnum)
-                If iDecorationStyle <> value Then
-                    iType = PenTypeEnum.Custom
-                    iDecorationStyle = value
-                    Call Invalidate()
+            Set(value As DecorationStylesEnum)
+                If oBasePen.IsWriteable Then
+                    oBasePen.DecorationStyle = value
+                End If
+            End Set
+        End Property
+        Public Property DecorationPosition() As DecorationPositionEnum
+            Get
+                Return oBasePen.DecorationPosition
+            End Get
+            Set(value As DecorationPositionEnum)
+                If oBasePen.IsWriteable Then
+                    oBasePen.DecorationPosition = value
                 End If
             End Set
         End Property
 
         Public Property DecorationAlignment() As DecorationAlignmentEnum
             Get
-                Return iDecorationAlignment
+                Return oBasePen.DecorationAlignment
             End Get
-            Set(ByVal value As DecorationAlignmentEnum)
-                If iDecorationAlignment <> value Then
-                    iType = PenTypeEnum.Custom
-                    iDecorationAlignment = value
-                    Call Invalidate()
+            Set(value As DecorationAlignmentEnum)
+                If oBasePen.IsWriteable Then
+                    oBasePen.DecorationAlignment = value
                 End If
             End Set
         End Property
 
         Public Property DecorationSpacePercentage() As Single
             Get
-                Return sDecorationSpacePercentage
+                Return oBasePen.DecorationSpacePercentage
             End Get
-            Set(ByVal value As Single)
-                If sDecorationSpacePercentage <> value Then
-                    iType = PenTypeEnum.Custom
-                    sDecorationSpacePercentage = value
-                    Call Invalidate()
+            Set(value As Single)
+                If oBasePen.IsWriteable Then
+                    oBasePen.DecorationSpacePercentage = value
                 End If
             End Set
         End Property
 
         Public Property DecorationScale() As Single
             Get
-                Return sDecorationScale
+                Return oBasePen.DecorationScale
             End Get
-            Set(ByVal value As Single)
-                If sDecorationScale <> value Then
-                    iType = PenTypeEnum.Custom
-                    sDecorationScale = value
-                    Call Invalidate()
+            Set(value As Single)
+                If oBasePen.IsWriteable Then
+                    oBasePen.DecorationScale = value
                 End If
             End Set
         End Property
 
-        'Friend Function IsInvalidated(Options As cItem.PaintOptionsEnum) As Boolean
-        '    If (Options And cItem.PaintOptionsEnum.Wireframe) = cItem.PaintOptionsEnum.Wireframe Or (Options And cItem.PaintOptionsEnum.SchematicLayerDraw) = cItem.PaintOptionsEnum.SchematicLayerDraw Then
-        '        Return bInvalidatedWireframe
-        '    Else
-        '        Return bInvalidatedFull
-        '    End If
-        'End Function
-
         Friend ReadOnly Property Invalidated As Boolean
             Get
-                Return bInvalidated
+                Return oBasePen.Invalidated
             End Get
         End Property
 
         Friend Sub Invalidate()
-            bInvalidated = True
-            RaiseEvent OnChanged(Me)
+            Call oBasePen.Invalidate()
         End Sub
 
-        Friend Function GetPaintZoomFactor(PaintOptions As cOptions) As Single
-            Dim sZoomFactor As Single
-            If sLocalZoomFactor = 0 Then
-                sZoomFactor = PaintOptions.GetCurrentDesignPropertiesValue("DesignTerrainLevelScaleFactor", 1)
-            Else
-                sZoomFactor = sLocalZoomFactor
-            End If
-            Return sZoomFactor
-        End Function
-
-        Friend Function GetPaintLineWidth(PaintOptions As cOptions) As Single
-            Dim sLineWidth As Single
-            If sLocalLineWidth = 0 Then
-                sLineWidth = PaintOptions.GetCurrentDesignPropertiesValue("BaseLineWidthScaleFactor", 0.01)
-            Else
-                sLineWidth = sLocalLineWidth
-            End If
-            Return sLineWidth
-        End Function
-
-        Friend Function GetPaintPenWidth(PaintOptions As cOptions) As Single
-            Dim sLineWidth As Single = GetPaintLineWidth(PaintOptions)
-            Dim sPenWidth As Single = 0
-            If sWidth < 0 Then
-                sPenWidth = sWidth
-            ElseIf sWidth = 0 Then
-                sPenWidth = PaintOptions.GetPenDefaultWidth(iType) * sLineWidth
-            Else
-                sPenWidth = sWidth * sLineWidth
-            End If
-            Return sPenWidth
-        End Function
-
-        Private Sub pRender(PaintOptions As cOptions)
-            Dim oRenderArgs As cRenderArgs = New cRenderArgs
-            RaiseEvent OnRender(Me, oRenderArgs)
-
-            Dim oPaintColor As Color = If(oAlternativeColor.IsEmpty, oColor, oAlternativeColor)
-            oPaintColor = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oPaintColor)
-            Dim sPenWidth As Single = GetPaintPenWidth(PaintOptions)
-            oPen = New Pen(oPaintColor, sPenWidth)
-            Call oPen.SetLineCap(Drawing2D.LineCap.Round, Drawing2D.LineCap.Round, Drawing2D.DashCap.Round)
-            oPen.LineJoin = Drawing2D.LineJoin.Round
-            Select Case iStyle
-                Case PenStylesEnum.Solid
-                    oPen.DashStyle = DashStyle.Solid
-                Case PenStylesEnum.Dot
-                    oPen.DashStyle = DashStyle.Dot
-                Case PenStylesEnum.Dash
-                    oPen.DashStyle = DashStyle.Dash
-                Case PenStylesEnum.DashDot
-                    oPen.DashStyle = DashStyle.DashDot
-
-                Case PenStylesEnum.LargeDashLargeSpace
-                    oPen.DashPattern = {6.0F, 6.0F}
-                Case PenStylesEnum.LargeDashMediumSpace
-                    oPen.DashPattern = {6.0F, 4.0F}
-                Case PenStylesEnum.LargeDashSmallSpace
-                    oPen.DashPattern = {6.0F, 2.0F}
-
-                Case PenStylesEnum.Custom
-                    oPen.DashPattern = sStylePattern
-            End Select
-
-            oBrush = New SolidBrush(oPaintColor)
-
-            oPaintColor = If(oAlternativeColor.IsEmpty, Color.Black, oAlternativeColor)
-            oWireframePen = New Pen(oPaintColor, -1 * sLineWidth)
-            oWireframePen.SetLineCap(Drawing2D.LineCap.Round, Drawing2D.LineCap.Round, Drawing2D.DashCap.Round)
-            oWireframePen.LineJoin = Drawing2D.LineJoin.Round
-            oWireframePen.DashStyle = DashStyle.Dot
-
-            bInvalidated = True
+        Friend Sub Render(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As Boolean, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache)
+            Call oBasePen.Render(Graphics, PaintOptions, Options, Selected, Path, Cache)
         End Sub
 
-        Friend ReadOnly Property Pen As Pen
-            Get
-                Return oPen
-            End Get
-        End Property
-
-        Friend ReadOnly Property WireframePen As Pen
-            Get
-                Return oWireframePen
-            End Get
-        End Property
-
-        Friend ReadOnly Property Brush As Brush
-            Get
-                Return oBrush
-            End Get
-        End Property
-
-        Friend Sub Render(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As Boolean, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache)
-            If bInvalidated Then pRender(PaintOptions)
-            If Path.PointCount > 1 Then
-                If iType = PenTypeEnum.None Then
-                    Call Cache.AddBorder(Path, Nothing, oWireframePen)
-                Else
-                    Dim sZoomFactor As Single = GetPaintZoomFactor(PaintOptions)
-                    Select Case DecorationStyle
-                        Case DecorationStylesEnum.None
-                            Call Cache.AddBorder(Path, oPen, oWireframePen)
-                        Case DecorationStylesEnum.UpArrow
-                            Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, modPenClipart.ClipartArrowUp, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, oColor, oColor, sDecorationScale * sZoomFactor)
-                                If Not oPath Is Nothing Then
-                                    Call Cache.AddBorder(oPath, oPen, Nothing, oBrush)
-                                End If
-                            End Using
-                            Call Cache.AddBorder(Path, oPen, oWireframePen)
-                        Case DecorationStylesEnum.DownArrow
-                            Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, modPenClipart.ClipartArrowDown, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, oColor, oColor, sDecorationScale * sZoomFactor)
-                                If Not oPath Is Nothing Then
-                                    Call Cache.AddBorder(oPath, oPen, Nothing, oBrush)
-                                End If
-                            End Using
-                            Call Cache.AddBorder(Path, oPen, oWireframePen)
-                        Case DecorationStylesEnum.Dash
-                            Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, modPenClipart.ClipartDash, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, oColor, oColor, sDecorationScale * sZoomFactor)
-                                If Not oPath Is Nothing Then
-                                    Call Cache.AddBorder(oPath, oPen, Nothing, oBrush)
-                                End If
-                            End Using
-                            Call Cache.AddBorder(Path, oPen, oWireframePen)
-                        Case DecorationStylesEnum.Triangle
-                            Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, modPenClipart.ClipartTriangleUp, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, oColor, oColor, sDecorationScale * sZoomFactor)
-                                If Not oPath Is Nothing Then
-                                    Call Cache.AddBorder(oPath, oPen, Nothing, oBrush)
-                                End If
-                            End Using
-                            Call Cache.AddBorder(Path, oPen, oWireframePen)
-                        Case DecorationStylesEnum.DownTriangle
-                            Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, modPenClipart.ClipartTriangleDown, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, oColor, oColor, sDecorationScale * sZoomFactor)
-                                If Not oPath Is Nothing Then
-                                    Call Cache.AddBorder(oPath, oPen, Nothing, oBrush)
-                                End If
-                            End Using
-                            Call Cache.AddBorder(Path, oPen, oWireframePen)
-                        Case DecorationStylesEnum.UpTriangle
-                            Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, modPenClipart.ClipartTriangleUp, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, oColor, oColor, sDecorationScale * sZoomFactor)
-                                If Not oPath Is Nothing Then
-                                    Call Cache.AddBorder(oPath, oPen, Nothing, oBrush)
-                                End If
-                            End Using
-                            Call Cache.AddBorder(Path, oPen, oWireframePen)
-                        Case DecorationStylesEnum.Ice
-                            Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, modPenClipart.Ice, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, oColor, oColor, sDecorationScale * sZoomFactor)
-                                If Not oPath Is Nothing Then
-                                    Call Cache.AddBorder(oPath, oPen, Nothing, Nothing)
-                                End If
-                            End Using
-                            Call Cache.AddBorder(Path, oPen, oWireframePen)
-                        Case DecorationStylesEnum.EmptyDownTriangle
-                            Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, modPenClipart.ClipartTriangleDown, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, oColor, oColor, sDecorationScale * sZoomFactor)
-                                If Not oPath Is Nothing Then
-                                    Call Cache.AddBorder(oPath, oPen, Nothing, Nothing)
-                                End If
-                            End Using
-                            Call Cache.AddBorder(Path, oPen, oWireframePen)
-                        Case DecorationStylesEnum.EmptyUpTriangle
-                            Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, modPenClipart.ClipartTriangleUp, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, oColor, oColor, sDecorationScale * sZoomFactor)
-                                If Not oPath Is Nothing Then
-                                    Call Cache.AddBorder(oPath, oPen, Nothing, Nothing)
-                                End If
-                            End Using
-                            Call Cache.AddBorder(Path, oPen, oWireframePen)
-                        Case DecorationStylesEnum.Custom
-                            Using oPath As GraphicsPath = cClipartOnPath.ClipartOnPath(Graphics, Path.PathData, oClipart, iDecorationAlignment, sDecorationSpacePercentage * sZoomFactor, oColor, oColor, sDecorationScale * sZoomFactor)
-                                If Not oPath Is Nothing Then
-                                    Call Cache.AddBorder(oPath, oPen, Nothing, Nothing)
-                                End If
-                            End Using
-                            Call Cache.AddBorder(Path, Nothing, oWireframePen)
-                    End Select
-                End If
-            End If
+        Private Sub oBasePen_OnChanged(Sender As Object, e As EventArgs) Handles oBasePen.OnChanged
+            RaiseEvent OnChanged(Me, e)
         End Sub
 
         Private Sub oSurvey_OnPropertiesChanged(ByVal Sender As cSurvey, ByVal Args As cSurvey.OnPropertiesChangedEventArgs) Handles oSurvey.OnPropertiesChanged
@@ -650,17 +1292,9 @@ Namespace cSurvey.Design
         Protected Overridable Sub Dispose(disposing As Boolean)
             If Not disposedValue Then
                 If disposing Then
-                    If Not oPen Is Nothing Then
-                        Call oPen.Dispose()
-                        oPen = Nothing
-                    End If
-                    If Not oWireframePen Is Nothing Then
-                        Call oWireframePen.Dispose()
-                        oWireframePen = Nothing
-                    End If
-                    If Not oBrush Is Nothing Then
-                        Call oBrush.Dispose()
-                        oBrush = Nothing
+                    If Not oBasePen Is Nothing Then
+                        Call oBasePen.Dispose()
+                        oBasePen = Nothing
                     End If
                 End If
             End If

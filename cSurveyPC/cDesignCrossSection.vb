@@ -27,12 +27,16 @@ Namespace cSurvey.Design
         Private oProfileCrossSectionMarker As cItemProfileCrossSectionMarker
 
         Public Function GetLocked() As Boolean Implements cISegment.GetLocked
-            Dim oCaveInfo As cICaveInfoBranches = oCrossSection.getcaveinfo
+            Dim oCaveInfo As cICaveInfoBranches = oCrossSection.GetCaveInfo
             If IsNothing(oCaveInfo) Then
                 Return False
             Else
                 Return oCaveInfo.GetLocked
             End If
+        End Function
+
+        Public Function GetCaveInfo() As cICaveInfoBranches Implements cISegment.GetCaveInfo
+            Return oSurvey.Properties.GetCaveInfo(Me)
         End Function
 
         Public ReadOnly Property Index() As Integer

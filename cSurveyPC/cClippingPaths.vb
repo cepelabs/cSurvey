@@ -22,7 +22,7 @@ Namespace cSurvey.Design
 
         Public Sub New(ByVal Survey As cSurvey)
             oSurvey = Survey
-            iClipBorder = oSurvey.Properties.DesignProperties.GetValue("ClipBorder", oSurvey.GetGlobalSetting("design.clipborder", ClipBorderEnum.ClipBorder))
+            iClipBorder = oSurvey.Properties.DesignProperties.GetValue("ClipBorder", Helper.Editor.cEditDesignEnvironment.GetSetting("design.clipborder", ClipBorderEnum.ClipBorder))
             oPaths = New Dictionary(Of String, GraphicsPath)(System.StringComparer.OrdinalIgnoreCase)
         End Sub
 

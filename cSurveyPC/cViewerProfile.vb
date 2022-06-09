@@ -27,15 +27,15 @@ Namespace cSurvey
         Friend Sub New(Survey As cSurvey)
             oSurvey = Survey
             oItems = New List(Of cViewerProfile)
-            Call oItems.Add(New cViewerProfile(oSurvey, oSurvey.Options("_viewer.plan"), cIDesign.cDesignTypeEnum.Plan))
-            Call oItems.Add(New cViewerProfile(oSurvey, oSurvey.Options("_viewer.profile"), cIDesign.cDesignTypeEnum.Profile))
+            Call oItems.Add(New cViewerProfile(oSurvey, DirectCast(oSurvey.Options("_viewer.plan"), cOptionsViewer), cIDesign.cDesignTypeEnum.Plan))
+            Call oItems.Add(New cViewerProfile(oSurvey, DirectCast(oSurvey.Options("_viewer.profile"), cOptionsViewer), cIDesign.cDesignTypeEnum.Profile))
         End Sub
 
         Friend Sub New(Survey As cSurvey, ByVal File As cFile, Profiles As XmlElement)
             oSurvey = Survey
             oItems = New List(Of cViewerProfile)
-            Call oItems.Add(New cViewerProfile(oSurvey, oSurvey.Options("_viewer.plan"), cIDesign.cDesignTypeEnum.Plan))
-            Call oItems.Add(New cViewerProfile(oSurvey, oSurvey.Options("_viewer.profile"), cIDesign.cDesignTypeEnum.Profile))
+            Call oItems.Add(New cViewerProfile(oSurvey, DirectCast(oSurvey.Options("_viewer.plan"), cOptionsViewer), cIDesign.cDesignTypeEnum.Plan))
+            Call oItems.Add(New cViewerProfile(oSurvey, DirectCast(oSurvey.Options("_viewer.profile"), cOptionsViewer), cIDesign.cDesignTypeEnum.Profile))
             For Each oXMLProfile As XmlElement In Profiles.ChildNodes
                 Dim oItem As cViewerProfile = New cViewerProfile(oSurvey, File, oXMLProfile)
                 Call oItems.Add(oItem)
@@ -173,7 +173,7 @@ Namespace cSurvey
             End Get
         End Property
 
-        Public ReadOnly Property Options As Design.cOptions Implements cIProfile.Options
+        Public ReadOnly Property Options As Design.cOptionsCenterline Implements cIProfile.Options
             Get
                 Return oOptions
             End Get

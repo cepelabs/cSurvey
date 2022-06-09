@@ -68,7 +68,7 @@
         If optNewStation.Checked Then
             Dim sName As String = cboNewStation.Text.ToUpper.Trim
             If sName = "" Or sName.Contains("_") Or sName.Contains(">") Or sName.Contains(" ") Or sName.Contains("|") Or sName.Contains("!") Then
-                Call MsgBox(GetLocalizedString("resurveyaddstation.warning1"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("resurveyaddstation.warningtitle"))
+                Call cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("resurveyaddstation.warning1"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("resurveyaddstation.warningtitle"))
             Else
                 If oStations.Contains(sName) Then
                     Dim bOk As Boolean
@@ -78,14 +78,14 @@
                         bOk = oStations(sName).ProfilePoint.IsEmpty
                     End If
                     If Not bOk Then
-                        Call MsgBox(GetLocalizedString("resurveyaddstation.warning2"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("resurveyaddstation.warningtitle"))
+                        Call cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("resurveyaddstation.warning2"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("resurveyaddstation.warningtitle"))
                     Else
                         DialogResult = Windows.Forms.DialogResult.OK
                         Close()
                     End If
                 Else
                     If sName.Contains(">") Then
-                        Call MsgBox(GetLocalizedString("resurveyaddstation.warning3"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("resurveyaddstation.warningtitle"))
+                        Call cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("resurveyaddstation.warning3"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("resurveyaddstation.warningtitle"))
                     Else
                         DialogResult = Windows.Forms.DialogResult.OK
                         Close()
@@ -96,7 +96,7 @@
         If optMovedStation.Checked Then
             Dim sName As String = cboMovedStation.Text.ToUpper.Trim
             If sName = "" Then
-                Call MsgBox(GetLocalizedString("resurveyaddstation.warning4"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("resurveyaddstation.warningtitle"))
+                Call cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("resurveyaddstation.warning4"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("resurveyaddstation.warningtitle"))
             Else
                 DialogResult = Windows.Forms.DialogResult.OK
                 Close()
@@ -109,7 +109,7 @@
         If optSecondScale.Checked Then
             Dim iScaleLen As Integer = txtScaleSize.Value
             If iScaleLen = 0 Then
-                Call MsgBox(GetLocalizedString("resurveyaddstation.warning5"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("resurveyaddstation.warningtitle"))
+                Call cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("resurveyaddstation.warning5"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("resurveyaddstation.warningtitle"))
             Else
                 DialogResult = Windows.Forms.DialogResult.OK
                 Close()
@@ -178,4 +178,5 @@
     Private Sub frmResurveyAddStation_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         Call pCheckChange()
     End Sub
+
 End Class

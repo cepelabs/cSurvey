@@ -23,52 +23,64 @@ Partial Class frmManageLRUD
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmManageLRUD))
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.frmRestore = New System.Windows.Forms.GroupBox()
-        Me.chkRestoreDeleteBackupAfterRestore = New System.Windows.Forms.CheckBox()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.frmRestore = New DevExpress.XtraEditors.GroupControl()
+        Me.chkRestoreDeleteBackupAfterRestore = New DevExpress.XtraEditors.CheckEdit()
+        Me.Label4 = New DevExpress.XtraEditors.LabelControl()
         Me.cboRestoreName = New System.Windows.Forms.ComboBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.frmBackup = New System.Windows.Forms.GroupBox()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label5 = New DevExpress.XtraEditors.LabelControl()
+        Me.frmBackup = New DevExpress.XtraEditors.GroupControl()
+        Me.Label3 = New DevExpress.XtraEditors.LabelControl()
         Me.cboBackupName = New System.Windows.Forms.ComboBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.chkBackup = New System.Windows.Forms.CheckBox()
-        Me.cmdOk = New System.Windows.Forms.Button()
-        Me.frmMode1 = New System.Windows.Forms.GroupBox()
+        Me.Label2 = New DevExpress.XtraEditors.LabelControl()
+        Me.chkBackup = New DevExpress.XtraEditors.CheckEdit()
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
+        Me.frmMode1 = New DevExpress.XtraEditors.GroupControl()
         Me.RadioButton1b = New System.Windows.Forms.RadioButton()
         Me.RadioButton1a = New System.Windows.Forms.RadioButton()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.chkShotWithLRUD = New System.Windows.Forms.CheckBox()
+        Me.Panel1 = New DevExpress.XtraEditors.PanelControl()
+        Me.chkShotWithLRUD = New DevExpress.XtraEditors.CheckEdit()
         Me.cboReplicateTo = New System.Windows.Forms.ComboBox()
-        Me.chkShotWithCalculatedLRUD = New System.Windows.Forms.CheckBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.chkShotWithoutLRUD = New System.Windows.Forms.CheckBox()
-        Me.frmMode2 = New System.Windows.Forms.GroupBox()
-        Me.lblSplayMode = New System.Windows.Forms.Label()
+        Me.chkShotWithCalculatedLRUD = New DevExpress.XtraEditors.CheckEdit()
+        Me.Label1 = New DevExpress.XtraEditors.LabelControl()
+        Me.chkShotWithoutLRUD = New DevExpress.XtraEditors.CheckEdit()
+        Me.frmMode2 = New DevExpress.XtraEditors.GroupControl()
+        Me.lblSplayMode = New DevExpress.XtraEditors.LabelControl()
         Me.cboMode2Mode = New System.Windows.Forms.ComboBox()
-        Me.Label26 = New System.Windows.Forms.Label()
+        Me.Label26 = New DevExpress.XtraEditors.LabelControl()
         Me.txtMode2V = New System.Windows.Forms.NumericUpDown()
-        Me.Label35 = New System.Windows.Forms.Label()
+        Me.Label35 = New DevExpress.XtraEditors.LabelControl()
         Me.txtMode2H = New System.Windows.Forms.NumericUpDown()
-        Me.chkMode2OnlyCutSplay = New System.Windows.Forms.CheckBox()
-        Me.chkMarkAsCalculated = New System.Windows.Forms.CheckBox()
+        Me.chkMode2OnlyCutSplay = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkMarkAsCalculated = New DevExpress.XtraEditors.CheckEdit()
         Me.cboAction = New System.Windows.Forms.ComboBox()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
-        Me.lblAction = New System.Windows.Forms.Label()
+        Me.lblAction = New DevExpress.XtraEditors.LabelControl()
         Me.pnlOption0 = New DevExpress.XtraEditors.PanelControl()
         Me.pnlOption1 = New DevExpress.XtraEditors.PanelControl()
         Me.pnlOption3 = New DevExpress.XtraEditors.PanelControl()
         Me.pnlOptionOther = New DevExpress.XtraEditors.PanelControl()
         Me.pnlBottom = New DevExpress.XtraEditors.PanelControl()
+        CType(Me.frmRestore, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.frmRestore.SuspendLayout()
+        CType(Me.chkRestoreDeleteBackupAfterRestore.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.frmBackup, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.frmBackup.SuspendLayout()
+        CType(Me.chkBackup.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.frmMode1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.frmMode1.SuspendLayout()
+        CType(Me.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        CType(Me.chkShotWithLRUD.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkShotWithCalculatedLRUD.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkShotWithoutLRUD.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.frmMode2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.frmMode2.SuspendLayout()
         CType(Me.txtMode2V, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtMode2H, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkMode2OnlyCutSplay.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkMarkAsCalculated.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
@@ -89,7 +101,6 @@ Partial Class frmManageLRUD
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'frmRestore
         '
@@ -99,13 +110,12 @@ Partial Class frmManageLRUD
         Me.frmRestore.Controls.Add(Me.Label5)
         resources.ApplyResources(Me.frmRestore, "frmRestore")
         Me.frmRestore.Name = "frmRestore"
-        Me.frmRestore.TabStop = False
         '
         'chkRestoreDeleteBackupAfterRestore
         '
         resources.ApplyResources(Me.chkRestoreDeleteBackupAfterRestore, "chkRestoreDeleteBackupAfterRestore")
         Me.chkRestoreDeleteBackupAfterRestore.Name = "chkRestoreDeleteBackupAfterRestore"
-        Me.chkRestoreDeleteBackupAfterRestore.UseVisualStyleBackColor = True
+        Me.chkRestoreDeleteBackupAfterRestore.Properties.Caption = resources.GetString("chkRestoreDeleteBackupAfterRestore.Properties.Caption")
         '
         'Label4
         '
@@ -131,7 +141,6 @@ Partial Class frmManageLRUD
         Me.frmBackup.Controls.Add(Me.Label2)
         resources.ApplyResources(Me.frmBackup, "frmBackup")
         Me.frmBackup.Name = "frmBackup"
-        Me.frmBackup.TabStop = False
         '
         'Label3
         '
@@ -153,13 +162,12 @@ Partial Class frmManageLRUD
         '
         resources.ApplyResources(Me.chkBackup, "chkBackup")
         Me.chkBackup.Name = "chkBackup"
-        Me.chkBackup.UseVisualStyleBackColor = True
+        Me.chkBackup.Properties.Caption = resources.GetString("chkBackup.Properties.Caption")
         '
         'cmdOk
         '
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
         '
         'frmMode1
         '
@@ -167,7 +175,6 @@ Partial Class frmManageLRUD
         Me.frmMode1.Controls.Add(Me.RadioButton1a)
         resources.ApplyResources(Me.frmMode1, "frmMode1")
         Me.frmMode1.Name = "frmMode1"
-        Me.frmMode1.TabStop = False
         '
         'RadioButton1b
         '
@@ -185,7 +192,7 @@ Partial Class frmManageLRUD
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.White
+        Me.Panel1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.Panel1.Controls.Add(Me.chkShotWithLRUD)
         Me.Panel1.Controls.Add(Me.cboReplicateTo)
         Me.Panel1.Controls.Add(Me.chkShotWithCalculatedLRUD)
@@ -197,9 +204,10 @@ Partial Class frmManageLRUD
         'chkShotWithLRUD
         '
         resources.ApplyResources(Me.chkShotWithLRUD, "chkShotWithLRUD")
-        Me.chkShotWithLRUD.BackColor = System.Drawing.Color.Transparent
         Me.chkShotWithLRUD.Name = "chkShotWithLRUD"
-        Me.chkShotWithLRUD.UseVisualStyleBackColor = False
+        Me.chkShotWithLRUD.Properties.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.chkShotWithLRUD.Properties.Appearance.Options.UseBackColor = True
+        Me.chkShotWithLRUD.Properties.Caption = resources.GetString("chkShotWithLRUD.Properties.Caption")
         '
         'cboReplicateTo
         '
@@ -212,22 +220,25 @@ Partial Class frmManageLRUD
         'chkShotWithCalculatedLRUD
         '
         resources.ApplyResources(Me.chkShotWithCalculatedLRUD, "chkShotWithCalculatedLRUD")
-        Me.chkShotWithCalculatedLRUD.BackColor = System.Drawing.Color.Transparent
         Me.chkShotWithCalculatedLRUD.Name = "chkShotWithCalculatedLRUD"
-        Me.chkShotWithCalculatedLRUD.UseVisualStyleBackColor = False
+        Me.chkShotWithCalculatedLRUD.Properties.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.chkShotWithCalculatedLRUD.Properties.Appearance.Options.UseBackColor = True
+        Me.chkShotWithCalculatedLRUD.Properties.Caption = resources.GetString("chkShotWithCalculatedLRUD.Properties.Caption")
         '
         'Label1
         '
         resources.ApplyResources(Me.Label1, "Label1")
-        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Appearance.Options.UseBackColor = True
         Me.Label1.Name = "Label1"
         '
         'chkShotWithoutLRUD
         '
         resources.ApplyResources(Me.chkShotWithoutLRUD, "chkShotWithoutLRUD")
-        Me.chkShotWithoutLRUD.BackColor = System.Drawing.Color.Transparent
         Me.chkShotWithoutLRUD.Name = "chkShotWithoutLRUD"
-        Me.chkShotWithoutLRUD.UseVisualStyleBackColor = False
+        Me.chkShotWithoutLRUD.Properties.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.chkShotWithoutLRUD.Properties.Appearance.Options.UseBackColor = True
+        Me.chkShotWithoutLRUD.Properties.Caption = resources.GetString("chkShotWithoutLRUD.Properties.Caption")
         '
         'frmMode2
         '
@@ -240,7 +251,6 @@ Partial Class frmManageLRUD
         Me.frmMode2.Controls.Add(Me.chkMode2OnlyCutSplay)
         resources.ApplyResources(Me.frmMode2, "frmMode2")
         Me.frmMode2.Name = "frmMode2"
-        Me.frmMode2.TabStop = False
         '
         'lblSplayMode
         '
@@ -285,13 +295,13 @@ Partial Class frmManageLRUD
         '
         resources.ApplyResources(Me.chkMode2OnlyCutSplay, "chkMode2OnlyCutSplay")
         Me.chkMode2OnlyCutSplay.Name = "chkMode2OnlyCutSplay"
-        Me.chkMode2OnlyCutSplay.UseVisualStyleBackColor = True
+        Me.chkMode2OnlyCutSplay.Properties.Caption = resources.GetString("chkMode2OnlyCutSplay.Properties.Caption")
         '
         'chkMarkAsCalculated
         '
         resources.ApplyResources(Me.chkMarkAsCalculated, "chkMarkAsCalculated")
         Me.chkMarkAsCalculated.Name = "chkMarkAsCalculated"
-        Me.chkMarkAsCalculated.UseVisualStyleBackColor = True
+        Me.chkMarkAsCalculated.Properties.Caption = resources.GetString("chkMarkAsCalculated.Properties.Caption")
         '
         'cboAction
         '
@@ -321,8 +331,9 @@ Partial Class frmManageLRUD
         '
         'lblAction
         '
+        Me.lblAction.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.lblAction.Appearance.Options.UseBackColor = True
         resources.ApplyResources(Me.lblAction, "lblAction")
-        Me.lblAction.BackColor = System.Drawing.Color.Transparent
         Me.lblAction.Name = "lblAction"
         '
         'pnlOption0
@@ -376,18 +387,30 @@ Partial Class frmManageLRUD
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmManageLRUD"
+        CType(Me.frmRestore, System.ComponentModel.ISupportInitialize).EndInit()
         Me.frmRestore.ResumeLayout(False)
         Me.frmRestore.PerformLayout()
+        CType(Me.chkRestoreDeleteBackupAfterRestore.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.frmBackup, System.ComponentModel.ISupportInitialize).EndInit()
         Me.frmBackup.ResumeLayout(False)
         Me.frmBackup.PerformLayout()
+        CType(Me.chkBackup.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.frmMode1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.frmMode1.ResumeLayout(False)
         Me.frmMode1.PerformLayout()
+        CType(Me.Panel1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.chkShotWithLRUD.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkShotWithCalculatedLRUD.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkShotWithoutLRUD.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.frmMode2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.frmMode2.ResumeLayout(False)
         Me.frmMode2.PerformLayout()
         CType(Me.txtMode2V, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtMode2H, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkMode2OnlyCutSplay.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkMarkAsCalculated.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel1.ResumeLayout(False)
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl1.ResumeLayout(False)
@@ -400,47 +423,46 @@ Partial Class frmManageLRUD
         Me.pnlOption3.ResumeLayout(False)
         CType(Me.pnlOptionOther, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlOptionOther.ResumeLayout(False)
-        Me.pnlOptionOther.PerformLayout()
         CType(Me.pnlBottom, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlBottom.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents frmMode1 As GroupBox
+    Friend WithEvents frmMode1 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents RadioButton1b As RadioButton
     Friend WithEvents RadioButton1a As RadioButton
-    Friend WithEvents cmdCancel As Button
-    Friend WithEvents cmdOk As Button
-    Friend WithEvents chkBackup As CheckBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents chkBackup As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents Label1 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboReplicateTo As System.Windows.Forms.ComboBox
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents frmBackup As System.Windows.Forms.GroupBox
-    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents Panel1 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents frmBackup As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents Label3 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboBackupName As System.Windows.Forms.ComboBox
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents frmRestore As System.Windows.Forms.GroupBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents Label2 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents frmRestore As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents Label4 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboRestoreName As System.Windows.Forms.ComboBox
-    Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents chkRestoreDeleteBackupAfterRestore As System.Windows.Forms.CheckBox
-    Friend WithEvents frmMode2 As GroupBox
-    Friend WithEvents chkMode2OnlyCutSplay As CheckBox
-    Friend WithEvents Label26 As Label
+    Friend WithEvents Label5 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents chkRestoreDeleteBackupAfterRestore As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents frmMode2 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents chkMode2OnlyCutSplay As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents Label26 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtMode2V As NumericUpDown
-    Friend WithEvents Label35 As Label
+    Friend WithEvents Label35 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtMode2H As NumericUpDown
-    Friend WithEvents chkShotWithoutLRUD As CheckBox
-    Friend WithEvents chkMarkAsCalculated As CheckBox
-    Friend WithEvents chkShotWithCalculatedLRUD As CheckBox
-    Friend WithEvents chkShotWithLRUD As CheckBox
-    Friend WithEvents lblSplayMode As Label
+    Friend WithEvents chkShotWithoutLRUD As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkMarkAsCalculated As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkShotWithCalculatedLRUD As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkShotWithLRUD As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents lblSplayMode As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboMode2Mode As ComboBox
     Friend WithEvents cboAction As ComboBox
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
-    Friend WithEvents lblAction As Label
+    Friend WithEvents lblAction As DevExpress.XtraEditors.LabelControl
     Friend WithEvents pnlOption0 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents pnlOption1 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents pnlOption3 As DevExpress.XtraEditors.PanelControl

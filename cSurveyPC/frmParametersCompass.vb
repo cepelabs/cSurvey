@@ -1,29 +1,14 @@
 ﻿Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Design.Options
 Imports cSurveyPC.cSurvey.Drawings
+Imports DevExpress.XtraEditors.Controls
 
-friend Class frmParametersCompass
-    Friend Event OnChangeOptions(ByVal Sender As Object, ByVal Options As cOptions)
-
-    Private oOptions As cOptions
+Friend Class frmParametersCompass
+    Private oOptions As cOptionsCenterline
     Private oCompassOptions As cCompassOptions
     Private bDisabledEvent As Boolean
 
-    Private Sub cmdCompassColorBrowse_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCompassColorBrowse.Click
-        Dim oCD As ColorDialog = New ColorDialog
-        With oCD
-            .FullOpen = True
-            .AnyColor = True
-            .Color = picCompassColor.BackColor
-            If .ShowDialog = Windows.Forms.DialogResult.OK Then
-                picCompassColor.BackColor = .Color
-                oCompassOptions.Color = .Color
-                'RaiseEvent OnChangeOptions(Me)
-            End If
-        End With
-    End Sub
-
-    Private Sub cmdCompassBrowseClipart_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCompassBrowseClipart.Click
+    Private Sub cmdCompassBrowseClipart_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim oOfd As OpenFileDialog = New OpenFileDialog
         With oOfd
             .Title = GetLocalizedString("parameterscompass.openclipartdialog")
@@ -37,122 +22,128 @@ friend Class frmParametersCompass
                 Catch
                     picCompassClipartImage.Image = Nothing
                 End Try
-                'RaiseEvent OnChangeOptions(Me)
             End If
         End With
     End Sub
 
-    Public Sub New(ByVal Options As cOptions)
+    Public Sub New(ByVal Options As cOptionsCenterline)
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent()
-        oOptions = options
-        oCompassOptions = oOptions.CompassOptions.Clone
+        oOptions = Options
+        oCompassOptions = oOptions.CompassOptions
 
         bDisabledEvent = True
-        Dim oFonts As System.Drawing.Text.InstalledFontCollection = New System.Drawing.Text.InstalledFontCollection
-        For Each oFontFamily As FontFamily In oFonts.Families
-            Call cboCompassTextFontChar.Items.Add(oFontFamily.Name)
-        Next
-
         txtCompassText.Text = oCompassOptions.Text
 
-        cboCompassTextFontChar.Text = oCompassOptions.Font.FontName
-        chkCompassTextFontBold.Checked = oCompassOptions.Font.FontBold
-        chkCompassTextFontItalic.Checked = oCompassOptions.Font.FontItalic
-        chkCompassTextFontUnderline.Checked = oCompassOptions.Font.FontUnderline
-        cboCompassTextFontSize.Text = oCompassOptions.Font.FontSize
+        If oCompassOptions.Font.FontName = "" Then
+            cboCompassFontChar.EditValue = oCompassOptions.Font.FontName
+        Else
+            cboCompassFontChar.EditValue = oCompassOptions.Font.FontName
+        End If
+        chkCompassFontBold.Checked = oCompassOptions.Font.FontBold
+        chkCompassFontItalic.Checked = oCompassOptions.Font.FontItalic
+        chkCompassFontUnderline.Checked = oCompassOptions.Font.FontUnderline
+        cboCompassFontSize.Text = oCompassOptions.Font.FontSize
 
-        picCompassColor.BackColor = oCompassOptions.Color
-        picCompassClipartImage.Image = oCompassOptions.Clipart.GetThumbnailImage(picCompassClipartImage.Width, picCompassClipartImage.Height)
+        txtColor.EditValue = oCompassOptions.Color
+
+        picCompassClipartImage.SvgImage = modDevExpress.SvgImageFromClipart(oCompassOptions.Clipart)
+        picCompassClipartImage.Properties.OpenFileDialogFilter = GetLocalizedString("parameterscompass.filetypeSVG") & " (*.SVG)|*.SVG|" & GetLocalizedString("parameterscompass.filetypeALL") & " (*.*)|*.*"
+
+        'picCompassClipartImage.Image = oCompassOptions.Clipart.GetThumbnailImage(picCompassClipartImage.Width, picCompassClipartImage.Height)
         txtCompassClipartZoomFactor.Value = oCompassOptions.ClipartZoomFactor
 
         bDisabledEvent = False
     End Sub
 
-    Private Sub txtCompassClipartZoomFactor_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCompassClipartZoomFactor.ValueChanged
+    Private Sub chkCompassFontBold_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkCompassFontBold.CheckedChanged
         Try
-            If Not bDisabledEvent Then
-                oCompassOptions.ClipartZoomFactor = txtCompassClipartZoomFactor.Value
+            If Not oCompassOptions Is Nothing AndAlso Not bDisabledEvent Then
+                oCompassOptions.Font.FontBold = chkCompassFontBold.Checked
             End If
         Catch
         End Try
     End Sub
 
-    Private Sub chkCompassTextFontBold_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkCompassTextFontBold.CheckedChanged
+    Private Sub chkCompassFontItalic_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkCompassFontItalic.CheckedChanged
         Try
-            If Not bDisabledEvent Then
-                oCompassOptions.Font.FontBold = chkCompassTextFontBold.Checked
+            If Not oCompassOptions Is Nothing AndAlso Not bDisabledEvent Then
+                oCompassOptions.Font.FontItalic = chkCompassFontItalic.Checked
             End If
         Catch
         End Try
     End Sub
 
-    Private Sub chkCompassTextFontItalic_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkCompassTextFontItalic.CheckedChanged
+    Private Sub chkCompassFontUnderline_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkCompassFontUnderline.CheckedChanged
         Try
-            If Not bDisabledEvent Then
-                oCompassOptions.Font.FontItalic = chkCompassTextFontItalic.Checked
+            If Not oCompassOptions Is Nothing AndAlso Not bDisabledEvent Then
+                oCompassOptions.Font.FontUnderline = chkCompassFontUnderline.Checked
             End If
         Catch
         End Try
     End Sub
 
-    Private Sub chkCompassTextFontUnderline_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkCompassTextFontUnderline.CheckedChanged
+    Private Sub txtCompass_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles txtCompassText.Validating
         Try
-            If Not bDisabledEvent Then
-                oCompassOptions.Font.FontUnderline = chkCompassTextFontUnderline.Checked
-            End If
-        Catch
-        End Try
-    End Sub
-
-    Private Sub cboCompassTextFontChar_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboCompassTextFontChar.SelectedIndexChanged
-        Try
-            If Not bDisabledEvent Then
-                oCompassOptions.Font.FontName = cboCompassTextFontChar.Text
-            End If
-        Catch
-        End Try
-    End Sub
-
-    Private Sub txtCompassText_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles txtCompassText.Validating
-        Try
-            If Not bDisabledEvent Then
+            If Not oCompassOptions Is Nothing AndAlso Not bDisabledEvent Then
                 oCompassOptions.Text = txtCompassText.Text
             End If
         Catch
         End Try
     End Sub
 
-    Private Sub pSave()
-        Call oOptions.CompassOptions.CopyFrom(oCompassOptions)
+    Private Sub cboCompassFontSize_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboCompassFontSize.ButtonClick
+        If e.Button.Index = 1 Then
+            cboCompassFontSize.EditValue = Nothing
+        End If
     End Sub
 
-    Private Sub cmdOk_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdOk.Click
-        Call psave()
-        RaiseEvent OnChangeOptions(Me, oOptions)
-        Call Close()
-        Call Dispose()
-    End Sub
-
-    Private Sub cmdCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancel.Click
-        Call Close()
-        Call Dispose()
-    End Sub
-
-    Private Sub cmdApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdApply.Click
-        Call psave()
-        RaiseEvent OnChangeOptions(Me, oOptions)
-    End Sub
-
-    Private Sub cboCompassTextFontSize_TextChanged(sender As Object, e As System.EventArgs) Handles cboCompassTextFontSize.TextChanged
+    Private Sub cboCompassFontSize_EditValueChanged(sender As Object, e As EventArgs) Handles cboCompassFontSize.EditValueChanged
         Try
-            If Not bDisabledEvent Then
-                oCompassOptions.Font.FontSize = cboCompassTextFontSize.Text
-                'RaiseEvent OnChangeOptions(Me)
+            If Not oCompassOptions Is Nothing AndAlso Not bDisabledEvent Then
+                If cboCompassFontSize.EditValue Is Nothing Then
+                    oCompassOptions.Font.FontSize = 0
+                Else
+                    oCompassOptions.Font.FontSize = cboCompassFontSize.EditValue
+                End If
             End If
         Catch
         End Try
+    End Sub
+
+    Private Sub cboCompassFontChar_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboCompassFontChar.ButtonClick
+        If e.Button.Index = 1 Then
+            cboCompassFontChar.EditValue = Nothing
+        End If
+    End Sub
+
+    Private Sub cboCompassFontChar_EditValueChanged(sender As Object, e As EventArgs) Handles cboCompassFontChar.EditValueChanged
+        If Not oCompassOptions Is Nothing AndAlso Not bDisabledEvent Then
+            If cboCompassFontChar.EditValue Is Nothing Then
+                oCompassOptions.Font.FontName = ""
+            Else
+                oCompassOptions.Font.FontName = cboCompassFontChar.EditValue
+            End If
+        End If
+    End Sub
+
+    Private Sub picCompassClipartImage_EditValueChanged(sender As Object, e As EventArgs) Handles picCompassClipartImage.EditValueChanged
+        If Not oCompassOptions Is Nothing AndAlso Not bDisabledEvent Then
+            oCompassOptions.Clipart = modDevExpress.SvgImageToClipart(picCompassClipartImage.SvgImage)
+        End If
+    End Sub
+
+    Private Sub txtColor_EditValueChanged(sender As Object, e As EventArgs) Handles txtColor.EditValueChanged
+        If Not oCompassOptions Is Nothing AndAlso Not bDisabledEvent Then
+            oCompassOptions.Color = txtColor.EditValue
+        End If
+    End Sub
+
+    Private Sub txtCompassClipartZoomFactor_EditValueChanged(sender As Object, e As EventArgs) Handles txtCompassClipartZoomFactor.EditValueChanged
+        If Not oCompassOptions Is Nothing AndAlso Not bDisabledEvent Then
+            oCompassOptions.ClipartZoomFactor = txtCompassClipartZoomFactor.Value
+        End If
     End Sub
 End Class

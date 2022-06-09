@@ -8,6 +8,14 @@ Imports System.Collections.ObjectModel
 
 Namespace cSurvey.Design.Options
     Public Class cGPSOptions
+        Implements cIUIBaseInteractions
+
+        Public Event OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Implements cIUIBaseInteractions.OnPropertyChanged
+
+        Public Sub PropertyChanged(Name As String) Implements cIUIBaseInteractions.PropertyChanged
+            RaiseEvent OnPropertyChanged(Me, New PropertyChangeEventArgs(Name))
+        End Sub
+
         Public Enum GPSDataFormatEnum
             GoogleEarthImageOverlay = 0
         End Enum
@@ -33,7 +41,10 @@ Namespace cSurvey.Design.Options
                 Return bExportData
             End Get
             Set(ByVal value As Boolean)
-                bExportData = value
+                If bExportData <> value Then
+                    bExportData = value
+                    Call PropertyChanged("ExportData")
+                End If
             End Set
         End Property
 
@@ -42,7 +53,10 @@ Namespace cSurvey.Design.Options
                 Return iDataFormat
             End Get
             Set(ByVal value As GPSDataFormatEnum)
-                iDataFormat = value
+                If iDataFormat <> value Then
+                    iDataFormat = value
+                    Call PropertyChanged("DataFormat")
+                End If
             End Set
         End Property
 
@@ -58,7 +72,7 @@ Namespace cSurvey.Design.Options
 
         Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, ByVal Name As String) As XmlElement
             Dim oXMLGPSOptions As XmlElement = Document.CreateElement(Name)
-            Call oXMLGPSOptions.SetAttribute("exportdata", IIf(bExportData, "1", "0"))
+            Call oXMLGPSOptions.SetAttribute("exportdata", If(bExportData, "1", "0"))
             Call oXMLGPSOptions.SetAttribute("dataformat", iDataFormat)
             Call Parent.AppendChild(oXMLGPSOptions)
             Return oXMLGPSOptions

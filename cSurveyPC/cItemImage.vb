@@ -23,8 +23,10 @@ Namespace cSurvey.Design.Items
                 Return sRotateBy
             End Get
             Set(value As Single)
-                sRotateBy = value
-                Call MyBase.Caches.Invalidate()
+                If sRotateBy <> value Then
+                    sRotateBy = value
+                    Call MyBase.Caches.Invalidate()
+                End If
             End Set
         End Property
         Public Overrides ReadOnly Property CanBeHiddenInDesign As Boolean
@@ -69,6 +71,7 @@ Namespace cSurvey.Design.Items
             End Get
             Set(ByVal value As Color)
                 oTransparentColor = value
+                Call MyBase.Caches.Invalidate()
             End Set
         End Property
 
@@ -83,7 +86,10 @@ Namespace cSurvey.Design.Items
                 Return sTransparencyThreshold
             End Get
             Set(ByVal value As Single)
-                sTransparencyThreshold = value
+                If sTransparencyThreshold <> value Then
+                    sTransparencyThreshold = value
+                    Call MyBase.Caches.Invalidate()
+                End If
             End Set
         End Property
 
@@ -113,7 +119,7 @@ Namespace cSurvey.Design.Items
 
         Public Overrides ReadOnly Property CanBeConverted As Boolean
             Get
-                Return False
+                Return True
             End Get
         End Property
 
@@ -253,7 +259,7 @@ Namespace cSurvey.Design.Items
             Call MyBase.Caches.Invalidate()
         End Sub
 
-        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             With MyBase.Caches(PaintOptions)
                 If .Invalidated Then
                     Call .Clear()
@@ -284,7 +290,7 @@ Namespace cSurvey.Design.Items
             End With
         End Sub
 
-        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             If MyBase.Points.Count > 1 Then
                 Call Render(Graphics, PaintOptions, Options, Selected)
                 Try
@@ -299,7 +305,7 @@ Namespace cSurvey.Design.Items
                             End Select
                         Else
                             Using oImageAttributes As System.Drawing.Imaging.ImageAttributes = New System.Drawing.Imaging.ImageAttributes
-                                Call oImageAttributes.SetColorKey(modPaint.DarkColor(oTransparentColor, 1 - sTransparencyThreshold), modPaint.LightColor(oTransparentColor, 1 - sTransparencyThreshold))
+                                Call oImageAttributes.SetColorKey(modPaint.DarkColor(oTransparentColor, 1.0F - sTransparencyThreshold), modPaint.LightColor(oTransparentColor, 1.0F - sTransparencyThreshold))
                                 Select Case iImageResizeMode
                                     Case cIItemImage.ImageResizeModeEnum.Scaled
                                         Call modPaint.DrawScaledImage(Graphics, oRotatedImage, oBounds, oImageAttributes)
@@ -315,7 +321,7 @@ Namespace cSurvey.Design.Items
             End If
         End Sub
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
             If Options And SVGOptionsEnum.Images Then
                 Dim oBounds As RectangleF = GetBounds()
                 Dim oSVGItem As XmlElement = modSVG.CreateImage(SVG, PaintOptions, oBounds, oRotatedImage, sRotateBy, iImageResizeMode = cIItemImage.ImageResizeModeEnum.Scaled)
@@ -329,16 +335,14 @@ Namespace cSurvey.Design.Items
             If sImageID = "" Then sImageID = Guid.NewGuid.ToString
             Select Case File.FileFormat
                 Case cFile.FileFormatEnum.CSX
-                    Using oMs As IO.MemoryStream = New IO.MemoryStream(Convert.FromBase64String(modXML.GetAttributeValue(item, "image")))
-                        oImage = modPaint.SafeBitmapFromStream(oMs)
-                    End Using
+                    oImage = modPaint.ByteArrayToBitmap(Convert.FromBase64String(modXML.GetAttributeValue(item, "image")))
                 Case cFile.FileFormatEnum.CSZ
                     Dim sImagePath As String = modXML.GetAttributeValue(item, "image")
-                    oImage = New Bitmap(DirectCast(File.Data(sImagePath), Storage.cStorageItemFile).Stream)
+                    oImage = modPaint.ByteArrayToBitmap(DirectCast(File.Data(sImagePath), Storage.cStorageItemFile).Stream.ToArray)
             End Select
-            sRotateBy = modXML.GetAttributeValue(item, "rby", 0.0F)
+            sRotateBy = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "rby", 0))
             oTransparentColor = modXML.GetAttributeColor(item, "transparentcolor", Color.Transparent)
-            sTransparencyThreshold = modXML.GetAttributeValue(item, "transparencythreshold", sDefaultTransparencyThreshold)
+            sTransparencyThreshold = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "transparencythreshold", sDefaultTransparencyThreshold))
             iImageResizeMode = modXML.GetAttributeValue(item, "imageresizemode", cIItemImage.ImageResizeModeEnum.Scaled)
         End Sub
 
@@ -348,20 +352,17 @@ Namespace cSurvey.Design.Items
             If Not (File.Options And cFile.FileOptionsEnum.DontSaveBinary) = cFile.FileOptionsEnum.DontSaveBinary Then
                 Select Case File.FileFormat
                     Case cFile.FileFormatEnum.CSX
-                        Using oMs As IO.MemoryStream = New IO.MemoryStream
-                            Call modPaint.SafeBitmapSaveToStream(oImage, oMs, Drawing.Imaging.ImageFormat.Png)
-                            Call oItem.SetAttribute("image", Convert.ToBase64String(oMs.ToArray()))
-                        End Using
+                        Call oItem.SetAttribute("image", Convert.ToBase64String(modPaint.BitmapToByteArray(oImage, Drawing.Imaging.ImageFormat.Png)))
                     Case cFile.FileFormatEnum.CSZ
                         Dim sImagePath As String = "_data\design\" & sImageID & ".png"
                         Dim oImageStorage As Storage.cStorageItemFile = File.Data.AddFile(sImagePath)
-                        Call modPaint.SafeBitmapSaveToStream(oImage, oImageStorage.Stream, Drawing.Imaging.ImageFormat.Png)
+                        Call oImageStorage.Write(modPaint.BitmapToByteArray(oImage, Drawing.Imaging.ImageFormat.Png))
                         Call oItem.SetAttribute("image", sImagePath)
                 End Select
             End If
             If sRotateBy <> 0.0F Then Call oItem.SetAttribute("rby", modNumbers.NumberToString(sRotateBy))
             If Not oTransparentColor = Color.Transparent Then Call oItem.SetAttribute("transparentcolor", oTransparentColor.ToArgb)
-            If sTransparencyThreshold <> sDefaultTransparencyThreshold Then Call oItem.SetAttribute("transparencythreshold", sTransparencyThreshold)
+            If sTransparencyThreshold <> sDefaultTransparencyThreshold Then Call oItem.SetAttribute("transparencythreshold", modNumbers.NumberToString(sTransparencyThreshold, "0.00"))
             If iImageResizeMode <> cIItemImage.ImageResizeModeEnum.Scaled Then Call oItem.SetAttribute("imageresizemode", iImageResizeMode.ToString("D"))
             Return oItem
         End Function
@@ -379,13 +380,21 @@ Namespace cSurvey.Design.Items
 
         Public ReadOnly Property ImageSize() As SizeF Implements cIItemImage.ImageSize
             Get
-                Return oImage.Size
+                If oImage Is Nothing Then
+                    Return New SizeF(-1, -1)
+                Else
+                    Return oImage.Size
+                End If
             End Get
         End Property
 
         Public ReadOnly Property ImageResolution() As Point Implements cIItemImage.ImageResolution
             Get
-                Return New Point(modNumbers.MathRound(oImage.HorizontalResolution, 0), modNumbers.MathRound(oImage.VerticalResolution, 0))
+                If oImage Is Nothing Then
+                    Return New Point(-1, -1)
+                Else
+                    Return New Point(modNumbers.MathRound(oImage.HorizontalResolution, 0), modNumbers.MathRound(oImage.VerticalResolution, 0))
+                End If
             End Get
         End Property
 
@@ -407,7 +416,10 @@ Namespace cSurvey.Design.Items
                 Return iImageResizeMode
             End Get
             Set(ByVal value As cIItemImage.ImageResizeModeEnum)
-                iImageResizeMode = value
+                If iImageResizeMode <> value Then
+                    iImageResizeMode = value
+                    Call MyBase.Caches.Invalidate()
+                End If
             End Set
         End Property
 

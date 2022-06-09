@@ -7,7 +7,7 @@ friend Class frmHistory
     Private sFilename As String
 
     Private bHistory As Boolean
-    Private iHistoryMode As frmMain.HistoryModeEnum
+    Private iHistoryMode As frmMain2.HistoryModeEnum
     Private sHistoryWebURL As String
     Private bHistoryWebAuthReq As Boolean
     Private sHistoryWebUsername As String
@@ -21,11 +21,11 @@ friend Class frmHistory
     Friend Class OnAddEventArgs
         Inherits EventArgs
 
-        Private iHistoryMode As frmMain.HistoryModeEnum
+        Private iHistoryMode As frmMain2.HistoryModeEnum
         Private oLastException As Exception
         Private bCancelled As Boolean
 
-        Public ReadOnly Property HistoryMode As frmMain.HistoryModeEnum
+        Public ReadOnly Property HistoryMode As frmMain2.HistoryModeEnum
             Get
                 Return iHistoryMode
             End Get
@@ -49,7 +49,7 @@ friend Class frmHistory
             End Set
         End Property
 
-        Public Sub New(HistoryMode As frmMain.HistoryModeEnum)
+        Public Sub New(HistoryMode As frmMain2.HistoryModeEnum)
             iHistoryMode = HistoryMode
         End Sub
     End Class
@@ -61,7 +61,7 @@ friend Class frmHistory
         Call pRefresh()
     End Sub
 
-    Private Sub pRefresh(Optional Mode As frmMain.HistoryModeEnum = frmMain.HistoryModeEnum.Both)
+    Private Sub pRefresh(Optional Mode As frmMain2.HistoryModeEnum = frmMain2.HistoryModeEnum.Both)
         Cursor = Cursors.WaitCursor
 
         Dim oCurrentFile As FileInfo
@@ -394,23 +394,23 @@ friend Class frmHistory
     End Sub
 
     Private Sub btnAddLocal_Click(sender As Object, e As EventArgs) Handles btnAddLocal.Click
-        Call pHistoryAdd(frmMain.HistoryModeEnum.Folder)
+        Call pHistoryAdd(frmMain2.HistoryModeEnum.Folder)
     End Sub
 
     Private Sub btnAddWeb_Click(sender As Object, e As EventArgs) Handles btnAddWeb.Click
-        Call pHistoryAdd(frmMain.HistoryModeEnum.WebStorage)
+        Call pHistoryAdd(frmMain2.HistoryModeEnum.WebStorage)
     End Sub
 
-    Private Sub pHistoryAdd(Mode As frmMain.HistoryModeEnum)
+    Private Sub pHistoryAdd(Mode As frmMain2.HistoryModeEnum)
         Dim oEvent As OnAddEventArgs = New OnAddEventArgs(Mode)
         Cursor = Cursors.WaitCursor
         RaiseEvent OnAdd(Me, oEvent)
         If oEvent.Cancelled Then
             Call pLogAdd("error", String.Format(modMain.GetLocalizedString("history.textpart8"), oEvent.LastException.Message))
-            Call MsgBox(String.Format(modmain.GetLocalizedString("history.warning4"), oEvent.LastException.Message), MsgBoxStyle.OkOnly Or MsgBoxStyle.Exclamation, modMain.GetLocalizedString("history.warningtitle"))
+            Call MsgBox(String.Format(modMain.GetLocalizedString("history.warning4"), oEvent.LastException.Message), MsgBoxStyle.OkOnly Or MsgBoxStyle.Exclamation, modMain.GetLocalizedString("history.warningtitle"))
         Else
             Call pLogAdd("", modMain.GetLocalizedString("history.textpart9"))
-            Call pRefresh(frmMain.HistoryModeEnum.WebStorage)
+            Call pRefresh(frmMain2.HistoryModeEnum.WebStorage)
         End If
         Cursor = Cursors.Default
     End Sub

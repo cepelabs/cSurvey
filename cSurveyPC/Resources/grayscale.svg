@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 32 32"
+   style="enable-background:new 0 0 32 32;"
+   xml:space="preserve"
+   sodipodi:docname="grayscale.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs24">
+	
+	
+	
+	
+
+		
+		
+		
+	</defs><sodipodi:namedview
+   id="namedview22"
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1.0"
+   inkscape:pageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   showgrid="false"
+   inkscape:zoom="26"
+   inkscape:cx="15.980769"
+   inkscape:cy="16.019231"
+   inkscape:window-width="2560"
+   inkscape:window-height="1017"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1" />
+<style
+   type="text/css"
+   id="style2">
+	.Yellow{fill:#FFB115;}
+	.Red{fill:#D11C1C;}
+	.Black{fill:#727272;}
+	.Blue{fill:#1177D7;}
+	.White{fill:#FFFFFF;}
+	.Green{fill:#039C23;}
+	.st0{opacity:0.75;}
+	.st1{opacity:0.5;}
+	.st2{opacity:0.25;}
+	.st3{fill:#FFB115;}
+</style>
+<g
+   id="g4">
+</g>
+<path
+   class="Black"
+   d="M 31,10 H 11 c -0.5,0 -1,0.5 -1,1 v 20 c 0,0.5 0.5,1 1,1 h 20 c 0.5,0 1,-0.5 1,-1 V 11 c 0,-0.5 -0.5,-1 -1,-1 z M 30,30 H 12 V 12 H 30 Z M 10,22 H 1 C 0.5,22 0,21.5 0,21 V 1 C 0,0.5 0.5,0 1,0 h 20 c 0.5,0 1,0.5 1,1 v 9 H 20 V 2 H 2 v 18 h 8 z"
+   id="path6" /><path
+   class="Red"
+   d="m 20,28 h -6 v -6 h 6 z"
+   id="path12"
+   style="opacity:0.5;fill:#cccccc" /><path
+   style="fill:#ffb115;fill-opacity:1"
+   d="m 9,8 h 1 V 4 H 4 v 6 H 8 V 9 C 8,8.4 8.4,8 9,8 Z"
+   id="path2732" /><path
+   style="fill:#ffb115;fill-opacity:1"
+   d="m 28,20 h -6 v -6 h 6 z"
+   id="path2730" /><path
+   style="fill:#b3b3b3;fill-opacity:1"
+   d="m 20,20 h -6 v -6 h 6 z"
+   id="path2728" /><path
+   style="fill:#ffb115;fill-opacity:1"
+   d="M 8,18 H 4 v -6 h 4 z"
+   id="path8" /><path
+   style="fill:#4d4d4d;fill-opacity:1"
+   d="m 28,28 h -6 v -6 h 6 z"
+   id="path4537" /><path
+   style="fill:#666666;fill-opacity:1"
+   d="m 28,20 h -6 v -6 h 6 z"
+   id="path4535" /><path
+   style="fill:#d11c1c;fill-opacity:1"
+   d="M 18,8 H 12 V 4 h 6 z"
+   id="path10" /><path
+   class="Red"
+   d="M 8,18 H 4 v -6 h 4 z"
+   id="path16"
+   style="opacity:0.5" />
+</svg>

@@ -118,14 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnDataFieldAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 22</value>
-  </data>
   <data name="btnDataFieldAdd.Text" xml:space="preserve">
     <value>Add property</value>
-  </data>
-  <data name="btnDataFieldDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 22</value>
   </data>
   <data name="btnDataFieldDelete.Text" xml:space="preserve">
     <value>Delete</value>
@@ -177,9 +171,6 @@
         AeABBwYAAcABAwYAAYABAQYAAYABAQYAAoEGAALDBgAC5wQACw==
 </value>
   </data>
-  <data name="lblDataFieldDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 13</value>
-  </data>
   <data name="lblDataFieldDescription.Text" xml:space="preserve">
     <value>Description:</value>
   </data>
@@ -210,9 +201,6 @@
   <data name="cboDataFieldType.Items8" xml:space="preserve">
     <value>List of values</value>
   </data>
-  <data name="lblDataFieldType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 13</value>
-  </data>
   <data name="lblDataFieldType.Text" xml:space="preserve">
     <value>Data type:</value>
   </data>
@@ -220,17 +208,11 @@
     <value>Attention: put a value for every line.
 Do not add numeric values.</value>
   </data>
-  <data name="lblDataFieldEnumValues.Size" type="System.Drawing.Size, System.Drawing">
-    <value>27, 13</value>
-  </data>
   <data name="lblDataFieldEnumValues.Text" xml:space="preserve">
     <value>List:</value>
   </data>
   <data name="cmdCancel.Text" xml:space="preserve">
     <value>Annulla</value>
-  </data>
-  <data name="lblDataFieldCategory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 13</value>
   </data>
   <data name="lblDataFieldCategory.Text" xml:space="preserve">
     <value>Category:</value>

@@ -28,6 +28,21 @@ Module modSVG
         End Try
     End Function
 
+    Public Function AppendPolygon(SVG As XmlDocument, ByVal Parent As XmlElement, ByVal Points As PointF(), Brush As Brush, Pen As Pen) As XmlElement
+        Dim oItemRect As XmlElement = SVG.CreateElement("polygon", svgNamespace)
+
+        Call oItemRect.SetAttribute("points", String.Join(" ", Points.Select(Function(oPoint) modNumbers.NumberToString(oPoint.X, "") & "," & modNumbers.NumberToString(oPoint.Y, ""))))
+
+        Call AppendItemStyle(SVG, oItemRect, Brush, Pen)
+
+        If Parent Is Nothing Then
+            Call SVG.Item("svg").AppendChild(oItemRect)
+        Else
+            Call Parent.AppendChild(oItemRect)
+        End If
+        Return oItemRect
+    End Function
+
     Public Function AppendRectangle(SVG As XmlDocument, ByVal Parent As XmlElement, ByVal Bounds As RectangleF, Brush As Brush, Pen As Pen) As XmlElement
         Dim oItemRect As XmlElement = SVG.CreateElement("rect", svgNamespace)
 
@@ -229,7 +244,7 @@ Module modSVG
         End If
     End Sub
 
-    Public Function AppendItem(ByVal SVG As XmlDocument, ByVal Parent As XmlElement, ByVal PaintOptions As cOptions, ByVal Path As GraphicsPath, Optional ByVal id As String = "") As XmlElement
+    Public Function AppendItem(ByVal SVG As XmlDocument, ByVal Parent As XmlElement, ByVal PaintOptions As cOptionsCenterline, ByVal Path As GraphicsPath, Optional ByVal id As String = "") As XmlElement
         Dim oXMLPath As XmlElement = SVG.CreateElement("path", svgNamespace)
         Dim sPath As StringBuilder = New StringBuilder
         Dim iLastType As PathPointType = PathPointType.Start
@@ -287,7 +302,7 @@ Module modSVG
         Return CreateText(SVG, Text, Point, Font.FontFamily.Name, Font.Style, Font.Size, Font.Unit, id)
     End Function
 
-    Public Function CreateImage(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Bounds As RectangleF, Image As Bitmap, Optional RotationAngle As Single = 0, Optional KeepAspectRatio As Boolean = True, Optional ByVal id As String = "") As XmlElement
+    Public Function CreateImage(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Bounds As RectangleF, Image As Bitmap, Optional RotationAngle As Single = 0, Optional KeepAspectRatio As Boolean = True, Optional ByVal id As String = "") As XmlElement
         If Not Image Is Nothing Then
             Dim oXMLImage As XmlElement = SVG.CreateElement("image", svgNamespace)
             Call oXMLImage.SetAttribute("x", modNumbers.NumberToString(Bounds.X, ""))
@@ -297,10 +312,7 @@ Module modSVG
             Call oXMLImage.SetAttribute("preserveAspectRatio", If(KeepAspectRatio, "meet", "none"))
             Dim oSB As StringBuilder = New StringBuilder
             Call oSB.Append("data:image/PNG;base64,")
-            Using oMs As IO.MemoryStream = New IO.MemoryStream
-                Call modPaint.SafeBitmapSaveToStream(Image, oMs, Drawing.Imaging.ImageFormat.Png)
-                Call oSB.Append(Convert.ToBase64String(oMs.ToArray()))
-            End Using
+            Call oSB.Append(Convert.ToBase64String(modPaint.BitmapToByteArray(Image, Drawing.Imaging.ImageFormat.Png)))
             Call oXMLImage.SetAttribute("href", "http://www.w3.org/1999/xlink", oSB.ToString)
             If RotationAngle <> 0 Then
                 Call oXMLImage.SetAttribute("transform", "rotate(" & modNumbers.NumberToString(RotationAngle, "") & ")")
@@ -309,7 +321,7 @@ Module modSVG
         End If
     End Function
 
-    Public Function CreateItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Path As GraphicsPath, Optional ByVal id As String = "") As XmlElement
+    Public Function CreateItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Path As GraphicsPath, Optional ByVal id As String = "") As XmlElement
         Dim oXMLGroup As XmlElement = SVG.CreateElement("g", svgNamespace)
         Call AppendItem(SVG, oXMLGroup, PaintOptions, Path, id)
         Return oXMLGroup
@@ -363,7 +375,16 @@ Module modSVG
                 Case Else
             End Select
             sStyle = pSVGAppendStyle(sStyle, "stroke-width", modNumbers.NumberToString(sPenWidth, ""))
-            sStyle = pSVGAppendStyle(sStyle, "stroke-linejoin", "round")
+            Select Case Pen.LineJoin
+                Case LineJoin.Bevel
+                    sStyle = pSVGAppendStyle(sStyle, "stroke-linejoin", "bevel")
+                Case LineJoin.Miter
+                    sStyle = pSVGAppendStyle(sStyle, "stroke-linejoin", "miter")
+                Case LineJoin.MiterClipped
+                    sStyle = pSVGAppendStyle(sStyle, "stroke-linejoin", "crop")
+                Case LineJoin.Round
+                    sStyle = pSVGAppendStyle(sStyle, "stroke-linejoin", "round")
+            End Select
             sStyle = pSVGAppendStyle(sStyle, "stroke-linecap", "round")
             sStyle = pSVGAppendStyle(sStyle, "stroke-opacity", "1")
         Else
@@ -404,7 +425,7 @@ Module modSVG
         End If
         If (Not Pen Is Nothing) Then
             sStyle = pSVGAppendStyle(sStyle, "stroke", pGetHTMLColor(Pen.Color)) ' ColorTranslator.ToHtml(Item.Pen.Color).ToLower)
-            Dim sPenWidth As Single = modNumbers.MathRound(Pen.Pen.Width, 2)
+            Dim sPenWidth As Single = modNumbers.MathRound(Pen.GetBasePen.Pen.Width, 2)
             If sPenWidth = 0 Then
                 sPenWidth = 0.01
                 sStyle = pSVGAppendStyle(sStyle, "vector-effect", "none")

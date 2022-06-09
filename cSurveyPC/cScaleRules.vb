@@ -83,20 +83,6 @@ Namespace cSurvey.Scale
             Else
                 Return oItem
             End If
-            'Dim oItem As cIScaleRule
-            'Dim oNewItem As cIScaleRule
-            'Dim iIndex As Integer = 0
-            'Do
-            '    If iIndex = 0 Then
-            '        oItem = oDefaultItem
-            '    Else
-            '        oItem = oNewItem
-            '    End If
-            '    If iIndex >= oItems.Count Then Exit Do
-            '    oNewItem = oItems.ElementAt(iIndex).Value
-            '    iIndex += 1
-            'Loop While oNewItem.Scale <= Scale
-            'Return oItem
         End Function
 
         Public Function GetRule(ByVal Scale As Integer) As cIScaleRule
@@ -143,7 +129,6 @@ Namespace cSurvey.Scale
 
         Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlItem As XmlElement = Document.CreateElement("scalerules")
-            'Call oXmlItem.SetAttribute("currentscale", iCurrentScale)
             For Each oItem As cScaleRule In oItems.Values
                 Call oItem.SaveTo(File, Document, oXmlItem)
             Next
@@ -165,7 +150,7 @@ Namespace cSurvey.Scale
         Private oSurvey As cSurvey
         Private oCategories As cDefaultScaleCategoriesVisibility
         Private oItems As cVisibilityItems
-        Private oDesignProperties As cPropertiesCollection
+        'Private oDesignProperties As cPropertiesCollection
 
         Public ReadOnly Property Items As cVisibilityItems Implements cIScaleRule.Items
             Get
@@ -181,7 +166,7 @@ Namespace cSurvey.Scale
 
         Public ReadOnly Property DesignProperties As cPropertiesCollection Implements cIScaleRule.DesignProperties
             Get
-                Return oDesignProperties 'oSurvey.Properties.DesignProperties
+                Return oSurvey.Properties.DesignProperties 'oDesignProperties
             End Get
         End Property
 
@@ -197,7 +182,7 @@ Namespace cSurvey.Scale
             oSurvey = Survey
             oCategories = New cDefaultScaleCategoriesVisibility
             oItems = New cVisibilityItems(oSurvey)
-            oDesignProperties = New cPropertiesCollection(oSurvey)
+            'oDesignProperties = New cPropertiesCollection(oSurvey)
         End Sub
     End Class
 
@@ -309,6 +294,8 @@ Namespace cSurvey.Scale
         Implements cIScaleRule
 
         Friend Class OnScaleChangeEventArgs
+            Inherits EventArgs
+
             Private iScale As Integer
             Private iNewScale As Integer
             Private bCancel As Boolean
@@ -344,7 +331,7 @@ Namespace cSurvey.Scale
         Private iScale As Integer
 
         Private oCategories As cScaleCategoriesVisibility
-        Private oDesignProperties As cPropertiesCollection
+        Private WithEvents oDesignProperties As cPropertiesCollection
 
         Private oItems As cVisibilityItems
 
@@ -428,6 +415,10 @@ Namespace cSurvey.Scale
             Call Parent.AppendChild(oXmlItem)
             Return oXmlItem
         End Function
+
+        Private Sub oDesignProperties_OnGetParent(sender As Object, e As cPropertiesCollection.cGetParentEventArgs) Handles oDesignProperties.OnGetParent
+            e.Parent = oSurvey.Properties.DesignProperties
+        End Sub
 
         Public ReadOnly Property Categories() As cIScaleCategoriesVisibility Implements cIScaleRule.Categories
             Get

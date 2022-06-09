@@ -1,0 +1,1176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="optPropTextVAlignBottom.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="optPropTextVAlignBottom.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFBSURBVDhPlZNNTgJREITnTpxEia40cW8U2Gj0DIJR
+        Ey6g0TsxYBADJs4GGUCDjGV/LY+Q4SdYSdH9uqrrvQUTgaPLurzZEsEvWeFweH6n/cq1iqWasTqref7N
+        8eFnzwMMBYbgc5RqbKTmGeYAP3vWekBUPK1anyluxGo4mysYu44PP3vzgF0Csm+1nttqttpe8wxzfPjZ
+        WwrodF71soHo6wOmE/V6b+p21xMd39oXJEmi5H0DTV/9ghML+Jmq3/9QOhhoNEyNwwWmPkfHh5+9hYAr
+        66Wv8UjHtQeVbh5Vvn2akzNzdICfPWt9P9qZBUwnE/vNvF9GNtMl/OxZ6/vzF9j77KZ7le3Git0cyJk5
+        Olh6wV655sK2wM+etfYtXNR1cGbfgg1JhvzT8gwaPvzseYChwIG6LYM/BACE/8D9kqJfxh1y7PVyYO8A
+        AAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="optPropTextVAlignBottom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="optPropTextVAlignBottom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>54, 1</value>
+  </data>
+  <data name="optPropTextVAlignBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="optPropTextVAlignBottom.TabIndex" type="System.Int32, mscorlib">
+    <value>129</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignBottom.Name" xml:space="preserve">
+    <value>optPropTextVAlignBottom</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignBottom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignBottom.Parent" xml:space="preserve">
+    <value>pnlPropTextStyleVAlign</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignBottom.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="optPropTextVAlignTop.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="optPropTextVAlignTop.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFKSURBVDhPlZNpTsJwEMW5Eydx45MmHkARXKNXcA+k
+        V1DxTMRIgpSWTYIQFvuc3z9SiFgCL3npzLwlbQIpsH/lyQ0rYuqX7MGyd1FQJv+g7aO7GXNznLvjw0/O
+        FRjSmfw9i4aDnibDvqLRYIHc0QF+cja6gtRW9tbmSG/lsnKFZ516JZ15rzHZuaPjw08uLtik4HusyntF
+        frWqhl9To+7PaDt3dHz4yS0U1D6qyj4+6bj4opNiKSY7d/SlBX6trrAeqBmEaoZztJ07+tKC0MxBECgk
+        8Ifubvr/BYdWEE3UarfVaLYSiY4PP7m5ghubI3W7XXU6n4lEx4efXFyw4Qqkfn+gXu8rkegAPzkbXf73
+        DezzJmONR6NEooOFN9ixn+s6wE/ORvsvXHraPS+4I6+2cXCdTNPx4SfnCgxpFp6rcuqfFgCEdeD8klI/
+        pIx3ggCJIXYAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="optPropTextVAlignTop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="optPropTextVAlignTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 1</value>
+  </data>
+  <data name="optPropTextVAlignTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="optPropTextVAlignTop.TabIndex" type="System.Int32, mscorlib">
+    <value>127</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignTop.Name" xml:space="preserve">
+    <value>optPropTextVAlignTop</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignTop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignTop.Parent" xml:space="preserve">
+    <value>pnlPropTextStyleVAlign</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignTop.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="optPropTextVAlignCenter.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="optPropTextVAlignCenter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFUSURBVDhPlZNbTgJREETZEytBol+auABQ4EOjW1DQ
+        gGEHvrYEipoQHho1AjMEBij7XJnJhBGDlVRud1d15WYeKbB/WpcrNkTol+yg2Tuuaad4oexhxVhenqv8
+        mePDz54LMKQZgrE3lG/kXGU4B/jZs9IFpLIHZavnajaaajg+/MKm0/HhZy8K2CJgHuix9ezYenpJMNTw
+        4WcvEdBut9XtdNTvdY29GLtujv5nwFv/VfnLG5Vq9ypdxWg9c/T1AYuZPj/e5Q++NLWHFfijiPTM0fEl
+        A/IEzDUcDJSrXKtQvVWxeheRnjk6PvzsxQLOrV7IG47sdXma+L4m4xitZ46ODz97UUDGBdh34I/leZiT
+        ZI4O8LNnpdtf3sCezyxQMJ2uJTpI3GC7UHHCpsDPnpX2L5zUtXtUc0Oulsmdrafp+PCz5wIMaRrOTRn6
+        wwCA8B84v6TUN8cjda08J51tAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="optPropTextVAlignCenter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="optPropTextVAlignCenter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 1</value>
+  </data>
+  <data name="optPropTextVAlignCenter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="optPropTextVAlignCenter.TabIndex" type="System.Int32, mscorlib">
+    <value>128</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignCenter.Name" xml:space="preserve">
+    <value>optPropTextVAlignCenter</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignCenter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignCenter.Parent" xml:space="preserve">
+    <value>pnlPropTextStyleVAlign</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignCenter.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="pnlPropTextStyleVAlign.Location" type="System.Drawing.Point, System.Drawing">
+    <value>223, 29</value>
+  </data>
+  <data name="pnlPropTextStyleVAlign.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 26</value>
+  </data>
+  <data name="pnlPropTextStyleVAlign.TabIndex" type="System.Int32, mscorlib">
+    <value>142</value>
+  </data>
+  <data name="&gt;&gt;pnlPropTextStyleVAlign.Name" xml:space="preserve">
+    <value>pnlPropTextStyleVAlign</value>
+  </data>
+  <data name="&gt;&gt;pnlPropTextStyleVAlign.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlPropTextStyleVAlign.Parent" xml:space="preserve">
+    <value>pnlPropTextAlignmentAndRotation</value>
+  </data>
+  <data name="&gt;&gt;pnlPropTextStyleVAlign.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="optPropTextAlignRight.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="optPropTextAlignRight.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGaSURBVDhPpVPZTgJBENx/4RN8VVBAYqISo4AgEpRT
+        EUEOMf4QrxwJ736JgMqNB4sCC4vldBuja6JBrKR2ejZT1T21WalUKj0Wi0Xk8/k/kTSklaiYF6SVyI1w
+        Xa4IVlGuVHFze4dGs4VWu4Nmq82k/UddbzRZUygUPg3uajXU6nVxsIFOtwuT2QKbwwW/P4R4Io1kOoNg
+        OAKny41VyxprNAb3D4946snoyX30n18wHClQxpN3KmNexxOV+TIYsoYN6EHQG1awad3CrnMP3sMAjqMx
+        pM4vkM5cInqaQCAQhnvfi22bA0bTKms0E1BXch4MR9xx+sqvGV9KxkSd8qox6Mky5D6N/4yRooguIoNd
+        kUFAZJAUGYhpQke/ZEB3JGdVtP7e8SdoMlhcWsb6hhV2hxMerw/hSBSJVIY7R07i8PmDcLk92NqxY8Vo
+        Zo1mgnnABrlcjjdj+kx0DfGZCHqDkbt5D3yIxs4QS6TgE3nY7E7Oh6CZYDoV91dVXmcFaf//L2Sz2Ssq
+        yC0vrjMTxVnSkFYS0AkuzEdJ9waGqybTYWiBpwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="optPropTextAlignRight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="optPropTextAlignRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>277, 3</value>
+  </data>
+  <data name="optPropTextAlignRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="optPropTextAlignRight.TabIndex" type="System.Int32, mscorlib">
+    <value>141</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignRight.Name" xml:space="preserve">
+    <value>optPropTextAlignRight</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignRight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignRight.Parent" xml:space="preserve">
+    <value>pnlPropTextAlignmentAndRotation</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignRight.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="optPropTextAlignCenter.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="optPropTextAlignCenter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGQSURBVDhPpZPZTsJgEIX7LjyCty4QMQohRKMJsogS
+        RA0RN4IaH4hbCgn3PokrKCpIRNAWxOOcUYi9UvEkk04735l/Ok2NcrncLJVKME3zT0EPvQaTUUWvwW7U
+        2fkFzi8ucXVdwU3tDrW7e0fc3Na0RoYsRe+wQaVaFegW9UYd3plZRKIr2N7Zw342h/haEj5/AA/1ujJk
+        KUeDxmMTT61ntDsvsOwu7G4PtlwH+atlS62jDFlKGxSLRb2ZnPIgEJxHKBxFIplCensH2dwRckcnMsk+
+        kqlNhGWq4Pwi3B6veugdTvDc7uDl1dLT3vUJ9DrI+5KwRoYs5XiFp1ZLCm2B7K8dxL92cPi5A19AXsdW
+        hizlaMDubzzmB5GxhKW0wWAH4xNu+ANBLIXCWE2sYyud0S+QPTxGOrOLxPqG7Ccme1rAlHtaPY4djCKd
+        oFAo6E1Xxur13jTnCaHliE6R2T1AJLYqe5nTGhmyFL3DCfr9vsZP+s7pBP/+F/L5/CkTdjNlpF+FsPTQ
+        a4hcEmOjheH6AHPmMJFcPpBVAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="optPropTextAlignCenter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="optPropTextAlignCenter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>251, 3</value>
+  </data>
+  <data name="optPropTextAlignCenter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="optPropTextAlignCenter.TabIndex" type="System.Int32, mscorlib">
+    <value>140</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignCenter.Name" xml:space="preserve">
+    <value>optPropTextAlignCenter</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignCenter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignCenter.Parent" xml:space="preserve">
+    <value>pnlPropTextAlignmentAndRotation</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignCenter.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="optPropTextAlignLeft.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="optPropTextAlignLeft.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGhSURBVDhPpVPZTsJQFOy/+Am+K5saE1cEoe6AiJKK
+        IIjED+KVJeHdL3GFQhVFikpLl/Geq5I0Pog4yeTcNp25c6etUKvVOtVqFeVy+U8kDWkFWowL0gqVSoVf
+        yM0WlIdHtJQHzqai8En35JaCu/s6rm9ucXVNvOEaSjI0cHt8CKyLiO4f4CSdw2kuj3jiCGFxE7Nz83hs
+        t9kmTTRkGfVGg2scBm/vfRimCcMwoQ8M6PqATaKBvqaj9/qGrtrDS1fF03OHa34kWPYHIG5uIxKLIyml
+        kD07R75wASmV5snCG1tYWvHD5fZxDWmHBoZp8fkN+4sEy7ahsUTvfY0npTQERwKPdwbB0GcH6QzrgO0e
+        TySHHWg6HeMVak9lR1G5xmHwGyiNadk8qcZ6ITgMXG4vFtn5QuIW9qL7OExKyGTPkMsXeB+77N56eAML
+        SyuYdnm5xtHBOHAkmHJ5sLoWxM5eDNJxGqlMFhHWRyAY4v0Q6BUPWHwioVQqQSCXUWFZFkz2rdAk8AT/
+        /heKxeIlLcitzCKNRPYsaUgrMEwwTo5HYeIDN0gm3SNd//kAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="optPropTextAlignLeft.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="optPropTextAlignLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>225, 3</value>
+  </data>
+  <data name="optPropTextAlignLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="optPropTextAlignLeft.TabIndex" type="System.Int32, mscorlib">
+    <value>139</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignLeft.Name" xml:space="preserve">
+    <value>optPropTextAlignLeft</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignLeft.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignLeft.Parent" xml:space="preserve">
+    <value>pnlPropTextAlignmentAndRotation</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignLeft.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="cboPropTextSize.Items" xml:space="preserve">
+    <value>1.00 - Default</value>
+  </data>
+  <data name="cboPropTextSize.Items1" xml:space="preserve">
+    <value>0.25 - Very small</value>
+  </data>
+  <data name="cboPropTextSize.Items2" xml:space="preserve">
+    <value>0.50 - Small</value>
+  </data>
+  <data name="cboPropTextSize.Items3" xml:space="preserve">
+    <value>1.00 - Medium</value>
+  </data>
+  <data name="cboPropTextSize.Items4" xml:space="preserve">
+    <value>2.00 - Big</value>
+  </data>
+  <data name="cboPropTextSize.Items5" xml:space="preserve">
+    <value>4.00 - Very big</value>
+  </data>
+  <data name="cboPropTextSize.Items6" xml:space="preserve">
+    <value>6.00</value>
+  </data>
+  <data name="cboPropTextSize.Items7" xml:space="preserve">
+    <value>8.00</value>
+  </data>
+  <data name="cboPropTextSize.Items8" xml:space="preserve">
+    <value>10.00</value>
+  </data>
+  <data name="cboPropTextSize.Items9" xml:space="preserve">
+    <value>12.00</value>
+  </data>
+  <data name="cboPropTextSize.Items10" xml:space="preserve">
+    <value>16.00</value>
+  </data>
+  <data name="cboPropTextSize.Items11" xml:space="preserve">
+    <value>20.00</value>
+  </data>
+  <data name="cboPropTextSize.Items12" xml:space="preserve">
+    <value>24.00</value>
+  </data>
+  <data name="cboPropTextSize.Items13" xml:space="preserve">
+    <value>32.00</value>
+  </data>
+  <data name="cboPropTextSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 33</value>
+  </data>
+  <data name="cboPropTextSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 21</value>
+  </data>
+  <data name="cboPropTextSize.TabIndex" type="System.Int32, mscorlib">
+    <value>138</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextSize.Name" xml:space="preserve">
+    <value>cboPropTextSize</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextSize.Parent" xml:space="preserve">
+    <value>pnlPropTextAlignmentAndRotation</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextSize.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lblPropTextSize.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblPropTextSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropTextSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 36</value>
+  </data>
+  <data name="lblPropTextSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 13</value>
+  </data>
+  <data name="lblPropTextSize.TabIndex" type="System.Int32, mscorlib">
+    <value>137</value>
+  </data>
+  <data name="lblPropTextSize.Text" xml:space="preserve">
+    <value>Scale:</value>
+  </data>
+  <data name="lblPropTextSize.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextSize.Name" xml:space="preserve">
+    <value>lblPropTextSize</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextSize.Parent" xml:space="preserve">
+    <value>pnlPropTextAlignmentAndRotation</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextSize.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblPropText.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblPropText.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 6</value>
+  </data>
+  <data name="lblPropText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 13</value>
+  </data>
+  <data name="lblPropText.TabIndex" type="System.Int32, mscorlib">
+    <value>136</value>
+  </data>
+  <data name="lblPropText.Text" xml:space="preserve">
+    <value>Text:</value>
+  </data>
+  <data name="lblPropText.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lblPropText.Name" xml:space="preserve">
+    <value>lblPropText</value>
+  </data>
+  <data name="&gt;&gt;lblPropText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPropText.Parent" xml:space="preserve">
+    <value>pnlPropTextStyle</value>
+  </data>
+  <data name="&gt;&gt;lblPropText.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtPropText.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="txtPropText.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="txtPropText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 3</value>
+  </data>
+  <data name="txtPropText.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="txtPropText.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Both</value>
+  </data>
+  <data name="txtPropText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>331, 105</value>
+  </data>
+  <data name="txtPropText.TabIndex" type="System.Int32, mscorlib">
+    <value>135</value>
+  </data>
+  <data name="&gt;&gt;txtPropText.Name" xml:space="preserve">
+    <value>txtPropText</value>
+  </data>
+  <data name="&gt;&gt;txtPropText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropText.Parent" xml:space="preserve">
+    <value>pnlPropTextStyle</value>
+  </data>
+  <data name="&gt;&gt;txtPropText.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblPropTextStyle.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblPropTextStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropTextStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 117</value>
+  </data>
+  <data name="lblPropTextStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 13</value>
+  </data>
+  <data name="lblPropTextStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>132</value>
+  </data>
+  <data name="lblPropTextStyle.Text" xml:space="preserve">
+    <value>Style:</value>
+  </data>
+  <data name="lblPropTextStyle.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextStyle.Name" xml:space="preserve">
+    <value>lblPropTextStyle</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextStyle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextStyle.Parent" xml:space="preserve">
+    <value>pnlPropTextStyle</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextStyle.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cboPropTextStyle.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="cboPropTextStyle.ItemHeight" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="cboPropTextStyle.Items" xml:space="preserve">
+    <value>Solid color</value>
+  </data>
+  <data name="cboPropTextStyle.Items1" xml:space="preserve">
+    <value>Sand/Mud</value>
+  </data>
+  <data name="cboPropTextStyle.Items2" xml:space="preserve">
+    <value>Water</value>
+  </data>
+  <data name="cboPropTextStyle.Items3" xml:space="preserve">
+    <value>Pebbles</value>
+  </data>
+  <data name="cboPropTextStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 114</value>
+  </data>
+  <data name="cboPropTextStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>331, 38</value>
+  </data>
+  <data name="cboPropTextStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>131</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextStyle.Name" xml:space="preserve">
+    <value>cboPropTextStyle</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextStyle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextStyle.Parent" xml:space="preserve">
+    <value>pnlPropTextStyle</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextStyle.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cboPropTextRotateMode.Items" xml:space="preserve">
+    <value>Rotable</value>
+  </data>
+  <data name="cboPropTextRotateMode.Items1" xml:space="preserve">
+    <value>Fixed</value>
+  </data>
+  <data name="cboPropTextRotateMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 6</value>
+  </data>
+  <data name="cboPropTextRotateMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 21</value>
+  </data>
+  <data name="cboPropTextRotateMode.TabIndex" type="System.Int32, mscorlib">
+    <value>134</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextRotateMode.Name" xml:space="preserve">
+    <value>cboPropTextRotateMode</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextRotateMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextRotateMode.Parent" xml:space="preserve">
+    <value>pnlPropTextAlignmentAndRotation</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextRotateMode.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblPropTextRotateMode.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblPropTextRotateMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropTextRotateMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 9</value>
+  </data>
+  <data name="lblPropTextRotateMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 13</value>
+  </data>
+  <data name="lblPropTextRotateMode.TabIndex" type="System.Int32, mscorlib">
+    <value>133</value>
+  </data>
+  <data name="lblPropTextRotateMode.Text" xml:space="preserve">
+    <value>Rotation:</value>
+  </data>
+  <data name="lblPropTextRotateMode.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextRotateMode.Name" xml:space="preserve">
+    <value>lblPropTextRotateMode</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextRotateMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextRotateMode.Parent" xml:space="preserve">
+    <value>pnlPropTextAlignmentAndRotation</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextRotateMode.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pnlPropTextFont.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="lblPropFontColor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblPropFontColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropFontColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>168, 66</value>
+  </data>
+  <data name="lblPropFontColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 13</value>
+  </data>
+  <data name="lblPropFontColor.TabIndex" type="System.Int32, mscorlib">
+    <value>121</value>
+  </data>
+  <data name="lblPropFontColor.Text" xml:space="preserve">
+    <value>Color:</value>
+  </data>
+  <data name="lblPropFontColor.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lblPropFontColor.Name" xml:space="preserve">
+    <value>lblPropFontColor</value>
+  </data>
+  <data name="&gt;&gt;lblPropFontColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPropFontColor.Parent" xml:space="preserve">
+    <value>pnlPropTextFont</value>
+  </data>
+  <data name="&gt;&gt;lblPropFontColor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cmdPropFontColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdPropFontColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>256, 62</value>
+  </data>
+  <data name="cmdPropFontColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 21</value>
+  </data>
+  <data name="cmdPropFontColor.TabIndex" type="System.Int32, mscorlib">
+    <value>122</value>
+  </data>
+  <data name="cmdPropFontColor.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="&gt;&gt;cmdPropFontColor.Name" xml:space="preserve">
+    <value>cmdPropFontColor</value>
+  </data>
+  <data name="&gt;&gt;cmdPropFontColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmdPropFontColor.Parent" xml:space="preserve">
+    <value>pnlPropTextFont</value>
+  </data>
+  <data name="&gt;&gt;cmdPropFontColor.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="picPropFontColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="picPropFontColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>216, 62</value>
+  </data>
+  <data name="picPropFontColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 21</value>
+  </data>
+  <data name="picPropFontColor.TabIndex" type="System.Int32, mscorlib">
+    <value>123</value>
+  </data>
+  <data name="&gt;&gt;picPropFontColor.Name" xml:space="preserve">
+    <value>picPropFontColor</value>
+  </data>
+  <data name="&gt;&gt;picPropFontColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;picPropFontColor.Parent" xml:space="preserve">
+    <value>pnlPropTextFont</value>
+  </data>
+  <data name="&gt;&gt;picPropFontColor.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="chkPropTextFontUnderline.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="chkPropTextFontUnderline.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEoSURBVDhPpZExioNQFEUDFmksBhEtlBCJiGDh2Ihd
+        ksbCFBkxRcRGK22UAQ1ZhkuYJcwS/hKylCzhzfsDGXyJ4GSmOHDvyc+DizMA+Bej8hlIOZ/POXJF4HQ6
+        9cPfiqL4zLIMDofD+9D/hBv4Z9Z1HUbq0zR9SZLkcu9J4bRty5qmwUg9J4oidu9I4dR1zaqqwkg9Z7vd
+        Th8oy5LhXozUc4IgmD6Q5znDvRip57iuO33geDyyOI4xUs+xLGv6wH6/73e7HeDet6E3TXOzWCzIp+WQ
+        wgnDcLler6+49+J53pK71Wq10XX9oijKdx9Cyg3f95e498O2bWYYBtM0rZdl+XXs7YN4lgfhOA7gXsC9
+        oKoqSJIEoijCfD4HQRDwCX1Pyl8Ylb8HZl+4B664p6m3qQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="chkPropTextFontUnderline.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="chkPropTextFontUnderline.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropTextFontUnderline.Location" type="System.Drawing.Point, System.Drawing">
+    <value>137, 33</value>
+  </data>
+  <data name="chkPropTextFontUnderline.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="chkPropTextFontUnderline.TabIndex" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontUnderline.Name" xml:space="preserve">
+    <value>chkPropTextFontUnderline</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontUnderline.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontUnderline.Parent" xml:space="preserve">
+    <value>pnlPropTextFont</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontUnderline.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="chkPropTextFontItalic.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="chkPropTextFontItalic.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADfSURBVDhPpc6/CYNgEIfhrGFlJyIIIioWChFUUATj
+        HxBBxMbKJTJCRsgIGcFRHMENLl4hmPgTIime4nvvPrgLEf0FxjNgPAPG1TAM977v567rqK7ruSiK8Xvn
+        44G0bTstnynLsg7Nd2GraRqtqipK03RGcwbjqizLR57nFIbhE80ZjKskSaYoish13RuaMxhZHMdaEATk
+        OM7h+QxG5nnew/d90nX98HwGI7Nte1qQoiiH5zMYLcu6mqZJsiwvz/18axcMw7irqjpKkjSKojgKgvD6
+        3tmC8QwYz4Dxd3R5A93Yy8ECdbBmAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="chkPropTextFontItalic.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="chkPropTextFontItalic.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropTextFontItalic.Location" type="System.Drawing.Point, System.Drawing">
+    <value>107, 33</value>
+  </data>
+  <data name="chkPropTextFontItalic.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="chkPropTextFontItalic.TabIndex" type="System.Int32, mscorlib">
+    <value>119</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontItalic.Name" xml:space="preserve">
+    <value>chkPropTextFontItalic</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontItalic.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontItalic.Parent" xml:space="preserve">
+    <value>pnlPropTextFont</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontItalic.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="chkPropTextFontBold.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="chkPropTextFontBold.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFgSURBVDhPpZHBioJQFIbbJkSCiwiDZhGBhLgJcZFQ
+        oC4ic5GLokWCSGQIQkHL+wg+go/QI/gIPkKP0COcOTfGi3fGxTSz+OD8P+ece35tAcC/aDTfodF8B07c
+        brcAKa/XK6Rp+jyfzySKonsQBM/dbpdvNhux3k/hBOVyuZDT6QRxHBeVt91uc9/3YblclvVeCicoSZLQ
+        VyEMQ7bA8zyyXq9hsVig5Ps5QTkej+RwOMB+v38tcF1XdBzngYBhGPn3fk5QMC/BvIB5H6vViti2XVqW
+        Bbqus4vq/DAwL8FhmpcNTKfTHF+H8XhcDodD7kOyooLmxbNpXrZgMpmIOAyqqkKv10vr/ayowKzkKy93
+        8mAwAEVRQBRFUvdZUWGaJpnP56BpGvtlsiyno9EIut3uUxCEj3o/Kyiz2SzAvHc8tcCTC8yb9fv9TJKk
+        otPpZO12mxumcOIvNJrv0Gj+Hmh9Aok9kmTdlYGzAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="chkPropTextFontBold.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="chkPropTextFontBold.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropTextFontBold.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 33</value>
+  </data>
+  <data name="chkPropTextFontBold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="chkPropTextFontBold.TabIndex" type="System.Int32, mscorlib">
+    <value>118</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontBold.Name" xml:space="preserve">
+    <value>chkPropTextFontBold</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontBold.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontBold.Parent" xml:space="preserve">
+    <value>pnlPropTextFont</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontBold.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="cboPropTextFontChar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 6</value>
+  </data>
+  <data name="cboPropTextFontChar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>151, 21</value>
+  </data>
+  <data name="cboPropTextFontChar.TabIndex" type="System.Int32, mscorlib">
+    <value>117</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextFontChar.Name" xml:space="preserve">
+    <value>cboPropTextFontChar</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextFontChar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextFontChar.Parent" xml:space="preserve">
+    <value>pnlPropTextFont</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextFontChar.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lblPropTextFontChar.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblPropTextFontChar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropTextFontChar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 9</value>
+  </data>
+  <data name="lblPropTextFontChar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 13</value>
+  </data>
+  <data name="lblPropTextFontChar.TabIndex" type="System.Int32, mscorlib">
+    <value>116</value>
+  </data>
+  <data name="lblPropTextFontChar.Text" xml:space="preserve">
+    <value>Font:</value>
+  </data>
+  <data name="lblPropTextFontChar.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextFontChar.Name" xml:space="preserve">
+    <value>lblPropTextFontChar</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextFontChar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextFontChar.Parent" xml:space="preserve">
+    <value>pnlPropTextFont</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextFontChar.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="cboPropTextFontSize.Items" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="cboPropTextFontSize.Items1" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="cboPropTextFontSize.Items2" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="cboPropTextFontSize.Items3" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="cboPropTextFontSize.Items4" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="cboPropTextFontSize.Items5" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="cboPropTextFontSize.Items6" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="cboPropTextFontSize.Items7" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="cboPropTextFontSize.Items8" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="cboPropTextFontSize.Items9" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="cboPropTextFontSize.Items10" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="cboPropTextFontSize.Items11" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="cboPropTextFontSize.Items12" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="cboPropTextFontSize.Items13" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="cboPropTextFontSize.Items14" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="cboPropTextFontSize.Items15" xml:space="preserve">
+    <value>36</value>
+  </data>
+  <data name="cboPropTextFontSize.Items16" xml:space="preserve">
+    <value>48</value>
+  </data>
+  <data name="cboPropTextFontSize.Items17" xml:space="preserve">
+    <value>72</value>
+  </data>
+  <data name="cboPropTextFontSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 63</value>
+  </data>
+  <data name="cboPropTextFontSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 21</value>
+  </data>
+  <data name="cboPropTextFontSize.TabIndex" type="System.Int32, mscorlib">
+    <value>115</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextFontSize.Name" xml:space="preserve">
+    <value>cboPropTextFontSize</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextFontSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextFontSize.Parent" xml:space="preserve">
+    <value>pnlPropTextFont</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextFontSize.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="lblPropTextFontSize.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblPropTextFontSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropTextFontSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 66</value>
+  </data>
+  <data name="lblPropTextFontSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 13</value>
+  </data>
+  <data name="lblPropTextFontSize.TabIndex" type="System.Int32, mscorlib">
+    <value>114</value>
+  </data>
+  <data name="lblPropTextFontSize.Text" xml:space="preserve">
+    <value>Size:</value>
+  </data>
+  <data name="lblPropTextFontSize.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextFontSize.Name" xml:space="preserve">
+    <value>lblPropTextFontSize</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextFontSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextFontSize.Parent" xml:space="preserve">
+    <value>pnlPropTextFont</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextFontSize.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="pnlPropTextFont.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 157</value>
+  </data>
+  <data name="pnlPropTextFont.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="pnlPropTextFont.Size" type="System.Drawing.Size, System.Drawing">
+    <value>409, 89</value>
+  </data>
+  <data name="pnlPropTextFont.TabIndex" type="System.Int32, mscorlib">
+    <value>143</value>
+  </data>
+  <data name="&gt;&gt;pnlPropTextFont.Name" xml:space="preserve">
+    <value>pnlPropTextFont</value>
+  </data>
+  <data name="&gt;&gt;pnlPropTextFont.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlPropTextFont.Parent" xml:space="preserve">
+    <value>TableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;pnlPropTextFont.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="pnlPropTextStyle.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="pnlPropTextStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="pnlPropTextStyle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="pnlPropTextStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>409, 157</value>
+  </data>
+  <data name="pnlPropTextStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;pnlPropTextStyle.Name" xml:space="preserve">
+    <value>pnlPropTextStyle</value>
+  </data>
+  <data name="&gt;&gt;pnlPropTextStyle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlPropTextStyle.Parent" xml:space="preserve">
+    <value>TableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;pnlPropTextStyle.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="pnlPropTextAlignmentAndRotation.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="pnlPropTextAlignmentAndRotation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 246</value>
+  </data>
+  <data name="pnlPropTextAlignmentAndRotation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="pnlPropTextAlignmentAndRotation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>409, 61</value>
+  </data>
+  <data name="pnlPropTextAlignmentAndRotation.TabIndex" type="System.Int32, mscorlib">
+    <value>144</value>
+  </data>
+  <data name="&gt;&gt;pnlPropTextAlignmentAndRotation.Name" xml:space="preserve">
+    <value>pnlPropTextAlignmentAndRotation</value>
+  </data>
+  <data name="&gt;&gt;pnlPropTextAlignmentAndRotation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlPropTextAlignmentAndRotation.Parent" xml:space="preserve">
+    <value>TableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;pnlPropTextAlignmentAndRotation.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="TableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="TableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="TableLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="TableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="TableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>409, 433</value>
+  </data>
+  <data name="TableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>144</value>
+  </data>
+  <data name="&gt;&gt;TableLayoutPanel1.Name" xml:space="preserve">
+    <value>TableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;TableLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TableLayoutPanel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;TableLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="pnlPropTextStyle" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlPropTextFont" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlPropTextAlignmentAndRotation" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>409, 433</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>cItemTextPropertyControl</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>cSurveyPC.cItemPropertyControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+</root>

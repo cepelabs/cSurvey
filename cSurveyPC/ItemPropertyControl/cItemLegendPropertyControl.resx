@@ -1,0 +1,1025 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cmdAutofill.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="cmdAutofill.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="cmdAutofill.Location" type="System.Drawing.Point, System.Drawing">
+    <value>368, 256</value>
+  </data>
+  <data name="cmdAutofill.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cmdAutofill.TabIndex" type="System.Int32, mscorlib">
+    <value>138</value>
+  </data>
+  <data name="cmdAutofill.ToolTip" xml:space="preserve">
+    <value>Autofill (press SHIFT to cleanup)</value>
+  </data>
+  <data name="&gt;&gt;cmdAutofill.Name" xml:space="preserve">
+    <value>cmdAutofill</value>
+  </data>
+  <data name="&gt;&gt;cmdAutofill.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdAutofill.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdAutofill.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="cmdDeleteAll.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="cmdDeleteAll.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdDeleteAll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>368, 36</value>
+  </data>
+  <data name="cmdDeleteAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdDeleteAll.TabIndex" type="System.Int32, mscorlib">
+    <value>137</value>
+  </data>
+  <data name="cmdDeleteAll.ToolTip" xml:space="preserve">
+    <value>Delete all</value>
+  </data>
+  <data name="cmdDeleteAll.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;cmdDeleteAll.Name" xml:space="preserve">
+    <value>cmdDeleteAll</value>
+  </data>
+  <data name="&gt;&gt;cmdDeleteAll.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdDeleteAll.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdDeleteAll.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="cmdDelete.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="cmdDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdDelete.Location" type="System.Drawing.Point, System.Drawing">
+    <value>368, 6</value>
+  </data>
+  <data name="cmdDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdDelete.TabIndex" type="System.Int32, mscorlib">
+    <value>134</value>
+  </data>
+  <data name="cmdDelete.ToolTip" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="&gt;&gt;cmdDelete.Name" xml:space="preserve">
+    <value>cmdDelete</value>
+  </data>
+  <data name="&gt;&gt;cmdDelete.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdDelete.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdDelete.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="cmdDown.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="cmdDown.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEdSURBVDhPpZK9SgNRFITPe/gGtttZx6gkqdL4BnmD
+        lCksgn/pUxh119YihY0EEVEJCAlIIiQmAQWxyEuMZ3aPht1TmR04MPe7c+culxUAqflVuSXdnWMBh96w
+        zztgKurB72Ub43ktLjHs8w6YCoeC968mwp6AZYZ93gETC0afdVze5ygYfNQQPuYo6C/2EfX1IY/WKNjW
+        gof5HqKXHAW92RauhmsWFLXgZraJ6FUL1Bv2eQdMhabgerqBcCygN+zzWVBpyTNvb9wKOiPBuQ49v4J7
+        2XxqwSmdCrqTKp6WVZy9STz0ZNzL5lOLGIgEvK1xJ7hYJENv7xC4vAOJgl09cKA/EYeejBsu78BKQelE
+        wKFP0P8KKB78O0yl85AfpGsV1MCpaagAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="cmdDown.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>368, 96</value>
+  </data>
+  <data name="cmdDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdDown.TabIndex" type="System.Int32, mscorlib">
+    <value>136</value>
+  </data>
+  <data name="cmdDown.ToolTip" xml:space="preserve">
+    <value>Move down</value>
+  </data>
+  <data name="&gt;&gt;cmdDown.Name" xml:space="preserve">
+    <value>cmdDown</value>
+  </data>
+  <data name="&gt;&gt;cmdDown.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdDown.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdDown.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="cmdUp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="cmdUp.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEiSURBVDhPnVNLSsRAFHxLT+ABFFwLs3chY4LjCbyC
+        l3BQwQ/iARwU0wvdiAs3IqgwuNEZRVBciIGJs/EY5av0A828jXRBQXW9SiXdSQRAg3+R7wlIW9ZweWcY
+        FrcFb9VhTWqzfd4ZivaOYPh5gKNrqUlN718FnX3BoNzASV/Qu4ukHpSb4Gwy31iQ+ZY8Z7uC9QvB8X1k
+        VzU9zibzjUVtiMwpW9z303gNxaOgHc+gxZnLO8PAPT98rSIM493N9nlnGJa0oF+toHjRR08tuB0toHhN
+        LMi04Go0j/CuBfYKCZd3hiHTg7usZhE+EgtyLTivphHK1AK96HQ8hVAlFizrwZ19R1Kb7fPOMGRdueno
+        n0hSm+3zzvjFjJJfH0ldo5mH/ACCjBYT47hY/gAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="cmdUp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdUp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>368, 66</value>
+  </data>
+  <data name="cmdUp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdUp.TabIndex" type="System.Int32, mscorlib">
+    <value>135</value>
+  </data>
+  <data name="cmdUp.ToolTip" xml:space="preserve">
+    <value>Move up</value>
+  </data>
+  <data name="&gt;&gt;cmdUp.Name" xml:space="preserve">
+    <value>cmdUp</value>
+  </data>
+  <data name="&gt;&gt;cmdUp.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdUp.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdUp.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="lblPropLegendItems.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropLegendItems.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 13</value>
+  </data>
+  <data name="lblPropLegendItems.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 13</value>
+  </data>
+  <data name="lblPropLegendItems.TabIndex" type="System.Int32, mscorlib">
+    <value>139</value>
+  </data>
+  <data name="lblPropLegendItems.Text" xml:space="preserve">
+    <value>Items:</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItems.Name" xml:space="preserve">
+    <value>lblPropLegendItems</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItems.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItems.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItems.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="Label9.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="Label9.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="Label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>219, 289</value>
+  </data>
+  <data name="Label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>8, 13</value>
+  </data>
+  <data name="Label9.TabIndex" type="System.Int32, mscorlib">
+    <value>144</value>
+  </data>
+  <data name="Label9.Text" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="&gt;&gt;Label9.Name" xml:space="preserve">
+    <value>Label9</value>
+  </data>
+  <data name="&gt;&gt;Label9.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;Label9.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Label9.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="lblPropCrossSectionCrossX.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="lblPropCrossSectionCrossX.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionCrossX.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionCrossX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>139, 289</value>
+  </data>
+  <data name="lblPropCrossSectionCrossX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>8, 13</value>
+  </data>
+  <data name="lblPropCrossSectionCrossX.TabIndex" type="System.Int32, mscorlib">
+    <value>143</value>
+  </data>
+  <data name="lblPropCrossSectionCrossX.Text" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionCrossX.Name" xml:space="preserve">
+    <value>lblPropCrossSectionCrossX</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionCrossX.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionCrossX.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionCrossX.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="txtPropLegendItemHeight.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="txtPropLegendItemHeight.EditValue" type="System.Decimal, mscorlib">
+    <value>0.5</value>
+  </data>
+  <data name="txtPropLegendItemHeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>160, 287</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="txtPropLegendItemHeight.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtPropLegendItemHeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 20</value>
+  </data>
+  <data name="txtPropLegendItemHeight.TabIndex" type="System.Int32, mscorlib">
+    <value>142</value>
+  </data>
+  <data name="txtPropLegendItemHeight.ToolTip" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemHeight.Name" xml:space="preserve">
+    <value>txtPropLegendItemHeight</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemHeight.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemHeight.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemHeight.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="txtPropLegendItemWidth.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="txtPropLegendItemWidth.EditValue" type="System.Decimal, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="txtPropLegendItemWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 286</value>
+  </data>
+  <data name="txtPropLegendItemWidth.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtPropLegendItemWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 20</value>
+  </data>
+  <data name="txtPropLegendItemWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>141</value>
+  </data>
+  <data name="txtPropLegendItemWidth.ToolTip" xml:space="preserve">
+    <value>Width</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemWidth.Name" xml:space="preserve">
+    <value>txtPropLegendItemWidth</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemWidth.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemWidth.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemWidth.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="lblPropLegendItemSize.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="lblPropLegendItemSize.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropLegendItemSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropLegendItemSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 289</value>
+  </data>
+  <data name="lblPropLegendItemSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 13</value>
+  </data>
+  <data name="lblPropLegendItemSize.TabIndex" type="System.Int32, mscorlib">
+    <value>140</value>
+  </data>
+  <data name="lblPropLegendItemSize.Text" xml:space="preserve">
+    <value>Size (w,h):</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItemSize.Name" xml:space="preserve">
+    <value>lblPropLegendItemSize</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItemSize.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItemSize.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItemSize.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="Label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="Label1.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="Label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>219, 316</value>
+  </data>
+  <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>8, 13</value>
+  </data>
+  <data name="Label1.TabIndex" type="System.Int32, mscorlib">
+    <value>149</value>
+  </data>
+  <data name="Label1.Text" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="&gt;&gt;Label1.Name" xml:space="preserve">
+    <value>Label1</value>
+  </data>
+  <data name="&gt;&gt;Label1.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="Label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="Label2.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="Label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>139, 316</value>
+  </data>
+  <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>8, 13</value>
+  </data>
+  <data name="Label2.TabIndex" type="System.Int32, mscorlib">
+    <value>148</value>
+  </data>
+  <data name="Label2.Text" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="&gt;&gt;Label2.Name" xml:space="preserve">
+    <value>Label2</value>
+  </data>
+  <data name="&gt;&gt;Label2.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;Label2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Label2.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="txtPropLegendItemVPadding.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="txtPropLegendItemVPadding.EditValue" type="System.Decimal, mscorlib">
+    <value>0.01</value>
+  </data>
+  <data name="txtPropLegendItemVPadding.Location" type="System.Drawing.Point, System.Drawing">
+    <value>160, 314</value>
+  </data>
+  <data name="txtPropLegendItemVPadding.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtPropLegendItemVPadding.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 20</value>
+  </data>
+  <data name="txtPropLegendItemVPadding.TabIndex" type="System.Int32, mscorlib">
+    <value>147</value>
+  </data>
+  <data name="txtPropLegendItemVPadding.ToolTip" xml:space="preserve">
+    <value>Vertical padding</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemVPadding.Name" xml:space="preserve">
+    <value>txtPropLegendItemVPadding</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemVPadding.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemVPadding.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemVPadding.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="txtPropLegendItemHPadding.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="txtPropLegendItemHPadding.EditValue" type="System.Decimal, mscorlib">
+    <value>0.01</value>
+  </data>
+  <data name="txtPropLegendItemHPadding.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 314</value>
+  </data>
+  <data name="txtPropLegendItemHPadding.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtPropLegendItemHPadding.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 20</value>
+  </data>
+  <data name="txtPropLegendItemHPadding.TabIndex" type="System.Int32, mscorlib">
+    <value>146</value>
+  </data>
+  <data name="txtPropLegendItemHPadding.ToolTip" xml:space="preserve">
+    <value>Horizontal padding</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemHPadding.Name" xml:space="preserve">
+    <value>txtPropLegendItemHPadding</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemHPadding.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemHPadding.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemHPadding.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="lblPropLegendItemPadding.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="lblPropLegendItemPadding.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropLegendItemPadding.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropLegendItemPadding.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 316</value>
+  </data>
+  <data name="lblPropLegendItemPadding.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 13</value>
+  </data>
+  <data name="lblPropLegendItemPadding.TabIndex" type="System.Int32, mscorlib">
+    <value>145</value>
+  </data>
+  <data name="lblPropLegendItemPadding.Text" xml:space="preserve">
+    <value>Padding (h,v):</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItemPadding.Name" xml:space="preserve">
+    <value>lblPropLegendItemPadding</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItemPadding.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItemPadding.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItemPadding.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="txtPropLegendItemScale.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="txtPropLegendItemScale.EditValue" type="System.Decimal, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="txtPropLegendItemScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 344</value>
+  </data>
+  <data name="txtPropLegendItemScale.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtPropLegendItemScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="txtPropLegendItemScale.TabIndex" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemScale.Name" xml:space="preserve">
+    <value>txtPropLegendItemScale</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemScale.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemScale.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lblBaseLineWidthScaleFactor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="lblBaseLineWidthScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblBaseLineWidthScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 346</value>
+  </data>
+  <data name="lblBaseLineWidthScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
+  </data>
+  <data name="lblBaseLineWidthScaleFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>151</value>
+  </data>
+  <data name="lblBaseLineWidthScaleFactor.Text" xml:space="preserve">
+    <value>Basic scale:</value>
+  </data>
+  <data name="&gt;&gt;lblBaseLineWidthScaleFactor.Name" xml:space="preserve">
+    <value>lblBaseLineWidthScaleFactor</value>
+  </data>
+  <data name="&gt;&gt;lblBaseLineWidthScaleFactor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblBaseLineWidthScaleFactor.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblBaseLineWidthScaleFactor.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lblPropLegendItemFlowDirection.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="lblPropLegendItemFlowDirection.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropLegendItemFlowDirection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 404</value>
+  </data>
+  <data name="lblPropLegendItemFlowDirection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 13</value>
+  </data>
+  <data name="lblPropLegendItemFlowDirection.TabIndex" type="System.Int32, mscorlib">
+    <value>155</value>
+  </data>
+  <data name="lblPropLegendItemFlowDirection.Text" xml:space="preserve">
+    <value>Flow direction:</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItemFlowDirection.Name" xml:space="preserve">
+    <value>lblPropLegendItemFlowDirection</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItemFlowDirection.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItemFlowDirection.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItemFlowDirection.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="cboPropLegendItemFlowDirection.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="cboPropLegendItemFlowDirection.Items" xml:space="preserve">
+    <value>Up/Down</value>
+  </data>
+  <data name="cboPropLegendItemFlowDirection.Items1" xml:space="preserve">
+    <value>Left/Right</value>
+  </data>
+  <data name="cboPropLegendItemFlowDirection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 401</value>
+  </data>
+  <data name="cboPropLegendItemFlowDirection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 21</value>
+  </data>
+  <data name="cboPropLegendItemFlowDirection.TabIndex" type="System.Int32, mscorlib">
+    <value>154</value>
+  </data>
+  <data name="&gt;&gt;cboPropLegendItemFlowDirection.Name" xml:space="preserve">
+    <value>cboPropLegendItemFlowDirection</value>
+  </data>
+  <data name="&gt;&gt;cboPropLegendItemFlowDirection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPropLegendItemFlowDirection.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropLegendItemFlowDirection.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cboPropLegendItemAlign.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="cboPropLegendItemAlign.Items" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="cboPropLegendItemAlign.Items1" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="cboPropLegendItemAlign.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 374</value>
+  </data>
+  <data name="cboPropLegendItemAlign.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 21</value>
+  </data>
+  <data name="cboPropLegendItemAlign.TabIndex" type="System.Int32, mscorlib">
+    <value>153</value>
+  </data>
+  <data name="&gt;&gt;cboPropLegendItemAlign.Name" xml:space="preserve">
+    <value>cboPropLegendItemAlign</value>
+  </data>
+  <data name="&gt;&gt;cboPropLegendItemAlign.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPropLegendItemAlign.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropLegendItemAlign.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblPropLegendItemAlign.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="lblPropLegendItemAlign.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropLegendItemAlign.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 377</value>
+  </data>
+  <data name="lblPropLegendItemAlign.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 13</value>
+  </data>
+  <data name="lblPropLegendItemAlign.TabIndex" type="System.Int32, mscorlib">
+    <value>152</value>
+  </data>
+  <data name="lblPropLegendItemAlign.Text" xml:space="preserve">
+    <value>Alignment:</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItemAlign.Name" xml:space="preserve">
+    <value>lblPropLegendItemAlign</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItemAlign.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItemAlign.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItemAlign.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="txtPropLegendItemRowColMaxItems.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="txtPropLegendItemRowColMaxItems.EditValue" type="System.Decimal, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="txtPropLegendItemRowColMaxItems.Location" type="System.Drawing.Point, System.Drawing">
+    <value>284, 401</value>
+  </data>
+  <data name="txtPropLegendItemRowColMaxItems.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtPropLegendItemRowColMaxItems.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="txtPropLegendItemRowColMaxItems.TabIndex" type="System.Int32, mscorlib">
+    <value>156</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemRowColMaxItems.Name" xml:space="preserve">
+    <value>txtPropLegendItemRowColMaxItems</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemRowColMaxItems.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemRowColMaxItems.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropLegendItemRowColMaxItems.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblPropLegendItemRowColMaxItems.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="lblPropLegendItemRowColMaxItems.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropLegendItemRowColMaxItems.Location" type="System.Drawing.Point, System.Drawing">
+    <value>187, 403</value>
+  </data>
+  <data name="lblPropLegendItemRowColMaxItems.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 13</value>
+  </data>
+  <data name="lblPropLegendItemRowColMaxItems.TabIndex" type="System.Int32, mscorlib">
+    <value>157</value>
+  </data>
+  <data name="lblPropLegendItemRowColMaxItems.Text" xml:space="preserve">
+    <value>Row/col. items:</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItemRowColMaxItems.Name" xml:space="preserve">
+    <value>lblPropLegendItemRowColMaxItems</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItemRowColMaxItems.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItemRowColMaxItems.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropLegendItemRowColMaxItems.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtItemsScale.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtItemsScale.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboItemsType.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cboItemsType.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="colItemsObject.Caption" xml:space="preserve">
+    <value>Object</value>
+  </data>
+  <data name="colItemsType.Caption" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="colItemsType.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colItemsType.VisibleIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="colItemsText.Caption" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="colItemsText.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colItemsText.VisibleIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="colItemsText.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <data name="colItemsScale.Caption" xml:space="preserve">
+    <value>Scale</value>
+  </data>
+  <data name="colItemsScale.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colItemsScale.VisibleIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="colItemsScale.Width" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="GridControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="GridControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 6</value>
+  </data>
+  <data name="GridControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>283, 274</value>
+  </data>
+  <data name="GridControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>158</value>
+  </data>
+  <data name="&gt;&gt;GridControl1.Name" xml:space="preserve">
+    <value>GridControl1</value>
+  </data>
+  <data name="&gt;&gt;GridControl1.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GridControl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;GridControl1.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>396, 427</value>
+  </data>
+  <data name="&gt;&gt;txtItemsScale.Name" xml:space="preserve">
+    <value>txtItemsScale</value>
+  </data>
+  <data name="&gt;&gt;txtItemsScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboItemsType.Name" xml:space="preserve">
+    <value>cboItemsType</value>
+  </data>
+  <data name="&gt;&gt;cboItemsType.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GridView1.Name" xml:space="preserve">
+    <value>GridView1</value>
+  </data>
+  <data name="&gt;&gt;GridView1.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Views.Grid.GridView, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colItemsObject.Name" xml:space="preserve">
+    <value>colItemsObject</value>
+  </data>
+  <data name="&gt;&gt;colItemsObject.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colItemsType.Name" xml:space="preserve">
+    <value>colItemsType</value>
+  </data>
+  <data name="&gt;&gt;colItemsType.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colItemsText.Name" xml:space="preserve">
+    <value>colItemsText</value>
+  </data>
+  <data name="&gt;&gt;colItemsText.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colItemsScale.Name" xml:space="preserve">
+    <value>colItemsScale</value>
+  </data>
+  <data name="&gt;&gt;colItemsScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>cItemLegendPropertyControl</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>cSurveyPC.cItemPropertyControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+</root>

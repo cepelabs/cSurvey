@@ -8,6 +8,13 @@ Imports System.Collections.ObjectModel
 Namespace cSurvey.Design.Options
     Public Class cSurfaceOptions
         Implements IEnumerable
+        Implements cIUIBaseInteractions
+
+        Public Event OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Implements cIUIBaseInteractions.OnPropertyChanged
+
+        Public Sub PropertyChanged(Name As String) Implements cIUIBaseInteractions.PropertyChanged
+            RaiseEvent OnPropertyChanged(Me, New PropertyChangeEventArgs(Name))
+        End Sub
 
         Friend Class cSurfaceOptionsBaseCollection
             Inherits KeyedCollection(Of String, cSurfaceOptionsItem)
@@ -18,9 +25,9 @@ Namespace cSurvey.Design.Options
         End Class
 
         Public Class cSurfaceOptionsItem
+            Inherits cSurfaceBaseOptionsItem
             Implements cISurfaceOptionsItem
 
-            Private sID As String
             Private bVisible As Boolean
             Private sMinScale As Single?
             Private sMaxScale As Single?
@@ -66,18 +73,12 @@ Namespace cSurvey.Design.Options
                 End Set
             End Property
 
-            Public ReadOnly Property ID As String Implements cISurfaceOptionsItem.ID
-                Get
-                    Return sID
-                End Get
-            End Property
-
             Friend Sub New(ID As String)
-                sID = ID
+                MyBase.New(ID)
             End Sub
 
             Friend Sub New(Item As XmlElement)
-                sID = Item.GetAttribute("id")
+                MyBase.New(Item)
                 bVisible = Item.GetAttribute("visible")
                 sTransparency = modNumbers.StringToSingle(modXML.GetAttributeValue(Item, "transparency", "0"))
                 If Item.HasAttribute("minscale") Then sMinScale = modNumbers.StringToSingle(modXML.GetAttributeValue(Item, "minscale", "0"))
@@ -85,7 +86,7 @@ Namespace cSurvey.Design.Options
             End Sub
 
             Friend Function Clone() As cSurfaceOptionsItem
-                Dim oItem As cSurfaceOptionsItem = New cSurfaceOptionsItem(sID)
+                Dim oItem As cSurfaceOptionsItem = New cSurfaceOptionsItem(MyBase.ID)
                 oItem.bVisible = bVisible
                 oItem.sTransparency = sTransparency
                 oItem.sMinScale = sMinScale
@@ -93,10 +94,9 @@ Namespace cSurvey.Design.Options
                 Return oItem
             End Function
 
-            Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
-                Dim oXMLSurfaceOptionsItem As XmlElement = Document.CreateElement("surfaceoptionsitem")
-                Call oXMLSurfaceOptionsItem.SetAttribute("id", sID)
-                Call oXMLSurfaceOptionsItem.SetAttribute("visible", IIf(bVisible, "1", "0"))
+            Friend Shadows Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+                Dim oXMLSurfaceOptionsItem As XmlElement = MyBase.SaveTo("surfaceoptionsitem", File, Document, Parent)
+                Call oXMLSurfaceOptionsItem.SetAttribute("visible", If(bVisible, "1", "0"))
                 If sTransparency > 0 Then Call oXMLSurfaceOptionsItem.SetAttribute("transparency", modNumbers.NumberToString(sTransparency))
                 If sMinScale.HasValue Then Call oXMLSurfaceOptionsItem.SetAttribute("minscale", modNumbers.NumberToString(sMinScale.Value, "0"))
                 If sMaxScale.HasValue Then Call oXMLSurfaceOptionsItem.SetAttribute("maxscale", modNumbers.NumberToString(sMaxScale.Value, "0"))
@@ -116,7 +116,10 @@ Namespace cSurvey.Design.Options
                 Return bVisible
             End Get
             Set(value As Boolean)
-                bVisible = value
+                If bVisible <> value Then
+                    bVisible = value
+                    Call PropertyChanged("DrawSurface")
+                End If
             End Set
         End Property
 

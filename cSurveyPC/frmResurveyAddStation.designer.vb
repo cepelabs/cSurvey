@@ -2,7 +2,7 @@
 
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmResurveyAddStation
-    Inherits XtraForm
+    Inherits cForm
 
     'Form esegue l'override del metodo Dispose per pulire l'elenco dei componenti.
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -24,69 +24,46 @@ Partial Class frmResurveyAddStation
     'Non modificarla nell'editor del codice.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmResurveyAddStation))
-        Me.optNewStation = New System.Windows.Forms.RadioButton()
-        Me.optMovedStation = New System.Windows.Forms.RadioButton()
-        Me.cmdOk = New System.Windows.Forms.Button()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.optFirstScale = New System.Windows.Forms.RadioButton()
-        Me.optSecondScale = New System.Windows.Forms.RadioButton()
-        Me.lblScaleUM = New System.Windows.Forms.Label()
-        Me.lblPrevStation = New System.Windows.Forms.Label()
-        Me.lblPosition = New System.Windows.Forms.Label()
-        Me.txtPosition = New System.Windows.Forms.TextBox()
-        Me.tipDefault = New System.Windows.Forms.ToolTip(Me.components)
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.lblScaleUM = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPrevStation = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPosition = New DevExpress.XtraEditors.LabelControl()
+        Me.txtPosition = New DevExpress.XtraEditors.TextEdit()
         Me.txtScaleSize = New DevExpress.XtraEditors.SpinEdit()
         Me.cboPrevStation = New DevExpress.XtraEditors.LookUpEdit()
         Me.cboMovedStation = New DevExpress.XtraEditors.LookUpEdit()
         Me.cboNewStation = New DevExpress.XtraEditors.LookUpEdit()
-        Me.optNorthBegin = New System.Windows.Forms.RadioButton()
-        Me.optNorthEnd = New System.Windows.Forms.RadioButton()
+        Me.optNewStation = New DevExpress.XtraEditors.CheckEdit()
+        Me.optMovedStation = New DevExpress.XtraEditors.CheckEdit()
+        Me.optFirstScale = New DevExpress.XtraEditors.CheckEdit()
+        Me.optSecondScale = New DevExpress.XtraEditors.CheckEdit()
+        Me.optNorthBegin = New DevExpress.XtraEditors.CheckEdit()
+        Me.optNorthEnd = New DevExpress.XtraEditors.CheckEdit()
+        CType(Me.txtPosition.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtScaleSize.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboPrevStation.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboMovedStation.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboNewStation.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.optNewStation.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.optMovedStation.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.optFirstScale.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.optSecondScale.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.optNorthBegin.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.optNorthEnd.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'optNewStation
-        '
-        resources.ApplyResources(Me.optNewStation, "optNewStation")
-        Me.optNewStation.Checked = True
-        Me.optNewStation.Name = "optNewStation"
-        Me.optNewStation.TabStop = True
-        Me.optNewStation.UseVisualStyleBackColor = True
-        '
-        'optMovedStation
-        '
-        resources.ApplyResources(Me.optMovedStation, "optMovedStation")
-        Me.optMovedStation.Name = "optMovedStation"
-        Me.optMovedStation.UseVisualStyleBackColor = True
         '
         'cmdOk
         '
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
         '
         'cmdCancel
         '
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
-        '
-        'optFirstScale
-        '
-        resources.ApplyResources(Me.optFirstScale, "optFirstScale")
-        Me.optFirstScale.Name = "optFirstScale"
-        Me.optFirstScale.UseVisualStyleBackColor = True
-        '
-        'optSecondScale
-        '
-        resources.ApplyResources(Me.optSecondScale, "optSecondScale")
-        Me.optSecondScale.Name = "optSecondScale"
-        Me.optSecondScale.UseVisualStyleBackColor = True
         '
         'lblScaleUM
         '
@@ -107,8 +84,7 @@ Partial Class frmResurveyAddStation
         '
         resources.ApplyResources(Me.txtPosition, "txtPosition")
         Me.txtPosition.Name = "txtPosition"
-        Me.txtPosition.ReadOnly = True
-        Me.tipDefault.SetToolTip(Me.txtPosition, resources.GetString("txtPosition.ToolTip"))
+        Me.txtPosition.Properties.ReadOnly = True
         '
         'txtScaleSize
         '
@@ -120,7 +96,6 @@ Partial Class frmResurveyAddStation
         Me.txtScaleSize.Properties.EditFormat.FormatString = "N2"
         Me.txtScaleSize.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.txtScaleSize.Properties.Mask.EditMask = resources.GetString("txtScaleSize.Properties.Mask.EditMask")
-        Me.tipDefault.SetToolTip(Me.txtScaleSize, resources.GetString("txtScaleSize.ToolTip"))
         '
         'cboPrevStation
         '
@@ -159,17 +134,64 @@ Partial Class frmResurveyAddStation
         Me.cboNewStation.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
         Me.cboNewStation.Properties.ValueMember = "Name"
         '
+        'optNewStation
+        '
+        resources.ApplyResources(Me.optNewStation, "optNewStation")
+        Me.optNewStation.Name = "optNewStation"
+        Me.optNewStation.Properties.AutoWidth = True
+        Me.optNewStation.Properties.Caption = resources.GetString("optNewStation1.Properties.Caption")
+        Me.optNewStation.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio
+        Me.optNewStation.Properties.RadioGroupIndex = 1
+        '
+        'optMovedStation
+        '
+        resources.ApplyResources(Me.optMovedStation, "optMovedStation")
+        Me.optMovedStation.Name = "optMovedStation"
+        Me.optMovedStation.Properties.AutoWidth = True
+        Me.optMovedStation.Properties.Caption = resources.GetString("optMovedStation1.Properties.Caption")
+        Me.optMovedStation.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio
+        Me.optMovedStation.Properties.RadioGroupIndex = 1
+        Me.optMovedStation.TabStop = False
+        '
+        'optFirstScale
+        '
+        resources.ApplyResources(Me.optFirstScale, "optFirstScale")
+        Me.optFirstScale.Name = "optFirstScale"
+        Me.optFirstScale.Properties.AutoWidth = True
+        Me.optFirstScale.Properties.Caption = resources.GetString("optFirstScale1.Properties.Caption")
+        Me.optFirstScale.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio
+        Me.optFirstScale.Properties.RadioGroupIndex = 1
+        Me.optFirstScale.TabStop = False
+        '
+        'optSecondScale
+        '
+        resources.ApplyResources(Me.optSecondScale, "optSecondScale")
+        Me.optSecondScale.Name = "optSecondScale"
+        Me.optSecondScale.Properties.AutoWidth = True
+        Me.optSecondScale.Properties.Caption = resources.GetString("optSecondScale1.Properties.Caption")
+        Me.optSecondScale.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio
+        Me.optSecondScale.Properties.RadioGroupIndex = 1
+        Me.optSecondScale.TabStop = False
+        '
         'optNorthBegin
         '
         resources.ApplyResources(Me.optNorthBegin, "optNorthBegin")
         Me.optNorthBegin.Name = "optNorthBegin"
-        Me.optNorthBegin.UseVisualStyleBackColor = True
+        Me.optNorthBegin.Properties.AutoWidth = True
+        Me.optNorthBegin.Properties.Caption = resources.GetString("optNorthBegin1.Properties.Caption")
+        Me.optNorthBegin.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio
+        Me.optNorthBegin.Properties.RadioGroupIndex = 1
+        Me.optNorthBegin.TabStop = False
         '
         'optNorthEnd
         '
         resources.ApplyResources(Me.optNorthEnd, "optNorthEnd")
         Me.optNorthEnd.Name = "optNorthEnd"
-        Me.optNorthEnd.UseVisualStyleBackColor = True
+        Me.optNorthEnd.Properties.AutoWidth = True
+        Me.optNorthEnd.Properties.Caption = resources.GetString("optNorthEnd1.Properties.Caption")
+        Me.optNorthEnd.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio
+        Me.optNorthEnd.Properties.RadioGroupIndex = 1
+        Me.optNorthEnd.TabStop = False
         '
         'frmResurveyAddStation
         '
@@ -179,6 +201,10 @@ Partial Class frmResurveyAddStation
         Me.CancelButton = Me.cmdCancel
         Me.Controls.Add(Me.optNorthEnd)
         Me.Controls.Add(Me.optNorthBegin)
+        Me.Controls.Add(Me.optSecondScale)
+        Me.Controls.Add(Me.optFirstScale)
+        Me.Controls.Add(Me.optMovedStation)
+        Me.Controls.Add(Me.optNewStation)
         Me.Controls.Add(Me.cboNewStation)
         Me.Controls.Add(Me.cboMovedStation)
         Me.Controls.Add(Me.cboPrevStation)
@@ -187,39 +213,41 @@ Partial Class frmResurveyAddStation
         Me.Controls.Add(Me.lblPosition)
         Me.Controls.Add(Me.lblPrevStation)
         Me.Controls.Add(Me.lblScaleUM)
-        Me.Controls.Add(Me.optSecondScale)
-        Me.Controls.Add(Me.optFirstScale)
         Me.Controls.Add(Me.cmdOk)
         Me.Controls.Add(Me.cmdCancel)
-        Me.Controls.Add(Me.optMovedStation)
-        Me.Controls.Add(Me.optNewStation)
-        Me.IconOptions.Icon = CType(resources.GetObject("frmResurveyAddStation.IconOptions.Icon"), System.Drawing.Icon)
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.deletetablecells
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmResurveyAddStation"
+        CType(Me.txtPosition.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtScaleSize.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboPrevStation.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboMovedStation.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboNewStation.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.optNewStation.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.optMovedStation.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.optFirstScale.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.optSecondScale.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.optNorthBegin.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.optNorthEnd.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents optNewStation As System.Windows.Forms.RadioButton
-    Friend WithEvents optMovedStation As System.Windows.Forms.RadioButton
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents optFirstScale As System.Windows.Forms.RadioButton
-    Friend WithEvents optSecondScale As System.Windows.Forms.RadioButton
-    Friend WithEvents lblScaleUM As System.Windows.Forms.Label
-    Friend WithEvents lblPrevStation As System.Windows.Forms.Label
-    Friend WithEvents lblPosition As System.Windows.Forms.Label
-    Friend WithEvents txtPosition As System.Windows.Forms.TextBox
-    Friend WithEvents tipDefault As System.Windows.Forms.ToolTip
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents lblScaleUM As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblPrevStation As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblPosition As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtPosition As DevExpress.XtraEditors.TextEdit
     Friend WithEvents txtScaleSize As SpinEdit
     Friend WithEvents cboPrevStation As LookUpEdit
     Friend WithEvents cboMovedStation As LookUpEdit
     Friend WithEvents cboNewStation As LookUpEdit
-    Friend WithEvents optNorthBegin As RadioButton
-    Friend WithEvents optNorthEnd As RadioButton
+    Friend WithEvents optNewStation As CheckEdit
+    Friend WithEvents optMovedStation As CheckEdit
+    Friend WithEvents optFirstScale As CheckEdit
+    Friend WithEvents optSecondScale As CheckEdit
+    Friend WithEvents optNorthBegin As CheckEdit
+    Friend WithEvents optNorthEnd As CheckEdit
 End Class

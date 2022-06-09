@@ -39,39 +39,6 @@ Namespace cSurvey.Drawings
                                     End If
                                 End Using
                             End Using
-                            'Using oMatrix As Matrix = New Matrix
-                            '        Call oMatrix.Scale(1000, 1000)
-                            '        Call oPath.Transform(oMatrix)
-                            '        Using oPen As Pen = If(IsNothing(oItem.Pen), Nothing, oItem.Pen.Clone)
-                            '            If Not IsNothing(oPen) Then oPen.Width = If(oPen.Width <= 0, 0.1F, oPen.Width) * Scale * Wide * Precision
-                            '            If oItem.IsFilled Then
-                            '                If oPath.IsVisible(oPoint) Then
-                            '                    Return True
-                            '                ElseIf oItem.IsOutlined AndAlso oPath.IsOutlineVisible(oPoint, oPen) Then
-                            '                    Return True
-                            '                    'Using oPath As GraphicsPath = oItem.Path.Clone
-                            '                    '    Call oPath.Widen(oPen)
-                            '                    '    If oPath.IsVisible(Point) Then
-                            '                    '        Return True
-                            '                    '    End If
-                            '                    'End Using
-                            '                End If
-                            '            Else
-                            '                'If oItem.IsOutlined Then
-                            '                '    Using oPath As GraphicsPath = oItem.Path.Clone
-                            '                '        Call oPath.Widen(oPen, Nothing, 0.001F)
-                            '                '        If oPath.IsVisible(Point) Then
-                            '                '            Return True
-                            '                '        End If
-                            '                '    End Using
-                            '                'End If
-                            '                If oItem.IsOutlined AndAlso oPath.IsOutlineVisible(oPoint, oPen) Then
-                            '                    Return True
-                            '                End If
-                            '            End If
-                            '        End Using
-                            '    End Using
-                            'End Using
                         End If
                     Next
                 End SyncLock
@@ -79,26 +46,6 @@ Namespace cSurvey.Drawings
             Catch ex As Exception
                 Return GetBounds.Contains(Point)
             End Try
-
-            'If IsNothing(oItem.Brush) Then
-            '    If IsNothing(oItem.Pen) Then
-            '        Return False
-            '    Else
-            '        If oItem.Path.IsOutlineVisible(Point, oItem.Pen) Then
-            '            Return True
-            '        End If
-            '    End If
-            'Else
-            '    If IsNothing(oItem.Pen) Then
-            '        If oItem.Path.IsVisible(Point) Then
-            '            Return True
-            '        End If
-            '    Else
-            '        If oItem.Path.IsVisible(Point) OrElse oItem.Path.IsOutlineVisible(Point, oItem.Pen) Then
-            '            Return True
-            '        End If
-            '    End If
-            'End If
         End Function
 
         Friend Sub New()
@@ -107,34 +54,19 @@ Namespace cSurvey.Drawings
             iMaxDrawItemCount = modMain.GetMaxDrawItemCount
         End Sub
 
-        'Public Function SetClip(ClipPath As GraphicsPath) As cDrawCacheItem
-        '    Dim oItem As cDrawCacheItem = New cDrawCacheItem(cDrawCacheItem.cDrawCacheItemType.SetClip)
-        '    Call oItem.AddPath(ClipPath)
+        'Public Function AddString(ByVal Text As String, ByVal Font As Font, ByVal Point As PointF, Optional ByVal Format As StringFormat = Nothing) As cDrawCacheItem
+        '    Dim oItem As cDrawCacheItemText = New cDrawCacheItemText(Text, Font, Point, Format)
         '    Call oItems.Add(oItem)
         '    bBounds = False
         '    Return oItem
         'End Function
 
-        'Public Function ResetClip() As cDrawCacheItem
-        '    Dim oItem As cDrawCacheItem = New cDrawCacheItem(cDrawCacheItem.cDrawCacheItemType.ResetClip)
+        'Public Function AddString(ByVal Text As String, ByVal Font As Font, ByVal Rectangle As RectangleF, Optional ByVal Format As StringFormat = Nothing) As cDrawCacheItem
+        '    Dim oItem As cDrawCacheItemText = New cDrawCacheItemText(Text, Font, Rectangle, Format)
         '    Call oItems.Add(oItem)
         '    bBounds = False
         '    Return oItem
         'End Function
-
-        Public Function AddString(ByVal Text As String, ByVal Font As Font, ByVal Point As PointF, Optional ByVal Format As StringFormat = Nothing) As cDrawCacheItem
-            Dim oItem As cDrawCacheItemText = New cDrawCacheItemText(Text, Font, Point, Format)
-            Call oItems.Add(oItem)
-            bBounds = False
-            Return oItem
-        End Function
-
-        Public Function AddString(ByVal Text As String, ByVal Font As Font, ByVal Rectangle As RectangleF, Optional ByVal Format As StringFormat = Nothing) As cDrawCacheItem
-            Dim oItem As cDrawCacheItemText = New cDrawCacheItemText(Text, Font, Rectangle, Format)
-            Call oItems.Add(oItem)
-            bBounds = False
-            Return oItem
-        End Function
 
         Public Function AddSetClip(ClipPath As GraphicsPath) As cDrawCacheItem
             Dim oItem As cDrawCacheItem = New cDrawCacheItem(cDrawCacheItem.cDrawCacheItemType.SetClip)
@@ -271,7 +203,7 @@ Namespace cSurvey.Drawings
             Return oBounds
         End Function
 
-        Friend Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, Optional ByVal Matrix As Matrix = Nothing) As XmlElement
+        Friend Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum, Optional ByVal Matrix As Matrix = Nothing) As XmlElement
             Dim oSVGGroup As XmlElement = modSVG.CreateGroup(SVG)
             Dim sKey As String = ""
 
@@ -304,7 +236,7 @@ Namespace cSurvey.Drawings
             Return oSVGGroup
         End Function
 
-        Public Function Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum) As Boolean
+        Public Function Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum) As Boolean
             Try
                 If oItems.Count > 0 Then
                     If (Options And cItem.PaintOptionsEnum.Wireframe) = cItem.PaintOptionsEnum.Wireframe OrElse (Options And cItem.PaintOptionsEnum.SchematicLayerDraw) = cItem.PaintOptionsEnum.SchematicLayerDraw Then
@@ -317,10 +249,10 @@ Namespace cSurvey.Drawings
                         Else
                             SyncLock oItemsToDraw
                                 For Each oItem As cDrawCacheItem In oItemsToDraw
-                                    'there is a strange gdi behaviour: when and object is very small (> some pixels of screen bounds)
+                                    'there is a strange gdi behaviour: when and object is very small (< some pixels of screen bounds)
                                     'gdi, with wireframe pen, raise out of memory error
                                     'to avoid this I found 2 ways: 
-                                    '-Calculate the real bounds of the object but this requery the overload of scaling
+                                    '-Calculate the real bounds of the object but this require a great overload during scaling
                                     '-use a try catch
                                     'testing performace the final result is that try catch is faster that scaling a rect and checking is size so I follow this way
                                     'Dim oBounds As RectangleF = oItem.Path.GetBounds
@@ -387,7 +319,7 @@ Namespace cSurvey.Drawings
                 End If
                 Return True
             Catch ex As Exception
-                Call PaintOptions.Survey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, "cache paint error: " & ex.Message, True)
+                Call PaintOptions.Survey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, "cache paint error: " & ex.Message)
                 Return False
             End Try
         End Function
@@ -463,7 +395,7 @@ Namespace cSurvey.Drawings
             'MyBase.AddLines({New PointF(oPoint.X - 1, oPoint.Y), New PointF(oPoint.X + 1, oPoint.Y), New PointF(oPoint.X, oPoint.Y - 1), New PointF(oPoint.X, oPoint.Y + 1)})
         End Sub
 
-        Friend Overrides Function AppendSvgItem(ByVal SVG As XmlDocument, ByVal Parent As XmlElement, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, Optional ByVal Matrix As Matrix = Nothing) As XmlElement
+        Friend Overrides Function AppendSvgItem(ByVal SVG As XmlDocument, ByVal Parent As XmlElement, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum, Optional ByVal Matrix As Matrix = Nothing) As XmlElement
             If sText <> "" Then
                 'Dim oPoints As PointF() = {oPoint}
                 'If Not Matrix Is Nothing Then
@@ -782,7 +714,7 @@ Namespace cSurvey.Drawings
             End Get
         End Property
 
-        Friend Overridable Function AppendSvgItem(ByVal SVG As XmlDocument, ByVal Parent As XmlElement, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, Optional ByVal Matrix As Matrix = Nothing) As XmlElement
+        Friend Overridable Function AppendSvgItem(ByVal SVG As XmlDocument, ByVal Parent As XmlElement, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum, Optional ByVal Matrix As Matrix = Nothing) As XmlElement
             If bIsFilled OrElse bIsOutlined Then
                 Using oSvgPath As GraphicsPath = oPath.Clone
                     If Not Matrix Is Nothing Then

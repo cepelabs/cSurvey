@@ -144,7 +144,7 @@
   <data name="cmdOk.Text" xml:space="preserve">
 		<value>Расчитать</value>
 	</data>
-  <data name="chkBackup.Text" xml:space="preserve">
+  <data name="chkBackup.Properties.Caption" xml:space="preserve">
 		<value>Сохранить текущие данные</value>
 	</data>
   <data name="RadioButton4.Text" xml:space="preserve">
@@ -171,7 +171,7 @@
   <data name="frmBackup.Text" xml:space="preserve">
 		<value>Сохранить:</value>
 	</data>
-  <data name="chkRestoreDeleteBackupAfterRestore.Text" xml:space="preserve">
+  <data name="chkRestoreDeleteBackupAfterRestore.Properties.Caption" xml:space="preserve">
 		<value>Удалить бекап после восстановления</value>
 	</data>
   <data name="Label5.Text" xml:space="preserve">
@@ -180,19 +180,19 @@
   <data name="frmRestore.Text" xml:space="preserve">
 		<value>Восстановить:</value>
 	</data>
-  <data name="chkShotWithLRUD.Text" xml:space="preserve">
+  <data name="chkShotWithLRUD.Properties.Caption" xml:space="preserve">
 		<value>с ЛПВН заданными вручную</value>
 	</data>
-  <data name="chkShotWithCalculatedLRUD.Text" xml:space="preserve">
+  <data name="chkShotWithCalculatedLRUD.Properties.Caption" xml:space="preserve">
 		<value>с ЛПВН расчитанными ранее</value>
 	</data>
-  <data name="chkShotWithoutLRUD.Text" xml:space="preserve">
+  <data name="chkShotWithoutLRUD.Properties.Caption" xml:space="preserve">
 		<value>без ЛПВН</value>
 	</data>
   <data name="frmMode2.Text" xml:space="preserve">
 		<value>Опции:</value>
 	</data>
-  <data name="chkMarkAsCalculated.Text" xml:space="preserve">
+  <data name="chkMarkAsCalculated.Properties.Caption" xml:space="preserve">
 		<value>Пометить как посчитанный</value>
 	</data>
   <data name="cboAction.Items" xml:space="preserve">

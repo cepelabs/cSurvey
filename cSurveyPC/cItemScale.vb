@@ -240,7 +240,7 @@ Namespace cSurvey.Design.Items
             MyBase.DesignAffinity = DesignAffinityEnum.Extra
         End Sub
 
-        Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptions) As Single
+        Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptionsCenterline) As Single
             Dim sTextScaleFactor As Single = MyBase.GetTextScaleFactor(PaintOptions)
             Select Case iTextSize
                 Case cIItemSizable.SizeEnum.Default
@@ -300,7 +300,7 @@ Namespace cSurvey.Design.Items
         '    Return oSVG
         'End Function
 
-        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             Dim oCache As cDrawCache = MyBase.Caches(PaintOptions)
             With oCache
                 If .Invalidated Then
@@ -328,8 +328,8 @@ Namespace cSurvey.Design.Items
                         oScaleMeterFont.FontSize = oTextFont.Size * 0.6!
                         Using oSF As StringFormat = New StringFormat
                             oSF.Alignment = StringAlignment.Center
-                            Dim oBorderPen As cPen = PaintOptions.PaintObjects.GenericPens.GenericPen
-                            Dim oBorderBrush As cBrush = PaintOptions.PaintObjects.GenericBrushes.SignSolid
+                            Dim oBorderPen As cCustomPen = oSurvey.Pens.GenericPen
+                            Dim oBorderBrush As cBrush = PaintOptions.PaintObjects.Brushes.SignSolid
 
                             Dim iDetailedSteps As Integer = iLength / (iLength / iSteps)
                             Dim sScaleStepLeftX As Single = 0
@@ -573,7 +573,7 @@ Namespace cSurvey.Design.Items
             End Set
         End Property
 
-        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             If MyBase.Points.Count > 0 Then
                 Call Render(Graphics, PaintOptions, Options, Selected)
                 If Not PaintOptions.IsDesign OrElse (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then '

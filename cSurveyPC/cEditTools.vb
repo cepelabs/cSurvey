@@ -5,6 +5,92 @@ Imports cSurveyPC.cSurvey.Drawings
 Imports cSurveyPC.cSurvey.Design.Items
 
 Namespace cSurvey.Helper.Editor
+    Public Class cEditDesignEnvironment
+
+        'Private Shared iLowerLayersDesignTransparencyThreshold As Integer
+        'Private Shared oLowerLayersDesignColor As Color
+
+        Private Shared oValues As Dictionary(Of String, Object) = New Dictionary(Of String, Object)(StringComparer.OrdinalIgnoreCase)
+
+        Public Delegate Sub OnPropertyChanged(Sender As Object, e As PropertyChangeEventArgs)
+        Private Shared oChangedDelegates As List(Of OnPropertyChanged) = New List(Of OnPropertyChanged)
+
+        Public Shared Sub Reset()
+            Call oValues.Clear()
+        End Sub
+
+        Public Shared Sub OnPropertyChangedAppend(OnPropertyChanged As OnPropertyChanged)
+            Call oChangedDelegates.Add(OnPropertyChanged)
+        End Sub
+
+        Public Shared Sub OnPropertyChangedRemove(OnPropertyChanged As OnPropertyChanged)
+            Call oChangedDelegates.Remove(OnPropertyChanged)
+        End Sub
+
+        Private Shared Sub pRaiseOnPropertyChanged(Name As String)
+            For Each oOnPropertyChanged As OnPropertyChanged In oChangedDelegates
+                Call oOnPropertyChanged(Nothing, New PropertyChangeEventArgs(Name))
+            Next
+        End Sub
+
+        Public Shared Sub SetSettings(ParamArray Settings() As Object)
+            For i As Integer = 0 To Settings.Count - 1 Step 2
+                Dim sKey As String = Settings(i)
+                Dim oValue As Object = Settings(i + 1)
+                If oValues.ContainsKey(sKey) Then
+                    Call oValues.Remove(sKey)
+                End If
+                Call oValues.Add(sKey, oValue)
+            Next
+            Call pRaiseOnPropertyChanged("")
+        End Sub
+
+        Public Shared Sub SetSetting(Key As String, Value As Object)
+            If oValues.ContainsKey(Key) Then
+                Call oValues.Remove(Key)
+            End If
+            Call oValues.Add(Key, Value)
+            Call pRaiseOnPropertyChanged(Key)
+        End Sub
+
+        Public Shared Function Contains(Key As String) As Boolean
+            Return oValues.ContainsKey(Key)
+        End Function
+
+        Public Shared Function GetSetting(ByVal Key As String, Optional ByVal DefaultValue As Object = Nothing) As Object
+            Try
+                If oValues.ContainsKey(Key) Then
+                    Return oValues(Key)
+                Else
+                    Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
+                        Dim oValue As Object = oReg.GetValue(Key, DefaultValue)
+                        If oValue Is Nothing Then
+                            Return Nothing
+                        Else
+                            Call oValues.Add(Key, oValue)
+                            Return oValue
+                        End If
+                    End Using
+                End If
+            Catch
+                Return DefaultValue
+            End Try
+        End Function
+
+        'Public Shared ReadOnly Property xLowerLayersDesignTransparencyThreshold As Integer
+        '    Get
+        '        Return iLowerLayersDesignTransparencyThreshold
+        '    End Get
+        'End Property
+
+        'Public Shared ReadOnly Property xLowerLayersDesignColor As Color
+        '    Get
+        '        Return oLowerLayersDesignColor
+        '    End Get
+        'End Property
+
+    End Class
+
     Public Interface cIEditSelection
         ReadOnly Property CurrentSurvey As cSurvey
 
@@ -420,7 +506,7 @@ Namespace cSurvey.Helper.Editor
             End If
             Try
                 If Clipboard.ContainsData("csurvey.segments") Then
-                    Dim bCleanPastedStation As Boolean = oSurvey.GetGlobalSetting("clipboard.cleanpastedstation", 0)
+                    Dim bCleanPastedStation As Boolean = cEditDesignEnvironment.GetSetting("clipboard.cleanpastedstation", 0)
                     Using oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, "", cFile.FileOptionsEnum.EmbedResource)
                         Dim oXML As XmlDocument = New XmlDocument
                         oXML.LoadXml(Clipboard.GetData("csurvey.segments"))
@@ -571,8 +657,8 @@ Namespace cSurvey.Helper.Editor
                 Dim oDataObject As DataObject = New DataObject
                 Call oDataObject.SetData("csurvey.segments", oXML.InnerXml)
 
-                Dim sExtFormats As String = oSurvey.GetGlobalSetting("clipboard.segments.extformats", "")
-                Dim bUseLocalFormat As Boolean = oSurvey.GetGlobalSetting("clipboard.uselocalformat", False)
+                Dim sExtFormats As String = cEditDesignEnvironment.GetSetting("clipboard.segments.extformats", "")
+                Dim bUseLocalFormat As Boolean = cEditDesignEnvironment.GetSetting("clipboard.uselocalformat", False)
                 If sExtFormats.Contains("csv") Then
                     Dim bBuffer() As Byte = System.Text.Encoding.UTF8.GetBytes(Segments.ToCSV(bUseLocalFormat))
                     Dim oMS As System.IO.MemoryStream = New System.IO.MemoryStream(bBuffer)
@@ -599,8 +685,8 @@ Namespace cSurvey.Helper.Editor
                 Dim oDataObject As DataObject = New DataObject
                 Call oDataObject.SetData("csurvey.segments", oXML.InnerXml)
 
-                Dim sExtFormats As String = oSurvey.GetGlobalSetting("clipboard.segments.extformats", "")
-                Dim bUseLocalFormat As Boolean = oSurvey.GetGlobalSetting("clipboard.uselocalformat", False)
+                Dim sExtFormats As String = cEditDesignEnvironment.GetSetting("clipboard.segments.extformats", "")
+                Dim bUseLocalFormat As Boolean = cEditDesignEnvironment.GetSetting("clipboard.uselocalformat", False)
                 If sExtFormats.Contains("csv") Then
                     Dim bBuffer() As Byte = System.Text.Encoding.UTF8.GetBytes(Segments.ToCSV(bUseLocalFormat))
                     Dim oMS As System.IO.MemoryStream = New System.IO.MemoryStream(bBuffer)
@@ -1009,6 +1095,7 @@ Namespace cSurvey.Helper.Editor
         Friend Event OnItemCombine(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs)
         Friend Event OnItemEdit(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs)
         Friend Event OnItemDelete(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs)
+        Friend Event OnItemDeleted(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs)
         Friend Event OnItemPointDelete(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs)
         Friend Event OnItemPointEdit(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs)
         Friend Event OnItemPointEnd(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignToolsEventArgs)
@@ -1053,10 +1140,10 @@ Namespace cSurvey.Helper.Editor
                         Else
                             bIsInPointEdit = False
                         End If
+                        bOnlyRefresh = bIsInPointEdit OrElse (Not bIsInPointEdit AndAlso oCurrentItemPoint Is Nothing)
                     Else
                         bIsInPointEdit = False
                     End If
-                    bOnlyRefresh = bIsInPointEdit OrElse (Not bIsInPointEdit AndAlso oCurrentItemPoint Is Nothing)
                 Else
                     Call [EndItem](False)
                     bIsInPointEdit = False
@@ -1072,7 +1159,7 @@ Namespace cSurvey.Helper.Editor
                 bIsInCombine = False
                 bIsNewItem = False
                 bStarted = False
-                If bOnlyrefresh Then
+                If bOnlyRefresh Then
                     RaiseEvent OnRefreshDesign(Me, New cEditDesignToolsEventArgs(Me))
                 Else
                     RaiseEvent OnItemSelect(Me, New cEditDesignToolsEventArgs(Me))
@@ -1214,7 +1301,7 @@ Namespace cSurvey.Helper.Editor
                         Call oItems.Add(oItem)
                         Call EndItem()
                     Catch ex As Exception
-                        Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, "paste error: " & ex.Message, False)
+                        Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, "paste error: " & ex.Message)
                     End Try
                 Next
                 oPastedItem = oItems
@@ -1393,7 +1480,7 @@ Namespace cSurvey.Helper.Editor
             Call oDataObject.SetText(oXMl.InnerXml)
             Call oDataObject.SetData("csurvey.item", oXMl.InnerXml)
 
-            Dim sExtFormats As String = oSurvey.GetGlobalSetting("clipboard.designitems.extformats", "")
+            Dim sExtFormats As String = cEditDesignEnvironment.GetSetting("clipboard.designitems.extformats", "")
             If sExtFormats.Contains("xml") Then
                 Dim oXMLMS As IO.MemoryStream = New IO.MemoryStream
                 Call oXMl.Save(oXMLMS)
@@ -1418,7 +1505,7 @@ Namespace cSurvey.Helper.Editor
             Dim oDataObject As DataObject = New DataObject
             Call oDataObject.SetText(oXMl.InnerXml)
             Call oDataObject.SetData("csurvey.item", oXMl.InnerXml)
-            Dim sExtFormats As String = oSurvey.GetGlobalSetting("clipboard.designitems.extformats", "")
+            Dim sExtFormats As String = cEditDesignEnvironment.GetSetting("clipboard.designitems.extformats", "")
 
             If sExtFormats.Contains("xml") Then
                 Dim oXMLMS As IO.MemoryStream = New IO.MemoryStream
@@ -1476,6 +1563,7 @@ Namespace cSurvey.Helper.Editor
                 oCurrentItem = Nothing
                 Call EndItem()
                 Call SelectItem(Nothing)
+                RaiseEvent OnItemDeleted(Me, New cEditDesignToolsEventArgs(Me))
             End If
         End Sub
 
@@ -1758,6 +1846,7 @@ Namespace cSurvey.Helper.Editor
         Public Name As String
         Public Caption As String
         Public Image As String
+        Public SvgImage As String
         Public ToolTip As String
         Public Style As Integer
 
@@ -1778,6 +1867,14 @@ Namespace cSurvey.Helper.Editor
         Public AvaiableInProfile As Boolean
 
         Public Hidden As Boolean
+
+        Enum ConvertToEnum
+            None = 0
+            AreaOrLines = 1
+            Images = 2
+        End Enum
+
+        Public ConvertTo As ConvertToEnum
 
         Public Function GetInvokeParameters(ByVal ParamArray Values As Object()) As Object()
             Dim oParameters As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
@@ -1825,6 +1922,7 @@ Namespace cSurvey.Helper.Editor
 
                         Name = .GetAttribute("name")
                         Image = .GetAttribute("image")
+                        SvgImage = modXML.GetAttributeValue(Tool, "svgimage", "")
                         Style = .GetAttribute("style")
 
                         Layer = .GetAttribute("layer")
@@ -1841,6 +1939,7 @@ Namespace cSurvey.Helper.Editor
 
                         Name = .GetAttribute("name")
                         Image = .GetAttribute("image")
+                        SvgImage = modXML.GetAttributeValue(Tool, "svgimage", "")
                         Style = .GetAttribute("style")
 
                         Layer = .GetAttribute("layer")
@@ -1858,6 +1957,7 @@ Namespace cSurvey.Helper.Editor
 
                         Name = .GetAttribute("name")
                         Image = .GetAttribute("image")
+                        SvgImage = modXML.GetAttributeValue(Tool, "svgimage", "")
                         Style = .GetAttribute("style")
 
                         Layer = .GetAttribute("layer")
@@ -1873,6 +1973,7 @@ Namespace cSurvey.Helper.Editor
 
                         Name = .GetAttribute("name")
                         Image = .GetAttribute("image")
+                        SvgImage = modXML.GetAttributeValue(Tool, "svgimage", "")
                         Style = .GetAttribute("style")
 
                         Layer = .GetAttribute("layer")
@@ -1888,6 +1989,7 @@ Namespace cSurvey.Helper.Editor
 
                         Name = .GetAttribute("name")
                         Image = .GetAttribute("image")
+                        SvgImage = modXML.GetAttributeValue(Tool, "svgimage", "")
                         Style = .GetAttribute("style")
 
                         Layer = .GetAttribute("layer")
@@ -1895,6 +1997,8 @@ Namespace cSurvey.Helper.Editor
                         Method = .GetAttribute("method")
                         Parameters = .GetAttribute("parameters")
                 End Select
+
+                ConvertTo = modXML.GetAttributeValue(Tool, "convertto", "0")
 
                 Dim sDesign As String = modXML.GetAttributeValue(Tool, "design", "")
                 If sDesign = "" Then
@@ -1913,6 +2017,7 @@ Namespace cSurvey.Helper.Editor
         Public Name As String
         Public Caption As String
         Public Image As String
+        Public SvgImage As String
         Public ToolTip As String
         Public Layer As cLayers.LayerTypeEnum
 
@@ -1947,13 +2052,14 @@ Namespace cSurvey.Helper.Editor
                 Type = .GetAttribute("type")
                 Select Case Type
                     Case "separator", "-"
-                        'lasciato per compatilità...o uso futuro
+                        'for compatibility...or future use
                     Case "clipartgallery", "signgallery", "gallery"
-                        'lasciato per compatilità...NO USO FUTURO
+                        'for compatibility...not for future use
                     Case Else
                         Name = .GetAttribute("name")
                         Caption = .GetAttribute("caption")
                         Image = .GetAttribute("image")
+                        SvgImage = modXML.GetAttributeValue(Tool, "svgimage", "")
                         ToolTip = .GetAttribute("tooltip")
                         Layer = .GetAttribute("layer")
                         Method = .GetAttribute("method")

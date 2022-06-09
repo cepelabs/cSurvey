@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmSketchEdit
-    Inherits cForm
+    Inherits DevExpress.XtraBars.Ribbon.RibbonForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,144 +20,95 @@ Partial Class frmSketchEdit
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSketchEdit))
-        Me.pnlPreview = New System.Windows.Forms.SplitContainer()
-        Me.lvTrigpoints = New System.Windows.Forms.ListView()
-        Me.colTrigpointName = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.mnuTrigpoints = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.mnuTrigpointsFilterBy = New System.Windows.Forms.ToolStripTextBox()
-        Me.mnuTrigpointsRemoveFilter = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.mnuTrigpointsShowSplay = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SplitContainerControl1 = New DevExpress.XtraEditors.SplitContainerControl()
+        Me.grdStations = New cSurveyPC.cTrigpointsGrid()
+        Me.pnlPreview = New DevExpress.XtraEditors.XtraScrollableControl()
         Me.picPreview = New System.Windows.Forms.PictureBox()
-        Me.mnuPreview = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.mnuPreviewAdd = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuPreviewAddExtra = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuPreviewEditDistance = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.mnuPreviewRemove = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuPreviewRemoveAll = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.mnuPreviewSetTransparent = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuPreviewTransparentThreshold = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuPreviewTransparentThreshold1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuPreviewTransparentThreshold2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuPreviewTransparentThreshold3 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuPreviewTransparentThreshold4 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuPreviewTransparentThreshold5 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuPreviewTransparentThreshold6 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuPreviewTransparentThreshold7 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuPreviewTransparentThreshold8 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuPreviewTransparentThreshold9 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuPreviewTransparentThreshold10 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuPreviewTransparentThreshold11 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuPreviewDeleteTransparent = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuPreviewStop = New System.Windows.Forms.ToolStripMenuItem()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.cmdOk = New System.Windows.Forms.Button()
+        Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
+        Me.cmdOk = New DevExpress.XtraBars.BarButtonItem()
+        Me.cmdCancel = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnLoadImage = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnUndo = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnRotate = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnFlipH = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnFlipV = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnRescale = New DevExpress.XtraBars.BarSubItem()
+        Me.btnRescale0 = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnRescale1 = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnRescale2 = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnRescale3 = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnToGrayscale = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnRubber = New DevExpress.XtraBars.BarCheckItem()
+        Me.btnRubberSize = New DevExpress.XtraBars.BarEditItem()
+        Me.pbRubberSize = New DevExpress.XtraEditors.Repository.RepositoryItemTrackBar()
+        Me.btnCropStart = New DevExpress.XtraBars.BarCheckItem()
+        Me.btnCrop = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnStop = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnSetTransparent = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnTransparency = New DevExpress.XtraBars.BarSubItem()
+        Me.btnTransparentThreshold = New DevExpress.XtraBars.BarEditItem()
+        Me.txtTransparentThreshold = New DevExpress.XtraEditors.Repository.RepositoryItemTrackBar()
+        Me.btnDeleteTransparent = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnAdd = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnAddExtra = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnEditDistance = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnRemove = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnRemoveAll = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnShowSplays = New DevExpress.XtraBars.BarCheckItem()
+        Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup3 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.imlStations = New System.Windows.Forms.ImageList(Me.components)
-        Me.tbMain = New System.Windows.Forms.ToolStrip()
-        Me.btnLoadImage = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnUndo = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnZoomIn = New System.Windows.Forms.ToolStripButton()
-        Me.btnZoomOut = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnRescale = New System.Windows.Forms.ToolStripDropDownButton()
-        Me.btnRescale0 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnRescale1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnRescale2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnRescale3 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnRotate = New System.Windows.Forms.ToolStripButton()
-        Me.btnFlip = New System.Windows.Forms.ToolStripDropDownButton()
-        Me.btnFlipH = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnFlipV = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnToGrayscale = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnRubber = New System.Windows.Forms.ToolStripButton()
-        Me.btnRubber0 = New System.Windows.Forms.ToolStripButton()
-        Me.btnRubber1 = New System.Windows.Forms.ToolStripButton()
-        Me.btnRubber2 = New System.Windows.Forms.ToolStripButton()
-        Me.btnRubber3 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnShowCutBorders = New System.Windows.Forms.ToolStripButton()
-        Me.btnCut = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnStop = New System.Windows.Forms.ToolStripButton()
         Me.tipStandard = New System.Windows.Forms.ToolTip(Me.components)
-        CType(Me.pnlPreview, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlPreview.Panel1.SuspendLayout()
-        Me.pnlPreview.Panel2.SuspendLayout()
+        Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.mnuPreview = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.mnuStations = New DevExpress.XtraBars.PopupMenu(Me.components)
+        CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SplitContainerControl1.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SplitContainerControl1.Panel1.SuspendLayout()
+        CType(Me.SplitContainerControl1.Panel2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SplitContainerControl1.Panel2.SuspendLayout()
+        Me.SplitContainerControl1.SuspendLayout()
         Me.pnlPreview.SuspendLayout()
-        Me.mnuTrigpoints.SuspendLayout()
         CType(Me.picPreview, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.mnuPreview.SuspendLayout()
-        Me.tbMain.SuspendLayout()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbRubberSize, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtTransparentThreshold, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.mnuPreview, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.mnuStations, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'SplitContainerControl1
+        '
+        resources.ApplyResources(Me.SplitContainerControl1, "SplitContainerControl1")
+        Me.SplitContainerControl1.Name = "SplitContainerControl1"
+        '
+        'SplitContainerControl1.Panel1
+        '
+        Me.SplitContainerControl1.Panel1.Controls.Add(Me.grdStations)
+        resources.ApplyResources(Me.SplitContainerControl1.Panel1, "SplitContainerControl1.Panel1")
+        '
+        'SplitContainerControl1.Panel2
+        '
+        Me.SplitContainerControl1.Panel2.Controls.Add(Me.pnlPreview)
+        resources.ApplyResources(Me.SplitContainerControl1.Panel2, "SplitContainerControl1.Panel2")
+        Me.SplitContainerControl1.SplitterPosition = 163
+        '
+        'grdStations
+        '
+        resources.ApplyResources(Me.grdStations, "grdStations")
+        Me.grdStations.Name = "grdStations"
         '
         'pnlPreview
         '
+        Me.pnlPreview.Controls.Add(Me.picPreview)
         resources.ApplyResources(Me.pnlPreview, "pnlPreview")
         Me.pnlPreview.Name = "pnlPreview"
-        '
-        'pnlPreview.Panel1
-        '
-        Me.pnlPreview.Panel1.Controls.Add(Me.lvTrigpoints)
-        '
-        'pnlPreview.Panel2
-        '
-        resources.ApplyResources(Me.pnlPreview.Panel2, "pnlPreview.Panel2")
-        Me.pnlPreview.Panel2.BackColor = System.Drawing.SystemColors.ControlDark
-        Me.pnlPreview.Panel2.Controls.Add(Me.picPreview)
-        '
-        'lvTrigpoints
-        '
-        Me.lvTrigpoints.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colTrigpointName})
-        Me.lvTrigpoints.ContextMenuStrip = Me.mnuTrigpoints
-        resources.ApplyResources(Me.lvTrigpoints, "lvTrigpoints")
-        Me.lvTrigpoints.FullRowSelect = True
-        Me.lvTrigpoints.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None
-        Me.lvTrigpoints.HideSelection = False
-        Me.lvTrigpoints.MultiSelect = False
-        Me.lvTrigpoints.Name = "lvTrigpoints"
-        Me.lvTrigpoints.Sorting = System.Windows.Forms.SortOrder.Ascending
-        Me.lvTrigpoints.UseCompatibleStateImageBehavior = False
-        Me.lvTrigpoints.View = System.Windows.Forms.View.Details
-        '
-        'colTrigpointName
-        '
-        resources.ApplyResources(Me.colTrigpointName, "colTrigpointName")
-        '
-        'mnuTrigpoints
-        '
-        resources.ApplyResources(Me.mnuTrigpoints, "mnuTrigpoints")
-        Me.mnuTrigpoints.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuTrigpointsFilterBy, Me.mnuTrigpointsRemoveFilter, Me.ToolStripMenuItem3, Me.mnuTrigpointsShowSplay})
-        Me.mnuTrigpoints.Name = "ContextMenuStrip1"
-        '
-        'mnuTrigpointsFilterBy
-        '
-        resources.ApplyResources(Me.mnuTrigpointsFilterBy, "mnuTrigpointsFilterBy")
-        Me.mnuTrigpointsFilterBy.Name = "mnuTrigpointsFilterBy"
-        '
-        'mnuTrigpointsRemoveFilter
-        '
-        Me.mnuTrigpointsRemoveFilter.Name = "mnuTrigpointsRemoveFilter"
-        resources.ApplyResources(Me.mnuTrigpointsRemoveFilter, "mnuTrigpointsRemoveFilter")
-        '
-        'ToolStripMenuItem3
-        '
-        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        resources.ApplyResources(Me.ToolStripMenuItem3, "ToolStripMenuItem3")
-        '
-        'mnuTrigpointsShowSplay
-        '
-        Me.mnuTrigpointsShowSplay.Name = "mnuTrigpointsShowSplay"
-        resources.ApplyResources(Me.mnuTrigpointsShowSplay, "mnuTrigpointsShowSplay")
         '
         'picPreview
         '
@@ -166,137 +117,299 @@ Partial Class frmSketchEdit
         Me.picPreview.Name = "picPreview"
         Me.picPreview.TabStop = False
         '
-        'mnuPreview
+        'RibbonControl1
         '
-        resources.ApplyResources(Me.mnuPreview, "mnuPreview")
-        Me.mnuPreview.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuPreviewAdd, Me.mnuPreviewAddExtra, Me.mnuPreviewEditDistance, Me.ToolStripMenuItem1, Me.mnuPreviewRemove, Me.mnuPreviewRemoveAll, Me.ToolStripMenuItem2, Me.mnuPreviewSetTransparent, Me.mnuPreviewTransparentThreshold, Me.mnuPreviewDeleteTransparent, Me.mnuPreviewStop})
-        Me.mnuPreview.Name = "mnuPreview"
-        '
-        'mnuPreviewAdd
-        '
-        Me.mnuPreviewAdd.Image = Global.cSurveyPC.My.Resources.Resources.location_pin
-        Me.mnuPreviewAdd.Name = "mnuPreviewAdd"
-        resources.ApplyResources(Me.mnuPreviewAdd, "mnuPreviewAdd")
-        '
-        'mnuPreviewAddExtra
-        '
-        Me.mnuPreviewAddExtra.Name = "mnuPreviewAddExtra"
-        resources.ApplyResources(Me.mnuPreviewAddExtra, "mnuPreviewAddExtra")
-        '
-        'mnuPreviewEditDistance
-        '
-        Me.mnuPreviewEditDistance.Name = "mnuPreviewEditDistance"
-        resources.ApplyResources(Me.mnuPreviewEditDistance, "mnuPreviewEditDistance")
-        '
-        'ToolStripMenuItem1
-        '
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        resources.ApplyResources(Me.ToolStripMenuItem1, "ToolStripMenuItem1")
-        '
-        'mnuPreviewRemove
-        '
-        Me.mnuPreviewRemove.Name = "mnuPreviewRemove"
-        resources.ApplyResources(Me.mnuPreviewRemove, "mnuPreviewRemove")
-        '
-        'mnuPreviewRemoveAll
-        '
-        Me.mnuPreviewRemoveAll.Name = "mnuPreviewRemoveAll"
-        resources.ApplyResources(Me.mnuPreviewRemoveAll, "mnuPreviewRemoveAll")
-        '
-        'ToolStripMenuItem2
-        '
-        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        resources.ApplyResources(Me.ToolStripMenuItem2, "ToolStripMenuItem2")
-        '
-        'mnuPreviewSetTransparent
-        '
-        Me.mnuPreviewSetTransparent.Name = "mnuPreviewSetTransparent"
-        resources.ApplyResources(Me.mnuPreviewSetTransparent, "mnuPreviewSetTransparent")
-        '
-        'mnuPreviewTransparentThreshold
-        '
-        Me.mnuPreviewTransparentThreshold.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuPreviewTransparentThreshold1, Me.mnuPreviewTransparentThreshold2, Me.mnuPreviewTransparentThreshold3, Me.mnuPreviewTransparentThreshold4, Me.mnuPreviewTransparentThreshold5, Me.mnuPreviewTransparentThreshold6, Me.mnuPreviewTransparentThreshold7, Me.mnuPreviewTransparentThreshold8, Me.mnuPreviewTransparentThreshold9, Me.mnuPreviewTransparentThreshold10, Me.mnuPreviewTransparentThreshold11})
-        Me.mnuPreviewTransparentThreshold.Name = "mnuPreviewTransparentThreshold"
-        resources.ApplyResources(Me.mnuPreviewTransparentThreshold, "mnuPreviewTransparentThreshold")
-        '
-        'mnuPreviewTransparentThreshold1
-        '
-        Me.mnuPreviewTransparentThreshold1.Name = "mnuPreviewTransparentThreshold1"
-        resources.ApplyResources(Me.mnuPreviewTransparentThreshold1, "mnuPreviewTransparentThreshold1")
-        '
-        'mnuPreviewTransparentThreshold2
-        '
-        Me.mnuPreviewTransparentThreshold2.Name = "mnuPreviewTransparentThreshold2"
-        resources.ApplyResources(Me.mnuPreviewTransparentThreshold2, "mnuPreviewTransparentThreshold2")
-        '
-        'mnuPreviewTransparentThreshold3
-        '
-        Me.mnuPreviewTransparentThreshold3.Name = "mnuPreviewTransparentThreshold3"
-        resources.ApplyResources(Me.mnuPreviewTransparentThreshold3, "mnuPreviewTransparentThreshold3")
-        '
-        'mnuPreviewTransparentThreshold4
-        '
-        Me.mnuPreviewTransparentThreshold4.Name = "mnuPreviewTransparentThreshold4"
-        resources.ApplyResources(Me.mnuPreviewTransparentThreshold4, "mnuPreviewTransparentThreshold4")
-        '
-        'mnuPreviewTransparentThreshold5
-        '
-        Me.mnuPreviewTransparentThreshold5.Name = "mnuPreviewTransparentThreshold5"
-        resources.ApplyResources(Me.mnuPreviewTransparentThreshold5, "mnuPreviewTransparentThreshold5")
-        '
-        'mnuPreviewTransparentThreshold6
-        '
-        Me.mnuPreviewTransparentThreshold6.Name = "mnuPreviewTransparentThreshold6"
-        resources.ApplyResources(Me.mnuPreviewTransparentThreshold6, "mnuPreviewTransparentThreshold6")
-        '
-        'mnuPreviewTransparentThreshold7
-        '
-        Me.mnuPreviewTransparentThreshold7.Name = "mnuPreviewTransparentThreshold7"
-        resources.ApplyResources(Me.mnuPreviewTransparentThreshold7, "mnuPreviewTransparentThreshold7")
-        '
-        'mnuPreviewTransparentThreshold8
-        '
-        Me.mnuPreviewTransparentThreshold8.Name = "mnuPreviewTransparentThreshold8"
-        resources.ApplyResources(Me.mnuPreviewTransparentThreshold8, "mnuPreviewTransparentThreshold8")
-        '
-        'mnuPreviewTransparentThreshold9
-        '
-        Me.mnuPreviewTransparentThreshold9.Name = "mnuPreviewTransparentThreshold9"
-        resources.ApplyResources(Me.mnuPreviewTransparentThreshold9, "mnuPreviewTransparentThreshold9")
-        '
-        'mnuPreviewTransparentThreshold10
-        '
-        Me.mnuPreviewTransparentThreshold10.Name = "mnuPreviewTransparentThreshold10"
-        resources.ApplyResources(Me.mnuPreviewTransparentThreshold10, "mnuPreviewTransparentThreshold10")
-        '
-        'mnuPreviewTransparentThreshold11
-        '
-        Me.mnuPreviewTransparentThreshold11.Name = "mnuPreviewTransparentThreshold11"
-        resources.ApplyResources(Me.mnuPreviewTransparentThreshold11, "mnuPreviewTransparentThreshold11")
-        '
-        'mnuPreviewDeleteTransparent
-        '
-        Me.mnuPreviewDeleteTransparent.Name = "mnuPreviewDeleteTransparent"
-        resources.ApplyResources(Me.mnuPreviewDeleteTransparent, "mnuPreviewDeleteTransparent")
-        '
-        'mnuPreviewStop
-        '
-        Me.mnuPreviewStop.Image = Global.cSurveyPC.My.Resources.Resources.stop2
-        Me.mnuPreviewStop.Name = "mnuPreviewStop"
-        resources.ApplyResources(Me.mnuPreviewStop, "mnuPreviewStop")
-        '
-        'cmdCancel
-        '
-        resources.ApplyResources(Me.cmdCancel, "cmdCancel")
-        Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
+        Me.RibbonControl1.CaptionBarItemLinks.Add(Me.cmdOk)
+        Me.RibbonControl1.CaptionBarItemLinks.Add(Me.cmdCancel)
+        Me.RibbonControl1.Categories.AddRange(New DevExpress.XtraBars.BarManagerCategory() {CType(resources.GetObject("RibbonControl1.Categories"), DevExpress.XtraBars.BarManagerCategory), CType(resources.GetObject("RibbonControl1.Categories1"), DevExpress.XtraBars.BarManagerCategory), CType(resources.GetObject("RibbonControl1.Categories2"), DevExpress.XtraBars.BarManagerCategory), CType(resources.GetObject("RibbonControl1.Categories3"), DevExpress.XtraBars.BarManagerCategory), CType(resources.GetObject("RibbonControl1.Categories4"), DevExpress.XtraBars.BarManagerCategory)})
+        Me.RibbonControl1.ExpandCollapseItem.Id = 0
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.cmdOk, Me.cmdCancel, Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.btnLoadImage, Me.btnUndo, Me.btnRotate, Me.btnFlipH, Me.btnFlipV, Me.btnRescale, Me.btnRescale0, Me.btnRescale1, Me.btnRescale2, Me.btnRescale3, Me.btnToGrayscale, Me.btnRubber, Me.btnRubberSize, Me.btnCropStart, Me.btnCrop, Me.btnStop, Me.btnSetTransparent, Me.btnTransparency, Me.btnTransparentThreshold, Me.btnDeleteTransparent, Me.btnAdd, Me.btnAddExtra, Me.btnEditDistance, Me.btnRemove, Me.btnRemoveAll, Me.btnShowSplays})
+        resources.ApplyResources(Me.RibbonControl1, "RibbonControl1")
+        Me.RibbonControl1.MaxItemId = 29
+        Me.RibbonControl1.Name = "RibbonControl1"
+        Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
+        Me.RibbonControl1.QuickToolbarItemLinks.Add(Me.btnLoadImage)
+        Me.RibbonControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.pbRubberSize, Me.txtTransparentThreshold})
+        Me.RibbonControl1.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.[False]
+        Me.RibbonControl1.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide
         '
         'cmdOk
         '
         resources.ApplyResources(Me.cmdOk, "cmdOk")
+        Me.cmdOk.CategoryGuid = New System.Guid("21e7edf1-2613-4fab-88ec-e6168d3e5d24")
+        Me.cmdOk.Id = 17
+        Me.cmdOk.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_checkcircled
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
+        '
+        'cmdCancel
+        '
+        resources.ApplyResources(Me.cmdCancel, "cmdCancel")
+        Me.cmdCancel.CategoryGuid = New System.Guid("21e7edf1-2613-4fab-88ec-e6168d3e5d24")
+        Me.cmdCancel.Id = 18
+        Me.cmdCancel.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.close
+        Me.cmdCancel.Name = "cmdCancel"
+        '
+        'btnLoadImage
+        '
+        resources.ApplyResources(Me.btnLoadImage, "btnLoadImage")
+        Me.btnLoadImage.CategoryGuid = New System.Guid("8ae0dc63-bfb4-4aa4-991b-02f9302016ce")
+        Me.btnLoadImage.Id = 1
+        Me.btnLoadImage.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.imageimport
+        Me.btnLoadImage.Name = "btnLoadImage"
+        '
+        'btnUndo
+        '
+        resources.ApplyResources(Me.btnUndo, "btnUndo")
+        Me.btnUndo.CategoryGuid = New System.Guid("8ae0dc63-bfb4-4aa4-991b-02f9302016ce")
+        Me.btnUndo.Enabled = False
+        Me.btnUndo.Id = 2
+        Me.btnUndo.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.undo
+        Me.btnUndo.Name = "btnUndo"
+        '
+        'btnRotate
+        '
+        resources.ApplyResources(Me.btnRotate, "btnRotate")
+        Me.btnRotate.CategoryGuid = New System.Guid("8ae0dc63-bfb4-4aa4-991b-02f9302016ce")
+        Me.btnRotate.Id = 3
+        Me.btnRotate.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.rotate_right901
+        Me.btnRotate.Name = "btnRotate"
+        Me.btnRotate.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
+        '
+        'btnFlipH
+        '
+        resources.ApplyResources(Me.btnFlipH, "btnFlipH")
+        Me.btnFlipH.CategoryGuid = New System.Guid("8ae0dc63-bfb4-4aa4-991b-02f9302016ce")
+        Me.btnFlipH.Id = 4
+        Me.btnFlipH.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.flipimage_horizontal
+        Me.btnFlipH.Name = "btnFlipH"
+        Me.btnFlipH.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
+        '
+        'btnFlipV
+        '
+        resources.ApplyResources(Me.btnFlipV, "btnFlipV")
+        Me.btnFlipV.CategoryGuid = New System.Guid("8ae0dc63-bfb4-4aa4-991b-02f9302016ce")
+        Me.btnFlipV.Id = 5
+        Me.btnFlipV.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.flipimage_vertical
+        Me.btnFlipV.Name = "btnFlipV"
+        Me.btnFlipV.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
+        '
+        'btnRescale
+        '
+        resources.ApplyResources(Me.btnRescale, "btnRescale")
+        Me.btnRescale.CategoryGuid = New System.Guid("8ae0dc63-bfb4-4aa4-991b-02f9302016ce")
+        Me.btnRescale.Id = 6
+        Me.btnRescale.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.imagedownsize
+        Me.btnRescale.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnRescale0), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRescale1), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRescale2), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRescale3)})
+        Me.btnRescale.Name = "btnRescale"
+        Me.btnRescale.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
+        '
+        'btnRescale0
+        '
+        resources.ApplyResources(Me.btnRescale0, "btnRescale0")
+        Me.btnRescale0.CategoryGuid = New System.Guid("8ae0dc63-bfb4-4aa4-991b-02f9302016ce")
+        Me.btnRescale0.Id = 7
+        Me.btnRescale0.Name = "btnRescale0"
+        '
+        'btnRescale1
+        '
+        resources.ApplyResources(Me.btnRescale1, "btnRescale1")
+        Me.btnRescale1.CategoryGuid = New System.Guid("8ae0dc63-bfb4-4aa4-991b-02f9302016ce")
+        Me.btnRescale1.Id = 8
+        Me.btnRescale1.Name = "btnRescale1"
+        '
+        'btnRescale2
+        '
+        resources.ApplyResources(Me.btnRescale2, "btnRescale2")
+        Me.btnRescale2.CategoryGuid = New System.Guid("8ae0dc63-bfb4-4aa4-991b-02f9302016ce")
+        Me.btnRescale2.Id = 9
+        Me.btnRescale2.Name = "btnRescale2"
+        '
+        'btnRescale3
+        '
+        resources.ApplyResources(Me.btnRescale3, "btnRescale3")
+        Me.btnRescale3.CategoryGuid = New System.Guid("8ae0dc63-bfb4-4aa4-991b-02f9302016ce")
+        Me.btnRescale3.Id = 10
+        Me.btnRescale3.Name = "btnRescale3"
+        '
+        'btnToGrayscale
+        '
+        resources.ApplyResources(Me.btnToGrayscale, "btnToGrayscale")
+        Me.btnToGrayscale.CategoryGuid = New System.Guid("8ae0dc63-bfb4-4aa4-991b-02f9302016ce")
+        Me.btnToGrayscale.Id = 11
+        Me.btnToGrayscale.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.grayscale
+        Me.btnToGrayscale.Name = "btnToGrayscale"
+        Me.btnToGrayscale.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
+        '
+        'btnRubber
+        '
+        resources.ApplyResources(Me.btnRubber, "btnRubber")
+        Me.btnRubber.CategoryGuid = New System.Guid("743c2f3f-e5fa-4a37-a53a-3b39314f5e36")
+        Me.btnRubber.Id = 12
+        Me.btnRubber.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.clearall
+        Me.btnRubber.Name = "btnRubber"
+        '
+        'btnRubberSize
+        '
+        resources.ApplyResources(Me.btnRubberSize, "btnRubberSize")
+        Me.btnRubberSize.CategoryGuid = New System.Guid("743c2f3f-e5fa-4a37-a53a-3b39314f5e36")
+        Me.btnRubberSize.Edit = Me.pbRubberSize
+        Me.btnRubberSize.EditValue = "2"
+        Me.btnRubberSize.Id = 13
+        Me.btnRubberSize.Name = "btnRubberSize"
+        Me.btnRubberSize.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+        '
+        'pbRubberSize
+        '
+        Me.pbRubberSize.LabelAppearance.Options.UseTextOptions = True
+        Me.pbRubberSize.LabelAppearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.pbRubberSize.LargeChange = 2
+        Me.pbRubberSize.Minimum = 1
+        Me.pbRubberSize.Name = "pbRubberSize"
+        '
+        'btnCropStart
+        '
+        resources.ApplyResources(Me.btnCropStart, "btnCropStart")
+        Me.btnCropStart.CategoryGuid = New System.Guid("743c2f3f-e5fa-4a37-a53a-3b39314f5e36")
+        Me.btnCropStart.Id = 14
+        Me.btnCropStart.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.crop2
+        Me.btnCropStart.Name = "btnCropStart"
+        '
+        'btnCrop
+        '
+        resources.ApplyResources(Me.btnCrop, "btnCrop")
+        Me.btnCrop.CategoryGuid = New System.Guid("743c2f3f-e5fa-4a37-a53a-3b39314f5e36")
+        Me.btnCrop.Id = 15
+        Me.btnCrop.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.crop1
+        Me.btnCrop.Name = "btnCrop"
+        Me.btnCrop.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+        '
+        'btnStop
+        '
+        resources.ApplyResources(Me.btnStop, "btnStop")
+        Me.btnStop.CategoryGuid = New System.Guid("743c2f3f-e5fa-4a37-a53a-3b39314f5e36")
+        Me.btnStop.Id = 16
+        Me.btnStop.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources._stop
+        Me.btnStop.Name = "btnStop"
+        Me.btnStop.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+        '
+        'btnSetTransparent
+        '
+        resources.ApplyResources(Me.btnSetTransparent, "btnSetTransparent")
+        Me.btnSetTransparent.CategoryGuid = New System.Guid("b77fe5ff-16a3-4da1-a6db-fac54765b6bc")
+        Me.btnSetTransparent.Id = 19
+        Me.btnSetTransparent.Name = "btnSetTransparent"
+        '
+        'btnTransparency
+        '
+        resources.ApplyResources(Me.btnTransparency, "btnTransparency")
+        Me.btnTransparency.CategoryGuid = New System.Guid("b77fe5ff-16a3-4da1-a6db-fac54765b6bc")
+        Me.btnTransparency.Id = 20
+        Me.btnTransparency.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnSetTransparent), New DevExpress.XtraBars.LinkPersistInfo(Me.btnTransparentThreshold), New DevExpress.XtraBars.LinkPersistInfo(Me.btnDeleteTransparent, True)})
+        Me.btnTransparency.Name = "btnTransparency"
+        '
+        'btnTransparentThreshold
+        '
+        resources.ApplyResources(Me.btnTransparentThreshold, "btnTransparentThreshold")
+        Me.btnTransparentThreshold.CategoryGuid = New System.Guid("b77fe5ff-16a3-4da1-a6db-fac54765b6bc")
+        Me.btnTransparentThreshold.Edit = Me.txtTransparentThreshold
+        Me.btnTransparentThreshold.Id = 21
+        Me.btnTransparentThreshold.Name = "btnTransparentThreshold"
+        '
+        'txtTransparentThreshold
+        '
+        Me.txtTransparentThreshold.LabelAppearance.Options.UseTextOptions = True
+        Me.txtTransparentThreshold.LabelAppearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.txtTransparentThreshold.Maximum = 100
+        Me.txtTransparentThreshold.Name = "txtTransparentThreshold"
+        Me.txtTransparentThreshold.TickFrequency = 10
+        '
+        'btnDeleteTransparent
+        '
+        resources.ApplyResources(Me.btnDeleteTransparent, "btnDeleteTransparent")
+        Me.btnDeleteTransparent.CategoryGuid = New System.Guid("b77fe5ff-16a3-4da1-a6db-fac54765b6bc")
+        Me.btnDeleteTransparent.Id = 22
+        Me.btnDeleteTransparent.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
+        Me.btnDeleteTransparent.Name = "btnDeleteTransparent"
+        '
+        'btnAdd
+        '
+        resources.ApplyResources(Me.btnAdd, "btnAdd")
+        Me.btnAdd.CategoryGuid = New System.Guid("84e2e039-9d9b-43f9-917e-d0208e034bff")
+        Me.btnAdd.Id = 23
+        Me.btnAdd.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
+        Me.btnAdd.Name = "btnAdd"
+        '
+        'btnAddExtra
+        '
+        resources.ApplyResources(Me.btnAddExtra, "btnAddExtra")
+        Me.btnAddExtra.CategoryGuid = New System.Guid("84e2e039-9d9b-43f9-917e-d0208e034bff")
+        Me.btnAddExtra.Id = 24
+        Me.btnAddExtra.Name = "btnAddExtra"
+        '
+        'btnEditDistance
+        '
+        resources.ApplyResources(Me.btnEditDistance, "btnEditDistance")
+        Me.btnEditDistance.CategoryGuid = New System.Guid("84e2e039-9d9b-43f9-917e-d0208e034bff")
+        Me.btnEditDistance.Id = 25
+        Me.btnEditDistance.Name = "btnEditDistance"
+        '
+        'btnRemove
+        '
+        resources.ApplyResources(Me.btnRemove, "btnRemove")
+        Me.btnRemove.CategoryGuid = New System.Guid("84e2e039-9d9b-43f9-917e-d0208e034bff")
+        Me.btnRemove.Id = 26
+        Me.btnRemove.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
+        Me.btnRemove.Name = "btnRemove"
+        '
+        'btnRemoveAll
+        '
+        resources.ApplyResources(Me.btnRemoveAll, "btnRemoveAll")
+        Me.btnRemoveAll.CategoryGuid = New System.Guid("84e2e039-9d9b-43f9-917e-d0208e034bff")
+        Me.btnRemoveAll.Id = 27
+        Me.btnRemoveAll.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.clearall
+        Me.btnRemoveAll.Name = "btnRemoveAll"
+        '
+        'btnShowSplays
+        '
+        resources.ApplyResources(Me.btnShowSplays, "btnShowSplays")
+        Me.btnShowSplays.Id = 28
+        Me.btnShowSplays.Name = "btnShowSplays"
+        '
+        'RibbonPage1
+        '
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1, Me.RibbonPageGroup2, Me.RibbonPageGroup3})
+        Me.RibbonPage1.Name = "RibbonPage1"
+        resources.ApplyResources(Me.RibbonPage1, "RibbonPage1")
+        '
+        'RibbonPageGroup1
+        '
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.btnLoadImage)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.btnUndo, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.btnRotate, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.btnFlipH)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.btnFlipV)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.btnRescale)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.btnToGrayscale)
+        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        resources.ApplyResources(Me.RibbonPageGroup1, "RibbonPageGroup1")
+        '
+        'RibbonPageGroup2
+        '
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.btnRubber)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.btnRubberSize)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.btnCropStart, True)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.btnCrop)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.btnStop, True)
+        Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
+        resources.ApplyResources(Me.RibbonPageGroup2, "RibbonPageGroup2")
+        '
+        'RibbonPageGroup3
+        '
+        Me.RibbonPageGroup3.Alignment = DevExpress.XtraBars.Ribbon.RibbonPageGroupAlignment.Far
+        Me.RibbonPageGroup3.ItemLinks.Add(Me.cmdOk)
+        Me.RibbonPageGroup3.ItemLinks.Add(Me.cmdCancel)
+        Me.RibbonPageGroup3.Name = "RibbonPageGroup3"
+        resources.ApplyResources(Me.RibbonPageGroup3, "RibbonPageGroup3")
         '
         'imlStations
         '
@@ -304,277 +417,98 @@ Partial Class frmSketchEdit
         Me.imlStations.TransparentColor = System.Drawing.Color.Transparent
         Me.imlStations.Images.SetKeyName(0, "pin")
         '
-        'tbMain
+        'RibbonPage2
         '
-        resources.ApplyResources(Me.tbMain, "tbMain")
-        Me.tbMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.tbMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnLoadImage, Me.ToolStripSeparator2, Me.btnUndo, Me.ToolStripSeparator4, Me.btnZoomIn, Me.btnZoomOut, Me.ToolStripSeparator8, Me.btnRescale, Me.btnRotate, Me.btnFlip, Me.ToolStripSeparator6, Me.btnToGrayscale, Me.ToolStripSeparator1, Me.btnRubber, Me.btnRubber0, Me.btnRubber1, Me.btnRubber2, Me.btnRubber3, Me.ToolStripSeparator5, Me.btnShowCutBorders, Me.btnCut, Me.ToolStripSeparator7, Me.btnStop})
-        Me.tbMain.Name = "tbMain"
+        Me.RibbonPage2.Name = "RibbonPage2"
+        resources.ApplyResources(Me.RibbonPage2, "RibbonPage2")
         '
-        'btnLoadImage
+        'mnuPreview
         '
-        Me.btnLoadImage.Image = Global.cSurveyPC.My.Resources.Resources.folder_picture
-        resources.ApplyResources(Me.btnLoadImage, "btnLoadImage")
-        Me.btnLoadImage.Name = "btnLoadImage"
+        Me.mnuPreview.ItemLinks.Add(Me.btnAdd, True)
+        Me.mnuPreview.ItemLinks.Add(Me.btnAddExtra, True)
+        Me.mnuPreview.ItemLinks.Add(Me.btnEditDistance)
+        Me.mnuPreview.ItemLinks.Add(Me.btnRemove, True)
+        Me.mnuPreview.ItemLinks.Add(Me.btnRemoveAll)
+        Me.mnuPreview.ItemLinks.Add(Me.btnTransparency, True)
+        Me.mnuPreview.ItemLinks.Add(Me.btnStop, True)
+        Me.mnuPreview.Name = "mnuPreview"
+        Me.mnuPreview.Ribbon = Me.RibbonControl1
         '
-        'ToolStripSeparator2
+        'mnuStations
         '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        resources.ApplyResources(Me.ToolStripSeparator2, "ToolStripSeparator2")
-        '
-        'btnUndo
-        '
-        Me.btnUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnUndo.Image = Global.cSurveyPC.My.Resources.Resources.arrow_undo
-        resources.ApplyResources(Me.btnUndo, "btnUndo")
-        Me.btnUndo.Name = "btnUndo"
-        '
-        'ToolStripSeparator4
-        '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        resources.ApplyResources(Me.ToolStripSeparator4, "ToolStripSeparator4")
-        '
-        'btnZoomIn
-        '
-        Me.btnZoomIn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnZoomIn.Image = Global.cSurveyPC.My.Resources.Resources.magnifier_zoom_in
-        resources.ApplyResources(Me.btnZoomIn, "btnZoomIn")
-        Me.btnZoomIn.Name = "btnZoomIn"
-        '
-        'btnZoomOut
-        '
-        Me.btnZoomOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnZoomOut.Image = Global.cSurveyPC.My.Resources.Resources.magnifier_zoom_out
-        resources.ApplyResources(Me.btnZoomOut, "btnZoomOut")
-        Me.btnZoomOut.Name = "btnZoomOut"
-        '
-        'ToolStripSeparator8
-        '
-        Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
-        resources.ApplyResources(Me.ToolStripSeparator8, "ToolStripSeparator8")
-        '
-        'btnRescale
-        '
-        Me.btnRescale.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnRescale.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnRescale0, Me.btnRescale1, Me.btnRescale2, Me.btnRescale3})
-        resources.ApplyResources(Me.btnRescale, "btnRescale")
-        Me.btnRescale.Name = "btnRescale"
-        '
-        'btnRescale0
-        '
-        Me.btnRescale0.Name = "btnRescale0"
-        resources.ApplyResources(Me.btnRescale0, "btnRescale0")
-        '
-        'btnRescale1
-        '
-        Me.btnRescale1.Name = "btnRescale1"
-        resources.ApplyResources(Me.btnRescale1, "btnRescale1")
-        '
-        'btnRescale2
-        '
-        Me.btnRescale2.Name = "btnRescale2"
-        resources.ApplyResources(Me.btnRescale2, "btnRescale2")
-        '
-        'btnRescale3
-        '
-        Me.btnRescale3.Name = "btnRescale3"
-        resources.ApplyResources(Me.btnRescale3, "btnRescale3")
-        '
-        'btnRotate
-        '
-        Me.btnRotate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        resources.ApplyResources(Me.btnRotate, "btnRotate")
-        Me.btnRotate.Name = "btnRotate"
-        '
-        'btnFlip
-        '
-        Me.btnFlip.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnFlip.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnFlipH, Me.btnFlipV})
-        resources.ApplyResources(Me.btnFlip, "btnFlip")
-        Me.btnFlip.Name = "btnFlip"
-        '
-        'btnFlipH
-        '
-        Me.btnFlipH.Name = "btnFlipH"
-        resources.ApplyResources(Me.btnFlipH, "btnFlipH")
-        '
-        'btnFlipV
-        '
-        Me.btnFlipV.Name = "btnFlipV"
-        resources.ApplyResources(Me.btnFlipV, "btnFlipV")
-        '
-        'ToolStripSeparator6
-        '
-        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        resources.ApplyResources(Me.ToolStripSeparator6, "ToolStripSeparator6")
-        '
-        'btnToGrayscale
-        '
-        Me.btnToGrayscale.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnToGrayscale.Image = Global.cSurveyPC.My.Resources.Resources.convert_color_to_gray
-        resources.ApplyResources(Me.btnToGrayscale, "btnToGrayscale")
-        Me.btnToGrayscale.Name = "btnToGrayscale"
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        resources.ApplyResources(Me.ToolStripSeparator1, "ToolStripSeparator1")
-        '
-        'btnRubber
-        '
-        Me.btnRubber.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnRubber.Image = Global.cSurveyPC.My.Resources.Resources.draw_eraser
-        resources.ApplyResources(Me.btnRubber, "btnRubber")
-        Me.btnRubber.Name = "btnRubber"
-        '
-        'btnRubber0
-        '
-        Me.btnRubber0.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnRubber0.Image = Global.cSurveyPC.My.Resources.Resources._0
-        resources.ApplyResources(Me.btnRubber0, "btnRubber0")
-        Me.btnRubber0.Name = "btnRubber0"
-        '
-        'btnRubber1
-        '
-        Me.btnRubber1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnRubber1.Image = Global.cSurveyPC.My.Resources.Resources._1
-        resources.ApplyResources(Me.btnRubber1, "btnRubber1")
-        Me.btnRubber1.Name = "btnRubber1"
-        '
-        'btnRubber2
-        '
-        Me.btnRubber2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnRubber2.Image = Global.cSurveyPC.My.Resources.Resources._2
-        resources.ApplyResources(Me.btnRubber2, "btnRubber2")
-        Me.btnRubber2.Name = "btnRubber2"
-        '
-        'btnRubber3
-        '
-        Me.btnRubber3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnRubber3.Image = Global.cSurveyPC.My.Resources.Resources._3
-        resources.ApplyResources(Me.btnRubber3, "btnRubber3")
-        Me.btnRubber3.Name = "btnRubber3"
-        '
-        'ToolStripSeparator5
-        '
-        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        resources.ApplyResources(Me.ToolStripSeparator5, "ToolStripSeparator5")
-        '
-        'btnShowCutBorders
-        '
-        Me.btnShowCutBorders.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnShowCutBorders.Image = Global.cSurveyPC.My.Resources.Resources.document_margins
-        resources.ApplyResources(Me.btnShowCutBorders, "btnShowCutBorders")
-        Me.btnShowCutBorders.Name = "btnShowCutBorders"
-        '
-        'btnCut
-        '
-        Me.btnCut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnCut.Image = Global.cSurveyPC.My.Resources.Resources.transform_crop
-        resources.ApplyResources(Me.btnCut, "btnCut")
-        Me.btnCut.Name = "btnCut"
-        '
-        'ToolStripSeparator7
-        '
-        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
-        resources.ApplyResources(Me.ToolStripSeparator7, "ToolStripSeparator7")
-        '
-        'btnStop
-        '
-        Me.btnStop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnStop.Image = Global.cSurveyPC.My.Resources.Resources.stop2
-        resources.ApplyResources(Me.btnStop, "btnStop")
-        Me.btnStop.Name = "btnStop"
+        Me.mnuStations.ItemLinks.Add(Me.btnShowSplays)
+        Me.mnuStations.Name = "mnuStations"
+        Me.mnuStations.Ribbon = Me.RibbonControl1
         '
         'frmSketchEdit
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.Controls.Add(Me.pnlPreview)
-        Me.Controls.Add(Me.cmdCancel)
-        Me.Controls.Add(Me.cmdOk)
-        Me.Controls.Add(Me.tbMain)
-        Me.IconOptions.Icon = CType(resources.GetObject("frmSketchEdit.IconOptions.Icon"), System.Drawing.Icon)
+        Me.Controls.Add(Me.SplitContainerControl1)
+        Me.Controls.Add(Me.RibbonControl1)
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.item_sketch
         Me.KeyPreview = True
         Me.Name = "frmSketchEdit"
-        Me.pnlPreview.Panel1.ResumeLayout(False)
-        Me.pnlPreview.Panel2.ResumeLayout(False)
-        CType(Me.pnlPreview, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Ribbon = Me.RibbonControl1
+        CType(Me.SplitContainerControl1.Panel1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.SplitContainerControl1.Panel1.ResumeLayout(False)
+        CType(Me.SplitContainerControl1.Panel2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.SplitContainerControl1.Panel2.ResumeLayout(False)
+        CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.SplitContainerControl1.ResumeLayout(False)
         Me.pnlPreview.ResumeLayout(False)
-        Me.mnuTrigpoints.ResumeLayout(False)
-        Me.mnuTrigpoints.PerformLayout()
         CType(Me.picPreview, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.mnuPreview.ResumeLayout(False)
-        Me.tbMain.ResumeLayout(False)
-        Me.tbMain.PerformLayout()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbRubberSize, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtTransparentThreshold, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.mnuPreview, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.mnuStations, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
     Friend WithEvents picPreview As System.Windows.Forms.PictureBox
-    Friend WithEvents tbMain As System.Windows.Forms.ToolStrip
     Friend WithEvents imlStations As System.Windows.Forms.ImageList
-    Friend WithEvents mnuPreview As System.Windows.Forms.ContextMenuStrip
-    Friend WithEvents mnuPreviewAdd As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents mnuPreviewRemove As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents pnlPreview As System.Windows.Forms.SplitContainer
-    Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents btnZoomIn As System.Windows.Forms.ToolStripButton
-    Friend WithEvents btnZoomOut As System.Windows.Forms.ToolStripButton
     Friend WithEvents tipStandard As System.Windows.Forms.ToolTip
-    Friend WithEvents btnUndo As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents btnRubber As System.Windows.Forms.ToolStripButton
-    Friend WithEvents btnRubber1 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents btnRubber2 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents btnRubber0 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents btnRubber3 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents btnLoadImage As System.Windows.Forms.ToolStripButton
-    Friend WithEvents btnToGrayscale As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents ToolStripSeparator5 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents ToolStripMenuItem2 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents mnuPreviewSetTransparent As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents mnuPreviewDeleteTransparent As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents mnuPreviewTransparentThreshold As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents mnuPreviewTransparentThreshold1 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents mnuPreviewTransparentThreshold2 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents mnuPreviewTransparentThreshold3 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents mnuPreviewTransparentThreshold4 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents mnuPreviewTransparentThreshold5 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents mnuPreviewTransparentThreshold6 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents mnuPreviewTransparentThreshold7 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents mnuPreviewTransparentThreshold8 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents mnuPreviewTransparentThreshold9 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents mnuPreviewTransparentThreshold10 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents mnuPreviewTransparentThreshold11 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents btnShowCutBorders As System.Windows.Forms.ToolStripButton
-    Friend WithEvents btnCut As System.Windows.Forms.ToolStripButton
-    Friend WithEvents mnuPreviewRemoveAll As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents btnRescale As System.Windows.Forms.ToolStripDropDownButton
-    Friend WithEvents btnRescale0 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents btnRescale1 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents btnRescale2 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents btnRescale3 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator6 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents btnRotate As System.Windows.Forms.ToolStripButton
-    Friend WithEvents btnFlip As System.Windows.Forms.ToolStripDropDownButton
-    Friend WithEvents btnFlipH As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents btnFlipV As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator7 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents btnStop As System.Windows.Forms.ToolStripButton
-    Friend WithEvents mnuPreviewStop As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents lvTrigpoints As System.Windows.Forms.ListView
-    Friend WithEvents colTrigpointName As System.Windows.Forms.ColumnHeader
-    Friend WithEvents mnuTrigpoints As System.Windows.Forms.ContextMenuStrip
-    Friend WithEvents mnuTrigpointsFilterBy As System.Windows.Forms.ToolStripTextBox
-    Friend WithEvents mnuTrigpointsRemoveFilter As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator8 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents mnuPreviewAddExtra As ToolStripMenuItem
-    Friend WithEvents mnuPreviewEditDistance As ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem3 As ToolStripSeparator
-    Friend WithEvents mnuTrigpointsShowSplay As ToolStripMenuItem
+    Friend WithEvents RibbonControl1 As DevExpress.XtraBars.Ribbon.RibbonControl
+    Friend WithEvents RibbonPage1 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonPageGroup2 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonPage2 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents btnLoadImage As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnUndo As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnRotate As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnFlipH As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnFlipV As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnRescale As DevExpress.XtraBars.BarSubItem
+    Friend WithEvents btnRescale0 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnRescale1 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnRescale2 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnRescale3 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnToGrayscale As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnRubber As DevExpress.XtraBars.BarCheckItem
+    Friend WithEvents btnRubberSize As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents pbRubberSize As DevExpress.XtraEditors.Repository.RepositoryItemTrackBar
+    Friend WithEvents btnCropStart As DevExpress.XtraBars.BarCheckItem
+    Friend WithEvents btnCrop As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnStop As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents RibbonPageGroup3 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents cmdOk As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents cmdCancel As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents mnuPreview As DevExpress.XtraBars.PopupMenu
+    Friend WithEvents btnSetTransparent As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnTransparency As DevExpress.XtraBars.BarSubItem
+    Friend WithEvents btnTransparentThreshold As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents txtTransparentThreshold As DevExpress.XtraEditors.Repository.RepositoryItemTrackBar
+    Friend WithEvents btnDeleteTransparent As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnAdd As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnAddExtra As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnEditDistance As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnRemove As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnRemoveAll As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents SplitContainerControl1 As DevExpress.XtraEditors.SplitContainerControl
+    Friend WithEvents pnlPreview As DevExpress.XtraEditors.XtraScrollableControl
+    Friend WithEvents grdStations As cTrigpointsGrid
+    Friend WithEvents btnShowSplays As DevExpress.XtraBars.BarCheckItem
+    Friend WithEvents mnuStations As DevExpress.XtraBars.PopupMenu
 End Class

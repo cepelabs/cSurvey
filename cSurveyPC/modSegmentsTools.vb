@@ -22,7 +22,7 @@ Module modSegmentsTools
         Return oDefaultProfileSplayBorderNegInclinationRange
     End Function
 
-    Public Function GetVisibleSegments(Survey As cSurvey.cSurvey, Segments As cISegmentCollection, PaintOptions As Design.cOptions) As cSegmentCollection
+    Public Function GetVisibleSegments(Survey As cSurvey.cSurvey, Segments As cISegmentCollection, PaintOptions As Design.cOptionsDesign) As cSegmentCollection
         Dim oSegmentColl As cSegmentCollection = New cSegmentCollection(Survey)
         For Each oSegment As cSegment In Segments
             If Survey.Properties.CaveVisibilityProfiles.GetVisible(PaintOptions.CurrentCaveVisibilityProfile, oSegment.Cave, oSegment.Branch) Then
@@ -32,7 +32,7 @@ Module modSegmentsTools
         Return oSegmentColl
     End Function
 
-    Public Function GetVisibleCaveSegments(Survey As cSurvey.cSurvey, Segments As cISegmentCollection, PaintOptions As Design.cOptions, ByVal Cave As String, Optional ByVal Branch As String = "") As cSegmentCollection
+    Public Function GetVisibleCaveSegments(Survey As cSurvey.cSurvey, Segments As cISegmentCollection, PaintOptions As Design.cOptionsDesign, ByVal Cave As String, Optional ByVal Branch As String = "") As cSegmentCollection
         Dim oSegmentColl As cSegmentCollection = New cSegmentCollection(Survey)
         Dim sCave As String = ("" & Cave).ToLower
         Dim sBranch As String = ("" & Branch).ToLower
@@ -103,7 +103,7 @@ Module modSegmentsTools
     End Function
 
     Public Function GetSessionSegments(Survey As cSurvey.cSurvey, Segments As cISegmentCollection, ByVal SessionID As String, Optional Flags As cISegmentCollection.SessionSegmentsFlagEnum = cISegmentCollection.SessionSegmentsFlagEnum.SurveyShots) As cSegmentCollection
-        Return New cSegmentCollection(Survey, Segments.Where(Function(item) item.Session = SessionID AndAlso Not item.Virtual AndAlso
+        Return New cSegmentCollection(Survey, Segments.Where(Function(item) item.IsValid AndAlso item.Session = SessionID AndAlso Not item.Virtual AndAlso
                                                                  (((Flags = cISegmentCollection.SessionSegmentsFlagEnum.CalibrationShots AndAlso item.Calibration)) OrElse
                                                                  ((Flags = cISegmentCollection.SessionSegmentsFlagEnum.SurveyShots AndAlso Not item.Calibration)))))
     End Function

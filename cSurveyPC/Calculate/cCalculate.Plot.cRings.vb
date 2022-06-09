@@ -9,6 +9,12 @@ Namespace cSurvey.Calculate
 
         Private dAverageErrorPercent As Decimal
 
+        Public ReadOnly Property Survey As cSurvey
+            Get
+                Return oSurvey
+            End Get
+        End Property
+
         Private Class cHash
             Private sHash As String
 

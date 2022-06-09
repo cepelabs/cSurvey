@@ -27,8 +27,8 @@ Namespace cSurvey
         Friend Sub New(Survey As cSurvey)
             oSurvey = Survey
             oItems = New List(Of cPreviewProfile)
-            Call oItems.Add(New cPreviewProfile(oSurvey, oSurvey.Options("_preview.plan"), cIDesign.cDesignTypeEnum.Plan))
-            Call oItems.Add(New cPreviewProfile(oSurvey, oSurvey.Options("_preview.profile"), cIDesign.cDesignTypeEnum.Profile))
+            Call oItems.Add(New cPreviewProfile(oSurvey, DirectCast(oSurvey.Options("_preview.plan"), cOptionsPreview), cIDesign.cDesignTypeEnum.Plan))
+            Call oItems.Add(New cPreviewProfile(oSurvey, DirectCast(oSurvey.Options("_preview.profile"), cOptionsPreview), cIDesign.cDesignTypeEnum.Profile))
         End Sub
 
         Friend Sub New(Survey As cSurvey, ByVal File As cFile, Profiles As XmlElement)
@@ -54,8 +54,8 @@ Namespace cSurvey
                     Call oItems.Add(oItem)
                 End If
             Next
-            If Not bPlanExist Then Call oItems.Insert(0, New cPreviewProfile(oSurvey, oSurvey.Options("_preview.plan"), cIDesign.cDesignTypeEnum.Plan))
-            If Not bProfileExist Then Call oItems.Insert(1, New cPreviewProfile(oSurvey, oSurvey.Options("_preview.profile"), cIDesign.cDesignTypeEnum.Profile))
+            If Not bPlanExist Then Call oItems.Insert(0, New cPreviewProfile(oSurvey, DirectCast(oSurvey.Options("_preview.plan"), cOptionsPreview), cIDesign.cDesignTypeEnum.Plan))
+            If Not bProfileExist Then Call oItems.Insert(1, New cPreviewProfile(oSurvey, DirectCast(oSurvey.Options("_preview.profile"), cOptionsPreview), cIDesign.cDesignTypeEnum.Profile))
         End Sub
 
         Public Function Add(Name As String, Design As cIDesign.cDesignTypeEnum) As cIProfile Implements cIProfiles.Add
@@ -184,7 +184,7 @@ Namespace cSurvey
             End Get
         End Property
 
-        Public ReadOnly Property Options As Design.cOptions Implements cIProfile.Options
+        Public ReadOnly Property Options As Design.cOptionsCenterline Implements cIProfile.Options
             Get
                 Return oOptions
             End Get

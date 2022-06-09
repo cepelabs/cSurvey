@@ -99,7 +99,7 @@ friend Class frmAutoSettings
         Dim sTherionPath As String = pFindTherion()
 
         If sTherionPath = "" Then
-            Call MsgBox(GetLocalizedString("autosettigs.warning1"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("autosettigs.warningtitle"))
+            Call cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("autosettigs.warning1"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("autosettigs.warningtitle"))
             DialogResult = Windows.Forms.DialogResult.Cancel
             Call Close()
         Else
@@ -141,7 +141,7 @@ friend Class frmAutoSettings
 
             Call pSetProgress(GetLocalizedString("autosettigs.steptitle2"))
 
-            Call MsgBox(GetLocalizedString("autosettings.warning2"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Information, GetLocalizedString("autosettigs.warningtitle"))
+            Call cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("autosettings.warning2"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Information, GetLocalizedString("autosettigs.warningtitle"))
 
             cmdAutoConfig.Enabled = True
             cmdAutoConfig.Visible = True
@@ -186,7 +186,7 @@ friend Class frmAutoSettings
                     Call oReg.Close()
                 End Using
 
-                Call MsgBox(GetLocalizedString("autosettings.warning2"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Information, GetLocalizedString("autosettigs.warningtitle"))
+                Call cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("autosettings.warning2"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Information, GetLocalizedString("autosettigs.warningtitle"))
             End If
         End If
     End Sub

@@ -13,7 +13,7 @@
     Example:
     
     ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="resmimetype"gpsdatatext/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
     <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
     <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
@@ -126,190 +126,90 @@
   <data name="cboScale.Items11" xml:space="preserve">
     <value>Manuale</value>
   </data>
-  <data name="cboPrintCenterlineColorMode.Items" xml:space="preserve">
+  <data name="cboPrintCenterlineColorMode.Properties.Items" xml:space="preserve">
     <value>Grotte e rami</value>
   </data>
-  <data name="cboPrintCenterlineColorMode.Items1" xml:space="preserve">
+  <data name="cboPrintCenterlineColorMode.Properties.Items1" xml:space="preserve">
     <value>Solo grotte</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblPrintCenterlineColorMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 13</value>
-  </data>
   <data name="lblPrintCenterlineColorMode.Text" xml:space="preserve">
     <value>Stile colore:</value>
   </data>
-  <data name="chkPrintCombineColorGray.Text" xml:space="preserve">
-    <value>Scala di grigio</value>
-  </data>
-  <data name="cboPrintCombineColorMode.Items" xml:space="preserve">
+  <data name="cboPrintCombineColorMode.Properties.Items" xml:space="preserve">
     <value>Grotte e rami</value>
   </data>
-  <data name="cboPrintCombineColorMode.Items1" xml:space="preserve">
+  <data name="cboPrintCombineColorMode.Properties.Items1" xml:space="preserve">
     <value>Solo grotte</value>
-  </data>
-  <data name="lblPrintCombineColorMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 13</value>
   </data>
   <data name="lblPrintCombineColorMode.Text" xml:space="preserve">
     <value>Stile colore:</value>
   </data>
-  <data name="chkUseDrawingZOrder.Text" xml:space="preserve">
-    <value>Ordine di disegno</value>
-  </data>
   <data name="lblCurrentProfile.Text" xml:space="preserve">
     <value>Profilo:</value>
   </data>
-  <data name="btnZOrderDetails.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACV0lEQVQ4T6WSzWsTQRiH53/p1YPQq7HZ
-        dHezzSbEJPXiwZMXQRAUPIgRk+xusjlYsCL2YD3oQfGDSm2y+bImppJaKS0oNGj9ALG2xSYGQTz9fGeS
-        XdvgzYEfzM7u++zMMy8D8F9hwWxFRDbLc1LagZRxoJjVOcV6yRJ5icXzOovmQnMhI4hgWvHCn6M5vSOK
-        VavC/FRcedfB/bUdBDJluICYHWL8482dCja+OpQS2ltlfNitQTc1CIBildnRVJEAXWgzaxj3AH4B0A0N
-        y99mca11DNOtOK63Eph5fRxhM7QPcKWA6vsfiN5+C9koQbWabDLvoyNoTEsqz3RzgrYdEtENHRFTx0RS
-        fe4BxlIFLGx0MXmnDTnDAQ1aXydAkNEYoYz+IyMHAI/edHDi3uYA8IJ2cETsgCQ+5h60v/J24/kIvYv0
-        b0EdAO6ud3Hy4Sdy4HiAmB30JLa3Sp68mB0+CPAT4NZqB6eefME43YhqLTIlu8LidoDppiokTi/HcHMg
-        L2bv24FiEoAk3ljp4vTTLQTSBeoFAmeX6CZ8TLsk1fhfucCBvEXvCFS8FEgX4UvO42qrizPONsYuzxOE
-        N1S9KZNIIWtIngeQDQdTq79gL/eQbnzH2dIu8jSfWv2NcaOBBHmI5tQH3MNAYN0tFgBOlFILuFDv4Vx1
-        D+dre2IupRxqdDYat/0kUSF5VXwcEigA3IELudj8KcLnfE2xuESZOjGIV9uzJDBxQKAHcCFypkg9UBTF
-        /U7s90HEmPgcpk7kxVFL77nFAjA0XEnD4xDFfXeYL/QHY38AqVfnu9nacC8AAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="chkPrintDesignAdvancedBrushes.Text" xml:space="preserve">
-    <value>Riemp. speciali</value>
-  </data>
-  <data name="chkTranslations.Text" xml:space="preserve">
-    <value>Traslazioni</value>
-  </data>
-  <data name="cboPrintDesignStyle.Items" xml:space="preserve">
+  <data name="cboPrintDesignStyle.Properties.Items" xml:space="preserve">
     <value>Rilievo</value>
   </data>
-  <data name="cboPrintDesignStyle.Items1" xml:space="preserve">
+  <data name="cboPrintDesignStyle.Properties.Items1" xml:space="preserve">
     <value>Aree</value>
   </data>
-  <data name="cboPrintDesignStyle.Items2" xml:space="preserve">
+  <data name="cboPrintDesignStyle.Properties.Items2" xml:space="preserve">
     <value>Combinato</value>
-  </data>
-  <data name="chkPrintDesignStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
   </data>
   <data name="chkPrintDesignStyle.Text" xml:space="preserve">
     <value>Stile:</value>
   </data>
-  <data name="lblGPSData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 13</value>
-  </data>
   <data name="lblGPSData.Text" xml:space="preserve">
     <value>Formato:</value>
   </data>
-  <data name="chkExportGPS.Text" xml:space="preserve">
-    <value>Esporta dati geografici</value>
-  </data>
-  <data name="chkPrintDesignSpecialPoint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 17</value>
-  </data>
-  <data name="chkPrintDesignSpecialPoint.Text" xml:space="preserve">
-    <value>Punti speciali</value>
-  </data>
-  <data name="chkPrintImages.Text" xml:space="preserve">
-    <value>Immagini</value>
-  </data>
-  <data name="chkPrintDesign.Text" xml:space="preserve">
-    <value>Stampa disegno</value>
-  </data>
-  <data name="chkPrintCentrelineColorGray.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 17</value>
-  </data>
-  <data name="chkPrintCentrelineColorGray.Text" xml:space="preserve">
-    <value>Scala di grigio</value>
-  </data>
-  <data name="cboCompassPosition.Items" xml:space="preserve">
+  <data name="cboCompassPosition.Properties.Items" xml:space="preserve">
     <value>In alto a sinistra</value>
   </data>
-  <data name="cboCompassPosition.Items1" xml:space="preserve">
+  <data name="cboCompassPosition.Properties.Items1" xml:space="preserve">
     <value>In alto a destra</value>
   </data>
-  <data name="cboCompassPosition.Items2" xml:space="preserve">
+  <data name="cboCompassPosition.Properties.Items2" xml:space="preserve">
     <value>In basso a sinistra</value>
   </data>
-  <data name="cboCompassPosition.Items3" xml:space="preserve">
+  <data name="cboCompassPosition.Properties.Items3" xml:space="preserve">
     <value>In basso a destra</value>
-  </data>
-  <data name="Label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 13</value>
   </data>
   <data name="Label4.Text" xml:space="preserve">
     <value>Posizione:</value>
   </data>
-  <data name="chkPrintCompass.Text" xml:space="preserve">
-    <value>Bussola</value>
-  </data>
-  <data name="chkPrintStations.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 17</value>
-  </data>
-  <data name="chkPrintStations.Text" xml:space="preserve">
-    <value>Punti di rilievo</value>
-  </data>
-  <data name="chkPrintShots.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 17</value>
-  </data>
-  <data name="chkPrintShots.Text" xml:space="preserve">
-    <value>Segmenti</value>
-  </data>
-  <data name="chkPrintCentreline.Text" xml:space="preserve">
-    <value>Stampa poligonale</value>
-  </data>
-  <data name="cboScalePosition.Items" xml:space="preserve">
+  <data name="cboScalePosition.Properties.Items" xml:space="preserve">
     <value>In alto a sinistra</value>
   </data>
-  <data name="cboScalePosition.Items1" xml:space="preserve">
+  <data name="cboScalePosition.Properties.Items1" xml:space="preserve">
     <value>In alto a destra</value>
   </data>
-  <data name="cboScalePosition.Items2" xml:space="preserve">
+  <data name="cboScalePosition.Properties.Items2" xml:space="preserve">
     <value>In basso a sinistra</value>
   </data>
-  <data name="cboScalePosition.Items3" xml:space="preserve">
+  <data name="cboScalePosition.Properties.Items3" xml:space="preserve">
     <value>In basso a destra</value>
-  </data>
-  <data name="Label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 13</value>
   </data>
   <data name="Label3.Text" xml:space="preserve">
     <value>Posizione:</value>
   </data>
-  <data name="cboBoxPosition.Items" xml:space="preserve">
+  <data name="cboBoxPosition.Properties.Items" xml:space="preserve">
     <value>In alto a sinistra</value>
   </data>
-  <data name="cboBoxPosition.Items1" xml:space="preserve">
+  <data name="cboBoxPosition.Properties.Items1" xml:space="preserve">
     <value>In alto a destra</value>
   </data>
-  <data name="cboBoxPosition.Items2" xml:space="preserve">
+  <data name="cboBoxPosition.Properties.Items2" xml:space="preserve">
     <value>In basso a sinistra</value>
   </data>
-  <data name="cboBoxPosition.Items3" xml:space="preserve">
+  <data name="cboBoxPosition.Properties.Items3" xml:space="preserve">
     <value>In basso a destra</value>
-  </data>
-  <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 13</value>
   </data>
   <data name="Label2.Text" xml:space="preserve">
     <value>Posizione:</value>
   </data>
-  <data name="chkPrintScale.Text" xml:space="preserve">
-    <value>Scala</value>
-  </data>
-  <data name="chkPrintBox.Text" xml:space="preserve">
-    <value>Box informativo</value>
-  </data>
-  <data name="lblPrinter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 13</value>
-  </data>
   <data name="lblPrinter.Text" xml:space="preserve">
     <value>Stampante:</value>
-  </data>
-  <data name="lblPageFormat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
   </data>
   <data name="lblPageFormat.Text" xml:space="preserve">
     <value>Pagina:</value>
@@ -317,149 +217,32 @@
   <data name="grpOrientation.Text" xml:space="preserve">
     <value>Orientamento:</value>
   </data>
-  <data name="chkBackgroundTransparent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 17</value>
-  </data>
-  <data name="chkBackgroundTransparent.Text" xml:space="preserve">
-    <value>Sfondo trasparente</value>
-  </data>
-  <data name="lblSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 13</value>
-  </data>
   <data name="lblSize.Text" xml:space="preserve">
     <value>Dimensione:</value>
-  </data>
-  <data name="Label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 13</value>
   </data>
   <data name="Label7.Text" xml:space="preserve">
     <value>Formato:</value>
   </data>
-  <data name="btnAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 22</value>
-  </data>
   <data name="btnAdd.Text" xml:space="preserve">
     <value>Aggiungi...</value>
-  </data>
-  <data name="btnDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 22</value>
   </data>
   <data name="btnDelete.Text" xml:space="preserve">
     <value>Rimuovi</value>
   </data>
-  <data name="btnProperty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 22</value>
-  </data>
-  <data name="btnProperty.Text" xml:space="preserve">
-    <value>Proprietà</value>
-  </data>
-  <data name="btnZoomIn.Text" xml:space="preserve">
-    <value>Ingrandisci</value>
-  </data>
-  <data name="btnZoomOut.Text" xml:space="preserve">
-    <value>Riduci</value>
-  </data>
-  <data name="btnZoomToFit.Text" xml:space="preserve">
-    <value>Zoom al disegno</value>
-  </data>
-  <data name="btnImportSettings.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnImportSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 22</value>
-  </data>
   <data name="btnImportSettings.Text" xml:space="preserve">
     <value>Impostazioni</value>
-  </data>
-  <data name="btnPreviewQuality0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
   </data>
   <data name="btnPreviewQuality0.Text" xml:space="preserve">
     <value>Bozza</value>
   </data>
-  <data name="btnPreviewQuality1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
   <data name="btnPreviewQuality1.Text" xml:space="preserve">
     <value>Media</value>
-  </data>
-  <data name="btnPreviewQuality2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
   </data>
   <data name="btnPreviewQuality2.Text" xml:space="preserve">
     <value>Alta</value>
   </data>
-  <data name="btnPreviewQuality.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnPreviewQuality.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 22</value>
-  </data>
   <data name="btnPreviewQuality.Text" xml:space="preserve">
     <value>Qualità anteprima</value>
-  </data>
-  <data name="btnStop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 22</value>
-  </data>
-  <data name="btnStop.Text" xml:space="preserve">
-    <value>Arresta disegno</value>
-  </data>
-  <data name="btnPrint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 22</value>
-  </data>
-  <data name="btnPrint.Text" xml:space="preserve">
-    <value>Stampa...</value>
-  </data>
-  <data name="btnExport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 22</value>
-  </data>
-  <data name="btnExport.Text" xml:space="preserve">
-    <value>Esporta...</value>
-  </data>
-  <data name="cmdClose.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="cmdClose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 22</value>
-  </data>
-  <data name="cmdClose.Text" xml:space="preserve">
-    <value>Chiudi</value>
   </data>
   <data name="iml.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -539,34 +322,6 @@
         AcACAAF/AYACAAEBBAAB/AIAAT8BwAIAAf8BgAIAAQEEAAH8AgABPwHAAQABAQH/AcACAAEDBAAB/AIA
         AT8BwAEAAQMF/wQACw==
 </value>
-  </data>
-  <data name="picInvalidated.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAEbklEQVRYR8VWb0yVZRwVLC0/1NZmq7VV
-        q9XASRFyr2CQmJr/LaWrDDFCEBUUl7YYcBNb68/qA31qfqlWa2szc7GYaAjEJe4V9AIFCCUJXPC6uebW
-        l5ZrdjrnPvfWlb3cP27Abzve1+d3fuec932f932ZA2BWYbk4k7BcnEmYf+KvxJZqW3FnrQ2CjrVmWnHW
-        7QQoW/XwwvPvZAFXPw1Ax1oLtuOr2whwp6sm3eVvPAh4dwSgY62pZyhxVJwBEj4rXZzt/XAlz/wYcOIh
-        4BtivA5aU08cQ42x4gww33PE/tcf3W8BP64Hjj9gwGOtqSeOocZYcQRIbDicVnXx2IvA6FGe/YPAyUcM
-        dMw19cQR14zEUHEEWOB22vDP+EdA0xKg/lHgu8cNdMw19cQR14zEUDEGmNtalf6t/1Qp8Es5TR8DGp8E
-        zj5hcJrHDVxjTxxxNWNGo1QMARK+2PdUdvcHK4CJ92m2iObJQHMSlq0vRdaGUgx9vpTrScAZ9sgRVzOa
-        NRIRKoYA8zucNv/19gqgd5sJ0JQCtC/Cutw92OjYg5GvMhlosQlAjria0ayRiFBRAiSeen0JNx53/EQN
-        jWnSnAq0PgO4U7A5rxxb8ssw8vWzwA9cV08ccjWjWWkYqSkqSoAFHqcdNwargM7VQEsazdOBNuJcKnJ3
-        HMS2nRUYPbkccHFjqicOuZrRrDSM1BQVIcDcpsr0T8ZO5AGXufHaaODivXZl8Lnn7/k05L16GPlFhzBW
-        /zzQYTc9ccTljGalIS0jaVFTBEioK0hK7nqbl9ZXyTPK4T1fRmO+/wU31712FJRUonD3G/A1vAB4wvri
-        aoaz0pCWNI30pJoiwLz2Glv/9bZdwBDf926Kep4jeKmFTh73ZqJwbw12lVVjvHEd0JX9f19czXBWGtKS
-        ppGeVBYBEutfSyu5+PEawH+Il5qXt4uPYJd+g7jA//dlobj8KHYfqMX4mY28IjzjcI5mNEsNaUlT2sYi
-        rCwC3O1xLsWNgX3AwBaa8cNzgRswHN5VDJCDov3vofjAuxj9fivQbcHTLDWkJU1pG4uwmhQgsPF++5Jn
-        5ONbr4ciPbwSPWtvRS/RtxpjzQ74Why42c3H9CcLXmCWGtSSpuWGDAvAjZcc3Hh7mXwTRTcQDGOFAfYu
-        8d4PE4MM0GfBCYA8aVHTbMjkWzdkWIB57U57/7XTuXyECoD+zQS/fFYYIIY3IXtNCZavLcZQI2/BYAS+
-        tKgpbXnIy1iyggESjlekbv25jhvpSgk/KhKMAPVHXoLjlWpsL6zC5dZ84FfuFytuCJqhtjzkJU8ZhwLc
-        da428+8/vdv5XafYJUd0jLyMsY4i+NxFuDnEl9WwBWcyqC0PeclTxqEA93XW8oPyeyEfm518l/MWTOg3
-        Aq6QczUIv/jRZsTjLz3kJU8ZhwIsPFtt72cyeN7M4CMzTaC2PFxHMsblKeNQgHuIFCKHWDnNWEE8TdxL
-        /BfgDkIhlOr+aYY8ZG7+hA8GmL1SgNmE5eLMAXP+Bece01x8115jAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="cmdRefresh.Text" xml:space="preserve">
-    <value>Aggiorna</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1106,9 +861,6 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
 </value>
   </data>
-  <data name="btnSidePanel.Text" xml:space="preserve">
-		<value>Mostra/nascondi pannello laterale</value>
-	</data>
   <data name="btnImportSettings0.Text" xml:space="preserve">
 		<value>Importa da anteprima di stampa</value>
 	</data>
@@ -1126,9 +878,6 @@
 	</data>
   <data name="btnImportSettings3.Text" xml:space="preserve">
 		<value>Esporta su file...</value>
-	</data>
-  <data name="btnManualRefresh.Text" xml:space="preserve">
-		<value>Aggiornamento manuale</value>
 	</data>
   <data name="pnlStatusCurrentRule.ToolTipText" xml:space="preserve">
 		<value>Impostazioni per scala</value>
@@ -1151,10 +900,10 @@
   <data name="$this.Text" xml:space="preserve">
 		<value>- cSurvey - Anteprima</value>
 	</data>
-  <data name="cboPrintCombineColorMode.Items2" xml:space="preserve">
+  <data name="cboPrintCombineColorMode.Properties.Items2" xml:space="preserve">
     <value>Origine/suborigine</value>
   </data>
-  <data name="cboPrintCenterlineColorMode.Items2" xml:space="preserve">
+  <data name="cboPrintCenterlineColorMode.Properties.Items2" xml:space="preserve">
     <value>Origine/suborigine</value>
   </data>
   <data name="btnBaseRule.Text" xml:space="preserve">
@@ -1165,5 +914,113 @@
   </data>
   <data name="lblImageResolutionUM.Text" xml:space="preserve">
     <value>DPI</value>
+  </data>
+  <data name="btnExport.Caption" xml:space="preserve">
+    <value>Esporta...</value>
+  </data>
+  <data name="chkBackgroundTransparent.Properties.Caption" xml:space="preserve">
+    <value>Sfondo trasparente</value>
+  </data>
+  <data name="chkExportGPS.Properties.Caption" xml:space="preserve">
+    <value>Esporta dati geografici</value>
+  </data>
+  <data name="chkPrintBox.Properties.Caption" xml:space="preserve">
+    <value>Box informativo</value>
+  </data>
+  <data name="chkPrintCentreline.Properties.Caption" xml:space="preserve">
+    <value>Stampa poligonale</value>
+  </data>
+  <data name="chkPrintCentrelineColorGray.Properties.Caption" xml:space="preserve">
+    <value>Scala di grigio</value>
+  </data>
+  <data name="chkPrintCombineColorGray.Properties.Caption" xml:space="preserve">
+    <value>Scala di grigio</value>
+  </data>
+  <data name="chkPrintCompass.Properties.Caption" xml:space="preserve">
+    <value>Bussola</value>
+  </data>
+  <data name="chkPrintDesign.Properties.Caption" xml:space="preserve">
+    <value>Stampa disegno</value>
+  </data>
+  <data name="chkPrintDesignAdvancedBrushes.Properties.Caption" xml:space="preserve">
+    <value>Riemp. speciali</value>
+  </data>
+  <data name="chkPrintDesignSpecialPoint.Properties.Caption" xml:space="preserve">
+    <value>Punti speciali</value>
+  </data>
+  <data name="chkPrintImages.Properties.Caption" xml:space="preserve">
+    <value>Immagini</value>
+  </data>
+  <data name="chkPrintScale.Properties.Caption" xml:space="preserve">
+    <value>Scala</value>
+  </data>
+  <data name="chkPrintShots.Properties.Caption" xml:space="preserve">
+    <value>Battute</value>
+  </data>
+  <data name="chkPrintStations.Properties.Caption" xml:space="preserve">
+    <value>Capisaldi</value>
+  </data>
+  <data name="chkTranslations.Properties.Caption" xml:space="preserve">
+    <value>Traslazioni</value>
+  </data>
+  <data name="chkUseDrawingZOrder.Properties.Caption" xml:space="preserve">
+    <value>Ordine di disegno</value>
+  </data>
+  <data name="RibbonPage1.Text" xml:space="preserve">
+    <value>Generale</value>
+  </data>
+  <data name="RibbonPageGroup1.Text" xml:space="preserve">
+    <value>Comandi</value>
+  </data>
+  <data name="btnProfilesAdd.Caption" xml:space="preserve">
+    <value>Aggiungi...</value>
+  </data>
+  <data name="btnProfilesDelete.Caption" xml:space="preserve">
+    <value>Rimuovi</value>
+  </data>
+  <data name="btnProperties.Caption" xml:space="preserve">
+    <value>Proprietà</value>
+  </data>
+  <data name="btnRefresh.Caption" xml:space="preserve">
+    <value>Aggiorna</value>
+  </data>
+  <data name="btnSidePanel.Caption" xml:space="preserve">
+    <value>Mostra/nascondi pannello laterale</value>
+  </data>
+  <data name="btnStop.Caption" xml:space="preserve">
+    <value>Arresta disegno</value>
+  </data>
+  <data name="btnZoomIn.Caption" xml:space="preserve">
+    <value>Ingrandisci</value>
+  </data>
+  <data name="btnZoomOut.Caption" xml:space="preserve">
+    <value>Riduci</value>
+  </data>
+  <data name="btnZoomToFit.Caption" xml:space="preserve">
+    <value>Zoom al disegno</value>
+  </data>
+  <data name="btnManualRefresh.Caption" xml:space="preserve">
+    <value>Aggiornamento manuale</value>
+  </data>
+  <data name="btnClose.Caption" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="btnDesignGraphics0.Caption" xml:space="preserve">
+    <value>Bassa qualità</value>
+  </data>
+  <data name="btnDesignGraphics1.Caption" xml:space="preserve">
+    <value>Media qualità</value>
+  </data>
+  <data name="btnDesignGraphics2.Caption" xml:space="preserve">
+    <value>Alta qualità</value>
+  </data>
+  <data name="btnDesignGraphicsQuality.Caption" xml:space="preserve">
+    <value>Qualità del rendering</value>
+  </data>
+  <data name="btnPrint.Caption" xml:space="preserve">
+    <value>Stampa...</value>
+  </data>
+  <data name="cboImageUM.Properties.Items3" xml:space="preserve">
+    <value>pollici</value>
   </data>
 </root>

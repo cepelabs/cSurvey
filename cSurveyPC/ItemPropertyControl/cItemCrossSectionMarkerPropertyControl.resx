@@ -1,0 +1,1909 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblPropProfileTextPosition.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblPropProfileTextPosition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 9</value>
+  </data>
+  <data name="lblPropProfileTextPosition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblPropProfileTextPosition.TabIndex" type="System.Int32, mscorlib">
+    <value>220</value>
+  </data>
+  <data name="lblPropProfileTextPosition.Text" xml:space="preserve">
+    <value>Location:</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileTextPosition.Name" xml:space="preserve">
+    <value>lblPropProfileTextPosition</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileTextPosition.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileTextPosition.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileTextPosition.ZOrder" xml:space="preserve">
+    <value>54</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerArrowSizeEnabled.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerArrowSizeEnabled.Location" type="System.Drawing.Point, System.Drawing">
+    <value>201, 263</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerArrowSizeEnabled.Properties.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="chkPropCrossSectionMarkerArrowSizeEnabled.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerArrowSizeEnabled.TabIndex" type="System.Int32, mscorlib">
+    <value>277</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerArrowSizeEnabled.ToolTip" xml:space="preserve">
+    <value>Free arrow scale</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerArrowSizeEnabled.Name" xml:space="preserve">
+    <value>chkPropCrossSectionMarkerArrowSizeEnabled</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerArrowSizeEnabled.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerArrowSizeEnabled.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerArrowSizeEnabled.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>223, 263</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="cboPropCrossSectionMarkerArrowSize.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Properties.Items" xml:space="preserve">
+    <value>1.00 - Default</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Properties.Items1" xml:space="preserve">
+    <value>0.25 - Very small</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Properties.Items2" xml:space="preserve">
+    <value>0.50 - Small</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Properties.Items3" xml:space="preserve">
+    <value>1.00 - Medium</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Properties.Items4" xml:space="preserve">
+    <value>2.00 - Big</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Properties.Items5" xml:space="preserve">
+    <value>4.00 - Very big</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Properties.Items6" xml:space="preserve">
+    <value>6.00</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Properties.Items7" xml:space="preserve">
+    <value>8.00</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Properties.Items8" xml:space="preserve">
+    <value>10.00</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Properties.Items9" xml:space="preserve">
+    <value>12.00</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Properties.Items10" xml:space="preserve">
+    <value>16.00</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Properties.Items11" xml:space="preserve">
+    <value>20.00</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Properties.Items12" xml:space="preserve">
+    <value>24.00</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Properties.Items13" xml:space="preserve">
+    <value>32.00</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 20</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.TabIndex" type="System.Int32, mscorlib">
+    <value>276</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerArrowSize.ToolTip" xml:space="preserve">
+    <value>Arrow scale</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerArrowSize.Name" xml:space="preserve">
+    <value>cboPropCrossSectionMarkerArrowSize</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerArrowSize.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerArrowSize.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerArrowSize.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerArrowSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerArrowSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>159, 266</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerArrowSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerArrowSize.TabIndex" type="System.Int32, mscorlib">
+    <value>275</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerArrowSize.Text" xml:space="preserve">
+    <value>Scale:</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerArrowSize.ToolTip" xml:space="preserve">
+    <value>Free arrow scale</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerArrowSize.Name" xml:space="preserve">
+    <value>lblPropCrossSectionMarkerArrowSize</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerArrowSize.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerArrowSize.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerArrowSize.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerDeltaAngleEnabled.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerDeltaAngleEnabled.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 289</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerDeltaAngleEnabled.Properties.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="chkPropCrossSectionMarkerDeltaAngleEnabled.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerDeltaAngleEnabled.TabIndex" type="System.Int32, mscorlib">
+    <value>274</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerDeltaAngleEnabled.ToolTip" xml:space="preserve">
+    <value>Free Δ angle</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerDeltaAngleEnabled.Name" xml:space="preserve">
+    <value>chkPropCrossSectionMarkerDeltaAngleEnabled</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerDeltaAngleEnabled.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerDeltaAngleEnabled.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerDeltaAngleEnabled.ZOrder" xml:space="preserve">
+    <value>56</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerScaleEnabled.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 37</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerScaleEnabled.Properties.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="chkPropCrossSectionMarkerScaleEnabled.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerScaleEnabled.TabIndex" type="System.Int32, mscorlib">
+    <value>273</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerScaleEnabled.ToolTip" xml:space="preserve">
+    <value>Free size of the symbol</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerScaleEnabled.Name" xml:space="preserve">
+    <value>chkPropCrossSectionMarkerScaleEnabled</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerScaleEnabled.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerScaleEnabled.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerScaleEnabled.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerUH.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerUH.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 121</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerUH.Properties.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="chkPropCrossSectionMarkerUH.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerUH.TabIndex" type="System.Int32, mscorlib">
+    <value>272</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerUH.ToolTip" xml:space="preserve">
+    <value>Autosize height</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerUH.Name" xml:space="preserve">
+    <value>chkPropCrossSectionMarkerUH</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerUH.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerUH.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerUH.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerDH.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerDH.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 228</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerDH.Properties.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="chkPropCrossSectionMarkerDH.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerDH.TabIndex" type="System.Int32, mscorlib">
+    <value>271</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerDH.ToolTip" xml:space="preserve">
+    <value>Autosize height</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerDH.Name" xml:space="preserve">
+    <value>chkPropCrossSectionMarkerDH</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerDH.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerDH.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerDH.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerLW.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerLW.Location" type="System.Drawing.Point, System.Drawing">
+    <value>51, 172</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerLW.Properties.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="chkPropCrossSectionMarkerLW.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerLW.TabIndex" type="System.Int32, mscorlib">
+    <value>270</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerLW.ToolTip" xml:space="preserve">
+    <value>Autosize width</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerLW.Name" xml:space="preserve">
+    <value>chkPropCrossSectionMarkerLW</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerLW.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerLW.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerLW.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerRW.Location" type="System.Drawing.Point, System.Drawing">
+    <value>180, 172</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerRW.Properties.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="chkPropCrossSectionMarkerRW.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerRW.TabIndex" type="System.Int32, mscorlib">
+    <value>269</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerRW.ToolTip" xml:space="preserve">
+    <value>Autosize width</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerRW.Name" xml:space="preserve">
+    <value>chkPropCrossSectionMarkerRW</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerRW.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerRW.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerRW.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerUH.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerUH.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerUH.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 122</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerUH.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerUH.TabIndex" type="System.Int32, mscorlib">
+    <value>268</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerUH.Text" xml:space="preserve">
+    <value>h:</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerUH.Name" xml:space="preserve">
+    <value>lblPropCrossSectionMarkerUH</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerUH.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerUH.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerUH.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDH.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDH.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDH.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 232</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDH.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDH.TabIndex" type="System.Int32, mscorlib">
+    <value>267</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDH.Text" xml:space="preserve">
+    <value>h:</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerDH.Name" xml:space="preserve">
+    <value>lblPropCrossSectionMarkerDH</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerDH.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerDH.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerDH.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerDH.Location" type="System.Drawing.Point, System.Drawing">
+    <value>117, 229</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerDH.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerDH.TabIndex" type="System.Int32, mscorlib">
+    <value>265</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerDH.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerDH.Name" xml:space="preserve">
+    <value>txtPropCrossSectionMarkerDH</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerDH.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerDH.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerDH.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDHUM.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDHUM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDHUM.Location" type="System.Drawing.Point, System.Drawing">
+    <value>175, 232</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDHUM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>8, 13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDHUM.TabIndex" type="System.Int32, mscorlib">
+    <value>266</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDHUM.Text" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerDHUM.Name" xml:space="preserve">
+    <value>lblPropCrossSectionMarkerDHUM</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerDHUM.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerDHUM.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerDHUM.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLW.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLW.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLW.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 174</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLW.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLW.TabIndex" type="System.Int32, mscorlib">
+    <value>264</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLW.Text" xml:space="preserve">
+    <value>w:</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerLW.Name" xml:space="preserve">
+    <value>lblPropCrossSectionMarkerLW</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerLW.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerLW.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerLW.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerRWUM.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerRWUM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerRWUM.Location" type="System.Drawing.Point, System.Drawing">
+    <value>259, 175</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerRWUM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>8, 13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerRWUM.TabIndex" type="System.Int32, mscorlib">
+    <value>262</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerRWUM.Text" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerRWUM.Name" xml:space="preserve">
+    <value>lblPropCrossSectionMarkerRWUM</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerRWUM.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerRWUM.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerRWUM.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerRW.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerRW.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerRW.Location" type="System.Drawing.Point, System.Drawing">
+    <value>160, 174</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerRW.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerRW.TabIndex" type="System.Int32, mscorlib">
+    <value>263</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerRW.Text" xml:space="preserve">
+    <value>w:</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerRW.Name" xml:space="preserve">
+    <value>lblPropCrossSectionMarkerRW</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerRW.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerRW.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerRW.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerLW.Location" type="System.Drawing.Point, System.Drawing">
+    <value>73, 173</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerLW.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerLW.TabIndex" type="System.Int32, mscorlib">
+    <value>259</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerLW.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerLW.Name" xml:space="preserve">
+    <value>txtPropCrossSectionMarkerLW</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerLW.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerLW.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerLW.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerRW.Location" type="System.Drawing.Point, System.Drawing">
+    <value>201, 173</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerRW.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerRW.TabIndex" type="System.Int32, mscorlib">
+    <value>260</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerRW.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerRW.Name" xml:space="preserve">
+    <value>txtPropCrossSectionMarkerRW</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerRW.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerRW.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerRW.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLWUM.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLWUM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLWUM.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 175</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLWUM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>8, 13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLWUM.TabIndex" type="System.Int32, mscorlib">
+    <value>261</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLWUM.Text" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerLWUM.Name" xml:space="preserve">
+    <value>lblPropCrossSectionMarkerLWUM</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerLWUM.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerLWUM.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerLWUM.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerUH.Location" type="System.Drawing.Point, System.Drawing">
+    <value>117, 120</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerUH.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerUH.TabIndex" type="System.Int32, mscorlib">
+    <value>257</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerUH.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerUH.Name" xml:space="preserve">
+    <value>txtPropCrossSectionMarkerUH</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerUH.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerUH.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerUH.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerUHUM.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerUHUM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerUHUM.Location" type="System.Drawing.Point, System.Drawing">
+    <value>174, 122</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerUHUM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>8, 13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerUHUM.TabIndex" type="System.Int32, mscorlib">
+    <value>258</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerUHUM.Text" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerUHUM.Name" xml:space="preserve">
+    <value>lblPropCrossSectionMarkerUHUM</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerUHUM.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerUHUM.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerUHUM.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerL.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerL.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 147</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>5, 13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerL.TabIndex" type="System.Int32, mscorlib">
+    <value>256</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerL.Text" xml:space="preserve">
+    <value>L</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerL.Name" xml:space="preserve">
+    <value>lblPropCrossSectionMarkerL</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerL.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerL.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerL.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerLabelRotation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>104, 394</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerLabelRotation.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerLabelRotation.Properties.Items" xml:space="preserve">
+    <value>Rotated</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerLabelRotation.Properties.Items1" xml:space="preserve">
+    <value>Fixed</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerLabelRotation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 20</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerLabelRotation.TabIndex" type="System.Int32, mscorlib">
+    <value>255</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerLabelRotation.ToolTip" xml:space="preserve">
+    <value>Mode of rotation of the symbol</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerLabelRotation.Name" xml:space="preserve">
+    <value>cboPropCrossSectionMarkerLabelRotation</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerLabelRotation.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerLabelRotation.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerLabelRotation.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="lblPropCrossSectionRotation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionRotation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 397</value>
+  </data>
+  <data name="lblPropCrossSectionRotation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 13</value>
+  </data>
+  <data name="lblPropCrossSectionRotation.TabIndex" type="System.Int32, mscorlib">
+    <value>254</value>
+  </data>
+  <data name="lblPropCrossSectionRotation.Text" xml:space="preserve">
+    <value>Rotation:</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionRotation.Name" xml:space="preserve">
+    <value>lblPropCrossSectionRotation</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionRotation.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionRotation.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionRotation.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 316</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerLabel.Properties.Caption" xml:space="preserve">
+    <value>Label:</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 20</value>
+  </data>
+  <data name="chkPropCrossSectionMarkerLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>253</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerLabel.Name" xml:space="preserve">
+    <value>chkPropCrossSectionMarkerLabel</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerLabel.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionMarkerLabel.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>102, 36</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.Properties.Items" xml:space="preserve">
+    <value>1.00 - Default</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.Properties.Items1" xml:space="preserve">
+    <value>0.25 - Very small</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.Properties.Items2" xml:space="preserve">
+    <value>0.50 - Small</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.Properties.Items3" xml:space="preserve">
+    <value>1.00 - Medium</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.Properties.Items4" xml:space="preserve">
+    <value>2.00 - Big</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.Properties.Items5" xml:space="preserve">
+    <value>4.00 - Very big</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.Properties.Items6" xml:space="preserve">
+    <value>6.00</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.Properties.Items7" xml:space="preserve">
+    <value>8.00</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.Properties.Items8" xml:space="preserve">
+    <value>10.00</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.Properties.Items9" xml:space="preserve">
+    <value>12.00</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.Properties.Items10" xml:space="preserve">
+    <value>16.00</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.Properties.Items11" xml:space="preserve">
+    <value>20.00</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.Properties.Items12" xml:space="preserve">
+    <value>24.00</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.Properties.Items13" xml:space="preserve">
+    <value>32.00</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 20</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.TabIndex" type="System.Int32, mscorlib">
+    <value>227</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerScale.ToolTip" xml:space="preserve">
+    <value>Size of the symbol</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerScale.Name" xml:space="preserve">
+    <value>cboPropCrossSectionMarkerScale</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerScale.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerScale.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerScale.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 38</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerScale.TabIndex" type="System.Int32, mscorlib">
+    <value>226</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerScale.Text" xml:space="preserve">
+    <value>Scale:</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerScale.Name" xml:space="preserve">
+    <value>lblPropCrossSectionMarkerScale</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerScale.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerScale.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDirection.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDirection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 9</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDirection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDirection.TabIndex" type="System.Int32, mscorlib">
+    <value>251</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDirection.Text" xml:space="preserve">
+    <value>Direction:</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerDirection.Name" xml:space="preserve">
+    <value>lblPropCrossSectionMarkerDirection</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerDirection.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerDirection.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerDirection.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerLabelDistance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>104, 367</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerLabelDistance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerLabelDistance.TabIndex" type="System.Int32, mscorlib">
+    <value>225</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerLabelDistance.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerLabelDistance.Name" xml:space="preserve">
+    <value>txtPropCrossSectionMarkerLabelDistance</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerLabelDistance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerLabelDistance.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerLabelDistance.ZOrder" xml:space="preserve">
+    <value>27</value>
+  </data>
+  <assembly alias="DevExpress.Data.v21.2" name="DevExpress.Data.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="cmdPropCrossSectionItem.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjIsIFZlcnNpb249MjEuMi41
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAMoEAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbDpzcGFjZT0icHJlc2VydmUiIGlkPSJMYXllcl8xIiBzdHlsZT0iZW5hYmxlLWJh
+        Y2tncm91bmQ6bmV3IDAgMCAzMiAzMiI+DQogIDxkZWZzIGlkPSJkZWZzMTYiIC8+DQogIDxzdHlsZSB0
+        eXBlPSJ0ZXh0L2NzcyIgaWQ9InN0eWxlMiI+CgkuQmxhY2t7ZmlsbDojNzI3MjcyO30KCS5ZZWxsb3d7
+        ZmlsbDojRkZCMTE1O30KCS5CbHVle2ZpbGw6IzExNzdENzt9CgkuR3JlZW57ZmlsbDojMDM5QzIzO30K
+        CS5SZWR7ZmlsbDojRDExQzFDO30KCS5XaGl0ZXtmaWxsOiNGRkZGRkY7fQoJLnN0MHtvcGFjaXR5OjAu
+        NzU7fQoJLnN0MXtvcGFjaXR5OjAuNTt9Cgkuc3Qye29wYWNpdHk6MC4yNTt9Cjwvc3R5bGU+DQogIDxn
+        IGlkPSJHcm91cEZvb3RlciIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC45MDYyNjU5NiwgMS40MjE4NTQ2
+        KSI+DQogICAgPHBhdGggZD0iTSA0LDE3LjQwMDM5MSBWIDI3IGMgMCwwLjUgMC41LDEgMSwxIGggMjAg
+        YyAwLjUsMCAxLC0wLjUgMSwtMSBWIDE3LjQwMDM5MSBIIDI0IFYgMjYgSCA2IHYgLTguNTk5NjA5IHoi
+        IGlkPSJwYXRoNCIgc3R5bGU9ImZpbGw6IzZjNmM2YztmaWxsLW9wYWNpdHk6MC43NTA5ODEiIC8+DQog
+        ICAgPGcgaWQ9ImcxMCIgY2xhc3M9InN0MCIgLz4NCiAgPC9nPg0KICA8c3R5bGUgdHlwZT0idGV4dC9j
+        c3MiIGlkPSJzdHlsZTg0MyI+CgkuQmx1ZXtmaWxsOiMxMTc3RDc7fQoJLlllbGxvd3tmaWxsOiNGRkIx
+        MTU7fQoJLkJsYWNre2ZpbGw6IzcyNzI3Mjt9CgkuR3JlZW57ZmlsbDojMDM5QzIzO30KCS5SZWR7Zmls
+        bDojRDExQzFDO30KCS5zdDB7b3BhY2l0eTowLjc1O30KCS5zdDF7b3BhY2l0eTowLjU7fQo8L3N0eWxl
+        Pg0KICA8ZyBpZD0iQXJyb3cxVXAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0wLjA5MzczNDQsIC0yLjQ4
+        MDY4MDgpIj4NCiAgICA8cGF0aCBkPSJNIDE0LDI4IFYgMTQgSCAxMy4zIDYgTCAxNiw0IDI2LDE0IEgg
+        MTguNyAxOCB2IDE0IHoiIGlkPSJHcm91cF9TZWxlY3Rpb25fM18iIGNsYXNzPSJCbHVlIiAvPg0KICA8
+        L2c+DQogIDxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyIgaWQ9InN0eWxlODYxIj4KCS5CbHVle2ZpbGw6IzEx
+        NzdENzt9Cjwvc3R5bGU+DQo8L3N2Zz4L
+</value>
+  </data>
+  <data name="cmdPropCrossSectionItem.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdPropCrossSectionItem.Location" type="System.Drawing.Point, System.Drawing">
+    <value>266, 3</value>
+  </data>
+  <data name="cmdPropCrossSectionItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdPropCrossSectionItem.TabIndex" type="System.Int32, mscorlib">
+    <value>250</value>
+  </data>
+  <data name="cmdPropCrossSectionItem.ToolTip" xml:space="preserve">
+    <value>Go to cross section</value>
+  </data>
+  <data name="&gt;&gt;cmdPropCrossSectionItem.Name" xml:space="preserve">
+    <value>cmdPropCrossSectionItem</value>
+  </data>
+  <data name="&gt;&gt;cmdPropCrossSectionItem.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdPropCrossSectionItem.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdPropCrossSectionItem.ZOrder" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLabelDistance.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLabelDistance.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLabelDistance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 369</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLabelDistance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLabelDistance.TabIndex" type="System.Int32, mscorlib">
+    <value>224</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLabelDistance.Text" xml:space="preserve">
+    <value>Distance:</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLabelDistance.ToolTip" xml:space="preserve">
+    <value>The distance from marker to the label </value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerLabelDistance.Name" xml:space="preserve">
+    <value>lblPropCrossSectionMarkerLabelDistance</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerLabelDistance.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerLabelDistance.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerLabelDistance.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <data name="cmdPropCrossSectionMarkerUDFromDesign.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdPropCrossSectionMarkerUDFromDesign.Location" type="System.Drawing.Point, System.Drawing">
+    <value>267, 87</value>
+  </data>
+  <data name="cmdPropCrossSectionMarkerUDFromDesign.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdPropCrossSectionMarkerUDFromDesign.TabIndex" type="System.Int32, mscorlib">
+    <value>249</value>
+  </data>
+  <data name="cmdPropCrossSectionMarkerUDFromDesign.ToolTip" xml:space="preserve">
+    <value>Get up and down from design</value>
+  </data>
+  <data name="&gt;&gt;cmdPropCrossSectionMarkerUDFromDesign.Name" xml:space="preserve">
+    <value>cmdPropCrossSectionMarkerUDFromDesign</value>
+  </data>
+  <data name="&gt;&gt;cmdPropCrossSectionMarkerUDFromDesign.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdPropCrossSectionMarkerUDFromDesign.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdPropCrossSectionMarkerUDFromDesign.ZOrder" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerLabelPosition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>104, 339</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerLabelPosition.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerLabelPosition.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerLabelPosition.Properties.Items" xml:space="preserve">
+    <value>With arrow</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerLabelPosition.Properties.Items1" xml:space="preserve">
+    <value>Centered</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerLabelPosition.Properties.Items2" xml:space="preserve">
+    <value>Opposite to arrow</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerLabelPosition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 20</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerLabelPosition.TabIndex" type="System.Int32, mscorlib">
+    <value>223</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerLabelPosition.ToolTip" xml:space="preserve">
+    <value>Specify the label position</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerLabelPosition.Name" xml:space="preserve">
+    <value>cboPropCrossSectionMarkerLabelPosition</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerLabelPosition.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerLabelPosition.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerLabelPosition.ZOrder" xml:space="preserve">
+    <value>31</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLabelPosition.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLabelPosition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 342</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLabelPosition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLabelPosition.TabIndex" type="System.Int32, mscorlib">
+    <value>222</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLabelPosition.Text" xml:space="preserve">
+    <value>Position:</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerLabelPosition.Name" xml:space="preserve">
+    <value>lblPropCrossSectionMarkerLabelPosition</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerLabelPosition.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerLabelPosition.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerLabelPosition.ZOrder" xml:space="preserve">
+    <value>32</value>
+  </data>
+  <data name="cmdPropCrossSectionMarkerLRFromDesign.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGaSURBVDhPlZJLTgJBEIb7Jiw4gZm1D5CzuBIcjIhu
+        VAioJF5APQFoDInMDAiJegDjMyHxEVfEMMNDd6KRsv7pngkqkFjJB11V/1806RK57S0SKhKVVlE3mxQt
+        DQc9aJTc92puxqFbDiE++0QfTO9LgjNqCGiUHKH9uEHMdOitR7R7xVwS3fA8gDNq6EGj5MNu0KLHV6KH
+        rqRwL/Fy9KBRcoQmdnKbfiFR7dAdi+x3yfmLxMvRg0bJfa97g5l0hfTDejFZ69LSSccFYuDl6EEDLTwc
+        8vbhbJUiGbcYUMVxBCLZCoWzNTkklLYoVar3ZzNlCqdNCqWMsUATYe1q/qIPL2Zok2vHNLVuIBn2i3+Y
+        3jBYX5L6ZLXdSPB/m1g+Ir3cpphh+0QVg7U4a6CdKzzTCnuFbtrugvC++MuD79+LNNiDFhG3bBIxo+ku
+        yB4vyjXPAvt8BqNyaOFZYK/AxxO/7+DCHPAZjMqhhccdsGg16ZaLDk88bUgcXhowMmctPPCK+Xz9DAed
+        p3lgMhiVA3jg5ZcQQe95/o8IfgMZN3CKNTLivwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="cmdPropCrossSectionMarkerLRFromDesign.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdPropCrossSectionMarkerLRFromDesign.Location" type="System.Drawing.Point, System.Drawing">
+    <value>267, 143</value>
+  </data>
+  <data name="cmdPropCrossSectionMarkerLRFromDesign.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdPropCrossSectionMarkerLRFromDesign.TabIndex" type="System.Int32, mscorlib">
+    <value>248</value>
+  </data>
+  <data name="cmdPropCrossSectionMarkerLRFromDesign.ToolTip" xml:space="preserve">
+    <value>Get left and right from design</value>
+  </data>
+  <data name="&gt;&gt;cmdPropCrossSectionMarkerLRFromDesign.Name" xml:space="preserve">
+    <value>cmdPropCrossSectionMarkerLRFromDesign</value>
+  </data>
+  <data name="&gt;&gt;cmdPropCrossSectionMarkerLRFromDesign.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdPropCrossSectionMarkerLRFromDesign.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdPropCrossSectionMarkerLRFromDesign.ZOrder" xml:space="preserve">
+    <value>33</value>
+  </data>
+  <data name="lbltxtPropCrossSectionMarkerRUM.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lbltxtPropCrossSectionMarkerRUM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbltxtPropCrossSectionMarkerRUM.Location" type="System.Drawing.Point, System.Drawing">
+    <value>239, 147</value>
+  </data>
+  <data name="lbltxtPropCrossSectionMarkerRUM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>8, 13</value>
+  </data>
+  <data name="lbltxtPropCrossSectionMarkerRUM.TabIndex" type="System.Int32, mscorlib">
+    <value>238</value>
+  </data>
+  <data name="lbltxtPropCrossSectionMarkerRUM.Text" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="&gt;&gt;lbltxtPropCrossSectionMarkerRUM.Name" xml:space="preserve">
+    <value>lbltxtPropCrossSectionMarkerRUM</value>
+  </data>
+  <data name="&gt;&gt;lbltxtPropCrossSectionMarkerRUM.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lbltxtPropCrossSectionMarkerRUM.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbltxtPropCrossSectionMarkerRUM.ZOrder" xml:space="preserve">
+    <value>34</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerDeltaAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 290</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerDeltaAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerDeltaAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>247</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerDeltaAngle.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerDeltaAngle.Name" xml:space="preserve">
+    <value>txtPropCrossSectionMarkerDeltaAngle</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerDeltaAngle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerDeltaAngle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerDeltaAngle.ZOrder" xml:space="preserve">
+    <value>35</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerPosition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 62</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerPosition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerPosition.TabIndex" type="System.Int32, mscorlib">
+    <value>229</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerPosition.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerPosition.Name" xml:space="preserve">
+    <value>txtPropCrossSectionMarkerPosition</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerPosition.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerPosition.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerPosition.ZOrder" xml:space="preserve">
+    <value>36</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDeltaAngle.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDeltaAngle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDeltaAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 292</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDeltaAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDeltaAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>246</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDeltaAngle.Text" xml:space="preserve">
+    <value>Δ angle:</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDeltaAngle.ToolTip" xml:space="preserve">
+    <value>Δ angle</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerDeltaAngle.Name" xml:space="preserve">
+    <value>lblPropCrossSectionMarkerDeltaAngle</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerDeltaAngle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerDeltaAngle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerDeltaAngle.ZOrder" xml:space="preserve">
+    <value>37</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerD.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerD.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 205</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>7, 13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerD.TabIndex" type="System.Int32, mscorlib">
+    <value>245</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerD.Text" xml:space="preserve">
+    <value>D</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerD.Name" xml:space="preserve">
+    <value>lblPropCrossSectionMarkerD</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerD.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerD.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerD.ZOrder" xml:space="preserve">
+    <value>38</value>
+  </data>
+  <data name="lblPropCrossSectionPosition.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionPosition.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionPosition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 64</value>
+  </data>
+  <data name="lblPropCrossSectionPosition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 13</value>
+  </data>
+  <data name="lblPropCrossSectionPosition.TabIndex" type="System.Int32, mscorlib">
+    <value>228</value>
+  </data>
+  <data name="lblPropCrossSectionPosition.Text" xml:space="preserve">
+    <value>Position:</value>
+  </data>
+  <data name="lblPropCrossSectionPosition.ToolTip" xml:space="preserve">
+    <value>The distance from station to the label </value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionPosition.Name" xml:space="preserve">
+    <value>lblPropCrossSectionPosition</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionPosition.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionPosition.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionPosition.ZOrder" xml:space="preserve">
+    <value>39</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerR.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerR.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerR.Location" type="System.Drawing.Point, System.Drawing">
+    <value>160, 147</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerR.Size" type="System.Drawing.Size, System.Drawing">
+    <value>7, 13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerR.TabIndex" type="System.Int32, mscorlib">
+    <value>244</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerR.Text" xml:space="preserve">
+    <value>R</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerR.Name" xml:space="preserve">
+    <value>lblPropCrossSectionMarkerR</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerR.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerR.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerR.ZOrder" xml:space="preserve">
+    <value>40</value>
+  </data>
+  <data name="lblPropCrossSectionPositionPercent.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionPositionPercent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionPositionPercent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>137, 64</value>
+  </data>
+  <data name="lblPropCrossSectionPositionPercent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>11, 13</value>
+  </data>
+  <data name="lblPropCrossSectionPositionPercent.TabIndex" type="System.Int32, mscorlib">
+    <value>230</value>
+  </data>
+  <data name="lblPropCrossSectionPositionPercent.Text" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionPositionPercent.Name" xml:space="preserve">
+    <value>lblPropCrossSectionPositionPercent</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionPositionPercent.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionPositionPercent.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionPositionPercent.ZOrder" xml:space="preserve">
+    <value>41</value>
+  </data>
+  <data name="lblPropCrossSectionDistances.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionDistances.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionDistances.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 94</value>
+  </data>
+  <data name="lblPropCrossSectionDistances.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 13</value>
+  </data>
+  <data name="lblPropCrossSectionDistances.TabIndex" type="System.Int32, mscorlib">
+    <value>231</value>
+  </data>
+  <data name="lblPropCrossSectionDistances.Text" xml:space="preserve">
+    <value>Distances:</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionDistances.Name" xml:space="preserve">
+    <value>lblPropCrossSectionDistances</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionDistances.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionDistances.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionDistances.ZOrder" xml:space="preserve">
+    <value>42</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerU.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerU.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerU.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 94</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerU.Size" type="System.Drawing.Size, System.Drawing">
+    <value>7, 13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerU.TabIndex" type="System.Int32, mscorlib">
+    <value>243</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerU.Text" xml:space="preserve">
+    <value>U</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerU.Name" xml:space="preserve">
+    <value>lblPropCrossSectionMarkerU</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerU.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerU.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerU.ZOrder" xml:space="preserve">
+    <value>43</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerU.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 92</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerU.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerU.TabIndex" type="System.Int32, mscorlib">
+    <value>232</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerU.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerU.Name" xml:space="preserve">
+    <value>txtPropCrossSectionMarkerU</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerU.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerU.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerU.ZOrder" xml:space="preserve">
+    <value>44</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>53, 145</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerL.TabIndex" type="System.Int32, mscorlib">
+    <value>233</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerL.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerL.Name" xml:space="preserve">
+    <value>txtPropCrossSectionMarkerL</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerL.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerL.ZOrder" xml:space="preserve">
+    <value>45</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerAlign.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerAlign.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerAlign.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 266</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerAlign.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerAlign.TabIndex" type="System.Int32, mscorlib">
+    <value>241</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerAlign.Text" xml:space="preserve">
+    <value>Arrow:</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerAlign.Name" xml:space="preserve">
+    <value>lblPropCrossSectionMarkerAlign</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerAlign.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerAlign.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerAlign.ZOrder" xml:space="preserve">
+    <value>46</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerR.Location" type="System.Drawing.Point, System.Drawing">
+    <value>180, 145</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerR.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerR.TabIndex" type="System.Int32, mscorlib">
+    <value>234</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerR.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerR.Name" xml:space="preserve">
+    <value>txtPropCrossSectionMarkerR</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerR.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerR.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerR.ZOrder" xml:space="preserve">
+    <value>47</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerAlign.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 263</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerAlign.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerAlign.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerAlign.Properties.Items" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerAlign.Properties.Items1" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerAlign.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 20</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerAlign.TabIndex" type="System.Int32, mscorlib">
+    <value>240</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerAlign.Name" xml:space="preserve">
+    <value>cboPropCrossSectionMarkerAlign</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerAlign.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerAlign.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerAlign.ZOrder" xml:space="preserve">
+    <value>48</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 202</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerD.TabIndex" type="System.Int32, mscorlib">
+    <value>235</value>
+  </data>
+  <data name="txtPropCrossSectionMarkerD.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerD.Name" xml:space="preserve">
+    <value>txtPropCrossSectionMarkerD</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerD.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerD.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionMarkerD.ZOrder" xml:space="preserve">
+    <value>49</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDUM.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDUM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDUM.Location" type="System.Drawing.Point, System.Drawing">
+    <value>155, 205</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDUM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>8, 13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDUM.TabIndex" type="System.Int32, mscorlib">
+    <value>239</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerDUM.Text" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerDUM.Name" xml:space="preserve">
+    <value>lblPropCrossSectionMarkerDUM</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerDUM.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerDUM.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerDUM.ZOrder" xml:space="preserve">
+    <value>50</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerUUM.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerUUM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerUUM.Location" type="System.Drawing.Point, System.Drawing">
+    <value>155, 96</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerUUM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>8, 13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerUUM.TabIndex" type="System.Int32, mscorlib">
+    <value>236</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerUUM.Text" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerUUM.Name" xml:space="preserve">
+    <value>lblPropCrossSectionMarkerUUM</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerUUM.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerUUM.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerUUM.ZOrder" xml:space="preserve">
+    <value>51</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLUM.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLUM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLUM.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 147</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLUM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>8, 13</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLUM.TabIndex" type="System.Int32, mscorlib">
+    <value>237</value>
+  </data>
+  <data name="lblPropCrossSectionMarkerLUM.Text" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerLUM.Name" xml:space="preserve">
+    <value>lblPropCrossSectionMarkerLUM</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerLUM.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerLUM.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionMarkerLUM.ZOrder" xml:space="preserve">
+    <value>52</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerProfileAlign.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 263</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerProfileAlign.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerProfileAlign.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerProfileAlign.Properties.Items" xml:space="preserve">
+    <value>Up</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerProfileAlign.Properties.Items1" xml:space="preserve">
+    <value>Down</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerProfileAlign.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 20</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerProfileAlign.TabIndex" type="System.Int32, mscorlib">
+    <value>242</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerProfileAlign.Name" xml:space="preserve">
+    <value>cboPropCrossSectionMarkerProfileAlign</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerProfileAlign.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerProfileAlign.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerProfileAlign.ZOrder" xml:space="preserve">
+    <value>53</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerDirection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 6</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerDirection.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerDirection.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerDirection.Properties.Items" xml:space="preserve">
+    <value>Direct</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerDirection.Properties.Items1" xml:space="preserve">
+    <value>Inverted</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerDirection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 20</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerDirection.TabIndex" type="System.Int32, mscorlib">
+    <value>252</value>
+  </data>
+  <data name="cboPropCrossSectionMarkerDirection.ToolTip" xml:space="preserve">
+    <value>Specify the marker position</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerDirection.Name" xml:space="preserve">
+    <value>cboPropCrossSectionMarkerDirection</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerDirection.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerDirection.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionMarkerDirection.ZOrder" xml:space="preserve">
+    <value>55</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>506, 423</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>cItemCrossSectionMarkerPropertyControl</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>cSurveyPC.cItemPropertyControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+</root>

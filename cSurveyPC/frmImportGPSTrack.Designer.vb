@@ -111,6 +111,7 @@ Partial Class frmImportGPSTrack
         Me.Controls.Add(Me.txtFilename)
         Me.Controls.Add(Me.lblFilename)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.IconOptions.Icon = CType(resources.GetObject("frmImportGPSTrack.IconOptions.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmImportGPSTrack"

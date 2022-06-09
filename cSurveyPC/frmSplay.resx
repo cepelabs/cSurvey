@@ -118,40 +118,316 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="TabMain.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="chkPlan.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="chkCrossSection.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="chkCrossSection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 9</value>
+  </data>
+  <data name="chkCrossSection.Properties.Caption" xml:space="preserve">
+    <value>Change this settings</value>
+  </data>
+  <data name="chkCrossSection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 20</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="chkCrossSection.TabIndex" type="System.Int32, mscorlib">
+    <value>168</value>
+  </data>
+  <data name="&gt;&gt;chkCrossSection.Name" xml:space="preserve">
+    <value>chkCrossSection</value>
+  </data>
+  <data name="&gt;&gt;chkCrossSection.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkCrossSection.Parent" xml:space="preserve">
+    <value>tabCrossSections</value>
+  </data>
+  <data name="&gt;&gt;chkCrossSection.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkPropCrossSectionShowOnlyCutSplay.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropCrossSectionShowOnlyCutSplay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 9</value>
+  </data>
+  <data name="chkPropCrossSectionShowOnlyCutSplay.Properties.Caption" xml:space="preserve">
+    <value>Only cut splay</value>
+  </data>
+  <data name="chkPropCrossSectionShowOnlyCutSplay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 20</value>
+  </data>
+  <data name="chkPropCrossSectionShowOnlyCutSplay.TabIndex" type="System.Int32, mscorlib">
+    <value>166</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowOnlyCutSplay.Name" xml:space="preserve">
+    <value>chkPropCrossSectionShowOnlyCutSplay</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowOnlyCutSplay.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowOnlyCutSplay.Parent" xml:space="preserve">
+    <value>pnlCrosssection</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowOnlyCutSplay.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblPropCrossSectionSplayProjectionAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 38</value>
+  </data>
+  <data name="lblPropCrossSectionSplayProjectionAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 13</value>
+  </data>
+  <data name="lblPropCrossSectionSplayProjectionAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>162</value>
+  </data>
+  <data name="lblPropCrossSectionSplayProjectionAngle.Text" xml:space="preserve">
+    <value>Angle:</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayProjectionAngle.Name" xml:space="preserve">
+    <value>lblPropCrossSectionSplayProjectionAngle</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayProjectionAngle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayProjectionAngle.Parent" xml:space="preserve">
+    <value>pnlCrosssection</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayProjectionAngle.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtPropCrossSectionSplayProjectionAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 36</value>
+  </data>
+  <data name="txtPropCrossSectionSplayProjectionAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropCrossSectionSplayProjectionAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>147</value>
+  </data>
+  <data name="txtPropCrossSectionSplayProjectionAngle.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayProjectionAngle.Name" xml:space="preserve">
+    <value>txtPropCrossSectionSplayProjectionAngle</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayProjectionAngle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayProjectionAngle.Parent" xml:space="preserve">
+    <value>pnlCrosssection</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayProjectionAngle.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="chkPropCrossSectionShowSplayBorder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropCrossSectionShowSplayBorder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 9</value>
+  </data>
+  <data name="chkPropCrossSectionShowSplayBorder.Properties.Caption" xml:space="preserve">
+    <value>Show splay</value>
+  </data>
+  <data name="chkPropCrossSectionShowSplayBorder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 20</value>
+  </data>
+  <data name="chkPropCrossSectionShowSplayBorder.TabIndex" type="System.Int32, mscorlib">
+    <value>148</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowSplayBorder.Name" xml:space="preserve">
+    <value>chkPropCrossSectionShowSplayBorder</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowSplayBorder.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowSplayBorder.Parent" xml:space="preserve">
+    <value>pnlCrosssection</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionShowSplayBorder.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblPropCrossSectionSplayLineStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 93</value>
+  </data>
+  <data name="lblPropCrossSectionSplayLineStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 13</value>
+  </data>
+  <data name="lblPropCrossSectionSplayLineStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>163</value>
+  </data>
+  <data name="lblPropCrossSectionSplayLineStyle.Text" xml:space="preserve">
+    <value>Style:</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayLineStyle.Name" xml:space="preserve">
+    <value>lblPropCrossSectionSplayLineStyle</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayLineStyle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayLineStyle.Parent" xml:space="preserve">
+    <value>pnlCrosssection</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayLineStyle.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cboPropCrossSectionSplayLineStyle.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="cboPropCrossSectionSplayLineStyle.Items" xml:space="preserve">
+    <value>Only points</value>
+  </data>
+  <data name="cboPropCrossSectionSplayLineStyle.Items1" xml:space="preserve">
+    <value>Points and lines</value>
+  </data>
+  <data name="cboPropCrossSectionSplayLineStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 90</value>
+  </data>
+  <data name="cboPropCrossSectionSplayLineStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 21</value>
+  </data>
+  <data name="cboPropCrossSectionSplayLineStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>151</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionSplayLineStyle.Name" xml:space="preserve">
+    <value>cboPropCrossSectionSplayLineStyle</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionSplayLineStyle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionSplayLineStyle.Parent" xml:space="preserve">
+    <value>pnlCrosssection</value>
+  </data>
+  <data name="&gt;&gt;cboPropCrossSectionSplayLineStyle.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lblPropCrossSectionSplayMaxVariationAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 65</value>
+  </data>
+  <data name="lblPropCrossSectionSplayMaxVariationAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
+  </data>
+  <data name="lblPropCrossSectionSplayMaxVariationAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>161</value>
+  </data>
+  <data name="lblPropCrossSectionSplayMaxVariationAngle.Text" xml:space="preserve">
+    <value>Variation:</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayMaxVariationAngle.Name" xml:space="preserve">
+    <value>lblPropCrossSectionSplayMaxVariationAngle</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayMaxVariationAngle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayMaxVariationAngle.Parent" xml:space="preserve">
+    <value>pnlCrosssection</value>
+  </data>
+  <data name="&gt;&gt;lblPropCrossSectionSplayMaxVariationAngle.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="txtPropCrossSectionSplayMaxVariationAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 63</value>
+  </data>
+  <data name="txtPropCrossSectionSplayMaxVariationAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropCrossSectionSplayMaxVariationAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>153</value>
+  </data>
+  <data name="txtPropCrossSectionSplayMaxVariationAngle.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayMaxVariationAngle.Name" xml:space="preserve">
+    <value>txtPropCrossSectionSplayMaxVariationAngle</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayMaxVariationAngle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayMaxVariationAngle.Parent" xml:space="preserve">
+    <value>pnlCrosssection</value>
+  </data>
+  <data name="&gt;&gt;txtPropCrossSectionSplayMaxVariationAngle.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="chkPropCrossSectionSplayText.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropCrossSectionSplayText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 117</value>
+  </data>
+  <data name="chkPropCrossSectionSplayText.Properties.Caption" xml:space="preserve">
+    <value>Show station label</value>
+  </data>
+  <data name="chkPropCrossSectionSplayText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 20</value>
+  </data>
+  <data name="chkPropCrossSectionSplayText.TabIndex" type="System.Int32, mscorlib">
+    <value>154</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionSplayText.Name" xml:space="preserve">
+    <value>chkPropCrossSectionSplayText</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionSplayText.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionSplayText.Parent" xml:space="preserve">
+    <value>pnlCrosssection</value>
+  </data>
+  <data name="&gt;&gt;chkPropCrossSectionSplayText.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="pnlCrosssection.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="pnlCrosssection.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="pnlCrosssection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 35</value>
+  </data>
+  <data name="pnlCrosssection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 149</value>
+  </data>
+  <data name="pnlCrosssection.TabIndex" type="System.Int32, mscorlib">
+    <value>169</value>
+  </data>
+  <data name="&gt;&gt;pnlCrosssection.Name" xml:space="preserve">
+    <value>pnlCrosssection</value>
+  </data>
+  <data name="&gt;&gt;pnlCrosssection.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlCrosssection.Parent" xml:space="preserve">
+    <value>tabCrossSections</value>
+  </data>
+  <data name="&gt;&gt;pnlCrosssection.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="chkPlan.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 9</value>
   </data>
+  <data name="chkPlan.Properties.Caption" xml:space="preserve">
+    <value>Change this settings</value>
+  </data>
   <data name="chkPlan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 17</value>
+    <value>121, 20</value>
   </data>
   <data name="chkPlan.TabIndex" type="System.Int32, mscorlib">
     <value>162</value>
-  </data>
-  <data name="chkPlan.Text" xml:space="preserve">
-    <value>Change this settings</value>
   </data>
   <data name="&gt;&gt;chkPlan.Name" xml:space="preserve">
     <value>chkPlan</value>
   </data>
   <data name="&gt;&gt;chkPlan.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPlan.Parent" xml:space="preserve">
-    <value>TabPage1</value>
+    <value>tabPlan</value>
   </data>
   <data name="&gt;&gt;chkPlan.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="pnlPlan.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="cboPropPlanSplayPlanProjectionType.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -186,20 +462,17 @@
   <data name="&gt;&gt;cboPropPlanSplayPlanProjectionType.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="lblPropPlanSplayInclinationRange.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblPropPlanSplayInclinationRange.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblPropPlanSplayInclinationRange.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblPropPlanSplayInclinationRange.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPropPlanSplayInclinationRange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 91</value>
+    <value>9, 92</value>
   </data>
   <data name="lblPropPlanSplayInclinationRange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 13</value>
+    <value>56, 13</value>
   </data>
   <data name="lblPropPlanSplayInclinationRange.TabIndex" type="System.Int32, mscorlib">
     <value>161</value>
@@ -211,7 +484,7 @@
     <value>lblPropPlanSplayInclinationRange</value>
   </data>
   <data name="&gt;&gt;lblPropPlanSplayInclinationRange.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropPlanSplayInclinationRange.Parent" xml:space="preserve">
     <value>pnlPlan</value>
@@ -220,7 +493,7 @@
     <value>1</value>
   </data>
   <data name="txtPropPlanSplayMaxVariationDelta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 62</value>
+    <value>128, 63</value>
   </data>
   <data name="txtPropPlanSplayMaxVariationDelta.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 21</value>
@@ -244,7 +517,7 @@
     <value>2</value>
   </data>
   <data name="txtPropPlanSplayInclinationRangeMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>187, 89</value>
+    <value>187, 90</value>
   </data>
   <data name="txtPropPlanSplayInclinationRangeMax.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 21</value>
@@ -268,7 +541,7 @@
     <value>3</value>
   </data>
   <data name="txtPropPlanSplayPlanDeltaZ.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 35</value>
+    <value>128, 36</value>
   </data>
   <data name="txtPropPlanSplayPlanDeltaZ.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 21</value>
@@ -292,7 +565,7 @@
     <value>4</value>
   </data>
   <data name="txtPropPlanSplayInclinationRangeMin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 89</value>
+    <value>128, 90</value>
   </data>
   <data name="txtPropPlanSplayInclinationRangeMin.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 21</value>
@@ -315,14 +588,11 @@
   <data name="&gt;&gt;txtPropPlanSplayInclinationRangeMin.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="lblPropPlanSplayPlanProjectionType.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblPropPlanSplayPlanProjectionType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 10</value>
+    <value>9, 12</value>
   </data>
   <data name="lblPropPlanSplayPlanProjectionType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 13</value>
+    <value>24, 13</value>
   </data>
   <data name="lblPropPlanSplayPlanProjectionType.TabIndex" type="System.Int32, mscorlib">
     <value>156</value>
@@ -334,7 +604,7 @@
     <value>lblPropPlanSplayPlanProjectionType</value>
   </data>
   <data name="&gt;&gt;lblPropPlanSplayPlanProjectionType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropPlanSplayPlanProjectionType.Parent" xml:space="preserve">
     <value>pnlPlan</value>
@@ -342,14 +612,11 @@
   <data name="&gt;&gt;lblPropPlanSplayPlanProjectionType.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="lblPropPlanSplayMaxVariationDelta.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblPropPlanSplayMaxVariationDelta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 63</value>
+    <value>9, 65</value>
   </data>
   <data name="lblPropPlanSplayMaxVariationDelta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 13</value>
+    <value>46, 13</value>
   </data>
   <data name="lblPropPlanSplayMaxVariationDelta.TabIndex" type="System.Int32, mscorlib">
     <value>158</value>
@@ -361,7 +628,7 @@
     <value>lblPropPlanSplayMaxVariationDelta</value>
   </data>
   <data name="&gt;&gt;lblPropPlanSplayMaxVariationDelta.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropPlanSplayMaxVariationDelta.Parent" xml:space="preserve">
     <value>pnlPlan</value>
@@ -369,14 +636,11 @@
   <data name="&gt;&gt;lblPropPlanSplayMaxVariationDelta.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="lblPropPlanSplayPlanDeltaZ.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblPropPlanSplayPlanDeltaZ.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 36</value>
+    <value>9, 38</value>
   </data>
   <data name="lblPropPlanSplayPlanDeltaZ.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 13</value>
+    <value>34, 13</value>
   </data>
   <data name="lblPropPlanSplayPlanDeltaZ.TabIndex" type="System.Int32, mscorlib">
     <value>157</value>
@@ -388,7 +652,7 @@
     <value>lblPropPlanSplayPlanDeltaZ</value>
   </data>
   <data name="&gt;&gt;lblPropPlanSplayPlanDeltaZ.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropPlanSplayPlanDeltaZ.Parent" xml:space="preserve">
     <value>pnlPlan</value>
@@ -396,14 +660,17 @@
   <data name="&gt;&gt;lblPropPlanSplayPlanDeltaZ.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="pnlPlan.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
   <data name="pnlPlan.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="pnlPlan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 31</value>
+    <value>0, 35</value>
   </data>
   <data name="pnlPlan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>408, 143</value>
+    <value>448, 149</value>
   </data>
   <data name="pnlPlan.TabIndex" type="System.Int32, mscorlib">
     <value>163</value>
@@ -412,46 +679,16 @@
     <value>pnlPlan</value>
   </data>
   <data name="&gt;&gt;pnlPlan.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlPlan.Parent" xml:space="preserve">
-    <value>TabPage1</value>
+    <value>tabPlan</value>
   </data>
   <data name="&gt;&gt;pnlPlan.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="TabPage1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="TabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="TabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>408, 174</value>
-  </data>
-  <data name="TabPage1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="TabPage1.Text" xml:space="preserve">
-    <value>Plan</value>
-  </data>
-  <data name="&gt;&gt;TabPage1.Name" xml:space="preserve">
-    <value>TabPage1</value>
-  </data>
-  <data name="&gt;&gt;TabPage1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TabPage1.Parent" xml:space="preserve">
-    <value>TabMain</value>
-  </data>
-  <data name="&gt;&gt;TabPage1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="pnlProfile.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
   <data name="txtPropProfileSplayNegInclinationRangeMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>187, 89</value>
+    <value>187, 90</value>
   </data>
   <data name="txtPropProfileSplayNegInclinationRangeMax.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 21</value>
@@ -475,7 +712,7 @@
     <value>0</value>
   </data>
   <data name="txtPropProfileSplayNegInclinationRangeMin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 89</value>
+    <value>128, 90</value>
   </data>
   <data name="txtPropProfileSplayNegInclinationRangeMin.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 21</value>
@@ -498,20 +735,17 @@
   <data name="&gt;&gt;txtPropProfileSplayNegInclinationRangeMin.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="lblPropProfileSplayNegInclinationRange.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblPropProfileSplayNegInclinationRange.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblPropProfileSplayNegInclinationRange.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblPropProfileSplayNegInclinationRange.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPropProfileSplayNegInclinationRange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 91</value>
+    <value>9, 92</value>
   </data>
   <data name="lblPropProfileSplayNegInclinationRange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 13</value>
+    <value>63, 13</value>
   </data>
   <data name="lblPropProfileSplayNegInclinationRange.TabIndex" type="System.Int32, mscorlib">
     <value>166</value>
@@ -523,7 +757,7 @@
     <value>lblPropProfileSplayNegInclinationRange</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayNegInclinationRange.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayNegInclinationRange.Parent" xml:space="preserve">
     <value>pnlProfile</value>
@@ -532,7 +766,7 @@
     <value>2</value>
   </data>
   <data name="txtPropProfileSplayPosInclinationRangeMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>187, 62</value>
+    <value>187, 63</value>
   </data>
   <data name="txtPropProfileSplayPosInclinationRangeMax.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 21</value>
@@ -556,7 +790,7 @@
     <value>3</value>
   </data>
   <data name="txtPropProfileSplayPosInclinationRangeMin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 62</value>
+    <value>128, 63</value>
   </data>
   <data name="txtPropProfileSplayPosInclinationRangeMin.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 21</value>
@@ -579,20 +813,17 @@
   <data name="&gt;&gt;txtPropProfileSplayPosInclinationRangeMin.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="lblPropProfileSplayPosInclinationRange.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblPropProfileSplayPosInclinationRange.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblPropProfileSplayPosInclinationRange.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblPropProfileSplayPosInclinationRange.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPropProfileSplayPosInclinationRange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 64</value>
+    <value>9, 65</value>
   </data>
   <data name="lblPropProfileSplayPosInclinationRange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 13</value>
+    <value>67, 13</value>
   </data>
   <data name="lblPropProfileSplayPosInclinationRange.TabIndex" type="System.Int32, mscorlib">
     <value>163</value>
@@ -604,7 +835,7 @@
     <value>lblPropProfileSplayPosInclinationRange</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayPosInclinationRange.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayPosInclinationRange.Parent" xml:space="preserve">
     <value>pnlProfile</value>
@@ -612,14 +843,11 @@
   <data name="&gt;&gt;lblPropProfileSplayPosInclinationRange.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="lblPropProfileSplayProjectionAngle.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblPropProfileSplayProjectionAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 10</value>
+    <value>9, 11</value>
   </data>
   <data name="lblPropProfileSplayProjectionAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 13</value>
+    <value>31, 13</value>
   </data>
   <data name="lblPropProfileSplayProjectionAngle.TabIndex" type="System.Int32, mscorlib">
     <value>160</value>
@@ -631,7 +859,7 @@
     <value>lblPropProfileSplayProjectionAngle</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayProjectionAngle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayProjectionAngle.Parent" xml:space="preserve">
     <value>pnlProfile</value>
@@ -639,14 +867,11 @@
   <data name="&gt;&gt;lblPropProfileSplayProjectionAngle.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="lblPropProfileSplayMaxVariationAngle.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblPropProfileSplayMaxVariationAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 36</value>
+    <value>9, 38</value>
   </data>
   <data name="lblPropProfileSplayMaxVariationAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 13</value>
+    <value>46, 13</value>
   </data>
   <data name="lblPropProfileSplayMaxVariationAngle.TabIndex" type="System.Int32, mscorlib">
     <value>159</value>
@@ -658,7 +883,7 @@
     <value>lblPropProfileSplayMaxVariationAngle</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayMaxVariationAngle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayMaxVariationAngle.Parent" xml:space="preserve">
     <value>pnlProfile</value>
@@ -667,7 +892,7 @@
     <value>7</value>
   </data>
   <data name="txtPropProfileSplayMaxVariationAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 35</value>
+    <value>128, 36</value>
   </data>
   <data name="txtPropProfileSplayMaxVariationAngle.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 21</value>
@@ -714,14 +939,17 @@
   <data name="&gt;&gt;txtPropProfileSplayProjectionAngle.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="pnlProfile.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
   <data name="pnlProfile.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="pnlProfile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 31</value>
+    <value>0, 35</value>
   </data>
   <data name="pnlProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>408, 143</value>
+    <value>448, 149</value>
   </data>
   <data name="pnlProfile.TabIndex" type="System.Int32, mscorlib">
     <value>168</value>
@@ -730,16 +958,13 @@
     <value>pnlProfile</value>
   </data>
   <data name="&gt;&gt;pnlProfile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlProfile.Parent" xml:space="preserve">
-    <value>TabPage2</value>
+    <value>tabProfile</value>
   </data>
   <data name="&gt;&gt;pnlProfile.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="chkProfile.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="chkProfile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -747,455 +972,26 @@
   <data name="chkProfile.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 9</value>
   </data>
+  <data name="chkProfile.Properties.Caption" xml:space="preserve">
+    <value>Change this settings</value>
+  </data>
   <data name="chkProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 17</value>
+    <value>121, 20</value>
   </data>
   <data name="chkProfile.TabIndex" type="System.Int32, mscorlib">
     <value>167</value>
-  </data>
-  <data name="chkProfile.Text" xml:space="preserve">
-    <value>Change this settings</value>
   </data>
   <data name="&gt;&gt;chkProfile.Name" xml:space="preserve">
     <value>chkProfile</value>
   </data>
   <data name="&gt;&gt;chkProfile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkProfile.Parent" xml:space="preserve">
-    <value>TabPage2</value>
+    <value>tabProfile</value>
   </data>
   <data name="&gt;&gt;chkProfile.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="TabPage2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="TabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="TabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>408, 174</value>
-  </data>
-  <data name="TabPage2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="TabPage2.Text" xml:space="preserve">
-    <value>Profile</value>
-  </data>
-  <data name="&gt;&gt;TabPage2.Name" xml:space="preserve">
-    <value>TabPage2</value>
-  </data>
-  <data name="&gt;&gt;TabPage2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TabPage2.Parent" xml:space="preserve">
-    <value>TabMain</value>
-  </data>
-  <data name="&gt;&gt;TabPage2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="chkCrossSection.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkCrossSection.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="chkCrossSection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 9</value>
-  </data>
-  <data name="chkCrossSection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 17</value>
-  </data>
-  <data name="chkCrossSection.TabIndex" type="System.Int32, mscorlib">
-    <value>168</value>
-  </data>
-  <data name="chkCrossSection.Text" xml:space="preserve">
-    <value>Change this settings</value>
-  </data>
-  <data name="&gt;&gt;chkCrossSection.Name" xml:space="preserve">
-    <value>chkCrossSection</value>
-  </data>
-  <data name="&gt;&gt;chkCrossSection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkCrossSection.Parent" xml:space="preserve">
-    <value>TabPage3</value>
-  </data>
-  <data name="&gt;&gt;chkCrossSection.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="chkPropCrossSectionShowOnlyCutSplay.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkPropCrossSectionShowOnlyCutSplay.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="chkPropCrossSectionShowOnlyCutSplay.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="chkPropCrossSectionShowOnlyCutSplay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>189, 9</value>
-  </data>
-  <data name="chkPropCrossSectionShowOnlyCutSplay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 17</value>
-  </data>
-  <data name="chkPropCrossSectionShowOnlyCutSplay.TabIndex" type="System.Int32, mscorlib">
-    <value>166</value>
-  </data>
-  <data name="chkPropCrossSectionShowOnlyCutSplay.Text" xml:space="preserve">
-    <value>Only cut splay:</value>
-  </data>
-  <data name="&gt;&gt;chkPropCrossSectionShowOnlyCutSplay.Name" xml:space="preserve">
-    <value>chkPropCrossSectionShowOnlyCutSplay</value>
-  </data>
-  <data name="&gt;&gt;chkPropCrossSectionShowOnlyCutSplay.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkPropCrossSectionShowOnlyCutSplay.Parent" xml:space="preserve">
-    <value>pnlCrosssection</value>
-  </data>
-  <data name="&gt;&gt;chkPropCrossSectionShowOnlyCutSplay.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblPropCrossSectionSplayProjectionAngle.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblPropCrossSectionSplayProjectionAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 35</value>
-  </data>
-  <data name="lblPropCrossSectionSplayProjectionAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 13</value>
-  </data>
-  <data name="lblPropCrossSectionSplayProjectionAngle.TabIndex" type="System.Int32, mscorlib">
-    <value>162</value>
-  </data>
-  <data name="lblPropCrossSectionSplayProjectionAngle.Text" xml:space="preserve">
-    <value>Angle:</value>
-  </data>
-  <data name="&gt;&gt;lblPropCrossSectionSplayProjectionAngle.Name" xml:space="preserve">
-    <value>lblPropCrossSectionSplayProjectionAngle</value>
-  </data>
-  <data name="&gt;&gt;lblPropCrossSectionSplayProjectionAngle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPropCrossSectionSplayProjectionAngle.Parent" xml:space="preserve">
-    <value>pnlCrosssection</value>
-  </data>
-  <data name="&gt;&gt;lblPropCrossSectionSplayProjectionAngle.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="lblPropCrossSectionSplayText.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblPropCrossSectionSplayText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 115</value>
-  </data>
-  <data name="lblPropCrossSectionSplayText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 13</value>
-  </data>
-  <data name="lblPropCrossSectionSplayText.TabIndex" type="System.Int32, mscorlib">
-    <value>165</value>
-  </data>
-  <data name="lblPropCrossSectionSplayText.Text" xml:space="preserve">
-    <value>Show station label:</value>
-  </data>
-  <data name="&gt;&gt;lblPropCrossSectionSplayText.Name" xml:space="preserve">
-    <value>lblPropCrossSectionSplayText</value>
-  </data>
-  <data name="&gt;&gt;lblPropCrossSectionSplayText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPropCrossSectionSplayText.Parent" xml:space="preserve">
-    <value>pnlCrosssection</value>
-  </data>
-  <data name="&gt;&gt;lblPropCrossSectionSplayText.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="txtPropCrossSectionSplayProjectionAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 33</value>
-  </data>
-  <data name="txtPropCrossSectionSplayProjectionAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 21</value>
-  </data>
-  <data name="txtPropCrossSectionSplayProjectionAngle.TabIndex" type="System.Int32, mscorlib">
-    <value>147</value>
-  </data>
-  <data name="txtPropCrossSectionSplayProjectionAngle.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtPropCrossSectionSplayProjectionAngle.Name" xml:space="preserve">
-    <value>txtPropCrossSectionSplayProjectionAngle</value>
-  </data>
-  <data name="&gt;&gt;txtPropCrossSectionSplayProjectionAngle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtPropCrossSectionSplayProjectionAngle.Parent" xml:space="preserve">
-    <value>pnlCrosssection</value>
-  </data>
-  <data name="&gt;&gt;txtPropCrossSectionSplayProjectionAngle.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="lblPropCrossSectionShowSplayBorder.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblPropCrossSectionShowSplayBorder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 10</value>
-  </data>
-  <data name="lblPropCrossSectionShowSplayBorder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 13</value>
-  </data>
-  <data name="lblPropCrossSectionShowSplayBorder.TabIndex" type="System.Int32, mscorlib">
-    <value>164</value>
-  </data>
-  <data name="lblPropCrossSectionShowSplayBorder.Text" xml:space="preserve">
-    <value>Show splay:</value>
-  </data>
-  <data name="&gt;&gt;lblPropCrossSectionShowSplayBorder.Name" xml:space="preserve">
-    <value>lblPropCrossSectionShowSplayBorder</value>
-  </data>
-  <data name="&gt;&gt;lblPropCrossSectionShowSplayBorder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPropCrossSectionShowSplayBorder.Parent" xml:space="preserve">
-    <value>pnlCrosssection</value>
-  </data>
-  <data name="&gt;&gt;lblPropCrossSectionShowSplayBorder.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="chkPropCrossSectionShowSplayBorder.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkPropCrossSectionShowSplayBorder.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="chkPropCrossSectionShowSplayBorder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="chkPropCrossSectionShowSplayBorder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 10</value>
-  </data>
-  <data name="chkPropCrossSectionShowSplayBorder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 14</value>
-  </data>
-  <data name="chkPropCrossSectionShowSplayBorder.TabIndex" type="System.Int32, mscorlib">
-    <value>148</value>
-  </data>
-  <data name="&gt;&gt;chkPropCrossSectionShowSplayBorder.Name" xml:space="preserve">
-    <value>chkPropCrossSectionShowSplayBorder</value>
-  </data>
-  <data name="&gt;&gt;chkPropCrossSectionShowSplayBorder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkPropCrossSectionShowSplayBorder.Parent" xml:space="preserve">
-    <value>pnlCrosssection</value>
-  </data>
-  <data name="&gt;&gt;chkPropCrossSectionShowSplayBorder.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="lblPropCrossSectionSplayLineStyle.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblPropCrossSectionSplayLineStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 89</value>
-  </data>
-  <data name="lblPropCrossSectionSplayLineStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
-  </data>
-  <data name="lblPropCrossSectionSplayLineStyle.TabIndex" type="System.Int32, mscorlib">
-    <value>163</value>
-  </data>
-  <data name="lblPropCrossSectionSplayLineStyle.Text" xml:space="preserve">
-    <value>Style:</value>
-  </data>
-  <data name="&gt;&gt;lblPropCrossSectionSplayLineStyle.Name" xml:space="preserve">
-    <value>lblPropCrossSectionSplayLineStyle</value>
-  </data>
-  <data name="&gt;&gt;lblPropCrossSectionSplayLineStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPropCrossSectionSplayLineStyle.Parent" xml:space="preserve">
-    <value>pnlCrosssection</value>
-  </data>
-  <data name="&gt;&gt;lblPropCrossSectionSplayLineStyle.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="cboPropCrossSectionSplayLineStyle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
-  </data>
-  <data name="cboPropCrossSectionSplayLineStyle.Items" xml:space="preserve">
-    <value>Only points</value>
-  </data>
-  <data name="cboPropCrossSectionSplayLineStyle.Items1" xml:space="preserve">
-    <value>Points and lines</value>
-  </data>
-  <data name="cboPropCrossSectionSplayLineStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 87</value>
-  </data>
-  <data name="cboPropCrossSectionSplayLineStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 21</value>
-  </data>
-  <data name="cboPropCrossSectionSplayLineStyle.TabIndex" type="System.Int32, mscorlib">
-    <value>151</value>
-  </data>
-  <data name="&gt;&gt;cboPropCrossSectionSplayLineStyle.Name" xml:space="preserve">
-    <value>cboPropCrossSectionSplayLineStyle</value>
-  </data>
-  <data name="&gt;&gt;cboPropCrossSectionSplayLineStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboPropCrossSectionSplayLineStyle.Parent" xml:space="preserve">
-    <value>pnlCrosssection</value>
-  </data>
-  <data name="&gt;&gt;cboPropCrossSectionSplayLineStyle.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="lblPropCrossSectionSplayMaxVariationAngle.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblPropCrossSectionSplayMaxVariationAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 61</value>
-  </data>
-  <data name="lblPropCrossSectionSplayMaxVariationAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 13</value>
-  </data>
-  <data name="lblPropCrossSectionSplayMaxVariationAngle.TabIndex" type="System.Int32, mscorlib">
-    <value>161</value>
-  </data>
-  <data name="lblPropCrossSectionSplayMaxVariationAngle.Text" xml:space="preserve">
-    <value>Variation:</value>
-  </data>
-  <data name="&gt;&gt;lblPropCrossSectionSplayMaxVariationAngle.Name" xml:space="preserve">
-    <value>lblPropCrossSectionSplayMaxVariationAngle</value>
-  </data>
-  <data name="&gt;&gt;lblPropCrossSectionSplayMaxVariationAngle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPropCrossSectionSplayMaxVariationAngle.Parent" xml:space="preserve">
-    <value>pnlCrosssection</value>
-  </data>
-  <data name="&gt;&gt;lblPropCrossSectionSplayMaxVariationAngle.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="txtPropCrossSectionSplayMaxVariationAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 60</value>
-  </data>
-  <data name="txtPropCrossSectionSplayMaxVariationAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 21</value>
-  </data>
-  <data name="txtPropCrossSectionSplayMaxVariationAngle.TabIndex" type="System.Int32, mscorlib">
-    <value>153</value>
-  </data>
-  <data name="txtPropCrossSectionSplayMaxVariationAngle.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtPropCrossSectionSplayMaxVariationAngle.Name" xml:space="preserve">
-    <value>txtPropCrossSectionSplayMaxVariationAngle</value>
-  </data>
-  <data name="&gt;&gt;txtPropCrossSectionSplayMaxVariationAngle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtPropCrossSectionSplayMaxVariationAngle.Parent" xml:space="preserve">
-    <value>pnlCrosssection</value>
-  </data>
-  <data name="&gt;&gt;txtPropCrossSectionSplayMaxVariationAngle.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="chkPropCrossSectionSplayText.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkPropCrossSectionSplayText.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="chkPropCrossSectionSplayText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 115</value>
-  </data>
-  <data name="chkPropCrossSectionSplayText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 14</value>
-  </data>
-  <data name="chkPropCrossSectionSplayText.TabIndex" type="System.Int32, mscorlib">
-    <value>154</value>
-  </data>
-  <data name="&gt;&gt;chkPropCrossSectionSplayText.Name" xml:space="preserve">
-    <value>chkPropCrossSectionSplayText</value>
-  </data>
-  <data name="&gt;&gt;chkPropCrossSectionSplayText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkPropCrossSectionSplayText.Parent" xml:space="preserve">
-    <value>pnlCrosssection</value>
-  </data>
-  <data name="&gt;&gt;chkPropCrossSectionSplayText.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="pnlCrosssection.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="pnlCrosssection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 31</value>
-  </data>
-  <data name="pnlCrosssection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>408, 143</value>
-  </data>
-  <data name="pnlCrosssection.TabIndex" type="System.Int32, mscorlib">
-    <value>169</value>
-  </data>
-  <data name="&gt;&gt;pnlCrosssection.Name" xml:space="preserve">
-    <value>pnlCrosssection</value>
-  </data>
-  <data name="&gt;&gt;pnlCrosssection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlCrosssection.Parent" xml:space="preserve">
-    <value>TabPage3</value>
-  </data>
-  <data name="&gt;&gt;pnlCrosssection.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="TabPage3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="TabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>408, 174</value>
-  </data>
-  <data name="TabPage3.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="TabPage3.Text" xml:space="preserve">
-    <value>Cross Sections</value>
-  </data>
-  <data name="&gt;&gt;TabPage3.Name" xml:space="preserve">
-    <value>TabPage3</value>
-  </data>
-  <data name="&gt;&gt;TabPage3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TabPage3.Parent" xml:space="preserve">
-    <value>TabMain</value>
-  </data>
-  <data name="&gt;&gt;TabPage3.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="TabMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="TabMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>416, 200</value>
-  </data>
-  <data name="TabMain.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;TabMain.Name" xml:space="preserve">
-    <value>TabMain</value>
-  </data>
-  <data name="&gt;&gt;TabMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TabMain.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;TabMain.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="cmdCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -1204,7 +1000,7 @@
     <value>NoControl</value>
   </data>
   <data name="cmdCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>348, 223</value>
+    <value>382, 236</value>
   </data>
   <data name="cmdCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
@@ -1219,7 +1015,7 @@
     <value>cmdCancel</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1234,7 +1030,7 @@
     <value>NoControl</value>
   </data>
   <data name="cmdOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 223</value>
+    <value>210, 236</value>
   </data>
   <data name="cmdOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
@@ -1249,7 +1045,7 @@
     <value>cmdOk</value>
   </data>
   <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1264,7 +1060,7 @@
     <value>NoControl</value>
   </data>
   <data name="cmdApply.Location" type="System.Drawing.Point, System.Drawing">
-    <value>262, 223</value>
+    <value>296, 236</value>
   </data>
   <data name="cmdApply.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
@@ -1279,13 +1075,91 @@
     <value>cmdApply</value>
   </data>
   <data name="&gt;&gt;cmdApply.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdApply.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdApply.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="tabMain.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="tabMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="tabPlan.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 184</value>
+  </data>
+  <data name="tabPlan.Text" xml:space="preserve">
+    <value>Plan</value>
+  </data>
+  <data name="&gt;&gt;tabPlan.Name" xml:space="preserve">
+    <value>tabPlan</value>
+  </data>
+  <data name="&gt;&gt;tabPlan.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabPlan.Parent" xml:space="preserve">
+    <value>tabMain</value>
+  </data>
+  <data name="&gt;&gt;tabPlan.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>450, 213</value>
+  </data>
+  <data name="tabMain.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="tabProfile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 184</value>
+  </data>
+  <data name="tabProfile.Text" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="&gt;&gt;tabProfile.Name" xml:space="preserve">
+    <value>tabProfile</value>
+  </data>
+  <data name="&gt;&gt;tabProfile.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabProfile.Parent" xml:space="preserve">
+    <value>tabMain</value>
+  </data>
+  <data name="&gt;&gt;tabProfile.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabCrossSections.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 184</value>
+  </data>
+  <data name="tabCrossSections.Text" xml:space="preserve">
+    <value>Cross sections</value>
+  </data>
+  <data name="&gt;&gt;tabCrossSections.Name" xml:space="preserve">
+    <value>tabCrossSections</value>
+  </data>
+  <data name="&gt;&gt;tabCrossSections.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabCrossSections.Parent" xml:space="preserve">
+    <value>tabMain</value>
+  </data>
+  <data name="&gt;&gt;tabCrossSections.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tabMain.Name" xml:space="preserve">
+    <value>tabMain</value>
+  </data>
+  <data name="&gt;&gt;tabMain.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabMain.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabMain.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1294,12 +1168,9 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>440, 260</value>
+    <value>474, 273</value>
   </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="frmSplay.IconOptions.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAK5zAACvdAAAsXYAALp1AAC9dgAAtHoGALx7AAC+fAAAtHoIALV+

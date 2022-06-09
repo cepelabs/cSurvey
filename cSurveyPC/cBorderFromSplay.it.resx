@@ -124,44 +124,26 @@
     <value>Inviluppo convesso</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblUseHull.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 13</value>
-  </data>
   <data name="lblUseHull.Text" xml:space="preserve">
     <value>Smusso:</value>
   </data>
   <data name="cmdCreate.Text" xml:space="preserve">
     <value>Crea</value>
   </data>
-  <data name="optCaveBranch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 17</value>
-  </data>
   <data name="optCaveBranch.Text" xml:space="preserve">
     <value>Grotta/ramo</value>
-  </data>
-  <data name="optSegment.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 17</value>
   </data>
   <data name="optSegment.Text" xml:space="preserve">
     <value>Battuta</value>
   </data>
-  <data name="lblPointReductionUM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 13</value>
-  </data>
   <data name="lblPointReductionUM.Text" xml:space="preserve">
     <value>m</value>
-  </data>
-  <data name="lblAngPrec.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 13</value>
   </data>
   <data name="lblAngPrec.Text" xml:space="preserve">
     <value>Prec. angolare:</value>
   </data>
   <data name="cboLineType.Items" xml:space="preserve">
     <value>Rette</value>
-  </data>
-  <data name="lblLineType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
   </data>
   <data name="lblLineType.Text" xml:space="preserve">
     <value>Linea:</value>

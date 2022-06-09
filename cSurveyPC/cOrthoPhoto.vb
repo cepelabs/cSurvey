@@ -20,19 +20,37 @@ Namespace cSurvey.Surface
 
         Private WithEvents oCoordinate As cCoordinate
 
-        Friend Event OnChange(ByVal Sender As cOrthoPhoto)
+        Friend Event OnChange(ByVal Sender As Object, e As EventArgs)
 
         Private oImagesCaches As Dictionary(Of Size, Image)
 
+        Public Overrides Function Equals(obj As Object) As Boolean
+            If obj Is Nothing OrElse TypeOf obj IsNot cOrthoPhoto Then
+                Return False
+            Else
+                Return DirectCast(obj, cOrthoPhoto).ID = sID
+            End If
+        End Function
+
         Friend Class cDefaultArgs
-            Public ID As String
+            Inherits EventArgs
+            Private sID As String
+
+            Public Property ID As String
+                Get
+                    Return sID
+                End Get
+                Set(value As String)
+                    sID = value
+                End Set
+            End Property
 
             Public Sub New()
-                Me.ID = ""
+                sID = ""
             End Sub
 
-            Public Sub New(ID As String)
-                Me.ID = ID
+            Friend Sub New(ID As String)
+                sID = ID
             End Sub
         End Class
 
@@ -41,25 +59,15 @@ Namespace cSurvey.Surface
 
         Public Sub InvertColors()
             oPhoto = modPaint.InvertColors(oPhoto)
-            'Dim oNewPhoto As Bitmap = New Bitmap(oPhoto.Width, oPhoto.Height)
-            'Using oGr As Graphics = Graphics.FromImage(oNewPhoto)
-            '    Dim oColorMatrix As Imaging.ColorMatrix = New Imaging.ColorMatrix(New Single()() {New Single() {-1, 0, 0, 0, 0}, New Single() {0, -1, 0, 0, 0}, New Single() {0, 0, -1, 0, 0}, New Single() {0, 0, 0, 1, 0}, New Single() {1, 1, 1, 0, 1}})
-            '    Using oAttributes As Imaging.ImageAttributes = New Imaging.ImageAttributes
-            '        oAttributes.SetColorMatrix(oColorMatrix)
-            '        Call oGr.DrawImage(oPhoto, New Rectangle(0, 0, oPhoto.Width, oPhoto.Height), 0, 0, oPhoto.Width, oPhoto.Height, GraphicsUnit.Pixel, oAttributes)
-            '        Call oPhoto.Dispose()
-            '        oPhoto = oNewPhoto
-            '    End Using
-            'End Using
+            Call oImagesCaches.Clear()
         End Sub
 
         Public Function Reduce(Percentage As Single) As cOrthoPhoto
-            Dim oImage As Bitmap = oPhoto
             Dim sFactor As Decimal = (100 / Percentage)
-            Dim iNewHeight As Integer = oImage.Height / sFactor
-            Dim iNewWidth As Integer = oImage.Width / sFactor
+            Dim iNewHeight As Integer = oPhoto.Height / sFactor
+            Dim iNewWidth As Integer = oPhoto.Width / sFactor
             Dim iProgressIndex As Integer = 0
-            Using oScaledImage As Bitmap = modPaint.ScaleImage(oImage, New Drawing.Size(iNewWidth, iNewHeight), Color.White)
+            Using oScaledImage As Bitmap = modPaint.ScaleImage(oPhoto, New Drawing.Size(iNewWidth, iNewHeight), Color.White)
                 Return New cOrthoPhoto(oSurvey, sName, oCoordinate, oScaledImage, sXSize * sFactor, sYSize * sFactor)
             End Using
         End Function
@@ -80,26 +88,29 @@ Namespace cSurvey.Surface
             Return New PointF(oPointUTM.East - oOriginUTM.East, oOriginUTM.North - oPointUTM.North)
         End Function
 
+        Public Function GetImage(Width As Integer, Height As Integer) As Image
+            Return GetImage(New Size(Width, Height))
+        End Function
+
         Public Function GetImage(Size As Size) As Image
             If oImagesCaches.ContainsKey(Size) Then
                 Return oImagesCaches(Size)
             Else
-                Dim oImage As Image = oPhoto
                 Dim oThumbImage As Image = New Bitmap(Size.Width, Size.Height)
                 Using oGr As Graphics = Graphics.FromImage(oThumbImage)
                     oGr.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
                     oGr.CompositingQuality = Drawing2D.CompositingQuality.HighQuality
-                    Dim iSrcWidth As Single = oImage.Width
-                    Dim iSrcHeight As Single = oImage.Height
+                    Dim iSrcWidth As Single = oPhoto.Width
+                    Dim iSrcHeight As Single = oPhoto.Height
                     Dim iDestWidth As Single = oThumbImage.Width
                     Dim iDestHeight As Single = oThumbImage.Height
                     Dim sDeltaX As Single = iSrcWidth / iDestWidth
                     Dim sDeltaY As Single = iSrcHeight / iDestHeight
-                    Dim sDelta As Single = IIf(sDeltaX > sDeltaY, sDeltaX, sDeltaY)
+                    Dim sDelta As Single = If(sDeltaX > sDeltaY, sDeltaX, sDeltaY)
                     Dim iWidth As Single = iSrcWidth / sDelta
                     Dim iHeight As Single = iSrcHeight / sDelta
                     Dim oRect As RectangleF = New RectangleF((iDestWidth - iWidth) / 2, (iDestHeight - iHeight) / 2, iWidth, iHeight)
-                    Call oGr.DrawImage(oImage, oRect)
+                    Call oGr.DrawImage(oPhoto, oRect)
                     Call oImagesCaches.Add(Size, oThumbImage)
                 End Using
                 Return oThumbImage
@@ -129,18 +140,13 @@ Namespace cSurvey.Surface
             Select Case File.FileFormat
                 Case cFile.FileFormatEnum.CSX
                     Try
-                        Using oMs As IO.MemoryStream = New IO.MemoryStream(Convert.FromBase64String(modXML.GetAttributeValue(OrthoPhoto, "photo")))
-                            'oPhoto = New Bitmap(oms)
-                            oPhoto = modPaint.SafeBitmapFromStream(oMs)
-                        End Using
-                        'Call oms.Dispose()
+                        oPhoto = modPaint.ByteArrayToBitmap(Convert.FromBase64String(modXML.GetAttributeValue(OrthoPhoto, "photo")))
                     Catch
                     End Try
                 Case cFile.FileFormatEnum.CSZ
                     Try
                         Dim sDataPath As String = modXML.GetAttributeValue(OrthoPhoto, "photo")
-                        'oPhoto = New Bitmap(DirectCast(File.Data(sDataPath), Storage.cStorageItemFile).Stream)
-                        oPhoto = modPaint.SafeBitmapFromStream(DirectCast(File.Data(sDataPath), Storage.cStorageItemFile).Stream)
+                        oPhoto = modPaint.ByteArrayToBitmap(DirectCast(File.Data(sDataPath), Storage.cStorageItemFile).Stream.ToArray)
                     Catch
                     End Try
             End Select
@@ -166,7 +172,7 @@ Namespace cSurvey.Surface
             Set(value As String)
                 If value <> sName Then
                     sName = value
-                    RaiseEvent OnChange(Me)
+                    RaiseEvent OnChange(Me, EventArgs.Empty)
                 End If
             End Set
         End Property
@@ -190,16 +196,11 @@ Namespace cSurvey.Surface
                 If Not (File.Options And cFile.FileOptionsEnum.DontSaveBinary) = cFile.FileOptionsEnum.DontSaveBinary Then
                     Select Case File.FileFormat
                         Case cFile.FileFormatEnum.CSX
-                            Using oms As IO.MemoryStream = New IO.MemoryStream
-                                'Call oPhoto.Save(oms, Drawing.Imaging.ImageFormat.Jpeg)
-                                Call modPaint.SafeBitmapSaveToStream(oPhoto, oms, Drawing.Imaging.ImageFormat.Jpeg)
-                                Call oXmlItem.SetAttribute("photo", Convert.ToBase64String(oms.ToArray()))
-                            End Using
+                            Call oXmlItem.SetAttribute("photo", Convert.ToBase64String(modPaint.BitmapToByteArray(oPhoto, Drawing.Imaging.ImageFormat.Jpeg)))
                         Case cFile.FileFormatEnum.CSZ
                             Dim sDataPath As String = "_data\surface\orthophotos\" & sID & ".jpg"
                             Dim oDataStorage As Storage.cStorageItemFile = File.Data.AddFile(sDataPath)
-                            'Call oPhoto.Save(oDataStorage.Stream, Drawing.Imaging.ImageFormat.Jpeg)
-                            Call modPaint.SafeBitmapSaveToStream(oPhoto, oDataStorage.Stream, Drawing.Imaging.ImageFormat.Jpeg)
+                            Call oDataStorage.Write(modPaint.BitmapToByteArray(oPhoto, Drawing.Imaging.ImageFormat.Jpeg))
                             Call oXmlItem.SetAttribute("photo", sDataPath)
                     End Select
                 End If
@@ -370,7 +371,7 @@ Namespace cSurvey.Surface
             iSystem = cSurface.CoordinateSystemEnum.UTMWGS84
             sXSize = 0
             sYSize = 0
-            RaiseEvent OnChange(Me)
+            RaiseEvent OnChange(Me, EventArgs.Empty)
         End Sub
 
         Public ReadOnly Property Coordinate As cCoordinate
@@ -478,26 +479,26 @@ Namespace cSurvey.Surface
                     If "" & sName = "" Then sName = Path.GetFileName(Filename)
                     Call oImagesCaches.Clear()
                     Call oSurvey.RaiseOnProgressEvent("orthophoto.import", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, modMain.GetLocalizedString("surface.progressend1"), 0)
-                    RaiseEvent OnChange(Me)
+                    RaiseEvent OnChange(Me, EventArgs.Empty)
             End Select
             Return bResult
         End Function
 
-        Public Property [Default] As Boolean
-            Get
-                Dim oArgs As cDefaultArgs = New cDefaultArgs()
-                RaiseEvent OnDefaultGet(Me, oArgs)
-                Return sID = oArgs.ID
-            End Get
-            Set(value As Boolean)
-                If value Then
-                    Dim oArgs As cDefaultArgs = New cDefaultArgs(sID)
-                    RaiseEvent OnDefaultSet(Me, oArgs)
-                Else
-                    Dim oArgs As cDefaultArgs = New cDefaultArgs()
-                    RaiseEvent OnDefaultSet(Me, oArgs)
-                End If
-            End Set
-        End Property
+        'Public Property [Default] As Boolean
+        '    Get
+        '        Dim oArgs As cDefaultArgs = New cDefaultArgs()
+        '        RaiseEvent OnDefaultGet(Me, oArgs)
+        '        Return sID = oArgs.ID
+        '    End Get
+        '    Set(value As Boolean)
+        '        If value Then
+        '            Dim oArgs As cDefaultArgs = New cDefaultArgs(sID)
+        '            RaiseEvent OnDefaultSet(Me, oArgs)
+        '        Else
+        '            Dim oArgs As cDefaultArgs = New cDefaultArgs()
+        '            RaiseEvent OnDefaultSet(Me, oArgs)
+        '        End If
+        '    End Set
+        'End Property
     End Class
 End Namespace

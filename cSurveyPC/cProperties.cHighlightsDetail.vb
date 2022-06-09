@@ -69,6 +69,8 @@ Namespace cSurvey.Properties
     End Class
 
     Public Interface cIHighlightsDetailMeters
+
+        Function GetColors() As Color()
         Property Color As Color
         Property Colors As Color()
         Property Size As Single
@@ -80,6 +82,10 @@ Namespace cSurvey.Properties
         Private oColors As Color()
         Private sSize As Single
         Private iOpacity As Byte
+
+        Public Function GetColors() As Color() Implements cIHighlightsDetailMeters.GetColors
+            Return oColors.Select(Function(oColor) Color.FromArgb(iOpacity, oColor)).ToArray
+        End Function
 
         Public Property Color As Color Implements cIHighlightsDetailMeters.Color
             Get
@@ -145,6 +151,11 @@ Namespace cSurvey.Properties
         Private sName As String
         Private oMeters As cHighlightsDetailMeters
         Private bSystem As Boolean
+
+
+        Public Function GetColors() As Color() Implements cIHighlightsDetailMeters.GetColors
+            Return oMeters.GetColors
+        End Function
 
         Public Enum ApplyToEnum
             Stations = 0

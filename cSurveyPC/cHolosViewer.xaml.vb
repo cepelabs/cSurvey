@@ -552,6 +552,7 @@ Friend Class cHolosViewer
         ModelMode = 8
         CameraMove = 16
         All = 255
+        [Error] = 256
     End Enum
 
     Private iInvalidated As InvalidateType = InvalidateType.All
@@ -559,44 +560,60 @@ Friend Class cHolosViewer
     Public Sub Invalidate(Optional Invalidate As InvalidateType = InvalidateType.All)
         If iInvalidated <> (iInvalidated Or Invalidate) Then
             iInvalidated = iInvalidated Or Invalidate
-            If iInvalidated = InvalidateType.None Then
-                pnlInvalidated.Visibility = Windows.Visibility.Hidden
-            ElseIf iInvalidated = InvalidateType.CameraMove Then
+
+            If iInvalidated = InvalidateType.CameraMove Then
                 If (oOutlineUpdateTimer Is Nothing) Then
                     oOutlineUpdateTimer = New System.Windows.Forms.Timer
                     oOutlineUpdateTimer.Interval = 250
                     AddHandler oOutlineUpdateTimer.Tick, AddressOf Me.drawOutlineTimerCallback
                     oOutlineUpdateTimer.Start()
                 End If
-            Else
-                'imgInvalidatedCaption.Source = warning
-                'imgInvalidatedCaption.Source = New Media.Imaging.BitmapImage(New Uri("pack://application:,,,/Resources/error32.png"))
-                imgWarning.Visibility = Visibility.Visible
-                imgError.Visibility = Visibility.Hidden
-                lblInvalidatedCaption.Content = modMain.GetLocalizedString("holos.invalidate")
-                pnlInvalidated.Background = System.Windows.Media.Brushes.LemonChiffon
-                pnlInvalidated.Visibility = Windows.Visibility.Visible
             End If
+
+            'If iInvalidated = InvalidateType.None Then
+            '    pnlInvalidated.Visibility = Windows.Visibility.Hidden
+            'ElseIf iInvalidated = InvalidateType.CameraMove Then
+            '    If (oOutlineUpdateTimer Is Nothing) Then
+            '        oOutlineUpdateTimer = New System.Windows.Forms.Timer
+            '        oOutlineUpdateTimer.Interval = 250
+            '        AddHandler oOutlineUpdateTimer.Tick, AddressOf Me.drawOutlineTimerCallback
+            '        oOutlineUpdateTimer.Start()
+            '    End If
+            'Else
+            '    'imgInvalidatedCaption.Source = warning
+            '    'imgInvalidatedCaption.Source = New Media.Imaging.BitmapImage(New Uri("pack://application:,,,/Resources/error32.png"))
+            '    imgWarning.Visibility = Visibility.Visible
+            '    imgError.Visibility = Visibility.Hidden
+            '    lblInvalidatedCaption.Content = modMain.GetLocalizedString("holos.invalidate")
+            '    pnlInvalidated.Background = System.Windows.Media.Brushes.LemonChiffon
+            '    pnlInvalidated.Visibility = Windows.Visibility.Visible
+            'End If
             RaiseEvent OnInvalidate(Me, New EventArgs)
         End If
     End Sub
 
-    Public Sub [Error]([Error] As Boolean)
-        If [Error] Then
-            'imgInvalidatedCaption.Source = New Media.Imaging.BitmapImage(New Uri("pack://application:,,,/Resources/cross32.png"))
-            imgWarning.Visibility = Visibility.Hidden
-            imgError.Visibility = Visibility.Visible
-            lblInvalidatedCaption.Content = modMain.GetLocalizedString("holos.error")
-            pnlInvalidated.Background = System.Windows.Media.Brushes.PeachPuff
-            pnlInvalidated.Visibility = Windows.Visibility.Visible
-        Else
-            pnlInvalidated.Visibility = Windows.Visibility.Hidden
-        End If
-    End Sub
+    'Public Sub [Error]([Error] As Boolean)
+    '    If [Error] Then
+    '        'imgInvalidatedCaption.Source = New Media.Imaging.BitmapImage(New Uri("pack://application:,,,/Resources/cross32.png"))
+    '        imgWarning.Visibility = Visibility.Hidden
+    '        imgError.Visibility = Visibility.Visible
+    '        lblInvalidatedCaption.Content = modMain.GetLocalizedString("holos.error")
+    '        pnlInvalidated.Background = System.Windows.Media.Brushes.PeachPuff
+    '        pnlInvalidated.Visibility = Windows.Visibility.Visible
+    '    Else
+    '        pnlInvalidated.Visibility = Windows.Visibility.Hidden
+    '    End If
+    'End Sub
 
     Public ReadOnly Property IsInvalidated() As Boolean
         Get
-            Return iInvalidated <> InvalidateType.None
+            Return iInvalidated <> InvalidateType.None AndAlso Not (iInvalidated = InvalidateType.CameraMove)
+        End Get
+    End Property
+
+    Public ReadOnly Property IsInError() As Boolean
+        Get
+            Return (iInvalidated And InvalidateType.Error) = InvalidateType.Error
         End Get
     End Property
 
@@ -605,6 +622,15 @@ Friend Class cHolosViewer
     Public Sub RedrawRequest()
         RaiseEvent OnRedrawRequest(Me, New EventArgs)
     End Sub
+
+    Public Property SceneBackgroundcolor As Color
+        Get
+            Return modPaint.MediaColorToDrawingColor(DirectCast(mainViewport.Background, Media.SolidColorBrush).Color)
+        End Get
+        Set(value As Color)
+            mainViewport.Background = New Windows.Media.SolidColorBrush(modPaint.DrawingColorToMediaColor(value))
+        End Set
+    End Property
 
     Public ReadOnly Property RedrawCount As Integer
         Get
@@ -716,7 +742,7 @@ Friend Class cHolosViewer
             pnlInvalidated.Visibility = Windows.Visibility.Hidden
             RaiseEvent OnInvalidate(Me, New EventArgs)
         Catch ex As Exception
-            Call [Error](True)
+            Call Invalidate(InvalidateType.Error)
             RaiseEvent OnRedrawComplete(Me, New EventArgs)
         End Try
     End Sub
@@ -759,7 +785,7 @@ Friend Class cHolosViewer
                             Call modMain.FilterSaveLast("export.3d", .FilterIndex)
                             sSaveFilename = .FileName
                         End If
-                    End With
+                    End With                       
                 End Using
             End If
             If sSaveFilename <> "" Then
@@ -773,7 +799,7 @@ Friend Class cHolosViewer
                 End Select
             End If
         Catch ex As Exception
-            Call MsgBox(modMain.GetLocalizedString("holos.warning1"), vbOKOnly, modMain.GetLocalizedString("holos.warningtitle"))
+            Call cSurvey.UIHelpers.Dialogs.Msgbox(modMain.GetLocalizedString("holos.warning1"), vbOKOnly, modMain.GetLocalizedString("holos.warningtitle"))
         End Try
     End Sub
 
@@ -1111,10 +1137,10 @@ Friend Class cHolosViewer
                                     bVisible = PaintOptions.DrawSplay
                                 End If
                                 If oShot.Surface Then
-                                    bVisible = (PaintOptions.DrawSegmentsOptions And cOptions.DrawSegmentsOptionsEnum.Surface) = cOptions.DrawSegmentsOptionsEnum.Surface
+                                    bVisible = (PaintOptions.DrawSegmentsOptions And cOptionsDesign.DrawSegmentsOptionsEnum.Surface) = cOptionsDesign.DrawSegmentsOptionsEnum.Surface
                                 End If
                                 If oShot.Duplicate Then
-                                    bVisible = (PaintOptions.DrawSegmentsOptions And cOptions.DrawSegmentsOptionsEnum.Duplicate) = cOptions.DrawSegmentsOptionsEnum.Duplicate
+                                    bVisible = (PaintOptions.DrawSegmentsOptions And cOptionsDesign.DrawSegmentsOptionsEnum.Duplicate) = cOptionsDesign.DrawSegmentsOptionsEnum.Duplicate
                                 End If
                                 If bVisible Then
                                     Dim oColor As Drawing.Color
@@ -1122,11 +1148,11 @@ Friend Class cHolosViewer
                                     If oShot.Splay Then
                                         If oShot.Data.SegmentColor = Color.Transparent Then
                                             Select Case PaintOptions.CenterlineColorMode
-                                                Case cOptions.CenterlineColorModeEnum.CavesAndBranches
+                                                Case cOptionsDesign.CenterlineColorModeEnum.CavesAndBranches
                                                     oCaveColor = oCurrentSurvey.Properties.CaveInfos.GetColor(oShot, oDrawingObject.PenColor)
-                                                Case cOptions.CenterlineColorModeEnum.OnlyCaves
+                                                Case cOptionsDesign.CenterlineColorModeEnum.OnlyCaves
                                                     oCaveColor = oCurrentSurvey.Properties.CaveInfos.GetColor(oShot.Cave, "", oDrawingObject.PenColor)
-                                                Case cOptions.CenterlineColorModeEnum.ExtendStart
+                                                Case cOptionsDesign.CenterlineColorModeEnum.ExtendStart
                                                     oCaveColor = oCurrentSurvey.Properties.CaveInfos.GetOriginColor(oShot, oDrawingObject.PenColor)
                                             End Select
                                             oColor = modPaint.LightColor(oCaveColor, 0.3)
@@ -1137,7 +1163,7 @@ Friend Class cHolosViewer
                                             oColor = modPaint.GrayColor(oColor)
                                         End If
 
-                                        If PaintOptions.DrawSplay AndAlso (PaintOptions.SplayStyle = cOptions.SplayStyleEnum.PointsAndRays OrElse PaintOptions.SplayStyle = cOptions.SplayStyleEnum.Rays) Then
+                                        If PaintOptions.DrawSplay AndAlso (PaintOptions.SplayStyle = cOptionsDesign.SplayStyleEnum.PointsAndRays OrElse PaintOptions.SplayStyle = cOptionsDesign.SplayStyleEnum.Rays) Then
                                             oColor = modPaint.LightColor(oColor, 0.3)
                                             If oSplayShotByColor.ContainsKey(oColor) Then
                                                 Dim oShots As List(Of cSurvey.cSegment) = oSplayShotByColor(oColor)
@@ -1205,18 +1231,18 @@ Friend Class cHolosViewer
                     Dim oLRUDPlot As HelixToolkit.Wpf.LinesVisual3D
                     Dim oLRUDPlotFishbone As MeshGeometry3D
                     Select Case PaintOptions.DrawStyle
-                        Case cOptions.DrawStyleEnum.OnlySegment
+                        Case cOptionsDesign.DrawStyleEnum.OnlySegment
                             oLRUDPlot = New HelixToolkit.Wpf.LinesVisual3D
                             oLRUDPlot.Color = oMediaColor
-                        Case cOptions.DrawStyleEnum.Solid
+                        Case cOptionsDesign.DrawStyleEnum.Solid
                             oLRUDPlotFishbone = New MeshGeometry3D
                             oLRUDPlot = New HelixToolkit.Wpf.LinesVisual3D
                             oLRUDPlot.Color = oMediaColor
-                        Case cOptions.DrawStyleEnum.Transparent
+                        Case cOptionsDesign.DrawStyleEnum.Transparent
                             oLRUDPlotFishbone = New MeshGeometry3D
                             oLRUDPlot = New HelixToolkit.Wpf.LinesVisual3D
                             oLRUDPlot.Color = oMediaColor
-                        Case cOptions.DrawStyleEnum.Light
+                        Case cOptionsDesign.DrawStyleEnum.Light
                             oLRUDPlot = New HelixToolkit.Wpf.LinesVisual3D
                             oLRUDPlot.Color = oMediaColor
                     End Select
@@ -1259,7 +1285,7 @@ Friend Class cHolosViewer
                                 Dim bToDrawUD As Boolean = oTo(SubPointIndexEnum.Center).DistanceTo(oTo(SubPointIndexEnum.Up)) > 0.001 OrElse oTo(SubPointIndexEnum.Center).DistanceTo(oTo(SubPointIndexEnum.Down)) > 0.001
 
                                 Select Case PaintOptions.DrawStyle
-                                    Case cOptions.DrawStyleEnum.OnlySegment
+                                    Case cOptionsDesign.DrawStyleEnum.OnlySegment
                                         If bFromDrawLR Then
                                             Call oLRUDPlot.Points.Add(oFrom(SubPointIndexEnum.Left))
                                             Call oLRUDPlot.Points.Add(oFrom(SubPointIndexEnum.Right))
@@ -1277,7 +1303,7 @@ Friend Class cHolosViewer
                                             Call oLRUDPlot.Points.Add(oTo(SubPointIndexEnum.Down))
                                         End If
 
-                                    Case cOptions.DrawStyleEnum.Solid, cOptions.DrawStyleEnum.Transparent
+                                    Case cOptionsDesign.DrawStyleEnum.Solid, cOptionsDesign.DrawStyleEnum.Transparent
                                         If bFromDrawLR OrElse bToDrawLR Then
                                             oLRUDPlotFishbone.Positions.Add(oFrom(SubPointIndexEnum.Left))
                                             oLRUDPlotFishbone.Positions.Add(oTo(SubPointIndexEnum.Left))
@@ -1296,7 +1322,7 @@ Friend Class cHolosViewer
                                             oLRUDPlotFishbone.Positions.Add(oFrom(SubPointIndexEnum.Down))
                                         End If
 
-                                    Case cOptions.DrawStyleEnum.Light
+                                    Case cOptionsDesign.DrawStyleEnum.Light
                                         If bFromDrawLR OrElse bToDrawLR Then
                                             Call oLRUDPlot.Points.Add(oFrom(SubPointIndexEnum.Left))
                                             Call oLRUDPlot.Points.Add(oTo(SubPointIndexEnum.Left))
@@ -1328,9 +1354,9 @@ Friend Class cHolosViewer
                         oLRUDPlotFishboneVisual.MeshGeometry = oLRUDPlotFishbone
                         Dim oMaterial As Material
                         Select Case PaintOptions.DrawStyle
-                            Case cOptions.DrawStyleEnum.Solid
+                            Case cOptionsDesign.DrawStyleEnum.Solid
                                 oMaterial = New DiffuseMaterial(New Media.SolidColorBrush(oMediaColor))
-                            Case cOptions.DrawStyleEnum.Transparent
+                            Case cOptionsDesign.DrawStyleEnum.Transparent
                                 oMaterial = New DiffuseMaterial(New Media.SolidColorBrush(Media.Color.FromArgb(oColor.A * 0.4, oColor.R, oColor.G, oColor.B)))
                         End Select
                         oLRUDPlotFishboneVisual.Material = oMaterial
@@ -1340,33 +1366,34 @@ Friend Class cHolosViewer
                 Next
 
                 Call oSurvey.RaiseOnProgressEvent("3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
+                If PaintOptions.DrawSplay Then
+                    If PaintOptions.SplayStyle = cOptionsDesign.SplayStyleEnum.PointsAndRays OrElse PaintOptions.SplayStyle = cOptionsDesign.SplayStyleEnum.Rays Then
+                        Dim iSplayIndex As Integer = 0
+                        Dim iSplayCount As Integer = oSplayShotByColor.Sum(Function(item) item.Value.Count)
+                        Call oSurvey.RaiseOnProgressEvent("3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("holos.progressbegin2"), 0, cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.Image3D Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow)
 
-                If PaintOptions.SplayStyle = cOptions.SplayStyleEnum.PointsAndRays OrElse PaintOptions.SplayStyle = cOptions.SplayStyleEnum.Rays Then
-                    Dim iSplayIndex As Integer = 0
-                    Dim iSplayCount As Integer = oSplayShotByColor.Sum(Function(item) item.Value.Count)
-                    Call oSurvey.RaiseOnProgressEvent("3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("holos.progressbegin2"), 0, cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.Image3D Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow)
+                        For Each oColor As Color In oSplayShotByColor.Keys
+                            Dim oMediaColor As Media.Color = Media.Color.FromArgb(oColor.A, oColor.R, oColor.G, oColor.B)
+                            Dim oPlot As HelixToolkit.Wpf.LinesVisual3D = New HelixToolkit.Wpf.LinesVisual3D
+                            oPlot.Color = oMediaColor
+                            oPlot.Thickness = 0.5
+                            For Each oShot As cSurvey.cSegment In oSplayShotByColor(oColor)
+                                iSplayIndex += 1
+                                If iSplayIndex Mod 20 = 0 Then Call oSurvey.RaiseOnProgressEvent("3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("holos.progress2"), iSplayIndex / iSplayCount)
 
-                    For Each oColor As Color In oSplayShotByColor.Keys
-                        Dim oMediaColor As Media.Color = Media.Color.FromArgb(oColor.A, oColor.R, oColor.G, oColor.B)
-                        Dim oPlot As HelixToolkit.Wpf.LinesVisual3D = New HelixToolkit.Wpf.LinesVisual3D
-                        oPlot.Color = oMediaColor
-                        oPlot.Thickness = 0.5
-                        For Each oShot As cSurvey.cSegment In oSplayShotByColor(oColor)
-                            iSplayIndex += 1
-                            If iSplayIndex Mod 20 = 0 Then Call oSurvey.RaiseOnProgressEvent("3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("holos.progress2"), iSplayIndex / iSplayCount)
-
-                            Dim sFrom As String = oShot.From
-                            Dim sTo As String = oShot.To
-                            If oPoints.ContainsKey(sFrom) AndAlso oPoints.ContainsKey(sTo) Then
-                                Dim oFrom As List(Of Point3D) = oPoints(sFrom)
-                                Dim oTo As List(Of Point3D) = oPoints(sTo)
-                                Call oPlot.Points.Add(oFrom(SubPointIndexEnum.Center))
-                                Call oPlot.Points.Add(oTo(SubPointIndexEnum.Center))
-                            End If
+                                Dim sFrom As String = oShot.From
+                                Dim sTo As String = oShot.To
+                                If oPoints.ContainsKey(sFrom) AndAlso oPoints.ContainsKey(sTo) Then
+                                    Dim oFrom As List(Of Point3D) = oPoints(sFrom)
+                                    Dim oTo As List(Of Point3D) = oPoints(sTo)
+                                    Call oPlot.Points.Add(oFrom(SubPointIndexEnum.Center))
+                                    Call oPlot.Points.Add(oTo(SubPointIndexEnum.Center))
+                                End If
+                            Next
+                            If oPlot.Points.Count > 0 Then Call oPlots.Add(oPlot)
                         Next
-                        If oPlot.Points.Count > 0 Then Call oPlots.Add(oPlot)
-                    Next
-                    Call oSurvey.RaiseOnProgressEvent("3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
+                        Call oSurvey.RaiseOnProgressEvent("3dmodel", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
+                    End If
                 End If
 
                 Dim oStationLabelList As List(Of HelixToolkit.Wpf.BillboardTextItem) = New List(Of HelixToolkit.Wpf.BillboardTextItem)
@@ -1380,13 +1407,13 @@ Friend Class cHolosViewer
                                 If oShot.IsValid AndAlso Not oShot.IsSelfDefined Then
                                     Dim bVisible As Boolean = True
                                     If oShot.Splay Then
-                                        bVisible = (PaintOptions.DrawSplay AndAlso (PaintOptions.SplayStyle = cOptions.SplayStyleEnum.Points OrElse PaintOptions.SplayStyle = cOptions.SplayStyleEnum.PointsAndRays))
+                                        bVisible = (PaintOptions.DrawSplay AndAlso (PaintOptions.SplayStyle = cOptionsDesign.SplayStyleEnum.Points OrElse PaintOptions.SplayStyle = cOptionsDesign.SplayStyleEnum.PointsAndRays))
                                     End If
                                     If oShot.Surface Then
-                                        bVisible = (PaintOptions.DrawSegmentsOptions And cOptions.DrawSegmentsOptionsEnum.Surface) = cOptions.DrawSegmentsOptionsEnum.Surface
+                                        bVisible = (PaintOptions.DrawSegmentsOptions And cOptionsDesign.DrawSegmentsOptionsEnum.Surface) = cOptionsDesign.DrawSegmentsOptionsEnum.Surface
                                     End If
                                     If oShot.Duplicate Then
-                                        bVisible = (PaintOptions.DrawSegmentsOptions And cOptions.DrawSegmentsOptionsEnum.Duplicate) = cOptions.DrawSegmentsOptionsEnum.Duplicate
+                                        bVisible = (PaintOptions.DrawSegmentsOptions And cOptionsDesign.DrawSegmentsOptionsEnum.Duplicate) = cOptionsDesign.DrawSegmentsOptionsEnum.Duplicate
                                     End If
                                     If bVisible Then
                                         If Not oStations.Contains(oShot.From) Then oStations.Add(oShot.From)
@@ -2012,7 +2039,9 @@ Friend Class cHolosViewer
 
     Private Sub pResetSceneCallback(State As Object)
         Try
-            Call Application.Current.Dispatcher.BeginInvoke(New pResetSceneDelegate(AddressOf ResetScene), Threading.DispatcherPriority.Normal, Nothing)
+            If Not Application.Current Is Nothing Then
+                Call Application.Current.Dispatcher.BeginInvoke(New pResetSceneDelegate(AddressOf ResetScene), Threading.DispatcherPriority.Normal, Nothing)
+            End If
         Catch
         End Try
     End Sub

@@ -121,44 +121,17 @@
     <value>Annulla</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="chkSkipInvalidStation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 17</value>
-  </data>
-  <data name="chkSkipInvalidStation.Text" xml:space="preserve">
-    <value>Salta capisaldi incompleti</value>
-  </data>
-  <data name="lblNordCorrection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 13</value>
-  </data>
   <data name="lblNordCorrection.Text" xml:space="preserve">
     <value>Correnzione nord:</value>
-  </data>
-  <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
   </data>
   <data name="Label1.Text" xml:space="preserve">
     <value>Tipo:</value>
   </data>
-  <data name="Label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 13</value>
-  </data>
   <data name="Label7.Text" xml:space="preserve">
     <value>Valore massimo UD:</value>
   </data>
-  <data name="Label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 13</value>
-  </data>
   <data name="Label5.Text" xml:space="preserve">
     <value>Valore massimo LR:</value>
-  </data>
-  <data name="chkLRUDCalculate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 17</value>
-  </data>
-  <data name="chkLRUDCalculate.Text" xml:space="preserve">
-    <value>Rileva dati LRUD</value>
-  </data>
-  <data name="Label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 13</value>
   </data>
   <data name="Label3.Text" xml:space="preserve">
     <value>Spessore linee di bordo:</value>
@@ -231,9 +204,6 @@
         AAD4DwAAjAEAAAgAAAAAAAAAAAcAAMEHAADDAAAA4YAAAPBBAAA=
 </value>
   </data>
-  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Parametri</value>
   </data>
@@ -243,9 +213,6 @@
   <data name="cboCalculateMode.Items1" xml:space="preserve">
 		<value>Piano (solo pianta)</value>
 	</data>
-  <data name="chkUseDropForInclination.Text" xml:space="preserve">
-    <value>Calcola inclinazione dal dislivello</value>
-  </data>
   <data name="lblPlanScaleType.Text" xml:space="preserve">
     <value>Tipo scala pianta/sezione:</value>
   </data>
@@ -317,5 +284,14 @@
   </data>
   <data name="lblLRUDStation.Text" xml:space="preserve">
     <value>LRUD riferiti a:</value>
+  </data>
+  <data name="AccordionControlElement17.Text" xml:space="preserve">
+    <value>LRUD</value>
+  </data>
+  <data name="AccordionControlElement4.Text" xml:space="preserve">
+    <value>Calcolo</value>
+  </data>
+  <data name="btnMain.Text" xml:space="preserve">
+    <value>Generale</value>
   </data>
 </root>

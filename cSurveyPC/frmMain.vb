@@ -48,7 +48,7 @@ Friend Class frmMain
 
     Private WithEvents frmF As frmFind
     Private WithEvents frmV As frmPreview
-    Private WithEvents frmS As frmScriptEditor
+    'Private WithEvents frmS As cDockScript
     Private WithEvents frmThP As frmTherionPad
     Private WithEvents frmProg As frmProgress
 
@@ -596,7 +596,7 @@ Friend Class frmMain
             Call pConsoleClear()
             Call pPopupHide()
             Call pPreviewHide()
-            Call pScriptEditorHide()
+            'Call pScriptEditorHide()
 
             bDisabledAutosaveEvent = True
             bDisabledObjectPropertyEvent = True
@@ -988,7 +988,7 @@ Friend Class frmMain
                     Call pConsoleClear()
                     Call pPopupHide()
                     Call pPreviewHide()
-                    Call pScriptEditorHide()
+                    'Call pScriptEditorHide()
 
                     bDisabledAutosaveEvent = True
                     bDisabledObjectPropertyEvent = True
@@ -2788,12 +2788,12 @@ Friend Class frmMain
                         Call frmE.ShowDialog(Me)
                     End Using
                 End If
-            Case Keys.F
-                If e.Control And e.Alt Then
-                    Using frmCR As frmCaveRegister = New frmCaveRegister(oSurvey, oSurvey.CaveRegister)
-                        frmCR.ShowDialog(Me)
-                    End Using
-                End If
+            'Case Keys.F
+            '    If e.Control And e.Alt Then
+            '        Using frmCR As frmCaveRegister = New frmCaveRegister(oSurvey, oSurvey.CaveRegister)
+            '            frmCR.ShowDialog(Me)
+            '        End Using
+            '    End If
             Case Keys.D
                 If e.Control And e.Alt Then
                     If frmD Is Nothing Then
@@ -3400,7 +3400,7 @@ Friend Class frmMain
                 Call oReg.Close()
             End Using
         Else
-            Dim iLineType As cIItemLine.LineTypeEnum = oSurvey.Properties.DesignProperties.GetValue("LineType", oSurvey.GetGlobalSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
+            Dim iLineType As cIItemLine.LineTypeEnum = oSurvey.Properties.DesignProperties.GetValue("LineType", cEditDesignEnvironment.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
             If iLineType = cIItemLine.LineTypeEnum.Beziers Then
                 If oSurvey.Properties.DesignProperties.GetValue("design.warning.beziers", 0) = 0 Then
                     If MsgBox(modMain.GetLocalizedString("main.warning28"), MsgBoxStyle.YesNo Or MsgBoxStyle.Critical, modMain.GetLocalizedString("main.warningtitle")) = vbYes Then
@@ -6087,7 +6087,6 @@ Friend Class frmMain
                     End If
                 End If
             End If
-
             If oPen.Type = cPen.PenTypeEnum.Custom Then
                 cboPropPenPattern.SelectedIndex = cboPropPenPattern.Items.Count - 1
                 pnlPropPenCustom.Enabled = True
@@ -7363,7 +7362,7 @@ Friend Class frmMain
     End Sub
 
     Private Sub pSurveyPenTypeRefresh()
-        Dim iLineType As cIItemLine.LineTypeEnum = oSurvey.Properties.DesignProperties.GetValue("LineType", oSurvey.GetGlobalSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
+        Dim iLineType As cIItemLine.LineTypeEnum = oSurvey.Properties.DesignProperties.GetValue("LineType", cEditDesignEnvironment.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
         Select Case iLineType
             Case cIItemLine.LineTypeEnum.Beziers
                 btnPenLine.Checked = False
@@ -7820,7 +7819,7 @@ Friend Class frmMain
                 Using oSFD As SaveFileDialog = New SaveFileDialog
                     With oSFD
                         .Title = GetLocalizedString("main.exportdatadialog")
-                        .Filter = GetLocalizedString("main.filetypeTRO") & " (*.TRO)|*.TRO|" & GetLocalizedString("main.filetypeTH") & " (*.TH)|*.TH|" & GetLocalizedString("main.filetypeXLSX") & " (*.XLSX)|*.XLSX|" & GetLocalizedString("main.filetypeHOLOS") & " (*.XML)|*.XML"
+                        .Filter = GetLocalizedString("main.filetypeTRO") & " (*.TRO)|*.TRO|" & GetLocalizedString("main.filetypeTH") & " (*.TH)|*.TH|" & GetLocalizedString("main.filetypeXLSX") & " (*.XLSX)|*.XLSX"
                         .FilterIndex = modMain.FilterRestoreLast("export.data", 1)
                         .OverwritePrompt = True
                         .CheckPathExists = True
@@ -7833,8 +7832,8 @@ Friend Class frmMain
                                 Case 2
                                     Using frmET As frmExportTherion = New frmExportTherion
                                         If frmET.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                                            Dim bThSegmentForceDirection As Boolean = oSurvey.GetGlobalSetting("therion.segmentforcedirection", 1)
-                                            Dim bThSegmentForcePath As Boolean = oSurvey.GetGlobalSetting("therion.segmentforcepath", 1)
+                                            Dim bThSegmentForceDirection As Boolean = cEditDesignEnvironment.GetSetting("therion.segmentforcedirection", 1)
+                                            Dim bThSegmentForcePath As Boolean = cEditDesignEnvironment.GetSetting("therion.segmentforcepath", 1)
                                             Dim iThOptions As modExport.TherionExportOptionsEnum = IIf(bThSegmentForceDirection, modExport.TherionExportOptionsEnum.SegmentForceDirection, 0) Or IIf(bThSegmentForcePath, modExport.TherionExportOptionsEnum.SegmentForcePath, 0)
                                             'If oSurvey.Properties.ThreeDLochUseCaveBorder Then iThOptions = iThOptions Or TherionExportOptionsEnum.Scrap
                                             If frmET.chkExportDesign.Checked Then iThOptions = iThOptions Or TherionExportOptionsEnum.Scrap
@@ -7861,16 +7860,16 @@ Friend Class frmMain
                                             Call modExport.ExcelExportTo(oSurvey, .FileName, iOption)
                                         End If
                                     End Using
-                                Case 4
-                                    Using frmEH As frmExportHolos = New frmExportHolos
-                                        If frmEH.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                                            Dim iOption As HolosExportOptionsEnum
-                                            If frmEH.chkExportSurface.Checked Then iOption = iOption Or HolosExportOptionsEnum.SurfaceData
-                                            If frmEH.chkExportLRUD.Checked Then iOption = iOption Or HolosExportOptionsEnum.LRUDdata
-                                            If frmEH.chkExportColors.Checked Then iOption = iOption Or HolosExportOptionsEnum.LRUDdata
-                                            Call modExport.HolosExportTo(oSurvey, .FileName, frmEH.cboExportProfile.SelectedIndex, iOption)
-                                        End If
-                                    End Using
+                                    'Case 4
+                                    '    Using frmEH As frmExportHolos = New frmExportHolos
+                                    '        If frmEH.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                                    '            Dim iOption As HolosExportOptionsEnum
+                                    '            If frmEH.chkExportSurface.Checked Then iOption = iOption Or HolosExportOptionsEnum.SurfaceData
+                                    '            If frmEH.chkExportLRUD.Checked Then iOption = iOption Or HolosExportOptionsEnum.LRUDdata
+                                    '            If frmEH.chkExportColors.Checked Then iOption = iOption Or HolosExportOptionsEnum.LRUDdata
+                                    '            Call modExport.HolosExportTo(oSurvey, .FileName, frmEH.cboExportProfile.SelectedIndex, iOption)
+                                    '        End If
+                                    '    End Using
                             End Select
                         End If
                     End With
@@ -8040,7 +8039,7 @@ Friend Class frmMain
                 pnl3D.Visible = True
             Catch
                 oHolos.Reset()
-                oHolos.[Error](True)
+                oHolos.Invalidate(cHolosViewer.InvalidateType.Error)
                 pnl3D.Visible = True
             End Try
             picMap.Visible = False
@@ -9293,7 +9292,7 @@ Friend Class frmMain
                 Dim oSegment As cSegment = pGetCurrentTools.CurrentSegment
                 Using frmSB As frmSegmentBrowser = New frmSegmentBrowser(oSurvey, oSegment)
                     If frmSB.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                        oSegment = frmSB.cboSegments.SelectedItem
+                        oSegment = frmSB.SelectedItem
                         oItem = oLayer.GetType.GetMethod(Bag.Method).Invoke(oLayer, Bag.GetInvokeParameters("cave", sCave, "branch", sBranch, "segment", oSegment))
                         Call oItem.SetBindDesignType(cboMainBindDesignType.SelectedIndex, oSurvey.CrossSections.GetBindItem(cboMainBindCrossSections.SelectedItem), False)
                         Call pGetCurrentDesignTools.EditItem(oItem, True)
@@ -9339,7 +9338,7 @@ Friend Class frmMain
                 Call pGetCurrentDesignTools.SelectLayer(oLayer)
                 oItem = oLayer.GetType.GetMethod(Bag.Method).Invoke(oLayer, Bag.GetInvokeParameters("cave", sCave, "branch", sBranch))
                 If oItem.HaveLineType Then
-                    DirectCast(oItem, cIItemLine).LineType = oSurvey.Properties.DesignProperties.GetValue("LineType", oSurvey.GetGlobalSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
+                    DirectCast(oItem, cIItemLine).LineType = oSurvey.Properties.DesignProperties.GetValue("LineType", cEditDesignEnvironment.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
                 End If
                 Call oItem.SetBindDesignType(cboMainBindDesignType.SelectedIndex, oSurvey.CrossSections.GetBindItem(cboMainBindCrossSections.SelectedItem), False)
                 Call pGetCurrentDesignTools.EditItem(oItem, True)
@@ -10710,7 +10709,7 @@ Friend Class frmMain
                             Dim oLineItem As Items.cIItemLine = oItem
                             Call oLineItem.ReducePoints(sPointPrecision)
                         End If
-                        Dim iDefaultLineType As cIItemLine.LineTypeEnum = oSurvey.Properties.DesignProperties.GetValue("LineType", oSurvey.GetGlobalSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
+                        Dim iDefaultLineType As cIItemLine.LineTypeEnum = oSurvey.Properties.DesignProperties.GetValue("LineType", cEditDesignEnvironment.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
                         If iDefaultLineType = cIItemLine.LineTypeEnum.Beziers Then
                             'converto le sequenze in bezier
                             Call pSequencesTo(cIItemLine.LineTypeEnum.Beziers, True, False)
@@ -14655,10 +14654,10 @@ Friend Class frmMain
         Call pSurveyViewer()
     End Sub
 
-    Private Sub frmS_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles frmS.FormClosed
-        Call frmS.Dispose()
-        frmS = Nothing
-    End Sub
+    'Private Sub frmS_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles frmS.FormClosed
+    '    Call frmS.Dispose()
+    '    frmS = Nothing
+    'End Sub
 
     Private Sub frmV_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles frmV.FormClosed
         Call frmV.Dispose()
@@ -14784,13 +14783,13 @@ Friend Class frmMain
             Using frmSB As frmSegmentBrowser = New frmSegmentBrowser(oSurvey, oItem.Segment)
                 If frmSB.ShowDialog(Me) = vbOK Then
                     Dim bOk As Boolean
-                    If IsNothing(frmSB.cboSegments.SelectedItem) AndAlso oItem.DesignCrossSection.HaveMarkers Then
+                    If IsNothing(frmSB.SelectedItem) AndAlso oItem.DesignCrossSection.HaveMarkers Then
                         bOk = MsgBox(modMain.GetLocalizedString("main.warning29"), MsgBoxStyle.YesNo Or MsgBoxStyle.Critical Or MsgBoxStyle.DefaultButton2, GetLocalizedString("main.warningtitle")) = MsgBoxResult.Yes
                     Else
                         bOk = True
                     End If
                     If bOk Then
-                        oItem.Segment = frmSB.cboSegments.SelectedItem
+                        oItem.Segment = frmSB.SelectedItem
                         Call .TakeUndoSnapshot()
                         Call pObjectPropertyLoad()
                         Call pMapInvalidate()
@@ -15031,12 +15030,12 @@ Friend Class frmMain
     End Sub
 
     Private Function pSurveyExportToTherion(ByVal Commands As String, Optional ByRef Output As String = "") As Boolean
-        Dim sThProcess As String = oSurvey.GetGlobalSetting("therion.path", "")
+        Dim sThProcess As String = cEditDesignEnvironment.GetSetting("therion.path", "")
         If sThProcess = "" Then
         Else
-            Dim bThBackgroundProcess As Boolean = oSurvey.GetGlobalSetting("therion.backgroundprocess", 0)
-            Dim bThTrigpointSafeName As Boolean = oSurvey.GetGlobalSetting("therion.trigpointsafename", 1)
-            Dim bThDeleteTempFile As Boolean = oSurvey.GetGlobalSetting("therion.deletetempfiles", 0)
+            Dim bThBackgroundProcess As Boolean = cEditDesignEnvironment.GetSetting("therion.backgroundprocess", 0)
+            Dim bThTrigpointSafeName As Boolean = cEditDesignEnvironment.GetSetting("therion.trigpointsafename", 1)
+            Dim bThDeleteTempFile As Boolean = cEditDesignEnvironment.GetSetting("therion.deletetempfiles", 0)
             If sThProcess <> "" Then
                 Dim sTempThInputFilename As String = IO.Path.Combine(My.Computer.FileSystem.SpecialDirectories.Temp, "_therioninput.th")
                 Dim sTempConfigFilename As String = IO.Path.Combine(My.Computer.FileSystem.SpecialDirectories.Temp, "_therionconfig.")
@@ -15066,8 +15065,8 @@ Friend Class frmMain
                         Next
                     End If
 
-                    Dim bThSegmentForceDirection As Boolean = oSurvey.GetGlobalSetting("therion.segmentforcedirection", 1)
-                    Dim bThSegmentForcePath As Boolean = oSurvey.GetGlobalSetting("therion.segmentforcepath", 1)
+                    Dim bThSegmentForceDirection As Boolean = cEditDesignEnvironment.GetSetting("therion.segmentforcedirection", 1)
+                    Dim bThSegmentForcePath As Boolean = cEditDesignEnvironment.GetSetting("therion.segmentforcepath", 1)
                     Dim iThOptions As modExport.TherionExportOptionsEnum = IIf(bThSegmentForceDirection, modExport.TherionExportOptionsEnum.SegmentForceDirection, 0) Or IIf(bThSegmentForcePath, modExport.TherionExportOptionsEnum.SegmentForcePath, 0)
                     iThOptions = iThOptions Or TherionExportOptionsEnum.Scrap
                     Call modExport.TherionThExportTo(oSurvey, sTempThInputFilename, oInputdictionary, iThOptions)
@@ -15103,16 +15102,16 @@ Friend Class frmMain
 
     Private Function pSurveyLoch() As Boolean
         Dim iExitCode As Integer
-        Dim sThProcess As String = oSurvey.GetGlobalSetting("therion.path", "")
+        Dim sThProcess As String = cEditDesignEnvironment.GetSetting("therion.path", "")
         If sThProcess = "" Then
             Return False
         Else
             Call pStatusSet(GetLocalizedString("main.textpart4"))
             Call oMousePointer.Push(Cursors.WaitCursor)
-            Dim bThBackgroundProcess As Boolean = oSurvey.GetGlobalSetting("therion.backgroundprocess", 0)
-            Dim bThTrigpointSafeName As Boolean = oSurvey.GetGlobalSetting("therion.trigpointsafename", 1)
-            Dim bThUseCadastralIDinCaveNames As Boolean = oSurvey.GetGlobalSetting("therion.usecadastralidincavenames", 0)
-            Dim bThDeleteTempFile As Boolean = oSurvey.GetGlobalSetting("therion.deletetempfiles", 0)
+            Dim bThBackgroundProcess As Boolean = cEditDesignEnvironment.GetSetting("therion.backgroundprocess", 0)
+            Dim bThTrigpointSafeName As Boolean = cEditDesignEnvironment.GetSetting("therion.trigpointsafename", 1)
+            Dim bThUseCadastralIDinCaveNames As Boolean = cEditDesignEnvironment.GetSetting("therion.usecadastralidincavenames", 0)
+            Dim bThDeleteTempFile As Boolean = cEditDesignEnvironment.GetSetting("therion.deletetempfiles", 0)
 
             Dim oFiles As List(Of String) = New List(Of String)
 
@@ -16687,8 +16686,8 @@ Friend Class frmMain
         'VISUALTOPO
         Dim dNow As Date = Date.Now
 
-        Dim bImportIncompatibleSet As Boolean = oSurvey.GetGlobalSetting("vtopo.importincompatibleset", 0)
-        Dim bImportSetAsBranch As Boolean = oSurvey.GetGlobalSetting("vtopo.importsetasbranch", 1)
+        Dim bImportIncompatibleSet As Boolean = cEditDesignEnvironment.GetSetting("vtopo.importincompatibleset", 0)
+        Dim bImportSetAsBranch As Boolean = cEditDesignEnvironment.GetSetting("vtopo.importsetasbranch", 1)
 
         Using frmIVT As frmImportVisualTopo = New frmImportVisualTopo
             frmIVT.txtFilename.Text = Filename
@@ -19200,7 +19199,7 @@ Friend Class frmMain
                     Dim oItem As cIItemQuota = .CurrentItem
                     Using frmTB As frmTrigpointBrowser = New frmTrigpointBrowser(oSurvey, txtPropQuotaRelativeTrigpoint.Text, True)
                         If frmTB.ShowDialog(Me) = vbOK Then
-                            oItem.QuotaRelativeTrigPoint = frmTB.cboTrigpoints.Text
+                            oItem.QuotaRelativeTrigPoint = frmTB.SelectedItem
                             Call .TakeUndoSnapshot()
                             Call pObjectPropertyLoad()
                             Call pMapInvalidate()
@@ -22310,24 +22309,24 @@ Friend Class frmMain
     End Sub
 
     Private Sub mnuViewScript_Click(sender As Object, e As EventArgs) Handles mnuViewScript.Click
-        Call pSurveyScriptEditor()
+        ''Call pSurveyScriptEditor()
     End Sub
 
-    Private Sub pSurveyScriptEditor()
-        If frmS Is Nothing Then
-            frmS = New frmScriptEditor(oSurvey, "", iFunctionLanguage)
-            Call frmS.Show(Me)
-        End If
-        Call frmS.BringToFront()
-        Call frmS.Focus()
-    End Sub
+    'Private Sub pSurveyScriptEditor()
+    '    If frmS Is Nothing Then
+    '        frmS = New cDockScript(oSurvey, "", iFunctionLanguage)
+    '        Call frmS.Show(Me)
+    '    End If
+    '    Call frmS.BringToFront()
+    '    Call frmS.Focus()
+    'End Sub
 
-    Private Sub pScriptEditorHide()
-        If Not frmS Is Nothing Then
-            Call frmS.Close()
-            frmS = Nothing
-        End If
-    End Sub
+    'Private Sub pScriptEditorHide()
+    '    If Not frmS Is Nothing Then
+    '        Call frmS.Close()
+    '        frmS = Nothing
+    '    End If
+    'End Sub
 
     Private Sub tv3DSurfaceLayers_AfterCheck(sender As Object, e As TreeViewEventArgs) Handles tv3DSurfaceLayers.AfterCheck
         If Not bDisabledSurfaceLayersEvent Then
@@ -23425,7 +23424,7 @@ Friend Class frmMain
             Dim oLayer As cLayer = oCurrentDesign.Layers(oBag.Layer)
             oItem = oLayer.GetType.GetMethod(oBag.Method).Invoke(oLayer, oBag.GetInvokeParameters("cave", oItem.Cave, "branch", oItem.Branch))
             If oItem.HaveLineType Then
-                DirectCast(oItem, cIItemLine).LineType = oAreaFromSequence.cboLineType.SelectedIndex  'oSurvey.Properties.DesignProperties.GetValue("LineType", oSurvey.GetGlobalSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
+                DirectCast(oItem, cIItemLine).LineType = oAreaFromSequence.cboLineType.SelectedIndex  'oSurvey.Properties.DesignProperties.GetValue("LineType", cEditDesignEnvironment.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
             End If
             Call oItem.Points.BeginUpdate()
             Call oItem.Points.AddRange(oNewSequence)

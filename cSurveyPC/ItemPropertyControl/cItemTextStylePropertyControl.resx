@@ -1,0 +1,993 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="DevExpress.Data.v21.2" name="DevExpress.Data.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="optPropTextVAlignBottom.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIwLjIsIFZlcnNpb249MjAuMi43
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAADYCAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iQWxpZ25Cb3R0b21DZW50ZXIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3Vu
+        ZDpuZXcgMCAwIDMyIDMyIj4NCiAgPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5CbGFja3tmaWxsOiM3
+        MjcyNzI7fQoJLkJsdWV7ZmlsbDojMTE3N0Q3O30KPC9zdHlsZT4NCiAgPHBhdGggZD0iTTI5LDBIMUMw
+        LjUsMCwwLDAuNSwwLDF2MjhjMCwwLjUsMC41LDEsMSwxaDI4YzAuNSwwLDEtMC41LDEtMVYxQzMwLDAu
+        NSwyOS41LDAsMjksMHogTTI4LDI4SDJWMmgyNlYyOHoiIGNsYXNzPSJCbGFjayIgLz4NCiAgPHBhdGgg
+        ZD0iTTIwLDE2SDEwdjJoMTBWMTZ6IE0yNCwyMEg2djJoMThWMjB6IE0yMCwyNEgxMHYyaDEwVjI0eiIg
+        Y2xhc3M9IkJsdWUiIC8+DQo8L3N2Zz4L
+</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="optPropTextVAlignBottom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="optPropTextVAlignBottom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>279, 142</value>
+  </data>
+  <data name="optPropTextVAlignBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="optPropTextVAlignBottom.TabIndex" type="System.Int32, mscorlib">
+    <value>129</value>
+  </data>
+  <data name="optPropTextVAlignBottom.ToolTip" xml:space="preserve">
+    <value>Alignment to the bottom</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignBottom.Name" xml:space="preserve">
+    <value>optPropTextVAlignBottom</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignBottom.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignBottom.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignBottom.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="optPropTextVAlignTop.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIwLjIsIFZlcnNpb249MjAuMi43
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAC8CAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iQWxpZ25Ub3BDZW50ZXIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpu
+        ZXcgMCAwIDMyIDMyIj4NCiAgPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5CbGFja3tmaWxsOiM3Mjcy
+        NzI7fQoJLkJsdWV7ZmlsbDojMTE3N0Q3O30KPC9zdHlsZT4NCiAgPHBhdGggZD0iTTI5LDBIMUMwLjUs
+        MCwwLDAuNSwwLDF2MjhjMCwwLjUsMC41LDEsMSwxaDI4YzAuNSwwLDEtMC41LDEtMVYxQzMwLDAuNSwy
+        OS41LDAsMjksMHogTTI4LDI4SDJWMmgyNlYyOHoiIGNsYXNzPSJCbGFjayIgLz4NCiAgPHBhdGggZD0i
+        TTIwLDRIMTB2MmgxMFY0eiBNMjQsOEg2djJoMThWOHogTTIwLDEySDEwdjJoMTBWMTJ6IiBjbGFzcz0i
+        Qmx1ZSIgLz4NCjwvc3ZnPgs=
+</value>
+  </data>
+  <data name="optPropTextVAlignTop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="optPropTextVAlignTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>227, 142</value>
+  </data>
+  <data name="optPropTextVAlignTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="optPropTextVAlignTop.TabIndex" type="System.Int32, mscorlib">
+    <value>127</value>
+  </data>
+  <data name="optPropTextVAlignTop.ToolTip" xml:space="preserve">
+    <value>Alignment to the top</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignTop.Name" xml:space="preserve">
+    <value>optPropTextVAlignTop</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignTop.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignTop.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignTop.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="optPropTextVAlignCenter.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIwLjIsIFZlcnNpb249MjAuMi43
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAADYCAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iQWxpZ25NaWRkbGVDZW50ZXIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3Vu
+        ZDpuZXcgMCAwIDMyIDMyIj4NCiAgPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5CbGFja3tmaWxsOiM3
+        MjcyNzI7fQoJLkJsdWV7ZmlsbDojMTE3N0Q3O30KPC9zdHlsZT4NCiAgPHBhdGggZD0iTTI5LDBIMUMw
+        LjUsMCwwLDAuNSwwLDF2MjhjMCwwLjUsMC41LDEsMSwxaDI4YzAuNSwwLDEtMC41LDEtMVYxQzMwLDAu
+        NSwyOS41LDAsMjksMHogTTI4LDI4SDJWMmgyNlYyOHoiIGNsYXNzPSJCbGFjayIgLz4NCiAgPHBhdGgg
+        ZD0iTTIwLDEwSDEwdjJoMTBWMTB6IE0yNCwxNEg2djJoMThWMTR6IE0yMCwxOEgxMHYyaDEwVjE4eiIg
+        Y2xhc3M9IkJsdWUiIC8+DQo8L3N2Zz4L
+</value>
+  </data>
+  <data name="optPropTextVAlignCenter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="optPropTextVAlignCenter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 142</value>
+  </data>
+  <data name="optPropTextVAlignCenter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="optPropTextVAlignCenter.TabIndex" type="System.Int32, mscorlib">
+    <value>128</value>
+  </data>
+  <data name="optPropTextVAlignCenter.ToolTip" xml:space="preserve">
+    <value>Alignment centered</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignCenter.Name" xml:space="preserve">
+    <value>optPropTextVAlignCenter</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignCenter.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignCenter.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;optPropTextVAlignCenter.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="optPropTextAlignRight.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIwLjIsIFZlcnNpb249MjAuMi43
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAM8BAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iQWxpZ25fUmlnaHQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcg
+        MCAwIDMyIDMyIj4NCiAgPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5CbGFja3tmaWxsOiM3MjcyNzI7
+        fQo8L3N0eWxlPg0KICA8cGF0aCBkPSJNMjgsOEg0VjZoMjRWOHogTTI4LDEwSDEydjJoMTZWMTB6IE0y
+        OCwxNEg0djJoMjRWMTR6IE0yOCwyMkg0djJoMjRWMjJ6IE0yOCwxOEgxMnYyaDE2ICBWMTh6IiBpZD0i
+        QWxpZ25fUmlnaHRfMl8iIGNsYXNzPSJCbGFjayIgLz4NCjwvc3ZnPgs=
+</value>
+  </data>
+  <data name="optPropTextAlignRight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="optPropTextAlignRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>279, 113</value>
+  </data>
+  <data name="optPropTextAlignRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="optPropTextAlignRight.TabIndex" type="System.Int32, mscorlib">
+    <value>186</value>
+  </data>
+  <data name="optPropTextAlignRight.ToolTip" xml:space="preserve">
+    <value>Alignment to the right</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignRight.Name" xml:space="preserve">
+    <value>optPropTextAlignRight</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignRight.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignRight.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignRight.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="optPropTextAlignCenter.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIwLjIsIFZlcnNpb249MjAuMi43
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAM8BAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iQWxpZ25fQ2VudGVyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3
+        IDAgMCAzMiAzMiI+DQogIDxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+CgkuQmxhY2t7ZmlsbDojNzI3Mjcy
+        O30KPC9zdHlsZT4NCiAgPHBhdGggZD0iTTI4LDhINFY2aDI0Vjh6IE0yNCwxMEg4djJoMTZWMTB6IE0y
+        OCwxNEg0djJoMjRWMTR6IE0yOCwyMkg0djJoMjRWMjJ6IE0yNCwxOEg4djJoMTYgIFYxOHoiIGlkPSJB
+        bGlnbl9DZW50ZXJfMV8iIGNsYXNzPSJCbGFjayIgLz4NCjwvc3ZnPgs=
+</value>
+  </data>
+  <data name="optPropTextAlignCenter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="optPropTextAlignCenter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 113</value>
+  </data>
+  <data name="optPropTextAlignCenter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="optPropTextAlignCenter.TabIndex" type="System.Int32, mscorlib">
+    <value>185</value>
+  </data>
+  <data name="optPropTextAlignCenter.ToolTip" xml:space="preserve">
+    <value>Alignment centered</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignCenter.Name" xml:space="preserve">
+    <value>optPropTextAlignCenter</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignCenter.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignCenter.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignCenter.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="optPropTextAlignLeft.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIwLjIsIFZlcnNpb249MjAuMi43
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAMsBAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iQWxpZ25fTGVmdCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAw
+        IDAgMzIgMzIiPg0KICA8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLkJsYWNre2ZpbGw6IzcyNzI3Mjt9
+        Cjwvc3R5bGU+DQogIDxwYXRoIGQ9Ik0yOCw4SDRWNmgyNFY4eiBNMjAsMTBINHYyaDE2VjEweiBNMjgs
+        MTRINHYyaDI0VjE0eiBNMjgsMjJINHYyaDI0VjIyeiBNMjAsMThINHYyaDE2VjE4ICB6IiBpZD0iQWxp
+        Z25fTGVmdF8yXyIgY2xhc3M9IkJsYWNrIiAvPg0KPC9zdmc+Cw==
+</value>
+  </data>
+  <data name="optPropTextAlignLeft.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="optPropTextAlignLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>227, 113</value>
+  </data>
+  <data name="optPropTextAlignLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="optPropTextAlignLeft.TabIndex" type="System.Int32, mscorlib">
+    <value>184</value>
+  </data>
+  <data name="optPropTextAlignLeft.ToolTip" xml:space="preserve">
+    <value>Alignment to the left</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignLeft.Name" xml:space="preserve">
+    <value>optPropTextAlignLeft</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignLeft.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignLeft.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;optPropTextAlignLeft.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="cboPropTextSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 144</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="cboPropTextSize.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboPropTextSize.Properties.Items" xml:space="preserve">
+    <value>1.00 - Default</value>
+  </data>
+  <data name="cboPropTextSize.Properties.Items1" xml:space="preserve">
+    <value>0.25 - Very small</value>
+  </data>
+  <data name="cboPropTextSize.Properties.Items2" xml:space="preserve">
+    <value>0.50 - Small</value>
+  </data>
+  <data name="cboPropTextSize.Properties.Items3" xml:space="preserve">
+    <value>1.00 - Medium</value>
+  </data>
+  <data name="cboPropTextSize.Properties.Items4" xml:space="preserve">
+    <value>2.00 - Big</value>
+  </data>
+  <data name="cboPropTextSize.Properties.Items5" xml:space="preserve">
+    <value>4.00 - Very big</value>
+  </data>
+  <data name="cboPropTextSize.Properties.Items6" xml:space="preserve">
+    <value>6.00</value>
+  </data>
+  <data name="cboPropTextSize.Properties.Items7" xml:space="preserve">
+    <value>8.00</value>
+  </data>
+  <data name="cboPropTextSize.Properties.Items8" xml:space="preserve">
+    <value>10.00</value>
+  </data>
+  <data name="cboPropTextSize.Properties.Items9" xml:space="preserve">
+    <value>12.00</value>
+  </data>
+  <data name="cboPropTextSize.Properties.Items10" xml:space="preserve">
+    <value>16.00</value>
+  </data>
+  <data name="cboPropTextSize.Properties.Items11" xml:space="preserve">
+    <value>20.00</value>
+  </data>
+  <data name="cboPropTextSize.Properties.Items12" xml:space="preserve">
+    <value>24.00</value>
+  </data>
+  <data name="cboPropTextSize.Properties.Items13" xml:space="preserve">
+    <value>32.00</value>
+  </data>
+  <data name="cboPropTextSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 20</value>
+  </data>
+  <data name="cboPropTextSize.TabIndex" type="System.Int32, mscorlib">
+    <value>183</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextSize.Name" xml:space="preserve">
+    <value>cboPropTextSize</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextSize.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextSize.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextSize.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="lblPropTextSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropTextSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 147</value>
+  </data>
+  <data name="lblPropTextSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 13</value>
+  </data>
+  <data name="lblPropTextSize.TabIndex" type="System.Int32, mscorlib">
+    <value>182</value>
+  </data>
+  <data name="lblPropTextSize.Text" xml:space="preserve">
+    <value>Scale:</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextSize.Name" xml:space="preserve">
+    <value>lblPropTextSize</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextSize.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextSize.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextSize.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="lblPropText.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 9</value>
+  </data>
+  <data name="lblPropText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 13</value>
+  </data>
+  <data name="lblPropText.TabIndex" type="System.Int32, mscorlib">
+    <value>181</value>
+  </data>
+  <data name="lblPropText.Text" xml:space="preserve">
+    <value>Text:</value>
+  </data>
+  <data name="&gt;&gt;lblPropText.Name" xml:space="preserve">
+    <value>lblPropText</value>
+  </data>
+  <data name="&gt;&gt;lblPropText.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropText.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropText.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="txtPropText.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="txtPropText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 6</value>
+  </data>
+  <data name="txtPropText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>358, 105</value>
+  </data>
+  <data name="txtPropText.TabIndex" type="System.Int32, mscorlib">
+    <value>180</value>
+  </data>
+  <data name="&gt;&gt;txtPropText.Name" xml:space="preserve">
+    <value>txtPropText</value>
+  </data>
+  <data name="&gt;&gt;txtPropText.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.MemoEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtPropText.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropText.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="lblPropTextStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropTextStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 175</value>
+  </data>
+  <data name="lblPropTextStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 13</value>
+  </data>
+  <data name="lblPropTextStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>177</value>
+  </data>
+  <data name="lblPropTextStyle.Text" xml:space="preserve">
+    <value>Style:</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextStyle.Name" xml:space="preserve">
+    <value>lblPropTextStyle</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextStyle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextStyle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextStyle.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="cboPropTextRotateMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 117</value>
+  </data>
+  <data name="cboPropTextRotateMode.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboPropTextRotateMode.Properties.Items" xml:space="preserve">
+    <value>Rotable</value>
+  </data>
+  <data name="cboPropTextRotateMode.Properties.Items1" xml:space="preserve">
+    <value>Fixed</value>
+  </data>
+  <data name="cboPropTextRotateMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 20</value>
+  </data>
+  <data name="cboPropTextRotateMode.TabIndex" type="System.Int32, mscorlib">
+    <value>179</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextRotateMode.Name" xml:space="preserve">
+    <value>cboPropTextRotateMode</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextRotateMode.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextRotateMode.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextRotateMode.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="lblPropTextRotateMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropTextRotateMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 118</value>
+  </data>
+  <data name="lblPropTextRotateMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 13</value>
+  </data>
+  <data name="lblPropTextRotateMode.TabIndex" type="System.Int32, mscorlib">
+    <value>178</value>
+  </data>
+  <data name="lblPropTextRotateMode.Text" xml:space="preserve">
+    <value>Rotation:</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextRotateMode.Name" xml:space="preserve">
+    <value>lblPropTextRotateMode</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextRotateMode.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextRotateMode.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextRotateMode.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="lblPropFontColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropFontColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>175, 276</value>
+  </data>
+  <data name="lblPropFontColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 13</value>
+  </data>
+  <data name="lblPropFontColor.TabIndex" type="System.Int32, mscorlib">
+    <value>194</value>
+  </data>
+  <data name="lblPropFontColor.Text" xml:space="preserve">
+    <value>Color:</value>
+  </data>
+  <data name="&gt;&gt;lblPropFontColor.Name" xml:space="preserve">
+    <value>lblPropFontColor</value>
+  </data>
+  <data name="&gt;&gt;lblPropFontColor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropFontColor.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropFontColor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkPropTextFontUnderline.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIwLjIsIFZlcnNpb249MjAuMi43
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAANwBAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iVW5kZXJsaW5lIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAg
+        MCAzMiAzMiI+DQogIDxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+CgkuQmxhY2t7ZmlsbDojNzI3MjcyO30K
+        PC9zdHlsZT4NCiAgPHBhdGggZD0iTTgsMTUuN1Y0aDMuNHYxMWMwLDQsMS42LDYsNC43LDZjMywwLDQu
+        NS0xLjksNC41LTUuOFY0SDI0djExLjRjMCw1LjctMi43LDguNi04LjIsOC42ICBDMTAuNiwyNCw4LDIx
+        LjIsOCwxNS43eiBNNiwyOHYyaDIwdi0ySDZ6IiBjbGFzcz0iQmxhY2siIC8+DQo8L3N2Zz4L
+</value>
+  </data>
+  <data name="chkPropTextFontUnderline.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropTextFontUnderline.Location" type="System.Drawing.Point, System.Drawing">
+    <value>139, 242</value>
+  </data>
+  <data name="chkPropTextFontUnderline.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="chkPropTextFontUnderline.TabIndex" type="System.Int32, mscorlib">
+    <value>193</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontUnderline.Name" xml:space="preserve">
+    <value>chkPropTextFontUnderline</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontUnderline.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontUnderline.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontUnderline.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkPropTextFontItalic.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIwLjIsIFZlcnNpb249MjAuMi43
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAALUBAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iSXRhbGljIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAz
+        MiAzMiI+DQogIDxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+CgkuQmxhY2t7ZmlsbDojNzI3MjcyO30KPC9z
+        dHlsZT4NCiAgPHBvbHlnb24gcG9pbnRzPSIyMS42LDYgMjIsNCAxNCw0IDEzLjYsNiAxNS44LDYgMTIs
+        MjQgOS44LDI0IDkuNCwyNiAxNy42LDI2IDE3LjgsMjQgMTUuNiwyNCAxOS40LDYgIiBjbGFzcz0iQmxh
+        Y2siIC8+DQo8L3N2Zz4L
+</value>
+  </data>
+  <data name="chkPropTextFontItalic.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropTextFontItalic.Location" type="System.Drawing.Point, System.Drawing">
+    <value>109, 242</value>
+  </data>
+  <data name="chkPropTextFontItalic.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="chkPropTextFontItalic.TabIndex" type="System.Int32, mscorlib">
+    <value>192</value>
+  </data>
+  <data name="chkPropTextFontItalic.ToolTip" xml:space="preserve">
+    <value>Italic</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontItalic.Name" xml:space="preserve">
+    <value>chkPropTextFontItalic</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontItalic.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontItalic.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontItalic.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="chkPropTextFontBold.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIwLjIsIFZlcnNpb249MjAuMi43
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAABcEAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iTGF5ZXJfMSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAg
+        MzIgMzIiPg0KICA8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLlllbGxvd3tmaWxsOiNGRkIxMTU7fQoJ
+        LlJlZHtmaWxsOiNEMTFDMUM7fQoJLkJsdWV7ZmlsbDojMTE3N0Q3O30KCS5HcmVlbntmaWxsOiMwMzlD
+        MjM7fQoJLkJsYWNre2ZpbGw6IzcyNzI3Mjt9CgkuV2hpdGV7ZmlsbDojRkZGRkZGO30KCS5zdDB7b3Bh
+        Y2l0eTowLjU7fQoJLnN0MXtkaXNwbGF5Om5vbmU7fQoJLnN0MntkaXNwbGF5OmlubGluZTtmaWxsOiMw
+        MzlDMjM7fQoJLnN0M3tkaXNwbGF5OmlubGluZTtmaWxsOiNEMTFDMUM7fQoJLnN0NHtkaXNwbGF5Omlu
+        bGluZTtmaWxsOiM3MjcyNzI7fQo8L3N0eWxlPg0KICA8ZyBpZD0iQm9sZCI+DQogICAgPHBhdGggZD0i
+        TTgsMjZWNGg4YzIuNSwwLDQuMywwLjUsNS43LDEuNGMxLjMsMC45LDIsMi4yLDIsMy44YzAsMS4yLTAu
+        NCwyLjItMS4yLDMuMWMtMC44LDAuOS0xLjgsMS41LTMuMSwxLjl2MC4xICAgYzEuNiwwLjIsMi44LDAu
+        OCwzLjgsMS43YzAuOSwxLDEuNCwyLjEsMS40LDMuNWMwLDItMC43LDMuNi0yLjIsNC44QzIwLjksMjUu
+        NCwxOSwyNiwxNi41LDI2SDh6IE0xMyw3Ljd2NS4yaDIuMiAgIGMxLDAsMS44LTAuMiwyLjQtMC43czAu
+        OS0xLjIsMC45LTJjMC0xLjYtMS4yLTIuNC0zLjYtMi40TDEzLDcuN0wxMyw3Ljd6IE0xMywxNi42djUu
+        OGgyLjdjMS4xLDAsMi0wLjMsMi43LTAuOCAgIGMwLjYtMC41LDEtMS4zLDEtMi4yYzAtMC45LTAuMy0x
+        LjYtMS0yLjFjLTAuNi0wLjUtMS41LTAuOC0yLjctMC44TDEzLDE2LjZMMTMsMTYuNnoiIGNsYXNzPSJC
+        bGFjayIgLz4NCiAgPC9nPg0KPC9zdmc+Cw==
+</value>
+  </data>
+  <data name="chkPropTextFontBold.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkPropTextFontBold.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 242</value>
+  </data>
+  <data name="chkPropTextFontBold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="chkPropTextFontBold.TabIndex" type="System.Int32, mscorlib">
+    <value>191</value>
+  </data>
+  <data name="chkPropTextFontBold.ToolTip" xml:space="preserve">
+    <value>Bold</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontBold.Name" xml:space="preserve">
+    <value>chkPropTextFontBold</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontBold.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontBold.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkPropTextFontBold.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblPropTextFontChar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropTextFontChar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 219</value>
+  </data>
+  <data name="lblPropTextFontChar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 13</value>
+  </data>
+  <data name="lblPropTextFontChar.TabIndex" type="System.Int32, mscorlib">
+    <value>189</value>
+  </data>
+  <data name="lblPropTextFontChar.Text" xml:space="preserve">
+    <value>Font:</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextFontChar.Name" xml:space="preserve">
+    <value>lblPropTextFontChar</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextFontChar.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextFontChar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextFontChar.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lblPropTextFontSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropTextFontSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 276</value>
+  </data>
+  <data name="lblPropTextFontSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 13</value>
+  </data>
+  <data name="lblPropTextFontSize.TabIndex" type="System.Int32, mscorlib">
+    <value>187</value>
+  </data>
+  <data name="lblPropTextFontSize.Text" xml:space="preserve">
+    <value>Size:</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextFontSize.Name" xml:space="preserve">
+    <value>lblPropTextFontSize</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextFontSize.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextFontSize.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropTextFontSize.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="txtPropFontColor.EditValue" type="System.Drawing.Color, System.Drawing">
+    <value />
+  </data>
+  <data name="txtPropFontColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>216, 273</value>
+  </data>
+  <data name="txtPropFontColor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtPropFontColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="txtPropFontColor.TabIndex" type="System.Int32, mscorlib">
+    <value>198</value>
+  </data>
+  <data name="&gt;&gt;txtPropFontColor.Name" xml:space="preserve">
+    <value>txtPropFontColor</value>
+  </data>
+  <data name="&gt;&gt;txtPropFontColor.Type" xml:space="preserve">
+    <value>cSurveyPC.cColorSelector, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtPropFontColor.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropFontColor.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="cboPropTextFontChar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 216</value>
+  </data>
+  <data name="cboPropTextFontChar.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboPropTextFontChar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>151, 20</value>
+  </data>
+  <data name="cboPropTextFontChar.TabIndex" type="System.Int32, mscorlib">
+    <value>197</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextFontChar.Name" xml:space="preserve">
+    <value>cboPropTextFontChar</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextFontChar.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextFontChar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextFontChar.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="cboPropTextStyle.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="cboPropTextStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 171</value>
+  </data>
+  <data name="cboPropTextStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>358, 38</value>
+  </data>
+  <data name="cboPropTextStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>199</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextStyle.Name" xml:space="preserve">
+    <value>cboPropTextStyle</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextStyle.Type" xml:space="preserve">
+    <value>cSurveyPC.cFontStyleDropDown, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextStyle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextStyle.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="cboPropTextFontSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 274</value>
+  </data>
+  <data name="cboPropTextFontSize.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboPropTextFontSize.Properties.Items" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="cboPropTextFontSize.Properties.Items1" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="cboPropTextFontSize.Properties.Items2" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="cboPropTextFontSize.Properties.Items3" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="cboPropTextFontSize.Properties.Items4" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="cboPropTextFontSize.Properties.Items5" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="cboPropTextFontSize.Properties.Items6" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="cboPropTextFontSize.Properties.Items7" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="cboPropTextFontSize.Properties.Items8" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="cboPropTextFontSize.Properties.Items9" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="cboPropTextFontSize.Properties.Items10" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="cboPropTextFontSize.Properties.Items11" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="cboPropTextFontSize.Properties.Items12" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="cboPropTextFontSize.Properties.Items13" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="cboPropTextFontSize.Properties.Items14" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="cboPropTextFontSize.Properties.Items15" xml:space="preserve">
+    <value>36</value>
+  </data>
+  <data name="cboPropTextFontSize.Properties.Items16" xml:space="preserve">
+    <value>48</value>
+  </data>
+  <data name="cboPropTextFontSize.Properties.Items17" xml:space="preserve">
+    <value>72</value>
+  </data>
+  <data name="cboPropTextFontSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 20</value>
+  </data>
+  <data name="cboPropTextFontSize.TabIndex" type="System.Int32, mscorlib">
+    <value>200</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextFontSize.Name" xml:space="preserve">
+    <value>cboPropTextFontSize</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextFontSize.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextFontSize.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboPropTextFontSize.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 302</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>cItemTextStylePropertyControl</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>cSurveyPC.cItemPropertyControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+</root>

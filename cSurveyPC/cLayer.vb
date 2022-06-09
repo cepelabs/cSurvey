@@ -22,7 +22,7 @@ Namespace cSurvey.Design
 
 #Region "SVG"
 
-        Friend Overridable Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        Friend Overridable Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
             Dim oSVGLayer As XmlElement = modSVG.CreateLayer(SVG, "layer" & iType.ToString("D"), iType.ToString)
             Dim oVisibleItems As List(Of cItem) = GetAllVisibleItems(PaintOptions)
             Dim iIndex As Integer = 0
@@ -34,7 +34,7 @@ Namespace cSurvey.Design
                 If modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oItem, "", "") Then
                     Dim oSVGItem As XmlElement = oItem.ToSvgItem(SVG, PaintOptions, Options)
                     If oItem.CanBeClipped Then
-                        Dim iClipBorder As cClippingRegions.ClipBorderEnum = oSurvey.Properties.DesignProperties.GetValue("ClipBorder", oSurvey.GetGlobalSetting("design.clipborder", cClippingRegions.ClipBorderEnum.ClipBorder))
+                        Dim iClipBorder As cClippingRegions.ClipBorderEnum = oSurvey.Properties.DesignProperties.GetValue("ClipBorder", Helper.Editor.cEditDesignEnvironment.GetSetting("design.clipborder", cClippingRegions.ClipBorderEnum.ClipBorder))
                         If oItem.ClippingType = cItem.cItemClippingTypeEnum.Default Then
                             If (oItem.Type = cIItem.cItemTypeEnum.InvertedFreeHandArea AndAlso iType = cLayers.LayerTypeEnum.Borders) OrElse (iType > cLayers.LayerTypeEnum.Borders) OrElse (iClipBorder = cClippingRegions.ClipBorderEnum.DontClipBorder AndAlso iType = cLayers.LayerTypeEnum.Borders) Then
                                 'nothing
@@ -66,7 +66,7 @@ Namespace cSurvey.Design
             Return oSVGLayer
         End Function
 
-        Friend Overridable Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
+        Friend Overridable Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
             Dim oSVG As XmlDocument = modSVG.CreateSVG
             Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
             Return oSVG
@@ -190,7 +190,7 @@ Namespace cSurvey.Design
             'Return oResultItems
         End Function
 
-        Friend Function GetItemsByRectangle(ByVal Rectangle As RectangleF, ByVal PaintOptions As cOptions) As List(Of cItem)
+        Friend Function GetItemsByRectangle(ByVal Rectangle As RectangleF, ByVal PaintOptions As cOptionsCenterline) As List(Of cItem)
             If bHiddenInDesign Then
                 Return New List(Of cItem)
             Else
@@ -360,7 +360,7 @@ Namespace cSurvey.Design
             End Get
         End Property
 
-        Friend Overridable Function GetAllDesignVisibleItems(PaintOptions As cOptions, ByVal CurrentCave As String, ByVal CurrentBranch As String) As List(Of cItem)
+        Friend Overridable Function GetAllDesignVisibleItems(PaintOptions As cOptionsCenterline, ByVal CurrentCave As String, ByVal CurrentBranch As String) As List(Of cItem)
             Return GetAllDesignVisibleItems(PaintOptions).Where(Function(oitem) modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oitem, CurrentCave, CurrentBranch)).ToList
             'Dim oResultItems As List(Of cItem) = New List(Of cItem)
             'For Each oItem As cItem In GetAllDesignVisibleItems(PaintOptions)
@@ -371,7 +371,7 @@ Namespace cSurvey.Design
             'Return oResultItems
         End Function
 
-        Friend Overridable Function GetAllVisibleItems(PaintOptions As cOptions, ByVal CurrentCave As String, ByVal CurrentBranch As String) As List(Of cItem)
+        Friend Overridable Function GetAllVisibleItems(PaintOptions As cOptionsCenterline, ByVal CurrentCave As String, ByVal CurrentBranch As String) As List(Of cItem)
             Return GetAllVisibleItems(PaintOptions).Where(Function(oitem) modDesign.GetIfItemMustBeDrawedByCaveAndBranch(PaintOptions, oitem, CurrentCave, CurrentBranch)).ToList
             'Dim oResultItems As List(Of cItem) = New List(Of cItem)
             'For Each oItem As cItem In GetAllVisibleItems(PaintOptions)
@@ -382,11 +382,11 @@ Namespace cSurvey.Design
             'Return oResultItems
         End Function
 
-        Friend Overridable Function GetAllDesignVisibleItems(PaintOptions As cOptions) As List(Of cItem)
+        Friend Overridable Function GetAllDesignVisibleItems(PaintOptions As cOptionsCenterline) As List(Of cItem)
             Return GetAllVisibleItems(PaintOptions).Where(Function(item) item.DesignAffinity = cItem.DesignAffinityEnum.Design).ToList
         End Function
 
-        Friend Overridable Function GetAllVisibleItems(PaintOptions As cOptions) As List(Of cItem)
+        Friend Overridable Function GetAllVisibleItems(PaintOptions As cOptionsCenterline) As List(Of cItem)
             Dim oVisibleItems As List(Of cItem) = New List(Of cItem)
             Dim sCurrentProfile As String = PaintOptions.CurrentCaveVisibilityProfile
             If sCurrentProfile = "" Then
@@ -419,14 +419,14 @@ Namespace cSurvey.Design
                         '    End If
                         'Next
                     Catch ex As Exception
-                        Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, "cLayer.GetAllVisibleItems -> " & ex.Message, True)
+                        Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, "cLayer.GetAllVisibleItems -> " & ex.Message)
                     End Try
                 End If
             End If
             Return oVisibleItems
         End Function
 
-        Friend Overridable Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Clipping As cClippingRegions, Selection As Helper.Editor.cIEditDesignSelection)
+        Friend Overridable Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Clipping As cClippingRegions, Selection As Helper.Editor.cIEditDesignSelection)
             Try
                 Dim oItems As List(Of cItem) = GetAllVisibleItems(PaintOptions)
                 If oItems.Count > 0 Then
@@ -508,16 +508,13 @@ Namespace cSurvey.Design
                     Next
                 End If
             Catch ex As Exception
-                Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, "cLayer.Paint -> " & ex.Message, True)
+                Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, "cLayer.Paint -> " & ex.Message)
             End Try
         End Sub
 
         Public Overridable Function HitTest(ByVal PaintOptions As cOptions, ByVal CurrentCave As String, ByVal CurrentBranch As String, ByVal Point As PointF, ByVal Wide As Single, First As Boolean) As List(Of cItem)
             Dim oHitTestItems As List(Of cItem) = New List(Of cItem)
             If Not bHiddenInDesign Then
-                'Dim oReversedItems() As cItem = oItems.ToArray
-                'Call Array.Reverse(oReversedItems)
-                'For Each oItem As cItem In oReversedItems
                 For i = oItems.Count - 1 To 0 Step -1
                     Dim oItem As cItem = oItems(i)
                     If modDesign.GetIfItemMustBeDrawedByHiddenFlag(PaintOptions, oItem) Then

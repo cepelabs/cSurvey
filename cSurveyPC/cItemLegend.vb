@@ -281,7 +281,7 @@ Namespace cSurvey.Design.Items
             MyBase.DesignAffinity = DesignAffinityEnum.Extra
         End Sub
 
-        Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptions) As Single
+        Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptionsCenterline) As Single
             Dim sTextScaleFactor As Single = MyBase.GetTextScaleFactor(PaintOptions)
             Select Case iTextSize
                 Case cIItemSizable.SizeEnum.Default
@@ -514,6 +514,21 @@ Namespace cSurvey.Design.Items
             End If
         End Sub
 
+        Public Sub MoveItem(Item As cLegendItem, NewIndex As Integer)
+            If oItems.Contains(Item) Then
+                Call oItems.Remove(Item)
+                If NewIndex < 0 Then
+                    Call oItems.Insert(0, Item)
+                Else
+                    If NewIndex >= oItems.Count Then
+                        Call oItems.Add(Item)
+                    Else
+                        Call oItems.Insert(NewIndex, Item)
+                    End If
+                End If
+            End If
+        End Sub
+
         Public Function AddItem(Item As cItem) As cLegendItem Implements cIItemLegend.AddItem
             If TypeOf Item Is cIItemClipartBase Then
                 Dim sName As String = Item.Name
@@ -739,7 +754,7 @@ Namespace cSurvey.Design.Items
             End Set
         End Property
 
-        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             Dim oCache As cDrawCache = MyBase.Caches(PaintOptions)
             With oCache
                 If .Invalidated Then
@@ -780,7 +795,7 @@ Namespace cSurvey.Design.Items
                         End Using
                     End If
 
-                    Dim oBorderPen As cPen = PaintOptions.PaintObjects.GenericPens.GenericPen
+                    Dim oBorderPen As cCustomPen = oSurvey.Pens.GenericPen
 
                     Dim iIndex As Integer = 0
                     SyncLock oItems
@@ -799,10 +814,9 @@ Namespace cSurvey.Design.Items
                                     If oItem.Type = cLegendItem.ItemTypeEnum.LineItem AndAlso oItem.Item.HavePen Then
                                         Dim oPen As cPen = oItem.Item.Pen
                                         If Not IsNothing(oPen) Then
-                                            Using oDesignPen As cPen = New cPen(oSurvey)
-                                                Call oDesignPen.CopyFrom(oPen)
-                                                oDesignPen.LocalLineWidth = oPen.GetPaintLineWidth(PaintOptions) * sItemItemScale
-                                                oDesignPen.LocalZoomFactor = oPen.GetPaintZoomFactor(PaintOptions) * sItemItemScale
+                                            Using oDesignPen As cCustomPen = New cCustomPen(oSurvey, oPen)
+                                                oDesignPen.LocalLineWidth = oPen.GetBasePen.GetPaintLineWidth(PaintOptions) * sItemItemScale
+                                                oDesignPen.LocalZoomFactor = oPen.GetBasePen.GetPaintZoomFactor(PaintOptions) * sItemItemScale
                                                 Using oPath As GraphicsPath = New GraphicsPath
                                                     Dim oP0 As PointF = New PointF(oBordersBounds.Left, oBordersBounds.Top + oBordersBounds.Height * 2 / 3)
                                                     Dim oP1 As PointF = New PointF(oBordersBounds.Right, oBordersBounds.Top + oBordersBounds.Height * 1 / 3)
@@ -926,7 +940,7 @@ Namespace cSurvey.Design.Items
             End With
         End Sub
 
-        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             If MyBase.Points.Count > 0 Then
                 Call Render(Graphics, PaintOptions, Options, Selected)
                 If Not PaintOptions.IsDesign OrElse (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then '

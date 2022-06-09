@@ -155,7 +155,7 @@ Namespace cSurvey.Design.Items
         Public Sub SetLRFromDesign(ByVal PaintOptions As cOptions) Implements cIItemPlanCrossSectionMarker.SetLRFromDesign
             If Not oCrossSectionItem.Segment Is Nothing Then
                 Dim oSegment As cSegment = oCrossSectionItem.Segment
-                Dim iSegmentSign As Integer = IIf(oCrossSectionItem.Direction = cIItemCrossSection.DirectionEnum.Direct, 1, -1) '* IIf(oSegment.Data.Data.Reversed, -1, 1)
+                Dim iSegmentSign As Integer = If(oCrossSectionItem.Direction = cIItemCrossSection.DirectionEnum.Direct, 1, -1) '* if(oSegment.Data.Data.Reversed, -1, 1)
                 Dim sAngle As Single = oSegment.Data.Data.Bearing - 90 + PlanDeltaAngle
                 Dim oFromPoint As PointF = oSegment.Data.Plan.FromPoint
                 Dim oToPoint As PointF = oSegment.Data.Plan.ToPoint
@@ -517,7 +517,7 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
-        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             Dim oCache As cDrawCache = MyBase.Caches(PaintOptions)
             With oCache
                 If .Invalidated Then
@@ -567,7 +567,7 @@ Namespace cSurvey.Design.Items
 
                                 oCacheItem = oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
                                 Call oCacheItem.SetPen(PaintOptions.DrawingObjects.CrossSectionMarkerPen)
-                                Call oCacheItem.SetWireframePen(PaintOptions.PaintObjects.Pens.GenericPen.WireframePen)
+                                Call oCacheItem.SetWireframePen(oSurvey.Pens.GenericPen.WireframePen)
                                 If iPlanAlignment = cIItemPlanCrossSectionMarker.PlanAlignmentEnum.Left Then
                                     oArrowPoint = New PointF(oEndPointL.X + iSegmentSign * sArrowSize, oEndPointL.Y)
                                     Call oCacheItem.AddLines({oStartPointL, oEndPointL, oArrowPoint})
@@ -585,7 +585,7 @@ Namespace cSurvey.Design.Items
                                 End If
                                 oCacheItem = oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
                                 Call oCacheItem.SetPen(PaintOptions.DrawingObjects.CrossSectionMarkerPen)
-                                Call oCacheItem.SetWireframePen(PaintOptions.PaintObjects.Pens.GenericPen.WireframePen)
+                                Call oCacheItem.SetWireframePen(oSurvey.Pens.GenericPen.WireframePen)
                                 If iPlanAlignment = cIItemPlanCrossSectionMarker.PlanAlignmentEnum.Right Then
                                     oArrowPoint = New PointF(oEndPointR.X + iSegmentSign * sArrowSize, oEndPointR.Y)
                                     Call oCacheItem.AddLines({oStartPointR, oEndPointR, oArrowPoint})
@@ -616,7 +616,7 @@ Namespace cSurvey.Design.Items
                                             Dim oTextSize As SizeF = oPath.GetBounds.Size
                                             Dim sTextWidth As Single = oTextSize.Width * 1.2
                                             Dim sTextHeight As Single = oTextSize.Height * 1.2
-                                            Dim sTextMaxSize As Single = IIf(oTextSize.Width > oTextSize.Height, sTextWidth, sTextHeight)
+                                            Dim sTextMaxSize As Single = If(oTextSize.Width > oTextSize.Height, sTextWidth, sTextHeight)
 
                                             Select Case iTextPosition
                                                 Case cIItemCrossSectionMarker.TextPositionEnum.AsArrow
@@ -686,7 +686,7 @@ Namespace cSurvey.Design.Items
                                 Dim sRefRightWidth As Single = sArrowSize * 4
 
                                 Dim oSegment As cSegment = oCrossSectionItem.Segment
-                                Dim iSegmentSign As Integer = IIf(oCrossSectionItem.Direction = cIItemCrossSection.DirectionEnum.Direct, 1, -1)
+                                Dim iSegmentSign As Integer = If(oCrossSectionItem.Direction = cIItemCrossSection.DirectionEnum.Direct, 1, -1)
                                 Dim sAngle As Single = oSegment.Data.Data.Bearing - 90 + PlanDeltaAngle
                                 Dim oFromPoint As PointF = oSegment.Data.Plan.FromPoint
                                 Dim oToPoint As PointF = oSegment.Data.Plan.ToPoint
@@ -708,7 +708,7 @@ Namespace cSurvey.Design.Items
 
                                     oCacheItem = oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
                                     Call oCacheItem.SetPen(PaintOptions.DrawingObjects.InvalidPen) 'PaintOptions.DrawingObjects.CrossSectionMarkerPen)
-                                    Call oCacheItem.SetWireframePen(PaintOptions.PaintObjects.Pens.GenericPen.WireframePen)
+                                    Call oCacheItem.SetWireframePen(oSurvey.Pens.GenericPen.WireframePen)
 
                                     Call oCacheItem.AddLine(oStartPointR, oEndPointR)
                                     Call oCacheItem.StartFigure()
@@ -757,7 +757,7 @@ Namespace cSurvey.Design.Items
             End Select
         End Function
 
-        Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptions) As Single
+        Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptionsCenterline) As Single
             Dim sTextScaleFactor As Single = MyBase.GetTextScaleFactor(PaintOptions) * PaintOptions.GetCurrentDesignPropertiesValue("DesignCrossSectionTextScaleFactor", 1) * PaintOptions.GetCurrentDesignPropertiesValue("DesignCrossSectionMarkerTextScaleFactor", 1)
             Select Case iTextSize
                 Case cIItemSizable.SizeEnum.Default
@@ -791,7 +791,7 @@ Namespace cSurvey.Design.Items
             End Select
         End Function
 
-        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             If MyBase.Points.Count > 0 Then
                 Call Render(Graphics, PaintOptions, Options, Selected)
                 If Not PaintOptions.IsDesign OrElse (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then
@@ -817,7 +817,7 @@ Namespace cSurvey.Design.Items
                     Call MyBase.Points.AddFromPaintPoint(New PointF(0, 0))
                     Call MyBase.Points.EndUpdate()
                 Else
-                    Dim iSegmentSign As Integer = IIf(oCrossSectionItem.Direction = cIItemCrossSection.DirectionEnum.Direct, 1, -1)
+                    Dim iSegmentSign As Integer = If(oCrossSectionItem.Direction = cIItemCrossSection.DirectionEnum.Direct, 1, -1)
                     Dim sAngle As Single = oSegment.Data.Data.Bearing - 90 + PlanDeltaAngle
                     Dim oFromPoint As PointF = oSegment.Data.Plan.FromPoint
                     Dim oToPoint As PointF = oSegment.Data.Plan.ToPoint

@@ -1,3 +1,3 @@
-﻿Public Class cProgressPanel
+﻿Friend Class cProgressPanel
 
 End Class

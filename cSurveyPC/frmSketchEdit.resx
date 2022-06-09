@@ -118,100 +118,55 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="pnlPreview.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pnlPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="colTrigpointName.Text" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="colTrigpointName.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <metadata name="mnuTrigpoints.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>19, 25</value>
-  </metadata>
-  <data name="mnuTrigpoints.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="mnuTrigpointsFilterBy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="mnuTrigpointsFilterBy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 21</value>
-  </data>
-  <data name="mnuTrigpointsFilterBy.ToolTipText" xml:space="preserve">
-    <value>Type the name or part of the name of the station to search</value>
-  </data>
-  <data name="mnuTrigpointsRemoveFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 22</value>
-  </data>
-  <data name="mnuTrigpointsRemoveFilter.Text" xml:space="preserve">
-    <value>Remove filter</value>
-  </data>
-  <data name="ToolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 6</value>
-  </data>
-  <data name="mnuTrigpointsShowSplay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 22</value>
-  </data>
-  <data name="mnuTrigpointsShowSplay.Text" xml:space="preserve">
-    <value>Splay</value>
-  </data>
-  <data name="mnuTrigpoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 77</value>
-  </data>
-  <data name="&gt;&gt;mnuTrigpoints.Name" xml:space="preserve">
-    <value>mnuTrigpoints</value>
-  </data>
-  <data name="&gt;&gt;mnuTrigpoints.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lvTrigpoints.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="SplitContainerControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="lvTrigpoints.Location" type="System.Drawing.Point, System.Drawing">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="SplitContainerControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 132</value>
+  </data>
+  <data name="grdStations.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="grdStations.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="lvTrigpoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 442</value>
+  <data name="grdStations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 375</value>
   </data>
-  <data name="lvTrigpoints.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="grdStations.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="&gt;&gt;lvTrigpoints.Name" xml:space="preserve">
-    <value>lvTrigpoints</value>
+  <data name="&gt;&gt;grdStations.Name" xml:space="preserve">
+    <value>grdStations</value>
   </data>
-  <data name="&gt;&gt;lvTrigpoints.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;grdStations.Type" xml:space="preserve">
+    <value>cSurveyPC.cTrigpointsGrid, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;lvTrigpoints.Parent" xml:space="preserve">
-    <value>pnlPreview.Panel1</value>
+  <data name="&gt;&gt;grdStations.Parent" xml:space="preserve">
+    <value>SplitContainerControl1.Panel1</value>
   </data>
-  <data name="&gt;&gt;lvTrigpoints.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;grdStations.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;pnlPreview.Panel1.Name" xml:space="preserve">
-    <value>pnlPreview.Panel1</value>
+  <data name="SplitContainerControl1.Panel1.Text" xml:space="preserve">
+    <value>Panel1</value>
   </data>
-  <data name="&gt;&gt;pnlPreview.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;SplitContainerControl1.Panel1.Name" xml:space="preserve">
+    <value>SplitContainerControl1.Panel1</value>
   </data>
-  <data name="&gt;&gt;pnlPreview.Panel1.Parent" xml:space="preserve">
-    <value>pnlPreview</value>
+  <data name="&gt;&gt;SplitContainerControl1.Panel1.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SplitGroupPanel, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;pnlPreview.Panel1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;SplitContainerControl1.Panel1.Parent" xml:space="preserve">
+    <value>SplitContainerControl1</value>
+  </data>
+  <data name="&gt;&gt;SplitContainerControl1.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="pnlPreview.Panel2.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="picPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>0, 0</value>
   </data>
   <data name="picPreview.Size" type="System.Drawing.Size, System.Drawing">
     <value>378, 272</value>
@@ -226,247 +181,238 @@
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;picPreview.Parent" xml:space="preserve">
-    <value>pnlPreview.Panel2</value>
+    <value>pnlPreview</value>
   </data>
   <data name="&gt;&gt;picPreview.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;pnlPreview.Panel2.Name" xml:space="preserve">
-    <value>pnlPreview.Panel2</value>
+  <data name="pnlPreview.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="&gt;&gt;pnlPreview.Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlPreview.Panel2.Parent" xml:space="preserve">
-    <value>pnlPreview</value>
-  </data>
-  <data name="&gt;&gt;pnlPreview.Panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="pnlPreview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
   <data name="pnlPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>818, 442</value>
-  </data>
-  <data name="pnlPreview.SplitterDistance" type="System.Int32, mscorlib">
-    <value>107</value>
+    <value>646, 375</value>
   </data>
   <data name="pnlPreview.TabIndex" type="System.Int32, mscorlib">
-    <value>121</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;pnlPreview.Name" xml:space="preserve">
     <value>pnlPreview</value>
   </data>
   <data name="&gt;&gt;pnlPreview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.XtraScrollableControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlPreview.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>SplitContainerControl1.Panel2</value>
   </data>
   <data name="&gt;&gt;pnlPreview.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>0</value>
   </data>
-  <metadata name="mnuPreview.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>924, 22</value>
-  </metadata>
-  <data name="mnuPreview.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
+  <data name="SplitContainerControl1.Panel2.Text" xml:space="preserve">
+    <value>Panel2</value>
   </data>
-  <data name="mnuPreviewAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
+  <data name="&gt;&gt;SplitContainerControl1.Panel2.Name" xml:space="preserve">
+    <value>SplitContainerControl1.Panel2</value>
   </data>
-  <data name="mnuPreviewAdd.Text" xml:space="preserve">
-    <value>Add station reference...</value>
+  <data name="&gt;&gt;SplitContainerControl1.Panel2.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SplitGroupPanel, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="mnuPreviewAddExtra.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
+  <data name="&gt;&gt;SplitContainerControl1.Panel2.Parent" xml:space="preserve">
+    <value>SplitContainerControl1</value>
   </data>
-  <data name="mnuPreviewAddExtra.Text" xml:space="preserve">
-    <value>Add distance reference</value>
+  <data name="&gt;&gt;SplitContainerControl1.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="mnuPreviewAddExtra.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="SplitContainerControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>819, 375</value>
   </data>
-  <data name="mnuPreviewEditDistance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
+  <data name="SplitContainerControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>123</value>
   </data>
-  <data name="mnuPreviewEditDistance.Text" xml:space="preserve">
-    <value>Edit distance...</value>
+  <data name="&gt;&gt;SplitContainerControl1.Name" xml:space="preserve">
+    <value>SplitContainerControl1</value>
   </data>
-  <data name="mnuPreviewEditDistance.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;SplitContainerControl1.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SplitContainerControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 6</value>
-  </data>
-  <data name="mnuPreviewRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
-  </data>
-  <data name="mnuPreviewRemove.Text" xml:space="preserve">
-    <value>Remove</value>
-  </data>
-  <data name="mnuPreviewRemoveAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
-  </data>
-  <data name="mnuPreviewRemoveAll.Text" xml:space="preserve">
-    <value>Remove all</value>
-  </data>
-  <data name="ToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 6</value>
-  </data>
-  <data name="mnuPreviewSetTransparent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
-  </data>
-  <data name="mnuPreviewSetTransparent.Text" xml:space="preserve">
-    <value>Set color to transparent</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 22</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold1.Text" xml:space="preserve">
-    <value>1%</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 22</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold2.Text" xml:space="preserve">
-    <value>5%</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 22</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold3.Text" xml:space="preserve">
-    <value>10%</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 22</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold4.Text" xml:space="preserve">
-    <value>20%</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 22</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold5.Text" xml:space="preserve">
-    <value>30%</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 22</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold6.Text" xml:space="preserve">
-    <value>50%</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 22</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold7.Text" xml:space="preserve">
-    <value>60%</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 22</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold8.Text" xml:space="preserve">
-    <value>70%</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 22</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold9.Text" xml:space="preserve">
-    <value>80%</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 22</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold10.Text" xml:space="preserve">
-    <value>90%</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 22</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold11.Text" xml:space="preserve">
-    <value>100%</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
-  </data>
-  <data name="mnuPreviewTransparentThreshold.Text" xml:space="preserve">
-    <value>Transparency threshold</value>
-  </data>
-  <data name="mnuPreviewDeleteTransparent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
-  </data>
-  <data name="mnuPreviewDeleteTransparent.Text" xml:space="preserve">
-    <value>Remove transparency</value>
-  </data>
-  <data name="mnuPreviewStop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
-  </data>
-  <data name="mnuPreviewStop.Text" xml:space="preserve">
-    <value>Commit changes</value>
-  </data>
-  <data name="mnuPreviewStop.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="mnuPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 214</value>
-  </data>
-  <data name="&gt;&gt;mnuPreview.Name" xml:space="preserve">
-    <value>mnuPreview</value>
-  </data>
-  <data name="&gt;&gt;mnuPreview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="cmdCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="cmdCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>730, 475</value>
-  </data>
-  <data name="cmdCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 25</value>
-  </data>
-  <data name="cmdCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="cmdCancel.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="&gt;&gt;cmdCancel.Name" xml:space="preserve">
-    <value>cmdCancel</value>
-  </data>
-  <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;SplitContainerControl1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;SplitContainerControl1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="cmdOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="cmdOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>644, 475</value>
-  </data>
-  <data name="cmdOk.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 25</value>
-  </data>
-  <data name="cmdOk.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="cmdOk.Text" xml:space="preserve">
+  <data name="cmdOk.Caption" xml:space="preserve">
     <value>Ok</value>
   </data>
-  <data name="&gt;&gt;cmdOk.Name" xml:space="preserve">
-    <value>cmdOk</value>
+  <data name="cmdCancel.Caption" xml:space="preserve">
+    <value>Cancel</value>
   </data>
-  <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <assembly alias="DevExpress.XtraBars.v21.2" name="DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="RibbonControl1.Categories" type="DevExpress.XtraBars.BarManagerCategory, DevExpress.XtraBars.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMC4yLCBWZXJzaW9uPTIw
+        LjIuNy4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
+        ACZEZXZFeHByZXNzLlh0cmFCYXJzLkJhck1hbmFnZXJDYXRlZ29yeQMAAAAETmFtZQRHdWlkB1Zpc2li
+        bGUBAwALU3lzdGVtLkd1aWQBAgAAAAYDAAAADFRyYW5zcGFyZW5jeQT8////C1N5c3RlbS5HdWlkCwAA
+        AAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgL/5X+3
+        oxahTabb+sVHZba8AQs=
+</value>
   </data>
-  <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
+  <data name="RibbonControl1.Categories1" type="DevExpress.XtraBars.BarManagerCategory, DevExpress.XtraBars.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMC4yLCBWZXJzaW9uPTIw
+        LjIuNy4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
+        ACZEZXZFeHByZXNzLlh0cmFCYXJzLkJhck1hbmFnZXJDYXRlZ29yeQMAAAAETmFtZQRHdWlkB1Zpc2li
+        bGUBAwALU3lzdGVtLkd1aWQBAgAAAAYDAAAACFN0YXRpb25zBPz///8LU3lzdGVtLkd1aWQLAAAAAl9h
+        Al9iAl9jAl9kAl9lAl9mAl9nAl9oAl9pAl9qAl9rAAAAAAAAAAAAAAAIBwcCAgICAgICAjng4oSbnflD
+        kX7QII4DS/8BCw==
+</value>
+  </data>
+  <data name="RibbonControl1.Categories2" type="DevExpress.XtraBars.BarManagerCategory, DevExpress.XtraBars.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMC4yLCBWZXJzaW9uPTIw
+        LjIuNy4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
+        ACZEZXZFeHByZXNzLlh0cmFCYXJzLkJhck1hbmFnZXJDYXRlZ29yeQMAAAAETmFtZQRHdWlkB1Zpc2li
+        bGUBAwALU3lzdGVtLkd1aWQBAgAAAAYDAAAAB0FjdGlvbnME/P///wtTeXN0ZW0uR3VpZAsAAAACX2EC
+        X2ICX2MCX2QCX2UCX2YCX2cCX2gCX2kCX2oCX2sAAAAAAAAAAAAAAAgHBwICAgICAgIC8e3nIRMmq0+I
+        7OYWjT5dJAEL
+</value>
+  </data>
+  <data name="RibbonControl1.Categories3" type="DevExpress.XtraBars.BarManagerCategory, DevExpress.XtraBars.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMC4yLCBWZXJzaW9uPTIw
+        LjIuNy4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
+        ACZEZXZFeHByZXNzLlh0cmFCYXJzLkJhck1hbmFnZXJDYXRlZ29yeQMAAAAETmFtZQRHdWlkB1Zpc2li
+        bGUBAwALU3lzdGVtLkd1aWQBAgAAAAYDAAAABVRvb2xzBPz///8LU3lzdGVtLkd1aWQLAAAAAl9hAl9i
+        Al9jAl9kAl9lAl9mAl9nAl9oAl9pAl9qAl9rAAAAAAAAAAAAAAAIBwcCAgICAgICAj8vPHT65TdKpTo7
+        OTFPXjYBCw==
+</value>
+  </data>
+  <data name="RibbonControl1.Categories4" type="DevExpress.XtraBars.BarManagerCategory, DevExpress.XtraBars.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMC4yLCBWZXJzaW9uPTIw
+        LjIuNy4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
+        ACZEZXZFeHByZXNzLlh0cmFCYXJzLkJhck1hbmFnZXJDYXRlZ29yeQMAAAAETmFtZQRHdWlkB1Zpc2li
+        bGUBAwALU3lzdGVtLkd1aWQBAgAAAAYDAAAACENvbW1hbmRzBPz///8LU3lzdGVtLkd1aWQLAAAAAl9h
+        Al9iAl9jAl9kAl9lAl9mAl9nAl9oAl9pAl9qAl9rAAAAAAAAAAAAAAAIBwcCAgICAgICAmPc4Iq0v6RK
+        mRsC+TAgFs4BCw==
+</value>
+  </data>
+  <data name="btnLoadImage.Caption" xml:space="preserve">
+    <value>Load image...</value>
+  </data>
+  <data name="btnUndo.Caption" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="btnRotate.Caption" xml:space="preserve">
+    <value>Rotate</value>
+  </data>
+  <data name="btnFlipH.Caption" xml:space="preserve">
+    <value>Flip horizontally</value>
+  </data>
+  <data name="btnFlipV.Caption" xml:space="preserve">
+    <value>Flip vertically</value>
+  </data>
+  <data name="btnRescale.Caption" xml:space="preserve">
+    <value>Rescale to</value>
+  </data>
+  <data name="btnRescale0.Caption" xml:space="preserve">
+    <value>3096 x 3096 px</value>
+  </data>
+  <data name="btnRescale1.Caption" xml:space="preserve">
+    <value>2048 x 2048 px</value>
+  </data>
+  <data name="btnRescale2.Caption" xml:space="preserve">
+    <value>1024 x 1024 px</value>
+  </data>
+  <data name="btnRescale3.Caption" xml:space="preserve">
+    <value>512 x 512 px</value>
+  </data>
+  <data name="btnToGrayscale.Caption" xml:space="preserve">
+    <value>To grayscale</value>
+  </data>
+  <data name="btnRubber.Caption" xml:space="preserve">
+    <value>Rubber</value>
+  </data>
+  <data name="btnRubberSize.Caption" xml:space="preserve">
+    <value>Size:</value>
+  </data>
+  <data name="btnRubberSize.EditWidth" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
+  <data name="btnCropStart.Caption" xml:space="preserve">
+    <value>Crop</value>
+  </data>
+  <data name="btnCrop.Caption" xml:space="preserve">
+    <value>Perform crop</value>
+  </data>
+  <data name="btnStop.Caption" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="btnSetTransparent.Caption" xml:space="preserve">
+    <value>Set color to transparent</value>
+  </data>
+  <data name="btnTransparency.Caption" xml:space="preserve">
+    <value>Transparency</value>
+  </data>
+  <data name="btnTransparentThreshold.Caption" xml:space="preserve">
+    <value>Threshold:</value>
+  </data>
+  <data name="btnTransparentThreshold.EditWidth" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
+  <data name="btnDeleteTransparent.Caption" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="btnAdd.Caption" xml:space="preserve">
+    <value>Add station reference...</value>
+  </data>
+  <data name="btnAddExtra.Caption" xml:space="preserve">
+    <value>Add distance reference</value>
+  </data>
+  <data name="btnEditDistance.Caption" xml:space="preserve">
+    <value>Edit distance...</value>
+  </data>
+  <data name="btnRemove.Caption" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="btnRemoveAll.Caption" xml:space="preserve">
+    <value>Remove all</value>
+  </data>
+  <data name="btnShowSplays.Caption" xml:space="preserve">
+    <value>Show splays</value>
+  </data>
+  <data name="RibbonControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="RibbonPageGroup1.Text" xml:space="preserve">
+    <value>Commands</value>
+  </data>
+  <data name="RibbonPageGroup2.Text" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+  <data name="RibbonPageGroup3.Text" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="RibbonPage1.Text" xml:space="preserve">
+    <value>RibbonPage1</value>
+  </data>
+  <data name="RibbonControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>819, 132</value>
+  </data>
+  <data name="&gt;&gt;RibbonControl1.Name" xml:space="preserve">
+    <value>RibbonControl1</value>
+  </data>
+  <data name="&gt;&gt;RibbonControl1.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Ribbon.RibbonControl, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;RibbonControl1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;RibbonControl1.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="imlStations.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>812, 22</value>
@@ -476,7 +422,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACK
-        BwAAAk1TRnQBSQFMAwEBAAE4AQEBOAEBARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMA
+        BwAAAk1TRnQBSQFMAwEBAAHYAQEB2AEBARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMA
         AUADAAEQAwABAQEAAQgGAAEEGAABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHAAdwBwAEA
         AfABygGmAQABMwUAATMBAAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANCAQADOQEA
         AYABfAH/AQACUAH/AQABkwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/ATMDAAFm
@@ -511,321 +457,17 @@
         BgAC/wYAAv8GAAL/BgAL
 </value>
   </data>
-  <metadata name="tbMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>722, 22</value>
-  </metadata>
-  <data name="tbMain.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="btnLoadImage.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnLoadImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 22</value>
-  </data>
-  <data name="btnLoadImage.Text" xml:space="preserve">
-    <value>Load image...</value>
-  </data>
-  <data name="ToolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="btnUndo.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnUndo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnUndo.Text" xml:space="preserve">
-    <value>Undo</value>
-  </data>
-  <data name="ToolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="btnZoomIn.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnZoomIn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnZoomIn.Text" xml:space="preserve">
-    <value>Zoom in</value>
-  </data>
-  <data name="btnZoomIn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnZoomOut.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnZoomOut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnZoomOut.Text" xml:space="preserve">
-    <value>Zoom out</value>
-  </data>
-  <data name="btnZoomOut.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="ToolStripSeparator8.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnRescale0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="btnRescale0.Text" xml:space="preserve">
-    <value>3096 x 3096 px</value>
-  </data>
-  <data name="btnRescale1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="btnRescale1.Text" xml:space="preserve">
-    <value>2048 x 2048 px</value>
-  </data>
-  <data name="btnRescale2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="btnRescale2.Text" xml:space="preserve">
-    <value>1024 x 1024 px</value>
-  </data>
-  <data name="btnRescale3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="btnRescale3.Text" xml:space="preserve">
-    <value>512 x 512 px</value>
-  </data>
-  <data name="btnRescale.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIgSURBVDhPjVLvT5JRFH7/Futja7U+OHVpbvmpslrRdP0N
-        rQ8t+0nph7aakCuXfiiaW645m0UguCiSH6kp6VDG/MnwlVcsQEDkNYPs6Zzry1ZgrGd7OOfee57nHO57
-        pQIaWm0D9besqL1h+S9yLWs0uSTxRvQ7sJwB5M3y5BquZY0mlyR25cP7ThntwxEYXBERjW4FHZ5VQc4f
-        fFzBPceyMGGNJt81UFTgwJXXeDYRx+GWNzD54qi8SSO32lFHrNYP4ul4DI880b0NeIKeL3G8mEygdyqB
-        l/51mGczqG+zQ9cTRO1dO/qmkzCNf0N4o8jg6HWL2OzzJ9E/k8RAIA37QhY1eivOPg/gGJnU3LHBMrsp
-        akoMGmjESBZwkOjDogpPeBtVt604Ywqgii5rLJLDoWtmvKczS3ADoYLBxe7PseauUZzv/ITTHW6ceuhG
-        I1HX6UU1dawk8eRqHmPyD/iUPBzzGQwvqQilNYOmJyP4F8499mJ+HfCGVPjX8th/+ZWIEyvbWEppBjrq
-        zHg7t4bBha+CnDNOGl3CYJpEwdiOEHHk9WKxgU9JYSqaFuScccLgwlziF3XNIRjfQcWlfhF5ihKDcEqF
-        nN4S5JyxawAhKJ6g5C9kcz//IqORLpXfBhfL9IUOtphF5LWypT3lcpfY1DUiujC5+LjeJmJhXXe11yld
-        MA452YQn+ZO812wYekdP5EgZ7iOKn70OmRXEMpCk300FuiZKIXW4AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="btnRescale.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnRescale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 22</value>
-  </data>
-  <data name="btnRescale.Text" xml:space="preserve">
-    <value>Resize to</value>
-  </data>
-  <data name="btnRescale.ToolTipText" xml:space="preserve">
-    <value>Resize the image</value>
-  </data>
-  <data name="btnRotate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIeSURBVDhPhVLfS5NRGF53XgXdeOEf0FXUxXdlzuKz6fKi
-        ILz0NpMupG7KfoAwmXOCBEGLYeGkMuj3mi7z05yYWsaKwJGG4cbmvoUrtOks8OLpfc85+9wm4gMP55z3
-        PM/7vef9Xls56rtGobYl0G8OgamOu+HoMi6d6hxeankeh945UiI8eT2EzF/AJNrbX+9OUucxzLO+OZwP
-        pnAlksNgLI86t6xEvxFCchO4NbmC3okU0ltlSZzdY25nzwTOUILT3tFoy7PlQgXaiWvS7J/N4O60iTvv
-        TdyeSosk1nOcnsC27h03Kw5VVtPxsEP2QLO3B2GS8N6HnyXsI/JzdhJ0j+FYc0crbQ+IgDKv5IH+uVUE
-        Pq1iQPFB9JeoiCtjnVBzAloOigOhhs0kehjN4tHnLAaJvD7+Is3cUJJJs4J1qKXmsPnJ19+CT4vIFfE9
-        ySy9+rhErWpYMLaOl/NreFVgbA0pituvBkvMDrfhbPAYMgH/FjaPLOYw/G3dYnjhj4jXKHPxkLUNJZL1
-        7sC2mDAuz1jawNvvOYt8LjbrrjcQQ+YKR1pfxNHk+4jqy/33RYIUJYgs5/Hux6bgZHxLmNXAaDxUPFwX
-        QmlcDGfQPDAPhyucpbsqrkbjzic2gOnEP8wQi80s4JWH65w/ikbvePJ4m6+XYkfllYRIwpUwec8xeWVB
-        a5A9OEKsFJEyaPwcNWHl5gL2iltgwb6iHdhs/wGzdMX+1MTFnAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnRotate.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnRotate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnRotate.Text" xml:space="preserve">
-    <value>Rotate</value>
-  </data>
-  <data name="btnRotate.ToolTipText" xml:space="preserve">
-    <value>Rotate 90° clockwise</value>
-  </data>
-  <data name="btnFlipH.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 22</value>
-  </data>
-  <data name="btnFlipH.Text" xml:space="preserve">
-    <value>Horizontal</value>
-  </data>
-  <data name="btnFlipV.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 22</value>
-  </data>
-  <data name="btnFlipV.Text" xml:space="preserve">
-    <value>Vertical</value>
-  </data>
-  <data name="btnFlip.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJCSURBVDhPlVNdSFNhGD7QfUT3XUQUSMGozWQzCw3FO29S
-        osCi2wJzjZxtc170A10UUVJhuA3tzvZ7ZhfhXLadHJtQGP0x2c52KDanNdPWmvr0fh/bCkaiDzx833nP
-        9z7f+z7nPcJ20WYV25vN4liLWUTb4MRCObw5TlJSi8n39Hi/F3pbFKOSgvk80Gz2Qeh+PPPs9FAYnfdD
-        VXYxPgjhzEMJ7VZ/Tm+LYTSs4GNuA5H0b9ijWSR/ACdIUGDJm0Hd64SyCgQTBTyZyeD2ZAo3XiSRXAZY
-        RQK7kcH1/iv8nzOYkhdx0ODGuWGJx1U941yga0jC0WteDEcyuDet1ApMU+Lb7DIO93lhk2So+308Xq93
-        IVcCGqhfx2uZi9hnF5BaKbdQEfi0tELJHtyZSnBqyeUGom7AD63FD51F5PG7wQQ0Rg+yRTLRRCZ2klkM
-        B6jXm5NpdIzMQe+Jk1EZ2GPZv6RnFmfvbwUUXlErCVcryJfWoLrqxnlnCheIjRZftQIdHTw2IPI4o8bo
-        /qeCisAvapSgMrjQG8hDQ/0xVDzQ0o2GYB71lPxKLtSaWFpfxwbfAXV6JwbH3/A9+wrMsIuOWRzpcyP2
-        pYiXiVXMfy8LbGUOmMCHRUCSfyKiFGktIP6tLND9KLxUM4lkbGUSW60TNL4xOEJpvMus0TQCc7SyUeYC
-        BBVR/T/u2lPXpD573dR4ZSzcRAmXR6JcLE4tcBO3gB3E3cT9RPWhU8ZLuh7Hc/YjdVidAXZgu9hJ3Euk
-        CoV9fwC8oF79P7x6JAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnFlip.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnFlip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 22</value>
-  </data>
-  <data name="btnFlip.Text" xml:space="preserve">
-    <value>Flip</value>
-  </data>
-  <data name="ToolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="btnToGrayscale.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnToGrayscale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnToGrayscale.Text" xml:space="preserve">
-    <value>Convert to grayscale</value>
-  </data>
-  <data name="ToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="btnRubber.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnRubber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnRubber.Text" xml:space="preserve">
-    <value>Rubber</value>
-  </data>
-  <data name="btnRubber0.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnRubber0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnRubber0.Text" xml:space="preserve">
-    <value>Small rubber</value>
-  </data>
-  <data name="btnRubber0.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnRubber1.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnRubber1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnRubber1.Text" xml:space="preserve">
-    <value>Medium rubber</value>
-  </data>
-  <data name="btnRubber1.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnRubber2.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnRubber2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnRubber2.Text" xml:space="preserve">
-    <value>Big rubber</value>
-  </data>
-  <data name="btnRubber2.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnRubber3.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnRubber3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnRubber3.Text" xml:space="preserve">
-    <value>Giant rubber</value>
-  </data>
-  <data name="btnRubber3.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="btnShowCutBorders.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnShowCutBorders.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnShowCutBorders.Text" xml:space="preserve">
-    <value>Show crop borders</value>
-  </data>
-  <data name="btnCut.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnCut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnCut.Text" xml:space="preserve">
-    <value>Crop</value>
-  </data>
-  <data name="btnCut.ToolTipText" xml:space="preserve">
-    <value>Crop the image</value>
-  </data>
-  <data name="btnCut.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="btnStop.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnStop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnStop.Text" xml:space="preserve">
-    <value>Commit changes</value>
-  </data>
-  <data name="btnStop.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="tbMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tbMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>819, 25</value>
-  </data>
-  <data name="tbMain.TabIndex" type="System.Int32, mscorlib">
-    <value>120</value>
-  </data>
-  <data name="tbMain.Text" xml:space="preserve">
-    <value>ToolStrip1</value>
-  </data>
-  <data name="&gt;&gt;tbMain.Name" xml:space="preserve">
-    <value>tbMain</value>
-  </data>
-  <data name="&gt;&gt;tbMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbMain.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tbMain.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <metadata name="tipStandard.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1042, 22</value>
+  </metadata>
+  <data name="RibbonPage2.Text" xml:space="preserve">
+    <value>RibbonPage2</value>
+  </data>
+  <metadata name="mnuPreview.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>182, 41</value>
+  </metadata>
+  <metadata name="mnuStations.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>300, 41</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -836,249 +478,215 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>819, 507</value>
   </data>
-  <data name="frmSketchEdit.IconOptions.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAu7u9/7a3uf+2t7j/tre5/7Cwsv+2t7n/tba4/7a3uf+2trj/tre5/7O0tf+ioqP/qqqr/5GR
-        nv8qMJ//JCmh/yMoif8jKZH/JCmh/zg9pP+Rk5r/KS0x/4eHiP+2t7j/srK0/7Cwsv+Mi4v/o6Kk/7a3
-        uf+7u73/AAAAALu7vf/29vb///////39/f//////7+7t///////+/v3//v7+//7+/v/5+fj/w8HA/87M
-        yv/s6+r/hYjX/x0l2v80ObT/KS02/xcbJ/8bIqT/HSXa/7W48P/Pz8//6+rq//39/f+7uLX/nJqW/8vJ
-        x//b2dj/2NbV/9rZ2f+rrK3/tre5//X19f/6+vr///7+//7+/v/w7+7//v7+/+jn5v/9/f3/0dDO/9XU
-        0v/29vb/3dza//v7+/95fuf/HSXa/yYrVf8XGx//Fxsf/xgeWP8dJdr/mJzt/+3s6//49/f/8fHx/+bk
-        4//n5uX/u7i1/+vr6v/+/v7//v7+/7a2uP+2t7n/zc3M/+jo6P/+/v7///////Lx8f///v7/7ezr//7+
-        /v/6+vn/7Ozr//7+/v/My8r/eHp8/21y0/8dJdr/RUqp/x0hJf8iJir/KzCQ/xwl2v+jpu//7Ovq/8/N
-        zP/b2tn//Pz8/8LAvv/Ewr//vbu5//b29f/+/v7/tra4/7a3uf/Ozs3/6Ojo//39/f//////9fT0/8jH
-        z//i4eD//v7+/+3s6//v7u7/lJWX/yQoK/8XGx7/XWB6/y423P8iKtr/Jy67/y00wv8dJdr/MDbS/9LR
-        2v/g393/3Nva/+no5//f3tz/2djW/9rY1v/h397/6Ofm//T09P+2trj/tre5/8bGxv/l5eX//v7+/7W4
-        8/9YXuL/MDjd/25z5f+6vNv/zMrI/+Hg3/+Nj5H/Fxsf/xcbH/8lKS3/qarP/0NJ2P8hKdr/ICja/1Zc
-        4//h4vj//Pz8//7+/v/+/v7//v7+//7+/v/x8fD/6Ofm//j39/+joZ3/1dPR/7S0tv+2t7n/x8fG/+Xk
-        5P+Slu3/HSXa/x0l2f8dJdr/HSXa/xwkzf+4ud///f39//f39/8tMTT/LC8z/5CSlP/09PT/1tTT/+fn
-        6v/p6vv/+/v7//39/f/+/f3//v7+//7+/v/+/v7//v7+//7+/v/19PT/0M7M/9bV1P/Ny8n/Y2Jg/7a3
-        uf/Hx8f/zMzh/ysy3P88Q9//0tLp/0ZJUv8ZH2v/HCXa/11j5P/9/Pz//Pz8/62trf/Pzsz/5+Xk/9zb
-        2f/8/Pz//f39//7+/v/+/v7//Pz8//39/f/9/f3//f39//7+/v/+/v7//f39//7+/v/q6en/8fDw//v7
-        +/+0tLb/tre5/8fHxv+7vN7/HCTa/3l+5f+jo6T/VVhb/xcbI/8cJMv/Ji3H/7S0s//+/v7///7+/9DN
-        zP/49/f//v7+//7+/v/+/v7////////////+/v7//v7+//7+/v/+/v7//v7+///////+/v7//v7+//Dw
-        7//y8fH//v7+/7a3uf+2t7n/yMjH/8LD3/8iKtr/RkvV/6Wjqf89QEP/Fxse/xccN/8qMHT/ysvM/+jo
-        6f/9/f3/1dPR///+/v/+/v7//Pv7//7+/v////////////7+/v//////////////////////////////
-        /////////Pz8//v7+//+/v7/tra4/7a3uf/IyMf/5ubl/21z5/8dJdr/Nz3X/z5Ck/8XGyH/Fxsf/xcb
-        Hv8XGx7/KCww/1NVWP+rrK7/6Ojo//v7/P///v7//v7+//7+/v///////v7+//7+/v////////////7+
-        /v////////////7+/v/+/v7///////////+2t7n/tre5/8nIyP/l5eT/9vb8/2Rp5P8fJ9f/HSTa/xgd
-        U/8XGh//Jiou/6+xsv+jpab/YmRm/yIlKf8XGx//Sk1Q/5SWmP/m5uf///////////////////////7+
-        /v/+/v7//v7+///////+/v7////////////+/v7//////7a3uf+2t7n/yMjH/+bm5f/w7+7/7ezs/3N2
-        jP8YHlj/Fxsg/xcbH/9hY2X/1tXT//7+/f/S0M///v7+/7y9vv9vcnT/QENH/zQ4O/+1trf//v7+//7+
-        /v/+/v7//v7+//7+/v/+/v7//v7+////////////////////////////tre5/7a3uf/IyMf/39/e/+De
-        3f/t7Oz/mpub/xcaH/9TVln/S05R/yMnK/+trKz//v7+//39/f/+/v7///7+//38/f/z9PT/UFNW/xgc
-        IP+Ehoj//Pz8//7+/v/+/v7//v7+//7+/v/+/v7///////////////////////////+2t7n/tre5/8jI
-        x//d3dz/0tDP/9/d3P/W1NP/s7Kw/9/d3f/s6+v/YmVn/0pNUP/g4OD/7+7t/9DOzf/s6+r/kZOU/56g
-        of9+gYP/Fxsf/yksMP9WWVz/3t/f//7+/v///////v7+/////////////v7+//7+/v///////v7+/7a3
-        uf+2t7n/yMfH/+Xl5f/r6ur/4N/e/+Hg3//9/f3/+/v7//7+/v+/vr3/JCgr/5CSk//s6+r/5uXk//7+
-        /v/4+Pj/SUxP/xcbHv9ER0v/09TU/1VYW/82Oj3/srS1///////+/v7//////////////////v7+//7+
-        /v/+/v7/tre5/7a3uf/Ozc3/6Ojo//r6+v/l5OP/7Ovq/5GRkf9eYWP/P0NG/5CQkv+pqqv/Ki4y/9zd
-        3v/n5+f/gIKE/62usP9XWl3/Ki4y/yUpLf+OkJL/8/Pz/3x+gf8hJCj/h4mL//f39////////v7+//7+
-        /v/+/v7//v7+//7+/v+2t7n/tre5/+7t7f/29vb//f38/8rJx//y8fH/UlNW/xcbH/8XGx//dXZ3/9va
-        2P9bXV//V1pd/+3t7f+2t7j/Fxse/yAkKP/T1NT/qqyt/xwgJP9eYWT/8PDw/52fof8fIyf/YGNl//T0
-        9f///////////////////////////7a3uf+2t7n/7u3t//f39//+/v7/+Pf3//b19f9ZW1v/Fxoe/xca
-        Hv9GSEv/x8XE/+Dg4f8xNTj/KS0x/0lNUP8XGx//GR0h/zg7Pv/l5eb/09TU/zxAQ/9LTlH/09TV/9rb
-        2/8uMjb/LDA0/9zc3f/+/v7/////////////////tre5/7a3uf/t7e3/8PDv//r5+v/z8vL/6uno/8HB
-        wv9GR0f/oKGi/8XFxf/n5uX/5+bl/97e3/9BREf/Fxsf/3h6fP/19fX/U1ZZ/xcbH/+xs7T/6+vr/3V3
-        ef8iJin/rK6v//z8/P9gY2b/Fhsf/56fof////////////////+2t7n/tre5/9fX1v/t7Oz//f39/9/e
-        3f/w7+//5OPi/5aY1P9yd+T/am7b/56f0//o6Of//v7+/+Pi4v95e33/HyMn/4qMjv/t7e3/nJ6f/xoe
-        Iv+DhYj/9/f3/4eJi/8kJyv/fH6B/+jp6f+rrK7/HSEl/1hbXv/09PT//////7a3uf+2t7n/4eDg//Hx
-        8f/+/v7//v7+/+Lh4f+DiOr/HSXa/x0l2v8dJdr/Hyfa/1he4//+/v7/3NrZ//7+/v+xsrP/LzI2/1BT
-        Vv/h4uL/zs/Q/ywwM/9YW17/29vc/8HCw/8zNjr/QURI/+zs7P/X2Nn/Nzs+/zI2Of/Q0NH/tre5/7a3
-        uf/39/b/+/v7//39/f//////uLja/x0l2v8cI8H/GB5Y/xgdRf8bIqf/Hiba/62v5//19PT//v7+//7+
-        /v/k5OX/SEtP/yQoLP/Cw8T/09TU/1ZZXP80Nzv/s7S1/+7u7/9SVVj/LjE1/7u9vv/f3+D/YGNl/yUp
-        Lf9TVln/tre5/+nn5//x8O//+/r6/+/u7v+Wl9r/HSXa/xkfdP8WGh//Fhsf/1NWeP8dJNr/U1fO/+7t
-        7f/q6ej//v7+///////7+/v/dnl7/x0hJf+LjY//8/Pz/32Agv8fIyf/hoiK//j4+P+GiIr/Iycq/3+B
-        g//19vb/jI6Q/yYpLf+2t7n/+fn5//z8/P/6+vr/sLGy/1tgpf8dJdr/Vlq4/zc5PP8WGx7/TVF9/xwk
-        2v9UWM3/+Pj3//7+/v//////////////////////vb6//x0hJf9eYWP/7u7v/6qsrf8xNDj/W15h/9rb
-        3P+0tbf/JSks/1FUV//m5+f/oaKk/7a2uP/5+Pj/z8/Q/0pNUP8XGh7/Fxw4/x0l2v8uNdr/VVqy/yku
-        df81PNL/HyfZ/6us0P/X1dP/5OTj////////////////////////////0tPT/0FESP87PkL/w8TF/9/g
-        4P9KTVD/Ky4y/9fY2f/Y2dr/T1JV/zU4PP9sbnH/tre5//Py8v++vbz/HB8j/xcbHv8XGx//Jyxx/x4m
-        2f8cJdr/HCXa/yMq2/9rb9b//fz8//j39v/z8/L//v7+//7+/v//////////////////////7Ozs/3Z5
-        e/8gJCj/j5GT//39/f9laGr/GR0h/5eZm//z8/T/g4WH/yAjJ/9+f4L/5uTk/6qopf9PT0//GBwg/0lK
-        S/+UkpD/oZ+8/5SW4/+ChNH/l5Wr/+Hf3v/5+Pj/+Pj3//7+/v/+/v7//v7+////////////////////
-        /////////Pz8/6WmqP8lKCz/YGNl/+Xl5v+srq//ICQo/1daXf/x8fL/jo+S/yMmKv+enp3/7ezs/7Cu
-        q/+mpKT/q6el/725uP+npKH/rquo/7i1s//S0M//9PPy/+7s6//39vb///////7+/v/+/v7/////////
-        /////////////////////////////8nKyv9KTVD/QENH/76/wP/W19j/Oj5B/zI2Of+Fh4n/ICMn/1xe
-        YP/p6Of/3NrZ/+3r6v+zsK3/ycXE/5yYlf+sqab/3Nva//Tz8v/x8O//9/f2//39/f///////v7+//7+
-        /v/////////////////+/v7///////////////////////Dw8f9tb3L/IiYq/5aYmv/m5uf/c3V4/yAj
-        J/+WmJr/w8LA/8jGxP/7+/v/+fj4/93a2f+rp6T/m5iU/7Guq//j4eD/9/b2//Tz8v/9/f3/////////
-        ///+/v7//v7+/////////////////////////////v7+//7+/v////////////7+/v+KjI7/HSEk/2ps
-        b//Y2Nn/lpia/wAAAACvr7D/r6+x/5GRkf+YmJj/e3p5/3p4d/90c3L/mZeY/5+en/+vrrD/rq2u/7W1
-        t/+2t7n/tre5/7a3uf+2t7n/tre5/7a3uf+2t7n/tre5/7a3uf+2t7n/tre5/7a3uf+2t7n/tre5/7a3
-        uf+Fh4n/ICMn/36Agv8AAAAAgAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAE=
-</value>
-  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Edit sketch:</value>
   </data>
-  <data name="&gt;&gt;colTrigpointName.Name" xml:space="preserve">
-    <value>colTrigpointName</value>
+  <data name="&gt;&gt;cmdOk.Name" xml:space="preserve">
+    <value>cmdOk</value>
   </data>
-  <data name="&gt;&gt;colTrigpointName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuTrigpointsFilterBy.Name" xml:space="preserve">
-    <value>mnuTrigpointsFilterBy</value>
+  <data name="&gt;&gt;cmdCancel.Name" xml:space="preserve">
+    <value>cmdCancel</value>
   </data>
-  <data name="&gt;&gt;mnuTrigpointsFilterBy.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuTrigpointsRemoveFilter.Name" xml:space="preserve">
-    <value>mnuTrigpointsRemoveFilter</value>
+  <data name="&gt;&gt;btnLoadImage.Name" xml:space="preserve">
+    <value>btnLoadImage</value>
   </data>
-  <data name="&gt;&gt;mnuTrigpointsRemoveFilter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnLoadImage.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem3.Name" xml:space="preserve">
-    <value>ToolStripMenuItem3</value>
+  <data name="&gt;&gt;btnUndo.Name" xml:space="preserve">
+    <value>btnUndo</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnUndo.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuTrigpointsShowSplay.Name" xml:space="preserve">
-    <value>mnuTrigpointsShowSplay</value>
+  <data name="&gt;&gt;btnRotate.Name" xml:space="preserve">
+    <value>btnRotate</value>
   </data>
-  <data name="&gt;&gt;mnuTrigpointsShowSplay.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnRotate.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewAdd.Name" xml:space="preserve">
-    <value>mnuPreviewAdd</value>
+  <data name="&gt;&gt;btnFlipH.Name" xml:space="preserve">
+    <value>btnFlipH</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnFlipH.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewAddExtra.Name" xml:space="preserve">
-    <value>mnuPreviewAddExtra</value>
+  <data name="&gt;&gt;btnFlipV.Name" xml:space="preserve">
+    <value>btnFlipV</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewAddExtra.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnFlipV.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewEditDistance.Name" xml:space="preserve">
-    <value>mnuPreviewEditDistance</value>
+  <data name="&gt;&gt;btnRescale.Name" xml:space="preserve">
+    <value>btnRescale</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewEditDistance.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnRescale.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarSubItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem1.Name" xml:space="preserve">
-    <value>ToolStripMenuItem1</value>
+  <data name="&gt;&gt;btnRescale0.Name" xml:space="preserve">
+    <value>btnRescale0</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnRescale0.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewRemove.Name" xml:space="preserve">
-    <value>mnuPreviewRemove</value>
+  <data name="&gt;&gt;btnRescale1.Name" xml:space="preserve">
+    <value>btnRescale1</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewRemove.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnRescale1.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewRemoveAll.Name" xml:space="preserve">
-    <value>mnuPreviewRemoveAll</value>
+  <data name="&gt;&gt;btnRescale2.Name" xml:space="preserve">
+    <value>btnRescale2</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewRemoveAll.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnRescale2.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem2.Name" xml:space="preserve">
-    <value>ToolStripMenuItem2</value>
+  <data name="&gt;&gt;btnRescale3.Name" xml:space="preserve">
+    <value>btnRescale3</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnRescale3.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewSetTransparent.Name" xml:space="preserve">
-    <value>mnuPreviewSetTransparent</value>
+  <data name="&gt;&gt;btnToGrayscale.Name" xml:space="preserve">
+    <value>btnToGrayscale</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewSetTransparent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnToGrayscale.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold.Name" xml:space="preserve">
-    <value>mnuPreviewTransparentThreshold</value>
+  <data name="&gt;&gt;btnRubber.Name" xml:space="preserve">
+    <value>btnRubber</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnRubber.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold1.Name" xml:space="preserve">
-    <value>mnuPreviewTransparentThreshold1</value>
+  <data name="&gt;&gt;btnRubberSize.Name" xml:space="preserve">
+    <value>btnRubberSize</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnRubberSize.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarEditItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold2.Name" xml:space="preserve">
-    <value>mnuPreviewTransparentThreshold2</value>
+  <data name="&gt;&gt;pbRubberSize.Name" xml:space="preserve">
+    <value>pbRubberSize</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;pbRubberSize.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemTrackBar, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold3.Name" xml:space="preserve">
-    <value>mnuPreviewTransparentThreshold3</value>
+  <data name="&gt;&gt;btnCropStart.Name" xml:space="preserve">
+    <value>btnCropStart</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnCropStart.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold4.Name" xml:space="preserve">
-    <value>mnuPreviewTransparentThreshold4</value>
+  <data name="&gt;&gt;btnCrop.Name" xml:space="preserve">
+    <value>btnCrop</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnCrop.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold5.Name" xml:space="preserve">
-    <value>mnuPreviewTransparentThreshold5</value>
+  <data name="&gt;&gt;btnStop.Name" xml:space="preserve">
+    <value>btnStop</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnStop.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold6.Name" xml:space="preserve">
-    <value>mnuPreviewTransparentThreshold6</value>
+  <data name="&gt;&gt;btnSetTransparent.Name" xml:space="preserve">
+    <value>btnSetTransparent</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnSetTransparent.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold7.Name" xml:space="preserve">
-    <value>mnuPreviewTransparentThreshold7</value>
+  <data name="&gt;&gt;btnTransparency.Name" xml:space="preserve">
+    <value>btnTransparency</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnTransparency.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarSubItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold8.Name" xml:space="preserve">
-    <value>mnuPreviewTransparentThreshold8</value>
+  <data name="&gt;&gt;btnTransparentThreshold.Name" xml:space="preserve">
+    <value>btnTransparentThreshold</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnTransparentThreshold.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarEditItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold9.Name" xml:space="preserve">
-    <value>mnuPreviewTransparentThreshold9</value>
+  <data name="&gt;&gt;txtTransparentThreshold.Name" xml:space="preserve">
+    <value>txtTransparentThreshold</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;txtTransparentThreshold.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemTrackBar, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold10.Name" xml:space="preserve">
-    <value>mnuPreviewTransparentThreshold10</value>
+  <data name="&gt;&gt;btnDeleteTransparent.Name" xml:space="preserve">
+    <value>btnDeleteTransparent</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnDeleteTransparent.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold11.Name" xml:space="preserve">
-    <value>mnuPreviewTransparentThreshold11</value>
+  <data name="&gt;&gt;btnAdd.Name" xml:space="preserve">
+    <value>btnAdd</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewTransparentThreshold11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnAdd.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewDeleteTransparent.Name" xml:space="preserve">
-    <value>mnuPreviewDeleteTransparent</value>
+  <data name="&gt;&gt;btnAddExtra.Name" xml:space="preserve">
+    <value>btnAddExtra</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewDeleteTransparent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnAddExtra.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewStop.Name" xml:space="preserve">
-    <value>mnuPreviewStop</value>
+  <data name="&gt;&gt;btnEditDistance.Name" xml:space="preserve">
+    <value>btnEditDistance</value>
   </data>
-  <data name="&gt;&gt;mnuPreviewStop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnEditDistance.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnRemove.Name" xml:space="preserve">
+    <value>btnRemove</value>
+  </data>
+  <data name="&gt;&gt;btnRemove.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnRemoveAll.Name" xml:space="preserve">
+    <value>btnRemoveAll</value>
+  </data>
+  <data name="&gt;&gt;btnRemoveAll.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnShowSplays.Name" xml:space="preserve">
+    <value>btnShowSplays</value>
+  </data>
+  <data name="&gt;&gt;btnShowSplays.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;RibbonPage1.Name" xml:space="preserve">
+    <value>RibbonPage1</value>
+  </data>
+  <data name="&gt;&gt;RibbonPage1.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Ribbon.RibbonPage, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;RibbonPageGroup1.Name" xml:space="preserve">
+    <value>RibbonPageGroup1</value>
+  </data>
+  <data name="&gt;&gt;RibbonPageGroup1.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;RibbonPageGroup2.Name" xml:space="preserve">
+    <value>RibbonPageGroup2</value>
+  </data>
+  <data name="&gt;&gt;RibbonPageGroup2.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;RibbonPageGroup3.Name" xml:space="preserve">
+    <value>RibbonPageGroup3</value>
+  </data>
+  <data name="&gt;&gt;RibbonPageGroup3.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;imlStations.Name" xml:space="preserve">
     <value>imlStations</value>
@@ -1086,190 +694,34 @@
   <data name="&gt;&gt;imlStations.Type" xml:space="preserve">
     <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnLoadImage.Name" xml:space="preserve">
-    <value>btnLoadImage</value>
-  </data>
-  <data name="&gt;&gt;btnLoadImage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator2.Name" xml:space="preserve">
-    <value>ToolStripSeparator2</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnUndo.Name" xml:space="preserve">
-    <value>btnUndo</value>
-  </data>
-  <data name="&gt;&gt;btnUndo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator4.Name" xml:space="preserve">
-    <value>ToolStripSeparator4</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnZoomIn.Name" xml:space="preserve">
-    <value>btnZoomIn</value>
-  </data>
-  <data name="&gt;&gt;btnZoomIn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnZoomOut.Name" xml:space="preserve">
-    <value>btnZoomOut</value>
-  </data>
-  <data name="&gt;&gt;btnZoomOut.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator8.Name" xml:space="preserve">
-    <value>ToolStripSeparator8</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnRescale.Name" xml:space="preserve">
-    <value>btnRescale</value>
-  </data>
-  <data name="&gt;&gt;btnRescale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnRescale0.Name" xml:space="preserve">
-    <value>btnRescale0</value>
-  </data>
-  <data name="&gt;&gt;btnRescale0.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnRescale1.Name" xml:space="preserve">
-    <value>btnRescale1</value>
-  </data>
-  <data name="&gt;&gt;btnRescale1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnRescale2.Name" xml:space="preserve">
-    <value>btnRescale2</value>
-  </data>
-  <data name="&gt;&gt;btnRescale2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnRescale3.Name" xml:space="preserve">
-    <value>btnRescale3</value>
-  </data>
-  <data name="&gt;&gt;btnRescale3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnRotate.Name" xml:space="preserve">
-    <value>btnRotate</value>
-  </data>
-  <data name="&gt;&gt;btnRotate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnFlip.Name" xml:space="preserve">
-    <value>btnFlip</value>
-  </data>
-  <data name="&gt;&gt;btnFlip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnFlipH.Name" xml:space="preserve">
-    <value>btnFlipH</value>
-  </data>
-  <data name="&gt;&gt;btnFlipH.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnFlipV.Name" xml:space="preserve">
-    <value>btnFlipV</value>
-  </data>
-  <data name="&gt;&gt;btnFlipV.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator6.Name" xml:space="preserve">
-    <value>ToolStripSeparator6</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnToGrayscale.Name" xml:space="preserve">
-    <value>btnToGrayscale</value>
-  </data>
-  <data name="&gt;&gt;btnToGrayscale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator1.Name" xml:space="preserve">
-    <value>ToolStripSeparator1</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnRubber.Name" xml:space="preserve">
-    <value>btnRubber</value>
-  </data>
-  <data name="&gt;&gt;btnRubber.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnRubber0.Name" xml:space="preserve">
-    <value>btnRubber0</value>
-  </data>
-  <data name="&gt;&gt;btnRubber0.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnRubber1.Name" xml:space="preserve">
-    <value>btnRubber1</value>
-  </data>
-  <data name="&gt;&gt;btnRubber1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnRubber2.Name" xml:space="preserve">
-    <value>btnRubber2</value>
-  </data>
-  <data name="&gt;&gt;btnRubber2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnRubber3.Name" xml:space="preserve">
-    <value>btnRubber3</value>
-  </data>
-  <data name="&gt;&gt;btnRubber3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator5.Name" xml:space="preserve">
-    <value>ToolStripSeparator5</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnShowCutBorders.Name" xml:space="preserve">
-    <value>btnShowCutBorders</value>
-  </data>
-  <data name="&gt;&gt;btnShowCutBorders.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnCut.Name" xml:space="preserve">
-    <value>btnCut</value>
-  </data>
-  <data name="&gt;&gt;btnCut.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator7.Name" xml:space="preserve">
-    <value>ToolStripSeparator7</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnStop.Name" xml:space="preserve">
-    <value>btnStop</value>
-  </data>
-  <data name="&gt;&gt;btnStop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;tipStandard.Name" xml:space="preserve">
     <value>tipStandard</value>
   </data>
   <data name="&gt;&gt;tipStandard.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;RibbonPage2.Name" xml:space="preserve">
+    <value>RibbonPage2</value>
+  </data>
+  <data name="&gt;&gt;RibbonPage2.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Ribbon.RibbonPage, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;mnuPreview.Name" xml:space="preserve">
+    <value>mnuPreview</value>
+  </data>
+  <data name="&gt;&gt;mnuPreview.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;mnuStations.Name" xml:space="preserve">
+    <value>mnuStations</value>
+  </data>
+  <data name="&gt;&gt;mnuStations.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmSketchEdit</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>DevExpress.XtraBars.Ribbon.RibbonForm, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
 </root>

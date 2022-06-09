@@ -144,7 +144,7 @@
   <data name="cmdOk.Text" xml:space="preserve">
 		<value>Elabora</value>
 	</data>
-  <data name="chkBackup.Text" xml:space="preserve">
+  <data name="chkBackup.Properties.Caption" xml:space="preserve">
 		<value>Salva dati attuali</value>
 	</data>
   <data name="RadioButton4.Text" xml:space="preserve">
@@ -171,7 +171,7 @@
   <data name="frmBackup.Text" xml:space="preserve">
 		<value>Salva:</value>
 	</data>
-  <data name="chkRestoreDeleteBackupAfterRestore.Text" xml:space="preserve">
+  <data name="chkRestoreDeleteBackupAfterRestore.Properties.Caption" xml:space="preserve">
 		<value>Elimina backup dopo il recupero</value>
 	</data>
   <data name="Label5.Text" xml:space="preserve">
@@ -186,19 +186,19 @@
   <data name="frmMode2.Text" xml:space="preserve">
     <value>Opzioni:</value>
   </data>
-  <data name="chkMode2OnlyCutSplay.Text" xml:space="preserve">
+  <data name="chkMode2OnlyCutSplay.Properties.Caption" xml:space="preserve">
     <value>Usa solo cut splay</value>
   </data>
-  <data name="chkShotWithLRUD.Text" xml:space="preserve">
+  <data name="chkShotWithLRUD.Properties.Caption" xml:space="preserve">
     <value>con LRUD inseriti manualmente</value>
   </data>
-  <data name="chkShotWithCalculatedLRUD.Text" xml:space="preserve">
+  <data name="chkShotWithCalculatedLRUD.Properties.Caption" xml:space="preserve">
     <value>con LRUD precedentemente calcolati</value>
   </data>
-  <data name="chkShotWithoutLRUD.Text" xml:space="preserve">
+  <data name="chkShotWithoutLRUD.Properties.Caption" xml:space="preserve">
     <value>senza LRUD</value>
   </data>
-  <data name="chkMarkAsCalculated.Text" xml:space="preserve">
+  <data name="chkMarkAsCalculated.Properties.Caption" xml:space="preserve">
     <value>Marca come calcolati</value>
   </data>
   <data name="lblSplayMode.Text" xml:space="preserve">

@@ -1,4 +1,4 @@
-﻿friend Class frmPrefixTrigPoints
+﻿Friend Class frmPrefixTrigPoints
 
     Private oSurvey As cSurvey.cSurvey
 
@@ -29,7 +29,7 @@
         Cursor = Cursors.WaitCursor
         Call ListBox1.Items.Clear()
         For Each oTrigpoint As cSurvey.cTrigPoint In oSurvey.TrigPoints
-            If (chkShowSplay.Checked) Or (Not chkShowSplay.Checked And Not oTrigpoint.Data.IsSplay) Then
+            If (chkShowSplay.Checked) OrElse (Not chkShowSplay.Checked AndAlso Not oTrigpoint.Data.IsSplay) Then
                 Dim sTrigpoint As String = oTrigpoint.Name
                 If Not ListBox2.Items.Contains(sTrigpoint) Then
                     Call ListBox1.Items.Add(sTrigpoint)
@@ -117,19 +117,11 @@
         Call Button1_Click(Nothing, Nothing)
     End Sub
 
-    Private Sub ListBox2_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListBox2.SelectedIndexChanged
+    Private Sub ListBox2_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListBox2.DoubleClick
         Call Button2_Click(Nothing, Nothing)
-    End Sub
-
-    Private Sub ListBox1_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles ListBox1.SelectedIndexChanged
-
     End Sub
 
     Private Sub chkShowSplay_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkShowSplay.CheckedChanged
         Call pLoadTrigpoints()
-    End Sub
-
-    Private Sub frmPrefixTrigPoints_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
     End Sub
 End Class

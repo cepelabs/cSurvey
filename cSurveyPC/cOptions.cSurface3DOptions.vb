@@ -8,6 +8,13 @@ Imports System.Collections.ObjectModel
 Namespace cSurvey.Design.Options
     Public Class cSurface3DOptions
         Implements IEnumerable
+        Implements cIUIBaseInteractions
+
+        Public Event OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Implements cIUIBaseInteractions.OnPropertyChanged
+
+        Public Sub PropertyChanged(Name As String) Implements cIUIBaseInteractions.PropertyChanged
+            RaiseEvent OnPropertyChanged(Me, New PropertyChangeEventArgs(Name))
+        End Sub
 
         Friend Class cSurface3DOptionsBaseCollection
             Inherits KeyedCollection(Of String, cSurface3DOptionsItem)
@@ -27,7 +34,7 @@ Namespace cSurvey.Design.Options
                     Return sAltitudeAmplification
                 End Get
                 Set(value As Single)
-                    If value >= 1 Then
+                    If value >= 1 AndAlso sAltitudeAmplification <> value Then
                         sAltitudeAmplification = value
                     End If
                 End Set
@@ -51,7 +58,7 @@ Namespace cSurvey.Design.Options
                 sAltitudeAmplification = modNumbers.StringToSingle(modXML.GetAttributeValue(Item, "altamp", "1"))
             End Sub
 
-            Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+            Friend Shadows Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
                 Dim oXMLSurfaceOptionsItem As XmlElement = MyBase.SaveTo(File, Document, Parent)
                 If sAltitudeAmplification <> 1 Then Call oXMLSurfaceOptionsItem.SetAttribute("altamp", modNumbers.NumberToString(sAltitudeAmplification))
                 Call Parent.AppendChild(oXMLSurfaceOptionsItem)
@@ -60,15 +67,11 @@ Namespace cSurvey.Design.Options
         End Class
 
         Public Class cSurface3DOptionsItem
+            Inherits Options.cSurfaceBaseOptionsItem
             Implements Options.cISurfaceOptionsItem
 
-            Private sID As String
             Private bVisible As Boolean
             Private sTransparency As Single
-
-            Friend Sub ChangeID(ID As String)
-                sID = ID
-            End Sub
 
             Public Property Transparency As Single Implements cISurfaceOptionsItem.Transparency
                 Get
@@ -92,32 +95,25 @@ Namespace cSurvey.Design.Options
                 End Set
             End Property
 
-            Public ReadOnly Property ID As String Implements cISurfaceOptionsItem.ID
-                Get
-                    Return sID
-                End Get
-            End Property
-
             Friend Sub New(ID As String)
-                sID = ID
+                MyBase.New(ID)
             End Sub
 
             Friend Sub New(Item As XmlElement)
-                sID = Item.GetAttribute("id")
+                MyBase.New(Item)
                 bVisible = modXML.GetAttributeValue(Item, "visible", 0)
                 sTransparency = modNumbers.StringToSingle(modXML.GetAttributeValue(Item, "transparency", "0"))
             End Sub
 
             Friend Overridable Function Clone() As cSurface3DOptionsItem
-                Dim oItem As cSurface3DOptionsItem = New cSurface3DOptionsItem(sID)
+                Dim oItem As cSurface3DOptionsItem = New cSurface3DOptionsItem(MyBase.ID)
                 oItem.bVisible = bVisible
                 oItem.sTransparency = sTransparency
                 Return oItem
             End Function
 
-            Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
-                Dim oXMLSurfaceOptionsItem As XmlElement = Document.CreateElement("surface3doptionsitem")
-                Call oXMLSurfaceOptionsItem.SetAttribute("id", sID)
+            Friend Shadows Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+                Dim oXMLSurfaceOptionsItem As XmlElement = MyBase.SaveTo("surface3doptionsitem", File, Document, Parent)
                 If bVisible Then Call oXMLSurfaceOptionsItem.SetAttribute("visible", "1")
                 If sTransparency > 0 Then Call oXMLSurfaceOptionsItem.SetAttribute("transparency", modNumbers.NumberToString(sTransparency))
                 Call Parent.AppendChild(oXMLSurfaceOptionsItem)
@@ -137,7 +133,10 @@ Namespace cSurvey.Design.Options
                 Return bVisible
             End Get
             Set(value As Boolean)
-                bVisible = value
+                If value <> bVisible Then
+                    bVisible = value
+                    Call PropertyChanged("DrawSurface")
+                End If
             End Set
         End Property
 
@@ -148,17 +147,20 @@ Namespace cSurvey.Design.Options
                 Else
                     Call oElevation.ChangeID(ID)
                 End If
+                Call PropertyChanged("Elevation")
             End If
         End Sub
 
         Public Sub SetElevation(SurfaceItem As Surface.cISurfaceItem)
             If oSurvey.Surface.Contains(SurfaceItem) Then
                 oElevation = New cSurface3DOptionsElevationItem(SurfaceItem.ID)
+                Call PropertyChanged("Elevation")
             End If
         End Sub
 
         Public Sub ResetElevation()
             Call oElevation.ChangeID("")
+            Call PropertyChanged("Elevation")
         End Sub
 
         Public ReadOnly Property Elevation As cSurface3DOptionsElevationItem
@@ -309,9 +311,11 @@ Namespace cSurvey.Design.Options
                 Call oItem.SaveTo(File, Document, oXMLSurfaceOptions)
             Next
 
-            Dim oXMLSurfaceOptionsElevation As XmlElement = Document.CreateElement("elevation")
-            Call oElevation.SaveTo(File, Document, oXMLSurfaceOptionsElevation)
-            Call oXMLSurfaceOptions.AppendChild(oXMLSurfaceOptionsElevation)
+            If oElevation.ID <> "" Then
+                Dim oXMLSurfaceOptionsElevation As XmlElement = Document.CreateElement("elevation")
+                Call oElevation.SaveTo(File, Document, oXMLSurfaceOptionsElevation)
+                Call oXMLSurfaceOptions.AppendChild(oXMLSurfaceOptionsElevation)
+            End If
 
             Call Parent.AppendChild(oXMLSurfaceOptions)
             Return oXMLSurfaceOptions

@@ -11,14 +11,14 @@ Namespace cSurvey.Design
 
         Private oSurvey As cSurvey
 
-        Public Overrides Function GetBounds(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions) As RectangleF
+        Public Overrides Function GetBounds(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline) As RectangleF
             Select Case PaintOptions.CompassStyle
-                Case cOptions.CompassStyleEnum.Simple
+                Case cOptionsDesign.CompassStyleEnum.Simple
                     Dim iBorder As Integer = 4
                     Dim iRadius As Integer = 40
                     Dim iRadiusFactor As Integer = 5
                     Return New RectangleF(0, 0, iRadiusFactor * 2 + iBorder * 2, iRadius + iBorder * 2)
-                Case cOptions.CompassStyleEnum.Advanced
+                Case cOptionsDesign.CompassStyleEnum.Advanced
                     Dim oClipart As cDrawClipArt = PaintOptions.CompassOptions.Clipart
                     Dim oMatrix As Matrix = New Matrix
                     Call oMatrix.Scale(PaintOptions.CompassOptions.ClipartZoomFactor, PaintOptions.CompassOptions.ClipartZoomFactor)
@@ -28,20 +28,20 @@ Namespace cSurvey.Design
             End Select
         End Function
 
-        Public Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptions)
+        Public Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptionsCenterline)
             Dim oCache As cDrawCache = MyBase.Caches(PaintOptions)
             With oCache
                 If .Invalidated Then
                     Call .Clear()
                     Dim oItem As cDrawCacheItem
                     Select Case PaintOptions.CompassStyle
-                        Case cOptions.CompassStyleEnum.Simple
+                        Case cOptionsDesign.CompassStyleEnum.Simple
                             oItem = oCache.AddBorder
                             Dim iBorder As Integer = 4
                             Dim iRadius As Integer = 40
                             Dim iRadiusFactor As Integer = 5
                             Dim iSize As Integer = iRadius * 2
-                            Using oArrowPen As Pen = New Pen(Color.Black, -1)
+                            Using oArrowPen As Pen = New Pen(Color.Black, cEditPaintObjects.FilettoPenWidth)
                                 Using oArrowBrush As Brush = New SolidBrush(Color.Black)
                                     Dim iPosX As Integer = Location.X + iRadiusFactor + iBorder
                                     Dim iPosY As Integer = Location.Y
@@ -60,8 +60,8 @@ Namespace cSurvey.Design
                                     End Using
                                 End Using
                             End Using
-                        Case cOptions.CompassStyleEnum.Advanced
-                            Using oPen As Pen = New Pen(PaintOptions.CompassOptions.Color, -1)
+                        Case cOptionsDesign.CompassStyleEnum.Advanced
+                            Using oPen As Pen = New Pen(PaintOptions.CompassOptions.Color, cEditPaintObjects.FilettoPenWidth)
                                 Using oForeColorBrush As Brush = New SolidBrush(PaintOptions.CompassOptions.Color)
                                     Using oBackColorBrush As Brush = New SolidBrush(Color.White) 'PaintOptions.PageColor)
                                         Dim oClipart As cDrawClipArt = PaintOptions.CompassOptions.Clipart
@@ -100,13 +100,13 @@ Namespace cSurvey.Design
             End With
         End Sub
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
             Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, Nothing)
             Call oSVGItem.SetAttribute("id", MyBase.Name)
             Return oSVGItem
         End Function
 
-        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
+        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
             Dim oSVG As XmlDocument = modSVG.CreateSVG
             Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
             Return oSVG
@@ -120,17 +120,17 @@ Namespace cSurvey.Design
         Friend Class cParameters
         End Class
 
-        Friend Overrides Sub Rebind(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal ViewArea As RectangleF, ByVal Parameters As Object)
-            Call MyBase.caches.invalidate()
+        Friend Overrides Sub Rebind(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal ViewArea As RectangleF, ByVal Parameters As Object)
+            Call MyBase.Caches.Invalidate()
             Dim oCompassSize As SizeF = GetBounds(Graphics, PaintOptions).Size
             Select Case PaintOptions.CompassPosition
-                Case cOptions.AlignmentEnum.TopLeft
+                Case cOptionsDesign.AlignmentEnum.TopLeft
                     MyBase.Location = New PointF(ViewArea.Left + 2, ViewArea.Top + 2)
-                Case cOptions.AlignmentEnum.TopRight
+                Case cOptionsDesign.AlignmentEnum.TopRight
                     MyBase.Location = New PointF(ViewArea.Right - 2 - oCompassSize.Width, ViewArea.Top + 2)
-                Case cOptions.AlignmentEnum.BottomLeft
+                Case cOptionsDesign.AlignmentEnum.BottomLeft
                     MyBase.Location = New PointF(ViewArea.Left + 2, ViewArea.Bottom - 2 - oCompassSize.Height)
-                Case cOptions.AlignmentEnum.BottomRight
+                Case cOptionsDesign.AlignmentEnum.BottomRight
                     MyBase.Location = New PointF(ViewArea.Right - 2 - oCompassSize.Width, ViewArea.Bottom - 2 - oCompassSize.Height)
             End Select
             Call Render(Graphics, PaintOptions)

@@ -15,7 +15,7 @@ Namespace cSurvey.Design
         Private oSurvey As cSurvey
         Private oPlot As cPlotPlan
 
-        Public Overrides Sub Paint(Graphics As Graphics, PaintOptions As cOptions, DrawOptions As cDrawOptions, Selection As Helper.Editor.cIEditDesignSelection)
+        Public Overrides Sub Paint(Graphics As Graphics, PaintOptions As cOptionsCenterline, DrawOptions As cDrawOptions, Selection As Helper.Editor.cIEditDesignSelection)
             MyBase.Paint(Graphics, PaintOptions, DrawOptions, Selection)
         End Sub
 
@@ -32,7 +32,7 @@ Namespace cSurvey.Design
             oPlot = New cPlotPlan(Survey)
         End Sub
 
-        Friend Overrides Sub Redraw(Optional Options As cOptions = Nothing)
+        Friend Overrides Sub Redraw(Optional Options As cOptionsCenterline = Nothing)
             Call MyBase.Redraw(Options)
             Call oPlot.Caches.Invalidate(Options)
             If Options.Survey Is oSurvey Then
@@ -108,7 +108,7 @@ Namespace cSurvey.Design
             Return Segment.Data.Plan
         End Function
 
-        Public Overrides Function GetBounds(PaintOptions As cOptions) As System.Drawing.RectangleF
+        Public Overrides Function GetBounds(PaintOptions As cOptionsCenterline) As System.Drawing.RectangleF
             Dim oDesignRect As RectangleF = MyBase.GetBounds(PaintOptions)
             Dim oSegmentsRect As RectangleF = oPlot.GetBounds(PaintOptions)
             If modPaint.IsRectangleEmpty(oDesignRect) And modPaint.IsRectangleEmpty(oSegmentsRect) Then
@@ -124,7 +124,7 @@ Namespace cSurvey.Design
             End If
         End Function
 
-        Public Overrides Function GetVisibleCaveBounds(ByVal PaintOptions As cOptions, ByVal Cave As String, Branch As String, ByVal IncludeDesign As Boolean) As RectangleF
+        Public Overrides Function GetVisibleCaveBounds(ByVal PaintOptions As cOptionsCenterline, ByVal Cave As String, Branch As String, ByVal IncludeDesign As Boolean) As RectangleF
             Dim oSegmentsRect As RectangleF = oPlot.GetVisibleCaveBounds(PaintOptions, Cave, Branch)
             If IncludeDesign Then
                 Dim oDesignRect As RectangleF = MyBase.GetVisibleCaveBounds(PaintOptions, Cave, Branch, IncludeDesign)
@@ -142,7 +142,7 @@ Namespace cSurvey.Design
             End If
         End Function
 
-        Public Overrides Function GetDesignVisibleBounds(ByVal PaintOptions As cOptions) As System.Drawing.RectangleF
+        Public Overrides Function GetDesignVisibleBounds(ByVal PaintOptions As cOptionsCenterline) As System.Drawing.RectangleF
             Dim oDesignRect As RectangleF
             Dim oSegmentsRect As RectangleF
             If PaintOptions.DrawDesign Then
@@ -164,7 +164,7 @@ Namespace cSurvey.Design
             End If
         End Function
 
-        Public Overrides Function GetVisibleBounds(ByVal PaintOptions As cOptions) As System.Drawing.RectangleF
+        Public Overrides Function GetVisibleBounds(ByVal PaintOptions As cOptionsCenterline) As System.Drawing.RectangleF
             Dim oDesignRect As RectangleF
             Dim oSegmentsRect As RectangleF
             If PaintOptions.DrawDesign Then
@@ -186,7 +186,7 @@ Namespace cSurvey.Design
             End If
         End Function
 
-        Public Overrides Function GetCaveBounds(Paintoptions As cOptions, ByVal Cave As String, ByVal Branch As String, ByVal IncludeDesign As Boolean) As System.Drawing.RectangleF
+        Public Overrides Function GetCaveBounds(Paintoptions As cOptionsCenterline, ByVal Cave As String, ByVal Branch As String, ByVal IncludeDesign As Boolean) As System.Drawing.RectangleF
             Dim oSegmentsRect As RectangleF = oPlot.GetCaveBounds(Paintoptions, Cave, Branch)
             If IncludeDesign Then
                 Dim oDesignRect As RectangleF = MyBase.GetCaveBounds(Paintoptions, Cave, Branch, IncludeDesign)
@@ -274,15 +274,15 @@ Namespace cSurvey.Design
             Call WarpItemsEx(Segment, Segment.Data.PlanWarpingFactor, False)
         End Sub
 
-        Private Sub pAppendSvgItem(ByVal SVG As XmlDocument, ByVal Parent As XmlElement, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum)
+        Private Sub pAppendSvgItem(ByVal SVG As XmlDocument, ByVal Parent As XmlElement, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum)
             Dim oBound As RectangleF = GetBounds(PaintOptions)
 
-            'Dim sExportScaleFactor As Single = modNumbers.StringToSingle(oSurvey.GetGlobalSetting("svg.exportscale", 1))
+            'Dim sExportScaleFactor As Single = modNumbers.StringToSingle(oHelper.Editor.cEditDesignEnvironment.GetSetting("svg.exportscale", 1))
             'Dim sScale As Single = Zoom * sExportScaleFactor
             'Call Parent.SetAttribute("transform", "translate(" & modNumbers.NumberToString(Translate.X) & "," & modNumbers.NumberToString(Translate.Y) & ") scale(" & modNumbers.NumberToString(sScale) & ")")
 
             If PaintOptions.DrawDesign Then
-                If PaintOptions.DesignStyle = cOptions.DesignStyleEnum.Design OrElse PaintOptions.DesignStyle = cOptions.DesignStyleEnum.Combined Then
+                If PaintOptions.DesignStyle = cOptionsDesign.DesignStyleEnum.Design OrElse PaintOptions.DesignStyle = cOptionsDesign.DesignStyleEnum.Combined Then
                     If (Options And cItem.SVGOptionsEnum.Clipping) = cItem.SVGOptionsEnum.Clipping Then
                         Using oMaskPaths As cMaskPaths = New cMaskPaths
                             Dim oBorderLayer As Layers.cLayerBorders = MyBase.Layers.Item(cLayers.LayerTypeEnum.Borders)
@@ -379,7 +379,7 @@ Namespace cSurvey.Design
                 End If
             End If
 
-            If PaintOptions.DesignStyle = cOptions.DesignStyleEnum.Areas Or PaintOptions.DesignStyle = cOptions.DesignStyleEnum.Combined Then
+            If PaintOptions.DesignStyle = cOptionsDesign.DesignStyleEnum.Areas Or PaintOptions.DesignStyle = cOptionsDesign.DesignStyleEnum.Combined Then
                 Dim bDrawCaveBorder As Boolean
                 Dim oBordersLayer As cSurveyPC.cSurvey.Design.Layers.cLayerBorders = MyBase.Layers(cLayers.LayerTypeEnum.Borders)
                 Dim oSVGArea As XmlElement = modSVG.CreateGroup(SVG, "area")
@@ -406,7 +406,7 @@ Namespace cSurvey.Design
                                 End If
                                 If bDrawCaveBorder Then
                                     Dim oColor As Color = oSurvey.Properties.CaveInfos.GetColor(oItem, Color.LightGray)
-                                    Using oBrush As SolidBrush = If(PaintOptions.DesignStyle = cOptions.DesignStyleEnum.Combined, New SolidBrush(Color.FromArgb(120, oColor)), New SolidBrush(oColor))
+                                    Using oBrush As SolidBrush = If(PaintOptions.DesignStyle = cOptionsDesign.DesignStyleEnum.Combined, New SolidBrush(Color.FromArgb(120, oColor)), New SolidBrush(oColor))
                                         If Not PaintOptions.IsDesign And PaintOptions.DrawTranslation Then
                                             Dim oTranslation As SizeF = GetItemTranslation(oItem)
                                             If Not oTranslation.IsEmpty Then
@@ -430,13 +430,13 @@ Namespace cSurvey.Design
             End If
         End Sub
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
             Dim oSVGGroup As XmlElement = modSVG.CreateLayer(SVG, "design", "design")
             Call pAppendSvgItem(SVG, oSVGGroup, PaintOptions, Options)
             Return oSVGGroup
         End Function
 
-        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, Size As SizeF, PageBox As RectangleF, Unit As SizeUnit, ByVal ViewBox As RectangleF) As XmlDocument
+        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum, Size As SizeF, PageBox As RectangleF, Unit As SizeUnit, ByVal ViewBox As RectangleF) As XmlDocument
             Call oSurvey.RaiseOnProgressEvent("svg", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, modMain.GetLocalizedString("design.svgexport.progressbegin1"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageExport Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage)
 
             Dim oBounds As RectangleF = New RectangleF(0, 0, Size.Width, Size.Height)
@@ -446,10 +446,10 @@ Namespace cSurvey.Design
             Dim oSVG As XmlDocument
             Dim oDesign As XmlElement
             If bLegacyObjects Then
-                oSVG = modSVG.CreateSVG(oSurvey.Name, Size, Unit, oBounds, SVGCreateFlagsEnum.AddInkScapeSettings)
+                oSVG = modSVG.CreateSVG(oSurvey.Name, Size, Unit, oBounds, SVGCreateFlagsEnum.AddInkscapeSettings)
                 oDesign = modSVG.CreateSubSVG(oSVG, "plan", PageBox, SizeUnit.none, ViewBox)
             Else
-                oSVG = modSVG.CreateSVG(oSurvey.Name, Size, Unit, ViewBox, SVGCreateFlagsEnum.AddInkScapeSettings)
+                oSVG = modSVG.CreateSVG(oSurvey.Name, Size, Unit, ViewBox, SVGCreateFlagsEnum.AddInkscapeSettings)
                 oDesign = modSVG.CreateLayer(oSVG, "plan", "plan")
             End If
             'Call modSVG.AppendRectangle(oSVG, oDesign, ViewBox, Nothing, PaintOptions.DrawingObjects.TranslationPen)

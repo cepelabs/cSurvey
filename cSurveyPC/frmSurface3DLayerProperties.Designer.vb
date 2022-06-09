@@ -23,11 +23,12 @@ Partial Class frmSurface3DLayerProperties
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSurface3DLayerProperties))
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.cmdOk = New System.Windows.Forms.Button()
-        Me.txtTransparency = New System.Windows.Forms.NumericUpDown()
-        Me.lblPropTransparency = New System.Windows.Forms.Label()
-        CType(Me.txtTransparency, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
+        Me.lblPropTransparency = New DevExpress.XtraEditors.LabelControl()
+        Me.trkTransparency = New DevExpress.XtraEditors.TrackBarControl()
+        CType(Me.trkTransparency, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.trkTransparency.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdCancel
@@ -35,25 +36,27 @@ Partial Class frmSurface3DLayerProperties
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'cmdOk
         '
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
-        '
-        'txtTransparency
-        '
-        resources.ApplyResources(Me.txtTransparency, "txtTransparency")
-        Me.txtTransparency.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
-        Me.txtTransparency.Name = "txtTransparency"
         '
         'lblPropTransparency
         '
         resources.ApplyResources(Me.lblPropTransparency, "lblPropTransparency")
         Me.lblPropTransparency.Name = "lblPropTransparency"
+        '
+        'trkTransparency
+        '
+        resources.ApplyResources(Me.trkTransparency, "trkTransparency")
+        Me.trkTransparency.Name = "trkTransparency"
+        Me.trkTransparency.Properties.AutoSize = False
+        Me.trkTransparency.Properties.LabelAppearance.Options.UseTextOptions = True
+        Me.trkTransparency.Properties.LabelAppearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.trkTransparency.Properties.Maximum = 255
+        Me.trkTransparency.Properties.TickFrequency = 15
         '
         'frmSurface3DLayerProperties
         '
@@ -61,21 +64,24 @@ Partial Class frmSurface3DLayerProperties
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
-        Me.Controls.Add(Me.txtTransparency)
+        Me.Controls.Add(Me.trkTransparency)
         Me.Controls.Add(Me.lblPropTransparency)
         Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.cmdOk)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.IconOptions.Icon = CType(resources.GetObject("frmSurface3DLayerProperties.IconOptions.Icon"), System.Drawing.Icon)
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.soilmodeldata
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSurface3DLayerProperties"
-        CType(Me.txtTransparency, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.trkTransparency.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.trkTransparency, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
-    Friend WithEvents txtTransparency As System.Windows.Forms.NumericUpDown
-    Friend WithEvents lblPropTransparency As System.Windows.Forms.Label
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents lblPropTransparency As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents trkTransparency As DevExpress.XtraEditors.TrackBarControl
 End Class

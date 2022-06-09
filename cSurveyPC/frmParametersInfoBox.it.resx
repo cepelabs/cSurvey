@@ -118,44 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblFontColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 13</value>
-  </data>
-  <data name="lblFontColor.Text" xml:space="preserve">
-    <value>Colore:</value>
-  </data>
-  <data name="lblPropTextFontChar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 13</value>
-  </data>
   <data name="lblPropTextFontChar.Text" xml:space="preserve">
     <value>Carattere:</value>
   </data>
-  <data name="lblTextFontSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 13</value>
-  </data>
   <data name="lblTextFontSize.Text" xml:space="preserve">
     <value>Dimensione:</value>
-  </data>
-  <data name="chkVisible.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 17</value>
-  </data>
-  <data name="chkVisible.Text" xml:space="preserve">
-    <value>Visibile</value>
-  </data>
-  <data name="tabName.Text" xml:space="preserve">
-    <value>Nome/titolo</value>
-  </data>
-  <data name="tabText.Text" xml:space="preserve">
-    <value>Testo</value>
-  </data>
-  <data name="cmdCancel.Text" xml:space="preserve">
-    <value>Annulla</value>
-  </data>
-  <data name="cmdApply.Text" xml:space="preserve">
-    <value>Applica</value>
-  </data>
-  <data name="lblWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 13</value>
   </data>
   <data name="lblWidth.Text" xml:space="preserve">
     <value>Larghezza:</value>
@@ -163,10 +130,28 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Box informativo:</value>
   </data>
-  <data name="cboTextFontSize.Items" xml:space="preserve">
+  <data name="GroupControl1.CustomHeaderButtons" xml:space="preserve">
+    <value>Rif. catastale</value>
+  </data>
+  <data name="GroupControl1.CustomHeaderButtons12" xml:space="preserve">
+    <value>Nome/titolo</value>
+  </data>
+  <data name="GroupControl1.CustomHeaderButtons24" xml:space="preserve">
+    <value>Testo</value>
+  </data>
+  <data name="GroupControl1.Text" xml:space="preserve">
+    <value>Carattere:</value>
+  </data>
+  <data name="cboTextFontSize.Properties.NullText" xml:space="preserve">
     <value>[Predefinito]</value>
   </data>
-  <data name="tabID.Text" xml:space="preserve">
-		<value>Rif. catastale</value>
-	</data>
+  <data name="chkVisible.Properties.Caption" xml:space="preserve">
+    <value>Visibile</value>
+  </data>
+  <data name="lblScaleColor.Text" xml:space="preserve">
+    <value>Colore:</value>
+  </data>
+  <data name="cboTextFontChar.Properties.NullText" xml:space="preserve">
+    <value>[Predefinito]</value>
+  </data>
 </root>

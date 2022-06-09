@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class frmParametersZOrder
-    Inherits cForm
+    Inherits DevExpress.XtraEditors.XtraUserControl
 
     'Form esegue l'override del metodo Dispose per pulire l'elenco dei componenti.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -24,35 +24,19 @@ Partial Class frmParametersZOrder
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmParametersZOrder))
-        Me.cmdApply = New System.Windows.Forms.Button()
-        Me.cmdOk = New System.Windows.Forms.Button()
-        Me.cmdCancel = New System.Windows.Forms.Button()
         Me.tvCaveInfos = New System.Windows.Forms.TreeView()
         Me.iml = New System.Windows.Forms.ImageList(Me.components)
-        Me.chkKeepCaveAndBranchGrouped = New System.Windows.Forms.CheckBox()
-        Me.cmdMoveUp = New System.Windows.Forms.Button()
-        Me.cmdMoveDown = New System.Windows.Forms.Button()
+        Me.chkKeepCaveAndBranchGrouped = New DevExpress.XtraEditors.CheckEdit()
+        Me.cmdMoveUp = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdMoveDown = New DevExpress.XtraEditors.SimpleButton()
+        Me.TreeList1 = New DevExpress.XtraTreeList.TreeList()
+        Me.colCaveBranch = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.txtCaveBranch = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
+        Me.colZOrder = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        CType(Me.chkKeepCaveAndBranchGrouped.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TreeList1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtCaveBranch, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'cmdApply
-        '
-        resources.ApplyResources(Me.cmdApply, "cmdApply")
-        Me.cmdApply.Name = "cmdApply"
-        Me.cmdApply.UseVisualStyleBackColor = True
-        '
-        'cmdOk
-        '
-        resources.ApplyResources(Me.cmdOk, "cmdOk")
-        Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
-        '
-        'cmdCancel
-        '
-        resources.ApplyResources(Me.cmdCancel, "cmdCancel")
-        Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'tvCaveInfos
         '
@@ -72,46 +56,84 @@ Partial Class frmParametersZOrder
         '
         resources.ApplyResources(Me.chkKeepCaveAndBranchGrouped, "chkKeepCaveAndBranchGrouped")
         Me.chkKeepCaveAndBranchGrouped.Name = "chkKeepCaveAndBranchGrouped"
-        Me.chkKeepCaveAndBranchGrouped.UseVisualStyleBackColor = True
+        Me.chkKeepCaveAndBranchGrouped.Properties.Caption = resources.GetString("chkKeepCaveAndBranchGrouped.Properties.Caption")
         '
         'cmdMoveUp
         '
         resources.ApplyResources(Me.cmdMoveUp, "cmdMoveUp")
+        Me.cmdMoveUp.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.moveup
+        Me.cmdMoveUp.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.cmdMoveUp.Name = "cmdMoveUp"
-        Me.cmdMoveUp.UseVisualStyleBackColor = True
         '
         'cmdMoveDown
         '
         resources.ApplyResources(Me.cmdMoveDown, "cmdMoveDown")
+        Me.cmdMoveDown.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.movedown
+        Me.cmdMoveDown.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.cmdMoveDown.Name = "cmdMoveDown"
-        Me.cmdMoveDown.UseVisualStyleBackColor = True
+        '
+        'TreeList1
+        '
+        resources.ApplyResources(Me.TreeList1, "TreeList1")
+        Me.TreeList1.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colCaveBranch, Me.colZOrder})
+        Me.TreeList1.KeyFieldName = "Path"
+        Me.TreeList1.Name = "TreeList1"
+        Me.TreeList1.OptionsBehavior.Editable = False
+        Me.TreeList1.OptionsBehavior.ReadOnly = True
+        Me.TreeList1.OptionsCustomization.AllowSort = False
+        Me.TreeList1.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus
+        Me.TreeList1.OptionsView.ShowButtons = False
+        Me.TreeList1.OptionsView.ShowIndentAsRowStyle = True
+        Me.TreeList1.OptionsView.ShowIndicator = False
+        Me.TreeList1.ParentFieldName = "Parent"
+        Me.TreeList1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.txtCaveBranch})
+        '
+        'colCaveBranch
+        '
+        resources.ApplyResources(Me.colCaveBranch, "colCaveBranch")
+        Me.colCaveBranch.ColumnEdit = Me.txtCaveBranch
+        Me.colCaveBranch.FieldName = "ToHTMLShortString"
+        Me.colCaveBranch.Name = "colCaveBranch"
+        Me.colCaveBranch.OptionsFilter.AllowFilter = False
+        '
+        'txtCaveBranch
+        '
+        Me.txtCaveBranch.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.[True]
+        resources.ApplyResources(Me.txtCaveBranch, "txtCaveBranch")
+        Me.txtCaveBranch.Name = "txtCaveBranch"
+        '
+        'colZOrder
+        '
+        resources.ApplyResources(Me.colZOrder, "colZOrder")
+        Me.colZOrder.FieldName = "ZOrder"
+        Me.colZOrder.Name = "colZOrder"
+        Me.colZOrder.OptionsColumn.AllowEdit = False
+        Me.colZOrder.OptionsColumn.FixedWidth = True
+        Me.colZOrder.OptionsColumn.ReadOnly = True
         '
         'frmParametersZOrder
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.Controls.Add(Me.TreeList1)
         Me.Controls.Add(Me.cmdMoveDown)
         Me.Controls.Add(Me.cmdMoveUp)
         Me.Controls.Add(Me.chkKeepCaveAndBranchGrouped)
         Me.Controls.Add(Me.tvCaveInfos)
-        Me.Controls.Add(Me.cmdApply)
-        Me.Controls.Add(Me.cmdOk)
-        Me.Controls.Add(Me.cmdCancel)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
-        Me.KeyPreview = True
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
         Me.Name = "frmParametersZOrder"
+        CType(Me.chkKeepCaveAndBranchGrouped.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TreeList1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtCaveBranch, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout
 
-End Sub
-    Friend WithEvents cmdApply As System.Windows.Forms.Button
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
+    End Sub
     Friend WithEvents tvCaveInfos As System.Windows.Forms.TreeView
-    Friend WithEvents chkKeepCaveAndBranchGrouped As System.Windows.Forms.CheckBox
+    Friend WithEvents chkKeepCaveAndBranchGrouped As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents iml As System.Windows.Forms.ImageList
-    Friend WithEvents cmdMoveUp As System.Windows.Forms.Button
-    Friend WithEvents cmdMoveDown As System.Windows.Forms.Button
+    Friend WithEvents cmdMoveUp As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdMoveDown As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents TreeList1 As DevExpress.XtraTreeList.TreeList
+    Friend WithEvents colCaveBranch As DevExpress.XtraTreeList.Columns.TreeListColumn
+    Friend WithEvents txtCaveBranch As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
+    Friend WithEvents colZOrder As DevExpress.XtraTreeList.Columns.TreeListColumn
 End Class

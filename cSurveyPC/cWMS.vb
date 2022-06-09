@@ -10,10 +10,33 @@ Namespace cSurvey.Surface
         Private oSRS As List(Of String)
         Private oImageFormats As List(Of String)
 
-        Friend Sub New(Name As String)
+        Private bSelected As Boolean
+
+        Public Property Selected As Boolean
+            Get
+                Return bSelected
+            End Get
+            Set(value As Boolean)
+                If bSelected <> value Then
+                    bSelected = value
+                End If
+            End Set
+        End Property
+
+        Friend Sub New(Name As String, SRS As List(Of String), ImageFormats As List(Of String), Optional Selected As Boolean = False)
+            sName = Name
+            oSRS = New List(Of String)
+            If SRS IsNot Nothing Then oSRS.AddRange(SRS)
+            oImageFormats = New List(Of String)
+            If ImageFormats IsNot Nothing Then oImageFormats.AddRange(ImageFormats)
+            bSelected = Selected
+        End Sub
+
+        Friend Sub New(Name As String, Optional Selected As Boolean = False)
             sName = Name
             oSRS = New List(Of String)
             oImageFormats = New List(Of String)
+            bSelected = Selected
         End Sub
 
         Public ReadOnly Property Name As String
@@ -92,22 +115,37 @@ Namespace cSurvey.Surface
 
         Private sSRSOverride As String
 
-        Friend Event OnChange(ByVal Sender As cWMS)
+        Friend Event OnChange(ByVal Sender As Object, e As EventArgs)
+
+        Public Overrides Function Equals(obj As Object) As Boolean
+            If obj Is Nothing OrElse TypeOf obj IsNot cWMS Then
+                Return False
+            Else
+                Return DirectCast(obj, cWMS).ID = sID
+            End If
+        End Function
 
         Friend Class cDefaultArgs
-            Public ID As String
+            Inherits EventArgs
+            Private sID As String
+
+            Public ReadOnly Property ID As String
+                Get
+                    Return sID
+                End Get
+            End Property
 
             Public Sub New()
-                Me.ID = ""
+                sID = ""
             End Sub
 
-            Public Sub New(ID As String)
-                Me.ID = ID
+            Friend Sub New(ID As String)
+                sID = ID
             End Sub
         End Class
 
-        Friend Event OnDefaultSet(ByVal Sender As cWMS, Args As cDefaultArgs)
-        Friend Event OnDefaultGet(ByVal Sender As cWMS, Args As cDefaultArgs)
+        Friend Event OnDefaultSet(ByVal Sender As cWMS, e As cDefaultArgs)
+        Friend Event OnDefaultGet(ByVal Sender As cWMS, e As cDefaultArgs)
 
         Friend Sub New(Survey As cSurvey, ByVal File As cFile, ByVal WMS As XmlElement)
             oSurvey = Survey
@@ -127,7 +165,7 @@ Namespace cSurvey.Surface
             Set(value As String)
                 If value <> sLayer Then
                     sLayer = value
-                    RaiseEvent OnChange(Me)
+                    RaiseEvent OnChange(Me, EventArgs.Empty)
                 End If
             End Set
         End Property
@@ -141,7 +179,7 @@ Namespace cSurvey.Surface
                 If value.EndsWith("?") Then value = value.Substring(0, value.Length - 1)
                 If value <> sURL Then
                     sURL = value
-                    RaiseEvent OnChange(Me)
+                    RaiseEvent OnChange(Me, EventArgs.Empty)
                 End If
             End Set
         End Property
@@ -153,7 +191,7 @@ Namespace cSurvey.Surface
             Set(value As String)
                 If value <> sName Then
                     sName = value
-                    RaiseEvent OnChange(Me)
+                    RaiseEvent OnChange(Me, EventArgs.Empty)
                 End If
             End Set
         End Property
@@ -171,14 +209,14 @@ Namespace cSurvey.Surface
         End Function
 
         Friend Function GetImage(TLCorner As cCoordinate, BRCorner As cCoordinate, Ratio As Integer, Background As Color) As Image
-            Dim oImage As Image = GetImage(TLCorner, BRCorner, Ratio)
-            Dim oNewImage As Image = New Bitmap(oImage.Width, oImage.Height)
-            Dim oGraphics As Graphics = Graphics.FromImage(oNewImage)
-            Call oGraphics.Clear(Background)
-            Call oGraphics.DrawImage(oImage, New Point(0, 0))
-            Call oGraphics.Dispose()
-            Call oImage.Dispose()
-            Return oNewImage
+            Using oImage As Image = GetImage(TLCorner, BRCorner, Ratio)
+                Dim oNewImage As Image = New Bitmap(oImage.Width, oImage.Height)
+                Using oGraphics As Graphics = Graphics.FromImage(oNewImage)
+                    Call oGraphics.Clear(Background)
+                    Call oGraphics.DrawImage(oImage, New Point(0, 0))
+                    Return oNewImage
+                End Using
+            End Using
         End Function
 
         Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
@@ -200,7 +238,10 @@ Namespace cSurvey.Surface
                 Return sSRSOverride
             End Get
             Set(Value As String)
-                sSRSOverride = Value
+                If sSRSOverride <> Value Then
+                    sSRSOverride = Value
+                    RaiseEvent OnChange(Me, EventArgs.Empty)
+                End If
             End Set
         End Property
 
@@ -239,7 +280,7 @@ Namespace cSurvey.Surface
             sURL = ""
             sLayer = ""
             sSRSOverride = ""
-            RaiseEvent OnChange(Me)
+            RaiseEvent OnChange(Me, EventArgs.Empty)
         End Sub
 
         Public Enum WMSDataTypeEnum
@@ -258,7 +299,7 @@ Namespace cSurvey.Surface
                     sURL = URL
                     sLayer = Layer
                     sSRSOverride = SRSOverride
-                    RaiseEvent OnChange(Me)
+                    RaiseEvent OnChange(Me, EventArgs.Empty)
             End Select
             bResult = True
             Return bResult

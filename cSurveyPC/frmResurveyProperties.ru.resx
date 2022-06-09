@@ -121,29 +121,17 @@
     <value>Отмена</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 13</value>
-  </data>
   <data name="lblPosition.Text" xml:space="preserve">
     <value>Расположение:</value>
   </data>
   <data name="Label1.Text" xml:space="preserve">
     <value>Номер:</value>
   </data>
-  <data name="lblPlanPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 13</value>
-  </data>
   <data name="lblPlanPosition.Text" xml:space="preserve">
     <value>План:</value>
   </data>
-  <data name="lblConnectedTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 13</value>
-  </data>
   <data name="lblConnectedTo.Text" xml:space="preserve">
     <value>Следующие пикеты:</value>
-  </data>
-  <data name="lblProfilePosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 13</value>
   </data>
   <data name="lblProfilePosition.Text" xml:space="preserve">
     <value>Разрез:</value>
@@ -153,29 +141,6 @@
   </data>
   <data name="cmdApply.Text" xml:space="preserve">
     <value>Применить</value>
-  </data>
-  <data name="cmdNext.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABMklEQVQ4T6WRPUvDUBSG85MEwU2a9GPU
-        Ubd20f9h0oii4mA7FV2sCLZOGdooDmJrlRYDRWhBWhTUVNRFCi4Kr/cEiuacDikeeJYn73nv5UYD8C/G
-        ykkQIrV66sTtE/VFDs8SQhiWi1r/DbMrVVHCs4QQMdOFcztA2XtGzAyX8CwhBC0deT5mNi5Q8h6h/ynh
-        WUII3aqi2BogkWsimW9i/+rhS1e3ilxgqILCtY+53Tbm99rIHHZQOL/7pIflWUIIKsg3XrBQ7GDxoIul
-        4x52zrqTFWxfviJd6iNTvkeu7o/eYZpnCSEMq4L1+juWnSds1XwYZiVYjvwGcVVgNz6w2Rqqk3+XaXiW
-        ECKRdbF28x06eTQ8SwiRyrrDpB38ttAyDc8SUmjalEIs0/BskB8nowPtB1Ashh+Jtes5AAAAAElFTkSu
-        QmCC
-</value>
-  </data>
-  <data name="cmdPrev.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABKElEQVQ4T6WST0sCURTF/UjCgLvw/7KW
-        tdNNfY9GJ4qKFulKbJMhpK1mMTNFi0izUByQQCESBW2UahOCG4PTfY8gZ94sZuwHZ3PueYf7Hi8A4F9y
-        Nf1INFyIKddI7t2ozizPC4aDtV0dtf4HohmDxvYsk2gsEZZ1VM03qM8ThGWfBRE6XDFHCB3e49K0qECn
-        sT3LJBr8sIHzx+EikW8inmui1JogkvFYwB6scPcyT5e72DjrYL3YQeHJojfwUXB625tvX71i66KHzVIX
-        +cbUewEhsfvn6hbS1QFSlT5OHt59FTCkqKzhuGZhRx3joP5JBRqN7Vkm0fiDNtFw1JpBaXwhtkIBg2+y
-        3/5GPLvCR/pFSigGkllj5szyvGC4I5GCzizPu5nehcAPAJiGH594zX4AAAAASUVORK5CYII=
-</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -241,9 +206,6 @@
         AAAkX19fX19fX19HOAAAAAAAKCQiIiIiISIkKAAAAAAAAP//AAAABwAAAAcAAAAHAAAABwAAAAEAAAAA
         AAAAAAAAAAMAAAAAAAAAAAAAAAEAAAAHAAAADwAAAB8AAAA/AAA=
 </value>
-  </data>
-  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Свойства пикета/точки:</value>

@@ -19,6 +19,7 @@
             Text = &H51
             Quota = &H52
             Compass = &H53
+            LogoImage = &H54
             CrossSection = &H60
 
             Image = &H70

@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class frmPreviewMargins
-    Inherits cForm
+    Inherits DevExpress.XtraEditors.XtraUserControl
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -23,18 +23,21 @@ Partial Class frmPreviewMargins
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPreviewMargins))
-        Me.frmMargins = New System.Windows.Forms.GroupBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.txtRight = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.txtLeft = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.txtBottom = New System.Windows.Forms.TextBox()
-        Me.lblTop = New System.Windows.Forms.Label()
-        Me.txtTop = New System.Windows.Forms.TextBox()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.cmdOk = New System.Windows.Forms.Button()
+        Me.frmMargins = New DevExpress.XtraEditors.GroupControl()
+        Me.Label2 = New DevExpress.XtraEditors.LabelControl()
+        Me.txtRight = New DevExpress.XtraEditors.SpinEdit()
+        Me.Label3 = New DevExpress.XtraEditors.LabelControl()
+        Me.txtLeft = New DevExpress.XtraEditors.SpinEdit()
+        Me.Label1 = New DevExpress.XtraEditors.LabelControl()
+        Me.txtBottom = New DevExpress.XtraEditors.SpinEdit()
+        Me.lblTop = New DevExpress.XtraEditors.LabelControl()
+        Me.txtTop = New DevExpress.XtraEditors.SpinEdit()
+        CType(Me.frmMargins, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.frmMargins.SuspendLayout()
+        CType(Me.txtRight.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtLeft.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtBottom.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtTop.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'frmMargins
@@ -49,7 +52,6 @@ Partial Class frmPreviewMargins
         Me.frmMargins.Controls.Add(Me.lblTop)
         Me.frmMargins.Controls.Add(Me.txtTop)
         Me.frmMargins.Name = "frmMargins"
-        Me.frmMargins.TabStop = False
         '
         'Label2
         '
@@ -60,6 +62,14 @@ Partial Class frmPreviewMargins
         '
         resources.ApplyResources(Me.txtRight, "txtRight")
         Me.txtRight.Name = "txtRight"
+        Me.txtRight.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtRight.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtRight.Properties.DisplayFormat.FormatString = "N0"
+        Me.txtRight.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtRight.Properties.EditFormat.FormatString = "N0"
+        Me.txtRight.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtRight.Properties.IsFloatValue = False
+        Me.txtRight.Properties.MaskSettings.Set("mask", "N00")
+        Me.txtRight.Properties.UseMaskAsDisplayFormat = CType(resources.GetObject("txtRight.Properties.UseMaskAsDisplayFormat"), Boolean)
         '
         'Label3
         '
@@ -70,6 +80,14 @@ Partial Class frmPreviewMargins
         '
         resources.ApplyResources(Me.txtLeft, "txtLeft")
         Me.txtLeft.Name = "txtLeft"
+        Me.txtLeft.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtLeft.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtLeft.Properties.DisplayFormat.FormatString = "N0"
+        Me.txtLeft.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtLeft.Properties.EditFormat.FormatString = "N0"
+        Me.txtLeft.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtLeft.Properties.IsFloatValue = False
+        Me.txtLeft.Properties.MaskSettings.Set("mask", "N00")
+        Me.txtLeft.Properties.UseMaskAsDisplayFormat = CType(resources.GetObject("txtLeft.Properties.UseMaskAsDisplayFormat"), Boolean)
         '
         'Label1
         '
@@ -80,6 +98,14 @@ Partial Class frmPreviewMargins
         '
         resources.ApplyResources(Me.txtBottom, "txtBottom")
         Me.txtBottom.Name = "txtBottom"
+        Me.txtBottom.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtBottom.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtBottom.Properties.DisplayFormat.FormatString = "N0"
+        Me.txtBottom.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtBottom.Properties.EditFormat.FormatString = "N0"
+        Me.txtBottom.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtBottom.Properties.IsFloatValue = False
+        Me.txtBottom.Properties.MaskSettings.Set("mask", "N00")
+        Me.txtBottom.Properties.UseMaskAsDisplayFormat = CType(resources.GetObject("txtBottom.Properties.UseMaskAsDisplayFormat"), Boolean)
         '
         'lblTop
         '
@@ -90,48 +116,38 @@ Partial Class frmPreviewMargins
         '
         resources.ApplyResources(Me.txtTop, "txtTop")
         Me.txtTop.Name = "txtTop"
-        '
-        'cmdCancel
-        '
-        resources.ApplyResources(Me.cmdCancel, "cmdCancel")
-        Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
-        '
-        'cmdOk
-        '
-        resources.ApplyResources(Me.cmdOk, "cmdOk")
-        Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
+        Me.txtTop.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtTop.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtTop.Properties.DisplayFormat.FormatString = "N0"
+        Me.txtTop.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtTop.Properties.EditFormat.FormatString = "N0"
+        Me.txtTop.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtTop.Properties.IsFloatValue = False
+        Me.txtTop.Properties.MaskSettings.Set("mask", "N00")
+        Me.txtTop.Properties.UseMaskAsDisplayFormat = CType(resources.GetObject("txtTop.Properties.UseMaskAsDisplayFormat"), Boolean)
         '
         'frmPreviewMargins
         '
-        Me.AcceptButton = Me.cmdOk
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.CancelButton = Me.cmdCancel
-        Me.Controls.Add(Me.cmdCancel)
-        Me.Controls.Add(Me.cmdOk)
         Me.Controls.Add(Me.frmMargins)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
         Me.Name = "frmPreviewMargins"
+        CType(Me.frmMargins, System.ComponentModel.ISupportInitialize).EndInit()
         Me.frmMargins.ResumeLayout(False)
         Me.frmMargins.PerformLayout()
+        CType(Me.txtRight.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtLeft.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtBottom.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtTop.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents frmMargins As System.Windows.Forms.GroupBox
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents txtRight As System.Windows.Forms.TextBox
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents txtLeft As System.Windows.Forms.TextBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents txtBottom As System.Windows.Forms.TextBox
-    Friend WithEvents lblTop As System.Windows.Forms.Label
-    Friend WithEvents txtTop As System.Windows.Forms.TextBox
+    Friend WithEvents frmMargins As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents Label2 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtRight As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents Label3 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtLeft As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents Label1 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtBottom As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents lblTop As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtTop As DevExpress.XtraEditors.SpinEdit
 End Class

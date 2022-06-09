@@ -142,44 +142,20 @@
     <value>Selezionato</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="mnuContextProfileSelectAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 22</value>
-  </data>
   <data name="mnuContextProfileSelectAll.Text" xml:space="preserve">
     <value>Seleziona tutti</value>
-  </data>
-  <data name="mnuContextProfileDeselectAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 22</value>
   </data>
   <data name="mnuContextProfileDeselectAll.Text" xml:space="preserve">
     <value>Deseleziona tutti</value>
   </data>
-  <data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 6</value>
-  </data>
-  <data name="mnuContextProfileInvertSelection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 22</value>
-  </data>
   <data name="mnuContextProfileInvertSelection.Text" xml:space="preserve">
     <value>Inverti selezione</value>
-  </data>
-  <data name="ToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 6</value>
-  </data>
-  <data name="mnuContextProfileSelectCurrentCave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 22</value>
   </data>
   <data name="mnuContextProfileSelectCurrentCave.Text" xml:space="preserve">
     <value>Seleziona la grotta corrente</value>
   </data>
-  <data name="mnuContextProfileDeselectCurrentCave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 22</value>
-  </data>
   <data name="mnuContextProfileDeselectCurrentCave.Text" xml:space="preserve">
     <value>Deseleziona la grotta corrente</value>
-  </data>
-  <data name="mnuContextProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 126</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Seleziona grotta/ramo:</value>

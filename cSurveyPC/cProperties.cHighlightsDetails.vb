@@ -19,6 +19,9 @@ Namespace cSurvey.Properties
 
         Private oItems As Dictionary(Of String, cHighlightsDetail)
 
+        Friend Function ToList() As List(Of cHighlightsDetail)
+            Return oItems.Values.ToList
+        End Function
         Public Sub Clear()
             Call oItems.Clear()
             Call pAddDefaults()

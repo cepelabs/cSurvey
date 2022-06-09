@@ -22,9 +22,13 @@ Namespace cSurvey
         End Sub
 
         Friend Function Add(ID As String, Description As String) As cGrade
-            Dim oGrade As cGrade = New cGrade(oSurvey, ID, Description)
-            Call oItems.Add(oGrade)
-            Return oGrade
+            If oSurvey.Grades.Contains(ID) Then
+                Throw New InvalidOperationException()
+            Else
+                Dim oGrade As cGrade = New cGrade(oSurvey, ID, Description)
+                Call oItems.Add(oGrade)
+                Return oGrade
+            End If
         End Function
 
         Friend Function Add(Description As String) As cGrade

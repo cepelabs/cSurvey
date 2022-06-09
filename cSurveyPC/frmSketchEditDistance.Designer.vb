@@ -23,12 +23,12 @@ Partial Class frmSketchEditDistance
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSketchEditDistance))
-        Me.lblDistance = New System.Windows.Forms.Label()
-        Me.txtDistance = New System.Windows.Forms.NumericUpDown()
-        Me.lblDistanceUM = New System.Windows.Forms.Label()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.cmdOk = New System.Windows.Forms.Button()
-        CType(Me.txtDistance, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.lblDistance = New DevExpress.XtraEditors.LabelControl()
+        Me.txtDistance = New DevExpress.XtraEditors.SpinEdit()
+        Me.lblDistanceUM = New DevExpress.XtraEditors.LabelControl()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
+        CType(Me.txtDistance.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblDistance
@@ -38,13 +38,16 @@ Partial Class frmSketchEditDistance
         '
         'txtDistance
         '
-        Me.txtDistance.DecimalPlaces = 2
-        Me.txtDistance.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
         resources.ApplyResources(Me.txtDistance, "txtDistance")
-        Me.txtDistance.Maximum = New Decimal(New Integer() {999, 0, 0, 0})
-        Me.txtDistance.Minimum = New Decimal(New Integer() {1, 0, 0, 131072})
         Me.txtDistance.Name = "txtDistance"
-        Me.txtDistance.Value = New Decimal(New Integer() {1, 0, 0, 65536})
+        Me.txtDistance.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDistance.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtDistance.Properties.DisplayFormat.FormatString = "N2"
+        Me.txtDistance.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtDistance.Properties.EditFormat.FormatString = "N2"
+        Me.txtDistance.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtDistance.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+        Me.txtDistance.Properties.MaxValue = New Decimal(New Integer() {999, 0, 0, 0})
+        Me.txtDistance.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 131072})
         '
         'lblDistanceUM
         '
@@ -56,20 +59,18 @@ Partial Class frmSketchEditDistance
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'cmdOk
         '
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
         '
         'frmSketchEditDistance
         '
         Me.AcceptButton = Me.cmdOk
         resources.ApplyResources(Me, "$this")
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
         Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.cmdOk)
@@ -80,15 +81,15 @@ Partial Class frmSketchEditDistance
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSketchEditDistance"
-        CType(Me.txtDistance, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDistance.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents lblDistance As Label
-    Friend WithEvents txtDistance As NumericUpDown
-    Friend WithEvents lblDistanceUM As Label
-    Friend WithEvents cmdCancel As Button
-    Friend WithEvents cmdOk As Button
+    Friend WithEvents lblDistance As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtDistance As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents lblDistanceUM As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
 End Class

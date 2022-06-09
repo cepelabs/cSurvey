@@ -123,14 +123,14 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cmdCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>192, 153</value>
+    <value>194, 159</value>
   </data>
   <data name="cmdCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cmdCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="cmdCancel.Text" xml:space="preserve">
     <value>Cancel</value>
@@ -139,25 +139,25 @@
     <value>cmdCancel</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="cmdOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="cmdOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 153</value>
+    <value>108, 159</value>
   </data>
   <data name="cmdOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
   </data>
   <data name="cmdOk.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="cmdOk.Text" xml:space="preserve">
     <value>Ok</value>
@@ -166,25 +166,86 @@
     <value>cmdOk</value>
   </data>
   <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
-  <data name="lblMaxScale.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="frmScale.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="txtMaxScale.EditValue" type="System.Decimal, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="txtMaxScale.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtMaxScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 60</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="txtMaxScale.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtMaxScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 20</value>
+  </data>
+  <data name="txtMaxScale.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtMaxScale.Name" xml:space="preserve">
+    <value>txtMaxScale</value>
+  </data>
+  <data name="&gt;&gt;txtMaxScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtMaxScale.Parent" xml:space="preserve">
+    <value>frmScale</value>
+  </data>
+  <data name="&gt;&gt;txtMaxScale.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtMinScale.EditValue" type="System.Decimal, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="txtMinScale.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtMinScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 33</value>
+  </data>
+  <data name="txtMinScale.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtMinScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 20</value>
+  </data>
+  <data name="txtMinScale.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtMinScale.Name" xml:space="preserve">
+    <value>txtMinScale</value>
+  </data>
+  <data name="&gt;&gt;txtMinScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtMinScale.Parent" xml:space="preserve">
+    <value>frmScale</value>
+  </data>
+  <data name="&gt;&gt;txtMinScale.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="lblMaxScale.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="lblMaxScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 50</value>
+    <value>120, 62</value>
   </data>
   <data name="lblMaxScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 13</value>
+    <value>10, 13</value>
   </data>
   <data name="lblMaxScale.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -196,25 +257,22 @@
     <value>lblMaxScale</value>
   </data>
   <data name="&gt;&gt;lblMaxScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblMaxScale.Parent" xml:space="preserve">
     <value>frmScale</value>
   </data>
   <data name="&gt;&gt;lblMaxScale.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblMinScale.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>2</value>
   </data>
   <data name="lblMinScale.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="lblMinScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 23</value>
+    <value>120, 36</value>
   </data>
   <data name="lblMinScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 13</value>
+    <value>10, 13</value>
   </data>
   <data name="lblMinScale.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -226,121 +284,67 @@
     <value>lblMinScale</value>
   </data>
   <data name="&gt;&gt;lblMinScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblMinScale.Parent" xml:space="preserve">
     <value>frmScale</value>
   </data>
   <data name="&gt;&gt;lblMinScale.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="chkMaxScale.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>3</value>
   </data>
   <data name="chkMaxScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 48</value>
+    <value>18, 60</value>
+  </data>
+  <data name="chkMaxScale.Properties.Caption" xml:space="preserve">
+    <value>Maximum scale:</value>
   </data>
   <data name="chkMaxScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 17</value>
+    <value>101, 20</value>
   </data>
   <data name="chkMaxScale.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="chkMaxScale.Text" xml:space="preserve">
-    <value>Maximum scale:</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;chkMaxScale.Name" xml:space="preserve">
     <value>chkMaxScale</value>
   </data>
   <data name="&gt;&gt;chkMaxScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkMaxScale.Parent" xml:space="preserve">
     <value>frmScale</value>
   </data>
   <data name="&gt;&gt;chkMaxScale.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="txtMaxScale.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="txtMaxScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 48</value>
-  </data>
-  <data name="txtMaxScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 21</value>
-  </data>
-  <data name="txtMaxScale.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;txtMaxScale.Name" xml:space="preserve">
-    <value>txtMaxScale</value>
-  </data>
-  <data name="&gt;&gt;txtMaxScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtMaxScale.Parent" xml:space="preserve">
-    <value>frmScale</value>
-  </data>
-  <data name="&gt;&gt;txtMaxScale.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="chkMinScale.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>4</value>
   </data>
   <data name="chkMinScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 21</value>
+    <value>18, 33</value>
+  </data>
+  <data name="chkMinScale.Properties.Caption" xml:space="preserve">
+    <value>Minimum scale:</value>
   </data>
   <data name="chkMinScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 17</value>
+    <value>97, 20</value>
   </data>
   <data name="chkMinScale.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="chkMinScale.Text" xml:space="preserve">
-    <value>Minimum scale:</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;chkMinScale.Name" xml:space="preserve">
     <value>chkMinScale</value>
   </data>
   <data name="&gt;&gt;chkMinScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkMinScale.Parent" xml:space="preserve">
     <value>frmScale</value>
   </data>
   <data name="&gt;&gt;chkMinScale.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="txtMinScale.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="txtMinScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 21</value>
-  </data>
-  <data name="txtMinScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 21</value>
-  </data>
-  <data name="txtMinScale.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;txtMinScale.Name" xml:space="preserve">
-    <value>txtMinScale</value>
-  </data>
-  <data name="&gt;&gt;txtMinScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtMinScale.Parent" xml:space="preserve">
-    <value>frmScale</value>
-  </data>
-  <data name="&gt;&gt;txtMinScale.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="frmScale.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 48</value>
   </data>
   <data name="frmScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>260, 83</value>
+    <value>260, 92</value>
   </data>
   <data name="frmScale.TabIndex" type="System.Int32, mscorlib">
     <value>127</value>
@@ -352,49 +356,22 @@
     <value>frmScale</value>
   </data>
   <data name="&gt;&gt;frmScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;frmScale.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;frmScale.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="txtTransparency.Location" type="System.Drawing.Point, System.Drawing">
-    <value>135, 12</value>
-  </data>
-  <data name="txtTransparency.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 21</value>
-  </data>
-  <data name="txtTransparency.TabIndex" type="System.Int32, mscorlib">
-    <value>129</value>
-  </data>
-  <data name="txtTransparency.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;txtTransparency.Name" xml:space="preserve">
-    <value>txtTransparency</value>
-  </data>
-  <data name="&gt;&gt;txtTransparency.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtTransparency.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;txtTransparency.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblPropTransparency.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>1</value>
   </data>
   <data name="lblPropTransparency.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPropTransparency.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 14</value>
+    <value>12, 14</value>
   </data>
   <data name="lblPropTransparency.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 13</value>
+    <value>70, 13</value>
   </data>
   <data name="lblPropTransparency.TabIndex" type="System.Int32, mscorlib">
     <value>128</value>
@@ -402,20 +379,44 @@
   <data name="lblPropTransparency.Text" xml:space="preserve">
     <value>Transparency:</value>
   </data>
-  <data name="lblPropTransparency.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
   <data name="&gt;&gt;lblPropTransparency.Name" xml:space="preserve">
     <value>lblPropTransparency</value>
   </data>
   <data name="&gt;&gt;lblPropTransparency.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropTransparency.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPropTransparency.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
+  </data>
+  <data name="trkTransparency.EditValue" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="trkTransparency.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="trkTransparency.Location" type="System.Drawing.Point, System.Drawing">
+    <value>114, 12</value>
+  </data>
+  <data name="trkTransparency.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 28</value>
+  </data>
+  <data name="trkTransparency.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;trkTransparency.Name" xml:space="preserve">
+    <value>trkTransparency</value>
+  </data>
+  <data name="&gt;&gt;trkTransparency.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.TrackBarControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;trkTransparency.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;trkTransparency.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -424,12 +425,9 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>284, 190</value>
+    <value>286, 196</value>
   </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="frmSurfaceLayerProperties.IconOptions.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAFdQTgBCXG8AUGp3AG1ucABnc38AcXBxAHB0cACIfHEAe4B0AKCW

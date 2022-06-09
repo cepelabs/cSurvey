@@ -130,7 +130,7 @@
     <value>Zona:</value>
   </data>
   <data name="lblCheckWarning.Text" xml:space="preserve">
-    <value>Attenzione: i dati caricati verranno riproiettati in UTM. Questa operazione potrebbe ridurne la qualità.</value>
+    <value>&lt;image=#warning;size=16,16&gt; &lt;b&gt;Attenzione:&lt;/b&gt; i dati caricati verranno riproiettati in UTM. Questa operazione potrebbe ridurne la qualità.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

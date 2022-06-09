@@ -75,9 +75,9 @@ Namespace cSurvey
 
         Private oAttachments As cAttachmentsLinks
 
-        Friend Event OnSplayChange(ByVal Sender As cSegment)
-        Friend Event OnChange(ByVal Sender As cSegment)
-        Friend Event OnReassigned(ByVal sender As cSegment)
+        Friend Event OnSplayChange(ByVal Sender As Object, e As EventArgs)
+        Friend Event OnChange(ByVal Sender As Object, e As EventArgs)
+        Friend Event OnReassigned(ByVal sender As Object, e As EventArgs)
 
         Friend Class cGetSplayNameEventArgs
             Inherits EventArgs
@@ -105,7 +105,7 @@ Namespace cSurvey
             End Sub
         End Class
 
-        Friend Event OnGetSplayName(Sender As cSegment, Args As cGetSplayNameEventArgs)
+        Friend Event OnGetSplayName(Sender As Object, Args As cGetSplayNameEventArgs)
 
         Public Enum DistanceTypeEnum
             Meters = 0
@@ -123,7 +123,7 @@ Namespace cSurvey
             Set(ByVal value As Boolean)
                 If bHiddenInDesign <> value Then
                     bHiddenInDesign = value
-                    RaiseEvent OnChange(Me)
+                    RaiseEvent OnChange(Me, EventArgs.Empty)
                 End If
             End Set
         End Property
@@ -135,7 +135,7 @@ Namespace cSurvey
             Set(value As Boolean)
                 If bHiddenInPreview <> value Then
                     bHiddenInPreview = value
-                    RaiseEvent OnChange(Me)
+                    RaiseEvent OnChange(Me, EventArgs.Empty)
                 End If
             End Set
         End Property
@@ -219,7 +219,7 @@ Namespace cSurvey
                     Call oSurvey.Profile.Plot.Caches.Invalidate()
                     iInvalidated = iInvalidated Or cCalculate.InvalidateEnum.OnlyProfileSplay
                     bChanged = True
-                    RaiseEvent OnSplayChange(Me)
+                    RaiseEvent OnSplayChange(Me, EventArgs.Empty)
                 End If
             End Set
         End Property
@@ -234,7 +234,7 @@ Namespace cSurvey
                     Call oSurvey.Plan.Plot.Caches.Invalidate()
                     iInvalidated = iInvalidated Or cCalculate.InvalidateEnum.OnlyProfileSplay
                     bChanged = True
-                    RaiseEvent OnSplayChange(Me)
+                    RaiseEvent OnSplayChange(Me, EventArgs.Empty)
                 End If
             End Set
         End Property
@@ -249,7 +249,7 @@ Namespace cSurvey
                     Call oSurvey.Profile.Plot.Caches.Invalidate()
                     iInvalidated = iInvalidated Or cCalculate.InvalidateEnum.OnlyProfileSplay
                     bChanged = True
-                    RaiseEvent OnSplayChange(Me)
+                    RaiseEvent OnSplayChange(Me, EventArgs.Empty)
                 End If
             End Set
         End Property
@@ -264,7 +264,7 @@ Namespace cSurvey
                     Call oSurvey.Profile.Plot.Caches.Invalidate()
                     iInvalidated = iInvalidated Or cCalculate.InvalidateEnum.OnlyProfileSplay
                     bChanged = True
-                    RaiseEvent OnSplayChange(Me)
+                    RaiseEvent OnSplayChange(Me, EventArgs.Empty)
                 End If
             End Set
         End Property
@@ -279,7 +279,7 @@ Namespace cSurvey
                     Call oSurvey.Profile.Plot.Caches.Invalidate()
                     iInvalidated = iInvalidated Or cCalculate.InvalidateEnum.OnlyProfileSplay
                     bChanged = True
-                    RaiseEvent OnSplayChange(Me)
+                    RaiseEvent OnSplayChange(Me, EventArgs.Empty)
                 End If
             End Set
         End Property
@@ -293,7 +293,7 @@ Namespace cSurvey
                     sPlanSplayBorderProjectionDeltaZ = value
                     Call oSurvey.Plan.Plot.Caches.Invalidate()
                     iInvalidated = iInvalidated Or cCalculate.InvalidateEnum.OnlyPlanSplay
-                    RaiseEvent OnSplayChange(Me)
+                    RaiseEvent OnSplayChange(Me, EventArgs.Empty)
                     bChanged = True
                 End If
             End Set
@@ -308,7 +308,7 @@ Namespace cSurvey
                     sPlanSplayBorderMaxDeltaVariation = value
                     Call oSurvey.Plan.Plot.Caches.Invalidate()
                     iInvalidated = iInvalidated Or cCalculate.InvalidateEnum.OnlyPlanSplay
-                    RaiseEvent OnSplayChange(Me)
+                    RaiseEvent OnSplayChange(Me, EventArgs.Empty)
                     bChanged = True
                 End If
             End Set
@@ -851,12 +851,12 @@ Namespace cSurvey
             End If
         End Function
 
-        Public Function GetSession() As cSession
-            Return oSurvey.Properties.Sessions.getsession(Me)
+        Public Function GetCaveInfo() As cICaveInfoBranches Implements cISegment.getcaveinfo
+            Return oSurvey.Properties.GetCaveInfo(Me)
         End Function
 
-        Public Function GetCaveInfo() As cICaveInfoBranches
-            Return oSurvey.Properties.GetCaveInfo(Me)
+        Public Function GetSession() As cSession
+            Return oSurvey.Properties.Sessions.getsession(Me)
         End Function
 
         Public ReadOnly Property Cave() As String Implements cISegment.Cave
@@ -943,7 +943,7 @@ Namespace cSurvey
         End Sub
 
         Public Function IsEquate() As Boolean Implements cISegment.IsEquate
-            Return oCurrentData.Distance = 0 AndAlso oCurrentData.Bearing = 0 AndAlso oCurrentData.Inclination = 0 AndAlso not oCurrentData.Virtual 
+            Return Not IsSelfDefined() AndAlso oCurrentData.Distance = 0 AndAlso oCurrentData.Bearing = 0 AndAlso oCurrentData.Inclination = 0 AndAlso Not oCurrentData.Virtual
         End Function
 
         Public Function IsSelfDefined() As Boolean Implements cISegment.IsSelfDefined
@@ -1002,6 +1002,12 @@ Namespace cSurvey
             oCurrentData.Direction = Direction
             bChanged = True
         End Sub
+
+        Friend Function GetSplayName() As String
+            Dim oArgs As cGetSplayNameEventArgs = New cGetSplayNameEventArgs(From)
+            RaiseEvent OnGetSplayName(Me, oArgs)
+            Return oArgs.SplayName
+        End Function
 
         Public Sub Save(Optional RebindItem As Boolean = False, Optional Options As SaveOptionsEnum = SaveOptionsEnum.None)
             If bChanged Then
@@ -1094,7 +1100,8 @@ Namespace cSurvey
                     Call pReassignSplay(oCurrentData.To)
                 End If
 
-                If (Options And SaveOptionsEnum.EventRaisingDisable) = 0 Then RaiseEvent OnChange(Me)
+                Debug.Print(Me.GetHashCode & " - " & Me.GetHash)
+                If (Options And SaveOptionsEnum.EventRaisingDisable) = 0 Then RaiseEvent OnChange(Me, EventArgs.Empty)
                 Call ResetChange()
 
                 If bPerformSegmentRebind Then
@@ -1109,7 +1116,7 @@ Namespace cSurvey
                 Call oSegment.SetCave(oCurrentData.Cave, oCurrentData.Branch)
                 If oSegment.Changed Then
                     Call oSegment.Save(False, SaveOptionsEnum.EventRaisingDisable Or SaveOptionsEnum.CaveBranchSplayAutoAssignmentDisable)
-                    RaiseEvent OnReassigned(oSegment)
+                    RaiseEvent OnReassigned(oSegment, EventArgs.Empty)
                 End If
             Next
         End Sub
@@ -1127,7 +1134,7 @@ Namespace cSurvey
                     Call oSplaySegment.SetCave(oCurrentData.Cave, oCurrentData.Branch)
                     If oSplaySegment.Changed Then
                         Call oSplaySegment.Save(False, SaveOptionsEnum.EventRaisingDisable Or SaveOptionsEnum.CaveBranchSplayAutoAssignmentDisable)
-                        RaiseEvent OnReassigned(oSplaySegment)
+                        RaiseEvent OnReassigned(oSplaySegment, EventArgs.Empty)
                     End If
                 Next
             End If

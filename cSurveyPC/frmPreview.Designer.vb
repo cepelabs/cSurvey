@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmPreview
-    Inherits cForm
+    Inherits DevExpress.XtraBars.Ribbon.RibbonForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,371 +20,248 @@ Partial Class frmPreview
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPreview))
-        Me.pnlOptions = New System.Windows.Forms.Panel()
-        Me.tblOptions = New System.Windows.Forms.TableLayoutPanel()
-        Me.pnlCompass = New System.Windows.Forms.Panel()
-        Me.chkPrintCompass = New System.Windows.Forms.CheckBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.cboCompassPosition = New System.Windows.Forms.ComboBox()
-        Me.btnCompassDetails = New System.Windows.Forms.Button()
-        Me.pnlScale = New System.Windows.Forms.Panel()
-        Me.chkPrintScale = New System.Windows.Forms.CheckBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.cboScalePosition = New System.Windows.Forms.ComboBox()
-        Me.btnScaleDetails = New System.Windows.Forms.Button()
-        Me.pnlInformationBox = New System.Windows.Forms.Panel()
-        Me.chkPrintBox = New System.Windows.Forms.CheckBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.cboBoxPosition = New System.Windows.Forms.ComboBox()
-        Me.btnInfoBoxDetails = New System.Windows.Forms.Button()
-        Me.pnlScaleOptions = New System.Windows.Forms.Panel()
-        Me.lblScale = New System.Windows.Forms.Label()
-        Me.cboScale = New System.Windows.Forms.ComboBox()
-        Me.lblScale1 = New System.Windows.Forms.Label()
-        Me.cmdScaleTools = New System.Windows.Forms.Button()
-        Me.txtScaleManual = New System.Windows.Forms.NumericUpDown()
-        Me.pnlMainOptions = New System.Windows.Forms.Panel()
-        Me.cboPrintCenterlineColorMode = New System.Windows.Forms.ComboBox()
-        Me.lblPrintCenterlineColorMode = New System.Windows.Forms.Label()
-        Me.chkPrintSplay = New System.Windows.Forms.CheckBox()
-        Me.btnSegmentDetails = New System.Windows.Forms.Button()
-        Me.btnDesignDetails = New System.Windows.Forms.Button()
-        Me.chkPrintCombineColorGray = New System.Windows.Forms.CheckBox()
-        Me.cboPrintCombineColorMode = New System.Windows.Forms.ComboBox()
-        Me.lblPrintCombineColorMode = New System.Windows.Forms.Label()
-        Me.chkPrintSketches = New System.Windows.Forms.CheckBox()
-        Me.chkUseDrawingZOrder = New System.Windows.Forms.CheckBox()
-        Me.btnZOrderDetails = New System.Windows.Forms.Button()
-        Me.chkPrintDesignAdvancedBrushes = New System.Windows.Forms.CheckBox()
-        Me.chkTranslations = New System.Windows.Forms.CheckBox()
-        Me.btnTranslationsDetails = New System.Windows.Forms.Button()
-        Me.cboPrintDesignStyle = New System.Windows.Forms.ComboBox()
-        Me.chkPrintDesignStyle = New System.Windows.Forms.Label()
-        Me.cboGPSData = New System.Windows.Forms.ComboBox()
-        Me.lblGPSData = New System.Windows.Forms.Label()
-        Me.chkExportGPS = New System.Windows.Forms.CheckBox()
-        Me.chkPrintDesignSpecialPoint = New System.Windows.Forms.CheckBox()
-        Me.chkPrintImages = New System.Windows.Forms.CheckBox()
-        Me.chkPrintDesign = New System.Windows.Forms.CheckBox()
-        Me.chkPrintCentrelineColorGray = New System.Windows.Forms.CheckBox()
-        Me.chkPrintLRUD = New System.Windows.Forms.CheckBox()
-        Me.chkPrintStations = New System.Windows.Forms.CheckBox()
-        Me.chkPrintShots = New System.Windows.Forms.CheckBox()
-        Me.chkPrintCentreline = New System.Windows.Forms.CheckBox()
-        Me.pnlPrintOptions = New System.Windows.Forms.Panel()
-        Me.cboPageFormat = New DevExpress.XtraEditors.ImageComboBoxEdit()
+        Me.pnlOptions = New DevExpress.XtraEditors.XtraScrollableControl()
+        Me.pnlMainOptions = New DevExpress.XtraEditors.PanelControl()
+        Me.cboPrintCenterlineColorMode = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.lblPrintCenterlineColorMode = New DevExpress.XtraEditors.LabelControl()
+        Me.chkPrintSplay = New DevExpress.XtraEditors.CheckEdit()
+        Me.btnSegmentDetails = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnDesignDetails = New DevExpress.XtraEditors.SimpleButton()
+        Me.chkPrintCombineColorGray = New DevExpress.XtraEditors.CheckEdit()
+        Me.cboPrintCombineColorMode = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.lblPrintCombineColorMode = New DevExpress.XtraEditors.LabelControl()
+        Me.chkPrintSketches = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkUseDrawingZOrder = New DevExpress.XtraEditors.CheckEdit()
+        Me.btnZOrderDetails = New DevExpress.XtraEditors.SimpleButton()
+        Me.chkPrintDesignAdvancedBrushes = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkTranslations = New DevExpress.XtraEditors.CheckEdit()
+        Me.btnTranslationsDetails = New DevExpress.XtraEditors.SimpleButton()
+        Me.cboPrintDesignStyle = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.chkPrintDesignStyle = New DevExpress.XtraEditors.LabelControl()
+        Me.cboGPSData = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.lblGPSData = New DevExpress.XtraEditors.LabelControl()
+        Me.chkExportGPS = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkPrintDesignSpecialPoint = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkPrintImages = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkPrintDesign = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkPrintCentrelineColorGray = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkPrintLRUD = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkPrintStations = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkPrintShots = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkPrintCentreline = New DevExpress.XtraEditors.CheckEdit()
+        Me.pnlCompass = New DevExpress.XtraEditors.PanelControl()
+        Me.chkPrintCompass = New DevExpress.XtraEditors.CheckEdit()
+        Me.Label4 = New DevExpress.XtraEditors.LabelControl()
+        Me.cboCompassPosition = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.btnCompassDetails = New DevExpress.XtraEditors.SimpleButton()
+        Me.pnlScale = New DevExpress.XtraEditors.PanelControl()
+        Me.chkPrintScale = New DevExpress.XtraEditors.CheckEdit()
+        Me.Label3 = New DevExpress.XtraEditors.LabelControl()
+        Me.cboScalePosition = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.btnScaleDetails = New DevExpress.XtraEditors.SimpleButton()
+        Me.pnlInformationBox = New DevExpress.XtraEditors.PanelControl()
+        Me.chkPrintBox = New DevExpress.XtraEditors.CheckEdit()
+        Me.Label2 = New DevExpress.XtraEditors.LabelControl()
+        Me.cboBoxPosition = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.btnInfoBoxDetails = New DevExpress.XtraEditors.SimpleButton()
+        Me.pnlProfile = New DevExpress.XtraEditors.PanelControl()
+        Me.txtCurrentProfile = New DevExpress.XtraEditors.TextEdit()
+        Me.cmdManageProfile = New DevExpress.XtraEditors.SimpleButton()
+        Me.lblCurrentProfile = New DevExpress.XtraEditors.LabelControl()
+        Me.pnlScaleOptions = New DevExpress.XtraEditors.PanelControl()
+        Me.lblScale = New DevExpress.XtraEditors.LabelControl()
+        Me.cboScale = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.lblScale1 = New DevExpress.XtraEditors.LabelControl()
+        Me.cmdScaleTools = New DevExpress.XtraEditors.SimpleButton()
+        Me.txtScaleManual = New DevExpress.XtraEditors.SpinEdit()
+        Me.pnlExportOptionsOther = New DevExpress.XtraEditors.PanelControl()
+        Me.lblImageResolutionUM = New DevExpress.XtraEditors.LabelControl()
+        Me.lblImageResolution = New DevExpress.XtraEditors.LabelControl()
+        Me.txtImageDPI = New System.Windows.Forms.NumericUpDown()
+        Me.chkBackgroundTransparent = New DevExpress.XtraEditors.CheckEdit()
+        Me.pnlExportOptionsSize = New DevExpress.XtraEditors.PanelControl()
+        Me.txtImageWidth = New System.Windows.Forms.NumericUpDown()
+        Me.lblSize = New DevExpress.XtraEditors.LabelControl()
+        Me.cboImageUM = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.txtImageHeight = New System.Windows.Forms.NumericUpDown()
+        Me.pnlExportOptionsPage = New DevExpress.XtraEditors.PanelControl()
+        Me.lblImageOrientation = New DevExpress.XtraEditors.LabelControl()
+        Me.chkImageOrientationLandscape = New DevExpress.XtraEditors.CheckButton()
+        Me.cmdSetImageMargins = New DevExpress.XtraEditors.SimpleButton()
+        Me.chkImageOrientationPortrait = New DevExpress.XtraEditors.CheckButton()
+        Me.Label1 = New DevExpress.XtraEditors.LabelControl()
+        Me.cboSize = New DevExpress.XtraEditors.ImageComboBoxEdit()
         Me.SvgImageCollection = New DevExpress.Utils.SvgImageCollection(Me.components)
+        Me.pnlExportOptionsFormat = New DevExpress.XtraEditors.PanelControl()
+        Me.cboFileFormat = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.Label7 = New DevExpress.XtraEditors.LabelControl()
+        Me.pnlPrintOptions = New DevExpress.XtraEditors.PanelControl()
+        Me.cboPageFormat = New DevExpress.XtraEditors.ImageComboBoxEdit()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.chkPageHorizontal = New DevExpress.XtraEditors.CheckButton()
         Me.chkPageVertical = New DevExpress.XtraEditors.CheckButton()
-        Me.cmdSetMargins = New System.Windows.Forms.Button()
-        Me.cboPrinter = New System.Windows.Forms.ComboBox()
-        Me.lblPrinter = New System.Windows.Forms.Label()
-        Me.lblPageFormat = New System.Windows.Forms.Label()
-        Me.pnlExportOptionsOther = New System.Windows.Forms.Panel()
-        Me.lblImageResolutionUM = New System.Windows.Forms.Label()
-        Me.lblImageResolution = New System.Windows.Forms.Label()
-        Me.txtImageDPI = New System.Windows.Forms.NumericUpDown()
-        Me.chkBackgroundTransparent = New System.Windows.Forms.CheckBox()
-        Me.pnlProfile = New System.Windows.Forms.Panel()
-        Me.txtCurrentProfile = New System.Windows.Forms.TextBox()
-        Me.cmdManageProfile = New System.Windows.Forms.Button()
-        Me.lblCurrentProfile = New System.Windows.Forms.Label()
-        Me.pnlExportOptionsFormat = New System.Windows.Forms.Panel()
-        Me.cboFileFormat = New System.Windows.Forms.ComboBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.pnlExportOptionsPage = New System.Windows.Forms.Panel()
-        Me.lblImageOrientation = New DevExpress.XtraEditors.LabelControl()
-        Me.chkImageOrientationLandscape = New DevExpress.XtraEditors.CheckButton()
-        Me.cmdSetImageMargins = New System.Windows.Forms.Button()
-        Me.chkImageOrientationPortrait = New DevExpress.XtraEditors.CheckButton()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.cboSize = New DevExpress.XtraEditors.ImageComboBoxEdit()
-        Me.pnlExportOptionsSize = New System.Windows.Forms.Panel()
-        Me.txtImageWidth = New System.Windows.Forms.NumericUpDown()
-        Me.lblSize = New System.Windows.Forms.Label()
-        Me.cboImageUM = New System.Windows.Forms.ComboBox()
-        Me.txtImageHeight = New System.Windows.Forms.NumericUpDown()
-        Me.pPreview = New System.Windows.Forms.PrintPreviewControl()
-        Me.tbMain = New System.Windows.Forms.ToolStrip()
-        Me.btnAdd = New System.Windows.Forms.ToolStripButton()
-        Me.btnDelete = New System.Windows.Forms.ToolStripButton()
-        Me.sep1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnSidePanel = New System.Windows.Forms.ToolStripButton()
-        Me.sep6 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnProperty = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnBaseRule = New System.Windows.Forms.ToolStripButton()
-        Me.sep7 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnZoomIn = New System.Windows.Forms.ToolStripButton()
-        Me.btnZoomOut = New System.Windows.Forms.ToolStripButton()
-        Me.btnZoomToFit = New System.Windows.Forms.ToolStripButton()
-        Me.sep2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnImportSettings = New System.Windows.Forms.ToolStripDropDownButton()
-        Me.btnImportSettings0 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnImportSettings1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnImportSettings4 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnImportSettings5 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnImportSettings2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnImportSettings3 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnPreviewQuality = New System.Windows.Forms.ToolStripDropDownButton()
-        Me.btnPreviewQuality0 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnPreviewQuality1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnPreviewQuality2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.sep3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnManualRefresh = New System.Windows.Forms.ToolStripButton()
-        Me.btnStop = New System.Windows.Forms.ToolStripButton()
-        Me.sep4 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnPrint = New System.Windows.Forms.ToolStripButton()
-        Me.btnExport = New System.Windows.Forms.ToolStripButton()
-        Me.sep5 = New System.Windows.Forms.ToolStripSeparator()
-        Me.cmdClose = New System.Windows.Forms.ToolStripButton()
+        Me.cmdSetMargins = New DevExpress.XtraEditors.SimpleButton()
+        Me.cboPrinter = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.lblPrinter = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPageFormat = New DevExpress.XtraEditors.LabelControl()
+        Me.pPreview = New cPrintController.PrintPreviewControl()
         Me.prDialog = New System.Windows.Forms.PrintDialog()
-        Me.pnlExport = New System.Windows.Forms.Panel()
+        Me.pnlExport = New DevExpress.XtraEditors.PanelControl()
         Me.picExport = New System.Windows.Forms.PictureBox()
-        Me.sbMain = New System.Windows.Forms.StatusStrip()
-        Me.pnlStatusText = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.pnlStatusProgress = New System.Windows.Forms.ToolStripProgressBar()
-        Me.pnlStatusCurrentRule = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.pnlStatusDesignZoom = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.pnlStatusDesignZoom100 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.pnlStatusDesignZoom200 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.pnlStatusDesignZoom250 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.pnlStatusDesignZoom500 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.pnlStatusDesignZoom1000 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.lv = New System.Windows.Forms.ListView()
-        Me.mnuLvContext = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.mnuLvContextAdd = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuLvContextAddSep = New System.Windows.Forms.ToolStripSeparator()
-        Me.mnuLvContextDelete = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuLvContextDeleteSep = New System.Windows.Forms.ToolStripSeparator()
-        Me.mnuLvContextImport = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuLvContextExport = New System.Windows.Forms.ToolStripMenuItem()
-        Me.iml = New System.Windows.Forms.ImageList(Me.components)
-        Me.picInvalidated = New System.Windows.Forms.PictureBox()
-        Me.pnlPopup = New System.Windows.Forms.Panel()
-        Me.cmdRefresh = New System.Windows.Forms.Button()
-        Me.lblPopupWarning = New System.Windows.Forms.Label()
         Me.picMap = New System.Windows.Forms.PictureBox()
-        Me.pnlMap = New System.Windows.Forms.Panel()
+        Me.pnlMap = New DevExpress.XtraEditors.PanelControl()
         Me.trkZoom = New System.Windows.Forms.TrackBar()
-        Me.mnuImageSizeFromPageSize = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.mnuImageSizeFromPageSizeItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.pnlMain = New DevExpress.XtraEditors.PanelControl()
+        Me.cDesignMessageCorner = New cSurveyPC.cMessageCorner()
+        Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
+        Me.btnProfilesAdd = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnProfilesDelete = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnProperties = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnBaseRule = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnPrint = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnExport = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnClose = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnZoomIn = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnZoomOut = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnZoomToFit = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnSidePanel = New DevExpress.XtraBars.BarCheckItem()
+        Me.btnDesignGraphicsQuality = New DevExpress.XtraBars.BarSubItem()
+        Me.btnDesignGraphics0 = New DevExpress.XtraBars.BarCheckItem()
+        Me.btnDesignGraphics1 = New DevExpress.XtraBars.BarCheckItem()
+        Me.btnDesignGraphics2 = New DevExpress.XtraBars.BarCheckItem()
+        Me.btnStop = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnManualRefresh = New DevExpress.XtraBars.BarCheckItem()
+        Me.btnRefresh = New DevExpress.XtraBars.BarButtonItem()
+        Me.pnlStatusText = New DevExpress.XtraBars.BarStaticItem()
+        Me.pnlStatusDesignZoom = New DevExpress.XtraBars.BarStaticItem()
+        Me.btnStatusDesignZoom100 = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnStatusDesignZoom200 = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnStatusDesignZoom250 = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnStatusDesignZoom500 = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnStatusDesignZoom1000 = New DevExpress.XtraBars.BarButtonItem()
+        Me.pnlStatusCurrentRule = New DevExpress.XtraBars.BarStaticItem()
+        Me.pnlStatusProgress = New DevExpress.XtraBars.BarEditItem()
+        Me.pbProgress = New DevExpress.XtraEditors.Repository.RepositoryItemProgressBar()
+        Me.btnProfileImportFromFile = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnProfileExportToFile = New DevExpress.XtraBars.BarButtonItem()
+        Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.grpProfiles = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.grpFile = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.grpView = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.grpOptions = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonStatusBar1 = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
+        Me.NavBarControl1 = New DevExpress.XtraNavBar.NavBarControl()
+        Me.grpMain = New DevExpress.XtraNavBar.NavBarGroup()
+        Me.mnuProfiles = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.pnlForm = New DevExpress.XtraEditors.PanelControl()
+        Me.flyParameters = New DevExpress.Utils.FlyoutPanel()
+        Me.pnlParameters = New DevExpress.Utils.FlyoutPanelControl()
         Me.pnlOptions.SuspendLayout()
-        Me.tblOptions.SuspendLayout()
-        Me.pnlCompass.SuspendLayout()
-        Me.pnlScale.SuspendLayout()
-        Me.pnlInformationBox.SuspendLayout()
-        Me.pnlScaleOptions.SuspendLayout()
-        CType(Me.txtScaleManual, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlMainOptions, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlMainOptions.SuspendLayout()
-        Me.pnlPrintOptions.SuspendLayout()
-        CType(Me.cboPageFormat.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SvgImageCollection, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboPrintCenterlineColorMode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkPrintSplay.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkPrintCombineColorGray.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboPrintCombineColorMode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkPrintSketches.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkUseDrawingZOrder.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkPrintDesignAdvancedBrushes.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkTranslations.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboPrintDesignStyle.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboGPSData.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkExportGPS.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkPrintDesignSpecialPoint.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkPrintImages.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkPrintDesign.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkPrintCentrelineColorGray.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkPrintLRUD.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkPrintStations.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkPrintShots.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkPrintCentreline.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlCompass, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlCompass.SuspendLayout()
+        CType(Me.chkPrintCompass.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboCompassPosition.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlScale, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlScale.SuspendLayout()
+        CType(Me.chkPrintScale.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboScalePosition.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlInformationBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlInformationBox.SuspendLayout()
+        CType(Me.chkPrintBox.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboBoxPosition.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlProfile, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlProfile.SuspendLayout()
+        CType(Me.txtCurrentProfile.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlScaleOptions, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlScaleOptions.SuspendLayout()
+        CType(Me.cboScale.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtScaleManual.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlExportOptionsOther, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlExportOptionsOther.SuspendLayout()
         CType(Me.txtImageDPI, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlProfile.SuspendLayout()
-        Me.pnlExportOptionsFormat.SuspendLayout()
-        Me.pnlExportOptionsPage.SuspendLayout()
-        CType(Me.cboSize.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkBackgroundTransparent.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlExportOptionsSize, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlExportOptionsSize.SuspendLayout()
         CType(Me.txtImageWidth, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboImageUM.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtImageHeight, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tbMain.SuspendLayout()
+        CType(Me.pnlExportOptionsPage, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlExportOptionsPage.SuspendLayout()
+        CType(Me.cboSize.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SvgImageCollection, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlExportOptionsFormat, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlExportOptionsFormat.SuspendLayout()
+        CType(Me.cboFileFormat.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlPrintOptions, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlPrintOptions.SuspendLayout()
+        CType(Me.cboPageFormat.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboPrinter.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlExport, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlExport.SuspendLayout()
         CType(Me.picExport, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.sbMain.SuspendLayout()
-        Me.mnuLvContext.SuspendLayout()
-        CType(Me.picInvalidated, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlPopup.SuspendLayout()
         CType(Me.picMap, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlMap, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlMap.SuspendLayout()
         CType(Me.trkZoom, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.mnuImageSizeFromPageSize.SuspendLayout()
+        CType(Me.pnlMain, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlMain.SuspendLayout()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbProgress, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NavBarControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.mnuProfiles, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlForm, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlForm.SuspendLayout()
+        CType(Me.flyParameters, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.flyParameters.SuspendLayout()
+        CType(Me.pnlParameters, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'pnlOptions
         '
+        Me.pnlOptions.Controls.Add(Me.pnlMainOptions)
+        Me.pnlOptions.Controls.Add(Me.pnlCompass)
+        Me.pnlOptions.Controls.Add(Me.pnlScale)
+        Me.pnlOptions.Controls.Add(Me.pnlInformationBox)
+        Me.pnlOptions.Controls.Add(Me.pnlProfile)
+        Me.pnlOptions.Controls.Add(Me.pnlScaleOptions)
+        Me.pnlOptions.Controls.Add(Me.pnlExportOptionsOther)
+        Me.pnlOptions.Controls.Add(Me.pnlExportOptionsSize)
+        Me.pnlOptions.Controls.Add(Me.pnlExportOptionsPage)
+        Me.pnlOptions.Controls.Add(Me.pnlExportOptionsFormat)
+        Me.pnlOptions.Controls.Add(Me.pnlPrintOptions)
         resources.ApplyResources(Me.pnlOptions, "pnlOptions")
-        Me.pnlOptions.BackColor = System.Drawing.SystemColors.Window
-        Me.pnlOptions.Controls.Add(Me.tblOptions)
         Me.pnlOptions.Name = "pnlOptions"
-        '
-        'tblOptions
-        '
-        resources.ApplyResources(Me.tblOptions, "tblOptions")
-        Me.tblOptions.Controls.Add(Me.pnlCompass, 0, 10)
-        Me.tblOptions.Controls.Add(Me.pnlScale, 0, 9)
-        Me.tblOptions.Controls.Add(Me.pnlInformationBox, 0, 8)
-        Me.tblOptions.Controls.Add(Me.pnlScaleOptions, 0, 5)
-        Me.tblOptions.Controls.Add(Me.pnlMainOptions, 0, 11)
-        Me.tblOptions.Controls.Add(Me.pnlPrintOptions, 0, 0)
-        Me.tblOptions.Controls.Add(Me.pnlExportOptionsOther, 0, 4)
-        Me.tblOptions.Controls.Add(Me.pnlProfile, 0, 7)
-        Me.tblOptions.Controls.Add(Me.pnlExportOptionsFormat, 0, 1)
-        Me.tblOptions.Controls.Add(Me.pnlExportOptionsPage, 0, 2)
-        Me.tblOptions.Controls.Add(Me.pnlExportOptionsSize, 0, 3)
-        Me.tblOptions.Name = "tblOptions"
-        '
-        'pnlCompass
-        '
-        Me.pnlCompass.Controls.Add(Me.chkPrintCompass)
-        Me.pnlCompass.Controls.Add(Me.Label4)
-        Me.pnlCompass.Controls.Add(Me.cboCompassPosition)
-        Me.pnlCompass.Controls.Add(Me.btnCompassDetails)
-        resources.ApplyResources(Me.pnlCompass, "pnlCompass")
-        Me.pnlCompass.Name = "pnlCompass"
-        '
-        'chkPrintCompass
-        '
-        Me.chkPrintCompass.Checked = True
-        Me.chkPrintCompass.CheckState = System.Windows.Forms.CheckState.Checked
-        resources.ApplyResources(Me.chkPrintCompass, "chkPrintCompass")
-        Me.chkPrintCompass.Name = "chkPrintCompass"
-        '
-        'Label4
-        '
-        resources.ApplyResources(Me.Label4, "Label4")
-        Me.Label4.Name = "Label4"
-        '
-        'cboCompassPosition
-        '
-        Me.cboCompassPosition.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.cboCompassPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboCompassPosition.Items.AddRange(New Object() {resources.GetString("cboCompassPosition.Items"), resources.GetString("cboCompassPosition.Items1"), resources.GetString("cboCompassPosition.Items2"), resources.GetString("cboCompassPosition.Items3")})
-        resources.ApplyResources(Me.cboCompassPosition, "cboCompassPosition")
-        Me.cboCompassPosition.Name = "cboCompassPosition"
-        '
-        'btnCompassDetails
-        '
-        Me.btnCompassDetails.Image = Global.cSurveyPC.My.Resources.Resources.application_form_edit
-        resources.ApplyResources(Me.btnCompassDetails, "btnCompassDetails")
-        Me.btnCompassDetails.Name = "btnCompassDetails"
-        Me.btnCompassDetails.UseVisualStyleBackColor = True
-        '
-        'pnlScale
-        '
-        Me.pnlScale.Controls.Add(Me.chkPrintScale)
-        Me.pnlScale.Controls.Add(Me.Label3)
-        Me.pnlScale.Controls.Add(Me.cboScalePosition)
-        Me.pnlScale.Controls.Add(Me.btnScaleDetails)
-        resources.ApplyResources(Me.pnlScale, "pnlScale")
-        Me.pnlScale.Name = "pnlScale"
-        '
-        'chkPrintScale
-        '
-        Me.chkPrintScale.Checked = True
-        Me.chkPrintScale.CheckState = System.Windows.Forms.CheckState.Checked
-        resources.ApplyResources(Me.chkPrintScale, "chkPrintScale")
-        Me.chkPrintScale.Name = "chkPrintScale"
-        '
-        'Label3
-        '
-        resources.ApplyResources(Me.Label3, "Label3")
-        Me.Label3.Name = "Label3"
-        '
-        'cboScalePosition
-        '
-        Me.cboScalePosition.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.cboScalePosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboScalePosition.Items.AddRange(New Object() {resources.GetString("cboScalePosition.Items"), resources.GetString("cboScalePosition.Items1"), resources.GetString("cboScalePosition.Items2"), resources.GetString("cboScalePosition.Items3")})
-        resources.ApplyResources(Me.cboScalePosition, "cboScalePosition")
-        Me.cboScalePosition.Name = "cboScalePosition"
-        '
-        'btnScaleDetails
-        '
-        Me.btnScaleDetails.Image = Global.cSurveyPC.My.Resources.Resources.application_form_edit
-        resources.ApplyResources(Me.btnScaleDetails, "btnScaleDetails")
-        Me.btnScaleDetails.Name = "btnScaleDetails"
-        Me.btnScaleDetails.UseVisualStyleBackColor = True
-        '
-        'pnlInformationBox
-        '
-        Me.pnlInformationBox.Controls.Add(Me.chkPrintBox)
-        Me.pnlInformationBox.Controls.Add(Me.Label2)
-        Me.pnlInformationBox.Controls.Add(Me.cboBoxPosition)
-        Me.pnlInformationBox.Controls.Add(Me.btnInfoBoxDetails)
-        resources.ApplyResources(Me.pnlInformationBox, "pnlInformationBox")
-        Me.pnlInformationBox.Name = "pnlInformationBox"
-        '
-        'chkPrintBox
-        '
-        Me.chkPrintBox.Checked = True
-        Me.chkPrintBox.CheckState = System.Windows.Forms.CheckState.Checked
-        resources.ApplyResources(Me.chkPrintBox, "chkPrintBox")
-        Me.chkPrintBox.Name = "chkPrintBox"
-        '
-        'Label2
-        '
-        resources.ApplyResources(Me.Label2, "Label2")
-        Me.Label2.Name = "Label2"
-        '
-        'cboBoxPosition
-        '
-        Me.cboBoxPosition.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.cboBoxPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboBoxPosition.Items.AddRange(New Object() {resources.GetString("cboBoxPosition.Items"), resources.GetString("cboBoxPosition.Items1"), resources.GetString("cboBoxPosition.Items2"), resources.GetString("cboBoxPosition.Items3")})
-        resources.ApplyResources(Me.cboBoxPosition, "cboBoxPosition")
-        Me.cboBoxPosition.Name = "cboBoxPosition"
-        '
-        'btnInfoBoxDetails
-        '
-        Me.btnInfoBoxDetails.Image = Global.cSurveyPC.My.Resources.Resources.application_form_edit
-        resources.ApplyResources(Me.btnInfoBoxDetails, "btnInfoBoxDetails")
-        Me.btnInfoBoxDetails.Name = "btnInfoBoxDetails"
-        Me.btnInfoBoxDetails.UseVisualStyleBackColor = True
-        '
-        'pnlScaleOptions
-        '
-        Me.pnlScaleOptions.Controls.Add(Me.lblScale)
-        Me.pnlScaleOptions.Controls.Add(Me.cboScale)
-        Me.pnlScaleOptions.Controls.Add(Me.lblScale1)
-        Me.pnlScaleOptions.Controls.Add(Me.cmdScaleTools)
-        Me.pnlScaleOptions.Controls.Add(Me.txtScaleManual)
-        resources.ApplyResources(Me.pnlScaleOptions, "pnlScaleOptions")
-        Me.pnlScaleOptions.Name = "pnlScaleOptions"
-        '
-        'lblScale
-        '
-        resources.ApplyResources(Me.lblScale, "lblScale")
-        Me.lblScale.Name = "lblScale"
-        '
-        'cboScale
-        '
-        Me.cboScale.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.cboScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboScale.Items.AddRange(New Object() {resources.GetString("cboScale.Items"), resources.GetString("cboScale.Items1"), resources.GetString("cboScale.Items2"), resources.GetString("cboScale.Items3"), resources.GetString("cboScale.Items4"), resources.GetString("cboScale.Items5"), resources.GetString("cboScale.Items6"), resources.GetString("cboScale.Items7"), resources.GetString("cboScale.Items8"), resources.GetString("cboScale.Items9"), resources.GetString("cboScale.Items10"), resources.GetString("cboScale.Items11")})
-        resources.ApplyResources(Me.cboScale, "cboScale")
-        Me.cboScale.Name = "cboScale"
-        '
-        'lblScale1
-        '
-        resources.ApplyResources(Me.lblScale1, "lblScale1")
-        Me.lblScale1.Name = "lblScale1"
-        '
-        'cmdScaleTools
-        '
-        Me.cmdScaleTools.Image = Global.cSurveyPC.My.Resources.Resources.scale_image
-        resources.ApplyResources(Me.cmdScaleTools, "cmdScaleTools")
-        Me.cmdScaleTools.Name = "cmdScaleTools"
-        Me.cmdScaleTools.UseVisualStyleBackColor = True
-        '
-        'txtScaleManual
-        '
-        resources.ApplyResources(Me.txtScaleManual, "txtScaleManual")
-        Me.txtScaleManual.Increment = New Decimal(New Integer() {50, 0, 0, 0})
-        Me.txtScaleManual.Maximum = New Decimal(New Integer() {50000, 0, 0, 0})
-        Me.txtScaleManual.Minimum = New Decimal(New Integer() {10, 0, 0, 0})
-        Me.txtScaleManual.Name = "txtScaleManual"
-        Me.txtScaleManual.Value = New Decimal(New Integer() {10, 0, 0, 0})
         '
         'pnlMainOptions
         '
+        Me.pnlMainOptions.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlMainOptions.Controls.Add(Me.cboPrintCenterlineColorMode)
         Me.pnlMainOptions.Controls.Add(Me.lblPrintCenterlineColorMode)
         Me.pnlMainOptions.Controls.Add(Me.chkPrintSplay)
@@ -417,14 +294,16 @@ Partial Class frmPreview
         '
         'cboPrintCenterlineColorMode
         '
-        Me.cboPrintCenterlineColorMode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.cboPrintCenterlineColorMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboPrintCenterlineColorMode.Items.AddRange(New Object() {resources.GetString("cboPrintCenterlineColorMode.Items"), resources.GetString("cboPrintCenterlineColorMode.Items1"), resources.GetString("cboPrintCenterlineColorMode.Items2")})
         resources.ApplyResources(Me.cboPrintCenterlineColorMode, "cboPrintCenterlineColorMode")
         Me.cboPrintCenterlineColorMode.Name = "cboPrintCenterlineColorMode"
+        Me.cboPrintCenterlineColorMode.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboPrintCenterlineColorMode.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboPrintCenterlineColorMode.Properties.Items.AddRange(New Object() {resources.GetString("cboPrintCenterlineColorMode.Properties.Items"), resources.GetString("cboPrintCenterlineColorMode.Properties.Items1"), resources.GetString("cboPrintCenterlineColorMode.Properties.Items2")})
+        Me.cboPrintCenterlineColorMode.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
         'lblPrintCenterlineColorMode
         '
+        Me.lblPrintCenterlineColorMode.Appearance.Font = CType(resources.GetObject("lblPrintCenterlineColorMode.Appearance.Font"), System.Drawing.Font)
+        Me.lblPrintCenterlineColorMode.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.lblPrintCenterlineColorMode, "lblPrintCenterlineColorMode")
         Me.lblPrintCenterlineColorMode.Name = "lblPrintCenterlineColorMode"
         '
@@ -432,36 +311,49 @@ Partial Class frmPreview
         '
         resources.ApplyResources(Me.chkPrintSplay, "chkPrintSplay")
         Me.chkPrintSplay.Name = "chkPrintSplay"
+        Me.chkPrintSplay.Properties.Appearance.Font = CType(resources.GetObject("chkPrintSplay.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.chkPrintSplay.Properties.Appearance.Options.UseFont = True
+        Me.chkPrintSplay.Properties.AutoWidth = True
+        Me.chkPrintSplay.Properties.Caption = resources.GetString("chkPrintSplay.Properties.Caption")
         '
         'btnSegmentDetails
         '
-        Me.btnSegmentDetails.Image = Global.cSurveyPC.My.Resources.Resources.application_form_edit
+        Me.btnSegmentDetails.ImageOptions.Image = Global.cSurveyPC.My.Resources.Resources.application_form_edit
+        Me.btnSegmentDetails.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.btnSegmentDetails.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
+        Me.btnSegmentDetails.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         resources.ApplyResources(Me.btnSegmentDetails, "btnSegmentDetails")
         Me.btnSegmentDetails.Name = "btnSegmentDetails"
-        Me.btnSegmentDetails.UseVisualStyleBackColor = True
         '
         'btnDesignDetails
         '
-        Me.btnDesignDetails.Image = Global.cSurveyPC.My.Resources.Resources.application_form_edit
+        Me.btnDesignDetails.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.btnDesignDetails.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
+        Me.btnDesignDetails.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         resources.ApplyResources(Me.btnDesignDetails, "btnDesignDetails")
         Me.btnDesignDetails.Name = "btnDesignDetails"
-        Me.btnDesignDetails.UseVisualStyleBackColor = True
         '
         'chkPrintCombineColorGray
         '
         resources.ApplyResources(Me.chkPrintCombineColorGray, "chkPrintCombineColorGray")
         Me.chkPrintCombineColorGray.Name = "chkPrintCombineColorGray"
+        Me.chkPrintCombineColorGray.Properties.Appearance.Font = CType(resources.GetObject("chkPrintCombineColorGray.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.chkPrintCombineColorGray.Properties.Appearance.Options.UseFont = True
+        Me.chkPrintCombineColorGray.Properties.AutoWidth = True
+        Me.chkPrintCombineColorGray.Properties.Caption = resources.GetString("chkPrintCombineColorGray.Properties.Caption")
         '
         'cboPrintCombineColorMode
         '
-        Me.cboPrintCombineColorMode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.cboPrintCombineColorMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         resources.ApplyResources(Me.cboPrintCombineColorMode, "cboPrintCombineColorMode")
-        Me.cboPrintCombineColorMode.Items.AddRange(New Object() {resources.GetString("cboPrintCombineColorMode.Items"), resources.GetString("cboPrintCombineColorMode.Items1"), resources.GetString("cboPrintCombineColorMode.Items2")})
         Me.cboPrintCombineColorMode.Name = "cboPrintCombineColorMode"
+        Me.cboPrintCombineColorMode.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboPrintCombineColorMode.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboPrintCombineColorMode.Properties.Items.AddRange(New Object() {resources.GetString("cboPrintCombineColorMode.Properties.Items"), resources.GetString("cboPrintCombineColorMode.Properties.Items1"), resources.GetString("cboPrintCombineColorMode.Properties.Items2")})
+        Me.cboPrintCombineColorMode.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
         'lblPrintCombineColorMode
         '
+        Me.lblPrintCombineColorMode.Appearance.Font = CType(resources.GetObject("lblPrintCombineColorMode.Appearance.Font"), System.Drawing.Font)
+        Me.lblPrintCombineColorMode.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.lblPrintCombineColorMode, "lblPrintCombineColorMode")
         Me.lblPrintCombineColorMode.Name = "lblPrintCombineColorMode"
         '
@@ -469,200 +361,378 @@ Partial Class frmPreview
         '
         resources.ApplyResources(Me.chkPrintSketches, "chkPrintSketches")
         Me.chkPrintSketches.Name = "chkPrintSketches"
+        Me.chkPrintSketches.Properties.Appearance.Font = CType(resources.GetObject("chkPrintSketches.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.chkPrintSketches.Properties.Appearance.Options.UseFont = True
+        Me.chkPrintSketches.Properties.AutoWidth = True
+        Me.chkPrintSketches.Properties.Caption = resources.GetString("chkPrintSketches.Properties.Caption")
         '
         'chkUseDrawingZOrder
         '
-        Me.chkUseDrawingZOrder.Checked = True
-        Me.chkUseDrawingZOrder.CheckState = System.Windows.Forms.CheckState.Checked
         resources.ApplyResources(Me.chkUseDrawingZOrder, "chkUseDrawingZOrder")
         Me.chkUseDrawingZOrder.Name = "chkUseDrawingZOrder"
+        Me.chkUseDrawingZOrder.Properties.Appearance.Font = CType(resources.GetObject("chkUseDrawingZOrder.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.chkUseDrawingZOrder.Properties.Appearance.Options.UseFont = True
+        Me.chkUseDrawingZOrder.Properties.AutoWidth = True
+        Me.chkUseDrawingZOrder.Properties.Caption = resources.GetString("chkUseDrawingZOrder.Properties.Caption")
         '
         'btnZOrderDetails
         '
+        Me.btnZOrderDetails.ImageOptions.Image = CType(resources.GetObject("btnZOrderDetails.ImageOptions.Image"), System.Drawing.Image)
+        Me.btnZOrderDetails.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.sortdesc
+        Me.btnZOrderDetails.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         resources.ApplyResources(Me.btnZOrderDetails, "btnZOrderDetails")
         Me.btnZOrderDetails.Name = "btnZOrderDetails"
-        Me.btnZOrderDetails.UseVisualStyleBackColor = True
         '
         'chkPrintDesignAdvancedBrushes
         '
-        Me.chkPrintDesignAdvancedBrushes.Checked = True
-        Me.chkPrintDesignAdvancedBrushes.CheckState = System.Windows.Forms.CheckState.Checked
         resources.ApplyResources(Me.chkPrintDesignAdvancedBrushes, "chkPrintDesignAdvancedBrushes")
         Me.chkPrintDesignAdvancedBrushes.Name = "chkPrintDesignAdvancedBrushes"
+        Me.chkPrintDesignAdvancedBrushes.Properties.Appearance.Font = CType(resources.GetObject("chkPrintDesignAdvancedBrushes.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.chkPrintDesignAdvancedBrushes.Properties.Appearance.Options.UseFont = True
+        Me.chkPrintDesignAdvancedBrushes.Properties.AutoWidth = True
+        Me.chkPrintDesignAdvancedBrushes.Properties.Caption = resources.GetString("chkPrintDesignAdvancedBrushes.Properties.Caption")
         '
         'chkTranslations
         '
-        Me.chkTranslations.Checked = True
-        Me.chkTranslations.CheckState = System.Windows.Forms.CheckState.Checked
         resources.ApplyResources(Me.chkTranslations, "chkTranslations")
         Me.chkTranslations.Name = "chkTranslations"
+        Me.chkTranslations.Properties.Appearance.Font = CType(resources.GetObject("chkTranslations.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.chkTranslations.Properties.Appearance.Options.UseFont = True
+        Me.chkTranslations.Properties.AutoWidth = True
+        Me.chkTranslations.Properties.Caption = resources.GetString("chkTranslations.Properties.Caption")
         '
         'btnTranslationsDetails
         '
-        Me.btnTranslationsDetails.Image = Global.cSurveyPC.My.Resources.Resources.layer_arrange
+        Me.btnTranslationsDetails.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.btnTranslationsDetails.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
+        Me.btnTranslationsDetails.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         resources.ApplyResources(Me.btnTranslationsDetails, "btnTranslationsDetails")
         Me.btnTranslationsDetails.Name = "btnTranslationsDetails"
-        Me.btnTranslationsDetails.UseVisualStyleBackColor = True
         '
         'cboPrintDesignStyle
         '
-        Me.cboPrintDesignStyle.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.cboPrintDesignStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboPrintDesignStyle.Items.AddRange(New Object() {resources.GetString("cboPrintDesignStyle.Items"), resources.GetString("cboPrintDesignStyle.Items1"), resources.GetString("cboPrintDesignStyle.Items2")})
         resources.ApplyResources(Me.cboPrintDesignStyle, "cboPrintDesignStyle")
         Me.cboPrintDesignStyle.Name = "cboPrintDesignStyle"
+        Me.cboPrintDesignStyle.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboPrintDesignStyle.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboPrintDesignStyle.Properties.Items.AddRange(New Object() {resources.GetString("cboPrintDesignStyle.Properties.Items"), resources.GetString("cboPrintDesignStyle.Properties.Items1"), resources.GetString("cboPrintDesignStyle.Properties.Items2")})
+        Me.cboPrintDesignStyle.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
         'chkPrintDesignStyle
         '
+        Me.chkPrintDesignStyle.Appearance.Font = CType(resources.GetObject("chkPrintDesignStyle.Appearance.Font"), System.Drawing.Font)
+        Me.chkPrintDesignStyle.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.chkPrintDesignStyle, "chkPrintDesignStyle")
         Me.chkPrintDesignStyle.Name = "chkPrintDesignStyle"
         '
         'cboGPSData
         '
-        Me.cboGPSData.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboGPSData.Items.AddRange(New Object() {resources.GetString("cboGPSData.Items")})
         resources.ApplyResources(Me.cboGPSData, "cboGPSData")
         Me.cboGPSData.Name = "cboGPSData"
+        Me.cboGPSData.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboGPSData.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboGPSData.Properties.Items.AddRange(New Object() {resources.GetString("cboGPSData.Properties.Items")})
+        Me.cboGPSData.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
         'lblGPSData
         '
+        Me.lblGPSData.Appearance.Font = CType(resources.GetObject("lblGPSData.Appearance.Font"), System.Drawing.Font)
+        Me.lblGPSData.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.lblGPSData, "lblGPSData")
         Me.lblGPSData.Name = "lblGPSData"
         '
         'chkExportGPS
         '
-        Me.chkExportGPS.Checked = True
-        Me.chkExportGPS.CheckState = System.Windows.Forms.CheckState.Checked
         resources.ApplyResources(Me.chkExportGPS, "chkExportGPS")
         Me.chkExportGPS.Name = "chkExportGPS"
+        Me.chkExportGPS.Properties.Appearance.Font = CType(resources.GetObject("chkExportGPS.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.chkExportGPS.Properties.Appearance.Options.UseFont = True
+        Me.chkExportGPS.Properties.AutoWidth = True
+        Me.chkExportGPS.Properties.Caption = resources.GetString("chkExportGPS.Properties.Caption")
         '
         'chkPrintDesignSpecialPoint
         '
         resources.ApplyResources(Me.chkPrintDesignSpecialPoint, "chkPrintDesignSpecialPoint")
-        Me.chkPrintDesignSpecialPoint.Checked = True
-        Me.chkPrintDesignSpecialPoint.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkPrintDesignSpecialPoint.Name = "chkPrintDesignSpecialPoint"
+        Me.chkPrintDesignSpecialPoint.Properties.Appearance.Font = CType(resources.GetObject("chkPrintDesignSpecialPoint.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.chkPrintDesignSpecialPoint.Properties.Appearance.Options.UseFont = True
+        Me.chkPrintDesignSpecialPoint.Properties.AutoWidth = True
+        Me.chkPrintDesignSpecialPoint.Properties.Caption = resources.GetString("chkPrintDesignSpecialPoint.Properties.Caption")
         '
         'chkPrintImages
         '
         resources.ApplyResources(Me.chkPrintImages, "chkPrintImages")
         Me.chkPrintImages.Name = "chkPrintImages"
+        Me.chkPrintImages.Properties.Appearance.Font = CType(resources.GetObject("chkPrintImages.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.chkPrintImages.Properties.Appearance.Options.UseFont = True
+        Me.chkPrintImages.Properties.AutoWidth = True
+        Me.chkPrintImages.Properties.Caption = resources.GetString("chkPrintImages.Properties.Caption")
         '
         'chkPrintDesign
         '
-        Me.chkPrintDesign.Checked = True
-        Me.chkPrintDesign.CheckState = System.Windows.Forms.CheckState.Checked
         resources.ApplyResources(Me.chkPrintDesign, "chkPrintDesign")
         Me.chkPrintDesign.Name = "chkPrintDesign"
+        Me.chkPrintDesign.Properties.Appearance.Font = CType(resources.GetObject("chkPrintDesign.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.chkPrintDesign.Properties.Appearance.Options.UseFont = True
+        Me.chkPrintDesign.Properties.AutoWidth = True
+        Me.chkPrintDesign.Properties.Caption = resources.GetString("chkPrintDesign.Properties.Caption")
         '
         'chkPrintCentrelineColorGray
         '
         resources.ApplyResources(Me.chkPrintCentrelineColorGray, "chkPrintCentrelineColorGray")
         Me.chkPrintCentrelineColorGray.Name = "chkPrintCentrelineColorGray"
+        Me.chkPrintCentrelineColorGray.Properties.Appearance.Font = CType(resources.GetObject("chkPrintCentrelineColorGray.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.chkPrintCentrelineColorGray.Properties.Appearance.Options.UseFont = True
+        Me.chkPrintCentrelineColorGray.Properties.AutoWidth = True
+        Me.chkPrintCentrelineColorGray.Properties.Caption = resources.GetString("chkPrintCentrelineColorGray.Properties.Caption")
         '
         'chkPrintLRUD
         '
         resources.ApplyResources(Me.chkPrintLRUD, "chkPrintLRUD")
         Me.chkPrintLRUD.Name = "chkPrintLRUD"
+        Me.chkPrintLRUD.Properties.Appearance.Font = CType(resources.GetObject("chkPrintLRUD.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.chkPrintLRUD.Properties.Appearance.Options.UseFont = True
+        Me.chkPrintLRUD.Properties.AutoWidth = True
+        Me.chkPrintLRUD.Properties.Caption = resources.GetString("chkPrintLRUD.Properties.Caption")
         '
         'chkPrintStations
         '
         resources.ApplyResources(Me.chkPrintStations, "chkPrintStations")
-        Me.chkPrintStations.Checked = True
-        Me.chkPrintStations.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkPrintStations.Name = "chkPrintStations"
+        Me.chkPrintStations.Properties.Appearance.Font = CType(resources.GetObject("chkPrintStations.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.chkPrintStations.Properties.Appearance.Options.UseFont = True
+        Me.chkPrintStations.Properties.AutoWidth = True
+        Me.chkPrintStations.Properties.Caption = resources.GetString("chkPrintStations.Properties.Caption")
         '
         'chkPrintShots
         '
         resources.ApplyResources(Me.chkPrintShots, "chkPrintShots")
-        Me.chkPrintShots.Checked = True
-        Me.chkPrintShots.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkPrintShots.Name = "chkPrintShots"
+        Me.chkPrintShots.Properties.Appearance.Font = CType(resources.GetObject("chkPrintShots.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.chkPrintShots.Properties.Appearance.Options.UseFont = True
+        Me.chkPrintShots.Properties.AutoWidth = True
+        Me.chkPrintShots.Properties.Caption = resources.GetString("chkPrintShots.Properties.Caption")
         '
         'chkPrintCentreline
         '
-        Me.chkPrintCentreline.Checked = True
-        Me.chkPrintCentreline.CheckState = System.Windows.Forms.CheckState.Checked
         resources.ApplyResources(Me.chkPrintCentreline, "chkPrintCentreline")
         Me.chkPrintCentreline.Name = "chkPrintCentreline"
+        Me.chkPrintCentreline.Properties.Appearance.Font = CType(resources.GetObject("chkPrintCentreline.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.chkPrintCentreline.Properties.Appearance.Options.UseFont = True
+        Me.chkPrintCentreline.Properties.AutoWidth = True
+        Me.chkPrintCentreline.Properties.Caption = resources.GetString("chkPrintCentreline.Properties.Caption")
         '
-        'pnlPrintOptions
+        'pnlCompass
         '
-        Me.pnlPrintOptions.Controls.Add(Me.cboPageFormat)
-        Me.pnlPrintOptions.Controls.Add(Me.LabelControl1)
-        Me.pnlPrintOptions.Controls.Add(Me.chkPageHorizontal)
-        Me.pnlPrintOptions.Controls.Add(Me.chkPageVertical)
-        Me.pnlPrintOptions.Controls.Add(Me.cmdSetMargins)
-        Me.pnlPrintOptions.Controls.Add(Me.cboPrinter)
-        Me.pnlPrintOptions.Controls.Add(Me.lblPrinter)
-        Me.pnlPrintOptions.Controls.Add(Me.lblPageFormat)
-        resources.ApplyResources(Me.pnlPrintOptions, "pnlPrintOptions")
-        Me.pnlPrintOptions.Name = "pnlPrintOptions"
+        Me.pnlCompass.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlCompass.Controls.Add(Me.chkPrintCompass)
+        Me.pnlCompass.Controls.Add(Me.Label4)
+        Me.pnlCompass.Controls.Add(Me.cboCompassPosition)
+        Me.pnlCompass.Controls.Add(Me.btnCompassDetails)
+        resources.ApplyResources(Me.pnlCompass, "pnlCompass")
+        Me.pnlCompass.Name = "pnlCompass"
         '
-        'cboPageFormat
+        'chkPrintCompass
         '
-        resources.ApplyResources(Me.cboPageFormat, "cboPageFormat")
-        Me.cboPageFormat.Name = "cboPageFormat"
-        Me.cboPageFormat.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboPageFormat.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.cboPageFormat.Properties.LargeImages = Me.SvgImageCollection
-        Me.cboPageFormat.Properties.SmallImages = Me.SvgImageCollection
+        resources.ApplyResources(Me.chkPrintCompass, "chkPrintCompass")
+        Me.chkPrintCompass.Name = "chkPrintCompass"
+        Me.chkPrintCompass.Properties.Appearance.Font = CType(resources.GetObject("chkPrintCompass.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.chkPrintCompass.Properties.Appearance.Options.UseFont = True
+        Me.chkPrintCompass.Properties.AutoWidth = True
+        Me.chkPrintCompass.Properties.Caption = resources.GetString("chkPrintCompass.Properties.Caption")
         '
-        'SvgImageCollection
+        'Label4
         '
-        Me.SvgImageCollection.ImageSize = New System.Drawing.Size(32, 32)
-        Me.SvgImageCollection.Add("page1", "page1", GetType(cSurveyPC.My.Resources.Resources))
+        Me.Label4.Appearance.Font = CType(resources.GetObject("Label4.Appearance.Font"), System.Drawing.Font)
+        Me.Label4.Appearance.Options.UseFont = True
+        resources.ApplyResources(Me.Label4, "Label4")
+        Me.Label4.Name = "Label4"
         '
-        'LabelControl1
+        'cboCompassPosition
         '
-        resources.ApplyResources(Me.LabelControl1, "LabelControl1")
-        Me.LabelControl1.Name = "LabelControl1"
+        resources.ApplyResources(Me.cboCompassPosition, "cboCompassPosition")
+        Me.cboCompassPosition.Name = "cboCompassPosition"
+        Me.cboCompassPosition.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboCompassPosition.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboCompassPosition.Properties.Items.AddRange(New Object() {resources.GetString("cboCompassPosition.Properties.Items"), resources.GetString("cboCompassPosition.Properties.Items1"), resources.GetString("cboCompassPosition.Properties.Items2"), resources.GetString("cboCompassPosition.Properties.Items3")})
+        Me.cboCompassPosition.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
-        'chkPageHorizontal
+        'btnCompassDetails
         '
-        Me.chkPageHorizontal.GroupIndex = 2
-        Me.chkPageHorizontal.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.chkPageHorizontal.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.landscape
-        Me.chkPageHorizontal.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        resources.ApplyResources(Me.chkPageHorizontal, "chkPageHorizontal")
-        Me.chkPageHorizontal.Name = "chkPageHorizontal"
-        Me.chkPageHorizontal.TabStop = False
+        Me.btnCompassDetails.ImageOptions.Image = Global.cSurveyPC.My.Resources.Resources.application_form_edit
+        Me.btnCompassDetails.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.btnCompassDetails.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
+        Me.btnCompassDetails.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.btnCompassDetails, "btnCompassDetails")
+        Me.btnCompassDetails.Name = "btnCompassDetails"
         '
-        'chkPageVertical
+        'pnlScale
         '
-        Me.chkPageVertical.Checked = True
-        Me.chkPageVertical.GroupIndex = 2
-        Me.chkPageVertical.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.chkPageVertical.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.page1
-        Me.chkPageVertical.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        resources.ApplyResources(Me.chkPageVertical, "chkPageVertical")
-        Me.chkPageVertical.Name = "chkPageVertical"
+        Me.pnlScale.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlScale.Controls.Add(Me.chkPrintScale)
+        Me.pnlScale.Controls.Add(Me.Label3)
+        Me.pnlScale.Controls.Add(Me.cboScalePosition)
+        Me.pnlScale.Controls.Add(Me.btnScaleDetails)
+        resources.ApplyResources(Me.pnlScale, "pnlScale")
+        Me.pnlScale.Name = "pnlScale"
         '
-        'cmdSetMargins
+        'chkPrintScale
         '
-        Me.cmdSetMargins.Image = Global.cSurveyPC.My.Resources.Resources.document_margins
-        resources.ApplyResources(Me.cmdSetMargins, "cmdSetMargins")
-        Me.cmdSetMargins.Name = "cmdSetMargins"
-        Me.cmdSetMargins.UseVisualStyleBackColor = True
+        resources.ApplyResources(Me.chkPrintScale, "chkPrintScale")
+        Me.chkPrintScale.Name = "chkPrintScale"
+        Me.chkPrintScale.Properties.Appearance.Font = CType(resources.GetObject("chkPrintScale.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.chkPrintScale.Properties.Appearance.Options.UseFont = True
+        Me.chkPrintScale.Properties.AutoWidth = True
+        Me.chkPrintScale.Properties.Caption = resources.GetString("chkPrintScale.Properties.Caption")
         '
-        'cboPrinter
+        'Label3
         '
-        Me.cboPrinter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.cboPrinter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        resources.ApplyResources(Me.cboPrinter, "cboPrinter")
-        Me.cboPrinter.Name = "cboPrinter"
+        Me.Label3.Appearance.Font = CType(resources.GetObject("Label3.Appearance.Font"), System.Drawing.Font)
+        Me.Label3.Appearance.Options.UseFont = True
+        resources.ApplyResources(Me.Label3, "Label3")
+        Me.Label3.Name = "Label3"
         '
-        'lblPrinter
+        'cboScalePosition
         '
-        resources.ApplyResources(Me.lblPrinter, "lblPrinter")
-        Me.lblPrinter.Name = "lblPrinter"
+        resources.ApplyResources(Me.cboScalePosition, "cboScalePosition")
+        Me.cboScalePosition.Name = "cboScalePosition"
+        Me.cboScalePosition.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboScalePosition.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboScalePosition.Properties.Items.AddRange(New Object() {resources.GetString("cboScalePosition.Properties.Items"), resources.GetString("cboScalePosition.Properties.Items1"), resources.GetString("cboScalePosition.Properties.Items2"), resources.GetString("cboScalePosition.Properties.Items3")})
+        Me.cboScalePosition.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
-        'lblPageFormat
+        'btnScaleDetails
         '
-        resources.ApplyResources(Me.lblPageFormat, "lblPageFormat")
-        Me.lblPageFormat.Name = "lblPageFormat"
+        Me.btnScaleDetails.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.btnScaleDetails.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
+        Me.btnScaleDetails.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.btnScaleDetails, "btnScaleDetails")
+        Me.btnScaleDetails.Name = "btnScaleDetails"
+        '
+        'pnlInformationBox
+        '
+        Me.pnlInformationBox.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlInformationBox.Controls.Add(Me.chkPrintBox)
+        Me.pnlInformationBox.Controls.Add(Me.Label2)
+        Me.pnlInformationBox.Controls.Add(Me.cboBoxPosition)
+        Me.pnlInformationBox.Controls.Add(Me.btnInfoBoxDetails)
+        resources.ApplyResources(Me.pnlInformationBox, "pnlInformationBox")
+        Me.pnlInformationBox.Name = "pnlInformationBox"
+        '
+        'chkPrintBox
+        '
+        resources.ApplyResources(Me.chkPrintBox, "chkPrintBox")
+        Me.chkPrintBox.Name = "chkPrintBox"
+        Me.chkPrintBox.Properties.Appearance.Font = CType(resources.GetObject("chkPrintBox.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.chkPrintBox.Properties.Appearance.Options.UseFont = True
+        Me.chkPrintBox.Properties.AutoWidth = True
+        Me.chkPrintBox.Properties.Caption = resources.GetString("chkPrintBox.Properties.Caption")
+        '
+        'Label2
+        '
+        Me.Label2.Appearance.Font = CType(resources.GetObject("Label2.Appearance.Font"), System.Drawing.Font)
+        Me.Label2.Appearance.Options.UseFont = True
+        resources.ApplyResources(Me.Label2, "Label2")
+        Me.Label2.Name = "Label2"
+        '
+        'cboBoxPosition
+        '
+        resources.ApplyResources(Me.cboBoxPosition, "cboBoxPosition")
+        Me.cboBoxPosition.Name = "cboBoxPosition"
+        Me.cboBoxPosition.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboBoxPosition.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboBoxPosition.Properties.Items.AddRange(New Object() {resources.GetString("cboBoxPosition.Properties.Items"), resources.GetString("cboBoxPosition.Properties.Items1"), resources.GetString("cboBoxPosition.Properties.Items2"), resources.GetString("cboBoxPosition.Properties.Items3")})
+        Me.cboBoxPosition.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        '
+        'btnInfoBoxDetails
+        '
+        Me.btnInfoBoxDetails.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.btnInfoBoxDetails.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.edit
+        Me.btnInfoBoxDetails.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.btnInfoBoxDetails, "btnInfoBoxDetails")
+        Me.btnInfoBoxDetails.Name = "btnInfoBoxDetails"
+        '
+        'pnlProfile
+        '
+        Me.pnlProfile.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlProfile.Controls.Add(Me.txtCurrentProfile)
+        Me.pnlProfile.Controls.Add(Me.cmdManageProfile)
+        Me.pnlProfile.Controls.Add(Me.lblCurrentProfile)
+        resources.ApplyResources(Me.pnlProfile, "pnlProfile")
+        Me.pnlProfile.Name = "pnlProfile"
+        '
+        'txtCurrentProfile
+        '
+        resources.ApplyResources(Me.txtCurrentProfile, "txtCurrentProfile")
+        Me.txtCurrentProfile.Name = "txtCurrentProfile"
+        Me.txtCurrentProfile.Properties.ReadOnly = True
+        '
+        'cmdManageProfile
+        '
+        Me.cmdManageProfile.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdManageProfile.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.profileview
+        Me.cmdManageProfile.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.cmdManageProfile, "cmdManageProfile")
+        Me.cmdManageProfile.Name = "cmdManageProfile"
+        '
+        'lblCurrentProfile
+        '
+        Me.lblCurrentProfile.Appearance.Font = CType(resources.GetObject("lblCurrentProfile.Appearance.Font"), System.Drawing.Font)
+        Me.lblCurrentProfile.Appearance.Options.UseFont = True
+        resources.ApplyResources(Me.lblCurrentProfile, "lblCurrentProfile")
+        Me.lblCurrentProfile.Name = "lblCurrentProfile"
+        '
+        'pnlScaleOptions
+        '
+        Me.pnlScaleOptions.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlScaleOptions.Controls.Add(Me.lblScale)
+        Me.pnlScaleOptions.Controls.Add(Me.cboScale)
+        Me.pnlScaleOptions.Controls.Add(Me.lblScale1)
+        Me.pnlScaleOptions.Controls.Add(Me.cmdScaleTools)
+        Me.pnlScaleOptions.Controls.Add(Me.txtScaleManual)
+        resources.ApplyResources(Me.pnlScaleOptions, "pnlScaleOptions")
+        Me.pnlScaleOptions.Name = "pnlScaleOptions"
+        '
+        'lblScale
+        '
+        Me.lblScale.Appearance.Font = CType(resources.GetObject("lblScale.Appearance.Font"), System.Drawing.Font)
+        Me.lblScale.Appearance.Options.UseFont = True
+        resources.ApplyResources(Me.lblScale, "lblScale")
+        Me.lblScale.Name = "lblScale"
+        '
+        'cboScale
+        '
+        resources.ApplyResources(Me.cboScale, "cboScale")
+        Me.cboScale.Name = "cboScale"
+        Me.cboScale.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboScale.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboScale.Properties.Items.AddRange(New Object() {resources.GetString("cboScale.Properties.Items"), resources.GetString("cboScale.Properties.Items1"), resources.GetString("cboScale.Properties.Items2"), resources.GetString("cboScale.Properties.Items3"), resources.GetString("cboScale.Properties.Items4"), resources.GetString("cboScale.Properties.Items5"), resources.GetString("cboScale.Properties.Items6"), resources.GetString("cboScale.Properties.Items7"), resources.GetString("cboScale.Properties.Items8"), resources.GetString("cboScale.Properties.Items9"), resources.GetString("cboScale.Properties.Items10"), resources.GetString("cboScale.Properties.Items11")})
+        Me.cboScale.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        '
+        'lblScale1
+        '
+        Me.lblScale1.Appearance.Font = CType(resources.GetObject("lblScale1.Appearance.Font"), System.Drawing.Font)
+        Me.lblScale1.Appearance.Options.UseFont = True
+        resources.ApplyResources(Me.lblScale1, "lblScale1")
+        Me.lblScale1.Name = "lblScale1"
+        '
+        'cmdScaleTools
+        '
+        Me.cmdScaleTools.ImageOptions.Image = Global.cSurveyPC.My.Resources.Resources.scale_image
+        Me.cmdScaleTools.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdScaleTools.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.scale
+        Me.cmdScaleTools.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.cmdScaleTools, "cmdScaleTools")
+        Me.cmdScaleTools.Name = "cmdScaleTools"
+        '
+        'txtScaleManual
+        '
+        resources.ApplyResources(Me.txtScaleManual, "txtScaleManual")
+        Me.txtScaleManual.Name = "txtScaleManual"
+        Me.txtScaleManual.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtScaleManual.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtScaleManual.Properties.Increment = New Decimal(New Integer() {50, 0, 0, 0})
+        Me.txtScaleManual.Properties.IsFloatValue = False
+        Me.txtScaleManual.Properties.MaskSettings.Set("mask", "N00")
+        Me.txtScaleManual.Properties.MaxValue = New Decimal(New Integer() {50000, 0, 0, 0})
+        Me.txtScaleManual.Properties.MinValue = New Decimal(New Integer() {10, 0, 0, 0})
         '
         'pnlExportOptionsOther
         '
+        Me.pnlExportOptionsOther.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlExportOptionsOther.Controls.Add(Me.lblImageResolutionUM)
         Me.pnlExportOptionsOther.Controls.Add(Me.lblImageResolution)
         Me.pnlExportOptionsOther.Controls.Add(Me.txtImageDPI)
@@ -692,55 +762,51 @@ Partial Class frmPreview
         '
         resources.ApplyResources(Me.chkBackgroundTransparent, "chkBackgroundTransparent")
         Me.chkBackgroundTransparent.Name = "chkBackgroundTransparent"
-        Me.chkBackgroundTransparent.UseVisualStyleBackColor = True
+        Me.chkBackgroundTransparent.Properties.AutoWidth = True
+        Me.chkBackgroundTransparent.Properties.Caption = resources.GetString("chkBackgroundTransparent.Properties.Caption")
         '
-        'pnlProfile
+        'pnlExportOptionsSize
         '
-        Me.pnlProfile.Controls.Add(Me.txtCurrentProfile)
-        Me.pnlProfile.Controls.Add(Me.cmdManageProfile)
-        Me.pnlProfile.Controls.Add(Me.lblCurrentProfile)
-        resources.ApplyResources(Me.pnlProfile, "pnlProfile")
-        Me.pnlProfile.Name = "pnlProfile"
+        Me.pnlExportOptionsSize.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlExportOptionsSize.Controls.Add(Me.txtImageWidth)
+        Me.pnlExportOptionsSize.Controls.Add(Me.lblSize)
+        Me.pnlExportOptionsSize.Controls.Add(Me.cboImageUM)
+        Me.pnlExportOptionsSize.Controls.Add(Me.txtImageHeight)
+        resources.ApplyResources(Me.pnlExportOptionsSize, "pnlExportOptionsSize")
+        Me.pnlExportOptionsSize.Name = "pnlExportOptionsSize"
         '
-        'txtCurrentProfile
+        'txtImageWidth
         '
-        resources.ApplyResources(Me.txtCurrentProfile, "txtCurrentProfile")
-        Me.txtCurrentProfile.Name = "txtCurrentProfile"
-        Me.txtCurrentProfile.ReadOnly = True
+        resources.ApplyResources(Me.txtImageWidth, "txtImageWidth")
+        Me.txtImageWidth.Maximum = New Decimal(New Integer() {65536, 0, 0, 0})
+        Me.txtImageWidth.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.txtImageWidth.Name = "txtImageWidth"
+        Me.txtImageWidth.Value = New Decimal(New Integer() {4096, 0, 0, 0})
         '
-        'cmdManageProfile
+        'lblSize
         '
-        Me.cmdManageProfile.Image = Global.cSurveyPC.My.Resources.Resources.to_do_list
-        resources.ApplyResources(Me.cmdManageProfile, "cmdManageProfile")
-        Me.cmdManageProfile.Name = "cmdManageProfile"
-        Me.cmdManageProfile.UseVisualStyleBackColor = True
+        resources.ApplyResources(Me.lblSize, "lblSize")
+        Me.lblSize.Name = "lblSize"
         '
-        'lblCurrentProfile
+        'cboImageUM
         '
-        resources.ApplyResources(Me.lblCurrentProfile, "lblCurrentProfile")
-        Me.lblCurrentProfile.Name = "lblCurrentProfile"
+        resources.ApplyResources(Me.cboImageUM, "cboImageUM")
+        Me.cboImageUM.Name = "cboImageUM"
+        Me.cboImageUM.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboImageUM.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboImageUM.Properties.Items.AddRange(New Object() {resources.GetString("cboImageUM.Properties.Items"), resources.GetString("cboImageUM.Properties.Items1"), resources.GetString("cboImageUM.Properties.Items2"), resources.GetString("cboImageUM.Properties.Items3")})
+        Me.cboImageUM.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
-        'pnlExportOptionsFormat
+        'txtImageHeight
         '
-        Me.pnlExportOptionsFormat.Controls.Add(Me.cboFileFormat)
-        Me.pnlExportOptionsFormat.Controls.Add(Me.Label7)
-        resources.ApplyResources(Me.pnlExportOptionsFormat, "pnlExportOptionsFormat")
-        Me.pnlExportOptionsFormat.Name = "pnlExportOptionsFormat"
-        '
-        'cboFileFormat
-        '
-        Me.cboFileFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        resources.ApplyResources(Me.cboFileFormat, "cboFileFormat")
-        Me.cboFileFormat.Items.AddRange(New Object() {resources.GetString("cboFileFormat.Items"), resources.GetString("cboFileFormat.Items1"), resources.GetString("cboFileFormat.Items2"), resources.GetString("cboFileFormat.Items3"), resources.GetString("cboFileFormat.Items4")})
-        Me.cboFileFormat.Name = "cboFileFormat"
-        '
-        'Label7
-        '
-        resources.ApplyResources(Me.Label7, "Label7")
-        Me.Label7.Name = "Label7"
+        resources.ApplyResources(Me.txtImageHeight, "txtImageHeight")
+        Me.txtImageHeight.Maximum = New Decimal(New Integer() {65536, 0, 0, 0})
+        Me.txtImageHeight.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.txtImageHeight.Name = "txtImageHeight"
+        Me.txtImageHeight.Value = New Decimal(New Integer() {3072, 0, 0, 0})
         '
         'pnlExportOptionsPage
         '
+        Me.pnlExportOptionsPage.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlExportOptionsPage.Controls.Add(Me.lblImageOrientation)
         Me.pnlExportOptionsPage.Controls.Add(Me.chkImageOrientationLandscape)
         Me.pnlExportOptionsPage.Controls.Add(Me.cmdSetImageMargins)
@@ -767,10 +833,11 @@ Partial Class frmPreview
         '
         'cmdSetImageMargins
         '
-        Me.cmdSetImageMargins.Image = Global.cSurveyPC.My.Resources.Resources.document_margins
+        Me.cmdSetImageMargins.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdSetImageMargins.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.richeditpagemargins
+        Me.cmdSetImageMargins.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         resources.ApplyResources(Me.cmdSetImageMargins, "cmdSetImageMargins")
         Me.cmdSetImageMargins.Name = "cmdSetImageMargins"
-        Me.cmdSetImageMargins.UseVisualStyleBackColor = True
         '
         'chkImageOrientationPortrait
         '
@@ -795,245 +862,118 @@ Partial Class frmPreview
         Me.cboSize.Properties.LargeImages = Me.SvgImageCollection
         Me.cboSize.Properties.SmallImages = Me.SvgImageCollection
         '
-        'pnlExportOptionsSize
+        'SvgImageCollection
         '
-        Me.pnlExportOptionsSize.Controls.Add(Me.txtImageWidth)
-        Me.pnlExportOptionsSize.Controls.Add(Me.lblSize)
-        Me.pnlExportOptionsSize.Controls.Add(Me.cboImageUM)
-        Me.pnlExportOptionsSize.Controls.Add(Me.txtImageHeight)
-        resources.ApplyResources(Me.pnlExportOptionsSize, "pnlExportOptionsSize")
-        Me.pnlExportOptionsSize.Name = "pnlExportOptionsSize"
+        Me.SvgImageCollection.ImageSize = New System.Drawing.Size(32, 32)
+        Me.SvgImageCollection.Add("page1", "page1", GetType(cSurveyPC.My.Resources.Resources))
         '
-        'txtImageWidth
+        'pnlExportOptionsFormat
         '
-        resources.ApplyResources(Me.txtImageWidth, "txtImageWidth")
-        Me.txtImageWidth.Maximum = New Decimal(New Integer() {65536, 0, 0, 0})
-        Me.txtImageWidth.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.txtImageWidth.Name = "txtImageWidth"
-        Me.txtImageWidth.Value = New Decimal(New Integer() {4096, 0, 0, 0})
+        Me.pnlExportOptionsFormat.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlExportOptionsFormat.Controls.Add(Me.cboFileFormat)
+        Me.pnlExportOptionsFormat.Controls.Add(Me.Label7)
+        resources.ApplyResources(Me.pnlExportOptionsFormat, "pnlExportOptionsFormat")
+        Me.pnlExportOptionsFormat.Name = "pnlExportOptionsFormat"
         '
-        'lblSize
+        'cboFileFormat
         '
-        resources.ApplyResources(Me.lblSize, "lblSize")
-        Me.lblSize.Name = "lblSize"
+        resources.ApplyResources(Me.cboFileFormat, "cboFileFormat")
+        Me.cboFileFormat.Name = "cboFileFormat"
+        Me.cboFileFormat.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboFileFormat.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboFileFormat.Properties.Items.AddRange(New Object() {resources.GetString("cboFileFormat.Properties.Items"), resources.GetString("cboFileFormat.Properties.Items1"), resources.GetString("cboFileFormat.Properties.Items2"), resources.GetString("cboFileFormat.Properties.Items3"), resources.GetString("cboFileFormat.Properties.Items4")})
+        Me.cboFileFormat.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
-        'cboImageUM
+        'Label7
         '
-        Me.cboImageUM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboImageUM.Items.AddRange(New Object() {resources.GetString("cboImageUM.Items"), resources.GetString("cboImageUM.Items1"), resources.GetString("cboImageUM.Items2"), resources.GetString("cboImageUM.Items3")})
-        resources.ApplyResources(Me.cboImageUM, "cboImageUM")
-        Me.cboImageUM.Name = "cboImageUM"
+        Me.Label7.Appearance.Font = CType(resources.GetObject("Label7.Appearance.Font"), System.Drawing.Font)
+        Me.Label7.Appearance.Options.UseFont = True
+        resources.ApplyResources(Me.Label7, "Label7")
+        Me.Label7.Name = "Label7"
         '
-        'txtImageHeight
+        'pnlPrintOptions
         '
-        resources.ApplyResources(Me.txtImageHeight, "txtImageHeight")
-        Me.txtImageHeight.Maximum = New Decimal(New Integer() {65536, 0, 0, 0})
-        Me.txtImageHeight.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.txtImageHeight.Name = "txtImageHeight"
-        Me.txtImageHeight.Value = New Decimal(New Integer() {3072, 0, 0, 0})
+        Me.pnlPrintOptions.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlPrintOptions.Controls.Add(Me.cboPageFormat)
+        Me.pnlPrintOptions.Controls.Add(Me.LabelControl1)
+        Me.pnlPrintOptions.Controls.Add(Me.chkPageHorizontal)
+        Me.pnlPrintOptions.Controls.Add(Me.chkPageVertical)
+        Me.pnlPrintOptions.Controls.Add(Me.cmdSetMargins)
+        Me.pnlPrintOptions.Controls.Add(Me.cboPrinter)
+        Me.pnlPrintOptions.Controls.Add(Me.lblPrinter)
+        Me.pnlPrintOptions.Controls.Add(Me.lblPageFormat)
+        resources.ApplyResources(Me.pnlPrintOptions, "pnlPrintOptions")
+        Me.pnlPrintOptions.Name = "pnlPrintOptions"
+        '
+        'cboPageFormat
+        '
+        resources.ApplyResources(Me.cboPageFormat, "cboPageFormat")
+        Me.cboPageFormat.Name = "cboPageFormat"
+        Me.cboPageFormat.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboPageFormat.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboPageFormat.Properties.LargeImages = Me.SvgImageCollection
+        Me.cboPageFormat.Properties.SmallImages = Me.SvgImageCollection
+        '
+        'LabelControl1
+        '
+        resources.ApplyResources(Me.LabelControl1, "LabelControl1")
+        Me.LabelControl1.Name = "LabelControl1"
+        '
+        'chkPageHorizontal
+        '
+        Me.chkPageHorizontal.GroupIndex = 2
+        Me.chkPageHorizontal.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.chkPageHorizontal.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.landscape
+        Me.chkPageHorizontal.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.chkPageHorizontal, "chkPageHorizontal")
+        Me.chkPageHorizontal.Name = "chkPageHorizontal"
+        Me.chkPageHorizontal.TabStop = False
+        '
+        'chkPageVertical
+        '
+        Me.chkPageVertical.Checked = True
+        Me.chkPageVertical.GroupIndex = 2
+        Me.chkPageVertical.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.chkPageVertical.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.page1
+        Me.chkPageVertical.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.chkPageVertical, "chkPageVertical")
+        Me.chkPageVertical.Name = "chkPageVertical"
+        '
+        'cmdSetMargins
+        '
+        Me.cmdSetMargins.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdSetMargins.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.richeditpagemargins
+        Me.cmdSetMargins.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.cmdSetMargins, "cmdSetMargins")
+        Me.cmdSetMargins.Name = "cmdSetMargins"
+        '
+        'cboPrinter
+        '
+        resources.ApplyResources(Me.cboPrinter, "cboPrinter")
+        Me.cboPrinter.Name = "cboPrinter"
+        Me.cboPrinter.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboPrinter.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboPrinter.Properties.Sorted = True
+        Me.cboPrinter.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        '
+        'lblPrinter
+        '
+        Me.lblPrinter.Appearance.Font = CType(resources.GetObject("lblPrinter.Appearance.Font"), System.Drawing.Font)
+        Me.lblPrinter.Appearance.Options.UseFont = True
+        resources.ApplyResources(Me.lblPrinter, "lblPrinter")
+        Me.lblPrinter.Name = "lblPrinter"
+        '
+        'lblPageFormat
+        '
+        Me.lblPageFormat.Appearance.Font = CType(resources.GetObject("lblPageFormat.Appearance.Font"), System.Drawing.Font)
+        Me.lblPageFormat.Appearance.Options.UseFont = True
+        resources.ApplyResources(Me.lblPageFormat, "lblPageFormat")
+        Me.lblPageFormat.Name = "lblPageFormat"
         '
         'pPreview
         '
-        Me.pPreview.BackColor = System.Drawing.Color.White
+        Me.pPreview.BackColor = System.Drawing.SystemColors.AppWorkspace
+        Me.pPreview.ForeColor = System.Drawing.Color.White
         resources.ApplyResources(Me.pPreview, "pPreview")
         Me.pPreview.Name = "pPreview"
         Me.pPreview.UseAntiAlias = True
-        '
-        'tbMain
-        '
-        resources.ApplyResources(Me.tbMain, "tbMain")
-        Me.tbMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnAdd, Me.btnDelete, Me.sep1, Me.btnSidePanel, Me.sep6, Me.btnProperty, Me.ToolStripSeparator1, Me.btnBaseRule, Me.sep7, Me.btnZoomIn, Me.btnZoomOut, Me.btnZoomToFit, Me.sep2, Me.btnImportSettings, Me.btnPreviewQuality, Me.sep3, Me.btnManualRefresh, Me.btnStop, Me.sep4, Me.btnPrint, Me.btnExport, Me.sep5, Me.cmdClose})
-        Me.tbMain.Name = "tbMain"
-        '
-        'btnAdd
-        '
-        Me.btnAdd.Image = Global.cSurveyPC.My.Resources.Resources.add
-        resources.ApplyResources(Me.btnAdd, "btnAdd")
-        Me.btnAdd.Name = "btnAdd"
-        '
-        'btnDelete
-        '
-        resources.ApplyResources(Me.btnDelete, "btnDelete")
-        Me.btnDelete.Image = Global.cSurveyPC.My.Resources.Resources.cross
-        Me.btnDelete.Name = "btnDelete"
-        '
-        'sep1
-        '
-        Me.sep1.Name = "sep1"
-        resources.ApplyResources(Me.sep1, "sep1")
-        '
-        'btnSidePanel
-        '
-        Me.btnSidePanel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnSidePanel.Image = Global.cSurveyPC.My.Resources.Resources.application_side_list
-        resources.ApplyResources(Me.btnSidePanel, "btnSidePanel")
-        Me.btnSidePanel.Name = "btnSidePanel"
-        '
-        'sep6
-        '
-        Me.sep6.Name = "sep6"
-        resources.ApplyResources(Me.sep6, "sep6")
-        '
-        'btnProperty
-        '
-        Me.btnProperty.Image = Global.cSurveyPC.My.Resources.Resources.application_form
-        resources.ApplyResources(Me.btnProperty, "btnProperty")
-        Me.btnProperty.Name = "btnProperty"
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        resources.ApplyResources(Me.ToolStripSeparator1, "ToolStripSeparator1")
-        '
-        'btnBaseRule
-        '
-        Me.btnBaseRule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnBaseRule.Image = Global.cSurveyPC.My.Resources.Resources.layers_map
-        resources.ApplyResources(Me.btnBaseRule, "btnBaseRule")
-        Me.btnBaseRule.Name = "btnBaseRule"
-        '
-        'sep7
-        '
-        Me.sep7.Name = "sep7"
-        resources.ApplyResources(Me.sep7, "sep7")
-        '
-        'btnZoomIn
-        '
-        Me.btnZoomIn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnZoomIn.Image = Global.cSurveyPC.My.Resources.Resources.magnifier_zoom_in
-        resources.ApplyResources(Me.btnZoomIn, "btnZoomIn")
-        Me.btnZoomIn.Name = "btnZoomIn"
-        '
-        'btnZoomOut
-        '
-        Me.btnZoomOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnZoomOut.Image = Global.cSurveyPC.My.Resources.Resources.magnifier_zoom_out
-        resources.ApplyResources(Me.btnZoomOut, "btnZoomOut")
-        Me.btnZoomOut.Name = "btnZoomOut"
-        '
-        'btnZoomToFit
-        '
-        Me.btnZoomToFit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnZoomToFit.Image = Global.cSurveyPC.My.Resources.Resources.page_white_magnify
-        resources.ApplyResources(Me.btnZoomToFit, "btnZoomToFit")
-        Me.btnZoomToFit.Name = "btnZoomToFit"
-        '
-        'sep2
-        '
-        Me.sep2.Name = "sep2"
-        resources.ApplyResources(Me.sep2, "sep2")
-        '
-        'btnImportSettings
-        '
-        Me.btnImportSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.btnImportSettings.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnImportSettings0, Me.btnImportSettings1, Me.btnImportSettings4, Me.btnImportSettings5, Me.btnImportSettings2, Me.ToolStripMenuItem1, Me.btnImportSettings3})
-        resources.ApplyResources(Me.btnImportSettings, "btnImportSettings")
-        Me.btnImportSettings.Name = "btnImportSettings"
-        '
-        'btnImportSettings0
-        '
-        Me.btnImportSettings0.Name = "btnImportSettings0"
-        resources.ApplyResources(Me.btnImportSettings0, "btnImportSettings0")
-        '
-        'btnImportSettings1
-        '
-        Me.btnImportSettings1.Name = "btnImportSettings1"
-        resources.ApplyResources(Me.btnImportSettings1, "btnImportSettings1")
-        '
-        'btnImportSettings4
-        '
-        Me.btnImportSettings4.Name = "btnImportSettings4"
-        resources.ApplyResources(Me.btnImportSettings4, "btnImportSettings4")
-        '
-        'btnImportSettings5
-        '
-        Me.btnImportSettings5.Name = "btnImportSettings5"
-        resources.ApplyResources(Me.btnImportSettings5, "btnImportSettings5")
-        '
-        'btnImportSettings2
-        '
-        Me.btnImportSettings2.Name = "btnImportSettings2"
-        resources.ApplyResources(Me.btnImportSettings2, "btnImportSettings2")
-        '
-        'ToolStripMenuItem1
-        '
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        resources.ApplyResources(Me.ToolStripMenuItem1, "ToolStripMenuItem1")
-        '
-        'btnImportSettings3
-        '
-        Me.btnImportSettings3.Name = "btnImportSettings3"
-        resources.ApplyResources(Me.btnImportSettings3, "btnImportSettings3")
-        '
-        'btnPreviewQuality
-        '
-        Me.btnPreviewQuality.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.btnPreviewQuality.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnPreviewQuality0, Me.btnPreviewQuality1, Me.btnPreviewQuality2})
-        resources.ApplyResources(Me.btnPreviewQuality, "btnPreviewQuality")
-        Me.btnPreviewQuality.Name = "btnPreviewQuality"
-        '
-        'btnPreviewQuality0
-        '
-        Me.btnPreviewQuality0.Name = "btnPreviewQuality0"
-        resources.ApplyResources(Me.btnPreviewQuality0, "btnPreviewQuality0")
-        '
-        'btnPreviewQuality1
-        '
-        Me.btnPreviewQuality1.Name = "btnPreviewQuality1"
-        resources.ApplyResources(Me.btnPreviewQuality1, "btnPreviewQuality1")
-        '
-        'btnPreviewQuality2
-        '
-        Me.btnPreviewQuality2.Checked = True
-        Me.btnPreviewQuality2.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.btnPreviewQuality2.Name = "btnPreviewQuality2"
-        resources.ApplyResources(Me.btnPreviewQuality2, "btnPreviewQuality2")
-        '
-        'sep3
-        '
-        Me.sep3.Name = "sep3"
-        resources.ApplyResources(Me.sep3, "sep3")
-        '
-        'btnManualRefresh
-        '
-        Me.btnManualRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnManualRefresh.Image = Global.cSurveyPC.My.Resources.Resources.page_refresh
-        resources.ApplyResources(Me.btnManualRefresh, "btnManualRefresh")
-        Me.btnManualRefresh.Name = "btnManualRefresh"
-        '
-        'btnStop
-        '
-        Me.btnStop.Image = Global.cSurveyPC.My.Resources.Resources.stop2
-        resources.ApplyResources(Me.btnStop, "btnStop")
-        Me.btnStop.Name = "btnStop"
-        '
-        'sep4
-        '
-        Me.sep4.Name = "sep4"
-        resources.ApplyResources(Me.sep4, "sep4")
-        '
-        'btnPrint
-        '
-        Me.btnPrint.Image = Global.cSurveyPC.My.Resources.Resources.printer
-        resources.ApplyResources(Me.btnPrint, "btnPrint")
-        Me.btnPrint.Name = "btnPrint"
-        '
-        'btnExport
-        '
-        Me.btnExport.Image = Global.cSurveyPC.My.Resources.Resources.disk
-        resources.ApplyResources(Me.btnExport, "btnExport")
-        Me.btnExport.Name = "btnExport"
-        '
-        'sep5
-        '
-        Me.sep5.Name = "sep5"
-        resources.ApplyResources(Me.sep5, "sep5")
-        '
-        'cmdClose
-        '
-        Me.cmdClose.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        resources.ApplyResources(Me.cmdClose, "cmdClose")
-        Me.cmdClose.Name = "cmdClose"
         '
         'prDialog
         '
@@ -1041,9 +981,11 @@ Partial Class frmPreview
         '
         'pnlExport
         '
-        resources.ApplyResources(Me.pnlExport, "pnlExport")
-        Me.pnlExport.BackColor = System.Drawing.Color.White
+        Me.pnlExport.Appearance.BackColor = System.Drawing.Color.White
+        Me.pnlExport.Appearance.Options.UseBackColor = True
+        Me.pnlExport.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlExport.Controls.Add(Me.picExport)
+        resources.ApplyResources(Me.pnlExport, "pnlExport")
         Me.pnlExport.Name = "pnlExport"
         '
         'picExport
@@ -1051,173 +993,6 @@ Partial Class frmPreview
         resources.ApplyResources(Me.picExport, "picExport")
         Me.picExport.Name = "picExport"
         Me.picExport.TabStop = False
-        '
-        'sbMain
-        '
-        resources.ApplyResources(Me.sbMain, "sbMain")
-        Me.sbMain.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.sbMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.pnlStatusText, Me.pnlStatusProgress, Me.pnlStatusCurrentRule, Me.pnlStatusDesignZoom, Me.pnlStatusDesignZoom100, Me.pnlStatusDesignZoom200, Me.pnlStatusDesignZoom250, Me.pnlStatusDesignZoom500, Me.pnlStatusDesignZoom1000})
-        Me.sbMain.Name = "sbMain"
-        '
-        'pnlStatusText
-        '
-        Me.pnlStatusText.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right
-        Me.pnlStatusText.Name = "pnlStatusText"
-        resources.ApplyResources(Me.pnlStatusText, "pnlStatusText")
-        Me.pnlStatusText.Spring = True
-        '
-        'pnlStatusProgress
-        '
-        resources.ApplyResources(Me.pnlStatusProgress, "pnlStatusProgress")
-        Me.pnlStatusProgress.Name = "pnlStatusProgress"
-        '
-        'pnlStatusCurrentRule
-        '
-        resources.ApplyResources(Me.pnlStatusCurrentRule, "pnlStatusCurrentRule")
-        Me.pnlStatusCurrentRule.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right
-        Me.pnlStatusCurrentRule.DoubleClickEnabled = True
-        Me.pnlStatusCurrentRule.Image = Global.cSurveyPC.My.Resources.Resources.layers_map
-        Me.pnlStatusCurrentRule.Name = "pnlStatusCurrentRule"
-        '
-        'pnlStatusDesignZoom
-        '
-        resources.ApplyResources(Me.pnlStatusDesignZoom, "pnlStatusDesignZoom")
-        Me.pnlStatusDesignZoom.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right
-        Me.pnlStatusDesignZoom.Image = Global.cSurveyPC.My.Resources.Resources.magnifier
-        Me.pnlStatusDesignZoom.Name = "pnlStatusDesignZoom"
-        '
-        'pnlStatusDesignZoom100
-        '
-        Me.pnlStatusDesignZoom100.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
-            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
-            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
-        Me.pnlStatusDesignZoom100.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.pnlStatusDesignZoom100.Name = "pnlStatusDesignZoom100"
-        resources.ApplyResources(Me.pnlStatusDesignZoom100, "pnlStatusDesignZoom100")
-        '
-        'pnlStatusDesignZoom200
-        '
-        Me.pnlStatusDesignZoom200.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
-            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
-            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
-        Me.pnlStatusDesignZoom200.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.pnlStatusDesignZoom200.Name = "pnlStatusDesignZoom200"
-        resources.ApplyResources(Me.pnlStatusDesignZoom200, "pnlStatusDesignZoom200")
-        '
-        'pnlStatusDesignZoom250
-        '
-        Me.pnlStatusDesignZoom250.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
-            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
-            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
-        Me.pnlStatusDesignZoom250.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.pnlStatusDesignZoom250.Name = "pnlStatusDesignZoom250"
-        resources.ApplyResources(Me.pnlStatusDesignZoom250, "pnlStatusDesignZoom250")
-        '
-        'pnlStatusDesignZoom500
-        '
-        Me.pnlStatusDesignZoom500.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
-            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
-            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
-        Me.pnlStatusDesignZoom500.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.pnlStatusDesignZoom500.Name = "pnlStatusDesignZoom500"
-        resources.ApplyResources(Me.pnlStatusDesignZoom500, "pnlStatusDesignZoom500")
-        '
-        'pnlStatusDesignZoom1000
-        '
-        Me.pnlStatusDesignZoom1000.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
-            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
-            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
-        Me.pnlStatusDesignZoom1000.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.pnlStatusDesignZoom1000.Name = "pnlStatusDesignZoom1000"
-        resources.ApplyResources(Me.pnlStatusDesignZoom1000, "pnlStatusDesignZoom1000")
-        '
-        'lv
-        '
-        Me.lv.BackColor = System.Drawing.SystemColors.ButtonFace
-        Me.lv.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.lv.ContextMenuStrip = Me.mnuLvContext
-        resources.ApplyResources(Me.lv, "lv")
-        Me.lv.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None
-        Me.lv.HideSelection = False
-        Me.lv.LabelEdit = True
-        Me.lv.LargeImageList = Me.iml
-        Me.lv.MultiSelect = False
-        Me.lv.Name = "lv"
-        Me.lv.ShowItemToolTips = True
-        Me.lv.UseCompatibleStateImageBehavior = False
-        '
-        'mnuLvContext
-        '
-        resources.ApplyResources(Me.mnuLvContext, "mnuLvContext")
-        Me.mnuLvContext.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuLvContextAdd, Me.mnuLvContextAddSep, Me.mnuLvContextDelete, Me.mnuLvContextDeleteSep, Me.mnuLvContextImport, Me.mnuLvContextExport})
-        Me.mnuLvContext.Name = "mnuLvContext"
-        '
-        'mnuLvContextAdd
-        '
-        Me.mnuLvContextAdd.Image = Global.cSurveyPC.My.Resources.Resources.add
-        Me.mnuLvContextAdd.Name = "mnuLvContextAdd"
-        resources.ApplyResources(Me.mnuLvContextAdd, "mnuLvContextAdd")
-        '
-        'mnuLvContextAddSep
-        '
-        Me.mnuLvContextAddSep.Name = "mnuLvContextAddSep"
-        resources.ApplyResources(Me.mnuLvContextAddSep, "mnuLvContextAddSep")
-        '
-        'mnuLvContextDelete
-        '
-        Me.mnuLvContextDelete.Image = Global.cSurveyPC.My.Resources.Resources.cross
-        Me.mnuLvContextDelete.Name = "mnuLvContextDelete"
-        resources.ApplyResources(Me.mnuLvContextDelete, "mnuLvContextDelete")
-        '
-        'mnuLvContextDeleteSep
-        '
-        Me.mnuLvContextDeleteSep.Name = "mnuLvContextDeleteSep"
-        resources.ApplyResources(Me.mnuLvContextDeleteSep, "mnuLvContextDeleteSep")
-        '
-        'mnuLvContextImport
-        '
-        Me.mnuLvContextImport.Name = "mnuLvContextImport"
-        resources.ApplyResources(Me.mnuLvContextImport, "mnuLvContextImport")
-        '
-        'mnuLvContextExport
-        '
-        Me.mnuLvContextExport.Name = "mnuLvContextExport"
-        resources.ApplyResources(Me.mnuLvContextExport, "mnuLvContextExport")
-        '
-        'iml
-        '
-        Me.iml.ImageStream = CType(resources.GetObject("iml.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.iml.TransparentColor = System.Drawing.Color.Transparent
-        Me.iml.Images.SetKeyName(0, "preview")
-        Me.iml.Images.SetKeyName(1, "export")
-        Me.iml.Images.SetKeyName(2, "viewer")
-        '
-        'picInvalidated
-        '
-        resources.ApplyResources(Me.picInvalidated, "picInvalidated")
-        Me.picInvalidated.Name = "picInvalidated"
-        Me.picInvalidated.TabStop = False
-        '
-        'pnlPopup
-        '
-        Me.pnlPopup.BackColor = System.Drawing.Color.PaleGoldenrod
-        Me.pnlPopup.Controls.Add(Me.cmdRefresh)
-        Me.pnlPopup.Controls.Add(Me.picInvalidated)
-        Me.pnlPopup.Controls.Add(Me.lblPopupWarning)
-        resources.ApplyResources(Me.pnlPopup, "pnlPopup")
-        Me.pnlPopup.Name = "pnlPopup"
-        '
-        'cmdRefresh
-        '
-        resources.ApplyResources(Me.cmdRefresh, "cmdRefresh")
-        Me.cmdRefresh.Image = Global.cSurveyPC.My.Resources.Resources.arrow_refresh_small
-        Me.cmdRefresh.Name = "cmdRefresh"
-        Me.cmdRefresh.UseVisualStyleBackColor = True
-        '
-        'lblPopupWarning
-        '
-        resources.ApplyResources(Me.lblPopupWarning, "lblPopupWarning")
-        Me.lblPopupWarning.Name = "lblPopupWarning"
         '
         'picMap
         '
@@ -1228,6 +1003,7 @@ Partial Class frmPreview
         '
         'pnlMap
         '
+        Me.pnlMap.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlMap.Controls.Add(Me.picMap)
         resources.ApplyResources(Me.pnlMap, "pnlMap")
         Me.pnlMap.Name = "pnlMap"
@@ -1243,231 +1019,648 @@ Partial Class frmPreview
         Me.trkZoom.TickStyle = System.Windows.Forms.TickStyle.None
         Me.trkZoom.Value = 20
         '
-        'mnuImageSizeFromPageSize
+        'pnlMain
         '
-        resources.ApplyResources(Me.mnuImageSizeFromPageSize, "mnuImageSizeFromPageSize")
-        Me.mnuImageSizeFromPageSize.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuImageSizeFromPageSizeItem})
-        Me.mnuImageSizeFromPageSize.Name = "mnuImageSizeFromPageSize"
+        Me.pnlMain.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlMain.Controls.Add(Me.cDesignMessageCorner)
+        Me.pnlMain.Controls.Add(Me.pnlMap)
+        Me.pnlMain.Controls.Add(Me.pnlExport)
+        Me.pnlMain.Controls.Add(Me.pPreview)
+        resources.ApplyResources(Me.pnlMain, "pnlMain")
+        Me.pnlMain.Name = "pnlMain"
         '
-        'mnuImageSizeFromPageSizeItem
+        'cDesignMessageCorner
         '
-        Me.mnuImageSizeFromPageSizeItem.Name = "mnuImageSizeFromPageSizeItem"
-        resources.ApplyResources(Me.mnuImageSizeFromPageSizeItem, "mnuImageSizeFromPageSizeItem")
+        Me.cDesignMessageCorner.AllowClick = False
+        Me.cDesignMessageCorner.Appearance.BackColor = System.Drawing.Color.LemonChiffon
+        Me.cDesignMessageCorner.Appearance.Options.UseBackColor = True
+        Me.cDesignMessageCorner.CustomButtonCaption = "Refresh"
+        Me.cDesignMessageCorner.CustomButtonTooltip = ""
+        resources.ApplyResources(Me.cDesignMessageCorner, "cDesignMessageCorner")
+        Me.cDesignMessageCorner.Name = "cDesignMessageCorner"
+        '
+        'RibbonControl1
+        '
+        Me.RibbonControl1.AutoHideEmptyItems = True
+        Me.RibbonControl1.Categories.AddRange(New DevExpress.XtraBars.BarManagerCategory() {CType(resources.GetObject("RibbonControl1.Categories"), DevExpress.XtraBars.BarManagerCategory), CType(resources.GetObject("RibbonControl1.Categories1"), DevExpress.XtraBars.BarManagerCategory), CType(resources.GetObject("RibbonControl1.Categories2"), DevExpress.XtraBars.BarManagerCategory)})
+        Me.RibbonControl1.ExpandCollapseItem.Id = 0
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.btnProfilesAdd, Me.btnProfilesDelete, Me.btnProperties, Me.btnBaseRule, Me.btnPrint, Me.btnExport, Me.btnClose, Me.btnZoomIn, Me.btnZoomOut, Me.btnZoomToFit, Me.btnSidePanel, Me.btnDesignGraphicsQuality, Me.btnStop, Me.btnDesignGraphics0, Me.btnDesignGraphics1, Me.btnDesignGraphics2, Me.btnManualRefresh, Me.btnRefresh, Me.pnlStatusText, Me.pnlStatusDesignZoom, Me.btnStatusDesignZoom100, Me.btnStatusDesignZoom200, Me.btnStatusDesignZoom250, Me.btnStatusDesignZoom500, Me.btnStatusDesignZoom1000, Me.pnlStatusCurrentRule, Me.pnlStatusProgress, Me.btnProfileImportFromFile, Me.btnProfileExportToFile})
+        resources.ApplyResources(Me.RibbonControl1, "RibbonControl1")
+        Me.RibbonControl1.MaxItemId = 30
+        Me.RibbonControl1.Name = "RibbonControl1"
+        Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
+        Me.RibbonControl1.QuickToolbarItemLinks.Add(Me.btnExport)
+        Me.RibbonControl1.QuickToolbarItemLinks.Add(Me.btnPrint)
+        Me.RibbonControl1.QuickToolbarItemLinks.Add(Me.btnProperties, True)
+        Me.RibbonControl1.QuickToolbarItemLinks.Add(Me.btnManualRefresh, True)
+        Me.RibbonControl1.QuickToolbarItemLinks.Add(Me.btnStop, True)
+        Me.RibbonControl1.QuickToolbarItemLinks.Add(Me.btnRefresh, True)
+        Me.RibbonControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.pbProgress})
+        Me.RibbonControl1.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.[False]
+        Me.RibbonControl1.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.ShowOnMultiplePages
+        Me.RibbonControl1.StatusBar = Me.RibbonStatusBar1
+        '
+        'btnProfilesAdd
+        '
+        resources.ApplyResources(Me.btnProfilesAdd, "btnProfilesAdd")
+        Me.btnProfilesAdd.CategoryGuid = New System.Guid("80636958-5eeb-4fe0-9ba8-e829c0d551af")
+        Me.btnProfilesAdd.Id = 1
+        Me.btnProfilesAdd.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
+        Me.btnProfilesAdd.Name = "btnProfilesAdd"
+        '
+        'btnProfilesDelete
+        '
+        resources.ApplyResources(Me.btnProfilesDelete, "btnProfilesDelete")
+        Me.btnProfilesDelete.CategoryGuid = New System.Guid("80636958-5eeb-4fe0-9ba8-e829c0d551af")
+        Me.btnProfilesDelete.Enabled = False
+        Me.btnProfilesDelete.Id = 2
+        Me.btnProfilesDelete.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
+        Me.btnProfilesDelete.Name = "btnProfilesDelete"
+        '
+        'btnProperties
+        '
+        resources.ApplyResources(Me.btnProperties, "btnProperties")
+        Me.btnProperties.CategoryGuid = New System.Guid("274e18f2-42b6-4ff2-84a6-446354866455")
+        Me.btnProperties.Id = 3
+        Me.btnProperties.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.properties
+        Me.btnProperties.Name = "btnProperties"
+        '
+        'btnBaseRule
+        '
+        resources.ApplyResources(Me.btnBaseRule, "btnBaseRule")
+        Me.btnBaseRule.CategoryGuid = New System.Guid("274e18f2-42b6-4ff2-84a6-446354866455")
+        Me.btnBaseRule.Id = 4
+        Me.btnBaseRule.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.scale
+        Me.btnBaseRule.Name = "btnBaseRule"
+        '
+        'btnPrint
+        '
+        resources.ApplyResources(Me.btnPrint, "btnPrint")
+        Me.btnPrint.CategoryGuid = New System.Guid("80636958-5eeb-4fe0-9ba8-e829c0d551af")
+        Me.btnPrint.Id = 5
+        Me.btnPrint.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.print
+        Me.btnPrint.Name = "btnPrint"
+        '
+        'btnExport
+        '
+        resources.ApplyResources(Me.btnExport, "btnExport")
+        Me.btnExport.CategoryGuid = New System.Guid("80636958-5eeb-4fe0-9ba8-e829c0d551af")
+        Me.btnExport.Id = 6
+        Me.btnExport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.exportfile
+        Me.btnExport.Name = "btnExport"
+        '
+        'btnClose
+        '
+        resources.ApplyResources(Me.btnClose, "btnClose")
+        Me.btnClose.Id = 7
+        Me.btnClose.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.close
+        Me.btnClose.Name = "btnClose"
+        '
+        'btnZoomIn
+        '
+        resources.ApplyResources(Me.btnZoomIn, "btnZoomIn")
+        Me.btnZoomIn.CategoryGuid = New System.Guid("d65b7d25-b6f0-49fa-8847-69b0c824ef21")
+        Me.btnZoomIn.Id = 8
+        Me.btnZoomIn.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.zoomin
+        Me.btnZoomIn.Name = "btnZoomIn"
+        Me.btnZoomIn.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
+        '
+        'btnZoomOut
+        '
+        resources.ApplyResources(Me.btnZoomOut, "btnZoomOut")
+        Me.btnZoomOut.CategoryGuid = New System.Guid("d65b7d25-b6f0-49fa-8847-69b0c824ef21")
+        Me.btnZoomOut.Id = 9
+        Me.btnZoomOut.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.zoomout
+        Me.btnZoomOut.Name = "btnZoomOut"
+        Me.btnZoomOut.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
+        '
+        'btnZoomToFit
+        '
+        resources.ApplyResources(Me.btnZoomToFit, "btnZoomToFit")
+        Me.btnZoomToFit.CategoryGuid = New System.Guid("d65b7d25-b6f0-49fa-8847-69b0c824ef21")
+        Me.btnZoomToFit.Id = 10
+        Me.btnZoomToFit.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.panandzoompanel
+        Me.btnZoomToFit.ItemShortcut = New DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F4)
+        Me.btnZoomToFit.Name = "btnZoomToFit"
+        Me.btnZoomToFit.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
+        '
+        'btnSidePanel
+        '
+        resources.ApplyResources(Me.btnSidePanel, "btnSidePanel")
+        Me.btnSidePanel.CategoryGuid = New System.Guid("d65b7d25-b6f0-49fa-8847-69b0c824ef21")
+        Me.btnSidePanel.Id = 11
+        Me.btnSidePanel.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.folderpanel
+        Me.btnSidePanel.Name = "btnSidePanel"
+        Me.btnSidePanel.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
+        '
+        'btnDesignGraphicsQuality
+        '
+        resources.ApplyResources(Me.btnDesignGraphicsQuality, "btnDesignGraphicsQuality")
+        Me.btnDesignGraphicsQuality.Id = 142
+        Me.btnDesignGraphicsQuality.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.gaugestylehalfcircular
+        Me.btnDesignGraphicsQuality.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnDesignGraphics0), New DevExpress.XtraBars.LinkPersistInfo(Me.btnDesignGraphics1), New DevExpress.XtraBars.LinkPersistInfo(Me.btnDesignGraphics2)})
+        Me.btnDesignGraphicsQuality.Name = "btnDesignGraphicsQuality"
+        '
+        'btnDesignGraphics0
+        '
+        resources.ApplyResources(Me.btnDesignGraphics0, "btnDesignGraphics0")
+        Me.btnDesignGraphics0.GroupIndex = 1
+        Me.btnDesignGraphics0.Id = 14
+        Me.btnDesignGraphics0.Name = "btnDesignGraphics0"
+        '
+        'btnDesignGraphics1
+        '
+        resources.ApplyResources(Me.btnDesignGraphics1, "btnDesignGraphics1")
+        Me.btnDesignGraphics1.GroupIndex = 1
+        Me.btnDesignGraphics1.Id = 15
+        Me.btnDesignGraphics1.Name = "btnDesignGraphics1"
+        '
+        'btnDesignGraphics2
+        '
+        resources.ApplyResources(Me.btnDesignGraphics2, "btnDesignGraphics2")
+        Me.btnDesignGraphics2.GroupIndex = 1
+        Me.btnDesignGraphics2.Id = 16
+        Me.btnDesignGraphics2.Name = "btnDesignGraphics2"
+        '
+        'btnStop
+        '
+        resources.ApplyResources(Me.btnStop, "btnStop")
+        Me.btnStop.Id = 12
+        Me.btnStop.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources._stop
+        Me.btnStop.Name = "btnStop"
+        '
+        'btnManualRefresh
+        '
+        resources.ApplyResources(Me.btnManualRefresh, "btnManualRefresh")
+        Me.btnManualRefresh.Id = 17
+        Me.btnManualRefresh.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.manualrefresh
+        Me.btnManualRefresh.Name = "btnManualRefresh"
+        '
+        'btnRefresh
+        '
+        resources.ApplyResources(Me.btnRefresh, "btnRefresh")
+        Me.btnRefresh.Id = 18
+        Me.btnRefresh.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_refresh
+        Me.btnRefresh.Name = "btnRefresh"
+        '
+        'pnlStatusText
+        '
+        Me.pnlStatusText.AutoSize = DevExpress.XtraBars.BarStaticItemSize.Spring
+        Me.pnlStatusText.Id = 19
+        Me.pnlStatusText.Name = "pnlStatusText"
+        '
+        'pnlStatusDesignZoom
+        '
+        Me.pnlStatusDesignZoom.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right
+        resources.ApplyResources(Me.pnlStatusDesignZoom, "pnlStatusDesignZoom")
+        Me.pnlStatusDesignZoom.Id = 20
+        Me.pnlStatusDesignZoom.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.zoom
+        Me.pnlStatusDesignZoom.Name = "pnlStatusDesignZoom"
+        Me.pnlStatusDesignZoom.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        '
+        'btnStatusDesignZoom100
+        '
+        Me.btnStatusDesignZoom100.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right
+        resources.ApplyResources(Me.btnStatusDesignZoom100, "btnStatusDesignZoom100")
+        Me.btnStatusDesignZoom100.Id = 21
+        Me.btnStatusDesignZoom100.Name = "btnStatusDesignZoom100"
+        '
+        'btnStatusDesignZoom200
+        '
+        Me.btnStatusDesignZoom200.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right
+        resources.ApplyResources(Me.btnStatusDesignZoom200, "btnStatusDesignZoom200")
+        Me.btnStatusDesignZoom200.Id = 22
+        Me.btnStatusDesignZoom200.Name = "btnStatusDesignZoom200"
+        '
+        'btnStatusDesignZoom250
+        '
+        Me.btnStatusDesignZoom250.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right
+        resources.ApplyResources(Me.btnStatusDesignZoom250, "btnStatusDesignZoom250")
+        Me.btnStatusDesignZoom250.Id = 23
+        Me.btnStatusDesignZoom250.Name = "btnStatusDesignZoom250"
+        '
+        'btnStatusDesignZoom500
+        '
+        Me.btnStatusDesignZoom500.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right
+        resources.ApplyResources(Me.btnStatusDesignZoom500, "btnStatusDesignZoom500")
+        Me.btnStatusDesignZoom500.Id = 24
+        Me.btnStatusDesignZoom500.Name = "btnStatusDesignZoom500"
+        '
+        'btnStatusDesignZoom1000
+        '
+        Me.btnStatusDesignZoom1000.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right
+        resources.ApplyResources(Me.btnStatusDesignZoom1000, "btnStatusDesignZoom1000")
+        Me.btnStatusDesignZoom1000.Id = 25
+        Me.btnStatusDesignZoom1000.Name = "btnStatusDesignZoom1000"
+        '
+        'pnlStatusCurrentRule
+        '
+        Me.pnlStatusCurrentRule.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right
+        resources.ApplyResources(Me.pnlStatusCurrentRule, "pnlStatusCurrentRule")
+        Me.pnlStatusCurrentRule.Id = 26
+        Me.pnlStatusCurrentRule.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.scale
+        Me.pnlStatusCurrentRule.Name = "pnlStatusCurrentRule"
+        Me.pnlStatusCurrentRule.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        '
+        'pnlStatusProgress
+        '
+        Me.pnlStatusProgress.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right
+        Me.pnlStatusProgress.Edit = Me.pbProgress
+        resources.ApplyResources(Me.pnlStatusProgress, "pnlStatusProgress")
+        Me.pnlStatusProgress.Id = 27
+        Me.pnlStatusProgress.Name = "pnlStatusProgress"
+        Me.pnlStatusProgress.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+        '
+        'pbProgress
+        '
+        Me.pbProgress.Name = "pbProgress"
+        '
+        'btnProfileImportFromFile
+        '
+        resources.ApplyResources(Me.btnProfileImportFromFile, "btnProfileImportFromFile")
+        Me.btnProfileImportFromFile.Enabled = False
+        Me.btnProfileImportFromFile.Id = 28
+        Me.btnProfileImportFromFile.Name = "btnProfileImportFromFile"
+        '
+        'btnProfileExportToFile
+        '
+        resources.ApplyResources(Me.btnProfileExportToFile, "btnProfileExportToFile")
+        Me.btnProfileExportToFile.Enabled = False
+        Me.btnProfileExportToFile.Id = 29
+        Me.btnProfileExportToFile.Name = "btnProfileExportToFile"
+        '
+        'RibbonPage1
+        '
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.grpProfiles, Me.grpFile, Me.grpView, Me.grpOptions, Me.RibbonPageGroup1})
+        Me.RibbonPage1.Name = "RibbonPage1"
+        resources.ApplyResources(Me.RibbonPage1, "RibbonPage1")
+        '
+        'grpProfiles
+        '
+        Me.grpProfiles.ItemLinks.Add(Me.btnProfilesAdd)
+        Me.grpProfiles.ItemLinks.Add(Me.btnProfilesDelete)
+        Me.grpProfiles.ItemLinks.Add(Me.btnExport, True)
+        Me.grpProfiles.ItemLinks.Add(Me.btnPrint)
+        Me.grpProfiles.Name = "grpProfiles"
+        resources.ApplyResources(Me.grpProfiles, "grpProfiles")
+        '
+        'grpFile
+        '
+        Me.grpFile.ItemLinks.Add(Me.btnProperties)
+        Me.grpFile.Name = "grpFile"
+        resources.ApplyResources(Me.grpFile, "grpFile")
+        '
+        'grpView
+        '
+        Me.grpView.ItemLinks.Add(Me.btnZoomIn)
+        Me.grpView.ItemLinks.Add(Me.btnZoomOut)
+        Me.grpView.ItemLinks.Add(Me.btnZoomToFit)
+        Me.grpView.ItemLinks.Add(Me.btnSidePanel, True)
+        Me.grpView.Name = "grpView"
+        resources.ApplyResources(Me.grpView, "grpView")
+        '
+        'grpOptions
+        '
+        Me.grpOptions.ItemLinks.Add(Me.btnDesignGraphicsQuality)
+        Me.grpOptions.ItemLinks.Add(Me.btnManualRefresh, True)
+        Me.grpOptions.Name = "grpOptions"
+        resources.ApplyResources(Me.grpOptions, "grpOptions")
+        '
+        'RibbonPageGroup1
+        '
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.btnBaseRule)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.btnStop, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.btnRefresh, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.btnClose, True)
+        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        resources.ApplyResources(Me.RibbonPageGroup1, "RibbonPageGroup1")
+        '
+        'RibbonStatusBar1
+        '
+        Me.RibbonStatusBar1.ItemLinks.Add(Me.pnlStatusText)
+        Me.RibbonStatusBar1.ItemLinks.Add(Me.pnlStatusProgress, True)
+        Me.RibbonStatusBar1.ItemLinks.Add(Me.pnlStatusCurrentRule)
+        Me.RibbonStatusBar1.ItemLinks.Add(Me.pnlStatusDesignZoom, True)
+        Me.RibbonStatusBar1.ItemLinks.Add(Me.btnStatusDesignZoom100, True)
+        Me.RibbonStatusBar1.ItemLinks.Add(Me.btnStatusDesignZoom200)
+        Me.RibbonStatusBar1.ItemLinks.Add(Me.btnStatusDesignZoom250)
+        Me.RibbonStatusBar1.ItemLinks.Add(Me.btnStatusDesignZoom500)
+        Me.RibbonStatusBar1.ItemLinks.Add(Me.btnStatusDesignZoom1000)
+        resources.ApplyResources(Me.RibbonStatusBar1, "RibbonStatusBar1")
+        Me.RibbonStatusBar1.Name = "RibbonStatusBar1"
+        Me.RibbonStatusBar1.Ribbon = Me.RibbonControl1
+        '
+        'NavBarControl1
+        '
+        Me.NavBarControl1.ActiveGroup = Me.grpMain
+        Me.NavBarControl1.AllowHtmlString = True
+        Me.NavBarControl1.Appearance.ItemActive.BackColor = System.Drawing.SystemColors.Highlight
+        Me.NavBarControl1.Appearance.ItemActive.Options.UseBackColor = True
+        Me.NavBarControl1.Appearance.ItemPressed.BackColor = System.Drawing.SystemColors.Highlight
+        Me.NavBarControl1.Appearance.ItemPressed.Options.UseBackColor = True
+        resources.ApplyResources(Me.NavBarControl1, "NavBarControl1")
+        Me.NavBarControl1.ExplorerBarShowGroupButtons = False
+        Me.NavBarControl1.Groups.AddRange(New DevExpress.XtraNavBar.NavBarGroup() {Me.grpMain})
+        Me.NavBarControl1.LinkSelectionMode = DevExpress.XtraNavBar.LinkSelectionModeType.OneInControl
+        Me.NavBarControl1.MenuManager = Me.RibbonControl1
+        Me.NavBarControl1.Name = "NavBarControl1"
+        Me.NavBarControl1.OptionsNavPane.ExpandedWidth = CType(resources.GetObject("resource.ExpandedWidth"), Integer)
+        Me.NavBarControl1.OptionsNavPane.ShowOverflowButton = False
+        Me.NavBarControl1.OptionsNavPane.ShowOverflowPanel = False
+        Me.NavBarControl1.OptionsNavPane.ShowSplitter = False
+        Me.NavBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane
+        Me.RibbonControl1.SetPopupContextMenu(Me.NavBarControl1, Me.mnuProfiles)
+        Me.NavBarControl1.StoreDefaultPaintStyleName = True
+        '
+        'grpMain
+        '
+        Me.grpMain.AllowHtmlString = DevExpress.Utils.DefaultBoolean.[True]
+        resources.ApplyResources(Me.grpMain, "grpMain")
+        Me.grpMain.Expanded = True
+        Me.grpMain.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsText
+        Me.grpMain.Name = "grpMain"
+        Me.grpMain.NavigationPaneVisible = False
+        '
+        'mnuProfiles
+        '
+        Me.mnuProfiles.ItemLinks.Add(Me.btnProfilesAdd)
+        Me.mnuProfiles.ItemLinks.Add(Me.btnProfilesDelete)
+        Me.mnuProfiles.ItemLinks.Add(Me.btnProfileImportFromFile, True)
+        Me.mnuProfiles.ItemLinks.Add(Me.btnProfileExportToFile)
+        Me.mnuProfiles.Name = "mnuProfiles"
+        Me.mnuProfiles.Ribbon = Me.RibbonControl1
+        '
+        'RibbonPage2
+        '
+        Me.RibbonPage2.Name = "RibbonPage2"
+        resources.ApplyResources(Me.RibbonPage2, "RibbonPage2")
+        '
+        'pnlForm
+        '
+        Me.pnlForm.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlForm.Controls.Add(Me.pnlMain)
+        Me.pnlForm.Controls.Add(Me.pnlOptions)
+        Me.pnlForm.Controls.Add(Me.NavBarControl1)
+        resources.ApplyResources(Me.pnlForm, "pnlForm")
+        Me.pnlForm.Name = "pnlForm"
+        '
+        'flyParameters
+        '
+        Me.flyParameters.Controls.Add(Me.pnlParameters)
+        resources.ApplyResources(Me.flyParameters, "flyParameters")
+        Me.flyParameters.Name = "flyParameters"
+        '
+        'pnlParameters
+        '
+        Me.pnlParameters.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        resources.ApplyResources(Me.pnlParameters, "pnlParameters")
+        Me.pnlParameters.FlyoutPanel = Me.flyParameters
+        Me.pnlParameters.Name = "pnlParameters"
         '
         'frmPreview
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.Controls.Add(Me.flyParameters)
+        Me.Controls.Add(Me.pnlForm)
         Me.Controls.Add(Me.trkZoom)
-        Me.Controls.Add(Me.pnlMap)
-        Me.Controls.Add(Me.pnlExport)
-        Me.Controls.Add(Me.pPreview)
-        Me.Controls.Add(Me.pnlPopup)
-        Me.Controls.Add(Me.pnlOptions)
-        Me.Controls.Add(Me.sbMain)
-        Me.Controls.Add(Me.lv)
-        Me.Controls.Add(Me.tbMain)
-        Me.DoubleBuffered = True
-        Me.IconOptions.Icon = CType(resources.GetObject("frmPreview.IconOptions.Icon"), System.Drawing.Icon)
+        Me.Controls.Add(Me.RibbonStatusBar1)
+        Me.Controls.Add(Me.RibbonControl1)
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.print
         Me.KeyPreview = True
         Me.Name = "frmPreview"
+        Me.Ribbon = Me.RibbonControl1
+        Me.StatusBar = Me.RibbonStatusBar1
         Me.pnlOptions.ResumeLayout(False)
-        Me.tblOptions.ResumeLayout(False)
-        Me.pnlCompass.ResumeLayout(False)
-        Me.pnlCompass.PerformLayout()
-        Me.pnlScale.ResumeLayout(False)
-        Me.pnlScale.PerformLayout()
-        Me.pnlInformationBox.ResumeLayout(False)
-        Me.pnlInformationBox.PerformLayout()
-        Me.pnlScaleOptions.ResumeLayout(False)
-        Me.pnlScaleOptions.PerformLayout()
-        CType(Me.txtScaleManual, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlMainOptions, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlMainOptions.ResumeLayout(False)
         Me.pnlMainOptions.PerformLayout()
-        Me.pnlPrintOptions.ResumeLayout(False)
-        Me.pnlPrintOptions.PerformLayout()
-        CType(Me.cboPageFormat.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SvgImageCollection, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboPrintCenterlineColorMode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkPrintSplay.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkPrintCombineColorGray.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboPrintCombineColorMode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkPrintSketches.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkUseDrawingZOrder.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkPrintDesignAdvancedBrushes.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkTranslations.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboPrintDesignStyle.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboGPSData.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkExportGPS.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkPrintDesignSpecialPoint.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkPrintImages.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkPrintDesign.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkPrintCentrelineColorGray.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkPrintLRUD.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkPrintStations.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkPrintShots.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkPrintCentreline.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlCompass, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlCompass.ResumeLayout(False)
+        Me.pnlCompass.PerformLayout()
+        CType(Me.chkPrintCompass.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboCompassPosition.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlScale, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlScale.ResumeLayout(False)
+        Me.pnlScale.PerformLayout()
+        CType(Me.chkPrintScale.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboScalePosition.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlInformationBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlInformationBox.ResumeLayout(False)
+        Me.pnlInformationBox.PerformLayout()
+        CType(Me.chkPrintBox.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboBoxPosition.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlProfile, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlProfile.ResumeLayout(False)
+        Me.pnlProfile.PerformLayout()
+        CType(Me.txtCurrentProfile.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlScaleOptions, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlScaleOptions.ResumeLayout(False)
+        Me.pnlScaleOptions.PerformLayout()
+        CType(Me.cboScale.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtScaleManual.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlExportOptionsOther, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlExportOptionsOther.ResumeLayout(False)
         Me.pnlExportOptionsOther.PerformLayout()
         CType(Me.txtImageDPI, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnlProfile.ResumeLayout(False)
-        Me.pnlProfile.PerformLayout()
-        Me.pnlExportOptionsFormat.ResumeLayout(False)
-        Me.pnlExportOptionsFormat.PerformLayout()
-        Me.pnlExportOptionsPage.ResumeLayout(False)
-        Me.pnlExportOptionsPage.PerformLayout()
-        CType(Me.cboSize.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkBackgroundTransparent.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlExportOptionsSize, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlExportOptionsSize.ResumeLayout(False)
         Me.pnlExportOptionsSize.PerformLayout()
         CType(Me.txtImageWidth, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboImageUM.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtImageHeight, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.tbMain.ResumeLayout(False)
-        Me.tbMain.PerformLayout()
+        CType(Me.pnlExportOptionsPage, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlExportOptionsPage.ResumeLayout(False)
+        Me.pnlExportOptionsPage.PerformLayout()
+        CType(Me.cboSize.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SvgImageCollection, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlExportOptionsFormat, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlExportOptionsFormat.ResumeLayout(False)
+        Me.pnlExportOptionsFormat.PerformLayout()
+        CType(Me.cboFileFormat.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlPrintOptions, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlPrintOptions.ResumeLayout(False)
+        Me.pnlPrintOptions.PerformLayout()
+        CType(Me.cboPageFormat.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboPrinter.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlExport, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlExport.ResumeLayout(False)
         CType(Me.picExport, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.sbMain.ResumeLayout(False)
-        Me.sbMain.PerformLayout()
-        Me.mnuLvContext.ResumeLayout(False)
-        CType(Me.picInvalidated, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnlPopup.ResumeLayout(False)
         CType(Me.picMap, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlMap, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlMap.ResumeLayout(False)
         CType(Me.trkZoom, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.mnuImageSizeFromPageSize.ResumeLayout(False)
+        CType(Me.pnlMain, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlMain.ResumeLayout(False)
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbProgress, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NavBarControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.mnuProfiles, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlForm, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlForm.ResumeLayout(False)
+        CType(Me.flyParameters, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.flyParameters.ResumeLayout(False)
+        CType(Me.pnlParameters, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents pnlOptions As System.Windows.Forms.Panel
-    Friend WithEvents pPreview As System.Windows.Forms.PrintPreviewControl
-    Friend WithEvents chkPrintBox As System.Windows.Forms.CheckBox
-    Friend WithEvents cboScalePosition As System.Windows.Forms.ComboBox
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents cboBoxPosition As System.Windows.Forms.ComboBox
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents chkPrintScale As System.Windows.Forms.CheckBox
-    Friend WithEvents chkPrintCentreline As System.Windows.Forms.CheckBox
-    Friend WithEvents chkPrintLRUD As System.Windows.Forms.CheckBox
-    Friend WithEvents chkPrintStations As System.Windows.Forms.CheckBox
-    Friend WithEvents chkPrintShots As System.Windows.Forms.CheckBox
-    Friend WithEvents cboCompassPosition As System.Windows.Forms.ComboBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents chkPrintCompass As System.Windows.Forms.CheckBox
-    Friend WithEvents chkPrintCentrelineColorGray As System.Windows.Forms.CheckBox
-    Friend WithEvents chkPrintDesign As System.Windows.Forms.CheckBox
-    Friend WithEvents cboPrinter As System.Windows.Forms.ComboBox
-    Friend WithEvents lblPrinter As System.Windows.Forms.Label
-    Friend WithEvents tbMain As System.Windows.Forms.ToolStrip
-    Friend WithEvents sep1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents btnPrint As System.Windows.Forms.ToolStripButton
-    Friend WithEvents chkPrintImages As System.Windows.Forms.CheckBox
+    Friend WithEvents pnlOptions As DevExpress.XtraEditors.XtraScrollableControl
+    Friend WithEvents pPreview As cprintcontroller.PrintPreviewControl 'System.Windows.Forms.PrintPreviewControl 
+    Friend WithEvents chkPrintBox As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents cboScalePosition As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents Label3 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cboBoxPosition As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents Label2 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents chkPrintScale As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkPrintCentreline As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkPrintLRUD As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkPrintStations As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkPrintShots As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents cboCompassPosition As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents Label4 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents chkPrintCompass As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkPrintCentrelineColorGray As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkPrintDesign As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents cboPrinter As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents lblPrinter As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents chkPrintImages As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents prDialog As System.Windows.Forms.PrintDialog
-    Friend WithEvents sep5 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents cmdClose As System.Windows.Forms.ToolStripButton
-    Friend WithEvents cboScale As System.Windows.Forms.ComboBox
-    Friend WithEvents lblScale As System.Windows.Forms.Label
-    Friend WithEvents txtScaleManual As System.Windows.Forms.NumericUpDown
-    Friend WithEvents lblScale1 As System.Windows.Forms.Label
-    Friend WithEvents lblPageFormat As System.Windows.Forms.Label
-    Friend WithEvents cmdSetMargins As System.Windows.Forms.Button
-    Friend WithEvents btnExport As System.Windows.Forms.ToolStripButton
-    Friend WithEvents pnlPrintOptions As System.Windows.Forms.Panel
-    Friend WithEvents pnlExportOptionsOther As System.Windows.Forms.Panel
-    Friend WithEvents cboFileFormat As System.Windows.Forms.ComboBox
-    Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents pnlExport As System.Windows.Forms.Panel
+    Friend WithEvents cboScale As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents lblScale As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtScaleManual As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents lblScale1 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblPageFormat As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cmdSetMargins As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents pnlPrintOptions As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlExportOptionsOther As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents cboFileFormat As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents Label7 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents pnlExport As DevExpress.XtraEditors.PanelControl
     Friend WithEvents picExport As System.Windows.Forms.PictureBox
-    Friend WithEvents btnZoomIn As System.Windows.Forms.ToolStripButton
-    Friend WithEvents btnZoomOut As System.Windows.Forms.ToolStripButton
-    Friend WithEvents sep2 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents btnZoomToFit As System.Windows.Forms.ToolStripButton
-    Friend WithEvents btnInfoBoxDetails As System.Windows.Forms.Button
-    Friend WithEvents btnCompassDetails As System.Windows.Forms.Button
-    Friend WithEvents btnScaleDetails As System.Windows.Forms.Button
-    Friend WithEvents chkPrintDesignSpecialPoint As System.Windows.Forms.CheckBox
-    Friend WithEvents lblSize As System.Windows.Forms.Label
-    Friend WithEvents cboGPSData As System.Windows.Forms.ComboBox
-    Friend WithEvents lblGPSData As System.Windows.Forms.Label
-    Friend WithEvents chkExportGPS As System.Windows.Forms.CheckBox
-    Friend WithEvents chkBackgroundTransparent As System.Windows.Forms.CheckBox
-    Friend WithEvents cmdSetImageMargins As System.Windows.Forms.Button
-    Friend WithEvents cboPrintDesignStyle As System.Windows.Forms.ComboBox
-    Friend WithEvents chkPrintDesignStyle As System.Windows.Forms.Label
-    Friend WithEvents chkTranslations As System.Windows.Forms.CheckBox
-    Friend WithEvents btnTranslationsDetails As System.Windows.Forms.Button
-    Friend WithEvents btnPreviewQuality As System.Windows.Forms.ToolStripDropDownButton
-    Friend WithEvents btnPreviewQuality0 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents btnPreviewQuality1 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents btnPreviewQuality2 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents sep3 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents sbMain As System.Windows.Forms.StatusStrip
-    Friend WithEvents pnlStatusText As System.Windows.Forms.ToolStripStatusLabel
-    Friend WithEvents pnlStatusProgress As System.Windows.Forms.ToolStripProgressBar
-    Friend WithEvents btnManualRefresh As System.Windows.Forms.ToolStripButton
-    Friend WithEvents sep4 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents cmdScaleTools As System.Windows.Forms.Button
-    Friend WithEvents chkPrintDesignAdvancedBrushes As System.Windows.Forms.CheckBox
-    Friend WithEvents btnImportSettings As System.Windows.Forms.ToolStripDropDownButton
-    Friend WithEvents btnImportSettings0 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents btnImportSettings1 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents btnImportSettings2 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents btnImportSettings3 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents btnImportSettings4 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents btnImportSettings5 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents cmdManageProfile As System.Windows.Forms.Button
-    Friend WithEvents txtCurrentProfile As System.Windows.Forms.TextBox
-    Friend WithEvents lblCurrentProfile As System.Windows.Forms.Label
-    Friend WithEvents lv As System.Windows.Forms.ListView
-    Friend WithEvents iml As System.Windows.Forms.ImageList
-    Friend WithEvents btnAdd As System.Windows.Forms.ToolStripButton
-    Friend WithEvents btnDelete As System.Windows.Forms.ToolStripButton
-    Friend WithEvents pnlStatusCurrentRule As System.Windows.Forms.ToolStripStatusLabel
-    Friend WithEvents chkUseDrawingZOrder As System.Windows.Forms.CheckBox
-    Friend WithEvents btnZOrderDetails As System.Windows.Forms.Button
-    Friend WithEvents picInvalidated As System.Windows.Forms.PictureBox
-    Friend WithEvents pnlPopup As System.Windows.Forms.Panel
-    Friend WithEvents lblPopupWarning As System.Windows.Forms.Label
-    Friend WithEvents cmdRefresh As System.Windows.Forms.Button
-    Friend WithEvents mnuLvContext As System.Windows.Forms.ContextMenuStrip
-    Friend WithEvents mnuLvContextAdd As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents mnuLvContextAddSep As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents mnuLvContextDelete As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents chkPrintSketches As System.Windows.Forms.CheckBox
-    Friend WithEvents pnlMainOptions As System.Windows.Forms.Panel
-    Friend WithEvents tblOptions As System.Windows.Forms.TableLayoutPanel
-    Friend WithEvents pnlScaleOptions As System.Windows.Forms.Panel
+    Friend WithEvents btnInfoBoxDetails As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btnCompassDetails As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btnScaleDetails As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents chkPrintDesignSpecialPoint As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents lblSize As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cboGPSData As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents lblGPSData As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents chkExportGPS As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkBackgroundTransparent As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents cmdSetImageMargins As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cboPrintDesignStyle As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents chkPrintDesignStyle As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents chkTranslations As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents btnTranslationsDetails As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdScaleTools As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents chkPrintDesignAdvancedBrushes As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents cmdManageProfile As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents txtCurrentProfile As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents lblCurrentProfile As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents chkUseDrawingZOrder As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents btnZOrderDetails As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents chkPrintSketches As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents pnlMainOptions As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlScaleOptions As DevExpress.XtraEditors.PanelControl
     Friend WithEvents picMap As System.Windows.Forms.PictureBox
-    Friend WithEvents pnlMap As System.Windows.Forms.Panel
-    Friend WithEvents btnSidePanel As System.Windows.Forms.ToolStripButton
-    Friend WithEvents sep6 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents chkPrintCombineColorGray As System.Windows.Forms.CheckBox
-    Friend WithEvents cboPrintCombineColorMode As System.Windows.Forms.ComboBox
-    Friend WithEvents lblPrintCombineColorMode As System.Windows.Forms.Label
-    Friend WithEvents btnProperty As System.Windows.Forms.ToolStripButton
-    Friend WithEvents sep7 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents btnDesignDetails As System.Windows.Forms.Button
-    Friend WithEvents btnSegmentDetails As System.Windows.Forms.Button
-    Friend WithEvents btnStop As System.Windows.Forms.ToolStripButton
-    Friend WithEvents mnuLvContextDeleteSep As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents mnuLvContextImport As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents mnuLvContextExport As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents chkPrintSplay As System.Windows.Forms.CheckBox
+    Friend WithEvents pnlMap As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents chkPrintCombineColorGray As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents cboPrintCombineColorMode As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents lblPrintCombineColorMode As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents btnDesignDetails As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btnSegmentDetails As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents chkPrintSplay As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents trkZoom As System.Windows.Forms.TrackBar
-    Friend WithEvents pnlStatusDesignZoom As System.Windows.Forms.ToolStripStatusLabel
-    Friend WithEvents cboPrintCenterlineColorMode As ComboBox
-    Friend WithEvents lblPrintCenterlineColorMode As Label
-    Friend WithEvents pnlCompass As Panel
-    Friend WithEvents pnlScale As Panel
-    Friend WithEvents pnlInformationBox As Panel
-    Friend WithEvents pnlProfile As Panel
-    Friend WithEvents pnlStatusDesignZoom100 As ToolStripStatusLabel
-    Friend WithEvents pnlStatusDesignZoom200 As ToolStripStatusLabel
-    Friend WithEvents pnlStatusDesignZoom250 As ToolStripStatusLabel
-    Friend WithEvents pnlStatusDesignZoom500 As ToolStripStatusLabel
-    Friend WithEvents pnlStatusDesignZoom1000 As ToolStripStatusLabel
-    Friend WithEvents btnBaseRule As ToolStripButton
-    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents cboPrintCenterlineColorMode As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents lblPrintCenterlineColorMode As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtImageHeight As NumericUpDown
     Friend WithEvents txtImageWidth As NumericUpDown
-    Friend WithEvents cboImageUM As ComboBox
+    Friend WithEvents cboImageUM As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents txtImageDPI As NumericUpDown
-    Friend WithEvents lblImageResolutionUM As Label
-    Friend WithEvents lblImageResolution As Label
-    Friend WithEvents mnuImageSizeFromPageSize As ContextMenuStrip
-    Friend WithEvents mnuImageSizeFromPageSizeItem As ToolStripMenuItem
+    Friend WithEvents lblImageResolutionUM As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblImageResolution As DevExpress.XtraEditors.LabelControl
     Friend WithEvents SvgImageCollection As DevExpress.Utils.SvgImageCollection
-    Friend WithEvents pnlExportOptionsFormat As Panel
-    Friend WithEvents pnlExportOptionsPage As Panel
-    Friend WithEvents Label1 As Label
+    Friend WithEvents Label1 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboSize As DevExpress.XtraEditors.ImageComboBoxEdit
     Friend WithEvents lblImageOrientation As DevExpress.XtraEditors.LabelControl
     Friend WithEvents chkImageOrientationLandscape As DevExpress.XtraEditors.CheckButton
     Friend WithEvents chkImageOrientationPortrait As DevExpress.XtraEditors.CheckButton
-    Friend WithEvents pnlExportOptionsSize As Panel
     Friend WithEvents cboPageFormat As DevExpress.XtraEditors.ImageComboBoxEdit
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents chkPageHorizontal As DevExpress.XtraEditors.CheckButton
     Friend WithEvents chkPageVertical As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents pnlMain As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents RibbonControl1 As DevExpress.XtraBars.Ribbon.RibbonControl
+    Friend WithEvents RibbonPage1 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents grpProfiles As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents grpFile As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonStatusBar1 As DevExpress.XtraBars.Ribbon.RibbonStatusBar
+    Friend WithEvents RibbonPage2 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents cDesignMessageCorner As cMessageCorner
+    Friend WithEvents btnProfilesAdd As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnProfilesDelete As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnProperties As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnBaseRule As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents btnPrint As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnExport As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnClose As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents grpView As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents btnZoomIn As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnZoomOut As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnZoomToFit As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnSidePanel As DevExpress.XtraBars.BarCheckItem
+    Friend WithEvents grpOptions As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents btnDesignGraphicsQuality As DevExpress.XtraBars.BarSubItem
+    Friend WithEvents btnStop As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnDesignGraphics0 As DevExpress.XtraBars.BarCheckItem
+    Friend WithEvents btnDesignGraphics1 As DevExpress.XtraBars.BarCheckItem
+    Friend WithEvents btnDesignGraphics2 As DevExpress.XtraBars.BarCheckItem
+    Friend WithEvents btnManualRefresh As DevExpress.XtraBars.BarCheckItem
+    Friend WithEvents btnRefresh As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents pnlStatusText As DevExpress.XtraBars.BarStaticItem
+    Friend WithEvents pnlStatusDesignZoom As DevExpress.XtraBars.BarStaticItem
+    Friend WithEvents btnStatusDesignZoom100 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnStatusDesignZoom200 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnStatusDesignZoom250 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnStatusDesignZoom500 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnStatusDesignZoom1000 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents pnlStatusCurrentRule As DevExpress.XtraBars.BarStaticItem
+    Friend WithEvents pnlStatusProgress As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents pbProgress As DevExpress.XtraEditors.Repository.RepositoryItemProgressBar
+    Friend WithEvents pnlForm As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents NavBarControl1 As DevExpress.XtraNavBar.NavBarControl
+    Friend WithEvents grpMain As DevExpress.XtraNavBar.NavBarGroup
+    Friend WithEvents pnlCompass As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlScale As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlInformationBox As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlProfile As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlExportOptionsFormat As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlExportOptionsPage As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlExportOptionsSize As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents flyParameters As DevExpress.Utils.FlyoutPanel
+    Friend WithEvents pnlParameters As DevExpress.Utils.FlyoutPanelControl
+    Friend WithEvents btnProfileImportFromFile As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnProfileExportToFile As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents mnuProfiles As DevExpress.XtraBars.PopupMenu
 End Class

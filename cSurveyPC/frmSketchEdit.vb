@@ -8,8 +8,10 @@ Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Design.Items
 Imports System.ComponentModel
+Imports DevExpress.XtraBars
+Imports cSurveyPC.cSurvey.UIHelpers
 
-friend Class frmSketchEdit
+Friend Class frmSketchEdit
     Private oSurvey As cSurvey.cSurvey
     Private oSketch As cItemSketch
     Private iDesignType As cIDesign.cDesignTypeEnum
@@ -43,8 +45,6 @@ friend Class frmSketchEdit
     Private oPlaceholderSelectedbrush As SolidBrush
     Private oPlaceholderPen As Pen
     Private oPlaceholderbrush As SolidBrush
-
-    Private bShowSplay As Boolean
 
     Private Class cTrigpointExtraPlaceholder
         Inherits cTrigpointPlaceholder
@@ -256,15 +256,12 @@ friend Class frmSketchEdit
         End Try
     End Sub
 
-    Private oTrigpoints As Dictionary(Of String, cTrigPoint) = New Dictionary(Of String, cTrigPoint)()
-
-    Public Sub New(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Sketch As cItemSketch)
-
+    Public Sub New(ByVal Sketch As cItemSketch)
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        oSurvey = Survey
+        oSurvey = Sketch.Survey
         oSketch = Sketch
 
         oPlaceholderSelectedPen = New Pen(Color.FromArgb(210, Color.Red), 2)
@@ -289,17 +286,11 @@ friend Class frmSketchEdit
 
         picPreview.Size = oCurrentImage.Size
 
-        bShowSplay = False    'from some experience?!
-
-        For Each oTrigpoint As cTrigPoint In oSurvey.TrigPoints
-            If Not oTrigpoint.IsSystem Then
-                Call oTrigpoints.Add(oTrigpoint.Name, oTrigpoint)
-            End If
-        Next
+        btnShowSplays.Checked = False    'from some experience?!
 
         For Each oStation As cItemSketch.cStation In oSketch.Stations
             Dim sName As String = oStation.Name
-            If oTrigpoints.ContainsKey(sName) Then
+            If oSurvey.TrigPoints.Contains(oStation.TrigPoint) Then
                 If TypeOf oStation Is cItemSketch.cExtraStation Then
                     Dim oExtraStation As cItemSketch.cExtraStation = oStation
                     Call pAddExtraPoint(sName, oExtraStation.Point, oExtraStation.Distance)
@@ -316,63 +307,17 @@ friend Class frmSketchEdit
 
     Private Sub pRefreshTrigpointList()
         Cursor = Cursors.WaitCursor
-        Call lvTrigpoints.Items.Clear()
-        '------
-        Dim bFilterOn As Boolean
-        Dim oFilters As List(Of String)
-        If sFilterText = "" Then
-            bFilterOn = False
-        Else
-            bFilterOn = True
-            oFilters = New List(Of String)
-            For Each sFilter As String In sFilterText.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
-                sFilter = sFilter.Trim.ToUpper
-                If sFilter <> "" Then
-                    Call oFilters.Add(sFilter)
-                End If
-            Next
-        End If
-        '------
-        Dim bAdd As Boolean = False
-        Dim sName As String
-        For Each oTrigpoint As cTrigPoint In oTrigpoints.Values
-            If (Not oTrigpoint.Data.IsSplay OrElse (oTrigpoint.Data.IsSplay And bShowSplay)) Then
-                sName = oTrigpoint.Name
-                If Not oTrigpointsPlaceholders.ContainsKey(sName) Then
-                    If bFilterOn Then
-                        bAdd = False
-                        For Each sFilter As String In oFilters
-                            If sName Like sFilter Then
-                                bAdd = True
-                            End If
-                        Next
-                    Else
-                        bAdd = True
-                    End If
-                    If bAdd Then
-                        Dim oItem As ListViewItem = lvTrigpoints.Items.Add(sName, sName, 0)
-                        If oTrigpoint.Data.IsSplay Then
-                            oItem.ForeColor = SystemColors.ControlLight
-                        Else
-                            If oTrigpoint.Data.IsOrphan Then
-                                oItem.ForeColor = SystemColors.GrayText
-                            Else
-                                If iDesignType = cIDesign.cDesignTypeEnum.Profile Then
-                                    If oSurvey.Calculate.TrigPoints.Contains(sName) Then
-                                        If oSurvey.Calculate.TrigPoints(sName).Connections.Count > 2 Then
-                                            oItem.BackColor = SystemColors.ControlLight
-                                        End If
-                                    End If
-                                End If
-                            End If
-                        End If
-                    End If
+
+        Dim oTrigpoints As UIHelpers.cTrigpointByCaveBindinglist = New UIHelpers.cTrigpointByCaveBindinglist(cTrigpointByCaveBindinglist.StyleEnum.Uniquelist)
+        For Each oTrigpoint As cTrigPoint In oSurvey.TrigPoints
+            If Not oTrigpoint.IsSystem Then
+                If (Not oTrigpoint.Data.IsSplay) OrElse (btnShowSplays.Checked AndAlso oTrigpoint.Data.IsSplay) Then
+                    Call oTrigpoints.Add(oTrigpoint, oTrigpointsPlaceholders.ContainsKey(oTrigpoint.Name))
                 End If
             End If
         Next
-        If lvTrigpoints.Items.Count > 0 Then
-            lvTrigpoints.Items(0).Selected = True
-        End If
+        Call grdStations.Rebind(oSurvey, oTrigpoints, New cTrigpointsGrid.cTrigpointsGridParameters)
+
         Cursor = Cursors.Default
     End Sub
 
@@ -385,10 +330,8 @@ friend Class frmSketchEdit
     End Sub
 
     Private Sub pAddPoint(ByVal Name As String, ByVal Location As Point)
-        Dim oGraphics As Graphics = picPreview.CreateGraphics
-        Dim sCaption As String = Name
         Dim iType As cTrigpointPlaceholder.StationTypeEnum
-        If oTrigpoints(Name).Data.IsSplay Then
+        If oSurvey.TrigPoints(Name).Data.IsSplay Then
             iType = cTrigpointPlaceholder.StationTypeEnum.Splay
         Else
             iType = cTrigpointPlaceholder.StationTypeEnum.Default
@@ -399,9 +342,8 @@ friend Class frmSketchEdit
     End Sub
 
     Private Sub pAddExtraPoint(ByVal Name As String, ByVal Location As Point, Distance As Single)
-        Dim oGraphics As Graphics = picPreview.CreateGraphics
         Dim iType As cTrigpointPlaceholder.StationTypeEnum
-        If oTrigpoints(Name).Data.IsSplay Then
+        If oSurvey.TrigPoints(Name).Data.IsSplay Then
             iType = cTrigpointPlaceholder.StationTypeEnum.Splay
         Else
             iType = cTrigpointPlaceholder.StationTypeEnum.Default
@@ -411,26 +353,19 @@ friend Class frmSketchEdit
         Call oTrigpointsPlaceholders.Add(sName, oTPH)
     End Sub
 
-    Private Sub mnuPreviewAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewAdd.Click
+    Private Sub btnAdd_ItemClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.ItemClick
         Call pAddTrigpoint()
+        Call grdStations.Focus()
     End Sub
 
     Private Sub pAddTrigpoint()
-        If lvTrigpoints.SelectedItems.Count > 0 Then
-            Dim oItem As ListViewItem = lvTrigpoints.SelectedItems(0)
-            Dim sTrigPoint As String = oItem.Name
+        Dim oTrigpoint As cTrigPoint = grdStations.SelectedItem
+        If oTrigpoint IsNot Nothing Then
+            Dim sTrigPoint As String = oTrigpoint.Name
             If sTrigPoint <> "" Then
-                Dim iIndex As Integer = oItem.Index
                 Call pAddPoint(sTrigPoint, oLastMousePoint)
-                Call lvTrigpoints.Items.RemoveByKey(sTrigPoint)
-                If lvTrigpoints.Items.Count > 0 Then
-                    If iIndex >= lvTrigpoints.Items.Count Then
-                        lvTrigpoints.Items(lvTrigpoints.Items.Count - 1).Selected = True
-                    Else
-                        lvTrigpoints.Items(iIndex).Selected = True
-                    End If
-                End If
-                Call lvTrigpoints.Focus()
+                Call grdStations.use(oTrigpoint)
+                Call grdStations.Refresh()
                 Call picPreview.Invalidate()
             End If
         End If
@@ -438,7 +373,7 @@ friend Class frmSketchEdit
 
     Private Sub picPreview_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles picPreview.DoubleClick
         If iCurrentTool = ToolEnum.None Then
-            Call pAddTrigpoint()
+            Call btnAdd_ItemClick(Nothing, EventArgs.Empty)
         Else
             If iCurrentTool = ToolEnum.ExtraPoint Then
                 Using frmD As frmSketchEditDistance = New frmSketchEditDistance(oSketch.Design.Type = cIDesign.cDesignTypeEnum.Profile)
@@ -463,45 +398,6 @@ friend Class frmSketchEdit
         End If
     End Sub
 
-    Private Sub mnuPreview_Opening(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles mnuPreview.Opening
-        If iCurrentTool = ToolEnum.None Then
-            For Each oItem As ToolStripItem In mnuPreview.Items
-                If oItem Is mnuPreviewStop Then
-                    oItem.Visible = False
-                Else
-                    oItem.Visible = True
-                End If
-            Next
-
-            If oLastPlaceholder Is Nothing Then
-                mnuPreviewAddExtra.Visible = False
-                mnuPreviewEditDistance.Visible = False
-                mnuPreviewAdd.Enabled = lvTrigpoints.SelectedItems.Count > 0
-                mnuPreviewRemove.Enabled = False
-                mnuPreviewRemoveAll.Enabled = oTrigpointsPlaceholders.Count > 0
-            Else
-                If TypeOf oLastPlaceholder Is cTrigpointExtraPlaceholder Then
-                    mnuPreviewAddExtra.Visible = False
-                    mnuPreviewEditDistance.Visible = True
-                Else
-                    mnuPreviewAddExtra.Visible = True
-                    mnuPreviewEditDistance.Visible = False
-                End If
-                mnuPreviewAdd.Enabled = False
-                mnuPreviewRemove.Enabled = True
-                mnuPreviewRemoveAll.Enabled = oTrigpointsPlaceholders.Count > 0
-            End If
-        Else
-            For Each oItem As ToolStripItem In mnuPreview.Items
-                If oItem Is mnuPreviewStop Then
-                    oItem.Visible = True
-                Else
-                    oItem.Visible = False
-                End If
-            Next
-        End If
-    End Sub
-
     Private Sub pRemoveTrigPoint()
         Try
             If TypeOf oLastPlaceholder Is cTrigpointExtraPlaceholder Then
@@ -509,53 +405,23 @@ friend Class frmSketchEdit
                 If oTrigpointsPlaceholders.ContainsKey(sTrigpoint) Then Call oTrigpointsPlaceholders.Remove(sTrigpoint)
             Else
                 Dim sTrigpoint As String = oLastPlaceholder.Name
-                If oTrigpoints.ContainsKey(sTrigpoint) Then
-                    Dim oTrigpoint As cTrigPoint = oTrigpoints(sTrigpoint)
-                    If (Not oTrigpoint.Data.IsSplay OrElse (oTrigpoint.Data.IsSplay And bShowSplay)) Then
-                        Call lvTrigpoints.Items.Add(sTrigpoint, sTrigpoint, 0)
-                    End If
-                End If
                 If oTrigpointsPlaceholders.ContainsKey(sTrigpoint) Then Call oTrigpointsPlaceholders.Remove(sTrigpoint)
                 For Each sKey As String In oTrigpointsPlaceholders.Keys.ToList
                     If sKey.StartsWith(sTrigpoint & "_") Then
                         Call oTrigpointsPlaceholders.Remove(sKey)
                     End If
                 Next
+                grdStations.Unuse(sTrigpoint)
             End If
             oLastPlaceholder = Nothing
-            Call lvTrigpoints.Focus()
+            Call grdStations.Focus()
             Call picPreview.Invalidate()
         Catch ex As Exception
         End Try
     End Sub
 
-    Private Sub mnuPreviewRemove_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewRemove.Click
+    Private Sub btnRemove_ItemClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRemove.ItemClick
         Call pRemoveTrigPoint()
-    End Sub
-
-    Private Sub cmdOk_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdOk.Click
-        If oTrigpointsPlaceholders.Count < 2 Then
-            Call MsgBox(GetLocalizedString("sketchedit.warning1"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Exclamation, GetLocalizedString("sketchedit.warningtitle"))
-            DialogResult = Windows.Forms.DialogResult.None
-        Else
-            oSketch.Image = oCurrentImage
-            oSketch.TransparentColor = oTransparentColor
-            oSketch.TransparencyThreshold = sTransparencyThreshold
-            Call oSketch.Stations.Clear()
-
-            For Each oTPH As cTrigpointPlaceholder In oTrigpointsPlaceholders.Values
-                Dim sTrigPoint As String = oTPH.Station
-                Dim oPoint As Point = oTPH.Point
-                oPoint.X = oPoint.X / sZoomFactor
-                oPoint.Y = oPoint.Y / sZoomFactor
-                If TypeOf oTPH Is cTrigpointExtraPlaceholder Then
-                    Call oSketch.Stations.Add(oPoint, oSurvey.TrigPoints(sTrigPoint), DirectCast(oTPH, cTrigpointExtraPlaceholder).Distance)
-                Else
-                    Call oSketch.Stations.Add(oPoint, oSurvey.TrigPoints(sTrigPoint))
-                End If
-            Next
-            DialogResult = Windows.Forms.DialogResult.OK
-        End If
     End Sub
 
     Private Sub picPreview_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles picPreview.Click
@@ -565,7 +431,7 @@ friend Class frmSketchEdit
         End If
     End Sub
 
-    Private Sub btnZoomIn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnZoomIn.Click
+    Private Sub btnZoomIn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         sZoomFactor = sZoomFactor * 1.1
         picPreview.Width = oCurrentImage.Width * sZoomFactor
         picPreview.Height = oCurrentImage.Height * sZoomFactor
@@ -577,7 +443,7 @@ friend Class frmSketchEdit
         'oEndSelPosition.Y = oEndSelPosition.Y * 1.1
     End Sub
 
-    Private Sub btnZoomOut_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnZoomOut.Click
+    Private Sub btnZoomOut_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         sZoomFactor = sZoomFactor * 0.909
         picPreview.Width = oCurrentImage.Width * sZoomFactor
         picPreview.Height = oCurrentImage.Height * sZoomFactor
@@ -619,7 +485,7 @@ friend Class frmSketchEdit
 
             Using imgAttributes As System.Drawing.Imaging.ImageAttributes = New System.Drawing.Imaging.ImageAttributes
                 If Not oTransparentColor = Color.Transparent Then
-                    Call imgAttributes.SetColorKey(modPaint.DarkColor(oTransparentColor, 1.0 - sTransparencyThreshold), modPaint.LightColor(oTransparentColor, 1.0 - sTransparencyThreshold))
+                    Call imgAttributes.SetColorKey(modPaint.DarkColor(oTransparentColor, 1.0F - sTransparencyThreshold), modPaint.LightColor(oTransparentColor, 1.0F - sTransparencyThreshold))
                 End If
                 Call oGraphics.DrawImage(oCurrentImage, New Rectangle(0, 0, picPreview.Width, picPreview.Height), 0, 0, oCurrentImage.Width, oCurrentImage.Height, GraphicsUnit.Pixel, imgAttributes)
             End Using
@@ -739,19 +605,19 @@ friend Class frmSketchEdit
         End If
     End Sub
 
-    Private Sub btnRubber0_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRubber0.Click
-        btnRubber0.Checked = True
-        btnRubber1.Checked = False
-        btnRubber2.Checked = False
-        btnRubber3.Checked = False
-        btnRubber.Checked = True
-        iRubberSize = 16
-    End Sub
+    'Private Sub btnRubber0_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    btnRubber0.Checked = True
+    '    btnRubber1.Checked = False
+    '    btnRubber2.Checked = False
+    '    btnRubber3.Checked = False
+    '    btnRubber.Checked = True
+    '    iRubberSize = 16
+    'End Sub
 
     Private Sub pToolStart(Tool As ToolEnum)
         iCurrentTool = Tool
 
-        lvTrigpoints.Enabled = False
+        grdStations.Enabled = False
 
         cmdOk.Enabled = False
         btnLoadImage.Enabled = False
@@ -759,15 +625,16 @@ friend Class frmSketchEdit
         btnRescale.Enabled = False
         btnRotate.Enabled = False
         btnRubber.Enabled = False
-        btnFlip.Enabled = False
+        btnFlipH.Enabled = False
+        btnFlipV.Enabled = False
         btnToGrayscale.Enabled = False
-        btnShowCutBorders.Enabled = False
+        btnCropStart.Enabled = False
 
-        btnStop.Visible = True
+        btnStop.Visibility = DevExpress.XtraBars.BarItemVisibility.Always
     End Sub
 
     Private Sub pToolStop()
-        lvTrigpoints.Enabled = True
+        grdStations.Enabled = True
 
         cmdOk.Enabled = True
         btnLoadImage.Enabled = True
@@ -775,198 +642,163 @@ friend Class frmSketchEdit
         btnRescale.Enabled = True
         btnRotate.Enabled = True
         btnRubber.Enabled = True
-        btnFlip.Enabled = True
+        btnFlipH.Enabled = True
+        btnFlipV.Enabled = True
         btnToGrayscale.Enabled = True
-        btnShowCutBorders.Enabled = True
+        btnCropStart.Enabled = True
 
         Select Case iCurrentTool
             Case ToolEnum.Cut
                 oStartSelPosition = Point.Empty
                 oEndSelPosition = Point.Empty
                 oCutRect = Rectangle.Empty
-                btnShowCutBorders.Checked = False
+                btnCropStart.Checked = False
             Case ToolEnum.Rubber
                 btnRubber.Checked = False
             Case ToolEnum.ExtraPoint
                 oExtraPlaceholder = Nothing
         End Select
 
-        btnStop.Visible = False
+        btnStop.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         iCurrentTool = ToolEnum.None
 
         Call picPreview.Invalidate()
     End Sub
 
-    Private Sub btnRubber1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRubber1.Click
-        btnRubber0.Checked = False
-        btnRubber1.Checked = True
-        btnRubber2.Checked = False
-        btnRubber3.Checked = False
-        btnRubber.Checked = True
-        iRubberSize = 32
-    End Sub
+    'Private Sub btnRubber1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    btnRubber0.Checked = False
+    '    btnRubber1.Checked = True
+    '    btnRubber2.Checked = False
+    '    btnRubber3.Checked = False
+    '    btnRubber.Checked = True
+    '    iRubberSize = 32
+    'End Sub
 
-    Private Sub btnRubber2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRubber2.Click
-        btnRubber0.Checked = False
-        btnRubber1.Checked = False
-        btnRubber2.Checked = True
-        btnRubber3.Checked = False
-        btnRubber.Checked = True
-        iRubberSize = 64
-    End Sub
+    'Private Sub btnRubber2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    btnRubber0.Checked = False
+    '    btnRubber1.Checked = False
+    '    btnRubber2.Checked = True
+    '    btnRubber3.Checked = False
+    '    btnRubber.Checked = True
+    '    iRubberSize = 64
+    'End Sub
 
-    Private Sub btnRubber3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRubber3.Click
-        btnRubber0.Checked = False
-        btnRubber1.Checked = False
-        btnRubber2.Checked = False
-        btnRubber3.Checked = True
-        btnRubber.Checked = True
-        iRubberSize = 128
-    End Sub
+    'Private Sub btnRubber3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    btnRubber0.Checked = False
+    '    btnRubber1.Checked = False
+    '    btnRubber2.Checked = False
+    '    btnRubber3.Checked = True
+    '    btnRubber.Checked = True
+    '    iRubberSize = 128
+    'End Sub
 
-    Private Sub btnUndo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnUndo.Click
-        If MsgBox(GetLocalizedString("sketchedit.warning2"), MsgBoxStyle.OkCancel Or MsgBoxStyle.Exclamation, GetLocalizedString("sketchedit.warningtitle")) = MsgBoxResult.Ok Then
-            Call pRemoveTrigPoints()
-            oCurrentImage = oSourceImage
-            Call pRescaleImage(iMaxWidth, iMaxHeight)
-            Call picPreview.Invalidate()
-        End If
-    End Sub
+    'Private Sub btnRubber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    btnRubber.Checked = Not btnRubber.Checked
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub btnRubber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRubber.Click
-        btnRubber.Checked = Not btnRubber.Checked
-        Call picPreview.Invalidate()
-    End Sub
+    'Private Sub mnuPreviewDeleteTransparent_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    oTransparentColor = Color.Transparent
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub btnToGrayscale_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnToGrayscale.Click
-        If MsgBox(GetLocalizedString("sketchedit.warning3"), MsgBoxStyle.OkCancel Or MsgBoxStyle.Exclamation, GetLocalizedString("sketchedit.warningtitle")) = MsgBoxResult.Ok Then
-            Call pGrayScaleImage()
-            Call picPreview.Invalidate()
-        End If
-    End Sub
+    'Private Sub mnuPreviewSetTransparent_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    oTransparentColor = oCurrentImage.GetPixel(oLastMousePoint.X, oLastMousePoint.Y)
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub btnLoadImage_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLoadImage.Click
-        Using oOfd As OpenFileDialog = New OpenFileDialog
-            With oOfd
-                .Title = GetLocalizedString("sketchedit.openimagedialog")
-                .Filter = GetLocalizedString("sketchedit.filetypeIMAGES") & " (*.JPG;*.PNG;*.TIF;*.BMP;*.GIF)|*.JPG;*.PNG;*.TIF;*.BMP;*.GIF|" & GetLocalizedString("sketchedit.filetypeALL") & " (*.*)|*.*"
-                .FilterIndex = 1
-                If .ShowDialog = Windows.Forms.DialogResult.OK Then
-                    Try
-                        oSourceImage = modPaint.ImageExifRotate(New Bitmap(.FileName))
-                        oCurrentImage = oSourceImage
-                        Call pRescaleImage(iMaxWidth, iMaxHeight)
-                        Call picPreview.Invalidate()
-                    Catch ex As Exception
-                        Call MsgBox(String.Format(GetLocalizedString("sketchedit.warning4"), ex.Message), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("sketchedit.warningtitle"))
-                    End Try
-                End If
-            End With
-        End Using
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    sTransparencyThreshold = 0.99
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub mnuPreviewDeleteTransparent_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewDeleteTransparent.Click
-        oTransparentColor = Color.Transparent
-        Call picPreview.Invalidate()
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    sTransparencyThreshold = 0.95
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub mnuPreviewSetTransparent_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewSetTransparent.Click
-        oTransparentColor = oCurrentImage.GetPixel(oLastMousePoint.X, oLastMousePoint.Y)
-        Call picPreview.Invalidate()
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    sTransparencyThreshold = 0.9
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub mnuPreviewTransparentThreshold1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold1.Click
-        sTransparencyThreshold = 0.99
-        Call picPreview.Invalidate()
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    sTransparencyThreshold = 0.8
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub mnuPreviewTransparentThreshold2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold2.Click
-        sTransparencyThreshold = 0.95
-        Call picPreview.Invalidate()
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    sTransparencyThreshold = 0.7
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub mnuPreviewTransparentThreshold3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold3.Click
-        sTransparencyThreshold = 0.9
-        Call picPreview.Invalidate()
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    sTransparencyThreshold = 0.5
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub mnuPreviewTransparentThreshold4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold4.Click
-        sTransparencyThreshold = 0.8
-        Call picPreview.Invalidate()
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold_DropDownOpening(ByVal sender As Object, ByVal e As System.EventArgs)
+    '    mnuPreviewTransparentThreshold1.Checked = False
+    '    mnuPreviewTransparentThreshold2.Checked = False
+    '    mnuPreviewTransparentThreshold3.Checked = False
+    '    mnuPreviewTransparentThreshold4.Checked = False
+    '    mnuPreviewTransparentThreshold5.Checked = False
+    '    mnuPreviewTransparentThreshold6.Checked = False
+    '    mnuPreviewTransparentThreshold7.Checked = False
+    '    mnuPreviewTransparentThreshold8.Checked = False
+    '    mnuPreviewTransparentThreshold9.Checked = False
+    '    mnuPreviewTransparentThreshold10.Checked = False
+    '    mnuPreviewTransparentThreshold11.Checked = False
+    '    Select Case sTransparencyThreshold
+    '        Case 0.99
+    '            mnuPreviewTransparentThreshold1.Checked = True
+    '        Case 0.95
+    '            mnuPreviewTransparentThreshold2.Checked = True
+    '        Case 0.9
+    '            mnuPreviewTransparentThreshold3.Checked = True
+    '        Case 0.8
+    '            mnuPreviewTransparentThreshold4.Checked = True
+    '        Case 0.7
+    '            mnuPreviewTransparentThreshold5.Checked = True
+    '        Case 0.6
+    '            mnuPreviewTransparentThreshold6.Checked = True
+    '        Case 0.5
+    '            mnuPreviewTransparentThreshold7.Checked = True
+    '        Case 0.4
+    '            mnuPreviewTransparentThreshold8.Checked = True
+    '        Case 0.3
+    '            mnuPreviewTransparentThreshold9.Checked = True
+    '        Case 0.2
+    '            mnuPreviewTransparentThreshold10.Checked = True
+    '        Case 0.1
+    '            mnuPreviewTransparentThreshold11.Checked = True
+    '    End Select
+    'End Sub
 
-    Private Sub mnuPreviewTransparentThreshold5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold5.Click
-        sTransparencyThreshold = 0.7
-        Call picPreview.Invalidate()
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold11_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    sTransparencyThreshold = 0
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub mnuPreviewTransparentThreshold6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold6.Click
-        sTransparencyThreshold = 0.5
-        Call picPreview.Invalidate()
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    sTransparencyThreshold = 0.1
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub mnuPreviewTransparentThreshold_DropDownOpening(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold.DropDownOpening
-        mnuPreviewTransparentThreshold1.Checked = False
-        mnuPreviewTransparentThreshold2.Checked = False
-        mnuPreviewTransparentThreshold3.Checked = False
-        mnuPreviewTransparentThreshold4.Checked = False
-        mnuPreviewTransparentThreshold5.Checked = False
-        mnuPreviewTransparentThreshold6.Checked = False
-        mnuPreviewTransparentThreshold7.Checked = False
-        mnuPreviewTransparentThreshold8.Checked = False
-        mnuPreviewTransparentThreshold9.Checked = False
-        mnuPreviewTransparentThreshold10.Checked = False
-        mnuPreviewTransparentThreshold11.Checked = False
-        Select Case sTransparencyThreshold
-            Case 0.99
-                mnuPreviewTransparentThreshold1.Checked = True
-            Case 0.95
-                mnuPreviewTransparentThreshold2.Checked = True
-            Case 0.9
-                mnuPreviewTransparentThreshold3.Checked = True
-            Case 0.8
-                mnuPreviewTransparentThreshold4.Checked = True
-            Case 0.7
-                mnuPreviewTransparentThreshold5.Checked = True
-            Case 0.6
-                mnuPreviewTransparentThreshold6.Checked = True
-            Case 0.5
-                mnuPreviewTransparentThreshold7.Checked = True
-            Case 0.4
-                mnuPreviewTransparentThreshold8.Checked = True
-            Case 0.3
-                mnuPreviewTransparentThreshold9.Checked = True
-            Case 0.2
-                mnuPreviewTransparentThreshold10.Checked = True
-            Case 0.1
-                mnuPreviewTransparentThreshold11.Checked = True
-        End Select
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    sTransparencyThreshold = 0.2
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub mnuPreviewTransparentThreshold11_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold11.Click
-        sTransparencyThreshold = 0
-        Call picPreview.Invalidate()
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    sTransparencyThreshold = 0.3
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub mnuPreviewTransparentThreshold10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold10.Click
-        sTransparencyThreshold = 0.1
-        Call picPreview.Invalidate()
-    End Sub
-
-    Private Sub mnuPreviewTransparentThreshold9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold9.Click
-        sTransparencyThreshold = 0.2
-        Call picPreview.Invalidate()
-    End Sub
-
-    Private Sub mnuPreviewTransparentThreshold8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold8.Click
-        sTransparencyThreshold = 0.3
-        Call picPreview.Invalidate()
-    End Sub
-
-    Private Sub mnuPreviewTransparentThreshold7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold7.Click
-        sTransparencyThreshold = 0.4
-        Call picPreview.Invalidate()
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    sTransparencyThreshold = 0.4
+    '    Call picPreview.Invalidate()
+    'End Sub
 
     'Private Sub pnlTop_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs)
     '    If (e.Button And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left Then
@@ -1024,44 +856,44 @@ friend Class frmSketchEdit
     '    End If
     'End Sub
 
-    Private Sub btnRubber_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnRubber.CheckedChanged
-        Dim bVisible As Boolean = btnRubber.Checked
-        Call pToolStop()
+    'Private Sub btnRubber_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs)
+    '    Dim bVisible As Boolean = btnRubber.Checked
+    '    Call pToolStop()
 
-        btnRubber0.Visible = bVisible
-        btnRubber1.Visible = bVisible
-        btnRubber2.Visible = bVisible
-        btnRubber3.Visible = bVisible
-        Select Case iRubberSize
-            Case 16
-                btnRubber0.Checked = True
-            Case 32
-                btnRubber1.Checked = True
-            Case 64
-                btnRubber2.Checked = True
-            Case Else
-                btnRubber3.Checked = True
-        End Select
+    '    btnRubber0.Visible = bVisible
+    '    btnRubber1.Visible = bVisible
+    '    btnRubber2.Visible = bVisible
+    '    btnRubber3.Visible = bVisible
+    '    Select Case iRubberSize
+    '        Case 16
+    '            btnRubber0.Checked = True
+    '        Case 32
+    '            btnRubber1.Checked = True
+    '        Case 64
+    '            btnRubber2.Checked = True
+    '        Case Else
+    '            btnRubber3.Checked = True
+    '    End Select
 
-        If bVisible Then
-            Call pToolStart(ToolEnum.Rubber)
-        End If
-    End Sub
+    '    If bVisible Then
+    '        Call pToolStart(ToolEnum.Rubber)
+    '    End If
+    'End Sub
 
-    Private Sub btnShowCutBorders_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnShowCutBorders.CheckedChanged
-        Dim bVisible As Boolean = btnShowCutBorders.Checked
-        Call pToolStop()
-        btnCut.Visible = bVisible
-        If bVisible Then
-            Call pToolStart(ToolEnum.Cut)
-        End If
-    End Sub
+    'Private Sub btnShowCutBorders_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs)
+    '    Dim bVisible As Boolean = btnShowCutBorders.Checked
+    '    Call pToolStop()
+    '    btnCut.Visible = bVisible
+    '    If bVisible Then
+    '        Call pToolStart(ToolEnum.Cut)
+    '    End If
+    'End Sub
 
-    Private Sub btnShowCutBorders_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnShowCutBorders.Click
-        btnShowCutBorders.Checked = Not btnShowCutBorders.Checked
-    End Sub
+    'Private Sub btnShowCutBorders_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    btnShowCutBorders.Checked = Not btnShowCutBorders.Checked
+    'End Sub
 
-    Private Sub btnCut_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCut.Click
+    Private Sub btnCut_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Call pPreviewCrop()
     End Sub
 
@@ -1091,7 +923,7 @@ friend Class frmSketchEdit
         End If
     End Sub
 
-    Private Sub mnuPreviewRemoveAll_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewRemoveAll.Click
+    Private Sub btnRemoveAll_ItemClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRemoveAll.ItemClick
         If MsgBox(GetLocalizedString("sketchedit.warning9"), MsgBoxStyle.YesNo Or MsgBoxStyle.Question, GetLocalizedString("sketchedit.warningtitle")) = MsgBoxResult.Yes Then
             Call pRemoveTrigPoints()
         End If
@@ -1099,84 +931,76 @@ friend Class frmSketchEdit
 
     Private Sub pRemoveTrigPoints()
         Try
-            For Each oTPH As cTrigpointPlaceholder In oTrigpointsPlaceholders.Values
-                Dim sTrigpoint As String = oTPH.Name
-                If oTrigpoints.ContainsKey(sTrigpoint) Then
-                    Dim oTrigpoint As cTrigPoint = oTrigpoints(sTrigpoint)
-                    If (Not oTrigpoint.Data.IsSplay OrElse (oTrigpoint.Data.IsSplay And bShowSplay)) Then
-                        Call lvTrigpoints.Items.Add(sTrigpoint, sTrigpoint, 0)
-                    End If
-                End If
-            Next
             Call oTrigpointsPlaceholders.Clear()
+            grdStations.UnuseAll()
             oLastPlaceholder = Nothing
-            Call lvTrigpoints.Focus()
+            Call grdStations.Focus()
             Call picPreview.Invalidate()
         Catch ex As Exception
         End Try
     End Sub
 
-    Private Sub btnRescale0_Click(sender As System.Object, e As System.EventArgs) Handles btnRescale0.Click
-        If MsgBox(GetLocalizedString("sketchedit.warning7"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("sketchedit.warningtitle")) = MsgBoxResult.Yes Then
-            'Call pRemoveTrigPoints()
-            Call pRescaleImage(3096, 3096)
-        End If
-    End Sub
+    'Private Sub btnRescale0_Click(sender As System.Object, e As System.EventArgs)
+    '    If MsgBox(GetLocalizedString("sketchedit.warning7"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("sketchedit.warningtitle")) = MsgBoxResult.Yes Then
+    '        'Call pRemoveTrigPoints()
+    '        Call pRescaleImage(3096, 3096)
+    '    End If
+    'End Sub
 
-    Private Sub btnRescale1_Click(sender As System.Object, e As System.EventArgs) Handles btnRescale1.Click
-        If MsgBox(GetLocalizedString("sketchedit.warning7"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("sketchedit.warningtitle")) = MsgBoxResult.Yes Then
-            'Call pRemoveTrigPoints()
-            Call pRescaleImage(2048, 2048)
-        End If
-    End Sub
+    'Private Sub btnRescale1_Click(sender As System.Object, e As System.EventArgs)
+    '    If MsgBox(GetLocalizedString("sketchedit.warning7"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("sketchedit.warningtitle")) = MsgBoxResult.Yes Then
+    '        'Call pRemoveTrigPoints()
+    '        Call pRescaleImage(2048, 2048)
+    '    End If
+    'End Sub
 
-    Private Sub btnRescale2_Click(sender As System.Object, e As System.EventArgs) Handles btnRescale2.Click
-        If MsgBox(GetLocalizedString("sketchedit.warning7"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("sketchedit.warningtitle")) = MsgBoxResult.Yes Then
-            'Call pRemoveTrigPoints()
-            Call pRescaleImage(1024, 1024)
-        End If
-    End Sub
+    'Private Sub btnRescale2_Click(sender As System.Object, e As System.EventArgs)
+    '    If MsgBox(GetLocalizedString("sketchedit.warning7"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("sketchedit.warningtitle")) = MsgBoxResult.Yes Then
+    '        'Call pRemoveTrigPoints()
+    '        Call pRescaleImage(1024, 1024)
+    '    End If
+    'End Sub
 
-    Private Sub btnRescale3_Click(sender As System.Object, e As System.EventArgs) Handles btnRescale3.Click
-        If MsgBox(GetLocalizedString("sketchedit.warning7"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("sketchedit.warningtitle")) = MsgBoxResult.Yes Then
-            'Call pRemoveTrigPoints()
-            Call pRescaleImage(512, 512)
-        End If
-    End Sub
+    'Private Sub btnRescale3_Click(sender As System.Object, e As System.EventArgs)
+    '    If MsgBox(GetLocalizedString("sketchedit.warning7"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("sketchedit.warningtitle")) = MsgBoxResult.Yes Then
+    '        'Call pRemoveTrigPoints()
+    '        Call pRescaleImage(512, 512)
+    '    End If
+    'End Sub
 
-    Private Sub btnRescale_Click(sender As System.Object, e As System.EventArgs) Handles btnRescale.Click
+    'Private Sub btnRescale_Click(sender As System.Object, e As System.EventArgs)
 
-    End Sub
+    'End Sub
 
-    Private Sub btnRescale_DropDownOpening(sender As Object, e As System.EventArgs) Handles btnRescale.DropDownOpening
-        btnRescale0.Enabled = (oCurrentImage.Width > 3096) Or (oCurrentImage.Height > 3096)
-        btnRescale1.Enabled = (oCurrentImage.Width > 2048) Or (oCurrentImage.Height > 2048)
-        btnRescale2.Enabled = (oCurrentImage.Width > 1024) Or (oCurrentImage.Height > 1024)
-        btnRescale3.Enabled = (oCurrentImage.Width > 512) Or (oCurrentImage.Height > 512)
-    End Sub
+    'Private Sub btnRescale_DropDownOpening(sender As Object, e As System.EventArgs)
+    '    btnRescale0.Enabled = (oCurrentImage.Width > 3096) Or (oCurrentImage.Height > 3096)
+    '    btnRescale1.Enabled = (oCurrentImage.Width > 2048) Or (oCurrentImage.Height > 2048)
+    '    btnRescale2.Enabled = (oCurrentImage.Width > 1024) Or (oCurrentImage.Height > 1024)
+    '    btnRescale3.Enabled = (oCurrentImage.Width > 512) Or (oCurrentImage.Height > 512)
+    'End Sub
 
-    Private Sub btnRotate_Click(sender As System.Object, e As System.EventArgs) Handles btnRotate.Click
-        If MsgBox(GetLocalizedString("sketchedit.warning8"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("sketchedit.warningtitle")) = MsgBoxResult.Yes Then
-            Call pRemoveTrigPoints()
-            Call pRotateImage()
-        End If
-    End Sub
+    'Private Sub btnRotate_Click(sender As System.Object, e As System.EventArgs)
+    '    If MsgBox(GetLocalizedString("sketchedit.warning8"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("sketchedit.warningtitle")) = MsgBoxResult.Yes Then
+    '        Call pRemoveTrigPoints()
+    '        Call pRotateImage()
+    '    End If
+    'End Sub
 
-    Private Sub btnFlipH_Click(sender As System.Object, e As System.EventArgs) Handles btnFlipH.Click
-        Call pFlipXImage()
-    End Sub
+    'Private Sub btnFlipH_Click(sender As System.Object, e As System.EventArgs)
+    '    Call pFlipXImage()
+    'End Sub
 
-    Private Sub btnFlipV_Click(sender As System.Object, e As System.EventArgs) Handles btnFlipV.Click
-        Call pFlipYImage()
-    End Sub
+    'Private Sub btnFlipV_Click(sender As System.Object, e As System.EventArgs)
+    '    Call pFlipYImage()
+    'End Sub
 
-    Private Sub btnStop_Click(sender As System.Object, e As System.EventArgs) Handles btnStop.Click
-        Call pToolStop()
-    End Sub
+    'Private Sub btnStop_Click(sender As System.Object, e As System.EventArgs)
+    '    Call pToolStop()
+    'End Sub
 
-    Private Sub mnuPreviewStop_Click(sender As System.Object, e As System.EventArgs) Handles mnuPreviewStop.Click
-        Call pToolStop()
-    End Sub
+    'Private Sub mnuPreviewStop_Click(sender As System.Object, e As System.EventArgs)
+    '    Call pToolStop()
+    'End Sub
 
     Private Sub frmSketchEdit_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Call oPlaceholderSelectedPen.Dispose()
@@ -1242,100 +1066,34 @@ friend Class frmSketchEdit
             Call pSelectPlaceholder(oPoint)
             Call picPreview.Invalidate()
             If (e.Button And Windows.Forms.MouseButtons.Right) = Windows.Forms.MouseButtons.Right Then
-                Call mnuPreview.Show(picPreview.PointToScreen(oPoint))
+                Call mnuPreview.ShowPopup(picPreview.PointToScreen(oPoint))
             End If
         End If
     End Sub
 
-    Protected Overrides Sub Finalize()
-        oSketch = Nothing
-        oSourceImage = Nothing
-        oCurrentImage = Nothing
-        MyBase.Finalize()
-    End Sub
+    'Private Sub mnuTrigpointsFilterBy_KeyDown(sender As Object, e As KeyEventArgs) Handles mnuTrigpointsFilterBy.KeyDown
+    '    If e.KeyCode = Keys.Enter Then
+    '        Call pFilter(mnuTrigpointsFilterBy.Text)
+    '    End If
+    'End Sub
 
-    Private Sub lvTrigpoints_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lvTrigpoints.SelectedIndexChanged
+    'Private Sub mnuTrigpointsRemoveFilter_Click(sender As Object, e As EventArgs) Handles mnuTrigpointsRemoveFilter.Click
+    '    Call pRemoveFilter()
+    'End Sub
 
-    End Sub
+    'Private Sub mnuTrigpointsShowSplay_Click(sender As Object, e As EventArgs) Handles mnuTrigpointsShowSplay.Click
+    '    bShowSplay = Not bShowSplay
+    '    Call pRefreshTrigpointList()
+    'End Sub
 
-    Private Sub pRemoveFilter()
-        sFilterText = ""
-        Call pRefreshTrigpointList()
-        'lvTrigpoints.BeginUpdate()
-        'lvTrigpoints.ShowGroups = False
-        'For Each oItem As ListViewItem In lvTrigpoints.Items
-        '    oItem.Group = Nothing
-        'Next
-        'Call lvTrigpoints.Groups.Clear()
-        'Call lvTrigpoints.Sort()
-        'lvTrigpoints.EndUpdate()
-        'lvTrigpoints.Refresh()
-    End Sub
-
-    Private sFilterText As String
-
-    Private Sub pFilter(Text As String)
-        sFilterText = Text.ToLower.Trim
-        Call pRefreshTrigpointList()
-        'lvTrigpoints.BeginUpdate()
-        'Dim oFoundedGroup As ListViewGroup = New ListViewGroup("founded", GetLocalizedString("sketchedit.textpart1"))
-        'Dim oNonFoundedGroup As ListViewGroup = New ListViewGroup("notfounded", GetLocalizedString("sketchedit.textpart2"))
-        'Call lvTrigpoints.Groups.Clear()
-        'Call lvTrigpoints.Groups.Add(oFoundedGroup)
-        'Call lvTrigpoints.Groups.Add(oNonFoundedGroup)
-
-        'Dim sFilterText As String = Text.ToLower.Trim
-        'Dim oFilter As List(Of String) = New List(Of String)
-        'For Each sFilter As String In sFilterText.Split({" "}, StringSplitOptions.RemoveEmptyEntries)
-        '    sFilter = sFilter.Trim.ToUpper
-        '    If sFilter <> "" Then
-        '        Call oFilter.Add(sFilter)
-        '    End If
-        'Next
-
-        'For Each oItem As ListViewItem In lvTrigpoints.Items
-        '    For Each sFilter As String In oFilter
-        '        If oItem.Name Like sFilter Then
-        '            oItem.Group = oFoundedGroup
-        '        Else
-        '            oItem.Group = oNonFoundedGroup
-        '        End If
-        '    Next
-        'Next
-        ''If oItem.Name Like sText Then
-        ''    oItem.Group = oFoundedGroup
-        ''Else
-        ''    oItem.Group = oNonFoundedGroup
-        ''End If
-        'lvTrigpoints.ShowGroups = True
-        'Call lvTrigpoints.Sort()
-        'lvTrigpoints.EndUpdate()
-        'lvTrigpoints.Refresh()
-    End Sub
-
-    Private Sub mnuTrigpointsFilterBy_KeyDown(sender As Object, e As KeyEventArgs) Handles mnuTrigpointsFilterBy.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            Call pFilter(mnuTrigpointsFilterBy.Text)
-        End If
-    End Sub
-
-    Private Sub mnuTrigpointsRemoveFilter_Click(sender As Object, e As EventArgs) Handles mnuTrigpointsRemoveFilter.Click
-        Call pRemoveFilter()
-    End Sub
-
-    Private Sub mnuTrigpointsShowSplay_Click(sender As Object, e As EventArgs) Handles mnuTrigpointsShowSplay.Click
-        bShowSplay = Not bShowSplay
-        Call pRefreshTrigpointList()
-    End Sub
-
-    Private Sub mnuPreviewAddExtra_Click(sender As Object, e As EventArgs) Handles mnuPreviewAddExtra.Click
+    Private Sub btnAddExtra_ItemClick(sender As Object, e As EventArgs) Handles btnAddExtra.ItemClick
         Call pToolStop()
 
         oExtraPlaceholder = oLastPlaceholder
         Call pToolStart(ToolEnum.ExtraPoint)
     End Sub
 
-    Private Sub mnuPreviewEditDistance_Click(sender As Object, e As EventArgs) Handles mnuPreviewEditDistance.Click
+    Private Sub btnEditDistance_ItemClick(sender As Object, e As EventArgs) Handles btnEditDistance.ItemClick
         Dim oTPH As cTrigpointExtraPlaceholder = oLastPlaceholder
         Using frmD As frmSketchEditDistance = New frmSketchEditDistance(oSketch.Layer.Design.Type = cIDesign.cDesignTypeEnum.Profile, oTPH.Distance)
             If frmD.ShowDialog = DialogResult.OK Then
@@ -1345,7 +1103,216 @@ friend Class frmSketchEdit
         End Using
     End Sub
 
-    Private Sub mnuTrigpoints_Opening(sender As Object, e As CancelEventArgs) Handles mnuTrigpoints.Opening
-        mnuTrigpointsShowSplay.Checked = bShowSplay
+    'Private Sub mnuTrigpoints_Opening(sender As Object, e As CancelEventArgs)
+    '    mnuTrigpointsShowSplay.Checked = bShowSplay
+    'End Sub
+
+    Private Sub cmdok_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles cmdOk.ItemClick
+        If oTrigpointsPlaceholders.Count < 2 Then
+            Call MsgBox(GetLocalizedString("sketchedit.warning1"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Exclamation, GetLocalizedString("sketchedit.warningtitle"))
+
+            DialogResult = Windows.Forms.DialogResult.None
+        Else
+            oSketch.Image = oCurrentImage
+            oSketch.TransparentColor = oTransparentColor
+            oSketch.TransparencyThreshold = sTransparencyThreshold
+            Call oSketch.Stations.Clear()
+
+            For Each oTPH As cTrigpointPlaceholder In oTrigpointsPlaceholders.Values
+                Dim sTrigPoint As String = oTPH.Station
+                Dim oPoint As Point = oTPH.Point
+                oPoint.X = oPoint.X / sZoomFactor
+                oPoint.Y = oPoint.Y / sZoomFactor
+                If TypeOf oTPH Is cTrigpointExtraPlaceholder Then
+                    Call oSketch.Stations.Add(oPoint, oSurvey.TrigPoints(sTrigPoint), DirectCast(oTPH, cTrigpointExtraPlaceholder).Distance)
+                Else
+                    Call oSketch.Stations.Add(oPoint, oSurvey.TrigPoints(sTrigPoint))
+                End If
+            Next
+
+            DialogResult = Windows.Forms.DialogResult.OK
+            Close()
+        End If
     End Sub
+
+    Private Sub cmdCancel_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles cmdCancel.ItemClick
+        DialogResult = DialogResult.Cancel
+        Call Close()
+    End Sub
+
+    Private Sub btnRotate_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnRotate.ItemClick
+        If MsgBox(GetLocalizedString("imageedit.warning5"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Yes Then
+            Call pRotateImage()
+        End If
+    End Sub
+
+    Private Sub btnFlipH_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnFlipH.ItemClick
+        If MsgBox(GetLocalizedString("imageedit.warning5"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Yes Then
+            Call pFlipXImage()
+        End If
+    End Sub
+
+    Private Sub btnFlipV_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnFlipV.ItemClick
+        If MsgBox(GetLocalizedString("imageedit.warning5"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Yes Then
+            Call pFlipYImage()
+        End If
+    End Sub
+
+    Private Sub btnToGrayscale_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnToGrayscale.ItemClick
+        If MsgBox(GetLocalizedString("imageedit.warning2"), MsgBoxStyle.OkCancel Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Ok Then
+            Call pGrayScaleImage()
+            Call picPreview.Invalidate()
+        End If
+    End Sub
+
+    Private Sub btnRubber_CheckedChanged(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnRubber.CheckedChanged
+        Dim bVisible As Boolean = btnRubber.Checked
+        Call pToolStop()
+        btnRubberSize.Visibility = If(bVisible, DevExpress.XtraBars.BarItemVisibility.Always, DevExpress.XtraBars.BarItemVisibility.Never)
+        If bVisible Then
+            iRubberSize = 16 * btnRubberSize.EditValue
+            Call pToolStart(ToolEnum.Rubber)
+        End If
+    End Sub
+
+    Private Sub btnRubberSize_EditValueChanged(sender As Object, e As EventArgs) Handles btnRubberSize.EditValueChanged
+        iRubberSize = 16 * btnRubberSize.EditValue
+    End Sub
+
+    Private Sub btnStop_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnStop.ItemClick
+        Call pToolStop()
+    End Sub
+
+    Private Sub btnCropStart_CheckedChanged(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnCropStart.CheckedChanged
+        Dim bVisible As Boolean = btnCropStart.Checked
+        Call pToolStop()
+        btnCrop.Visibility = If(bVisible, DevExpress.XtraBars.BarItemVisibility.Always, DevExpress.XtraBars.BarItemVisibility.Never)
+        If bVisible Then
+            Call pToolStart(ToolEnum.Cut)
+        End If
+    End Sub
+
+    Private Sub btnCrop_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnCrop.ItemClick
+        Call pPreviewCrop()
+    End Sub
+
+    Private Sub btnRescale_Popup(sender As Object, e As EventArgs) Handles btnRescale.Popup
+        btnRescale0.Enabled = (oCurrentImage.Width > 3096) OrElse (oCurrentImage.Height > 3096)
+        btnRescale1.Enabled = (oCurrentImage.Width > 2048) OrElse (oCurrentImage.Height > 2048)
+        btnRescale2.Enabled = (oCurrentImage.Width > 1024) OrElse (oCurrentImage.Height > 1024)
+        btnRescale3.Enabled = (oCurrentImage.Width > 512) OrElse (oCurrentImage.Height > 512)
+    End Sub
+
+    Private Sub btnUndo_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnUndo.ItemClick
+        If MsgBox(GetLocalizedString("imageedit.warning1"), MsgBoxStyle.OkCancel Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Ok Then
+            oCurrentImage = oSourceImage.Clone
+            Call pRescaleImage(iMaxWidth, iMaxHeight)
+            Call picPreview.Invalidate()
+        End If
+    End Sub
+
+    Private Sub btnTransparentThreshold_EditValueChanged(sender As Object, e As EventArgs) Handles btnTransparentThreshold.EditValueChanged
+        Dim sNewTransparencyThreshold As Single = btnTransparentThreshold.EditValue / 100.0F
+        If sNewTransparencyThreshold <> sTransparencyThreshold Then
+            sTransparencyThreshold = sNewTransparencyThreshold
+            Call picPreview.Invalidate()
+        End If
+    End Sub
+
+    Private Sub btnDeleteTransparent_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnDeleteTransparent.ItemClick
+        oTransparentColor = Color.Transparent
+        Call picPreview.Invalidate()
+    End Sub
+
+    Private Sub btnSetTransparent_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnSetTransparent.ItemClick
+        oTransparentColor = oCurrentImage.GetPixel(oLastMousePoint.X, oLastMousePoint.Y)
+        Call picPreview.Invalidate()
+    End Sub
+
+    Private Sub btnLoadImage_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnLoadImage.ItemClick
+        Using oOfd As OpenFileDialog = New OpenFileDialog
+            With oOfd
+                .Title = GetLocalizedString("imageedit.openimagedialog")
+                .Filter = GetLocalizedString("imageedit.filetypeIMAGES") & " (*.JPG;*.PNG;*.TIF;*.BMP;*.GIF)|*.JPG;*.PNG;*.TIF;*.BMP;*.GIF|" & GetLocalizedString("imageedit.filetypeALL") & " (*.*)|*.*"
+                .FilterIndex = 1
+                If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                    Try
+                        oSourceImage = modPaint.ImageExifRotate(New Bitmap(.FileName))
+                        oCurrentImage = oSourceImage.Clone
+                        Call pRescaleImage(iMaxWidth, iMaxHeight)
+                        Call picPreview.Invalidate()
+                    Catch ex As Exception
+                        Call MsgBox(String.Format(GetLocalizedString("imageedit.warning6"), ex.Message), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("imageedit.warningtitle"))
+                    End Try
+                End If
+            End With
+        End Using
+    End Sub
+
+    Private Sub btnTransparency_Popup(sender As Object, e As EventArgs) Handles btnTransparency.Popup
+        If oTransparentColor = Color.Transparent Then
+            btnDeleteTransparent.Enabled = False
+            btnTransparentThreshold.Enabled = False
+        Else
+            btnDeleteTransparent.Enabled = True
+            btnTransparentThreshold.Enabled = True
+        End If
+        btnTransparentThreshold.EditValue = sTransparencyThreshold * 100.0F
+    End Sub
+
+    Private Sub mnuPreview_Popup(sender As Object, e As EventArgs) Handles mnuPreview.Popup
+        If iCurrentTool = ToolEnum.None Then
+            If oLastPlaceholder Is Nothing Then
+                btnAddExtra.Visibility = BarItemVisibility.Never
+                btnEditDistance.Visibility = BarItemVisibility.Never
+                btnAdd.Enabled = grdStations.SelectedItem IsNot Nothing
+                btnRemove.Enabled = False
+                btnRemoveAll.Enabled = oTrigpointsPlaceholders.Count > 0
+            Else
+                If TypeOf oLastPlaceholder Is cTrigpointExtraPlaceholder Then
+                    btnAddExtra.Visibility = BarItemVisibility.Never
+                    btnEditDistance.Visibility = BarItemVisibility.Always
+                Else
+                    btnAddExtra.Visibility = BarItemVisibility.Always
+                    btnEditDistance.Visibility = BarItemVisibility.Never
+                End If
+                btnAdd.Enabled = False
+                btnRemove.Enabled = True
+                btnRemoveAll.Enabled = oTrigpointsPlaceholders.Count > 0
+            End If
+        End If
+    End Sub
+
+    Private Sub btnRescale0_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnRescale0.ItemClick
+        If MsgBox(GetLocalizedString("imageedit.warning4"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Yes Then
+            Call pRescaleImage(3096, 3096)
+        End If
+    End Sub
+
+    Private Sub btnRescale1_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnRescale1.ItemClick
+        If MsgBox(GetLocalizedString("imageedit.warning4"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Yes Then
+            Call pRescaleImage(2048, 2048)
+        End If
+    End Sub
+
+    Private Sub btnRescale2_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnRescale2.ItemClick
+        If MsgBox(GetLocalizedString("imageedit.warning4"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Yes Then
+            Call pRescaleImage(1024, 1024)
+        End If
+    End Sub
+
+    Private Sub btnRescale3_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnRescale3.ItemClick
+        If MsgBox(GetLocalizedString("imageedit.warning4"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Yes Then
+            Call pRescaleImage(512, 512)
+        End If
+    End Sub
+
+    Private Sub btnShowSplays_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btnShowSplays.CheckedChanged
+        Call pRefreshTrigpointList()
+    End Sub
+
+    Private Sub grdStations_ContextMenuShowing(sender As Object, e As MouseEventArgs) Handles grdStations.ContextMenuShowing
+        Call mnuStations.ShowPopup(New Point(e.X, e.Y))
+    End Sub
+
 End Class

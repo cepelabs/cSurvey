@@ -1,7 +1,16 @@
 ﻿Imports cSurveyPC.cSurvey
+Imports DevExpress.XtraTreeList
 
 Friend Class frmImportcSurvey
 
+    Public Sub AppendLog(Text As String, Imagename As String)
+        tvLog.BeginUpdate()
+        Dim oData() As Object = {Text, Imagename}
+        Dim oNode As Nodes.TreeListNode = tvLog.Nodes.Add(oData)
+        tvLog.FocusedNode = oNode
+        tvLog.MakeNodeVisible(oNode)
+        tvLog.EndUpdate()
+    End Sub
     Private Sub pSettingsLoad()
         Try
             Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
@@ -67,10 +76,13 @@ Friend Class frmImportcSurvey
         End Try
     End Sub
 
-    Public Sub New()
+    Private oSurvey As cSurvey.cSurvey
+
+    Public Sub New(Survey As cSurvey.cSurvey)
         ' Chiamata richiesta dalla finestra di progettazione.
         InitializeComponent()
         ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
+        osurvey = Survey
         Call pSettingsLoad()
     End Sub
 
@@ -109,7 +121,7 @@ Friend Class frmImportcSurvey
     End Sub
 
     Private Sub chkcSurveyImportData_CheckedChanged(sender As Object, e As EventArgs) Handles chkcSurveyImportData.CheckedChanged
-        Call pImportDataChanged
+        Call pImportDataChanged()
     End Sub
 
     Private Sub chkcSurveyImportDuplicates_CheckedChanged(sender As Object, e As EventArgs) Handles chkcSurveyImportDuplicates.CheckedChanged
@@ -121,10 +133,6 @@ Friend Class frmImportcSurvey
     Private Sub chkImportAsBranchOf_CheckedChanged(sender As Object, e As EventArgs) Handles chkImportAsBranchOf.CheckedChanged
         cboImportAsBranchOfCave.Enabled = chkImportAsBranchOf.Checked
         cboImportAsBranchOfBranch.Enabled = chkImportAsBranchOf.Checked
-    End Sub
-
-    Private Sub cboImportAsBranchOfCave_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboImportAsBranchOfCave.SelectedIndexChanged
-        Call cboImportAsBranchOfBranch.Rebind(CType(cboImportAsBranchOfCave.SelectedItem, cICaveInfoBranches), False)
     End Sub
 
     Private Sub chkcSurveyImportDuplicatesOverwrite_CheckedChanged(sender As Object, e As EventArgs) Handles chkcSurveyImportDuplicatesOverwrite.CheckedChanged
@@ -142,5 +150,26 @@ Friend Class frmImportcSurvey
     Private Sub frmImportcSurvey_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         Call pImportDataChanged()
         Call pImportGraphicsChanged()
+    End Sub
+
+    Private Sub tvLog_CustomDrawNodeImages(sender As Object, e As CustomDrawNodeImagesEventArgs) Handles tvLog.CustomDrawNodeImages
+        Select Case e.Node.Item(1)
+            Case "ok"
+                e.SelectImageIndex = 0
+            Case "warning"
+                e.SelectImageIndex = 1
+            Case "error"
+                e.SelectImageIndex = 2
+            Case "source"
+                e.SelectImageIndex = 3
+        End Select
+    End Sub
+
+    Private Sub cboImportAsBranchOfCave_EditValueChanged(sender As Object, e As EventArgs) Handles cboImportAsBranchOfCave.EditValueChanged
+        Dim oCave As cCaveInfo = cboImportAsBranchOfCave.EditValue
+        Dim oBranch As cCaveInfoBranch = cboImportAsBranchOfBranch.EditValue
+        Dim sCave As String = "" & If(cboImportAsBranchOfCave.EditValue Is Nothing, "", cboImportAsBranchOfCave.EditValue.Name)
+        Dim sCurrentBranch As String = "" & If(cboImportAsBranchOfBranch.EditValue Is Nothing, "", cboImportAsBranchOfBranch.EditValue.Path)
+        Call cboImportAsBranchOfBranch.Rebind(oSurvey, cboImportAsBranchOfCave, False)
     End Sub
 End Class

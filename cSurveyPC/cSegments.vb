@@ -14,7 +14,14 @@ Namespace cSurvey
 
         Friend Class OnSegmentsEventArgs
             Inherits EventArgs
+            Private oSegments As List(Of cSegment)
             Private oIndexes As List(Of Integer)
+
+            Public ReadOnly Property Segments As List(Of cSegment)
+                Get
+                    Return oSegments
+                End Get
+            End Property
 
             Public ReadOnly Property Indexes As List(Of Integer)
                 Get
@@ -22,7 +29,8 @@ Namespace cSurvey
                 End Get
             End Property
 
-            Friend Sub New(ByVal Indexes As List(Of Integer))
+            Friend Sub New(Segments As List(Of cSegment), Indexes As List(Of Integer))
+                oSegments = Segments
                 oIndexes = Indexes
             End Sub
         End Class
@@ -99,6 +107,7 @@ Namespace cSurvey
         Friend Event OnSegmentMove(ByVal Sender As cSegments, ByVal e As OnSegmentMoveEventArgs)
         Friend Event OnSegmentRemoveRange(ByVal Sender As cSegments, ByVal e As OnSegmentsEventArgs)
         Friend Event OnSegmentChange(ByVal Sender As cSegments, ByVal e As OnSegmentEventArgs)
+        Friend Event OnSegmentChangeRange(ByVal Sender As cSegments, ByVal e As OnSegmentsEventArgs)
         Friend Event OnSegmentReassigned(ByVal Sender As cSegments, ByVal e As OnSegmentEventArgs)
         Friend Event OnSegmentSplayChange(ByVal Sender As cSegments, ByVal e As OnSegmentEventArgs)
 
@@ -115,15 +124,21 @@ Namespace cSurvey
         'End Function
 
         Public Sub SaveAll(Optional RebindItem As Boolean = False)
+            Dim oChangedIndexes As List(Of Integer) = New List(Of Integer)
+            Dim oChangedSegments As List(Of cSegment) = oSegments.Where(Function(item) TypeOf item Is cSegment AndAlso DirectCast(item, cSegment).Changed).Cast(Of cSegment).ToList
+
             Dim oFirstChangedSegment As cSegment = Nothing
             For Each oSegment As cSegment In oSegments
                 If oSegment.Changed Then
                     If oFirstChangedSegment Is Nothing Then oFirstChangedSegment = oSegment
                     Call oSegment.Save(RebindItem, cSegment.SaveOptionsEnum.EventRaisingDisable)
+                    Call oChangedIndexes.Add(oSegment.Index)
+                    Call oChangedSegments.Add(oSegment)
                 End If
             Next
             If Not oFirstChangedSegment Is Nothing Then
-                RaiseEvent OnSegmentChange(Me, New OnSegmentEventArgs(oFirstChangedSegment, oFirstChangedSegment.Index))
+                'RaiseEvent OnSegmentChange(Me, New OnSegmentEventArgs(oFirstChangedSegment, oFirstChangedSegment.Index))
+                RaiseEvent OnSegmentChangeRange(Me, New OnSegmentsEventArgs(oChangedSegments, oChangedIndexes))
             End If
         End Sub
 
@@ -278,7 +293,7 @@ Namespace cSurvey
 
         Private oLastSplayIndexes As Dictionary(Of String, Integer) = New Dictionary(Of String, Integer)
 
-        Private Sub oSegment_OnGetSplayName(ByVal Sender As cSegment, Args As cSegment.cGetSplayNameEventArgs)
+        Private Sub oSegment_OnGetSplayName(ByVal Sender As Object, Args As cSegment.cGetSplayNameEventArgs)
             Dim sBasename As String = Args.Basename
             Dim iSplayIndex As Integer
             If oLastSplayIndexes.ContainsKey(sBasename) Then
@@ -299,15 +314,16 @@ Namespace cSurvey
             Args.SplayName = sSplayName
         End Sub
 
-        Private Sub oSegment_OnSplayChange(ByVal Sender As cSegment)
+        Private Sub oSegment_OnSplayChange(ByVal Sender As Object, e As EventArgs)
             RaiseEvent OnSegmentSplayChange(Me, New cSegments.OnSegmentEventArgs(Sender, oSegments.IndexOf(Sender)))
         End Sub
 
-        Private Sub oSegment_OnChange(ByVal Sender As cSegment)
+        Private Sub oSegment_OnChange(ByVal Sender As Object, e As EventArgs)
+            Debug.Print(Sender.GetHashCode & " - " & Sender.GetHash)
             RaiseEvent OnSegmentChange(Me, New cSegments.OnSegmentEventArgs(Sender, oSegments.IndexOf(Sender)))
         End Sub
 
-        Private Sub oSegment_OnReassigned(ByVal Sender As cSegment)
+        Private Sub oSegment_OnReassigned(ByVal Sender As Object, e As EventArgs)
             RaiseEvent OnSegmentReassigned(Me, New cSegments.OnSegmentEventArgs(Sender, oSegments.IndexOf(Sender)))
         End Sub
 
@@ -334,17 +350,18 @@ Namespace cSurvey
             RaiseEvent OnSegmentRemove(Me, New cSegments.OnSegmentEventArgs(oSegment, iIndex))
         End Sub
 
-        Public Sub RemoveRange(Segments As IEnumerable(Of cISegment))
-            Dim oIndexes As List(Of Integer) = New List(Of Integer)
-            For Each oSegment As cSegment In Segments.Where(Function(item) TypeOf item Is cSegment).ToList
-                If oSegments.Contains(oSegment) Then
-                    Call oIndexes.Add(oSegment.Index)
-                    Call oSegments.Remove(oSegment)
-                    Call oSegment.Attachments.Clear()
+        Public Sub RemoveRange(Segments As IEnumerable(Of cSegment))
+            Dim oRemovedIndexes As List(Of Integer) = New List(Of Integer)
+            Dim oRemovedSegments As List(Of cSegment) = Segments.Where(Function(item) TypeOf item Is cSegment).ToList
+            For Each oRemovedSegment As cSegment In oRemovedSegments
+                If oSegments.Contains(oRemovedSegment) Then
+                    Call oRemovedIndexes.Add(oRemovedSegment.Index)
+                    Call oSegments.Remove(oRemovedSegment)
+                    Call oRemovedSegment.Attachments.Clear()
                 End If
             Next
-            If oIndexes.Count > 0 Then
-                RaiseEvent OnSegmentRemoveRange(Me, New cSegments.OnSegmentsEventArgs(oIndexes))
+            If oRemovedIndexes.Count > 0 Then
+                RaiseEvent OnSegmentRemoveRange(Me, New cSegments.OnSegmentsEventArgs(oRemovedSegments, oRemovedIndexes))
             End If
         End Sub
 
@@ -438,6 +455,10 @@ Namespace cSurvey
 
         Public Function GetCaveSegments(ByVal CaveInfo As cCaveInfo) As cSegmentCollection Implements cISegmentCollection.GetCaveSegments
             Return modSegmentsTools.GetCaveSegments(oSurvey, Me, CaveInfo)
+        End Function
+
+        Public Function GetCalibrationSegments() As cSegmentCollection Implements cISegmentCollection.GetCalibrationSegments
+            Return New cSegmentCollection(oSurvey, oSegments.Where(Function(item) item.Calibration AndAlso item.IsValid))
         End Function
 
         Public Function GetSessionSegments(ByVal SessionID As String, Optional Flags As cISegmentCollection.SessionSegmentsFlagEnum = cISegmentCollection.SessionSegmentsFlagEnum.SurveyShots) As cSegmentCollection Implements cISegmentCollection.GetSessionSegments
@@ -546,6 +567,11 @@ Namespace cSurvey
             Return oResult
         End Function
 
+        Public Function GetTrigpointSegments(ByVal Trigpoint As String) As cISegmentCollection Implements cISegmentCollection.GetTrigpointSegments
+            Dim sTrigpoint As String = Trigpoint.ToUpper
+            Return New cSegmentCollection(oSurvey, oSegments.Where(Function(Segment) Segment.From = sTrigpoint Or Segment.To = sTrigpoint))
+        End Function
+
         Public Function Find(ByVal Text As String) As cISegmentCollection Implements cISegmentCollection.Find
             Dim sText As String = Text.ToUpper
             Return New cSegmentCollection(oSurvey, oSegments.Where(Function(Segment) Segment.From Like sText Or Segment.To Like sText))
@@ -606,10 +632,6 @@ Namespace cSurvey
 
         Public Function ToArray() As cISegment() Implements cISegmentCollection.ToArray
             Return oSegments.ToArray
-        End Function
-
-        Public Function GetCalibrationSegments() As cSegmentCollection Implements cISegmentCollection.GetCalibrationSegments
-            Return New cSegmentCollection(oSurvey, oSegments.Where(Function(item) item.Calibration AndAlso item.IsValid))
         End Function
 
         Public Function GetDistintSegments() As cSegmentCollection
@@ -710,11 +732,11 @@ Namespace cSurvey
 
                 If osegment.Cave <> "" Then
                     If Not oSurvey.Properties.CaveInfos.Contains(osegment.Cave) Then
-                        Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, "segment " & osegment.ToString & " > invalid cave [" & osegment.Cave & "] resetted to: []", True)
+                        Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, "segment " & osegment.ToString & " > invalid cave [" & osegment.Cave & "] resetted to: []")
                         Call osegment.SetCave("", "")
                     Else
                         If Not oSurvey.Properties.CaveInfos(osegment.Cave).Branches.Contains(osegment.Branch) Then
-                            Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, "segment " & osegment.ToString & " > invalid branch [" & osegment.Branch & "] resetted to: []", True)
+                            Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, "segment " & osegment.ToString & " > invalid branch [" & osegment.Branch & "] resetted to: []")
                             Call osegment.SetCave(osegment.Cave, "")
                             osegment.Save()
                         End If
@@ -723,7 +745,7 @@ Namespace cSurvey
 
                 If osegment.Session <> "" Then
                     If Not oSurvey.Properties.Sessions.Contains(osegment.Session) Then
-                        Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, "segment " & osegment.ToString & " > invalid session [" & osegment.Session & "] resetted to: []", True)
+                        Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, "segment " & osegment.ToString & " > invalid session [" & osegment.Session & "] resetted to: []")
                         Call osegment.SetSession("")
                     End If
                 End If

@@ -3,7 +3,7 @@ Imports System.Xml
 
 Namespace cSurvey.Design
     Public Class cOptionsDesign
-        Inherits cOptions
+        Inherits cOptionsCenterline
         Implements cIOptionPrintAndExportArea
         Implements cIOptionLinkedSurveys
 
@@ -33,7 +33,7 @@ Namespace cSurvey.Design
         Private WithEvents oPrintOrExportProfile As cIProfile
 
         Public Overrides Function GetCurrentDesignPropertiesValue(Name As String, DefaultValue As Object)
-            Return GetOption.DesignProperties.GetValue(Name, CurrentRule.DesignProperties.GetValue(Name, MyBase.Survey.Properties.DesignProperties.GetValue(Name, DefaultValue)))
+            Return DirectCast(GetOption(), cOptionsCenterline).DesignProperties.GetValue(Name, CurrentRule.DesignProperties.GetValue(Name, MyBase.Survey.Properties.DesignProperties.GetValue(Name, DefaultValue)))
         End Function
 
         Public Overrides Function GetOption() As cIOptions Implements cIOptions.GetOption
@@ -91,7 +91,10 @@ Namespace cSurvey.Design
                 Return iDrawPrintOrExportArea
             End Get
             Set(value As cIOptionPrintAndExportArea.DesignStyleEnum)
-                iDrawPrintOrExportArea = value
+                If iDrawPrintOrExportArea <> value Then
+                    iDrawPrintOrExportArea = value
+                    Call PropertyChanged("DrawPrintOrExportAreaDesignStyle")
+                End If
             End Set
         End Property
 
@@ -100,7 +103,10 @@ Namespace cSurvey.Design
                 Return bDrawPrintOrExportArea
             End Get
             Set(value As Boolean)
-                bDrawPrintOrExportArea = value
+                If bDrawPrintOrExportArea <> value Then
+                    bDrawPrintOrExportArea = value
+                    Call PropertyChanged("DrawPrintOrExportArea")
+                End If
             End Set
         End Property
 
@@ -119,7 +125,10 @@ Namespace cSurvey.Design
                 Return iUnselectedLevelDrawingMode
             End Get
             Set(value As UnselectedLevelDrawingModeEnum)
-                iUnselectedLevelDrawingMode = value
+                If iUnselectedLevelDrawingMode <> value Then
+                    iUnselectedLevelDrawingMode = value
+                    Call PropertyChanged("UnselectedLevelDrawingMode")
+                End If
             End Set
         End Property
 
@@ -128,7 +137,10 @@ Namespace cSurvey.Design
                 Return iSplayEditMode
             End Get
             Set(ByVal value As SplayEditModeEnum)
-                iSplayEditMode = value
+                If iSplayEditMode <> value Then
+                    iSplayEditMode = value
+                    Call PropertyChanged("SplayEditMode")
+                End If
             End Set
         End Property
 
@@ -137,7 +149,10 @@ Namespace cSurvey.Design
                 Return iDesignMode
             End Get
             Set(ByVal value As DesignModeEnum)
-                iDesignMode = value
+                If iDesignMode <> value Then
+                    iDesignMode = value
+                    Call PropertyChanged("DesignMode")
+                End If
             End Set
         End Property
 
@@ -166,14 +181,14 @@ Namespace cSurvey.Design
             Return oXMLOptions
         End Function
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Name As String)
-            Call MyBase.New(Survey, Name, cIOptions.ModeEnum.Design)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Name As String, Optional Mode As cIOptions.ModeEnum = cIOptions.ModeEnum.Design)
+            Call MyBase.New(Survey, Name, Mode)
             iPrintOrExportProfileType = -1
             iPrintOrExportProfileIndex = -1
         End Sub
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Options As XmlElement)
-            Call MyBase.New(Survey, Options, cIOptions.ModeEnum.Design)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Options As XmlElement, Optional Mode As cIOptions.ModeEnum = cIOptions.ModeEnum.Design)
+            Call MyBase.New(Survey, Options, Mode)
             Call Import(Options)
         End Sub
 
@@ -211,7 +226,10 @@ Namespace cSurvey.Design
                 Return bDrawLinkedSurveys
             End Get
             Set(value As Boolean)
-                bDrawLinkedSurveys = value
+                If bDrawLinkedSurveys <> value Then
+                    bDrawLinkedSurveys = value
+                    Call PropertyChanged("DrawLinkedSurveys")
+                End If
             End Set
         End Property
 

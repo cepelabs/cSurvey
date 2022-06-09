@@ -4,7 +4,7 @@ Imports System.Xml
 
 Namespace cSurvey.Design
     Public Class cOptions3D
-        Inherits cOptionsDesign
+        Inherits cOptionsCenterline
         Implements cIOptionLinkedSurveys
 
         Private oSurvey As cSurvey
@@ -16,6 +16,20 @@ Namespace cSurvey.Design
         Private bModelColorGray As Boolean
         Private bModelExtendedElevation As Boolean
 
+        Private bDrawLinkedSurveys As Boolean
+
+        Public Property DrawLinkedSurveys As Boolean Implements cIOptionLinkedSurveys.DrawLinkedSurveys
+            Get
+                Return bDrawLinkedSurveys
+            End Get
+            Set(value As Boolean)
+                If bDrawLinkedSurveys <> value Then
+                    bDrawLinkedSurveys = value
+                    Call PropertyChanged("DrawLinkedSurveys")
+                End If
+            End Set
+        End Property
+
         Public Overridable Property ModelExtendedElevation As Boolean
             Get
                 Return bModelExtendedElevation
@@ -24,6 +38,7 @@ Namespace cSurvey.Design
                 If bModelExtendedElevation <> value Then
                     bModelExtendedElevation = value
                     Call MyBase.Rebind()
+                    Call PropertyChanged("ModelExtendedElevation")
                 End If
             End Set
         End Property
@@ -36,6 +51,7 @@ Namespace cSurvey.Design
                 If bModelColorGray <> value Then
                     bModelColorGray = value
                     Call MyBase.Rebind()
+                    Call PropertyChanged("ModelColorGray")
                 End If
             End Set
         End Property
@@ -45,7 +61,10 @@ Namespace cSurvey.Design
                 Return bDrawModel
             End Get
             Set(ByVal value As Boolean)
-                bDrawModel = value
+                If bDrawModel <> value Then
+                    bDrawModel = value
+                    Call PropertyChanged("DrawModel")
+                End If
             End Set
         End Property
 
@@ -54,22 +73,27 @@ Namespace cSurvey.Design
                 Return iDrawModelMode
             End Get
             Set(value As RenderMode)
-                iDrawModelMode = value
+                If iDrawModelMode <> value Then
+                    iDrawModelMode = value
+                    Call PropertyChanged("DrawModelMode")
+                End If
             End Set
         End Property
 
         Public Property DrawModelColoringMode As ColoringMode
-
             Get
                 Return iDrawModelColoringMode
             End Get
             Set(value As ColoringMode)
-                iDrawModelColoringMode = value
+                If iDrawModelColoringMode <> value Then
+                    iDrawModelColoringMode = value
+                    Call PropertyChanged("DrawModelColoringMode")
+                End If
             End Set
         End Property
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal Name As String)
-            Call MyBase.New(Survey, Name)
+            Call MyBase.New(Survey, Name, cIOptions.ModeEnum.Design)
             oSurvey = Survey
             oSurfaceOptions = New cSurface3DOptions(oSurvey)
             MyBase.DrawPoints = False
@@ -88,7 +112,7 @@ Namespace cSurvey.Design
         End Property
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal Options As XmlElement)
-            Call MyBase.New(Survey, Options)
+            Call MyBase.New(Survey, Options, cIOptions.ModeEnum.Design)
             oSurvey = Survey
             Call Import(Options)
         End Sub
@@ -96,10 +120,11 @@ Namespace cSurvey.Design
         Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLOptions As XmlElement = MyBase.SaveTo(File, Document, Parent)
             Call oSurfaceOptions.SaveTo(File, Document, oXMLOptions)
-            oXMLOptions.SetAttribute("drawmodel", IIf(bDrawModel, 1, 0))
+            oXMLOptions.SetAttribute("drawmodel", If(bDrawModel, 1, 0))
             oXMLOptions.SetAttribute("drawmodelmode", iDrawModelMode.ToString("D"))
             oXMLOptions.SetAttribute("drawmodelcoloringmode", iDrawModelColoringMode.ToString("D"))
-            Call oXMLOptions.SetAttribute("modelcolorgray", IIf(bModelColorGray, 1, 0))
+            Call oXMLOptions.SetAttribute("modelcolorgray", If(bModelColorGray, 1, 0))
+            'If bDrawLinkedSurveys Then Call oXMLOptions.SetAttribute("drawlinkedsurveys", "1")
             Return oXMLOptions
         End Function
 
@@ -114,6 +139,8 @@ Namespace cSurvey.Design
             iDrawModelMode = modXML.GetAttributeValue(Options, "drawmodelmode", RenderMode.SM_ROUGH_WALLS)
             iDrawModelColoringMode = modXML.GetAttributeValue(Options, "drawmodelcoloringmode", ColoringMode.CM_CAVEBRANCH)
             bModelColorGray = modXML.GetAttributeValue(Options, "modelcolorgray")
+            '---------------------
+            'bDrawLinkedSurveys = modXML.GetAttributeValue(Options, "drawlinkedsurveys", 0)
         End Sub
     End Class
 End Namespace

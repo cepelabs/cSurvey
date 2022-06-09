@@ -1,35 +1,21 @@
 ﻿Imports BrightIdeasSoftware
+Imports cSurveyPC.cSurvey
+Imports DevExpress.XtraBars
+Imports DevExpress.XtraGrid.Views.Base
 
 Friend Class frmTemplates
 
-    Private sTemplatePath As String
-    Private oTemplates As List(Of cTemplateEntry)
+    Private oTemplates As UIHelpers.cTemplatesBindingList
 
-    Public Sub New(TemplatePath As String, Templates As List(Of cTemplateEntry), Optional SaveAs As Boolean = False)
+    Public Sub New(Templates As UIHelpers.cTemplatesBindingList, Optional SaveAs As Boolean = False)
 
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        sTemplatePath = TemplatePath
         oTemplates = Templates
 
-        colName.AspectGetter = Function(Value As Object)
-                                   Return DirectCast(Value, cTemplateEntry).Name
-                               End Function
-        colDefault.AspectGetter = Function(Value As Object)
-                                      Return DirectCast(Value, cTemplateEntry).Default
-                                  End Function
-        colDefault.AspectPutter = Function(rowObject As Object, newValue As Object)
-                                      Call pSetDefault(DirectCast(rowObject, cTemplateEntry), newValue)
-                                  End Function
-
-
-        Call lvTemplates.BeginUpdate()
-        lvTemplates.VirtualMode = False
-        Call lvTemplates.SetObjects(oTemplates)
-        Call lvTemplates.BuildList(True)
-        Call lvTemplates.EndUpdate()
+        grdTemplates.DataSource = oTemplates
 
         If SaveAs Then
             Text = modMain.GetLocalizedString("templates.title1")
@@ -43,43 +29,6 @@ Friend Class frmTemplates
             cmdOk.Visible = False
             cmdCancel.Visible = False
             cmdClose.Visible = True
-        End If
-    End Sub
-
-    Private Sub pSetDefault(Template As cTemplateEntry, Value As Boolean)
-        If Value Then
-            Dim oTemplate As cTemplateEntry = oTemplates.FirstOrDefault(Function(oitem) oitem.Default AndAlso Not oitem Is Template)
-            If Not oTemplate Is Nothing Then Call pSetDefault(oTemplate, False)
-
-            Dim sOldFilename As String = Template.File.FullName
-            Dim sNewFilename As String = IO.Path.GetFileNameWithoutExtension(Template.File.Name) & ".default" & IO.Path.GetExtension(Template.File.Name)
-            Dim sNewFullFilename As String = IO.Path.Combine(Template.File.DirectoryName, sNewFilename)
-            My.Computer.FileSystem.RenameFile(sOldFilename, sNewFilename)
-            Dim oNewTemplate As cTemplateEntry = New cTemplateEntry(New IO.FileInfo(sNewFullFilename))
-            Dim iIndex As Integer = oTemplates.IndexOf(Template)
-            Call oTemplates.Remove(Template)
-            Call oTemplates.Insert(iIndex, oNewTemplate)
-        Else
-            Dim sOldFilename As String = Template.File.FullName
-            Dim sNewFilename As String = IO.Path.GetFileNameWithoutExtension(Template.File.Name).Replace(".default", "") & IO.Path.GetExtension(Template.File.Name)
-            Dim sNewFullFilename As String = IO.Path.Combine(Template.File.DirectoryName, sNewFilename)
-            My.Computer.FileSystem.RenameFile(sOldFilename, sNewFilename)
-            Dim oNewTemplate As cTemplateEntry = New cTemplateEntry(New IO.FileInfo(sNewFullFilename))
-            Dim iIndex As Integer = oTemplates.IndexOf(Template)
-            Call oTemplates.Remove(Template)
-            Call oTemplates.Insert(iIndex, oNewTemplate)
-        End If
-
-        Call lvTemplates.BeginUpdate()
-        Call lvTemplates.BuildList(True)
-        Call lvTemplates.EndUpdate()
-    End Sub
-
-    Private Sub lvTemplates_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lvTemplates.SelectedIndexChanged
-        If lvTemplates.SelectedObject Is Nothing Then
-            txtName.Text = ""
-        Else
-            txtName.Text = DirectCast(lvTemplates.SelectedObject, cTemplateEntry).Name
         End If
     End Sub
 
@@ -101,28 +50,6 @@ Friend Class frmTemplates
             End If
         End If
     End Sub
-
-    Private Sub mnuTemplates_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mnuTemplates.Opening
-        Dim bEnabled As Boolean = Not lvTemplates.SelectedObject Is Nothing
-        mnuTemplatesDelete.Enabled = bEnabled
-        mnuTemplatesSetAsDefault.Enabled = bEnabled
-    End Sub
-
-    Private Sub mnuTemplatesDelete_Click(sender As Object, e As EventArgs) Handles mnuTemplatesDelete.Click
-        If MsgBox(modMain.GetLocalizedString("templates.warning1"), MsgBoxStyle.YesNo Or MsgBoxStyle.Critical, modMain.GetLocalizedString("templates.warningtitle")) = MsgBoxResult.Yes Then
-            Dim oTemplate As cTemplateEntry = lvTemplates.SelectedObject
-            Call My.Computer.FileSystem.DeleteFile(oTemplate.File.FullName, FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.SendToRecycleBin)
-            Call oTemplates.Remove(oTemplate)
-            Call lvTemplates.BuildList(True)
-        End If
-    End Sub
-
-    Private Sub mnuTemplatesSetAsDefault_Click(sender As Object, e As EventArgs) Handles mnuTemplatesSetAsDefault.Click
-        'copy selected template as default.cs*
-        Dim oTemplate As cTemplateEntry = lvTemplates.SelectedObject
-        If Not oTemplate.Default Then Call pSetDefault(oTemplate, True)
-    End Sub
-
     Private Function pDropExtensionCheck(Filename As String) As Boolean
         Select Case IO.Path.GetExtension(Filename).ToLower
             Case ".csz", ".csx"
@@ -130,7 +57,7 @@ Friend Class frmTemplates
         End Select
     End Function
 
-    Private Sub lvTemplates_DragOver(sender As Object, e As DragEventArgs) Handles lvTemplates.DragOver
+    Private Sub lvTemplates_DragOver(sender As Object, e As DragEventArgs)
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             Dim sFilePaths As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
             Dim bOk As Boolean = True
@@ -148,21 +75,77 @@ Friend Class frmTemplates
         End If
     End Sub
 
-    Private Sub lvTemplates_DragDrop(sender As Object, e As DragEventArgs) Handles lvTemplates.DragDrop
+    Private Sub grdViewTemplates_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles grdViewTemplates.PopupMenuShowing
+        If e.HitInfo.InRowCell OrElse e.HitInfo.HitTest = DevExpress.XtraGrid.Views.Grid.ViewInfo.GridHitTest.EmptyRow Then
+            e.Allow = False
+            Call mnuTemplates.ShowPopup(grdTemplates.PointToScreen(e.Point))
+        End If
+    End Sub
+    Private Sub grdViewTemplates_FocusedRowChanged(sender As Object, e As FocusedRowChangedEventArgs) Handles grdViewTemplates.FocusedRowChanged
+        Dim oTemplate As UIHelpers.cTemplateEntry = grdViewTemplates.GetFocusedObject
+        If oTemplate Is Nothing Then
+            txtName.Text = ""
+            btnTemplateDelete.Enabled = False
+            btnTemplateSetAsDefault.Enabled = False
+        Else
+            txtName.Text = oTemplate.Name
+            btnTemplateDelete.Enabled = True
+            btnTemplateSetAsDefault.Enabled = True
+            btnTemplateSetAsDefault.Checked = oTemplate.Default
+        End If
+    End Sub
+
+    Private Sub chkTemplatesDefault_EditValueChanged(sender As Object, e As EventArgs) Handles chkTemplatesDefault.EditValueChanged
+        Call grdViewTemplates.PostEditor()
+        Call grdViewTemplates.RefreshData()
+    End Sub
+
+    Private Sub btnTemplateSetAsDefault_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnTemplateSetAsDefault.ItemClick
+        Dim oTemplate As UIHelpers.cTemplateEntry = grdViewTemplates.GetFocusedObject
+        If oTemplate IsNot Nothing Then
+            oTemplate.Default = btnTemplateSetAsDefault.Checked
+            Call grdViewTemplates.RefreshData()
+        End If
+    End Sub
+
+    Private Sub btnTemplateDelete_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnTemplateDelete.ItemClick
+        If MsgBox(modMain.GetLocalizedString("templates.warning1"), MsgBoxStyle.YesNo Or MsgBoxStyle.Critical, modMain.GetLocalizedString("templates.warningtitle")) = MsgBoxResult.Yes Then
+            Dim oTemplate As UIHelpers.cTemplateEntry = grdViewTemplates.GetFocusedObject
+            Call My.Computer.FileSystem.DeleteFile(oTemplate.File.FullName, FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.SendToRecycleBin)
+            Call oTemplates.Remove(oTemplate)
+        End If
+    End Sub
+
+    Private Sub grdTemplates_DragDrop(sender As Object, e As DragEventArgs) Handles grdTemplates.DragDrop
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             Dim sFilePaths As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
             For Each sFilepath As String In sFilePaths
-                Dim sDestFilePath As String = IO.Path.Combine(sTemplatePath, IO.Path.GetFileName(sFilepath))
+                Dim sDestFilePath As String = IO.Path.Combine(oTemplates.TemplatePath, IO.Path.GetFileName(sFilepath))
                 If Not My.Computer.FileSystem.FileExists(sDestFilePath) Then
                     Call My.Computer.FileSystem.CopyFile(sFilepath, sDestFilePath, True)
-                    Dim oNewTemplate As cTemplateEntry = New cTemplateEntry(New IO.FileInfo(sDestFilePath))
-                    Call oTemplates.Add(oNewTemplate)
+                    Call oTemplates.Refresh()
+                    'Dim oNewTemplate As cTemplateEntry = New cTemplateEntry(New IO.FileInfo(sDestFilePath))
+                    'Call oTemplates.Add(oNewTemplate)
                 End If
             Next
+        End If
+    End Sub
 
-            Call lvTemplates.BeginUpdate()
-            Call lvTemplates.BuildList(True)
-            Call lvTemplates.EndUpdate()
+    Private Sub grdTemplates_DragOver(sender As Object, e As DragEventArgs) Handles grdTemplates.DragOver
+        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+            Dim sFilePaths As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
+            Dim bOk As Boolean = True
+            For Each sFilepath As String In sFilePaths
+                If Not pDropExtensionCheck(sFilepath) AndAlso My.Computer.FileSystem.FileExists(sFilepath) Then
+                    bOk = False
+                    Exit For
+                End If
+            Next
+            If bOk Then
+                e.Effect = DragDropEffects.Copy
+            Else
+                e.Effect = DragDropEffects.None
+            End If
         End If
     End Sub
 End Class

@@ -127,9 +127,6 @@
     <value>Nome della grotta (lasciare vuoto per importare il valore indicato nel file di VisualTopo)</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblCaveName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 13</value>
-  </data>
   <data name="lblCaveName.Text" xml:space="preserve">
     <value>Grotta:</value>
   </data>
@@ -140,22 +137,16 @@
   <data name="lblPrefix.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="lblPrefix.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 13</value>
-  </data>
   <data name="lblPrefix.Text" xml:space="preserve">
     <value>Prefisso:</value>
-  </data>
-  <data name="lblNordType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 13</value>
   </data>
   <data name="lblNordType.Text" xml:space="preserve">
     <value>Nord:</value>
   </data>
-  <data name="cboNordType.Items" xml:space="preserve">
+  <data name="cboNordType.Properties.Items" xml:space="preserve">
     <value>Nord magnetico</value>
   </data>
-  <data name="cboNordType.Items1" xml:space="preserve">
+  <data name="cboNordType.Properties.Items1" xml:space="preserve">
     <value>Nord geografico</value>
   </data>
   <data name="Label9.Text" xml:space="preserve">
@@ -228,5 +219,8 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Importazione dati da Resurvey</value>
+  </data>
+  <data name="lblScaleWarning.Text" xml:space="preserve">
+    <value>&lt;image=#warning;size=16,16&gt;Attenzione: la declinazione magnetica, se manuale, potrà essere impostata dopo l'importazione.</value>
   </data>
 </root>

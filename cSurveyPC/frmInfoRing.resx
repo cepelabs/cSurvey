@@ -123,10 +123,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="txtSurveyRingAverageError.Location" type="System.Drawing.Point, System.Drawing">
-    <value>84, 6</value>
+    <value>91, 6</value>
   </data>
   <data name="txtSurveyRingAverageError.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 21</value>
+    <value>69, 20</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txtSurveyRingAverageError.TabIndex" type="System.Int32, mscorlib">
@@ -136,7 +136,7 @@
     <value>txtSurveyRingAverageError</value>
   </data>
   <data name="&gt;&gt;txtSurveyRingAverageError.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtSurveyRingAverageError.Parent" xml:space="preserve">
     <value>pnlSurveyRing</value>
@@ -144,268 +144,167 @@
   <data name="&gt;&gt;txtSurveyRingAverageError.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="Label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="lblAvgError.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="Label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 9</value>
+  <data name="lblAvgError.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 9</value>
   </data>
-  <data name="Label4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblAvgError.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 13</value>
   </data>
-  <data name="Label4.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblAvgError.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="Label4.Text" xml:space="preserve">
+  <data name="lblAvgError.Text" xml:space="preserve">
     <value>Average error:</value>
   </data>
-  <data name="Label4.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="&gt;&gt;lblAvgError.Name" xml:space="preserve">
+    <value>lblAvgError</value>
   </data>
-  <data name="&gt;&gt;Label4.Name" xml:space="preserve">
-    <value>Label4</value>
+  <data name="&gt;&gt;lblAvgError.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;Label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblAvgError.Parent" xml:space="preserve">
     <value>pnlSurveyRing</value>
   </data>
-  <data name="&gt;&gt;Label4.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblAvgError.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="grdSurveyRing.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="grdRings.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <metadata name="Selected.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="Selected.HeaderText" xml:space="preserve">
-    <value>Select</value>
-  </data>
-  <data name="Selected.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <metadata name="colTrigPointsStation0.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colTrigPointsStation0.HeaderText" xml:space="preserve">
-    <value>Station</value>
-  </data>
-  <data name="colTrigPointsStation0.ToolTipText" xml:space="preserve">
-    <value>Reference station for the ring</value>
-  </data>
-  <data name="colTrigPointsStation0.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <metadata name="colError.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colError.HeaderText" xml:space="preserve">
-    <value>Error %</value>
-  </data>
-  <data name="colError.ToolTipText" xml:space="preserve">
-    <value>Error percentage</value>
-  </data>
-  <data name="colError.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <metadata name="colErrAbs.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colErrAbs.HeaderText" xml:space="preserve">
-    <value>Linear error</value>
-  </data>
-  <data name="colErrAbs.ToolTipText" xml:space="preserve">
-    <value>Linear error</value>
-  </data>
-  <data name="colErrAbs.Width" type="System.Int32, mscorlib">
-    <value>70</value>
-  </data>
-  <metadata name="colErrX.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colErrX.HeaderText" xml:space="preserve">
-    <value>X</value>
-  </data>
-  <data name="colErrX.ToolTipText" xml:space="preserve">
-    <value>Error on X axis</value>
-  </data>
-  <data name="colErrX.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <metadata name="colErrY.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colErrY.HeaderText" xml:space="preserve">
-    <value>Y</value>
-  </data>
-  <data name="colErrY.ToolTipText" xml:space="preserve">
-    <value>Error on Y axis</value>
-  </data>
-  <data name="colErrY.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <metadata name="colErrZ.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colErrZ.HeaderText" xml:space="preserve">
-    <value>Z</value>
-  </data>
-  <data name="colErrZ.ToolTipText" xml:space="preserve">
-    <value>Error on Z axis</value>
-  </data>
-  <data name="colErrZ.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <metadata name="colRingLen.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colRingLen.HeaderText" xml:space="preserve">
-    <value>Length</value>
-  </data>
-  <data name="colRingLen.ToolTipText" xml:space="preserve">
-    <value>Lenght of the ring</value>
-  </data>
-  <data name="colRingLen.Width" type="System.Int32, mscorlib">
-    <value>70</value>
-  </data>
-  <metadata name="colTrigPoints.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colTrigPoints.HeaderText" xml:space="preserve">
-    <value>Stations n°</value>
-  </data>
-  <data name="colTrigPoints.ToolTipText" xml:space="preserve">
-    <value>Number of stations in the ring</value>
-  </data>
-  <data name="colTrigPoints.Width" type="System.Int32, mscorlib">
-    <value>50</value>
-  </data>
-  <metadata name="colTrigPointsList.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colTrigPointsList.HeaderText" xml:space="preserve">
-    <value>Stations</value>
-  </data>
-  <data name="colTrigPointsList.ToolTipText" xml:space="preserve">
-    <value>Stations details</value>
-  </data>
-  <data name="colTrigPointsList.Width" type="System.Int32, mscorlib">
-    <value>600</value>
-  </data>
-  <metadata name="Colore.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="Colore.HeaderText" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="Colore.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <metadata name="mnuInfoRing.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>21, 23</value>
-  </metadata>
-  <data name="mnuInfoRing.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="mnuInfoRingCopy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 22</value>
-  </data>
-  <data name="mnuInfoRingCopy.Text" xml:space="preserve">
-    <value>Copy</value>
-  </data>
-  <data name="mnuInfoRingCopyAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 22</value>
-  </data>
-  <data name="mnuInfoRingCopyAll.Text" xml:space="preserve">
-    <value>Copy all</value>
-  </data>
-  <data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 6</value>
-  </data>
-  <data name="mnuInfoRingSelectAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 22</value>
-  </data>
-  <data name="mnuInfoRingSelectAll.Text" xml:space="preserve">
-    <value>Select all</value>
-  </data>
-  <data name="mnuInfoRingDeselectAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 22</value>
-  </data>
-  <data name="mnuInfoRingDeselectAll.Text" xml:space="preserve">
-    <value>Unselect all</value>
-  </data>
-  <data name="mnuInfoRingRevertSelect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 22</value>
-  </data>
-  <data name="mnuInfoRingRevertSelect.Text" xml:space="preserve">
-    <value>Invert selection</value>
-  </data>
-  <data name="ToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 6</value>
-  </data>
-  <data name="mnuInfoRingColorBrowse.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
-  </data>
-  <data name="mnuInfoRingColorBrowse.Text" xml:space="preserve">
-    <value>Browse...</value>
-  </data>
-  <data name="ToolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 6</value>
-  </data>
-  <data name="mnuInfoRingColorReset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
-  </data>
-  <data name="mnuInfoRingColorReset.Text" xml:space="preserve">
-    <value>Reset</value>
-  </data>
-  <data name="mnuInfoRingColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 22</value>
-  </data>
-  <data name="mnuInfoRingColor.Text" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="ToolStripMenuItem4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 6</value>
-  </data>
-  <data name="mnuInfoRingExport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 22</value>
-  </data>
-  <data name="mnuInfoRingExport.Text" xml:space="preserve">
-    <value>Export...</value>
-  </data>
-  <data name="mnuInfoRing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 176</value>
-  </data>
-  <data name="&gt;&gt;mnuInfoRing.Name" xml:space="preserve">
-    <value>mnuInfoRing</value>
-  </data>
-  <data name="&gt;&gt;mnuInfoRing.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="grdSurveyRing.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="grdRings.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 33</value>
   </data>
-  <data name="grdSurveyRing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>650, 228</value>
+  <data name="chkRingsSelect.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="grdSurveyRing.TabIndex" type="System.Int32, mscorlib">
+  <data name="colRingsSelect.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colRingsSelect.VisibleIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="colRingsSelect.Width" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="colRingsColor.Caption" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="txtRingsColor.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="txtRingsColor.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="colRingsColor.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colRingsColor.VisibleIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="colRingsStation.Caption" xml:space="preserve">
+    <value>Station</value>
+  </data>
+  <data name="colRingsStation.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colRingsStation.VisibleIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;grdSurveyRing.Name" xml:space="preserve">
-    <value>grdSurveyRing</value>
+  <data name="colRingsErrorPercent.Caption" xml:space="preserve">
+    <value>Error %</value>
   </data>
-  <data name="&gt;&gt;grdSurveyRing.Type" xml:space="preserve">
-    <value>cSurveyPC.cGrid, cSurveyPC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="colRingsErrorPercent.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;grdSurveyRing.Parent" xml:space="preserve">
+  <data name="colRingsErrorPercent.VisibleIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="colRingsLinearError.Caption" xml:space="preserve">
+    <value>Linear error</value>
+  </data>
+  <data name="colRingsLinearError.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colRingsLinearError.VisibleIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="colRingsX.Caption" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="colRingsX.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colRingsX.VisibleIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="colRingsY.Caption" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="colRingsY.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colRingsY.VisibleIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="colRingsZ.Caption" xml:space="preserve">
+    <value>Z</value>
+  </data>
+  <data name="colRingsZ.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colRingsZ.VisibleIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="colRingsLength.Caption" xml:space="preserve">
+    <value>Length</value>
+  </data>
+  <data name="colRingsLength.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colRingsLength.VisibleIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="colRingsStationN.Caption" xml:space="preserve">
+    <value>Station n°</value>
+  </data>
+  <data name="colRingsStationN.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colRingsStationN.VisibleIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="colRingsStations.Caption" xml:space="preserve">
+    <value>Stations</value>
+  </data>
+  <data name="colRingsStations.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colRingsStations.VisibleIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="colRingsStations.Width" type="System.Int32, mscorlib">
+    <value>200</value>
+  </data>
+  <data name="grdRings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>650, 228</value>
+  </data>
+  <data name="grdRings.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;grdRings.Name" xml:space="preserve">
+    <value>grdRings</value>
+  </data>
+  <data name="&gt;&gt;grdRings.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;grdRings.Parent" xml:space="preserve">
     <value>pnlSurveyRing</value>
   </data>
-  <data name="&gt;&gt;grdSurveyRing.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;grdRings.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="pnlSurveyRing.Location" type="System.Drawing.Point, System.Drawing">
@@ -421,13 +320,13 @@
     <value>pnlSurveyRing</value>
   </data>
   <data name="&gt;&gt;pnlSurveyRing.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlSurveyRing.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pnlSurveyRing.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="cmdApply.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -451,13 +350,13 @@
     <value>cmdApply</value>
   </data>
   <data name="&gt;&gt;cmdApply.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdApply.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdApply.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="cmdOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -481,13 +380,13 @@
     <value>cmdOk</value>
   </data>
   <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="cmdCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -511,17 +410,101 @@
     <value>cmdCancel</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
-  <metadata name="oColorDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>139, 17</value>
+  <metadata name="BarManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>728, 17</value>
   </metadata>
+  <data name="barDockControlTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="barDockControlTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="barDockControlTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>692, 0</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.Name" xml:space="preserve">
+    <value>barDockControlTop</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="barDockControlBottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="barDockControlBottom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 322</value>
+  </data>
+  <data name="barDockControlBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>692, 0</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Name" xml:space="preserve">
+    <value>barDockControlBottom</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="barDockControlLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="barDockControlLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="barDockControlLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 322</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Name" xml:space="preserve">
+    <value>barDockControlLeft</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="barDockControlRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="barDockControlRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>692, 0</value>
+  </data>
+  <data name="barDockControlRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 322</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Name" xml:space="preserve">
+    <value>barDockControlRight</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -531,234 +514,187 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>692, 322</value>
   </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAALJ5PgCzekAAs3xCALR8QwCyfEUAtH5GALV/SAC2gEcAtYBIALOC
-        TwC5hU0AsoNSALWFUgC7h1AAu4hSALqIVAC+i1QAs4ZaALSIWgC2i10Av41ZALmNXwCyimEAsY1oALSO
-        aQC+kWMAvpJkALSQawC+lWsAtZRzALaWdQC5lHAAwI5XAMCOWgDAj1wAwpBbAMKRXQDElWIAxZZlAMeY
-        ZwDHmGgAypttAMqcbQDLnnAAwp14AM2jdQDPpHYAx6J7AMaifgDQpnoA1q59ANiwfgC0oY4AuaaSAMml
-        gADMq4oAzq2MANaugADYsIIA2rWJANy2iADfu4wA37yTAN+9mgDgu4cA4LuIAOG8igDiv4wA48COAOTA
-        jQDkwZEA5sSSAOXDlADmxJYA5MOYAObFmQDiw58A6MaaAOnImgDoyJ0A48OgAOPEoQDkxqQA6sqgAOvM
-        ogDszaIA682kAOzNpQDqy6oA6syqAO3PqADozK0A7dCpAO7SrQDw1K4A7NGyAO/UsQDv1LgA8NWyAPHW
-        tQDx2LcA8tm5APTbuwD03LkA8tm+APTbvAD03L0A9d7BAPfgwQD24MUA+ODCAPjhxgD44sgA+eTJAPnl
-        zQD8584A/OjPAPvn0QD86NAA/evVAP7s1gD+7dkA/+/dAP/x3gD/8uAA9v/RAP///wAAAAAALyYAAFBB
-        AABwWwAAkHQAALCOAADPqQAA8MMAAP/SEQD/2DEA/91RAP/kcQD/6pEA//CxAP/20QD///8AAAAAAC8U
-        AABQIgAAcDAAAJA+AACwTQAAz1sAAPBpAAD/eREA/4oxAP+dUQD/r3EA/8GRAP/SsQD/5dEA////AAAA
-        AAAvAwAAUAQAAHAGAACQCQAAsAoAAM8MAADwDgAA/yASAP8+MQD/XFEA/3pxAP+XkQD/trEA/9TRAP//
-        /wAAAAAALwAOAFAAFwBwACEAkAArALAANgDPAEAA8ABJAP8RWgD/MXAA/1GGAP9xnAD/kbIA/7HIAP/R
-        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
-</value>
-  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Loops:</value>
   </data>
-  <data name="&gt;&gt;Selected.Name" xml:space="preserve">
-    <value>Selected</value>
+  <data name="&gt;&gt;grdRingsView.Name" xml:space="preserve">
+    <value>grdRingsView</value>
   </data>
-  <data name="&gt;&gt;Selected.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;grdRingsView.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Views.Grid.GridView, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;colTrigPointsStation0.Name" xml:space="preserve">
-    <value>colTrigPointsStation0</value>
+  <data name="&gt;&gt;colRingsSelect.Name" xml:space="preserve">
+    <value>colRingsSelect</value>
   </data>
-  <data name="&gt;&gt;colTrigPointsStation0.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colRingsSelect.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;colError.Name" xml:space="preserve">
-    <value>colError</value>
+  <data name="&gt;&gt;chkRingsSelect.Name" xml:space="preserve">
+    <value>chkRingsSelect</value>
   </data>
-  <data name="&gt;&gt;colError.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;chkRingsSelect.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;colErrAbs.Name" xml:space="preserve">
-    <value>colErrAbs</value>
+  <data name="&gt;&gt;colRingsColor.Name" xml:space="preserve">
+    <value>colRingsColor</value>
   </data>
-  <data name="&gt;&gt;colErrAbs.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colRingsColor.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;colErrX.Name" xml:space="preserve">
-    <value>colErrX</value>
+  <data name="&gt;&gt;txtRingsColor.Name" xml:space="preserve">
+    <value>txtRingsColor</value>
   </data>
-  <data name="&gt;&gt;colErrX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;txtRingsColor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;colErrY.Name" xml:space="preserve">
-    <value>colErrY</value>
+  <data name="&gt;&gt;colRingsStation.Name" xml:space="preserve">
+    <value>colRingsStation</value>
   </data>
-  <data name="&gt;&gt;colErrY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colRingsStation.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;colErrZ.Name" xml:space="preserve">
-    <value>colErrZ</value>
+  <data name="&gt;&gt;colRingsErrorPercent.Name" xml:space="preserve">
+    <value>colRingsErrorPercent</value>
   </data>
-  <data name="&gt;&gt;colErrZ.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colRingsErrorPercent.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;colRingLen.Name" xml:space="preserve">
-    <value>colRingLen</value>
+  <data name="&gt;&gt;colRingsLinearError.Name" xml:space="preserve">
+    <value>colRingsLinearError</value>
   </data>
-  <data name="&gt;&gt;colRingLen.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colRingsLinearError.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;colTrigPoints.Name" xml:space="preserve">
-    <value>colTrigPoints</value>
+  <data name="&gt;&gt;colRingsX.Name" xml:space="preserve">
+    <value>colRingsX</value>
   </data>
-  <data name="&gt;&gt;colTrigPoints.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colRingsX.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;colTrigPointsList.Name" xml:space="preserve">
-    <value>colTrigPointsList</value>
+  <data name="&gt;&gt;colRingsY.Name" xml:space="preserve">
+    <value>colRingsY</value>
   </data>
-  <data name="&gt;&gt;colTrigPointsList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colRingsY.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;Colore.Name" xml:space="preserve">
-    <value>Colore</value>
+  <data name="&gt;&gt;colRingsZ.Name" xml:space="preserve">
+    <value>colRingsZ</value>
   </data>
-  <data name="&gt;&gt;Colore.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewButtonColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colRingsZ.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuInfoRingCopy.Name" xml:space="preserve">
-    <value>mnuInfoRingCopy</value>
+  <data name="&gt;&gt;colRingsLength.Name" xml:space="preserve">
+    <value>colRingsLength</value>
   </data>
-  <data name="&gt;&gt;mnuInfoRingCopy.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colRingsLength.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuInfoRingCopyAll.Name" xml:space="preserve">
-    <value>mnuInfoRingCopyAll</value>
+  <data name="&gt;&gt;colRingsStationN.Name" xml:space="preserve">
+    <value>colRingsStationN</value>
   </data>
-  <data name="&gt;&gt;mnuInfoRingCopyAll.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colRingsStationN.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem1.Name" xml:space="preserve">
-    <value>ToolStripMenuItem1</value>
+  <data name="&gt;&gt;colRingsStations.Name" xml:space="preserve">
+    <value>colRingsStations</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colRingsStations.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuInfoRingSelectAll.Name" xml:space="preserve">
-    <value>mnuInfoRingSelectAll</value>
+  <data name="&gt;&gt;BarManager.Name" xml:space="preserve">
+    <value>BarManager</value>
   </data>
-  <data name="&gt;&gt;mnuInfoRingSelectAll.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;BarManager.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuInfoRingDeselectAll.Name" xml:space="preserve">
-    <value>mnuInfoRingDeselectAll</value>
+  <data name="&gt;&gt;btnCopyValue.Name" xml:space="preserve">
+    <value>btnCopyValue</value>
   </data>
-  <data name="&gt;&gt;mnuInfoRingDeselectAll.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnCopyValue.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuInfoRingRevertSelect.Name" xml:space="preserve">
-    <value>mnuInfoRingRevertSelect</value>
+  <data name="&gt;&gt;btnCopyValues.Name" xml:space="preserve">
+    <value>btnCopyValues</value>
   </data>
-  <data name="&gt;&gt;mnuInfoRingRevertSelect.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnCopyValues.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem2.Name" xml:space="preserve">
-    <value>ToolStripMenuItem2</value>
+  <data name="&gt;&gt;btnCopyAll.Name" xml:space="preserve">
+    <value>btnCopyAll</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnCopyAll.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuInfoRingColor.Name" xml:space="preserve">
-    <value>mnuInfoRingColor</value>
+  <data name="&gt;&gt;btnCopy.Name" xml:space="preserve">
+    <value>btnCopy</value>
   </data>
-  <data name="&gt;&gt;mnuInfoRingColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnCopy.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuInfoRingColorBrowse.Name" xml:space="preserve">
-    <value>mnuInfoRingColorBrowse</value>
+  <data name="&gt;&gt;btnExport.Name" xml:space="preserve">
+    <value>btnExport</value>
   </data>
-  <data name="&gt;&gt;mnuInfoRingColorBrowse.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnExport.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem3.Name" xml:space="preserve">
-    <value>ToolStripMenuItem3</value>
+  <data name="&gt;&gt;btnSelectAll.Name" xml:space="preserve">
+    <value>btnSelectAll</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnSelectAll.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuInfoRingColorReset.Name" xml:space="preserve">
-    <value>mnuInfoRingColorReset</value>
+  <data name="&gt;&gt;btnDeselectAll.Name" xml:space="preserve">
+    <value>btnDeselectAll</value>
   </data>
-  <data name="&gt;&gt;mnuInfoRingColorReset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnDeselectAll.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem4.Name" xml:space="preserve">
-    <value>ToolStripMenuItem4</value>
+  <data name="&gt;&gt;btnInvertSelection.Name" xml:space="preserve">
+    <value>btnInvertSelection</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnInvertSelection.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;mnuInfoRingExport.Name" xml:space="preserve">
-    <value>mnuInfoRingExport</value>
+  <data name="&gt;&gt;mnuContext.Name" xml:space="preserve">
+    <value>mnuContext</value>
   </data>
-  <data name="&gt;&gt;mnuInfoRingExport.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;oColorDialog.Name" xml:space="preserve">
-    <value>oColorDialog</value>
-  </data>
-  <data name="&gt;&gt;oColorDialog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColorDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;mnuContext.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmInfoRing</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cForm, cSurveyPC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="btnCopyValue.Caption" xml:space="preserve">
+    <value>Copy value</value>
+  </data>
+  <data name="btnCopyValues.Caption" xml:space="preserve">
+    <value>Copy values</value>
+  </data>
+  <data name="btnCopyAll.Caption" xml:space="preserve">
+    <value>Copy all</value>
+  </data>
+  <data name="btnCopy.Caption" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="btnExport.Caption" xml:space="preserve">
+    <value>Export...</value>
+  </data>
+  <data name="btnSelectAll.Caption" xml:space="preserve">
+    <value>Select all</value>
+  </data>
+  <data name="btnDeselectAll.Caption" xml:space="preserve">
+    <value>Deselect all</value>
+  </data>
+  <data name="btnInvertSelection.Caption" xml:space="preserve">
+    <value>Invert selection</value>
+  </data>
+  <metadata name="mnuContext.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>846, 17</value>
+  </metadata>
 </root>

@@ -118,69 +118,347 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEFDRABDREUARUZGAIBeQACBYEIAhmZJAItsUACMbVEAjm9UAI5w
-        VACQclgAmX9mAKGIcgCgjHoA4N/fAODg3wDi4uEA5ublAOjp6ADs6+sA7u7tAPHx8QDz9PUA9vb1APj4
-        +AD+/v4AccH/AJHP/wCx3f8A0ev/AP///wAAAAAAACwvAABLUAAAaHAAAIaQAAClsAAAw88AAOHwABHv
-        /wAx8f8AUfP/AHH1/wCR9/8Asfn/ANH7/wD///8AAAAAAAAvIQAAUDcAAHBMAACQYwAAsHkAAM+PAADw
-        pgAR/7QAMf++AFH/yABx/9MAkf/cALH/5QDR//AA////AAAAAAAALw4AAFAYAABwIgAAkCwAALA2AADP
-        QAAA8EoAEf9bADH/cQBR/4cAcf+dAJH/sgCx/8kA0f/fAP///wAAAAAAAi8AAARQAAAGcAAACJAAAAqw
-        AAALzwAADvAAACD/EgA9/zEAW/9RAHn/cQCY/5EAtf+xANT/0QD///8AAAAAABQvAAAiUAAAMHAAAD2Q
-        AABMsAAAWc8AAGfwAAB4/xEAiv8xAJz/UQCu/3EAwP+RANL/sQDk/9EA////AAAAAAAmLwAAQFAAAFpw
-        AAB0kAAAjrAAAKnPAADC8AAA0f8RANj/MQDe/1EA4/9xAOn/kQDv/7EA9v/RAP///wAAAAAALyYAAFBB
-        AABwWwAAkHQAALCOAADPqQAA8MMAAP/SEQD/2DEA/91RAP/kcQD/6pEA//CxAP/20QD///8AAAAAAC8U
-        AABQIgAAcDAAAJA+AACwTQAAz1sAAPBpAAD/eREA/4oxAP+dUQD/r3EA/8GRAP/SsQD/5dEA////AAAA
-        AAAvAwAAUAQAAHAGAACQCQAAsAoAAM8MAADwDgAA/yASAP8+MQD/XFEA/3pxAP+XkQD/trEA/9TRAP//
-        /wAAAAAALwAOAFAAFwBwACEAkAArALAANgDPAEAA8ABJAP8RWgD/MXAA/1GGAP9xnAD/kbIA/7HIAP/R
-        3wD///8AAAAAAC8AIABQADYAcABMAJAAYgCwAHgAzwCOAPAApAD/EbMA/zG+AP9RxwD/cdEA/5HcAP+x
-        5QD/0fAA////AAAAAAAsAC8ASwBQAGkAcACHAJAApQCwAMQAzwDhAPAA8BH/APIx/wD0Uf8A9nH/APeR
-        /wD5sf8A+9H/AP///wAAAAAAGwAvAC0AUAA/AHAAUgCQAGMAsAB2AM8AiADwAJkR/wCmMf8AtFH/AMJx
-        /wDPkf8A3LH/AOvR/wD///8AAAAAAAgALwAOAFAAFQBwABsAkAAhALAAJgDPACwA8AA+Ef8AWDH/AHFR
-        /wCMcf8AppH/AL+x/wDa0f8A////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgoIBwcHBwcICAgICAkLCQgHBwcHCAcH
-        CAgICg4AAAAKHx8fHx8fHx8fHx8fHwYfHx8fHx8fHx8fHx8fCgAAAAgfHxoaGhoaGhoaGh8fBR8fGhoa
-        GhoaGhoaHx8IAAAABx8ZGRkZGRkZGRkZGR8EHxkZGRkZGRkZGRkZHwcAAAAHHxkYGBgYGBgYGBgZHwQf
-        GRgYGBgYGBgYGBkfBwAAAAgfFxcXGBcXFxcXFxcfBB8XFxcYFxcXFxcXFx8IAAAABx8WFhYWFhYWFhYW
-        Fh8FHxYWFhYWFhYWFhYWHwcAAAAIHxUVFRUVFRUVFRUVHwQfFRUVFRUVFRUVFRUfBwAAAAcfFBQUFBQU
-        FBQUFBQfBB8UFBQUFBQUFBQUFB8IAAAACB8TExQTFBQTFBQTEx8EHxMTFBMUFBMUFBMTHwcAAAAHHxIS
-        EhISEhISEhISHwUfEhISEhISEhISEhIfBwAAAAgfEREREREREREREREfBR8RERERERERERERER8HAAAA
-        CB8PDxAQEBAQEBAPDx8FHw8PEBAQEBAQEA8PHwgAAAAKHx8fHx8fHx8fHx8fHwYfHx8fHx8fHx8fHx8f
-        CgAAAAwKCAgICAgICAgICAgKCwoICAgICAgICAgICAoNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAgAAAAAA
-        AAAAAAAAAAACAAAAAwAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAAAAMAAAADAwMDAwMDAwMDAwMDAwMD
-        AwMDAwMDAwMDAwMDAwAAAAMAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAADAAAAAwAAAAAAAAAAAAAA
-        AAADAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD////////////////////////////////AAAABwAAAAcAA
-        AAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAH//////////9//
-        f/3f/3/9wAAAAd//f/3f/3/9/////////////////////ygAAAAQAAAAIAAAAAEACAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAPkFDAEVFRgCAX0AAgWBCAIZmSQCLbFEAjG1RAI5vVACOcFUAkHFWAJN3
-        XgCYfGMAm4BoAKSQfgDi4uIA6enoAPDw7wDw8fAA+Pf4APj4+QD///8AAHbPAACI8AARmP8AMab/AFGz
-        /wBxwf8Akc//ALHd/wDR6/8A////AAAAAAAALC8AAEtQAABocAAAhpAAAKWwAADDzwAA4fAAEe//ADHx
-        /wBR8/8AcfX/AJH3/wCx+f8A0fv/AP///wAAAAAAAC8hAABQNwAAcEwAAJBjAACweQAAz48AAPCmABH/
-        tAAx/74AUf/IAHH/0wCR/9wAsf/lANH/8AD///8AAAAAAAAvDgAAUBgAAHAiAACQLAAAsDYAAM9AAADw
-        SgAR/1sAMf9xAFH/hwBx/50Akf+yALH/yQDR/98A////AAAAAAACLwAABFAAAAZwAAAIkAAACrAAAAvP
-        AAAO8AAAIP8SAD3/MQBb/1EAef9xAJj/kQC1/7EA1P/RAP///wAAAAAAFC8AACJQAAAwcAAAPZAAAEyw
-        AABZzwAAZ/AAAHj/EQCK/zEAnP9RAK7/cQDA/5EA0v+xAOT/0QD///8AAAAAACYvAABAUAAAWnAAAHSQ
-        AACOsAAAqc8AAMLwAADR/xEA2P8xAN7/UQDj/3EA6f+RAO//sQD2/9EA////AAAAAAAvJgAAUEEAAHBb
-        AACQdAAAsI4AAM+pAADwwwAA/9IRAP/YMQD/3VEA/+RxAP/qkQD/8LEA//bRAP///wAAAAAALxQAAFAi
-        AABwMAAAkD4AALBNAADPWwAA8GkAAP95EQD/ijEA/51RAP+vcQD/wZEA/9KxAP/l0QD///8AAAAAAC8D
-        AABQBAAAcAYAAJAJAACwCgAAzwwAAPAOAAD/IBIA/z4xAP9cUQD/enEA/5eRAP+2sQD/1NEA////AAAA
-        AAAvAA4AUAAXAHAAIQCQACsAsAA2AM8AQADwAEkA/xFaAP8xcAD/UYYA/3GcAP+RsgD/scgA/9HfAP//
-        /wAAAAAALwAgAFAANgBwAEwAkABiALAAeADPAI4A8ACkAP8RswD/Mb4A/1HHAP9x0QD/kdwA/7HlAP/R
-        8AD///8AAAAAACwALwBLAFAAaQBwAIcAkAClALAAxADPAOEA8ADwEf8A8jH/APRR/wD2cf8A95H/APmx
-        /wD70f8A////AAAAAAAbAC8ALQBQAD8AcABSAJAAYwCwAHYAzwCIAPAAmRH/AKYx/wC0Uf8AwnH/AM+R
-        /wDcsf8A69H/AP///wAAAAAACAAvAA4AUAAVAHAAGwCQACEAsAAmAM8ALADwAD4R/wBYMf8AcVH/AIxx
-        /wCmkf8Av7H/ANrR/wD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOCQcGBgcICwgH
-        BgYHCQ4ACRUVFRUVFQUVFRUVFRUJAAcVFBMTFBUEFRQTExQVBwAGFRIREhIVBBUSERISFQYABhUQEBAQ
-        FQMVEBAQEBUGAAcVDw8PDxUEFQ8PDw8VBwAJFRUVFRUVBRUVFRUVFQkADQoHBwcHCQwJBwcHBwoNAAAA
-        AAAAAAAAAAAAAAAAAAABAAAAAAAAAQAAAAAAAAEAAgICAgICAgICAgICAgICAAIAAAAAAAACAAAAAAAA
-        AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAD//wAAAAEAAAABAAAAAQAAAAEAAAAB
-        AAAAAQAAAAEAAAABAAD//wAAfv0AAAABAAB+/QAA//8AAP//AAA=
-</value>
+  <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 88</value>
+  </data>
+  <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 13</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Label1.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="Label1.Text" xml:space="preserve">
+    <value>Step lenght (m):</value>
+  </data>
+  <data name="&gt;&gt;Label1.Name" xml:space="preserve">
+    <value>Label1</value>
+  </data>
+  <data name="&gt;&gt;Label1.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
+    <value>frmScaleQuota</value>
+  </data>
+  <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtQuotaticksize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>167, 88</value>
+  </data>
+  <data name="txtQuotaticksize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 21</value>
+  </data>
+  <data name="txtQuotaticksize.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaticksize.Name" xml:space="preserve">
+    <value>txtQuotaticksize</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaticksize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaticksize.Parent" xml:space="preserve">
+    <value>frmScaleQuota</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaticksize.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtQuotatickfrequency.Location" type="System.Drawing.Point, System.Drawing">
+    <value>189, 32</value>
+  </data>
+  <data name="txtQuotatickfrequency.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtQuotatickfrequency.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtQuotatickfrequency.Name" xml:space="preserve">
+    <value>txtQuotatickfrequency</value>
+  </data>
+  <data name="&gt;&gt;txtQuotatickfrequency.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtQuotatickfrequency.Parent" xml:space="preserve">
+    <value>frmScaleQuota</value>
+  </data>
+  <data name="&gt;&gt;txtQuotatickfrequency.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblPlotPenWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 34</value>
+  </data>
+  <data name="lblPlotPenWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 13</value>
+  </data>
+  <data name="lblPlotPenWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="lblPlotPenWidth.Text" xml:space="preserve">
+    <value>Step frequency (m):</value>
+  </data>
+  <data name="&gt;&gt;lblPlotPenWidth.Name" xml:space="preserve">
+    <value>lblPlotPenWidth</value>
+  </data>
+  <data name="&gt;&gt;lblPlotPenWidth.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPlotPenWidth.Parent" xml:space="preserve">
+    <value>frmScaleQuota</value>
+  </data>
+  <data name="&gt;&gt;lblPlotPenWidth.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblPlotSelectedPenWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 61</value>
+  </data>
+  <data name="lblPlotSelectedPenWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 13</value>
+  </data>
+  <data name="lblPlotSelectedPenWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="lblPlotSelectedPenWidth.Text" xml:space="preserve">
+    <value>Label frequency (m):</value>
+  </data>
+  <data name="&gt;&gt;lblPlotSelectedPenWidth.Name" xml:space="preserve">
+    <value>lblPlotSelectedPenWidth</value>
+  </data>
+  <data name="&gt;&gt;lblPlotSelectedPenWidth.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPlotSelectedPenWidth.Parent" xml:space="preserve">
+    <value>frmScaleQuota</value>
+  </data>
+  <data name="&gt;&gt;lblPlotSelectedPenWidth.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="txtQuotaticklabelfrequency.Location" type="System.Drawing.Point, System.Drawing">
+    <value>189, 61</value>
+  </data>
+  <data name="txtQuotaticklabelfrequency.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtQuotaticklabelfrequency.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaticklabelfrequency.Name" xml:space="preserve">
+    <value>txtQuotaticklabelfrequency</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaticklabelfrequency.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaticklabelfrequency.Parent" xml:space="preserve">
+    <value>frmScaleQuota</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaticklabelfrequency.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="frmScaleQuota.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="frmScaleQuota.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 122</value>
+  </data>
+  <data name="frmScaleQuota.TabIndex" type="System.Int32, mscorlib">
+    <value>127</value>
+  </data>
+  <data name="frmScaleQuota.Text" xml:space="preserve">
+    <value>Horizontal/vertical scale:</value>
+  </data>
+  <data name="&gt;&gt;frmScaleQuota.Name" xml:space="preserve">
+    <value>frmScaleQuota</value>
+  </data>
+  <data name="&gt;&gt;frmScaleQuota.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;frmScaleQuota.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;frmScaleQuota.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cboQuotaCapDecoration.Items" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="cboQuotaCapDecoration.Items1" xml:space="preserve">
+    <value>Arrows</value>
+  </data>
+  <data name="cboQuotaCapDecoration.Items2" xml:space="preserve">
+    <value>Oblique segments</value>
+  </data>
+  <data name="cboQuotaCapDecoration.Location" type="System.Drawing.Point, System.Drawing">
+    <value>148, 31</value>
+  </data>
+  <data name="cboQuotaCapDecoration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 21</value>
+  </data>
+  <data name="cboQuotaCapDecoration.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cboQuotaCapDecoration.Name" xml:space="preserve">
+    <value>cboQuotaCapDecoration</value>
+  </data>
+  <data name="&gt;&gt;cboQuotaCapDecoration.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboQuotaCapDecoration.Parent" xml:space="preserve">
+    <value>frmHVQuota</value>
+  </data>
+  <data name="&gt;&gt;cboQuotaCapDecoration.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblQuotaRightRefPercent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 88</value>
+  </data>
+  <data name="lblQuotaRightRefPercent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 13</value>
+  </data>
+  <data name="lblQuotaRightRefPercent.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="lblQuotaRightRefPercent.Text" xml:space="preserve">
+    <value>% right reference:</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaRightRefPercent.Name" xml:space="preserve">
+    <value>lblQuotaRightRefPercent</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaRightRefPercent.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaRightRefPercent.Parent" xml:space="preserve">
+    <value>frmHVQuota</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaRightRefPercent.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtQuotaRightRefPercent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>189, 88</value>
+  </data>
+  <data name="txtQuotaRightRefPercent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtQuotaRightRefPercent.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaRightRefPercent.Name" xml:space="preserve">
+    <value>txtQuotaRightRefPercent</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaRightRefPercent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaRightRefPercent.Parent" xml:space="preserve">
+    <value>frmHVQuota</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaRightRefPercent.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblQuotaCapDecoration.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 34</value>
+  </data>
+  <data name="lblQuotaCapDecoration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 13</value>
+  </data>
+  <data name="lblQuotaCapDecoration.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="lblQuotaCapDecoration.Text" xml:space="preserve">
+    <value>Decoration:</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaCapDecoration.Name" xml:space="preserve">
+    <value>lblQuotaCapDecoration</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaCapDecoration.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaCapDecoration.Parent" xml:space="preserve">
+    <value>frmHVQuota</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaCapDecoration.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblQuotaLeftRefPercent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 61</value>
+  </data>
+  <data name="lblQuotaLeftRefPercent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 13</value>
+  </data>
+  <data name="lblQuotaLeftRefPercent.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="lblQuotaLeftRefPercent.Text" xml:space="preserve">
+    <value>% left reference:</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaLeftRefPercent.Name" xml:space="preserve">
+    <value>lblQuotaLeftRefPercent</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaLeftRefPercent.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaLeftRefPercent.Parent" xml:space="preserve">
+    <value>frmHVQuota</value>
+  </data>
+  <data name="&gt;&gt;lblQuotaLeftRefPercent.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="txtQuotaLeftRefPercent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>189, 61</value>
+  </data>
+  <data name="txtQuotaLeftRefPercent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="txtQuotaLeftRefPercent.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaLeftRefPercent.Name" xml:space="preserve">
+    <value>txtQuotaLeftRefPercent</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaLeftRefPercent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaLeftRefPercent.Parent" xml:space="preserve">
+    <value>frmHVQuota</value>
+  </data>
+  <data name="&gt;&gt;txtQuotaLeftRefPercent.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="frmHVQuota.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 140</value>
+  </data>
+  <data name="frmHVQuota.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 122</value>
+  </data>
+  <data name="frmHVQuota.TabIndex" type="System.Int32, mscorlib">
+    <value>128</value>
+  </data>
+  <data name="frmHVQuota.Text" xml:space="preserve">
+    <value>Horizontal/vertical dimension:</value>
+  </data>
+  <data name="&gt;&gt;frmHVQuota.Name" xml:space="preserve">
+    <value>frmHVQuota</value>
+  </data>
+  <data name="&gt;&gt;frmHVQuota.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;frmHVQuota.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;frmHVQuota.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>284, 274</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmQuotaProperties</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>cSurveyPC.cItemPropertyControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

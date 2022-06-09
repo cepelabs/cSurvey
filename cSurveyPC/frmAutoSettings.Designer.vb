@@ -23,24 +23,32 @@ Partial Class frmAutoSettings
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAutoSettings))
-        Me.cmdAutoConfig = New System.Windows.Forms.Button()
-        Me.lblTitle = New System.Windows.Forms.Label()
-        Me.pnlProgress = New System.Windows.Forms.Panel()
-        Me.lblProgressInfo = New System.Windows.Forms.Label()
-        Me.cboLanguage = New System.Windows.Forms.ComboBox()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.cmdAutoConfig = New DevExpress.XtraEditors.SimpleButton()
+        Me.lblTitle = New DevExpress.XtraEditors.LabelControl()
+        Me.pnlProgress = New DevExpress.XtraEditors.PanelControl()
+        Me.lblProgressInfo = New DevExpress.XtraEditors.LabelControl()
+        Me.cboLanguage = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.lblLanguage = New DevExpress.XtraEditors.LabelControl()
+        CType(Me.pnlProgress, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlProgress.SuspendLayout()
+        CType(Me.cboLanguage.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdAutoConfig
         '
         resources.ApplyResources(Me.cmdAutoConfig, "cmdAutoConfig")
+        Me.cmdAutoConfig.Appearance.Options.UseTextOptions = True
+        Me.cmdAutoConfig.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        Me.cmdAutoConfig.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter
+        Me.cmdAutoConfig.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.autoconfig
         Me.cmdAutoConfig.Name = "cmdAutoConfig"
-        Me.cmdAutoConfig.UseVisualStyleBackColor = True
         '
         'lblTitle
         '
         resources.ApplyResources(Me.lblTitle, "lblTitle")
+        Me.lblTitle.Appearance.Options.UseTextOptions = True
+        Me.lblTitle.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top
+        Me.lblTitle.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
         Me.lblTitle.Name = "lblTitle"
         '
         'pnlProgress
@@ -57,38 +65,40 @@ Partial Class frmAutoSettings
         'cboLanguage
         '
         resources.ApplyResources(Me.cboLanguage, "cboLanguage")
-        Me.cboLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboLanguage.FormattingEnabled = True
-        Me.cboLanguage.Items.AddRange(New Object() {resources.GetString("cboLanguage.Items"), resources.GetString("cboLanguage.Items1"), resources.GetString("cboLanguage.Items2"), resources.GetString("cboLanguage.Items3")})
         Me.cboLanguage.Name = "cboLanguage"
+        Me.cboLanguage.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboLanguage.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboLanguage.Properties.Items.AddRange(New Object() {resources.GetString("cboLanguage.Properties.Items"), resources.GetString("cboLanguage.Properties.Items1"), resources.GetString("cboLanguage.Properties.Items2"), resources.GetString("cboLanguage.Properties.Items3")})
+        Me.cboLanguage.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
-        'Label1
+        'lblLanguage
         '
-        resources.ApplyResources(Me.Label1, "Label1")
-        Me.Label1.Name = "Label1"
+        resources.ApplyResources(Me.lblLanguage, "lblLanguage")
+        Me.lblLanguage.Name = "lblLanguage"
         '
         'frmAutoSettings
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.Controls.Add(Me.cboLanguage)
         Me.Controls.Add(Me.cmdAutoConfig)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.cboLanguage)
+        Me.Controls.Add(Me.lblLanguage)
         Me.Controls.Add(Me.lblTitle)
         Me.Controls.Add(Me.pnlProgress)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmAutoSettings"
+        CType(Me.pnlProgress, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlProgress.ResumeLayout(False)
+        CType(Me.cboLanguage.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents cmdAutoConfig As System.Windows.Forms.Button
-    Friend WithEvents lblTitle As System.Windows.Forms.Label
-    Friend WithEvents pnlProgress As System.Windows.Forms.Panel
-    Friend WithEvents lblProgressInfo As System.Windows.Forms.Label
-    Friend WithEvents cboLanguage As System.Windows.Forms.ComboBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents cmdAutoConfig As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents lblTitle As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents pnlProgress As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents lblProgressInfo As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cboLanguage As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents lblLanguage As DevExpress.XtraEditors.LabelControl
 End Class

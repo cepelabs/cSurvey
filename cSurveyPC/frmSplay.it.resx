@@ -118,45 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="chkEnablePropPlanSplayMaxVariationDelta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 17</value>
-  </data>
-  <data name="chkEnablePropPlanSplayPlanDeltaZ.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 17</value>
-  </data>
-  <data name="chkEnablePropPlanSplayPlanProjectionPlanType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 17</value>
-  </data>
-  <data name="TabPage1.Text" xml:space="preserve">
-    <value>Pianta</value>
-  </data>
-  <data name="chkEnablePropProfileSplayProjectionAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 17</value>
-  </data>
-  <data name="chkEnablePropProfileSplayMaxVariationAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 17</value>
-  </data>
-  <data name="TabPage2.Text" xml:space="preserve">
-    <value>Sezione</value>
-  </data>
-  <data name="chkEnablePropCrossSectionSplayText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 17</value>
-  </data>
-  <data name="chkEnablePropCrossSectionShowSplayBorder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 17</value>
-  </data>
-  <data name="chkEnablePropCrossSectionSplayLineStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 17</value>
-  </data>
-  <data name="chkEnablePropCrossSectionSplayProjectionAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 17</value>
-  </data>
-  <data name="chkEnablePropCrossSectionSplayMaxVariationAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 17</value>
-  </data>
-  <data name="TabPage3.Text" xml:space="preserve">
-    <value>Sezioni trasversali</value>
-  </data>
   <data name="cmdApply.Text" xml:space="preserve">
     <value>Applica</value>
   </data>
@@ -246,15 +207,6 @@
   <data name="cboPropCrossSectionSplayLineStyle.Items1" xml:space="preserve">
 		<value>Punti e raggiera</value>
 	</data>
-  <data name="chkPlan.Text" xml:space="preserve">
-    <value>Modifica queste impostazioni:</value>
-  </data>
-  <data name="chkProfile.Text" xml:space="preserve">
-    <value>Modifica queste impostazioni:</value>
-  </data>
-  <data name="chkCrossSection.Text" xml:space="preserve">
-    <value>Modifica queste impostazioni:</value>
-  </data>
   <data name="lblPropPlanSplayMaxVariationDelta.Text" xml:space="preserve">
     <value>Variazione:</value>
   </data>
@@ -269,9 +221,6 @@
   </data>
   <data name="lblPropProfileSplayMaxVariationAngle.Text" xml:space="preserve">
     <value>Variazione:</value>
-  </data>
-  <data name="lblPropCrossSectionSplayText.Text" xml:space="preserve">
-    <value>Etichette capisaldi:</value>
   </data>
   <data name="lblPropCrossSectionShowSplayBorder.Text" xml:space="preserve">
     <value>Mostra splay:</value>
@@ -296,5 +245,32 @@
   </data>
   <data name="lblPropPlanSplayInclinationRange.Text" xml:space="preserve">
     <value>Int. inclinazioni:</value>
+  </data>
+  <data name="chkPlan.Properties.Caption" xml:space="preserve">
+    <value>Modifica queste impostazioni:</value>
+  </data>
+  <data name="chkProfile.Properties.Caption" xml:space="preserve">
+    <value>Modifica queste impostazioni:</value>
+  </data>
+  <data name="tabPlan.Text" xml:space="preserve">
+    <value>Pianta</value>
+  </data>
+  <data name="tabProfile.Text" xml:space="preserve">
+    <value>Sezione</value>
+  </data>
+  <data name="tabCrossSections.Text" xml:space="preserve">
+    <value>Sezioni trasversali</value>
+  </data>
+  <data name="chkCrossSection.Properties.Caption" xml:space="preserve">
+    <value>Modifica queste impostazioni:</value>
+  </data>
+  <data name="chkPropCrossSectionShowOnlyCutSplay.Properties.Caption" xml:space="preserve">
+    <value>Solo splay cut</value>
+  </data>
+  <data name="chkPropCrossSectionShowSplayBorder.Properties.Caption" xml:space="preserve">
+    <value>Mostra splay</value>
+  </data>
+  <data name="chkPropCrossSectionSplayText.Properties.Caption" xml:space="preserve">
+    <value>Mostra etichette capisaldi</value>
   </data>
 </root>

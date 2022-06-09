@@ -69,7 +69,7 @@ Partial Class cItemNamePropertyControl
         'cItemNamePropertyControl
         '
         resources.ApplyResources(Me, "$this")
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.Controls.Add(Me.cmdItemNameRegen)
         Me.Controls.Add(Me.lblPropName)
         Me.Controls.Add(Me.Label5)

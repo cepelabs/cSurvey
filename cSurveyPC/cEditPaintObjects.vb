@@ -76,6 +76,8 @@ Namespace cSurvey
         Private oDetailedGridPen As Pen
         Private oAxisPen As Pen
 
+        Public Const FilettoPenWidth As Single = 0.001F
+
         Public Sub New(ByVal Survey As cSurvey)
             Call MyBase.New(Survey)
 
@@ -83,74 +85,74 @@ Namespace cSurvey
 
             'le penne degli strumenti di selezione non sono soggette a zoom....
             oGenericPointBrush = Drawing.Brushes.LightGray
-            oGenericPointPen = New Pen(Color.Black, -1)
+            oGenericPointPen = New Pen(Color.Black, FilettoPenWidth)
 
             oBezierControlPointBrush = Drawing.Brushes.Beige
-            oBezierControlPointPen = New Pen(Color.Gray, -1)
-            oBezierControlLinePen = New Pen(Color.Gray, -1)
+            oBezierControlPointPen = New Pen(Color.Gray, FilettoPenWidth)
+            oBezierControlLinePen = New Pen(Color.Gray, FilettoPenWidth)
             oBezierControlLinePen.DashStyle = DashStyle.Dot
 
             oEndPointBrush = Drawing.Brushes.Green
-            oEndPointPen = New Pen(Color.Black, -1)
+            oEndPointPen = New Pen(Color.Black, FilettoPenWidth)
 
             oStartPointBrush = Drawing.Brushes.Orange
-            oStartPointPen = New Pen(Color.Black, -1)
+            oStartPointPen = New Pen(Color.Black, FilettoPenWidth)
 
             oSpecialPointBrush = Drawing.Brushes.Blue
-            oSpecialPointPen = New Pen(Color.Black, -1)
+            oSpecialPointPen = New Pen(Color.Black, FilettoPenWidth)
 
             oNewPointBrush = New SolidBrush(Color.FromArgb(100, Color.DarkSlateBlue))
-            oNewPointPen = New Pen(Color.FromArgb(200, Color.DarkSlateBlue), -1)
+            oNewPointPen = New Pen(Color.FromArgb(200, Color.DarkSlateBlue), FilettoPenWidth)
 
             oLastPointBrush = New SolidBrush(Color.FromArgb(100, Color.Orange))
-            oLastPointPen = New Pen(Color.FromArgb(200, Color.Orange), -1)
+            oLastPointPen = New Pen(Color.FromArgb(200, Color.Orange), FilettoPenWidth)
 
             oRotatorBrush = Drawing.Brushes.Green
-            oRotatorPen = New Pen(Color.Black, -1)
+            oRotatorPen = New Pen(Color.Black, FilettoPenWidth)
 
             oMarkedPointBrush = Drawing.Brushes.Gray
-            oMarkedPointPen = New Pen(Color.DimGray, -1)
+            oMarkedPointPen = New Pen(Color.DimGray, FilettoPenWidth)
 
             oTopLeftCornerBrush = Drawing.Brushes.Black
-            oTopLeftCornerPen = New Pen(Color.Black, -1)
+            oTopLeftCornerPen = New Pen(Color.Black, FilettoPenWidth)
 
             oLockedTopLeftCornerBrush = Drawing.Brushes.Orange
-            oLockedTopLeftCornerPen = New Pen(Color.Black, -1)
+            oLockedTopLeftCornerPen = New Pen(Color.Black, FilettoPenWidth)
 
             oUnmovableTopLeftCornerBrush = Drawing.Brushes.OrangeRed
-            oUnmovableTopLeftCornerPen = New Pen(Color.Black, -1)
+            oUnmovableTopLeftCornerPen = New Pen(Color.Black, FilettoPenWidth)
 
-            oCenterPointBrush = Drawing.Brushes.Blue 'New SolidBrush(Color.FromArgb(160, Color.Blue))
-            oCenterPointPen = New Pen(Color.FromArgb(160, Color.Black), -1)
+            oCenterPointBrush = Drawing.Brushes.Blue
+            oCenterPointPen = New Pen(Color.FromArgb(160, Color.Black), FilettoPenWidth)
 
-            oCenterOfRotationPointBrush = Drawing.Brushes.Green   'New SolidBrush(Color.FromArgb(160, Color.Blue))
-            oCenterOfRotationPointPen = New Pen(Color.Black, -1) ' New Pen(Color.FromArgb(160, Color.Black), -1)
+            oCenterOfRotationPointBrush = Drawing.Brushes.Green
+            oCenterOfRotationPointPen = New Pen(Color.Black, FilettoPenWidth)
 
             oOtherPointBrush = Drawing.Brushes.Gray
-            oOtherPointPen = New Pen(Color.Black, -1)
+            oOtherPointPen = New Pen(Color.Black, FilettoPenWidth)
 
-            oSelectedBoundsPen = New Pen(Color.FromArgb(150, Color.Gray), -1)
+            oSelectedBoundsPen = New Pen(Color.FromArgb(150, Color.Gray), FilettoPenWidth)
             oSelectedBoundsPen.DashStyle = DashStyle.Dot
             oSelectedBoundsExtraBrush = New SolidBrush(Color.FromArgb(200, Color.Gray))
 
-            oSegmentUnlockedPen = New Pen(Color.FromArgb(40, Color.Blue), -1)
+            oSegmentUnlockedPen = New Pen(Color.FromArgb(40, Color.Blue), FilettoPenWidth)
             oSegmentUnlockedPen.EndCap = LineCap.ArrowAnchor
             oSegmentUnlockedPen.StartCap = LineCap.RoundAnchor
 
-            oSegmentLockedPen = New Pen(Color.FromArgb(40, Color.Orange), -1)
+            oSegmentLockedPen = New Pen(Color.FromArgb(40, Color.Orange), FilettoPenWidth)
             oSegmentLockedPen.EndCap = LineCap.ArrowAnchor
             oSegmentLockedPen.StartCap = LineCap.RoundAnchor
 
-            oSelectedSegmentUnlockedPen = New Pen(Color.FromArgb(210, Color.Blue), -1)
+            oSelectedSegmentUnlockedPen = New Pen(Color.FromArgb(210, Color.Blue), FilettoPenWidth)
             oSelectedSegmentUnlockedPen.EndCap = LineCap.ArrowAnchor
             oSelectedSegmentUnlockedPen.StartCap = LineCap.RoundAnchor
 
-            oSelectedSegmentLockedPen = New Pen(Color.FromArgb(210, Color.Orange), -1)
+            oSelectedSegmentLockedPen = New Pen(Color.FromArgb(210, Color.Orange), FilettoPenWidth)
             oSelectedSegmentLockedPen.EndCap = LineCap.ArrowAnchor
             oSelectedSegmentLockedPen.StartCap = LineCap.RoundAnchor
 
-            oRulersUnitPen = New Pen(Drawing.Brushes.Black, -1)
-            oRulersDecimalPen = New Pen(Drawing.Brushes.DimGray, -1)
+            oRulersUnitPen = New Pen(Drawing.Brushes.Black, FilettoPenWidth)
+            oRulersDecimalPen = New Pen(Drawing.Brushes.DimGray, FilettoPenWidth)
             oRulersFontUnitBrush = New SolidBrush(Color.FromArgb(200, Color.Black))
             oRulersFont = New Font("Courier New", 6)
             oRulersBackgroundBrush = New SolidBrush(Color.FromArgb(100, 230, 230, 230))
@@ -158,10 +160,10 @@ Namespace cSurvey
             oRulersCurrentBackgroundBrush = New SolidBrush(Color.FromArgb(150, Color.LightBlue))
             oRulersCurrentItemBackgroundBrush = New SolidBrush(Color.FromArgb(150, Color.Red))
 
-            Dim iGridOpacity As Integer = oSurvey.GetGlobalSetting("design.metricgrid.opacity", 50)
-            oGridPen = New Pen(Color.FromArgb(iGridOpacity, Color.Gray), -1)
-            oDetailedGridPen = New Pen(Color.FromArgb(iGridOpacity * 0.8, Color.Gray), -1)
-            oAxisPen = New Pen(Drawing.Brushes.Gray, -1)
+            Dim iGridOpacity As Integer = Helper.Editor.cEditDesignEnvironment.GetSetting("design.metricgrid.opacity", 50)
+            oGridPen = New Pen(Color.FromArgb(iGridOpacity, Color.Gray), FilettoPenWidth)
+            oDetailedGridPen = New Pen(Color.FromArgb(iGridOpacity * 0.8, Color.Gray), FilettoPenWidth)
+            oAxisPen = New Pen(Drawing.Brushes.Gray, FilettoPenWidth)
         End Sub
 
         Public ReadOnly Property AxisPen As Pen

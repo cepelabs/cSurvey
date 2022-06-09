@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
+  <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,689 +59,494 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="metadata">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" />
-							</xsd:sequence>
-							<xsd:attribute name="name" use="required" type="xsd:string" />
-							<xsd:attribute name="type" type="xsd:string" />
-							<xsd:attribute name="mimetype" type="xsd:string" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="assembly">
-						<xsd:complexType>
-							<xsd:attribute name="alias" type="xsd:string" />
-							<xsd:attribute name="name" type="xsd:string" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-	<data name="lblCompassColor.AutoSize" type="System.Boolean, mscorlib">
-		<value>True</value>
-	</data>
-	<assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-	<data name="lblCompassColor.Location" type="System.Drawing.Point, System.Drawing">
-		<value>196, 16</value>
-	</data>
-	<data name="lblCompassColor.Size" type="System.Drawing.Size, System.Drawing">
-		<value>42, 13</value>
-	</data>
-	<data name="lblCompassColor.TabIndex" type="System.Int32, mscorlib">
-		<value>143</value>
-	</data>
-	<data name="lblCompassColor.Text" xml:space="preserve">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblCompassColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 16</value>
+  </data>
+  <data name="lblCompassColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 13</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblCompassColor.TabIndex" type="System.Int32, mscorlib">
+    <value>143</value>
+  </data>
+  <data name="lblCompassColor.Text" xml:space="preserve">
     <value>Color:</value>
   </data>
-	<data name="lblCompassColor.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-		<value>MiddleLeft</value>
-	</data>
-	<data name="&gt;&gt;lblCompassColor.Name" xml:space="preserve">
+  <data name="&gt;&gt;lblCompassColor.Name" xml:space="preserve">
     <value>lblCompassColor</value>
   </data>
-	<data name="&gt;&gt;lblCompassColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;lblCompassColor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-	<data name="&gt;&gt;lblCompassColor.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblCompassColor.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-	<data name="&gt;&gt;lblCompassColor.ZOrder" xml:space="preserve">
-    <value>13</value>
+  <data name="&gt;&gt;lblCompassColor.ZOrder" xml:space="preserve">
+    <value>10</value>
   </data>
-	<data name="cmdCompassColorBrowse.Location" type="System.Drawing.Point, System.Drawing">
-		<value>284, 12</value>
-	</data>
-	<data name="cmdCompassColorBrowse.Size" type="System.Drawing.Size, System.Drawing">
-		<value>30, 21</value>
-	</data>
-	<data name="cmdCompassColorBrowse.TabIndex" type="System.Int32, mscorlib">
-		<value>144</value>
-	</data>
-	<data name="cmdCompassColorBrowse.Text" xml:space="preserve">
-    <value>...</value>
+  <data name="lblCompassClipartZoomFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>201, 43</value>
   </data>
-	<data name="&gt;&gt;cmdCompassColorBrowse.Name" xml:space="preserve">
-    <value>cmdCompassColorBrowse</value>
+  <data name="lblCompassClipartZoomFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 13</value>
   </data>
-	<data name="&gt;&gt;cmdCompassColorBrowse.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="lblCompassClipartZoomFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>147</value>
   </data>
-	<data name="&gt;&gt;cmdCompassColorBrowse.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-	<data name="&gt;&gt;cmdCompassColorBrowse.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-	<data name="picCompassColor.Location" type="System.Drawing.Point, System.Drawing">
-		<value>244, 12</value>
-	</data>
-	<data name="picCompassColor.Size" type="System.Drawing.Size, System.Drawing">
-		<value>32, 21</value>
-	</data>
-	<data name="picCompassColor.TabIndex" type="System.Int32, mscorlib">
-		<value>145</value>
-	</data>
-	<data name="&gt;&gt;picCompassColor.Name" xml:space="preserve">
-    <value>picCompassColor</value>
-  </data>
-	<data name="&gt;&gt;picCompassColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-	<data name="&gt;&gt;picCompassColor.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-	<data name="&gt;&gt;picCompassColor.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-	<data name="picCompassClipartImage.Location" type="System.Drawing.Point, System.Drawing">
-		<value>86, 12</value>
-	</data>
-	<data name="picCompassClipartImage.Size" type="System.Drawing.Size, System.Drawing">
-		<value>64, 64</value>
-	</data>
-	<assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-	<data name="picCompassClipartImage.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-		<value>Zoom</value>
-	</data>
-	<data name="picCompassClipartImage.TabIndex" type="System.Int32, mscorlib">
-		<value>149</value>
-	</data>
-	<data name="&gt;&gt;picCompassClipartImage.Name" xml:space="preserve">
-    <value>picCompassClipartImage</value>
-  </data>
-	<data name="&gt;&gt;picCompassClipartImage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-	<data name="&gt;&gt;picCompassClipartImage.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-	<data name="&gt;&gt;picCompassClipartImage.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-	<data name="lblCompassClipartZoomFactor.AutoSize" type="System.Boolean, mscorlib">
-		<value>True</value>
-	</data>
-	<data name="lblCompassClipartZoomFactor.Location" type="System.Drawing.Point, System.Drawing">
-		<value>201, 43</value>
-	</data>
-	<data name="lblCompassClipartZoomFactor.Size" type="System.Drawing.Size, System.Drawing">
-		<value>36, 13</value>
-	</data>
-	<data name="lblCompassClipartZoomFactor.TabIndex" type="System.Int32, mscorlib">
-		<value>147</value>
-	</data>
-	<data name="lblCompassClipartZoomFactor.Text" xml:space="preserve">
+  <data name="lblCompassClipartZoomFactor.Text" xml:space="preserve">
     <value>Scale:</value>
   </data>
-	<data name="lblCompassClipartZoomFactor.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-		<value>MiddleLeft</value>
-	</data>
-	<data name="&gt;&gt;lblCompassClipartZoomFactor.Name" xml:space="preserve">
+  <data name="&gt;&gt;lblCompassClipartZoomFactor.Name" xml:space="preserve">
     <value>lblCompassClipartZoomFactor</value>
   </data>
-	<data name="&gt;&gt;lblCompassClipartZoomFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;lblCompassClipartZoomFactor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-	<data name="&gt;&gt;lblCompassClipartZoomFactor.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblCompassClipartZoomFactor.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-	<data name="&gt;&gt;lblCompassClipartZoomFactor.ZOrder" xml:space="preserve">
-    <value>17</value>
+  <data name="&gt;&gt;lblCompassClipartZoomFactor.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
-	<data name="txtCompassClipartZoomFactor.Location" type="System.Drawing.Point, System.Drawing">
-		<value>244, 41</value>
-	</data>
-	<data name="txtCompassClipartZoomFactor.Size" type="System.Drawing.Size, System.Drawing">
-		<value>47, 21</value>
-	</data>
-	<data name="txtCompassClipartZoomFactor.TabIndex" type="System.Int32, mscorlib">
-		<value>146</value>
-	</data>
-	<data name="txtCompassClipartZoomFactor.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-		<value>Right</value>
-	</data>
-	<data name="&gt;&gt;txtCompassClipartZoomFactor.Name" xml:space="preserve">
-    <value>txtCompassClipartZoomFactor</value>
-  </data>
-	<data name="&gt;&gt;txtCompassClipartZoomFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-	<data name="&gt;&gt;txtCompassClipartZoomFactor.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-	<data name="&gt;&gt;txtCompassClipartZoomFactor.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-	<data name="lblCompassClipart.AutoSize" type="System.Boolean, mscorlib">
-		<value>True</value>
-	</data>
-	<data name="lblCompassClipart.Location" type="System.Drawing.Point, System.Drawing">
-		<value>13, 12</value>
-	</data>
-	<data name="lblCompassClipart.Size" type="System.Drawing.Size, System.Drawing">
-		<value>42, 13</value>
-	</data>
-	<data name="lblCompassClipart.TabIndex" type="System.Int32, mscorlib">
-		<value>148</value>
-	</data>
-	<data name="lblCompassClipart.Text" xml:space="preserve">
-    <value>Clipart:</value>
-  </data>
-	<data name="lblCompassClipart.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-		<value>MiddleLeft</value>
-	</data>
-	<data name="&gt;&gt;lblCompassClipart.Name" xml:space="preserve">
-    <value>lblCompassClipart</value>
-  </data>
-	<data name="&gt;&gt;lblCompassClipart.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-	<data name="&gt;&gt;lblCompassClipart.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-	<data name="&gt;&gt;lblCompassClipart.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
-	<data name="cmdCompassBrowseClipart.Location" type="System.Drawing.Point, System.Drawing">
-		<value>156, 12</value>
-	</data>
-	<data name="cmdCompassBrowseClipart.Size" type="System.Drawing.Size, System.Drawing">
-		<value>30, 21</value>
-	</data>
-	<data name="cmdCompassBrowseClipart.TabIndex" type="System.Int32, mscorlib">
-		<value>150</value>
-	</data>
-	<data name="cmdCompassBrowseClipart.Text" xml:space="preserve">
-    <value>...</value>
-  </data>
-	<data name="&gt;&gt;cmdCompassBrowseClipart.Name" xml:space="preserve">
-    <value>cmdCompassBrowseClipart</value>
-  </data>
-	<data name="&gt;&gt;cmdCompassBrowseClipart.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-	<data name="&gt;&gt;cmdCompassBrowseClipart.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-	<data name="&gt;&gt;cmdCompassBrowseClipart.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-	<data name="cmdApply.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-		<value>Bottom, Right</value>
-	</data>
-	<data name="cmdApply.Location" type="System.Drawing.Point, System.Drawing">
-		<value>234, 227</value>
-	</data>
-	<data name="cmdApply.Size" type="System.Drawing.Size, System.Drawing">
-		<value>80, 25</value>
-	</data>
-	<data name="cmdApply.TabIndex" type="System.Int32, mscorlib">
-		<value>162</value>
-	</data>
-	<data name="cmdApply.Text" xml:space="preserve">
-    <value>Apply</value>
-  </data>
-	<data name="&gt;&gt;cmdApply.Name" xml:space="preserve">
-    <value>cmdApply</value>
-  </data>
-	<data name="&gt;&gt;cmdApply.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-	<data name="&gt;&gt;cmdApply.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-	<data name="&gt;&gt;cmdApply.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-	<data name="cmdOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-		<value>Bottom, Right</value>
-	</data>
-	<data name="cmdOk.Location" type="System.Drawing.Point, System.Drawing">
-		<value>62, 227</value>
-	</data>
-	<data name="cmdOk.Size" type="System.Drawing.Size, System.Drawing">
-		<value>80, 25</value>
-	</data>
-	<data name="cmdOk.TabIndex" type="System.Int32, mscorlib">
-		<value>160</value>
-	</data>
-	<data name="cmdOk.Text" xml:space="preserve">
-    <value>Ok</value>
-  </data>
-	<data name="&gt;&gt;cmdOk.Name" xml:space="preserve">
-    <value>cmdOk</value>
-  </data>
-	<data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-	<data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-	<data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
+  <data name="txtCompassClipartZoomFactor.EditValue" type="System.Decimal, mscorlib">
     <value>1</value>
   </data>
-	<data name="cmdCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-		<value>Bottom, Right</value>
-	</data>
-	<data name="cmdCancel.Location" type="System.Drawing.Point, System.Drawing">
-		<value>148, 227</value>
-	</data>
-	<data name="cmdCancel.Size" type="System.Drawing.Size, System.Drawing">
-		<value>80, 25</value>
-	</data>
-	<data name="cmdCancel.TabIndex" type="System.Int32, mscorlib">
-		<value>161</value>
-	</data>
-	<data name="cmdCancel.Text" xml:space="preserve">
-    <value>Cancel</value>
+  <data name="txtCompassClipartZoomFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>244, 41</value>
   </data>
-	<data name="&gt;&gt;cmdCancel.Name" xml:space="preserve">
-    <value>cmdCancel</value>
+  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="txtCompassClipartZoomFactor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
   </data>
-	<data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="txtCompassClipartZoomFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
   </data>
-	<data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
+  <data name="txtCompassClipartZoomFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>146</value>
+  </data>
+  <data name="&gt;&gt;txtCompassClipartZoomFactor.Name" xml:space="preserve">
+    <value>txtCompassClipartZoomFactor</value>
+  </data>
+  <data name="&gt;&gt;txtCompassClipartZoomFactor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtCompassClipartZoomFactor.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-	<data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-	<data name="lblCompassText.AutoSize" type="System.Boolean, mscorlib">
-		<value>True</value>
-	</data>
-	<data name="lblCompassText.Location" type="System.Drawing.Point, System.Drawing">
-		<value>13, 192</value>
-	</data>
-	<data name="lblCompassText.Size" type="System.Drawing.Size, System.Drawing">
-		<value>38, 13</value>
-	</data>
-	<data name="lblCompassText.TabIndex" type="System.Int32, mscorlib">
-		<value>151</value>
-	</data>
-	<data name="lblCompassText.Text" xml:space="preserve">
-    <value>Text:</value>
-  </data>
-	<data name="lblCompassText.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-		<value>MiddleLeft</value>
-	</data>
-	<data name="lblCompassText.Visible" type="System.Boolean, mscorlib">
-		<value>False</value>
-	</data>
-	<data name="&gt;&gt;lblCompassText.Name" xml:space="preserve">
-    <value>lblCompassText</value>
-  </data>
-	<data name="&gt;&gt;lblCompassText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-	<data name="&gt;&gt;lblCompassText.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-	<data name="&gt;&gt;lblCompassText.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-	<data name="txtCompassText.Location" type="System.Drawing.Point, System.Drawing">
-		<value>87, 189</value>
-	</data>
-	<data name="txtCompassText.MaxLength" type="System.Int32, mscorlib">
-		<value>64</value>
-	</data>
-	<data name="txtCompassText.Size" type="System.Drawing.Size, System.Drawing">
-		<value>227, 21</value>
-	</data>
-	<data name="txtCompassText.TabIndex" type="System.Int32, mscorlib">
-		<value>152</value>
-	</data>
-	<data name="txtCompassText.Visible" type="System.Boolean, mscorlib">
-		<value>False</value>
-	</data>
-	<data name="&gt;&gt;txtCompassText.Name" xml:space="preserve">
-    <value>txtCompassText</value>
-  </data>
-	<data name="&gt;&gt;txtCompassText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-	<data name="&gt;&gt;txtCompassText.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-	<data name="&gt;&gt;txtCompassText.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-	<data name="lblCompassTextFontSize.AutoSize" type="System.Boolean, mscorlib">
-		<value>True</value>
-	</data>
-	<data name="lblCompassTextFontSize.Location" type="System.Drawing.Point, System.Drawing">
-		<value>13, 154</value>
-	</data>
-	<data name="lblCompassTextFontSize.Size" type="System.Drawing.Size, System.Drawing">
-		<value>65, 13</value>
-	</data>
-	<data name="lblCompassTextFontSize.TabIndex" type="System.Int32, mscorlib">
-		<value>153</value>
-	</data>
-	<data name="lblCompassTextFontSize.Text" xml:space="preserve">
-    <value>Size:</value>
-  </data>
-	<data name="lblCompassTextFontSize.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-		<value>MiddleLeft</value>
-	</data>
-	<data name="lblCompassTextFontSize.Visible" type="System.Boolean, mscorlib">
-		<value>False</value>
-	</data>
-	<data name="&gt;&gt;lblCompassTextFontSize.Name" xml:space="preserve">
-    <value>lblCompassTextFontSize</value>
-  </data>
-	<data name="&gt;&gt;lblCompassTextFontSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-	<data name="&gt;&gt;lblCompassTextFontSize.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-	<data name="&gt;&gt;lblCompassTextFontSize.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-	<data name="cboCompassTextFontSize.Items" xml:space="preserve">
-    <value>6</value>
-  </data>
-	<data name="cboCompassTextFontSize.Items1" xml:space="preserve">
-    <value>7</value>
-  </data>
-	<data name="cboCompassTextFontSize.Items2" xml:space="preserve">
-    <value>8</value>
-  </data>
-	<data name="cboCompassTextFontSize.Items3" xml:space="preserve">
-    <value>10</value>
-  </data>
-	<data name="cboCompassTextFontSize.Items4" xml:space="preserve">
-    <value>11</value>
-  </data>
-	<data name="cboCompassTextFontSize.Items5" xml:space="preserve">
+  <data name="&gt;&gt;txtCompassClipartZoomFactor.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-	<data name="cboCompassTextFontSize.Items6" xml:space="preserve">
-    <value>14</value>
+  <data name="lblCompassClipart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 16</value>
   </data>
-	<data name="cboCompassTextFontSize.Items7" xml:space="preserve">
-    <value>16</value>
+  <data name="lblCompassClipart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 13</value>
   </data>
-	<data name="cboCompassTextFontSize.Items8" xml:space="preserve">
-    <value>18</value>
+  <data name="lblCompassClipart.TabIndex" type="System.Int32, mscorlib">
+    <value>148</value>
   </data>
-	<data name="cboCompassTextFontSize.Items9" xml:space="preserve">
-    <value>20</value>
+  <data name="lblCompassClipart.Text" xml:space="preserve">
+    <value>Clipart:</value>
   </data>
-	<data name="cboCompassTextFontSize.Items10" xml:space="preserve">
-    <value>22</value>
+  <data name="&gt;&gt;lblCompassClipart.Name" xml:space="preserve">
+    <value>lblCompassClipart</value>
   </data>
-	<data name="cboCompassTextFontSize.Items11" xml:space="preserve">
-    <value>24</value>
+  <data name="&gt;&gt;lblCompassClipart.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-	<data name="cboCompassTextFontSize.Items12" xml:space="preserve">
-    <value>26</value>
-  </data>
-	<data name="cboCompassTextFontSize.Items13" xml:space="preserve">
-    <value>28</value>
-  </data>
-	<data name="cboCompassTextFontSize.Items14" xml:space="preserve">
-    <value>36</value>
-  </data>
-	<data name="cboCompassTextFontSize.Items15" xml:space="preserve">
-    <value>48</value>
-  </data>
-	<data name="cboCompassTextFontSize.Items16" xml:space="preserve">
-    <value>72</value>
-  </data>
-	<data name="cboCompassTextFontSize.Location" type="System.Drawing.Point, System.Drawing">
-		<value>86, 151</value>
-	</data>
-	<data name="cboCompassTextFontSize.Size" type="System.Drawing.Size, System.Drawing">
-		<value>65, 21</value>
-	</data>
-	<data name="cboCompassTextFontSize.TabIndex" type="System.Int32, mscorlib">
-		<value>154</value>
-	</data>
-	<data name="cboCompassTextFontSize.Visible" type="System.Boolean, mscorlib">
-		<value>False</value>
-	</data>
-	<data name="&gt;&gt;cboCompassTextFontSize.Name" xml:space="preserve">
-    <value>cboCompassTextFontSize</value>
-  </data>
-	<data name="&gt;&gt;cboCompassTextFontSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-	<data name="&gt;&gt;cboCompassTextFontSize.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblCompassClipart.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-	<data name="&gt;&gt;cboCompassTextFontSize.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblCompassClipart.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="lblCompassText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 192</value>
+  </data>
+  <data name="lblCompassText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 13</value>
+  </data>
+  <data name="lblCompassText.TabIndex" type="System.Int32, mscorlib">
+    <value>151</value>
+  </data>
+  <data name="lblCompassText.Text" xml:space="preserve">
+    <value>Text:</value>
+  </data>
+  <data name="&gt;&gt;lblCompassText.Name" xml:space="preserve">
+    <value>lblCompassText</value>
+  </data>
+  <data name="&gt;&gt;lblCompassText.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblCompassText.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblCompassText.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="txtCompassText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>87, 189</value>
+  </data>
+  <data name="txtCompassText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>227, 20</value>
+  </data>
+  <data name="txtCompassText.TabIndex" type="System.Int32, mscorlib">
+    <value>152</value>
+  </data>
+  <data name="&gt;&gt;txtCompassText.Name" xml:space="preserve">
+    <value>txtCompassText</value>
+  </data>
+  <data name="&gt;&gt;txtCompassText.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtCompassText.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtCompassText.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-	<data name="lblCompassTextFontChar.AutoSize" type="System.Boolean, mscorlib">
-		<value>True</value>
-	</data>
-	<data name="lblCompassTextFontChar.Location" type="System.Drawing.Point, System.Drawing">
-		<value>13, 97</value>
-	</data>
-	<data name="lblCompassTextFontChar.Size" type="System.Drawing.Size, System.Drawing">
-		<value>58, 13</value>
-	</data>
-	<data name="lblCompassTextFontChar.TabIndex" type="System.Int32, mscorlib">
-		<value>155</value>
-	</data>
-	<data name="lblCompassTextFontChar.Text" xml:space="preserve">
-    <value>Font:</value>
+  <data name="lblCompassTextFontSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 154</value>
   </data>
-	<data name="lblCompassTextFontChar.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-		<value>MiddleLeft</value>
-	</data>
-	<data name="lblCompassTextFontChar.Visible" type="System.Boolean, mscorlib">
-		<value>False</value>
-	</data>
-	<data name="&gt;&gt;lblCompassTextFontChar.Name" xml:space="preserve">
-    <value>lblCompassTextFontChar</value>
+  <data name="lblCompassTextFontSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 13</value>
   </data>
-	<data name="&gt;&gt;lblCompassTextFontChar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="lblCompassTextFontSize.TabIndex" type="System.Int32, mscorlib">
+    <value>153</value>
   </data>
-	<data name="&gt;&gt;lblCompassTextFontChar.Parent" xml:space="preserve">
+  <data name="lblCompassTextFontSize.Text" xml:space="preserve">
+    <value>Size:</value>
+  </data>
+  <data name="&gt;&gt;lblCompassTextFontSize.Name" xml:space="preserve">
+    <value>lblCompassTextFontSize</value>
+  </data>
+  <data name="&gt;&gt;lblCompassTextFontSize.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblCompassTextFontSize.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-	<data name="&gt;&gt;lblCompassTextFontChar.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblCompassTextFontSize.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-	<data name="cboCompassTextFontChar.Location" type="System.Drawing.Point, System.Drawing">
-		<value>86, 94</value>
-	</data>
-	<data name="cboCompassTextFontChar.Size" type="System.Drawing.Size, System.Drawing">
-		<value>151, 21</value>
-	</data>
-	<data name="cboCompassTextFontChar.TabIndex" type="System.Int32, mscorlib">
-		<value>156</value>
-	</data>
-	<data name="cboCompassTextFontChar.Visible" type="System.Boolean, mscorlib">
-		<value>False</value>
-	</data>
-	<data name="&gt;&gt;cboCompassTextFontChar.Name" xml:space="preserve">
-    <value>cboCompassTextFontChar</value>
+  <data name="lblCompassTextFontChar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 97</value>
   </data>
-	<data name="&gt;&gt;cboCompassTextFontChar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="lblCompassTextFontChar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 13</value>
   </data>
-	<data name="&gt;&gt;cboCompassTextFontChar.Parent" xml:space="preserve">
+  <data name="lblCompassTextFontChar.TabIndex" type="System.Int32, mscorlib">
+    <value>155</value>
+  </data>
+  <data name="lblCompassTextFontChar.Text" xml:space="preserve">
+    <value>Font:</value>
+  </data>
+  <data name="&gt;&gt;lblCompassTextFontChar.Name" xml:space="preserve">
+    <value>lblCompassTextFontChar</value>
+  </data>
+  <data name="&gt;&gt;lblCompassTextFontChar.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblCompassTextFontChar.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-	<data name="&gt;&gt;cboCompassTextFontChar.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblCompassTextFontChar.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-	<data name="chkCompassTextFontBold.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
-		<value>Button</value>
-	</data>
-	<data name="chkCompassTextFontBold.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-		<value>MiddleLeft</value>
-	</data>
-	<data name="chkCompassTextFontBold.Location" type="System.Drawing.Point, System.Drawing">
-		<value>86, 121</value>
-	</data>
-	<data name="chkCompassTextFontBold.Size" type="System.Drawing.Size, System.Drawing">
-		<value>24, 24</value>
-	</data>
-	<data name="chkCompassTextFontBold.TabIndex" type="System.Int32, mscorlib">
-		<value>157</value>
-	</data>
-	<data name="chkCompassTextFontBold.Visible" type="System.Boolean, mscorlib">
-		<value>False</value>
-	</data>
-	<data name="&gt;&gt;chkCompassTextFontBold.Name" xml:space="preserve">
-    <value>chkCompassTextFontBold</value>
+  <data name="cboCompassFontSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>87, 151</value>
   </data>
-	<data name="&gt;&gt;chkCompassTextFontBold.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="cboCompassFontSize.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
   </data>
-	<data name="&gt;&gt;chkCompassTextFontBold.Parent" xml:space="preserve">
+  <data name="cboCompassFontSize.Properties.Buttons1" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Clear</value>
+  </data>
+  <data name="cboCompassFontSize.Properties.Items" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="cboCompassFontSize.Properties.Items1" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="cboCompassFontSize.Properties.Items2" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="cboCompassFontSize.Properties.Items3" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="cboCompassFontSize.Properties.Items4" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="cboCompassFontSize.Properties.Items5" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="cboCompassFontSize.Properties.Items6" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="cboCompassFontSize.Properties.Items7" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="cboCompassFontSize.Properties.Items8" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="cboCompassFontSize.Properties.Items9" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="cboCompassFontSize.Properties.Items10" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="cboCompassFontSize.Properties.Items11" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="cboCompassFontSize.Properties.Items12" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="cboCompassFontSize.Properties.Items13" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="cboCompassFontSize.Properties.Items14" xml:space="preserve">
+    <value>36</value>
+  </data>
+  <data name="cboCompassFontSize.Properties.Items15" xml:space="preserve">
+    <value>48</value>
+  </data>
+  <data name="cboCompassFontSize.Properties.Items16" xml:space="preserve">
+    <value>72</value>
+  </data>
+  <data name="cboCompassFontSize.Properties.NullText" xml:space="preserve">
+    <value>[Default]</value>
+  </data>
+  <data name="cboCompassFontSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 20</value>
+  </data>
+  <data name="cboCompassFontSize.TabIndex" type="System.Int32, mscorlib">
+    <value>184</value>
+  </data>
+  <data name="&gt;&gt;cboCompassFontSize.Name" xml:space="preserve">
+    <value>cboCompassFontSize</value>
+  </data>
+  <data name="&gt;&gt;cboCompassFontSize.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboCompassFontSize.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-	<data name="&gt;&gt;chkCompassTextFontBold.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;cboCompassFontSize.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-	<data name="chkCompassTextFontItalic.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
-		<value>Button</value>
-	</data>
-	<data name="chkCompassTextFontItalic.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-		<value>MiddleLeft</value>
-	</data>
-	<data name="chkCompassTextFontItalic.Location" type="System.Drawing.Point, System.Drawing">
-		<value>115, 121</value>
-	</data>
-	<data name="chkCompassTextFontItalic.Size" type="System.Drawing.Size, System.Drawing">
-		<value>24, 24</value>
-	</data>
-	<data name="chkCompassTextFontItalic.TabIndex" type="System.Int32, mscorlib">
-		<value>158</value>
-	</data>
-	<data name="chkCompassTextFontItalic.Visible" type="System.Boolean, mscorlib">
-		<value>False</value>
-	</data>
-	<data name="&gt;&gt;chkCompassTextFontItalic.Name" xml:space="preserve">
-    <value>chkCompassTextFontItalic</value>
+  <data name="cboCompassFontChar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>87, 94</value>
   </data>
-	<data name="&gt;&gt;chkCompassTextFontItalic.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="cboCompassFontChar.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
   </data>
-	<data name="&gt;&gt;chkCompassTextFontItalic.Parent" xml:space="preserve">
+  <data name="cboCompassFontChar.Properties.Buttons1" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Clear</value>
+  </data>
+  <data name="cboCompassFontChar.Properties.NullText" xml:space="preserve">
+    <value>[Default]</value>
+  </data>
+  <data name="cboCompassFontChar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>151, 20</value>
+  </data>
+  <data name="cboCompassFontChar.TabIndex" type="System.Int32, mscorlib">
+    <value>185</value>
+  </data>
+  <data name="&gt;&gt;cboCompassFontChar.Name" xml:space="preserve">
+    <value>cboCompassFontChar</value>
+  </data>
+  <data name="&gt;&gt;cboCompassFontChar.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.FontEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboCompassFontChar.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-	<data name="&gt;&gt;chkCompassTextFontItalic.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;cboCompassFontChar.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-	<data name="chkCompassTextFontUnderline.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
-		<value>Button</value>
-	</data>
-	<data name="chkCompassTextFontUnderline.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-		<value>MiddleLeft</value>
-	</data>
-	<data name="chkCompassTextFontUnderline.Location" type="System.Drawing.Point, System.Drawing">
-		<value>145, 121</value>
-	</data>
-	<data name="chkCompassTextFontUnderline.Size" type="System.Drawing.Size, System.Drawing">
-		<value>24, 24</value>
-	</data>
-	<data name="chkCompassTextFontUnderline.TabIndex" type="System.Int32, mscorlib">
-		<value>159</value>
-	</data>
-	<data name="chkCompassTextFontUnderline.Visible" type="System.Boolean, mscorlib">
-		<value>False</value>
-	</data>
-	<data name="&gt;&gt;chkCompassTextFontUnderline.Name" xml:space="preserve">
-    <value>chkCompassTextFontUnderline</value>
+  <data name="txtColor.EditValue" type="System.Drawing.Color, System.Drawing">
+    <value />
   </data>
-	<data name="&gt;&gt;chkCompassTextFontUnderline.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="txtColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>244, 12</value>
   </data>
-	<data name="&gt;&gt;chkCompassTextFontUnderline.Parent" xml:space="preserve">
+  <data name="txtColor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="txtColor.TabIndex" type="System.Int32, mscorlib">
+    <value>183</value>
+  </data>
+  <data name="&gt;&gt;txtColor.Name" xml:space="preserve">
+    <value>txtColor</value>
+  </data>
+  <data name="&gt;&gt;txtColor.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ColorPickEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtColor.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-	<data name="&gt;&gt;chkCompassTextFontUnderline.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txtColor.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="chkCompassFontItalic.Location" type="System.Drawing.Point, System.Drawing">
+    <value>116, 121</value>
+  </data>
+  <data name="chkCompassFontItalic.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="chkCompassFontItalic.TabIndex" type="System.Int32, mscorlib">
+    <value>182</value>
+  </data>
+  <data name="&gt;&gt;chkCompassFontItalic.Name" xml:space="preserve">
+    <value>chkCompassFontItalic</value>
+  </data>
+  <data name="&gt;&gt;chkCompassFontItalic.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkCompassFontItalic.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkCompassFontItalic.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-	<metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-		<value>True</value>
-	</metadata>
-	<data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-		<value>96, 96</value>
-	</data>
-	<data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-		<value>323, 264</value>
-	</data>
-	<data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-		<value>Tahoma, 8.25pt</value>
-	</data>
-	<data name="$this.Text" xml:space="preserve">
-    <value>Compass:</value>
+  <data name="chkCompassFontBold.Location" type="System.Drawing.Point, System.Drawing">
+    <value>87, 121</value>
   </data>
-	<data name="&gt;&gt;$this.Name" xml:space="preserve">
+  <data name="chkCompassFontBold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="chkCompassFontBold.TabIndex" type="System.Int32, mscorlib">
+    <value>180</value>
+  </data>
+  <data name="&gt;&gt;chkCompassFontBold.Name" xml:space="preserve">
+    <value>chkCompassFontBold</value>
+  </data>
+  <data name="&gt;&gt;chkCompassFontBold.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkCompassFontBold.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkCompassFontBold.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="chkCompassFontUnderline.Location" type="System.Drawing.Point, System.Drawing">
+    <value>146, 121</value>
+  </data>
+  <data name="chkCompassFontUnderline.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="chkCompassFontUnderline.TabIndex" type="System.Int32, mscorlib">
+    <value>181</value>
+  </data>
+  <data name="&gt;&gt;chkCompassFontUnderline.Name" xml:space="preserve">
+    <value>chkCompassFontUnderline</value>
+  </data>
+  <data name="&gt;&gt;chkCompassFontUnderline.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkCompassFontUnderline.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkCompassFontUnderline.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="picCompassClipartImage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>87, 12</value>
+  </data>
+  <data name="picCompassClipartImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 64</value>
+  </data>
+  <data name="picCompassClipartImage.TabIndex" type="System.Int32, mscorlib">
+    <value>186</value>
+  </data>
+  <data name="&gt;&gt;picCompassClipartImage.Name" xml:space="preserve">
+    <value>picCompassClipartImage</value>
+  </data>
+  <data name="&gt;&gt;picCompassClipartImage.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PictureEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;picCompassClipartImage.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;picCompassClipartImage.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>323, 226</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmParametersCompass</value>
   </data>
-	<data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cForm, cSurveyPC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.XtraUserControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
 </root>

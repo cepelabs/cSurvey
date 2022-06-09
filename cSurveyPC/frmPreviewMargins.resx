@@ -117,402 +117,266 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Set print margins:</value>
-  </data>
-  <data name="&gt;&gt;txtTop.Name" xml:space="preserve">
-    <value>txtTop</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="frmMargins.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="txtRight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>203, 51</value>
+  <data name="Label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>154, 36</value>
   </data>
-  <data name="&gt;&gt;frmMargins.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="Label3.Text" xml:space="preserve">
-    <value>Right:</value>
+  <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 13</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="txtBottom.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="txtTop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>66, 24</value>
-  </data>
-  <data name="&gt;&gt;lblTop.Name" xml:space="preserve">
-    <value>lblTop</value>
-  </data>
-  <data name="&gt;&gt;Label2.Name" xml:space="preserve">
-    <value>Label2</value>
-  </data>
-  <data name="cmdCancel.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="&gt;&gt;lblTop.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;Label2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;txtRight.Name" xml:space="preserve">
-    <value>txtRight</value>
-  </data>
-  <data name="txtRight.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;lblTop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="txtBottom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>66, 51</value>
-  </data>
-  <data name="&gt;&gt;cmdOk.Name" xml:space="preserve">
-    <value>cmdOk</value>
-  </data>
-  <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 13</value>
-  </data>
-  <data name="&gt;&gt;frmMargins.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>96, 96</value>
-  </data>
-  <data name="Label1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
   <data name="Label2.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
-  </data>
-  <data name="&gt;&gt;Label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="frmMargins.Text" xml:space="preserve">
-    <value>Margins (mm):</value>
-  </data>
-  <data name="&gt;&gt;Label1.Name" xml:space="preserve">
-    <value>Label1</value>
   </data>
   <data name="Label2.Text" xml:space="preserve">
     <value>Left:</value>
   </data>
-  <data name="Label3.AutoSize" type="System.Boolean, mscorlib">
+  <data name="&gt;&gt;Label2.Name" xml:space="preserve">
+    <value>Label2</value>
+  </data>
+  <data name="&gt;&gt;Label2.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;Label2.Parent" xml:space="preserve">
+    <value>frmMargins</value>
+  </data>
+  <data name="&gt;&gt;Label2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtRight.EditValue" type="System.Decimal, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="txtRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>203, 59</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="txtRight.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtRight.Properties.UseMaskAsDisplayFormat" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="txtLeft.Location" type="System.Drawing.Point, System.Drawing">
-    <value>203, 24</value>
+  <data name="txtRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 20</value>
   </data>
-  <data name="&gt;&gt;txtLeft.ZOrder" xml:space="preserve">
+  <data name="txtRight.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;txtTop.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="lblTop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 27</value>
+  <data name="&gt;&gt;txtRight.Name" xml:space="preserve">
+    <value>txtRight</value>
   </data>
   <data name="&gt;&gt;txtRight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;cmdCancel.Name" xml:space="preserve">
-    <value>cmdCancel</value>
+  <data name="&gt;&gt;txtRight.Parent" xml:space="preserve">
+    <value>frmMargins</value>
   </data>
-  <data name="&gt;&gt;Label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;txtRight.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="cmdOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>147, 115</value>
+  <data name="Label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>154, 62</value>
   </data>
-  <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="Label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 13</value>
   </data>
-  <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Label3.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="frmMargins.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+  <data name="Label3.Text" xml:space="preserve">
+    <value>Right:</value>
+  </data>
+  <data name="&gt;&gt;Label3.Name" xml:space="preserve">
+    <value>Label3</value>
+  </data>
+  <data name="&gt;&gt;Label3.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label3.Parent" xml:space="preserve">
     <value>frmMargins</value>
   </data>
-  <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;Label3.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="&gt;&gt;txtBottom.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="cmdOk.TabIndex" type="System.Int32, mscorlib">
+  <data name="txtLeft.EditValue" type="System.Decimal, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;Label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="txtLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>203, 33</value>
   </data>
-  <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
+  <data name="txtLeft.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtLeft.Properties.UseMaskAsDisplayFormat" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="txtLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 20</value>
+  </data>
+  <data name="txtLeft.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="&gt;&gt;txtLeft.Name" xml:space="preserve">
     <value>txtLeft</value>
   </data>
-  <data name="cmdOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterParent</value>
-  </data>
-  <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
-    <value>frmMargins</value>
-  </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="Label1.Text" xml:space="preserve">
-    <value>Bottom:</value>
-  </data>
-  <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="frmMargins.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 8</value>
-  </data>
-  <data name="frmMargins.Size" type="System.Drawing.Size, System.Drawing">
-    <value>302, 97</value>
-  </data>
-  <data name="txtTop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 21</value>
-  </data>
-  <data name="&gt;&gt;lblTop.Parent" xml:space="preserve">
-    <value>frmMargins</value>
-  </data>
-  <data name="&gt;&gt;Label3.Name" xml:space="preserve">
-    <value>Label3</value>
-  </data>
-  <data name="Label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 54</value>
-  </data>
-  <data name="lblTop.Text" xml:space="preserve">
-    <value>Top:</value>
-  </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAIAICAAAAEAIACoEAAAJgAAABAQAAABACAAaAQAAM4QAAAoAAAAIAAAAEAAAAABACAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8AAAAABQAAABAAAAAWAAAAFgAAABYAAAAWAAAAFgAA
-        ABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAA
-        ABYAAAAWAAAAFgAAABAAAAAFAAAAAP///wD///8A////AP///wAAAAAQAAAAMQAAAEIAAABDAAAAQwAA
-        AEMAAABDAAAAQwAAAEMAAABDAAAAQwAAAEMAAABDAAAAQwAAAEMAAABDAAAAQwAAAEMAAABDAAAAQwAA
-        AEMAAABDAAAAQwAAAEMAAABCAAAAMQAAABAAAAAA////AP///wD///8A////AAAAABawsK7zr6+t/66u
-        rP+ur63/r7Cu/66vrf+trav/ra2r/62tq/+trav/ra2r/62tq/+trav/ra2r/62tq/+trav/ra2r/62t
-        q/+trav/rq+t/6+wrv+ur63/rq6s/6+vrf+wsK7zAAAAFgAAAAD///8A////AP///wD///8AAAAAFrCw
-        rf/////////////////cyrb/////////////////////////////////////////////////////////
-        ////////////////////////3Mq2/////////////////7Cwrf8AAAAWAAAAAP///wD///8A////AP//
-        /wAAAAAWrq6s/////////////////7yggP//////////////////////////////////////////////
-        //////////////////////////////////+8oID/////////////////rq6s/wAAABYAAAAA////AP//
-        /wD///8A////AAAAABaur63/////////////////vqOF////////////////////////////////////
-        /////////////////////////////////////////////76jhf////////////////+ur63/AAAAFgAA
-        AAD///8A////AP///wD///8AAAAAFq+wrv/cy7b/vKCA/76khf/Bp4r/v6SG/7yhgf+8oIH/vKCB/7yg
-        gf+8oIH/vKCB/7yggf+8oIH/vKCB/7yggf+8oIH/vKCB/7yhgf+/pIb/waeK/76khf+8oID/3Mu2/6+w
-        rv8AAAAWAAAAAP///wD///8A////AP///wAAAAAWrq+t/////////////////7+khv//////////////
-        //////////////////////////////////////////////////////////////////+/pIb/////////
-        ////////rq+t/wAAABYAAAAA////AP///wD///8A////AAAAABatrqv///////v8/f/+////vaKC//7/
-        ///7+/z/+vr7//r6+//6+vv/+vr7//r6+//6+vv/+vr7//r6+//6+vv/+vr7//r6+//7+/z//v///72i
-        gv/+////+/z9//////+trqv/AAAAFgAAAAD///8A////AP///wD///8AAAAAFq2tq///////+fr6//z+
-        //+9oYH//P7///n5+v/4+Pj/+Pj4//j4+P/4+Pj/+Pj4//j4+P/4+Pj/+Pj4//j4+P/4+Pj/+Pj4//n5
-        +v/8/v//vaGB//z+///5+vr//////62tq/8AAAAWAAAAAP///wD///8A////AP///wAAAAAWra2r////
-        ///4+fj/+/3+/72hgv/7/f7/+Pj4//f39v/39/b/9/f2//f39v/39/b/9/f2//f39v/39/b/9/f2//f3
-        9v/39/b/+Pj4//v9/v+9oYL/+/3+//j5+P//////ra2r/wAAABYAAAAA////AP///wD///8A////AAAA
-        ABatrav///////f49//6/P3/vaGC//r8/f/39/f/9vb1//b29f/29vX/9vb1//b29f/29vX/9vb1//b2
-        9f/29vX/9vb1//b29f/39/f/+vz9/72hgv/6/P3/9/j3//////+trav/AAAAFgAAAAD///8A////AP//
-        /wD///8AAAAAFq2tq///////9vX2//n6/P+9ooL/+fr8//b19v/19PT/9fT0//X09P/19PT/9fT0//X0
-        9P/19PT/9fT0//X09P/19PT/9fT0//b19v/5+vz/vaKC//n6/P/29fb//////62tq/8AAAAWAAAAAP//
-        /wD///8A////AP///wAAAAAWra2r///////19PX/+Pn7/76igv/4+fv/9fT1//Tz8//08/P/9PPz//Tz
-        8//08/P/9PPz//Tz8//08/P/9PPz//Tz8//08/P/9fT1//j5+/++ooL/+Pn7//X09f//////ra2r/wAA
-        ABYAAAAA////AP///wD///8A////AAAAABatrav///////Tz9P/3+Pr/vqKD//f4+v/08/T/8/Ly//Py
-        8v/z8vL/8/Ly//Py8v/z8vL/8/Ly//Py8v/z8vL/8/Ly//Py8v/08/T/9/j6/76ig//3+Pr/9PP0////
-        //+trav/AAAAFgAAAAD///8A////AP///wD///8AAAAAFq2tq///////8vLz//b3+f++ooP/9vf5//Py
-        8//y8fH/8vHx//Lx8f/y8fH/8vHx//Lx8f/y8fH/8vHx//Lx8f/y8fH/8vHx//Py8//29/n/vqKD//b3
-        +f/y8vP//////62tq/8AAAAWAAAAAP///wD///8A////AP///wAAAAAWra2r///////x8fD/9fX3/76i
-        g//19vf/8vHx//Hw7//x8O//8fDv//Hw7//x8O//8fDv//Hw7//x8O//8fDv//Hw7//x8O//8vHx//X2
-        9/++ooP/9fX3//Hx8P//////ra2r/wAAABYAAAAA////AP///wD///8A////AAAAABatrav//////+/v
-        7//y9Pb/v6OD//L19v/w8PD/7+/u/+/v7v/v7+7/7+/u/+/v7v/v7+7/7+/u/+/v7v/v7+7/7+/u/+/v
-        7v/w8PD/8vX2/7+jg//y9Pb/7+/v//////+trav/AAAAFgAAAAD///8A////AP///wD///8AAAAAFq2t
-        q///////7u7u//Hz9f+/o4T/8fT1/+/v7//u7u3/7u7t/+7u7f/u7u3/7u7t/+7u7f/u7u3/7u7t/+7u
-        7f/u7u3/7u7t/+/v7//x9PX/v6OE//Hz9f/u7u7//////62tq/8AAAAWAAAAAP///wD///8A////AP//
-        /wAAAAAWra2r///////t7e3/8PLz/7+jhP/w8vT/7u7u/+3t7P/t7ez/7e3s/+3t7P/t7ez/7e3s/+3t
-        7P/t7ez/7e3s/+3t7P/t7ez/7u7u//Dy9P+/o4T/8PLz/+3t7f//////ra2r/wAAABYAAAAA////AP//
-        /wD///8A////AAAAABatrav//////+zs6//v8fL/v6OE/+/x8//t7e3/7Ozr/+zs6//s7Ov/7Ozr/+zs
-        6//s7Ov/7Ozr/+zs6//s7Ov/7Ozr/+zs6//t7e3/7/Hz/7+jhP/v8fL/7Ozr//////+trav/AAAAFgAA
-        AAD///8A////AP///wD///8AAAAAFq2tq///////6+rq/+7v8f+/pIT/7u/y/+zr7P/r6ur/6+rq/+vq
-        6v/r6ur/6+rq/+vq6v/r6ur/6+rq/+vq6v/r6ur/6+rq/+zr7P/u7/L/v6SE/+7v8f/r6ur//////62t
-        q/8AAAAWAAAAAP///wD///8A////AP///wAAAAAWra2r///////q6en/7e7w/8Ckhf/t7vD/6+rr/+rp
-        6f/q6en/6unp/+rp6f/q6en/6unp/+rp6f/q6en/6unp/+rp6f/q6en/6+rr/+3u8P/ApIX/7e7w/+rp
-        6f//////ra2r/wAAABYAAAAA////AP///wD///8A////AAAAABatrav//////+no6P/s7e//wKSF/+zt
-        7//p6er/6ejo/+no6P/p6Oj/6ejo/+no6P/p6Oj/6ejo/+no6P/p6Oj/6ejo/+no6P/p6er/7O3v/8Ck
-        hf/s7e//6ejo//////+trav/AAAAFgAAAAD///8A////AP///wD///8AAAAAFq2uq///////5+fm/+vs
-        7P/ApIX/6+zt/+jo5//o5+b/6Ofm/+jn5v/o5+b/6Ofm/+jn5v/o5+b/6Ofm/+jn5v/o5+b/6Ofm/+jo
-        5//r7O3/wKSF/+vs7P/n5+b//////62uq/8AAAAWAAAAAP///wD///8A////AP///wAAAAAWrq6s////
-        ///n5ub/6uvt/8Glhv/q6+3/6Ojn/+fn5v/n5+b/5+fm/+fn5v/n5+b/5+fm/+fn5v/n5+b/5+fm/+fn
-        5v/n5+b/6Ojn/+rr7f/BpYb/6uvt/+fm5v//////rq6s/wAAABYAAAAA////AP///wD///8A////AAAA
-        ABavr63//////+jo6v/q7fD/wqiJ/+vt8P/p6uz/6err/+nq6//p6uv/6err/+nq6//p6uv/6err/+nq
-        6//p6uv/6err/+nq6//p6uz/6+3w/8Koif/q7fD/6Ojq//////+vr63/AAAAFgAAAAD///8A////AP//
-        /wD///8AAAAAFq+wrv/dzLj/v6OE/8Knif/Eqo3/wqiJ/8Glhv/BpYb/waWG/8Glhv/BpYb/waWG/8Gl
-        hv/BpYb/waWG/8Glhv/BpYb/waWG/8Glhv/CqIn/xKqN/8Knif+/o4T/3cy4/6+wrv8AAAAWAAAAAP//
-        /wD///8A////AP///wAAAAAWr6+t///////l5uf/6Ort/8Knif/o6+3/5+jp/+bn6P/m5+j/5ufo/+bn
-        6P/m5+j/5ufo/+bn6P/m5+j/5ufo/+bn6P/m5+j/5+jp/+jr7f/Cp4n/6Ort/+Xm5///////r6+t/wAA
-        ABYAAAAA////AP///wD///8A////AAAAABWurqz//////+Hg4P/k5eb/wKOE/+Tl5v/i4uH/4eHg/+Hh
-        4P/h4eD/4eHg/+Hh4P/h4eD/4eHg/+Hh4P/h4eD/4eHg/+Hh4P/i4uH/5OXm/8CjhP/k5eb/4eDg////
-        //+urqz/AAAAFQAAAAD///8A////AP///wD///8AAAAADa+vrf/////////////////ezLf/////////
-        ////////////////////////////////////////////////////////////////////////3sy3////
-        /////////////6+vrf8AAAANAAAAAP///wD///8A////AP///wAAAAAEr6+ttLCwrf+urqz/r6+t/6+w
-        rv+vr63/rq6s/66uq/+urqv/rq6r/66uq/+urqv/rq6r/66uq/+urqv/rq6r/66uq/+urqv/rq6s/6+v
-        rf+vsK7/r6+t/66urP+wsK3/r6+ttAAAAAQAAAAA////AOAAAAPgAAAD4AAAA+AAAAPgAAAD4AAAA+AA
-        AAPgAAAD4AAAA+AAAAPgAAAD4AAAA+AAAAPgAAAD4AAAA+AAAAPgAAAD4AAAA+AAAAPgAAAD4AAAA+AA
-        AAPgAAAD4AAAA+AAAAPgAAAD4AAAA+AAAAPgAAAD4AAAA+AAAAPgAAADKAAAABAAAAAgAAAAAQAgAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8AAAAAIwAAADMAAAAzAAAAMwAAADMAAAAzAAAAMwAA
-        ADMAAAAzAAAAMwAAADMAAAAzAAAAI////wD///8A////AKSkosCwsK7/r6+t/6+wrv+ur63/ra2r/62t
-        q/+trav/rq+t/6+wrv+vr63/sLCu/6SkosD///8A////AP///wCwsK7////////////cyrf/////////
-        ///////////////////cyrf///////////+wsK7/////AP///wD///8Ar6+t////////////vqOE////
-        ////////////////////////vqOE////////////r6+t/////wD///8A////AK+wrv/dzLf/v6OF/8Gn
-        iv+/pIb/vaGC/7yhgf+9oYL/v6SG/8Gniv+/o4X/3cy3/6+wrv////8A////AP///wCur63///////3/
-        //+/pYb//v////v9///6/P//+/3///7///+/pYb//f////////+ur63/////AP///wD///8Ara6r////
-        ///5+/z/vqKD//n7/P/29vb/9fX1//b29v/5+/z/vqKD//n7/P//////ra6r/////wD///8A////AK2t
-        q///////9vf4/76ig//29/j/8/Ly//Lx8P/z8vL/9vf4/76ig//29/j//////62tq/////8A////AP//
-        /wCtrav///////L09f++ooP/8vX2//Dw8P/v7+7/8PDw//L19v++ooP/8vT1//////+trav/////AP//
-        /wD///8Ara2r///////w8fL/v6OE//Dx8//u7e3/7ezr/+7t7f/w8fP/v6OE//Dx8v//////ra2r////
-        /wD///8A////AK2urP//////7e/w/7+khf/t8PH/6+zs/+rr6//r7Oz/7fDx/7+khf/t7/D//////62u
-        rP////8A////AP///wCur63//////+zu8f/Bp4n/7e/z/+vs7v/r7O3/6+zu/+3v8//Bp4n/7O7x////
-        //+ur63/////AP///wD///8Ar7Cu/97MuP/ApYb/w6mM/8Knif/ApYb/wKWF/8Clhv/Cp4n/w6mM/8Cl
-        hv/ezLj/r7Cu/////wD///8A////AK+vrf//////5efp/8Glhv/m6Or/5OXm/+Tl5v/k5eb/5ujq/8Gl
-        hv/l5+n//////6+vrf////8A////AP///wCwsK7////////////ezLj/////////////////////////
-        ///ezLj///////////+wsK7/////AP///wD///8As7Ox77Cwrv+vr63/r7Cu/6+vrf+urqz/rq6r/66u
-        rP+vr63/r7Cu/6+vrf+wsK7/s7Ox7////wDAAaxBwAGsQcABrEHAAaxBwAGsQcABrEHAAaxBwAGsQcAB
-        rEHAAaxBwAGsQcABrEHAAaxBwAGsQcABrEHAAaxB
-</value>
-  </data>
-  <data name="&gt;&gt;txtBottom.Name" xml:space="preserve">
-    <value>txtBottom</value>
-  </data>
-  <data name="&gt;&gt;frmMargins.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;Label3.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 54</value>
-  </data>
-  <data name="&gt;&gt;txtRight.Parent" xml:space="preserve">
-    <value>frmMargins</value>
-  </data>
-  <data name="cmdCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;txtTop.Parent" xml:space="preserve">
-    <value>frmMargins</value>
-  </data>
-  <data name="Label3.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;txtBottom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="txtBottom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 21</value>
-  </data>
-  <data name="Label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 27</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="&gt;&gt;txtLeft.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>frmPreviewMargins</value>
-  </data>
-  <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtLeft.Parent" xml:space="preserve">
     <value>frmMargins</value>
   </data>
-  <data name="lblTop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 13</value>
+  <data name="&gt;&gt;txtLeft.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
-  <data name="&gt;&gt;txtTop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 62</value>
   </data>
-  <data name="cmdCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 25</value>
+  <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 13</value>
   </data>
-  <data name="txtLeft.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 21</value>
+  <data name="Label1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="cmdCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
+  <data name="Label1.Text" xml:space="preserve">
+    <value>Bottom:</value>
   </data>
-  <data name="txtTop.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;Label1.Name" xml:space="preserve">
+    <value>Label1</value>
   </data>
-  <data name="&gt;&gt;Label2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Label1.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
     <value>frmMargins</value>
   </data>
-  <data name="cmdOk.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 25</value>
+  <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
-  <data name="lblTop.AutoSize" type="System.Boolean, mscorlib">
+  <data name="txtBottom.EditValue" type="System.Decimal, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="txtBottom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>66, 59</value>
+  </data>
+  <data name="txtBottom.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtBottom.Properties.UseMaskAsDisplayFormat" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="txtRight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 21</value>
+  <data name="txtBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 20</value>
   </data>
-  <data name="cmdOk.Text" xml:space="preserve">
-    <value>Ok</value>
+  <data name="txtBottom.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="cmdCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>233, 115</value>
+  <data name="&gt;&gt;txtBottom.Name" xml:space="preserve">
+    <value>txtBottom</value>
   </data>
-  <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="frmMargins.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>325, 152</value>
-  </data>
-  <data name="&gt;&gt;txtRight.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 13</value>
-  </data>
-  <data name="lblTop.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;frmMargins.Name" xml:space="preserve">
-    <value>frmMargins</value>
-  </data>
-  <data name="Label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 13</value>
-  </data>
-  <data name="txtLeft.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;txtBottom.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtBottom.Parent" xml:space="preserve">
     <value>frmMargins</value>
   </data>
+  <data name="&gt;&gt;txtBottom.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lblTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 36</value>
+  </data>
+  <data name="lblTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 13</value>
+  </data>
+  <data name="lblTop.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="lblTop.Text" xml:space="preserve">
+    <value>Top:</value>
+  </data>
+  <data name="&gt;&gt;lblTop.Name" xml:space="preserve">
+    <value>lblTop</value>
+  </data>
+  <data name="&gt;&gt;lblTop.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblTop.Parent" xml:space="preserve">
+    <value>frmMargins</value>
+  </data>
+  <data name="&gt;&gt;lblTop.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="txtTop.EditValue" type="System.Decimal, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="txtTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>66, 33</value>
+  </data>
+  <data name="txtTop.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtTop.Properties.UseMaskAsDisplayFormat" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="txtTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 20</value>
+  </data>
+  <data name="txtTop.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtTop.Name" xml:space="preserve">
+    <value>txtTop</value>
+  </data>
+  <data name="&gt;&gt;txtTop.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtTop.Parent" xml:space="preserve">
+    <value>frmMargins</value>
+  </data>
+  <data name="&gt;&gt;txtTop.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="frmMargins.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="frmMargins.Size" type="System.Drawing.Size, System.Drawing">
+    <value>302, 97</value>
+  </data>
+  <data name="frmMargins.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="frmMargins.Text" xml:space="preserve">
+    <value>Margins (mm):</value>
+  </data>
+  <data name="&gt;&gt;frmMargins.Name" xml:space="preserve">
+    <value>frmMargins</value>
+  </data>
+  <data name="&gt;&gt;frmMargins.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;frmMargins.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;frmMargins.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>en</value>
-  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>325, 122</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmPreviewMargins</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.XtraUserControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
 </root>

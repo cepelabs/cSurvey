@@ -83,19 +83,19 @@
 
     Public Sub New()
         Call MyBase.New
-        If modControls.SystemDPIRatio = 0 Then
-            Using oGr As Graphics = Graphics.FromHwnd(Handle)
-                modControls.SystemDPIRatio = oGr.DpiX / 96.0F
-            End Using
-        End If
-        Call AdjustThroughtDPI(modControls.SystemDPIRatio)
+        'If modControls.SystemDPIRatio = 0 Then
+        '    Using oGr As Graphics = Graphics.FromHwnd(Handle)
+        '        modControls.SystemDPIRatio = oGr.DpiX / 96.0F
+        '    End Using
+        'End If
+        'Call AdjustThroughtDPI(modControls.SystemDPIRatio)
     End Sub
 
-    Public ReadOnly Property DPIRatio As Single
-        Get
-            Return modControls.SystemDPIRatio
-        End Get
-    End Property
+    'Public ReadOnly Property DPIRatio As Single
+    '    Get
+    '        Return modControls.SystemDPIRatio
+    '    End Get
+    'End Property
 
     Public Sub cForm_Load() Handles MyBase.Load
         'Call AdjustThroughtDPI(modControls.SystemDPIRatio)

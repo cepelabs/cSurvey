@@ -4,319 +4,304 @@ Imports cSurveyPC.cSurvey
 Imports System.Xml
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
+Imports System.Collections.ObjectModel
+Imports System.IO
 
 Namespace cSurvey.Design
     Public Class cPens
+        Implements IEnumerable
+
         Private WithEvents oSurvey As cSurvey
 
-        'Private sHeavyPenWidth As Single '= 8
-        'Private sMediumPenWidth As Single '= 3
-        'Private sLightPenWidth As Single '= 1
-        'Private sUltralightPenWidth As Single '= 0.3
-        'Private sTightPenWidth As Single = 0
+        Private oPenNone As cCustomPen
 
-        Private oPenNone As cPen
+        Private oPenGenericPen As cCustomPen
+        Private oPenPresumedGenericPen As cCustomPen
 
-        Private oPenGenericPen As cPen
-        Private oPenPresumedGenericPen As cPen
+        Private oPenCavePen As cCustomPen
+        Private oPenPresumedCavePen As cCustomPen
+        Private oPenTooNarrowCavePen As cCustomPen
+        Private oPenUnderlyingCavePen As cCustomPen
 
-        Private oPenCavePen As cPen
-        Private oPenPresumedCavePen As cPen
-        Private oPenTooNarrowCavePen As cPen
-        Private oPenUnderlyingCavePen As cPen
+        Private oPenPen As cCustomPen
+        Private oPenPresumedPen As cCustomPen
 
-        Private oPenPen As cPen
-        Private oPenPresumedPen As cPen
+        Private oPenTightPen As cCustomPen
+        Private oPenPresumedTightPen As cCustomPen
 
-        Private oPenTightPen As cPen
-        Private oPenPresumedTightPen As cPen
+        Private oPenGradientUpPen As cCustomPen
+        Private oPenPresumedGradientUpPen As cCustomPen
 
-        Private oPenGradientUpPen As cPen
-        Private oPenPresumedGradientUpPen As cPen
+        Private oPenGradientDownPen As cCustomPen
+        Private oPenPresumedGradientDownPen As cCustomPen
 
-        Private oPenGradientDownPen As cPen
-        Private oPenPresumedGradientDownPen As cPen
+        Private oPenCliffUpPen As cCustomPen
+        Private oPenPresumedCliffUpPen As cCustomPen
 
-        Private oPenCliffUpPen As cPen
-        Private oPenPresumedCliffUpPen As cPen
+        Private oPenCliffDownPen As cCustomPen
+        Private oPenPresumedCliffDownPen As cCustomPen
 
-        Private oPenCliffDownPen As cPen
-        Private oPenPresumedCliffDownPen As cPen
+        Private oPenOverhangUpPen As cCustomPen
+        Private oPenPresumedOverhangUpPen As cCustomPen
 
-        Private oPenOverhangUpPen As cPen
-        Private oPenPresumedOverhangUpPen As cPen
+        Private oPenOverhangDownPen As cCustomPen
+        Private oPenPresumedOverhangDownPen As cCustomPen
 
-        Private oPenOverhangDownPen As cPen
-        Private oPenPresumedOverhangDownPen As cPen
+        Private oPenMeanderPen As cCustomPen
+        Private oPenPresumedMeanderPen As cCustomPen
 
-        Private oPenMeanderPen As cPen
-        Private oPenPresumedMeanderPen As cPen
+        Private oPenIcePen As cCustomPen
+        Private oPenPresumedIcePen As cCustomPen
 
-        Private oPenIcePen As cPen
-        Private oPenPresumedIcePen As cPen
-        'none=0
-        'GenericPen=sUltralightPenWidth
-        'CavePen=sHeavyPenWidth
-        'PresumedCavePen=sHeavyPenWidth
-        'Pen=sMediumPenWidth
-        'PresumedPen=sMediumPenWidth
-        'TightPen=sTightPenWidth
-        'GradientUpPen=sMediumPenWidth
-        'GradientDownPen=sMediumPenWidth
-        'CliffUpPen=sMediumPenWidth
-        'CliffDownPen=sMediumPenWidth
-        'OverhangUpPen=sMediumPenWidth
-        'OverhangUpPen=sMediumPenWidth
-
-        Public ReadOnly Property None() As cPen
+        Public ReadOnly Property None() As cCustomPen
             Get
                 If oPenNone Is Nothing Then
-                    oPenNone = New cPen(oSurvey, GetLocalizedString("pens.none"), cPen.PenTypeEnum.None, Color.Transparent, 0)
+                    oPenNone = New cCustomPen(oSurvey, cPen.PenTypeEnum.None, "", GetLocalizedString("pens.none"), Color.Transparent, 0)
                 End If
                 Return oPenNone
             End Get
         End Property
 
-        Public ReadOnly Property GenericPen() As cPen
+        Public ReadOnly Property GenericPen() As cCustomPen
             Get
                 If oPenGenericPen Is Nothing Then
-                    oPenGenericPen = New cPen(oSurvey, GetLocalizedString("pens.genericpen"), cPen.PenTypeEnum.GenericPen, Color.Black, 0)
+                    oPenGenericPen = New cCustomPen(oSurvey, cPen.PenTypeEnum.GenericPen, "", GetLocalizedString("pens.genericpen"), Color.Black, 0)
                 End If
                 Return oPenGenericPen
             End Get
         End Property
 
-        Public ReadOnly Property PresumedGenericPen() As cPen
+        Public ReadOnly Property PresumedGenericPen() As cCustomPen
             Get
                 If oPenPresumedGenericPen Is Nothing Then
-                    oPenPresumedGenericPen = New cPen(oSurvey, GetLocalizedString("pens.presumedgenericpen"), cPen.PenTypeEnum.PresumedGenericPen, Color.Black, 0, cPen.PenStylesEnum.Dash)
+                    oPenPresumedGenericPen = New cCustomPen(oSurvey, cPen.PenTypeEnum.PresumedGenericPen, "", GetLocalizedString("pens.presumedgenericpen"), Color.Black, 0, cPen.PenStylesEnum.Dash)
                 End If
                 Return oPenPresumedGenericPen
             End Get
         End Property
 
-        Public ReadOnly Property CavePen() As cPen
+        Public ReadOnly Property CavePen() As cCustomPen
             Get
                 If oPenCavePen Is Nothing Then
-                    oPenCavePen = New cPen(oSurvey, GetLocalizedString("pens.cavepen"), cPen.PenTypeEnum.CavePen, Color.Black, 0)
+                    oPenCavePen = New cCustomPen(oSurvey, cPen.PenTypeEnum.CavePen, "", GetLocalizedString("pens.cavepen"), Color.Black, 0)
                 End If
                 Return oPenCavePen
             End Get
         End Property
 
-        Public ReadOnly Property UnderlyingCavePen() As cPen
+        Public ReadOnly Property UnderlyingCavePen() As cCustomPen
             Get
                 If oPenUnderlyingCavePen Is Nothing Then
-                    oPenUnderlyingCavePen = New cPen(oSurvey, GetLocalizedString("pens.underlyingcavepen"), cPen.PenTypeEnum.UnderlyingCavePen, Color.Black, 0, cPen.PenStylesEnum.LargeDashLargeSpace)
+                    oPenUnderlyingCavePen = New cCustomPen(oSurvey, cPen.PenTypeEnum.UnderlyingCavePen, "", GetLocalizedString("pens.underlyingcavepen"), Color.Black, 0, cPen.PenStylesEnum.LargeDashLargeSpace)
                 End If
                 Return oPenUnderlyingCavePen
             End Get
         End Property
 
-        Public ReadOnly Property TooNarrowCavePen() As cPen
+        Public ReadOnly Property TooNarrowCavePen() As cCustomPen
             Get
                 If oPenTooNarrowCavePen Is Nothing Then
-                    oPenTooNarrowCavePen = New cPen(oSurvey, GetLocalizedString("pens.toonarrowcavepen"), cPen.PenTypeEnum.TooNarrowCavePen, Color.Black, 0, cPen.PenStylesEnum.LargeDashMediumSpace)
+                    oPenTooNarrowCavePen = New cCustomPen(oSurvey, cPen.PenTypeEnum.TooNarrowCavePen, "", GetLocalizedString("pens.toonarrowcavepen"), Color.Black, 0, cPen.PenStylesEnum.LargeDashMediumSpace)
                 End If
                 Return oPenTooNarrowCavePen
             End Get
         End Property
 
-        Public ReadOnly Property PresumedCavePen() As cPen
+        Public ReadOnly Property PresumedCavePen() As cCustomPen
             Get
                 If oPenPresumedCavePen Is Nothing Then
-                    oPenPresumedCavePen = New cPen(oSurvey, GetLocalizedString("pens.presumedcavepen"), cPen.PenTypeEnum.PresumedCavePen, Color.Black, 0, cPen.PenStylesEnum.LargeDashSmallSpace)
+                    oPenPresumedCavePen = New cCustomPen(oSurvey, cPen.PenTypeEnum.PresumedCavePen, "", GetLocalizedString("pens.presumedcavepen"), Color.Black, 0, cPen.PenStylesEnum.LargeDashSmallSpace)
                 End If
                 Return oPenPresumedCavePen
             End Get
         End Property
 
-        Public ReadOnly Property Pen() As cPen
+        Public ReadOnly Property Pen() As cCustomPen
             Get
                 If oPenPen Is Nothing Then
-                    oPenPen = New cPen(oSurvey, GetLocalizedString("pens.pen"), cPen.PenTypeEnum.Pen, Color.Black, 0)
+                    oPenPen = New cCustomPen(oSurvey, cPen.PenTypeEnum.Pen, "", GetLocalizedString("pens.pen"), Color.Black, 0)
                 End If
                 Return oPenPen
             End Get
         End Property
 
-        Public ReadOnly Property PresumedPen() As cPen
+        Public ReadOnly Property PresumedPen() As cCustomPen
             Get
                 If oPenPresumedPen Is Nothing Then
-                    oPenPresumedPen = New cPen(oSurvey, GetLocalizedString("pens.presumedpen"), cPen.PenTypeEnum.PresumedPen, Color.Black, 0, cPen.PenStylesEnum.Dash)
+                    oPenPresumedPen = New cCustomPen(oSurvey, cPen.PenTypeEnum.PresumedPen, "", GetLocalizedString("pens.presumedpen"), Color.Black, 0, cPen.PenStylesEnum.Dash)
                 End If
                 Return oPenPresumedPen
             End Get
         End Property
 
-        Public Function FromCustom(ByVal Color As Color, Optional ByVal Name As String = "", Optional ByVal Width As Integer = 0.1, Optional ByVal Style As cPen.PenStylesEnum = cPen.PenStylesEnum.Solid, Optional Clipart As Drawings.cDrawClipArt = Nothing, Optional ByVal DecorationStyle As cPen.DecorationStylesEnum = cPen.DecorationStylesEnum.None, Optional ByVal DecorationSpacePercentage As Single = 0, Optional ByVal DecorationAlignment As cPen.DecorationAlignmentEnum = cPen.DecorationStylesEnum.None) As cPen
-            Dim oPen As cPen = New cPen(oSurvey, Name, cPen.PenTypeEnum.Custom, Color, Width, Style, Clipart, DecorationStyle, DecorationSpacePercentage, DecorationAlignment)
+        Public Function FromCustom(ByVal Color As Color, Optional ByVal Name As String = "", Optional ByVal Width As Integer = 0.1, Optional ByVal Style As cPen.PenStylesEnum = cPen.PenStylesEnum.Solid, Optional Clipart As Drawings.cDrawClipArt = Nothing, Optional ByVal DecorationStyle As cPen.DecorationStylesEnum = cPen.DecorationStylesEnum.None, Optional ByVal DecorationSpacePercentage As Single = 0, Optional ByVal DecorationAlignment As cPen.DecorationAlignmentEnum = cPen.DecorationStylesEnum.None) As cCustomPen
+            Dim oPen As cCustomPen = New cCustomPen(oSurvey, cPen.PenTypeEnum.Custom, "", Name, Color, Width, Style, Clipart, DecorationStyle, DecorationSpacePercentage, DecorationAlignment)
             Return oPen
         End Function
 
-        Public ReadOnly Property TightPen() As cPen
+        Public ReadOnly Property TightPen() As cCustomPen
             Get
                 If oPenTightPen Is Nothing Then
-                    oPenTightPen = New cPen(oSurvey, GetLocalizedString("pens.tightpen"), cPen.PenTypeEnum.TightPen, Color.Black, 0, cPen.PenStylesEnum.Solid)
+                    oPenTightPen = New cCustomPen(oSurvey, cPen.PenTypeEnum.TightPen, "", GetLocalizedString("pens.tightpen"), Color.Black, 0, cPen.PenStylesEnum.Solid)
                 End If
                 Return oPenTightPen
             End Get
         End Property
 
-        Public ReadOnly Property PresumedTightPen() As cPen
+        Public ReadOnly Property PresumedTightPen() As cCustomPen
             Get
                 If oPenPresumedTightPen Is Nothing Then
-                    oPenPresumedTightPen = New cPen(oSurvey, GetLocalizedString("pens.presumedtightpen"), cPen.PenTypeEnum.PresumedTightPen, Color.Black, 0, cPen.PenStylesEnum.Dash)
+                    oPenPresumedTightPen = New cCustomPen(oSurvey, cPen.PenTypeEnum.PresumedTightPen, "", GetLocalizedString("pens.presumedtightpen"), Color.Black, 0, cPen.PenStylesEnum.Dash)
                 End If
                 Return oPenPresumedTightPen
             End Get
         End Property
 
-        Public ReadOnly Property GradientUpPen() As cPen
+        Public ReadOnly Property GradientUpPen() As cCustomPen
             Get
                 If oPenGradientUpPen Is Nothing Then
-                    oPenGradientUpPen = New cPen(oSurvey, GetLocalizedString("pens.gradientuppen"), cPen.PenTypeEnum.GradientUpPen, Color.Black, 0, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.UpArrow, 5000, cPen.DecorationAlignmentEnum.Center, 1)
+                    oPenGradientUpPen = New cCustomPen(oSurvey, cPen.PenTypeEnum.GradientUpPen, "", GetLocalizedString("pens.gradientuppen"), Color.Black, 0, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.UpArrow, 5000, cPen.DecorationAlignmentEnum.Center, 1)
                 End If
                 Return oPenGradientUpPen
             End Get
         End Property
 
-        Public ReadOnly Property PresumedGradientUpPen() As cPen
+        Public ReadOnly Property PresumedGradientUpPen() As cCustomPen
             Get
                 If oPenPresumedGradientUpPen Is Nothing Then
-                    oPenPresumedGradientUpPen = New cPen(oSurvey, GetLocalizedString("pens.presumedgradientuppen"), cPen.PenTypeEnum.PresumedGradientUpPen, Color.Black, 0, cPen.PenStylesEnum.Dash, Nothing, cPen.DecorationStylesEnum.UpArrow, 5000, cPen.DecorationAlignmentEnum.Center, 1)
+                    oPenPresumedGradientUpPen = New cCustomPen(oSurvey, cPen.PenTypeEnum.PresumedGradientUpPen, "", GetLocalizedString("pens.presumedgradientuppen"), Color.Black, 0, cPen.PenStylesEnum.Dash, Nothing, cPen.DecorationStylesEnum.UpArrow, 5000, cPen.DecorationAlignmentEnum.Center, 1)
                 End If
                 Return oPenPresumedGradientUpPen
             End Get
         End Property
 
-        Public ReadOnly Property GradientDownPen() As cPen
+        Public ReadOnly Property GradientDownPen() As cCustomPen
             Get
                 If oPenGradientDownPen Is Nothing Then
-                    oPenGradientDownPen = New cPen(oSurvey, GetLocalizedString("pens.gradientdownpen"), cPen.PenTypeEnum.GradientDownPen, Color.Black, 0, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.DownArrow, 5000, cPen.DecorationAlignmentEnum.Center, 1)
+                    oPenGradientDownPen = New cCustomPen(oSurvey, cPen.PenTypeEnum.GradientDownPen, "", GetLocalizedString("pens.gradientdownpen"), Color.Black, 0, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.DownArrow, 5000, cPen.DecorationAlignmentEnum.Center, 1)
                 End If
                 Return oPenGradientDownPen
             End Get
         End Property
 
-        Public ReadOnly Property PresumedGradientDownPen() As cPen
+        Public ReadOnly Property PresumedGradientDownPen() As cCustomPen
             Get
                 If oPenPresumedGradientDownPen Is Nothing Then
-                    oPenPresumedGradientDownPen = New cPen(oSurvey, GetLocalizedString("pens.presumedgradientdownpen"), cPen.PenTypeEnum.PresumedGradientDownPen, Color.Black, 0, cPen.PenStylesEnum.Dash, Nothing, cPen.DecorationStylesEnum.DownArrow, 5000, cPen.DecorationAlignmentEnum.Center, 1)
+                    oPenPresumedGradientDownPen = New cCustomPen(oSurvey, cPen.PenTypeEnum.PresumedGradientDownPen, "", GetLocalizedString("pens.presumedgradientdownpen"), Color.Black, 0, cPen.PenStylesEnum.Dash, Nothing, cPen.DecorationStylesEnum.DownArrow, 5000, cPen.DecorationAlignmentEnum.Center, 1)
                 End If
                 Return oPenPresumedGradientDownPen
             End Get
         End Property
 
-        Public ReadOnly Property CliffUpPen() As cPen
+        Public ReadOnly Property CliffUpPen() As cCustomPen
             Get
                 If oPenCliffUpPen Is Nothing Then
-                    oPenCliffUpPen = New cPen(oSurvey, GetLocalizedString("pens.cliffuppen"), cPen.PenTypeEnum.CliffUpPen, Color.Black, 0, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.Dash, 3000, cPen.DecorationAlignmentEnum.Outer, 1)
+                    oPenCliffUpPen = New cCustomPen(oSurvey, cPen.PenTypeEnum.CliffUpPen, "", GetLocalizedString("pens.cliffuppen"), Color.Black, 0, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.Dash, 3000, cPen.DecorationAlignmentEnum.Outer, 1)
                 End If
                 Return oPenCliffUpPen
             End Get
         End Property
 
-        Public ReadOnly Property PresumedCliffUpPen() As cPen
+        Public ReadOnly Property PresumedCliffUpPen() As cCustomPen
             Get
                 If oPenPresumedCliffUpPen Is Nothing Then
-                    oPenPresumedCliffUpPen = New cPen(oSurvey, GetLocalizedString("pens.presumedcliffuppen"), cPen.PenTypeEnum.PresumedCliffUpPen, Color.Black, 0, cPen.PenStylesEnum.Dash, Nothing, cPen.DecorationStylesEnum.Dash, 3000, cPen.DecorationAlignmentEnum.Outer, 1)
+                    oPenPresumedCliffUpPen = New cCustomPen(oSurvey, cPen.PenTypeEnum.PresumedCliffUpPen, "", GetLocalizedString("pens.presumedcliffuppen"), Color.Black, 0, cPen.PenStylesEnum.Dash, Nothing, cPen.DecorationStylesEnum.Dash, 3000, cPen.DecorationAlignmentEnum.Outer, 1)
                 End If
                 Return oPenPresumedCliffUpPen
             End Get
         End Property
 
-        Public ReadOnly Property CliffDownPen() As cPen
+        Public ReadOnly Property CliffDownPen() As cCustomPen
             Get
                 If oPenCliffDownPen Is Nothing Then
-                    oPenCliffDownPen = New cPen(oSurvey, GetLocalizedString("pens.cliffdownpen"), cPen.PenTypeEnum.CliffDownPen, Color.Black, 0, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.Dash, 3000, cPen.DecorationAlignmentEnum.Inner, 1)
+                    oPenCliffDownPen = New cCustomPen(oSurvey, cPen.PenTypeEnum.CliffDownPen, "", GetLocalizedString("pens.cliffdownpen"), Color.Black, 0, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.Dash, 3000, cPen.DecorationAlignmentEnum.Inner, 1)
                 End If
                 Return oPenCliffDownPen
             End Get
         End Property
 
-        Public ReadOnly Property PresumedCliffDownPen() As cPen
+        Public ReadOnly Property PresumedCliffDownPen() As cCustomPen
             Get
                 If oPenPresumedCliffDownPen Is Nothing Then
-                    oPenPresumedCliffDownPen = New cPen(oSurvey, GetLocalizedString("pens.presumedcliffdownpen"), cPen.PenTypeEnum.PresumedCliffDownPen, Color.Black, 0, cPen.PenStylesEnum.Dash, Nothing, cPen.DecorationStylesEnum.Dash, 3000, cPen.DecorationAlignmentEnum.Inner, 1)
+                    oPenPresumedCliffDownPen = New cCustomPen(oSurvey, cPen.PenTypeEnum.PresumedCliffDownPen, "", GetLocalizedString("pens.presumedcliffdownpen"), Color.Black, 0, cPen.PenStylesEnum.Dash, Nothing, cPen.DecorationStylesEnum.Dash, 3000, cPen.DecorationAlignmentEnum.Inner, 1)
                 End If
                 Return oPenPresumedCliffDownPen
             End Get
         End Property
 
-        Public ReadOnly Property OverhangUpPen() As cPen
+        Public ReadOnly Property OverhangUpPen() As cCustomPen
             Get
                 If oPenOverhangUpPen Is Nothing Then
-                    oPenOverhangUpPen = New cPen(oSurvey, GetLocalizedString("pens.overhanguppen"), cPen.PenTypeEnum.OverhangUpPen, Color.Black, 0, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.UpTriangle, 3000, cPen.DecorationAlignmentEnum.Outer, 1)
+                    oPenOverhangUpPen = New cCustomPen(oSurvey, cPen.PenTypeEnum.OverhangUpPen, "", GetLocalizedString("pens.overhanguppen"), Color.Black, 0, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.UpTriangle, 3000, cPen.DecorationAlignmentEnum.Outer, 1)
                 End If
                 Return oPenOverhangUpPen
             End Get
         End Property
 
-        Public ReadOnly Property PresumedOverhangUpPen() As cPen
+        Public ReadOnly Property PresumedOverhangUpPen() As cCustomPen
             Get
                 If oPenPresumedOverhangUpPen Is Nothing Then
-                    oPenPresumedOverhangUpPen = New cPen(oSurvey, GetLocalizedString("pens.presumedoverhanguppen"), cPen.PenTypeEnum.PresumedOverhangUpPen, Color.Black, 0, cPen.PenStylesEnum.Dash, Nothing, cPen.DecorationStylesEnum.UpTriangle, 3000, cPen.DecorationAlignmentEnum.Outer, 1)
+                    oPenPresumedOverhangUpPen = New cCustomPen(oSurvey, cPen.PenTypeEnum.PresumedOverhangUpPen, "", GetLocalizedString("pens.presumedoverhanguppen"), Color.Black, 0, cPen.PenStylesEnum.Dash, Nothing, cPen.DecorationStylesEnum.UpTriangle, 3000, cPen.DecorationAlignmentEnum.Outer, 1)
                 End If
                 Return oPenPresumedOverhangUpPen
             End Get
         End Property
 
-        Public ReadOnly Property OverhangDownPen() As cPen
+        Public ReadOnly Property OverhangDownPen() As cCustomPen
             Get
                 If oPenOverhangDownPen Is Nothing Then
-                    oPenOverhangDownPen = New cPen(oSurvey, GetLocalizedString("pens.overhangdownpen"), cPen.PenTypeEnum.OverhangDownPen, Color.Black, 0, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.DownTriangle, 3000, cPen.DecorationAlignmentEnum.Inner, 1)
+                    oPenOverhangDownPen = New cCustomPen(oSurvey, cPen.PenTypeEnum.OverhangDownPen, "", GetLocalizedString("pens.overhangdownpen"), Color.Black, 0, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.DownTriangle, 3000, cPen.DecorationAlignmentEnum.Inner, 1)
                 End If
                 Return oPenOverhangDownPen
             End Get
         End Property
 
-        Public ReadOnly Property PresumedOverhangDownPen() As cPen
+        Public ReadOnly Property PresumedOverhangDownPen() As cCustomPen
             Get
                 If oPenPresumedOverhangDownPen Is Nothing Then
-                    oPenPresumedOverhangDownPen = New cPen(oSurvey, GetLocalizedString("pens.presumedoverhangdownpen"), cPen.PenTypeEnum.PresumedOverhangDownPen, Color.Black, 0, cPen.PenStylesEnum.Dash, Nothing, cPen.DecorationStylesEnum.DownTriangle, 3000, cPen.DecorationAlignmentEnum.Inner, 1)
+                    oPenPresumedOverhangDownPen = New cCustomPen(oSurvey, cPen.PenTypeEnum.PresumedOverhangDownPen, "", GetLocalizedString("pens.presumedoverhangdownpen"), Color.Black, 0, cPen.PenStylesEnum.Dash, Nothing, cPen.DecorationStylesEnum.DownTriangle, 3000, cPen.DecorationAlignmentEnum.Inner, 1)
                 End If
                 Return oPenPresumedOverhangDownPen
             End Get
         End Property
 
-        Public ReadOnly Property MeanderPen() As cPen
+        Public ReadOnly Property MeanderPen() As cCustomPen
             Get
                 If oPenMeanderPen Is Nothing Then
-                    oPenMeanderPen = New cPen(oSurvey, GetLocalizedString("pens.meanderpen"), cPen.PenTypeEnum.MeanderPen, Color.Black, 0, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.Dash, 3000, cPen.DecorationAlignmentEnum.Center, 2)
+                    oPenMeanderPen = New cCustomPen(oSurvey, cPen.PenTypeEnum.MeanderPen, "", GetLocalizedString("pens.meanderpen"), Color.Black, 0, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.Dash, 3000, cPen.DecorationAlignmentEnum.Center, 2)
                 End If
                 Return oPenMeanderPen
             End Get
         End Property
 
-        Public ReadOnly Property PresumedMeanderPen() As cPen
+        Public ReadOnly Property PresumedMeanderPen() As cCustomPen
             Get
                 If oPenPresumedMeanderPen Is Nothing Then
-                    oPenPresumedMeanderPen = New cPen(oSurvey, GetLocalizedString("pens.presumedmeanderpen"), cPen.PenTypeEnum.PresumedMeanderPen, Color.Black, 0, cPen.PenStylesEnum.Dash, Nothing, cPen.DecorationStylesEnum.Dash, 3000, cPen.DecorationAlignmentEnum.Center, 2)
+                    oPenPresumedMeanderPen = New cCustomPen(oSurvey, cPen.PenTypeEnum.PresumedMeanderPen, "", GetLocalizedString("pens.presumedmeanderpen"), Color.Black, 0, cPen.PenStylesEnum.Dash, Nothing, cPen.DecorationStylesEnum.Dash, 3000, cPen.DecorationAlignmentEnum.Center, 2)
                 End If
                 Return oPenPresumedMeanderPen
             End Get
         End Property
 
-        Public ReadOnly Property IcePen() As cPen
+        Public ReadOnly Property IcePen() As cCustomPen
             Get
                 If oPenIcePen Is Nothing Then
-                    oPenIcePen = New cPen(oSurvey, GetLocalizedString("pens.icepen"), cPen.PenTypeEnum.IcePen, Color.Black, 0, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.Ice, 1000, cPen.DecorationAlignmentEnum.Center, 2)
+                    oPenIcePen = New cCustomPen(oSurvey, cPen.PenTypeEnum.IcePen, "", GetLocalizedString("pens.icepen"), Color.Black, 0, cPen.PenStylesEnum.Solid, Nothing, cPen.DecorationStylesEnum.Ice, 1000, cPen.DecorationAlignmentEnum.Center, 2)
                 End If
                 Return oPenIcePen
             End Get
         End Property
 
-        Public ReadOnly Property PresumedIcePen() As cPen
+        Public ReadOnly Property PresumedIcePen() As cCustomPen
             Get
                 If oPenPresumedIcePen Is Nothing Then
-                    oPenPresumedIcePen = New cPen(oSurvey, GetLocalizedString("pens.presumedicepen"), cPen.PenTypeEnum.PresumedIcePen, Color.Black, 0, cPen.PenStylesEnum.Dash, Nothing, cPen.DecorationStylesEnum.Ice, 1000, cPen.DecorationAlignmentEnum.Center, 2)
+                    oPenPresumedIcePen = New cCustomPen(oSurvey, cPen.PenTypeEnum.PresumedIcePen, "", GetLocalizedString("pens.presumedicepen"), Color.Black, 0, cPen.PenStylesEnum.Dash, Nothing, cPen.DecorationStylesEnum.Ice, 1000, cPen.DecorationAlignmentEnum.Center, 2)
                 End If
                 Return oPenPresumedIcePen
             End Get
         End Property
 
-        Public Function FromType(ByVal Type As cPen.PenTypeEnum) As cPen
+        Public Function FromType(ByVal Type As cPen.PenTypeEnum) As cCustomPen
             Select Case Type
                 Case cPen.PenTypeEnum.None
                     Return None
@@ -383,14 +368,222 @@ Namespace cSurvey.Design
                     Return PresumedIcePen
 
                 Case Else
-                    'inutile...?!?
-                    Return New cPen(oSurvey)
+                    'is usefull?
+                    Return New cCustomPen(oSurvey)
             End Select
+        End Function
+
+        Public Function FromName(ByVal Name As String) As cCustomPen
+            If Name Is Nothing Then
+                Return Nothing
+            Else
+                Dim oFindItem As cCustomPen = oItems.FirstOrDefault(Function(oItem) oItem.Name.ToLower = Name.ToLower)
+                Return oFindItem
+            End If
+        End Function
+
+        ''' <summary>
+        ''' Get custom pen by id searching in standard pens and in users pen
+        ''' </summary>
+        ''' <param name="ID">Pen ID to be retrieved</param>
+        ''' <returns></returns>
+        Public Function FromID(ByVal ID As String) As cCustomPen
+            If ID Is Nothing Then
+                Return Nothing
+            Else
+                If ID.StartsWith("_") Then
+                    Dim iType As cPen.PenTypeEnum = Integer.Parse(ID.Substring(1))
+                    Return FromType(iType)
+                Else
+                    Dim oFindItem As cCustomPen = oItems.FirstOrDefault(Function(oItem) oItem.ID = ID)
+                    If oFindItem IsNot Nothing Then
+                        Return oFindItem
+                    Else
+                        Return Nothing
+                    End If
+                End If
+            End If
         End Function
 
         Friend Sub New(ByVal Survey As cSurvey)
             oSurvey = Survey
+            oItems = New List(Of cCustomPen)
         End Sub
 
+        Private oItems As List(Of cCustomPen)
+
+        Default Public ReadOnly Property Item(Index As Integer) As cCustomPen
+            Get
+                Return oItems(Index)
+            End Get
+        End Property
+
+        Default Public ReadOnly Property Item(ID As String) As cCustomPen
+            Get
+                Return oItems.FirstOrDefault(Function(oItem) oItem.ID = ID)
+            End Get
+        End Property
+
+        Friend Function Add(CustomPen As cCustomPen) As Boolean
+            If CustomPen.Type = cPen.PenTypeEnum.User Then
+                Dim oExistingPen As cCustomPen = oItems.FirstOrDefault(Function(oItem) oItem.Name.ToLower = CustomPen.Name.ToLower)
+                If oExistingPen IsNot Nothing Then
+                    oExistingPen.CopyFrom(CustomPen)
+                    CustomPen.ID = oExistingPen.ID
+                    Return True
+                Else
+                    If Not ContainsID(CustomPen.ID) Then
+                        Call oItems.Add(CustomPen)
+                        Return True
+                    Else
+                        Return False
+                    End If
+                End If
+            End If
+        End Function
+
+        Public Function Add(Pen As cPen, Name As String) As cCustomPen
+            If Pen.Type = cPen.PenTypeEnum.Custom Then
+                Dim oCustomPen As cCustomPen = Pen.GetBasePen
+                If oCustomPen.Name IsNot Nothing Then oCustomPen.Name = Name
+
+                Dim oExistingPen1 As cCustomPen = oItems.FirstOrDefault(Function(oItem) oItem.Name.ToLower = Name.ToLower)
+                If oExistingPen1 IsNot Nothing Then
+                    oExistingPen1.CopyFrom(oCustomPen)
+                    Pen.ID = oExistingPen1.ID
+                    Return oExistingPen1
+                Else
+                    Dim oNewPen As cCustomPen = cCustomPen.CopyAsUser(oSurvey, oCustomPen)
+                    Dim oExistingPen2 As cCustomPen = oItems.FirstOrDefault(Function(oItem) oItem.ID = oNewPen.ID)
+                    If oExistingPen2 IsNot Nothing Then
+                        oExistingPen2.CopyFrom(oNewPen)
+                        Pen.ID = oExistingPen2.ID
+                        Return oExistingPen2
+                    Else
+                        Call oItems.Add(oNewPen)
+                        Return oNewPen
+                    End If
+                End If
+            End If
+        End Function
+
+        Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal Pens As XmlElement)
+            oSurvey = Survey
+            oItems = New List(Of cCustomPen)
+            Dim iIndex As Integer = 0
+            Dim iCount As Integer = Pens.ChildNodes.Count
+            For Each oXMLPen As XmlElement In Pens.ChildNodes
+                iIndex += 1
+                Call oSurvey.RaiseOnProgressEvent("", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("pens.load"), iIndex / iCount)
+                Dim oItem As cCustomPen = New cCustomPen(oSurvey, oXMLPen)
+                Call oItems.Add(oItem)
+            Next
+        End Sub
+
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement, Options As cSurvey.SaveOptionsEnum)
+            Dim oXMLPens As XmlElement = Document.CreateElement("pens")
+            For Each oItem As cCustomPen In oItems
+                Call oItem.SaveTo(File, Document, oXMLPens)
+            Next
+            Call Parent.AppendChild(oXMLPens)
+            Return oXMLPens
+        End Function
+
+        Public Sub CleanUp()
+            'Call oSurvey.RaiseOnProgressEvent("cleanup", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, modMain.GetLocalizedString("cliparts.cleanup"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageCalculate Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow)
+            'Dim oUsedClipartIDs As List(Of String) = New List(Of String)
+            'Dim oDeletedClipartIDs As List(Of String) = New List(Of String)
+            'Dim oDesignItems As List(Of cItem) = oSurvey.GetAllDesignItems
+            'Dim iIndex As Integer = 0
+            'Dim iCount As Integer = oDesignItems.Count
+            'For Each oItem As cItem In oDesignItems
+            '    iIndex += 1
+            '    If (iIndex Mod 10) = 0 Then Call oSurvey.RaiseOnProgressEvent("cleanup", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("cliparts.cleanup1"), iIndex / iCount)
+            '    If oItem.Type = cIItem.cItemTypeEnum.Clipart Then
+            '        Dim oItemClipart As Items.cItemClipart = oItem
+            '        Call oUsedClipartIDs.Add(oItemClipart.Clipart.ID)
+            '    End If
+            '    If oItem.Type = cIItem.cItemTypeEnum.Sign Then
+            '        Dim oItemSign As Items.cItemSign = oItem
+            '        Call oUsedClipartIDs.Add(oItemSign.Clipart.ID)
+            '    End If
+            'Next
+            'iIndex = 0
+            'iCount = oItems.Count
+            'For Each oItem As cClipart In oItems
+            '    iIndex += 1
+            '    If (iIndex Mod 10) = 0 Then Call oSurvey.RaiseOnProgressEvent("cleanup", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("cliparts.cleanup2"), iIndex / iCount)
+            '    If Not oUsedClipartIDs.Contains(oItem.ID) Then
+            '        Call oDeletedClipartIDs.Add(oItem.ID)
+            '    End If
+            'Next
+            'iIndex = 0
+            'iCount = oDeletedClipartIDs.Count
+            'For Each sID As String In oDeletedClipartIDs
+            '    iIndex += 1
+            '    If (iIndex Mod 10) = 0 Then Call oSurvey.RaiseOnProgressEvent("cleanup", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("cliparts.cleanup3"), iIndex / iCount)
+            '    Call oItems.Remove(sID)
+            'Next
+            'Call oSurvey.RaiseOnProgressEvent("cleanup", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
+        End Sub
+
+        Public Function ContainsName(Name As String) As Boolean
+            Return oItems.FirstOrDefault(Function(oItem) oItem.Name.ToLower = Name.ToLower) IsNot Nothing
+        End Function
+
+        Public Function ContainsID(ID As String) As Boolean
+            Return oItems.FirstOrDefault(Function(oItem) oItem.ID = ID) IsNot Nothing
+        End Function
+
+        Public Function Contains(IDorName As String) As Boolean
+            If ContainsID(IDorName) Then
+                Return True
+            Else
+                Return ContainsName(IDorName)
+            End If
+        End Function
+
+        Public Function Contains(Pen As cPen) As Boolean
+            Return Contains(Pen.GetBasePen)
+        End Function
+
+        Public Function Contains(Pen As cCustomPen) As Boolean
+            Dim oPen As cCustomPen
+            If Pen.Type = cPen.PenTypeEnum.User Then
+                oPen = Pen
+            Else
+                oPen = cCustomPen.CopyAsUser(oSurvey, Pen)
+            End If
+            If ContainsID(oPen.ID) Then
+                Return True
+            Else
+                Return ContainsName(oPen.Name)
+            End If
+        End Function
+
+        Public ReadOnly Property Count As Integer
+            Get
+                Return oItems.Count
+            End Get
+        End Property
+
+        Public Function GetEnumerator() As IEnumerator Implements IEnumerable.GetEnumerator
+            Return oItems.GetEnumerator
+        End Function
+    End Class
+
+    Friend Class cPensBaseCollection
+        Inherits KeyedCollection(Of String, cCustomPen)
+
+        Public Sub Rebind()
+            MyBase.Dictionary.Clear()
+            For Each oitem As cCustomPen In MyBase.Items
+                MyBase.Dictionary.Add(oitem.ID, oitem)
+            Next
+        End Sub
+
+        Protected Overrides Function GetKeyForItem(ByVal item As cCustomPen) As String
+            Return item.ID
+        End Function
     End Class
 End Namespace

@@ -118,29 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="Label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 13</value>
-  </data>
-  <data name="Label4.Text" xml:space="preserve">
-    <value>Errore medio:</value>
-  </data>
-  <data name="Selected.HeaderText" xml:space="preserve">
-    <value>Evidenzia</value>
-  </data>
   <data name="colTrigPointsStation0.HeaderText" xml:space="preserve">
     <value>Caposaldo</value>
   </data>
   <data name="colTrigPointsStation0.ToolTipText" xml:space="preserve">
     <value>Caposaldo di rifermento per quest'anello</value>
   </data>
-  <data name="colError.HeaderText" xml:space="preserve">
-    <value>Errore %</value>
-  </data>
   <data name="colError.ToolTipText" xml:space="preserve">
     <value>Errore percentuale</value>
-  </data>
-  <data name="colErrAbs.HeaderText" xml:space="preserve">
-    <value>Errore lineare</value>
   </data>
   <data name="colErrAbs.ToolTipText" xml:space="preserve">
     <value>Errore lineare</value>
@@ -153,9 +138,6 @@
   </data>
   <data name="colErrZ.ToolTipText" xml:space="preserve">
     <value>Errore sull'asse Z</value>
-  </data>
-  <data name="colRingLen.HeaderText" xml:space="preserve">
-    <value>Lunghezza</value>
   </data>
   <data name="colRingLen.ToolTipText" xml:space="preserve">
     <value>Lunghezza della anello</value>
@@ -171,69 +153,6 @@
   </data>
   <data name="colTrigPointsList.ToolTipText" xml:space="preserve">
     <value>Dettaglio dei capisaldi dell'anello</value>
-  </data>
-  <data name="Colore.HeaderText" xml:space="preserve">
-    <value>Colore</value>
-  </data>
-  <data name="mnuInfoRing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 148</value>
-  </data>
-  <data name="mnuInfoRingCopy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="mnuInfoRingCopy.Text" xml:space="preserve">
-    <value>Copia</value>
-  </data>
-  <data name="mnuInfoRingCopyAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="mnuInfoRingCopyAll.Text" xml:space="preserve">
-    <value>Copia tutto</value>
-  </data>
-  <data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 6</value>
-  </data>
-  <data name="mnuInfoRingSelectAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="mnuInfoRingSelectAll.Text" xml:space="preserve">
-    <value>Seleziona tutti</value>
-  </data>
-  <data name="mnuInfoRingDeselectAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="mnuInfoRingDeselectAll.Text" xml:space="preserve">
-    <value>Deseleziona tutti</value>
-  </data>
-  <data name="mnuInfoRingRevertSelect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="mnuInfoRingRevertSelect.Text" xml:space="preserve">
-    <value>Inverti selezione</value>
-  </data>
-  <data name="ToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 6</value>
-  </data>
-  <data name="mnuInfoRingColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="mnuInfoRingColor.Text" xml:space="preserve">
-    <value>Colore</value>
-  </data>
-  <data name="mnuInfoRingColorBrowse.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="mnuInfoRingColorBrowse.Text" xml:space="preserve">
-    <value>Cambia...</value>
-  </data>
-  <data name="ToolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
-  </data>
-  <data name="mnuInfoRingColorReset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="mnuInfoRingColorReset.Text" xml:space="preserve">
-    <value>Reimposta</value>
   </data>
   <data name="cmdApply.Text" xml:space="preserve">
     <value>Applica</value>
@@ -312,16 +231,67 @@
   <data name="cmdOk.Text" xml:space="preserve">
     <value>Ok</value>
   </data>
-  <data name="colErrX.HeaderText" xml:space="preserve">
-    <value>X</value>
-  </data>
   <data name="colErrY.HeaderText" xml:space="preserve">
     <value>Y</value>
   </data>
   <data name="colErrZ.HeaderText" xml:space="preserve">
     <value>Z</value>
   </data>
-  <data name="mnuInfoRingExport.Text" xml:space="preserve">
+  <data name="btnCopy.Caption" xml:space="preserve">
+    <value>Copia</value>
+  </data>
+  <data name="btnCopyAll.Caption" xml:space="preserve">
+    <value>Copia tutto</value>
+  </data>
+  <data name="btnCopyValue.Caption" xml:space="preserve">
+    <value>Copia valore</value>
+  </data>
+  <data name="btnCopyValues.Caption" xml:space="preserve">
+    <value>Copia valori</value>
+  </data>
+  <data name="btnDeselectAll.Caption" xml:space="preserve">
+    <value>Deseleziona tutto</value>
+  </data>
+  <data name="btnExport.Caption" xml:space="preserve">
     <value>Esporta...</value>
+  </data>
+  <data name="btnInvertSelection.Caption" xml:space="preserve">
+    <value>Inverti selezione</value>
+  </data>
+  <data name="btnSelectAll.Caption" xml:space="preserve">
+    <value>Seleziona tutto</value>
+  </data>
+  <data name="colRingsColor.Caption" xml:space="preserve">
+    <value>Colore</value>
+  </data>
+  <data name="colRingsX.Caption" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="colRingsY.Caption" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="colRingsZ.Caption" xml:space="preserve">
+    <value>Z</value>
+  </data>
+  <data name="colRingsErrorPercent.Caption" xml:space="preserve">
+    <value>Errore %</value>
+  </data>
+  <data name="colRingsLinearError.Caption" xml:space="preserve">
+    <value>Errore lineare</value>
+  </data>
+  <data name="colRingsLength.Caption" xml:space="preserve">
+    <value>Lunghezza</value>
+  </data>
+  <data name="colRingsStation.Caption" xml:space="preserve">
+    <value>Caposaldo</value>
+  </data>
+  <data name="colRingsStationN.Caption" xml:space="preserve">
+    <value>N° di capisaldi</value>
+  </data>
+  <data name="colRingsStations.Caption" xml:space="preserve">
+    <value>Capisaldi</value>
+  </data>
+  <data name="lblAvgError.Text" xml:space="preserve">
+    <value>Errore medio:</value>
   </data>
 </root>

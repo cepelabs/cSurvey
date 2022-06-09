@@ -8,5 +8,8 @@
     Public Interface cICaveBranch
         ReadOnly Property Cave As String
         ReadOnly Property Branch As String
+
+        Function GetLocked() As Boolean
+        Function GetCaveInfo() As cICaveInfoBranches
     End Interface
 End Namespace

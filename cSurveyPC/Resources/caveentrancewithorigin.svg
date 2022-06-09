@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 32 32"
+   style="enable-background:new 0 0 32 32;"
+   xml:space="preserve"
+   sodipodi:docname="caveentrancewithorigin.svg"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"><metadata
+   id="metadata12"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs10" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="2560"
+   inkscape:window-height="1017"
+   id="namedview8"
+   showgrid="false"
+   inkscape:zoom="9.1429872"
+   inkscape:cx="51.389649"
+   inkscape:cy="32.470076"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1"
+   inkscape:document-rotation="0" />
+<style
+   type="text/css"
+   id="style2">
+	.Black{fill:#727272;}
+	.Yellow{fill:#FFB115;}
+	.Blue{fill:#1177D7;}
+	.Green{fill:#039C23;}
+	.Red{fill:#D11C1C;}
+	.White{fill:#FFFFFF;}
+	.st0{opacity:0.75;}
+	.st1{opacity:0.5;}
+	.st2{opacity:0.25;}
+</style>
+
+<g
+   style="enable-background:new"
+   id="g843"
+   transform="matrix(2.2208403,0,0,2.2208403,0.4541179,-0.90117652)"><rect
+     width="14"
+     height="14"
+     x="0"
+     y="0"
+     id="canvas"
+     style="visibility:hidden;fill:none;stroke:none" /><path
+     style="fill:#000000;stroke-width:1.05953"
+     d="m 6.9514338,3.0973943 a 6.6964707,6.6964707 0 0 0 -6.62109328,6.6953125 6.6964707,6.6964707 0 0 0 0.0039,0.2207032 H 1.4533806 a 5.5764704,5.5764704 0 0 1 -0.00391,-0.2207032 5.5764704,5.5764704 0 0 1 5.5546875,-5.5761718 5.5764704,5.5764704 0 0 1 0.021484,0 5.5764704,5.5764704 0 0 1 5.5761719,5.5761718 5.5764704,5.5764704 0 0 1 -0.0059,0.2207032 h 1.123047 a 6.6964707,6.6964707 0 0 0 0.0039,-0.2207032 6.6964707,6.6964707 0 0 0 -6.6972649,-6.6953125 6.6964707,6.6964707 0 0 0 -0.074219,0 z"
+     id="path832" /></g><style
+   type="text/css"
+   id="style834">
+	.Blue{fill:#1177D7;}
+	.Yellow{fill:#FFB115;}
+	.Black{fill:#727272;}
+	.Green{fill:#039C23;}
+	.Red{fill:#D11C1C;}
+	.st0{opacity:0.75;}
+	.st1{opacity:0.5;}
+</style><path
+   id="path864"
+   style="fill:#666666;stroke-width:2.42409;enable-background:new"
+   d="M 15.988281 10.765625 A 9.985972 9.985972 0 0 0 6.015625 20.748047 A 9.985972 9.985972 0 0 0 6.0292969 21.253906 L 18.753906 21.253906 L 18.753906 21.228516 L 18.753906 17.285156 L 22.722656 21.253906 L 25.970703 21.253906 A 9.985972 9.985972 0 0 0 25.984375 20.748047 A 9.985972 9.985972 0 0 0 15.998047 10.765625 A 9.985972 9.985972 0 0 0 15.988281 10.765625 z " /><g
+   id="Arrow1Right_1_-8"
+   transform="matrix(1.0542622,0,0,1.0750592,-56.94962,6.9944325)"
+   style="fill:#ffffff;fill-opacity:1"><path
+     class="Blue"
+     d="M 11.115739,14 H 18 V 13.3 8.2301096 L 26.386121,16.935207 18,26 V 18.7 18 h -6.884261 z"
+     id="path836-7"
+     style="fill:#ffffff;fill-opacity:1"
+     sodipodi:nodetypes="cccccccccc" /></g><g
+   id="Arrow1Right_1_"
+   transform="matrix(0.5,0,0,0.5,10.928309,17.087935)"
+   style="fill:#d11c1c;fill-opacity:1">
+	<path
+   class="Blue"
+   d="M 4,14 H 18 V 13.3 6 L 28,16 18,26 V 18.7 18 H 4 Z"
+   id="path836"
+   style="fill:#d11c1c;fill-opacity:1" />
+</g><style
+   type="text/css"
+   id="style897">
+	.Black{fill:#727272;}
+	.Red{fill:#D11C1C;}
+	.Yellow{fill:#FFB115;}
+	.Green{fill:#039C23;}
+</style></svg>

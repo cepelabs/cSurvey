@@ -19,6 +19,7 @@ Module modMain
     Public iMaxDrawItemCount As Integer
 
     Private sApplicationPath As String = ""
+    Private sUserApplicationPath As String = ""
 
     Public Function IsPrintEnabled()
         Try
@@ -28,14 +29,18 @@ Module modMain
         End Try
     End Function
 
+    Public Function GetUserApplicationPath() As String
+        If sUserApplicationPath = "" Then
+            sUserApplicationPath = IO.Path.GetDirectoryName(My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData)
+        End If
+        Return sUserApplicationPath
+    End Function
+
     Public Function GetApplicationPath() As String
-        'note: change with path of the main assembly...this to prevent problems when user set startpath different than program's folder.
-        'Return IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly.Location)
         If sApplicationPath = "" Then
             sApplicationPath = IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName)
         End If
         Return sApplicationPath
-        'Return modMain.GetApplicationPath
     End Function
 
     Public Function GetMaxDrawItemCount() As Integer

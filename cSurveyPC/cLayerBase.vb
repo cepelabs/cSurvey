@@ -30,7 +30,7 @@ Namespace cSurvey.Design.Layers
             Return oItem
         End Function
 
-        Friend Overrides Function GetAllVisibleItems(PaintOptions As cOptions, ByVal CurrentCave As String, ByVal CurrentBranch As String) As List(Of cItem)
+        Friend Overrides Function GetAllVisibleItems(PaintOptions As cOptionsCenterline, ByVal CurrentCave As String, ByVal CurrentBranch As String) As List(Of cItem)
             Dim oList As List(Of cItem) = New List(Of cItem)
             For Each oItem As cItem In MyBase.GetAllVisibleItems(PaintOptions, CurrentCave, CurrentBranch)
                 Select Case oItem.Type
@@ -49,7 +49,7 @@ Namespace cSurvey.Design.Layers
             Return oList
         End Function
 
-        Friend Overrides Function GetAllVisibleItems(PaintOptions As cOptions) As List(Of cItem)
+        Friend Overrides Function GetAllVisibleItems(PaintOptions As cOptionsCenterline) As List(Of cItem)
             Dim oList As List(Of cItem) = New List(Of cItem)
             For Each oItem As cItem In MyBase.GetAllVisibleItems(PaintOptions)
                 Select Case oItem.Type
@@ -68,7 +68,7 @@ Namespace cSurvey.Design.Layers
             Return oList
         End Function
 
-        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Clipping As cClippingRegions, Selection As Helper.Editor.cIEditDesignSelection)
+        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Clipping As cClippingRegions, Selection As Helper.Editor.cIEditDesignSelection)
             If PaintOptions.DrawDesign Then
                 'If (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Or PaintOptions.IsPreview Or PaintOptions.IsViewer Then
                 If (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Or ((PaintOptions.IsPreview Or PaintOptions.IsViewer) And Not MyBase.HiddenInPreview) Then

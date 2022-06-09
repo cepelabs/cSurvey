@@ -1,0 +1,10 @@
+<svg width="32px" height="32px" version="1.1" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:csurvey="http://www.csurvey.it">
+  <defs />
+  <rect x="0" y="0" width="32" height="32" style="fill:#FFFFFF;opacity:1;stroke:none" />
+  <g>
+    <g style="fill:none;stroke:#000000;stroke-width:0.15;stroke-linejoin:round;stroke-linecap:round;stroke-opacity:1">
+      <path d="M 1 16 L 31 16 " />
+    </g>
+  </g>
+  <rect x="0" y="0" width="32" height="32" style="fill:none;stroke:#000000;stroke-width:1;stroke-linejoin:round;stroke-linecap:round;stroke-opacity:1" />
+</svg>

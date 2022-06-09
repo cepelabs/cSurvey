@@ -27,8 +27,6 @@
         Property Calibration() As Boolean
         Property Virtual() As Boolean
 
-        Function GetLocked() As Boolean
-
         Function ToCSV(Optional UseLocalFormat As Boolean = False) As String
         Function ToTSV(Optional UseLocalFormat As Boolean = False) As String
     End Interface

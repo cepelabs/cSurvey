@@ -1,72 +1,68 @@
 ﻿Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Design.Options
 Imports cSurveyPC.cSurvey.Drawings
+Imports DevExpress.XtraBars.Docking2010
+Imports DevExpress.XtraEditors.Controls
 
-friend Class frmParametersInfoBox
-    Friend Event OnChangeOptions(ByVal Sender As Object, Options As cOptions) ' ByVal InfoBoxOptions As cOptionsPreview.cInfoBoxOptions)
-
-    Private oOptions As cOptions
+Friend Class frmParametersInfoBox
+    Private oOptions As cOptionsCenterline
     Private oInfoboxOptions As cInfoBoxOptions
     Private bDisabledEvent As Boolean
 
-    Public Sub New(Options As cOptions, Optional ByVal UnitText As String = "mm")
+    Public Sub New(Options As cOptionsCenterline, Optional ByVal UnitText As String = "mm")
 
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent()
-        oOptions = options
-        oInfoboxOptions = oOptions.InfoBoxOptions.Clone
+        oOptions = Options
+        oInfoboxOptions = oOptions.InfoBoxOptions
 
         bDisabledEvent = True
-        Dim oFonts As System.Drawing.Text.InstalledFontCollection = New System.Drawing.Text.InstalledFontCollection
-        Call cboTextFontChar.Items.Add(GetLocalizedString("parametersinfobox.textpart1"))
-        For Each oFontFamily As FontFamily In oFonts.Families
-            Call cboTextFontChar.Items.Add(oFontFamily.Name)
-        Next
-        If oInfoboxOptions.TextFont.FontName = "" Then
-            cboTextFontChar.SelectedIndex = 0
-        Else
-            cboTextFontChar.Text = oInfoboxOptions.TextFont.FontName
-        End If
 
-        tabInfoBoxPart.SelectedIndex = 0
-        Call pChangeFontOptions()
+        GroupControl1.CustomHeaderButtons(0).Properties.Checked = True
+        Call pLoadFontOptions()
 
-        txtWidth.Value = oInfoboxOptions.Width
+        chkUnlock.Checked = pIsUnlocked()
+
+        txtWidth.EditValue = oInfoboxOptions.Width
         lblWidthUnit.Text = UnitText
 
         bDisabledEvent = False
     End Sub
 
+    Private Function pIsUnlocked() As Boolean
+        Return Not ((oInfoboxOptions.IDFont.FontName = oInfoboxOptions.TextFont.FontName) And (oInfoboxOptions.TextFont.FontName = oInfoboxOptions.TitleFont.FontName))
+    End Function
+
     Private Sub pSave()
         Call oOptions.InfoBoxOptions.CopyFrom(oInfoboxOptions)
     End Sub
 
-    Private Sub cmdFontColor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdFontColor.Click
-        Dim oCD As ColorDialog = New ColorDialog
-        With oCD
-            .FullOpen = True
-            .AnyColor = True
-            .Color = picFontColor.BackColor
-            If .ShowDialog = Windows.Forms.DialogResult.OK Then
-                picFontColor.BackColor = .Color
-                Select Case tabInfoBoxPart.SelectedIndex
-                    Case 0
-                        oInfoboxOptions.IDFont.Color = .Color
-                    Case 1
-                        oInfoboxOptions.TitleFont.Color = .Color
-                    Case 2
-                        oInfoboxOptions.TextFont.Color = .Color
-                End Select
-            End If
-        End With
-    End Sub
+    'Private Sub cmdFontColor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    Dim oCD As ColorDialog = New ColorDialog
+    '    With oCD
+    '        .FullOpen = True
+    '        .AnyColor = True
+    '        .Color = picFontColor.BackColor
+    '        If .ShowDialog = Windows.Forms.DialogResult.OK Then
+    '            picFontColor.BackColor = .Color
+    '            Select Case tabInfoBoxPart.SelectedIndex
+    '                Case 0
+    '                    oInfoboxOptions.IDFont.Color = .Color
+    '                Case 1
+    '                    oInfoboxOptions.TitleFont.Color = .Color
+    '                Case 2
+    '                    oInfoboxOptions.TextFont.Color = .Color
+    '            End Select
+    '        End If
+    '    End With
+    'End Sub
 
     Private Sub chkTextFontBold_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkTextFontBold.CheckedChanged
         Try
-            If Not bDisabledEvent Then
-                Select Case tabInfoBoxPart.SelectedIndex
+            If Not oInfoboxOptions Is Nothing AndAlso Not bDisabledEvent Then
+                Select Case pGetCurrentTab()
                     Case 0
                         oInfoboxOptions.IDFont.FontBold = chkTextFontBold.Checked
                     Case 1
@@ -81,8 +77,8 @@ friend Class frmParametersInfoBox
 
     Private Sub chkTextFontItalic_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkTextFontItalic.CheckedChanged
         Try
-            If Not bDisabledEvent Then
-                Select Case tabInfoBoxPart.SelectedIndex
+            If Not oInfoboxOptions Is Nothing AndAlso Not bDisabledEvent Then
+                Select Case pGetCurrentTab()
                     Case 0
                         oInfoboxOptions.IDFont.FontItalic = chkTextFontItalic.Checked
                     Case 1
@@ -97,8 +93,8 @@ friend Class frmParametersInfoBox
 
     Private Sub chkTextFontUnderline_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkTextFontUnderline.CheckedChanged
         Try
-            If Not bDisabledEvent Then
-                Select Case tabInfoBoxPart.SelectedIndex
+            If Not oInfoboxOptions Is Nothing AndAlso Not bDisabledEvent Then
+                Select Case pGetCurrentTab()
                     Case 0
                         oInfoboxOptions.IDFont.FontUnderline = chkTextFontUnderline.Checked
                     Case 1
@@ -111,10 +107,14 @@ friend Class frmParametersInfoBox
         End Try
     End Sub
 
+    Private Function pGetCurrentTab() As Integer
+        Return GroupControl1.CustomHeaderButtons.IndexOf(GroupControl1.CustomHeaderButtons.FirstOrDefault(Function(oItem) oItem.IsChecked))
+    End Function
+
     Private Sub chkVisible_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkVisible.CheckedChanged
         Try
-            If Not bDisabledEvent Then
-                Select Case tabInfoBoxPart.SelectedIndex
+            If Not oInfoboxOptions Is Nothing AndAlso Not bDisabledEvent Then
+                Select Case pGetCurrentTab()
                     Case 0
                         oInfoboxOptions.IDVisible = chkVisible.Checked
                     Case 1
@@ -127,138 +127,146 @@ friend Class frmParametersInfoBox
         End Try
     End Sub
 
-    Private Sub pChangeFontOptions()
+    Private Sub pLoadFontOptions()
         bDisabledEvent = True
-        pnlSub.Parent = tabInfoBoxPart.SelectedTab
-        pnlSub.BringToFront()
         Try
-            Select Case tabInfoBoxPart.SelectedIndex
+            Select Case pGetCurrentTab()
                 Case 0
-                    picFontColor.BackColor = oInfoboxOptions.IDFont.Color
+                    txtColor.EditValue = oInfoboxOptions.IDFont.Color
                     chkTextFontBold.Checked = oInfoboxOptions.IDFont.FontBold
                     chkTextFontItalic.Checked = oInfoboxOptions.IDFont.FontItalic
                     chkTextFontUnderline.Checked = oInfoboxOptions.IDFont.FontUnderline
-                    If oInfoboxOptions.IDFont.FontSize = 0 Then
-                        cboTextFontSize.SelectedIndex = 0
+                    If oInfoboxOptions.IDFont.FontName = "" Then
+                        cboTextFontChar.EditValue = Nothing
                     Else
-                        cboTextFontSize.Text = oInfoboxOptions.IDFont.FontSize
+                        cboTextFontChar.EditValue = oInfoboxOptions.IDFont.FontName
+                    End If
+                    If oInfoboxOptions.IDFont.FontSize = 0 Then
+                        cboTextFontSize.EditValue = Nothing
+                    Else
+                        cboTextFontSize.EditValue = oInfoboxOptions.IDFont.FontSize
                     End If
                     chkVisible.Checked = oInfoboxOptions.IDVisible
+
+                    chkUnlock.Visible = False
                 Case 1
-                    picFontColor.BackColor = oInfoboxOptions.TitleFont.Color
+                    txtColor.EditValue = oInfoboxOptions.TitleFont.Color
                     chkTextFontBold.Checked = oInfoboxOptions.TitleFont.FontBold
                     chkTextFontItalic.Checked = oInfoboxOptions.TitleFont.FontItalic
                     chkTextFontUnderline.Checked = oInfoboxOptions.TitleFont.FontUnderline
-                    If oInfoboxOptions.TitleFont.FontSize = 0 Then
-                        cboTextFontSize.SelectedIndex = 0
+                    If oInfoboxOptions.TitleFont.FontName = "" Then
+                        cboTextFontChar.EditValue = Nothing
                     Else
-                        cboTextFontSize.Text = oInfoboxOptions.TitleFont.FontSize
+                        cboTextFontChar.EditValue = oInfoboxOptions.TitleFont.FontName
+                    End If
+                    If oInfoboxOptions.TitleFont.FontSize = 0 Then
+                        cboTextFontSize.EditValue = Nothing
+                    Else
+                        cboTextFontSize.EditValue = oInfoboxOptions.TitleFont.FontSize
                     End If
                     chkVisible.Checked = oInfoboxOptions.TitleVisible
+
+                    chkUnlock.Visible = True
+                    cboTextFontChar.Enabled = chkUnlock.Checked
                 Case 2
-                    picFontColor.BackColor = oInfoboxOptions.TextFont.Color
+                    txtColor.EditValue = oInfoboxOptions.TextFont.Color
                     chkTextFontBold.Checked = oInfoboxOptions.TextFont.FontBold
                     chkTextFontItalic.Checked = oInfoboxOptions.TextFont.FontItalic
                     chkTextFontUnderline.Checked = oInfoboxOptions.TextFont.FontUnderline
-                    If oInfoboxOptions.TextFont.FontSize = 0 Then
-                        cboTextFontSize.SelectedIndex = 0
+                    If oInfoboxOptions.TextFont.FontName = "" Then
+                        cboTextFontChar.EditValue = Nothing
                     Else
-                        cboTextFontSize.Text = oInfoboxOptions.TextFont.FontSize
+                        cboTextFontChar.EditValue = oInfoboxOptions.TextFont.FontName
+                    End If
+                    If oInfoboxOptions.TextFont.FontSize = 0 Then
+                        cboTextFontSize.EditValue = Nothing
+                    Else
+                        cboTextFontSize.EditValue = oInfoboxOptions.TextFont.FontSize
                     End If
                     chkVisible.Checked = oInfoboxOptions.TextVisible
+
+                    chkUnlock.Visible = True
+                    cboTextFontChar.Enabled = chkUnlock.Checked
             End Select
         Catch
         End Try
         bDisabledEvent = False
     End Sub
 
-    Private Sub tabInfoBoxPart_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles tabInfoBoxPart.SelectedIndexChanged
-        Call pChangeFontOptions()
+    Private Sub cboTextFontChar_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboTextFontChar.ButtonClick
+        If e.Button.Index = 1 Then
+            cboTextFontChar.EditValue = Nothing
+        End If
     End Sub
 
-    Private Sub cboTextFontChar_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboTextFontChar.SelectedIndexChanged
+    Private Sub cboTextFontChar_EditValueChanged(sender As Object, e As EventArgs) Handles cboTextFontChar.EditValueChanged
+        If Not oInfoboxOptions Is Nothing AndAlso Not bDisabledEvent Then
+            Select Case pGetCurrentTab()
+                Case 0
+                    If cboTextFontChar.EditValue Is Nothing Then
+                        oInfoboxOptions.IDFont.FontName = ""
+                        If pIsUnlocked() Then
+                            oInfoboxOptions.TitleFont.FontName = ""
+                            oInfoboxOptions.TextFont.FontName = ""
+                        End If
+                    Else
+                        oInfoboxOptions.IDFont.FontName = cboTextFontChar.EditValue
+                        If pIsUnlocked() Then
+                            oInfoboxOptions.TitleFont.FontName = cboTextFontChar.EditValue
+                            oInfoboxOptions.TextFont.FontName = cboTextFontChar.EditValue
+                        End If
+                    End If
+                        Case 1
+                    If cboTextFontChar.EditValue Is Nothing Then
+                        oInfoboxOptions.TitleFont.FontName = ""
+                    Else
+                        oInfoboxOptions.TitleFont.FontName = cboTextFontChar.EditValue
+                    End If
+                Case 2
+                    If cboTextFontChar.EditValue Is Nothing Then
+                        oInfoboxOptions.TextFont.FontName = ""
+                    Else
+                        oInfoboxOptions.TextFont.FontName = cboTextFontChar.EditValue
+                    End If
+            End Select
+        End If
+    End Sub
+
+    Private Sub cboTextFontSize_EditValueChanging(sender As Object, e As ChangingEventArgs) Handles cboTextFontSize.EditValueChanging
+        If Not e.NewValue Is Nothing Then
+            Dim sValue As String = e.NewValue.ToString.Trim
+            e.NewValue = sValue
+            e.Cancel = Not IsNumeric(sValue)
+        End If
+    End Sub
+
+    Private Sub cboTextFontSize_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboTextFontSize.ButtonClick
+        If e.Button.Index = 1 Then
+            cboTextFontSize.EditValue = Nothing
+        End If
+    End Sub
+
+    Private Sub cboTextFontSize_EditValueChanged(sender As Object, e As EventArgs) Handles cboTextFontSize.EditValueChanged
         Try
-            If Not bDisabledEvent Then
-                If cboTextFontChar.SelectedIndex = 0 Then
-                    oInfoboxOptions.TextFont.FontName = ""
-                Else
-                    oInfoboxOptions.IDFont.FontName = cboTextFontChar.Text
-                    oInfoboxOptions.TitleFont.FontName = cboTextFontChar.Text
-                    oInfoboxOptions.TextFont.FontName = cboTextFontChar.Text
-                End If
-            End If
-        Catch
-        End Try
-    End Sub
-
-    Private Sub cmdApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdApply.Click
-        Call pSave()
-        RaiseEvent OnChangeOptions(Me, oOptions)
-    End Sub
-
-    Private Sub cmdCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancel.Click
-        Call Close()
-    End Sub
-
-    Private Sub cmdOk_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdOk.Click
-        Call pSave()
-        RaiseEvent OnChangeOptions(Me, oOptions)
-        Call Close()
-    End Sub
-
-    Private Sub cboTextFontSize_SelectedValueChanged(sender As Object, e As System.EventArgs) Handles cboTextFontSize.SelectedValueChanged
-        Try
-            If Not bDisabledEvent Then
-                Select Case tabInfoBoxPart.SelectedIndex
+            If Not oInfoboxOptions Is Nothing AndAlso Not bDisabledEvent Then
+                Select Case pGetCurrentTab()
                     Case 0
-                        If cboTextFontSize.SelectedIndex = 0 Then
+                        If cboTextFontSize.EditValue Is Nothing Then
                             oInfoboxOptions.IDFont.FontSize = 0
                         Else
-                            oInfoboxOptions.IDFont.FontSize = cboTextFontSize.Text
+                            oInfoboxOptions.IDFont.FontSize = cboTextFontSize.EditValue
                         End If
                     Case 1
-                        If cboTextFontSize.SelectedIndex = 0 Then
+                        If cboTextFontSize.EditValue Is Nothing Then
                             oInfoboxOptions.TitleFont.FontSize = 0
                         Else
-                            oInfoboxOptions.TitleFont.FontSize = cboTextFontSize.Text
+                            oInfoboxOptions.TitleFont.FontSize = cboTextFontSize.EditValue
                         End If
                     Case 2
-                        If cboTextFontSize.SelectedIndex = 0 Then
+                        If cboTextFontSize.EditValue Is Nothing Then
                             oInfoboxOptions.TextFont.FontSize = 0
                         Else
-                            oInfoboxOptions.TextFont.FontSize = cboTextFontSize.Text
-                        End If
-                End Select
-            End If
-        Catch
-        End Try
-    End Sub
-
-    Private Sub cboTextFontSize_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cboTextFontSize.SelectedIndexChanged
-
-    End Sub
-
-    Private Sub cboTextFontSize_TextChanged(sender As Object, e As System.EventArgs) Handles cboTextFontSize.TextChanged
-        Try
-            If Not bDisabledEvent Then
-                Select Case tabInfoBoxPart.SelectedIndex
-                    Case 0
-                        If cboTextFontSize.SelectedIndex = 0 Then
-                            oInfoboxOptions.IDFont.FontSize = 0
-                        Else
-                            oInfoboxOptions.IDFont.FontSize = cboTextFontSize.Text
-                        End If
-                    Case 1
-                        If cboTextFontSize.SelectedIndex = 0 Then
-                            oInfoboxOptions.TitleFont.FontSize = 0
-                        Else
-                            oInfoboxOptions.TitleFont.FontSize = cboTextFontSize.Text
-                        End If
-                    Case 2
-                        If cboTextFontSize.SelectedIndex = 0 Then
-                            oInfoboxOptions.TextFont.FontSize = 0
-                        Else
-                            oInfoboxOptions.TextFont.FontSize = cboTextFontSize.Text
+                            oInfoboxOptions.TextFont.FontSize = cboTextFontSize.EditValue
                         End If
                 End Select
             End If
@@ -268,10 +276,36 @@ friend Class frmParametersInfoBox
 
     Private Sub txtWidth_ValueChanged(sender As System.Object, e As System.EventArgs) Handles txtWidth.ValueChanged
         Try
-            If Not bDisabledEvent Then
-                oInfoboxOptions.Width = txtWidth.Value
+            If Not oInfoboxOptions Is Nothing AndAlso Not bDisabledEvent Then
+                oInfoboxOptions.Width = txtWidth.EditValue
             End If
         Catch
         End Try
+    End Sub
+
+    Private Sub GroupControl1_CustomButtonChecked(sender As Object, e As BaseButtonEventArgs) Handles GroupControl1.CustomButtonChecked
+        Call pLoadFontOptions()
+    End Sub
+
+    Private Sub txtColor_EditValueChanged(sender As Object, e As EventArgs) Handles txtColor.EditValueChanged
+        If Not oInfoboxOptions Is Nothing AndAlso Not bDisabledEvent Then
+            Select Case pGetCurrentTab()
+                Case 0
+                    oInfoboxOptions.IDFont.Color = txtColor.EditValue
+                Case 1
+                    oInfoboxOptions.TitleFont.Color = txtColor.EditValue
+                Case 2
+                    oInfoboxOptions.TextFont.Color = txtColor.EditValue
+            End Select
+        End If
+    End Sub
+
+    Private Sub chkUnlock_CheckedChanged(sender As Object, e As EventArgs) Handles chkUnlock.CheckedChanged
+        If Not oInfoboxOptions Is Nothing AndAlso Not bDisabledEvent Then
+            Select Case pGetCurrentTab()
+                Case 1, 2
+                    cboTextFontChar.Enabled = chkUnlock.Checked
+            End Select
+        End If
     End Sub
 End Class

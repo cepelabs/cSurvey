@@ -135,13 +135,19 @@
   <data name="Label2.Text" xml:space="preserve">
     <value>Nome:</value>
   </data>
-  <data name="mnuTemplatesDelete.Text" xml:space="preserve">
-    <value>Elimina</value>
-  </data>
-  <data name="mnuTemplatesSetAsDefault.Text" xml:space="preserve">
-    <value>Imposta come predefinito</value>
-  </data>
   <data name="cmdClose.Text" xml:space="preserve">
     <value>Chiudi</value>
+  </data>
+  <data name="btnTemplateDelete.Caption" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="btnTemplateSetAsDefault.Caption" xml:space="preserve">
+    <value>Imposta come predefinito</value>
+  </data>
+  <data name="colTemplatesDefault.Caption" xml:space="preserve">
+    <value>Predefinito</value>
+  </data>
+  <data name="colTemplatesName.Caption" xml:space="preserve">
+    <value>Nome</value>
   </data>
 </root>

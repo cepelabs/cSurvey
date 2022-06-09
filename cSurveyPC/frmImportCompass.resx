@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,22 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="txtPrefix.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 9pt, style=Bold</value>
-  </data>
   <data name="txtPrefix.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 40</value>
   </data>
   <data name="txtPrefix.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 22</value>
+    <value>65, 20</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txtPrefix.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <metadata name="tipDefault.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="txtPrefix.ToolTip" xml:space="preserve">
     <value>Prefix that will be added to all stations names</value>
   </data>
@@ -141,25 +135,22 @@
     <value>txtPrefix</value>
   </data>
   <data name="&gt;&gt;txtPrefix.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtPrefix.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtPrefix.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
-  <data name="lblPrefix.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblPrefix.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblPrefix.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblPrefix.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 44</value>
   </data>
   <data name="lblPrefix.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 13</value>
+    <value>32, 13</value>
   </data>
   <data name="lblPrefix.TabIndex" type="System.Int32, mscorlib">
     <value>62</value>
@@ -171,22 +162,19 @@
     <value>lblPrefix</value>
   </data>
   <data name="&gt;&gt;lblPrefix.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPrefix.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPrefix.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="txtFilename.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 9pt, style=Bold</value>
+    <value>10</value>
   </data>
   <data name="txtFilename.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 12</value>
   </data>
   <data name="txtFilename.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
+    <value>198, 20</value>
   </data>
   <data name="txtFilename.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -198,25 +186,22 @@
     <value>txtFilename</value>
   </data>
   <data name="&gt;&gt;txtFilename.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtFilename.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtFilename.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
-  <data name="lblFilename.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblFilename.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblFilename.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblFilename.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 16</value>
   </data>
   <data name="lblFilename.Size" type="System.Drawing.Size, System.Drawing">
-    <value>27, 13</value>
+    <value>20, 13</value>
   </data>
   <data name="lblFilename.TabIndex" type="System.Int32, mscorlib">
     <value>65</value>
@@ -228,13 +213,13 @@
     <value>lblFilename</value>
   </data>
   <data name="&gt;&gt;lblFilename.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblFilename.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblFilename.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cmdCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -256,13 +241,13 @@
     <value>cmdCancel</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="cmdOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -283,22 +268,19 @@
     <value>cmdOk</value>
   </data>
   <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="txtCaveName.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 9pt, style=Bold</value>
+    <value>6</value>
   </data>
   <data name="txtCaveName.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 68</value>
   </data>
   <data name="txtCaveName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
+    <value>198, 20</value>
   </data>
   <data name="txtCaveName.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -310,18 +292,15 @@
     <value>txtCaveName</value>
   </data>
   <data name="&gt;&gt;txtCaveName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtCaveName.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtCaveName.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
-  <data name="lblCaveName.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblCaveName.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblCaveName.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblCaveName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -331,7 +310,7 @@
     <value>13, 72</value>
   </data>
   <data name="lblCaveName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 13</value>
+    <value>29, 13</value>
   </data>
   <data name="lblCaveName.TabIndex" type="System.Int32, mscorlib">
     <value>68</value>
@@ -343,72 +322,93 @@
     <value>lblCaveName</value>
   </data>
   <data name="&gt;&gt;lblCaveName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblCaveName.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblCaveName.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="chkCompassCreateBrachForSession.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>4</value>
   </data>
   <data name="chkCompassCreateBrachForSession.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkCompassCreateBrachForSession.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 102</value>
+    <value>13, 102</value>
+  </data>
+  <data name="chkCompassCreateBrachForSession.Properties.Caption" xml:space="preserve">
+    <value>Create branch for each session</value>
   </data>
   <data name="chkCompassCreateBrachForSession.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 17</value>
+    <value>173, 20</value>
   </data>
   <data name="chkCompassCreateBrachForSession.TabIndex" type="System.Int32, mscorlib">
     <value>69</value>
-  </data>
-  <data name="chkCompassCreateBrachForSession.Text" xml:space="preserve">
-    <value>Create branch for each session</value>
   </data>
   <data name="&gt;&gt;chkCompassCreateBrachForSession.Name" xml:space="preserve">
     <value>chkCompassCreateBrachForSession</value>
   </data>
   <data name="&gt;&gt;chkCompassCreateBrachForSession.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkCompassCreateBrachForSession.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkCompassCreateBrachForSession.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="chkCompassImportFlagX.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>2</value>
   </data>
   <data name="chkCompassImportFlagX.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkCompassImportFlagX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 125</value>
+    <value>13, 128</value>
+  </data>
+  <data name="chkCompassImportFlagX.Properties.Caption" xml:space="preserve">
+    <value>Import shots with X flag</value>
   </data>
   <data name="chkCompassImportFlagX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 17</value>
+    <value>137, 20</value>
   </data>
   <data name="chkCompassImportFlagX.TabIndex" type="System.Int32, mscorlib">
     <value>70</value>
-  </data>
-  <data name="chkCompassImportFlagX.Text" xml:space="preserve">
-    <value>Import shots with X flag</value>
   </data>
   <data name="&gt;&gt;chkCompassImportFlagX.Name" xml:space="preserve">
     <value>chkCompassImportFlagX</value>
   </data>
   <data name="&gt;&gt;chkCompassImportFlagX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkCompassImportFlagX.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkCompassImportFlagX.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkCompassImportSSShotAsSplay.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkCompassImportSSShotAsSplay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 154</value>
+  </data>
+  <data name="chkCompassImportSSShotAsSplay.Properties.Caption" xml:space="preserve">
+    <value>Import shots with [ss] in name as splay</value>
+  </data>
+  <data name="chkCompassImportSSShotAsSplay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 20</value>
+  </data>
+  <data name="chkCompassImportSSShotAsSplay.TabIndex" type="System.Int32, mscorlib">
+    <value>71</value>
+  </data>
+  <data name="&gt;&gt;chkCompassImportSSShotAsSplay.Name" xml:space="preserve">
+    <value>chkCompassImportSSShotAsSplay</value>
+  </data>
+  <data name="&gt;&gt;chkCompassImportSSShotAsSplay.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkCompassImportSSShotAsSplay.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkCompassImportSSShotAsSplay.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -420,10 +420,7 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>317, 258</value>
   </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="frmImportCompass.IconOptions.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB5KwAAfC8AAH81AACAOQAAgz4AAIU+AACGRgAAiEYAAIlJAACM
@@ -488,25 +485,16 @@
         AAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAADwAAAB8AAAA/AAA=
 </value>
   </data>
-  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Import from Compass:</value>
   </data>
-  <data name="&gt;&gt;tipDefault.Name" xml:space="preserve">
-    <value>tipDefault</value>
-  </data>
-  <data name="&gt;&gt;tipDefault.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmImportCompass</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cForm, cSurveyPC, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

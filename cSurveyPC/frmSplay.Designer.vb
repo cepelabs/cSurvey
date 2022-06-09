@@ -23,57 +23,63 @@ Partial Class frmSplay
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSplay))
-        Me.TabMain = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.chkPlan = New System.Windows.Forms.CheckBox()
-        Me.pnlPlan = New System.Windows.Forms.Panel()
+        Me.chkCrossSection = New DevExpress.XtraEditors.CheckEdit()
+        Me.pnlCrosssection = New DevExpress.XtraEditors.PanelControl()
+        Me.chkPropCrossSectionShowOnlyCutSplay = New DevExpress.XtraEditors.CheckEdit()
+        Me.lblPropCrossSectionSplayProjectionAngle = New DevExpress.XtraEditors.LabelControl()
+        Me.txtPropCrossSectionSplayProjectionAngle = New System.Windows.Forms.NumericUpDown()
+        Me.chkPropCrossSectionShowSplayBorder = New DevExpress.XtraEditors.CheckEdit()
+        Me.lblPropCrossSectionSplayLineStyle = New DevExpress.XtraEditors.LabelControl()
+        Me.cboPropCrossSectionSplayLineStyle = New System.Windows.Forms.ComboBox()
+        Me.lblPropCrossSectionSplayMaxVariationAngle = New DevExpress.XtraEditors.LabelControl()
+        Me.txtPropCrossSectionSplayMaxVariationAngle = New System.Windows.Forms.NumericUpDown()
+        Me.chkPropCrossSectionSplayText = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkPlan = New DevExpress.XtraEditors.CheckEdit()
+        Me.pnlPlan = New DevExpress.XtraEditors.PanelControl()
         Me.cboPropPlanSplayPlanProjectionType = New System.Windows.Forms.ComboBox()
-        Me.lblPropPlanSplayInclinationRange = New System.Windows.Forms.Label()
+        Me.lblPropPlanSplayInclinationRange = New DevExpress.XtraEditors.LabelControl()
         Me.txtPropPlanSplayMaxVariationDelta = New System.Windows.Forms.NumericUpDown()
         Me.txtPropPlanSplayInclinationRangeMax = New System.Windows.Forms.NumericUpDown()
         Me.txtPropPlanSplayPlanDeltaZ = New System.Windows.Forms.NumericUpDown()
         Me.txtPropPlanSplayInclinationRangeMin = New System.Windows.Forms.NumericUpDown()
-        Me.lblPropPlanSplayPlanProjectionType = New System.Windows.Forms.Label()
-        Me.lblPropPlanSplayMaxVariationDelta = New System.Windows.Forms.Label()
-        Me.lblPropPlanSplayPlanDeltaZ = New System.Windows.Forms.Label()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.pnlProfile = New System.Windows.Forms.Panel()
+        Me.lblPropPlanSplayPlanProjectionType = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPropPlanSplayMaxVariationDelta = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPropPlanSplayPlanDeltaZ = New DevExpress.XtraEditors.LabelControl()
+        Me.pnlProfile = New DevExpress.XtraEditors.PanelControl()
         Me.txtPropProfileSplayNegInclinationRangeMax = New System.Windows.Forms.NumericUpDown()
         Me.txtPropProfileSplayNegInclinationRangeMin = New System.Windows.Forms.NumericUpDown()
-        Me.lblPropProfileSplayNegInclinationRange = New System.Windows.Forms.Label()
+        Me.lblPropProfileSplayNegInclinationRange = New DevExpress.XtraEditors.LabelControl()
         Me.txtPropProfileSplayPosInclinationRangeMax = New System.Windows.Forms.NumericUpDown()
         Me.txtPropProfileSplayPosInclinationRangeMin = New System.Windows.Forms.NumericUpDown()
-        Me.lblPropProfileSplayPosInclinationRange = New System.Windows.Forms.Label()
-        Me.lblPropProfileSplayProjectionAngle = New System.Windows.Forms.Label()
-        Me.lblPropProfileSplayMaxVariationAngle = New System.Windows.Forms.Label()
+        Me.lblPropProfileSplayPosInclinationRange = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPropProfileSplayProjectionAngle = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPropProfileSplayMaxVariationAngle = New DevExpress.XtraEditors.LabelControl()
         Me.txtPropProfileSplayMaxVariationAngle = New System.Windows.Forms.NumericUpDown()
         Me.txtPropProfileSplayProjectionAngle = New System.Windows.Forms.NumericUpDown()
-        Me.chkProfile = New System.Windows.Forms.CheckBox()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.chkCrossSection = New System.Windows.Forms.CheckBox()
-        Me.pnlCrosssection = New System.Windows.Forms.Panel()
-        Me.chkPropCrossSectionShowOnlyCutSplay = New System.Windows.Forms.CheckBox()
-        Me.lblPropCrossSectionSplayProjectionAngle = New System.Windows.Forms.Label()
-        Me.lblPropCrossSectionSplayText = New System.Windows.Forms.Label()
-        Me.txtPropCrossSectionSplayProjectionAngle = New System.Windows.Forms.NumericUpDown()
-        Me.lblPropCrossSectionShowSplayBorder = New System.Windows.Forms.Label()
-        Me.chkPropCrossSectionShowSplayBorder = New System.Windows.Forms.CheckBox()
-        Me.lblPropCrossSectionSplayLineStyle = New System.Windows.Forms.Label()
-        Me.cboPropCrossSectionSplayLineStyle = New System.Windows.Forms.ComboBox()
-        Me.lblPropCrossSectionSplayMaxVariationAngle = New System.Windows.Forms.Label()
-        Me.txtPropCrossSectionSplayMaxVariationAngle = New System.Windows.Forms.NumericUpDown()
-        Me.chkPropCrossSectionSplayText = New System.Windows.Forms.CheckBox()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.cmdOk = New System.Windows.Forms.Button()
-        Me.cmdApply = New System.Windows.Forms.Button()
-        Me.TabMain.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
+        Me.chkProfile = New DevExpress.XtraEditors.CheckEdit()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdApply = New DevExpress.XtraEditors.SimpleButton()
+        Me.tabMain = New DevExpress.XtraTab.XtraTabControl()
+        Me.tabPlan = New DevExpress.XtraTab.XtraTabPage()
+        Me.tabProfile = New DevExpress.XtraTab.XtraTabPage()
+        Me.tabCrossSections = New DevExpress.XtraTab.XtraTabPage()
+        CType(Me.chkCrossSection.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlCrosssection, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlCrosssection.SuspendLayout()
+        CType(Me.chkPropCrossSectionShowOnlyCutSplay.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtPropCrossSectionSplayProjectionAngle, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkPropCrossSectionShowSplayBorder.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtPropCrossSectionSplayMaxVariationAngle, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkPropCrossSectionSplayText.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkPlan.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlPlan, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlPlan.SuspendLayout()
         CType(Me.txtPropPlanSplayMaxVariationDelta, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropPlanSplayInclinationRangeMax, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropPlanSplayPlanDeltaZ, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropPlanSplayInclinationRangeMin, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabPage2.SuspendLayout()
+        CType(Me.pnlProfile, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlProfile.SuspendLayout()
         CType(Me.txtPropProfileSplayNegInclinationRangeMax, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropProfileSplayNegInclinationRangeMin, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -81,38 +87,100 @@ Partial Class frmSplay
         CType(Me.txtPropProfileSplayPosInclinationRangeMin, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropProfileSplayMaxVariationAngle, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropProfileSplayProjectionAngle, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabPage3.SuspendLayout()
-        Me.pnlCrosssection.SuspendLayout()
-        CType(Me.txtPropCrossSectionSplayProjectionAngle, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropCrossSectionSplayMaxVariationAngle, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkProfile.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tabMain, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabMain.SuspendLayout()
+        Me.tabPlan.SuspendLayout()
+        Me.tabProfile.SuspendLayout()
+        Me.tabCrossSections.SuspendLayout()
         Me.SuspendLayout()
         '
-        'TabMain
+        'chkCrossSection
         '
-        resources.ApplyResources(Me.TabMain, "TabMain")
-        Me.TabMain.Controls.Add(Me.TabPage1)
-        Me.TabMain.Controls.Add(Me.TabPage2)
-        Me.TabMain.Controls.Add(Me.TabPage3)
-        Me.TabMain.Name = "TabMain"
-        Me.TabMain.SelectedIndex = 0
+        resources.ApplyResources(Me.chkCrossSection, "chkCrossSection")
+        Me.chkCrossSection.Name = "chkCrossSection"
+        Me.chkCrossSection.Properties.AutoWidth = True
+        Me.chkCrossSection.Properties.Caption = resources.GetString("chkCrossSection.Properties.Caption")
         '
-        'TabPage1
+        'pnlCrosssection
         '
-        Me.TabPage1.Controls.Add(Me.chkPlan)
-        Me.TabPage1.Controls.Add(Me.pnlPlan)
-        resources.ApplyResources(Me.TabPage1, "TabPage1")
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.UseVisualStyleBackColor = True
+        Me.pnlCrosssection.Controls.Add(Me.chkPropCrossSectionShowOnlyCutSplay)
+        Me.pnlCrosssection.Controls.Add(Me.lblPropCrossSectionSplayProjectionAngle)
+        Me.pnlCrosssection.Controls.Add(Me.txtPropCrossSectionSplayProjectionAngle)
+        Me.pnlCrosssection.Controls.Add(Me.chkPropCrossSectionShowSplayBorder)
+        Me.pnlCrosssection.Controls.Add(Me.lblPropCrossSectionSplayLineStyle)
+        Me.pnlCrosssection.Controls.Add(Me.cboPropCrossSectionSplayLineStyle)
+        Me.pnlCrosssection.Controls.Add(Me.lblPropCrossSectionSplayMaxVariationAngle)
+        Me.pnlCrosssection.Controls.Add(Me.txtPropCrossSectionSplayMaxVariationAngle)
+        Me.pnlCrosssection.Controls.Add(Me.chkPropCrossSectionSplayText)
+        resources.ApplyResources(Me.pnlCrosssection, "pnlCrosssection")
+        Me.pnlCrosssection.Name = "pnlCrosssection"
+        '
+        'chkPropCrossSectionShowOnlyCutSplay
+        '
+        resources.ApplyResources(Me.chkPropCrossSectionShowOnlyCutSplay, "chkPropCrossSectionShowOnlyCutSplay")
+        Me.chkPropCrossSectionShowOnlyCutSplay.Name = "chkPropCrossSectionShowOnlyCutSplay"
+        Me.chkPropCrossSectionShowOnlyCutSplay.Properties.AutoWidth = True
+        Me.chkPropCrossSectionShowOnlyCutSplay.Properties.Caption = resources.GetString("chkPropCrossSectionShowOnlyCutSplay.Properties.Caption")
+        '
+        'lblPropCrossSectionSplayProjectionAngle
+        '
+        resources.ApplyResources(Me.lblPropCrossSectionSplayProjectionAngle, "lblPropCrossSectionSplayProjectionAngle")
+        Me.lblPropCrossSectionSplayProjectionAngle.Name = "lblPropCrossSectionSplayProjectionAngle"
+        '
+        'txtPropCrossSectionSplayProjectionAngle
+        '
+        resources.ApplyResources(Me.txtPropCrossSectionSplayProjectionAngle, "txtPropCrossSectionSplayProjectionAngle")
+        Me.txtPropCrossSectionSplayProjectionAngle.Maximum = New Decimal(New Integer() {90, 0, 0, 0})
+        Me.txtPropCrossSectionSplayProjectionAngle.Minimum = New Decimal(New Integer() {90, 0, 0, -2147483648})
+        Me.txtPropCrossSectionSplayProjectionAngle.Name = "txtPropCrossSectionSplayProjectionAngle"
+        '
+        'chkPropCrossSectionShowSplayBorder
+        '
+        resources.ApplyResources(Me.chkPropCrossSectionShowSplayBorder, "chkPropCrossSectionShowSplayBorder")
+        Me.chkPropCrossSectionShowSplayBorder.Name = "chkPropCrossSectionShowSplayBorder"
+        Me.chkPropCrossSectionShowSplayBorder.Properties.AutoWidth = True
+        Me.chkPropCrossSectionShowSplayBorder.Properties.Caption = resources.GetString("chkPropCrossSectionShowSplayBorder.Properties.Caption")
+        '
+        'lblPropCrossSectionSplayLineStyle
+        '
+        resources.ApplyResources(Me.lblPropCrossSectionSplayLineStyle, "lblPropCrossSectionSplayLineStyle")
+        Me.lblPropCrossSectionSplayLineStyle.Name = "lblPropCrossSectionSplayLineStyle"
+        '
+        'cboPropCrossSectionSplayLineStyle
+        '
+        Me.cboPropCrossSectionSplayLineStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        resources.ApplyResources(Me.cboPropCrossSectionSplayLineStyle, "cboPropCrossSectionSplayLineStyle")
+        Me.cboPropCrossSectionSplayLineStyle.Items.AddRange(New Object() {resources.GetString("cboPropCrossSectionSplayLineStyle.Items"), resources.GetString("cboPropCrossSectionSplayLineStyle.Items1")})
+        Me.cboPropCrossSectionSplayLineStyle.Name = "cboPropCrossSectionSplayLineStyle"
+        '
+        'lblPropCrossSectionSplayMaxVariationAngle
+        '
+        resources.ApplyResources(Me.lblPropCrossSectionSplayMaxVariationAngle, "lblPropCrossSectionSplayMaxVariationAngle")
+        Me.lblPropCrossSectionSplayMaxVariationAngle.Name = "lblPropCrossSectionSplayMaxVariationAngle"
+        '
+        'txtPropCrossSectionSplayMaxVariationAngle
+        '
+        resources.ApplyResources(Me.txtPropCrossSectionSplayMaxVariationAngle, "txtPropCrossSectionSplayMaxVariationAngle")
+        Me.txtPropCrossSectionSplayMaxVariationAngle.Maximum = New Decimal(New Integer() {90, 0, 0, 0})
+        Me.txtPropCrossSectionSplayMaxVariationAngle.Name = "txtPropCrossSectionSplayMaxVariationAngle"
+        '
+        'chkPropCrossSectionSplayText
+        '
+        resources.ApplyResources(Me.chkPropCrossSectionSplayText, "chkPropCrossSectionSplayText")
+        Me.chkPropCrossSectionSplayText.Name = "chkPropCrossSectionSplayText"
+        Me.chkPropCrossSectionSplayText.Properties.AutoWidth = True
+        Me.chkPropCrossSectionSplayText.Properties.Caption = resources.GetString("chkPropCrossSectionSplayText.Properties.Caption")
         '
         'chkPlan
         '
         resources.ApplyResources(Me.chkPlan, "chkPlan")
         Me.chkPlan.Name = "chkPlan"
-        Me.chkPlan.UseVisualStyleBackColor = True
+        Me.chkPlan.Properties.AutoWidth = True
+        Me.chkPlan.Properties.Caption = resources.GetString("chkPlan.Properties.Caption")
         '
         'pnlPlan
         '
-        resources.ApplyResources(Me.pnlPlan, "pnlPlan")
         Me.pnlPlan.Controls.Add(Me.cboPropPlanSplayPlanProjectionType)
         Me.pnlPlan.Controls.Add(Me.lblPropPlanSplayInclinationRange)
         Me.pnlPlan.Controls.Add(Me.txtPropPlanSplayMaxVariationDelta)
@@ -122,6 +190,7 @@ Partial Class frmSplay
         Me.pnlPlan.Controls.Add(Me.lblPropPlanSplayPlanProjectionType)
         Me.pnlPlan.Controls.Add(Me.lblPropPlanSplayMaxVariationDelta)
         Me.pnlPlan.Controls.Add(Me.lblPropPlanSplayPlanDeltaZ)
+        resources.ApplyResources(Me.pnlPlan, "pnlPlan")
         Me.pnlPlan.Name = "pnlPlan"
         '
         'cboPropPlanSplayPlanProjectionType
@@ -133,6 +202,8 @@ Partial Class frmSplay
         '
         'lblPropPlanSplayInclinationRange
         '
+        Me.lblPropPlanSplayInclinationRange.Appearance.Font = CType(resources.GetObject("lblPropPlanSplayInclinationRange.Appearance.Font"), System.Drawing.Font)
+        Me.lblPropPlanSplayInclinationRange.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.lblPropPlanSplayInclinationRange, "lblPropPlanSplayInclinationRange")
         Me.lblPropPlanSplayInclinationRange.Name = "lblPropPlanSplayInclinationRange"
         '
@@ -188,17 +259,8 @@ Partial Class frmSplay
         resources.ApplyResources(Me.lblPropPlanSplayPlanDeltaZ, "lblPropPlanSplayPlanDeltaZ")
         Me.lblPropPlanSplayPlanDeltaZ.Name = "lblPropPlanSplayPlanDeltaZ"
         '
-        'TabPage2
-        '
-        Me.TabPage2.Controls.Add(Me.pnlProfile)
-        Me.TabPage2.Controls.Add(Me.chkProfile)
-        resources.ApplyResources(Me.TabPage2, "TabPage2")
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.UseVisualStyleBackColor = True
-        '
         'pnlProfile
         '
-        resources.ApplyResources(Me.pnlProfile, "pnlProfile")
         Me.pnlProfile.Controls.Add(Me.txtPropProfileSplayNegInclinationRangeMax)
         Me.pnlProfile.Controls.Add(Me.txtPropProfileSplayNegInclinationRangeMin)
         Me.pnlProfile.Controls.Add(Me.lblPropProfileSplayNegInclinationRange)
@@ -209,6 +271,7 @@ Partial Class frmSplay
         Me.pnlProfile.Controls.Add(Me.lblPropProfileSplayMaxVariationAngle)
         Me.pnlProfile.Controls.Add(Me.txtPropProfileSplayMaxVariationAngle)
         Me.pnlProfile.Controls.Add(Me.txtPropProfileSplayProjectionAngle)
+        resources.ApplyResources(Me.pnlProfile, "pnlProfile")
         Me.pnlProfile.Name = "pnlProfile"
         '
         'txtPropProfileSplayNegInclinationRangeMax
@@ -232,6 +295,8 @@ Partial Class frmSplay
         '
         'lblPropProfileSplayNegInclinationRange
         '
+        Me.lblPropProfileSplayNegInclinationRange.Appearance.Font = CType(resources.GetObject("lblPropProfileSplayNegInclinationRange.Appearance.Font"), System.Drawing.Font)
+        Me.lblPropProfileSplayNegInclinationRange.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.lblPropProfileSplayNegInclinationRange, "lblPropProfileSplayNegInclinationRange")
         Me.lblPropProfileSplayNegInclinationRange.Name = "lblPropProfileSplayNegInclinationRange"
         '
@@ -254,6 +319,8 @@ Partial Class frmSplay
         '
         'lblPropProfileSplayPosInclinationRange
         '
+        Me.lblPropProfileSplayPosInclinationRange.Appearance.Font = CType(resources.GetObject("lblPropProfileSplayPosInclinationRange.Appearance.Font"), System.Drawing.Font)
+        Me.lblPropProfileSplayPosInclinationRange.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.lblPropProfileSplayPosInclinationRange, "lblPropProfileSplayPosInclinationRange")
         Me.lblPropProfileSplayPosInclinationRange.Name = "lblPropProfileSplayPosInclinationRange"
         '
@@ -284,120 +351,53 @@ Partial Class frmSplay
         '
         resources.ApplyResources(Me.chkProfile, "chkProfile")
         Me.chkProfile.Name = "chkProfile"
-        Me.chkProfile.UseVisualStyleBackColor = True
-        '
-        'TabPage3
-        '
-        Me.TabPage3.Controls.Add(Me.chkCrossSection)
-        Me.TabPage3.Controls.Add(Me.pnlCrosssection)
-        resources.ApplyResources(Me.TabPage3, "TabPage3")
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.UseVisualStyleBackColor = True
-        '
-        'chkCrossSection
-        '
-        resources.ApplyResources(Me.chkCrossSection, "chkCrossSection")
-        Me.chkCrossSection.Name = "chkCrossSection"
-        Me.chkCrossSection.UseVisualStyleBackColor = True
-        '
-        'pnlCrosssection
-        '
-        Me.pnlCrosssection.Controls.Add(Me.chkPropCrossSectionShowOnlyCutSplay)
-        Me.pnlCrosssection.Controls.Add(Me.lblPropCrossSectionSplayProjectionAngle)
-        Me.pnlCrosssection.Controls.Add(Me.lblPropCrossSectionSplayText)
-        Me.pnlCrosssection.Controls.Add(Me.txtPropCrossSectionSplayProjectionAngle)
-        Me.pnlCrosssection.Controls.Add(Me.lblPropCrossSectionShowSplayBorder)
-        Me.pnlCrosssection.Controls.Add(Me.chkPropCrossSectionShowSplayBorder)
-        Me.pnlCrosssection.Controls.Add(Me.lblPropCrossSectionSplayLineStyle)
-        Me.pnlCrosssection.Controls.Add(Me.cboPropCrossSectionSplayLineStyle)
-        Me.pnlCrosssection.Controls.Add(Me.lblPropCrossSectionSplayMaxVariationAngle)
-        Me.pnlCrosssection.Controls.Add(Me.txtPropCrossSectionSplayMaxVariationAngle)
-        Me.pnlCrosssection.Controls.Add(Me.chkPropCrossSectionSplayText)
-        resources.ApplyResources(Me.pnlCrosssection, "pnlCrosssection")
-        Me.pnlCrosssection.Name = "pnlCrosssection"
-        '
-        'chkPropCrossSectionShowOnlyCutSplay
-        '
-        resources.ApplyResources(Me.chkPropCrossSectionShowOnlyCutSplay, "chkPropCrossSectionShowOnlyCutSplay")
-        Me.chkPropCrossSectionShowOnlyCutSplay.Name = "chkPropCrossSectionShowOnlyCutSplay"
-        Me.chkPropCrossSectionShowOnlyCutSplay.UseVisualStyleBackColor = True
-        '
-        'lblPropCrossSectionSplayProjectionAngle
-        '
-        resources.ApplyResources(Me.lblPropCrossSectionSplayProjectionAngle, "lblPropCrossSectionSplayProjectionAngle")
-        Me.lblPropCrossSectionSplayProjectionAngle.Name = "lblPropCrossSectionSplayProjectionAngle"
-        '
-        'lblPropCrossSectionSplayText
-        '
-        resources.ApplyResources(Me.lblPropCrossSectionSplayText, "lblPropCrossSectionSplayText")
-        Me.lblPropCrossSectionSplayText.Name = "lblPropCrossSectionSplayText"
-        '
-        'txtPropCrossSectionSplayProjectionAngle
-        '
-        resources.ApplyResources(Me.txtPropCrossSectionSplayProjectionAngle, "txtPropCrossSectionSplayProjectionAngle")
-        Me.txtPropCrossSectionSplayProjectionAngle.Maximum = New Decimal(New Integer() {90, 0, 0, 0})
-        Me.txtPropCrossSectionSplayProjectionAngle.Minimum = New Decimal(New Integer() {90, 0, 0, -2147483648})
-        Me.txtPropCrossSectionSplayProjectionAngle.Name = "txtPropCrossSectionSplayProjectionAngle"
-        '
-        'lblPropCrossSectionShowSplayBorder
-        '
-        resources.ApplyResources(Me.lblPropCrossSectionShowSplayBorder, "lblPropCrossSectionShowSplayBorder")
-        Me.lblPropCrossSectionShowSplayBorder.Name = "lblPropCrossSectionShowSplayBorder"
-        '
-        'chkPropCrossSectionShowSplayBorder
-        '
-        resources.ApplyResources(Me.chkPropCrossSectionShowSplayBorder, "chkPropCrossSectionShowSplayBorder")
-        Me.chkPropCrossSectionShowSplayBorder.Name = "chkPropCrossSectionShowSplayBorder"
-        Me.chkPropCrossSectionShowSplayBorder.UseVisualStyleBackColor = True
-        '
-        'lblPropCrossSectionSplayLineStyle
-        '
-        resources.ApplyResources(Me.lblPropCrossSectionSplayLineStyle, "lblPropCrossSectionSplayLineStyle")
-        Me.lblPropCrossSectionSplayLineStyle.Name = "lblPropCrossSectionSplayLineStyle"
-        '
-        'cboPropCrossSectionSplayLineStyle
-        '
-        Me.cboPropCrossSectionSplayLineStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        resources.ApplyResources(Me.cboPropCrossSectionSplayLineStyle, "cboPropCrossSectionSplayLineStyle")
-        Me.cboPropCrossSectionSplayLineStyle.Items.AddRange(New Object() {resources.GetString("cboPropCrossSectionSplayLineStyle.Items"), resources.GetString("cboPropCrossSectionSplayLineStyle.Items1")})
-        Me.cboPropCrossSectionSplayLineStyle.Name = "cboPropCrossSectionSplayLineStyle"
-        '
-        'lblPropCrossSectionSplayMaxVariationAngle
-        '
-        resources.ApplyResources(Me.lblPropCrossSectionSplayMaxVariationAngle, "lblPropCrossSectionSplayMaxVariationAngle")
-        Me.lblPropCrossSectionSplayMaxVariationAngle.Name = "lblPropCrossSectionSplayMaxVariationAngle"
-        '
-        'txtPropCrossSectionSplayMaxVariationAngle
-        '
-        resources.ApplyResources(Me.txtPropCrossSectionSplayMaxVariationAngle, "txtPropCrossSectionSplayMaxVariationAngle")
-        Me.txtPropCrossSectionSplayMaxVariationAngle.Maximum = New Decimal(New Integer() {90, 0, 0, 0})
-        Me.txtPropCrossSectionSplayMaxVariationAngle.Name = "txtPropCrossSectionSplayMaxVariationAngle"
-        '
-        'chkPropCrossSectionSplayText
-        '
-        resources.ApplyResources(Me.chkPropCrossSectionSplayText, "chkPropCrossSectionSplayText")
-        Me.chkPropCrossSectionSplayText.Name = "chkPropCrossSectionSplayText"
-        Me.chkPropCrossSectionSplayText.UseVisualStyleBackColor = True
+        Me.chkProfile.Properties.AutoWidth = True
+        Me.chkProfile.Properties.Caption = resources.GetString("chkProfile.Properties.Caption")
         '
         'cmdCancel
         '
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'cmdOk
         '
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
         '
         'cmdApply
         '
         resources.ApplyResources(Me.cmdApply, "cmdApply")
         Me.cmdApply.Name = "cmdApply"
-        Me.cmdApply.UseVisualStyleBackColor = True
+        '
+        'tabMain
+        '
+        resources.ApplyResources(Me.tabMain, "tabMain")
+        Me.tabMain.Name = "tabMain"
+        Me.tabMain.SelectedTabPage = Me.tabPlan
+        Me.tabMain.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tabPlan, Me.tabProfile, Me.tabCrossSections})
+        '
+        'tabPlan
+        '
+        Me.tabPlan.Controls.Add(Me.chkPlan)
+        Me.tabPlan.Controls.Add(Me.pnlPlan)
+        Me.tabPlan.Name = "tabPlan"
+        resources.ApplyResources(Me.tabPlan, "tabPlan")
+        '
+        'tabProfile
+        '
+        Me.tabProfile.Controls.Add(Me.pnlProfile)
+        Me.tabProfile.Controls.Add(Me.chkProfile)
+        Me.tabProfile.Name = "tabProfile"
+        resources.ApplyResources(Me.tabProfile, "tabProfile")
+        '
+        'tabCrossSections
+        '
+        Me.tabCrossSections.Controls.Add(Me.chkCrossSection)
+        Me.tabCrossSections.Controls.Add(Me.pnlCrosssection)
+        Me.tabCrossSections.Name = "tabCrossSections"
+        resources.ApplyResources(Me.tabCrossSections, "tabCrossSections")
         '
         'frmSplay
         '
@@ -407,21 +407,30 @@ Partial Class frmSplay
         Me.Controls.Add(Me.cmdApply)
         Me.Controls.Add(Me.cmdOk)
         Me.Controls.Add(Me.cmdCancel)
-        Me.Controls.Add(Me.TabMain)
+        Me.Controls.Add(Me.tabMain)
+        Me.IconOptions.Icon = CType(resources.GetObject("frmSplay.IconOptions.Icon"), System.Drawing.Icon)
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.replicatesplaydata
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSplay"
-        Me.TabMain.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
-        Me.TabPage1.PerformLayout()
+        CType(Me.chkCrossSection.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlCrosssection, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlCrosssection.ResumeLayout(False)
+        Me.pnlCrosssection.PerformLayout()
+        CType(Me.chkPropCrossSectionShowOnlyCutSplay.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPropCrossSectionSplayProjectionAngle, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkPropCrossSectionShowSplayBorder.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPropCrossSectionSplayMaxVariationAngle, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkPropCrossSectionSplayText.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkPlan.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlPlan, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlPlan.ResumeLayout(False)
         Me.pnlPlan.PerformLayout()
         CType(Me.txtPropPlanSplayMaxVariationDelta, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPropPlanSplayInclinationRangeMax, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPropPlanSplayPlanDeltaZ, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPropPlanSplayInclinationRangeMin, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabPage2.ResumeLayout(False)
-        Me.TabPage2.PerformLayout()
+        CType(Me.pnlProfile, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlProfile.ResumeLayout(False)
         Me.pnlProfile.PerformLayout()
         CType(Me.txtPropProfileSplayNegInclinationRangeMax, System.ComponentModel.ISupportInitialize).EndInit()
@@ -430,56 +439,57 @@ Partial Class frmSplay
         CType(Me.txtPropProfileSplayPosInclinationRangeMin, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPropProfileSplayMaxVariationAngle, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPropProfileSplayProjectionAngle, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabPage3.ResumeLayout(False)
-        Me.TabPage3.PerformLayout()
-        Me.pnlCrosssection.ResumeLayout(False)
-        Me.pnlCrosssection.PerformLayout()
-        CType(Me.txtPropCrossSectionSplayProjectionAngle, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropCrossSectionSplayMaxVariationAngle, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkProfile.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tabMain, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabMain.ResumeLayout(False)
+        Me.tabPlan.ResumeLayout(False)
+        Me.tabPlan.PerformLayout()
+        Me.tabProfile.ResumeLayout(False)
+        Me.tabProfile.PerformLayout()
+        Me.tabCrossSections.ResumeLayout(False)
+        Me.tabCrossSections.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents TabMain As System.Windows.Forms.TabControl
-    Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
-    Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
-    Friend WithEvents TabPage3 As System.Windows.Forms.TabPage
     Friend WithEvents cboPropPlanSplayPlanProjectionType As System.Windows.Forms.ComboBox
     Friend WithEvents txtPropPlanSplayPlanDeltaZ As System.Windows.Forms.NumericUpDown
     Friend WithEvents txtPropPlanSplayMaxVariationDelta As System.Windows.Forms.NumericUpDown
     Friend WithEvents txtPropProfileSplayMaxVariationAngle As System.Windows.Forms.NumericUpDown
     Friend WithEvents txtPropProfileSplayProjectionAngle As System.Windows.Forms.NumericUpDown
-    Friend WithEvents lblPropPlanSplayMaxVariationDelta As System.Windows.Forms.Label
-    Friend WithEvents lblPropPlanSplayPlanDeltaZ As System.Windows.Forms.Label
-    Friend WithEvents lblPropPlanSplayPlanProjectionType As System.Windows.Forms.Label
-    Friend WithEvents chkPropCrossSectionSplayText As System.Windows.Forms.CheckBox
+    Friend WithEvents lblPropPlanSplayMaxVariationDelta As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblPropPlanSplayPlanDeltaZ As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblPropPlanSplayPlanProjectionType As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents chkPropCrossSectionSplayText As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents txtPropCrossSectionSplayMaxVariationAngle As System.Windows.Forms.NumericUpDown
     Friend WithEvents cboPropCrossSectionSplayLineStyle As System.Windows.Forms.ComboBox
     Friend WithEvents txtPropCrossSectionSplayProjectionAngle As System.Windows.Forms.NumericUpDown
-    Friend WithEvents chkPropCrossSectionShowSplayBorder As System.Windows.Forms.CheckBox
-    Friend WithEvents lblPropProfileSplayProjectionAngle As System.Windows.Forms.Label
-    Friend WithEvents lblPropProfileSplayMaxVariationAngle As System.Windows.Forms.Label
-    Friend WithEvents lblPropCrossSectionSplayProjectionAngle As System.Windows.Forms.Label
-    Friend WithEvents lblPropCrossSectionSplayMaxVariationAngle As System.Windows.Forms.Label
-    Friend WithEvents lblPropCrossSectionSplayLineStyle As System.Windows.Forms.Label
-    Friend WithEvents lblPropCrossSectionSplayText As System.Windows.Forms.Label
-    Friend WithEvents lblPropCrossSectionShowSplayBorder As System.Windows.Forms.Label
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
-    Friend WithEvents lblPropPlanSplayInclinationRange As Label
+    Friend WithEvents chkPropCrossSectionShowSplayBorder As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents lblPropProfileSplayProjectionAngle As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblPropProfileSplayMaxVariationAngle As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblPropCrossSectionSplayProjectionAngle As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblPropCrossSectionSplayMaxVariationAngle As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblPropCrossSectionSplayLineStyle As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents lblPropPlanSplayInclinationRange As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtPropPlanSplayInclinationRangeMax As NumericUpDown
     Friend WithEvents txtPropPlanSplayInclinationRangeMin As NumericUpDown
     Friend WithEvents txtPropProfileSplayNegInclinationRangeMax As NumericUpDown
     Friend WithEvents txtPropProfileSplayNegInclinationRangeMin As NumericUpDown
-    Friend WithEvents lblPropProfileSplayNegInclinationRange As Label
+    Friend WithEvents lblPropProfileSplayNegInclinationRange As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtPropProfileSplayPosInclinationRangeMax As NumericUpDown
     Friend WithEvents txtPropProfileSplayPosInclinationRangeMin As NumericUpDown
-    Friend WithEvents lblPropProfileSplayPosInclinationRange As Label
-    Friend WithEvents chkPlan As CheckBox
-    Friend WithEvents pnlPlan As Panel
-    Friend WithEvents pnlProfile As Panel
-    Friend WithEvents chkProfile As CheckBox
-    Friend WithEvents chkCrossSection As CheckBox
-    Friend WithEvents pnlCrosssection As Panel
-    Friend WithEvents cmdApply As Button
-    Friend WithEvents chkPropCrossSectionShowOnlyCutSplay As CheckBox
+    Friend WithEvents lblPropProfileSplayPosInclinationRange As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents chkPlan As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents pnlPlan As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlProfile As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents chkProfile As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkCrossSection As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents pnlCrosssection As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents cmdApply As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents chkPropCrossSectionShowOnlyCutSplay As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents tabMain As DevExpress.XtraTab.XtraTabControl
+    Friend WithEvents tabPlan As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents tabProfile As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents tabCrossSections As DevExpress.XtraTab.XtraTabPage
 End Class

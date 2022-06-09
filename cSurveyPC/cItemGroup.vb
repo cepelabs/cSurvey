@@ -335,13 +335,13 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
-        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             Threading.Tasks.Parallel.ForEach(oItems, Sub(oItem As cItem)
                                                          Call oItem.Render(Graphics, PaintOptions, Options, Selected)
                                                      End Sub)
         End Sub
 
-        Friend Overrides Sub Paint(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Paint(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             For Each oItem As cItem In oItems
                 Call oItem.Paint(Graphics, PaintOptions, Options, Selected)
             Next
@@ -549,7 +549,7 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
             Dim oSVGGroup As XmlElement = modSVG.CreateGroup(SVG, "_items")
             For Each oItem In oItems
                 Dim oSVGItem As XmlElement = oItem.ToSvgItem(SVG, PaintOptions, Options)
@@ -558,7 +558,7 @@ Namespace cSurvey.Design.Items
             Return oSVGGroup
         End Function
 
-        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
+        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
             Dim oSVG As XmlDocument = modSVG.CreateSVG
             Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
             Return oSVG

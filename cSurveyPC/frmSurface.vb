@@ -104,10 +104,10 @@ friend Class frmSurface
                     picElevationsPreview.Image = Nothing
                     txtElevationInformation.Text = GetLocalizedString("surface.textpart1")
                     cboColorSchema.Enabled = False
-                    chkElevationDefault.Enabled = False
+                    'chkElevationDefault.Enabled = False
                 Else
                     cboColorSchema.Enabled = True
-                    chkElevationDefault.Enabled = True
+                    'chkElevationDefault.Enabled = True
 
                     picElevationsPreview.Image = .GetImage(picElevationsPreview.Size)
                     Dim oTL As cCoordinate = .GetCoordinate(Surface.cElevation.GetCoordinateCornerEnum.TopLeft)
@@ -121,7 +121,7 @@ friend Class frmSurface
                     sText = sText & String.Format(GetLocalizedString("surface.textpart5"), modNumbers.MathRound(.Columns * .XSize, 0), modNumbers.MathRound(.Rows * .YSize, 0))
                     txtElevationInformation.Text = sText
                     cboColorSchema.SelectedIndex = .ColorSchema
-                    chkElevationDefault.Checked = .Default
+                    'chkElevationDefault.Checked = .Default
                 End If
             End With
         Else
@@ -129,7 +129,7 @@ friend Class frmSurface
             txtElevationInformation.Text = GetLocalizedString("surface.textpart1")
             'chkShowSurfaceIn3D.Enabled = False
             cboColorSchema.Enabled = False
-            chkElevationDefault.Enabled = False
+            'chkElevationDefault.Enabled = False
         End If
 
         'orthophoto...
@@ -139,7 +139,7 @@ friend Class frmSurface
                 If .IsEmpty Then
                     picOrthoPhotoPreview.Image = Nothing
                     txtOrthoPhotoInformation.Text = GetLocalizedString("surface.textpart1")
-                    chkOrthoPhotoDefault.Enabled = False
+                    'chkOrthoPhotoDefault.Enabled = False
                 Else
                     picOrthoPhotoPreview.Image = .Photo
                     Dim oTL As cCoordinate = .GetCoordinate(Surface.cOrthoPhoto.GetCoordinateCornerEnum.TopLeft)
@@ -156,14 +156,14 @@ friend Class frmSurface
                     sText = sText & String.Format(GetLocalizedString("surface.textpart4"), .XSize, .YSize) & vbCrLf
                     sText = sText & String.Format(GetLocalizedString("surface.textpart5"), modNumbers.MathRound(.Photo.Width * .XSize, 0), modNumbers.MathRound(.Photo.Height * .YSize, 0))
                     txtOrthoPhotoInformation.Text = sText
-                    chkOrthoPhotoDefault.Enabled = True
-                    chkOrthoPhotoDefault.Checked = .Default
+                    'chkOrthoPhotoDefault.Enabled = True
+                    'chkOrthoPhotoDefault.Checked = .Default
                 End If
             End With
         Else
             picOrthoPhotoPreview.Image = Nothing
             txtOrthoPhotoInformation.Text = GetLocalizedString("surface.textpart1")
-            chkOrthoPhotoDefault.Enabled = False
+            'chkOrthoPhotoDefault.Enabled = False
         End If
 
         'wms....
@@ -405,27 +405,27 @@ friend Class frmSurface
         Call pShowInfo()
     End Sub
 
-    Private Sub chkElevationDefault_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkElevationDefault.CheckedChanged
-        If Not bDisableChangeEvent Then
-            Try
-                Dim oElevation As cElevation = lvElevations.SelectedItems(0).Tag
-                oElevation.Default = chkElevationDefault.Checked
-            Catch
-            End Try
-            Call pShowInfo()
-        End If
-    End Sub
+    'Private Sub chkElevationDefault_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkElevationDefault.CheckedChanged
+    '    If Not bDisableChangeEvent Then
+    '        Try
+    '            Dim oElevation As cElevation = lvElevations.SelectedItems(0).Tag
+    '            oElevation.Default = chkElevationDefault.Checked
+    '        Catch
+    '        End Try
+    '        Call pShowInfo()
+    '    End If
+    'End Sub
 
-    Private Sub chkOrthoPhotoDefault_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkOrthoPhotoDefault.CheckedChanged
-        If Not bDisableChangeEvent Then
-            Try
-                Dim oOrthoPhoto As cOrthoPhoto = lvOrthoPhotos.SelectedItems(0).Tag
-                oOrthoPhoto.Default = chkOrthoPhotoDefault.Checked
-            Catch
-            End Try
-            Call pShowInfo()
-        End If
-    End Sub
+    'Private Sub chkOrthoPhotoDefault_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkOrthoPhotoDefault.CheckedChanged
+    '    If Not bDisableChangeEvent Then
+    '        Try
+    '            Dim oOrthoPhoto As cOrthoPhoto = lvOrthoPhotos.SelectedItems(0).Tag
+    '            oOrthoPhoto.Default = chkOrthoPhotoDefault.Checked
+    '        Catch
+    '        End Try
+    '        Call pShowInfo()
+    '    End If
+    'End Sub
 
     Private Sub pElevationsSavePreview()
         Try
@@ -645,7 +645,7 @@ friend Class frmSurface
             With frmAOPWMS
                 If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                     Cursor = Cursors.WaitCursor
-                    Dim oBackground As Color = .picBackgroundColor.BackColor
+                    Dim oBackground As Color = .txtBackgroundColor.BackColor
                     Dim iRatio As Integer = .txtRatio.Value
                     Dim oElevation As cElevation = lvElevations.SelectedItems(0).Tag
                     Dim oTL As cCoordinate = oElevation.GetCoordinate(cElevation.GetCoordinateCornerEnum.TopLeft)
@@ -839,9 +839,9 @@ friend Class frmSurface
                         'red=0
                         'green=120...see paint net for scale...use scale on ui and add a reverse flag
                         Dim bCounterclockwise As Boolean = frmEFO.chkHueCounterclockwise.Checked
-                        Dim sMinHue As Single = frmEFO.picHueColorFrom.BackColor.GetHue
+                        Dim sMinHue As Single = frmEFO.txtHueColorFrom.EditValue.GetHue
                         Dim sMinAlt As Single = frmEFO.txtHueAltFrom.Value
-                        Dim sMaxHue As Single = frmEFO.picHueColorTo.BackColor.GetHue
+                        Dim sMaxHue As Single = frmEFO.txtHueColorTo.EditValue.GetHue
                         Dim sMaxAlt As Single = frmEFO.txtHueAltTo.Value
                         Dim sDeltaAlt As Single = sMaxAlt - sMinAlt
                         Dim sDeltaHue As Single = modPaint.GetAngleDiff(sMinHue, sMaxHue, bCounterclockwise)
@@ -863,35 +863,12 @@ friend Class frmSurface
                                 iProgressIndex += 1
                                 If iProgressIndex Mod 2000 = 0 Then Call oSurvey.RaiseOnProgressEvent("elevation.fromorthophoto", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("surface.progress5"), iProgressIndex / iProgressCount)
                                 Dim sPseutoHeight As Single = oImage.GetPixel(icolumn, iRow).GetHue '  modPaint.GrayColor(oImage.GetPixel(icolumn, iRow)).R * 10
-                                'Debug.Print(sPseutoHeight)
                                 Dim sAlt As Single
                                 If bCounterclockwise Then
                                     sAlt = sMinAlt + (((sMaxHue - sPseutoHeight) / sDeltaHue) * sDeltaAlt)
                                 Else
                                     sAlt = sMinAlt + (((sPseutoHeight - sMinHue) / sDeltaHue) * sDeltaAlt)
                                 End If
-                                'If bCounterclockwise Then
-                                '    If sMinHue > sMaxHue Then
-                                '        sAlt = sMinAlt - (((sMaxHue - sPseutoHeight) / sDeltaHue) * sDeltaAlt)
-                                '    Else
-                                '        If sPseutoHeight > sMinHue - sDeltaHue / 2 Then
-                                '            sAlt = sMinAlt + (((sPseutoHeight - sMinHue) / sDeltaHue) * sDeltaAlt)
-                                '        Else
-                                '            sAlt = sMinAlt + (((360 - sMinHue + sPseutoHeight) / sDeltaHue) * sDeltaAlt)
-                                '        End If
-                                '    End If
-                                'Else
-                                '    If sMinHue < sMaxHue Then
-                                '        sAlt = sMinAlt + (((sPseutoHeight - sMinHue) / sDeltaHue) * sDeltaAlt)
-                                '    Else
-                                '        If sPseutoHeight > sMinHue - sDeltaHue / 2 Then
-                                '            sAlt = sMinAlt + (((sPseutoHeight - sMinHue) / sDeltaHue) * sDeltaAlt)
-                                '        Else
-                                '            sAlt = sMinAlt + (((360 - sMinHue + sPseutoHeight) / sDeltaHue) * sDeltaAlt)
-                                '        End If
-                                '    End If
-                                'End If
-                                'If sPseutoHeight = 240 * 10 Then sPseutoHeight = cElevation.NoDataValue
                                 oData(iRow, icolumn) = sAlt
                             Next
                         Next

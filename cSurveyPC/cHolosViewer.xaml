@@ -7,9 +7,9 @@
              mc:Ignorable="d" x:ClassModifier="Friend"
              d:DesignHeight="300" d:DesignWidth="500">
     <Grid>
-        <h:HelixViewport3D Background="White" Name="mainViewport" CameraRotationMode="Turnball" ZoomExtentsWhenLoaded="False" ClipToBounds="False" Margin="0,0,0,0" ShowCoordinateSystem="True" ShowCameraInfo="False" IsChangeFieldOfViewEnabled="False" />
+        <h:HelixViewport3D Background="white" Name="mainViewport" CameraRotationMode="Turnball" ZoomExtentsWhenLoaded="False" ClipToBounds="False" Margin="0,0,0,0" ShowCoordinateSystem="True" ShowCameraInfo="False" IsChangeFieldOfViewEnabled="False" />
         <Canvas Name="overlay2d" IsHitTestVisible="False" ClipToBounds="False"/>
-        <Grid x:Name="pnlInvalidated" Height="40" VerticalAlignment="Top" Background="LemonChiffon" Opacity="0.8" >
+        <Grid x:Name="pnlInvalidated" Height="40" VerticalAlignment="Top" Background="LemonChiffon" Opacity="0.8" Visibility="Hidden" >
             <Canvas x:Name="imgWarning" Margin="4,4,0,0" Canvas.Left="0" Canvas.Top="0" Width="32" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left">
                 <Canvas.RenderTransform>
                     <TranslateTransform X="0" Y="0"/>
@@ -21,12 +21,12 @@
                     </Path.Data>
                 </Path>
             </Canvas>
+            <Label x:Name="lblInvalidatedCaption" Margin="48,4,101,4"></Label>
             <Canvas x:Name="imgError" Margin="4,4,0,0" Canvas.Left="0" Canvas.Top="0" Width="32" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left">
                 <Canvas.RenderTransform>
                     <TranslateTransform X="0" Y="0"/>
                 </Canvas.RenderTransform>
-                <Canvas.Resources/>
-                <Canvas Name="WarningCircled1">
+                <Canvas x:Name="WarningCircled1">
                     <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="#D11C1C">
                         <Path.Data>
                             <PathGeometry Figures="M16 2C8.3 2 2 8.3 2 16s6.3 14 14 14s14-6.3 14-14S23.7 2 16 2z M16 24c-1.1 0-2-0.9-2-2c0-1.1 0.9-2 2-2   s2 0.9 2 2C18 23.1 17.1 24 16 24z M18 18h-4V8h4V18z" FillRule="NonZero"/>
@@ -34,7 +34,6 @@
                     </Path>
                 </Canvas>
             </Canvas>
-            <Label x:Name="lblInvalidatedCaption" Margin="48,4,101,4"></Label>
             <Button x:Name="cmdRefresh" Height="24" Margin="0,8,8,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="80" FontFamily="Tahoma" FontSize="8pt">
                 <StackPanel Orientation="Horizontal">
                     <Canvas Canvas.Left="0" Canvas.Top="0" Width="16" Height="16">
@@ -45,7 +44,7 @@
                                 <RotateTransform/>
                                 <TranslateTransform X="0" Y="0"/>
                             </TransformGroup>
-                       </Canvas.RenderTransform>
+                        </Canvas.RenderTransform>
                         <Canvas.Resources/>
                         <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="#039C23">
                             <Path.Data>

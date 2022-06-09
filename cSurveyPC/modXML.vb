@@ -1,6 +1,17 @@
-﻿Imports System.Xml
+﻿Imports System.Runtime.CompilerServices
+Imports System.Xml
 
 Module modXML
+
+    <Extension>
+    Public Function IsEmptyRow(Sheet As OfficeOpenXml.ExcelWorksheet, r As Integer) As Boolean
+        For c As Integer = Sheet.Dimension.Start.Column To Sheet.Dimension.End.Column
+            If Not Sheet.Cells(r, c).Value Is Nothing OrElse Not String.IsNullOrEmpty(Sheet.Cells(r, c).Value) Then
+                Return False
+            End If
+        Next
+        Return True
+    End Function
     Public Function RenameElement(Node As XmlElement, NewName As String) As XmlElement
         Dim oNewNode As XmlElement = Node.OwnerDocument.CreateElement(NewName)
         Do While Node.HasAttributes

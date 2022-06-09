@@ -2,25 +2,25 @@
 
 Module modScript
     Public Sub ApplyFormat(Editor As Scintilla, Language As cSurvey.Scripting.LanguageEnum)
-        If Language = 0 Then
+        If Language = cSurvey.Scripting.LanguageEnum.VisualBasic Then
             Editor.StyleResetDefault()
             Editor.Styles(Style.Default).Font = "Lucida Console"
             Editor.Styles(Style.Default).Size = 10
             Editor.StyleClearAll()
 
-            Editor.Styles(Style.Cpp.Default).ForeColor = Color.Silver
-            Editor.Styles(Style.Cpp.Comment).ForeColor = Color.FromArgb(0, 128, 0)
-            Editor.Styles(Style.Cpp.CommentLine).ForeColor = Color.FromArgb(0, 128, 0)
-            Editor.Styles(Style.Cpp.CommentLineDoc).ForeColor = Color.FromArgb(128, 128, 128)
-            Editor.Styles(Style.Cpp.Number).ForeColor = Color.Olive
-            Editor.Styles(Style.Cpp.Word).ForeColor = Color.Blue
-            Editor.Styles(Style.Cpp.Word2).ForeColor = Color.Blue
-            Editor.Styles(Style.Cpp.String).ForeColor = Color.FromArgb(163, 21, 21)
-            Editor.Styles(Style.Cpp.Character).ForeColor = Color.FromArgb(163, 21, 21)
-            Editor.Styles(Style.Cpp.Verbatim).ForeColor = Color.FromArgb(163, 21, 21)
-            Editor.Styles(Style.Cpp.StringEol).BackColor = Color.Pink
-            Editor.Styles(Style.Cpp.Operator).ForeColor = Color.Purple
-            Editor.Styles(Style.Cpp.Preprocessor).ForeColor = Color.Maroon
+            Editor.Styles(Style.Vb.Default).ForeColor = Color.Silver
+            Editor.Styles(Style.Vb.Comment).ForeColor = Color.FromArgb(0, 128, 0)
+            Editor.Styles(Style.Vb.Comment).ForeColor = Color.FromArgb(0, 128, 0)
+            Editor.Styles(Style.Vb.CommentBlock).ForeColor = Color.FromArgb(128, 128, 128)
+            Editor.Styles(Style.Vb.Number).ForeColor = Color.Olive
+            Editor.Styles(Style.Vb.Keyword).ForeColor = Color.Blue
+            Editor.Styles(Style.Vb.Keyword2).ForeColor = Color.Blue
+            Editor.Styles(Style.Vb.Keyword3).ForeColor = Color.Blue
+            Editor.Styles(Style.Vb.Keyword4).ForeColor = Color.Blue
+            Editor.Styles(Style.Vb.String).ForeColor = Color.FromArgb(163, 21, 21)
+            Editor.Styles(Style.Vb.StringEol).BackColor = Color.Pink
+            Editor.Styles(Style.Vb.Operator).ForeColor = Color.Purple
+            Editor.Styles(Style.Vb.Preprocessor).ForeColor = Color.Maroon
             Editor.Lexer = Lexer.Vb
 
             Editor.SetKeywords(0, "as in for each next do loop if then else end class interface delegate do event true false is namespace new object overrides private public protected readonly return try catch virtual while until sub function")

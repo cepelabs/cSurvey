@@ -124,16 +124,10 @@
     <value>Annulla</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="chkShowLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 17</value>
-  </data>
-  <data name="chkShowLine.Text" xml:space="preserve">
+  <data name="chkShowLine.Properties.Caption" xml:space="preserve">
     <value>Linee di riporto</value>
   </data>
-  <data name="chkShowOriginalPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 17</value>
-  </data>
-  <data name="chkShowOriginalPosition.Text" xml:space="preserve">
+  <data name="chkShowOriginalPosition.Properties.Caption" xml:space="preserve">
     <value>Mostra posizione originale</value>
   </data>
   <data name="colCave.HeaderText" xml:space="preserve">
@@ -142,7 +136,7 @@
   <data name="colBranch.HeaderText" xml:space="preserve">
     <value>Ramo</value>
   </data>
-  <data name="chkOriginalPositionColorGray.Text" xml:space="preserve">
+  <data name="chkOriginalPositionColorGray.Properties.Caption" xml:space="preserve">
     <value>Scala di grigio</value>
   </data>
   <data name="cboOriginalPositionColorMode.Items" xml:space="preserve">
@@ -150,9 +144,6 @@
   </data>
   <data name="cboOriginalPositionColorMode.Items1" xml:space="preserve">
     <value>Solo grotte</value>
-  </data>
-  <data name="lblOriginalPositionColorMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 13</value>
   </data>
   <data name="lblOriginalPositionColorMode.Text" xml:space="preserve">
     <value>Stile colore:</value>
@@ -181,13 +172,13 @@
   <data name="colBreakPercentage.HeaderText" xml:space="preserve">
 		<value>% rottura</value>
 	</data>
-  <data name="chkOriginalPositionOnlyTranslated.Text" xml:space="preserve">
+  <data name="chkOriginalPositionOnlyTranslated.Properties.Caption" xml:space="preserve">
 		<value>Solo grotte/rami traslati</value>
 	</data>
   <data name="lblTranslationsThreshold.Text" xml:space="preserve">
 		<value>Soglia linee di riporto:</value>
 	</data>
-  <data name="chkOriginalPositionOverDesign.Text" xml:space="preserve">
+  <data name="chkOriginalPositionOverDesign.Properties.Caption" xml:space="preserve">
     <value>Sopra al disegno</value>
   </data>
 </root>

@@ -165,32 +165,20 @@
         AeABBwYAAcABAwYAAYABAQYAAYABAQYAAoEGAALDBgAC5wQACw==
 </value>
   </data>
-  <data name="lblDataFieldDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 13</value>
-  </data>
   <data name="lblDataFieldDescription.Text" xml:space="preserve">
     <value>Описание:</value>
-  </data>
-  <data name="lblDataFieldType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 13</value>
   </data>
   <data name="lblDataFieldType.Text" xml:space="preserve">
     <value>Тип дпнных:</value>
   </data>
   <data name="Label11.Text" xml:space="preserve">
-    <value>&lt;image=warning&gt; &lt;b&gt;Внимание&lt;/b&gt;: введите значение для каждой строки. Вы не можете вводить числовые значения.</value>
-  </data>
-  <data name="lblDataFieldEnumValues.Size" type="System.Drawing.Size, System.Drawing">
-    <value>27, 13</value>
+    <value>&lt;image=#warning;size=16,16&gt; &lt;b&gt;Внимание&lt;/b&gt;: введите значение для каждой строки. Вы не можете вводить числовые значения.</value>
   </data>
   <data name="lblDataFieldEnumValues.Text" xml:space="preserve">
     <value>Список:</value>
   </data>
   <data name="cmdCancel.Text" xml:space="preserve">
     <value>Отмена</value>
-  </data>
-  <data name="lblDataFieldCategory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 13</value>
   </data>
   <data name="lblDataFieldCategory.Text" xml:space="preserve">
     <value>Категория:</value>

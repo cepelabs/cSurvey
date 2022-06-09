@@ -121,44 +121,17 @@
     <value>Отмена</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="chkSkipInvalidStation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 17</value>
-  </data>
-  <data name="chkSkipInvalidStation.Text" xml:space="preserve">
-    <value>Пропустить некоррекный пикет</value>
-  </data>
-  <data name="lblNordCorrection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 13</value>
-  </data>
   <data name="lblNordCorrection.Text" xml:space="preserve">
     <value>Коррекция направления на север:</value>
-  </data>
-  <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
   </data>
   <data name="Label1.Text" xml:space="preserve">
     <value>Тип:</value>
   </data>
-  <data name="Label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 13</value>
-  </data>
   <data name="Label7.Text" xml:space="preserve">
     <value>Максимальное значение ВН:</value>
   </data>
-  <data name="Label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 13</value>
-  </data>
   <data name="Label5.Text" xml:space="preserve">
     <value>Максимальное значение ЛП:</value>
-  </data>
-  <data name="chkLRUDCalculate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 17</value>
-  </data>
-  <data name="chkLRUDCalculate.Text" xml:space="preserve">
-    <value>Снять данные ЛПВН</value>
-  </data>
-  <data name="Label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 13</value>
   </data>
   <data name="Label3.Text" xml:space="preserve">
     <value>Толстые линии границ:</value>
@@ -230,9 +203,6 @@
         QT8AAABNVH88AABPaXx6dVtGAAAAAFlQVTdFAE5OVktVAP//AADD8AAAweAAAMDAAADAQAAA4AEAAPAD
         AAD4DwAAjAEAAAgAAAAAAAAAAAcAAMEHAADDAAAA4YAAAPBBAAA=
 </value>
-  </data>
-  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Опции</value>

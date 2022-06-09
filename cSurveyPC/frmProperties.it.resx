@@ -305,16 +305,10 @@
     <value>Modalità di rotazione del simbolo</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="chkGPSSendToTherion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>265, 17</value>
-  </data>
-  <data name="chkGPSSendToTherion.Text" xml:space="preserve">
+  <data name="chkGPSSendToTherion.Properties.Caption" xml:space="preserve">
     <value>Usa il posizionamento geografico di tutti i capisaldi con coordinate</value>
   </data>
-  <data name="chkGPSEnabled.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 17</value>
-  </data>
-  <data name="chkGPSEnabled.Text" xml:space="preserve">
+  <data name="chkGPSEnabled.Properties.Caption" xml:space="preserve">
     <value>Attiva funzioni geografiche</value>
   </data>
   <data name="cboDesignWarpingMode.Items" xml:space="preserve">
@@ -332,26 +326,10 @@
   <data name="cboDesignBindingMode.Items2" xml:space="preserve">
     <value>Manuale</value>
   </data>
-  <data name="cmdChangeInversionModeAndSetDirections.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABkUlEQVQ4T5WSTUsCURSGz7J1i1YFhSuh
-        hSC0LFBz8uMPBG0K2vQTgqgUsk8XLVokhrrITYUuCozIpEUxRiCVJVlObtr3B97OmZlkahyhF144c869
-        z9xz7yEAZJWySRCbnz2l77UCfAnCg7avW2Iz7ahfgMA6ofqaRLpEuiWWnF50UAcQ3iaozRgyFULq0rDE
-        ajMOqZnrbeoAIlv0FdwgLJ8QDq4Nr3AsOamZ623qAFgetlf6vmsvIHtLCBh34DVrXWUF6JKebz6mkVEZ
-        sPbPSxRNMqDSiiBdJSTK/ZjZG+oJ6Qq4aI0jdU84bgwiWR7uCbEBggw4a3mQrhEWi4TThhu75VH4uB25
-        E2lRfiKDFt2hgh3Ai4qaC5lnwkSMX6JAOK+PQX2bY8/qrr7PotaexxRDbACFAUfaAHJN4xL9cWrE+Dlz
-        dZ6LR8PZJ0L+hRDqCuDjHbb7kNP4mMYzuv1LVFJ4HqyWzcoqXdkAIS7mPw1LbKZH2DIPf+2yAaI8dWGm
-        iyU2046yAVj6RJp2nMAfAaBvGTpFWOSfqY4AAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="cmdNewID.Text" xml:space="preserve">
     <value>&amp;Nuovo</value>
   </data>
-  <data name="chksurfaceprofile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 17</value>
-  </data>
-  <data name="chksurfaceprofile.Text" xml:space="preserve">
+  <data name="chksurfaceprofile.Properties.Caption" xml:space="preserve">
     <value>Attiva profilo superficie</value>
   </data>
   <data name="cmdUpdateCalculateVersion.ToolTip" xml:space="preserve">
@@ -360,14 +338,8 @@
   <data name="cmdApply.Text" xml:space="preserve">
     <value>Applica</value>
   </data>
-  <data name="lbl3DSurfaceModelLOD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 13</value>
-  </data>
   <data name="lbl3DSurfaceModelLOD.Text" xml:space="preserve">
     <value>Semplificazione modello:</value>
-  </data>
-  <data name="lbl3DSurfaceTextureLOD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 13</value>
   </data>
   <data name="lbl3DSurfaceTextureLOD.Text" xml:space="preserve">
     <value>Semplificazione texture:</value>
@@ -378,20 +350,11 @@
   <data name="GroupBox9.Text" xml:space="preserve">
     <value>Visualizzatore interno:</value>
   </data>
-  <data name="chk3DLochShowSplay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 17</value>
-  </data>
-  <data name="chk3DLochShowSplay.Text" xml:space="preserve">
+  <data name="chk3DLochShowSplay.Properties.Caption" xml:space="preserve">
     <value>Mostra splay</value>
   </data>
-  <data name="chk3dLochShowDialog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 17</value>
-  </data>
-  <data name="chk3dLochShowDialog.Text" xml:space="preserve">
+  <data name="chk3dLochShowDialog.Properties.Caption" xml:space="preserve">
     <value>Mostra la finestra di selezione dati ad ogni avvio</value>
-  </data>
-  <data name="lbl3DModelMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
   </data>
   <data name="lbl3DModelMode.Text" xml:space="preserve">
     <value>Modello 3D:</value>
@@ -405,53 +368,29 @@
   <data name="cbo3DModelMode.Items2" xml:space="preserve">
     <value>Oversampling avanzato (volume da bordi in pianta e sezione per i capisaldi definiti e per n capisaldi 'virtuali' aggiuntivi)</value>
   </data>
-  <data name="lblPlotNoteTextFont.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 13</value>
-  </data>
   <data name="lblPlotNoteTextFont.Text" xml:space="preserve">
     <value>Carattere:</value>
   </data>
   <data name="lblPlotNoteTextColor.Text" xml:space="preserve">
     <value>Colore:</value>
   </data>
-  <data name="lblPlotNoteTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 13</value>
-  </data>
   <data name="lblPlotNoteTextScaleFactor.Text" xml:space="preserve">
-    <value>Testo (scala):</value>
-  </data>
-  <data name="lblPlotSplaySelectedPenWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 13</value>
+    <value>Testo:</value>
   </data>
   <data name="lblPlotSplaySelectedPenWidth.Text" xml:space="preserve">
     <value>Spessore (sel.):</value>
   </data>
-  <data name="lblPlotSplayPenWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 13</value>
-  </data>
   <data name="lblPlotSplayPenWidth.Text" xml:space="preserve">
     <value>Spessore:</value>
-  </data>
-  <data name="lblPlotSplayPenStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
   </data>
   <data name="lblPlotSplayPenStyle.Text" xml:space="preserve">
     <value>Tratto:</value>
   </data>
-  <data name="lblPlotLRUDSelectedPenWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 13</value>
-  </data>
   <data name="lblPlotLRUDSelectedPenWidth.Text" xml:space="preserve">
     <value>Spessore (sel.):</value>
   </data>
-  <data name="lblPlotLRUDPenWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 13</value>
-  </data>
   <data name="lblPlotLRUDPenWidth.Text" xml:space="preserve">
     <value>Spessore:</value>
-  </data>
-  <data name="lblPlotLRUDPenStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
   </data>
   <data name="lblPlotLRUDPenStyle.Text" xml:space="preserve">
     <value>Tratto:</value>
@@ -459,23 +398,14 @@
   <data name="lblPlotTranslationLinePenColor.Text" xml:space="preserve">
     <value>Colore:</value>
   </data>
-  <data name="lblPlotTranslationLinePenSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 13</value>
-  </data>
   <data name="lblPlotTranslationLinePenSize.Text" xml:space="preserve">
     <value>Spessore:</value>
-  </data>
-  <data name="lblPlotTranslationLinePenStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
   </data>
   <data name="lblPlotTranslationLinePenStyle.Text" xml:space="preserve">
     <value>Tratto:</value>
   </data>
   <data name="frmPlotTranslationLine.Text" xml:space="preserve">
     <value>Linee di traslazione:</value>
-  </data>
-  <data name="lblPlotTextFont.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 13</value>
   </data>
   <data name="lblPlotTextFont.Text" xml:space="preserve">
     <value>Carattere:</value>
@@ -486,26 +416,14 @@
   <data name="lblPlotTextColor.Text" xml:space="preserve">
     <value>Colore:</value>
   </data>
-  <data name="lblPlotTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 13</value>
-  </data>
   <data name="lblPlotTextScaleFactor.Text" xml:space="preserve">
-    <value>Testo (scala):</value>
-  </data>
-  <data name="lblPlotSelectedPointSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 13</value>
+    <value>Testo:</value>
   </data>
   <data name="lblPlotSelectedPointSize.Text" xml:space="preserve">
     <value>Dimensione (sel.):</value>
   </data>
-  <data name="lblPlotPointSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 13</value>
-  </data>
   <data name="lblPlotPointSize.Text" xml:space="preserve">
     <value>Dimensione:</value>
-  </data>
-  <data name="lblPlotPointSymbol.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 13</value>
   </data>
   <data name="lblPlotPointSymbol.Text" xml:space="preserve">
     <value>Simbolo:</value>
@@ -513,35 +431,23 @@
   <data name="frmPlotPoint.Text" xml:space="preserve">
     <value>Capisaldi:</value>
   </data>
-  <data name="chkPlotCenterlineVectors.Text" xml:space="preserve">
+  <data name="chkPlotCenterlineVectors.Properties.Caption" xml:space="preserve">
     <value>Mostra vettori</value>
   </data>
   <data name="lblPlotPenColor.Text" xml:space="preserve">
     <value>Colore:</value>
   </data>
-  <data name="lblPlotPenWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 13</value>
-  </data>
   <data name="lblPlotPenWidth.Text" xml:space="preserve">
     <value>Spessore:</value>
   </data>
-  <data name="lblPlotSelectedPenWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 13</value>
-  </data>
   <data name="lblPlotSelectedPenWidth.Text" xml:space="preserve">
     <value>Spessore (sel.):</value>
-  </data>
-  <data name="lblPlotPenStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
   </data>
   <data name="lblPlotPenStyle.Text" xml:space="preserve">
     <value>Tratto:</value>
   </data>
   <data name="frmPlotPen.Text" xml:space="preserve">
     <value>Segmenti:</value>
-  </data>
-  <data name="tabInfoPlot.Text" xml:space="preserve">
-    <value>Poligonale</value>
   </data>
   <data name="cboClipBorder.Items" xml:space="preserve">
     <value>Non tagliare gli oggetti del livello bordi</value>
@@ -552,26 +458,14 @@
   <data name="cboClipBorder.Items2" xml:space="preserve">
     <value>Disattiva per tutti gli oggetti</value>
   </data>
-  <data name="lblClippingAdvancedClipart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 13</value>
-  </data>
   <data name="lblClippingAdvancedClipart.Text" xml:space="preserve">
     <value>Riemp. avanzati:</value>
-  </data>
-  <data name="lblClippingBorder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 13</value>
   </data>
   <data name="lblClippingBorder.Text" xml:space="preserve">
     <value>Bordi:</value>
   </data>
-  <data name="lblTextRotateMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 13</value>
-  </data>
   <data name="lblTextRotateMode.Text" xml:space="preserve">
     <value>Rotazione per il testo:</value>
-  </data>
-  <data name="lblSignRotateMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 13</value>
   </data>
   <data name="lblSignRotateMode.Text" xml:space="preserve">
     <value>Rotazione per i simboli:</value>
@@ -579,26 +473,14 @@
   <data name="GroupBox5.Text" xml:space="preserve">
     <value>Rotazione per simboli e testo:</value>
   </data>
-  <data name="lblDesignLowerLayersTransparencyThreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 13</value>
-  </data>
   <data name="lblDesignLowerLayersTransparencyThreshold.Text" xml:space="preserve">
     <value>Livelli inferiori:</value>
-  </data>
-  <data name="lblDesignOriginalPositionTransparencyThreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 13</value>
   </data>
   <data name="lblDesignOriginalPositionTransparencyThreshold.Text" xml:space="preserve">
     <value>Posizione originale:</value>
   </data>
-  <data name="lblDesignBackgroundTransparencyThreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 13</value>
-  </data>
   <data name="lblDesignBackgroundTransparencyThreshold.Text" xml:space="preserve">
     <value>Sfondo:</value>
-  </data>
-  <data name="lblDesignCombinedAreaTransparencyThreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 13</value>
   </data>
   <data name="lblDesignCombinedAreaTransparencyThreshold.Text" xml:space="preserve">
     <value>Modalità combinata:</value>
@@ -609,9 +491,6 @@
   <data name="lblSketchProfileCorrectionScale.Text" xml:space="preserve">
     <value>Scala:</value>
   </data>
-  <data name="lblSketchProfileCorrectionTranslation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 13</value>
-  </data>
   <data name="lblSketchProfileCorrectionTranslation.Text" xml:space="preserve">
     <value>Traslazione (X,Y):</value>
   </data>
@@ -620,9 +499,6 @@
   </data>
   <data name="lblSketchPlanCorrectionScale.Text" xml:space="preserve">
     <value>Scala:</value>
-  </data>
-  <data name="lblSketchPlanCorrectionTranslation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 13</value>
   </data>
   <data name="lblSketchPlanCorrectionTranslation.Text" xml:space="preserve">
     <value>Traslazione (X,Y):</value>
@@ -633,44 +509,23 @@
   <data name="cboLineType.Items" xml:space="preserve">
     <value>Rette</value>
   </data>
-  <data name="Label27.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
-  </data>
   <data name="Label27.Text" xml:space="preserve">
     <value>Linea:</value>
-  </data>
-  <data name="lblDesignTextureScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 13</value>
   </data>
   <data name="lblDesignTextureScale.Text" xml:space="preserve">
     <value>Riemp. texture:</value>
   </data>
-  <data name="lblDesignTextFont.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 13</value>
-  </data>
   <data name="lblDesignTextFont.Text" xml:space="preserve">
     <value>Carattere:</value>
-  </data>
-  <data name="lblDesignSoilScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 13</value>
   </data>
   <data name="lblDesignSoilScale.Text" xml:space="preserve">
     <value>Riemp. clipart:</value>
   </data>
-  <data name="lblDesignTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 13</value>
-  </data>
   <data name="lblDesignTextScaleFactor.Text" xml:space="preserve">
     <value>Testo:</value>
   </data>
-  <data name="lblDesignSignScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 13</value>
-  </data>
   <data name="lblDesignSignScaleFactor.Text" xml:space="preserve">
     <value>Simboli:</value>
-  </data>
-  <data name="lblDesignTerrainLevelScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 13</value>
   </data>
   <data name="lblDesignTerrainLevelScaleFactor.Text" xml:space="preserve">
     <value>Bordi:</value>
@@ -678,32 +533,17 @@
   <data name="frrmDesign.Text" xml:space="preserve">
     <value>Clipart, simboli e oggetti (scale e caratteri):</value>
   </data>
-  <data name="Label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 13</value>
-  </data>
   <data name="Label8.Text" xml:space="preserve">
     <value>Linee ultrasottili:</value>
-  </data>
-  <data name="Label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
   </data>
   <data name="Label7.Text" xml:space="preserve">
     <value>Linee sottili:</value>
   </data>
-  <data name="Label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 13</value>
-  </data>
   <data name="Label4.Text" xml:space="preserve">
     <value>Linee medie:</value>
   </data>
-  <data name="lblBaseLinesScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
-  </data>
   <data name="lblBaseLinesScaleFactor.Text" xml:space="preserve">
     <value>Linee marcate:</value>
-  </data>
-  <data name="lblBaseLineWidthScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 13</value>
   </data>
   <data name="lblBaseLineWidthScaleFactor.Text" xml:space="preserve">
     <value>Scala base:</value>
@@ -711,56 +551,17 @@
   <data name="GroupBox1.Text" xml:space="preserve">
     <value>Spessori linee (scale):</value>
   </data>
-  <data name="tabInfoDesign.Text" xml:space="preserve">
-    <value>Disegno</value>
-  </data>
-  <data name="lblSpecialTrigPointsStructure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 13</value>
-  </data>
   <data name="lblSpecialTrigPointsStructure.Text" xml:space="preserve">
     <value>Capisaldi speciali:</value>
-  </data>
-  <data name="lblTrigPointsStructure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 13</value>
   </data>
   <data name="lblTrigPointsStructure.Text" xml:space="preserve">
     <value>Capisaldi:</value>
   </data>
-  <data name="lblInfoBoxStructure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 13</value>
-  </data>
   <data name="lblInfoBoxStructure.Text" xml:space="preserve">
     <value>Struttura scheda:</value>
   </data>
-  <data name="tabInfoInfoBox.Text" xml:space="preserve">
-    <value>Scheda rilievo e capisaldi</value>
-  </data>
-  <data name="lblCaveInfoDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 13</value>
-  </data>
   <data name="lblCaveInfoDescription.Text" xml:space="preserve">
     <value>Descrizione:</value>
-  </data>
-  <data name="btnCaveInfoAddCave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 22</value>
-  </data>
-  <data name="btnCaveInfoAddCave.Text" xml:space="preserve">
-    <value>Aggiungi grotta</value>
-  </data>
-  <data name="btnCaveInfoAddBranch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 22</value>
-  </data>
-  <data name="btnCaveInfoAddBranch.Text" xml:space="preserve">
-    <value>Aggiungi ramo</value>
-  </data>
-  <data name="btnCaveInfoDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 22</value>
-  </data>
-  <data name="btnCaveInfoDelete.Text" xml:space="preserve">
-    <value>Elimina</value>
-  </data>
-  <data name="lblCaveInfoID.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 13</value>
   </data>
   <data name="lblCaveInfoID.Text" xml:space="preserve">
     <value>Rif.catastale:</value>
@@ -777,9 +578,6 @@
   <data name="tabCaveInfoSegments.Text" xml:space="preserve">
     <value>Segmenti</value>
   </data>
-  <data name="lblCaveInfoSurfaceProfileShow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 13</value>
-  </data>
   <data name="lblCaveInfoSurfaceProfileShow.Text" xml:space="preserve">
     <value>Visualizza:</value>
   </data>
@@ -795,47 +593,20 @@
   <data name="tabInfoCaves.Text" xml:space="preserve">
     <value>Riferimenti grotte</value>
   </data>
-  <data name="btnSessionsAddSession.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 22</value>
-  </data>
-  <data name="btnSessionsAddSession.Text" xml:space="preserve">
-    <value>Aggiungi sessione</value>
-  </data>
-  <data name="btnSessionsDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 22</value>
-  </data>
-  <data name="btnSessionsDelete.Text" xml:space="preserve">
-    <value>Elimina</value>
-  </data>
-  <data name="lblSessionDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 13</value>
-  </data>
   <data name="lblSessionDescription.Text" xml:space="preserve">
     <value>Descrizione:</value>
   </data>
   <data name="lblSessionDate.Text" xml:space="preserve">
     <value>Data:</value>
   </data>
-  <data name="lblSessionDesigner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 13</value>
-  </data>
   <data name="lblSessionDesigner.Text" xml:space="preserve">
     <value>Disegnatore/i:</value>
-  </data>
-  <data name="lblSessionTeam.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 13</value>
   </data>
   <data name="lblSessionTeam.Text" xml:space="preserve">
     <value>Rilevatore/i:</value>
   </data>
-  <data name="lblSessionClub.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 13</value>
-  </data>
   <data name="lblSessionClub.Text" xml:space="preserve">
     <value>Gruppo/i:</value>
-  </data>
-  <data name="tabSessionMain.Text" xml:space="preserve">
-    <value>Generale</value>
   </data>
   <data name="cboSessionDepthType.Items" xml:space="preserve">
     <value>Profondità (caposaldo di arrivo)</value>
@@ -846,16 +617,10 @@
   <data name="cboSessionDepthType.Items2" xml:space="preserve">
     <value>Differenza di profondità</value>
   </data>
-  <data name="lblSessionDepthType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 13</value>
-  </data>
   <data name="lblSessionDepthType.Text" xml:space="preserve">
     <value>Profondità:</value>
   </data>
-  <data name="chkSessionDecMag.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 17</value>
-  </data>
-  <data name="chkSessionDecMag.Text" xml:space="preserve">
+  <data name="chkSessionDecMag.Properties.Caption" xml:space="preserve">
     <value>Declinazione:</value>
   </data>
   <data name="cboSessionNordType.Items" xml:space="preserve">
@@ -863,9 +628,6 @@
   </data>
   <data name="cboSessionNordType.Items1" xml:space="preserve">
     <value>Nord geografico</value>
-  </data>
-  <data name="lblSessionNordType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 13</value>
   </data>
   <data name="lblSessionNordType.Text" xml:space="preserve">
     <value>Nord:</value>
@@ -879,14 +641,8 @@
   <data name="cboSessionDataFormat.Items2" xml:space="preserve">
     <value>Subacquei (Distanza/Direzione/Profondità)</value>
   </data>
-  <data name="lblSessionDataFormat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 13</value>
-  </data>
   <data name="lblSessionDataFormat.Text" xml:space="preserve">
     <value>Formato dei dati:</value>
-  </data>
-  <data name="lblSessionGrade.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 13</value>
   </data>
   <data name="lblSessionGrade.Text" xml:space="preserve">
     <value>Precisione:</value>
@@ -918,9 +674,6 @@
   <data name="cboSessionSideMeasuresType.Items2" xml:space="preserve">
     <value>Perpendicolari al 1° segmento uscente</value>
   </data>
-  <data name="lblSessionSideMeasureType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 13</value>
-  </data>
   <data name="lblSessionSideMeasureType.Text" xml:space="preserve">
     <value>Misure laterali:</value>
   </data>
@@ -930,16 +683,10 @@
   <data name="cboSessionBearingType.Items1" xml:space="preserve">
     <value>Gradi centesimali (grad)</value>
   </data>
-  <data name="lblSessionBearingType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 13</value>
-  </data>
   <data name="lblSessionBearingType.Text" xml:space="preserve">
     <value>Direzione:</value>
   </data>
-  <data name="chkSessionBearingDirection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 17</value>
-  </data>
-  <data name="chkSessionBearingDirection.Text" xml:space="preserve">
+  <data name="chkSessionBearingDirection.Properties.Caption" xml:space="preserve">
     <value>Inverti</value>
   </data>
   <data name="cboSessionInclinationType.Items" xml:space="preserve">
@@ -948,32 +695,17 @@
   <data name="cboSessionInclinationType.Items1" xml:space="preserve">
     <value>Gradi centesimali (grad)</value>
   </data>
-  <data name="lblSessionInclinationType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 13</value>
-  </data>
   <data name="lblSessionInclinationType.Text" xml:space="preserve">
     <value>Inclinazione:</value>
   </data>
-  <data name="chkSessionInclinationDirection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 17</value>
-  </data>
-  <data name="chkSessionInclinationDirection.Text" xml:space="preserve">
+  <data name="chkSessionInclinationDirection.Properties.Caption" xml:space="preserve">
     <value>Inverti</value>
   </data>
-  <data name="tabSessionMeasure.Text" xml:space="preserve">
-    <value>Misure</value>
-  </data>
-  <data name="chkSessionVthreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 17</value>
-  </data>
-  <data name="chkSessionVthreshold.Text" xml:space="preserve">
+  <data name="chkSessionVthreshold.Properties.Caption" xml:space="preserve">
     <value>Soglia verticale UD:</value>
   </data>
   <data name="tabSessionOther.Text" xml:space="preserve">
     <value>Altro</value>
-  </data>
-  <data name="tabInfoSessions.Text" xml:space="preserve">
-    <value>Sessioni</value>
   </data>
   <data name="cboDepthType.Items" xml:space="preserve">
     <value>Profondità (caposaldo di arrivo)</value>
@@ -984,14 +716,8 @@
   <data name="cboDepthType.Items2" xml:space="preserve">
     <value>Differenza di profondità</value>
   </data>
-  <data name="lblDepthType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 13</value>
-  </data>
   <data name="lblDepthType.Text" xml:space="preserve">
     <value>Profondità:</value>
-  </data>
-  <data name="chkInclinationDirection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 17</value>
   </data>
   <data name="chkInclinationDirection.Text" xml:space="preserve">
     <value>Inverti</value>
@@ -1002,35 +728,20 @@
   <data name="cboInclinationType.Items1" xml:space="preserve">
     <value>Gradi centesimali (grads)</value>
   </data>
-  <data name="lblInclinationType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 13</value>
-  </data>
   <data name="lblInclinationType.Text" xml:space="preserve">
     <value>Inclinazione:</value>
   </data>
-  <data name="chkGlobalDecMag.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 17</value>
-  </data>
-  <data name="chkGlobalDecMag.Text" xml:space="preserve">
+  <data name="chkGlobalDecMag.Properties.Caption" xml:space="preserve">
     <value>Declinazione:</value>
   </data>
-  <data name="chkGlobalVthreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 17</value>
-  </data>
-  <data name="chkGlobalVthreshold.Text" xml:space="preserve">
+  <data name="chkGlobalVthreshold.Properties.Caption" xml:space="preserve">
     <value>Soglia verticale UD:</value>
   </data>
   <data name="GroupBox2.Text" xml:space="preserve">
     <value>Superficie:</value>
   </data>
-  <data name="chkDecMag.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 17</value>
-  </data>
   <data name="chkDecMag.Text" xml:space="preserve">
     <value>Declinazione:</value>
-  </data>
-  <data name="lblNordType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 13</value>
   </data>
   <data name="lblNordType.Text" xml:space="preserve">
     <value>Nord:</value>
@@ -1050,14 +761,8 @@
   <data name="cboDataFormat.Items2" xml:space="preserve">
     <value>Subacquei (Distanza/Direzione/Profondità)</value>
   </data>
-  <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 13</value>
-  </data>
   <data name="Label1.Text" xml:space="preserve">
     <value>Formato dei dati:</value>
-  </data>
-  <data name="lblGrade.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 13</value>
   </data>
   <data name="lblGrade.Text" xml:space="preserve">
     <value>Precisione:</value>
@@ -1077,9 +782,6 @@
   <data name="cboDistanceType.Items2" xml:space="preserve">
     <value>Iarde</value>
   </data>
-  <data name="lblSideMeasuresType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 13</value>
-  </data>
   <data name="lblSideMeasuresType.Text" xml:space="preserve">
     <value>Misure laterali:</value>
   </data>
@@ -1095,9 +797,6 @@
   <data name="lblDistanceType.Text" xml:space="preserve">
     <value>Distanza:</value>
   </data>
-  <data name="chkVthreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 17</value>
-  </data>
   <data name="chkVthreshold.Text" xml:space="preserve">
     <value>Soglia verticale UD:</value>
   </data>
@@ -1107,29 +806,14 @@
   <data name="cboBearingType.Items1" xml:space="preserve">
     <value>Gradi centesimali (grads)</value>
   </data>
-  <data name="lblBearingType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 13</value>
-  </data>
   <data name="lblBearingType.Text" xml:space="preserve">
     <value>Direzione:</value>
-  </data>
-  <data name="chkBearingDirection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 17</value>
   </data>
   <data name="chkBearingDirection.Text" xml:space="preserve">
     <value>Inverti</value>
   </data>
   <data name="tabInfoMeasure.Text" xml:space="preserve">
     <value>Misure</value>
-  </data>
-  <data name="optGPSRefPointOnOrigin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 17</value>
-  </data>
-  <data name="optGPSRefPointOnOrigin.Text" xml:space="preserve">
-    <value>Origine</value>
-  </data>
-  <data name="lblCoordinateGeo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 13</value>
   </data>
   <data name="lblCoordinateGeo.Text" xml:space="preserve">
     <value>Sistema:</value>
@@ -1143,32 +827,17 @@
   <data name="frmGPSDefaults.Text" xml:space="preserve">
     <value>Valori predefiniti:</value>
   </data>
-  <data name="lblGPSCustomRefPoint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 13</value>
-  </data>
   <data name="lblGPSCustomRefPoint.Text" xml:space="preserve">
     <value>Caposaldo di riferimento:</value>
-  </data>
-  <data name="tabInfoGPS.Text" xml:space="preserve">
-    <value>Pos. geografico</value>
-  </data>
-  <data name="lblCalculateVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 13</value>
   </data>
   <data name="lblCalculateVersion.Text" xml:space="preserve">
     <value>Versione:</value>
   </data>
-  <data name="chkBindCrossSection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 17</value>
-  </data>
-  <data name="chkBindCrossSection.Text" xml:space="preserve">
+  <data name="chkBindCrossSection.Properties.Caption" xml:space="preserve">
     <value>Collega sezioni trasversali</value>
   </data>
   <data name="lblNordCorrectionWarning.Text" xml:space="preserve">
-    <value>Attenzione: quando sono attive le funzione geografiche la correzione al Nord geografico è automatica.</value>
-  </data>
-  <data name="chkBindSplaySegment.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 17</value>
+    <value>&lt;image=#warning;size=16,16&gt; &lt;b&gt;Attenzione:&lt;/b&gt; quando sono attive le funzione geografiche la correzione al Nord geografico è automatica.</value>
   </data>
   <data name="cboSplayMode.Items" xml:space="preserve">
     <value>Nessuna gestione</value>
@@ -1176,14 +845,8 @@
   <data name="cboSplayMode.Items1" xml:space="preserve">
     <value>Gestione automatica</value>
   </data>
-  <data name="Label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 13</value>
-  </data>
   <data name="Label5.Text" xml:space="preserve">
     <value>Origine:</value>
-  </data>
-  <data name="Label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 13</value>
   </data>
   <data name="Label3.Text" xml:space="preserve">
     <value>Inversioni:</value>
@@ -1191,10 +854,7 @@
   <data name="cboInversionMode.Items1" xml:space="preserve">
     <value>Assolute</value>
   </data>
-  <data name="chkCalculateMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 17</value>
-  </data>
-  <data name="chkCalculateMode.Text" xml:space="preserve">
+  <data name="chkCalculateMode.Properties.Caption" xml:space="preserve">
     <value>Calcolo automatico</value>
   </data>
   <data name="lblNordCorrection.Text" xml:space="preserve">
@@ -1205,9 +865,6 @@
   </data>
   <data name="cboNordCorrection.Items1" xml:space="preserve">
     <value>Correggi tutto a Nord geografico</value>
-  </data>
-  <data name="lblCalculateMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 13</value>
   </data>
   <data name="lblCalculateMode.Text" xml:space="preserve">
     <value>Tipo di calcolo:</value>
@@ -1221,9 +878,6 @@
   <data name="cboCalculateType.Items2" xml:space="preserve">
     <value>Usa Therion</value>
   </data>
-  <data name="lblRingCorrectionMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 13</value>
-  </data>
   <data name="lblRingCorrectionMode.Text" xml:space="preserve">
     <value>Correzione anelli:</value>
   </data>
@@ -1236,47 +890,23 @@
   <data name="cboRingCorrectionMode.Items2" xml:space="preserve">
     <value>Correzione al punto medio</value>
   </data>
-  <data name="tabInfoOptions.Text" xml:space="preserve">
-    <value>Opzioni di calcolo</value>
-  </data>
-  <data name="chkHistoryEnabled.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 17</value>
-  </data>
-  <data name="chkHistoryEnabled.Text" xml:space="preserve">
+  <data name="chkHistoryEnabled.Properties.Caption" xml:space="preserve">
     <value>Salva revisioni</value>
-  </data>
-  <data name="Label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 13</value>
   </data>
   <data name="Label10.Text" xml:space="preserve">
     <value>Grado/acc.:</value>
   </data>
-  <data name="lblDesigner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 13</value>
-  </data>
   <data name="lblDesigner.Text" xml:space="preserve">
     <value>Disegnatori/i:</value>
-  </data>
-  <data name="lblTeam.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 13</value>
   </data>
   <data name="lblTeam.Text" xml:space="preserve">
     <value>Rilevatore/i:</value>
   </data>
-  <data name="lblCatasto.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 13</value>
-  </data>
   <data name="lblCatasto.Text" xml:space="preserve">
     <value>Rif.catastale:</value>
   </data>
-  <data name="lblClub.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 13</value>
-  </data>
   <data name="lblClub.Text" xml:space="preserve">
     <value>Gruppo/i:</value>
-  </data>
-  <data name="lblDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 13</value>
   </data>
   <data name="lblDescription.Text" xml:space="preserve">
     <value>Descrizione:</value>
@@ -1284,44 +914,20 @@
   <data name="lblName.Text" xml:space="preserve">
     <value>Nome:</value>
   </data>
-  <data name="tabInfoMain.Text" xml:space="preserve">
-    <value>Generale</value>
-  </data>
-  <data name="chkSurfaceProfileShow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 17</value>
-  </data>
-  <data name="chkSurfaceProfileShow.Text" xml:space="preserve">
+  <data name="chkSurfaceProfileShow.Properties.Caption" xml:space="preserve">
     <value>Visualizza in sezione</value>
-  </data>
-  <data name="lblsurfaceprofileelevation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 13</value>
   </data>
   <data name="lblsurfaceprofileelevation.Text" xml:space="preserve">
     <value>Set di dati:</value>
   </data>
-  <data name="tabInfoSurface.Text" xml:space="preserve">
-    <value>Superficie</value>
-  </data>
-  <data name="lblHighlightCondition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 13</value>
-  </data>
   <data name="lblHighlightCondition.Text" xml:space="preserve">
     <value>Condizione:</value>
-  </data>
-  <data name="lblHighlightApplyTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 13</value>
   </data>
   <data name="lblHighlightApplyTo.Text" xml:space="preserve">
     <value>Applica a:</value>
   </data>
-  <data name="lblHighlightOpacity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 13</value>
-  </data>
   <data name="lblHighlightOpacity.Text" xml:space="preserve">
     <value>Trasparenza:</value>
-  </data>
-  <data name="lblHighlightSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 13</value>
   </data>
   <data name="lblHighlightSize.Text" xml:space="preserve">
     <value>Dimensione:</value>
@@ -1332,63 +938,12 @@
   <data name="lblHighlightColor.Text" xml:space="preserve">
     <value>Colore:</value>
   </data>
-  <data name="btnAddHighlight0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 22</value>
-  </data>
-  <data name="btnAddHighlight0.Text" xml:space="preserve">
-    <value>Capisaldi</value>
-  </data>
-  <data name="btnAddHighlight1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 22</value>
-  </data>
-  <data name="btnAddHighlight1.Text" xml:space="preserve">
-    <value>Segmenti</value>
-  </data>
-  <data name="btnAddHighlight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 22</value>
-  </data>
-  <data name="btnAddHighlight.Text" xml:space="preserve">
-    <value>Aggiungi evidenziazione</value>
-  </data>
-  <data name="btnDeleteHighlight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 22</value>
-  </data>
-  <data name="btnDeleteHighlight.Text" xml:space="preserve">
-    <value>Elimina</value>
-  </data>
-  <data name="btnResetHighlight.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnResetHighlight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 22</value>
-  </data>
-  <data name="btnResetHighlight.Text" xml:space="preserve">
-    <value>Reimposta</value>
-  </data>
-  <data name="tabInfoHighlights.Text" xml:space="preserve">
-    <value>Evidenziazioni</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.Icon" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Proprietà:</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="btnCaveInfoSegmentsRefresh.ToolTip" xml:space="preserve">
 		<value>Aggiorna l'elenco degli oggetti collegati</value>
@@ -1478,7 +1033,7 @@
   <data name="txtCaveInfoDescription.ToolTip" xml:space="preserve">
 		<value>Descrizione</value>
 	</data>
-  <data name="chkProfileWarpingEnabled.Text" xml:space="preserve">
+  <data name="chkProfileWarpingEnabled.Properties.Caption" xml:space="preserve">
 		<value>Sezione</value>
 	</data>
   <data name="mnuInfoBoxTags8.Text" xml:space="preserve">
@@ -1556,7 +1111,7 @@
   <data name="picPlotTextColor.ToolTip" xml:space="preserve">
 		<value>Colore predefinito per il testo dei capisaldi</value>
 	</data>
-  <data name="chkPlanWarpingEnabled.Text" xml:space="preserve">
+  <data name="chkPlanWarpingEnabled.Properties.Caption" xml:space="preserve">
 		<value>Pianta</value>
 	</data>
   <data name="picPlotNoteTextColor.ToolTip" xml:space="preserve">
@@ -1772,7 +1327,7 @@
   <data name="colPropSegmentsBindedSegment.Text" xml:space="preserve">
     <value>Segmento</value>
   </data>
-  <data name="chkShowWarpingDetails.Text" xml:space="preserve">
+  <data name="chkShowWarpingDetails.Properties.Caption" xml:space="preserve">
     <value>Mostra dettagli warping</value>
   </data>
   <data name="txtCreatorID.ToolTip" xml:space="preserve">
@@ -1808,19 +1363,16 @@
   <data name="lblDesignClipartScaleFactor.Text" xml:space="preserve">
     <value>Clipart:</value>
   </data>
-  <data name="chkCaveInfoLocked.Text" xml:space="preserve">
+  <data name="chkCaveInfoLocked.Properties.Caption" xml:space="preserve">
     <value>Bloccato</value>
   </data>
   <data name="tabSessionSegments.Text" xml:space="preserve">
     <value>Battute</value>
   </data>
-  <data name="tabSessionCalibrationSegments.Text" xml:space="preserve">
-    <value>Battute di calibrazione</value>
-  </data>
   <data name="cboInversionMode.Items" xml:space="preserve">
     <value>Relative</value>
   </data>
-  <data name="chkShowLegacyExtraPrintAndExportObjects.Text" xml:space="preserve">
+  <data name="chkShowLegacyExtraPrintAndExportObjects.Properties.Caption" xml:space="preserve">
     <value>Consenti oggetti di stampa classici</value>
   </data>
   <data name="lblCaveInfoPriority.Text" xml:space="preserve">
@@ -1832,7 +1384,7 @@
   <data name="tabCaveInfoCalculateOptions.Text" xml:space="preserve">
     <value>Opzioni di calcolo</value>
   </data>
-  <data name="chkPlotCenterlineForceSegmentColor.Text" xml:space="preserve">
+  <data name="chkPlotCenterlineForceSegmentColor.Properties.Caption" xml:space="preserve">
     <value>Forza uso colore battuta</value>
   </data>
   <data name="lblCaveInfoConnection.Text" xml:space="preserve">
@@ -1852,9 +1404,6 @@
   </data>
   <data name="lvSessionCalibrationSegments.ToolTip" xml:space="preserve">
     <value>Battute per questa sessione</value>
-  </data>
-  <data name="tabSessionDefault.Text" xml:space="preserve">
-    <value>Valori predefiniti</value>
   </data>
   <data name="lblSurfacePenColor.Text" xml:space="preserve">
     <value>Colore:</value>
@@ -1945,5 +1494,425 @@
   </data>
   <data name="cboSessionInclinationType.Items2" xml:space="preserve">
     <value>Percentuale</value>
+  </data>
+  <data name="AccordionControlElement10.Text" xml:space="preserve">
+    <value>Poligonale</value>
+  </data>
+  <data name="AccordionControlElement11.Text" xml:space="preserve">
+    <value>3D</value>
+  </data>
+  <data name="AccordionControlElement12.Text" xml:space="preserve">
+    <value>Disegno</value>
+  </data>
+  <data name="AccordionControlElement13.Text" xml:space="preserve">
+    <value>Sessioni</value>
+  </data>
+  <data name="AccordionControlElement14.Text" xml:space="preserve">
+    <value>Posizione geografica</value>
+  </data>
+  <data name="AccordionControlElement15.Text" xml:space="preserve">
+    <value>Gradi di precisione</value>
+  </data>
+  <data name="AccordionControlElement16.Text" xml:space="preserve">
+    <value>Opzioni di calcolo</value>
+  </data>
+  <data name="AccordionControlElement17.Text" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="AccordionControlElement18.Text" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="AccordionControlElement2.Text" xml:space="preserve">
+    <value>Dati di elevazione</value>
+  </data>
+  <data name="AccordionControlElement3.Text" xml:space="preserve">
+    <value>Ortofoto</value>
+  </data>
+  <data name="AccordionControlElement4.Text" xml:space="preserve">
+    <value>Principale</value>
+  </data>
+  <data name="AccordionControlElement5.Text" xml:space="preserve">
+    <value>WMS</value>
+  </data>
+  <data name="AccordionControlElement6.Text" xml:space="preserve">
+    <value>Profilo della superficie</value>
+  </data>
+  <data name="AccordionControlElement7.Text" xml:space="preserve">
+    <value>Grotte e rami</value>
+  </data>
+  <data name="AccordionControlElement8.Text" xml:space="preserve">
+    <value>Box informativo e capisaldi</value>
+  </data>
+  <data name="AccordionControlElement9.Text" xml:space="preserve">
+    <value>Evidenziazioni</value>
+  </data>
+  <data name="btnAddHighlightStations.Caption" xml:space="preserve">
+    <value>Capisaldi</value>
+  </data>
+  <data name="btnCaveInfoAddBranch.Caption" xml:space="preserve">
+    <value>Aggiungi ramo</value>
+  </data>
+  <data name="btnCaveInfoAddCave.Caption" xml:space="preserve">
+    <value>Aggiungi grotta</value>
+  </data>
+  <data name="btnCaveInfoDelete.Caption" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="Bar1.Text" xml:space="preserve">
+    <value>Evidenziazioni</value>
+  </data>
+  <data name="barCavesAndBranches.Text" xml:space="preserve">
+    <value>Grotte e rami</value>
+  </data>
+  <data name="barElevation.Text" xml:space="preserve">
+    <value>Dati di elevazione</value>
+  </data>
+  <data name="barGrades.Text" xml:space="preserve">
+    <value>Gradi di precisione</value>
+  </data>
+  <data name="barHighlights.Text" xml:space="preserve">
+    <value>Evidenziazioni</value>
+  </data>
+  <data name="barOrthophotos.Text" xml:space="preserve">
+    <value>Ortofoto</value>
+  </data>
+  <data name="barSessions.Text" xml:space="preserve">
+    <value>Sessioni</value>
+  </data>
+  <data name="barWMS.Text" xml:space="preserve">
+    <value>WMS</value>
+  </data>
+  <data name="btnAddHighlight.Caption" xml:space="preserve">
+    <value>Aggiungi evidenziazione</value>
+  </data>
+  <data name="btnAddHighlightShots.Caption" xml:space="preserve">
+    <value>Battute</value>
+  </data>
+  <data name="btnCollapseAll.Caption" xml:space="preserve">
+    <value>Riduci tutti</value>
+  </data>
+  <data name="btnDeleteHighlight.Caption" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="btnElevationAdd.Caption" xml:space="preserve">
+    <value>Aggiungi</value>
+  </data>
+  <data name="btnElevationClear.Caption" xml:space="preserve">
+    <value>Pulisci</value>
+  </data>
+  <data name="btnElevationCreateOrthophotoFromWMS.Caption" xml:space="preserve">
+    <value>Ortofoto da WMS</value>
+  </data>
+  <data name="btnElevationCreateOrthophotoFromWMS.Description" xml:space="preserve">
+    <value>Crea un ortofoto usando un WMS</value>
+  </data>
+  <data name="btnElevationDelete.Caption" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="btnElevationExport.Caption" xml:space="preserve">
+    <value>Esporta dati...</value>
+  </data>
+  <data name="btnElevationFromOrthophoto.Caption" xml:space="preserve">
+    <value>Elevazione da ortofoto</value>
+  </data>
+  <data name="btnElevationFromOrthophoto.Description" xml:space="preserve">
+    <value>Crea un set di elevazione usando un ortofoto con dati altimetrici</value>
+  </data>
+  <data name="btnElevationsPreviewNewReduced.Caption" xml:space="preserve">
+    <value>Nuovo ridotto al</value>
+  </data>
+  <data name="btnElevationsPreviewRemoveNODATA.Caption" xml:space="preserve">
+    <value>NODATA</value>
+  </data>
+  <data name="btnExpandAll.Caption" xml:space="preserve">
+    <value>Espandi tutti</value>
+  </data>
+  <data name="btnGradesAdd.Caption" xml:space="preserve">
+    <value>Aggiungi</value>
+  </data>
+  <data name="btnGradesAdd.Description" xml:space="preserve">
+    <value>Aggiungi</value>
+  </data>
+  <data name="btnGradesDelete.Caption" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="btnGradesDelete.Description" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="btnGradesUsedBySelectSession.ToolTip" xml:space="preserve">
+    <value>Seleziona</value>
+  </data>
+  <data name="btnHighlightExport.Caption" xml:space="preserve">
+    <value>Esporta...</value>
+  </data>
+  <data name="btnHighlightImport.Caption" xml:space="preserve">
+    <value>Importa...</value>
+  </data>
+  <data name="btnMain.Text" xml:space="preserve">
+    <value>Generale</value>
+  </data>
+  <data name="btnMainUser.Text" xml:space="preserve">
+    <value>Utente</value>
+  </data>
+  <data name="btnOrthophotoAdd.Caption" xml:space="preserve">
+    <value>Aggiungi</value>
+  </data>
+  <data name="btnOrthophotoClear.Caption" xml:space="preserve">
+    <value>Pulisci</value>
+  </data>
+  <data name="btnOrthophotoDelete.Caption" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="btnOrthophotoExport.Caption" xml:space="preserve">
+    <value>Esporta...</value>
+  </data>
+  <data name="btnOrthophotoPreviewInvertColors.Caption" xml:space="preserve">
+    <value>Inverti colori</value>
+  </data>
+  <data name="btnOrthophotosPreviewNewReduced.Caption" xml:space="preserve">
+    <value>Nuovo ridotto al</value>
+  </data>
+  <data name="btnResetHighlight.Caption" xml:space="preserve">
+    <value>Reimposta</value>
+  </data>
+  <data name="btnSessionAdd.Caption" xml:space="preserve">
+    <value>Aggiungi sessione</value>
+  </data>
+  <data name="btnSessionDelete.Caption" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="btnSurface.Text" xml:space="preserve">
+    <value>Superficie</value>
+  </data>
+  <data name="btnWMSAdd.Caption" xml:space="preserve">
+    <value>Aggiungi</value>
+  </data>
+  <data name="btnWMSClear.Caption" xml:space="preserve">
+    <value>Pulisci</value>
+  </data>
+  <data name="btnWMSDelete.Caption" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="btnWMSLayerRefresh.ToolTip" xml:space="preserve">
+    <value>Aggiorna la lista dei layer</value>
+  </data>
+  <data name="cboGradesBearingType.Items" xml:space="preserve">
+    <value>Gradi sessadecimali</value>
+  </data>
+  <data name="cboGradesDepthType.Items" xml:space="preserve">
+    <value>Metri</value>
+  </data>
+  <data name="cboGradesInclinationType.Items1" xml:space="preserve">
+    <value>Gradi centesimali (grads)</value>
+  </data>
+  <data name="cboGradesBearingType.Items1" xml:space="preserve">
+    <value>Gradi centesimali (grads)</value>
+  </data>
+  <data name="cboGradesInclinationType.Items" xml:space="preserve">
+    <value>Gradi sessadecimali</value>
+  </data>
+  <data name="cboGradesZType.Items2" xml:space="preserve">
+    <value>Iarde</value>
+  </data>
+  <data name="cboGradesZType.Items1" xml:space="preserve">
+    <value>Piedi</value>
+  </data>
+  <data name="cboGradesDepthType.Items1" xml:space="preserve">
+    <value>Piedi</value>
+  </data>
+  <data name="cboGradesDepthType.Items2" xml:space="preserve">
+    <value>Iarde</value>
+  </data>
+  <data name="cboGradesDistanceType.Items" xml:space="preserve">
+    <value>Metri</value>
+  </data>
+  <data name="cboGradesDistanceType.Items1" xml:space="preserve">
+    <value>Piedi</value>
+  </data>
+  <data name="cboGradesDistanceType.Items2" xml:space="preserve">
+    <value>Iarde</value>
+  </data>
+  <data name="cboGradesXType.Items" xml:space="preserve">
+    <value>Metri</value>
+  </data>
+  <data name="cboGradesXType.Items1" xml:space="preserve">
+    <value>Piedi</value>
+  </data>
+  <data name="cboGradesXType.Items2" xml:space="preserve">
+    <value>Iarde</value>
+  </data>
+  <data name="cboGradesYType.Items" xml:space="preserve">
+    <value>Metri</value>
+  </data>
+  <data name="cboGradesYType.Items1" xml:space="preserve">
+    <value>Piedi</value>
+  </data>
+  <data name="cboGradesYType.Items2" xml:space="preserve">
+    <value>Iarde</value>
+  </data>
+  <data name="cboGradesZType.Items" xml:space="preserve">
+    <value>Matri</value>
+  </data>
+  <data name="chkGradesBearing.Properties.Caption" xml:space="preserve">
+    <value>Azimut</value>
+  </data>
+  <data name="chkGradesDepth.Properties.Caption" xml:space="preserve">
+    <value>Profondità</value>
+  </data>
+  <data name="chkGradesDistance.Properties.Caption" xml:space="preserve">
+    <value>Distanza</value>
+  </data>
+  <data name="chkGradesInclination.Properties.Caption" xml:space="preserve">
+    <value>Inclinazione</value>
+  </data>
+  <data name="tabInfoOptions1.Text" xml:space="preserve">
+    <value>Opzioni di calcolo</value>
+  </data>
+  <data name="tabInfoDesign1.Text" xml:space="preserve">
+    <value>Disegno</value>
+  </data>
+  <data name="tabInfoGPS1.Text" xml:space="preserve">
+    <value>Pos. geografico</value>
+  </data>
+  <data name="tabInfoHighlights1.Text" xml:space="preserve">
+    <value>Evidenziazioni</value>
+  </data>
+  <data name="tabInfoInfoBox1.Text" xml:space="preserve">
+    <value>Scheda rilievo e capisaldi</value>
+  </data>
+  <data name="tabInfoMain1.Text" xml:space="preserve">
+    <value>Generale</value>
+  </data>
+  <data name="tabInfoPlot1.Text" xml:space="preserve">
+    <value>Poligonale</value>
+  </data>
+  <data name="tabInfoSessions1.Text" xml:space="preserve">
+    <value>Sessioni</value>
+  </data>
+  <data name="tabInfoSurface1.Text" xml:space="preserve">
+    <value>Superficie</value>
+  </data>
+  <data name="tabSessionCalibrationSegments1.Tooltip" xml:space="preserve">
+    <value>Battute di calibrazione</value>
+  </data>
+  <data name="tabSessionDefault1.Tooltip" xml:space="preserve">
+    <value>Valori predefiniti</value>
+  </data>
+  <data name="tabSessionMain1.Tooltip" xml:space="preserve">
+    <value>Generale</value>
+  </data>
+  <data name="tabSessionMeasure1.Tooltip" xml:space="preserve">
+    <value>Misure</value>
+  </data>
+  <data name="tabSessionSegments1.Tooltip" xml:space="preserve">
+    <value>Battute</value>
+  </data>
+  <data name="XtraTabPage2.Tooltip" xml:space="preserve">
+    <value>Opzioni di calcolo</value>
+  </data>
+  <data name="XtraTabPage3.Tooltip" xml:space="preserve">
+    <value>Sessioni</value>
+  </data>
+  <data name="cboWMSSRSOverride.Properties.Items" xml:space="preserve">
+    <value>Nessuno</value>
+  </data>
+  <data name="colWMSImageFormat.Caption" xml:space="preserve">
+    <value>Formati immagini</value>
+  </data>
+  <data name="colWMSLayerName.Caption" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="colWMSsLayer.Caption" xml:space="preserve">
+    <value>Livello</value>
+  </data>
+  <data name="colWMSsName.Caption" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="lblWMSLayer.Text" xml:space="preserve">
+    <value>Livello:</value>
+  </data>
+  <data name="lblWMSName.Text" xml:space="preserve">
+    <value>Nome:</value>
+  </data>
+  <data name="txtWMSName.ToolTip" xml:space="preserve">
+    <value>Nome del WMS</value>
+  </data>
+  <data name="txtWMSURL.ToolTip" xml:space="preserve">
+    <value>URL del WMS</value>
+  </data>
+  <data name="colOrthophotoName.Caption" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="colOrthophotoThumbnail.Caption" xml:space="preserve">
+    <value>Anteprima</value>
+  </data>
+  <data name="lblOrthophotoInformation.Text" xml:space="preserve">
+    <value>Informazioni:</value>
+  </data>
+  <data name="lblOrthophotoName.Text" xml:space="preserve">
+    <value>Nome:</value>
+  </data>
+  <data name="lblOrthophotoPreview.Text" xml:space="preserve">
+    <value>Anteprima:</value>
+  </data>
+  <data name="txtOrthophotoName.ToolTip" xml:space="preserve">
+    <value>Nome dell'ortofoto</value>
+  </data>
+  <data name="cboElevationColorSchema.Properties.Items" xml:space="preserve">
+    <value>Scala di grigi (da chiaro a scuro)</value>
+  </data>
+  <data name="cboElevationColorSchema.Properties.Items1" xml:space="preserve">
+    <value>Scala di grigi (da scuro a chiaro)</value>
+  </data>
+  <data name="colElevationsName.Caption" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="colElevationsThumbnail.Caption" xml:space="preserve">
+    <value>Anteprima</value>
+  </data>
+  <data name="lblElevationColorSchema.Text" xml:space="preserve">
+    <value>Schema colori:</value>
+  </data>
+  <data name="lblElevationInformation.Text" xml:space="preserve">
+    <value>Informazioni:</value>
+  </data>
+  <data name="lblElevationName.Text" xml:space="preserve">
+    <value>Nome:</value>
+  </data>
+  <data name="lblElevationPreview.Text" xml:space="preserve">
+    <value>Anteprima:</value>
+  </data>
+  <data name="txtElevationName.ToolTip" xml:space="preserve">
+    <value>Nome del set di dati di elevazione</value>
+  </data>
+  <data name="colGradesDescription.Caption" xml:space="preserve">
+    <value>Descrizione</value>
+  </data>
+  <data name="lblGradesDescription.Text" xml:space="preserve">
+    <value>Descrizione:</value>
+  </data>
+  <data name="txtGradesID.ToolTip" xml:space="preserve">
+    <value>ID univoco di questo set di precisione</value>
+  </data>
+  <data name="txtGradesDescription.ToolTip" xml:space="preserve">
+    <value>Nome di questo set di precisione</value>
+  </data>
+  <data name="optGPSRefPointOnOrigin.Properties.Caption" xml:space="preserve">
+    <value>Origine</value>
+  </data>
+  <data name="cmdGPSCustomRefPointRefreshStations.ToolTip" xml:space="preserve">
+    <value>Aggiorna l'elenco dei capisaldi con posizionamento geografico</value>
+  </data>
+  <data name="cmdOriginRefreshStations.ToolTip" xml:space="preserve">
+    <value>Aggiorna l'elenco dei capisaldi</value>
+  </data>
+  <data name="lblDesignCrossSectionTextScaleFactor.Text" xml:space="preserve">
+    <value>Testo:</value>
+  </data>
+  <data name="lblDesignCrossSectionMarkerTextScaleFactor.Text" xml:space="preserve">
+    <value>Testo:</value>
+  </data>
+  <data name="lblDesignCrossSectionMarkerArrowScaleFactor.Text" xml:space="preserve">
+    <value>Freccia:</value>
   </data>
 </root>

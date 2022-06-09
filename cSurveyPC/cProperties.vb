@@ -107,7 +107,7 @@ Namespace cSurvey
         Private iThreeDModelMode As ThreeDModelModeEnum
         Private sThreeDNormalizationFactor As Single
         Private sThreeDOversamplingFactor As Single
-        Private sThreeDExportAsImageOversamplingFactor As Single
+        Private iThreeDExportAsImageOversamplingFactor As Integer
         Private bThreeDLochShowSplay As Boolean
 
         Private iThreeDSurfaceModelLod As Integer
@@ -266,7 +266,7 @@ Namespace cSurvey
                 Return sOrigin
             End Get
             Set(value As String)
-                Dim sValue As String = value.ToUpper
+                Dim sValue As String = ("" & value).ToUpper
                 If (sValue <> sOrigin) Then
                     If oSurvey.Properties.DesignWarpingMode = cSurvey.DesignWarpingModeEnum.None Or (oSurvey.Properties.DesignWarpingMode <> cSurvey.DesignWarpingModeEnum.None And iInversionMode = cSurvey.InversioneModeEnum.Absolute) Then
                         sOrigin = sValue
@@ -330,9 +330,9 @@ Namespace cSurvey
                     iDesignWarpingState = value
                     Call oSurvey.RaiseOnPropertiesChanged(OnPropertiesChangedEventArgs.PropertiesChangeSourceEnum.DesignWarpingState)
                     If iDesignWarpingState = DesignWarpingStateEnum.Paused Then
-                        Call oSurvey.RaiseOnLogEvent(LogEntryType.Warning, "Warping paused", True)
+                        Call oSurvey.RaiseOnLogEvent(LogEntryType.Warning, "Warping paused")
                     Else
-                        Call oSurvey.RaiseOnLogEvent(LogEntryType.Warning, "Warping activated", True)
+                        Call oSurvey.RaiseOnLogEvent(LogEntryType.Warning, "Warping activated")
                     End If
                 End If
             End Set
@@ -516,7 +516,8 @@ Namespace cSurvey
                 Return iCalculateType
             End Get
             Set(ByVal Value As cSurvey.CalculateTypeEnum)
-                iCalculateType = Value
+                iCalculateType = CalculateTypeEnum.Therion
+                'iCalculateType = Value
             End Set
         End Property
 
@@ -811,7 +812,7 @@ Namespace cSurvey
             iThreeDModelMode = ThreeDModelModeEnum.Simple
             sThreeDNormalizationFactor = 1.5
             sThreeDOversamplingFactor = 1
-            sThreeDExportAsImageOversamplingFactor = 2
+            iThreeDExportAsImageOversamplingFactor = 2
 
             bSurfaceProfile = False
             sSurfaceProfileElevation = ""
@@ -953,12 +954,12 @@ Namespace cSurvey
             End Set
         End Property
 
-        Public Property ThreeDExportAsImageOversamplingFactor As Single
+        Public Property ThreeDExportAsImageOversamplingFactor As Integer
             Get
-                Return sThreeDExportAsImageOversamplingFactor
+                Return iThreeDExportAsImageOversamplingFactor
             End Get
-            Set(value As Single)
-                sThreeDExportAsImageOversamplingFactor = value
+            Set(value As Integer)
+                iThreeDExportAsImageOversamplingFactor = value
             End Set
         End Property
 
@@ -1080,7 +1081,7 @@ Namespace cSurvey
             iThreeDModelMode = modXML.GetAttributeValue([Properties], "threedmodelmode", 0)
             sThreeDNormalizationFactor = modNumbers.StringToSingle(modXML.GetAttributeValue([Properties], "threednormalizationfactor", "1.5"))
             sThreeDOversamplingFactor = modNumbers.StringToSingle(modXML.GetAttributeValue([Properties], "threedoversamplingfactor", "1"))
-            sThreeDExportAsImageOversamplingFactor = modNumbers.StringToSingle(modXML.GetAttributeValue([Properties], "threedexportasimageoversamplingfactor", "2"))
+            iThreeDExportAsImageOversamplingFactor = modNumbers.StringToInteger(modXML.GetAttributeValue([Properties], "threedexportasimageoversamplingfactor", "2"))
 
             bThreeDLochShowSplay = modXML.GetAttributeValue([Properties], "threedlochshowsplay", True)
 
@@ -1221,7 +1222,7 @@ Namespace cSurvey
             If iThreeDModelMode <> ThreeDModelModeEnum.Simple Then Call oXmlProperties.SetAttribute("threedmodelmode", iThreeDModelMode)
             If sThreeDNormalizationFactor <> 1.5 Then Call oXmlProperties.SetAttribute("threednormalizationfactor", modNumbers.NumberToString(sThreeDNormalizationFactor, "0.0"))
             If sThreeDOversamplingFactor <> 1 Then Call oXmlProperties.SetAttribute("threedoversamplingfactor", modNumbers.NumberToString(sThreeDOversamplingFactor, "0.0"))
-            If sThreeDExportAsImageOversamplingFactor <> 2 Then Call oXmlProperties.SetAttribute("threedexportasimageoversamplingfactor", modNumbers.NumberToString(sThreeDExportAsImageOversamplingFactor, "0.0"))
+            If iThreeDExportAsImageOversamplingFactor <> 2 Then Call oXmlProperties.SetAttribute("threedexportasimageoversamplingfactor", modNumbers.NumberToString(iThreeDExportAsImageOversamplingFactor, "0"))
 
             If Not bThreeDLochShowSplay Then Call oXmlProperties.SetAttribute("threedlochshowsplay", "0")
 

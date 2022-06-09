@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
+  <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,85 +59,79 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="metadata">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" />
-							</xsd:sequence>
-							<xsd:attribute name="name" use="required" type="xsd:string" />
-							<xsd:attribute name="type" type="xsd:string" />
-							<xsd:attribute name="mimetype" type="xsd:string" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="assembly">
-						<xsd:complexType>
-							<xsd:attribute name="alias" type="xsd:string" />
-							<xsd:attribute name="name" type="xsd:string" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<data name="txtFilename.ToolTip" xml:space="preserve">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="txtFilename.ToolTip" xml:space="preserve">
     <value>Файл cSurvey</value>
   </data>
-	<data name="cmdCancel.Text" xml:space="preserve">
+  <data name="cmdCancel.Text" xml:space="preserve">
     <value>Отмена</value>
   </data>
-	<assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-	<data name="chkcSurveyImportPlan.Size" type="System.Drawing.Size, System.Drawing">
-		<value>81, 17</value>
-	</data>
-	<data name="chkcSurveyImportPlan.Text" xml:space="preserve">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="chkcSurveyImportPlan.Text" xml:space="preserve">
     <value>Импортировать план</value>
   </data>
-	<data name="chkcSurveyImportProfile.Size" type="System.Drawing.Size, System.Drawing">
-		<value>91, 17</value>
-	</data>
-	<data name="chkcSurveyImportProfile.Text" xml:space="preserve">
+  <data name="chkcSurveyImportProfile.Text" xml:space="preserve">
     <value>Импортировать разрез</value>
   </data>
-	<data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB5KwAAfC8AAH81AACAOQAAgz4AAIU+AACGRgAAiEYAAIlJAACM
         SgAAjk0AHJRdAACecQA8mGgAAKJxAAClcQAAonUAAKx3AACoegAAq30AAK9/AEOYbgBJqX0ATKx+AFGp
@@ -200,56 +194,56 @@
         AAAePz8/Pz8/Pz8wKAAAAAAAIR8dHR0dHB0eIQAAAAAAAP//AAAAAwAAAAMAAAAAAAAAAAAAAAEAAAAD
         AAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAADwAAAB8AAAA/AAA=
 </value>
-	</data>
-	<data name="$this.Text" xml:space="preserve">
+  </data>
+  <data name="$this.Text" xml:space="preserve">
     <value>Импорт данных cSurvey:</value>
   </data>
-	<data name="chkcSurveyImportSurface.Text" xml:space="preserve">
+  <data name="chkcSurveyImportSurface.Text" xml:space="preserve">
     <value>Импорт данных поверхности</value>
   </data>
-	<data name="cmdOk.Text" xml:space="preserve">
+  <data name="cmdOk.Text" xml:space="preserve">
     <value>Ok</value>
   </data>
-	<data name="lblFilename.Text" xml:space="preserve">
+  <data name="lblFilename.Text" xml:space="preserve">
     <value>Файл:</value>
   </data>
-	<data name="chkcSurveyImportGraphics.Text" xml:space="preserve">
+  <data name="chkcSurveyImportGraphics.Text" xml:space="preserve">
     <value>Импорт графики</value>
   </data>
-	<data name="chkcSurveyImportData.Text" xml:space="preserve">
+  <data name="chkcSurveyImportData.Text" xml:space="preserve">
     <value>Импорт данных</value>
   </data>
-	<data name="colText.Text" xml:space="preserve">
+  <data name="colText.Text" xml:space="preserve">
 		<value>Текст</value>
 	</data>
-	<data name="GroupBox1.Text" xml:space="preserve">
+  <data name="GroupBox1.Text" xml:space="preserve">
 		<value>Проверить съёмку</value>
 	</data>
-	<data name="chkcSurveyImportScaleRules.Text" xml:space="preserve">
+  <data name="chkcSurveyImportScaleRules.Text" xml:space="preserve">
 		<value>Импорт настроек масштаба</value>
 	</data>
-	<data name="chkcSurveyImportDesignProperties.Text" xml:space="preserve">
+  <data name="chkcSurveyImportDesignProperties.Text" xml:space="preserve">
 		<value>Импорт настроек графики</value>
 	</data>
-	<data name="chkcSurveyImportCaveBranchFromDesign.Text" xml:space="preserve">
+  <data name="chkcSurveyImportCaveBranchFromDesign.Text" xml:space="preserve">
 		<value>Импорт привязки пещеры/ветки к графическим объектам </value>
 	</data>
-	<data name="chkcSurveyImportDuplicates.Text" xml:space="preserve">
+  <data name="chkcSurveyImportDuplicates.Text" xml:space="preserve">
 		<value>Импорт существующих измерений</value>
 	</data>
-	<data name="cbocSurveyImportDuplicatesMode.Items" xml:space="preserve">
+  <data name="cbocSurveyImportDuplicatesMode.Items" xml:space="preserve">
 		<value>по ID замера</value>
 	</data>
-	<data name="cbocSurveyImportDuplicatesMode.Items1" xml:space="preserve">
+  <data name="cbocSurveyImportDuplicatesMode.Items1" xml:space="preserve">
 		<value>по данным замера</value>
 	</data>
-	<data name="chkcSurveyImportDuplicatesOverwrite.Text" xml:space="preserve">
+  <data name="chkcSurveyImportDuplicatesOverwrite.Text" xml:space="preserve">
 		<value>Перезаписать дубликаты</value>
 	</data>
-	<data name="lblcSurveyImportDuplicatesMode.Text" xml:space="preserve">
+  <data name="lblcSurveyImportDuplicatesMode.Text" xml:space="preserve">
 		<value>Найти существующие измерения</value>
 	</data>
-	<data name="chkcSurveyImportDuplicatesStations.Text" xml:space="preserve">
+  <data name="chkcSurveyImportDuplicatesStations.Text" xml:space="preserve">
 		<value>Импортировать и перезаписать существующие пикеты</value>
 	</data>
 </root>

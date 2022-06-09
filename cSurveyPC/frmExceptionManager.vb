@@ -2,8 +2,10 @@
 Imports System.Text
 Imports System.Xml
 Imports System.Net
+Imports System.ComponentModel
+Imports DevExpress.XtraBars
 
-friend Class frmExceptionManager
+Friend Class frmExceptionManager
 
     Private oSurvey As cSurvey.cSurvey
     Private sFilename As String
@@ -55,7 +57,7 @@ friend Class frmExceptionManager
 
         sPackageVersion = modMain.GetPackageVersion()
 
-        sReleaseVersion = modMain.GetreleaseVersion
+        sReleaseVersion = modMain.GetReleaseVersion
         sReleaseDate = modMain.GetReleaseDate.ToString("d")
         sReleaseCPU = IIf(Environment.Is64BitProcess, "64bit", "32bit")
         sMessage = "" & Exception.Message
@@ -72,7 +74,7 @@ friend Class frmExceptionManager
         sText = sText & "\b " & GetLocalizedString("exceptionmanager.details.textpart6") & ":\b0\tab " & IIf(modMain.bIsInDebug, GetLocalizedString("exceptionmanager.details.textpart6a"), GetLocalizedString("exceptionmanager.details.textpart6b")) & "\par"
         sText = sText & "\b " & GetLocalizedString("exceptionmanager.details.textpart7") & ":\b0\tab " & sStackTrace.Replace(vbCrLf, "\line ") & "\par"
         sText = sText & "}"
-        rtfException.Rtf = sText
+        txtException.RtfText = sText
 
         lblException.Text = sMessage
 
@@ -156,9 +158,10 @@ friend Class frmExceptionManager
         Call oXmlRoot.SetAttribute("releaseversion", sReleaseVersion)
         Call oXmlRoot.SetAttribute("releasedate", sReleaseDate)
         Call oXmlRoot.SetAttribute("releasecpu", sReleaseCPU)
-        Call oXmlRoot.SetAttribute("indebug", IIf(modMain.bIsInDebug, "1", "0"))
+        Call oXmlRoot.SetAttribute("indebug", If(modMain.bIsInDebug, "1", "0"))
         Call oXmlRoot.SetAttribute("date", Strings.Format(Date.Now, "yyyyMMddHHmmss"))
         Call oXmlRoot.SetAttribute("lang", My.Application.CurrentLanguage)
+        Call oXmlRoot.SetAttribute("dpi", modNumbers.NumberToString(Me.CurrentAutoScaleDimensions.Height / 96.0F))
         Call oXmlRoot.SetAttribute("message", sMessage)
         Call oXmlRoot.SetAttribute("source", sSource)
         oXmlRoot.InnerText = sStackTrace
@@ -180,8 +183,8 @@ friend Class frmExceptionManager
         Cursor = Cursors.WaitCursor
 
         Dim oClip As DataObject = New DataObject
-        Call oClip.SetData(DataFormats.Text, rtfException.Text)
-        Call oClip.SetData(DataFormats.Rtf, rtfException.Rtf)
+        Call oClip.SetData(DataFormats.Text, txtException.Text)
+        Call oClip.SetData(DataFormats.Rtf, txtException.RtfText)
         Call Clipboard.SetDataObject(oClip, True)
 
         Cursor = Cursors.Default
@@ -191,17 +194,9 @@ friend Class frmExceptionManager
         Cursor = Cursors.WaitCursor
         Select Case Format
             Case ExceptionFileFormatEnum.Text
-                Dim oFi As FileInfo = New FileInfo(Filename)
-                Using oExStream As StreamWriter = oFi.CreateText()
-                    Call oExStream.WriteLine(rtfException.Text)
-                    Call oExStream.Close()
-                End Using
+                Call txtException.SaveDocument(Filename, DevExpress.XtraRichEdit.DocumentFormat.PlainText)
             Case ExceptionFileFormatEnum.RTF
-                Dim oFi As FileInfo = New FileInfo(Filename)
-                Using oExStream As StreamWriter = oFi.CreateText()
-                    Call oExStream.WriteLine(rtfException.Rtf)
-                    Call oExStream.Close()
-                End Using
+                Call txtException.SaveDocument(Filename, DevExpress.XtraRichEdit.DocumentFormat.Rtf)
             Case ExceptionFileFormatEnum.XML
                 Dim oXML As XmlDocument = pGetExceptionXML()
                 Call XMLAddDeclaration(oXML)
@@ -232,7 +227,7 @@ friend Class frmExceptionManager
     End Function
 
     Private Sub cmdShowDetails_Click(sender As System.Object, e As System.EventArgs) Handles cmdShowDetails.Click
-        rtfException.Visible = True
+        txtException.Visible = True
         lblException.Visible = False
         cmdShowDetails.Visible = False
     End Sub
@@ -253,53 +248,52 @@ friend Class frmExceptionManager
         Dim bPostHeaderBytes As Byte() = Encoding.UTF8.GetBytes(sPostHeader)
         Dim bBoundaryBytes As Byte() = Encoding.ASCII.GetBytes(vbCrLf & "--" + sBoundary & vbCrLf)
 
-        Dim oFS As FileStream = New FileStream(File, FileMode.Open, FileAccess.Read)
-        Dim ilength As Integer = bPostHeaderBytes.Length + oFS.Length + bBoundaryBytes.Length
-        oWR.ContentLength = ilength
+        Using oFS As FileStream = New FileStream(File, FileMode.Open, FileAccess.Read)
+            Dim ilength As Integer = bPostHeaderBytes.Length + oFS.Length + bBoundaryBytes.Length
+            oWR.ContentLength = ilength
 
-        Dim oRequestStream As Stream = oWR.GetRequestStream()
-        Call oRequestStream.Write(bPostHeaderBytes, 0, bPostHeaderBytes.Length)
+            Dim oRequestStream As Stream = oWR.GetRequestStream()
+            Call oRequestStream.Write(bPostHeaderBytes, 0, bPostHeaderBytes.Length)
 
-        Dim bBuffer(Math.Min(4096, oFS.Length - 1)) As Byte
-        Dim iBytesRead As Integer = 0
-        Do
-            iBytesRead = oFS.Read(bBuffer, 0, bBuffer.Length)
-            If iBytesRead = 0 Then
-                Exit Do
-            Else
-                Call oRequestStream.Write(bBuffer, 0, iBytesRead)
-            End If
-        Loop
-        Call oFS.Close()
-        Call oFS.Dispose()
+            Dim bBuffer(Math.Min(4096, oFS.Length - 1)) As Byte
+            Dim iBytesRead As Integer = 0
+            Do
+                iBytesRead = oFS.Read(bBuffer, 0, bBuffer.Length)
+                If iBytesRead = 0 Then
+                    Exit Do
+                Else
+                    Call oRequestStream.Write(bBuffer, 0, iBytesRead)
+                End If
+            Loop
+            Call oFS.Close()
 
-        Call oRequestStream.Write(bBoundaryBytes, 0, bBoundaryBytes.Length)
-        Dim oSR As StreamReader = New StreamReader(oWR.GetResponse.GetResponseStream())
-        Return oSR.ReadToEnd
+            Call oRequestStream.Write(bBoundaryBytes, 0, bBoundaryBytes.Length)
+            Using oSR As StreamReader = New StreamReader(oWR.GetResponse.GetResponseStream())
+                Return oSR.ReadToEnd
+            End Using
+        End Using
     End Function
-
-    Private Sub frmExceptionManager_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-
-    End Sub
 
     Private Sub tmrAskToSendException_Tick(sender As Object, e As System.EventArgs) Handles tmrAskToSendException.Tick
         Call tmrAskToSendException.Stop()
 
         Dim iAskToSendException As Integer
         'se arrivo qui l'invio delle segnalazioni è spento...
-        Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-        iAskToSendException = oReg.GetValue("debug.asktosendexception", 0)
-        iAskToSendException += 1
-        Call oReg.SetValue("debug.asktosendexception", iAskToSendException)
-        Call oReg.Close()
+        Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
+            iAskToSendException = oReg.GetValue("debug.asktosendexception", 0)
+            iAskToSendException += 1
+            Call oReg.SetValue("debug.asktosendexception", iAskToSendException)
+            Call oReg.Close()
+        End Using
 
         If iAskToSendException < 4 Then
             If MsgBox(GetLocalizedString("exceptionmanager.dialog"), MsgBoxStyle.Question Or vbYesNo Or vbDefaultButton1, GetLocalizedString("exceptionmanager.warningtitle")) = MsgBoxResult.Yes Then
                 bSendException = True
                 Try
-                    oReg = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                    Call oReg.SetValue("debug.sendexception", 1)
-                    Call oReg.Close()
+                    Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
+                        Call oReg.SetValue("debug.sendexception", 1)
+                        Call oReg.Close()
+                    End Using
                 Catch
                 End Try
             End If
@@ -311,19 +305,53 @@ friend Class frmExceptionManager
         Call pExceptionCopy()
     End Sub
 
-    Private Sub mnuExceptionCopy_Click(sender As Object, e As EventArgs) Handles mnuExceptionCopy.Click
+    Private Sub mnuExceptionCopy_Click(sender As Object, e As EventArgs)
         Call pExceptionCopy()
     End Sub
 
-    Private Sub mnuExceptionSave_Click(sender As Object, e As EventArgs) Handles mnuExceptionSave.Click
+    Private Sub mnuExceptionSave_Click(sender As Object, e As EventArgs)
         Call pExceptionSave()
     End Sub
 
-    Private Sub mnuExceptionSelectAll_Click(sender As Object, e As EventArgs) Handles mnuExceptionSelectAll.Click
-        Call rtfException.SelectAll()
+    Private Sub mnuExceptionSelectAll_Click(sender As Object, e As EventArgs)
+        Call txtException.SelectAll()
     End Sub
 
-    Private Sub mnuExceptionCopyText_Click(sender As Object, e As EventArgs) Handles mnuExceptionCopyText.Click
-        Call rtfException.Copy()
+    Private Sub mnuExceptionCopyText_Click(sender As Object, e As EventArgs)
+        Call txtException.Copy()
+    End Sub
+
+    Private Sub rtfException_PopupMenuShowing(sender As Object, e As DevExpress.XtraRichEdit.PopupMenuShowingEventArgs) Handles txtException.PopupMenuShowing
+
+    End Sub
+
+    Private Sub txtException_DocumentLoaded(sender As Object, e As EventArgs) Handles txtException.DocumentLoaded
+        txtException.Document.DefaultCharacterProperties.FontName = "Lucida Console"
+        txtException.Document.DefaultCharacterProperties.FontSize = 8
+    End Sub
+
+    Private Sub mnuError_BeforePopup(sender As Object, e As CancelEventArgs) Handles mnuError.BeforePopup
+        btnCopy.Enabled = txtException.Document.GetText(txtException.Document.Selection).Trim <> ""
+    End Sub
+
+    Private Sub txtConsole_PopupMenuShowing(sender As Object, e As DevExpress.XtraRichEdit.PopupMenuShowingEventArgs) Handles txtException.PopupMenuShowing
+        e.Menu.Items.Clear()
+        mnuError.ShowPopup(Cursor.Position)
+    End Sub
+
+    Private Sub btnCopy_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnCopy.ItemClick
+        Call txtException.Copy()
+    End Sub
+
+    Private Sub btnCopyException_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCopyException.ItemClick
+        Call cmdCopyException.PerformClick()
+    End Sub
+
+    Private Sub btnSaveException_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnSaveException.ItemClick
+        Call cmdSaveException.PerformClick()
+    End Sub
+
+    Private Sub btnSelectAll_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnSelectAll.ItemClick
+        Call txtException.SelectAll()
     End Sub
 End Class

@@ -180,7 +180,24 @@ Namespace cSurvey.Design.Items
 
         Public Overrides ReadOnly Property HaveText As Boolean
             Get
-                Return True
+                Select Case iQuotaType
+                    Case cIItemQuota.QuotaTypeEnum.Vertical
+                        Return True
+                    Case cIItemQuota.QuotaTypeEnum.Altitude
+                        Return True
+                    Case cIItemQuota.QuotaTypeEnum.Drop
+                        Return True
+                    Case cIItemQuota.QuotaTypeEnum.Horizontal
+                        Return True
+                    Case cIItemQuota.QuotaTypeEnum.Oblique
+                        Return True
+                    Case cIItemQuota.QuotaTypeEnum.VerticalScale
+                        Return False
+                    Case cIItemQuota.QuotaTypeEnum.HorizontalScale
+                        Return False
+                    Case cIItemQuota.QuotaTypeEnum.GridScale
+                        Return False
+                End Select
             End Get
         End Property
 
@@ -291,7 +308,7 @@ Namespace cSurvey.Design.Items
             iQuotaCapDecoration = cIItemQuota.QuotaCapDecorationEnum.Arrow
         End Sub
 
-        Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptions) As Single
+        Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptionsCenterline) As Single
             Dim sTextScaleFactor As Single = MyBase.GetTextScaleFactor(PaintOptions)
             Select Case iTextSize
                 Case cIItemSizable.SizeEnum.Default
@@ -408,14 +425,14 @@ Namespace cSurvey.Design.Items
         '    Return oSVG
         'End Function
 
-        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             Dim oCache As cDrawCache = MyBase.Caches(PaintOptions)
             With oCache
                 If .Invalidated Then
                     Call .Clear()
 
                     Using oPen As Pen = New Pen(Color.FromArgb((1 - MyBase.Transparency) * 255, Color.Black))
-                        oPen.Width = 0.01 ' -1
+                        oPen.Width = cEditPaintObjects.FilettoPenWidth
                         Using oWireframePen As Pen = oPen.Clone
                             oWireframePen.DashStyle = DashStyle.Dot
                             Using oBoundPath As GraphicsPath = New GraphicsPath
@@ -918,7 +935,6 @@ Namespace cSurvey.Design.Items
                                                 Dim sYFirstTick As Single = oBounds.Top + (sYOffset - pTruncateToTickFrequency(sYOffset))
                                                 Dim sYLastTick As Single = sYFirstTick + pTruncateToTickFrequency(oBounds.Height)
 
-                                                'calcolo la spaziatura tra le tacche e il numero (la larghezza di mezzo '0')
                                                 Dim sSpace As Single
                                                 Using oQuotaSpaceTextPath As GraphicsPath = New GraphicsPath
                                                     Call oFont.AddToPath(PaintOptions, oQuotaSpaceTextPath, "0", New PointF(0, 0), oSF)
@@ -1042,7 +1058,6 @@ Namespace cSurvey.Design.Items
 
                                                 Dim sXFirstTick As Single = oBounds.Left
 
-                                                'calcolo la spaziatura tra le tacche e il numero (la larghezza di mezzo '0')
                                                 Dim sSpace As Single
                                                 Using oQuotaSpaceTextPath As GraphicsPath = New GraphicsPath
                                                     Call oFont.AddToPath(PaintOptions, oQuotaSpaceTextPath, "0", New PointF(0, 0), oSF)
@@ -1125,11 +1140,11 @@ Namespace cSurvey.Design.Items
 
                                                 Dim sYFirstTick As Single = oBounds.Top
 
-                                                'calcolo la spaziatura tra le tacche e il numero (la larghezza di mezzo '0')
-                                                Dim oQuotaSpaceTextPath As GraphicsPath = New GraphicsPath
-                                                Call oFont.AddToPath(PaintOptions, oQuotaSpaceTextPath, "0", New PointF(0, 0), oSF)
-                                                Dim sSpace As Single = oQuotaSpaceTextPath.GetBounds.Width * sScale / 2
-                                                Call oQuotaSpaceTextPath.Dispose()
+                                                Dim sSpace As Single
+                                                Using oQuotaSpaceTextPath As GraphicsPath = New GraphicsPath
+                                                    Call oFont.AddToPath(PaintOptions, oQuotaSpaceTextPath, "0", New PointF(0, 0), oSF)
+                                                    sSpace = oQuotaSpaceTextPath.GetBounds.Width * sScale / 2
+                                                End Using
 
                                                 Using oQuotaPath As GraphicsPath = New GraphicsPath
 
@@ -1204,7 +1219,7 @@ Namespace cSurvey.Design.Items
             End With
         End Sub
 
-        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             If MyBase.Points.Count > 1 Then
                 Call Render(Graphics, PaintOptions, Options, Selected)
                 If Not PaintOptions.IsDesign OrElse (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then '

@@ -1,6 +1,6 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmParametersInfoBox
-    Inherits cForm
+    Inherits DevExpress.XtraEditors.XtraUserControl
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -23,165 +23,73 @@ Partial Class frmParametersInfoBox
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmParametersInfoBox))
-        Me.lblFontColor = New System.Windows.Forms.Label()
-        Me.cmdFontColor = New System.Windows.Forms.Button()
-        Me.picFontColor = New System.Windows.Forms.PictureBox()
-        Me.chkTextFontUnderline = New System.Windows.Forms.CheckBox()
-        Me.chkTextFontItalic = New System.Windows.Forms.CheckBox()
-        Me.chkTextFontBold = New System.Windows.Forms.CheckBox()
-        Me.cboTextFontChar = New System.Windows.Forms.ComboBox()
-        Me.lblPropTextFontChar = New System.Windows.Forms.Label()
-        Me.cboTextFontSize = New System.Windows.Forms.ComboBox()
-        Me.lblTextFontSize = New System.Windows.Forms.Label()
-        Me.tabInfoBoxPart = New System.Windows.Forms.TabControl()
-        Me.tabID = New System.Windows.Forms.TabPage()
-        Me.pnlSub = New System.Windows.Forms.Panel()
-        Me.chkVisible = New System.Windows.Forms.CheckBox()
-        Me.tabName = New System.Windows.Forms.TabPage()
-        Me.tabText = New System.Windows.Forms.TabPage()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.cmdOk = New System.Windows.Forms.Button()
-        Me.cmdApply = New System.Windows.Forms.Button()
+        Dim ButtonImageOptions1 As DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions = New DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions()
+        Dim ButtonImageOptions2 As DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions = New DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions()
+        Dim ButtonImageOptions3 As DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions = New DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions()
+        Me.chkTextFontUnderline = New DevExpress.XtraEditors.CheckButton()
+        Me.chkTextFontItalic = New DevExpress.XtraEditors.CheckButton()
+        Me.chkTextFontBold = New DevExpress.XtraEditors.CheckButton()
+        Me.lblPropTextFontChar = New DevExpress.XtraEditors.LabelControl()
+        Me.lblTextFontSize = New DevExpress.XtraEditors.LabelControl()
+        Me.chkVisible = New DevExpress.XtraEditors.CheckEdit()
         Me.lblWidth = New System.Windows.Forms.Label()
-        Me.txtWidth = New System.Windows.Forms.NumericUpDown()
-        Me.lblWidthUnit = New System.Windows.Forms.Label()
-        CType(Me.picFontColor, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabInfoBoxPart.SuspendLayout()
-        Me.tabID.SuspendLayout()
-        Me.pnlSub.SuspendLayout()
-        CType(Me.txtWidth, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.txtWidth = New DevExpress.XtraEditors.SpinEdit()
+        Me.lblWidthUnit = New DevExpress.XtraEditors.LabelControl()
+        Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
+        Me.chkUnlock = New DevExpress.XtraEditors.CheckButton()
+        Me.cboTextFontSize = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.cboTextFontChar = New DevExpress.XtraEditors.FontEdit()
+        Me.txtColor = New cColorSelector()
+        Me.lblTextColor = New DevExpress.XtraEditors.LabelControl()
+        CType(Me.chkVisible.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtWidth.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl1.SuspendLayout()
+        CType(Me.cboTextFontSize.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboTextFontChar.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'lblFontColor
-        '
-        resources.ApplyResources(Me.lblFontColor, "lblFontColor")
-        Me.lblFontColor.Name = "lblFontColor"
-        '
-        'cmdFontColor
-        '
-        resources.ApplyResources(Me.cmdFontColor, "cmdFontColor")
-        Me.cmdFontColor.Name = "cmdFontColor"
-        Me.cmdFontColor.UseVisualStyleBackColor = True
-        '
-        'picFontColor
-        '
-        resources.ApplyResources(Me.picFontColor, "picFontColor")
-        Me.picFontColor.Name = "picFontColor"
-        Me.picFontColor.TabStop = False
         '
         'chkTextFontUnderline
         '
+        Me.chkTextFontUnderline.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.chkTextFontUnderline.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.underline
+        Me.chkTextFontUnderline.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         resources.ApplyResources(Me.chkTextFontUnderline, "chkTextFontUnderline")
-        Me.chkTextFontUnderline.Image = Global.cSurveyPC.My.Resources.Resources.text_underline
         Me.chkTextFontUnderline.Name = "chkTextFontUnderline"
-        Me.chkTextFontUnderline.UseVisualStyleBackColor = True
         '
         'chkTextFontItalic
         '
+        Me.chkTextFontItalic.ImageOptions.Image = Global.cSurveyPC.My.Resources.Resources.text_italic
+        Me.chkTextFontItalic.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.chkTextFontItalic.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.italic
+        Me.chkTextFontItalic.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         resources.ApplyResources(Me.chkTextFontItalic, "chkTextFontItalic")
-        Me.chkTextFontItalic.Image = Global.cSurveyPC.My.Resources.Resources.text_italic
         Me.chkTextFontItalic.Name = "chkTextFontItalic"
-        Me.chkTextFontItalic.UseVisualStyleBackColor = True
         '
         'chkTextFontBold
         '
+        Me.chkTextFontBold.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.chkTextFontBold.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.bold
+        Me.chkTextFontBold.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         resources.ApplyResources(Me.chkTextFontBold, "chkTextFontBold")
-        Me.chkTextFontBold.Image = Global.cSurveyPC.My.Resources.Resources.text_bold
         Me.chkTextFontBold.Name = "chkTextFontBold"
-        Me.chkTextFontBold.UseVisualStyleBackColor = True
-        '
-        'cboTextFontChar
-        '
-        Me.cboTextFontChar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboTextFontChar.FormattingEnabled = True
-        resources.ApplyResources(Me.cboTextFontChar, "cboTextFontChar")
-        Me.cboTextFontChar.Name = "cboTextFontChar"
         '
         'lblPropTextFontChar
         '
         resources.ApplyResources(Me.lblPropTextFontChar, "lblPropTextFontChar")
         Me.lblPropTextFontChar.Name = "lblPropTextFontChar"
         '
-        'cboTextFontSize
-        '
-        Me.cboTextFontSize.FormattingEnabled = True
-        Me.cboTextFontSize.Items.AddRange(New Object() {resources.GetString("cboTextFontSize.Items"), resources.GetString("cboTextFontSize.Items1"), resources.GetString("cboTextFontSize.Items2"), resources.GetString("cboTextFontSize.Items3"), resources.GetString("cboTextFontSize.Items4"), resources.GetString("cboTextFontSize.Items5"), resources.GetString("cboTextFontSize.Items6"), resources.GetString("cboTextFontSize.Items7"), resources.GetString("cboTextFontSize.Items8"), resources.GetString("cboTextFontSize.Items9"), resources.GetString("cboTextFontSize.Items10"), resources.GetString("cboTextFontSize.Items11"), resources.GetString("cboTextFontSize.Items12"), resources.GetString("cboTextFontSize.Items13"), resources.GetString("cboTextFontSize.Items14"), resources.GetString("cboTextFontSize.Items15"), resources.GetString("cboTextFontSize.Items16"), resources.GetString("cboTextFontSize.Items17")})
-        resources.ApplyResources(Me.cboTextFontSize, "cboTextFontSize")
-        Me.cboTextFontSize.Name = "cboTextFontSize"
-        '
         'lblTextFontSize
         '
         resources.ApplyResources(Me.lblTextFontSize, "lblTextFontSize")
         Me.lblTextFontSize.Name = "lblTextFontSize"
         '
-        'tabInfoBoxPart
-        '
-        Me.tabInfoBoxPart.Controls.Add(Me.tabID)
-        Me.tabInfoBoxPart.Controls.Add(Me.tabName)
-        Me.tabInfoBoxPart.Controls.Add(Me.tabText)
-        resources.ApplyResources(Me.tabInfoBoxPart, "tabInfoBoxPart")
-        Me.tabInfoBoxPart.Multiline = True
-        Me.tabInfoBoxPart.Name = "tabInfoBoxPart"
-        Me.tabInfoBoxPart.SelectedIndex = 0
-        '
-        'tabID
-        '
-        Me.tabID.Controls.Add(Me.pnlSub)
-        resources.ApplyResources(Me.tabID, "tabID")
-        Me.tabID.Name = "tabID"
-        Me.tabID.UseVisualStyleBackColor = True
-        '
-        'pnlSub
-        '
-        Me.pnlSub.Controls.Add(Me.chkVisible)
-        Me.pnlSub.Controls.Add(Me.chkTextFontBold)
-        Me.pnlSub.Controls.Add(Me.picFontColor)
-        Me.pnlSub.Controls.Add(Me.lblFontColor)
-        Me.pnlSub.Controls.Add(Me.chkTextFontUnderline)
-        Me.pnlSub.Controls.Add(Me.lblTextFontSize)
-        Me.pnlSub.Controls.Add(Me.cboTextFontSize)
-        Me.pnlSub.Controls.Add(Me.chkTextFontItalic)
-        Me.pnlSub.Controls.Add(Me.cmdFontColor)
-        resources.ApplyResources(Me.pnlSub, "pnlSub")
-        Me.pnlSub.Name = "pnlSub"
-        '
         'chkVisible
         '
         resources.ApplyResources(Me.chkVisible, "chkVisible")
         Me.chkVisible.Name = "chkVisible"
-        Me.chkVisible.UseVisualStyleBackColor = True
-        '
-        'tabName
-        '
-        resources.ApplyResources(Me.tabName, "tabName")
-        Me.tabName.Name = "tabName"
-        Me.tabName.UseVisualStyleBackColor = True
-        '
-        'tabText
-        '
-        resources.ApplyResources(Me.tabText, "tabText")
-        Me.tabText.Name = "tabText"
-        Me.tabText.UseVisualStyleBackColor = True
-        '
-        'cmdCancel
-        '
-        resources.ApplyResources(Me.cmdCancel, "cmdCancel")
-        Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
-        '
-        'cmdOk
-        '
-        resources.ApplyResources(Me.cmdOk, "cmdOk")
-        Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
-        '
-        'cmdApply
-        '
-        resources.ApplyResources(Me.cmdApply, "cmdApply")
-        Me.cmdApply.Name = "cmdApply"
-        Me.cmdApply.UseVisualStyleBackColor = True
+        Me.chkVisible.Properties.Caption = resources.GetString("chkVisible.Properties.Caption")
         '
         'lblWidth
         '
@@ -191,63 +99,112 @@ Partial Class frmParametersInfoBox
         'txtWidth
         '
         resources.ApplyResources(Me.txtWidth, "txtWidth")
-        Me.txtWidth.Maximum = New Decimal(New Integer() {5000, 0, 0, 0})
         Me.txtWidth.Name = "txtWidth"
+        Me.txtWidth.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtWidth.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtWidth.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtWidth.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtWidth.Properties.IsFloatValue = False
+        Me.txtWidth.Properties.MaskSettings.Set("mask", "N00")
+        Me.txtWidth.Properties.MaxValue = New Decimal(New Integer() {5000, 0, 0, 0})
         '
         'lblWidthUnit
         '
         resources.ApplyResources(Me.lblWidthUnit, "lblWidthUnit")
         Me.lblWidthUnit.Name = "lblWidthUnit"
         '
+        'GroupControl1
+        '
+        Me.GroupControl1.Controls.Add(Me.chkUnlock)
+        Me.GroupControl1.Controls.Add(Me.cboTextFontSize)
+        Me.GroupControl1.Controls.Add(Me.cboTextFontChar)
+        Me.GroupControl1.Controls.Add(Me.txtColor)
+        Me.GroupControl1.Controls.Add(Me.lblTextColor)
+        Me.GroupControl1.Controls.Add(Me.chkVisible)
+        Me.GroupControl1.Controls.Add(Me.lblPropTextFontChar)
+        Me.GroupControl1.Controls.Add(Me.chkTextFontItalic)
+        Me.GroupControl1.Controls.Add(Me.chkTextFontBold)
+        Me.GroupControl1.Controls.Add(Me.lblTextFontSize)
+        Me.GroupControl1.Controls.Add(Me.chkTextFontUnderline)
+        Me.GroupControl1.CustomHeaderButtons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton(resources.GetString("GroupControl1.CustomHeaderButtons"), CType(resources.GetObject("GroupControl1.CustomHeaderButtons1"), Boolean), ButtonImageOptions1, CType(resources.GetObject("GroupControl1.CustomHeaderButtons2"), DevExpress.XtraBars.Docking2010.ButtonStyle), resources.GetString("GroupControl1.CustomHeaderButtons3"), CType(resources.GetObject("GroupControl1.CustomHeaderButtons4"), Integer), CType(resources.GetObject("GroupControl1.CustomHeaderButtons5"), Boolean), CType(resources.GetObject("GroupControl1.CustomHeaderButtons6"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("GroupControl1.CustomHeaderButtons7"), Boolean), CType(resources.GetObject("GroupControl1.CustomHeaderButtons8"), Boolean), CType(resources.GetObject("GroupControl1.CustomHeaderButtons9"), Boolean), CType(resources.GetObject("GroupControl1.CustomHeaderButtons10"), Object), CType(resources.GetObject("GroupControl1.CustomHeaderButtons11"), Integer)), New DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton(resources.GetString("GroupControl1.CustomHeaderButtons12"), CType(resources.GetObject("GroupControl1.CustomHeaderButtons13"), Boolean), ButtonImageOptions2, CType(resources.GetObject("GroupControl1.CustomHeaderButtons14"), DevExpress.XtraBars.Docking2010.ButtonStyle), resources.GetString("GroupControl1.CustomHeaderButtons15"), CType(resources.GetObject("GroupControl1.CustomHeaderButtons16"), Integer), CType(resources.GetObject("GroupControl1.CustomHeaderButtons17"), Boolean), CType(resources.GetObject("GroupControl1.CustomHeaderButtons18"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("GroupControl1.CustomHeaderButtons19"), Boolean), CType(resources.GetObject("GroupControl1.CustomHeaderButtons20"), Boolean), CType(resources.GetObject("GroupControl1.CustomHeaderButtons21"), Boolean), CType(resources.GetObject("GroupControl1.CustomHeaderButtons22"), Object), CType(resources.GetObject("GroupControl1.CustomHeaderButtons23"), Integer)), New DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton(resources.GetString("GroupControl1.CustomHeaderButtons24"), CType(resources.GetObject("GroupControl1.CustomHeaderButtons25"), Boolean), ButtonImageOptions3, CType(resources.GetObject("GroupControl1.CustomHeaderButtons26"), DevExpress.XtraBars.Docking2010.ButtonStyle), resources.GetString("GroupControl1.CustomHeaderButtons27"), CType(resources.GetObject("GroupControl1.CustomHeaderButtons28"), Integer), CType(resources.GetObject("GroupControl1.CustomHeaderButtons29"), Boolean), CType(resources.GetObject("GroupControl1.CustomHeaderButtons30"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("GroupControl1.CustomHeaderButtons31"), Boolean), CType(resources.GetObject("GroupControl1.CustomHeaderButtons32"), Boolean), CType(resources.GetObject("GroupControl1.CustomHeaderButtons33"), Boolean), CType(resources.GetObject("GroupControl1.CustomHeaderButtons34"), Object), CType(resources.GetObject("GroupControl1.CustomHeaderButtons35"), Integer))})
+        Me.GroupControl1.CustomHeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText
+        resources.ApplyResources(Me.GroupControl1, "GroupControl1")
+        Me.GroupControl1.Name = "GroupControl1"
+        '
+        'chkUnlock
+        '
+        Me.chkUnlock.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.chkUnlock.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.Security_Unlock
+        Me.chkUnlock.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.chkUnlock, "chkUnlock")
+        Me.chkUnlock.Name = "chkUnlock"
+        '
+        'cboTextFontSize
+        '
+        resources.ApplyResources(Me.cboTextFontSize, "cboTextFontSize")
+        Me.cboTextFontSize.Name = "cboTextFontSize"
+        Me.cboTextFontSize.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+        Me.cboTextFontSize.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboTextFontSize.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboTextFontSize.Properties.Buttons1"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboTextFontSize.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.cboTextFontSize.Properties.Items.AddRange(New Object() {resources.GetString("cboTextFontSize.Properties.Items"), resources.GetString("cboTextFontSize.Properties.Items1"), resources.GetString("cboTextFontSize.Properties.Items2"), resources.GetString("cboTextFontSize.Properties.Items3"), resources.GetString("cboTextFontSize.Properties.Items4"), resources.GetString("cboTextFontSize.Properties.Items5"), resources.GetString("cboTextFontSize.Properties.Items6"), resources.GetString("cboTextFontSize.Properties.Items7"), resources.GetString("cboTextFontSize.Properties.Items8"), resources.GetString("cboTextFontSize.Properties.Items9"), resources.GetString("cboTextFontSize.Properties.Items10"), resources.GetString("cboTextFontSize.Properties.Items11"), resources.GetString("cboTextFontSize.Properties.Items12"), resources.GetString("cboTextFontSize.Properties.Items13"), resources.GetString("cboTextFontSize.Properties.Items14"), resources.GetString("cboTextFontSize.Properties.Items15"), resources.GetString("cboTextFontSize.Properties.Items16")})
+        Me.cboTextFontSize.Properties.NullText = resources.GetString("cboTextFontSize.Properties.NullText")
+        '
+        'cboTextFontChar
+        '
+        resources.ApplyResources(Me.cboTextFontChar, "cboTextFontChar")
+        Me.cboTextFontChar.Name = "cboTextFontChar"
+        Me.cboTextFontChar.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+        Me.cboTextFontChar.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboTextFontChar.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboTextFontChar.Properties.Buttons1"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboTextFontChar.Properties.NullText = resources.GetString("cboTextFontChar.Properties.NullText")
+        '
+        'txtColor
+        '
+        resources.ApplyResources(Me.txtColor, "txtColor")
+        Me.txtColor.Name = "txtColor"
+        Me.txtColor.DefaultColor = Color.Transparent
+        Me.txtColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.txtColor.Properties.ShowSystemColors = False
+        Me.txtColor.Properties.ShowWebColors = False
+        '
+        'lblTextColor
+        '
+        resources.ApplyResources(Me.lblTextColor, "lblTextColor")
+        Me.lblTextColor.Name = "lblTextColor"
+        '
         'frmParametersInfoBox
         '
-        Me.AcceptButton = Me.cmdOk
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.CancelButton = Me.cmdCancel
+        Me.Controls.Add(Me.GroupControl1)
         Me.Controls.Add(Me.lblWidthUnit)
         Me.Controls.Add(Me.txtWidth)
         Me.Controls.Add(Me.lblWidth)
-        Me.Controls.Add(Me.cmdApply)
-        Me.Controls.Add(Me.cmdOk)
-        Me.Controls.Add(Me.cmdCancel)
-        Me.Controls.Add(Me.tabInfoBoxPart)
-        Me.Controls.Add(Me.cboTextFontChar)
-        Me.Controls.Add(Me.lblPropTextFontChar)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
         Me.Name = "frmParametersInfoBox"
-        CType(Me.picFontColor, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.tabInfoBoxPart.ResumeLayout(False)
-        Me.tabID.ResumeLayout(False)
-        Me.pnlSub.ResumeLayout(False)
-        Me.pnlSub.PerformLayout()
-        CType(Me.txtWidth, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkVisible.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtWidth.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl1.ResumeLayout(False)
+        Me.GroupControl1.PerformLayout()
+        CType(Me.cboTextFontSize.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboTextFontChar.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtColor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents lblFontColor As System.Windows.Forms.Label
-    Friend WithEvents cmdFontColor As System.Windows.Forms.Button
-    Friend WithEvents picFontColor As System.Windows.Forms.PictureBox
-    Friend WithEvents chkTextFontUnderline As System.Windows.Forms.CheckBox
-    Friend WithEvents chkTextFontItalic As System.Windows.Forms.CheckBox
-    Friend WithEvents chkTextFontBold As System.Windows.Forms.CheckBox
-    Friend WithEvents cboTextFontChar As System.Windows.Forms.ComboBox
-    Friend WithEvents lblPropTextFontChar As System.Windows.Forms.Label
-    Friend WithEvents cboTextFontSize As System.Windows.Forms.ComboBox
-    Friend WithEvents lblTextFontSize As System.Windows.Forms.Label
-    Friend WithEvents tabInfoBoxPart As System.Windows.Forms.TabControl
-    Friend WithEvents tabID As System.Windows.Forms.TabPage
-    Friend WithEvents pnlSub As System.Windows.Forms.Panel
-    Friend WithEvents chkVisible As System.Windows.Forms.CheckBox
-    Friend WithEvents tabName As System.Windows.Forms.TabPage
-    Friend WithEvents tabText As System.Windows.Forms.TabPage
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
-    Friend WithEvents cmdApply As System.Windows.Forms.Button
+    Friend WithEvents chkTextFontUnderline As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents chkTextFontItalic As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents chkTextFontBold As DevExpress.XtraEditors.CheckButton
+    Friend WithEvents lblPropTextFontChar As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblTextFontSize As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents chkVisible As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents lblWidth As System.Windows.Forms.Label
-    Friend WithEvents txtWidth As System.Windows.Forms.NumericUpDown
-    Friend WithEvents lblWidthUnit As System.Windows.Forms.Label
+    Friend WithEvents txtWidth As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents lblWidthUnit As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents GroupControl1 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents txtColor As cColorSelector
+    Friend WithEvents lblTextColor As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cboTextFontSize As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents cboTextFontChar As DevExpress.XtraEditors.FontEdit
+    Friend WithEvents chkUnlock As DevExpress.XtraEditors.CheckButton
 End Class

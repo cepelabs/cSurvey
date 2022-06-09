@@ -1,127 +1,73 @@
 ﻿Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
+Imports DevExpress.XtraGrid.Views.Base
+Imports DevExpress.XtraGrid.Views.Grid
 
-friend Class frmParametersTranslations
-    Friend Event OnChangeOptions(ByVal Sender As Object, ByVal Options As cOptions)
+Friend Class frmParametersTranslations
+    Private WithEvents oTransactionsBag As cTranslationsBag
 
-    Private oTransactionsBag As cTranslationsBag
-
-    Private oOptions As cOptions
-    Private oSurvey As cSurvey.cSurvey
+    Private oOptions As Options.cTranslationsOptions
     Private iApplyTo As cSurvey.Design.cIDesign.cDesignTypeEnum
 
-    Private bDisabledEvent As Boolean
+    Private bEventDisabled As Boolean
 
     Friend Class cTranslationsBagItem
-        Private sCave As String
-        Private sBranch As String
-        Private sX As Single
-        Private sY As Single
+        Inherits cSurvey.UIHelpers.cCaveBranchSelectorPlaceholder
+        Implements cIUIBaseInteractions
 
-        Friend Sub New(ByVal Cave As String, ByVal Branch As String, ByVal X As Single, ByVal Y As Single)
-            sCave = Cave
-            sBranch = Branch
-            sX = X
-            sY = Y
+        Private oTranslation As cTranslationBase
+
+        Friend Sub New(CaveInfo As cICaveInfoBranches, Translation As cTranslationBase)
+            MyBase.New(CaveInfo, modMain.GetLocalizedString("translations.originalposition"))
+            oTranslation = Translation
         End Sub
-
-        Public ReadOnly Property Cave As String
-            Get
-                Return sCave
-            End Get
-        End Property
-
-        Public ReadOnly Property Branch As String
-            Get
-                Return sBranch
-            End Get
-        End Property
-
-        'Public Property BreakPercentage As Single
-        '    Get
-        '        Return sBreakPercentage
-        '    End Get
-        '    Set(value As Single)
-        '        sBreakPercentage = value
-        '    End Set
-        'End Property
-
-        'Public Property Priority As cTranslation.cTranslationPriorityEnum
-        '    Get
-        '        Return iPriority
-        '    End Get
-        '    Set(value As cTranslation.cTranslationPriorityEnum)
-        '        iPriority = value
-        '    End Set
-        'End Property
 
         Public Property X As Single
             Get
-                Return sX
+                Return oTranslation.X
             End Get
             Set(ByVal value As Single)
-                sX = value
+                If oTranslation.X <> value Then
+                    oTranslation.X = value
+                    Call PropertyChanged("Y")
+                End If
             End Set
         End Property
 
         Public Property Y As Single
             Get
-                Return sY
+                Return oTranslation.Y
             End Get
             Set(ByVal value As Single)
-                sY = value
+                If oTranslation.Y <> value Then
+                    oTranslation.Y = value
+                    Call PropertyChanged("Y")
+                End If
             End Set
         End Property
+
+        Public Event OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Implements cIUIBaseInteractions.OnPropertyChanged
+
+        Public Sub PropertyChanged(Name As String) Implements cIUIBaseInteractions.PropertyChanged
+            RaiseEvent OnPropertyChanged(Me, New PropertyChangeEventArgs(Name))
+        End Sub
     End Class
 
     Friend Class cTranslationsBag
         Implements IEnumerable
+        Implements cIUIBaseInteractions
 
+        Private oOptions As Options.cTranslationsOptions
         Private oItems As List(Of cTranslationsBagItem)
 
-        Public Sub Apply(ByVal Survey As cSurvey.cSurvey, TranslationsOptions As Options.cTranslationsOptions, ByVal ApplyTo As cSurvey.Design.cIDesign.cDesignTypeEnum)
-            For Each oItem As cTranslationsBagItem In oItems
-                Dim sCave As String = oItem.Cave
-                Dim sBranch As String = oItem.Branch
-                Dim sX As Single = oItem.X
-                Dim sY As Single = oItem.Y
-                Try
-                    If sCave = "" Then
-                        TranslationsOptions.OriginalPositionTranslation.X = sX
-                        TranslationsOptions.OriginalPositionTranslation.Y = sY
-                    Else
-                        If sBranch = "" Then
-                            Dim oCaveInfo As cCaveInfo = Survey.Properties.CaveInfos(sCave)
-                            Dim oTranslation As cTranslation
-                            Select Case ApplyTo
-                                Case cIDesign.cDesignTypeEnum.Profile
-                                    oTranslation = oCaveInfo.Translations.Profile
-                                Case Else
-                                    oTranslation = oCaveInfo.Translations.Plan
-                            End Select
-                            oTranslation.X = sX
-                            oTranslation.Y = sY
-                        Else
-                            Dim oCaveInfoBranch As cCaveInfoBranch = Survey.Properties.CaveInfos(sCave).Branches(sBranch)
-                            Dim oTranslation As cTranslation
-                            Select Case ApplyTo
-                                Case cIDesign.cDesignTypeEnum.Profile
-                                    oTranslation = oCaveInfoBranch.Translations.Profile
-                                Case Else
-                                    oTranslation = oCaveInfoBranch.Translations.Plan
-                            End Select
-                            oTranslation.X = sX
-                            oTranslation.Y = sY
-                        End If
-                    End If
-                Catch
-                End Try
-            Next
-        End Sub
+        Public Event OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Implements cIUIBaseInteractions.OnPropertyChanged
 
         Friend Sub New(ByVal Survey As cSurveyPC.cSurvey.cSurvey, TranslationsOptions As Options.cTranslationsOptions, ByVal ApplyTo As cSurvey.Design.cIDesign.cDesignTypeEnum)
             oItems = New List(Of cTranslationsBagItem)
-            For Each oCaveInfo As cCaveInfo In Survey.Properties.CaveInfos
+            oOptions = TranslationsOptions
+
+            Call Append(Nothing, TranslationsOptions.OriginalPositionTranslation)
+            For Each oCaveInfo As cICaveInfoBranches In Survey.Properties.CaveInfos
                 Dim oTranslation As cTranslation
                 Select Case ApplyTo
                     Case cIDesign.cDesignTypeEnum.Profile
@@ -129,22 +75,21 @@ friend Class frmParametersTranslations
                     Case Else
                         oTranslation = oCaveInfo.Translations.Plan
                 End Select
-                Call Append(oCaveInfo.Name, "", oTranslation.X, oTranslation.Y) ', oTranslation.Priority, oTranslation.BreakPercentage)
+                Call Append(oCaveInfo, oTranslation)
                 Call pAppendBranches(ApplyTo, oCaveInfo.Branches)
             Next
-            Call Append("", "", TranslationsOptions.OriginalPositionTranslation.X, TranslationsOptions.OriginalPositionTranslation.Y)
         End Sub
 
         Private Sub pAppendBranches(ByVal ApplyTo As cSurvey.Design.cIDesign.cDesignTypeEnum, Branches As cCaveInfoBranches)
             Dim oTranslation As cTranslation
-            For Each oCaveInfoBranch As cCaveInfoBranch In Branches
+            For Each oCaveInfoBranch As cICaveInfoBranches In Branches
                 Select Case ApplyTo
                     Case cIDesign.cDesignTypeEnum.Profile
                         oTranslation = oCaveInfoBranch.Translations.Profile
                     Case Else
                         oTranslation = oCaveInfoBranch.Translations.Plan
                 End Select
-                Call Append(oCaveInfoBranch.Cave, oCaveInfoBranch.Path, oTranslation.X, oTranslation.Y) ', oTranslation.Priority, oTranslation.BreakPercentage)
+                Call Append(oCaveInfoBranch, oTranslation)
                 Call pAppendBranches(ApplyTo, oCaveInfoBranch.Branches)
             Next
         End Sub
@@ -165,8 +110,13 @@ friend Class frmParametersTranslations
             End Get
         End Property
 
-        Friend Function Append(ByVal Cave As String, ByVal Branch As String, ByVal X As Single, ByVal Y As Single) ', Priority As cTranslation.cTranslationPriorityEnum, BreakPercentage As Single) As cTranslationsBagItem
-            Dim oItem As cTranslationsBagItem = New cTranslationsBagItem(Cave, Branch, X, Y) ', Priority, BreakPercentage)
+        Private Sub oItem_OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs)
+            Call PropertyChanged("Item." & e.Name)
+        End Sub
+
+        Friend Function Append(CaveInfo As cICaveInfoBranches, Translation As cTranslationBase) ', Priority As cTranslation.cTranslationPriorityEnum, BreakPercentage As Single) As cTranslationsBagItem
+            Dim oItem As cTranslationsBagItem = New cTranslationsBagItem(CaveInfo, Translation) ', Priority, BreakPercentage)
+            AddHandler oItem.OnPropertyChanged, AddressOf oItem_OnPropertyChanged
             Call oItems.Add(oItem)
             Return oItem
         End Function
@@ -174,137 +124,36 @@ friend Class frmParametersTranslations
         Public Function GetEnumerator() As System.Collections.IEnumerator Implements System.Collections.IEnumerable.GetEnumerator
             Return oItems.GetEnumerator
         End Function
+
+        Public Sub PropertyChanged(Name As String) Implements cIUIBaseInteractions.PropertyChanged
+            RaiseEvent OnPropertyChanged(Me, New PropertyChangeEventArgs(Name))
+        End Sub
     End Class
 
-    Public Sub New(ByVal Options As cOptions, ByVal ApplyTo As cSurvey.Design.cIDesign.cDesignTypeEnum)
+    Public Sub New(ByVal Options As Options.cTranslationsOptions, ByVal ApplyTo As cSurvey.Design.cIDesign.cDesignTypeEnum)
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
         oOptions = Options
-        oSurvey = oOptions.Survey
         iApplyTo = ApplyTo
 
-        chkShowLine.Checked = oOptions.TranslationsOptions.DrawTranslationsLine
-        chkShowOriginalPosition.Checked = oOptions.TranslationsOptions.DrawOriginalPosition
+        bEventDisabled = True
+
+        chkShowLine.Checked = oOptions.DrawTranslationsLine
+        chkShowOriginalPosition.Checked = oOptions.DrawOriginalPosition
         chkShowOriginalPosition.Enabled = True
-        txtTranslationsThreshold.Value = oOptions.TranslationsOptions.TranslationsThreshold
-        cboOriginalPositionColorMode.SelectedIndex = oOptions.TranslationsOptions.OriginalPositionColorMode
-        chkOriginalPositionColorGray.Checked = oOptions.TranslationsOptions.OriginalPositionColorGray
-        chkOriginalPositionOnlyTranslated.Checked = oOptions.TranslationsOptions.OriginalPositionOnlyTranslated
-        chkOriginalPositionOverDesign.Checked = oOptions.TranslationsOptions.OriginalPositionOverDesign
+        txtTranslationsThreshold.Value = oOptions.TranslationsThreshold
+        cboOriginalPositionColorMode.SelectedIndex = oOptions.OriginalPositionColorMode
+        chkOriginalPositionColorGray.Checked = oOptions.OriginalPositionColorGray
+        chkOriginalPositionOnlyTranslated.Checked = oOptions.OriginalPositionOnlyTranslated
+        chkOriginalPositionOverDesign.Checked = oOptions.OriginalPositionOverDesign
 
-        bDisabledEvent = True
-        oTransactionsBag = New cTranslationsBag(oOptions.Survey, Options.TranslationsOptions, ApplyTo)
+        oTransactionsBag = New cTranslationsBag(oOptions.Survey, oOptions, ApplyTo)
+        GridControl1.DataSource = oTransactionsBag
+        'Call pTransactionsBagToGrid()
 
-        'Dim oComboColumn As DataGridViewComboBoxColumn = grdTraslations.Columns(4)
-        'oComboColumn.Items.Add(New KeyValuePair(Of cTranslation.cTranslationPriorityEnum, String)(cTranslation.cTranslationPriorityEnum.Default, "Non definito"))
-        'oComboColumn.Items.Add(New KeyValuePair(Of cTranslation.cTranslationPriorityEnum, String)(cTranslation.cTranslationPriorityEnum.YX, "Prima Y poi X"))
-        'oComboColumn.Items.Add(New KeyValuePair(Of cTranslation.cTranslationPriorityEnum, String)(cTranslation.cTranslationPriorityEnum.XY, "Prima X poi Y"))
-        'oComboColumn.DisplayMember = "Value"
-        'oComboColumn.ValueMember = "Key"
-
-        Call pTransactionsBagToGrid()
-
-        'Dim oTranslationTrigPoints As cTranslatedTrigPoints = New cTranslatedTrigPoints
-        'If iApplyTo = cIDesign.cDesignTypeEnum.Profile Then
-        '    For Each oSegment As cSegment In oSurvey.Segments
-        '        If Not oSegment.Splay Then
-        '            With oSegment.Data
-        '                Dim oTranslation As SizeF = modPlot.GetProfileSegmentTranslation(oSurvey, oSegment)
-        '                If oTranslation.IsEmpty Then
-        '                    Call oTranslationTrigPoints.Add(.Data.From, .Profile.FromPoint)
-        '                    Call oTranslationTrigPoints.Add(.Data.To, .Profile.ToPoint)
-        '                Else
-        '                    Call oTranslationTrigPoints.Add(.Data.From, PointF.Add(.Profile.FromPoint, oTranslation))
-        '                    Call oTranslationTrigPoints.Add(.Data.To, PointF.Add(.Profile.ToPoint, oTranslation))
-        '                End If
-        '            End With
-        '        End If
-        '    Next
-        'Else
-        '    For Each oSegment As cSegment In oSurvey.Segments
-        '        If Not oSegment.Splay Then
-        '            With oSegment.Data
-        '                Dim oTranslation As SizeF = modPlot.GetPlanSegmentTranslation(oSurvey, oSegment)
-        '                If oTranslation.IsEmpty Then
-        '                    Call oTranslationTrigPoints.Add(.Data.From, .Plan.FromPoint)
-        '                    Call oTranslationTrigPoints.Add(.Data.To, .Plan.ToPoint)
-        '                Else
-        '                    Call oTranslationTrigPoints.Add(.Data.From, PointF.Add(.Plan.FromPoint, oTranslation))
-        '                    Call oTranslationTrigPoints.Add(.Data.To, PointF.Add(.Plan.ToPoint, oTranslation))
-        '                End If
-        '            End With
-        '        End If
-        '    Next
-        'End If
-        'For Each oTranslationTrigPoint As cTranslatedTrigPoint In oTranslationTrigPoints
-        '    If oTranslationTrigPoint.Count > 1 Then
-        '        Dim oData(3) As Object
-        '        oData(0) = True
-        '        oData(1) = oTranslationTrigPoint.Name
-        '        oData(2) = 1
-        '        oData(3) = oTranslationTrigPoint.ToString
-        '        grdStations.Rows.Add(oData)
-        '    End If
-        'Next
-
-        bDisabledEvent = False
-    End Sub
-
-    Private Sub pTransactionsBagToGrid()
-        For Each oItem As cTranslationsBagItem In oTransactionsBag
-            Dim oRow(3) As Object
-            If oItem.Cave = "" AndAlso oItem.Branch = "" Then
-                oRow(0) = modMain.GetLocalizedString("translations.originalposition")
-                oRow(1) = ""
-            Else
-                oRow(0) = oItem.Cave
-                oRow(1) = oItem.Branch
-            End If
-            oRow(2) = oItem.X
-            oRow(3) = oItem.Y
-            Dim iRow As Integer = grdTraslations.Rows.Add(oRow)
-            grdTraslations.Rows(iRow).Tag = oItem
-        Next
-    End Sub
-
-    Private Sub pGridToTransactionsBag()
-        For Each oRow As DataGridViewRow In grdTraslations.Rows
-            Dim oItem As cTranslationsBagItem = oRow.Tag
-            oItem.X = oRow.Cells(2).Value
-            oItem.Y = oRow.Cells(3).Value
-        Next
-    End Sub
-
-    Private Sub cmdApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdApply.Click
-        Call pSave()
-        RaiseEvent OnChangeOptions(Me, oOptions)
-    End Sub
-
-    Private Sub pSave()
-        oOptions.TranslationsOptions.DrawTranslationsLine = chkShowLine.Checked
-        oOptions.TranslationsOptions.TranslationsThreshold = txtTranslationsThreshold.Value
-        oOptions.TranslationsOptions.DrawOriginalPosition = chkShowOriginalPosition.Checked
-        oOptions.TranslationsOptions.OriginalPositionColorMode = cboOriginalPositionColorMode.SelectedIndex
-        oOptions.TranslationsOptions.OriginalPositionColorGray = chkOriginalPositionColorGray.Checked
-        oOptions.TranslationsOptions.OriginalPositionOnlyTranslated = chkOriginalPositionOnlyTranslated.Checked
-        oOptions.TranslationsOptions.OriginalPositionOverDesign = chkOriginalPositionOverDesign.Checked
-
-        Call pGridToTransactionsBag()
-        Call oTransactionsBag.Apply(oOptions.Survey, oOptions.TranslationsOptions, iApplyTo)
-    End Sub
-
-    Private Sub cmdOk_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdOk.Click
-        Call pSave()
-        RaiseEvent OnChangeOptions(Me, oOptions)
-        Call Close()
-        Call Dispose()
-    End Sub
-
-    Private Sub cmdCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancel.Click
-        Call Close()
-        Call Dispose()
+        bEventDisabled = False
     End Sub
 
     Private Sub chkShowOriginalPosition_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowOriginalPosition.CheckedChanged
@@ -314,45 +163,133 @@ friend Class frmParametersTranslations
         chkOriginalPositionColorGray.Enabled = bEnabled
         chkOriginalPositionOnlyTranslated.Enabled = bEnabled
         chkOriginalPositionOverDesign.Enabled = bEnabled
-    End Sub
-
-    Private Sub pGridRemoveFilter()
-        For Each oRow As DataGridViewRow In grdTraslations.Rows
-            oRow.Visible = True
-        Next
-    End Sub
-
-    Private Sub pGridFilter(Filter As String)
-        Dim sFilter As String = "*" & Filter.ToLower & "*"
-        Dim bShow As Boolean
-        For Each oRow As DataGridViewRow In grdTraslations.Rows
-            bShow = False
-            For Each oCell As DataGridViewCell In oRow.Cells
-                If oCell.Value.ToString.ToLower Like sFilter Then
-                    bShow = True
-                    Exit For
-                End If
-            Next
-            oRow.Visible = bShow
-        Next
-    End Sub
-
-    Private Sub txtTraslationsGridFilterBy_KeyDown(sender As Object, e As KeyEventArgs) Handles txtTraslationsGridFilterBy.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            Dim sFilter As String = txtTraslationsGridFilterBy.Text.Trim
-            If sFilter <> "" Then
-                Call pGridFilter(sFilter)
-            End If
+        If Not oOptions Is Nothing AndAlso Not bEventDisabled Then
+            oOptions.DrawOriginalPosition = chkShowOriginalPosition.Checked
         End If
-    End Sub
-
-    Private Sub mnuTraslationsGridRemoveFilter_Click(sender As Object, e As EventArgs) Handles mnuTraslationsGridRemoveFilter.Click
-        Call pGridRemoveFilter()
     End Sub
 
     Private Sub chkShowLine_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowLine.CheckedChanged
         Dim bEnabled As Boolean = chkShowLine.Checked
-        lblTranslationsThreshold.Enabled = benabled
-        txtTranslationsThreshold.Enabled = benabled
+        lblTranslationsThreshold.Enabled = bEnabled
+        txtTranslationsThreshold.Enabled = bEnabled
+        If Not oOptions Is Nothing AndAlso Not bEventDisabled Then
+            oOptions.DrawTranslationsLine = chkShowLine.Checked
+        End If
     End Sub
+
+    Private Sub chkOriginalPositionColorGray_CheckedChanged(sender As Object, e As EventArgs) Handles chkOriginalPositionColorGray.CheckedChanged
+        If Not oOptions Is Nothing AndAlso Not bEventDisabled Then
+            oOptions.OriginalPositionColorGray = chkOriginalPositionColorGray.Checked
+        End If
+    End Sub
+
+    Private Sub oTransactionsBag_OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Handles oTransactionsBag.OnPropertyChanged
+        Call oOptions.PropertyChanged(e.Name)
+    End Sub
+
+    Private Sub chkOriginalPositionOverDesign_CheckedChanged(sender As Object, e As EventArgs) Handles chkOriginalPositionOverDesign.CheckedChanged
+        If Not oOptions Is Nothing AndAlso Not bEventDisabled Then
+            oOptions.OriginalPositionOverDesign = chkOriginalPositionOverDesign.Checked
+        End If
+    End Sub
+
+    Private Sub chkOriginalPositionOnlyTranslated_CheckedChanged(sender As Object, e As EventArgs) Handles chkOriginalPositionOnlyTranslated.CheckedChanged
+        If Not oOptions Is Nothing AndAlso Not bEventDisabled Then
+            oOptions.OriginalPositionOnlyTranslated = chkOriginalPositionOnlyTranslated.Checked
+        End If
+    End Sub
+
+    Private Sub txtTranslationsThreshold_EditValueChanged(sender As Object, e As EventArgs) Handles txtTranslationsThreshold.EditValueChanged
+        If Not oOptions Is Nothing AndAlso Not bEventDisabled Then
+            oOptions.TranslationsThreshold = txtTranslationsThreshold.Value
+        End If
+    End Sub
+
+    Private Sub cboOriginalPositionColorMode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboOriginalPositionColorMode.SelectedIndexChanged
+        If Not oOptions Is Nothing AndAlso Not bEventDisabled Then
+            oOptions.OriginalPositionColorMode = cboOriginalPositionColorMode.SelectedIndex
+        End If
+    End Sub
+
+    Private Sub GridView1_RowCellStyle(sender As Object, e As RowCellStyleEventArgs) Handles GridView1.RowCellStyle
+        Dim oItem As cTranslationsBagItem = GridView1.GetRow(e.RowHandle)
+        If Not oItem Is Nothing Then
+            If e.Column Is colCaveBranchCaveColor Then
+                If Not oItem.CaveInfo Is Nothing Then
+                    e.Appearance.BackColor = oItem.CaveInfo.GetColor(Color.LightGray)
+                End If
+            ElseIf e.Column Is colCaveBranchBranchColor Then
+                If oItem.CaveInfoBranch Is Nothing Then
+                    If Not oItem.CaveInfo Is Nothing Then
+                        e.Appearance.BackColor = oItem.CaveInfo.GetColor(Color.LightGray)
+                    End If
+                Else
+                    e.Appearance.BackColor = oItem.CaveInfoBranch.GetColor(Color.LightGray)
+                End If
+            End If
+        End If
+    End Sub
+
+    'Private Sub GridView1_CustomUnboundColumnData(sender As Object, e As CustomColumnDataEventArgs) Handles GridView1.CustomUnboundColumnData
+    '    If e.IsGetData Then
+    '        If e.Column Is colCaveBranchCave Then
+    '            If DirectCast(e.Row, cTranslationsBagItem).CaveInfo Is Nothing Then
+    '                e.Value = "" 'modMain.GetLocalizedString("translations.originalposition")
+    '            Else
+    '                e.Value = DirectCast(e.Row, cTranslationsBagItem).Cave
+    '            End If
+    '        ElseIf e.Column Is colCaveBranchBranch Then
+    '            If DirectCast(e.Row, cTranslationsBagItem).CaveInfoBranch Is Nothing Then
+    '                e.Value = ""
+    '            Else
+    '                e.Value = DirectCast(e.Row, cTranslationsBagItem).Branch '.ToHTMLString
+    '            End If
+    '        End If
+    '    End If
+    'End Sub
+
+    'Private Sub GridView1_CustomColumnDisplayText(sender As Object, e As CustomColumnDisplayTextEventArgs) Handles GridView1.CustomColumnDisplayText
+    '    If e.Column Is colCaveBranchCave Then
+    '        If e.ListSourceRowIndex < 0 Then
+    '            e.DisplayText = ""
+    '        Else
+    '            Dim oItem As cTranslationsBagItem = oTransactionsBag.Item(e.ListSourceRowIndex)
+    '            If oItem.CaveInfo Is Nothing Then
+    '                e.DisplayText = modMain.GetLocalizedString("translations.originalposition")
+    '            Else
+    '                e.DisplayText = oItem.CaveInfo.ToHTMLString
+    '            End If
+    '        End If
+    '    ElseIf e.Column Is colCaveBranchBranch Then
+    '        If e.ListSourceRowIndex < 0 Then
+    '            e.DisplayText = ""
+    '        Else
+    '            Dim oItem As cTranslationsBagItem = oTransactionsBag.Item(e.ListSourceRowIndex)
+    '            If oItem.CaveInfoBranch Is Nothing Then
+    '                e.DisplayText = ""
+    '            Else
+    '                e.DisplayText = oItem.CaveInfoBranch.ToHTMLString
+    '            End If
+    '        End If
+    '    End If
+    'End Sub
+
+    'Private Sub GridView1_RowCellStyle(sender As Object, e As RowCellStyleEventArgs) Handles GridView1.RowCellStyle
+    '    Dim oTranslation As cTranslationsBagItem = GridView1.GetRow(e.RowHandle)
+    '    If Not oTranslation Is Nothing Then
+    '        If Not oTranslation.CaveInfo Is Nothing Then
+    '            If e.Column Is colCaveBranchCave Then
+    '                Dim oColor As Color = oTranslation.CaveInfo.GetColor(System.Drawing.Color.LightGray)
+    '                If (oColor <> Color.Transparent) Then
+    '                    e.Appearance.BackColor = modPaint.LightColor(oColor, 0.85)
+    '                End If
+    '            ElseIf e.Column Is colCaveBranchBranch Then
+    '                Dim oColor As Color = oTranslation.CaveInfo.GetColor(System.Drawing.Color.LightGray)
+    '                If (oColor <> Color.Transparent) Then
+    '                    e.Appearance.BackColor = modPaint.LightColor(oColor, 0.85)
+    '                End If
+    '            End If
+    '        End If
+    '    End If
+    'End Sub
 End Class

@@ -32,8 +32,8 @@ Partial Class frmExportGoogleKML
         Me.chkExportWaypoint = New DevExpress.XtraEditors.CheckEdit()
         Me.chkExportTrack = New DevExpress.XtraEditors.CheckEdit()
         Me.chkExportCaveBorders = New DevExpress.XtraEditors.CheckEdit()
-        Me.pnlCaveBordersTransparency = New System.Windows.Forms.Panel()
-        Me.lblCaveBordersTransparency = New System.Windows.Forms.Label()
+        Me.pnlCaveBordersTransparency = New DevExpress.XtraEditors.PanelControl()
+        Me.lblCaveBordersTransparency = New DevExpress.XtraEditors.LabelControl()
         Me.chkExportLinkedSurveys = New DevExpress.XtraEditors.CheckEdit()
         Me.linkedSurveys = New cSurveyPC.cLinkedSurveySelectorControl()
         Me.XtraTabControl1 = New DevExpress.XtraTab.XtraTabControl()
@@ -186,9 +186,9 @@ Partial Class frmExportGoogleKML
     Friend WithEvents chkExportCaveBorders As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkExportLinkedSurveys As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents linkedSurveys As cLinkedSurveySelectorControl
-    Friend WithEvents pnlCaveBordersTransparency As Panel
+    Friend WithEvents pnlCaveBordersTransparency As DevExpress.XtraEditors.PanelControl
     Friend WithEvents txtCaveBordersTransparency As NumericUpDown
-    Friend WithEvents lblCaveBordersTransparency As Label
+    Friend WithEvents lblCaveBordersTransparency As DevExpress.XtraEditors.LabelControl
     Friend WithEvents chkExportUseCadastralIDInCaveNames As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents XtraTabControl1 As DevExpress.XtraTab.XtraTabControl
     Friend WithEvents XtraTabPage1 As DevExpress.XtraTab.XtraTabPage

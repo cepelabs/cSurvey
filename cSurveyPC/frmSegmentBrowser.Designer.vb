@@ -23,10 +23,15 @@ Partial Class frmSegmentBrowser
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSegmentBrowser))
-        Me.cmdOk = New System.Windows.Forms.Button()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.cboSegments = New System.Windows.Forms.ComboBox()
-        Me.lblSegment = New System.Windows.Forms.Label()
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.lblSegment = New DevExpress.XtraEditors.LabelControl()
+        Me.grdSegmentsView = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colSegmentFrom = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSegmentTo = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.cboSegments = New DevExpress.XtraEditors.SearchLookUpEdit()
+        CType(Me.grdSegmentsView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboSegments.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdOk
@@ -34,7 +39,6 @@ Partial Class frmSegmentBrowser
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
         '
         'cmdCancel
         '
@@ -42,19 +46,47 @@ Partial Class frmSegmentBrowser
         Me.cmdCancel.CausesValidation = False
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
+        '
+        'lblSegment
+        '
+        Me.lblSegment.Appearance.Font = CType(resources.GetObject("lblSegment.Appearance.Font"), System.Drawing.Font)
+        Me.lblSegment.Appearance.Options.UseFont = True
+        resources.ApplyResources(Me.lblSegment, "lblSegment")
+        Me.lblSegment.Name = "lblSegment"
+        '
+        'grdSegmentsView
+        '
+        Me.grdSegmentsView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colSegmentFrom, Me.colSegmentTo})
+        Me.grdSegmentsView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+        Me.grdSegmentsView.Name = "grdSegmentsView"
+        Me.grdSegmentsView.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.grdSegmentsView.OptionsView.ShowGroupPanel = False
+        Me.grdSegmentsView.OptionsView.ShowIndicator = False
+        Me.grdSegmentsView.SortInfo.AddRange(New DevExpress.XtraGrid.Columns.GridColumnSortInfo() {New DevExpress.XtraGrid.Columns.GridColumnSortInfo(Me.colSegmentFrom, DevExpress.Data.ColumnSortOrder.Ascending)})
+        '
+        'colSegmentFrom
+        '
+        resources.ApplyResources(Me.colSegmentFrom, "colSegmentFrom")
+        Me.colSegmentFrom.FieldName = "From"
+        Me.colSegmentFrom.Name = "colSegmentFrom"
+        '
+        'colSegmentTo
+        '
+        resources.ApplyResources(Me.colSegmentTo, "colSegmentTo")
+        Me.colSegmentTo.FieldName = "To"
+        Me.colSegmentTo.Name = "colSegmentTo"
         '
         'cboSegments
         '
         resources.ApplyResources(Me.cboSegments, "cboSegments")
-        Me.cboSegments.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.cboSegments.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cboSegments.Name = "cboSegments"
-        '
-        'lblSegment
-        '
-        resources.ApplyResources(Me.lblSegment, "lblSegment")
-        Me.lblSegment.Name = "lblSegment"
+        Me.cboSegments.Properties.Appearance.Font = CType(resources.GetObject("cboSegments.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.cboSegments.Properties.Appearance.Options.UseFont = True
+        Me.cboSegments.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboSegments.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboSegments.Properties.NullText = resources.GetString("cboSegments.Properties.NullText")
+        Me.cboSegments.Properties.PopupSizeable = False
+        Me.cboSegments.Properties.PopupView = Me.grdSegmentsView
+        Me.cboSegments.Properties.ShowClearButton = False
         '
         'frmSegmentBrowser
         '
@@ -62,20 +94,25 @@ Partial Class frmSegmentBrowser
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
-        Me.Controls.Add(Me.cboSegments)
         Me.Controls.Add(Me.lblSegment)
         Me.Controls.Add(Me.cmdOk)
         Me.Controls.Add(Me.cmdCancel)
+        Me.Controls.Add(Me.cboSegments)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSegmentBrowser"
+        CType(Me.grdSegmentsView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboSegments.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents cboSegments As System.Windows.Forms.ComboBox
-    Friend WithEvents lblSegment As System.Windows.Forms.Label
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents lblSegment As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents grdSegmentsView As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents colSegmentFrom As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSegmentTo As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents cboSegments As DevExpress.XtraEditors.SearchLookUpEdit
 End Class

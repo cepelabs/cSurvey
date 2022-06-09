@@ -1,159 +1,166 @@
 ﻿Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
+Imports DevExpress.XtraBars
 
-friend Class frmInfoEntrance
+Friend Class frmInfoEntrance
     Private oSurvey As cSurvey.cSurvey
 
-    Friend Sub New(ByVal Survey As cSurvey.cSurvey, Optional ByVal Cave As String = "", Optional Branch As String = "")
+    Friend Sub New(ByVal Survey As cSurvey.cSurvey, Optional ByVal Cave As String = "")
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
         oSurvey = Survey
-        Call pRefreshCaveList(Cave)
+        Call pRefreshCaveList(Survey, Cave)
     End Sub
 
-    Private Sub cboSurveyInfoCave_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboSurveyInfoCave.SelectedIndexChanged
-        Dim sCave As String = "" & cboSurveyInfoCave.Text
-        Call pRefreshInfo()
-    End Sub
-
-    Private Sub pRefreshCaveList(ByVal CurrentCave As String)
-        Dim sCurrentCave As String = "" & CurrentCave
-        Dim oEmptyCaveInfo As cCaveInfo = oSurvey.Properties.CaveInfos.GetEmptyCaveInfo
-        Dim oSurveyInfoCave As cCaveInfo
-        Try
-            If sCurrentCave = "" Then
-                oSurveyInfoCave = cboSurveyInfoCave.SelectedItem
+    Private Sub pRefreshCaveList(Survey As cSurvey.cSurvey, Optional Cave As String = Nothing)
+        If IsNothing(Survey) Then
+            cboSurveyInfoCave.Enabled = False
+        Else
+            cboSurveyInfoCave.Enabled = True
+            cboSurveyInfoCave.Properties.DataSource = Survey.Properties.CaveInfos.GetWithEmpty.Select(Function(oitem) oitem.Value).ToList
+            If Cave Is Nothing Then
+                cboSurveyInfoCave.EditValue = cboSurveyInfoCave.Properties.DataSource(0)
             Else
-                oSurveyInfoCave = oSurvey.Properties.CaveInfos(sCurrentCave)
+                cboSurveyInfoCave.EditValue = Survey.Properties.CaveInfos(Cave)
             End If
-        Catch
-        End Try
-        Call cboSurveyInfoCave.Items.Clear()
-        Call cboSurveyInfoCave.Items.Add(oEmptyCaveInfo)
-        For Each oCaveInfo As cCaveInfo In oSurvey.Properties.CaveInfos
-            Call cboSurveyInfoCave.Items.Add(oCaveInfo)
-        Next
-        Try
-            If oSurveyInfoCave Is Nothing Then
-                cboSurveyInfoCave.SelectedIndex = 0
-            Else
-                cboSurveyInfoCave.SelectedItem = oSurveyInfoCave
-            End If
-        Catch
-            cboSurveyInfoCave.SelectedIndex = 0
-        End Try
+        End If
     End Sub
 
-    Private Sub pRefreshInfo()
+    Private Sub pRefresh()
         Cursor = Cursors.WaitCursor
 
-        Call grdSurveyInfo.Rows.Clear()
+        Call grdSurveyInfo.BeginUpdate()
+        Call grdSurveyInfo.ClearAll()
 
         Dim oOptions As cOptionsDesign = New cOptionsDesign(oSurvey, "_info")
         oOptions.DrawSplay = False
-        oOptions.DrawSegmentsOptions = cOptions.DrawSegmentsOptionsEnum.None
+        oOptions.DrawSegmentsOptions = cOptionsDesign.DrawSegmentsOptionsEnum.None
 
-        Dim bComplex As Boolean = cboSurveyInfoCave.SelectedIndex = 0 Or cboSurveyInfoCave.SelectedIndex = -1
-
-        Dim sCave As String = "" & cboSurveyInfoCave.Text
+        Dim bComplex As Boolean = (cboSurveyInfoCave.EditValue Is cboSurveyInfoCave.Properties.DataSource(0))
+        Dim sCurrentCave As String = "" & If(cboSurveyInfoCave.EditValue Is Nothing, "", cboSurveyInfoCave.EditValue.name)
 
         Dim oTrigpoints As cTrigPointCollection
-        Dim oData(7) As Object
         If bComplex Then
-            'Call grdSurveyInfo.Rows.Add(GetLocalizedString("infoentrance.textpart1"), oSurvey.Name)
             oTrigpoints = oSurvey.TrigPoints.GetAllEntrances()
         Else
-            'Call grdSurveyInfo.Rows.Add(GetLocalizedString("infoentrance.textpart1"), oSurvey.Name)
-            'Call grdSurveyInfo.Rows.Add(GetLocalizedString("infoentrance.textpart2"), sCave)
-            oTrigpoints = oSurvey.TrigPoints.GetCaveAllEntrances(sCave)
+            oTrigpoints = oSurvey.TrigPoints.GetCaveAllEntrances(sCurrentCave)
         End If
 
         For Each oTrigpoint As cTrigPoint In oTrigpoints
+            grdSurveyInfo.CreateValueSet(oTrigpoint)
             Dim oSegments As cSegmentCollection = oTrigpoint.GetSegments
             If oSegments.Count = 0 Then
-                oData(0) = GetLocalizedString("infoentrance.textpart3")
+                Call grdSurveyInfo.RowAdd("data0", GetLocalizedString("infoentrance.textpart8"), GetLocalizedString("infoentrance.textpart3"))
             Else
-                oData(0) = String.Join("; ", oTrigpoint.GetSegments.ToArray.Select(Function(item) item.Cave).Distinct())
+                Call grdSurveyInfo.RowAdd("data0", GetLocalizedString("infoentrance.textpart8"), String.Join("; ", oTrigpoint.GetSegments.ToArray.Select(Function(item) item.Cave).Distinct()))
             End If
-            oData(1) = oTrigpoint.Name
-            oData(2) = GetLocalizedString("infoentrance.textpart" & oTrigpoint.Entrance - cTrigPoint.EntranceTypeEnum.OtherCaveEntrance + 4)
-            oData(6) = oTrigpoint.Note
-            oData(7) = "..."
+            Call grdSurveyInfo.RowAdd("data1", GetLocalizedString("infoentrance.textpart9"), oTrigpoint.Name)
+            Call grdSurveyInfo.RowAdd("data2", GetLocalizedString("infoentrance.textpart10"), GetLocalizedString("infoentrance.textpart" & oTrigpoint.Entrance - cTrigPoint.EntranceTypeEnum.OtherCaveEntrance + 4))
+
             If oSurvey.Calculate.TrigPoints.Contains(oTrigpoint) Then
                 With oSurvey.Calculate.TrigPoints(oTrigpoint).Coordinate
-                    oData(3) = modNumbers.NumberToCoordinate(.Latitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "N", "S")
-                    oData(4) = modNumbers.NumberToCoordinate(.Longitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "E", "W")
-                    oData(5) = modNumbers.MathRound(.Altitude, 0)
+                    Dim oCoordinateRow As DevExpress.XtraVerticalGrid.Rows.EditorRow = grdSurveyInfo.RowAdd("data7", GetLocalizedString("infoentrance.textpart15"), "")
+                    Dim oButtonEdit As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit = grdSurveyInfo.SetAsButtonEdit(oCoordinateRow, AddressOf grdSurveyInfo_buttonClick)
+                    Dim oExportButton As DevExpress.XtraEditors.Controls.EditorButton = New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph)
+                    oExportButton.ImageOptions.SvgImage = My.Resources.exportfile
+                    oExportButton.ImageOptions.SvgImageSize = New Size(16, 16)
+                    oExportButton.Caption = GetLocalizedString("infoentrance.textpart16")
+                    oButtonEdit.Buttons.Add(oExportButton)
+                    Call grdSurveyInfo.RowAdd(oCoordinateRow, "data3", GetLocalizedString("infoentrance.textpart11"), modNumbers.NumberToCoordinate(.Latitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "N", "S"))
+                    Call grdSurveyInfo.RowAdd(oCoordinateRow, "data4", GetLocalizedString("infoentrance.textpart12"), modNumbers.NumberToCoordinate(.Longitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "E", "W"))
+                    Call grdSurveyInfo.RowAdd(oCoordinateRow, "data5", GetLocalizedString("infoentrance.textpart13"), modNumbers.MathRound(.Altitude, 0))
                 End With
             Else
-                oData(3) = GetLocalizedString("infoentrance.textpart3")
-                oData(4) = GetLocalizedString("infoentrance.textpart3")
-                oData(5) = GetLocalizedString("infoentrance.textpart3")
+                Dim oCoordinateRow As DevExpress.XtraVerticalGrid.Rows.EditorRow = grdSurveyInfo.RowAdd("data7", GetLocalizedString("infoentrance.textpart15"), "")
+                Call grdSurveyInfo.RowAdd(oCoordinateRow, "data3", GetLocalizedString("infoentrance.textpart11"), GetLocalizedString("infoentrance.textpart3"))
+                Call grdSurveyInfo.RowAdd(oCoordinateRow, "data4", GetLocalizedString("infoentrance.textpart12"), GetLocalizedString("infoentrance.textpart3"))
+                Call grdSurveyInfo.RowAdd(oCoordinateRow, "data5", GetLocalizedString("infoentrance.textpart13"), GetLocalizedString("infoentrance.textpart3"))
             End If
-            Dim iRowIndex As Integer = grdSurveyInfo.Rows.Add(oData)
-            grdSurveyInfo.Rows(iRowIndex).Tag = oTrigpoint
+
+            Call grdSurveyInfo.RowAdd("data6", GetLocalizedString("infoentrance.textpart14"), oTrigpoint.Note)
+            'oData(7) = "..."
+
+            'Dim iRowIndex As Integer = grdSurveyInfo.Rows.Add(oData)
+            'grdSurveyInfo.Rows(iRowIndex).Tag = oTrigpoint
         Next
+        Call grdSurveyInfo.RefreshDataSource()
+        Call grdSurveyInfo.EndUpdate()
         Cursor = Cursors.Default
     End Sub
 
-    Private Sub cmdClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdClose.Click
-        Call Close()
-    End Sub
-
-    Private Sub mnuSurveyInfoCopy_Click(sender As System.Object, e As System.EventArgs) Handles mnuSurveyInfoCopy.Click
-        Call pSurveyInfoCopy(grdSurveyInfo.SelectedRows)
-    End Sub
-
-    Private Sub pSurveyInfoCopy(Rows As IEnumerable)
-        Try
-            Cursor = Cursors.WaitCursor
-            Dim sText As String = ""
-            For Each oRow As DataGridViewRow In Rows
-                For Each oCell As DataGridViewCell In oRow.Cells
-                    sText = sText & oCell.FormattedValue & vbTab
-                Next
-                sText = sText & vbCrLf
-            Next
-            Call My.Computer.Clipboard.SetText(sText)
-            Cursor = Cursors.Default
-        Catch ex As Exception
-        End Try
-    End Sub
-
-    Private Sub mnuSurveyInfoCopyAll_Click(sender As System.Object, e As System.EventArgs) Handles mnuSurveyInfoCopyAll.Click
-        Call pSurveyInfoCopy(grdSurveyInfo.Rows)
-    End Sub
-
-    Private Sub cboSurveyInfoCaveBranch_SelectedIndexChanged(sender As Object, e As EventArgs)
-        Call pRefreshInfo()
-    End Sub
-
-    Private Sub mnuSurveyInfoExport_Click(sender As Object, e As EventArgs) Handles mnuSurveyInfoExport.Click
-        Call modExport.GridExportTo(oSurvey, grdSurveyInfo, Text, "", Me)
-    End Sub
-
-    Private Sub mnuSurveyInfoCopyCell_Click(sender As Object, e As EventArgs) Handles mnuSurveyInfoCopyCell.Click
-        My.Computer.Clipboard.SetText(grdSurveyInfo.CurrentCell.FormattedValue)
-    End Sub
-
-    Private Sub grdSurveyInfo_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdSurveyInfo.CellContentClick
-        If e.ColumnIndex = 7 Then
-            Dim oSFD As SaveFileDialog = New SaveFileDialog
+    Private Sub grdSurveyInfo_buttonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs)
+        Dim oTrigpoint As cTrigPoint = grdSurveyInfo.GetBaseObject(grdSurveyInfo.FocusedRecord)
+        Using oSFD As SaveFileDialog = New SaveFileDialog
             With oSFD
                 .Title = GetLocalizedString("infoentrance.exportkmldialog")
                 .Filter = GetLocalizedString("main.filetypeKML") & " (*.KML)|*.KML"
                 .FilterIndex = 1
                 .OverwritePrompt = True
                 .CheckPathExists = True
+                .FileName = oTrigpoint.Name
                 If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                     Select Case .FilterIndex
                         Case 1
-                            Call modExport.GoogleKmlExportToPoint(oSurvey, grdSurveyInfo.CurrentRow.Tag, .FileName)
+                            Call modExport.GoogleKmlExportToPoint(oSurvey, oTrigpoint, .FileName)
                     End Select
                 End If
             End With
+        End Using
+    End Sub
+
+    Private Sub btnCopy_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCopy.ItemClick
+        Call grdSurveyInfo.CopyRow
+    End Sub
+
+    Private Sub btnCopyAll_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCopyAll.ItemClick
+        Call grdSurveyInfo.CopyRows
+    End Sub
+
+    Private Sub btnCopyValue_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCopyValue.ItemClick
+        Call grdSurveyInfo.CopyRowValue
+    End Sub
+
+    Private Sub btnCopyValues_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCopyValues.ItemClick
+        Call grdSurveyInfo.CopyRowValues
+    End Sub
+
+    Private Sub btnExport_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnExport.ItemClick
+        Call modExport.GridExportTo(oSurvey, grdSurveyInfo, Text, "", Me)
+    End Sub
+
+    Private Sub cmdClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdClose.Click
+        Call Close()
+    End Sub
+
+    Private Sub cboSurveyInfoCave_EditValueChanged(sender As Object, e As EventArgs) Handles cboSurveyInfoCave.EditValueChanged
+        Call pRefresh()
+    End Sub
+
+    Private Sub grdSurveyInfo_PopupMenuShowing(sender As Object, e As DevExpress.XtraVerticalGrid.Events.PopupMenuShowingEventArgs) Handles grdSurveyInfo.PopupMenuShowing
+        If grdSurveyInfo.CalcHitInfo(grdSurveyInfo.PointToClient(Cursor.Position)).HitInfoType = DevExpress.XtraVerticalGrid.HitInfoTypeEnum.ValueCell Then
+            e.Menu.Enabled = False
+            Call mnuContext.ShowPopup(Cursor.Position)
         End If
     End Sub
+
+    'Private Sub grdSurveyInfo_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdSurveyInfo.CellContentClick
+    '    If e.ColumnIndex = 7 Then
+    '        Dim oSFD As SaveFileDialog = New SaveFileDialog
+    '        With oSFD
+    '            .Title = GetLocalizedString("infoentrance.exportkmldialog")
+    '            .Filter = GetLocalizedString("main.filetypeKML") & " (*.KML)|*.KML"
+    '            .FilterIndex = 1
+    '            .OverwritePrompt = True
+    '            .CheckPathExists = True
+    '            If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+    '                Select Case .FilterIndex
+    '                    Case 1
+    '                        Call modExport.GoogleKmlExportToPoint(oSurvey, grdSurveyInfo.CurrentRow.Tag, .FileName)
+    '                End Select
+    '            End If
+    '        End With
+    '    End If
+    'End Sub
 End Class

@@ -6,9 +6,9 @@ Namespace cSurvey.Design
         Implements IEnumerable
 
         Private oSurvey As cSurvey
-        Private oItems As Dictionary(Of String, cOptions)
+        Private oItems As Dictionary(Of String, cIOptions)
 
-        Friend Sub Append(Item As cOptions)
+        Friend Sub Append(Item As cIOptions)
             If Not Item.Name.StartsWith("_") Then
                 If Not oItems.ContainsKey(Item.Name) Then
                     Call oItems.Add(Item.Name, Item)
@@ -16,7 +16,7 @@ Namespace cSurvey.Design
             End If
         End Sub
 
-        Friend Sub Remove(Item As cOptions)
+        Friend Sub Remove(Item As cIOptions)
             If Not Item.Name.StartsWith("_") Then
                 If oItems.ContainsKey(Item.Name) Then
                     Call oItems.Remove(Item.Name)
@@ -26,11 +26,10 @@ Namespace cSurvey.Design
 
         Friend Sub New(ByVal Survey As cSurvey)
             oSurvey = Survey
-            oItems = New Dictionary(Of String, cOptions)
+            oItems = New Dictionary(Of String, cIOptions)
 
             Call oItems.Add("_design.plan", New cOptionsDesign(oSurvey, "_design.plan"))
             Call oItems.Add("_design.profile", New cOptionsDesign(oSurvey, "_design.profile"))
-
             Call oItems.Add("_design.3d", New cOptions3D(oSurvey, "_design.3d"))
 
             Call oItems.Add("_viewer.plan", New cOptionsViewer(oSurvey, "_viewer.plan"))
@@ -41,11 +40,14 @@ Namespace cSurvey.Design
 
             Call oItems.Add("_export.plan", New cOptionsExport(oSurvey, "_export.plan"))
             Call oItems.Add("_export.profile", New cOptionsExport(oSurvey, "_export.profile"))
+
+            Call oItems.Add("_therion", New cOptionsTherion(oSurvey, "_therion"))
+            Call oItems.Add("_loch", New cOptionsTherion(oSurvey, "_loch"))
         End Sub
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal Options As XmlElement)
             oSurvey = Survey
-            oItems = New Dictionary(Of String, cOptions)
+            oItems = New Dictionary(Of String, cIOptions)
 
             Try
                 Call oItems.Add("_design.plan", New cOptionsDesign(oSurvey, Options.Item("_design.plan")))
@@ -96,9 +98,21 @@ Namespace cSurvey.Design
             Catch
                 Call oItems.Add("_export.profile", New cOptionsExport(oSurvey, "_export.profile"))
             End Try
+
+            Try
+                Call oItems.Add("_therion", New cOptionsTherion(oSurvey, Options.Item("_therion")))
+            Catch
+                Call oItems.Add("_therion", New cOptionsTherion(oSurvey, "_therion"))
+            End Try
+            Try
+                Call oItems.Add("_loch", New cOptionsTherion(oSurvey, Options.Item("_loch")))
+            Catch
+                Call oItems.Add("_loch", New cOptionsTherion(oSurvey, "_loch"))
+            End Try
+
         End Sub
 
-        Default ReadOnly Property Item(ByVal Name As String) As cOptions
+        Default Public ReadOnly Property Item(ByVal Name As String) As cIOptions
             Get
                 Return oItems(Name)
             End Get
@@ -116,6 +130,7 @@ Namespace cSurvey.Design
 
         Friend Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXMLOptions As XmlElement = Document.CreateElement("options")
+            'TO DO: check if is possible typing oitem (cioption is not valid)
             For Each oItem As cOptions In oItems.Values
                 Call oItem.SaveTo(File, Document, oXMLOptions)
             Next

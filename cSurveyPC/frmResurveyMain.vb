@@ -10,6 +10,9 @@ Imports DevExpress.XtraBars.Docking
 Imports DevExpress.XtraBars.Docking2010.Views
 Imports DevExpress.XtraBars.Docking2010
 Imports DevExpress.XtraEditors.Controls
+Imports cSurveyPC.cSurvey.Helper.Editor
+Imports System.ComponentModel
+Imports DevExpress.XtraBars
 
 Friend Class frmResurveyMain
     Private oOpenHandCursor As Cursor
@@ -34,6 +37,7 @@ Friend Class frmResurveyMain
 
     Private sPrevStation As String
 
+    Private oProcessedStations As HashSet(Of String)
     Private oShots As cResurvey.cShots
     Private oStations As cResurvey.cStations
 
@@ -60,7 +64,7 @@ Friend Class frmResurveyMain
     Private oProfileScaleRealPath As GraphicsPath
     Private oProfileDropScaleRealPath As GraphicsPath
 
-    Private oPaintThread As Threading.Thread
+    'Private oPaintThread As Threading.Thread
 
     Private oPlanTrigpointsPlaceholders As Dictionary(Of String, cResurvey.cTrigpointPlaceholder)
     Private oProfileTrigpointsPlaceholders As Dictionary(Of String, cResurvey.cTrigpointPlaceholder)
@@ -127,21 +131,21 @@ Friend Class frmResurveyMain
         End If
     End Function
 
-    Private Function pGetHashSet(HashSet As HashSet(Of String), Values As String) As HashSet(Of String)
-        Call HashSet.Clear()
-        Call Values.Split({";"c}).ToList.ForEach(Sub(oitem) HashSet.Add(oitem))
-        Return HashSet
+    Private Function pGetHashSet(SortedSet As SortedSet(Of String), Values As String) As SortedSet(Of String)
+        Call SortedSet.Clear()
+        Call Values.Split({";"c}).ToList.ForEach(Sub(oitem) SortedSet.Add(oitem))
+        Return SortedSet
     End Function
 
     Private Function pImageLoad(BasePath As String, Filename As String) As Image
         Dim oFl As FileInfo = New FileInfo(Filename)
         If oFl.Exists Then
-            Return modPaint.ImageExifRotate(New Bitmap(New Bitmap(Filename)))
+            Return modPaint.ImageExifRotate(modPaint.SafeBitmapFromFileUnlocked(Filename))
         Else
             Dim sFilename As String = Path.Combine(BasePath, Path.GetFileName(Filename))
             oFl = New FileInfo(sFilename)
             If oFl.Exists Then
-                Return modPaint.ImageExifRotate(New Bitmap(New Bitmap(sFilename)))
+                Return modPaint.ImageExifRotate(modPaint.SafeBitmapFromFileUnlocked(sFilename))
             Else
                 Return Nothing
             End If
@@ -191,7 +195,7 @@ Friend Class frmResurveyMain
         End Using
     End Sub
 
-    Private Sub pLoad(Filename As String)
+    Private Function pLoad(Filename As String) As Boolean
         If Filename = "" Then
             Using oOFD As OpenFileDialog = New OpenFileDialog
                 With oOFD
@@ -209,6 +213,8 @@ Friend Class frmResurveyMain
             Cursor = Cursors.WaitCursor
 
             sFilename = Filename
+
+            Call cSurvey.UIHelpers.cRecentsHelper.AppendTo(sFilename, "Resurvey.Recent", oRecents, btnLoad)
 
             Dim oFile As cResurvey.cFile = New cResurvey.cFile(sFilename)
 
@@ -301,10 +307,11 @@ Friend Class frmResurveyMain
             If modXML.ChildElementExist(oXMLRoot, "shots") Then
                 For Each oXMLShot As XmlElement In oXMLRoot.Item("shots").ChildNodes
                     Dim oShot As cShot = New cShot(oXMLShot.GetAttribute("from"), oXMLShot.GetAttribute("to"))
-                    If modXML.HasAttribute(oXMLShot, "l") Then oShot.UserLeft = modXML.GetAttributeValue(oXMLShot, "l")
-                    If modXML.HasAttribute(oXMLShot, "r") Then oShot.UserRight = modXML.GetAttributeValue(oXMLShot, "r")
-                    If modXML.HasAttribute(oXMLShot, "u") Then oShot.UserUp = modXML.GetAttributeValue(oXMLShot, "u")
-                    If modXML.HasAttribute(oXMLShot, "d") Then oShot.UserDown = modXML.GetAttributeValue(oXMLShot, "d")
+                    If modXML.HasAttribute(oXMLShot, "l") Then oShot.UserLeft = modNumbers.StringToDecimal(modXML.GetAttributeValue(oXMLShot, "l"))
+                    If modXML.HasAttribute(oXMLShot, "r") Then oShot.UserRight = modNumbers.StringToDecimal(modXML.GetAttributeValue(oXMLShot, "r"))
+                    If modXML.HasAttribute(oXMLShot, "u") Then oShot.UserUp = modNumbers.StringToDecimal(modXML.GetAttributeValue(oXMLShot, "u"))
+                    If modXML.HasAttribute(oXMLShot, "d") Then oShot.UserDown = modNumbers.StringToDecimal(modXML.GetAttributeValue(oXMLShot, "d"))
+                    Call oShots.Add(oShot)
                 Next
             End If
 
@@ -383,8 +390,12 @@ Friend Class frmResurveyMain
             Call gridviewStations_FocusedRowChanged(Nothing, Nothing)
             Call pChangeCurrentProjection()
             Call pPerformPaint()
+
+            Return True
+        Else
+            Return False
         End If
-    End Sub
+    End Function
 
     Private Sub btnLoad_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnLoad.ItemClick
         Call pLoad("")
@@ -698,10 +709,9 @@ Friend Class frmResurveyMain
                         End If
                 End Select
             End If
-            If iHighlightRowHandle <> 0 Then Call gridviewStations.MakeRowVisible(iHighlightRowHandle)
-
             iEventDisabled -= 1
             Call gridviewStations.EndUpdate()
+            If iHighlightRowHandle <> 0 Then Call gridviewStations.MakeRowVisible(iHighlightRowHandle)
         End If
     End Sub
 
@@ -856,8 +866,9 @@ Friend Class frmResurveyMain
                         sType = "NE"
                     End If
 
+                    Dim oStation As cResurvey.cStation
                     If oStations.Contains(sStation) Then
-                        Dim oStation As cResurvey.cStation = oStations(sStation)
+                        oStation = oStations(sStation)
                         If iPlanOrProfile = 0 Then
                             oStation.PlanPoint = oLastMousePoint
                         Else
@@ -900,7 +911,7 @@ Friend Class frmResurveyMain
                             End If
                         End If
 
-                        Dim oStation As cResurvey.cStation = New cResurvey.cStation
+                        oStation = New cResurvey.cStation
                         oStation.Name = sStation
                         If iPlanOrProfile = 0 Then
                             oStation.PlanPoint = oLastMousePoint
@@ -919,12 +930,11 @@ Friend Class frmResurveyMain
                         End If
 
                         Call oStations.Add(oStation)
-
-                        Call grdStations.RefreshDataSource()
                     End If
 
                     Call gridviewStations.BeginUpdate()
-                    Dim iFocusedRowHandle As Integer = gridviewStations.FindRow(oStations)
+                    Call grdStations.RefreshDataSource()
+                    Dim iFocusedRowHandle As Integer = gridviewStations.FindRow(oStation)
                     gridviewStations.FocusedRowHandle = iFocusedRowHandle
                     Call gridviewStations.ClearSelection()
                     Call gridviewStations.SelectRow(iFocusedRowHandle)
@@ -942,7 +952,7 @@ Friend Class frmResurveyMain
     End Sub
 
     Private Sub mnuPreviewRemoveAll_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If MsgBox(GetLocalizedString("resurvey.warning1"), MsgBoxStyle.YesNo Or MsgBoxStyle.Question, GetLocalizedString("resurvey.warningtitle")) = MsgBoxResult.Yes Then
+        If cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("resurvey.warning1"), MsgBoxStyle.YesNo Or MsgBoxStyle.Question, GetLocalizedString("resurvey.warningtitle")) = MsgBoxResult.Yes Then
             If pGetCurrentProjection() = 0 Then
                 Call pRemoveTrigPoints(0)
             Else
@@ -950,32 +960,6 @@ Friend Class frmResurveyMain
             End If
         End If
     End Sub
-
-    'Private Sub pHideTrigPoints(PlanOrProfile As Integer)
-    '    If PlanOrProfile = 0 Then
-    '        For Each oTPH As cResurvey.cTrigpointPlaceholder In oPlanTrigpointsPlaceholders.Values
-    '            oTPH.Visible = False
-    '        Next
-    '    Else
-    '        For Each oTPH As cResurvey.cTrigpointPlaceholder In oProfileTrigpointsPlaceholders.Values
-    '            oTPH.Visible = False
-    '        Next
-    '    End If
-    '    Call pInvalidateCurrentView()
-    'End Sub
-
-    'Private Sub pShowHiddenTrigPoints(PlanOrProfile As Integer)
-    '    If PlanOrProfile = 0 Then
-    '        For Each oTPH As cResurvey.cTrigpointPlaceholder In oPlanTrigpointsPlaceholders.Values
-    '            oTPH.Visible = True
-    '        Next
-    '    Else
-    '        For Each oTPH As cResurvey.cTrigpointPlaceholder In oProfileTrigpointsPlaceholders.Values
-    '            oTPH.Visible = True
-    '        Next
-    '    End If
-    '    Call pInvalidateCurrentView()
-    'End Sub
 
     Private Sub pRemoveTrigPoints(PlanOrProfile As Integer)
         If PlanOrProfile = 0 Then
@@ -1004,7 +988,7 @@ Friend Class frmResurveyMain
         Call pPlaceHolderDelete()
     End Sub
 
-    Private Sub pPlaceHolderDelete()
+    Private Sub pPlaceholderDelete()
         Select Case pGetCurrentProjection()
             Case 0
                 pGetSelectedStations.ForEach(Sub(oItem)
@@ -1019,6 +1003,11 @@ Friend Class frmResurveyMain
                                                  ElseIf oStation.Type = "NB" OrElse oStation.Type = "NE" Then
                                                      Call oStations.Remove(oStation)
                                                  End If
+                                                 For Each oPlanPlaceholder In oPlanTrigpointsPlaceholders.Values
+                                                     If oPlanPlaceholder.Cache.PlanShots.ContainsKey(oItem.Name) Then
+                                                         oPlanPlaceholder.Cache.PlanShots.Remove(oItem.Name)
+                                                     End If
+                                                 Next
                                              End Sub)
             Case 1
                 pGetSelectedStations.ForEach(Sub(oItem)
@@ -1033,6 +1022,11 @@ Friend Class frmResurveyMain
                                                  ElseIf oStation.Type = "NB" OrElse oStation.Type = "NE" Then
                                                      Call oStations.Remove(oStation)
                                                  End If
+                                                 For Each oprofilePlaceholder In oProfileTrigpointsPlaceholders.Values
+                                                     If oprofilePlaceholder.Cache.ProfileShots.ContainsKey(oItem.Name) Then
+                                                         oprofilePlaceholder.Cache.ProfileShots.Remove(oItem.Name)
+                                                     End If
+                                                 Next
                                              End Sub)
         End Select
         Call grdStations.RefreshDataSource()
@@ -1070,6 +1064,7 @@ Friend Class frmResurveyMain
             Cursor = Cursors.WaitCursor
 
             sFilename = Filename
+            Call cSurvey.UIHelpers.cRecentsHelper.AppendTo(sFilename, "Resurvey.Recent", oRecents, btnLoad)
 
             Text = "cResurvey - " & sFilename
             Dim oFile As cResurvey.cFile = New cResurvey.cFile(cFile.FileFormatEnum.Auto, sFilename)
@@ -1105,8 +1100,8 @@ Friend Class frmResurveyMain
                     Call oXMLRoot.SetAttribute("profileimage", "")
                 Else
                     sProfileImage = Path.Combine(Path.GetDirectoryName(sFilename), Path.GetFileNameWithoutExtension(sFilename) & "_profile.png")
-                    Call picProfile.Image.Save(sProfileImage, Imaging.ImageFormat.Png)
                     If My.Computer.FileSystem.FileExists(sProfileImage) Then My.Computer.FileSystem.DeleteFile(sProfileImage)
+                    Call picProfile.Image.Save(sProfileImage, Imaging.ImageFormat.Png)
                     Call oXMLRoot.SetAttribute("profileimage", sProfileImage)
                 End If
             Else
@@ -1157,6 +1152,28 @@ Friend Class frmResurveyMain
         End If
     End Sub
 
+    Private oRecents As List(Of String) = New List(Of String)
+    Private Sub mnuRecents_BeforePopup(sender As Object, e As CancelEventArgs) Handles mnuRecents.BeforePopup
+        Dim iRecentIndex As Integer = 1
+        Call mnuRecents.ClearItems
+        If oRecents.Count > 0 Then
+            For Each sRecent As String In oRecents
+                Dim oItem As BarButtonItem = New BarButtonItem(Ribbon.Manager, iRecentIndex & " " & sRecent)
+                oItem.Tag = sRecent
+                AddHandler oItem.ItemClick, AddressOf oRecentItem_ItemClick
+                Call mnuRecents.AddItem(oItem)
+
+                iRecentIndex += 1
+            Next
+        End If
+    End Sub
+    Private Sub oRecentItem_ItemClick(Sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs)
+        Dim sFilename As String = e.Item.Tag
+        Call cSurvey.UIHelpers.cRecentsHelper.AppendTo(sFilename, "Resurvey.Recent", oRecents, btnLoad)
+        If Not pLoad(sFilename) Then
+            Call cSurvey.UIHelpers.cRecentsHelper.RemoveFrom(sFilename, "Resurvey.Recent", oRecents, btnLoad)
+        End If
+    End Sub
     Private Function pGetPointByType([Type] As String) As String
         For Each oStation As cResurvey.cStation In oStations
             If oStation.Type = [Type] Then
@@ -1383,68 +1400,113 @@ Friend Class frmResurveyMain
                     Dim oPlanFromPoint As PointF = pGetPoint(Station, 0)
                     Dim oPlanToPoint As Point = pGetPoint(NextStation, 0)
                     If Not oPlanFromPoint.IsEmpty And Not oPlanToPoint.IsEmpty Then
-                        Dim oPlanShotPath As GraphicsPath = New GraphicsPath
-                        Call oPlanShotPath.AddLine(oPlanFromPoint, oPlanToPoint)
-                        Dim oItem As cCacheItem = oPlanTrigpointsPlaceholders(Station).Cache.AddPlanShot(NextStation, oPlanShotPath)
+                        Using oPlanShotPath As GraphicsPath = New GraphicsPath
+                            Call oPlanShotPath.AddLine(oPlanFromPoint, oPlanToPoint)
+                            Dim oItem As cCacheItem = oPlanTrigpointsPlaceholders(Station).Cache.AddPlanShot(NextStation, oPlanShotPath)
 
-                        If oOptions.LRUDStation <> cOptions.LRUDStationEnum.NotManaged Then
-                            Dim sKey As String = cShots.GetKey(Station, NextStation)
-                            If oShots.Contains(sKey) Then
-                                Dim oShot As cShot = oShots(sKey)
-                                If Not oShot Is Nothing Then
-                                    If oOptions.LRUDStation = cOptions.LRUDStationEnum.FromStation Then
-                                        Using oPath As GraphicsPath = New GraphicsPath
-                                            Using oAreaPath As GraphicsPath = New GraphicsPath
-                                                If oShot.GetLeft > 0 Then
+                            If oOptions.LRUDStation <> cOptions.LRUDStationEnum.NotManaged Then
+                                Dim sKey As String = cShots.GetKey(Station, NextStation)
+                                If oShots.Contains(sKey) Then
+                                    Dim oShot As cShot = oShots(sKey)
+                                    If Not oShot Is Nothing Then
+                                        If oOptions.LRUDStation = cOptions.LRUDStationEnum.FromStation Then
+                                            Using oPath As GraphicsPath = New GraphicsPath
+                                                Using oAreaPath As GraphicsPath = New GraphicsPath
+                                                    If oShot.GetLeft > 0 Then
+                                                        Call oPath.StartFigure()
+                                                        Call oPath.AddLine(New Point(-iLRUDCapSize, -oShot.GetLeft / Scale.PlanScale), New Point(iLRUDCapSize, -oShot.GetLeft / Scale.PlanScale))
+                                                    End If
                                                     Call oPath.StartFigure()
-                                                    Call oPath.AddLine(New Point(-iLRUDCapSize, -oShot.GetLeft / Scale.PlanScale), New Point(iLRUDCapSize, -oShot.GetLeft / Scale.PlanScale))
-                                                End If
-                                                Call oPath.StartFigure()
-                                                Call oPath.AddLine(New Point(0, -oShot.GetLeft / Scale.PlanScale), New Point(0, oShot.GetRight / Scale.PlanScale))
-                                                If oShot.GetRight > 0 Then
-                                                    Call oPath.StartFigure()
-                                                    Call oPath.AddLine(New Point(-iLRUDCapSize, oShot.GetRight / Scale.PlanScale), New Point(iLRUDCapSize, oShot.GetRight / Scale.PlanScale))
-                                                End If
-                                                Using oMatrix As Matrix = New Matrix
-                                                    Call oMatrix.Translate(oPlanFromPoint.X, oPlanFromPoint.Y, MatrixOrder.Append)
-                                                    Call oMatrix.RotateAt(oShot.Bearing - 90, oPlanFromPoint, MatrixOrder.Append)
-                                                    Call oPath.Transform(oMatrix)
-                                                    Call oAreaPath.Transform(oMatrix)
+                                                    Call oPath.AddLine(New Point(0, -oShot.GetLeft / Scale.PlanScale), New Point(0, oShot.GetRight / Scale.PlanScale))
+                                                    If oShot.GetRight > 0 Then
+                                                        Call oPath.StartFigure()
+                                                        Call oPath.AddLine(New Point(-iLRUDCapSize, oShot.GetRight / Scale.PlanScale), New Point(iLRUDCapSize, oShot.GetRight / Scale.PlanScale))
+                                                    End If
+                                                    Using oMatrix As Matrix = New Matrix
+                                                        Call oMatrix.Translate(oPlanFromPoint.X, oPlanFromPoint.Y, MatrixOrder.Append)
+                                                        Call oMatrix.RotateAt(oShot.Bearing - 90, oPlanFromPoint, MatrixOrder.Append)
+                                                        Call oPath.Transform(oMatrix)
+                                                        Call oAreaPath.Transform(oMatrix)
+                                                    End Using
+                                                    If oShot.GetLeft > 0 AndAlso oShot.GetRight > 0 Then
+                                                        Call oAreaPath.AddLines({oPath.PathPoints(2), oPath.PathPoints(3), oPlanToPoint, oPath.PathPoints(2)})
+                                                    ElseIf oShot.GetLeft > 0 Then
+                                                        Call oAreaPath.AddLines({oPath.PathPoints(2), oPath.PathPoints(3), oPlanToPoint, oPath.PathPoints(2)})
+                                                    ElseIf oShot.GetRight > 0 Then
+                                                        Call oAreaPath.AddLines({oPath.PathPoints(0), oPath.PathPoints(1), oPlanToPoint, oPath.PathPoints(0)})
+                                                    End If
+                                                    Call oItem.SetPath(Nothing, oPath, oAreaPath)
                                                 End Using
-                                                If oShot.GetLeft > 0 AndAlso oShot.GetRight > 0 Then
-                                                    Call oAreaPath.AddLines({oPath.PathPoints(2), oPath.PathPoints(3), oPlanToPoint, oPath.PathPoints(2)})
-                                                ElseIf oShot.GetLeft > 0 Then
-                                                    Call oAreaPath.AddLines({oPath.PathPoints(2), oPath.PathPoints(3), oPlanToPoint, oPath.PathPoints(2)})
-                                                ElseIf oShot.GetRight > 0 Then
-                                                    Call oAreaPath.AddLines({oPath.PathPoints(0), oPath.PathPoints(1), oPlanToPoint, oPath.PathPoints(0)})
-                                                End If
-                                                Call oItem.SetPath(Nothing, oPath, oAreaPath)
                                             End Using
-                                        End Using
-                                    Else
+                                        Else
+                                            Using oPath As GraphicsPath = New GraphicsPath
+                                                Using oAreaPath As GraphicsPath = New GraphicsPath
+                                                    If oShot.GetLeft > 0 Then
+                                                        Call oPath.StartFigure()
+                                                        Call oPath.AddLine(New Point(-iLRUDCapSize, -oShot.GetLeft / Scale.PlanScale), New Point(iLRUDCapSize, -oShot.GetLeft / Scale.PlanScale))
+                                                    End If
+                                                    Call oPath.StartFigure()
+                                                    Call oPath.AddLine(New Point(0, -oShot.GetLeft / Scale.PlanScale), New Point(0, oShot.GetRight / Scale.PlanScale))
+                                                    If oShot.GetRight > 0 Then
+                                                        Call oPath.StartFigure()
+                                                        Call oPath.AddLine(New Point(-iLRUDCapSize, oShot.GetRight / Scale.PlanScale), New Point(iLRUDCapSize, oShot.GetRight / Scale.PlanScale))
+                                                    End If
+                                                    Using oMatrix As Matrix = New Matrix
+                                                        Call oMatrix.Translate(oPlanToPoint.X, oPlanToPoint.Y, MatrixOrder.Append)
+                                                        Call oMatrix.RotateAt(oShot.Bearing - 90, oPlanToPoint, MatrixOrder.Append)
+                                                        Call oPath.Transform(oMatrix)
+                                                    End Using
+                                                    If oShot.GetLeft > 0 AndAlso oShot.GetRight > 0 Then
+                                                        Call oAreaPath.AddLines({oPath.PathPoints(2), oPath.PathPoints(3), oPlanFromPoint, oPath.PathPoints(2)})
+                                                    ElseIf oShot.GetLeft > 0 Then
+                                                        Call oAreaPath.AddLines({oPath.PathPoints(2), oPath.PathPoints(3), oPlanFromPoint, oPath.PathPoints(2)})
+                                                    ElseIf oShot.GetRight > 0 Then
+                                                        Call oAreaPath.AddLines({oPath.PathPoints(0), oPath.PathPoints(1), oPlanFromPoint, oPath.PathPoints(0)})
+                                                    End If
+                                                    Call oItem.SetPath(Nothing, oPath, oAreaPath)
+                                                End Using
+                                            End Using
+                                        End If
+                                    End If
+                                End If
+                            End If
+                        End Using
+                    End If
+                Case 1
+                    Dim oProfileFromPoint As PointF = pGetPoint(Station, 1)
+                    Dim oProfileToPoint As Point = pGetPoint(NextStation, 1)
+                    If Not oProfileFromPoint.IsEmpty And Not oProfileToPoint.IsEmpty Then
+                        Using oProfileShotPath As GraphicsPath = New GraphicsPath
+                            Call oProfileShotPath.AddLine(oProfileFromPoint, oProfileToPoint)
+                            Dim oItem As cCacheItem = oProfileTrigpointsPlaceholders(Station).Cache.AddProfileShot(NextStation, oProfileShotPath)
+
+                            If oOptions.LRUDStation <> cOptions.LRUDStationEnum.NotManaged Then
+                                Dim sKey As String = cShots.GetKey(Station, NextStation)
+                                If oShots.Contains(sKey) Then
+                                    Dim oShot As cShot = oShots(sKey)
+                                    If Not oShot Is Nothing Then
                                         Using oPath As GraphicsPath = New GraphicsPath
                                             Using oAreaPath As GraphicsPath = New GraphicsPath
-                                                If oShot.GetLeft > 0 Then
+                                                Dim oProfileUpPoint As PointF
+                                                Dim oProfileDownPoint As PointF
+                                                If oOptions.LRUDStation = cOptions.LRUDStationEnum.FromStation Then
+                                                    oProfileUpPoint = New PointF(oProfileFromPoint.X, oProfileFromPoint.Y - oShot.GetUp / Scale.ProfileScale)
+                                                    oProfileDownPoint = New PointF(oProfileFromPoint.X, oProfileFromPoint.Y + oShot.GetDown / Scale.ProfileScale)
+                                                    Call oAreaPath.AddLines({oProfileUpPoint, oProfileDownPoint, oProfileToPoint, oProfileUpPoint})
+                                                Else
+                                                    oProfileUpPoint = New PointF(oProfileToPoint.X, oProfileToPoint.Y - oShot.GetUp / Scale.ProfileScale)
+                                                    oProfileDownPoint = New PointF(oProfileToPoint.X, oProfileToPoint.Y + oShot.GetDown / Scale.ProfileScale)
+                                                    Call oAreaPath.AddLines({oProfileUpPoint, oProfileDownPoint, oProfileFromPoint, oProfileUpPoint})
+                                                End If
+                                                If oShot.GetUp > 0 Then
                                                     Call oPath.StartFigure()
-                                                    Call oPath.AddLine(New Point(-iLRUDCapSize, -oShot.GetLeft / Scale.PlanScale), New Point(iLRUDCapSize, -oShot.GetLeft / Scale.PlanScale))
+                                                    Call oPath.AddLine(New Point(oProfileUpPoint.X - iLRUDCapSize, oProfileUpPoint.Y), New Point(oProfileUpPoint.X + iLRUDCapSize, oProfileUpPoint.Y))
                                                 End If
                                                 Call oPath.StartFigure()
-                                                Call oPath.AddLine(New Point(0, -oShot.GetLeft / Scale.PlanScale), New Point(0, oShot.GetRight / Scale.PlanScale))
-                                                If oShot.GetRight > 0 Then
+                                                Call oPath.AddLine(oProfileUpPoint, oProfileDownPoint)
+                                                If oShot.GetDown > 0 Then
                                                     Call oPath.StartFigure()
-                                                    Call oPath.AddLine(New Point(-iLRUDCapSize, oShot.GetRight / Scale.PlanScale), New Point(iLRUDCapSize, oShot.GetRight / Scale.PlanScale))
-                                                End If
-                                                Using oMatrix As Matrix = New Matrix
-                                                    Call oMatrix.Translate(oPlanToPoint.X, oPlanToPoint.Y, MatrixOrder.Append)
-                                                    Call oMatrix.RotateAt(oShot.Bearing - 90, oPlanToPoint, MatrixOrder.Append)
-                                                    Call oPath.Transform(oMatrix)
-                                                End Using
-                                                If oShot.GetLeft > 0 AndAlso oShot.GetRight > 0 Then
-                                                    Call oAreaPath.AddLines({oPath.PathPoints(2), oPath.PathPoints(3), oPlanFromPoint, oPath.PathPoints(2)})
-                                                ElseIf oShot.GetLeft > 0 Then
-                                                    Call oAreaPath.AddLines({oPath.PathPoints(2), oPath.PathPoints(3), oPlanFromPoint, oPath.PathPoints(2)})
-                                                ElseIf oShot.GetRight > 0 Then
-                                                    Call oAreaPath.AddLines({oPath.PathPoints(0), oPath.PathPoints(1), oPlanFromPoint, oPath.PathPoints(0)})
+                                                    Call oPath.AddLine(New Point(oProfileDownPoint.X - iLRUDCapSize, oProfileDownPoint.Y), New Point(oProfileDownPoint.X + iLRUDCapSize, oProfileDownPoint.Y))
                                                 End If
                                                 Call oItem.SetPath(Nothing, oPath, oAreaPath)
                                             End Using
@@ -1452,50 +1514,7 @@ Friend Class frmResurveyMain
                                     End If
                                 End If
                             End If
-                        End If
-                    End If
-                Case 1
-                    Dim oProfileFromPoint As PointF = pGetPoint(Station, 1)
-                    Dim oProfileToPoint As Point = pGetPoint(NextStation, 1)
-                    If Not oProfileFromPoint.IsEmpty And Not oProfileToPoint.IsEmpty Then
-                        Dim oProfileShotPath As GraphicsPath = New GraphicsPath
-                        Call oProfileShotPath.AddLine(oProfileFromPoint, oProfileToPoint)
-                        Dim oItem As cCacheItem = oProfileTrigpointsPlaceholders(Station).Cache.AddProfileShot(NextStation, oProfileShotPath)
-
-                        If oOptions.LRUDStation <> cOptions.LRUDStationEnum.NotManaged Then
-                            Dim sKey As String = cShots.GetKey(Station, NextStation)
-                            If oShots.Contains(sKey) Then
-                                Dim oShot As cShot = oShots(sKey)
-                                If Not oShot Is Nothing Then
-                                    Using oPath As GraphicsPath = New GraphicsPath
-                                        Using oAreaPath As GraphicsPath = New GraphicsPath
-                                            Dim oProfileUpPoint As PointF
-                                            Dim oProfileDownPoint As PointF
-                                            If oOptions.LRUDStation = cOptions.LRUDStationEnum.FromStation Then
-                                                oProfileUpPoint = New PointF(oProfileFromPoint.X, oProfileFromPoint.Y - oShot.GetUp / Scale.ProfileScale)
-                                                oProfileDownPoint = New PointF(oProfileFromPoint.X, oProfileFromPoint.Y + oShot.GetDown / Scale.ProfileScale)
-                                                Call oAreaPath.AddLines({oProfileUpPoint, oProfileDownPoint, oProfileToPoint, oProfileUpPoint})
-                                            Else
-                                                oProfileUpPoint = New PointF(oProfileToPoint.X, oProfileToPoint.Y - oShot.GetUp / Scale.ProfileScale)
-                                                oProfileDownPoint = New PointF(oProfileToPoint.X, oProfileToPoint.Y + oShot.GetDown / Scale.ProfileScale)
-                                                Call oAreaPath.AddLines({oProfileUpPoint, oProfileDownPoint, oProfileFromPoint, oProfileUpPoint})
-                                            End If
-                                            If oShot.GetUp > 0 Then
-                                                Call oPath.StartFigure()
-                                                Call oPath.AddLine(New Point(oProfileUpPoint.X - iLRUDCapSize, oProfileUpPoint.Y), New Point(oProfileUpPoint.X + iLRUDCapSize, oProfileUpPoint.Y))
-                                            End If
-                                            Call oPath.StartFigure()
-                                            Call oPath.AddLine(oProfileUpPoint, oProfileDownPoint)
-                                            If oShot.GetDown > 0 Then
-                                                Call oPath.StartFigure()
-                                                Call oPath.AddLine(New Point(oProfileDownPoint.X - iLRUDCapSize, oProfileDownPoint.Y), New Point(oProfileDownPoint.X + iLRUDCapSize, oProfileDownPoint.Y))
-                                            End If
-                                            Call oItem.SetPath(Nothing, oPath, oAreaPath)
-                                        End Using
-                                    End Using
-                                End If
-                            End If
-                        End If
+                        End Using
                     End If
             End Select
             Call Processed.Add(Station & vbTab & NextStation)
@@ -1646,62 +1665,126 @@ Friend Class frmResurveyMain
         Return New cScale(sPlanScale, sPlanScaleDistance, bPlanError, sProfileScale, sProfileScaleDistance, bProfileError)
     End Function
 
-    Private Sub pPerformCalculate(Optional Paint As Boolean = True)
-        Call pPopupHide()
-
-        Call pSelectLine(Nothing)
-
-        Call pReorderConnections()
-
-        If pContainsFirstNorth() AndAlso pContainsSecondNorth() Then
-            oOptions.NordCorrection = modPaint.GetBearing(pGetPoint(pGetFirstNorthPoint, 0), pGetPoint(pGetSecondNorthPoint, 0))
-        ElseIf pContainsFirstNorth() OrElse pContainsSecondNorth() Then
-            Call pPopupShow("warning", GetLocalizedString("resurvey.warning9"))
-        End If
-
-        Dim oBackupShots As cShots = New cShots(oShots)
-        Call oShots.Clear()
-
-        Dim oScale As cResurvey.cScale = pGetScale()
-        If oScale.PlanError Then
-            Call pPopupShow("warning", GetLocalizedString("resurvey.warning2"))
-        End If
-        If oScale.ProfileError Then
-            Call pPopupShow("warning", GetLocalizedString("resurvey.warning2a"))
-        End If
-
-        Dim sStation As String = "" & pGetFirstStation()
-        If sStation = "" Then
-            Call pPopupShow("error", GetLocalizedString("resurvey.warning3"))
-        Else
-            Try
-                Call pCalculateFromPlan(sStation, oScale.PlanScale)
-                Call pCalculateCleanShots()
-                If oOptions.CalculateMode = cResurvey.cOptions.CalculateModeEnum.Full Then
-                    Call pCalculateFromProfile(sStation, oScale.ProfileScale)
-                    Call pCalculateCleanShots()
-                End If
-            Catch ex As Exception
-                Call pPopupShow("error", String.Format(GetLocalizedString("resurvey.warning4"), ex.Message))
-            End Try
-
-            If oOptions.CalculateMode = cOptions.CalculateModeEnum.Full AndAlso oOptions.UseDropForInclination Then
-                For Each oShot As cResurvey.cShot In oShots
-                    If oShot.From <> oShot.To Then
-                        'trigo for real distance
-                        oShot.Distance = Math.Sqrt(oShot.PlanimetricDistance ^ 2 + oShot.Drop ^ 2)
-                    End If
-                Next
-            End If
-        End If
-
-        'restore backup data
-        For Each oBackupShot As cShot In oBackupShots
-            If oShots.Contains(oBackupShot.Key) Then
-                Call oShots(oBackupShot.Key).Restore(oBackupShot)
+    Private Sub pValidateShots()
+        For Each oShot As cShot In oShots
+            Call oShot.SetIsValid(True)
+            If Not oStations(oShot.From).IsValid OrElse Not oStations(oShot.To).IsValid Then
+                Call oShot.SetIsValid(False)
             End If
         Next
+    End Sub
 
+    Private Sub pValidateStations()
+        For Each oStation As cStation In oStations
+            oStation.SetIsValid(True)
+            If oStation.Type = "DSB" OrElse oStation.Type = "DSE" Then
+                If oOptions.UseDropForInclination Then
+                    If (oStation.ProfilePoint.IsEmpty) Then
+                        oStation.SetIsValid(False)
+                    End If
+                Else
+                    oStation.SetIsValid(False)
+                End If
+            ElseIf oStation.Type = "SB" OrElse oStation.Type = "SE" Then
+                If oOptions.CalculateMode = cOptions.CalculateModeEnum.Full Then
+                    If oOptions.UseDropForInclination Then
+                        If (oStation.PlanPoint.IsEmpty) Then
+                            oStation.SetIsValid(False)
+                        End If
+                    Else
+                        If (oStation.ProfilePoint.IsEmpty) Then
+                            oStation.SetIsValid(False)
+                        End If
+                    End If
+                Else
+                    If (oStation.PlanPoint.IsEmpty) Then
+                        oStation.SetIsValid(False)
+                    End If
+                End If
+            ElseIf oStation.Type = "NB" OrElse oStation.Type = "NE" Then
+                If (oStation.PlanPoint.IsEmpty) Then
+                    oStation.SetIsValid(False)
+                End If
+            Else
+                If oOptions.CalculateMode = cOptions.CalculateModeEnum.Full Then
+                    If oStation.PlanPoint.IsEmpty OrElse oStation.ProfilePoint.IsEmpty Then
+                        oStation.SetIsValid(False)
+                    End If
+                Else
+                    If oStation.PlanPoint.IsEmpty Then
+                        oStation.SetIsValid(False)
+                    End If
+                End If
+            End If
+        Next
+    End Sub
+
+    Private Sub pPerformCalculate(Optional Paint As Boolean = True)
+        If oStations.Count > 0 Then
+            Call pPopupHide()
+
+            Call pSelectLine(Nothing)
+
+            Call pValidateStations
+
+            Call pReorderConnections()
+
+            If pContainsFirstNorth() AndAlso pContainsSecondNorth() Then
+                oOptions.NordCorrection = modPaint.GetBearing(pGetPoint(pGetFirstNorthPoint, 0), pGetPoint(pGetSecondNorthPoint, 0))
+            ElseIf pContainsFirstNorth() OrElse pContainsSecondNorth() Then
+                Call pPopupShow("warning", GetLocalizedString("resurvey.warning9"))
+            End If
+
+            Dim oBackupShots As cShots = New cShots(oShots)
+            Call oShots.Clear()
+
+            Dim oScale As cResurvey.cScale = pGetScale()
+            If oScale.PlanError Then
+                Call pPopupShow("warning", GetLocalizedString("resurvey.warning2"))
+            End If
+            If oScale.ProfileError Then
+                Call pPopupShow("warning", GetLocalizedString("resurvey.warning2a"))
+            End If
+
+            Dim sStation As String = "" & pGetFirstStation()
+            If sStation = "" Then
+                Call pPopupShow("error", GetLocalizedString("resurvey.warning3"))
+            Else
+                Try
+                    Call oProcessedStations.Clear()
+                    Call pCalculateFromPlan(sStation, oScale.PlanScale)
+                    Call pCalculateCleanShots()
+                    If oOptions.CalculateMode = cResurvey.cOptions.CalculateModeEnum.Full Then
+                        Call oProcessedStations.Clear()
+                        Call pCalculateFromProfile(sStation, oScale.ProfileScale)
+                        Call pCalculateCleanShots()
+                    End If
+                    Call oProcessedStations.Clear()
+                Catch ex As Exception
+                    Call pPopupShow("error", String.Format(GetLocalizedString("resurvey.warning4"), ex.Message))
+                End Try
+
+                If oOptions.CalculateMode = cOptions.CalculateModeEnum.Full AndAlso oOptions.UseDropForInclination Then
+                    For Each oShot As cResurvey.cShot In oShots
+                        If oShot.From <> oShot.To Then
+                            'trigo for real distance
+                            oShot.Distance = Math.Sqrt(oShot.PlanimetricDistance ^ 2 + oShot.Drop ^ 2)
+                            Debug.Print(oShot.Inclination & " -> " & modPaint.RadiansToDegree(Math.Asin(oShot.Drop / oShot.Distance)))
+                        End If
+                    Next
+                End If
+            End If
+
+            'restore backup data
+            For Each oBackupShot As cShot In oBackupShots
+                If oShots.Contains(oBackupShot.Key) Then
+                    Call oShots(oBackupShot.Key).Restore(oBackupShot)
+                End If
+            Next
+
+            Call pValidateShots()
+
+        End If
         If Paint Then Call pDelayedPerformPaint()
     End Sub
 
@@ -1710,7 +1793,6 @@ Friend Class frmResurveyMain
         For Each oShot As cResurvey.cShot In oShots
             Dim sRealFrom As String = pGetRealStation(oShot.From)
             Dim sRealTo As String = pGetRealStation(oShot.To)
-
             If sRealFrom = sRealTo Then
                 Call oShotsToDelete.Add(oShot)
             Else
@@ -1750,12 +1832,18 @@ Friend Class frmResurveyMain
                     If oShot.Drop < 0 Then
                         oShot.Drop = Math.Abs(oShot.Drop)
                         oShot.Distance = Math.Sqrt(oShot.Drop ^ 2 + oShot.PlanimetricDistance ^ 2)
-                        oShot.Inclination = -modPaint.RadiansToDegree(Math.Acos(oShot.PlanimetricDistance / oShot.Distance)) ' ß =  Arcsen (b/a)
+                        Try
+                            oShot.Inclination = -modPaint.RadiansToDegree(Math.Acos(oShot.PlanimetricDistance / oShot.Distance))
+                        Catch
+                        End Try
                     ElseIf oShot.Drop = 0 Then
                         oShot.Distance = oShot.PlanimetricDistance
                     Else
                         oShot.Distance = Math.Sqrt(oShot.Drop ^ 2 + oShot.PlanimetricDistance ^ 2)
-                        oShot.Inclination = modPaint.RadiansToDegree(Math.Acos(oShot.PlanimetricDistance / oShot.Distance)) ' ß =  Arcsen (b/a)
+                        Try
+                            oShot.Inclination = modPaint.RadiansToDegree(Math.Acos(oShot.PlanimetricDistance / oShot.Distance)) ' ß =  Arcsen (b/a)
+                        Catch ex As Exception
+                        End Try
                     End If
                 End If
             End If
@@ -1769,132 +1857,127 @@ Friend Class frmResurveyMain
         Call grdStations.RefreshDataSource()
     End Sub
 
+    Private Function pIsTranslation([From] As String, [To] As String) As Boolean
+        Return [From].Replace(">", "") = [To].Replace(">", "")
+    End Function
+
     Private Sub pCalculateFromPlan(FromStation As String, Scale As Single)
-        'Dim sRealFromStation As String = pGetRealStation(FromStation)
-        For Each sToStation As String In pGetNextStation(0, FromStation)
-            sToStation = "" & sToStation
-            If sToStation <> "" Then
-                Dim sImageBearing As Single
-                If oShots.GetShot(FromStation, sToStation) Is Nothing Then
-                    Dim oShot As cResurvey.cShot = New cResurvey.cShot
-                    oShot.From = FromStation
-                    oShot.To = sToStation
-                    Dim oPlanFromPoint As PointF = pGetPoint(FromStation, 0)
-                    Dim oPlanToPoint As PointF = pGetPoint(sToStation, 0)
-                    If oOptions.CalculateMode = cResurvey.cOptions.CalculateModeEnum.Full AndAlso Not oOptions.UseDropForInclination Then
-                        Dim sBearing As Single = modPaint.GetBearing(oPlanFromPoint, oPlanToPoint)
-                        sImageBearing = sBearing
-                        sBearing = modNumbers.MathRound(modPaint.NormalizeAngle(sBearing + oOptions.NordCorrection), 2)
-                        oShot.Bearing = sBearing
-                        oShot.PlanProcessed = True
+        If Not oProcessedStations.Contains(FromStation) Then
+            Call oProcessedStations.Add(FromStation)
+            For Each sToStation As String In pGetNextStation(0, FromStation)
+                sToStation = "" & sToStation
+                If sToStation <> "" Then
+                    Debug.Print(FromStation & " -> " & sToStation)
+                    Dim sImageBearing As Single
+                    If pIsTranslation(FromStation, sToStation) Then
+                        Call pCalculateFromPlan(sToStation, Scale)
                     Else
-                        Dim sDistance As Single = modPaint.DistancePointToPoint(oPlanFromPoint, oPlanToPoint)
-                        Dim sBearing As Single = modPaint.GetBearing(oPlanFromPoint, oPlanToPoint)
-                        sImageBearing = sBearing
-                        Dim sInclination As Single = 0
-                        sDistance = sDistance * Scale
-                        sDistance = modNumbers.MathRound(sDistance, 2)
-                        sBearing = modNumbers.MathRound(modPaint.NormalizeAngle(sBearing + oOptions.NordCorrection), 2)
-                        sInclination = modNumbers.MathRound(sInclination, 1)
-                        If oOptions.CalculateMode = cResurvey.cOptions.CalculateModeEnum.Full AndAlso oOptions.UseDropForInclination Then
-                            oShot.PlanimetricDistance = sDistance
-                        Else
-                            oShot.Distance = sDistance
+                        If oShots.GetShot(FromStation, sToStation) Is Nothing Then
+                            Dim oPlanFromPoint As PointF = pGetPoint(FromStation, 0)
+                            Dim oPlanToPoint As PointF = pGetPoint(sToStation, 0)
+                            Dim oShot As cResurvey.cShot = New cResurvey.cShot
+                            oShot.From = FromStation
+                            oShot.To = sToStation
+                            If oOptions.CalculateMode = cResurvey.cOptions.CalculateModeEnum.Full AndAlso Not oOptions.UseDropForInclination Then
+                                Dim sBearing As Single = modPaint.GetBearing(oPlanFromPoint, oPlanToPoint)
+                                sImageBearing = sBearing
+                                sBearing = modNumbers.MathRound(modPaint.NormalizeAngle(sBearing + oOptions.NordCorrection), 2)
+                                oShot.Bearing = sBearing
+                                oShot.PlanProcessed = True
+                            Else
+                                Dim sDistance As Single = modPaint.DistancePointToPoint(oPlanFromPoint, oPlanToPoint)
+                                Dim sBearing As Single = modPaint.GetBearing(oPlanFromPoint, oPlanToPoint)
+                                sImageBearing = sBearing
+                                Dim sInclination As Single = 0
+                                sDistance = sDistance * Scale
+                                sBearing = modPaint.NormalizeAngle(sBearing + oOptions.NordCorrection)
+                                If oOptions.CalculateMode = cResurvey.cOptions.CalculateModeEnum.Full AndAlso oOptions.UseDropForInclination Then
+                                    oShot.PlanimetricDistance = sDistance
+                                Else
+                                    oShot.Distance = sDistance
+                                End If
+                                oShot.Bearing = sBearing
+                                oShot.Inclination = sInclination
+                                oShot.PlanProcessed = True
+                            End If
+                            Call oShots.Add(oShot)
+                            If oOptions.CalculateLRUD Then
+                                If oOptions.LRUDStation = cOptions.LRUDStationEnum.ToStation Then
+                                    pFillLR(oShot, oPlanToPoint, sImageBearing, Scale)
+                                ElseIf oOptions.LRUDStation = cOptions.LRUDStationEnum.FromStation Then
+                                    pFillLR(oShot, oPlanFromPoint, sImageBearing, Scale)
+                                End If
+                            End If
+                            Call pCalculateFromPlan(sToStation, Scale)
                         End If
-                        oShot.Bearing = sBearing
-                        oShot.Inclination = sInclination
-                        oShot.PlanProcessed = True
                     End If
-                    Call oShots.Add(oShot)
-                    If oOptions.CalculateLRUD Then
-                        If oOptions.LRUDStation = cOptions.LRUDStationEnum.ToStation Then
-                            pFillLR(oShot, oPlanToPoint, sImageBearing, Scale)
-                        ElseIf oOptions.LRUDStation = cOptions.LRUDStationEnum.FromStation Then
-                            pFillLR(oShot, oPlanFromPoint, sImageBearing, Scale)
-                        End If
-                    End If
-                    Call pCalculateFromPlan(sToStation, Scale)
                 End If
-            End If
-        Next
+            Next
+        End If
     End Sub
 
     Private Sub pCalculateFromProfile(FromStation As String, Scale As Single)
-        'Dim sRealFromStation As String = pGetRealStation(FromStation)
-        For Each sToStation As String In pGetNextStation(1, FromStation)
-            sToStation = "" & sToStation
-            If sToStation <> "" Then
-                Dim oShot As cResurvey.cShot = oShots.GetShot(FromStation, sToStation)
-                If oShot Is Nothing Then
-                    oShot = New cResurvey.cShot
-                    oShot.From = FromStation
-                    oShot.To = sToStation
-                    oShot.Bearing = 0
-                    oShot.PlanProcessed = True
-                    oShot.ProfileProcessed = False
-                    Call oShots.Add(oShot)
-                End If
-                If Not oShot.ProfileProcessed Then
-                    If oOptions.UseDropForInclination Then
-                        Dim oProfileFromPoint As PointF = pGetPoint(FromStation, 1)
-                        Dim oProfileToPoint As PointF = pGetPoint(sToStation, 1)
-                        Dim sDrop As Single = oProfileFromPoint.Y - oProfileToPoint.Y
-                        sDrop = sDrop * Scale
-                        sDrop = modNumbers.MathRound(sDrop, 2)
-                        oShot.Drop = sDrop
-                        'If sDrop < 0 Then
-                        '    sDrop = Math.Abs(sDrop)
-                        '    oShot.Distance = Math.Sqrt(sDrop ^ 2 + oShot.PlanimetricDistance ^ 2)
-                        '    oShot.Inclination = -modPaint.RadiansToDegree(Math.Acos(oShot.PlanimetricDistance / oShot.Distance)) ' ß =  Arcsen (b/a)
-                        'ElseIf sDrop = 0 Then
-                        '    oShot.Distance = oShot.PlanimetricDistance
-                        'Else
-                        '    oShot.Distance = Math.Sqrt(sDrop ^ 2 + oShot.PlanimetricDistance ^ 2)
-                        '    oShot.Inclination = modPaint.RadiansToDegree(Math.Acos(oShot.PlanimetricDistance / oShot.Distance)) ' ß =  Arcsen (b/a)
-                        'End If
-                        oShot.ProfileProcessed = True
-                        If oOptions.CalculateLRUD Then
-                            If oOptions.LRUDStation = cOptions.LRUDStationEnum.ToStation Then
-                                pFillUD(oShot, oProfileToPoint, Scale)
-                            ElseIf oOptions.LRUDStation = cOptions.LRUDStationEnum.FromStation Then
-                                pFillUD(oShot, oProfileFromPoint, Scale)
-                            End If
-                        End If
+        If Not oProcessedStations.Contains(FromStation) Then
+            Call oProcessedStations.Add(FromStation)
+            For Each sToStation As String In pGetNextStation(1, FromStation)
+                sToStation = "" & sToStation
+                If sToStation <> "" Then
+                    Debug.Print(FromStation & " -> " & sToStation)
+                    If pIsTranslation(FromStation, sToStation) Then
+                        Call pCalculateFromProfile(sToStation, Scale)
                     Else
-                        Dim oProfileFromPoint As PointF = pGetPoint(FromStation, 1)
-                        Dim oProfileToPoint As PointF = pGetPoint(sToStation, 1)
-                        Dim sDistance As Single = modPaint.DistancePointToPoint(oProfileFromPoint, oProfileToPoint)
-                        sDistance = sDistance * Scale
-                        Dim sInclination As Single = modPaint.GetBearing(oProfileFromPoint, oProfileToPoint)
-                        If sInclination >= 0 And sInclination <= 90 Then
-                            sInclination = 90 - sInclination
+                        Dim oShot As cResurvey.cShot = oShots.GetShot(FromStation, sToStation)
+                        If oShot Is Nothing Then
+                            oShot = New cResurvey.cShot
+                            oShot.From = FromStation
+                            oShot.To = sToStation
+                            oShot.Bearing = 0
+                            oShot.PlanProcessed = True
+                            oShot.ProfileProcessed = False
+                            Call oShots.Add(oShot)
                         End If
-                        If sInclination > 90 And sInclination <= 180 Then
-                            sInclination = 90 - sInclination
-                        End If
-                        If sInclination > 180 And sInclination <= 270 Then
-                            sInclination = sInclination - 270
-                        End If
-                        If sInclination > 270 And sInclination < 360 Then
-                            sInclination = sInclination - 270
-                        End If
-                        sDistance = modNumbers.MathRound(sDistance, 2)
-                        sInclination = modNumbers.MathRound(sInclination, 2)
-                        oShot.Distance = sDistance
-                        oShot.Inclination = sInclination
-                        oShot.ProfileProcessed = True
-                        If oOptions.CalculateLRUD Then
-                            If oOptions.LRUDStation = cOptions.LRUDStationEnum.ToStation Then
-                                pFillUD(oShot, oProfileToPoint, Scale)
-                            ElseIf oOptions.LRUDStation = cOptions.LRUDStationEnum.FromStation Then
-                                pFillUD(oShot, oProfileFromPoint, Scale)
+                        If Not oShot.ProfileProcessed Then
+                            Dim oProfileFromPoint As PointF = pGetPoint(FromStation, 1)
+                            Dim oProfileToPoint As PointF = pGetPoint(sToStation, 1)
+                            If oOptions.UseDropForInclination Then
+                                Dim sDrop As Single = oProfileFromPoint.Y - oProfileToPoint.Y
+                                sDrop = sDrop * Scale
+                                sDrop = modNumbers.MathRound(sDrop, 2)
+                                oShot.Drop = sDrop
+                                oShot.ProfileProcessed = True
+                            Else
+                                Dim sDistance As Single = modPaint.DistancePointToPoint(oProfileFromPoint, oProfileToPoint)
+                                sDistance = sDistance * Scale
+                                Dim sInclination As Single = modPaint.GetBearing(oProfileFromPoint, oProfileToPoint)
+                                If sInclination >= 0 And sInclination <= 90 Then
+                                    sInclination = 90 - sInclination
+                                End If
+                                If sInclination > 90 And sInclination <= 180 Then
+                                    sInclination = 90 - sInclination
+                                End If
+                                If sInclination > 180 And sInclination <= 270 Then
+                                    sInclination = sInclination - 270
+                                End If
+                                If sInclination > 270 And sInclination < 360 Then
+                                    sInclination = sInclination - 270
+                                End If
+                                oShot.Distance = sDistance
+                                oShot.Inclination = sInclination
+                                oShot.ProfileProcessed = True
                             End If
+                            If oOptions.CalculateLRUD Then
+                                If oOptions.LRUDStation = cOptions.LRUDStationEnum.ToStation Then
+                                    pFillUD(oShot, oProfileToPoint, Scale)
+                                ElseIf oOptions.LRUDStation = cOptions.LRUDStationEnum.FromStation Then
+                                    pFillUD(oShot, oProfileFromPoint, Scale)
+                                End If
+                            End If
+                            Call pCalculateFromProfile(sToStation, Scale)
                         End If
                     End If
-                    Call pCalculateFromProfile(sToStation, Scale)
                 End If
-            End If
-        Next
+            Next
+        End If
     End Sub
 
     Private Sub pFillLR(Shot As cResurvey.cShot, Point As PointF, Bearing As Single, Scale As Single)
@@ -2241,33 +2324,25 @@ Friend Class frmResurveyMain
     '    End Try
     '    Shot.Up = Math.Abs(sD)
     'End Sub
+    Private Sub pDesignEnvironmentSet()
+        Dim oMessageForeColor As Color = cEditDesignEnvironment.GetSetting("messagebar.forecolor", SystemColors.ControlText)
+        oMainMessageBar.CaptionForecolor = oMessageForeColor
+    End Sub
 
-    Private Sub btnPopupClose_Click(sender As System.Object, e As System.EventArgs) Handles btnPopupClose.Click
+    Private Sub oEditDesignEnvironment_OnChanged(Sender As Object, e As cSurvey.Design.PropertyChangeEventArgs)
+        Call pDesignEnvironmentSet()
+    End Sub
+
+    Private Sub btnPopupClose_Click(sender As System.Object, e As System.EventArgs)
         Call pPopupHide()
     End Sub
 
     Private Sub pPopupHide()
-        Call pnlPopup.Hide()
+        Call oMainMessageBar.Hide()
     End Sub
 
     Private Sub pPopupShow(ByVal Type As String, ByVal Text As String)
-        With pnlPopup
-            Dim bShow As Boolean
-            Select Case Type.ToLower
-                Case "error"
-                    picPopupWarning.Image = imlPopup.Images("error")
-                    .BackColor = Color.PeachPuff
-                    bShow = True
-                Case "warning"
-                    picPopupWarning.Image = imlPopup.Images("warning")
-                    .BackColor = Color.LightYellow
-                    bShow = True
-            End Select
-            If bShow Then
-                lblPopupWarning.Text = Text
-                .Visible = True
-            End If
-        End With
+        Call oMainMessageBar.PopupShow(Type, Text)
     End Sub
 
     Private Sub pDelayedPerformPaint()
@@ -2287,13 +2362,6 @@ Friend Class frmResurveyMain
         Dim sStation As String = pGetFirstStation()
 
         '--------------------------------------------------------------------------
-        'oPlanStationPath = New GraphicsPath
-        'oPlanShotsPath = New GraphicsPath
-        'oPlanLRUDPath = New GraphicsPath
-        'oProfileStationPath = New GraphicsPath
-        'oProfileShotsPath = New GraphicsPath
-        'oProfileLRUDPath = New GraphicsPath
-
         oPlanScalePath = New GraphicsPath
         oProfileScalePath = New GraphicsPath
         oProfileDropScalePath = New GraphicsPath
@@ -2311,7 +2379,7 @@ Friend Class frmResurveyMain
                 Dim oNorthEndPoint As PointF = oStations(sSecondNorthPoint).PlanPoint
                 Call oPlanNorthPath.AddLine(oNorthBeginPoint, oNorthEndPoint)
             End If
-        Catch
+        Catch ex As Exception
         End Try
         '--------------------------------------------------------------------------
 
@@ -2338,7 +2406,7 @@ Friend Class frmResurveyMain
                         Call oProfileScaleRealPath.AddLine(New PointF(oScaleEndPoint.X, oScaleBeginPoint.Y), oScaleBeginPoint)
                 End Select
             End If
-        Catch
+        Catch ex As Exception
         End Try
 
         Try
@@ -2361,7 +2429,7 @@ Friend Class frmResurveyMain
                         Call oPlanScalePath.AddLine(New PointF(oScaleEndPoint.X, oScaleBeginPoint.Y), oScaleBeginPoint)
                 End Select
             End If
-        Catch
+        Catch ex As Exception
         End Try
 
         '--------------------------------------------------------------------------
@@ -2389,11 +2457,11 @@ Friend Class frmResurveyMain
                         Call oProfileDropScalePath.AddLine(New PointF(oDropScaleEndPoint.X, oDropScaleBeginPoint.Y), oDropScaleBeginPoint)
                 End Select
             End If
-        Catch
+        Catch ex As Exception
         End Try
 
         '--------------------------------------------------------------------------
-        If oStations.Count > 0 AndAlso picPlan.Visible Then
+        If oStations.Count > 0 Then 'AndAlso picPlan.Visible Then
             Using oGraphics As Graphics = picPlan.CreateGraphics
                 Using oSF As StringFormat = New StringFormat(Drawing.StringFormatFlags.NoWrap)
                     oSF.Alignment = StringAlignment.Center
@@ -2458,54 +2526,92 @@ Friend Class frmResurveyMain
             Call pPaintShots(1, oProcessed, sStation, oScale)
         End If
 
-        'Catch
-        'End Try
-
         Call pInvalidateCurrentView()
 
         Cursor = Cursors.Default
     End Sub
+    Private Sub pForceInitialize(Parent As Control)
+        For Each oControl As Control In Parent.Controls
+            If oControl.HasMethod("ForceInitialize") Then
+                Call pLogAdd(cSurvey.cSurvey.LogEntryType.Information, "Initialize " & oControl.Name)
+                Call DirectCast(oControl, Object).ForceInitialize
+            End If
+            Call pForceInitialize(oControl)
+        Next
+    End Sub
+
+    Private Sub pLogAdd(ByVal Type As cSurvey.cSurvey.LogEntryType, ByVal Text As String)
+
+    End Sub
+
+    Dim bWorkspaceLoaded As Boolean
+    Dim bWorkspaceShowed As Boolean
+
+    Private Sub pWorkspacesLoad()
+        bWorkspaceLoaded = True
+        Call pForceInitialize(Me)
+
+        Call WorkspaceManager.CaptureWorkspace("_default", True)
+        Call WorkspaceManager.SaveWorkspace("_default", Path.Combine(modMain.GetUserApplicationPath, "_default.cresurveyworkspace"), True)
+        Call WorkspaceManager.RemoveWorkspace("_default")
+
+        For Each sWorkspaceFile As String In My.Computer.FileSystem.GetFiles(modMain.GetUserApplicationPath, FileIO.SearchOption.SearchTopLevelOnly, {"*.cresurveyworkspace"})
+            Dim sWorkspaceName As String = Path.GetFileNameWithoutExtension(sWorkspaceFile)
+            If Not sWorkspaceName.StartsWith("_") Then
+                Call WorkspaceManager.LoadWorkspace(sWorkspaceName, sWorkspaceFile, False)
+                If sWorkspaceName.ToLower = "default" Then
+                    If (My.Computer.Keyboard.AltKeyDown And My.Computer.Keyboard.CtrlKeyDown) Then
+                        Call pLogAdd(cSurvey.cSurvey.LogEntryType.Warning, "Skippen restore default workspace")
+                    Else
+                        Call WorkspaceManager.ApplyWorkspace("default")
+                        Call pLogAdd(cSurvey.cSurvey.LogEntryType.Information, "Default workspace restored")
+                    End If
+                End If
+            End If
+        Next
+        Call UpdateFloatingForm(Me, DockManager)
+    End Sub
+
+    Private Sub pWorkspaceSave()
+        'update default workspace
+        Call WorkspaceManager.CaptureWorkspace("default", True)
+        'save all workspaces in the application user folder
+        For Each oWorkspace As DevExpress.Utils.IWorkspace In WorkspaceManager.Workspaces
+            If oWorkspace.Name.ToLower <> "_default" Then
+                Call WorkspaceManager.SaveWorkspace(oWorkspace.Name, Path.Combine(modMain.GetUserApplicationPath, oWorkspace.Name & ".cresurveyworkspace"), True)
+            End If
+        Next
+    End Sub
 
     Private Sub pSettingsLoad()
         Try
+            oRecents = cSurvey.UIHelpers.cRecentsHelper.Load("resurvey.recent", btnLoad)
+
             Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
                 iDefaultCalculateMode = oReg.GetValue("resurvey.options.calculatemode", cResurvey.cOptions.CalculateModeEnum.Full)
+
                 btnShowRulers.Checked = oReg.GetValue("resurvey.options.showrulers", 0)
                 btnShowRuler.Checked = oReg.GetValue("resurvey.options.showruler", 0)
-                Dim oLayout As Byte() = oReg.GetValue("resurvey.workspaces.default", Nothing)
-                If Not oLayout Is Nothing AndAlso oLayout.Length > 0 Then
-                    Using oMs As MemoryStream = New MemoryStream(oLayout)
-                        Call WorkspaceManager.LoadWorkspace("default", oMs)
-                        Call WorkspaceManager.ApplyWorkspace("default")
-                        'this dock is not visible after a restore...have to be showed manually
-                        dockMagnifier.Visibility = DockVisibility.Hidden
-                        Call dockMagnifier.MakeFloat()
-                    End Using
-                End If
                 Call oReg.Close()
-                'Call DockManager.RestoreLayoutFromRegistry("Software\Cepelabs\cSurvey\resurvey.docklayout")
-                'Call DocumentManager.View.RestoreLayoutFromRegistry("Software\Cepelabs\cSurvey\resurvey.documentlayout")
             End Using
-        Catch
+        Catch ex As Exception
         End Try
     End Sub
 
     Private Sub pSettingsSave()
         Try
             Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-                Call oReg.SetValue("resurvey.options.calculatemode", Convert.ToInt32(iDefaultCalculateMode))
+                Call oReg.SetValue("resurvey.options.calculatemode", iDefaultCalculateMode.ToString("D"))
                 Call oReg.SetValue("resurvey.options.showrulers", If(btnShowRulers.Checked, 1, 0))
                 Call oReg.SetValue("resurvey.options.showruler", If(btnShowRuler.Checked, 1, 0))
-                Using oMs As MemoryStream = New MemoryStream
-                    Call WorkspaceManager.CaptureWorkspace("default", True)
-                    Call WorkspaceManager.SaveWorkspace("default", oMs, True)
-                    Call oReg.SetValue("resurvey.workspaces.default", oMs.ToArray, Microsoft.Win32.RegistryValueKind.Binary)
-                End Using
+                'Using oMs As MemoryStream = New MemoryStream
+                '    Call WorkspaceManager.CaptureWorkspace("default", True)
+                '    Call WorkspaceManager.SaveWorkspace("default", oMs, True)
+                '    Call oReg.SetValue("resurvey.workspaces.default", oMs.ToArray, Microsoft.Win32.RegistryValueKind.Binary)
+                'End Using
                 Call oReg.Close()
             End Using
-            'Call DocumentManager.View.SaveLayoutToRegistry("Software\Cepelabs\cSurvey\resurvey.documentlayout")
-            'Call DockManager.SaveLayoutToRegistry("Software\Cepelabs\cSurvey\resurvey.docklayout")
-        Catch
+        Catch ex As Exception
         End Try
     End Sub
 
@@ -2542,6 +2648,7 @@ Friend Class frmResurveyMain
 
         'Call grdStationsOLD.Rows.Clear()
         'Call grdPlot.Rows.Clear()
+        pPerformPaint()
 
         sFilename = ""
         Text = "cResurvey"
@@ -2586,7 +2693,8 @@ Friend Class frmResurveyMain
 
         SyncLock oPlanTrigpointsPlaceholders
             For Each oPlaceholder As cTrigpointPlaceholder In oPlanTrigpointsPlaceholders.Values
-                Dim oStation As cStation = oStations(oPlaceholder.Name)
+                Dim sFromStation As String = oPlaceholder.Name
+                Dim oStation As cStation = oStations(sFromStation)
                 Dim bIsSelected As Boolean = oPlaceholder Is oPlanLastPlaceHolder
 
                 If oStation.PlanVisible AndAlso Not oPlaceholder.Cache.PlanStationPath Is Nothing Then
@@ -2616,7 +2724,7 @@ Friend Class frmResurveyMain
                         bSelectedLine = oPlanLastLine(0).Name = oStation.Name AndAlso oPlanLastLine(1).Name = sToStation
                     End If
                     Dim oItem As cCacheItem = oPlaceholder.Cache.PlanShots(sToStation)
-                    If sToStation.EndsWith(">") Then
+                    If pIsTranslation(sFromStation, sToStation) Then
                         If Not oItem.ShotPath Is Nothing Then Call oGraphics.DrawPath(If(bSelectedLine, oSelectedTranslationPen, oTranslationsPen), oItem.ShotPath)
                     Else
                         If Not oItem.ShotPath Is Nothing Then Call oGraphics.DrawPath(If(bSelectedLine, oSelectedShotsPen, oShotsPen), oItem.ShotPath)
@@ -2840,7 +2948,8 @@ Friend Class frmResurveyMain
 
             SyncLock oProfileTrigpointsPlaceholders
                 For Each oPlaceholder As cTrigpointPlaceholder In oProfileTrigpointsPlaceholders.Values
-                    Dim oStation As cStation = oStations(oPlaceholder.Name)
+                    Dim sFromStation As String = oPlaceholder.Name
+                    Dim oStation As cStation = oStations(sFromStation)
                     Dim bIsSelected As Boolean = oPlaceholder Is oProfileLastPlaceHolder
 
                     If oStation.ProfileVisible AndAlso Not oPlaceholder.Cache.ProfileStationPath Is Nothing Then
@@ -2871,7 +2980,7 @@ Friend Class frmResurveyMain
                             bSelectedLine = oProfileLastLine(0).Name = oStation.Name AndAlso oProfileLastLine(1).Name = sToStation
                         End If
                         Dim oItem As cCacheItem = oPlaceholder.Cache.ProfileShots(sToStation)
-                        If sToStation.EndsWith(">") Then
+                        If sFromStation.Replace(">", "") = sToStation.Replace(">", "") Then '.EndsWith(">") Then
                             If Not oItem.ShotPath Is Nothing Then Call oGraphics.DrawPath(If(bSelectedLine, oSelectedTranslationPen, oTranslationsPen), oItem.ShotPath)
                         Else
                             If Not oItem.ShotPath Is Nothing Then Call oGraphics.DrawPath(If(bSelectedLine, oSelectedShotsPen, oShotsPen), oItem.ShotPath)
@@ -3124,6 +3233,7 @@ Friend Class frmResurveyMain
 
     Private Sub frmResurveyMain_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         Call pSettingsSave()
+        Call pWorkspaceSave()
     End Sub
 
     Private Sub frmResurveyMain_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -3236,14 +3346,32 @@ Friend Class frmResurveyMain
     End Sub
 
     Private Sub pStationDelete()
-        If MsgBox(GetLocalizedString("resurvey.warning5"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("resurvey.warningtitle")) = MsgBoxResult.Yes Then
+        If cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("resurvey.warning5"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("resurvey.warningtitle")) = MsgBoxResult.Yes Then
             Cursor = Cursors.WaitCursor
 
             Dim oStation As cResurvey.cStation = gridviewStations.GetFocusedRow
+
+            If oPlanLastPlaceHolder Is oStation.PlanPlaceholder Then
+                oPlanLastPlaceHolder = Nothing
+            End If
+            If oProfileLastPlaceHolder Is oStation.ProfilePlaceholder Then
+                oProfileLastPlaceHolder = Nothing
+            End If
+
             Dim sTrigpoint As String = oStation.Name
 
             If oPlanTrigpointsPlaceholders.ContainsKey(sTrigpoint) Then Call oPlanTrigpointsPlaceholders.Remove(sTrigpoint)
+            For Each oPlanPlaceholder In oPlanTrigpointsPlaceholders.Values
+                If oPlanPlaceholder.Cache.PlanShots.ContainsKey(sTrigpoint) Then
+                    oPlanPlaceholder.Cache.PlanShots.Remove(sTrigpoint)
+                End If
+            Next
             If oProfileTrigpointsPlaceholders.ContainsKey(sTrigpoint) Then Call oProfileTrigpointsPlaceholders.Remove(sTrigpoint)
+            For Each oprofilePlaceholder In oProfileTrigpointsPlaceholders.Values
+                If oprofilePlaceholder.Cache.ProfileShots.ContainsKey(sTrigpoint) Then
+                    oprofilePlaceholder.Cache.ProfileShots.Remove(sTrigpoint)
+                End If
+            Next
 
             For Each oOtherStation As cResurvey.cStation In oStations
                 If oOtherStation.PlanConnectedTo.Contains(sTrigpoint) Then
@@ -3257,7 +3385,6 @@ Friend Class frmResurveyMain
             Next
 
             Call oStations.Remove(sTrigpoint)
-
             Call grdStations.RefreshDataSource()
 
             Call pDelayedPerformPaint()
@@ -3306,16 +3433,15 @@ Friend Class frmResurveyMain
         Call pDelayedPerformPaint()
     End Sub
 
-    Public Sub New()
+    Public Sub New(Optional AsModalForm As Boolean = False, Optional Filename As String = "")
 
         ' Chiamata richiesta dalla finestra di progettazione.
         InitializeComponent()
 
         ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
-        'CheckForIllegalCrossThreadCalls = False
+        Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(RibbonControl, False)
 
-        'pnlPlanOrProfile.Dock = DockStyle.Fill
-        'pnlMain.Dock = DockStyle.Fill
+        Call cEditDesignEnvironment.OnPropertyChangedAppend(AddressOf oEditDesignEnvironment_OnChanged)
 
         Call dockStations.BringToFront()
 
@@ -3323,6 +3449,8 @@ Friend Class frmResurveyMain
 
         oPlanTrigpointsPlaceholders = New Dictionary(Of String, cResurvey.cTrigpointPlaceholder)
         oProfileTrigpointsPlaceholders = New Dictionary(Of String, cResurvey.cTrigpointPlaceholder)
+
+        oProcessedStations = New HashSet(Of String)
 
         oShots = New cResurvey.cShots
         grdShots.DataSource = oShots
@@ -3362,15 +3490,15 @@ Friend Class frmResurveyMain
         oSelectedTranslationPen = New Pen(Color.FromArgb(240, Color.Blue))
         oSelectedTranslationPen.DashStyle = DashStyle.Dot
         oSelectedTranslationPen.Width = 3
-        oActiveStationPen = New Pen(Color.FromArgb(200, Color.Gray), -1)
+        oActiveStationPen = New Pen(Color.FromArgb(200, Color.Gray), cSurvey.cEditPaintObjects.FilettoPenWidth)
         oActiveStationPen.DashStyle = DashStyle.Dot
         oLRUDAreaBrush = New SolidBrush(Color.FromArgb(50, Color.LightGreen))
 
-        oRulesSecondaryPen = New Pen(oRulesColor, -1)
+        oRulesSecondaryPen = New Pen(oRulesColor, cSurvey.cEditPaintObjects.FilettoPenWidth)
         oRulesSecondaryPen.DashStyle = DashStyle.Dash
-        oRulesPen = New Pen(oRulesColor, -1)
+        oRulesPen = New Pen(oRulesColor, cSurvey.cEditPaintObjects.FilettoPenWidth)
         oRulesPen.DashStyle = DashStyle.Dot
-        oRulesLabelPen = New Pen(oRulesColor, -1)
+        oRulesLabelPen = New Pen(oRulesColor, cSurvey.cEditPaintObjects.FilettoPenWidth)
         oRulesLabelBrush = New SolidBrush(Color.FromArgb(180, Color.White))
         oRulesBrush = New SolidBrush(oRulesColor)
         oRulesFillBrush = New SolidBrush(Color.FromArgb(120, Color.WhiteSmoke))
@@ -3393,45 +3521,28 @@ Friend Class frmResurveyMain
         picProfile.SizeMode = PictureBoxSizeMode.Zoom
         picProfile.Visible = False
 
-        'pnlPlan = pnlMain.Panel1
-        'pnlProfile = pnlMain.Panel2
-
-        'oPlanVSB = New VScrollBar
-        'pnlPlan.Controls.Add(oPlanVSB)
-        'oPlanVSB.Dock = DockStyle.Right
-        'oPlanVSB.SendToBack()
-        'oPlanVSB.SmallChange = 1
-        'oPlanVSB.LargeChange = 25
-
-        'oPlanHSB = New HScrollBar
-        'pnlPlan.Controls.Add(oPlanHSB)
-        'oPlanHSB.Dock = DockStyle.Bottom
-        'oPlanHSB.SendToBack()
-        'oPlanHSB.SmallChange = 1
-        'oPlanHSB.LargeChange = 25
-
-        'picPlan.SendToBack()
-
-        'oProfileVSB = New VScrollBar
-        'pnlProfile.Controls.Add(oProfileVSB)
-        'oProfileVSB.Dock = DockStyle.Right
-        'oProfileVSB.SendToBack()
-        'oProfileVSB.SmallChange = 1
-        'oProfileVSB.LargeChange = 25
-
-        'oProfileHSB = New HScrollBar
-        'pnlProfile.Controls.Add(oProfileHSB)
-        'oProfileHSB.Dock = DockStyle.Bottom
-        'oProfileHSB.SendToBack()
-        'oProfileHSB.SmallChange = 1
-        'oProfileHSB.LargeChange = 25
-
-        'picProfile.SendToBack()
-
         Dim sObjectsPath As String = modMain.GetApplicationPath & "\objects"
         'carico i cursori
         oOpenHandCursor = New Cursor(sObjectsPath & "\cursors\openhand.cur")
         oClosedHandCursor = New Cursor(sObjectsPath & "\cursors\closedhand.cur")
+
+        If AsModalForm Then
+            btnConfirm.Visibility = BarItemVisibility.Always
+            btnClose.Visibility = BarItemVisibility.Always
+        Else
+            btnConfirm.Visibility = BarItemVisibility.Never
+            btnClose.Visibility = BarItemVisibility.Never
+        End If
+
+        Call pSettingsLoad()
+        oOptions.CalculateMode = iDefaultCalculateMode
+        Call pWorkspacesLoad()
+
+        If Filename <> "" Then
+            Call pLoad(Filename)
+        Else
+            Call pNew()
+        End If
     End Sub
 
     Private Sub pStationProperties()
@@ -3463,23 +3574,6 @@ Friend Class frmResurveyMain
     Private Sub frmP_OnApply(Sender As frmResurveyProperties, Args As frmResurveyProperties.cResurveyPropertiesEventArgs)
         Call grdStations.RefreshDataSource()
         Call pDelayedPerformPaint()
-    End Sub
-
-    Private Sub mnuPreviewDeleteAll_Click(sender As System.Object, e As System.EventArgs)
-        'If MsgBox(GetLocalizedString("resurvey.warning6"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("resurvey.warningtitle")) = MsgBoxResult.Yes Then
-        '    Cursor = Cursors.WaitCursor
-        '    Call oPlanTrigpointsPlaceholders.Clear()
-        '    Call oProfileTrigpointsPlaceholders.Clear()
-
-        '    Call oStations.Clear()
-        '    Call grdStations.RefreshDataSource()
-
-        '    Call pSelectPlaceholder(Nothing)
-        '    Call pSelectLine(Nothing)
-
-        '    Call pDelayedPerformPaint()
-        '    Cursor = Cursors.Default
-        'End If
     End Sub
 
     Private Sub mnuGridStationDelete_Click(sender As System.Object, e As System.EventArgs)
@@ -3614,6 +3708,7 @@ Friend Class frmResurveyMain
                 End If
             End If
         End If
+        picPlan.Invalidate()
     End Sub
 
     Private Sub picProfile_MouseMove(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles picProfile.MouseMove
@@ -3680,10 +3775,11 @@ Friend Class frmResurveyMain
                 End If
             End If
         End If
+        picProfile.Invalidate()
     End Sub
 
     Private Sub btnConfirm_ItemClick(sender As System.Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnConfirm.ItemClick
-        If MsgBox(GetLocalizedString("resurvey.warning7"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("resurvey.warningtitle")) = MsgBoxResult.Yes Then
+        If cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("resurvey.warning7"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("resurvey.warningtitle")) = MsgBoxResult.Yes Then
             DialogResult = Windows.Forms.DialogResult.OK
             Call Close()
         End If
@@ -3832,15 +3928,6 @@ Friend Class frmResurveyMain
                 End If
             End If
         End If
-        'If oOptions Is Nothing Then
-        '    Return 0
-        'Else
-        '    If oOptions.CalculateMode = cResurvey.cOptions.CalculateModeEnum.OnlyPlan Then
-        '        Return 0
-        '    Else
-        '        Return iCurrentProject
-        '    End If
-        'End If
     End Function
 
     Private iStartDragDistance As Integer = 5
@@ -3942,14 +4029,14 @@ Friend Class frmResurveyMain
                         Dim iPadding As Integer = 4
                         Dim oSelectionPoint As Point
                         Dim oBounds As RectangleF = oPlanLastPlaceHolder.HotSpot
-                        oSelectionPoint = New Point(oBounds.Right, oBounds.Top)
+                        oSelectionPoint = New Point(oBounds.Right, oBounds.Top + 8)
                         tbPlan.Alignment = ContentAlignment.TopRight
                         oSelectionPoint = New Point(oSelectionPoint.X * sPlanZoom, oSelectionPoint.Y * sPlanZoom)
                         oSelectionPoint = picPlan.PointToScreen(oSelectionPoint)
                         Call tbPlan.Show(oSelectionPoint)
                     End If
                 Else
-                    If oShots.Contains(oPlanLastLine) Then
+                    If oShots.Contains(oPlanLastLine) AndAlso oOptions.LRUDStation <> cOptions.LRUDStationEnum.NotManaged Then
                         Dim oShot As cShot = oShots(oPlanLastLine)
                         btnLeftEdit.Tag = oShot
                         btnLeftEdit.EditValue = oShot.EditUserLeft
@@ -3967,16 +4054,16 @@ Friend Class frmResurveyMain
                     Call oBounds.Inflate(iPadding, iPadding)
                     Select Case modPaint.GetQuadrant(oBounds, If(oOptions.LRUDStation = cOptions.LRUDStationEnum.FromStation, oPlanLastLine(0).Point, oPlanLastLine(1).Point))
                         Case modPaint.Quadrant.TopLeft
-                            oSelectionPoint = New Point(oBounds.Left, oBounds.Top)
+                            oSelectionPoint = New Point(oBounds.Left, oBounds.Top - 8)
                             tbPlan.Alignment = ContentAlignment.TopLeft
                         Case modPaint.Quadrant.TopRight
-                            oSelectionPoint = New Point(oBounds.Right, oBounds.Top)
+                            oSelectionPoint = New Point(oBounds.Right, oBounds.Top - 8)
                             tbPlan.Alignment = ContentAlignment.TopRight
                         Case modPaint.Quadrant.BottomRight
-                            oSelectionPoint = New Point(oBounds.Right, oBounds.Bottom)
+                            oSelectionPoint = New Point(oBounds.Right, oBounds.Bottom + 8)
                             tbPlan.Alignment = ContentAlignment.BottomRight
                         Case modPaint.Quadrant.BottomLeft
-                            oSelectionPoint = New Point(oBounds.Left, oBounds.Bottom)
+                            oSelectionPoint = New Point(oBounds.Left, oBounds.Bottom + 8)
                             tbPlan.Alignment = ContentAlignment.BottomLeft
                     End Select
                     oSelectionPoint = New Point(oSelectionPoint.X * sPlanZoom, oSelectionPoint.Y * sPlanZoom)
@@ -3987,7 +4074,7 @@ Friend Class frmResurveyMain
         End If
         bTPHSelected = False
         bLineSelected = False
-
+        picPlan.Invalidate()
     End Sub
 
     Private Sub picProfile_MouseUp(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles picProfile.MouseUp
@@ -4025,7 +4112,7 @@ Friend Class frmResurveyMain
                     End If
 
                 Else
-                    If oShots.Contains(oProfileLastLine) Then
+                    If oShots.Contains(oProfileLastLine) AndAlso oOptions.LRUDStation <> cOptions.LRUDStationEnum.NotManaged Then
                         Dim oShot As cShot = oShots(oProfileLastLine)
                         btnUpEdit.Tag = oShot
                         btnUpEdit.EditValue = oShot.EditUserUp
@@ -4063,8 +4150,7 @@ Friend Class frmResurveyMain
         End If
         bTPHSelected = False
         bLineSelected = False
-
-
+        picProfile.Invalidate()
     End Sub
 
     'Private Sub pSelectProfilePlaceholder(Point As Point)
@@ -4346,6 +4432,16 @@ Friend Class frmResurveyMain
         Next
     End Function
 
+    Private Sub pSetCalculateModeView()
+        If bWorkspaceLoaded AndAlso bWorkspaceShowed Then
+            Select Case oOptions.CalculateMode
+                Case cResurvey.cOptions.CalculateModeEnum.Full
+                    dockProfile.Visible = True
+                Case cResurvey.cOptions.CalculateModeEnum.OnlyPlan
+                    dockProfile.Visible = False
+            End Select
+        End If
+    End Sub
     Private Sub pSetCalculateMode()
         Select Case oOptions.CalculateMode
             Case cResurvey.cOptions.CalculateModeEnum.Full
@@ -4355,7 +4451,11 @@ Friend Class frmResurveyMain
                 'docProfile = pGetDocument("dockprofile")
                 'If Not DocumentManager.View.Documents.Contains(docProfile) Then Call DocumentManager.View.Documents.Add(docProfile)
                 'docProfile.Control.Visible = True
-                pnlProfile.Visible = True
+                'pnlProfile.Visible = True
+                'DockManager.AddPanel(DockingStyle.Right, dockProfile)
+                'docView.AddDocument(dockProfile)
+                'dockProfile.Visibility = DockVisibility.Visible
+                'dockProfile.Visible = True
 
                 If oOptions.UseDropForInclination Then
                     colShotsDrop.Visible = True
@@ -4374,7 +4474,9 @@ Friend Class frmResurveyMain
                 'docProfile = DocumentManager.GetDocument(picProfile)
                 'docProfile.Control.Visible = False
                 'If DocumentManager.View.Documents.Contains(docProfile) Then Call DocumentManager.View.Documents.Remove(docProfile)
-                pnlProfile.Visible = False
+                'pnlProfile.Visible = False
+                'dockProfile.Visibility = DockVisibility.Hidden
+                'dockProfile.Visible = False
 
                 'Call DocumentManager.View.Documents.Remove(docProfile)
                 colShotsDrop.Visible = False
@@ -4412,57 +4514,8 @@ Friend Class frmResurveyMain
                 colShotsUserDown.Visible = True
             End If
         End If
+        Call pSetCalculateModeView()
     End Sub
-
-    'Private Sub mnuPreviewDeleteLink_Click(sender As Object, e As EventArgs) Handles mnuPreviewDeleteLink.Click
-    '    Cursor = Cursors.WaitCursor
-
-    '    Dim oFromTPH As cResurvey.cTrigpointPlaceholder = oLastLine(0)
-    '    Dim oToTPH As cResurvey.cTrigpointPlaceholder = oLastLine(1)
-
-    '    Dim iPlanOrProfile As Integer = pGetCurrentProjection()
-
-    '    Dim oFromStation As cResurvey.cStation = oStations(oFromTPH.Name)
-    '    Dim sFromConnectedTo As String
-    '    If iPlanOrProfile = 0 Then
-    '        sFromConnectedTo = oFromStation.PlanConnectedTo
-    '    Else
-    '        sFromConnectedTo = oFromStation.ProfileConnectedTo
-    '    End If
-    '    Dim oFromConnectedTo As List(Of String) = cResurvey.cStation.GetConnectedToCollection(sFromConnectedTo)
-    '    Call oFromConnectedTo.Remove(oToTPH.Name)
-    '    sFromConnectedTo = cResurvey.cStation.SetConnectedToFromCollection(oFromConnectedTo)
-    '    If iPlanOrProfile = 0 Then
-    '        oFromStation.PlanConnectedTo = sFromConnectedTo
-    '    Else
-    '        oFromStation.ProfileConnectedTo = sFromConnectedTo
-    '    End If
-
-    '    Dim otoStation As cResurvey.cStation = oStations(oToTPH.Name)
-    '    Dim stoConnectedTo As String
-    '    If iPlanOrProfile = 0 Then
-    '        stoConnectedTo = otoStation.PlanConnectedTo
-    '    Else
-    '        stoConnectedTo = otoStation.ProfileConnectedTo
-    '    End If
-    '    Dim otoConnectedTo As List(Of String) = cResurvey.cStation.GetConnectedToCollection(stoConnectedTo)
-    '    Call otoConnectedTo.Remove(oFromTPH.Name)
-    '    stoConnectedTo = cResurvey.cStation.SetConnectedToFromCollection(otoConnectedTo)
-    '    If iPlanOrProfile = 0 Then
-    '        otoStation.PlanConnectedTo = stoConnectedTo
-    '    Else
-    '        otoStation.ProfileConnectedTo = stoConnectedTo
-    '    End If
-
-    '    Call grdStations.RefreshDataSource()
-
-    '    oLastLine = Nothing
-
-    '    Call pPerformCalculate(False)
-    '    Call pPerformPaint()
-
-    '    Cursor = Cursors.Default
-    'End Sub
 
     Private Sub picPlan_DragDrop(sender As Object, e As DragEventArgs) Handles picPlan.DragDrop
         If (e.Data.GetDataPresent(GetType(cResurvey.cTrigpointPlaceholder))) Then
@@ -4777,10 +4830,6 @@ Friend Class frmResurveyMain
             Select Case e.Column.Name
                 Case "colPlaceholdersIcon"
                     e.Value = ""
-                'Case "planvisible"
-                '    e.Value = oStation.PlanVisible
-                'Case "profilevisible"
-                '    e.Value = oStation.ProfileVisible
                 Case "colPlaceholdersPlanPoint"
                     If oStation.PlanPoint.IsEmpty Then
                         e.Value = ""
@@ -4793,12 +4842,6 @@ Friend Class frmResurveyMain
                     Else
                         e.Value = oStation.ProfilePoint.X & ";" & oStation.ProfilePoint.Y
                     End If
-                    'Case "planconnectedto"
-                    '    e.Value = oStation.PlanConnectedTo
-                    'Case "profileconnectedto"
-                    '    e.Value = oStation.ProfileConnectedTo
-                    'Case "type"
-                    '    e.Value = oStation.Type
             End Select
         End If
     End Sub
@@ -4860,7 +4903,7 @@ Friend Class frmResurveyMain
     End Sub
 
     Private Sub btnRemoveAll2_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnRemoveAll2.ItemClick
-        If MsgBox(GetLocalizedString("resurvey.warning1"), MsgBoxStyle.YesNo Or MsgBoxStyle.Question, GetLocalizedString("resurvey.warningtitle")) = MsgBoxResult.Yes Then
+        If cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("resurvey.warning1"), MsgBoxStyle.YesNo Or MsgBoxStyle.Question, GetLocalizedString("resurvey.warningtitle")) = MsgBoxResult.Yes Then
             If pGetCurrentProjection() = 0 Then
                 Call pRemoveTrigPoints(0)
             Else
@@ -4874,7 +4917,7 @@ Friend Class frmResurveyMain
     End Sub
 
     Private Sub btnDeleteAll2_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnDeleteAll2.ItemClick
-        If MsgBox(GetLocalizedString("resurvey.warning6"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("resurvey.warningtitle")) = MsgBoxResult.Yes Then
+        If cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("resurvey.warning6"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("resurvey.warningtitle")) = MsgBoxResult.Yes Then
             Cursor = Cursors.WaitCursor
             Call oPlanTrigpointsPlaceholders.Clear()
             Call oProfileTrigpointsPlaceholders.Clear()
@@ -5146,13 +5189,6 @@ Friend Class frmResurveyMain
         Call pSetCalculateMode()
     End Sub
 
-    Private Sub frmResurveyMain_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
-        If Visible Then
-            Call pSettingsLoad()
-            Call pNew()
-        End If
-    End Sub
-
     Private Const sMagFactor As Single = 4
 
     Private Sub tmrMagnifier_Tick(sender As Object, e As EventArgs) Handles tmrMagnifier.Tick
@@ -5294,20 +5330,33 @@ Friend Class frmResurveyMain
     Private Sub btnSaveImage_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnSaveImage.ItemClick
         Select Case pGetCurrentProjection()
             Case 0
-                Call modPaint.ShowImageExportDialog(Me, picPlan.Image)
+                Call cSurvey.UIHelpers.Dialogs.SaveImage(Me, picPlan.Image)
             Case 1
-                Call modPaint.ShowImageExportDialog(Me, picProfile.Image)
+                Call cSurvey.UIHelpers.Dialogs.SaveImage(Me, picProfile.Image)
         End Select
+    End Sub
+    Private Sub WorkspaceManager_PropertySerializing(sender As Object, ea As DevExpress.Utils.PropertyCancelEventArgs) Handles WorkspaceManager.PropertySerializing
+        If ea.Component IsNot Nothing AndAlso (TypeOf ea.Component Is cSessionDropDown OrElse TypeOf ea.Component Is cCaveDropDown OrElse TypeOf ea.Component Is cCaveBranchDropDown) Then
+            ea.Cancel = True
+        Else
+            If ea.PropertyName.ToLower = "text" OrElse ea.PropertyName.ToLower = "caption" OrElse ea.PropertyName.ToLower = "alignment" Then
+                ea.Cancel = True
+            End If
+        End If
     End Sub
 
     Private Sub WorkspaceManager_PropertyDeserializing(sender As Object, ea As DevExpress.Utils.PropertyCancelEventArgs) Handles WorkspaceManager.PropertyDeserializing
-        If ea.PropertyName.ToLower = "text" Then
+        If ea.Component IsNot Nothing AndAlso (TypeOf ea.Component Is cSessionDropDown OrElse TypeOf ea.Component Is cCaveDropDown OrElse TypeOf ea.Component Is cCaveBranchDropDown) Then
             ea.Cancel = True
+        Else
+            If ea.PropertyName.ToLower = "text" OrElse ea.PropertyName.ToLower = "caption" OrElse ea.PropertyName.ToLower = "alignment" Then
+                ea.Cancel = True
+            End If
         End If
     End Sub
 
     Private Sub btnClearImage_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnClearImage.ItemClick
-        If MsgBox(GetLocalizedString("resurvey.warning10"), MsgBoxStyle.YesNo Or MsgBoxStyle.Question, GetLocalizedString("resurvey.warningtitle")) = MsgBoxResult.Yes Then
+        If cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("resurvey.warning10"), MsgBoxStyle.YesNo Or MsgBoxStyle.Question, GetLocalizedString("resurvey.warningtitle")) = MsgBoxResult.Yes Then
             If pGetCurrentProjection() = 0 Then
                 sPlanImage = ""
                 picPlan.Image = Nothing
@@ -5320,4 +5369,65 @@ Friend Class frmResurveyMain
         End If
     End Sub
 
+    Private Sub DockManager_LayoutUpgrade(sender As Object, e As DevExpress.Utils.LayoutUpgradeEventArgs) Handles DockManager.LayoutUpgrade
+        Call modDevExpress.RestoreDockPanel(DockManager, dockProfile, Docking.DockingStyle.Fill)
+        Call modDevExpress.RestoreDockPanel(DockManager, dockPlan, Docking.DockingStyle.Fill)
+        Call modDevExpress.RestoreDockPanel(DockManager, dockStations, Docking.DockingStyle.Right)
+        Call modDevExpress.RestoreDockPanel(DockManager, dockPlot, Docking.DockingStyle.Right)
+    End Sub
+
+    Private Sub DockManager_EndDocking(sender As Object, e As EndDockingEventArgs) Handles DockManager.EndDocking
+        Call modDevExpress.UpdateFloatingForm(Me, e.Panel.FloatForm)
+    End Sub
+
+    Private Sub frmResurveyMain_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        bWorkspaceShowed = True
+        Call pSetCalculateModeView()
+    End Sub
+
+    Private Sub gridviewStations_CustomDrawRowIndicator(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs) Handles gridviewStations.CustomDrawRowIndicator
+        If e.Info.IsRowIndicator AndAlso e.RowHandle >= 0 Then
+            If e.Info.ImageIndex = -1 Then
+                Dim oStation As cStation = gridviewStations.GetRow(e.RowHandle)
+                If oStation IsNot Nothing Then
+                    If Not oStation.IsValid Then
+                        Call e.DefaultDraw()
+                        e.Cache.DrawSvgImage(My.Resources.errorbullet, e.Bounds, DevExpress.Utils.Svg.SvgPaletteHelper.GetSvgPalette(LookAndFeel, DevExpress.Utils.Drawing.ObjectState.Normal))
+                        e.Handled = True
+                    End If
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub gridviewShots_CustomDrawRowIndicator(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs) Handles gridviewShots.CustomDrawRowIndicator
+        If e.Info.IsRowIndicator AndAlso e.RowHandle >= 0 Then
+            If e.Info.ImageIndex = -1 Then
+                Dim oShot As cShot = gridviewShots.GetRow(e.RowHandle)
+                If oShot IsNot Nothing Then
+                    If Not oShot.IsValid Then
+                        Call e.DefaultDraw()
+                        e.Cache.DrawSvgImage(My.Resources.errorbullet, e.Bounds, DevExpress.Utils.Svg.SvgPaletteHelper.GetSvgPalette(LookAndFeel, DevExpress.Utils.Drawing.ObjectState.Normal))
+                        e.Handled = True
+                    End If
+                End If
+            End If
+        End If
+    End Sub
+
+    'Private Sub DockManager_StartDocking(sender As Object, e As DockPanelCancelEventArgs) Handles DockManager.StartDocking
+    '    If docView.Documents.Where(Function(oDocument) oDocument.IsVisible).Count <= 1 Then
+    '        'e.Cancel = True
+    '    End If
+    'End Sub
+    Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
+        If My.Application.CurrentLanguage = "it" Then
+            If keyData = Keys.Decimal Then
+                SendKeys.Send(",")
+                Return True
+            Else
+                Return MyBase.ProcessCmdKey(msg, keyData)
+            End If
+        End If
+    End Function
 End Class

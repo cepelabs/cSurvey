@@ -24,107 +24,138 @@ Partial Class frmItemScaleVisibility
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmItemScaleVisibility))
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.cmdOk = New System.Windows.Forms.Button()
-        Me.mnuScales = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.mnuScalesSelectThisAndNexts = New System.Windows.Forms.ToolStripMenuItem()
-        Me.grdVisibility = New cSurveyPC.cGrid()
-        Me.colScale = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colVisibility = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.mnuScales.SuspendLayout()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
+        Me.imlScale = New DevExpress.Utils.SvgImageCollection(Me.components)
+        Me.iml = New DevExpress.Utils.SvgImageCollection(Me.components)
+        Me.grdVisibility = New DevExpress.XtraGrid.GridControl()
+        Me.grdVisibilityView = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colVisibiltyIcon = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.cboVisibilityIcon = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
+        Me.colVisibiltyScale = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colVisibiltyVisibility = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.cboVisibiltyVisibility = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
+        CType(Me.imlScale, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.iml, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdVisibility, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdVisibilityView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboVisibilityIcon, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboVisibiltyVisibility, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdCancel
         '
-        Me.cmdCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancel.Location = New System.Drawing.Point(212, 224)
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.Size = New System.Drawing.Size(80, 25)
-        Me.cmdCancel.TabIndex = 3
-        Me.cmdCancel.Text = "Annulla"
-        Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'cmdOk
         '
-        Me.cmdOk.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.cmdOk.Location = New System.Drawing.Point(126, 224)
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.Size = New System.Drawing.Size(80, 25)
-        Me.cmdOk.TabIndex = 2
-        Me.cmdOk.Text = "Ok"
-        Me.cmdOk.UseVisualStyleBackColor = True
         '
-        'mnuScales
+        'imlScale
         '
-        Me.mnuScales.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.mnuScales.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuScalesSelectThisAndNexts})
-        Me.mnuScales.Name = "mnuScales"
-        Me.mnuScales.Size = New System.Drawing.Size(190, 26)
+        Me.imlScale.Add("icon_scale", "icon_scale", GetType(cSurveyPC.My.Resources.Resources))
         '
-        'mnuScalesSelectThisAndNexts
+        'iml
         '
-        Me.mnuScalesSelectThisAndNexts.Name = "mnuScalesSelectThisAndNexts"
-        Me.mnuScalesSelectThisAndNexts.Size = New System.Drawing.Size(189, 22)
-        Me.mnuScalesSelectThisAndNexts.Text = "Select this and following"
+        Me.iml.Add("levelup", "levelup", GetType(cSurveyPC.My.Resources.Resources))
+        Me.iml.Add("security_visibility", "security_visibility", GetType(cSurveyPC.My.Resources.Resources))
+        Me.iml.Add("security_visibilityoff", "security_visibilityoff", GetType(cSurveyPC.My.Resources.Resources))
         '
         'grdVisibility
         '
-        Me.grdVisibility.AllowUserToAddRows = False
-        Me.grdVisibility.AllowUserToDeleteRows = False
-        Me.grdVisibility.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.grdVisibility.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdVisibility.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colScale, Me.colVisibility})
-        Me.grdVisibility.Location = New System.Drawing.Point(12, 12)
+        resources.ApplyResources(Me.grdVisibility, "grdVisibility")
+        Me.grdVisibility.MainView = Me.grdVisibilityView
         Me.grdVisibility.Name = "grdVisibility"
-        Me.grdVisibility.Size = New System.Drawing.Size(280, 198)
-        Me.grdVisibility.TabIndex = 6
+        Me.grdVisibility.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.cboVisibiltyVisibility, Me.cboVisibilityIcon})
+        Me.grdVisibility.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdVisibilityView})
         '
-        'colScale
+        'grdVisibilityView
         '
-        Me.colScale.Frozen = True
-        Me.colScale.HeaderText = "Scale"
-        Me.colScale.Name = "colScale"
-        Me.colScale.ReadOnly = True
+        Me.grdVisibilityView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colVisibiltyIcon, Me.colVisibiltyScale, Me.colVisibiltyVisibility})
+        Me.grdVisibilityView.GridControl = Me.grdVisibility
+        Me.grdVisibilityView.Name = "grdVisibilityView"
+        Me.grdVisibilityView.OptionsView.ShowGroupPanel = False
+        Me.grdVisibilityView.OptionsView.ShowIndicator = False
         '
-        'colVisibility
+        'colVisibiltyIcon
         '
-        Me.colVisibility.HeaderText = "Visibility"
-        Me.colVisibility.Name = "colVisibility"
+        resources.ApplyResources(Me.colVisibiltyIcon, "colVisibiltyIcon")
+        Me.colVisibiltyIcon.ColumnEdit = Me.cboVisibilityIcon
+        Me.colVisibiltyIcon.FieldName = "Type"
+        Me.colVisibiltyIcon.MaxWidth = 24
+        Me.colVisibiltyIcon.MinWidth = 24
+        Me.colVisibiltyIcon.Name = "colVisibiltyIcon"
+        Me.colVisibiltyIcon.OptionsColumn.AllowEdit = False
+        Me.colVisibiltyIcon.OptionsColumn.FixedWidth = True
+        Me.colVisibiltyIcon.OptionsColumn.ReadOnly = True
+        '
+        'cboVisibilityIcon
+        '
+        resources.ApplyResources(Me.cboVisibilityIcon, "cboVisibilityIcon")
+        Me.cboVisibilityIcon.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboVisibilityIcon.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboVisibilityIcon.Name = "cboVisibilityIcon"
+        Me.cboVisibilityIcon.SmallImages = Me.imlScale
+        '
+        'colVisibiltyScale
+        '
+        resources.ApplyResources(Me.colVisibiltyScale, "colVisibiltyScale")
+        Me.colVisibiltyScale.FieldName = "Scale"
+        Me.colVisibiltyScale.Name = "colVisibiltyScale"
+        Me.colVisibiltyScale.OptionsColumn.AllowEdit = False
+        Me.colVisibiltyScale.OptionsColumn.ReadOnly = True
+        '
+        'colVisibiltyVisibility
+        '
+        resources.ApplyResources(Me.colVisibiltyVisibility, "colVisibiltyVisibility")
+        Me.colVisibiltyVisibility.ColumnEdit = Me.cboVisibiltyVisibility
+        Me.colVisibiltyVisibility.FieldName = "Visibility"
+        Me.colVisibiltyVisibility.Name = "colVisibiltyVisibility"
+        '
+        'cboVisibiltyVisibility
+        '
+        resources.ApplyResources(Me.cboVisibiltyVisibility, "cboVisibiltyVisibility")
+        Me.cboVisibiltyVisibility.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboVisibiltyVisibility.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboVisibiltyVisibility.Name = "cboVisibiltyVisibility"
+        Me.cboVisibiltyVisibility.SmallImages = Me.iml
         '
         'frmItemScaleVisibility
         '
         Me.AcceptButton = Me.cmdOk
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.Appearance.Options.UseFont = True
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdCancel
-        Me.ClientSize = New System.Drawing.Size(304, 261)
         Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.cmdOk)
         Me.Controls.Add(Me.grdVisibility)
-        Me.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Location = New System.Drawing.Point(0, 0)
+        Me.IconOptions.Icon = CType(resources.GetObject("frmItemScaleVisibility.IconOptions.Icon"), System.Drawing.Icon)
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.icon_scale
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmItemScaleVisibility"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Item visibility by scale:"
-        Me.mnuScales.ResumeLayout(False)
+        CType(Me.imlScale, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.iml, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdVisibility, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdVisibilityView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboVisibilityIcon, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboVisibiltyVisibility, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents cmdCancel As Button
-    Friend WithEvents cmdOk As Button
-    Friend WithEvents mnuScales As ContextMenuStrip
-    Friend WithEvents mnuScalesSelectThisAndNexts As ToolStripMenuItem
-    Friend WithEvents grdVisibility As cGrid
-    Friend WithEvents colScale As DataGridViewTextBoxColumn
-    Friend WithEvents colVisibility As DataGridViewComboBoxColumn
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents imlScale As DevExpress.Utils.SvgImageCollection
+    Friend WithEvents iml As DevExpress.Utils.SvgImageCollection
+    Friend WithEvents grdVisibility As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdVisibilityView As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents colVisibiltyIcon As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents cboVisibilityIcon As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
+    Friend WithEvents colVisibiltyScale As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colVisibiltyVisibility As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents cboVisibiltyVisibility As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
 End Class

@@ -65,7 +65,6 @@ friend Class frmSettings
 
             Call oReg.SetValue("environment.setdesigntoolsenabledbylevel", If(chkSetDesignToolsEnabledByLevel.Checked, 1, 0))
             Call oReg.SetValue("environment.setdesigntoolshiddenbylevel", If(chkSetDesignToolsHiddenByLevel.Checked, 1, 0))
-            Call oReg.SetValue("environment.allowresizablemainpanels", If(chkAllowResizablePanel.Checked, 1, 0))
 
             Dim oDefaultFont As cIFont = txtDefaultFont.Tag
             Call oReg.SetValue("design.defaultfont.name", oDefaultFont.FontName)
@@ -88,19 +87,20 @@ friend Class frmSettings
 
             Call oReg.SetValue("zoom.type", cboDesignZoomType.SelectedIndex)
 
-            Call oReg.SetValue("debug.log", If(chkLogEnabled.Checked, 1, 0))
+            Call oReg.SetValue("debug.log.verbose", If(chkLogVerbose.Checked, 1, 0))
+            Call oReg.SetValue("debug.log.writeonfile", If(chkLogOnFile.Checked, 1, 0))
+            Call oReg.SetValue("debug.log.maxlinecount", txtLogMaxLine.EditValue)
+
             Call oReg.SetValue("debug.autosave", If(chkAutosave.Checked, 1, 0))
             Call oReg.SetValue("debug.autosave.usehistorysettings", IIf(chkAutosaveUseHistorySettings.Checked, 1, 0))
             Call oReg.SetValue("debug.sendexception", If(chkSendException.Checked, 1, 0))
             Call oReg.SetValue("debug.checknewversion", If(chkCheckNewVersion.Checked, 1, 0))
-            Call oReg.SetValue("debug.multithreading", If(chkMultiThreading.Checked, 1, 0))
+            'Call oReg.SetValue("debug.multithreading", If(chkMultiThreading.Checked, 1, 0))
 
             Call oReg.SetValue("clipboard.segments.extformats", pGetClipboardFormats("segments"))
             Call oReg.SetValue("clipboard.designitems.extformats", pGetClipboardFormats("designitems"))
             Call oReg.SetValue("clipboard.cleanpastedstation", If(chkClipboardCleanPastedStation.Checked, 1, 0))
             Call oReg.SetValue("clipboard.uselocalformat", If(chkClipboardLocalFormat.Checked, 1, 0))
-
-            Call oReg.SetValue("layers.showitempreview", IIf(chkLayersShowItemPreview.Checked, 1, 0))
 
             Call oReg.SetValue("history.enabled", If(chkHistory.Checked, 1, 0))
             Call oReg.SetValue("history.mode", cboHistoryMode.SelectedIndex)
@@ -210,6 +210,31 @@ friend Class frmSettings
         InitializeComponent()
 
         ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
+        Call tabMain.BeginUpdate()
+        tabMain.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False
+        For Each oTabControl As DevExpress.XtraTab.XtraTabPage In tabMain.TabPages
+            Dim oPanel As DevExpress.XtraEditors.PanelControl = New DevExpress.XtraEditors.PanelControl
+            Me.Controls.Add(oPanel)
+            oPanel.Name = "_" & oTabControl.Name
+            oPanel.Size = oTabControl.ClientSize
+            Dim oControls As List(Of Control) = New List(Of Control)
+            For Each oControl As Control In oTabControl.Controls
+                Call oControls.Add(oControl)
+            Next
+            For Each oControl As Control In oControls
+                Try
+                    oPanel.Controls.Add(oControl)
+                Catch ex As Exception
+                End Try
+            Next
+            oPanel.Tag = tabMain.TabPages.IndexOf(oTabControl)
+            oPanel.Dock = DockStyle.Fill
+            oPanel.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+            oPanel.Visible = False
+        Next
+        tabMain.Visible = False
+        Call tabMain.EndUpdate()
+
         Call pFillClipboardItems()
 
         'preparo la tab delle impostazioni di history
@@ -230,7 +255,7 @@ friend Class frmSettings
 
             cboDesignQuality.SelectedIndex = oReg.GetValue("design.quality", 0)
             chkDesignShowRulers.Checked = oReg.GetValue("design.rulers", 1)
-            cboDesignShowRulersStyle.SelectedIndex = oReg.GetValue("design.rulers.style", frmMain.RulersStyleEnum.Simple)
+            cboDesignShowRulersStyle.SelectedIndex = oReg.GetValue("design.rulers.style", frmMain2.RulersStyleEnum.Simple)
             cboDesignShowMetricGrid.SelectedIndex = oReg.GetValue("design.metricgrid", 0)
             txtDesignMetricGridOpacity.Value = oReg.GetValue("design.metricgrid.opacity", 50)
             cboDesignClipBorder.SelectedIndex = oReg.GetValue("design.clipborder", cSurvey.Design.cClippingRegions.ClipBorderEnum.ClipBorder)
@@ -271,7 +296,6 @@ friend Class frmSettings
 
             cboDesignZoomType.SelectedIndex = oReg.GetValue("zoom.type", 1)
 
-            chkAllowResizablePanel.Checked = oReg.GetValue("environment.allowresizablemainpanels", 0)
             chkSetDesignToolsEnabledByLevel.Checked = oReg.GetValue("environment.setdesigntoolsenabledbylevel", 1)
             Call chkSetDesignToolsEnabledByLevel_CheckedChanged(Nothing, Nothing)
             chkSetDesignToolsHiddenByLevel.Checked = oReg.GetValue("environment.setdesigntoolshiddenbylevel", 0)
@@ -286,13 +310,16 @@ friend Class frmSettings
             chkVTopoImportIncompatibleSet.Checked = oReg.GetValue("vtopo.importincompatibleset", 0)
             chkVTopoImportSetAsBranch.Checked = oReg.GetValue("vtopo.importsetasbranch", 1)
 
-            chkLogEnabled.Checked = oReg.GetValue("debug.log", 0)
+            chkLogVerbose.Checked = oReg.GetValue("debug.log.verbose", 0)
+            chkLogOnFile.Checked = oReg.GetValue("debug.log.writeonfile", 0)
+            txtLogMaxLine.EditValue = oReg.GetValue("debug.log.maxlinecount", 512)
+
             chkAutosave.Checked = oReg.GetValue("debug.autosave", 0)
             chkAutosaveUseHistorySettings.Checked = oReg.GetValue("debug.autosave.usehistorysettings", 0)
             chkSendException.Checked = oReg.GetValue("debug.sendexception", 0)
             chkCheckNewVersion.Checked = oReg.GetValue("debug.checknewversion", 0)
-            chkMultiThreading.Enabled = Environment.ProcessorCount > 1
-            chkMultiThreading.Checked = oReg.GetValue("debug.multithreading", 0)
+            'chkMultiThreading.Enabled = Environment.ProcessorCount > 1
+            'chkMultiThreading.Checked = oReg.GetValue("debug.multithreading", 0)
             txtMachineID.Text = oReg.GetValue("debug.machineid", "")
 
             Call pSetClipboardFormats("segments", oReg.GetValue("clipboard.segments.extformats", ""))
@@ -319,8 +346,6 @@ friend Class frmSettings
 
             txtDefaultFolder.Text = oReg.GetValue("default.folder", "")
 
-            chkLayersShowItemPreview.Checked = oReg.GetValue("layers.showitempreview", 0)
-
             chkWMSCacheEnabled.Checked = oReg.GetValue("wms.cache.enabled", 1)
             txtWMSCacheMaxSize.Value = oReg.GetValue("wms.cache.maxsize", 512)
 
@@ -346,7 +371,26 @@ friend Class frmSettings
         End Using
 
         Call pWMSRefreshCacheSize()
+
+        AddHandler Me.Shown, Sub(sender As Object, e As EventArgs)
+                                 Call pSelectTabByIndex(0)
+                             End Sub
     End Sub
+    Private Function pSelectTabByIndex(TabIndex As Integer) As Boolean
+        Try
+            Dim sName As String = tabMain.TabPages(TabIndex).Name
+            For Each oElement In AccordionControl1.GetElements
+                If oElement.Tag IsNot Nothing AndAlso oElement.Tag.tolower = sName.ToLower Then
+                    Call AccordionControl1.SelectElement(oElement)
+                    Call AccordionControl1.MakeElementVisible(oElement)
+                    Return True
+                End If
+            Next
+            Return False
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
 
     Private Sub pWMSRefreshCacheSize()
         Cursor = Cursors.WaitCursor
@@ -415,12 +459,12 @@ friend Class frmSettings
         Try
             Dim oNetHistory As cNetHistory = New cNetHistory(txtHistoryWebURL.Text, 0, 0)
             If oNetHistory.Login(txtHistoryWebUsername.Text, txtHistoryWebPassword.Text) Then
-                Call MsgBox(modMain.GetLocalizedString("settings.warning1"), vbOKOnly Or vbInformation, modMain.GetLocalizedString("settings.warningtitle"))
+                Call cSurvey.UIHelpers.Dialogs.Msgbox(modMain.GetLocalizedString("settings.warning1"), vbOKOnly Or vbInformation, modMain.GetLocalizedString("settings.warningtitle"))
             Else
-                Call MsgBox(String.Format(modMain.GetLocalizedString("settings.warning2"), oNetHistory.LastMessage), vbOKOnly Or vbCritical, modMain.GetLocalizedString("settings.warningtitle"))
+                Call cSurvey.UIHelpers.Dialogs.Msgbox(String.Format(modMain.GetLocalizedString("settings.warning2"), oNetHistory.LastMessage), vbOKOnly Or vbCritical, modMain.GetLocalizedString("settings.warningtitle"))
             End If
         Catch ex As Exception
-            Call MsgBox(String.Format(modMain.GetLocalizedString("settings.warning2"), ex.Message), vbOKOnly Or vbCritical, modMain.GetLocalizedString("settings.warningtitle"))
+            Call cSurvey.UIHelpers.Dialogs.Msgbox(String.Format(modMain.GetLocalizedString("settings.warning2"), ex.Message), vbOKOnly Or vbCritical, modMain.GetLocalizedString("settings.warningtitle"))
         End Try
     End Sub
 
@@ -488,9 +532,13 @@ friend Class frmSettings
     '    Call oPai.Create("Open cSurvey file", New ProgramVerb("Open", Chr(34) & Application.ExecutablePath & Chr(34) & " " & Chr(34) & "%1" & Chr(34)))
     '    oPai.DefaultIcon = New ProgramIcon(Application.ExecutablePath, 0)
     'End Sub
-
-    'Private Sub cmdFileAssociationRemove_Click(sender As Object, e As EventArgs) Handles cmdFileAssociationRemove.Click
-    '    Call pRemoveAssociatedExtension("csx")
-    '    Call pRemoveAssociatedExtension("csz")
-    'End Sub
+    Private Sub AccordionControl1_SelectedElementChanged(sender As Object, e As DevExpress.XtraBars.Navigation.SelectedElementChangedEventArgs) Handles AccordionControl1.SelectedElementChanged
+        Dim sControlName As String = "" & e.Element.Tag
+        If sControlName <> "" Then
+            If Controls.ContainsKey("_" & sControlName) Then
+                Call Controls("_" & sControlName).BringToFront()
+                Controls("_" & sControlName).Visible = True
+            End If
+        End If
+    End Sub
 End Class

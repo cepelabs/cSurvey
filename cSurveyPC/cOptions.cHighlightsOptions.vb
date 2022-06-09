@@ -9,10 +9,17 @@ Imports System.Collections.ObjectModel
 Namespace cSurvey.Design.Options
     Public Class cHighlightsOptions
         Implements IEnumerable
+        Implements cIUIBaseInteractions
 
         Private oSurvey As cSurvey
 
         Private oItems As List(Of String)
+
+        Public Event OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Implements cIUIBaseInteractions.OnPropertyChanged
+
+        Public Sub PropertyChanged(Name As String) Implements cIUIBaseInteractions.PropertyChanged
+            RaiseEvent OnPropertyChanged(Me, New PropertyChangeEventArgs(Name))
+        End Sub
 
         Friend Sub New(ByVal Survey As cSurvey)
             oSurvey = Survey
@@ -27,17 +34,29 @@ Namespace cSurvey.Design.Options
             Return oItems.Contains(Item.ID, StringComparer.OrdinalIgnoreCase)
         End Function
 
-        Public Sub [Set](Item As Properties.cHighlightsDetail, Value As Boolean)
-            Call [Set](Item.ID, Value)
-        End Sub
+        ''' <summary>
+        ''' Set options value
+        ''' </summary>
+        ''' <param name="Item">Option to change</param>
+        ''' <param name="Value">Option's value</param>
+        ''' <returns>Return True if option was changed, false if not</returns>
+        Public Function [Set](Item As Properties.cHighlightsDetail, Value As Boolean) As Boolean
+            Return [Set](Item.ID, Value)
+        End Function
 
-        Public Sub [Set](Name As String, Value As Boolean)
+        ''' <summary>
+        ''' Set options value
+        ''' </summary>
+        ''' <param name="Name">Option's name</param>
+        ''' <param name="Value">Option's value</param>
+        ''' <returns>Return True if option was changed, false if not</returns>
+        Public Function [Set](Name As String, Value As Boolean) As Boolean
             If Value Then
-                Call Add(Name)
+                Return Add(Name)
             Else
-                Call Remove(Name)
+                Return Remove(Name)
             End If
-        End Sub
+        End Function
 
         Default Public ReadOnly Property Item(Index As Integer) As String
             Get
@@ -55,29 +74,38 @@ Namespace cSurvey.Design.Options
             End Get
         End Property
 
-        Public Sub Add(Item As Properties.cHighlightsDetail)
-            Call Add(Item.ID)
-        End Sub
+        Friend Function Add(Item As Properties.cHighlightsDetail) As Boolean
+            Return Add(Item.ID)
+        End Function
 
-        Public Sub Add(Name As String)
-            If Not oItems.Contains(Name, StringComparer.OrdinalIgnoreCase) Then
+        Friend Function Add(Name As String) As Boolean
+            If oItems.Contains(Name, StringComparer.OrdinalIgnoreCase) Then
+                Return False
+            Else
                 Call oItems.Add(Name)
+                Call PropertyChanged(Name)
+                Return True
             End If
-        End Sub
+        End Function
 
         Public Sub Clear()
             Call oItems.Clear()
+            Call PropertyChanged("Clear")
         End Sub
 
-        Public Sub Remove(Item As Properties.cHighlightsDetail)
-            Call Remove(Item.ID)
-        End Sub
+        Friend Function Remove(Item As Properties.cHighlightsDetail) As Boolean
+            Return Remove(Item.ID)
+        End Function
 
-        Public Sub Remove(Name As String)
+        Friend Function Remove(Name As String) As Boolean
             If oItems.Contains(Name, StringComparer.OrdinalIgnoreCase) Then
                 Call oItems.Remove(Name)
+                Call PropertyChanged(Name)
+                Return True
+            Else
+                Return False
             End If
-        End Sub
+        End Function
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal HighlightsOptions As XmlElement)
             oSurvey = Survey

@@ -199,9 +199,9 @@ Namespace cSurvey.Design
             End Sub
         End Class
 
-        Friend MustOverride Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        Friend MustOverride Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
         'Friend MustOverride Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum, Size As SizeF, PageBox As RectangleF, ByVal ViewBox As RectangleF) As XmlDocument
-        Friend MustOverride Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, Selection As Helper.Editor.cIEditSelection)
+        Friend MustOverride Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, Selection As Helper.Editor.cIEditSelection)
 
         Friend ReadOnly Property Compass As cDesignCompass
             Get
@@ -230,7 +230,7 @@ Namespace cSurvey.Design
             oScale = New cDesignScale(oSurvey)
         End Sub
 
-        Public Overridable Sub Redraw(Optional Options As cOptions = Nothing)
+        Public Overridable Sub Redraw(Optional Options As cOptionsCenterline = Nothing)
             Call oCaches.Invalidate(Options)
         End Sub
 
@@ -244,23 +244,38 @@ Namespace cSurvey.Design
         Friend MustOverride Sub CalculateSplay()
         Friend MustOverride Sub ResetChanges()
 
-        Friend Function GetAllVisibleSegments(PaintOptions As cOptions) As List(Of cISegment)
+        Friend Function GetAllSegments(PaintOptions As cOptionsCenterline) As List(Of cISegment)
+            Dim oSegments As List(Of cISegment) = New List(Of cISegment)
+            For Each oSegment As cSegment In oSurvey.Segments.GetSurveySegments
+                If Not oSegment.IsSelfDefined AndAlso Not oSegment.Splay Then
+                    Dim bVisible As Boolean = True
+                    If oSegment.Surface Then
+                        bVisible = (PaintOptions.DrawSegmentsOptions And cOptionsCenterline.DrawSegmentsOptionsEnum.Surface) = cOptionsCenterline.DrawSegmentsOptionsEnum.Surface
+                    End If
+                    If oSegment.Duplicate Then
+                        bVisible = (PaintOptions.DrawSegmentsOptions And cOptionsCenterline.DrawSegmentsOptionsEnum.Duplicate) = cOptionsCenterline.DrawSegmentsOptionsEnum.Duplicate
+                    End If
+                    If bVisible Then
+                        Call oSegments.Add(oSegment)
+                    End If
+                End If
+            Next
+            Return oSegments
+        End Function
+
+        Friend Function GetAllVisibleSegments(PaintOptions As cOptionsCenterline) As List(Of cISegment)
             Dim oVisibleSegments As List(Of cISegment) = New List(Of cISegment)
             Dim oSegments As cISegmentCollection = oSurvey.Segments.GetSurveySegments
             Dim sCurrentProfile As String = PaintOptions.CurrentCaveVisibilityProfile
             If sCurrentProfile = "" Then
                 For Each oSegment As cSegment In oSegments
-                    'OrElse (PaintOptions.IsDesign AndAlso (DirectCast(PaintOptions, cOptionsDesign).DrawPrintOrExportArea))
-                    If oSegment.IsValid AndAlso Not oSegment.IsSelfDefined AndAlso ((PaintOptions.IsDesign AndAlso Not oSegment.HiddenInDesign) OrElse ((PaintOptions.IsPreview OrElse PaintOptions.IsViewer) AndAlso Not oSegment.HiddenInPreview)) Then
+                    If Not oSegment.IsSelfDefined AndAlso Not oSegment.Splay AndAlso ((PaintOptions.IsDesign AndAlso Not oSegment.HiddenInDesign) OrElse ((PaintOptions.IsPreview OrElse PaintOptions.IsViewer) AndAlso Not oSegment.HiddenInPreview)) Then
                         Dim bVisible As Boolean = True
-                        If oSegment.Splay Then
-                            bVisible = PaintOptions.DrawSplay
-                        End If
                         If oSegment.Surface Then
-                            bVisible = (PaintOptions.DrawSegmentsOptions And cOptions.DrawSegmentsOptionsEnum.Surface) = cOptions.DrawSegmentsOptionsEnum.Surface
+                            bVisible = (PaintOptions.DrawSegmentsOptions And cOptionsCenterline.DrawSegmentsOptionsEnum.Surface) = cOptionsCenterline.DrawSegmentsOptionsEnum.Surface
                         End If
                         If oSegment.Duplicate Then
-                            bVisible = (PaintOptions.DrawSegmentsOptions And cOptions.DrawSegmentsOptionsEnum.Duplicate) = cOptions.DrawSegmentsOptionsEnum.Duplicate
+                            bVisible = (PaintOptions.DrawSegmentsOptions And cOptionsCenterline.DrawSegmentsOptionsEnum.Duplicate) = cOptionsCenterline.DrawSegmentsOptionsEnum.Duplicate
                         End If
                         If bVisible Then
                             Call oVisibleSegments.Add(oSegment)
@@ -271,16 +286,13 @@ Namespace cSurvey.Design
                 Dim sSegmentsQuery As String = oSurvey.Properties.CaveVisibilityProfiles.GetSegmentsQuery(sCurrentProfile)
                 If sSegmentsQuery = "" Then
                     For Each oSegment As cSegment In oSegments
-                        If oSegment.IsValid AndAlso Not oSegment.IsSelfDefined AndAlso ((PaintOptions.IsDesign AndAlso Not oSegment.HiddenInDesign) OrElse ((PaintOptions.IsPreview OrElse PaintOptions.IsViewer) AndAlso Not oSegment.HiddenInPreview)) Then
+                        If oSegment.IsValid AndAlso Not oSegment.IsSelfDefined AndAlso Not oSegment.Splay AndAlso ((PaintOptions.IsDesign AndAlso Not oSegment.HiddenInDesign) OrElse ((PaintOptions.IsPreview OrElse PaintOptions.IsViewer) AndAlso Not oSegment.HiddenInPreview)) Then
                             Dim bVisible As Boolean = True
-                            If oSegment.Splay Then
-                                bVisible = PaintOptions.DrawSplay
-                            End If
                             If oSegment.Surface Then
-                                bVisible = (PaintOptions.DrawSegmentsOptions And cOptions.DrawSegmentsOptionsEnum.Surface) = cOptions.DrawSegmentsOptionsEnum.Surface
+                                bVisible = (PaintOptions.DrawSegmentsOptions And cOptionsCenterline.DrawSegmentsOptionsEnum.Surface) = cOptionsCenterline.DrawSegmentsOptionsEnum.Surface
                             End If
                             If oSegment.Duplicate Then
-                                bVisible = (PaintOptions.DrawSegmentsOptions And cOptions.DrawSegmentsOptionsEnum.Duplicate) = cOptions.DrawSegmentsOptionsEnum.Duplicate
+                                bVisible = (PaintOptions.DrawSegmentsOptions And cOptionsCenterline.DrawSegmentsOptionsEnum.Duplicate) = cOptionsCenterline.DrawSegmentsOptionsEnum.Duplicate
                             End If
                             If bVisible Then
                                 If oSurvey.Properties.CaveVisibilityProfiles.GetVisible(sCurrentProfile, oSegment.Cave, oSegment.Branch) Then
@@ -293,16 +305,13 @@ Namespace cSurvey.Design
                     Try
                         Dim oQuerySegments = From oSegment As cSegment In oSegments.ToArray.AsQueryable.Where(sSegmentsQuery) Select oSegment
                         For Each oSegment As cSegment In oQuerySegments
-                            If oSegment.IsValid AndAlso Not oSegment.IsSelfDefined AndAlso ((PaintOptions.IsDesign AndAlso Not oSegment.HiddenInDesign) OrElse ((PaintOptions.IsPreview OrElse PaintOptions.IsViewer) AndAlso Not oSegment.HiddenInPreview)) Then
+                            If oSegment.IsValid AndAlso Not oSegment.IsSelfDefined AndAlso Not oSegment.Splay AndAlso ((PaintOptions.IsDesign AndAlso Not oSegment.HiddenInDesign) OrElse ((PaintOptions.IsPreview OrElse PaintOptions.IsViewer) AndAlso Not oSegment.HiddenInPreview)) Then
                                 Dim bVisible As Boolean = True
-                                If oSegment.Splay Then
-                                    bVisible = PaintOptions.DrawSplay
-                                End If
                                 If oSegment.Surface Then
-                                    bVisible = (PaintOptions.DrawSegmentsOptions And cOptions.DrawSegmentsOptionsEnum.Surface) = cOptions.DrawSegmentsOptionsEnum.Surface
+                                    bVisible = (PaintOptions.DrawSegmentsOptions And cOptionsCenterline.DrawSegmentsOptionsEnum.Surface) = cOptionsCenterline.DrawSegmentsOptionsEnum.Surface
                                 End If
                                 If oSegment.Duplicate Then
-                                    bVisible = (PaintOptions.DrawSegmentsOptions And cOptions.DrawSegmentsOptionsEnum.Duplicate) = cOptions.DrawSegmentsOptionsEnum.Duplicate
+                                    bVisible = (PaintOptions.DrawSegmentsOptions And cOptionsCenterline.DrawSegmentsOptionsEnum.Duplicate) = cOptionsCenterline.DrawSegmentsOptionsEnum.Duplicate
                                 End If
                                 If bVisible Then
                                     If oSurvey.Properties.CaveVisibilityProfiles.GetVisible(sCurrentProfile, oSegment.Cave, oSegment.Branch) Then
@@ -312,23 +321,23 @@ Namespace cSurvey.Design
                             End If
                         Next
                     Catch ex As Exception
-                        MsgBox(ex.Message, MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, "Attenzione:")
+                        Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Error, ex.Message)
                     End Try
                 End If
             End If
             Return oVisibleSegments
         End Function
 
-        Public MustOverride Function HitTest(ByVal PaintOptions As cOptions, ByVal CurrentCave As String, ByVal CurrentBranch As String, ByVal Point As PointF, Optional Wide As Decimal = Decimal.MaxValue) As cPlotHitTestResult
+        Public MustOverride Function HitTest(ByVal PaintOptions As cOptionsCenterline, ByVal CurrentCave As String, ByVal CurrentBranch As String, ByVal Point As PointF, Optional Wide As Decimal = Decimal.MaxValue) As cPlotHitTestResult
 
-        Public Overridable Function HitTest(ByVal PaintOptions As cOptions, ByVal CurrentCave As String, ByVal CurrentBranch As String, ByVal X As Single, ByVal Y As Single, Optional Wide As Decimal = Decimal.MaxValue) As cPlotHitTestResult
+        Public Overridable Function HitTest(ByVal PaintOptions As cOptionsCenterline, ByVal CurrentCave As String, ByVal CurrentBranch As String, ByVal X As Single, ByVal Y As Single, Optional Wide As Decimal = Decimal.MaxValue) As cPlotHitTestResult
             Return HitTest(PaintOptions, CurrentCave, CurrentBranch, New PointF(X, Y), Wide)
         End Function
 
-        Public MustOverride Function GetBounds(PaintOptions As cOptions) As RectangleF
-        Public MustOverride Function GetVisibleBounds(PaintOptions As cOptions) As RectangleF
-        Public MustOverride Function GetCaveBounds(PaintOptions As cOptions, ByVal Cave As String, Branch As String) As RectangleF
-        Public MustOverride Function GetVisibleCaveBounds(PaintOptions As cOptions, ByVal Cave As String, Branch As String) As RectangleF
+        Public MustOverride Function GetBounds(PaintOptions As cOptionsCenterline) As RectangleF
+        Public MustOverride Function GetVisibleBounds(PaintOptions As cOptionsCenterline) As RectangleF
+        Public MustOverride Function GetCaveBounds(PaintOptions As cOptionsCenterline, ByVal Cave As String, Branch As String) As RectangleF
+        Public MustOverride Function GetVisibleCaveBounds(PaintOptions As cOptionsCenterline, ByVal Cave As String, Branch As String) As RectangleF
 
     End Class
 End Namespace

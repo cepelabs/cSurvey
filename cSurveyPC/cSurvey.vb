@@ -6,7 +6,7 @@ Imports cSurveyPC.cSurvey.CaveRegister
 
 Namespace cSurvey
     Public Class cSurvey
-        Public Const Version As String = "1.12"
+        Public Const Version As String = "1.13"
 
         Private sID As String
 
@@ -20,6 +20,7 @@ Namespace cSurvey
         Private oAttachments As cAttachments
         Private oCliparts As cCliparts
         Private oSigns As cSigns
+        Private oPens As cPens
 
         Private WithEvents oPlan As cDesignPlan
         Private WithEvents oProfile As cDesignProfile
@@ -45,7 +46,7 @@ Namespace cSurvey
 
         Private WithEvents oSurface As cSurface
 
-        Private oCaveRegister As cCaveRegister
+        'Private oCaveRegister As cCaveRegister
 
         Private oTexts As cTexts
 
@@ -137,8 +138,9 @@ Namespace cSurvey
             Remove = 1
             RemoveRange = 2
             Change = 3
-            Clear = 4
-            Reassigned = 5
+            ChangeRange = 4
+            Clear = 5
+            Reassigned = 6
             BeforeAdd = 10
             Splay = 20
         End Enum
@@ -172,7 +174,7 @@ Namespace cSurvey
                 sRequestedVersion = RequestedVersion
             End Sub
         End Class
-        Public Event OnFileConversionRequest(ByVal Sender As cSurvey, ByVal Args As cFileConversionEventArgs)
+        Public Event OnFileConversionRequest(ByVal Sender As Object, ByVal Args As cFileConversionEventArgs)
 
         Public Class OnSegmentChangeEventArgs
             Inherits EventArgs
@@ -224,7 +226,7 @@ Namespace cSurvey
                 End Get
             End Property
         End Class
-        Public Event OnSegmentsChange(ByVal Sender As cSurvey, ByVal Args As OnSegmentChangeEventArgs)
+        Public Event OnSegmentsChange(ByVal Sender As Object, ByVal Args As OnSegmentChangeEventArgs)
 
         Public Class OnCrossSectionChangeEventArgs
             Inherits EventArgs
@@ -267,7 +269,7 @@ Namespace cSurvey
                 End Get
             End Property
         End Class
-        Public Event OnCrossSectionsChange(ByVal Sender As cSurvey, ByVal Args As OnCrossSectionChangeEventArgs)
+        Public Event OnCrossSectionsChange(ByVal Sender As Object, ByVal Args As OnCrossSectionChangeEventArgs)
 
         Public Class OnTrigpointChangeEventArgs
             Inherits EventArgs
@@ -301,7 +303,7 @@ Namespace cSurvey
                 End Get
             End Property
         End Class
-        Public Event OnTrigpointsChange(ByVal Sender As cSurvey, ByVal Args As OnTrigpointChangeEventArgs)
+        Public Event OnTrigpointsChange(ByVal Sender As Object, ByVal Args As OnTrigpointChangeEventArgs)
 
         Public Class OnPropertiesChangedEventArgs
             Inherits EventArgs
@@ -328,8 +330,8 @@ Namespace cSurvey
                 iSource = Source
             End Sub
         End Class
-        Public Event OnBeforePropertiesChange(ByVal Sender As cSurvey, ByVal Args As OnPropertiesChangedEventArgs)
-        Public Event OnPropertiesChanged(ByVal Sender As cSurvey, ByVal Args As OnPropertiesChangedEventArgs)
+        Public Event OnBeforePropertiesChange(ByVal Sender As Object, ByVal Args As OnPropertiesChangedEventArgs)
+        Public Event OnPropertiesChanged(ByVal Sender As Object, ByVal Args As OnPropertiesChangedEventArgs)
 
         Public Class OnGetDefaultSignFromGalleryEventArgs
             Inherits EventArgs
@@ -366,7 +368,7 @@ Namespace cSurvey
                 iSign = Sign
             End Sub
         End Class
-        Public Event OnGetDefaultSignFromGallery(Sender As cSurvey, Args As OnGetDefaultSignFromGalleryEventArgs)
+        Public Event OnGetDefaultSignFromGallery(Sender As Object, Args As OnGetDefaultSignFromGalleryEventArgs)
 
         Public Class OnSurfaceChangedEventArgs
             Inherits EventArgs
@@ -388,7 +390,7 @@ Namespace cSurvey
                 iSource = Source
             End Sub
         End Class
-        Public Event OnSurfaceChanged(ByVal Sender As cSurvey, ByVal Args As OnSurfaceChangedEventArgs)
+        Public Event OnSurfaceChanged(ByVal Sender As Object, ByVal Args As OnSurfaceChangedEventArgs)
 
         Public Class OnWarpingDetailsEventArgs
             Inherits EventArgs
@@ -424,7 +426,7 @@ Namespace cSurvey
                 iDesignType = DesignType
             End Sub
         End Class
-        Public Event OnWarpingDetails(Sender As cSurvey, Args As OnWarpingDetailsEventArgs)
+        Public Event OnWarpingDetails(Sender As Object, Args As OnWarpingDetailsEventArgs)
 
         Public Class OnCleanUpFoundUndefinedCavesEventArgs
             Inherits EventArgs
@@ -459,7 +461,7 @@ Namespace cSurvey
                 End Get
             End Property
         End Class
-        Public Event OnCleanUpFoundUndefinedCavesEvent(ByVal Sender As cSurvey, ByVal Args As OnCleanUpFoundUndefinedCavesEventArgs)
+        Public Event OnCleanUpFoundUndefinedCavesEvent(ByVal Sender As Object, ByVal Args As OnCleanUpFoundUndefinedCavesEventArgs)
 
         Public Class OnProgressEventArgs
             Inherits EventArgs
@@ -533,7 +535,7 @@ Namespace cSurvey
                 End Get
             End Property
         End Class
-        Public Event OnProgress(ByVal Sender As cSurvey, ByVal Args As OnProgressEventArgs)
+        Public Event OnProgress(ByVal Sender As Object, ByVal Args As OnProgressEventArgs)
 
         Public Class OnDebugEventArgs
             Inherits EventArgs
@@ -548,37 +550,49 @@ Namespace cSurvey
         End Class
 
         Public Enum LogEntryType
-            [Unknown] = 0
-            [Error] = 1
-            [Warning] = 2
-            [Information] = 4
+            [Unknown] = &H0
+            [Error] = &H1
+            [Warning] = &H2
+            [Information] = &H4
+            [Important] = &H16
         End Enum
 
         Public Class OnLogEventArgs
             Public Type As LogEntryType
             Public Text As String
-            Public ShowInConsole As Boolean
-            Public ConsoleText As String
-
-            Public Sub New(ByVal Type As String, ByVal Text As String, Optional ByVal ShowInConsole As Boolean = False, Optional ByVal ConsoleText As String = "")
+            Public Sub New(ByVal Type As LogEntryType, ByVal Text As String)
                 Me.Type = Type
                 Me.Text = Text
-                Me.ShowInConsole = ShowInConsole
-                Me.ConsoleText = ConsoleText
             End Sub
         End Class
 
-        Public Event OnLog(ByVal Sender As cSurvey, ByVal Args As OnLogEventArgs)
-        Public Event OnDebug(ByVal Sender As cSurvey, ByVal Args As OnDebugEventArgs)
+        Public Class OnErrorLogEventArgs
+            Inherits OnLogEventArgs
+
+            Private oException As Exception
+
+            Public ReadOnly Property Exception As Exception
+                Get
+                    Return oException
+                End Get
+            End Property
+            Public Sub New(Text As String, Exception As Exception)
+                MyBase.New(LogEntryType.Error, Text)
+                oException = Exception
+            End Sub
+        End Class
+
+        Public Event OnLog(ByVal Sender As Object, ByVal Args As OnLogEventArgs)
+        Public Event OnDebug(ByVal Sender As Object, ByVal Args As OnDebugEventArgs)
 
         Public Class OnCalculateEventArgs
             Inherits EventArgs
         End Class
-        Public Event OnCalculate(Sender As cSurvey, Args As OnCalculateEventArgs)
+        Public Event OnCalculate(Sender As Object, Args As OnCalculateEventArgs)
         Public Class OnArrangePriorityEventArgs
             Inherits EventArgs
         End Class
-        Public Event OnArrangePriority(sender As cSurvey, Args As OnArrangePriorityEventArgs)
+        Public Event OnArrangePriority(sender As Object, Args As OnArrangePriorityEventArgs)
         '---------------------------------------------------------------------------------------------------------------------------------------------------------
 
         Public Sub New()
@@ -592,6 +606,8 @@ Namespace cSurvey
             oTrigPoints = New cTrigPoints(Me)
             oCliparts = New cCliparts(Me)
             oSigns = New cSigns(Me)
+            oPens = New cPens(Me)
+
             oPlan = New cDesignPlan(Me)
             oProfile = New cDesignProfile(Me)
             oCrossSections = New cDesignCrossSections(Me)
@@ -613,18 +629,18 @@ Namespace cSurvey
 
             oSurface = New cSurface(Me)
 
-            oCaveRegister = New cCaveRegister(Me)
+            'oCaveRegister = New cCaveRegister(Me)
 
             oMasterSlave = New Master.cMasterSlave(Me)
 
             'oTool = New cEditBaseTools(Me)
         End Sub
 
-        Public ReadOnly Property CaveRegister As cCaveRegister
-            Get
-                Return oCaveRegister
-            End Get
-        End Property
+        'Public ReadOnly Property CaveRegister As cCaveRegister
+        '    Get
+        '        Return oCaveRegister
+        '    End Get
+        'End Property
 
         Public ReadOnly Property Surface As cSurface
             Get
@@ -760,8 +776,12 @@ Namespace cSurvey
             RaiseEvent OnDebug(Me, New OnDebugEventArgs(Key, Value))
         End Sub
 
-        Friend Sub RaiseOnLogEvent(ByVal Type As LogEntryType, Optional ByVal Text As String = "", Optional ByVal ShowInConsole As Boolean = False, Optional ByVal ConsoleText As String = "")
-            RaiseEvent OnLog(Me, New OnLogEventArgs(Type, Text, ShowInConsole, ConsoleText))
+        Friend Sub RaiseOnLogEvent(ByVal Type As LogEntryType, Optional ByVal Text As String = "")
+            RaiseEvent OnLog(Me, New OnLogEventArgs(Type, Text))
+        End Sub
+
+        Friend Sub RaiseOnErrorLogEvent(ByVal Text As String, Exception As Exception)
+            RaiseEvent OnLog(Me, New OnErrorLogEventArgs(Text, Exception))
         End Sub
 
         Public Sub Redraw(Optional Options As cOptions = Nothing)
@@ -812,7 +832,7 @@ Namespace cSurvey
                             Dim oXmlProperties As XmlElement = oXmlRoot.Item("properties")
                             Dim iCalculateMode As CalculateTypeEnum = oXmlProperties.GetAttribute("calculatemode")
                             If iCalculateMode = CalculateTypeEnum.Therion Then
-                                Dim sThProcess As String = GetGlobalSetting("therion.path", "")
+                                Dim sThProcess As String = Helper.Editor.cEditDesignEnvironment.GetSetting("therion.path", "")
                                 If sThProcess = "" Then
                                     Return New cActionResult(False, "survey.check", modMain.GetLocalizedString("csurvey.textpart101"))
                                 End If
@@ -833,7 +853,7 @@ Namespace cSurvey
             Catch ex As Exception
                 Return New cActionResult(False, "survey.check", String.Format(modMain.GetLocalizedString("csurvey.textpart102"), filename, ex.Message))
             End Try
-            Return New cActionResult(True, "", "")
+            Return New cActionResult
         End Function
 
         Private oMasterSlave As Master.cMasterSlave
@@ -1113,7 +1133,7 @@ Namespace cSurvey
                                 bCancel = True
                             Else
                                 bRequested = True
-                                'the file structure is basically the same but in 1.10 there are supports for e-e direction vertical
+                                'the file structure is basically the same but in 1.10 there are supports for profile direction vertical
                                 sCurrentVersion = "1.11"
                             End If
                         Case "1.11"
@@ -1127,6 +1147,18 @@ Namespace cSurvey
                                 bRequested = True
                                 'the file structure is basically the same but in 1.11 there are supports for common/shared texts...
                                 sCurrentVersion = "1.12"
+                            End If
+                        Case "1.12"
+                            Dim oArgs As cFileConversionEventArgs = New cFileConversionEventArgs(sCurrentVersion, Version)
+                            If Not bRequested Then
+                                RaiseEvent OnFileConversionRequest(Me, oArgs)
+                            End If
+                            If oArgs.Cancel Then
+                                bCancel = True
+                            Else
+                                bRequested = True
+                                'the file structure is basically the same but in 1.11 there are supports for new pens...
+                                sCurrentVersion = "1.13"
                             End If
                         Case Else
                             bOk = False
@@ -1253,6 +1285,17 @@ Namespace cSurvey
                         oSigns = New cSigns(Me)
                     End Try
 
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart111"), 0)
+                    Try
+                        If ChildElementExist(oXmlRoot, "pens") Then
+                            oPens = New cPens(Me, oFile, oXmlRoot.Item("pens"))
+                        Else
+                            oPens = New cPens(Me)
+                        End If
+                    Catch
+                        oPens = New cPens(Me)
+                    End Try
+
                     Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart112"), 0)
                     Call RaiseOnProgressEvent("load.design.plan", OnProgressEventArgs.ProgressActionEnum.Begin, GetLocalizedString("csurvey.textpart113"), 0, OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
                     If ChildElementExist(oXmlRoot, "plan") Then
@@ -1343,7 +1386,7 @@ Namespace cSurvey
                         Else
                             oLinkedSurveys = New cLinkedSurveys(Me)
                         End If
-                    Catch
+                    Catch ex As Exception
                         oLinkedSurveys = New cLinkedSurveys(Me)
                     End Try
                     'End If
@@ -1384,19 +1427,19 @@ Namespace cSurvey
                         Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart122a"), 0)
                     End If
 
-                    If (LoadOptions And LoadOptionsEnum.IsLinkedSurvey) = LoadOptionsEnum.None Then
-                        Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart122"), 0)
-                        Try
-                            If modXML.ChildElementExist(oXmlRoot, "caveregister") Then
-                                oCaveRegister = New cCaveRegister(Me, oFile, oXmlRoot.Item("caveregister"))
-                            Else
-                                oCaveRegister = New cCaveRegister(Me)
-                            End If
-                        Catch
-                            oCaveRegister = New cCaveRegister(Me)
-                        End Try
-                        Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart122a"), 0)
-                    End If
+                    'If (LoadOptions And LoadOptionsEnum.IsLinkedSurvey) = LoadOptionsEnum.None Then
+                    '    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart122"), 0)
+                    '    Try
+                    '        If modXML.ChildElementExist(oXmlRoot, "caveregister") Then
+                    '            oCaveRegister = New cCaveRegister(Me, oFile, oXmlRoot.Item("caveregister"))
+                    '        Else
+                    '            oCaveRegister = New cCaveRegister(Me)
+                    '        End If
+                    '    Catch
+                    '        oCaveRegister = New cCaveRegister(Me)
+                    '    End Try
+                    '    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart122a"), 0)
+                    'End If
 
                     Dim bDoCalculate As Boolean
                     If modXML.ChildElementExist(oXmlRoot, "calculate") Then
@@ -1514,6 +1557,12 @@ Namespace cSurvey
         Public ReadOnly Property Signs As cSigns
             Get
                 Return oSigns
+            End Get
+        End Property
+
+        Public ReadOnly Property Pens As cPens
+            Get
+                Return oPens
             End Get
         End Property
 
@@ -1664,6 +1713,10 @@ Namespace cSurvey
             Call oSigns.SaveTo(File, Document, oXmlRoot, Options)
             If Not bSilent Then Call RaiseOnProgressEvent("save.signs", OnProgressEventArgs.ProgressActionEnum.End, "", 0)
 
+            If Not bSilent Then Call RaiseOnProgressEvent("save.pens", OnProgressEventArgs.ProgressActionEnum.Begin, sTextPart1, 1, OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
+            Call oPens.SaveTo(File, Document, oXmlRoot, Options)
+            If Not bSilent Then Call RaiseOnProgressEvent("save.pens", OnProgressEventArgs.ProgressActionEnum.End, "", 0)
+
             If Not bSilent Then Call RaiseOnProgressEvent("save.design.plan", OnProgressEventArgs.ProgressActionEnum.Begin, sTextPart1, 0, OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
             Call oPlan.SaveTo(File, Document, oXmlRoot, Options)
             If Not bSilent Then Call RaiseOnProgressEvent("save.design.plan", OnProgressEventArgs.ProgressActionEnum.End, "", 0)
@@ -1692,7 +1745,7 @@ Namespace cSurvey
 
             Call oSurface.SaveTo(File, Document, oXmlRoot)
 
-            Call oCaveRegister.SaveTo(File, Document, oXmlRoot)
+            'Call oCaveRegister.SaveTo(File, Document, oXmlRoot)
 
             Call oMasterSlave.SaveTo(File, Document, oXmlRoot)
 
@@ -1798,25 +1851,6 @@ Namespace cSurvey
             End Get
         End Property
 
-        'Friend Sub SetGlobalSetting(Key As String, Value As Object)
-        '    Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-        '    Call oReg.SetValue(Key, Value)
-        '    Call oReg.Close()
-        '    Call oReg.Dispose()
-        'End Sub
-
-        Friend Function GetGlobalSetting(ByVal Key As String, Optional ByVal DefaultValue As Object = Nothing) As Object
-            Try
-                Dim oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
-                Dim oValue As Object = oReg.GetValue(Key, DefaultValue)
-                oReg.Close()
-                oReg.Dispose()
-                Return ovalue
-            Catch
-                Return DefaultValue
-            End Try
-        End Function
-
         Private Sub oCalc_OnArrangePriorityComplete(Sender As cCalculate, Args As EventArgs) Handles oCalc.OnArrangePriorityComplete
             RaiseEvent OnArrangePriority(Me, New OnArrangePriorityEventArgs)
         End Sub
@@ -1860,11 +1894,15 @@ Namespace cSurvey
             RaiseEvent OnCrossSectionsChange(Me, New cSurvey.OnCrossSectionChangeEventArgs(CrossSectionsChangeActionEnum.Remove, Args))
         End Sub
 
-        Private Sub oSegments_OnSegmentReassigned(Sender As cSegments, Args As cSegments.OnSegmentEventArgs) Handles oSegments.OnSegmentReassigned
-            If Args.Segment.IsValid Then
-                iInvalidated = iInvalidated Or Args.Segment.Invalidated
+        Private Sub oSegments_OnSegmentReassigned(Sender As cSegments, e As cSegments.OnSegmentEventArgs) Handles oSegments.OnSegmentReassigned
+            If e.Segment.IsValid Then
+                iInvalidated = iInvalidated Or e.Segment.Invalidated
             End If
-            RaiseEvent OnSegmentsChange(Me, New cSurvey.OnSegmentChangeEventArgs(SegmentsChangeActionEnum.Reassigned, Args))
+            RaiseEvent OnSegmentsChange(Me, New cSurvey.OnSegmentChangeEventArgs(SegmentsChangeActionEnum.Reassigned, e))
+        End Sub
+
+        Private Sub oSegments_OnSegmentChangeRange(Sender As cSegments, e As cSegments.OnSegmentsEventArgs) Handles oSegments.OnSegmentChangeRange
+            RaiseEvent OnSegmentsChange(Me, New cSurvey.OnSegmentChangeEventArgs(SegmentsChangeActionEnum.ChangeRange, e))
         End Sub
     End Class
 End Namespace

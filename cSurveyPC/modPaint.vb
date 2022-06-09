@@ -14,6 +14,14 @@ Imports System.IO
 Imports System.Runtime.CompilerServices
 
 Module modPaint
+    Public Function MediaColorToDrawingColor(MediaColor As Windows.Media.Color) As Drawing.Color
+        Return System.Drawing.Color.FromArgb(MediaColor.A, MediaColor.R, MediaColor.G, MediaColor.B)
+    End Function
+
+    Public Function DrawingColorToMediaColor(Color As Drawing.Color) As Windows.Media.Color
+        Return Windows.Media.Color.FromArgb(Color.A, Color.R, Color.G, Color.B)
+    End Function
+
     Public Const sLineWidth As Single = 0.01
     Public Const sDefaultSplineTension As Single = 0.5
     Public Const iDefaultDesignScale As Integer = 250
@@ -30,34 +38,6 @@ Module modPaint
         BottomRight = 3
         BottomLeft = 4
     End Enum
-
-    Public Function ShowImageExportDialog(Owner As IWin32Window, Image As Image) As DialogResult
-        Using oSFD As SaveFileDialog = New SaveFileDialog
-            With oSFD
-                .Filter = GetLocalizedString("main.filetypeIMAGES") & " (*.JPG;*.PNG;*.TIF;*.BMP;*.GIF)|*.JPG;*.PNG;*.TIF;*.BMP;*.GIF"
-                .FilterIndex = 1
-                If .ShowDialog(Owner) = DialogResult.OK Then
-                    Dim iImageFormat As Imaging.ImageFormat = Imaging.ImageFormat.Jpeg
-                    Select Case IO.Path.GetExtension(oSFD.FileName)
-                        Case ".gif"
-                            iImageFormat = Imaging.ImageFormat.Gif
-                        Case ".bmp"
-                            iImageFormat = Imaging.ImageFormat.Bmp
-                        Case ".tif"
-                            iImageFormat = Imaging.ImageFormat.Tiff
-                        Case ".png"
-                            iImageFormat = Imaging.ImageFormat.Png
-                        Case ".jpg", ".jpeg"
-                            iImageFormat = Imaging.ImageFormat.Jpeg
-                    End Select
-                    Call Image.Save(oSFD.FileName, iImageFormat)
-                    Return DialogResult.OK
-                Else
-                    Return DialogResult.Cancel
-                End If
-            End With
-        End Using
-    End Function
 
     Public Function GetQuadrant(Rectangle As RectangleF, Point As PointF) As Quadrant
         If Rectangle.Contains(Point) Then
@@ -176,43 +156,51 @@ Module modPaint
     Private sDefaultFontSize As Single = 8
     Private oDefaultFont As cFont
 
-    Public Sub SafeBitmapSaveToStream(Bitmap As Bitmap, Stream As Stream, format As ImageFormat)
-        Try
-            Call Bitmap.Save(Stream, format)
-        Catch ex As Exception
-            Using oBitmap As Bitmap = New Bitmap(Bitmap)
-                Call oBitmap.Save(Stream, format)
+    Public Function BitmapToByteArray(Bitmap As Bitmap, format As ImageFormat) As Byte()
+        If Bitmap.RawFormat.Equals(format) Then
+            Return (New ImageConverter).ConvertTo(Bitmap, GetType(Byte()))
+        Else
+            Using oMs As IO.MemoryStream = New IO.MemoryStream
+                Call Bitmap.Save(oMs, format)
+                Return oMs.ToArray
             End Using
-        End Try
-    End Sub
+        End If
+    End Function
 
-    'Public Function BitmapFromFileUnlocked(Bytes As Byte()) As Bitmap
-    '    Return New Bitmap(New MemoryStream(Bytes))
-    'End Function
+    'Public Sub SafeBitmapSaveToStreamX(Bitmap As Bitmap, Stream As Stream, format As ImageFormat)
+    '    Try
+    '        Call Bitmap.Save(Stream, format)
+    '    Catch ex As Exception
+    '        Using oBitmap As Bitmap = New Bitmap(Bitmap)
+    '            Call oBitmap.Save(Stream, format)
+    '        End Using
+    '    End Try
+    'End Sub
 
-    'Public Function BitmapFromFileUnlocked(Filename As String) As Bitmap
-    '    Return New Bitmap(New MemoryStream(My.Computer.FileSystem.ReadAllBytes(Filename)))
-    'End Function
+    Public Function ByteArrayToBitmap(ByVal Array As Byte()) As Bitmap
+        Return (New ImageConverter).ConvertFrom(Array)
+    End Function
+
+    Public Function BitmapToByteArray(ByVal Image As Bitmap) As Byte()
+        Return (New ImageConverter).ConvertTo(Image, GetType(Byte()))
+    End Function
 
     Public Function SafeBitmapFromFileUnlocked(Filename As String) As Bitmap
         'safebitmapfromfile have to unlock the file but I use this function cause I have no time to test if this is right or not...
-        Using oMs As MemoryStream = New MemoryStream(My.Computer.FileSystem.ReadAllBytes(Filename))
-            Using oBitmap As Bitmap = Bitmap.FromStream(oMs)
-                Return New Bitmap(oBitmap)
-            End Using
-        End Using
+        'at now this code is the same of unlocked version due to imageconverter that solve problem with stream and images
+        Return ByteArrayToBitmap(My.Computer.FileSystem.ReadAllBytes(Filename))
+        'Using oMs As MemoryStream = New MemoryStream(My.Computer.FileSystem.ReadAllBytes(Filename))
+        '    Using oBitmap As Bitmap = Bitmap.FromStream(oMs)
+        '        Return New Bitmap(oBitmap)
+        '    End Using
+        'End Using
     End Function
 
     Public Function SafeBitmapFromFile(Filename As String) As Bitmap
-        Using oBitmap As Bitmap = Bitmap.FromFile(Filename)
-            Return New Bitmap(oBitmap)
-        End Using
-    End Function
-
-    Public Function SafeBitmapFromStream(Stream As Stream) As Bitmap
-        Using oBitmap As Bitmap = Bitmap.FromStream(Stream)
-            Return New Bitmap(oBitmap)
-        End Using
+        Return ByteArrayToBitmap(My.Computer.FileSystem.ReadAllBytes(Filename))
+        'Using oBitmap As Bitmap = Bitmap.FromFile(Filename)
+        '   Return New Bitmap(oBitmap)
+        'End Using
     End Function
 
     Public Function PenStylePatternToString(Pattern As Single()) As String
@@ -310,6 +298,47 @@ Module modPaint
         End Try
     End Function
 
+    Private ImageJPGHeader As Byte() = {&HFF, &HD8}
+    Private ImagePNGHeader As Byte() = {&H89, &H50, &H4E, &H47}
+    Private ImageTIFHeader1 As Byte() = {&H49, &H49}
+    Private ImageTIFHeader2 As Byte() = {&H4D, &H4D}
+    Private ImageBMPHeader As Byte() = {&H42, &H4D}
+    Private ImageGIFHeader As Byte() = {&H47, &H49, &H46, &H38, &H39}
+    Public Function GetImageFormat(Image As Byte()) As Imaging.ImageFormat
+        If Image.Take(2).ToArray.SequenceEqual(ImageJPGHeader) Then
+            Return Imaging.ImageFormat.Jpeg
+        ElseIf Image.Take(2).ToArray.SequenceEqual(ImageTIFHeader1) Then
+            Return Imaging.ImageFormat.Tiff
+        ElseIf Image.Take(2).ToArray.SequenceEqual(ImageTIFHeader2) Then
+            Return Imaging.ImageFormat.Tiff
+        ElseIf Image.Take(4).ToArray.SequenceEqual(ImagePNGHeader) Then
+            Return Imaging.ImageFormat.Png
+        ElseIf Image.Take(2).ToArray.SequenceEqual(ImageBMPHeader) Then
+            Return Imaging.ImageFormat.Bmp
+        ElseIf Image.Take(5).ToArray.SequenceEqual(ImageGIFHeader) Then
+            Return Imaging.ImageFormat.Gif
+        Else
+            Return Nothing
+        End If
+    End Function
+    Public Sub ScaleImageToStream(Data As Byte(), Size As Size, Stream As Stream)
+        Using oImageFactory As ImageProcessor.ImageFactory = New ImageProcessor.ImageFactory(True)
+            Dim oFormat As ImageProcessor.Imaging.Formats.ISupportedImageFormat
+            If GetImageFormat(Data).Equals(Imaging.ImageFormat.Png) Then
+                oFormat = New ImageProcessor.Imaging.Formats.PngFormat
+            Else
+                oFormat = New ImageProcessor.Imaging.Formats.JpegFormat
+            End If
+            oFormat.Quality = 80
+            oFormat.IsIndexed = False
+            Dim oResize As ImageProcessor.Imaging.ResizeLayer = New ImageProcessor.Imaging.ResizeLayer(Size, ImageProcessor.Imaging.ResizeMode.Max)
+            oImageFactory.Load(Data)
+            oImageFactory.Resize(oResize)
+            oImageFactory.AutoRotate()
+            oImageFactory.Format(oFormat)
+            oImageFactory.Save(Stream)
+        End Using
+    End Sub
     Public Function ScaleImage(Image As Image, Size As Size, Backcolor As Color) As Image
         Dim oBounds As RectangleF = New RectangleF(0, 0, Image.Width, Image.Height)
         Dim oScaledBounds As RectangleF = New RectangleF(0, 0, Size.Width, Size.Height)
@@ -867,11 +896,11 @@ Module modPaint
     End Function
 
     Public Function DegreeToRadians(ByVal Degree As Decimal) As Decimal
-        Return Math.PI * Degree / 180.0F
+        Return Math.PI * Degree / 180D
     End Function
 
     Public Function RadiansToDegree(ByVal Radiant As Decimal) As Decimal
-        Return Radiant * 180.0 / Math.PI
+        Return Radiant * 180D / Math.PI
     End Function
 
     Public Function GetZoomFactor(ByVal graphics As Graphics, ByVal Scale As Decimal) As Decimal
@@ -1639,8 +1668,11 @@ Module modPaint
     End Function
 
     Public Function ReplaceGlobalTags(Survey As cSurvey.cSurvey, Text As String) As String
+        Dim iTextIndex As Integer = 0
         For Each oText As cText In Survey.Texts
+            iTextIndex += 1
             Text = Text.Replace("%TEXT(" & oText.Name.ToUpper & ")%", oText.Text)
+            Text = Text.Replace("%TEXT(" & iTextIndex & ")%", oText.Text)
         Next
 
         Dim oProperties As cProperties = Survey.Properties
@@ -1760,78 +1792,93 @@ Module modPaint
         Text = Text.Replace("%BR%", vbCrLf)
         Text = Text.Replace("%TAB%", vbTab)
 
+        Dim bFirstCave As Boolean
         For Each oSpeleometric As Calculate.Plot.cSpeleometric In Survey.Calculate.Speleometrics
             Dim sPath As String
             If oSpeleometric.Branch = "" Then
                 sPath = oSpeleometric.Cave
-            Else
-                sPath = oSpeleometric.Cave & "," & oSpeleometric.Branch
-            End If
-            If Survey.Properties.CaveInfos.Contains(oSpeleometric.Cave) Then
-                With Survey.Properties.CaveInfos(oSpeleometric.Cave)
-                    Text = Text.Replace("%NAME(" & sPath & ")%", .Name)
-                    Text = Text.Replace("%ID(" & sPath & ")%", .ID)
-                    Text = Text.Replace("%DESCRIPTION(" & sPath & ")%", .Description)
-                End With
-            End If
-
-            Dim sDefaultLength As String = modNumbers.MathRound(oSpeleometric.DefaultLength, iDistanceDecimalPlace)
-            Text = Text.Replace("%SVILTOT(" & sPath & ")%", sDefaultLength & " " & sDistanceSimbol)
-            Text = Text.Replace("%LEN(" & sPath & ")%", sDefaultLength & " " & sDistanceSimbol)
-
-            Dim sDefaultPlanimetricLength As String = modNumbers.MathRound(oSpeleometric.DefaultPlanimetricLength, iDistanceDecimalPlace)
-            Text = Text.Replace("%SVILPLAN(" & sPath & ")%", sDefaultPlanimetricLength & " " & sDistanceSimbol)
-            Text = Text.Replace("%PLANLEN(" & sPath & ")%", sDefaultPlanimetricLength & " " & sDistanceSimbol)
-
-            Dim sDefaultPositiveVerticalRange As String = modNumbers.MathRound(oSpeleometric.DefaultPositiveVerticalRange.GetValueOrDefault(0), iDistanceDecimalPlace)
-            Text = Text.Replace("%DISPOS(" & sPath & ")%", sDefaultPositiveVerticalRange & " " & sDistanceSimbol)
-            Text = Text.Replace("%PVRNG(" & sPath & ")%", sDefaultPositiveVerticalRange & " " & sDistanceSimbol)
-
-            Dim sDefaultNegativeVerticalRange As String = modNumbers.MathRound(oSpeleometric.DefaultNegativeVerticalRange.GetValueOrDefault(0), iDistanceDecimalPlace)
-            Text = Text.Replace("%DISNEG(" & sPath & ")%", sDefaultNegativeVerticalRange & " " & sDistanceSimbol)
-            Text = Text.Replace("%NVRNG(" & sPath & ")%", sDefaultNegativeVerticalRange & " " & sDistanceSimbol)
-
-            Dim sVerticalRange As String = modNumbers.MathRound(oSpeleometric.VerticalRange, iDistanceDecimalPlace)
-            Text = Text.Replace("%DIS(" & sPath & ")%", sVerticalRange & " " & sDistanceSimbol)
-            Text = Text.Replace("%DISTOT(" & sPath & ")%", sVerticalRange & " " & sDistanceSimbol)
-            Text = Text.Replace("%VRNG(" & sPath & ")%", sVerticalRange & " " & sDistanceSimbol)
-
-            Dim sSegmentCount As String = oSpeleometric.SegmentCount
-            Text = Text.Replace("%SEGCOUNT(" & sPath & ")%", sSegmentCount)
-            Dim sExcludedSegmentCount As String = oSpeleometric.ExcludedSegmentCount
-            Text = Text.Replace("%EXSEGCOUNT(" & sPath & ")%", sExcludedSegmentCount)
-
-            If oSpeleometric.EntranceCoordinate Is Nothing Then
-                Text = Text.Replace("%GEOPOS(" & sPath & ")%", "")
-                Text = Text.Replace("%GEOPOSLAT(" & sPath & ")%", "")
-                Text = Text.Replace("%GEOPOSLONG(" & sPath & ")%", "")
-                Text = Text.Replace("%GEOPOSLON(" & sPath & ")%", "")
-                Text = Text.Replace("%GEOPOSALT(" & sPath & ")%", "")
-
-                Text = Text.Replace("%GEOPOSUTM(" & sPath & ")%", "")
-                Text = Text.Replace("%GEOPOSUTMX(" & sPath & ")%", "")
-                Text = Text.Replace("%GEOPOSUTMY(" & sPath & ")%", "")
-                Text = Text.Replace("%GEOPOSUTMBAND(" & sPath & ")%", "")
-                Text = Text.Replace("%GEOPOSUTMZONE(" & sPath & ")%", "")
-            Else
-                Text = Text.Replace("%GEOPOS(" & sPath & ")%", modNumbers.NumberToCoordinate(oSpeleometric.EntranceCoordinate.Latitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "N", "S") & " " & modNumbers.NumberToCoordinate(oSpeleometric.EntranceCoordinate.Longitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "E", "W"))
-                Text = Text.Replace("%GEOPOSLAT(" & sPath & ")%", modNumbers.NumberToCoordinate(oSpeleometric.EntranceCoordinate.Latitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "N", "S"))
-                Text = Text.Replace("%GEOPOSLONG(" & sPath & ")%", modNumbers.NumberToCoordinate(oSpeleometric.EntranceCoordinate.Longitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "E", "W"))
-                Text = Text.Replace("%GEOPOSLON(" & sPath & ")%", modNumbers.NumberToCoordinate(oSpeleometric.EntranceCoordinate.Longitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "E", "W"))
-                Text = Text.Replace("%GEOPOSALT(" & sPath & ")%", modNumbers.MathRound(oSpeleometric.EntranceCoordinate.Altitude, iDistanceDecimalPlace) & " " & sDistanceSimbol)
-
-                If Text.Contains("%GEOPOSUTM") Then
-                    Dim oEntranceCoordinateUTM As modUTM.UTM = modUTM.WGS84ToUTM(oSpeleometric.EntranceCoordinate)
-                    Text = Text.Replace("%GEOPOSUTM(" & sPath & ")%", oEntranceCoordinateUTM.Zone & oEntranceCoordinateUTM.Band & " " & Strings.Format(oEntranceCoordinateUTM.East, "0") & " " & Strings.Format(oEntranceCoordinateUTM.North, "0"))
-                    Text = Text.Replace("%GEOPOSUTMX(" & sPath & ")%", Strings.Format(oEntranceCoordinateUTM.East, "0"))
-                    Text = Text.Replace("%GEOPOSUTMY(" & sPath & ")%", Strings.Format(oEntranceCoordinateUTM.North, "0"))
-                    Text = Text.Replace("%GEOPOSUTMBAND(" & sPath & ")%", oEntranceCoordinateUTM.Band)
-                    Text = Text.Replace("%GEOPOSUTMZONE(" & sPath & ")%", oEntranceCoordinateUTM.Zone)
+                'only for first cave (<>"") is allowed also . as path
+                'this is usefull per survey with ONE cave...using . data is always of the current cave
+                If sPath <> "" AndAlso Not bFirstCave Then
+                    Text = pReplaceCaveBranchTags(Survey, oSpeleometric, ".", Text)
+                    bFirstCave = False
                 End If
+            Else
+                    sPath = oSpeleometric.Cave & cCaveInfoBranches.sBranchSeparator & oSpeleometric.Branch
             End If
+            Text = pReplaceCaveBranchTags(Survey, oSpeleometric, sPath, Text)
         Next
 
         Return Text.Trim
+    End Function
+
+    Private Function pReplaceCaveBranchTags(Survey As cSurvey.cSurvey, Speleometric As Calculate.Plot.cSpeleometric, Path As String, Text As String) As String
+        If Survey.Properties.CaveInfos.Contains(Speleometric.Cave) Then
+            With Survey.Properties.CaveInfos(Speleometric.Cave)
+                Text = Text.Replace("%NAME(" & Path & ")%", .Name)
+                Text = Text.Replace("%ID(" & Path & ")%", .ID)
+                Text = Text.Replace("%DESCRIPTION(" & Path & ")%", .Description)
+            End With
+        End If
+
+        Dim sDistanceSimbol As String = cSegment.GetDistanceSimbol(Survey.Properties.DistanceType)
+        Dim iDistanceDecimalPlace As Integer = modConversion.GetDistanceTypeDecimalPlaces(Survey.Properties.DistanceType)
+
+        Dim sDefaultLength As String = modNumbers.MathRound(Speleometric.DefaultLength, iDistanceDecimalPlace)
+        Text = Text.Replace("%SVILTOT(" & Path & ")%", sDefaultLength & " " & sDistanceSimbol)
+        Text = Text.Replace("%LEN(" & Path & ")%", sDefaultLength & " " & sDistanceSimbol)
+
+        Dim sDefaultPlanimetricLength As String = modNumbers.MathRound(Speleometric.DefaultPlanimetricLength, iDistanceDecimalPlace)
+        Text = Text.Replace("%SVILPLAN(" & Path & ")%", sDefaultPlanimetricLength & " " & sDistanceSimbol)
+        Text = Text.Replace("%PLANLEN(" & Path & ")%", sDefaultPlanimetricLength & " " & sDistanceSimbol)
+
+        Dim sDefaultPositiveVerticalRange As String = modNumbers.MathRound(Speleometric.DefaultPositiveVerticalRange.GetValueOrDefault(0), iDistanceDecimalPlace)
+        Text = Text.Replace("%DISPOS(" & Path & ")%", sDefaultPositiveVerticalRange & " " & sDistanceSimbol)
+        Text = Text.Replace("%PVRNG(" & Path & ")%", sDefaultPositiveVerticalRange & " " & sDistanceSimbol)
+
+        Dim sDefaultNegativeVerticalRange As String = modNumbers.MathRound(Speleometric.DefaultNegativeVerticalRange.GetValueOrDefault(0), iDistanceDecimalPlace)
+        Text = Text.Replace("%DISNEG(" & Path & ")%", sDefaultNegativeVerticalRange & " " & sDistanceSimbol)
+        Text = Text.Replace("%NVRNG(" & Path & ")%", sDefaultNegativeVerticalRange & " " & sDistanceSimbol)
+
+        Dim sVerticalRange As String = modNumbers.MathRound(Speleometric.VerticalRange, iDistanceDecimalPlace)
+        Text = Text.Replace("%DIS(" & Path & ")%", sVerticalRange & " " & sDistanceSimbol)
+        Text = Text.Replace("%DISTOT(" & Path & ")%", sVerticalRange & " " & sDistanceSimbol)
+        Text = Text.Replace("%VRNG(" & Path & ")%", sVerticalRange & " " & sDistanceSimbol)
+
+        Dim sSegmentCount As String = Speleometric.SegmentCount
+        Text = Text.Replace("%SEGCOUNT(" & Path & ")%", sSegmentCount)
+        Dim sExcludedSegmentCount As String = Speleometric.ExcludedSegmentCount
+        Text = Text.Replace("%EXSEGCOUNT(" & Path & ")%", sExcludedSegmentCount)
+
+        If Speleometric.EntranceCoordinate Is Nothing Then
+            Text = Text.Replace("%GEOPOS(" & Path & ")%", "")
+            Text = Text.Replace("%GEOPOSLAT(" & Path & ")%", "")
+            Text = Text.Replace("%GEOPOSLONG(" & Path & ")%", "")
+            Text = Text.Replace("%GEOPOSLON(" & Path & ")%", "")
+            Text = Text.Replace("%GEOPOSALT(" & Path & ")%", "")
+
+            Text = Text.Replace("%GEOPOSUTM(" & Path & ")%", "")
+            Text = Text.Replace("%GEOPOSUTMX(" & Path & ")%", "")
+            Text = Text.Replace("%GEOPOSUTMY(" & Path & ")%", "")
+            Text = Text.Replace("%GEOPOSUTMBAND(" & Path & ")%", "")
+            Text = Text.Replace("%GEOPOSUTMZONE(" & Path & ")%", "")
+        Else
+            Text = Text.Replace("%GEOPOS(" & Path & ")%", modNumbers.NumberToCoordinate(Speleometric.EntranceCoordinate.Latitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "N", "S") & " " & modNumbers.NumberToCoordinate(Speleometric.EntranceCoordinate.Longitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "E", "W"))
+            Text = Text.Replace("%GEOPOSLAT(" & Path & ")%", modNumbers.NumberToCoordinate(Speleometric.EntranceCoordinate.Latitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "N", "S"))
+            Text = Text.Replace("%GEOPOSLONG(" & Path & ")%", modNumbers.NumberToCoordinate(Speleometric.EntranceCoordinate.Longitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "E", "W"))
+            Text = Text.Replace("%GEOPOSLON(" & Path & ")%", modNumbers.NumberToCoordinate(Speleometric.EntranceCoordinate.Longitude, CoordinateFormatEnum.DegreesMinutesSeconds Or CoordinateFormatEnum.Unsigned, "E", "W"))
+            Text = Text.Replace("%GEOPOSALT(" & Path & ")%", modNumbers.MathRound(Speleometric.EntranceCoordinate.Altitude, iDistanceDecimalPlace) & " " & sDistanceSimbol)
+
+            If Text.Contains("%GEOPOSUTM") Then
+                Dim oEntranceCoordinateUTM As modUTM.UTM = modUTM.WGS84ToUTM(Speleometric.EntranceCoordinate)
+                Text = Text.Replace("%GEOPOSUTM(" & Path & ")%", oEntranceCoordinateUTM.Zone & oEntranceCoordinateUTM.Band & " " & Strings.Format(oEntranceCoordinateUTM.East, "0") & " " & Strings.Format(oEntranceCoordinateUTM.North, "0"))
+                Text = Text.Replace("%GEOPOSUTMX(" & Path & ")%", Strings.Format(oEntranceCoordinateUTM.East, "0"))
+                Text = Text.Replace("%GEOPOSUTMY(" & Path & ")%", Strings.Format(oEntranceCoordinateUTM.North, "0"))
+                Text = Text.Replace("%GEOPOSUTMBAND(" & Path & ")%", oEntranceCoordinateUTM.Band)
+                Text = Text.Replace("%GEOPOSUTMZONE(" & Path & ")%", oEntranceCoordinateUTM.Zone)
+            End If
+        End If
+        Return Text
     End Function
 
     Public Function GetFormattedInfoBoxText(Survey As cSurvey.cSurvey, TextStructure As cITextStructure) As String
@@ -2371,7 +2418,7 @@ Module modPaint
     End Function
 
     Friend Function ObjectHitTest(PaintOptions As cOptions, ByVal X As Single, ByVal Y As Single, ByVal Tools As cEditDesignTools, ByVal Zoom As Single) As cHitTestResult
-        Dim sAnchorBaseScale As Single = AnchorsScale * modControls.SystemDPIRatio
+        Dim sAnchorBaseScale As Single = AnchorsScale * My.Application.currentdpiratio
         Dim oHitTestResult As cHitTestResult = New cHitTestResult
         Dim oItem As cItem = Tools.CurrentItem
         If oItem Is Nothing Then
@@ -2551,8 +2598,8 @@ Module modPaint
     Public sCutPointSize As Single = 0.2
     Public sSidePointSize As Single = 0.15
 
-    Friend Sub PaintStationSplays(ByVal PaintOptions As cOptions, Cache As Drawings.cDrawCache, ByVal CurrentSegment As cISegment, Segment As cISegment, StationPoint As PointF, Color As Color, TranslationMatrix As Matrix, LorUPrefix As String, RorDPrefix As String, Splays As IEnumerable(Of Calculate.Plot.cISplayProjectedData))
-        If PaintOptions.SplayStyle = cOptions.SplayStyleEnum.Points OrElse PaintOptions.SplayStyle = cOptions.SplayStyleEnum.PointsAndRays Then
+    Friend Sub PaintStationSplays(ByVal PaintOptions As cOptionsCenterline, Cache As Drawings.cDrawCache, ByVal CurrentSegment As cISegment, Segment As cISegment, StationPoint As PointF, Color As Color, TranslationMatrix As Matrix, LorUPrefix As String, RorDPrefix As String, Splays As IEnumerable(Of Calculate.Plot.cISplayProjectedData))
+        If PaintOptions.SplayStyle = cOptionsCenterline.SplayStyleEnum.Points OrElse PaintOptions.SplayStyle = cOptionsCenterline.SplayStyleEnum.PointsAndRays Then
             Using oPath As GraphicsPath = New GraphicsPath
                 For Each oItem As Calculate.Plot.cISplayProjectedData In Splays
                     Dim oPoint As PointF = oItem.ToPoint
@@ -2599,7 +2646,7 @@ Module modPaint
                 End If
                 Call oCacheCrossItem.Transform(TranslationMatrix)
             End Using
-        ElseIf PaintOptions.SplayStyle = cOptions.SplayStyleEnum.Rays Then
+        ElseIf PaintOptions.SplayStyle = cOptionsCenterline.SplayStyleEnum.Rays Then
             For Each oItem As Calculate.Plot.cISplayProjectedData In Splays
                 Dim oPoint As PointF = oItem.ToPoint
                 If PaintOptions.ShowSplayText Then
@@ -2610,7 +2657,7 @@ Module modPaint
             Next
         End If
 
-        If PaintOptions.SplayStyle = cOptions.SplayStyleEnum.PointsAndRays OrElse PaintOptions.SplayStyle = cOptions.SplayStyleEnum.Rays Then
+        If PaintOptions.SplayStyle = cOptionsCenterline.SplayStyleEnum.PointsAndRays OrElse PaintOptions.SplayStyle = cOptionsCenterline.SplayStyleEnum.Rays Then
             Using oRayPath As GraphicsPath = New GraphicsPath
                 For Each oItem As Calculate.Plot.cISplayProjectedData In Splays
                     Dim oPoint As PointF = oItem.ToPoint
@@ -2697,22 +2744,31 @@ Module modPaint
 
     Friend Sub PaintCurrentMarkedDesktopPoint(graphics As Graphics, ByVal Survey As cSurvey.cSurvey, MarkedDesktopPoint As cMarkedDesktopPoint, ByVal Zoom As Single)
         If MarkedDesktopPoint.IsSet Then
+            Dim sAnchorBaseScale As Single = AnchorsScale * My.Application.currentdpiratio
             Dim oPoint As PointF = MarkedDesktopPoint.Point
             Dim oPaintRect As RectangleF
-            oPaintRect = modPaint.GetPaintAnchor(oPoint, AnchorsScale * 5 / Zoom)
+            oPaintRect = modPaint.GetPaintAnchor(oPoint, sAnchorBaseScale * sMarkerBaseScale / Zoom)
             Call graphics.FillEllipse(Survey.EditPaintObjects.MarkedPointBrush, oPaintRect)
             Call graphics.DrawEllipse(Survey.EditPaintObjects.MarkedPointPen, oPaintRect)
-            oPaintRect = modPaint.GetPaintAnchor(oPoint, AnchorsScale * 9 / Zoom)
+            oPaintRect = modPaint.GetPaintAnchor(oPoint, sAnchorBaseScale * sMarkerBaseScale * 1.5F / Zoom)
             Call graphics.DrawEllipse(Survey.EditPaintObjects.MarkedPointPen, oPaintRect)
         End If
     End Sub
 
     Public AnchorsScale As Single
 
+    Private Const sMarkerBaseScale As Single = 6.0F
+
+    Private Const sPointAnchorBaseScale As Single = 6.0F
+    Private Const sSpecialPointAnchorBaseScale As Single = 8.0F
+    Private Const sJoinPointAnchorBaseScale As Single = 10.0F
+    Private Const sCornerAnchorBaseScale As Single = 8.0F
+    Private Const sExtraCornerAnchorBaseScale As Single = 12.0F
     Friend Sub PaintAnchorRectangle(ByVal Graphics As Graphics, ByVal Point As PointF, ByVal Type As AnchorRectangleTypeEnum, ByVal Survey As cSurvey.cSurvey, ByVal Zoom As Single)
         Try
-            Dim sAnchorBaseScale As Single = AnchorsScale * modControls.SystemDPIRatio
+            Dim sAnchorBaseScale As Single = AnchorsScale * My.Application.currentdpiratio
             Dim oPaintRect As RectangleF
+
 
             If (Type And AnchorRectangleTypeEnum.AllMask) Then
                 oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 7 / Zoom)
@@ -2721,39 +2777,39 @@ Module modPaint
 
             Select Case (Type And AnchorRectangleTypeEnum.TypeMask)
                 Case AnchorRectangleTypeEnum.BezierControlPoint
-                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 4 / Zoom)
+                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * sPointAnchorBaseScale / Zoom)
                     Graphics.FillRectangle(Survey.EditPaintObjects.BezierControlPointBrush, oPaintRect)
                     Graphics.DrawRectangle(Survey.EditPaintObjects.BezierControlPointPen, oPaintRect.X, oPaintRect.Y, oPaintRect.Width, oPaintRect.Height)
                 Case AnchorRectangleTypeEnum.GenericPoint
-                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 4 / Zoom)
+                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * sPointAnchorBaseScale / Zoom)
                     Graphics.FillEllipse(Survey.EditPaintObjects.GenericPointBrush, oPaintRect)
                     Graphics.DrawEllipse(Survey.EditPaintObjects.GenericPointPen, oPaintRect)
                 Case AnchorRectangleTypeEnum.EndPoint
-                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 4 / Zoom)
+                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * sPointAnchorBaseScale / Zoom)
                     Graphics.FillEllipse(Survey.EditPaintObjects.EndPointBrush, oPaintRect)
                     Graphics.DrawEllipse(Survey.EditPaintObjects.EndPointPen, oPaintRect)
                 Case AnchorRectangleTypeEnum.StartPoint
-                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 4 / Zoom)
+                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * sPointAnchorBaseScale / Zoom)
                     Graphics.FillEllipse(Survey.EditPaintObjects.StartPointBrush, oPaintRect)
                     Graphics.DrawEllipse(Survey.EditPaintObjects.StartPointPen, oPaintRect)
 
                 Case AnchorRectangleTypeEnum.SpecialPoint
-                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 7 / Zoom)
+                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * sSpecialPointAnchorBaseScale / Zoom)
                     Graphics.FillEllipse(Survey.EditPaintObjects.SpecialPointBrush, oPaintRect)
                     Graphics.DrawEllipse(Survey.EditPaintObjects.SpecialPointPen, oPaintRect)
 
                 Case AnchorRectangleTypeEnum.LastPoint
-                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 8 / Zoom)
+                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * sSpecialPointAnchorBaseScale / Zoom)
                     Graphics.FillEllipse(Survey.EditPaintObjects.LastPointBrush, oPaintRect)
                     Graphics.DrawEllipse(Survey.EditPaintObjects.LastPointPen, oPaintRect)
 
                 Case AnchorRectangleTypeEnum.NewPoint
-                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 8 / Zoom)
+                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * sSpecialPointAnchorBaseScale / Zoom)
                     Graphics.FillEllipse(Survey.EditPaintObjects.NewPointBrush, oPaintRect)
                     Graphics.DrawEllipse(Survey.EditPaintObjects.NewPointPen, oPaintRect)
 
                 Case AnchorRectangleTypeEnum.Rotator
-                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 7 / Zoom)
+                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * sSpecialPointAnchorBaseScale / Zoom)
                     Graphics.FillEllipse(Survey.EditPaintObjects.RotatorBrush, oPaintRect)
                     Graphics.DrawEllipse(Survey.EditPaintObjects.RotatorPen, oPaintRect)
 
@@ -2763,37 +2819,37 @@ Module modPaint
                 '    Graphics.DrawEllipse(Survey.EditPaintObjects.RotatorPen, oPaintRect)
 
                 Case AnchorRectangleTypeEnum.TopLeftCorner
-                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 8 / Zoom)
+                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * sCornerAnchorBaseScale / Zoom)
                     Graphics.FillRectangle(Survey.EditPaintObjects.TopLeftCornerBrush, oPaintRect)
                 'Graphics.DrawRectangle(oPen, oPaintRect.X, oPaintRect.Y, oPaintRect.Width, oPaintRect.Height)
 
                 Case AnchorRectangleTypeEnum.ExtraTopLeftCorner
-                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 12 / Zoom)
+                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * sExtraCornerAnchorBaseScale / Zoom)
                     Graphics.FillRectangle(Survey.EditPaintObjects.SelectedBoundsExtraBrush, oPaintRect)
 
                 Case AnchorRectangleTypeEnum.LockedTopLeftCorner
-                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 8 / Zoom)
+                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * sCornerAnchorBaseScale / Zoom)
                     Graphics.FillRectangle(Survey.EditPaintObjects.LockedTopLeftCornerBrush, oPaintRect)
 
                 Case AnchorRectangleTypeEnum.UnmovableTopLeftCorner
-                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 8 / Zoom)
+                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * sCornerAnchorBaseScale / Zoom)
                     Graphics.FillRectangle(Survey.EditPaintObjects.UnmovableTopLeftCornerBrush, oPaintRect)
 
                 Case AnchorRectangleTypeEnum.CenterOfRotation
-                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 4 / Zoom)
+                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * sPointAnchorBaseScale / Zoom)
                     Graphics.FillEllipse(Survey.EditPaintObjects.CenterOfRotationPointBrush, oPaintRect)
                     Graphics.DrawEllipse(Survey.EditPaintObjects.CenterOfRotationPointPen, oPaintRect)
 
                 Case AnchorRectangleTypeEnum.CenterPoint
-                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 4 / Zoom)
+                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * sPointAnchorBaseScale / Zoom)
                     Graphics.FillEllipse(Survey.EditPaintObjects.CenterPointBrush, oPaintRect)
                 Case Else
-                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 8 / Zoom)
+                    oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * sCornerAnchorBaseScale / Zoom)
                     Graphics.FillRectangle(Survey.EditPaintObjects.OtherPointBrush, oPaintRect)
             End Select
 
             If (Type And AnchorRectangleTypeEnum.JoinedMask) Then
-                oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * 10 / Zoom)
+                oPaintRect = modPaint.GetPaintAnchor(Point, sAnchorBaseScale * sJoinPointAnchorBaseScale / Zoom)
                 Graphics.DrawEllipse(Survey.EditPaintObjects.GenericPointPen, oPaintRect)
             End If
         Catch
@@ -3075,9 +3131,12 @@ Module modPaint
                         Next
                     End If
                     '------------------------------------------------------------------------------------------------
-
-                    Call Graphics.DrawPath(Survey.EditPaintObjects.GridPen, oMainGridPath)
-                    Call Graphics.DrawPath(Survey.EditPaintObjects.DetailedGridPen, oDetailedGridPath)
+                    Using oGridPen As Pen = Survey.EditPaintObjects.GridPen.Clone
+                        oGridPen.Transform = Graphics.Transform
+                        oGridPen.Transform.Invert()
+                        Call Graphics.DrawPath(Survey.EditPaintObjects.GridPen, oMainGridPath)
+                        '0Call Graphics.DrawPath(Survey.EditPaintObjects.DetailedGridPen, oDetailedGridPath)
+                    End Using
                 End Using
             End Using
 
@@ -3107,53 +3166,54 @@ Module modPaint
     '    End Try
     'End Sub
 
-    Public Sub MapDrawElevationGrid(ByVal Graphics As Graphics, ByVal Survey As cSurvey.cSurvey, PaintZoom As Single)
-        Try
-            With Survey.Surface.Elevations
-                If Not .IsDefaultEmpty Then
-                    Dim oElevation As Surface.cElevation = .Default
-                    Dim iGridStepX As Integer = oElevation.XSize
-                    Dim iGridStepY As Integer = oElevation.YSize
-                    Using oGridPen As Pen = Survey.EditPaintObjects.GridPen
-                        Dim oBounds As RectangleF = Graphics.VisibleClipBounds
+    'Public Sub MapDrawElevationGrid(ByVal Graphics As Graphics, ByVal Survey As cSurvey.cSurvey, PaintZoom As Single)
+    '    Try
+    '        With Survey.Surface.Elevations
+    '            If Not .IsDefaultEmpty Then
+    '                Dim oElevation As Surface.cElevation = .Default
+    '                Dim iGridStepX As Integer = oElevation.XSize
+    '                Dim iGridStepY As Integer = oElevation.YSize
+    '                Using oGridPen As Pen = Survey.EditPaintObjects.GridPen
+    '                    Dim oBounds As RectangleF = Graphics.VisibleClipBounds
 
-                        Dim iXStart As Integer
-                        Dim iXEnd As Integer
-                        Dim iYStart As Integer
-                        Dim iYEnd As Integer
+    '                    Dim iXStart As Integer
+    '                    Dim iXEnd As Integer
+    '                    Dim iYStart As Integer
+    '                    Dim iYEnd As Integer
 
-                        iXStart = oBounds.Left
-                        If iXStart Mod iGridStepX <> 0 Then
-                            iXStart = iXStart - (iXStart Mod iGridStepX)
-                        End If
-                        iXEnd = oBounds.Right
-                        iYStart = oBounds.Top
-                        If iYStart Mod iGridStepY <> 0 Then
-                            iYStart = iYStart - (iYStart Mod iGridStepY)
-                        End If
-                        iYEnd = oBounds.Bottom
+    '                    iXStart = oBounds.Left
+    '                    If iXStart Mod iGridStepX <> 0 Then
+    '                        iXStart = iXStart - (iXStart Mod iGridStepX)
+    '                    End If
+    '                    iXEnd = oBounds.Right
+    '                    iYStart = oBounds.Top
+    '                    If iYStart Mod iGridStepY <> 0 Then
+    '                        iYStart = iYStart - (iYStart Mod iGridStepY)
+    '                    End If
+    '                    iYEnd = oBounds.Bottom
 
-                        Dim oRange As SizeF = oElevation.GetHeightRange
-                        For y As Single = iYStart To iYEnd Step iGridStepY
-                            For x As Single = iXStart To iXEnd Step iGridStepX
-                                Dim sHeight As Single = oElevation.GetElevation(x, y)
-                                If sHeight <> Surface.cElevation.NoDataValue Then
-                                    Dim iGrayScale As Integer = 255 - (255 * ((sHeight - oRange.Width) / (oRange.Height - oRange.Width)))
-                                    oGridPen.Color = Color.FromArgb(255, iGrayScale, iGrayScale, iGrayScale)
-                                    Call Graphics.DrawLine(oGridPen, x - 1, y, x + 1, y)
-                                    Call Graphics.DrawLine(oGridPen, x, y - 1, x, y + 1)
-                                End If
-                            Next
-                        Next
-                    End Using
-                End If
-            End With
-        Catch
-        End Try
-    End Sub
+    '                    Dim oRange As SizeF = oElevation.GetHeightRange
+    '                    For y As Single = iYStart To iYEnd Step iGridStepY
+    '                        For x As Single = iXStart To iXEnd Step iGridStepX
+    '                            Dim sHeight As Single = oElevation.GetElevation(x, y)
+    '                            If sHeight <> Surface.cElevation.NoDataValue Then
+    '                                Dim iGrayScale As Integer = 255 - (255 * ((sHeight - oRange.Width) / (oRange.Height - oRange.Width)))
+    '                                oGridPen.Color = Color.FromArgb(255, iGrayScale, iGrayScale, iGrayScale)
+    '                                Call Graphics.DrawLine(oGridPen, x - 1, y, x + 1, y)
+    '                                Call Graphics.DrawLine(oGridPen, x, y - 1, x, y + 1)
+    '                            End If
+    '                        Next
+    '                    Next
+    '                End Using
+    '            End If
+    '        End With
+    '    Catch
+    '    End Try
+    'End Sub
 
     Public Sub MapDrawMetricGrid(ByVal Graphics As Graphics, ByVal Survey As cSurvey.cSurvey, PaintZoom As Single)
         Try
+            Dim oGridPen As Pen = Survey.EditPaintObjects.GridPen
             Dim iGridStep As Integer = 1
             If PaintZoom >= 10 Then
                 iGridStep = 1
@@ -3168,7 +3228,6 @@ Module modPaint
             Else
                 iGridStep = 100
             End If
-            Dim oGridPen As Pen = Survey.EditPaintObjects.GridPen
             Dim oBounds As RectangleF = Graphics.VisibleClipBounds
 
             Dim iStart As Integer
@@ -3199,10 +3258,13 @@ Module modPaint
         Try
             With Orthophoto
                 If Not .IsEmpty Then
-                    Dim oImage As Image = .Photo
+                    'Dim sWidth As Single = .GetBRPoint.X - .GetTLPoint.X
+                    'Dim sHeight As Single = -1 * (.GetTLPoint.Y - .GetBRPoint.Y)
                     Dim oImageBounds As RectangleF = New RectangleF(.GetTLPoint.X, .GetTLPoint.Y, .Photo.Width * .XSize, .Photo.Height * .YSize)
-                    Call DrawImageWithTransparency(Graphics, oImage, oImageBounds, Options.Transparency)
-                    Graphics.DrawRectangle(New Pen(Brushes.DimGray, -1), oImageBounds.Left, oImageBounds.Top, oImageBounds.Width, oImageBounds.Height)
+                    'Dim oImageBounds As RectangleF = New RectangleF(.GetTLPoint.X, .GetTLPoint.Y, (.Photo.Width - 1) * .XSize, (.Photo.Height - 1) * .YSize)
+                    'Dim oImageBounds As RectangleF = New RectangleF(.GetTLPoint.X, .GetTLPoint.Y, sWidth, sHeight)
+                    Call DrawImageWithTransparency(Graphics, .Photo, oImageBounds, Options.Transparency)
+                    'Graphics.DrawRectangle(New Pen(Brushes.DimGray, cSurvey.cEditPaintObjects.FilettoPenWidth), oImageBounds.Left, oImageBounds.Top, oImageBounds.Width, oImageBounds.Height)
                 End If
             End With
         Catch ex As Exception
@@ -3217,7 +3279,7 @@ Module modPaint
                     Dim oImage As Image = .GetImage(.Columns, .Rows)
                     Dim oImageBounds As RectangleF = New RectangleF(.GetTLPoint.X, .GetTLPoint.Y, .Columns * .XSize, .Rows * .YSize)
                     Call DrawImageWithTransparency(Graphics, oImage, oImageBounds, Options.Transparency)
-                    Graphics.DrawRectangle(New Pen(Brushes.DimGray, -1), oImageBounds.Left, oImageBounds.Top, oImageBounds.Width, oImageBounds.Height)
+                    'Graphics.DrawRectangle(New Pen(Brushes.DimGray, cSurvey.cEditPaintObjects.FilettoPenWidth), oImageBounds.Left, oImageBounds.Top, oImageBounds.Width, oImageBounds.Height)
                 End If
             End With
         Catch ex As Exception
@@ -3266,12 +3328,13 @@ Module modPaint
     End Function
 
     Public Function GetImageThumbnail(Image As Image, Width As Integer, Height As Integer) As Image
-        Dim oThumbImage As Image = New Bitmap(Width, Height)
-        Using oGr As Graphics = Graphics.FromImage(oThumbImage)
-            Call oGr.Clear(Color.Transparent)
-            Call modPaint.DrawScaledImage(oGr, Image, New RectangleF(0, 0, Width, Height))
-        End Using
-        Return oThumbImage
+        Return modPaint.ScaleImage(Image, New Size(Width, Height), Color.Transparent)
+        'Dim oThumbImage As Image = New Bitmap(Width, Height)
+        'Using oGr As Graphics = Graphics.FromImage(oThumbImage)
+        '    Call oGr.Clear(Color.Transparent)
+        '    Call modPaint.DrawScaledImage(oGr, Image, New RectangleF(0, 0, Width, Height))
+        'End Using
+        'Return oThumbImage
     End Function
 
     Public Sub DrawImageWithTransparency(Graphics As Graphics, Image As Bitmap, Bounds As RectangleF, Transparency As Single)
@@ -3315,7 +3378,6 @@ Module modPaint
 
             Dim iSystem As Integer = modWMSManager.GetSystemFromUTM(WMS, oUTM)
             Dim sFilename As String = WMS.ID & "_%SYSTEM%_%X1%_%Y1%_%X2%_%Y2%"
-            'Dim sURL As String = modWMSManager.FormatURL(WMS.URL, "CRS:84&LAYERS=" & WMS.Layer & "&PROJECTION=EPSG%3A4326&FORMAT=image/png&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&SRS=EPSG%3A%SYSTEM%&BBOX=%X1%,%Y1%,%X2%,%Y2%&WIDTH=%WIDTH%&HEIGHT=%HEIGHT%")
             Dim sURL As String = modWMSManager.FormatURL(WMS.URL, "LAYERS=" & WMS.Layer & "&PROJECTION=EPSG%3A4326&FORMAT=image/png&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&SRS=EPSG%3A%SYSTEM%&CRS=EPSG%3A%SYSTEM%&BBOX=%X1%,%Y1%,%X2%,%Y2%&WIDTH=%WIDTH%&HEIGHT=%HEIGHT%")
 
             Dim iIndex As Integer = 0
@@ -3333,7 +3395,7 @@ Module modPaint
                         Dim oImageBounds As RectangleF = New RectangleF((dX - oUTM.East) / TextureLOD, (-1 * (dY - oUTM.North + sStep)) / TextureLOD, (sStep + 1) / TextureLOD, (sStep + 1) / TextureLOD)
                         Call DrawImageWithTransparency(Graphics, oImage, oImageBounds, Options.Transparency)
                     Catch ex As Exception
-                        Call Survey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Error, "wms compose error: " & ex.Message, True)
+                        Call Survey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Error, "wms compose error: " & ex.Message)
                     End Try
                     iIndex += 1
                 Next
@@ -3392,7 +3454,7 @@ Module modPaint
                         Dim oImageBounds As RectangleF = New RectangleF(dX - oUTM.East, -1 * (dY - oUTM.North + sStep), sStep + 1, sStep + 1)
                         Call DrawImageWithTransparency(Graphics, oImage, oImageBounds, Options.Transparency)
                     Catch ex As Exception
-                        Call Survey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Error, "wms compose error: " & ex.Message, True)
+                        Call Survey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Error, "wms compose error: " & ex.Message)
                     End Try
                     iIndex += 1
                 Next
@@ -3439,7 +3501,7 @@ Module modPaint
         End Select
     End Function
 
-    Public Sub MapDrawPrintOrExportArea(ByVal Graphics As Graphics, PaintOptions As cOptions, ByVal Survey As cSurvey.cSurvey, ByVal CurrentDesign As cDesign, ByVal PaintZoom As Single)
+    Public Sub MapDrawPrintOrExportArea(ByVal Graphics As Graphics, PaintOptions As cOptionsCenterline, ByVal Survey As cSurvey.cSurvey, ByVal CurrentDesign As cDesign, ByVal PaintZoom As Single)
         Dim bDraw As Boolean
         Dim iDesignStyle As cIOptionPrintAndExportArea.DesignStyleEnum
         Dim oProfile As cIProfile
@@ -3581,20 +3643,27 @@ Module modPaint
         End If
     End Sub
 
-    Public Sub MapDrawRulers(ByVal Graphics As Graphics, PaintOptions As cOptions, ByVal Survey As cSurvey.cSurvey, Tools As cEditDesignTools, ByVal DrawRulesStyle As frmMain.RulersStyleEnum, ByVal PaintZoom As Single)
+    Public Sub MapDrawRulers(ByVal Graphics As Graphics, PaintOptions As cOptionsDesign, ByVal Survey As cSurvey.cSurvey, Tools As cEditDesignTools, ByVal DrawRulesStyle As frmMain2.RulersStyleEnum, ByVal PaintZoom As Single)
         Try
             Dim sDPIRatio As Single = Graphics.DpiX / 96.0F
-            Using oFont As Font = New Font(Survey.EditPaintObjects.RulersFont.FontFamily, 6 / (PaintZoom * sDPIRatio))
+            'Using oFont As Font = New Font(Survey.EditPaintObjects.RulersFont.FontFamily, (1.0F + (1.0F - sDPIRatio) / 2.0F) * 6 / PaintZoom)
+            Using oFont As Font = New Font(Survey.EditPaintObjects.RulersFont.FontFamily, sDPIRatio * 6.0F / PaintZoom)
                 Using oSF As StringFormat = New StringFormat
                     oSF.Alignment = StringAlignment.Far
                     oSF.LineAlignment = StringAlignment.Near
                     oSF.FormatFlags = StringFormatFlags.NoClip Or StringFormatFlags.NoWrap
 
-                    Dim oFontSize As SizeF = Graphics.MeasureString("00000", oFont)
+                    Dim oBounds As RectangleF = Graphics.VisibleClipBounds
+
+                    Dim iBarSize As Integer = Math.Round(oBounds.Left, 0).ToString.Length
+                    If Math.Round(oBounds.Right, 0).ToString.Length > iBarSize Then iBarSize = Math.Round(oBounds.Right, 0).ToString.Length
+                    If Math.Round(oBounds.Top, 0).ToString.Length > iBarSize Then iBarSize = Math.Round(oBounds.Top, 0).ToString.Length
+                    If Math.Round(oBounds.Bottom, 0).ToString.Length > iBarSize Then iBarSize = Math.Round(oBounds.Bottom, 0).ToString.Length
+
+                    Dim oFontSize As SizeF = Graphics.MeasureString(StrDup(iBarSize + 1, "0"), oFont)
                     Dim sfontWidth As Single = oFontSize.Width * PaintZoom
                     Dim sfontHeight As Single = oFontSize.Height * PaintZoom
 
-                    Dim oBounds As RectangleF = Graphics.VisibleClipBounds
                     Dim iStart As Single
                     Dim iEnd As Single
 
@@ -3621,7 +3690,7 @@ Module modPaint
                     Dim oVRect As RectangleF = New RectangleF(oBounds.Right - (8 + sfontWidth) / PaintZoom, oBounds.Top, (8 + sfontWidth) / PaintZoom, oBounds.Height - ((8 + sfontWidth) / PaintZoom))
                     Dim oXRect As RectangleF = New RectangleF(oBounds.Right - (8 + sfontWidth) / PaintZoom, oBounds.Bottom - (8 + sfontWidth) / PaintZoom, (8 + sfontWidth) / PaintZoom, (8 + sfontWidth) / PaintZoom)
 
-                    If DrawRulesStyle = frmMain.RulersStyleEnum.Advanced Then
+                    If DrawRulesStyle = frmMain2.RulersStyleEnum.Advanced Then
                         Call Graphics.FillRectangle(Survey.EditPaintObjects.RulersBackgroundBrush, oHRect)
                         Call Graphics.FillRectangle(Survey.EditPaintObjects.RulersBackgroundBrush, oVRect)
                         Call Graphics.FillRectangle(Survey.EditPaintObjects.RulersBackgroundBrush, oXRect)
@@ -3702,7 +3771,7 @@ Module modPaint
                     iEnd = oHRect.Right
                     For sX As Single = iStart To iEnd Step sStepInterval / 2 '0.5
                         If (sX Mod sStepCaption) = 0 Then
-                            Dim sXCaption As String = sX
+                            Dim sXCaption As String = sX.ToString
                             If sX > 0 Then sXCaption = "+" & sXCaption
                             Call Graphics.DrawString(sXCaption, oFont, Survey.EditPaintObjects.RulersFontUnitBrush, New PointF(sX - sScaledFontHeight / 2, oBounds.Bottom - 8 / PaintZoom), oSF)
                             Call Graphics.DrawLine(Survey.EditPaintObjects.RulersUnitPen, New PointF(sX, oBounds.Bottom - 8 / PaintZoom), New PointF(sX, oBounds.Bottom))
@@ -3719,7 +3788,7 @@ Module modPaint
                     iEnd = oVRect.Bottom
                     For sY As Single = iStart To iEnd Step sStepInterval / 2
                         If (sY Mod sStepCaption) = 0 Then
-                            Dim sYCaption As String = sY * -1
+                            Dim sYCaption As String = (sY * -1).ToString
                             If sY < 0 Then sYCaption = "+" & sYCaption
                             Call Graphics.DrawString(sYCaption, oFont, Survey.EditPaintObjects.RulersFontUnitBrush, New PointF(oBounds.Right - 8 / PaintZoom, sY - sScaledFontHeight / 2), oSF)
                             Call Graphics.DrawLine(Survey.EditPaintObjects.RulersUnitPen, New PointF(oBounds.Right - 8 / PaintZoom, sY), New PointF(oBounds.Right, sY))

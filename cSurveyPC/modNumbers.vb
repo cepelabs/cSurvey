@@ -75,14 +75,6 @@
 
     Public Function NumberToString(ByVal Number As Decimal, Optional Format As String = "0.00") As String
         Return NumberToString(Number, Format, False)
-        'Dim sNumber As String
-        'If Format <> "" Then
-        '    sNumber = Strings.Format(Number, Format)
-        'Else
-        '    sNumber = Number
-        'End If
-        'sNumber = sNumber.Replace(Globalization.NumberFormatInfo.CurrentInfo.CurrencyDecimalSeparator, ".")
-        'Return sNumber
     End Function
 
     Public Function CurrentDecimalSeparatorToPoint(ByVal Number As String) As String

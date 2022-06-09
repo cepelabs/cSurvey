@@ -23,39 +23,46 @@ Partial Class frmOpeningFlags
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmOpeningFlags))
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.lblDescription = New System.Windows.Forms.Label()
-        Me.chkMorphingDisable = New System.Windows.Forms.CheckBox()
-        Me.chkCalculateMode = New System.Windows.Forms.CheckBox()
-        Me.lblDesignWarpingMode = New System.Windows.Forms.Label()
+        Me.lblDescription = New DevExpress.XtraEditors.LabelControl()
+        Me.chkMorphingDisable = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkCalculateMode = New DevExpress.XtraEditors.CheckEdit()
+        Me.lblDesignWarpingMode = New DevExpress.XtraEditors.LabelControl()
         Me.cboDesignWarpingMode = New System.Windows.Forms.ComboBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.cmdOk = New System.Windows.Forms.Button()
-        Me.chkCalculateModeEnabled = New System.Windows.Forms.CheckBox()
-        Me.chkDesignWarpingModeEnabled = New System.Windows.Forms.CheckBox()
-        Me.chkMorphingDisableEnabled = New System.Windows.Forms.CheckBox()
-        Me.lblDesignWarpingModeEnabledIn = New System.Windows.Forms.Label()
-        Me.chkProfileWarpingEnabled = New System.Windows.Forms.CheckBox()
-        Me.chkPlanWarpingEnabled = New System.Windows.Forms.CheckBox()
-        Me.chkUpgradeCalculateVersionEnabled = New System.Windows.Forms.CheckBox()
-        Me.chkUpgradeCalculateVersion = New System.Windows.Forms.CheckBox()
-        Me.chkUpgradeInversionModeEnabled = New System.Windows.Forms.CheckBox()
-        Me.chkUpgradeInversionMode = New System.Windows.Forms.CheckBox()
-        Me.chkRegenerateSegmentsIDEnabled = New System.Windows.Forms.CheckBox()
-        Me.chkRegenerateSegmentsID = New System.Windows.Forms.CheckBox()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
+        Me.chkCalculateModeEnabled = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkDesignWarpingModeEnabled = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkMorphingDisableEnabled = New DevExpress.XtraEditors.CheckEdit()
+        Me.lblDesignWarpingModeEnabledIn = New DevExpress.XtraEditors.LabelControl()
+        Me.chkProfileWarpingEnabled = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkPlanWarpingEnabled = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkUpgradeCalculateVersionEnabled = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkUpgradeCalculateVersion = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkUpgradeInversionModeEnabled = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkUpgradeInversionMode = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkRegenerateSegmentsIDEnabled = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkRegenerateSegmentsID = New DevExpress.XtraEditors.CheckEdit()
+        CType(Me.chkMorphingDisable.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkCalculateMode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkCalculateModeEnabled.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkDesignWarpingModeEnabled.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkMorphingDisableEnabled.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkProfileWarpingEnabled.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkPlanWarpingEnabled.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkUpgradeCalculateVersionEnabled.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkUpgradeCalculateVersion.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkUpgradeInversionModeEnabled.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkUpgradeInversionMode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkRegenerateSegmentsIDEnabled.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkRegenerateSegmentsID.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'PictureBox1
-        '
-        resources.ApplyResources(Me.PictureBox1, "PictureBox1")
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.TabStop = False
         '
         'lblDescription
         '
+        Me.lblDescription.Appearance.Options.UseTextOptions = True
+        Me.lblDescription.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top
         resources.ApplyResources(Me.lblDescription, "lblDescription")
         Me.lblDescription.Name = "lblDescription"
         '
@@ -63,13 +70,13 @@ Partial Class frmOpeningFlags
         '
         resources.ApplyResources(Me.chkMorphingDisable, "chkMorphingDisable")
         Me.chkMorphingDisable.Name = "chkMorphingDisable"
-        Me.chkMorphingDisable.UseVisualStyleBackColor = True
+        Me.chkMorphingDisable.Properties.Caption = resources.GetString("chkMorphingDisable.Properties.Caption")
         '
         'chkCalculateMode
         '
         resources.ApplyResources(Me.chkCalculateMode, "chkCalculateMode")
         Me.chkCalculateMode.Name = "chkCalculateMode"
-        Me.chkCalculateMode.UseVisualStyleBackColor = True
+        Me.chkCalculateMode.Properties.Caption = resources.GetString("chkCalculateMode.Properties.Caption")
         '
         'lblDesignWarpingMode
         '
@@ -95,32 +102,33 @@ Partial Class frmOpeningFlags
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'cmdOk
         '
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
         '
         'chkCalculateModeEnabled
         '
         resources.ApplyResources(Me.chkCalculateModeEnabled, "chkCalculateModeEnabled")
         Me.chkCalculateModeEnabled.Name = "chkCalculateModeEnabled"
-        Me.chkCalculateModeEnabled.UseVisualStyleBackColor = True
+        Me.chkCalculateModeEnabled.Properties.AutoWidth = True
+        Me.chkCalculateModeEnabled.Properties.Caption = resources.GetString("chkCalculateModeEnabled.Properties.Caption")
         '
         'chkDesignWarpingModeEnabled
         '
         resources.ApplyResources(Me.chkDesignWarpingModeEnabled, "chkDesignWarpingModeEnabled")
         Me.chkDesignWarpingModeEnabled.Name = "chkDesignWarpingModeEnabled"
-        Me.chkDesignWarpingModeEnabled.UseVisualStyleBackColor = True
+        Me.chkDesignWarpingModeEnabled.Properties.AutoWidth = True
+        Me.chkDesignWarpingModeEnabled.Properties.Caption = resources.GetString("chkDesignWarpingModeEnabled.Properties.Caption")
         '
         'chkMorphingDisableEnabled
         '
         resources.ApplyResources(Me.chkMorphingDisableEnabled, "chkMorphingDisableEnabled")
         Me.chkMorphingDisableEnabled.Name = "chkMorphingDisableEnabled"
-        Me.chkMorphingDisableEnabled.UseVisualStyleBackColor = True
+        Me.chkMorphingDisableEnabled.Properties.AutoWidth = True
+        Me.chkMorphingDisableEnabled.Properties.Caption = resources.GetString("chkMorphingDisableEnabled.Properties.Caption")
         '
         'lblDesignWarpingModeEnabledIn
         '
@@ -131,49 +139,52 @@ Partial Class frmOpeningFlags
         '
         resources.ApplyResources(Me.chkProfileWarpingEnabled, "chkProfileWarpingEnabled")
         Me.chkProfileWarpingEnabled.Name = "chkProfileWarpingEnabled"
-        Me.chkProfileWarpingEnabled.UseVisualStyleBackColor = True
+        Me.chkProfileWarpingEnabled.Properties.Caption = resources.GetString("chkProfileWarpingEnabled.Properties.Caption")
         '
         'chkPlanWarpingEnabled
         '
         resources.ApplyResources(Me.chkPlanWarpingEnabled, "chkPlanWarpingEnabled")
         Me.chkPlanWarpingEnabled.Name = "chkPlanWarpingEnabled"
-        Me.chkPlanWarpingEnabled.UseVisualStyleBackColor = True
+        Me.chkPlanWarpingEnabled.Properties.Caption = resources.GetString("chkPlanWarpingEnabled.Properties.Caption")
         '
         'chkUpgradeCalculateVersionEnabled
         '
         resources.ApplyResources(Me.chkUpgradeCalculateVersionEnabled, "chkUpgradeCalculateVersionEnabled")
         Me.chkUpgradeCalculateVersionEnabled.Name = "chkUpgradeCalculateVersionEnabled"
-        Me.chkUpgradeCalculateVersionEnabled.UseVisualStyleBackColor = True
+        Me.chkUpgradeCalculateVersionEnabled.Properties.AutoWidth = True
+        Me.chkUpgradeCalculateVersionEnabled.Properties.Caption = resources.GetString("chkUpgradeCalculateVersionEnabled.Properties.Caption")
         '
         'chkUpgradeCalculateVersion
         '
         resources.ApplyResources(Me.chkUpgradeCalculateVersion, "chkUpgradeCalculateVersion")
         Me.chkUpgradeCalculateVersion.Name = "chkUpgradeCalculateVersion"
-        Me.chkUpgradeCalculateVersion.UseVisualStyleBackColor = True
+        Me.chkUpgradeCalculateVersion.Properties.Caption = resources.GetString("chkUpgradeCalculateVersion.Properties.Caption")
         '
         'chkUpgradeInversionModeEnabled
         '
         resources.ApplyResources(Me.chkUpgradeInversionModeEnabled, "chkUpgradeInversionModeEnabled")
         Me.chkUpgradeInversionModeEnabled.Name = "chkUpgradeInversionModeEnabled"
-        Me.chkUpgradeInversionModeEnabled.UseVisualStyleBackColor = True
+        Me.chkUpgradeInversionModeEnabled.Properties.AutoWidth = True
+        Me.chkUpgradeInversionModeEnabled.Properties.Caption = resources.GetString("chkUpgradeInversionModeEnabled.Properties.Caption")
         '
         'chkUpgradeInversionMode
         '
         resources.ApplyResources(Me.chkUpgradeInversionMode, "chkUpgradeInversionMode")
         Me.chkUpgradeInversionMode.Name = "chkUpgradeInversionMode"
-        Me.chkUpgradeInversionMode.UseVisualStyleBackColor = True
+        Me.chkUpgradeInversionMode.Properties.Caption = resources.GetString("chkUpgradeInversionMode.Properties.Caption")
         '
         'chkRegenerateSegmentsIDEnabled
         '
         resources.ApplyResources(Me.chkRegenerateSegmentsIDEnabled, "chkRegenerateSegmentsIDEnabled")
         Me.chkRegenerateSegmentsIDEnabled.Name = "chkRegenerateSegmentsIDEnabled"
-        Me.chkRegenerateSegmentsIDEnabled.UseVisualStyleBackColor = True
+        Me.chkRegenerateSegmentsIDEnabled.Properties.AutoWidth = True
+        Me.chkRegenerateSegmentsIDEnabled.Properties.Caption = resources.GetString("chkRegenerateSegmentsIDEnabled.Properties.Caption")
         '
         'chkRegenerateSegmentsID
         '
         resources.ApplyResources(Me.chkRegenerateSegmentsID, "chkRegenerateSegmentsID")
         Me.chkRegenerateSegmentsID.Name = "chkRegenerateSegmentsID"
-        Me.chkRegenerateSegmentsID.UseVisualStyleBackColor = True
+        Me.chkRegenerateSegmentsID.Properties.Caption = resources.GetString("chkRegenerateSegmentsID.Properties.Caption")
         '
         'frmOpeningFlags
         '
@@ -199,37 +210,48 @@ Partial Class frmOpeningFlags
         Me.Controls.Add(Me.lblDesignWarpingMode)
         Me.Controls.Add(Me.cboDesignWarpingMode)
         Me.Controls.Add(Me.chkMorphingDisable)
-        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.lblDescription)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.swissknife
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmOpeningFlags"
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkMorphingDisable.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkCalculateMode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkCalculateModeEnabled.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkDesignWarpingModeEnabled.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkMorphingDisableEnabled.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkProfileWarpingEnabled.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkPlanWarpingEnabled.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkUpgradeCalculateVersionEnabled.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkUpgradeCalculateVersion.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkUpgradeInversionModeEnabled.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkUpgradeInversionMode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkRegenerateSegmentsIDEnabled.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkRegenerateSegmentsID.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
-    Friend WithEvents lblDescription As System.Windows.Forms.Label
-    Friend WithEvents chkMorphingDisable As System.Windows.Forms.CheckBox
-    Friend WithEvents chkCalculateMode As System.Windows.Forms.CheckBox
-    Friend WithEvents lblDesignWarpingMode As System.Windows.Forms.Label
+    Friend WithEvents lblDescription As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents chkMorphingDisable As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkCalculateMode As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents lblDesignWarpingMode As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboDesignWarpingMode As System.Windows.Forms.ComboBox
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
-    Friend WithEvents chkCalculateModeEnabled As System.Windows.Forms.CheckBox
-    Friend WithEvents chkDesignWarpingModeEnabled As System.Windows.Forms.CheckBox
-    Friend WithEvents chkMorphingDisableEnabled As System.Windows.Forms.CheckBox
-    Friend WithEvents lblDesignWarpingModeEnabledIn As Label
-    Friend WithEvents chkProfileWarpingEnabled As CheckBox
-    Friend WithEvents chkPlanWarpingEnabled As CheckBox
-    Friend WithEvents chkUpgradeCalculateVersionEnabled As CheckBox
-    Friend WithEvents chkUpgradeCalculateVersion As CheckBox
-    Friend WithEvents chkUpgradeInversionModeEnabled As CheckBox
-    Friend WithEvents chkUpgradeInversionMode As CheckBox
-    Friend WithEvents chkRegenerateSegmentsIDEnabled As CheckBox
-    Friend WithEvents chkRegenerateSegmentsID As CheckBox
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents chkCalculateModeEnabled As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkDesignWarpingModeEnabled As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkMorphingDisableEnabled As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents lblDesignWarpingModeEnabledIn As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents chkProfileWarpingEnabled As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkPlanWarpingEnabled As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkUpgradeCalculateVersionEnabled As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkUpgradeCalculateVersion As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkUpgradeInversionModeEnabled As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkUpgradeInversionMode As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkRegenerateSegmentsIDEnabled As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkRegenerateSegmentsID As DevExpress.XtraEditors.CheckEdit
 End Class

@@ -1,7 +1,7 @@
 ﻿Imports cSurveyPC.cSurvey
 
 Namespace cSurvey.Calculate
-    Friend Class cSegmentGroup
+    Public Class cSegmentGroup
         Implements IComparable(Of cSegmentGroup), IComparer, IEquatable(Of cSegmentGroup), IEqualityComparer(Of String), IEqualityComparer(Of cSegmentGroup)
 
         Private sExtendStart As String
@@ -25,7 +25,7 @@ Namespace cSurvey.Calculate
             Dim oGroup As cSegmentGroup = New cSegmentGroup(sExtendStart, iPriority, oParentConnection, oConnection)
             Dim oSegmentHash As List(Of String) = New List(Of String)
             For Each oSegment As cSegment In oSegments
-                Dim sHash As String=oSegment.GetHash
+                Dim sHash As String = oSegment.GetHash
                 If Not oSegmentHash.Contains(sHash) Then
                     Call oGroup.oSegments.Add(oSegment)
                     Call oSegmentHash.Add(oSegment.GetHash)
@@ -82,7 +82,7 @@ Namespace cSurvey.Calculate
             Return sKey
         End Function
 
-        Public Sub New(ExtendStart As String, Priority As Integer, ParentConnection As cConnectionDef, Connection As cconnectionDef)
+        Friend Sub New(ExtendStart As String, Priority As Integer, ParentConnection As cConnectionDef, Connection As cConnectionDef)
             sExtendStart = ExtendStart
             iPriority = Priority
             oParentConnection = ParentConnection
@@ -91,7 +91,7 @@ Namespace cSurvey.Calculate
             oSegments = New List(Of cSegment)
         End Sub
 
-        Public Sub New(CaveInfo As cICaveInfoBranches)
+        Friend Sub New(CaveInfo As cICaveInfoBranches)
             sExtendStart = CaveInfo.GetExtendStart
             iPriority = CaveInfo.GetPriority
 

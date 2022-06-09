@@ -1,30 +1,31 @@
 ﻿Imports cSurveyPC.cSurvey.Design
+Public Class KeyValueChangeEventArgs(Of N, V)
+    Private oName As N
+    Private oValue As V
 
-'Public Interface cIPropertyControl(Of T)
-'    Sub Rebind(Item As T)
+    Public ReadOnly Property [Name] As N
+        Get
+            Return oName
+        End Get
+    End Property
 
-'    Event OnMapInvalidate(Sender As Object, e As EventArgs)
-'    Event OnObjectPropertyLoad(Sender As Object, e As EventArgs)
-'    Event OnGetFlags(Sender As Object, e As FlagEventArgs)
-'    Event OnSetFlags(Sender As Object, e As FlagEventArgs)
-'End Interface
+    Public Property [Value] As V
+        Get
+            Return oValue
+        End Get
+        Set(value As V)
+            oValue = value
+        End Set
+    End Property
+    Public Sub New([Name] As N)
+        oName = Name
+    End Sub
 
-'Public Class PropertyChangeEventArgs
-'    Inherits EventArgs
-
-'    Private sName As String
-
-'    Public ReadOnly Property Name As String
-'        Get
-'            Return sName
-'        End Get
-'    End Property
-
-'    Public Sub New(Name As String)
-'        sName = Name
-'    End Sub
-'End Class
-
+    Public Sub New(Name As N, Value As V)
+        oName = Name
+        oValue = Value
+    End Sub
+End Class
 Public Class DoCommandEventArgs
     Inherits EventArgs
 
@@ -44,7 +45,7 @@ Public Class DoCommandEventArgs
     End Property
 
     Public Sub New(Command As String, ParamArray Args As Object())
-        scommand = Command
+        sCommand = Command
         oArgs = Args
     End Sub
 End Class

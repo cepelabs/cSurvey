@@ -8,7 +8,7 @@ Imports cSurveyPC.cSurvey.Design.Items
 Namespace cSurvey.Design
     Friend Class cOptionsDrawingObjects
         Private WithEvents oSurvey As cSurvey
-        Private oOptions As cOptions
+        Private oOptions As cOptionsCenterline
 
         Private oPen As Pen
         Private oSelectedPen As Pen
@@ -437,13 +437,13 @@ Namespace cSurvey.Design
             oSelectedSurfaceProfilePen = New Pen(oSurfacePenColor, sLineWidthScaleFactor * sSurfaceSelectedPenWidth)
             oSelectedSurfaceProfilePen.DashStyle = oSurfaceProfilePen.DashStyle
 
-            oInvalidPen = New Pen(Color.IndianRed, -1)
+            oInvalidPen = New Pen(Color.IndianRed, cEditPaintObjects.FilettoPenWidth)
             oInvalidPen.DashStyle = DashStyle.Dot
 
             oTextColor = oOptions.GetCurrentDesignPropertiesValue("PlotTextColor", Color.Black)
 
             Select Case oOptions.DrawStyle
-                Case cOptions.DrawStyleEnum.Solid, cOptions.DrawStyleEnum.OnlySegment
+                Case cOptionsDesign.DrawStyleEnum.Solid, cOptionsDesign.DrawStyleEnum.OnlySegment
                     If oOptions.CenterlineColorGray Then
                         oPointColor = modPaint.GrayColor(oPointColor)
                         oPenColor = modPaint.GrayColor(oPenColor)
@@ -498,17 +498,9 @@ Namespace cSurvey.Design
                     oSelectedRingPen.StartCap = LineCap.RoundAnchor Or LineCap.Round
                     oSelectedRingPen.EndCap = LineCap.RoundAnchor Or LineCap.Round
 
-                    'oAreaPen = New Pen(Color.DarkGreen, sLineWidthScaleFactor)
-                    'oAreaPen.DashStyle = DashStyle.Dot
-                    'oAreaBrush = New SolidBrush(Color.LightGreen)
-                    ''oLateralSegmentPen = New Pen(Color.DarkGreen, sLineWidthScaleFactor)
-                    'oSelectedAreaPen = New Pen(Color.DarkGreen, sLineWidthScaleFactor)
-                    'oSelectedAreaPen.DashStyle = DashStyle.Dot
-                    'oSelectedAreaBrush = New SolidBrush(Color.LightGreen)
-
                     bEnableBrushes = True
                     bEnableTransparence = False
-                Case cOptions.DrawStyleEnum.Transparent
+                Case cOptionsDesign.DrawStyleEnum.Transparent
                     If oOptions.CenterlineColorGray Then
                         oPointColor = modPaint.GrayColor(oPointColor)
                         oPenColor = modPaint.GrayColor(oPenColor)
@@ -556,18 +548,10 @@ Namespace cSurvey.Design
                     oSelectedRingPen.StartCap = LineCap.RoundAnchor Or LineCap.Round
                     oSelectedRingPen.EndCap = LineCap.RoundAnchor Or LineCap.Round
 
-                    'oAreaPen = New Pen(Color.FromArgb(228, Color.DarkGreen), sLineWidthScaleFactor)
-                    'oAreaPen.DashStyle = DashStyle.Dot
-                    'oAreaBrush = New SolidBrush(Color.FromArgb(100, Color.LightGreen))
-                    ''oLateralSegmentPen = New Pen(Color.FromArgb(228, Color.DarkGreen), sLineWidthScaleFactor)
-                    'oSelectedAreaPen = New Pen(Color.FromArgb(250, Color.DarkGreen), sLineWidthScaleFactor)
-                    'oSelectedAreaPen.DashStyle = DashStyle.Dot
-                    'oSelectedAreaBrush = New SolidBrush(Color.FromArgb(230, Color.LightGreen))
-
                     bEnableBrushes = True
                     bEnableTransparence = True
                     'End If
-                Case cOptions.DrawStyleEnum.Light
+                Case cOptionsDesign.DrawStyleEnum.Light
                     If oOptions.CenterlineColorGray Then
                         oPointColor = modPaint.GrayColor(oPointColor)
                         oPenColor = modPaint.GrayColor(oPenColor)
@@ -643,7 +627,7 @@ Namespace cSurvey.Design
         End Property
 
 
-        Friend Sub New(ByVal Survey As cSurvey, ByVal Options As cOptions)
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Options As cOptionsCenterline)
             oSurvey = Survey
             oOptions = Options
             Call Rebind()

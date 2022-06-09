@@ -1,38 +1,52 @@
 ﻿Imports cSurveyPC.cSurvey
 
-friend Class frmSegmentBrowser
+Friend Class frmSegmentBrowser
+    Private bAllowNull As Boolean
 
-    Public ReadOnly Property SegmentsCount As Integer
+    Public ReadOnly Property Count As Integer
         Get
-            Return cboSegments.Items.Count
+            Return cboSegments.Properties.DataSource.count
         End Get
     End Property
 
-    Public Sub New(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal CurrentSegment As cSegment, Optional AllowSplay As Boolean = False)
+    Public ReadOnly Property SelectedItem As cSegment
+        Get
+            Return cboSegments.EditValue
+        End Get
+    End Property
+
+    Public Sub New(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal CurrentSegment As cSegment, Optional AllowNull As Boolean = False, Optional AllowSplay As Boolean = False)
 
         ' Chiamata richiesta dalla finestra di progettazione.
         InitializeComponent()
 
         ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
-        For Each oSegment As cSegment In Survey.Segments.GetValidSegments
-            If AllowSplay Or (Not AllowSplay And Not oSegment.Splay) Then
-                Call cboSegments.Items.Add(oSegment)
-            End If
-        Next
+        bAllowNull = AllowNull
+        If bAllowNull Then
+            cboSegments.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True
+            cboSegments.Properties.NullText = ""
+        Else
+            cboSegments.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False
+        End If
 
-        Try
-            If CurrentSegment Is Nothing Then
-                cboSegments.SelectedIndex = 0
-            Else
-                cboSegments.SelectedItem = CurrentSegment
-            End If
-        Catch
-        End Try
+        cboSegments.Properties.DataSource = Survey.Segments.GetValidSegments.Cast(Of cSegment).Where(Function(oitem) AllowSplay Or (Not AllowSplay And Not oitem.Splay))
+
+        cboSegments.EditValue = CurrentSegment
     End Sub
 
-    Private Sub cboSegments_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles cboSegments.Validating
-        If IsNothing(cboSegments.SelectedItem) AndAlso cboSegments.Text <> "" Then
-            e.Cancel = True
+    Private Sub cboSegments_CustomDisplayText(sender As Object, e As DevExpress.XtraEditors.Controls.CustomDisplayTextEventArgs) Handles cboSegments.CustomDisplayText
+        If e.Value Is Nothing Then
+            e.DisplayText = ""
+        Else
+            With DirectCast(e.Value, cSegment)
+                e.DisplayText = .From & " > " & .To
+            End With
         End If
     End Sub
+
+    'Private Sub cboSegments_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles cboSegments.Validating
+    '    If IsNothing(cboSegments.SelectedItem) AndAlso cboSegments.Text <> "" Then
+    '        e.Cancel = True
+    '    End If
+    'End Sub
 End Class

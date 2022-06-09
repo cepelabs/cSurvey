@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmResurveyOptions
-    Inherits DevExpress.XtraEditors.XtraForm
+    Inherits cForm
 
     'Form esegue l'override del metodo Dispose per pulire l'elenco dei componenti.
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -26,44 +26,49 @@ Partial Class frmResurveyOptions
         Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
         Me.cboProfileType = New System.Windows.Forms.ComboBox()
-        Me.lblProfileType = New System.Windows.Forms.Label()
+        Me.lblProfileType = New DevExpress.XtraEditors.LabelControl()
         Me.cboDropScaleType = New System.Windows.Forms.ComboBox()
-        Me.lblDropScaleType = New System.Windows.Forms.Label()
+        Me.lblDropScaleType = New DevExpress.XtraEditors.LabelControl()
         Me.cboPlanScaleType = New System.Windows.Forms.ComboBox()
-        Me.lblPlanScaleType = New System.Windows.Forms.Label()
+        Me.lblPlanScaleType = New DevExpress.XtraEditors.LabelControl()
         Me.chkUseDropForInclination = New DevExpress.XtraEditors.CheckEdit()
         Me.chkSkipInvalidStation = New DevExpress.XtraEditors.CheckEdit()
-        Me.lblNordCorrectionDegrees = New System.Windows.Forms.Label()
-        Me.lblNordCorrection = New System.Windows.Forms.Label()
+        Me.lblNordCorrectionDegrees = New DevExpress.XtraEditors.LabelControl()
+        Me.lblNordCorrection = New DevExpress.XtraEditors.LabelControl()
         Me.cboCalculateMode = New System.Windows.Forms.ComboBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label1 = New DevExpress.XtraEditors.LabelControl()
+        Me.Label6 = New DevExpress.XtraEditors.LabelControl()
+        Me.Label7 = New DevExpress.XtraEditors.LabelControl()
+        Me.Label4 = New DevExpress.XtraEditors.LabelControl()
+        Me.Label5 = New DevExpress.XtraEditors.LabelControl()
         Me.chkLRUDCalculate = New DevExpress.XtraEditors.CheckEdit()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.XtraTabControl1 = New DevExpress.XtraTab.XtraTabControl()
+        Me.Label2 = New DevExpress.XtraEditors.LabelControl()
+        Me.Label3 = New DevExpress.XtraEditors.LabelControl()
+        Me.pnlBottom = New DevExpress.XtraEditors.PanelControl()
+        Me.tabMain = New DevExpress.XtraTab.XtraTabControl()
         Me.tabCalculation = New DevExpress.XtraTab.XtraTabPage()
         Me.cboShotDirection = New System.Windows.Forms.ComboBox()
-        Me.lblShotDirection = New System.Windows.Forms.Label()
+        Me.lblShotDirection = New DevExpress.XtraEditors.LabelControl()
         Me.txtNordCorrection = New DevExpress.XtraEditors.SpinEdit()
         Me.tabLRUD = New DevExpress.XtraTab.XtraTabPage()
         Me.cboLRUDStation = New System.Windows.Forms.ComboBox()
-        Me.lblLRUDStation = New System.Windows.Forms.Label()
+        Me.lblLRUDStation = New DevExpress.XtraEditors.LabelControl()
         Me.frmLRUDFromImages = New DevExpress.XtraEditors.GroupControl()
         Me.txtUDMaxValue = New DevExpress.XtraEditors.SpinEdit()
         Me.txtLRMaxValue = New DevExpress.XtraEditors.SpinEdit()
         Me.txtLRUDBorderWidth = New DevExpress.XtraEditors.SpinEdit()
-        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.AccordionControl1 = New DevExpress.XtraBars.Navigation.AccordionControl()
+        Me.btnMain = New DevExpress.XtraBars.Navigation.AccordionControlElement()
+        Me.AccordionControlElement4 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
+        Me.AccordionControlElement17 = New DevExpress.XtraBars.Navigation.AccordionControlElement()
+        Me.lblSeparator = New DevExpress.XtraEditors.LabelControl()
         CType(Me.chkUseDropForInclination.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkSkipInvalidStation.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkLRUDCalculate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel1.SuspendLayout()
-        CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.XtraTabControl1.SuspendLayout()
+        CType(Me.pnlBottom, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlBottom.SuspendLayout()
+        CType(Me.tabMain, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabMain.SuspendLayout()
         Me.tabCalculation.SuspendLayout()
         CType(Me.txtNordCorrection.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabLRUD.SuspendLayout()
@@ -72,7 +77,7 @@ Partial Class frmResurveyOptions
         CType(Me.txtUDMaxValue.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtLRMaxValue.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtLRUDBorderWidth.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel2.SuspendLayout()
+        CType(Me.AccordionControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdOk
@@ -130,12 +135,14 @@ Partial Class frmResurveyOptions
         '
         resources.ApplyResources(Me.chkUseDropForInclination, "chkUseDropForInclination")
         Me.chkUseDropForInclination.Name = "chkUseDropForInclination"
+        Me.chkUseDropForInclination.Properties.AutoWidth = True
         Me.chkUseDropForInclination.Properties.Caption = resources.GetString("chkUseDropForInclination.Properties.Caption")
         '
         'chkSkipInvalidStation
         '
         resources.ApplyResources(Me.chkSkipInvalidStation, "chkSkipInvalidStation")
         Me.chkSkipInvalidStation.Name = "chkSkipInvalidStation"
+        Me.chkSkipInvalidStation.Properties.AutoWidth = True
         Me.chkSkipInvalidStation.Properties.Caption = resources.GetString("chkSkipInvalidStation.Properties.Caption")
         '
         'lblNordCorrectionDegrees
@@ -185,6 +192,7 @@ Partial Class frmResurveyOptions
         '
         resources.ApplyResources(Me.chkLRUDCalculate, "chkLRUDCalculate")
         Me.chkLRUDCalculate.Name = "chkLRUDCalculate"
+        Me.chkLRUDCalculate.Properties.AutoWidth = True
         Me.chkLRUDCalculate.Properties.Caption = resources.GetString("chkLRUDCalculate.Properties.Caption")
         '
         'Label2
@@ -197,19 +205,20 @@ Partial Class frmResurveyOptions
         resources.ApplyResources(Me.Label3, "Label3")
         Me.Label3.Name = "Label3"
         '
-        'Panel1
+        'pnlBottom
         '
-        Me.Panel1.Controls.Add(Me.cmdCancel)
-        Me.Panel1.Controls.Add(Me.cmdOk)
-        resources.ApplyResources(Me.Panel1, "Panel1")
-        Me.Panel1.Name = "Panel1"
+        Me.pnlBottom.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlBottom.Controls.Add(Me.cmdCancel)
+        Me.pnlBottom.Controls.Add(Me.cmdOk)
+        resources.ApplyResources(Me.pnlBottom, "pnlBottom")
+        Me.pnlBottom.Name = "pnlBottom"
         '
-        'XtraTabControl1
+        'tabMain
         '
-        resources.ApplyResources(Me.XtraTabControl1, "XtraTabControl1")
-        Me.XtraTabControl1.Name = "XtraTabControl1"
-        Me.XtraTabControl1.SelectedTabPage = Me.tabCalculation
-        Me.XtraTabControl1.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tabCalculation, Me.tabLRUD})
+        resources.ApplyResources(Me.tabMain, "tabMain")
+        Me.tabMain.Name = "tabMain"
+        Me.tabMain.SelectedTabPage = Me.tabCalculation
+        Me.tabMain.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tabCalculation, Me.tabLRUD})
         '
         'tabCalculation
         '
@@ -325,11 +334,46 @@ Partial Class frmResurveyOptions
         Me.txtLRUDBorderWidth.Properties.IsFloatValue = False
         Me.txtLRUDBorderWidth.Properties.Mask.EditMask = resources.GetString("txtLRUDBorderWidth.Properties.Mask.EditMask")
         '
-        'Panel2
+        'AccordionControl1
         '
-        Me.Panel2.Controls.Add(Me.XtraTabControl1)
-        resources.ApplyResources(Me.Panel2, "Panel2")
-        Me.Panel2.Name = "Panel2"
+        Me.AccordionControl1.AllowItemSelection = True
+        Me.AccordionControl1.AnimationType = DevExpress.XtraBars.Navigation.AnimationType.None
+        resources.ApplyResources(Me.AccordionControl1, "AccordionControl1")
+        Me.AccordionControl1.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.btnMain})
+        Me.AccordionControl1.Name = "AccordionControl1"
+        Me.AccordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch
+        Me.AccordionControl1.ShowFilterControl = DevExpress.XtraBars.Navigation.ShowFilterControl.[Auto]
+        Me.AccordionControl1.ShowGroupExpandButtons = False
+        Me.AccordionControl1.ShowItemExpandButtons = False
+        '
+        'btnMain
+        '
+        Me.btnMain.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.AccordionControlElement4, Me.AccordionControlElement17})
+        Me.btnMain.Expanded = True
+        Me.btnMain.HeaderVisible = False
+        Me.btnMain.Name = "btnMain"
+        resources.ApplyResources(Me.btnMain, "btnMain")
+        '
+        'AccordionControlElement4
+        '
+        Me.AccordionControlElement4.Name = "AccordionControlElement4"
+        Me.AccordionControlElement4.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
+        Me.AccordionControlElement4.Tag = "tabCalculation"
+        resources.ApplyResources(Me.AccordionControlElement4, "AccordionControlElement4")
+        '
+        'AccordionControlElement17
+        '
+        Me.AccordionControlElement17.Name = "AccordionControlElement17"
+        Me.AccordionControlElement17.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
+        Me.AccordionControlElement17.Tag = "tabLRUD"
+        resources.ApplyResources(Me.AccordionControlElement17, "AccordionControlElement17")
+        '
+        'lblSeparator
+        '
+        resources.ApplyResources(Me.lblSeparator, "lblSeparator")
+        Me.lblSeparator.LineLocation = DevExpress.XtraEditors.LineLocation.Center
+        Me.lblSeparator.LineVisible = True
+        Me.lblSeparator.Name = "lblSeparator"
         '
         'frmResurveyOptions
         '
@@ -337,8 +381,10 @@ Partial Class frmResurveyOptions
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
-        Me.Controls.Add(Me.Panel2)
-        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.tabMain)
+        Me.Controls.Add(Me.AccordionControl1)
+        Me.Controls.Add(Me.lblSeparator)
+        Me.Controls.Add(Me.pnlBottom)
         Me.IconOptions.Icon = CType(resources.GetObject("frmResurveyOptions.IconOptions.Icon"), System.Drawing.Icon)
         Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.parameters
         Me.MaximizeBox = False
@@ -347,9 +393,10 @@ Partial Class frmResurveyOptions
         CType(Me.chkUseDropForInclination.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkSkipInvalidStation.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkLRUDCalculate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel1.ResumeLayout(False)
-        CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.XtraTabControl1.ResumeLayout(False)
+        CType(Me.pnlBottom, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlBottom.ResumeLayout(False)
+        CType(Me.tabMain, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabMain.ResumeLayout(False)
         Me.tabCalculation.ResumeLayout(False)
         Me.tabCalculation.PerformLayout()
         CType(Me.txtNordCorrection.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -361,43 +408,47 @@ Partial Class frmResurveyOptions
         CType(Me.txtUDMaxValue.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtLRMaxValue.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtLRUDBorderWidth.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel2.ResumeLayout(False)
+        CType(Me.AccordionControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cboCalculateMode As System.Windows.Forms.ComboBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents lblNordCorrection As System.Windows.Forms.Label
-    Friend WithEvents lblNordCorrectionDegrees As System.Windows.Forms.Label
+    Friend WithEvents Label1 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblNordCorrection As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblNordCorrectionDegrees As DevExpress.XtraEditors.LabelControl
     Friend WithEvents chkSkipInvalidStation As DevExpress.XtraEditors.CheckEdit
-    Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Label6 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents Label7 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents Label4 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents Label5 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents chkLRUDCalculate As DevExpress.XtraEditors.CheckEdit
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents Label2 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents Label3 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents chkUseDropForInclination As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents cboDropScaleType As ComboBox
-    Friend WithEvents lblDropScaleType As Label
+    Friend WithEvents lblDropScaleType As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboPlanScaleType As ComboBox
-    Friend WithEvents lblPlanScaleType As Label
+    Friend WithEvents lblPlanScaleType As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboProfileType As ComboBox
-    Friend WithEvents lblProfileType As Label
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents XtraTabControl1 As DevExpress.XtraTab.XtraTabControl
+    Friend WithEvents lblProfileType As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents pnlBottom As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents tabMain As DevExpress.XtraTab.XtraTabControl
     Friend WithEvents tabCalculation As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents tabLRUD As DevExpress.XtraTab.XtraTabPage
-    Friend WithEvents Panel2 As Panel
     Friend WithEvents frmLRUDFromImages As DevExpress.XtraEditors.GroupControl
     Friend WithEvents txtNordCorrection As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents txtLRUDBorderWidth As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents txtUDMaxValue As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents txtLRMaxValue As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents cboShotDirection As ComboBox
-    Friend WithEvents lblShotDirection As Label
+    Friend WithEvents lblShotDirection As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboLRUDStation As ComboBox
-    Friend WithEvents lblLRUDStation As Label
+    Friend WithEvents lblLRUDStation As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents AccordionControl1 As DevExpress.XtraBars.Navigation.AccordionControl
+    Friend WithEvents btnMain As DevExpress.XtraBars.Navigation.AccordionControlElement
+    Friend WithEvents AccordionControlElement4 As DevExpress.XtraBars.Navigation.AccordionControlElement
+    Friend WithEvents AccordionControlElement17 As DevExpress.XtraBars.Navigation.AccordionControlElement
+    Friend WithEvents lblSeparator As DevExpress.XtraEditors.LabelControl
 End Class

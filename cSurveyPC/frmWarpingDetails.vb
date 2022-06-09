@@ -38,9 +38,9 @@ friend Class frmWarpingDetails
             If oDetail.Details.DeltaSize <> 1 Then
                 If Math.Abs(oDetail.Details.DeltaSize) > 0 Then
                     If Math.Abs(1 - oDetail.Details.DeltaSize) > sDeltaSizeLimit Then
-                        e.Appearance.BackColor = Color.PeachPuff
+                        e.Appearance.BackColor = modDevExpress.SkinBackcolor(Color.PeachPuff)
                     Else
-                        e.Appearance.BackColor = Color.LightGreen
+                        e.Appearance.BackColor = modDevExpress.SkinBackcolor(Color.LightGreen)
                     End If
                 End If
             End If
@@ -48,32 +48,32 @@ friend Class frmWarpingDetails
             Dim oDetail As cWarpingDetails = gridviewDetails.GetRow(e.RowHandle)
             If Math.Abs(oDetail.Details.DeltaX) > 0 Then
                 If Math.Abs(oDetail.Details.DeltaX) > sDeltaXYLimit Then
-                    e.Appearance.BackColor = Color.PeachPuff
+                    e.Appearance.BackColor = modDevExpress.SkinBackcolor(Color.PeachPuff)
                 Else
-                    e.Appearance.BackColor = Color.LightGreen
+                    e.Appearance.BackColor = modDevExpress.SkinBackcolor(Color.LightGreen)
                 End If
             End If
         ElseIf e.Column Is colDetailsDeltaY Then
             Dim oDetail As cWarpingDetails = gridviewDetails.GetRow(e.RowHandle)
             If Math.Abs(oDetail.Details.DeltaX) > 0 Then
                 If Math.Abs(oDetail.Details.DeltaX) > sDeltaXYLimit Then
-                    e.Appearance.BackColor = Color.PeachPuff
+                    e.Appearance.BackColor = modDevExpress.SkinBackcolor(Color.PeachPuff)
                 Else
-                    e.Appearance.BackColor = Color.LightGreen
+                    e.Appearance.BackColor = modDevExpress.SkinBackcolor(Color.LightGreen)
                 End If
             End If
         ElseIf e.Column Is colDetailsDeltaAngle Then
             Dim oDetail As cWarpingDetails = gridviewDetails.GetRow(e.RowHandle)
             If Math.Abs(oDetail.Details.DeltaAngle) > 0 Then
                 If Math.Abs(oDetail.Details.DeltaAngle) > sDeltaAngleLimit Then
-                    e.Appearance.BackColor = Color.PeachPuff
+                    e.Appearance.BackColor = modDevExpress.SkinBackcolor(Color.PeachPuff)
                 Else
-                    e.Appearance.BackColor = Color.LightGreen
+                    e.Appearance.BackColor = modDevExpress.SkinBackcolor(Color.LightGreen)
                 End If
             End If
         ElseIf e.Column Is colDetailsNewSize OrElse e.Column Is colDetailsOldSize Then
             Dim oDetail As cWarpingDetails = gridviewDetails.GetRow(e.RowHandle)
-            If oDetail.Details.IsCritical Then e.Appearance.BackColor = Color.PeachPuff
+            If oDetail.Details.IsCritical Then e.Appearance.BackColor = modDevExpress.SkinBackcolor(Color.PeachPuff)
         End If
     End Sub
 

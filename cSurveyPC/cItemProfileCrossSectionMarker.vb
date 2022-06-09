@@ -71,7 +71,7 @@ Namespace cSurvey.Design.Items
             End Select
         End Function
 
-        Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptions) As Single
+        Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptionsCenterline) As Single
             Dim sTextScaleFactor As Single = MyBase.GetTextScaleFactor(PaintOptions) * PaintOptions.GetCurrentDesignPropertiesValue("DesignCrossSectionTextScaleFactor", 1) * PaintOptions.GetCurrentDesignPropertiesValue("DesignCrossSectionMarkerTextScaleFactor", 1)
             Select Case iTextSize
                 Case cIItemSizable.SizeEnum.Default
@@ -596,7 +596,7 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
-        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             Dim oCache As cDrawCache = MyBase.Caches(PaintOptions)
             With oCache
                 If .Invalidated Then
@@ -645,7 +645,7 @@ Namespace cSurvey.Design.Items
 
                             oCacheItem = oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
                             Call oCacheItem.SetPen(PaintOptions.DrawingObjects.CrossSectionMarkerPen)
-                            Call oCacheItem.SetWireframePen(PaintOptions.PaintObjects.Pens.GenericPen.WireframePen)
+                            Call oCacheItem.SetWireframePen(oSurvey.Pens.GenericPen.WireframePen)
                             If iProfileAlignment = cIItemProfileCrossSectionMarker.ProfileAlignmentEnum.Up Then
                                 oArrowPoint = New PointF(oEndPointU.X + iSegmentSign * sArrowSize, oEndPointU.Y)
                                 Call oCacheItem.AddLines({oStartPointU, oEndPointU, oArrowPoint})
@@ -662,7 +662,7 @@ Namespace cSurvey.Design.Items
                             End If
                             oCacheItem = oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
                             Call oCacheItem.SetPen(PaintOptions.DrawingObjects.CrossSectionMarkerPen)
-                            Call oCacheItem.SetWireframePen(PaintOptions.PaintObjects.Pens.GenericPen.WireframePen)
+                            Call oCacheItem.SetWireframePen(oSurvey.Pens.GenericPen.WireframePen)
                             If iProfileAlignment = cIItemProfileCrossSectionMarker.ProfileAlignmentEnum.Down Then
                                 oArrowPoint = New PointF(oEndPointD.X + iSegmentSign * sArrowSize, oEndPointD.Y)
                                 Call oCacheItem.AddLines({oStartPointD, oEndPointD, oArrowPoint})
@@ -754,7 +754,7 @@ Namespace cSurvey.Design.Items
             End With
         End Sub
 
-        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             If MyBase.Points.Count > 0 Then
                 Call Render(Graphics, PaintOptions, Options, Selected)
                 If Not PaintOptions.IsDesign OrElse (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then

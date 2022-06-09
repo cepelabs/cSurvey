@@ -2,7 +2,7 @@
 Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Design.Items
 
-friend Class frmSplay
+Friend Class frmSplay
     Private oSurvey As cSurvey.cSurvey
     Private oDesign As cDesign
 
@@ -196,13 +196,12 @@ friend Class frmSplay
         iContext = Context
         oDesign = Tools.Design
         If iContext = ContextEnum.Data Then
-            Call TabMain.TabPages.Remove(TabPage3)
+            tabCrossSections.PageVisible = False
         Else
             If oDesign.Type = cIDesign.cDesignTypeEnum.Plan Then
-                Call TabMain.TabPages.Remove(TabPage2)
-                Call TabMain.TabPages.Remove(TabPage3)
+                tabProfile.PageVisible = False
             ElseIf oDesign.Type = cIDesign.cDesignTypeEnum.Profile Then
-                Call TabMain.TabPages.Remove(TabPage1)
+                tabPlan.PageVisible = False
             End If
         End If
 
@@ -259,7 +258,7 @@ friend Class frmSplay
         If IsNothing(oCrossSection) Then
             Try
                 txtPropCrossSectionSplayProjectionAngle.Value = 0
-                cboPropCrossSectionSplayLineStyle.SelectedIndex = cOptions.SplayStyleEnum.PointsAndRays
+                cboPropCrossSectionSplayLineStyle.SelectedIndex = cOptionsDesign.SplayStyleEnum.PointsAndRays
                 txtPropCrossSectionSplayMaxVariationAngle.Value = 20
                 chkPropCrossSectionShowSplayBorder.Checked = False
                 chkPropCrossSectionSplayText.Checked = False
@@ -272,7 +271,7 @@ friend Class frmSplay
                 Call pSetNumericUpDownValue(txtPropCrossSectionSplayMaxVariationAngle, oCrossSection.SplayBorderMaxAngleVariation, 0)
                 chkPropCrossSectionShowSplayBorder.Checked = oCrossSection.ShowSplayBorder
                 chkPropCrossSectionSplayText.Checked = oCrossSection.ShowSplayText
-                TabMain.SelectedTab = TabPage3
+                tabMain.SelectedTabPage = tabCrossSections
             Catch ex As Exception
             End Try
         End If

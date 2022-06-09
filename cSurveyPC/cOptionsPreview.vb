@@ -3,36 +3,28 @@ Imports System.Xml
 
 Namespace cSurvey.Design
     Public Class cOptionsPreview
-        Inherits cOptions
+        Inherits cOptionsCenterline
         Implements cIOptionsPreview
 
         Private iAdvancedClippingMode As cIOptionsPreview.AdvancedClippingModeEnum
         Private sPrinterName As String
 
         Private bPageLandScape As Boolean
-        Private oPageMargins As Drawing.Printing.Margins
+        Private WithEvents oPageMargins As cMargins
         Private sPageformat As String
 
         Private iScaleMode As cIOptionsPreview.ScaleModeEnum
         Private iScale As Integer
-
-        'Private bDrawSolidRock As Boolean
-
-        'Public Overridable Property DrawSolidRock As Boolean Implements cIOptionsPreview.DrawSolidRock
-        '    Get
-        '        Return bDrawSolidRock
-        '    End Get
-        '    Set(value As Boolean)
-        '        bDrawSolidRock = value
-        '    End Set
-        'End Property
 
         Public Property ScaleMode() As cIOptionsPreview.ScaleModeEnum Implements cIOptionsPreview.ScaleMode
             Get
                 Return iScaleMode
             End Get
             Set(ByVal value As cIOptionsPreview.ScaleModeEnum)
-                iScaleMode = value
+                If iScaleMode <> value Then
+                    iScaleMode = value
+                    Call PropertyChanged("ScaleMode")
+                End If
             End Set
         End Property
 
@@ -41,16 +33,22 @@ Namespace cSurvey.Design
                 Return iScale
             End Get
             Set(ByVal value As Integer)
-                iScale = value
+                If iScale <> value Then
+                    iScale = value
+                    Call PropertyChanged("Scale")
+                End If
             End Set
         End Property
 
-        Public Property PageMargins As Drawing.Printing.Margins
+        Public Property PageMargins As cMargins
             Get
                 Return oPageMargins
             End Get
-            Set(ByVal value As Drawing.Printing.Margins)
-                oPageMargins = value
+            Set(ByVal value As cMargins)
+                If oPageMargins <> value Then
+                    oPageMargins = value
+                    Call PropertyChanged("PageMargins")
+                End If
             End Set
         End Property
 
@@ -59,7 +57,10 @@ Namespace cSurvey.Design
                 Return sPageformat
             End Get
             Set(ByVal value As String)
-                sPageformat = value
+                If sPageformat <> value Then
+                    sPageformat = value
+                    Call PropertyChanged("PageFormat")
+                End If
             End Set
         End Property
 
@@ -68,7 +69,10 @@ Namespace cSurvey.Design
                 Return bPageLandScape
             End Get
             Set(ByVal value As Boolean)
-                bPageLandScape = value
+                If bPageLandScape <> value Then
+                    bPageLandScape = value
+                    Call PropertyChanged("PageLandscape")
+                End If
             End Set
         End Property
 
@@ -77,7 +81,10 @@ Namespace cSurvey.Design
                 Return sPrinterName
             End Get
             Set(ByVal value As String)
-                sPrinterName = value
+                If sPrinterName <> value Then
+                    sPrinterName = value
+                    Call PropertyChanged("PrinterName")
+                End If
             End Set
         End Property
 
@@ -87,8 +94,7 @@ Namespace cSurvey.Design
             If bPageLandScape Then
                 Call oXMLOptions.SetAttribute("pagelandscape", 1)
             End If
-            Dim oConverter As Drawing.Printing.MarginsConverter = New Drawing.Printing.MarginsConverter
-            Call oXMLOptions.SetAttribute("pagemargins", oConverter.ConvertToString(oPageMargins))
+            Call oXMLOptions.SetAttribute("pagemargins", oPageMargins.ToString)
             Call oXMLOptions.SetAttribute("pageformat", sPageformat)
 
             Call oXMLOptions.SetAttribute("scalemode", iScaleMode)
@@ -109,8 +115,7 @@ Namespace cSurvey.Design
             sPrinterName = modXML.GetAttributeValue(Options, "printername")
             bPageLandScape = modXML.GetAttributeValue(Options, "pagelandscape", False)
             Dim oConverter As Drawing.Printing.MarginsConverter = New Drawing.Printing.MarginsConverter
-            Dim oPageMarginsData() As String = modXML.GetAttributeValue(Options, "pagemargins", "10;10;10;10").Split({";"c, ","c})
-            oPageMargins = New Drawing.Printing.Margins(oPageMarginsData(0), oPageMarginsData(1), oPageMarginsData(2), oPageMarginsData(3))
+            oPageMargins = New cMargins(modXML.GetAttributeValue(Options, "pagemargins", "10;10;10;10"))
             sPageformat = modXML.GetAttributeValue(Options, "pageformat")
             iScaleMode = modXML.GetAttributeValue(Options, "scalemode")
             iScale = modXML.GetAttributeValue(Options, "scale")
@@ -123,8 +128,7 @@ Namespace cSurvey.Design
             sPrinterName = ""
             CompassStyle = CompassStyleEnum.Advanced
             ScaleStyle = ScaleStyleEnum.Advanced
-            oPageMargins = New Drawing.Printing.Margins
-            'bDrawSolidRock = False
+            oPageMargins = New cMargins(10, 10, 10, 10)
         End Sub
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal Options As XmlElement)
@@ -133,11 +137,7 @@ Namespace cSurvey.Design
             ScaleStyle = ScaleStyleEnum.Advanced
             sPrinterName = modXML.GetAttributeValue(Options, "printername", "")
             bPageLandScape = modXML.GetAttributeValue(Options, "pagelandscape")
-            'Dim oConverter As Drawing.Printing.MarginsConverter = New Drawing.Printing.MarginsConverter
-            'oPageMargins = oConverter.ConvertFromString(modXML.GetAttributeValue(Options, "pagemargins"))
-            'If oPageMargins Is Nothing Then oPageMargins = New Drawing.Printing.Margins(10, 10, 10, 10)
-            Dim oPageMarginsData() As String = modXML.GetAttributeValue(Options, "pagemargins", "10;10;10;10").Split({";"c,","c})
-            oPageMargins = New Drawing.Printing.Margins(oPageMarginsData(0), oPageMarginsData(1), oPageMarginsData(2), oPageMarginsData(3))
+            oPageMargins = New cMargins(modXML.GetAttributeValue(Options, "pagemargins", "10;10;10;10"))
             sPageformat = modXML.GetAttributeValue(Options, "pageformat")
             iScaleMode = modXML.GetAttributeValue(Options, "scalemode")
             iScale = modXML.GetAttributeValue(Options, "scale")
@@ -145,12 +145,19 @@ Namespace cSurvey.Design
             'bDrawSolidRock = modXML.GetAttributeValue(Options, "drawsolidrock", False)
         End Sub
 
+        Private Sub oPageMargins_OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Handles oPageMargins.OnPropertyChanged
+            Call PropertyChanged("PageMargins." & e.Name)
+        End Sub
+
         Public Property AdvancedClippingMode As cIOptionsPreview.AdvancedClippingModeEnum Implements cIOptionsPreview.AdvancedClippingMode
             Get
                 Return iAdvancedClippingMode
             End Get
             Set(value As cIOptionsPreview.AdvancedClippingModeEnum)
-                iAdvancedClippingMode = value
+                If iAdvancedClippingMode <> value Then
+                    iAdvancedClippingMode = value
+                    Call PropertyChanged("AdvancedClippingMode")
+                End If
             End Set
         End Property
     End Class

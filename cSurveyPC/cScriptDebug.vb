@@ -1,6 +1,8 @@
 ﻿Namespace cSurvey.Scripting
     Public Class cScriptDebug
         Friend Class cPrintEventArgs
+            Inherits EventArgs
+
             Private sText As String
 
             Public ReadOnly Property Text As String
@@ -14,7 +16,7 @@
             End Sub
         End Class
 
-        Friend Event OnPrint(Sender As cScriptDebug, PrintEventArgs As cPrintEventArgs)
+        Friend Event OnPrint(Sender As Object, PrintEventArgs As cPrintEventArgs)
 
         Public Sub Print(ParamArray Text() As String)
             Dim sText As String = Strings.Join(Text, vbTab)

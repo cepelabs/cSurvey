@@ -25,8 +25,10 @@ Partial Class frmDeleteDataDialog
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmDeleteDataDialog))
         Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton1 = New DevExpress.XtraEditors.CheckEdit()
+        Me.RadioButton2 = New DevExpress.XtraEditors.CheckEdit()
+        CType(Me.RadioButton1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadioButton2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdCancel
@@ -44,16 +46,18 @@ Partial Class frmDeleteDataDialog
         'RadioButton1
         '
         resources.ApplyResources(Me.RadioButton1, "RadioButton1")
-        Me.RadioButton1.Checked = True
         Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.UseVisualStyleBackColor = True
+        Me.RadioButton1.Properties.Caption = resources.GetString("RadioButton1.Properties.Caption")
+        Me.RadioButton1.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio
+        Me.RadioButton1.Properties.RadioGroupIndex = 1
         '
         'RadioButton2
         '
         resources.ApplyResources(Me.RadioButton2, "RadioButton2")
         Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.UseVisualStyleBackColor = True
+        Me.RadioButton2.Properties.Caption = resources.GetString("RadioButton2.Properties.Caption")
+        Me.RadioButton2.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio
+        Me.RadioButton2.Properties.RadioGroupIndex = 1
         '
         'frmDeleteDataDialog
         '
@@ -70,12 +74,14 @@ Partial Class frmDeleteDataDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmDeleteDataDialog"
+        CType(Me.RadioButton1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadioButton2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents RadioButton1 As RadioButton
-    Friend WithEvents RadioButton2 As RadioButton
+    Friend WithEvents RadioButton1 As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents RadioButton2 As DevExpress.XtraEditors.CheckEdit
 End Class

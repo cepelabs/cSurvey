@@ -1,14 +1,13 @@
 ﻿friend Class frmSurfaceImportASCOptions
 
     Private Sub cboCoordinateSystem_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cboCoordinateSystem.SelectedIndexChanged
-        If cboCoordinateSystem.Text.Contains("UTM") Then    'to do better in future...
+        If cboCoordinateSystem.EditValue.Contains("UTM") Then    'to do better in future...
             frmUTM.Visible = True
         Else
             frmUTM.Visible = False
         End If
-        Dim bvisible As Boolean = cboCoordinateSystem.SelectedIndex = 0
-        picCheckWarning.Visible = bvisible
-        lblCheckWarning.Visible = bvisible
+        Dim bVisible As Boolean = cboCoordinateSystem.SelectedIndex = 0
+        lblCheckWarning.Visible = bVisible
     End Sub
 
     Public Sub New()
@@ -18,10 +17,10 @@
 
         ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
         For i As Integer = 1 To 60
-            Call cboUTMZone.Items.Add(i)
+            Call cboUTMZone.Properties.Items.Add(i)
         Next
         For i As Integer = Asc("A") To Asc("Z")
-            Call cboUTMBand.Items.Add(Chr(i))
+            Call cboUTMBand.Properties.Items.Add(Chr(i))
         Next
 
         Call pSettingsLoad()

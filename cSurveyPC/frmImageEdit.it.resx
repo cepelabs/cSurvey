@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
+  <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,97 +59,82 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="metadata">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" />
-							</xsd:sequence>
-							<xsd:attribute name="name" use="required" type="xsd:string" />
-							<xsd:attribute name="type" type="xsd:string" />
-							<xsd:attribute name="mimetype" type="xsd:string" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="assembly">
-						<xsd:complexType>
-							<xsd:attribute name="alias" type="xsd:string" />
-							<xsd:attribute name="name" type="xsd:string" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-	<data name="mnuPreviewSetTransparent.Size" type="System.Drawing.Size, System.Drawing">
-		<value>191, 22</value>
-	</data>
-	<data name="mnuPreviewSetTransparent.Text" xml:space="preserve">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="mnuPreviewSetTransparent.Text" xml:space="preserve">
     <value>Imposta colore come trasparente</value>
   </data>
-	<data name="mnuPreviewTransparentThreshold.Size" type="System.Drawing.Size, System.Drawing">
-		<value>191, 22</value>
-	</data>
-	<data name="mnuPreviewTransparentThreshold.Text" xml:space="preserve">
+  <data name="mnuPreviewTransparentThreshold.Text" xml:space="preserve">
     <value>Soglia di trasparenza</value>
   </data>
-	<data name="mnuPreviewDeleteTransparent.Size" type="System.Drawing.Size, System.Drawing">
-		<value>191, 22</value>
-	</data>
-	<data name="mnuPreviewDeleteTransparent.Text" xml:space="preserve">
+  <data name="mnuPreviewDeleteTransparent.Text" xml:space="preserve">
     <value>Elimina trasparenza</value>
   </data>
-	<data name="mnuPreviewStop.Size" type="System.Drawing.Size, System.Drawing">
-		<value>191, 22</value>
-	</data>
-	<data name="mnuPreviewStop.Text" xml:space="preserve">
+  <data name="mnuPreviewStop.Text" xml:space="preserve">
     <value>Termina modifiche</value>
   </data>
-	<data name="mnuPreview.Size" type="System.Drawing.Size, System.Drawing">
-		<value>192, 92</value>
-	</data>
-	<data name="cmdCancel.Text" xml:space="preserve">
+  <data name="cmdCancel.Text" xml:space="preserve">
     <value>Annulla</value>
   </data>
-	<data name="imlStations.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-		<value>
+  <data name="imlStations.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACK
@@ -187,118 +172,63 @@
         BgAC/wYAAv8GAAH8AR8GAAH4AQ8GAAH4AQ8GAAH4AQ8GAAH4AQ8GAAH4AQ8GAAH4AQ8GAAH8AR8GAAL/
         BgAC/wYAAv8GAAL/BgAL
 </value>
-	</data>
-	<data name="btnLoadImage.Size" type="System.Drawing.Size, System.Drawing">
-		<value>93, 22</value>
-	</data>
-	<data name="btnLoadImage.Text" xml:space="preserve">
+  </data>
+  <data name="btnLoadImage.Text" xml:space="preserve">
     <value>Carica un immagine...</value>
   </data>
-	<data name="btnUndo.Text" xml:space="preserve">
+  <data name="btnUndo.Text" xml:space="preserve">
     <value>Annulla</value>
   </data>
-	<data name="btnRescale.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIgSURBVDhPjVLvT5JRFH7/Futja7U+OHVpbvmpslrRdP0N
-        rQ8t+0nph7aakCuXfiiaW645m0UguCiSH6kp6VDG/MnwlVcsQEDkNYPs6Zzry1ZgrGd7OOfee57nHO57
-        pQIaWm0D9besqL1h+S9yLWs0uSTxRvQ7sJwB5M3y5BquZY0mlyR25cP7ThntwxEYXBERjW4FHZ5VQc4f
-        fFzBPceyMGGNJt81UFTgwJXXeDYRx+GWNzD54qi8SSO32lFHrNYP4ul4DI880b0NeIKeL3G8mEygdyqB
-        l/51mGczqG+zQ9cTRO1dO/qmkzCNf0N4o8jg6HWL2OzzJ9E/k8RAIA37QhY1eivOPg/gGJnU3LHBMrsp
-        akoMGmjESBZwkOjDogpPeBtVt604Ywqgii5rLJLDoWtmvKczS3ADoYLBxe7PseauUZzv/ITTHW6ceuhG
-        I1HX6UU1dawk8eRqHmPyD/iUPBzzGQwvqQilNYOmJyP4F8499mJ+HfCGVPjX8th/+ZWIEyvbWEppBjrq
-        zHg7t4bBha+CnDNOGl3CYJpEwdiOEHHk9WKxgU9JYSqaFuScccLgwlziF3XNIRjfQcWlfhF5ihKDcEqF
-        nN4S5JyxawAhKJ6g5C9kcz//IqORLpXfBhfL9IUOtphF5LWypT3lcpfY1DUiujC5+LjeJmJhXXe11yld
-        MA452YQn+ZO812wYekdP5EgZ7iOKn70OmRXEMpCk300FuiZKIXW4AAAAAElFTkSuQmCC
-</value>
-	</data>
-	<data name="btnRescale.ToolTipText" xml:space="preserve">
+  <data name="btnRescale.ToolTipText" xml:space="preserve">
     <value>Ridimensiona l'immagine</value>
   </data>
-	<data name="btnRotate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIeSURBVDhPhVLPS1RRFB53rYI2LvoDWkUt3sock2ejU4uC
-        aOlWkxZim7IfEIyM4wQiBE1IhkqlUKm9RifzaY6U/TCmCBwqMZxhxnkjTqKNjgkuvs65985zZiT64OPe
-        e+73nXfuecdRitr2CahtEfSbo2Cq43642s2WU21ji41DMeht40XC6utBpP8AFtHZ+mJ/khqfaZ0LzKHB
-        SOJKOIuBaA41XlmJfiOIxBbQNbOMzukkUtslSdwdk1737WmcpQSn/RORxmdL+Qq0k9ekuft9GvdmLdx9
-        a+HOm5RIYj/H7TN2df+UdeBQeQUdj7hkDzRnqwGLhD0fVop4n8jP2UvQMYnj9beaaFsmAsq8nAN651bR
-        92kV/YoPI79ERVwZ64SaE9ByUBwIlWwm0aNIBo8/ZzBA5HXwizRzQ0kmzQr2oYqaw+YnX9cEnxaQK+J7
-        ktl69XGJKtUwI7qBkfl1PM8zuo4kxZ1XjSKzy2u663ymTMC/hc3jP7IY+7ZhM/T9t4hXKnPhkDWPxhO1
-        3pFdMWFcnrm4iVcLWZt8LjTrnpcQQ+YJhZuGY7gQ+IiKy70PRIIkJQgv5fD655bgTGxbmNXAaDxUPFwX
-        gylcCqVR3z8PlyeUobvDXI3GnY9vArPxHbwjFppZwCsP1/nuCM74pxInmgOdFDsmryREEq6EyXuOySsb
-        Wp3swVFiuYiUQOPnqAkrNefxr7gNFvxXtAeH4y/+BcYeBKHE+gAAAABJRU5ErkJggg==
-</value>
-	</data>
-	<data name="btnRotate.Text" xml:space="preserve">
+  <data name="btnRotate.Text" xml:space="preserve">
     <value>Ruota</value>
   </data>
-	<data name="btnRotate.ToolTipText" xml:space="preserve">
+  <data name="btnRotate.ToolTipText" xml:space="preserve">
     <value>Ruota di 90° in senso orario</value>
   </data>
-	<data name="btnFlipH.Size" type="System.Drawing.Size, System.Drawing">
-		<value>122, 22</value>
-	</data>
-	<data name="btnFlipH.Text" xml:space="preserve">
+  <data name="btnFlipH.Text" xml:space="preserve">
     <value>Orizzontale</value>
   </data>
-	<data name="btnFlipV.Size" type="System.Drawing.Size, System.Drawing">
-		<value>122, 22</value>
-	</data>
-	<data name="btnFlipV.Text" xml:space="preserve">
+  <data name="btnFlipV.Text" xml:space="preserve">
     <value>Verticale</value>
   </data>
-	<data name="btnFlip.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJCSURBVDhPlVNdSFNhGD7QfUT3XUQUSMGozWQzCw3FO29S
-        osCi2wJzjZxtc170A10UUVJhuA3tzvZ7ZhfhXLadHJtQGP0x2c52KDanNdPWmvr0fh/bCkaiDzx833nP
-        9z7f+z7nPcJ20WYV25vN4liLWUTb4MRCObw5TlJSi8n39Hi/F3pbFKOSgvk80Gz2Qeh+PPPs9FAYnfdD
-        VXYxPgjhzEMJ7VZ/Tm+LYTSs4GNuA5H0b9ijWSR/ACdIUGDJm0Hd64SyCgQTBTyZyeD2ZAo3XiSRXAZY
-        RQK7kcH1/iv8nzOYkhdx0ODGuWGJx1U941yga0jC0WteDEcyuDet1ApMU+Lb7DIO93lhk2So+308Xq93
-        IVcCGqhfx2uZi9hnF5BaKbdQEfi0tELJHtyZSnBqyeUGom7AD63FD51F5PG7wQQ0Rg+yRTLRRCZ2klkM
-        B6jXm5NpdIzMQe+Jk1EZ2GPZv6RnFmfvbwUUXlErCVcryJfWoLrqxnlnCheIjRZftQIdHTw2IPI4o8bo
-        /qeCisAvapSgMrjQG8hDQ/0xVDzQ0o2GYB71lPxKLtSaWFpfxwbfAXV6JwbH3/A9+wrMsIuOWRzpcyP2
-        pYiXiVXMfy8LbGUOmMCHRUCSfyKiFGktIP6tLND9KLxUM4lkbGUSW60TNL4xOEJpvMus0TQCc7SyUeYC
-        BBVR/T/u2lPXpD573dR4ZSzcRAmXR6JcLE4tcBO3gB3E3cT9RPWhU8ZLuh7Hc/YjdVidAXZgu9hJ3Euk
-        CoV9fwC8oF79P7x6JAAAAABJRU5ErkJggg==
-</value>
-	</data>
-	<data name="btnFlip.Text" xml:space="preserve">
+  <data name="btnFlip.Text" xml:space="preserve">
     <value>Inverti</value>
   </data>
-	<data name="btnToGrayscale.Text" xml:space="preserve">
+  <data name="btnToGrayscale.Text" xml:space="preserve">
     <value>Converti in scala di grigi</value>
   </data>
-	<data name="btnRubber.Text" xml:space="preserve">
+  <data name="btnRubber.Text" xml:space="preserve">
     <value>Gomma</value>
   </data>
-	<data name="btnRubber0.Text" xml:space="preserve">
+  <data name="btnRubber0.Text" xml:space="preserve">
     <value>Gomma piccola</value>
   </data>
-	<data name="btnRubber1.Text" xml:space="preserve">
+  <data name="btnRubber1.Text" xml:space="preserve">
     <value>Gomma media</value>
   </data>
-	<data name="btnRubber2.Text" xml:space="preserve">
+  <data name="btnRubber2.Text" xml:space="preserve">
     <value>Gomma grande</value>
   </data>
-	<data name="btnRubber3.Text" xml:space="preserve">
+  <data name="btnRubber3.Text" xml:space="preserve">
     <value>Gomma enorme</value>
   </data>
-	<data name="btnShowCutBorders.Text" xml:space="preserve">
+  <data name="btnShowCutBorders.Text" xml:space="preserve">
     <value>Mostra margini di ritaglio</value>
   </data>
-	<data name="btnCut.Text" xml:space="preserve">
+  <data name="btnCut.Text" xml:space="preserve">
     <value>Ritaglia</value>
   </data>
-	<data name="btnCut.ToolTipText" xml:space="preserve">
+  <data name="btnCut.ToolTipText" xml:space="preserve">
     <value>Ritaglia l'immagine</value>
   </data>
-	<data name="btnStop.Text" xml:space="preserve">
+  <data name="btnStop.Text" xml:space="preserve">
     <value>Termina modifiche</value>
   </data>
-	<data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAA2trb/9XV1v/a2tv/2trb/8nJyf/BwcH/qKal/7Curv+/vr7/2dna/8zLzP/Ix8j/qaem/8PC
         wv8AAAAAzMzM//j49//49/f/9PTz//Lx8f/u7ez/7Ozr/8bDwf/29fX/5eTj//n4+P/o5+b/7Ovq/8rI
@@ -320,11 +250,8 @@
         Uf8AAAAAgAGsQQAArEEAAKxBAACsQQAArEEAAKxBAACsQQAArEEAAKxBAACsQQAArEEAAKxBAACsQQAA
         rEEAAKxBgAGsQQ==
 </value>
-	</data>
-	<data name="$this.Location" type="System.Drawing.Point, System.Drawing">
-		<value>0, 0</value>
-	</data>
-	<data name="$this.Text" xml:space="preserve">
+  </data>
+  <data name="$this.Text" xml:space="preserve">
     <value>Modifica immagine:</value>
   </data>
 </root>

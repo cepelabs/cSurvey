@@ -22,21 +22,36 @@ Namespace cSurvey.Surface
         Private oRange As SizeF
         Private bChanged As Boolean
 
-        Private oImage As Image
+        'Private oImage As Image
 
-        Friend Event OnChange(ByVal Sender As cElevation)
+        Friend Event OnChange(ByVal Sender As Object, e As EventArgs)
 
         Private oImagesCaches As Dictionary(Of Size, Image)
 
+        Public Overrides Function Equals(obj As Object) As Boolean
+            If obj Is Nothing OrElse TypeOf obj IsNot cElevation Then
+                Return False
+            Else
+                Return DirectCast(obj, cElevation).ID = sID
+            End If
+        End Function
+
         Friend Class cDefaultArgs
-            Public ID As String
+            Inherits EventArgs
+            Private sID As String
+
+            Public ReadOnly Property ID As String
+                Get
+                    Return sID
+                End Get
+            End Property
 
             Public Sub New()
-                Me.ID = ""
+                sID = ""
             End Sub
 
-            Public Sub New(ID As String)
-                Me.ID = ID
+            Friend Sub New(ID As String)
+                sID = ID
             End Sub
         End Class
 
@@ -76,7 +91,7 @@ Namespace cSurvey.Surface
                 For iNewRow As Integer = 0 To iNewRows - 1
                     For iNewColumn As Integer = 0 To iNewColumns - 1
                         iProgressIndex += 1
-                        If iProgressIndex Mod 2000 = 0 Then Call oSurvey.RaiseOnProgressEvent("elevation.reduceset", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("surface.progress4"), iProgressIndex / iProgressCount)
+                        If iProgressIndex Mod 5000 = 0 Then Call oSurvey.RaiseOnProgressEvent("elevation.reduceset", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("surface.progress4"), iProgressIndex / iProgressCount)
                         If iColorSchema = cElevation.ColorSchemaEnum.BlackToWhite Then
                             sPseutoHeight = (oScaledImage.GetPixel(iNewColumn, iNewRow).R / 255) * sRange + oRange.Width
                         Else
@@ -185,7 +200,7 @@ Namespace cSurvey.Surface
                 Call pImagesClear
                 bChanged = True
                 Call oSurvey.RaiseOnProgressEvent("elevation.nodataremove", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, modMain.GetLocalizedString("surface.progressend3"), 0)
-                RaiseEvent OnChange(Me)
+                RaiseEvent OnChange(Me, EventArgs.Empty)
             End If
         End Sub
 
@@ -316,7 +331,7 @@ Namespace cSurvey.Surface
             oData = Elevation.oData
             oRange = Elevation.oRange
             bChanged = Elevation.bChanged
-            oImage = Elevation.oImage
+            'oImage = Elevation.oImage
             'bImageChanged = Elevation.bImageChanged
             iColorSchema = Elevation.iColorSchema
 
@@ -348,7 +363,7 @@ Namespace cSurvey.Surface
         End Sub
 
         Public Function IsEmpty() As Boolean Implements cISurfaceItem.IsEmpty
-            Return iRows = 0 Or iColumns = 0
+            Return iRows = 0 OrElse iColumns = 0
         End Function
 
         Public ReadOnly Property ID As String Implements cISurfaceItem.ID
@@ -391,12 +406,12 @@ Namespace cSurvey.Surface
                     iColorSchema = value
 
                     Call oImagesCaches.Clear()
-                    RaiseEvent OnChange(Me)
+                    RaiseEvent OnChange(Me, EventArgs.Empty)
                 End If
             End Set
         End Property
 
-        Public Property [Default] As Boolean
+        Public Property [xDefault] As Boolean
             Get
                 Dim oArgs As cDefaultArgs = New cDefaultArgs()
                 RaiseEvent OnDefaultGet(Me, oArgs)
@@ -430,9 +445,9 @@ Namespace cSurvey.Surface
             sYSize = 0
             ReDim oData(0, 0)
             oRange = New SizeF(0, 0)
-            oImage = Nothing
+            'oImage = Nothing
             bChanged = False
-            RaiseEvent OnChange(Me)
+            RaiseEvent OnChange(Me, EventArgs.Empty)
         End Sub
 
         Default Public ReadOnly Property Data(Row As Integer, Column As Integer) As Single
@@ -647,7 +662,7 @@ Namespace cSurvey.Surface
                     Call pImagesClear()
                     bChanged = True
                     Call oSurvey.RaiseOnProgressEvent("elevation.import", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, modMain.GetLocalizedString("surface.progressend1"), 0)
-                    RaiseEvent OnChange(Me)
+                    RaiseEvent OnChange(Me, EventArgs.Empty)
             End Select
             Return bResult
         End Function
@@ -790,7 +805,7 @@ Namespace cSurvey.Surface
             Set(value As String)
                 If value <> sName Then
                     sName = value
-                    RaiseEvent OnChange(Me)
+                    RaiseEvent OnChange(Me, EventArgs.Empty)
                 End If
             End Set
         End Property
@@ -811,35 +826,24 @@ Namespace cSurvey.Surface
             Return New PointF(oPointUTM.East - oOriginUTM.East, oOriginUTM.North - oPointUTM.North)
         End Function
 
-        'Friend Function GetTrigpoint() As cTrigPoint
-        '    If oSurvey.TrigPoints.Contains(cSurveyPC.cSurvey.Calculate.cCalculate.SurfaceElevationTrigpointName1) Then
-        '        Return oSurvey.TrigPoints(cSurveyPC.cSurvey.Calculate.cCalculate.SurfaceElevationTrigpointName1)
-        '    Else
-        '        Return Nothing
-        '    End If
+        'Friend Function GetSurfaceDistance(Trigpoint As cTrigPoint) As Decimal
+        '    Dim oBaseTrigpoint As cTrigPoint = oSurvey.TrigPoints.GetGPSBaseReferencePoint
+        '    Dim dAltitude As Decimal = oBaseTrigpoint.Coordinate.GetAltitude
+        '    Dim dElevation As Decimal = GetElevation(Trigpoint)
+        '    Return dAltitude - dElevation
         'End Function
-
-        'Friend Function GetTLTrigpoint() As cTrigPoint
-        '    Return GetTrigpoint()
-        'End Function
-
-        'Friend Function GetBRTrigpoint() As cTrigPoint
-        '    If oSurvey.TrigPoints.Contains(cSurveyPC.cSurvey.Calculate.cCalculate.SurfaceElevationTrigpointName2) Then
-        '        Return oSurvey.TrigPoints(cSurveyPC.cSurvey.Calculate.cCalculate.SurfaceElevationTrigpointName2)
-        '    Else
-        '        Return Nothing
-        '    End If
-        'End Function
-
-        Friend Function GetSurfaceDistance(Trigpoint As cTrigPoint) As Decimal
-            Dim oBaseTrigpoint As cTrigPoint = oSurvey.TrigPoints.GetGPSBaseReferencePoint
-            Dim dAltitude As Decimal = oBaseTrigpoint.Coordinate.GetAltitude
-            Dim dElevation As Decimal = GetElevation(Trigpoint)
-            Return dAltitude - dElevation
-        End Function
 
         Friend Function GetElevation(Trigpoint As cTrigPoint) As Single
-            Return GetElevation(Trigpoint.Data.X, Trigpoint.Data.Y)
+            If Trigpoint.Survey Is oSurvey Then
+                Return GetElevation(Trigpoint.Data.X, Trigpoint.Data.Y)
+            Else
+                Dim oOrigin As Calculate.cTrigPointCoordinate = oSurvey.Calculate.TrigPoints(oSurvey.Properties.Origin).Coordinate
+                Dim oPoint As Calculate.cTrigPointCoordinate = Trigpoint.Survey.Calculate.TrigPoints(Trigpoint).Coordinate
+                Dim oOriginUTM As modUTM.UTM = modUTM.WGS84ToUTM(oOrigin)
+                Dim oPointUTM As modUTM.UTM = modUTM.WGS84ToUTM(oPoint)
+                Dim oLocalPoint As PointF = New PointF(oPointUTM.East - oOriginUTM.East, oPointUTM.North - oOriginUTM.North)
+                Return GetElevation(oLocalPoint)
+            End If
         End Function
 
         Friend Function GetElevation(Point As PointF) As Single
@@ -954,7 +958,7 @@ Namespace cSurvey.Surface
         End Function
 
         Private Sub oCoordinate_OnChange(Sender As cCoordinate) Handles oCoordinate.OnChange
-            RaiseEvent OnChange(Me)
+            RaiseEvent OnChange(Me, EventArgs.Empty)
         End Sub
     End Class
 End Namespace

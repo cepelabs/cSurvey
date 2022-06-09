@@ -129,10 +129,10 @@ friend Class frmManageLRUD
 
     Private Function pValidate() As Boolean
         If cboBackupName.Enabled AndAlso cboBackupName.Text = "" Then
-            Call MsgBox("Indicare un nome per la proprietà in cui archiviare i dati salvati.")
+            Call cSurvey.UIHelpers.Dialogs.Msgbox(modMain.GetLocalizedString("managelrud.warning2"), MsgBoxStyle.OkCancel Or MsgBoxStyle.Critical, modMain.GetLocalizedString("main.warningtitle"))
             Return False
         ElseIf cboRestoreName.Enabled AndAlso cboRestoreName.Text = "" Then
-            Call MsgBox("Selezionare una proprietà da cui ripristinare i dati salvati.")
+            Call cSurvey.UIHelpers.Dialogs.Msgbox(modMain.GetLocalizedString("managelrud.warning1"), MsgBoxStyle.OkCancel Or MsgBoxStyle.Critical, modMain.GetLocalizedString("main.warningtitle"))
             Return False
         End If
         Return True
@@ -144,14 +144,6 @@ friend Class frmManageLRUD
             Close()
         End If
     End Sub
-
-    'Private Sub RadioButton4_CheckedChanged(sender As Object, e As EventArgs)
-    '    Call pRadioButtonEnabled()
-    'End Sub
-
-    'Private Sub RadioButton3_CheckedChanged(sender As Object, e As EventArgs)
-    '    Call pRadioButtonEnabled()
-    'End Sub
 
     Private Sub pRadioButtonEnabled()
         If cboAction.SelectedIndex = 0 Then
@@ -192,14 +184,6 @@ friend Class frmManageLRUD
             frmBackup.Enabled = chkBackup.Checked
         End If
     End Sub
-
-    'Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs)
-    '    Call pRadioButtonEnabled()
-    'End Sub
-
-    'Private Sub RadioButton2_CheckedChanged(sender As Object, e As EventArgs)
-    '    Call pRadioButtonEnabled()
-    'End Sub
 
     Private Sub chkBackup_CheckedChanged(sender As Object, e As EventArgs) Handles chkBackup.CheckedChanged
         Call pRadioButtonEnabled()

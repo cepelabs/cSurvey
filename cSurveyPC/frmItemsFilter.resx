@@ -142,13 +142,13 @@
     <value>cmdApply</value>
   </data>
   <data name="&gt;&gt;cmdApply.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdApply.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdApply.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="cmdOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -172,13 +172,13 @@
     <value>cmdOk</value>
   </data>
   <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="cmdCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -202,19 +202,19 @@
     <value>cmdCancel</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>3</value>
   </data>
   <data name="txtName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>66, 6</value>
+    <value>71, 11</value>
   </data>
   <data name="txtName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 21</value>
+    <value>143, 20</value>
   </data>
   <data name="txtName.TabIndex" type="System.Int32, mscorlib">
     <value>51</value>
@@ -223,25 +223,22 @@
     <value>txtName</value>
   </data>
   <data name="&gt;&gt;txtName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtName.Parent" xml:space="preserve">
     <value>tabMain</value>
   </data>
   <data name="&gt;&gt;txtName.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="Label6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>1</value>
   </data>
   <data name="Label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="Label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 9</value>
+    <value>11, 14</value>
   </data>
   <data name="Label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 13</value>
+    <value>31, 13</value>
   </data>
   <data name="Label6.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
@@ -253,97 +250,23 @@
     <value>Label6</value>
   </data>
   <data name="&gt;&gt;Label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label6.Parent" xml:space="preserve">
     <value>tabMain</value>
   </data>
   <data name="&gt;&gt;Label6.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="lblPropDesignDataProperties.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblPropDesignDataProperties.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
-  </data>
-  <data name="lblPropDesignDataProperties.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblPropDesignDataProperties.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 9</value>
-  </data>
-  <data name="lblPropDesignDataProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 13</value>
-  </data>
-  <data name="lblPropDesignDataProperties.TabIndex" type="System.Int32, mscorlib">
-    <value>112</value>
-  </data>
-  <data name="lblPropDesignDataProperties.Text" xml:space="preserve">
-    <value>Properties:</value>
-  </data>
-  <data name="&gt;&gt;lblPropDesignDataProperties.Name" xml:space="preserve">
-    <value>lblPropDesignDataProperties</value>
-  </data>
-  <data name="&gt;&gt;lblPropDesignDataProperties.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPropDesignDataProperties.Parent" xml:space="preserve">
-    <value>tabUserProperties</value>
-  </data>
-  <data name="&gt;&gt;lblPropDesignDataProperties.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <metadata name="mnuDataProperties.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="mnuDataProperties.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="mnuDesignDataPropertiesDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
-  </data>
-  <data name="mnuDesignDataPropertiesDelete.Text" xml:space="preserve">
-    <value>Delete value</value>
-  </data>
-  <data name="mnuDataProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 26</value>
-  </data>
-  <data name="&gt;&gt;mnuDataProperties.Name" xml:space="preserve">
-    <value>mnuDataProperties</value>
-  </data>
-  <data name="&gt;&gt;mnuDataProperties.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="prpDataProperties.HelpVisible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="prpDataProperties.Location" type="System.Drawing.Point, System.Drawing">
-    <value>67, 6</value>
-  </data>
-  <data name="prpDataProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 261</value>
-  </data>
-  <data name="prpDataProperties.TabIndex" type="System.Int32, mscorlib">
-    <value>111</value>
-  </data>
-  <data name="&gt;&gt;prpDataProperties.Name" xml:space="preserve">
-    <value>prpDataProperties</value>
-  </data>
-  <data name="&gt;&gt;prpDataProperties.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PropertyGrid, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;prpDataProperties.Parent" xml:space="preserve">
-    <value>tabUserProperties</value>
-  </data>
-  <data name="&gt;&gt;prpDataProperties.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="cboCategories.Location" type="System.Drawing.Point, System.Drawing">
-    <value>66, 33</value>
+    <value>71, 38</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="cboCategories.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
   </data>
   <data name="cboCategories.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 21</value>
+    <value>143, 20</value>
   </data>
   <data name="cboCategories.TabIndex" type="System.Int32, mscorlib">
     <value>113</value>
@@ -352,28 +275,25 @@
     <value>cboCategories</value>
   </data>
   <data name="&gt;&gt;cboCategories.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboCategories.Parent" xml:space="preserve">
     <value>tabMain</value>
   </data>
   <data name="&gt;&gt;cboCategories.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
-  <data name="lblPropCategory.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblPropCategory.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblPropCategory.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblPropCategory.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPropCategory.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 36</value>
+    <value>11, 41</value>
   </data>
   <data name="lblPropCategory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 13</value>
+    <value>49, 13</value>
   </data>
   <data name="lblPropCategory.TabIndex" type="System.Int32, mscorlib">
     <value>114</value>
@@ -385,7 +305,7 @@
     <value>lblPropCategory</value>
   </data>
   <data name="&gt;&gt;lblPropCategory.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCategory.Parent" xml:space="preserve">
     <value>tabMain</value>
@@ -393,23 +313,95 @@
   <data name="&gt;&gt;lblPropCategory.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="TabControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+  <data name="cboCaveList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
-  <data name="Label1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="cboCaveList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>71, 69</value>
+  </data>
+  <data name="cboCaveList.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtCaveListName.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cboCaveList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 20</value>
+  </data>
+  <data name="cboCaveList.TabIndex" type="System.Int32, mscorlib">
+    <value>119</value>
+  </data>
+  <data name="&gt;&gt;cboCaveList.Name" xml:space="preserve">
+    <value>cboCaveList</value>
+  </data>
+  <data name="&gt;&gt;cboCaveList.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.GridLookUpEdit, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboCaveList.Parent" xml:space="preserve">
+    <value>tabMain</value>
+  </data>
+  <data name="&gt;&gt;cboCaveList.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="colCaveListName.Caption" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="colCaveListName.Visible" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="Label1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="colCaveListName.VisibleIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="cboCaveBranchList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="cboCaveBranchList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>71, 96</value>
+  </data>
+  <data name="cboCaveBranchList.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtBranchListName.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cboCaveBranchList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 20</value>
+  </data>
+  <data name="cboCaveBranchList.TabIndex" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
+  <data name="&gt;&gt;cboCaveBranchList.Name" xml:space="preserve">
+    <value>cboCaveBranchList</value>
+  </data>
+  <data name="&gt;&gt;cboCaveBranchList.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.GridLookUpEdit, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboCaveBranchList.Parent" xml:space="preserve">
+    <value>tabMain</value>
+  </data>
+  <data name="&gt;&gt;cboCaveBranchList.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="colBranchListName.Caption" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="colBranchListName.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colBranchListName.VisibleIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="Label1.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="Label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 92</value>
+    <value>11, 97</value>
   </data>
   <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 13</value>
+    <value>37, 13</value>
   </data>
   <data name="Label1.TabIndex" type="System.Int32, mscorlib">
     <value>118</value>
@@ -421,28 +413,25 @@
     <value>Label1</value>
   </data>
   <data name="&gt;&gt;Label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
     <value>tabMain</value>
   </data>
   <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>4</value>
   </data>
-  <data name="lblPropCave.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblPropCave.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblPropCave.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblPropCave.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPropCave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 67</value>
+    <value>11, 72</value>
   </data>
   <data name="lblPropCave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 13</value>
+    <value>29, 13</value>
   </data>
   <data name="lblPropCave.TabIndex" type="System.Int32, mscorlib">
     <value>117</value>
@@ -454,73 +443,46 @@
     <value>lblPropCave</value>
   </data>
   <data name="&gt;&gt;lblPropCave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCave.Parent" xml:space="preserve">
     <value>tabMain</value>
   </data>
   <data name="&gt;&gt;lblPropCave.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>6</value>
   </data>
-  <data name="cboCaveBranchList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="chkReversed.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 317</value>
   </data>
-  <data name="cboCaveBranchList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>66, 89</value>
+  <data name="chkReversed.Properties.Caption" xml:space="preserve">
+    <value>Reverse filter</value>
   </data>
-  <data name="cboCaveBranchList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 21</value>
+  <data name="chkReversed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 20</value>
   </data>
-  <data name="cboCaveBranchList.TabIndex" type="System.Int32, mscorlib">
+  <data name="chkReversed.TabIndex" type="System.Int32, mscorlib">
     <value>116</value>
   </data>
-  <data name="&gt;&gt;cboCaveBranchList.Name" xml:space="preserve">
-    <value>cboCaveBranchList</value>
+  <data name="&gt;&gt;chkReversed.Name" xml:space="preserve">
+    <value>chkReversed</value>
   </data>
-  <data name="&gt;&gt;cboCaveBranchList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;chkReversed.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;cboCaveBranchList.Parent" xml:space="preserve">
-    <value>tabMain</value>
+  <data name="&gt;&gt;chkReversed.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="&gt;&gt;cboCaveBranchList.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;chkReversed.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="cboCaveList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="XtraTabControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="cboCaveList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>66, 64</value>
-  </data>
-  <data name="cboCaveList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 21</value>
-  </data>
-  <data name="cboCaveList.TabIndex" type="System.Int32, mscorlib">
-    <value>115</value>
-  </data>
-  <data name="&gt;&gt;cboCaveList.Name" xml:space="preserve">
-    <value>cboCaveList</value>
-  </data>
-  <data name="&gt;&gt;cboCaveList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboCaveList.Parent" xml:space="preserve">
-    <value>tabMain</value>
-  </data>
-  <data name="&gt;&gt;cboCaveList.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="tabMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabMain.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="XtraTabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 12</value>
   </data>
   <data name="tabMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 273</value>
-  </data>
-  <data name="tabMain.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>298, 270</value>
   </data>
   <data name="tabMain.Text" xml:space="preserve">
     <value>General</value>
@@ -529,25 +491,46 @@
     <value>tabMain</value>
   </data>
   <data name="&gt;&gt;tabMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tabMain.Parent" xml:space="preserve">
-    <value>TabControl1</value>
+    <value>XtraTabControl1</value>
   </data>
   <data name="&gt;&gt;tabMain.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="tabUserProperties.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="XtraTabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 299</value>
   </data>
-  <data name="tabUserProperties.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="XtraTabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>117</value>
+  </data>
+  <data name="prpDataProperties.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="prpDataProperties.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="prpDataProperties.Size" type="System.Drawing.Size, System.Drawing">
+    <value>298, 270</value>
+  </data>
+  <data name="prpDataProperties.TabIndex" type="System.Int32, mscorlib">
+    <value>112</value>
+  </data>
+  <data name="&gt;&gt;prpDataProperties.Name" xml:space="preserve">
+    <value>prpDataProperties</value>
+  </data>
+  <data name="&gt;&gt;prpDataProperties.Type" xml:space="preserve">
+    <value>DevExpress.XtraVerticalGrid.PropertyGridControl, DevExpress.XtraVerticalGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;prpDataProperties.Parent" xml:space="preserve">
+    <value>tabUserProperties</value>
+  </data>
+  <data name="&gt;&gt;prpDataProperties.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="tabUserProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 273</value>
-  </data>
-  <data name="tabUserProperties.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>298, 270</value>
   </data>
   <data name="tabUserProperties.Text" xml:space="preserve">
     <value>Properties</value>
@@ -556,61 +539,112 @@
     <value>tabUserProperties</value>
   </data>
   <data name="&gt;&gt;tabUserProperties.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tabUserProperties.Parent" xml:space="preserve">
-    <value>TabControl1</value>
+    <value>XtraTabControl1</value>
   </data>
   <data name="&gt;&gt;tabUserProperties.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="TabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
+  <data name="&gt;&gt;XtraTabControl1.Name" xml:space="preserve">
+    <value>XtraTabControl1</value>
   </data>
-  <data name="TabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>299, 299</value>
+  <data name="&gt;&gt;XtraTabControl1.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="TabControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>115</value>
-  </data>
-  <data name="&gt;&gt;TabControl1.Name" xml:space="preserve">
-    <value>TabControl1</value>
-  </data>
-  <data name="&gt;&gt;TabControl1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TabControl1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;XtraTabControl1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;TabControl1.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;XtraTabControl1.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
-  <data name="chkReversed.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <metadata name="BarManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>360, 17</value>
+  </metadata>
+  <data name="barDockControlTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="chkReversed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 317</value>
+  <data name="barDockControlTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="chkReversed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 17</value>
+  <data name="barDockControlTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>323, 0</value>
   </data>
-  <data name="chkReversed.TabIndex" type="System.Int32, mscorlib">
-    <value>116</value>
+  <data name="&gt;&gt;barDockControlTop.Name" xml:space="preserve">
+    <value>barDockControlTop</value>
   </data>
-  <data name="chkReversed.Text" xml:space="preserve">
-    <value>Reverse filter</value>
+  <data name="&gt;&gt;barDockControlTop.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;chkReversed.Name" xml:space="preserve">
-    <value>chkReversed</value>
-  </data>
-  <data name="&gt;&gt;chkReversed.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkReversed.Parent" xml:space="preserve">
+  <data name="&gt;&gt;barDockControlTop.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;chkReversed.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;barDockControlTop.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="barDockControlBottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="barDockControlBottom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 381</value>
+  </data>
+  <data name="barDockControlBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>323, 0</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Name" xml:space="preserve">
+    <value>barDockControlBottom</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="barDockControlLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="barDockControlLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="barDockControlLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 381</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Name" xml:space="preserve">
+    <value>barDockControlLeft</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="barDockControlRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="barDockControlRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>323, 0</value>
+  </data>
+  <data name="barDockControlRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 381</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Name" xml:space="preserve">
+    <value>barDockControlRight</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -621,10 +655,7 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>323, 381</value>
   </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="frmItemsFilter.IconOptions.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAKFjAACmaQQAqm4MAK9yEQCxdhcAtHocALh+IgCzfDkAtH06ALV+
@@ -698,16 +729,169 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Edit filter:</value>
   </data>
-  <data name="&gt;&gt;mnuDesignDataPropertiesDelete.Name" xml:space="preserve">
-    <value>mnuDesignDataPropertiesDelete</value>
+  <data name="&gt;&gt;GridLookUpEdit1View.Name" xml:space="preserve">
+    <value>GridLookUpEdit1View</value>
   </data>
-  <data name="&gt;&gt;mnuDesignDataPropertiesDelete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;GridLookUpEdit1View.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Views.Grid.GridView, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colCaveListName.Name" xml:space="preserve">
+    <value>colCaveListName</value>
+  </data>
+  <data name="&gt;&gt;colCaveListName.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtCaveListName.Name" xml:space="preserve">
+    <value>txtCaveListName</value>
+  </data>
+  <data name="&gt;&gt;txtCaveListName.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemTextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GridView1.Name" xml:space="preserve">
+    <value>GridView1</value>
+  </data>
+  <data name="&gt;&gt;GridView1.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Views.Grid.GridView, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colBranchListName.Name" xml:space="preserve">
+    <value>colBranchListName</value>
+  </data>
+  <data name="&gt;&gt;colBranchListName.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtBranchListName.Name" xml:space="preserve">
+    <value>txtBranchListName</value>
+  </data>
+  <data name="&gt;&gt;txtBranchListName.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemTextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;BarManager.Name" xml:space="preserve">
+    <value>BarManager</value>
+  </data>
+  <data name="&gt;&gt;BarManager.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnDeleteValue.Name" xml:space="preserve">
+    <value>btnDeleteValue</value>
+  </data>
+  <data name="&gt;&gt;btnDeleteValue.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtReplacePath.Name" xml:space="preserve">
+    <value>txtReplacePath</value>
+  </data>
+  <data name="&gt;&gt;txtReplacePath.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemBreadCrumbEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;mnuDataProperties.Name" xml:space="preserve">
+    <value>mnuDataProperties</value>
+  </data>
+  <data name="&gt;&gt;mnuDataProperties.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmItemsFilter</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cForm, cSurveyPC, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="btnDeleteValue.Caption" xml:space="preserve">
+    <value>Delete value</value>
+  </data>
+  <data name="txtReplacePath.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtReplacePath.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Glyph</value>
+  </data>
+  <data name="txtReplacePath.Buttons1" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="txtReplacePath.Buttons2" type="System.Int32, mscorlib">
+    <value>-1</value>
+  </data>
+  <data name="txtReplacePath.Buttons3" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="txtReplacePath.Buttons4" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="txtReplacePath.Buttons5" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="EditorButtonImageOptions3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIkSURBVDhPjZPPS1RRHMUPtWlTGLQtohYxtGhhm1xV
+        NjpqKkQIqZEj9IPWQ7SIIHD8MaNNZT9Ix2aGJHSGaKJVkWCK43PCGsFfo2SWP/6GWp3OfeOjVwzihc+7
+        8+593/O+75w7qIsA1d1IX34KNvaCl4rQ+Bgs7wC9XWBVCEMk7bp6gbr7QGUIzP28xuy3VlpFmBLZVT+t
+        lVY+/FBGbyekwb8CUmX6+wGmlvYzWYThvJgtYWruIMd+XGBqpowVEqntkYBRqbiHUSNiFotxTu23xMDI
+        JDgwB75eOczwyAlWh/Gk0AZwVJRux0k/AjU94IPPYCwPPpsBfZ34ZQvsBI2SUzcR9MfB+CL4cgmsVHf/
+        PCRnd2ne7V5zc7wengallZiVwLwElIq9YYw8L0OqwqDmUSciN7UmrQ7c8A9IYBoc/LolYIp1DmByzm8O
+        2hHV6N44bIrMLNE9vhCuNzzax2T2NOMZsO+TPOjCbxOoXZxb6+cLbUTGwDNtBecdzraDt5Mefpxv4Str
+        LxMT4K0hrd/BMKRMa7Wd/XL3+RQ4vnaFmY1mTm420xJmzmw0cWK9iW8WPYzlwF4JmMMnYw/ZAiPLAUa1
+        0fcFjCrnmFyOKyo3CRFdAANvt75d0RpvzCg1bb5buGo/2DautoM6QFozMbnRN7P8Lt47xbaAcdwseFWQ
+        zl8sZKv7bTji/A9sAXNxROQ+fUFMO5tu3EVu/h/mDccKP3cygD/IiZDu8/PqjwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="txtReplacePath.Buttons6" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="txtReplacePath.Buttons7" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="txtReplacePath.Buttons8" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="txtReplacePath.Buttons9" type="DevExpress.Utils.ToolTipAnchor, DevExpress.Utils.v21.2">
+    <value>Default</value>
+  </data>
+  <data name="txtReplacePath.Buttons10" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Glyph</value>
+  </data>
+  <data name="txtReplacePath.Buttons11" xml:space="preserve">
+    <value>Browse new path...</value>
+  </data>
+  <data name="txtReplacePath.Buttons12" type="System.Int32, mscorlib">
+    <value>-1</value>
+  </data>
+  <data name="txtReplacePath.Buttons13" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="txtReplacePath.Buttons14" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="txtReplacePath.Buttons15" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="EditorButtonImageOptions4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAILSURBVDhPpY9LaxNRGIa7cO/On+CqFdFmRHQpiCs3
+        ohtvIAW1WUiUQkXQLnoBIVAaRUQshVLBFotGBJfWRTW17dhEM5mkteklNMFm7pecubx+mWomQhBLYZ75
+        zjnwPu85bQD2RMvD3dDycDcEv9zbTr44c5mtfbzaxBWWf3dyWXjTfoDY/xfJgH0NgZjkbN/3aOnTV2dn
+        7VgVbMx219Znu+0/lOZ7rc3UnWLu9ZHzoWA6IvuuBXsjDmNlGMbqKMziFHxHIpcO39UIZWfvVAGP1cRp
+        LhMKXnKqxxQKJ6AXRqB+68N26iYqc1FI6X5ISw8g8XdRXewhYnSzMsRXnVoomIwwx9yClEmgujCE8ofb
+        MMufqVX93V6fcngDep44yVmhYOIYC97v2YQJuEYQdE0BdikBa70f5o8eGPnr0IWLcPUsxPFIk2CMq/mu
+        CVf9BEd6D/ZzCrWtZxR8CHP1HsxCFEbuEvTvZ6GlT8HVeIijzYKnnO0xFWw7iVp5nFofwVqj1pV6axf0
+        7AVomTNQv56AsnAYjvoF4pNmQSJi+Uyi8BjszWFYxT4Kx2CI1yh8jlpPQ+WPQ5k/BHnuIAlSqGcaglz8
+        aInJBVlffuHp+efQxMfQhDi07ADUzH2o6V4oSzEofBTK4g3YlRmfMnJDIAy03xKGOiaEwY4KTeufDAZT
+        ocxIQ7AXWh7+P2j7BY3RGzIVTOkAAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="txtReplacePath.Buttons16" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="txtReplacePath.Buttons17" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="txtReplacePath.Buttons18" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="txtReplacePath.Buttons19" type="DevExpress.Utils.ToolTipAnchor, DevExpress.Utils.v21.2">
+    <value>Default</value>
+  </data>
+  <metadata name="mnuDataProperties.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>478, 17</value>
+  </metadata>
 </root>

@@ -133,7 +133,7 @@
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cmdCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>2</value>
   </data>
   <data name="cmdCancel.Text" xml:space="preserve">
     <value>Cancel</value>
@@ -142,13 +142,13 @@
     <value>cmdCancel</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>2</value>
   </data>
   <data name="cmdOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -163,7 +163,7 @@
     <value>80, 25</value>
   </data>
   <data name="cmdOk.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>1</value>
   </data>
   <data name="cmdOk.Text" xml:space="preserve">
     <value>Ok</value>
@@ -172,15 +172,15 @@
     <value>cmdOk</value>
   </data>
   <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>3</value>
   </data>
-  <data name="lblTrigpointCoordinateGeo.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblTrigpointCoordinateGeo.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblTrigpointCoordinateGeo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -190,7 +190,7 @@
     <value>32, 16</value>
   </data>
   <data name="lblTrigpointCoordinateGeo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 17</value>
+    <value>39, 13</value>
   </data>
   <data name="lblTrigpointCoordinateGeo.TabIndex" type="System.Int32, mscorlib">
     <value>71</value>
@@ -202,55 +202,25 @@
     <value>lblTrigpointCoordinateGeo</value>
   </data>
   <data name="&gt;&gt;lblTrigpointCoordinateGeo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblTrigpointCoordinateGeo.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblTrigpointCoordinateGeo.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
-  <data name="cboCoordinateSystem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
-  </data>
-  <data name="cboCoordinateSystem.Items" xml:space="preserve">
-    <value>WGS84</value>
-  </data>
-  <data name="cboCoordinateSystem.Items1" xml:space="preserve">
-    <value>UTM WGS84</value>
-  </data>
-  <data name="cboCoordinateSystem.Location" type="System.Drawing.Point, System.Drawing">
-    <value>89, 12</value>
-  </data>
-  <data name="cboCoordinateSystem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 21</value>
-  </data>
-  <data name="cboCoordinateSystem.TabIndex" type="System.Int32, mscorlib">
-    <value>70</value>
-  </data>
-  <data name="&gt;&gt;cboCoordinateSystem.Name" xml:space="preserve">
-    <value>cboCoordinateSystem</value>
-  </data>
-  <data name="&gt;&gt;cboCoordinateSystem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboCoordinateSystem.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;cboCoordinateSystem.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="Label2.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="Label2.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="Label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="Label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 51</value>
+    <value>13, 67</value>
   </data>
   <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 17</value>
+    <value>28, 13</value>
   </data>
   <data name="Label2.TabIndex" type="System.Int32, mscorlib">
     <value>75</value>
@@ -262,7 +232,7 @@
     <value>Label2</value>
   </data>
   <data name="&gt;&gt;Label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label2.Parent" xml:space="preserve">
     <value>frmUTM</value>
@@ -270,41 +240,17 @@
   <data name="&gt;&gt;Label2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="cboUTMBand.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
-  </data>
-  <data name="cboUTMBand.Location" type="System.Drawing.Point, System.Drawing">
-    <value>70, 47</value>
-  </data>
-  <data name="cboUTMBand.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 21</value>
-  </data>
-  <data name="cboUTMBand.TabIndex" type="System.Int32, mscorlib">
-    <value>74</value>
-  </data>
-  <data name="&gt;&gt;cboUTMBand.Name" xml:space="preserve">
-    <value>cboUTMBand</value>
-  </data>
-  <data name="&gt;&gt;cboUTMBand.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboUTMBand.Parent" xml:space="preserve">
-    <value>frmUTM</value>
-  </data>
-  <data name="&gt;&gt;cboUTMBand.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="Label1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="Label1.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="Label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 24</value>
+    <value>13, 40</value>
   </data>
   <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 17</value>
+    <value>28, 13</value>
   </data>
   <data name="Label1.TabIndex" type="System.Int32, mscorlib">
     <value>73</value>
@@ -316,43 +262,80 @@
     <value>Label1</value>
   </data>
   <data name="&gt;&gt;Label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
     <value>frmUTM</value>
   </data>
   <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="cboUTMZone.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
+    <value>1</value>
   </data>
   <data name="cboUTMZone.Location" type="System.Drawing.Point, System.Drawing">
-    <value>70, 20</value>
+    <value>70, 37</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="cboUTMZone.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboUTMZone.Properties.Items" xml:space="preserve">
+    <value>WGS84</value>
+  </data>
+  <data name="cboUTMZone.Properties.Items1" xml:space="preserve">
+    <value>UTM WGS84</value>
   </data>
   <data name="cboUTMZone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 21</value>
+    <value>79, 20</value>
   </data>
   <data name="cboUTMZone.TabIndex" type="System.Int32, mscorlib">
-    <value>72</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;cboUTMZone.Name" xml:space="preserve">
     <value>cboUTMZone</value>
   </data>
   <data name="&gt;&gt;cboUTMZone.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboUTMZone.Parent" xml:space="preserve">
     <value>frmUTM</value>
   </data>
   <data name="&gt;&gt;cboUTMZone.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cboUTMBand.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 64</value>
+  </data>
+  <data name="cboUTMBand.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboUTMBand.Properties.Items" xml:space="preserve">
+    <value>WGS84</value>
+  </data>
+  <data name="cboUTMBand.Properties.Items1" xml:space="preserve">
+    <value>UTM WGS84</value>
+  </data>
+  <data name="cboUTMBand.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 20</value>
+  </data>
+  <data name="cboUTMBand.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cboUTMBand.Name" xml:space="preserve">
+    <value>cboUTMBand</value>
+  </data>
+  <data name="&gt;&gt;cboUTMBand.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboUTMBand.Parent" xml:space="preserve">
+    <value>frmUTM</value>
+  </data>
+  <data name="&gt;&gt;cboUTMBand.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="frmUTM.Location" type="System.Drawing.Point, System.Drawing">
     <value>19, 49</value>
   </data>
   <data name="frmUTM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 82</value>
+    <value>226, 99</value>
   </data>
   <data name="frmUTM.TabIndex" type="System.Int32, mscorlib">
     <value>72</value>
@@ -367,31 +350,35 @@
     <value>frmUTM</value>
   </data>
   <data name="&gt;&gt;frmUTM.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;frmUTM.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;frmUTM.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="lblCheckWarning.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
+  </data>
+  <assembly alias="DevExpress.XtraEditors.v21.2" name="DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="lblCheckWarning.AutoSizeMode" type="DevExpress.XtraEditors.LabelAutoSizeMode, DevExpress.XtraEditors.v21.2">
+    <value>None</value>
   </data>
   <data name="lblCheckWarning.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblCheckWarning.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 171</value>
+    <value>10, 162</value>
   </data>
   <data name="lblCheckWarning.Size" type="System.Drawing.Size, System.Drawing">
-    <value>222, 51</value>
+    <value>235, 57</value>
   </data>
   <data name="lblCheckWarning.TabIndex" type="System.Int32, mscorlib">
     <value>171</value>
   </data>
   <data name="lblCheckWarning.Text" xml:space="preserve">
-    <value>Attention: the loaded data will be projected in UTM. This operation could reduce the data quality.</value>
+    <value>&lt;image=#warning;size=16,16&gt; &lt;b&gt;Attention:&lt;/b&gt; the loaded data will be projected in UTM. This operation could reduce the data quality.</value>
   </data>
   <data name="lblCheckWarning.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -400,43 +387,43 @@
     <value>lblCheckWarning</value>
   </data>
   <data name="&gt;&gt;lblCheckWarning.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblCheckWarning.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblCheckWarning.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cboCoordinateSystem.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 13</value>
+  </data>
+  <data name="cboCoordinateSystem.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboCoordinateSystem.Properties.Items" xml:space="preserve">
+    <value>WGS84</value>
+  </data>
+  <data name="cboCoordinateSystem.Properties.Items1" xml:space="preserve">
+    <value>UTM WGS84</value>
+  </data>
+  <data name="cboCoordinateSystem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 20</value>
+  </data>
+  <data name="cboCoordinateSystem.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="picCheckWarning.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
+  <data name="&gt;&gt;cboCoordinateSystem.Name" xml:space="preserve">
+    <value>cboCoordinateSystem</value>
   </data>
-  <data name="picCheckWarning.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;cboCoordinateSystem.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="picCheckWarning.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 171</value>
-  </data>
-  <data name="picCheckWarning.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 16</value>
-  </data>
-  <data name="picCheckWarning.TabIndex" type="System.Int32, mscorlib">
-    <value>170</value>
-  </data>
-  <data name="picCheckWarning.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;picCheckWarning.Name" xml:space="preserve">
-    <value>picCheckWarning</value>
-  </data>
-  <data name="&gt;&gt;picCheckWarning.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;picCheckWarning.Parent" xml:space="preserve">
+  <data name="&gt;&gt;cboCoordinateSystem.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;picCheckWarning.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;cboCoordinateSystem.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -447,10 +434,7 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>266, 262</value>
   </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="frmSurfaceImportASCOptions.IconOptions.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAABUXFQAaFBUAHhYXABYYFQAYGRYAHRkVABkaGAAgFhcAPTc2ADg7
@@ -525,6 +509,6 @@
     <value>frmSurfaceImportASCOptions</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

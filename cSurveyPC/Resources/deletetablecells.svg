@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg x="0px" y="0px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" id="DeleteTableCells" style="enable-background:new 0 0 32 32">
+  <style type="text/css">
+	.Black{fill:#727272;}
+	.Red{fill:#D11C1C;}
+	.st0{opacity:0.5;}
+</style>
+  <g class="st0">
+    <path d="M10,14H2V8h8V14z M30,8h-8v6h8V8z M10,6H2V0h8V6z M20,0h-8v6h8V0z M30,0h-8v6h8V0z M10,16H2v6h8V16z M20,16   h-8v6h8V16z M30,16h-8v6h8V16z" class="Black" />
+  </g>
+  <path d="M20,28l-4,4l-4-4h2v-4h4v4H20z M20,8h-8v6h8V8z" class="Red" />
+</svg>

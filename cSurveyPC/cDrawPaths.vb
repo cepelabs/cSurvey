@@ -97,6 +97,10 @@ Namespace cSurvey.Drawings
 
         Private sData As String
 
+        Public Function IsEmpty() As Boolean
+            Return oPaths.Count = 0
+        End Function
+
         Friend Function Clone() As cDrawClipArt
             Return New cDrawClipArt(Me)
         End Function
@@ -191,6 +195,12 @@ Namespace cSurvey.Drawings
             Return oClipart
         End Function
 
+        Public Sub Save(Stream As IO.Stream)
+            Dim bBuffer As Byte() = System.Text.ASCIIEncoding.UTF8.GetBytes(sData)
+            Call Stream.Write(bBuffer, 0, bBuffer.Count)
+            Stream.Position = 0
+        End Sub
+
         Private Sub pLoadSVG(ByVal XML As XmlDocument)
             Dim oXMLRoot As XmlElement = XML.Item("svg")
             Call pSVGLoadUserData(oXMLRoot)
@@ -245,6 +255,300 @@ Namespace cSurvey.Drawings
             Return sClass
         End Function
 
+        Public Shared Sub ProcessDataToPath(Data As String, Path As GraphicsPath)
+            'curva...
+            Dim bAbsolute As Boolean
+            Dim iAction As Integer
+            Dim bDecimal As Boolean
+
+            Dim oStartPoint As PointF
+            Dim oControlPoint As PointF
+            Dim oPoint As PointF = New PointF
+            Dim iCount As Integer = 0
+            Dim sPath As String = Data & " "
+
+            '* M = moveto
+            '* L = lineto
+            '* H = horizontal lineto
+            '* V = vertical lineto
+            '* C = curve
+            '* S = curve (shorted)
+            '* Q = quadratic Belzier curve
+            '* T = end quadratic Belzier curveto
+            '* A = elliptical Arc
+            '* Z = closepath
+
+            Dim i As Integer = 0
+            Do While i < sPath.Length
+                Dim sChar As Char = sPath.Chars(i)
+                'Dim sValue As String = ""
+                Select Case sChar
+                    Case "q"
+                        iAction = 1
+                        bAbsolute = False
+                        i += 1
+                        Do While i < sPath.Length
+                            Dim oPoint1 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
+                            Dim oPoint2 As PointF = oPoint1
+                            Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
+                            Call Path.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
+                            oControlPoint = oPoint2
+                            oPoint = oPoint3
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+                        Loop
+                    Case "Q"
+                        iAction = 1
+                        bAbsolute = True
+                        i += 1
+                        Do While i < sPath.Length
+                            Dim oPoint1 As PointF = pSVGGetPoint(sPath, i, 0, 0)
+                            Dim oPoint2 As PointF = oPoint1
+                            Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, 0, 0)
+                            Call Path.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
+                            oControlPoint = oPoint2
+                            oPoint = oPoint3
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+                        Loop
+
+                    Case "t"
+                        iAction = 1
+                        bAbsolute = False
+                        i += 1
+                        Do While i < sPath.Length
+                            Dim oNewControlPoint As PointF = New PointF(oPoint.X + (oPoint.X - oControlPoint.X), oPoint.Y + (oPoint.Y - oControlPoint.Y))
+                            Dim oPoint1 As PointF = oNewControlPoint
+                            Dim oPoint2 As PointF = oNewControlPoint
+                            Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
+                            Call Path.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
+                            oPoint = oPoint3
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+                        Loop
+                    Case "T"
+                        iAction = 1
+                        bAbsolute = True
+                        i += 1
+                        Do While i < sPath.Length
+                            Dim oNewControlPoint As PointF = New PointF(oPoint.X + (oPoint.X - oControlPoint.X), oPoint.Y + (oPoint.Y - oControlPoint.Y))
+                            Dim oPoint1 As PointF = oNewControlPoint
+                            Dim oPoint2 As PointF = oNewControlPoint
+                            Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, 0, 0)
+                            Call Path.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
+                            oPoint = oPoint3
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+                        Loop
+
+                    Case "s"
+                        iAction = 1
+                        bAbsolute = False
+                        i += 1
+                        Do While i < sPath.Length
+                            Dim oNewControlPoint As PointF = New PointF(oPoint.X + (oPoint.X - oControlPoint.X), oPoint.Y + (oPoint.Y - oControlPoint.Y))
+                            Dim oPoint1 As PointF = oNewControlPoint
+                            Dim oPoint2 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
+                            Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
+                            Call Path.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
+                            oControlPoint = oPoint2
+                            oPoint = oPoint3
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+                        Loop
+                    Case "S"
+                        iAction = 1
+                        bAbsolute = True
+                        i += 1
+                        Do While i < sPath.Length
+                            Dim oNewControlPoint As PointF = New PointF(oPoint.X + (oPoint.X - oControlPoint.X), oPoint.Y + (oPoint.Y - oControlPoint.Y))
+                            Dim oPoint1 As PointF = oNewControlPoint
+                            Dim oPoint2 As PointF = pSVGGetPoint(sPath, i, 0, 0)
+                            Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, 0, 0)
+                            Call Path.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
+                            oControlPoint = oPoint2
+                            oPoint = oPoint3
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+                        Loop
+
+                    Case "l"
+                        iAction = 1
+                        bAbsolute = False
+                        i += 1
+                        Do While i < sPath.Length
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+
+                            Dim oPoint1 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
+                            Call Path.AddLine(oPoint, oPoint1)
+                            oPoint = oPoint1
+
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+                        Loop
+                    Case "L"
+                        iAction = 1
+                        bAbsolute = True
+                        i += 1
+                        Do While i < sPath.Length
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+
+                            Dim oPoint1 As PointF = pSVGGetPoint(sPath, i, 0, 0)
+                            Call Path.AddLine(oPoint, oPoint1)
+                            oPoint = oPoint1
+
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+                        Loop
+
+                    Case "v"
+                        iAction = 1
+                        bAbsolute = False
+                        i += 1
+                        Do While i < sPath.Length
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+
+                            Dim oPoint1 As PointF = New PointF(oPoint.X, oPoint.Y + pSVGGetValue(sPath, i))
+                            Call Path.AddLine(oPoint, oPoint1)
+                            oPoint = oPoint1
+
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+                        Loop
+                    Case "V"
+                        iAction = 1
+                        bAbsolute = True
+                        i += 1
+                        Do While i < sPath.Length
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+
+                            Dim oPoint1 As PointF = New PointF(oPoint.X, pSVGGetValue(sPath, i))
+                            Call Path.AddLine(oPoint, oPoint1)
+                            oPoint = oPoint1
+
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+                        Loop
+
+                    Case "h"
+                        iAction = 1
+                        bAbsolute = False
+                        i += 1
+                        Do While i < sPath.Length
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+
+                            Dim oPoint1 As PointF = New PointF(oPoint.X + pSVGGetValue(sPath, i), oPoint.Y)
+                            Call Path.AddLine(oPoint, oPoint1)
+                            oPoint = oPoint1
+
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+                        Loop
+
+                    Case "H"
+                        iAction = 1
+                        bAbsolute = True
+                        i += 1
+                        Do While i < sPath.Length
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+
+                            Dim oPoint1 As PointF = New PointF(pSVGGetValue(sPath, i), oPoint.Y)
+                            Call Path.AddLine(oPoint, oPoint1)
+                            oPoint = oPoint1
+
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+                        Loop
+
+                    Case "m"
+                        iAction = 0
+                        bAbsolute = False
+                        i += 1
+                        oPoint = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
+                        Call Path.StartFigure()
+                        oStartPoint = oPoint
+
+                        Do While i < sPath.Length
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+
+                            Dim oPoint1 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
+                            Call Path.AddLine(oPoint, oPoint1)
+                            oPoint = oPoint1
+
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+                        Loop
+                    Case "M"
+                        iAction = 0
+                        bAbsolute = True
+                        i += 1
+                        oPoint = pSVGGetPoint(sPath, i, 0, 0)
+                        Call Path.StartFigure()
+                        oStartPoint = oPoint
+
+                        Do While i < sPath.Length
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+
+                            Dim oPoint1 As PointF = pSVGGetPoint(sPath, i, 0, 0)
+                            Call Path.AddLine(oPoint, oPoint1)
+                            oPoint = oPoint1
+
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+                        Loop
+
+                    Case "z", "Z"
+                        oPoint = oStartPoint
+                        iAction = 2
+                        bDecimal = False
+                        i += 1
+                        Call Path.CloseFigure()
+
+                    Case "c"
+                        iAction = 1
+                        bAbsolute = False
+                        i += 1
+                        Do While i < sPath.Length
+                            Dim oPoint1 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
+                            Dim oPoint2 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
+                            Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
+                            Call Path.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
+                            oControlPoint = oPoint2
+                            oPoint = oPoint3
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+                        Loop
+                    Case "C"
+                        iAction = 1
+                        bAbsolute = True
+                        i += 1
+                        Do While i < sPath.Length
+                            Dim oPoint1 As PointF = pSVGGetPoint(sPath, i, 0, 0)
+                            Dim oPoint2 As PointF = pSVGGetPoint(sPath, i, 0, 0)
+                            Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, 0, 0)
+                            Call Path.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
+                            oControlPoint = oPoint2
+                            oPoint = oPoint3
+                            sChar = pSVGSkipSpaces(sPath, i)
+                            If Char.IsLetter(sChar) Then Exit Do
+                        Loop
+
+                    Case Else
+                        i += 1
+                End Select
+                If i >= sPath.Length Then Exit Do
+            Loop
+        End Sub
+
+
         Private Sub pSVGLoadPath(ByVal Parent As XmlElement)
             Dim oGroupTrasform As Matrix = pSVGGetTransform(Parent)
 
@@ -297,39 +601,39 @@ Namespace cSurvey.Drawings
                             Dim sText As String = oItem.InnerText
 
                             Dim oCenter As PointF = New PointF(modNumbers.StringToSingle(oItem.GetAttribute("x")), modNumbers.StringToSingle(oItem.GetAttribute("y")))
-                            Dim oSF As StringFormat = New StringFormat
-                            Call oPath.AddString(sText, oFontFamily, iFontStyle, sFontSize, oCenter, oSF)
-                            Call oSF.Dispose()
+                            Using oSF As StringFormat = New StringFormat
+                                Call oPath.AddString(sText, oFontFamily, iFontStyle, sFontSize, oCenter, oSF)
+                            End Using
                             Call oFontFamily.Dispose()
                             Dim oBounds As RectangleF = oPath.GetBounds
                             Dim sTextAnchor As String = oItem.GetAttribute("text-anchor")
                             Select Case sTextAnchor
                                 Case "end"
-                                    Dim oMatrix As Matrix = New Matrix
-                                    Call oMatrix.Translate(-oBounds.Width, -oBounds.Height)
-                                    Call oPath.Transform(oMatrix)
-                                    Call oMatrix.Dispose()
+                                    Using oMatrix As Matrix = New Matrix
+                                        Call oMatrix.Translate(-oBounds.Width, -oBounds.Height)
+                                        Call oPath.Transform(oMatrix)
+                                    End Using
                                 Case "middle"
-                                    Dim oMatrix As Matrix = New Matrix
-                                    Call oMatrix.Translate(-oBounds.Width / 2, -oBounds.Height)
-                                    Call oPath.Transform(oMatrix)
-                                    Call oMatrix.Dispose()
-                                Case Else '"start" 'attenzione: ci sarebbe hinerit ma per ora non la gestisco
-                                    Dim oMatrix As Matrix = New Matrix
-                                    Call oMatrix.Translate(0, -oBounds.Height)
-                                    Call oPath.Transform(oMatrix)
-                                    Call oMatrix.Dispose()
+                                        Using oMatrix As Matrix = New Matrix
+                                            Call oMatrix.Translate(-oBounds.Width / 2, -oBounds.Height)
+                                            Call oPath.Transform(oMatrix)
+                                        End Using
+                                        Case Else '"start" 'attenzione: ci sarebbe hinerit ma per ora non la gestisco
+                                    Using oMatrix As Matrix = New Matrix
+                                        Call oMatrix.Translate(0, -oBounds.Height)
+                                        Call oPath.Transform(oMatrix)
+                                    End Using
                             End Select
 
                             If oPath.PointCount > 0 Then
                                 If Not oGroupTrasform Is Nothing Then
                                     Call oPath.Transform(oGroupTrasform)
                                 End If
-                                Dim oTransform As Matrix = pSVGGetTransform(oItem)
-                                If Not oTransform Is Nothing Then
-                                    Call oPath.Transform(oTransform)
-                                    Call oTransform.Dispose()
-                                End If
+                                Using oTransform As Matrix = pSVGGetTransform(oItem)
+                                    If Not oTransform Is Nothing Then
+                                        Call oPath.Transform(oTransform)
+                                    End If
+                                End Using
                                 Call oPaths.Append(oPath, sClass, sID)
                             End If
                         Case "g" 'gruppo di oggetti
@@ -338,326 +642,21 @@ Namespace cSurvey.Drawings
                             Dim oPath As GraphicsPath = New GraphicsPath
                             Dim sID As String = pSVGGetID(oItem)
 
-                            'Dim sClass As String = oItem.GetAttribute("class")
-                            'If sClass = "" Then
-                            '    sClass = Guid.NewGuid.ToString
-                            '    Dim sStyle As String = oItem.GetAttribute("style")
-                            '    Dim oStyle As cDrawStyle = oStyles.Append(sClass, sStyle)
-                            '    If oItem.HasAttribute("fill") Then Call oStyle.Add("fill", oItem.GetAttribute("fill"))
-                            'End If
                             Dim sClass As String = pProcessStyle(sParentClass, oItem)
-                            'If sClass = "" AndAlso (oItem.HasAttribute("fill") OrElse oItem.HasAttribute("style")) Then
-                            '    sClass = Guid.NewGuid.ToString
-                            '    Dim sStyle As String = oItem.GetAttribute("style")
-                            '    Dim oStyle As cDrawStyle = oStyles.Append(sClass, sStyle)
-                            '    If oItem.HasAttribute("fill") Then Call oStyle.Add("fill", oItem.GetAttribute("fill"))
-                            'Else
-                            '    sClass = sParentClass
-                            'End If
 
-                            'curva...
-                            Dim bAbsolute As Boolean
-                            Dim iAction As Integer
-                            Dim bDecimal As Boolean
-
-                            Dim oStartPoint As PointF
-                            Dim oControlPoint As PointF
-                            Dim oPoint As PointF = New PointF
-                            Dim iCount As Integer = 0
                             Dim sPath As String = oItem.GetAttribute("d") & " "
 
-                            '* M = moveto
-                            '* L = lineto
-                            '* H = horizontal lineto
-                            '* V = vertical lineto
-                            '* C = curve
-                            '* S = end curve
-                            '* Q = quadratic Belzier curve
-                            '* T = end quadratic Belzier curveto
-                            '* A = elliptical Arc
-                            '* Z = closepath
-
-                            Dim i As Integer = 0
-                            Do While i < sPath.Length
-                                Dim sChar As Char = sPath.Chars(i)
-                                'Dim sValue As String = ""
-                                Select Case sChar
-                                    Case "q"
-                                        iAction = 1
-                                        bAbsolute = False
-                                        i += 1
-                                        Do While i < sPath.Length
-                                            Dim oPoint1 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
-                                            Dim oPoint2 As PointF = oPoint1
-                                            Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
-                                            Call oPath.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
-                                            oControlPoint = oPoint2
-                                            oPoint = oPoint3
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-                                        Loop
-                                    Case "Q"
-                                        iAction = 1
-                                        bAbsolute = True
-                                        i += 1
-                                        Do While i < sPath.Length
-                                            Dim oPoint1 As PointF = pSVGGetPoint(sPath, i, 0, 0)
-                                            Dim oPoint2 As PointF = oPoint1
-                                            Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, 0, 0)
-                                            Call oPath.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
-                                            oControlPoint = oPoint2
-                                            oPoint = oPoint3
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-                                        Loop
-
-                                    Case "t"
-                                        iAction = 1
-                                        bAbsolute = False
-                                        i += 1
-                                        Do While i < sPath.Length
-                                            Dim oNewControlPoint As PointF = New PointF(oPoint.X + (oPoint.X - oControlPoint.X), oPoint.Y + (oPoint.Y - oControlPoint.Y))
-                                            Dim oPoint1 As PointF = oNewControlPoint
-                                            Dim oPoint2 As PointF = oNewControlPoint
-                                            Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
-                                            Call oPath.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
-                                            oPoint = oPoint3
-
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-                                        Loop
-
-                                    Case "T"
-                                        iAction = 1
-                                        bAbsolute = True
-                                        i += 1
-                                        Do While i < sPath.Length
-                                            Dim oNewControlPoint As PointF = New PointF(oPoint.X + (oPoint.X - oControlPoint.X), oPoint.Y + (oPoint.Y - oControlPoint.Y))
-                                            Dim oPoint1 As PointF = oNewControlPoint
-                                            Dim oPoint2 As PointF = oNewControlPoint
-                                            Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, 0, 0)
-                                            Call oPath.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
-                                            oPoint = oPoint3
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-                                        Loop
-
-                                    Case "s"
-                                        iAction = 1
-                                        bAbsolute = False
-                                        i += 1
-                                        Do While i < sPath.Length
-                                            Dim oNewControlPoint As PointF = New PointF(oPoint.X + (oPoint.X - oControlPoint.X), oPoint.Y + (oPoint.Y - oControlPoint.Y))
-                                            Dim oPoint1 As PointF = oNewControlPoint
-                                            Dim oPoint2 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
-                                            Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
-                                            Call oPath.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
-                                            oPoint = oPoint3
-
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-                                        Loop
-
-                                    Case "S"
-                                        iAction = 1
-                                        bAbsolute = True
-                                        i += 1
-                                        Do While i < sPath.Length
-                                            Dim oNewControlPoint As PointF = New PointF(oPoint.X + (oPoint.X - oControlPoint.X), oPoint.Y + (oPoint.Y - oControlPoint.Y))
-                                            Dim oPoint1 As PointF = oNewControlPoint
-                                            Dim oPoint2 As PointF = pSVGGetPoint(sPath, i, 0, 0)
-                                            Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, 0, 0)
-                                            Call oPath.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
-                                            oPoint = oPoint3
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-                                        Loop
-
-                                    Case "l"
-                                        iAction = 1
-                                        bAbsolute = False
-                                        i += 1
-                                        Do While i < sPath.Length
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-
-                                            Dim oPoint1 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
-                                            Call oPath.AddLine(oPoint, oPoint1)
-                                            oPoint = oPoint1
-
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-                                        Loop
-
-                                    Case "L"
-                                        iAction = 1
-                                        bAbsolute = True
-                                        i += 1
-                                        Do While i < sPath.Length
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-
-                                            Dim oPoint1 As PointF = pSVGGetPoint(sPath, i, 0, 0)
-                                            Call oPath.AddLine(oPoint, oPoint1)
-                                            oPoint = oPoint1
-
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-                                        Loop
-
-                                    Case "v"
-                                        iAction = 1
-                                        bAbsolute = True
-                                        i += 1
-                                        Do While i < sPath.Length
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-
-                                            Dim oPoint1 As PointF = New PointF(oPoint.X, oPoint.Y + pSVGGetValue(sPath, i))
-                                            Call oPath.AddLine(oPoint, oPoint1)
-                                            oPoint = oPoint1
-
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-                                        Loop
-
-                                    Case "V"
-                                        iAction = 1
-                                        bAbsolute = True
-                                        i += 1
-                                        Do While i < sPath.Length
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-
-                                            Dim oPoint1 As PointF = New PointF(oPoint.X, pSVGGetValue(sPath, i))
-                                            Call oPath.AddLine(oPoint, oPoint1)
-                                            oPoint = oPoint1
-
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-                                        Loop
-
-                                    Case "h"
-                                        iAction = 1
-                                        bAbsolute = True
-                                        i += 1
-                                        Do While i < sPath.Length
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-
-                                            Dim oPoint1 As PointF = New PointF(oPoint.X + pSVGGetValue(sPath, i), oPoint.Y)
-                                            Call oPath.AddLine(oPoint, oPoint1)
-                                            oPoint = oPoint1
-
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-                                        Loop
-
-                                    Case "H"
-                                        iAction = 1
-                                        bAbsolute = True
-                                        i += 1
-                                        Do While i < sPath.Length
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-
-                                            Dim oPoint1 As PointF = New PointF(pSVGGetValue(sPath, i), oPoint.Y)
-                                            Call oPath.AddLine(oPoint, oPoint1)
-                                            oPoint = oPoint1
-
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-                                        Loop
-
-                                    Case "m"
-                                        iAction = 0
-                                        bAbsolute = False
-                                        i += 1
-                                        oPoint = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
-                                        Call oPath.StartFigure()
-                                        oStartPoint = oPoint
-
-                                        Do While i < sPath.Length
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-
-                                            Dim oPoint1 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
-                                            Call oPath.AddLine(oPoint, oPoint1)
-                                            oPoint = oPoint1
-
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-                                        Loop
-                                    Case "M"
-                                        iAction = 0
-                                        bAbsolute = True
-                                        i += 1
-                                        oPoint = pSVGGetPoint(sPath, i, 0, 0)
-                                        Call oPath.StartFigure()
-                                        oStartPoint = oPoint
-
-                                        Do While i < sPath.Length
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-
-                                            Dim oPoint1 As PointF = pSVGGetPoint(sPath, i, 0, 0)
-                                            Call oPath.AddLine(oPoint, oPoint1)
-                                            oPoint = oPoint1
-
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-                                        Loop
-                                    Case "z", "Z"
-                                        oPoint = oStartPoint
-                                        iAction = 2
-                                        bDecimal = False
-                                        i += 1
-                                        Call oPath.CloseFigure()
-                                    Case "c"
-                                        iAction = 1
-                                        bAbsolute = False
-                                        i += 1
-                                        Do While i < sPath.Length
-                                            Dim oPoint1 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
-                                            Dim oPoint2 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
-                                            Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, oPoint.X, oPoint.Y)
-                                            Call oPath.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
-                                            oControlPoint = oPoint2
-                                            oPoint = oPoint3
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-                                        Loop
-
-                                    Case "C"
-                                        iAction = 1
-                                        bAbsolute = True
-                                        i += 1
-                                        Do While i < sPath.Length
-                                            Dim oPoint1 As PointF = pSVGGetPoint(sPath, i, 0, 0)
-                                            Dim oPoint2 As PointF = pSVGGetPoint(sPath, i, 0, 0)
-                                            Dim oPoint3 As PointF = pSVGGetPoint(sPath, i, 0, 0)
-                                            Call oPath.AddBezier(oPoint, oPoint1, oPoint2, oPoint3)
-                                            oControlPoint = oPoint2
-                                            oPoint = oPoint3
-                                            sChar = pSVGSkipSpaces(sPath, i)
-                                            If Char.IsLetter(sChar) Then Exit Do
-                                        Loop
-
-                                    Case Else
-                                        i += 1
-                                End Select
-                                If i >= sPath.Length Then Exit Do
-                            Loop
+                            Call ProcessDataToPath(sPath, oPath)
 
                             If oPath.PointCount > 0 Then
                                 If Not oGroupTrasform Is Nothing Then
                                     Call oPath.Transform(oGroupTrasform)
                                 End If
-                                Dim oTransform As Matrix = pSVGGetTransform(oItem)
-                                If Not oTransform Is Nothing Then
-                                    Call oPath.Transform(oTransform)
-                                    Call oTransform.Dispose()
-                                End If
+                                Using oTransform As Matrix = pSVGGetTransform(oItem)
+                                    If Not oTransform Is Nothing Then
+                                        Call oPath.Transform(oTransform)
+                                    End If
+                                End Using
                                 Call oPaths.Append(oPath, sClass, sID)
                             End If
 
@@ -684,11 +683,11 @@ Namespace cSurvey.Drawings
                                 If Not oGroupTrasform Is Nothing Then
                                     Call oPath.Transform(oGroupTrasform)
                                 End If
-                                Dim oTransform As Matrix = pSVGGetTransform(oItem)
-                                If Not oTransform Is Nothing Then
-                                    Call oPath.Transform(oTransform)
-                                    Call oTransform.Dispose()
-                                End If
+                                Using oTransform As Matrix = pSVGGetTransform(oItem)
+                                    If Not oTransform Is Nothing Then
+                                        Call oPath.Transform(oTransform)
+                                    End If
+                                End Using
                                 Call oPaths.Append(oPath, sClass, sID)
                             End If
                         Case "polygon"
@@ -703,13 +702,9 @@ Namespace cSurvey.Drawings
                                 Dim sChar As Char = sPath.Chars(i)
                                 Dim sValue As String = ""
 
-                                'iAction = 1
-                                'bAbsolute = True
-                                'i += 1
                                 Do While i < sPath.Length
                                     Dim oPoint1 As PointF = pSVGGetPoint(sPath, i, 0, 0)
                                     Call oPolygon.Add(oPoint1)
-                                    'oPoint = oPoint1
 
                                     sChar = pSVGSkipSpaces(sPath, i)
                                     If Char.IsLetter(sChar) Then Exit Do
@@ -722,15 +717,14 @@ Namespace cSurvey.Drawings
                                 If Not oGroupTrasform Is Nothing Then
                                     Call oPath.Transform(oGroupTrasform)
                                 End If
-                                Dim oTransform As Matrix = pSVGGetTransform(oItem)
-                                If Not oTransform Is Nothing Then
-                                    Call oPath.Transform(oTransform)
-                                    Call oTransform.Dispose()
-                                End If
+                                Using oTransform As Matrix = pSVGGetTransform(oItem)
+                                    If Not oTransform Is Nothing Then
+                                        Call oPath.Transform(oTransform)
+                                    End If
+                                End Using
                                 Call oPaths.Append(oPath, sClass, sID)
                             End If
                         Case "line"
-                            'linea...
                             Dim oPath As GraphicsPath = New GraphicsPath
                             Dim sID As String = pSVGGetID(oItem)
                             Dim sClass As String = pProcessStyle(sParentClass, oItem)
@@ -744,11 +738,11 @@ Namespace cSurvey.Drawings
                                 If Not oGroupTrasform Is Nothing Then
                                     Call oPath.Transform(oGroupTrasform)
                                 End If
-                                Dim oTransform As Matrix = pSVGGetTransform(oItem)
-                                If Not oTransform Is Nothing Then
-                                    Call oPath.Transform(oTransform)
-                                    Call oTransform.Dispose()
-                                End If
+                                Using oTransform As Matrix = pSVGGetTransform(oItem)
+                                    If Not oTransform Is Nothing Then
+                                        Call oPath.Transform(oTransform)
+                                    End If
+                                End Using
                                 Call oPaths.Append(oPath, sClass, sID)
                             End If
                         Case "circle"
@@ -759,19 +753,19 @@ Namespace cSurvey.Drawings
                             Call oPath.StartFigure()
                             Dim oCenter As PointF = New PointF(modNumbers.StringToSingle(oItem.GetAttribute("cx")), modNumbers.StringToSingle(oItem.GetAttribute("cy")))
                             Dim sR As Single = modNumbers.StringToSingle(oItem.GetAttribute("r"))
-                            oCenter.X = oCenter.X - sR
-                            oCenter.Y = oCenter.Y - sR
-                            Call oPath.AddEllipse(oCenter.X, oCenter.Y, sR * 2, sR * 2)
+                            oCenter.X -= sR
+                            oCenter.Y -= sR
+                            Call oPath.AddEllipse(oCenter.X, oCenter.Y, sR * 2.0F, sR * 2.0F)
 
                             If oPath.PointCount > 0 Then
                                 If Not oGroupTrasform Is Nothing Then
                                     Call oPath.Transform(oGroupTrasform)
                                 End If
-                                Dim oTransform As Matrix = pSVGGetTransform(oItem)
-                                If Not oTransform Is Nothing Then
-                                    Call oPath.Transform(oTransform)
-                                    Call oTransform.Dispose()
-                                End If
+                                Using oTransform As Matrix = pSVGGetTransform(oItem)
+                                    If Not oTransform Is Nothing Then
+                                        Call oPath.Transform(oTransform)
+                                    End If
+                                End Using
                                 Call oPaths.Append(oPath, sClass, sID)
                             End If
                         Case "rect"
@@ -787,11 +781,11 @@ Namespace cSurvey.Drawings
                                 If Not oGroupTrasform Is Nothing Then
                                     Call oPath.Transform(oGroupTrasform)
                                 End If
-                                Dim oTransform As Matrix = pSVGGetTransform(oItem)
-                                If Not oTransform Is Nothing Then
-                                    Call oPath.Transform(oTransform)
-                                    Call oTransform.Dispose()
-                                End If
+                                Using oTransform As Matrix = pSVGGetTransform(oItem)
+                                    If Not oTransform Is Nothing Then
+                                        Call oPath.Transform(oTransform)
+                                    End If
+                                End Using
                                 Call oPaths.Append(oPath, sClass, sID)
                             End If
                     End Select
@@ -803,7 +797,7 @@ Namespace cSurvey.Drawings
             End If
         End Sub
 
-        Private Function pSVGGetTransform(ByVal Item As XmlElement) As Matrix
+        Private Shared Function pSVGGetTransform(ByVal Item As XmlElement) As Matrix
             Dim sTransform As String = Item.GetAttribute("transform")
             sTransform = sTransform.Trim
             If sTransform <> "" Then
@@ -852,7 +846,7 @@ Namespace cSurvey.Drawings
             End If
         End Function
 
-        Private Function pSVGGetID(ByVal Item As XmlElement) As String
+        Private Shared Function pSVGGetID(ByVal Item As XmlElement) As String
             If Item.HasAttribute("id") Then
                 Return Item.GetAttribute("id")
             Else
@@ -860,7 +854,7 @@ Namespace cSurvey.Drawings
             End If
         End Function
 
-        Private Function pSVGSkipSpaces(ByVal Path As String, ByRef Index As Integer) As Char
+        Private Shared Function pSVGSkipSpaces(ByVal Path As String, ByRef Index As Integer) As Char
             Dim sChar As Char
             Dim iIndex As Integer = Index
             Do While iIndex < Path.Length
@@ -875,7 +869,7 @@ Namespace cSurvey.Drawings
             Return sChar
         End Function
 
-        Private Function pSVGGetValue(ByVal Path As String, ByRef Index As Integer) As Single
+        Private Shared Function pSVGGetValue(ByVal Path As String, ByRef Index As Integer) As Single
             Dim oValue As Single
             'Dim bFlagDecimal As Boolean
             Dim iIndex As Integer = Index
@@ -886,13 +880,6 @@ Namespace cSurvey.Drawings
             Do While iIndex < Path.Length
                 Dim sChar As Char = Path.Chars(iIndex)
                 If Char.IsDigit(sChar) OrElse sChar = "." OrElse (sChar = "+" AndAlso iFirstIndex = iIndex) OrElse (sChar = "-" AndAlso iFirstIndex = iIndex) OrElse sChar = "e" Then
-                    'If sChar = "." Then
-                    '    If bFlagDecimal Then
-                    '        Exit Do
-                    '    Else
-                    '        bFlagDecimal = True
-                    '    End If
-                    'End If
                     sValue = sValue & sChar
                     iIndex += 1
                     If sChar = "e" Then iFirstIndex = iIndex
@@ -905,9 +892,8 @@ Namespace cSurvey.Drawings
             Return oValue
         End Function
 
-        Private Function pSVGGetPoint(ByVal Path As String, ByRef Index As Integer, ByVal RelativeX As Single, ByVal RelativeY As Single) As PointF
+        Private Shared Function pSVGGetPoint(ByVal Path As String, ByRef Index As Integer, ByVal RelativeX As Single, ByVal RelativeY As Single) As PointF
             Dim oPoint As PointF = New PointF
-            'Dim bFlagDecimal As Boolean
             Dim iIndex As Integer = Index
             Dim sValue As String
             Call pSVGSkipSpaces(Path, iIndex)
@@ -916,13 +902,6 @@ Namespace cSurvey.Drawings
             Do While iIndex < Path.Length
                 Dim sChar As Char = Path.Chars(iIndex)
                 If Char.IsDigit(sChar) OrElse sChar = "." OrElse (sChar = "+" AndAlso iFirstIndex = iIndex) OrElse (sChar = "-" AndAlso iFirstIndex = iIndex) OrElse sChar = "e" Then
-                    'If sChar = "." Then
-                    '    If bFlagDecimal Then
-                    '        Exit Do
-                    '    Else
-                    '        bFlagDecimal = True
-                    '    End If
-                    'End If
                     sValue = sValue & sChar
                     iIndex += 1
                     If sChar = "e" Then iFirstIndex = iIndex
@@ -1016,7 +995,7 @@ Namespace cSurvey.Drawings
                     Call oMatrix.Scale(Zoom, Zoom, MatrixOrder.Append)
                 End If
                 Call oMatrix.Translate(Translate.X, Translate.Y, MatrixOrder.Append)
-                Using oForePen As Pen = New Pen(ForeColor, -1)
+                Using oForePen As Pen = New Pen(ForeColor, cEditPaintObjects.FilettoPenWidth)
                     Using oForeBrush As SolidBrush = New SolidBrush(ForeColor)
                         Using oBackbrush As SolidBrush = New SolidBrush(Backcolor)
                             For Each oDrawPath As cDrawPath In oPaths

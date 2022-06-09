@@ -122,17 +122,21 @@
     <value>Top, Bottom, Left, Right</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblMessage.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblMessage.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
+  </data>
+  <assembly alias="DevExpress.XtraEditors.v21.2" name="DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="lblMessage.AutoSizeMode" type="DevExpress.XtraEditors.LabelAutoSizeMode, DevExpress.XtraEditors.v21.2">
+    <value>None</value>
   </data>
   <data name="lblMessage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblMessage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>46, 9</value>
+    <value>12, 9</value>
   </data>
   <data name="lblMessage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>405, 77</value>
+    <value>439, 77</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lblMessage.TabIndex" type="System.Int32, mscorlib">
@@ -142,13 +146,13 @@
     <value>lblMessage</value>
   </data>
   <data name="&gt;&gt;lblMessage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblMessage.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblMessage.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="cmdOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -172,13 +176,13 @@
     <value>cmdOk</value>
   </data>
   <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="cmdCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -202,58 +206,13 @@
     <value>cmdCancel</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="PictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAEB0lEQVRYR61TS2yUZRSdhS6NK9iyYQEJ
-        gWgCRNwIgrVRkgLaEAmKMUSibcKQFNAtEVNgoJRHSACrJD5CLaS2ISZWIEhbIJZHASXUMG3nPfNPp/P6
-        Z/6ZTg/3fPNwal30/6Y3Oblz7z3nfIcfcACYBakX6ttu9Na3D+Dt4/01gz70oy/NZ7xVPVSWDsdL9e39
-        cPWN4MhvI3DVAKUXH/rRd64BFjB5a98zrGu/jfUn7mCDBqijnj70o+9cAyykwHXdi4bzD7Gl4yHe63hk
-        G9RRT59SgIVzD9B2E8cHQtj+0z/YcVEf1NOHfrYC1B27idN/TmJXjx+fCT7vtQ/qqKcP/ewFaOvH2UcW
-        Wq7FsbcGtFxL4OxjC3V2/wrqDvWlXm+9gdUHr2L1VzVA9GvEZ+PBXnsBGne75Of8VWPzIXsBNjcdlp/A
-        qNsNt2DUPWobRZ1b+dDPVoBN5QBjY4JxgQdj40WMCzye2eC+zCG/qBtTPvTTCqDMvd4K/H4fjLAfcSOA
-        RDRYAWfuea/mU8/SDuD1+uD1+RV8fj+i4RBaLgxi2d4eLN/XgxUCds7c805eWUM9SzuAPxAQBBWCoRBS
-        MUMe+wWd9wLouh/AZQE7Z+55J6+soZ6lHSAYlIeDIYVIOIxsPIrl8lD3cAir5L/Xa4f/UJ0z97yTV9ZQ
-        z9IOEApHKjAMA1ZyUj3U+ziCN9oGsb79luqcueedvGodSzuAETEQEUTFdHJiAgUzrh769UkUb50ewjtn
-        7qrOmXveySOfOupZ2gGiYhaLxWAm45jKJCEv4JX98gWeTODdcw/Q8M2w6py555088qmjnqUdYDIeQyYd
-        x77vb2NZSzdelUdWfiH/CIcNbP72LzRe+Ft1ztzzTh751FHP0g6QTCSQN1NY7LyM80NRdNw18N1QBF9f
-        9WHbD0+x/ccRfCD95EBA7Xknj3zqqGfpB0gmYKZT8mkzWLLnEk7diWLbRTc+6nTj45/d+KSr2D/sfKb2
-        vJNHPnXUs7QDpFNppJIp5DImMG1hifMSjt2KYWe3F592e7BLwM6Ze97JI5866ln6AUwxSqelp5G3MrLJ
-        YemeLrQOxtF0JYzmKyHVOXPPO3nkF3USXEo7QDaThWnK5xRkMxkUcpZsC1jq7MKBgSScv8dU58w97+T9
-        q8kqH9sBGkoBcjTMZivIWWJYyMllWj36Zb9Zenxa7XmfwVeBAfppBcjn87Cs3Azkc3l5bErdFzV1qs6Z
-        +1lc0bO0AxRoLCb/RWFKjKcLwpA/uXTO/8srBbUdYFNzMcB8Ff1sBXh/91H5OX9FPzsBFmx1ujwUMTk/
-        ny6opw/96DvXAC8LVgjWCt6cB9CHfvSd+Vb1UFk6HC+WyEzMz1Yr6EM/+la9Bcdz7TEMuGYcPkoAAAAA
-        SUVORK5CYII=
-</value>
-  </data>
-  <data name="PictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 9</value>
-  </data>
-  <data name="PictureBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 32</value>
-  </data>
-  <data name="PictureBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>164</value>
-  </data>
-  <data name="&gt;&gt;PictureBox1.Name" xml:space="preserve">
-    <value>PictureBox1</value>
-  </data>
-  <data name="&gt;&gt;PictureBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PictureBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;PictureBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -263,9 +222,6 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>463, 130</value>
-  </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
@@ -277,6 +233,6 @@
     <value>frmNotifyUpdate</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

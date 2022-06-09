@@ -1,0 +1,495 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblPropPlanSplay.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblPropPlanSplay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 9</value>
+  </data>
+  <data name="lblPropPlanSplay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 13</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblPropPlanSplay.TabIndex" type="System.Int32, mscorlib">
+    <value>161</value>
+  </data>
+  <data name="lblPropPlanSplay.Text" xml:space="preserve">
+    <value>Splay:</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplay.Name" xml:space="preserve">
+    <value>lblPropPlanSplay</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplay.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplay.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropPlanSplay.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="txtPropProfileSplayNegInclinationRangeMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 223</value>
+  </data>
+  <data name="txtPropProfileSplayNegInclinationRangeMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropProfileSplayNegInclinationRangeMax.TabIndex" type="System.Int32, mscorlib">
+    <value>173</value>
+  </data>
+  <data name="txtPropProfileSplayNegInclinationRangeMax.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayNegInclinationRangeMax.Name" xml:space="preserve">
+    <value>txtPropProfileSplayNegInclinationRangeMax</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayNegInclinationRangeMax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayNegInclinationRangeMax.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayNegInclinationRangeMax.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtPropProfileSplayNegInclinationRangeMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 223</value>
+  </data>
+  <data name="txtPropProfileSplayNegInclinationRangeMin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropProfileSplayNegInclinationRangeMin.TabIndex" type="System.Int32, mscorlib">
+    <value>172</value>
+  </data>
+  <data name="txtPropProfileSplayNegInclinationRangeMin.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayNegInclinationRangeMin.Name" xml:space="preserve">
+    <value>txtPropProfileSplayNegInclinationRangeMin</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayNegInclinationRangeMin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayNegInclinationRangeMin.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayNegInclinationRangeMin.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblPropProfileSplayNegInclinationRange.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropProfileSplayNegInclinationRange.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropProfileSplayNegInclinationRange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 227</value>
+  </data>
+  <data name="lblPropProfileSplayNegInclinationRange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 13</value>
+  </data>
+  <data name="lblPropProfileSplayNegInclinationRange.TabIndex" type="System.Int32, mscorlib">
+    <value>174</value>
+  </data>
+  <data name="lblPropProfileSplayNegInclinationRange.Text" xml:space="preserve">
+    <value>Incl. range -:</value>
+  </data>
+  <data name="lblPropProfileSplayNegInclinationRange.ToolTip" xml:space="preserve">
+    <value>Inclination range for negative angles (°)</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayNegInclinationRange.Name" xml:space="preserve">
+    <value>lblPropProfileSplayNegInclinationRange</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayNegInclinationRange.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayNegInclinationRange.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayNegInclinationRange.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtPropProfileSplayPosInclinationRangeMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 196</value>
+  </data>
+  <data name="txtPropProfileSplayPosInclinationRangeMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropProfileSplayPosInclinationRangeMax.TabIndex" type="System.Int32, mscorlib">
+    <value>170</value>
+  </data>
+  <data name="txtPropProfileSplayPosInclinationRangeMax.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayPosInclinationRangeMax.Name" xml:space="preserve">
+    <value>txtPropProfileSplayPosInclinationRangeMax</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayPosInclinationRangeMax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayPosInclinationRangeMax.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayPosInclinationRangeMax.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtPropProfileSplayPosInclinationRangeMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 196</value>
+  </data>
+  <data name="txtPropProfileSplayPosInclinationRangeMin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropProfileSplayPosInclinationRangeMin.TabIndex" type="System.Int32, mscorlib">
+    <value>169</value>
+  </data>
+  <data name="txtPropProfileSplayPosInclinationRangeMin.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayPosInclinationRangeMin.Name" xml:space="preserve">
+    <value>txtPropProfileSplayPosInclinationRangeMin</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayPosInclinationRangeMin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayPosInclinationRangeMin.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayPosInclinationRangeMin.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cmdPropProfileSplay.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="cmdPropProfileSplay.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdPropProfileSplay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>474, 4</value>
+  </data>
+  <data name="cmdPropProfileSplay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdPropProfileSplay.TabIndex" type="System.Int32, mscorlib">
+    <value>168</value>
+  </data>
+  <data name="cmdPropProfileSplay.ToolTip" xml:space="preserve">
+    <value>Replicate splay settings...</value>
+  </data>
+  <data name="&gt;&gt;cmdPropProfileSplay.Name" xml:space="preserve">
+    <value>cmdPropProfileSplay</value>
+  </data>
+  <data name="&gt;&gt;cmdPropProfileSplay.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdPropProfileSplay.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdPropProfileSplay.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="txtPropProfileSplayMaxVariationAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 169</value>
+  </data>
+  <data name="txtPropProfileSplayMaxVariationAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropProfileSplayMaxVariationAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>167</value>
+  </data>
+  <data name="txtPropProfileSplayMaxVariationAngle.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayMaxVariationAngle.Name" xml:space="preserve">
+    <value>txtPropProfileSplayMaxVariationAngle</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayMaxVariationAngle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayMaxVariationAngle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayMaxVariationAngle.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lblPropProfileSplayMaxVariationAngle.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropProfileSplayMaxVariationAngle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropProfileSplayMaxVariationAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 171</value>
+  </data>
+  <data name="lblPropProfileSplayMaxVariationAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
+  </data>
+  <data name="lblPropProfileSplayMaxVariationAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>166</value>
+  </data>
+  <data name="lblPropProfileSplayMaxVariationAngle.Text" xml:space="preserve">
+    <value>Variation:</value>
+  </data>
+  <data name="lblPropProfileSplayMaxVariationAngle.ToolTip" xml:space="preserve">
+    <value>Projection angle for the splay</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayMaxVariationAngle.Name" xml:space="preserve">
+    <value>lblPropProfileSplayMaxVariationAngle</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayMaxVariationAngle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayMaxVariationAngle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayMaxVariationAngle.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lblPropProfileSplayProjectionAngle.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropProfileSplayProjectionAngle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropProfileSplayProjectionAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 144</value>
+  </data>
+  <data name="lblPropProfileSplayProjectionAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 13</value>
+  </data>
+  <data name="lblPropProfileSplayProjectionAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>163</value>
+  </data>
+  <data name="lblPropProfileSplayProjectionAngle.Text" xml:space="preserve">
+    <value>Angle:</value>
+  </data>
+  <data name="lblPropProfileSplayProjectionAngle.ToolTip" xml:space="preserve">
+    <value>Projection angle for the splay</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayProjectionAngle.Name" xml:space="preserve">
+    <value>lblPropProfileSplayProjectionAngle</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayProjectionAngle.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayProjectionAngle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayProjectionAngle.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="txtPropProfileSplayProjectionAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 142</value>
+  </data>
+  <data name="txtPropProfileSplayProjectionAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="txtPropProfileSplayProjectionAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>164</value>
+  </data>
+  <data name="txtPropProfileSplayProjectionAngle.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayProjectionAngle.Name" xml:space="preserve">
+    <value>txtPropProfileSplayProjectionAngle</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayProjectionAngle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayProjectionAngle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPropProfileSplayProjectionAngle.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="lblPropProfileSplayPosInclinationRange.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblPropProfileSplayPosInclinationRange.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropProfileSplayPosInclinationRange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 200</value>
+  </data>
+  <data name="lblPropProfileSplayPosInclinationRange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 13</value>
+  </data>
+  <data name="lblPropProfileSplayPosInclinationRange.TabIndex" type="System.Int32, mscorlib">
+    <value>171</value>
+  </data>
+  <data name="lblPropProfileSplayPosInclinationRange.Text" xml:space="preserve">
+    <value>Incl. range +:</value>
+  </data>
+  <data name="lblPropProfileSplayPosInclinationRange.ToolTip" xml:space="preserve">
+    <value>Inclination range for positive angles (°)</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayPosInclinationRange.Name" xml:space="preserve">
+    <value>lblPropProfileSplayPosInclinationRange</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayPosInclinationRange.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayPosInclinationRange.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropProfileSplayPosInclinationRange.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="picPropProfileProjectionSchema.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 6</value>
+  </data>
+  <data name="picPropProfileProjectionSchema.Properties.NullText" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="picPropProfileProjectionSchema.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 128</value>
+  </data>
+  <data name="picPropProfileProjectionSchema.TabIndex" type="System.Int32, mscorlib">
+    <value>175</value>
+  </data>
+  <data name="&gt;&gt;picPropProfileProjectionSchema.Name" xml:space="preserve">
+    <value>picPropProfileProjectionSchema</value>
+  </data>
+  <data name="&gt;&gt;picPropProfileProjectionSchema.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PictureEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;picPropProfileProjectionSchema.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;picPropProfileProjectionSchema.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 250</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>cItemProfileSplayPropertyControl</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>cSurveyPC.cItemPropertyControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+</root>

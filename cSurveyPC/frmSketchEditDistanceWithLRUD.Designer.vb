@@ -23,15 +23,18 @@ Partial Class frmSketchEditDistanceWithLRUD
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSketchEditDistanceWithLRUD))
-        Me.lblDistance = New System.Windows.Forms.Label()
-        Me.txtDistance = New System.Windows.Forms.NumericUpDown()
-        Me.lblDistanceUM = New System.Windows.Forms.Label()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.cmdOk = New System.Windows.Forms.Button()
-        Me.optLeftUp = New System.Windows.Forms.RadioButton()
-        Me.optRightDown = New System.Windows.Forms.RadioButton()
-        Me.optManual = New System.Windows.Forms.RadioButton()
-        CType(Me.txtDistance, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.lblDistance = New DevExpress.XtraEditors.LabelControl()
+        Me.txtDistance = New DevExpress.XtraEditors.SpinEdit()
+        Me.lblDistanceUM = New DevExpress.XtraEditors.LabelControl()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
+        Me.optLeftUp = New DevExpress.XtraEditors.CheckEdit()
+        Me.optRightDown = New DevExpress.XtraEditors.CheckEdit()
+        Me.optManual = New DevExpress.XtraEditors.CheckEdit()
+        CType(Me.txtDistance.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.optLeftUp.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.optRightDown.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.optManual.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblDistance
@@ -41,13 +44,14 @@ Partial Class frmSketchEditDistanceWithLRUD
         '
         'txtDistance
         '
-        Me.txtDistance.DecimalPlaces = 2
         resources.ApplyResources(Me.txtDistance, "txtDistance")
-        Me.txtDistance.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
-        Me.txtDistance.Maximum = New Decimal(New Integer() {999, 0, 0, 0})
-        Me.txtDistance.Minimum = New Decimal(New Integer() {1, 0, 0, 131072})
         Me.txtDistance.Name = "txtDistance"
-        Me.txtDistance.Value = New Decimal(New Integer() {1, 0, 0, 65536})
+        Me.txtDistance.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtDistance.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtDistance.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtDistance.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtDistance.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+        Me.txtDistance.Properties.MaxValue = New Decimal(New Integer() {999, 0, 0, 0})
+        Me.txtDistance.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 131072})
         '
         'lblDistanceUM
         '
@@ -59,41 +63,48 @@ Partial Class frmSketchEditDistanceWithLRUD
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'cmdOk
         '
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
         '
         'optLeftUp
         '
         resources.ApplyResources(Me.optLeftUp, "optLeftUp")
         Me.optLeftUp.Name = "optLeftUp"
-        Me.optLeftUp.TabStop = True
-        Me.optLeftUp.UseVisualStyleBackColor = True
+        Me.optLeftUp.Properties.AutoWidth = True
+        Me.optLeftUp.Properties.Caption = resources.GetString("optLeftUp.Properties.Caption")
+        Me.optLeftUp.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio
+        Me.optLeftUp.Properties.RadioGroupIndex = 1
+        Me.optLeftUp.TabStop = False
         '
         'optRightDown
         '
         resources.ApplyResources(Me.optRightDown, "optRightDown")
         Me.optRightDown.Name = "optRightDown"
-        Me.optRightDown.TabStop = True
-        Me.optRightDown.UseVisualStyleBackColor = True
+        Me.optRightDown.Properties.AutoWidth = True
+        Me.optRightDown.Properties.Caption = resources.GetString("optRightDown.Properties.Caption")
+        Me.optRightDown.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio
+        Me.optRightDown.Properties.RadioGroupIndex = 1
+        Me.optRightDown.TabStop = False
         '
         'optManual
         '
         resources.ApplyResources(Me.optManual, "optManual")
         Me.optManual.Name = "optManual"
-        Me.optManual.TabStop = True
-        Me.optManual.UseVisualStyleBackColor = True
+        Me.optManual.Properties.AutoWidth = True
+        Me.optManual.Properties.Caption = resources.GetString("optManual.Properties.Caption")
+        Me.optManual.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio
+        Me.optManual.Properties.RadioGroupIndex = 1
+        Me.optManual.TabStop = False
         '
         'frmSketchEditDistanceWithLRUD
         '
         Me.AcceptButton = Me.cmdOk
         resources.ApplyResources(Me, "$this")
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
         Me.Controls.Add(Me.optManual)
         Me.Controls.Add(Me.optRightDown)
@@ -107,18 +118,21 @@ Partial Class frmSketchEditDistanceWithLRUD
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSketchEditDistanceWithLRUD"
-        CType(Me.txtDistance, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDistance.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.optLeftUp.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.optRightDown.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.optManual.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents lblDistance As Label
-    Friend WithEvents txtDistance As NumericUpDown
-    Friend WithEvents lblDistanceUM As Label
-    Friend WithEvents cmdCancel As Button
-    Friend WithEvents cmdOk As Button
-    Friend WithEvents optLeftUp As RadioButton
-    Friend WithEvents optRightDown As RadioButton
-    Friend WithEvents optManual As RadioButton
+    Friend WithEvents lblDistance As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtDistance As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents lblDistanceUM As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents optLeftUp As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents optRightDown As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents optManual As DevExpress.XtraEditors.CheckEdit
 End Class

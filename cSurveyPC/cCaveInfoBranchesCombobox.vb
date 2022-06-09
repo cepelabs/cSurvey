@@ -2,12 +2,12 @@
 
 Public Class cCaveInfoBranchesCombobox
 
-    Public Overloads Sub Rebind(CaveinfoBranch As cICaveInfoBranches, Reset As Boolean, Optional AllowEmpty As Boolean = True, Optional AllowLocked As AllowLockedEnum = AllowLockedEnum.True)
+    Public Shadows Sub Rebind(CaveinfoBranch As cICaveInfoBranches, Reset As Boolean, Optional AllowEmpty As Boolean = True, Optional AllowLocked As AllowLockedEnum = AllowLockedEnum.True)
         Dim oEmptyCaveInfo As cCaveInfoBranch = CaveinfoBranch.Branches.GetEmptyCaveInfoBranch
         Call MyBase.CaveItems.Clear()
         If AllowEmpty Then MyBase.CaveItems.Add(oEmptyCaveInfo)
         Call pSubRebind(CaveinfoBranch.Branches, AllowLocked)
-        Call Rebind(Reset)
+        Call MyBase.Rebind(Reset)
     End Sub
 
     Private Sub pSubRebind(CaveinfoBranch As cCaveInfoBranches, AllowLocked As AllowLockedEnum)

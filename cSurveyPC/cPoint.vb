@@ -656,7 +656,7 @@ Namespace cSurvey.Design
             Return New cPoint(oSurvey, Me)
         End Function
 
-        Private Sub oPen_OnChanged(ByVal Sender As cPen) Handles oPen.OnChanged
+        Private Sub oPen_OnChanged(ByVal Sender As Object, e As EventArgs) Handles oPen.OnChanged
             RaiseEvent OnChanged(Me)
         End Sub
     End Class
@@ -763,7 +763,7 @@ Namespace cSurvey.Design
             Call MyBase.SaveTo(File, Document, Parent)
         End Function
 
-        Private Sub oPen_OnChanged(ByVal Sender As cPen) Handles oPen.OnChanged
+        Private Sub oPen_OnChanged(ByVal Sender As Object, e As EventArgs) Handles oPen.OnChanged
             RaiseEvent OnChanged(Me)
         End Sub
 

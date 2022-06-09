@@ -118,35 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="chkCave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 17</value>
-  </data>
-  <data name="chkCave.Text" xml:space="preserve">
-    <value>Replica associazione grotta/ramo</value>
-  </data>
   <data name="cmdCancel.Text" xml:space="preserve">
     <value>Annulla</value>
   </data>
   <data name="cmdOk.Text" xml:space="preserve">
     <value>Replica</value>
-  </data>
-  <data name="chkSession.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 17</value>
-  </data>
-  <data name="chkSession.Text" xml:space="preserve">
-    <value>Replica associazione sessione</value>
-  </data>
-  <data name="chkRebind.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 17</value>
-  </data>
-  <data name="chkRebind.Text" xml:space="preserve">
-    <value>Riassocia oggetti grafici alla poligonale</value>
-  </data>
-  <data name="chkFormula.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 17</value>
-  </data>
-  <data name="chkFormula.Text" xml:space="preserve">
-    <value>Applica formula</value>
   </data>
   <data name="cboReplicateTo.Items" xml:space="preserve">
     <value>per i segmenti che hanno lo stesso ramo/grotta del segmento corrente</value>
@@ -159,9 +135,6 @@
   </data>
   <data name="cboReplicateTo.Items3" xml:space="preserve">
     <value>per i segmenti selezionati</value>
-  </data>
-  <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 13</value>
   </data>
   <data name="Label2.Text" xml:space="preserve">
     <value>Applica a:</value>
@@ -234,13 +207,25 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Replica dati segmento:</value>
   </data>
-  <data name="chkDirection.Text" xml:space="preserve">
+  <data name="chkDirection.Properties.Caption" xml:space="preserve">
     <value>Replica direzione</value>
   </data>
-  <data name="cboDirection.Items" xml:space="preserve">
-    <value>Destra</value>
+  <data name="chkCave.Properties.Caption" xml:space="preserve">
+    <value>Replica associazione grotta/ramo</value>
   </data>
-  <data name="cboDirection.Items1" xml:space="preserve">
-    <value>Sinistra</value>
+  <data name="chkFormula.Properties.Caption" xml:space="preserve">
+    <value>Applica formula</value>
+  </data>
+  <data name="chkRebind.Properties.Caption" xml:space="preserve">
+    <value>Riassocia oggetti grafici alla poligonale</value>
+  </data>
+  <data name="chkSession.Properties.Caption" xml:space="preserve">
+    <value>Replica associazione sessione</value>
+  </data>
+  <data name="cmdEditFormula.ToolTip" xml:space="preserve">
+    <value>Modifica la formula da applicare ai dati</value>
+  </data>
+  <data name="cboDirection.ToolTip" xml:space="preserve">
+    <value>Specifica la direzione della battuta in sezione</value>
   </data>
 </root>

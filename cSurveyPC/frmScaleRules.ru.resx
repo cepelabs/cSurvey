@@ -182,18 +182,12 @@
     <value>Основные</value>
   </data>
   <data name="lblScaleWarning.Text" xml:space="preserve">
-    <value>Внимание: масштабный коэфицент устанвленный в этих настройках будет применен к объектам(until the next factor).
+    <value>&lt;image=#warning;size=16,16&gt; &lt;b&gt;Внимание:&lt;/b&gt; масштабный коэфицент устанвленный в этих настройках будет применен к объектам(until the next factor).
 Для масштабов меньше установленного фактора будут использоваться настройки нитки хода и графики по умолчанию.
 </value>
   </data>
   <data name="lblScale.Text" xml:space="preserve">
     <value>Масштаб:</value>
-  </data>
-  <data name="tanInfoCategories.Text" xml:space="preserve">
-    <value>Категории</value>
-  </data>
-  <data name="tabInfODesign.Text" xml:space="preserve">
-    <value>Дизайн</value>
   </data>
   <data name="tabInfoPlot.Text" xml:space="preserve">
     <value>Нитка хода</value>
@@ -226,92 +220,6 @@
     <value>Масштаб:</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 22</value>
-  </data>
-  <data name="btnAdd.Text" xml:space="preserve">
-    <value>Добавить</value>
-  </data>
-  <data name="btnAddAsCopy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 22</value>
-  </data>
-  <data name="btnAddAsCopy.Text" xml:space="preserve">
-    <value>Добавить как копию</value>
-  </data>
-  <data name="btnRemove.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD5SURBVDhPY0AGRxwM/oMwlIsB8MqDJL4d3gXG2BThlQcJ
-        fN294f9TT10wBrGRFRGShyjYvPz/c18jOAbxQeL45KDawcAYJPBl9bz/rwLN4RjExyYG1WwM0YoAYEO+
-        Lp7+/02oDVYMksOlGQYghszt//8u0hEFg8QIaQYDkKJv0zr+f4h1Q8EgMagBuAFY88Sm/58TvbFikBxO
-        Q0AS33uq/39N9YdjEB+bGIYhIIEf7WX/v2eGwDGIDxLHJwfVDjHgV1Ph/595kWAMYkMVgAIMHLA45OEA
-        rOhPXQ4YI2mGAULyYABWhEsSCAjJgwHYyRAmVkBInlTAwAAAGRZmoO4izFMAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 22</value>
-  </data>
-  <data name="btnRemove.Text" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="btnRemoveAll.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD5SURBVDhPY0AGRxwM/oMwlIsB8MqDJL4d3gXG2BThlQcJ
-        fN294f9TT10wBrGRFRGShyjYvPz/c18jOAbxQeL45KDawcAYJPBl9bz/rwLN4RjExyYG1WwM0YoAYEO+
-        Lp7+/02oDVYMksOlGQYghszt//8u0hEFg8QIaQYDkKJv0zr+f4h1Q8EgMagBuAFY88Sm/58TvbFikBxO
-        Q0AS33uq/39N9YdjEB+bGIYhIIEf7WX/v2eGwDGIDxLHJwfVDjHgV1Ph/595kWAMYkMVgAIMHLA45OEA
-        rOhPXQ4YI2mGAULyYABWhEsSCAjJgwHYyRAmVkBInlTAwAAAGRZmoO4izFMAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnRemoveAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 22</value>
-  </data>
-  <data name="btnRemoveAll.Text" xml:space="preserve">
-    <value>Удалить все</value>
-  </data>
-  <data name="btnExport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnExport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 22</value>
-  </data>
-  <data name="btnExport.Text" xml:space="preserve">
-    <value>Экспорт...</value>
-  </data>
-  <data name="btnImport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnImport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 22</value>
-  </data>
-  <data name="btnImport.Text" xml:space="preserve">
-    <value>Импорт...</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
@@ -410,9 +318,6 @@
   <data name="cboPlotTranslationLinePenStyle.Items1" xml:space="preserve">
 		<value>Дефис</value>
 	</data>
-  <data name="chkPlotCenterlineVectors.Text" xml:space="preserve">
-		<value>Показать векторы</value>
-	</data>
   <data name="lblPlotPointSize.Text" xml:space="preserve">
 		<value>Размер:</value>
 	</data>
@@ -443,9 +348,6 @@
   <data name="cboPlotLRUDPenStyle.Items4" xml:space="preserve">
 		<value>Линия с 2 точками</value>
 	</data>
-  <data name="colCategoryName.HeaderText" xml:space="preserve">
-		<value>Категория</value>
-	</data>
   <data name="cboPlotPenStyle.Items2" xml:space="preserve">
 		<value>Точки</value>
 	</data>
@@ -457,12 +359,6 @@
 	</data>
   <data name="frmPlotLRUD.Text" xml:space="preserve">
 		<value>ЛПВН</value>
-	</data>
-  <data name="colCategoryVisibility.HeaderText" xml:space="preserve">
-		<value>Видимый</value>
-	</data>
-  <data name="colCategoryIndex.HeaderText" xml:space="preserve">
-		<value>Индекс</value>
 	</data>
   <data name="lblPlotPointColor.Text" xml:space="preserve">
 		<value>Цвет:</value>
@@ -580,5 +476,38 @@
 	</data>
   <data name="lblDesignTextureScale.Text" xml:space="preserve">
     <value>Текстуры brushes:</value>
+  </data>
+  <data name="btnAdd.Caption" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="btnAddAsCopy.Caption" xml:space="preserve">
+    <value>Добавить как копию</value>
+  </data>
+  <data name="btnExport.Caption" xml:space="preserve">
+    <value>Экспорт...</value>
+  </data>
+  <data name="btnImport.Caption" xml:space="preserve">
+    <value>Импорт...</value>
+  </data>
+  <data name="btnRemove.Caption" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="btnRemoveAll.Caption" xml:space="preserve">
+    <value>Удалить все</value>
+  </data>
+  <data name="colCategoriesVisibilityIndex.Caption" xml:space="preserve">
+    <value>Индекс</value>
+  </data>
+  <data name="colCategoriesVisibilityCategory.Caption" xml:space="preserve">
+    <value>Категория</value>
+  </data>
+  <data name="colCategoriesVisibilityVisible.Caption" xml:space="preserve">
+    <value>Видимый</value>
+  </data>
+  <data name="tabInfoCategories.Text" xml:space="preserve">
+    <value>Категории</value>
+  </data>
+  <data name="tabInfoDesign.Text" xml:space="preserve">
+    <value>Дизайн</value>
   </data>
 </root>

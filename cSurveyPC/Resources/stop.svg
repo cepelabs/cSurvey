@@ -47,25 +47,27 @@
      position="11.633714,5.615524"
      orientation="0,-1"
      id="guide842" /></sodipodi:namedview>
-<style
-   type="text/css"
-   id="style2">
+<style type="text/css">
 	.Blue{fill:#1177D7;}
+	.Yellow{fill:#FFB115;}
+	.Red{fill:#D11C1C;}
+	.Green{fill:#039C23;}
+	.Black{fill:#727272;}
+	.White{fill:#FFFFFF;}
+	.st0{opacity:0.5;}
+	.st1{opacity:0.75;}
+	.st2{display:none;}
+	.st3{display:inline;fill:#FFB115;}
+	.st4{display:inline;}
+	.st5{display:inline;opacity:0.75;}
+	.st6{display:inline;opacity:0.5;}
+	.st7{display:inline;fill:#039C23;}
+	.st8{display:inline;fill:#D11C1C;}
+	.st9{display:inline;fill:#1177D7;}
+	.st10{display:inline;fill:#FFFFFF;}
 </style>
 
 <path
-   sodipodi:type="star"
-   style="fill:#ff5555;stroke:none;stroke-width:1.16191"
-   id="path838"
-   sodipodi:sides="8"
-   sodipodi:cx="15.865813"
-   sodipodi:cy="15.919053"
-   sodipodi:r1="11.288744"
-   sodipodi:r2="10.42944"
-   sodipodi:arg1="1.1696822"
-   sodipodi:arg2="1.5623813"
-   inkscape:flatsided="true"
-   inkscape:rounded="0"
-   inkscape:randomized="0"
+   class="Red"
    d="m 20.273439,26.311771 -8.639725,0.0727 -6.1606183,-6.057797 -0.072705,-8.639725 6.0577977,-6.1606185 8.639724,-0.072705 6.160619,6.0577979 0.0727,8.639724 z"
    transform="rotate(0.511,15.865813,15.919069)" /></svg>

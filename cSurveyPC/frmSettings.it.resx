@@ -121,32 +121,17 @@
     <value>Sfoglia...</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="Label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 13</value>
-  </data>
   <data name="Label3.Text" xml:space="preserve">
     <value>Cartella predefinita:</value>
-  </data>
-  <data name="chkFilesExtension.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 17</value>
   </data>
   <data name="chkFilesExtension.Text" xml:space="preserve">
     <value>Associa le estensioni dei file di cSurvey</value>
   </data>
-  <data name="lblDefaultDesigner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 13</value>
-  </data>
   <data name="lblDefaultDesigner.Text" xml:space="preserve">
     <value>Disegnatore/i:</value>
   </data>
-  <data name="lblDefaultTeam.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 13</value>
-  </data>
   <data name="lblDefaultTeam.Text" xml:space="preserve">
     <value>Rilevatore/i:</value>
-  </data>
-  <data name="lblDefaultClub.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 13</value>
   </data>
   <data name="lblDefaultClub.Text" xml:space="preserve">
     <value>Gruppo/i:</value>
@@ -154,14 +139,8 @@
   <data name="tabMain.Text" xml:space="preserve">
     <value>Generale</value>
   </data>
-  <data name="chkCalculateMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 17</value>
-  </data>
-  <data name="chkCalculateMode.Text" xml:space="preserve">
+  <data name="chkCalculateMode.Properties.Caption" xml:space="preserve">
     <value>Calcolo automatico</value>
-  </data>
-  <data name="lblDefaultCalculateMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 13</value>
   </data>
   <data name="lblDefaultCalculateMode.Text" xml:space="preserve">
     <value>Tipo di calcolo:</value>
@@ -178,7 +157,7 @@
   <data name="tabOptions.Text" xml:space="preserve">
     <value>Opzioni di calcolo</value>
   </data>
-  <data name="chkTherionLochEnabled.Text" xml:space="preserve">
+  <data name="chkTherionLochEnabled.Properties.Caption" xml:space="preserve">
     <value>Attiva Loch</value>
   </data>
   <data name="chkTherionLochEnabled.ToolTip" xml:space="preserve">
@@ -190,89 +169,44 @@
   <data name="txtTherionPath.ToolTip" xml:space="preserve">
     <value>Specifica il file eseguibile di Therion</value>
   </data>
-  <data name="chkTherionEnabled.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 17</value>
-  </data>
   <data name="chkTherionEnabled.Text" xml:space="preserve">
     <value>Attiva interfaccia per Therion</value>
   </data>
   <data name="chkTherionEnabled.ToolTip" xml:space="preserve">
     <value>Attiva tutte le funzioni di interfacciamento con Therion</value>
   </data>
-  <data name="chkTherionSegmentForcePath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 17</value>
-  </data>
-  <data name="chkTherionSegmentForcePath.Text" xml:space="preserve">
+  <data name="chkTherionSegmentForcePath.Properties.Caption" xml:space="preserve">
     <value>Forza percorso in sezione</value>
   </data>
-  <data name="chkTherionSegmentForceDirection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 17</value>
-  </data>
-  <data name="chkTherionSegmentForceDirection.Text" xml:space="preserve">
+  <data name="chkTherionSegmentForceDirection.Properties.Caption" xml:space="preserve">
     <value>Forza direzione segmenti</value>
   </data>
-  <data name="chkTherionTrigpointSafename.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 17</value>
-  </data>
-  <data name="chkTherionTrigpointSafename.Text" xml:space="preserve">
+  <data name="chkTherionTrigpointSafename.Properties.Caption" xml:space="preserve">
     <value>Usa dizionario capisaldi</value>
   </data>
-  <data name="chkTherionBackgroundProcess.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 17</value>
-  </data>
-  <data name="chkTherionBackgroundProcess.Text" xml:space="preserve">
+  <data name="chkTherionBackgroundProcess.Properties.Caption" xml:space="preserve">
     <value>Avvia come processo in background</value>
   </data>
-  <data name="chkTherionDeleteTempFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 17</value>
-  </data>
-  <data name="chkTherionDeleteTempFiles.Text" xml:space="preserve">
+  <data name="chkTherionDeleteTempFiles.Properties.Caption" xml:space="preserve">
     <value>Elimina file temporanei</value>
   </data>
   <data name="frmTherionAdvancedSettings.Text" xml:space="preserve">
     <value>Avanzate:</value>
   </data>
-  <data name="chkLayersShowItemPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 17</value>
-  </data>
-  <data name="chkLayersShowItemPreview.Text" xml:space="preserve">
-    <value>Mostra l'anteprima degli oggetti nella gestione livelli</value>
-  </data>
-  <data name="chkLayersShowItemPreview.ToolTip" xml:space="preserve">
-    <value>Mostra le anteprima degli oggetti nella gestione livelli</value>
-  </data>
-  <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>275, 17</value>
-  </data>
-  <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 13</value>
-  </data>
   <data name="Label1.Text" xml:space="preserve">
     <value>Lingua:</value>
-  </data>
-  <data name="chkGridBackColorByCave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 17</value>
   </data>
   <data name="chkGridBackColorByCave.ToolTip" xml:space="preserve">
     <value>Mostra dati colorati per grotta/ramo</value>
   </data>
-  <data name="chkClipboardLocalFormat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 17</value>
-  </data>
-  <data name="chkClipboardLocalFormat.Text" xml:space="preserve">
+  <data name="chkClipboardLocalFormat.Properties.Caption" xml:space="preserve">
     <value>Usa formato locale</value>
   </data>
   <data name="chkClipboardLocalFormat.ToolTip" xml:space="preserve">
     <value>Usa le impostazioni di formato locali per i dati in clipboard</value>
   </data>
-  <data name="chkClipboardCleanPastedStation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 17</value>
-  </data>
-  <data name="chkClipboardCleanPastedStation.Text" xml:space="preserve">
+  <data name="chkClipboardCleanPastedStation.Properties.Caption" xml:space="preserve">
     <value>Cancella capisaldi su incolla</value>
-  </data>
-  <data name="lblClipboardFormats.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 13</value>
   </data>
   <data name="lblClipboardFormats.Text" xml:space="preserve">
     <value>Formati aggiuntivi per gli appunti:</value>
@@ -280,25 +214,16 @@
   <data name="GroupBox3.Text" xml:space="preserve">
     <value>Taglia, copia e incolla:</value>
   </data>
-  <data name="chkSetDesignToolsEnabledByLevel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 17</value>
-  </data>
-  <data name="chkSetDesignToolsEnabledByLevel.Text" xml:space="preserve">
+  <data name="chkSetDesignToolsEnabledByLevel.Properties.Caption" xml:space="preserve">
     <value>Mostra strumenti attivi per livello</value>
   </data>
-  <data name="chkSetDesignToolsHiddenByLevel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 17</value>
-  </data>
-  <data name="chkSetDesignToolsHiddenByLevel.Text" xml:space="preserve">
+  <data name="chkSetDesignToolsHiddenByLevel.Properties.Caption" xml:space="preserve">
     <value>Nascondi strumenti non attivi</value>
   </data>
   <data name="tabInterface.Text" xml:space="preserve">
     <value>Interfaccia</value>
   </data>
-  <data name="chkDesignUseOnlyAnchorToMove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 17</value>
-  </data>
-  <data name="chkDesignUseOnlyAnchorToMove.Text" xml:space="preserve">
+  <data name="chkDesignUseOnlyAnchorToMove.Properties.Caption" xml:space="preserve">
     <value>Sposta gli oggetti solo tramite angolo in alto a sinistra</value>
   </data>
   <data name="chkDesignUseOnlyAnchorToMove.ToolTip" xml:space="preserve">
@@ -306,9 +231,6 @@
   </data>
   <data name="cboDesignZoomType.Items1" xml:space="preserve">
     <value>Scala</value>
-  </data>
-  <data name="lblDesignZoomType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 13</value>
   </data>
   <data name="lblDesignZoomType.Text" xml:space="preserve">
     <value>Tipo di zoom:</value>
@@ -319,9 +241,6 @@
   <data name="cboDesignShowRulersStyle.Items1" xml:space="preserve">
     <value>Avanzato</value>
   </data>
-  <data name="lblDesignShowRulersStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
-  </data>
   <data name="cboDesignClipBorder.Items" xml:space="preserve">
     <value>Non tagliare gli oggetti del livello bordi</value>
   </data>
@@ -331,17 +250,11 @@
   <data name="cboDesignClipBorder.Items2" xml:space="preserve">
     <value>Disattiva per tutti gli oggetti</value>
   </data>
-  <data name="lblClipping.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 13</value>
-  </data>
   <data name="lblClipping.Text" xml:space="preserve">
     <value>Clipping dei bordi:</value>
   </data>
   <data name="cboDesignLineType.Items" xml:space="preserve">
     <value>Rette</value>
-  </data>
-  <data name="Label27.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
   </data>
   <data name="Label27.Text" xml:space="preserve">
     <value>Linea:</value>
@@ -358,11 +271,8 @@
   <data name="lblDesignQuality.Text" xml:space="preserve">
     <value>Qualità:</value>
   </data>
-  <data name="chkDesignShowRulers.Text" xml:space="preserve">
+  <data name="chkDesignShowRulers.Properties.Caption" xml:space="preserve">
     <value>Mostra righelli</value>
-  </data>
-  <data name="lblDesignMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 13</value>
   </data>
   <data name="lblDesignMode.Text" xml:space="preserve">
     <value>Modalità di disegno:</value>
@@ -373,19 +283,13 @@
   <data name="txtSVGExportDPI.ToolTip" xml:space="preserve">
     <value>Specifica i DPI da utilizzare di default per l'esportazione di un fil SVG con larghezza e altezza del disegno specificati in pixel</value>
   </data>
-  <data name="chkSVGExportNoClipartBrushes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 17</value>
-  </data>
-  <data name="chkSVGExportNoClipartBrushes.Text" xml:space="preserve">
+  <data name="chkSVGExportNoClipartBrushes.Properties.Caption" xml:space="preserve">
     <value>Disattiva riempimenti con clipart</value>
   </data>
   <data name="chkSVGExportNoClipartBrushes.ToolTip" xml:space="preserve">
     <value>Disattiva i riempimenti con clipart sostituendoli con dei colori semplici</value>
   </data>
-  <data name="chkSVGExportNoClipping.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 17</value>
-  </data>
-  <data name="chkSVGExportNoClipping.Text" xml:space="preserve">
+  <data name="chkSVGExportNoClipping.Properties.Caption" xml:space="preserve">
     <value>Disattiva clipping</value>
   </data>
   <data name="chkSVGExportNoClipping.ToolTip" xml:space="preserve">
@@ -400,23 +304,14 @@
   <data name="GroupBox2.Text" xml:space="preserve">
     <value>Esportazione:</value>
   </data>
-  <data name="chkSVGImportAutodivide.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 17</value>
-  </data>
-  <data name="chkSVGImportAutodivide.Text" xml:space="preserve">
+  <data name="chkSVGImportAutodivide.Properties.Caption" xml:space="preserve">
     <value>Dividi automaticamente</value>
   </data>
   <data name="lblSVGImportScale.Text" xml:space="preserve">
     <value>Scala:</value>
   </data>
-  <data name="lblSVGImportLineType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
-  </data>
   <data name="lblSVGImportLineType.Text" xml:space="preserve">
     <value>Linee:</value>
-  </data>
-  <data name="lblPlotSelectedPointSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 13</value>
   </data>
   <data name="lblPlotSelectedPointSize.Text" xml:space="preserve">
     <value>Massima dim. path:</value>
@@ -424,26 +319,17 @@
   <data name="GroupBox1.Text" xml:space="preserve">
     <value>Importazione:</value>
   </data>
-  <data name="chkVTopoImportSetAsBranch.Text" xml:space="preserve">
+  <data name="chkVTopoImportSetAsBranch.Properties.Caption" xml:space="preserve">
     <value>Crea un ramo per ogni set di misure</value>
   </data>
-  <data name="chkVTopoImportIncompatibleSet.Text" xml:space="preserve">
+  <data name="chkVTopoImportIncompatibleSet.Properties.Caption" xml:space="preserve">
     <value>Importa set di misure non compatibili con cSurvey</value>
   </data>
-  <data name="chkAutosaveUseHistorySettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 17</value>
-  </data>
-  <data name="chkAutosaveUseHistorySettings.Text" xml:space="preserve">
+  <data name="chkAutosaveUseHistorySettings.Properties.Caption" xml:space="preserve">
     <value>Usa impostazioni definite per le revisioni locali</value>
-  </data>
-  <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 13</value>
   </data>
   <data name="Label2.Text" xml:space="preserve">
     <value>Mb</value>
-  </data>
-  <data name="lblHistoryDailyCopies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 13</value>
   </data>
   <data name="lblHistoryDailyCopies.Text" xml:space="preserve">
     <value>Revisioni per giornata:</value>
@@ -451,31 +337,19 @@
   <data name="cmdHistoryFolderBrowse.Text" xml:space="preserve">
     <value>Sfoglia...</value>
   </data>
-  <data name="lblHistoryFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 13</value>
-  </data>
   <data name="lblHistoryFolder.Text" xml:space="preserve">
     <value>Archivia in:</value>
-  </data>
-  <data name="lblHistoryMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 13</value>
   </data>
   <data name="lblHistoryMode.Text" xml:space="preserve">
     <value>Modalità di gestione revisioni:</value>
   </data>
-  <data name="chkHistory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 17</value>
-  </data>
-  <data name="chkHistory.Text" xml:space="preserve">
+  <data name="chkHistory.Properties.Caption" xml:space="preserve">
     <value>Storico revisioni</value>
   </data>
   <data name="chkHistory.ToolTip" xml:space="preserve">
     <value>Attiva la gestione dello storico delle revisioni</value>
   </data>
-  <data name="chkAutosave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 17</value>
-  </data>
-  <data name="chkAutosave.Text" xml:space="preserve">
+  <data name="chkAutosave.Properties.Caption" xml:space="preserve">
     <value>Attiva salvataggio automatico copia di backup</value>
   </data>
   <data name="cboHistoryMode.Items" xml:space="preserve">
@@ -484,48 +358,27 @@
   <data name="tabHistory.Text" xml:space="preserve">
     <value>Revisioni</value>
   </data>
-  <data name="lblFunctionLanguage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 13</value>
-  </data>
   <data name="lblFunctionLanguage.Text" xml:space="preserve">
     <value>Linguaggio funzioni:</value>
   </data>
-  <data name="chkMultiThreading.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 17</value>
-  </data>
-  <data name="chkMultiThreading.Text" xml:space="preserve">
+  <data name="chkMultiThreading.Properties.Caption" xml:space="preserve">
     <value>Attiva multithreading avanzato</value>
   </data>
   <data name="Label4.Text" xml:space="preserve">
-    <value>Attenzione: questa opzione utilizza la connessione ad internet per verificare e notificare la presenza di un aggiornamento del programma.</value>
+    <value>&lt;image=#warning;size=16,16&gt; &lt;b&gt;Attenzione:&lt;/b&gt; questa opzione utilizza la connessione ad internet per verificare e notificare la presenza di un aggiornamento del programma.</value>
   </data>
-  <data name="chkCheckNewVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 17</value>
-  </data>
-  <data name="chkCheckNewVersion.Text" xml:space="preserve">
+  <data name="chkCheckNewVersion.Properties.Caption" xml:space="preserve">
     <value>Controlla la presenza di nuove versioni</value>
   </data>
   <data name="lblSendExceptionWarning.Text" xml:space="preserve">
-    <value>Attenzione: questa opzione invia automaticamente un report per ogni errore non gestito utilizzando la connessione internet.
+    <value>&lt;image=#warning;size=16,16&gt; &lt;b&gt;Attenzione:&lt;/b&gt; questa opzione invia automaticamente un report per ogni errore non gestito utilizzando la connessione internet.
 Non verrà inviato alcun dato relativo all'utente o al rilievo attivo.</value>
   </data>
-  <data name="chkSendException.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 17</value>
-  </data>
-  <data name="chkSendException.Text" xml:space="preserve">
+  <data name="chkSendException.Properties.Caption" xml:space="preserve">
     <value>Invia segnalazioni di errore</value>
   </data>
   <data name="chkSendException.ToolTip" xml:space="preserve">
     <value>Invia le segnalazioni di errore all'autore</value>
-  </data>
-  <data name="chkLogEnabled.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 17</value>
-  </data>
-  <data name="chkLogEnabled.Text" xml:space="preserve">
-    <value>Attiva log</value>
-  </data>
-  <data name="tabSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 12</value>
   </data>
   <data name="cmdCancel.Text" xml:space="preserve">
     <value>Annulla</value>
@@ -707,14 +560,14 @@ I dati andranno poi corretti manualmente dopo l'importazione.</value>
   <data name="lblWMSCacheMaxSize.Text" xml:space="preserve">
 		<value>Dimensione massima:</value>
 	</data>
-  <data name="chkWMSCacheEnabled.Text" xml:space="preserve">
+  <data name="chkWMSCacheEnabled.Properties.Caption" xml:space="preserve">
 		<value>Abilita cache</value>
 	</data>
   <data name="chkWMSCacheEnabled.ToolTip" xml:space="preserve">
 		<value>Consente l'importazione di dati associati a unità di misura non compatibili con cSurvey.
 I dati andranno poi corretti manualmente dopo l'importazione.</value>
 	</data>
-  <data name="chkHistoryArchiveOnSave.Text" xml:space="preserve">
+  <data name="chkHistoryArchiveOnSave.Properties.Caption" xml:space="preserve">
 		<value>Archivia automaticamente ad ogni salvataggio</value>
 	</data>
   <data name="lblHistoryMaxCopies.Text" xml:space="preserve">
@@ -729,10 +582,10 @@ I dati andranno poi corretti manualmente dopo l'importazione.</value>
   <data name="TabPage1.Text" xml:space="preserve">
 		<value>Cartella</value>
 	</data>
-  <data name="chkHistoryWebArchiveOnSave.Text" xml:space="preserve">
+  <data name="chkHistoryWebArchiveOnSave.Properties.Caption" xml:space="preserve">
 		<value>Archivia automaticamente ad ogni salvataggio</value>
 	</data>
-  <data name="chkHistoryWebAuthReq.Text" xml:space="preserve">
+  <data name="chkHistoryWebAuthReq.Properties.Caption" xml:space="preserve">
 		<value>Richiede l'autenticazione a livello di rete</value>
 	</data>
   <data name="lblHistoryWebMaxCopies.Text" xml:space="preserve">
@@ -769,9 +622,6 @@ Non vi è correlazione tra questo codice e alcun dato relativo all'utente.</valu
   <data name="chkCheckNewVersion.ToolTip" xml:space="preserve">
 		<value>Controlla automaticamente la presenza di una nuova versione on-line</value>
 	</data>
-  <data name="chkLogEnabled.ToolTip" xml:space="preserve">
-		<value>Attiva il log dettagliato delle attività del programma.</value>
-	</data>
   <data name="cboLanguage.Items" xml:space="preserve">
     <value>Predefinito</value>
   </data>
@@ -790,7 +640,7 @@ Non vi è correlazione tra questo codice e alcun dato relativo all'utente.</valu
   <data name="Label10.Text" xml:space="preserve">
     <value>Posizione barra disegno:</value>
   </data>
-  <data name="chkShowLastUsedToolsInDesignBar.Text" xml:space="preserve">
+  <data name="chkShowLastUsedToolsInDesignBar.Properties.Caption" xml:space="preserve">
     <value>Mostra gli ultimi strumenti nella barra di disegno</value>
   </data>
   <data name="lblTherionPath.Text" xml:space="preserve">
@@ -805,7 +655,7 @@ Non vi è correlazione tra questo codice e alcun dato relativo all'utente.</valu
   <data name="chkGridBackColorByCave.Text" xml:space="preserve">
     <value>Abilita colori in griglia</value>
   </data>
-  <data name="chkAllowResizablePanel.Text" xml:space="preserve">
+  <data name="chkAllowResizablePanel.Properties.Caption" xml:space="preserve">
     <value>Consenti ridimensionamento pannelli</value>
   </data>
   <data name="chkAllowResizablePanel.ToolTip" xml:space="preserve">
@@ -820,7 +670,7 @@ Non vi è correlazione tra questo codice e alcun dato relativo all'utente.</valu
   <data name="GroupBox7.Text" xml:space="preserve">
     <value>Esportazione tabella battute:</value>
   </data>
-  <data name="chkShotsGridExportSplayNames.Text" xml:space="preserve">
+  <data name="chkShotsGridExportSplayNames.Properties.Caption" xml:space="preserve">
     <value>Esporta caposaldo di fine per gli splay</value>
   </data>
   <data name="chkShotsGridExportSplayNames.ToolTip" xml:space="preserve">
@@ -829,7 +679,7 @@ Non vi è correlazione tra questo codice e alcun dato relativo all'utente.</valu
   <data name="tabGrids.Text" xml:space="preserve">
     <value>Griglie</value>
   </data>
-  <data name="chkDesignShowLegacyExtraPrintAndExportObjects.Text" xml:space="preserve">
+  <data name="chkDesignShowLegacyExtraPrintAndExportObjects.Properties.Caption" xml:space="preserve">
     <value>Consenti oggetti di stampa classici</value>
   </data>
   <data name="chkDesignUseAdvancedSelection.Text" xml:space="preserve">
@@ -853,7 +703,7 @@ Non vi è correlazione tra questo codice e alcun dato relativo all'utente.</valu
   <data name="cboDesignSelectionMode.Items2" xml:space="preserve">
     <value>Selezione di precisione e bounding box</value>
   </data>
-  <data name="chkAlwaysUseShellForAttchments.Text" xml:space="preserve">
+  <data name="chkAlwaysUseShellForAttchments.Properties.Caption" xml:space="preserve">
     <value>Usa sempre programma pred. per aprire gli allegati</value>
   </data>
   <data name="chkAlwaysUseShellForAttchments.ToolTip" xml:space="preserve">
@@ -865,22 +715,70 @@ Non vi è correlazione tra questo codice e alcun dato relativo all'utente.</valu
   <data name="lblDesignSelectionMode.ToolTip" xml:space="preserve">
     <value>Modalità di sel. nel designer</value>
   </data>
-  <data name="chkLinkedSurveysSelectOnAdd.Text" xml:space="preserve">
+  <data name="chkLinkedSurveysSelectOnAdd.Properties.Caption" xml:space="preserve">
     <value>Seleziona rilievi al collegamento</value>
   </data>
   <data name="tabLinkedSurveys.Text" xml:space="preserve">
     <value>Rilievi collegati</value>
   </data>
-  <data name="chkLinkedSurveysShowInCaveInfo.Text" xml:space="preserve">
+  <data name="chkLinkedSurveysShowInCaveInfo.Properties.Caption" xml:space="preserve">
     <value>Mostra rilievi collegati nelle informazioni grotta</value>
   </data>
-  <data name="chkLinkedSurveysRecursiveLoad.Text" xml:space="preserve">
+  <data name="chkLinkedSurveysRecursiveLoad.Properties.Caption" xml:space="preserve">
     <value>Collega ricorsivamente i rilievi</value>
   </data>
-  <data name="chkLinkedSurveysRecursiveLoadPrioritizeChildren.Text" xml:space="preserve">
+  <data name="chkLinkedSurveysRecursiveLoadPrioritizeChildren.Properties.Caption" xml:space="preserve">
     <value>Priorità ai rilievi collegati</value>
   </data>
-  <data name="chkLinkedSurveysRefreshOnLoad.Text" xml:space="preserve">
+  <data name="chkLinkedSurveysRefreshOnLoad.Properties.Caption" xml:space="preserve">
     <value>Ricarica in apertura</value>
+  </data>
+  <data name="AccordionControlElement10.Text" xml:space="preserve">
+    <value>Storico revisioni</value>
+  </data>
+  <data name="AccordionControlElement11.Text" xml:space="preserve">
+    <value>Debug</value>
+  </data>
+  <data name="AccordionControlElement12.Text" xml:space="preserve">
+    <value>WMS</value>
+  </data>
+  <data name="AccordionControlElement13.Text" xml:space="preserve">
+    <value>SVG</value>
+  </data>
+  <data name="AccordionControlElement14.Text" xml:space="preserve">
+    <value>Disegno</value>
+  </data>
+  <data name="AccordionControlElement16.Text" xml:space="preserve">
+    <value>Interfaccia</value>
+  </data>
+  <data name="AccordionControlElement17.Text" xml:space="preserve">
+    <value>Opzioni</value>
+  </data>
+  <data name="AccordionControlElement18.Text" xml:space="preserve">
+    <value>Therion</value>
+  </data>
+  <data name="AccordionControlElement4.Text" xml:space="preserve">
+    <value>Principale</value>
+  </data>
+  <data name="AccordionControlElement7.Text" xml:space="preserve">
+    <value>VisualTopo</value>
+  </data>
+  <data name="AccordionControlElement8.Text" xml:space="preserve">
+    <value>Rilievi collegati</value>
+  </data>
+  <data name="chkLogOnFile.ToolTip" xml:space="preserve">
+    <value>Scrivi log su file</value>
+  </data>
+  <data name="chkLogVerbose.Properties.Caption" xml:space="preserve">
+    <value>Log prolisso</value>
+  </data>
+  <data name="chkLogVerbose.ToolTip" xml:space="preserve">
+    <value>Invia al log ogni informazione possibile</value>
+  </data>
+  <data name="lblLogMaxSize.Text" xml:space="preserve">
+    <value>Massima dim. log:</value>
+  </data>
+  <data name="lblLogMaxSize.ToolTip" xml:space="preserve">
+    <value>Numero massimo di linee visualizzabili nella console</value>
   </data>
 </root>

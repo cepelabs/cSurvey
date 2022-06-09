@@ -122,45 +122,6 @@
     <value>Top, Bottom, Left, Right</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="cmdAutoConfig.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-</value>
-  </data>
   <data name="cmdAutoConfig.Location" type="System.Drawing.Point, System.Drawing">
     <value>128, 80</value>
   </data>
@@ -174,29 +135,30 @@
   <data name="cmdAutoConfig.Text" xml:space="preserve">
     <value>Start automatic configuration</value>
   </data>
-  <data name="cmdAutoConfig.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageAboveText</value>
-  </data>
   <data name="&gt;&gt;cmdAutoConfig.Name" xml:space="preserve">
     <value>cmdAutoConfig</value>
   </data>
   <data name="&gt;&gt;cmdAutoConfig.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdAutoConfig.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdAutoConfig.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="lblTitle.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
+  </data>
+  <assembly alias="DevExpress.XtraEditors.v21.2" name="DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="lblTitle.AutoSizeMode" type="DevExpress.XtraEditors.LabelAutoSizeMode, DevExpress.XtraEditors.v21.2">
+    <value>None</value>
   </data>
   <data name="lblTitle.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 9</value>
   </data>
   <data name="lblTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>347, 71</value>
+    <value>347, 65</value>
   </data>
   <data name="lblTitle.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -209,7 +171,7 @@ Press the button to start the configuration task. This operation may require som
     <value>lblTitle</value>
   </data>
   <data name="&gt;&gt;lblTitle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblTitle.Parent" xml:space="preserve">
     <value>$this</value>
@@ -223,11 +185,14 @@ Press the button to start the configuration task. This operation may require som
   <data name="lblProgressInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
+  <data name="lblProgressInfo.AutoSizeMode" type="DevExpress.XtraEditors.LabelAutoSizeMode, DevExpress.XtraEditors.v21.2">
+    <value>None</value>
+  </data>
   <data name="lblProgressInfo.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 10</value>
   </data>
   <data name="lblProgressInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>316, 63</value>
+    <value>321, 66</value>
   </data>
   <data name="lblProgressInfo.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -236,16 +201,13 @@ Press the button to start the configuration task. This operation may require som
     <value>lblProgressInfo</value>
   </data>
   <data name="&gt;&gt;lblProgressInfo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblProgressInfo.Parent" xml:space="preserve">
     <value>pnlProgress</value>
   </data>
   <data name="&gt;&gt;lblProgressInfo.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="pnlProgress.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
   </data>
   <data name="pnlProgress.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 86</value>
@@ -263,7 +225,7 @@ Press the button to start the configuration task. This operation may require som
     <value>pnlProgress</value>
   </data>
   <data name="&gt;&gt;pnlProgress.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlProgress.Parent" xml:space="preserve">
     <value>$this</value>
@@ -274,23 +236,27 @@ Press the button to start the configuration task. This operation may require som
   <data name="cboLanguage.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
-  <data name="cboLanguage.Items" xml:space="preserve">
-    <value>Default</value>
-  </data>
-  <data name="cboLanguage.Items1" xml:space="preserve">
-    <value>English</value>
-  </data>
-  <data name="cboLanguage.Items2" xml:space="preserve">
-    <value>Русский (Russian)</value>
-  </data>
-  <data name="cboLanguage.Items3" xml:space="preserve">
-    <value>Italiano (Italian)</value>
-  </data>
   <data name="cboLanguage.Location" type="System.Drawing.Point, System.Drawing">
     <value>237, 240</value>
   </data>
+  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="cboLanguage.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboLanguage.Properties.Items" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="cboLanguage.Properties.Items1" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="cboLanguage.Properties.Items2" xml:space="preserve">
+    <value>Русский (Russian)</value>
+  </data>
+  <data name="cboLanguage.Properties.Items3" xml:space="preserve">
+    <value>Italiano (Italian)</value>
+  </data>
   <data name="cboLanguage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 21</value>
+    <value>122, 20</value>
   </data>
   <data name="cboLanguage.TabIndex" type="System.Int32, mscorlib">
     <value>119</value>
@@ -299,48 +265,42 @@ Press the button to start the configuration task. This operation may require som
     <value>cboLanguage</value>
   </data>
   <data name="&gt;&gt;cboLanguage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboLanguage.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cboLanguage.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
-  <data name="Label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="lblLanguage.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
-  <data name="Label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="lblLanguage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblLanguage.Location" type="System.Drawing.Point, System.Drawing">
     <value>157, 243</value>
   </data>
-  <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 13</value>
+  <data name="lblLanguage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 13</value>
   </data>
-  <data name="Label1.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblLanguage.TabIndex" type="System.Int32, mscorlib">
     <value>118</value>
   </data>
-  <data name="Label1.Text" xml:space="preserve">
+  <data name="lblLanguage.Text" xml:space="preserve">
     <value>Language:</value>
   </data>
-  <data name="Label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopRight</value>
+  <data name="&gt;&gt;lblLanguage.Name" xml:space="preserve">
+    <value>lblLanguage</value>
   </data>
-  <data name="&gt;&gt;Label1.Name" xml:space="preserve">
-    <value>Label1</value>
+  <data name="&gt;&gt;lblLanguage.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;Label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblLanguage.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblLanguage.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -352,12 +312,6 @@ Press the button to start the configuration task. This operation may require som
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>371, 273</value>
   </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
@@ -368,6 +322,6 @@ Press the button to start the configuration task. This operation may require som
     <value>frmAutoSettings</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cForm, cSurveyPC, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

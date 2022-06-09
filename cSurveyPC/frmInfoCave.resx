@@ -139,7 +139,7 @@
     <value>cmdClose</value>
   </data>
   <data name="&gt;&gt;cmdClose.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdClose.Parent" xml:space="preserve">
     <value>$this</value>
@@ -150,36 +150,6 @@
   <data name="pnlSurveyInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="cboSurveyInfoCaveBranch.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="cboSurveyInfoCaveBranch.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt, style=Bold</value>
-  </data>
-  <data name="cboSurveyInfoCaveBranch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>75, 33</value>
-  </data>
-  <data name="cboSurveyInfoCaveBranch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>292, 21</value>
-  </data>
-  <data name="cboSurveyInfoCaveBranch.TabIndex" type="System.Int32, mscorlib">
-    <value>108</value>
-  </data>
-  <data name="&gt;&gt;cboSurveyInfoCaveBranch.Name" xml:space="preserve">
-    <value>cboSurveyInfoCaveBranch</value>
-  </data>
-  <data name="&gt;&gt;cboSurveyInfoCaveBranch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboSurveyInfoCaveBranch.Parent" xml:space="preserve">
-    <value>pnlSurvey</value>
-  </data>
-  <data name="&gt;&gt;cboSurveyInfoCaveBranch.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblSurveyInfoCaveBranch.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblSurveyInfoCaveBranch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -187,7 +157,7 @@
     <value>15, 36</value>
   </data>
   <data name="lblSurveyInfoCaveBranch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 13</value>
+    <value>37, 13</value>
   </data>
   <data name="lblSurveyInfoCaveBranch.TabIndex" type="System.Int32, mscorlib">
     <value>107</value>
@@ -195,32 +165,328 @@
   <data name="lblSurveyInfoCaveBranch.Text" xml:space="preserve">
     <value>Branch:</value>
   </data>
-  <data name="lblSurveyInfoCaveBranch.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
   <data name="&gt;&gt;lblSurveyInfoCaveBranch.Name" xml:space="preserve">
     <value>lblSurveyInfoCaveBranch</value>
   </data>
   <data name="&gt;&gt;lblSurveyInfoCaveBranch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblSurveyInfoCaveBranch.Parent" xml:space="preserve">
     <value>pnlSurvey</value>
   </data>
   <data name="&gt;&gt;lblSurveyInfoCaveBranch.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblSurveyInfoCave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 11</value>
+  </data>
+  <data name="lblSurveyInfoCave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 13</value>
+  </data>
+  <data name="lblSurveyInfoCave.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblSurveyInfoCave.Text" xml:space="preserve">
+    <value>Cave:</value>
+  </data>
+  <data name="&gt;&gt;lblSurveyInfoCave.Name" xml:space="preserve">
+    <value>lblSurveyInfoCave</value>
+  </data>
+  <data name="&gt;&gt;lblSurveyInfoCave.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblSurveyInfoCave.Parent" xml:space="preserve">
+    <value>pnlSurvey</value>
+  </data>
+  <data name="&gt;&gt;lblSurveyInfoCave.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="grdSurveyInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <assembly alias="DevExpress.XtraVerticalGrid.v21.2" name="DevExpress.XtraVerticalGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="grdSurveyInfo.LayoutStyle" type="DevExpress.XtraVerticalGrid.LayoutViewStyle, DevExpress.XtraVerticalGrid.v21.2">
+    <value>SingleRecordView</value>
+  </data>
+  <data name="grdSurveyInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 60</value>
+  </data>
+  <metadata name="BarManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>254, 17</value>
+  </metadata>
+  <data name="barDockControlTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="barDockControlTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="barDockControlTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>398, 0</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.Name" xml:space="preserve">
+    <value>barDockControlTop</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="barDockControlBottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="barDockControlBottom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 402</value>
+  </data>
+  <data name="barDockControlBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>398, 0</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Name" xml:space="preserve">
+    <value>barDockControlBottom</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="barDockControlLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="barDockControlLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="barDockControlLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 402</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Name" xml:space="preserve">
+    <value>barDockControlLeft</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="barDockControlRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="barDockControlRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>398, 0</value>
+  </data>
+  <data name="barDockControlRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 402</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Name" xml:space="preserve">
+    <value>barDockControlRight</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>51</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>398, 402</value>
+  </data>
+  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Cave information:</value>
+  </data>
+  <data name="&gt;&gt;BarManager.Name" xml:space="preserve">
+    <value>BarManager</value>
+  </data>
+  <data name="&gt;&gt;BarManager.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnCopyValue.Name" xml:space="preserve">
+    <value>btnCopyValue</value>
+  </data>
+  <data name="&gt;&gt;btnCopyValue.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnCopyValues.Name" xml:space="preserve">
+    <value>btnCopyValues</value>
+  </data>
+  <data name="&gt;&gt;btnCopyValues.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnCopyAll.Name" xml:space="preserve">
+    <value>btnCopyAll</value>
+  </data>
+  <data name="&gt;&gt;btnCopyAll.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnCopy.Name" xml:space="preserve">
+    <value>btnCopy</value>
+  </data>
+  <data name="&gt;&gt;btnCopy.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnExport.Name" xml:space="preserve">
+    <value>btnExport</value>
+  </data>
+  <data name="&gt;&gt;btnExport.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GridLookUpEdit1View.Name" xml:space="preserve">
+    <value>GridLookUpEdit1View</value>
+  </data>
+  <data name="&gt;&gt;GridLookUpEdit1View.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Views.Grid.GridView, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colCaveListName.Name" xml:space="preserve">
+    <value>colCaveListName</value>
+  </data>
+  <data name="&gt;&gt;colCaveListName.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtCaveListName.Name" xml:space="preserve">
+    <value>txtCaveListName</value>
+  </data>
+  <data name="&gt;&gt;txtCaveListName.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemTextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GridView1.Name" xml:space="preserve">
+    <value>GridView1</value>
+  </data>
+  <data name="&gt;&gt;GridView1.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Views.Grid.GridView, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colBranchListName.Name" xml:space="preserve">
+    <value>colBranchListName</value>
+  </data>
+  <data name="&gt;&gt;colBranchListName.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtBranchListName.Name" xml:space="preserve">
+    <value>txtBranchListName</value>
+  </data>
+  <data name="&gt;&gt;txtBranchListName.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemTextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;mnuSurveyInfoCopy.Name" xml:space="preserve">
+    <value>mnuSurveyInfoCopy</value>
+  </data>
+  <data name="&gt;&gt;mnuSurveyInfoCopy.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mnuSurveyInfoCopyAll.Name" xml:space="preserve">
+    <value>mnuSurveyInfoCopyAll</value>
+  </data>
+  <data name="&gt;&gt;mnuSurveyInfoCopyAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem1.Name" xml:space="preserve">
+    <value>ToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mnuSurveyInfoExport.Name" xml:space="preserve">
+    <value>mnuSurveyInfoExport</value>
+  </data>
+  <data name="&gt;&gt;mnuSurveyInfoExport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mnuContext.Name" xml:space="preserve">
+    <value>mnuContext</value>
+  </data>
+  <data name="&gt;&gt;mnuContext.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmInfoCave</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="btnCopyValue.Caption" xml:space="preserve">
+    <value>Copy value</value>
+  </data>
+  <data name="btnCopyValues.Caption" xml:space="preserve">
+    <value>Copy values</value>
+  </data>
+  <data name="btnCopyAll.Caption" xml:space="preserve">
+    <value>Copy all</value>
+  </data>
+  <data name="btnCopy.Caption" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="btnExport.Caption" xml:space="preserve">
+    <value>Export...</value>
+  </data>
+  <data name="grdSurveyInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>359, 260</value>
+  </data>
+  <data name="grdSurveyInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>194</value>
+  </data>
+  <data name="&gt;&gt;grdSurveyInfo.Name" xml:space="preserve">
+    <value>grdSurveyInfo</value>
+  </data>
+  <data name="&gt;&gt;grdSurveyInfo.Type" xml:space="preserve">
+    <value>cSurveyPC.cVerticalGrid, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;grdSurveyInfo.Parent" xml:space="preserve">
+    <value>pnlSurvey</value>
+  </data>
+  <data name="&gt;&gt;grdSurveyInfo.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="cboSurveyInfoCave.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="cboSurveyInfoCave.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt, style=Bold</value>
-  </data>
   <data name="cboSurveyInfoCave.Location" type="System.Drawing.Point, System.Drawing">
     <value>75, 6</value>
   </data>
+  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="cboSurveyInfoCave.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboSurveyInfoCave.Properties.NullText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colCaveListName.Caption" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="txtCaveListName.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="colCaveListName.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colCaveListName.VisibleIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="cboSurveyInfoCave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>292, 21</value>
+    <value>292, 20</value>
   </data>
   <data name="cboSurveyInfoCave.TabIndex" type="System.Int32, mscorlib">
     <value>105</value>
@@ -229,34 +495,181 @@
     <value>cboSurveyInfoCave</value>
   </data>
   <data name="&gt;&gt;cboSurveyInfoCave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.GridLookUpEdit, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboSurveyInfoCave.Parent" xml:space="preserve">
     <value>pnlSurvey</value>
   </data>
   <data name="&gt;&gt;cboSurveyInfoCave.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
-  <data name="grdSurveyInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+  <data name="cboSurveyInfoCaveBranch.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
-  <metadata name="colSurveyInfoName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="cboSurveyInfoCaveBranch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 33</value>
+  </data>
+  <data name="cboSurveyInfoCaveBranch.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboSurveyInfoCaveBranch.Properties.NullText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colBranchListName.Caption" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="txtBranchListName.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="colBranchListName.Visible" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <data name="colSurveyInfoName.HeaderText" xml:space="preserve">
-    <value>Data</value>
   </data>
-  <data name="colSurveyInfoName.MinimumWidth" type="System.Int32, mscorlib">
-    <value>120</value>
+  <data name="colBranchListName.VisibleIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <metadata name="colSurveyInfoValue.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colSurveyInfoValue.HeaderText" xml:space="preserve">
-    <value>Value</value>
+  <data name="cboSurveyInfoCaveBranch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>292, 20</value>
   </data>
-  <data name="colSurveyInfoValue.MinimumWidth" type="System.Int32, mscorlib">
-    <value>120</value>
+  <data name="cboSurveyInfoCaveBranch.TabIndex" type="System.Int32, mscorlib">
+    <value>108</value>
+  </data>
+  <data name="&gt;&gt;cboSurveyInfoCaveBranch.Name" xml:space="preserve">
+    <value>cboSurveyInfoCaveBranch</value>
+  </data>
+  <data name="&gt;&gt;cboSurveyInfoCaveBranch.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.GridLookUpEdit, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboSurveyInfoCaveBranch.Parent" xml:space="preserve">
+    <value>pnlSurvey</value>
+  </data>
+  <data name="&gt;&gt;cboSurveyInfoCaveBranch.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="pnlSurvey.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pnlSurvey.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
+  </data>
+  <data name="pnlSurvey.Size" type="System.Drawing.Size, System.Drawing">
+    <value>374, 323</value>
+  </data>
+  <data name="pnlSurvey.TabIndex" type="System.Int32, mscorlib">
+    <value>112</value>
+  </data>
+  <data name="&gt;&gt;pnlSurvey.Name" xml:space="preserve">
+    <value>pnlSurvey</value>
+  </data>
+  <data name="&gt;&gt;pnlSurvey.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlSurvey.Parent" xml:space="preserve">
+    <value>pnlSurveyInfo</value>
+  </data>
+  <data name="&gt;&gt;pnlSurvey.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblSurveyInfoFilename.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblSurveyInfoFilename.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 8</value>
+  </data>
+  <data name="lblSurveyInfoFilename.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
+  </data>
+  <data name="lblSurveyInfoFilename.TabIndex" type="System.Int32, mscorlib">
+    <value>109</value>
+  </data>
+  <data name="lblSurveyInfoFilename.Text" xml:space="preserve">
+    <value>Filename:</value>
+  </data>
+  <data name="&gt;&gt;lblSurveyInfoFilename.Name" xml:space="preserve">
+    <value>lblSurveyInfoFilename</value>
+  </data>
+  <data name="&gt;&gt;lblSurveyInfoFilename.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblSurveyInfoFilename.Parent" xml:space="preserve">
+    <value>pnlLinkedSurveys</value>
+  </data>
+  <data name="&gt;&gt;lblSurveyInfoFilename.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cboSurveyInfoFilename.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="cboSurveyInfoFilename.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 3</value>
+  </data>
+  <data name="cboSurveyInfoFilename.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt, style=Bold</value>
+  </data>
+  <data name="cboSurveyInfoFilename.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboSurveyInfoFilename.Size" type="System.Drawing.Size, System.Drawing">
+    <value>292, 20</value>
+  </data>
+  <data name="cboSurveyInfoFilename.TabIndex" type="System.Int32, mscorlib">
+    <value>110</value>
+  </data>
+  <data name="&gt;&gt;cboSurveyInfoFilename.Name" xml:space="preserve">
+    <value>cboSurveyInfoFilename</value>
+  </data>
+  <data name="&gt;&gt;cboSurveyInfoFilename.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboSurveyInfoFilename.Parent" xml:space="preserve">
+    <value>pnlLinkedSurveys</value>
+  </data>
+  <data name="&gt;&gt;cboSurveyInfoFilename.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pnlLinkedSurveys.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="pnlLinkedSurveys.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="pnlLinkedSurveys.Size" type="System.Drawing.Size, System.Drawing">
+    <value>374, 28</value>
+  </data>
+  <data name="pnlLinkedSurveys.TabIndex" type="System.Int32, mscorlib">
+    <value>111</value>
+  </data>
+  <data name="&gt;&gt;pnlLinkedSurveys.Name" xml:space="preserve">
+    <value>pnlLinkedSurveys</value>
+  </data>
+  <data name="&gt;&gt;pnlLinkedSurveys.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlLinkedSurveys.Parent" xml:space="preserve">
+    <value>pnlSurveyInfo</value>
+  </data>
+  <data name="&gt;&gt;pnlLinkedSurveys.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pnlSurveyInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="pnlSurveyInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>374, 351</value>
+  </data>
+  <data name="pnlSurveyInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="&gt;&gt;pnlSurveyInfo.Name" xml:space="preserve">
+    <value>pnlSurveyInfo</value>
+  </data>
+  <data name="&gt;&gt;pnlSurveyInfo.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlSurveyInfo.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlSurveyInfo.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="mnuSurveyInfo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -294,315 +707,7 @@
   <data name="&gt;&gt;mnuSurveyInfo.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="grdSurveyInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 60</value>
-  </data>
-  <data name="grdSurveyInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>359, 260</value>
-  </data>
-  <data name="grdSurveyInfo.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;grdSurveyInfo.Name" xml:space="preserve">
-    <value>grdSurveyInfo</value>
-  </data>
-  <data name="&gt;&gt;grdSurveyInfo.Type" xml:space="preserve">
-    <value>cSurveyPC.cGrid, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;grdSurveyInfo.Parent" xml:space="preserve">
-    <value>pnlSurvey</value>
-  </data>
-  <data name="&gt;&gt;grdSurveyInfo.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="lblSurveyInfoCave.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblSurveyInfoCave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 11</value>
-  </data>
-  <data name="lblSurveyInfoCave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 13</value>
-  </data>
-  <data name="lblSurveyInfoCave.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblSurveyInfoCave.Text" xml:space="preserve">
-    <value>Cave:</value>
-  </data>
-  <data name="lblSurveyInfoCave.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;lblSurveyInfoCave.Name" xml:space="preserve">
-    <value>lblSurveyInfoCave</value>
-  </data>
-  <data name="&gt;&gt;lblSurveyInfoCave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblSurveyInfoCave.Parent" xml:space="preserve">
-    <value>pnlSurvey</value>
-  </data>
-  <data name="&gt;&gt;lblSurveyInfoCave.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="pnlSurvey.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="pnlSurvey.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 28</value>
-  </data>
-  <data name="pnlSurvey.Size" type="System.Drawing.Size, System.Drawing">
-    <value>374, 323</value>
-  </data>
-  <data name="pnlSurvey.TabIndex" type="System.Int32, mscorlib">
-    <value>112</value>
-  </data>
-  <data name="&gt;&gt;pnlSurvey.Name" xml:space="preserve">
-    <value>pnlSurvey</value>
-  </data>
-  <data name="&gt;&gt;pnlSurvey.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlSurvey.Parent" xml:space="preserve">
-    <value>pnlSurveyInfo</value>
-  </data>
-  <data name="&gt;&gt;pnlSurvey.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="cboSurveyInfoFilename.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="cboSurveyInfoFilename.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt, style=Bold</value>
-  </data>
-  <data name="cboSurveyInfoFilename.Location" type="System.Drawing.Point, System.Drawing">
-    <value>75, 3</value>
-  </data>
-  <data name="cboSurveyInfoFilename.Size" type="System.Drawing.Size, System.Drawing">
-    <value>292, 21</value>
-  </data>
-  <data name="cboSurveyInfoFilename.TabIndex" type="System.Int32, mscorlib">
-    <value>110</value>
-  </data>
-  <data name="&gt;&gt;cboSurveyInfoFilename.Name" xml:space="preserve">
-    <value>cboSurveyInfoFilename</value>
-  </data>
-  <data name="&gt;&gt;cboSurveyInfoFilename.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboSurveyInfoFilename.Parent" xml:space="preserve">
-    <value>pnlLinkedSurveys</value>
-  </data>
-  <data name="&gt;&gt;cboSurveyInfoFilename.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblSurveyInfoFilename.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblSurveyInfoFilename.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblSurveyInfoFilename.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 8</value>
-  </data>
-  <data name="lblSurveyInfoFilename.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 13</value>
-  </data>
-  <data name="lblSurveyInfoFilename.TabIndex" type="System.Int32, mscorlib">
-    <value>109</value>
-  </data>
-  <data name="lblSurveyInfoFilename.Text" xml:space="preserve">
-    <value>Filename:</value>
-  </data>
-  <data name="lblSurveyInfoFilename.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;lblSurveyInfoFilename.Name" xml:space="preserve">
-    <value>lblSurveyInfoFilename</value>
-  </data>
-  <data name="&gt;&gt;lblSurveyInfoFilename.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblSurveyInfoFilename.Parent" xml:space="preserve">
-    <value>pnlLinkedSurveys</value>
-  </data>
-  <data name="&gt;&gt;lblSurveyInfoFilename.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="pnlLinkedSurveys.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="pnlLinkedSurveys.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="pnlLinkedSurveys.Size" type="System.Drawing.Size, System.Drawing">
-    <value>374, 28</value>
-  </data>
-  <data name="pnlLinkedSurveys.TabIndex" type="System.Int32, mscorlib">
-    <value>111</value>
-  </data>
-  <data name="&gt;&gt;pnlLinkedSurveys.Name" xml:space="preserve">
-    <value>pnlLinkedSurveys</value>
-  </data>
-  <data name="&gt;&gt;pnlLinkedSurveys.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlLinkedSurveys.Parent" xml:space="preserve">
-    <value>pnlSurveyInfo</value>
-  </data>
-  <data name="&gt;&gt;pnlLinkedSurveys.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="pnlSurveyInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="pnlSurveyInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>374, 351</value>
-  </data>
-  <data name="pnlSurveyInfo.TabIndex" type="System.Int32, mscorlib">
-    <value>39</value>
-  </data>
-  <data name="&gt;&gt;pnlSurveyInfo.Name" xml:space="preserve">
-    <value>pnlSurveyInfo</value>
-  </data>
-  <data name="&gt;&gt;pnlSurveyInfo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlSurveyInfo.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pnlSurveyInfo.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
+  <metadata name="mnuContext.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>372, 17</value>
   </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>51</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>96, 96</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>398, 402</value>
-  </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAKtWDgCsVw8ArFcQAKxYEACvXBYAsF0WALBdGACzYhkAtmYcALpq
-        HQC9bRwArmMlAK5kJQCvZikAsmYnALlpIAC9byIAuWsmALpsJQCzZygAsmgqALVqKwC7byoAv3MiAL90
-        IwC+cSYAv3QkAL1xLAC+dC8Ar2wyAK9sNACxbDMAsW41ALRxNwC/dDAAsnE4ALVyOQC4dToAuXY8AMJ1
-        IgDAdiYAwHUoAMJ3LQDCeSoAxHkpAMN6LADEei8AxHwtAMJ5MADEejAAxX0wAMZ/NgDFfTkAxX08AMWA
-        MgDGgDQAyYExAMiCNgDKhDUAyYM6AMmFOQDMhzoAyoY9AMyJOwDLiD4AzIk9ALGBWQCzhFsAtYVdALGO
-        cAC8mXsAvZp8AMmDQQDKhkcAy4lAAMyKQQDNjEIAy4hFAM6KRADOjUUAzYpJAM6NSQDNikwA0I9IAM6Q
-        RgDQkEUA0JFJANCSTQDRlE0A1ZZMANSYTgDQj1AA05ZQANSXUwDUmVUA1pxXANaXWQDWmVgA1p1aANef
-        XADYnFoA2J5cANmgWgDYoF0Ax5duAMiYbwDbn2AA259kAMuacQDMm3IA2aJgANyiYwDapGIA26VlANym
-        ZgDdomkA36dsAN2pagDerGwA4KduAOCtbgDhrXAA5K10AOCwcQDhsXQA5bF1AOeyeADjtHgA5bV6AOa2
-        fADpt34A6bl/AOm7ggDtu4EA6byBAOq9hQDtvIUA7b+IAO/CiwDuw4wA8MGKAPDEjgD0xY8A78aQAO/K
-        kwDwxZAA8smUAPbKlgDxz5oA9cyZAPLPnAD1zpwA+M2ZAPvPnQD20J0A+9GeAOXFoQDmyKUA9tOhAPXU
-        ogD21qQA+NKhAPzToQD51aQA/tmnAPrXqAD62akA/tmpAPvcrQD83a4A/d6wAP7gsgD/4rUA/+W4AP/o
-        vAD/6sAA/+3DAP/uxQD/8MYA//HJAP///wDPAEAA8ABJAP8RWgD/MXAA/1GGAP9xnAD/kbIA/7HIAP/R
-        3wD///8AAAAAAC8AIABQADYAcABMAJAAYgCwAHgAzwCOAPAApAD/EbMA/zG+AP9RxwD/cdEA/5HcAP+x
-        5QD/0fAA////AAAAAAAsAC8ASwBQAGkAcACHAJAApQCwAMQAzwDhAPAA8BH/APIx/wD0Uf8A9nH/APeR
-        /wD5sf8A+9H/AP///wAAAAAAGwAvAC0AUAA/AHAAUgCQAGMAsAB2AM8AiADwAJkR/wCmMf8AtFH/AMJx
-        /wDPkf8A3LH/AOvR/wD///8AAAAAAAgALwAOAFAAFQBwABsAkAAhALAAJgDPACwA8AA+Ef8AWDH/AHFR
-        /wCMcf8AppH/AL+x/wDa0f8A////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEYfBgUHBgcHIUYAAAAAAAAAAAAAAAAA
-        AAAAAAAAACAHEysyLysqKREKCQchAAAAAAAAAAAAAAAAAAAAAEQHMVBwhZukoqKik39ZKgkHQwAAAAAA
-        AAAAAAAAAAANEk9/pJOIgHx8fH2Ah46TaAsIDwAAAAAAAAAAAAAADTVlmJt9eXl6enp6enl6eX2OiSsJ
-        DgAAAAAAAAAAAA02c6mKdnd5eXd3d3Z3d3l5eXeEkzQJFQAAAAAAAABEF3OqhXN2dnZzcWdnZ2dxc3Z2
-        dnaBkzIIRQAAAAAAAAZrpohxc3N2c2+1tbW1tbVvc3Nzc3OCiREHAAAAAAAgUpKfaHFwcHBxb1q1tbW1
-        WmhxcHJwcXGLbxMhAAAAAAd+rXJob29vb29oW7W1tbVbaG9vb29vb3KTMgcAAABINo6XYGZoaGhoaGRa
-        tbW1tVplaGhoaGhoZIpiEEgAACFipoFfY2RjY2NjYFq1tbW1WmBjZWNjY2NgeoIaJAAABH+vZF9gYGBg
-        YGBfVrW1tbVWX2BgYGBgYF9mljIFAAAEhrBYXV5fXl9fX15NtbW1tU1eXl9eX19fXl2iNAUAAASJsVRd
-        XV1dXV1dWkK1tbW1QlldXV1dXV1dV6Q8BQAAAo2xUFhZWVlZWVlVO7W1tbVAV1lZWVlZWVlVpEEFAAAE
-        j7NLVFdXV1dXV021tbW1tUBUV1dXV1dXVE2kTwUAAASNsllQVFRUVFRVTT47OTk+TVRUVFRUVFRQWaJP
-        BgAAIniueUFPUFBQUFBPQTs5OT1CTVBQUFBQUEtyizYlAAAAU6iVOkFMTExMTEw7nrW1njtMTE9MTExL
-        PYp7HQAAAAAFo7RNPEFBS0FBPjO1tbW1Mz9BQUFBQT1NpmYGAAAAACV0raEwOj09PT09LbW1tbUtOz0+
-        PT06N5CJSSYAAAAAAAaZsXwuOD06OzownbW1nTA7Ojw6OjNzomYGAAAAAAAAaTaltHIsMzg4ODMtKCgt
-        Mzg4ODMuaKt7HGoAAAAAAAAAD2yotHcbLDMzMzMzMDMzMzMuKXKsgU4VAAAAAAAAAAAAD2yosqA3GCos
-        Li4uLiwsGTeTqYNRFQAAAAAAAAAAAAAAFDaarrSRaDMLCwsLM2WMr5t+IxYAAAAAAAAAAAAAAAAAbQV4
-        payvs7SzsrGwq5uNYQVuAAAAAAAAAAAAAAAAAAAAACYFXHuZnJqZlI10SgYnAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAJwIBAQECBCcAAAAAAAAAAAAAAAD////////////gB///gAH//gAAf/wAAD/4AAAf8AAAD+AA
-        AAfgAAAHwAAAA8AAAAOAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAHAAAADwAAAA8AA
-        AAPgAAAH4AAAB/AAAA/4AAAf/AAAP/4AAH//gAH///AP/ygAAAAQAAAAIAAAAAEACAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAArVgPAK1ZEgCuWxQArl0ZALBeGQCxYBkAt2wsAMBxGwDCeCYAw3oqAMV7
-        KgDHfSsAxn4tAMaALwDHgjMAyIQ2AMWCPgDJhjkAzIk9ALuLYQC8jWMAzYpBAM6NQgDOjkYAyolIANCP
-        QwDPkEgAzpJOANGTSgDTlEkA1JVLANKUTQDVmE8Az5NRANOXUQDUmFIA1JlUANacVgDWnVkA2J9eANmh
-        XQDMk2AA0J91ANmiYQDcpWIA2qRkANynZgDdqGYA16JpANqnaQDfrGsA2ahvAN+sbADVpnsA3q94AOCt
-        bgDhsXIA5rd6AOG7kADkvpYA4sCdAOTDoADnyKcA6MqoAOjLrgDrzawA7M+vAOrOsADs0LAA////AADw
-        SgAR/1sAMf9xAFH/hwBx/50Akf+yALH/yQDR/98A////AAAAAAACLwAABFAAAAZwAAAIkAAACrAAAAvP
-        AAAO8AAAIP8SAD3/MQBb/1EAef9xAJj/kQC1/7EA1P/RAP///wAAAAAAFC8AACJQAAAwcAAAPZAAAEyw
-        AABZzwAAZ/AAAHj/EQCK/zEAnP9RAK7/cQDA/5EA0v+xAOT/0QD///8AAAAAACYvAABAUAAAWnAAAHSQ
-        AACOsAAAqc8AAMLwAADR/xEA2P8xAN7/UQDj/3EA6f+RAO//sQD2/9EA////AAAAAAAvJgAAUEEAAHBb
-        AACQdAAAsI4AAM+pAADwwwAA/9IRAP/YMQD/3VEA/+RxAP/qkQD/8LEA//bRAP///wAAAAAALxQAAFAi
-        AABwMAAAkD4AALBNAADPWwAA8GkAAP95EQD/ijEA/51RAP+vcQD/wZEA/9KxAP/l0QD///8AAAAAAC8D
-        AABQBAAAcAYAAJAJAACwCgAAzwwAAPAOAAD/IBIA/z4xAP9cUQD/enEA/5eRAP+2sQD/1NEA////AAAA
-        AAAvAA4AUAAXAHAAIQCQACsAsAA2AM8AQADwAEkA/xFaAP8xcAD/UYYA/3GcAP+RsgD/scgA/9HfAP//
-        /wAAAAAALwAgAFAANgBwAEwAkABiALAAeADPAI4A8ACkAP8RswD/Mb4A/1HHAP9x0QD/kdwA/7HlAP/R
-        8AD///8AAAAAACwALwBLAFAAaQBwAIcAkAClALAAxADPAOEA8ADwEf8A8jH/APRR/wD2cf8A95H/APmx
-        /wD70f8A////AAAAAAAbAC8ALQBQAD8AcABSAJAAYwCwAHYAzwCIAPAAmRH/AKYx/wC0Uf8AwnH/AM+R
-        /wDcsf8A69H/AP///wAAAAAACAAvAA4AUAAVAHAAGwCQACEAsAAmAM8ALADwAD4R/wBYMf8AcVH/AIxx
-        /wCmkf8Av7H/ANrR/wD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAUBQICAgQUAAAAAAAAAAADGTg6Ojo4
-        GQIAAAAAAAAGLjk1MC0tODkuBgAAAAADKDUwRUZGRikwMygDAAAVES8uKSZFRh8nLCwwERUABScpJych
-        Q0YeJignKScFAAMoJSUkHkJGGiMlJSUpAwADMiAgIBpARhMgIyAgMgMAAzcYGxsTRkYSGxsbGDcDAAU8
-        ExYWEg0MEhYXFhM8BQArNjQQEg9ARg4SEhA0NisAAAVBMQ0LP0YKDQ0xQQUAAAAABz47HAkICiI7PgcA
-        AAAAAAAFKj1EREQ9KgUAAAAAAAAAACsFAQEBBSsAAAAAAP//AADwHwAA4A8AAMAHAACAAwAAAAEAAAAB
-        AAAAAQAAAAEAAAABAAAAAQAAAAEAAIADAADABwAA4A8AAPAfAAA=
-</value>
-  </data>
-  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterParent</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Cave information:</value>
-  </data>
-  <data name="&gt;&gt;colSurveyInfoName.Name" xml:space="preserve">
-    <value>colSurveyInfoName</value>
-  </data>
-  <data name="&gt;&gt;colSurveyInfoName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colSurveyInfoValue.Name" xml:space="preserve">
-    <value>colSurveyInfoValue</value>
-  </data>
-  <data name="&gt;&gt;colSurveyInfoValue.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;mnuSurveyInfoCopy.Name" xml:space="preserve">
-    <value>mnuSurveyInfoCopy</value>
-  </data>
-  <data name="&gt;&gt;mnuSurveyInfoCopy.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;mnuSurveyInfoCopyAll.Name" xml:space="preserve">
-    <value>mnuSurveyInfoCopyAll</value>
-  </data>
-  <data name="&gt;&gt;mnuSurveyInfoCopyAll.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem1.Name" xml:space="preserve">
-    <value>ToolStripMenuItem1</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;mnuSurveyInfoExport.Name" xml:space="preserve">
-    <value>mnuSurveyInfoExport</value>
-  </data>
-  <data name="&gt;&gt;mnuSurveyInfoExport.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>frmInfoCave</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
 </root>

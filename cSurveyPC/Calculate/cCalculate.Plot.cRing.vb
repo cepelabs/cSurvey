@@ -8,13 +8,6 @@ Namespace cSurvey.Calculate
         Private oSurvey As cSurvey
 
         Private oItems As List(Of String)
-        'oRow(0) = oData.Value.Substring(0, 7).Trim   'errore %
-        'oRow(1) = oData.Value.Substring(7, 8).Trim   'errore ass
-        'oRow(2) = oData.Value.Substring(27, 8).Trim  'x
-        'oRow(3) = oData.Value.Substring(35, 8).Trim  'y
-        'oRow(4) = oData.Value.Substring(43, 8).Trim  'z
-        'oRow(5) = oData.Value.Substring(15, 8).Trim  'lung anello
-        'oRow(6) = oData.Value.Substring(23, 4).Trim  'n°stazioni
 
         Private dErrorPercent As Decimal
         Private dError As Decimal
@@ -25,6 +18,8 @@ Namespace cSurvey.Calculate
 
         Private bSelected As Boolean
         Private oColor As Color
+
+        Public DefaultColor As Color = Drawing.Color.LightBlue
 
         Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oXmlSM As XmlElement = Document.CreateElement("rng")
@@ -40,7 +35,7 @@ Namespace cSurvey.Calculate
                 Call oXmlSM.AppendChild(oXmlSMData)
             Next
             If bSelected Then Call oXmlSM.SetAttribute("sel", "1")
-            If oColor <> Drawing.Color.Transparent Then oXmlSM.SetAttribute("color", Color.ToArgb)
+            If oColor <> DefaultColor Then oXmlSM.SetAttribute("color", Color.ToArgb)
             Call Parent.AppendChild(oXmlSM)
             Return oXmlSM
         End Function
@@ -61,7 +56,7 @@ Namespace cSurvey.Calculate
             Next
 
             bSelected = modXML.GetAttributeValue(Item, "sel", 0)
-            oColor = modXML.GetAttributeColor(Item, "color", Drawing.Color.Transparent)
+            oColor = modXML.GetAttributeColor(Item, "color", DefaultColor)
         End Sub
 
         Public Property Selected As Boolean
@@ -80,6 +75,12 @@ Namespace cSurvey.Calculate
             Set(value As Color)
                 oColor = value
             End Set
+        End Property
+
+        Public ReadOnly Property FirstStation As String
+            Get
+                Return oItems(0)
+            End Get
         End Property
 
         Public ReadOnly Property ErrorPercent As Decimal
@@ -156,7 +157,7 @@ Namespace cSurvey.Calculate
                 End If
             Next
             'Call pSortStations()
-            oColor = Drawing.Color.Transparent
+            oColor = DefaultColor
             bSelected = False
         End Sub
 
@@ -167,7 +168,7 @@ Namespace cSurvey.Calculate
                 If Not oItems.Contains(sTrigPoint) Then Call oItems.Add(sTrigPoint)
             Next
             'Call pSortStations()
-            oColor = Drawing.Color.Transparent
+            oColor = DefaultColor
             bSelected = False
         End Sub
 
@@ -192,7 +193,7 @@ Namespace cSurvey.Calculate
                 If Not oItems.Contains(sTrigPoint) Then Call oItems.Add(sTrigPoint)
             Next
             'Call pSortStations()
-            oColor = Drawing.Color.Transparent
+            oColor = DefaultColor
             bSelected = False
         End Sub
 

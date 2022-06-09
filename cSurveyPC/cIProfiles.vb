@@ -24,7 +24,7 @@ Namespace cSurvey
         Property Note As String
         ReadOnly Property IsSystem As Boolean
         ReadOnly Property Design As cIDesign.cDesignTypeEnum
-        ReadOnly Property Options As cOptions
+        ReadOnly Property Options As cOptionsCenterline
 
         Function IsPlan() As Boolean
         Function IsProfile() As Boolean

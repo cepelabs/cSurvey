@@ -28,30 +28,34 @@ friend Class frmCaveBranchesSelector
     End Sub
 
     Private Sub pGridToList()
-        Call oSelection.Clear()
-        For Each oRow As DataGridViewRow In grdProfile.Rows
-            Dim bVisible As Boolean = oRow.Cells(2).Value
-            If bVisible Then
-                Dim sCaveInfo As String = oRow.Cells(0).Value
-                Dim sCaveInfoBranch As String = oRow.Cells(1).Value
-                Call oSelection.Add(sCaveInfo & cCaveInfoBranches.sBranchSeparator & sCaveInfoBranch)
-            End If
-        Next
+        Call oItems.Save(AddressOf pSetValue)
+        'Call oSelection.Clear()
+        'For Each oRow As DataGridViewRow In grdProfile.Rows
+        '    Dim bVisible As Boolean = oRow.Cells(2).Value
+        '    If bVisible Then
+        '        Dim sCaveInfo As String = oRow.Cells(0).Value
+        '        Dim sCaveInfoBranch As String = oRow.Cells(1).Value
+        '        Call oSelection.Add(sCaveInfo & cCaveInfoBranches.sBranchSeparator & sCaveInfoBranch)
+        '    End If
+        'Next
     End Sub
 
     Private Sub pListToGrid()
-        For Each oRow As DataGridViewRow In grdProfile.Rows
-            Dim sCaveInfo As String = oRow.Cells(0).Value
-            Dim sCaveInfoBranch As String = oRow.Cells(1).Value
-            Dim sKey As String = sCaveInfo & cCaveInfoBranches.sBranchSeparator & sCaveInfoBranch
-            oRow.Cells(2).Value = oSelection.Contains(sKey)
-        Next
+        oItems = New UIHelpers.cCaveBranchSelectorList(Of Boolean)(oSurvey.Properties.CaveInfos, modMain.GetLocalizedString("translations.originalposition"), AddressOf pGetValue)
+        Call cGrid.Rebind(oSurvey, oItems, DevExpress.Data.UnboundColumnType.Boolean, "Campo", "Value")
+        'For Each oRow As DataGridViewRow In grdProfile.Rows
+        '    Dim sCaveInfo As String = oRow.Cells(0).Value
+        '    Dim sCaveInfoBranch As String = oRow.Cells(1).Value
+        '    Dim sKey As String = sCaveInfo & cCaveInfoBranches.sBranchSeparator & sCaveInfoBranch
+        '    oRow.Cells(2).Value = oSelection.Contains(sKey)
+        'Next
     End Sub
 
     Private Sub cmdCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancel.Click
         Call Close()
     End Sub
 
+    Private oItems As UIHelpers.cCaveBranchSelectorList(Of Boolean)
     Public Sub New(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Selection As List(Of String))
 
         ' Chiamata richiesta dalla finestra di progettazione.
@@ -61,77 +65,105 @@ friend Class frmCaveBranchesSelector
         oSurvey = Survey
         oSelection = New List(Of String)(Selection)
 
-        Dim oValues(2) As Object
-        oValues(0) = ""
-        oValues(1) = ""
-        oValues(2) = True
-        Call grdProfile.Rows.Add(oValues)
-        For Each oCaveInfo As cCaveInfo In oSurvey.Properties.CaveInfos
-            oValues(0) = oCaveInfo.Name
-            oValues(1) = ""
-            oValues(2) = True
-            Call grdProfile.Rows.Add(oValues)
-            For Each oCaveInfoBranches As cCaveInfoBranch In oCaveInfo.Branches.GetAllBranches.Values
-                oValues(0) = oCaveInfo.Name
-                oValues(1) = oCaveInfoBranches.Path
-                oValues(2) = True
-                Call grdProfile.Rows.Add(oValues)
-            Next
-        Next
+        'Dim oValues(2) As Object
+        'oValues(0) = ""
+        'oValues(1) = ""
+        'oValues(2) = True
+        'Call grdProfile.Rows.Add(oValues)
+        'For Each oCaveInfo As cCaveInfo In oSurvey.Properties.CaveInfos
+        '    oValues(0) = oCaveInfo.Name
+        '    oValues(1) = ""
+        '    oValues(2) = True
+        '    Call grdProfile.Rows.Add(oValues)
+        '    For Each oCaveInfoBranches As cCaveInfoBranch In oCaveInfo.Branches.GetAllBranches.Values
+        '        oValues(0) = oCaveInfo.Name
+        '        oValues(1) = oCaveInfoBranches.Path
+        '        oValues(2) = True
+        '        Call grdProfile.Rows.Add(oValues)
+        '    Next
+        'Next
 
         bEventDisabled = True
         Call pListToGrid()
         bEventDisabled = False
     End Sub
 
-    Private Sub mnuContextProfileSelectAll_Click(sender As System.Object, e As System.EventArgs) Handles mnuContextProfileSelectAll.Click
-        Call grdProfile.EndEdit()
-        For Each oRow As DataGridViewRow In grdProfile.Rows
-            oRow.Cells(2).Value = True
-        Next
-    End Sub
+    Private Function pGetKey(Caveinfo As cICaveInfoBranches) As String
+        Dim sKey As String
+        If TypeOf Caveinfo Is cCaveInfoBranch Then
+            sKey = DirectCast(Caveinfo, cCaveInfoBranch).Cave & cCaveInfoBranches.sBranchSeparator & Caveinfo.Path
+        Else
+            sKey = DirectCast(Caveinfo, cCaveInfo).Cave
+        End If
+        Return sKey
+    End Function
 
-    Private Sub mnuContextProfileDeselectAll_Click(sender As System.Object, e As System.EventArgs) Handles mnuContextProfileDeselectAll.Click
-        Call grdProfile.EndEdit()
-        For Each oRow As DataGridViewRow In grdProfile.Rows
-            oRow.Cells(2).Value = False
-        Next
-    End Sub
-
-    Private Sub mnuContextProfileInvertSelection_Click(sender As System.Object, e As System.EventArgs) Handles mnuContextProfileInvertSelection.Click
-        Call grdProfile.EndEdit()
-        For Each oRow As DataGridViewRow In grdProfile.Rows
-            oRow.Cells(2).Value = Not oRow.Cells(2).Value
-        Next
-    End Sub
-
-    Private Sub mnuContextProfileSelectCurrentCave_Click(sender As System.Object, e As System.EventArgs) Handles mnuContextProfileSelectCurrentCave.Click
-        Call grdProfile.EndEdit()
-        If Not grdProfile.CurrentRow Is Nothing Then
-            Dim sCurrentCave As String = grdProfile.CurrentRow.Cells(0).Value
-            For Each oRow As DataGridViewRow In grdProfile.Rows
-                If oRow.Cells(0).Value = sCurrentCave Then
-                    oRow.Cells(2).Value = True
-                End If
-            Next
+    Private Sub pSetValue(CaveInfo As cICaveInfoBranches, Value As Boolean)
+        Dim sKey As String = pGetKey(CaveInfo)
+        If Value Then
+            If Not oSelection.Contains(sKey) Then
+                Call oSelection.Add(sKey)
+            End If
+        Else
+            If oSelection.Contains(sKey) Then
+                oSelection.Remove(sKey)
+            End If
         End If
     End Sub
 
-    Private Sub mnuContextProfile_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mnuContextProfile.Opening
-        Dim bEnabled As Boolean = Not grdProfile.CurrentRow Is Nothing
-        mnuContextProfileSelectCurrentCave.Enabled = bEnabled
-        mnuContextProfileDeselectCurrentCave.Enabled = bEnabled
-    End Sub
+    Private Function pGetValue(CaveInfo As cICaveInfoBranches) As Boolean
+        Dim sKey As String = pGetKey(CaveInfo)
+        Return oSelection.Contains(sKey)
+    End Function
 
-    Private Sub mnuContextProfileDeselectCurrentCave_Click(sender As System.Object, e As System.EventArgs) Handles mnuContextProfileDeselectCurrentCave.Click
-        Call grdProfile.EndEdit()
-        If Not grdProfile.CurrentRow Is Nothing Then
-            Dim sCurrentCave As String = grdProfile.CurrentRow.Cells(0).Value
-            For Each oRow As DataGridViewRow In grdProfile.Rows
-                If oRow.Cells(0).Value = sCurrentCave Then
-                    oRow.Cells(2).Value = False
-                End If
-            Next
-        End If
-    End Sub
+    'Private Sub mnuContextProfileSelectAll_Click(sender As System.Object, e As System.EventArgs) Handles mnuContextProfileSelectAll.Click
+    '    Call grdProfile.EndEdit()
+    '    For Each oRow As DataGridViewRow In grdProfile.Rows
+    '        oRow.Cells(2).Value = True
+    '    Next
+    'End Sub
+
+    'Private Sub mnuContextProfileDeselectAll_Click(sender As System.Object, e As System.EventArgs) Handles mnuContextProfileDeselectAll.Click
+    '    Call grdProfile.EndEdit()
+    '    For Each oRow As DataGridViewRow In grdProfile.Rows
+    '        oRow.Cells(2).Value = False
+    '    Next
+    'End Sub
+
+    'Private Sub mnuContextProfileInvertSelection_Click(sender As System.Object, e As System.EventArgs) Handles mnuContextProfileInvertSelection.Click
+    '    Call grdProfile.EndEdit()
+    '    For Each oRow As DataGridViewRow In grdProfile.Rows
+    '        oRow.Cells(2).Value = Not oRow.Cells(2).Value
+    '    Next
+    'End Sub
+
+    'Private Sub mnuContextProfileSelectCurrentCave_Click(sender As System.Object, e As System.EventArgs) Handles mnuContextProfileSelectCurrentCave.Click
+    '    Call grdProfile.EndEdit()
+    '    If Not grdProfile.CurrentRow Is Nothing Then
+    '        Dim sCurrentCave As String = grdProfile.CurrentRow.Cells(0).Value
+    '        For Each oRow As DataGridViewRow In grdProfile.Rows
+    '            If oRow.Cells(0).Value = sCurrentCave Then
+    '                oRow.Cells(2).Value = True
+    '            End If
+    '        Next
+    '    End If
+    'End Sub
+
+    'Private Sub mnuContextProfile_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mnuContextProfile.Opening
+    '    Dim bEnabled As Boolean = Not grdProfile.CurrentRow Is Nothing
+    '    mnuContextProfileSelectCurrentCave.Enabled = bEnabled
+    '    mnuContextProfileDeselectCurrentCave.Enabled = bEnabled
+    'End Sub
+
+    'Private Sub mnuContextProfileDeselectCurrentCave_Click(sender As System.Object, e As System.EventArgs) Handles mnuContextProfileDeselectCurrentCave.Click
+    '    Call grdProfile.EndEdit()
+    '    If Not grdProfile.CurrentRow Is Nothing Then
+    '        Dim sCurrentCave As String = grdProfile.CurrentRow.Cells(0).Value
+    '        For Each oRow As DataGridViewRow In grdProfile.Rows
+    '            If oRow.Cells(0).Value = sCurrentCave Then
+    '                oRow.Cells(2).Value = False
+    '            End If
+    '        Next
+    '    End If
+    'End Sub
 End Class

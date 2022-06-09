@@ -27,15 +27,46 @@ Namespace cSurvey.Design
         End Sub
     End Class
 
-    Public Interface cIUIInteractions
-        Sub MapInvalidate()
+    Public Interface cIUIBaseInteractions
         Sub PropertyChanged(Name As String)
-        Event OnMapInvalidate(Sender As Object, e As EventArgs)
         Event OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs)
     End Interface
 
+    Public Interface cIUIInteractions
+        Inherits cIUIBaseInteractions
+        Sub MapInvalidate()
+        Event OnMapInvalidate(Sender As Object, e As EventArgs)
+    End Interface
+    Public Interface cIOptionLinkedSurveys
+        Inherits cIOptions
+        Property DrawLinkedSurveys As Boolean
+    End Interface
+
+    Public Interface cIOptionPrintAndExportArea
+        Inherits cIOptions
+        Enum DesignStyleEnum
+            None = 0
+            Schematics = 1
+        End Enum
+        Function GetPrintOrExportProfile(CurrentDesign As cIDesign) As cIProfile
+        Sub SetPrintOrExportProfile(Value As cIProfile)
+        Property DrawPrintOrExportArea As Boolean
+        Property DrawPrintOrExportAreaDesignStyle As DesignStyleEnum
+    End Interface
+
+    Public Interface cUIControlPropertyInteractions
+        Inherits cIUIInteractions
+        Event OnGetFlags(Sender As Object, e As FlagEventArgs)
+        Event OnSetFlags(Sender As Object, e As FlagEventArgs)
+
+        Event OnDrawInvalidate(Sender As Object, e As EventArgs)
+        Event OnSurveyInvalidate(Sender As Object, e As EventArgs)
+        Event OnObjectPropertyLoad(Sender As Object, e As EventArgs)
+        Event OnTakeUndoSnapshot(Sender As Object, e As EventArgs)
+        Event OnDoCommand(Sender As Object, e As DoCommandEventArgs)
+    End Interface
+
     Public Interface cIOptions
-        Inherits cIDesignProperties
         Inherits cIUIInteractions
 
         Enum ModeEnum
@@ -55,26 +86,98 @@ Namespace cSurvey.Design
         Function GetOption() As cIOptions
     End Interface
 
-    Public Interface cIOptionLinkedSurveys
-        Inherits cIOptions
-        Property DrawLinkedSurveys As Boolean
-    End Interface
-
-    Public Interface cIOptionPrintAndExportArea
-        Inherits cIOptions
-        Enum DesignStyleEnum
-            None = 0
-            Schematics = 1
-        End Enum
-        Function GetPrintOrExportProfile(CurrentDesign As cIDesign) As cIProfile
-        Sub SetPrintOrExportProfile(Value As cIProfile)
-        Property DrawPrintOrExportArea As Boolean
-        Property DrawPrintOrExportAreaDesignStyle As DesignStyleEnum
-    End Interface
-
     Public Class cOptions
         Implements cIOptions
+
+        Private WithEvents oSurvey As cSurvey
+
+        Private sName As String
+
+        Private oDefaultOptions As cOptions
+        Private iMode As cIOptions.ModeEnum
+
+        Friend Class GetParentEventArgs
+            Inherits EventArgs
+
+            Public Parent As cIProfile
+        End Class
+
+        Friend Event OnGetParent(sender As Object, e As GetParentEventArgs)
+
+        Public Overridable Function GetParent() As cIProfile Implements cIOptions.GetParent
+            Dim oArgs As GetParentEventArgs = New GetParentEventArgs
+            RaiseEvent OnGetParent(Me, oArgs)
+            Return oArgs.Parent
+        End Function
+
+        Friend Sub New(ByVal Survey As cSurvey, ByVal Name As String, ByVal Mode As cIOptions.ModeEnum)
+            oSurvey = Survey
+
+            sName = Name
+            iMode = Mode
+        End Sub
+        Public Overridable ReadOnly Property Name() As String Implements cIOptions.Name
+            Get
+                Return sName
+            End Get
+        End Property
+
+        Public Overridable ReadOnly Property DefaultOptions As cOptions Implements cIOptions.DefaultOptions
+            Get
+                Return oDefaultOptions
+            End Get
+        End Property
+
+        Public Overridable ReadOnly Property Mode() As cIOptions.ModeEnum Implements cIOptions.Mode
+            Get
+                Return iMode
+            End Get
+        End Property
+
+        Public ReadOnly Property Survey As cSurvey Implements cIOptions.Survey
+            Get
+                Return oSurvey
+            End Get
+        End Property
+
+        Public Event OnMapInvalidate(Sender As Object, e As EventArgs) Implements cIUIInteractions.OnMapInvalidate
+        Public Event OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Implements cIUIBaseInteractions.OnPropertyChanged
+
+        Public Overridable Sub MapInvalidate() Implements cIOptions.MapInvalidate
+            RaiseEvent OnMapInvalidate(Me, EventArgs.Empty)
+        End Sub
+
+        Public Overridable Sub PropertyChanged(Name As String) Implements cIOptions.PropertyChanged
+            RaiseEvent OnPropertyChanged(Me, New PropertyChangeEventArgs(Name))
+        End Sub
+
+        Public Overridable Function IsViewer() As Boolean Implements cIOptions.IsViewer
+            Return iMode = cIOptions.ModeEnum.Viewer
+        End Function
+
+        Public Overridable Function IsPreview() As Boolean Implements cIOptions.IsPreview
+            Return iMode = cIOptions.ModeEnum.Preview
+        End Function
+
+        Public Overridable Function IsDesign() As Boolean Implements cIOptions.IsDesign
+            Return iMode = cIOptions.ModeEnum.Design
+        End Function
+
+        Public Overridable Function GetOption() As cIOptions Implements cIOptions.GetOption
+            Return Me
+        End Function
+
+        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+            Dim oXmlOptions As XmlElement = Document.CreateElement(sName)
+            Call Parent.AppendChild(oXmlOptions)
+            Return oXmlOptions
+        End Function
+    End Class
+
+    Public Class cOptionsCenterline
+        Inherits cOptions
         Implements cITextStructure
+        Implements cIDesignProperties
 
         <Flags()> Public Enum DrawSegmentsOptionsEnum
             None = &H0
@@ -88,8 +191,6 @@ Namespace cSurvey.Design
         End Enum
 
         Private WithEvents oSurvey As cSurvey
-
-        Private sName As String
 
         Private bDrawPlot As Boolean
         Private bDrawSegments As Boolean
@@ -117,29 +218,18 @@ Namespace cSurvey.Design
         Private bShowSurface As Boolean
         Private bShowElevation As Boolean
 
-        Private oSurfaceOptions As cSurfaceOptions
+        Private WithEvents oSurfaceOptions As cSurfaceOptions
 
-        Private oTranslationsOptions As cTranslationsOptions
+        Private WithEvents oTranslationsOptions As cTranslationsOptions
         Private bDrawTranslation As Boolean
 
-        Private oHLsOptions As cHighlightsOptions
+        Private WithEvents oHLsOptions As cHighlightsOptions
         Private bDrawHLs As Boolean
 
         Private sCurrentCaveVisibilityProfile As String
 
         Private oDrawingObjects As cOptionsDrawingObjects
         Private oPaintObjects As cPaintObjects
-
-        Event OnMapInvalidate(Sender As Object, e As EventArgs) Implements cIOptions.OnMapInvalidate
-        Event OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Implements cIOptions.OnPropertyChanged
-
-        Public Sub MapInvalidate() Implements cIOptions.MapInvalidate
-            RaiseEvent OnMapInvalidate(Me, EventArgs.Empty)
-        End Sub
-
-        Public Sub PropertyChanged(Name As String) Implements cIOptions.PropertyChanged
-            RaiseEvent OnPropertyChanged(Me, New PropertyChangeEventArgs(Name))
-        End Sub
 
         Public Enum DesignAffinityEnum
             All = 0
@@ -156,12 +246,12 @@ Namespace cSurvey.Design
             Set(value As DesignAffinityEnum)
                 If iDesignAffinity <> value Then
                     iDesignAffinity = value
-                    RaiseEvent OnPropertyChanged(Me, EventArgs.Empty)
+                    Call PropertyChanged("DesignAffinity")
                 End If
             End Set
         End Property
 
-        Public Overridable Function GetOption() As cIOptions Implements cIOptions.GetOption
+        Public Overrides Function GetOption() As cIOptions
             Return Me
         End Function
 
@@ -191,7 +281,10 @@ Namespace cSurvey.Design
                 Return iCenterlineColorMode
             End Get
             Set(value As CenterlineColorModeEnum)
-                iCenterlineColorMode = value
+                If iCenterlineColorMode <> value Then
+                    iCenterlineColorMode = value
+                    Call PropertyChanged("CenterlineColorMode")
+                End If
             End Set
         End Property
 
@@ -203,6 +296,7 @@ Namespace cSurvey.Design
                 If bCenterlineColorGray <> value Then
                     bCenterlineColorGray = value
                     Call Rebind()
+                    Call PropertyChanged("CenterlineColorGray")
                 End If
             End Set
         End Property
@@ -219,7 +313,10 @@ Namespace cSurvey.Design
                 Return iCombineColorMode
             End Get
             Set(value As CombineColorModeEnum)
-                iCombineColorMode = value
+                If iCombineColorMode <> value Then
+                    iCombineColorMode = value
+                    Call PropertyChanged("CombineColorMode")
+                End If
             End Set
         End Property
 
@@ -228,12 +325,12 @@ Namespace cSurvey.Design
                 Return bCombineColorGray
             End Get
             Set(value As Boolean)
-                bCombineColorGray = value
+                If bCombineColorGray <> value Then
+                    bCombineColorGray = value
+                    Call PropertyChanged("CombineColorGray")
+                End If
             End Set
         End Property
-
-        Private iMode As cIOptions.ModeEnum
-
         Public Enum HighlightModeEnum
             [Default] = 0
             Hierarchic = 1
@@ -284,11 +381,12 @@ Namespace cSurvey.Design
         Private iUnselectedCaveDrawStyle As UnselectedCaveDrawStyleEnum
         Private bHighlightSegmentsAndTrigpoints As Boolean
 
-        Private oCompassOptions As cCompassOptions
-        Private oInfoboxOptions As cInfoBoxOptions
-        Private oScaleOptions As cScaleOptions
+        Private WithEvents oCompassOptions As cCompassOptions
+        Private WithEvents oInfoboxOptions As cInfoBoxOptions
+        Private WithEvents oScaleOptions As cScaleOptions
 
         Private bUseDrawingZOrder As Boolean
+
         Public Enum zordermodeenum
             Free = 0
             Hierarchic = 1
@@ -300,7 +398,10 @@ Namespace cSurvey.Design
                 Return iZOrderMode
             End Get
             Set(value As zordermodeenum)
-                iZOrderMode = value
+                If iZOrderMode <> value Then
+                    iZOrderMode = value
+                    Call PropertyChanged("ZOrderMode")
+                End If
             End Set
         End Property
 
@@ -309,7 +410,10 @@ Namespace cSurvey.Design
                 Return bUseDrawingZOrder
             End Get
             Set(value As Boolean)
-                bUseDrawingZOrder = value
+                If bUseDrawingZOrder <> value Then
+                    bUseDrawingZOrder = value
+                    Call PropertyChanged("UseDrawingZOrder")
+                End If
             End Set
         End Property
 
@@ -326,11 +430,6 @@ Namespace cSurvey.Design
             OnlySegment = &H3
         End Enum
 
-        'Public Enum ColorStyleEnum
-        '    BN = 0
-        '    Color = 1
-        'End Enum
-
         Public Enum SplayStyleEnum
             Points = 0
             PointsAndRays = 1
@@ -345,15 +444,15 @@ Namespace cSurvey.Design
         Private iCurrentScale As Integer
         Private oCurrentRule As cIScaleRule
 
-        Private oDesignProperties As cPropertiesCollection
+        Private WithEvents oDesignProperties As cPropertiesCollection
 
         '--------------------------------------------------------------------------------------------
-        Private sPenHeavyWidth As Single
-        Private sPenMediumWidth As Single
-        Private sPenLightWidth As Single
-        Private sPenUltralightWidth As Single
-        Private sPenTightWidth As Single
-        Private oDefaultTextFont As cIFont
+        'Private sPenHeavyWidth As Single
+        'Private sPenMediumWidth As Single
+        'Private sPenLightWidth As Single
+        'Private sPenUltralightWidth As Single
+        'Private sPenTightWidth As Single
+        'Private oDefaultTextFont As cIFont
         '--------------------------------------------------------------------------------------------
 
         Private sInfoBoxStructure As String
@@ -361,13 +460,15 @@ Namespace cSurvey.Design
         Private sSpecialTrigpointStructure As String
 
         '--------------------------------------------------------------------------------------------
-
         Public Property InfoBoxStructure() As String Implements cITextStructure.InfoBoxStructure
             Get
                 Return sInfoBoxStructure
             End Get
             Set(ByVal value As String)
-                sInfoBoxStructure = value
+                If sInfoBoxStructure <> value Then
+                    sInfoBoxStructure = value
+                    Call PropertyChanged("InfoBoxStructure")
+                End If
             End Set
         End Property
 
@@ -376,7 +477,10 @@ Namespace cSurvey.Design
                 Return sTrigpointStructure
             End Get
             Set(ByVal value As String)
-                sTrigpointStructure = value
+                If sTrigpointStructure <> value Then
+                    sTrigpointStructure = value
+                    Call PropertyChanged("TrigPointStructure")
+                End If
             End Set
         End Property
 
@@ -385,7 +489,10 @@ Namespace cSurvey.Design
                 Return sSpecialTrigpointStructure
             End Get
             Set(ByVal value As String)
-                sSpecialTrigpointStructure = value
+                If sSpecialTrigpointStructure <> value Then
+                    sSpecialTrigpointStructure = value
+                    Call PropertyChanged("SpecialTrigPointStructure")
+                End If
             End Set
         End Property
 
@@ -406,14 +513,11 @@ Namespace cSurvey.Design
                 Return bShowAdvancedBrushes
             End Get
             Set(value As Boolean)
-                bShowAdvancedBrushes = value
+                If bShowAdvancedBrushes <> value Then
+                    bShowAdvancedBrushes = value
+                    Call PropertyChanged("ShowAdvancedBrushes")
+                End If
             End Set
-        End Property
-
-        Public ReadOnly Property Survey As cSurvey Implements cIOptions.Survey
-            Get
-                Return oSurvey
-            End Get
         End Property
 
         Public ReadOnly Property HighlightsOptions As cHighlightsOptions
@@ -433,7 +537,10 @@ Namespace cSurvey.Design
                 Return bDrawHLs
             End Get
             Set(ByVal value As Boolean)
-                bDrawHLs = value
+                If bDrawHLs <> value Then
+                    bDrawHLs = value
+                    Call PropertyChanged("DrawHighlights")
+                End If
             End Set
         End Property
 
@@ -442,46 +549,22 @@ Namespace cSurvey.Design
                 Return bDrawTranslation
             End Get
             Set(ByVal value As Boolean)
-                bDrawTranslation = value
+                If bDrawTranslation <> value Then
+                    bDrawTranslation = value
+                    Call PropertyChanged("DrawTranslation")
+                End If
             End Set
         End Property
-
-        Public ReadOnly Property Name() As String Implements cIOptions.Name
-            Get
-                Return sName
-            End Get
-        End Property
-
-        Public ReadOnly Property DefaultOptions As cOptions Implements cIOptions.DefaultOptions
-            Get
-                Return oDefaultOptions
-            End Get
-        End Property
-
-        Public ReadOnly Property Mode() As cIOptions.ModeEnum Implements cIOptions.Mode
-            Get
-                Return iMode
-            End Get
-        End Property
-
-        Public Overridable Function IsViewer() As Boolean Implements cIOptions.IsViewer
-            Return iMode = cIOptions.ModeEnum.Viewer
-        End Function
-
-        Public Overridable Function IsPreview() As Boolean Implements cIOptions.IsPreview
-            Return iMode = cIOptions.ModeEnum.Preview
-        End Function
-
-        Public Overridable Function IsDesign() As Boolean Implements cIOptions.IsDesign
-            Return iMode = cIOptions.ModeEnum.Design
-        End Function
 
         Public Property DrawBox() As Boolean
             Get
                 Return bDrawBox
             End Get
             Set(ByVal value As Boolean)
-                bDrawBox = value
+                If bDrawBox <> value Then
+                    bDrawBox = value
+                    Call PropertyChanged("DrawBox")
+                End If
             End Set
         End Property
 
@@ -490,7 +573,10 @@ Namespace cSurvey.Design
                 Return iBoxPosition
             End Get
             Set(ByVal value As AlignmentEnum)
-                iBoxPosition = value
+                If iBoxPosition <> value Then
+                    iBoxPosition = value
+                    Call PropertyChanged("BoxPosition")
+                End If
             End Set
         End Property
 
@@ -619,7 +705,10 @@ Namespace cSurvey.Design
                 Return iCompassStyle
             End Get
             Set(ByVal value As CompassStyleEnum)
-                iCompassStyle = value
+                If iCompassStyle <> value Then
+                    iCompassStyle = value
+                    Call PropertyChanged("CompassStyle")
+                End If
             End Set
         End Property
 
@@ -628,7 +717,10 @@ Namespace cSurvey.Design
                 Return iDrawStyle
             End Get
             Set(ByVal value As DrawStyleEnum)
-                iDrawStyle = value
+                If iDrawStyle <> value Then
+                    iDrawStyle = value
+                    Call PropertyChanged("DrawStyle")
+                End If
             End Set
         End Property
 
@@ -637,7 +729,10 @@ Namespace cSurvey.Design
                 Return iDesignStyle
             End Get
             Set(ByVal value As DesignStyleEnum)
-                iDesignStyle = value
+                If iDesignStyle <> value Then
+                    iDesignStyle = value
+                    Call PropertyChanged("DesignStyle")
+                End If
             End Set
         End Property
 
@@ -652,24 +747,6 @@ Namespace cSurvey.Design
                 End If
             End Set
         End Property
-
-        'Public Property ColorStyle() As ColorStyleEnum
-        '    Get
-        '        Return iColorStyle
-        '    End Get
-        '    Set(ByVal value As ColorStyleEnum)
-        '        iColorStyle = value
-        '    End Set
-        'End Property
-
-        'Public Overridable Property DrawRings() As Boolean
-        '    Get
-        '        Return bDrawRings
-        '    End Get
-        '    Set(ByVal value As Boolean)
-        '        bDrawRings = value
-        '    End Set
-        'End Property
 
         Public Overridable Property DrawSplay() As Boolean
             Get
@@ -700,7 +777,10 @@ Namespace cSurvey.Design
                 Return bDrawPointNames
             End Get
             Set(ByVal value As Boolean)
-                bDrawPointNames = value
+                If bDrawPointNames <> value Then
+                    bDrawPointNames = value
+                    Call PropertyChanged("DrawPointNames")
+                End If
             End Set
         End Property
 
@@ -709,7 +789,10 @@ Namespace cSurvey.Design
                 Return bDrawPoints
             End Get
             Set(ByVal value As Boolean)
-                bDrawPoints = value
+                If bDrawPoints <> value Then
+                    bDrawPoints = value
+                    Call PropertyChanged("DrawPoints")
+                End If
             End Set
         End Property
 
@@ -718,7 +801,10 @@ Namespace cSurvey.Design
                 Return bDrawSurfaceProfile
             End Get
             Set(ByVal value As Boolean)
-                bDrawSurfaceProfile = value
+                If bDrawSurfaceProfile <> value Then
+                    bDrawSurfaceProfile = value
+                    Call PropertyChanged("DrawSurfaceProfile")
+                End If
             End Set
         End Property
 
@@ -727,7 +813,10 @@ Namespace cSurvey.Design
                 Return bDrawDesign
             End Get
             Set(ByVal value As Boolean)
-                bDrawDesign = value
+                If bDrawDesign <> value Then
+                    bDrawDesign = value
+                    Call PropertyChanged("DrawDesign")
+                End If
             End Set
         End Property
 
@@ -736,7 +825,10 @@ Namespace cSurvey.Design
                 Return bDrawSpecialPoints
             End Get
             Set(ByVal value As Boolean)
-                bDrawSpecialPoints = value
+                If bDrawSpecialPoints <> value Then
+                    bDrawSpecialPoints = value
+                    Call PropertyChanged("DrawSpecialPoints")
+                End If
             End Set
         End Property
 
@@ -745,7 +837,10 @@ Namespace cSurvey.Design
                 Return bDrawSketches
             End Get
             Set(ByVal value As Boolean)
-                bDrawSketches = value
+                If bDrawSketches <> value Then
+                    bDrawSketches = value
+                    Call PropertyChanged("DrawSketches")
+                End If
             End Set
         End Property
 
@@ -754,7 +849,10 @@ Namespace cSurvey.Design
                 Return bDrawImages
             End Get
             Set(ByVal value As Boolean)
-                bDrawImages = value
+                If bDrawImages <> value Then
+                    bDrawImages = value
+                    Call PropertyChanged("DrawImages")
+                End If
             End Set
         End Property
 
@@ -763,7 +861,10 @@ Namespace cSurvey.Design
                 Return bDrawPlot
             End Get
             Set(ByVal value As Boolean)
-                bDrawPlot = value
+                If bDrawPlot <> value Then
+                    bDrawPlot = value
+                    Call PropertyChanged("DrawPlot")
+                End If
             End Set
         End Property
 
@@ -772,7 +873,10 @@ Namespace cSurvey.Design
                 Return bDrawSegments
             End Get
             Set(ByVal value As Boolean)
-                bDrawSegments = value
+                If bDrawSegments <> value Then
+                    bDrawSegments = value
+                    Call PropertyChanged("DrawSegments")
+                End If
             End Set
         End Property
 
@@ -781,18 +885,12 @@ Namespace cSurvey.Design
                 Return iDrawSegmentsOptions
             End Get
             Set(ByVal value As DrawSegmentsOptionsEnum)
-                iDrawSegmentsOptions = value
+                If iDrawSegmentsOptions <> value Then
+                    iDrawSegmentsOptions = value
+                    Call PropertyChanged("DrawSegmentsOptions")
+                End If
             End Set
         End Property
-
-        'Public Overridable Property LowerLayersDesignTransparencyThreshold() As Integer
-        '    Get
-        '        Return iLowerLayersDesignTransparencyThreshold
-        '    End Get
-        '    Set(ByVal value As Integer)
-        '        iLowerLayersDesignTransparencyThreshold = value
-        '    End Set
-        'End Property
 
         Public ReadOnly Property CompassOptions As cCompassOptions
             Get
@@ -813,10 +911,8 @@ Namespace cSurvey.Design
         End Property
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal Name As String, ByVal Mode As cIOptions.ModeEnum)
+            MyBase.New(Survey, Name, Mode)
             oSurvey = Survey
-
-            sName = Name
-            iMode = Mode
 
             bDrawPlot = True
             bDrawDesign = True
@@ -885,8 +981,8 @@ Namespace cSurvey.Design
             bDrawHLs = False
             oHLsOptions = New cHighlightsOptions(oSurvey)
 
-            If sName <> "" Then
-                oDefaultOptions = New cOptions(oSurvey, "", iMode)
+            If MyBase.Name <> "" Then
+                oDefaultOptions = New cOptions(oSurvey, "", MyBase.Mode)
             End If
 
             iCurrentScale = iDefaultDesignScale
@@ -894,12 +990,13 @@ Namespace cSurvey.Design
 
             bUseDrawingZOrder = False
 
-            Dim oDefaultDesignProperties As cPropertiesCollection = oCurrentRule.DesignProperties
-            sPenHeavyWidth = oDefaultDesignProperties.GetValue("BaseHeavyLinesScaleFactor", 8)
-            sPenMediumWidth = oDefaultDesignProperties.GetValue("BaseMediumLinesScaleFactor", 3)
-            sPenLightWidth = oDefaultDesignProperties.GetValue("BaseLightLinesScaleFactor", 1)
-            sPenUltralightWidth = oDefaultDesignProperties.GetValue("BaseUltraLightLinesScaleFactor", 0.3)
-            oDefaultTextFont = oSurvey.Properties.DesignProperties.GetValue("DesignTextFont", New cFont(oSurvey, "Tahoma", 8, Color.Black))
+            'Dim oDefaultDesignProperties As cPropertiesCollection = oCurrentRule.DesignProperties
+            'sPenHeavyWidth = oDefaultDesignProperties.GetValue("BaseHeavyLinesScaleFactor", 8.0)
+            'sPenMediumWidth = oDefaultDesignProperties.GetValue("BaseMediumLinesScaleFactor", 3.0)
+            'sPenLightWidth = oDefaultDesignProperties.GetValue("BaseLightLinesScaleFactor", 0.5)
+            'sPenUltralightWidth = oDefaultDesignProperties.GetValue("BaseUltraLightLinesScaleFactor", 0.1)
+            'sPenTightWidth = cEditPaintObjects.FilettoPenWidth
+            'oDefaultTextFont = oSurvey.Properties.DesignProperties.GetValue("DesignTextFont", New cFont(oSurvey, "Tahoma", 8, Color.Black))
 
             bDrawSurfaceProfile = True
 
@@ -928,7 +1025,10 @@ Namespace cSurvey.Design
                 Return bShowPointInformation
             End Get
             Set(ByVal value As Boolean)
-                bShowPointInformation = value
+                If bShowPointInformation <> value Then
+                    bShowPointInformation = value
+                    Call PropertyChanged("ShowPointInformation")
+                End If
             End Set
         End Property
 
@@ -937,7 +1037,10 @@ Namespace cSurvey.Design
                 Return iShowSplayMode
             End Get
             Set(ByVal value As ShowSplayModeEnum)
-                iShowSplayMode = value
+                If iShowSplayMode <> value Then
+                    iShowSplayMode = value
+                    Call PropertyChanged("ShowSplayMode")
+                End If
             End Set
         End Property
 
@@ -946,7 +1049,10 @@ Namespace cSurvey.Design
                 Return bShowSplayText
             End Get
             Set(ByVal value As Boolean)
-                bShowSplayText = value
+                If bShowSplayText <> value Then
+                    bShowSplayText = value
+                    Call PropertyChanged("ShowSplayText")
+                End If
             End Set
         End Property
 
@@ -955,7 +1061,10 @@ Namespace cSurvey.Design
                 Return bShowPointText
             End Get
             Set(ByVal value As Boolean)
-                bShowPointText = value
+                If bShowPointText <> value Then
+                    bShowPointText = value
+                    Call PropertyChanged("ShowPointText")
+                End If
             End Set
         End Property
 
@@ -1047,24 +1156,29 @@ Namespace cSurvey.Design
             iCenterlineColorMode = modXML.GetAttributeValue(Options, "centerlinecolormode")
             bCenterlineColorGray = modXML.GetAttributeValue(Options, "centerlinecolorgray")
 
-            If sName <> "" Then
-                oDefaultOptions = New cOptions(oSurvey, "", iMode)
+            If MyBase.Name <> "" Then
+                oDefaultOptions = New cOptions(oSurvey, "", MyBase.Mode)
             End If
 
             iCurrentScale = iDefaultDesignScale
             oCurrentRule = oSurvey.ScaleRules.FindRule(iCurrentScale)
 
-            Dim oDefaultDesignProperties As cPropertiesCollection = oCurrentRule.DesignProperties
-            sPenHeavyWidth = oDefaultDesignProperties.GetValue("BaseHeavyLinesScaleFactor", 8)
-            sPenMediumWidth = oDefaultDesignProperties.GetValue("BaseMediumLinesScaleFactor", 3)
-            sPenLightWidth = oDefaultDesignProperties.GetValue("BaseLightLinesScaleFactor", 1)
-            sPenUltralightWidth = oDefaultDesignProperties.GetValue("BaseUltraLightLinesScaleFactor", 0.3)
-            oDefaultTextFont = oSurvey.Properties.DesignProperties.GetValue("DesignTextFont", New cFont(oSurvey, "Tahoma", 8, Color.Black))
+            'Dim oDefaultDesignProperties As cPropertiesCollection = oCurrentRule.DesignProperties
+            'sPenHeavyWidth = oDefaultDesignProperties.GetValue("BaseHeavyLinesScaleFactor", 8)
+            'sPenMediumWidth = oDefaultDesignProperties.GetValue("BaseMediumLinesScaleFactor", 3)
+            'sPenLightWidth = oDefaultDesignProperties.GetValue("BaseLightLinesScaleFactor", 0.5)
+            'sPenUltralightWidth = oDefaultDesignProperties.GetValue("BaseUltraLightLinesScaleFactor", 0.1)
+            'sPenTightWidth = cEditPaintObjects.FilettoPenWidth
+            'oDefaultTextFont = oSurvey.Properties.DesignProperties.GetValue("DesignTextFont", New cFont(oSurvey, "Tahoma", 8, Color.Black))
 
             bDrawSurfaceProfile = modXML.GetAttributeValue(Options, "drawsurfaceprofile", True)
 
             Try
-                oSurfaceOptions = New cSurfaceOptions(oSurvey, Options.Item("surfaceoptions"))
+                If modXML.ChildElementExist(Options, "surfaceoptions") Then
+                    oSurfaceOptions = New cSurfaceOptions(oSurvey, Options.Item("surfaceoptions"))
+                Else
+                    oSurfaceOptions = New cSurfaceOptions(oSurvey)
+                End If
             Catch ex As Exception
                 oSurfaceOptions = New cSurfaceOptions(oSurvey)
             End Try
@@ -1083,76 +1197,61 @@ Namespace cSurvey.Design
             oPaintObjects = New cPaintObjects(oSurvey)
         End Sub
 
-        Friend Class GetParentEventArgs
-            Inherits EventArgs
-
-            Public Parent As cIProfile
-        End Class
-
-        Friend Event OnGetParent(Sender As Object, Args As GetParentEventArgs)
-
-        Public Overridable Function GetParent() As cIProfile Implements cIOptions.GetParent
-            Dim oArgs As GetParentEventArgs = New GetParentEventArgs
-            RaiseEvent OnGetParent(Me, oArgs)
-            Return oArgs.Parent
-        End Function
-
         Friend Sub New(ByVal Survey As cSurvey, ByVal Options As XmlElement, ByVal Mode As cIOptions.ModeEnum)
+            Call MyBase.New(Survey, Options.Name, Mode)
             oSurvey = Survey
-            sName = Options.Name
-            iMode = Mode
             Call Import(Options)
         End Sub
 
-        Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
-            Dim oXmlOptions As XmlElement = Document.CreateElement(sName)
+        Friend Overrides Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+            Dim oXmlOptions As XmlElement = MyBase.SaveTo(File, Document, Parent)
 
-            oXmlOptions.SetAttribute("drawplot", IIf(bDrawPlot, 1, 0))
-            oXmlOptions.SetAttribute("drawdesign", IIf(bDrawDesign, 1, 0))
-            oXmlOptions.SetAttribute("drawspecialpoints", IIf(bDrawSpecialPoints, 1, 0))
+            oXmlOptions.SetAttribute("drawplot", If(bDrawPlot, 1, 0))
+            oXmlOptions.SetAttribute("drawdesign", If(bDrawDesign, 1, 0))
+            oXmlOptions.SetAttribute("drawspecialpoints", If(bDrawSpecialPoints, 1, 0))
 
             oXmlOptions.SetAttribute("splaystyle", iSplayStyle.ToString("D"))
             oXmlOptions.SetAttribute("designstyle", iDesignStyle.ToString("D"))
             oXmlOptions.SetAttribute("drawstyle", iDrawStyle.ToString("D"))
             'oXmlOptions.SetAttribute("colorstyle", iColorStyle.ToString("D"))
 
-            oXmlOptions.SetAttribute("drawlrud", IIf(bDrawLRUD, 1, 0))
-            oXmlOptions.SetAttribute("drawsplay", IIf(bDrawSplay, 1, 0))
-            oXmlOptions.SetAttribute("drawrings", IIf(bDrawRings, 1, 0))
-            oXmlOptions.SetAttribute("drawsegments", IIf(bDrawSegments, 1, 0))
+            oXmlOptions.SetAttribute("drawlrud", If(bDrawLRUD, 1, 0))
+            oXmlOptions.SetAttribute("drawsplay", If(bDrawSplay, 1, 0))
+            oXmlOptions.SetAttribute("drawrings", If(bDrawRings, 1, 0))
+            oXmlOptions.SetAttribute("drawsegments", If(bDrawSegments, 1, 0))
             oXmlOptions.SetAttribute("drawsegmentsoptions", iDrawSegmentsOptions.ToString("D"))
             oXmlOptions.SetAttribute("showsplaymode", iShowSplayMode.ToString("D"))
 
-            oXmlOptions.SetAttribute("drawpointnames", IIf(bDrawPointNames, 1, 0))
-            oXmlOptions.SetAttribute("drawpoints", IIf(bDrawPoints, 1, 0))
+            oXmlOptions.SetAttribute("drawpointnames", If(bDrawPointNames, 1, 0))
+            oXmlOptions.SetAttribute("drawpoints", If(bDrawPoints, 1, 0))
 
-            oXmlOptions.SetAttribute("drawscale", IIf(bDrawScale, 1, 0))
+            oXmlOptions.SetAttribute("drawscale", If(bDrawScale, 1, 0))
             oXmlOptions.SetAttribute("scalestyle", iScaleStyle.ToString("D"))
             oXmlOptions.SetAttribute("scaleposition", iScalePosition.ToString("D"))
 
-            oXmlOptions.SetAttribute("drawbox", IIf(bDrawBox, 1, 0))
+            oXmlOptions.SetAttribute("drawbox", If(bDrawBox, 1, 0))
             oXmlOptions.SetAttribute("boxposition", iBoxPosition.ToString("D"))
 
-            oXmlOptions.SetAttribute("drawcompass", IIf(bDrawCompass, 1, 0))
+            oXmlOptions.SetAttribute("drawcompass", If(bDrawCompass, 1, 0))
             oXmlOptions.SetAttribute("compassstyle", iCompassStyle.ToString("D"))
             oXmlOptions.SetAttribute("compassposition", iCompassPosition.ToString("D"))
 
-            oXmlOptions.SetAttribute("drawimages", IIf(bDrawImages, 1, 0))
-            oXmlOptions.SetAttribute("drawsketches", IIf(bDrawSketches, 1, 0))
+            oXmlOptions.SetAttribute("drawimages", If(bDrawImages, 1, 0))
+            oXmlOptions.SetAttribute("drawsketches", If(bDrawSketches, 1, 0))
 
-            oXmlOptions.SetAttribute("highlightcurrentcave", IIf(bHighlightCurrentCave, 1, 0))
+            oXmlOptions.SetAttribute("highlightcurrentcave", If(bHighlightCurrentCave, 1, 0))
             oXmlOptions.SetAttribute("highlightmode", iHighlightMode.ToString("D"))
             oXmlOptions.SetAttribute("unselectedcavedrawstyle", iUnselectedCaveDrawStyle.ToString("D"))
-            oXmlOptions.SetAttribute("highlightsegmentsandtrigpoints", IIf(bHighlightSegmentsAndTrigpoints, 1, 0))
+            oXmlOptions.SetAttribute("highlightsegmentsandtrigpoints", If(bHighlightSegmentsAndTrigpoints, 1, 0))
 
-            oXmlOptions.SetAttribute("showpointinformation", IIf(bShowPointInformation, 1, 0))
-            oXmlOptions.SetAttribute("showpointtext", IIf(bShowPointText, 1, 0))
-            oXmlOptions.SetAttribute("showsplaytext", IIf(bShowSplayText, 1, 0))
+            oXmlOptions.SetAttribute("showpointinformation", If(bShowPointInformation, 1, 0))
+            oXmlOptions.SetAttribute("showpointtext", If(bShowPointText, 1, 0))
+            oXmlOptions.SetAttribute("showsplaytext", If(bShowSplayText, 1, 0))
 
-            oXmlOptions.SetAttribute("showadvancedbrushes", IIf(bShowAdvancedBrushes, 1, 0))
+            oXmlOptions.SetAttribute("showadvancedbrushes", If(bShowAdvancedBrushes, 1, 0))
 
-            oXmlOptions.SetAttribute("showsurface", IIf(bShowSurface, 1, 0))
-            oXmlOptions.SetAttribute("showelevation", IIf(bShowElevation, 1, 0))
+            oXmlOptions.SetAttribute("showsurface", If(bShowSurface, 1, 0))
+            oXmlOptions.SetAttribute("showelevation", If(bShowElevation, 1, 0))
 
             oXmlOptions.SetAttribute("currentcavevisibilityprofile", sCurrentCaveVisibilityProfile)
 
@@ -1165,25 +1264,24 @@ Namespace cSurvey.Design
             Call oCompassOptions.SaveTo(File, Document, oXmlOptions)
             Call oScaleOptions.SaveTo(File, Document, oXmlOptions)
 
-            Call oXmlOptions.SetAttribute("drawtranslation", IIf(bDrawTranslation, 1, 0))
+            Call oXmlOptions.SetAttribute("drawtranslation", If(bDrawTranslation, 1, 0))
             Call oTranslationsOptions.SaveTo(File, Document, oXmlOptions)
 
-            Call oXmlOptions.SetAttribute("drawhls", IIf(bDrawHLs, 1, 0))
+            Call oXmlOptions.SetAttribute("drawhls", If(bDrawHLs, 1, 0))
             Call oHLsOptions.SaveTo(File, Document, oXmlOptions)
 
             Call oXmlOptions.SetAttribute("combinecolormode", iCombineColorMode.ToString("D"))
-            Call oXmlOptions.SetAttribute("combinecolorgray", IIf(bCombineColorGray, 1, 0))
+            Call oXmlOptions.SetAttribute("combinecolorgray", If(bCombineColorGray, 1, 0))
 
             Call oXmlOptions.SetAttribute("centerlinecolormode", iCenterlineColorMode.ToString("D"))
-            Call oXmlOptions.SetAttribute("centerlinecolorgray", IIf(bCenterlineColorGray, 1, 0))
+            Call oXmlOptions.SetAttribute("centerlinecolorgray", If(bCenterlineColorGray, 1, 0))
 
-            Call oXmlOptions.SetAttribute("drawsurfaceprofile", IIf(bDrawSurfaceProfile, 1, 0))
+            Call oXmlOptions.SetAttribute("drawsurfaceprofile", If(bDrawSurfaceProfile, 1, 0))
 
             Call oSurfaceOptions.SaveTo(File, Document, oXmlOptions)
 
             Call oDesignProperties.SaveTo(File, Document, "designproperties", oXmlOptions)
 
-            Call Parent.AppendChild(oXmlOptions)
             Return oXmlOptions
         End Function
 
@@ -1192,7 +1290,10 @@ Namespace cSurvey.Design
                 Return sCurrentCaveVisibilityProfile
             End Get
             Set(value As String)
-                sCurrentCaveVisibilityProfile = value
+                If sCurrentCaveVisibilityProfile <> value Then
+                    sCurrentCaveVisibilityProfile = value
+                    Call PropertyChanged("CurrentCaveVisibilityProfile")
+                End If
             End Set
         End Property
 
@@ -1244,63 +1345,151 @@ Namespace cSurvey.Design
             Return oDesignProperties.GetValue(Name, CurrentRule.DesignProperties.GetValue(Name, oSurvey.Properties.DesignProperties.GetValue(Name, DefaultValue)))
         End Function
 
+        Public Function GetPenHeavyWidth() As Single
+            Return oDesignProperties.GetValue("BaseHeavyLinesScaleFactor", 8.0)
+        End Function
+
+        Public Function GetPenMediumWidth() As Single
+            Return oDesignProperties.GetValue("BaseMediumLinesScaleFactor", 3.0)
+        End Function
+
+        Public Function GetPenLightWidth() As Single
+            Return oDesignProperties.GetValue("BaseLightLinesScaleFactor", 0.5)
+        End Function
+
+        Public Function GetPenUltralightWidth() As Single
+            Return oDesignProperties.GetValue("BaseUltraLightLinesScaleFactor", 0.1)
+        End Function
+
+        Public Function GetDefaultTextFont() As cFont
+            Return oDesignProperties.GetValue("DesignTextFont", New cFont(oSurvey, "Tahoma", 8, Color.Black))
+        End Function
+
         Friend Function GetFontDefaultSize(ByVal Type As cItemFont.FontTypeEnum) As Single
             Select Case Type
                 Case cItemFont.FontTypeEnum.Note
-                    Return oDefaultTextFont.FontSize - 1
+                    Return GetDefaultTextFont.FontSize - 1
                 Case cItemFont.FontTypeEnum.TrigPoint
-                    Return oDefaultTextFont.FontSize
+                    Return GetDefaultTextFont.FontSize
                 Case cItemFont.FontTypeEnum.CaveComplexName
-                    Return oDefaultTextFont.FontSize + 3
+                    Return GetDefaultTextFont.FontSize + 3
                 Case cItemFont.FontTypeEnum.CaveName
-                    Return oDefaultTextFont.FontSize + 2
+                    Return GetDefaultTextFont.FontSize + 2
                 Case cItemFont.FontTypeEnum.Title
-                    Return oDefaultTextFont.FontSize + 1
+                    Return GetDefaultTextFont.FontSize + 1
                 Case cItemFont.FontTypeEnum.Generic
-                    Return oDefaultTextFont.FontSize
+                    Return GetDefaultTextFont.FontSize
                 Case cItemFont.FontTypeEnum.Custom
-                    Return oDefaultTextFont.FontSize
+                    Return GetDefaultTextFont.FontSize
             End Select
         End Function
 
         Friend Function GetPenDefaultWidth(ByVal Type As cPen.PenTypeEnum) As Single
             Select Case Type
                 Case cPen.PenTypeEnum.None
-                    Return 0
+                    Return cEditPaintObjects.FilettoPenWidth
                 Case cPen.PenTypeEnum.GenericPen, cPen.PenTypeEnum.PresumedGenericPen
-                    Return sPenUltralightWidth
+                    Return GetPenUltralightWidth()
                 Case cPen.PenTypeEnum.CavePen, cPen.PenTypeEnum.PresumedCavePen, cPen.PenTypeEnum.TooNarrowCavePen, cPen.PenTypeEnum.UnderlyingCavePen
-                    Return sPenHeavyWidth
+                    Return GetPenHeavyWidth()
                 Case cPen.PenTypeEnum.Pen, cPen.PenTypeEnum.PresumedPen
-                    Return sPenMediumWidth
+                    Return GetPenMediumWidth()
                 Case cPen.PenTypeEnum.TightPen, cPen.PenTypeEnum.PresumedTightPen
-                    Return sPenTightWidth
+                    Return cEditPaintObjects.FilettoPenWidth
                 Case cPen.PenTypeEnum.GradientUpPen, cPen.PenTypeEnum.PresumedGradientUpPen
-                    Return sPenMediumWidth
+                    Return GetPenMediumWidth()
                 Case cPen.PenTypeEnum.GradientDownPen, cPen.PenTypeEnum.PresumedGradientDownPen
-                    Return sPenMediumWidth
+                    Return GetPenMediumWidth()
                 Case cPen.PenTypeEnum.CliffUpPen, cPen.PenTypeEnum.PresumedCliffUpPen
-                    Return sPenMediumWidth
+                    Return GetPenMediumWidth()
                 Case cPen.PenTypeEnum.CliffDownPen, cPen.PenTypeEnum.PresumedCliffDownPen
-                    Return sPenMediumWidth
+                    Return GetPenMediumWidth()
                 Case cPen.PenTypeEnum.OverhangUpPen, cPen.PenTypeEnum.PresumedOverhangUpPen
-                    Return sPenMediumWidth
+                    Return GetPenMediumWidth()
                 Case cPen.PenTypeEnum.OverhangDownPen, cPen.PenTypeEnum.PresumedOverhangDownPen
-                    Return sPenMediumWidth
+                    Return GetPenMediumWidth()
+                Case cPen.PenTypeEnum.MeanderPen, cPen.PenTypeEnum.PresumedMeanderPen
+                    Return GetPenMediumWidth()
+                Case cPen.PenTypeEnum.IcePen, cPen.PenTypeEnum.PresumedIcePen
+                    Return GetPenMediumWidth()
                 Case cPen.PenTypeEnum.Custom
-                    Return 0
+                    Return cEditPaintObjects.FilettoPenWidth
             End Select
         End Function
 
-        Private Sub oSurvey_OnPropertiesChanged(Sender As cSurvey, Args As cSurvey.OnPropertiesChangedEventArgs) Handles oSurvey.OnPropertiesChanged
-            If Not oCurrentRule Is Nothing Then
-                Dim oDesignProperties As cPropertiesCollection = oCurrentRule.DesignProperties
-                sPenHeavyWidth = oDesignProperties.GetValue("BaseHeavyLinesScaleFactor", 8)
-                sPenMediumWidth = oDesignProperties.GetValue("BaseMediumLinesScaleFactor", 3)
-                sPenLightWidth = oDesignProperties.GetValue("BaseLightLinesScaleFactor", 1)
-                sPenUltralightWidth = oDesignProperties.GetValue("BaseUltraLightLinesScaleFactor", 0.3)
-                oDefaultTextFont = oDesignProperties.GetValue("DesignTextFont", New cFont(oSurvey, "Tahoma", 8, Color.Black))
-            End If
+        'Private Sub oSurvey_OnPropertiesChanged(Sender As cSurvey, Args As cSurvey.OnPropertiesChangedEventArgs) Handles oSurvey.OnPropertiesChanged
+        '    If Not oCurrentRule Is Nothing Then
+        '        'Dim oDesignProperties As cPropertiesCollection = oCurrentRule.DesignProperties
+        '        sPenHeavyWidth = oDesignProperties.GetValue("BaseHeavyLinesScaleFactor", 8)
+        '        sPenMediumWidth = oDesignProperties.GetValue("BaseMediumLinesScaleFactor", 3)
+        '        sPenLightWidth = oDesignProperties.GetValue("BaseLightLinesScaleFactor", 0.5)
+        '        sPenUltralightWidth = oDesignProperties.GetValue("BaseUltraLightLinesScaleFactor", 0.1)
+        '        sPenTightWidth = cEditPaintObjects.FilettoPenWidth
+        '        oDefaultTextFont = oDesignProperties.GetValue("DesignTextFont", New cFont(oSurvey, "Tahoma", 8, Color.Black))
+        '    End If
+        'End Sub
+
+        Private Sub oTranslationsOptions_OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Handles oTranslationsOptions.OnPropertyChanged
+            Call PropertyChanged("Translations." & e.Name)
+        End Sub
+
+        Private Sub oHLsOptions_OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Handles oHLsOptions.OnPropertyChanged
+            Call PropertyChanged("HLs." & e.Name)
+        End Sub
+
+        Private Sub oSurfaceOptions_OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Handles oSurfaceOptions.OnPropertyChanged
+            Call PropertyChanged("Surface." & e.Name)
+        End Sub
+
+        Private Sub oScaleOptions_OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Handles oScaleOptions.OnPropertyChanged
+            Call PropertyChanged("Scale." & e.Name)
+        End Sub
+
+        Private Sub oInfoboxOptions_OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Handles oInfoboxOptions.OnPropertyChanged
+            Call PropertyChanged("Infobox." & e.Name)
+        End Sub
+
+        Private Sub oCompassOptions_OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Handles oCompassOptions.OnPropertyChanged
+            Call PropertyChanged("CompassOptions." & e.Name)
+        End Sub
+
+        Private Sub oDesignProperties_OnGetParent(sender As Object, e As cPropertiesCollection.cGetParentEventArgs) Handles oDesignProperties.OnGetParent
+            e.Parent = CurrentRule.DesignProperties
         End Sub
     End Class
+
+    Namespace Options
+        Public Class cSurfaceBaseOptionsItem
+            Implements cISurfaceBaseOptionsItem
+
+            Private sID As String
+
+            Public Sub New(ID As String)
+                sID = ID
+            End Sub
+            Friend Sub ChangeID(ID As String)
+                If sID <> ID Then
+                    sID = ID
+                End If
+            End Sub
+
+            Public ReadOnly Property ID As String Implements cISurfaceBaseOptionsItem.ID
+                Get
+                    Return sID
+                End Get
+            End Property
+
+            Friend Overridable Function SaveTo(Name As String, ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
+                Dim oXMLSurfaceOptionsItem As XmlElement = Document.CreateElement(Name)
+                Call oXMLSurfaceOptionsItem.SetAttribute("id", sID)
+                Call Parent.AppendChild(oXMLSurfaceOptionsItem)
+                Return oXMLSurfaceOptionsItem
+            End Function
+
+            Friend Sub New(Item As XmlElement)
+                sID = Item.GetAttribute("id")
+            End Sub
+        End Class
+
+    End Namespace
 End Namespace

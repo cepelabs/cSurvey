@@ -7,6 +7,14 @@ Imports System.Collections.ObjectModel
 
 Namespace cSurvey.Design.Options
     Public Class cInfoBoxOptions
+        Implements cIUIBaseInteractions
+
+        Public Event OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Implements cIUIBaseInteractions.OnPropertyChanged
+
+        Public Sub PropertyChanged(Name As String) Implements cIUIBaseInteractions.PropertyChanged
+            RaiseEvent OnPropertyChanged(Me, New PropertyChangeEventArgs(Name))
+        End Sub
+
         Private oSurvey As cSurvey
 
         Private WithEvents oIDFont As cItemFont
@@ -20,6 +28,18 @@ Namespace cSurvey.Design.Options
         Private sWidth As Single
 
         'Friend Event OnChange(ByVal sender As cInfoBoxOptions)
+
+        Private Sub oIDFont_OnChanged(Sender As cItemFont) Handles oIDFont.OnChanged
+            Call PropertyChanged("IDFont")
+        End Sub
+
+        Private Sub oTextFont_OnChanged(Sender As cItemFont) Handles oTextFont.OnChanged
+            Call PropertyChanged("TextFont")
+        End Sub
+
+        Private Sub oTitleFont_OnChanged(Sender As cItemFont) Handles oTitleFont.OnChanged
+            Call PropertyChanged("TitleFont")
+        End Sub
 
         Public ReadOnly Property IDFont As cItemFont
             Get
@@ -46,6 +66,7 @@ Namespace cSurvey.Design.Options
             Set(value As Single)
                 If sWidth <> value Then
                     sWidth = value
+                    Call PropertyChanged("Width")
                 End If
             End Set
         End Property
@@ -57,7 +78,7 @@ Namespace cSurvey.Design.Options
             Set(ByVal value As Boolean)
                 If bTitleVisible <> value Then
                     bTitleVisible = value
-                    'RaiseEvent OnChange(Me)
+                    Call PropertyChanged("TitleVisible")
                 End If
             End Set
         End Property
@@ -69,7 +90,7 @@ Namespace cSurvey.Design.Options
             Set(ByVal value As Boolean)
                 If bTextVisible <> value Then
                     bTextVisible = value
-                    'RaiseEvent OnChange(Me)
+                    Call PropertyChanged("TextVisible")
                 End If
             End Set
         End Property
@@ -81,7 +102,7 @@ Namespace cSurvey.Design.Options
             Set(ByVal value As Boolean)
                 If bIDVisible <> value Then
                     bIDVisible = value
-                    'RaiseEvent OnChange(Me)
+                    Call PropertyChanged("IDVisible")
                 End If
             End Set
         End Property
@@ -99,7 +120,6 @@ Namespace cSurvey.Design.Options
             bTitleVisible = InfoBoxOptions.bTitleVisible
             bTextVisible = InfoBoxOptions.bTextVisible
             sWidth = InfoBoxOptions.sWidth
-            'RaiseEvent OnChange(Me)
         End Sub
 
         Friend Sub New(ByVal InfoBoxOptions As cInfoBoxOptions)
@@ -177,5 +197,6 @@ Namespace cSurvey.Design.Options
             Call Parent.AppendChild(oXMLInfoBoxOptions)
             Return oXMLInfoBoxOptions
         End Function
+
     End Class
 End Namespace

@@ -1,161 +1,140 @@
 ﻿Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
-
+Imports cSurveyPC.cSurvey.UIHelpers
+Imports DevExpress.XtraEditors.Controls
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
 
-friend Class frmInfoOrientation
+Friend Class frmInfoOrientation
     Private oSurvey As cSurvey.cSurvey
+    Private bEventDisabled As Boolean
 
-    Friend Sub New(ByVal Survey As cSurvey.cSurvey, Optional ByVal Cave As String = "")
+    Friend Sub New(ByVal Survey As cSurvey.cSurvey, ShowLinkedSurveys As Boolean, Optional ByVal Cave As String = "")
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
         oSurvey = Survey
-        Call pRefreshCaveList(Cave)
+        pnlLinkedSurveys.Visible = oSurvey.Properties.GPS.Enabled AndAlso ShowLinkedSurveys AndAlso oSurvey.LinkedSurveys.Count > 0
+
+        bEventDisabled = True
+        txtPetalsStep.EditValue = modNumbers.StringToDecimal(oSurvey.SharedSettings.GetValue("chart.bearings.step", "10"))
+        chkSplay.Checked = oSurvey.SharedSettings.GetValue("chart.bearings.splay", "0")
+        bEventDisabled = False
+
+        Call pRefreshSurveyList()
+        Call pRefreshCaveList(Survey, Cave)
         Call pRefreshNordInfo()
     End Sub
 
-    Private Sub pDrawCompass(TrueNord As Boolean, Year As Integer)
-        Dim oImage As Image = New Bitmap(picNord.Width, picNord.Height)
-        Dim oGr As Graphics = Graphics.FromImage(oImage)
-        oGr.SmoothingMode = SmoothingMode.AntiAlias
-        oGr.CompositingQuality = CompositingQuality.HighQuality
-        oGr.TextRenderingHint = Drawing.Text.TextRenderingHint.ClearTypeGridFit
+    Private Sub pRefreshSurveyList()
+        Call cboSurveyInfoFilename.Properties.Items.Clear()
+        cboSurveyInfoFilename.Properties.Items.Add(cSurveyPlaceholder.Empty)
+        cboSurveyInfoFilename.Properties.Items.Add(New cSurveyPlaceholder(oSurvey))
+        For Each oLinkedSurvey As cLinkedSurvey In oSurvey.LinkedSurveys.GetUsable
+            Call cboSurveyInfoFilename.Properties.Items.Add(New cSurveyPlaceholder(oLinkedSurvey))
+        Next
+        cboSurveyInfoFilename.SelectedIndex = 1
+    End Sub
 
-        Dim oPath As GraphicsPath = New GraphicsPath
+    Private Sub cboSurveyInfoFilename_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboSurveyInfoFilename.SelectedIndexChanged
+        Dim oSurveyItem As cSurveyPlaceholder = cboSurveyInfoFilename.SelectedItem
+        chkShowFileDistinct.Enabled = oSurveyItem.IsSystem
+        Call pRefreshCaveList(oSurveyItem.Survey)
+        Call pRefreshChart()
+    End Sub
 
-        Dim iX As Integer = picNord.Width / 2
-        Dim iY As Integer = picNord.Height - picNord.Height / 3
-
-        Dim iBorder As Integer = 4
-        Dim iRadius As Integer = picNord.Height * 30 / 100
-        Dim iRadiusFactor As Integer = 5
-        Dim iSize As Integer = iRadius * 2
-        Dim oArrowPen As Pen = New Pen(Color.Black, -1)
-        Dim oArrowBrush As Brush = New SolidBrush(Color.Black)
-        Dim iPosX As Integer = iX + iRadiusFactor + iBorder
-        Dim iPosY As Integer = iY
-        Dim oPoints(3) As PointF
-        oPoints(0) = New Point(iPosX, iPosY - iRadius)
-        oPoints(1) = New Point(iPosX - iRadius / iRadiusFactor, iPosY + iRadius / iRadiusFactor)
-        oPoints(2) = New Point(iPosX, iPosY)
-        oPoints(3) = New Point(iPosX + iRadius / iRadiusFactor, iPosY + iRadius / iRadiusFactor)
-        Call oGr.FillPolygon(oArrowBrush, oPoints)
-        Call oGr.DrawPolygon(oArrowPen, oPoints)
-
-        Dim oSF As StringFormat = New StringFormat
-        oSF.Alignment = StringAlignment.Center
-        oSF.LineAlignment = StringAlignment.Center
-        Dim sNord As String
-        If TrueNord Then
-            sNord = "N"
+    Private Sub pRefreshCaveList(Survey As cSurvey.cSurvey, Optional Cave As String = Nothing)
+        If IsNothing(Survey) Then
+            cboSurveyInfoCave.Enabled = False
         Else
-            sNord = "Nm " & Year
+            cboSurveyInfoCave.Enabled = True
+            cboSurveyInfoCave.Properties.DataSource = Survey.Properties.CaveInfos.GetWithEmpty.Select(Function(oitem) oitem.Value).ToList
+            If Cave Is Nothing Then
+                cboSurveyInfoCave.EditValue = cboSurveyInfoCave.Properties.DataSource(0)
+            Else
+                cboSurveyInfoCave.EditValue = Survey.Properties.CaveInfos(Cave)
+            End If
         End If
-        Call oGr.DrawString(sNord, New Font("Arial", 18, FontStyle.Bold), oArrowBrush, New RectangleF(iPosX - iRadius, iPosY - iRadius - 16, iRadius * 2, 16), oSF)
-
-        picNord.Image = oImage
+        Call cboSurveyInfoCave_EditValueChanged(cboSurveyInfoCave, EventArgs.Empty)
     End Sub
 
     Private Sub pRefreshNordInfo()
-        Call grdNordInfo.Rows.Clear()
-        Dim bTrueNord As Boolean = oSurvey.Properties.GPS.Enabled Or (oSurvey.Properties.NordCorrectionMode = cSurvey.cSurvey.NordCorrectionModeEnum.DeclinationBySession)
-        If bTrueNord Then
-            Call grdNordInfo.Rows.Add(GetLocalizedString("infoorientation.textpart1"), GetLocalizedString("infoorientation.textpart2"))
-        Else
-            Call grdNordInfo.Rows.Add(GetLocalizedString("infoorientation.textpart1"), GetLocalizedString("infoorientation.textpart3"))
-        End If
-        Call grdNordInfo.Rows.Add(GetLocalizedString("infoorientation.textpart4"), Strings.Format(oSurvey.Calculate.GeoMagDeclinationData.MeridianConvergence, "0.000") & "°")
+        Cursor = Cursors.WaitCursor
 
+        Call grdSurveyInfo.BeginUpdate()
+        Call grdSurveyInfo.ClearAll()
+
+        Dim bTrueNord As Boolean = oSurvey.Properties.GPS.Enabled OrElse (oSurvey.Properties.NordCorrectionMode = cSurvey.cSurvey.NordCorrectionModeEnum.DeclinationBySession)
+        If bTrueNord Then
+            Call grdSurveyInfo.RowAdd("data0", GetLocalizedString("infoorientation.textpart1"), GetLocalizedString("infoorientation.textpart2"))
+        Else
+            Call grdSurveyInfo.RowAdd("data0", GetLocalizedString("infoorientation.textpart1"), GetLocalizedString("infoorientation.textpart3"))
+        End If
+        Call grdSurveyInfo.RowAdd("data1", GetLocalizedString("infoorientation.textpart4"), Strings.Format(oSurvey.Calculate.GeoMagDeclinationData.MeridianConvergence, "0.000") & "°")
+
+        Dim oDecMagRow As DevExpress.XtraVerticalGrid.Rows.EditorRow = grdSurveyInfo.RowAdd("data2", GetLocalizedString("infoorientation.textpart8"), "")
         Dim oSurveyYears As List(Of Integer) = oSurvey.Properties.Sessions.GetSurveyYears
-        Call grdDecMagValues.Rows.Clear()
         With oSurvey.Calculate.GeoMagDeclinationData
             For Each oDate As Date In .GetDates
-                Dim iRowIndex As Integer = grdDecMagValues.Rows.Add(Strings.Format(oDate, "dd/MM/yyyy"), Strings.Format(.Item(oDate), "0.000") & "°")
-                If oSurveyYears.Contains(oDate.Year) Then
-                    grdDecMagValues.Rows(iRowIndex).DefaultCellStyle.BackColor = Color.LightGreen
-                End If
+                Dim oRow As DevExpress.XtraVerticalGrid.Rows.EditorRow = grdSurveyInfo.RowAdd(oDecMagRow, "data_" & oDate.ToString("O"), oDate.ToShortDateString, Strings.Format(.Item(oDate), "0.000") & "°")
             Next
         End With
 
-        Dim iYear As Integer
-        Try
-            iYear = oSurveyYears.Last
-        Catch ex As Exception
-            iYear = Today.Year
-        End Try
-        Call pDrawCompass(bTrueNord, iYear)
+        Call grdSurveyInfo.RefreshDataSource()
+        Call grdSurveyInfo.EndUpdate()
+        Cursor = Cursors.Default
     End Sub
 
-    Private Sub cboSurveyInfoCave_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboSurveyInfoCave.SelectedIndexChanged
-        Call pRefreshInfo()
-    End Sub
-
-    Private Sub pRefreshCaveList(ByVal CurrentCave As String)
-        Dim sCurrentCave As String = "" & CurrentCave
-        Dim oEmptyCaveInfo As cCaveInfo = oSurvey.Properties.CaveInfos.GetEmptyCaveInfo
-        Dim oSurveyInfoCave As cCaveInfo
-        Try
-            If sCurrentCave = "" Then
-                oSurveyInfoCave = cboSurveyInfoCave.SelectedItem
-            Else
-                oSurveyInfoCave = oSurvey.Properties.CaveInfos(sCurrentCave)
-            End If
-        Catch
-        End Try
-        Call cboSurveyInfoCave.Items.Clear()
-        Call cboSurveyInfoCave.Items.Add(oEmptyCaveInfo)
-        For Each oCaveInfo As cCaveInfo In oSurvey.Properties.CaveInfos
-            Call cboSurveyInfoCave.Items.Add(oCaveInfo)
-        Next
-        Try
-            If oSurveyInfoCave Is Nothing Then
-                cboSurveyInfoCave.SelectedIndex = 0
-            Else
-                cboSurveyInfoCave.SelectedItem = oSurveyInfoCave
-            End If
-        Catch
-            cboSurveyInfoCave.SelectedIndex = 0
-        End Try
-    End Sub
-
-    Private Sub pRefreshInfo()
+    Private Sub pRefreshChart()
         Cursor = Cursors.WaitCursor
-        Dim iStep As Integer = 10
 
-        Dim sCurrentCave As String = cboSurveyInfoCave.Text
-        Dim bShowDistinct As Boolean = chkShowCaveDistinct.Checked
-        If sCurrentCave = "" And bShowDistinct Then
-            Try
-                Call chrtBearings.Series.Clear()
-                Call chrtBearings.Legends.Clear()
-                Dim oLegend As DataVisualization.Charting.Legend = chrtBearings.Legends.Add(GetLocalizedString("infoorientation.textpart6"))
-                oLegend.Docking = DataVisualization.Charting.Docking.Bottom
-                oLegend.Font = Font
+        Dim iStep As Integer = txtPetalsStep.EditValue
+        Dim bSplay As Boolean = chkSplay.Checked
 
-                For Each oCaveInfo As cCaveInfo In oSurvey.Properties.CaveInfos.GetWithEmpty.Values
-                    Dim sSerieName As String = oCaveInfo.Name
-                    If sSerieName = "" Then sSerieName = GetLocalizedString("infoorientation.textpart5")
-                    Dim oSerie As DataVisualization.Charting.Series = chrtBearings.Series.Add(sSerieName)
-                    oSerie.ChartType = DataVisualization.Charting.SeriesChartType.Polar
-                    oSerie.Font = Font
-                    oSerie.BorderWidth = 2
-                    Dim oAngles As SortedList = New SortedList
-                    For Each oSegment As cSegment In oSurvey.Segments.GetSurveySegments.GetCaveSegments(oCaveInfo)
-                        If oSegment.IsValid And Not oSegment.IsSelfDefined Then
-                            Dim iAngle As Integer = (modPaint.NormalizeAngle(oSegment.Bearing) / iStep) * iStep
-                            If oAngles.Contains(iAngle) Then
-                                Dim iDistance As Integer = oAngles(iAngle)
-                                Call oAngles.Remove(iAngle)
-                                Call oAngles.Add(iAngle, oSegment.Distance + iDistance)
-                            Else
-                                Call oAngles.Add(iAngle, oSegment.Distance)
-                            End If
-                        End If
-                    Next
+        Dim oCurrentSurvey As cSurvey.cSurvey = cboSurveyInfoFilename.EditValue.survey
 
+        Dim oSurveys As Dictionary(Of cSurvey.cSurvey, List(Of cCaveInfo)) = New Dictionary(Of cSurvey.cSurvey, List(Of cCaveInfo))
+        If oCurrentSurvey Is Nothing Then
+            For Each oSurveyplaceholder As cSurveyPlaceholder In cboSurveyInfoFilename.Properties.Items
+                If Not oSurveyplaceholder.IsSystem Then
+                    Call oSurveys.Add(oSurveyplaceholder.Survey, New List(Of cCaveInfo))
+                End If
+            Next
+        Else
+            oSurveys.Add(oCurrentSurvey, New List(Of cCaveInfo))
+        End If
+
+        Dim bShowFileDistinct As Boolean = chkShowFileDistinct.Enabled AndAlso chkShowFileDistinct.Checked
+        Dim bShowCaveDistinct As Boolean = chkShowCaveDistinct.Enabled AndAlso chkShowCaveDistinct.Checked
+
+        Dim sCurrentCave As String = If(cboSurveyInfoCave.Enabled, If(cboSurveyInfoCave.EditValue Is Nothing, "", cboSurveyInfoCave.EditValue.Name), "")
+        If sCurrentCave = "" Then
+            For Each oSurvey As cSurvey.cSurvey In oSurveys.Keys
+                For Each oCaveInfo As cCaveInfo In oSurvey.Properties.CaveInfos.GetAllCaves.Values
+                    Call oSurveys(oSurvey).Add(oCaveInfo)
+                Next
+            Next
+        Else
+            'for each but survey have to be only one...the one with the current cave
+            For Each oSurvey As cSurvey.cSurvey In oSurveys.Keys
+                Call oSurveys(oCurrentSurvey).Add(oSurvey.Properties.CaveInfos(sCurrentCave))
+            Next
+        End If
+
+        Dim oAngles As SortedList = New SortedList
+        Dim oSerie As DevExpress.XtraCharts.Series
+        'Try
+        Call chrtBearings.Series.Clear()
+        Call chrtBearings.Legends.Clear()
+
+        Dim oLegend As DevExpress.XtraCharts.Legend = New DevExpress.XtraCharts.Legend(modMain.GetLocalizedString("infoorientation.textpart6"))
+        Call chrtBearings.Legends.Add(oLegend)
+        oLegend.Visibility = DevExpress.Utils.DefaultBoolean.True
+
+        For Each oSurvey As cSurvey.cSurvey In oSurveys.Keys
+            If bShowFileDistinct AndAlso Not bShowCaveDistinct Then
+                If oAngles.Count > 0 Then
                     For iAngle = 0 To 359 Step iStep
                         Dim iValue As Integer = 0
                         If oAngles.Contains(iAngle) Then
@@ -164,61 +143,81 @@ friend Class frmInfoOrientation
                             iValue = 0
                         End If
                         For iSubAngle = iAngle To iAngle + iStep - 1
-                            Call oSerie.Points.AddXY(iSubAngle, iValue)
+                            Call oSerie.Points.AddPoint(iSubAngle, iValue)
                         Next
                     Next
-                Next
-            Catch ex As Exception
-            End Try
-        Else
-            Try
-                Call chrtBearings.Series.Clear()
-                Call chrtBearings.Legends.Clear()
-                Dim oLegend As DataVisualization.Charting.Legend = chrtBearings.Legends.Add(GetLocalizedString("infoorientation.textpart6"))
-                oLegend.Docking = DataVisualization.Charting.Docking.Bottom
-                oLegend.Font = Font
-
-                Dim sSerieName As String = sCurrentCave
-                If sSerieName = "" Then sSerieName = GetLocalizedString("infoorientation.textpart7")
-
-                Dim oSerie As DataVisualization.Charting.Series = chrtBearings.Series.Add(sSerieName)
-                oSerie.ChartType = DataVisualization.Charting.SeriesChartType.Polar
-                oSerie.Font = Font
-                oSerie.BorderWidth = 2
-                Dim oAngles As SortedList = New SortedList
-                Dim oSegments As cISegmentCollection
-                If sCurrentCave = "" Then
-                    oSegments = oSurvey.Segments.GetSurveySegments
+                    Call oAngles.Clear()
                 Else
-                    oSegments = oSurvey.Segments.GetSurveySegments.GetCaveSegments(sCurrentCave)
+                    If oSerie IsNot Nothing Then oSerie.Visible = False
                 End If
-                For Each oSegment As cSegment In oSegments
-                    If oSegment.IsValid And Not oSegment.IsSelfDefined Then
-                        Dim iAngle As Integer = (modPaint.NormalizeAngle(oSegment.Bearing) / iStep) * iStep
+                Dim sSerieName As String = oSurvey.Name
+                If sSerieName = "" Then sSerieName = GetLocalizedString("infoorientation.textpart5")
+                oSerie = chrtBearings.Series(chrtBearings.Series.Add(sSerieName, DevExpress.XtraCharts.ViewType.RadarArea))
+                Dim oView As DevExpress.XtraCharts.RadarAreaSeriesView = oSerie.View
+                oView.MarkerVisibility = DevExpress.Utils.DefaultBoolean.False
+            End If
+            For Each oCaveInfo As cCaveInfo In oSurveys(oSurvey)
+                If bShowCaveDistinct Then
+                    If oAngles.Count > 0 Then
+                        For iAngle = 0 To 359 Step iStep
+                            Dim iValue As Integer = 0
+                            If oAngles.Contains(iAngle) Then
+                                iValue = oAngles(iAngle)
+                            Else
+                                iValue = 0
+                            End If
+                            For iSubAngle = iAngle To iAngle + iStep - 1
+                                Call oSerie.Points.AddPoint(iSubAngle, iValue)
+                            Next
+                        Next
+                        Call oAngles.Clear()
+                    Else
+                        If oSerie IsNot Nothing Then oSerie.Visible = False
+                    End If
+                    Dim sSerieName As String = oSurvey.Name & " - " & oCaveInfo.Name
+                    If sSerieName = "" Then sSerieName = GetLocalizedString("infoorientation.textpart5")
+                    oSerie = chrtBearings.Series(chrtBearings.Series.Add(sSerieName, DevExpress.XtraCharts.ViewType.RadarArea))
+                    Dim oView As DevExpress.XtraCharts.RadarAreaSeriesView = oSerie.View
+                    oView.MarkerVisibility = DevExpress.Utils.DefaultBoolean.False
+                End If
+
+                For Each oSegment As cSegment In oSurvey.Segments.GetSurveySegments.GetCaveSegments(oCaveInfo)
+                    If oSegment.IsValid AndAlso Not oSegment.IsSelfDefined AndAlso (bSplay OrElse (Not bSplay AndAlso Not oSegment.Splay)) Then
+                        Dim iAngle As Integer = (modPaint.NormalizeAngle(oSegment.Data.Data.Bearing) \ iStep) * iStep
                         If oAngles.Contains(iAngle) Then
                             Dim iDistance As Integer = oAngles(iAngle)
                             Call oAngles.Remove(iAngle)
-                            Call oAngles.Add(iAngle, oSegment.Distance + iDistance)
+                            Call oAngles.Add(iAngle, oSegment.Data.Data.Distance + iDistance)
                         Else
-                            Call oAngles.Add(iAngle, oSegment.Distance)
+                            Call oAngles.Add(iAngle, oSegment.Data.Data.Distance)
                         End If
                     End If
                 Next
-
-                For iAngle = 0 To 359 Step iStep
-                    Dim iValue As Integer = 0
-                    If oAngles.Contains(iAngle) Then
-                        iValue = oAngles(iAngle)
-                    Else
-                        iValue = 0
-                    End If
-                    For iSubAngle = iAngle To iAngle + iStep - 1
-                        Call oSerie.Points.AddXY(iSubAngle, iValue)
-                    Next
+            Next
+        Next
+        If Not bShowCaveDistinct Then
+            If oSerie Is Nothing Then
+                Dim sSerieName As String = GetLocalizedString("infoorientation.textpart7") 'oSurveys.Keys.FirstOrDefault.Name
+                oSerie = chrtBearings.Series(chrtBearings.Series.Add(sSerieName, DevExpress.XtraCharts.ViewType.RadarArea))
+                Dim oView As DevExpress.XtraCharts.RadarAreaSeriesView = oSerie.View
+                oView.MarkerVisibility = DevExpress.Utils.DefaultBoolean.False
+            End If
+        End If
+        If oAngles.Count > 0 Then
+            For iAngle = 0 To 359 Step iStep
+                Dim iValue As Integer = 0
+                If oAngles.Contains(iAngle) Then
+                    iValue = oAngles(iAngle)
+                Else
+                    iValue = 0
+                End If
+                For iSubAngle = iAngle To iAngle + iStep - 1
+                    Call oSerie.Points.AddPoint(iSubAngle, iValue)
                 Next
-            Catch ex As Exception
-            End Try
-
+            Next
+            Call oAngles.Clear()
+        Else
+            If oSerie IsNot Nothing Then oSerie.Visible = False
         End If
 
         Cursor = Cursors.Default
@@ -229,12 +228,55 @@ friend Class frmInfoOrientation
     End Sub
 
     Private Sub chkShowCaveDistinct_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles chkShowCaveDistinct.CheckedChanged
-        Call pRefreshInfo()
+        Call pRefreshChart()
     End Sub
 
     Private Sub frmInfoOrientation_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.F5 Then
             Call pRefreshNordInfo()
         End If
+    End Sub
+
+    Private Sub cboSurveyInfoCave_EditValueChanged(sender As Object, e As EventArgs) Handles cboSurveyInfoCave.EditValueChanged
+        If cboSurveyInfoCave.Enabled Then
+            chkShowCaveDistinct.Enabled = If(cboSurveyInfoCave.EditValue Is Nothing, "", cboSurveyInfoCave.EditValue.Name) = ""
+        Else
+            chkShowCaveDistinct.Enabled = True
+        End If
+        Call pRefreshChart()
+    End Sub
+
+    Private Sub chkShowFileDistinct_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowFileDistinct.CheckedChanged
+        Call pRefreshChart()
+    End Sub
+
+    Private Sub cmdOptions_Click(sender As Object, e As EventArgs) Handles cmdOptions.Click
+        flyParameters.ShowBeakForm(True)
+    End Sub
+
+    Private Sub txtPetalsStep_EditValueChanged(sender As Object, e As EventArgs) Handles txtPetalsStep.EditValueChanged
+        If Not bEventDisabled AndAlso oSurvey IsNot Nothing Then
+            Call oSurvey.SharedSettings.SetValue("chart.bearings.petals", modNumbers.NumberToString(txtPetalsStep.EditValue, "0"))
+            Call pRefreshChart()
+        End If
+    End Sub
+    Private Sub chkSplay_CheckedChanged(sender As Object, e As EventArgs) Handles chkSplay.CheckedChanged
+        If Not bEventDisabled AndAlso oSurvey IsNot Nothing Then
+            Call oSurvey.SharedSettings.SetValue("chart.bearings.splay", If(chkSplay.Checked, "1", "0"))
+            Call pRefreshChart()
+        End If
+    End Sub
+
+    Private Sub txtPetalsStep_EditValueChanging(sender As Object, e As ChangingEventArgs) Handles txtPetalsStep.EditValueChanging
+        If 360 Mod e.NewValue <> 0 Then
+            Dim iIncrement As Integer = If(e.NewValue > e.OldValue, 1, -1)
+            Do
+                e.NewValue += iIncrement
+            Loop Until 360 Mod e.NewValue = 0 OrElse e.NewValue < 2 OrElse e.NewValue >= 45
+        End If
+    End Sub
+
+    Private Sub cmdExport_Click(sender As Object, e As EventArgs) Handles cmdExport.Click
+        Call modExport.ChartExportTo(oSurvey, chrtBearings, Text, "", Me)
     End Sub
 End Class

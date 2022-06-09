@@ -27,7 +27,9 @@ Partial Class frmProgress
         Me.iml = New System.Windows.Forms.ImageList(Me.components)
         Me.tblPanels = New System.Windows.Forms.TableLayoutPanel()
         Me.pnlDefault = New cSurveyPC.cProgressPanel()
+        Me.SvgImageCollection1 = New DevExpress.Utils.SvgImageCollection(Me.components)
         Me.tblPanels.SuspendLayout()
+        CType(Me.SvgImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'iml
@@ -63,11 +65,25 @@ Partial Class frmProgress
         '
         'pnlDefault
         '
-        Me.pnlDefault.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.pnlDefault.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.pnlDefault.Appearance.Options.UseFont = True
         Me.pnlDefault.Location = New System.Drawing.Point(3, 3)
         Me.pnlDefault.Name = "pnlDefault"
         Me.pnlDefault.Size = New System.Drawing.Size(406, 105)
         Me.pnlDefault.TabIndex = 4
+        '
+        'SvgImageCollection1
+        '
+        Me.SvgImageCollection1.Add("default", "inprogress", GetType(cSurveyPC.My.Resources.Resources))
+        Me.SvgImageCollection1.Add("export", "exportfile", GetType(cSurveyPC.My.Resources.Resources))
+        Me.SvgImageCollection1.Add("open", "open", GetType(cSurveyPC.My.Resources.Resources))
+        Me.SvgImageCollection1.Add("save", "save", GetType(cSurveyPC.My.Resources.Resources))
+        Me.SvgImageCollection1.Add("calculate", "calculatenow", GetType(cSurveyPC.My.Resources.Resources))
+        Me.SvgImageCollection1.Add("import", "import", GetType(cSurveyPC.My.Resources.Resources))
+        Me.SvgImageCollection1.Add("filter", "filter1", GetType(cSurveyPC.My.Resources.Resources))
+        Me.SvgImageCollection1.Add("3d", "charttype_area3dstacked", GetType(cSurveyPC.My.Resources.Resources))
+        Me.SvgImageCollection1.Add("paint", "shading", GetType(cSurveyPC.My.Resources.Resources))
+        Me.SvgImageCollection1.Add("download", "openfromweb", GetType(cSurveyPC.My.Resources.Resources))
         '
         'frmProgress
         '
@@ -75,20 +91,20 @@ Partial Class frmProgress
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(412, 111)
         Me.Controls.Add(Me.tblPanels)
-        Me.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Location = New System.Drawing.Point(0, 0)
+        Me.IconOptions.ShowIcon = False
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmProgress"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.tblPanels.ResumeLayout(False)
+        CType(Me.SvgImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents iml As System.Windows.Forms.ImageList
     Friend WithEvents pnlDefault As cSurveyPC.cProgressPanel
     Friend WithEvents tblPanels As System.Windows.Forms.TableLayoutPanel
+    Friend WithEvents SvgImageCollection1 As DevExpress.Utils.SvgImageCollection
 End Class

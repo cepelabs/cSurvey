@@ -1,29 +1,31 @@
-﻿Friend NotInheritable Class frmAbout
+﻿Imports DevExpress.Utils.Html
 
-    Private Const sCopyrights As String = "" &
-        "Therion" & vbCrLf &
-        "{0} Stacho Mudrák, Martin Budaj" & vbCrLf &
-        "http://therion.speleo.sk" & vbCrLf &
-        "" & vbCrLf &
-        "{1} vbAccelerator" & vbCrLf &
-        "http://vbaccelerator.com" & vbCrLf &
-        "" & vbCrLf &
-        "GeoUtility Library" & vbCrLf &
-        "© Copyright 1989, 1991 Free Software Foundation, Inc." & vbCrLf &
-        "59 Temple Place, Suite 330, Boston, MA 02111-1307 USA" & vbCrLf &
-        "http://geoutility.codeplex.com" & vbCrLf &
-        "" & vbCrLf &
-        "DotNetZip Library" & vbCrLf &
-        "http://dotnetzip.codeplex.com" & vbCrLf &
-        "" & vbCrLf &
-        "Icon set" & vbCrLf &
-        "© Copyright 2011 FatCow Web Hosting. All rights reserved." & vbCrLf &
-        "http://www.fatcow.com/free-icons" & vbCrLf &
-        "" & vbCrLf &
-        "Diacritics " & vbCrLf &
-        "© 2015 Thomas Galliker" & vbCrLf &
-        "https://github.com/thomasgalliker/Diacritics.NET" &
-        "" & vbCrLf
+Friend NotInheritable Class frmAbout
+
+    'Private Const sCopyrights As String = "" &
+    '    "Therion" & vbCrLf &
+    '    "{0} Stacho Mudrák, Martin Budaj" & vbCrLf &
+    '    "http://therion.speleo.sk" & vbCrLf &
+    '    "" & vbCrLf &
+    '    "{1} vbAccelerator" & vbCrLf &
+    '    "http://vbaccelerator.com" & vbCrLf &
+    '    "" & vbCrLf &
+    '    "GeoUtility Library" & vbCrLf &
+    '    "© Copyright 1989, 1991 Free Software Foundation, Inc." & vbCrLf &
+    '    "59 Temple Place, Suite 330, Boston, MA 02111-1307 USA" & vbCrLf &
+    '    "http://geoutility.codeplex.com" & vbCrLf &
+    '    "" & vbCrLf &
+    '    "DotNetZip Library" & vbCrLf &
+    '    "http://dotnetzip.codeplex.com" & vbCrLf &
+    '    "" & vbCrLf &
+    '    "Icon set" & vbCrLf &
+    '    "© Copyright 2011 FatCow Web Hosting. All rights reserved." & vbCrLf &
+    '    "http://www.fatcow.com/free-icons" & vbCrLf &
+    '    "" & vbCrLf &
+    '    "Diacritics " & vbCrLf &
+    '    "© 2015 Thomas Galliker" & vbCrLf &
+    '    "https://github.com/thomasgalliker/Diacritics.NET" &
+    '    "" & vbCrLf
 
     Private Sub frmAbout_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim ApplicationTitle As String
@@ -33,29 +35,51 @@
             ApplicationTitle = System.IO.Path.GetFileNameWithoutExtension(My.Application.Info.AssemblyName)
         End If
         Text = String.Format(GetLocalizedString("about.infoabout.textpart1"), ApplicationTitle)
+
+        htmlMainInfo.HtmlTemplate.Template = htmlMainInfo.HtmlTemplate.Template.Replace("%PRODUCTNAME%", My.Application.Info.ProductName)
+        htmlMainInfo.HtmlTemplate.Template = htmlMainInfo.HtmlTemplate.Template.Replace("%COPYRIGHT%", My.Application.Info.Copyright)
+
         Dim oProcess As Process = Process.GetCurrentProcess()
         Dim sMemoryUsage As String = GetLocalizedString("about.infoabout.textpart2") & ": Working Set: " & oProcess.WorkingSet64 / 1024 & " Kb" ', Totale: " & GC.GetTotalMemory(True) / 1024 & " Kb"
-        lblInfo.Text = My.Application.Info.ProductName & vbCrLf & String.Format(GetLocalizedString("about.infoabout.textpart3"), modMain.GetPackageVersion, modMain.GetReleaseDate.ToString("d")) & vbCrLf & My.Application.Info.Copyright & vbCrLf & sMemoryUsage & vbCrLf & IIf(Environment.Is64BitOperatingSystem, GetLocalizedString("about.infoabout.textpart4a"), GetLocalizedString("about.infoabout.textpart4b")) & " - " & IIf(Environment.Is64BitProcess, "cSurvey 64 bit", "cSurvey 32 bit") & vbCrLf
-        rtfCopyrights.Text = String.Format(sCopyrights, GetLocalizedString("about.infoabout.textpart5"), GetLocalizedString("about.infoabout.textpart6"))
+        lblInfo.Text = String.Format(GetLocalizedString("about.infoabout.textpart3"), modMain.GetPackageVersion, modMain.GetReleaseDate.ToString("d")) & vbCrLf & sMemoryUsage & vbCrLf & IIf(Environment.Is64BitOperatingSystem, GetLocalizedString("about.infoabout.textpart4a"), GetLocalizedString("about.infoabout.textpart4b")) & " - " & IIf(Environment.Is64BitProcess, "cSurvey 64 bit", "cSurvey 32 bit") & vbCrLf
+        'rtfCopyrights.Text = String.Format(sCopyrights, GetLocalizedString("about.infoabout.textpart5"), GetLocalizedString("about.infoabout.textpart6"))
     End Sub
 
     Private Sub OKButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Call Me.Close()
     End Sub
 
-    Private Sub lnkContact_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles lnkContact.LinkClicked
+    Private Sub lnkContact_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs)
         Shell("explorer mailto:info@csurvey.it")
     End Sub
 
-    Private Sub lnkGreetings0_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles lnkGreetings0.LinkClicked
+    Private Sub lnkGreetings0_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs)
         Shell("explorer http://www.fsrer.it")
     End Sub
 
-    Private Sub lnkGreetings1_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles lnkGreetings1.LinkClicked
+    Private Sub lnkGreetings1_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs)
         Shell("explorer http://www.bolognaspeleologia.it")
     End Sub
 
-    Private Sub lnkGreetings2_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles lnkGreetings2.LinkClicked
+    Private Sub lnkGreetings2_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs)
         Shell("explorer http://www.gsb-usb.it")
+    End Sub
+
+    Private Sub htmlCopyright_ElementMouseClick(sender As Object, e As DxHtmlElementMouseEventArgs) Handles htmlCopyright.ElementMouseClick
+        If e.TagName = "a" Then
+            Shell("explorer " & e.ElementId.Substring(4))
+        End If
+    End Sub
+
+    Private Sub htmlLicence_ElementMouseClick(sender As Object, e As DxHtmlElementMouseEventArgs) Handles htmlLicence.ElementMouseClick
+        If e.TagName = "a" Then
+            Shell("explorer " & e.ElementId.Substring(4))
+        End If
+    End Sub
+
+    Private Sub htmlMainInfo_ElementMouseClick(sender As Object, e As DxHtmlElementMouseEventArgs) Handles htmlMainInfo.ElementMouseClick
+        If e.TagName = "a" Then
+            Shell("explorer " & e.ElementId.Substring(4))
+        End If
     End Sub
 End Class

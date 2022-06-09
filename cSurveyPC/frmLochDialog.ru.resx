@@ -121,55 +121,11 @@
     <value>Отмена</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblElevationData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 13</value>
-  </data>
   <data name="lblElevationData.Text" xml:space="preserve">
     <value>Данные рельефа:</value>
   </data>
-  <data name="lblOrthophoto.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 13</value>
-  </data>
   <data name="lblOrthophoto.Text" xml:space="preserve">
     <value>Космоснимок:</value>
-  </data>
-  <data name="chkDoNotShow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 17</value>
-  </data>
-  <data name="PictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-</value>
   </data>
   <data name="lblDescription.Text" xml:space="preserve">
     <value>Запустить Loch с дополнительными данными:</value>

@@ -24,21 +24,20 @@ Partial Class frmWarpingDetails
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmWarpingDetails))
-        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim EditorButtonImageOptions4 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject13 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject14 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject15 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject16 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Me.cmdApply = New System.Windows.Forms.Button()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.chkDontShowWarpingDetails = New System.Windows.Forms.CheckBox()
-        Me.cmdCancelAndPause = New System.Windows.Forms.Button()
-        Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Me.cmdApply = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.chkDontShowWarpingDetails = New DevExpress.XtraEditors.CheckEdit()
+        Me.cmdCancelAndPause = New DevExpress.XtraEditors.SimpleButton()
         Me.grdDetails = New DevExpress.XtraGrid.GridControl()
         Me.gridviewDetails = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colDetailsState = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -65,6 +64,7 @@ Partial Class frmWarpingDetails
         Me.btnShowMoreDetails = New DevExpress.XtraBars.BarCheckItem()
         Me.txtReplacePath = New DevExpress.XtraEditors.Repository.RepositoryItemBreadCrumbEdit()
         Me.mnuDetails = New DevExpress.XtraBars.PopupMenu(Me.components)
+        CType(Me.chkDontShowWarpingDetails.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gridviewDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picDetailsState, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -78,31 +78,31 @@ Partial Class frmWarpingDetails
         resources.ApplyResources(Me.cmdApply, "cmdApply")
         Me.cmdApply.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdApply.Name = "cmdApply"
-        Me.cmdApply.UseVisualStyleBackColor = True
         '
         'cmdCancel
         '
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.cmdCancel.Image = Global.cSurveyPC.My.Resources.Resources.control_stop_blue
+        Me.cmdCancel.ImageOptions.Image = Global.cSurveyPC.My.Resources.Resources.control_stop_blue
+        Me.cmdCancel.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter
+        Me.cmdCancel.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.stop1
+        Me.cmdCancel.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.cmdCancel.Name = "cmdCancel"
-        Me.ToolTip.SetToolTip(Me.cmdCancel, resources.GetString("cmdCancel.ToolTip"))
-        Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'chkDontShowWarpingDetails
         '
         resources.ApplyResources(Me.chkDontShowWarpingDetails, "chkDontShowWarpingDetails")
         Me.chkDontShowWarpingDetails.Name = "chkDontShowWarpingDetails"
-        Me.chkDontShowWarpingDetails.UseVisualStyleBackColor = True
+        Me.chkDontShowWarpingDetails.Properties.Caption = resources.GetString("chkDontShowWarpingDetails.Properties.Caption")
         '
         'cmdCancelAndPause
         '
         resources.ApplyResources(Me.cmdCancelAndPause, "cmdCancelAndPause")
         Me.cmdCancelAndPause.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.cmdCancelAndPause.Image = Global.cSurveyPC.My.Resources.Resources.control_pause_blue
+        Me.cmdCancelAndPause.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter
+        Me.cmdCancelAndPause.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.pause
+        Me.cmdCancelAndPause.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.cmdCancelAndPause.Name = "cmdCancelAndPause"
-        Me.ToolTip.SetToolTip(Me.cmdCancelAndPause, resources.GetString("cmdCancelAndPause.ToolTip"))
-        Me.cmdCancelAndPause.UseVisualStyleBackColor = True
         '
         'grdDetails
         '
@@ -297,9 +297,9 @@ Partial Class frmWarpingDetails
         '
         Me.txtReplacePath.AllowEdit = False
         resources.ApplyResources(Me.txtReplacePath, "txtReplacePath")
-        EditorButtonImageOptions3.Image = Global.cSurveyPC.My.Resources.Resources.arrow_undo
-        EditorButtonImageOptions4.Image = Global.cSurveyPC.My.Resources.Resources.folder
-        Me.txtReplacePath.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtReplacePath.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("txtReplacePath.Buttons1"), CType(resources.GetObject("txtReplacePath.Buttons2"), Integer), CType(resources.GetObject("txtReplacePath.Buttons3"), Boolean), CType(resources.GetObject("txtReplacePath.Buttons4"), Boolean), CType(resources.GetObject("txtReplacePath.Buttons5"), Boolean), EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, resources.GetString("txtReplacePath.Buttons6"), CType(resources.GetObject("txtReplacePath.Buttons7"), Object), CType(resources.GetObject("txtReplacePath.Buttons8"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("txtReplacePath.Buttons9"), DevExpress.Utils.ToolTipAnchor)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtReplacePath.Buttons10"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("txtReplacePath.Buttons11"), CType(resources.GetObject("txtReplacePath.Buttons12"), Integer), CType(resources.GetObject("txtReplacePath.Buttons13"), Boolean), CType(resources.GetObject("txtReplacePath.Buttons14"), Boolean), CType(resources.GetObject("txtReplacePath.Buttons15"), Boolean), EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, resources.GetString("txtReplacePath.Buttons16"), CType(resources.GetObject("txtReplacePath.Buttons17"), Object), CType(resources.GetObject("txtReplacePath.Buttons18"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("txtReplacePath.Buttons19"), DevExpress.Utils.ToolTipAnchor))})
+        EditorButtonImageOptions1.Image = Global.cSurveyPC.My.Resources.Resources.arrow_undo
+        EditorButtonImageOptions2.Image = Global.cSurveyPC.My.Resources.Resources.folder
+        Me.txtReplacePath.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtReplacePath.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("txtReplacePath.Buttons1"), CType(resources.GetObject("txtReplacePath.Buttons2"), Integer), CType(resources.GetObject("txtReplacePath.Buttons3"), Boolean), CType(resources.GetObject("txtReplacePath.Buttons4"), Boolean), CType(resources.GetObject("txtReplacePath.Buttons5"), Boolean), EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, resources.GetString("txtReplacePath.Buttons6"), CType(resources.GetObject("txtReplacePath.Buttons7"), Object), CType(resources.GetObject("txtReplacePath.Buttons8"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("txtReplacePath.Buttons9"), DevExpress.Utils.ToolTipAnchor)), New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtReplacePath.Buttons10"), DevExpress.XtraEditors.Controls.ButtonPredefines), resources.GetString("txtReplacePath.Buttons11"), CType(resources.GetObject("txtReplacePath.Buttons12"), Integer), CType(resources.GetObject("txtReplacePath.Buttons13"), Boolean), CType(resources.GetObject("txtReplacePath.Buttons14"), Boolean), CType(resources.GetObject("txtReplacePath.Buttons15"), Boolean), EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, resources.GetString("txtReplacePath.Buttons16"), CType(resources.GetObject("txtReplacePath.Buttons17"), Object), CType(resources.GetObject("txtReplacePath.Buttons18"), DevExpress.Utils.SuperToolTip), CType(resources.GetObject("txtReplacePath.Buttons19"), DevExpress.Utils.ToolTipAnchor))})
         Me.txtReplacePath.Name = "txtReplacePath"
         Me.txtReplacePath.ShowRootGlyph = False
         '
@@ -313,7 +313,7 @@ Partial Class frmWarpingDetails
         '
         Me.AcceptButton = Me.cmdApply
         resources.ApplyResources(Me, "$this")
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.Controls.Add(Me.cmdCancelAndPause)
         Me.Controls.Add(Me.chkDontShowWarpingDetails)
         Me.Controls.Add(Me.cmdCancel)
@@ -324,8 +324,10 @@ Partial Class frmWarpingDetails
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
         Me.IconOptions.Icon = CType(resources.GetObject("frmWarpingDetails.IconOptions.Icon"), System.Drawing.Icon)
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.warping
         Me.MinimizeBox = False
         Me.Name = "frmWarpingDetails"
+        CType(Me.chkDontShowWarpingDetails.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdDetails, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gridviewDetails, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picDetailsState, System.ComponentModel.ISupportInitialize).EndInit()
@@ -336,11 +338,10 @@ Partial Class frmWarpingDetails
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents cmdApply As Button
-    Friend WithEvents cmdCancel As Button
-    Friend WithEvents chkDontShowWarpingDetails As CheckBox
-    Friend WithEvents cmdCancelAndPause As Button
-    Friend WithEvents ToolTip As ToolTip
+    Friend WithEvents cmdApply As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents chkDontShowWarpingDetails As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents cmdCancelAndPause As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents grdDetails As DevExpress.XtraGrid.GridControl
     Friend WithEvents gridviewDetails As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents colDetailsFrom As DevExpress.XtraGrid.Columns.GridColumn

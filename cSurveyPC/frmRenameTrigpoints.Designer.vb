@@ -23,12 +23,13 @@ Partial Class frmRenameTrigpoints
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmRenameTrigpoints))
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.cmdOk = New System.Windows.Forms.Button()
-        Me.cboOld = New System.Windows.Forms.ComboBox()
-        Me.lblOldTrigPoint = New System.Windows.Forms.Label()
-        Me.lblNewTrigPoint = New System.Windows.Forms.Label()
-        Me.txtNew = New System.Windows.Forms.TextBox()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
+        Me.lblOldTrigPoint = New DevExpress.XtraEditors.LabelControl()
+        Me.lblNewTrigPoint = New DevExpress.XtraEditors.LabelControl()
+        Me.txtNew = New DevExpress.XtraEditors.TextEdit()
+        Me.cboOld = New cSurveyPC.cTrigpointDropDown()
+        CType(Me.txtNew.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdCancel
@@ -36,29 +37,24 @@ Partial Class frmRenameTrigpoints
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'cmdOk
         '
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
-        '
-        'cboOld
-        '
-        Me.cboOld.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.cboOld.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        resources.ApplyResources(Me.cboOld, "cboOld")
-        Me.cboOld.Name = "cboOld"
         '
         'lblOldTrigPoint
         '
+        Me.lblOldTrigPoint.Appearance.Font = CType(resources.GetObject("lblOldTrigPoint.Appearance.Font"), System.Drawing.Font)
+        Me.lblOldTrigPoint.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.lblOldTrigPoint, "lblOldTrigPoint")
         Me.lblOldTrigPoint.Name = "lblOldTrigPoint"
         '
         'lblNewTrigPoint
         '
+        Me.lblNewTrigPoint.Appearance.Font = CType(resources.GetObject("lblNewTrigPoint.Appearance.Font"), System.Drawing.Font)
+        Me.lblNewTrigPoint.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.lblNewTrigPoint, "lblNewTrigPoint")
         Me.lblNewTrigPoint.Name = "lblNewTrigPoint"
         '
@@ -66,6 +62,14 @@ Partial Class frmRenameTrigpoints
         '
         resources.ApplyResources(Me.txtNew, "txtNew")
         Me.txtNew.Name = "txtNew"
+        Me.txtNew.Properties.Appearance.Font = CType(resources.GetObject("txtNew.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.txtNew.Properties.Appearance.Options.UseFont = True
+        '
+        'cboOld
+        '
+        Me.cboOld.EditValue = Nothing
+        resources.ApplyResources(Me.cboOld, "cboOld")
+        Me.cboOld.Name = "cboOld"
         '
         'frmRenameTrigpoints
         '
@@ -73,23 +77,25 @@ Partial Class frmRenameTrigpoints
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
+        Me.Controls.Add(Me.cboOld)
         Me.Controls.Add(Me.txtNew)
         Me.Controls.Add(Me.lblNewTrigPoint)
-        Me.Controls.Add(Me.cboOld)
         Me.Controls.Add(Me.lblOldTrigPoint)
         Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.cmdOk)
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.renamequery
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmRenameTrigpoints"
+        CType(Me.txtNew.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
-    Friend WithEvents cboOld As System.Windows.Forms.ComboBox
-    Friend WithEvents lblOldTrigPoint As System.Windows.Forms.Label
-    Friend WithEvents lblNewTrigPoint As System.Windows.Forms.Label
-    Friend WithEvents txtNew As System.Windows.Forms.TextBox
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents lblOldTrigPoint As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblNewTrigPoint As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtNew As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents cboOld As cTrigpointDropDown
 End Class

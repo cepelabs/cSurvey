@@ -41,7 +41,7 @@ Namespace cSurvey
             End Sub
         End Class
 
-        Friend Event OnSurfaceChange(ByVal Sender As cSurface, ByVal Args As OnSurfaceEventArgs)
+        Friend Event OnSurfaceChange(ByVal Sender As cSurface, ByVal e As OnSurfaceEventArgs)
 
         Friend Sub New(Survey As cSurvey)
             oSurvey = Survey
@@ -91,13 +91,19 @@ Namespace cSurvey
         Private Sub pRebindLocalCollection()
             Call oItems.Clear()
             For Each oItem As cISurfaceItem In oOrthoPhotos
-                Call oItems.Add(oItem.ID, oItem)
+                If Not oItem.IsEmpty Then
+                    Call oItems.Add(oItem.ID, oItem)
+                End If
             Next
             For Each oItem As cISurfaceItem In oElevations
-                Call oItems.Add(oItem.ID, oItem)
+                If Not oItem.IsEmpty Then
+                    Call oItems.Add(oItem.ID, oItem)
+                End If
             Next
             For Each oItem As cISurfaceItem In oWMSs
-                Call oItems.Add(oItem.ID, oItem)
+                If Not oItem.IsEmpty Then
+                    Call oItems.Add(oItem.ID, oItem)
+                End If
             Next
         End Sub
 
@@ -136,13 +142,14 @@ Namespace cSurvey
             Return oXmlItem
         End Function
 
-        Friend Function CreateTherionSurfaceDataFile(BasePath As String, BaseFilename As String, Files As List(Of String)) As String
+        Friend Function CreateTherionSurfaceDataFile(OptionsName As String, BasePath As String, BaseFilename As String, Result As cTherionCalculateResult) As String
+            Dim oOptions As Design.cOptionsTherion = oSurvey.Options(OptionsName)
             Dim sSurfaceBaseFilename As String = Path.GetFileNameWithoutExtension(BaseFilename) & "_surface.txt"
             Dim sSurfaceFilename = Path.Combine(BasePath, sSurfaceBaseFilename)
-            Call Files.Add(sSurfaceFilename)
+            Call Result.Files.Add(sSurfaceFilename)
             Using oSw As StreamWriter = My.Computer.FileSystem.OpenTextFileWriter(sSurfaceFilename, False, System.Text.Encoding.ASCII)
                 Call oSw.WriteLine("surface")
-                Dim oOrthoPhoto As cOrthoPhoto = oOrthoPhotos.Default
+                Dim oOrthoPhoto As cOrthoPhoto = If(oOptions.SurfaceOptions.Orthophoto.ID = "", Nothing, Item(oOptions.SurfaceOptions.Orthophoto.ID))
                 If Not oOrthoPhoto Is Nothing Then
                     If Not oOrthoPhoto.IsEmpty Then 'And oOrthoPhoto.ShowIn3D Then
                         If oOrthoPhoto.System = CoordinateSystemEnum.WGS84 Then
@@ -153,7 +160,7 @@ Namespace cSurvey
                         End If
                         Dim sBitmapBaseFilename As String = "_therion_" & Path.GetFileNameWithoutExtension(BaseFilename) & "_" & oOrthoPhoto.ID & ".jpg"
                         Dim sBitmapFilename As String = Path.Combine(BasePath, sBitmapBaseFilename)
-                        Call Files.Add(sBitmapFilename)
+                        Call Result.Files.Add(sBitmapFilename)
 
                         Call oOrthoPhoto.Photo.Save(sBitmapFilename, System.Drawing.Imaging.ImageFormat.Jpeg)
 
@@ -186,7 +193,7 @@ Namespace cSurvey
                         Call oSw.WriteLine("bitmap " & sBitmapBaseFilename & " [0 0 " & sBLx & " " & sBLy & " " & oOrthoPhoto.Photo.Width & " " & oOrthoPhoto.Photo.Height & " " & sTRx & " " & sTRy & "]")
                     End If
                 End If
-                Dim oElevation As cElevation = oElevations.Default
+                Dim oElevation As cElevation = If(oOptions.SurfaceOptions.Elevation.ID = "", Nothing, Item(oOptions.SurfaceOptions.Elevation.ID))
                 If Not oElevation Is Nothing Then
                     If Not oElevation.IsEmpty Then 'And oElevation.ShowIn3D Then
                         If oElevation.System = CoordinateSystemEnum.WGS84 Then
@@ -201,7 +208,7 @@ Namespace cSurvey
                         For iRow As Integer = 0 To oElevation.Rows - 1
                             For iColumn As Integer = 0 To oElevation.Columns - 1
                                 Dim sValue As Single = oElevation.Data(iRow, iColumn)
-                                If sValue = oElevation.NoDataValue Then
+                                If sValue = cElevation.NoDataValue Then
                                     Call oSw.Write("0 ")
                                 Else
                                     Call oSw.Write(modNumbers.NumberToString(sValue, "0") & " ")
@@ -242,17 +249,17 @@ Namespace cSurvey
             End Get
         End Property
 
-        Private Sub oOrthoPhotos_OnOrthoPhotosChange(Sender As Surface.cOrthoPhotos, Item As cOrthoPhoto) Handles oOrthoPhotos.OnOrthoPhotosChange
+        Private Sub oOrthoPhotos_OnChange(Sender As Object, Item As cSurfaceItemChanged) Handles oOrthoPhotos.OnChange
             Call pRebindLocalCollection()
             RaiseEvent OnSurfaceChange(Me, New OnSurfaceEventArgs(OnSurfaceEventArgs.SurfaceEventSourceEnum.OrthoPhotos))
         End Sub
 
-        Private Sub oWMSs_OnWMSsChange(Sender As cWMSs, Item As cWMS) Handles oWMSs.OnWMSsChange
+        Private Sub oWMSs_OnChange(Sender As Object, Item As cSurfaceItemChanged) Handles oWMSs.OnChange
             Call pRebindLocalCollection()
             RaiseEvent OnSurfaceChange(Me, New OnSurfaceEventArgs(OnSurfaceEventArgs.SurfaceEventSourceEnum.WMSs))
         End Sub
 
-        Private Sub oElevations_OnElevationsChange(Sender As Surface.cElevations, Item As cElevation) Handles oElevations.OnElevationsChange
+        Private Sub oElevations_OnChange(Sender As Object, Item As cSurfaceItemChanged) Handles oElevations.OnChange
             Call pRebindLocalCollection()
             RaiseEvent OnSurfaceChange(Me, New OnSurfaceEventArgs(OnSurfaceEventArgs.SurfaceEventSourceEnum.Elevation))
         End Sub

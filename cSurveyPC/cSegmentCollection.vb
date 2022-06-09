@@ -19,6 +19,11 @@ Namespace cSurvey
 
         Private oSegments As cSegmentBaseCollection
 
+        Public Function GetTrigpointSegments(ByVal Trigpoint As String) As cISegmentCollection Implements cISegmentCollection.GetTrigpointSegments
+            Dim sTrigpoint As String = Trigpoint.ToUpper
+            Return New cSegmentCollection(oSurvey, oSegments.Where(Function(Segment) Segment.From = sTrigpoint Or Segment.To = sTrigpoint))
+        End Function
+
         Public Function Find(ByVal Text As String) As cISegmentCollection Implements cISegmentCollection.Find
             Dim sText As String = Text.ToUpper
             Return New cSegmentCollection(oSurvey, oSegments.Where(Function(Segment) Segment.From Like sText Or Segment.To Like sText))

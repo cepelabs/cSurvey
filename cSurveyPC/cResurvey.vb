@@ -464,8 +464,8 @@ Namespace cResurvey
         Private sName As String
         Private oPlanPoint As Point
         Private oProfilePoint As Point
-        Private oPlanConnectedTo As HashSet(Of String)
-        Private oProfileConnectedTo As HashSet(Of String)
+        Private oPlanConnectedTo As SortedSet(Of String)
+        Private oProfileConnectedTo As SortedSet(Of String)
         Private sType As String
         Private sScale As Single
 
@@ -496,6 +496,16 @@ Namespace cResurvey
             Set(value As Boolean)
                 bPlanVisible = value
             End Set
+        End Property
+
+        Private bIsValid As Boolean = True
+        Friend Sub SetIsValid(IsValid As Boolean)
+            bIsValid = IsValid
+        End Sub
+        Public ReadOnly Property IsValid As Boolean
+            Get
+                Return bIsValid
+            End Get
         End Property
 
         Public Property PlanPoint As Point
@@ -534,13 +544,13 @@ Namespace cResurvey
             End Set
         End Property
 
-        Public ReadOnly Property ProfileConnectedTo As HashSet(Of String)
+        Public ReadOnly Property ProfileConnectedTo As SortedSet(Of String)
             Get
                 Return oProfileConnectedTo
             End Get
         End Property
 
-        Public ReadOnly Property PlanConnectedTo As HashSet(Of String)
+        Public ReadOnly Property PlanConnectedTo As SortedSet(Of String)
             Get
                 Return oPlanConnectedTo
             End Get
@@ -582,8 +592,8 @@ Namespace cResurvey
         Public Sub New()
             sName = ""
             sType = ""
-            oPlanConnectedTo = New HashSet(Of String)
-            oProfileConnectedTo = New HashSet(Of String)
+            oPlanConnectedTo = New SortedSet(Of String)
+            oProfileConnectedTo = New SortedSet(Of String)
             sScale = 1
             bPlanVisible = True
             bProfileVisible = True
@@ -595,6 +605,18 @@ Namespace cResurvey
 
         Public [sFrom] As String
         Public [sTo] As String
+
+        Private bIsValid As Boolean = True
+
+        Friend Sub SetIsValid(IsValid As Boolean)
+            bIsValid = IsValid
+        End Sub
+
+        Public ReadOnly Property IsValid As Boolean
+            Get
+                Return bIsValid
+            End Get
+        End Property
 
         Public ReadOnly Property Key As String
             Get
@@ -636,7 +658,10 @@ Namespace cResurvey
                 Return dInclination
             End Get
             Set(value As Decimal)
-                dInclination = value
+                value = Math.Round(value, 2)
+                If dInclination <> value Then
+                    dInclination = value
+                End If
             End Set
         End Property
 
@@ -645,7 +670,10 @@ Namespace cResurvey
                 Return dBearing
             End Get
             Set(value As Decimal)
-                dBearing = value
+                value = Math.Round(value, 2)
+                If dBearing <> value Then
+                    dBearing = value
+                End If
             End Set
         End Property
 
@@ -654,7 +682,10 @@ Namespace cResurvey
                 Return dDistance
             End Get
             Set(value As Decimal)
-                dDistance = value
+                value = Math.Round(value, 2)
+                If dDistance <> value Then
+                    dDistance = value
+                End If
             End Set
         End Property
 
@@ -963,10 +994,14 @@ Namespace cResurvey
 
         Public Function GetShot([From] As String, [To] As String) As cShot
             Dim sKey As String = GetKey([From], [To])
-            If MyBase.Contains(sKey) Then
-                Return MyBase.Item(sKey)
-            Else
+            If sKey = "" Then
                 Return Nothing
+            Else
+                If MyBase.Contains(sKey) Then
+                    Return MyBase.Item(sKey)
+                Else
+                    Return Nothing
+                End If
             End If
         End Function
     End Class

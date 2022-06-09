@@ -182,18 +182,12 @@
     <value>Generale</value>
   </data>
   <data name="lblScaleWarning.Text" xml:space="preserve">
-    <value>Attenzione: il fattore di scala indica la scala dalla quale verranno applicate queste impostazioni (fino all'eventuale fattore di scala successivo).
+    <value>&lt;image=#warning;size=16,16&gt; &lt;b&gt;Attenzione:&lt;/b&gt; il fattore di scala indica la scala dalla quale verranno applicate queste impostazioni (fino all'eventuale fattore di scala successivo).
 Per il range di scala al di sotto del più piccolo fattore inserito verranno utilizzate le impostazioni di disegno predefinite.
 </value>
   </data>
   <data name="lblScale.Text" xml:space="preserve">
     <value>Scala:</value>
-  </data>
-  <data name="tanInfoCategories.Text" xml:space="preserve">
-    <value>Categorie</value>
-  </data>
-  <data name="tabInfODesign.Text" xml:space="preserve">
-    <value>Disegno</value>
   </data>
   <data name="tabInfoPlot.Text" xml:space="preserve">
     <value>Poligonale</value>
@@ -226,92 +220,6 @@ Per il range di scala al di sotto del più piccolo fattore inserito verranno uti
     <value>Scala:</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 22</value>
-  </data>
-  <data name="btnAdd.Text" xml:space="preserve">
-    <value>Aggiungi</value>
-  </data>
-  <data name="btnAddAsCopy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 22</value>
-  </data>
-  <data name="btnAddAsCopy.Text" xml:space="preserve">
-    <value>Aggiungi come copia</value>
-  </data>
-  <data name="btnRemove.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD5SURBVDhPY0AGRxwM/oMwlIsB8MqDJL4d3gXG2BThlQcJ
-        fN294f9TT10wBrGRFRGShyjYvPz/c18jOAbxQeL45KDawcAYJPBl9bz/rwLN4RjExyYG1WwM0YoAYEO+
-        Lp7+/02oDVYMksOlGQYghszt//8u0hEFg8QIaQYDkKJv0zr+f4h1Q8EgMagBuAFY88Sm/58TvbFikBxO
-        Q0AS33uq/39N9YdjEB+bGIYhIIEf7WX/v2eGwDGIDxLHJwfVDjHgV1Ph/595kWAMYkMVgAIMHLA45OEA
-        rOhPXQ4YI2mGAULyYABWhEsSCAjJgwHYyRAmVkBInlTAwAAAGRZmoO4izFMAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 22</value>
-  </data>
-  <data name="btnRemove.Text" xml:space="preserve">
-    <value>Rimuovi</value>
-  </data>
-  <data name="btnRemoveAll.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD5SURBVDhPY0AGRxwM/oMwlIsB8MqDJL4d3gXG2BThlQcJ
-        fN294f9TT10wBrGRFRGShyjYvPz/c18jOAbxQeL45KDawcAYJPBl9bz/rwLN4RjExyYG1WwM0YoAYEO+
-        Lp7+/02oDVYMksOlGQYghszt//8u0hEFg8QIaQYDkKJv0zr+f4h1Q8EgMagBuAFY88Sm/58TvbFikBxO
-        Q0AS33uq/39N9YdjEB+bGIYhIIEf7WX/v2eGwDGIDxLHJwfVDjHgV1Ph/595kWAMYkMVgAIMHLA45OEA
-        rOhPXQ4YI2mGAULyYABWhEsSCAjJgwHYyRAmVkBInlTAwAAAGRZmoO4izFMAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnRemoveAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 22</value>
-  </data>
-  <data name="btnRemoveAll.Text" xml:space="preserve">
-    <value>Rimuovi tutti</value>
-  </data>
-  <data name="btnExport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnExport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 22</value>
-  </data>
-  <data name="btnExport.Text" xml:space="preserve">
-    <value>Esporta...</value>
-  </data>
-  <data name="btnImport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnImport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 22</value>
-  </data>
-  <data name="btnImport.Text" xml:space="preserve">
-    <value>Importa...</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
@@ -416,9 +324,6 @@ Per il range di scala al di sotto del più piccolo fattore inserito verranno uti
   <data name="cboPlotTranslationLinePenStyle.Items1" xml:space="preserve">
 		<value>Tratteggio</value>
 	</data>
-  <data name="chkPlotCenterlineVectors.Text" xml:space="preserve">
-		<value>Mostra vettori</value>
-	</data>
   <data name="lblPlotPointSize.Text" xml:space="preserve">
 		<value>Dimensione:</value>
 	</data>
@@ -455,9 +360,6 @@ Per il range di scala al di sotto del più piccolo fattore inserito verranno uti
   <data name="cboPlotLRUDPenStyle.Items4" xml:space="preserve">
 		<value>Tratteggio e 2 punti</value>
 	</data>
-  <data name="colCategoryName.HeaderText" xml:space="preserve">
-		<value>Categoria</value>
-	</data>
   <data name="lblPlotPenWidth.Text" xml:space="preserve">
 		<value>Spessore:</value>
 	</data>
@@ -469,12 +371,6 @@ Per il range di scala al di sotto del più piccolo fattore inserito verranno uti
 	</data>
   <data name="cboPlotPenStyle.Items3" xml:space="preserve">
 		<value>Tratteggio e punto</value>
-	</data>
-  <data name="colCategoryVisibility.HeaderText" xml:space="preserve">
-		<value>Visibile</value>
-	</data>
-  <data name="colCategoryIndex.HeaderText" xml:space="preserve">
-		<value>Indice</value>
 	</data>
   <data name="lblPlotPointColor.Text" xml:space="preserve">
 		<value>Colore:</value>
@@ -516,7 +412,7 @@ Per il range di scala al di sotto del più piccolo fattore inserito verranno uti
 		<value>Tratteggio</value>
 	</data>
   <data name="lblDesignTextScaleFactor.Text" xml:space="preserve">
-		<value>Testo (scala):</value>
+		<value>Testo:</value>
 	</data>
   <data name="cboPlotLRUDPenStyle.Items3" xml:space="preserve">
 		<value>Tratteggio e punto</value>
@@ -537,7 +433,7 @@ Per il range di scala al di sotto del più piccolo fattore inserito verranno uti
 		<value>Tratto:</value>
 	</data>
   <data name="lblPlotNoteTextScaleFactor.Text" xml:space="preserve">
-		<value>Testo (scala):</value>
+		<value>Testo:</value>
 	</data>
   <data name="lblPlotSplayPenWidth.Text" xml:space="preserve">
 		<value>Spessore:</value>
@@ -552,10 +448,10 @@ Per il range di scala al di sotto del più piccolo fattore inserito verranno uti
 		<value>Spessore (sel.):</value>
 	</data>
   <data name="lblDesignTerrainLevelScaleFactor.Text" xml:space="preserve">
-		<value>Bordi (scala):</value>
+		<value>Testo:</value>
 	</data>
   <data name="lblPlotTextScaleFactor.Text" xml:space="preserve">
-		<value>Testo (scala):</value>
+		<value>Testo:</value>
 	</data>
   <data name="lblPlotTextColor.Text" xml:space="preserve">
 		<value>Colore:</value>
@@ -564,18 +460,63 @@ Per il range di scala al di sotto del più piccolo fattore inserito verranno uti
 		<value>Colore:</value>
 	</data>
   <data name="lblBaseLineWidthScaleFactor.Text" xml:space="preserve">
-		<value>Base (scala):</value>
+		<value>Scala base:</value>
 	</data>
   <data name="lblDesignClipartScaleFactor.Text" xml:space="preserve">
-		<value>Clipart (scala):</value>
+		<value>Clipart:</value>
 	</data>
   <data name="lblDesignSignScaleFactor.Text" xml:space="preserve">
-		<value>Clipart (scala):</value>
+		<value>Clipart:</value>
 	</data>
-  <data name="btnClear.Text" xml:space="preserve">
-    <value>Reimposta valori</value>
-  </data>
   <data name="lblDesignTextureScale.Text" xml:space="preserve">
     <value>Riemp. texture:</value>
+  </data>
+  <data name="btnAdd.Caption" xml:space="preserve">
+    <value>Aggiungi</value>
+  </data>
+  <data name="btnAddAsCopy.Caption" xml:space="preserve">
+    <value>Aggiungi come copia</value>
+  </data>
+  <data name="btnExport.Caption" xml:space="preserve">
+    <value>Esporta...</value>
+  </data>
+  <data name="btnClear.Caption" xml:space="preserve">
+    <value>Reimposta valori</value>
+  </data>
+  <data name="btnImport.Caption" xml:space="preserve">
+    <value>Importa...</value>
+  </data>
+  <data name="btnRemove.Caption" xml:space="preserve">
+    <value>Rimuovi</value>
+  </data>
+  <data name="btnRemoveAll.Caption" xml:space="preserve">
+    <value>Rimuovi tutti</value>
+  </data>
+  <data name="colCategoriesVisibilityIndex.Caption" xml:space="preserve">
+    <value>Indice</value>
+  </data>
+  <data name="colCategoriesVisibilityCategory.Caption" xml:space="preserve">
+    <value>Categoria</value>
+  </data>
+  <data name="colCategoriesVisibilityVisible.Caption" xml:space="preserve">
+    <value>Visibile</value>
+  </data>
+  <data name="tabInfoCategories.Text" xml:space="preserve">
+    <value>Categorie</value>
+  </data>
+  <data name="tabInfoDesign.Text" xml:space="preserve">
+    <value>Disegno</value>
+  </data>
+  <data name="lblDesignCrossSectionTextScaleFactor.Text" xml:space="preserve">
+    <value>Testo:</value>
+  </data>
+  <data name="lblDesignCrossSectionMarkerTextScaleFactor.Text" xml:space="preserve">
+    <value>Testo:</value>
+  </data>
+  <data name="lblDesignCrossSectionMarkerArrowScaleFactor.Text" xml:space="preserve">
+    <value>Freccia:</value>
+  </data>
+  <data name="lblDesignExtraTextScaleFactor.Text" xml:space="preserve">
+    <value>Testo:</value>
   </data>
 </root>

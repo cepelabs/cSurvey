@@ -2,127 +2,19 @@
 Imports System.Drawing.Drawing2D
 Imports cSurveyPC.cSurvey.Scripting
 Imports System.ComponentModel
+Imports cSurveyPC.cSurvey.Helper.Editor
+Imports cSurveyPC.cSurvey.UIHelpers
+Imports DevExpress.XtraBars.Navigation
+Imports System.Text
+Imports System.Xml
+Imports cSurveyPC.cSurvey.Surface
+Imports cSurveyPC.cTrigpointDropDown
 
 Friend Class frmProperties
     Private oSurvey As cSurvey.cSurvey
 
     Friend Event OnSegmentSelect(Sender As frmProperties, Segment As cSegment)
     Friend Event OnApply(ByVal Sender As frmProperties)
-
-    Private MustInherit Class PlaceHolder(Of SourceType)
-        Public Source As SourceType
-        Public Created As Boolean
-        Public Deleted As Boolean
-    End Class
-
-    Private Class cHighlightPlaceholder
-        Inherits PlaceHolder(Of Properties.cHighlightsDetail)
-        Public Const Type As String = "highlight"
-
-        Public ID As String
-        Public Name As String
-        Public Color As Color
-        Public Size As Single
-        Public Opacity As Byte
-        Public ApplyTo As Integer
-        Public Condition As String = ""
-        Public System As Boolean
-    End Class
-
-    Private Class cDefaultSessionPlaceHolder
-        Inherits cSessionPlaceHolder
-
-        Private sType As String = "defaultsession"
-
-        Public Overrides ReadOnly Property Type As String
-            Get
-                Return sType
-            End Get
-        End Property
-    End Class
-
-    Private Class cSessionPlaceHolder
-        Inherits PlaceHolder(Of cSession)
-        Private sType As String = "session"
-
-        Public Overridable ReadOnly Property Type As String
-            Get
-                Return sType
-            End Get
-        End Property
-
-        Public Name As String
-
-        Public ReadOnly Property ID As String
-            Get
-                Return Strings.Format([Date], "yyyyMMdd") & "_" & Description.Replace(" ", "_").ToLower
-            End Get
-        End Property
-
-        Public ReadOnly Property FormattedID As String
-            Get
-                Return Strings.Format([Date], "dd-MM-yyyy") & " " & Description
-            End Get
-        End Property
-
-        Public [Date] As Date
-        Public Description As String
-        Public Club As String
-        Public Note As String
-        Public Team As String
-        Public Designer As String
-
-        Public DataFormat As cSegment.DataFormatEnum
-        Public DistanceType As cSegment.DistanceTypeEnum
-        Public BearingType As cSegment.BearingTypeEnum
-        Public BearingDirection As cSegment.MeasureDirectionEnum
-        Public InclinationType As cSegment.InclinationTypeEnum
-        Public InclinationDirection As cSegment.MeasureDirectionEnum
-        Public DepthType As cSegment.DepthTypeEnum
-
-        Public Grade As String
-
-        Public NordType As cSegment.NordTypeEnum
-        Public Declination As Single
-        Public declinationenabled As Boolean
-
-        Public SideMeasuresType As cSegment.SideMeasuresTypeEnum
-        Public SideMeasuresReferTo As cSegment.SideMeasuresReferToEnum
-
-        Public VThreshold As Integer
-        Public VThresholdEnabled As Boolean
-
-        Public Color As Color
-    End Class
-
-    Private Class cCaveInfoPlaceHolder
-        Inherits PlaceHolder(Of cCaveInfo)
-        Public Const Type As String = "cave"
-        Public Description As String
-        Public Name As String
-        Public ID As String
-        Public Color As Color
-        Public SurfaceProfileShow As cISurfaceProfile.SurfaceProfileShowEnum
-        Public Locked As Boolean
-        Public ExtendStart As String = ""
-        Public Priority As Integer?
-        Public ParentConnection As cConnectionDef
-        Public Connection As cConnectionDef
-    End Class
-
-    Private Class cCaveInfoBranchPlaceHolder
-        Inherits PlaceHolder(Of cCaveInfoBranch)
-        Public Const Type As String = "branch"
-        Public Name As String
-        Public Color As Color
-        Public Description As String
-        Public SurfaceProfileShow As cISurfaceProfile.SurfaceProfileShowEnum
-        Public Locked As Boolean
-        Public ExtendStart As String = ""
-        Public Priority As Integer?
-        Public ParentConnection As cConnectionDef
-        Public Connection As cConnectionDef
-    End Class
 
     Private Sub pUTMLoad()
         For i As Integer = 1 To 60
@@ -140,20 +32,44 @@ Friend Class frmProperties
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
+        Cursor = Cursors.WaitCursor
+
         iFunctionLanguage = FunctionLanguage
 
-        tabCaveInfoCalculateOptions.Visible = bIsInDebug
+        Call tabMain.BeginUpdate()
+        tabMain.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False
+        For Each oTabControl As DevExpress.XtraTab.XtraTabPage In tabMain.TabPages
+            Dim oPanel As DevExpress.XtraEditors.PanelControl = New DevExpress.XtraEditors.PanelControl
+            Me.Controls.Add(oPanel)
+            oPanel.Name = "_" & oTabControl.Name
+            oPanel.Size = oTabControl.ClientSize
+            Dim oControls As List(Of Control) = New List(Of Control)
+            For Each oControl As Control In oTabControl.Controls
+                Call oControls.Add(oControl)
+            Next
+            For Each oControl As Control In oControls
+                Try
+                    oPanel.Controls.Add(oControl)
+                Catch ex As Exception
+                End Try
+            Next
+            oPanel.Tag = tabMain.TabPages.IndexOf(oTabControl)
+            oPanel.Dock = DockStyle.Fill
+            oPanel.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+            oPanel.Visible = False
+        Next
+        tabMain.Visible = False
+        Call tabMain.EndUpdate()
 
         'pnlDepth.Location = pnlInclination.Location
         pnlSessionDepth.Location = pnlSessionInclination.Location
 
-        On Error Resume Next
         oSurvey = Survey
         With oSurvey.Properties
             Call pGradesLoad()
             Call pUTMLoad()
 
-            btnCaveInfoSelectSegment.Enabled = Owner Is frmMain
+            btnCaveInfoSelectSegment.Enabled = Owner Is frmMain2
 
             txtID.Text = oSurvey.ID
 
@@ -172,8 +88,8 @@ Friend Class frmProperties
 
             txtNote.Text = .Note
 
-            cboDefGrade.Text = .DefGrade
-            cboDefAccuracy.Text = .DefAccuracy
+            'cboDefGrade.Text = .DefGrade
+            'cboDefAccuracy.Text = .DefAccuracy
 
             Call pOriginsLoad()
 
@@ -218,8 +134,8 @@ Friend Class frmProperties
 
             chkGPSEnabled.Checked = .GPS.Enabled
 
-            optGPSRefPointOnOrigin.Checked = .GPS.RefPointOnOrigin
-            optGPSCustomRefPoint.Checked = Not optGPSRefPointOnOrigin.Checked
+            optGPSRefPointOnOrigin.EditValue = .GPS.RefPointOnOrigin
+            optGPSCustomRefPoint.EditValue = Not optGPSRefPointOnOrigin.EditValue
 
             cboGPSCustomRefPoint.Text = .GPS.CustomRefPoint
             cboCoordinateGeo.Text = .GPS.System
@@ -243,10 +159,10 @@ Friend Class frmProperties
 
             cboInversionMode.SelectedIndex = .InversionMode
 
-            cboClipBorder.SelectedIndex = .DesignProperties.GetValue("clipborder", oSurvey.GetGlobalSetting("design.clipborder", cSurvey.Design.cClippingRegions.ClipBorderEnum.ClipBorder))
-            cboClipAdvancedClipart.SelectedIndex = .DesignProperties.GetValue("clippingforadvancedbrush", oSurvey.GetGlobalSetting("clippingforadvancedbrush", cSurvey.Drawings.cIRegion.RegionTypeEnum.GDI))
+            cboClipBorder.SelectedIndex = .DesignProperties.GetValue("clipborder", cEditDesignEnvironment.GetSetting("design.clipborder", cSurvey.Design.cClippingRegions.ClipBorderEnum.ClipBorder))
+            cboClipAdvancedClipart.SelectedIndex = .DesignProperties.GetValue("clippingforadvancedbrush", cEditDesignEnvironment.GetSetting("clippingforadvancedbrush", cSurvey.Drawings.cIRegion.RegionTypeEnum.GDI))
 
-            cboLineType.SelectedIndex = .DesignProperties.GetValue("LineType", oSurvey.GetGlobalSetting("design.linetype", cSurvey.Design.Items.cIItemLine.LineTypeEnum.Splines))
+            cboLineType.SelectedIndex = .DesignProperties.GetValue("LineType", cEditDesignEnvironment.GetSetting("design.linetype", cSurvey.Design.Items.cIItemLine.LineTypeEnum.Splines))
 
             cboSplayMode.SelectedIndex = .SplayMode
             'chkBindSplaySegment.Checked = .BindSplaySegment
@@ -254,10 +170,10 @@ Friend Class frmProperties
 
             'design
             txtBaseLineWidthScaleFactor.Value = .DesignProperties.GetValue("BaseLineWidthScaleFactor", 0.01)
-            txtBaseHeavyLinesScaleFactor.Value = .DesignProperties.GetValue("BaseHeavyLinesScaleFactor", 8)
-            txtBaseMediumLinesScaleFactor.Value = .DesignProperties.GetValue("BaseMediumLinesScaleFactor", 3)
-            txtBaseLightLinesScaleFactor.Value = .DesignProperties.GetValue("BaseLightLinesScaleFactor", 1)
-            txtBaseUltraLightLinesScaleFactor.Value = .DesignProperties.GetValue("BaseUltraLightLinesScaleFactor", 0.3)
+            txtBaseHeavyLinesScaleFactor.Value = .DesignProperties.GetValue("BaseHeavyLinesScaleFactor", 8.0)
+            txtBaseMediumLinesScaleFactor.Value = .DesignProperties.GetValue("BaseMediumLinesScaleFactor", 3.0)
+            txtBaseLightLinesScaleFactor.Value = .DesignProperties.GetValue("BaseLightLinesScaleFactor", 0.5)
+            txtBaseUltraLightLinesScaleFactor.Value = .DesignProperties.GetValue("BaseUltraLightLinesScaleFactor", 0.1)
             'clipart, simboli e testo
             txtDesignSoilScaleFactor.Value = .DesignProperties.GetValue("DesignSoilScaleFactor", 1)
             txtDesignTextureScaleFactor.Value = .DesignProperties.GetValue("DesignTextureScaleFactor", 0.2)
@@ -298,7 +214,7 @@ Friend Class frmProperties
             Dim oPlotNoteTextFont As cIFont = .DesignProperties.GetValue("PlotNoteTextFont", modPaint.GetDefaultFont)
             txtPlotNoteTextFont.Tag = oPlotNoteTextFont
             txtPlotNoteTextFont.Text = oPlotNoteTextFont.ToString
-            picPlotNoteTextColor.BackColor = .DesignProperties.GetValue("PlotNoteTextColor", Color.Black)
+            txtPlotNoteTextColor.Color = .DesignProperties.GetValue("PlotNoteTextColor", Color.Black)
 
             txtPlotTranslationLinePenWidth.Value = .DesignProperties.GetValue("PlotTranslationLinePenWidth", 2)
             cboPlotTranslationLinePenStyle.SelectedIndex = .DesignProperties.GetValue("PlotTranslationLinePenStyle", Design.cPen.PenStylesEnum.Dot)
@@ -357,50 +273,138 @@ Friend Class frmProperties
             'superficie
             chksurfaceprofile.Checked = .SurfaceProfile
             chkSurfaceProfileShow.Checked = .SurfaceProfileShow
-            For Each oElevation As cSurvey.Surface.cElevation In oSurvey.Surface.Elevations
-                Call cbosurfaceprofileelevation.Items.Add(New cComboItem(oElevation, oElevation.Name))
-                If oElevation Is .SurfaceProfileElevation Then
-                    cbosurfaceprofileelevation.SelectedIndex = cbosurfaceprofileelevation.Items.Count - 1
-                End If
-            Next
-            If cbosurfaceprofileelevation.Items.Count > 0 Then
-                If cbosurfaceprofileelevation.SelectedItem Is Nothing Then
-                    cbosurfaceprofileelevation.SelectedIndex = 0
-                End If
-                pnlSurfaceProfile.Enabled = .GPS.Enabled
-            Else
-                pnlSurfaceProfile.Enabled = False
-            End If
 
             Call pSessionsLoad()
             Call pCavesLoad()
             Call pHighlightsLoad()
+            Call pElevationsLoad()
+            Call pOrthophotosLoad()
+            Call pWMSsLoad()
+            'Call pGradesLoad()
+
+            Call pElevationRebindSurfaceProfileCombo(.SurfaceProfileElevation)
         End With
 
-        If Not SelectedTabIndex Is Nothing Then
-            tabInfo.SelectedIndex = SelectedTabIndex
-        End If
+        'If SelectedTabIndex Is Nothing Then
+        '    Call pSelectTabByIndex(0)
+        'Else
+        '    Call pSelectTabByIndex(SelectedTabIndex)
+        'End If
+        AddHandler Me.Shown, Sub(sender As Object, e As EventArgs)
+                                 If SelectedTabIndex Is Nothing Then
+                                     Call pSelectTabByIndex(0)
+                                 Else
+                                     Call pSelectTabByIndex(SelectedTabIndex)
+                                 End If
+                             End Sub
+
+
+
+        Cursor = Cursors.Default
     End Sub
 
     Private Sub pGradesLoad()
-        'Call cboGrade.Items.Add("")
-        Call cboSessionGrade.Items.Add("")
-        For Each oGrade As cGrade In oSurvey.Grades
-            'Call cboGrade.Items.Add(oGrade.Description)
-            Call cboSessionGrade.Items.Add(oGrade.Description)
-        Next
+        tvGrades.BeginUpdate()
+        tvGrades.DataSource = New cGradeEditBindingList(oSurvey)
+        tvGrades.ExpandAll()
+
+        If tvGrades.Nodes.Count > 0 Then
+            tvGrades.SelectNode(tvGrades.Nodes(0))
+        End If
+
+        btnGradesAdd.Enabled = True
+        'btnGradesDelete.Enabled = tvGrades.Nodes.Count > 0
+
+        tvGrades.EndUpdate()
+
+        'Call cboSessionGrade.Items.Clear()
+        'Call cboSessionGrade.Items.Add("")
+        'For Each oGrade As UIHelpers.cGradePlaceHolder In DirectCast(tvGrades.DataSource, UIHelpers.cGradeEditBindingList)
+        '    Call cboSessionGrade.Items.Add(oGrade.Description)
+        'Next
     End Sub
 
+    Private Sub pWMSsLoad()
+        tvWMSs.BeginUpdate()
+        tvWMSs.DataSource = New cWMSsBindingList(oSurvey)
+        tvWMSs.ExpandAll()
+
+        If tvWMSs.Nodes.Count > 0 Then
+            tvWMSs.SelectNode(tvWMSs.Nodes(0))
+        End If
+
+        btnWMSAdd.Enabled = True
+        btnWMSDelete.Enabled = tvWMSs.Nodes.Count > 0
+
+        tvWMSs.EndUpdate()
+    End Sub
+
+    Private Sub pOrthophotosLoad()
+        tvOrthophotos.BeginUpdate()
+        tvOrthophotos.DataSource = New cOrthophotosBindingList(oSurvey)
+        tvOrthophotos.ExpandAll()
+
+        If tvOrthophotos.Nodes.Count > 0 Then
+            tvOrthophotos.SelectNode(tvOrthophotos.Nodes(0))
+        End If
+
+        btnOrthophotoAdd.Enabled = True
+        btnOrthophotoDelete.Enabled = tvOrthophotos.Nodes.Count > 0
+
+        tvOrthophotos.EndUpdate()
+    End Sub
+
+    Private Sub pElevationsLoad()
+        tvElevations.BeginUpdate()
+        tvElevations.DataSource = New cElevationsBindingList(oSurvey)
+        tvElevations.ExpandAll()
+
+        If tvElevations.Nodes.Count > 0 Then
+            tvElevations.SelectNode(tvElevations.Nodes(0))
+        End If
+
+        btnElevationAdd.Enabled = True
+        btnElevationDelete.Enabled = tvElevations.Nodes.Count > 0
+
+        tvElevations.EndUpdate()
+    End Sub
+
+    Private Function pSelectTabByIndex(TabIndex As Integer) As Boolean
+        Try
+            Dim sName As String = tabMain.TabPages(TabIndex).Name
+            For Each oElement In AccordionControl1.GetElements
+                If oElement.Tag IsNot Nothing AndAlso oElement.Tag.tolower = sName.ToLower Then
+                    Call AccordionControl1.SelectElement(oElement)
+                    Call AccordionControl1.MakeElementVisible(oElement)
+                    Return True
+                End If
+            Next
+            Return False
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
+
+    'Private Sub pGradesLoad()
+    '    Call cboSessionGrade.Items.Add("")
+    '    For Each oGrade As cGrade In oSurvey.Grades
+    '        Call cboSessionGrade.Items.Add(oGrade.Description)
+    '    Next
+    'End Sub
+
     Private Sub pOriginsLoad()
-        For Each oTrigPoint As cTrigPoint In oSurvey.TrigPoints
-            If Not (oTrigPoint.Data.IsSplay Or oTrigPoint.IsSystem) Then
-                Call cboOrigin.Items.Add(oTrigPoint.Name)
-                Call cboCaveInfoExtendStart.Items.Add(oTrigPoint.Name)
-            End If
-        Next
-        cboOrigin.SelectedItem = oSurvey.Properties.Origin
-        cboOrigin.Enabled = oSurvey.Properties.DesignWarpingMode = cSurvey.cSurvey.DesignWarpingModeEnum.None Or (oSurvey.Properties.DesignWarpingMode <> cSurvey.cSurvey.DesignWarpingModeEnum.None And oSurvey.Properties.InversionMode = cSurvey.cSurvey.InversioneModeEnum.Absolute)
-        'cboInversionMode.Enabled = cboOrigin.Enabled
+        'For Each oTrigPoint As cTrigPoint In oSurvey.TrigPoints
+        '    If Not (oTrigPoint.Data.IsSplay Or oTrigPoint.IsSystem) Then
+        '        Call cboOrigin.Items.Add(oTrigPoint.Name)
+        '        Call cboCaveInfoExtendStart.Items.Add(oTrigPoint.Name)
+        '    End If
+        'Next
+        'cboOrigin.SelectedItem = oSurvey.Properties.Origin
+        cboOrigin.FastRebind(oSurvey, oSurvey.Properties.Origin, False, False)
+        If cboOrigin.Enabled Then
+            cboOrigin.Enabled = oSurvey.Properties.DesignWarpingMode = cSurvey.cSurvey.DesignWarpingModeEnum.None Or (oSurvey.Properties.DesignWarpingMode <> cSurvey.cSurvey.DesignWarpingModeEnum.None And oSurvey.Properties.InversionMode = cSurvey.cSurvey.InversioneModeEnum.Absolute)
+        End If
+        cboCaveInfoExtendStart.FastRebind(oSurvey, "", False, False)
     End Sub
 
     Private Sub pOriginsEnabled()
@@ -452,182 +456,96 @@ Friend Class frmProperties
         End Sub
     End Class
 
-    Private Sub pCaveBranchesLoad(ParentBranches As cCaveInfoBranches, ParentNodes As TreeNodeCollection)
-        For Each oBranch As cCaveInfoBranch In ParentBranches
-            Dim oBranchNode As TreeNode = ParentNodes.Add(oBranch.Name)
-            oBranchNode.Name = oBranch.Name
-            Dim oCIB As cCaveInfoBranchPlaceHolder = New cCaveInfoBranchPlaceHolder
-            oCIB.Name = oBranch.Name
-            oCIB.Color = oBranch.Color
-            oCIB.Description = oBranch.Description
-            oCIB.SurfaceProfileShow = oBranch.SurfaceProfileShow
-            oCIB.Locked = oBranch.Locked
-            oCIB.ExtendStart = oBranch.ExtendStart
-            oCIB.Priority = oBranch.Priority
-            oCIB.ParentConnection = oBranch.ParentConnection
-            oCIB.Connection = oBranch.Connection
-            oCIB.Source = oBranch
-            oBranchNode.Tag = oCIB
-            If oCIB.ExtendStart = "" Then
-                oBranchNode.SelectedImageKey = "branch"
-                oBranchNode.ImageKey = "branch"
-            Else
-                oBranchNode.SelectedImageKey = "origin"
-                oBranchNode.ImageKey = "origin"
-            End If
+    'Private Sub pCaveBranchesLoad(ParentBranches As cCaveInfoBranches, ParentNodes As TreeNodeCollection)
+    '    For Each oBranch As cCaveInfoBranch In ParentBranches
+    '        Dim oBranchNode As TreeNode = ParentNodes.Add(oBranch.Name)
+    '        oBranchNode.Name = oBranch.Name
+    '        Dim oCIB As cCaveInfoBranchPlaceHolder = New cCaveInfoBranchPlaceHolder
+    '        oCIB.Name = oBranch.Name
+    '        oCIB.Color = oBranch.Color
+    '        oCIB.Description = oBranch.Description
+    '        oCIB.SurfaceProfileShow = oBranch.SurfaceProfileShow
+    '        oCIB.Locked = oBranch.Locked
+    '        oCIB.ExtendStart = oBranch.ExtendStart
+    '        oCIB.Priority = oBranch.Priority
+    '        oCIB.ParentConnection = oBranch.ParentConnection
+    '        oCIB.Connection = oBranch.Connection
+    '        oCIB.Source = oBranch
+    '        oBranchNode.Tag = oCIB
+    '        If oCIB.ExtendStart = "" Then
+    '            oBranchNode.SelectedImageKey = "branch"
+    '            oBranchNode.ImageKey = "branch"
+    '        Else
+    '            oBranchNode.SelectedImageKey = "origin"
+    '            oBranchNode.ImageKey = "origin"
+    '        End If
 
-            Call pCaveBranchesLoad(oBranch.Branches, oBranchNode.Nodes)
-        Next
-    End Sub
+    '        Call pCaveBranchesLoad(oBranch.Branches, oBranchNode.Nodes)
+    '    Next
+    'End Sub
 
     Private Sub pCavesLoad()
-        Call tvCaveInfos.Nodes.Clear()
-        For Each oCaveInfo As cCaveInfo In oSurvey.Properties.CaveInfos
-            Dim oCaveNode As TreeNode = tvCaveInfos.Nodes.Add(oCaveInfo.Name)
-            oCaveNode.Name = oCaveInfo.Name
-            Dim oCI As cCaveInfoPlaceHolder = New cCaveInfoPlaceHolder
-            oCI.Description = oCaveInfo.Description
-            oCI.Name = oCaveInfo.Name
-            oCI.ID = oCaveInfo.ID
-            oCI.Color = oCaveInfo.Color
-            oCI.SurfaceProfileShow = oCaveInfo.SurfaceProfileShow
-            oCI.Locked = oCaveInfo.Locked
-            oCI.ExtendStart = oCaveInfo.ExtendStart
-            oCI.Priority = oCaveInfo.Priority
-            oCI.ParentConnection = oCaveInfo.ParentConnection
-            oCI.Connection = oCaveInfo.Connection
-            oCI.Source = oCaveInfo
-            oCaveNode.Tag = oCI
-            If oCI.ExtendStart = "" Then
-                oCaveNode.SelectedImageKey = "cave"
-                oCaveNode.ImageKey = "cave"
-            Else
-                oCaveNode.SelectedImageKey = "origin"
-                oCaveNode.ImageKey = "origin"
-            End If
-            Call pCaveBranchesLoad(oCaveInfo.Branches, oCaveNode.Nodes)
-            Call oCaveNode.ExpandAll()
-        Next
+        tvCaveInfos.BeginUpdate()
+        tvCaveInfos.DataSource = New cCaveInfoBranchEditBindingList(oSurvey)
+        tvCaveInfos.ExpandAll()
 
         If tvCaveInfos.Nodes.Count > 0 Then
-            tvCaveInfos.SelectedNode = tvCaveInfos.Nodes(0)
+            tvCaveInfos.SelectNode(tvCaveInfos.Nodes(0))
         End If
 
         btnCaveInfoAddCave.Enabled = True
         btnCaveInfoAddBranch.Enabled = tvCaveInfos.Nodes.Count > 0
         btnCaveInfoDelete.Enabled = tvCaveInfos.Nodes.Count > 0
+
+        tvCaveInfos.EndUpdate()
     End Sub
 
     Private Sub pHighlightsLoad()
-        Call tvHighlights.Nodes.Clear()
-        For Each oHighlight As Properties.cHighlightsDetail In oSurvey.Properties.HighlightsDetails
-            Dim oHighlightNode As TreeNode = tvHighlights.Nodes.Add(oHighlight.ID)
-            oHighlightNode.Name = oHighlight.ID
-            oHighlightNode.Text = oHighlight.Name
-            Dim oCI As cHighlightPlaceholder = New cHighlightPlaceholder
-            oCI.ID = oHighlight.ID
-            oCI.Name = oHighlight.Name
-            oCI.Color = oHighlight.Color
-            oCI.Size = oHighlight.Size
-            oCI.Opacity = oHighlight.Opacity
-            oCI.ApplyTo = oHighlight.ApplyTo
-            oCI.Condition = oHighlight.Condition
-            oCI.System = oHighlight.System
+        tvHighlights.BeginUpdate()
+        tvHighlights.DataSource = New cHighlightEditBindingList(oSurvey)
+        tvHighlights.EndUpdate()
 
-            oCI.Source = oHighlight
-            oHighlightNode.Tag = oCI
-            oHighlightNode.SelectedImageKey = "hl"
-            oHighlightNode.ImageKey = "hl"
-        Next
+        'Call tvHighlights.Nodes.Clear()
+        'For Each oHighlight As Properties.cHighlightsDetail In oSurvey.Properties.HighlightsDetails
+        '    Dim oHighlightNode As TreeNode = tvHighlights.Nodes.Add(oHighlight.ID)
+        '    oHighlightNode.Name = oHighlight.ID
+        '    oHighlightNode.Text = oHighlight.Name
+        '    Dim oCI As cHighlightPlaceholder = New cHighlightPlaceholder
+        '    oCI.ID = oHighlight.ID
+        '    oCI.Name = oHighlight.Name
+        '    oCI.Color = oHighlight.Color
+        '    oCI.Size = oHighlight.Size
+        '    oCI.Opacity = oHighlight.Opacity
+        '    oCI.ApplyTo = oHighlight.ApplyTo
+        '    oCI.Condition = oHighlight.Condition
+        '    oCI.System = oHighlight.System
+
+        '    oCI.Source = oHighlight
+        '    oHighlightNode.Tag = oCI
+        '    oHighlightNode.SelectedImageKey = "hl"
+        '    oHighlightNode.ImageKey = "hl"
+        'Next
 
         If tvHighlights.Nodes.Count > 0 Then
-            tvHighlights.SelectedNode = tvHighlights.Nodes(0)
+            tvHighlights.FocusedNode = tvHighlights.Nodes(0)
         End If
 
         btnAddHighlight.Enabled = True
-        btnDeleteHighlight.Enabled = tvHighlights.Nodes.Count > 0 AndAlso Not tvHighlights.SelectedNode.Tag.system
+        btnDeleteHighlight.Enabled = tvHighlights.Nodes.Count > 0 AndAlso tvHighlights.GetFocusedObject IsNot Nothing AndAlso DirectCast(tvHighlights.GetFocusedObject, cHighlightPlaceholder).System
     End Sub
 
     Private Sub pSessionsLoad()
-        Call tvSessions.Nodes.Clear()
+        tvSessions.BeginUpdate()
+        tvSessions.DataSource = New cSessionsEditBindingList(oSurvey)
 
-        Dim oDefaultSessionNode As TreeNode = tvSessions.Nodes.Add("")
-        oDefaultSessionNode.Text = modMain.GetLocalizedString("properties.textpart3")
-
-        Dim oDefaultCI As cDefaultSessionPlaceHolder = New cDefaultSessionPlaceHolder
-
-        oDefaultCI.DataFormat = oSurvey.Properties.DataFormat
-        oDefaultCI.DistanceType = oSurvey.Properties.DistanceType
-        oDefaultCI.BearingType = oSurvey.Properties.BearingType
-        oDefaultCI.BearingDirection = oSurvey.Properties.BearingDirection
-        oDefaultCI.InclinationType = oSurvey.Properties.InclinationType
-        oDefaultCI.InclinationDirection = oSurvey.Properties.InclinationDirection
-        oDefaultCI.DepthType = oSurvey.Properties.DepthType
-
-        oDefaultCI.Grade = oSurvey.Properties.Grade
-
-        oDefaultCI.NordType = oSurvey.Properties.NordType
-        oDefaultCI.Declination = oSurvey.Properties.Declination
-        oDefaultCI.declinationenabled = oSurvey.Properties.DeclinationEnabled
-
-        oDefaultCI.SideMeasuresType = oSurvey.Properties.SideMeasuresType
-        oDefaultCI.SideMeasuresReferTo = oSurvey.Properties.SideMeasuresReferTo
-
-        oDefaultCI.VThreshold = oSurvey.Properties.VThreshold
-        oDefaultCI.VThresholdEnabled = oSurvey.Properties.VThresholdEnabled
-
-        oDefaultCI.Source = Nothing
-        oDefaultSessionNode.Tag = oDefaultCI
-        oDefaultSessionNode.SelectedImageKey = "defaultsession"
-        oDefaultSessionNode.ImageKey = "defaultsession"
-
-        For Each oSession As cSession In oSurvey.Properties.Sessions
-            Dim oSessionNode As TreeNode = tvSessions.Nodes.Add(oSession.ID)
-            oSessionNode.Name = oSession.ID
-            oSessionNode.Text = oSession.FormattedID
-            Dim oCI As cSessionPlaceHolder = New cSessionPlaceHolder
-            oCI.Date = oSession.Date
-            oCI.Description = oSession.Description
-            oCI.Color = oSession.Color
-
-            oCI.Team = oSession.Team
-            oCI.Club = oSession.Club
-            oCI.Designer = oSession.Designer
-            oCI.Note = oSession.Note
-
-            oCI.DataFormat = oSession.DataFormat
-            oCI.DistanceType = oSession.DistanceType
-            oCI.BearingType = oSession.BearingType
-            oCI.BearingDirection = oSession.BearingDirection
-            oCI.InclinationType = oSession.InclinationType
-            oCI.InclinationDirection = oSession.InclinationDirection
-            oCI.DepthType = oSession.DepthType
-
-            oCI.Grade = oSession.Grade
-
-            oCI.NordType = oSession.NordType
-            oCI.Declination = oSession.Declination
-            oCI.declinationenabled = oSession.DeclinationEnabled
-
-            oCI.SideMeasuresType = oSession.SideMeasuresType
-            oCI.SideMeasuresReferTo = oSession.SideMeasuresReferTo
-
-            oCI.VThreshold = oSession.VThreshold
-            oCI.VThresholdEnabled = oSession.VThresholdEnabled
-
-            oCI.Source = oSession
-            oSessionNode.Tag = oCI
-            oSessionNode.SelectedImageKey = "session"
-            oSessionNode.ImageKey = "session"
-        Next
-
-        btnSessionsAddSession.Enabled = True
+        btnSessionAdd.Enabled = True
         If tvSessions.Nodes.Count > 0 Then
-            tvSessions.SelectedNode = tvSessions.Nodes(0)
-            Call tvSessions_AfterSelect(tvSessions, New TreeViewEventArgs(tvSessions.SelectedNode))
+            tvSessions.SelectNode(tvSessions.Nodes(0))
         Else
-            btnSessionsDelete.Enabled = False
+            btnSessionDelete.Enabled = False
         End If
+
+        tvSessions.EndUpdate()
     End Sub
 
     Private Sub cmdOk_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdOk.Click
@@ -646,14 +564,14 @@ Friend Class frmProperties
             .Club = txtClub.Text
             .Designer = txtDesigner.Text
 
-            .DefGrade = cboDefGrade.Text
-            .DefAccuracy = cboDefAccuracy.Text
+            '.DefGrade = cboDefGrade.Text
+            '.DefAccuracy = cboDefAccuracy.Text
 
             .Note = txtNote.Text
 
             .Origin = cboOrigin.Text
 
-            .CalculateMode = IIf(chkCalculateMode.Checked, cSurvey.cSurvey.CalculateModeEnum.Automatic, cSurvey.cSurvey.CalculateModeEnum.Manual)
+            .CalculateMode = If(chkCalculateMode.Checked, cSurvey.cSurvey.CalculateModeEnum.Automatic, cSurvey.cSurvey.CalculateModeEnum.Manual)
             .CalculateType = cboCalculateType.SelectedIndex
             .RingCorrectionMode = cboRingCorrectionMode.SelectedIndex
             .NordCorrectionMode = cboNordCorrection.SelectedIndex
@@ -662,9 +580,9 @@ Friend Class frmProperties
             '.DataFormat = cboDataFormat.SelectedIndex
             '.DistanceType = cboDistanceType.SelectedIndex
             '.BearingType = cboBearingType.SelectedIndex
-            '.BearingDirection = IIf(chkBearingDirection.Checked, cSegment.MeasureDirectionEnum.Inverted, cSegment.MeasureDirectionEnum.Direct)
+            '.BearingDirection = if(chkBearingDirection.Checked, cSegment.MeasureDirectionEnum.Inverted, cSegment.MeasureDirectionEnum.Direct)
             '.InclinationType = cboInclinationType.SelectedIndex
-            '.InclinationDirection = IIf(chkInclinationDirection.Checked, cSegment.MeasureDirectionEnum.Inverted, cSegment.MeasureDirectionEnum.Direct)
+            '.InclinationDirection = if(chkInclinationDirection.Checked, cSegment.MeasureDirectionEnum.Inverted, cSegment.MeasureDirectionEnum.Direct)
             '.DepthType = cboDepthType.SelectedIndex
 
             'If cboGrade.SelectedIndex = 0 Then
@@ -706,163 +624,56 @@ Friend Class frmProperties
             .SurfaceProfile = chksurfaceprofile.Checked
             .SurfaceProfileShow = chkSurfaceProfileShow.Checked
 
-            For Each oSessionNode As TreeNode In tvSessions.Nodes
-                Dim oCI As cSessionPlaceHolder = oSessionNode.Tag
-                If TypeOf oCI Is cDefaultSessionPlaceHolder Then
-                    .DataFormat = oCI.DataFormat
-                    .DistanceType = oCI.DistanceType
-                    .BearingType = oCI.BearingType
-                    .BearingDirection = oCI.BearingDirection
-                    .InclinationType = oCI.InclinationType
-                    .InclinationDirection = oCI.InclinationDirection
-                    .DepthType = oCI.DepthType
-
-                    .Grade = oCI.Grade
-
-                    .NordType = oCI.NordType
-                    .DeclinationEnabled = oCI.declinationenabled
-                    .Declination = oCI.Declination
-
-                    .SideMeasuresType = oCI.SideMeasuresType
-                    .SideMeasuresReferTo = oCI.SideMeasuresReferTo
-
-                    .VThresholdEnabled = oCI.VThresholdEnabled
-                    .VThreshold = oCI.VThreshold
-                Else
-                    If oCI.Deleted And Not oCI.Created Then
-                        Call .Sessions.Remove(oCI.ID)
-                    ElseIf oCI.Created Then
-                        Dim oSession As cSession = .Sessions.Add(oCI.Date, oCI.Description)
-                        oSession.Club = oCI.Club
-                        oSession.Team = oCI.Team
-                        oSession.Designer = oCI.Designer
-                        oSession.Note = oCI.Note
-                        oSession.Color = oCI.Color
-
-                        oSession.DataFormat = oCI.DataFormat
-                        oSession.DistanceType = oCI.DistanceType
-                        oSession.BearingType = oCI.BearingType
-                        oSession.BearingDirection = oCI.BearingDirection
-                        oSession.InclinationType = oCI.InclinationType
-                        oSession.InclinationDirection = oCI.InclinationDirection
-                        oSession.DepthType = oCI.DepthType
-
-                        oSession.Grade = oCI.Grade
-
-                        oSession.NordType = oCI.NordType
-                        oSession.Declination = oCI.Declination
-                        oSession.DeclinationEnabled = oCI.declinationenabled
-
-                        oSession.SideMeasuresType = oCI.SideMeasuresType
-                        oSession.SideMeasuresReferTo = oCI.SideMeasuresReferTo
-
-                        oSession.VThresholdEnabled = oCI.VThresholdEnabled
-                        oSession.VThreshold = oCI.VThreshold
-                    Else
-                        Dim oSession As cSession = oCI.Source
-                        Dim sNewID As String = oCI.ID
-                        Dim sOldID As String = oCI.Source.ID
-                        If sNewID.ToLower <> sOldID.ToLower Then
-                            Call .Sessions.Rename(sOldID, oCI.Date, oCI.Description)
-                        End If
-
-                        oSession.Club = oCI.Club
-                        oSession.Team = oCI.Team
-                        oSession.Designer = oCI.Designer
-                        oSession.Note = oCI.Note
-                        oSession.Color = oCI.Color
-
-                        oSession.DataFormat = oCI.DataFormat
-                        oSession.DistanceType = oCI.DistanceType
-                        oSession.BearingType = oCI.BearingType
-                        oSession.BearingDirection = oCI.BearingDirection
-                        oSession.InclinationType = oCI.InclinationType
-                        oSession.InclinationDirection = oCI.InclinationDirection
-                        oSession.DepthType = oCI.DepthType
-
-                        oSession.Grade = oCI.Grade
-
-                        oSession.NordType = oCI.NordType
-                        oSession.Declination = oCI.Declination
-                        oSession.DeclinationEnabled = oCI.declinationenabled
-
-                        oSession.SideMeasuresType = oCI.SideMeasuresType
-                        oSession.SideMeasuresReferTo = oCI.SideMeasuresReferTo
-
-                        oSession.VThresholdEnabled = oCI.VThresholdEnabled
-                        oSession.VThreshold = oCI.VThreshold
-                    End If
-                End If
-            Next
+            Call DirectCast(tvSessions.DataSource, cSessionsEditBindingList).Save()
             Call pSessionsLoad()
 
-            For Each oCaveNode As TreeNode In tvCaveInfos.Nodes
-                Dim oCI As cCaveInfoPlaceHolder = oCaveNode.Tag
-                If oCI.Deleted And Not oCI.Created Then
-                    Call .CaveInfos.Remove(oCI.Name, True)
-                ElseIf oCI.Created Then
-                    Dim oCaveInfo As cCaveInfo = .CaveInfos.Add(oCI.Name)
-                    oCaveInfo.ID = oCI.ID
-                    oCaveInfo.Color = oCI.Color
-                    oCaveInfo.Description = oCI.Description
-                    oCaveInfo.SurfaceProfileShow = oCI.SurfaceProfileShow
-                    oCaveInfo.Locked = oCI.Locked
-                    oCaveInfo.ExtendStart = oCI.ExtendStart
-                    oCaveInfo.Priority = oCI.Priority
-                    oCaveInfo.ParentConnection = oCI.ParentConnection
-                    oCaveInfo.Connection = oCI.Connection
-                    oCI.Source = oCaveInfo
-                Else
-                    oCI.Source.ID = oCI.ID
-                    oCI.Source.Color = oCI.Color
-                    oCI.Source.Description = oCI.Description
-                    oCI.Source.SurfaceProfileShow = oCI.SurfaceProfileShow
-                    oCI.Source.Locked = oCI.Locked
-                    oCI.Source.ExtendStart = oCI.ExtendStart
-                    oCI.Source.Priority = oCI.Priority
-                    oCI.Source.ParentConnection = oCI.ParentConnection
-                    oCI.Source.Connection = oCI.Connection
-                    Dim sNewName As String = oCI.Name
-                    Dim sOldName As String = oCI.Source.Name
-                    If sNewName.ToLower <> sOldName.ToLower Then
-                        Call .CaveInfos.Rename(sOldName, sNewName, True)
-                    End If
-                End If
-            Next
+            'For Each oCaveNode As TreeNode In tvCaveInfos.Nodes
+            '    Dim oCI As cCaveInfoPlaceHolder = oCaveNode.Tag
+            '    If oCI.Deleted And Not oCI.Created Then
+            '        Call .CaveInfos.Remove(oCI.Name, True)
+            '    ElseIf oCI.Created Then
+            '        Dim oCaveInfo As cCaveInfo = .CaveInfos.Add(oCI.Name)
+            '        oCaveInfo.ID = oCI.ID
+            '        oCaveInfo.Color = oCI.Color
+            '        oCaveInfo.Description = oCI.Description
+            '        oCaveInfo.SurfaceProfileShow = oCI.SurfaceProfileShow
+            '        oCaveInfo.Locked = oCI.Locked
+            '        oCaveInfo.ExtendStart = oCI.ExtendStart
+            '        oCaveInfo.Priority = oCI.Priority
+            '        oCaveInfo.ParentConnection = oCI.ParentConnection
+            '        oCaveInfo.Connection = oCI.Connection
+            '        oCI.Source = oCaveInfo
+            '    Else
+            '        oCI.Source.ID = oCI.ID
+            '        oCI.Source.Color = oCI.Color
+            '        oCI.Source.Description = oCI.Description
+            '        oCI.Source.SurfaceProfileShow = oCI.SurfaceProfileShow
+            '        oCI.Source.Locked = oCI.Locked
+            '        oCI.Source.ExtendStart = oCI.ExtendStart
+            '        oCI.Source.Priority = oCI.Priority
+            '        oCI.Source.ParentConnection = oCI.ParentConnection
+            '        oCI.Source.Connection = oCI.Connection
+            '        Dim sNewName As String = oCI.Name
+            '        Dim sOldName As String = oCI.Source.Name
+            '        If sNewName.ToLower <> sOldName.ToLower Then
+            '            Call .CaveInfos.Rename(sOldName, sNewName, True)
+            '        End If
+            '    End If
+            'Next
 
-            For Each oCaveNode As TreeNode In tvCaveInfos.Nodes
-                Dim oCI As cCaveInfoPlaceHolder = oCaveNode.Tag
-                Call pCaveBranchesSave(oCI.Source.Branches, oCaveNode.Nodes)
-            Next
+            'For Each oCaveNode As TreeNode In tvCaveInfos.Nodes
+            '    Dim oCI As cCaveInfoPlaceHolder = oCaveNode.Tag
+            '    Call pCaveBranchesSave(oCI.Source.Branches, oCaveNode.Nodes)
+            'Next
+            Call DirectCast(tvCaveInfos.DataSource, cCaveInfoBranchEditBindingList).Save()
             Call pCavesLoad()
 
-            For Each oHighlightNode As TreeNode In tvHighlights.Nodes
-                Dim oCI As cHighlightPlaceholder = oHighlightNode.Tag
-                If oCI.Deleted And Not oCI.Created Then
-                    Call .HighlightsDetails.Remove(oCI.ID)
-                ElseIf oCI.Created Then
-                    Dim oHighlight As Properties.cHighlightsDetail = .HighlightsDetails.Add(oCI.Name, oCI.ApplyTo, oCI.Condition)
-                    oHighlight.Name = oCI.Name
-                    oHighlight.Size = oCI.Size
-                    oHighlight.Opacity = oCI.Opacity
-                    oHighlight.Color = oCI.Color
-                    oHighlight.ApplyTo = oCI.ApplyTo
-                    oHighlight.Condition = oCI.Condition
-                Else
-                    Dim oHighlight As Properties.cHighlightsDetail = oCI.Source
-                    oHighlight.Name = oCI.Name
-                    oHighlight.Size = oCI.Size
-                    oHighlight.Opacity = oCI.Opacity
-                    oHighlight.Color = oCI.Color
-                    oHighlight.ApplyTo = oCI.ApplyTo
-                    oHighlight.Condition = oCI.Condition
-                End If
-            Next
+            Call DirectCast(tvHighlights.DataSource, cHighlightEditBindingList).Save()
             Call pHighlightsLoad()
 
             With .GPS
                 .Enabled = chkGPSEnabled.Checked
-                .RefPointOnOrigin = optGPSRefPointOnOrigin.Checked
+                .RefPointOnOrigin = optGPSRefPointOnOrigin.EditValue
                 .CustomRefPoint = cboGPSCustomRefPoint.Text
                 .System = cboCoordinateGeo.Text
                 Select Case .System
@@ -931,10 +742,10 @@ Friend Class frmProperties
 
             Call .DesignProperties.SetValue("PlotNoteTextScaleFactor", txtPlotNoteTextScaleFactor.Value)
             Call .DesignProperties.SetValue("PlotNoteTextFont", txtPlotNoteTextFont.Tag)
-            Call .DesignProperties.SetValue("PlotNoteTextColor", picPlotNoteTextColor.BackColor)
+            Call .DesignProperties.SetValue("PlotNoteTextColor", txtPlotNoteTextColor.Color)
 
-            Call .DesignProperties.SetValue("PlotCenterlineVector", IIf(chkPlotCenterlineVectors.Checked, 1, 0))
-            Call .DesignProperties.SetValue("PlotCenterlineForceColor", IIf(chkPlotCenterlineForceSegmentColor.Checked, 1, 0))
+            Call .DesignProperties.SetValue("PlotCenterlineVector", If(chkPlotCenterlineVectors.Checked, 1, 0))
+            Call .DesignProperties.SetValue("PlotCenterlineForceColor", If(chkPlotCenterlineForceSegmentColor.Checked, 1, 0))
 
             Call .DesignProperties.SetValue("SurfaceProfilePenWidth", txtSurfacePenWidth.Value)
             Call .DesignProperties.SetValue("SurfaceProfileSelectedPenWidth", txtSurfaceSelectedPenWidth.Value)
@@ -971,54 +782,61 @@ Friend Class frmProperties
             'superfice
             .SurfaceProfile = chksurfaceprofile.Checked
             .SurfaceProfileShow = chkSurfaceProfileShow.Checked
-            If cbosurfaceprofileelevation.SelectedItem Is Nothing Then
-                .SurfaceProfileElevation = Nothing
-            Else
-                .SurfaceProfileElevation = cbosurfaceprofileelevation.SelectedItem.source
-            End If
 
-            Call oSurvey.SharedSettings.SetValue("loch.showdialog", IIf(chk3dLochShowDialog.Checked, "1", "0"))
+            Call pElevationRebindSurfaceProfileCombo()
+            .SurfaceProfileElevation = cbosurfaceprofileelevation.GetSelectedElevation
+
+            Call oSurvey.SharedSettings.SetValue("loch.showdialog", If(chk3dLochShowDialog.Checked, "1", "0"))
 
             .HistoryEnabled = chkHistoryEnabled.Checked
+
+            Call DirectCast(tvElevations.DataSource, cElevationsBindingList).Save()
+            Call DirectCast(tvOrthophotos.DataSource, cOrthophotosBindingList).Save()
+            Call DirectCast(tvWMSs.DataSource, cWMSsBindingList).Save()
+            Call DirectCast(tvGrades.DataSource, cGradeEditBindingList).Save()
+            Call pElevationsLoad()
+            Call pOrthophotosLoad()
+            Call pWMSsLoad()
+            Call pGradesLoad()
         End With
 
         Call oSurvey.RaiseOnPropertiesChanged(cSurvey.cSurvey.OnPropertiesChangedEventArgs.PropertiesChangeSourceEnum.DefaultProperties)
     End Sub
 
-    Private Sub pCaveBranchesSave(ParentBranches As cCaveInfoBranches, ParentNodes As TreeNodeCollection)
-        For Each oBranchNode As TreeNode In ParentNodes
-            Dim oCIB As cCaveInfoBranchPlaceHolder = oBranchNode.Tag
-            If oCIB.Deleted And Not oCIB.Created Then
-                Call ParentBranches.Remove(oCIB.Name, True)
-            ElseIf oCIB.Created Then
-                Dim oCaveInfoBranch As cCaveInfoBranch = ParentBranches.Add(oCIB.Name)
-                oCaveInfoBranch.Color = oCIB.Color
-                oCaveInfoBranch.Description = oCIB.Description
-                oCaveInfoBranch.SurfaceProfileShow = oCIB.SurfaceProfileShow
-                oCaveInfoBranch.Locked = oCIB.Locked
-                oCaveInfoBranch.ExtendStart = oCIB.ExtendStart
-                oCaveInfoBranch.Priority = oCIB.Priority
-                oCaveInfoBranch.ParentConnection = oCIB.ParentConnection
-                oCaveInfoBranch.Connection = oCIB.Connection
-                oCIB.Source = oCaveInfoBranch
-            Else
-                oCIB.Source.Color = oCIB.Color
-                oCIB.Source.Description = oCIB.Description
-                oCIB.Source.SurfaceProfileShow = oCIB.SurfaceProfileShow
-                oCIB.Source.Locked = oCIB.Locked
-                oCIB.Source.ExtendStart = oCIB.ExtendStart
-                oCIB.Source.Priority = oCIB.Priority
-                oCIB.Source.ParentConnection = oCIB.ParentConnection
-                oCIB.Source.Connection = oCIB.Connection
-                Dim sNewName As String = oCIB.Name
-                Dim sOldName As String = oCIB.Source.Name
-                If sNewName.ToLower <> sOldName.ToLower Then
-                    Call ParentBranches.Rename(sOldName, sNewName, True)
-                End If
-            End If
-            Call pCaveBranchesSave(oCIB.Source.Branches, oBranchNode.Nodes)
-        Next
-    End Sub
+    'Private Sub pCaveBranchesSave(ParentBranches As cCaveInfoBranches, ParentNodes As TreeNodeCollection)
+    '    For Each oBranchNode As TreeNode In ParentNodes
+    '        Dim oCIB As cCaveInfoBranchPlaceHolder = oBranchNode.Tag
+    '        If oCIB.Deleted And Not oCIB.Created Then
+    '            Call ParentBranches.Remove(oCIB.Name, True)
+    '        ElseIf oCIB.Created Then
+    '            Dim oCaveInfoBranch As cCaveInfoBranch = ParentBranches.Add(oCIB.Name)
+    '            oCaveInfoBranch.Color = oCIB.Color
+    '            oCaveInfoBranch.Description = oCIB.Description
+    '            oCaveInfoBranch.SurfaceProfileShow = oCIB.SurfaceProfileShow
+    '            oCaveInfoBranch.Locked = oCIB.Locked
+    '            oCaveInfoBranch.ExtendStart = oCIB.ExtendStart
+    '            oCaveInfoBranch.Priority = oCIB.Priority
+    '            oCaveInfoBranch.ParentConnection = oCIB.ParentConnection
+    '            oCaveInfoBranch.Connection = oCIB.Connection
+    '            oCIB.Source = oCaveInfoBranch
+    '        Else
+    '            oCIB.Source.Color = oCIB.Color
+    '            oCIB.Source.Description = oCIB.Description
+    '            oCIB.Source.SurfaceProfileShow = oCIB.SurfaceProfileShow
+    '            oCIB.Source.Locked = oCIB.Locked
+    '            oCIB.Source.ExtendStart = oCIB.ExtendStart
+    '            oCIB.Source.Priority = oCIB.Priority
+    '            oCIB.Source.ParentConnection = oCIB.ParentConnection
+    '            oCIB.Source.Connection = oCIB.Connection
+    '            Dim sNewName As String = oCIB.Name
+    '            Dim sOldName As String = oCIB.Source.Name
+    '            If sNewName.ToLower <> sOldName.ToLower Then
+    '                Call ParentBranches.Rename(sOldName, sNewName, True)
+    '            End If
+    '        End If
+    '        Call pCaveBranchesSave(oCIB.Source.Branches, oBranchNode.Nodes)
+    '    Next
+    'End Sub
 
     Private Sub cmdCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancel.Click
         DialogResult = Windows.Forms.DialogResult.Cancel
@@ -1096,199 +914,49 @@ Friend Class frmProperties
         End Select
     End Sub
 
-    Private Sub cmdCaveInfoColorChange_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCaveInfoColorChange.Click
-        Dim oCD As ColorDialog = New ColorDialog
-        With oCD
-            .FullOpen = True
-            .AnyColor = True
-            .Color = picCaveInfoColor.BackColor
-            If .ShowDialog = Windows.Forms.DialogResult.OK Then
-                picCaveInfoColor.BackColor = .Color
-                Try
-                    Select Case tvCaveInfos.SelectedNode.Tag.type
-                        Case "cave"
-                            Dim oCI As cCaveInfoPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                            oCI.Color = .Color
-                        Case "branch"
-                            Dim oCIB As cCaveInfoBranchPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                            oCIB.Color = .Color
-                    End Select
-                Catch
-                End Try
-            End If
-        End With
-    End Sub
+    'Private Sub cmdCaveInfoColorChange_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    Dim oCD As ColorDialog = New ColorDialog
+    '    With oCD
+    '        .FullOpen = True
+    '        .AnyColor = True
+    '        .Color = picCaveInfoColor.BackColor
+    '        If .ShowDialog = Windows.Forms.DialogResult.OK Then
+    '            picCaveInfoColor.BackColor = .Color
+    '            Try
+    '                Select Case tvCaveInfos.SelectedNode.Tag.type
+    '                    Case "cave"
+    '                        Dim oCI As cCaveInfoPlaceHolder = tvCaveInfos.SelectedNode.Tag
+    '                        oCI.Color = .Color
+    '                    Case "branch"
+    '                        Dim oCIB As cCaveInfoBranchPlaceHolder = tvCaveInfos.SelectedNode.Tag
+    '                        oCIB.Color = .Color
+    '                End Select
+    '            Catch
+    '            End Try
+    '        End If
+    '    End With
+    'End Sub
 
-    Private Sub cmdCaveInfoColorReset_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCaveInfoColorReset.Click
-        picCaveInfoColor.BackColor = Color.Transparent
-        Try
-            Select Case tvCaveInfos.SelectedNode.Tag.type
-                Case "cave"
-                    Dim oCI As cCaveInfoPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                    oCI.Color = Color.Transparent
-                Case "branch"
-                    Dim oCIB As cCaveInfoBranchPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                    oCIB.Color = Color.Transparent
-            End Select
-        Catch
-        End Try
-    End Sub
-
-    Private Sub tvCaveInfos_AfterSelect(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TreeViewEventArgs) Handles tvCaveInfos.AfterSelect
-        Try
-            Select Case e.Node.Tag.type
-                Case "cave"
-                    Dim oCI As cCaveInfoPlaceHolder = e.Node.Tag
-                    txtCaveInfoID.Enabled = True
-                    txtCaveInfoName.Text = oCI.Name
-                    txtCaveInfoID.Text = oCI.ID
-                    txtCaveInfoDescription.Text = oCI.Description
-                    picCaveInfoColor.BackColor = oCI.Color
-                    If oCI.ExtendStart = "" Then
-                        chkCaveInfoExtendStart.Checked = False
-                        Call chkCaveInfoExtendStart_CheckedChanged(chkCaveInfoExtendStart, EventArgs.Empty)
-                    Else
-                        cboCaveInfoExtendStart.Text = oCI.ExtendStart
-                        chkCaveInfoExtendStart.Checked = True
-                    End If
-                    If oCI.Priority.HasValue Then
-                        txtCaveInfoPriority.Value = oCI.Priority.GetValueOrDefault(0)
-                        chkCaveInfoPriority.Checked = True
-                    Else
-                        chkCaveInfoPriority.Checked = False
-                        Call chkCaveInfoPriority_CheckedChanged(chkCaveInfoPriority, EventArgs.Empty)
-                    End If
-                    If IsNothing(oCI.ParentConnection) Then
-                        txtCaveInfoParentConnection.Text = ""
-                        txtCaveInfoConnection.Enabled = False
-                        cmdCaveInfoConnection.Enabled = False
-                    Else
-                        txtCaveInfoParentConnection.Text = oCI.ParentConnection.ToString
-                        txtCaveInfoConnection.Enabled = True
-                        cmdCaveInfoConnection.Enabled = True
-                    End If
-                    txtCaveInfoConnection.Text = If(IsNothing(oCI.Connection), "", oCI.Connection.ToString)
-
-                    Dim bEnabled As Boolean = Not oCI.Deleted
-                    lblCaveInfoName.Enabled = bEnabled
-                    txtCaveInfoName.Enabled = bEnabled
-                    lblCaveInfoID.Enabled = bEnabled
-                    txtCaveInfoID.Enabled = bEnabled
-                    lblCaveInfoColor.Enabled = bEnabled
-                    cmdCaveInfoColorChange.Enabled = bEnabled
-                    cmdCaveInfoColorReset.Enabled = bEnabled
-                    lblCaveInfoDescription.Enabled = bEnabled
-                    txtCaveInfoDescription.Enabled = bEnabled
-                    chkCaveInfoLocked.Enabled = bEnabled
-
-                    If oCI.Deleted Then
-                        btnCaveInfoAddBranch.Enabled = False
-                        btnCaveInfoDelete.Enabled = False
-                    Else
-                        btnCaveInfoAddBranch.Enabled = True
-                        btnCaveInfoDelete.Enabled = True
-                    End If
-
-                    cboCaveInfoSurfaceProfileShow.SelectedIndex = oCI.SurfaceProfileShow
-                    chkCaveInfoLocked.Checked = oCI.Locked
-                Case "branch"
-                    Dim oCIB As cCaveInfoBranchPlaceHolder = e.Node.Tag
-                    txtCaveInfoID.Enabled = False
-                    txtCaveInfoName.Text = oCIB.Name
-                    picCaveInfoColor.BackColor = oCIB.Color
-                    txtCaveInfoDescription.Text = oCIB.Description
-                    If oCIB.ExtendStart = "" Then
-                        chkCaveInfoExtendStart.Checked = False
-                        Call chkCaveInfoExtendStart_CheckedChanged(chkCaveInfoExtendStart, EventArgs.Empty)
-                    Else
-                        cboCaveInfoExtendStart.Text = oCIB.ExtendStart
-                        chkCaveInfoExtendStart.Checked = True
-                    End If
-                    If oCIB.Priority.HasValue Then
-                        txtCaveInfoPriority.Value = oCIB.Priority.GetValueOrDefault(0)
-                        chkCaveInfoPriority.Checked = True
-                    Else
-                        chkCaveInfoPriority.Checked = False
-                        Call chkCaveInfoPriority_CheckedChanged(chkCaveInfoPriority, EventArgs.Empty)
-                    End If
-                    If IsNothing(oCIB.ParentConnection) Then
-                        txtCaveInfoParentConnection.Text = ""
-                        txtCaveInfoConnection.Enabled = False
-                        cmdCaveInfoConnection.Enabled = False
-                    Else
-                        txtCaveInfoParentConnection.Text = oCIB.ParentConnection.ToString
-                        txtCaveInfoConnection.Enabled = True
-                        cmdCaveInfoConnection.Enabled = True
-                    End If
-                    txtCaveInfoConnection.Text = If(IsNothing(oCIB.Connection), "", oCIB.Connection.ToString)
-
-                    Dim bEnabled As Boolean = Not oCIB.Deleted
-                    lblCaveInfoName.Enabled = bEnabled
-                    txtCaveInfoName.Enabled = bEnabled
-                    lblCaveInfoID.Enabled = False
-                    txtCaveInfoID.Enabled = False
-                    lblCaveInfoColor.Enabled = bEnabled
-                    cmdCaveInfoColorChange.Enabled = bEnabled
-                    cmdCaveInfoColorReset.Enabled = bEnabled
-                    lblCaveInfoDescription.Enabled = bEnabled
-                    txtCaveInfoDescription.Enabled = bEnabled
-                    chkCaveInfoLocked.Enabled = bEnabled
-
-                    If oCIB.Deleted Then
-                        btnCaveInfoAddBranch.Enabled = False
-                        btnCaveInfoDelete.Enabled = False
-                    Else
-                        btnCaveInfoAddBranch.Enabled = True
-                        btnCaveInfoDelete.Enabled = True
-                    End If
-
-                    cboCaveInfoSurfaceProfileShow.SelectedIndex = oCIB.SurfaceProfileShow
-                    chkCaveInfoLocked.Checked = oCIB.Locked
-            End Select
-            btnCaveInfoAddCave.Enabled = True
-
-            lvCaveInfoSegments.Enabled = True
-            btnCaveInfoSegmentsRefresh.Enabled = True
-            Call lvCaveInfoSegments.Items.Clear()
-            btnCaveInfoSelectSegment.Enabled = False
-        Catch ex As Exception
-            lblCaveInfoName.Enabled = False
-            txtCaveInfoName.Enabled = False
-            lblCaveInfoID.Enabled = False
-            txtCaveInfoID.Enabled = False
-            lblCaveInfoColor.Enabled = False
-            cmdCaveInfoColorChange.Enabled = False
-            cmdCaveInfoColorReset.Enabled = False
-            lblCaveInfoDescription.Enabled = False
-            txtCaveInfoDescription.Enabled = False
-            chkCaveInfoLocked.Enabled = False
-
-            lvCaveInfoSegments.Enabled = False
-            btnCaveInfoSegmentsRefresh.Enabled = False
-            Call lvCaveInfoSegments.Items.Clear()
-            btnCaveInfoSelectSegment.Enabled = False
-
-            btnCaveInfoAddCave.Enabled = True
-            btnCaveInfoAddBranch.Enabled = False
-            btnCaveInfoDelete.Enabled = False
-        End Try
-    End Sub
+    'Private Sub cmdCaveInfoColorReset_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    picCaveInfoColor.BackColor = Color.Transparent
+    '    Try
+    '        Select Case tvCaveInfos.SelectedNode.Tag.type
+    '            Case "cave"
+    '                Dim oCI As cCaveInfoPlaceHolder = tvCaveInfos.SelectedNode.Tag
+    '                oCI.Color = Color.Transparent
+    '            Case "branch"
+    '                Dim oCIB As cCaveInfoBranchPlaceHolder = tvCaveInfos.SelectedNode.Tag
+    '                oCIB.Color = Color.Transparent
+    '        End Select
+    '    Catch
+    '    End Try
+    'End Sub
 
     Private Sub txtCaveInfoName_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtCaveInfoName.Validated
         Try
             Dim sName As String = txtCaveInfoName.Text
-            If tvCaveInfos.SelectedNode.Name <> sName Then
-                tvCaveInfos.SelectedNode.Name = sName
-                tvCaveInfos.SelectedNode.Text = sName
-                Select Case tvCaveInfos.SelectedNode.Tag.type
-                    Case "cave"
-                        Dim oCI As cCaveInfoPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                        oCI.Name = sName
-                    Case "branch"
-                        Dim oCIB As cCaveInfoBranchPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                        oCIB.Name = sName
-                End Select
-            End If
+            Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
+            oItem.Name = sName
         Catch
         End Try
     End Sub
@@ -1296,11 +964,8 @@ Friend Class frmProperties
     Private Sub txtCaveInfoID_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtCaveInfoID.Validated
         Try
             Dim sID As String = txtCaveInfoID.Text
-            Select Case tvCaveInfos.SelectedNode.Tag.type
-                Case "cave"
-                    Dim oCI As cCaveInfoPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                    oCI.ID = sID
-            End Select
+            Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
+            oItem.ID = sID
         Catch
         End Try
     End Sub
@@ -1310,136 +975,21 @@ Friend Class frmProperties
         If sNewName = "" Then
             e.Cancel = True
         Else
-            Dim oNode As TreeNode = tvCaveInfos.SelectedNode
-            If Not oNode Is Nothing Then
-                Select Case oNode.Tag.type
-                    Case "cave"
-                        Dim oCI As cCaveInfoPlaceHolder = oNode.Tag
-                        If sNewName <> oCI.Name Then
-                            e.Cancel = tvCaveInfos.Nodes.ContainsKey(sNewName)
-                        End If
-                    Case "branch"
-                        Dim oCIB As cCaveInfoBranchPlaceHolder = oNode.Tag
-                        If sNewName <> oCIB.Name Then
-                            e.Cancel = oNode.Parent.Nodes.ContainsKey(sNewName)
-                        End If
-                End Select
-            End If
+            Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
+            e.Cancel = DirectCast(tvCaveInfos.DataSource, cCaveInfoBranchEditBindingList).ContainsName(sNewName)
         End If
     End Sub
 
-    Private Sub btnCaveInfoAddCave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCaveInfoAddCave.Click
-        Call tvCaveInfos.Focus()
-
-        Dim oCaveInfo As cCaveInfo = oSurvey.Properties.CaveInfos.GetEmptyCaveInfo(pGetNewNodeName(modMain.GetLocalizedString("properties.textpart4"), tvCaveInfos.Nodes))
-        Dim oCaveNode As TreeNode = tvCaveInfos.Nodes.Add(oCaveInfo.Name, oCaveInfo.Name)
-        Dim oCI As cCaveInfoPlaceHolder = New cCaveInfoPlaceHolder
-        oCI.Name = oCaveInfo.Name
-        oCI.ID = oCaveInfo.ID
-        oCI.Color = oCaveInfo.Color
-        oCI.ExtendStart = oCaveInfo.ExtendStart
-        oCI.Source = oCaveInfo
-        oCI.Created = True
-        oCaveNode.Tag = oCI
-        oCaveNode.SelectedImageKey = "cave"
-        oCaveNode.ImageKey = "cave"
-
-        tvCaveInfos.SelectedNode = oCaveNode
-        Call oCaveNode.EnsureVisible()
-    End Sub
-
-    Private Sub btnCaveInfoAddBranch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCaveInfoAddBranch.Click
-        Try
-            Dim oParentNode As TreeNode = tvCaveInfos.SelectedNode
-            If Not oParentNode Is Nothing Then
-                Call tvCaveInfos.Focus()
-
-                Dim sCave As String = oParentNode.Tag.name
-                Dim oBranches As cCaveInfoBranches = oParentNode.Tag.source.branches
-                Dim oCaveInfoBranch As cCaveInfoBranch = oBranches.GetEmptyCaveInfoBranch(pGetNewNodeName(modMain.GetLocalizedString("properties.textpart5"), oParentNode.Nodes))
-                Dim oBranchNode As TreeNode = oParentNode.Nodes.Add(oCaveInfoBranch.Name, oCaveInfoBranch.Name)
-                Dim oCIB As cCaveInfoBranchPlaceHolder = New cCaveInfoBranchPlaceHolder
-                oCIB.Name = oCaveInfoBranch.Name
-                oCIB.Color = oCaveInfoBranch.Color
-                oCIB.Description = oCaveInfoBranch.Description
-                oCIB.SurfaceProfileShow = oCaveInfoBranch.SurfaceProfileShow
-                oCIB.Locked = oCaveInfoBranch.Locked
-                oCIB.ExtendStart = oCaveInfoBranch.ExtendStart
-                oCIB.Source = oCaveInfoBranch
-                oCIB.Created = True
-                oBranchNode.Tag = oCIB
-                oBranchNode.SelectedImageKey = "branch"
-                oBranchNode.ImageKey = "branch"
-
-                tvCaveInfos.SelectedNode = oBranchNode
-                Call oBranchNode.EnsureVisible()
-            End If
-        Catch
-        End Try
-    End Sub
-
-    Private Function pGetNewNodeName(ByVal Prefix As String, ByVal Parent As TreeNodeCollection)
+    Private Function pGetNewNodeName(ByVal Prefix As String, ByVal Items As cCaveInfoBranchEditBindingList)
         Dim iCount As Integer = 1
         Do
             Dim sName As String = Prefix & " " & iCount
-            If Not Parent.ContainsKey(sName) Then
+            If Not Items.ContainsName(sName) Then
                 Return sName
             End If
             iCount += 1
         Loop
     End Function
-
-    Private Sub btnCaveInfoDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCaveInfoDelete.Click
-        Try
-            Dim oNode As TreeNode = tvCaveInfos.SelectedNode
-            If Not oNode Is Nothing Then
-                Select Case oNode.Tag.type
-                    Case "cave"
-                        Dim oCI As cCaveInfoPlaceHolder = oNode.Tag
-                        If oSurvey.Properties.CaveInfos.Contains(oCI.Source) Then
-                            oNode.ForeColor = SystemColors.InactiveCaptionText
-                            oNode.SelectedImageKey = "deleted"
-                            oNode.ImageKey = "deleted"
-                            For Each oChildNode As TreeNode In oNode.Nodes
-                                oChildNode.SelectedImageKey = "deleted"
-                                oChildNode.ImageKey = "deleted"
-                                oChildNode.Tag.deleted = True
-                            Next
-                            oCI.Deleted = True
-                            tvCaveInfos.SelectedNode = Nothing
-                            tvCaveInfos.SelectedNode = oNode
-                        Else
-                            Call tvCaveInfos.Nodes.Remove(oNode)
-                        End If
-                        If tvCaveInfos.Nodes.Count = 0 Then
-                            Call tvCaveInfos_AfterSelect(Nothing, Nothing)
-                        End If
-                    Case "branch"
-                        Dim oCI As cCaveInfoPlaceHolder = pCaveInfoGetFirstLevelNode(oNode).Tag
-                        Dim oCIB As cCaveInfoBranchPlaceHolder = oNode.Tag
-                        If oSurvey.Properties.CaveInfos.Contains(oCI.Source) Then
-                            If oCI.Source.Branches.GetAllBranches.Values.Contains(oCIB.Source) Then
-                                oNode.ForeColor = SystemColors.InactiveCaptionText
-                                oNode.SelectedImageKey = "deleted"
-                                oNode.ImageKey = "deleted"
-                                Call pCaveInfoDeleteChildNode(oNode)
-                                oCIB.Deleted = True
-                                tvCaveInfos.SelectedNode = Nothing
-                                tvCaveInfos.SelectedNode = oNode
-                            Else
-                                Call oNode.Parent.Nodes.Remove(oNode)
-                            End If
-                        Else
-                            Call oNode.Parent.Nodes.Remove(oNode)
-                        End If
-                        If tvCaveInfos.Nodes.Count = 0 Then
-                            Call tvCaveInfos_AfterSelect(Nothing, Nothing)
-                        End If
-                End Select
-            End If
-        Catch
-        End Try
-    End Sub
 
     Private Function pCaveInfoGetFirstLevelNode(Node As TreeNode) As TreeNode
         If Node.Parent Is Nothing Then
@@ -1449,14 +999,14 @@ Friend Class frmProperties
         End If
     End Function
 
-    Private Sub pCaveInfoDeleteChildNode(Node As TreeNode)
-        For Each oChildNode As TreeNode In Node.Nodes
-            oChildNode.SelectedImageKey = "deleted"
-            oChildNode.ImageKey = "deleted"
-            oChildNode.Tag.deleted = True
-            Call pCaveInfoDeleteChildNode(oChildNode)
-        Next
-    End Sub
+    'Private Sub pCaveInfoDeleteChildNode(Node As TreeNode)
+    '    For Each oChildNode As TreeNode In Node.Nodes
+    '        oChildNode.SelectedImageKey = "deleted"
+    '        oChildNode.ImageKey = "deleted"
+    '        oChildNode.Tag.deleted = True
+    '        Call pCaveInfoDeleteChildNode(oChildNode)
+    '    Next
+    'End Sub
 
     Private Sub cboGPSCustomRefPoint_DropDown(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboGPSCustomRefPoint.DropDown
         Call cboGPSCustomRefPoint.Items.Clear()
@@ -1465,258 +1015,80 @@ Friend Class frmProperties
         Next
     End Sub
 
-    Private Sub btnSessionsAddSession_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSessionsAddSession.Click
-        Call tvSessions.Focus()
+    'Private Sub btnSessionsAddSession_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    Call tvSessions.Focus()
 
-        Dim sNewID As String
-        Dim sNewDescriptionBase As String = GetLocalizedString("properties.textpart1")
-        Dim iNewCount As Integer = 0
-        Do
-            iNewCount += 1
-            sNewID = Strings.Format(Today, "yyyyMMdd") & "_" & (sNewDescriptionBase & " " & iNewCount).Replace(" ", "_").ToLower
-        Loop While tvSessions.Nodes.ContainsKey(sNewID)
-        Dim oSession As cSession = oSurvey.Properties.Sessions.GetEmptySession(Today, sNewDescriptionBase & " " & iNewCount)
-        Dim oSessionNode As TreeNode = tvSessions.Nodes.Add(oSession.ID, oSession.FormattedID)
-        Dim oCI As cSessionPlaceHolder = New cSessionPlaceHolder
-        oCI.Date = oSession.Date
-        oCI.Description = oSession.Description
-        oCI.Team = oSession.Team
-        oCI.Club = oSession.Club
-        oCI.Designer = oSession.Designer
-        oCI.DistanceType = oSession.DistanceType
-        oCI.BearingType = oSession.BearingType
-        oCI.BearingDirection = oSession.BearingDirection
-        oCI.InclinationType = oSession.InclinationType
-        oCI.InclinationDirection = oSession.InclinationDirection
-        oCI.DepthType = oSession.DepthType
+    '    Dim sNewID As String
+    '    Dim sNewDescriptionBase As String = GetLocalizedString("properties.textpart1")
+    '    Dim iNewCount As Integer = 0
+    '    Do
+    '        iNewCount += 1
+    '        sNewID = Strings.Format(Today, "yyyyMMdd") & "_" & (sNewDescriptionBase & " " & iNewCount).Replace(" ", "_").ToLower
+    '    Loop While tvSessions.Nodes.ContainsKey(sNewID)
+    '    Dim oSession As cSession = oSurvey.Properties.Sessions.GetEmptySession(Today, sNewDescriptionBase & " " & iNewCount)
+    '    Dim oSessionNode As TreeNode = tvSessions.Nodes.Add(oSession.ID, oSession.FormattedID)
+    '    Dim oCI As cSessionEditPlaceHolder = New cSessionEditPlaceHolder
+    '    oCI.Date = oSession.Date
+    '    oCI.Description = oSession.Description
+    '    oCI.Team = oSession.Team
+    '    oCI.Club = oSession.Club
+    '    oCI.Designer = oSession.Designer
+    '    oCI.DistanceType = oSession.DistanceType
+    '    oCI.BearingType = oSession.BearingType
+    '    oCI.BearingDirection = oSession.BearingDirection
+    '    oCI.InclinationType = oSession.InclinationType
+    '    oCI.InclinationDirection = oSession.InclinationDirection
+    '    oCI.DepthType = oSession.DepthType
 
-        oCI.Grade = oSession.Grade
+    '    oCI.Grade = oSession.Grade
 
-        oCI.NordType = oSession.NordType
-        oCI.SideMeasuresType = oSession.SideMeasuresType
-        oCI.SideMeasuresReferTo = oSession.SideMeasuresReferTo
+    '    oCI.NordType = oSession.NordType
+    '    oCI.SideMeasuresType = oSession.SideMeasuresType
+    '    oCI.SideMeasuresReferTo = oSession.SideMeasuresReferTo
 
-        oCI.Source = oSession
-        oCI.Created = True
-        oSessionNode.Tag = oCI
-        oSessionNode.SelectedImageKey = "session"
-        oSessionNode.ImageKey = "session"
+    '    oCI.Source = oSession
+    '    oCI.Created = True
+    '    oSessionNode.Tag = oCI
+    '    oSessionNode.SelectedImageKey = "session"
+    '    oSessionNode.ImageKey = "session"
 
-        tvSessions.SelectedNode = oSessionNode
-        Call oSessionNode.EnsureVisible()
-    End Sub
+    '    tvSessions.SelectedNode = oSessionNode
+    '    Call oSessionNode.EnsureVisible()
+    'End Sub
 
-    Private Sub btnSessionsDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSessionsDelete.Click
-        Try
-            Dim oNode As TreeNode = tvSessions.SelectedNode
-            If Not oNode Is Nothing Then
-                Select Case oNode.Tag.type
-                    Case "session"
-                        Dim oCI As cSessionPlaceHolder = oNode.Tag
-                        If oSurvey.Properties.Sessions.Contains(oCI.Source) Then
-                            oNode.ForeColor = SystemColors.InactiveCaptionText
-                            oNode.SelectedImageKey = "deleted"
-                            oNode.ImageKey = "deleted"
-                            oCI.Deleted = True
+    'Private Sub btnSessionsDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    Try
+    '        Dim oNode As TreeNode = tvSessions.SelectedNode
+    '        If Not oNode Is Nothing Then
+    '            Select Case oNode.Tag.type
+    '                Case "session"
+    '                    Dim oCI As cSessionEditPlaceHolder = oNode.Tag
+    '                    If oSurvey.Properties.Sessions.Contains(oCI.Source) Then
+    '                        oNode.ForeColor = SystemColors.InactiveCaptionText
+    '                        oNode.SelectedImageKey = "deleted"
+    '                        oNode.ImageKey = "deleted"
+    '                        oCI.Deleted = True
 
-                            tvSessions.SelectedNode = Nothing
-                            tvSessions.SelectedNode = oNode
-                        Else
-                            Call tvSessions.Nodes.Remove(oNode)
-                        End If
-                End Select
-                If tvSessions.Nodes.Count = 0 Then
-                    Call tvSessions_AfterSelect(Nothing, Nothing)
-                End If
-            End If
-        Catch
-        End Try
-    End Sub
-
-    Private Sub tvSessions_AfterSelect(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TreeViewEventArgs) Handles tvSessions.AfterSelect
-        'workaround for forcing tabsession handle creation...so I can add tabs
-        Dim oH As IntPtr = tabSession.Handle
-        Dim bHaveFocus As Boolean = tvSessions.Focused
-        tabSession.Enabled = False
-        Try
-            Call tabSession.TabPages.Remove(tabSessionMain)
-            Call tabSession.TabPages.Remove(tabSessionNote)
-            Call tabSession.TabPages.Remove(tabSessionDefault)
-
-            Select Case e.Node.Tag.type
-                Case "defaultsession"
-                    lblSessionDate.Enabled = False
-                    txtSessionDate.Enabled = False
-                    If oSurvey.Properties.CalculateVersion >= 2 Then
-                        txtSessionDate.Visible = False
-                        pnlSessionDate.Visible = True
-                    Else
-                        txtSessionDate.Visible = True
-                        pnlSessionDate.Visible = False
-                    End If
-                    lblSessionDescription.Enabled = False
-                    txtSessionDescription.Enabled = False
-                    lblSessionColor.Enabled = False
-                    picSessionColor.Enabled = False
-                    cmdSessionColorChange.Enabled = False
-                    cmdSessionColorReset.Enabled = False
-
-                    txtSessionDate.Value = Now
-                    txtSessionDescription.Text = ""
-                    picSessionColor.BackColor = PictureBox.DefaultBackColor
-
-                    Dim oCI As cSessionPlaceHolder = e.Node.Tag
-
-                    cboSessionDataFormat.SelectedIndex = oCI.DataFormat
-                    cboSessionDistanceType.SelectedIndex = oCI.DistanceType
-                    cboSessionBearingType.SelectedIndex = oCI.BearingType
-                    chkSessionBearingDirection.Checked = oCI.BearingDirection = cSegment.MeasureDirectionEnum.Inverted
-                    cboSessionInclinationType.SelectedIndex = oCI.InclinationType
-                    chkSessionInclinationDirection.Checked = oCI.InclinationDirection = cSegment.MeasureDirectionEnum.Inverted
-                    cboSessionDepthType.SelectedIndex = oCI.DepthType
-
-                    If oCI.Grade = "" Then
-                        cboSessionGrade.SelectedIndex = 0
-                    Else
-                        cboSessionGrade.SelectedIndex = oSurvey.Grades.IndexOf(oSurvey.Grades(oCI.Grade)) + 1
-                    End If
-
-                    cboSessionNordType.SelectedIndex = oCI.NordType
-                    chkSessionDecMag.Checked = oCI.declinationenabled
-                    txtSessionDecMag.Text = oCI.Declination
-
-                    cboSessionSideMeasuresType.SelectedIndex = oCI.SideMeasuresType
-                    cboSessionSideMeasuresReferTo.SelectedIndex = oCI.SideMeasuresReferTo
-
-                    chkSessionVthreshold.Checked = oCI.VThresholdEnabled
-                    txtSessionVthreshold.Text = oCI.VThreshold
-
-                    tabSession.Enabled = True
-
-                    Call tabSession.TabPages.Insert(1, tabSessionDefault)
-                    tabSession.SelectedTab = tabSessionMeasure
-
-                    btnSessionsDelete.Enabled = False
-                Case "session"
-                    lblSessionDate.Enabled = True
-                    txtSessionDate.Enabled = True
-                    pnlSessionDate.Visible = False
-                    txtSessionDate.Visible = True
-
-                    lblSessionDescription.Enabled = True
-                    txtSessionDescription.Enabled = True
-                    lblSessionColor.Enabled = True
-                    picSessionColor.Enabled = True
-                    cmdSessionColorChange.Enabled = True
-                    cmdSessionColorReset.Enabled = True
-
-                    Dim oCI As cSessionPlaceHolder = e.Node.Tag
-                    txtSessionDate.Enabled = True
-                    txtSessionDate.Value = oCI.Date
-                    txtSessionDescription.Text = oCI.Description
-                    txtSessionClub.Text = oCI.Club
-                    txtSessionTeam.Text = oCI.Team
-                    txtSessionDesigner.Text = oCI.Designer
-                    txtSessionNote.Text = oCI.Note
-                    picSessionColor.BackColor = oCI.Color
-
-                    cboSessionDataFormat.SelectedIndex = oCI.DataFormat
-                    cboSessionDistanceType.SelectedIndex = oCI.DistanceType
-                    cboSessionBearingType.SelectedIndex = oCI.BearingType
-                    chkSessionBearingDirection.Checked = oCI.BearingDirection = cSegment.MeasureDirectionEnum.Inverted
-                    cboSessionInclinationType.SelectedIndex = oCI.InclinationType
-                    chkSessionInclinationDirection.Checked = oCI.InclinationDirection = cSegment.MeasureDirectionEnum.Inverted
-                    cboSessionDepthType.SelectedIndex = oCI.DepthType
-
-                    If oCI.Grade = "" Then
-                        cboSessionGrade.SelectedIndex = 0
-                    Else
-                        cboSessionGrade.SelectedIndex = oSurvey.Grades.IndexOf(oSurvey.Grades(oCI.Grade)) + 1
-                    End If
-
-                    cboSessionNordType.SelectedIndex = oCI.NordType
-                    chkSessionDecMag.Checked = oCI.declinationenabled
-                    txtSessionDecMag.Text = oCI.Declination
-
-                    cboSessionSideMeasuresType.SelectedIndex = oCI.SideMeasuresType
-                    cboSessionSideMeasuresReferTo.SelectedIndex = oCI.SideMeasuresReferTo
-
-                    chkSessionVthreshold.Checked = oCI.VThresholdEnabled
-                    txtSessionVthreshold.Text = oCI.VThreshold
-
-                    Dim bEnabled As Boolean = Not oCI.Deleted
-                    lblSessionColor.Enabled = bEnabled
-                    cmdSessionColorChange.Enabled = bEnabled
-                    cmdSessionColorReset.Enabled = bEnabled
-                    lblSessionDate.Enabled = bEnabled
-                    txtSessionDate.Enabled = bEnabled
-                    lblSessionDescription.Enabled = bEnabled
-                    txtSessionDescription.Enabled = bEnabled
-                    tabSession.Enabled = bEnabled
-
-                    Call tabSession.TabPages.Insert(0, tabSessionMain)
-                    Call tabSession.TabPages.Insert(1, tabSessionNote)
-                    tabSession.SelectedTab = tabSessionMain
-
-                    btnSessionsDelete.Enabled = True
-            End Select
-            btnSessionsAddSession.Enabled = True
-            tabSession.Enabled = True
-        Catch ex As Exception
-            lblSessionDate.Enabled = False
-            txtSessionDate.Enabled = False
-            lblSessionDescription.Enabled = False
-            txtSessionDescription.Enabled = False
-            tabSession.Enabled = False
-            btnSessionsDelete.Enabled = False
-        End Try
-        If bHaveFocus Then tvSessions.Focus()
-    End Sub
-
-    Private Sub tvHighlights_AfterSelect(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TreeViewEventArgs) Handles tvHighlights.AfterSelect
-        Try
-            'Select Case e.Node.Tag.type
-            '    Case "highlight"
-            Dim bSystem As Boolean
-            Dim oCI As cHighlightPlaceholder = e.Node.Tag
-            If oCI.Source Is Nothing Then
-                bSystem = False
-            Else
-                bSystem = oCI.Source.System
-            End If
-            txtHighlightName.Text = oCI.Name
-            txtHighlightSize.Value = oCI.Size
-            txtHighlightOpacity.Value = oCI.Opacity
-            picHighlightColor.BackColor = oCI.Color
-            txtHighlightApplyTo.Text = IIf(oCI.ApplyTo, modMain.GetLocalizedString("main.textpart94"), modMain.GetLocalizedString("main.textpart95"))
-            txtHighlightCondition.Text = oCI.Condition
-
-            Dim bEnabled As Boolean = Not oCI.Deleted
-            txtHighlightName.Enabled = bEnabled
-            txtHighlightSize.Enabled = bEnabled
-            txtHighlightOpacity.Enabled = bEnabled
-            picHighlightColor.Enabled = bEnabled
-            txtHighlightApplyTo.Enabled = bEnabled
-            cmdHighlightColorChange.Enabled = bEnabled
-            cmdHighlightCondition.Enabled = bEnabled And Not bSystem
-            'End Select
-            btnAddHighlight.Enabled = True
-            btnDeleteHighlight.Enabled = tvHighlights.Nodes.Count > 0 AndAlso Not bSystem
-        Catch
-            btnAddHighlight.Enabled = True
-            btnDeleteHighlight.Enabled = False
-        End Try
-    End Sub
+    '                        tvSessions.SelectedNode = Nothing
+    '                        tvSessions.SelectedNode = oNode
+    '                    Else
+    '                        Call tvSessions.Nodes.Remove(oNode)
+    '                    End If
+    '            End Select
+    '            If tvSessions.Nodes.Count = 0 Then
+    '                Call tvSessions_AfterSelect(Nothing, Nothing)
+    '            End If
+    '        End If
+    '    Catch
+    '    End Try
+    'End Sub
 
     Private Sub txtSessionDescription_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtSessionDescription.Validated
         Try
             Dim sDescription As String = txtSessionDescription.Text
-            Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
+            Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
             oCI.Description = sDescription
-            With tvSessions.SelectedNode
-                .Name = oCI.ID
-                .Text = oCI.FormattedID
-            End With
+            tvSessions.RefreshFocusedObject
         Catch
         End Try
     End Sub
@@ -1726,13 +1098,12 @@ Friend Class frmProperties
         If sNewDescription = "" Then
             e.Cancel = True
         Else
-            Dim oNode As TreeNode = tvSessions.SelectedNode
-            Select Case oNode.Tag.type
+            Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+            Select Case oCI.Type
                 Case "session"
-                    Dim oCI As cSessionPlaceHolder = oNode.Tag
                     Dim sNewID As String = Strings.Format(oCI.Date, "yyyyMMdd") & "_" & sNewDescription.Replace(" ", "_").ToLower
                     If sNewID <> oCI.ID Then
-                        e.Cancel = tvSessions.Nodes.ContainsKey(sNewID)
+                        e.Cancel = DirectCast(tvSessions.DataSource, cSessionsEditBindingList).ContainsID(sNewID)
                     End If
             End Select
         End If
@@ -1741,9 +1112,9 @@ Friend Class frmProperties
     Private Sub txtSessionClub_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtSessionClub.Validated
         Try
             Dim sClub As String = txtSessionClub.Text
-            Select Case tvSessions.SelectedNode.Tag.type
+            Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+            Select Case oCI.Type
                 Case "session"
-                    Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
                     oCI.Club = sClub
             End Select
         Catch
@@ -1753,9 +1124,9 @@ Friend Class frmProperties
     Private Sub txtSessionTeam_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtSessionTeam.Validated
         Try
             Dim sTeam As String = txtSessionTeam.Text
-            Select Case tvSessions.SelectedNode.Tag.type
+            Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+            Select Case oCI.Type
                 Case "session"
-                    Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
                     oCI.Team = sTeam
             End Select
         Catch
@@ -1765,9 +1136,9 @@ Friend Class frmProperties
     Private Sub txtSessionDesigner_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtSessionDesigner.Validated
         Try
             Dim sDesigner As String = txtSessionDesigner.Text
-            Select Case tvSessions.SelectedNode.Tag.type
+            Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+            Select Case oCI.Type
                 Case "session"
-                    Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
                     oCI.Designer = sDesigner
             End Select
         Catch
@@ -1777,9 +1148,9 @@ Friend Class frmProperties
     Private Sub cboSessionDistanceType_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboSessionDistanceType.Validated
         Try
             Dim iDistanceType As cSegment.DistanceTypeEnum = cboSessionDistanceType.SelectedIndex
-            Select Case tvSessions.SelectedNode.Tag.type
+            Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+            Select Case oCI.Type
                 Case "session", "defaultsession"
-                    Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
                     oCI.DistanceType = iDistanceType
             End Select
         Catch
@@ -1789,9 +1160,9 @@ Friend Class frmProperties
     Private Sub cboSessionInclinationType_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboSessionInclinationType.Validated
         Try
             Dim iInclinationType As cSegment.DistanceTypeEnum = cboSessionInclinationType.SelectedIndex
-            Select Case tvSessions.SelectedNode.Tag.type
+            Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+            Select Case oCI.Type
                 Case "session", "defaultsession"
-                    Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
                     oCI.InclinationType = iInclinationType
             End Select
         Catch
@@ -1801,9 +1172,9 @@ Friend Class frmProperties
     Private Sub cboSessionDepthType_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboSessionDepthType.Validated
         Try
             Dim iDepthType As cSegment.DistanceTypeEnum = cboSessionDepthType.SelectedIndex
-            Select Case tvSessions.SelectedNode.Tag.type
+            Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+            Select Case oCI.Type
                 Case "session", "defaultsession"
-                    Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
                     oCI.DepthType = iDepthType
             End Select
         Catch
@@ -1813,9 +1184,9 @@ Friend Class frmProperties
     Private Sub cboSessionNordType_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboSessionNordType.Validated
         Try
             Dim iNordType As cSegment.DistanceTypeEnum = cboSessionNordType.SelectedIndex
-            Select Case tvSessions.SelectedNode.Tag.type
+            Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+            Select Case oCI.Type
                 Case "session", "defaultsession"
-                    Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
                     oCI.NordType = iNordType
             End Select
         Catch
@@ -1825,9 +1196,9 @@ Friend Class frmProperties
     Private Sub cboSessionSideMeasureType_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboSessionSideMeasuresType.Validated
         Try
             Dim iSideMeasuresType As cSegment.SideMeasuresTypeEnum = cboSessionSideMeasuresType.SelectedIndex
-            Select Case tvSessions.SelectedNode.Tag.type
+            Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+            Select Case oCI.Type
                 Case "session", "defaultsession"
-                    Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
                     oCI.SideMeasuresType = iSideMeasuresType
             End Select
         Catch
@@ -1837,9 +1208,9 @@ Friend Class frmProperties
     Private Sub cboSessionBearingType_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboSessionBearingType.Validated
         Try
             Dim iBearingType As cSegment.DistanceTypeEnum = cboSessionBearingType.SelectedIndex
-            Select Case tvSessions.SelectedNode.Tag.type
+            Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+            Select Case oCI.Type
                 Case "session", "defaultsession"
-                    Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
                     oCI.BearingType = iBearingType
             End Select
         Catch
@@ -1848,13 +1219,10 @@ Friend Class frmProperties
 
     Private Sub txtSessionDate_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtSessionDate.Validated
         Try
-            Dim dDate As Date = txtSessionDate.Value
-            Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
+            Dim dDate As Date = txtSessionDate.EditValue
+            Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
             oCI.Date = dDate
-            With tvSessions.SelectedNode
-                .Name = oCI.ID
-                .Text = oCI.FormattedID
-            End With
+            tvSessions.RefreshFocusedObject
         Catch
         End Try
     End Sub
@@ -1979,9 +1347,9 @@ Friend Class frmProperties
     Private Sub txtSessionDecMag_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtSessionDecMag.Validated
         Try
             Dim sDeclination As Single = txtSessionDecMag.Text
-            Select Case tvSessions.SelectedNode.Tag.type
+            Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+            Select Case oCI.Type
                 Case "session", "defaultsession"
-                    Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
                     oCI.Declination = sDeclination
             End Select
         Catch
@@ -1991,21 +1359,21 @@ Friend Class frmProperties
     Private Sub chkSessionDecMag_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles chkSessionDecMag.Validated
         Try
             Dim bdeclinationenabled As Boolean = chkSessionDecMag.Checked
-            Select Case tvSessions.SelectedNode.Tag.type
+            Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+            Select Case oCI.Type
                 Case "session", "defaultsession"
-                    Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
                     oCI.declinationenabled = bdeclinationenabled
             End Select
         Catch
         End Try
     End Sub
 
-    Private Sub txtSessionNote_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtSessionNote.Validated
+    Private Sub txtSessionNote_Validated(ByVal sender As Object, ByVal e As System.EventArgs)
         Try
             Dim sNote As String = txtSessionNote.Text
-            Select Case tvSessions.SelectedNode.Tag.type
+            Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+            Select Case oCI.Type
                 Case "session"
-                    Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
                     oCI.Note = sNote
             End Select
         Catch
@@ -2015,9 +1383,9 @@ Friend Class frmProperties
     Private Sub cboSessionSideMeasuresReferTo_Validated(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboSessionSideMeasuresReferTo.Validated
         Try
             Dim iSideMeasuresreferto As cSegment.SideMeasuresReferToEnum = cboSessionSideMeasuresReferTo.SelectedIndex
-            Select Case tvSessions.SelectedNode.Tag.type
+            Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+            Select Case oCI.Type
                 Case "session", "defaultsession"
-                    Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
                     oCI.SideMeasuresReferTo = iSideMeasuresreferto
             End Select
         Catch
@@ -2025,7 +1393,7 @@ Friend Class frmProperties
     End Sub
 
     Private Sub cmdNewID_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdNewID.Click
-        If MsgBox(GetLocalizedString("properties.warning1"), MsgBoxStyle.YesNo Or MsgBoxStyle.Critical, GetLocalizedString("properties.warningtitle")) = MsgBoxResult.Yes Then
+        If cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("properties.warning1"), MsgBoxStyle.YesNo Or MsgBoxStyle.Critical, GetLocalizedString("properties.warningtitle")) = MsgBoxResult.Yes Then
             Call oSurvey.NewID()
             txtID.Text = oSurvey.ID
         End If
@@ -2052,7 +1420,7 @@ Friend Class frmProperties
     End Sub
 
     Private Sub cmdChangeInversionModeAndSetDirections_Click(sender As System.Object, e As System.EventArgs) Handles cmdChangeInversionModeAndSetDirections.Click
-        If MsgBox(GetLocalizedString("properties.warning2"), MsgBoxStyle.YesNo Or MsgBoxStyle.Question, GetLocalizedString("properties.warningtitle")) = MsgBoxResult.Yes Then
+        If cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("properties.warning2"), MsgBoxStyle.YesNo Or MsgBoxStyle.Question, GetLocalizedString("properties.warningtitle")) = MsgBoxResult.Yes Then
             Call cmdApply.PerformClick()
             Call oSurvey.Properties.UpgradeInversionMode()
             cboInversionMode.SelectedIndex = cSurvey.cSurvey.InversioneModeEnum.Absolute
@@ -2066,22 +1434,6 @@ Friend Class frmProperties
             Case cSurvey.cSurvey.InversioneModeEnum.Relative
                 cmdChangeInversionModeAndSetDirections.Enabled = True
         End Select
-    End Sub
-
-    Private Sub optGPSRefPointOnOrigin_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles optGPSRefPointOnOrigin.CheckedChanged
-        If optGPSRefPointOnOrigin.Checked Then
-            cboGPSCustomRefPoint.Enabled = False
-        Else
-            cboGPSCustomRefPoint.Enabled = True
-        End If
-    End Sub
-
-    Private Sub optGPSCustomRefPoint_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles optGPSCustomRefPoint.CheckedChanged
-        If optGPSRefPointOnOrigin.Checked Then
-            cboGPSCustomRefPoint.Enabled = False
-        Else
-            cboGPSCustomRefPoint.Enabled = True
-        End If
     End Sub
 
     Private Sub cmdTrigPointStructureTagAdd_Click(sender As System.Object, e As System.EventArgs) Handles cmdTrigPointStructureTagAdd.Click
@@ -2115,20 +1467,15 @@ Friend Class frmProperties
         Call cboSessionNordType_SelectedIndexChanged(Nothing, Nothing)
 
         lblNordCorrectionWarning.Visible = bEnabled
-        picNordCorrectionWarning.Visible = bEnabled
 
-        If cbosurfaceprofileelevation.Items.Count > 0 Then
-            pnlSurfaceProfile.Enabled = bEnabled
-        Else
-            pnlSurfaceProfile.Enabled = False
-        End If
+        pnlSurfaceProfile.Enabled = bEnabled AndAlso cbosurfaceprofileelevation.Count > 0
     End Sub
 
     Private Sub cboSessionGrade_Validated(sender As Object, e As System.EventArgs) Handles cboSessionGrade.Validated
         Try
-            Select Case tvSessions.SelectedNode.Tag.type
+            Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+            Select Case oCI.Type
                 Case "session", "defaultsession"
-                    Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
                     If cboSessionGrade.SelectedIndex = 0 Then
                         oCI.Grade = ""
                     Else
@@ -2140,34 +1487,41 @@ Friend Class frmProperties
     End Sub
 
     Private Sub btnCaveInfoSegmentsRefresh_Click(sender As System.Object, e As System.EventArgs) Handles btnCaveInfoSegmentsRefresh.Click
-        Dim oSegments As cSegmentCollection = Nothing
-        Call lvCaveInfoSegments.Items.Clear()
-        If Not tvCaveInfos.SelectedNode Is Nothing Then
-            Select Case tvCaveInfos.SelectedNode.Tag.type
-                Case "cave"
-                    Dim oCI As cCaveInfoPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                    oSegments = oSurvey.Segments.GetCaveSegments(oCI.Source)
-                Case "branch"
-                    Dim oCIB As cCaveInfoBranchPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                    oSegments = oSurvey.Segments.GetCaveSegments(oCIB.Source)
-            End Select
-            If Not oSegments Is Nothing Then
-                For Each oSegment As cSegment In oSegments
-                    Dim oItem As ListViewItem = lvCaveInfoSegments.Items.Add(oSegment.ToString)
-                    oItem.Tag = oSegment
-                Next
-                Dim bEnabled As Boolean = lvCaveInfoSegments.Items.Count > 0
-                btnCaveInfoSelectSegment.Enabled = bEnabled
-                If bEnabled Then
-                    lvCaveInfoSegments.Items(0).Selected = True
-                End If
-            End If
+        Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
+        If Not oItem Is Nothing Then
+            Call lvCaveInfoSegments.Rebind(oSurvey, oSurvey.Segments.GetCaveSegments(oItem.GetSource).ToSegments, New cSegmentsGrid.cSegmentGridParameters(True, False, False, True))
+            Dim bEnabled As Boolean = lvCaveInfoSegments.Count > 0
+            lvCaveInfoSegments.Enabled = bEnabled
+            btnCaveInfoSelectSegment.Enabled = bEnabled
         End If
+        'Dim oSegments As cSegmentCollection = Nothing
+        'Call lvCaveInfoSegments.Items.Clear()
+        'If Not tvCaveInfos.SelectedNode Is Nothing Then
+        '    Select Case tvCaveInfos.SelectedNode.Tag.type
+        '        Case "cave"
+        '            Dim oCI As cCaveInfoPlaceHolder = tvCaveInfos.SelectedNode.Tag
+        '            oSegments = oSurvey.Segments.GetCaveSegments(oCI.Source)
+        '        Case "branch"
+        '            Dim oCIB As cCaveInfoBranchPlaceHolder = tvCaveInfos.SelectedNode.Tag
+        '            oSegments = oSurvey.Segments.GetCaveSegments(oCIB.Source)
+        '    End Select
+        '    If Not oSegments Is Nothing Then
+        '        For Each oSegment As cSegment In oSegments
+        '            Dim oItem As ListViewItem = lvCaveInfoSegments.Items.Add(oSegment.ToString)
+        '            oItem.Tag = oSegment
+        '        Next
+        '        Dim bEnabled As Boolean = lvCaveInfoSegments.Items.Count > 0
+        '        btnCaveInfoSelectSegment.Enabled = bEnabled
+        '        If bEnabled Then
+        '            lvCaveInfoSegments.Items(0).Selected = True
+        '        End If
+        '    End If
+        'End If
     End Sub
 
     Private Sub btnCaveInfoSelectSegment_Click(sender As System.Object, e As System.EventArgs) Handles btnCaveInfoSelectSegment.Click
-        If lvCaveInfoSegments.SelectedItems.Count > 0 Then
-            Dim oSegment As cSegment = lvCaveInfoSegments.SelectedItems(0).Tag
+        If lvCaveInfoSegments.SelectedItem IsNot Nothing Then
+            Dim oSegment As cSegment = lvCaveInfoSegments.SelectedItem
             RaiseEvent OnSegmentSelect(Me, oSegment)
         End If
     End Sub
@@ -2175,28 +1529,18 @@ Friend Class frmProperties
     Private Sub txtCaveInfoDescription_Validated(sender As Object, e As System.EventArgs) Handles txtCaveInfoDescription.Validated
         Try
             Dim sDescription As String = txtCaveInfoDescription.Text
-            Select Case tvCaveInfos.SelectedNode.Tag.type
-                Case "cave"
-                    Dim oCI As cCaveInfoPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                    oCI.Description = sDescription
-                Case "branch"
-                    Dim oCIB As cCaveInfoBranchPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                    oCIB.Description = sDescription
-            End Select
+            Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
+            oItem.Description = sDescription
         Catch
         End Try
     End Sub
 
-    Private Sub tabInfoMeasure_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub chkSessionBearingDirection_CheckedChanged(sender As Object, e As EventArgs) Handles chkSessionBearingDirection.CheckedChanged
         Try
-            Dim iBearingDirection As cSegment.MeasureDirectionEnum = IIf(chkSessionBearingDirection.Checked, cSegment.MeasureDirectionEnum.Inverted, cSegment.MeasureDirectionEnum.Direct)
-            Select Case tvSessions.SelectedNode.Tag.type
+            Dim iBearingDirection As cSegment.MeasureDirectionEnum = If(chkSessionBearingDirection.Checked, cSegment.MeasureDirectionEnum.Inverted, cSegment.MeasureDirectionEnum.Direct)
+            Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+            Select Case oCI.Type
                 Case "session", "defaultsession"
-                    Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
                     oCI.BearingDirection = iBearingDirection
             End Select
         Catch
@@ -2205,10 +1549,10 @@ Friend Class frmProperties
 
     Private Sub chkSessionInclinationDirection_CheckedChanged(sender As Object, e As EventArgs) Handles chkSessionInclinationDirection.CheckedChanged
         Try
-            Dim iInclinationDirection As cSegment.MeasureDirectionEnum = IIf(chkSessionInclinationDirection.Checked, cSegment.MeasureDirectionEnum.Inverted, cSegment.MeasureDirectionEnum.Direct)
-            Select Case tvSessions.SelectedNode.Tag.type
+            Dim iInclinationDirection As cSegment.MeasureDirectionEnum = If(chkSessionInclinationDirection.Checked, cSegment.MeasureDirectionEnum.Inverted, cSegment.MeasureDirectionEnum.Direct)
+            Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+            Select Case oCI.Type
                 Case "session", "defaultsession"
-                    Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
                     oCI.InclinationDirection = iInclinationDirection
             End Select
         Catch
@@ -2260,14 +1604,6 @@ Friend Class frmProperties
     'End Sub
 
     Private Sub cboSessionDataFormat_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cboSessionDataFormat.SelectedIndexChanged
-        'Dim bEnabled As Boolean = cboSessionDataFormat.SelectedIndex = 0
-        'cboSessionBearingType.Enabled = bEnabled
-        'chkSessionBearingDirection.Enabled = bEnabled
-        'cboSessionInclinationType.Enabled = bEnabled
-        'chkSessionInclinationDirection.Enabled = bEnabled
-
-        'pnlSessionNorth.Enabled = bEnabled
-
         Select Case cboSessionDataFormat.SelectedIndex
             Case 0  'default
                 pnlSessionBearing.Enabled = True
@@ -2278,6 +1614,8 @@ Friend Class frmProperties
                 pnlSessionDepth.Visible = False
                 pnlSessionNorth.Enabled = True
                 lblSessionDistanceType.Text = modMain.GetLocalizedString("main.textpart34") & ":"
+                chkSessionInclinationDirection.Parent = pnlSessionInclination
+                chkSessionInclinationDirection.Location = New Point(cboSessionInclinationType.Location.X + cboSessionInclinationType.Width + 8 * Me.CurrentAutoScaleDimensions.Height / 96.0F, chkSessionInclinationDirection.Location.Y)
             Case 1  'xyz
                 pnlSessionBearing.Enabled = False
                 pnlSessionBearing.Visible = False
@@ -2296,15 +1634,17 @@ Friend Class frmProperties
                 pnlSessionDepth.Visible = True
                 pnlSessionNorth.Enabled = True
                 lblSessionDistanceType.Text = modMain.GetLocalizedString("main.textpart69") & ":"
+                chkSessionInclinationDirection.Parent = pnlSessionDepth
+                chkSessionInclinationDirection.Location = New Point(cboSessionDepthType.Location.X + cboSessionDepthType.Width + 8 * Me.CurrentAutoScaleDimensions.Height / 96.0F, chkSessionInclinationDirection.Location.Y)
         End Select
     End Sub
 
     Private Sub cboSessionDataFormat_Validated(sender As Object, e As System.EventArgs) Handles cboSessionDataFormat.Validated
         Try
             Dim iDataFormat As cSegment.DataFormatEnum = cboSessionDataFormat.SelectedIndex
-            Select Case tvSessions.SelectedNode.Tag.type
+            Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+            Select Case oCI.Type
                 Case "session", "defaultsession"
-                    Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
                     oCI.DataFormat = iDataFormat
             End Select
         Catch
@@ -2338,24 +1678,24 @@ Friend Class frmProperties
         End Using
     End Sub
 
-    Private Sub cmdPlotNoteTextColor_Click(sender As Object, e As EventArgs) Handles cmdPlotNoteTextColor.Click
-        Using oCD As ColorDialog = New ColorDialog
-            With oCD
-                .FullOpen = True
-                .AnyColor = True
-                .Color = picPlotNoteTextColor.BackColor
-                If .ShowDialog = Windows.Forms.DialogResult.OK Then
-                    picPlotNoteTextColor.BackColor = .Color
-                End If
-            End With
-        End Using
-    End Sub
+    'Private Sub cmdPlotNoteTextColor_Click(sender As Object, e As EventArgs)
+    '    Using oCD As ColorDialog = New ColorDialog
+    '        With oCD
+    '            .FullOpen = True
+    '            .AnyColor = True
+    '            .Color = picPlotNoteTextColor.BackColor
+    '            If .ShowDialog = Windows.Forms.DialogResult.OK Then
+    '                picPlotNoteTextColor.BackColor = .Color
+    '            End If
+    '        End With
+    '    End Using
+    'End Sub
 
     Private Sub chkSessionVthreshold_Validated(sender As Object, e As EventArgs) Handles chkSessionVthreshold.Validated
         Try
-            Select Case tvSessions.SelectedNode.Tag.type
+            Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+            Select Case oCI.Type
                 Case "session", "defaultsession"
-                    Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
                     oCI.VThresholdEnabled = chkSessionVthreshold.Checked
             End Select
         Catch
@@ -2364,9 +1704,9 @@ Friend Class frmProperties
 
     Private Sub txtSessionVthreshold_Validated(sender As Object, e As EventArgs) Handles txtSessionVthreshold.Validated
         Try
-            Select Case tvSessions.SelectedNode.Tag.type
+            Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+            Select Case oCI.Type
                 Case "session", "defaultsession"
-                    Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
                     oCI.VThreshold = txtSessionVthreshold.Value
             End Select
         Catch
@@ -2389,262 +1729,129 @@ Friend Class frmProperties
 
     Private Sub cboCaveInfoSurfaceProfileShow_Validated(sender As Object, e As EventArgs) Handles cboCaveInfoSurfaceProfileShow.Validated
         Try
-            Dim sID As String = txtCaveInfoID.Text
-            Select Case tvCaveInfos.SelectedNode.Tag.type
-                Case "cave"
-                    Dim oCI As cCaveInfoPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                    oCI.SurfaceProfileShow = cboCaveInfoSurfaceProfileShow.SelectedIndex
-                Case "branch"
-                    Dim oCIB As cCaveInfoBranchPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                    oCIB.SurfaceProfileShow = cboCaveInfoSurfaceProfileShow.SelectedIndex
-            End Select
+            Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
+            oItem.SurfaceProfileShow = cboCaveInfoSurfaceProfileShow.SelectedIndex
         Catch
         End Try
     End Sub
 
     Private Sub chksurfaceprofile_CheckedChanged(sender As Object, e As EventArgs) Handles chksurfaceprofile.CheckedChanged
         Dim bEnabled As Boolean = chksurfaceprofile.Checked
-        lblsurfaceprofileelevation.Enabled = bEnabled
-        cbosurfaceprofileelevation.Enabled = bEnabled
-        chkSurfaceProfileShow.Enabled = bEnabled
+        pnlsurfaceprofileelevation.Enabled = bEnabled
 
         lblCaveInfoSurfaceProfileShow.Enabled = bEnabled
         cboCaveInfoSurfaceProfileShow.Enabled = bEnabled
     End Sub
 
-    Private Sub cbosurfaceprofileelevation_DrawItem(sender As Object, e As DrawItemEventArgs) Handles cbosurfaceprofileelevation.DrawItem
-        If e.Index >= 0 Then
-            Dim oGr As Graphics = e.Graphics
-            oGr.CompositingQuality = CompositingQuality.HighQuality
-            oGr.InterpolationMode = InterpolationMode.HighQualityBicubic
-            oGr.SmoothingMode = SmoothingMode.AntiAlias
-            oGr.TextRenderingHint = Drawing.Text.TextRenderingHint.ClearTypeGridFit
-            Dim bSelected As Boolean = (e.State And DrawItemState.Selected) = DrawItemState.Selected
-            Dim oBounds As RectangleF = e.Bounds
-            If bSelected Then
-                Call oGr.FillRectangle(SystemBrushes.Highlight, oBounds)
-                Call oGr.DrawRectangle(SystemPens.Highlight, oBounds.Left, oBounds.Top, oBounds.Width, oBounds.Height)
-            Else
-                Call oGr.FillRectangle(SystemBrushes.Window, oBounds)
-                Call oGr.DrawRectangle(SystemPens.Window, oBounds.Left, oBounds.Top, oBounds.Width, oBounds.Height)
-            End If
+    ''Private Sub btnDeleteHighlight_Click(sender As Object, e As EventArgs) Handles btnDeleteHighlight.Click
+    ''    Try
+    ''        Dim oNode As TreeNode = tvHighlights.SelectedNode
+    ''        If Not oNode Is Nothing Then
+    ''            Select Case oNode.Tag.type
+    ''                Case "highlight"
+    ''                    Dim oCI As cHighlightPlaceholder = oNode.Tag
+    ''                    If oSurvey.Properties.HighlightsDetails.Contains(oCI.Source) Then
+    ''                        oNode.ForeColor = SystemColors.InactiveCaptionText
+    ''                        oNode.SelectedImageKey = "deleted"
+    ''                        oNode.ImageKey = "deleted"
+    ''                        oCI.Deleted = True
 
-            Dim oItem As cComboItem = cbosurfaceprofileelevation.Items(e.Index)
-            Dim oElevation As cSurvey.Surface.cElevation = oItem.Source
-            If Not oElevation Is Nothing Then
-                Dim oImage As Image = oElevation.GetImage(New Size(48, 32))
-
-                Call oGr.DrawImageUnscaled(oImage, e.Bounds.Left + 2, e.Bounds.Top + 2)
-                Dim oBorderPen As Pen = New Pen(Brushes.DarkGray)
-                Call oGr.DrawRectangle(oBorderPen, e.Bounds.Left + 2, e.Bounds.Top + 2, 48, e.Bounds.Height - 4)
-                Call oBorderPen.Dispose()
-
-                Dim oLabelRect As RectangleF = New RectangleF(e.Bounds.Left + 48 + 2, e.Bounds.Top, e.Bounds.Right - (e.Bounds.Left + 48 + 2), e.Bounds.Height)
-
-                Dim oSF As StringFormat = New StringFormat
-                oSF.LineAlignment = StringAlignment.Center
-                oSF.Trimming = StringTrimming.EllipsisCharacter
-                If bSelected Then
-                    Call oGr.DrawString(oElevation.Name, cbosurfaceprofileelevation.Font, SystemBrushes.HighlightText, oLabelRect, oSF)
-                Else
-                    Call oGr.DrawString(oElevation.Name, cbosurfaceprofileelevation.Font, SystemBrushes.WindowText, oLabelRect, oSF)
-                End If
-                Call oSF.Dispose()
-            End If
-        End If
-    End Sub
-
-    Private Sub btnDeleteHighlight_Click(sender As Object, e As EventArgs) Handles btnDeleteHighlight.Click
-        Try
-            Dim oNode As TreeNode = tvHighlights.SelectedNode
-            If Not oNode Is Nothing Then
-                Select Case oNode.Tag.type
-                    Case "highlight"
-                        Dim oCI As cHighlightPlaceholder = oNode.Tag
-                        If oSurvey.Properties.HighlightsDetails.Contains(oCI.Source) Then
-                            oNode.ForeColor = SystemColors.InactiveCaptionText
-                            oNode.SelectedImageKey = "deleted"
-                            oNode.ImageKey = "deleted"
-                            oCI.Deleted = True
-
-                            tvHighlights.SelectedNode = Nothing
-                            tvHighlights.SelectedNode = oNode
-                        Else
-                            Call tvHighlights.Nodes.Remove(oNode)
-                        End If
-                End Select
-                If tvHighlights.Nodes.Count = 0 Then
-                    Call tvHighlights_AfterSelect(Nothing, Nothing)
-                End If
-            End If
-        Catch
-        End Try
-    End Sub
+    ''                        tvHighlights.SelectedNode = Nothing
+    ''                        tvHighlights.SelectedNode = oNode
+    ''                    Else
+    ''                        Call tvHighlights.Nodes.Remove(oNode)
+    ''                    End If
+    ''            End Select
+    ''            If tvHighlights.Nodes.Count = 0 Then
+    ''                Call tvHighlights_AfterSelect(Nothing, Nothing)
+    ''            End If
+    ''        End If
+    ''    Catch
+    ''    End Try
+    ''End Sub
 
     Private Sub txtHighlightName_Validated(sender As Object, e As EventArgs) Handles txtHighlightName.Validated
         Try
-            Dim sName As String = txtHighlightName.Text
-            If tvHighlights.SelectedNode.Name <> sName Then
-                tvHighlights.SelectedNode.Name = sName
-                tvHighlights.SelectedNode.Text = sName
-                Select Case tvHighlights.SelectedNode.Tag.type
-                    Case "hightlight"
-                        Dim oCI As cCaveInfoPlaceHolder = tvHighlights.SelectedNode.Tag
-                        oCI.Name = sName
-                End Select
-            End If
+            'Dim sName As String = txtHighlightName.Text
+            'If tvHighlights.SelectedNode.Name <> sName Then
+            '    tvHighlights.SelectedNode.Name = sName
+            '    tvHighlights.SelectedNode.Text = sName
+            '    Select Case tvHighlights.SelectedNode.Tag.type
+            '        Case "hightlight"
+            Dim oCI As cHighlightPlaceholder = tvHighlights.GetFocusedObject
+            oCI.Name = txtHighlightName.Text
+            '    End Select
+            'End If
         Catch
         End Try
     End Sub
 
-    Private Sub cmdHighlightColorChange_Click(sender As Object, e As EventArgs) Handles cmdHighlightColorChange.Click
-        Dim oCD As ColorDialog = New ColorDialog
-        With oCD
-            .FullOpen = True
-            .AnyColor = True
-            .Color = picHighlightColor.BackColor
-            If .ShowDialog = Windows.Forms.DialogResult.OK Then
-                picHighlightColor.BackColor = .Color
-                Try
-                    Select Case tvHighlights.SelectedNode.Tag.type
-                        Case "highlight"
-                            Dim oCI As cHighlightPlaceholder = tvHighlights.SelectedNode.Tag
-                            oCI.Color = .Color
-                    End Select
-                Catch
-                End Try
-            End If
-        End With
-    End Sub
+    'Private Sub cmdHighlightColorChange_Click(sender As Object, e As EventArgs)
+    '    Dim oCD As ColorDialog = New ColorDialog
+    '    With oCD
+    '        .FullOpen = True
+    '        .AnyColor = True
+    '        .Color = picHighlightColor.BackColor
+    '        If .ShowDialog = Windows.Forms.DialogResult.OK Then
+    '            picHighlightColor.BackColor = .Color
+    '            Try
+    '                Select Case tvHighlights.SelectedNode.Tag.type
+    '                    Case "highlight"
+    '                        Dim oCI As cHighlightPlaceholder = tvHighlights.SelectedNode.Tag
+    '                        oCI.Color = .Color
+    '                End Select
+    '            Catch
+    '            End Try
+    '        End If
+    '    End With
+    'End Sub
 
-    Private Sub txtHighlightSize_Validated(sender As Object, e As EventArgs) Handles txtHighlightSize.Validated
+    Private Sub txtHighlightSize_Validated(sender As Object, e As EventArgs)
         Try
-            Select Case tvHighlights.SelectedNode.Tag.type
-                Case "highlight"
-                    Dim oCI As cHighlightPlaceholder = tvHighlights.SelectedNode.Tag
-                    oCI.Size = txtHighlightSize.Value
-            End Select
+            Dim oCI As cHighlightPlaceholder = tvHighlights.GetFocusedObject
+            oCI.Size = txtHighlightSize.Value
         Catch
         End Try
-    End Sub
-
-    Private Sub txtHighlightOpacity_Validated(sender As Object, e As EventArgs) Handles txtHighlightOpacity.Validated
-        Try
-            Select Case tvHighlights.SelectedNode.Tag.type
-                Case "highlight"
-                    Dim oCI As cHighlightPlaceholder = tvHighlights.SelectedNode.Tag
-                    oCI.Opacity = txtHighlightOpacity.Value
-            End Select
-        Catch
-        End Try
-    End Sub
-
-    Private Sub btnAddHighlight_Click(sender As Object, e As EventArgs) Handles btnAddHighlight.Click
-
     End Sub
 
     Private Sub frmF_OnFormulaCodeRequest(Sender As frmScriptFormulaEditor, ByRef Args As frmScriptFormulaEditor.cFormulaCodeRequestEvent)
         Try
-            Select Case tvHighlights.SelectedNode.Tag.type
-                Case "highlight"
-                    Dim oCI As cHighlightPlaceholder = tvHighlights.SelectedNode.Tag
-                    Args.FullCode = cSurvey.Properties.cHighlightsDetail.GetScriptCode(Args.ScriptBag, oCI.ApplyTo)
-            End Select
+            Dim oCI As cHighlightPlaceholder = tvHighlights.GetFocusedObject
+            Args.FullCode = cSurvey.Properties.cHighlightsDetail.GetScriptCode(Args.ScriptBag, oCI.ApplyTo)
         Catch
         End Try
     End Sub
 
     Private Sub cmdHighlightCondition_Click(sender As Object, e As EventArgs) Handles cmdHighlightCondition.Click
         Try
-            Select Case tvHighlights.SelectedNode.Tag.type
-                Case "highlight"
-                    Dim oCI As cHighlightPlaceholder = tvHighlights.SelectedNode.Tag
-                    Dim frmF As frmScriptFormulaEditor = New frmScriptFormulaEditor(oSurvey, New cScriptBag(oCI.Condition, iFunctionLanguage))
-                    AddHandler frmF.OnFormulaCodeRequest, AddressOf frmF_OnFormulaCodeRequest
-                    If frmF.ShowDialog(Me) = DialogResult.OK Then
-                        oCI.Condition = frmF.GetScriptBag.ToString
-                        txtHighlightCondition.Text = oCI.Condition
-                    End If
-            End Select
+            Dim oCI As cHighlightPlaceholder = tvHighlights.GetFocusedObject
+            Using frmF As frmScriptFormulaEditor = New frmScriptFormulaEditor(oSurvey, New cScriptBag(oCI.Condition, iFunctionLanguage))
+                AddHandler frmF.OnFormulaCodeRequest, AddressOf frmF_OnFormulaCodeRequest
+                If frmF.ShowDialog(Me) = DialogResult.OK Then
+                    oCI.Condition = frmF.GetScriptBag.ToString
+                    txtHighlightCondition.Text = oCI.Condition
+                End If
+            End Using
         Catch
         End Try
     End Sub
 
-    Private Sub btnResetHighlight_Click(sender As Object, e As EventArgs) Handles btnResetHighlight.Click
-        Call oSurvey.Properties.HighlightsDetails.Clear()
-        Call pHighlightsLoad()
-    End Sub
-
-    Private Sub btnAddHighlight0_Click(sender As Object, e As EventArgs) Handles btnAddHighlight0.Click
-        Call pHighlightAdd(0)
-    End Sub
-
-    Private Sub pHighlightAdd(ApplyTo As Integer)
+    Private Function pHighlightAdd(ApplyTo As Properties.cHighlightsDetail.ApplyToEnum) As cHighlightPlaceholder
         Call tvHighlights.Focus()
-
-        Dim sID As String = Guid.NewGuid.ToString
-        Dim sName As String = String.Format(modMain.GetLocalizedString("properties.textpart2"), tvHighlights.Nodes.Count + 1)
-        Dim oHighlightNode As TreeNode = tvHighlights.Nodes.Add(sID, sName)
-        Dim oCI As cHighlightPlaceholder = New cHighlightPlaceholder
-        oCI.ID = ""
-        oCI.Name = sName
-        oCI.Color = Color.Red
-        oCI.Size = 10
-        oCI.Opacity = 140
-        oCI.Source = Nothing
-        oCI.ApplyTo = ApplyTo
-        oCI.System = False
-        oCI.Created = True
-        oHighlightNode.Tag = oCI
-        oHighlightNode.SelectedImageKey = "hl"
-        oHighlightNode.ImageKey = "hl"
-
-        tvHighlights.SelectedNode = oHighlightNode
-        Call oHighlightNode.EnsureVisible()
-    End Sub
-
-    Private Sub btnAddHighlight1_Click(sender As Object, e As EventArgs) Handles btnAddHighlight1.Click
-        Call pHighlightAdd(1)
-    End Sub
-
-    Private Sub cmdSessionColorReset_Click(sender As Object, e As EventArgs) Handles cmdSessionColorReset.Click
-        picSessionColor.BackColor = Color.Transparent
-        Try
-            Select Case tvSessions.SelectedNode.Tag.type
-                Case "session"
-                    Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
-                    oCI.Color = Color.Transparent
-            End Select
-        Catch
-        End Try
-    End Sub
-
-    Private Sub cmdSessionColorChange_Click(sender As Object, e As EventArgs) Handles cmdSessionColorChange.Click
-        Dim oCD As ColorDialog = New ColorDialog
-        With oCD
-            .FullOpen = True
-            .AnyColor = True
-            .Color = picSessionColor.BackColor
-            If .ShowDialog = Windows.Forms.DialogResult.OK Then
-                picSessionColor.BackColor = .Color
-                Try
-                    Select Case tvSessions.SelectedNode.Tag.type
-                        Case "session"
-                            Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
-                            oCI.Color = .Color
-                    End Select
-                Catch
-                End Try
-            End If
-        End With
-    End Sub
+        Call tvHighlights.BeginUpdate()
+        Dim oItem As cHighlightPlaceholder = DirectCast(tvHighlights.DataSource, cHighlightEditBindingList).Add(ApplyTo)
+        Dim oNode As DevExpress.XtraTreeList.Nodes.TreeListNode = tvHighlights.GetNodeByDataRecord(oItem)
+        tvHighlights.FocusedNode = oNode
+        Call tvHighlights.EndUpdate()
+        Return oItem
+    End Function
 
     Private Sub cboCalculateVersion_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCalculateVersion.SelectedIndexChanged
         cmdUpdateCalculateVersion.Enabled = cboCalculateVersion.SelectedIndex < cboCalculateVersion.Items.Count - 1
     End Sub
 
     Private Sub cmdUpdateCalculateVersion_Click(sender As Object, e As EventArgs) Handles cmdUpdateCalculateVersion.Click
-        If MsgBox(modMain.GetLocalizedString("properties.warning3"), vbYesNo Or MsgBoxStyle.Critical, modMain.GetLocalizedString("properties.warningtitle")) = MsgBoxResult.Yes Then
+        If cSurvey.UIHelpers.Dialogs.Msgbox(modMain.GetLocalizedString("properties.warning3"), vbYesNo Or MsgBoxStyle.Critical, modMain.GetLocalizedString("properties.warningtitle")) = MsgBoxResult.Yes Then
             Call cmdApply.PerformClick()
             Call oSurvey.Properties.UpgradeCalculateVersion()
             cboCalculateVersion.SelectedIndex = oSurvey.Properties.CalculateVersion
@@ -2652,69 +1859,43 @@ Friend Class frmProperties
     End Sub
 
     Private Sub btnSessionSegmentsRefresh_Click(sender As Object, e As EventArgs) Handles btnSessionSegmentsRefresh.Click
-        Dim oSegments As cSegmentCollection = Nothing
-        Call lvSessionSegments.Items.Clear()
-        If Not tvSessions.SelectedNode Is Nothing Then
-            Select Case tvSessions.SelectedNode.Tag.type
-                Case "session"
-                    Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
-                    oSegments = oSurvey.Segments.GetSessionSegments(oCI.Source)
-            End Select
-            If Not oSegments Is Nothing Then
-                For Each oSegment As cSegment In oSegments
-                    Dim oItem As ListViewItem = lvSessionSegments.Items.Add(oSegment.ToString)
-                    oItem.Tag = oSegment
-                Next
-                Dim bEnabled As Boolean = lvSessionSegments.Items.Count > 0
-                btnCaveInfoSelectSegment.Enabled = bEnabled
-                If bEnabled Then
-                    lvSessionSegments.Items(0).Selected = True
-                End If
-            End If
+        Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+        If Not oCI Is Nothing AndAlso TypeOf oCI IsNot cDefaultSessionEditPlaceHolder Then
+            Call lvSessionSegments.Rebind(oSurvey, oSurvey.Segments.GetSessionSegments(oCI.Source).Cast(Of cSegment).ToList, New cSegmentsGrid.cSegmentGridParameters(False, True, True, True))
+            Dim bEnabled As Boolean = lvSessionSegments.Count > 0
+            lvSessionSegments.Enabled = bEnabled
+            btnCaveInfoSelectSegment.Enabled = bEnabled
         End If
     End Sub
 
     Private Sub btnSessionSelectSegment_Click(sender As Object, e As EventArgs) Handles btnSessionSelectSegment.Click
-        If lvSessionSegments.SelectedItems.Count > 0 Then
-            Dim oSegment As cSegment = lvSessionSegments.SelectedItems(0).Tag
+        If lvSessionSegments.SelectedItem IsNot Nothing Then
+            Dim oSegment As cSegment = lvSessionSegments.SelectedItem
             RaiseEvent OnSegmentSelect(Me, oSegment)
         End If
     End Sub
 
-    Private Sub btnSessionCalibrationSegmentsRefresh_Click(sender As Object, e As EventArgs) Handles btnSessionCalibrationSegmentsRefresh.Click
-        Dim oSegments As cSegmentCollection = Nothing
-        Call lvSessionSegments.Items.Clear()
-        If Not tvSessions.SelectedNode Is Nothing Then
-            Select Case tvSessions.SelectedNode.Tag.type
-                Case "session"
-                    Dim oCI As cSessionPlaceHolder = tvSessions.SelectedNode.Tag
-                    oSegments = oSurvey.Segments.GetSessionSegments(oCI.Source, cISegmentCollection.SessionSegmentsFlagEnum.CalibrationShots)
-            End Select
-            If Not oSegments Is Nothing Then
-                For Each oSegment As cSegment In oSegments
-                    Dim oItem As ListViewItem = lvSessionCalibrationSegments.Items.Add(oSegment.ToString)
-                    oItem.Tag = oSegment
-                Next
-                Dim bEnabled As Boolean = lvSessionCalibrationSegments.Items.Count > 0
-                btnCaveInfoSelectSegment.Enabled = bEnabled
-                If bEnabled Then
-                    lvSessionCalibrationSegments.Items(0).Selected = True
-                End If
-            End If
-        End If
-    End Sub
+    'Private Sub btnSessionCalibrationSegmentsRefresh_Click(sender As Object, e As EventArgs) Handles btnSessionCalibrationSegmentsRefresh.Click
+    '    Call lvSessionSegments.Items.Clear()
+    '    Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+    '    If Not oCI Is Nothing AndAlso TypeOf oCI IsNot cDefaultSessionEditPlaceHolder Then
+    '        Dim oSegments As cSegmentCollection = oSurvey.Segments.GetSessionSegments(oCI.Source, cISegmentCollection.SessionSegmentsFlagEnum.CalibrationShots)
+    '        For Each oSegment As cSegment In oSegments
+    '            Dim oItem As ListViewItem = lvSessionCalibrationSegments.Items.Add(oSegment.ToString)
+    '            oItem.Tag = oSegment
+    '        Next
+    '        Dim bEnabled As Boolean = lvSessionCalibrationSegments.Items.Count > 0
+    '        btnCaveInfoSelectSegment.Enabled = bEnabled
+    '        If bEnabled Then
+    '            lvSessionCalibrationSegments.Items(0).Selected = True
+    '        End If
+    '    End If
+    'End Sub
 
     Private Sub chkCaveInfoLocked_Validated(sender As Object, e As EventArgs) Handles chkCaveInfoLocked.Validated
         Try
-            Dim sID As String = txtCaveInfoID.Text
-            Select Case tvCaveInfos.SelectedNode.Tag.type
-                Case "cave"
-                    Dim oCI As cCaveInfoPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                    oCI.Locked = chkCaveInfoLocked.Checked
-                Case "branch"
-                    Dim oCIB As cCaveInfoBranchPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                    oCIB.Locked = chkCaveInfoLocked.Checked
-            End Select
+            Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
+            oItem.Locked = chkCaveInfoLocked.Checked
         Catch
         End Try
     End Sub
@@ -2723,24 +1904,12 @@ Friend Class frmProperties
         Try
             If chkCaveInfoExtendStart.Checked Then
                 Dim sExtendStart As String = cboCaveInfoExtendStart.Text
-                Select Case tvCaveInfos.SelectedNode.Tag.type
-                    Case "cave"
-                        Dim oCI As cCaveInfoPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                        oCI.ExtendStart = sExtendStart
-                    Case "branch"
-                        Dim oCIB As cCaveInfoBranchPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                        oCIB.ExtendStart = sExtendStart
-                End Select
+                Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
+                oItem.ExtendStart = sExtendStart
                 If Not sender Is chkCaveInfoExtendStart Then chkCaveInfoExtendStart.Checked = sExtendStart <> ""
             Else
-                Select Case tvCaveInfos.SelectedNode.Tag.type
-                    Case "cave"
-                        Dim oCI As cCaveInfoPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                        oCI.ExtendStart = ""
-                    Case "branch"
-                        Dim oCIB As cCaveInfoBranchPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                        oCIB.ExtendStart = ""
-                End Select
+                Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
+                oItem.ExtendStart = ""
             End If
         Catch
         End Try
@@ -2837,7 +2006,7 @@ Friend Class frmProperties
     Private Sub chkCaveInfoPriority_CheckedChanged(sender As Object, e As EventArgs) Handles chkCaveInfoPriority.CheckedChanged
         txtCaveInfoPriority.Enabled = chkCaveInfoPriority.Checked
         If Not txtCaveInfoPriority.Enabled Then
-            txtCaveInfoPriority.Value = pGetPriority(tvCaveInfos.SelectedNode).GetValueOrDefault(0)
+            txtCaveInfoPriority.Value = pGetPriority(tvCaveInfos.FocusedNode).GetValueOrDefault(0)
         End If
         Call txtCaveInfoPriority_Validated(chkCaveInfoPriority, EventArgs.Empty)
         pnlCaveInfoConnections.Enabled = chkCaveInfoExtendStart.Checked OrElse chkCaveInfoPriority.Checked
@@ -2845,119 +2014,124 @@ Friend Class frmProperties
 
     Private Sub chkCaveInfoExtendStart_CheckedChanged(sender As Object, e As EventArgs) Handles chkCaveInfoExtendStart.CheckedChanged
         cboCaveInfoExtendStart.Enabled = chkCaveInfoExtendStart.Checked
-        If Not cboCaveInfoExtendStart.Enabled Then
-            cboCaveInfoExtendStart.Text = "" & pGetExtendStart(tvCaveInfos.SelectedNode)
+        If cboCaveInfoExtendStart.Enabled Then
+            cboCaveInfoExtendStart.Rebind(oSurvey, Nothing, False, False)
+        Else
+            cboCaveInfoExtendStart.FastRebind(oSurvey, "" & pGetExtendStart(tvCaveInfos.FocusedNode), False, False)
+            'cboCaveInfoExtendStart.Text = "" & pGetExtendStart(tvCaveInfos.FocusedNode)
         End If
         Call cboCaveInfoExtendStart_Validated(chkCaveInfoExtendStart, EventArgs.Empty)
         pnlCaveInfoConnections.Enabled = chkCaveInfoExtendStart.Checked OrElse chkCaveInfoPriority.Checked
     End Sub
 
-    Private Function pGetExtendStart(Node As TreeNode) As String
-        Select Case Node.Tag.type
-            Case "cave"
-                Dim oCI As cCaveInfoPlaceHolder = Node.Tag
-                If oCI.ExtendStart = "" Then
-                    Return cboOrigin.Text
-                Else
-                    Return oCI.ExtendStart
-                End If
-            Case "branch"
-                Dim oCIB As cCaveInfoBranchPlaceHolder = Node.Tag
-                If oCIB.ExtendStart = "" Then
-                    Return pGetExtendStart(Node.Parent)
-                Else
-                    Return oCIB.ExtendStart
-                End If
-        End Select
+    Private Function pGetExtendStart(Node As DevExpress.XtraTreeList.Nodes.TreeListNode) As String
+        Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetDataRecordByNode(Node)
+        If oItem Is Nothing Then
+            Return ""
+        Else
+            Select Case oItem.Type
+                Case "cave"
+                    Dim oCI As cCaveInfoPlaceHolder = oItem
+                    If oCI.ExtendStart = "" Then
+                        Return cboOrigin.Text
+                    Else
+                        Return oCI.ExtendStart
+                    End If
+                Case "branch"
+                    Dim oCIB As cCaveInfoBranchPlaceHolder = oItem
+                    If oCIB.ExtendStart = "" Then
+                        Return pGetExtendStart(Node.ParentNode)
+                    Else
+                        Return oCIB.ExtendStart
+                    End If
+            End Select
+        End If
     End Function
 
-    Private Function pGetPriority(Node As TreeNode) As Integer?
-        Select Case Node.Tag.type
-            Case "cave"
-                Dim oCI As cCaveInfoPlaceHolder = Node.Tag
-                If oCI.Priority.HasValue Then
-                    Return oCI.Priority
-                Else
-                    Return Nothing
-                End If
-            Case "branch"
-                Dim oCIB As cCaveInfoBranchPlaceHolder = Node.Tag
-                If oCIB.Priority.HasValue Then
-                    Return oCIB.Priority
-                Else
-                    Return pGetPriority(Node.Parent)
-                End If
-        End Select
+    Private Function pGetPriority(Node As DevExpress.XtraTreeList.Nodes.TreeListNode) As Integer?
+        Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetDataRecordByNode(Node)
+        If oItem Is Nothing Then
+            Return Nothing
+        Else
+            Select Case oItem.Type
+                Case "cave"
+                    Dim oCI As cCaveInfoPlaceHolder = oItem
+                    If oCI.Priority.HasValue Then
+                        Return oCI.Priority
+                    Else
+                        Return Nothing
+                    End If
+                Case "branch"
+                    Dim oCIB As cCaveInfoBranchPlaceHolder = oItem
+                    If oCIB.Priority.HasValue Then
+                        Return oCIB.Priority
+                    Else
+                        Return pGetPriority(Node.ParentNode)
+                    End If
+            End Select
+        End If
     End Function
 
     Private Sub txtCaveInfoPriority_Validated(sender As Object, e As EventArgs) Handles txtCaveInfoPriority.Validated
         Try
+            Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
             If chkCaveInfoPriority.Checked Then
                 Dim iPriority As Integer = txtCaveInfoPriority.Value
-                Select Case tvCaveInfos.SelectedNode.Tag.type
-                    Case "cave"
-                        Dim oCI As cCaveInfoPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                        oCI.Priority = iPriority
-                    Case "branch"
-                        Dim oCIB As cCaveInfoBranchPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                        oCIB.Priority = iPriority
-                End Select
-                'If Not sender Is chkCaveInfoPriority Then chkCaveInfoPriority.Checked = iPriority <> 0
+                oItem.Priority = iPriority
             Else
-                Select Case tvCaveInfos.SelectedNode.Tag.type
-                    Case "cave"
-                        Dim oCI As cCaveInfoPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                        oCI.Priority = Nothing
-                    Case "branch"
-                        Dim oCIB As cCaveInfoBranchPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                        oCIB.Priority = Nothing
-                End Select
+                oItem.Priority = Nothing
             End If
-            'chkCaveInfoPriority.Checked = iPriority.HasValue
         Catch
         End Try
     End Sub
 
-    Private Sub cboCaveInfoExtendStart_DropDown(sender As Object, e As EventArgs) Handles cboCaveInfoExtendStart.DropDown
-        Select Case tvCaveInfos.SelectedNode.Tag.type
+    Private Sub cboCaveInfoExtendStart_Popup(sender As Object, e As PopupEventArgs) Handles cboCaveInfoExtendStart.Popup
+        Cursor = Cursors.WaitCursor
+        Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
+        Select Case oItem.Type
             Case "cave"
-                Dim oCI As cCaveInfoPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                Call cboCaveInfoExtendStart.Items.Clear()
-                Call cboCaveInfoExtendStart.Items.Add("")
-                Call cboCaveInfoExtendStart.Items.AddRange(oCI.Source.GetSegments.GetTrigpointsNames().Cast(Of Object).ToArray)
+                Dim oCI As cCaveInfoPlaceHolder = oItem
+                'If e.Grid.Count <= 1 Then
+                Call e.AddRange(oCI.Source.GetSegments.GetTrigpoints.GetStations(e.AllowSplay).ToList)
+                'End If
+                'Call cboCaveInfoExtendStart.Items.Clear()
+                'Call cboCaveInfoExtendStart.Items.Add("")
+                'Call cboCaveInfoExtendStart.Items.AddRange(oCI.Source.GetSegments.GetTrigpointsNames().Cast(Of Object).ToArray)
             Case "branch"
-                Dim oCIB As cCaveInfoBranchPlaceHolder = tvCaveInfos.SelectedNode.Tag
-                Call cboCaveInfoExtendStart.Items.Clear()
-                Call cboCaveInfoExtendStart.Items.Add("")
-                Call cboCaveInfoExtendStart.Items.AddRange(oCIB.Source.GetSegments.GetTrigpointsNames().Cast(Of Object).ToArray)
+                Dim oCIB As cCaveInfoBranchPlaceHolder = oItem
+                'If e.Grid.Count <= 1 Then
+                Call e.AddRange(oCIB.Source.GetSegments.GetTrigpoints.GetStations(e.AllowSplay).ToList)
+                'End If
+                'Call cboCaveInfoExtendStart.Items.Clear()
+                'Call cboCaveInfoExtendStart.Items.Add("")
+                'Call cboCaveInfoExtendStart.Items.AddRange(oCIB.Source.GetSegments.GetTrigpointsNames().Cast(Of Object).ToArray)
         End Select
+        Cursor = Cursors.Default
     End Sub
 
     Private Sub chkCaveInfoExtendStart_Validated(sender As Object, e As EventArgs) Handles chkCaveInfoExtendStart.Validated
         Dim sExtendStart As String = ""
-        Select Case tvCaveInfos.SelectedNode.Tag.type
+        Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
+        Select Case oItem.Type
             Case "cave"
-                Dim oCI As cCaveInfoPlaceHolder = tvCaveInfos.SelectedNode.Tag
+                Dim oCI As cCaveInfoPlaceHolder = oItem
                 sExtendStart = oCI.ExtendStart
             Case "branch"
-                Dim oCIB As cCaveInfoBranchPlaceHolder = tvCaveInfos.SelectedNode.Tag
+                Dim oCIB As cCaveInfoBranchPlaceHolder = oItem
                 sExtendStart = oCIB.ExtendStart
         End Select
-        If sExtendStart = "" Then
-            tvCaveInfos.SelectedNode.ImageKey = tvCaveInfos.SelectedNode.Tag.type
-        Else
-            tvCaveInfos.SelectedNode.ImageKey = "origin"
-        End If
+        tvCaveInfos.RefreshFocusedObject
     End Sub
 
     Private Sub cmdCaveInfoParentConnection_Click(sender As Object, e As EventArgs) Handles cmdCaveInfoParentConnection.Click
-        Select Case tvCaveInfos.SelectedNode.Tag.type
+        Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
+        Select Case oItem.Type
             Case "cave"
-                Dim oCI As cCaveInfoPlaceHolder = tvCaveInfos.SelectedNode.Tag
+                Dim oCI As cCaveInfoPlaceHolder = oItem
                 Using frmT As frmConnectionDefBrowser = New frmConnectionDefBrowser(oSurvey, oCI.ParentConnection, True)
                     If frmT.ShowDialog() = DialogResult.OK Then
                         With oCI
-                            .ParentConnection = frmT.Connection
+                            .ParentConnection = frmT.SelectedItem
                             txtCaveInfoParentConnection.Text = If(IsNothing(.ParentConnection), "", .ParentConnection.ToString)
                             Dim bEditConnection As Boolean
                             If IsNothing(.ParentConnection) Then
@@ -2987,11 +2161,11 @@ Friend Class frmProperties
                     End If
                 End Using
             Case "branch"
-                Dim oCIB As cCaveInfoBranchPlaceHolder = tvCaveInfos.SelectedNode.Tag
+                Dim oCIB As cCaveInfoBranchPlaceHolder = oItem
                 Using frmT As frmConnectionDefBrowser = New frmConnectionDefBrowser(oSurvey, oCIB.ParentConnection, True)
                     If frmT.ShowDialog() = DialogResult.OK Then
                         With oCIB
-                            .ParentConnection = frmT.Connection
+                            .ParentConnection = frmT.SelectedItem
                             txtCaveInfoParentConnection.Text = If(IsNothing(.ParentConnection), "", .ParentConnection.ToString)
                             Dim bEditConnection As Boolean
                             If IsNothing(.ParentConnection) Then
@@ -3024,13 +2198,14 @@ Friend Class frmProperties
     End Sub
 
     Private Sub cmdCaveInfoConnection_Click(sender As Object, e As EventArgs) Handles cmdCaveInfoConnection.Click
-        Select Case tvCaveInfos.SelectedNode.Tag.type
+        Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
+        Select Case oItem.Type
             Case "cave"
-                Dim oCI As cCaveInfoPlaceHolder = tvCaveInfos.SelectedNode.Tag
+                Dim oCI As cCaveInfoPlaceHolder = oItem
                 Using frmT As frmConnectionDefBrowser = New frmConnectionDefBrowser(oSurvey, oCI.Connection, True, oCI.ParentConnection.Station, Nothing, New List(Of cConnectionDef)({oCI.ParentConnection}))
                     If frmT.ShowDialog() = DialogResult.OK Then
                         With oCI
-                            .Connection = frmT.Connection
+                            .Connection = frmT.SelectedItem
                             If IsNothing(.Connection) Then
                                 .ParentConnection = Nothing
                                 txtCaveInfoParentConnection.Text = ""
@@ -3044,11 +2219,11 @@ Friend Class frmProperties
                     End If
                 End Using
             Case "branch"
-                Dim oCIB As cCaveInfoBranchPlaceHolder = tvCaveInfos.SelectedNode.Tag
+                Dim oCIB As cCaveInfoBranchPlaceHolder = oItem
                 Using frmT As frmConnectionDefBrowser = New frmConnectionDefBrowser(oSurvey, oCIB.Connection, True, oCIB.ParentConnection.Station, Nothing, New List(Of cConnectionDef)({oCIB.ParentConnection}))
                     If frmT.ShowDialog() = DialogResult.OK Then
                         With oCIB
-                            .Connection = frmT.Connection
+                            .Connection = frmT.SelectedItem
                             If IsNothing(.Connection) Then
                                 .ParentConnection = Nothing
                                 txtCaveInfoParentConnection.Text = ""
@@ -3110,7 +2285,7 @@ Friend Class frmProperties
         cmdGPSCustomRefPointRefreshStations.Enabled = cboGPSCustomRefPoint.Enabled
     End Sub
 
-    Private Sub cboOrigin_EnabledChanged(sender As Object, e As EventArgs) Handles cboOrigin.EnabledChanged
+    Private Sub cboOrigin_EnabledChanged(sender As Object, e As EventArgs)
         cmdOriginRefreshStations.Enabled = cboOrigin.Enabled
     End Sub
 
@@ -3120,5 +2295,1654 @@ Friend Class frmProperties
 
     Private Sub chkGPSAllowManualDeclinations_CheckedChanged(sender As Object, e As EventArgs) Handles chkGPSAllowManualDeclinations.CheckedChanged
         Call cboSessionNordType_SelectedIndexChanged(Nothing, Nothing)
+    End Sub
+
+    'Private Sub btnCaveInfoRemoveAllSubOrigins_Click(sender As Object, e As EventArgs)
+    '    Call pCaveBranchRemoveSuborigin(tvCaveInfos.Nodes)
+    'End Sub
+
+    'Private Sub pCaveBranchRemoveSuborigin(Nodes As TreeNodeCollection)
+    '    For Each oNode As TreeNode In Nodes
+    '        If TypeOf oNode.Tag Is cCaveInfoPlaceHolder Then
+    '            Dim oCI As cCaveInfoPlaceHolder = oNode.Tag
+    '            If oCI.ExtendStart <> "" Then
+    '                oCI.ExtendStart = ""
+    '            End If
+    '        Else
+    '            Dim oCI As cCaveInfoBranchPlaceHolder = oNode.Tag
+    '            If oCI.ExtendStart <> "" Then
+    '                oCI.ExtendStart = ""
+    '            End If
+    '        End If
+    '        If oNode.Nodes.Count > 0 Then
+    '            Call pCaveBranchRemoveSuborigin(oNode.Nodes)
+    '        End If
+    '    Next
+    'End Sub
+
+    Private Sub btnSessionAdd_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnSessionAdd.ItemClick
+        Call tvSessions.Focus()
+
+        Dim oItem As cSessionEditPlaceHolder = DirectCast(tvSessions.DataSource, cSessionsEditBindingList).Add()
+        Dim oNode As DevExpress.XtraTreeList.Nodes.TreeListNode = tvSessions.GetNodeByDataRecord(oItem)
+        tvSessions.FocusedNode = oNode
+        'Call tvSessions.MakeNodeVisible(oNode)
+
+        'Dim sNewID As String
+        'Dim sNewDescriptionBase As String = GetLocalizedString("properties.textpart1")
+        'Dim iNewCount As Integer = 0
+        'Do
+        '    iNewCount += 1
+        '    sNewID = Strings.Format(Today, "yyyyMMdd") & "_" & (sNewDescriptionBase & " " & iNewCount).Replace(" ", "_").ToLower
+        'Loop While tvSessions.Nodes.ContainsKey(sNewID)
+
+        'Dim oSession As cSession = oSurvey.Properties.Sessions.GetEmptySession(Today, sNewDescriptionBase & " " & iNewCount)
+        'Dim oSessionNode As TreeNode = tvSessions.Nodes.Add(oSession.ID, oSession.FormattedID)
+
+        'Dim oCI As cSessionEditPlaceHolder = New cSessionEditPlaceHolder
+        'oCI.Date = oSession.Date
+        'oCI.Description = oSession.Description
+        'oCI.Team = oSession.Team
+        'oCI.Club = oSession.Club
+        'oCI.Designer = oSession.Designer
+        'oCI.DistanceType = oSession.DistanceType
+        'oCI.BearingType = oSession.BearingType
+        'oCI.BearingDirection = oSession.BearingDirection
+        'oCI.InclinationType = oSession.InclinationType
+        'oCI.InclinationDirection = oSession.InclinationDirection
+        'oCI.DepthType = oSession.DepthType
+
+        'oCI.Grade = oSession.Grade
+
+        'oCI.NordType = oSession.NordType
+        'oCI.SideMeasuresType = oSession.SideMeasuresType
+        'oCI.SideMeasuresReferTo = oSession.SideMeasuresReferTo
+
+        'oCI.Source = oSession
+        'oCI.Created = True
+        'oSessionNode.Tag = oCI
+        'oSessionNode.SelectedImageKey = "session"
+        'oSessionNode.ImageKey = "session"
+
+        'tvSessions.SelectedNode = oSessionNode
+        'Call oSessionNode.EnsureVisible()
+    End Sub
+
+    Private Sub btnSessionDelete_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnSessionDelete.ItemClick
+        Dim oItem As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+        If Not oItem Is Nothing Then
+            tvSessions.BeginUpdate()
+            DirectCast(tvSessions.DataSource, cSessionsEditBindingList).Remove(oItem)
+            tvSessions.EndUpdate()
+        End If
+    End Sub
+
+    Private Sub pSessionRebindGrades(Optional GradeID As String = Nothing)
+        If GradeID Is Nothing Then
+            If cboSessionGrade.SelectedIndex <= 0 Then
+                GradeID = ""
+            Else
+                GradeID = DirectCast(tvGrades.DataSource, UIHelpers.cGradeEditBindingList).Item(cboSessionGrade.SelectedIndex - 1).ID
+            End If
+        End If
+        cboSessionGrade.Items.Clear()
+        Call cboSessionGrade.Items.Add("")
+        Call cboSessionGrade.Items.AddRange(DirectCast(tvGrades.DataSource, UIHelpers.cGradeEditBindingList).Select(Function(oitem) oitem.Description).Cast(Of Object).ToArray)
+        If GradeID = "" Then
+            cboSessionGrade.SelectedIndex = 0
+        Else
+            cboSessionGrade.SelectedIndex = DirectCast(tvGrades.DataSource, UIHelpers.cGradeEditBindingList).IndexOf(GradeID) + 1
+        End If
+    End Sub
+
+    Private Sub tvSessions_FocusedNodeChanged(sender As Object, e As DevExpress.XtraTreeList.FocusedNodeChangedEventArgs) Handles tvSessions.FocusedNodeChanged
+        tabSession.BeginUpdate()
+        Try
+            tabSessionMain1.PageVisible = False
+            tabSessionNote1.PageVisible = False
+            tabSessionDefault1.PageVisible = False
+
+            Dim oCI As cSessionEditPlaceHolder = tvSessions.GetDataRecordByNode(e.Node)
+            Select Case oCI.Type
+                Case "defaultsession"
+                    lblSessionDate.Enabled = False
+                    txtSessionDate.Enabled = False
+                    If oSurvey.Properties.CalculateVersion >= 2 Then
+                        txtSessionDate.Visible = False
+                        pnlSessionDate.Visible = True
+                    Else
+                        txtSessionDate.Visible = True
+                        pnlSessionDate.Visible = False
+                    End If
+                    lblSessionDescription.Enabled = False
+                    txtSessionDescription.Enabled = False
+                    lblSessionColor.Enabled = False
+                    txtSessionColor.Enabled = False
+
+                    txtSessionDate.EditValue = Now
+                    txtSessionDescription.Text = ""
+                    txtSessionColor.EditValue = Nothing
+
+                    cboSessionDataFormat.SelectedIndex = oCI.DataFormat
+                    cboSessionDistanceType.SelectedIndex = oCI.DistanceType
+                    cboSessionBearingType.SelectedIndex = oCI.BearingType
+                    chkSessionBearingDirection.Checked = oCI.BearingDirection = cSegment.MeasureDirectionEnum.Inverted
+                    cboSessionInclinationType.SelectedIndex = oCI.InclinationType
+                    chkSessionInclinationDirection.Checked = oCI.InclinationDirection = cSegment.MeasureDirectionEnum.Inverted
+                    cboSessionDepthType.SelectedIndex = oCI.DepthType
+
+                    Call pSessionRebindGrades(oCI.Grade)
+
+                    cboSessionNordType.SelectedIndex = oCI.NordType
+                    chkSessionDecMag.Checked = oCI.declinationenabled
+                    txtSessionDecMag.Text = oCI.Declination
+
+                    cboSessionSideMeasuresType.SelectedIndex = oCI.SideMeasuresType
+                    cboSessionSideMeasuresReferTo.SelectedIndex = oCI.SideMeasuresReferTo
+
+                    chkSessionVthreshold.Checked = oCI.VThresholdEnabled
+                    txtSessionVthreshold.Text = oCI.VThreshold
+
+                    tabSession.Enabled = True
+
+                    tabSessionDefault1.PageVisible = True
+                    'tabSession.SelectedTabPage = tabSessionMeasure1
+
+                    btnSessionDelete.Enabled = False
+
+                    lvSessionSegments.Unbind()
+                    btnSessionSelectSegment.Enabled = False
+
+                    lvSessionCalibartionSegments.Unbind()
+                    btnSessionCalibrationSegmentsRefresh.Enabled = True
+                Case "session"
+                    lblSessionDate.Enabled = True
+                    txtSessionDate.Enabled = True
+                    pnlSessionDate.Visible = False
+                    txtSessionDate.Visible = True
+
+                    lblSessionDescription.Enabled = True
+                    txtSessionDescription.Enabled = True
+                    lblSessionColor.Enabled = True
+                    txtSessionColor.Enabled = True
+
+                    txtSessionDate.Enabled = True
+                    txtSessionDate.EditValue = oCI.Date
+                    txtSessionDescription.Text = oCI.Description
+                    txtSessionClub.Text = oCI.Club
+                    txtSessionTeam.Text = oCI.Team
+                    txtSessionDesigner.Text = oCI.Designer
+                    txtSessionNote.Text = oCI.Note
+                    txtSessionColor.EditValue = oCI.Color
+
+                    cboSessionDataFormat.SelectedIndex = oCI.DataFormat
+                    cboSessionDistanceType.SelectedIndex = oCI.DistanceType
+                    cboSessionBearingType.SelectedIndex = oCI.BearingType
+                    chkSessionBearingDirection.Checked = oCI.BearingDirection = cSegment.MeasureDirectionEnum.Inverted
+                    cboSessionInclinationType.SelectedIndex = oCI.InclinationType
+                    chkSessionInclinationDirection.Checked = oCI.InclinationDirection = cSegment.MeasureDirectionEnum.Inverted
+                    cboSessionDepthType.SelectedIndex = oCI.DepthType
+
+                    Call pSessionRebindGrades(oCI.Grade)
+
+                    cboSessionNordType.SelectedIndex = oCI.NordType
+                    chkSessionDecMag.Checked = oCI.declinationenabled
+                    txtSessionDecMag.Text = oCI.Declination
+
+                    cboSessionSideMeasuresType.SelectedIndex = oCI.SideMeasuresType
+                    cboSessionSideMeasuresReferTo.SelectedIndex = oCI.SideMeasuresReferTo
+
+                    chkSessionVthreshold.Checked = oCI.VThresholdEnabled
+                    txtSessionVthreshold.Text = oCI.VThreshold
+
+                    Dim bEnabled As Boolean = Not oCI.Deleted
+                    lblSessionColor.Enabled = bEnabled
+                    txtSessionColor.Enabled = bEnabled
+                    lblSessionDate.Enabled = bEnabled
+                    txtSessionDate.Enabled = bEnabled
+                    lblSessionDescription.Enabled = bEnabled
+                    txtSessionDescription.Enabled = bEnabled
+                    tabSession.Enabled = bEnabled
+
+                    tabSessionMain1.PageVisible = True
+                    tabSessionNote1.PageVisible = True
+                    'tabSession.SelectedTabPage = tabSessionMain1
+
+                    btnSessionDelete.Enabled = True
+
+                    lvSessionSegments.Unbind()
+                    btnSessionSelectSegment.Enabled = False
+
+                    lvSessionCalibartionSegments.Unbind()
+                    btnSessionCalibrationSegmentsRefresh.Enabled = True
+            End Select
+            btnSessionAdd.Enabled = True
+        Catch ex As Exception
+            lblSessionDate.Enabled = False
+            txtSessionDate.Enabled = False
+            lblSessionDescription.Enabled = False
+            txtSessionDescription.Enabled = False
+            tabSession.Enabled = False
+            btnSessionDelete.Enabled = False
+        End Try
+        tabSession.EndUpdate()
+    End Sub
+
+    Private Sub txtSessionColor_EditValueChanged(sender As Object, e As EventArgs) Handles txtSessionColor.EditValueChanged
+        Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+        If oCI IsNot Nothing Then
+            If txtSessionColor.EditValue = Nothing Then
+                oCI.Color = Color.Transparent
+            Else
+                oCI.Color = txtSessionColor.EditValue
+            End If
+        End If
+    End Sub
+
+    Private Sub btnSessionCalibrationSegmentsRefresh_Click(sender As Object, e As EventArgs) Handles btnSessionCalibrationSegmentsRefresh.Click
+        Dim oCI As cSessionEditPlaceHolder = tvSessions.GetFocusedObject
+        If Not oCI Is Nothing Then
+            Call lvSessionSegments.Rebind(oSurvey, oSurvey.Segments.GetSessionSegments(oCI.Source, cISegmentCollection.SessionSegmentsFlagEnum.CalibrationShots).Cast(Of cSegment).ToList, New cSegmentsGrid.cSegmentGridParameters(False, True, True, True))
+            Dim bEnabled As Boolean = lvSessionSegments.Count > 0
+            lvSessionSegments.Enabled = bEnabled
+            btnCaveInfoSelectSegment.Enabled = bEnabled
+        End If
+    End Sub
+
+    Private Sub lvSessionSegments_SelectionChanged(sender As Object, e As cSegmentsGrid.cSelectionChangedEventArgs) Handles lvSessionSegments.SelectionChanged
+        btnSessionSelectSegment.Enabled = e.SelectedItem IsNot Nothing
+    End Sub
+
+    Private Sub txtCaveInfoColor_EditValueChanged(sender As Object, e As EventArgs) Handles txtCaveInfoColor.EditValueChanged
+        Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
+        If oItem IsNot Nothing Then
+            oItem.Color = txtCaveInfoColor.Color
+        End If
+    End Sub
+
+    Private Sub btnCaveInfoAddBranch_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnCaveInfoAddBranch.ItemClick
+        Dim oItems As cCaveInfoBranchEditBindingList = tvCaveInfos.DataSource
+        Dim oCurrentItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
+        If oCurrentItem IsNot Nothing Then
+            tvCaveInfos.BeginUpdate()
+            Dim sCave As String = oCurrentItem.Name
+            Dim oBranches As cCaveInfoBranches = oCurrentItem.GetSource.branches
+            Dim oCaveInfoBranch As cCaveInfoBranch = oBranches.GetEmptyCaveInfoBranch(pGetNewNodeName(modMain.GetLocalizedString("properties.textpart5"), oItems))
+            Dim oItem As cCaveInfoBranchPlaceHolder = oItems.Add(oCurrentItem, oCaveInfoBranch)
+            Dim oNode As DevExpress.XtraTreeList.Nodes.TreeListNode = tvCaveInfos.GetNodeByDataRecord(oItem)
+            oNode.Expanded = True
+            tvCaveInfos.FocusedNode = oNode
+
+            tvCaveInfos.EndUpdate()
+        End If
+
+        'Try
+        '    Dim oParentNode As TreeNode = tvCaveInfos.SelectedNode
+        '    If Not oParentNode Is Nothing Then
+        '        Call tvCaveInfos.Focus()
+
+        '        Dim sCave As String = oParentNode.Tag.name
+        '        Dim oBranches As cCaveInfoBranches = oParentNode.Tag.source.branches
+        '        Dim oCaveInfoBranch As cCaveInfoBranch = oBranches.GetEmptyCaveInfoBranch(pGetNewNodeName(modMain.GetLocalizedString("properties.textpart5"), oParentNode.Nodes))
+        '        Dim oBranchNode As TreeNode = oParentNode.Nodes.Add(oCaveInfoBranch.Name, oCaveInfoBranch.Name)
+        '        Dim oCIB As cCaveInfoBranchPlaceHolder = New cCaveInfoBranchPlaceHolder
+        '        oCIB.Name = oCaveInfoBranch.Name
+        '        oCIB.Color = oCaveInfoBranch.Color
+        '        oCIB.Description = oCaveInfoBranch.Description
+        '        oCIB.SurfaceProfileShow = oCaveInfoBranch.SurfaceProfileShow
+        '        oCIB.Locked = oCaveInfoBranch.Locked
+        '        oCIB.ExtendStart = oCaveInfoBranch.ExtendStart
+        '        oCIB.Source = oCaveInfoBranch
+        '        oCIB.Created = True
+        '        oBranchNode.Tag = oCIB
+        '        oBranchNode.SelectedImageKey = "branch"
+        '        oBranchNode.ImageKey = "branch"
+
+        '        tvCaveInfos.SelectedNode = oBranchNode
+        '        Call oBranchNode.EnsureVisible()
+        '    End If
+        'Catch
+        'End Try
+    End Sub
+
+    Private Sub btnCaveInfoAddCave_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnCaveInfoAddCave.ItemClick
+        tvCaveInfos.BeginUpdate()
+        Dim oItems As cCaveInfoBranchEditBindingList = tvCaveInfos.DataSource
+        Dim oCaveInfo As cCaveInfo = oSurvey.Properties.CaveInfos.GetEmptyCaveInfo(pGetNewNodeName(modMain.GetLocalizedString("properties.textpart4"), oItems))
+        Dim oItem As cCaveInfoPlaceHolder = oItems.Add(oCaveInfo)
+        Dim oNode As DevExpress.XtraTreeList.Nodes.TreeListNode = tvCaveInfos.GetNodeByDataRecord(oItem)
+        tvCaveInfos.FocusedNode = oNode
+        tvCaveInfos.EndUpdate()
+
+        'Call tvCaveInfos.Focus()
+
+        '
+        'Dim oCaveNode As TreeNode = tvCaveInfos.Nodes.Add(oCaveInfo.Name, oCaveInfo.Name)
+        'Dim oCI As cCaveInfoPlaceHolder = New cCaveInfoPlaceHolder
+        'oCI.Name = oCaveInfo.Name
+        'oCI.ID = oCaveInfo.ID
+        'oCI.Color = oCaveInfo.Color
+        'oCI.ExtendStart = oCaveInfo.ExtendStart
+        'oCI.Source = oCaveInfo
+        'oCI.Created = True
+        'oCaveNode.Tag = oCI
+        'oCaveNode.SelectedImageKey = "cave"
+        'oCaveNode.ImageKey = "cave"
+
+        'tvCaveInfos.SelectedNode = oCaveNode
+        'Call oCaveNode.EnsureVisible()
+    End Sub
+
+    Private Sub btnCaveInfoDelete_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnCaveInfoDelete.ItemClick
+        Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
+        If Not oItem Is Nothing Then
+            tvCaveInfos.BeginUpdate()
+            DirectCast(tvCaveInfos.DataSource, cCaveInfoBranchEditBindingList).Remove(oItem)
+            tvCaveInfos.EndUpdate()
+        End If
+    End Sub
+
+    Private Sub tvCaveInfos_FocusedNodeChanged(sender As Object, e As DevExpress.XtraTreeList.FocusedNodeChangedEventArgs) Handles tvCaveInfos.FocusedNodeChanged
+        Call tabCaveAndBranch.BeginUpdate()
+        Try
+            Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetFocusedObject
+            Select Case oItem.Type
+                Case "cave"
+                    Dim oCI As cCaveInfoPlaceHolder = oItem
+                    txtCaveInfoID.Enabled = True
+                    txtCaveInfoName.Text = oCI.Name
+                    txtCaveInfoID.Text = oCI.ID
+                    txtCaveInfoDescription.Text = oCI.Description
+                    txtCaveInfoColor.Color = oCI.Color
+                    If oCI.ExtendStart = "" Then
+                        chkCaveInfoExtendStart.Checked = False
+                        Call chkCaveInfoExtendStart_CheckedChanged(chkCaveInfoExtendStart, EventArgs.Empty)
+                    Else
+                        cboCaveInfoExtendStart.FastRebind(oSurvey, oCI.ExtendStart, False, False)
+                        chkCaveInfoExtendStart.Checked = True
+                    End If
+                    If oCI.Priority.HasValue Then
+                        txtCaveInfoPriority.Value = oCI.Priority.GetValueOrDefault(0)
+                        chkCaveInfoPriority.Checked = True
+                    Else
+                        chkCaveInfoPriority.Checked = False
+                        Call chkCaveInfoPriority_CheckedChanged(chkCaveInfoPriority, EventArgs.Empty)
+                    End If
+                    If IsNothing(oCI.ParentConnection) Then
+                        txtCaveInfoParentConnection.Text = ""
+                        txtCaveInfoConnection.Enabled = False
+                        cmdCaveInfoConnection.Enabled = False
+                    Else
+                        txtCaveInfoParentConnection.Text = oCI.ParentConnection.ToString
+                        txtCaveInfoConnection.Enabled = True
+                        cmdCaveInfoConnection.Enabled = True
+                    End If
+                    txtCaveInfoConnection.Text = If(IsNothing(oCI.Connection), "", oCI.Connection.ToString)
+
+                    Dim bEnabled As Boolean = Not oCI.Deleted
+                    lblCaveInfoName.Enabled = bEnabled
+                    txtCaveInfoName.Enabled = bEnabled
+                    lblCaveInfoID.Enabled = bEnabled
+                    txtCaveInfoID.Enabled = bEnabled
+                    lblCaveInfoColor.Enabled = bEnabled
+                    txtCaveInfoColor.Enabled = bEnabled
+                    lblCaveInfoDescription.Enabled = bEnabled
+                    txtCaveInfoDescription.Enabled = bEnabled
+                    chkCaveInfoLocked.Enabled = bEnabled
+                    tabCaveAndBranch.Enabled = bEnabled
+
+                    If oCI.Deleted Then
+                        btnCaveInfoAddBranch.Enabled = False
+                        btnCaveInfoDelete.Enabled = False
+                    Else
+                        btnCaveInfoAddBranch.Enabled = True
+                        btnCaveInfoDelete.Enabled = True
+                    End If
+
+                    cboCaveInfoSurfaceProfileShow.SelectedIndex = oCI.SurfaceProfileShow
+                    chkCaveInfoLocked.Checked = oCI.Locked
+                Case "branch"
+                    Dim oCIB As cCaveInfoBranchPlaceHolder = oItem
+                    txtCaveInfoID.Enabled = False
+                    txtCaveInfoName.Text = oCIB.Name
+                    txtCaveInfoColor.Color = oCIB.Color
+                    txtCaveInfoDescription.Text = oCIB.Description
+                    If oCIB.ExtendStart = "" Then
+                        chkCaveInfoExtendStart.Checked = False
+                        Call chkCaveInfoExtendStart_CheckedChanged(chkCaveInfoExtendStart, EventArgs.Empty)
+                    Else
+                        'cboCaveInfoExtendStart.Text = oCIB.ExtendStart
+                        cboCaveInfoExtendStart.FastRebind(oSurvey, oCIB.ExtendStart, False, False)
+                        chkCaveInfoExtendStart.Checked = True
+                    End If
+                    If oCIB.Priority.HasValue Then
+                        txtCaveInfoPriority.Value = oCIB.Priority.GetValueOrDefault(0)
+                        chkCaveInfoPriority.Checked = True
+                    Else
+                        chkCaveInfoPriority.Checked = False
+                        Call chkCaveInfoPriority_CheckedChanged(chkCaveInfoPriority, EventArgs.Empty)
+                    End If
+                    If IsNothing(oCIB.ParentConnection) Then
+                        txtCaveInfoParentConnection.Text = ""
+                        txtCaveInfoConnection.Enabled = False
+                        cmdCaveInfoConnection.Enabled = False
+                    Else
+                        txtCaveInfoParentConnection.Text = oCIB.ParentConnection.ToString
+                        txtCaveInfoConnection.Enabled = True
+                        cmdCaveInfoConnection.Enabled = True
+                    End If
+                    txtCaveInfoConnection.Text = If(IsNothing(oCIB.Connection), "", oCIB.Connection.ToString)
+
+                    Dim bEnabled As Boolean = Not oCIB.Deleted
+                    lblCaveInfoName.Enabled = bEnabled
+                    txtCaveInfoName.Enabled = bEnabled
+                    lblCaveInfoID.Enabled = False
+                    txtCaveInfoID.Enabled = False
+                    lblCaveInfoColor.Enabled = bEnabled
+                    txtCaveInfoColor.Enabled = bEnabled
+                    lblCaveInfoDescription.Enabled = bEnabled
+                    txtCaveInfoDescription.Enabled = bEnabled
+                    chkCaveInfoLocked.Enabled = bEnabled
+                    tabCaveAndBranch.Enabled = bEnabled
+
+                    If oCIB.Deleted Then
+                        btnCaveInfoAddBranch.Enabled = False
+                        btnCaveInfoDelete.Enabled = False
+                    Else
+                        btnCaveInfoAddBranch.Enabled = True
+                        btnCaveInfoDelete.Enabled = True
+                    End If
+
+                    cboCaveInfoSurfaceProfileShow.SelectedIndex = oCIB.SurfaceProfileShow
+                    chkCaveInfoLocked.Checked = oCIB.Locked
+            End Select
+            btnCaveInfoAddCave.Enabled = True
+
+            lvCaveInfoSegments.Enabled = True
+            btnCaveInfoSegmentsRefresh.Enabled = True
+
+            Call lvCaveInfoSegments.Unbind()
+            btnCaveInfoSelectSegment.Enabled = False
+        Catch ex As Exception
+            lblCaveInfoName.Enabled = False
+            txtCaveInfoName.Enabled = False
+            lblCaveInfoID.Enabled = False
+            txtCaveInfoID.Enabled = False
+            lblCaveInfoColor.Enabled = False
+            txtCaveInfoColor.Enabled = False
+            lblCaveInfoDescription.Enabled = False
+            txtCaveInfoDescription.Enabled = False
+            chkCaveInfoLocked.Enabled = False
+            tabCaveAndBranch.Enabled = False
+
+            lvCaveInfoSegments.Enabled = False
+            btnCaveInfoSegmentsRefresh.Enabled = False
+
+            Call lvCaveInfoSegments.Unbind()
+            btnCaveInfoSelectSegment.Enabled = False
+
+            btnCaveInfoAddCave.Enabled = True
+            btnCaveInfoAddBranch.Enabled = False
+            btnCaveInfoDelete.Enabled = False
+        End Try
+        Call tabCaveAndBranch.EndUpdate()
+    End Sub
+
+    Private Sub tvCaveInfos1_NodeCellStyle(sender As Object, e As DevExpress.XtraTreeList.GetCustomNodeCellStyleEventArgs) Handles tvCaveInfos.NodeCellStyle
+        If e.Column Is colCaveInfosColor Then
+            Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetDataRecordByNode(e.Node)
+            e.Appearance.BackColor = oItem.Color
+        End If
+    End Sub
+
+    Private Sub txtHighlightColor_EditValueChanged(sender As Object, e As EventArgs) Handles txtHighlightColor.EditValueChanged
+        Try
+            Dim oCI As cHighlightPlaceholder = tvHighlights.GetFocusedObject
+            oCI.Color = txtHighlightColor.Color
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    Private Sub btnAddHighlightStations_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnAddHighlightStations.ItemClick
+        Call pHighlightAdd(Properties.cHighlightsDetail.ApplyToEnum.Stations)
+    End Sub
+
+    Private Sub btnAddHighlightShots_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnAddHighlightShots.ItemClick
+        Call pHighlightAdd(Properties.cHighlightsDetail.ApplyToEnum.Shots)
+    End Sub
+
+    Private Sub btnDeleteHighlight_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnDeleteHighlight.ItemClick
+        Dim oItem As cHighlightPlaceholder = tvHighlights.GetFocusedObject
+        If Not oItem Is Nothing Then
+            tvHighlights.BeginUpdate()
+            DirectCast(tvHighlights.DataSource, cHighlightEditBindingList).Remove(oItem)
+            tvHighlights.EndUpdate()
+        End If
+    End Sub
+
+    Private Sub btnResetHighlight_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnResetHighlight.ItemClick
+        Call oSurvey.Properties.HighlightsDetails.Clear()
+        Call pHighlightsLoad()
+    End Sub
+
+    Private Sub tvHighlights_FocusedNodeChanged(sender As Object, e As DevExpress.XtraTreeList.FocusedNodeChangedEventArgs) Handles tvHighlights.FocusedNodeChanged
+        Dim oCI As cHighlightPlaceholder = tvHighlights.GetFocusedObject
+        If oCI Is Nothing Then
+            btnAddHighlight.Enabled = True
+            btnDeleteHighlight.Enabled = False
+            btnHighlightExport.Enabled = False
+        Else
+            Dim bSystem As Boolean
+            If oCI.Source Is Nothing Then
+                bSystem = False
+            Else
+                bSystem = oCI.Source.System
+            End If
+            txtHighlightName.Text = oCI.Name
+            txtHighlightSize.Value = oCI.Size
+            trkHighlightOpacity.EditValue = oCI.Opacity
+            txtHighlightColor.Color = oCI.Color
+            txtHighlightApplyTo.Text = If(oCI.ApplyTo, modMain.GetLocalizedString("main.textpart94"), modMain.GetLocalizedString("main.textpart95"))
+            txtHighlightCondition.Text = oCI.Condition
+
+            Dim bEnabled As Boolean = Not oCI.Deleted
+            txtHighlightName.Enabled = bEnabled
+            txtHighlightSize.Enabled = bEnabled
+            trkHighlightOpacity.Enabled = bEnabled
+            txtHighlightColor.Enabled = bEnabled
+            txtHighlightApplyTo.Enabled = bEnabled
+            'cmdHighlightColorChange.Enabled = bEnabled
+            cmdHighlightCondition.Enabled = bEnabled And Not bSystem
+            'End Select
+            btnAddHighlight.Enabled = True
+            btnDeleteHighlight.Enabled = tvHighlights.Nodes.Count > 0 AndAlso Not bSystem
+            btnHighlightExport.Enabled = Not oCI.System
+        End If
+    End Sub
+
+    Private Sub trkHighlightOpacity_EditValueChanged(sender As Object, e As EventArgs) Handles trkHighlightOpacity.EditValueChanged
+        Try
+            Dim oCI As cHighlightPlaceholder = tvHighlights.GetFocusedObject
+            oCI.Opacity = trkHighlightOpacity.EditValue
+        Catch
+        End Try
+    End Sub
+
+    Private Sub tvHighlights_CustomUnboundColumnData(sender As Object, e As DevExpress.XtraTreeList.TreeListCustomColumnDataEventArgs) Handles tvHighlights.CustomUnboundColumnData
+        If e.IsGetData Then
+            If e.Column Is colHighlightsApplyTo Then
+                If e.Row Is Nothing Then
+                    e.Value = ""
+                Else
+                    e.Value = If(DirectCast(e.Row, cHighlightPlaceholder).ApplyTo, modMain.GetLocalizedString("main.textpart94"), modMain.GetLocalizedString("main.textpart95"))
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Function pGetVisibleChildElementCount(ParentElement As AccordionControlElement) As Integer
+        Return ParentElement.Elements.Where(Function(oitem) oitem.Visible).Count
+    End Function
+
+    Private Function pGetFirstVisibleChildElement(ParentElement As AccordionControlElement) As AccordionControlElement
+        Return ParentElement.Elements.FirstOrDefault(Function(oitem) oitem.Visible)
+    End Function
+
+    Private Sub AccordionControl1_SelectedElementChanged(sender As Object, e As DevExpress.XtraBars.Navigation.SelectedElementChangedEventArgs) Handles AccordionControl1.SelectedElementChanged
+        Dim sControlName As String = "" & e.Element.Tag
+        If sControlName <> "" Then
+            If Controls.ContainsKey("_" & sControlName) Then
+                Call Controls("_" & sControlName).BringToFront()
+                Controls("_" & sControlName).Visible = True
+            End If
+        End If
+        Select Case sControlName
+            Case "tabInfoSessions1"
+                Call pSessionRebindGrades()
+            Case "tabInfoSurface1"
+                Call pElevationRebindSurfaceProfileCombo()
+            Case "tabInfoSurfaceElevation1"
+                Call pElevationRebindOrthophotoFromWMSMenu()
+            Case "tabInfoDataPrecision1"
+                Call pGradesRebindUsedBy()
+        End Select
+    End Sub
+
+    Private Sub pElevationRebindSurfaceProfileCombo(Optional Elevation As Surface.cElevation = Nothing)
+        Call cbosurfaceprofileelevation.Rebind(DirectCast(tvElevations.DataSource, UIHelpers.cElevationsBindingList).Elevations, False, False)
+        If Elevation IsNot Nothing Then Call cbosurfaceprofileelevation.SetSelectedElevation(Elevation)
+
+        pnlSurfaceProfile.Enabled = chkGPSEnabled.Checked AndAlso cbosurfaceprofileelevation.Count > 0
+    End Sub
+
+    Private Sub AccordionControl1_ElementClick(sender As Object, e As ElementClickEventArgs) Handles AccordionControl1.ElementClick
+        If pGetVisibleChildElementCount(e.Element) > 0 Then
+            Dim oParentElement As AccordionControlElement = e.Element
+            Do
+                Dim oElement As AccordionControlElement = pGetFirstVisibleChildElement(oParentElement)
+                If oElement.Elements.Count = 0 Then
+                    AccordionControl1.SelectedElement = oElement
+                    Exit Do
+                Else
+                    oParentElement = oElement
+                End If
+            Loop
+        Else
+            AccordionControl1.SelectedElement = e.Element
+        End If
+        e.Handled = True
+    End Sub
+
+    Private Sub tvElevations_FocusedNodeChanged(sender As Object, e As DevExpress.XtraTreeList.FocusedNodeChangedEventArgs) Handles tvElevations.FocusedNodeChanged
+        Dim oElevation As UIHelpers.cElevationPlaceHolder = tvElevations.GetFocusedObject
+        If oElevation Is Nothing Then
+            lblElevationName.Enabled = False
+            txtElevationName.Enabled = False
+            lblElevationPreview.Enabled = False
+            picElevationPreview.Enabled = False
+            lblElevationInformation.Enabled = False
+            txtElevationInformation.Enabled = False
+            lblElevationColorSchema.Enabled = False
+            cboElevationColorSchema.Enabled = False
+
+            btnElevationDelete.Enabled = False
+            btnElevationExport.Enabled = False
+            btnElevationsPreviewNewReduced.Enabled = False
+            btnElevationsPreviewRemoveNODATA.Enabled = False
+
+            txtElevationName.EditValue = ""
+            picElevationPreview.EditValue = Nothing
+            txtElevationInformation.EditValue = ""
+            cboElevationColorSchema.SelectedIndex = cElevation.ColorSchemaEnum.WhiteToBlack
+
+            btnElevationCreateOrthophotoFromWMS.Enabled = False
+        Else
+            lblElevationName.Enabled = True
+            txtElevationName.Enabled = True
+            lblElevationPreview.Enabled = True
+            picElevationPreview.Enabled = True
+            lblElevationInformation.Enabled = True
+            txtElevationInformation.Enabled = True
+            lblElevationColorSchema.Enabled = True
+            cboElevationColorSchema.Enabled = True
+
+            btnElevationDelete.Enabled = True
+            btnElevationExport.Enabled = True
+            btnElevationsPreviewNewReduced.Enabled = True
+            btnElevationsPreviewRemoveNODATA.Enabled = True
+
+            txtElevationName.EditValue = oElevation.Name
+            picElevationPreview.EditValue = oElevation.Image
+            txtElevationInformation.EditValue = oElevation.Information
+            cboElevationColorSchema.SelectedIndex = oElevation.ColorSchema
+
+            btnElevationCreateOrthophotoFromWMS.Enabled = DirectCast(tvWMSs.DataSource, UIHelpers.cWMSsBindingList).Where(Function(oitem) oitem.IsValid).Count > 0
+        End If
+
+        btnElevationClear.Enabled = tvElevations.Nodes.Count > 0
+    End Sub
+
+    Private Sub txtElevationName_Validated(sender As Object, e As EventArgs) Handles txtElevationName.Validated
+        Try
+            Dim oItem As cElevationPlaceHolder = tvElevations.GetFocusedObject
+            oItem.Name = txtElevationName.EditValue
+        Catch
+        End Try
+    End Sub
+
+    Private Sub cboElevationColorSchema_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboElevationColorSchema.SelectedIndexChanged
+        Try
+            Dim oItem As cElevationPlaceHolder = tvElevations.GetFocusedObject
+            oItem.ColorSchema = cboElevationColorSchema.SelectedIndex
+            Call tvElevations.RefreshDataSource()
+            picElevationPreview.EditValue = oItem.Image
+        Catch
+        End Try
+    End Sub
+
+    Private Sub btnElevationDelete_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnElevationDelete.ItemClick
+        Dim oItem As cElevationPlaceHolder = tvElevations.GetFocusedObject
+        If oItem IsNot Nothing Then
+            If cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("surface.warning1"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("surface.warningtitle")) = MsgBoxResult.Yes Then
+                Call DirectCast(tvElevations.DataSource, UIHelpers.cElevationsBindingList).Remove(oItem)
+            End If
+        End If
+    End Sub
+
+    Private Sub btnElevationClear_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnElevationClear.ItemClick
+        Call DirectCast(tvElevations.DataSource, UIHelpers.cElevationsBindingList).Clear()
+    End Sub
+
+    Private Sub btnElevationExport_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnElevationExport.ItemClick
+        Try
+            Dim oItem As cElevationPlaceHolder = tvElevations.GetFocusedObject
+            If oItem IsNot Nothing Then
+                'Try
+                '    Using oSFD As SaveFileDialog = New SaveFileDialog
+                '        With oSFD
+                '            .Title = GetLocalizedString("surface.exportelevationdatadialog")
+                '            .Filter = GetLocalizedString("surface.filetypeHOLOS") & " (*.elevation.xml)|*.elevation.xml"
+                '            .FilterIndex = 1
+                '            If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                '                Select Case .FilterIndex
+                '                    Case 1
+                '                        Dim oXML As XmlDocument = New XmlDocument
+                '                        Dim oXMLRoot As XmlElement = oXML.CreateElement("holos")
+                '                        Dim oXMLElevation As XmlElement = oXML.CreateElement("elevation")
+                '                        Dim oElevation As Surface.cElevation = oItem.Elevation
+                '                        Dim oTopLeft As modUTM.UTM = modUTM.WGS84ToUTM(oElevation.GetCoordinate(Surface.cElevation.GetCoordinateCornerEnum.TopLeft))
+                '                        Call oXMLElevation.SetAttribute("pos", modNumbers.NumberToString(oTopLeft.East) & ";" & modNumbers.NumberToString(oTopLeft.North) & ";0")
+                '                        'Call oXMLElevation.SetAttribute("tr", modUTM.WGS84ToUTM(oElevation.GetCoordinate(cElevation.GetCoordinateCornerEnum.TopRight)).ToString)
+                '                        'Call oXMLElevation.SetAttribute("bl", modUTM.WGS84ToUTM(oElevation.GetCoordinate(cElevation.GetCoordinateCornerEnum.BottomLeft)).ToString)
+                '                        'Call oXMLElevation.SetAttribute("br", modUTM.WGS84ToUTM(oElevation.GetCoordinate(cElevation.GetCoordinateCornerEnum.BottomRight)).ToString)
+                '                        Call oXMLElevation.SetAttribute("rows", oElevation.Rows)
+                '                        Call oXMLElevation.SetAttribute("cols", oElevation.Columns)
+                '                        Call oXMLElevation.SetAttribute("sizex", modNumbers.NumberToString(oElevation.XSize))
+                '                        Call oXMLElevation.SetAttribute("sizey", modNumbers.NumberToString(oElevation.YSize))
+                '                        Call oXMLElevation.SetAttribute("nodatavalue", modNumbers.NumberToString(Surface.cElevation.NoDataValue))
+                '                        Dim odata As StringBuilder = New StringBuilder
+                '                        For iy As Integer = 0 To oElevation.Rows - 1
+                '                            For ix As Integer = 0 To oElevation.Columns - 1
+                '                                Dim iAlt As Integer = oElevation.Data(iy, ix)   'rounded to meters
+                '                                Call odata.Append(modNumbers.NumberToString(iAlt, "0") & " ")
+                '                            Next
+                '                            Call odata.Append(vbCrLf)
+                '                        Next
+                '                        oXMLElevation.InnerText = odata.ToString
+                '                        Call oXMLRoot.AppendChild(oXMLElevation)
+                '                        Call oXML.AppendChild(oXMLRoot)
+                '                        Call oXML.Save(.FileName)
+                '                End Select
+                '            End If
+                '        End With
+                '    End Using
+                'Catch ex As Exception
+                '    Call oSurvey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Error, ex.Message, True)
+                'End Try
+            End If
+        Catch ex As Exception
+            Call oSurvey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Error, ex.Message)
+        End Try
+    End Sub
+
+    Private Sub btnElevationAdd_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnElevationAdd.ItemClick
+        Using oOfd As OpenFileDialog = New OpenFileDialog
+            With oOfd
+                .Title = GetLocalizedString("surface.openelevationdialog")
+                .Filter = GetLocalizedString("surface.filetypeASC") & " (*.ASC;*.TXT)|*.ASC;*.TXT"
+                .FilterIndex = 1
+                If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                    Try
+                        Using frmSIASCOptions As frmSurfaceImportASCOptions = New frmSurfaceImportASCOptions
+                            Dim oOptions As Surface.cElevation.cElevationImportOptions = New Surface.cElevation.cElevationImportOptions
+                            If frmSIASCOptions.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                                oOptions.System = frmSIASCOptions.cboCoordinateSystem.SelectedIndex
+                                Select Case DirectCast(frmSIASCOptions.cboCoordinateSystem.SelectedIndex, Surface.cElevation.cElevationImportOptions.CoordinateSystemEnum)
+                                    Case Surface.cElevation.cElevationImportOptions.CoordinateSystemEnum.UTMWGS84
+                                        Call oOptions.Parameters.Add("utmzone", frmSIASCOptions.cboUTMZone.Text)
+                                        Call oOptions.Parameters.Add("utmband", frmSIASCOptions.cboUTMBand.Text)
+                                End Select
+                                Dim oNewItem As UIHelpers.cElevationPlaceHolder = DirectCast(tvElevations.DataSource, UIHelpers.cElevationsBindingList).Add(.FilterIndex - 1, .FileName, oOptions)
+                                Call tvElevations.SetFocusedObject(oNewItem)
+                            End If
+                        End Using
+                    Catch ex As Exception
+                        Call cSurvey.UIHelpers.Dialogs.Msgbox(String.Format(GetLocalizedString("surface.warning2"), ex.Message), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("surface.warningtitle"))
+                        Call oSurvey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Error, ex.Message)
+                    End Try
+                End If
+            End With
+        End Using
+    End Sub
+
+    Private Sub btnElevationsPreviewNewReduced50_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnElevationsPreviewNewReduced50.ItemClick
+        Dim oItem As cElevationPlaceHolder = tvElevations.GetFocusedObject
+        If oItem IsNot Nothing Then
+            Cursor = Cursors.WaitCursor
+            Dim oNewItem As UIHelpers.cElevationPlaceHolder = DirectCast(tvElevations.DataSource, UIHelpers.cElevationsBindingList).Add(oItem, 50)
+            Cursor = Cursors.Default
+            Call tvElevations.SetFocusedObject(oNewItem)
+        End If
+    End Sub
+
+    Private Sub btnElevationsPreviewNewReduced33_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnElevationsPreviewNewReduced33.ItemClick
+        Dim oItem As cElevationPlaceHolder = tvElevations.GetFocusedObject
+        If oItem IsNot Nothing Then
+            Cursor = Cursors.WaitCursor
+            Dim oNewItem As UIHelpers.cElevationPlaceHolder = DirectCast(tvElevations.DataSource, UIHelpers.cElevationsBindingList).Add(oItem, 33)
+            Cursor = Cursors.Default
+            Call tvElevations.SetFocusedObject(oNewItem)
+        End If
+    End Sub
+
+    Private Sub btnElevationsPreviewNewReduced25_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnElevationsPreviewNewReduced25.ItemClick
+        Dim oItem As cElevationPlaceHolder = tvElevations.GetFocusedObject
+        If oItem IsNot Nothing Then
+            Cursor = Cursors.WaitCursor
+            Dim oNewItem As UIHelpers.cElevationPlaceHolder = DirectCast(tvElevations.DataSource, UIHelpers.cElevationsBindingList).Add(oItem, 25)
+            Cursor = Cursors.Default
+            Call tvElevations.SetFocusedObject(oNewItem)
+        End If
+    End Sub
+
+    Private Sub btnElevationsPreviewRemoveNODATA_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnElevationsPreviewRemoveNODATA.ItemClick
+        Dim oItem As cElevationPlaceHolder = tvElevations.GetFocusedObject
+        If oItem IsNot Nothing Then
+            Call oItem.RemoveNodata()
+            Call tvElevations.RefreshDataSource()
+            picElevationPreview.EditValue = oItem.Image
+        End If
+    End Sub
+
+    Private Sub tvOrthophotos_FocusedNodeChanged(sender As Object, e As DevExpress.XtraTreeList.FocusedNodeChangedEventArgs) Handles tvOrthophotos.FocusedNodeChanged
+        Dim oOrthophoto As UIHelpers.cOrthophotoPlaceHolder = tvOrthophotos.GetFocusedObject
+        If oOrthophoto Is Nothing Then
+            lblOrthophotoName.Enabled = False
+            txtOrthophotoName.Enabled = False
+            lblOrthophotoPreview.Enabled = False
+            picOrthophotoPreview.Enabled = False
+            lblOrthophotoInformation.Enabled = False
+            txtOrthophotoInformation.Enabled = False
+
+            btnOrthophotoDelete.Enabled = False
+            btnOrthophotoExport.Enabled = False
+            btnOrthophotosPreviewNewReduced.Enabled = False
+            btnOrthophotoPreviewInvertColors.Enabled = False
+            btnElevationFromOrthophoto.Enabled = False
+
+            txtOrthophotoName.EditValue = ""
+            picOrthophotoPreview.EditValue = Nothing
+            txtOrthophotoInformation.EditValue = ""
+        Else
+            lblOrthophotoName.Enabled = True
+            txtOrthophotoName.Enabled = True
+            lblOrthophotoPreview.Enabled = True
+            picOrthophotoPreview.Enabled = True
+            lblOrthophotoInformation.Enabled = True
+            txtOrthophotoInformation.Enabled = True
+
+            btnOrthophotoDelete.Enabled = True
+            btnOrthophotoExport.Enabled = True
+            btnOrthophotosPreviewNewReduced.Enabled = True
+            btnOrthophotoPreviewInvertColors.Enabled = True
+            btnElevationFromOrthophoto.Enabled = True
+
+            txtOrthophotoName.EditValue = oOrthophoto.Name
+            picOrthophotoPreview.EditValue = oOrthophoto.Image
+            txtOrthophotoInformation.EditValue = oOrthophoto.Information
+        End If
+
+        btnOrthophotoClear.Enabled = tvOrthophotos.Nodes.Count > 0
+    End Sub
+
+    Private Sub btnOrthophotoAdd_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnOrthophotoAdd.ItemClick
+        Using oOfd As OpenFileDialog = New OpenFileDialog
+            With oOfd
+                .Title = GetLocalizedString("surface.openorthophotodialog")
+                .Filter = GetLocalizedString("surface.filetypeIMAGES") & " (*.JPG;*.TIF;*.PNG)|*.JPG;*.TIF;*.PNG"
+                .FilterIndex = 1
+                If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                    Try
+                        Using frmSIASCOptions As frmSurfaceImportASCOptions = New frmSurfaceImportASCOptions
+                            Dim oOptions As Surface.cOrthoPhoto.cOrthoPhotoImportOptions = New Surface.cOrthoPhoto.cOrthoPhotoImportOptions
+                            If frmSIASCOptions.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                                oOptions.System = frmSIASCOptions.cboCoordinateSystem.SelectedIndex
+                                Select Case DirectCast(frmSIASCOptions.cboCoordinateSystem.SelectedIndex, Surface.cElevation.cElevationImportOptions.CoordinateSystemEnum)
+                                    Case Surface.cOrthoPhoto.cOrthoPhotoImportOptions.CoordinateSystemEnum.UTMWGS84
+                                        Call oOptions.Parameters.Add("utmzone", frmSIASCOptions.cboUTMZone.Text)
+                                        Call oOptions.Parameters.Add("utmband", frmSIASCOptions.cboUTMBand.Text)
+                                End Select
+                                Dim oNewItem As UIHelpers.cOrthophotoPlaceHolder = DirectCast(tvOrthophotos.DataSource, UIHelpers.cOrthophotosBindingList).Add(.FilterIndex - 1, .FileName, oOptions)
+                                Call tvOrthophotos.SetFocusedObject(oNewItem)
+                            End If
+                        End Using
+                    Catch ex As Exception
+                        Call cSurvey.UIHelpers.Dialogs.Msgbox(String.Format(GetLocalizedString("surface.warning2"), ex.Message), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("surface.warningtitle"))
+                        Call oSurvey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Error, ex.Message)
+                    End Try
+                End If
+            End With
+        End Using
+    End Sub
+
+    Private Sub btnOrthophotoDelete_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnOrthophotoDelete.ItemClick
+        Dim oItem As cOrthophotoPlaceHolder = tvOrthophotos.GetFocusedObject
+        If oItem IsNot Nothing Then
+            If cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("surface.warning3"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("surface.warningtitle")) = MsgBoxResult.Yes Then
+                Call DirectCast(tvOrthophotos.DataSource, UIHelpers.cOrthophotosBindingList).Remove(oItem)
+            End If
+        End If
+    End Sub
+
+    Private Sub btnOrthophotoClear_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnOrthophotoClear.ItemClick
+        Call DirectCast(tvOrthophotos.DataSource, UIHelpers.cOrthophotosBindingList).Clear()
+    End Sub
+
+    Private Sub btnOrthophotoPreviewInvertColors_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnOrthophotoPreviewInvertColors.ItemClick
+        Dim oItem As cOrthophotoPlaceHolder = tvOrthophotos.GetFocusedObject
+        If oItem IsNot Nothing Then
+            Call oItem.InvertColors()
+            Call tvOrthophotos.RefreshDataSource()
+            picOrthophotoPreview.EditValue = oItem.Image
+        End If
+    End Sub
+
+    Private Sub tvWMSs_FocusedNodeChanged(sender As Object, e As DevExpress.XtraTreeList.FocusedNodeChangedEventArgs) Handles tvWMSs.FocusedNodeChanged
+        Dim oWMS As UIHelpers.cWMSPlaceHolder = tvWMSs.GetFocusedObject
+        If oWMS Is Nothing Then
+            lblWMSName.Enabled = False
+            txtWMSName.Enabled = False
+            lblWMSURL.Enabled = False
+            txtWMSURL.Enabled = False
+            lblWMSLayer.Enabled = False
+            tvWMSLayer.Enabled = False
+            lblWMSSRSOverride.Enabled = False
+            cboWMSSRSOverride.Enabled = False
+
+            btnWMSDelete.Enabled = False
+            btnWMSLayerRefresh.Enabled = False
+
+            txtWMSName.EditValue = ""
+            txtWMSURL.EditValue = ""
+            tvWMSLayer.DataSource = Nothing
+            Call tvWMSLayer_Validating(tvWMSLayer, New CancelEventArgs)
+            cboWMSSRSOverride.SelectedIndex = 0
+        Else
+            lblWMSName.Enabled = True
+            txtWMSName.Enabled = True
+            lblWMSURL.Enabled = True
+            txtWMSURL.Enabled = True
+            lblWMSLayer.Enabled = True
+            tvWMSLayer.Enabled = True
+            lblWMSSRSOverride.Enabled = True
+            cboWMSSRSOverride.Enabled = True
+
+            btnWMSDelete.Enabled = True
+            btnWMSLayerRefresh.Enabled = True
+
+            txtWMSName.EditValue = oWMS.Name
+            txtWMSURL.EditValue = oWMS.URL
+            tvWMSLayer.DataSource = oWMS.GetLayers
+            Call tvWMSLayer_Validating(tvWMSLayer, New CancelEventArgs)
+            If oWMS.SRSOverrides = "" Then
+                cboWMSSRSOverride.SelectedIndex = 0
+            Else
+                cboWMSSRSOverride.EditValue = oWMS.SRSOverrides
+            End If
+        End If
+
+        btnWMSClear.Enabled = tvWMSs.Nodes.Count > 0
+    End Sub
+
+    Private Sub txtOrthophotoName_Validated(sender As Object, e As EventArgs) Handles txtOrthophotoName.Validated
+        Try
+            Dim oItem As cOrthophotoPlaceHolder = tvOrthophotos.GetFocusedObject
+            oItem.Name = txtOrthophotoName.EditValue
+            Call tvOrthophotos.RefreshDataSource()
+        Catch
+        End Try
+    End Sub
+
+    Private Sub txtWMSName_Validated(sender As Object, e As EventArgs) Handles txtWMSName.Validated
+        Try
+            Dim oItem As cWMSPlaceHolder = tvWMSs.GetFocusedObject
+            oItem.Name = txtWMSName.EditValue
+            Call tvWMSs.RefreshDataSource()
+        Catch
+        End Try
+    End Sub
+
+    Private Sub btnWMSLayerRefresh_Click(sender As Object, e As EventArgs) Handles btnWMSLayerRefresh.Click
+        Dim oItem As cWMSPlaceHolder = tvWMSs.GetFocusedObject
+        tvWMSLayer.DataSource = oItem.GetRefreshedLayers
+        Call tvWMSLayer_Validating(tvWMSLayer, New CancelEventArgs)
+    End Sub
+
+    Private Sub tvWMSLayer_CustomUnboundColumnData(sender As Object, e As DevExpress.XtraTreeList.TreeListCustomColumnDataEventArgs) Handles tvWMSLayer.CustomUnboundColumnData
+        If e.IsGetData Then
+            If e.Column Is colWMSLayerCRSs Then
+                e.Value = String.Join(","c, DirectCast(e.Row, Surface.cWMSLayer).SRS)
+            ElseIf e.Column Is colWMSImageFormat Then
+                e.Value = String.Join(","c, DirectCast(e.Row, Surface.cWMSLayer).ImageFormats)
+            End If
+        End If
+    End Sub
+
+    Private Sub cboWMSSRSOverride_Validated(sender As Object, e As EventArgs) Handles cboWMSSRSOverride.Validated
+        Try
+            Dim oItem As cWMSPlaceHolder = tvWMSs.GetFocusedObject
+            If cboWMSSRSOverride.SelectedIndex = 0 Then
+                oItem.SRSOverrides = ""
+            Else
+                oItem.SRSOverrides = cboWMSSRSOverride.EditValue
+            End If
+        Catch
+        End Try
+    End Sub
+
+    Private Sub txtWMSURL_Validated(sender As Object, e As EventArgs) Handles txtWMSURL.Validated
+        Try
+            Dim oItem As cWMSPlaceHolder = tvWMSs.GetFocusedObject
+            oItem.URL = txtWMSURL.EditValue
+            tvWMSLayer.DataSource = oItem.GetLayers
+            Call tvWMSLayer_Validating(tvWMSLayer, New CancelEventArgs)
+        Catch
+        End Try
+    End Sub
+
+    Private Sub tvWMSLayer_Validated(sender As Object, e As EventArgs) Handles tvWMSLayer.Validated
+        Try
+            Dim oItem As cWMSPlaceHolder = tvWMSs.GetFocusedObject
+            Call oItem.SetLayers(tvWMSLayer.DataSource)
+        Catch
+        End Try
+    End Sub
+
+    Private Sub txtWMSURL_Validating(sender As Object, e As CancelEventArgs) Handles txtWMSURL.Validating
+        If txtWMSURL.ValidateIfNull() Then
+            Dim sURL As String = ("" & txtWMSURL.EditValue).trim
+        End If
+    End Sub
+
+    Private Sub txtWMSName_Validating(sender As Object, e As CancelEventArgs) Handles txtWMSName.Validating
+        e.Cancel = Not txtWMSName.ValidateIfNull()
+    End Sub
+
+    Private Sub tvWMSLayer_Validating(sender As Object, e As CancelEventArgs) Handles tvWMSLayer.Validating
+        If tvWMSLayer.GetAllCheckedNodes.Count = 0 AndAlso tvWMSLayer.AllNodesCount > 0 Then
+            tvWMSLayer.SetColumnError(colWMSLayerName, "invalid", DevExpress.XtraEditors.DXErrorProvider.ErrorType.Default)
+        Else
+            tvWMSLayer.SetColumnError(colWMSLayerName, "")
+        End If
+    End Sub
+
+    Private Sub btnWMSAdd_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnWMSAdd.ItemClick
+        Dim sName As String = ("" & UIHelpers.Dialogs.TextInputBox(Me, modMain.GetLocalizedString("surface.addwms.prompt"), modMain.GetLocalizedString("surface.addwms.title"))).trim
+        If sName <> "" Then
+            Dim oNewItem As UIHelpers.cWMSPlaceHolder = DirectCast(tvWMSs.DataSource, UIHelpers.cWMSsBindingList).Add(sName)
+            Call tvWMSs.SetFocusedObject(oNewItem)
+        End If
+    End Sub
+
+    Private Sub btnWMSDelete_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnWMSDelete.ItemClick
+        Dim oItem As cWMSPlaceHolder = tvWMSs.GetFocusedObject
+        If oItem IsNot Nothing Then
+            If cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("surface.warning5"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("surface.warningtitle")) = MsgBoxResult.Yes Then
+                Call DirectCast(tvWMSs.DataSource, UIHelpers.cWMSsBindingList).Remove(oItem)
+            End If
+        End If
+    End Sub
+
+    Private Sub btnWMSClear_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnWMSClear.ItemClick
+        Call DirectCast(tvWMSs.DataSource, UIHelpers.cWMSsBindingList).Clear()
+    End Sub
+
+    Private Sub txtOrthophotoName_Validating(sender As Object, e As CancelEventArgs) Handles txtOrthophotoName.Validating
+        e.Cancel = Not txtOrthophotoName.ValidateIfNull
+    End Sub
+
+    Private Sub txtElevationName_Validating(sender As Object, e As CancelEventArgs) Handles txtElevationName.Validating
+        e.Cancel = Not txtElevationName.ValidateIfNull
+    End Sub
+
+    Private Sub btnElevationCreateOrthophotoFromWMSItem_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs)
+        Dim oWMSItem As UIHelpers.cWMSPlaceHolder = e.Item.Tag(0)
+        Using frmAOPWMS As frmSurfaceAddOrthoPhotoFromWMS = New frmSurfaceAddOrthoPhotoFromWMS(oWMSItem.WMS.Name)
+            With frmAOPWMS
+                If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                    Cursor = Cursors.WaitCursor
+                    Dim sName As String = "" & .txtName.EditValue
+                    Dim oBackground As Color = .txtBackgroundColor.EditValue
+                    Dim iRatio As Integer = .txtRatio.Value
+                    Dim oElevationItem As UIHelpers.cElevationPlaceHolder = e.Item.Tag(1)
+                    Dim oTL As cCoordinate = oElevationItem.Elevation.GetCoordinate(cElevation.GetCoordinateCornerEnum.TopLeft)
+                    Dim oBR As cCoordinate = oElevationItem.Elevation.GetCoordinate(cElevation.GetCoordinateCornerEnum.BottomRight)
+                    Try
+                        Using oImage As Image = oWMSItem.WMS.GetImage(oTL, oBR, iRatio, oBackground)
+                            Call pSelectTabByIndex(14)
+                            Dim oOrthophotoItem As UIHelpers.cOrthophotoPlaceHolder = DirectCast(tvOrthophotos.DataSource, UIHelpers.cOrthophotosBindingList).Add(oImage, sName, oTL, iRatio, iRatio)
+                            Call tvOrthophotos.SetFocusedObject(oOrthophotoItem)
+                            Call tvOrthophotos.Focus()
+                        End Using
+                    Catch ex As Exception
+                        'Call pPopupShow("warning", modMain.GetLocalizedString("surface.textpart11"), "")
+                    End Try
+                    Cursor = Cursors.Default
+                End If
+            End With
+        End Using
+    End Sub
+
+    Private Sub pElevationRebindOrthophotoFromWMSMenu()
+        Call btnElevationCreateOrthophotoFromWMS.ClearItems
+        For Each oWMSItem As UIHelpers.cWMSPlaceHolder In DirectCast(tvWMSs.DataSource, UIHelpers.cWMSsBindingList)
+            If oWMSItem.IsValid Then
+                Dim oItem As DevExpress.XtraBars.BarButtonItem = New DevExpress.XtraBars.BarButtonItem
+                oItem.Caption = oWMSItem.Name
+                oItem.ImageOptions.SvgImage = My.Resources.map_wms
+                oItem.Tag = {oWMSItem, tvElevations.GetFocusedObject}
+                AddHandler oItem.ItemClick, AddressOf btnElevationCreateOrthophotoFromWMSItem_ItemClick
+                Call btnElevationCreateOrthophotoFromWMS.AddItem(oItem)
+            End If
+        Next
+        'btnElevationCreateOrthophotoFromWMS.Enabled = btnElevationCreateOrthophotoFromWMS.ItemLinks.Count > 0
+    End Sub
+
+    Private Sub tvWMSLayer_AfterCheckNode(sender As Object, e As DevExpress.XtraTreeList.NodeEventArgs) Handles tvWMSLayer.AfterCheckNode
+        DirectCast(tvWMSLayer.GetFocusedObject, cWMSLayer).Selected = e.Node.Checked
+        Dim oItem As cWMSPlaceHolder = tvWMSs.GetFocusedObject
+        Call oItem.SetLayers(tvWMSLayer.DataSource)
+        tvWMSLayer_Validating(sender, New CancelEventArgs)
+    End Sub
+
+    Private Sub btnOrthophotoExport_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnOrthophotoExport.ItemClick
+        Dim oItem As cOrthophotoPlaceHolder = tvOrthophotos.GetFocusedObject
+        If oItem IsNot Nothing Then
+            Call UIHelpers.Dialogs.SaveImage(Me, oItem.Orthophoto.Photo)
+        End If
+    End Sub
+
+    Private Sub btnElevationFromOrthophoto_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnElevationFromOrthophoto.ItemClick
+        Cursor = Cursors.WaitCursor
+        Dim oOrthophoto As cOrthoPhoto = DirectCast(tvOrthophotos.GetFocusedObject, UIHelpers.cOrthophotoPlaceHolder).Orthophoto
+        Using frmEFO As frmSurfaceAddElevationFromOrthoPhoto = New frmSurfaceAddElevationFromOrthoPhoto(oOrthophoto.Name)
+            AddHandler frmEFO.GetHue, AddressOf frmEFO_GetHue
+            If frmEFO.ShowDialog(Me) = DialogResult.OK Then
+                Dim sName As String = frmEFO.txtName.EditValue
+
+                Dim oImage As Bitmap = oOrthophoto.Photo
+                Dim iRows As Integer = oImage.Height
+                Dim iColumns As Integer = oImage.Width
+                Dim oData(iRows, iColumns) As Single
+
+                Select Case frmEFO.cboMode.SelectedIndex
+                    Case 0  'hue
+                        'red=0
+                        'green=120...see paint net for scale...use scale on ui and add a reverse flag
+                        Dim bCounterclockwise As Boolean = frmEFO.chkHueCounterclockwise.Checked
+                        Dim sMinHue As Single = frmEFO.txtHueColorFrom.Color.GetHue
+                        Dim sMinAlt As Single = frmEFO.txtHueAltFrom.EditValue
+                        Dim sMaxHue As Single = frmEFO.txtHueColorTo.Color.GetHue
+                        Dim sMaxAlt As Single = frmEFO.txtHueAltTo.EditValue
+                        Dim sDeltaAlt As Single = sMaxAlt - sMinAlt
+                        Dim sDeltaHue As Single = modPaint.GetAngleDiff(sMinHue, sMaxHue, bCounterclockwise)
+                        If bCounterclockwise Then
+                            If sMinHue < sMaxHue Then
+                                sMinHue += 260
+                            End If
+                        Else
+                            If sMinHue > sMaxHue Then
+                                sMaxHue += 360
+                            End If
+                        End If
+
+                        Dim iProgressIndex As Integer = 0
+                        Dim iProgressCount As Integer = iRows * iColumns
+                        Call oSurvey.RaiseOnProgressEvent("elevation.fromorthophoto", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, modMain.GetLocalizedString("surface.progressbegin5"), 0, cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageLoad)
+                        For iRow As Integer = 0 To iRows - 1
+                            For icolumn As Integer = 0 To iColumns - 1
+                                iProgressIndex += 1
+                                If iProgressIndex Mod 2000 = 0 Then Call oSurvey.RaiseOnProgressEvent("elevation.fromorthophoto", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("surface.progress5"), iProgressIndex / iProgressCount)
+                                Dim sPseutoHeight As Single = oImage.GetPixel(icolumn, iRow).GetHue '  modPaint.GrayColor(oImage.GetPixel(icolumn, iRow)).R * 10
+                                Dim sAlt As Single
+                                If bCounterclockwise Then
+                                    sAlt = sMinAlt + (((sMaxHue - sPseutoHeight) / sDeltaHue) * sDeltaAlt)
+                                Else
+                                    sAlt = sMinAlt + (((sPseutoHeight - sMinHue) / sDeltaHue) * sDeltaAlt)
+                                End If
+                                oData(iRow, icolumn) = sAlt
+                            Next
+                        Next
+                        Call oSurvey.RaiseOnProgressEvent("elevation.fromorthophoto", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, modMain.GetLocalizedString("surface.progressend5"), 0)
+                End Select
+
+                Call pSelectTabByIndex(13)
+                Dim oNewItem As UIHelpers.cElevationPlaceHolder = DirectCast(tvElevations.DataSource, UIHelpers.cElevationsBindingList).Add(sName, oOrthophoto.GetCoordinate(cOrthoPhoto.GetCoordinateCornerEnum.BottomLeft), iRows, iColumns, oOrthophoto.XSize, oOrthophoto.YSize, oOrthophoto.System, oData, cElevation.ColorSchemaEnum.BlackToWhite)
+                Call tvElevations.SetFocusedObject(oNewItem)
+                Call tvElevations.Focus()
+            End If
+            RemoveHandler frmEFO.GetHue, AddressOf frmEFO_GetHue
+        End Using
+
+        Cursor = Cursors.Default
+    End Sub
+
+    Private Sub frmEFO_GetHue(sender As Object, e As frmSurfaceAddElevationFromOrthoPhoto.GetHueEventArgs)
+        Cursor = Cursors.WaitCursor
+        Dim oOrthophoto As cOrthoPhoto = DirectCast(tvOrthophotos.GetFocusedObject, UIHelpers.cOrthophotoPlaceHolder).Orthophoto
+        Dim oImage As Bitmap = oOrthophoto.Photo
+        Dim iRows As Integer = oImage.Height
+        Dim iColumns As Integer = oImage.Width
+
+        Dim iProgressIndex As Integer = 0
+        Dim iProgressCount As Integer = iRows * iColumns
+        Call oSurvey.RaiseOnProgressEvent("elevation.fromorthophoto", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, modMain.GetLocalizedString("surface.progressbegin5"), 0, cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageCalculate)
+        For iRow As Integer = 0 To iRows - 1
+            For icolumn As Integer = 0 To iColumns - 1
+                iProgressIndex += 1
+                If iProgressIndex Mod 2000 = 0 Then Call oSurvey.RaiseOnProgressEvent("elevation.fromorthophoto", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("surface.progress5"), iProgressIndex / iProgressCount)
+                Dim sHue As Single = oImage.GetPixel(icolumn, iRow).GetHue
+                If sHue < e.MinHue Then e.MinHue = sHue
+                If sHue > e.MaxHue Then e.MaxHue = sHue
+            Next
+        Next
+        Call oSurvey.RaiseOnProgressEvent("elevation.fromorthophoto", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.End, modMain.GetLocalizedString("surface.progressend5"), 0)
+        Cursor = Cursors.Default
+    End Sub
+
+    Private Sub chkGradesDistance_CheckedChanged(sender As Object, e As EventArgs) Handles chkGradesDistance.CheckedChanged
+        Dim bEnabled As Boolean = chkGradesDistance.Checked
+        txtGradesDistance.Enabled = bEnabled
+        cboGradesDistanceType.Enabled = bEnabled
+
+        Try
+            Dim oItem As cGradePlaceHolder = tvGrades.GetFocusedObject
+            oItem.DistanceEnabled = chkGradesDistance.EditValue
+        Catch
+        End Try
+    End Sub
+
+    Private Sub chkGradesBearing_CheckedChanged(sender As Object, e As EventArgs) Handles chkGradesBearing.CheckedChanged
+        Dim bEnabled As Boolean = chkGradesBearing.Checked
+        txtGradesBearing.Enabled = bEnabled
+        cboGradesBearingType.Enabled = bEnabled
+
+        Try
+            Dim oItem As cGradePlaceHolder = tvGrades.GetFocusedObject
+            oItem.BearingEnabled = chkGradesBearing.EditValue
+        Catch
+        End Try
+    End Sub
+
+    Private Sub chkGradesInclination_CheckedChanged(sender As Object, e As EventArgs) Handles chkGradesInclination.CheckedChanged
+        Dim bEnabled As Boolean = chkGradesInclination.Checked
+        txtGradesInclination.Enabled = bEnabled
+        cboGradesInclinationType.Enabled = bEnabled
+
+        Try
+            Dim oItem As cGradePlaceHolder = tvGrades.GetFocusedObject
+            oItem.InclinationEnabled = chkGradesInclination.EditValue
+        Catch
+        End Try
+    End Sub
+
+    Private Sub chkGradesDepth_CheckedChanged(sender As Object, e As EventArgs) Handles chkGradesDepth.CheckedChanged
+        Dim bEnabled As Boolean = chkGradesDepth.Checked
+        txtGradesDepth.Enabled = bEnabled
+        cboGradesDepthType.Enabled = bEnabled
+
+        Try
+            Dim oItem As cGradePlaceHolder = tvGrades.GetFocusedObject
+            oItem.DepthEnabled = chkGradesDepth.EditValue
+        Catch
+        End Try
+    End Sub
+
+    Private Sub chkGradesX_CheckedChanged(sender As Object, e As EventArgs) Handles chkGradesX.CheckedChanged
+        Dim bEnabled As Boolean = chkGradesX.Checked
+        txtGradesX.Enabled = bEnabled
+        cboGradesXType.Enabled = bEnabled
+
+        Try
+            Dim oItem As cGradePlaceHolder = tvGrades.GetFocusedObject
+            oItem.XEnabled = chkGradesX.EditValue
+        Catch
+        End Try
+    End Sub
+
+    Private Sub chkGradesY_CheckedChanged(sender As Object, e As EventArgs) Handles chkGradesY.CheckedChanged
+        Dim bEnabled As Boolean = chkGradesY.Checked
+        txtGradesY.Enabled = bEnabled
+        cboGradesYType.Enabled = bEnabled
+
+        Try
+            Dim oItem As cGradePlaceHolder = tvGrades.GetFocusedObject
+            oItem.YEnabled = chkGradesY.EditValue
+        Catch
+        End Try
+    End Sub
+
+    Private Sub chkGradesZ_CheckedChanged(sender As Object, e As EventArgs) Handles chkGradesZ.CheckedChanged
+        Dim bEnabled As Boolean = chkGradesZ.Checked
+        txtGradesZ.Enabled = bEnabled
+        cboGradesZType.Enabled = bEnabled
+
+        Try
+            Dim oItem As cGradePlaceHolder = tvGrades.GetFocusedObject
+            oItem.ZEnabled = chkGradesZ.EditValue
+        Catch
+        End Try
+    End Sub
+
+    Private Sub tvGrades_FocusedNodeChanged(sender As Object, e As DevExpress.XtraTreeList.FocusedNodeChangedEventArgs) Handles tvGrades.FocusedNodeChanged
+        Dim oGrade As UIHelpers.cGradePlaceHolder = tvGrades.GetFocusedObject
+        If oGrade Is Nothing Then
+            lblGradesID.Enabled = False
+            txtGradesID.Enabled = False
+            lblGradesDescription.Enabled = False
+            txtGradesDescription.Enabled = False
+
+            chkGradesDistance.Enabled = False
+            chkGradesBearing.Enabled = False
+            chkGradesDepth.Enabled = False
+            chkGradesInclination.Enabled = False
+            chkGradesX.Enabled = False
+            chkGradesY.Enabled = False
+            chkGradesZ.Enabled = False
+            tabGradesDetails.Enabled = False
+
+            btnGradesDelete.Enabled = False
+        Else
+            lblGradesID.Enabled = True
+            txtGradesID.Enabled = True
+            lblGradesDescription.Enabled = True
+            txtGradesDescription.Enabled = True
+
+            chkGradesDistance.Enabled = True
+            chkGradesBearing.Enabled = True
+            chkGradesDepth.Enabled = True
+            chkGradesInclination.Enabled = True
+            chkGradesX.Enabled = True
+            chkGradesY.Enabled = True
+            chkGradesZ.Enabled = True
+            tabGradesDetails.Enabled = True
+
+            txtGradesID.EditValue = oGrade.ID
+            txtGradesDescription.EditValue = oGrade.Description
+
+            chkGradesBearing.EditValue = oGrade.BearingEnabled
+            txtGradesBearing.EditValue = oGrade.Bearing
+            cboGradesBearingType.SelectedIndex = oGrade.BearingType
+            chkGradesInclination.EditValue = oGrade.InclinationEnabled
+            txtGradesInclination.EditValue = oGrade.Inclination
+            cboGradesInclinationType.SelectedIndex = oGrade.InclinationType
+            chkGradesDistance.EditValue = oGrade.DistanceEnabled
+            txtGradesDistance.EditValue = oGrade.Distance
+            cboGradesDistanceType.SelectedIndex = oGrade.DistanceType
+            chkGradesDepth.EditValue = oGrade.DepthEnabled
+            txtGradesDepth.EditValue = oGrade.Depth
+            cboGradesDepthType.SelectedIndex = oGrade.DepthType
+            chkGradesX.EditValue = oGrade.XEnabled
+            txtGradesX.EditValue = oGrade.X
+            cboGradesXType.SelectedIndex = oGrade.XType
+            chkGradesY.EditValue = oGrade.YEnabled
+            txtGradesY.EditValue = oGrade.Y
+            cboGradesYType.SelectedIndex = oGrade.YType
+            chkGradesZ.EditValue = oGrade.ZEnabled
+            txtGradesZ.EditValue = oGrade.Z
+            cboGradesZType.SelectedIndex = oGrade.ZType
+
+            Call pGradesRebindUsedBy(oGrade)
+        End If
+
+        'btngradesdeleteall.Enabled = tvGrades.Nodes.Count > 0
+    End Sub
+
+    Private Sub pGradesRebindUsedBy(Optional Grade As UIHelpers.cGradePlaceHolder = Nothing)
+        If Grade Is Nothing Then
+            Grade = tvGrades.GetFocusedObject
+        End If
+        tvGradesUsedBy.DataSource = DirectCast(tvSessions.DataSource, UIHelpers.cSessionsEditBindingList).Where(Function(oSession) Grade IsNot Nothing AndAlso oSession.Grade = Grade.ID).ToList
+        btnGradesDelete.Enabled = Grade IsNot Nothing AndAlso tvGradesUsedBy.DataSource.count = 0
+    End Sub
+
+    Private Sub txtGradesDescription_Validated(sender As Object, e As EventArgs) Handles txtGradesDescription.Validated
+        Try
+            Dim oItem As cGradePlaceHolder = tvGrades.GetFocusedObject
+            oItem.Description = txtGradesDescription.EditValue
+            Call tvGrades.RefreshFocusedObject
+        Catch
+        End Try
+    End Sub
+
+    Private Sub txtGradesDistance_Validated(sender As Object, e As EventArgs) Handles txtGradesDistance.Validated
+        Try
+            Dim oItem As cGradePlaceHolder = tvGrades.GetFocusedObject
+            oItem.Distance = txtGradesDistance.EditValue
+        Catch
+        End Try
+    End Sub
+
+    Private Sub txtGradesBearing_Validated(sender As Object, e As EventArgs) Handles txtGradesBearing.Validated
+        Try
+            Dim oItem As cGradePlaceHolder = tvGrades.GetFocusedObject
+            oItem.Bearing = txtGradesBearing.EditValue
+        Catch
+        End Try
+    End Sub
+
+    Private Sub txtGradesInclination_Validated(sender As Object, e As EventArgs) Handles txtGradesInclination.Validated
+        Try
+            Dim oItem As cGradePlaceHolder = tvGrades.GetFocusedObject
+            oItem.Inclination = txtGradesInclination.EditValue
+        Catch
+        End Try
+    End Sub
+
+    Private Sub txtGradesDepth_Validated(sender As Object, e As EventArgs) Handles txtGradesDepth.Validated
+        Try
+            Dim oItem As cGradePlaceHolder = tvGrades.GetFocusedObject
+            oItem.Depth = txtGradesDepth.EditValue
+        Catch
+        End Try
+    End Sub
+
+    Private Sub txtGradesX_Validated(sender As Object, e As EventArgs) Handles txtGradesX.Validated
+        Try
+            Dim oItem As cGradePlaceHolder = tvGrades.GetFocusedObject
+            oItem.X = txtGradesX.EditValue
+        Catch
+        End Try
+    End Sub
+
+    Private Sub txtGradesY_Validated(sender As Object, e As EventArgs) Handles txtGradesY.Validated
+        Try
+            Dim oItem As cGradePlaceHolder = tvGrades.GetFocusedObject
+            oItem.Y = txtGradesY.EditValue
+        Catch
+        End Try
+    End Sub
+
+    Private Sub txtGradesZ_Validated(sender As Object, e As EventArgs) Handles txtGradesZ.Validated
+        Try
+            Dim oItem As cGradePlaceHolder = tvGrades.GetFocusedObject
+            oItem.Z = txtGradesZ.EditValue
+        Catch
+        End Try
+    End Sub
+
+    Private Sub cboGradesDistanceType_Validated(sender As Object, e As EventArgs) Handles cboGradesDistanceType.Validated
+        Try
+            Dim oItem As cGradePlaceHolder = tvGrades.GetFocusedObject
+            oItem.DistanceType = cboGradesDistanceType.SelectedIndex
+        Catch
+        End Try
+    End Sub
+
+    Private Sub cboGradesBearingType_Validated(sender As Object, e As EventArgs) Handles cboGradesBearingType.Validated
+        Try
+            Dim oItem As cGradePlaceHolder = tvGrades.GetFocusedObject
+            oItem.BearingType = cboGradesBearingType.SelectedIndex
+        Catch
+        End Try
+    End Sub
+
+    Private Sub cboGradesInclinationType_Validated(sender As Object, e As EventArgs) Handles cboGradesInclinationType.Validated
+        Try
+            Dim oItem As cGradePlaceHolder = tvGrades.GetFocusedObject
+            oItem.InclinationType = cboGradesInclinationType.SelectedIndex
+        Catch
+        End Try
+    End Sub
+
+    Private Sub cboGradesDepthType_Validated(sender As Object, e As EventArgs) Handles cboGradesDepthType.Validated
+        Try
+            Dim oItem As cGradePlaceHolder = tvGrades.GetFocusedObject
+            oItem.DepthType = cboGradesDepthType.SelectedIndex
+        Catch
+        End Try
+    End Sub
+
+    Private Sub cboGradesXType_Validated(sender As Object, e As EventArgs) Handles cboGradesXType.Validated
+        Try
+            Dim oItem As cGradePlaceHolder = tvGrades.GetFocusedObject
+            oItem.XType = cboGradesXType.SelectedIndex
+        Catch
+        End Try
+    End Sub
+
+    Private Sub cboGradesYType_Validated(sender As Object, e As EventArgs) Handles cboGradesYType.Validated
+        Try
+            Dim oItem As cGradePlaceHolder = tvGrades.GetFocusedObject
+            oItem.YType = cboGradesYType.SelectedIndex
+        Catch
+        End Try
+    End Sub
+
+    Private Sub cboGradesZType_Validated(sender As Object, e As EventArgs) Handles cboGradesZType.Validated
+        Try
+            Dim oItem As cGradePlaceHolder = tvGrades.GetFocusedObject
+            oItem.ZType = cboGradesZType.SelectedIndex
+        Catch
+        End Try
+    End Sub
+
+    Private Sub btnGradesAdd_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnGradesAdd.ItemClick
+        Dim oNewItem As UIHelpers.cGradePlaceHolder = DirectCast(tvGrades.DataSource, UIHelpers.cGradeEditBindingList).Add
+        Call tvGrades.SetFocusedObject(oNewItem)
+    End Sub
+
+    Private Sub btnGradesDelete_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnGradesDelete.ItemClick
+        Dim oItem As cGradePlaceHolder = tvGrades.GetFocusedObject
+        If oItem IsNot Nothing Then
+            If cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("grades.warning1"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("grades.warningtitle")) = MsgBoxResult.Yes Then
+                Call DirectCast(tvGrades.DataSource, UIHelpers.cGradeEditBindingList).Remove(oItem)
+            End If
+        End If
+    End Sub
+
+    Private Sub tvGradesUsedBy_FocusedNodeChanged(sender As Object, e As DevExpress.XtraTreeList.FocusedNodeChangedEventArgs) Handles tvGradesUsedBy.FocusedNodeChanged
+        btnGradesUsedBySelectSession.Enabled = e.Node IsNot Nothing
+    End Sub
+
+    Private Sub btnGradesUsedBySelectSession_Click(sender As Object, e As EventArgs) Handles btnGradesUsedBySelectSession.Click
+        Dim oSession As UIHelpers.cSessionEditPlaceHolder = tvGradesUsedBy.GetFocusedObject
+        If oSession IsNot Nothing Then
+            Call tvSessions.SetFocusedObject(oSession)
+            Call pSelectTabByIndex(6)
+        End If
+    End Sub
+
+    Private Sub cboSessionDepthType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboSessionDepthType.SelectedIndexChanged
+        chkSessionInclinationDirection.Visible = (cboSessionDepthType.SelectedIndex = 0 OrElse cboSessionDepthType.SelectedIndex = 1)
+    End Sub
+
+    Private Sub btnHighlightExport_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnHighlightExport.ItemClick
+        Try
+            Dim oCI As cHighlightPlaceholder = tvHighlights.GetFocusedObject
+            Using oSFD As SaveFileDialog = New SaveFileDialog
+                With oSFD
+                    .OverwritePrompt = True
+                    .Filter = GetLocalizedString("main.filetypeCHIGHLIGHTX") & " (*.CHighlightX)|*.CHighlightX"
+                    If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                        Dim oXML As XmlDocument = New XmlDocument
+                        Dim oXMLRoot As XmlElement = oXML.CreateElement("chighlight")
+
+                        Call oXMLRoot.SetAttribute("name", oCI.Name)
+                        Call oXMLRoot.SetAttribute("color", oCI.Color.ToArgb)
+                        Call oXMLRoot.SetAttribute("size", modNumbers.NumberToString(oCI.Size))
+                        Call oXMLRoot.SetAttribute("opacity", oCI.Opacity)
+                        Call oXMLRoot.SetAttribute("applyto", oCI.ApplyTo.ToString("D"))
+                        oXMLRoot.InnerText = oCI.Condition
+                        Call oXML.AppendChild(oXMLRoot)
+                        Call oXML.Save(oSFD.FileName)
+                    End If
+                End With
+            End Using
+        Catch
+        End Try
+    End Sub
+
+    Private Sub btnHighlightImport_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnHighlightImport.ItemClick
+        Using oOFD As OpenFileDialog = New OpenFileDialog
+            With oOFD
+                .Filter = GetLocalizedString("main.filetypeCHIGHLIGHTX") & " (*.CHighlightX)|*.CHighlightX"
+                If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                    Dim oXML As XmlDocument = New XmlDocument
+                    Call oXML.Load(oOFD.FileName)
+                    Dim oXMLRoot As XmlElement = oXML.Item("chighlight")
+
+                    Dim iApplyTo As Properties.cHighlightsDetail.ApplyToEnum = oXMLRoot.GetAttribute("applyto")
+                    Dim oItem As cHighlightPlaceholder = pHighlightAdd(iApplyTo)
+
+                    oItem.Name = oXMLRoot.GetAttribute("name")
+                    oItem.Color = Color.FromArgb(oXMLRoot.GetAttribute("color"))
+                    oItem.Size = modNumbers.StringToSingle(oXMLRoot.GetAttribute("size"))
+                    oItem.Opacity = oXMLRoot.GetAttribute("opacity")
+                    oItem.Condition = oXMLRoot.InnerText
+
+                    Call tvHighlights.RefreshFocusedObject
+                End If
+            End With
+        End Using
+    End Sub
+
+    Private Sub btnOrthophotosPreviewNewReduced25_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnOrthophotosPreviewNewReduced25.ItemClick
+        Dim oItem As cOrthophotoPlaceHolder = tvOrthophotos.GetFocusedObject
+        If oItem IsNot Nothing Then
+            Cursor = Cursors.WaitCursor
+            Dim oNewItem As UIHelpers.cOrthophotoPlaceHolder = DirectCast(tvOrthophotos.DataSource, UIHelpers.cOrthophotosBindingList).Add(oItem, 25)
+            Cursor = Cursors.Default
+            Call tvOrthophotos.SetFocusedObject(oNewItem)
+        End If
+    End Sub
+
+    Private Sub btnOrthophotosPreviewNewReduced33_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnOrthophotosPreviewNewReduced33.ItemClick
+        Dim oItem As cOrthophotoPlaceHolder = tvOrthophotos.GetFocusedObject
+        If oItem IsNot Nothing Then
+            Cursor = Cursors.WaitCursor
+            Dim oNewItem As UIHelpers.cOrthophotoPlaceHolder = DirectCast(tvOrthophotos.DataSource, UIHelpers.cOrthophotosBindingList).Add(oItem, 33)
+            Cursor = Cursors.Default
+            Call tvOrthophotos.SetFocusedObject(oNewItem)
+        End If
+    End Sub
+
+    Private Sub btnOrthophotosPreviewNewReduced50_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnOrthophotosPreviewNewReduced50.ItemClick
+        Dim oItem As cOrthophotoPlaceHolder = tvOrthophotos.GetFocusedObject
+        If oItem IsNot Nothing Then
+            Cursor = Cursors.WaitCursor
+            Dim oNewItem As UIHelpers.cOrthophotoPlaceHolder = DirectCast(tvOrthophotos.DataSource, UIHelpers.cOrthophotosBindingList).Add(oItem, 50)
+            Cursor = Cursors.Default
+            Call tvOrthophotos.SetFocusedObject(oNewItem)
+        End If
+    End Sub
+
+    Private Sub optGPSRefPointOnOrigin_CheckedChanged(sender As Object, e As EventArgs) Handles optGPSRefPointOnOrigin.CheckedChanged
+        If optGPSRefPointOnOrigin.Checked Then
+            cboGPSCustomRefPoint.Enabled = False
+        Else
+            cboGPSCustomRefPoint.Enabled = True
+        End If
+    End Sub
+
+    Private Sub optGPSCustomRefPoint_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles optGPSCustomRefPoint.CheckedChanged
+        If optGPSRefPointOnOrigin.Checked Then
+            cboGPSCustomRefPoint.Enabled = False
+        Else
+            cboGPSCustomRefPoint.Enabled = True
+        End If
+    End Sub
+
+    Private Sub cboOrigin_Popup(sender As Object, e As PopupEventArgs) Handles cboOrigin.Popup
+        Cursor = Cursors.WaitCursor
+        Call e.AddRange(oSurvey.TrigPoints.GetStations(e.AllowSplay).ToList)
+        Cursor = Cursors.Default
+    End Sub
+
+    Private Sub cboCaveInfoExtendStart_EditValueMissing(sender As Object, e As EditValueMissingEventArgs) Handles cboCaveInfoExtendStart.EditValueMissing
+        Dim oTrigpoint As cSurvey.cTrigPoint = oSurvey.TrigPoints(e.Value)
+        If oTrigpoint IsNot Nothing Then
+            Call e.Add(oTrigpoint)
+        End If
     End Sub
 End Class

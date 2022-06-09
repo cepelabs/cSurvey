@@ -4,7 +4,7 @@ Imports System.Xml
 
 Namespace cSurvey.Design
     Public Class cOptionsExport
-        Inherits cOptions
+        Inherits cOptionsCenterline
         Implements cIOptionsPreview
 
         Private iAdvancedClippingMode As cIOptionsPreview.AdvancedClippingModeEnum
@@ -15,7 +15,7 @@ Namespace cSurvey.Design
         Private sImageUnit As String
 
         Private iDPI As Integer
-        Private oMargins As Drawing.Printing.Margins
+        Private WithEvents oMargins As cMargins
 
         Private bTransparentBackground As Boolean
 
@@ -24,23 +24,15 @@ Namespace cSurvey.Design
 
         Private oGPS As cGPSOptions
 
-        'Private bDrawSolidRock As Boolean
-
-        'Public Overridable Property DrawSolidRock As Boolean Implements cIOptionsPreview.DrawSolidRock
-        '    Get
-        '        Return bDrawSolidRock
-        '    End Get
-        '    Set(value As Boolean)
-        '        bDrawSolidRock = value
-        '    End Set
-        'End Property
-
         Public Property ScaleMode() As cIOptionsPreview.ScaleModeEnum Implements cIOptionsPreview.ScaleMode
             Get
                 Return iScaleMode
             End Get
             Set(ByVal value As cIOptionsPreview.ScaleModeEnum)
-                iScaleMode = value
+                If iScaleMode <> value Then
+                    iScaleMode = value
+                    Call PropertyChanged("ScaleMode")
+                End If
             End Set
         End Property
 
@@ -49,7 +41,10 @@ Namespace cSurvey.Design
                 Return iScale
             End Get
             Set(ByVal value As Integer)
-                iScale = value
+                If iScale <> value Then
+                    iScale = value
+                    Call PropertyChanged("Scale")
+                End If
             End Set
         End Property
 
@@ -59,12 +54,15 @@ Namespace cSurvey.Design
             End Get
         End Property
 
-        Public Property Margins As Drawing.Printing.Margins
+        Public Property Margins As cMargins
             Get
                 Return oMargins
             End Get
-            Set(ByVal value As Drawing.Printing.Margins)
-                oMargins = value
+            Set(ByVal value As cMargins)
+                If oMargins <> value Then
+                    oMargins = value
+                    Call PropertyChanged("Margins")
+                End If
             End Set
         End Property
 
@@ -75,6 +73,7 @@ Namespace cSurvey.Design
             Set(ByVal value As Integer)
                 If iDPI <> value AndAlso value > 10 Then
                     iDPI = value
+                    Call PropertyChanged("DPI")
                 End If
             End Set
         End Property
@@ -85,17 +84,21 @@ Namespace cSurvey.Design
             End Get
             Set(value As String)
                 Dim svalue As String = value.ToLower.Trim
+                Dim sNewImageUnit As String
                 Select Case svalue
                     Case "mm"
-                        sImageUnit = "mm"
+                        sNewImageUnit = "mm"
                     Case "cm"
-                        sImageUnit = "cm"
+                        sNewImageUnit = "cm"
                     Case "in", "inch"
-                        sImageUnit = "in"
+                        sNewImageUnit = "in"
                     Case Else
-                        sImageUnit = "px"
+                        sNewImageUnit = "px"
                 End Select
-                sImageUnit = value
+                If sNewImageUnit <> sImageUnit Then
+                    sImageUnit = sNewImageUnit
+                    Call PropertyChanged("ImageUnit")
+                End If
             End Set
         End Property
 
@@ -104,7 +107,10 @@ Namespace cSurvey.Design
                 Return sImageWidth
             End Get
             Set(ByVal value As Single)
-                sImageWidth = value
+                If sImageWidth <> value Then
+                    sImageWidth = value
+                    Call PropertyChanged("ImageWidth")
+                End If
             End Set
         End Property
 
@@ -113,7 +119,10 @@ Namespace cSurvey.Design
                 Return sImageHeight
             End Get
             Set(ByVal value As Single)
-                sImageHeight = value
+                If sImageHeight <> value Then
+                    sImageHeight = value
+                    Call PropertyChanged("ImageHeight")
+                End If
             End Set
         End Property
 
@@ -122,7 +131,10 @@ Namespace cSurvey.Design
                 Return sfileformat
             End Get
             Set(ByVal value As String)
-                sfileformat = value
+                If sFileFormat <> value Then
+                    sFileFormat = value
+                    Call PropertyChanged("FileFormat")
+                End If
             End Set
         End Property
 
@@ -131,7 +143,10 @@ Namespace cSurvey.Design
                 Return bTransparentBackground
             End Get
             Set(ByVal value As Boolean)
-                bTransparentBackground = value
+                If bTransparentBackground <> value Then
+                    bTransparentBackground = value
+                    Call PropertyChanged("TransparentBackground")
+                End If
             End Set
         End Property
 
@@ -147,7 +162,7 @@ Namespace cSurvey.Design
             If bTransparentBackground Then Call oXMLOptions.SetAttribute("transparentbackground", 1)
 
             Dim oConverter As Drawing.Printing.MarginsConverter = New Drawing.Printing.MarginsConverter
-            Call oXMLOptions.SetAttribute("margins", oConverter.ConvertToString(oMargins))
+            Call oXMLOptions.SetAttribute("margins", oMargins.ToString)
 
             Call oXMLOptions.SetAttribute("scalemode", iScaleMode)
             Call oXMLOptions.SetAttribute("scale", iScale)
@@ -170,8 +185,8 @@ Namespace cSurvey.Design
             sImageUnit = "px"
             iDPI = 96
             bTransparentBackground = False
-            oMargins = New Drawing.Printing.Margins(32, 32, 32, 32)
-            sfileformat = "JPG"
+            oMargins = New cMargins(32, 32, 32, 32)
+            sFileFormat = "JPG"
             oGPS = New cGPSOptions
             'bDrawSolidRock = False
         End Sub
@@ -190,9 +205,7 @@ Namespace cSurvey.Design
                 sImageHeight = 3072.0F
             End If
             bTransparentBackground = modXML.GetAttributeValue(Options, "transparentbackground", 0)
-            Dim oConverter As Drawing.Printing.MarginsConverter = New Drawing.Printing.MarginsConverter
-            Try : oMargins = oConverter.ConvertFromString(modXML.GetAttributeValue(Options, "margins")) : Catch : End Try
-            If oMargins Is Nothing Then oMargins = New Drawing.Printing.Margins(32, 32, 32, 32)
+            oMargins = New cMargins(modXML.GetAttributeValue(Options, "margins", "32;32;32;32"))
             iScaleMode = modXML.GetAttributeValue(Options, "scalemode")
             iScale = modXML.GetAttributeValue(Options, "scale")
             iAdvancedClippingMode = modXML.GetAttributeValue(Options, "advancedclippingmode")
@@ -220,9 +233,7 @@ Namespace cSurvey.Design
                 sImageHeight = 3072.0F
             End If
             bTransparentBackground = modXML.GetAttributeValue(Options, "transparentbackground")
-            Dim oConverter As Drawing.Printing.MarginsConverter = New Drawing.Printing.MarginsConverter
-            Try : oMargins = oConverter.ConvertFromString(modXML.GetAttributeValue(Options, "margins")) : Catch : End Try
-            If oMargins Is Nothing Then oMargins = New Drawing.Printing.Margins(32, 32, 32, 32)
+            oMargins = New cMargins(modXML.GetAttributeValue(Options, "margins", "32;32;32;32"))
             iScaleMode = modXML.GetAttributeValue(Options, "scalemode")
             iScale = modXML.GetAttributeValue(Options, "scale")
             iAdvancedClippingMode = modXML.GetAttributeValue(Options, "advancedclippingmode")
@@ -234,12 +245,19 @@ Namespace cSurvey.Design
             'bDrawSolidRock = modXML.GetAttributeValue(Options, "drawsolidrock", False)
         End Sub
 
+        Private Sub oMargins_OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Handles oMargins.OnPropertyChanged
+            Call PropertyChanged("Margins." & e.Name)
+        End Sub
+
         Public Property AdvancedClippingMode As cIOptionsPreview.AdvancedClippingModeEnum Implements cIOptionsPreview.AdvancedClippingMode
             Get
                 Return iAdvancedClippingMode
             End Get
             Set(value As cIOptionsPreview.AdvancedClippingModeEnum)
-                iAdvancedClippingMode = value
+                If iAdvancedClippingMode <> value Then
+                    iAdvancedClippingMode = value
+                    Call PropertyChanged("AdvancedClippingMode")
+                End If
             End Set
         End Property
     End Class

@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
+  <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,115 +59,97 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="metadata">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" />
-							</xsd:sequence>
-							<xsd:attribute name="name" use="required" type="xsd:string" />
-							<xsd:attribute name="type" type="xsd:string" />
-							<xsd:attribute name="mimetype" type="xsd:string" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="assembly">
-						<xsd:complexType>
-							<xsd:attribute name="alias" type="xsd:string" />
-							<xsd:attribute name="name" type="xsd:string" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<data name="colName.Text" xml:space="preserve">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="colName.Text" xml:space="preserve">
     <value>Название</value>
   </data>
-	<data name="colOrigine.Text" xml:space="preserve">
+  <data name="colOrigine.Text" xml:space="preserve">
     <value>Источник</value>
   </data>
-	<data name="colSize.Text" xml:space="preserve">
+  <data name="colSize.Text" xml:space="preserve">
     <value>Размер</value>
   </data>
-	<data name="colDateStamp.Text" xml:space="preserve">
+  <data name="colDateStamp.Text" xml:space="preserve">
     <value>Дата/время</value>
   </data>
-	<data name="colUtente.Text" xml:space="preserve">
+  <data name="colUtente.Text" xml:space="preserve">
     <value>Пользователь</value>
   </data>
-	<data name="colLogMessage.Text" xml:space="preserve">
+  <data name="colLogMessage.Text" xml:space="preserve">
     <value>Сообщение</value>
   </data>
-	<data name="colLogDateStamp.Text" xml:space="preserve">
+  <data name="colLogDateStamp.Text" xml:space="preserve">
     <value>Дата/время</value>
   </data>
-	<data name="mnuItemsRefresh.Text" xml:space="preserve">
+  <data name="mnuItemsRefresh.Text" xml:space="preserve">
     <value>Обновить</value>
   </data>
-	<data name="mnuItemsDelete.Text" xml:space="preserve">
+  <data name="mnuItemsDelete.Text" xml:space="preserve">
     <value>Удалить</value>
   </data>
-	<data name="mnuItemsRestore.Text" xml:space="preserve">
+  <data name="mnuItemsRestore.Text" xml:space="preserve">
     <value>Восстановить</value>
   </data>
-	<assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-	<data name="mnuItemsRestore.Size" type="System.Drawing.Size, System.Drawing">
-		<value>112, 22</value>
-	</data>
-	<data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-		<value>109, 6</value>
-	</data>
-	<data name="mnuItemsDelete.Size" type="System.Drawing.Size, System.Drawing">
-		<value>112, 22</value>
-	</data>
-	<data name="ToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-		<value>109, 6</value>
-	</data>
-	<data name="mnuItemsRefresh.Size" type="System.Drawing.Size, System.Drawing">
-		<value>112, 22</value>
-	</data>
-	<data name="mnuItems.Size" type="System.Drawing.Size, System.Drawing">
-		<value>113, 82</value>
-	</data>
-	<data name="iml.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-		<value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="iml.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAD2
@@ -228,66 +210,15 @@
         AQMB8AEPAcABAwEAAQcBgAEDAfABDwGAAQEBAAEHAYABAwH4AR8BgAEBAQABDwGAAQcB/AE/AoEBAAEf
         AYABDwH8AT8CwwEAAT8BgAEfAv8C5ws=
 </value>
-	</data>
-	<data name="mnuLogClean.Size" type="System.Drawing.Size, System.Drawing">
-		<value>101, 22</value>
-	</data>
-	<data name="mnuLogClean.Text" xml:space="preserve">
+  </data>
+  <data name="mnuLogClean.Text" xml:space="preserve">
     <value>Очистить</value>
   </data>
-	<data name="mnuLog.Size" type="System.Drawing.Size, System.Drawing">
-		<value>102, 26</value>
-	</data>
-	<data name="btnShowLocal.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-	</data>
-	<data name="btnShowLocal.Size" type="System.Drawing.Size, System.Drawing">
-		<value>41, 22</value>
-	</data>
-	<data name="btnShowLocal.Text" xml:space="preserve">
+  <data name="btnShowLocal.Text" xml:space="preserve">
     <value>Папка</value>
   </data>
-	<data name="btnShowWeb.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-	</data>
-	<data name="btnAddLocal.Size" type="System.Drawing.Size, System.Drawing">
-		<value>152, 22</value>
-	</data>
-	<data name="btnAddWeb.Size" type="System.Drawing.Size, System.Drawing">
-		<value>152, 22</value>
-	</data>
-	<data name="btnHistoryAdd.Size" type="System.Drawing.Size, System.Drawing">
-		<value>73, 22</value>
-	</data>
-	<data name="btnRestore.Size" type="System.Drawing.Size, System.Drawing">
-		<value>65, 22</value>
-	</data>
-	<data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAADIyMgA0NDQAODg4AD09PQAAei4AAH82AAB3OwAAfzwAFXxWAElJ
         SQBPT08AVVZWAF5dXQBiYF8AU3htAGFgYABvbGoAcG1qAHBubQBzcG8AeHV0AHt4dgB7eXgAf316AIF/
@@ -350,29 +281,29 @@
         AAAAAAAAAB8LCQkHEURaAAAAAAAAAAAAAAAAAAAAAAAAAP//AAD//wAA/AcAAPgDAADwAQAAwAAAAIAA
         AAAAAAAAAAAAAMAAAADAAAAAwAAAAOABAADwAwAA+AcAAP//AAA=
 </value>
-	</data>
-	<data name="btnShowWeb.Text" xml:space="preserve">
+  </data>
+  <data name="btnShowWeb.Text" xml:space="preserve">
     <value>Web</value>
   </data>
-	<data name="btnHistoryAdd.Text" xml:space="preserve">
+  <data name="btnHistoryAdd.Text" xml:space="preserve">
     <value>Сохранить в</value>
   </data>
-	<data name="btnRestore.Text" xml:space="preserve">
+  <data name="btnRestore.Text" xml:space="preserve">
     <value>Восстановить</value>
   </data>
-	<data name="btnDelete.Text" xml:space="preserve">
+  <data name="btnDelete.Text" xml:space="preserve">
     <value>Удалить</value>
   </data>
-	<data name="btnRefresh.Text" xml:space="preserve">
+  <data name="btnRefresh.Text" xml:space="preserve">
     <value>Обновить</value>
   </data>
-	<data name="$this.Text" xml:space="preserve">
+  <data name="$this.Text" xml:space="preserve">
     <value>История:</value>
   </data>
-	<data name="btnAddWeb.Text" xml:space="preserve">
+  <data name="btnAddWeb.Text" xml:space="preserve">
     <value>Web</value>
   </data>
-	<data name="btnAddLocal.Text" xml:space="preserve">
+  <data name="btnAddLocal.Text" xml:space="preserve">
     <value>Папка</value>
   </data>
 </root>

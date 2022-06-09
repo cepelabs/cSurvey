@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   version="1.1"
+   id="Equal_To"
+   x="0px"
+   y="0px"
+   viewBox="0 0 32 32"
+   style="enable-background:new 0 0 32 32;"
+   xml:space="preserve"
+   sodipodi:docname="warningbullet.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs11" /><sodipodi:namedview
+   id="namedview9"
+   pagecolor="#505050"
+   bordercolor="#eeeeee"
+   borderopacity="1"
+   inkscape:pageshadow="0"
+   inkscape:pageopacity="0"
+   inkscape:pagecheckerboard="0"
+   showgrid="false"
+   inkscape:zoom="26"
+   inkscape:cx="19.961538"
+   inkscape:cy="16.25"
+   inkscape:window-width="2560"
+   inkscape:window-height="1017"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Equal_To" />
+<style
+   type="text/css"
+   id="style2">
+	.Black{fill:#727272;}
+	.Blue{fill:#1177D7;}
+</style>
+
+
+<style
+   type="text/css"
+   id="style192">
+	.Black{fill:#727272;}
+	.Blue{fill:#1177D7;}
+</style><style
+   type="text/css"
+   id="style294">
+	.Green{fill:#119B49;}
+	.Blue{fill:#3475BA;}
+	.Black{fill:#737373;}
+</style><style
+   type="text/css"
+   id="style556">
+	.Red{fill:#D11C1C;}
+	.Black{fill:#727272;}
+</style><style
+   type="text/css"
+   id="style827">
+	.Yellow{fill:#FFB115;}
+</style><path
+   class="Yellow"
+   d="M 21.08987,19.754176 16.2645,11.623237 c -0.22797,-0.379951 -0.569926,-0.379951 -0.797896,0 l -4.521411,8.130939 c -0.22797,0.37995 -0.07599,0.68391 0.379951,0.68391 h 9.384776 c 0.417945,0 0.607921,-0.30396 0.37995,-0.68391 z m -5.20532,-0.07599 c -0.417946,0 -0.759901,-0.341956 -0.759901,-0.759901 0,-0.417946 0.341955,-0.759901 0.759901,-0.759901 0.417945,0 0.7599,0.341955 0.7599,0.759901 0,0.417945 -0.341955,0.759901 -0.7599,0.759901 z m 0.7599,-2.279703 H 15.124649 V 14.73883 c 0,-0.22797 0.15198,-0.37995 0.37995,-0.37995 H 16.2645 c 0.22797,0 0.37995,0.15198 0.37995,0.37995 z"
+   id="path829"
+   style="stroke-width:0.37995" /></svg>

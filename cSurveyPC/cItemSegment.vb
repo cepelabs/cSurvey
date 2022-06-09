@@ -258,19 +258,19 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
-        Friend Overrides Sub Paint(Graphics As System.Drawing.Graphics, PaintOptions As cOptions, Options As cItem.PaintOptionsEnum, Selected As SelectionModeEnum)
+        Friend Overrides Sub Paint(Graphics As System.Drawing.Graphics, PaintOptions As cOptionsCenterline, Options As cItem.PaintOptionsEnum, Selected As SelectionModeEnum)
 
         End Sub
 
-        Friend Overrides Sub Render(Graphics As System.Drawing.Graphics, PaintOptions As cOptions, Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Render(Graphics As System.Drawing.Graphics, PaintOptions As cOptionsCenterline, Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
 
         End Sub
 
-        Friend Overrides Function ToSvg(PaintOptions As cOptions, Options As cItem.SVGOptionsEnum) As System.Xml.XmlDocument
+        Friend Overrides Function ToSvg(PaintOptions As cOptionsCenterline, Options As cItem.SVGOptionsEnum) As System.Xml.XmlDocument
             Return Nothing
         End Function
 
-        Friend Overrides Function ToSvgItem(SVG As System.Xml.XmlDocument, PaintOptions As cOptions, Options As cItem.SVGOptionsEnum) As System.Xml.XmlElement
+        Friend Overrides Function ToSvgItem(SVG As System.Xml.XmlDocument, PaintOptions As cOptionsCenterline, Options As cItem.SVGOptionsEnum) As System.Xml.XmlElement
             Return Nothing
         End Function
 

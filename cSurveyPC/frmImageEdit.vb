@@ -7,8 +7,9 @@ Imports cSurveyPC
 Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Design.Items
+Imports DevExpress.XtraBars
 
-friend Class frmImageEdit
+Friend Class frmImageEdit
     Private oSurvey As cSurvey.cSurvey
     Private oImage As cItemImage
     Private iDesignType As cIDesign.cDesignTypeEnum
@@ -33,45 +34,46 @@ friend Class frmImageEdit
     Private iCurrentTool As ToolEnum
     Private oCutRect As RectangleF
 
-    Private Class cTrigpointPlaceholder
-        Private oPoint As Point
-        Private sName As String
-        Private oArea As Rectangle
-        Private oHotSpot As Rectangle
+    'Private Class cTrigpointPlaceholder
+    '    Private oPoint As Point
+    '    Private sName As String
+    '    Private oArea As Rectangle
+    '    Private oHotSpot As Rectangle
 
-        Public ReadOnly Property Point As Point
-            Get
-                Return oPoint
-            End Get
-        End Property
+    '    Public ReadOnly Property Point As Point
+    '        Get
+    '            Return oPoint
+    '        End Get
+    '    End Property
 
-        Public ReadOnly Property Name As String
-            Get
-                Return sName
-            End Get
-        End Property
+    '    Public ReadOnly Property Name As String
+    '        Get
+    '            Return sName
+    '        End Get
+    '    End Property
 
-        Public ReadOnly Property Area As Rectangle
-            Get
-                Return oArea
-            End Get
-        End Property
+    '    Public ReadOnly Property Area As Rectangle
+    '        Get
+    '            Return oArea
+    '        End Get
+    '    End Property
 
-        Public ReadOnly Property HotSpot As Rectangle
-            Get
-                Return oHotSpot
-            End Get
-        End Property
+    '    Public ReadOnly Property HotSpot As Rectangle
+    '        Get
+    '            Return oHotSpot
+    '        End Get
+    '    End Property
 
-        Public Sub New(Name As String, Point As PointF, Optional NameWidth As Integer = 0)
-            Dim iSize As Integer = 8
-            sName = Name
-            oPoint = New Point(Point.X, Point.Y)
-            oArea = New Rectangle(oPoint.X, oPoint.Y, iSize * 2, iSize * 2)
-            oHotSpot = New Rectangle(oPoint.X, oPoint.Y, NameWidth + iSize * 2, iSize * 2)
-        End Sub
-    End Class
-    Private oTrigpointsPlaceholders As Dictionary(Of String, cTrigpointPlaceholder)
+    '    Public Sub New(Name As String, Point As PointF, Optional NameWidth As Integer = 0)
+    '        Dim iSize As Integer = 8
+    '        sName = Name
+    '        oPoint = New Point(Point.X, Point.Y)
+    '        oArea = New Rectangle(oPoint.X, oPoint.Y, iSize * 2, iSize * 2)
+    '        oHotSpot = New Rectangle(oPoint.X, oPoint.Y, NameWidth + iSize * 2, iSize * 2)
+    '    End Sub
+    'End Class
+
+    'Private oTrigpointsPlaceholders As Dictionary(Of String, cTrigpointPlaceholder)
 
     Private Enum ToolEnum
         None = 0
@@ -129,23 +131,24 @@ friend Class frmImageEdit
         oCurrentImage = modPaint.GrayScaleImage(oCurrentImage)
     End Function
 
-    Public Sub New(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Image As cItemImage)
+    Public Sub New(ByVal Image As cItemImage)
 
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        oSurvey = Survey
+        oSurvey = Image.Survey
         oImage = Image
 
-        oTrigpointsPlaceholders = New Dictionary(Of String, cTrigpointPlaceholder)
+        'oTrigpointsPlaceholders = New Dictionary(Of String, cTrigpointPlaceholder)
 
         iDesignType = oImage.Design.Type
 
         oSourceImage = modPaint.ImageExifRotate(oImage.Image)
-        oCurrentImage = oSourceImage
+        oCurrentImage = oSourceImage.Clone
         oTransparentColor = oImage.TransparentColor
         sTransparencyThreshold = oImage.TransparencyThreshold
+        btnTransparentThreshold.EditValue = sTransparencyThreshold * 100.0F
 
         Call pRescaleImage(iMaxWidth, iMaxHeight)
 
@@ -157,7 +160,7 @@ friend Class frmImageEdit
 
     Private Sub picPreview_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles picPreview.DoubleClick
         If iCurrentTool = ToolEnum.None Then
-           
+
         Else
             Call picPreview.Invalidate()
         End If
@@ -174,59 +177,42 @@ friend Class frmImageEdit
         End If
     End Sub
 
-    Private Sub mnuPreview_Opening(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles mnuPreview.Opening
-        If iCurrentTool = ToolEnum.None Then
-            For Each oItem As ToolStripItem In mnuPreview.Items
-                If oItem Is mnuPreviewStop Then
-                    oItem.Visible = False
-                Else
-                    oItem.Visible = True
-                End If
-            Next
-        Else
-            For Each oItem As ToolStripItem In mnuPreview.Items
-                If oItem Is mnuPreviewStop Then
-                    oItem.Visible = True
-                Else
-                    oItem.Visible = False
-                End If
-            Next
-        End If
-    End Sub
-
-    Private Sub cmdOk_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdOk.Click
-        oImage.Image = oCurrentImage
-        oImage.TransparentColor = oTransparentColor
-        oImage.TransparencyThreshold = sTransparencyThreshold
-        DialogResult = Windows.Forms.DialogResult.OK
-    End Sub
+    'Private Sub mnuPreview_Opening(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs)
+    '    If iCurrentTool = ToolEnum.None Then
+    '        For Each oItem As ToolStripItem In mnuPreview.Items
+    '            If oItem Is mnuPreviewStop Then
+    '                oItem.Visible = False
+    '            Else
+    '                oItem.Visible = True
+    '            End If
+    '        Next
+    '    Else
+    '        For Each oItem As ToolStripItem In mnuPreview.Items
+    '            If oItem Is mnuPreviewStop Then
+    '                oItem.Visible = True
+    '            Else
+    '                oItem.Visible = False
+    '            End If
+    '        Next
+    '    End If
+    'End Sub
 
     Private Sub picPreview_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles picPreview.Click
         Call pnlPreview.Focus()
     End Sub
 
-    Private Sub btnZoomIn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnZoomIn.Click
+    Private Sub btnZoomIn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         sZoomFactor = sZoomFactor * 1.1
         picPreview.Width = oCurrentImage.Width * sZoomFactor
         picPreview.Height = oCurrentImage.Height * sZoomFactor
-        'Call pnlPreview.Panel2.Scale(New SizeF(1.1, 1.1))
         Call picPreview.Invalidate()
-        'oStartSelPosition.X = oStartSelPosition.X * 1.1
-        'oStartSelPosition.Y = oStartSelPosition.Y * 1.1
-        'oEndSelPosition.X = oEndSelPosition.X * 1.1
-        'oEndSelPosition.Y = oEndSelPosition.Y * 1.1
     End Sub
 
-    Private Sub btnZoomOut_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnZoomOut.Click
+    Private Sub btnZoomOut_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         sZoomFactor = sZoomFactor * 0.909
         picPreview.Width = oCurrentImage.Width * sZoomFactor
         picPreview.Height = oCurrentImage.Height * sZoomFactor
-        'Call pnlPreview.Panel2.Scale(New SizeF(0.909, 0.909))
         Call picPreview.Invalidate()
-        'oStartSelPosition.X = oStartSelPosition.X / 1.1
-        'oStartSelPosition.Y = oStartSelPosition.Y / 1.1
-        'oEndSelPosition.X = oEndSelPosition.X / 1.1
-        'oEndSelPosition.Y = oEndSelPosition.Y / 1.1
     End Sub
 
     Private oStartSelPosition As PointF
@@ -255,13 +241,14 @@ friend Class frmImageEdit
             oGraphics.CompositingQuality = CompositingQuality.HighQuality
             oGraphics.TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAliasGridFit
 
-            Call oGraphics.ScaleTransform(sZoomFactor, sZoomFactor)
+            'Call oGraphics.ScaleTransform(sZoomFactor, sZoomFactor)
 
-            Dim imgAttributes As System.Drawing.Imaging.ImageAttributes = New System.Drawing.Imaging.ImageAttributes
-            If Not oTransparentColor = Color.Transparent Then
-                Call imgAttributes.SetColorKey(modPaint.DarkColor(oTransparentColor, sTransparencyThreshold), modPaint.LightColor(oTransparentColor, sTransparencyThreshold))
-            End If
-            Call oGraphics.DrawImage(oCurrentImage, New Rectangle(0, 0, picPreview.Width, picPreview.Height), 0, 0, oCurrentImage.Width, oCurrentImage.Height, GraphicsUnit.Pixel, imgAttributes)
+            Using imgAttributes As System.Drawing.Imaging.ImageAttributes = New System.Drawing.Imaging.ImageAttributes
+                If Not oTransparentColor = Color.Transparent Then
+                    Call imgAttributes.SetColorKey(modPaint.DarkColor(oTransparentColor, 1.0F - sTransparencyThreshold), modPaint.LightColor(oTransparentColor, 1.0F - sTransparencyThreshold))
+                End If
+                Call oGraphics.DrawImage(oCurrentImage, New Rectangle(0, 0, picPreview.Width, picPreview.Height), 0, 0, oCurrentImage.Width, oCurrentImage.Height, GraphicsUnit.Pixel, imgAttributes)
+            End Using
 
             If btnRubber.Checked Then
                 Dim oRubberRect As RectangleF = New RectangleF(oRubberPoint.X - iRubberSize / 2, oRubberPoint.Y - iRubberSize / 2, iRubberSize, iRubberSize) 'New RectangleF(oRubberPoint.X - iRubberSize / 2, oRubberPoint.Y - iRubberSize / 2, iRubberSize, iRubberSize)
@@ -312,226 +299,183 @@ friend Class frmImageEdit
         End If
     End Sub
 
-    Private Sub btnRubber0_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRubber0.Click
-        btnRubber0.Checked = True
-        btnRubber1.Checked = False
-        btnRubber2.Checked = False
-        btnRubber3.Checked = False
-        btnRubber.Checked = True
-        iRubberSize = 16
-    End Sub
+    'Private Sub btnRubber0_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    btnRubber0.Checked = True
+    '    btnRubber1.Checked = False
+    '    btnRubber2.Checked = False
+    '    btnRubber3.Checked = False
+    '    btnRubber.Checked = True
+    '    iRubberSize = 16
+    'End Sub
 
     Private Sub pToolStart(Tool As ToolEnum)
         iCurrentTool = Tool
 
-        cmdOk.Enabled = False
+        cmdok.Enabled = False
         btnLoadImage.Enabled = False
         btnUndo.Enabled = False
         btnRescale.Enabled = False
         btnRotate.Enabled = False
         btnRubber.Enabled = False
-        btnFlip.Enabled = False
+        btnFlipH.Enabled = False
+        btnFlipV.Enabled = False
         btnToGrayscale.Enabled = False
-        btnShowCutBorders.Enabled = False
+        btnCropStart.Enabled = False
 
-        btnStop.Visible = True
+        btnStop.Visibility = DevExpress.XtraBars.BarItemVisibility.Always
     End Sub
 
     Private Sub pToolStop()
-        cmdOk.Enabled = True
+        cmdok.Enabled = True
         btnLoadImage.Enabled = True
         btnUndo.Enabled = True
         btnRescale.Enabled = True
         btnRotate.Enabled = True
         btnRubber.Enabled = True
-        btnFlip.Enabled = True
+        btnFlipH.Enabled = True
+        btnFlipV.Enabled = True
         btnToGrayscale.Enabled = True
-        btnShowCutBorders.Enabled = True
+        btnCropStart.Enabled = True
 
         Select Case iCurrentTool
             Case ToolEnum.Cut
                 oStartSelPosition = Point.Empty
                 oEndSelPosition = Point.Empty
                 oCutRect = Rectangle.Empty
-                btnShowCutBorders.Checked = False
+                btnCropStart.Checked = False
             Case ToolEnum.Rubber
                 btnRubber.Checked = False
         End Select
 
-        btnStop.Visible = False
+        btnStop.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         iCurrentTool = ToolEnum.None
 
         Call picPreview.Invalidate()
     End Sub
 
-    Private Sub btnRubber1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRubber1.Click
-        btnRubber0.Checked = False
-        btnRubber1.Checked = True
-        btnRubber2.Checked = False
-        btnRubber3.Checked = False
-        btnRubber.Checked = True
-        iRubberSize = 32
-    End Sub
+    'Private Sub btnRubber1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    btnRubber0.Checked = False
+    '    btnRubber1.Checked = True
+    '    btnRubber2.Checked = False
+    '    btnRubber3.Checked = False
+    '    btnRubber.Checked = True
+    '    iRubberSize = 32
+    'End Sub
 
-    Private Sub btnRubber2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRubber2.Click
-        btnRubber0.Checked = False
-        btnRubber1.Checked = False
-        btnRubber2.Checked = True
-        btnRubber3.Checked = False
-        btnRubber.Checked = True
-        iRubberSize = 64
-    End Sub
+    'Private Sub btnRubber2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    btnRubber0.Checked = False
+    '    btnRubber1.Checked = False
+    '    btnRubber2.Checked = True
+    '    btnRubber3.Checked = False
+    '    btnRubber.Checked = True
+    '    iRubberSize = 64
+    'End Sub
 
-    Private Sub btnRubber3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRubber3.Click
-        btnRubber0.Checked = False
-        btnRubber1.Checked = False
-        btnRubber2.Checked = False
-        btnRubber3.Checked = True
-        btnRubber.Checked = True
-        iRubberSize = 128
-    End Sub
+    'Private Sub btnRubber3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    btnRubber0.Checked = False
+    '    btnRubber1.Checked = False
+    '    btnRubber2.Checked = False
+    '    btnRubber3.Checked = True
+    '    btnRubber.Checked = True
+    '    iRubberSize = 128
+    'End Sub
 
-    Private Sub btnUndo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnUndo.Click
-        If MsgBox(GetLocalizedString("imageedit.warning1"), MsgBoxStyle.OkCancel Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Ok Then
-            oCurrentImage = oSourceImage
-            Call pRescaleImage(iMaxWidth, iMaxHeight)
-            Call picPreview.Invalidate()
-        End If
-    End Sub
+    'Private Sub btnRubber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    btnRubber.Checked = Not btnRubber.Checked
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub btnRubber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRubber.Click
-        btnRubber.Checked = Not btnRubber.Checked
-        Call picPreview.Invalidate()
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    sTransparencyThreshold = 0.99
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub btnToGrayscale_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnToGrayscale.Click
-        If MsgBox(GetLocalizedString("imageedit.warning2"), MsgBoxStyle.OkCancel Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Ok Then
-            Call pGrayScaleImage()
-            Call picPreview.Invalidate()
-        End If
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    sTransparencyThreshold = 0.95
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub btnLoadImage_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLoadImage.Click
-        Using oOfd As OpenFileDialog = New OpenFileDialog
-            With oOfd
-                .Title = GetLocalizedString("imageedit.openimagedialog")
-                .Filter = GetLocalizedString("imageedit.filetypeIMAGES") & " (*.JPG;*.PNG;*.TIF;*.BMP;*.GIF)|*.JPG;*.PNG;*.TIF;*.BMP;*.GIF|" & GetLocalizedString("imageedit.filetypeALL") & " (*.*)|*.*"
-                .FilterIndex = 1
-                If .ShowDialog = Windows.Forms.DialogResult.OK Then
-                    Try
-                        oSourceImage = modPaint.ImageExifRotate(New Bitmap(.FileName))
-                        oCurrentImage = oSourceImage
-                        Call pRescaleImage(iMaxWidth, iMaxHeight)
-                        Call picPreview.Invalidate()
-                    Catch ex As Exception
-                        Call MsgBox(String.Format(GetLocalizedString("imageedit.warning6"), ex.Message), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("imageedit.warningtitle"))
-                    End Try
-                End If
-            End With
-        End Using
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    sTransparencyThreshold = 0.9
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub mnuPreviewDeleteTransparent_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewDeleteTransparent.Click
-        oTransparentColor = Color.Transparent
-        Call picPreview.Invalidate()
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    sTransparencyThreshold = 0.8
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub mnuPreviewSetTransparent_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewSetTransparent.Click
-        oTransparentColor = oCurrentImage.GetPixel(oLastMousePoint.X, oLastMousePoint.Y)
-        Call picPreview.Invalidate()
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    sTransparencyThreshold = 0.7
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub mnuPreviewTransparentThreshold1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold1.Click
-        sTransparencyThreshold = 0.99
-        Call picPreview.Invalidate()
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    sTransparencyThreshold = 0.5
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub mnuPreviewTransparentThreshold2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold2.Click
-        sTransparencyThreshold = 0.95
-        Call picPreview.Invalidate()
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold_DropDownOpening(ByVal sender As Object, ByVal e As System.EventArgs)
+    '    mnuPreviewTransparentThreshold1.Checked = False
+    '    mnuPreviewTransparentThreshold2.Checked = False
+    '    mnuPreviewTransparentThreshold3.Checked = False
+    '    mnuPreviewTransparentThreshold4.Checked = False
+    '    mnuPreviewTransparentThreshold5.Checked = False
+    '    mnuPreviewTransparentThreshold6.Checked = False
+    '    mnuPreviewTransparentThreshold7.Checked = False
+    '    mnuPreviewTransparentThreshold8.Checked = False
+    '    mnuPreviewTransparentThreshold9.Checked = False
+    '    mnuPreviewTransparentThreshold10.Checked = False
+    '    Select Case sTransparencyThreshold
+    '        Case 0.99
+    '            mnuPreviewTransparentThreshold1.Checked = True
+    '        Case 0.95
+    '            mnuPreviewTransparentThreshold2.Checked = True
+    '        Case 0.9
+    '            mnuPreviewTransparentThreshold3.Checked = True
+    '        Case 0.8
+    '            mnuPreviewTransparentThreshold4.Checked = True
+    '        Case 0.7
+    '            mnuPreviewTransparentThreshold5.Checked = True
+    '        Case 0.6
+    '            mnuPreviewTransparentThreshold6.Checked = True
+    '        Case 0.5
+    '            mnuPreviewTransparentThreshold7.Checked = True
+    '        Case 0.4
+    '            mnuPreviewTransparentThreshold8.Checked = True
+    '        Case 0.3
+    '            mnuPreviewTransparentThreshold9.Checked = True
+    '        Case 0.2
+    '            mnuPreviewTransparentThreshold10.Checked = True
+    '        Case 0.1
+    '            mnuPreviewTransparentThreshold11.Checked = True
+    '    End Select
+    'End Sub
 
-    Private Sub mnuPreviewTransparentThreshold3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold3.Click
-        sTransparencyThreshold = 0.9
-        Call picPreview.Invalidate()
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold11_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    sTransparencyThreshold = 0
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub mnuPreviewTransparentThreshold4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold4.Click
-        sTransparencyThreshold = 0.8
-        Call picPreview.Invalidate()
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    sTransparencyThreshold = 0.1
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub mnuPreviewTransparentThreshold5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold5.Click
-        sTransparencyThreshold = 0.7
-        Call picPreview.Invalidate()
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    sTransparencyThreshold = 0.2
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub mnuPreviewTransparentThreshold6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold6.Click
-        sTransparencyThreshold = 0.5
-        Call picPreview.Invalidate()
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    sTransparencyThreshold = 0.3
+    '    Call picPreview.Invalidate()
+    'End Sub
 
-    Private Sub mnuPreviewTransparentThreshold_DropDownOpening(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold.DropDownOpening
-        mnuPreviewTransparentThreshold1.Checked = False
-        mnuPreviewTransparentThreshold2.Checked = False
-        mnuPreviewTransparentThreshold3.Checked = False
-        mnuPreviewTransparentThreshold4.Checked = False
-        mnuPreviewTransparentThreshold5.Checked = False
-        mnuPreviewTransparentThreshold6.Checked = False
-        mnuPreviewTransparentThreshold7.Checked = False
-        mnuPreviewTransparentThreshold8.Checked = False
-        mnuPreviewTransparentThreshold9.Checked = False
-        mnuPreviewTransparentThreshold10.Checked = False
-        Select Case sTransparencyThreshold
-            Case 0.99
-                mnuPreviewTransparentThreshold1.Checked = True
-            Case 0.95
-                mnuPreviewTransparentThreshold2.Checked = True
-            Case 0.9
-                mnuPreviewTransparentThreshold3.Checked = True
-            Case 0.8
-                mnuPreviewTransparentThreshold4.Checked = True
-            Case 0.7
-                mnuPreviewTransparentThreshold5.Checked = True
-            Case 0.6
-                mnuPreviewTransparentThreshold6.Checked = True
-            Case 0.5
-                mnuPreviewTransparentThreshold7.Checked = True
-            Case 0.4
-                mnuPreviewTransparentThreshold8.Checked = True
-            Case 0.3
-                mnuPreviewTransparentThreshold9.Checked = True
-            Case 0.2
-                mnuPreviewTransparentThreshold10.Checked = True
-            Case 0.1
-                mnuPreviewTransparentThreshold11.Checked = True
-        End Select
-    End Sub
-
-    Private Sub mnuPreviewTransparentThreshold11_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold11.Click
-        sTransparencyThreshold = 0
-        Call picPreview.Invalidate()
-    End Sub
-
-    Private Sub mnuPreviewTransparentThreshold10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold10.Click
-        sTransparencyThreshold = 0.1
-        Call picPreview.Invalidate()
-    End Sub
-
-    Private Sub mnuPreviewTransparentThreshold9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold9.Click
-        sTransparencyThreshold = 0.2
-        Call picPreview.Invalidate()
-    End Sub
-
-    Private Sub mnuPreviewTransparentThreshold8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold8.Click
-        sTransparencyThreshold = 0.3
-        Call picPreview.Invalidate()
-    End Sub
-
-    Private Sub mnuPreviewTransparentThreshold7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPreviewTransparentThreshold7.Click
-        sTransparencyThreshold = 0.4
-        Call picPreview.Invalidate()
-    End Sub
+    'Private Sub mnuPreviewTransparentThreshold7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    sTransparencyThreshold = 0.4
+    '    Call picPreview.Invalidate()
+    'End Sub
 
     'Private Sub pnlTop_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs)
     '    If (e.Button And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left Then
@@ -589,53 +533,12 @@ friend Class frmImageEdit
     '    End If
     'End Sub
 
-    Private Sub btnRubber_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnRubber.CheckedChanged
-        Dim bVisible As Boolean = btnRubber.Checked
-        Call pToolStop()
-
-        btnRubber0.Visible = bVisible
-        btnRubber1.Visible = bVisible
-        btnRubber2.Visible = bVisible
-        btnRubber3.Visible = bVisible
-        Select Case iRubberSize
-            Case 16
-                btnRubber0.Checked = True
-            Case 32
-                btnRubber1.Checked = True
-            Case 64
-                btnRubber2.Checked = True
-            Case Else
-                btnRubber3.Checked = True
-        End Select
-
-        If bVisible Then
-            Call pToolStart(ToolEnum.Rubber)
-        End If
-    End Sub
-
-    Private Sub btnShowCutBorders_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnShowCutBorders.CheckedChanged
-        Dim bVisible As Boolean = btnShowCutBorders.Checked
-        Call pToolStop()
-        btnCut.Visible = bVisible
-        If bVisible Then
-            Call pToolStart(ToolEnum.Cut)
-        End If
-    End Sub
-
-    Private Sub btnShowCutBorders_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnShowCutBorders.Click
-        btnShowCutBorders.Checked = Not btnShowCutBorders.Checked
-    End Sub
-
-    Private Sub btnCut_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCut.Click
-        Call pPreviewCrop()
-    End Sub
-
     Private Sub pPreviewCrop()
-        Dim oRect As RectangleF = oCutRect
-        If oRect.IsEmpty Or oRect.Width = 0 Or oRect.Height = 0 Then
-            Call MsgBox(GetLocalizedString("imageedit.warning7"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("imageedit.warningtitle"))
+        Dim oRect As RectangleF = modPaint.FullScaleRectangle(oCutRect, sZoomFactor)
+        If oRect.IsEmpty OrElse oRect.Width = 0 OrElse oRect.Height = 0 Then
+            Call cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("imageedit.warning7"), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("imageedit.warningtitle"))
         Else
-            If MsgBox(GetLocalizedString("imageedit.warning3"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Yes Then
+            If cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("imageedit.warning3"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Yes Then
                 Dim iWidth As Integer = oRect.Width
                 Dim iHeight As Integer = oRect.Height
                 Dim oSourceRect As Rectangle = Rectangle.Truncate(oRect)
@@ -654,65 +557,28 @@ friend Class frmImageEdit
         End If
     End Sub
 
-    Private Sub btnRescale0_Click(sender As System.Object, e As System.EventArgs) Handles btnRescale0.Click
-        If MsgBox(GetLocalizedString("imageedit.warning4"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Yes Then
+    Private Sub btnRescale0_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnRescale0.ItemClick
+        If cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("imageedit.warning4"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Yes Then
             Call pRescaleImage(3096, 3096)
         End If
     End Sub
 
-    Private Sub btnRescale1_Click(sender As System.Object, e As System.EventArgs) Handles btnRescale1.Click
-        If MsgBox(GetLocalizedString("imageedit.warning4"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Yes Then
+    Private Sub btnRescale1_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnRescale1.ItemClick
+        If cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("imageedit.warning4"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Yes Then
             Call pRescaleImage(2048, 2048)
         End If
     End Sub
 
-    Private Sub btnRescale2_Click(sender As System.Object, e As System.EventArgs) Handles btnRescale2.Click
-        If MsgBox(GetLocalizedString("imageedit.warning4"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Yes Then
+    Private Sub btnRescale2_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnRescale2.ItemClick
+        If cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("imageedit.warning4"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Yes Then
             Call pRescaleImage(1024, 1024)
         End If
     End Sub
 
-    Private Sub btnRescale3_Click(sender As System.Object, e As System.EventArgs) Handles btnRescale3.Click
-        If MsgBox(GetLocalizedString("imageedit.warning4"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Yes Then
+    Private Sub btnRescale3_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnRescale3.ItemClick
+        If cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("imageedit.warning4"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Yes Then
             Call pRescaleImage(512, 512)
         End If
-    End Sub
-
-    Private Sub btnRescale_DropDownOpening(sender As Object, e As System.EventArgs) Handles btnRescale.DropDownOpening
-        btnRescale0.Enabled = (oCurrentImage.Width > 3096) Or (oCurrentImage.Height > 3096)
-        btnRescale1.Enabled = (oCurrentImage.Width > 2048) Or (oCurrentImage.Height > 2048)
-        btnRescale2.Enabled = (oCurrentImage.Width > 1024) Or (oCurrentImage.Height > 1024)
-        btnRescale3.Enabled = (oCurrentImage.Width > 512) Or (oCurrentImage.Height > 512)
-    End Sub
-
-    Private Sub btnRotate_Click(sender As System.Object, e As System.EventArgs) Handles btnRotate.Click
-        If MsgBox(GetLocalizedString("imageedit.warning5"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Yes Then
-            Call pRotateImage()
-        End If
-    End Sub
-
-    Private Sub btnFlip_Click(sender As System.Object, e As System.EventArgs) Handles btnFlip.Click
-
-    End Sub
-
-    Private Sub btnFlipH_Click(sender As System.Object, e As System.EventArgs) Handles btnFlipH.Click
-        If MsgBox(GetLocalizedString("imageedit.warning5"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Yes Then
-            Call pFlipXImage()
-        End If
-    End Sub
-
-    Private Sub btnFlipV_Click(sender As System.Object, e As System.EventArgs) Handles btnFlipV.Click
-        If MsgBox(GetLocalizedString("imageedit.warning5"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Yes Then
-            Call pFlipYImage()
-        End If
-    End Sub
-
-    Private Sub btnStop_Click(sender As System.Object, e As System.EventArgs) Handles btnStop.Click
-        Call pToolStop()
-    End Sub
-
-    Private Sub mnuPreviewStop_Click(sender As System.Object, e As System.EventArgs) Handles mnuPreviewStop.Click
-        Call pToolStop()
     End Sub
 
     Private Sub frmSketchEdit_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
@@ -734,7 +600,7 @@ friend Class frmImageEdit
     End Sub
 
     Private Sub picPreview_MouseUp(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles picPreview.MouseUp
-        If iCurrentTool = ToolEnum.Cut And (e.Button And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left Then
+        If iCurrentTool = ToolEnum.Cut AndAlso (e.Button And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left Then
             Dim oTmpRect As RectangleF = pGetSelRect()
             If My.Computer.Keyboard.ShiftKeyDown Then
                 If oCutRect.IsEmpty Then
@@ -751,18 +617,153 @@ friend Class frmImageEdit
         End If
 
         If iCurrentTool = ToolEnum.None Then
-            Dim oPoint As Point = New Point(e.X, e.Y)
+            Dim oPoint As Point = e.Location
             Call picPreview.Invalidate()
             If (e.Button And Windows.Forms.MouseButtons.Right) = Windows.Forms.MouseButtons.Right Then
-                Call mnuPreview.Show(picPreview.PointToScreen(oPoint))
+                Call mnuPreview.ShowPopup(picPreview.PointToScreen(oPoint))
             End If
         End If
     End Sub
 
-    Protected Overrides Sub Finalize()
-        oImage = Nothing
-        oSourceImage = Nothing
-        oCurrentImage = Nothing
-        MyBase.Finalize()
+    Private Sub cmdok_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles cmdok.ItemClick
+        oImage.Image = oCurrentImage
+        oImage.TransparentColor = oTransparentColor
+        oImage.TransparencyThreshold = sTransparencyThreshold
+
+        DialogResult = DialogResult.OK
+        Call Close()
     End Sub
+
+    Private Sub cmdCancel_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles cmdCancel.ItemClick
+        DialogResult = DialogResult.Cancel
+        Call Close()
+    End Sub
+
+    Private Sub btnRotate_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnRotate.ItemClick
+        If cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("imageedit.warning5"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Yes Then
+            Call pRotateImage()
+        End If
+    End Sub
+
+    Private Sub btnFlipH_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnFlipH.ItemClick
+        If cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("imageedit.warning5"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Yes Then
+            Call pFlipXImage()
+        End If
+    End Sub
+
+    Private Sub btnFlipV_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnFlipV.ItemClick
+        If cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("imageedit.warning5"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Yes Then
+            Call pFlipYImage()
+        End If
+    End Sub
+
+    Private Sub btnToGrayscale_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnToGrayscale.ItemClick
+        If cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("imageedit.warning2"), MsgBoxStyle.OkCancel Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Ok Then
+            Call pGrayScaleImage()
+            Call picPreview.Invalidate()
+        End If
+    End Sub
+
+    Private Sub btnRubber_CheckedChanged(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnRubber.CheckedChanged
+        Dim bVisible As Boolean = btnRubber.Checked
+        Call pToolStop()
+        btnRubberSize.Visibility = If(bVisible, DevExpress.XtraBars.BarItemVisibility.Always, DevExpress.XtraBars.BarItemVisibility.Never)
+        If bVisible Then
+            iRubberSize = 16 * btnRubberSize.EditValue
+            Call pToolStart(ToolEnum.Rubber)
+        End If
+    End Sub
+
+    Private Sub btnRubberSize_EditValueChanged(sender As Object, e As EventArgs) Handles btnRubberSize.EditValueChanged
+        iRubberSize = 16 * btnRubberSize.EditValue
+    End Sub
+
+    Private Sub btnStop_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnStop.ItemClick
+        Call pToolStop()
+    End Sub
+
+    Private Sub btnCropStart_CheckedChanged(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnCropStart.CheckedChanged
+        Dim bVisible As Boolean = btnCropStart.Checked
+        Call pToolStop()
+        btnCrop.Visibility = If(bVisible, DevExpress.XtraBars.BarItemVisibility.Always, DevExpress.XtraBars.BarItemVisibility.Never)
+        If bVisible Then
+            Call pToolStart(ToolEnum.Cut)
+        End If
+    End Sub
+
+    Private Sub btnCrop_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnCrop.ItemClick
+        Call pPreviewCrop()
+    End Sub
+
+    Private Sub btnRescale_Popup(sender As Object, e As EventArgs) Handles btnRescale.Popup
+        btnRescale0.Enabled = (oCurrentImage.Width > 3096) OrElse (oCurrentImage.Height > 3096)
+        btnRescale1.Enabled = (oCurrentImage.Width > 2048) OrElse (oCurrentImage.Height > 2048)
+        btnRescale2.Enabled = (oCurrentImage.Width > 1024) OrElse (oCurrentImage.Height > 1024)
+        btnRescale3.Enabled = (oCurrentImage.Width > 512) OrElse (oCurrentImage.Height > 512)
+    End Sub
+
+    Private Sub btnUndo_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnUndo.ItemClick
+        If cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("imageedit.warning1"), MsgBoxStyle.OkCancel Or MsgBoxStyle.Exclamation, GetLocalizedString("imageedit.warningtitle")) = MsgBoxResult.Ok Then
+            oCurrentImage = oSourceImage.Clone
+            Call pRescaleImage(iMaxWidth, iMaxHeight)
+            Call picPreview.Invalidate()
+        End If
+    End Sub
+
+    Private Sub btnTransparentThreshold_EditValueChanged(sender As Object, e As EventArgs) Handles btnTransparentThreshold.EditValueChanged
+        Dim sNewTransparencyThreshold As Single = btnTransparentThreshold.EditValue / 100.0F
+        If sNewTransparencyThreshold <> sTransparencyThreshold Then
+            sTransparencyThreshold = sNewTransparencyThreshold
+            Call picPreview.Invalidate()
+        End If
+    End Sub
+
+    Private Sub btnDeleteTransparent_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnDeleteTransparent.ItemClick
+        oTransparentColor = Color.Transparent
+        Call picPreview.Invalidate()
+    End Sub
+
+    Private Sub btnSetTransparent_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnSetTransparent.ItemClick
+        oTransparentColor = oCurrentImage.GetPixel(oLastMousePoint.X, oLastMousePoint.Y)
+        Call picPreview.Invalidate()
+    End Sub
+
+    Private Sub btnLoadImage_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnLoadImage.ItemClick
+        Using oOfd As OpenFileDialog = New OpenFileDialog
+            With oOfd
+                .Title = GetLocalizedString("imageedit.openimagedialog")
+                .Filter = GetLocalizedString("imageedit.filetypeIMAGES") & " (*.JPG;*.PNG;*.TIF;*.BMP;*.GIF)|*.JPG;*.PNG;*.TIF;*.BMP;*.GIF|" & GetLocalizedString("imageedit.filetypeALL") & " (*.*)|*.*"
+                .FilterIndex = 1
+                If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                    Try
+                        oSourceImage = modPaint.ImageExifRotate(New Bitmap(.FileName))
+                        oCurrentImage = oSourceImage.Clone
+                        Call pRescaleImage(iMaxWidth, iMaxHeight)
+                        Call picPreview.Invalidate()
+                    Catch ex As Exception
+                        Call cSurvey.UIHelpers.Dialogs.Msgbox(String.Format(GetLocalizedString("imageedit.warning6"), ex.Message), MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, GetLocalizedString("imageedit.warningtitle"))
+                    End Try
+                End If
+            End With
+        End Using
+    End Sub
+
+    Private Sub btnTransparency_Popup(sender As Object, e As EventArgs) Handles btnTransparency.Popup
+        If oTransparentColor = Color.Transparent Then
+            btnDeleteTransparent.Enabled = False
+            btnTransparentThreshold.Enabled = False
+        Else
+            btnDeleteTransparent.Enabled = True
+            btnTransparentThreshold.Enabled = True
+        End If
+        btnTransparentThreshold.EditValue = sTransparencyThreshold * 100.0F
+    End Sub
+
+    'Private Sub picPreview_MouseWheel(sender As Object, e As MouseEventArgs) Handles picPreview.MouseWheel
+    '    If e.Delta > 0 Then
+    '        btnZoomIn_Click(Nothing, Nothing)
+    '    Else
+    '        btnZoomOut_Click(Nothing, Nothing)
+    '    End If
+    'End Sub
 End Class

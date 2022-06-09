@@ -36,8 +36,10 @@ Module modRender
     Friend Sub RenderHighlightShot(Graphics As Graphics, ByVal PaintOptions As cOptions, FromPaintPoint As PointF, ToPaintPoint As PointF, Cache As cDrawCache, HighlightDetailMeters As Properties.cHighlightsDetailMeters)
         If FromPaintPoint <> ToPaintPoint Then
             With HighlightDetailMeters
-                Using oBrush As Brush = If(.Colors.Length = 1, New SolidBrush(.Color), New LinearGradientBrush(FromPaintPoint, ToPaintPoint, .Colors(0), .Colors(1)))
+                Using oBrush As Brush = If(.Colors.Length = 1, New SolidBrush(.GetColors(0)), New LinearGradientBrush(FromPaintPoint, ToPaintPoint, .GetColors(0), .GetColors(1)))
                     Using oPen As Pen = New Pen(oBrush, .Size / 2)
+                        oPen.EndCap = LineCap.Round
+                        oPen.StartCap = LineCap.Round
                         Dim oItem As cDrawCacheItem = Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, Nothing, oPen)
                         Call oItem.AddLine(FromPaintPoint, ToPaintPoint)
                     End Using
@@ -46,7 +48,7 @@ Module modRender
         End If
     End Sub
 
-    Friend Sub RenderHighlightStation(Graphics As Graphics, ByVal PaintOptions As cOptions, PaintPoint As PointF, Cache As cDrawCache, HighlightDetailMeters As Properties.cHighlightsDetailMeters)
+    Friend Sub RenderHighlightStation(Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, PaintPoint As PointF, Cache As cDrawCache, HighlightDetailMeters As Properties.cHighlightsDetailMeters)
         With HighlightDetailMeters
             Using oBrush1 As SolidBrush = New SolidBrush(Color.FromArgb(.Opacity / 3, .Color))
                 Dim oItem As cDrawCacheItem = Cache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, Nothing, Nothing, Nothing, oBrush1)
@@ -59,7 +61,7 @@ Module modRender
         End With
     End Sub
 
-    Friend Sub RenderTrigPointName(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal TrigPoint As cTrigPoint, ByVal Position As PointF, ByVal Cache As cDrawCache)
+    Friend Sub RenderTrigPointName(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal TrigPoint As cTrigPoint, ByVal Position As PointF, ByVal Cache As cDrawCache)
         Dim oDrawingObject As cOptionsDrawingObjects = PaintOptions.DrawingObjects
         Dim sName As String = TrigPoint.Name
         If TrigPoint.IsSpecial Then
@@ -75,7 +77,7 @@ Module modRender
         'Call oItem.SetBrush(oDrawingObject.TextBrush)
     End Sub
 
-    Friend Sub RenderTrigPoint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal TrigPoint As cTrigPoint, ByVal Position As PointF, ByVal PointSize As Single, ByVal PointBrush As Brush, ByVal PointPen As Pen, ByVal Cache As cDrawCache)
+    Friend Sub RenderTrigPoint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal TrigPoint As cTrigPoint, ByVal Position As PointF, ByVal PointSize As Single, ByVal PointBrush As Brush, ByVal PointPen As Pen, ByVal Cache As cDrawCache)
         Dim iLabelSymbol As cTrigPoint.TrigPointLabelSymbolEnum
         If TrigPoint.LabelSymbol = cTrigPoint.TrigPointLabelSymbolEnum.Default Then
             iLabelSymbol = PaintOptions.Survey.Properties.DesignProperties.GetValue("PlotPointSymbol", cTrigPoint.TrigPointLabelSymbolEnum.Triangle)

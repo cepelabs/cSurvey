@@ -10,6 +10,29 @@ Namespace cSurvey
 
         Private oSurvey As cSurvey
 
+        Public Class cGetParentEventArgs
+            Inherits EventArgs
+
+            Private oParent As cPropertiesCollection
+
+            Public Property Parent As cPropertiesCollection
+                Get
+                    Return oParent
+                End Get
+                Set(value As cPropertiesCollection)
+                    oParent = value
+                End Set
+            End Property
+
+            Public Sub New()
+            End Sub
+
+            Public Sub New(Parent As cPropertiesCollection)
+                oParent = Parent
+            End Sub
+        End Class
+        Public Event OnGetParent(sender As Object, e As cGetParentEventArgs)
+
         Private oItems As Dictionary(Of String, Object)
 
         Friend Sub New(ByVal Survey As cSurvey)
@@ -113,7 +136,13 @@ Namespace cSurvey
             If oItems.ContainsKey(Name) Then
                 Return oItems(Name)
             Else
-                Return DefaultValue
+                Dim oArgs As cgetparenteventargs = New cGetParentEventArgs
+                RaiseEvent OnGetParent(Me, oArgs)
+                If oArgs.Parent Is Nothing Then
+                    Return DefaultValue
+                Else
+                    Return oArgs.Parent.GetValue(Name, DefaultValue)
+                End If
             End If
         End Function
 

@@ -158,12 +158,12 @@ Namespace cSurvey
                     oLinkedSurvey = New cSurvey
                     Dim oResult As cActionResult = oLinkedSurvey.Load(sFilename, cSurvey.LoadOptionsEnum.IsLinkedSurvey)
                     If Not oResult.Result Then
-                        oLastException = New Exception(oResult.ErrorMessage)
+                        oLastException = oResult.Exception
                         oLinkedSurvey = Nothing
                     Else
                         Dim bIsDuplicated As Boolean = oLinkedSurveys.ContainsCopyOf(Me) ' Not oSurvey.LinkedSurveys.FirstOrDefault(Function(oitem) Not oitem Is Me AndAlso oitem.GetID = oLinkedSurvey.ID) Is Nothing
                         If bIsDuplicated Then
-                            Call oLinkedSurveys.Survey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, "Survey file """ & sFilename & """ is already linked", True)
+                            Call oLinkedSurveys.Survey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, "Survey file """ & sFilename & """ is already linked")
                             oLastException = New cDuplicatedLinkedSurveyException(sFilename, oLinkedSurvey.ID)
                             oLinkedSurvey = Nothing
                         Else
@@ -269,12 +269,12 @@ Namespace cSurvey
                 For Each oItem As cLinkedSurvey In LinkedSurveys
                     If Not IsNothing(oItem.LinkedSurvey) Then
                         If Contains(oItem.LinkedSurvey.ID) Then
-                            Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, "Survey file """ & oItem.Filename & """ is already linked", True)
+                            Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, "Survey file """ & oItem.Filename & """ is already linked")
                         Else
                             Dim oNewItem As cLinkedSurvey = New cLinkedSurvey(Me, oItem)
                             Call oItems.Add(oNewItem)
                             Call RecursiveAdd(oNewItem)
-                            Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, "Survey file """ & oNewItem.Filename & """ successfully linked", True)
+                            Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, "Survey file """ & oNewItem.Filename & """ successfully linked")
                         End If
                     End If
                 Next
@@ -288,7 +288,7 @@ Namespace cSurvey
                     Dim oNewItem As cLinkedSurvey = New cLinkedSurvey(Me, oItem)
                     Call oItems.Add(oNewItem)
                     Call RecursiveAdd(oNewItem)
-                    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, "Survey file """ & oNewItem.Filename & """ successfully linked", True)
+                    Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, "Survey file """ & oNewItem.Filename & """ successfully linked")
                 Next
             End If
         End Sub
@@ -342,6 +342,10 @@ Namespace cSurvey
                 Call oItems.Remove(oItem)
             Next
         End Sub
+
+        Public Function GetByID(ID As String) As cLinkedSurvey
+            Return oItems.FirstOrDefault(Function(oitem) oitem.GetID = ID)
+        End Function
 
         Default Public ReadOnly Property Item(Index As Integer) As cLinkedSurvey
             Get
@@ -429,7 +433,7 @@ Namespace cSurvey
             Else
                 Call oItems.Add(oItem)
                 Call RecursiveAdd(oItem)
-                Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, "Survey file """ & Filename & """ successfully linked", True)
+                Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information, "Survey file """ & Filename & """ successfully linked")
                 Return oItem
             End If
         End Function

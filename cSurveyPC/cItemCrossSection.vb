@@ -35,7 +35,7 @@ Namespace cSurvey.Design.Items
         Private bShowSplayBorder As Boolean
         Private iSplayBorderProjectionAngle As Integer
         Private iSplayBorderProjectionVerticalAngle As Integer
-        Private iSplayBorderLineStyle As cOptions.SplayStyleEnum
+        Private iSplayBorderLineStyle As cOptionsCenterline.SplayStyleEnum
         Private sSplayBorderMaxAngleVariation As Single
         Private bShowSplayText As Boolean
         Private bShowOnlyCutSplay As Boolean
@@ -149,11 +149,11 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
-        Public Property SplayBorderLineStyle As cOptions.SplayStyleEnum Implements cIItemCrossSectionSplayBorder.SplayBorderLineStyle
+        Public Property SplayBorderLineStyle As cOptionsCenterline.SplayStyleEnum Implements cIItemCrossSectionSplayBorder.SplayBorderLineStyle
             Get
                 Return iSplayBorderLineStyle
             End Get
-            Set(value As cOptions.SplayStyleEnum)
+            Set(value As cOptionsCenterline.SplayStyleEnum)
                 If iSplayBorderLineStyle <> value Then
                     iSplayBorderLineStyle = value
                     Call MyBase.Caches.Invalidate()
@@ -435,7 +435,7 @@ Namespace cSurvey.Design.Items
 
             iSplayBorderProjectionAngle = 0
             iSplayBorderProjectionVerticalAngle = 0
-            iSplayBorderLineStyle = cOptions.SplayStyleEnum.PointsAndRays
+            iSplayBorderLineStyle = cOptionsCenterline.SplayStyleEnum.PointsAndRays
             sSplayBorderMaxAngleVariation = 20
             bShowSplayBorder = False
             bShowSplayText = False
@@ -462,7 +462,7 @@ Namespace cSurvey.Design.Items
             End If
         End Sub
 
-        Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptions) As Single
+        Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptionsCenterline) As Single
             Dim sTextScaleFactor As Single = MyBase.GetTextScaleFactor(PaintOptions) * PaintOptions.GetCurrentDesignPropertiesValue("DesignCrossSectionTextScaleFactor", 1)
             Select Case iTextSize
                 Case cIItemSizable.SizeEnum.Default
@@ -496,7 +496,7 @@ Namespace cSurvey.Design.Items
             End Select
         End Function
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
             Using oMatrix As Matrix = New Matrix
                 If PaintOptions.DrawTranslation Then
                     Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
@@ -508,7 +508,7 @@ Namespace cSurvey.Design.Items
             End Using
         End Function
 
-        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
+        Friend Overrides Function ToSvg(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
             Dim oSVG As XmlDocument = modSVG.CreateSVG
             Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
             Return oSVG
@@ -529,7 +529,7 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
-        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             Dim oCache As cDrawCache = MyBase.Caches(PaintOptions)
             With oCache
                 If .Invalidated Then
@@ -690,7 +690,7 @@ Namespace cSurvey.Design.Items
                                             Call oCacheItem.AddPath(oCrossPath)
                                         End Using
 
-                                        If iSplayBorderLineStyle <> cOptions.SplayStyleEnum.Points Then
+                                        If iSplayBorderLineStyle <> cOptionsCenterline.SplayStyleEnum.Points Then
                                             Using oBorderPath As GraphicsPath = New GraphicsPath
                                                 For Each oPoint As PointF In oPoints
                                                     Call oBorderPath.StartFigure()
@@ -753,7 +753,7 @@ Namespace cSurvey.Design.Items
             Return MyBase.Points(0).Point
         End Function
 
-        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             If MyBase.Points.Count > 0 Then
                 Call Render(Graphics, PaintOptions, Options, Selected)
                 If Not PaintOptions.IsDesign OrElse (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then
@@ -807,8 +807,8 @@ Namespace cSurvey.Design.Items
             bShowSplayBorder = modXML.GetAttributeValue(item, "showsplayborder", False)
             iSplayBorderProjectionAngle = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "splayborderprojectionangle", 0))
             iSplayBorderProjectionVerticalAngle = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "splayborderprojectionvangle", 0))
-            iSplayBorderLineStyle = modXML.GetAttributeValue(item, "splayborderlinestyle", cOptions.SplayStyleEnum.PointsAndRays)
-            If iSplayBorderLineStyle > cOptions.SplayStyleEnum.PointsAndRays Then iSplayBorderLineStyle = cOptions.SplayStyleEnum.PointsAndRays
+            iSplayBorderLineStyle = modXML.GetAttributeValue(item, "splayborderlinestyle", cOptionsCenterline.SplayStyleEnum.PointsAndRays)
+            If iSplayBorderLineStyle > cOptionsCenterline.SplayStyleEnum.PointsAndRays Then iSplayBorderLineStyle = cOptionsCenterline.SplayStyleEnum.PointsAndRays
             sSplayBorderMaxAngleVariation = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "splaybordermaxanglevariation", 20))
             bShowSplayText = modXML.GetAttributeValue(item, "showsplaytext", False)
             bShowOnlyCutSplay = modXML.GetAttributeValue(item, "showonlycutsplay", False)
@@ -915,7 +915,7 @@ Namespace cSurvey.Design.Items
             If bShowSplayBorder Then Call oItem.SetAttribute("showsplayborder", 1)
             If iSplayBorderProjectionAngle <> 0 Then Call oItem.SetAttribute("splayborderprojectionangle", iSplayBorderProjectionAngle)
             If iSplayBorderProjectionVerticalAngle <> 0 Then Call oItem.SetAttribute("splayborderprojectionvangle", iSplayBorderProjectionVerticalAngle)
-            If iSplayBorderLineStyle <> cOptions.SplayStyleEnum.PointsAndRays Then Call oItem.SetAttribute("splayborderlinestyle", iSplayBorderLineStyle.ToString("D"))
+            If iSplayBorderLineStyle <> cOptionsCenterline.SplayStyleEnum.PointsAndRays Then Call oItem.SetAttribute("splayborderlinestyle", iSplayBorderLineStyle.ToString("D"))
             If sSplayBorderMaxAngleVariation <> 20 Then Call oItem.SetAttribute("splaybordermaxanglevariation", modNumbers.NumberToString(sSplayBorderMaxAngleVariation))
             If bShowSplayText Then Call oItem.SetAttribute("showsplaytext", 1)
             If bShowOnlyCutSplay Then Call oItem.SetAttribute("showonlycutsplay", 1)

@@ -28,7 +28,7 @@ Namespace cSurvey
         End Function
 
         Public Overrides Function ToString() As String
-            Return sFontName & ", " & modNumbers.NumberToString(sFontSize) & "," & IIf(bFontBold, " " & GetLocalizedString("itemfont.textpart1"), "") & IIf(bFontItalic, " " & GetLocalizedString("itemfont.textpart2"), "") & IIf(FontUnderline, " " & GetLocalizedString("itemfont.textpart3"), "")
+            Return sFontName & ", " & modNumbers.NumberToString(sFontSize) & "," & If(bFontBold, " " & GetLocalizedString("itemfont.textpart1"), "") & If(bFontItalic, " " & GetLocalizedString("itemfont.textpart2"), "") & If(FontUnderline, " " & GetLocalizedString("itemfont.textpart3"), "")
         End Function
 
         Public Sub CopyFrom(ByVal Font As cFont)
@@ -38,7 +38,7 @@ Namespace cSurvey
             bFontItalic = Font.bFontItalic
             bFontUnderline = Font.bFontUnderline
             oColor = Font.oColor
-            Call pBindFont()
+            Call pInvalidate()
         End Sub
 
         Friend Sub New(ByVal Font As cFont)
@@ -59,7 +59,7 @@ Namespace cSurvey
             bFontItalic = Italic
             bFontUnderline = Underline
             oColor = Color
-            Call pBindFont()
+            Call pInvalidate()
         End Sub
 
         Friend Sub New(ByVal Survey As cSurvey)
@@ -67,7 +67,7 @@ Namespace cSurvey
             sFontName = oSurvey.Properties.DesignProperties.GetValue("DefaultFontName", "Tahoma")
             sFontSize = oSurvey.Properties.DesignProperties.GetValue("DefaultFontSize", 8)
             oColor = Color.Black
-            Call pBindFont()
+            Call pInvalidate()
         End Sub
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal item As XmlElement)
@@ -78,10 +78,11 @@ Namespace cSurvey
             bFontBold = modXML.GetAttributeValue(item, "fontbold", False)
             bFontItalic = modXML.GetAttributeValue(item, "fontitalic", False)
             bFontUnderline = modXML.GetAttributeValue(item, "fontunderline", False)
-            Call pBindFont()
+            Call pInvalidate()
         End Sub
 
         Friend Sub AddToPath(ByVal Path As GraphicsPath, ByVal Text As String, ByVal Point As PointF, ByVal StringFormat As StringFormat)
+            If oFont Is Nothing Then Call pBindFont()
             Call Path.AddString(Text, oFont.FontFamily, oFont.Style, oFont.Size, Point, StringFormat)
         End Sub
 
@@ -91,13 +92,13 @@ Namespace cSurvey
             Call oItem.SetAttribute("fontname", sFontName)
             Call oItem.SetAttribute("fontsize", sFontSize)
             If bFontBold Then
-                Call oItem.SetAttribute("fontbold", IIf(bFontBold, 1, 0))
+                Call oItem.SetAttribute("fontbold", If(bFontBold, 1, 0))
             End If
             If bFontItalic Then
-                Call oItem.SetAttribute("fontitalic", IIf(bFontBold, 1, 0))
+                Call oItem.SetAttribute("fontitalic", If(bFontBold, 1, 0))
             End If
             If bFontUnderline Then
-                Call oItem.SetAttribute("fontunderline", IIf(bFontBold, 1, 0))
+                Call oItem.SetAttribute("fontunderline", If(bFontBold, 1, 0))
             End If
             Call Parent.AppendChild(oItem)
             Return oItem
@@ -110,7 +111,7 @@ Namespace cSurvey
             Set(ByVal value As Boolean)
                 If bFontUnderline <> value Then
                     bFontUnderline = value
-                    Call pBindFont()
+                    Call pInvalidate()
                 End If
             End Set
         End Property
@@ -122,7 +123,7 @@ Namespace cSurvey
             Set(ByVal value As Boolean)
                 If bFontItalic <> value Then
                     bFontItalic = value
-                    Call pBindFont()
+                    Call pInvalidate()
                 End If
             End Set
         End Property
@@ -134,7 +135,7 @@ Namespace cSurvey
             Set(ByVal value As Color)
                 If Color <> value Then
                     oColor = value
-                    Call pBindFont()
+                    Call pInvalidate()
                 End If
             End Set
         End Property
@@ -146,7 +147,7 @@ Namespace cSurvey
             Set(ByVal value As Boolean)
                 If bFontBold <> value Then
                     bFontBold = value
-                    Call pBindFont()
+                    Call pInvalidate()
                 End If
             End Set
         End Property
@@ -158,7 +159,7 @@ Namespace cSurvey
             Set(ByVal value As String)
                 If sFontName <> value Then
                     sFontName = value
-                    Call pBindFont()
+                    Call pInvalidate()
                 End If
             End Set
         End Property
@@ -170,17 +171,19 @@ Namespace cSurvey
             Set(ByVal value As Single)
                 If sFontSize <> value Then
                     sFontSize = value
-                    Call pBindFont()
+                    Call pInvalidate()
                 End If
             End Set
         End Property
 
         Function GetSampleFont() As Font Implements cIFont.GetSampleFont
+            If oFont Is Nothing Then Call pBindFont()
             Return oFont
         End Function
 
         Public ReadOnly Property Font() As Font
             Get
+                If oFont Is Nothing Then Call pBindFont()
                 Return oFont
             End Get
         End Property
@@ -194,12 +197,27 @@ Namespace cSurvey
         Public ReadOnly Property FontStyle As FontStyle Implements cIFont.FontStyle
             Get
                 Dim iFontStyle As FontStyle
-                iFontStyle = IIf(bFontBold, iFontStyle Or FontStyle.Bold, iFontStyle)
-                iFontStyle = IIf(bFontItalic, iFontStyle Or FontStyle.Italic, iFontStyle)
-                iFontStyle = IIf(bFontUnderline, iFontStyle Or FontStyle.Underline, iFontStyle)
+                iFontStyle = If(bFontBold, iFontStyle Or FontStyle.Bold, iFontStyle)
+                iFontStyle = If(bFontItalic, iFontStyle Or FontStyle.Italic, iFontStyle)
+                iFontStyle = If(bFontUnderline, iFontStyle Or FontStyle.Underline, iFontStyle)
                 Return iFontStyle
             End Get
         End Property
+
+        Private Sub pInvalidate()
+            If oFont IsNot Nothing Then
+                oFont.Dispose()
+                oFont = Nothing
+            End If
+            If oBrush IsNot Nothing Then
+                oBrush.Dispose()
+                oBrush = Nothing
+            End If
+            If oWireframePen IsNot Nothing Then
+                oWireframePen.Dispose()
+                oWireframePen = Nothing
+            End If
+        End Sub
 
         Private Sub pBindFont()
             If sFontName = "" Then
@@ -211,14 +229,14 @@ Namespace cSurvey
             Dim iFontStyle As FontStyle = FontStyle
             oFont = New Font(sFontName, sFontSize, iFontStyle)
             oBrush = New SolidBrush(oColor)
-            oWireframePen = New Pen(oColor, 1)
+            oWireframePen = New Pen(oColor, cEditPaintObjects.FilettoPenWidth)
             oWireframePen.SetLineCap(Drawing2D.LineCap.Round, Drawing2D.LineCap.Round, Drawing2D.DashCap.Round)
             oWireframePen.LineJoin = Drawing2D.LineJoin.Round
             oWireframePen.DashStyle = DashStyle.Dot
         End Sub
 
         Private Sub oSurvey_OnPropertiesChanged(ByVal Sender As cSurvey, ByVal Args As cSurvey.OnPropertiesChangedEventArgs) Handles oSurvey.OnPropertiesChanged
-            Call pBindFont()
+            Call pInvalidate()
         End Sub
 
 #Region "IDisposable Support"

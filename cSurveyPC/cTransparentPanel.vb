@@ -19,6 +19,10 @@
         End Get
     End Property
 
+    Protected Overrides Sub OnPaintBackground(e As PaintEventArgs)
+        'MyBase.OnPaintBackground(e)
+    End Sub
+
     Protected Overrides Sub OnPaint(ByVal e As PaintEventArgs)
         Using oBrush As SolidBrush = New SolidBrush(Me.BackColor)
             Call e.Graphics.FillRectangle(oBrush, Me.ClientRectangle)

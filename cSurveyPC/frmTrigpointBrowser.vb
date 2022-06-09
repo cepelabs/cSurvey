@@ -1,46 +1,45 @@
 ﻿Imports cSurveyPC.cSurvey
 
-friend Class frmTrigpointBrowser
+Friend Class frmTrigpointBrowser
+    Private oSurvey As cSurveyPC.cSurvey.cSurvey
 
-    Public Sub New(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal CurrentTrigpoint As String, Optional AllowNull As Boolean = False, Optional AllowSplay As Boolean = False, Optional ShowConnection As Boolean = False)
+    Private bAllowNull As Boolean
+
+    Public ReadOnly Property Count As Integer
+        Get
+            Return cboTrigpoints.Count
+        End Get
+    End Property
+
+    Public ReadOnly Property SelectedItem As String
+        Get
+            If (cboTrigpoints.EditValue Is Nothing) Then
+                Return ""
+            Else
+                Return cboTrigpoints.EditValue
+            End If
+        End Get
+    End Property
+
+    Public Sub New(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal CurrentTrigpoint As String, Optional AllowNull As Boolean = False, Optional AllowSplay As Boolean = False) ', Optional ShowConnection As Boolean = False)
 
         ' Chiamata richiesta dalla finestra di progettazione.
         InitializeComponent()
 
         ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
-        If AllowNull Then
-            Call cboTrigpoints.Items.Add("")
-        End If
+        oSurvey = Survey
+        Call cboTrigpoints.Rebind(Survey, CurrentTrigpoint, AllowNull, AllowSplay)
 
-        If ShowConnection Then
-            For Each oTrigPoint As cTrigPoint In Survey.TrigPoints
-                If Not oTrigPoint.Data.IsCalibration AndAlso (AllowSplay OrElse (Not AllowSplay AndAlso Not oTrigPoint.Data.IsSplay)) Then
-                    For Each sStation As String In oTrigPoint.Connections
-                        Call cboTrigpoints.Items.Add(oTrigPoint.Name & " (<" & sStation & ")")
-                    Next
-                End If
-            Next
+        If CurrentTrigpoint = "" Then
+            cboTrigpoints.EditValue = Nothing
         Else
-            For Each oTrigPoint As cTrigPoint In Survey.TrigPoints
-                If Not oTrigPoint.Data.IsCalibration AndAlso (AllowSplay OrElse (Not AllowSplay AndAlso Not oTrigPoint.Data.IsSplay)) Then
-                    Call cboTrigpoints.Items.Add(oTrigPoint.Name)
-                End If
-            Next
+            cboTrigpoints.EditValue = CurrentTrigpoint
         End If
-
-        Try
-            If CurrentTrigpoint Is Nothing Then
-                cboTrigpoints.SelectedIndex = 0
-            Else
-                cboTrigpoints.SelectedItem = CurrentTrigpoint
-            End If
-        Catch
-        End Try
     End Sub
 
-    Private Sub cboTrigpoints_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles cboTrigpoints.Validating
-        If IsNothing(cboTrigpoints.SelectedItem) AndAlso cboTrigpoints.Text <> "" Then
-            e.Cancel = True
-        End If
+    Private Sub cboTrigpoints_Popup(sender As Object, e As cTrigpointDropDown.PopupEventArgs) Handles cboTrigpoints.Popup
+        Cursor = Cursors.WaitCursor
+        Call e.AddRange(oSurvey.TrigPoints.GetStations(e.AllowSplay).ToList)
+        Cursor = Cursors.Default
     End Sub
 End Class

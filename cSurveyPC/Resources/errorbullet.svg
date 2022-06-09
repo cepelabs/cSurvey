@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   version="1.1"
+   id="Equal_To"
+   x="0px"
+   y="0px"
+   viewBox="0 0 32 32"
+   style="enable-background:new 0 0 32 32;"
+   xml:space="preserve"
+   sodipodi:docname="errorbullet.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs11" /><sodipodi:namedview
+   id="namedview9"
+   pagecolor="#505050"
+   bordercolor="#eeeeee"
+   borderopacity="1"
+   inkscape:pageshadow="0"
+   inkscape:pageopacity="0"
+   inkscape:pagecheckerboard="0"
+   showgrid="false"
+   inkscape:zoom="13"
+   inkscape:cx="21"
+   inkscape:cy="17.807692"
+   inkscape:window-width="2560"
+   inkscape:window-height="1017"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Equal_To" />
+<style
+   type="text/css"
+   id="style2">
+	.Black{fill:#727272;}
+	.Blue{fill:#1177D7;}
+</style>
+
+
+<style
+   type="text/css"
+   id="style192">
+	.Black{fill:#727272;}
+	.Blue{fill:#1177D7;}
+</style><style
+   type="text/css"
+   id="style294">
+	.Green{fill:#119B49;}
+	.Blue{fill:#3475BA;}
+	.Black{fill:#737373;}
+</style><style
+   type="text/css"
+   id="style556">
+	.Red{fill:#D11C1C;}
+	.Black{fill:#727272;}
+</style><style
+   type="text/css"
+   id="style827">
+	.Yellow{fill:#FFB115;}
+</style><style
+   type="text/css"
+   id="style927">
+	.Black{fill:#727272;}
+	.Red{fill:#D11C1C;}
+	.Yellow{fill:#FFB115;}
+	.Green{fill:#039C23;}
+</style><g
+   id="WarningCircled1"
+   transform="matrix(0.36813187,0,0,0.36813187,10.018076,10.272103)">
+	<path
+   class="Red"
+   d="M 16,2 C 8.3,2 2,8.3 2,16 2,23.7 8.3,30 16,30 23.7,30 30,23.7 30,16 30,8.3 23.7,2 16,2 Z m 0,22 c -1.1,0 -2,-0.9 -2,-2 0,-1.1 0.9,-2 2,-2 1.1,0 2,0.9 2,2 0,1.1 -0.9,2 -2,2 z m 2,-6 H 14 V 8 h 4 z"
+   id="path929" />
+</g></svg>

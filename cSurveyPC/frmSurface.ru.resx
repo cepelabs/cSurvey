@@ -118,61 +118,20 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 22</value>
-  </data>
   <data name="btnAdd.Text" xml:space="preserve">
     <value>Добавить</value>
-  </data>
-  <data name="btnRemove.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD5SURBVDhPY0AGRxwM/oMwlIsB8MqDJL4d3gXG2BThlQcJ
-        fN294f9TT10wBrGRFRGShyjYvPz/c18jOAbxQeL45KDawcAYJPBl9bz/rwLN4RjExyYG1WwM0YoAYEO+
-        Lp7+/02oDVYMksOlGQYghszt//8u0hEFg8QIaQYDkKJv0zr+f4h1Q8EgMagBuAFY88Sm/58TvbFikBxO
-        Q0AS33uq/39N9YdjEB+bGIYhIIEf7WX/v2eGwDGIDxLHJwfVDjHgV1Ph/595kWAMYkMVgAIMHLA45OEA
-        rOhPXQ4YI2mGAULyYABWhEsSCAjJgwHYyRAmVkBInlTAwAAAGRZmoO4izFMAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 22</value>
   </data>
   <data name="btnRemove.Text" xml:space="preserve">
     <value>Удалить</value>
   </data>
-  <data name="btnClear.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD5SURBVDhPY0AGRxwM/oMwlIsB8MqDJL4d3gXG2BThlQcJ
-        fN294f9TT10wBrGRFRGShyjYvPz/c18jOAbxQeL45KDawcAYJPBl9bz/rwLN4RjExyYG1WwM0YoAYEO+
-        Lp7+/02oDVYMksOlGQYghszt//8u0hEFg8QIaQYDkKJv0zr+f4h1Q8EgMagBuAFY88Sm/58TvbFikBxO
-        Q0AS33uq/39N9YdjEB+bGIYhIIEf7WX/v2eGwDGIDxLHJwfVDjHgV1Ph/595kWAMYkMVgAIMHLA45OEA
-        rOhPXQ4YI2mGAULyYABWhEsSCAjJgwHYyRAmVkBInlTAwAAAGRZmoO4izFMAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnClear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 22</value>
-  </data>
   <data name="btnClear.Text" xml:space="preserve">
     <value>Удалить все</value>
-  </data>
-  <data name="btnImportElevationData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 22</value>
   </data>
   <data name="btnImportElevationData.Text" xml:space="preserve">
     <value>Данные высот...</value>
   </data>
-  <data name="btnImportOrthoPhoto.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 22</value>
-  </data>
   <data name="btnImportOrthoPhoto.Text" xml:space="preserve">
     <value>Космоснимок...</value>
-  </data>
-  <data name="mnuImportShapeFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 22</value>
-  </data>
-  <data name="mnuImportWMS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 22</value>
   </data>
   <data name="cmdCancel.Text" xml:space="preserve">
     <value>Отмена</value>
@@ -180,56 +139,23 @@
   <data name="tabPhoto.Text" xml:space="preserve">
     <value>Космоснимок</value>
   </data>
-  <data name="chkShowPhotoIn3D.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 355</value>
-  </data>
-  <data name="chkShowPhotoIn3D.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 17</value>
-  </data>
   <data name="tabData.Text" xml:space="preserve">
     <value>Данные высот</value>
   </data>
   <data name="chkElevationDefault.Text" xml:space="preserve">
     <value>По умолчанию</value>
   </data>
-  <data name="chkShowSurfaceIn3D.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 17</value>
-  </data>
-  <data name="lblColorSchema.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 13</value>
-  </data>
   <data name="lblColorSchema.Text" xml:space="preserve">
     <value>Цветовая схема:</value>
-  </data>
-  <data name="mnuElevationsPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>311, 104</value>
-  </data>
-  <data name="mnuElevationsPreviewElevationOrthoPhotoFromWMS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>310, 22</value>
   </data>
   <data name="mnuElevationsPreviewElevationOrthoPhotoFromWMS.Text" xml:space="preserve">
     <value>Создать космоснимок из WMS обрезанный по этому участку</value>
   </data>
-  <data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 6</value>
-  </data>
-  <data name="mnuElevationsPreviewElevationSavePreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>310, 22</value>
-  </data>
   <data name="mnuElevationsPreviewElevationSavePreview.Text" xml:space="preserve">
     <value>Сохранить превью как файл изображения...</value>
   </data>
-  <data name="mnuElevationsPreviewExportData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>310, 22</value>
-  </data>
   <data name="mnuElevationsPreviewExportData.Text" xml:space="preserve">
     <value>Экспортировать данные...</value>
-  </data>
-  <data name="ToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 6</value>
-  </data>
-  <data name="mnuElevationsPreviewRemoveNODATA.Size" type="System.Drawing.Size, System.Drawing">
-    <value>310, 22</value>
   </data>
   <data name="mnuElevationsPreviewRemoveNODATA.Text" xml:space="preserve">
     <value>Remove NODATA</value>

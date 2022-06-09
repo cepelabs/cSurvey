@@ -12,8 +12,11 @@ Namespace cSurvey
         ReadOnly Property Parent As cCaveInfoBranch
         ReadOnly Property Branches As cCaveInfoBranches
 
+        Function GetCave() As cCaveInfo
         ReadOnly Property Cave() As String
         ReadOnly Property Name() As String
+
+        Function GetRoot() As cCaveInfo
 
         Property Description As String
         Property Color() As Color
@@ -50,7 +53,7 @@ Namespace cSurvey
 
         'shots with this cave/branch
         Function GetSegments() As cISegmentCollection
-        Function GetSegments(Mode As cOptions.HighlightModeEnum) As cISegmentCollection
+        Function GetSegments(Mode As cOptionsDesign.HighlightModeEnum) As cISegmentCollection
 
         'information data
         Function GetSpeleometric() As Calculate.Plot.cSpeleometric

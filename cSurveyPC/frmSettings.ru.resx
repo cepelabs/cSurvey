@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
+  <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,488 +59,341 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="metadata">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" />
-							</xsd:sequence>
-							<xsd:attribute name="name" use="required" type="xsd:string" />
-							<xsd:attribute name="type" type="xsd:string" />
-							<xsd:attribute name="mimetype" type="xsd:string" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="assembly">
-						<xsd:complexType>
-							<xsd:attribute name="alias" type="xsd:string" />
-							<xsd:attribute name="name" type="xsd:string" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<data name="cmdDefaultFolder.Text" xml:space="preserve">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cmdDefaultFolder.Text" xml:space="preserve">
     <value>Browse...</value>
   </data>
-	<assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-	<data name="Label3.Size" type="System.Drawing.Size, System.Drawing">
-		<value>77, 13</value>
-	</data>
-	<data name="Label3.Text" xml:space="preserve">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="Label3.Text" xml:space="preserve">
     <value>Папка по умолчанию:</value>
   </data>
-	<data name="chkFilesExtension.Size" type="System.Drawing.Size, System.Drawing">
-		<value>186, 17</value>
-	</data>
-	<data name="chkFilesExtension.Text" xml:space="preserve">
+  <data name="chkFilesExtension.Text" xml:space="preserve">
     <value>Связать cSurvey с фалами csz</value>
   </data>
-	<data name="lblDefaultDesigner.Size" type="System.Drawing.Size, System.Drawing">
-		<value>62, 13</value>
-	</data>
-	<data name="lblDefaultDesigner.Text" xml:space="preserve">
+  <data name="lblDefaultDesigner.Text" xml:space="preserve">
     <value>Дизайнер/ы:</value>
   </data>
-	<data name="lblDefaultTeam.Size" type="System.Drawing.Size, System.Drawing">
-		<value>60, 13</value>
-	</data>
-	<data name="lblDefaultTeam.Text" xml:space="preserve">
+  <data name="lblDefaultTeam.Text" xml:space="preserve">
     <value>Съёмщик/и:</value>
   </data>
-	<data name="lblDefaultClub.Size" type="System.Drawing.Size, System.Drawing">
-		<value>46, 13</value>
-	</data>
-	<data name="lblDefaultClub.Text" xml:space="preserve">
+  <data name="lblDefaultClub.Text" xml:space="preserve">
     <value>Команда/ы:</value>
   </data>
-	<data name="tabMain.Text" xml:space="preserve">
+  <data name="tabMain.Text" xml:space="preserve">
     <value>Основные</value>
   </data>
-	<data name="chkCalculateMode.Size" type="System.Drawing.Size, System.Drawing">
-		<value>74, 17</value>
-	</data>
-	<data name="chkCalculateMode.Text" xml:space="preserve">
+  <data name="chkCalculateMode.Properties.Caption" xml:space="preserve">
     <value>Расчитывать автоматически</value>
   </data>
-	<data name="lblDefaultCalculateMode.Size" type="System.Drawing.Size, System.Drawing">
-		<value>84, 13</value>
-	</data>
-	<data name="lblDefaultCalculateMode.Text" xml:space="preserve">
+  <data name="lblDefaultCalculateMode.Text" xml:space="preserve">
     <value>Режим расчета:</value>
   </data>
-	<data name="cboDefaultCalculateType.Items" xml:space="preserve">
+  <data name="cboDefaultCalculateType.Items" xml:space="preserve">
     <value>В ручную</value>
   </data>
-	<data name="cboDefaultCalculateType.Items1" xml:space="preserve">
+  <data name="cboDefaultCalculateType.Items1" xml:space="preserve">
     <value>Автоматически</value>
   </data>
-	<data name="cboDefaultCalculateType.Items2" xml:space="preserve">
+  <data name="cboDefaultCalculateType.Items2" xml:space="preserve">
     <value>Использовать Therion</value>
   </data>
-	<data name="tabOptions.Text" xml:space="preserve">
+  <data name="tabOptions.Text" xml:space="preserve">
     <value>Options</value>
   </data>
-	<data name="chkTherionLochEnabled.Text" xml:space="preserve">
+  <data name="chkTherionLochEnabled.Properties.Caption" xml:space="preserve">
     <value>Велючить Loch</value>
   </data>
-	<data name="chkTherionLochEnabled.ToolTip" xml:space="preserve">
+  <data name="chkTherionLochEnabled.ToolTip" xml:space="preserve">
     <value>Велючить Loch, 3D вьюер Therion</value>
   </data>
-	<data name="cmdTherionPathBrowse.Text" xml:space="preserve">
+  <data name="cmdTherionPathBrowse.Text" xml:space="preserve">
     <value>Browse...</value>
   </data>
-	<data name="txtTherionPath.ToolTip" xml:space="preserve">
+  <data name="txtTherionPath.ToolTip" xml:space="preserve">
     <value>Путь к файлу программы Therion </value>
   </data>
-	<data name="chkTherionEnabled.Size" type="System.Drawing.Size, System.Drawing">
-		<value>143, 17</value>
-	</data>
-	<data name="chkTherionEnabled.Text" xml:space="preserve">
+  <data name="chkTherionEnabled.Text" xml:space="preserve">
     <value>Включить интерфейс Therion</value>
   </data>
-	<data name="chkTherionEnabled.ToolTip" xml:space="preserve">
+  <data name="chkTherionEnabled.ToolTip" xml:space="preserve">
     <value>Включить все функции  интерфейса Therion</value>
   </data>
-	<data name="chkTherionSegmentForcePath.Size" type="System.Drawing.Size, System.Drawing">
-		<value>185, 17</value>
-	</data>
-	<data name="chkTherionSegmentForcePath.Text" xml:space="preserve">
+  <data name="chkTherionSegmentForcePath.Properties.Caption" xml:space="preserve">
     <value>Задать направление разреза развертки</value>
   </data>
-	<data name="chkTherionSegmentForceDirection.Size" type="System.Drawing.Size, System.Drawing">
-		<value>126, 17</value>
-	</data>
-	<data name="chkTherionSegmentForceDirection.Text" xml:space="preserve">
+  <data name="chkTherionSegmentForceDirection.Properties.Caption" xml:space="preserve">
     <value>Задавать направления сегментов</value>
   </data>
-	<data name="chkTherionTrigpointSafename.Size" type="System.Drawing.Size, System.Drawing">
-		<value>130, 17</value>
-	</data>
-	<data name="chkTherionTrigpointSafename.Text" xml:space="preserve">
+  <data name="chkTherionTrigpointSafename.Properties.Caption" xml:space="preserve">
     <value>Использование  словарь пикетов</value>
   </data>
-	<data name="chkTherionBackgroundProcess.Size" type="System.Drawing.Size, System.Drawing">
-		<value>172, 17</value>
-	</data>
-	<data name="chkTherionBackgroundProcess.Text" xml:space="preserve">
+  <data name="chkTherionBackgroundProcess.Properties.Caption" xml:space="preserve">
     <value>Запустить как фоновый процесс</value>
   </data>
-	<data name="chkTherionDeleteTempFiles.Size" type="System.Drawing.Size, System.Drawing">
-		<value>106, 17</value>
-	</data>
-	<data name="chkTherionDeleteTempFiles.Text" xml:space="preserve">
+  <data name="chkTherionDeleteTempFiles.Properties.Caption" xml:space="preserve">
     <value>Удалять временные файлы</value>
   </data>
-	<data name="frmTherionAdvancedSettings.Text" xml:space="preserve">
+  <data name="frmTherionAdvancedSettings.Text" xml:space="preserve">
     <value>Дополнительные параметры:</value>
   </data>
-	<data name="chkLayersShowItemPreview.Size" type="System.Drawing.Size, System.Drawing">
-		<value>192, 17</value>
-	</data>
-	<data name="chkLayersShowItemPreview.Text" xml:space="preserve">
-    <value>Показать миниатюры объектов в дереве слоев</value>
-  </data>
-	<data name="chkLayersShowItemPreview.ToolTip" xml:space="preserve">
-    <value>Показать миниатюры объектов в дереве слоев</value>
-  </data>
-	<data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
-		<value>275, 17</value>
-	</data>
-	<data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
-		<value>58, 13</value>
-	</data>
-	<data name="Label1.Text" xml:space="preserve">
+  <data name="Label1.Text" xml:space="preserve">
     <value>Язык:</value>
   </data>
-	<data name="chkGridBackColorByCave.Size" type="System.Drawing.Size, System.Drawing">
-		<value>142, 17</value>
-	</data>
-	<data name="chkGridBackColorByCave.Text" xml:space="preserve">
+  <data name="chkGridBackColorByCave.Text" xml:space="preserve">
     <value>Включить цветные списки пикетов</value>
   </data>
-	<data name="chkGridBackColorByCave.ToolTip" xml:space="preserve">
+  <data name="chkGridBackColorByCave.ToolTip" xml:space="preserve">
     <value>Показать таблицу данных покрашеную пещерой/веткой</value>
   </data>
-	<data name="chkClipboardLocalFormat.Size" type="System.Drawing.Size, System.Drawing">
-		<value>103, 17</value>
-	</data>
-	<data name="chkClipboardLocalFormat.Text" xml:space="preserve">
+  <data name="chkClipboardLocalFormat.Properties.Caption" xml:space="preserve">
     <value>Испльзовать локальный формат</value>
   </data>
-	<data name="chkClipboardLocalFormat.ToolTip" xml:space="preserve">
+  <data name="chkClipboardLocalFormat.ToolTip" xml:space="preserve">
     <value>Использовать локальные параметры формата данных буфера обмена</value>
   </data>
-	<data name="chkClipboardCleanPastedStation.Size" type="System.Drawing.Size, System.Drawing">
-		<value>138, 17</value>
-	</data>
-	<data name="chkClipboardCleanPastedStation.Text" xml:space="preserve">
+  <data name="chkClipboardCleanPastedStation.Properties.Caption" xml:space="preserve">
     <value>Удалять пикет при вставке</value>
   </data>
-	<data name="lblClipboardFormats.Size" type="System.Drawing.Size, System.Drawing">
-		<value>144, 13</value>
-	</data>
-	<data name="lblClipboardFormats.Text" xml:space="preserve">
+  <data name="lblClipboardFormats.Text" xml:space="preserve">
     <value>Дополнительные форматы буфера обмена:</value>
   </data>
-	<data name="GroupBox3.Text" xml:space="preserve">
+  <data name="GroupBox3.Text" xml:space="preserve">
     <value>Вырезать, копировать и вставить:</value>
   </data>
-	<data name="chkSetDesignToolsEnabledByLevel.Size" type="System.Drawing.Size, System.Drawing">
-		<value>190, 17</value>
-	</data>
-	<data name="chkSetDesignToolsEnabledByLevel.Text" xml:space="preserve">
+  <data name="chkSetDesignToolsEnabledByLevel.Properties.Caption" xml:space="preserve">
     <value>Показать активные инструменты для текущего слоя</value>
   </data>
-	<data name="chkSetDesignToolsHiddenByLevel.Size" type="System.Drawing.Size, System.Drawing">
-		<value>113, 17</value>
-	</data>
-	<data name="chkSetDesignToolsHiddenByLevel.Text" xml:space="preserve">
+  <data name="chkSetDesignToolsHiddenByLevel.Properties.Caption" xml:space="preserve">
     <value>Скрыть неактивные инструменты</value>
   </data>
-	<data name="tabInterface.Text" xml:space="preserve">
+  <data name="tabInterface.Text" xml:space="preserve">
     <value>Интерфейс</value>
   </data>
-	<data name="chkDesignUseOnlyAnchorToMove.Size" type="System.Drawing.Size, System.Drawing">
-		<value>212, 17</value>
-	</data>
-	<data name="chkDesignUseOnlyAnchorToMove.Text" xml:space="preserve">
+  <data name="chkDesignUseOnlyAnchorToMove.Properties.Caption" xml:space="preserve">
     <value>Перемещать объекты только за верхний левый угол</value>
   </data>
-	<data name="chkDesignUseOnlyAnchorToMove.ToolTip" xml:space="preserve">
+  <data name="chkDesignUseOnlyAnchorToMove.ToolTip" xml:space="preserve">
     <value>Передвигать нарисованные объекты только за левый верхий угол</value>
   </data>
-	<data name="cboDesignZoomType.Items1" xml:space="preserve">
+  <data name="cboDesignZoomType.Items1" xml:space="preserve">
     <value>Масштаб</value>
   </data>
-	<data name="lblDesignZoomType.Size" type="System.Drawing.Size, System.Drawing">
-		<value>62, 13</value>
-	</data>
-	<data name="lblDesignZoomType.Text" xml:space="preserve">
+  <data name="lblDesignZoomType.Text" xml:space="preserve">
     <value>Zoom type:</value>
   </data>
-	<data name="cboDesignShowRulersStyle.Items" xml:space="preserve">
+  <data name="cboDesignShowRulersStyle.Items" xml:space="preserve">
     <value>Простой</value>
   </data>
-	<data name="cboDesignShowRulersStyle.Items1" xml:space="preserve">
+  <data name="cboDesignShowRulersStyle.Items1" xml:space="preserve">
     <value>Расширенный</value>
   </data>
-	<data name="lblDesignShowRulersStyle.Size" type="System.Drawing.Size, System.Drawing">
-		<value>35, 13</value>
-	</data>
-	<data name="lblDesignShowRulersStyle.Text" xml:space="preserve">
+  <data name="lblDesignShowRulersStyle.Text" xml:space="preserve">
     <value>Стиль:</value>
   </data>
-	<data name="cboDesignClipBorder.Items" xml:space="preserve">
+  <data name="cboDesignClipBorder.Items" xml:space="preserve">
     <value>Не обрезать объекты на границах</value>
   </data>
-	<data name="cboDesignClipBorder.Items1" xml:space="preserve">
+  <data name="cboDesignClipBorder.Items1" xml:space="preserve">
     <value>Обрезать объекты на границах</value>
   </data>
-	<data name="cboDesignClipBorder.Items2" xml:space="preserve">
+  <data name="cboDesignClipBorder.Items2" xml:space="preserve">
     <value>Отключить для всех объектов</value>
   </data>
-	<data name="lblClipping.Size" type="System.Drawing.Size, System.Drawing">
-		<value>86, 13</value>
-	</data>
-	<data name="lblClipping.Text" xml:space="preserve">
+  <data name="lblClipping.Text" xml:space="preserve">
     <value>Обрезка границ:</value>
   </data>
-	<data name="cboDesignLineType.Items" xml:space="preserve">
+  <data name="cboDesignLineType.Items" xml:space="preserve">
     <value>Прямые линии</value>
   </data>
-	<data name="Label27.Size" type="System.Drawing.Size, System.Drawing">
-		<value>35, 13</value>
-	</data>
-	<data name="Label27.Text" xml:space="preserve">
+  <data name="Label27.Text" xml:space="preserve">
     <value>Линии:</value>
   </data>
-	<data name="cboDesignQuality.Items" xml:space="preserve">
+  <data name="cboDesignQuality.Items" xml:space="preserve">
     <value>Низкое</value>
   </data>
-	<data name="cboDesignQuality.Items1" xml:space="preserve">
+  <data name="cboDesignQuality.Items1" xml:space="preserve">
     <value>Среднее</value>
   </data>
-	<data name="cboDesignQuality.Items2" xml:space="preserve">
+  <data name="cboDesignQuality.Items2" xml:space="preserve">
     <value>Высокое</value>
   </data>
-	<data name="lblDesignQuality.Text" xml:space="preserve">
+  <data name="lblDesignQuality.Text" xml:space="preserve">
     <value>Качество:</value>
   </data>
-	<data name="chkDesignShowMetricGrid.Text" xml:space="preserve">
+  <data name="chkDesignShowMetricGrid.Text" xml:space="preserve">
     <value>Показать метрическую сетку</value>
   </data>
-	<data name="chkDesignShowRulers.Text" xml:space="preserve">
+  <data name="chkDesignShowRulers.Properties.Caption" xml:space="preserve">
     <value>Показывать линейки</value>
   </data>
-	<data name="lblDesignMode.Size" type="System.Drawing.Size, System.Drawing">
-		<value>72, 13</value>
-	</data>
-	<data name="lblDesignMode.Text" xml:space="preserve">
+  <data name="lblDesignMode.Text" xml:space="preserve">
     <value>Design mode:</value>
   </data>
-	<data name="tabDesign.Text" xml:space="preserve">
+  <data name="tabDesign.Text" xml:space="preserve">
     <value>Рисование</value>
   </data>
-	<data name="txtSVGExportDPI.ToolTip" xml:space="preserve">
+  <data name="txtSVGExportDPI.ToolTip" xml:space="preserve">
     <value>DPI для экспорта в SVG </value>
   </data>
-	<data name="chkSVGExportNoClipartBrushes.Size" type="System.Drawing.Size, System.Drawing">
-		<value>151, 17</value>
-	</data>
-	<data name="chkSVGExportNoClipartBrushes.Text" xml:space="preserve">
+  <data name="chkSVGExportNoClipartBrushes.Properties.Caption" xml:space="preserve">
     <value>Отключить дополнительные кисти</value>
   </data>
-	<data name="chkSVGExportNoClipartBrushes.ToolTip" xml:space="preserve">
+  <data name="chkSVGExportNoClipartBrushes.ToolTip" xml:space="preserve">
     <value>Отключить дополнительные кисти заменив их на сплошные цвета</value>
   </data>
-	<data name="chkSVGExportNoClipping.Size" type="System.Drawing.Size, System.Drawing">
-		<value>98, 17</value>
-	</data>
-	<data name="chkSVGExportNoClipping.Text" xml:space="preserve">
+  <data name="chkSVGExportNoClipping.Properties.Caption" xml:space="preserve">
     <value>Отключить обрезку</value>
   </data>
-	<data name="chkSVGExportNoClipping.ToolTip" xml:space="preserve">
+  <data name="chkSVGExportNoClipping.ToolTip" xml:space="preserve">
     <value>Отключить обрезку графических объектов</value>
   </data>
-	<data name="lblSVGExportScale.Text" xml:space="preserve">
+  <data name="lblSVGExportScale.Text" xml:space="preserve">
     <value>Масштаб:</value>
   </data>
-	<data name="txtSVGExportScale.ToolTip" xml:space="preserve">
+  <data name="txtSVGExportScale.ToolTip" xml:space="preserve">
     <value>Масштаб для экспорта в SVG</value>
   </data>
-	<data name="GroupBox2.Text" xml:space="preserve">
+  <data name="GroupBox2.Text" xml:space="preserve">
     <value>Экспорт:</value>
   </data>
-	<data name="chkSVGImportAutodivide.Size" type="System.Drawing.Size, System.Drawing">
-		<value>88, 17</value>
-	</data>
-	<data name="chkSVGImportAutodivide.Text" xml:space="preserve">
+  <data name="chkSVGImportAutodivide.Properties.Caption" xml:space="preserve">
     <value>Разделять объект</value>
   </data>
-	<data name="lblSVGImportScale.Text" xml:space="preserve">
+  <data name="lblSVGImportScale.Text" xml:space="preserve">
     <value>Масштаб:</value>
   </data>
-	<data name="lblSVGImportLineType.Size" type="System.Drawing.Size, System.Drawing">
-		<value>55, 13</value>
-	</data>
-	<data name="lblSVGImportLineType.Text" xml:space="preserve">
+  <data name="lblSVGImportLineType.Text" xml:space="preserve">
     <value>Тип линии:</value>
   </data>
-	<data name="lblPlotSelectedPointSize.Size" type="System.Drawing.Size, System.Drawing">
-		<value>89, 13</value>
-	</data>
-	<data name="lblPlotSelectedPointSize.Text" xml:space="preserve">
+  <data name="lblPlotSelectedPointSize.Text" xml:space="preserve">
     <value>Максимальная длина пути:</value>
   </data>
-	<data name="GroupBox1.Text" xml:space="preserve">
+  <data name="GroupBox1.Text" xml:space="preserve">
     <value>Импорт:</value>
   </data>
-	<data name="chkVTopoImportSetAsBranch.Text" xml:space="preserve">
+  <data name="chkVTopoImportSetAsBranch.Properties.Caption" xml:space="preserve">
     <value>Создать ветку для каждого набора измерений</value>
   </data>
-	<data name="chkVTopoImportIncompatibleSet.Text" xml:space="preserve">
+  <data name="chkVTopoImportIncompatibleSet.Properties.Caption" xml:space="preserve">
     <value>Импортировать недопустимые измерения</value>
   </data>
-	<data name="chkAutosaveUseHistorySettings.Size" type="System.Drawing.Size, System.Drawing">
-		<value>121, 17</value>
-	</data>
-	<data name="chkAutosaveUseHistorySettings.Text" xml:space="preserve">
+  <data name="chkAutosaveUseHistorySettings.Properties.Caption" xml:space="preserve">
     <value>Использовать настройки истории</value>
   </data>
-	<data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
-		<value>64, 13</value>
-	</data>
-	<data name="Label2.Text" xml:space="preserve">
+  <data name="Label2.Text" xml:space="preserve">
     <value>Max copies:</value>
   </data>
-	<data name="lblHistoryDailyCopies.Size" type="System.Drawing.Size, System.Drawing">
-		<value>89, 13</value>
-	</data>
-	<data name="lblHistoryDailyCopies.Text" xml:space="preserve">
+  <data name="lblHistoryDailyCopies.Text" xml:space="preserve">
     <value>Число ревизий в день:</value>
   </data>
-	<data name="cmdHistoryFolderBrowse.Text" xml:space="preserve">
+  <data name="cmdHistoryFolderBrowse.Text" xml:space="preserve">
     <value>Browse...</value>
   </data>
-	<data name="lblHistoryFolder.Size" type="System.Drawing.Size, System.Drawing">
-		<value>76, 13</value>
-	</data>
-	<data name="lblHistoryFolder.Text" xml:space="preserve">
+  <data name="lblHistoryFolder.Text" xml:space="preserve">
     <value>Папка истории:</value>
   </data>
-	<data name="lblHistoryMode.Size" type="System.Drawing.Size, System.Drawing">
-		<value>121, 13</value>
-	</data>
-	<data name="lblHistoryMode.Text" xml:space="preserve">
+  <data name="lblHistoryMode.Text" xml:space="preserve">
     <value>Режим управления историей:</value>
   </data>
-	<data name="chkHistory.Size" type="System.Drawing.Size, System.Drawing">
-		<value>94, 17</value>
-	</data>
-	<data name="chkHistory.Text" xml:space="preserve">
+  <data name="chkHistory.Properties.Caption" xml:space="preserve">
     <value>Включить историю</value>
   </data>
-	<data name="chkHistory.ToolTip" xml:space="preserve">
+  <data name="chkHistory.ToolTip" xml:space="preserve">
     <value>Включить историю и управлениие версиями</value>
   </data>
-	<data name="chkAutosave.Size" type="System.Drawing.Size, System.Drawing">
-		<value>121, 17</value>
-	</data>
-	<data name="chkAutosave.Text" xml:space="preserve">
+  <data name="chkAutosave.Properties.Caption" xml:space="preserve">
     <value>Включить резервную копию</value>
   </data>
-	<data name="cboHistoryMode.Items" xml:space="preserve">
+  <data name="cboHistoryMode.Items" xml:space="preserve">
     <value>В папке этого компютера</value>
   </data>
-	<data name="tabHistory.Text" xml:space="preserve">
+  <data name="tabHistory.Text" xml:space="preserve">
     <value>История</value>
   </data>
-	<data name="lblFunctionLanguage.Size" type="System.Drawing.Size, System.Drawing">
-		<value>106, 13</value>
-	</data>
-	<data name="lblFunctionLanguage.Text" xml:space="preserve">
+  <data name="lblFunctionLanguage.Text" xml:space="preserve">
     <value>Язык функций:</value>
   </data>
-	<data name="chkMultiThreading.Size" type="System.Drawing.Size, System.Drawing">
-		<value>181, 17</value>
-	</data>
-	<data name="chkMultiThreading.Text" xml:space="preserve">
+  <data name="chkMultiThreading.Properties.Caption" xml:space="preserve">
     <value>Включить продвинутую многопоточность</value>
   </data>
-	<data name="Label4.Text" xml:space="preserve">
-    <value>Внимание: этот параметр использует подключение к интернету чтобы проверить доступность обновлений.</value>
+  <data name="Label4.Text" xml:space="preserve">
+    <value>&lt;image=#warning;size=16,16&gt; &lt;b&gt;Внимание:&lt;/b&gt; этот параметр использует подключение к интернету чтобы проверить доступность обновлений.</value>
   </data>
-	<data name="chkCheckNewVersion.Size" type="System.Drawing.Size, System.Drawing">
-		<value>168, 17</value>
-	</data>
-	<data name="chkCheckNewVersion.Text" xml:space="preserve">
+  <data name="chkCheckNewVersion.Properties.Caption" xml:space="preserve">
     <value>Проверить наличие новой версии он-лайн</value>
   </data>
-	<data name="lblSendExceptionWarning.Text" xml:space="preserve">
-    <value>Внимание: эта опция автоматической отправки отчетов для каждой критической ошибки, используя подключение к интернету.
+  <data name="lblSendExceptionWarning.Text" xml:space="preserve">
+    <value>&lt;image=#warning;size=16,16&gt; &lt;b&gt;Внимание:&lt;/b&gt; эта опция автоматической отправки отчетов для каждой критической ошибки, используя подключение к интернету.
 Никакие личные данные или сведения не отправляются.</value>
   </data>
-	<data name="chkSendException.Size" type="System.Drawing.Size, System.Drawing">
-		<value>89, 17</value>
-	</data>
-	<data name="chkSendException.Text" xml:space="preserve">
+  <data name="chkSendException.Properties.Caption" xml:space="preserve">
     <value>Сообщить об ошибке</value>
   </data>
-	<data name="chkSendException.ToolTip" xml:space="preserve">
+  <data name="chkSendException.ToolTip" xml:space="preserve">
     <value>Сообщить об ошибке Автору</value>
   </data>
-	<data name="chkLogEnabled.Size" type="System.Drawing.Size, System.Drawing">
-		<value>67, 17</value>
-	</data>
-	<data name="chkLogEnabled.Text" xml:space="preserve">
-    <value>Запуск журнала</value>
-  </data>
-	<data name="tabSettings.Location" type="System.Drawing.Point, System.Drawing">
-		<value>7, 12</value>
-	</data>
-	<data name="cmdCancel.Text" xml:space="preserve">
+  <data name="cmdCancel.Text" xml:space="preserve">
     <value>Отмена</value>
   </data>
-	<data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAHtwXQBraWcAbWtpAHBsawBxb2wAc3BuAHVzcQB2dHEAenZ0AH15
         dwB9enkAfnx7ALR6BgC5egAAun4EALR6CAC1fAoAtX4OALZ/EgDFdAAAx3sAAMp+AACBfnsAgX58AACE
@@ -603,224 +456,221 @@
         BAAWJSQgICAgICAgICAjJRYAGxcWFhYWFhYWFhYWFhcbAP//AAD/5wAA/wEAAAABAAAAAAAAAAAAAAAB
         AAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAA=
 </value>
-	</data>
-	<data name="$this.Text" xml:space="preserve">
+  </data>
+  <data name="$this.Text" xml:space="preserve">
     <value>Настройки:</value>
   </data>
-	<data name="chkTherionSegmentForcePath.ToolTip" xml:space="preserve">
+  <data name="chkTherionSegmentForcePath.ToolTip" xml:space="preserve">
 		<value>Задает нправление для разреза развертки</value>
 	</data>
-	<data name="chkTherionSegmentForceDirection.ToolTip" xml:space="preserve">
+  <data name="chkTherionSegmentForceDirection.ToolTip" xml:space="preserve">
 		<value>Задает направление каждого сегмента</value>
 	</data>
-	<data name="chkTherionTrigpointSafename.ToolTip" xml:space="preserve">
+  <data name="chkTherionTrigpointSafename.ToolTip" xml:space="preserve">
 		<value>Использовать словарь, чтобы преобразовать имена пикетов (чтобы избежать проблемы несовместимости с therion)</value>
 	</data>
-	<data name="chkTherionBackgroundProcess.ToolTip" xml:space="preserve">
+  <data name="chkTherionBackgroundProcess.ToolTip" xml:space="preserve">
 		<value>Запустить therion в фоновом режиме (полностью невидимый)</value>
 	</data>
-	<data name="chkTherionDeleteTempFiles.ToolTip" xml:space="preserve">
+  <data name="chkTherionDeleteTempFiles.ToolTip" xml:space="preserve">
 		<value>Удалить временные файлы, созданные при взаимодействии с therion</value>
 	</data>
-	<data name="Label5.Text" xml:space="preserve">
+  <data name="Label5.Text" xml:space="preserve">
 		<value>Порог сложности:</value>
 	</data>
-	<data name="chkClipboardCleanPastedStation.ToolTip" xml:space="preserve">
+  <data name="chkClipboardCleanPastedStation.ToolTip" xml:space="preserve">
 		<value>Очистить пикеты вставленных сегментов если уже существует сегмент связанный с этими пикетами.</value>
 	</data>
-	<data name="colClipboardFormat.Text" xml:space="preserve">
+  <data name="colClipboardFormat.Text" xml:space="preserve">
 		<value>Формат</value>
 	</data>
-	<data name="txtDesignMetricGridOpacity.ToolTip" xml:space="preserve">
+  <data name="txtDesignMetricGridOpacity.ToolTip" xml:space="preserve">
 		<value>Индекс прозрачности используется для мтрической сетки</value>
 	</data>
-	<data name="lblDesignMetricGridOpacity.Text" xml:space="preserve">
+  <data name="lblDesignMetricGridOpacity.Text" xml:space="preserve">
 		<value>Прозрачность:</value>
 	</data>
-	<data name="cboDesignShowMetricGrid.Items1" xml:space="preserve">
+  <data name="cboDesignShowMetricGrid.Items1" xml:space="preserve">
 		<value>Стандартная метрическая сетка</value>
 	</data>
-	<data name="cboDesignShowMetricGrid.Items2" xml:space="preserve">
+  <data name="cboDesignShowMetricGrid.Items2" xml:space="preserve">
 		<value>Метрическая сетка выровненная на текущий сегмент</value>
 	</data>
-	<data name="Label6.Text" xml:space="preserve">
+  <data name="Label6.Text" xml:space="preserve">
 		<value>Метрическая сетка:</value>
 	</data>
-	<data name="txtDefaultFont.ToolTip" xml:space="preserve">
+  <data name="txtDefaultFont.ToolTip" xml:space="preserve">
 		<value>Шрифт по умолчанию для подписей пикетов</value>
 	</data>
-	<data name="lblDefaultFont.Text" xml:space="preserve">
+  <data name="lblDefaultFont.Text" xml:space="preserve">
 		<value>Шрифт по умолчанию:</value>
 	</data>
-	<data name="cboDesignZoomType.ToolTip" xml:space="preserve">
+  <data name="cboDesignZoomType.ToolTip" xml:space="preserve">
 		<value>Указывает, в каких единицах указать масштаб</value>
 	</data>
-	<data name="cboDesignLineType.Items1" xml:space="preserve">
+  <data name="cboDesignLineType.Items1" xml:space="preserve">
 		<value>Сплайны</value>
 	</data>
-	<data name="cboDesignLineType.Items2" xml:space="preserve">
+  <data name="cboDesignLineType.Items2" xml:space="preserve">
 		<value>Безье</value>
 	</data>
-	<data name="txtSVGImportPathMaxLen.ToolTip" xml:space="preserve">
+  <data name="txtSVGImportPathMaxLen.ToolTip" xml:space="preserve">
 		<value>Indicates the maximum size (in points) of the path graphic you want to import (the path with more points than specified will be ignored)</value>
 	</data>
-	<data name="chkSVGImportAutodivide.ToolTip" xml:space="preserve">
+  <data name="chkSVGImportAutodivide.ToolTip" xml:space="preserve">
 		<value>Автоматически разбивает импортированный объект на простые объекты</value>
 	</data>
-	<data name="cboSVGImportLineType.Items" xml:space="preserve">
+  <data name="cboSVGImportLineType.Items" xml:space="preserve">
 		<value>Прямые</value>
 	</data>
-	<data name="cboSVGImportLineType.Items1" xml:space="preserve">
+  <data name="cboSVGImportLineType.Items1" xml:space="preserve">
 		<value>Сплайны</value>
 	</data>
-	<data name="cboSVGImportLineType.Items2" xml:space="preserve">
+  <data name="cboSVGImportLineType.Items2" xml:space="preserve">
 		<value>Безье</value>
 	</data>
-	<data name="cboSVGImportLineType.ToolTip" xml:space="preserve">
+  <data name="cboSVGImportLineType.ToolTip" xml:space="preserve">
 		<value>Задает Тип линии для объектов, импортированных из SVG</value>
 	</data>
-	<data name="txtSVGImportScale.ToolTip" xml:space="preserve">
+  <data name="txtSVGImportScale.ToolTip" xml:space="preserve">
 		<value>Масштабный коэффициент для импортированных объектов</value>
 	</data>
-	<data name="chkVTopoImportSetAsBranch.ToolTip" xml:space="preserve">
+  <data name="chkVTopoImportSetAsBranch.ToolTip" xml:space="preserve">
 		<value>Создать ветку для каждого набора измерений для того, чтобы вернуть цвета набор в VisualTopo</value>
 	</data>
-	<data name="chkVTopoImportIncompatibleSet.ToolTip" xml:space="preserve">
+  <data name="chkVTopoImportIncompatibleSet.ToolTip" xml:space="preserve">
 		<value>Позволяет импортировать данные, связанные с единицами измерения, которые не совместимы с cSurvey.
 Эти данные затем должны быть исправлены вручную после импорта.</value>
 	</data>
-	<data name="GroupBox4.Text" xml:space="preserve">
+  <data name="GroupBox4.Text" xml:space="preserve">
 		<value>Импорт:</value>
 	</data>
-	<data name="Label9.Text" xml:space="preserve">
+  <data name="Label9.Text" xml:space="preserve">
 		<value>Высота:</value>
 	</data>
-	<data name="Label7.Text" xml:space="preserve">
+  <data name="Label7.Text" xml:space="preserve">
 		<value>Ширина:</value>
 	</data>
-	<data name="lblPlotNoteTextColor.Text" xml:space="preserve">
+  <data name="lblPlotNoteTextColor.Text" xml:space="preserve">
 		<value>Цвет фона:</value>
 	</data>
-	<data name="picWMSFromOrthoPhotoBackgroundColor.ToolTip" xml:space="preserve">
+  <data name="picWMSFromOrthoPhotoBackgroundColor.ToolTip" xml:space="preserve">
 		<value>Цвет по умолчанию для подписей пикетов</value>
 	</data>
-	<data name="Label8.Text" xml:space="preserve">
+  <data name="Label8.Text" xml:space="preserve">
 		<value>Максимальный размер:</value>
 	</data>
-	<data name="GroupBox6.Text" xml:space="preserve">
+  <data name="GroupBox6.Text" xml:space="preserve">
 		<value>Космооснимки из WMS:</value>
 	</data>
-	<data name="btnWMSBrowse.ToolTip" xml:space="preserve">
+  <data name="btnWMSBrowse.ToolTip" xml:space="preserve">
 		<value>Перейти к папке...</value>
 	</data>
-	<data name="lblWMSCacheCurrentSize.Text" xml:space="preserve">
+  <data name="lblWMSCacheCurrentSize.Text" xml:space="preserve">
 		<value>Текущий Размер:</value>
 	</data>
-	<data name="btnWMSClearCache.Text" xml:space="preserve">
+  <data name="btnWMSClearCache.Text" xml:space="preserve">
 		<value>Очистить</value>
 	</data>
-	<data name="btnWMSClearCache.ToolTip" xml:space="preserve">
+  <data name="btnWMSClearCache.ToolTip" xml:space="preserve">
 		<value>Очистить кэш</value>
 	</data>
-	<data name="lblWMSCacheMaxSize.Text" xml:space="preserve">
+  <data name="lblWMSCacheMaxSize.Text" xml:space="preserve">
 		<value>Максимальный размер:</value>
 	</data>
-	<data name="chkWMSCacheEnabled.Text" xml:space="preserve">
+  <data name="chkWMSCacheEnabled.Properties.Caption" xml:space="preserve">
 		<value>Включить кэш</value>
 	</data>
-	<data name="chkWMSCacheEnabled.ToolTip" xml:space="preserve">
+  <data name="chkWMSCacheEnabled.ToolTip" xml:space="preserve">
 		<value>Позволяет импортировать данные, в единицах измерения, которые не совместимы с cSurvey.
 Эти данные затем должны быть исправлены вручную после импорта.</value>
 	</data>
-	<data name="GroupBox5.Text" xml:space="preserve">
+  <data name="GroupBox5.Text" xml:space="preserve">
 		<value>Кэш:</value>
 	</data>
-	<data name="chkHistoryArchiveOnSave.Text" xml:space="preserve">
+  <data name="chkHistoryArchiveOnSave.Properties.Caption" xml:space="preserve">
 		<value>Записывать автоматически при каждом сохранении</value>
 	</data>
-	<data name="lblHistoryMaxCopies.Text" xml:space="preserve">
+  <data name="lblHistoryMaxCopies.Text" xml:space="preserve">
 		<value>Всего ревизий:</value>
 	</data>
-	<data name="txtHistoryMaxCopies.ToolTip" xml:space="preserve">
+  <data name="txtHistoryMaxCopies.ToolTip" xml:space="preserve">
 		<value>Укажите кол-во ревизий для хранения </value>
 	</data>
-	<data name="txtHistoryDailyCopies.ToolTip" xml:space="preserve">
+  <data name="txtHistoryDailyCopies.ToolTip" xml:space="preserve">
 		<value>Укажите кол-во ревизий для хранения в день</value>
 	</data>
-	<data name="TabPage1.Text" xml:space="preserve">
+  <data name="TabPage1.Text" xml:space="preserve">
 		<value>Папка</value>
 	</data>
-	<data name="chkHistoryWebArchiveOnSave.Text" xml:space="preserve">
+  <data name="chkHistoryWebArchiveOnSave.Properties.Caption" xml:space="preserve">
 		<value>Записывать автоматически при каждом сохранении</value>
 	</data>
-	<data name="chkHistoryWebAuthReq.Text" xml:space="preserve">
+  <data name="chkHistoryWebAuthReq.Properties.Caption" xml:space="preserve">
 		<value>Требует аутентификации в сети</value>
 	</data>
-	<data name="lblHistoryWebMaxCopies.Text" xml:space="preserve">
+  <data name="lblHistoryWebMaxCopies.Text" xml:space="preserve">
 		<value>Всего ревизий:</value>
 	</data>
-	<data name="txtHistoryWebMaxCopies.ToolTip" xml:space="preserve">
+  <data name="txtHistoryWebMaxCopies.ToolTip" xml:space="preserve">
 		<value>Укажите кол-во ревизий для хранения</value>
 	</data>
-	<data name="lblHistoryWebDailyCopies.Text" xml:space="preserve">
+  <data name="lblHistoryWebDailyCopies.Text" xml:space="preserve">
 		<value>Число ревизий в день:</value>
 	</data>
-	<data name="txtHistoryWebDailyCopies.ToolTip" xml:space="preserve">
+  <data name="txtHistoryWebDailyCopies.ToolTip" xml:space="preserve">
 		<value>Укажите кол-во ревизий для хранения в день</value>
 	</data>
-	<data name="lblHistoryWebPassword.Text" xml:space="preserve">
+  <data name="lblHistoryWebPassword.Text" xml:space="preserve">
 		<value>Парль:</value>
 	</data>
-	<data name="lblHistoryWebUsername.Text" xml:space="preserve">
+  <data name="lblHistoryWebUsername.Text" xml:space="preserve">
 		<value>Имя пользователя:</value>
 	</data>
-	<data name="cboHistoryMode.Items1" xml:space="preserve">
+  <data name="cboHistoryMode.Items1" xml:space="preserve">
 		<value>Веб-сервис</value>
 	</data>
-	<data name="cboHistoryMode.Items2" xml:space="preserve">
+  <data name="cboHistoryMode.Items2" xml:space="preserve">
 		<value>Оба</value>
 	</data>
-	<data name="txtMachineID.ToolTip" xml:space="preserve">
+  <data name="txtMachineID.ToolTip" xml:space="preserve">
 		<value>Уникальный идентификатор, который отличает этот компьютер.
 Существует корреляция между этим кодом и любыми данными, связанными с пользователем.</value>
 	</data>
-	<data name="lblMachineID.Text" xml:space="preserve">
+  <data name="lblMachineID.Text" xml:space="preserve">
 		<value>ID компьютера:</value>
 	</data>
-	<data name="chkMultiThreading.ToolTip" xml:space="preserve">
+  <data name="chkMultiThreading.ToolTip" xml:space="preserve">
 		<value>Включить некоторые дополнительные функции  многопоточности</value>
 	</data>
-	<data name="chkCheckNewVersion.ToolTip" xml:space="preserve">
+  <data name="chkCheckNewVersion.ToolTip" xml:space="preserve">
 		<value>Автоматически проверять наличие новой версии он-лайн</value>
 	</data>
-	<data name="chkLogEnabled.ToolTip" xml:space="preserve">
-		<value>Активирует детальный отчет о деятельности программы.</value>
-	</data>
-	<data name="tabDebug.Text" xml:space="preserve">
+  <data name="tabDebug.Text" xml:space="preserve">
 		<value>Отладка</value>
 	</data>
-	<data name="cmdHistoryWebCheck.Text" xml:space="preserve">
+  <data name="cmdHistoryWebCheck.Text" xml:space="preserve">
 		<value>Тест...</value>
 	</data>
-	<data name="cboLanguage.Items" xml:space="preserve">
+  <data name="cboLanguage.Items" xml:space="preserve">
     <value>По умолчанию</value>
   </data>
-	<data name="cboDesignZoomType.Items" xml:space="preserve">
+  <data name="cboDesignZoomType.Items" xml:space="preserve">
 		<value>Зум</value>
 	</data>
-	<data name="chkShowLastUsedToolsInDesignBar.Text" xml:space="preserve">
+  <data name="chkShowLastUsedToolsInDesignBar.Properties.Caption" xml:space="preserve">
 		<value>Показать последние использованные инструменты</value>
 	</data>
-	<data name="cboDesignBarPosition.Items" xml:space="preserve">
+  <data name="cboDesignBarPosition.Items" xml:space="preserve">
 		<value>По умолчанию</value>
 	</data>
-	<data name="cboDesignBarPosition.Items1" xml:space="preserve">
+  <data name="cboDesignBarPosition.Items1" xml:space="preserve">
 		<value>Верхний левый угол карты</value>
 	</data>
-	<data name="cboDesignBarPosition.Items2" xml:space="preserve">
+  <data name="cboDesignBarPosition.Items2" xml:space="preserve">
 		<value>Рядом с текущим объектом </value>
 	</data>
-	<data name="cboDesignBarPosition.Items3" xml:space="preserve">
+  <data name="cboDesignBarPosition.Items3" xml:space="preserve">
 		<value>Рядом с текущим объектом или точкой</value>
 	</data>
 </root>

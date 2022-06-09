@@ -20,7 +20,7 @@ Namespace cSurvey.Calculate.Plot
 
                     Dim oOptions As cOptionsDesign = New cOptionsDesign(oSurvey, "_info")
                     oOptions.DrawSplay = False
-                    oOptions.DrawSegmentsOptions = cOptions.DrawSegmentsOptionsEnum.None
+                    oOptions.DrawSegmentsOptions = cOptionsDesign.DrawSegmentsOptionsEnum.None
 
                     Dim oSegments As cISegmentCollection
                     Dim oPlanBounds As RectangleF
@@ -49,6 +49,7 @@ Namespace cSurvey.Calculate.Plot
                         Dim dTotPlan As Single = 0
                         Dim dDisPos As Single = Single.MaxValue
                         Dim dDisNeg As Single = Single.MinValue
+                        Dim dDisTot As Single = 0
                         'Dim dDisTot As Single
                         Dim iSegmentCount As Integer = 0
                         Dim iExcludedSegmentCount As Integer = 0
@@ -87,14 +88,21 @@ Namespace cSurvey.Calculate.Plot
                         Dim dQuotaOrigin As Single = oSurvey.Calculate.TrigPoints(oSurvey.Properties.Origin).Coordinate.Altitude
                         dDisNeg = 0
                         dDisPos = 0
+                        dDisTot = 0
                         Try
                             dDisPos = oProfileBounds.Top
                             dDisNeg = oProfileBounds.Bottom
+                            dDisTot = oProfileBounds.Height
                         Catch ex As Exception
                         End Try
 
-                        dQuotaMax = dQuotaOrigin - dDisPos
-                        dQuotaMin = dQuotaOrigin - dDisNeg
+                        If dDisTot = 0 Then
+                            dQuotaMax = dQuotaOrigin
+                            dQuotaMin = dQuotaOrigin
+                        Else
+                            dQuotaMax = dQuotaOrigin - dDisPos
+                            dQuotaMin = dQuotaOrigin - dDisNeg
+                        End If
 
                         Dim oSpeleometric As cSpeleometric
                         If bBranch Then
@@ -115,8 +123,10 @@ Namespace cSurvey.Calculate.Plot
                                 sEntrance = oMainCaveEntrance.Name
                                 oEntranceCoordinate = oSurvey.Calculate.TrigPoints(sEntrance).Coordinate
                                 dEntranceZ = oSurvey.Calculate.TrigPoints(sEntrance).Point.Z
-                                dDisPos = dDisPos - dEntranceZ
-                                dDisNeg = dDisNeg - dEntranceZ
+                                If dDisTot > 0 Then
+                                    dDisPos = dDisPos - dEntranceZ
+                                    dDisNeg = dDisNeg - dEntranceZ
+                                End If
                                 oSpeleometric = New cSpeleometric(oSurvey, sCave, sBranch, dTotReal, dTotPlan, dTotMeasured, 0, iSegmentCount, iExcludedSegmentCount, dQuotaMax, dQuotaMin, dDisPos, dDisNeg, sEntrance, oEntranceCoordinate)
                             End If
                         End If

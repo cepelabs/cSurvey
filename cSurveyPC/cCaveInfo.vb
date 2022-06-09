@@ -289,17 +289,17 @@ Namespace cSurvey
             Return GetSegments.GetBindedItems
         End Function
 
-        Public Function GetSegments(Mode As cOptions.HighlightModeEnum) As cISegmentCollection Implements cICaveInfoBranches.GetSegments
+        Public Function GetSegments(Mode As cOptionsDesign.HighlightModeEnum) As cISegmentCollection Implements cICaveInfoBranches.GetSegments
             Dim sCave As String = Cave.ToLower
             Dim oResult As cSegmentCollection = New cSegmentCollection(oSurvey)
             For Each oSegment As cSegment In oSurvey.Segments
                 Select Case Mode
-                    Case cOptions.HighlightModeEnum.Default, cOptions.HighlightModeEnum.Hierarchic
+                    Case cOptionsDesign.HighlightModeEnum.Default, cOptionsDesign.HighlightModeEnum.Hierarchic
                         'see comment in ccaveinfobranch
                         If oSegment.Cave.ToLower = sCave Then
                             Call oResult.Append(oSegment)
                         End If
-                    Case cOptions.HighlightModeEnum.ExactMatch
+                    Case cOptionsDesign.HighlightModeEnum.ExactMatch
                         'always check cave/branch
                         If oSegment.Cave.ToLower = sCave AndAlso oSegment.Branch = "" Then
                             Call oResult.Append(oSegment)
@@ -429,6 +429,12 @@ Namespace cSurvey
             Return oXmlCaveInfo
         End Function
 
+        Public ReadOnly Property ToHTMLString() As String
+            Get
+                Return "<b><backcolor=" & ColorTranslator.ToHtml(GetColor(Color.Gray)) & ">  </backcolor></b>  " & sName
+            End Get
+        End Property
+
         Public Overrides Function ToString() As String
             Return sName
         End Function
@@ -442,6 +448,9 @@ Namespace cSurvey
             End Set
         End Property
 
+        Public Function GetCave() As cCaveInfo Implements cICaveInfoBranches.GetCave
+            Return Me
+        End Function
         Public ReadOnly Property Cave As String Implements cICaveInfoBranches.Cave
             Get
                 Return sName
@@ -457,6 +466,18 @@ Namespace cSurvey
                 Return oSurvey.Properties.SurfaceProfileShow
             Else
                 Return iSurfaceProfileShow = cISurfaceProfile.SurfaceProfileShowEnum.Visible
+            End If
+        End Function
+
+        Public Function GetRoot() As cCaveInfo Implements cICaveInfoBranches.GetRoot
+            Return Me
+        End Function
+
+        Friend Shared Function EditToString(CaveEdit As cCaveInfo) As String
+            If CaveEdit Is Nothing Then
+                Return ""
+            Else
+                Return CaveEdit.Name
             End If
         End Function
     End Class

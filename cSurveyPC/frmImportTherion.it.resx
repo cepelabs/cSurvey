@@ -121,9 +121,6 @@
     <value>Prefisso che verrà aggiunto davanti al nome di ogni caposaldo</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblPrefix.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 13</value>
-  </data>
   <data name="lblPrefix.Text" xml:space="preserve">
     <value>Prefisso:</value>
   </data>
@@ -136,17 +133,8 @@
   <data name="txtCaveName.ToolTip" xml:space="preserve">
     <value>Nome della grotta (lasciare vuoto per importare il valore indicato nel file di VisualTopo)</value>
   </data>
-  <data name="lblCaveName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 13</value>
-  </data>
   <data name="lblCaveName.Text" xml:space="preserve">
     <value>Grotta:</value>
-  </data>
-  <data name="chkPocketTopoImportData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 17</value>
-  </data>
-  <data name="chkPocketTopoImportGraphics.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 17</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

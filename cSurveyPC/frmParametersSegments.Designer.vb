@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class frmParametersSegments
-    Inherits cForm
+    Inherits DevExpress.XtraEditors.XtraUserControl
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -23,50 +23,42 @@ Partial Class frmParametersSegments
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmParametersSegments))
-        Me.cmdApply = New System.Windows.Forms.Button()
-        Me.cmdOk = New System.Windows.Forms.Button()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.chkDuplicate = New System.Windows.Forms.CheckBox()
-        Me.chkSurface = New System.Windows.Forms.CheckBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox1 = New DevExpress.XtraEditors.GroupControl()
+        Me.chkDuplicate = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkSurface = New DevExpress.XtraEditors.CheckEdit()
+        Me.GroupBox2 = New DevExpress.XtraEditors.GroupControl()
         Me.cboSegmentsPaintStyle = New System.Windows.Forms.ComboBox()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label1 = New DevExpress.XtraEditors.LabelControl()
         Me.cboSplayStyle = New System.Windows.Forms.ComboBox()
-        Me.lblSplayStyle = New System.Windows.Forms.Label()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.lvDesignPlotShowHLsDett = New System.Windows.Forms.ListView()
-        Me.colNome = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.chkShowHLs = New System.Windows.Forms.CheckBox()
-        Me.chkDesignSurfaceProfile = New System.Windows.Forms.CheckBox()
-        Me.grpSurface = New System.Windows.Forms.GroupBox()
+        Me.lblSplayStyle = New DevExpress.XtraEditors.LabelControl()
+        Me.GroupBox3 = New DevExpress.XtraEditors.GroupControl()
+        Me.GroupBox4 = New DevExpress.XtraEditors.GroupControl()
+        Me.grdHighlights = New DevExpress.XtraGrid.GridControl()
+        Me.grdViewHighlights = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colHLSelected = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.chkHLSelected = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+        Me.colHLName = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.chkShowHLs = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkDesignSurfaceProfile = New DevExpress.XtraEditors.CheckEdit()
+        Me.grpSurface = New DevExpress.XtraEditors.GroupControl()
+        CType(Me.GroupBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.chkDuplicate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkSurface.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GroupBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.GroupBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
+        CType(Me.GroupBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
+        CType(Me.grdHighlights, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdViewHighlights, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkHLSelected, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkShowHLs.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkDesignSurfaceProfile.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grpSurface, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpSurface.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'cmdApply
-        '
-        resources.ApplyResources(Me.cmdApply, "cmdApply")
-        Me.cmdApply.Name = "cmdApply"
-        Me.cmdApply.UseVisualStyleBackColor = True
-        '
-        'cmdOk
-        '
-        resources.ApplyResources(Me.cmdOk, "cmdOk")
-        Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
-        '
-        'cmdCancel
-        '
-        resources.ApplyResources(Me.cmdCancel, "cmdCancel")
-        Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
@@ -74,19 +66,20 @@ Partial Class frmParametersSegments
         Me.GroupBox1.Controls.Add(Me.chkDuplicate)
         Me.GroupBox1.Controls.Add(Me.chkSurface)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.TabStop = False
         '
         'chkDuplicate
         '
         resources.ApplyResources(Me.chkDuplicate, "chkDuplicate")
         Me.chkDuplicate.Name = "chkDuplicate"
-        Me.chkDuplicate.UseVisualStyleBackColor = True
+        Me.chkDuplicate.Properties.AutoWidth = True
+        Me.chkDuplicate.Properties.Caption = resources.GetString("chkDuplicate.Properties.Caption")
         '
         'chkSurface
         '
         resources.ApplyResources(Me.chkSurface, "chkSurface")
         Me.chkSurface.Name = "chkSurface"
-        Me.chkSurface.UseVisualStyleBackColor = True
+        Me.chkSurface.Properties.AutoWidth = True
+        Me.chkSurface.Properties.Caption = resources.GetString("chkSurface.Properties.Caption")
         '
         'GroupBox2
         '
@@ -94,7 +87,6 @@ Partial Class frmParametersSegments
         Me.GroupBox2.Controls.Add(Me.cboSegmentsPaintStyle)
         Me.GroupBox2.Controls.Add(Me.Label1)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.TabStop = False
         '
         'cboSegmentsPaintStyle
         '
@@ -106,6 +98,8 @@ Partial Class frmParametersSegments
         '
         'Label1
         '
+        Me.Label1.Appearance.Font = CType(resources.GetObject("Label1.Appearance.Font"), System.Drawing.Font)
+        Me.Label1.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.Label1, "Label1")
         Me.Label1.Name = "Label1"
         '
@@ -127,98 +121,126 @@ Partial Class frmParametersSegments
         Me.GroupBox3.Controls.Add(Me.cboSplayStyle)
         Me.GroupBox3.Controls.Add(Me.lblSplayStyle)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.TabStop = False
         '
         'GroupBox4
         '
         resources.ApplyResources(Me.GroupBox4, "GroupBox4")
-        Me.GroupBox4.Controls.Add(Me.lvDesignPlotShowHLsDett)
+        Me.GroupBox4.Controls.Add(Me.grdHighlights)
         Me.GroupBox4.Controls.Add(Me.chkShowHLs)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.TabStop = False
         '
-        'lvDesignPlotShowHLsDett
+        'grdHighlights
         '
-        resources.ApplyResources(Me.lvDesignPlotShowHLsDett, "lvDesignPlotShowHLsDett")
-        Me.lvDesignPlotShowHLsDett.CheckBoxes = True
-        Me.lvDesignPlotShowHLsDett.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colNome})
-        Me.lvDesignPlotShowHLsDett.FullRowSelect = True
-        Me.lvDesignPlotShowHLsDett.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None
-        Me.lvDesignPlotShowHLsDett.HideSelection = False
-        Me.lvDesignPlotShowHLsDett.Name = "lvDesignPlotShowHLsDett"
-        Me.lvDesignPlotShowHLsDett.UseCompatibleStateImageBehavior = False
-        Me.lvDesignPlotShowHLsDett.View = System.Windows.Forms.View.Details
+        resources.ApplyResources(Me.grdHighlights, "grdHighlights")
+        Me.grdHighlights.MainView = Me.grdViewHighlights
+        Me.grdHighlights.Name = "grdHighlights"
+        Me.grdHighlights.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.chkHLSelected})
+        Me.grdHighlights.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdViewHighlights})
         '
-        'colNome
+        'grdViewHighlights
         '
-        resources.ApplyResources(Me.colNome, "colNome")
+        Me.grdViewHighlights.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colHLSelected, Me.colHLName})
+        Me.grdViewHighlights.GridControl = Me.grdHighlights
+        Me.grdViewHighlights.Name = "grdViewHighlights"
+        Me.grdViewHighlights.OptionsView.ShowColumnHeaders = False
+        Me.grdViewHighlights.OptionsView.ShowGroupPanel = False
+        Me.grdViewHighlights.OptionsView.ShowIndicator = False
+        '
+        'colHLSelected
+        '
+        resources.ApplyResources(Me.colHLSelected, "colHLSelected")
+        Me.colHLSelected.ColumnEdit = Me.chkHLSelected
+        Me.colHLSelected.FieldName = "Selected"
+        Me.colHLSelected.MaxWidth = 24
+        Me.colHLSelected.MinWidth = 24
+        Me.colHLSelected.Name = "colHLSelected"
+        Me.colHLSelected.OptionsColumn.FixedWidth = True
+        Me.colHLSelected.UnboundType = DevExpress.Data.UnboundColumnType.[Boolean]
+        '
+        'chkHLSelected
+        '
+        resources.ApplyResources(Me.chkHLSelected, "chkHLSelected")
+        Me.chkHLSelected.Name = "chkHLSelected"
+        '
+        'colHLName
+        '
+        resources.ApplyResources(Me.colHLName, "colHLName")
+        Me.colHLName.FieldName = "Name"
+        Me.colHLName.Name = "colHLName"
+        Me.colHLName.OptionsColumn.AllowEdit = False
+        Me.colHLName.OptionsColumn.ReadOnly = True
         '
         'chkShowHLs
         '
         resources.ApplyResources(Me.chkShowHLs, "chkShowHLs")
         Me.chkShowHLs.Name = "chkShowHLs"
-        Me.chkShowHLs.UseVisualStyleBackColor = True
+        Me.chkShowHLs.Properties.AutoWidth = True
+        Me.chkShowHLs.Properties.Caption = resources.GetString("chkShowHLs.Properties.Caption")
         '
         'chkDesignSurfaceProfile
         '
         resources.ApplyResources(Me.chkDesignSurfaceProfile, "chkDesignSurfaceProfile")
         Me.chkDesignSurfaceProfile.Name = "chkDesignSurfaceProfile"
-        Me.chkDesignSurfaceProfile.UseVisualStyleBackColor = True
+        Me.chkDesignSurfaceProfile.Properties.AutoWidth = True
+        Me.chkDesignSurfaceProfile.Properties.Caption = resources.GetString("chkDesignSurfaceProfile.Properties.Caption")
         '
         'grpSurface
         '
         resources.ApplyResources(Me.grpSurface, "grpSurface")
         Me.grpSurface.Controls.Add(Me.chkDesignSurfaceProfile)
         Me.grpSurface.Name = "grpSurface"
-        Me.grpSurface.TabStop = False
         '
         'frmParametersSegments
         '
-        Me.AcceptButton = Me.cmdOk
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.CancelButton = Me.cmdCancel
         Me.Controls.Add(Me.grpSurface)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.cmdApply)
-        Me.Controls.Add(Me.cmdOk)
-        Me.Controls.Add(Me.cmdCancel)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
         Me.Name = "frmParametersSegments"
+        CType(Me.GroupBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.chkDuplicate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkSurface.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GroupBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.GroupBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        CType(Me.GroupBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
+        CType(Me.grdHighlights, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdViewHighlights, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkHLSelected, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkShowHLs.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkDesignSurfaceProfile.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grpSurface, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpSurface.ResumeLayout(False)
         Me.grpSurface.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents cmdApply As System.Windows.Forms.Button
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents chkDuplicate As System.Windows.Forms.CheckBox
-    Friend WithEvents chkSurface As System.Windows.Forms.CheckBox
-    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents GroupBox1 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents chkDuplicate As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkSurface As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents GroupBox2 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents cboSegmentsPaintStyle As System.Windows.Forms.ComboBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents Label1 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboSplayStyle As System.Windows.Forms.ComboBox
-    Friend WithEvents lblSplayStyle As System.Windows.Forms.Label
-    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-    Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
-    Friend WithEvents chkShowHLs As System.Windows.Forms.CheckBox
-    Friend WithEvents lvDesignPlotShowHLsDett As ListView
-    Friend WithEvents colNome As ColumnHeader
-    Friend WithEvents chkDesignSurfaceProfile As CheckBox
-    Friend WithEvents grpSurface As GroupBox
+    Friend WithEvents lblSplayStyle As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents GroupBox3 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents GroupBox4 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents chkShowHLs As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkDesignSurfaceProfile As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents grdHighlights As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdViewHighlights As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents colHLSelected As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents chkHLSelected As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
+    Friend WithEvents colHLName As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents grpSurface As DevExpress.XtraEditors.GroupControl
 End Class

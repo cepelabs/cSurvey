@@ -1,0 +1,479 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnPropObjectsSelect.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnPropObjectsSelect.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnPropObjectsSelect.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAI6SURBVDhPpZPfa1JhHMbPPxJR3ZTzdxJYVDAq1kU1
+        FlHU7oqKbgryqoSstbAsnT8vMrawFi0qaGOwNRZbc8Mf5+hmzjN1uRop7KLU43EeHfH0HlNyZNToCx/e
+        l/c8z/Oe7/dwKAD/RdPDjUCFXTv/gJoKO9VUyKn6HYeKYmzyMxG3Fk2NooixK57TVimCPRIELTVq+4B5
+        B5IvjqD0oWt9ADFmGbsStFWGjy/bsRY3obLoQiVpQyXRQzCjEjdDYE0QYkYScLsxQE1uVQKfzPA/2E7M
+        dyBEb6Cceozy8muUl55CWHwEIeFEibWgFDWiOGf4FSD2RVvl8JslKM/rkeg/CNazDzxzGcWYBatJN1ZZ
+        K4rzJhQjXeBn9Sgwup8BIYeaom2K5czISQizVxB/1or4k/2opNzgAxfA+c6Bn7tVNYsrH76GAn0VnP8S
+        SN+iWZnODB9DMXgWabKmBg5gbcmFuGcvYn1a5Kc7kZs6DS6oQyGsB0frkPedR87bCYpxqCYyQ23gZ04h
+        PdiG6fvSz8M3Ja9CTiUSHi2EhXvIv+9AbrID2Yl2FHwXq2/ETR0H5z1RDQDvPYovb1oxY1asUBTVQtg8
+        2i0dibo1pFcD2L5diPVqkH13GF/HDiHZvxtBMi/aqgA1flc+KYYEbMpvxCirD5XUlrfd0lEyG7C9ajL1
+        61gZ2oPIQw0GDS0D5Lkoqgq31TaKurkxZMwoGxcvED8xY1d9r2k3NWj+WlsJorLO+mr2g2yEpof/Dqgf
+        oOlqFdylEOcAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnPropObjectsSelect.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnPropObjectsSelect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>444, 4</value>
+  </data>
+  <data name="btnPropObjectsSelect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="btnPropObjectsSelect.TabIndex" type="System.Int32, mscorlib">
+    <value>143</value>
+  </data>
+  <data name="btnPropObjectsSelect.ToolTip" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="&gt;&gt;btnPropObjectsSelect.Name" xml:space="preserve">
+    <value>btnPropObjectsSelect</value>
+  </data>
+  <data name="&gt;&gt;btnPropObjectsSelect.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnPropObjectsSelect.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnPropObjectsSelect.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnPropObjectsRefresh.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnPropObjectsRefresh.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnPropObjectsRefresh.Location" type="System.Drawing.Point, System.Drawing">
+    <value>474, 4</value>
+  </data>
+  <data name="btnPropObjectsRefresh.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="btnPropObjectsRefresh.TabIndex" type="System.Int32, mscorlib">
+    <value>142</value>
+  </data>
+  <data name="btnPropObjectsRefresh.ToolTip" xml:space="preserve">
+    <value>Refresh list</value>
+  </data>
+  <data name="&gt;&gt;btnPropObjectsRefresh.Name" xml:space="preserve">
+    <value>btnPropObjectsRefresh</value>
+  </data>
+  <data name="&gt;&gt;btnPropObjectsRefresh.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnPropObjectsRefresh.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnPropObjectsRefresh.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblPropObjects.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropObjects.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 6</value>
+  </data>
+  <data name="lblPropObjects.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 13</value>
+  </data>
+  <data name="lblPropObjects.TabIndex" type="System.Int32, mscorlib">
+    <value>140</value>
+  </data>
+  <data name="lblPropObjects.Text" xml:space="preserve">
+    <value>Objects:</value>
+  </data>
+  <data name="&gt;&gt;lblPropObjects.Name" xml:space="preserve">
+    <value>lblPropObjects</value>
+  </data>
+  <data name="&gt;&gt;lblPropObjects.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropObjects.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPropObjects.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="iml.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>657, 17</value>
+  </metadata>
+  <assembly alias="DevExpress.Data.v21.2" name="DevExpress.Data.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="iml.layer" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjIsIFZlcnNpb249MjEuMi41
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAALcCAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgd2lkdGg9Ijc2LjAxMDZw
+        eCIgaGVpZ2h0PSI3Ni4wMTA2cHgiIHZpZXdCb3g9IjAgMCA3Ni4wMSA3Ni4wMSIgdmVyc2lvbj0iMS4x
+        IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcg
+        MCAwIDc2LjAxIDc2LjAxIiB4bWw6c3BhY2U9InByZXNlcnZlIiBpZD0ic3ZnNCI+DQogIDxkZWZzIGlk
+        PSJkZWZzOCIgLz4NCiAgPHBhdGggZD0iTSA3Mi4yMTAwMiwzOC4wMDUyNiAzOC4wMDUzNCw1NS4xMDc2
+        IDMuODAwNjYsMzguMDA1MjYgMTUuMjAyMjIsMzIuMzA0NDggMzguMDA1MzQsNDMuNzA2MDQgNjAuODA4
+        NDYsMzIuMzA0NDggWiBNIDM4LjAwNTM0LDMuODAwNTggNzIuMjEwMDIsMjAuOTAyOTIgMzguMDA1MzQs
+        MzguMDA1MjYgMy44MDA0OCwyMC45MDI5MiBaIE0gNzIuMjEwMDIsNTUuMTA3NiAzOC4wMDUzNCw3Mi4y
+        MTAxMiAzLjgwMDQ4LDU1LjEwNzYgMTUuMjAyMjIsNDkuNDA2ODIgMzguMDA1MzQsNjAuODA4MzggNjAu
+        ODA4NDYsNDkuNDA2ODIgWiIgZmlsbD0iIzAwMDAwMCIgZmlsbC1vcGFjaXR5PSIxIiBpZD0icGF0aDIi
+        IHN0eWxlPSJmaWxsOiM4ODg4ODg7ZmlsbC1vcGFjaXR5OjEiIHN0cm9rZS13aWR0aD0iMS44cHgiIHN0
+        cm9rZS1saW5lam9pbj0icm91bmQiIC8+DQo8L3N2Zz4L
+</value>
+  </data>
+  <data name="iml.item" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjIsIFZlcnNpb249MjEuMi41
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAKYBAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgd2lkdGg9Ijc2cHgiIGhl
+        aWdodD0iNzZweCIgdmlld0JveD0iMCAwIDc2IDc2IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8v
+        d3d3LnczLm9yZy8yMDAwL3N2ZyIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNzYgNzYiIHhtbDpz
+        cGFjZT0icHJlc2VydmUiIGlkPSJzdmc0Ij4NCiAgPGRlZnMgaWQ9ImRlZnM4IiAvPg0KICA8cGF0aCBk
+        PSJNIDE2Ljk0LDE2Ljk0IEggNTkuMDYgViA1OS4wNiBIIDE2Ljk0IFoiIGZpbGw9IiMwMDAwMDAiIGZp
+        bGwtb3BhY2l0eT0iMSIgaWQ9InBhdGgyIiBzdHlsZT0iZmlsbDojODg4ODg4O2ZpbGwtb3BhY2l0eTox
+        IiBzdHJva2Utd2lkdGg9IjAuMzI0cHgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIC8+DQo8L3N2Zz4L
+</value>
+  </data>
+  <data name="colTreeLayersType.Caption" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="colTreeLayersType.MaxWidth" type="System.Int32, mscorlib">
+    <value>180</value>
+  </data>
+  <data name="colTreeLayersType.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colTreeLayersType.VisibleIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="colTreeLayersType.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <data name="colTreeLayersCaveBranchColor.Caption" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="colTreeLayersCaveBranchColor.MaxWidth" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="colTreeLayersCaveBranchColor.MinWidth" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="colTreeLayersCaveBranchColor.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colTreeLayersCaveBranchColor.VisibleIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="colTreeLayersCaveBranchColor.Width" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="colTreeLayersHiddenInPreview.Caption" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="colTreeLayersHiddenInPreview.ImageOptions.Alignment" type="System.Drawing.StringAlignment, System.Drawing">
+    <value>Center</value>
+  </data>
+  <data name="colTreeLayersHiddenInPreview.MaxWidth" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="colTreeLayersHiddenInPreview.MinWidth" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="colTreeLayersHiddenInPreview.ToolTip" xml:space="preserve">
+    <value>Visible in preview</value>
+  </data>
+  <data name="colTreeLayersHiddenInPreview.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colTreeLayersHiddenInPreview.VisibleIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="colTreeLayersHiddenInPreview.Width" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="colTreeLayersHiddenInDesign.Caption" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="colTreeLayersHiddenInDesign.ImageOptions.Alignment" type="System.Drawing.StringAlignment, System.Drawing">
+    <value>Center</value>
+  </data>
+  <data name="colTreeLayersHiddenInDesign.MaxWidth" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="colTreeLayersHiddenInDesign.MinWidth" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="colTreeLayersHiddenInDesign.ToolTip" xml:space="preserve">
+    <value>Visible in design</value>
+  </data>
+  <data name="colTreeLayersHiddenInDesign.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colTreeLayersHiddenInDesign.VisibleIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="colTreeLayersHiddenInDesign.Width" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="colTreeLayersName.Caption" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="colTreeLayersName.MaxWidth" type="System.Int32, mscorlib">
+    <value>200</value>
+  </data>
+  <data name="colTreeLayersName.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colTreeLayersName.VisibleIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="colTreeLayersName.Width" type="System.Int32, mscorlib">
+    <value>158</value>
+  </data>
+  <data name="colTreeLayersCave.Caption" xml:space="preserve">
+    <value>Cave</value>
+  </data>
+  <data name="colTreeLayersCave.MaxWidth" type="System.Int32, mscorlib">
+    <value>300</value>
+  </data>
+  <data name="colTreeLayersCave.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colTreeLayersCave.VisibleIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="colTreeLayersCave.Width" type="System.Int32, mscorlib">
+    <value>157</value>
+  </data>
+  <data name="colTreeLayersBranch.Caption" xml:space="preserve">
+    <value>Branch</value>
+  </data>
+  <data name="colTreeLayersBranch.MaxWidth" type="System.Int32, mscorlib">
+    <value>300</value>
+  </data>
+  <data name="colTreeLayersBranch.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colTreeLayersBranch.VisibleIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="colTreeLayersBranch.Width" type="System.Int32, mscorlib">
+    <value>156</value>
+  </data>
+  <data name="tvLayers.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="tvLayers.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 3</value>
+  </data>
+  <data name="tvLayers.Size" type="System.Drawing.Size, System.Drawing">
+    <value>358, 158</value>
+  </data>
+  <data name="tvLayers.TabIndex" type="System.Int32, mscorlib">
+    <value>144</value>
+  </data>
+  <data name="&gt;&gt;tvLayers.Name" xml:space="preserve">
+    <value>tvLayers</value>
+  </data>
+  <data name="&gt;&gt;tvLayers.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.TreeList, DevExpress.XtraTreeList.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tvLayers.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tvLayers.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>506, 164</value>
+  </data>
+  <data name="&gt;&gt;iml.Name" xml:space="preserve">
+    <value>iml</value>
+  </data>
+  <data name="&gt;&gt;iml.Type" xml:space="preserve">
+    <value>DevExpress.Utils.SvgImageCollection, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colTreeLayersType.Name" xml:space="preserve">
+    <value>colTreeLayersType</value>
+  </data>
+  <data name="&gt;&gt;colTreeLayersType.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colTreeLayersCaveBranchColor.Name" xml:space="preserve">
+    <value>colTreeLayersCaveBranchColor</value>
+  </data>
+  <data name="&gt;&gt;colTreeLayersCaveBranchColor.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colTreeLayersHiddenInPreview.Name" xml:space="preserve">
+    <value>colTreeLayersHiddenInPreview</value>
+  </data>
+  <data name="&gt;&gt;colTreeLayersHiddenInPreview.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colTreeLayersHiddenInDesign.Name" xml:space="preserve">
+    <value>colTreeLayersHiddenInDesign</value>
+  </data>
+  <data name="&gt;&gt;colTreeLayersHiddenInDesign.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colTreeLayersName.Name" xml:space="preserve">
+    <value>colTreeLayersName</value>
+  </data>
+  <data name="&gt;&gt;colTreeLayersName.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colTreeLayersCave.Name" xml:space="preserve">
+    <value>colTreeLayersCave</value>
+  </data>
+  <data name="&gt;&gt;colTreeLayersCave.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colTreeLayersBranch.Name" xml:space="preserve">
+    <value>colTreeLayersBranch</value>
+  </data>
+  <data name="&gt;&gt;colTreeLayersBranch.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>cItemObjectsBindingPropertyControl</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>cSurveyPC.cItemPropertyControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+</root>

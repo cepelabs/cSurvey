@@ -34,17 +34,12 @@ Partial Class frmLinkedSurveysRelink
         Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Me.cmdOk = New System.Windows.Forms.Button()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.tvLinkedSurveys = New BrightIdeasSoftware.ObjectListView()
-        Me.colLinkedSurveysIcon = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
-        Me.colLinkedSurveysFilename = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
-        Me.colLinkedSurveysNewIcon = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
-        Me.colLinkedSurveysNewFilename = CType(New BrightIdeasSoftware.OLVColumn(), BrightIdeasSoftware.OLVColumn)
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.pnlHeader = New System.Windows.Forms.Panel()
-        Me.txtCurrentPath = New System.Windows.Forms.TextBox()
-        Me.lblCurrentPath = New System.Windows.Forms.Label()
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.Panel1 = New DevExpress.XtraEditors.PanelControl()
+        Me.pnlHeader = New DevExpress.XtraEditors.PanelControl()
+        Me.txtCurrentPath = New DevExpress.XtraEditors.TextEdit()
+        Me.lblCurrentPath = New DevExpress.XtraEditors.LabelControl()
         Me.BarManager = New DevExpress.XtraBars.BarManager(Me.components)
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
@@ -59,12 +54,27 @@ Partial Class frmLinkedSurveysRelink
         Me.btnChangeCommonPath = New DevExpress.XtraBars.BarButtonItem()
         Me.txtReplacePath = New DevExpress.XtraEditors.Repository.RepositoryItemBreadCrumbEdit()
         Me.mnuRelink = New DevExpress.XtraBars.PopupMenu(Me.components)
-        CType(Me.tvLinkedSurveys, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.grdLS = New DevExpress.XtraGrid.GridControl()
+        Me.grdViewLS = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colLSSelected = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.chkLSSelected = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+        Me.colLSIcon = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.picIcon = New DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit()
+        Me.colLSFilename = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLSNewIcon = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLSNewFilename = New DevExpress.XtraGrid.Columns.GridColumn()
+        CType(Me.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        CType(Me.pnlHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlHeader.SuspendLayout()
+        CType(Me.txtCurrentPath.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtReplacePath, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.mnuRelink, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdLS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdViewLS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkLSSelected, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picIcon, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdOk
@@ -72,59 +82,16 @@ Partial Class frmLinkedSurveysRelink
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
         '
         'cmdCancel
         '
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
-        '
-        'tvLinkedSurveys
-        '
-        Me.tvLinkedSurveys.AllColumns.Add(Me.colLinkedSurveysIcon)
-        Me.tvLinkedSurveys.AllColumns.Add(Me.colLinkedSurveysFilename)
-        Me.tvLinkedSurveys.AllColumns.Add(Me.colLinkedSurveysNewIcon)
-        Me.tvLinkedSurveys.AllColumns.Add(Me.colLinkedSurveysNewFilename)
-        Me.tvLinkedSurveys.AllowDrop = True
-        Me.tvLinkedSurveys.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.tvLinkedSurveys.CellEditUseWholeCell = False
-        Me.tvLinkedSurveys.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colLinkedSurveysIcon, Me.colLinkedSurveysFilename, Me.colLinkedSurveysNewIcon, Me.colLinkedSurveysNewFilename})
-        Me.tvLinkedSurveys.Cursor = System.Windows.Forms.Cursors.Default
-        resources.ApplyResources(Me.tvLinkedSurveys, "tvLinkedSurveys")
-        Me.tvLinkedSurveys.FullRowSelect = True
-        Me.tvLinkedSurveys.HideSelection = False
-        Me.tvLinkedSurveys.IsSimpleDragSource = True
-        Me.tvLinkedSurveys.IsSimpleDropSink = True
-        Me.tvLinkedSurveys.Name = "tvLinkedSurveys"
-        Me.tvLinkedSurveys.ShowGroups = False
-        Me.tvLinkedSurveys.UseCompatibleStateImageBehavior = False
-        Me.tvLinkedSurveys.View = System.Windows.Forms.View.Details
-        Me.tvLinkedSurveys.VirtualMode = True
-        '
-        'colLinkedSurveysIcon
-        '
-        Me.colLinkedSurveysIcon.IsEditable = False
-        resources.ApplyResources(Me.colLinkedSurveysIcon, "colLinkedSurveysIcon")
-        '
-        'colLinkedSurveysFilename
-        '
-        Me.colLinkedSurveysFilename.IsEditable = False
-        resources.ApplyResources(Me.colLinkedSurveysFilename, "colLinkedSurveysFilename")
-        '
-        'colLinkedSurveysNewIcon
-        '
-        Me.colLinkedSurveysNewIcon.IsEditable = False
-        resources.ApplyResources(Me.colLinkedSurveysNewIcon, "colLinkedSurveysNewIcon")
-        '
-        'colLinkedSurveysNewFilename
-        '
-        Me.colLinkedSurveysNewFilename.IsEditable = False
-        resources.ApplyResources(Me.colLinkedSurveysNewFilename, "colLinkedSurveysNewFilename")
         '
         'Panel1
         '
+        Me.Panel1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.Panel1.Controls.Add(Me.cmdOk)
         Me.Panel1.Controls.Add(Me.cmdCancel)
         resources.ApplyResources(Me.Panel1, "Panel1")
@@ -132,6 +99,7 @@ Partial Class frmLinkedSurveysRelink
         '
         'pnlHeader
         '
+        Me.pnlHeader.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlHeader.Controls.Add(Me.txtCurrentPath)
         Me.pnlHeader.Controls.Add(Me.lblCurrentPath)
         resources.ApplyResources(Me.pnlHeader, "pnlHeader")
@@ -141,7 +109,7 @@ Partial Class frmLinkedSurveysRelink
         '
         resources.ApplyResources(Me.txtCurrentPath, "txtCurrentPath")
         Me.txtCurrentPath.Name = "txtCurrentPath"
-        Me.txtCurrentPath.ReadOnly = True
+        Me.txtCurrentPath.Properties.ReadOnly = True
         '
         'lblCurrentPath
         '
@@ -241,11 +209,95 @@ Partial Class frmLinkedSurveysRelink
         Me.mnuRelink.Manager = Me.BarManager
         Me.mnuRelink.Name = "mnuRelink"
         '
+        'grdLS
+        '
+        resources.ApplyResources(Me.grdLS, "grdLS")
+        Me.grdLS.MainView = Me.grdViewLS
+        Me.grdLS.MenuManager = Me.BarManager
+        Me.grdLS.Name = "grdLS"
+        Me.grdLS.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.picIcon, Me.chkLSSelected})
+        Me.grdLS.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdViewLS})
+        '
+        'grdViewLS
+        '
+        Me.grdViewLS.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colLSSelected, Me.colLSIcon, Me.colLSFilename, Me.colLSNewIcon, Me.colLSNewFilename})
+        Me.grdViewLS.GridControl = Me.grdLS
+        Me.grdViewLS.Name = "grdViewLS"
+        Me.grdViewLS.OptionsCustomization.AllowGroup = False
+        Me.grdViewLS.OptionsView.ShowGroupPanel = False
+        Me.grdViewLS.OptionsView.ShowIndicator = False
+        '
+        'colLSSelected
+        '
+        resources.ApplyResources(Me.colLSSelected, "colLSSelected")
+        Me.colLSSelected.ColumnEdit = Me.chkLSSelected
+        Me.colLSSelected.FieldName = "_selected"
+        Me.colLSSelected.MaxWidth = 24
+        Me.colLSSelected.MinWidth = 24
+        Me.colLSSelected.Name = "colLSSelected"
+        Me.colLSSelected.OptionsColumn.FixedWidth = True
+        Me.colLSSelected.UnboundDataType = GetType(Boolean)
+        '
+        'chkLSSelected
+        '
+        resources.ApplyResources(Me.chkLSSelected, "chkLSSelected")
+        Me.chkLSSelected.Name = "chkLSSelected"
+        '
+        'colLSIcon
+        '
+        resources.ApplyResources(Me.colLSIcon, "colLSIcon")
+        Me.colLSIcon.ColumnEdit = Me.picIcon
+        Me.colLSIcon.FieldName = "_icon"
+        Me.colLSIcon.MaxWidth = 24
+        Me.colLSIcon.MinWidth = 24
+        Me.colLSIcon.Name = "colLSIcon"
+        Me.colLSIcon.OptionsColumn.AllowEdit = False
+        Me.colLSIcon.OptionsColumn.FixedWidth = True
+        Me.colLSIcon.OptionsColumn.ReadOnly = True
+        Me.colLSIcon.UnboundDataType = GetType(Object)
+        '
+        'picIcon
+        '
+        Me.picIcon.Name = "picIcon"
+        resources.ApplyResources(Me.picIcon, "picIcon")
+        Me.picIcon.SvgImageSize = New System.Drawing.Size(16, 16)
+        '
+        'colLSFilename
+        '
+        resources.ApplyResources(Me.colLSFilename, "colLSFilename")
+        Me.colLSFilename.FieldName = "_filename"
+        Me.colLSFilename.Name = "colLSFilename"
+        Me.colLSFilename.OptionsColumn.AllowEdit = False
+        Me.colLSFilename.OptionsColumn.ReadOnly = True
+        Me.colLSFilename.UnboundDataType = GetType(String)
+        '
+        'colLSNewIcon
+        '
+        resources.ApplyResources(Me.colLSNewIcon, "colLSNewIcon")
+        Me.colLSNewIcon.ColumnEdit = Me.picIcon
+        Me.colLSNewIcon.FieldName = "_newicon"
+        Me.colLSNewIcon.MaxWidth = 24
+        Me.colLSNewIcon.MinWidth = 24
+        Me.colLSNewIcon.Name = "colLSNewIcon"
+        Me.colLSNewIcon.OptionsColumn.AllowEdit = False
+        Me.colLSNewIcon.OptionsColumn.FixedWidth = True
+        Me.colLSNewIcon.OptionsColumn.ReadOnly = True
+        Me.colLSNewIcon.UnboundDataType = GetType(Object)
+        '
+        'colLSNewFilename
+        '
+        resources.ApplyResources(Me.colLSNewFilename, "colLSNewFilename")
+        Me.colLSNewFilename.FieldName = "_newfilename"
+        Me.colLSNewFilename.Name = "colLSNewFilename"
+        Me.colLSNewFilename.OptionsColumn.AllowEdit = False
+        Me.colLSNewFilename.OptionsColumn.ReadOnly = True
+        Me.colLSNewFilename.UnboundDataType = GetType(String)
+        '
         'frmLinkedSurveysRelink
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.tvLinkedSurveys)
+        Me.Controls.Add(Me.grdLS)
         Me.Controls.Add(Me.pnlHeader)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.barDockControlLeft)
@@ -256,29 +308,30 @@ Partial Class frmLinkedSurveysRelink
         Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.linktoprevious
         Me.MinimizeBox = False
         Me.Name = "frmLinkedSurveysRelink"
-        CType(Me.tvLinkedSurveys, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Panel1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
+        CType(Me.pnlHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlHeader.ResumeLayout(False)
         Me.pnlHeader.PerformLayout()
+        CType(Me.txtCurrentPath.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BarManager, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtReplacePath, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.mnuRelink, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdLS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdViewLS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkLSSelected, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picIcon, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents cmdOk As Button
-    Friend WithEvents cmdCancel As Button
-    Friend WithEvents tvLinkedSurveys As BrightIdeasSoftware.ObjectListView
-    Friend WithEvents colLinkedSurveysIcon As BrightIdeasSoftware.OLVColumn
-    Friend WithEvents colLinkedSurveysFilename As BrightIdeasSoftware.OLVColumn
-    Friend WithEvents colLinkedSurveysNewFilename As BrightIdeasSoftware.OLVColumn
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents pnlHeader As Panel
-    Friend WithEvents txtCurrentPath As TextBox
-    Friend WithEvents lblCurrentPath As Label
-    Friend WithEvents colLinkedSurveysNewIcon As BrightIdeasSoftware.OLVColumn
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents Panel1 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlHeader As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents txtCurrentPath As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents lblCurrentPath As DevExpress.XtraEditors.LabelControl
     Friend WithEvents BarManager As DevExpress.XtraBars.BarManager
     Friend WithEvents barDockControlTop As DevExpress.XtraBars.BarDockControl
     Friend WithEvents barDockControlBottom As DevExpress.XtraBars.BarDockControl
@@ -293,4 +346,13 @@ Partial Class frmLinkedSurveysRelink
     Friend WithEvents btnChangeFile As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnCancel As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnChangeCommonPath As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents grdLS As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdViewLS As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents colLSIcon As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLSFilename As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLSNewIcon As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLSNewFilename As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents picIcon As DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit
+    Friend WithEvents colLSSelected As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents chkLSSelected As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
 End Class

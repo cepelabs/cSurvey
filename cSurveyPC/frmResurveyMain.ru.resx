@@ -118,146 +118,44 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="mnuPreviewAdd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACHElEQVQ4T6WTPWiTYRSFbys6ZPBvkLh0
-        KDgJQsjiXk3tj2gqghE7CaK7xAoOQsWoSUOSpk3SFKRVUBKLi9UhpbW1xSaixtB2ECwddHBy6KDb8Zx8
-        SU01dPHATW7uvef5bt43MQD/Fc5Lg7oj5vXdt8KJkKGDoXd+RlfYCr1D5q2NVfUP4NQDGwmM7sXL1evY
-        2HyIzz8SKH27iem1ftydPoa++C70RixXG98OoDl3efwwfmIGxa/9SL0xxOYM8deG9KJhstSO1IIH54cJ
-        GbKRbYAern0h6cL3X1N4UnYjSUNsQS1HccIybw3Z5d0IvXLjbMxwOmpethyA757NPi4GMLPehSQHFVGa
-        6lI+umwYe0fw/B5cnTD0hG2OrS0AljaCSJc4sEQzNwjN/wEoV22Y4AwhwTwBkWrfAZwkYPbLFUyW96u4
-        o1LvDQNThu5wA0DX9Lzix6OVgyruqNTHJgDeAMYXjyP9yZDgE6JcM8R161Ku2vAHnkO52VcYtOJA/hBS
-        xQMYWzGkKjQQVJdy1bKrhgjP49pECzrvWJEtB+AJmN/Pqxl8sQ+ZSiuya3wat6lLuWraMJhvqV6j56L5
-        2XIAlKvjluX64oYbz1oR0b3T8HTdXQ3lqsl8LsGfN2flaQRIbb7bVhBdKwZzhPG7KpSrpl7N3CbD3wCp
-        /egZu9TJM9Eh6aQVylVTjzNVs9QMILkYRxj65zWGauptCYD9BunhL1NfXGUmAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="mnuPreviewAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
-  </data>
   <data name="mnuPreviewAdd.Text" xml:space="preserve">
     <value>Добавить пикет/метку...</value>
-  </data>
-  <data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 6</value>
-  </data>
-  <data name="mnuPreviewRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
   </data>
   <data name="mnuPreviewRemove.Text" xml:space="preserve">
     <value>Удалить метку</value>
   </data>
-  <data name="mnuPreviewRemoveAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
-  </data>
   <data name="mnuPreviewRemoveAll.Text" xml:space="preserve">
     <value>Удалить все метки</value>
-  </data>
-  <data name="ToolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 6</value>
-  </data>
-  <data name="mnuPreviewDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABFElEQVQ4T52QMWsCQRCF7w8JEgsbC9MI
-        EkSEWFhYWKQIiJDGRkhhEwtB0miljYWFjZDOlPpXRBARQS+aEBh9c+6wezda+ODBzns73x3rEZFnNE/H
-        Cb6MEYV73jUAFD+zKVuDaL0AEPjfE1pkY2ycbci13gV8jWiZexBjRn6rE8BZCQT78YBWhaQYs5bhLnZs
-        AMQQf9ijdTGlGp1ZxkIYAAWQfoc2pUfHyOxlSAMEr91t0baccYzsAhBFALz82aRd5Uk1OhviAFAc2g3y
-        X/JizFpmIAJAcPyo0+H1WYwZ+a3OAfw13+i3VmLjjOz8ETwYP6zWC8Bc+n+vsq1lI7W3ARBfUpaNIn0Y
-        APEvB0dVTi+A+03eCfYl8BaazUUuAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="mnuPreviewDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
   </data>
   <data name="mnuPreviewDelete.Text" xml:space="preserve">
     <value>Удалить пикет</value>
   </data>
-  <data name="mnuPreviewDeleteAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
-  </data>
   <data name="mnuPreviewDeleteAll.Text" xml:space="preserve">
     <value>Удалить все пикеты</value>
-  </data>
-  <data name="ToolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 6</value>
-  </data>
-  <data name="mnuPreviewDeleteLink.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
   </data>
   <data name="mnuPreviewDeleteLink.Text" xml:space="preserve">
     <value>Удалить ссылку</value>
   </data>
-  <data name="ToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 6</value>
-  </data>
-  <data name="mnuPreviewSetOrigin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
-  </data>
   <data name="mnuPreviewSetOrigin.Text" xml:space="preserve">
     <value>Установить как точку отсчета</value>
-  </data>
-  <data name="mnuPreviewProperties.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACTUlEQVQ4T42T2U8TURTG++YfwpuvvmhE
-        jfpoolET3332HzARsdFKAm4VLUoUG+p0o52ZDhMQMdoG3Ait2gVLiCnFtna6YCldpwuf907bmTTB6C/5
-        cubcuee752Tm6gRRLLAeD9wcB1efWCWyPA/O48nq/gbd8C8ymQw9wNYt6YeeTIltxom2sBnfUiLNKS+t
-        ViVKkkS7sXfLNGiblJ+JBBLJJJKppBJpTmHsduTyeeU5n8tBEGeZbmkHOislmUrjV1pSRXPKqt8Pm9MB
-        +4wLyx8+grE5YXe64Jhxh5wudkDnYjsGEpkzk82qovluuaS8o/gDX/B5ZRWFnSIZM45P5JmxOaAaZHN5
-        0up2n3prO8VdGMcnEIvF4eYFPHsxjSmzBeZpRjP4XSjsq0KxiEq1igcPTYisReH1LsP0ZBJk+kOKegb0
-        lH6VUCxVUao2UWsCHnEe6+sbZJSvuHPPSAwfY9z0VOugVC5rqlRQqcmotYAwZ0CEvYXojxQpDiIYCpOx
-        8pDSGdy9b9QMqqTNnmpyAw2yFhHGEDCdhBx34hs3hNfeFVy7YYD+5giG9YaNY8dPnFMN6vUGkYy63ERz
-        D1gTRhGYOA05ISA0dRbByTOIuocxt/i2N/9BogPqj9Rut9FutdDeI9WEpZFBNJKzCJvPI/j8IpZuDyJi
-        uwphfpEaaNCLtB8+wxF8t1wgBpfwfvQUQo4hZZ0X5/oNLAzjoxdKuYFkHBfHwy0u4NWjK3inP4o31w9D
-        GLsMfsGnFFsYq69bqjJA1Pmm/ye6v4tO9wc1pcWlTGCZAwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="mnuPreviewProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
   </data>
   <data name="mnuPreviewProperties.Text" xml:space="preserve">
     <value>Свойства...</value>
   </data>
-  <data name="ToolStripMenuItem4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 6</value>
-  </data>
-  <data name="mnuPreviewHide.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
-  </data>
   <data name="mnuPreviewHide.Text" xml:space="preserve">
     <value>Скрыть пикет</value>
-  </data>
-  <data name="mnuPreviewShowOnlySelected.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
   </data>
   <data name="mnuPreviewShowOnlySelected.Text" xml:space="preserve">
     <value>Скрыть все, кроме текущго пикета</value>
   </data>
-  <data name="mnuPreviewHideAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
-  </data>
   <data name="mnuPreviewHideAll.Text" xml:space="preserve">
     <value>Скрыть все пикеты</value>
-  </data>
-  <data name="ToolStripMenuItem7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 6</value>
-  </data>
-  <data name="mnuPreviewShowHidden.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
   </data>
   <data name="mnuPreviewShowHidden.Text" xml:space="preserve">
     <value>Показать скрытые пикеты</value>
   </data>
-  <data name="mnuPreviewShowHide.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
-  </data>
   <data name="mnuPreviewShowHide.Text" xml:space="preserve">
     <value>Показать/Скрыть пикет</value>
-  </data>
-  <data name="mnuPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 232</value>
   </data>
   <data name="colStation.HeaderText" xml:space="preserve">
     <value>Пикет</value>
@@ -277,65 +175,17 @@
   <data name="colTipo.HeaderText" xml:space="preserve">
     <value>Тип</value>
   </data>
-  <data name="mnuGridStationRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
-  </data>
   <data name="mnuGridStationRemove.Text" xml:space="preserve">
     <value>Удалить метку</value>
-  </data>
-  <data name="ToolStripMenuItem6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 6</value>
-  </data>
-  <data name="mnuGridStationDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABFElEQVQ4T52QMWsCQRCF7w8JEgsbC9MI
-        EkSEWFhYWKQIiJDGRkhhEwtB0miljYWFjZDOlPpXRBARQS+aEBh9c+6wezda+ODBzns73x3rEZFnNE/H
-        Cb6MEYV73jUAFD+zKVuDaL0AEPjfE1pkY2ycbci13gV8jWiZexBjRn6rE8BZCQT78YBWhaQYs5bhLnZs
-        AMQQf9ijdTGlGp1ZxkIYAAWQfoc2pUfHyOxlSAMEr91t0baccYzsAhBFALz82aRd5Uk1OhviAFAc2g3y
-        X/JizFpmIAJAcPyo0+H1WYwZ+a3OAfw13+i3VmLjjOz8ETwYP6zWC8Bc+n+vsq1lI7W3ARBfUpaNIn0Y
-        APEvB0dVTi+A+03eCfYl8BaazUUuAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="mnuGridStationDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
   </data>
   <data name="mnuGridStationDelete.Text" xml:space="preserve">
     <value>Удалить пикет</value>
   </data>
-  <data name="ToolStripMenuItem8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 6</value>
-  </data>
-  <data name="mnuGridStationSetOrigin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
-  </data>
   <data name="mnuGridStationSetOrigin.Text" xml:space="preserve">
     <value>Установить как точку отсчета</value>
   </data>
-  <data name="mnuGridStationProperties.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACTUlEQVQ4T42T2U8TURTG++YfwpuvvmhE
-        jfpoolET3332HzARsdFKAm4VLUoUG+p0o52ZDhMQMdoG3Ait2gVLiCnFtna6YCldpwuf907bmTTB6C/5
-        cubcuee752Tm6gRRLLAeD9wcB1efWCWyPA/O48nq/gbd8C8ymQw9wNYt6YeeTIltxom2sBnfUiLNKS+t
-        ViVKkkS7sXfLNGiblJ+JBBLJJJKppBJpTmHsduTyeeU5n8tBEGeZbmkHOislmUrjV1pSRXPKqt8Pm9MB
-        +4wLyx8+grE5YXe64Jhxh5wudkDnYjsGEpkzk82qovluuaS8o/gDX/B5ZRWFnSIZM45P5JmxOaAaZHN5
-        0up2n3prO8VdGMcnEIvF4eYFPHsxjSmzBeZpRjP4XSjsq0KxiEq1igcPTYisReH1LsP0ZBJk+kOKegb0
-        lH6VUCxVUao2UWsCHnEe6+sbZJSvuHPPSAwfY9z0VOugVC5rqlRQqcmotYAwZ0CEvYXojxQpDiIYCpOx
-        8pDSGdy9b9QMqqTNnmpyAw2yFhHGEDCdhBx34hs3hNfeFVy7YYD+5giG9YaNY8dPnFMN6vUGkYy63ERz
-        D1gTRhGYOA05ISA0dRbByTOIuocxt/i2N/9BogPqj9Rut9FutdDeI9WEpZFBNJKzCJvPI/j8IpZuDyJi
-        uwphfpEaaNCLtB8+wxF8t1wgBpfwfvQUQo4hZZ0X5/oNLAzjoxdKuYFkHBfHwy0u4NWjK3inP4o31w9D
-        GLsMfsGnFFsYq69bqjJA1Pmm/ye6v4tO9wc1pcWlTGCZAwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="mnuGridStationProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
-  </data>
   <data name="mnuGridStationProperties.Text" xml:space="preserve">
     <value>Свойства...</value>
-  </data>
-  <data name="mnuGridStation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 104</value>
   </data>
   <data name="Sinistra.HeaderText" xml:space="preserve">
     <value>Лево</value>
@@ -349,222 +199,26 @@
   <data name="Basso.HeaderText" xml:space="preserve">
     <value>Низ</value>
   </data>
-  <data name="btnStations.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnStations.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 22</value>
-  </data>
-  <data name="btnPlot.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnPlot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 22</value>
-  </data>
-  <data name="mnuTabsLoadImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACuElEQVQ4T32T20tUQRjAz/9Q9OJThURU
-        EFhErestsyjTfOmtsKCHQKgoilxJ1wti4n29tEIpVqIZaWlpaitlhYqul9bLrutiqGQKFV7X269vVjcs
-        pAM/Zuac+X7zzTdztN6i4+XdJj3W3GMeVL+nMPgRoP2PPnOYB00FsDIMC4PrLDnozDxMV87RP9LNqPm9
-        RSFlSmIzh2qaNVcngTbcPdEsdl9idap2XeQeEtkmPGN5v+akzyQxInAW6zcE8+24bVeFGFb6r8LQFXBc
-        FqL/4aIIrAybDnoEYWkdSuAPMy0sD11nxX4TRq6RWlKKzvBOaPTgb3iL3tCAPraeAEM9QfFNhCU1E5XW
-        PC0CqcFMPWuuOzAaC+O30MVZcC2AfU4WnQWX8FUhY287sQSRKXVo1rwA2cJLRqqi6Ew/xEDWfvzjmliW
-        HG1tImz3wdAJxi5IFIzST+hQO4DwxFdo3flBLDqzGSwJhVU5Db6gi23gp5rRsB3Xx9uk2yC3/RPm6h3k
-        tLWS3if19Ap6CkL43nqDiaYYmG2ULVxDd7eeKUkhewBMUnizA7KqT5FRuYtMaYvs8GvFKyg8jrPqPHP2
-        TPhRCtMGj2BcalAqCT12QvmopP9wG8lluzBK+0TGk+4NQe+DULkcgbD8TDIwSz3uS8UbGZ2HF2NQMw61
-        kyKztpKQ6kNJ1wdqvsHYIpxNqkV7lx74Rq6zSILoydPjMPkRGG/BKYLs5gPkWY6Q/15PwecTZF7wJf9T
-        CDmWg7jke0SSnII8OwW/zQQbW3DIhIzaM8SX+5JQsRdj5T6MVfuIr9hDRl04w16B96dQDBYHa2PFftrJ
-        ZAsjUmabnHm/Qs59QOiXINVX713yPUrdA2+w+jHU3VbX8/S95y3nUl4TKSuoVSKTVH+d9XGdJzgi7mmD
-        ZLzls1v4a1tbo+38DTVfu85TLyzVAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="mnuTabsLoadImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
-  </data>
   <data name="mnuTabsLoadImage.Text" xml:space="preserve">
     <value>Загрузить изображение...</value>
-  </data>
-  <data name="mnuTabs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 26</value>
-  </data>
-  <data name="btnNew.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEgSURBVDhPlZPRboIwFIZ5lz3C3njMcSEFFl9g1/Mdpg6c
-        0CpsSogzkrP+p4WNuEr8ki+19pzf0wgeeJ7NKpEkFEYRTQcKXkUcU5Qkkov/AwVjFEVBoRBPtmUIfhm8
-        LZbaFS2WK16xB/5kwmue5xTGcWDbfsGY4D1NKc0yytYZr9iDxyAgqRR/xiT6uqFtNeCuIFtv6GOT92IP
-        XudzDukmwZVtq2EqTECu0wspe7Hf1wc++wsmtq2GLkCqLantbiC+K6BULEC9bTV0AWVVOd2VJQucAZ9f
-        +1GBM+BQ16MCZ0DTNKMCZ8DxeNJ+X/HEdZcB9kFq25ba89mtPgcXfyNepFtAvW01PPj+C54uJGM8p/oc
-        dai3rT132vsbRL3G834AeqauK0rjGRUAAAAASUVORK5CYII=
-</value>
   </data>
   <data name="btnNew.Caption" xml:space="preserve">
     <value>Новый</value>
   </data>
-  <data name="btnLoad.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIMSURBVDhPxdLfS1NhGAfw8xf4rzQonWVtNkddRXddldVF
-        pU6xUivIIGTe1FLb3CjWLuzCiyTowgvNsu6M2s6Op/2erYE0rEHo1uZ2tvXt+54zWgQSQdALH/ZyxvM8
-        7/O8r/T/l/rA9kyZPYKw+5BO7GXfUbX595+XCEB9A9hNGLQ0QlPtkO8f/Jm0pUsvEPba4s1wSRIfsRtF
-        df0cKsp5NPKLQDkJVFKGappJWUCoEbJQvBao/mP7WwnKb1GN9tMgOfS9RrX4ALRIH3bWelEQ3pxBZXNR
-        P8XatLW/meAwUHyNWuoKaulR1NNjho1r0FIjiDyy453LTB0IutoRvHcA8kynnkR19+SZgDP4tszgERSC
-        DhRDgyjKwhCDj+Pz81NGK+U4xSiqt8wqTGIBh2gBthcQC4hKHS13zfiyehq15DC02ADb6kM1cokuop6Z
-        QDn7BCvOzmVJ8XajFL+DxJwdaHzgsFiNNwEtwzZGuRWtjBH3QvIqsDWH3KtxBIZNvdK6z4atVQdyL4eA
-        wgoaGfafuU43UP94k279YhyN7G2e+CneB06AI2zjQ+pBcv4kSqkp4OtjfP80QU5DbvI3TiDvQynhwotJ
-        85J+C+pDO4dh5R0v8Db8wI6bPHurzGNz6QL8l01n9QQhj70gTqHMdvOlWSDrrHsKe/g707XN0DY9AZeJ
-        xKv6G/voXyxJ+gHvoxswNGb61QAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="btnLoad.Caption" xml:space="preserve">
     <value>Загрузить...</value>
-  </data>
-  <data name="btnSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKDSURBVDhPjZJdSFNhGMfPRUTRRVArFLr3pugi6KKrBgmi
-        3YQXUXcGQVBBXtmWfdhFFkUXJSWa7sOooIgwdDfehCFoqX04N6XkuDW36eZ2tnnOzsf273meRngh1Av/
-        vc/2/H7PezjvlLquUKerK4TdN0awq3MEO/8RZphlh11lHxXTGWA86eB/F7PssKvsuTWKr5kKlDuL0owm
-        NEoBEcp8PI9wLIfILw3znHhOGGbZYVcGTKSrUNzt0vR6PPB6vQgEgvD5fFjK6Ojo6KDvAfh9g8Io7ivi
-        yIC9XaMYizvY1tYP06kgtVFBslRFomBTnNpuI65ZSGgmDIvZPnHYVVw05d2PMg70qijbNq5d9SDoD2JV
-        d+CheigwhIDPj3TJgn9gALppCssOuzLgZVRHwzOVHs5G0XaQMx2sl23k6TTOumkjWzahmRaqVQsN/ao4
-        fwbQY/jnSjgaWEZoqUBDHFRokEPhfXP4AGaYZYddusZR9H0povFVAsdfxKkZw+HBGA4NLONgLVzzb9xj
-        hll22JUBPTNFnHq7gpbXCTyfXOEXvWlVKRXZudfyJiEsOzJgP308/FzE2eEUNZIEOoioGSzSvS/SfyKs
-        ZvH95yrCS2nq2cIwyw67MuDeJw3nQmmcHk7CppdVMCrw3OyG+0Qz1VVE4+tYiGVhG2ViUsKy83dA91QR
-        l8eyaAutwdgo00mAu7EZdx/0SK2mNKjJPIySIQyz7MiAutsh3J/WcX2igPYPeTrFEqmp6SQePe6VejVn
-        YC2nw9JNYZhlh13FdenpEy74Trd73+PbbASTM1Gcv3CxVTl2pnVmdgHjU2F8nJqj3rwwzIpDrkKrnnJk
-        i+yoZateLUr9b21P8Yu5uR0IAAAAAElFTkSuQmCC
-</value>
   </data>
   <data name="btnSave.Caption" xml:space="preserve">
     <value>Сохранить</value>
   </data>
-  <data name="btnOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMGSURBVDhPdZNbSJNhGMd3Fd1YUZB5FSkJKWoU3nhZEYRB
-        YFYGHaCrhNA8zqVuc56aM80OOtpyedi+zZ3UOd3UMTXJ5tQ2p5FObc5wzsOcJt0E/vveOTOLfvDw8b3/
-        5/e+H+/Dx/gbVj6nRNvaDl1HJ8qfViArm9kmk8miRU3SbwqVBvpOI6QKJRqk1Pg7iooIajsUFPDk7To9
-        trcBTmnZYkJCwvXUR+lJSrUWU9NOrPv8WF5ZhcvlRm+vGfUNTQiqDAaHV9pCTtjY2IRSrSFBDF0Ha2tr
-        txwTk3A6Z6Ft60CzTAGh6C2E4nrUicR7GwiePceydxmjYzaMj08gNy9fQtaral5i3r0Ag7EH3d29qH7x
-        ikjnf1cpv7JVLGmEe2EB5oFB2GmZNOcwWWBzeTXlfAFc8/MY+jgMy/AI+JVVe6cSyvkVmJtzQd9lhLn/
-        PURiCTKysuHxeCBvUYNTVIwvU06MjIzBYh3FsMWKkjI+eKXlKKMvmcEqLDRJGqToMZmh1mgRfy7+6v2U
-        lNYWaRM8bhe4XB5sNjs+DFlgtzuwurICv28dMzMzKGBz/OQjwlmsQlNJSRlYeTkm+v0AXSdPZb5ZjXvS
-        gLVFN6wWC5qlFB5nZKJaUIGignxkpqVZ6b44sgEhnC5yKeTJOFRkaExWzWLIDxSbvqJXrwOHzUZOZjoV
-        7CMVSXr/4TBHL0vVu2D1AXc6lnFJvYKzLDG887OQSCQ/kzTTohBulzLYvp+j3C7qpsoZkO92LCFR7UGM
-        8DOimeI1nVzs5XRNwboF3FDN4FhRpzyo7RDK61RdqP+EkXWAOehDomoRccJJHM+l9HQcG5ItU19s8eJW
-        uxdj34Fk2SSIs2PTRFX1Y3wTuKf30rIHsfTJR3IVRjo6RfJQtsYQI3TgsmIRt3VLcPwAiEOyAFFVA3jY
-        48M17RJi6uz75CARoblSY/RrG64oPXhgWMMZ2glmDEYYk+qLFPQjosKMEyw5Geef8i7hYXmUKVzQh9OV
-        /SBOcD0A+TV3RxQY53/YHTldjIhfAwHxtYI9SBIAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="btnOptions.Caption" xml:space="preserve">
     <value>Опции...</value>
-  </data>
-  <data name="btnLoadImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKXSURBVDhPjZLtS9NRFMf3PxS98ZWGRFggWETN+dwDZZpv
-        eldY0AtBsCiKnDTnFCnxeT7ki1JMRBPS0tLUJmWGhm7T5sPmHIZKplDh43z6dH5zxkpfdODDPefee773
-        3HOvarA8utZi1GAuOuVB8S2lkU9V/2tKAhvjsDK6zZqD/rzjDBSe/CPqi7LfWhZZ7U1XqcxFakm04bYm
-        smq5xuZc87aQe0zEfPDEMr/lZMioxpvuFVjuw21LEpLZGE6CsRvguC4k/sNVETAzbgz2FQiFhS7Wx26y
-        Yb8NEylkV1ah1r4T2j2Eat+i0bahSW0lTNtKhK6DM4ZOEh52zouA9GChlS3XPZhMhek7qNNMuFbAviSH
-        LoJL+Kog8c44swbxWS2ozMVhcoWXTDQk0J9zjJH8I4SmdbAO2HpFsM8PbT/oByBD0Iuf/lkWxWIzXqGy
-        lESw6ixgtDIGNuU1+II6tY2fyo62/bg+3iXHBkV9PVQ0HqCwt5ucIennjoC1NIrv3beY6UiGxXa5Qgrq
-        +63MSQkFI2CUxlc4IL/xHLn1AeTJWG6HXxs7AmXROBsus2TPgx9VMK/1CExLD6qkoGdOqJ2U8p/sI7M6
-        AL2MNRLPur0Cg49j5HOEw/pzqaBC+vFIOt7O5DK8mIKmaWieFTFzN+nZflQOfKDpG0ytwkVDM6rOHM0b
-        +c4iEoG1WIPDGEK4zoRTBAo6j1JsOkHJew2ln06TdyWQkp4oCk3BuGQ9ziCvIOYvhPgSqe/CIRtymy+g
-        qw0kve4w+vog9A1B6OoOkdsSy7iPwC47m2liQtpskzcfVpB3HxGGJUnxlXmXrCco/2AvO/+goetS1mvi
-        5QTllHiD4m+zHbd4kuPSatq8KbvsoPDXtfZG5f8bIRmBlsN4L5MAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnLoadImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 22</value>
   </data>
   <data name="btnLoadImage.Caption" xml:space="preserve">
     <value>Загрузить изображение...</value>
   </data>
-  <data name="btnPlan.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnPlan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 22</value>
-  </data>
-  <data name="btnProfile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 22</value>
-  </data>
   <data name="btnProfile.Caption" xml:space="preserve">
     <value>Разрез</value>
-  </data>
-  <data name="btnBoth.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnBoth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 22</value>
   </data>
   <data name="btnBoth.Caption" xml:space="preserve">
     <value>Оба</value>
@@ -572,82 +226,14 @@
   <data name="btnZoomFit.Text" xml:space="preserve">
     <value>Вместить</value>
   </data>
-  <data name="btnCalculate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIVSURBVDhPlZE/b9NQFMXfNwGVlY3PwsSCiqhoEwrMhSYw
-        0bRpVYZstpukIQywItgQIwMCpJa2KGkT2bGd2o7/pC5OnRzuffVACqjiSUc+vu/8bm6uBZ/Gdn3QqGlo
-        VFWScokow1liJMyHC29/jPHu4CfeXyLOcJaZDBfiZU3F9pcEt5sWZpsm7rz6u/iOM5xlJsOFaNa3sPoJ
-        WP6YoEAq/kN8xxnOMpPh9BfqNRSWH6P4ZAlFej6VWsKzTOy5xnec4SwzGS5EtboF3w/gDgI4QQwnjDEI
-        QoRBgCgMpecay6UcZ5nJcCE0TUPfcfF55wAoXAHmZvB1r4W1jRfIP3iEb3ttoHgVuDsjM33HAzMZft7A
-        oeLOfgu7bR3fDw3st47Qah+hfdgh35G1XRJnHPePBipcKjJQWt9Ejn612zVogk3kFx+S16VfIM8NPdng
-        t6+gqio8z5dB07RhW330ehaszJtGD8c9g6RD73ZllpkMP2/ghxFMy0ZpbR0L+UUc005K5Q3kyPuOjdnX
-        vpRjGQhosRcaKAijoYR83n4UYeD7FIwQkY8DF3NvPNyq6QhdG9FwSA2U6Qni+FTCz0tl3Mvdxwm9r6yW
-        MZ/LI4lD3NR0qZPQwyndTU3AG51MgNHoDOPxRCpNx/I54ff0DEgTqXSUyOzUV6hUKh+4wF1ZvOGLXqOR
-        WTw6ZxVF6WS4PNdIN/5T14UQ4hf26qh5syVyPAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnCalculate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 22</value>
-  </data>
   <data name="btnCalculate.Caption" xml:space="preserve">
     <value>Вычислить</value>
-  </data>
-  <data name="btnExport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHaSURBVDhPlZNNTxNRFIbPf2Fn4gZiYOEO4heJLPgP/gE2
-        GpNqjIkf8As0amItXTDTGakYP2KUyKrd4AJDCEhLB5kPoJQO7bTp5PWc2+mUURr1Sd7cOffe951zM3Pp
-        dT5f1U0TWi6HhYR0NeqGgZxpujQI2fA3HMeBpuvzkSWJvFn4sV1ilbFdKqtRaiGdyajRtm1ohpGNbH2k
-        TWGnUkHFsmDtWmqUWniVzcL1PPUsnfBxtcjaRc4qWLt7+Llnx5JaKBSLKqTXiRw5snZZ0LsBNqc7rhtL
-        6mO/rtZOo+UGBLjePrz9g4RkzmGpNe9Q7TONpbMDDqvVATpCreaj6Ydq38c3hbMDjmrHf0iMvh8gbAEp
-        7SpGUoSL9wmXHlP/k/YC6r7/m04QNNuo10+wVirgApvXyymsbt3AxAPC9Vk6lwhoNBoJBc0A6AAzmVGM
-        3iHcXCS83RjDsyIhtcRdPCJMztFKHBAEbVYrVrvFbub8LULm2wSWnSk8WSM8/U5Y8aZhrk9LAOIfKQxD
-        hJ1OX1z3GL7NHbwnPN8kvNjiDj4RLj9kM9EIyUX6F8busnGZcO8r4UrPLLxMp7/I36VuIB8nKbmNJvKL
-        H/D53SrG2Xht9pQ5YoglE/+jCKJfx9Ckq1hGhPIAAAAASUVORK5CYII=
-</value>
   </data>
   <data name="btnExport.Caption" xml:space="preserve">
     <value>Экспорт данных...</value>
   </data>
-  <data name="btnConfirm.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnConfirm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 22</value>
-  </data>
   <data name="btnConfirm.Caption" xml:space="preserve">
     <value>Применить</value>
-  </data>
-  <data name="btnClose.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 22</value>
   </data>
   <data name="btnClose.Caption" xml:space="preserve">
     <value>Закрыть</value>

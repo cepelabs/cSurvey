@@ -29,16 +29,28 @@ Namespace My
 
         Public Function ManageUnhandledException(ByVal Exception As Exception) As Boolean
             Try
-                Dim frmEM As frmExceptionManager = New frmExceptionManager(oSurvey, sFilename, Exception)
-                Return frmEM.ShowDialog = DialogResult.OK
+                Using frmEM As frmExceptionManager = New frmExceptionManager(oSurvey, sFilename, Exception)
+                    Return frmEM.ShowDialog = DialogResult.OK
+                End Using
             Catch
                 Return True
             End Try
         End Function
 
+        Public ReadOnly Property CurrentDPIRatio As Single
+            Get
+                Return sCurrentDPIRatio
+            End Get
+        End Property
+
+        Private sCurrentDPIRatio As Single
+
         Private Sub MyApplication_Startup(sender As Object, e As Microsoft.VisualBasic.ApplicationServices.StartupEventArgs) Handles Me.Startup
             Call DevExpress.XtraEditors.WindowsFormsSettings.LoadApplicationSettings
             Call pLanguageSet()
+            Using oGr As Graphics = Graphics.FromHwnd(IntPtr.Zero)
+                sCurrentDPIRatio = oGr.DpiX / 96.0F
+            End Using
         End Sub
 
         Private Sub pLanguageSet()

@@ -118,48 +118,27 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="$this.Text" xml:space="preserve">
-    <value>Workspaces</value>
-  </data>
-  <data name="cmdRefresh.Text" xml:space="preserve">
-    <value>Aggiorna</value>
-  </data>
-  <data name="mnucontextRefresh.Text" xml:space="preserve">
-    <value>Aggiorna</value>
-  </data>
-  <data name="cmdSaveAs.Text" xml:space="preserve">
-    <value>Salva con nome...</value>
-  </data>
-  <data name="cmdImport.Text" xml:space="preserve">
-    <value>Importa...</value>
-  </data>
-  <data name="cmdExport.Text" xml:space="preserve">
-    <value>Esporta...</value>
-  </data>
-  <data name="mnuContextImport.Text" xml:space="preserve">
-    <value>Importa...</value>
-  </data>
-  <data name="mnuContextExport.Text" xml:space="preserve">
-    <value>Esporta...</value>
-  </data>
-  <data name="cmdDelete.Text" xml:space="preserve">
-    <value>Elimina</value>
-  </data>
-  <data name="colWorkspacesName.Text" xml:space="preserve">
-    <value>Nome</value>
-  </data>
-  <data name="mnuContextDelete.Text" xml:space="preserve">
-    <value>Elimina</value>
+    <value>Gestisci configurazioni:</value>
   </data>
   <data name="cmdExit.Text" xml:space="preserve">
     <value>Esci</value>
   </data>
-  <data name="cmdApply.Text" xml:space="preserve">
+  <data name="cmdDelete.Caption" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="cmdExport.Caption" xml:space="preserve">
+    <value>Esporta...</value>
+  </data>
+  <data name="cmdImport.Caption" xml:space="preserve">
+    <value>Importa...</value>
+  </data>
+  <data name="cmdSaveAs.Caption" xml:space="preserve">
+    <value>Salva la configurazione corrente...</value>
+  </data>
+  <data name="colGridWorkspacesName.Caption" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="cmdRestore.Caption" xml:space="preserve">
     <value>Applica</value>
-  </data>
-  <data name="cmdRestore.Text" xml:space="preserve">
-    <value>Ripristina...</value>
-  </data>
-  <data name="colWorkspacesShowOnToolbar.Text" xml:space="preserve">
-    <value>Mostra nella toolbar</value>
   </data>
 </root>

@@ -20,7 +20,7 @@ Namespace cSurvey.Design.Items
             End Set
         End Property
 
-        Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptions) As Single
+        Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptionsCenterline) As Single
             Dim sTextScaleFactor As Single = MyBase.GetTextScaleFactor(PaintOptions)
             Select Case TextSize
                 Case cIItemSizable.SizeEnum.Default

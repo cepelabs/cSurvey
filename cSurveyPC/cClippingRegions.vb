@@ -23,7 +23,7 @@ Namespace cSurvey.Design
 
         Public Sub New(ByVal Survey As cSurvey)
             oSurvey = Survey
-            iClipBorder = oSurvey.Properties.DesignProperties.GetValue("ClipBorder", oSurvey.GetGlobalSetting("design.clipborder", ClipBorderEnum.ClipBorder))
+            iClipBorder = oSurvey.Properties.DesignProperties.GetValue("ClipBorder", Helper.Editor.cEditDesignEnvironment.GetSetting("design.clipborder", ClipBorderEnum.ClipBorder))
             oRegions = New Dictionary(Of String, Region)(System.StringComparer.OrdinalIgnoreCase)
             oInfiniteRegion = New Region
             Call oInfiniteRegion.MakeInfinite()

@@ -79,7 +79,7 @@ Partial Class cItemVisibilityPropertyControl
         'cItemVisibilityPropertyControl
         '
         resources.ApplyResources(Me, "$this")
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.Controls.Add(Me.cboPropAffinity)
         Me.Controls.Add(Me.lblPropAffinity)
         Me.Controls.Add(Me.chkPropVisibleByProfile)

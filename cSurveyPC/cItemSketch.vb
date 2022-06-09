@@ -461,7 +461,7 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
             If Options And SVGOptionsEnum.Images Then
                 Dim oBounds As RectangleF = GetBounds()
                 Dim oSVGItem As XmlElement = modSVG.CreateImage(SVG, PaintOptions, oBounds, oDesignImage, 0, True)
@@ -475,7 +475,7 @@ Namespace cSurvey.Design.Items
         '    Return oSVG
         'End Function
 
-        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             With MyBase.Caches(PaintOptions)
                 If .Invalidated Then
                     Call .Clear()
@@ -488,7 +488,7 @@ Namespace cSurvey.Design.Items
             End With
         End Sub
 
-        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             If MyBase.Points.Count >= 1 Then
                 Call Render(Graphics, PaintOptions, Options, Selected)
                 Try
@@ -498,12 +498,12 @@ Namespace cSurvey.Design.Items
                             Call Graphics.DrawImage(oDesignImage, oBounds)
                         Else
                             Using oImageAttributes As System.Drawing.Imaging.ImageAttributes = New System.Drawing.Imaging.ImageAttributes
-                                Call oImageAttributes.SetColorKey(modPaint.DarkColor(oTransparentColor, 1.0 - sTransparencyThreshold), modPaint.LightColor(oTransparentColor, 1.0 - sTransparencyThreshold))
+                                Call oImageAttributes.SetColorKey(modPaint.DarkColor(oTransparentColor, 1.0F - sTransparencyThreshold), modPaint.LightColor(oTransparentColor, 1.0F - sTransparencyThreshold))
                                 Call modPaint.DrawStretchedImage(Graphics, oDesignImage, oBounds, oImageAttributes)
                             End Using
                         End If
                         If bMorphingDisabled Then
-                            Call Graphics.DrawRectangle(New Pen(Color.FromArgb(100, Color.DimGray), -1), oBounds.X, oBounds.Y, oBounds.Width, oBounds.Height)
+                            Call Graphics.DrawRectangle(New Pen(Color.FromArgb(100, Color.DimGray), cEditPaintObjects.FilettoPenWidth), oBounds.X, oBounds.Y, oBounds.Width, oBounds.Height)
                         End If
                     End If
                 Catch
@@ -522,22 +522,18 @@ Namespace cSurvey.Design.Items
 
             Select Case File.FileFormat
                 Case cFile.FileFormatEnum.CSX
-                    Using oMs As IO.MemoryStream = New IO.MemoryStream(Convert.FromBase64String(modXML.GetAttributeValue(item, "image")))
-                        oImage = modPaint.SafeBitmapFromStream(oMs)
-                    End Using
+                    oImage = modPaint.ByteArrayToBitmap(Convert.FromBase64String(modXML.GetAttributeValue(item, "image")))
                     Try
-                        Using oMs As IO.MemoryStream = New IO.MemoryStream(Convert.FromBase64String(modXML.GetAttributeValue(item, "designimage")))
-                            oDesignImage = modPaint.SafeBitmapFromStream(oMs)
-                        End Using
+                        oDesignImage = modPaint.ByteArrayToBitmap(Convert.FromBase64String(modXML.GetAttributeValue(item, "designimage")))
                     Catch
                         If Not oImage Is Nothing Then oDesignImage = New Bitmap(oImage)
                     End Try
                 Case cFile.FileFormatEnum.CSZ
                     Dim sImagePath As String = modXML.GetAttributeValue(item, "image")
-                    oImage = modPaint.SafeBitmapFromStream(DirectCast(File.Data(sImagePath), Storage.cStorageItemFile).Stream)
+                    oImage = modPaint.ByteArrayToBitmap(DirectCast(File.Data(sImagePath), Storage.cStorageItemFile).Stream.ToArray)
                     Try
                         Dim sDesignImagePath As String = modXML.GetAttributeValue(item, "designimage")
-                        oDesignImage = modPaint.SafeBitmapFromStream(DirectCast(File.Data(sDesignImagePath), Storage.cStorageItemFile).Stream)
+                        oDesignImage = modPaint.ByteArrayToBitmap(DirectCast(File.Data(sDesignImagePath), Storage.cStorageItemFile).Stream.ToArray)
                     Catch
                         If Not oImage Is Nothing Then oDesignImage = New Bitmap(oImage)
                     End Try
@@ -569,24 +565,16 @@ Namespace cSurvey.Design.Items
             If Not (File.Options And cFile.FileOptionsEnum.DontSaveBinary) = cFile.FileOptionsEnum.DontSaveBinary Then
                 Select Case File.FileFormat
                     Case cFile.FileFormatEnum.CSX
-                        Using oMs As IO.MemoryStream = New IO.MemoryStream
-                            Call modPaint.SafeBitmapSaveToStream(oImage, oMs, Drawing.Imaging.ImageFormat.Png)
-                            Call oItem.SetAttribute("image", Convert.ToBase64String(oMs.ToArray()))
-                        End Using
-
-                        Using oMs As IO.MemoryStream = New IO.MemoryStream
-                            Call modPaint.SafeBitmapSaveToStream(oDesignImage, oMs, Drawing.Imaging.ImageFormat.Png)
-                            Call oItem.SetAttribute("designimage", Convert.ToBase64String(oMs.ToArray()))
-                        End Using
-
+                        Call oItem.SetAttribute("image", Convert.ToBase64String(modPaint.BitmapToByteArray(oImage, Drawing.Imaging.ImageFormat.Png)))
+                        Call oItem.SetAttribute("designimage", Convert.ToBase64String(modPaint.BitmapToByteArray(oDesignImage, Drawing.Imaging.ImageFormat.Png)))
                     Case cFile.FileFormatEnum.CSZ
                         Dim sImagePath As String = "_data\design\" & sImageID & ".png"
                         Dim oImageStorage As Storage.cStorageItemFile = File.Data.AddFile(sImagePath)
-                        Call modPaint.SafeBitmapSaveToStream(oImage, oImageStorage.Stream, Drawing.Imaging.ImageFormat.Png)
+                        Call oImageStorage.Write(modPaint.BitmapToByteArray(oImage, Drawing.Imaging.ImageFormat.Png))
                         Call oItem.SetAttribute("image", sImagePath)
                         Dim sDesignImagePath As String = "_data\design\" & sDesignImageID & ".png"
                         Dim oDesignImageStorage As Storage.cStorageItemFile = File.Data.AddFile(sDesignImagePath)
-                        Call modPaint.SafeBitmapSaveToStream(oDesignImage, oDesignImageStorage.Stream, Drawing.Imaging.ImageFormat.Png)
+                        Call oDesignImageStorage.Write(modPaint.BitmapToByteArray(oDesignImage, Drawing.Imaging.ImageFormat.Png))
                         Call oItem.SetAttribute("designimage", sDesignImagePath)
                 End Select
             End If
@@ -618,6 +606,7 @@ Namespace cSurvey.Design.Items
             End Get
             Set(ByVal value As Color)
                 oTransparentColor = value
+                Call MyBase.Caches.Invalidate()
             End Set
         End Property
 
@@ -626,7 +615,10 @@ Namespace cSurvey.Design.Items
                 Return sTransparencyThreshold
             End Get
             Set(ByVal value As Single)
-                sTransparencyThreshold = value
+                If sTransparencyThreshold <> value Then
+                    sTransparencyThreshold = value
+                    Call MyBase.Caches.Invalidate()
+                End If
             End Set
         End Property
 

@@ -180,7 +180,7 @@ Namespace cSurvey.Design.Items
         '    Return oSVG
         'End Function
 
-        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             Dim oCache As cDrawCache = MyBase.Caches(PaintOptions)
             With oCache
                 If .Invalidated OrElse MyBase.HavePaintProblem Then
@@ -199,7 +199,7 @@ Namespace cSurvey.Design.Items
             End With
         End Sub
 
-        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             If MyBase.Points.Count > 1 Then
                 Call Render(Graphics, PaintOptions, Options, Selected)
                 If Not PaintOptions.IsDesign OrElse (PaintOptions.IsDesign AndAlso Not MyBase.HiddenInDesign) Then
@@ -213,7 +213,7 @@ Namespace cSurvey.Design.Items
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal Design As cDesign, ByVal Layer As cLayer, ByVal Category As cIItem.cItemCategoryEnum)
             Call MyBase.New(Survey, Design, Layer, cIItem.cItemTypeEnum.InvertedFreeHandArea, Category)
-            iLineType = Survey.Properties.DesignProperties.GetValue("LineType", Survey.GetGlobalSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
+            iLineType = Survey.Properties.DesignProperties.GetValue("LineType", Helper.Editor.cEditDesignEnvironment.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
             AddHandler MyBase.Points.OnGetLineType, AddressOf oPoints_OnGetLineType
         End Sub
 

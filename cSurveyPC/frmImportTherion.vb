@@ -12,7 +12,7 @@
                 chkTherionMergeAndReorderBorders.Checked = oReg.GetValue("data.import.therion.mergeandreorderborders", 1)
                 chktherionConvertBezierToSpline.Checked = oReg.GetValue("data.import.therion.beziertospline", 0)
 
-                txtTherionScaleFactor.Value = modNumbers.StringToSingle(oReg.GetValue("data.import.therion.scalefactor", 1))
+                txtTherionScaleFactor.EditValue = modNumbers.StringToSingle(oReg.GetValue("data.import.therion.scalefactor", 1))
                 Call oReg.Close()
             End Using
         Catch
@@ -31,7 +31,7 @@
                 Call oReg.SetValue("data.import.therion.mergeandreorderborders", IIf(chkTherionMergeAndReorderBorders.Checked, 1, 0))
                 Call oReg.SetValue("data.import.therion.beziertospline", IIf(chktherionConvertBezierToSpline.Checked, 1, 0))
 
-                Call oReg.SetValue("data.import.therion.scalefactor", modNumbers.NumberToString(txtTherionScaleFactor.Value, "0.00"))
+                Call oReg.SetValue("data.import.therion.scalefactor", modNumbers.NumberToString(txtTherionScaleFactor.EditValue, "0.00"))
 
                 Call oReg.Close()
             End Using

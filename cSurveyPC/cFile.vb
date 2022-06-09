@@ -229,6 +229,10 @@ Namespace cSurvey.Storage
 
         Private oStream As MemoryStream
 
+        Public Sub Write(Data As Byte())
+            Call oStream.Write(Data, 0, Data.Length)
+        End Sub
+
         Public ReadOnly Property Stream As MemoryStream
             Get
                 Return oStream
@@ -242,7 +246,7 @@ Namespace cSurvey.Storage
 
         Friend Sub New(ByVal Storage As cStorage, ByVal Name As String)
             Call MyBase.New(Storage, Name)
-            oStream = New MemoryStream(0)
+            oStream = New MemoryStream()
         End Sub
 
         Public Overrides ReadOnly Property Type As cIStorageItem.StorageItemTypeEnum

@@ -24,330 +24,302 @@ Partial Class frmCaveVisibilityManager
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCaveVisibilityManager))
-        Me.cmdApply = New System.Windows.Forms.Button()
-        Me.cmdOk = New System.Windows.Forms.Button()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.tbMain = New System.Windows.Forms.ToolStrip()
-        Me.btnAdd = New System.Windows.Forms.ToolStripButton()
-        Me.btnAddAsCopy = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnRemove = New System.Windows.Forms.ToolStripButton()
-        Me.btnRemoveAll = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnCheckQuerySintax = New System.Windows.Forms.ToolStripButton()
-        Me.btnCleanQuerySintax = New System.Windows.Forms.ToolStripButton()
-        Me.cboProfiles = New System.Windows.Forms.ComboBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.colCave = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colBranch = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Visibile = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.grdProfile = New cSurveyPC.cGrid()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.mnuContextProfile = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.mnuContextProfileSelectAll = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuContextProfileDeselectAll = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.mnuContextProfileInvertSelection = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.mnuContextProfileSelectCurrentCave = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuContextProfileDeselectCurrentCave = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tabProfile = New System.Windows.Forms.TabControl()
-        Me.TabCaves = New System.Windows.Forms.TabPage()
-        Me.tabSegment = New System.Windows.Forms.TabPage()
-        Me.txtSegments = New System.Windows.Forms.RichTextBox()
-        Me.tabItems = New System.Windows.Forms.TabPage()
-        Me.txtItems = New System.Windows.Forms.RichTextBox()
-        Me.tbMain.SuspendLayout()
-        CType(Me.grdProfile, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.mnuContextProfile.SuspendLayout()
+        Me.cmdApply = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.lblProfile = New DevExpress.XtraEditors.LabelControl()
+        Me.BarManager = New DevExpress.XtraBars.BarManager(Me.components)
+        Me.BarMain = New DevExpress.XtraBars.Bar()
+        Me.btnAdd = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnAddAsCopy = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnRemove = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnCheckQuerySintax = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnCleanQuerySintax = New DevExpress.XtraBars.BarButtonItem()
+        Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
+        Me.btnSelectAll = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnDeselectAll = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnInvertSelection = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnSelectCurrentCave = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnDeselectCurrentCave = New DevExpress.XtraBars.BarButtonItem()
+        Me.tabProfile = New DevExpress.XtraTab.XtraTabControl()
+        Me.tabCaveAndBranches = New DevExpress.XtraTab.XtraTabPage()
+        Me.grdProfile = New cSurveyPC.cCaveBranchSelectorGrid()
+        Me.tabSegment = New DevExpress.XtraTab.XtraTabPage()
+        Me.txtSegments = New ScintillaNET.Scintilla()
+        Me.tabItems = New DevExpress.XtraTab.XtraTabPage()
+        Me.txtItems = New ScintillaNET.Scintilla()
+        Me.mnuProfile = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.cboProfiles = New DevExpress.XtraEditors.ComboBoxEdit()
+        CType(Me.BarManager, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tabProfile, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabProfile.SuspendLayout()
-        Me.TabCaves.SuspendLayout()
+        Me.tabCaveAndBranches.SuspendLayout()
         Me.tabSegment.SuspendLayout()
         Me.tabItems.SuspendLayout()
+        CType(Me.mnuProfile, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboProfiles.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdApply
         '
         resources.ApplyResources(Me.cmdApply, "cmdApply")
         Me.cmdApply.Name = "cmdApply"
-        Me.cmdApply.UseVisualStyleBackColor = True
         '
         'cmdOk
         '
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
         '
         'cmdCancel
         '
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
         '
-        'tbMain
+        'lblProfile
         '
-        resources.ApplyResources(Me.tbMain, "tbMain")
-        Me.tbMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.tbMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnAdd, Me.btnAddAsCopy, Me.ToolStripSeparator1, Me.btnRemove, Me.btnRemoveAll, Me.ToolStripSeparator2, Me.btnCheckQuerySintax, Me.btnCleanQuerySintax})
-        Me.tbMain.Name = "tbMain"
+        resources.ApplyResources(Me.lblProfile, "lblProfile")
+        Me.lblProfile.Name = "lblProfile"
+        '
+        'BarManager
+        '
+        Me.BarManager.Bars.AddRange(New DevExpress.XtraBars.Bar() {Me.BarMain})
+        Me.BarManager.DockControls.Add(Me.barDockControlTop)
+        Me.BarManager.DockControls.Add(Me.barDockControlBottom)
+        Me.BarManager.DockControls.Add(Me.barDockControlLeft)
+        Me.BarManager.DockControls.Add(Me.barDockControlRight)
+        Me.BarManager.Form = Me
+        Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnAdd, Me.btnRemove, Me.btnAddAsCopy, Me.btnCheckQuerySintax, Me.btnCleanQuerySintax, Me.btnSelectAll, Me.btnDeselectAll, Me.btnInvertSelection, Me.btnSelectCurrentCave, Me.btnDeselectCurrentCave})
+        Me.BarManager.MaxItemId = 22
+        '
+        'BarMain
+        '
+        Me.BarMain.BarName = "Tools"
+        Me.BarMain.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Top
+        Me.BarMain.DockCol = 0
+        Me.BarMain.DockRow = 0
+        Me.BarMain.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
+        Me.BarMain.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnAdd, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnAddAsCopy), New DevExpress.XtraBars.LinkPersistInfo(Me.btnRemove, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnCheckQuerySintax, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnCleanQuerySintax, True)})
+        Me.BarMain.OptionsBar.AllowQuickCustomization = False
+        Me.BarMain.OptionsBar.DisableCustomization = True
+        Me.BarMain.OptionsBar.DrawDragBorder = False
+        Me.BarMain.OptionsBar.UseWholeRow = True
+        resources.ApplyResources(Me.BarMain, "BarMain")
         '
         'btnAdd
         '
         resources.ApplyResources(Me.btnAdd, "btnAdd")
-        Me.btnAdd.Image = Global.cSurveyPC.My.Resources.Resources.add
+        Me.btnAdd.Id = 11
+        Me.btnAdd.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
         Me.btnAdd.Name = "btnAdd"
         '
         'btnAddAsCopy
         '
         resources.ApplyResources(Me.btnAddAsCopy, "btnAddAsCopy")
-        Me.btnAddAsCopy.Image = Global.cSurveyPC.My.Resources.Resources.add
+        Me.btnAddAsCopy.Enabled = False
+        Me.btnAddAsCopy.Id = 13
+        Me.btnAddAsCopy.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.copy
         Me.btnAddAsCopy.Name = "btnAddAsCopy"
-        '
-        'ToolStripSeparator1
-        '
-        resources.ApplyResources(Me.ToolStripSeparator1, "ToolStripSeparator1")
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         '
         'btnRemove
         '
         resources.ApplyResources(Me.btnRemove, "btnRemove")
+        Me.btnRemove.Enabled = False
+        Me.btnRemove.Id = 12
+        Me.btnRemove.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
         Me.btnRemove.Name = "btnRemove"
-        '
-        'btnRemoveAll
-        '
-        resources.ApplyResources(Me.btnRemoveAll, "btnRemoveAll")
-        Me.btnRemoveAll.Name = "btnRemoveAll"
-        '
-        'ToolStripSeparator2
-        '
-        resources.ApplyResources(Me.ToolStripSeparator2, "ToolStripSeparator2")
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
         '
         'btnCheckQuerySintax
         '
         resources.ApplyResources(Me.btnCheckQuerySintax, "btnCheckQuerySintax")
+        Me.btnCheckQuerySintax.Id = 15
+        Me.btnCheckQuerySintax.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.spellcheckasyoutype
         Me.btnCheckQuerySintax.Name = "btnCheckQuerySintax"
+        Me.btnCheckQuerySintax.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'btnCleanQuerySintax
         '
         resources.ApplyResources(Me.btnCleanQuerySintax, "btnCleanQuerySintax")
+        Me.btnCleanQuerySintax.Id = 16
+        Me.btnCleanQuerySintax.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.clearall
         Me.btnCleanQuerySintax.Name = "btnCleanQuerySintax"
+        Me.btnCleanQuerySintax.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
-        'cboProfiles
+        'barDockControlTop
         '
-        resources.ApplyResources(Me.cboProfiles, "cboProfiles")
-        Me.cboProfiles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboProfiles.FormattingEnabled = True
-        Me.cboProfiles.Name = "cboProfiles"
+        Me.barDockControlTop.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlTop, "barDockControlTop")
+        Me.barDockControlTop.Manager = Me.BarManager
         '
-        'Label1
+        'barDockControlBottom
         '
-        resources.ApplyResources(Me.Label1, "Label1")
-        Me.Label1.Name = "Label1"
+        Me.barDockControlBottom.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlBottom, "barDockControlBottom")
+        Me.barDockControlBottom.Manager = Me.BarManager
         '
-        'colCave
+        'barDockControlLeft
         '
-        Me.colCave.FillWeight = 162.4366!
-        resources.ApplyResources(Me.colCave, "colCave")
-        Me.colCave.Name = "colCave"
-        Me.colCave.ReadOnly = True
-        Me.colCave.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.colCave.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.barDockControlLeft.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlLeft, "barDockControlLeft")
+        Me.barDockControlLeft.Manager = Me.BarManager
         '
-        'colBranch
+        'barDockControlRight
         '
-        Me.colBranch.FillWeight = 225.1904!
-        resources.ApplyResources(Me.colBranch, "colBranch")
-        Me.colBranch.Name = "colBranch"
-        Me.colBranch.ReadOnly = True
+        Me.barDockControlRight.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlRight, "barDockControlRight")
+        Me.barDockControlRight.Manager = Me.BarManager
         '
-        'Visibile
+        'btnSelectAll
         '
-        resources.ApplyResources(Me.Visibile, "Visibile")
-        Me.Visibile.Name = "Visibile"
+        resources.ApplyResources(Me.btnSelectAll, "btnSelectAll")
+        Me.btnSelectAll.Id = 17
+        Me.btnSelectAll.Name = "btnSelectAll"
         '
-        'grdProfile
+        'btnDeselectAll
         '
-        resources.ApplyResources(Me.grdProfile, "grdProfile")
-        Me.grdProfile.AllowUserToAddRows = False
-        Me.grdProfile.AllowUserToDeleteRows = False
-        Me.grdProfile.AllowUserToResizeRows = False
-        Me.grdProfile.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.grdProfile.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdProfile.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewCheckBoxColumn1})
-        Me.grdProfile.ContextMenuStrip = Me.mnuContextProfile
-        Me.grdProfile.Name = "grdProfile"
-        Me.grdProfile.RowHeadersVisible = False
+        resources.ApplyResources(Me.btnDeselectAll, "btnDeselectAll")
+        Me.btnDeselectAll.Id = 18
+        Me.btnDeselectAll.Name = "btnDeselectAll"
         '
-        'DataGridViewTextBoxColumn1
+        'btnInvertSelection
         '
-        Me.DataGridViewTextBoxColumn1.FillWeight = 162.4366!
-        resources.ApplyResources(Me.DataGridViewTextBoxColumn1, "DataGridViewTextBoxColumn1")
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        resources.ApplyResources(Me.btnInvertSelection, "btnInvertSelection")
+        Me.btnInvertSelection.Id = 19
+        Me.btnInvertSelection.Name = "btnInvertSelection"
         '
-        'DataGridViewTextBoxColumn2
+        'btnSelectCurrentCave
         '
-        Me.DataGridViewTextBoxColumn2.FillWeight = 225.1904!
-        resources.ApplyResources(Me.DataGridViewTextBoxColumn2, "DataGridViewTextBoxColumn2")
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        resources.ApplyResources(Me.btnSelectCurrentCave, "btnSelectCurrentCave")
+        Me.btnSelectCurrentCave.Id = 20
+        Me.btnSelectCurrentCave.Name = "btnSelectCurrentCave"
         '
-        'DataGridViewCheckBoxColumn1
+        'btnDeselectCurrentCave
         '
-        resources.ApplyResources(Me.DataGridViewCheckBoxColumn1, "DataGridViewCheckBoxColumn1")
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
-        '
-        'mnuContextProfile
-        '
-        resources.ApplyResources(Me.mnuContextProfile, "mnuContextProfile")
-        Me.mnuContextProfile.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuContextProfileSelectAll, Me.mnuContextProfileDeselectAll, Me.ToolStripMenuItem1, Me.mnuContextProfileInvertSelection, Me.ToolStripMenuItem2, Me.mnuContextProfileSelectCurrentCave, Me.mnuContextProfileDeselectCurrentCave})
-        Me.mnuContextProfile.Name = "mnuContextProfile"
-        '
-        'mnuContextProfileSelectAll
-        '
-        resources.ApplyResources(Me.mnuContextProfileSelectAll, "mnuContextProfileSelectAll")
-        Me.mnuContextProfileSelectAll.Name = "mnuContextProfileSelectAll"
-        '
-        'mnuContextProfileDeselectAll
-        '
-        resources.ApplyResources(Me.mnuContextProfileDeselectAll, "mnuContextProfileDeselectAll")
-        Me.mnuContextProfileDeselectAll.Name = "mnuContextProfileDeselectAll"
-        '
-        'ToolStripMenuItem1
-        '
-        resources.ApplyResources(Me.ToolStripMenuItem1, "ToolStripMenuItem1")
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        '
-        'mnuContextProfileInvertSelection
-        '
-        resources.ApplyResources(Me.mnuContextProfileInvertSelection, "mnuContextProfileInvertSelection")
-        Me.mnuContextProfileInvertSelection.Name = "mnuContextProfileInvertSelection"
-        '
-        'ToolStripMenuItem2
-        '
-        resources.ApplyResources(Me.ToolStripMenuItem2, "ToolStripMenuItem2")
-        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        '
-        'mnuContextProfileSelectCurrentCave
-        '
-        resources.ApplyResources(Me.mnuContextProfileSelectCurrentCave, "mnuContextProfileSelectCurrentCave")
-        Me.mnuContextProfileSelectCurrentCave.Name = "mnuContextProfileSelectCurrentCave"
-        '
-        'mnuContextProfileDeselectCurrentCave
-        '
-        resources.ApplyResources(Me.mnuContextProfileDeselectCurrentCave, "mnuContextProfileDeselectCurrentCave")
-        Me.mnuContextProfileDeselectCurrentCave.Name = "mnuContextProfileDeselectCurrentCave"
+        resources.ApplyResources(Me.btnDeselectCurrentCave, "btnDeselectCurrentCave")
+        Me.btnDeselectCurrentCave.Id = 21
+        Me.btnDeselectCurrentCave.Name = "btnDeselectCurrentCave"
         '
         'tabProfile
         '
         resources.ApplyResources(Me.tabProfile, "tabProfile")
-        Me.tabProfile.Controls.Add(Me.TabCaves)
-        Me.tabProfile.Controls.Add(Me.tabSegment)
-        Me.tabProfile.Controls.Add(Me.tabItems)
         Me.tabProfile.Name = "tabProfile"
-        Me.tabProfile.SelectedIndex = 0
+        Me.tabProfile.SelectedTabPage = Me.tabCaveAndBranches
+        Me.tabProfile.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tabCaveAndBranches, Me.tabSegment, Me.tabItems})
         '
-        'TabCaves
+        'tabCaveAndBranches
         '
-        resources.ApplyResources(Me.TabCaves, "TabCaves")
-        Me.TabCaves.Controls.Add(Me.grdProfile)
-        Me.TabCaves.Name = "TabCaves"
-        Me.TabCaves.UseVisualStyleBackColor = True
+        Me.tabCaveAndBranches.Controls.Add(Me.grdProfile)
+        Me.tabCaveAndBranches.Name = "tabCaveAndBranches"
+        resources.ApplyResources(Me.tabCaveAndBranches, "tabCaveAndBranches")
+        '
+        'grdProfile
+        '
+        resources.ApplyResources(Me.grdProfile, "grdProfile")
+        Me.grdProfile.Name = "grdProfile"
         '
         'tabSegment
         '
-        resources.ApplyResources(Me.tabSegment, "tabSegment")
         Me.tabSegment.Controls.Add(Me.txtSegments)
         Me.tabSegment.Name = "tabSegment"
-        Me.tabSegment.UseVisualStyleBackColor = True
+        Me.tabSegment.PageVisible = False
+        resources.ApplyResources(Me.tabSegment, "tabSegment")
         '
         'txtSegments
         '
-        resources.ApplyResources(Me.txtSegments, "txtSegments")
         Me.txtSegments.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtSegments.DetectUrls = False
+        resources.ApplyResources(Me.txtSegments, "txtSegments")
+        Me.txtSegments.Lexer = ScintillaNET.Lexer.Vb
         Me.txtSegments.Name = "txtSegments"
         '
         'tabItems
         '
-        resources.ApplyResources(Me.tabItems, "tabItems")
         Me.tabItems.Controls.Add(Me.txtItems)
         Me.tabItems.Name = "tabItems"
-        Me.tabItems.UseVisualStyleBackColor = True
+        Me.tabItems.PageVisible = False
+        resources.ApplyResources(Me.tabItems, "tabItems")
         '
         'txtItems
         '
-        resources.ApplyResources(Me.txtItems, "txtItems")
         Me.txtItems.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtItems.DetectUrls = False
+        resources.ApplyResources(Me.txtItems, "txtItems")
+        Me.txtItems.Lexer = ScintillaNET.Lexer.Vb
         Me.txtItems.Name = "txtItems"
+        '
+        'mnuProfile
+        '
+        Me.mnuProfile.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnSelectAll), New DevExpress.XtraBars.LinkPersistInfo(Me.btnDeselectAll), New DevExpress.XtraBars.LinkPersistInfo(Me.btnInvertSelection, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnSelectCurrentCave, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnDeselectCurrentCave)})
+        Me.mnuProfile.Manager = Me.BarManager
+        Me.mnuProfile.Name = "mnuProfile"
+        '
+        'cboProfiles
+        '
+        resources.ApplyResources(Me.cboProfiles, "cboProfiles")
+        Me.cboProfiles.MenuManager = Me.BarManager
+        Me.cboProfiles.Name = "cboProfiles"
+        Me.cboProfiles.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboProfiles.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboProfiles.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
         'frmCaveVisibilityManager
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.cboProfiles)
-        Me.Controls.Add(Me.tbMain)
+        Me.Controls.Add(Me.lblProfile)
         Me.Controls.Add(Me.cmdApply)
         Me.Controls.Add(Me.cmdOk)
         Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.tabProfile)
+        Me.Controls.Add(Me.cboProfiles)
+        Me.Controls.Add(Me.barDockControlLeft)
+        Me.Controls.Add(Me.barDockControlRight)
+        Me.Controls.Add(Me.barDockControlBottom)
+        Me.Controls.Add(Me.barDockControlTop)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.profileview
         Me.MinimizeBox = False
         Me.Name = "frmCaveVisibilityManager"
-        Me.tbMain.ResumeLayout(False)
-        Me.tbMain.PerformLayout()
-        CType(Me.grdProfile, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.mnuContextProfile.ResumeLayout(False)
+        CType(Me.BarManager, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tabProfile, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabProfile.ResumeLayout(False)
-        Me.TabCaves.ResumeLayout(False)
+        Me.tabCaveAndBranches.ResumeLayout(False)
         Me.tabSegment.ResumeLayout(False)
         Me.tabItems.ResumeLayout(False)
+        CType(Me.mnuProfile, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboProfiles.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents grdProfile As cSurveyPC.cGrid
-    Friend WithEvents colCave As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colBranch As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Visibile As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents cmdApply As System.Windows.Forms.Button
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents tbMain As System.Windows.Forms.ToolStrip
-    Friend WithEvents btnAdd As System.Windows.Forms.ToolStripButton
-    Friend WithEvents btnAddAsCopy As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents btnRemove As System.Windows.Forms.ToolStripButton
-    Friend WithEvents btnRemoveAll As System.Windows.Forms.ToolStripButton
-    Friend WithEvents cboProfiles As System.Windows.Forms.ComboBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents tabProfile As System.Windows.Forms.TabControl
-    Friend WithEvents TabCaves As System.Windows.Forms.TabPage
-    Friend WithEvents tabSegment As System.Windows.Forms.TabPage
-    Friend WithEvents tabItems As System.Windows.Forms.TabPage
-    Friend WithEvents txtSegments As System.Windows.Forms.RichTextBox
-    Friend WithEvents txtItems As System.Windows.Forms.RichTextBox
-    Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents btnCheckQuerySintax As System.Windows.Forms.ToolStripButton
-    Friend WithEvents btnCleanQuerySintax As System.Windows.Forms.ToolStripButton
-    Friend WithEvents DataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn1 As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents mnuContextProfile As System.Windows.Forms.ContextMenuStrip
-    Friend WithEvents mnuContextProfileSelectAll As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents mnuContextProfileDeselectAll As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents mnuContextProfileInvertSelection As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem2 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents mnuContextProfileSelectCurrentCave As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents mnuContextProfileDeselectCurrentCave As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents cmdApply As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents lblProfile As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents BarManager As DevExpress.XtraBars.BarManager
+    Friend WithEvents BarMain As DevExpress.XtraBars.Bar
+    Friend WithEvents btnAdd As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnRemove As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents barDockControlTop As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlBottom As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlLeft As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlRight As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents btnAddAsCopy As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents tabProfile As DevExpress.XtraTab.XtraTabControl
+    Friend WithEvents tabCaveAndBranches As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents tabSegment As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents tabItems As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents btnCheckQuerySintax As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnCleanQuerySintax As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents txtSegments As ScintillaNET.Scintilla
+    Friend WithEvents txtItems As ScintillaNET.Scintilla
+    Friend WithEvents grdProfile As cCaveBranchSelectorGrid
+    Friend WithEvents btnSelectAll As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnDeselectAll As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnInvertSelection As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnSelectCurrentCave As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnDeselectCurrentCave As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents mnuProfile As DevExpress.XtraBars.PopupMenu
+    Friend WithEvents cboProfiles As DevExpress.XtraEditors.ComboBoxEdit
 End Class

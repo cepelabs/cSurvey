@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -133,7 +133,7 @@
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cmdOk.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="cmdOk.Text" xml:space="preserve">
     <value>Ok</value>
@@ -142,13 +142,13 @@
     <value>cmdOk</value>
   </data>
   <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="cmdCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -163,7 +163,7 @@
     <value>80, 25</value>
   </data>
   <data name="cmdCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="cmdCancel.Text" xml:space="preserve">
     <value>Cancel</value>
@@ -172,22 +172,19 @@
     <value>cmdCancel</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="Label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>4</value>
   </data>
   <data name="Label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 15</value>
   </data>
   <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 13</value>
+    <value>31, 13</value>
   </data>
   <data name="Label2.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -199,82 +196,25 @@
     <value>Label2</value>
   </data>
   <data name="&gt;&gt;Label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label2.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Label2.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <metadata name="tipDefault.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="picHueColorTo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="picHueColorTo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>177, 33</value>
-  </data>
-  <data name="picHueColorTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 21</value>
-  </data>
-  <data name="picHueColorTo.TabIndex" type="System.Int32, mscorlib">
-    <value>135</value>
-  </data>
-  <data name="picHueColorTo.ToolTip" xml:space="preserve">
-    <value>Last color</value>
-  </data>
-  <data name="&gt;&gt;picHueColorTo.Name" xml:space="preserve">
-    <value>picHueColorTo</value>
-  </data>
-  <data name="&gt;&gt;picHueColorTo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;picHueColorTo.Parent" xml:space="preserve">
-    <value>picHue</value>
-  </data>
-  <data name="&gt;&gt;picHueColorTo.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="picHueColorFrom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="picHueColorFrom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>177, 5</value>
-  </data>
-  <data name="picHueColorFrom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 21</value>
-  </data>
-  <data name="picHueColorFrom.TabIndex" type="System.Int32, mscorlib">
-    <value>140</value>
-  </data>
-  <data name="picHueColorFrom.ToolTip" xml:space="preserve">
-    <value>First color</value>
-  </data>
-  <data name="&gt;&gt;picHueColorFrom.Name" xml:space="preserve">
-    <value>picHueColorFrom</value>
-  </data>
-  <data name="&gt;&gt;picHueColorFrom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;picHueColorFrom.Parent" xml:space="preserve">
-    <value>picHue</value>
-  </data>
-  <data name="&gt;&gt;picHueColorFrom.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>2</value>
   </data>
   <data name="btnHueRange.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnHueRange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>251, 31</value>
+    <value>248, 18</value>
   </data>
   <data name="btnHueRange.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
   </data>
   <data name="btnHueRange.TabIndex" type="System.Int32, mscorlib">
-    <value>144</value>
+    <value>6</value>
   </data>
   <data name="btnHueRange.Text" xml:space="preserve">
     <value>...</value>
@@ -286,66 +226,36 @@
     <value>btnHueRange</value>
   </data>
   <data name="&gt;&gt;btnHueRange.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnHueRange.Parent" xml:space="preserve">
     <value>picHue</value>
   </data>
   <data name="&gt;&gt;btnHueRange.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="txtName.Location" type="System.Drawing.Point, System.Drawing">
     <value>115, 12</value>
   </data>
   <data name="txtName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 21</value>
+    <value>152, 20</value>
   </data>
   <data name="txtName.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;txtName.Name" xml:space="preserve">
     <value>txtName</value>
   </data>
   <data name="&gt;&gt;txtName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtName.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtName.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
-  <data name="btnHueColorTo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnHueColorTo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 33</value>
-  </data>
-  <data name="btnHueColorTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 21</value>
-  </data>
-  <data name="btnHueColorTo.TabIndex" type="System.Int32, mscorlib">
-    <value>133</value>
-  </data>
-  <data name="btnHueColorTo.Text" xml:space="preserve">
-    <value>...</value>
-  </data>
-  <data name="&gt;&gt;btnHueColorTo.Name" xml:space="preserve">
-    <value>btnHueColorTo</value>
-  </data>
-  <data name="&gt;&gt;btnHueColorTo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnHueColorTo.Parent" xml:space="preserve">
-    <value>picHue</value>
-  </data>
-  <data name="&gt;&gt;btnHueColorTo.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="lblHueColorTo.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblHueColorTo.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblHueColorTo.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblHueColorTo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -355,7 +265,7 @@
     <value>8, 37</value>
   </data>
   <data name="lblHueColorTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 13</value>
+    <value>16, 13</value>
   </data>
   <data name="lblHueColorTo.TabIndex" type="System.Int32, mscorlib">
     <value>134</value>
@@ -367,69 +277,15 @@
     <value>lblHueColorTo</value>
   </data>
   <data name="&gt;&gt;lblHueColorTo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblHueColorTo.Parent" xml:space="preserve">
     <value>picHue</value>
   </data>
   <data name="&gt;&gt;lblHueColorTo.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>5</value>
   </data>
-  <data name="cboMode.Items" xml:space="preserve">
-    <value>Altitude from hue</value>
-  </data>
-  <data name="cboMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>115, 39</value>
-  </data>
-  <data name="cboMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 21</value>
-  </data>
-  <data name="cboMode.TabIndex" type="System.Int32, mscorlib">
-    <value>137</value>
-  </data>
-  <data name="&gt;&gt;cboMode.Name" xml:space="preserve">
-    <value>cboMode</value>
-  </data>
-  <data name="&gt;&gt;cboMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboMode.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;cboMode.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnHueColorFrom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnHueColorFrom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 5</value>
-  </data>
-  <data name="btnHueColorFrom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 21</value>
-  </data>
-  <data name="btnHueColorFrom.TabIndex" type="System.Int32, mscorlib">
-    <value>138</value>
-  </data>
-  <data name="btnHueColorFrom.Text" xml:space="preserve">
-    <value>...</value>
-  </data>
-  <data name="&gt;&gt;btnHueColorFrom.Name" xml:space="preserve">
-    <value>btnHueColorFrom</value>
-  </data>
-  <data name="&gt;&gt;btnHueColorFrom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnHueColorFrom.Parent" xml:space="preserve">
-    <value>picHue</value>
-  </data>
-  <data name="&gt;&gt;btnHueColorFrom.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="lblHueColorFrom.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblHueColorFrom.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblHueColorFrom.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblHueColorFrom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -439,7 +295,7 @@
     <value>8, 9</value>
   </data>
   <data name="lblHueColorFrom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
+    <value>28, 13</value>
   </data>
   <data name="lblHueColorFrom.TabIndex" type="System.Int32, mscorlib">
     <value>139</value>
@@ -451,94 +307,146 @@
     <value>lblHueColorFrom</value>
   </data>
   <data name="&gt;&gt;lblHueColorFrom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblHueColorFrom.Parent" xml:space="preserve">
     <value>picHue</value>
   </data>
   <data name="&gt;&gt;lblHueColorFrom.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
+  </data>
+  <data name="txtHueAltFrom.EditValue" type="System.Decimal, mscorlib">
+    <value>1</value>
   </data>
   <data name="txtHueAltFrom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 4</value>
+    <value>103, 6</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="txtHueAltFrom.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
   </data>
   <data name="txtHueAltFrom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 21</value>
+    <value>61, 20</value>
   </data>
   <data name="txtHueAltFrom.TabIndex" type="System.Int32, mscorlib">
-    <value>141</value>
-  </data>
-  <data name="txtHueAltFrom.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="txtHueAltFrom.ThousandsSeparator" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;txtHueAltFrom.Name" xml:space="preserve">
     <value>txtHueAltFrom</value>
   </data>
   <data name="&gt;&gt;txtHueAltFrom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtHueAltFrom.Parent" xml:space="preserve">
     <value>picHue</value>
   </data>
   <data name="&gt;&gt;txtHueAltFrom.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>0</value>
   </data>
-  <data name="txtHueAltTo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 33</value>
+  <data name="txtHueColorTo.EditValue" type="System.Drawing.Color, System.Drawing">
+    <value />
   </data>
-  <data name="txtHueAltTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 21</value>
+  <data name="txtHueColorTo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>177, 33</value>
   </data>
-  <data name="txtHueAltTo.TabIndex" type="System.Int32, mscorlib">
-    <value>142</value>
+  <data name="txtHueColorTo.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
   </data>
-  <data name="txtHueAltTo.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
+  <data name="txtHueColorTo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
   </data>
-  <data name="txtHueAltTo.ThousandsSeparator" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="txtHueColorTo.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="&gt;&gt;txtHueAltTo.Name" xml:space="preserve">
-    <value>txtHueAltTo</value>
+  <data name="&gt;&gt;txtHueColorTo.Name" xml:space="preserve">
+    <value>txtHueColorTo</value>
   </data>
-  <data name="&gt;&gt;txtHueAltTo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;txtHueColorTo.Type" xml:space="preserve">
+    <value>cSurveyPC.cColorSelector, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;txtHueAltTo.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txtHueColorTo.Parent" xml:space="preserve">
     <value>picHue</value>
   </data>
-  <data name="&gt;&gt;txtHueAltTo.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="chkHueCounterclockwise.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;txtHueColorTo.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="chkHueCounterclockwise.Location" type="System.Drawing.Point, System.Drawing">
     <value>103, 60</value>
   </data>
+  <data name="chkHueCounterclockwise.Properties.Caption" xml:space="preserve">
+    <value>Counterclockwise</value>
+  </data>
   <data name="chkHueCounterclockwise.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 17</value>
+    <value>109, 20</value>
   </data>
   <data name="chkHueCounterclockwise.TabIndex" type="System.Int32, mscorlib">
-    <value>143</value>
-  </data>
-  <data name="chkHueCounterclockwise.Text" xml:space="preserve">
-    <value>Counterclockwise</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;chkHueCounterclockwise.Name" xml:space="preserve">
     <value>chkHueCounterclockwise</value>
   </data>
   <data name="&gt;&gt;chkHueCounterclockwise.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkHueCounterclockwise.Parent" xml:space="preserve">
     <value>picHue</value>
   </data>
   <data name="&gt;&gt;chkHueCounterclockwise.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtHueColorFrom.EditValue" type="System.Drawing.Color, System.Drawing">
+    <value />
+  </data>
+  <data name="txtHueColorFrom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>177, 5</value>
+  </data>
+  <data name="txtHueColorFrom.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtHueColorFrom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="txtHueColorFrom.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtHueColorFrom.Name" xml:space="preserve">
+    <value>txtHueColorFrom</value>
+  </data>
+  <data name="&gt;&gt;txtHueColorFrom.Type" xml:space="preserve">
+    <value>cSurveyPC.cColorSelector, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtHueColorFrom.Parent" xml:space="preserve">
+    <value>picHue</value>
+  </data>
+  <data name="&gt;&gt;txtHueColorFrom.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="txtHueAltTo.EditValue" type="System.Decimal, mscorlib">
     <value>1</value>
+  </data>
+  <data name="txtHueAltTo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 34</value>
+  </data>
+  <data name="txtHueAltTo.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtHueAltTo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 20</value>
+  </data>
+  <data name="txtHueAltTo.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;txtHueAltTo.Name" xml:space="preserve">
+    <value>txtHueAltTo</value>
+  </data>
+  <data name="&gt;&gt;txtHueAltTo.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtHueAltTo.Parent" xml:space="preserve">
+    <value>picHue</value>
+  </data>
+  <data name="&gt;&gt;txtHueAltTo.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="picHue.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 62</value>
@@ -556,16 +464,13 @@
     <value>picHue</value>
   </data>
   <data name="&gt;&gt;picHue.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;picHue.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;picHue.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="lblMode.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>5</value>
   </data>
   <data name="lblMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -574,7 +479,7 @@
     <value>20, 42</value>
   </data>
   <data name="lblMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 13</value>
+    <value>30, 13</value>
   </data>
   <data name="lblMode.TabIndex" type="System.Int32, mscorlib">
     <value>144</value>
@@ -586,13 +491,40 @@
     <value>lblMode</value>
   </data>
   <data name="&gt;&gt;lblMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblMode.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblMode.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="cboMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>115, 39</value>
+  </data>
+  <data name="cboMode.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboMode.Properties.Items" xml:space="preserve">
+    <value>Altitude from hue</value>
+  </data>
+  <data name="cboMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 20</value>
+  </data>
+  <data name="cboMode.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cboMode.Name" xml:space="preserve">
+    <value>cboMode</value>
+  </data>
+  <data name="&gt;&gt;cboMode.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboMode.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cboMode.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -603,10 +535,7 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>304, 217</value>
   </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="frmSurfaceAddElevationFromOrthoPhoto.IconOptions.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACHRAAAiUYAAIpJAACMSgAAjEwAEo9UAACVWAAAml4AFJBVABmQ
@@ -679,12 +608,6 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Create elevation from orthophoto:</value>
-  </data>
-  <data name="&gt;&gt;tipDefault.Name" xml:space="preserve">
-    <value>tipDefault</value>
-  </data>
-  <data name="&gt;&gt;tipDefault.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmSurfaceAddElevationFromOrthoPhoto</value>

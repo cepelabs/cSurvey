@@ -1,6 +1,6 @@
 ﻿Namespace cSurvey.Design.Items
     Public Interface cIItemCrossSectionSplayBorder
-        Property SplayBorderLineStyle As cOptions.SplayStyleEnum
+        Property SplayBorderLineStyle As cOptionsDesign.SplayStyleEnum
         Property ShowSplayBorder As Boolean
         Property ShowSplayText As Boolean
         Property ShowOnlyCutSplay As Boolean

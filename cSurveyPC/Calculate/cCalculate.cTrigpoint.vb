@@ -11,6 +11,7 @@ Namespace cSurvey.Calculate
         Private oCoordinate As cTrigPointCoordinate
         Private bProcessed As Boolean
         Private oSideMeasure As cTrigPointSideMeasure
+        Private dDepth As Decimal?
 
         Friend Sub Rename(NewName As String)
             sName = NewName
@@ -87,6 +88,16 @@ Namespace cSurvey.Calculate
                 Return oPoint
             End If
         End Function
+
+        Public ReadOnly Property Depth As Decimal?
+            Get
+                Return dDepth
+            End Get
+        End Property
+
+        Friend Sub SetDepth(Depth As Decimal?)
+            dDepth = Depth
+        End Sub
 
         Friend Sub SetCoordinate(Coordinate As cCoordinate)
             oCoordinate = New cTrigPointCoordinate(Coordinate)

@@ -142,7 +142,7 @@
     <value>cmdOk</value>
   </data>
   <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
     <value>$this</value>
@@ -172,7 +172,7 @@
     <value>cmdCancel</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -193,16 +193,13 @@
     <value>txtPlanPosition</value>
   </data>
   <data name="&gt;&gt;txtPlanPosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtPlanPosition.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtPlanPosition.ZOrder" xml:space="preserve">
     <value>11</value>
-  </data>
-  <data name="lblPosition.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="lblPosition.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -211,7 +208,7 @@
     <value>25, 74</value>
   </data>
   <data name="lblPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 13</value>
+    <value>44, 13</value>
   </data>
   <data name="lblPosition.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -223,7 +220,7 @@
     <value>lblPosition</value>
   </data>
   <data name="&gt;&gt;lblPosition.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPosition.Parent" xml:space="preserve">
     <value>$this</value>
@@ -247,7 +244,7 @@
     <value>txtName</value>
   </data>
   <data name="&gt;&gt;txtName.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtName.Parent" xml:space="preserve">
     <value>$this</value>
@@ -255,34 +252,31 @@
   <data name="&gt;&gt;txtName.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="Label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="lblName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblName.Location" type="System.Drawing.Point, System.Drawing">
     <value>25, 20</value>
   </data>
-  <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 13</value>
+  <data name="lblName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 13</value>
   </data>
-  <data name="Label1.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblName.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
-  <data name="Label1.Text" xml:space="preserve">
+  <data name="lblName.Text" xml:space="preserve">
     <value>Name:</value>
   </data>
-  <data name="&gt;&gt;Label1.Name" xml:space="preserve">
-    <value>Label1</value>
+  <data name="&gt;&gt;lblName.Name" xml:space="preserve">
+    <value>lblName</value>
   </data>
-  <data name="&gt;&gt;Label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;lblName.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblName.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblName.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
   <data name="txtProfilePosition.Location" type="System.Drawing.Point, System.Drawing">
@@ -298,7 +292,7 @@
     <value>txtProfilePosition</value>
   </data>
   <data name="&gt;&gt;txtProfilePosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtProfilePosition.Parent" xml:space="preserve">
     <value>$this</value>
@@ -306,17 +300,14 @@
   <data name="&gt;&gt;txtProfilePosition.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="lblPlanPosition.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblPlanPosition.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlanPosition.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 55</value>
+    <value>133, 52</value>
   </data>
   <data name="lblPlanPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 13</value>
+    <value>24, 13</value>
   </data>
   <data name="lblPlanPosition.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -328,16 +319,13 @@
     <value>lblPlanPosition</value>
   </data>
   <data name="&gt;&gt;lblPlanPosition.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlanPosition.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPlanPosition.ZOrder" xml:space="preserve">
     <value>8</value>
-  </data>
-  <data name="lblConnectedTo.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="lblConnectedTo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -346,7 +334,7 @@
     <value>13, 13</value>
   </data>
   <data name="lblConnectedTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 13</value>
+    <value>68, 13</value>
   </data>
   <data name="lblConnectedTo.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -358,7 +346,7 @@
     <value>lblConnectedTo</value>
   </data>
   <data name="&gt;&gt;lblConnectedTo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblConnectedTo.Parent" xml:space="preserve">
     <value>pnlNextStations</value>
@@ -366,17 +354,14 @@
   <data name="&gt;&gt;lblConnectedTo.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="lblProfilePosition.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblProfilePosition.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblProfilePosition.Location" type="System.Drawing.Point, System.Drawing">
-    <value>267, 55</value>
+    <value>270, 52</value>
   </data>
   <data name="lblProfilePosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 13</value>
+    <value>34, 13</value>
   </data>
   <data name="lblProfilePosition.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
@@ -388,16 +373,13 @@
     <value>lblProfilePosition</value>
   </data>
   <data name="&gt;&gt;lblProfilePosition.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblProfilePosition.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblProfilePosition.ZOrder" xml:space="preserve">
     <value>6</value>
-  </data>
-  <data name="lblScaleUM.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="lblScaleUM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -406,7 +388,7 @@
     <value>201, 11</value>
   </data>
   <data name="lblScaleUM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 13</value>
+    <value>8, 13</value>
   </data>
   <data name="lblScaleUM.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -418,16 +400,13 @@
     <value>lblScaleUM</value>
   </data>
   <data name="&gt;&gt;lblScaleUM.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblScaleUM.Parent" xml:space="preserve">
     <value>pnlScale</value>
   </data>
   <data name="&gt;&gt;lblScaleUM.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="lblScaleSize.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="lblScaleSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -436,7 +415,7 @@
     <value>14, 11</value>
   </data>
   <data name="lblScaleSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 13</value>
+    <value>29, 13</value>
   </data>
   <data name="lblScaleSize.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
@@ -448,7 +427,7 @@
     <value>lblScaleSize</value>
   </data>
   <data name="&gt;&gt;lblScaleSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblScaleSize.Parent" xml:space="preserve">
     <value>pnlScale</value>
@@ -478,7 +457,7 @@
     <value>cmdApply</value>
   </data>
   <data name="&gt;&gt;cmdApply.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdApply.Parent" xml:space="preserve">
     <value>$this</value>
@@ -486,16 +465,13 @@
   <data name="&gt;&gt;cmdApply.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="tpDefault.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>180, 17</value>
-  </metadata>
   <data name="cmdNext.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
-  <assembly alias="DevExpress.Data.v20.2" name="DevExpress.Data.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-  <data name="cmdNext.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v20.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <assembly alias="DevExpress.Data.v21.2" name="DevExpress.Data.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="cmdNext.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE5LjIsIFZlcnNpb249MTkuMi43
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjIsIFZlcnNpb249MjEuMi41
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
         dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAALcBAAAC77u/
         PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
@@ -527,7 +503,7 @@
     <value>cmdNext</value>
   </data>
   <data name="&gt;&gt;cmdNext.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdNext.Parent" xml:space="preserve">
     <value>$this</value>
@@ -538,9 +514,9 @@
   <data name="cmdPrev.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
-  <data name="cmdPrev.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v20.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="cmdPrev.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE5LjIsIFZlcnNpb249MTkuMi43
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjIsIFZlcnNpb249MjEuMi41
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
         dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAALwBAAAC77u/
         PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
@@ -572,7 +548,7 @@
     <value>cmdPrev</value>
   </data>
   <data name="&gt;&gt;cmdPrev.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPrev.Parent" xml:space="preserve">
     <value>$this</value>
@@ -593,7 +569,7 @@
     <value>tknPlan</value>
   </data>
   <data name="&gt;&gt;tknPlan.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TokenEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TokenEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tknPlan.Parent" xml:space="preserve">
     <value>pnlNextStations</value>
@@ -614,7 +590,7 @@
     <value>tknProfile</value>
   </data>
   <data name="&gt;&gt;tknProfile.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TokenEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TokenEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tknProfile.Parent" xml:space="preserve">
     <value>pnlNextStations</value>
@@ -635,7 +611,7 @@
     <value>pnlNextStations</value>
   </data>
   <data name="&gt;&gt;pnlNextStations.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlNextStations.Parent" xml:space="preserve">
     <value>$this</value>
@@ -643,30 +619,11 @@
   <data name="&gt;&gt;pnlNextStations.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="txtScaleSize.EditValue" type="System.Decimal, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="txtScaleSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 10</value>
-  </data>
-  <assembly alias="DevExpress.Utils.v20.2" name="DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-  <data name="txtScaleSize.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v20.2">
-    <value>Combo</value>
-  </data>
-  <data name="txtScaleSize.Properties.Mask.EditMask" xml:space="preserve">
-    <value>N2</value>
-  </data>
-  <data name="txtScaleSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 20</value>
-  </data>
-  <data name="txtScaleSize.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
   <data name="&gt;&gt;txtScaleSize.Name" xml:space="preserve">
     <value>txtScaleSize</value>
   </data>
   <data name="&gt;&gt;txtScaleSize.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtScaleSize.Parent" xml:space="preserve">
     <value>pnlScale</value>
@@ -687,12 +644,43 @@
     <value>pnlScale</value>
   </data>
   <data name="&gt;&gt;pnlScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlScale.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pnlScale.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtScaleSize.EditValue" type="System.Decimal, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="txtScaleSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 10</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="txtScaleSize.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtScaleSize.Properties.Mask.EditMask" xml:space="preserve">
+    <value>N2</value>
+  </data>
+  <data name="txtScaleSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 20</value>
+  </data>
+  <data name="txtScaleSize.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;txtScaleSize.Name" xml:space="preserve">
+    <value>txtScaleSize</value>
+  </data>
+  <data name="&gt;&gt;txtScaleSize.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtScaleSize.Parent" xml:space="preserve">
+    <value>pnlScale</value>
+  </data>
+  <data name="&gt;&gt;txtScaleSize.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -704,87 +692,16 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>417, 282</value>
   </data>
-  <data name="frmResurveyProperties.IconOptions.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAHJwbAB/fXsAgH57AIB+fAA9aZMANXa0ADt8uQBSe6AAPoS/AFiG
-        sgBgi7MAYpK8AD6CwABEjscASIzEAEOTzABClc0ASJHJAE2UywBMm9MATp7TAFGd0gBVndEAVaTXAFmh
-        0wByoc4Ae67QAH+p1ACEgoAAh4WCAIeHhQCKhoMAioiGAIyKiACSjowAk5GOAJmXlACamZUAnZuYAKOh
-        ngClo6AApaSiAKenpACrqaUAra2rAK6urACwrqwAt7KqALCwrQC1sq8AvbWuALOzsgC0tLEAuLa0ALq5
-        uAC9u7sAwLy8AImz1wCMs9YAjLTWAI222QCr4vsAseL4ALLl+gDCwsEAxcXEAMnHxgDKyMcAzMjGAMvL
-        ygDNzMsAzszMANHPzwDR0M8A1dLSANfW1QDZ19YA29rZAN3b2wDe3N0A4N/eAOHg3wDr5N8A4uHgAOTj
-        4gDl5OMA5ublAOjo5wDq6egA7OvrAO7t7QDw7u4A8fDvAPLx8QD08vIA9PTzAPX19QD49/cA+fn5AP37
-        +QD+/PoA+/z8AP7+/gB4/xEAiv8xAJz/UQCu/3EAwP+RANL/sQDk/9EA////AAAAAAAmLwAAQFAAAFpw
-        AAB0kAAAjrAAAKnPAADC8AAA0f8RANj/MQDe/1EA4/9xAOn/kQDv/7EA9v/RAP///wAAAAAALyYAAFBB
-        AABwWwAAkHQAALCOAADPqQAA8MMAAP/SEQD/2DEA/91RAP/kcQD/6pEA//CxAP/20QD///8AAAAAAC8U
-        AABQIgAAcDAAAJA+AACwTQAAz1sAAPBpAAD/eREA/4oxAP+dUQD/r3EA/8GRAP/SsQD/5dEA////AAAA
-        AAAvAwAAUAQAAHAGAACQCQAAsAoAAM8MAADwDgAA/yASAP8+MQD/XFEA/3pxAP+XkQD/trEA/9TRAP//
-        /wAAAAAALwAOAFAAFwBwACEAkAArALAANgDPAEAA8ABJAP8RWgD/MXAA/1GGAP9xnAD/kbIA/7HIAP/R
-        3wD///8AAAAAAC8AIABQADYAcABMAJAAYgCwAHgAzwCOAPAApAD/EbMA/zG+AP9RxwD/cdEA/5HcAP+x
-        5QD/0fAA////AAAAAAAsAC8ASwBQAGkAcACHAJAApQCwAMQAzwDhAPAA8BH/APIx/wD0Uf8A9nH/APeR
-        /wD5sf8A+9H/AP///wAAAAAAGwAvAC0AUAA/AHAAUgCQAGMAsAB2AM8AiADwAJkR/wCmMf8AtFH/AMJx
-        /wDPkf8A3LH/AOvR/wD///8AAAAAAAgALwAOAFAAFQBwABsAkAAhALAAJgDPACwA8AA+Ef8AWDH/AHFR
-        /wCMcf8AppH/AL+x/wDa0f8A////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAcGCgAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAANGBkPCgAAAAAAAAAAAAAAAAA0MS4tLS4uLi4uLi4uMAlAFhcTCzMyMTQAAAAA
-        AAAAADFvb29vb29vb29vb29vPRBAFhcSHG9vMQAAAAAAAAAALm9vZ2dvb29vb29vb29vPRE/FhYOGm8x
-        AAAAAAAAAAAtb2dmZmZmZmZmZmZmZ29vPBE/FRQFbzUAAAAAAAAAAC1vZmZmZmZmZmZmZmZmZmdvPBE+
-        GzMkNwAAAAAAAAAALW9kY2RjY2NjY2NjY2NjZGVnOghTRSoBIgQfAAAAAAAtb2NjY2NjY2NjY2NjY2Nj
-        Y2RvZSBKREtbXlAeAAAAAC1vYmJiYmJiYmJiYmJiYmJiYmRvIU1ISAQdHiEAAAAALW9hYmFiYWJhYmFi
-        YWJhYmJhY28DUURHIgAAAAAAAAAtb2FhYWFhYWFhYWFhYWFhYWFiZx5SNzgkAAAAAAAAAC1vYGBgYGBg
-        YGBgYGBgYGBgYGFmJkpPMiYlJicAAAAALW9fX15fXl9eX15fXl9eX15gX2JOKU1cUVQ5KAAAAAAtb15e
-        Xl5eXl5eXl5eXl5eXl5eYGFSLyw2LDEAAAAAAC1vXV1dXV1dXV1dXV1dXV1dXV1dXmBvMQAAAAAAAAAA
-        LW9dXV1dXV1dXV1dXV1dXVxdXF1cXG8uAAAAAAAAAAAtb1tbW1tbW1tbW1tbW1tbW1xbXFtbby0AAAAA
-        AAAAAC1vWltaW1pbWltaW1tbW1pbWltaWlpvLQAAAAAAAAAALW9aWlpaWlpaWlpaWlpaWlpaWlpaWm8t
-        AAAAAAAAAAAtb1laWVlaWlpaWlpaWVpZWVlZWVlYby0AAAAAAAAAAC1vWFlZWVlZWVlZWVlZWGBvb29v
-        b29vLgAAAAAAAAAALW9YWFhYWVhZWFlYWFhXb0YrKysrKm8xAAAAAAAAAAAub1dXV1hXV1dXV1dXWFdv
-        K29mYltvWTYAAAAAAAAAAC5vVVdXV1dXV1dXV1dXVW8rZl9Zb1g1AAAAAAAAAAAALm9UVlZXVlZWVlZW
-        VlZVbythWm9XNQAAAAAAAAAAAAAub1RUVVVVVVVVVVVVVFRvK1tvVzUAAAAAAAAAAAAAAC5vUVJSUlJS
-        UlJSUlJSUW8qb1hBAAAAAAAAAAAAAAAAMW9vb29vb29vb29vb29vb29ZQQAAAAAAAAAAAAAAAABCMS4u
-        Li4uLi4uLi4uLi0uMUIAAAAAAAAAAAAAAAD/////////////D////wf/wAAAP8AAAD/AAAA/wAAAP8AA
-        AD/AAAAHwAAAA8AAAAPAAAAfwAAAH8AAAAPAAAADwAAAB8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AA
-        AD/AAAA/wAAAP8AAAH/AAAD/wAAB/8AAA//AAAf/wAAP/ygAAAAQAAAAIAAAAAEACAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAhH97ADh9uwA7gL4AYYqxAGuTtwA5hMAAPIXCAEKJxABClc0AS5nRAE6d
-        0gBSndIAVp/TAFKi1gB4ptQAfKjSAHyu0AB+rNcAhoKAAJCNiwCQjowAlJGPAJWSkACYlZIAmZeVAKGe
-        mwCin50ApKGfAKWlowCnp6QAqKakAKqppgCtrasArq6sALGvrACwsK0AtbOvALizrAC2s7AAtra0ALq2
-        sQC6ubcAvbq1ALq6uADAuK8Aw7+/AMm/uQCErtMAg63UAImx1ACp4PkAseP5ALLk+gDGxcMAy8nHAMrJ
-        yADMzMsAzs3MANHNzADT0tEA19XUANrY2ADl3NcA4N7eAODg3wDj4+IA5OTjAObl5ADo5+YA6efoAOnp
-        6ADs6+oA7OzrAOvr7ADv7+4A8fDvAPLx8AD28/EA8/TyAPT08wD29vUA+/bzAPn39QD6+fcA//v3AP/8
-        9wD6+PgA//76AP7+/gBb/1EAef9xAJj/kQC1/7EA1P/RAP///wAAAAAAFC8AACJQAAAwcAAAPZAAAEyw
-        AABZzwAAZ/AAAHj/EQCK/zEAnP9RAK7/cQDA/5EA0v+xAOT/0QD///8AAAAAACYvAABAUAAAWnAAAHSQ
-        AACOsAAAqc8AAMLwAADR/xEA2P8xAN7/UQDj/3EA6f+RAO//sQD2/9EA////AAAAAAAvJgAAUEEAAHBb
-        AACQdAAAsI4AAM+pAADwwwAA/9IRAP/YMQD/3VEA/+RxAP/qkQD/8LEA//bRAP///wAAAAAALxQAAFAi
-        AABwMAAAkD4AALBNAADPWwAA8GkAAP95EQD/ijEA/51RAP+vcQD/wZEA/9KxAP/l0QD///8AAAAAAC8D
-        AABQBAAAcAYAAJAJAACwCgAAzwwAAPAOAAD/IBIA/z4xAP9cUQD/enEA/5eRAP+2sQD/1NEA////AAAA
-        AAAvAA4AUAAXAHAAIQCQACsAsAA2AM8AQADwAEkA/xFaAP8xcAD/UYYA/3GcAP+RsgD/scgA/9HfAP//
-        /wAAAAAALwAgAFAANgBwAEwAkABiALAAeADPAI4A8ACkAP8RswD/Mb4A/1HHAP9x0QD/kdwA/7HlAP/R
-        8AD///8AAAAAACwALwBLAFAAaQBwAIcAkAClALAAxADPAOEA8ADwEf8A8jH/APRR/wD2cf8A95H/APmx
-        /wD70f8A////AAAAAAAbAC8ALQBQAD8AcABSAJAAYwCwAHYAzwCIAPAAmRH/AKYx/wC0Uf8AwnH/AM+R
-        /wDcsf8A69H/AP///wAAAAAACAAvAA4AUAAVAHAAGwCQACEAsAAmAM8ALADwAD4R/wBYMf8AcVH/AIxx
-        /wCmkf8Av7H/ANrR/wD///8AAAAAAAAAAAAAAAAAAAAAACwkIiEiJgUDAgQtJSwAAAAkX19fX18GDg0I
-        EF8lAAAAIl9ZWVlfBzUMDAcPKQAAACFfV1dUWDIJNQsKEisAAAAhX1FRUVRYMgkzES8BExcAIV9QUFBR
-        U1YwMT87PElGFSFfTU1NTU1OUlUnPjsUFhghX0tLS0xLS01RFz0uGQAAIV9ISUlJSUlJTRdAIxobHCFf
-        R0hIR0dPX186N0xBNx8hX0RFRUVEXzkgIDYfICoAIl9CQ0NDQl8eSV9KOgAAACJfQEBBQEFfHV9GOAAA
-        AAAkX19fX19fX19HOAAAAAAAKCQiIiIiISIkKAAAAAAAAP//AAAABwAAAAcAAAAHAAAABwAAAAEAAAAA
-        AAAAAAAAAAMAAAAAAAAAAAAAAAEAAAAHAAAADwAAAB8AAAA/AAA=
-</value>
-  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Station/placeholder properties:</value>
   </data>
-  <data name="&gt;&gt;tpDefault.Name" xml:space="preserve">
-    <value>tpDefault</value>
-  </data>
-  <data name="&gt;&gt;tpDefault.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmResurveyProperties</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.XtraForm, DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.XtraForm, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
 </root>

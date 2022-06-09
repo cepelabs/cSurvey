@@ -45,8 +45,10 @@ Namespace cSurvey.Design
         Friend Event OnChanged(ByVal Sender As cItemFont)
 
         Friend Class cRenderArgs
+            Inherits EventArgs
             Public Transparency As Single
         End Class
+
         Friend Event OnRender(sender As cItemFont, RenderArgs As cRenderArgs)
 
         Public ReadOnly Property FontStyle As FontStyle Implements cIFont.FontStyle
@@ -139,6 +141,9 @@ Namespace cSurvey.Design
             Set(ByVal value As FontTypeEnum)
                 If iType <> value Then
                     iType = value
+                    If iType <> FontTypeEnum.Custom Then
+                        Call CopyFrom(Survey.EditPaintObjects.Fonts.FromType(Type))
+                    End If
                     Call pInvalidate()
                 End If
             End Set
@@ -165,7 +170,7 @@ Namespace cSurvey.Design
         Friend Sub New(ByVal Survey As cSurvey)
             oSurvey = Survey
             sName = ""
-            iType = FontTypeEnum.Custom
+            iType = FontTypeEnum.Generic
             sFontName = ""
             sFontSize = 0
             oColor = Color.Black
@@ -189,7 +194,7 @@ Namespace cSurvey.Design
             Call pInvalidate()
         End Sub
 
-        Friend Sub AddToPath(ByVal PaintOptions As cOptions, ByVal Path As GraphicsPath, ByVal Text As String, ByVal Bounds As RectangleF, ByVal StringFormat As StringFormat)
+        Friend Sub AddToPath(ByVal PaintOptions As cOptionsCenterline, ByVal Path As GraphicsPath, ByVal Text As String, ByVal Bounds As RectangleF, ByVal StringFormat As StringFormat)
             Try
                 If Text <> "" Then
                     If bInvalidated Then pRender(PaintOptions)
@@ -199,7 +204,7 @@ Namespace cSurvey.Design
             End Try
         End Sub
 
-        Friend Sub AddToPath(ByVal PaintOptions As cOptions, ByVal Path As GraphicsPath, ByVal Text As String, ByVal Point As PointF, ByVal StringFormat As StringFormat)
+        Friend Sub AddToPath(ByVal PaintOptions As cOptionsCenterline, ByVal Path As GraphicsPath, ByVal Text As String, ByVal Point As PointF, ByVal StringFormat As StringFormat)
             Try
                 If Text <> "" Then
                     If bInvalidated Then pRender(PaintOptions)
@@ -209,7 +214,7 @@ Namespace cSurvey.Design
             End Try
         End Sub
 
-        Friend Function MeasureString(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, Text As String) As SizeF
+        Friend Function MeasureString(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, Text As String) As SizeF
             If bInvalidated Then pRender(PaintOptions)
             Return Graphics.MeasureString(Text, oFont)
         End Function
@@ -350,32 +355,49 @@ Namespace cSurvey.Design
                     sTempFontSize = 8
                 End If
             End If
-
             Dim iFontStyle As FontStyle = FontStyle
             Return New Font(sTempFontName, sTempFontSize, iFontStyle)
         End Function
 
-        Friend Function GetFont(PaintOptions As cOptions) As Font
+        Friend Function GetFont(PaintOptions As cOptionsCenterline) As Font
             If bInvalidated Then pRender(PaintOptions)
             Return oFont
         End Function
 
-        Friend Function GetBrush(PaintOptions As cOptions) As Brush
+        Friend Function GetBrush(PaintOptions As cOptionsCenterline) As Brush
             If bInvalidated Then pRender(PaintOptions)
             Return oBrush
         End Function
 
-        Friend Function GetWireframePen(PaintOptions As cOptions) As Pen
+        Friend Function GetWireframePen(PaintOptions As cOptionsCenterline) As Pen
             If bInvalidated Then pRender(PaintOptions)
             Return oWireframePen
         End Function
 
-        Friend Sub Render(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache)
+        Public ReadOnly Property ToHTMLString(PaintOptions As cOptionsCenterline) As String
+            Get
+                Dim sTempFontName As String = sFontName
+                Dim sTempFontSize As Single = sFontSize
+                If sTempFontName = "" Or sTempFontSize <= 0 Then
+                    Dim oDesignTextFont As cIFont = PaintOptions.GetCurrentDesignPropertiesValue("DesignTextFont", modPaint.GetDefaultFont)
+                    If sTempFontName = "" Then
+                        sTempFontName = oDesignTextFont.FontName
+                    End If
+                    If sTempFontSize <= 0 Then
+                        sTempFontSize = PaintOptions.GetFontDefaultSize(iType)
+                    End If
+                End If
+                Dim iFontStyle As FontStyle = FontStyle
+                Return "<font='" & sTempFontName & "'><size=" & modNumbers.NumberToString(sTempFontSize, "0.00") & ">" & If(iFontStyle And FontStyle.Bold, "<b>", "") & If(iFontStyle And FontStyle.Italic, "<i>", "") & If(iFontStyle And FontStyle.Underline, "<u>", "") & If(iFontStyle And FontStyle.Strikeout, "<s>", "") & sName & If(iFontStyle And FontStyle.Strikeout, "</s>", "") & If(iFontStyle And FontStyle.Underline, "</u>", "") & If(iFontStyle And FontStyle.Italic, "</i>", "") & If(iFontStyle And FontStyle.Bold, "</b>", "") & "</size></font>"
+            End Get
+        End Property
+
+        Friend Sub Render(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache)
             If bInvalidated Then pRender(PaintOptions)
             Call Cache.Add(cDrawCacheItem.cDrawCacheItemType.Border, Path, Nothing, oWireframePen, oBrush)
         End Sub
 
-        Friend Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Path As GraphicsPath)
+        Friend Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Path As GraphicsPath)
             If bInvalidated Then pRender(PaintOptions)
             If (Options And cItem.PaintOptionsEnum.Wireframe) = cItem.PaintOptionsEnum.Wireframe Or (Options And cItem.PaintOptionsEnum.SchematicLayerDraw) = cItem.PaintOptionsEnum.SchematicLayerDraw Then
                 Call Graphics.DrawPath(oWireframePen, Path)
@@ -384,13 +406,13 @@ Namespace cSurvey.Design
             End If
         End Sub
 
-        Private Sub pRender(ByVal PaintOptions As cOptions)
+        Private Sub pRender(ByVal PaintOptions As cOptionsCenterline)
             Dim oRenderArgs As cRenderArgs = New cRenderArgs
             RaiseEvent OnRender(Me, oRenderArgs)
 
             Dim sTempFontName As String = sFontName
             Dim sTempFontSize As Single = sFontSize
-            If sTempFontName = "" Or sTempFontSize <= 0 Then
+            If sTempFontName = "" OrElse sTempFontSize <= 0 Then
                 Dim oDesignTextFont As cIFont = PaintOptions.GetCurrentDesignPropertiesValue("DesignTextFont", modPaint.GetDefaultFont)
                 If sTempFontName = "" Then
                     sTempFontName = oDesignTextFont.FontName
@@ -416,7 +438,7 @@ Namespace cSurvey.Design
             End If
 
             If Not IsNothing(oWireframePen) Then oWireframePen.Dispose()
-            oWireframePen = New Pen(oPaintColor, -1 * sLineWidth)
+            oWireframePen = New Pen(oPaintColor, cEditPaintObjects.FilettoPenWidth)
             oWireframePen.SetLineCap(Drawing2D.LineCap.Round, Drawing2D.LineCap.Round, Drawing2D.DashCap.Round)
             oWireframePen.LineJoin = Drawing2D.LineJoin.Round
             oWireframePen.DashStyle = DashStyle.Dot

@@ -90,8 +90,8 @@ Class cClipartOnPath
 
     Private Shared Function pGetAngle(ByVal P1 As PointF, ByVal P2 As PointF) As Single
         Dim c As Single = Math.Sqrt((P2.X - P1.X) ^ 2 + (P2.Y - P1.Y) ^ 2)
-        If c = 0 Then
-            Return 0
+        If c = 0F Then
+            Return 0F
         Else
             If P1.X > P2.X Then
                 Return Math.Asin((P1.Y - P2.Y) / c) * 180 / Math.PI - 180
@@ -125,7 +125,6 @@ Class cClipartOnPath
 
     Private Shared Function pGetLinePoints(ByVal P1 As PointF, ByVal P2 As PointF, ByVal StepWidth As Integer) As List(Of PointF)
         Dim iCount As Integer = 0
-        'Dim oPoints(iMaxPointCount) As PointF
         Dim oPoints As List(Of PointF) = New List(Of PointF)
         Dim sX As Single
         Dim sY As Single

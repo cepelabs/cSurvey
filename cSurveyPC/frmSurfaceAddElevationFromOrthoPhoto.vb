@@ -17,48 +17,18 @@
         txtName.Text = Name
         oColors = modPaint.GetRainbowColors(256)
         cboMode.SelectedIndex = 0
-        picHueColorFrom.BackColor = oColors(0)
-        picHueColorTo.BackColor = oColors(255)
+        txtHueColorFrom.Color = oColors(0)
+        txtHueColorTo.Color = oColors(255)
     End Sub
 
     Private Sub pValidateHueAndHeight()
-        Dim sMinHue As Single = picHueColorFrom.BackColor.GetHue
-        Dim sMaxHue As Single = picHueColorTo.BackColor.GetHue
+        Dim sMinHue As Single = DirectCast(txtHueColorFrom.EditValue, Color).GetHue
+        Dim sMaxHue As Single = DirectCast(txtHueColorTo.EditValue, Color).GetHue
         If sMinHue = sMaxHue Then
             cmdOk.Enabled = False
         Else
             cmdOk.Enabled = True
         End If
-        'Dim sMinAlt As Single = txtHueAltFrom.Value
-        'Dim sMaxAlt As Single = txtHueAltTo.Value
-    End Sub
-
-    Private Sub btnHueColorFrom_Click(sender As Object, e As EventArgs) Handles btnHueColorFrom.Click
-        Using oCD As ColorDialog = New ColorDialog
-            With oCD
-                .FullOpen = True
-                .AnyColor = True
-                .Color = picHueColorFrom.BackColor
-                If .ShowDialog = Windows.Forms.DialogResult.OK Then
-                    picHueColorFrom.BackColor = .Color
-                    Call pValidateHueAndHeight()
-                End If
-            End With
-        End Using
-    End Sub
-
-    Private Sub btnHueColorTo_Click(sender As Object, e As EventArgs) Handles btnHueColorTo.Click
-        Using oCD As ColorDialog = New ColorDialog
-            With oCD
-                .FullOpen = True
-                .AnyColor = True
-                .Color = picHueColorTo.BackColor
-                If .ShowDialog = Windows.Forms.DialogResult.OK Then
-                    picHueColorTo.BackColor = .Color
-                    Call pValidateHueAndHeight()
-                End If
-            End With
-        End Using
     End Sub
 
     Private Sub cboMode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboMode.SelectedIndexChanged
@@ -85,7 +55,11 @@
     Private Sub btnHueRange_Click(sender As Object, e As EventArgs) Handles btnHueRange.Click
         Dim oArgs As GetHueEventArgs = New GetHueEventArgs
         RaiseEvent GetHue(Me, oArgs)
-        picHueColorFrom.BackColor = modPaint.HsvToRgb(oArgs.MInHue, 1, 1)
-        picHueColorTo.BackColor = modPaint.HsvToRgb(oArgs.MaxHue, 1, 1)
+        txtHueColorFrom.Color = modPaint.HsvToRgb(oArgs.MinHue, 1, 1)
+        txtHueColorTo.Color = modPaint.HsvToRgb(oArgs.MaxHue, 1, 1)
+    End Sub
+
+    Private Sub txtName_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtName.Validating
+        e.Cancel = Not txtName.ValidateIfNull
     End Sub
 End Class

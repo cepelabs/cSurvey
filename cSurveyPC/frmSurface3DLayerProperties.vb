@@ -12,10 +12,10 @@ friend Class frmSurface3DLayerProperties
         ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
         oItem = Item
 
-        txtTransparency.Value = oItem.Transparency * 255
+        trkTransparency.EditValue = oItem.Transparency * 255
     End Sub
 
     Private Sub cmdOk_Click(sender As Object, e As System.EventArgs) Handles cmdOk.Click
-        oItem.Transparency = txtTransparency.Value / 255
+        oItem.Transparency = trkTransparency.EditValue / 255
     End Sub
 End Class

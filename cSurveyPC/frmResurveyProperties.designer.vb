@@ -22,35 +22,35 @@ Partial Class frmResurveyProperties
     'Non modificarla nell'editor del codice.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmResurveyProperties))
         Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
         Me.txtPlanPosition = New DevExpress.XtraEditors.TextEdit()
-        Me.lblPosition = New System.Windows.Forms.Label()
+        Me.lblPosition = New DevExpress.XtraEditors.LabelControl()
         Me.txtName = New DevExpress.XtraEditors.TextEdit()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblName = New DevExpress.XtraEditors.LabelControl()
         Me.txtProfilePosition = New DevExpress.XtraEditors.TextEdit()
-        Me.lblPlanPosition = New System.Windows.Forms.Label()
-        Me.lblConnectedTo = New System.Windows.Forms.Label()
-        Me.lblProfilePosition = New System.Windows.Forms.Label()
-        Me.lblScaleUM = New System.Windows.Forms.Label()
-        Me.lblScaleSize = New System.Windows.Forms.Label()
+        Me.lblPlanPosition = New DevExpress.XtraEditors.LabelControl()
+        Me.lblConnectedTo = New DevExpress.XtraEditors.LabelControl()
+        Me.lblProfilePosition = New DevExpress.XtraEditors.LabelControl()
+        Me.lblScaleUM = New DevExpress.XtraEditors.LabelControl()
+        Me.lblScaleSize = New DevExpress.XtraEditors.LabelControl()
         Me.cmdApply = New DevExpress.XtraEditors.SimpleButton()
-        Me.tpDefault = New System.Windows.Forms.ToolTip(Me.components)
         Me.cmdNext = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdPrev = New DevExpress.XtraEditors.SimpleButton()
         Me.tknPlan = New DevExpress.XtraEditors.TokenEdit()
         Me.tknProfile = New DevExpress.XtraEditors.TokenEdit()
-        Me.pnlNextStations = New System.Windows.Forms.Panel()
-        Me.pnlScale = New System.Windows.Forms.Panel()
+        Me.pnlNextStations = New DevExpress.XtraEditors.PanelControl()
+        Me.pnlScale = New DevExpress.XtraEditors.PanelControl()
         Me.txtScaleSize = New DevExpress.XtraEditors.SpinEdit()
         CType(Me.txtPlanPosition.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtProfilePosition.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tknPlan.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tknProfile.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlNextStations, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlNextStations.SuspendLayout()
+        CType(Me.pnlScale, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlScale.SuspendLayout()
         CType(Me.txtScaleSize.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -86,10 +86,10 @@ Partial Class frmResurveyProperties
         Me.txtName.Properties.Appearance.Options.UseFont = True
         Me.txtName.Properties.ReadOnly = True
         '
-        'Label1
+        'lblName
         '
-        resources.ApplyResources(Me.Label1, "Label1")
-        Me.Label1.Name = "Label1"
+        resources.ApplyResources(Me.lblName, "lblName")
+        Me.lblName.Name = "lblName"
         '
         'txtProfilePosition
         '
@@ -133,7 +133,6 @@ Partial Class frmResurveyProperties
         Me.cmdNext.ImageOptions.SvgImage = CType(resources.GetObject("cmdNext.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.cmdNext.ImageOptions.SvgImageSize = New System.Drawing.Size(18, 18)
         Me.cmdNext.Name = "cmdNext"
-        Me.tpDefault.SetToolTip(Me.cmdNext, resources.GetString("cmdNext.ToolTip1"))
         '
         'cmdPrev
         '
@@ -141,7 +140,6 @@ Partial Class frmResurveyProperties
         Me.cmdPrev.ImageOptions.SvgImage = CType(resources.GetObject("cmdPrev.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.cmdPrev.ImageOptions.SvgImageSize = New System.Drawing.Size(18, 18)
         Me.cmdPrev.Name = "cmdPrev"
-        Me.tpDefault.SetToolTip(Me.cmdPrev, resources.GetString("cmdPrev.ToolTip1"))
         '
         'tknPlan
         '
@@ -161,6 +159,7 @@ Partial Class frmResurveyProperties
         '
         'pnlNextStations
         '
+        Me.pnlNextStations.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlNextStations.Controls.Add(Me.tknProfile)
         Me.pnlNextStations.Controls.Add(Me.tknPlan)
         Me.pnlNextStations.Controls.Add(Me.lblConnectedTo)
@@ -169,6 +168,7 @@ Partial Class frmResurveyProperties
         '
         'pnlScale
         '
+        Me.pnlScale.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlScale.Controls.Add(Me.txtScaleSize)
         Me.pnlScale.Controls.Add(Me.lblScaleUM)
         Me.pnlScale.Controls.Add(Me.lblScaleSize)
@@ -202,11 +202,11 @@ Partial Class frmResurveyProperties
         Me.Controls.Add(Me.txtProfilePosition)
         Me.Controls.Add(Me.lblPlanPosition)
         Me.Controls.Add(Me.txtName)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lblName)
         Me.Controls.Add(Me.txtPlanPosition)
         Me.Controls.Add(Me.lblPosition)
         Me.Controls.Add(Me.pnlNextStations)
-        Me.IconOptions.Icon = CType(resources.GetObject("frmResurveyProperties.IconOptions.Icon"), System.Drawing.Icon)
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.properties
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmResurveyProperties"
@@ -215,8 +215,10 @@ Partial Class frmResurveyProperties
         CType(Me.txtProfilePosition.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tknPlan.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tknProfile.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlNextStations, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlNextStations.ResumeLayout(False)
         Me.pnlNextStations.PerformLayout()
+        CType(Me.pnlScale, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlScale.ResumeLayout(False)
         Me.pnlScale.PerformLayout()
         CType(Me.txtScaleSize.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -227,22 +229,21 @@ Partial Class frmResurveyProperties
     Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents txtPlanPosition As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents lblPosition As System.Windows.Forms.Label
+    Friend WithEvents lblPosition As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtName As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents lblName As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtProfilePosition As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents lblPlanPosition As System.Windows.Forms.Label
-    Friend WithEvents lblConnectedTo As System.Windows.Forms.Label
-    Friend WithEvents lblProfilePosition As System.Windows.Forms.Label
-    Friend WithEvents lblScaleUM As System.Windows.Forms.Label
-    Friend WithEvents lblScaleSize As System.Windows.Forms.Label
+    Friend WithEvents lblPlanPosition As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblConnectedTo As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblProfilePosition As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblScaleUM As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblScaleSize As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cmdApply As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents tpDefault As System.Windows.Forms.ToolTip
     Friend WithEvents cmdNext As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdPrev As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents tknPlan As DevExpress.XtraEditors.TokenEdit
     Friend WithEvents tknProfile As DevExpress.XtraEditors.TokenEdit
-    Friend WithEvents pnlNextStations As Panel
-    Friend WithEvents pnlScale As Panel
+    Friend WithEvents pnlNextStations As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlScale As DevExpress.XtraEditors.PanelControl
     Friend WithEvents txtScaleSize As DevExpress.XtraEditors.SpinEdit
 End Class

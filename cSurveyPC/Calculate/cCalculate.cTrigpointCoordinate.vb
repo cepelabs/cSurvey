@@ -15,10 +15,10 @@ Namespace cSurvey.Calculate
             dAltitude = Altitude
         End Sub
 
-        Public ReadOnly Property IsEmpty(Optional ByVal CheckAltitude As Boolean = False)
+        Public ReadOnly Property IsEmpty(Optional ByVal CheckAltitude As Boolean = False) As Boolean
             Get
                 'in realta...non andrebbe bene ma cambia poco
-                Return dlatitude = 0 AndAlso dLongitude = 0 AndAlso (CheckAltitude AndAlso dAltitude = 0)
+                Return dLatitude = 0 AndAlso dLongitude = 0 AndAlso (Not CheckAltitude OrElse (CheckAltitude AndAlso dAltitude = 0))
             End Get
         End Property
 

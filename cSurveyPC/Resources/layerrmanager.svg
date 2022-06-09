@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
    sodipodi:docname="layerrmanager.svg"
    id="svg4"
    xml:space="preserve"
@@ -15,18 +8,25 @@
    viewBox="0 0 76.01 76.01"
    height="76.0106"
    width="76.0106"
-   version="1.1"><metadata
+   version="1.1"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"><metadata
    id="metadata10"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
    id="defs8" /><sodipodi:namedview
    inkscape:document-rotation="0"
    inkscape:current-layer="svg4"
    inkscape:window-maximized="1"
    inkscape:window-y="-8"
    inkscape:window-x="-8"
-   inkscape:cy="41.52769"
-   inkscape:cx="32.680143"
+   inkscape:cy="41.582268"
+   inkscape:cx="20.120452"
    inkscape:zoom="5.5913256"
    showgrid="false"
    id="namedview6"
@@ -39,22 +39,32 @@
    objecttolerance="10"
    borderopacity="1"
    bordercolor="#666666"
-   pagecolor="#ffffff" />
+   pagecolor="#ffffff"
+   inkscape:pagecheckerboard="0" />
 	<path
    id="path861"
    d="M 72.21002,55.1076 38.00534,72.21012 3.80048,55.1076 15.20222,49.40682 38.00534,60.80838 60.80846,49.40682 Z"
-   style="fill:#039c23;fill-opacity:1" /><path
+   class="Green"
+   style="fill:#129c49;fill-opacity:1" /><path
    id="path859"
    d="M 38.00534,3.80058 72.21002,20.90292 38.00534,38.00526 3.80048,20.90292 Z"
-   style="fill:#1177d7;fill-opacity:1" /><path
+   class="Blue"
+   style="fill:#387cb7;fill-opacity:1" /><path
    id="path2"
    d="M 72.21002,38.00526 38.00534,55.1076 3.80066,38.00526 15.20222,32.30448 38.00534,43.70604 60.80846,32.30448 Z"
-   style="fill:#d11c1c;fill-opacity:1" />
+   class="Red"
+   style="fill:#d02127;fill-opacity:1" />
 <style
    type="text/css"
-   id="style830">
-	.Blue{fill:#1177D7;}
-	.Red{fill:#D11C1C;}
-	.Green{fill:#039C23;}
-	.Yellow{fill:#FFB115;}
+   id="style825">
+	.Black{fill:#737374;}
+	.Yellow{fill:#FCB01B;}
+	.Green{fill:#129C49;}
+	.Blue{fill:#387CB7;}
+	.Red{fill:#D02127;}
+	.White{fill:#FFFFFF;}
+	.st0{opacity:0.5;}
+	.st1{opacity:0.75;}
+	.st2{opacity:0.25;}
+	.st3{display:none;fill:#737374;}
 </style></svg>

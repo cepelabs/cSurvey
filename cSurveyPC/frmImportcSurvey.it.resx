@@ -120,14 +120,8 @@
   <data name="txtFilename.ToolTip" xml:space="preserve">
     <value>Nome del file VisualTopo da importare</value>
   </data>
-  <data name="cmdOk.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="cmdCancel.Text" xml:space="preserve">
     <value>Annulla</value>
-  </data>
-  <data name="cmdCancel.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="colText.Text" xml:space="preserve">
     <value>Testo</value>
@@ -190,99 +184,36 @@
         AYcL
 </value>
   </data>
-  <data name="lvCheck.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="GroupBox1.Text" xml:space="preserve">
     <value>Analisi rilievo:</value>
   </data>
-  <data name="GroupBox1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="chkcSurveyImportScaleRules.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 17</value>
-  </data>
   <data name="chkcSurveyImportScaleRules.Text" xml:space="preserve">
     <value>Importa impostazioni per scala</value>
-  </data>
-  <data name="chkcSurveyImportScaleRules.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="chkcSurveyImportDesignProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 17</value>
   </data>
   <data name="chkcSurveyImportDesignProperties.Text" xml:space="preserve">
     <value>Importa impostazioni grafiche</value>
   </data>
-  <data name="chkcSurveyImportDesignProperties.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="chkcSurveyImportSurface.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 17</value>
-  </data>
   <data name="chkcSurveyImportSurface.Text" xml:space="preserve">
     <value>Importa dati superficie</value>
-  </data>
-  <data name="chkcSurveyImportSurface.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="chkcSurveyImportProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 17</value>
   </data>
   <data name="chkcSurveyImportProfile.Text" xml:space="preserve">
     <value>Importa sezione</value>
   </data>
-  <data name="chkcSurveyImportProfile.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="chkcSurveyImportPlan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 17</value>
-  </data>
   <data name="chkcSurveyImportPlan.Text" xml:space="preserve">
     <value>Importa pianta</value>
-  </data>
-  <data name="chkcSurveyImportPlan.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="lblFilename.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="chkcSurveyImportData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 17</value>
   </data>
   <data name="chkcSurveyImportData.Text" xml:space="preserve">
     <value>Importa dati</value>
   </data>
-  <data name="chkcSurveyImportData.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="chkcSurveyImportGraphics.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 17</value>
-  </data>
   <data name="chkcSurveyImportGraphics.Text" xml:space="preserve">
     <value>Importa grafica</value>
-  </data>
-  <data name="chkcSurveyImportGraphics.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="chkcSurveyImportCaveBranchFromDesign.Size" type="System.Drawing.Size, System.Drawing">
-    <value>249, 17</value>
   </data>
   <data name="chkcSurveyImportCaveBranchFromDesign.Text" xml:space="preserve">
     <value>Importa grotte/rami associati ad oggetti grafici</value>
   </data>
-  <data name="chkcSurveyImportCaveBranchFromDesign.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="chkcSurveyImportDuplicates.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 17</value>
-  </data>
   <data name="chkcSurveyImportDuplicates.Text" xml:space="preserve">
     <value>Importa battute già esistenti</value>
-  </data>
-  <data name="chkcSurveyImportDuplicates.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="cbocSurveyImportDuplicatesMode.Items" xml:space="preserve">
     <value>per ID battuta uguale</value>
@@ -290,95 +221,32 @@
   <data name="cbocSurveyImportDuplicatesMode.Items1" xml:space="preserve">
     <value>per dati uguali</value>
   </data>
-  <data name="cbocSurveyImportDuplicatesMode.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="lblcSurveyImportDuplicatesMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 13</value>
-  </data>
   <data name="lblcSurveyImportDuplicatesMode.Text" xml:space="preserve">
     <value>Ricerca battute esistenti:</value>
-  </data>
-  <data name="lblcSurveyImportDuplicatesMode.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="chkcSurveyImportDuplicatesOverwrite.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 17</value>
   </data>
   <data name="chkcSurveyImportDuplicatesOverwrite.Text" xml:space="preserve">
     <value>Sovrascrivi duplicati</value>
   </data>
-  <data name="chkcSurveyImportDuplicatesOverwrite.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="chkcSurveyImportDuplicatesStations.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 17</value>
-  </data>
   <data name="chkcSurveyImportDuplicatesStations.Text" xml:space="preserve">
     <value>Importa e sovrascrivi stazioni già esistenti</value>
-  </data>
-  <data name="chkcSurveyImportDuplicatesStations.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="chkImportAsBranchOf.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 17</value>
   </data>
   <data name="chkImportAsBranchOf.Text" xml:space="preserve">
     <value>Importa come ramo di:</value>
   </data>
-  <data name="chkImportAsBranchOf.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="cboImportAsBranchOfCave.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="cboImportAsBranchOfBranch.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="chkcSurveyImportUpdateCaveBranchPriority.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 17</value>
-  </data>
   <data name="chkcSurveyImportUpdateCaveBranchPriority.Text" xml:space="preserve">
     <value>Aggiorna priorità di grotta/ramo</value>
-  </data>
-  <data name="chkcSurveyImportUpdateCaveBranchPriority.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="chkcSurveyImportCreateNewBranch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 17</value>
   </data>
   <data name="chkcSurveyImportCreateNewBranch.Text" xml:space="preserve">
     <value>Importa tutto come nuova grotta/ramo</value>
   </data>
-  <data name="chkcSurveyImportCreateNewBranch.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="chkcSurveyImportDuplicatesOverwriteOnlyUsed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>257, 17</value>
-  </data>
   <data name="chkcSurveyImportDuplicatesOverwriteOnlyUsed.Text" xml:space="preserve">
     <value>Sovrascrivi solo battute collegate ad ogg. grafici</value>
-  </data>
-  <data name="chkcSurveyImportDuplicatesOverwriteOnlyUsed.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="chkcSurveyDisableOriginAsExtendstart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 17</value>
   </data>
   <data name="chkcSurveyDisableOriginAsExtendstart.Text" xml:space="preserve">
     <value>Non impostare origine come sub-origine</value>
   </data>
-  <data name="chkcSurveyDisableOriginAsExtendstart.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="lblcSurveyImportWarpingMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 13</value>
-  </data>
   <data name="lblcSurveyImportWarpingMode.Text" xml:space="preserve">
     <value>Modalità di warping:</value>
-  </data>
-  <data name="lblcSurveyImportWarpingMode.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="cbocSurveyImportWarpingMode.Items" xml:space="preserve">
     <value>Automatica</value>
@@ -388,18 +256,6 @@
   </data>
   <data name="cbocSurveyImportWarpingMode.Items2" xml:space="preserve">
     <value>Traslazione semplice</value>
-  </data>
-  <data name="cbocSurveyImportWarpingMode.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="chkcsurveyimportlinkedsurvey.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pnlcSurveyImportData.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pnlcSurveyImportGraphics.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -468,8 +324,5 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Importazione da cSurvey:</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>

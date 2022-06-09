@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -127,7 +127,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cmdApply.Location" type="System.Drawing.Point, System.Drawing">
-    <value>493, 500</value>
+    <value>652, 9</value>
   </data>
   <data name="cmdApply.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
@@ -142,19 +142,19 @@
     <value>cmdApply</value>
   </data>
   <data name="&gt;&gt;cmdApply.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdApply.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>PanelControl1</value>
   </data>
   <data name="&gt;&gt;cmdApply.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="cmdCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="cmdCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>578, 500</value>
+    <value>737, 9</value>
   </data>
   <data name="cmdCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
@@ -169,19 +169,19 @@
     <value>cmdCancel</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>PanelControl1</value>
   </data>
   <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>0</value>
   </data>
   <data name="cmdOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="cmdOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>407, 500</value>
+    <value>566, 9</value>
   </data>
   <data name="cmdOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
@@ -196,332 +196,22 @@
     <value>cmdOk</value>
   </data>
   <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>PanelControl1</value>
   </data>
   <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="lv.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <metadata name="iml.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>124, 17</value>
-  </metadata>
-  <data name="iml.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAk
-        CwAAAk1TRnQBSQFMAwEBAAEQAQEBEAEBASABAAEgAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMA
-        AYADAAEgAwABAQEAAQgGAAEQGAABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHAAdwBwAEA
-        AfABygGmAQABMwUAATMBAAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANCAQADOQEA
-        AYABfAH/AQACUAH/AQABkwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/ATMDAAFm
-        AwABmQMAAcwCAAEzAwACMwIAATMBZgIAATMBmQIAATMBzAIAATMB/wIAAWYDAAFmATMCAAJmAgABZgGZ
-        AgABZgHMAgABZgH/AgABmQMAAZkBMwIAAZkBZgIAApkCAAGZAcwCAAGZAf8CAAHMAwABzAEzAgABzAFm
-        AgABzAGZAgACzAIAAcwB/wIAAf8BZgIAAf8BmQIAAf8BzAEAATMB/wIAAf8BAAEzAQABMwEAAWYBAAEz
-        AQABmQEAATMBAAHMAQABMwEAAf8BAAH/ATMCAAMzAQACMwFmAQACMwGZAQACMwHMAQACMwH/AQABMwFm
-        AgABMwFmATMBAAEzAmYBAAEzAWYBmQEAATMBZgHMAQABMwFmAf8BAAEzAZkCAAEzAZkBMwEAATMBmQFm
-        AQABMwKZAQABMwGZAcwBAAEzAZkB/wEAATMBzAIAATMBzAEzAQABMwHMAWYBAAEzAcwBmQEAATMCzAEA
-        ATMBzAH/AQABMwH/ATMBAAEzAf8BZgEAATMB/wGZAQABMwH/AcwBAAEzAv8BAAFmAwABZgEAATMBAAFm
-        AQABZgEAAWYBAAGZAQABZgEAAcwBAAFmAQAB/wEAAWYBMwIAAWYCMwEAAWYBMwFmAQABZgEzAZkBAAFm
-        ATMBzAEAAWYBMwH/AQACZgIAAmYBMwEAA2YBAAJmAZkBAAJmAcwBAAFmAZkCAAFmAZkBMwEAAWYBmQFm
-        AQABZgKZAQABZgGZAcwBAAFmAZkB/wEAAWYBzAIAAWYBzAEzAQABZgHMAZkBAAFmAswBAAFmAcwB/wEA
-        AWYB/wIAAWYB/wEzAQABZgH/AZkBAAFmAf8BzAEAAcwBAAH/AQAB/wEAAcwBAAKZAgABmQEzAZkBAAGZ
-        AQABmQEAAZkBAAHMAQABmQMAAZkCMwEAAZkBAAFmAQABmQEzAcwBAAGZAQAB/wEAAZkBZgIAAZkBZgEz
-        AQABmQEzAWYBAAGZAWYBmQEAAZkBZgHMAQABmQEzAf8BAAKZATMBAAKZAWYBAAOZAQACmQHMAQACmQH/
-        AQABmQHMAgABmQHMATMBAAFmAcwBZgEAAZkBzAGZAQABmQLMAQABmQHMAf8BAAGZAf8CAAGZAf8BMwEA
-        AZkBzAFmAQABmQH/AZkBAAGZAf8BzAEAAZkC/wEAAcwDAAGZAQABMwEAAcwBAAFmAQABzAEAAZkBAAHM
-        AQABzAEAAZkBMwIAAcwCMwEAAcwBMwFmAQABzAEzAZkBAAHMATMBzAEAAcwBMwH/AQABzAFmAgABzAFm
-        ATMBAAGZAmYBAAHMAWYBmQEAAcwBZgHMAQABmQFmAf8BAAHMAZkCAAHMAZkBMwEAAcwBmQFmAQABzAKZ
-        AQABzAGZAcwBAAHMAZkB/wEAAswCAALMATMBAALMAWYBAALMAZkBAAPMAQACzAH/AQABzAH/AgABzAH/
-        ATMBAAGZAf8BZgEAAcwB/wGZAQABzAH/AcwBAAHMAv8BAAHMAQABMwEAAf8BAAFmAQAB/wEAAZkBAAHM
-        ATMCAAH/AjMBAAH/ATMBZgEAAf8BMwGZAQAB/wEzAcwBAAH/ATMB/wEAAf8BZgIAAf8BZgEzAQABzAJm
-        AQAB/wFmAZkBAAH/AWYBzAEAAcwBZgH/AQAB/wGZAgAB/wGZATMBAAH/AZkBZgEAAf8CmQEAAf8BmQHM
-        AQAB/wGZAf8BAAH/AcwCAAH/AcwBMwEAAf8BzAFmAQAB/wHMAZkBAAH/AswBAAH/AcwB/wEAAv8BMwEA
-        AcwB/wFmAQAC/wGZAQAC/wHMAQACZgH/AQABZgH/AWYBAAFmAv8BAAH/AmYBAAH/AWYB/wEAAv8BZgEA
-        ASEBAAGlAQADXwEAA3cBAAOGAQADlgEAA8sBAAOyAQAD1wEAA90BAAPjAQAD6gEAA/EBAAP4AQAB8AH7
-        Af8BAAGkAqABAAOAAwAB/wIAAf8DAAL/AQAB/wMAAf8BAAH/AQAC/wIAA/8EAAz/dAAC/wHzBvIB8wH0
-        Av9xAAL/AfQBmQI2AjABLwIDAVABHAHzAfQL/2YAAf8B8wLyAZgCNgIwAi8BAwFSAXQK8gHzAf9mAAH/
-        AbMDrAFxAjYCMAFSAVMBUgFTArIIrAGzAf9mAAH/AawE/wF5ATYBWAF6AXUBUgFTAewB6wH0CP8BrAH/
-        ZgAB/wGsAf8ECQEaA3oBUwH3Ae0B7AFtARkGCQH/AawB/2YAAf8BrAH/BQkBvAGZAXoB7wH/AbwB9wHs
-        AW0BGQUJAf8BrAH/ZgAB/wGsAf8ICQH3AbwB/wG8AfcB7AFtARkECQH/AawB/2YAAf8BrAH/CQkBkgG8
-        Af8BvAHtAesBdAEZAwkB/wGsAf9mAAH/AawB/woJAZIBvAH/AfcCMgEcAwkB/wGsAf9mAAH/AawM/wGS
-        Ae8BUgFZAjIBdAP/AawB/2YAAf8BrAH/C/QB/wF0AXoB9gF6AjIBvAL/AawB/2YAAf8BrAH/DPQB/wF0
-        AXoB9gF6ATIBTAG8Af8BrAH/ZgAB/wGsAf8O9AJ0AcMBegEyAVIBGgGyAf9mAAH/AawB/w3zAvQBmQF0
-        AcMBegEyAVIBswH0Av9kAAH/AawB/w7zAhkBmQF0AcMBegEyAVIB8gH0Af9kAAH/AawB/xDzARkBvAF0
-        AcMBegEyAVIB8QL/YwAB/wGsAf8SGQHwAXQBwwF6ATIBdAHzAv9iAAH/AawB/xMZAbwBdAHDAXoBUwF0
-        AfMB/2IAAf8BrAH/FBkB9gEcAcMBegFTAVIB/2IAAf8BrAH/FBkB/wGsAZkB9gF1AZkB/2IAAf8BrAH/
-        FBkB/wGsAf8BdAGZAf9jAAH/AawB/w0ZAfMH/wGsAf9mAAH/AawB/w0ZAf8BtAWKAf8BrAH/ZgAB/wGs
-        Af8BCQsZAQkB/wGKAv8B9AHzAf8BCQGzAf9mAAH/AawB/w0JAf8BigH/AfMBGQH/AQkBswH/ZwAB/wGs
-        Af8NCQH/AYoB9AEZAf8BCQGzAf9oAAH/AawB/w0JAf8BigHzAf8BCQGzAf9pAAH/AawB/w0JAf8BigH/
-        AQkBuwH/agAB/wGsEP8BCQG7Af9rAAH/AbsQrAG7Af9rAAFCAU0BPgcAAT4DAAEoAwABgAMAASADAAEB
-        AQABAQYAAQIWAAP/AQAB4AEBAv8MAAHgAQAC/wwAAYACAAEfDAABgAIAAR8MAAGAAgABHwwAAYACAAEf
-        DAABgAIAAR8MAAGAAgABHwwAAYACAAEfDAABgAIAAR8MAAGAAgABHwwAAYACAAEfDAABgAIAAR8MAAGA
-        AgABHwwAAYACAAEfDAABgAIAAQcMAAGAAgABBwwAAYACAAEDDAABgAIAAQEMAAGAAgABAQwAAYACAAEB
-        DAABgAIAAQEMAAGAAgABAwwAAYACAAEfDAABgAIAAR8MAAGAAgABHwwAAYACAAE/DAABgAIAAX8MAAGA
-        AgAB/wwAAYABAAEBAf8MAAGAAQABAwH/DAABgAEAAQcB/wwACw==
-</value>
-  </data>
-  <data name="lv.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 28</value>
-  </data>
-  <data name="lv.Size" type="System.Drawing.Size, System.Drawing">
-    <value>642, 70</value>
-  </data>
-  <data name="lv.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;lv.Name" xml:space="preserve">
-    <value>lv</value>
-  </data>
-  <data name="&gt;&gt;lv.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lv.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lv.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="lblScaleWarning.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="lblScaleWarning.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 43</value>
-  </data>
-  <data name="lblScaleWarning.Size" type="System.Drawing.Size, System.Drawing">
-    <value>562, 70</value>
-  </data>
-  <data name="lblScaleWarning.TabIndex" type="System.Int32, mscorlib">
-    <value>109</value>
-  </data>
-  <data name="lblScaleWarning.Text" xml:space="preserve">
-    <value>Attention: the scale factor define the factor above this settings will applied (until the next factor).
-For scale under the minimum defined factor will be used the default design and centerline properties.
-</value>
-  </data>
-  <data name="&gt;&gt;lblScaleWarning.Name" xml:space="preserve">
-    <value>lblScaleWarning</value>
-  </data>
-  <data name="&gt;&gt;lblScaleWarning.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblScaleWarning.Parent" xml:space="preserve">
-    <value>tabInfoMain</value>
-  </data>
-  <data name="&gt;&gt;lblScaleWarning.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="picScaleWarning.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGeSURBVDhPpZO9S0JhGMXfuf+iqT0z/Eh0kCAskMwK
-        rC2IwGgMokzUnBsCm1rqL2gKiiKk/LiaS+ZQRF+GRkPRFsTpOa9KqHcIFH543nPOc+9zL1wFoCdUYctp
-        Sj5u7y8mLCDUZh1iahpxu8pELKXPdAKEmp5Zt8swEg6Vj1qXK7sB4ONcQ02PWWe/y8jHbH1G3AFUD3Gf
-        3dNQ02PW2W87cM2srPt2mgTeDxCYD2uo6THrfJS/g6yXi1pny6kZ4OsSyDswFQprqOkxY4fdrgvIeioX
-        G8FPTZ674AcuBjAeXNJQ02PGDrttF2iufvx6tg1UVoD0IGAMwe1b0FBrTzJ22G09SnP1Ye91KgTU5IVl
-        bEDWBZRcqJ/4NNTaYyYddjnDWWXE7LK6G98P+1L0AFde+R8Fbrzwz61qqLWnM4/ucoazcnfbzsvRGnA7
-        CZTlbuUJGRDufHCPLWqotceMHelyhrOqmHQCz8EGj9MNnoSqUBePUNNr5c0+Z+XtO5DdtCOzYUNmnYgm
-        cs5FGjSyps+OnDnDWSU/S0+YfaL/B+oXAtBPxz2hBW8AAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="picScaleWarning.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 46</value>
-  </data>
-  <data name="picScaleWarning.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 16</value>
-  </data>
-  <data name="picScaleWarning.TabIndex" type="System.Int32, mscorlib">
-    <value>108</value>
-  </data>
-  <data name="&gt;&gt;picScaleWarning.Name" xml:space="preserve">
-    <value>picScaleWarning</value>
-  </data>
-  <data name="&gt;&gt;picScaleWarning.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;picScaleWarning.Parent" xml:space="preserve">
-    <value>tabInfoMain</value>
-  </data>
-  <data name="&gt;&gt;picScaleWarning.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="txtScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>53, 10</value>
-  </data>
-  <data name="txtScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 21</value>
-  </data>
-  <data name="txtScale.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="txtScale.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="txtScale.ThousandsSeparator" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;txtScale.Name" xml:space="preserve">
-    <value>txtScale</value>
-  </data>
-  <data name="&gt;&gt;txtScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtScale.Parent" xml:space="preserve">
-    <value>tabInfoMain</value>
-  </data>
-  <data name="&gt;&gt;txtScale.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="lblScale.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 12</value>
-  </data>
-  <data name="lblScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 13</value>
-  </data>
-  <data name="lblScale.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblScale.Text" xml:space="preserve">
-    <value>Scale:</value>
-  </data>
-  <data name="&gt;&gt;lblScale.Name" xml:space="preserve">
-    <value>lblScale</value>
-  </data>
-  <data name="&gt;&gt;lblScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblScale.Parent" xml:space="preserve">
-    <value>tabInfoMain</value>
-  </data>
-  <data name="&gt;&gt;lblScale.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="tabInfoMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabInfoMain.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabInfoMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>638, 364</value>
-  </data>
-  <data name="tabInfoMain.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabInfoMain.Text" xml:space="preserve">
-    <value>Main</value>
-  </data>
-  <data name="&gt;&gt;tabInfoMain.Name" xml:space="preserve">
-    <value>tabInfoMain</value>
-  </data>
-  <data name="&gt;&gt;tabInfoMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabInfoMain.Parent" xml:space="preserve">
-    <value>tabInfo</value>
-  </data>
-  <data name="&gt;&gt;tabInfoMain.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="colCategoryIndex.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colCategoryIndex.HeaderText" xml:space="preserve">
-    <value>Index</value>
-  </data>
-  <data name="colCategoryIndex.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <metadata name="colCategoryName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colCategoryName.HeaderText" xml:space="preserve">
-    <value>Category</value>
-  </data>
-  <data name="colCategoryName.Width" type="System.Int32, mscorlib">
-    <value>200</value>
-  </data>
-  <metadata name="colCategoryVisibility.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colCategoryVisibility.HeaderText" xml:space="preserve">
-    <value>Visible</value>
-  </data>
-  <data name="colCategoryVisibility.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <data name="grdCategoriesVisibility.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="grdCategoriesVisibility.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="grdCategoriesVisibility.Size" type="System.Drawing.Size, System.Drawing">
-    <value>638, 364</value>
-  </data>
-  <data name="grdCategoriesVisibility.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;grdCategoriesVisibility.Name" xml:space="preserve">
-    <value>grdCategoriesVisibility</value>
-  </data>
-  <data name="&gt;&gt;grdCategoriesVisibility.Type" xml:space="preserve">
-    <value>cSurveyPC.cGrid, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;grdCategoriesVisibility.Parent" xml:space="preserve">
-    <value>tanInfoCategories</value>
-  </data>
-  <data name="&gt;&gt;grdCategoriesVisibility.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tanInfoCategories.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tanInfoCategories.Size" type="System.Drawing.Size, System.Drawing">
-    <value>638, 364</value>
-  </data>
-  <data name="tanInfoCategories.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="tanInfoCategories.Text" xml:space="preserve">
-    <value>Categories</value>
-  </data>
-  <data name="&gt;&gt;tanInfoCategories.Name" xml:space="preserve">
-    <value>tanInfoCategories</value>
-  </data>
-  <data name="&gt;&gt;tanInfoCategories.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tanInfoCategories.Parent" xml:space="preserve">
-    <value>tabInfo</value>
-  </data>
-  <data name="&gt;&gt;tanInfoCategories.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabInfODesign.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Label8.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="Label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="Label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, 49</value>
+    <value>405, 59</value>
   </data>
   <data name="Label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 13</value>
+    <value>69, 13</value>
   </data>
   <data name="Label8.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -533,7 +223,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>Label8</value>
   </data>
   <data name="&gt;&gt;Label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label8.Parent" xml:space="preserve">
     <value>GroupBox1</value>
@@ -541,17 +231,14 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;Label8.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="Label7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="Label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="Label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, 22</value>
+    <value>405, 32</value>
   </data>
   <data name="Label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
+    <value>48, 13</value>
   </data>
   <data name="Label7.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -563,7 +250,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>Label7</value>
   </data>
   <data name="&gt;&gt;Label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label7.Parent" xml:space="preserve">
     <value>GroupBox1</value>
@@ -571,17 +258,14 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;Label7.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="Label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="Label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="Label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>203, 49</value>
+    <value>203, 59</value>
   </data>
   <data name="Label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 13</value>
+    <value>64, 13</value>
   </data>
   <data name="Label4.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -593,7 +277,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>Label4</value>
   </data>
   <data name="&gt;&gt;Label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label4.Parent" xml:space="preserve">
     <value>GroupBox1</value>
@@ -602,7 +286,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>2</value>
   </data>
   <data name="txtBaseMediumLinesScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>323, 47</value>
+    <value>323, 57</value>
   </data>
   <data name="txtBaseMediumLinesScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -623,7 +307,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>3</value>
   </data>
   <data name="txtBaseUltraLightLinesScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>522, 47</value>
+    <value>522, 57</value>
   </data>
   <data name="txtBaseUltraLightLinesScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -644,7 +328,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>4</value>
   </data>
   <data name="txtBaseLightLinesScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>522, 20</value>
+    <value>522, 30</value>
   </data>
   <data name="txtBaseLightLinesScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -665,7 +349,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>5</value>
   </data>
   <data name="txtBaseHeavyLinesScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>323, 20</value>
+    <value>323, 30</value>
   </data>
   <data name="txtBaseHeavyLinesScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -685,17 +369,14 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;txtBaseHeavyLinesScaleFactor.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="lblBaseLinesScaleFactor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblBaseLinesScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblBaseLinesScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>203, 24</value>
+    <value>203, 34</value>
   </data>
   <data name="lblBaseLinesScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
+    <value>48, 13</value>
   </data>
   <data name="lblBaseLinesScaleFactor.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -707,7 +388,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblBaseLinesScaleFactor</value>
   </data>
   <data name="&gt;&gt;lblBaseLinesScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblBaseLinesScaleFactor.Parent" xml:space="preserve">
     <value>GroupBox1</value>
@@ -716,7 +397,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>7</value>
   </data>
   <data name="txtBaseLineWidthScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>125, 20</value>
+    <value>125, 30</value>
   </data>
   <data name="txtBaseLineWidthScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -736,17 +417,14 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;txtBaseLineWidthScaleFactor.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="lblBaseLineWidthScaleFactor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblBaseLineWidthScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblBaseLineWidthScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 24</value>
+    <value>12, 34</value>
   </data>
   <data name="lblBaseLineWidthScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 13</value>
+    <value>55, 13</value>
   </data>
   <data name="lblBaseLineWidthScaleFactor.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -758,7 +436,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblBaseLineWidthScaleFactor</value>
   </data>
   <data name="&gt;&gt;lblBaseLineWidthScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblBaseLineWidthScaleFactor.Parent" xml:space="preserve">
     <value>GroupBox1</value>
@@ -767,10 +445,10 @@ For scale under the minimum defined factor will be used the default design and c
     <value>9</value>
   </data>
   <data name="GroupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 8</value>
+    <value>11, 12</value>
   </data>
   <data name="GroupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>588, 83</value>
+    <value>588, 96</value>
   </data>
   <data name="GroupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>140</value>
@@ -782,25 +460,22 @@ For scale under the minimum defined factor will be used the default design and c
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;GroupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;GroupBox1.Parent" xml:space="preserve">
-    <value>tabInfODesign</value>
+    <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;GroupBox1.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="lblDesignCrossSectionTextScaleFactor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="lblDesignCrossSectionTextScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblDesignCrossSectionTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 22</value>
+    <value>17, 32</value>
   </data>
   <data name="lblDesignCrossSectionTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 13</value>
+    <value>26, 13</value>
   </data>
   <data name="lblDesignCrossSectionTextScaleFactor.TabIndex" type="System.Int32, mscorlib">
     <value>138</value>
@@ -812,7 +487,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblDesignCrossSectionTextScaleFactor</value>
   </data>
   <data name="&gt;&gt;lblDesignCrossSectionTextScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignCrossSectionTextScaleFactor.Parent" xml:space="preserve">
     <value>GroupBox2</value>
@@ -821,7 +496,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>0</value>
   </data>
   <data name="txtDesignCrossSectionTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>137, 20</value>
+    <value>137, 30</value>
   </data>
   <data name="txtDesignCrossSectionTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -841,17 +516,14 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;txtDesignCrossSectionTextScaleFactor.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="lblDesignCrossSectionMarkerTextScaleFactor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblDesignCrossSectionMarkerTextScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblDesignCrossSectionMarkerTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 22</value>
+    <value>11, 32</value>
   </data>
   <data name="lblDesignCrossSectionMarkerTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 13</value>
+    <value>26, 13</value>
   </data>
   <data name="lblDesignCrossSectionMarkerTextScaleFactor.TabIndex" type="System.Int32, mscorlib">
     <value>140</value>
@@ -863,7 +535,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblDesignCrossSectionMarkerTextScaleFactor</value>
   </data>
   <data name="&gt;&gt;lblDesignCrossSectionMarkerTextScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignCrossSectionMarkerTextScaleFactor.Parent" xml:space="preserve">
     <value>GroupBox3</value>
@@ -872,7 +544,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>0</value>
   </data>
   <data name="txtDesignCrossSectionMarkerTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>131, 20</value>
+    <value>131, 30</value>
   </data>
   <data name="txtDesignCrossSectionMarkerTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -893,7 +565,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>1</value>
   </data>
   <data name="txtDesignCrossSectionMarkerArrowScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>131, 47</value>
+    <value>131, 57</value>
   </data>
   <data name="txtDesignCrossSectionMarkerArrowScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -913,17 +585,14 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;txtDesignCrossSectionMarkerArrowScaleFactor.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="lblDesignCrossSectionMarkerArrowScaleFactor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblDesignCrossSectionMarkerArrowScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblDesignCrossSectionMarkerArrowScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 49</value>
+    <value>11, 59</value>
   </data>
   <data name="lblDesignCrossSectionMarkerArrowScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 13</value>
+    <value>33, 13</value>
   </data>
   <data name="lblDesignCrossSectionMarkerArrowScaleFactor.TabIndex" type="System.Int32, mscorlib">
     <value>136</value>
@@ -935,7 +604,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblDesignCrossSectionMarkerArrowScaleFactor</value>
   </data>
   <data name="&gt;&gt;lblDesignCrossSectionMarkerArrowScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignCrossSectionMarkerArrowScaleFactor.Parent" xml:space="preserve">
     <value>GroupBox3</value>
@@ -944,10 +613,10 @@ For scale under the minimum defined factor will be used the default design and c
     <value>3</value>
   </data>
   <data name="GroupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 49</value>
+    <value>5, 57</value>
   </data>
   <data name="GroupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>244, 85</value>
+    <value>244, 92</value>
   </data>
   <data name="GroupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>141</value>
@@ -959,7 +628,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>GroupBox3</value>
   </data>
   <data name="&gt;&gt;GroupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;GroupBox3.Parent" xml:space="preserve">
     <value>GroupBox2</value>
@@ -968,10 +637,10 @@ For scale under the minimum defined factor will be used the default design and c
     <value>2</value>
   </data>
   <data name="GroupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>285, 107</value>
+    <value>323, 108</value>
   </data>
   <data name="GroupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 140</value>
+    <value>256, 154</value>
   </data>
   <data name="GroupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>140</value>
@@ -983,7 +652,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>GroupBox2</value>
   </data>
   <data name="&gt;&gt;GroupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;GroupBox2.Parent" xml:space="preserve">
     <value>frrmDesign</value>
@@ -992,7 +661,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>0</value>
   </data>
   <data name="txtDesignExtraScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>137, 20</value>
+    <value>137, 30</value>
   </data>
   <data name="txtDesignExtraScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -1012,17 +681,14 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;txtDesignExtraScaleFactor.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="lblDesignExtraTextScaleFactor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblDesignExtraTextScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblDesignExtraTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 49</value>
+    <value>17, 59</value>
   </data>
   <data name="lblDesignExtraTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 13</value>
+    <value>26, 13</value>
   </data>
   <data name="lblDesignExtraTextScaleFactor.TabIndex" type="System.Int32, mscorlib">
     <value>138</value>
@@ -1034,7 +700,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblDesignExtraTextScaleFactor</value>
   </data>
   <data name="&gt;&gt;lblDesignExtraTextScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignExtraTextScaleFactor.Parent" xml:space="preserve">
     <value>GroupBox10</value>
@@ -1042,17 +708,14 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;lblDesignExtraTextScaleFactor.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="lblDesignExtraScaleFactor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblDesignExtraScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblDesignExtraScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 22</value>
+    <value>17, 32</value>
   </data>
   <data name="lblDesignExtraScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 13</value>
+    <value>35, 13</value>
   </data>
   <data name="lblDesignExtraScaleFactor.TabIndex" type="System.Int32, mscorlib">
     <value>136</value>
@@ -1064,7 +727,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblDesignExtraScaleFactor</value>
   </data>
   <data name="&gt;&gt;lblDesignExtraScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignExtraScaleFactor.Parent" xml:space="preserve">
     <value>GroupBox10</value>
@@ -1073,7 +736,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>2</value>
   </data>
   <data name="txtDesignExtraTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>137, 47</value>
+    <value>137, 57</value>
   </data>
   <data name="txtDesignExtraTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -1094,10 +757,10 @@ For scale under the minimum defined factor will be used the default design and c
     <value>3</value>
   </data>
   <data name="GroupBox10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 107</value>
+    <value>6, 108</value>
   </data>
   <data name="GroupBox10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 79</value>
+    <value>275, 89</value>
   </data>
   <data name="GroupBox10.TabIndex" type="System.Int32, mscorlib">
     <value>139</value>
@@ -1109,7 +772,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>GroupBox10</value>
   </data>
   <data name="&gt;&gt;GroupBox10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;GroupBox10.Parent" xml:space="preserve">
     <value>frrmDesign</value>
@@ -1117,17 +780,14 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;GroupBox10.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="lblDesignTextureScale.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblDesignTextureScale.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblDesignTextureScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 53</value>
+    <value>12, 63</value>
   </data>
   <data name="lblDesignTextureScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 13</value>
+    <value>83, 13</value>
   </data>
   <data name="lblDesignTextureScale.TabIndex" type="System.Int32, mscorlib">
     <value>134</value>
@@ -1139,7 +799,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblDesignTextureScale</value>
   </data>
   <data name="&gt;&gt;lblDesignTextureScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignTextureScale.Parent" xml:space="preserve">
     <value>frrmDesign</value>
@@ -1148,7 +808,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>2</value>
   </data>
   <data name="txtDesignTextureScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>125, 51</value>
+    <value>125, 61</value>
   </data>
   <data name="txtDesignTextureScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -1169,7 +829,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>3</value>
   </data>
   <data name="txtDesignTextFont.Location" type="System.Drawing.Point, System.Drawing">
-    <value>466, 46</value>
+    <value>466, 56</value>
   </data>
   <data name="txtDesignTextFont.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 21</value>
@@ -1193,7 +853,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>NoControl</value>
   </data>
   <data name="cmdDesignTextFont.Location" type="System.Drawing.Point, System.Drawing">
-    <value>548, 47</value>
+    <value>548, 57</value>
   </data>
   <data name="cmdDesignTextFont.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 21</value>
@@ -1208,7 +868,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>cmdDesignTextFont</value>
   </data>
   <data name="&gt;&gt;cmdDesignTextFont.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdDesignTextFont.Parent" xml:space="preserve">
     <value>frrmDesign</value>
@@ -1216,20 +876,17 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;cmdDesignTextFont.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="lblDesignTextFont.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblDesignTextFont.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblDesignTextFont.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblDesignTextFont.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblDesignTextFont.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, 51</value>
+    <value>405, 61</value>
   </data>
   <data name="lblDesignTextFont.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 13</value>
+    <value>26, 13</value>
   </data>
   <data name="lblDesignTextFont.TabIndex" type="System.Int32, mscorlib">
     <value>131</value>
@@ -1241,7 +898,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblDesignTextFont</value>
   </data>
   <data name="&gt;&gt;lblDesignTextFont.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignTextFont.Parent" xml:space="preserve">
     <value>frrmDesign</value>
@@ -1249,17 +906,14 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;lblDesignTextFont.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="lblDesignSoilScale.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblDesignSoilScale.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblDesignSoilScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 22</value>
+    <value>12, 32</value>
   </data>
   <data name="lblDesignSoilScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 13</value>
+    <value>76, 13</value>
   </data>
   <data name="lblDesignSoilScale.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1271,7 +925,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblDesignSoilScale</value>
   </data>
   <data name="&gt;&gt;lblDesignSoilScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignSoilScale.Parent" xml:space="preserve">
     <value>frrmDesign</value>
@@ -1280,7 +934,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>7</value>
   </data>
   <data name="txtDesignSoilScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>125, 20</value>
+    <value>125, 30</value>
   </data>
   <data name="txtDesignSoilScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -1300,17 +954,14 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;txtDesignSoilScaleFactor.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="lblDesignClipartScaleFactor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblDesignClipartScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblDesignClipartScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>203, 75</value>
+    <value>203, 85</value>
   </data>
   <data name="lblDesignClipartScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 13</value>
+    <value>35, 13</value>
   </data>
   <data name="lblDesignClipartScaleFactor.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1322,7 +973,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblDesignClipartScaleFactor</value>
   </data>
   <data name="&gt;&gt;lblDesignClipartScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignClipartScaleFactor.Parent" xml:space="preserve">
     <value>frrmDesign</value>
@@ -1331,7 +982,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>9</value>
   </data>
   <data name="txtDesignClipartScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>323, 73</value>
+    <value>323, 83</value>
   </data>
   <data name="txtDesignClipartScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -1351,17 +1002,14 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;txtDesignClipartScaleFactor.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="lblDesignTextScaleFactor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblDesignTextScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblDesignTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, 22</value>
+    <value>405, 32</value>
   </data>
   <data name="lblDesignTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 13</value>
+    <value>26, 13</value>
   </data>
   <data name="lblDesignTextScaleFactor.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1373,7 +1021,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblDesignTextScaleFactor</value>
   </data>
   <data name="&gt;&gt;lblDesignTextScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignTextScaleFactor.Parent" xml:space="preserve">
     <value>frrmDesign</value>
@@ -1382,7 +1030,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>11</value>
   </data>
   <data name="txtDesignTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>522, 20</value>
+    <value>522, 30</value>
   </data>
   <data name="txtDesignTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -1402,17 +1050,14 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;txtDesignTextScaleFactor.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="lblDesignSignScaleFactor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblDesignSignScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblDesignSignScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>203, 49</value>
+    <value>203, 59</value>
   </data>
   <data name="lblDesignSignScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 13</value>
+    <value>29, 13</value>
   </data>
   <data name="lblDesignSignScaleFactor.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1424,7 +1069,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblDesignSignScaleFactor</value>
   </data>
   <data name="&gt;&gt;lblDesignSignScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignSignScaleFactor.Parent" xml:space="preserve">
     <value>frrmDesign</value>
@@ -1433,7 +1078,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>13</value>
   </data>
   <data name="txtDesignSignScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>323, 46</value>
+    <value>323, 56</value>
   </data>
   <data name="txtDesignSignScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -1453,17 +1098,14 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;txtDesignSignScaleFactor.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
-  <data name="lblDesignTerrainLevelScaleFactor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblDesignTerrainLevelScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblDesignTerrainLevelScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>203, 22</value>
+    <value>203, 32</value>
   </data>
   <data name="lblDesignTerrainLevelScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 13</value>
+    <value>41, 13</value>
   </data>
   <data name="lblDesignTerrainLevelScaleFactor.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1475,7 +1117,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblDesignTerrainLevelScaleFactor</value>
   </data>
   <data name="&gt;&gt;lblDesignTerrainLevelScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignTerrainLevelScaleFactor.Parent" xml:space="preserve">
     <value>frrmDesign</value>
@@ -1484,7 +1126,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>15</value>
   </data>
   <data name="txtDesignTerrainLevelScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>323, 20</value>
+    <value>323, 30</value>
   </data>
   <data name="txtDesignTerrainLevelScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -1505,10 +1147,10 @@ For scale under the minimum defined factor will be used the default design and c
     <value>16</value>
   </data>
   <data name="frrmDesign.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 97</value>
+    <value>11, 114</value>
   </data>
   <data name="frrmDesign.Size" type="System.Drawing.Size, System.Drawing">
-    <value>588, 273</value>
+    <value>588, 268</value>
   </data>
   <data name="frrmDesign.TabIndex" type="System.Int32, mscorlib">
     <value>114</value>
@@ -1520,40 +1162,16 @@ For scale under the minimum defined factor will be used the default design and c
     <value>frrmDesign</value>
   </data>
   <data name="&gt;&gt;frrmDesign.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;frrmDesign.Parent" xml:space="preserve">
-    <value>tabInfODesign</value>
+    <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;frrmDesign.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tabInfODesign.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabInfODesign.Size" type="System.Drawing.Size, System.Drawing">
-    <value>638, 364</value>
-  </data>
-  <data name="tabInfODesign.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="tabInfODesign.Text" xml:space="preserve">
-    <value>Design</value>
-  </data>
-  <data name="&gt;&gt;tabInfODesign.Name" xml:space="preserve">
-    <value>tabInfODesign</value>
-  </data>
-  <data name="&gt;&gt;tabInfODesign.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabInfODesign.Parent" xml:space="preserve">
-    <value>tabInfo</value>
-  </data>
-  <data name="&gt;&gt;tabInfODesign.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="txtPlotNoteTextFont.Location" type="System.Drawing.Point, System.Drawing">
-    <value>71, 49</value>
+    <value>71, 59</value>
   </data>
   <data name="txtPlotNoteTextFont.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 21</value>
@@ -1577,7 +1195,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>NoControl</value>
   </data>
   <data name="cmdPlotNoteTextFont.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 50</value>
+    <value>152, 60</value>
   </data>
   <data name="cmdPlotNoteTextFont.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 21</value>
@@ -1592,7 +1210,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>cmdPlotNoteTextFont</value>
   </data>
   <data name="&gt;&gt;cmdPlotNoteTextFont.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPlotNoteTextFont.Parent" xml:space="preserve">
     <value>GroupBox7</value>
@@ -1600,20 +1218,17 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;cmdPlotNoteTextFont.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="lblPlotNoteTextFont.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblPlotNoteTextFont.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblPlotNoteTextFont.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblPlotNoteTextFont.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlotNoteTextFont.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 54</value>
+    <value>7, 64</value>
   </data>
   <data name="lblPlotNoteTextFont.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 13</value>
+    <value>26, 13</value>
   </data>
   <data name="lblPlotNoteTextFont.TabIndex" type="System.Int32, mscorlib">
     <value>128</value>
@@ -1625,7 +1240,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblPlotNoteTextFont</value>
   </data>
   <data name="&gt;&gt;lblPlotNoteTextFont.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotNoteTextFont.Parent" xml:space="preserve">
     <value>GroupBox7</value>
@@ -1637,7 +1252,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>NoControl</value>
   </data>
   <data name="cmdPlotNoteTextColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 76</value>
+    <value>152, 86</value>
   </data>
   <data name="cmdPlotNoteTextColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 21</value>
@@ -1652,7 +1267,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>cmdPlotNoteTextColor</value>
   </data>
   <data name="&gt;&gt;cmdPlotNoteTextColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPlotNoteTextColor.Parent" xml:space="preserve">
     <value>GroupBox7</value>
@@ -1660,17 +1275,17 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;cmdPlotNoteTextColor.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="lblPlotNoteTextColor.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblPlotNoteTextColor.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblPlotNoteTextColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlotNoteTextColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 80</value>
+    <value>7, 90</value>
   </data>
   <data name="lblPlotNoteTextColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 17</value>
+    <value>29, 13</value>
   </data>
   <data name="lblPlotNoteTextColor.TabIndex" type="System.Int32, mscorlib">
     <value>125</value>
@@ -1682,7 +1297,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblPlotNoteTextColor</value>
   </data>
   <data name="&gt;&gt;lblPlotNoteTextColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotNoteTextColor.Parent" xml:space="preserve">
     <value>GroupBox7</value>
@@ -1694,7 +1309,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>NoControl</value>
   </data>
   <data name="picPlotNoteTextColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 76</value>
+    <value>114, 86</value>
   </data>
   <data name="picPlotNoteTextColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 21</value>
@@ -1715,7 +1330,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>5</value>
   </data>
   <data name="txtPlotNoteTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 20</value>
+    <value>126, 30</value>
   </data>
   <data name="txtPlotNoteTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -1735,29 +1350,26 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;txtPlotNoteTextScaleFactor.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="lblPlotNoteTextScaleFactor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblPlotNoteTextScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlotNoteTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 24</value>
+    <value>6, 34</value>
   </data>
   <data name="lblPlotNoteTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 13</value>
+    <value>61, 13</value>
   </data>
   <data name="lblPlotNoteTextScaleFactor.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
   <data name="lblPlotNoteTextScaleFactor.Text" xml:space="preserve">
-    <value>Text (scale):</value>
+    <value>Text:</value>
   </data>
   <data name="&gt;&gt;lblPlotNoteTextScaleFactor.Name" xml:space="preserve">
     <value>lblPlotNoteTextScaleFactor</value>
   </data>
   <data name="&gt;&gt;lblPlotNoteTextScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotNoteTextScaleFactor.Parent" xml:space="preserve">
     <value>GroupBox7</value>
@@ -1766,10 +1378,10 @@ For scale under the minimum defined factor will be used the default design and c
     <value>7</value>
   </data>
   <data name="GroupBox7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, 8</value>
+    <value>407, 12</value>
   </data>
   <data name="GroupBox7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 111</value>
+    <value>192, 130</value>
   </data>
   <data name="GroupBox7.TabIndex" type="System.Int32, mscorlib">
     <value>136</value>
@@ -1781,7 +1393,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>GroupBox7</value>
   </data>
   <data name="&gt;&gt;GroupBox7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;GroupBox7.Parent" xml:space="preserve">
     <value>tabInfoPlot</value>
@@ -1789,29 +1401,26 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;GroupBox7.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="lblPlotSplaySelectedPenWidth.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblPlotSplaySelectedPenWidth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlotSplaySelectedPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 51</value>
+    <value>6, 61</value>
   </data>
   <data name="lblPlotSplaySelectedPenWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 13</value>
+    <value>51, 13</value>
   </data>
   <data name="lblPlotSplaySelectedPenWidth.TabIndex" type="System.Int32, mscorlib">
     <value>130</value>
   </data>
   <data name="lblPlotSplaySelectedPenWidth.Text" xml:space="preserve">
-    <value>Thickness (sel.):</value>
+    <value>Size (sel.):</value>
   </data>
   <data name="&gt;&gt;lblPlotSplaySelectedPenWidth.Name" xml:space="preserve">
     <value>lblPlotSplaySelectedPenWidth</value>
   </data>
   <data name="&gt;&gt;lblPlotSplaySelectedPenWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotSplaySelectedPenWidth.Parent" xml:space="preserve">
     <value>GroupBox6</value>
@@ -1820,7 +1429,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>0</value>
   </data>
   <data name="txtPlotSplaySelectedPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 49</value>
+    <value>126, 59</value>
   </data>
   <data name="txtPlotSplaySelectedPenWidth.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -1841,7 +1450,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>1</value>
   </data>
   <data name="txtPlotSplayPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 20</value>
+    <value>126, 30</value>
   </data>
   <data name="txtPlotSplayPenWidth.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -1861,29 +1470,26 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;txtPlotSplayPenWidth.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="lblPlotSplayPenWidth.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblPlotSplayPenWidth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlotSplayPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 24</value>
+    <value>6, 34</value>
   </data>
   <data name="lblPlotSplayPenWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 13</value>
+    <value>23, 13</value>
   </data>
   <data name="lblPlotSplayPenWidth.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="lblPlotSplayPenWidth.Text" xml:space="preserve">
-    <value>Thickness:</value>
+    <value>Size:</value>
   </data>
   <data name="&gt;&gt;lblPlotSplayPenWidth.Name" xml:space="preserve">
     <value>lblPlotSplayPenWidth</value>
   </data>
   <data name="&gt;&gt;lblPlotSplayPenWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotSplayPenWidth.Parent" xml:space="preserve">
     <value>GroupBox6</value>
@@ -1907,7 +1513,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>Line with 2 dots</value>
   </data>
   <data name="cboPlotSplayPenStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>94, 76</value>
+    <value>94, 86</value>
   </data>
   <data name="cboPlotSplayPenStyle.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 21</value>
@@ -1927,17 +1533,14 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;cboPlotSplayPenStyle.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="lblPlotSplayPenStyle.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblPlotSplayPenStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlotSplayPenStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 79</value>
+    <value>6, 89</value>
   </data>
   <data name="lblPlotSplayPenStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
+    <value>28, 13</value>
   </data>
   <data name="lblPlotSplayPenStyle.TabIndex" type="System.Int32, mscorlib">
     <value>122</value>
@@ -1945,14 +1548,11 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="lblPlotSplayPenStyle.Text" xml:space="preserve">
     <value>Style:</value>
   </data>
-  <data name="lblPlotSplayPenStyle.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
   <data name="&gt;&gt;lblPlotSplayPenStyle.Name" xml:space="preserve">
     <value>lblPlotSplayPenStyle</value>
   </data>
   <data name="&gt;&gt;lblPlotSplayPenStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotSplayPenStyle.Parent" xml:space="preserve">
     <value>GroupBox6</value>
@@ -1961,10 +1561,10 @@ For scale under the minimum defined factor will be used the default design and c
     <value>5</value>
   </data>
   <data name="GroupBox6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, 241</value>
+    <value>407, 271</value>
   </data>
   <data name="GroupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 110</value>
+    <value>192, 119</value>
   </data>
   <data name="GroupBox6.TabIndex" type="System.Int32, mscorlib">
     <value>137</value>
@@ -1976,7 +1576,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>GroupBox6</value>
   </data>
   <data name="&gt;&gt;GroupBox6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;GroupBox6.Parent" xml:space="preserve">
     <value>tabInfoPlot</value>
@@ -1984,29 +1584,26 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;GroupBox6.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="lblPlotLRUDSelectedPenWidth.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblPlotLRUDSelectedPenWidth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlotLRUDSelectedPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 51</value>
+    <value>6, 61</value>
   </data>
   <data name="lblPlotLRUDSelectedPenWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 13</value>
+    <value>51, 13</value>
   </data>
   <data name="lblPlotLRUDSelectedPenWidth.TabIndex" type="System.Int32, mscorlib">
     <value>130</value>
   </data>
   <data name="lblPlotLRUDSelectedPenWidth.Text" xml:space="preserve">
-    <value>Thickness (sel.):</value>
+    <value>Size (sel.):</value>
   </data>
   <data name="&gt;&gt;lblPlotLRUDSelectedPenWidth.Name" xml:space="preserve">
     <value>lblPlotLRUDSelectedPenWidth</value>
   </data>
   <data name="&gt;&gt;lblPlotLRUDSelectedPenWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotLRUDSelectedPenWidth.Parent" xml:space="preserve">
     <value>frmPlotLRUD</value>
@@ -2015,7 +1612,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>0</value>
   </data>
   <data name="txtPlotLRUDSelectedPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 49</value>
+    <value>126, 59</value>
   </data>
   <data name="txtPlotLRUDSelectedPenWidth.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -2036,7 +1633,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>1</value>
   </data>
   <data name="txtPlotLRUDPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 20</value>
+    <value>126, 30</value>
   </data>
   <data name="txtPlotLRUDPenWidth.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -2056,29 +1653,26 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;txtPlotLRUDPenWidth.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="lblPlotLRUDPenWidth.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblPlotLRUDPenWidth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlotLRUDPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 24</value>
+    <value>6, 34</value>
   </data>
   <data name="lblPlotLRUDPenWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 13</value>
+    <value>23, 13</value>
   </data>
   <data name="lblPlotLRUDPenWidth.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="lblPlotLRUDPenWidth.Text" xml:space="preserve">
-    <value>Thickness:</value>
+    <value>Size:</value>
   </data>
   <data name="&gt;&gt;lblPlotLRUDPenWidth.Name" xml:space="preserve">
     <value>lblPlotLRUDPenWidth</value>
   </data>
   <data name="&gt;&gt;lblPlotLRUDPenWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotLRUDPenWidth.Parent" xml:space="preserve">
     <value>frmPlotLRUD</value>
@@ -2102,7 +1696,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>Line with 2 dots</value>
   </data>
   <data name="cboPlotLRUDPenStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>94, 76</value>
+    <value>94, 86</value>
   </data>
   <data name="cboPlotLRUDPenStyle.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 21</value>
@@ -2122,17 +1716,14 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;cboPlotLRUDPenStyle.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="lblPlotLRUDPenStyle.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblPlotLRUDPenStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlotLRUDPenStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 79</value>
+    <value>6, 89</value>
   </data>
   <data name="lblPlotLRUDPenStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
+    <value>28, 13</value>
   </data>
   <data name="lblPlotLRUDPenStyle.TabIndex" type="System.Int32, mscorlib">
     <value>122</value>
@@ -2140,14 +1731,11 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="lblPlotLRUDPenStyle.Text" xml:space="preserve">
     <value>Style:</value>
   </data>
-  <data name="lblPlotLRUDPenStyle.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
   <data name="&gt;&gt;lblPlotLRUDPenStyle.Name" xml:space="preserve">
     <value>lblPlotLRUDPenStyle</value>
   </data>
   <data name="&gt;&gt;lblPlotLRUDPenStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotLRUDPenStyle.Parent" xml:space="preserve">
     <value>frmPlotLRUD</value>
@@ -2156,10 +1744,10 @@ For scale under the minimum defined factor will be used the default design and c
     <value>5</value>
   </data>
   <data name="frmPlotLRUD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, 125</value>
+    <value>407, 148</value>
   </data>
   <data name="frmPlotLRUD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 110</value>
+    <value>192, 117</value>
   </data>
   <data name="frmPlotLRUD.TabIndex" type="System.Int32, mscorlib">
     <value>134</value>
@@ -2171,19 +1759,19 @@ For scale under the minimum defined factor will be used the default design and c
     <value>frmPlotLRUD</value>
   </data>
   <data name="&gt;&gt;frmPlotLRUD.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;frmPlotLRUD.Parent" xml:space="preserve">
     <value>tabInfoPlot</value>
   </data>
   <data name="&gt;&gt;frmPlotLRUD.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="cmdPlotTranslationLinePenColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="cmdPlotTranslationLinePenColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 76</value>
+    <value>152, 86</value>
   </data>
   <data name="cmdPlotTranslationLinePenColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 21</value>
@@ -2198,7 +1786,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>cmdPlotTranslationLinePenColor</value>
   </data>
   <data name="&gt;&gt;cmdPlotTranslationLinePenColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPlotTranslationLinePenColor.Parent" xml:space="preserve">
     <value>frmPlotTranslationLine</value>
@@ -2206,17 +1794,17 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;cmdPlotTranslationLinePenColor.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="lblPlotTranslationLinePenColor.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblPlotTranslationLinePenColor.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblPlotTranslationLinePenColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlotTranslationLinePenColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 80</value>
+    <value>7, 90</value>
   </data>
   <data name="lblPlotTranslationLinePenColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 17</value>
+    <value>29, 13</value>
   </data>
   <data name="lblPlotTranslationLinePenColor.TabIndex" type="System.Int32, mscorlib">
     <value>125</value>
@@ -2228,7 +1816,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblPlotTranslationLinePenColor</value>
   </data>
   <data name="&gt;&gt;lblPlotTranslationLinePenColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotTranslationLinePenColor.Parent" xml:space="preserve">
     <value>frmPlotTranslationLine</value>
@@ -2240,7 +1828,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>NoControl</value>
   </data>
   <data name="picPlotTranslationLinePenColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 76</value>
+    <value>114, 86</value>
   </data>
   <data name="picPlotTranslationLinePenColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 21</value>
@@ -2261,7 +1849,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>2</value>
   </data>
   <data name="txtPlotTranslationLinePenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 20</value>
+    <value>126, 30</value>
   </data>
   <data name="txtPlotTranslationLinePenWidth.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -2281,29 +1869,26 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;txtPlotTranslationLinePenWidth.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="lblPlotTranslationLinePenSize.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblPlotTranslationLinePenSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlotTranslationLinePenSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 24</value>
+    <value>6, 34</value>
   </data>
   <data name="lblPlotTranslationLinePenSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 13</value>
+    <value>23, 13</value>
   </data>
   <data name="lblPlotTranslationLinePenSize.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="lblPlotTranslationLinePenSize.Text" xml:space="preserve">
-    <value>Thickness:</value>
+    <value>Size:</value>
   </data>
   <data name="&gt;&gt;lblPlotTranslationLinePenSize.Name" xml:space="preserve">
     <value>lblPlotTranslationLinePenSize</value>
   </data>
   <data name="&gt;&gt;lblPlotTranslationLinePenSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotTranslationLinePenSize.Parent" xml:space="preserve">
     <value>frmPlotTranslationLine</value>
@@ -2327,7 +1912,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>Line with 2 dots</value>
   </data>
   <data name="cboPlotTranslationLinePenStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>94, 49</value>
+    <value>94, 59</value>
   </data>
   <data name="cboPlotTranslationLinePenStyle.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 21</value>
@@ -2347,17 +1932,14 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;cboPlotTranslationLinePenStyle.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="lblPlotTranslationLinePenStyle.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblPlotTranslationLinePenStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlotTranslationLinePenStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 52</value>
+    <value>6, 62</value>
   </data>
   <data name="lblPlotTranslationLinePenStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
+    <value>28, 13</value>
   </data>
   <data name="lblPlotTranslationLinePenStyle.TabIndex" type="System.Int32, mscorlib">
     <value>122</value>
@@ -2365,14 +1947,11 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="lblPlotTranslationLinePenStyle.Text" xml:space="preserve">
     <value>Style:</value>
   </data>
-  <data name="lblPlotTranslationLinePenStyle.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
   <data name="&gt;&gt;lblPlotTranslationLinePenStyle.Name" xml:space="preserve">
     <value>lblPlotTranslationLinePenStyle</value>
   </data>
   <data name="&gt;&gt;lblPlotTranslationLinePenStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotTranslationLinePenStyle.Parent" xml:space="preserve">
     <value>frmPlotTranslationLine</value>
@@ -2381,10 +1960,10 @@ For scale under the minimum defined factor will be used the default design and c
     <value>6</value>
   </data>
   <data name="frmPlotTranslationLine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>207, 150</value>
+    <value>209, 161</value>
   </data>
   <data name="frmPlotTranslationLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 163</value>
+    <value>192, 130</value>
   </data>
   <data name="frmPlotTranslationLine.TabIndex" type="System.Int32, mscorlib">
     <value>135</value>
@@ -2396,16 +1975,16 @@ For scale under the minimum defined factor will be used the default design and c
     <value>frmPlotTranslationLine</value>
   </data>
   <data name="&gt;&gt;frmPlotTranslationLine.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;frmPlotTranslationLine.Parent" xml:space="preserve">
     <value>tabInfoPlot</value>
   </data>
   <data name="&gt;&gt;frmPlotTranslationLine.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="txtPlotTextFont.Location" type="System.Drawing.Point, System.Drawing">
-    <value>268, 49</value>
+    <value>268, 59</value>
   </data>
   <data name="txtPlotTextFont.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 21</value>
@@ -2429,7 +2008,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>NoControl</value>
   </data>
   <data name="cmdPlotTextFont.Location" type="System.Drawing.Point, System.Drawing">
-    <value>349, 50</value>
+    <value>349, 60</value>
   </data>
   <data name="cmdPlotTextFont.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 21</value>
@@ -2444,7 +2023,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>cmdPlotTextFont</value>
   </data>
   <data name="&gt;&gt;cmdPlotTextFont.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPlotTextFont.Parent" xml:space="preserve">
     <value>frmPlotPoint</value>
@@ -2456,7 +2035,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>NoControl</value>
   </data>
   <data name="cmdPlotPointColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>151, 103</value>
+    <value>151, 113</value>
   </data>
   <data name="cmdPlotPointColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 21</value>
@@ -2471,7 +2050,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>cmdPlotPointColor</value>
   </data>
   <data name="&gt;&gt;cmdPlotPointColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPlotPointColor.Parent" xml:space="preserve">
     <value>frmPlotPoint</value>
@@ -2479,20 +2058,17 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;cmdPlotPointColor.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="lblPlotTextFont.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblPlotTextFont.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblPlotTextFont.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblPlotTextFont.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlotTextFont.Location" type="System.Drawing.Point, System.Drawing">
-    <value>204, 54</value>
+    <value>204, 64</value>
   </data>
   <data name="lblPlotTextFont.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 13</value>
+    <value>26, 13</value>
   </data>
   <data name="lblPlotTextFont.TabIndex" type="System.Int32, mscorlib">
     <value>128</value>
@@ -2504,7 +2080,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblPlotTextFont</value>
   </data>
   <data name="&gt;&gt;lblPlotTextFont.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotTextFont.Parent" xml:space="preserve">
     <value>frmPlotPoint</value>
@@ -2512,17 +2088,17 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;lblPlotTextFont.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="lblPlotPointColor.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblPlotPointColor.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblPlotPointColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlotPointColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 107</value>
+    <value>6, 117</value>
   </data>
   <data name="lblPlotPointColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 17</value>
+    <value>29, 13</value>
   </data>
   <data name="lblPlotPointColor.TabIndex" type="System.Int32, mscorlib">
     <value>122</value>
@@ -2534,7 +2110,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblPlotPointColor</value>
   </data>
   <data name="&gt;&gt;lblPlotPointColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotPointColor.Parent" xml:space="preserve">
     <value>frmPlotPoint</value>
@@ -2546,7 +2122,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>NoControl</value>
   </data>
   <data name="cmdPlotTextColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>349, 76</value>
+    <value>349, 86</value>
   </data>
   <data name="cmdPlotTextColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 21</value>
@@ -2561,7 +2137,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>cmdPlotTextColor</value>
   </data>
   <data name="&gt;&gt;cmdPlotTextColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPlotTextColor.Parent" xml:space="preserve">
     <value>frmPlotPoint</value>
@@ -2573,7 +2149,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>NoControl</value>
   </data>
   <data name="picPlotPointColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 103</value>
+    <value>113, 113</value>
   </data>
   <data name="picPlotPointColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 21</value>
@@ -2593,17 +2169,17 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;picPlotPointColor.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="lblPlotTextColor.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblPlotTextColor.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblPlotTextColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlotTextColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>204, 80</value>
+    <value>204, 90</value>
   </data>
   <data name="lblPlotTextColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 17</value>
+    <value>29, 13</value>
   </data>
   <data name="lblPlotTextColor.TabIndex" type="System.Int32, mscorlib">
     <value>125</value>
@@ -2615,7 +2191,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblPlotTextColor</value>
   </data>
   <data name="&gt;&gt;lblPlotTextColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotTextColor.Parent" xml:space="preserve">
     <value>frmPlotPoint</value>
@@ -2651,7 +2227,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>Empty triangle</value>
   </data>
   <data name="cboPlotPointSymbol.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 76</value>
+    <value>93, 86</value>
   </data>
   <data name="cboPlotPointSymbol.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 21</value>
@@ -2675,7 +2251,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>NoControl</value>
   </data>
   <data name="picPlotTextColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 76</value>
+    <value>311, 86</value>
   </data>
   <data name="picPlotTextColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 21</value>
@@ -2696,7 +2272,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>9</value>
   </data>
   <data name="txtPlotSelectedPointSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>125, 47</value>
+    <value>125, 57</value>
   </data>
   <data name="txtPlotSelectedPointSize.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -2717,7 +2293,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>10</value>
   </data>
   <data name="txtPlotTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>323, 20</value>
+    <value>323, 30</value>
   </data>
   <data name="txtPlotTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -2738,7 +2314,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>11</value>
   </data>
   <data name="txtPlotPointSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>125, 20</value>
+    <value>125, 30</value>
   </data>
   <data name="txtPlotPointSize.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -2758,29 +2334,26 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;txtPlotPointSize.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="lblPlotTextScaleFactor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblPlotTextScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlotTextScaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>203, 24</value>
+    <value>203, 34</value>
   </data>
   <data name="lblPlotTextScaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 13</value>
+    <value>61, 13</value>
   </data>
   <data name="lblPlotTextScaleFactor.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
   <data name="lblPlotTextScaleFactor.Text" xml:space="preserve">
-    <value>Text (scale):</value>
+    <value>Text:</value>
   </data>
   <data name="&gt;&gt;lblPlotTextScaleFactor.Name" xml:space="preserve">
     <value>lblPlotTextScaleFactor</value>
   </data>
   <data name="&gt;&gt;lblPlotTextScaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotTextScaleFactor.Parent" xml:space="preserve">
     <value>frmPlotPoint</value>
@@ -2788,17 +2361,14 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;lblPlotTextScaleFactor.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="lblPlotSelectedPointSize.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblPlotSelectedPointSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlotSelectedPointSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 51</value>
+    <value>6, 61</value>
   </data>
   <data name="lblPlotSelectedPointSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 13</value>
+    <value>79, 13</value>
   </data>
   <data name="lblPlotSelectedPointSize.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2810,7 +2380,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblPlotSelectedPointSize</value>
   </data>
   <data name="&gt;&gt;lblPlotSelectedPointSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotSelectedPointSize.Parent" xml:space="preserve">
     <value>frmPlotPoint</value>
@@ -2818,17 +2388,14 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;lblPlotSelectedPointSize.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
-  <data name="lblPlotPointSize.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblPlotPointSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlotPointSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 24</value>
+    <value>6, 34</value>
   </data>
   <data name="lblPlotPointSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 13</value>
+    <value>23, 13</value>
   </data>
   <data name="lblPlotPointSize.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2840,7 +2407,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblPlotPointSize</value>
   </data>
   <data name="&gt;&gt;lblPlotPointSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotPointSize.Parent" xml:space="preserve">
     <value>frmPlotPoint</value>
@@ -2848,20 +2415,17 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;lblPlotPointSize.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
-  <data name="lblPlotPointSymbol.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblPlotPointSymbol.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblPlotPointSymbol.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblPlotPointSymbol.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlotPointSymbol.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 79</value>
+    <value>6, 89</value>
   </data>
   <data name="lblPlotPointSymbol.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 13</value>
+    <value>38, 13</value>
   </data>
   <data name="lblPlotPointSymbol.TabIndex" type="System.Int32, mscorlib">
     <value>119</value>
@@ -2873,7 +2437,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblPlotPointSymbol</value>
   </data>
   <data name="&gt;&gt;lblPlotPointSymbol.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotPointSymbol.Parent" xml:space="preserve">
     <value>frmPlotPoint</value>
@@ -2882,22 +2446,22 @@ For scale under the minimum defined factor will be used the default design and c
     <value>16</value>
   </data>
   <data name="frmPlotPoint.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 8</value>
+    <value>11, 12</value>
   </data>
   <data name="frmPlotPoint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>390, 136</value>
+    <value>390, 143</value>
   </data>
   <data name="frmPlotPoint.TabIndex" type="System.Int32, mscorlib">
     <value>132</value>
   </data>
   <data name="frmPlotPoint.Text" xml:space="preserve">
-    <value>Shots:</value>
+    <value>Stations:</value>
   </data>
   <data name="&gt;&gt;frmPlotPoint.Name" xml:space="preserve">
     <value>frmPlotPoint</value>
   </data>
   <data name="&gt;&gt;frmPlotPoint.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;frmPlotPoint.Parent" xml:space="preserve">
     <value>tabInfoPlot</value>
@@ -2909,7 +2473,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>NoControl</value>
   </data>
   <data name="cmdPlotPenColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 103</value>
+    <value>152, 113</value>
   </data>
   <data name="cmdPlotPenColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 21</value>
@@ -2924,7 +2488,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>cmdPlotPenColor</value>
   </data>
   <data name="&gt;&gt;cmdPlotPenColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPlotPenColor.Parent" xml:space="preserve">
     <value>frmPlotPen</value>
@@ -2932,17 +2496,17 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;cmdPlotPenColor.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="lblPlotPenColor.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblPlotPenColor.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblPlotPenColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlotPenColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 107</value>
+    <value>7, 117</value>
   </data>
   <data name="lblPlotPenColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 17</value>
+    <value>29, 13</value>
   </data>
   <data name="lblPlotPenColor.TabIndex" type="System.Int32, mscorlib">
     <value>125</value>
@@ -2954,7 +2518,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>lblPlotPenColor</value>
   </data>
   <data name="&gt;&gt;lblPlotPenColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotPenColor.Parent" xml:space="preserve">
     <value>frmPlotPen</value>
@@ -2966,7 +2530,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>NoControl</value>
   </data>
   <data name="picPlotPenColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 103</value>
+    <value>114, 113</value>
   </data>
   <data name="picPlotPenColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 21</value>
@@ -2987,7 +2551,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>2</value>
   </data>
   <data name="txtPlotPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 20</value>
+    <value>126, 30</value>
   </data>
   <data name="txtPlotPenWidth.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -3007,29 +2571,26 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;txtPlotPenWidth.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="lblPlotPenWidth.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblPlotPenWidth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlotPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 24</value>
+    <value>6, 34</value>
   </data>
   <data name="lblPlotPenWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 13</value>
+    <value>23, 13</value>
   </data>
   <data name="lblPlotPenWidth.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="lblPlotPenWidth.Text" xml:space="preserve">
-    <value>Thickness:</value>
+    <value>Size:</value>
   </data>
   <data name="&gt;&gt;lblPlotPenWidth.Name" xml:space="preserve">
     <value>lblPlotPenWidth</value>
   </data>
   <data name="&gt;&gt;lblPlotPenWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotPenWidth.Parent" xml:space="preserve">
     <value>frmPlotPen</value>
@@ -3037,29 +2598,26 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;lblPlotPenWidth.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="lblPlotSelectedPenWidth.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblPlotSelectedPenWidth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlotSelectedPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 51</value>
+    <value>6, 61</value>
   </data>
   <data name="lblPlotSelectedPenWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 13</value>
+    <value>51, 13</value>
   </data>
   <data name="lblPlotSelectedPenWidth.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
   <data name="lblPlotSelectedPenWidth.Text" xml:space="preserve">
-    <value>Thickness (sel.):</value>
+    <value>Size (sel.):</value>
   </data>
   <data name="&gt;&gt;lblPlotSelectedPenWidth.Name" xml:space="preserve">
     <value>lblPlotSelectedPenWidth</value>
   </data>
   <data name="&gt;&gt;lblPlotSelectedPenWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotSelectedPenWidth.Parent" xml:space="preserve">
     <value>frmPlotPen</value>
@@ -3083,7 +2641,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>Line with 2 dots</value>
   </data>
   <data name="cboPlotPenStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>94, 76</value>
+    <value>94, 86</value>
   </data>
   <data name="cboPlotPenStyle.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 21</value>
@@ -3104,7 +2662,7 @@ For scale under the minimum defined factor will be used the default design and c
     <value>6</value>
   </data>
   <data name="txtPlotSelectedPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 49</value>
+    <value>126, 59</value>
   </data>
   <data name="txtPlotSelectedPenWidth.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -3124,17 +2682,14 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="&gt;&gt;txtPlotSelectedPenWidth.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="lblPlotPenStyle.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblPlotPenStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblPlotPenStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 79</value>
+    <value>6, 89</value>
   </data>
   <data name="lblPlotPenStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
+    <value>28, 13</value>
   </data>
   <data name="lblPlotPenStyle.TabIndex" type="System.Int32, mscorlib">
     <value>122</value>
@@ -3142,14 +2697,11 @@ For scale under the minimum defined factor will be used the default design and c
   <data name="lblPlotPenStyle.Text" xml:space="preserve">
     <value>Style:</value>
   </data>
-  <data name="lblPlotPenStyle.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
   <data name="&gt;&gt;lblPlotPenStyle.Name" xml:space="preserve">
     <value>lblPlotPenStyle</value>
   </data>
   <data name="&gt;&gt;lblPlotPenStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotPenStyle.Parent" xml:space="preserve">
     <value>frmPlotPen</value>
@@ -3158,277 +2710,295 @@ For scale under the minimum defined factor will be used the default design and c
     <value>8</value>
   </data>
   <data name="frmPlotPen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 150</value>
+    <value>11, 161</value>
   </data>
   <data name="frmPlotPen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 163</value>
+    <value>192, 194</value>
   </data>
   <data name="frmPlotPen.TabIndex" type="System.Int32, mscorlib">
     <value>133</value>
   </data>
   <data name="frmPlotPen.Text" xml:space="preserve">
-    <value>Segments:</value>
+    <value>Shots:</value>
   </data>
   <data name="&gt;&gt;frmPlotPen.Name" xml:space="preserve">
     <value>frmPlotPen</value>
   </data>
   <data name="&gt;&gt;frmPlotPen.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;frmPlotPen.Parent" xml:space="preserve">
     <value>tabInfoPlot</value>
   </data>
   <data name="&gt;&gt;frmPlotPen.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>2</value>
   </data>
-  <data name="tabInfoPlot.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="lblScaleWarning.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
-  <data name="tabInfoPlot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>638, 364</value>
+  <assembly alias="DevExpress.XtraEditors.v21.2" name="DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="lblScaleWarning.AutoSizeMode" type="DevExpress.XtraEditors.LabelAutoSizeMode, DevExpress.XtraEditors.v21.2">
+    <value>None</value>
   </data>
-  <data name="tabInfoPlot.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+  <metadata name="iml.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>310, 17</value>
+  </metadata>
+  <data name="lblScaleWarning.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 43</value>
   </data>
-  <data name="tabInfoPlot.Text" xml:space="preserve">
-    <value>Centerline</value>
+  <data name="lblScaleWarning.Size" type="System.Drawing.Size, System.Drawing">
+    <value>599, 51</value>
   </data>
-  <data name="&gt;&gt;tabInfoPlot.Name" xml:space="preserve">
-    <value>tabInfoPlot</value>
+  <data name="lblScaleWarning.TabIndex" type="System.Int32, mscorlib">
+    <value>109</value>
   </data>
-  <data name="&gt;&gt;tabInfoPlot.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="lblScaleWarning.Text" xml:space="preserve">
+    <value>&lt;image=#warning;size=16,16&gt; &lt;b&gt;Attention:&lt;/b&gt; the scale factor define the factor above this settings will applied (until the next factor).
+For scale under the minimum defined factor will be used the default design and centerline properties.
+</value>
   </data>
-  <data name="&gt;&gt;tabInfoPlot.Parent" xml:space="preserve">
-    <value>tabInfo</value>
+  <data name="&gt;&gt;lblScaleWarning.Name" xml:space="preserve">
+    <value>lblScaleWarning</value>
   </data>
-  <data name="&gt;&gt;tabInfoPlot.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;lblScaleWarning.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="tabInfo.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;lblScaleWarning.Parent" xml:space="preserve">
+    <value>tabInfoMain</value>
   </data>
-  <data name="tabInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 104</value>
+  <data name="&gt;&gt;lblScaleWarning.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="tabInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>646, 390</value>
+  <data name="txtScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 11</value>
   </data>
-  <data name="tabInfo.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="txtScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 21</value>
   </data>
-  <data name="&gt;&gt;tabInfo.Name" xml:space="preserve">
-    <value>tabInfo</value>
-  </data>
-  <data name="&gt;&gt;tabInfo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabInfo.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tabInfo.ZOrder" xml:space="preserve">
+  <data name="txtScale.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <metadata name="tbMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="tbMain.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="lblAddScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 22</value>
-  </data>
-  <data name="lblAddScale.Text" xml:space="preserve">
-    <value>Scale:</value>
-  </data>
-  <data name="txtAddScale.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="txtAddScale.MaxLength" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="txtAddScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 25</value>
-  </data>
-  <data name="txtAddScale.TextBoxTextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+  <data name="txtScale.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="btnAdd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIJSURBVDhPrVI9TFNhFD1AdGDwbzB1YSBxMybi4s6Pog4U
-        YwJBJhOju6mYOGhMLNCG9A9eS0kMaCJpJS6iQwkIQqQ1am2AwUTCoAMTg4Nux3va91LUdvMkN+/mfvec
-        79z7Pfx3XArjbOcwch1BsN1C364RsDuEnM7cttroGsV4/8Qhvtq8zZ0fj/llL8bC97uc3xrko/nT7I02
-        8XIIGbf9T1wYReb61An+5ALz3wbpvAUjS2D0DZhcBWcKrXRWzvBqvInmZNylVSBrfYlm7v6a47Oijwkj
-        RFZAD1ETS70D0+sHGHztY08EEqmOY3MuPs33c2G7mwlrVIwZyYPyiXVw8r0JLx/kzWnbyQiWXLrNPgyu
-        7QSYLFjDmpHNQXC5KqBctbgJp0wkkC07oEsHbOtc/HqDM8UjLqU+nA/g0Bx4MbRPQM/0ouTnk41jblt9
-        OJ9qCNgLcGr1HJOfwZjdMGY2g2bXg3LV4h9tD8UaI3Q8QH4oe5xO/ignN0CnZAQT8qBctfQmGLZ93Jpu
-        4HnjuHSgrQ9+vz3Nw5eHmSo1Mr1lt5kbD8pVk8NAtqH8jG0D8Lv0Mprb7yHTGwXvPG9kWO9uhNltXzmU
-        qybylZj94tYrToVaRUvnfeSkLouBjInZrArlqunMJbdUKP+i9VQPrmk+LUmbVihXTWfWU5fsQdZOWuhX
-        3R+q/WUb+A1roKW0TmWu+AAAAABJRU5ErkJggg==
-</value>
+  <data name="txtScale.ThousandsSeparator" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="btnAdd.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
+  <data name="&gt;&gt;txtScale.Name" xml:space="preserve">
+    <value>txtScale</value>
   </data>
-  <data name="btnAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 22</value>
+  <data name="&gt;&gt;txtScale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="btnAdd.Text" xml:space="preserve">
-    <value>Add</value>
+  <data name="&gt;&gt;txtScale.Parent" xml:space="preserve">
+    <value>tabInfoMain</value>
   </data>
-  <data name="btnAddAsCopy.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIJSURBVDhPrVI9TFNhFD1AdGDwbzB1YSBxMybi4s6Pog4U
-        YwJBJhOju6mYOGhMLNCG9A9eS0kMaCJpJS6iQwkIQqQ1am2AwUTCoAMTg4Nux3va91LUdvMkN+/mfvec
-        79z7Pfx3XArjbOcwch1BsN1C364RsDuEnM7cttroGsV4/8Qhvtq8zZ0fj/llL8bC97uc3xrko/nT7I02
-        8XIIGbf9T1wYReb61An+5ALz3wbpvAUjS2D0DZhcBWcKrXRWzvBqvInmZNylVSBrfYlm7v6a47Oijwkj
-        RFZAD1ETS70D0+sHGHztY08EEqmOY3MuPs33c2G7mwlrVIwZyYPyiXVw8r0JLx/kzWnbyQiWXLrNPgyu
-        7QSYLFjDmpHNQXC5KqBctbgJp0wkkC07oEsHbOtc/HqDM8UjLqU+nA/g0Bx4MbRPQM/0ouTnk41jblt9
-        OJ9qCNgLcGr1HJOfwZjdMGY2g2bXg3LV4h9tD8UaI3Q8QH4oe5xO/ignN0CnZAQT8qBctfQmGLZ93Jpu
-        4HnjuHSgrQ9+vz3Nw5eHmSo1Mr1lt5kbD8pVk8NAtqH8jG0D8Lv0Mprb7yHTGwXvPG9kWO9uhNltXzmU
-        qybylZj94tYrToVaRUvnfeSkLouBjInZrArlqunMJbdUKP+i9VQPrmk+LUmbVihXTWfWU5fsQdZOWuhX
-        3R+q/WUb+A1roKW0TmWu+AAAAABJRU5ErkJggg==
-</value>
+  <data name="&gt;&gt;txtScale.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="btnAddAsCopy.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
+  <data name="lblScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 13</value>
   </data>
-  <data name="btnAddAsCopy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 22</value>
+  <data name="lblScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 13</value>
   </data>
-  <data name="btnAddAsCopy.Text" xml:space="preserve">
-    <value>Add as copy</value>
+  <data name="lblScale.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="sep1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
+  <data name="lblScale.Text" xml:space="preserve">
+    <value>Scale:</value>
   </data>
-  <data name="btnRemove.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD5SURBVDhPY0AGRxwM/oMwlIsB8MqDJL4d3gXG2BThlQcJ
-        fN294f9TT10wBrGRFRGShyjYvPz/c18jOAbxQeL45KDawcAYJPBl9bz/rwLN4RjExyYG1WwM0YoAYEO+
-        Lp7+/02oDVYMksOlGQYghszt//8u0hEFg8QIaQYDkKJv0zr+f4h1Q8EgMagBuAFY88Sm/58TvbFikBxO
-        Q0AS33uq/39N9YdjEB+bGIYhIIEf7WX/v2eGwDGIDxLHJwfVDjHgV1Ph/595kWAMYkMVgAIMHLA45OEA
-        rOhPXQ4YI2mGAULyYABWhEsSCAjJgwHYyRAmVkBInlTAwAAAGRZmoO4izFMAAAAASUVORK5CYII=
-</value>
+  <data name="&gt;&gt;lblScale.Name" xml:space="preserve">
+    <value>lblScale</value>
   </data>
-  <data name="btnRemove.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
+  <data name="&gt;&gt;lblScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="btnRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 22</value>
+  <data name="&gt;&gt;lblScale.Parent" xml:space="preserve">
+    <value>tabInfoMain</value>
   </data>
-  <data name="btnRemove.Text" xml:space="preserve">
-    <value>Remove</value>
+  <data name="&gt;&gt;lblScale.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="btnRemoveAll.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD5SURBVDhPY0AGRxwM/oMwlIsB8MqDJL4d3gXG2BThlQcJ
-        fN294f9TT10wBrGRFRGShyjYvPz/c18jOAbxQeL45KDawcAYJPBl9bz/rwLN4RjExyYG1WwM0YoAYEO+
-        Lp7+/02oDVYMksOlGQYghszt//8u0hEFg8QIaQYDkKJv0zr+f4h1Q8EgMagBuAFY88Sm/58TvbFikBxO
-        Q0AS33uq/39N9YdjEB+bGIYhIIEf7WX/v2eGwDGIDxLHJwfVDjHgV1Ph/595kWAMYkMVgAIMHLA45OEA
-        rOhPXQ4YI2mGAULyYABWhEsSCAjJgwHYyRAmVkBInlTAwAAAGRZmoO4izFMAAAAASUVORK5CYII=
-</value>
+  <data name="PanelControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
   </data>
-  <data name="btnRemoveAll.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
+  <data name="PanelControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 474</value>
   </data>
-  <data name="btnRemoveAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 22</value>
+  <data name="PanelControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>825, 40</value>
   </data>
-  <data name="btnRemoveAll.Text" xml:space="preserve">
-    <value>Remove all</value>
+  <data name="PanelControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>138</value>
   </data>
-  <data name="sep2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
+  <data name="&gt;&gt;PanelControl1.Name" xml:space="preserve">
+    <value>PanelControl1</value>
   </data>
-  <data name="btnClear.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;PanelControl1.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="btnClear.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJUSURBVDhPlZJRT1JhGMf5AN20tj5AH6Abmxd9gdJustri
-        eA50ULMIjpA5a04tUpuaE4QS9HBCQolp66J1IbRRphRkmspFFpmmXYQoIikktf07LxxWU1f22569e/7P
-        +3/2395Xth2FkgWjOJcrlj0qyXtDoWBLdfpqGAxNMBqNkMvpVmm0NyiKeXajqQUaLZd29Dkgp6iwNNob
-        NKOEscuCI4WFZV7vMM5SNKTRvyHxuSo9GhoNxLTP1e/CJa0WJQxzkMzdeutgv+4uBsST9Dsg8RuuG1Cl
-        0wdIb+vpCdfVN+DY6ZOUR2cD1jaBlSQQ38B97s7OZPn4RUUntKRvaWuZ6bCY4OFEczKNVacfsT4/Vh3+
-        7BKn1vJ7Ca1UURfVGjTfaiXifqKptZzPo+4G1rew7g4g/kAs9xjirlH8+BoXl3zD0BX+Obkrk9OMv6b2
-        Gjo6zWi73Ymbza3gBR7J7ynMPw5gYzCE5FAI64NBZJYTiPZ6xcVpOPIpyOepq28Un41GyakzEAQBW5kM
-        xoJBjLwOYsk7gfSjSWRiCSwLT5F6GIKg6SLmAhnLsqWq8vOorqnNCjab7Q1EpqbDeDs1g0nxHA/P4Gc0
-        gZjdJy4ah1PfnTMTaFo5WnlBDZYtf0l6q9W6vPB5EZGPc/gQieDd7HusJBKYHn6BzScTcF3+w0xQlVWg
-        vKISx4uLr0rSYZPJhGh0BYtLX7AmmkcCAcwufMIAt80sQQRSB7JdjgKz2YxUKo3AqxAic/Ow3evd1fw3
-        Ctrb2308z8Mu2P/bnOeQWPmEuyCT/QJdDH4FYVZ7GQAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnClear.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnClear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnClear.Text" xml:space="preserve">
-    <value>Reset values</value>
-  </data>
-  <data name="sep3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="btnExport.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnExport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 22</value>
-  </data>
-  <data name="btnExport.Text" xml:space="preserve">
-    <value>Export...</value>
-  </data>
-  <data name="btnImport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnImport.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnImport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 22</value>
-  </data>
-  <data name="btnImport.Text" xml:space="preserve">
-    <value>Import...</value>
-  </data>
-  <data name="tbMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tbMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>667, 25</value>
-  </data>
-  <data name="tbMain.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;tbMain.Name" xml:space="preserve">
-    <value>tbMain</value>
-  </data>
-  <data name="&gt;&gt;tbMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbMain.Parent" xml:space="preserve">
+  <data name="&gt;&gt;PanelControl1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;tbMain.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;PanelControl1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="colScalesScale.Caption" xml:space="preserve">
+    <value>Scale</value>
+  </data>
+  <data name="colScalesScale.SortOrder" type="System.Windows.Forms.SortOrder, System.Windows.Forms">
+    <value>Ascending</value>
+  </data>
+  <data name="colScalesScale.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colScalesScale.VisibleIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="tvScales.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="tvScales.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
+  </data>
+  <data name="tvScales.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 446</value>
+  </data>
+  <data name="tvScales.TabIndex" type="System.Int32, mscorlib">
+    <value>139</value>
+  </data>
+  <data name="&gt;&gt;tvScales.Name" xml:space="preserve">
+    <value>tvScales</value>
+  </data>
+  <data name="&gt;&gt;tvScales.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.TreeList, DevExpress.XtraTreeList.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tvScales.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tvScales.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="BarManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>192, 17</value>
+  </metadata>
+  <data name="btnAddScale.Caption" xml:space="preserve">
+    <value>Scale:</value>
+  </data>
+  <data name="txtAddScale.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnAddScale.EditWidth" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="btnAdd.Caption" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="btnAddAsCopy.Caption" xml:space="preserve">
+    <value>Add as copy</value>
+  </data>
+  <data name="btnRemove.Caption" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="btnRemoveAll.Caption" xml:space="preserve">
+    <value>Remove all</value>
+  </data>
+  <data name="btnClear.Caption" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="btnExport.Caption" xml:space="preserve">
+    <value>Export...</value>
+  </data>
+  <data name="btnImport.Caption" xml:space="preserve">
+    <value>Import...</value>
+  </data>
+  <data name="barMain.Text" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+  <data name="barDockControlTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="barDockControlTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="barDockControlTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>825, 28</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.Name" xml:space="preserve">
+    <value>barDockControlTop</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="barDockControlBottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="barDockControlBottom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 514</value>
+  </data>
+  <data name="barDockControlBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>825, 0</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Name" xml:space="preserve">
+    <value>barDockControlBottom</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="barDockControlLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="barDockControlLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
+  </data>
+  <data name="barDockControlLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 486</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Name" xml:space="preserve">
+    <value>barDockControlLeft</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="barDockControlRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="barDockControlRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>825, 28</value>
+  </data>
+  <data name="barDockControlRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 486</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Name" xml:space="preserve">
+    <value>barDockControlRight</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -3437,7 +3007,211 @@ For scale under the minimum defined factor will be used the default design and c
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>667, 534</value>
+    <value>825, 514</value>
+  </data>
+  <data name="tabMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabMain.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tabMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 8</value>
+  </data>
+  <data name="tabInfoMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>627, 401</value>
+  </data>
+  <data name="tabInfoMain.Text" xml:space="preserve">
+    <value>Main</value>
+  </data>
+  <data name="&gt;&gt;tabInfoMain.Name" xml:space="preserve">
+    <value>tabInfoMain</value>
+  </data>
+  <data name="&gt;&gt;tabInfoMain.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabInfoMain.Parent" xml:space="preserve">
+    <value>tabMain</value>
+  </data>
+  <data name="&gt;&gt;tabInfoMain.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>629, 430</value>
+  </data>
+  <data name="tabMain.TabIndex" type="System.Int32, mscorlib">
+    <value>144</value>
+  </data>
+  <data name="colCategoriesVisibilityIndex.Caption" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="colCategoriesVisibilityIndex.MaxWidth" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="colCategoriesVisibilityIndex.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colCategoriesVisibilityIndex.VisibleIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="colCategoriesVisibilityIndex.Width" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="colCategoriesVisibilityCategory.Caption" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="colCategoriesVisibilityCategory.MinWidth" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="colCategoriesVisibilityCategory.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colCategoriesVisibilityCategory.VisibleIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="colCategoriesVisibilityCategory.Width" type="System.Int32, mscorlib">
+    <value>144</value>
+  </data>
+  <data name="colCategoriesVisibilityVisible.Caption" xml:space="preserve">
+    <value>Visible</value>
+  </data>
+  <data name="chkCategoriesVisibilityVisible.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="colCategoriesVisibilityVisible.MaxWidth" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="colCategoriesVisibilityVisible.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colCategoriesVisibilityVisible.VisibleIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="colCategoriesVisibilityVisible.Width" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="tvCategoriesVisibility.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tvCategoriesVisibility.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tvCategoriesVisibility.Size" type="System.Drawing.Size, System.Drawing">
+    <value>627, 401</value>
+  </data>
+  <data name="tvCategoriesVisibility.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tvCategoriesVisibility.Name" xml:space="preserve">
+    <value>tvCategoriesVisibility</value>
+  </data>
+  <data name="&gt;&gt;tvCategoriesVisibility.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.TreeList, DevExpress.XtraTreeList.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tvCategoriesVisibility.Parent" xml:space="preserve">
+    <value>tabInfoCategories</value>
+  </data>
+  <data name="&gt;&gt;tvCategoriesVisibility.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabInfoCategories.Size" type="System.Drawing.Size, System.Drawing">
+    <value>627, 401</value>
+  </data>
+  <data name="tabInfoCategories.Text" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="&gt;&gt;tabInfoCategories.Name" xml:space="preserve">
+    <value>tabInfoCategories</value>
+  </data>
+  <data name="&gt;&gt;tabInfoCategories.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabInfoCategories.Parent" xml:space="preserve">
+    <value>tabMain</value>
+  </data>
+  <data name="&gt;&gt;tabInfoCategories.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabInfoDesign.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tabInfoDesign.Size" type="System.Drawing.Size, System.Drawing">
+    <value>627, 401</value>
+  </data>
+  <data name="tabInfoDesign.Text" xml:space="preserve">
+    <value>Design</value>
+  </data>
+  <data name="&gt;&gt;tabInfoDesign.Name" xml:space="preserve">
+    <value>tabInfoDesign</value>
+  </data>
+  <data name="&gt;&gt;tabInfoDesign.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabInfoDesign.Parent" xml:space="preserve">
+    <value>tabMain</value>
+  </data>
+  <data name="&gt;&gt;tabInfoDesign.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabInfoPlot.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tabInfoPlot.Size" type="System.Drawing.Size, System.Drawing">
+    <value>627, 401</value>
+  </data>
+  <data name="tabInfoPlot.Text" xml:space="preserve">
+    <value>Centreline</value>
+  </data>
+  <data name="&gt;&gt;tabInfoPlot.Name" xml:space="preserve">
+    <value>tabInfoPlot</value>
+  </data>
+  <data name="&gt;&gt;tabInfoPlot.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabInfoPlot.Parent" xml:space="preserve">
+    <value>tabMain</value>
+  </data>
+  <data name="&gt;&gt;tabInfoPlot.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tabMain.Name" xml:space="preserve">
+    <value>tabMain</value>
+  </data>
+  <data name="&gt;&gt;tabMain.Type" xml:space="preserve">
+    <value>DevExpress.XtraTab.XtraTabControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;tabMain.Parent" xml:space="preserve">
+    <value>PanelControl2</value>
+  </data>
+  <data name="&gt;&gt;tabMain.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="PanelControl2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="PanelControl2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>180, 28</value>
+  </data>
+  <data name="PanelControl2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 8, 8, 8</value>
+  </data>
+  <data name="PanelControl2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>645, 446</value>
+  </data>
+  <data name="PanelControl2.TabIndex" type="System.Int32, mscorlib">
+    <value>149</value>
+  </data>
+  <data name="&gt;&gt;PanelControl2.Name" xml:space="preserve">
+    <value>PanelControl2</value>
+  </data>
+  <data name="&gt;&gt;PanelControl2.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;PanelControl2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PanelControl2.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="frmScaleRules.IconOptions.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3504,6 +3278,9 @@ For scale under the minimum defined factor will be used the default design and c
         AACAAQAAwAMAAAAAAAAAAAAAgAEAAMADAADgBwAA8A8AAP//AAA=
 </value>
   </data>
+  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
@@ -3514,97 +3291,103 @@ For scale under the minimum defined factor will be used the default design and c
     <value>iml</value>
   </data>
   <data name="&gt;&gt;iml.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.Utils.SvgImageCollection, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;colCategoryIndex.Name" xml:space="preserve">
-    <value>colCategoryIndex</value>
+  <data name="&gt;&gt;colScalesScale.Name" xml:space="preserve">
+    <value>colScalesScale</value>
   </data>
-  <data name="&gt;&gt;colCategoryIndex.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colScalesScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;colCategoryName.Name" xml:space="preserve">
-    <value>colCategoryName</value>
+  <data name="&gt;&gt;BarManager.Name" xml:space="preserve">
+    <value>BarManager</value>
   </data>
-  <data name="&gt;&gt;colCategoryName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;BarManager.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;colCategoryVisibility.Name" xml:space="preserve">
-    <value>colCategoryVisibility</value>
+  <data name="&gt;&gt;barMain.Name" xml:space="preserve">
+    <value>barMain</value>
   </data>
-  <data name="&gt;&gt;colCategoryVisibility.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;barMain.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Bar, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;lblAddScale.Name" xml:space="preserve">
-    <value>lblAddScale</value>
+  <data name="&gt;&gt;btnAddScale.Name" xml:space="preserve">
+    <value>btnAddScale</value>
   </data>
-  <data name="&gt;&gt;lblAddScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnAddScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarEditItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtAddScale.Name" xml:space="preserve">
     <value>txtAddScale</value>
   </data>
   <data name="&gt;&gt;txtAddScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemTextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnAdd.Name" xml:space="preserve">
     <value>btnAdd</value>
   </data>
   <data name="&gt;&gt;btnAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnAddAsCopy.Name" xml:space="preserve">
     <value>btnAddAsCopy</value>
   </data>
   <data name="&gt;&gt;btnAddAsCopy.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;sep1.Name" xml:space="preserve">
-    <value>sep1</value>
-  </data>
-  <data name="&gt;&gt;sep1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnRemove.Name" xml:space="preserve">
     <value>btnRemove</value>
   </data>
   <data name="&gt;&gt;btnRemove.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnRemoveAll.Name" xml:space="preserve">
     <value>btnRemoveAll</value>
   </data>
   <data name="&gt;&gt;btnRemoveAll.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;sep2.Name" xml:space="preserve">
-    <value>sep2</value>
-  </data>
-  <data name="&gt;&gt;sep2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnClear.Name" xml:space="preserve">
     <value>btnClear</value>
   </data>
   <data name="&gt;&gt;btnClear.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;sep3.Name" xml:space="preserve">
-    <value>sep3</value>
-  </data>
-  <data name="&gt;&gt;sep3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnExport.Name" xml:space="preserve">
     <value>btnExport</value>
   </data>
   <data name="&gt;&gt;btnExport.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnImport.Name" xml:space="preserve">
     <value>btnImport</value>
   </data>
   <data name="&gt;&gt;btnImport.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colCategoriesVisibilityIndex.Name" xml:space="preserve">
+    <value>colCategoriesVisibilityIndex</value>
+  </data>
+  <data name="&gt;&gt;colCategoriesVisibilityIndex.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colCategoriesVisibilityCategory.Name" xml:space="preserve">
+    <value>colCategoriesVisibilityCategory</value>
+  </data>
+  <data name="&gt;&gt;colCategoriesVisibilityCategory.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colCategoriesVisibilityVisible.Name" xml:space="preserve">
+    <value>colCategoriesVisibilityVisible</value>
+  </data>
+  <data name="&gt;&gt;colCategoriesVisibilityVisible.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkCategoriesVisibilityVisible.Name" xml:space="preserve">
+    <value>chkCategoriesVisibilityVisible</value>
+  </data>
+  <data name="&gt;&gt;chkCategoriesVisibilityVisible.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmScaleRules</value>

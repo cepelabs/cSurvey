@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
+  <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,112 +59,106 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="metadata">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" />
-							</xsd:sequence>
-							<xsd:attribute name="name" use="required" type="xsd:string" />
-							<xsd:attribute name="type" type="xsd:string" />
-							<xsd:attribute name="mimetype" type="xsd:string" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="assembly">
-						<xsd:complexType>
-							<xsd:attribute name="alias" type="xsd:string" />
-							<xsd:attribute name="name" type="xsd:string" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<data name="cmdClose.Text" xml:space="preserve">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cmdClose.Text" xml:space="preserve">
     <value>Закрыть</value>
   </data>
-	<assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-	<data name="lblSurveyInfoSession.Size" type="System.Drawing.Size, System.Drawing">
-		<value>47, 13</value>
-	</data>
-	<data name="lblSurveyInfoSession.Text" xml:space="preserve">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblSurveyInfoSession.Text" xml:space="preserve">
     <value>Съёмка:</value>
   </data>
-	<data name="tabStats.Text" xml:space="preserve">
+  <data name="tabStats.Text" xml:space="preserve">
     <value>Статистика</value>
   </data>
-	<data name="colSurveyInfoName.HeaderText" xml:space="preserve">
+  <data name="colSurveyInfoName.HeaderText" xml:space="preserve">
     <value>Данные</value>
   </data>
-	<data name="colSurveyInfoValue.HeaderText" xml:space="preserve">
+  <data name="colSurveyInfoValue.HeaderText" xml:space="preserve">
     <value>Значения</value>
   </data>
-	<data name="tabCharts.Text" xml:space="preserve">
+  <data name="tabCharts.Text" xml:space="preserve">
     <value>Графики</value>
   </data>
-	<data name="cboChartType.Items" xml:space="preserve">
+  <data name="cboChartType.Items" xml:space="preserve">
     <value>отснято/день</value>
   </data>
-	<data name="cboChartType.Items1" xml:space="preserve">
+  <data name="cboChartType.Items1" xml:space="preserve">
     <value>отснято/месяц</value>
   </data>
-	<data name="cboChartType.Items2" xml:space="preserve">
+  <data name="cboChartType.Items2" xml:space="preserve">
     <value>отснято/год</value>
   </data>
-	<data name="cboChartType.Items3" xml:space="preserve">
+  <data name="cboChartType.Items3" xml:space="preserve">
     <value>замеров/день</value>
   </data>
-	<data name="cboChartType.Items4" xml:space="preserve">
+  <data name="cboChartType.Items4" xml:space="preserve">
     <value>замеров/месяц</value>
   </data>
-	<data name="cboChartType.Items5" xml:space="preserve">
+  <data name="cboChartType.Items5" xml:space="preserve">
     <value>замеров/год</value>
   </data>
-	<data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
-		<value>34, 13</value>
-	</data>
-	<data name="Label1.Text" xml:space="preserve">
+  <data name="Label1.Text" xml:space="preserve">
     <value>Дата:</value>
   </data>
-	<data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAKtWDgCsVw8ArFcQAKxYEACvXBYAsF0WALBdGACzYhkAtmYcALpq
         HQC9bRwArmMlAK5kJQCvZikAsmYnALlpIAC9byIAuWsmALpsJQCzZygAsmgqALVqKwC7byoAv3MiAL90
@@ -227,17 +221,17 @@
         AAAAAAAFKj1EREQ9KgUAAAAAAAAAACsFAQEBBSsAAAAAAP//AADwHwAA4A8AAMAHAACAAwAAAAEAAAAB
         AAAAAQAAAAEAAAABAAAAAQAAAAEAAIADAADABwAA4A8AAPAfAAA=
 </value>
-	</data>
-	<data name="$this.Text" xml:space="preserve">
+  </data>
+  <data name="$this.Text" xml:space="preserve">
     <value>Информация о пещере:</value>
   </data>
-	<data name="mnuSurveyInfoCopy.Text" xml:space="preserve">
+  <data name="mnuSurveyInfoCopy.Text" xml:space="preserve">
     <value>Копировать</value>
   </data>
-	<data name="mnuSurveyInfoExport.Text" xml:space="preserve">
+  <data name="mnuSurveyInfoExport.Text" xml:space="preserve">
     <value>Экспорт...</value>
   </data>
-	<data name="mnuSurveyInfoCopyAll.Text" xml:space="preserve">
+  <data name="mnuSurveyInfoCopyAll.Text" xml:space="preserve">
     <value>Копировать все</value>
   </data>
 </root>

@@ -23,8 +23,8 @@ Partial Class frmSurveyCleanUpUndefinedCaves
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSurveyCleanUpUndefinedCaves))
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.cmdOk = New System.Windows.Forms.Button()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton
         Me.grdUndefinedCaves = New cSurveyPC.cGrid()
         Me.colCave = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colBranch = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -38,14 +38,12 @@ Partial Class frmSurveyCleanUpUndefinedCaves
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'cmdOk
         '
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
         '
         'grdUndefinedCaves
         '
@@ -93,6 +91,7 @@ Partial Class frmSurveyCleanUpUndefinedCaves
         Me.Controls.Add(Me.grdUndefinedCaves)
         Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.cmdOk)
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.swissknife
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSurveyCleanUpUndefinedCaves"
@@ -100,8 +99,8 @@ Partial Class frmSurveyCleanUpUndefinedCaves
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents grdUndefinedCaves As cSurveyPC.cGrid
     Friend WithEvents colCave As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents colBranch As System.Windows.Forms.DataGridViewTextBoxColumn

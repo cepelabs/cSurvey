@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmParametersDesign
-    Inherits cForm
+    Inherits DevExpress.XtraEditors.XtraUserControl
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -23,33 +23,9 @@ Partial Class frmParametersDesign
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmParametersDesign))
-        Me.cmdApply = New System.Windows.Forms.Button()
-        Me.cmdOk = New System.Windows.Forms.Button()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.lblAdvancedClippingMode = New System.Windows.Forms.Label()
+        Me.lblAdvancedClippingMode = New DevExpress.XtraEditors.LabelControl()
         Me.cboAdvancedClippingMode = New System.Windows.Forms.ComboBox()
-        Me.chkDrawSolidRock = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
-        '
-        'cmdApply
-        '
-        resources.ApplyResources(Me.cmdApply, "cmdApply")
-        Me.cmdApply.Name = "cmdApply"
-        Me.cmdApply.UseVisualStyleBackColor = True
-        '
-        'cmdOk
-        '
-        resources.ApplyResources(Me.cmdOk, "cmdOk")
-        Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
-        '
-        'cmdCancel
-        '
-        resources.ApplyResources(Me.cmdCancel, "cmdCancel")
-        Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'lblAdvancedClippingMode
         '
@@ -64,36 +40,17 @@ Partial Class frmParametersDesign
         resources.ApplyResources(Me.cboAdvancedClippingMode, "cboAdvancedClippingMode")
         Me.cboAdvancedClippingMode.Name = "cboAdvancedClippingMode"
         '
-        'chkDrawSolidRock
-        '
-        resources.ApplyResources(Me.chkDrawSolidRock, "chkDrawSolidRock")
-        Me.chkDrawSolidRock.Name = "chkDrawSolidRock"
-        Me.chkDrawSolidRock.UseVisualStyleBackColor = True
-        '
         'frmParametersDesign
         '
-        Me.AcceptButton = Me.cmdOk
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.CancelButton = Me.cmdCancel
-        Me.Controls.Add(Me.chkDrawSolidRock)
-        Me.Controls.Add(Me.cmdApply)
-        Me.Controls.Add(Me.cmdOk)
-        Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.cboAdvancedClippingMode)
         Me.Controls.Add(Me.lblAdvancedClippingMode)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
         Me.Name = "frmParametersDesign"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents cmdApply As System.Windows.Forms.Button
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents lblAdvancedClippingMode As System.Windows.Forms.Label
+    Friend WithEvents lblAdvancedClippingMode As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboAdvancedClippingMode As System.Windows.Forms.ComboBox
-    Friend WithEvents chkDrawSolidRock As CheckBox
 End Class

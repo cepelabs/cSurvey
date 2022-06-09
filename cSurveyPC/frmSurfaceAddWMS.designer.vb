@@ -93,6 +93,7 @@ Partial Class frmSurfaceAddWMS
         Me.lvLayers.CheckBoxes = True
         Me.lvLayers.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colName, Me.colSRSs, Me.colImageFormats})
         Me.lvLayers.FullRowSelect = True
+        Me.lvLayers.HideSelection = False
         Me.lvLayers.Name = "lvLayers"
         Me.lvLayers.UseCompatibleStateImageBehavior = False
         Me.lvLayers.View = System.Windows.Forms.View.Details
@@ -140,6 +141,8 @@ Partial Class frmSurfaceAddWMS
         Me.Controls.Add(Me.lvLayers)
         Me.Controls.Add(Me.cboSRSOverride)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.IconOptions.Icon = CType(resources.GetObject("frmSurfaceAddWMS.IconOptions.Icon"), System.Drawing.Icon)
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.map_wms
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSurfaceAddWMS"

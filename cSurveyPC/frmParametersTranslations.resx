@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,136 +118,40 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="cmdApply.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="cmdApply.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="cmdApply.Location" type="System.Drawing.Point, System.Drawing">
-    <value>426, 353</value>
-  </data>
-  <data name="cmdApply.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 25</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="cmdApply.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="cmdApply.Text" xml:space="preserve">
-    <value>Apply</value>
-  </data>
-  <data name="&gt;&gt;cmdApply.Name" xml:space="preserve">
-    <value>cmdApply</value>
-  </data>
-  <data name="&gt;&gt;cmdApply.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdApply.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;cmdApply.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="cmdOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="cmdOk.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cmdOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>254, 353</value>
-  </data>
-  <data name="cmdOk.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 25</value>
-  </data>
-  <data name="cmdOk.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="cmdOk.Text" xml:space="preserve">
-    <value>Ok</value>
-  </data>
-  <data name="&gt;&gt;cmdOk.Name" xml:space="preserve">
-    <value>cmdOk</value>
-  </data>
-  <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;cmdOk.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="cmdCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="cmdCancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cmdCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>340, 353</value>
-  </data>
-  <data name="cmdCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 25</value>
-  </data>
-  <data name="cmdCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="cmdCancel.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="&gt;&gt;cmdCancel.Name" xml:space="preserve">
-    <value>cmdCancel</value>
-  </data>
-  <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;cmdCancel.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
   <data name="chkShowLine.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
-  </data>
-  <data name="chkShowLine.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="chkShowLine.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="chkShowLine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 198</value>
+    <value>12, 196</value>
+  </data>
+  <data name="chkShowLine.Properties.Caption" xml:space="preserve">
+    <value>Translation lines</value>
   </data>
   <data name="chkShowLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 17</value>
+    <value>103, 20</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="chkShowLine.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="chkShowLine.Text" xml:space="preserve">
-    <value>Translation lines</value>
   </data>
   <data name="&gt;&gt;chkShowLine.Name" xml:space="preserve">
     <value>chkShowLine</value>
   </data>
   <data name="&gt;&gt;chkShowLine.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkShowLine.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkShowLine.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="chkShowOriginalPosition.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
-  </data>
-  <data name="chkShowOriginalPosition.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="chkShowOriginalPosition.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -258,26 +162,26 @@
   <data name="chkShowOriginalPosition.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 246</value>
   </data>
+  <data name="chkShowOriginalPosition.Properties.Caption" xml:space="preserve">
+    <value>Show original position</value>
+  </data>
   <data name="chkShowOriginalPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 17</value>
+    <value>129, 20</value>
   </data>
   <data name="chkShowOriginalPosition.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="chkShowOriginalPosition.Text" xml:space="preserve">
-    <value>Show original position</value>
   </data>
   <data name="&gt;&gt;chkShowOriginalPosition.Name" xml:space="preserve">
     <value>chkShowOriginalPosition</value>
   </data>
   <data name="&gt;&gt;chkShowOriginalPosition.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkShowOriginalPosition.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkShowOriginalPosition.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <metadata name="mnuTraslationsGrid.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>21, 17</value>
@@ -290,6 +194,9 @@
   </data>
   <data name="mnuTraslationsGridFilterByLabel.Text" xml:space="preserve">
     <value>Filter by:</value>
+  </data>
+  <data name="txtTraslationsGridFilterBy.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="txtTraslationsGridFilterBy.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 23</value>
@@ -318,35 +225,35 @@
   <data name="chkOriginalPositionColorGray.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="chkOriginalPositionColorGray.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
-  </data>
   <data name="chkOriginalPositionColorGray.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkOriginalPositionColorGray.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 296</value>
+    <value>97, 299</value>
+  </data>
+  <data name="chkOriginalPositionColorGray.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="chkOriginalPositionColorGray.Properties.Caption" xml:space="preserve">
+    <value>Gray scale</value>
   </data>
   <data name="chkOriginalPositionColorGray.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 17</value>
+    <value>102, 20</value>
   </data>
   <data name="chkOriginalPositionColorGray.TabIndex" type="System.Int32, mscorlib">
     <value>157</value>
-  </data>
-  <data name="chkOriginalPositionColorGray.Text" xml:space="preserve">
-    <value>Gray scale</value>
   </data>
   <data name="&gt;&gt;chkOriginalPositionColorGray.Name" xml:space="preserve">
     <value>chkOriginalPositionColorGray</value>
   </data>
   <data name="&gt;&gt;chkOriginalPositionColorGray.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkOriginalPositionColorGray.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkOriginalPositionColorGray.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="cboOriginalPositionColorMode.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -354,17 +261,21 @@
   <data name="cboOriginalPositionColorMode.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="cboOriginalPositionColorMode.Items" xml:space="preserve">
+  <data name="cboOriginalPositionColorMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>97, 272</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="cboOriginalPositionColorMode.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboOriginalPositionColorMode.Properties.Items" xml:space="preserve">
     <value>Caves/branches</value>
   </data>
-  <data name="cboOriginalPositionColorMode.Items1" xml:space="preserve">
+  <data name="cboOriginalPositionColorMode.Properties.Items1" xml:space="preserve">
     <value>Only caves</value>
   </data>
-  <data name="cboOriginalPositionColorMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 269</value>
-  </data>
   <data name="cboOriginalPositionColorMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 21</value>
+    <value>138, 20</value>
   </data>
   <data name="cboOriginalPositionColorMode.TabIndex" type="System.Int32, mscorlib">
     <value>155</value>
@@ -373,34 +284,31 @@
     <value>cboOriginalPositionColorMode</value>
   </data>
   <data name="&gt;&gt;cboOriginalPositionColorMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboOriginalPositionColorMode.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cboOriginalPositionColorMode.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="lblOriginalPositionColorMode.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
-  <data name="lblOriginalPositionColorMode.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="lblOriginalPositionColorMode.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
   </data>
   <data name="lblOriginalPositionColorMode.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="lblOriginalPositionColorMode.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
   </data>
   <data name="lblOriginalPositionColorMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblOriginalPositionColorMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>35, 273</value>
+    <value>35, 276</value>
   </data>
   <data name="lblOriginalPositionColorMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 13</value>
+    <value>55, 13</value>
   </data>
   <data name="lblOriginalPositionColorMode.TabIndex" type="System.Int32, mscorlib">
     <value>156</value>
@@ -412,148 +320,64 @@
     <value>lblOriginalPositionColorMode</value>
   </data>
   <data name="&gt;&gt;lblOriginalPositionColorMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblOriginalPositionColorMode.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblOriginalPositionColorMode.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="grdTraslations.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <metadata name="colCave.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colCave.HeaderText" xml:space="preserve">
-    <value>Cave</value>
-  </data>
-  <data name="colCave.Width" type="System.Int32, mscorlib">
-    <value>139</value>
-  </data>
-  <metadata name="colBranch.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colBranch.HeaderText" xml:space="preserve">
-    <value>Branch</value>
-  </data>
-  <data name="colBranch.Width" type="System.Int32, mscorlib">
-    <value>192</value>
-  </data>
-  <metadata name="colX.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colX.HeaderText" xml:space="preserve">
-    <value>X</value>
-  </data>
-  <data name="colX.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <metadata name="colY.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colY.HeaderText" xml:space="preserve">
-    <value>Y</value>
-  </data>
-  <data name="colY.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <metadata name="colPriority.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colPriority.HeaderText" xml:space="preserve">
-    <value>Priority</value>
-  </data>
-  <data name="colPriority.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="colPriority.Width" type="System.Int32, mscorlib">
-    <value>120</value>
-  </data>
-  <metadata name="colBreakPercentage.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="colBreakPercentage.HeaderText" xml:space="preserve">
-    <value>% failur</value>
-  </data>
-  <data name="colBreakPercentage.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="colBreakPercentage.Width" type="System.Int32, mscorlib">
-    <value>40</value>
-  </data>
-  <data name="grdTraslations.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="grdTraslations.Size" type="System.Drawing.Size, System.Drawing">
-    <value>491, 173</value>
-  </data>
-  <data name="grdTraslations.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;grdTraslations.Name" xml:space="preserve">
-    <value>grdTraslations</value>
-  </data>
-  <data name="&gt;&gt;grdTraslations.Type" xml:space="preserve">
-    <value>cSurveyPC.cGrid, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;grdTraslations.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;grdTraslations.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>9</value>
   </data>
   <data name="txtTranslationsThreshold.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
+  </data>
+  <data name="txtTranslationsThreshold.EditValue" type="System.Decimal, mscorlib">
+    <value>0</value>
   </data>
   <data name="txtTranslationsThreshold.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="txtTranslationsThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>169, 219</value>
+    <value>169, 220</value>
+  </data>
+  <data name="txtTranslationsThreshold.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
   </data>
   <data name="txtTranslationsThreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 21</value>
+    <value>66, 20</value>
   </data>
   <data name="txtTranslationsThreshold.TabIndex" type="System.Int32, mscorlib">
     <value>159</value>
-  </data>
-  <data name="txtTranslationsThreshold.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
   </data>
   <data name="&gt;&gt;txtTranslationsThreshold.Name" xml:space="preserve">
     <value>txtTranslationsThreshold</value>
   </data>
   <data name="&gt;&gt;txtTranslationsThreshold.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtTranslationsThreshold.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtTranslationsThreshold.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="lblTranslationsThreshold.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
-  <data name="lblTranslationsThreshold.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="lblTranslationsThreshold.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
   </data>
   <data name="lblTranslationsThreshold.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="lblTranslationsThreshold.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
   </data>
   <data name="lblTranslationsThreshold.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblTranslationsThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>35, 221</value>
+    <value>35, 222</value>
   </data>
   <data name="lblTranslationsThreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 13</value>
+    <value>123, 13</value>
   </data>
   <data name="lblTranslationsThreshold.TabIndex" type="System.Int32, mscorlib">
     <value>160</value>
@@ -565,58 +389,52 @@
     <value>lblTranslationsThreshold</value>
   </data>
   <data name="&gt;&gt;lblTranslationsThreshold.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblTranslationsThreshold.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblTranslationsThreshold.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="chkOriginalPositionOnlyTranslated.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
-  <data name="chkOriginalPositionOnlyTranslated.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="chkOriginalPositionOnlyTranslated.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="chkOriginalPositionOnlyTranslated.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
   </data>
   <data name="chkOriginalPositionOnlyTranslated.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkOriginalPositionOnlyTranslated.Location" type="System.Drawing.Point, System.Drawing">
-    <value>254, 271</value>
+    <value>254, 274</value>
+  </data>
+  <data name="chkOriginalPositionOnlyTranslated.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="chkOriginalPositionOnlyTranslated.Properties.Caption" xml:space="preserve">
+    <value>Only cave/branch translated</value>
   </data>
   <data name="chkOriginalPositionOnlyTranslated.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 17</value>
+    <value>163, 20</value>
   </data>
   <data name="chkOriginalPositionOnlyTranslated.TabIndex" type="System.Int32, mscorlib">
     <value>161</value>
-  </data>
-  <data name="chkOriginalPositionOnlyTranslated.Text" xml:space="preserve">
-    <value>Only cave/branch translated</value>
   </data>
   <data name="&gt;&gt;chkOriginalPositionOnlyTranslated.Name" xml:space="preserve">
     <value>chkOriginalPositionOnlyTranslated</value>
   </data>
   <data name="&gt;&gt;chkOriginalPositionOnlyTranslated.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkOriginalPositionOnlyTranslated.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkOriginalPositionOnlyTranslated.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="chkOriginalPositionOverDesign.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
-  </data>
-  <data name="chkOriginalPositionOverDesign.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="chkOriginalPositionOverDesign.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -625,49 +443,46 @@
     <value>NoControl</value>
   </data>
   <data name="chkOriginalPositionOverDesign.Location" type="System.Drawing.Point, System.Drawing">
-    <value>254, 296</value>
+    <value>254, 299</value>
+  </data>
+  <data name="chkOriginalPositionOverDesign.Properties.Caption" xml:space="preserve">
+    <value>Draw over design</value>
   </data>
   <data name="chkOriginalPositionOverDesign.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 17</value>
+    <value>110, 20</value>
   </data>
   <data name="chkOriginalPositionOverDesign.TabIndex" type="System.Int32, mscorlib">
     <value>162</value>
-  </data>
-  <data name="chkOriginalPositionOverDesign.Text" xml:space="preserve">
-    <value>Draw over design</value>
   </data>
   <data name="&gt;&gt;chkOriginalPositionOverDesign.Name" xml:space="preserve">
     <value>chkOriginalPositionOverDesign</value>
   </data>
   <data name="&gt;&gt;chkOriginalPositionOverDesign.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkOriginalPositionOverDesign.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkOriginalPositionOverDesign.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="lblTranslationsThresholdUM.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
-  <data name="lblTranslationsThresholdUM.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="lblTranslationsThresholdUM.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
   </data>
   <data name="lblTranslationsThresholdUM.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="lblTranslationsThresholdUM.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
   </data>
   <data name="lblTranslationsThresholdUM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblTranslationsThresholdUM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>241, 252</value>
+    <value>241, 223</value>
   </data>
   <data name="lblTranslationsThresholdUM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 13</value>
+    <value>8, 13</value>
   </data>
   <data name="lblTranslationsThresholdUM.TabIndex" type="System.Int32, mscorlib">
     <value>163</value>
@@ -679,12 +494,120 @@
     <value>lblTranslationsThresholdUM</value>
   </data>
   <data name="&gt;&gt;lblTranslationsThresholdUM.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblTranslationsThresholdUM.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblTranslationsThresholdUM.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="GridControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="GridControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 14</value>
+  </data>
+  <data name="colCaveBranchCaveColor.Caption" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="colCaveBranchCaveColor.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colCaveBranchCaveColor.VisibleIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="colCaveBranchCaveColor.Width" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="colCaveBranchCave.Caption" xml:space="preserve">
+    <value>Cave</value>
+  </data>
+  <data name="txtGridCaveName.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="colCaveBranchCave.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colCaveBranchCave.VisibleIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="colCaveBranchCave.Width" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
+  <data name="colCaveBranchBranchColor.Caption" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="colCaveBranchBranchColor.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colCaveBranchBranchColor.VisibleIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="colCaveBranchBranchColor.Width" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="colCaveBranchBranch.Caption" xml:space="preserve">
+    <value>Branch</value>
+  </data>
+  <data name="colCaveBranchBranch.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colCaveBranchBranch.VisibleIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="colCaveBranchBranch.Width" type="System.Int32, mscorlib">
+    <value>209</value>
+  </data>
+  <data name="colCaveBranchX.Caption" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="txtGridTranslationXY.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtGridTranslationXY.BeepOnError" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtGridTranslationXY.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="colCaveBranchX.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colCaveBranchX.VisibleIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="colCaveBranchX.Width" type="System.Int32, mscorlib">
+    <value>70</value>
+  </data>
+  <data name="colCaveBranchY.Caption" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="colCaveBranchY.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colCaveBranchY.VisibleIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="colCaveBranchY.Width" type="System.Int32, mscorlib">
+    <value>70</value>
+  </data>
+  <data name="GridControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>491, 176</value>
+  </data>
+  <data name="GridControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>164</value>
+  </data>
+  <data name="&gt;&gt;GridControl1.Name" xml:space="preserve">
+    <value>GridControl1</value>
+  </data>
+  <data name="&gt;&gt;GridControl1.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GridControl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;GridControl1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -693,17 +616,8 @@
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>96, 96</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>515, 390</value>
-  </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Translation:</value>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>515, 330</value>
   </data>
   <data name="&gt;&gt;mnuTraslationsGridFilterByLabel.Name" xml:space="preserve">
     <value>mnuTraslationsGridFilterByLabel</value>
@@ -729,46 +643,64 @@
   <data name="&gt;&gt;mnuTraslationsGridRemoveFilter.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;colCave.Name" xml:space="preserve">
-    <value>colCave</value>
+  <data name="&gt;&gt;GridView1.Name" xml:space="preserve">
+    <value>GridView1</value>
   </data>
-  <data name="&gt;&gt;colCave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;GridView1.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Views.Grid.GridView, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;colBranch.Name" xml:space="preserve">
-    <value>colBranch</value>
+  <data name="&gt;&gt;colCaveBranchCaveColor.Name" xml:space="preserve">
+    <value>colCaveBranchCaveColor</value>
   </data>
-  <data name="&gt;&gt;colBranch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colCaveBranchCaveColor.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;colX.Name" xml:space="preserve">
-    <value>colX</value>
+  <data name="&gt;&gt;colCaveBranchCave.Name" xml:space="preserve">
+    <value>colCaveBranchCave</value>
   </data>
-  <data name="&gt;&gt;colX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colCaveBranchCave.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;colY.Name" xml:space="preserve">
-    <value>colY</value>
+  <data name="&gt;&gt;txtGridCaveName.Name" xml:space="preserve">
+    <value>txtGridCaveName</value>
   </data>
-  <data name="&gt;&gt;colY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;txtGridCaveName.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemTextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;colPriority.Name" xml:space="preserve">
-    <value>colPriority</value>
+  <data name="&gt;&gt;colCaveBranchBranchColor.Name" xml:space="preserve">
+    <value>colCaveBranchBranchColor</value>
   </data>
-  <data name="&gt;&gt;colPriority.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colCaveBranchBranchColor.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;colBreakPercentage.Name" xml:space="preserve">
-    <value>colBreakPercentage</value>
+  <data name="&gt;&gt;colCaveBranchBranch.Name" xml:space="preserve">
+    <value>colCaveBranchBranch</value>
   </data>
-  <data name="&gt;&gt;colBreakPercentage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colCaveBranchBranch.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colCaveBranchX.Name" xml:space="preserve">
+    <value>colCaveBranchX</value>
+  </data>
+  <data name="&gt;&gt;colCaveBranchX.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtGridTranslationXY.Name" xml:space="preserve">
+    <value>txtGridTranslationXY</value>
+  </data>
+  <data name="&gt;&gt;txtGridTranslationXY.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colCaveBranchY.Name" xml:space="preserve">
+    <value>colCaveBranchY</value>
+  </data>
+  <data name="&gt;&gt;colCaveBranchY.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmParametersTranslations</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>cSurveyPC.cForm, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>DevExpress.XtraEditors.XtraUserControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
 </root>

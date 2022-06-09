@@ -10,15 +10,27 @@ Imports Diacritics.Extensions
 Imports BrightIdeasSoftware
 
 Module modExport
-    Public Sub CreateStationDictionary(TrigPointsToElaborate As List(Of String), ByRef InputDictionary As Dictionary(Of String, String), ByRef OutputDictionary As Dictionary(Of String, String))
-        '---------------------------------------------------------------------------------------------------------
+    Public Sub CreateStationDictionary(TrigPointsToElaborate As List(Of String), KeyToExclude As List(Of Integer), ByRef InputDictionary As Dictionary(Of String, String), ByRef OutputDictionary As Dictionary(Of String, String))
+        ''---------------------------------------------------------------------------------------------------------
+        'InputDictionary = New Dictionary(Of String, String)
+        'OutputDictionary = New Dictionary(Of String, String)
+
+        'Dim iIndex As Integer = 0
+        'For Each sTrigPoint As String In TrigPointsToElaborate
+        '    Call InputDictionary.Add(sTrigPoint, iIndex.ToString)
+        '    Call OutputDictionary.Add(iIndex.ToString, sTrigPoint)
+        '    iIndex += 1
+        'Next
+
         InputDictionary = New Dictionary(Of String, String)
         OutputDictionary = New Dictionary(Of String, String)
-
         Dim iIndex As Integer = 0
         For Each sTrigPoint As String In TrigPointsToElaborate
-            Call InputDictionary.Add(sTrigPoint, iIndex.ToString)
-            Call OutputDictionary.Add(iIndex.ToString, sTrigPoint)
+            Do While KeyToExclude.Contains(iIndex)
+                iIndex += 1
+            Loop
+            Call InputDictionary.Add(sTrigPoint, iIndex)
+            Call OutputDictionary.Add(iIndex, sTrigPoint)
             iIndex += 1
         Next
     End Sub
@@ -286,7 +298,7 @@ Module modExport
                 Dim xmlFolderCenterline As XmlElement = Xml.CreateElement("Folder")
                 Call GoogleKmlAppendNode(Xml, xmlFolderCenterline, "name", If(bUseCadastralIDInCaveNames AndAlso oCave.ID <> "", oCave.ID & " - ", "") & oCave.Name)
                 For Each oBranch As cCaveInfoBranch In oCave.Branches.GetAllBranchesWithEmpty.Values
-                    Dim oSegments As cISegmentCollection = oBranch.GetSegments(cOptions.HighlightModeEnum.ExactMatch)
+                    Dim oSegments As cISegmentCollection = oBranch.GetSegments(cOptionsDesign.HighlightModeEnum.ExactMatch)
                     If oSegments.Count > 0 Then
                         Dim oColor As Color = oBranch.GetColor(Color.White)
                         Dim sMainLineStyle As String = "line_" & FormatCaveBranchName(oCave.Name, oBranch.Path)
@@ -322,7 +334,7 @@ Module modExport
                 Dim xmlFolderCenterline As XmlElement = Xml.CreateElement("Folder")
                 Call GoogleKmlAppendNode(Xml, xmlFolderCenterline, "name", If(bUseCadastralIDInCaveNames AndAlso oCave.ID <> "", oCave.ID & " - ", "") & oCave.Name)
                 For Each oBranch As cCaveInfoBranch In oCave.Branches.GetAllBranchesWithEmpty.Values
-                    Dim oSegments As cISegmentCollection = oBranch.GetSegments(cOptions.HighlightModeEnum.ExactMatch)
+                    Dim oSegments As cISegmentCollection = oBranch.GetSegments(cOptionsCenterline.HighlightModeEnum.ExactMatch)
                     If oSegments.Count > 0 Then
                         Dim oColor As Color = oBranch.GetColor(Color.White)
                         Dim sSplayLineStyle As String = "splay_" & FormatCaveBranchName(oCave.Name, oBranch.Path)
@@ -533,7 +545,7 @@ Module modExport
             Dim oSurveys As List(Of cSurveyPC.cSurvey.cSurvey) = New List(Of cSurveyPC.cSurvey.cSurvey)
             Call oSurveys.Add(Survey)
             If (Options And GoogleKMLExportOptionsEnum.LinkedSurveys) = GoogleKMLExportOptionsEnum.LinkedSurveys Then
-                Call oSurveys.AddRange(Survey.LinkedSurveys.Select(Function(oItem) oItem.LinkedSurvey))
+                Call oSurveys.AddRange(Survey.LinkedSurveys.Where(Function(oItem) oItem.IsUsable).Select(Function(oItem) oItem.LinkedSurvey))
             End If
 
             Dim bUseCadastralIDInCaveNames As Boolean = (Options And GoogleKMLExportOptionsEnum.UseCadastralIDInCaveNames) = GoogleKMLExportOptionsEnum.UseCadastralIDInCaveNames
@@ -628,10 +640,13 @@ Module modExport
         ExportSplay = &H1
         ExportSplayFlag = &H2
         CalculateSplay = &H3
+        SegmentID = &H4
+        Loch = &H8
 
         ExportSketch = &H10
         ExportSurfaceElevationsData = &H20
         'ExportSurfaceElevationsReferences = &H40
+
         TrigpointExportDictionary = &H100
         TrigpointExportNameAsComment = &H200
         UseCadastralIDinCaveNames = &H400
@@ -793,303 +808,303 @@ Module modExport
         End If
     End Sub
 
-    Private Function pHolosExportIndexAddNode(XML As XmlDocument, Parent As XmlElement, Name As String, Text As String) As XmlElement
-        Dim oNode As XmlElement = XML.CreateElement(Name)
-        oNode.InnerText = Text
-        Call Parent.AppendChild(oNode)
-        Return oNode
-    End Function
+    'Private Function pHolosExportIndexAddNode(XML As XmlDocument, Parent As XmlElement, Name As String, Text As String) As XmlElement
+    '    Dim oNode As XmlElement = XML.CreateElement(Name)
+    '    oNode.InnerText = Text
+    '    Call Parent.AppendChild(oNode)
+    '    Return oNode
+    'End Function
 
-    Private Class cHolosExportOptions
-        Public ScaleFactor As Single
-        Public ScaleStep As Integer
-        Public Profile As HolosProfileEnum
-        Public Options As HolosExportOptionsEnum
-    End Class
+    'Private Class cHolosExportOptions
+    '    Public ScaleFactor As Single
+    '    Public ScaleStep As Integer
+    '    Public Profile As HolosProfileEnum
+    '    Public Options As HolosExportOptionsEnum
+    'End Class
 
-    Private Sub pHolosExportIndex(Survey As cSurvey.cSurvey, Filename As String, Options As cHolosExportOptions)
-        Dim oXML As XmlDocument = New XmlDocument
-        Dim oXMLRoot As XmlElement = oXML.CreateElement("holos")
-        Dim sBaseFilename As String = Path.GetFileName(Filename)
-        '<name>Gessi di Rontana</name>
-        '<description>Vena del Gesso romagnola - Gessi di Rontana</description>
-        '<url>http://www.venadelgesso.org/</url>
-        '<utmref zone="32" band="T" /> 
-        '<terrain files="rontana.elevation.xml" />
-        '<contourlines files="rontana.contourlines.100.xml;rontana.contourlines.25.xml;rontana.contourlines.1.xml" />
-        '<points files="rontana.points.xml" />
-        '<caves files="fantinigaribaldi.cave.xml;faenza.cave.xml;rontana.cave.xml" />
-        Call pHolosExportIndexAddNode(oXML, oXMLRoot, "name", Survey.Name)
-        Call pHolosExportIndexAddNode(oXML, oXMLRoot, "description", Survey.Properties.Description)
-        Call pHolosExportIndexAddNode(oXML, oXMLRoot, "url", "")
+    'Private Sub pHolosExportIndex(Survey As cSurvey.cSurvey, Filename As String, Options As cHolosExportOptions)
+    '    Dim oXML As XmlDocument = New XmlDocument
+    '    Dim oXMLRoot As XmlElement = oXML.CreateElement("holos")
+    '    Dim sBaseFilename As String = Path.GetFileName(Filename)
+    '    '<name>Gessi di Rontana</name>
+    '    '<description>Vena del Gesso romagnola - Gessi di Rontana</description>
+    '    '<url>http://www.venadelgesso.org/</url>
+    '    '<utmref zone="32" band="T" /> 
+    '    '<terrain files="rontana.elevation.xml" />
+    '    '<contourlines files="rontana.contourlines.100.xml;rontana.contourlines.25.xml;rontana.contourlines.1.xml" />
+    '    '<points files="rontana.points.xml" />
+    '    '<caves files="fantinigaribaldi.cave.xml;faenza.cave.xml;rontana.cave.xml" />
+    '    Call pHolosExportIndexAddNode(oXML, oXMLRoot, "name", Survey.Name)
+    '    Call pHolosExportIndexAddNode(oXML, oXMLRoot, "description", Survey.Properties.Description)
+    '    Call pHolosExportIndexAddNode(oXML, oXMLRoot, "url", "")
 
-        Dim oXMLTerrain As XmlElement = pHolosExportIndexAddNode(oXML, oXMLRoot, "terrain", "")
-        Call oXMLTerrain.SetAttribute("files", sBaseFilename & ".elevation.xml")
-        For Each oOrtophoto As cSurvey.Surface.cOrthoPhoto In Survey.Surface.OrthoPhotos
-            'If oOrtophoto.ShowIn3D Then
-            Dim oXMLTerrainOrtophoto As XmlElement = pHolosExportIndexAddNode(oXML, oXMLTerrain, "texture", sBaseFilename & "." & pHolosGetSafeFilename(oOrtophoto.Name) & "_%STEP%.jpg")
-            Call oXMLTerrainOrtophoto.SetAttribute("name", oOrtophoto.Name)
-            'End If
-        Next
+    '    Dim oXMLTerrain As XmlElement = pHolosExportIndexAddNode(oXML, oXMLRoot, "terrain", "")
+    '    Call oXMLTerrain.SetAttribute("files", sBaseFilename & ".elevation.xml")
+    '    For Each oOrtophoto As cSurvey.Surface.cOrthoPhoto In Survey.Surface.OrthoPhotos
+    '        'If oOrtophoto.ShowIn3D Then
+    '        Dim oXMLTerrainOrtophoto As XmlElement = pHolosExportIndexAddNode(oXML, oXMLTerrain, "texture", sBaseFilename & "." & pHolosGetSafeFilename(oOrtophoto.Name) & "_%STEP%.jpg")
+    '        Call oXMLTerrainOrtophoto.SetAttribute("name", oOrtophoto.Name)
+    '        'End If
+    '    Next
 
-        Call pHolosExportIndexAddNode(oXML, oXMLRoot, "contourlines", "")
+    '    Call pHolosExportIndexAddNode(oXML, oXMLRoot, "contourlines", "")
 
-        Call pHolosExportIndexAddNode(oXML, oXMLRoot, "points", "")
+    '    Call pHolosExportIndexAddNode(oXML, oXMLRoot, "points", "")
 
-        Dim oXMLCaves As XmlElement = pHolosExportIndexAddNode(oXML, oXMLRoot, "caves", "")
-        Dim sCaves As String = ""
-        For Each oCaveInfo As cCaveInfo In Survey.Properties.CaveInfos
-            If sCaves <> "" Then sCaves &= ";"
-            sCaves &= sBaseFilename & "." & pHolosGetSafeFilename(oCaveInfo.Name) & ".cave.xml"
-        Next
-        Call oXMLCaves.SetAttribute("files", sCaves)
+    '    Dim oXMLCaves As XmlElement = pHolosExportIndexAddNode(oXML, oXMLRoot, "caves", "")
+    '    Dim sCaves As String = ""
+    '    For Each oCaveInfo As cCaveInfo In Survey.Properties.CaveInfos
+    '        If sCaves <> "" Then sCaves &= ";"
+    '        sCaves &= sBaseFilename & "." & pHolosGetSafeFilename(oCaveInfo.Name) & ".cave.xml"
+    '    Next
+    '    Call oXMLCaves.SetAttribute("files", sCaves)
 
-        Call oXML.AppendChild(oXMLRoot)
-        Call XMLAddDeclaration(oXML)
-        Call oXML.Save(Filename & ".index.xml")
-    End Sub
+    '    Call oXML.AppendChild(oXMLRoot)
+    '    Call XMLAddDeclaration(oXML)
+    '    Call oXML.Save(Filename & ".index.xml")
+    'End Sub
 
-    Private Sub pHolosExportElevation(Survey As cSurvey.cSurvey, Filename As String)
-        Dim oXML As XmlDocument = New XmlDocument
-        Dim oXMLRoot As XmlElement = oXML.CreateElement("holos")
-        Dim oXMLElevation As XmlElement = oXML.CreateElement("elevation")
-        If Survey.Surface.Elevations.Default Is Nothing Then
-            Dim sOrigin As String = Survey.TrigPoints.GetOrigin.Name
-            Dim oOriginPos As Calculate.cTrigPointCoordinate = Survey.Calculate.TrigPoints(sOrigin).Coordinate
-            Dim oOriginUTM As modUTM.UTM = modUTM.WGS84ToUTM(oOriginPos)
-            Call oXMLElevation.SetAttribute("c", modNumbers.NumberToString(oOriginUTM.East) & ";" & modNumbers.NumberToString(oOriginUTM.North) & ";" & modNumbers.NumberToString(oOriginPos.Altitude))
-            Call oXMLElevation.SetAttribute("rows", 1)
-            Call oXMLElevation.SetAttribute("cols", 1)
-            Call oXMLElevation.SetAttribute("sizex", 5)
-            Call oXMLElevation.SetAttribute("sizey", 5)
-            Call oXMLElevation.SetAttribute("nodatavalue", -99999)
-            oXMLElevation.InnerText = "-99999"
-        Else
-            Dim oDefault As cSurvey.Surface.cElevation = Survey.Surface.Elevations.Default
-            Dim oOriginPos As cSurvey.cCoordinate = oDefault.GetCoordinate(Surface.cElevation.GetCoordinateCornerEnum.TopLeft)
-            Dim oOriginUTM As modUTM.UTM = modUTM.WGS84ToUTM(oOriginPos)
-            'da cambiare con i dati corretti
-            Call oXMLElevation.SetAttribute("c", modNumbers.NumberToString(oOriginUTM.East) & ";" & modNumbers.NumberToString(oOriginUTM.North) & ";" & modNumbers.NumberToString(0))
-            Call oXMLElevation.SetAttribute("rows", oDefault.Rows)
-            Call oXMLElevation.SetAttribute("cols", oDefault.Columns)
-            Call oXMLElevation.SetAttribute("sizex", modNumbers.NumberToString(oDefault.XSize))
-            Call oXMLElevation.SetAttribute("sizey", modNumbers.NumberToString(oDefault.YSize))
-            Call oXMLElevation.SetAttribute("nodatavalue", modNumbers.NumberToString(modNumbers.MathRound(oDefault.NoDataValue, 0)))
-            Dim oData As System.Text.StringBuilder = New System.Text.StringBuilder
-            For iRow As Integer = 0 To oDefault.Rows - 1
-                For iCol As Integer = 0 To oDefault.Columns - 1
-                    Call oData.Append(modNumbers.NumberToString(modNumbers.MathRound(oDefault(iRow, iCol), 0)) & " ")
-                Next
-                Call oData.AppendLine()
-            Next
-            oXMLElevation.InnerText = oData.ToString
-        End If
-        Call oXMLRoot.AppendChild(oXMLElevation)
-        Call oXML.AppendChild(oXMLRoot)
-        Call XMLAddDeclaration(oXML)
-        Call oXML.Save(Filename & ".elevation.xml")
-    End Sub
+    'Private Sub pHolosExportElevation(Survey As cSurvey.cSurvey, Filename As String)
+    '    Dim oXML As XmlDocument = New XmlDocument
+    '    Dim oXMLRoot As XmlElement = oXML.CreateElement("holos")
+    '    Dim oXMLElevation As XmlElement = oXML.CreateElement("elevation")
+    '    If Survey.Surface.Elevations.Default Is Nothing Then
+    '        Dim sOrigin As String = Survey.TrigPoints.GetOrigin.Name
+    '        Dim oOriginPos As Calculate.cTrigPointCoordinate = Survey.Calculate.TrigPoints(sOrigin).Coordinate
+    '        Dim oOriginUTM As modUTM.UTM = modUTM.WGS84ToUTM(oOriginPos)
+    '        Call oXMLElevation.SetAttribute("c", modNumbers.NumberToString(oOriginUTM.East) & ";" & modNumbers.NumberToString(oOriginUTM.North) & ";" & modNumbers.NumberToString(oOriginPos.Altitude))
+    '        Call oXMLElevation.SetAttribute("rows", 1)
+    '        Call oXMLElevation.SetAttribute("cols", 1)
+    '        Call oXMLElevation.SetAttribute("sizex", 5)
+    '        Call oXMLElevation.SetAttribute("sizey", 5)
+    '        Call oXMLElevation.SetAttribute("nodatavalue", -99999)
+    '        oXMLElevation.InnerText = "-99999"
+    '    Else
+    '        Dim oDefault As cSurvey.Surface.cElevation = Survey.Surface.Elevations.Default
+    '        Dim oOriginPos As cSurvey.cCoordinate = oDefault.GetCoordinate(Surface.cElevation.GetCoordinateCornerEnum.TopLeft)
+    '        Dim oOriginUTM As modUTM.UTM = modUTM.WGS84ToUTM(oOriginPos)
+    '        'da cambiare con i dati corretti
+    '        Call oXMLElevation.SetAttribute("c", modNumbers.NumberToString(oOriginUTM.East) & ";" & modNumbers.NumberToString(oOriginUTM.North) & ";" & modNumbers.NumberToString(0))
+    '        Call oXMLElevation.SetAttribute("rows", oDefault.Rows)
+    '        Call oXMLElevation.SetAttribute("cols", oDefault.Columns)
+    '        Call oXMLElevation.SetAttribute("sizex", modNumbers.NumberToString(oDefault.XSize))
+    '        Call oXMLElevation.SetAttribute("sizey", modNumbers.NumberToString(oDefault.YSize))
+    '        Call oXMLElevation.SetAttribute("nodatavalue", modNumbers.NumberToString(modNumbers.MathRound(oDefault.NoDataValue, 0)))
+    '        Dim oData As System.Text.StringBuilder = New System.Text.StringBuilder
+    '        For iRow As Integer = 0 To oDefault.Rows - 1
+    '            For iCol As Integer = 0 To oDefault.Columns - 1
+    '                Call oData.Append(modNumbers.NumberToString(modNumbers.MathRound(oDefault(iRow, iCol), 0)) & " ")
+    '            Next
+    '            Call oData.AppendLine()
+    '        Next
+    '        oXMLElevation.InnerText = oData.ToString
+    '    End If
+    '    Call oXMLRoot.AppendChild(oXMLElevation)
+    '    Call oXML.AppendChild(oXMLRoot)
+    '    Call XMLAddDeclaration(oXML)
+    '    Call oXML.Save(Filename & ".elevation.xml")
+    'End Sub
 
-    Private Sub pHolosExportTexture(Survey As cSurvey.cSurvey, Filename As String, Options As cHolosExportOptions)
-        Dim oElevation As cSurvey.Surface.cElevation = Survey.Surface.Elevations.Default
-        If Not oElevation Is Nothing Then
-            Dim oPos As cSurvey.cCoordinate = oElevation.GetCoordinate(Surface.cElevation.GetCoordinateCornerEnum.TopLeft)
-            Dim oPosUTM As modUTM.UTM = modUTM.WGS84ToUTM(oPos)
-            Dim iWidth As Integer = oElevation.Columns
-            Dim iHeight As Integer = oElevation.Rows
-            Dim sXSize As Single = oElevation.XSize
-            Dim sYSize As Single = oElevation.YSize
-            For Each oOrtophoto As cSurvey.Surface.cOrthoPhoto In Survey.Surface.OrthoPhotos
-                'If oOrtophoto.ShowIn3D Then
-                Dim oTextureImage As Image = oOrtophoto.Photo
-                Dim oTexturePos1 As cSurvey.cCoordinate = oOrtophoto.GetCoordinate(Surface.cElevation.GetCoordinateCornerEnum.TopLeft)
-                Dim oTexturePos2 As cSurvey.cCoordinate = oOrtophoto.GetCoordinate(Surface.cElevation.GetCoordinateCornerEnum.BottomRight)
-                Dim oTextureUTM1 As modUTM.UTM = modUTM.WGS84ToUTM(oTexturePos1)
-                Dim oTextureUTM2 As modUTM.UTM = modUTM.WGS84ToUTM(oTexturePos2)
-                Dim iTextureLeft As Integer = (oTextureUTM1.East - oPosUTM.East) / sXSize
-                Dim iTextureTop As Integer = (oPosUTM.North - oTextureUTM1.North) / sYSize
-                Dim iTextureWidth As Integer = (oTextureUTM2.East - oTextureUTM1.East) / sXSize
-                Dim iTextureHeight As Integer = (oTextureUTM1.North - oTextureUTM2.North) / sYSize
+    'Private Sub pHolosExportTexture(Survey As cSurvey.cSurvey, Filename As String, Options As cHolosExportOptions)
+    '    Dim oElevation As cSurvey.Surface.cElevation = Survey.Surface.Elevations.Default
+    '    If Not oElevation Is Nothing Then
+    '        Dim oPos As cSurvey.cCoordinate = oElevation.GetCoordinate(Surface.cElevation.GetCoordinateCornerEnum.TopLeft)
+    '        Dim oPosUTM As modUTM.UTM = modUTM.WGS84ToUTM(oPos)
+    '        Dim iWidth As Integer = oElevation.Columns
+    '        Dim iHeight As Integer = oElevation.Rows
+    '        Dim sXSize As Single = oElevation.XSize
+    '        Dim sYSize As Single = oElevation.YSize
+    '        For Each oOrtophoto As cSurvey.Surface.cOrthoPhoto In Survey.Surface.OrthoPhotos
+    '            'If oOrtophoto.ShowIn3D Then
+    '            Dim oTextureImage As Image = oOrtophoto.Photo
+    '            Dim oTexturePos1 As cSurvey.cCoordinate = oOrtophoto.GetCoordinate(Surface.cElevation.GetCoordinateCornerEnum.TopLeft)
+    '            Dim oTexturePos2 As cSurvey.cCoordinate = oOrtophoto.GetCoordinate(Surface.cElevation.GetCoordinateCornerEnum.BottomRight)
+    '            Dim oTextureUTM1 As modUTM.UTM = modUTM.WGS84ToUTM(oTexturePos1)
+    '            Dim oTextureUTM2 As modUTM.UTM = modUTM.WGS84ToUTM(oTexturePos2)
+    '            Dim iTextureLeft As Integer = (oTextureUTM1.East - oPosUTM.East) / sXSize
+    '            Dim iTextureTop As Integer = (oPosUTM.North - oTextureUTM1.North) / sYSize
+    '            Dim iTextureWidth As Integer = (oTextureUTM2.East - oTextureUTM1.East) / sXSize
+    '            Dim iTextureHeight As Integer = (oTextureUTM1.North - oTextureUTM2.North) / sYSize
 
-                For iScale As Integer = 1 To Options.ScaleStep - 1
-                    Dim sScaleFactor As Single = Options.ScaleFactor ^ iScale
-                    Dim sTextureFilename As String = Filename & "." & pHolosGetSafeFilename(oOrtophoto.Name) & "_" & iScale & ".jpg"
+    '            For iScale As Integer = 1 To Options.ScaleStep - 1
+    '                Dim sScaleFactor As Single = Options.ScaleFactor ^ iScale
+    '                Dim sTextureFilename As String = Filename & "." & pHolosGetSafeFilename(oOrtophoto.Name) & "_" & iScale & ".jpg"
 
-                    Dim sScale As Single = (oTextureImage.Width / iTextureWidth) / sScaleFactor
-                    Dim iScaledWidth As Integer = iWidth * sScale
-                    Dim iScaledHeight As Integer = iHeight * sScale
+    '                Dim sScale As Single = (oTextureImage.Width / iTextureWidth) / sScaleFactor
+    '                Dim iScaledWidth As Integer = iWidth * sScale
+    '                Dim iScaledHeight As Integer = iHeight * sScale
 
-                    Using oImage As Image = New Bitmap(iScaledWidth, iScaledHeight)
-                        Using oGr As Graphics = Graphics.FromImage(oImage)
-                            Call oGr.DrawImage(oTextureImage, iTextureLeft * sScale, iTextureTop * sScale, iTextureWidth * sScale, iTextureHeight * sScale)
-                            Call oImage.Save(sTextureFilename)
-                        End Using
-                    End Using
-                Next
-                'End If
-            Next
-        End If
-    End Sub
+    '                Using oImage As Image = New Bitmap(iScaledWidth, iScaledHeight)
+    '                    Using oGr As Graphics = Graphics.FromImage(oImage)
+    '                        Call oGr.DrawImage(oTextureImage, iTextureLeft * sScale, iTextureTop * sScale, iTextureWidth * sScale, iTextureHeight * sScale)
+    '                        Call oImage.Save(sTextureFilename)
+    '                    End Using
+    '                End Using
+    '            Next
+    '            'End If
+    '        Next
+    '    End If
+    'End Sub
 
-    Private Sub pHolosExportCave(Survey As cSurvey.cSurvey, Filename As String, Options As cHolosExportOptions)
-        Dim bLRUD As Boolean = (Options.Options And HolosExportOptionsEnum.LRUDdata) = HolosExportOptionsEnum.LRUDdata
-        Dim bColor As Boolean = (Options.Options And HolosExportOptionsEnum.Colors) = HolosExportOptionsEnum.Colors
-        For Each oCaveInfo As cCaveInfo In Survey.Properties.CaveInfos
-            Dim oXML As XmlDocument = New XmlDocument
-            Dim oXMLRoot As XmlElement = oXML.CreateElement("holos")
-            Call oXMLRoot.SetAttribute("version", "1")
-            Dim oXMLCave As XmlElement = oXML.CreateElement("cave")
-            Call oXMLCave.SetAttribute("name", oCaveInfo.Name)
-            Call oXMLCave.SetAttribute("id", oCaveInfo.ID)
-            Dim oColor As Color = oCaveInfo.Color
-            Call oXMLCave.SetAttribute("color", ColorTranslator.ToHtml(oColor))
-            Call oXMLCave.SetAttribute("lrud", IIf(bLRUD, "1", "0"))
+    'Private Sub pHolosExportCave(Survey As cSurvey.cSurvey, Filename As String, Options As cHolosExportOptions)
+    '    Dim bLRUD As Boolean = (Options.Options And HolosExportOptionsEnum.LRUDdata) = HolosExportOptionsEnum.LRUDdata
+    '    Dim bColor As Boolean = (Options.Options And HolosExportOptionsEnum.Colors) = HolosExportOptionsEnum.Colors
+    '    For Each oCaveInfo As cCaveInfo In Survey.Properties.CaveInfos
+    '        Dim oXML As XmlDocument = New XmlDocument
+    '        Dim oXMLRoot As XmlElement = oXML.CreateElement("holos")
+    '        Call oXMLRoot.SetAttribute("version", "1")
+    '        Dim oXMLCave As XmlElement = oXML.CreateElement("cave")
+    '        Call oXMLCave.SetAttribute("name", oCaveInfo.Name)
+    '        Call oXMLCave.SetAttribute("id", oCaveInfo.ID)
+    '        Dim oColor As Color = oCaveInfo.Color
+    '        Call oXMLCave.SetAttribute("color", ColorTranslator.ToHtml(oColor))
+    '        Call oXMLCave.SetAttribute("lrud", IIf(bLRUD, "1", "0"))
 
-            Dim oTrigpoints As cTrigPointCollection = New cTrigPointCollection(Survey)
-            Dim oSegments As cSegmentCollection = Survey.Segments.GetCaveSegments(oCaveInfo)
+    '        Dim oTrigpoints As cTrigPointCollection = New cTrigPointCollection(Survey)
+    '        Dim oSegments As cSegmentCollection = Survey.Segments.GetCaveSegments(oCaveInfo)
 
-            Dim oXMLPlot As XmlElement = oXML.CreateElement("plot")
+    '        Dim oXMLPlot As XmlElement = oXML.CreateElement("plot")
 
-            Dim oEntrance As cTrigPoint = Survey.TrigPoints.GetCaveFirstEntrance(oCaveInfo, cTrigPoint.EntranceTypeEnum.MainCaveEntrace)
-            If oEntrance Is Nothing Then
-                oEntrance = Survey.TrigPoints.GetOrigin
-            End If
-            Dim sOrigin As String = oEntrance.Name
-            Call oXMLPlot.SetAttribute("origin", sOrigin)
-            Dim oOriginPos As Calculate.cTrigPointCoordinate = Survey.Calculate.TrigPoints(sOrigin).Coordinate
-            Dim oOriginUTM As modUTM.UTM = modUTM.WGS84ToUTM(oOriginPos.Longitude, oOriginPos.Latitude)
-            Call oXMLPlot.SetAttribute("c", modNumbers.NumberToString(oOriginUTM.East) & ";" & modNumbers.NumberToString(oOriginUTM.North) & ";" & modNumbers.NumberToString(oOriginPos.Altitude))
+    '        Dim oEntrance As cTrigPoint = Survey.TrigPoints.GetCaveFirstEntrance(oCaveInfo, cTrigPoint.EntranceTypeEnum.MainCaveEntrace)
+    '        If oEntrance Is Nothing Then
+    '            oEntrance = Survey.TrigPoints.GetOrigin
+    '        End If
+    '        Dim sOrigin As String = oEntrance.Name
+    '        Call oXMLPlot.SetAttribute("origin", sOrigin)
+    '        Dim oOriginPos As Calculate.cTrigPointCoordinate = Survey.Calculate.TrigPoints(sOrigin).Coordinate
+    '        Dim oOriginUTM As modUTM.UTM = modUTM.WGS84ToUTM(oOriginPos.Longitude, oOriginPos.Latitude)
+    '        Call oXMLPlot.SetAttribute("c", modNumbers.NumberToString(oOriginUTM.East) & ";" & modNumbers.NumberToString(oOriginUTM.North) & ";" & modNumbers.NumberToString(oOriginPos.Altitude))
 
-            Dim oXMLPoints As XmlElement = oXML.CreateElement("stations")
-            Dim oXMLSegments As XmlElement = oXML.CreateElement("shots")
+    '        Dim oXMLPoints As XmlElement = oXML.CreateElement("stations")
+    '        Dim oXMLSegments As XmlElement = oXML.CreateElement("shots")
 
-            Dim oPointPlans As Dictionary(Of String, PointF) = New Dictionary(Of String, PointF)
-            Dim oPointProfiles As Dictionary(Of String, PointF) = New Dictionary(Of String, PointF)
+    '        Dim oPointPlans As Dictionary(Of String, PointF) = New Dictionary(Of String, PointF)
+    '        Dim oPointProfiles As Dictionary(Of String, PointF) = New Dictionary(Of String, PointF)
 
-            Dim oPointUps As Dictionary(Of String, PointF) = New Dictionary(Of String, PointF)
-            Dim oPointDowns As Dictionary(Of String, PointF) = New Dictionary(Of String, PointF)
-            Dim oPointLefts As Dictionary(Of String, PointF) = New Dictionary(Of String, PointF)
-            Dim oPointRights As Dictionary(Of String, PointF) = New Dictionary(Of String, PointF)
+    '        Dim oPointUps As Dictionary(Of String, PointF) = New Dictionary(Of String, PointF)
+    '        Dim oPointDowns As Dictionary(Of String, PointF) = New Dictionary(Of String, PointF)
+    '        Dim oPointLefts As Dictionary(Of String, PointF) = New Dictionary(Of String, PointF)
+    '        Dim oPointRights As Dictionary(Of String, PointF) = New Dictionary(Of String, PointF)
 
-            For Each oSegment As cSegment In oSegments
-                If oSegment.IsValid Then
-                    Dim oFrom As cTrigPoint = oSegment.GetFromTrigPoint
-                    Dim oTo As cTrigPoint = oSegment.GetToTrigPoint
-                    If Not oTrigpoints.Contains(oFrom) Then oTrigpoints.Append(oFrom)
-                    If Not oTrigpoints.Contains(oTo) Then oTrigpoints.Append(oTo)
-                    If Not oSegment.IsSelfDefined Then
-                        Dim oXMLSegment As XmlElement = oXML.CreateElement("shot")
-                        Dim sFrom As String = oFrom.Name
-                        Dim sTo As String = oTo.Name
+    '        For Each oSegment As cSegment In oSegments
+    '            If oSegment.IsValid Then
+    '                Dim oFrom As cTrigPoint = oSegment.GetFromTrigPoint
+    '                Dim oTo As cTrigPoint = oSegment.GetToTrigPoint
+    '                If Not oTrigpoints.Contains(oFrom) Then oTrigpoints.Append(oFrom)
+    '                If Not oTrigpoints.Contains(oTo) Then oTrigpoints.Append(oTo)
+    '                If Not oSegment.IsSelfDefined Then
+    '                    Dim oXMLSegment As XmlElement = oXML.CreateElement("shot")
+    '                    Dim sFrom As String = oFrom.Name
+    '                    Dim sTo As String = oTo.Name
 
-                        Call oXMLSegment.SetAttribute("f", sFrom)
-                        Call oXMLSegment.SetAttribute("t", sTo)
-                        If bColor Then Call oXMLSegment.SetAttribute("color", ColorTranslator.ToHtml(Survey.Properties.CaveInfos.GetColor(oSegment, oColor)))
-                        Call oXMLSegments.AppendChild(oXMLSegment)
+    '                    Call oXMLSegment.SetAttribute("f", sFrom)
+    '                    Call oXMLSegment.SetAttribute("t", sTo)
+    '                    If bColor Then Call oXMLSegment.SetAttribute("color", ColorTranslator.ToHtml(Survey.Properties.CaveInfos.GetColor(oSegment, oColor)))
+    '                    Call oXMLSegments.AppendChild(oXMLSegment)
 
-                        If Not oPointPlans.ContainsKey(sFrom) Then
-                            Call oPointPlans.Add(sFrom, oSegment.Data.Plan.FromPoint)
-                            Call oPointProfiles.Add(sFrom, oSegment.Data.Profile.FromPoint)
-                            'End If
-                            'If Not oPointUps.ContainsKey(sFrom) Then
-                            If bLRUD Then
-                                Call oPointUps.Add(sFrom, oSegment.Data.Profile.FromSidePointUp)
-                                Call oPointDowns.Add(sFrom, oSegment.Data.Profile.FromSidePointDown)
-                                Call oPointLefts.Add(sFrom, oSegment.Data.Plan.FromSidePointLeft)
-                                Call oPointRights.Add(sFrom, oSegment.Data.Plan.FromSidePointRight)
-                            End If
-                        End If
+    '                    If Not oPointPlans.ContainsKey(sFrom) Then
+    '                        Call oPointPlans.Add(sFrom, oSegment.Data.Plan.FromPoint)
+    '                        Call oPointProfiles.Add(sFrom, oSegment.Data.Profile.FromPoint)
+    '                        'End If
+    '                        'If Not oPointUps.ContainsKey(sFrom) Then
+    '                        If bLRUD Then
+    '                            Call oPointUps.Add(sFrom, oSegment.Data.Profile.FromSidePointUp)
+    '                            Call oPointDowns.Add(sFrom, oSegment.Data.Profile.FromSidePointDown)
+    '                            Call oPointLefts.Add(sFrom, oSegment.Data.Plan.FromSidePointLeft)
+    '                            Call oPointRights.Add(sFrom, oSegment.Data.Plan.FromSidePointRight)
+    '                        End If
+    '                    End If
 
-                        If Not oPointPlans.ContainsKey(sTo) Then
-                            Call oPointPlans.Add(sTo, oSegment.Data.Plan.ToPoint)
-                            Call oPointProfiles.Add(sTo, oSegment.Data.Profile.ToPoint)
-                            'End If
-                            'If Not oPointLefts.ContainsKey(sTo) Then
-                            If bLRUD Then
-                                Call oPointUps.Add(sTo, oSegment.Data.Profile.ToSidePointUp)
-                                Call oPointDowns.Add(sTo, oSegment.Data.Profile.ToSidePointDown)
-                                Call oPointLefts.Add(sTo, oSegment.Data.Plan.ToSidePointLeft)
-                                Call oPointRights.Add(sTo, oSegment.Data.Plan.ToSidePointRight)
-                            End If
-                        End If
-                    End If
-                End If
-            Next
+    '                    If Not oPointPlans.ContainsKey(sTo) Then
+    '                        Call oPointPlans.Add(sTo, oSegment.Data.Plan.ToPoint)
+    '                        Call oPointProfiles.Add(sTo, oSegment.Data.Profile.ToPoint)
+    '                        'End If
+    '                        'If Not oPointLefts.ContainsKey(sTo) Then
+    '                        If bLRUD Then
+    '                            Call oPointUps.Add(sTo, oSegment.Data.Profile.ToSidePointUp)
+    '                            Call oPointDowns.Add(sTo, oSegment.Data.Profile.ToSidePointDown)
+    '                            Call oPointLefts.Add(sTo, oSegment.Data.Plan.ToSidePointLeft)
+    '                            Call oPointRights.Add(sTo, oSegment.Data.Plan.ToSidePointRight)
+    '                        End If
+    '                    End If
+    '                End If
+    '            End If
+    '        Next
 
-            Dim oEntrancePoint As Calculate.cTrigPointPoint = Survey.Calculate.TrigPoints(oEntrance).Point
-            For Each oTrigPoint As cTrigPoint In oTrigpoints
-                Dim oXMLPoint As XmlElement = oXML.CreateElement("station")
-                Dim sName As String = oTrigPoint.Name
-                Call oXMLPoint.SetAttribute("name", sName)
-                Dim oPoint As Calculate.cTrigPointPoint = Survey.Calculate.TrigPoints(sName).Point
+    '        Dim oEntrancePoint As Calculate.cTrigPointPoint = Survey.Calculate.TrigPoints(oEntrance).Point
+    '        For Each oTrigPoint As cTrigPoint In oTrigpoints
+    '            Dim oXMLPoint As XmlElement = oXML.CreateElement("station")
+    '            Dim sName As String = oTrigPoint.Name
+    '            Call oXMLPoint.SetAttribute("name", sName)
+    '            Dim oPoint As Calculate.cTrigPointPoint = Survey.Calculate.TrigPoints(sName).Point
 
-                Dim x As Decimal = -(oEntrancePoint.X - oPoint.X) ' oUTM.East - oOriginUTM.East
-                Dim y As Decimal = oEntrancePoint.Y - oPoint.Y  'oUTM.North - oOriginUTM.North
-                Dim z As Decimal = oEntrancePoint.Z - oPoint.Z ' oPos.Altitude - oOriginPos.Altitude
-                Call oXMLPoint.SetAttribute("c", modNumbers.NumberToString(x) & ";" & modNumbers.NumberToString(y) & ";" & modNumbers.NumberToString(z))
+    '            Dim x As Decimal = -(oEntrancePoint.X - oPoint.X) ' oUTM.East - oOriginUTM.East
+    '            Dim y As Decimal = oEntrancePoint.Y - oPoint.Y  'oUTM.North - oOriginUTM.North
+    '            Dim z As Decimal = oEntrancePoint.Z - oPoint.Z ' oPos.Altitude - oOriginPos.Altitude
+    '            Call oXMLPoint.SetAttribute("c", modNumbers.NumberToString(x) & ";" & modNumbers.NumberToString(y) & ";" & modNumbers.NumberToString(z))
 
-                Dim oPointPlan As PointF = oPointPlans(sName)
-                Dim oPointProfile As PointF = oPointProfiles(sName)
+    '            Dim oPointPlan As PointF = oPointPlans(sName)
+    '            Dim oPointProfile As PointF = oPointProfiles(sName)
 
-                'If oPointLefts.ContainsKey(sName) Then
-                If bLRUD Then
-                    Dim oPointLeft As PointF = oPointLefts(sName)
-                    Dim xLeft As Decimal = oPointLeft.X - oPointPlan.X
-                    Dim yLeft As Decimal = oPointLeft.Y - oPointPlan.Y
-                    Dim zLeft As Decimal = 0
-                    If xLeft <> 0 Or yLeft <> 0 Or zLeft <> 0 Then
-                        Call oXMLPoint.SetAttribute("l", modNumbers.NumberToString(xLeft) & ";" & modNumbers.NumberToString(yLeft) & ";" & modNumbers.NumberToString(zLeft))
-                    End If
+    '            'If oPointLefts.ContainsKey(sName) Then
+    '            If bLRUD Then
+    '                Dim oPointLeft As PointF = oPointLefts(sName)
+    '                Dim xLeft As Decimal = oPointLeft.X - oPointPlan.X
+    '                Dim yLeft As Decimal = oPointLeft.Y - oPointPlan.Y
+    '                Dim zLeft As Decimal = 0
+    '                If xLeft <> 0 Or yLeft <> 0 Or zLeft <> 0 Then
+    '                    Call oXMLPoint.SetAttribute("l", modNumbers.NumberToString(xLeft) & ";" & modNumbers.NumberToString(yLeft) & ";" & modNumbers.NumberToString(zLeft))
+    '                End If
 
-                    Dim oPointRight As PointF = oPointRights(sName)
-                    Dim xRight As Decimal = oPointRight.X - oPointPlan.X
-                    Dim yRight As Decimal = oPointRight.Y - oPointPlan.Y
-                    Dim zRight As Decimal = 0
-                    If xRight <> 0 Or yRight <> 0 Or zRight <> 0 Then
-                        Call oXMLPoint.SetAttribute("r", modNumbers.NumberToString(xRight) & ";" & modNumbers.NumberToString(yRight) & ";" & modNumbers.NumberToString(zRight))
-                    End If
+    '                Dim oPointRight As PointF = oPointRights(sName)
+    '                Dim xRight As Decimal = oPointRight.X - oPointPlan.X
+    '                Dim yRight As Decimal = oPointRight.Y - oPointPlan.Y
+    '                Dim zRight As Decimal = 0
+    '                If xRight <> 0 Or yRight <> 0 Or zRight <> 0 Then
+    '                    Call oXMLPoint.SetAttribute("r", modNumbers.NumberToString(xRight) & ";" & modNumbers.NumberToString(yRight) & ";" & modNumbers.NumberToString(zRight))
+    '                End If
 
-                    Dim oPointUp As PointF = oPointUps(sName)
-                    Dim xUp As Decimal = 0
-                    Dim yUp As Decimal = 0
-                    Dim zUp As Decimal = -(oPointUp.Y - oPointProfile.Y)
-                    If xUp <> 0 Or yUp <> 0 Or zUp <> 0 Then
-                        Call oXMLPoint.SetAttribute("u", modNumbers.NumberToString(xUp) & ";" & modNumbers.NumberToString(yUp) & ";" & modNumbers.NumberToString(zUp))
-                    End If
+    '                Dim oPointUp As PointF = oPointUps(sName)
+    '                Dim xUp As Decimal = 0
+    '                Dim yUp As Decimal = 0
+    '                Dim zUp As Decimal = -(oPointUp.Y - oPointProfile.Y)
+    '                If xUp <> 0 Or yUp <> 0 Or zUp <> 0 Then
+    '                    Call oXMLPoint.SetAttribute("u", modNumbers.NumberToString(xUp) & ";" & modNumbers.NumberToString(yUp) & ";" & modNumbers.NumberToString(zUp))
+    '                End If
 
-                    Dim oPointDown As PointF = oPointDowns(sName)
-                    Dim xDown As Decimal = 0
-                    Dim yDown As Decimal = 0
-                    Dim zDown As Decimal = -(oPointDown.Y - oPointProfile.Y)
-                    If xDown <> 0 Or yDown <> 0 Or zDown <> 0 Then
-                        Call oXMLPoint.SetAttribute("d", modNumbers.NumberToString(xDown) & ";" & modNumbers.NumberToString(yDown) & ";" & modNumbers.NumberToString(zDown))
-                    End If
-                End If
+    '                Dim oPointDown As PointF = oPointDowns(sName)
+    '                Dim xDown As Decimal = 0
+    '                Dim yDown As Decimal = 0
+    '                Dim zDown As Decimal = -(oPointDown.Y - oPointProfile.Y)
+    '                If xDown <> 0 Or yDown <> 0 Or zDown <> 0 Then
+    '                    Call oXMLPoint.SetAttribute("d", modNumbers.NumberToString(xDown) & ";" & modNumbers.NumberToString(yDown) & ";" & modNumbers.NumberToString(zDown))
+    '                End If
+    '            End If
 
-                Call oXMLPoints.AppendChild(oXMLPoint)
-            Next
+    '            Call oXMLPoints.AppendChild(oXMLPoint)
+    '        Next
 
-            Call oXMLPlot.AppendChild(oXMLPoints)
-            Call oXMLPlot.AppendChild(oXMLSegments)
-            Call oXMLCave.AppendChild(oXMLPlot)
-            Call oXMLRoot.AppendChild(oXMLCave)
+    '        Call oXMLPlot.AppendChild(oXMLPoints)
+    '        Call oXMLPlot.AppendChild(oXMLSegments)
+    '        Call oXMLCave.AppendChild(oXMLPlot)
+    '        Call oXMLRoot.AppendChild(oXMLCave)
 
-            Call oXML.AppendChild(oXMLRoot)
-            Call XMLAddDeclaration(oXML)
-            Call oXML.Save(Filename & "." & pHolosGetSafeFilename(oCaveInfo.Name) & ".cave.xml")
-        Next
-    End Sub
+    '        Call oXML.AppendChild(oXMLRoot)
+    '        Call XMLAddDeclaration(oXML)
+    '        Call oXML.Save(Filename & "." & pHolosGetSafeFilename(oCaveInfo.Name) & ".cave.xml")
+    '    Next
+    'End Sub
 
-    Private Function pHolosGetSafeFilename(Text As String) As String
-        Text = Text.Replace(" ", "_")
-        Text = Text.Replace("'", "")
-        Text = Text.Replace("-", "")
-        Text = Text.Replace(".", "")
-        Text = Text.Replace("(", "_")
-        Text = Text.Replace(")", "_")
-        Text = Text.ToLower
-        Return Text
-    End Function
+    'Private Function pHolosGetSafeFilename(Text As String) As String
+    '    Text = Text.Replace(" ", "_")
+    '    Text = Text.Replace("'", "")
+    '    Text = Text.Replace("-", "")
+    '    Text = Text.Replace(".", "")
+    '    Text = Text.Replace("(", "_")
+    '    Text = Text.Replace(")", "_")
+    '    Text = Text.ToLower
+    '    Return Text
+    'End Function
 
     '    main.textpart15=Da
     'main.textpart16=A
@@ -1169,115 +1184,115 @@ Module modExport
         End Using
     End Sub
 
-    Public Sub ListviewExportToCSV(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Listview As BrightIdeasSoftware.ObjectListView, Name As String, ByVal Filename As String, Optional GetCellValueDelegate As GetOLVCellValueDelegate = Nothing, Optional GetHeaderValueDelegate As GetOLVHeaderValueDelegate = Nothing)
-        Dim oFileinfo As IO.FileInfo = New IO.FileInfo(Filename)
-        If oFileinfo.Exists Then oFileinfo.Delete()
+    'Public Sub ListviewExportToCSV(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Listview As BrightIdeasSoftware.ObjectListView, Name As String, ByVal Filename As String, Optional GetCellValueDelegate As GetOLVCellValueDelegate = Nothing, Optional GetHeaderValueDelegate As GetOLVHeaderValueDelegate = Nothing)
+    '    Dim oFileinfo As IO.FileInfo = New IO.FileInfo(Filename)
+    '    If oFileinfo.Exists Then oFileinfo.Delete()
 
-        Using oSW As StreamWriter = oFileinfo.CreateText
-            Dim r As Integer = 1
-            Dim c As Integer = 1
-            For Each oColumn As OLVColumn In Listview.Columns
-                Dim oValue As Object = oColumn.Text
-                If Not IsNothing(GetHeaderValueDelegate) Then
-                    Call GetHeaderValueDelegate(oColumn, oValue)
-                End If
-                Call oSW.Write(String.Format("""{0}"";", oValue.ToString.Replace("""", """""")))
-                c += 1
-            Next
-            Call oSW.WriteLine("")
-            r += 1
-            c = 1
-            Dim iIndex As Integer
-            Do While iIndex < Listview.GetItemCount()
-                Dim oItem As OLVListItem = Listview.GetItem(iIndex)
-                For Each oColumn As OLVColumn In Listview.Columns
-                    Dim oValue As Object = oItem.SubItems(oColumn.Index).Text
-                    If Not IsNothing(GetCellValueDelegate) Then
-                        Call GetCellValueDelegate(oItem.RowObject, oColumn, oValue)
-                    End If
-                    Dim sValue As String
-                    If oValue Is Nothing Then
-                        sValue = ""
-                    Else
-                        sValue = oValue.ToString
-                    End If
-                    Call oSW.Write(String.Format("""{0}"";", sValue.Replace("""", """""")))
-                    c += 1
-                Next
-                Call oSW.WriteLine("")
-                c = 1
-                r += 1
-                iIndex += 1
-            Loop
-            Call oSW.Close()
-        End Using
-    End Sub
+    '    Using oSW As StreamWriter = oFileinfo.CreateText
+    '        Dim r As Integer = 1
+    '        Dim c As Integer = 1
+    '        For Each oColumn As OLVColumn In Listview.Columns
+    '            Dim oValue As Object = oColumn.Text
+    '            If Not IsNothing(GetHeaderValueDelegate) Then
+    '                Call GetHeaderValueDelegate(oColumn, oValue)
+    '            End If
+    '            Call oSW.Write(String.Format("""{0}"";", oValue.ToString.Replace("""", """""")))
+    '            c += 1
+    '        Next
+    '        Call oSW.WriteLine("")
+    '        r += 1
+    '        c = 1
+    '        Dim iIndex As Integer
+    '        Do While iIndex < Listview.GetItemCount()
+    '            Dim oItem As OLVListItem = Listview.GetItem(iIndex)
+    '            For Each oColumn As OLVColumn In Listview.Columns
+    '                Dim oValue As Object = oItem.SubItems(oColumn.Index).Text
+    '                If Not IsNothing(GetCellValueDelegate) Then
+    '                    Call GetCellValueDelegate(oItem.RowObject, oColumn, oValue)
+    '                End If
+    '                Dim sValue As String
+    '                If oValue Is Nothing Then
+    '                    sValue = ""
+    '                Else
+    '                    sValue = oValue.ToString
+    '                End If
+    '                Call oSW.Write(String.Format("""{0}"";", sValue.Replace("""", """""")))
+    '                c += 1
+    '            Next
+    '            Call oSW.WriteLine("")
+    '            c = 1
+    '            r += 1
+    '            iIndex += 1
+    '        Loop
+    '        Call oSW.Close()
+    '    End Using
+    'End Sub
 
-    Public Sub ListviewExportTo(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Listview As BrightIdeasSoftware.ObjectListView, Name As String, Optional ByVal Filename As String = "", Optional Owner As IWin32Window = Nothing, Optional GetCellValueDelegate As GetOLVCellValueDelegate = Nothing, Optional GetHeaderValueDelegate As GetOLVHeaderValueDelegate = Nothing)
-        If Filename = "" Then
-            Using oSFD As SaveFileDialog = New SaveFileDialog
-                With oSFD
-                    .Title = GetLocalizedString("main.exportgriddialog")
-                    .Filter = GetLocalizedString("main.filetypeXLSX") & " (*.XLSX)|*.XLSX|" & GetLocalizedString("main.filetypeCSV") & " (*.CSV)|*.CSV"
-                    .FilterIndex = 1
-                    .OverwritePrompt = True
-                    .CheckPathExists = True
-                    If .ShowDialog(Owner) = Windows.Forms.DialogResult.OK Then
-                        Filename = .FileName
-                    End If
-                End With
-            End Using
-        End If
-        If Filename <> "" Then
-            Select Case IO.Path.GetExtension(Filename).ToLower
-                Case ".xlsx"
-                    Call ListViewExportToExcel(Survey, Listview, Name, Filename, GetCellValueDelegate, GetHeaderValueDelegate)
-                Case Else
-                    Call ListViewExportToCSV(Survey, Listview, Name, Filename, GetCellValueDelegate, GetHeaderValueDelegate)
-            End Select
-        End If
-    End Sub
+    'Public Sub ListviewExportTo(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Listview As BrightIdeasSoftware.ObjectListView, Name As String, Optional ByVal Filename As String = "", Optional Owner As IWin32Window = Nothing, Optional GetCellValueDelegate As GetOLVCellValueDelegate = Nothing, Optional GetHeaderValueDelegate As GetOLVHeaderValueDelegate = Nothing)
+    '    If Filename = "" Then
+    '        Using oSFD As SaveFileDialog = New SaveFileDialog
+    '            With oSFD
+    '                .Title = GetLocalizedString("main.exportgriddialog")
+    '                .Filter = GetLocalizedString("main.filetypeXLSX") & " (*.XLSX)|*.XLSX|" & GetLocalizedString("main.filetypeCSV") & " (*.CSV)|*.CSV"
+    '                .FilterIndex = 1
+    '                .OverwritePrompt = True
+    '                .CheckPathExists = True
+    '                If .ShowDialog(Owner) = Windows.Forms.DialogResult.OK Then
+    '                    Filename = .FileName
+    '                End If
+    '            End With
+    '        End Using
+    '    End If
+    '    If Filename <> "" Then
+    '        Select Case IO.Path.GetExtension(Filename).ToLower
+    '            Case ".xlsx"
+    '                Call ListViewExportToExcel(Survey, Listview, Name, Filename, GetCellValueDelegate, GetHeaderValueDelegate)
+    '            Case Else
+    '                Call ListViewExportToCSV(Survey, Listview, Name, Filename, GetCellValueDelegate, GetHeaderValueDelegate)
+    '        End Select
+    '    End If
+    'End Sub
 
-    Public Delegate Sub GetOLVCellValueDelegate(Item As Object, Column As OLVColumn, ByRef Value As Object)
-    Public Delegate Sub GetOLVHeaderValueDelegate(Column As OLVColumn, ByRef Value As Object)
+    'Public Delegate Sub GetOLVCellValueDelegate(Item As Object, Column As OLVColumn, ByRef Value As Object)
+    'Public Delegate Sub GetOLVHeaderValueDelegate(Column As OLVColumn, ByRef Value As Object)
 
-    Public Sub ListViewExportToExcel(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Listview As BrightIdeasSoftware.ObjectListView, Name As String, ByVal Filename As String, Optional GetCellValueDelegate As GetOLVCellValueDelegate = Nothing, Optional GetHeaderValueDelegate As GetOLVHeaderValueDelegate = Nothing)
-        Dim oFileinfo As IO.FileInfo = New IO.FileInfo(Filename)
-        If oFileinfo.Exists Then oFileinfo.Delete()
-        Using oXLS As OfficeOpenXml.ExcelPackage = New OfficeOpenXml.ExcelPackage(oFileinfo)
-            Using oXLSSheet As OfficeOpenXml.ExcelWorksheet = oXLS.Workbook.Worksheets.Add(Name)
-                Dim r As Integer = 1
-                Dim c As Integer = 1
-                For Each oColumn As OLVColumn In Listview.Columns
-                    Dim oValue As Object = oColumn.Text
-                    If Not IsNothing(GetHeaderValueDelegate) Then
-                        Call GetHeaderValueDelegate(oColumn, oValue)
-                    End If
-                    oXLSSheet.Cells(r, c).Value = oValue
-                    c += 1
-                Next
-                oXLSSheet.Row(r).Style.Font.Bold = True
-                r += 1
-                c = 1
-                Dim iIndex As Integer = 0
-                Do While iIndex < Listview.GetItemCount()
-                    Dim oItem As OLVListItem = Listview.GetItem(iIndex)
-                    For Each oColumn As OLVColumn In Listview.Columns
-                        Dim oValue As Object = oItem.SubItems(oColumn.Index).Text
-                        If Not IsNothing(GetCellValueDelegate) Then
-                            Call GetCellValueDelegate(oItem.RowObject, oColumn, oValue)
-                        End If
-                        oXLSSheet.Cells(r, c).Value = oValue
-                        c += 1
-                    Next
-                    c = 1
-                    r += 1
-                    iIndex += 1
-                Loop
-                Call oXLS.Save()
-            End Using
-        End Using
-    End Sub
+    'Public Sub ListViewExportToExcel(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Listview As BrightIdeasSoftware.ObjectListView, Name As String, ByVal Filename As String, Optional GetCellValueDelegate As GetOLVCellValueDelegate = Nothing, Optional GetHeaderValueDelegate As GetOLVHeaderValueDelegate = Nothing)
+    '    Dim oFileinfo As IO.FileInfo = New IO.FileInfo(Filename)
+    '    If oFileinfo.Exists Then oFileinfo.Delete()
+    '    Using oXLS As OfficeOpenXml.ExcelPackage = New OfficeOpenXml.ExcelPackage(oFileinfo)
+    '        Using oXLSSheet As OfficeOpenXml.ExcelWorksheet = oXLS.Workbook.Worksheets.Add(Name)
+    '            Dim r As Integer = 1
+    '            Dim c As Integer = 1
+    '            For Each oColumn As OLVColumn In Listview.Columns
+    '                Dim oValue As Object = oColumn.Text
+    '                If Not IsNothing(GetHeaderValueDelegate) Then
+    '                    Call GetHeaderValueDelegate(oColumn, oValue)
+    '                End If
+    '                oXLSSheet.Cells(r, c).Value = oValue
+    '                c += 1
+    '            Next
+    '            oXLSSheet.Row(r).Style.Font.Bold = True
+    '            r += 1
+    '            c = 1
+    '            Dim iIndex As Integer = 0
+    '            Do While iIndex < Listview.GetItemCount()
+    '                Dim oItem As OLVListItem = Listview.GetItem(iIndex)
+    '                For Each oColumn As OLVColumn In Listview.Columns
+    '                    Dim oValue As Object = oItem.SubItems(oColumn.Index).Text
+    '                    If Not IsNothing(GetCellValueDelegate) Then
+    '                        Call GetCellValueDelegate(oItem.RowObject, oColumn, oValue)
+    '                    End If
+    '                    oXLSSheet.Cells(r, c).Value = oValue
+    '                    c += 1
+    '                Next
+    '                c = 1
+    '                r += 1
+    '                iIndex += 1
+    '            Loop
+    '            Call oXLS.Save()
+    '        End Using
+    '    End Using
+    'End Sub
 
     Public Sub GridExportToExcel(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Grid As DataGridView, Name As String, ByVal Filename As String, Optional GetCellValueDelegate As GetGridCellValueDelegate = Nothing, Optional GetHeaderValueDelegate As GetGridHeaderValueDelegate = Nothing)
         Dim oFileinfo As IO.FileInfo = New IO.FileInfo(Filename)
@@ -1314,6 +1329,74 @@ Module modExport
                 Call oXLS.Save()
             End Using
         End Using
+    End Sub
+
+    Public Sub GridExportTo(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Grid As DevExpress.XtraVerticalGrid.VGridControl, Name As String, Optional ByVal Filename As String = "", Optional Owner As IWin32Window = Nothing)
+        If Filename = "" Then
+            Using oSFD As SaveFileDialog = New SaveFileDialog
+                With oSFD
+                    .Title = GetLocalizedString("main.exportgriddialog")
+                    .Filter = GetLocalizedString("main.filetypeXLSX") & " (*.XLSX)|*.XLSX|" & GetLocalizedString("main.filetypeCSV") & " (*.CSV)|*.CSV"
+                    .FilterIndex = 1
+                    .OverwritePrompt = True
+                    .CheckPathExists = True
+                    If .ShowDialog(Owner) = Windows.Forms.DialogResult.OK Then
+                        Filename = .FileName
+                    End If
+                End With
+            End Using
+        End If
+        If Filename <> "" Then
+            Select Case IO.Path.GetExtension(Filename).ToLower
+                Case ".xls"
+                    Grid.ExportToXls(Filename)
+                Case ".xlsx"
+                    Grid.ExportToXlsx(Filename)
+                Case ".txt"
+                    Grid.ExportToText(Filename)
+                Case Else
+                    Grid.ExportToCSV(Filename)
+            End Select
+        End If
+    End Sub
+
+    Public Sub ChartExportTo(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Chart As DevExpress.XtraCharts.ChartControl, Name As String, Optional ByVal Filename As String = "", Optional Owner As IWin32Window = Nothing)
+        If Filename = "" Then
+            Using oSFD As SaveFileDialog = New SaveFileDialog
+                With oSFD
+                    .Title = GetLocalizedString("main.exportchartdialog")
+                    .Filter = GetLocalizedString("main.filetypePDF") & " (*.PDF)|*.PDF|" & GetLocalizedString("main.filetypeJPG") & " (*.JPG)|*.JPG|" & GetLocalizedString("main.filetypePNG") & " (*.PNG)|*.PNG|" & GetLocalizedString("main.filetypeTIF") & " (*.TIF)|*.TIF|" & GetLocalizedString("main.filetypeXLSX") & " (*.XLSX)|*.XLSX|" & GetLocalizedString("main.filetypeDOCX") & " (*.DOCX)|*.DOCX|" & GetLocalizedString("main.filetypeSVG") & " (*.SVG)|*.SVG"
+                    .FilterIndex = 1
+                    .OverwritePrompt = True
+                    .CheckPathExists = True
+                    If .ShowDialog(Owner) = Windows.Forms.DialogResult.OK Then
+                        Filename = .FileName
+                    End If
+                End With
+            End Using
+        End If
+        If Filename <> "" Then
+            Select Case IO.Path.GetExtension(Filename).ToLower
+                Case ".docx"
+                    Chart.ExportToDocx(Filename)
+                Case ".pdf"
+                    Chart.ExportToPdf(Filename)
+                Case ".xls"
+                    Chart.ExportToXls(Filename)
+                Case ".xlsx"
+                    Chart.ExportToXlsx(Filename)
+                Case ".svg"
+                    Chart.ExportToSvg(Filename)
+                Case ".png"
+                    Chart.ExportToImage(Filename, Imaging.ImageFormat.Png)
+                Case ".jpg", ".jpeg"
+                    Chart.ExportToImage(Filename, Imaging.ImageFormat.Jpeg)
+                Case ".tif", ".tiff"
+                    Chart.ExportToImage(Filename, Imaging.ImageFormat.Tiff)
+                Case Else
+                    Chart.ExportToDocx(Filename)
+            End Select
+        End If
     End Sub
 
     Public Sub GridExportTo(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Grid As DevExpress.XtraGrid.GridControl, Name As String, Optional ByVal Filename As String = "", Optional Owner As IWin32Window = Nothing)
@@ -1707,31 +1790,31 @@ Module modExport
         Next
     End Sub
 
-    <Flags> Public Enum HolosExportOptionsEnum
-        SurfaceData = &H1
-        LRUDdata = &H10
-        Colors = &H100
-    End Enum
+    '<Flags> Public Enum HolosExportOptionsEnum
+    '    SurfaceData = &H1
+    '    LRUDdata = &H10
+    '    Colors = &H100
+    'End Enum
 
-    Public Enum HolosProfileEnum
-        ForRegister = 0
-        ForStandAlone = 1
-    End Enum
+    'Public Enum HolosProfileEnum
+    '    ForRegister = 0
+    '    ForStandAlone = 1
+    'End Enum
 
-    Public Sub HolosExportTo(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, Profile As HolosProfileEnum, Options As HolosExportOptionsEnum)
-        Dim oOptions As cHolosExportOptions = New cHolosExportOptions
-        oOptions.ScaleFactor = 1.5
-        oOptions.ScaleStep = 3
-        oOptions.Profile = Profile
-        oOptions.Options = Options
-        Dim sBaseFilename As String = Path.Combine(Path.GetDirectoryName(Filename), Path.GetFileNameWithoutExtension(Filename))
-        If Profile = HolosProfileEnum.ForStandAlone Then
-            Call pHolosExportIndex(Survey, sBaseFilename, oOptions)
-            Call pHolosExportElevation(Survey, sBaseFilename)
-            Call pHolosExportTexture(Survey, sBaseFilename, oOptions)
-        End If
-        Call pHolosExportCave(Survey, sBaseFilename, oOptions)
-    End Sub
+    'Public Sub HolosExportTo(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, Profile As HolosProfileEnum, Options As HolosExportOptionsEnum)
+    '    Dim oOptions As cHolosExportOptions = New cHolosExportOptions
+    '    oOptions.ScaleFactor = 1.5
+    '    oOptions.ScaleStep = 3
+    '    oOptions.Profile = Profile
+    '    oOptions.Options = Options
+    '    Dim sBaseFilename As String = Path.Combine(Path.GetDirectoryName(Filename), Path.GetFileNameWithoutExtension(Filename))
+    '    If Profile = HolosProfileEnum.ForStandAlone Then
+    '        Call pHolosExportIndex(Survey, sBaseFilename, oOptions)
+    '        Call pHolosExportElevation(Survey, sBaseFilename)
+    '        Call pHolosExportTexture(Survey, sBaseFilename, oOptions)
+    '    End If
+    '    Call pHolosExportCave(Survey, sBaseFilename, oOptions)
+    'End Sub
 
     Public Function DictionaryTranslate(Dictionary As IDictionary(Of String, String), Index As String) As String
         If Dictionary Is Nothing Then
@@ -2619,13 +2702,13 @@ Module modExport
         Return oDictionary
     End Function
 
-    Public Function TherionThExportTo_Version1(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, Optional ByVal Dictionary As IDictionary(Of String, String) = Nothing, Optional ByVal Options As TherionExportOptionsEnum = TherionExportOptionsEnum.Default Or TherionExportOptionsEnum.ExportSketch) As List(Of String)
+    Public Function TherionThExportTo_Version1(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, Optional ByVal Dictionary As IDictionary(Of String, String) = Nothing, Optional ByVal Options As TherionExportOptionsEnum = TherionExportOptionsEnum.Default Or TherionExportOptionsEnum.ExportSketch) As cTherionCalculateResult
         '                           GPS Enabled	    GPS Disabled
         'Declinazione manuale       No	            Si
         'Declinazione automatica    Si	            No
         'Correzione nord	        Si, automatica	Si, tramite opzione
 
-        Dim oFiles As List(Of String) = New List(Of String)
+        Dim oResult As cTherionCalculateResult = New cTherionCalculateResult(Survey, Dictionary)
 
         Using st As StreamWriter = My.Computer.FileSystem.OpenTextFileWriter(Filename, False, TextFileEncoder)
             Call st.WriteLine(pGetTherionTextEncorderDef(TextFileEncoder))
@@ -2645,7 +2728,8 @@ Module modExport
 
             If Survey.Properties.GPS.Enabled Then
                 If (Options And TherionExportOptionsEnum.ExportSurfaceElevationsData) = TherionExportOptionsEnum.ExportSurfaceElevationsData Then
-                    Dim sSurfaceFile As String = Survey.Surface.CreateTherionSurfaceDataFile(Path.GetDirectoryName(Filename), Filename, oFiles)
+                    Dim sOptionsName As String = If(Options And TherionExportOptionsEnum.Loch, "_loch", "_therion")
+                    Dim sSurfaceFile As String = Survey.Surface.CreateTherionSurfaceDataFile(sOptionsName, Path.GetDirectoryName(Filename), Filename, oResult)
                     Call st.WriteLine("input " & Chr(34) & sSurfaceFile & Chr(34))
                 End If
             End If
@@ -2786,10 +2870,10 @@ Module modExport
 
                         Dim sTh2BaseFilename As String = Path.GetFileNameWithoutExtension(Filename) & "_" & oSketch.ID & ".th2"
                         Dim sTh2Filename As String = Path.Combine(Path.GetDirectoryName(Filename), sTh2BaseFilename)
-                        Call oFiles.Add(sTh2Filename)
+                        Call oResult.Files.Add(sTh2Filename)
                         Dim sTh2BaseImageFilename As String = Path.GetFileNameWithoutExtension(Filename) & "_" & oSketch.ID & ".jpg"
                         Dim sTh2ImageFilename As String = Path.Combine(Path.GetDirectoryName(Filename), sTh2BaseImageFilename)
-                        Call oFiles.Add(sTh2ImageFilename)
+                        Call oResult.Files.Add(sTh2ImageFilename)
 
                         Using oSW As FileStream = New FileStream(sTh2ImageFilename, FileMode.OpenOrCreate)
                             Using oImage As Image = oSketch.Sketch.Image.Clone
@@ -2840,14 +2924,14 @@ Module modExport
             For Each sScrapFile As String In oScrapFiles
                 Call st.WriteLine("input " & Chr(34) & sScrapFile & Chr(34))
             Next
-            Call oFiles.AddRange(oScrapFiles)
+            Call oResult.Files.AddRange(oScrapFiles)
 
             Call st.WriteLine("endsurvey " & sName)
             Call st.Flush()
             Call st.Close()
         End Using
 
-        Return oFiles
+        Return oResult
     End Function
 
     Public TextFileEncoder As System.Text.Encoding = New System.Text.UTF8Encoding(False)
@@ -2877,9 +2961,9 @@ Module modExport
         End If
     End Function
 
-    Private Sub pTherionThExportToCaveBranch(ByVal Survey As cSurveyPC.cSurvey.cSurvey, St As StreamWriter, Indent As Integer, Dictionary As IDictionary(Of String, String), Branch As cICaveInfoBranches, TrigpointFirstSession As Dictionary(Of String, String), TrigpointOtherSessions As Dictionary(Of String, List(Of String)), ByVal Options As TherionExportOptionsEnum)
+    Private Sub pTherionThExportToCaveBranch(ByVal Survey As cSurveyPC.cSurvey.cSurvey, St As StreamWriter, Indent As Integer, Dictionary As IDictionary(Of String, String), Branch As cICaveInfoBranches, TrigpointFirstSession As Dictionary(Of String, String), TrigpointOtherSessions As Dictionary(Of String, List(Of String)), Depths As Dictionary(Of String, Decimal), ByVal Options As TherionExportOptionsEnum)
         Dim iIndent As Integer = Indent
-        Dim oBranchSegments As cSegmentCollection = Branch.GetSegments(cOptions.HighlightModeEnum.ExactMatch)
+        Dim oBranchSegments As cSegmentCollection = Branch.GetSegments(cOptionsCenterline.HighlightModeEnum.ExactMatch)
         Dim sCaveBranchID As String = pGetTherionCaveBranchID(Branch)
         Dim sRelativeCaveBranchID As String = If(Branch.Name = "", "unnamed", FormatTextFor(Branch.Name, FormatTextForEnum.BaseWithoutSpacesAndSlash))
         iIndent += 1
@@ -2891,12 +2975,9 @@ Module modExport
                 If oSegments.Count > 0 Then
                     Call St.WriteLine(Space(iIndent) & "centerline")
                     iIndent += 1
-                    If Survey.Properties.CalculateVersion < 2 Then
+
+                    If oSession.Date <> CDate(Nothing) Then
                         Call St.WriteLine(Space(iIndent) & "date " & Strings.Format(oSession.Date, "yyyy.MM.dd"))
-                    Else
-                        If oSession.Date <> CDate(Nothing) Then
-                            Call St.WriteLine(Space(iIndent) & "date " & Strings.Format(oSession.Date, "yyyy.MM.dd"))
-                        End If
                     End If
 
                     Call St.WriteLine(Space(iIndent) & "vthreshold " & oSession.GetVThreshold & " deg")
@@ -2943,7 +3024,6 @@ Module modExport
                         End If
                     End If
 
-                    Dim oDepths As Dictionary(Of String, Decimal)
                     Select Case oSession.DataFormat
                         Case cSegment.DataFormatEnum.Normal
                             Call St.WriteLine(Space(iIndent) & "units length " & GetTherionDistanceUnit(oSession.DistanceType))
@@ -2957,28 +3037,11 @@ Module modExport
                             Call St.WriteLine(Space(iIndent) & "units length " & GetTherionDistanceUnit(oSession.DistanceType))
                             Call St.WriteLine(Space(iIndent) & "units compass " & GetTherionBearingUnit(oSession.BearingType))
                             Call St.WriteLine(Space(iIndent) & "units depth " & GetTherionDepthUnit(oSession.DistanceType))
-                            'Call st.WriteLine("calibrate depth 0 -1")
                             Select Case oSession.DepthType
                                 Case cSegment.DepthTypeEnum.AbsoluteAtBegin
                                     Call St.WriteLine(Space(iIndent) & "data diving from to compass fromdepth todepth length left right up down")
-                                    'creo una collection con la profondità per caposaldo
-                                    oDepths = New Dictionary(Of String, Decimal)
-                                    For Each oSegment As cSegment In oSegments
-                                        Dim sStation As String = oSegment.Data.SourceData.From
-                                        If Not oDepths.ContainsKey(sStation) Then
-                                            Call oDepths.Add(sStation, oSegment.Data.SourceData.Inclination)
-                                        End If
-                                    Next
                                 Case cSegment.DepthTypeEnum.AbsoluteAtEnd
                                     Call St.WriteLine(Space(iIndent) & "data diving from to compass fromdepth todepth length left right up down")
-                                    'creo una collection con la profondità per caposaldo
-                                    oDepths = New Dictionary(Of String, Decimal)
-                                    For Each oSegment As cSegment In oSegments
-                                        Dim sStation As String = oSegment.Data.SourceData.To
-                                        If Not oDepths.ContainsKey(sStation) Then
-                                            Call oDepths.Add(sStation, oSegment.Data.SourceData.Inclination)
-                                        End If
-                                    Next
                                 Case cSegment.DepthTypeEnum.Difference
                                     Call St.WriteLine(Space(iIndent) & "data diving from to compass depthchange length left right up down")
                             End Select
@@ -3019,7 +3082,7 @@ Module modExport
                                             End If
 
                                             sFrom = DictionaryTranslate(Dictionary, sFrom)
-                                            sTo = DictionaryTranslate(Dictionary, sTo) 'oSegment.Data.Data.[To])
+                                            sTo = DictionaryTranslate(Dictionary, sTo)
 
                                             sFlags = ""
                                             If oSegment.Splay AndAlso ((Options And TherionExportOptionsEnum.CalculateSplay) = TherionExportOptionsEnum.CalculateSplay) Then sFlags = sFlags & " splay" Else sFlags = sFlags & " not splay"
@@ -3035,9 +3098,13 @@ Module modExport
                                             If oSession.DataFormat = cSegment.DataFormatEnum.Diving Then
                                                 Select Case oSession.DepthType
                                                     Case cSegment.DepthTypeEnum.AbsoluteAtBegin
-                                                        Call St.WriteLine(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Inclination, "0.00") & " " & modText.FormatNumber(pGetDepthValue(oDepths, oSegment.Data.SourceData.To), "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
+                                                        Dim dDepthFrom As Decimal = pGetDepthValue(Depths, sFrom)
+                                                        Dim dDepthTo As Decimal = pGetDepthValue(Depths, sTo)
+                                                        Call St.WriteLine(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(dDepthFrom, "0.00") & " " & modText.FormatNumber(dDepthTo, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
                                                     Case cSegment.DepthTypeEnum.AbsoluteAtEnd
-                                                        Call St.WriteLine(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(pGetDepthValue(oDepths, oSegment.Data.SourceData.From), "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Inclination, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
+                                                        Dim dDepthFrom As Decimal = pGetDepthValue(Depths, sFrom)
+                                                        Dim dDepthTo As Decimal = pGetDepthValue(Depths, sTo)
+                                                        Call St.WriteLine(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(dDepthFrom, "0.00") & " " & modText.FormatNumber(dDepthTo, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
                                                     Case Else
                                                         Call St.WriteLine(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Inclination, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
                                                 End Select
@@ -3046,17 +3113,18 @@ Module modExport
                                             End If
 
                                             If (Options And TherionExportOptionsEnum.SegmentForceDirection) = TherionExportOptionsEnum.SegmentForceDirection Then
-                                                'forzo esplicitamente la direzione di ogni segmento...
+                                                'force segment direction
                                                 If oSegment.Data.SourceData.Direction = cSurvey.cSurvey.DirectionEnum.Left Then
                                                     Call St.WriteLine(Space(iIndent) & "extend left " & sFrom & " " & sTo)
-                                                Else
+                                                ElseIf oSegment.Data.SourceData.Direction = cSurvey.cSurvey.DirectionEnum.Right Then
                                                     Call St.WriteLine(Space(iIndent) & "extend right " & sFrom & " " & sTo)
+                                                Else
+                                                    Call St.WriteLine(Space(iIndent) & "extend vertical " & sFrom & " " & sTo)
                                                 End If
                                             End If
                                         End With
                                     Next
                                 Else
-
                                     Dim sFrom As String = oSegment.Data.SourceData.[From]
                                     Dim sTo As String = oSegment.Data.SourceData.[To]
 
@@ -3093,7 +3161,6 @@ Module modExport
                                         If oSegment.Surface Then sFlags = sFlags & " surface" Else sFlags = sFlags & " not surface"
                                         'therion does not allow generic exclusion...passed as 'surface'
                                         If oSegment.Exclude AndAlso (Not oSegment.Splay AndAlso Not oSegment.Duplicate AndAlso Not oSegment.Surface) Then sFlags = sFlags & " surface"
-
                                         If sFlags <> sPreviousFlags Then
                                             Call St.WriteLine(Space(iIndent) & "flags " & sFlags)
                                             sPreviousFlags = sFlags
@@ -3101,14 +3168,23 @@ Module modExport
                                         If oSession.DataFormat = cSegment.DataFormatEnum.Diving Then
                                             Select Case oSession.DepthType
                                                 Case cSegment.DepthTypeEnum.AbsoluteAtBegin
-                                                    Call St.WriteLine(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Inclination, "0.00") & " " & modText.FormatNumber(pGetDepthValue(oDepths, oSegment.Data.SourceData.To), "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
+                                                    Dim dDepthFrom As Decimal = pGetDepthValue(Depths, sFrom)
+                                                    Dim dDepthTo As Decimal = pGetDepthValue(Depths, sTo)
+                                                    Call St.Write(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(dDepthFrom, "0.00") & " " & modText.FormatNumber(dDepthTo, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
                                                 Case cSegment.DepthTypeEnum.AbsoluteAtEnd
-                                                    Call St.WriteLine(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(pGetDepthValue(oDepths, oSegment.Data.SourceData.From), "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Inclination, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
+                                                    Dim dDepthFrom As Decimal = pGetDepthValue(Depths, sFrom)
+                                                    Dim dDepthTo As Decimal = pGetDepthValue(Depths, sTo)
+                                                    Call St.Write(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(dDepthFrom, "0.00") & " " & modText.FormatNumber(dDepthTo, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
                                                 Case Else
-                                                    Call St.WriteLine(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Inclination, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
+                                                    Call St.Write(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Inclination, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
                                             End Select
                                         Else
-                                            Call St.WriteLine(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Inclination, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
+                                            Call St.Write(Space(iIndent) & sFrom & " " & sTo & " " & modText.FormatNumber(oSegment.Data.SourceData.Bearing, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Inclination, "0.00") & " " & modText.FormatNumber(oSegment.Data.SourceData.Distance, "0.00") & " " & modText.FormatNumber(oSegment.Left, "0.00") & " " & modText.FormatNumber(oSegment.Right, "0.00") & " " & modText.FormatNumber(oSegment.Up, "0.00") & " " & modText.FormatNumber(oSegment.Down, "0.00"))
+                                        End If
+                                        If (Options And TherionExportOptionsEnum.SegmentID) = TherionExportOptionsEnum.SegmentID Then
+                                            Call St.WriteLine(" #s:" & oSegment.ID)
+                                        Else
+                                            Call St.WriteLine("")
                                         End If
 
                                         If (Options And TherionExportOptionsEnum.SegmentForceDirection) = TherionExportOptionsEnum.SegmentForceDirection Then
@@ -3119,11 +3195,17 @@ Module modExport
                                                 Else
                                                     Call St.WriteLine(Space(iIndent) & "extend left " & sFrom & " " & sTo)
                                                 End If
-                                            Else
+                                            ElseIf oSegment.Data.SourceData.Direction = cSurvey.cSurvey.DirectionEnum.Right Then
                                                 If oSegment.Data.SourceData.Reversed Then
                                                     Call St.WriteLine(Space(iIndent) & "extend right " & sTo & " " & sFrom)
                                                 Else
                                                     Call St.WriteLine(Space(iIndent) & "extend right " & sFrom & " " & sTo)
+                                                End If
+                                            Else
+                                                If oSegment.Data.SourceData.Reversed Then
+                                                    Call St.WriteLine(Space(iIndent) & "extend vertical " & sTo & " " & sFrom)
+                                                Else
+                                                    Call St.WriteLine(Space(iIndent) & "extend vertical " & sFrom & " " & sTo)
                                                 End If
                                             End If
                                         End If
@@ -3139,7 +3221,7 @@ Module modExport
         End If
 
         For Each oBranch As cICaveInfoBranches In Branch.Branches
-            Call pTherionThExportToCaveBranch(Survey, St, iIndent, Dictionary, oBranch, TrigpointFirstSession, TrigpointOtherSessions, Options)
+            Call pTherionThExportToCaveBranch(Survey, St, iIndent, Dictionary, oBranch, TrigpointFirstSession, TrigpointOtherSessions, Depths, Options)
         Next
 
         'Dim sExtendStart As String = Branch.ExtendStart
@@ -3154,13 +3236,100 @@ Module modExport
         iIndent -= 1
     End Sub
 
-    Public Function TherionThExportTo(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, Optional ByVal Dictionary As IDictionary(Of String, String) = Nothing, Optional ByVal Options As TherionExportOptionsEnum = TherionExportOptionsEnum.Default Or TherionExportOptionsEnum.ExportSketch Or TherionExportOptionsEnum.SegmentForceDirection) As List(Of String)
+    Private Function pTherionGetDepths(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Optional ByVal Dictionary As IDictionary(Of String, String) = Nothing) As Dictionary(Of String, Decimal)
+        Dim oDepths As Dictionary(Of String, Decimal) = New Dictionary(Of String, Decimal)
+        For Each oSession As cSession In Survey.Properties.Sessions
+            If oSession.DataFormat = cSegment.DataFormatEnum.Diving Then
+                Select Case oSession.DepthType
+                    Case cSegment.DepthTypeEnum.AbsoluteAtBegin
+                        For Each oSegment As cSegment In oSession.GetSegments
+                            If Not oSegment.IsEquate Then
+                                Dim sStation As String = If(oSegment.Data.SourceData.Reversed, oSegment.Data.SourceData.To, oSegment.Data.SourceData.From)
+                                sStation = DictionaryTranslate(Dictionary, sStation)
+                                Dim dDepth As Decimal = If(oSegment.Data.SourceData.Reversed, -oSegment.Data.SourceData.Inclination, oSegment.Data.SourceData.Inclination)
+                                If oDepths.ContainsKey(sStation) Then
+                                    Dim dPrevDepth As Decimal = oDepths(sStation)
+                                    Dim dNewDepth As Decimal = (dPrevDepth + dDepth) / 2D
+                                    Call oDepths.Remove(sStation)
+                                    Call oDepths.Add(sStation, dNewDepth)
+                                    Call Survey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Warning, "Depth for station " & sStation & ": AVG(" & modNumbers.NumberToString(dPrevDepth) & ", " & modNumbers.NumberToString(dDepth) & ") = " & modNumbers.NumberToString(dNewDepth))
+                                Else
+                                    Call oDepths.Add(sStation, dDepth)
+                                End If
+                            End If
+                        Next
+                    Case cSegment.DepthTypeEnum.AbsoluteAtEnd
+                        For Each oSegment As cSegment In oSession.GetSegments
+                            If Not oSegment.IsEquate Then
+                                Dim sStation As String = If(oSegment.Data.SourceData.Reversed, oSegment.Data.SourceData.From, oSegment.Data.SourceData.To)
+                                Dim sStationIndex As String = DictionaryTranslate(Dictionary, sStation)
+                                Dim dDepth As Decimal = If(oSegment.Data.SourceData.Reversed, -oSegment.Data.SourceData.Inclination, oSegment.Data.SourceData.Inclination)
+                                If oDepths.ContainsKey(sStationIndex) Then
+                                    Dim dPrevDepth As Decimal = oDepths(sStationIndex)
+                                    Dim dNewDepth As Decimal = (dPrevDepth + dDepth) / 2D
+                                    Call oDepths.Remove(sStationIndex)
+                                    Call oDepths.Add(sStationIndex, dNewDepth)
+                                    Call Survey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Warning, "Depth for station " & sStation & ": AVG(" & modNumbers.NumberToString(dPrevDepth) & ", " & modNumbers.NumberToString(dDepth) & ") = " & modNumbers.NumberToString(dNewDepth))
+                                Else
+                                    Call oDepths.Add(sStationIndex, dDepth)
+                                End If
+                            End If
+                        Next
+                End Select
+            End If
+        Next
+        'reprocess segments for valid equate
+        For Each oSegment As cSegment In Survey.Segments.Where(Function(oItem) oItem.IsValid AndAlso Not oItem.Virtual AndAlso Not oItem.Calibration AndAlso oItem.IsEquate)
+            Dim sFrom As String = oSegment.Data.SourceData.From
+            Dim sTo As String = oSegment.Data.SourceData.To
+            Dim sFromIndex As String = DictionaryTranslate(Dictionary, oSegment.Data.SourceData.From)
+            Dim sToIndex As String = DictionaryTranslate(Dictionary, oSegment.Data.SourceData.To)
+            If oDepths.ContainsKey(sFromIndex) AndAlso oDepths.ContainsKey(sToIndex) Then
+                Dim dFromDepth As Decimal = oDepths(sFromIndex)
+                Dim dToDepth As Decimal = oDepths(sToIndex)
+                If dFromDepth <> dToDepth Then
+                    Dim dNewDepth As Decimal = (dFromDepth + dToDepth) / 2D
+                    Call oDepths.Remove(sFromIndex)
+                    Call oDepths.Remove(sToIndex)
+                    Call oDepths.Add(sFromIndex, dNewDepth)
+                    Call oDepths.Add(sToIndex, dNewDepth)
+                    Call Survey.RaiseOnLogEvent(cSurvey.cSurvey.LogEntryType.Warning, "Depth for stations " & sFrom & " AND " & sTo & ": AVG(" & modNumbers.NumberToString(dFromDepth) & ", " & modNumbers.NumberToString(dToDepth) & ") = " & modNumbers.NumberToString(dNewDepth))
+                End If
+            End If
+        Next
+        Return oDepths
+    End Function
+
+    Public Class cTherionCalculateResult
+        Private oDepth As Dictionary(Of String, Decimal)
+
+        Private oFiles As List(Of String)
+
+        Public ReadOnly Property Depth As Dictionary(Of String, Decimal)
+            Get
+                Return oDepth
+            End Get
+        End Property
+
+        Public ReadOnly Property Files As List(Of String)
+            Get
+                Return oFiles
+            End Get
+        End Property
+
+        Public Sub New(Survey As cSurveyPC.cSurvey.cSurvey, Dictionary As IDictionary(Of String, String))
+            oDepth = pTherionGetDepths(Survey, Dictionary)
+            oFiles = New List(Of String)
+        End Sub
+    End Class
+
+    Public Function TherionThExportTo(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String, Optional ByVal Dictionary As IDictionary(Of String, String) = Nothing, Optional ByVal Options As TherionExportOptionsEnum = TherionExportOptionsEnum.Default Or TherionExportOptionsEnum.ExportSketch Or TherionExportOptionsEnum.SegmentForceDirection) As cTherionCalculateResult
         '                           GPS Enabled	    GPS Disabled
         'Declinazione manuale       No	            Si
         'Declinazione automatica    Si	            No
         'Correzione nord	        Si, automatica	Si, tramite opzione
 
-        Dim oFiles As List(Of String) = New List(Of String)
+        Dim oResult As cTherionCalculateResult = New cTherionCalculateResult(Survey, Dictionary)
 
         Using st As StreamWriter = My.Computer.FileSystem.OpenTextFileWriter(Filename, False, TextFileEncoder)
             Call st.WriteLine(pGetTherionTextEncorderDef(TextFileEncoder))
@@ -3181,7 +3350,8 @@ Module modExport
             If Survey.Properties.GPS.Enabled Then
                 If (Options And TherionExportOptionsEnum.ExportSurfaceElevationsData) = TherionExportOptionsEnum.ExportSurfaceElevationsData Then
                     'If Survey.Surface.Elevations.ShowIn3D Then
-                    Dim sSurfaceFile As String = Survey.Surface.CreateTherionSurfaceDataFile(Path.GetDirectoryName(Filename), Filename, oFiles)
+                    Dim sOptionsName As String = If(Options And TherionExportOptionsEnum.Loch, "_loch", "_therion")
+                    Dim sSurfaceFile As String = Survey.Surface.CreateTherionSurfaceDataFile(sOptionsName, Path.GetDirectoryName(Filename), Filename, oResult)
                     Call st.WriteLine("input " & Chr(34) & sSurfaceFile & Chr(34))
                     'End If
                 End If
@@ -3195,11 +3365,13 @@ Module modExport
             Next
             Call st.WriteLine("grade null" & vbCrLf & "endgrade")
 
+            'Dim oDepths As Dictionary(Of String, Decimal) = pTherionGetDepths(Survey, Dictionary)
+
             Dim oTrigpointFirstSession As Dictionary(Of String, String) = New Dictionary(Of String, String)
             Dim oTrigpointOtherSessions As Dictionary(Of String, List(Of String)) = New Dictionary(Of String, List(Of String))
             Dim iIndent As Integer = 1
             For Each oCave As cCaveInfo In Survey.Properties.CaveInfos.GetWithEmpty.Values
-                Call pTherionThExportToCaveBranch(Survey, st, iIndent, Dictionary, oCave, oTrigpointFirstSession, oTrigpointOtherSessions, Options)
+                Call pTherionThExportToCaveBranch(Survey, st, iIndent, Dictionary, oCave, oTrigpointFirstSession, oTrigpointOtherSessions, oResult.Depth, Options)
             Next
 
             'generic centerline section...for extendstart based on origin
@@ -3285,10 +3457,10 @@ Module modExport
 
                         Dim sTh2BaseFilename As String = Path.GetFileNameWithoutExtension(Filename) & "_" & oSketch.ID & ".th2"
                         Dim sTh2Filename As String = Path.Combine(Path.GetDirectoryName(Filename), sTh2BaseFilename)
-                        Call oFiles.Add(sTh2Filename)
+                        Call oResult.Files.Add(sTh2Filename)
                         Dim sTh2BaseImageFilename As String = Path.GetFileNameWithoutExtension(Filename) & "_" & oSketch.ID & ".jpg"
                         Dim sTh2ImageFilename As String = Path.Combine(Path.GetDirectoryName(Filename), sTh2BaseImageFilename)
-                        Call oFiles.Add(sTh2ImageFilename)
+                        Call oResult.Files.Add(sTh2ImageFilename)
 
                         Using oSW As FileStream = New FileStream(sTh2ImageFilename, FileMode.OpenOrCreate)
                             Using oImage As Image = oSketch.Sketch.Image.Clone
@@ -3343,21 +3515,21 @@ Module modExport
             If (Options And TherionExportOptionsEnum.Scrap) = TherionExportOptionsEnum.Scrap Then
                 If Not Survey.Plan.IsEmpty Then Call oScrapFiles.AddRange(pTherionExportToScraps(Survey, Filename, cIDesign.cDesignTypeEnum.Plan, oTrigpointFirstSession, Dictionary))
                 If Not Survey.Profile.IsEmpty Then Call oScrapFiles.AddRange(pTherionExportToScraps(Survey, Filename, cIDesign.cDesignTypeEnum.Profile, oTrigpointFirstSession, Dictionary))
-                Call oFiles.AddRange(pTherionExportMapConfig(Survey, Filename))
+                Call oResult.Files.AddRange(pTherionExportMapConfig(Survey, Filename))
             End If
 
             For Each sScrapFile As String In oScrapFiles
                 Call st.WriteLine("input " & Chr(34) & sScrapFile & Chr(34))
             Next
 
-            Call oFiles.AddRange(oScrapFiles)
+            Call oResult.Files.AddRange(oScrapFiles)
 
             Call st.WriteLine("endsurvey " & sName)
             Call st.Flush()
             Call st.Close()
         End Using
 
-        Return oFiles
+        Return oResult
     End Function
 
     'Public Sub GarminTrkExportTo(ByVal Survey As cSurveyPC.cSurvey.cSurvey, ByVal Filename As String)

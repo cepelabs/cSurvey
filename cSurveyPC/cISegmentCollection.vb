@@ -13,7 +13,7 @@
         Function GetTrigpoints() As cITrigPointCollection
         Function GetTrigpointsNames() As SortedSet(Of String)
         Function Find(ByVal Text As String) As cISegmentCollection
-
+        Function GetTrigpointSegments(ByVal Trigpoint As String) As cISegmentCollection
         Function GetBindedItems() As List(Of Design.cItem)
         Function GetBindedItems(Design As cSurveyPC.cSurvey.Design.cIDesign.cDesignTypeEnum) As List(Of Design.cItem)
         Function GetVisibleSegments(PaintOptions As Design.cOptions) As cSegmentCollection

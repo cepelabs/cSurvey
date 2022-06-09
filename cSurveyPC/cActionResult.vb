@@ -1,8 +1,8 @@
 ﻿Namespace cSurvey
     Public Class cActionResult
         Private bResult As Boolean
-        Private sErrorSource As String
-        Private sErrorMessage As String
+        Private sExceptionSource As String
+        Private oException As Exception
 
         Public ReadOnly Property Result As Boolean
             Get
@@ -10,28 +10,33 @@
             End Get
         End Property
 
-        Public ReadOnly Property ErrorSource As String
+        Public ReadOnly Property ExceptionSource As String
             Get
-                Return sErrorSource
+                Return sExceptionSource
             End Get
         End Property
 
-        Public ReadOnly Property ErrorMessage As String
+        Public ReadOnly Property Exception As Exception
             Get
-                Return sErrorMessage
+                Return oException
             End Get
         End Property
 
         Friend Sub New()
             bResult = True
-            sErrorSource = ""
-            sErrorMessage = ""
+            sExceptionSource = ""
         End Sub
 
-        Friend Sub New(ByVal Result As Boolean, ByVal ErrorSource As String, ByVal ErrorMessage As String)
+        Friend Sub New(ByVal Result As Boolean, ByVal ExceptionSource As String, ByVal Exception As Exception)
             bResult = Result
-            sErrorSource = ErrorSource
-            sErrorMessage = ErrorMessage
+            sExceptionSource = ExceptionSource
+            oException = Exception
+        End Sub
+
+        Friend Sub New(ByVal Result As Boolean, ByVal ExceptionSource As String, ByVal ExceptionMessage As String)
+            bResult = Result
+            sExceptionSource = ExceptionSource
+            oException = New Exception(ExceptionMessage)
         End Sub
     End Class
 End Namespace

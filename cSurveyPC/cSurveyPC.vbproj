@@ -12,7 +12,7 @@
     <AssemblyName>cSurveyPC</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <OptionExplicit>On</OptionExplicit>
     <OptionCompare>Binary</OptionCompare>
     <OptionStrict>Off</OptionStrict>
@@ -109,7 +109,7 @@
     </WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>cSurvey.ico</ApplicationIcon>
+    <ApplicationIcon>mainicon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>159B57C3C475F5836CD4EDB93BD451C2E6FC1167</ManifestCertificateThumbprint>
@@ -166,65 +166,102 @@
     </WarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Accessibility" />
     <Reference Include="clipper_library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Clipper.6.2.10\lib\net40\clipper_library.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.BonusSkins.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Data.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Printing.v20.2.Core, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Data.Desktop.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Sparkline.v20.2.Core, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraBars.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGauges.v20.2.Core, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraGauges.v20.2.Win, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraPrinting.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraTreeList.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraVerticalGrid.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="Diacritics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Diacritics.2.1.20036.1\lib\net45\Diacritics.dll</HintPath>
+    <Reference Include="CsvHelper, Version=27.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>packages\CsvHelper.27.2.1\lib\net47\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.BonusSkins.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Charts.v21.2.Core, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Images.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v21.2.Core, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v21.2.Core, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v21.2.Core, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.Desktop.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v21.2.Core, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v21.2.Core, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v21.2.UI, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v21.2.UI, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v21.2.Wizard, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v21.2.Core, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v21.2.Win, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraRichEdit.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Diacritics, Version=3.3.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Diacritics.3.3.10\lib\net45\Diacritics.dll</HintPath>
     </Reference>
     <Reference Include="EPPlus, Version=4.5.3.3, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>packages\EPPlus.4.5.3.3\lib\net40\EPPlus.dll</HintPath>
     </Reference>
-    <Reference Include="FTTLib, Version=1.0.3.0, Culture=neutral, PublicKeyToken=8c1b2cae191651c7, processorArchitecture=MSIL">
-      <HintPath>packages\FTTLib.dll.1.1.0\lib\net20\FTTLib.dll</HintPath>
+    <Reference Include="FTTLib, Version=1.1.1.0, Culture=neutral, PublicKeyToken=8c1b2cae191651c7, processorArchitecture=MSIL">
+      <HintPath>packages\FTTLib.dll.1.1.1\lib\netstandard2.0\FTTLib.dll</HintPath>
     </Reference>
     <Reference Include="GeoUtility">
       <HintPath>.\GeoUtility.dll</HintPath>
     </Reference>
-    <Reference Include="HelixToolkit, Version=2.12.0.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
-      <HintPath>packages\HelixToolkit.2.12.0\lib\netstandard1.1\HelixToolkit.dll</HintPath>
+    <Reference Include="HelixToolkit, Version=2.20.2.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
+      <HintPath>packages\HelixToolkit.2.20.2\lib\netstandard1.1\HelixToolkit.dll</HintPath>
     </Reference>
-    <Reference Include="HelixToolkit.Wpf, Version=2.12.0.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
-      <HintPath>packages\HelixToolkit.Wpf.2.12.0\lib\net45\HelixToolkit.Wpf.dll</HintPath>
+    <Reference Include="HelixToolkit.Wpf, Version=2.20.2.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
+      <HintPath>packages\HelixToolkit.Wpf.2.20.2\lib\net45\HelixToolkit.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageProcessor, Version=2.9.1.225, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\ImageProcessor.2.9.1\lib\net452\ImageProcessor.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip">
       <HintPath>.\Ionic.Zip.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack.ExtendedLinguisticServices, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll</HintPath>
+      <HintPath>packages\WindowsAPICodePack.1.1.2\lib\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack.Sensors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.Sensors.dll</HintPath>
+      <HintPath>packages\WindowsAPICodePack.1.1.2\lib\Microsoft.WindowsAPICodePack.Sensors.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    <Reference Include="NAudio, Version=2.0.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.2.0.1\lib\netstandard2.0\NAudio.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
+    <Reference Include="NAudio.Asio, Version=2.0.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.Asio.2.0.0\lib\netstandard2.0\NAudio.Asio.dll</HintPath>
     </Reference>
-    <Reference Include="NAudio, Version=1.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\NAudio.1.10.0\lib\net35\NAudio.dll</HintPath>
+    <Reference Include="NAudio.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.Core.2.0.0\lib\netstandard2.0\NAudio.Core.dll</HintPath>
     </Reference>
-    <Reference Include="ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4, processorArchitecture=MSIL">
-      <HintPath>packages\ObjectListView.Official.2.9.1\lib\net20\ObjectListView.dll</HintPath>
+    <Reference Include="NAudio.Midi, Version=2.0.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.Midi.2.0.1\lib\netstandard2.0\NAudio.Midi.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Wasapi, Version=2.0.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.Wasapi.2.0.0\lib\netstandard2.0\NAudio.Wasapi.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.WinForms, Version=2.0.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.WinForms.2.0.1\lib\net472\NAudio.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.WinMM, Version=2.0.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.WinMM.2.0.1\lib\netstandard2.0\NAudio.WinMM.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -232,20 +269,47 @@
       <HintPath>packages\jacobslusser.ScintillaNET.3.6.3\lib\net40\ScintillaNET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\netstandard1.1\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Deployment" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.4\lib\netstandard1.1\System.Memory.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Net.Http.dll</HintPath>
     </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.AccessControl.6.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
     <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -258,12 +322,6 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="UIAutomationClient" />
-    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=3.0.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
-      <HintPath>packages\DockPanelSuite.3.0.0\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
-    </Reference>
-    <Reference Include="WeifenLuo.WinFormsUI.Docking.ThemeVS2015, Version=3.0.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
-      <HintPath>packages\DockPanelSuite.ThemeVS2015.3.0.0\lib\net40\WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
@@ -309,109 +367,349 @@
     <Compile Include="Calculate\cCalculate.Plot.cSplayProfileProjectedDatas.vb" />
     <Compile Include="Calculate\cCalculate.Plot.cSplayPlanProjectedDatas.vb" />
     <Compile Include="Calculate\cCalculate.Plot.cSplayPlanProjectedData.vb" />
-    <Compile Include="cCaveInfoBranchesCombobox.Designer.vb">
-      <DependentUpon>cCaveInfoBranchesCombobox.vb</DependentUpon>
+    <Compile Include="cGrid.Designer.vb">
+      <DependentUpon>cGrid.vb</DependentUpon>
     </Compile>
-    <Compile Include="cCaveInfoBranchesCombobox.vb">
+    <Compile Include="cGrid.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="cCaveInfoCombobox.Designer.vb">
-      <DependentUpon>cCaveInfoCombobox.vb</DependentUpon>
+    <Compile Include="cOptions.cSurfaceLochOptions.vb" />
+    <Compile Include="cOptionsTherion.vb" />
+    <Compile Include="frmDistancesFilter.Designer.vb">
+      <DependentUpon>frmDistancesFilter.vb</DependentUpon>
     </Compile>
-    <Compile Include="cCaveInfoCombobox.vb">
+    <Compile Include="frmDistancesFilter.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dynamic.vb" />
+    <Compile Include="frmImportExcelMNemo.Designer.vb">
+      <DependentUpon>frmImportExcelMNemo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmImportExcelMNemo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImportExcelEron.Designer.vb">
+      <DependentUpon>frmImportExcelEron.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmImportExcelEron.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInfoDepth.Designer.vb">
+      <DependentUpon>frmInfoDepth.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmInfoDepth.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemCrossSectionMarkerPropertyControl.Designer.vb">
+      <DependentUpon>cItemCrossSectionMarkerPropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemCrossSectionMarkerPropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemCrossSectionPropertyControl.Designer.vb">
+      <DependentUpon>cItemCrossSectionPropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemCrossSectionPropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemBrushStylePropertyControl.Designer.vb">
+      <DependentUpon>cItemBrushStylePropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemBrushStylePropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemPenStylePropertyControl.Designer.vb">
+      <DependentUpon>cItemPenStylePropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemPenStylePropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Specialized\cTrigpointDropDown.Designer.vb">
+      <DependentUpon>cTrigpointDropDown.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Specialized\cTrigpointDropDown.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Specialized\cCollapsablePropertyControlContainer.Designer.vb">
+      <DependentUpon>cCollapsablePropertyControlContainer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Specialized\cCollapsablePropertyControlContainer.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemTextStylePropertyControl.Designer.vb">
+      <DependentUpon>cItemTextStylePropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemTextStylePropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPointPropertyControl\cItemSegmentBindingPropertyControl.Designer.vb">
+      <DependentUpon>cItemSegmentBindingPropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPointPropertyControl\cItemSegmentBindingPropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemQuotaPropertyControl.Designer.vb">
+      <DependentUpon>cItemQuotaPropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemQuotaPropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemSignPropertyControl.Designer.vb">
+      <DependentUpon>cItemSignPropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemSignPropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemCrossSectionSplayPropertyControl.Designer.vb">
+      <DependentUpon>cItemCrossSectionSplayPropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemCrossSectionSplayPropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemProfileSplayPropertyControl.Designer.vb">
+      <DependentUpon>cItemProfileSplayPropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemProfileSplayPropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemPlanSplayPropertyControl.Designer.vb">
+      <DependentUpon>cItemPlanSplayPropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemPlanSplayPropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemAttachmentPropertyControl.Designer.vb">
+      <DependentUpon>cItemAttachmentPropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemAttachmentPropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemCategoryAndPropertiesControl.Designer.vb">
+      <DependentUpon>cItemCategoryAndPropertiesControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemCategoryAndPropertiesControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemImagePropertyControl.Designer.vb">
+      <DependentUpon>cItemImagePropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemImagePropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemSketchPropertyControl.Designer.vb">
+      <DependentUpon>cItemSketchPropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemSketchPropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Specialized\cCaveBranchSelectorGrid.Designer.vb">
+      <DependentUpon>cCaveBranchSelectorGrid.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Specialized\cCaveBranchSelectorGrid.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Specialized\cCaveBranchDropDown.Designer.vb">
+      <DependentUpon>cCaveBranchDropDown.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Specialized\cCaveBranchDropDown.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Specialized\cCollapsablePropertySeparator.vb">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Specialized\cCrossSectionDropDown.Designer.vb">
+      <DependentUpon>cCrossSectionDropDown.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Specialized\cCrossSectionDropDown.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="cClipartHelper.vb" />
     <Compile Include="cClipartOnPath2.vb" />
     <Compile Include="cClipperHelper.vb" />
+    <Compile Include="Specialized\cColorSelector.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="cConnectionDef.vb" />
-    <Compile Include="cDesign3DModelControl.Designer.vb">
+    <Compile Include="DesignPropertyControl\cDesign3DModelControl.Designer.vb">
       <DependentUpon>cDesign3DModelControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="cDesign3DModelControl.vb">
+    <Compile Include="DesignPropertyControl\cDesign3DModelControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cDesignSurfaceControl.Designer.vb">
+    <Compile Include="DesignPropertyControl\cDesignSurfaceControl.Designer.vb">
       <DependentUpon>cDesignSurfaceControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="cDesignSurfaceControl.vb">
+    <Compile Include="DesignPropertyControl\cDesignSurfaceControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cDesignCenterlineControl.Designer.vb">
+    <Compile Include="DesignPropertyControl\cDesignCenterlineControl.Designer.vb">
       <DependentUpon>cDesignCenterlineControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="cDesignCenterlineControl.vb">
+    <Compile Include="DesignPropertyControl\cDesignCenterlineControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cDesignStyleControl.Designer.vb">
+    <Compile Include="DesignPropertyControl\cDesignStyleControl.Designer.vb">
       <DependentUpon>cDesignStyleControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="cDesignStyleControl.vb">
+    <Compile Include="DesignPropertyControl\cDesignStyleControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cDesignSurfaceProfileControl.Designer.vb">
+    <Compile Include="DesignPropertyControl\cDesignSurfaceProfileControl.Designer.vb">
       <DependentUpon>cDesignSurfaceProfileControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="cDesignSurfaceProfileControl.vb">
+    <Compile Include="DesignPropertyControl\cDesignSurfaceProfileControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cDesignPrintOrExportAreaControl.Designer.vb">
+    <Compile Include="DesignPropertyControl\cDesignPrintOrExportAreaControl.Designer.vb">
       <DependentUpon>cDesignPrintOrExportAreaControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="cDesignPrintOrExportAreaControl.vb">
+    <Compile Include="DesignPropertyControl\cDesignPrintOrExportAreaControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cDockContent.vb">
-      <SubType>Form</SubType>
+    <Compile Include="DockControl\cDockConsole.Designer.vb">
+      <DependentUpon>cDockConsole.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DockControl\cDockConsole.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="cDrawOptions.vb" />
-    <Compile Include="cElevationDropDown.Designer.vb">
+    <Compile Include="Specialized\cElevationDropDown.Designer.vb">
       <DependentUpon>cElevationDropDown.vb</DependentUpon>
     </Compile>
-    <Compile Include="cElevationDropDown.vb">
+    <Compile Include="Specialized\cElevationDropDown.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="cISession.vb" />
-    <Compile Include="cItemPointLineTypePropertyControl2.Designer.vb">
+    <Compile Include="ItemPointPropertyControl\cItemPointNavigatorPropertyControl.Designer.vb">
+      <DependentUpon>cItemPointNavigatorPropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPointPropertyControl\cItemPointNavigatorPropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemCaveBranchPropertyControl.Designer.vb">
+      <DependentUpon>cItemCaveBranchPropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemCaveBranchPropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemSegmentsBindingPropertyControl.Designer.vb">
+      <DependentUpon>cItemSegmentsBindingPropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemSegmentsBindingPropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemObjectsBindingPropertyControl.Designer.vb">
+      <DependentUpon>cItemObjectsBindingPropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemObjectsBindingPropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemTrigpointDistancesPropertyControl.Designer.vb">
+      <DependentUpon>cItemTrigpointDistancesPropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemTrigpointDistancesPropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemMarkerPropertyControl.Designer.vb">
+      <DependentUpon>cItemMarkerPropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemMarkerPropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemClippingPropertyControl.Designer.vb">
+      <DependentUpon>cItemClippingPropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemClippingPropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemTrigpointPropertyControl.Designer.vb">
+      <DependentUpon>cItemTrigpointPropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemTrigpointPropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemSegmentPropertyControl.Designer.vb">
+      <DependentUpon>cItemSegmentPropertyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemSegmentPropertyControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPointPropertyControl\cItemPointLineTypePropertyControl2.Designer.vb">
       <DependentUpon>cItemPointLineTypePropertyControl2.vb</DependentUpon>
     </Compile>
-    <Compile Include="cItemPointLineTypePropertyControl2.vb">
+    <Compile Include="ItemPointPropertyControl\cItemPointLineTypePropertyControl2.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cItemLineTypePropertyControl2.Designer.vb">
+    <Compile Include="ItemPropertyControl\cItemLineTypePropertyControl2.Designer.vb">
       <DependentUpon>cItemLineTypePropertyControl2.vb</DependentUpon>
     </Compile>
-    <Compile Include="cItemLineTypePropertyControl2.vb">
+    <Compile Include="ItemPropertyControl\cItemLineTypePropertyControl2.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cItemNamePropertyControl2.Designer.vb">
+    <Compile Include="ItemPropertyControl\cItemNamePropertyControl2.Designer.vb">
       <DependentUpon>cItemNamePropertyControl2.vb</DependentUpon>
     </Compile>
-    <Compile Include="cItemNamePropertyControl2.vb">
+    <Compile Include="ItemPropertyControl\cItemNamePropertyControl2.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cItemPointPropertyControl.Designer.vb">
+    <Compile Include="ItemPointPropertyControl\cItemPointPropertyControl.Designer.vb">
       <DependentUpon>cItemPointPropertyControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="cItemPointPropertyControl.vb">
+    <Compile Include="ItemPointPropertyControl\cItemPointPropertyControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cItemTransparencyPropertyControl2.Designer.vb">
+    <Compile Include="ItemPropertyControl\cItemTransparencyPropertyControl2.Designer.vb">
       <DependentUpon>cItemTransparencyPropertyControl2.vb</DependentUpon>
     </Compile>
-    <Compile Include="cItemTransparencyPropertyControl2.vb">
+    <Compile Include="ItemPropertyControl\cItemTransparencyPropertyControl2.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cDesign3DElevationFactor.Designer.vb">
+    <Compile Include="DesignPropertyControl\cDesign3DElevationFactor.Designer.vb">
       <DependentUpon>cDesign3DElevationFactor.vb</DependentUpon>
     </Compile>
-    <Compile Include="cDesign3DElevationFactor.vb">
+    <Compile Include="DesignPropertyControl\cDesign3DElevationFactor.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cItemVisibilityPropertyControl2.Designer.vb">
+    <Compile Include="ItemPropertyControl\cItemMergeModeControl.Designer.vb">
+      <DependentUpon>cItemMergeModeControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemMergeModeControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemPropertyControl\cItemVisibilityPropertyControl2.Designer.vb">
       <DependentUpon>cItemVisibilityPropertyControl2.vb</DependentUpon>
     </Compile>
-    <Compile Include="cItemVisibilityPropertyControl2.vb">
+    <Compile Include="ItemPropertyControl\cItemVisibilityPropertyControl2.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Specialized\cBrushStyleDropDown.Designer.vb">
+      <DependentUpon>cBrushStyleDropDown.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Specialized\cBrushStyleDropDown.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Specialized\cPenStyleDropDown.Designer.vb">
+      <DependentUpon>cPenStyleDropDown.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Specialized\cPenStyleDropDown.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Specialized\cFontStyleDropDown.Designer.vb">
+      <DependentUpon>cFontStyleDropDown.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Specialized\cFontStyleDropDown.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Specialized\cMessageCorner.Designer.vb">
+      <DependentUpon>cMessageCorner.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Specialized\cMessageCorner.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Specialized\cMessageBar.Designer.vb">
+      <DependentUpon>cMessageBar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Specialized\cMessageBar.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="cRibbonForm.vb">
@@ -428,43 +726,25 @@
     <Compile Include="cIItemScale.vb" />
     <Compile Include="cIItemLegend.vb" />
     <Compile Include="cImportTopoDroidHelper.vb" />
-    <Compile Include="cItemCompassPropertyControl.Designer.vb">
+    <Compile Include="ItemPropertyControl\cItemCompassPropertyControl.Designer.vb">
       <DependentUpon>cItemCompassPropertyControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="cItemCompassPropertyControl.vb">
+    <Compile Include="ItemPropertyControl\cItemCompassPropertyControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cItemNamePropertyControl.Designer.vb">
-      <DependentUpon>cItemNamePropertyControl.vb</DependentUpon>
-    </Compile>
-    <Compile Include="cItemNamePropertyControl.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="cItemScalePropertyControl.Designer.vb">
+    <Compile Include="ItemPropertyControl\cItemScalePropertyControl.Designer.vb">
       <DependentUpon>cItemScalePropertyControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="cItemScalePropertyControl.vb">
+    <Compile Include="ItemPropertyControl\cItemScalePropertyControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="cItemScale.vb" />
     <Compile Include="cItemCompass.vb" />
     <Compile Include="cItemInformationBoxText.vb" />
-    <Compile Include="cDesignLinkedSurveySelectorPropertyControl.Designer.vb">
+    <Compile Include="DesignPropertyControl\cDesignLinkedSurveySelectorPropertyControl.Designer.vb">
       <DependentUpon>cDesignLinkedSurveySelectorPropertyControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="cDesignLinkedSurveySelectorPropertyControl.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="cItemTextPropertyControl.Designer.vb">
-      <DependentUpon>cItemTextPropertyControl.vb</DependentUpon>
-    </Compile>
-    <Compile Include="cItemTextPropertyControl.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="cItemVisibilityPropertyControl.Designer.vb">
-      <DependentUpon>cItemVisibilityPropertyControl.vb</DependentUpon>
-    </Compile>
-    <Compile Include="cItemVisibilityPropertyControl.vb">
+    <Compile Include="DesignPropertyControl\cDesignLinkedSurveySelectorPropertyControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="cLinkedSurveys.vb" />
@@ -477,25 +757,25 @@
     <Compile Include="cPropertyControl.vb" />
     <Compile Include="cItemClipartSubItems.vb" />
     <Compile Include="cItemGroup.vb" />
-    <Compile Include="cItemLegendPropertyControl.Designer.vb">
+    <Compile Include="ItemPropertyControl\cItemLegendPropertyControl.Designer.vb">
       <DependentUpon>cItemLegendPropertyControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="cItemLegendPropertyControl.vb">
+    <Compile Include="ItemPropertyControl\cItemLegendPropertyControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="cItemPlanCrossSectionMarker.vb" />
     <Compile Include="cItemAttachment.vb" />
     <Compile Include="cItemLegend.vb" />
-    <Compile Include="cDesignPropertyControl.Designer.vb">
+    <Compile Include="DesignPropertyControl\cDesignPropertyControl.Designer.vb">
       <DependentUpon>cDesignPropertyControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="cDesignPropertyControl.vb">
+    <Compile Include="DesignPropertyControl\cDesignPropertyControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cItemPropertyControl.Designer.vb">
+    <Compile Include="ItemPropertyControl\cItemPropertyControl.Designer.vb">
       <DependentUpon>cItemPropertyControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="cItemPropertyControl.vb">
+    <Compile Include="ItemPropertyControl\cItemPropertyControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="cMasterSurvey.vb" />
@@ -504,51 +784,77 @@
     </Compile>
     <Compile Include="cSegmentImage.vb" />
     <Compile Include="cSegmentImages.vb" />
+    <Compile Include="Specialized\cCaveDropDown.Designer.vb">
+      <DependentUpon>cCaveDropDown.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Specialized\cCaveDropDown.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Specialized\cSessionDropDown.Designer.vb">
+      <DependentUpon>cSessionDropDown.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Specialized\cSessionDropDown.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Specialized\cTrigpointsGrid.Designer.vb">
+      <DependentUpon>cTrigpointsGrid.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Specialized\cTrigpointsGrid.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Specialized\cSegmentsGrid.Designer.vb">
+      <DependentUpon>cSegmentsGrid.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Specialized\cSegmentsGrid.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="cUIHelpers.vb" />
-    <Compile Include="cSingsImportHelper.vb" />
-    <Compile Include="cTemplateEntry.vb" />
+    <Compile Include="cSignsImportHelper.vb" />
     <Compile Include="cTexts.vb" />
-    <Compile Include="cTransparentPanel.Designer.vb">
-      <DependentUpon>cTransparentPanel.vb</DependentUpon>
-    </Compile>
-    <Compile Include="cTransparentPanel.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="cDockClipart.Designer.vb">
+    <Compile Include="DockControl\cDockClipart.Designer.vb">
       <DependentUpon>cDockClipart.vb</DependentUpon>
     </Compile>
-    <Compile Include="cDockClipart.vb">
+    <Compile Include="DockControl\cDockClipart.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cDockAudioViewer.Designer.vb">
+    <Compile Include="DockControl\cDockAudioViewer.Designer.vb">
       <DependentUpon>cDockAudioViewer.vb</DependentUpon>
     </Compile>
-    <Compile Include="cDockAudioViewer.vb">
+    <Compile Include="DockControl\cDockAudioViewer.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cDockImageViewer.Designer.vb">
+    <Compile Include="DockControl\cDockImageViewer.Designer.vb">
       <DependentUpon>cDockImageViewer.vb</DependentUpon>
     </Compile>
-    <Compile Include="cDockImageViewer.vb">
+    <Compile Include="DockControl\cDockImageViewer.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cDockJoinPoints.Designer.vb">
+    <Compile Include="DockControl\cDockJoinPoints.Designer.vb">
       <DependentUpon>cDockJoinPoints.vb</DependentUpon>
     </Compile>
-    <Compile Include="cDockJoinPoints.vb">
+    <Compile Include="DockControl\cDockJoinPoints.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cDockLevels.Designer.vb">
+    <Compile Include="DockControl\cDockLevels.Designer.vb">
       <DependentUpon>cDockLevels.vb</DependentUpon>
     </Compile>
-    <Compile Include="cDockLevels.vb">
+    <Compile Include="DockControl\cDockLevels.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cDockLinkedSurveys.Designer.vb">
+    <Compile Include="DockControl\cDockLinkedSurveys.Designer.vb">
       <DependentUpon>cDockLinkedSurveys.vb</DependentUpon>
     </Compile>
-    <Compile Include="cDockLinkedSurveys.vb">
+    <Compile Include="DockControl\cDockLinkedSurveys.vb">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cVerticalGrid.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frmCaveBranchesSelector.Designer.vb">
+      <DependentUpon>frmCaveBranchesSelector.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCaveBranchesSelector.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain2.Designer.vb">
       <DependentUpon>frmMain2.vb</DependentUpon>
@@ -556,29 +862,17 @@
     <Compile Include="frmMain2.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLevels.Designer.vb">
-      <DependentUpon>frmLevels.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmLevels.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="cDockText.Designer.vb">
+    <Compile Include="DockControl\cDockText.Designer.vb">
       <DependentUpon>cDockText.vb</DependentUpon>
     </Compile>
-    <Compile Include="cDockText.vb">
+    <Compile Include="DockControl\cDockText.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cDockTexts.Designer.vb">
+    <Compile Include="DockControl\cDockTexts.Designer.vb">
       <DependentUpon>cDockTexts.vb</DependentUpon>
     </Compile>
-    <Compile Include="cDockTexts.vb">
+    <Compile Include="DockControl\cDockTexts.vb">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="frmTexts.Designer.vb">
-      <DependentUpon>frmTexts.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmTexts.vb">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="modDevExpress.vb" />
     <Compile Include="cTrigPointLeftRightSideMeasure.vb" />
@@ -592,17 +886,6 @@
     <Compile Include="cCaveInfoBranch.vb" />
     <Compile Include="cCaveInfoBranches.vb" />
     <Compile Include="cCaveInfos.vb" />
-    <Compile Include="cCaveRegister.vb" />
-    <Compile Include="cCaveRegisterData.vb" />
-    <Compile Include="cCaveRegisterDatas.vb" />
-    <Compile Include="cCaveRegisterForm.Designer.vb">
-      <DependentUpon>cCaveRegisterForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="cCaveRegisterForm.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="cCaveRegisterSetting.vb" />
-    <Compile Include="cCaveRegisterSettings.vb" />
     <Compile Include="cCaveVisibility.vb" />
     <Compile Include="cClipartOnPath.vb" />
     <Compile Include="cClipperRegion.vb" />
@@ -635,9 +918,6 @@
     <Compile Include="cItemProfileCrossSectionMarker.vb" />
     <Compile Include="cProperties.cHighlightsDetail.vb" />
     <Compile Include="cProperties.cHighlightsDetails.vb" />
-    <Compile Include="cHolosItemEdit.xaml.vb">
-      <DependentUpon>cHolosItemEdit.xaml</DependentUpon>
-    </Compile>
     <Compile Include="cHolosViewer.xaml.vb">
       <DependentUpon>cHolosViewer.xaml</DependentUpon>
     </Compile>
@@ -714,30 +994,6 @@
     <Compile Include="cVisibilityItems.vb" />
     <Compile Include="cWMS.vb" />
     <Compile Include="cWMSs.vb" />
-    <Compile Include="frmAudioViewer.Designer.vb">
-      <DependentUpon>frmAudioViewer.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmAudioViewer.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCaveRegister.Designer.vb">
-      <DependentUpon>frmCaveRegister.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmCaveRegister.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCaveBranchesSelector.Designer.vb">
-      <DependentUpon>frmCaveBranchesSelector.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmCaveBranchesSelector.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCaveRegisterAddMulti.designer.vb">
-      <DependentUpon>frmCaveRegisterAddMulti.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmCaveRegisterAddMulti.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmConnectionDefBrowser.Designer.vb">
       <DependentUpon>frmConnectionDefBrowser.vb</DependentUpon>
     </Compile>
@@ -750,28 +1006,10 @@
     <Compile Include="frmDataFieldsEditor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCaveRegisterSettings.Designer.vb">
-      <DependentUpon>frmCaveRegisterSettings.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmCaveRegisterSettings.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmDisto.Designer.vb">
-      <DependentUpon>frmDisto.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmDisto.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmExportExcel.Designer.vb">
       <DependentUpon>frmExportExcel.vb</DependentUpon>
     </Compile>
     <Compile Include="frmExportExcel.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmExportHolos.Designer.vb">
-      <DependentUpon>frmExportHolos.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmExportHolos.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmExportTherion.Designer.vb">
@@ -780,22 +1018,10 @@
     <Compile Include="frmExportTherion.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLinkedSurveys.Designer.vb">
-      <DependentUpon>frmLinkedSurveys.vb</DependentUpon>
+    <Compile Include="frmImportCaveExplorer.Designer.vb">
+      <DependentUpon>frmImportCaveExplorer.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmLinkedSurveys.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmImportCaveExporer.Designer.vb">
-      <DependentUpon>frmImportCaveExporer.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmImportCaveExporer.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmImportcSurveyMerge.Designer.vb">
-      <DependentUpon>frmImportcSurveyMerge.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmImportcSurveyMerge.vb">
+    <Compile Include="frmImportCaveExplorer.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmImportExcel.Designer.vb">
@@ -808,12 +1034,6 @@
       <DependentUpon>frmInfoEntrance.vb</DependentUpon>
     </Compile>
     <Compile Include="frmInfoEntrance.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmItem3DEdit.Designer.vb">
-      <DependentUpon>frmItem3DEdit.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmItem3DEdit.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmItemProfileVisibility.Designer.vb">
@@ -861,12 +1081,6 @@
     <Compile Include="frmScriptFormulaEditor.Designer.vb">
       <DependentUpon>frmScriptFormulaEditor.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmSegmentsFilter.Designer.vb">
-      <DependentUpon>frmSegmentsFilter.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmSegmentsFilter.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmSketchEditDistanceWithLRUD.Designer.vb">
       <DependentUpon>frmSketchEditDistanceWithLRUD.vb</DependentUpon>
     </Compile>
@@ -897,29 +1111,17 @@
     <Compile Include="frmSurface3DLayerProperties.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCaveRegisterAdd.designer.vb">
-      <DependentUpon>frmCaveRegisterAdd.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmCaveRegisterAdd.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmSurfaceLayerProperties.Designer.vb">
       <DependentUpon>frmSurfaceLayerProperties.vb</DependentUpon>
     </Compile>
     <Compile Include="frmSurfaceLayerProperties.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSurfaceAddWMS.designer.vb">
-      <DependentUpon>frmSurfaceAddWMS.vb</DependentUpon>
+    <Compile Include="DockControl\cDockScript.Designer.vb">
+      <DependentUpon>cDockScript.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmSurfaceAddWMS.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmScriptEditor.Designer.vb">
-      <DependentUpon>frmScriptEditor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmScriptEditor.vb">
-      <SubType>Form</SubType>
+    <Compile Include="DockControl\cDockScript.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="frmImportGPSTrack.Designer.vb">
       <DependentUpon>frmImportGPSTrack.vb</DependentUpon>
@@ -933,22 +1135,10 @@
     <Compile Include="frmItemsFilter.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmJoinPointsPopup.Designer.vb">
-      <DependentUpon>frmJoinPointsPopup.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmJoinPointsPopup.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmLochDialog.Designer.vb">
       <DependentUpon>frmLochDialog.vb</DependentUpon>
     </Compile>
     <Compile Include="frmLochDialog.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMainFloatingToolbar.Designer.vb">
-      <DependentUpon>frmMainFloatingToolbar.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmMainFloatingToolbar.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmNotifyUpdate.Designer.vb">
@@ -967,13 +1157,13 @@
       <DependentUpon>frmParametersSegments.vb</DependentUpon>
     </Compile>
     <Compile Include="frmParametersSegments.vb">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="frmParametersDesign.Designer.vb">
       <DependentUpon>frmParametersDesign.vb</DependentUpon>
     </Compile>
     <Compile Include="frmParametersDesign.vb">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="frmImportTherion.Designer.vb">
       <DependentUpon>frmImportTherion.vb</DependentUpon>
@@ -995,22 +1185,10 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="cRegion.vb" />
-    <Compile Include="frmImageViewer.Designer.vb">
-      <DependentUpon>frmImageViewer.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmImageViewer.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmImportcSurvey.Designer.vb">
       <DependentUpon>frmImportcSurvey.vb</DependentUpon>
     </Compile>
     <Compile Include="frmImportcSurvey.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmGrades.Designer.vb">
-      <DependentUpon>frmGrades.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmGrades.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmInfoSession.Designer.vb">
@@ -1024,7 +1202,7 @@
       <DependentUpon>frmParametersZOrder.vb</DependentUpon>
     </Compile>
     <Compile Include="frmParametersZOrder.vb">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="frmExportGoogleKML.Designer.vb">
       <DependentUpon>frmExportGoogleKML.vb</DependentUpon>
@@ -1052,18 +1230,6 @@
       <DependentUpon>frmImportGenericData.vb</DependentUpon>
     </Compile>
     <Compile Include="frmImportGenericData.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmRefineFixData.Designer.vb">
-      <DependentUpon>frmRefineFixData.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmRefineFixData.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmSignProperties.Designer.vb">
-      <DependentUpon>frmSignProperties.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmSignProperties.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmResurveyAddStation.designer.vb">
@@ -1099,12 +1265,6 @@
     <Compile Include="frmSplay.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSurface.Designer.vb">
-      <DependentUpon>frmSurface.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmSurface.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmSurfaceImportASCParameters.Designer.vb">
       <DependentUpon>frmSurfaceImportASCParameters.vb</DependentUpon>
     </Compile>
@@ -1123,28 +1283,10 @@
     <Compile Include="frmSurveyCleanUpUndefinedCaves.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSurveyGrade.Designer.vb">
-      <DependentUpon>frmSurveyGrade.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmSurveyGrade.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmTemplates.Designer.vb">
       <DependentUpon>frmTemplates.vb</DependentUpon>
     </Compile>
     <Compile Include="frmTemplates.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmtest.Designer.vb">
-      <DependentUpon>frmtest.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmtest.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmTestLink.Designer.vb">
-      <DependentUpon>FrmTestLink.vb</DependentUpon>
-    </Compile>
-    <Compile Include="FrmTestLink.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmUndoManager.Designer.vb">
@@ -1160,7 +1302,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="cPreviewProfile.vb" />
-    <Compile Include="Dynamic.vb" />
     <Compile Include="frmCaveVisibilityManager.Designer.vb">
       <DependentUpon>frmCaveVisibilityManager.vb</DependentUpon>
     </Compile>
@@ -1222,12 +1363,6 @@
     <Compile Include="cDesigns.vb" />
     <Compile Include="cEditTools.vb" />
     <Compile Include="cOptionsExport.vb" />
-    <Compile Include="cGrid.Designer.vb">
-      <DependentUpon>cGrid.vb</DependentUpon>
-    </Compile>
-    <Compile Include="cGrid.vb">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="cITrigPointCollection.vb" />
     <Compile Include="cOptionsPreview.vb" />
     <Compile Include="Calculate\cCalculate.vb" />
@@ -1259,22 +1394,10 @@
     <Compile Include="frmAutoSettings.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmClipartPopup.Designer.vb">
-      <DependentUpon>frmClipartPopup.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmClipartPopup.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmExceptionManager.Designer.vb">
       <DependentUpon>frmExceptionManager.vb</DependentUpon>
     </Compile>
     <Compile Include="frmExceptionManager.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmFind.Designer.vb">
-      <DependentUpon>frmFind.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmFind.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmFontDialog.Designer.vb">
@@ -1295,11 +1418,11 @@
     <Compile Include="frmInfoCave.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmInfoDistances.Designer.vb">
-      <DependentUpon>frmInfoDistances.vb</DependentUpon>
+    <Compile Include="DockControl\cDockDistances.Designer.vb">
+      <DependentUpon>cDockDistances.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmInfoDistances.vb">
-      <SubType>Form</SubType>
+    <Compile Include="DockControl\cDockDistances.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="frmInfoOrientation.Designer.vb">
       <DependentUpon>frmInfoOrientation.vb</DependentUpon>
@@ -1323,7 +1446,7 @@
       <DependentUpon>frmQuotaProperties.vb</DependentUpon>
     </Compile>
     <Compile Include="frmQuotaProperties.vb">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="frmScaleRules.Designer.vb">
       <DependentUpon>frmScaleRules.vb</DependentUpon>
@@ -1369,30 +1492,23 @@
     <Compile Include="cProperties.vb" />
     <Compile Include="cTranslation.vb" />
     <Compile Include="cTranslations.vb" />
-    <Compile Include="frmMain.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMain.Designer.vb">
-      <DependentUpon>frmMain.vb</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmParametersCompass.Designer.vb">
       <DependentUpon>frmParametersCompass.vb</DependentUpon>
     </Compile>
     <Compile Include="frmParametersCompass.vb">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="frmParametersInfoBox.Designer.vb">
       <DependentUpon>frmParametersInfoBox.vb</DependentUpon>
     </Compile>
     <Compile Include="frmParametersInfoBox.vb">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="frmParametersScale.Designer.vb">
       <DependentUpon>frmParametersScale.vb</DependentUpon>
     </Compile>
     <Compile Include="frmParametersScale.vb">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="frmPreview.Designer.vb">
       <DependentUpon>frmPreview.vb</DependentUpon>
@@ -1404,7 +1520,7 @@
       <DependentUpon>frmPreviewMargins.vb</DependentUpon>
     </Compile>
     <Compile Include="frmPreviewMargins.vb">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="frmRenameTrigpoints.Designer.vb">
       <DependentUpon>frmRenameTrigpoints.vb</DependentUpon>
@@ -1434,24 +1550,12 @@
       <DependentUpon>frmParametersTranslations.vb</DependentUpon>
     </Compile>
     <Compile Include="frmParametersTranslations.vb">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="frmSVGImportOptions.Designer.vb">
       <DependentUpon>frmSVGImportOptions.vb</DependentUpon>
     </Compile>
     <Compile Include="frmSVGImportOptions.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmTextPopup.Designer.vb">
-      <DependentUpon>frmTextPopup.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmTextPopup.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmTherionPad.Designer.vb">
-      <DependentUpon>frmTherionPad.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmTherionPad.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Calculate\cCalculate.Plot.cISplayProjectedData.vb" />
@@ -1494,6 +1598,7 @@
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -1505,10 +1610,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="cLinkedSurveySelectorUserControl.Designer.vb">
+    <Compile Include="Specialized\cLinkedSurveySelectorUserControl.Designer.vb">
       <DependentUpon>cLinkedSurveySelectorUserControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="cLinkedSurveySelectorUserControl.vb">
+    <Compile Include="Specialized\cLinkedSurveySelectorUserControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Specialized\cTrigpointsMultiselector.Designer.vb">
+      <DependentUpon>cTrigpointsMultiselector.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Specialized\cTrigpointsMultiselector.vb">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
@@ -1528,219 +1639,565 @@
     <EmbeddedResource Include="cAreaFromSequence.ru.resx">
       <DependentUpon>cAreaFromSequence.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cCaveRegisterForm.resx">
-      <DependentUpon>cCaveRegisterForm.vb</DependentUpon>
+    <EmbeddedResource Include="DesignPropertyControl\cDesign3DModelControl.ru.resx">
+      <DependentUpon>cDesign3DModelControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockControl\cDockLevels.en.resx">
+      <DependentUpon>cDockLevels.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDistancesFilter.it.resx">
+      <DependentUpon>frmDistancesFilter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDistancesFilter.resx">
+      <DependentUpon>frmDistancesFilter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportExcelMNemo.it.resx">
+      <DependentUpon>frmImportExcelMNemo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportExcelMNemo.resx">
+      <DependentUpon>frmImportExcelMNemo.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDesign3DModelControl.it.resx">
+    <EmbeddedResource Include="frmImportExcelMNemo.ru.resx">
+      <DependentUpon>frmImportExcelMNemo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportExcelEron.it.resx">
+      <DependentUpon>frmImportExcelEron.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportExcelEron.resx">
+      <DependentUpon>frmImportExcelEron.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportExcelEron.ru.resx">
+      <DependentUpon>frmImportExcelEron.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInfoDepth.it.resx">
+      <DependentUpon>frmInfoDepth.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInfoDepth.resx">
+      <DependentUpon>frmInfoDepth.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInfoDepth.ru.resx">
+      <DependentUpon>frmInfoDepth.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProperties.en.resx">
+      <DependentUpon>frmProperties.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQuotaProperties.it.resx">
+      <DependentUpon>frmQuotaProperties.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemCaveBranchPropertyControl.en.resx">
+      <DependentUpon>cItemCaveBranchPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemCrossSectionMarkerPropertyControl.en.resx">
+      <DependentUpon>cItemCrossSectionMarkerPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemCrossSectionMarkerPropertyControl.it.resx">
+      <DependentUpon>cItemCrossSectionMarkerPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemCrossSectionMarkerPropertyControl.resx">
+      <DependentUpon>cItemCrossSectionMarkerPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemCrossSectionMarkerPropertyControl.ru.resx">
+      <DependentUpon>cItemCrossSectionMarkerPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemCrossSectionPropertyControl.en.resx">
+      <DependentUpon>cItemCrossSectionPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemCrossSectionPropertyControl.it.resx">
+      <DependentUpon>cItemCrossSectionPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemCrossSectionPropertyControl.resx">
+      <DependentUpon>cItemCrossSectionPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemCrossSectionPropertyControl.ru.resx">
+      <DependentUpon>cItemCrossSectionPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemBrushStylePropertyControl.it.resx">
+      <DependentUpon>cItemBrushStylePropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemBrushStylePropertyControl.resx">
+      <DependentUpon>cItemBrushStylePropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemBrushStylePropertyControl.ru.resx">
+      <DependentUpon>cItemBrushStylePropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemPenStylePropertyControl.it.resx">
+      <DependentUpon>cItemPenStylePropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemPenStylePropertyControl.resx">
+      <DependentUpon>cItemPenStylePropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemPenStylePropertyControl.ru.resx">
+      <DependentUpon>cItemPenStylePropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Specialized\cSegmentsGrid.it.resx">
+      <DependentUpon>cSegmentsGrid.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Specialized\cTrigpointDropDown.resx">
+      <DependentUpon>cTrigpointDropDown.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Specialized\cCollapsablePropertyControlContainer.resx">
+      <DependentUpon>cCollapsablePropertyControlContainer.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemTextStylePropertyControl.it.resx">
+      <DependentUpon>cItemTextStylePropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemTextStylePropertyControl.resx">
+      <DependentUpon>cItemTextStylePropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemTextStylePropertyControl.ru.resx">
+      <DependentUpon>cItemTextStylePropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPointPropertyControl\cItemSegmentBindingPropertyControl.it.resx">
+      <DependentUpon>cItemSegmentBindingPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPointPropertyControl\cItemSegmentBindingPropertyControl.resx">
+      <DependentUpon>cItemSegmentBindingPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPointPropertyControl\cItemSegmentBindingPropertyControl.ru.resx">
+      <DependentUpon>cItemSegmentBindingPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemQuotaPropertyControl.en.resx">
+      <DependentUpon>cItemQuotaPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemQuotaPropertyControl.it.resx">
+      <DependentUpon>cItemQuotaPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemQuotaPropertyControl.resx">
+      <DependentUpon>cItemQuotaPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemQuotaPropertyControl.ru.resx">
+      <DependentUpon>cItemQuotaPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemSignPropertyControl.en.resx">
+      <DependentUpon>cItemSignPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemSignPropertyControl.it.resx">
+      <DependentUpon>cItemSignPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemSignPropertyControl.resx">
+      <DependentUpon>cItemSignPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemSignPropertyControl.ru.resx">
+      <DependentUpon>cItemSignPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemCrossSectionSplayPropertyControl.it.resx">
+      <DependentUpon>cItemCrossSectionSplayPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemCrossSectionSplayPropertyControl.resx">
+      <DependentUpon>cItemCrossSectionSplayPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemCrossSectionSplayPropertyControl.ru.resx">
+      <DependentUpon>cItemCrossSectionSplayPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemProfileSplayPropertyControl.it.resx">
+      <DependentUpon>cItemProfileSplayPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemProfileSplayPropertyControl.resx">
+      <DependentUpon>cItemProfileSplayPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemProfileSplayPropertyControl.ru.resx">
+      <DependentUpon>cItemProfileSplayPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemPlanSplayPropertyControl.it.resx">
+      <DependentUpon>cItemPlanSplayPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemPlanSplayPropertyControl.resx">
+      <DependentUpon>cItemPlanSplayPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemPlanSplayPropertyControl.ru.resx">
+      <DependentUpon>cItemPlanSplayPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemAttachmentPropertyControl.it.resx">
+      <DependentUpon>cItemAttachmentPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemAttachmentPropertyControl.resx">
+      <DependentUpon>cItemAttachmentPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemAttachmentPropertyControl.ru.resx">
+      <DependentUpon>cItemAttachmentPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemCategoryAndPropertiesControl.it.resx">
+      <DependentUpon>cItemCategoryAndPropertiesControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemCategoryAndPropertiesControl.resx">
+      <DependentUpon>cItemCategoryAndPropertiesControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemCategoryAndPropertiesControl.ru.resx">
+      <DependentUpon>cItemCategoryAndPropertiesControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemImagePropertyControl.it.resx">
+      <DependentUpon>cItemImagePropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemImagePropertyControl.resx">
+      <DependentUpon>cItemImagePropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemImagePropertyControl.ru.resx">
+      <DependentUpon>cItemImagePropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemSketchPropertyControl.it.resx">
+      <DependentUpon>cItemSketchPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemSketchPropertyControl.resx">
+      <DependentUpon>cItemSketchPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemSketchPropertyControl.ru.resx">
+      <DependentUpon>cItemSketchPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Specialized\cCaveBranchSelectorGrid.resx">
+      <DependentUpon>cCaveBranchSelectorGrid.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Specialized\cCaveBranchDropDown.resx">
+      <DependentUpon>cCaveBranchDropDown.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Specialized\cCrossSectionDropDown.resx">
+      <DependentUpon>cCrossSectionDropDown.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignPropertyControl\cDesign3DModelControl.it.resx">
       <DependentUpon>cDesign3DModelControl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDesign3DModelControl.resx">
+    <EmbeddedResource Include="DesignPropertyControl\cDesign3DModelControl.resx">
       <DependentUpon>cDesign3DModelControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDesignSurfaceControl.it.resx">
+    <EmbeddedResource Include="DesignPropertyControl\cDesignSurfaceControl.it.resx">
       <DependentUpon>cDesignSurfaceControl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDesignSurfaceControl.resx">
+    <EmbeddedResource Include="DesignPropertyControl\cDesignSurfaceControl.resx">
       <DependentUpon>cDesignSurfaceControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDesignCenterlineControl.it.resx">
+    <EmbeddedResource Include="DesignPropertyControl\cDesignCenterlineControl.it.resx">
       <DependentUpon>cDesignCenterlineControl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDesignCenterlineControl.resx">
+    <EmbeddedResource Include="DesignPropertyControl\cDesignCenterlineControl.resx">
       <DependentUpon>cDesignCenterlineControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDesignStyleControl.it.resx">
+    <EmbeddedResource Include="DesignPropertyControl\cDesignStyleControl.it.resx">
       <DependentUpon>cDesignStyleControl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDesignStyleControl.resx">
+    <EmbeddedResource Include="DesignPropertyControl\cDesignStyleControl.resx">
       <DependentUpon>cDesignStyleControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDesignSurfaceProfileControl.it.resx">
+    <EmbeddedResource Include="DesignPropertyControl\cDesignSurfaceProfileControl.it.resx">
       <DependentUpon>cDesignSurfaceProfileControl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDesignSurfaceProfileControl.resx">
+    <EmbeddedResource Include="DesignPropertyControl\cDesignSurfaceProfileControl.resx">
       <DependentUpon>cDesignSurfaceProfileControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDesignPrintOrExportAreaControl.it.resx">
+    <EmbeddedResource Include="DesignPropertyControl\cDesignPrintOrExportAreaControl.it.resx">
       <DependentUpon>cDesignPrintOrExportAreaControl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDesignPrintOrExportAreaControl.resx">
+    <EmbeddedResource Include="DesignPropertyControl\cDesignPrintOrExportAreaControl.resx">
       <DependentUpon>cDesignPrintOrExportAreaControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="cElevationDropDown.resx">
+    <EmbeddedResource Include="DockControl\cDockConsole.it.resx">
+      <DependentUpon>cDockConsole.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockControl\cDockConsole.resx">
+      <DependentUpon>cDockConsole.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockControl\cDockConsole.ru.resx">
+      <DependentUpon>cDockConsole.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Specialized\cElevationDropDown.resx">
       <DependentUpon>cElevationDropDown.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemCompassPropertyControl.en.resx">
+    <EmbeddedResource Include="ItemPointPropertyControl\cItemPointNavigatorPropertyControl.it.resx">
+      <DependentUpon>cItemPointNavigatorPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPointPropertyControl\cItemPointNavigatorPropertyControl.resx">
+      <DependentUpon>cItemPointNavigatorPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPointPropertyControl\cItemPointNavigatorPropertyControl.ru.resx">
+      <DependentUpon>cItemPointNavigatorPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemCaveBranchPropertyControl.it.resx">
+      <DependentUpon>cItemCaveBranchPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemCaveBranchPropertyControl.resx">
+      <DependentUpon>cItemCaveBranchPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemCaveBranchPropertyControl.ru.resx">
+      <DependentUpon>cItemCaveBranchPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemSegmentsBindingPropertyControl.it.resx">
+      <DependentUpon>cItemSegmentsBindingPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemSegmentsBindingPropertyControl.resx">
+      <DependentUpon>cItemSegmentsBindingPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemSegmentsBindingPropertyControl.ru.resx">
+      <DependentUpon>cItemSegmentsBindingPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemObjectsBindingPropertyControl.it.resx">
+      <DependentUpon>cItemObjectsBindingPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemObjectsBindingPropertyControl.resx">
+      <DependentUpon>cItemObjectsBindingPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemObjectsBindingPropertyControl.ru.resx">
+      <DependentUpon>cItemObjectsBindingPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemTrigpointDistancesPropertyControl.it.resx">
+      <DependentUpon>cItemTrigpointDistancesPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemTrigpointDistancesPropertyControl.resx">
+      <DependentUpon>cItemTrigpointDistancesPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemTrigpointDistancesPropertyControl.ru.resx">
+      <DependentUpon>cItemTrigpointDistancesPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemCompassPropertyControl.en.resx">
       <DependentUpon>cItemCompassPropertyControl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemCompassPropertyControl.it.resx">
+    <EmbeddedResource Include="ItemPropertyControl\cItemCompassPropertyControl.it.resx">
+      <DependentUpon>cItemCompassPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemCompassPropertyControl.resx">
+      <DependentUpon>cItemCompassPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemCompassPropertyControl.ru.resx">
       <DependentUpon>cItemCompassPropertyControl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemCompassPropertyControl.resx">
-      <DependentUpon>cItemCompassPropertyControl.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="cItemCompassPropertyControl.ru.resx">
-      <DependentUpon>cItemCompassPropertyControl.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="cItemLegendPropertyControl.it.resx">
+    <EmbeddedResource Include="ItemPropertyControl\cItemLegendPropertyControl.it.resx">
       <DependentUpon>cItemLegendPropertyControl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemLegendPropertyControl.ru.resx">
+    <EmbeddedResource Include="ItemPropertyControl\cItemLegendPropertyControl.ru.resx">
       <DependentUpon>cItemLegendPropertyControl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemPointLineTypePropertyControl2.it.resx">
+    <EmbeddedResource Include="ItemPropertyControl\cItemMarkerPropertyControl.it.resx">
+      <DependentUpon>cItemMarkerPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemMarkerPropertyControl.resx">
+      <DependentUpon>cItemMarkerPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemMarkerPropertyControl.ru.resx">
+      <DependentUpon>cItemMarkerPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemClippingPropertyControl.it.resx">
+      <DependentUpon>cItemClippingPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemClippingPropertyControl.resx">
+      <DependentUpon>cItemClippingPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemClippingPropertyControl.ru.resx">
+      <DependentUpon>cItemClippingPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemTrigpointPropertyControl.it.resx">
+      <DependentUpon>cItemTrigpointPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemTrigpointPropertyControl.resx">
+      <DependentUpon>cItemTrigpointPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemTrigpointPropertyControl.ru.resx">
+      <DependentUpon>cItemTrigpointPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemSegmentPropertyControl.it.resx">
+      <DependentUpon>cItemSegmentPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemSegmentPropertyControl.resx">
+      <DependentUpon>cItemSegmentPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemSegmentPropertyControl.ru.resx">
+      <DependentUpon>cItemSegmentPropertyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPointPropertyControl\cItemPointLineTypePropertyControl2.it.resx">
       <DependentUpon>cItemPointLineTypePropertyControl2.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemPointLineTypePropertyControl2.resx">
+    <EmbeddedResource Include="ItemPointPropertyControl\cItemPointLineTypePropertyControl2.resx">
+      <DependentUpon>cItemPointLineTypePropertyControl2.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPointPropertyControl\cItemPointLineTypePropertyControl2.ru.resx">
       <DependentUpon>cItemPointLineTypePropertyControl2.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemPointLineTypePropertyControl2.ru.resx">
-      <DependentUpon>cItemPointLineTypePropertyControl2.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="cItemLineTypePropertyControl2.it.resx">
+    <EmbeddedResource Include="ItemPropertyControl\cItemLineTypePropertyControl2.it.resx">
       <DependentUpon>cItemLineTypePropertyControl2.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemLineTypePropertyControl2.resx">
+    <EmbeddedResource Include="ItemPropertyControl\cItemLineTypePropertyControl2.resx">
+      <DependentUpon>cItemLineTypePropertyControl2.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemLineTypePropertyControl2.ru.resx">
       <DependentUpon>cItemLineTypePropertyControl2.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemLineTypePropertyControl2.ru.resx">
-      <DependentUpon>cItemLineTypePropertyControl2.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="cItemNamePropertyControl2.it.resx">
+    <EmbeddedResource Include="ItemPropertyControl\cItemNamePropertyControl2.it.resx">
       <DependentUpon>cItemNamePropertyControl2.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemNamePropertyControl2.resx">
+    <EmbeddedResource Include="ItemPropertyControl\cItemNamePropertyControl2.resx">
+      <DependentUpon>cItemNamePropertyControl2.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemNamePropertyControl2.ru.resx">
       <DependentUpon>cItemNamePropertyControl2.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemNamePropertyControl2.ru.resx">
-      <DependentUpon>cItemNamePropertyControl2.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="cItemNamePropertyControl.it.resx">
-      <DependentUpon>cItemNamePropertyControl.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="cItemNamePropertyControl.resx">
-      <DependentUpon>cItemNamePropertyControl.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="cItemNamePropertyControl.ru.resx">
-      <DependentUpon>cItemNamePropertyControl.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="cItemPointPropertyControl.resx">
+    <EmbeddedResource Include="ItemPointPropertyControl\cItemPointPropertyControl.resx">
       <DependentUpon>cItemPointPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemScalePropertyControl.it.resx">
+    <EmbeddedResource Include="ItemPropertyControl\cItemScalePropertyControl.it.resx">
       <DependentUpon>cItemScalePropertyControl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemScalePropertyControl.resx">
+    <EmbeddedResource Include="ItemPropertyControl\cItemScalePropertyControl.resx">
       <DependentUpon>cItemScalePropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemLegendPropertyControl.resx">
+    <EmbeddedResource Include="ItemPropertyControl\cItemLegendPropertyControl.resx">
       <DependentUpon>cItemLegendPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDesignPropertyControl.resx">
+    <EmbeddedResource Include="DesignPropertyControl\cDesignPropertyControl.resx">
       <DependentUpon>cDesignPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemPropertyControl.resx">
+    <EmbeddedResource Include="ItemPropertyControl\cItemPropertyControl.resx">
       <DependentUpon>cItemPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemScalePropertyControl.ru.resx">
+    <EmbeddedResource Include="ItemPropertyControl\cItemScalePropertyControl.ru.resx">
       <DependentUpon>cItemScalePropertyControl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDesignLinkedSurveySelectorPropertyControl.it.resx">
+    <EmbeddedResource Include="DesignPropertyControl\cDesignLinkedSurveySelectorPropertyControl.it.resx">
       <DependentUpon>cDesignLinkedSurveySelectorPropertyControl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDesignLinkedSurveySelectorPropertyControl.resx">
+    <EmbeddedResource Include="DesignPropertyControl\cDesignLinkedSurveySelectorPropertyControl.resx">
+      <DependentUpon>cDesignLinkedSurveySelectorPropertyControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignPropertyControl\cDesignLinkedSurveySelectorPropertyControl.ru.resx">
       <DependentUpon>cDesignLinkedSurveySelectorPropertyControl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDesignLinkedSurveySelectorPropertyControl.ru.resx">
-      <DependentUpon>cDesignLinkedSurveySelectorPropertyControl.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="cItemTextPropertyControl.it.resx">
-      <DependentUpon>cItemTextPropertyControl.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="cItemTextPropertyControl.resx">
-      <DependentUpon>cItemTextPropertyControl.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="cItemTextPropertyControl.ru.resx">
-      <DependentUpon>cItemTextPropertyControl.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="cItemTransparencyPropertyControl2.it.resx">
+    <EmbeddedResource Include="ItemPropertyControl\cItemTransparencyPropertyControl2.it.resx">
       <DependentUpon>cItemTransparencyPropertyControl2.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemTransparencyPropertyControl2.resx">
+    <EmbeddedResource Include="ItemPropertyControl\cItemTransparencyPropertyControl2.resx">
+      <DependentUpon>cItemTransparencyPropertyControl2.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemTransparencyPropertyControl2.ru.resx">
       <DependentUpon>cItemTransparencyPropertyControl2.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemTransparencyPropertyControl2.ru.resx">
-      <DependentUpon>cItemTransparencyPropertyControl2.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="cDesign3DElevationFactor.it.resx">
+    <EmbeddedResource Include="DesignPropertyControl\cDesign3DElevationFactor.it.resx">
       <DependentUpon>cDesign3DElevationFactor.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDesign3DElevationFactor.resx">
+    <EmbeddedResource Include="DesignPropertyControl\cDesign3DElevationFactor.resx">
+      <DependentUpon>cDesign3DElevationFactor.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignPropertyControl\cDesign3DElevationFactor.ru.resx">
       <DependentUpon>cDesign3DElevationFactor.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDesign3DElevationFactor.ru.resx">
-      <DependentUpon>cDesign3DElevationFactor.vb</DependentUpon>
+    <EmbeddedResource Include="ItemPropertyControl\cItemMergeModeControl.it.resx">
+      <DependentUpon>cItemMergeModeControl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemVisibilityPropertyControl2.it.resx">
+    <EmbeddedResource Include="ItemPropertyControl\cItemMergeModeControl.resx">
+      <DependentUpon>cItemMergeModeControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemMergeModeControl.ru.resx">
+      <DependentUpon>cItemMergeModeControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemVisibilityPropertyControl2.it.resx">
       <DependentUpon>cItemVisibilityPropertyControl2.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemVisibilityPropertyControl2.resx">
+    <EmbeddedResource Include="ItemPropertyControl\cItemVisibilityPropertyControl2.resx">
+      <DependentUpon>cItemVisibilityPropertyControl2.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPropertyControl\cItemVisibilityPropertyControl2.ru.resx">
       <DependentUpon>cItemVisibilityPropertyControl2.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemVisibilityPropertyControl2.ru.resx">
-      <DependentUpon>cItemVisibilityPropertyControl2.vb</DependentUpon>
+    <EmbeddedResource Include="Specialized\cBrushStyleDropDown.resx">
+      <DependentUpon>cBrushStyleDropDown.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemVisibilityPropertyControl.it.resx">
-      <DependentUpon>cItemVisibilityPropertyControl.vb</DependentUpon>
+    <EmbeddedResource Include="Specialized\cPenStyleDropDown.resx">
+      <DependentUpon>cPenStyleDropDown.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemVisibilityPropertyControl.resx">
-      <DependentUpon>cItemVisibilityPropertyControl.vb</DependentUpon>
+    <EmbeddedResource Include="Specialized\cFontStyleDropDown.resx">
+      <DependentUpon>cFontStyleDropDown.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cItemVisibilityPropertyControl.ru.resx">
-      <DependentUpon>cItemVisibilityPropertyControl.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="cLinkedSurveySelectorUserControl.it.resx">
+    <EmbeddedResource Include="Specialized\cLinkedSurveySelectorUserControl.it.resx">
       <DependentUpon>cLinkedSurveySelectorUserControl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cLinkedSurveySelectorUserControl.ru.resx">
+    <EmbeddedResource Include="Specialized\cLinkedSurveySelectorUserControl.ru.resx">
       <DependentUpon>cLinkedSurveySelectorUserControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Specialized\cMessageCorner.resx">
+      <DependentUpon>cMessageCorner.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Specialized\cMessageBar.resx">
+      <DependentUpon>cMessageBar.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cProgressPanel.resx">
       <DependentUpon>cProgressPanel.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Specialized\cCaveDropDown.resx">
+      <DependentUpon>cCaveDropDown.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Specialized\cSessionDropDown.resx">
+      <DependentUpon>cSessionDropDown.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Specialized\cTrigpointsGrid.it.resx">
+      <DependentUpon>cTrigpointsGrid.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Specialized\cTrigpointsGrid.resx">
+      <DependentUpon>cTrigpointsGrid.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Specialized\cSegmentsGrid.resx">
+      <DependentUpon>cSegmentsGrid.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAbout.ru.resx">
       <DependentUpon>frmAbout.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDockAudioViewer.it.resx">
+    <EmbeddedResource Include="DockControl\cDockAudioViewer.it.resx">
       <DependentUpon>cDockAudioViewer.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDockAudioViewer.resx">
+    <EmbeddedResource Include="DockControl\cDockAudioViewer.resx">
       <DependentUpon>cDockAudioViewer.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDockAudioViewer.ru.resx">
+    <EmbeddedResource Include="DockControl\cDockAudioViewer.ru.resx">
       <DependentUpon>cDockAudioViewer.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmAudioViewer.it.resx">
-      <DependentUpon>frmAudioViewer.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmAudioViewer.resx">
-      <DependentUpon>frmAudioViewer.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmAudioViewer.ru.resx">
-      <DependentUpon>frmAudioViewer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAutoSettings.ru.resx">
       <DependentUpon>frmAutoSettings.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCaveBranchesSelector.ru.resx">
+    <EmbeddedResource Include="frmCaveBranchesSelector.en.resx">
       <DependentUpon>frmCaveBranchesSelector.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmCaveRegister.resx">
-      <DependentUpon>frmCaveRegister.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCaveBranchesSelector.it.resx">
       <DependentUpon>frmCaveBranchesSelector.vb</DependentUpon>
@@ -1750,35 +2207,20 @@
       <DependentUpon>frmCaveBranchesSelector.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCaveRegisterAdd.ru.resx">
-      <DependentUpon>frmCaveRegisterAdd.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmCaveRegisterAddMulti.it.resx">
-      <DependentUpon>frmCaveRegisterAddMulti.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmCaveRegisterAddMulti.resx">
-      <DependentUpon>frmCaveRegisterAddMulti.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmCaveRegisterAddMulti.ru.resx">
-      <DependentUpon>frmCaveRegisterAddMulti.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmCaveRegisterSettings.ru.resx">
-      <DependentUpon>frmCaveRegisterSettings.vb</DependentUpon>
+    <EmbeddedResource Include="frmCaveBranchesSelector.ru.resx">
+      <DependentUpon>frmCaveBranchesSelector.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCaveVisibilityManager.ru.resx">
       <DependentUpon>frmCaveVisibilityManager.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDockClipart.it.resx">
+    <EmbeddedResource Include="DockControl\cDockClipart.it.resx">
       <DependentUpon>cDockClipart.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDockClipart.resx">
+    <EmbeddedResource Include="DockControl\cDockClipart.resx">
       <DependentUpon>cDockClipart.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDockClipart.ru.resx">
+    <EmbeddedResource Include="DockControl\cDockClipart.ru.resx">
       <DependentUpon>cDockClipart.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmClipartPopup.ru.resx">
-      <DependentUpon>frmClipartPopup.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmConnectionDefBrowser.it.resx">
       <DependentUpon>frmConnectionDefBrowser.vb</DependentUpon>
@@ -1797,25 +2239,9 @@
       <DependentUpon>frmDataFieldsEditor.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCaveRegisterSettings.it.resx">
-      <DependentUpon>frmCaveRegisterSettings.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmCaveRegisterSettings.resx">
-      <DependentUpon>frmCaveRegisterSettings.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmDataFieldsEditor.ru.resx">
       <DependentUpon>frmDataFieldsEditor.vb</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmDisto.it.resx">
-      <DependentUpon>frmDisto.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmDisto.resx">
-      <DependentUpon>frmDisto.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmDisto.ru.resx">
-      <DependentUpon>frmDisto.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmExceptionManager.ru.resx">
       <DependentUpon>frmExceptionManager.vb</DependentUpon>
@@ -1832,15 +2258,6 @@
     <EmbeddedResource Include="frmExportGoogleKML.ru.resx">
       <DependentUpon>frmExportGoogleKML.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmExportHolos.it.resx">
-      <DependentUpon>frmExportHolos.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmExportHolos.resx">
-      <DependentUpon>frmExportHolos.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmExportHolos.ru.resx">
-      <DependentUpon>frmExportHolos.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmExportTherion.it.resx">
       <DependentUpon>frmExportTherion.vb</DependentUpon>
     </EmbeddedResource>
@@ -1853,14 +2270,8 @@
     <EmbeddedResource Include="frmExportVisualTopo.ru.resx">
       <DependentUpon>frmExportVisualTopo.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmFind.ru.resx">
-      <DependentUpon>frmFind.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmFontDialog.ru.resx">
       <DependentUpon>frmFontDialog.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmGrades.ru.resx">
-      <DependentUpon>frmGrades.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmHistory.it.resx">
       <DependentUpon>frmHistory.vb</DependentUpon>
@@ -1871,45 +2282,51 @@
     <EmbeddedResource Include="frmImageEdit.ru.resx">
       <DependentUpon>frmImageEdit.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDockImageViewer.it.resx">
+    <EmbeddedResource Include="DockControl\cDockImageViewer.it.resx">
       <DependentUpon>cDockImageViewer.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDockImageViewer.resx">
+    <EmbeddedResource Include="DockControl\cDockImageViewer.resx">
       <DependentUpon>cDockImageViewer.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDockImageViewer.ru.resx">
+    <EmbeddedResource Include="DockControl\cDockImageViewer.ru.resx">
       <DependentUpon>cDockImageViewer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmImportcSurvey.en.resx">
       <DependentUpon>frmImportcSurvey.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDockJoinPoints.it.resx">
+    <EmbeddedResource Include="DockControl\cDockJoinPoints.it.resx">
       <DependentUpon>cDockJoinPoints.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDockJoinPoints.resx">
+    <EmbeddedResource Include="DockControl\cDockJoinPoints.resx">
       <DependentUpon>cDockJoinPoints.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDockJoinPoints.ru.resx">
+    <EmbeddedResource Include="DockControl\cDockJoinPoints.ru.resx">
       <DependentUpon>cDockJoinPoints.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDockLevels.it.resx">
+    <EmbeddedResource Include="DockControl\cDockLevels.it.resx">
       <DependentUpon>cDockLevels.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDockLevels.resx">
+    <EmbeddedResource Include="DockControl\cDockLevels.resx">
       <DependentUpon>cDockLevels.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDockLevels.ru.resx">
+    <EmbeddedResource Include="DockControl\cDockLevels.ru.resx">
       <DependentUpon>cDockLevels.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDockLinkedSurveys.it.resx">
+    <EmbeddedResource Include="DockControl\cDockLinkedSurveys.it.resx">
       <DependentUpon>cDockLinkedSurveys.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDockLinkedSurveys.resx">
+    <EmbeddedResource Include="DockControl\cDockLinkedSurveys.resx">
       <DependentUpon>cDockLinkedSurveys.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDockLinkedSurveys.ru.resx">
+    <EmbeddedResource Include="DockControl\cDockLinkedSurveys.ru.resx">
       <DependentUpon>cDockLinkedSurveys.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmItemProfileVisibility.it.resx">
+      <DependentUpon>frmItemProfileVisibility.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmItemScaleVisibility.it.resx">
+      <DependentUpon>frmItemScaleVisibility.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain2.it.resx">
       <DependentUpon>frmMain2.vb</DependentUpon>
@@ -1923,81 +2340,43 @@
       <DependentUpon>frmMain2.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLevels.it.resx">
-      <DependentUpon>frmLevels.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmLevels.resx">
-      <DependentUpon>frmLevels.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmLevels.ru.resx">
-      <DependentUpon>frmLevels.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="cDockText.it.resx">
+    <EmbeddedResource Include="DockControl\cDockText.it.resx">
       <DependentUpon>cDockText.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDockText.resx">
+    <EmbeddedResource Include="DockControl\cDockText.resx">
       <DependentUpon>cDockText.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDockText.ru.resx">
+    <EmbeddedResource Include="DockControl\cDockText.ru.resx">
       <DependentUpon>cDockText.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDockTexts.it.resx">
+    <EmbeddedResource Include="DockControl\cDockTexts.it.resx">
       <DependentUpon>cDockTexts.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDockTexts.resx">
+    <EmbeddedResource Include="DockControl\cDockTexts.resx">
       <DependentUpon>cDockTexts.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cDockTexts.ru.resx">
+    <EmbeddedResource Include="DockControl\cDockTexts.ru.resx">
       <DependentUpon>cDockTexts.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTexts.it.resx">
-      <DependentUpon>frmTexts.vb</DependentUpon>
+    <EmbeddedResource Include="frmPreviewMargins.en.resx">
+      <DependentUpon>frmPreviewMargins.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTexts.resx">
-      <DependentUpon>frmTexts.vb</DependentUpon>
+    <EmbeddedResource Include="frmImportCaveExplorer.it.resx">
+      <DependentUpon>frmImportCaveExplorer.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTexts.ru.resx">
-      <DependentUpon>frmTexts.vb</DependentUpon>
+    <EmbeddedResource Include="frmImportCaveExplorer.resx">
+      <DependentUpon>frmImportCaveExplorer.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLinkedSurveys.it.resx">
-      <DependentUpon>frmLinkedSurveys.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmLinkedSurveys.resx">
-      <DependentUpon>frmLinkedSurveys.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmLinkedSurveys.ru.resx">
-      <DependentUpon>frmLinkedSurveys.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmImageViewer.it.resx">
-      <DependentUpon>frmImageViewer.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmImageViewer.ru.resx">
-      <DependentUpon>frmImageViewer.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmImportCaveExporer.it.resx">
-      <DependentUpon>frmImportCaveExporer.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmImportCaveExporer.resx">
-      <DependentUpon>frmImportCaveExporer.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmImportCaveExporer.ru.resx">
-      <DependentUpon>frmImportCaveExporer.vb</DependentUpon>
+    <EmbeddedResource Include="frmImportCaveExplorer.ru.resx">
+      <DependentUpon>frmImportCaveExplorer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmImportCompass.ru.resx">
       <DependentUpon>frmImportCompass.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmImportcSurvey.ru.resx">
       <DependentUpon>frmImportcSurvey.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmImportcSurveyMerge.it.resx">
-      <DependentUpon>frmImportcSurveyMerge.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmImportcSurveyMerge.resx">
-      <DependentUpon>frmImportcSurveyMerge.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmImportcSurveyMerge.ru.resx">
-      <DependentUpon>frmImportcSurveyMerge.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmImportExcel.it.resx">
       <DependentUpon>frmImportExcel.vb</DependentUpon>
@@ -2020,6 +2399,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmImportResurvey.ru.resx">
       <DependentUpon>frmImportResurvey.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmImportTherion.ru.resx">
       <DependentUpon>frmImportTherion.vb</DependentUpon>
@@ -2030,8 +2410,8 @@
     <EmbeddedResource Include="frmInfoCave.ru.resx">
       <DependentUpon>frmInfoCave.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmInfoDistances.ru.resx">
-      <DependentUpon>frmInfoDistances.vb</DependentUpon>
+    <EmbeddedResource Include="DockControl\cDockDistances.ru.resx">
+      <DependentUpon>cDockDistances.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInfoEntrance.it.resx">
       <DependentUpon>frmInfoEntrance.vb</DependentUpon>
@@ -2051,9 +2431,6 @@
     <EmbeddedResource Include="frmInfoSession.ru.resx">
       <DependentUpon>frmInfoSession.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmItem3DEdit.resx">
-      <DependentUpon>frmItem3DEdit.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmItemProfileVisibility.resx">
       <DependentUpon>frmItemProfileVisibility.vb</DependentUpon>
     </EmbeddedResource>
@@ -2063,12 +2440,6 @@
     <EmbeddedResource Include="frmItemsFilter.ru.resx">
       <DependentUpon>frmItemsFilter.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmJoinPointsPopup.it.resx">
-      <DependentUpon>frmJoinPointsPopup.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmJoinPointsPopup.ru.resx">
-      <DependentUpon>frmJoinPointsPopup.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmLinkedSurveysRelink.it.resx">
       <DependentUpon>frmLinkedSurveysRelink.vb</DependentUpon>
     </EmbeddedResource>
@@ -2077,16 +2448,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLochDialog.ru.resx">
       <DependentUpon>frmLochDialog.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.ru.resx">
-      <DependentUpon>frmMain.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMainFloatingToolbar.it.resx">
-      <DependentUpon>frmMainFloatingToolbar.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMainFloatingToolbar.ru.resx">
-      <DependentUpon>frmMainFloatingToolbar.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageLRUD.it.resx">
       <DependentUpon>frmManageLRUD.vb</DependentUpon>
@@ -2154,6 +2515,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPreview.ru.resx">
       <DependentUpon>frmPreview.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPreviewMargins.ru.resx">
       <DependentUpon>frmPreviewMargins.vb</DependentUpon>
@@ -2186,8 +2548,8 @@
     <EmbeddedResource Include="frmScaleTools.ru.resx">
       <DependentUpon>frmScaleTools.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmScriptEditor.ru.resx">
-      <DependentUpon>frmScriptEditor.vb</DependentUpon>
+    <EmbeddedResource Include="DockControl\cDockScript.ru.resx">
+      <DependentUpon>cDockScript.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmScriptFormulaEditor.it.resx">
       <DependentUpon>frmScriptFormulaEditor.vb</DependentUpon>
@@ -2201,17 +2563,12 @@
     <EmbeddedResource Include="frmSegmentBrowser.ru.resx">
       <DependentUpon>frmSegmentBrowser.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSegmentsFilter.resx">
-      <DependentUpon>frmSegmentsFilter.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmSegmentsReplicateInfo.ru.resx">
       <DependentUpon>frmSegmentsReplicateInfo.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSettings.ru.resx">
       <DependentUpon>frmSettings.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSignProperties.it.resx">
-      <DependentUpon>frmSignProperties.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSketchEdit.ru.resx">
       <DependentUpon>frmSketchEdit.vb</DependentUpon>
@@ -2230,9 +2587,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSplay.ru.resx">
       <DependentUpon>frmSplay.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSurface.ru.resx">
-      <DependentUpon>frmSurface.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSurface3DLayerProperties.it.resx">
       <DependentUpon>frmSurface3DLayerProperties.vb</DependentUpon>
@@ -2255,17 +2609,8 @@
     <EmbeddedResource Include="frmSurface3DLayerProperties.resx">
       <DependentUpon>frmSurface3DLayerProperties.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCaveRegisterAdd.it.resx">
-      <DependentUpon>frmCaveRegisterAdd.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmCaveRegisterAdd.resx">
-      <DependentUpon>frmCaveRegisterAdd.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmSurfaceAddOrthoPhotoFromWMS.ru.resx">
       <DependentUpon>frmSurfaceAddOrthoPhotoFromWMS.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSurfaceAddWMS.ru.resx">
-      <DependentUpon>frmSurfaceAddWMS.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSurfaceImportASCParameters.ru.resx">
       <DependentUpon>frmSurfaceImportASCParameters.vb</DependentUpon>
@@ -2276,17 +2621,11 @@
     <EmbeddedResource Include="frmSurfaceLayerProperties.resx">
       <DependentUpon>frmSurfaceLayerProperties.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSurfaceAddWMS.it.resx">
-      <DependentUpon>frmSurfaceAddWMS.vb</DependentUpon>
+    <EmbeddedResource Include="DockControl\cDockScript.it.resx">
+      <DependentUpon>cDockScript.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSurfaceAddWMS.resx">
-      <DependentUpon>frmSurfaceAddWMS.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmScriptEditor.it.resx">
-      <DependentUpon>frmScriptEditor.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmScriptEditor.resx">
-      <DependentUpon>frmScriptEditor.vb</DependentUpon>
+    <EmbeddedResource Include="DockControl\cDockScript.resx">
+      <DependentUpon>cDockScript.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmImageEdit.it.resx">
@@ -2304,18 +2643,11 @@
     <EmbeddedResource Include="frmItemsFilter.resx">
       <DependentUpon>frmItemsFilter.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmJoinPointsPopup.resx">
-      <DependentUpon>frmJoinPointsPopup.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmLochDialog.it.resx">
       <DependentUpon>frmLochDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLochDialog.resx">
       <DependentUpon>frmLochDialog.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMainFloatingToolbar.resx">
-      <DependentUpon>frmMainFloatingToolbar.vb</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNotifyUpdate.it.resx">
       <DependentUpon>frmNotifyUpdate.vb</DependentUpon>
@@ -2356,21 +2688,11 @@
     <EmbeddedResource Include="frmExportVisualTopo.resx">
       <DependentUpon>frmExportVisualTopo.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmImageViewer.resx">
-      <DependentUpon>frmImageViewer.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmImportcSurvey.it.resx">
       <DependentUpon>frmImportcSurvey.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmImportcSurvey.resx">
       <DependentUpon>frmImportcSurvey.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmGrades.it.resx">
-      <DependentUpon>frmGrades.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmGrades.resx">
-      <DependentUpon>frmGrades.vb</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInfoSession.it.resx">
       <DependentUpon>frmInfoSession.vb</DependentUpon>
@@ -2398,9 +2720,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmImportResurvey.it.resx">
       <DependentUpon>frmImportResurvey.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmImportResurvey.resx">
       <DependentUpon>frmImportResurvey.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmImportGenericData.it.resx">
       <DependentUpon>frmImportGenericData.vb</DependentUpon>
@@ -2408,12 +2732,6 @@
     <EmbeddedResource Include="frmImportGenericData.resx">
       <DependentUpon>frmImportGenericData.vb</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmRefineFixData.resx">
-      <DependentUpon>frmRefineFixData.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSignProperties.resx">
-      <DependentUpon>frmSignProperties.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmResurveyAddStation.it.resx">
       <DependentUpon>frmResurveyAddStation.vb</DependentUpon>
@@ -2450,13 +2768,6 @@
     <EmbeddedResource Include="frmSplay.resx">
       <DependentUpon>frmSplay.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSurface.it.resx">
-      <DependentUpon>frmSurface.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSurface.resx">
-      <DependentUpon>frmSurface.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmSurfaceImportASCParameters.it.resx">
       <DependentUpon>frmSurfaceImportASCParameters.vb</DependentUpon>
     </EmbeddedResource>
@@ -2481,9 +2792,6 @@
     <EmbeddedResource Include="frmSurveyCleanUpUndefinedCaves.ru.resx">
       <DependentUpon>frmSurveyCleanUpUndefinedCaves.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSurveyGrade.resx">
-      <DependentUpon>frmSurveyGrade.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmSVGImportOptions.ru.resx">
       <DependentUpon>frmSVGImportOptions.vb</DependentUpon>
     </EmbeddedResource>
@@ -2492,18 +2800,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTemplates.resx">
       <DependentUpon>frmTemplates.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmtest.resx">
-      <DependentUpon>frmtest.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmTestLink.resx">
-      <DependentUpon>FrmTestLink.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmTextPopup.ru.resx">
-      <DependentUpon>frmTextPopup.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmTherionPad.it.resx">
-      <DependentUpon>frmTherionPad.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTrigpointBrowser.ru.resx">
       <DependentUpon>frmTrigpointBrowser.vb</DependentUpon>
@@ -2521,15 +2817,9 @@
     <EmbeddedResource Include="frmCaveVisibilityManager.it.resx">
       <DependentUpon>frmCaveVisibilityManager.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmClipartPopup.it.resx">
-      <DependentUpon>frmClipartPopup.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmExceptionManager.it.resx">
       <DependentUpon>frmExceptionManager.vb</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmFind.it.resx">
-      <DependentUpon>frmFind.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFontDialog.it.resx">
       <DependentUpon>frmFontDialog.vb</DependentUpon>
@@ -2541,18 +2831,14 @@
     <EmbeddedResource Include="frmInfoCave.it.resx">
       <DependentUpon>frmInfoCave.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmInfoDistances.it.resx">
-      <DependentUpon>frmInfoDistances.vb</DependentUpon>
+    <EmbeddedResource Include="DockControl\cDockDistances.it.resx">
+      <DependentUpon>cDockDistances.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInfoOrientation.it.resx">
       <DependentUpon>frmInfoOrientation.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInfoRing.it.resx">
       <DependentUpon>frmInfoRing.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.it.resx">
-      <DependentUpon>frmMain.vb</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmParametersCompass.it.resx">
       <DependentUpon>frmParametersCompass.vb</DependentUpon>
@@ -2571,9 +2857,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPreview.it.resx">
       <DependentUpon>frmPreview.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPreviewMargins.it.resx">
       <DependentUpon>frmPreviewMargins.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmProperties.it.resx">
       <DependentUpon>frmProperties.vb</DependentUpon>
@@ -2593,15 +2881,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSettings.it.resx">
       <DependentUpon>frmSettings.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSketchEdit.it.resx">
       <DependentUpon>frmSketchEdit.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSVGImportOptions.it.resx">
       <DependentUpon>frmSVGImportOptions.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmTextPopup.it.resx">
-      <DependentUpon>frmTextPopup.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTrigpointBrowser.it.resx">
       <DependentUpon>frmTrigpointBrowser.vb</DependentUpon>
@@ -2614,6 +2900,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCaveVisibilityManager.resx">
       <DependentUpon>frmCaveVisibilityManager.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmImageEdit.resx">
       <DependentUpon>frmImageEdit.vb</DependentUpon>
@@ -2625,14 +2912,8 @@
     <EmbeddedResource Include="frmAutoSettings.resx">
       <DependentUpon>frmAutoSettings.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmClipartPopup.resx">
-      <DependentUpon>frmClipartPopup.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmExceptionManager.resx">
       <DependentUpon>frmExceptionManager.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmFind.resx">
-      <DependentUpon>frmFind.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFontDialog.resx">
       <DependentUpon>frmFontDialog.vb</DependentUpon>
@@ -2643,9 +2924,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmInfoCave.resx">
       <DependentUpon>frmInfoCave.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmInfoDistances.resx">
-      <DependentUpon>frmInfoDistances.vb</DependentUpon>
+    <EmbeddedResource Include="DockControl\cDockDistances.resx">
+      <DependentUpon>cDockDistances.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInfoOrientation.resx">
       <DependentUpon>frmInfoOrientation.vb</DependentUpon>
@@ -2673,13 +2955,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrefixTrigPoints.resx">
       <DependentUpon>frmPrefixTrigPoints.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmProperties.resx">
       <DependentUpon>frmProperties.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
-      <DependentUpon>frmMain.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmParametersCompass.resx">
@@ -2703,6 +2982,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSegmentBrowser.resx">
       <DependentUpon>frmSegmentBrowser.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSegmentsReplicateInfo.resx">
       <DependentUpon>frmSegmentsReplicateInfo.vb</DependentUpon>
@@ -2718,12 +2998,6 @@
     <EmbeddedResource Include="frmSVGImportOptions.resx">
       <DependentUpon>frmSVGImportOptions.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTextPopup.resx">
-      <DependentUpon>frmTextPopup.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmTherionPad.resx">
-      <DependentUpon>frmTherionPad.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmWarpingDetails.it.resx">
       <DependentUpon>frmWarpingDetails.vb</DependentUpon>
     </EmbeddedResource>
@@ -2731,13 +3005,20 @@
       <DependentUpon>frmWarpingDetails.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
-    <EmbeddedResource Include="cLinkedSurveySelectorUserControl.resx">
+    <EmbeddedResource Include="Specialized\cLinkedSurveySelectorUserControl.resx">
       <DependentUpon>cLinkedSurveySelectorUserControl.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Specialized\cTrigpointsMultiselector.it.resx">
+      <DependentUpon>cTrigpointsMultiselector.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Specialized\cTrigpointsMultiselector.resx">
+      <DependentUpon>cTrigpointsMultiselector.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -2752,6 +3033,7 @@
     <Compile Include="Calculate\cCalculate.Plot.cPlanSubDatas.vb" />
     <Compile Include="Calculate\cCalculate.cTrigpointCoordinate.vb" />
     <None Include="app.config" />
+    <Compile Include="cOptions.cMargins.vb" />
     <None Include="cSurvey.pfx" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
@@ -2795,17 +3077,150 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="arrow_in_red.png" />
-    <None Include="arrow_join_red.png" />
-    <EmbeddedResource Include="cCaveRegisterData.xml">
+    <Content Include="license.txt" />
+    <None Include="Resources\ExpandSubordinates.svg" />
+    <None Include="Resources\CollapseSubordinates.svg" />
+    <None Include="Resources\simpledown.svg" />
+    <None Include="Resources\simpleup.svg" />
+    <None Include="Resources\actions_fullscreen.svg" />
+    <None Include="Resources\addreduced.svg" />
+    <None Include="Resources\invertcolor.svg" />
+    <None Include="Resources\range.svg" />
+    <Content Include="mainicon.ico" />
+    <Content Include="Objects\Brushes\BigDebrits.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <None Include="application_edit.ico" />
+    </Content>
+    <Content Include="Objects\Brushes\Custom.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Brushes\Flow.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Brushes\None.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Brushes\NotStandardWater.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Brushes\Pebbles.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Brushes\Sand.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Brushes\SignSolid.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Brushes\SmallDebrits.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Brushes\SnowOrIce.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Brushes\Solid.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Brushes\Water.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\icon_logoimage_small.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_logoimage.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\CavePen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\CliffDownPen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\CliffUpPen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\Custom.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\GenericPen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\GradientDownPen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\GradientUpPen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\IcePen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\MeanderPen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\None.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\OverhangDownPen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\OverhangUpPen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\Pen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\PresumedCavePen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\PresumedCliffDownPen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\PresumedCliffUpPen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\PresumedGenericPen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\PresumedGradientDownPen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\PresumedGradientUpPen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\PresumedIcePen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\PresumedMeanderPen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\PresumedOverhangDownPen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\PresumedOverhangUpPen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\PresumedPen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\PresumedTightPen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\TightPen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\TooNarrowCavePen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Pens\UnderlyingCavePen.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\warningbullet.svg" />
+    <None Include="Resources\errorbullet.svg" />
+    <None Include="Resources\quota.svg" />
+    <None Include="Resources\centerline.svg" />
+    <None Include="Resources\mainicon.png" />
+    <None Include="Resources\resurvey.svg" />
     <None Include="console.ico" />
     <None Include="clock_history_frame.ico" />
-    <Content Include="Action_Copy_CellValue.svg" />
-    <Content Include="cSurvey.ico" />
     <Content Include="designtools_debug.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -2820,15 +3235,6 @@
     <Resource Include="resources.it.txt">
       <Generator>resgen.exe</Generator>
     </Resource>
-    <None Include="layers.ico" />
-    <None Include="edit_mathematics.ico" />
-    <None Include="form.ico" />
-    <None Include="gps_handheld.ico" />
-    <None Include="layer_edit.ico" />
-    <None Include="layers_map.ico" />
-    <None Include="link_edit.ico" />
-    <None Include="loch.ico" />
-    <None Include="multitool.ico" />
     <Content Include="Objects\Cliparts\Brushes\boh.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -3528,18 +3934,152 @@
     <Content Include="Objects\Icons\icon_water_small.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Objects\Icons\item_alt.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_attachment.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_bigdebrits.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_border.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_caveborder.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_cliff.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_compass.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_concretion.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_concretion_borders.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_concretion_filledborder.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_concretion_tools.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_crosssection.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_drop.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_flow.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_genericsoil.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_grid.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_hang.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_hscale.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_image.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_infobox.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_legend.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_meander.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_notstandardwater.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_pebbles.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_presumedborder.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_presumedcaveborder.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_presumedcliff.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_presumedhang.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_presumedmeander.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_presumedslope.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_quota.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_quotah.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_quotav.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_rocks.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_rocks_borders.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_rocks_filledborders.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_rocks_tools.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_sand.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_scale.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_sign.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_sketch.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_slope.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_smalldebrits.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_soil.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_text.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_vscale.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Objects\Icons\item_water.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Objects\TopoDroidImport\itemmap.xml" />
-    <None Include="page_white_wrench.ico" />
     <Content Include="papersizes.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="resources.ru.txt" />
-    <None Include="table.ico" />
-    <None Include="sidebox.ico" />
-    <None Include="snaptopoint.png" />
-    <None Include="snaptopoint1.png" />
-    <None Include="snaptopoint2.png" />
-    <None Include="snaptopointnone.png" />
     <None Include="Resources\zoom_fit.png" />
     <None Include="Resources\vector.png" />
     <None Include="Resources\vector_add.png" />
@@ -3832,14 +4372,6 @@
     <None Include="Resources\icon_water.ico" />
     <None Include="Resources\Icon1.ico" />
     <None Include="Resources\printersettings.ico" />
-    <None Include="run_macros.ico" />
-    <None Include="save_close.ico" />
-    <None Include="script.ico" />
-    <None Include="script_code.ico" />
-    <None Include="script_flash.ico" />
-    <None Include="setting_tools.ico" />
-    <None Include="to_do_list.ico" />
-    <None Include="transform_path.ico" />
     <None Include="Resources\3.png" />
     <None Include="Resources\stop.png" />
     <None Include="Resources\clipart_error.svg" />
@@ -4087,6 +4619,63 @@
     <None Include="Resources\soilmodel.svg" />
     <None Include="Resources\documentexport.svg" />
     <None Include="Resources\documentprint.svg" />
+    <None Include="Resources\pagesetup.svg" />
+    <None Include="Resources\autoconfig.svg" />
+    <None Include="Resources\folderpanel.svg" />
+    <None Include="Resources\richeditpagemargins.svg" />
+    <None Include="Resources\sortdesc.svg" />
+    <None Include="Resources\manualrefresh.svg" />
+    <None Include="Resources\deletetablecells.svg" />
+    <None Include="Resources\inprogress.svg" />
+    <None Include="Resources\shading.svg" />
+    <None Include="Resources\openfromweb.svg" />
+    <None Include="Resources\pause.svg" />
+    <None Include="Resources\warping.svg" />
+    <None Include="Resources\geth.svg" />
+    <None Include="Resources\getw.svg" />
+    <None Include="Resources\directionleft.svg" />
+    <None Include="Resources\directionvertical.svg" />
+    <None Include="Resources\directionright.svg" />
+    <None Include="Resources\actions_remove.svg" />
+    <None Include="Resources\inside.svg" />
+    <None Include="Resources\outside.svg" />
+    <None Include="Resources\overlap.svg" />
+    <None Include="Resources\weather_lightning.svg" />
+    <None Include="Resources\actions_calendar.svg" />
+    <None Include="Resources\calcdefault.svg" />
+    <None Include="Resources\calibrationshot.svg" />
+    <None Include="Resources\shot.svg" />
+    <None Include="Resources\caveentrancewithorigin.svg" />
+    <None Include="Resources\caveentrancewithextendstart.svg" />
+    <None Include="Resources\branch.svg" />
+    <None Include="Resources\branchwithextendstart.svg" />
+    <None Include="Resources\cave.svg" />
+    <None Include="Resources\cavewithextendstart.svg" />
+    <None Include="Resources\cavewithorigin.svg" />
+    <None Include="Resources\branchwithorigin.svg" />
+    <None Include="Resources\reset.svg" />
+    <None Include="Resources\actions_deletecircled.svg" />
+    <None Include="Resources\togglefieldcodes.svg" />
+    <None Include="Resources\spellcheckasyoutype.svg" />
+    <None Include="Resources\gettingstarted.svg" />
+    <None Include="Resources\equatebullet.svg" />
+    <None Include="Resources\bo_position.svg" />
+    <None Include="Resources\manageworkspaces.svg" />
+    <None Include="Resources\captureworkspace.svg" />
+    <None Include="Resources\open2.svg" />
+    <None Include="Resources\imageimport.svg" />
+    <None Include="Resources\actions_checkcircled.svg" />
+    <None Include="Resources\charttype_polarpoint.svg" />
+    <None Include="Resources\grayscale.svg" />
+    <None Include="Resources\crop2.svg" />
+    <None Include="Resources\crop1.svg" />
+    <None Include="Resources\imagedownsize.svg" />
+    <None Include="Resources\clearheaderandfooter.svg" />
+    <None Include="Resources\connected.svg" />
+    <None Include="Resources\disconnected.svg" />
+    <Content Include="Resources\Actions_Database.svg" />
+    <None Include="Resources\csurvey_2.svg" />
+    <Content Include="Resources\Bar.svg" />
     <Content Include="version.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -4106,10 +4695,6 @@
     </FileAssociation>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="cHolosItemEdit.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="cHolosViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -4119,6 +4704,10 @@
     <ProjectReference Include="..\cave_model\cave_model.vcxproj">
       <Project>{95592842-fc0a-4665-afcc-6db281fde7a1}</Project>
       <Name>cave_model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cPrintController\cPrintController.csproj">
+      <Project>{66bd478c-6488-47dc-aa8c-2527d1d371dd}</Project>
+      <Name>cPrintController</Name>
     </ProjectReference>
     <ProjectReference Include="..\HelixToolkit.Wpf.cSurveySpecialized\HelixToolkit.Wpf.cSurveySpecialized.csproj">
       <Project>{d8b150f9-a992-4edc-b13f-6de7f3fd31d3}</Project>

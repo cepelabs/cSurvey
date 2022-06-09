@@ -118,20 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnAddSet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 22</value>
-  </data>
   <data name="btnAddSet.Text" xml:space="preserve">
     <value>Добавить набор</value>
   </data>
-  <data name="btnDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 22</value>
-  </data>
   <data name="btnDelete.Text" xml:space="preserve">
     <value>Удалить</value>
-  </data>
-  <data name="btnDeleteAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 22</value>
   </data>
   <data name="btnDeleteAll.Text" xml:space="preserve">
     <value>Удалить все</value>
@@ -176,23 +167,14 @@
   <data name="cmdCancel.Text" xml:space="preserve">
     <value>Отмена</value>
   </data>
-  <data name="lblDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 13</value>
-  </data>
   <data name="lblDescription.Text" xml:space="preserve">
     <value>Описание</value>
   </data>
   <data name="tabGradeMain.Text" xml:space="preserve">
     <value>Standard deviation</value>
   </data>
-  <data name="chkInclination.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 17</value>
-  </data>
   <data name="chkInclination.Text" xml:space="preserve">
     <value>Угол</value>
-  </data>
-  <data name="chkBearing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 17</value>
   </data>
   <data name="chkBearing.Text" xml:space="preserve">
     <value>Азимут</value>
@@ -200,14 +182,8 @@
   <data name="chkDistance.Text" xml:space="preserve">
     <value>Длина</value>
   </data>
-  <data name="lblMeasureUnit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 13</value>
-  </data>
   <data name="lblMeasureUnit.Text" xml:space="preserve">
     <value>Единицы измерения:</value>
-  </data>
-  <data name="lblValues.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 13</value>
   </data>
   <data name="lblValues.Text" xml:space="preserve">
     <value>Значения:</value>

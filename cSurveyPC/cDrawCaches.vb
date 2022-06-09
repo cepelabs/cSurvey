@@ -7,7 +7,7 @@ Namespace cSurvey.Drawings
     Public Class cDrawCaches
         Implements IEnumerable
 
-        Private oItems As Dictionary(Of cOptions, cDrawCache)
+        Private oItems As Dictionary(Of cOptionsCenterline, cDrawCache)
 
         Friend Event OnInvalidate(Sender As cDrawCaches)
 
@@ -16,14 +16,14 @@ Namespace cSurvey.Drawings
         End Sub
 
         Friend Sub New()
-            oItems = New Dictionary(Of cOptions, cDrawCache)
+            oItems = New Dictionary(Of cOptionsCenterline, cDrawCache)
         End Sub
 
         Public Function IsEmpty() As Boolean
             Return oItems.Count = 0
         End Function
 
-        Public Function Contains(Options As cOptions) As Boolean
+        Public Function Contains(Options As cOptionsCenterline) As Boolean
             Return oItems.ContainsKey(Options)
         End Function
 
@@ -33,7 +33,7 @@ Namespace cSurvey.Drawings
             End Get
         End Property
 
-        Public Function GetBounds(Options As cOptions) As RectangleF
+        Public Function GetBounds(Options As cOptionsCenterline) As RectangleF
             If oItems.ContainsKey(Options) Then
                 Return oItems(Options).GetBounds
             Else
@@ -49,7 +49,7 @@ Namespace cSurvey.Drawings
             End If
         End Function
 
-        Default Public ReadOnly Property Item(Options As cOptions) As cDrawCache
+        Default Public ReadOnly Property Item(Options As cOptionsCenterline) As cDrawCache
             Get
                 If oItems.ContainsKey(Options) Then
                     Return oItems(Options)
@@ -61,7 +61,7 @@ Namespace cSurvey.Drawings
             End Get
         End Property
 
-        Public Sub Invalidate(Optional Options As cOptions = Nothing)
+        Public Sub Invalidate(Optional Options As cOptionsCenterline = Nothing)
             If Options Is Nothing Then
                 Call oItems.Clear()
             Else

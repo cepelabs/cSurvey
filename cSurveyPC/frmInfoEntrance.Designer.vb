@@ -24,34 +24,33 @@ Partial Class frmInfoEntrance
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmInfoEntrance))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.cmdClose = New System.Windows.Forms.Button()
-        Me.pnlSurveyInfo = New System.Windows.Forms.Panel()
-        Me.cboSurveyInfoCave = New System.Windows.Forms.ComboBox()
-        Me.grdSurveyInfo = New cSurveyPC.cGrid()
-        Me.mnuSurveyInfo = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.mnuSurveyInfoCopy = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuSurveyInfoCopyAll = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuSurveyInfoCopyCell = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.mnuSurveyInfoExport = New System.Windows.Forms.ToolStripMenuItem()
-        Me.lblSurveyInfoCave = New System.Windows.Forms.Label()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colSurveyInfoName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colSurveyInfoValue = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.cmdClose = New DevExpress.XtraEditors.SimpleButton()
+        Me.pnlSurveyInfo = New DevExpress.XtraEditors.PanelControl()
+        Me.lblSurveyInfoCave = New DevExpress.XtraEditors.LabelControl()
+        Me.cboSurveyInfoCave = New DevExpress.XtraEditors.GridLookUpEdit()
+        Me.GridLookUpEdit1View = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colCaveListName = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.txtCaveListName = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
+        Me.grdSurveyInfo = New cSurveyPC.cVerticalGrid()
+        Me.BarManager = New DevExpress.XtraBars.BarManager(Me.components)
+        Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
+        Me.btnCopyValue = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnCopyValues = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnCopyAll = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnCopy = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnExport = New DevExpress.XtraBars.BarButtonItem()
+        Me.mnuContext = New DevExpress.XtraBars.PopupMenu(Me.components)
+        CType(Me.pnlSurveyInfo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlSurveyInfo.SuspendLayout()
+        CType(Me.cboSurveyInfoCave.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridLookUpEdit1View, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtCaveListName, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdSurveyInfo, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.mnuSurveyInfo.SuspendLayout()
+        CType(Me.BarManager, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.mnuContext, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdClose
@@ -59,137 +58,138 @@ Partial Class frmInfoEntrance
         resources.ApplyResources(Me.cmdClose, "cmdClose")
         Me.cmdClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdClose.Name = "cmdClose"
-        Me.cmdClose.UseVisualStyleBackColor = True
         '
         'pnlSurveyInfo
         '
         resources.ApplyResources(Me.pnlSurveyInfo, "pnlSurveyInfo")
+        Me.pnlSurveyInfo.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlSurveyInfo.Controls.Add(Me.lblSurveyInfoCave)
         Me.pnlSurveyInfo.Controls.Add(Me.cboSurveyInfoCave)
         Me.pnlSurveyInfo.Controls.Add(Me.grdSurveyInfo)
-        Me.pnlSurveyInfo.Controls.Add(Me.lblSurveyInfoCave)
         Me.pnlSurveyInfo.Name = "pnlSurveyInfo"
-        '
-        'cboSurveyInfoCave
-        '
-        resources.ApplyResources(Me.cboSurveyInfoCave, "cboSurveyInfoCave")
-        Me.cboSurveyInfoCave.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.cboSurveyInfoCave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboSurveyInfoCave.Name = "cboSurveyInfoCave"
-        '
-        'grdSurveyInfo
-        '
-        Me.grdSurveyInfo.AllowUserToAddRows = False
-        Me.grdSurveyInfo.AllowUserToDeleteRows = False
-        resources.ApplyResources(Me.grdSurveyInfo, "grdSurveyInfo")
-        Me.grdSurveyInfo.BackgroundColor = System.Drawing.SystemColors.Window
-        Me.grdSurveyInfo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.grdSurveyInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdSurveyInfo.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column6, Me.colSurveyInfoName, Me.colSurveyInfoValue, Me.Column1, Me.Column2, Me.Column3, Me.Column5, Me.Column4})
-        Me.grdSurveyInfo.ContextMenuStrip = Me.mnuSurveyInfo
-        Me.grdSurveyInfo.Name = "grdSurveyInfo"
-        Me.grdSurveyInfo.ReadOnly = True
-        Me.grdSurveyInfo.RowHeadersVisible = False
-        Me.grdSurveyInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdSurveyInfo.ShowEditingIcon = False
-        '
-        'mnuSurveyInfo
-        '
-        resources.ApplyResources(Me.mnuSurveyInfo, "mnuSurveyInfo")
-        Me.mnuSurveyInfo.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuSurveyInfoCopy, Me.mnuSurveyInfoCopyAll, Me.mnuSurveyInfoCopyCell, Me.ToolStripMenuItem1, Me.mnuSurveyInfoExport})
-        Me.mnuSurveyInfo.Name = "mnuSurveyInfo"
-        '
-        'mnuSurveyInfoCopy
-        '
-        Me.mnuSurveyInfoCopy.Image = Global.cSurveyPC.My.Resources.Resources.page_copy
-        Me.mnuSurveyInfoCopy.Name = "mnuSurveyInfoCopy"
-        resources.ApplyResources(Me.mnuSurveyInfoCopy, "mnuSurveyInfoCopy")
-        '
-        'mnuSurveyInfoCopyAll
-        '
-        Me.mnuSurveyInfoCopyAll.Name = "mnuSurveyInfoCopyAll"
-        resources.ApplyResources(Me.mnuSurveyInfoCopyAll, "mnuSurveyInfoCopyAll")
-        '
-        'mnuSurveyInfoCopyCell
-        '
-        Me.mnuSurveyInfoCopyCell.Name = "mnuSurveyInfoCopyCell"
-        resources.ApplyResources(Me.mnuSurveyInfoCopyCell, "mnuSurveyInfoCopyCell")
-        '
-        'ToolStripMenuItem1
-        '
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        resources.ApplyResources(Me.ToolStripMenuItem1, "ToolStripMenuItem1")
-        '
-        'mnuSurveyInfoExport
-        '
-        Me.mnuSurveyInfoExport.Name = "mnuSurveyInfoExport"
-        resources.ApplyResources(Me.mnuSurveyInfoExport, "mnuSurveyInfoExport")
         '
         'lblSurveyInfoCave
         '
         resources.ApplyResources(Me.lblSurveyInfoCave, "lblSurveyInfoCave")
         Me.lblSurveyInfoCave.Name = "lblSurveyInfoCave"
         '
-        'Column6
+        'cboSurveyInfoCave
         '
-        resources.ApplyResources(Me.Column6, "Column6")
-        Me.Column6.Name = "Column6"
-        Me.Column6.ReadOnly = True
+        resources.ApplyResources(Me.cboSurveyInfoCave, "cboSurveyInfoCave")
+        Me.cboSurveyInfoCave.Name = "cboSurveyInfoCave"
+        Me.cboSurveyInfoCave.Properties.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.[True]
+        Me.cboSurveyInfoCave.Properties.Appearance.Font = CType(resources.GetObject("cboSurveyInfoCave.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.cboSurveyInfoCave.Properties.Appearance.Options.UseFont = True
+        Me.cboSurveyInfoCave.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboSurveyInfoCave.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboSurveyInfoCave.Properties.DisplayMember = "ToHTMLString"
+        Me.cboSurveyInfoCave.Properties.NullText = resources.GetString("cboSurveyInfoCave.Properties.NullText")
+        Me.cboSurveyInfoCave.Properties.PopupSizeable = False
+        Me.cboSurveyInfoCave.Properties.PopupView = Me.GridLookUpEdit1View
+        Me.cboSurveyInfoCave.Properties.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.txtCaveListName})
         '
-        'colSurveyInfoName
+        'GridLookUpEdit1View
         '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.colSurveyInfoName.DefaultCellStyle = DataGridViewCellStyle1
-        resources.ApplyResources(Me.colSurveyInfoName, "colSurveyInfoName")
-        Me.colSurveyInfoName.Name = "colSurveyInfoName"
-        Me.colSurveyInfoName.ReadOnly = True
+        Me.GridLookUpEdit1View.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colCaveListName})
+        Me.GridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+        Me.GridLookUpEdit1View.Name = "GridLookUpEdit1View"
+        Me.GridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.GridLookUpEdit1View.OptionsView.ShowGroupPanel = False
         '
-        'colSurveyInfoValue
+        'colCaveListName
         '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.colSurveyInfoValue.DefaultCellStyle = DataGridViewCellStyle2
-        resources.ApplyResources(Me.colSurveyInfoValue, "colSurveyInfoValue")
-        Me.colSurveyInfoValue.Name = "colSurveyInfoValue"
-        Me.colSurveyInfoValue.ReadOnly = True
+        resources.ApplyResources(Me.colCaveListName, "colCaveListName")
+        Me.colCaveListName.ColumnEdit = Me.txtCaveListName
+        Me.colCaveListName.FieldName = "ToHTMLString"
+        Me.colCaveListName.Name = "colCaveListName"
+        Me.colCaveListName.OptionsColumn.AllowEdit = False
         '
-        'Column1
+        'txtCaveListName
         '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column1.DefaultCellStyle = DataGridViewCellStyle3
-        resources.ApplyResources(Me.Column1, "Column1")
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
+        Me.txtCaveListName.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.[True]
+        resources.ApplyResources(Me.txtCaveListName, "txtCaveListName")
+        Me.txtCaveListName.Name = "txtCaveListName"
+        Me.txtCaveListName.ReadOnly = True
         '
-        'Column2
+        'grdSurveyInfo
         '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column2.DefaultCellStyle = DataGridViewCellStyle4
-        resources.ApplyResources(Me.Column2, "Column2")
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
+        resources.ApplyResources(Me.grdSurveyInfo, "grdSurveyInfo")
+        Me.grdSurveyInfo.Cursor = System.Windows.Forms.Cursors.Default
+        Me.grdSurveyInfo.Name = "grdSurveyInfo"
+        Me.grdSurveyInfo.OptionsFilter.AllowFilter = False
+        Me.grdSurveyInfo.OptionsView.AllowHtmlText = True
+        Me.grdSurveyInfo.OptionsView.MinRowAutoHeight = 20
         '
-        'Column3
+        'BarManager
         '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column3.DefaultCellStyle = DataGridViewCellStyle5
-        resources.ApplyResources(Me.Column3, "Column3")
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
+        Me.BarManager.DockControls.Add(Me.barDockControlTop)
+        Me.BarManager.DockControls.Add(Me.barDockControlBottom)
+        Me.BarManager.DockControls.Add(Me.barDockControlLeft)
+        Me.BarManager.DockControls.Add(Me.barDockControlRight)
+        Me.BarManager.Form = Me
+        Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnCopyValue, Me.btnCopyValues, Me.btnCopyAll, Me.btnCopy, Me.btnExport})
+        Me.BarManager.MaxItemId = 8
         '
-        'Column5
+        'barDockControlTop
         '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Column5.DefaultCellStyle = DataGridViewCellStyle6
-        resources.ApplyResources(Me.Column5, "Column5")
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
+        Me.barDockControlTop.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlTop, "barDockControlTop")
+        Me.barDockControlTop.Manager = Me.BarManager
         '
-        'Column4
+        'barDockControlBottom
         '
-        resources.ApplyResources(Me.Column4, "Column4")
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        Me.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.barDockControlBottom.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlBottom, "barDockControlBottom")
+        Me.barDockControlBottom.Manager = Me.BarManager
+        '
+        'barDockControlLeft
+        '
+        Me.barDockControlLeft.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlLeft, "barDockControlLeft")
+        Me.barDockControlLeft.Manager = Me.BarManager
+        '
+        'barDockControlRight
+        '
+        Me.barDockControlRight.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlRight, "barDockControlRight")
+        Me.barDockControlRight.Manager = Me.BarManager
+        '
+        'btnCopyValue
+        '
+        resources.ApplyResources(Me.btnCopyValue, "btnCopyValue")
+        Me.btnCopyValue.Id = 3
+        Me.btnCopyValue.Name = "btnCopyValue"
+        '
+        'btnCopyValues
+        '
+        resources.ApplyResources(Me.btnCopyValues, "btnCopyValues")
+        Me.btnCopyValues.Id = 4
+        Me.btnCopyValues.Name = "btnCopyValues"
+        '
+        'btnCopyAll
+        '
+        resources.ApplyResources(Me.btnCopyAll, "btnCopyAll")
+        Me.btnCopyAll.Id = 5
+        Me.btnCopyAll.Name = "btnCopyAll"
+        '
+        'btnCopy
+        '
+        resources.ApplyResources(Me.btnCopy, "btnCopy")
+        Me.btnCopy.Id = 6
+        Me.btnCopy.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.copy
+        Me.btnCopy.Name = "btnCopy"
+        '
+        'btnExport
+        '
+        resources.ApplyResources(Me.btnExport, "btnExport")
+        Me.btnExport.Id = 7
+        Me.btnExport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.exportfile
+        Me.btnExport.Name = "btnExport"
+        '
+        'mnuContext
+        '
+        Me.mnuContext.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnCopyValue, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnCopyValues), New DevExpress.XtraBars.LinkPersistInfo(Me.btnCopy, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnCopyAll), New DevExpress.XtraBars.LinkPersistInfo(Me.btnExport, True)})
+        Me.mnuContext.Manager = Me.BarManager
+        Me.mnuContext.Name = "mnuContext"
         '
         'frmInfoEntrance
         '
@@ -198,32 +198,43 @@ Partial Class frmInfoEntrance
         Me.CancelButton = Me.cmdClose
         Me.Controls.Add(Me.pnlSurveyInfo)
         Me.Controls.Add(Me.cmdClose)
+        Me.Controls.Add(Me.barDockControlLeft)
+        Me.Controls.Add(Me.barDockControlRight)
+        Me.Controls.Add(Me.barDockControlBottom)
+        Me.Controls.Add(Me.barDockControlTop)
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.about
         Me.MinimizeBox = False
         Me.Name = "frmInfoEntrance"
+        CType(Me.pnlSurveyInfo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlSurveyInfo.ResumeLayout(False)
         Me.pnlSurveyInfo.PerformLayout()
+        CType(Me.cboSurveyInfoCave.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridLookUpEdit1View, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtCaveListName, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdSurveyInfo, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.mnuSurveyInfo.ResumeLayout(False)
+        CType(Me.BarManager, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.mnuContext, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
-    Friend WithEvents cmdClose As System.Windows.Forms.Button
-    Friend WithEvents pnlSurveyInfo As System.Windows.Forms.Panel
-    Friend WithEvents cboSurveyInfoCave As System.Windows.Forms.ComboBox
-    Friend WithEvents grdSurveyInfo As cSurveyPC.cGrid
-    Friend WithEvents lblSurveyInfoCave As System.Windows.Forms.Label
-    Friend WithEvents mnuSurveyInfo As System.Windows.Forms.ContextMenuStrip
-    Friend WithEvents mnuSurveyInfoCopy As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents mnuSurveyInfoCopyAll As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents mnuSurveyInfoExport As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents mnuSurveyInfoCopyCell As ToolStripMenuItem
-    Friend WithEvents Column6 As DataGridViewTextBoxColumn
-    Friend WithEvents colSurveyInfoName As DataGridViewTextBoxColumn
-    Friend WithEvents colSurveyInfoValue As DataGridViewTextBoxColumn
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As DataGridViewButtonColumn
+    Friend WithEvents cmdClose As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents pnlSurveyInfo As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents lblSurveyInfoCave As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cboSurveyInfoCave As DevExpress.XtraEditors.GridLookUpEdit
+    Friend WithEvents GridLookUpEdit1View As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents colCaveListName As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents txtCaveListName As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
+    Friend WithEvents grdSurveyInfo As cVerticalGrid
+    Friend WithEvents BarManager As DevExpress.XtraBars.BarManager
+    Friend WithEvents barDockControlTop As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlBottom As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlLeft As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlRight As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents btnCopyValue As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnCopyValues As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnCopyAll As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnCopy As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnExport As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents mnuContext As DevExpress.XtraBars.PopupMenu
 End Class

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmTrigpointBrowser
     Inherits cForm
 
     'Form esegue l'override del metodo Dispose per pulire l'elenco dei componenti.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,13 +20,13 @@ Partial Class frmTrigpointBrowser
     'NOTA: la procedura che segue è richiesta da Progettazione Windows Form
     'Può essere modificata in Progettazione Windows Form.  
     'Non modificarla nell'editor del codice.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmTrigpointBrowser))
-        Me.cmdOk = New System.Windows.Forms.Button()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.cboTrigpoints = New System.Windows.Forms.ComboBox()
-        Me.lblSegment = New System.Windows.Forms.Label()
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.lblSegment = New DevExpress.XtraEditors.LabelControl()
+        Me.cboTrigpoints = New cSurveyPC.cTrigpointDropDown()
         Me.SuspendLayout()
         '
         'cmdOk
@@ -34,7 +34,6 @@ Partial Class frmTrigpointBrowser
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
         '
         'cmdCancel
         '
@@ -42,19 +41,19 @@ Partial Class frmTrigpointBrowser
         Me.cmdCancel.CausesValidation = False
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
+        '
+        'lblSegment
+        '
+        Me.lblSegment.Appearance.Font = CType(resources.GetObject("lblSegment.Appearance.Font"), System.Drawing.Font)
+        Me.lblSegment.Appearance.Options.UseFont = True
+        resources.ApplyResources(Me.lblSegment, "lblSegment")
+        Me.lblSegment.Name = "lblSegment"
         '
         'cboTrigpoints
         '
         resources.ApplyResources(Me.cboTrigpoints, "cboTrigpoints")
-        Me.cboTrigpoints.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.cboTrigpoints.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cboTrigpoints.EditValue = Nothing
         Me.cboTrigpoints.Name = "cboTrigpoints"
-        '
-        'lblSegment
-        '
-        resources.ApplyResources(Me.lblSegment, "lblSegment")
-        Me.lblSegment.Name = "lblSegment"
         '
         'frmTrigpointBrowser
         '
@@ -62,10 +61,10 @@ Partial Class frmTrigpointBrowser
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
-        Me.Controls.Add(Me.cboTrigpoints)
         Me.Controls.Add(Me.lblSegment)
         Me.Controls.Add(Me.cmdOk)
         Me.Controls.Add(Me.cmdCancel)
+        Me.Controls.Add(Me.cboTrigpoints)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -74,8 +73,8 @@ Partial Class frmTrigpointBrowser
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents cboTrigpoints As System.Windows.Forms.ComboBox
-    Friend WithEvents lblSegment As System.Windows.Forms.Label
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents lblSegment As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cboTrigpoints As cTrigpointDropDown
 End Class

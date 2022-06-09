@@ -80,7 +80,7 @@ Namespace cSurvey.Data
                             Dim oValue As Object = oDataFields.Item(sField).StringToValue(sValue)
                             Call oItems.Add(sField, oValue)
                         Catch ex As Exception
-                            Call Survey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, Now & vbTab & "User property [" & sField & "] could not be loaded (" & ex.Message & ")", True)
+                            Call Survey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, Now & vbTab & "User property [" & sField & "] could not be loaded (" & ex.Message & ")")
                         End Try
                     End If
                 Next
@@ -94,7 +94,7 @@ Namespace cSurvey.Data
                             Dim oValue As Object = oDataField.StringToValue(sValue)
                             Call oItems.Add(oDataField.Name, oValue)
                         Catch ex As Exception
-                            Call Survey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, Now & vbTab & "User property [" & oDataField.Name & "] could not be loaded (" & ex.Message & ")", True)
+                            Call Survey.RaiseOnLogEvent(cSurvey.LogEntryType.Warning, Now & vbTab & "User property [" & oDataField.Name & "] could not be loaded (" & ex.Message & ")")
                         End Try
                     End If
                 Next
@@ -389,6 +389,10 @@ Namespace cSurvey.Data
         End Function
 
         Public Function Add(Name As String, Type As TypeEnum) As cDataField
+            Return Add(Name, Type, "")
+        End Function
+
+        Public Function Add(Name As String, Type As TypeEnum, Category As String) As cDataField
             If oItems.Contains(Name) Then
                 Return Nothing
             Else
@@ -399,6 +403,7 @@ Namespace cSurvey.Data
                     Case Else
                         oItem = New cDataField(oSurvey, Name, Type)
                 End Select
+                oItem.Category = Category
                 Call oItems.Add(oItem)
                 Call InvalidateClass()
                 RaiseEvent OnAdd(Me, New cDataFieldsEventArgs(oItem))
@@ -716,23 +721,23 @@ Namespace cSurvey.Data
         Friend Shared Function GetTypeName(Type As cDataFields.TypeEnum, Optional Name As String = "enum") As String
             Select Case Type
                 Case cDataFields.TypeEnum.Boolean
-                    Return "boolean?"
+                    Return "System.Boolean?"
                 Case cDataFields.TypeEnum.Color
                     Return "System.Drawing.Color"
                 Case cDataFields.TypeEnum.Date
-                    Return "Date?"
+                    Return "System.DateTime?"
                 Case cDataFields.TypeEnum.Decimal
-                    Return "Decimal?"
+                    Return "System.Decimal?"
                 Case cDataFields.TypeEnum.Double
-                    Return "Double?"
+                    Return "System.Double?"
                 Case cDataFields.TypeEnum.Enum
                     Return Name & "_enum"
                 Case cDataFields.TypeEnum.Integer
-                    Return "Integer?"
+                    Return "System.Int32?"
                 Case cDataFields.TypeEnum.Single
-                    Return "Single?"
+                    Return "System.Single?"
                 Case cDataFields.TypeEnum.Text
-                    Return "String"
+                    Return "System.String"
             End Select
         End Function
 

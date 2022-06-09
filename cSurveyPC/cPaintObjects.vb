@@ -9,11 +9,11 @@ Namespace cSurvey.Design
         Private oGenericFonts As cItemFonts
         Private oFonts As cItemFonts
 
-        Private oPens As cPens
-        Private oGenericPens As cPens
+        'Private oPens As cPens
+        'Private oGenericPens As cPens
 
         Private oBrushes As cBrushes
-        Private oGenericBrushes As cBrushes
+        'Private oGenericBrushes As cBrushes
 
         Private oNearProfileBorderPen As Pen
         Private oFarProfileBorderPen As Pen
@@ -29,26 +29,26 @@ Namespace cSurvey.Design
             oGenericFonts = New cItemFonts(oSurvey)
             oFonts = New cItemFonts(oSurvey)
 
-            oPens = New cPens(oSurvey)
-            oGenericPens = New cPens(oSurvey)
+            'oPens = New cPens(oSurvey)
+            'oGenericPens = New cPens(oSurvey)
 
             oBrushes = New cBrushes(oSurvey)
-            oGenericBrushes = New cBrushes(oSurvey)
+            'oGenericBrushes = New cBrushes(oSurvey)
 
-            oMarkerProfileBorderPen = New Pen(Color.FromArgb(230, Color.IndianRed), -1)
+            oMarkerProfileBorderPen = New Pen(Color.FromArgb(230, Color.IndianRed), cEditPaintObjects.FilettoPenWidth)
             oMarkerProfileBorderPen.DashStyle = DashStyle.Dot
 
-            oNearProfileBorderPen = New Pen(Color.FromArgb(230, Color.Gray), -1)
+            oNearProfileBorderPen = New Pen(Color.FromArgb(230, Color.Gray), cEditPaintObjects.FilettoPenWidth)
             oNearProfileBorderPen.DashStyle = DashStyle.Dot
 
-            oFarProfileBorderPen = New Pen(Color.FromArgb(230, Color.DimGray), -1)
+            oFarProfileBorderPen = New Pen(Color.FromArgb(230, Color.DimGray), cEditPaintObjects.FilettoPenWidth)
             oFarProfileBorderPen.DashStyle = DashStyle.Dot
 
-            oProfileCrossPen = New Pen(Color.Black, -1)
+            oProfileCrossPen = New Pen(Color.Black, cEditPaintObjects.FilettoPenWidth)
 
-            oPrintOrExportBounds = New Pen(Color.DarkRed, -1)
+            oPrintOrExportBounds = New Pen(Color.DarkRed, cEditPaintObjects.FilettoPenWidth)
             oPrintOrExportBounds.DashStyle = DashStyle.Dot
-            oPrintOrExportMarginsBounds = New Pen(Color.IndianRed, -1)
+            oPrintOrExportMarginsBounds = New Pen(Color.IndianRed, cEditPaintObjects.FilettoPenWidth)
             oPrintOrExportMarginsBounds.DashStyle = DashStyle.Dot
         End Sub
 
@@ -88,11 +88,11 @@ Namespace cSurvey.Design
             End Get
         End Property
 
-        Public ReadOnly Property GenericBrushes As cBrushes
-            Get
-                Return oGenericBrushes
-            End Get
-        End Property
+        'Public ReadOnly Property GenericBrushes As cBrushes
+        '    Get
+        '        Return oGenericBrushes
+        '    End Get
+        'End Property
 
         Public ReadOnly Property Brushes As cBrushes
             Get
@@ -100,17 +100,17 @@ Namespace cSurvey.Design
             End Get
         End Property
 
-        Public ReadOnly Property GenericPens As cPens
-            Get
-                Return oGenericPens
-            End Get
-        End Property
+        'Public ReadOnly Property GenericPens As cPens
+        '    Get
+        '        Return oGenericPens
+        '    End Get
+        'End Property
 
-        Public ReadOnly Property Pens As cPens
-            Get
-                Return oPens
-            End Get
-        End Property
+        'Public ReadOnly Property Pens As cPens
+        '    Get
+        '        Return oPens
+        '    End Get
+        'End Property
 
         Public ReadOnly Property Fonts As cItemFonts
             Get

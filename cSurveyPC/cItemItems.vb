@@ -394,11 +394,11 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
-        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             'do nothing...items is a UI element only for editor, item inside will be rendered
         End Sub
 
-        Friend Overrides Sub Paint(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Paint(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             'do nothing...items is a UI element only for editor, item inside will be painted
         End Sub
 
@@ -453,17 +453,16 @@ Namespace cSurvey.Design.Items
                         Call oItemsPointF.AddRange(oItem.Points.GetPoints)
                     End If
                 Next
-                Dim oMatrix As Matrix = New Matrix
-                oMatrix.Translate(-oLocation.X, -oLocation.Y, MatrixOrder.Append)
-                Call oMatrix.Scale(dScaleX, dScaleY, MatrixOrder.Append)
-                oMatrix.Translate(oLocation.X, oLocation.Y, MatrixOrder.Append)
-                Dim oItemsPointsArray() As PointF = oItemsPointF.ToArray
-                Call oMatrix.TransformPoints(oItemsPointsArray)
-                Call oMatrix.Dispose()
-
-                For i As Integer = 0 To oItemsPointsArray.Count - 1
-                    oItemsPoints(i).MoveTo(oItemsPointsArray(i))
-                Next
+                Using oMatrix As Matrix = New Matrix
+                    oMatrix.Translate(-oLocation.X, -oLocation.Y, MatrixOrder.Append)
+                    Call oMatrix.Scale(dScaleX, dScaleY, MatrixOrder.Append)
+                    oMatrix.Translate(oLocation.X, oLocation.Y, MatrixOrder.Append)
+                    Dim oItemsPointsArray() As PointF = oItemsPointF.ToArray
+                    Call oMatrix.TransformPoints(oItemsPointsArray)
+                    For i As Integer = 0 To oItemsPointsArray.Count - 1
+                        oItemsPoints(i).MoveTo(oItemsPointsArray(i))
+                    Next
+                End Using
             End If
 
             'For Each oItem As cItem In oItems
@@ -624,7 +623,7 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
-        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
+        Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
             Dim oSVGGroup As XmlElement = modSVG.CreateGroup(SVG, "_items")
             For Each oItem As cItem In oItems
                 Dim oSVGItem As XmlElement = oItem.ToSvgItem(SVG, PaintOptions, Options)

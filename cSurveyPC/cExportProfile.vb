@@ -27,8 +27,8 @@ Namespace cSurvey
         Friend Sub New(Survey As cSurvey)
             oSurvey = Survey
             oItems = New List(Of cExportProfile)
-            Call oItems.Add(New cExportProfile(oSurvey, oSurvey.Options("_export.plan"), cIDesign.cDesignTypeEnum.Plan))
-            Call oItems.Add(New cExportProfile(oSurvey, oSurvey.Options("_export.profile"), cIDesign.cDesignTypeEnum.Profile))
+            Call oItems.Add(New cExportProfile(oSurvey, DirectCast(oSurvey.Options("_export.plan"), cOptionsExport), cIDesign.cDesignTypeEnum.Plan))
+            Call oItems.Add(New cExportProfile(oSurvey, DirectCast(oSurvey.Options("_export.profile"), cOptionsExport), cIDesign.cDesignTypeEnum.Profile))
         End Sub
 
         Friend Sub New(Survey As cSurvey, ByVal File As cFile, Profiles As XmlElement)
@@ -47,8 +47,8 @@ Namespace cSurvey
                 End If
                 Call oItems.Add(oItem)
             Next
-            If Not bPlanExist Then Call oItems.Insert(0, New cExportProfile(oSurvey, oSurvey.Options("_export.plan"), cIDesign.cDesignTypeEnum.Plan))
-            If Not bProfileExist Then Call oItems.Insert(1, New cExportProfile(oSurvey, oSurvey.Options("_export.profile"), cIDesign.cDesignTypeEnum.Profile))
+            If Not bPlanExist Then Call oItems.Insert(0, New cExportProfile(oSurvey, DirectCast(oSurvey.Options("_export.plan"), cOptionsExport), cIDesign.cDesignTypeEnum.Plan))
+            If Not bProfileExist Then Call oItems.Insert(1, New cExportProfile(oSurvey, DirectCast(oSurvey.Options("_export.profile"), cOptionsExport), cIDesign.cDesignTypeEnum.Profile))
         End Sub
 
         Public Function AddAsCopy(Profile As cIProfile, Name As String) As cIProfile Implements cIProfiles.AddAsCopy
@@ -188,7 +188,7 @@ Namespace cSurvey
             End Get
         End Property
 
-        Public ReadOnly Property Options As Design.cOptions Implements cIProfile.Options
+        Public ReadOnly Property Options As Design.cOptionsCenterline Implements cIProfile.Options
             Get
                 Return oOptions
             End Get

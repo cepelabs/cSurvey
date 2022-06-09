@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmLochDialog
     Inherits cForm
 
     'Form esegue l'override del metodo Dispose per pulire l'elenco dei componenti.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmLochDialog
     'NOTA: la procedura che segue è richiesta da Progettazione Windows Form
     'Può essere modificata in Progettazione Windows Form.  
     'Non modificarla nell'editor del codice.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmLochDialog))
@@ -49,17 +49,17 @@ Partial Class frmLochDialog
         Me.cboElevationData = New DevExpress.XtraEditors.ImageComboBoxEdit()
         Me.XtraTabPage2 = New DevExpress.XtraTab.XtraTabPage()
         CType(Me.chkDoNotShow.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabControl1.SuspendLayout
+        Me.TabControl1.SuspendLayout()
         CType(Me.mnuOkOrSave, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.XtraTabControl1.SuspendLayout
-        Me.XtraTabPage1.SuspendLayout
+        Me.XtraTabControl1.SuspendLayout()
+        Me.XtraTabPage1.SuspendLayout()
         CType(Me.cboOrthophoto.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.iml, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboElevationData.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.XtraTabPage2.SuspendLayout
-        Me.SuspendLayout
+        Me.XtraTabPage2.SuspendLayout()
+        Me.SuspendLayout()
         '
         'lblElevationData
         '
@@ -247,13 +247,13 @@ Partial Class frmLochDialog
         CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.XtraTabControl1.ResumeLayout(False)
         Me.XtraTabPage1.ResumeLayout(False)
-        Me.XtraTabPage1.PerformLayout
+        Me.XtraTabPage1.PerformLayout()
         CType(Me.cboOrthophoto.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.iml, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboElevationData.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.XtraTabPage2.ResumeLayout(False)
         Me.ResumeLayout(False)
-        Me.PerformLayout
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents lblElevationData As System.Windows.Forms.Label

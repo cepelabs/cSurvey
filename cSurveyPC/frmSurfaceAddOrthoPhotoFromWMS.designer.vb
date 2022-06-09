@@ -24,45 +24,36 @@ Partial Class frmSurfaceAddOrthoPhotoFromWMS
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSurfaceAddOrthoPhotoFromWMS))
-        Me.cmdOk = New System.Windows.Forms.Button()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.Label2 = New DevExpress.XtraEditors.LabelControl()
         Me.tipDefault = New System.Windows.Forms.ToolTip(Me.components)
-        Me.picBackgroundColor = New System.Windows.Forms.PictureBox()
-        Me.txtName = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.cmdBackgroundColor = New System.Windows.Forms.Button()
-        Me.lblPlotNoteTextColor = New System.Windows.Forms.Label()
-        Me.txtRatio = New System.Windows.Forms.NumericUpDown()
-        Me.Label8 = New System.Windows.Forms.Label()
-        CType(Me.picBackgroundColor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtRatio, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.txtName = New DevExpress.XtraEditors.TextEdit()
+        Me.Label7 = New DevExpress.XtraEditors.LabelControl()
+        Me.lblPlotNoteTextColor = New DevExpress.XtraEditors.LabelControl()
+        Me.Label8 = New DevExpress.XtraEditors.LabelControl()
+        Me.txtBackgroundColor = New cSurveyPC.cColorSelector()
+        Me.txtRatio = New DevExpress.XtraEditors.SpinEdit()
+        CType(Me.txtName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtBackgroundColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtRatio.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdOk
         '
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
         '
         'cmdCancel
         '
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'Label2
         '
         resources.ApplyResources(Me.Label2, "Label2")
         Me.Label2.Name = "Label2"
-        '
-        'picBackgroundColor
-        '
-        resources.ApplyResources(Me.picBackgroundColor, "picBackgroundColor")
-        Me.picBackgroundColor.Name = "picBackgroundColor"
-        Me.picBackgroundColor.TabStop = False
-        Me.tipDefault.SetToolTip(Me.picBackgroundColor, resources.GetString("picBackgroundColor.ToolTip"))
         '
         'txtName
         '
@@ -74,29 +65,41 @@ Partial Class frmSurfaceAddOrthoPhotoFromWMS
         resources.ApplyResources(Me.Label7, "Label7")
         Me.Label7.Name = "Label7"
         '
-        'cmdBackgroundColor
-        '
-        resources.ApplyResources(Me.cmdBackgroundColor, "cmdBackgroundColor")
-        Me.cmdBackgroundColor.Name = "cmdBackgroundColor"
-        Me.cmdBackgroundColor.UseVisualStyleBackColor = True
-        '
         'lblPlotNoteTextColor
         '
+        Me.lblPlotNoteTextColor.Appearance.Font = CType(resources.GetObject("lblPlotNoteTextColor.Appearance.Font"), System.Drawing.Font)
+        Me.lblPlotNoteTextColor.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.lblPlotNoteTextColor, "lblPlotNoteTextColor")
         Me.lblPlotNoteTextColor.Name = "lblPlotNoteTextColor"
-        '
-        'txtRatio
-        '
-        resources.ApplyResources(Me.txtRatio, "txtRatio")
-        Me.txtRatio.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
-        Me.txtRatio.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.txtRatio.Name = "txtRatio"
-        Me.txtRatio.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'Label8
         '
         resources.ApplyResources(Me.Label8, "Label8")
         Me.Label8.Name = "Label8"
+        '
+        'txtBackgroundColor
+        '
+        Me.txtBackgroundColor.DefaultColor = System.Drawing.Color.Transparent
+        resources.ApplyResources(Me.txtBackgroundColor, "txtBackgroundColor")
+        Me.txtBackgroundColor.Name = "txtBackgroundColor"
+        Me.txtBackgroundColor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtBackgroundColor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtBackgroundColor.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.txtBackgroundColor.Properties.ShowSystemColors = False
+        Me.txtBackgroundColor.Properties.ShowWebColors = False
+        '
+        'txtRatio
+        '
+        resources.ApplyResources(Me.txtRatio, "txtRatio")
+        Me.txtRatio.Name = "txtRatio"
+        Me.txtRatio.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtRatio.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtRatio.Properties.DisplayFormat.FormatString = "N0"
+        Me.txtRatio.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtRatio.Properties.EditFormat.FormatString = "N0"
+        Me.txtRatio.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtRatio.Properties.IsFloatValue = False
+        Me.txtRatio.Properties.MaskSettings.Set("mask", "N00")
+        Me.txtRatio.Properties.MaxValue = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.txtRatio.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'frmSurfaceAddOrthoPhotoFromWMS
         '
@@ -104,35 +107,36 @@ Partial Class frmSurfaceAddOrthoPhotoFromWMS
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.CancelButton = Me.cmdCancel
+        Me.Controls.Add(Me.txtBackgroundColor)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.cmdBackgroundColor)
         Me.Controls.Add(Me.lblPlotNoteTextColor)
-        Me.Controls.Add(Me.picBackgroundColor)
-        Me.Controls.Add(Me.txtRatio)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.txtName)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.cmdOk)
         Me.Controls.Add(Me.cmdCancel)
+        Me.Controls.Add(Me.txtRatio)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.IconOptions.Icon = CType(resources.GetObject("frmSurfaceAddOrthoPhotoFromWMS.IconOptions.Icon"), System.Drawing.Icon)
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.map_raster
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSurfaceAddOrthoPhotoFromWMS"
-        CType(Me.picBackgroundColor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtRatio, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtBackgroundColor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtRatio.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents Label2 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents tipDefault As System.Windows.Forms.ToolTip
-    Friend WithEvents txtName As System.Windows.Forms.TextBox
-    Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents cmdBackgroundColor As System.Windows.Forms.Button
-    Friend WithEvents lblPlotNoteTextColor As System.Windows.Forms.Label
-    Friend WithEvents picBackgroundColor As System.Windows.Forms.PictureBox
-    Friend WithEvents txtRatio As System.Windows.Forms.NumericUpDown
-    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents txtName As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents Label7 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblPlotNoteTextColor As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents Label8 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtBackgroundColor As cColorSelector
+    Friend WithEvents txtRatio As DevExpress.XtraEditors.SpinEdit
 End Class

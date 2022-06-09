@@ -118,14 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblCaveName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 13</value>
-  </data>
   <data name="lblCaveName.Text" xml:space="preserve">
     <value>Grotta:</value>
-  </data>
-  <data name="lblPrefix.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 13</value>
   </data>
   <data name="lblPrefix.Text" xml:space="preserve">
     <value>Prefisso:</value>
@@ -142,41 +136,11 @@
   <data name="btnAdd.Text" xml:space="preserve">
     <value>Aggiungi</value>
   </data>
-  <data name="lblDataSeparator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 13</value>
-  </data>
   <data name="lblDataSeparator.Text" xml:space="preserve">
     <value>Separatore:</value>
   </data>
-  <data name="cboSeparator.Items" xml:space="preserve">
-    <value>Spazio</value>
-  </data>
-  <data name="cboSeparator.Items1" xml:space="preserve">
-    <value>Tabulatore</value>
-  </data>
-  <data name="chkFirstline.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 17</value>
-  </data>
-  <data name="chkFirstline.Text" xml:space="preserve">
-    <value>Salta la prima riga</value>
-  </data>
   <data name="cmdCancel.Text" xml:space="preserve">
     <value>Annulla</value>
-  </data>
-  <data name="colFieldName.HeaderText" xml:space="preserve">
-    <value>Nome</value>
-  </data>
-  <data name="colFieldType.HeaderText" xml:space="preserve">
-    <value>Tipo</value>
-  </data>
-  <data name="colFieldValue.HeaderText" xml:space="preserve">
-    <value>Valore</value>
-  </data>
-  <data name="chkAutoSplay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 17</value>
-  </data>
-  <data name="chkAutoSplay.Text" xml:space="preserve">
-    <value>Imposta battute senza cs come splay</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -244,7 +208,7 @@
 </value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Importa dati:</value>
+    <value>Importa dati da Excel:</value>
   </data>
   <data name="cmdOk.Text" xml:space="preserve">
     <value>Ok</value>
@@ -252,25 +216,58 @@
   <data name="lblFilename.Text" xml:space="preserve">
     <value>File:</value>
   </data>
-  <data name="cboSeparator.Items2" xml:space="preserve">
-    <value>Spazio e tabulazione</value>
-  </data>
-  <data name="chkSplaySymbol.Text" xml:space="preserve">
-    <value>Imposta battute con questo cs di fine come splay:</value>
-  </data>
-  <data name="chkCutSplaySymbol.Text" xml:space="preserve">
-    <value>Imposta battute con questo cs di fine come splay cut:</value>
-  </data>
-  <data name="chkZeroPlaceholders.Text" xml:space="preserve">
-    <value>Considera questo carattere come 0</value>
-  </data>
-  <data name="chkCommentSymbols.Text" xml:space="preserve">
-    <value>Tag di inizio commento</value>
-  </data>
   <data name="lblSourceFields.Text" xml:space="preserve">
     <value>Campo origine:</value>
   </data>
   <data name="lblDestinationFields.Text" xml:space="preserve">
     <value>Campo destinazione:</value>
+  </data>
+  <data name="colFieldsName.Caption" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="colFieldsType.Caption" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="colFieldsValue.Caption" xml:space="preserve">
+    <value>Valore</value>
+  </data>
+  <data name="chkZeroPlaceholders.Properties.Caption" xml:space="preserve">
+    <value>Considera questo carattere come 0</value>
+  </data>
+  <data name="chkSplaySymbol.Properties.Caption" xml:space="preserve">
+    <value>Imposta battute con questo cs di fine come splay:</value>
+  </data>
+  <data name="chkFirstline.Properties.Caption" xml:space="preserve">
+    <value>Salta la prima riga</value>
+  </data>
+  <data name="chkCutSplaySymbol.Properties.Caption" xml:space="preserve">
+    <value>Imposta battute con questo cs di fine come splay cut:</value>
+  </data>
+  <data name="chkCommentSymbols.Properties.Caption" xml:space="preserve">
+    <value>Tag di inizio commento</value>
+  </data>
+  <data name="chkAutoSplay.Properties.Caption" xml:space="preserve">
+    <value>Imposta battute senza cs come splay</value>
+  </data>
+  <data name="lblSession.Text" xml:space="preserve">
+    <value>Sessione:</value>
+  </data>
+  <data name="tabFields.Text" xml:space="preserve">
+    <value>Campi:</value>
+  </data>
+  <data name="tabOptions.Text" xml:space="preserve">
+    <value>Opzioni:</value>
+  </data>
+  <data name="cboFieldsType.Columns" xml:space="preserve">
+    <value>Testo</value>
+  </data>
+  <data name="cboFieldsType.Columns1" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="CheckEdit1.Properties.Caption" xml:space="preserve">
+    <value>Distanza assoluta</value>
+  </data>
+  <data name="chkProgressiveDistance.ToolTip" xml:space="preserve">
+    <value>La distanza riportata nel file è progressiva.</value>
   </data>
 </root>

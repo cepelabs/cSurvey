@@ -24,245 +24,306 @@ Partial Class frmInfoRing
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmInfoRing))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.pnlSurveyRing = New System.Windows.Forms.Panel()
-        Me.txtSurveyRingAverageError = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.grdSurveyRing = New cSurveyPC.cGrid()
-        Me.Selected = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.colTrigPointsStation0 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colError = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colErrAbs = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colErrX = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colErrY = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colErrZ = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colRingLen = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colTrigPoints = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colTrigPointsList = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Colore = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.mnuInfoRing = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.mnuInfoRingCopy = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuInfoRingCopyAll = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.mnuInfoRingSelectAll = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuInfoRingDeselectAll = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuInfoRingRevertSelect = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.mnuInfoRingColor = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuInfoRingColorBrowse = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.mnuInfoRingColorReset = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripSeparator()
-        Me.mnuInfoRingExport = New System.Windows.Forms.ToolStripMenuItem()
-        Me.cmdApply = New System.Windows.Forms.Button()
-        Me.cmdOk = New System.Windows.Forms.Button()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.oColorDialog = New System.Windows.Forms.ColorDialog()
+        Me.pnlSurveyRing = New DevExpress.XtraEditors.PanelControl()
+        Me.txtSurveyRingAverageError = New DevExpress.XtraEditors.TextEdit()
+        Me.lblAvgError = New DevExpress.XtraEditors.LabelControl()
+        Me.grdRings = New DevExpress.XtraGrid.GridControl()
+        Me.grdRingsView = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colRingsSelect = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.chkRingsSelect = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+        Me.colRingsColor = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.txtRingsColor = New DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit()
+        Me.colRingsStation = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colRingsErrorPercent = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colRingsLinearError = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colRingsX = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colRingsY = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colRingsZ = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colRingsLength = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colRingsStationN = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colRingsStations = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.cmdApply = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdOk = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.BarManager = New DevExpress.XtraBars.BarManager(Me.components)
+        Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
+        Me.btnCopyValue = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnCopyValues = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnCopyAll = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnCopy = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnExport = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnSelectAll = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnDeselectAll = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnInvertSelection = New DevExpress.XtraBars.BarButtonItem()
+        Me.mnuContext = New DevExpress.XtraBars.PopupMenu(Me.components)
+        CType(Me.pnlSurveyRing, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlSurveyRing.SuspendLayout()
-        CType(Me.grdSurveyRing, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.mnuInfoRing.SuspendLayout()
+        CType(Me.txtSurveyRingAverageError.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdRings, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdRingsView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkRingsSelect, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtRingsColor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BarManager, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.mnuContext, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'pnlSurveyRing
         '
         resources.ApplyResources(Me.pnlSurveyRing, "pnlSurveyRing")
+        Me.pnlSurveyRing.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.pnlSurveyRing.Controls.Add(Me.txtSurveyRingAverageError)
-        Me.pnlSurveyRing.Controls.Add(Me.Label4)
-        Me.pnlSurveyRing.Controls.Add(Me.grdSurveyRing)
+        Me.pnlSurveyRing.Controls.Add(Me.lblAvgError)
+        Me.pnlSurveyRing.Controls.Add(Me.grdRings)
         Me.pnlSurveyRing.Name = "pnlSurveyRing"
         '
         'txtSurveyRingAverageError
         '
         resources.ApplyResources(Me.txtSurveyRingAverageError, "txtSurveyRingAverageError")
         Me.txtSurveyRingAverageError.Name = "txtSurveyRingAverageError"
-        Me.txtSurveyRingAverageError.ReadOnly = True
+        Me.txtSurveyRingAverageError.Properties.Appearance.Options.UseTextOptions = True
+        Me.txtSurveyRingAverageError.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.txtSurveyRingAverageError.Properties.ReadOnly = True
         '
-        'Label4
+        'lblAvgError
         '
-        resources.ApplyResources(Me.Label4, "Label4")
-        Me.Label4.Name = "Label4"
+        resources.ApplyResources(Me.lblAvgError, "lblAvgError")
+        Me.lblAvgError.Name = "lblAvgError"
         '
-        'grdSurveyRing
+        'grdRings
         '
-        Me.grdSurveyRing.AllowUserToAddRows = False
-        Me.grdSurveyRing.AllowUserToDeleteRows = False
-        resources.ApplyResources(Me.grdSurveyRing, "grdSurveyRing")
-        Me.grdSurveyRing.BackgroundColor = System.Drawing.SystemColors.Window
-        Me.grdSurveyRing.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.grdSurveyRing.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdSurveyRing.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Selected, Me.colTrigPointsStation0, Me.colError, Me.colErrAbs, Me.colErrX, Me.colErrY, Me.colErrZ, Me.colRingLen, Me.colTrigPoints, Me.colTrigPointsList, Me.Colore})
-        Me.grdSurveyRing.ContextMenuStrip = Me.mnuInfoRing
-        Me.grdSurveyRing.Name = "grdSurveyRing"
-        Me.grdSurveyRing.RowHeadersVisible = False
-        Me.grdSurveyRing.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdSurveyRing.ShowEditingIcon = False
+        resources.ApplyResources(Me.grdRings, "grdRings")
+        Me.grdRings.MainView = Me.grdRingsView
+        Me.grdRings.Name = "grdRings"
+        Me.grdRings.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.txtRingsColor, Me.chkRingsSelect})
+        Me.grdRings.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdRingsView})
         '
-        'Selected
+        'grdRingsView
         '
-        Me.Selected.Frozen = True
-        resources.ApplyResources(Me.Selected, "Selected")
-        Me.Selected.Name = "Selected"
+        Me.grdRingsView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colRingsSelect, Me.colRingsColor, Me.colRingsStation, Me.colRingsErrorPercent, Me.colRingsLinearError, Me.colRingsX, Me.colRingsY, Me.colRingsZ, Me.colRingsLength, Me.colRingsStationN, Me.colRingsStations})
+        Me.grdRingsView.GridControl = Me.grdRings
+        Me.grdRingsView.Name = "grdRingsView"
+        Me.grdRingsView.OptionsView.ColumnAutoWidth = False
+        Me.grdRingsView.OptionsView.ShowGroupPanel = False
+        Me.grdRingsView.OptionsView.ShowIndicator = False
         '
-        'colTrigPointsStation0
+        'colRingsSelect
         '
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.colTrigPointsStation0.DefaultCellStyle = DataGridViewCellStyle1
-        resources.ApplyResources(Me.colTrigPointsStation0, "colTrigPointsStation0")
-        Me.colTrigPointsStation0.Name = "colTrigPointsStation0"
-        Me.colTrigPointsStation0.ReadOnly = True
+        Me.colRingsSelect.ColumnEdit = Me.chkRingsSelect
+        Me.colRingsSelect.FieldName = "Selected"
+        Me.colRingsSelect.MaxWidth = 24
+        Me.colRingsSelect.MinWidth = 24
+        Me.colRingsSelect.Name = "colRingsSelect"
+        resources.ApplyResources(Me.colRingsSelect, "colRingsSelect")
         '
-        'colError
+        'chkRingsSelect
         '
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.colError.DefaultCellStyle = DataGridViewCellStyle2
-        resources.ApplyResources(Me.colError, "colError")
-        Me.colError.Name = "colError"
-        Me.colError.ReadOnly = True
+        resources.ApplyResources(Me.chkRingsSelect, "chkRingsSelect")
+        Me.chkRingsSelect.Name = "chkRingsSelect"
         '
-        'colErrAbs
+        'colRingsColor
         '
-        resources.ApplyResources(Me.colErrAbs, "colErrAbs")
-        Me.colErrAbs.Name = "colErrAbs"
-        Me.colErrAbs.ReadOnly = True
+        resources.ApplyResources(Me.colRingsColor, "colRingsColor")
+        Me.colRingsColor.ColumnEdit = Me.txtRingsColor
+        Me.colRingsColor.FieldName = "Color"
+        Me.colRingsColor.Name = "colRingsColor"
         '
-        'colErrX
+        'txtRingsColor
         '
-        resources.ApplyResources(Me.colErrX, "colErrX")
-        Me.colErrX.Name = "colErrX"
-        Me.colErrX.ReadOnly = True
+        resources.ApplyResources(Me.txtRingsColor, "txtRingsColor")
+        Me.txtRingsColor.AutomaticColor = System.Drawing.Color.Black
+        Me.txtRingsColor.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtRingsColor.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtRingsColor.Name = "txtRingsColor"
+        Me.txtRingsColor.ShowSystemColors = False
+        Me.txtRingsColor.ShowWebColors = False
         '
-        'colErrY
+        'colRingsStation
         '
-        resources.ApplyResources(Me.colErrY, "colErrY")
-        Me.colErrY.Name = "colErrY"
-        Me.colErrY.ReadOnly = True
+        resources.ApplyResources(Me.colRingsStation, "colRingsStation")
+        Me.colRingsStation.FieldName = "FirstStation"
+        Me.colRingsStation.Name = "colRingsStation"
+        Me.colRingsStation.OptionsColumn.AllowEdit = False
+        Me.colRingsStation.OptionsColumn.ReadOnly = True
         '
-        'colErrZ
+        'colRingsErrorPercent
         '
-        resources.ApplyResources(Me.colErrZ, "colErrZ")
-        Me.colErrZ.Name = "colErrZ"
-        Me.colErrZ.ReadOnly = True
+        resources.ApplyResources(Me.colRingsErrorPercent, "colRingsErrorPercent")
+        Me.colRingsErrorPercent.DisplayFormat.FormatString = "{0:0.00}%"
+        Me.colRingsErrorPercent.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.colRingsErrorPercent.FieldName = "ErrorPercent"
+        Me.colRingsErrorPercent.Name = "colRingsErrorPercent"
+        Me.colRingsErrorPercent.OptionsColumn.AllowEdit = False
+        Me.colRingsErrorPercent.OptionsColumn.ReadOnly = True
         '
-        'colRingLen
+        'colRingsLinearError
         '
-        resources.ApplyResources(Me.colRingLen, "colRingLen")
-        Me.colRingLen.Name = "colRingLen"
-        Me.colRingLen.ReadOnly = True
+        resources.ApplyResources(Me.colRingsLinearError, "colRingsLinearError")
+        Me.colRingsLinearError.FieldName = "Error"
+        Me.colRingsLinearError.Name = "colRingsLinearError"
+        Me.colRingsLinearError.OptionsColumn.AllowEdit = False
+        Me.colRingsLinearError.OptionsColumn.ReadOnly = True
         '
-        'colTrigPoints
+        'colRingsX
         '
-        resources.ApplyResources(Me.colTrigPoints, "colTrigPoints")
-        Me.colTrigPoints.Name = "colTrigPoints"
-        Me.colTrigPoints.ReadOnly = True
+        resources.ApplyResources(Me.colRingsX, "colRingsX")
+        Me.colRingsX.FieldName = "X"
+        Me.colRingsX.MaxWidth = 80
+        Me.colRingsX.Name = "colRingsX"
+        Me.colRingsX.OptionsColumn.AllowEdit = False
+        Me.colRingsX.OptionsColumn.ReadOnly = True
         '
-        'colTrigPointsList
+        'colRingsY
         '
-        resources.ApplyResources(Me.colTrigPointsList, "colTrigPointsList")
-        Me.colTrigPointsList.Name = "colTrigPointsList"
-        Me.colTrigPointsList.ReadOnly = True
+        resources.ApplyResources(Me.colRingsY, "colRingsY")
+        Me.colRingsY.FieldName = "Y"
+        Me.colRingsY.MaxWidth = 80
+        Me.colRingsY.Name = "colRingsY"
+        Me.colRingsY.OptionsColumn.AllowEdit = False
+        Me.colRingsY.OptionsColumn.ReadOnly = True
         '
-        'Colore
+        'colRingsZ
         '
-        Me.Colore.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        resources.ApplyResources(Me.Colore, "Colore")
-        Me.Colore.Name = "Colore"
-        Me.Colore.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Colore.Text = "..."
-        Me.Colore.UseColumnTextForButtonValue = True
+        resources.ApplyResources(Me.colRingsZ, "colRingsZ")
+        Me.colRingsZ.FieldName = "Z"
+        Me.colRingsZ.MaxWidth = 80
+        Me.colRingsZ.Name = "colRingsZ"
+        Me.colRingsZ.OptionsColumn.AllowEdit = False
+        Me.colRingsZ.OptionsColumn.ReadOnly = True
         '
-        'mnuInfoRing
+        'colRingsLength
         '
-        resources.ApplyResources(Me.mnuInfoRing, "mnuInfoRing")
-        Me.mnuInfoRing.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuInfoRingCopy, Me.mnuInfoRingCopyAll, Me.ToolStripMenuItem1, Me.mnuInfoRingSelectAll, Me.mnuInfoRingDeselectAll, Me.mnuInfoRingRevertSelect, Me.ToolStripMenuItem2, Me.mnuInfoRingColor, Me.ToolStripMenuItem4, Me.mnuInfoRingExport})
-        Me.mnuInfoRing.Name = "mnuSegmentInfo"
+        resources.ApplyResources(Me.colRingsLength, "colRingsLength")
+        Me.colRingsLength.FieldName = "Length"
+        Me.colRingsLength.Name = "colRingsLength"
+        Me.colRingsLength.OptionsColumn.AllowEdit = False
+        Me.colRingsLength.OptionsColumn.ReadOnly = True
         '
-        'mnuInfoRingCopy
+        'colRingsStationN
         '
-        Me.mnuInfoRingCopy.Image = Global.cSurveyPC.My.Resources.Resources.page_copy
-        Me.mnuInfoRingCopy.Name = "mnuInfoRingCopy"
-        resources.ApplyResources(Me.mnuInfoRingCopy, "mnuInfoRingCopy")
+        resources.ApplyResources(Me.colRingsStationN, "colRingsStationN")
+        Me.colRingsStationN.FieldName = "Count"
+        Me.colRingsStationN.Name = "colRingsStationN"
+        Me.colRingsStationN.OptionsColumn.AllowEdit = False
+        Me.colRingsStationN.OptionsColumn.ReadOnly = True
         '
-        'mnuInfoRingCopyAll
+        'colRingsStations
         '
-        Me.mnuInfoRingCopyAll.Name = "mnuInfoRingCopyAll"
-        resources.ApplyResources(Me.mnuInfoRingCopyAll, "mnuInfoRingCopyAll")
-        '
-        'ToolStripMenuItem1
-        '
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        resources.ApplyResources(Me.ToolStripMenuItem1, "ToolStripMenuItem1")
-        '
-        'mnuInfoRingSelectAll
-        '
-        Me.mnuInfoRingSelectAll.Name = "mnuInfoRingSelectAll"
-        resources.ApplyResources(Me.mnuInfoRingSelectAll, "mnuInfoRingSelectAll")
-        '
-        'mnuInfoRingDeselectAll
-        '
-        Me.mnuInfoRingDeselectAll.Name = "mnuInfoRingDeselectAll"
-        resources.ApplyResources(Me.mnuInfoRingDeselectAll, "mnuInfoRingDeselectAll")
-        '
-        'mnuInfoRingRevertSelect
-        '
-        Me.mnuInfoRingRevertSelect.Name = "mnuInfoRingRevertSelect"
-        resources.ApplyResources(Me.mnuInfoRingRevertSelect, "mnuInfoRingRevertSelect")
-        '
-        'ToolStripMenuItem2
-        '
-        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        resources.ApplyResources(Me.ToolStripMenuItem2, "ToolStripMenuItem2")
-        '
-        'mnuInfoRingColor
-        '
-        Me.mnuInfoRingColor.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuInfoRingColorBrowse, Me.ToolStripMenuItem3, Me.mnuInfoRingColorReset})
-        Me.mnuInfoRingColor.Name = "mnuInfoRingColor"
-        resources.ApplyResources(Me.mnuInfoRingColor, "mnuInfoRingColor")
-        '
-        'mnuInfoRingColorBrowse
-        '
-        Me.mnuInfoRingColorBrowse.Name = "mnuInfoRingColorBrowse"
-        resources.ApplyResources(Me.mnuInfoRingColorBrowse, "mnuInfoRingColorBrowse")
-        '
-        'ToolStripMenuItem3
-        '
-        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        resources.ApplyResources(Me.ToolStripMenuItem3, "ToolStripMenuItem3")
-        '
-        'mnuInfoRingColorReset
-        '
-        Me.mnuInfoRingColorReset.Name = "mnuInfoRingColorReset"
-        resources.ApplyResources(Me.mnuInfoRingColorReset, "mnuInfoRingColorReset")
-        '
-        'ToolStripMenuItem4
-        '
-        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
-        resources.ApplyResources(Me.ToolStripMenuItem4, "ToolStripMenuItem4")
-        '
-        'mnuInfoRingExport
-        '
-        Me.mnuInfoRingExport.Name = "mnuInfoRingExport"
-        resources.ApplyResources(Me.mnuInfoRingExport, "mnuInfoRingExport")
+        resources.ApplyResources(Me.colRingsStations, "colRingsStations")
+        Me.colRingsStations.FieldName = "_stations"
+        Me.colRingsStations.MinWidth = 200
+        Me.colRingsStations.Name = "colRingsStations"
+        Me.colRingsStations.OptionsColumn.AllowEdit = False
+        Me.colRingsStations.OptionsColumn.ReadOnly = True
+        Me.colRingsStations.UnboundType = DevExpress.Data.UnboundColumnType.[String]
         '
         'cmdApply
         '
         resources.ApplyResources(Me.cmdApply, "cmdApply")
         Me.cmdApply.Name = "cmdApply"
-        Me.cmdApply.UseVisualStyleBackColor = True
         '
         'cmdOk
         '
         resources.ApplyResources(Me.cmdOk, "cmdOk")
         Me.cmdOk.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOk.Name = "cmdOk"
-        Me.cmdOk.UseVisualStyleBackColor = True
         '
         'cmdCancel
         '
         resources.ApplyResources(Me.cmdCancel, "cmdCancel")
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
+        '
+        'BarManager
+        '
+        Me.BarManager.DockControls.Add(Me.barDockControlTop)
+        Me.BarManager.DockControls.Add(Me.barDockControlBottom)
+        Me.BarManager.DockControls.Add(Me.barDockControlLeft)
+        Me.BarManager.DockControls.Add(Me.barDockControlRight)
+        Me.BarManager.Form = Me
+        Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnCopyValue, Me.btnCopyValues, Me.btnCopyAll, Me.btnCopy, Me.btnExport, Me.btnSelectAll, Me.btnDeselectAll, Me.btnInvertSelection})
+        Me.BarManager.MaxItemId = 11
+        '
+        'barDockControlTop
+        '
+        Me.barDockControlTop.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlTop, "barDockControlTop")
+        Me.barDockControlTop.Manager = Me.BarManager
+        '
+        'barDockControlBottom
+        '
+        Me.barDockControlBottom.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlBottom, "barDockControlBottom")
+        Me.barDockControlBottom.Manager = Me.BarManager
+        '
+        'barDockControlLeft
+        '
+        Me.barDockControlLeft.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlLeft, "barDockControlLeft")
+        Me.barDockControlLeft.Manager = Me.BarManager
+        '
+        'barDockControlRight
+        '
+        Me.barDockControlRight.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlRight, "barDockControlRight")
+        Me.barDockControlRight.Manager = Me.BarManager
+        '
+        'btnCopyValue
+        '
+        resources.ApplyResources(Me.btnCopyValue, "btnCopyValue")
+        Me.btnCopyValue.Id = 3
+        Me.btnCopyValue.Name = "btnCopyValue"
+        '
+        'btnCopyValues
+        '
+        resources.ApplyResources(Me.btnCopyValues, "btnCopyValues")
+        Me.btnCopyValues.Id = 4
+        Me.btnCopyValues.Name = "btnCopyValues"
+        '
+        'btnCopyAll
+        '
+        resources.ApplyResources(Me.btnCopyAll, "btnCopyAll")
+        Me.btnCopyAll.Id = 5
+        Me.btnCopyAll.Name = "btnCopyAll"
+        '
+        'btnCopy
+        '
+        resources.ApplyResources(Me.btnCopy, "btnCopy")
+        Me.btnCopy.Id = 6
+        Me.btnCopy.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.copy
+        Me.btnCopy.Name = "btnCopy"
+        '
+        'btnExport
+        '
+        resources.ApplyResources(Me.btnExport, "btnExport")
+        Me.btnExport.Id = 7
+        Me.btnExport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.exportfile
+        Me.btnExport.Name = "btnExport"
+        '
+        'btnSelectAll
+        '
+        resources.ApplyResources(Me.btnSelectAll, "btnSelectAll")
+        Me.btnSelectAll.Id = 8
+        Me.btnSelectAll.Name = "btnSelectAll"
+        '
+        'btnDeselectAll
+        '
+        resources.ApplyResources(Me.btnDeselectAll, "btnDeselectAll")
+        Me.btnDeselectAll.Id = 9
+        Me.btnDeselectAll.Name = "btnDeselectAll"
+        '
+        'btnInvertSelection
+        '
+        resources.ApplyResources(Me.btnInvertSelection, "btnInvertSelection")
+        Me.btnInvertSelection.Id = 10
+        Me.btnInvertSelection.Name = "btnInvertSelection"
+        '
+        'mnuContext
+        '
+        Me.mnuContext.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnSelectAll, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnDeselectAll), New DevExpress.XtraBars.LinkPersistInfo(Me.btnInvertSelection), New DevExpress.XtraBars.LinkPersistInfo(Me.btnCopyValue, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnCopyValues), New DevExpress.XtraBars.LinkPersistInfo(Me.btnCopy, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnCopyAll), New DevExpress.XtraBars.LinkPersistInfo(Me.btnExport, True)})
+        Me.mnuContext.Manager = Me.BarManager
+        Me.mnuContext.Name = "mnuContext"
         '
         'frmInfoRing
         '
@@ -273,46 +334,60 @@ Partial Class frmInfoRing
         Me.Controls.Add(Me.cmdOk)
         Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.pnlSurveyRing)
+        Me.Controls.Add(Me.barDockControlLeft)
+        Me.Controls.Add(Me.barDockControlRight)
+        Me.Controls.Add(Me.barDockControlBottom)
+        Me.Controls.Add(Me.barDockControlTop)
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.bo_statemachine
         Me.MinimizeBox = False
         Me.Name = "frmInfoRing"
+        CType(Me.pnlSurveyRing, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlSurveyRing.ResumeLayout(False)
         Me.pnlSurveyRing.PerformLayout()
-        CType(Me.grdSurveyRing, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.mnuInfoRing.ResumeLayout(False)
+        CType(Me.txtSurveyRingAverageError.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdRings, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdRingsView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkRingsSelect, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtRingsColor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BarManager, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.mnuContext, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
-    Friend WithEvents pnlSurveyRing As System.Windows.Forms.Panel
-    Friend WithEvents txtSurveyRingAverageError As System.Windows.Forms.TextBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents grdSurveyRing As cSurveyPC.cGrid
-    Friend WithEvents mnuInfoRing As System.Windows.Forms.ContextMenuStrip
-    Friend WithEvents mnuInfoRingCopy As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents mnuInfoRingCopyAll As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents mnuInfoRingSelectAll As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents mnuInfoRingDeselectAll As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents mnuInfoRingRevertSelect As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents cmdApply As System.Windows.Forms.Button
-    Friend WithEvents cmdOk As System.Windows.Forms.Button
-    Friend WithEvents cmdCancel As System.Windows.Forms.Button
-    Friend WithEvents oColorDialog As System.Windows.Forms.ColorDialog
-    Friend WithEvents ToolStripMenuItem2 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents mnuInfoRingColor As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents mnuInfoRingColorBrowse As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem3 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents mnuInfoRingColorReset As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents Selected As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents colTrigPointsStation0 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colError As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colErrAbs As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colErrX As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colErrY As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colErrZ As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colRingLen As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colTrigPoints As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colTrigPointsList As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Colore As System.Windows.Forms.DataGridViewButtonColumn
-    Friend WithEvents ToolStripMenuItem4 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents mnuInfoRingExport As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents pnlSurveyRing As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents txtSurveyRingAverageError As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents lblAvgError As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cmdApply As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents grdRings As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdRingsView As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents colRingsSelect As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colRingsStation As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colRingsErrorPercent As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colRingsLinearError As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colRingsX As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colRingsY As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colRingsZ As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colRingsLength As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colRingsStationN As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colRingsStations As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colRingsColor As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents txtRingsColor As DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit
+    Friend WithEvents BarManager As DevExpress.XtraBars.BarManager
+    Friend WithEvents barDockControlTop As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlBottom As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlLeft As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlRight As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents btnCopyValue As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnCopyValues As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnCopyAll As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnCopy As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnExport As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents mnuContext As DevExpress.XtraBars.PopupMenu
+    Friend WithEvents btnSelectAll As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnDeselectAll As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnInvertSelection As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents chkRingsSelect As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
 End Class

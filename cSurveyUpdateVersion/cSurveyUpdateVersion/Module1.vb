@@ -2,7 +2,7 @@
 Imports System.IO
 
 Module Module1
-    Public sBaseVersion As String = "1"
+    Public sBaseVersion As String = "2"
 
     Public Function GetReleaseDate() As Date
         Dim oFi As FileInfo = New FileInfo(Path.Combine(Environment.CurrentDirectory, "csurveypc.exe"))

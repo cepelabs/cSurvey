@@ -165,32 +165,20 @@
         AeABBwYAAcABAwYAAYABAQYAAYABAQYAAoEGAALDBgAC5wQACw==
 </value>
   </data>
-  <data name="lblDataFieldDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 13</value>
-  </data>
   <data name="lblDataFieldDescription.Text" xml:space="preserve">
     <value>Descrizione:</value>
-  </data>
-  <data name="lblDataFieldType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 13</value>
   </data>
   <data name="lblDataFieldType.Text" xml:space="preserve">
     <value>Tipo di dati:</value>
   </data>
   <data name="Label11.Text" xml:space="preserve">
-    <value>&lt;image=warning&gt; &lt;b&gt;Attenzione&lt;/b&gt;: inserire un valore per ogni riga. Non è possibile inserire valori numerici.</value>
-  </data>
-  <data name="lblDataFieldEnumValues.Size" type="System.Drawing.Size, System.Drawing">
-    <value>27, 13</value>
+    <value>&lt;image=#warning;size=16,16&gt; &lt;b&gt;Attenzione&lt;/b&gt;: inserire un valore per ogni riga. Non è possibile inserire valori numerici.</value>
   </data>
   <data name="lblDataFieldEnumValues.Text" xml:space="preserve">
     <value>Elenco:</value>
   </data>
   <data name="cmdCancel.Text" xml:space="preserve">
     <value>Annulla</value>
-  </data>
-  <data name="lblDataFieldCategory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 13</value>
   </data>
   <data name="lblDataFieldCategory.Text" xml:space="preserve">
     <value>Categoria:</value>

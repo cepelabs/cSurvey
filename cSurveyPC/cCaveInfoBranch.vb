@@ -267,6 +267,10 @@ Namespace cSurvey
             End Get
         End Property
 
+        Public Function GetCave() As cCaveInfo Implements cICaveInfoBranches.GetCave
+            Return oCaveInfo
+        End Function
+
         Public ReadOnly Property Cave() As String Implements cICaveInfoBranches.Cave
             Get
                 Return sCave
@@ -289,11 +293,11 @@ Namespace cSurvey
             End If
         End Function
 
-        Public Function Path() As String Implements cICaveInfoBranches.path
+        Public Function Path() As String Implements cICaveInfoBranches.Path
             If oParent Is Nothing Then
                 Return sName
             Else
-                Return oParent.Path & cCaveInfoBranches.sBranchSeparator & sName
+                Return oParent.Path() & cCaveInfoBranches.sBranchSeparator & sName
             End If
         End Function
 
@@ -343,25 +347,25 @@ Namespace cSurvey
             Return GetSegments.GetBindedItems
         End Function
 
-        Public Function GetSegments(Mode As cOptions.HighlightModeEnum) As cISegmentCollection Implements cICaveInfoBranches.GetSegments
+        Public Function GetSegments(Mode As cOptionsDesign.HighlightModeEnum) As cISegmentCollection Implements cICaveInfoBranches.GetSegments
             Dim sCave As String = Cave.ToLower
             Dim sBranch As String = Path.ToLower
             Dim oResult As cSegmentCollection = New cSegmentCollection(oSurvey)
             For Each oSegment As cSegment In oSurvey.Segments
                 Select Case Mode
-                    Case cOptions.HighlightModeEnum.Default
+                    Case cOptionsDesign.HighlightModeEnum.Default
                         'if is a cave, get all shot for this cave
                         'if is a branch, get all shot for this cave/branch but no children
                         If oSegment.Cave.ToLower = sCave OrElse (sBranch <> "" AndAlso oSegment.Branch.ToLower = sBranch) Then
                             Call oResult.Append(oSegment)
                         End If
-                    Case cOptions.HighlightModeEnum.Hierarchic
+                    Case cOptionsDesign.HighlightModeEnum.Hierarchic
                         'if is a cave, get all shot for this cave
                         'if is a branch, get all shot for this cave/branch and all children branch...
                         If oSegment.Cave.ToLower = sCave AndAlso (oSegment.Branch.ToLower = sBranch OrElse oSegment.Branch.ToLower.StartsWith(sBranch & cCaveInfoBranches.sBranchSeparator)) Then
                             Call oResult.Append(oSegment)
                         End If
-                    Case cOptions.HighlightModeEnum.ExactMatch
+                    Case cOptionsDesign.HighlightModeEnum.ExactMatch
                         'always check cave/branch
                         If oSegment.Cave.ToLower = sCave AndAlso (oSegment.Branch.ToLower = sBranch) Then
                             Call oResult.Append(oSegment)
@@ -419,6 +423,12 @@ Namespace cSurvey
             Set(ByVal value As Color)
                 oColor = value
             End Set
+        End Property
+
+        Public ReadOnly Property ToHTMLString() As String
+            Get
+                Return "<b><backcolor=" & ColorTranslator.ToHtml(GetColor(Color.Gray)) & ">  </backcolor></b>  " & Path()
+            End Get
         End Property
 
         Public Overrides Function ToString() As String
@@ -505,7 +515,11 @@ Namespace cSurvey
             Try
                 If modPaint.IsNullColor(oReturnedColor) Then
                     If oParent Is Nothing Then
-                        oReturnedColor = oCaveInfo.GetColor(DefaultColor)
+                        If oCaveInfo Is Nothing Then
+                            Return DefaultColor
+                        Else
+                            oReturnedColor = oCaveInfo.GetColor(DefaultColor)
+                        End If
                     Else
                         oReturnedColor = oParent.GetColor(DefaultColor)
                     End If
@@ -540,6 +554,18 @@ Namespace cSurvey
                 End If
             Else
                 Return iSurfaceProfileShow = cISurfaceProfile.SurfaceProfileShowEnum.Visible
+            End If
+        End Function
+
+        Public Function GetRoot() As cCaveInfo Implements cICaveInfoBranches.GetRoot
+            Return oCaveInfo
+        End Function
+
+        Friend Shared Function EditToString(CaveEdit As cCaveInfoBranch) As String
+            If CaveEdit Is Nothing Then
+                Return ""
+            Else
+                Return CaveEdit.Path
             End If
         End Function
     End Class

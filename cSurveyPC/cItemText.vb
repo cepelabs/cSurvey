@@ -260,7 +260,7 @@ Namespace cSurvey.Design.Items
             iTextRotateMode = Survey.Properties.DesignProperties.GetValue("DesignTextRotateMode", cIItemRotable.RotateModeEnum.Fixed)
             iTextAlignment = cIItemLineableText.TextAlignmentEnum.Center
             iTextVerticalAlignment = cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle
-            sText = Text
+            sText = "" & Text
             Call FixBound()
         End Sub
 
@@ -271,11 +271,11 @@ Namespace cSurvey.Design.Items
             iTextRotateMode = Survey.Properties.DesignProperties.GetValue("DesignTextRotateMode", cIItemRotable.RotateModeEnum.Fixed)
             iTextAlignment = cIItemLineableText.TextAlignmentEnum.Center
             iTextVerticalAlignment = cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle
-            sText = Text
+            sText = "" & Text
             Call FixBound()
         End Sub
 
-        Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptions) As Single
+        Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptionsCenterline) As Single
             Dim sTextScaleFactor As Single = MyBase.GetTextScaleFactor(PaintOptions)
             Select Case iTextSize
                 Case cIItemSizable.SizeEnum.Default
@@ -527,7 +527,7 @@ Namespace cSurvey.Design.Items
         '    End If
         'End Function
 
-        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             Dim oCache As cDrawCache = MyBase.Caches(PaintOptions)
             With oCache
                 If .Invalidated Then
@@ -678,7 +678,7 @@ Namespace cSurvey.Design.Items
             End With
         End Sub
 
-        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptions, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
+        Friend Overrides Sub Paint(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             If MyBase.Points.Count > 0 Then
                 Call Render(Graphics, PaintOptions, Options, Selected)
                 If Not PaintOptions.IsDesign OrElse (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then '

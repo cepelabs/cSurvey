@@ -34,12 +34,12 @@ Partial Class cItemPenStylePropertyControl
         Me.lblPropPenPattern = New DevExpress.XtraEditors.LabelControl()
         Me.cboPropPenPattern = New cSurveyPC.cPenStyleDropDown()
         Me.txtPropPenColor = New cSurveyPC.cColorSelector()
-        Me.cmdPropPenSave = New DevExpress.XtraEditors.DropDownButton()
-        Me.mnuPenSaveAs = New DevExpress.XtraBars.PopupMenu(Me.components)
-        Me.btnPropPenSaveToFile = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnPropPenSaveToSurvey = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnPropPenImport = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnPropPenExport = New DevExpress.XtraBars.BarButtonItem()
+        Me.cmdPropSave = New DevExpress.XtraEditors.DropDownButton()
+        Me.mnuSaveAs = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.btnPropSaveToFile = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnPropSaveToSurvey = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnPropImport = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnPropExport = New DevExpress.XtraBars.BarButtonItem()
         Me.BarManager = New DevExpress.XtraBars.BarManager(Me.components)
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
@@ -68,7 +68,7 @@ Partial Class cItemPenStylePropertyControl
         Me.cboPropPenStyle = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.txtPropPenWidth = New DevExpress.XtraEditors.SpinEdit()
         CType(Me.txtPropPenColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mnuPenSaveAs, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.mnuSaveAs, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picPropPenClipartImage.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pnlPenClipartSettings, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -144,48 +144,48 @@ Partial Class cItemPenStylePropertyControl
         Me.txtPropPenColor.Properties.ShowSystemColors = False
         Me.txtPropPenColor.Properties.ShowWebColors = False
         '
-        'cmdPropPenSave
+        'cmdPropSave
         '
-        resources.ApplyResources(Me.cmdPropPenSave, "cmdPropPenSave")
-        Me.cmdPropPenSave.DropDownControl = Me.mnuPenSaveAs
-        Me.cmdPropPenSave.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.cmdPropPenSave.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.savedialog
-        Me.cmdPropPenSave.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.cmdPropPenSave.Name = "cmdPropPenSave"
+        resources.ApplyResources(Me.cmdPropSave, "cmdPropSave")
+        Me.cmdPropSave.DropDownControl = Me.mnuSaveAs
+        Me.cmdPropSave.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdPropSave.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.savedialog
+        Me.cmdPropSave.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.cmdPropSave.Name = "cmdPropSave"
         '
-        'mnuPenSaveAs
+        'mnuSaveAs
         '
-        Me.mnuPenSaveAs.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnPropPenSaveToFile), New DevExpress.XtraBars.LinkPersistInfo(Me.btnPropPenSaveToSurvey), New DevExpress.XtraBars.LinkPersistInfo(Me.btnPropPenImport, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnPropPenExport)})
-        Me.mnuPenSaveAs.Manager = Me.BarManager
-        Me.mnuPenSaveAs.Name = "mnuPenSaveAs"
+        Me.mnuSaveAs.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnPropSaveToFile), New DevExpress.XtraBars.LinkPersistInfo(Me.btnPropSaveToSurvey), New DevExpress.XtraBars.LinkPersistInfo(Me.btnPropImport, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnPropExport)})
+        Me.mnuSaveAs.Manager = Me.BarManager
+        Me.mnuSaveAs.Name = "mnuSaveAs"
         '
-        'btnPropPenSaveToFile
+        'btnPropSaveToFile
         '
-        resources.ApplyResources(Me.btnPropPenSaveToFile, "btnPropPenSaveToFile")
-        Me.btnPropPenSaveToFile.Id = 23
-        Me.btnPropPenSaveToFile.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.saveas
-        Me.btnPropPenSaveToFile.Name = "btnPropPenSaveToFile"
+        resources.ApplyResources(Me.btnPropSaveToFile, "btnPropSaveToFile")
+        Me.btnPropSaveToFile.Id = 23
+        Me.btnPropSaveToFile.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.saveas
+        Me.btnPropSaveToFile.Name = "btnPropSaveToFile"
         '
-        'btnPropPenSaveToSurvey
+        'btnPropSaveToSurvey
         '
-        resources.ApplyResources(Me.btnPropPenSaveToSurvey, "btnPropPenSaveToSurvey")
-        Me.btnPropPenSaveToSurvey.Id = 24
-        Me.btnPropPenSaveToSurvey.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.savedialog
-        Me.btnPropPenSaveToSurvey.Name = "btnPropPenSaveToSurvey"
+        resources.ApplyResources(Me.btnPropSaveToSurvey, "btnPropSaveToSurvey")
+        Me.btnPropSaveToSurvey.Id = 24
+        Me.btnPropSaveToSurvey.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.savedialog
+        Me.btnPropSaveToSurvey.Name = "btnPropSaveToSurvey"
         '
-        'btnPropPenImport
+        'btnPropImport
         '
-        resources.ApplyResources(Me.btnPropPenImport, "btnPropPenImport")
-        Me.btnPropPenImport.Id = 26
-        Me.btnPropPenImport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.import
-        Me.btnPropPenImport.Name = "btnPropPenImport"
+        resources.ApplyResources(Me.btnPropImport, "btnPropImport")
+        Me.btnPropImport.Id = 26
+        Me.btnPropImport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.import
+        Me.btnPropImport.Name = "btnPropImport"
         '
-        'btnPropPenExport
+        'btnPropExport
         '
-        resources.ApplyResources(Me.btnPropPenExport, "btnPropPenExport")
-        Me.btnPropPenExport.Id = 25
-        Me.btnPropPenExport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.exportfile
-        Me.btnPropPenExport.Name = "btnPropPenExport"
+        resources.ApplyResources(Me.btnPropExport, "btnPropExport")
+        Me.btnPropExport.Id = 25
+        Me.btnPropExport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.exportfile
+        Me.btnPropExport.Name = "btnPropExport"
         '
         'BarManager
         '
@@ -196,7 +196,7 @@ Partial Class cItemPenStylePropertyControl
         Me.BarManager.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager.DockControls.Add(Me.barDockControlRight)
         Me.BarManager.Form = Me
-        Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnPropPenSaveToFile, Me.btnPropPenSaveToSurvey, Me.btnPropPenExport, Me.btnPropPenImport})
+        Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnPropSaveToFile, Me.btnPropSaveToSurvey, Me.btnPropExport, Me.btnPropImport})
         Me.BarManager.MaxItemId = 27
         '
         'barDockControlTop
@@ -446,14 +446,14 @@ Partial Class cItemPenStylePropertyControl
         Me.Controls.Add(Me.txtPropPenColor)
         Me.Controls.Add(Me.lblPropPenStyle)
         Me.Controls.Add(Me.cboPropPenPattern)
-        Me.Controls.Add(Me.cmdPropPenSave)
+        Me.Controls.Add(Me.cmdPropSave)
         Me.Controls.Add(Me.barDockControlLeft)
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
         Me.Name = "cItemPenStylePropertyControl"
         CType(Me.txtPropPenColor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mnuPenSaveAs, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.mnuSaveAs, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BarManager, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picPropPenClipartImage.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pnlPenClipartSettings, System.ComponentModel.ISupportInitialize).EndInit()
@@ -487,17 +487,17 @@ Partial Class cItemPenStylePropertyControl
     Friend WithEvents lblPropPenDecoration As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lblPropPenPattern As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboPropPenPattern As cPenStyleDropDown
-    Friend WithEvents cmdPropPenSave As DevExpress.XtraEditors.DropDownButton
-    Friend WithEvents mnuPenSaveAs As DevExpress.XtraBars.PopupMenu
-    Friend WithEvents btnPropPenSaveToFile As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents btnPropPenSaveToSurvey As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents cmdPropSave As DevExpress.XtraEditors.DropDownButton
+    Friend WithEvents mnuSaveAs As DevExpress.XtraBars.PopupMenu
+    Friend WithEvents btnPropSaveToFile As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnPropSaveToSurvey As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarManager As DevExpress.XtraBars.BarManager
     Friend WithEvents barDockControlTop As DevExpress.XtraBars.BarDockControl
     Friend WithEvents barDockControlBottom As DevExpress.XtraBars.BarDockControl
     Friend WithEvents barDockControlLeft As DevExpress.XtraBars.BarDockControl
     Friend WithEvents barDockControlRight As DevExpress.XtraBars.BarDockControl
-    Friend WithEvents btnPropPenExport As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents btnPropPenImport As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnPropExport As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnPropImport As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents cmdPropPenBrowseClipart As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents picPropPenClipartImage As DevExpress.XtraEditors.PictureEdit
     Friend WithEvents lblPropPenClipartImage As DevExpress.XtraEditors.LabelControl

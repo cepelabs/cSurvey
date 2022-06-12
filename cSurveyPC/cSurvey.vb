@@ -21,6 +21,7 @@ Namespace cSurvey
         Private oCliparts As cCliparts
         Private oSigns As cSigns
         Private oPens As cPens
+        Private oBrushes As cBrushes
 
         Private WithEvents oPlan As cDesignPlan
         Private WithEvents oProfile As cDesignProfile
@@ -607,6 +608,7 @@ Namespace cSurvey
             oCliparts = New cCliparts(Me)
             oSigns = New cSigns(Me)
             oPens = New cPens(Me)
+            oBrushes = New cBrushes(Me)
 
             oPlan = New cDesignPlan(Me)
             oProfile = New cDesignProfile(Me)
@@ -1285,7 +1287,7 @@ Namespace cSurvey
                         oSigns = New cSigns(Me)
                     End Try
 
-                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart111"), 0)
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart124"), 0)
                     Try
                         If ChildElementExist(oXmlRoot, "pens") Then
                             oPens = New cPens(Me, oFile, oXmlRoot.Item("pens"))
@@ -1294,6 +1296,17 @@ Namespace cSurvey
                         End If
                     Catch
                         oPens = New cPens(Me)
+                    End Try
+
+                    Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart125"), 0)
+                    Try
+                        If ChildElementExist(oXmlRoot, "brushes") Then
+                            oBrushes = New cBrushes(Me, oFile, oXmlRoot.Item("brushes"))
+                        Else
+                            oBrushes = New cBrushes(Me)
+                        End If
+                    Catch
+                        oBrushes = New cBrushes(Me)
                     End Try
 
                     Call RaiseOnProgressEvent("load", OnProgressEventArgs.ProgressActionEnum.Progress, GetLocalizedString("csurvey.textpart112"), 0)
@@ -1560,6 +1573,12 @@ Namespace cSurvey
             End Get
         End Property
 
+        Public ReadOnly Property Brushes As cBrushes
+            Get
+                Return oBrushes
+            End Get
+        End Property
+
         Public ReadOnly Property Pens As cPens
             Get
                 Return oPens
@@ -1716,6 +1735,10 @@ Namespace cSurvey
             If Not bSilent Then Call RaiseOnProgressEvent("save.pens", OnProgressEventArgs.ProgressActionEnum.Begin, sTextPart1, 1, OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
             Call oPens.SaveTo(File, Document, oXmlRoot, Options)
             If Not bSilent Then Call RaiseOnProgressEvent("save.pens", OnProgressEventArgs.ProgressActionEnum.End, "", 0)
+
+            If Not bSilent Then Call RaiseOnProgressEvent("save.brushes", OnProgressEventArgs.ProgressActionEnum.Begin, sTextPart1, 1, OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
+            Call oBrushes.SaveTo(File, Document, oXmlRoot, Options)
+            If Not bSilent Then Call RaiseOnProgressEvent("save.brushes", OnProgressEventArgs.ProgressActionEnum.End, "", 0)
 
             If Not bSilent Then Call RaiseOnProgressEvent("save.design.plan", OnProgressEventArgs.ProgressActionEnum.Begin, sTextPart1, 0, OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
             Call oPlan.SaveTo(File, Document, oXmlRoot, Options)

@@ -948,7 +948,7 @@ Namespace cSurvey.Design
             Call Caches.Invalidate()
         End Sub
 
-        Private Sub oBrush_OnChanged(ByVal Sender As cBrush) Handles oBrush.OnChanged
+        Private Sub oBrush_OnChanged(ByVal Sender As Object, e As EventArgs) Handles oBrush.OnChanged
             Call pInvalidate()
         End Sub
 

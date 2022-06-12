@@ -22,6 +22,7 @@ Partial Class cItemBrushStylePropertyControl
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(cItemBrushStylePropertyControl))
         Me.cboPropBrushPattern = New cSurveyPC.cBrushStyleDropDown()
         Me.cmdPropBrushReseed = New DevExpress.XtraEditors.SimpleButton()
@@ -51,18 +52,31 @@ Partial Class cItemBrushStylePropertyControl
         Me.lblBrush = New DevExpress.XtraEditors.LabelControl()
         Me.cmdPropBrushBrowseClipart = New DevExpress.XtraEditors.SimpleButton()
         Me.picPropBrushClipartImage = New DevExpress.XtraEditors.PictureEdit()
+        Me.mnuSaveAs = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.btnPropSaveToFile = New DevExpress.XtraBars.BarButtonItem()
+        Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
+        Me.BarManager = New DevExpress.XtraBars.BarManager(Me.components)
+        Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
+        Me.btnPropSaveToSurvey = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnPropExport = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnPropImport = New DevExpress.XtraBars.BarButtonItem()
+        Me.cmdPropSave = New DevExpress.XtraEditors.DropDownButton()
         CType(Me.txtPropBrushClipartAngle, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropBrushClipartZoomFactor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropBrushClipartDensity, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropBrushColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropBrushAlternativeBrushColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picPropBrushClipartImage.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.mnuSaveAs, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BarManager, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cboPropBrushPattern
         '
         resources.ApplyResources(Me.cboPropBrushPattern, "cboPropBrushPattern")
-        Me.cboPropBrushPattern.EditValue = cSurveyPC.cSurvey.Design.cBrush.BrushTypeEnum.BigDebrits
+        Me.cboPropBrushPattern.EditValue = "BigDebrits"
         Me.cboPropBrushPattern.Name = "cboPropBrushPattern"
         '
         'cmdPropBrushReseed
@@ -246,6 +260,85 @@ Partial Class cItemBrushStylePropertyControl
         Me.picPropBrushClipartImage.Properties.ShowEditMenuItem = DevExpress.Utils.DefaultBoolean.[False]
         Me.picPropBrushClipartImage.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom
         '
+        'mnuSaveAs
+        '
+        Me.mnuSaveAs.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnPropSaveToFile), New DevExpress.XtraBars.LinkPersistInfo(Me.btnPropSaveToSurvey), New DevExpress.XtraBars.LinkPersistInfo(Me.btnPropImport, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnPropExport)})
+        Me.mnuSaveAs.Manager = Me.BarManager
+        Me.mnuSaveAs.Name = "mnuSaveAs"
+        '
+        'btnPropSaveToFile
+        '
+        resources.ApplyResources(Me.btnPropSaveToFile, "btnPropSaveToFile")
+        Me.btnPropSaveToFile.Id = 23
+        Me.btnPropSaveToFile.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.saveas
+        Me.btnPropSaveToFile.Name = "btnPropSaveToFile"
+        '
+        'barDockControlTop
+        '
+        Me.barDockControlTop.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlTop, "barDockControlTop")
+        Me.barDockControlTop.Manager = Me.BarManager
+        '
+        'BarManager
+        '
+        Me.BarManager.AllowCustomization = False
+        Me.BarManager.AllowQuickCustomization = False
+        Me.BarManager.DockControls.Add(Me.barDockControlTop)
+        Me.BarManager.DockControls.Add(Me.barDockControlBottom)
+        Me.BarManager.DockControls.Add(Me.barDockControlLeft)
+        Me.BarManager.DockControls.Add(Me.barDockControlRight)
+        Me.BarManager.Form = Me
+        Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnPropSaveToFile, Me.btnPropSaveToSurvey, Me.btnPropExport, Me.btnPropImport})
+        Me.BarManager.MaxItemId = 27
+        '
+        'barDockControlBottom
+        '
+        Me.barDockControlBottom.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlBottom, "barDockControlBottom")
+        Me.barDockControlBottom.Manager = Me.BarManager
+        '
+        'barDockControlLeft
+        '
+        Me.barDockControlLeft.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlLeft, "barDockControlLeft")
+        Me.barDockControlLeft.Manager = Me.BarManager
+        '
+        'barDockControlRight
+        '
+        Me.barDockControlRight.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlRight, "barDockControlRight")
+        Me.barDockControlRight.Manager = Me.BarManager
+        '
+        'btnPropSaveToSurvey
+        '
+        resources.ApplyResources(Me.btnPropSaveToSurvey, "btnPropSaveToSurvey")
+        Me.btnPropSaveToSurvey.Id = 24
+        Me.btnPropSaveToSurvey.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.savedialog
+        Me.btnPropSaveToSurvey.Name = "btnPropSaveToSurvey"
+        '
+        'btnPropExport
+        '
+        resources.ApplyResources(Me.btnPropExport, "btnPropExport")
+        Me.btnPropExport.Id = 25
+        Me.btnPropExport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.exportfile
+        Me.btnPropExport.Name = "btnPropExport"
+        '
+        'btnPropImport
+        '
+        resources.ApplyResources(Me.btnPropImport, "btnPropImport")
+        Me.btnPropImport.Id = 26
+        Me.btnPropImport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.import
+        Me.btnPropImport.Name = "btnPropImport"
+        '
+        'cmdPropSave
+        '
+        resources.ApplyResources(Me.cmdPropSave, "cmdPropSave")
+        Me.cmdPropSave.DropDownControl = Me.mnuSaveAs
+        Me.cmdPropSave.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdPropSave.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.savedialog
+        Me.cmdPropSave.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.cmdPropSave.Name = "cmdPropSave"
+        '
         'cItemBrushStylePropertyControl
         '
         resources.ApplyResources(Me, "$this")
@@ -278,6 +371,11 @@ Partial Class cItemBrushStylePropertyControl
         Me.Controls.Add(Me.cboPropBrushPatternType)
         Me.Controls.Add(Me.cboPropBrushClipartAngleMode)
         Me.Controls.Add(Me.lblPropBrushPatternType)
+        Me.Controls.Add(Me.cmdPropSave)
+        Me.Controls.Add(Me.barDockControlLeft)
+        Me.Controls.Add(Me.barDockControlRight)
+        Me.Controls.Add(Me.barDockControlBottom)
+        Me.Controls.Add(Me.barDockControlTop)
         Me.Name = "cItemBrushStylePropertyControl"
         CType(Me.txtPropBrushClipartAngle, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPropBrushClipartZoomFactor, System.ComponentModel.ISupportInitialize).EndInit()
@@ -285,6 +383,8 @@ Partial Class cItemBrushStylePropertyControl
         CType(Me.txtPropBrushColor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPropBrushAlternativeBrushColor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picPropBrushClipartImage.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.mnuSaveAs, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BarManager, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -317,4 +417,15 @@ Partial Class cItemBrushStylePropertyControl
     Friend WithEvents lblBrush As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cmdPropBrushBrowseClipart As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents picPropBrushClipartImage As DevExpress.XtraEditors.PictureEdit
+    Friend WithEvents mnuSaveAs As DevExpress.XtraBars.PopupMenu
+    Friend WithEvents btnPropSaveToFile As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnPropSaveToSurvey As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnPropImport As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnPropExport As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarManager As DevExpress.XtraBars.BarManager
+    Friend WithEvents barDockControlTop As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlBottom As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlLeft As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlRight As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents cmdPropSave As DevExpress.XtraEditors.DropDownButton
 End Class

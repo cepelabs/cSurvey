@@ -121,7 +121,7 @@ Namespace cSurvey.Design
                 End Using
                 Return oImage
             Catch ex As Exception
-                Debug.Print(ex.Message)
+                Return Nothing
             End Try
         End Function
 
@@ -256,24 +256,6 @@ Namespace cSurvey.Design
             Get
                 Return iType
             End Get
-            'Set(ByVal value As cPen.PenTypeEnum)
-            '    If value = cPen.PenTypeEnum.User Then
-            '        Throw New Exception("User pen type cannot be set directly")
-            '    Else
-            '        If iType <> value Then
-            '            If iType <> cPen.PenTypeEnum.Custom AndAlso value = cPen.PenTypeEnum.Custom Then
-            '                If iType = cPen.PenTypeEnum.User Then
-            '                    Call CopyFrom(oSurvey.Pens.FromID(sID))
-            '                Else
-            '                    Call CopyFrom(oSurvey.Pens.FromType(iType))
-            '                End If
-            '            Else
-            '                Call CopyFrom(oSurvey.Pens.FromType(value))
-            '            End If
-            '            iType = value
-            '        End If
-            '    End If
-            'End Set
         End Property
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal Type As cPen.PenTypeEnum)
@@ -954,7 +936,7 @@ Namespace cSurvey.Design
             Inherits EventArgs
             Public Transparency As Single
         End Class
-        Friend Event OnRender(sender As cPen, RenderArgs As cRenderArgs)
+        Friend Event OnRender(sender As Object, RenderArgs As cRenderArgs)
 
         Public Function GetThumbnailSVG(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal thumbWidth As Integer, ByVal thumbHeight As Integer, ByVal ForeColor As Color, ByVal Backcolor As Color) As XmlDocument
             Return oBasePen.GetThumbnailSVG(PaintOptions, Options, cItem.SelectionModeEnum.Selected, thumbWidth, thumbHeight, ForeColor, Backcolor)

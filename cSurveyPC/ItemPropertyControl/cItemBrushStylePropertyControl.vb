@@ -1,8 +1,10 @@
 ﻿Imports System.ComponentModel
 Imports System.Drawing.Drawing2D
+Imports System.Xml
 Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Design.Items
+Imports DevExpress.XtraBars
 Imports DevExpress.XtraTreeList
 
 Friend Class cItemBrushStylePropertyControl
@@ -26,12 +28,8 @@ Friend Class cItemBrushStylePropertyControl
             oSurvey = Item.Survey
             Call cboPropBrushPattern.Rebind(oSurvey)
         End If
-        'If oPaintOptions IsNot PaintOptions Then
-        '    oPaintOptions = PaintOptions
-        '    Call cboPropBrushPattern.Rebind(oPaintOptions)
-        'End If
 
-        cboPropBrushPattern.EditValue = Item.Brush.Type
+        cboPropBrushPattern.EditValue = Item.Brush.ID
 
         cboPropBrushHatch.SelectedIndex = Item.Brush.HatchType
         txtPropBrushColor.Color = Item.Brush.Color
@@ -76,7 +74,7 @@ Friend Class cItemBrushStylePropertyControl
                 lblPropBrushAlternativeBrushColor.Visible = True
                 txtPropBrushAlternativeBrushColor.Visible = True
                 txtPropBrushColor.Visible = False
-                lblpropbrushcolor.Visible = False
+                lblPropBrushColor.Visible = False
                 lblPropBrushClipartPosition.Visible = False
                 cboPropBrushClipartPosition.Visible = False
 
@@ -148,7 +146,7 @@ Friend Class cItemBrushStylePropertyControl
                 lblPropBrushAlternativeBrushColor.Visible = True
                 txtPropBrushAlternativeBrushColor.Visible = True
                 txtPropBrushColor.Visible = True
-                lblpropbrushcolor.Visible = True
+                lblPropBrushColor.Visible = True
                 lblPropBrushClipartPosition.Visible = True
                 cboPropBrushClipartPosition.Visible = True
 
@@ -190,7 +188,7 @@ Friend Class cItemBrushStylePropertyControl
                 lblPropBrushAlternativeBrushColor.Visible = False
                 txtPropBrushAlternativeBrushColor.Visible = False
                 txtPropBrushColor.Visible = True
-                lblpropbrushcolor.Visible = True
+                lblPropBrushColor.Visible = True
                 lblPropBrushClipartPosition.Visible = False
                 cboPropBrushClipartPosition.Visible = False
             Case Else
@@ -216,7 +214,7 @@ Friend Class cItemBrushStylePropertyControl
                 lblPropBrushAlternativeBrushColor.Visible = False
                 txtPropBrushAlternativeBrushColor.Visible = False
                 txtPropBrushColor.Visible = False
-                lblpropbrushcolor.Visible = False
+                lblPropBrushColor.Visible = False
                 lblPropBrushClipartPosition.Visible = False
                 cboPropBrushClipartPosition.Visible = False
 
@@ -354,7 +352,7 @@ Friend Class cItemBrushStylePropertyControl
 
     Private Sub cboPropBrushPattern_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropBrushPattern.EditValueChanged
         If Not DisabledObjectProperty() Then
-            Item.Brush.Type = cboPropBrushPattern.EditValue
+            Item.Brush.ID = cboPropBrushPattern.EditValue
             Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("BrushPattern")
             Call MyBase.MapInvalidate()
@@ -362,6 +360,7 @@ Friend Class cItemBrushStylePropertyControl
 
         If Item IsNot Nothing Then
             If Item.Brush.Type = cBrush.BrushTypeEnum.Custom Then
+                cmdPropSave.Visible = True
                 cmdPropBrushBrowseClipart.Enabled = True
                 cmdPropBrushReseed.Enabled = True
                 txtPropBrushClipartDensity.Enabled = True
@@ -383,14 +382,11 @@ Friend Class cItemBrushStylePropertyControl
 
                 Height = 238 * CurrentAutoScaleDimensions.Height / 96.0F
             Else
+                cmdPropSave.Visible = False
                 cmdPropBrushReseed.Visible = Item.Brush.HatchType = cBrush.HatchTypeEnum.Clipart
                 Height = 45 * CurrentAutoScaleDimensions.Height / 96.0F
             End If
         End If
-    End Sub
-
-    Private Sub cboPropBrushPattern_Load(sender As Object, e As EventArgs) Handles cboPropBrushPattern.Load
-
     End Sub
 
     Private Sub cboPropBrushClipartCrop_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropBrushClipartCrop.SelectedIndexChanged
@@ -400,5 +396,81 @@ Friend Class cItemBrushStylePropertyControl
             Call MyBase.PropertyChanged("BrushClipartCrop")
             Call MyBase.MapInvalidate()
         End If
+    End Sub
+    Private Sub pSaveBrush(Filename As String, Brush As cBrush)
+        Using oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, Filename, cFile.FileOptionsEnum.EmbedResource)
+            Dim oXML As XmlDocument = oFile.Document
+            Dim oXMLRoot As XmlElement = oXML.CreateElement("cbrush")
+            Call Brush.GetBaseBrush.SaveTo(oFile, oXML, oXMLRoot)
+            oXML.AppendChild(oXMLRoot)
+            oFile.Save()
+        End Using
+    End Sub
+    Private Sub btnPropSaveToSurvey_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnPropSaveToSurvey.ItemClick
+        Call pSaveToSurvey()
+    End Sub
+
+    Private Sub btnPropSaveToFile_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnPropSaveToFile.ItemClick
+        Call pSaveToFile()
+    End Sub
+
+    Private Sub pSaveToSurvey()
+        Dim oBrush As cBrush = Item.Brush
+        Dim sHash As String = cBrush.CalculateHash(oBrush)
+        If oSurvey.Pens.Contains(sHash) Then
+            Call cSurvey.UIHelpers.Dialogs.Msgbox("ALREADY EXIT")
+        Else
+            Dim sName As String = cSurvey.UIHelpers.Dialogs.TextInputBox(Me, GetLocalizedString("main.savepentext"), GetLocalizedString("main.savepentitle"), "")
+            If sName IsNot Nothing Then
+                Dim bOk As Boolean = True
+                If oSurvey.Brushes.Contains(oBrush) Then
+                    bOk = cSurvey.UIHelpers.Dialogs.Msgbox("OVERWRITE?", MsgBoxStyle.YesNo Or MsgBoxStyle.Critical, GetLocalizedString("main.savepentitle")) = MsgBoxResult.Yes
+                End If
+                If bOk Then
+                    Dim oNewBrush As cCustomBrush = oSurvey.Brushes.Add(oBrush, sName)
+                    cboPropBrushPattern.Rebind(oSurvey)
+                    cboPropBrushPattern.EditValue = oNewBrush.ID
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub pSaveToFile()
+        Dim oBrush As cBrush = Item.Brush
+        Dim sName As String = cSurvey.UIHelpers.Dialogs.TextInputBox(Me, GetLocalizedString("main.savebrushtext"), GetLocalizedString("main.savebrushtitle"), "")
+        If sName IsNot Nothing Then
+            Dim bOk As Boolean = True
+            Dim sFilename As String = IO.Path.Combine(modMain.GetUserApplicationPath, sName & ".cbrush")
+            If My.Computer.FileSystem.FileExists(sFilename) Then
+                bOk = cSurvey.UIHelpers.Dialogs.Msgbox("OVERWRITE?", MsgBoxStyle.YesNo Or MsgBoxStyle.Critical, GetLocalizedString("main.savebrushtitle")) = MsgBoxResult.Yes
+            End If
+            If bOk Then
+                Call pSaveBrush(sFilename, oBrush)
+                cboPropBrushPattern.Rebind(oSurvey)
+                cboPropBrushPattern.EditValue = oBrush.ID
+            End If
+        End If
+        'End If
+    End Sub
+
+    Private Sub pExportToFile()
+        Dim oBrush As cBrush = Item.Brush
+        'Dim sHash As String = cPen.CalculateHash(oPen)
+        'If oSurvey.Pens.Contains(sHash) Then
+        '    Call cSurvey.UIHelpers.Dialogs.Msgbox("ALREADY EXIT")
+        'Else
+        Dim sName As String = cSurvey.UIHelpers.Dialogs.TextInputBox(Me, GetLocalizedString("main.savebrushtext"), GetLocalizedString("main.savebrushtitle"), "")
+        If sName IsNot Nothing Then
+            Dim bOk As Boolean = True
+            Dim oResult As cSurvey.UIHelpers.Dialogs.cSaveFileDialogResult = cSurvey.UIHelpers.Dialogs.SaveFileDialog(Nothing, sName, GetLocalizedString("main.filetypeBRUSHX") & " (*.BRUSHX)|*.BRUSHX", 1, GetLocalizedString("main.exportbrushdialog"))
+            If oResult.DialogResult = DialogResult.OK Then
+                Dim sFilename As String = oResult.Filename
+                Call pSaveBrush(sFilename, oBrush)
+            End If
+        End If
+    End Sub
+
+    Private Sub btnPropExport_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnPropExport.ItemClick
+        Call pExportToFile()
     End Sub
 End Class

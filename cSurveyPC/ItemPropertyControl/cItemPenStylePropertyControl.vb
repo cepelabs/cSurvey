@@ -96,13 +96,13 @@ Friend Class cItemPenStylePropertyControl
                 oPen = oPoint.Pen
             End If
             If oPen.Type = cPen.PenTypeEnum.Custom Then
-                cmdPropPenSave.Visible = True
+                cmdPropSave.Visible = True
                 txtPropPenWidth.Value = oPen.Width
                 txtPropPenColor.EditValue = oPen.Color
                 cboPropPenStyle.SelectedIndex = pPenStyleToSelectedIndex(cboPropPenStyle, oPen.Style)
                 cboPropPenDecoration.SelectedIndex = oPen.DecorationStyle
                 cboPropPenDecorationAlignment.SelectedIndex = oPen.DecorationAlignment
-                cboproppendecorationposition.selectedindex = oPen.DecorationPosition
+                cboPropPenDecorationPosition.SelectedIndex = oPen.DecorationPosition
                 If oPen.Clipart Is Nothing OrElse oPen.Clipart.IsEmpty Then
                     picPropPenClipartImage.SvgImage = Nothing
                 Else
@@ -113,7 +113,7 @@ Friend Class cItemPenStylePropertyControl
 
                 cboPropPenClipartPenMode.SelectedIndex = oPen.ClipartPenMode
             Else
-                cmdPropPenSave.Visible = False
+                cmdPropSave.Visible = False
             End If
             Call pRefreshHeight()
         End If
@@ -167,15 +167,15 @@ Friend Class cItemPenStylePropertyControl
         End Using
     End Sub
 
-    Private Sub cmdPropPenSave_Click(sender As Object, e As EventArgs) Handles cmdPropPenSave.Click
+    Private Sub cmdPropPenSave_Click(sender As Object, e As EventArgs) Handles cmdPropSave.Click
         Call pSaveToSurvey()
     End Sub
 
-    Private Sub btnPropPenSaveToSurvey_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnPropPenSaveToSurvey.ItemClick
+    Private Sub btnPropSaveToSurvey_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnPropSaveToSurvey.ItemClick
         Call pSaveToSurvey()
     End Sub
 
-    Private Sub btnPropPenSaveToFile_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnPropPenSaveToFile.ItemClick
+    Private Sub btnPropSaveToFile_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnPropSaveToFile.ItemClick
         Call pSaveToFile()
     End Sub
 
@@ -235,7 +235,7 @@ Friend Class cItemPenStylePropertyControl
         End If
     End Sub
 
-    Private Sub btnPropPenExport_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnPropPenExport.ItemClick
+    Private Sub btnPropExport_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnPropExport.ItemClick
         Call pExportToFile()
     End Sub
 
@@ -511,4 +511,5 @@ Friend Class cItemPenStylePropertyControl
             Call MyBase.MapInvalidate()
         End If
     End Sub
+
 End Class

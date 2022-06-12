@@ -329,7 +329,7 @@ Namespace cSurvey.Design.Items
                         Using oSF As StringFormat = New StringFormat
                             oSF.Alignment = StringAlignment.Center
                             Dim oBorderPen As cCustomPen = oSurvey.Pens.GenericPen
-                            Dim oBorderBrush As cBrush = PaintOptions.PaintObjects.Brushes.SignSolid
+                            Dim oBorderBrush As cCustomBrush = oSurvey.Brushes.SignSolid
 
                             Dim iDetailedSteps As Integer = iLength / (iLength / iSteps)
                             Dim sScaleStepLeftX As Single = 0

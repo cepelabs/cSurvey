@@ -123,10 +123,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cboPropBrushPattern.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 6</value>
+    <value>81, 4</value>
   </data>
   <data name="cboPropBrushPattern.Size" type="System.Drawing.Size, System.Drawing">
-    <value>358, 34</value>
+    <value>341, 34</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cboPropBrushPattern.TabIndex" type="System.Int32, mscorlib">
@@ -151,7 +151,7 @@
     <value>NoControl</value>
   </data>
   <data name="cmdPropBrushReseed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>474, 4</value>
+    <value>427, 4</value>
   </data>
   <data name="cmdPropBrushReseed.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
@@ -181,7 +181,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPropBrushClipartPosition.Location" type="System.Drawing.Point, System.Drawing">
-    <value>187, 133</value>
+    <value>261, 133</value>
   </data>
   <data name="lblPropBrushClipartPosition.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 13</value>
@@ -211,7 +211,7 @@
     <value>Fixed</value>
   </data>
   <data name="cboPropBrushClipartPosition.Location" type="System.Drawing.Point, System.Drawing">
-    <value>276, 130</value>
+    <value>350, 130</value>
   </data>
   <data name="cboPropBrushClipartPosition.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 21</value>
@@ -235,7 +235,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPropBrushClipartImage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 77</value>
+    <value>81, 77</value>
   </data>
   <data name="lblPropBrushClipartImage.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 13</value>
@@ -262,7 +262,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPropBrushAlternativeBrushColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>187, 216</value>
+    <value>261, 216</value>
   </data>
   <data name="lblPropBrushAlternativeBrushColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 13</value>
@@ -289,7 +289,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPropBrushColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>187, 49</value>
+    <value>261, 49</value>
   </data>
   <data name="lblPropBrushColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 13</value>
@@ -319,7 +319,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPropBrushClipartAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>259, 186</value>
+    <value>333, 186</value>
   </data>
   <data name="lblPropBrushClipartAngle.Size" type="System.Drawing.Size, System.Drawing">
     <value>9, 13</value>
@@ -346,7 +346,7 @@
     <value>False</value>
   </data>
   <data name="txtPropBrushClipartAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>276, 184</value>
+    <value>350, 184</value>
   </data>
   <data name="txtPropBrushClipartAngle.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 21</value>
@@ -373,7 +373,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPropBrushClipartAngleMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 186</value>
+    <value>154, 186</value>
   </data>
   <data name="lblPropBrushClipartAngleMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>31, 13</value>
@@ -403,7 +403,7 @@
     <value>Fixed</value>
   </data>
   <data name="cboPropBrushClipartAngleMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 183</value>
+    <value>204, 183</value>
   </data>
   <data name="cboPropBrushClipartAngleMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>123, 21</value>
@@ -427,7 +427,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPattern.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 49</value>
+    <value>81, 49</value>
   </data>
   <data name="lblPattern.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 13</value>
@@ -466,7 +466,7 @@
     <value>Texture</value>
   </data>
   <data name="cboPropBrushHatch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 46</value>
+    <value>154, 46</value>
   </data>
   <data name="cboPropBrushHatch.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 21</value>
@@ -490,7 +490,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPropBrushClipartZoomFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>187, 105</value>
+    <value>261, 105</value>
   </data>
   <data name="lblPropBrushClipartZoomFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 13</value>
@@ -514,7 +514,7 @@
     <value>14</value>
   </data>
   <data name="txtPropBrushClipartZoomFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>276, 103</value>
+    <value>350, 103</value>
   </data>
   <data name="txtPropBrushClipartZoomFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 21</value>
@@ -538,7 +538,7 @@
     <value>15</value>
   </data>
   <data name="txtPropBrushClipartDensity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>276, 76</value>
+    <value>350, 76</value>
   </data>
   <data name="txtPropBrushClipartDensity.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 21</value>
@@ -565,7 +565,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPropBrushClipartDensity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>187, 77</value>
+    <value>261, 77</value>
   </data>
   <data name="lblPropBrushClipartDensity.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 13</value>
@@ -592,7 +592,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPropBrushPatternType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 160</value>
+    <value>154, 160</value>
   </data>
   <data name="lblPropBrushPatternType.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 13</value>
@@ -622,7 +622,7 @@
     <value>Crossed lines</value>
   </data>
   <data name="cboPropBrushPatternType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 157</value>
+    <value>204, 157</value>
   </data>
   <data name="cboPropBrushPatternType.Size" type="System.Drawing.Size, System.Drawing">
     <value>193, 21</value>
@@ -652,7 +652,7 @@
     <value>Cuts out individual objects</value>
   </data>
   <data name="cboPropBrushClipartCrop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 157</value>
+    <value>204, 157</value>
   </data>
   <data name="cboPropBrushClipartCrop.Size" type="System.Drawing.Size, System.Drawing">
     <value>143, 21</value>
@@ -676,7 +676,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPropBrushClipartCrop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>81, 160</value>
+    <value>155, 160</value>
   </data>
   <data name="lblPropBrushClipartCrop.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 13</value>
@@ -703,7 +703,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPropBrushPatternPen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 77</value>
+    <value>81, 77</value>
   </data>
   <data name="lblPropBrushPatternPen.Size" type="System.Drawing.Size, System.Drawing">
     <value>28, 13</value>
@@ -742,7 +742,7 @@
     <value>Dash dot dot</value>
   </data>
   <data name="cboPropBrushPatternPen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 73</value>
+    <value>154, 73</value>
   </data>
   <data name="cboPropBrushPatternPen.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 21</value>
@@ -766,7 +766,7 @@
     <value />
   </data>
   <data name="txtPropBrushColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>276, 49</value>
+    <value>350, 49</value>
   </data>
   <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="txtPropBrushColor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
@@ -794,7 +794,7 @@
     <value />
   </data>
   <data name="txtPropBrushAlternativeBrushColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>276, 213</value>
+    <value>350, 213</value>
   </data>
   <data name="txtPropBrushAlternativeBrushColor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
     <value>Combo</value>
@@ -848,7 +848,7 @@
     <value>NoControl</value>
   </data>
   <data name="cmdPropBrushBrowseClipart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 73</value>
+    <value>224, 73</value>
   </data>
   <data name="cmdPropBrushBrowseClipart.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
@@ -872,7 +872,7 @@
     <value>0</value>
   </data>
   <data name="picPropBrushClipartImage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 73</value>
+    <value>154, 73</value>
   </data>
   <data name="picPropBrushClipartImage.Properties.NullText" xml:space="preserve">
     <value> </value>
@@ -895,14 +895,191 @@
   <data name="&gt;&gt;picPropBrushClipartImage.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="mnuSaveAs.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>250, 17</value>
+  </metadata>
+  <data name="btnPropSaveToFile.Caption" xml:space="preserve">
+    <value>Save to local gallery...</value>
+  </data>
+  <data name="btnPropSaveToSurvey.Caption" xml:space="preserve">
+    <value>Save in this survey gallery...</value>
+  </data>
+  <data name="btnPropImport.Caption" xml:space="preserve">
+    <value>Import...</value>
+  </data>
+  <data name="btnPropExport.Caption" xml:space="preserve">
+    <value>Export...</value>
+  </data>
+  <metadata name="BarManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>365, 17</value>
+  </metadata>
+  <data name="barDockControlTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="barDockControlTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="barDockControlTop.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="barDockControlTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 0</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.Name" xml:space="preserve">
+    <value>barDockControlTop</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.ZOrder" xml:space="preserve">
+    <value>32</value>
+  </data>
+  <data name="barDockControlBottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="barDockControlBottom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 238</value>
+  </data>
+  <data name="barDockControlBottom.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="barDockControlBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 0</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Name" xml:space="preserve">
+    <value>barDockControlBottom</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.ZOrder" xml:space="preserve">
+    <value>31</value>
+  </data>
+  <data name="barDockControlLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="barDockControlLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="barDockControlLeft.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="barDockControlLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 238</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Name" xml:space="preserve">
+    <value>barDockControlLeft</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <data name="barDockControlRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="barDockControlRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>505, 0</value>
+  </data>
+  <data name="barDockControlRight.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="barDockControlRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 238</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Name" xml:space="preserve">
+    <value>barDockControlRight</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.ZOrder" xml:space="preserve">
+    <value>30</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>96, 96</value>
   </data>
+  <data name="cmdPropSave.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="cmdPropSave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>457, 4</value>
+  </data>
+  <data name="cmdPropSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 24</value>
+  </data>
+  <data name="cmdPropSave.TabIndex" type="System.Int32, mscorlib">
+    <value>243</value>
+  </data>
+  <data name="cmdPropSave.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;cmdPropSave.Name" xml:space="preserve">
+    <value>cmdPropSave</value>
+  </data>
+  <data name="&gt;&gt;cmdPropSave.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.DropDownButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdPropSave.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdPropSave.ZOrder" xml:space="preserve">
+    <value>28</value>
+  </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>505, 238</value>
+  </data>
+  <data name="&gt;&gt;mnuSaveAs.Name" xml:space="preserve">
+    <value>mnuSaveAs</value>
+  </data>
+  <data name="&gt;&gt;mnuSaveAs.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnPropSaveToFile.Name" xml:space="preserve">
+    <value>btnPropSaveToFile</value>
+  </data>
+  <data name="&gt;&gt;btnPropSaveToFile.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;BarManager.Name" xml:space="preserve">
+    <value>BarManager</value>
+  </data>
+  <data name="&gt;&gt;BarManager.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnPropSaveToSurvey.Name" xml:space="preserve">
+    <value>btnPropSaveToSurvey</value>
+  </data>
+  <data name="&gt;&gt;btnPropSaveToSurvey.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnPropExport.Name" xml:space="preserve">
+    <value>btnPropExport</value>
+  </data>
+  <data name="&gt;&gt;btnPropExport.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnPropImport.Name" xml:space="preserve">
+    <value>btnPropImport</value>
+  </data>
+  <data name="&gt;&gt;btnPropImport.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>cItemBrushStylePropertyControl</value>

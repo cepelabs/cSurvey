@@ -388,22 +388,22 @@
   <data name="&gt;&gt;txtPropPenColor.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="cmdPropPenSave.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="cmdPropSave.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <metadata name="mnuPenSaveAs.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="mnuSaveAs.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>135, 17</value>
   </metadata>
-  <data name="btnPropPenSaveToFile.Caption" xml:space="preserve">
-    <value>Save to local pen's gallery...</value>
+  <data name="btnPropSaveToFile.Caption" xml:space="preserve">
+    <value>Save to local gallery...</value>
   </data>
-  <data name="btnPropPenSaveToSurvey.Caption" xml:space="preserve">
-    <value>Save in this survey pen's gallery...</value>
+  <data name="btnPropSaveToSurvey.Caption" xml:space="preserve">
+    <value>Save in this survey gallery...</value>
   </data>
-  <data name="btnPropPenImport.Caption" xml:space="preserve">
+  <data name="btnPropImport.Caption" xml:space="preserve">
     <value>Import...</value>
   </data>
-  <data name="btnPropPenExport.Caption" xml:space="preserve">
+  <data name="btnPropExport.Caption" xml:space="preserve">
     <value>Export...</value>
   </data>
   <metadata name="BarManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -646,21 +646,6 @@
   <data name="&gt;&gt;cboPropPenDecoration.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="cmdPropPenCleanClipart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cmdPropPenCleanClipart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>255, 6</value>
-  </data>
-  <data name="cmdPropPenCleanClipart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="cmdPropPenCleanClipart.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="cmdPropPenCleanClipart.Text" xml:space="preserve">
-    <value>...</value>
-  </data>
   <data name="&gt;&gt;cmdPropPenCleanClipart.Name" xml:space="preserve">
     <value>cmdPropPenCleanClipart</value>
   </data>
@@ -672,21 +657,6 @@
   </data>
   <data name="&gt;&gt;cmdPropPenCleanClipart.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="cmdPropPenBrowseClipart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cmdPropPenBrowseClipart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>225, 6</value>
-  </data>
-  <data name="cmdPropPenBrowseClipart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="cmdPropPenBrowseClipart.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="cmdPropPenBrowseClipart.Text" xml:space="preserve">
-    <value>...</value>
   </data>
   <data name="&gt;&gt;cmdPropPenBrowseClipart.Name" xml:space="preserve">
     <value>cmdPropPenBrowseClipart</value>
@@ -700,18 +670,6 @@
   <data name="&gt;&gt;cmdPropPenBrowseClipart.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="picPropPenClipartImage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>157, 6</value>
-  </data>
-  <data name="picPropPenClipartImage.Properties.NullText" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="picPropPenClipartImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 64</value>
-  </data>
-  <data name="picPropPenClipartImage.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;picPropPenClipartImage.Name" xml:space="preserve">
     <value>picPropPenClipartImage</value>
   </data>
@@ -723,21 +681,6 @@
   </data>
   <data name="&gt;&gt;picPropPenClipartImage.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="lblPropPenClipartImage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblPropPenClipartImage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>84, 10</value>
-  </data>
-  <data name="lblPropPenClipartImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
-  </data>
-  <data name="lblPropPenClipartImage.TabIndex" type="System.Int32, mscorlib">
-    <value>239</value>
-  </data>
-  <data name="lblPropPenClipartImage.Text" xml:space="preserve">
-    <value>Clipart:</value>
   </data>
   <data name="&gt;&gt;lblPropPenClipartImage.Name" xml:space="preserve">
     <value>lblPropPenClipartImage</value>
@@ -1195,34 +1138,34 @@
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>505, 373</value>
   </data>
-  <data name="&gt;&gt;mnuPenSaveAs.Name" xml:space="preserve">
-    <value>mnuPenSaveAs</value>
+  <data name="&gt;&gt;mnuSaveAs.Name" xml:space="preserve">
+    <value>mnuSaveAs</value>
   </data>
-  <data name="&gt;&gt;mnuPenSaveAs.Type" xml:space="preserve">
+  <data name="&gt;&gt;mnuSaveAs.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;btnPropPenSaveToFile.Name" xml:space="preserve">
-    <value>btnPropPenSaveToFile</value>
+  <data name="&gt;&gt;btnPropSaveToFile.Name" xml:space="preserve">
+    <value>btnPropSaveToFile</value>
   </data>
-  <data name="&gt;&gt;btnPropPenSaveToFile.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnPropSaveToFile.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;btnPropPenSaveToSurvey.Name" xml:space="preserve">
-    <value>btnPropPenSaveToSurvey</value>
+  <data name="&gt;&gt;btnPropSaveToSurvey.Name" xml:space="preserve">
+    <value>btnPropSaveToSurvey</value>
   </data>
-  <data name="&gt;&gt;btnPropPenSaveToSurvey.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnPropSaveToSurvey.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;btnPropPenImport.Name" xml:space="preserve">
-    <value>btnPropPenImport</value>
+  <data name="&gt;&gt;btnPropImport.Name" xml:space="preserve">
+    <value>btnPropImport</value>
   </data>
-  <data name="&gt;&gt;btnPropPenImport.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnPropImport.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;btnPropPenExport.Name" xml:space="preserve">
-    <value>btnPropPenExport</value>
+  <data name="&gt;&gt;btnPropExport.Name" xml:space="preserve">
+    <value>btnPropExport</value>
   </data>
-  <data name="&gt;&gt;btnPropPenExport.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnPropExport.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;BarManager.Name" xml:space="preserve">
@@ -1237,28 +1180,133 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>cSurveyPC.cItemPropertyControl, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="cmdPropPenSave.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="cmdPropSave.Location" type="System.Drawing.Point, System.Drawing">
     <value>457, 5</value>
   </data>
-  <data name="cmdPropPenSave.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="cmdPropSave.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 24</value>
   </data>
-  <data name="cmdPropPenSave.TabIndex" type="System.Int32, mscorlib">
+  <data name="cmdPropSave.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="cmdPropPenSave.Visible" type="System.Boolean, mscorlib">
+  <data name="cmdPropSave.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;cmdPropPenSave.Name" xml:space="preserve">
-    <value>cmdPropPenSave</value>
+  <data name="&gt;&gt;cmdPropSave.Name" xml:space="preserve">
+    <value>cmdPropSave</value>
   </data>
-  <data name="&gt;&gt;cmdPropPenSave.Type" xml:space="preserve">
+  <data name="&gt;&gt;cmdPropSave.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.DropDownButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;cmdPropPenSave.Parent" xml:space="preserve">
+  <data name="&gt;&gt;cmdPropSave.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;cmdPropPenSave.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;cmdPropSave.ZOrder" xml:space="preserve">
     <value>12</value>
+  </data>
+  <data name="cmdPropPenBrowseClipart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdPropPenBrowseClipart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>225, 6</value>
+  </data>
+  <data name="cmdPropPenBrowseClipart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdPropPenBrowseClipart.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="cmdPropPenBrowseClipart.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPenBrowseClipart.Name" xml:space="preserve">
+    <value>cmdPropPenBrowseClipart</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPenBrowseClipart.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPenBrowseClipart.Parent" xml:space="preserve">
+    <value>pnlPenClipart</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPenBrowseClipart.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="picPropPenClipartImage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>157, 6</value>
+  </data>
+  <data name="picPropPenClipartImage.Properties.NullText" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="picPropPenClipartImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 64</value>
+  </data>
+  <data name="picPropPenClipartImage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;picPropPenClipartImage.Name" xml:space="preserve">
+    <value>picPropPenClipartImage</value>
+  </data>
+  <data name="&gt;&gt;picPropPenClipartImage.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PictureEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;picPropPenClipartImage.Parent" xml:space="preserve">
+    <value>pnlPenClipart</value>
+  </data>
+  <data name="&gt;&gt;picPropPenClipartImage.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblPropPenClipartImage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropPenClipartImage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>84, 10</value>
+  </data>
+  <data name="lblPropPenClipartImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 13</value>
+  </data>
+  <data name="lblPropPenClipartImage.TabIndex" type="System.Int32, mscorlib">
+    <value>239</value>
+  </data>
+  <data name="lblPropPenClipartImage.Text" xml:space="preserve">
+    <value>Clipart:</value>
+  </data>
+  <data name="&gt;&gt;lblPropPenClipartImage.Name" xml:space="preserve">
+    <value>lblPropPenClipartImage</value>
+  </data>
+  <data name="&gt;&gt;lblPropPenClipartImage.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblPropPenClipartImage.Parent" xml:space="preserve">
+    <value>pnlPenClipart</value>
+  </data>
+  <data name="&gt;&gt;lblPropPenClipartImage.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cmdPropPenCleanClipart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdPropPenCleanClipart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>255, 6</value>
+  </data>
+  <data name="cmdPropPenCleanClipart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdPropPenCleanClipart.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="cmdPropPenCleanClipart.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPenCleanClipart.Name" xml:space="preserve">
+    <value>cmdPropPenCleanClipart</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPenCleanClipart.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPenCleanClipart.Parent" xml:space="preserve">
+    <value>pnlPenClipart</value>
+  </data>
+  <data name="&gt;&gt;cmdPropPenCleanClipart.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
 </root>

@@ -14,42 +14,30 @@ Namespace cSurvey.Design
         Private WithEvents oSurvey As cSurvey
 
         Private oPenNone As cCustomPen
-
         Private oPenGenericPen As cCustomPen
         Private oPenPresumedGenericPen As cCustomPen
-
         Private oPenCavePen As cCustomPen
         Private oPenPresumedCavePen As cCustomPen
         Private oPenTooNarrowCavePen As cCustomPen
         Private oPenUnderlyingCavePen As cCustomPen
-
         Private oPenPen As cCustomPen
         Private oPenPresumedPen As cCustomPen
-
         Private oPenTightPen As cCustomPen
         Private oPenPresumedTightPen As cCustomPen
-
         Private oPenGradientUpPen As cCustomPen
         Private oPenPresumedGradientUpPen As cCustomPen
-
         Private oPenGradientDownPen As cCustomPen
         Private oPenPresumedGradientDownPen As cCustomPen
-
         Private oPenCliffUpPen As cCustomPen
         Private oPenPresumedCliffUpPen As cCustomPen
-
         Private oPenCliffDownPen As cCustomPen
         Private oPenPresumedCliffDownPen As cCustomPen
-
         Private oPenOverhangUpPen As cCustomPen
         Private oPenPresumedOverhangUpPen As cCustomPen
-
         Private oPenOverhangDownPen As cCustomPen
         Private oPenPresumedOverhangDownPen As cCustomPen
-
         Private oPenMeanderPen As cCustomPen
         Private oPenPresumedMeanderPen As cCustomPen
-
         Private oPenIcePen As cCustomPen
         Private oPenPresumedIcePen As cCustomPen
 
@@ -490,41 +478,7 @@ Namespace cSurvey.Design
         End Function
 
         Public Sub CleanUp()
-            'Call oSurvey.RaiseOnProgressEvent("cleanup", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, modMain.GetLocalizedString("cliparts.cleanup"), 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageCalculate Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow)
-            'Dim oUsedClipartIDs As List(Of String) = New List(Of String)
-            'Dim oDeletedClipartIDs As List(Of String) = New List(Of String)
-            'Dim oDesignItems As List(Of cItem) = oSurvey.GetAllDesignItems
-            'Dim iIndex As Integer = 0
-            'Dim iCount As Integer = oDesignItems.Count
-            'For Each oItem As cItem In oDesignItems
-            '    iIndex += 1
-            '    If (iIndex Mod 10) = 0 Then Call oSurvey.RaiseOnProgressEvent("cleanup", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("cliparts.cleanup1"), iIndex / iCount)
-            '    If oItem.Type = cIItem.cItemTypeEnum.Clipart Then
-            '        Dim oItemClipart As Items.cItemClipart = oItem
-            '        Call oUsedClipartIDs.Add(oItemClipart.Clipart.ID)
-            '    End If
-            '    If oItem.Type = cIItem.cItemTypeEnum.Sign Then
-            '        Dim oItemSign As Items.cItemSign = oItem
-            '        Call oUsedClipartIDs.Add(oItemSign.Clipart.ID)
-            '    End If
-            'Next
-            'iIndex = 0
-            'iCount = oItems.Count
-            'For Each oItem As cClipart In oItems
-            '    iIndex += 1
-            '    If (iIndex Mod 10) = 0 Then Call oSurvey.RaiseOnProgressEvent("cleanup", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("cliparts.cleanup2"), iIndex / iCount)
-            '    If Not oUsedClipartIDs.Contains(oItem.ID) Then
-            '        Call oDeletedClipartIDs.Add(oItem.ID)
-            '    End If
-            'Next
-            'iIndex = 0
-            'iCount = oDeletedClipartIDs.Count
-            'For Each sID As String In oDeletedClipartIDs
-            '    iIndex += 1
-            '    If (iIndex Mod 10) = 0 Then Call oSurvey.RaiseOnProgressEvent("cleanup", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, modMain.GetLocalizedString("cliparts.cleanup3"), iIndex / iCount)
-            '    Call oItems.Remove(sID)
-            'Next
-            'Call oSurvey.RaiseOnProgressEvent("cleanup", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
+            'TODO
         End Sub
 
         Public Function ContainsName(Name As String) As Boolean

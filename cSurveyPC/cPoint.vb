@@ -760,14 +760,14 @@ Namespace cSurvey.Design
         End Sub
 
         Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
-            Call MyBase.SaveTo(File, Document, Parent)
+            Return MyBase.SaveTo(File, Document, Parent)
         End Function
 
         Private Sub oPen_OnChanged(ByVal Sender As Object, e As EventArgs) Handles oPen.OnChanged
             RaiseEvent OnChanged(Me)
         End Sub
 
-        Private Sub oBrush_OnChanged(Sender As cBrush) Handles oBrush.OnChanged
+        Private Sub oBrush_OnChanged(ByVal Sender As Object, e As EventArgs) Handles oBrush.OnChanged
             RaiseEvent OnChanged(Me)
         End Sub
     End Class

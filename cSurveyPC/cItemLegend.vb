@@ -826,9 +826,9 @@ Namespace cSurvey.Design.Items
                                             End Using
                                         End If
                                     ElseIf oItem.Type = cLegendItem.ItemTypeEnum.AreaItem AndAlso oItem.Item.HaveBrush Then
-                                        Dim oBrush As cBrush = oItem.Item.Brush
+                                        Dim oBrush As cCustomBrush = oItem.Item.Brush.GetBaseBrush
                                         If Not IsNothing(oBrush) Then
-                                            Using oDesignBrush As cBrush = New cBrush(oSurvey)
+                                            Using oDesignBrush As cCustomBrush = New cCustomBrush(oSurvey)
                                                 Call oDesignBrush.CopyFrom(oBrush)
                                                 oDesignBrush.LocalLineWidth = oDesignBrush.GetPaintLineWidth(PaintOptions) * sItemItemScale
                                                 oDesignBrush.LocalZoomFactor = oDesignBrush.GetPaintZoomFactor(PaintOptions) * sItemItemScale

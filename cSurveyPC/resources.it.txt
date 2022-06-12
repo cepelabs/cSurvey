@@ -1010,3 +1010,6 @@ main.filetypePENX=File penna di cSurvey
 main.exportpendialog=Esporta come penna:
 main.savepentext=Digita un nome per questa penna
 main.savepentitle=Nome penna:
+csurvey.textpart124=Caricamento penne
+csurvey.textpart125=Caricamento riempimenti
+brushes.load=Caricamento riempimenti...

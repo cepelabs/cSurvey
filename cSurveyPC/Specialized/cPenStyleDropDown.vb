@@ -97,29 +97,6 @@ Public Class cPenStyleDropDown
         Call iml.Add(oSVGImage)
         Dim oItem As DevExpress.XtraEditors.Controls.ImageComboBoxItem = New DevExpress.XtraEditors.Controls.ImageComboBoxItem(Pen.Name, Pen.ID, iml.Count - 1)
         cboPenStyle.Properties.Items.Add(oItem)
-
-        'Using oImage As IO.MemoryStream = New IO.MemoryStream
-        '    Using oDesignPen As cPen = New cPen(oPaintOptions.Survey)
-        '        oDesignPen.CopyFrom(Pen)
-        '        'oDesignPen.LocalLineWidth = 0.05
-        '        'oDesignPen.LocalZoomFactor = 20
-        '        oDesignPen.DecorationScale = 40
-        '        oDesignPen.Width = oPaintOptions.GetPenDefaultWidth(Pen.Type) * 5
-        '        Select Case oDesignPen.DecorationStyle
-        '            Case cPen.DecorationStylesEnum.Dash
-        '                oDesignPen.DecorationSpacePercentage = oDesignPen.DecorationSpacePercentage * oDesignPen.DecorationScale
-        '        End Select
-        '        Dim oXML As XmlDocument = oDesignPen.GetThumbnailSVG(oPaintOptions, cItem.PaintOptionsEnum.None, cItem.SelectionModeEnum.None, 32, 32, Color.Black, Color.White)
-        '        oXML.Save("d:\" & Pen.Type.ToString & ".svg")
-        '        'Call oDesignPen.GetThumbnailImage(oPaintOptions, cItem.PaintOptionsEnum.None, cItem.SelectionModeEnum.None, 32, 32, Color.Black, Color.White).Save("d:\" & oDesignPen.Type.ToString & ".png", Imaging.ImageFormat.Png)
-        '        oXML.Save(oImage)
-        '        oImage.Position = 0
-        '        Dim oSVGImage As DevExpress.Utils.Svg.SvgImage = DevExpress.Utils.Svg.SvgImage.FromStream(oImage)
-        '        Call iml.Add(oSVGImage)
-        '        Dim oItem As DevExpress.XtraEditors.Controls.ImageComboBoxItem = New DevExpress.XtraEditors.Controls.ImageComboBoxItem(Pen.Name, Pen.Type, iml.Count - 1)
-        '        cboPenStyle.Properties.Items.Add(oItem)
-        '    End Using
-        'End Using
     End Sub
 
     'Public Property EditValue As cPen.PenTypeEnum

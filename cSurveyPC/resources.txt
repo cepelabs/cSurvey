@@ -1008,3 +1008,6 @@ main.filetypePENX=cSurvey pen file
 main.exportpendialog=Export as pen:
 main.savepentext=Give a name to this pen
 main.savepentitle=Pen name:
+csurvey.textpart124=Loading pens
+csurvey.textpart125=Loading brushes
+brushes.load=Loading brushes...

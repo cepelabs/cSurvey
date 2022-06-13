@@ -32,14 +32,11 @@ Partial Class cItemBrushStylePropertyControl
         Me.lblPropBrushAlternativeBrushColor = New DevExpress.XtraEditors.LabelControl()
         Me.lblPropBrushColor = New DevExpress.XtraEditors.LabelControl()
         Me.lblPropBrushClipartAngle = New DevExpress.XtraEditors.LabelControl()
-        Me.txtPropBrushClipartAngle = New System.Windows.Forms.NumericUpDown()
         Me.lblPropBrushClipartAngleMode = New DevExpress.XtraEditors.LabelControl()
         Me.cboPropBrushClipartAngleMode = New System.Windows.Forms.ComboBox()
         Me.lblPattern = New DevExpress.XtraEditors.LabelControl()
         Me.cboPropBrushHatch = New System.Windows.Forms.ComboBox()
         Me.lblPropBrushClipartZoomFactor = New DevExpress.XtraEditors.LabelControl()
-        Me.txtPropBrushClipartZoomFactor = New System.Windows.Forms.NumericUpDown()
-        Me.txtPropBrushClipartDensity = New System.Windows.Forms.NumericUpDown()
         Me.lblPropBrushClipartDensity = New DevExpress.XtraEditors.LabelControl()
         Me.lblPropBrushPatternType = New DevExpress.XtraEditors.LabelControl()
         Me.cboPropBrushPatternType = New System.Windows.Forms.ComboBox()
@@ -54,23 +51,26 @@ Partial Class cItemBrushStylePropertyControl
         Me.picPropBrushClipartImage = New DevExpress.XtraEditors.PictureEdit()
         Me.mnuSaveAs = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.btnPropSaveToFile = New DevExpress.XtraBars.BarButtonItem()
-        Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
+        Me.btnPropSaveToSurvey = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnPropImport = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnPropExport = New DevExpress.XtraBars.BarButtonItem()
         Me.BarManager = New DevExpress.XtraBars.BarManager(Me.components)
+        Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
-        Me.btnPropSaveToSurvey = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnPropExport = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnPropImport = New DevExpress.XtraBars.BarButtonItem()
         Me.cmdPropSave = New DevExpress.XtraEditors.DropDownButton()
-        CType(Me.txtPropBrushClipartAngle, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropBrushClipartZoomFactor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtPropBrushClipartDensity, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.txtPropBrushClipartZoomFactor = New DevExpress.XtraEditors.SpinEdit()
+        Me.txtPropBrushClipartDensity = New DevExpress.XtraEditors.SpinEdit()
+        Me.txtPropBrushClipartAngle = New DevExpress.XtraEditors.SpinEdit()
         CType(Me.txtPropBrushColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropBrushAlternativeBrushColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picPropBrushClipartImage.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.mnuSaveAs, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtPropBrushClipartZoomFactor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtPropBrushClipartDensity.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtPropBrushClipartAngle.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cboPropBrushPattern
@@ -121,12 +121,6 @@ Partial Class cItemBrushStylePropertyControl
         resources.ApplyResources(Me.lblPropBrushClipartAngle, "lblPropBrushClipartAngle")
         Me.lblPropBrushClipartAngle.Name = "lblPropBrushClipartAngle"
         '
-        'txtPropBrushClipartAngle
-        '
-        resources.ApplyResources(Me.txtPropBrushClipartAngle, "txtPropBrushClipartAngle")
-        Me.txtPropBrushClipartAngle.Maximum = New Decimal(New Integer() {359, 0, 0, 0})
-        Me.txtPropBrushClipartAngle.Name = "txtPropBrushClipartAngle"
-        '
         'lblPropBrushClipartAngleMode
         '
         resources.ApplyResources(Me.lblPropBrushClipartAngleMode, "lblPropBrushClipartAngleMode")
@@ -157,22 +151,6 @@ Partial Class cItemBrushStylePropertyControl
         '
         resources.ApplyResources(Me.lblPropBrushClipartZoomFactor, "lblPropBrushClipartZoomFactor")
         Me.lblPropBrushClipartZoomFactor.Name = "lblPropBrushClipartZoomFactor"
-        '
-        'txtPropBrushClipartZoomFactor
-        '
-        resources.ApplyResources(Me.txtPropBrushClipartZoomFactor, "txtPropBrushClipartZoomFactor")
-        Me.txtPropBrushClipartZoomFactor.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
-        Me.txtPropBrushClipartZoomFactor.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.txtPropBrushClipartZoomFactor.Name = "txtPropBrushClipartZoomFactor"
-        Me.txtPropBrushClipartZoomFactor.Value = New Decimal(New Integer() {1, 0, 0, 0})
-        '
-        'txtPropBrushClipartDensity
-        '
-        resources.ApplyResources(Me.txtPropBrushClipartDensity, "txtPropBrushClipartDensity")
-        Me.txtPropBrushClipartDensity.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
-        Me.txtPropBrushClipartDensity.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.txtPropBrushClipartDensity.Name = "txtPropBrushClipartDensity"
-        Me.txtPropBrushClipartDensity.Value = New Decimal(New Integer() {10, 0, 0, 0})
         '
         'lblPropBrushClipartDensity
         '
@@ -273,11 +251,27 @@ Partial Class cItemBrushStylePropertyControl
         Me.btnPropSaveToFile.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.saveas
         Me.btnPropSaveToFile.Name = "btnPropSaveToFile"
         '
-        'barDockControlTop
+        'btnPropSaveToSurvey
         '
-        Me.barDockControlTop.CausesValidation = False
-        resources.ApplyResources(Me.barDockControlTop, "barDockControlTop")
-        Me.barDockControlTop.Manager = Me.BarManager
+        resources.ApplyResources(Me.btnPropSaveToSurvey, "btnPropSaveToSurvey")
+        Me.btnPropSaveToSurvey.Id = 24
+        Me.btnPropSaveToSurvey.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.savedialog
+        Me.btnPropSaveToSurvey.Name = "btnPropSaveToSurvey"
+        '
+        'btnPropImport
+        '
+        resources.ApplyResources(Me.btnPropImport, "btnPropImport")
+        Me.btnPropImport.Enabled = False
+        Me.btnPropImport.Id = 26
+        Me.btnPropImport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.import
+        Me.btnPropImport.Name = "btnPropImport"
+        '
+        'btnPropExport
+        '
+        resources.ApplyResources(Me.btnPropExport, "btnPropExport")
+        Me.btnPropExport.Id = 25
+        Me.btnPropExport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.exportfile
+        Me.btnPropExport.Name = "btnPropExport"
         '
         'BarManager
         '
@@ -290,6 +284,12 @@ Partial Class cItemBrushStylePropertyControl
         Me.BarManager.Form = Me
         Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnPropSaveToFile, Me.btnPropSaveToSurvey, Me.btnPropExport, Me.btnPropImport})
         Me.BarManager.MaxItemId = 27
+        '
+        'barDockControlTop
+        '
+        Me.barDockControlTop.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlTop, "barDockControlTop")
+        Me.barDockControlTop.Manager = Me.BarManager
         '
         'barDockControlBottom
         '
@@ -309,27 +309,6 @@ Partial Class cItemBrushStylePropertyControl
         resources.ApplyResources(Me.barDockControlRight, "barDockControlRight")
         Me.barDockControlRight.Manager = Me.BarManager
         '
-        'btnPropSaveToSurvey
-        '
-        resources.ApplyResources(Me.btnPropSaveToSurvey, "btnPropSaveToSurvey")
-        Me.btnPropSaveToSurvey.Id = 24
-        Me.btnPropSaveToSurvey.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.savedialog
-        Me.btnPropSaveToSurvey.Name = "btnPropSaveToSurvey"
-        '
-        'btnPropExport
-        '
-        resources.ApplyResources(Me.btnPropExport, "btnPropExport")
-        Me.btnPropExport.Id = 25
-        Me.btnPropExport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.exportfile
-        Me.btnPropExport.Name = "btnPropExport"
-        '
-        'btnPropImport
-        '
-        resources.ApplyResources(Me.btnPropImport, "btnPropImport")
-        Me.btnPropImport.Id = 26
-        Me.btnPropImport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.import
-        Me.btnPropImport.Name = "btnPropImport"
-        '
         'cmdPropSave
         '
         resources.ApplyResources(Me.cmdPropSave, "cmdPropSave")
@@ -339,10 +318,57 @@ Partial Class cItemBrushStylePropertyControl
         Me.cmdPropSave.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.cmdPropSave.Name = "cmdPropSave"
         '
+        'txtPropBrushClipartZoomFactor
+        '
+        resources.ApplyResources(Me.txtPropBrushClipartZoomFactor, "txtPropBrushClipartZoomFactor")
+        Me.txtPropBrushClipartZoomFactor.MenuManager = Me.BarManager
+        Me.txtPropBrushClipartZoomFactor.Name = "txtPropBrushClipartZoomFactor"
+        Me.txtPropBrushClipartZoomFactor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtPropBrushClipartZoomFactor.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtPropBrushClipartZoomFactor.Properties.DisplayFormat.FormatString = "N1"
+        Me.txtPropBrushClipartZoomFactor.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtPropBrushClipartZoomFactor.Properties.EditFormat.FormatString = "N1"
+        Me.txtPropBrushClipartZoomFactor.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtPropBrushClipartZoomFactor.Properties.Increment = New Decimal(New Integer() {5, 0, 0, 65536})
+        Me.txtPropBrushClipartZoomFactor.Properties.MaskSettings.Set("mask", "N1")
+        Me.txtPropBrushClipartZoomFactor.Properties.MaxValue = New Decimal(New Integer() {10000, 0, 0, 0})
+        Me.txtPropBrushClipartZoomFactor.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'txtPropBrushClipartDensity
+        '
+        resources.ApplyResources(Me.txtPropBrushClipartDensity, "txtPropBrushClipartDensity")
+        Me.txtPropBrushClipartDensity.MenuManager = Me.BarManager
+        Me.txtPropBrushClipartDensity.Name = "txtPropBrushClipartDensity"
+        Me.txtPropBrushClipartDensity.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtPropBrushClipartDensity.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtPropBrushClipartDensity.Properties.DisplayFormat.FormatString = "N0"
+        Me.txtPropBrushClipartDensity.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtPropBrushClipartDensity.Properties.EditFormat.FormatString = "N0"
+        Me.txtPropBrushClipartDensity.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtPropBrushClipartDensity.Properties.IsFloatValue = False
+        Me.txtPropBrushClipartDensity.Properties.MaskSettings.Set("mask", "N0")
+        Me.txtPropBrushClipartDensity.Properties.MaxValue = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.txtPropBrushClipartDensity.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'txtPropBrushClipartAngle
+        '
+        resources.ApplyResources(Me.txtPropBrushClipartAngle, "txtPropBrushClipartAngle")
+        Me.txtPropBrushClipartAngle.MenuManager = Me.BarManager
+        Me.txtPropBrushClipartAngle.Name = "txtPropBrushClipartAngle"
+        Me.txtPropBrushClipartAngle.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("SpinEdit1.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtPropBrushClipartAngle.Properties.DisplayFormat.FormatString = "N0"
+        Me.txtPropBrushClipartAngle.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtPropBrushClipartAngle.Properties.EditFormat.FormatString = "N0"
+        Me.txtPropBrushClipartAngle.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtPropBrushClipartAngle.Properties.IsFloatValue = False
+        Me.txtPropBrushClipartAngle.Properties.MaskSettings.Set("mask", "N0")
+        Me.txtPropBrushClipartAngle.Properties.MaxValue = New Decimal(New Integer() {359, 0, 0, 0})
+        '
         'cItemBrushStylePropertyControl
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.Controls.Add(Me.txtPropBrushClipartAngle)
+        Me.Controls.Add(Me.txtPropBrushClipartZoomFactor)
+        Me.Controls.Add(Me.txtPropBrushClipartDensity)
         Me.Controls.Add(Me.cmdPropBrushBrowseClipart)
         Me.Controls.Add(Me.picPropBrushClipartImage)
         Me.Controls.Add(Me.txtPropBrushAlternativeBrushColor)
@@ -353,13 +379,10 @@ Partial Class cItemBrushStylePropertyControl
         Me.Controls.Add(Me.lblPropBrushAlternativeBrushColor)
         Me.Controls.Add(Me.lblPropBrushColor)
         Me.Controls.Add(Me.lblPropBrushClipartAngle)
-        Me.Controls.Add(Me.txtPropBrushClipartAngle)
         Me.Controls.Add(Me.lblPropBrushClipartAngleMode)
         Me.Controls.Add(Me.lblPattern)
         Me.Controls.Add(Me.cboPropBrushHatch)
         Me.Controls.Add(Me.lblPropBrushClipartZoomFactor)
-        Me.Controls.Add(Me.txtPropBrushClipartZoomFactor)
-        Me.Controls.Add(Me.txtPropBrushClipartDensity)
         Me.Controls.Add(Me.lblPropBrushClipartDensity)
         Me.Controls.Add(Me.cboPropBrushClipartCrop)
         Me.Controls.Add(Me.lblPropBrushClipartCrop)
@@ -377,14 +400,14 @@ Partial Class cItemBrushStylePropertyControl
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
         Me.Name = "cItemBrushStylePropertyControl"
-        CType(Me.txtPropBrushClipartAngle, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropBrushClipartZoomFactor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtPropBrushClipartDensity, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPropBrushColor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPropBrushAlternativeBrushColor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picPropBrushClipartImage.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.mnuSaveAs, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BarManager, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPropBrushClipartZoomFactor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPropBrushClipartDensity.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPropBrushClipartAngle.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -397,14 +420,11 @@ Partial Class cItemBrushStylePropertyControl
     Friend WithEvents lblPropBrushAlternativeBrushColor As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lblPropBrushColor As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lblPropBrushClipartAngle As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents txtPropBrushClipartAngle As NumericUpDown
     Friend WithEvents lblPropBrushClipartAngleMode As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboPropBrushClipartAngleMode As ComboBox
     Friend WithEvents lblPattern As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboPropBrushHatch As ComboBox
     Friend WithEvents lblPropBrushClipartZoomFactor As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents txtPropBrushClipartZoomFactor As NumericUpDown
-    Friend WithEvents txtPropBrushClipartDensity As NumericUpDown
     Friend WithEvents lblPropBrushClipartDensity As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lblPropBrushPatternType As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboPropBrushPatternType As ComboBox
@@ -428,4 +448,7 @@ Partial Class cItemBrushStylePropertyControl
     Friend WithEvents barDockControlLeft As DevExpress.XtraBars.BarDockControl
     Friend WithEvents barDockControlRight As DevExpress.XtraBars.BarDockControl
     Friend WithEvents cmdPropSave As DevExpress.XtraEditors.DropDownButton
+    Friend WithEvents txtPropBrushClipartZoomFactor As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents txtPropBrushClipartDensity As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents txtPropBrushClipartAngle As DevExpress.XtraEditors.SpinEdit
 End Class

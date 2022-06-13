@@ -47,6 +47,8 @@ Friend Class cItemPenStylePropertyControl
             Dim oPen As cPen = pGetPointPen()
             cboPropPenPattern.EditValue = oPen.ID
         End If
+
+        'Call pRefreshHeight()
     End Sub
 
     Private Function pGetPointPen() As cPen
@@ -157,11 +159,11 @@ Friend Class cItemPenStylePropertyControl
         End If
     End Function
 
-    Private Sub pSavePen(Filename As String, Pen As cPen)
+    Private Sub pSavePen(Filename As String, Pen As cCustomPen)
         Using oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, Filename, cFile.FileOptionsEnum.EmbedResource)
             Dim oXML As XmlDocument = oFile.Document
             Dim oXMLRoot As XmlElement = oXML.CreateElement("cpen")
-            Call Pen.GetBasePen.SaveTo(oFile, oXML, oXMLRoot)
+            Call Pen.SaveTo(oFile, oXML, oXMLRoot)
             oXML.AppendChild(oXMLRoot)
             oFile.Save()
         End Using
@@ -183,18 +185,19 @@ Friend Class cItemPenStylePropertyControl
         Dim oPen As cPen = pGetPen()
         Dim sHash As String = cPen.CalculateHash(oPen)
         If oSurvey.Pens.Contains(sHash) Then
-            Call cSurvey.UIHelpers.Dialogs.Msgbox("ALREADY EXIT")
+            Call cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("main.savepenalreadyexist"))
         Else
             Dim sName As String = cSurvey.UIHelpers.Dialogs.TextInputBox(Me, GetLocalizedString("main.savepentext"), GetLocalizedString("main.savepentitle"), "")
             If sName IsNot Nothing Then
                 Dim bOk As Boolean = True
                 If oSurvey.Pens.Contains(oPen) Then
-                    bOk = cSurvey.UIHelpers.Dialogs.Msgbox("OVERWRITE?", MsgBoxStyle.YesNo Or MsgBoxStyle.Critical, GetLocalizedString("main.savepentitle")) = MsgBoxResult.Yes
+                    bOk = cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("main.savepenoverwritetext"), MsgBoxStyle.YesNo Or MsgBoxStyle.Critical, GetLocalizedString("main.savepentitle")) = MsgBoxResult.Yes
                 End If
                 If bOk Then
-                    Dim oNewPen As cCustomPen = oSurvey.Pens.Add(oPen, sName)
-                    cboPropPenPattern.Rebind(oSurvey)
-                    cboPropPenPattern.EditValue = oNewPen.ID
+                    Using oNewPen As cCustomPen = oSurvey.Pens.Add(oPen, sName)
+                        cboPropPenPattern.Rebind(oSurvey)
+                        cboPropPenPattern.EditValue = oNewPen.ID
+                    End Using
                 End If
             End If
         End If
@@ -207,30 +210,28 @@ Friend Class cItemPenStylePropertyControl
             Dim bOk As Boolean = True
             Dim sFilename As String = IO.Path.Combine(modMain.GetUserApplicationPath, sName & ".cpen")
             If My.Computer.FileSystem.FileExists(sFilename) Then
-                bOk = cSurvey.UIHelpers.Dialogs.Msgbox("OVERWRITE?", MsgBoxStyle.YesNo Or MsgBoxStyle.Critical, GetLocalizedString("main.savepentitle")) = MsgBoxResult.Yes
+                bOk = cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("main.savepenoverwritetext"), MsgBoxStyle.YesNo Or MsgBoxStyle.Critical, GetLocalizedString("main.savepentitle")) = MsgBoxResult.Yes
             End If
             If bOk Then
-                Call pSavePen(sFilename, oPen)
-                cboPropPenPattern.Rebind(oSurvey)
-                cboPropPenPattern.EditValue = oPen.ID
+                Using oNewPen As cCustomPen = cCustomPen.CopyAsUser(oSurvey, oPen.GetBasePen)
+                    oNewPen.Name = sName
+                    Call pSavePen(sFilename, oNewPen)
+                    cboPropPenPattern.Rebind(oSurvey)
+                    cboPropPenPattern.EditValue = oPen.ID
+                End Using
             End If
         End If
-        'End If
     End Sub
 
     Private Sub pExportToFile()
         Dim oPen As cPen = pGetPen()
-        'Dim sHash As String = cPen.CalculateHash(oPen)
-        'If oSurvey.Pens.Contains(sHash) Then
-        '    Call cSurvey.UIHelpers.Dialogs.Msgbox("ALREADY EXIT")
-        'Else
         Dim sName As String = cSurvey.UIHelpers.Dialogs.TextInputBox(Me, GetLocalizedString("main.savepentext"), GetLocalizedString("main.savepentitle"), "")
         If sName IsNot Nothing Then
             Dim bOk As Boolean = True
             Dim oResult As cSurvey.UIHelpers.Dialogs.cSaveFileDialogResult = cSurvey.UIHelpers.Dialogs.SaveFileDialog(Nothing, sName, GetLocalizedString("main.filetypePENX") & " (*.PENX)|*.PENX", 1, GetLocalizedString("main.exportpendialog"))
             If oResult.DialogResult = DialogResult.OK Then
                 Dim sFilename As String = oResult.Filename
-                Call pSavePen(sFilename, oPen)
+                Call pSavePen(sFilename, oPen.GetBasePen)
             End If
         End If
     End Sub
@@ -292,26 +293,41 @@ Friend Class cItemPenStylePropertyControl
 
     Private Sub pRefreshHeight()
         Dim oPen As cPen = pGetPen()
+
+        Dim bStyleVisible As Boolean
+        Dim bClipartVisible As Boolean
+        Dim bClipartSettingsVisible As Boolean
+        Dim bClipartSettingsPenVisible As Boolean
+
         If oPen.Type = cPen.PenTypeEnum.Custom Then
             If cboPropPenDecoration.SelectedIndex > 0 Then
+                bStyleVisible = True
                 If cboPropPenDecoration.SelectedIndex = cboPropPenDecoration.Properties.Items.Count - 1 Then
-                    pnlPenClipart.Visible = True
-                    Height = 359 * CurrentAutoScaleDimensions.Height / 96.0F
+                    bClipartVisible = True
                 Else
-                    pnlPenClipart.Visible = False
-                    Height = 281 * CurrentAutoScaleDimensions.Height / 96.0F
+                    bClipartVisible = False
                 End If
-                pnlPenClipartSettings.Visible = True
+                bClipartSettingsVisible = True
+                bClipartSettingsPenVisible = cboPropPenClipartPenMode.SelectedIndex = 1
             Else
-                Height = 120 * CurrentAutoScaleDimensions.Height / 96.0F
-                pnlPenClipart.Visible = False
-                pnlPenClipartSettings.Visible = False
+                bStyleVisible = True
+                bClipartVisible = False
+                bClipartSettingsVisible = False
+                bClipartSettingsPenVisible = False
             End If
         Else
-            pnlPenClipart.Visible = False
+            bStyleVisible = False
+            bClipartVisible = False
             pnlPenClipartSettings.Visible = False
-            Height = 45 * CurrentAutoScaleDimensions.Height / 96.0F
+            bClipartSettingsPenVisible = False
         End If
+
+        pnlPenStyle.Visible = bStyleVisible
+        pnlPenClipart.Visible = bClipartVisible
+        pnlPenClipartSettings.Visible = bClipartSettingsVisible
+        pnlPenClipartSettingsPen.Visible = bClipartSettingsPenVisible
+
+        Height = (45 + If(bStyleVisible, pnlPenStyle.Height, 0) + If(bClipartVisible, pnlPenClipart.Height, 0) + If(bClipartSettingsVisible, pnlPenClipartSettings.Height, 0) + If(bClipartSettingsPenVisible, pnlPenClipartSettingsPen.Height, 0)) * CurrentAutoScaleDimensions.Height / 96.0F
     End Sub
 
     Private Sub cmdPropPenCleanClipart_Click(sender As Object, e As EventArgs) Handles cmdPropPenCleanClipart.Click
@@ -414,13 +430,15 @@ Friend Class cItemPenStylePropertyControl
             Call MyBase.MapInvalidate()
         End If
 
-        Dim bEnabled As Boolean = cboPropPenClipartPenMode.SelectedIndex = 1
-        lblPropPenClipartPenStyle.Enabled = bEnabled
-        cboPropPenClipartPenStyle.Enabled = bEnabled
-        lblPropPenClipartPenWidth.Enabled = bEnabled
-        txtPropPenClipartPenWidth.Enabled = bEnabled
-        lblPropPenClipartPenColor.Enabled = bEnabled
-        txtPropPenClipartPenColor.Enabled = bEnabled
+        Call pRefreshHeight()
+
+        'Dim bEnabled As Boolean = cboPropPenClipartPenMode.SelectedIndex = 1
+        'lblPropPenClipartPenStyle.Enabled = bEnabled
+        'cboPropPenClipartPenStyle.Enabled = bEnabled
+        'lblPropPenClipartPenWidth.Enabled = bEnabled
+        'txtPropPenClipartPenWidth.Enabled = bEnabled
+        'lblPropPenClipartPenColor.Enabled = bEnabled
+        'txtPropPenClipartPenColor.Enabled = bEnabled
     End Sub
 
     Private Sub txtPropPenClipartPenWidth_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropPenClipartPenWidth.EditValueChanged
@@ -511,5 +529,4 @@ Friend Class cItemPenStylePropertyControl
             Call MyBase.MapInvalidate()
         End If
     End Sub
-
 End Class

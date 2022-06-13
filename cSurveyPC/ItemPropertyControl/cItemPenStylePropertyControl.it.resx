@@ -183,18 +183,6 @@
   <data name="cboPropPenDecorationAlignment.Properties.Items2" xml:space="preserve">
     <value>Interno</value>
   </data>
-  <data name="btnPropPenExport.Caption" xml:space="preserve">
-    <value>Esporta...</value>
-  </data>
-  <data name="btnPropPenImport.Caption" xml:space="preserve">
-    <value>Importa...</value>
-  </data>
-  <data name="btnPropPenSaveToFile.Caption" xml:space="preserve">
-    <value>Salva la penna nella libreria locale</value>
-  </data>
-  <data name="btnPropPenSaveToSurvey.Caption" xml:space="preserve">
-    <value>Salva la penna nel rilievo corrente</value>
-  </data>
   <data name="cboPropPenStyle.Properties.Items" xml:space="preserve">
     <value>Continuo</value>
   </data>
@@ -269,5 +257,23 @@
   </data>
   <data name="cboPropPenClipartPenStyle.Properties.Items8" xml:space="preserve">
     <value>Nessuna</value>
+  </data>
+  <data name="btnPropSaveToFile.Caption" xml:space="preserve">
+    <value>Salva la penna nella libreria locale</value>
+  </data>
+  <data name="btnPropSaveToSurvey.Caption" xml:space="preserve">
+    <value>Salva la penna nel rilievo corrente</value>
+  </data>
+  <data name="btnPropImport.Caption" xml:space="preserve">
+    <value>Importa...</value>
+  </data>
+  <data name="btnPropExport.Caption" xml:space="preserve">
+    <value>Esporta...</value>
+  </data>
+  <data name="cboPropPenDecorationPosition.Properties.Items" xml:space="preserve">
+    <value>Dietro</value>
+  </data>
+  <data name="cboPropPenDecorationPosition.Properties.Items1" xml:space="preserve">
+    <value>Sopra</value>
   </data>
 </root>

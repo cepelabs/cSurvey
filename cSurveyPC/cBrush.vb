@@ -542,55 +542,56 @@ Namespace cSurvey.Design
         Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
             Dim oItem As XmlElement = Document.CreateElement("brush")
             Call oItem.SetAttribute("type", iType)
+            If iType = cPen.PenTypeEnum.User Then
+                Call oItem.SetAttribute("id", sID)
+            End If
 
-            If iType = cBrush.BrushTypeEnum.Custom Then
-                If sName <> "" Then
-                    Call oItem.SetAttribute("name", sName)
-                End If
-                Call oItem.SetAttribute("color", oColor.ToArgb)
-                Call oItem.SetAttribute("hatchtype", iHatchType)
+            If sName <> "" Then
+                Call oItem.SetAttribute("name", sName)
+            End If
+            Call oItem.SetAttribute("color", oColor.ToArgb)
+            Call oItem.SetAttribute("hatchtype", iHatchType)
 
-                If iHatchType = cBrush.HatchTypeEnum.Texture Then
-                    If Not oTexture Is Nothing Then
-                        Call oItem.SetAttribute("textureid", sTextureID)
-                        If Not (File.Options And cFile.FileOptionsEnum.DontSaveBinary) = cFile.FileOptionsEnum.DontSaveBinary Then
-                            Select Case File.FileFormat
-                                Case cFile.FileFormatEnum.CSX
-                                    Call oItem.SetAttribute("texture", Convert.ToBase64String(modPaint.BitmapToByteArray(oTexture, Drawing.Imaging.ImageFormat.Png)))
-                                Case cFile.FileFormatEnum.CSZ
-                                    Dim sImagePath As String = "_data\texture\" & sTextureID & ".png"
-                                    Dim oImageStorage As Storage.cStorageItemFile = File.Data.AddFile(sImagePath)
-                                    Call oImageStorage.Write(modPaint.BitmapToByteArray(oTexture, Drawing.Imaging.ImageFormat.Png))
-                                    Call oItem.SetAttribute("texture", sImagePath)
-                            End Select
-                        End If
+            If iHatchType = cBrush.HatchTypeEnum.Texture Then
+                If Not oTexture Is Nothing Then
+                    Call oItem.SetAttribute("textureid", sTextureID)
+                    If Not (File.Options And cFile.FileOptionsEnum.DontSaveBinary) = cFile.FileOptionsEnum.DontSaveBinary Then
+                        Select Case File.FileFormat
+                            Case cFile.FileFormatEnum.CSX
+                                Call oItem.SetAttribute("texture", Convert.ToBase64String(modPaint.BitmapToByteArray(oTexture, Drawing.Imaging.ImageFormat.Png)))
+                            Case cFile.FileFormatEnum.CSZ
+                                Dim sImagePath As String = "_data\texture\" & sTextureID & ".png"
+                                Dim oImageStorage As Storage.cStorageItemFile = File.Data.AddFile(sImagePath)
+                                Call oImageStorage.Write(modPaint.BitmapToByteArray(oTexture, Drawing.Imaging.ImageFormat.Png))
+                                Call oItem.SetAttribute("texture", sImagePath)
+                        End Select
                     End If
-                    Call oItem.SetAttribute("texturewrapmode", iTextureWrapMode.ToString("D"))
-                ElseIf iHatchType = cBrush.HatchTypeEnum.Clipart Then
-                    If Not oClipart Is Nothing Then Call oClipart.SaveTo(File, Document, oItem)
-                    Call oItem.SetAttribute("clipartdensity", modNumbers.NumberToString(sClipartDensity))
-                    Call oItem.SetAttribute("clipartzoomfactor", modNumbers.NumberToString(sClipartZoomFactor, "0.0000"))
-                    Call oItem.SetAttribute("clipartanglemode", iClipartAngleMode.ToString("D"))
-                    If iClipartAngleMode = cBrush.ClipartAngleModeEnum.Fixed Then
-                        Call oItem.SetAttribute("clipartangle", iClipartAngle)
-                    End If
-                    If iClipartCrop <> cBrush.ClipartCropEnum.None Then
-                        Call oItem.SetAttribute("clipartcrop", iClipartCrop.ToString("D"))
-                    End If
-                    If iClipartPosition <> cBrush.ClipartPositionEnum.Random Then
-                        Call oItem.SetAttribute("clipartposition", iClipartPosition.ToString("D"))
-                    End If
-                    Call oItem.SetAttribute("clipartalternativecolor", oClipartAlternativeColor.ToArgb)
-                ElseIf iHatchType = cBrush.HatchTypeEnum.Pattern Then
-                    Call oItem.SetAttribute("patterntype", iPatternType.ToString("D"))
-                    Call oItem.SetAttribute("patternpenstyle", iPatternPenStyle.ToString("D"))
-                    Call oItem.SetAttribute("clipartdensity", modNumbers.NumberToString(sClipartDensity))
-                    Call oItem.SetAttribute("clipartanglemode", iClipartAngleMode.ToString("D"))
-                    If iClipartAngleMode = cBrush.ClipartAngleModeEnum.Fixed Then
-                        Call oItem.SetAttribute("clipartangle", iClipartAngle)
-                    End If
-                    Call oItem.SetAttribute("clipartalternativecolor", oClipartAlternativeColor.ToArgb)
                 End If
+                Call oItem.SetAttribute("texturewrapmode", iTextureWrapMode.ToString("D"))
+            ElseIf iHatchType = cBrush.HatchTypeEnum.Clipart Then
+                If Not oClipart Is Nothing Then Call oClipart.SaveTo(File, Document, oItem)
+                Call oItem.SetAttribute("clipartdensity", modNumbers.NumberToString(sClipartDensity))
+                Call oItem.SetAttribute("clipartzoomfactor", modNumbers.NumberToString(sClipartZoomFactor, "0.0000"))
+                Call oItem.SetAttribute("clipartanglemode", iClipartAngleMode.ToString("D"))
+                If iClipartAngleMode = cBrush.ClipartAngleModeEnum.Fixed Then
+                    Call oItem.SetAttribute("clipartangle", iClipartAngle)
+                End If
+                If iClipartCrop <> cBrush.ClipartCropEnum.None Then
+                    Call oItem.SetAttribute("clipartcrop", iClipartCrop.ToString("D"))
+                End If
+                If iClipartPosition <> cBrush.ClipartPositionEnum.Random Then
+                    Call oItem.SetAttribute("clipartposition", iClipartPosition.ToString("D"))
+                End If
+                Call oItem.SetAttribute("clipartalternativecolor", oClipartAlternativeColor.ToArgb)
+            ElseIf iHatchType = cBrush.HatchTypeEnum.Pattern Then
+                Call oItem.SetAttribute("patterntype", iPatternType.ToString("D"))
+                Call oItem.SetAttribute("patternpenstyle", iPatternPenStyle.ToString("D"))
+                Call oItem.SetAttribute("clipartdensity", modNumbers.NumberToString(sClipartDensity))
+                Call oItem.SetAttribute("clipartanglemode", iClipartAngleMode.ToString("D"))
+                If iClipartAngleMode = cBrush.ClipartAngleModeEnum.Fixed Then
+                    Call oItem.SetAttribute("clipartangle", iClipartAngle)
+                End If
+                Call oItem.SetAttribute("clipartalternativecolor", oClipartAlternativeColor.ToArgb)
             End If
 
             Call Parent.AppendChild(oItem)

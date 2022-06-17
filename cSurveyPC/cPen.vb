@@ -226,10 +226,10 @@ Namespace cSurvey.Design
             End Get
             Set(ByVal value As String)
                 If sName <> value Then
-                    If iType <> cPen.PenTypeEnum.Custom Then
-                        Call CopyFrom(oSurvey.Pens.FromID(ID))
-                        iType = cPen.PenTypeEnum.Custom
-                    End If
+                    'If iType <> cPen.PenTypeEnum.Custom Then
+                    '    Call CopyFrom(oSurvey.Pens.FromID(ID))
+                    '    iType = cPen.PenTypeEnum.Custom
+                    'End If
                     sName = value
                 End If
             End Set
@@ -375,7 +375,6 @@ Namespace cSurvey.Design
             Else
                 oClipartPenColor = Color.Black
             End If
-
 
             Call Invalidate()
         End Sub

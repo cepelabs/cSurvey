@@ -30,9 +30,6 @@ Friend Class cItemBrushStylePropertyControl
         End If
 
         cboPropBrushPattern.EditValue = Item.Brush.ID
-
-        cboPropBrushHatch.SelectedIndex = Item.Brush.HatchType
-        txtPropBrushColor.Color = Item.Brush.Color
     End Sub
 
     Private Sub cmdPropBrushReseed_Click(sender As Object, e As EventArgs) Handles cmdPropBrushReseed.Click
@@ -42,189 +39,79 @@ Friend Class cItemBrushStylePropertyControl
         Call MyBase.MapInvalidate()
     End Sub
 
-    Private Sub cboPropBrushHatch_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropBrushHatch.SelectedIndexChanged
-        If Not DisabledObjectProperty() Then
-            Item.Brush.HatchType = cboPropBrushHatch.SelectedIndex
-            Call MyBase.TakeUndoSnapshot()
-            Call MyBase.PropertyChanged("BrushHatch")
-            Call MyBase.MapInvalidate()
+    Private Sub pRefreshHeight()
+
+        Dim bStyleVisible As Boolean
+        Dim bPatternVisible As Boolean
+        Dim bClipartVisible As Boolean
+        Dim bTextureVisible As Boolean
+        Dim bClipartSettingsVisible As Boolean
+        Dim bClipartAndPatternSettingsVisible As Boolean
+        Dim bAlternativeColorVisible As Boolean
+
+        If Item.Brush.Type = cBrush.BrushTypeEnum.Custom Then
+            Select Case Item.Brush.HatchType
+                Case cBrush.HatchTypeEnum.Texture
+                    cmdPropBrushReseed.Visible = False
+
+                    bStyleVisible = True
+                    bClipartVisible = False
+                    bTextureVisible = True
+                    bClipartSettingsVisible = False
+                    bClipartAndPatternSettingsVisible = False
+                    bPatternVisible = False
+                    bAlternativeColorVisible = True
+                Case cBrush.HatchTypeEnum.Pattern
+                    cmdPropBrushReseed.Visible = False
+
+                    bStyleVisible = True
+                    bClipartVisible = False
+                    bTextureVisible = False
+                    bClipartSettingsVisible = False
+                    bClipartAndPatternSettingsVisible = True
+                    bPatternVisible = True
+                    bAlternativeColorVisible = True
+                Case cBrush.HatchTypeEnum.Clipart
+                    cmdPropBrushReseed.Visible = True
+
+                    bStyleVisible = True
+                    bClipartVisible = True
+                    bTextureVisible = False
+                    bClipartSettingsVisible = True
+                    bClipartAndPatternSettingsVisible = True
+                    bPatternVisible = False
+                    bAlternativeColorVisible = True
+                Case cBrush.HatchTypeEnum.Solid
+                    cmdPropBrushReseed.Visible = False
+
+                    bStyleVisible = True
+                    bClipartVisible = False
+                    bTextureVisible = False
+                    bClipartSettingsVisible = False
+                    bPatternVisible = False
+                    bAlternativeColorVisible = False
+                Case Else
+                    cmdPropBrushReseed.Visible = False
+
+                    bStyleVisible = True
+                    bClipartVisible = False
+                    bTextureVisible = False
+                    bClipartSettingsVisible = False
+                    bClipartAndPatternSettingsVisible = False
+                    bPatternVisible = False
+                    bAlternativeColorVisible = False
+            End Select
         End If
 
-        Select Case Item.Brush.HatchType
-            Case cBrush.HatchTypeEnum.Texture
-                cmdPropBrushReseed.Visible = False
+        pnlBrushStyle.Visible = bStyleVisible
+        pnlBrushAlternativeColor.Visible = bAlternativeColorVisible
+        pnlBrushPattern.Visible = bPatternVisible
+        pnlBrushClipart.Visible = bClipartVisible
+        pnlBrushTexture.Visible = bTextureVisible
+        pnlBrushClipartSettings.Visible = bClipartSettingsVisible
+        pnlBrushClipartAnPatternSettings.Visible = bClipartAndPatternSettingsVisible = True
 
-                cmdPropBrushBrowseClipart.Visible = True
-                lblPropBrushClipartImage.Visible = True
-                picPropBrushClipartImage.Visible = True
-                cboPropBrushPatternType.Visible = False
-                lblPropBrushPatternType.Visible = False
-                cboPropBrushPatternPen.Visible = False
-                lblPropBrushPatternPen.Visible = False
-                lblPropBrushClipartZoomFactor.Visible = False
-                txtPropBrushClipartZoomFactor.Visible = False
-                lblPropBrushClipartCrop.Visible = False
-                cboPropBrushClipartCrop.Visible = False
-                lblPropBrushClipartDensity.Visible = False
-                txtPropBrushClipartDensity.Visible = False
-                lblPropBrushClipartAngleMode.Visible = False
-                cboPropBrushClipartAngleMode.Visible = False
-                txtPropBrushClipartAngle.Visible = False
-                lblPropBrushClipartAngle.Visible = False
-                lblPropBrushAlternativeBrushColor.Visible = True
-                txtPropBrushAlternativeBrushColor.Visible = True
-                txtPropBrushColor.Visible = False
-                lblPropBrushColor.Visible = False
-                lblPropBrushClipartPosition.Visible = False
-                cboPropBrushClipartPosition.Visible = False
-
-                cmdPropBrushBrowseClipart.Enabled = True
-                txtPropBrushClipartDensity.Enabled = False
-                txtPropBrushClipartZoomFactor.Enabled = False
-                cboPropBrushClipartAngleMode.Enabled = False
-                txtPropBrushClipartAngle.Enabled = False
-                txtPropBrushAlternativeBrushColor.Enabled = True
-                cboPropBrushClipartCrop.Enabled = False
-
-            Case cBrush.HatchTypeEnum.Pattern
-                cmdPropBrushReseed.Visible = False
-
-                cmdPropBrushBrowseClipart.Visible = False
-                lblPropBrushClipartImage.Visible = False
-                picPropBrushClipartImage.Visible = False
-                lblPropBrushClipartZoomFactor.Visible = False
-                txtPropBrushClipartZoomFactor.Visible = False
-                cboPropBrushPatternType.Visible = True
-                lblPropBrushPatternType.Visible = True
-                cboPropBrushPatternPen.Visible = True
-                lblPropBrushPatternPen.Visible = True
-                lblPropBrushClipartCrop.Visible = False
-                cboPropBrushClipartCrop.Visible = False
-                lblPropBrushClipartDensity.Visible = True
-                txtPropBrushClipartDensity.Visible = True
-                lblPropBrushClipartAngleMode.Visible = False
-                cboPropBrushClipartAngleMode.Visible = False
-                txtPropBrushClipartAngle.Visible = True
-                lblPropBrushClipartAngle.Visible = True
-                lblPropBrushAlternativeBrushColor.Visible = True
-                txtPropBrushAlternativeBrushColor.Visible = True
-                txtPropBrushColor.Visible = True
-                lblPropBrushColor.Visible = True
-                lblPropBrushClipartPosition.Visible = False
-                cboPropBrushClipartPosition.Visible = False
-
-                txtPropBrushClipartDensity.Enabled = True
-                cboPropBrushClipartAngleMode.Enabled = True
-                txtPropBrushClipartAngle.Enabled = True
-
-                txtPropBrushClipartDensity.Value = Item.Brush.ClipartDensity * 100
-                cboPropBrushClipartAngleMode.SelectedIndex = Item.Brush.ClipartAngleMode
-                txtPropBrushClipartAngle.Value = Item.Brush.ClipartAngle
-                cboPropBrushPatternType.SelectedIndex = Item.Brush.PatternType
-                cboPropBrushPatternPen.SelectedIndex = Item.Brush.PatternPenStyle
-                txtPropBrushAlternativeBrushColor.EditValue = Item.Brush.ClipartAlternativeColor
-            Case cBrush.HatchTypeEnum.Clipart
-                cmdPropBrushReseed.Visible = True
-
-                cmdPropBrushBrowseClipart.Visible = True
-                lblPropBrushClipartImage.Visible = True
-                picPropBrushClipartImage.Visible = True
-                cboPropBrushPatternType.Visible = False
-                lblPropBrushPatternType.Visible = False
-                cboPropBrushPatternPen.Visible = False
-                lblPropBrushPatternPen.Visible = False
-                lblPropBrushClipartZoomFactor.Visible = True
-                txtPropBrushClipartZoomFactor.Visible = True
-                lblPropBrushClipartCrop.Visible = True
-                cboPropBrushClipartCrop.Visible = True
-                lblPropBrushClipartDensity.Visible = True
-                txtPropBrushClipartDensity.Visible = True
-                lblPropBrushClipartAngleMode.Visible = True
-                cboPropBrushClipartAngleMode.Visible = True
-                txtPropBrushClipartAngle.Visible = True
-                lblPropBrushClipartAngle.Visible = True
-                lblPropBrushAlternativeBrushColor.Visible = True
-                txtPropBrushAlternativeBrushColor.Visible = True
-                txtPropBrushColor.Visible = True
-                lblPropBrushColor.Visible = True
-                lblPropBrushClipartPosition.Visible = True
-                cboPropBrushClipartPosition.Visible = True
-
-                cmdPropBrushBrowseClipart.Enabled = True
-                txtPropBrushClipartDensity.Enabled = True
-                txtPropBrushClipartZoomFactor.Enabled = True
-                cboPropBrushClipartAngleMode.Enabled = True
-                txtPropBrushAlternativeBrushColor.Enabled = True
-                cboPropBrushClipartCrop.Enabled = True
-
-                cmdPropBrushReseed.Enabled = Item.Brush.HatchType = cBrush.HatchTypeEnum.Clipart
-                txtPropBrushClipartDensity.Value = Item.Brush.ClipartDensity * 100
-                txtPropBrushClipartZoomFactor.Value = Item.Brush.ClipartZoomFactor * 1000
-                cboPropBrushClipartAngleMode.SelectedIndex = Item.Brush.ClipartAngleMode
-                txtPropBrushClipartAngle.Value = Item.Brush.ClipartAngle
-                cboPropBrushClipartPosition.SelectedIndex = Item.Brush.ClipartPosition
-                txtPropBrushAlternativeBrushColor.EditValue = Item.Brush.ClipartAlternativeColor
-                cboPropBrushClipartCrop.SelectedIndex = Item.Brush.ClipartCrop
-            Case cBrush.HatchTypeEnum.Solid
-                cmdPropBrushReseed.Visible = False
-
-                cmdPropBrushBrowseClipart.Visible = False
-                lblPropBrushClipartImage.Visible = False
-                picPropBrushClipartImage.Visible = False
-                cboPropBrushPatternType.Visible = False
-                lblPropBrushPatternType.Visible = False
-                cboPropBrushPatternPen.Visible = False
-                lblPropBrushPatternPen.Visible = False
-                lblPropBrushClipartZoomFactor.Visible = False
-                txtPropBrushClipartZoomFactor.Visible = False
-                lblPropBrushClipartCrop.Visible = False
-                cboPropBrushClipartCrop.Visible = False
-                lblPropBrushClipartDensity.Visible = False
-                txtPropBrushClipartDensity.Visible = False
-                lblPropBrushClipartAngleMode.Visible = False
-                cboPropBrushClipartAngleMode.Visible = False
-                txtPropBrushClipartAngle.Visible = False
-                lblPropBrushClipartAngle.Visible = False
-                lblPropBrushAlternativeBrushColor.Visible = False
-                txtPropBrushAlternativeBrushColor.Visible = False
-                txtPropBrushColor.Visible = True
-                lblPropBrushColor.Visible = True
-                lblPropBrushClipartPosition.Visible = False
-                cboPropBrushClipartPosition.Visible = False
-            Case Else
-                cmdPropBrushReseed.Visible = False
-
-                cmdPropBrushBrowseClipart.Visible = False
-                lblPropBrushClipartImage.Visible = False
-                picPropBrushClipartImage.Visible = False
-                cboPropBrushPatternType.Visible = False
-                lblPropBrushPatternType.Visible = False
-                cboPropBrushPatternPen.Visible = False
-                lblPropBrushPatternPen.Visible = False
-                lblPropBrushClipartZoomFactor.Visible = False
-                txtPropBrushClipartZoomFactor.Visible = False
-                lblPropBrushClipartCrop.Visible = False
-                cboPropBrushClipartCrop.Visible = False
-                lblPropBrushClipartDensity.Visible = False
-                txtPropBrushClipartDensity.Visible = False
-                lblPropBrushClipartAngleMode.Visible = False
-                cboPropBrushClipartAngleMode.Visible = False
-                txtPropBrushClipartAngle.Visible = False
-                lblPropBrushClipartAngle.Visible = False
-                lblPropBrushAlternativeBrushColor.Visible = False
-                txtPropBrushAlternativeBrushColor.Visible = False
-                txtPropBrushColor.Visible = False
-                lblPropBrushColor.Visible = False
-                lblPropBrushClipartPosition.Visible = False
-                cboPropBrushClipartPosition.Visible = False
-
-                cmdPropBrushBrowseClipart.Enabled = False
-                txtPropBrushClipartDensity.Enabled = False
-                txtPropBrushClipartZoomFactor.Enabled = False
-                cboPropBrushClipartAngleMode.Enabled = False
-                txtPropBrushAlternativeBrushColor.Enabled = False
-                cboPropBrushClipartCrop.Enabled = False
-        End Select
+        Height = (45 + If(bStyleVisible, pnlBrushStyle.Height, 0) + If(bClipartVisible, pnlBrushClipart.Height, 0) + If(btexturevisible, pnlBrushTexture.Height, 0) + If(bClipartSettingsVisible, pnlBrushClipartSettings.Height, 0) + If(bPatternVisible, pnlBrushPattern.Height, 0) + If(bAlternativeColorVisible, pnlBrushAlternativeColor.Height, 0) + If(bClipartAndPatternSettingsVisible, pnlBrushClipartAnPatternSettings.Height, 0)) * CurrentAutoScaleDimensions.Height / 96.0F
     End Sub
 
     Private Sub cboPropBrushClipartPosition_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropBrushClipartPosition.SelectedIndexChanged
@@ -257,15 +144,6 @@ Friend Class cItemBrushStylePropertyControl
         lblPropBrushClipartAngle.Enabled = txtPropBrushClipartAngle.Enabled
     End Sub
 
-    Private Sub txtPropBrushClipartAngle_ValueChanged(sender As Object, e As EventArgs)
-        If Not DisabledObjectProperty() Then
-            Item.Brush.ClipartAngle = txtPropBrushClipartAngle.Value
-            Call MyBase.TakeUndoSnapshot()
-            Call MyBase.PropertyChanged("BrushClipartAngle")
-            Call MyBase.MapInvalidate()
-        End If
-    End Sub
-
     Private Sub txtPropBrushColor_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropBrushColor.EditValueChanged
         If Not DisabledObjectProperty() Then
             Item.Brush.Color = txtPropBrushColor.EditValue
@@ -296,37 +174,24 @@ Friend Class cItemBrushStylePropertyControl
     Private Sub cmdCompassBrowseClipart_Click(sender As Object, e As EventArgs) Handles cmdPropBrushBrowseClipart.Click
         Using oOfd As OpenFileDialog = New OpenFileDialog
             With oOfd
-                If cboPropBrushHatch.SelectedIndex = cBrush.HatchTypeEnum.Texture Then
-                    .Title = GetLocalizedString("main.loadtexturedialog")
-                    .Filter = GetLocalizedString("main.filetypePNG") & " (*.PNG)|*.PNG|" & GetLocalizedString("main.filetypeBMP") & " (*.BMP)|*.BMP|" & GetLocalizedString("main.filetypeALL") & " (*.*)|*.*"
-                    .FilterIndex = 1
-                    If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                        Item.Brush.Texture = modPaint.SafeBitmapFromFileUnlocked(.FileName)
-                        picPropBrushClipartImage.Image = Item.Brush.Texture
+                .Title = GetLocalizedString("main.loadclipartdialog")
+                .Filter = GetLocalizedString("main.filetypeSVG") & " (*.SVG)|*.SVG|" & GetLocalizedString("main.filetypeALL") & " (*.*)|*.*"
+                .FilterIndex = 1
+                If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                    Try
+                        Try
+                            Dim oClipart As Drawings.cDrawClipArt = New Drawings.cDrawClipArt(.FileName)
+                            Item.Brush.Clipart = oClipart
+                            picPropBrushClipartImage.SvgImage = DevExpress.Utils.Svg.SvgImage.FromFile(.FileName)
+                        Catch
+                            Item.Brush.Clipart = Nothing
+                            picPropBrushClipartImage.Image = Nothing
+                        End Try
                         Call MyBase.TakeUndoSnapshot()
                         Call MyBase.PropertyChanged("BrushClipart")
                         Call MyBase.MapInvalidate()
-                    End If
-                ElseIf cboPropBrushHatch.SelectedIndex = cBrush.HatchTypeEnum.Clipart Then
-                    .Title = GetLocalizedString("main.loadclipartdialog")
-                    .Filter = GetLocalizedString("main.filetypeSVG") & " (*.SVG)|*.SVG|" & GetLocalizedString("main.filetypeALL") & " (*.*)|*.*"
-                    .FilterIndex = 1
-                    If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                        Try
-                            Try
-                                Dim oClipart As Drawings.cDrawClipArt = New Drawings.cDrawClipArt(.FileName)
-                                Item.Brush.Clipart = oClipart
-                                picPropBrushClipartImage.SvgImage = DevExpress.Utils.Svg.SvgImage.FromFile(.FileName)
-                            Catch
-                                Item.Brush.Clipart = Nothing
-                                picPropBrushClipartImage.Image = Nothing
-                            End Try
-                            Call MyBase.TakeUndoSnapshot()
-                            Call MyBase.PropertyChanged("BrushClipart")
-                            Call MyBase.MapInvalidate()
-                        Catch
-                        End Try
-                    End If
+                    Catch
+                    End Try
                 End If
             End With
         End Using
@@ -334,40 +199,51 @@ Friend Class cItemBrushStylePropertyControl
 
     Private Sub cboPropBrushPattern_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropBrushPattern.EditValueChanged
         If Not DisabledObjectProperty() Then
+            If cBrush.IsUserBrushID(cboPropBrushPattern.EditValue) AndAlso Not oSurvey.Brushes.Contains(cboPropBrushPattern.EditValue) Then
+                Call oSurvey.Brushes.Add(cboPropBrushPattern.GetUserBrush(cboPropBrushPattern.EditValue))
+                Call cboPropBrushPattern.Rebind(oSurvey)
+            End If
             Item.Brush.ID = cboPropBrushPattern.EditValue
             Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("BrushPattern")
             Call MyBase.MapInvalidate()
         End If
 
+
         If Item IsNot Nothing Then
             If Item.Brush.Type = cBrush.BrushTypeEnum.Custom Then
                 cmdPropSave.Visible = True
-                cmdPropBrushBrowseClipart.Enabled = True
                 cmdPropBrushReseed.Enabled = True
-                txtPropBrushClipartDensity.Enabled = True
-                txtPropBrushClipartZoomFactor.Enabled = True
-                Select Case cboPropBrushHatch.SelectedIndex
-                    Case cBrush.HatchTypeEnum.Clipart
-                        If Item.Brush.Clipart Is Nothing Then
-                            picPropBrushClipartImage.Image = Nothing
-                        Else
-                            picPropBrushClipartImage.Image = Item.Brush.Clipart.GetThumbnailImage(picPropBrushClipartImage.Width, picPropBrushClipartImage.Height)
-                        End If
-                    Case cBrush.HatchTypeEnum.Texture
-                        If Item.Brush.Texture Is Nothing Then
-                            picPropBrushClipartImage.Image = Nothing
-                        Else
-                            picPropBrushClipartImage.Image = Item.Brush.Texture
-                        End If
-                End Select
 
-                Height = 238 * CurrentAutoScaleDimensions.Height / 96.0F
+                cboPropBrushHatch.SelectedIndex = Item.Brush.HatchType
+                txtPropBrushColor.EditValue = Item.Brush.Color
+
+                If Item.Brush.Clipart Is Nothing Then
+                    picPropBrushClipartImage.SvgImage = Nothing
+                Else
+                    picPropBrushClipartImage.SvgImage = modDevExpress.SvgImageFromClipart(Item.Brush.Clipart)
+                End If
+                If Item.Brush.Texture Is Nothing Then
+                    picPropBrushTextureImage.Image = Nothing
+                Else
+                    picPropBrushTextureImage.Image = Item.Brush.Texture
+                End If
+
+                txtPropBrushClipartDensity.Value = Item.Brush.ClipartDensity * 100.0F
+                txtPropBrushClipartZoomFactor.Value = Item.Brush.ClipartZoomFactor * 1000.0F
+                cboPropBrushClipartAngleMode.SelectedIndex = Item.Brush.ClipartAngleMode
+                txtPropBrushClipartAngle.Value = Item.Brush.ClipartAngle
+                cboPropBrushPatternType.SelectedIndex = Item.Brush.PatternType
+                cboPropBrushPatternPen.SelectedIndex = Item.Brush.PatternPenStyle
+                txtPropBrushAlternativeBrushColor.EditValue = Item.Brush.ClipartAlternativeColor
+                cboPropBrushClipartPosition.SelectedIndex = Item.Brush.ClipartPosition
+                txtPropBrushAlternativeBrushColor.EditValue = Item.Brush.ClipartAlternativeColor
+                cboPropBrushClipartCrop.SelectedIndex = Item.Brush.ClipartCrop
             Else
                 cmdPropSave.Visible = False
                 cmdPropBrushReseed.Visible = Item.Brush.HatchType = cBrush.HatchTypeEnum.Clipart
-                Height = 45 * CurrentAutoScaleDimensions.Height / 96.0F
             End If
+            Call pRefreshHeight()
         End If
     End Sub
 
@@ -457,7 +333,7 @@ Friend Class cItemBrushStylePropertyControl
 
     Private Sub txtPropBrushClipartZoomFactor_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropBrushClipartZoomFactor.EditValueChanged
         If Not DisabledObjectProperty() Then
-            Item.Brush.ClipartZoomFactor = txtPropBrushClipartZoomFactor.Value / 1000
+            Item.Brush.ClipartZoomFactor = txtPropBrushClipartZoomFactor.Value / 1000.0F
             Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("BrushClipartZoomFactor")
             Call MyBase.MapInvalidate()
@@ -466,10 +342,77 @@ Friend Class cItemBrushStylePropertyControl
 
     Private Sub txtPropBrushClipartDensity_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropBrushClipartDensity.EditValueChanged
         If Not DisabledObjectProperty() Then
-            Item.Brush.ClipartDensity = txtPropBrushClipartDensity.Value / 100
+            Item.Brush.ClipartDensity = txtPropBrushClipartDensity.Value / 100.0F
             Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("BrushClipartDensity")
             Call MyBase.MapInvalidate()
         End If
+    End Sub
+
+    Private Sub txtPropBrushClipartAngle_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropBrushClipartAngle.EditValueChanged
+        If Not DisabledObjectProperty() Then
+            Item.Brush.ClipartAngle = txtPropBrushClipartAngle.Value
+            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.PropertyChanged("BrushClipartAngle")
+            Call MyBase.MapInvalidate()
+        End If
+    End Sub
+
+    Private Sub cboPropBrushHatch_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropBrushHatch.EditValueChanged
+        If Not DisabledObjectProperty() Then
+            Item.Brush.HatchType = cboPropBrushHatch.SelectedIndex
+
+            If Item.Brush.HatchType = cBrush.HatchTypeEnum.Clipart Then
+                Item.Brush.Clipart = modDevExpress.SvgImageToClipart(picPropBrushClipartImage.SvgImage)
+            ElseIf Item.Brush.HatchType = cBrush.HatchTypeEnum.Texture Then
+                Item.Brush.Texture = picPropBrushTextureImage.Image
+            End If
+
+            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.PropertyChanged("BrushHatch")
+            Call MyBase.MapInvalidate()
+        End If
+
+        'If Item.Brush.Type = cBrush.BrushTypeEnum.Custom Then
+        '    Select Case Item.Brush.HatchType
+        '        Case cBrush.HatchTypeEnum.Texture
+        '        Case cBrush.HatchTypeEnum.Pattern
+        '            txtPropBrushClipartDensity.Value = Item.Brush.ClipartDensity * 100.0F
+        '            cboPropBrushClipartAngleMode.SelectedIndex = Item.Brush.ClipartAngleMode
+        '            txtPropBrushClipartAngle.Value = Item.Brush.ClipartAngle
+        '            cboPropBrushPatternType.SelectedIndex = Item.Brush.PatternType
+        '            cboPropBrushPatternPen.SelectedIndex = Item.Brush.PatternPenStyle
+        '            txtPropBrushAlternativeBrushColor.EditValue = Item.Brush.ClipartAlternativeColor
+        '        Case cBrush.HatchTypeEnum.Clipart
+        '            txtPropBrushClipartDensity.Value = Item.Brush.ClipartDensity * 100.0F
+        '            txtPropBrushClipartZoomFactor.Value = Item.Brush.ClipartZoomFactor * 1000.0F
+        '            cboPropBrushClipartAngleMode.SelectedIndex = Item.Brush.ClipartAngleMode
+        '            txtPropBrushClipartAngle.Value = Item.Brush.ClipartAngle
+        '            cboPropBrushClipartPosition.SelectedIndex = Item.Brush.ClipartPosition
+        '            txtPropBrushAlternativeBrushColor.EditValue = Item.Brush.ClipartAlternativeColor
+        '            cboPropBrushClipartCrop.SelectedIndex = Item.Brush.ClipartCrop
+        '        Case cBrush.HatchTypeEnum.Solid
+        '        Case Else
+        '    End Select
+        'End If
+
+        Call pRefreshHeight()
+    End Sub
+
+    Private Sub cmdPropBrushBrowseTexture_Click(sender As Object, e As EventArgs) Handles cmdPropBrushBrowseTexture.Click
+        Using oOfd As OpenFileDialog = New OpenFileDialog
+            With oOfd
+                .Title = GetLocalizedString("main.loadtexturedialog")
+                .Filter = GetLocalizedString("main.filetypePNG") & " (*.PNG)|*.PNG|" & GetLocalizedString("main.filetypeBMP") & " (*.BMP)|*.BMP|" & GetLocalizedString("main.filetypeALL") & " (*.*)|*.*"
+                .FilterIndex = 1
+                If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                    Item.Brush.Texture = modPaint.SafeBitmapFromFileUnlocked(.FileName)
+                    picPropBrushTextureImage.Image = Item.Brush.Texture
+                    Call MyBase.TakeUndoSnapshot()
+                    Call MyBase.PropertyChanged("BrushTexture")
+                    Call MyBase.MapInvalidate()
+                End If
+            End With
+        End Using
     End Sub
 End Class

@@ -673,6 +673,21 @@
   <data name="&gt;&gt;pnlPenStyle.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="cmdPropPenCleanClipart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdPropPenCleanClipart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>255, 0</value>
+  </data>
+  <data name="cmdPropPenCleanClipart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdPropPenCleanClipart.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="cmdPropPenCleanClipart.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
   <data name="&gt;&gt;cmdPropPenCleanClipart.Name" xml:space="preserve">
     <value>cmdPropPenCleanClipart</value>
   </data>
@@ -684,6 +699,21 @@
   </data>
   <data name="&gt;&gt;cmdPropPenCleanClipart.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="cmdPropPenBrowseClipart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cmdPropPenBrowseClipart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>225, 0</value>
+  </data>
+  <data name="cmdPropPenBrowseClipart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdPropPenBrowseClipart.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="cmdPropPenBrowseClipart.Text" xml:space="preserve">
+    <value>...</value>
   </data>
   <data name="&gt;&gt;cmdPropPenBrowseClipart.Name" xml:space="preserve">
     <value>cmdPropPenBrowseClipart</value>
@@ -697,6 +727,18 @@
   <data name="&gt;&gt;cmdPropPenBrowseClipart.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="picPropPenClipartImage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>157, 0</value>
+  </data>
+  <data name="picPropPenClipartImage.Properties.NullText" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="picPropPenClipartImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 64</value>
+  </data>
+  <data name="picPropPenClipartImage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="&gt;&gt;picPropPenClipartImage.Name" xml:space="preserve">
     <value>picPropPenClipartImage</value>
   </data>
@@ -708,6 +750,21 @@
   </data>
   <data name="&gt;&gt;picPropPenClipartImage.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="lblPropPenClipartImage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPropPenClipartImage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>84, 4</value>
+  </data>
+  <data name="lblPropPenClipartImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 13</value>
+  </data>
+  <data name="lblPropPenClipartImage.TabIndex" type="System.Int32, mscorlib">
+    <value>239</value>
+  </data>
+  <data name="lblPropPenClipartImage.Text" xml:space="preserve">
+    <value>Clipart:</value>
   </data>
   <data name="&gt;&gt;lblPropPenClipartImage.Name" xml:space="preserve">
     <value>lblPropPenClipartImage</value>
@@ -977,7 +1034,7 @@
     <value>5</value>
   </data>
   <data name="cboPropPenClipartPenStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>201, 0</value>
+    <value>225, 0</value>
   </data>
   <data name="cboPropPenClipartPenStyle.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
     <value>Combo</value>
@@ -1058,7 +1115,7 @@
     <value>0</value>
   </data>
   <data name="txtPropPenClipartPenWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>201, 26</value>
+    <value>225, 26</value>
   </data>
   <data name="txtPropPenClipartPenWidth.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
     <value>Combo</value>
@@ -1085,7 +1142,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPropPenClipartPenColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>276, 27</value>
+    <value>300, 27</value>
   </data>
   <data name="lblPropPenClipartPenColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 13</value>
@@ -1139,7 +1196,7 @@
     <value />
   </data>
   <data name="txtPropPenClipartPenColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>319, 26</value>
+    <value>343, 26</value>
   </data>
   <data name="txtPropPenClipartPenColor.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
     <value>Combo</value>
@@ -1257,110 +1314,5 @@
   </data>
   <data name="&gt;&gt;cmdPropSave.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="cmdPropPenBrowseClipart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cmdPropPenBrowseClipart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>225, 0</value>
-  </data>
-  <data name="cmdPropPenBrowseClipart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="cmdPropPenBrowseClipart.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="cmdPropPenBrowseClipart.Text" xml:space="preserve">
-    <value>...</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPenBrowseClipart.Name" xml:space="preserve">
-    <value>cmdPropPenBrowseClipart</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPenBrowseClipart.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPenBrowseClipart.Parent" xml:space="preserve">
-    <value>pnlPenClipart</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPenBrowseClipart.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="picPropPenClipartImage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>157, 0</value>
-  </data>
-  <data name="picPropPenClipartImage.Properties.NullText" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="picPropPenClipartImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 64</value>
-  </data>
-  <data name="picPropPenClipartImage.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;picPropPenClipartImage.Name" xml:space="preserve">
-    <value>picPropPenClipartImage</value>
-  </data>
-  <data name="&gt;&gt;picPropPenClipartImage.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PictureEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;picPropPenClipartImage.Parent" xml:space="preserve">
-    <value>pnlPenClipart</value>
-  </data>
-  <data name="&gt;&gt;picPropPenClipartImage.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="lblPropPenClipartImage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblPropPenClipartImage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>84, 4</value>
-  </data>
-  <data name="lblPropPenClipartImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
-  </data>
-  <data name="lblPropPenClipartImage.TabIndex" type="System.Int32, mscorlib">
-    <value>239</value>
-  </data>
-  <data name="lblPropPenClipartImage.Text" xml:space="preserve">
-    <value>Clipart:</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartImage.Name" xml:space="preserve">
-    <value>lblPropPenClipartImage</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartImage.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartImage.Parent" xml:space="preserve">
-    <value>pnlPenClipart</value>
-  </data>
-  <data name="&gt;&gt;lblPropPenClipartImage.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="cmdPropPenCleanClipart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cmdPropPenCleanClipart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>255, 0</value>
-  </data>
-  <data name="cmdPropPenCleanClipart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="cmdPropPenCleanClipart.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="cmdPropPenCleanClipart.Text" xml:space="preserve">
-    <value>...</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPenCleanClipart.Name" xml:space="preserve">
-    <value>cmdPropPenCleanClipart</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPenCleanClipart.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPenCleanClipart.Parent" xml:space="preserve">
-    <value>pnlPenClipart</value>
-  </data>
-  <data name="&gt;&gt;cmdPropPenCleanClipart.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
 </root>

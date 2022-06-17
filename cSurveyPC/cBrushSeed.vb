@@ -25,6 +25,12 @@ Namespace cSurvey.Design
             Call Restart()
         End Sub
 
+        Friend Sub New(Base As Single, Increment As Single)
+            sBase = Base
+            sIncrement = Increment
+            Call Restart()
+        End Sub
+
         Friend Sub New(ByVal Seed As cBrushSeed)
             sBase = Seed.Base
             sIncrement = Seed.Increment
@@ -46,8 +52,8 @@ Namespace cSurvey.Design
         End Function
 
         Public Sub Reseed()
-            sBase = modNumbers.GetRandom(0, 100) ' Rnd() * 100
-            sIncrement = modNumbers.GetRandom(0, 30) ' Rnd() * 30
+            sBase = modNumbers.GetRandom(0, 100)
+            sIncrement = modNumbers.GetRandom(0, 30)
             Call Restart()
             RaiseEvent OnReseed(Me)
         End Sub
@@ -59,12 +65,12 @@ Namespace cSurvey.Design
 
         Public Function [Next]() As Single
             Dim sSeed As Single = Math.Abs(sCurrentBase) + sCurrentIncrement
-            If sSeed >= 100 Then
-                sSeed -= 100
-                sCurrentIncrement = sCurrentIncrement + 3
-                If sCurrentIncrement > 30 Then sCurrentIncrement -= 30
+            If sSeed >= 100.0F Then
+                sSeed -= 100.0F
+                sCurrentIncrement = sCurrentIncrement + 3.0F
+                If sCurrentIncrement > 30.0F Then sCurrentIncrement -= 30.0F
             End If
-            Dim iSign As Integer = IIf(sSeed Mod 2, -1, 1)
+            Dim iSign As Integer = If(sSeed Mod 2, -1, 1)
             sCurrentBase = sSeed * iSign
             Return sCurrentBase
         End Function

@@ -35,7 +35,6 @@ Partial Class cItemBrushStylePropertyControl
         Me.lblPropBrushClipartAngleMode = New DevExpress.XtraEditors.LabelControl()
         Me.cboPropBrushClipartAngleMode = New System.Windows.Forms.ComboBox()
         Me.lblPattern = New DevExpress.XtraEditors.LabelControl()
-        Me.cboPropBrushHatch = New System.Windows.Forms.ComboBox()
         Me.lblPropBrushClipartZoomFactor = New DevExpress.XtraEditors.LabelControl()
         Me.lblPropBrushClipartDensity = New DevExpress.XtraEditors.LabelControl()
         Me.lblPropBrushPatternType = New DevExpress.XtraEditors.LabelControl()
@@ -63,6 +62,17 @@ Partial Class cItemBrushStylePropertyControl
         Me.txtPropBrushClipartZoomFactor = New DevExpress.XtraEditors.SpinEdit()
         Me.txtPropBrushClipartDensity = New DevExpress.XtraEditors.SpinEdit()
         Me.txtPropBrushClipartAngle = New DevExpress.XtraEditors.SpinEdit()
+        Me.pnlBrushStyle = New DevExpress.XtraEditors.PanelControl()
+        Me.cboPropBrushHatch = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.pnlBrushClipart = New DevExpress.XtraEditors.PanelControl()
+        Me.pnlBrushPattern = New DevExpress.XtraEditors.PanelControl()
+        Me.pnlBrushAlternativeColor = New DevExpress.XtraEditors.PanelControl()
+        Me.pnlBrushClipartSettings = New DevExpress.XtraEditors.PanelControl()
+        Me.pnlBrushClipartAnPatternSettings = New DevExpress.XtraEditors.PanelControl()
+        Me.pnlBrushTexture = New DevExpress.XtraEditors.PanelControl()
+        Me.picPropBrushTextureImage = New DevExpress.XtraEditors.PictureEdit()
+        Me.lblPropBrushTextureImage = New DevExpress.XtraEditors.LabelControl()
+        Me.cmdPropBrushBrowseTexture = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.txtPropBrushColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropBrushAlternativeBrushColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picPropBrushClipartImage.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -71,6 +81,22 @@ Partial Class cItemBrushStylePropertyControl
         CType(Me.txtPropBrushClipartZoomFactor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropBrushClipartDensity.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropBrushClipartAngle.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlBrushStyle, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlBrushStyle.SuspendLayout()
+        CType(Me.cboPropBrushHatch.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlBrushClipart, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlBrushClipart.SuspendLayout()
+        CType(Me.pnlBrushPattern, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlBrushPattern.SuspendLayout()
+        CType(Me.pnlBrushAlternativeColor, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlBrushAlternativeColor.SuspendLayout()
+        CType(Me.pnlBrushClipartSettings, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlBrushClipartSettings.SuspendLayout()
+        CType(Me.pnlBrushClipartAnPatternSettings, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlBrushClipartAnPatternSettings.SuspendLayout()
+        CType(Me.pnlBrushTexture, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlBrushTexture.SuspendLayout()
+        CType(Me.picPropBrushTextureImage.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cboPropBrushPattern
@@ -138,14 +164,6 @@ Partial Class cItemBrushStylePropertyControl
         '
         resources.ApplyResources(Me.lblPattern, "lblPattern")
         Me.lblPattern.Name = "lblPattern"
-        '
-        'cboPropBrushHatch
-        '
-        Me.cboPropBrushHatch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboPropBrushHatch.FormattingEnabled = True
-        Me.cboPropBrushHatch.Items.AddRange(New Object() {resources.GetString("cboPropBrushHatch.Items"), resources.GetString("cboPropBrushHatch.Items1"), resources.GetString("cboPropBrushHatch.Items2"), resources.GetString("cboPropBrushHatch.Items3"), resources.GetString("cboPropBrushHatch.Items4")})
-        resources.ApplyResources(Me.cboPropBrushHatch, "cboPropBrushHatch")
-        Me.cboPropBrushHatch.Name = "cboPropBrushHatch"
         '
         'lblPropBrushClipartZoomFactor
         '
@@ -353,7 +371,7 @@ Partial Class cItemBrushStylePropertyControl
         resources.ApplyResources(Me.txtPropBrushClipartAngle, "txtPropBrushClipartAngle")
         Me.txtPropBrushClipartAngle.MenuManager = Me.BarManager
         Me.txtPropBrushClipartAngle.Name = "txtPropBrushClipartAngle"
-        Me.txtPropBrushClipartAngle.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("SpinEdit1.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtPropBrushClipartAngle.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtPropBrushClipartAngle.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
         Me.txtPropBrushClipartAngle.Properties.DisplayFormat.FormatString = "N0"
         Me.txtPropBrushClipartAngle.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.txtPropBrushClipartAngle.Properties.EditFormat.FormatString = "N0"
@@ -362,39 +380,122 @@ Partial Class cItemBrushStylePropertyControl
         Me.txtPropBrushClipartAngle.Properties.MaskSettings.Set("mask", "N0")
         Me.txtPropBrushClipartAngle.Properties.MaxValue = New Decimal(New Integer() {359, 0, 0, 0})
         '
+        'pnlBrushStyle
+        '
+        Me.pnlBrushStyle.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlBrushStyle.Controls.Add(Me.lblPattern)
+        Me.pnlBrushStyle.Controls.Add(Me.lblPropBrushColor)
+        Me.pnlBrushStyle.Controls.Add(Me.txtPropBrushColor)
+        Me.pnlBrushStyle.Controls.Add(Me.cboPropBrushHatch)
+        resources.ApplyResources(Me.pnlBrushStyle, "pnlBrushStyle")
+        Me.pnlBrushStyle.Name = "pnlBrushStyle"
+        '
+        'cboPropBrushHatch
+        '
+        resources.ApplyResources(Me.cboPropBrushHatch, "cboPropBrushHatch")
+        Me.cboPropBrushHatch.MenuManager = Me.BarManager
+        Me.cboPropBrushHatch.Name = "cboPropBrushHatch"
+        Me.cboPropBrushHatch.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboPropBrushHatch.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboPropBrushHatch.Properties.Items.AddRange(New Object() {resources.GetString("cboPropBrushHatch.Properties.Items"), resources.GetString("cboPropBrushHatch.Properties.Items1"), resources.GetString("cboPropBrushHatch.Properties.Items2"), resources.GetString("cboPropBrushHatch.Properties.Items3"), resources.GetString("cboPropBrushHatch.Properties.Items4")})
+        Me.cboPropBrushHatch.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        '
+        'pnlBrushClipart
+        '
+        Me.pnlBrushClipart.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlBrushClipart.Controls.Add(Me.picPropBrushClipartImage)
+        Me.pnlBrushClipart.Controls.Add(Me.lblPropBrushClipartImage)
+        Me.pnlBrushClipart.Controls.Add(Me.cmdPropBrushBrowseClipart)
+        resources.ApplyResources(Me.pnlBrushClipart, "pnlBrushClipart")
+        Me.pnlBrushClipart.Name = "pnlBrushClipart"
+        '
+        'pnlBrushPattern
+        '
+        Me.pnlBrushPattern.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlBrushPattern.Controls.Add(Me.cboPropBrushPatternType)
+        Me.pnlBrushPattern.Controls.Add(Me.lblPropBrushPatternType)
+        Me.pnlBrushPattern.Controls.Add(Me.cboPropBrushPatternPen)
+        Me.pnlBrushPattern.Controls.Add(Me.lblPropBrushPatternPen)
+        resources.ApplyResources(Me.pnlBrushPattern, "pnlBrushPattern")
+        Me.pnlBrushPattern.Name = "pnlBrushPattern"
+        '
+        'pnlBrushAlternativeColor
+        '
+        Me.pnlBrushAlternativeColor.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlBrushAlternativeColor.Controls.Add(Me.txtPropBrushAlternativeBrushColor)
+        Me.pnlBrushAlternativeColor.Controls.Add(Me.lblPropBrushAlternativeBrushColor)
+        resources.ApplyResources(Me.pnlBrushAlternativeColor, "pnlBrushAlternativeColor")
+        Me.pnlBrushAlternativeColor.Name = "pnlBrushAlternativeColor"
+        '
+        'pnlBrushClipartSettings
+        '
+        Me.pnlBrushClipartSettings.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlBrushClipartSettings.Controls.Add(Me.lblPropBrushClipartZoomFactor)
+        Me.pnlBrushClipartSettings.Controls.Add(Me.txtPropBrushClipartZoomFactor)
+        Me.pnlBrushClipartSettings.Controls.Add(Me.cboPropBrushClipartPosition)
+        Me.pnlBrushClipartSettings.Controls.Add(Me.cboPropBrushClipartCrop)
+        Me.pnlBrushClipartSettings.Controls.Add(Me.lblPropBrushClipartCrop)
+        Me.pnlBrushClipartSettings.Controls.Add(Me.lblPropBrushClipartPosition)
+        resources.ApplyResources(Me.pnlBrushClipartSettings, "pnlBrushClipartSettings")
+        Me.pnlBrushClipartSettings.Name = "pnlBrushClipartSettings"
+        '
+        'pnlBrushClipartAnPatternSettings
+        '
+        Me.pnlBrushClipartAnPatternSettings.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlBrushClipartAnPatternSettings.Controls.Add(Me.txtPropBrushClipartDensity)
+        Me.pnlBrushClipartAnPatternSettings.Controls.Add(Me.lblPropBrushClipartAngleMode)
+        Me.pnlBrushClipartAnPatternSettings.Controls.Add(Me.cboPropBrushClipartAngleMode)
+        Me.pnlBrushClipartAnPatternSettings.Controls.Add(Me.txtPropBrushClipartAngle)
+        Me.pnlBrushClipartAnPatternSettings.Controls.Add(Me.lblPropBrushClipartDensity)
+        Me.pnlBrushClipartAnPatternSettings.Controls.Add(Me.lblPropBrushClipartAngle)
+        resources.ApplyResources(Me.pnlBrushClipartAnPatternSettings, "pnlBrushClipartAnPatternSettings")
+        Me.pnlBrushClipartAnPatternSettings.Name = "pnlBrushClipartAnPatternSettings"
+        '
+        'pnlBrushTexture
+        '
+        Me.pnlBrushTexture.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlBrushTexture.Controls.Add(Me.picPropBrushTextureImage)
+        Me.pnlBrushTexture.Controls.Add(Me.lblPropBrushTextureImage)
+        Me.pnlBrushTexture.Controls.Add(Me.cmdPropBrushBrowseTexture)
+        resources.ApplyResources(Me.pnlBrushTexture, "pnlBrushTexture")
+        Me.pnlBrushTexture.Name = "pnlBrushTexture"
+        '
+        'picPropBrushTextureImage
+        '
+        resources.ApplyResources(Me.picPropBrushTextureImage, "picPropBrushTextureImage")
+        Me.picPropBrushTextureImage.Name = "picPropBrushTextureImage"
+        Me.picPropBrushTextureImage.Properties.NullText = resources.GetString("picPropBrushTextureImage.Properties.NullText")
+        Me.picPropBrushTextureImage.Properties.ReadOnly = True
+        Me.picPropBrushTextureImage.Properties.ShowEditMenuItem = DevExpress.Utils.DefaultBoolean.[False]
+        Me.picPropBrushTextureImage.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom
+        '
+        'lblPropBrushTextureImage
+        '
+        resources.ApplyResources(Me.lblPropBrushTextureImage, "lblPropBrushTextureImage")
+        Me.lblPropBrushTextureImage.Name = "lblPropBrushTextureImage"
+        '
+        'cmdPropBrushBrowseTexture
+        '
+        Me.cmdPropBrushBrowseTexture.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdPropBrushBrowseTexture.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.open
+        Me.cmdPropBrushBrowseTexture.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        resources.ApplyResources(Me.cmdPropBrushBrowseTexture, "cmdPropBrushBrowseTexture")
+        Me.cmdPropBrushBrowseTexture.Name = "cmdPropBrushBrowseTexture"
+        '
         'cItemBrushStylePropertyControl
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.Controls.Add(Me.txtPropBrushClipartAngle)
-        Me.Controls.Add(Me.txtPropBrushClipartZoomFactor)
-        Me.Controls.Add(Me.txtPropBrushClipartDensity)
-        Me.Controls.Add(Me.cmdPropBrushBrowseClipart)
-        Me.Controls.Add(Me.picPropBrushClipartImage)
-        Me.Controls.Add(Me.txtPropBrushAlternativeBrushColor)
-        Me.Controls.Add(Me.txtPropBrushColor)
-        Me.Controls.Add(Me.lblPropBrushClipartPosition)
-        Me.Controls.Add(Me.cboPropBrushClipartPosition)
-        Me.Controls.Add(Me.lblPropBrushClipartImage)
-        Me.Controls.Add(Me.lblPropBrushAlternativeBrushColor)
-        Me.Controls.Add(Me.lblPropBrushColor)
-        Me.Controls.Add(Me.lblPropBrushClipartAngle)
-        Me.Controls.Add(Me.lblPropBrushClipartAngleMode)
-        Me.Controls.Add(Me.lblPattern)
-        Me.Controls.Add(Me.cboPropBrushHatch)
-        Me.Controls.Add(Me.lblPropBrushClipartZoomFactor)
-        Me.Controls.Add(Me.lblPropBrushClipartDensity)
-        Me.Controls.Add(Me.cboPropBrushClipartCrop)
-        Me.Controls.Add(Me.lblPropBrushClipartCrop)
-        Me.Controls.Add(Me.lblPropBrushPatternPen)
-        Me.Controls.Add(Me.cboPropBrushPatternPen)
+        Me.Controls.Add(Me.pnlBrushStyle)
+        Me.Controls.Add(Me.pnlBrushAlternativeColor)
+        Me.Controls.Add(Me.pnlBrushPattern)
+        Me.Controls.Add(Me.pnlBrushTexture)
+        Me.Controls.Add(Me.pnlBrushClipart)
         Me.Controls.Add(Me.cmdPropBrushReseed)
         Me.Controls.Add(Me.cboPropBrushPattern)
         Me.Controls.Add(Me.lblBrush)
-        Me.Controls.Add(Me.cboPropBrushPatternType)
-        Me.Controls.Add(Me.cboPropBrushClipartAngleMode)
-        Me.Controls.Add(Me.lblPropBrushPatternType)
         Me.Controls.Add(Me.cmdPropSave)
+        Me.Controls.Add(Me.pnlBrushClipartSettings)
+        Me.Controls.Add(Me.pnlBrushClipartAnPatternSettings)
         Me.Controls.Add(Me.barDockControlLeft)
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
@@ -408,6 +509,29 @@ Partial Class cItemBrushStylePropertyControl
         CType(Me.txtPropBrushClipartZoomFactor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPropBrushClipartDensity.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPropBrushClipartAngle.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlBrushStyle, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlBrushStyle.ResumeLayout(False)
+        Me.pnlBrushStyle.PerformLayout()
+        CType(Me.cboPropBrushHatch.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlBrushClipart, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlBrushClipart.ResumeLayout(False)
+        Me.pnlBrushClipart.PerformLayout()
+        CType(Me.pnlBrushPattern, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlBrushPattern.ResumeLayout(False)
+        Me.pnlBrushPattern.PerformLayout()
+        CType(Me.pnlBrushAlternativeColor, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlBrushAlternativeColor.ResumeLayout(False)
+        Me.pnlBrushAlternativeColor.PerformLayout()
+        CType(Me.pnlBrushClipartSettings, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlBrushClipartSettings.ResumeLayout(False)
+        Me.pnlBrushClipartSettings.PerformLayout()
+        CType(Me.pnlBrushClipartAnPatternSettings, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlBrushClipartAnPatternSettings.ResumeLayout(False)
+        Me.pnlBrushClipartAnPatternSettings.PerformLayout()
+        CType(Me.pnlBrushTexture, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlBrushTexture.ResumeLayout(False)
+        Me.pnlBrushTexture.PerformLayout()
+        CType(Me.picPropBrushTextureImage.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -423,7 +547,6 @@ Partial Class cItemBrushStylePropertyControl
     Friend WithEvents lblPropBrushClipartAngleMode As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboPropBrushClipartAngleMode As ComboBox
     Friend WithEvents lblPattern As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents cboPropBrushHatch As ComboBox
     Friend WithEvents lblPropBrushClipartZoomFactor As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lblPropBrushClipartDensity As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lblPropBrushPatternType As DevExpress.XtraEditors.LabelControl
@@ -451,4 +574,15 @@ Partial Class cItemBrushStylePropertyControl
     Friend WithEvents txtPropBrushClipartZoomFactor As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents txtPropBrushClipartDensity As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents txtPropBrushClipartAngle As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents pnlBrushStyle As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlBrushClipart As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlBrushPattern As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlBrushAlternativeColor As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlBrushClipartSettings As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents pnlBrushClipartAnPatternSettings As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents cboPropBrushHatch As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents pnlBrushTexture As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents picPropBrushTextureImage As DevExpress.XtraEditors.PictureEdit
+    Friend WithEvents lblPropBrushTextureImage As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cmdPropBrushBrowseTexture As DevExpress.XtraEditors.SimpleButton
 End Class

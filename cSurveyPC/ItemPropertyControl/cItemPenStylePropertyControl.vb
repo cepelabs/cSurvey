@@ -47,8 +47,6 @@ Friend Class cItemPenStylePropertyControl
             Dim oPen As cPen = pGetPointPen()
             cboPropPenPattern.EditValue = oPen.ID
         End If
-
-        'Call pRefreshHeight()
     End Sub
 
     Private Function pGetPointPen() As cPen
@@ -114,6 +112,10 @@ Friend Class cItemPenStylePropertyControl
                 Try : txtPropPenDecorationScale.Value = oPen.DecorationScale : Catch : End Try
 
                 cboPropPenClipartPenMode.SelectedIndex = oPen.ClipartPenMode
+
+                cboPropPenClipartPenStyle.SelectedIndex = pPenStyleToSelectedIndex(cboPropPenClipartPenStyle, oPen.ClipartPenStyle)
+                txtPropPenClipartPenWidth.EditValue = oPen.ClipartPenWidth
+                txtPropPenClipartPenColor.EditValue = oPen.ClipartPenColor
             Else
                 cmdPropSave.Visible = False
             End If
@@ -420,11 +422,11 @@ Friend Class cItemPenStylePropertyControl
                 oPen = oPoint.Pen
             End If
             oPen.ClipartPenMode = cboPropPenClipartPenMode.SelectedIndex
-            If oPen.ClipartPenMode = cPen.ClipartPenModeEnum.Custom Then
-                cboPropPenClipartPenStyle.SelectedIndex = pPenStyleToSelectedIndex(cboPropPenClipartPenStyle, oPen.ClipartPenStyle)
-                txtPropPenClipartPenWidth.EditValue = oPen.ClipartPenWidth
-                txtPropPenClipartPenColor.EditValue = oPen.ClipartPenColor
-            End If
+            'If oPen.ClipartPenMode = cPen.ClipartPenModeEnum.Custom Then
+            '    cboPropPenClipartPenStyle.SelectedIndex = pPenStyleToSelectedIndex(cboPropPenClipartPenStyle, oPen.ClipartPenStyle)
+            '    txtPropPenClipartPenWidth.EditValue = oPen.ClipartPenWidth
+            '    txtPropPenClipartPenColor.EditValue = oPen.ClipartPenColor
+            'End If
             Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("ClipartPenMode")
             Call MyBase.MapInvalidate()
@@ -529,4 +531,5 @@ Friend Class cItemPenStylePropertyControl
             Call MyBase.MapInvalidate()
         End If
     End Sub
+
 End Class

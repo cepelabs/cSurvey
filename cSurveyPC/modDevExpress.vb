@@ -128,11 +128,15 @@ Public Module modDevExpress
     End Sub
 
     Public Function SvgImageToClipart(SvgImage As DevExpress.Utils.Svg.SvgImage) As cSurvey.Drawings.cDrawClipArt
-        Using oMS As IO.MemoryStream = New IO.MemoryStream
-            Call SvgImage.Save(oMS)
-            oMS.Position = 0
-            Return New cSurvey.Drawings.cDrawClipArt(oMS)
-        End Using
+        If SvgImage Is Nothing Then
+            Return Nothing
+        Else
+            Using oMS As IO.MemoryStream = New IO.MemoryStream
+                Call SvgImage.Save(oMS)
+                oMS.Position = 0
+                Return New cSurvey.Drawings.cDrawClipArt(oMS)
+            End Using
+        End If
     End Function
 
     Public Function SvgImageFromClipart(Clipart As cSurvey.Drawings.cDrawClipArt) As DevExpress.Utils.Svg.SvgImage
@@ -144,11 +148,15 @@ Public Module modDevExpress
     End Function
 
     Public Function SvgBitmapFromClipart(Clipart As cSurvey.Drawings.cDrawClipArt) As DevExpress.Utils.Svg.SvgBitmap
-        Using oMS As IO.MemoryStream = New IO.MemoryStream
-            Call Clipart.Save(oMS)
-            oMS.Position = 0
-            Return DevExpress.Utils.Svg.SvgBitmap.FromStream(oMS)
-        End Using
+        If Clipart Is Nothing Then
+            Return Nothing
+        Else
+            Using oMS As IO.MemoryStream = New IO.MemoryStream
+                Call Clipart.Save(oMS)
+                oMS.Position = 0
+                Return DevExpress.Utils.Svg.SvgBitmap.FromStream(oMS)
+            End Using
+        End If
     End Function
 
     Public Function GetSkinForecolor() As Color

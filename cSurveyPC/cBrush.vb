@@ -166,7 +166,7 @@ Namespace cSurvey.Design
             End Get
             Set(ByVal value As String)
                 If sName <> value Then
-                    iType = cBrush.BrushTypeEnum.Custom
+                    'iType = cBrush.BrushTypeEnum.Custom
                     sName = value
                 End If
             End Set
@@ -240,6 +240,13 @@ Namespace cSurvey.Design
             Set(ByVal value As cBrush.HatchTypeEnum)
                 If iHatchType <> value Then
                     iHatchType = value
+                    If iHatchType <> cBrush.HatchTypeEnum.Texture Then
+                        oTexture = Nothing
+                        sTextureID = ""
+                    End If
+                    If iHatchType <> cBrush.HatchTypeEnum.Clipart Then
+                        oClipart = Nothing
+                    End If
                     Call Invalidate()
                 End If
             End Set
@@ -485,58 +492,58 @@ Namespace cSurvey.Design
 
         Friend Sub New(ByVal Survey As cSurvey, ByVal File As cFile, ByVal item As XmlElement)
             oSurvey = Survey
-
             iType = modXML.GetAttributeValue(item, "type", cBrush.BrushTypeEnum.Custom)
-            If iType = cBrush.BrushTypeEnum.Custom Then
-                sName = modXML.GetAttributeValue(item, "name", "")
-                oColor = modXML.GetAttributeColor(item, "color", Color.Black)
-                iHatchType = modXML.GetAttributeValue(item, "hatchtype")
+            If iType = cPen.PenTypeEnum.User Then
+                sID = item.GetAttribute("id")
+            End If
 
-                If iHatchType = cBrush.HatchTypeEnum.Texture Then
-                    sTextureID = modXML.GetAttributeValue(item, "textureid", Guid.NewGuid.ToString)
-                    If sTextureID = "" Then sTextureID = Guid.NewGuid.ToString
-                    Select Case File.FileFormat
-                        Case cFile.FileFormatEnum.CSX
-                            oTexture = modPaint.ByteArrayToBitmap(Convert.FromBase64String(modXML.GetAttributeValue(item, "texture")))
-                        Case cFile.FileFormatEnum.CSZ
-                            Dim sImagePath As String = modXML.GetAttributeValue(item, "texture")
-                            oTexture = modPaint.ByteArrayToBitmap(DirectCast(File.Data(sImagePath), Storage.cStorageItemFile).Stream.ToArray)
-                    End Select
-                    iTextureWrapMode = modXML.GetAttributeValue(item, "texturewrapmode")
-                ElseIf iHatchType = cBrush.HatchTypeEnum.Clipart Then
-                    Dim oXMLClipart As XmlElement = item.Item("clipart")
-                    If oXMLClipart Is Nothing Then
-                        oClipart = New cDrawClipArt()
-                    Else
-                        oClipart = New cDrawClipArt(oXMLClipart)
-                    End If
-                    sClipartDensity = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "clipartdensity"))
-                    sClipartZoomFactor = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "clipartzoomfactor"))
-                    iClipartAngleMode = modXML.GetAttributeValue(item, "clipartanglemode")
-                    If iClipartAngleMode = cBrush.ClipartAngleModeEnum.Fixed Then
-                        iClipartAngle = modXML.GetAttributeValue(item, "clipartangle")
-                    End If
-                    iClipartCrop = modXML.GetAttributeValue(item, "clipartcrop")
-                    iClipartPosition = modXML.GetAttributeValue(item, "clipartposition")
+            sName = modXML.GetAttributeValue(item, "name", "")
+            oColor = modXML.GetAttributeColor(item, "color", Color.Black)
+            iHatchType = modXML.GetAttributeValue(item, "hatchtype")
 
-                    oClipartAlternativeColor = modXML.GetAttributeColor(item, "clipartalternativecolor", Drawing.Color.Gray)
-                ElseIf iHatchType = cBrush.HatchTypeEnum.Pattern Then
-                    iPatternType = modXML.GetAttributeValue(item, "patterntype")
-                    iPatternPenStyle = modXML.GetAttributeValue(item, "patternpenstyle")
-                    sClipartDensity = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "clipartdensity"))
-                    iClipartAngleMode = modXML.GetAttributeValue(item, "clipartanglemode")
-                    If iClipartAngleMode = cBrush.ClipartAngleModeEnum.Fixed Then
-                        iClipartAngle = modXML.GetAttributeValue(item, "clipartangle")
-                    End If
+            If iHatchType = cBrush.HatchTypeEnum.Texture Then
+                sTextureID = modXML.GetAttributeValue(item, "textureid", Guid.NewGuid.ToString)
+                If sTextureID = "" Then sTextureID = Guid.NewGuid.ToString
+                Dim iFileFormat As cFile.FileFormatEnum = If(File Is Nothing, cFile.FileFormatEnum.CSX, File.FileFormat)
+                Select Case iFileFormat
+                    Case cFile.FileFormatEnum.CSX
+                        oTexture = modPaint.ByteArrayToBitmap(Convert.FromBase64String(modXML.GetAttributeValue(item, "texture")))
+                    Case cFile.FileFormatEnum.CSZ
+                        Dim sImagePath As String = modXML.GetAttributeValue(item, "texture")
+                        oTexture = modPaint.ByteArrayToBitmap(DirectCast(File.Data(sImagePath), Storage.cStorageItemFile).Stream.ToArray)
+                End Select
+                iTextureWrapMode = modXML.GetAttributeValue(item, "texturewrapmode")
+            ElseIf iHatchType = cBrush.HatchTypeEnum.Clipart Then
+                Dim oXMLClipart As XmlElement = item.Item("clipart")
+                If oXMLClipart Is Nothing Then
+                    oClipart = New cDrawClipArt()
+                Else
+                    oClipart = New cDrawClipArt(oXMLClipart)
                 End If
-            Else
-                Call CopyFrom(oSurvey.EditPaintObjects.Brushes.FromType(iType))
+                sClipartDensity = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "clipartdensity"))
+                sClipartZoomFactor = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "clipartzoomfactor"))
+                iClipartAngleMode = modXML.GetAttributeValue(item, "clipartanglemode")
+                If iClipartAngleMode = cBrush.ClipartAngleModeEnum.Fixed Then
+                    iClipartAngle = modXML.GetAttributeValue(item, "clipartangle")
+                End If
+                iClipartCrop = modXML.GetAttributeValue(item, "clipartcrop")
+                iClipartPosition = modXML.GetAttributeValue(item, "clipartposition")
+
+                oClipartAlternativeColor = modXML.GetAttributeColor(item, "clipartalternativecolor", Drawing.Color.Gray)
+            ElseIf iHatchType = cBrush.HatchTypeEnum.Pattern Then
+                iPatternType = modXML.GetAttributeValue(item, "patterntype")
+                iPatternPenStyle = modXML.GetAttributeValue(item, "patternpenstyle")
+                sClipartDensity = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "clipartdensity"))
+                iClipartAngleMode = modXML.GetAttributeValue(item, "clipartanglemode")
+                If iClipartAngleMode = cBrush.ClipartAngleModeEnum.Fixed Then
+                    iClipartAngle = modXML.GetAttributeValue(item, "clipartangle")
+                End If
             End If
 
             If sClipartDensity <= 0 Then sClipartDensity = 1
             If sClipartZoomFactor <= 0 Then sClipartZoomFactor = 1
 
-            bInvalidated = True
+            Call Invalidate()
         End Sub
 
         Friend Overridable Function SaveTo(ByVal File As cFile, ByVal Document As XmlDocument, ByVal Parent As XmlElement) As XmlElement
@@ -556,7 +563,8 @@ Namespace cSurvey.Design
                 If Not oTexture Is Nothing Then
                     Call oItem.SetAttribute("textureid", sTextureID)
                     If Not (File.Options And cFile.FileOptionsEnum.DontSaveBinary) = cFile.FileOptionsEnum.DontSaveBinary Then
-                        Select Case File.FileFormat
+                        Dim iFileFormat As cFile.FileFormatEnum = If(File Is Nothing, cFile.FileFormatEnum.CSX, File.FileFormat)
+                        Select Case iFileFormat
                             Case cFile.FileFormatEnum.CSX
                                 Call oItem.SetAttribute("texture", Convert.ToBase64String(modPaint.BitmapToByteArray(oTexture, Drawing.Imaging.ImageFormat.Png)))
                             Case cFile.FileFormatEnum.CSZ
@@ -1049,7 +1057,7 @@ Namespace cSurvey.Design
                         Case cBrush.HatchTypeEnum.Pattern
                             Call pRenderPattern(Graphics, PaintOptions, Options, Selected, Path, Cache)
                         Case cBrush.HatchTypeEnum.Clipart
-                            If Seed Is Nothing Then Seed = New cBrushSeed
+                            If Seed Is Nothing Then Seed = New cBrushSeed(0, 0)
                             Call pRenderClipart(Graphics, PaintOptions, Options, Selected, Path, Cache, Seed)
                         Case cBrush.HatchTypeEnum.Texture
                             Call pRenderTexture(Graphics, PaintOptions, Options, Selected, Path, Cache)
@@ -1215,6 +1223,21 @@ Namespace cSurvey.Design
             End Get
         End Property
 
+        Public Shared Function IsUserBrushID(ID As String) As Boolean
+            If ID Is Nothing OrElse ID = "" Then
+                Return False
+            Else
+                Return Not ID.StartsWith("_")
+            End If
+        End Function
+
+        Public Shared Function IsStandardBrushID(ID As String) As Boolean
+            If ID Is Nothing OrElse ID = "" Then
+                Return False
+            Else
+                Return ID.StartsWith("_")
+            End If
+        End Function
         Public Shared Function CalculateHash(Brush As cBrush) As String
             Using oMs As MemoryStream = New MemoryStream
                 Using oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, "", cFile.FileOptionsEnum.EmbedResource)

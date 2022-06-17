@@ -171,15 +171,6 @@
   <data name="cboPropBrushClipartPosition.Items1" xml:space="preserve">
     <value>Fisso</value>
   </data>
-  <data name="cboPropBrushHatch.Items" xml:space="preserve">
-    <value>Nessuno</value>
-  </data>
-  <data name="cboPropBrushHatch.Items1" xml:space="preserve">
-    <value>Solido</value>
-  </data>
-  <data name="cboPropBrushHatch.Items3" xml:space="preserve">
-    <value>Motivo</value>
-  </data>
   <data name="cboPropBrushPatternPen.Items" xml:space="preserve">
     <value>Solido</value>
   </data>
@@ -200,5 +191,26 @@
   </data>
   <data name="cmdPropBrushReseed.ToolTip" xml:space="preserve">
     <value>Genera un nuovo motivo casuale</value>
+  </data>
+  <data name="btnPropExport.Caption" xml:space="preserve">
+    <value>Esporta...</value>
+  </data>
+  <data name="btnPropImport.Caption" xml:space="preserve">
+    <value>Importa...</value>
+  </data>
+  <data name="btnPropSaveToFile.Caption" xml:space="preserve">
+    <value>Salva il riempimento nella libreria locale</value>
+  </data>
+  <data name="btnPropSaveToSurvey.Caption" xml:space="preserve">
+    <value>Salva il riempimento nel rilievo corrente</value>
+  </data>
+  <data name="cboPropBrushHatch.Properties.Items" xml:space="preserve">
+    <value>Nessuno</value>
+  </data>
+  <data name="cboPropBrushHatch.Properties.Items1" xml:space="preserve">
+    <value>Colore pieno</value>
+  </data>
+  <data name="cboPropBrushHatch.Properties.Items3" xml:space="preserve">
+    <value>Motivo</value>
   </data>
 </root>

@@ -129,6 +129,23 @@ Friend Class frmScaleRules
         End If
     End Sub
 
+    Private Sub pSetDesignNumericValue(DesignProperties As cPropertiesCollection, Name As String, DefaultValue As Object, Control As DevExpress.XtraEditors.SpinEdit)
+        Dim oCheckbox As DevExpress.XtraEditors.CheckEdit = pGetCheckbox(Control.Name)
+        If DesignProperties.HasValue(Name) Then
+            Control.EditValue = DesignProperties.GetValue(Name, DefaultValue)
+            If Not oCheckbox Is Nothing Then
+                oCheckbox.Checked = True
+                Call oCheckbox_checkchanged(oCheckbox, EventArgs.Empty)
+            End If
+        Else
+            Control.EditValue = DesignProperties.GetValue(Name, DefaultValue)
+            If Not oCheckbox Is Nothing Then
+                oCheckbox.Checked = False
+                Call oCheckbox_checkchanged(oCheckbox, EventArgs.Empty)
+            End If
+        End If
+    End Sub
+
     Private Sub pSetDesignNumericValue(DesignProperties As cPropertiesCollection, Name As String, DefaultValue As Object, Control As NumericUpDown)
         Dim oCheckbox As DevExpress.XtraEditors.CheckEdit = pGetCheckbox(Control.Name)
         If DesignProperties.HasValue(Name) Then
@@ -202,6 +219,7 @@ Friend Class frmScaleRules
         Call pSetDesignNumericValue(DesignProperties, "PlotSplayPenWidth", 0.8, txtPlotSplayPenWidth)
         Call pSetDesignNumericValue(DesignProperties, "PlotSplaySelectedPenWidth", 1.2, txtPlotSplaySelectedPenWidth)
         Call pSetDesignComboValue(DesignProperties, "PlotSplayPenStyle", Design.cPen.PenStylesEnum.Dot, 0, cboPlotSplayPenStyle)
+        Call pSetDesignNumericValue(DesignProperties, "PlotSplayCrossScale", 1, txtPlotSplayCrossScale)
 
         If Not tabMain.Enabled Then tabMain.Enabled = True
     End Sub
@@ -264,6 +282,7 @@ Friend Class frmScaleRules
             If txtPlotSplayPenWidth.Enabled Then Call DesignProperties.SetValue("PlotSplayPenWidth", txtPlotSplayPenWidth.Value)
             If txtPlotSplaySelectedPenWidth.Enabled Then Call DesignProperties.SetValue("PlotSplaySelectedPenWidth", txtPlotSplaySelectedPenWidth.Value)
             If cboPlotSplayPenStyle.Enabled Then Call DesignProperties.SetValue("PlotSplayPenStyle", cboPlotSplayPenStyle.SelectedIndex)
+            If txtPlotSplayCrossScale.Enabled Then Call DesignProperties.SetValue("PlotSplayCrossScale", txtPlotSplayCrossScale.Value)
 
             If txtPlotTextScaleFactor.Enabled Then Call DesignProperties.SetValue("PlotTextScaleFactor", txtPlotTextScaleFactor.Value)
             If txtPlotTextFont.Enabled Then Call DesignProperties.SetValue("PlotTextFont", txtPlotTextFont.Tag)
@@ -728,10 +747,6 @@ Friend Class frmScaleRules
             Call oItem.SetScale(txtScale.Value)
             tvScales.RefreshFocusedObject
         End If
-    End Sub
-
-    Private Sub cmdApply_Click(sender As Object, e As EventArgs) Handles cmdApply.Click
-
     End Sub
 
     Private Sub oDesignProperties_OnGetParent(sender As Object, e As cPropertiesCollection.cGetParentEventArgs) Handles oDesignProperties.OnGetParent

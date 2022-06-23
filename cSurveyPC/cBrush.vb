@@ -868,7 +868,7 @@ Namespace cSurvey.Design
                                                         End Using
 
                                                         If Not PaintOptions.IsDesign AndAlso modMain.Is32Bit Then
-                                                            Call GC.Collect()
+                                                            Call GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced)
                                                         End If
                                                     Next
                                                 Next

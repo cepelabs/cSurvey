@@ -121,7 +121,7 @@
     <value>cboPrintCenterlineColorMode</value>
   </data>
   <data name="&gt;&gt;cboPrintCenterlineColorMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPrintCenterlineColorMode.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -133,7 +133,7 @@
     <value>lblPrintCenterlineColorMode</value>
   </data>
   <data name="&gt;&gt;lblPrintCenterlineColorMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPrintCenterlineColorMode.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -145,7 +145,7 @@
     <value>chkPrintSplay</value>
   </data>
   <data name="&gt;&gt;chkPrintSplay.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintSplay.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -157,7 +157,7 @@
     <value>btnSegmentDetails</value>
   </data>
   <data name="&gt;&gt;btnSegmentDetails.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnSegmentDetails.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -169,7 +169,7 @@
     <value>btnDesignDetails</value>
   </data>
   <data name="&gt;&gt;btnDesignDetails.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnDesignDetails.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -181,7 +181,7 @@
     <value>chkPrintCombineColorGray</value>
   </data>
   <data name="&gt;&gt;chkPrintCombineColorGray.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintCombineColorGray.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -193,7 +193,7 @@
     <value>cboPrintCombineColorMode</value>
   </data>
   <data name="&gt;&gt;cboPrintCombineColorMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPrintCombineColorMode.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -205,7 +205,7 @@
     <value>lblPrintCombineColorMode</value>
   </data>
   <data name="&gt;&gt;lblPrintCombineColorMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPrintCombineColorMode.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -217,7 +217,7 @@
     <value>chkPrintSketches</value>
   </data>
   <data name="&gt;&gt;chkPrintSketches.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintSketches.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -229,7 +229,7 @@
     <value>chkUseDrawingZOrder</value>
   </data>
   <data name="&gt;&gt;chkUseDrawingZOrder.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkUseDrawingZOrder.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -241,7 +241,7 @@
     <value>btnZOrderDetails</value>
   </data>
   <data name="&gt;&gt;btnZOrderDetails.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnZOrderDetails.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -253,7 +253,7 @@
     <value>chkPrintDesignAdvancedBrushes</value>
   </data>
   <data name="&gt;&gt;chkPrintDesignAdvancedBrushes.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintDesignAdvancedBrushes.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -265,7 +265,7 @@
     <value>chkTranslations</value>
   </data>
   <data name="&gt;&gt;chkTranslations.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkTranslations.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -277,7 +277,7 @@
     <value>btnTranslationsDetails</value>
   </data>
   <data name="&gt;&gt;btnTranslationsDetails.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnTranslationsDetails.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -289,7 +289,7 @@
     <value>cboPrintDesignStyle</value>
   </data>
   <data name="&gt;&gt;cboPrintDesignStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPrintDesignStyle.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -301,7 +301,7 @@
     <value>chkPrintDesignStyle</value>
   </data>
   <data name="&gt;&gt;chkPrintDesignStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintDesignStyle.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -313,7 +313,7 @@
     <value>cboGPSData</value>
   </data>
   <data name="&gt;&gt;cboGPSData.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboGPSData.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -325,7 +325,7 @@
     <value>lblGPSData</value>
   </data>
   <data name="&gt;&gt;lblGPSData.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblGPSData.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -337,7 +337,7 @@
     <value>chkExportGPS</value>
   </data>
   <data name="&gt;&gt;chkExportGPS.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkExportGPS.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -349,7 +349,7 @@
     <value>chkPrintDesignSpecialPoint</value>
   </data>
   <data name="&gt;&gt;chkPrintDesignSpecialPoint.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintDesignSpecialPoint.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -361,7 +361,7 @@
     <value>chkPrintImages</value>
   </data>
   <data name="&gt;&gt;chkPrintImages.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintImages.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -373,7 +373,7 @@
     <value>chkPrintDesign</value>
   </data>
   <data name="&gt;&gt;chkPrintDesign.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintDesign.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -385,7 +385,7 @@
     <value>chkPrintCentrelineColorGray</value>
   </data>
   <data name="&gt;&gt;chkPrintCentrelineColorGray.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintCentrelineColorGray.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -397,7 +397,7 @@
     <value>chkPrintLRUD</value>
   </data>
   <data name="&gt;&gt;chkPrintLRUD.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintLRUD.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -409,7 +409,7 @@
     <value>chkPrintStations</value>
   </data>
   <data name="&gt;&gt;chkPrintStations.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintStations.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -421,7 +421,7 @@
     <value>chkPrintShots</value>
   </data>
   <data name="&gt;&gt;chkPrintShots.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintShots.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -433,7 +433,7 @@
     <value>chkPrintCentreline</value>
   </data>
   <data name="&gt;&gt;chkPrintCentreline.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintCentreline.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -460,7 +460,7 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;pnlMainOptions.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlMainOptions.Parent" xml:space="preserve">
     <value>pnlOptions</value>
@@ -472,7 +472,7 @@
     <value>chkPrintCompass</value>
   </data>
   <data name="&gt;&gt;chkPrintCompass.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintCompass.Parent" xml:space="preserve">
     <value>pnlCompass</value>
@@ -484,7 +484,7 @@
     <value>Label4</value>
   </data>
   <data name="&gt;&gt;Label4.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label4.Parent" xml:space="preserve">
     <value>pnlCompass</value>
@@ -496,7 +496,7 @@
     <value>cboCompassPosition</value>
   </data>
   <data name="&gt;&gt;cboCompassPosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboCompassPosition.Parent" xml:space="preserve">
     <value>pnlCompass</value>
@@ -508,7 +508,7 @@
     <value>btnCompassDetails</value>
   </data>
   <data name="&gt;&gt;btnCompassDetails.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnCompassDetails.Parent" xml:space="preserve">
     <value>pnlCompass</value>
@@ -532,7 +532,7 @@
     <value>pnlCompass</value>
   </data>
   <data name="&gt;&gt;pnlCompass.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlCompass.Parent" xml:space="preserve">
     <value>pnlOptions</value>
@@ -544,7 +544,7 @@
     <value>chkPrintScale</value>
   </data>
   <data name="&gt;&gt;chkPrintScale.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintScale.Parent" xml:space="preserve">
     <value>pnlScale</value>
@@ -556,7 +556,7 @@
     <value>Label3</value>
   </data>
   <data name="&gt;&gt;Label3.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label3.Parent" xml:space="preserve">
     <value>pnlScale</value>
@@ -568,7 +568,7 @@
     <value>cboScalePosition</value>
   </data>
   <data name="&gt;&gt;cboScalePosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboScalePosition.Parent" xml:space="preserve">
     <value>pnlScale</value>
@@ -580,7 +580,7 @@
     <value>btnScaleDetails</value>
   </data>
   <data name="&gt;&gt;btnScaleDetails.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnScaleDetails.Parent" xml:space="preserve">
     <value>pnlScale</value>
@@ -604,7 +604,7 @@
     <value>pnlScale</value>
   </data>
   <data name="&gt;&gt;pnlScale.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlScale.Parent" xml:space="preserve">
     <value>pnlOptions</value>
@@ -616,7 +616,7 @@
     <value>chkPrintBox</value>
   </data>
   <data name="&gt;&gt;chkPrintBox.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintBox.Parent" xml:space="preserve">
     <value>pnlInformationBox</value>
@@ -628,7 +628,7 @@
     <value>Label2</value>
   </data>
   <data name="&gt;&gt;Label2.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label2.Parent" xml:space="preserve">
     <value>pnlInformationBox</value>
@@ -640,7 +640,7 @@
     <value>cboBoxPosition</value>
   </data>
   <data name="&gt;&gt;cboBoxPosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboBoxPosition.Parent" xml:space="preserve">
     <value>pnlInformationBox</value>
@@ -652,7 +652,7 @@
     <value>btnInfoBoxDetails</value>
   </data>
   <data name="&gt;&gt;btnInfoBoxDetails.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnInfoBoxDetails.Parent" xml:space="preserve">
     <value>pnlInformationBox</value>
@@ -676,7 +676,7 @@
     <value>pnlInformationBox</value>
   </data>
   <data name="&gt;&gt;pnlInformationBox.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlInformationBox.Parent" xml:space="preserve">
     <value>pnlOptions</value>
@@ -688,7 +688,7 @@
     <value>txtCurrentProfile</value>
   </data>
   <data name="&gt;&gt;txtCurrentProfile.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtCurrentProfile.Parent" xml:space="preserve">
     <value>pnlProfile</value>
@@ -700,7 +700,7 @@
     <value>cmdManageProfile</value>
   </data>
   <data name="&gt;&gt;cmdManageProfile.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdManageProfile.Parent" xml:space="preserve">
     <value>pnlProfile</value>
@@ -712,7 +712,7 @@
     <value>lblCurrentProfile</value>
   </data>
   <data name="&gt;&gt;lblCurrentProfile.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblCurrentProfile.Parent" xml:space="preserve">
     <value>pnlProfile</value>
@@ -736,7 +736,7 @@
     <value>pnlProfile</value>
   </data>
   <data name="&gt;&gt;pnlProfile.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlProfile.Parent" xml:space="preserve">
     <value>pnlOptions</value>
@@ -763,7 +763,7 @@
     <value>lblScale</value>
   </data>
   <data name="&gt;&gt;lblScale.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblScale.Parent" xml:space="preserve">
     <value>pnlScaleOptions</value>
@@ -774,7 +774,7 @@
   <data name="cboScale.Location" type="System.Drawing.Point, System.Drawing">
     <value>69, 8</value>
   </data>
-  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="cboScale.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
     <value>Combo</value>
   </data>
@@ -824,7 +824,7 @@
     <value>cboScale</value>
   </data>
   <data name="&gt;&gt;cboScale.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboScale.Parent" xml:space="preserve">
     <value>pnlScaleOptions</value>
@@ -854,7 +854,7 @@
     <value>lblScale1</value>
   </data>
   <data name="&gt;&gt;lblScale1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblScale1.Parent" xml:space="preserve">
     <value>pnlScaleOptions</value>
@@ -878,7 +878,7 @@
     <value>cmdScaleTools</value>
   </data>
   <data name="&gt;&gt;cmdScaleTools.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdScaleTools.Parent" xml:space="preserve">
     <value>pnlScaleOptions</value>
@@ -908,7 +908,7 @@
     <value>txtScaleManual</value>
   </data>
   <data name="&gt;&gt;txtScaleManual.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtScaleManual.Parent" xml:space="preserve">
     <value>pnlScaleOptions</value>
@@ -932,7 +932,7 @@
     <value>pnlScaleOptions</value>
   </data>
   <data name="&gt;&gt;pnlScaleOptions.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlScaleOptions.Parent" xml:space="preserve">
     <value>pnlOptions</value>
@@ -944,7 +944,7 @@
     <value>lblImageResolutionUM</value>
   </data>
   <data name="&gt;&gt;lblImageResolutionUM.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblImageResolutionUM.Parent" xml:space="preserve">
     <value>pnlExportOptionsOther</value>
@@ -956,7 +956,7 @@
     <value>lblImageResolution</value>
   </data>
   <data name="&gt;&gt;lblImageResolution.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblImageResolution.Parent" xml:space="preserve">
     <value>pnlExportOptionsOther</value>
@@ -980,7 +980,7 @@
     <value>chkBackgroundTransparent</value>
   </data>
   <data name="&gt;&gt;chkBackgroundTransparent.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkBackgroundTransparent.Parent" xml:space="preserve">
     <value>pnlExportOptionsOther</value>
@@ -1004,7 +1004,7 @@
     <value>pnlExportOptionsOther</value>
   </data>
   <data name="&gt;&gt;pnlExportOptionsOther.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlExportOptionsOther.Parent" xml:space="preserve">
     <value>pnlOptions</value>
@@ -1028,7 +1028,7 @@
     <value>lblSize</value>
   </data>
   <data name="&gt;&gt;lblSize.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblSize.Parent" xml:space="preserve">
     <value>pnlExportOptionsSize</value>
@@ -1040,7 +1040,7 @@
     <value>cboImageUM</value>
   </data>
   <data name="&gt;&gt;cboImageUM.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboImageUM.Parent" xml:space="preserve">
     <value>pnlExportOptionsSize</value>
@@ -1076,7 +1076,7 @@
     <value>pnlExportOptionsSize</value>
   </data>
   <data name="&gt;&gt;pnlExportOptionsSize.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlExportOptionsSize.Parent" xml:space="preserve">
     <value>pnlOptions</value>
@@ -1088,7 +1088,7 @@
     <value>lblImageOrientation</value>
   </data>
   <data name="&gt;&gt;lblImageOrientation.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblImageOrientation.Parent" xml:space="preserve">
     <value>pnlExportOptionsPage</value>
@@ -1100,7 +1100,7 @@
     <value>chkImageOrientationLandscape</value>
   </data>
   <data name="&gt;&gt;chkImageOrientationLandscape.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkImageOrientationLandscape.Parent" xml:space="preserve">
     <value>pnlExportOptionsPage</value>
@@ -1112,7 +1112,7 @@
     <value>cmdSetImageMargins</value>
   </data>
   <data name="&gt;&gt;cmdSetImageMargins.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdSetImageMargins.Parent" xml:space="preserve">
     <value>pnlExportOptionsPage</value>
@@ -1124,7 +1124,7 @@
     <value>chkImageOrientationPortrait</value>
   </data>
   <data name="&gt;&gt;chkImageOrientationPortrait.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkImageOrientationPortrait.Parent" xml:space="preserve">
     <value>pnlExportOptionsPage</value>
@@ -1136,7 +1136,7 @@
     <value>Label1</value>
   </data>
   <data name="&gt;&gt;Label1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
     <value>pnlExportOptionsPage</value>
@@ -1148,7 +1148,7 @@
     <value>cboSize</value>
   </data>
   <data name="&gt;&gt;cboSize.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ImageComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ImageComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboSize.Parent" xml:space="preserve">
     <value>pnlExportOptionsPage</value>
@@ -1172,7 +1172,7 @@
     <value>pnlExportOptionsPage</value>
   </data>
   <data name="&gt;&gt;pnlExportOptionsPage.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlExportOptionsPage.Parent" xml:space="preserve">
     <value>pnlOptions</value>
@@ -1184,7 +1184,7 @@
     <value>cboFileFormat</value>
   </data>
   <data name="&gt;&gt;cboFileFormat.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboFileFormat.Parent" xml:space="preserve">
     <value>pnlExportOptionsFormat</value>
@@ -1196,7 +1196,7 @@
     <value>Label7</value>
   </data>
   <data name="&gt;&gt;Label7.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label7.Parent" xml:space="preserve">
     <value>pnlExportOptionsFormat</value>
@@ -1220,7 +1220,7 @@
     <value>pnlExportOptionsFormat</value>
   </data>
   <data name="&gt;&gt;pnlExportOptionsFormat.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlExportOptionsFormat.Parent" xml:space="preserve">
     <value>pnlOptions</value>
@@ -1232,7 +1232,7 @@
     <value>cboPageFormat</value>
   </data>
   <data name="&gt;&gt;cboPageFormat.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ImageComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ImageComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPageFormat.Parent" xml:space="preserve">
     <value>pnlPrintOptions</value>
@@ -1244,7 +1244,7 @@
     <value>LabelControl1</value>
   </data>
   <data name="&gt;&gt;LabelControl1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;LabelControl1.Parent" xml:space="preserve">
     <value>pnlPrintOptions</value>
@@ -1256,7 +1256,7 @@
     <value>chkPageHorizontal</value>
   </data>
   <data name="&gt;&gt;chkPageHorizontal.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPageHorizontal.Parent" xml:space="preserve">
     <value>pnlPrintOptions</value>
@@ -1268,7 +1268,7 @@
     <value>chkPageVertical</value>
   </data>
   <data name="&gt;&gt;chkPageVertical.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPageVertical.Parent" xml:space="preserve">
     <value>pnlPrintOptions</value>
@@ -1280,7 +1280,7 @@
     <value>cmdSetMargins</value>
   </data>
   <data name="&gt;&gt;cmdSetMargins.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdSetMargins.Parent" xml:space="preserve">
     <value>pnlPrintOptions</value>
@@ -1292,7 +1292,7 @@
     <value>cboPrinter</value>
   </data>
   <data name="&gt;&gt;cboPrinter.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPrinter.Parent" xml:space="preserve">
     <value>pnlPrintOptions</value>
@@ -1304,7 +1304,7 @@
     <value>lblPrinter</value>
   </data>
   <data name="&gt;&gt;lblPrinter.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPrinter.Parent" xml:space="preserve">
     <value>pnlPrintOptions</value>
@@ -1316,7 +1316,7 @@
     <value>lblPageFormat</value>
   </data>
   <data name="&gt;&gt;lblPageFormat.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPageFormat.Parent" xml:space="preserve">
     <value>pnlPrintOptions</value>
@@ -1340,7 +1340,7 @@
     <value>pnlPrintOptions</value>
   </data>
   <data name="&gt;&gt;pnlPrintOptions.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlPrintOptions.Parent" xml:space="preserve">
     <value>pnlOptions</value>
@@ -1367,7 +1367,7 @@
     <value>pnlOptions</value>
   </data>
   <data name="&gt;&gt;pnlOptions.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.XtraScrollableControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.XtraScrollableControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlOptions.Parent" xml:space="preserve">
     <value>pnlForm</value>
@@ -1400,7 +1400,7 @@
     <value>cboPrintCenterlineColorMode</value>
   </data>
   <data name="&gt;&gt;cboPrintCenterlineColorMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPrintCenterlineColorMode.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -1430,7 +1430,7 @@
     <value>lblPrintCenterlineColorMode</value>
   </data>
   <data name="&gt;&gt;lblPrintCenterlineColorMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPrintCenterlineColorMode.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -1460,7 +1460,7 @@
     <value>chkPrintSplay</value>
   </data>
   <data name="&gt;&gt;chkPrintSplay.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintSplay.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -1484,7 +1484,7 @@
     <value>btnSegmentDetails</value>
   </data>
   <data name="&gt;&gt;btnSegmentDetails.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnSegmentDetails.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -1508,7 +1508,7 @@
     <value>btnDesignDetails</value>
   </data>
   <data name="&gt;&gt;btnDesignDetails.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnDesignDetails.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -1541,7 +1541,7 @@
     <value>chkPrintCombineColorGray</value>
   </data>
   <data name="&gt;&gt;chkPrintCombineColorGray.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintCombineColorGray.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -1577,7 +1577,7 @@
     <value>cboPrintCombineColorMode</value>
   </data>
   <data name="&gt;&gt;cboPrintCombineColorMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPrintCombineColorMode.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -1610,7 +1610,7 @@
     <value>lblPrintCombineColorMode</value>
   </data>
   <data name="&gt;&gt;lblPrintCombineColorMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPrintCombineColorMode.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -1640,7 +1640,7 @@
     <value>chkPrintSketches</value>
   </data>
   <data name="&gt;&gt;chkPrintSketches.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintSketches.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -1673,7 +1673,7 @@
     <value>chkUseDrawingZOrder</value>
   </data>
   <data name="&gt;&gt;chkUseDrawingZOrder.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkUseDrawingZOrder.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -1713,7 +1713,7 @@
     <value>btnZOrderDetails</value>
   </data>
   <data name="&gt;&gt;btnZOrderDetails.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnZOrderDetails.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -1743,7 +1743,7 @@
     <value>chkPrintDesignAdvancedBrushes</value>
   </data>
   <data name="&gt;&gt;chkPrintDesignAdvancedBrushes.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintDesignAdvancedBrushes.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -1773,7 +1773,7 @@
     <value>chkTranslations</value>
   </data>
   <data name="&gt;&gt;chkTranslations.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkTranslations.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -1794,7 +1794,7 @@
     <value>btnTranslationsDetails</value>
   </data>
   <data name="&gt;&gt;btnTranslationsDetails.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnTranslationsDetails.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -1827,7 +1827,7 @@
     <value>cboPrintDesignStyle</value>
   </data>
   <data name="&gt;&gt;cboPrintDesignStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPrintDesignStyle.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -1854,7 +1854,7 @@
     <value>chkPrintDesignStyle</value>
   </data>
   <data name="&gt;&gt;chkPrintDesignStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintDesignStyle.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -1881,7 +1881,7 @@
     <value>cboGPSData</value>
   </data>
   <data name="&gt;&gt;cboGPSData.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboGPSData.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -1908,7 +1908,7 @@
     <value>lblGPSData</value>
   </data>
   <data name="&gt;&gt;lblGPSData.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblGPSData.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -1938,7 +1938,7 @@
     <value>chkExportGPS</value>
   </data>
   <data name="&gt;&gt;chkExportGPS.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkExportGPS.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -1968,7 +1968,7 @@
     <value>chkPrintDesignSpecialPoint</value>
   </data>
   <data name="&gt;&gt;chkPrintDesignSpecialPoint.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintDesignSpecialPoint.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -1995,7 +1995,7 @@
     <value>chkPrintImages</value>
   </data>
   <data name="&gt;&gt;chkPrintImages.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintImages.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -2025,7 +2025,7 @@
     <value>chkPrintDesign</value>
   </data>
   <data name="&gt;&gt;chkPrintDesign.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintDesign.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -2052,7 +2052,7 @@
     <value>chkPrintCentrelineColorGray</value>
   </data>
   <data name="&gt;&gt;chkPrintCentrelineColorGray.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintCentrelineColorGray.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -2079,7 +2079,7 @@
     <value>chkPrintLRUD</value>
   </data>
   <data name="&gt;&gt;chkPrintLRUD.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintLRUD.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -2109,7 +2109,7 @@
     <value>chkPrintStations</value>
   </data>
   <data name="&gt;&gt;chkPrintStations.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintStations.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -2142,7 +2142,7 @@
     <value>chkPrintShots</value>
   </data>
   <data name="&gt;&gt;chkPrintShots.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintShots.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -2172,7 +2172,7 @@
     <value>chkPrintCentreline</value>
   </data>
   <data name="&gt;&gt;chkPrintCentreline.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintCentreline.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
@@ -2202,7 +2202,7 @@
     <value>chkPrintCompass</value>
   </data>
   <data name="&gt;&gt;chkPrintCompass.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintCompass.Parent" xml:space="preserve">
     <value>pnlCompass</value>
@@ -2229,7 +2229,7 @@
     <value>Label4</value>
   </data>
   <data name="&gt;&gt;Label4.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label4.Parent" xml:space="preserve">
     <value>pnlCompass</value>
@@ -2265,7 +2265,7 @@
     <value>cboCompassPosition</value>
   </data>
   <data name="&gt;&gt;cboCompassPosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboCompassPosition.Parent" xml:space="preserve">
     <value>pnlCompass</value>
@@ -2286,7 +2286,7 @@
     <value>btnCompassDetails</value>
   </data>
   <data name="&gt;&gt;btnCompassDetails.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnCompassDetails.Parent" xml:space="preserve">
     <value>pnlCompass</value>
@@ -2316,7 +2316,7 @@
     <value>chkPrintScale</value>
   </data>
   <data name="&gt;&gt;chkPrintScale.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintScale.Parent" xml:space="preserve">
     <value>pnlScale</value>
@@ -2343,7 +2343,7 @@
     <value>Label3</value>
   </data>
   <data name="&gt;&gt;Label3.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label3.Parent" xml:space="preserve">
     <value>pnlScale</value>
@@ -2379,7 +2379,7 @@
     <value>cboScalePosition</value>
   </data>
   <data name="&gt;&gt;cboScalePosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboScalePosition.Parent" xml:space="preserve">
     <value>pnlScale</value>
@@ -2400,7 +2400,7 @@
     <value>btnScaleDetails</value>
   </data>
   <data name="&gt;&gt;btnScaleDetails.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnScaleDetails.Parent" xml:space="preserve">
     <value>pnlScale</value>
@@ -2430,7 +2430,7 @@
     <value>chkPrintBox</value>
   </data>
   <data name="&gt;&gt;chkPrintBox.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPrintBox.Parent" xml:space="preserve">
     <value>pnlInformationBox</value>
@@ -2457,7 +2457,7 @@
     <value>Label2</value>
   </data>
   <data name="&gt;&gt;Label2.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label2.Parent" xml:space="preserve">
     <value>pnlInformationBox</value>
@@ -2493,7 +2493,7 @@
     <value>cboBoxPosition</value>
   </data>
   <data name="&gt;&gt;cboBoxPosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboBoxPosition.Parent" xml:space="preserve">
     <value>pnlInformationBox</value>
@@ -2514,7 +2514,7 @@
     <value>btnInfoBoxDetails</value>
   </data>
   <data name="&gt;&gt;btnInfoBoxDetails.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnInfoBoxDetails.Parent" xml:space="preserve">
     <value>pnlInformationBox</value>
@@ -2535,7 +2535,7 @@
     <value>txtCurrentProfile</value>
   </data>
   <data name="&gt;&gt;txtCurrentProfile.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtCurrentProfile.Parent" xml:space="preserve">
     <value>pnlProfile</value>
@@ -2556,7 +2556,7 @@
     <value>cmdManageProfile</value>
   </data>
   <data name="&gt;&gt;cmdManageProfile.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdManageProfile.Parent" xml:space="preserve">
     <value>pnlProfile</value>
@@ -2583,7 +2583,7 @@
     <value>lblCurrentProfile</value>
   </data>
   <data name="&gt;&gt;lblCurrentProfile.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblCurrentProfile.Parent" xml:space="preserve">
     <value>pnlProfile</value>
@@ -2610,7 +2610,7 @@
     <value>lblImageResolutionUM</value>
   </data>
   <data name="&gt;&gt;lblImageResolutionUM.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblImageResolutionUM.Parent" xml:space="preserve">
     <value>pnlExportOptionsOther</value>
@@ -2637,7 +2637,7 @@
     <value>lblImageResolution</value>
   </data>
   <data name="&gt;&gt;lblImageResolution.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblImageResolution.Parent" xml:space="preserve">
     <value>pnlExportOptionsOther</value>
@@ -2685,7 +2685,7 @@
     <value>chkBackgroundTransparent</value>
   </data>
   <data name="&gt;&gt;chkBackgroundTransparent.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkBackgroundTransparent.Parent" xml:space="preserve">
     <value>pnlExportOptionsOther</value>
@@ -2733,7 +2733,7 @@
     <value>lblSize</value>
   </data>
   <data name="&gt;&gt;lblSize.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblSize.Parent" xml:space="preserve">
     <value>pnlExportOptionsSize</value>
@@ -2769,7 +2769,7 @@
     <value>cboImageUM</value>
   </data>
   <data name="&gt;&gt;cboImageUM.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboImageUM.Parent" xml:space="preserve">
     <value>pnlExportOptionsSize</value>
@@ -2817,7 +2817,7 @@
     <value>lblImageOrientation</value>
   </data>
   <data name="&gt;&gt;lblImageOrientation.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblImageOrientation.Parent" xml:space="preserve">
     <value>pnlExportOptionsPage</value>
@@ -2841,7 +2841,7 @@
     <value>chkImageOrientationLandscape</value>
   </data>
   <data name="&gt;&gt;chkImageOrientationLandscape.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkImageOrientationLandscape.Parent" xml:space="preserve">
     <value>pnlExportOptionsPage</value>
@@ -2862,7 +2862,7 @@
     <value>cmdSetImageMargins</value>
   </data>
   <data name="&gt;&gt;cmdSetImageMargins.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdSetImageMargins.Parent" xml:space="preserve">
     <value>pnlExportOptionsPage</value>
@@ -2886,7 +2886,7 @@
     <value>chkImageOrientationPortrait</value>
   </data>
   <data name="&gt;&gt;chkImageOrientationPortrait.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkImageOrientationPortrait.Parent" xml:space="preserve">
     <value>pnlExportOptionsPage</value>
@@ -2913,7 +2913,7 @@
     <value>Label1</value>
   </data>
   <data name="&gt;&gt;Label1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
     <value>pnlExportOptionsPage</value>
@@ -2940,7 +2940,7 @@
     <value>cboSize</value>
   </data>
   <data name="&gt;&gt;cboSize.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ImageComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ImageComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboSize.Parent" xml:space="preserve">
     <value>pnlExportOptionsPage</value>
@@ -2979,7 +2979,7 @@
     <value>cboFileFormat</value>
   </data>
   <data name="&gt;&gt;cboFileFormat.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboFileFormat.Parent" xml:space="preserve">
     <value>pnlExportOptionsFormat</value>
@@ -3006,7 +3006,7 @@
     <value>Label7</value>
   </data>
   <data name="&gt;&gt;Label7.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label7.Parent" xml:space="preserve">
     <value>pnlExportOptionsFormat</value>
@@ -3030,7 +3030,7 @@
     <value>cboPageFormat</value>
   </data>
   <data name="&gt;&gt;cboPageFormat.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ImageComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ImageComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPageFormat.Parent" xml:space="preserve">
     <value>pnlPrintOptions</value>
@@ -3054,7 +3054,7 @@
     <value>LabelControl1</value>
   </data>
   <data name="&gt;&gt;LabelControl1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;LabelControl1.Parent" xml:space="preserve">
     <value>pnlPrintOptions</value>
@@ -3078,7 +3078,7 @@
     <value>chkPageHorizontal</value>
   </data>
   <data name="&gt;&gt;chkPageHorizontal.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPageHorizontal.Parent" xml:space="preserve">
     <value>pnlPrintOptions</value>
@@ -3102,7 +3102,7 @@
     <value>chkPageVertical</value>
   </data>
   <data name="&gt;&gt;chkPageVertical.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPageVertical.Parent" xml:space="preserve">
     <value>pnlPrintOptions</value>
@@ -3123,7 +3123,7 @@
     <value>cmdSetMargins</value>
   </data>
   <data name="&gt;&gt;cmdSetMargins.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdSetMargins.Parent" xml:space="preserve">
     <value>pnlPrintOptions</value>
@@ -3147,7 +3147,7 @@
     <value>cboPrinter</value>
   </data>
   <data name="&gt;&gt;cboPrinter.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cboPrinter.Parent" xml:space="preserve">
     <value>pnlPrintOptions</value>
@@ -3174,7 +3174,7 @@
     <value>lblPrinter</value>
   </data>
   <data name="&gt;&gt;lblPrinter.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPrinter.Parent" xml:space="preserve">
     <value>pnlPrintOptions</value>
@@ -3201,7 +3201,7 @@
     <value>lblPageFormat</value>
   </data>
   <data name="&gt;&gt;lblPageFormat.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPageFormat.Parent" xml:space="preserve">
     <value>pnlPrintOptions</value>
@@ -3258,7 +3258,7 @@
     <value>pnlExport</value>
   </data>
   <data name="&gt;&gt;pnlExport.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlExport.Parent" xml:space="preserve">
     <value>pnlMain</value>
@@ -3330,7 +3330,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;pnlMap.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlMap.Parent" xml:space="preserve">
     <value>pnlMain</value>
@@ -3399,7 +3399,7 @@
     <value>pnlMain</value>
   </data>
   <data name="&gt;&gt;pnlMain.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlMain.Parent" xml:space="preserve">
     <value>pnlForm</value>
@@ -3431,7 +3431,7 @@
   <data name="&gt;&gt;cDesignMessageCorner.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <assembly alias="DevExpress.XtraBars.v21.2" name="DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.XtraBars.v21.2" name="DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="RibbonControl1.Categories" type="DevExpress.XtraBars.BarManagerCategory, DevExpress.XtraBars.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMS4yLCBWZXJzaW9uPTIx
@@ -3565,7 +3565,7 @@
     <value>RibbonStatusBar1</value>
   </data>
   <data name="&gt;&gt;RibbonStatusBar1.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Ribbon.RibbonStatusBar, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Ribbon.RibbonStatusBar, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;RibbonStatusBar1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -3577,7 +3577,7 @@
     <value>RibbonControl1</value>
   </data>
   <data name="&gt;&gt;RibbonControl1.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Ribbon.RibbonControl, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Ribbon.RibbonControl, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;RibbonControl1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -3628,7 +3628,7 @@
     <value>NavBarControl1</value>
   </data>
   <data name="&gt;&gt;NavBarControl1.Type" xml:space="preserve">
-    <value>DevExpress.XtraNavBar.NavBarControl, DevExpress.XtraNavBar.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraNavBar.NavBarControl, DevExpress.XtraNavBar.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;NavBarControl1.Parent" xml:space="preserve">
     <value>pnlForm</value>
@@ -3655,7 +3655,7 @@
     <value>pnlForm</value>
   </data>
   <data name="&gt;&gt;pnlForm.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlForm.Parent" xml:space="preserve">
     <value>$this</value>
@@ -3667,7 +3667,7 @@
     <value>pnlParameters</value>
   </data>
   <data name="&gt;&gt;pnlParameters.Type" xml:space="preserve">
-    <value>DevExpress.Utils.FlyoutPanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.Utils.FlyoutPanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlParameters.Parent" xml:space="preserve">
     <value>flyParameters</value>
@@ -3688,7 +3688,7 @@
     <value>flyParameters</value>
   </data>
   <data name="&gt;&gt;flyParameters.Type" xml:space="preserve">
-    <value>DevExpress.Utils.FlyoutPanel, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.Utils.FlyoutPanel, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;flyParameters.Parent" xml:space="preserve">
     <value>$this</value>
@@ -3712,7 +3712,7 @@
     <value>pnlParameters</value>
   </data>
   <data name="&gt;&gt;pnlParameters.Type" xml:space="preserve">
-    <value>DevExpress.Utils.FlyoutPanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.Utils.FlyoutPanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlParameters.Parent" xml:space="preserve">
     <value>flyParameters</value>
@@ -3736,7 +3736,7 @@
     <value>SvgImageCollection</value>
   </data>
   <data name="&gt;&gt;SvgImageCollection.Type" xml:space="preserve">
-    <value>DevExpress.Utils.SvgImageCollection, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.Utils.SvgImageCollection, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;prDialog.Name" xml:space="preserve">
     <value>prDialog</value>
@@ -3748,241 +3748,241 @@
     <value>btnProfilesAdd</value>
   </data>
   <data name="&gt;&gt;btnProfilesAdd.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnProfilesDelete.Name" xml:space="preserve">
     <value>btnProfilesDelete</value>
   </data>
   <data name="&gt;&gt;btnProfilesDelete.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnProperties.Name" xml:space="preserve">
     <value>btnProperties</value>
   </data>
   <data name="&gt;&gt;btnProperties.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnBaseRule.Name" xml:space="preserve">
     <value>btnBaseRule</value>
   </data>
   <data name="&gt;&gt;btnBaseRule.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnPrint.Name" xml:space="preserve">
     <value>btnPrint</value>
   </data>
   <data name="&gt;&gt;btnPrint.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnExport.Name" xml:space="preserve">
     <value>btnExport</value>
   </data>
   <data name="&gt;&gt;btnExport.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnClose.Name" xml:space="preserve">
     <value>btnClose</value>
   </data>
   <data name="&gt;&gt;btnClose.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnZoomIn.Name" xml:space="preserve">
     <value>btnZoomIn</value>
   </data>
   <data name="&gt;&gt;btnZoomIn.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnZoomOut.Name" xml:space="preserve">
     <value>btnZoomOut</value>
   </data>
   <data name="&gt;&gt;btnZoomOut.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnZoomToFit.Name" xml:space="preserve">
     <value>btnZoomToFit</value>
   </data>
   <data name="&gt;&gt;btnZoomToFit.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnSidePanel.Name" xml:space="preserve">
     <value>btnSidePanel</value>
   </data>
   <data name="&gt;&gt;btnSidePanel.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnDesignGraphicsQuality.Name" xml:space="preserve">
     <value>btnDesignGraphicsQuality</value>
   </data>
   <data name="&gt;&gt;btnDesignGraphicsQuality.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarSubItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarSubItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnDesignGraphics0.Name" xml:space="preserve">
     <value>btnDesignGraphics0</value>
   </data>
   <data name="&gt;&gt;btnDesignGraphics0.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnDesignGraphics1.Name" xml:space="preserve">
     <value>btnDesignGraphics1</value>
   </data>
   <data name="&gt;&gt;btnDesignGraphics1.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnDesignGraphics2.Name" xml:space="preserve">
     <value>btnDesignGraphics2</value>
   </data>
   <data name="&gt;&gt;btnDesignGraphics2.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnStop.Name" xml:space="preserve">
     <value>btnStop</value>
   </data>
   <data name="&gt;&gt;btnStop.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnManualRefresh.Name" xml:space="preserve">
     <value>btnManualRefresh</value>
   </data>
   <data name="&gt;&gt;btnManualRefresh.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnRefresh.Name" xml:space="preserve">
     <value>btnRefresh</value>
   </data>
   <data name="&gt;&gt;btnRefresh.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlStatusText.Name" xml:space="preserve">
     <value>pnlStatusText</value>
   </data>
   <data name="&gt;&gt;pnlStatusText.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarStaticItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarStaticItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlStatusDesignZoom.Name" xml:space="preserve">
     <value>pnlStatusDesignZoom</value>
   </data>
   <data name="&gt;&gt;pnlStatusDesignZoom.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarStaticItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarStaticItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnStatusDesignZoom100.Name" xml:space="preserve">
     <value>btnStatusDesignZoom100</value>
   </data>
   <data name="&gt;&gt;btnStatusDesignZoom100.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnStatusDesignZoom200.Name" xml:space="preserve">
     <value>btnStatusDesignZoom200</value>
   </data>
   <data name="&gt;&gt;btnStatusDesignZoom200.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnStatusDesignZoom250.Name" xml:space="preserve">
     <value>btnStatusDesignZoom250</value>
   </data>
   <data name="&gt;&gt;btnStatusDesignZoom250.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnStatusDesignZoom500.Name" xml:space="preserve">
     <value>btnStatusDesignZoom500</value>
   </data>
   <data name="&gt;&gt;btnStatusDesignZoom500.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnStatusDesignZoom1000.Name" xml:space="preserve">
     <value>btnStatusDesignZoom1000</value>
   </data>
   <data name="&gt;&gt;btnStatusDesignZoom1000.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlStatusCurrentRule.Name" xml:space="preserve">
     <value>pnlStatusCurrentRule</value>
   </data>
   <data name="&gt;&gt;pnlStatusCurrentRule.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarStaticItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarStaticItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlStatusProgress.Name" xml:space="preserve">
     <value>pnlStatusProgress</value>
   </data>
   <data name="&gt;&gt;pnlStatusProgress.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarEditItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarEditItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pbProgress.Name" xml:space="preserve">
     <value>pbProgress</value>
   </data>
   <data name="&gt;&gt;pbProgress.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.Repository.RepositoryItemProgressBar, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemProgressBar, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnProfileImportFromFile.Name" xml:space="preserve">
     <value>btnProfileImportFromFile</value>
   </data>
   <data name="&gt;&gt;btnProfileImportFromFile.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnProfileExportToFile.Name" xml:space="preserve">
     <value>btnProfileExportToFile</value>
   </data>
   <data name="&gt;&gt;btnProfileExportToFile.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;RibbonPage1.Name" xml:space="preserve">
     <value>RibbonPage1</value>
   </data>
   <data name="&gt;&gt;RibbonPage1.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Ribbon.RibbonPage, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Ribbon.RibbonPage, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;grpProfiles.Name" xml:space="preserve">
     <value>grpProfiles</value>
   </data>
   <data name="&gt;&gt;grpProfiles.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;grpFile.Name" xml:space="preserve">
     <value>grpFile</value>
   </data>
   <data name="&gt;&gt;grpFile.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;grpView.Name" xml:space="preserve">
     <value>grpView</value>
   </data>
   <data name="&gt;&gt;grpView.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;grpOptions.Name" xml:space="preserve">
     <value>grpOptions</value>
   </data>
   <data name="&gt;&gt;grpOptions.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;RibbonPageGroup1.Name" xml:space="preserve">
     <value>RibbonPageGroup1</value>
   </data>
   <data name="&gt;&gt;RibbonPageGroup1.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;grpMain.Name" xml:space="preserve">
     <value>grpMain</value>
   </data>
   <data name="&gt;&gt;grpMain.Type" xml:space="preserve">
-    <value>DevExpress.XtraNavBar.NavBarGroup, DevExpress.XtraNavBar.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraNavBar.NavBarGroup, DevExpress.XtraNavBar.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;mnuProfiles.Name" xml:space="preserve">
     <value>mnuProfiles</value>
   </data>
   <data name="&gt;&gt;mnuProfiles.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;RibbonPage2.Name" xml:space="preserve">
     <value>RibbonPage2</value>
   </data>
   <data name="&gt;&gt;RibbonPage2.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Ribbon.RibbonPage, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Ribbon.RibbonPage, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmPreview</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Ribbon.RibbonForm, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Ribbon.RibbonForm, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="btnAdd.Text" xml:space="preserve">
     <value>Add...</value>

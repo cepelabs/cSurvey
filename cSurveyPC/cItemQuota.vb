@@ -28,6 +28,9 @@ Namespace cSurvey.Design.Items
         Private iQuotaTickLabelFrequency As Integer
         Private sQuotaTickSize As Single
 
+        Private iQuotaAltitudeFill As cIItemQuota.QuotaAltitudeFillEnum
+        Private iQuotaAltitudeStyle As cIItemQuota.QuotaAltitudeStyleEnum
+
         Private sQuotaRelativeTrigPoint As String
 
         Private iQuotaCapDecoration As cIItemQuota.QuotaCapDecorationEnum
@@ -306,6 +309,9 @@ Namespace cSurvey.Design.Items
             sQuotaLeftRefPercent = 100
             sQuotaRightRefPercent = 100
             iQuotaCapDecoration = cIItemQuota.QuotaCapDecorationEnum.Arrow
+
+            iQuotaAltitudeStyle = cIItemQuota.QuotaAltitudeStyleEnum.Style0
+            iQuotaAltitudeFill = cIItemQuota.QuotaAltitudeFillEnum.None
         End Sub
 
         Friend Overrides Function GetTextScaleFactor(PaintOptions As cOptionsCenterline) As Single
@@ -443,11 +449,11 @@ Namespace cSurvey.Design.Items
                                 'End If
                                 Dim oBounds As RectangleF = oBoundPath.GetBounds
 
-                                Dim oCenterPoint As PointF = New PointF(oBounds.Left + oBounds.Width / 2, oBounds.Top + oBounds.Height / 2)
+                                Dim sHalfWidth As Single = oBounds.Width / 2.0F
+                                Dim sHalfHeight As Single = oBounds.Height / 2.0F
+                                Dim oCenterPoint As PointF = New PointF(oBounds.Left + sHalfWidth, oBounds.Top + sHalfHeight)
                                 Dim sWidth As Single = oBounds.Width
-                                Dim sHalfWidth As Single = oBounds.Width / 2
                                 Dim sHeight As Single = oBounds.Height
-                                Dim sHalfHeight As Single = oBounds.Height / 2
 
                                 Using oPath As GraphicsPath = New GraphicsPath
                                     Using oSF As StringFormat = New StringFormat
@@ -518,15 +524,14 @@ Namespace cSurvey.Design.Items
                                             Call oFont.AddToPath(PaintOptions, oPath, sText, New PointF(0, 0), oSF)
                                         End If
 
-                                        'dimensiono la clipart se rischiesto (il fattore di scala sarà da parametrizzare in qualche modo)
                                         Dim sScale As Single = GetTextScaleFactor(PaintOptions)
-                                        Using oScaleMatrix As Matrix = New Matrix
-                                            Call oScaleMatrix.Scale(sScale, sScale, MatrixOrder.Append)
-                                            Call oPath.Transform(oScaleMatrix)
-                                        End Using
+                                        'Using oScaleMatrix As Matrix = New Matrix
+                                        '    Call oScaleMatrix.Scale(sScale, sScale, MatrixOrder.Append)
+                                        '    Call oPath.Transform(oScaleMatrix)
+                                        'End Using
 
-                                        Dim sTextHeight As Single = oPath.GetBounds.Height * 2
-                                        Dim sTextWidth As Single = oPath.GetBounds.Width * 1.3
+                                        Dim sTextHeight As Single = oPath.GetBounds.Height * 2.0F
+                                        Dim sTextWidth As Single = oPath.GetBounds.Width * 1.3F
                                         Select Case iQuotaType
                                             Case cIItemQuota.QuotaTypeEnum.Vertical
                                                 Using oArrowPen As Pen = oPen.Clone
@@ -543,14 +548,14 @@ Namespace cSurvey.Design.Items
                                                         Case cIItemQuota.QuotaAlignEnum.Left
                                                             Using oQuotaItem As cDrawCacheItem = oCache.AddBorder(Nothing, oPen, oWireframePen, Nothing)
                                                                 Call oQuotaItem.StartFigure()
-                                                                Call oQuotaItem.AddLine(New PointF(oBounds.Left, oBounds.Top), New PointF(oBounds.Left + oBounds.Width * sQuotaLeftRefPercent / 100, oBounds.Top))
+                                                                Call oQuotaItem.AddLine(New PointF(oBounds.Left, oBounds.Top), New PointF(oBounds.Left + oBounds.Width * sQuotaLeftRefPercent / 100.0F, oBounds.Top))
                                                                 Call oQuotaItem.StartFigure()
-                                                                Call oQuotaItem.AddLine(New PointF(oBounds.Left, oBounds.Bottom), New PointF(oBounds.Left + oBounds.Width * sQuotaRightRefPercent / 100, oBounds.Bottom))
+                                                                Call oQuotaItem.AddLine(New PointF(oBounds.Left, oBounds.Bottom), New PointF(oBounds.Left + oBounds.Width * sQuotaRightRefPercent / 100.0F, oBounds.Bottom))
                                                             End Using
 
                                                             If iQuotaCapDecoration = cIItemQuota.QuotaCapDecorationEnum.Bars Then
                                                                 Using oQuotaItem As cDrawCacheItem = oCache.AddBorder(Nothing, oPen, oWireframePen, Nothing)
-                                                                    Call oQuotaItem.AddLine(New PointF(oBounds.Left + sQuotaGap - sHalfWidth / 10, oBounds.Top), New PointF(oBounds.Left + sQuotaGap + sHalfWidth / 10, oBounds.Top))
+                                                                    Call oQuotaItem.AddLine(New PointF(oBounds.Left + sQuotaGap - sHalfWidth / 10.0F, oBounds.Top), New PointF(oBounds.Left + sQuotaGap + sHalfWidth / 10.0F, oBounds.Top))
                                                                     Using oMatrix As Matrix = New Matrix
                                                                         Call oMatrix.RotateAt(-45.0F, New PointF(oBounds.Left + sQuotaGap, oBounds.Top))
                                                                         Call oQuotaItem.Transform(oMatrix)
@@ -558,7 +563,7 @@ Namespace cSurvey.Design.Items
 
                                                                 End Using
                                                                 Using oQuotaItem As cDrawCacheItem = oCache.AddBorder(Nothing, oPen, oWireframePen, Nothing)
-                                                                    Call oQuotaItem.AddLine(New PointF(oBounds.Left + sQuotaGap - sHalfWidth / 10, oBounds.Bottom), New PointF(oBounds.Left + sQuotaGap + sHalfWidth / 10, oBounds.Bottom))
+                                                                    Call oQuotaItem.AddLine(New PointF(oBounds.Left + sQuotaGap - sHalfWidth / 10.0F, oBounds.Bottom), New PointF(oBounds.Left + sQuotaGap + sHalfWidth / 10.0F, oBounds.Bottom))
                                                                     Using oMatrix As Matrix = New Matrix
                                                                         Call oMatrix.RotateAt(45.0F, New PointF(oBounds.Left + sQuotaGap, oBounds.Bottom))
                                                                         Call oQuotaItem.Transform(oMatrix)
@@ -568,23 +573,23 @@ Namespace cSurvey.Design.Items
 
                                                             Using oQuotaItem As cDrawCacheItem = oCache.AddBorder(Nothing, oArrowPen, oWireframePen, Nothing)
                                                                 Call oQuotaItem.StartFigure()
-                                                                Call oQuotaItem.AddLine(New PointF(oBounds.Left + sQuotaGap, oBounds.Top + sHalfHeight - sTextHeight / 2), New PointF(oBounds.Left + sQuotaGap, oBounds.Top))
+                                                                Call oQuotaItem.AddLine(New PointF(oBounds.Left + sQuotaGap, oBounds.Top + sHalfHeight - sTextHeight / 2.0F), New PointF(oBounds.Left + sQuotaGap, oBounds.Top))
                                                                 Call oQuotaItem.StartFigure()
-                                                                Call oQuotaItem.AddLine(New PointF(oBounds.Left + sQuotaGap, oBounds.Top + sHalfHeight + sTextHeight / 2), New PointF(oBounds.Left + sQuotaGap, oBounds.Bottom))
+                                                                Call oQuotaItem.AddLine(New PointF(oBounds.Left + sQuotaGap, oBounds.Top + sHalfHeight + sTextHeight / 2.0F), New PointF(oBounds.Left + sQuotaGap, oBounds.Bottom))
                                                                 oCenterPoint = New PointF(oBounds.Left + sQuotaGap, oBounds.Top + sHalfHeight)
                                                             End Using
                                                         Case cIItemQuota.QuotaAlignEnum.Right
                                                             Using oQuotaPath As GraphicsPath = New GraphicsPath
                                                                 Call oQuotaPath.StartFigure()
-                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Right - oBounds.Width * sQuotaLeftRefPercent / 100, oBounds.Top), New PointF(oBounds.Right, oBounds.Top))
+                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Right - oBounds.Width * sQuotaLeftRefPercent / 100.0F, oBounds.Top), New PointF(oBounds.Right, oBounds.Top))
                                                                 Call oQuotaPath.StartFigure()
-                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Right - oBounds.Width * sQuotaRightRefPercent / 100, oBounds.Bottom), New PointF(oBounds.Right, oBounds.Bottom))
+                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Right - oBounds.Width * sQuotaRightRefPercent / 100.0F, oBounds.Bottom), New PointF(oBounds.Right, oBounds.Bottom))
                                                                 Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
                                                             End Using
 
                                                             If iQuotaCapDecoration = cIItemQuota.QuotaCapDecorationEnum.Bars Then
                                                                 Using oQuotaPath As GraphicsPath = New GraphicsPath
-                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Right - sQuotaGap - sHalfWidth / 10, oBounds.Top), New PointF(oBounds.Right - sQuotaGap + sHalfWidth / 10, oBounds.Top))
+                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Right - sQuotaGap - sHalfWidth / 10.0F, oBounds.Top), New PointF(oBounds.Right - sQuotaGap + sHalfWidth / 10.0F, oBounds.Top))
                                                                     Using oMatrix As Matrix = New Matrix
                                                                         Call oMatrix.RotateAt(45.0F, New PointF(oBounds.Right - sQuotaGap, oBounds.Top))
                                                                         Call oQuotaPath.Transform(oMatrix)
@@ -592,7 +597,7 @@ Namespace cSurvey.Design.Items
                                                                     Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
                                                                 End Using
                                                                 Using oQuotaPath As GraphicsPath = New GraphicsPath
-                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Right - sQuotaGap - sHalfWidth / 10, oBounds.Bottom), New PointF(oBounds.Right - sQuotaGap + sHalfWidth / 10, oBounds.Bottom))
+                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Right - sQuotaGap - sHalfWidth / 10.0F, oBounds.Bottom), New PointF(oBounds.Right - sQuotaGap + sHalfWidth / 10.0F, oBounds.Bottom))
                                                                     Using oMatrix As Matrix = New Matrix
                                                                         Call oMatrix.RotateAt(-45.0F, New PointF(oBounds.Right - sQuotaGap, oBounds.Bottom))
                                                                         Call oQuotaPath.Transform(oMatrix)
@@ -603,9 +608,9 @@ Namespace cSurvey.Design.Items
 
                                                             Using oQuotaPath As GraphicsPath = New GraphicsPath
                                                                 Call oQuotaPath.StartFigure()
-                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Right - sQuotaGap, oBounds.Top + sHalfHeight - sTextHeight / 2), New PointF(oBounds.Right - sQuotaGap, oBounds.Top))
+                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Right - sQuotaGap, oBounds.Top + sHalfHeight - sTextHeight / 2.0F), New PointF(oBounds.Right - sQuotaGap, oBounds.Top))
                                                                 Call oQuotaPath.StartFigure()
-                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Right - sQuotaGap, oBounds.Top + sHalfHeight + sTextHeight / 2), New PointF(oBounds.Right - sQuotaGap, oBounds.Bottom))
+                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Right - sQuotaGap, oBounds.Top + sHalfHeight + sTextHeight / 2.0F), New PointF(oBounds.Right - sQuotaGap, oBounds.Bottom))
                                                                 oCenterPoint = New PointF(oBounds.Right - sQuotaGap, oBounds.Top + sHalfHeight)
                                                                 Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oArrowPen, oArrowPen, Nothing)
                                                             End Using
@@ -613,12 +618,12 @@ Namespace cSurvey.Design.Items
                                                             Using oQuotaPath As GraphicsPath = New GraphicsPath
                                                                 Dim sRefWidth As Single
                                                                 Dim sRefLeft As Single
-                                                                sRefWidth = oBounds.Width * sQuotaLeftRefPercent / 100
-                                                                sRefLeft = oBounds.Left + (oBounds.Width - sRefWidth) / 2
+                                                                sRefWidth = oBounds.Width * sQuotaLeftRefPercent / 100.0F
+                                                                sRefLeft = oBounds.Left + (oBounds.Width - sRefWidth) / 2.0F
                                                                 Call oQuotaPath.StartFigure()
                                                                 Call oQuotaPath.AddLine(New PointF(sRefLeft, oBounds.Top), New PointF(sRefLeft + sRefWidth, oBounds.Top))
-                                                                sRefWidth = oBounds.Width * sQuotaRightRefPercent / 100
-                                                                sRefLeft = oBounds.Left + (oBounds.Width - sRefWidth) / 2
+                                                                sRefWidth = oBounds.Width * sQuotaRightRefPercent / 100.0F
+                                                                sRefLeft = oBounds.Left + (oBounds.Width - sRefWidth) / 2.0F
                                                                 Call oQuotaPath.StartFigure()
                                                                 Call oQuotaPath.AddLine(New PointF(sRefLeft, oBounds.Bottom), New PointF(sRefLeft + sRefWidth, oBounds.Bottom))
                                                                 Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
@@ -626,7 +631,7 @@ Namespace cSurvey.Design.Items
 
                                                             If iQuotaCapDecoration = cIItemQuota.QuotaCapDecorationEnum.Bars Then
                                                                 Using oQuotaPath As GraphicsPath = New GraphicsPath
-                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth - sHalfWidth / 10, oBounds.Top), New PointF(oBounds.Left + sHalfWidth + sHalfWidth / 10, oBounds.Top))
+                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth - sHalfWidth / 10.0F, oBounds.Top), New PointF(oBounds.Left + sHalfWidth + sHalfWidth / 10.0F, oBounds.Top))
                                                                     Using oMatrix As Matrix = New Matrix
                                                                         Call oMatrix.RotateAt(45.0F, New PointF(oBounds.Left + sHalfWidth, oBounds.Top))
                                                                         Call oQuotaPath.Transform(oMatrix)
@@ -634,7 +639,7 @@ Namespace cSurvey.Design.Items
                                                                     Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
                                                                 End Using
                                                                 Using oQuotaPath As GraphicsPath = New GraphicsPath
-                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth - sHalfWidth / 10, oBounds.Top), New PointF(oBounds.Left + sHalfWidth + sHalfWidth / 10, oBounds.Top))
+                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth - sHalfWidth / 10.0F, oBounds.Top), New PointF(oBounds.Left + sHalfWidth + sHalfWidth / 10.0F, oBounds.Top))
                                                                     Using oMatrix As Matrix = New Matrix
                                                                         Call oMatrix.RotateAt(-45.0F, New PointF(oBounds.Left + sHalfWidth, oBounds.Top))
                                                                         Call oQuotaPath.Transform(oMatrix)
@@ -642,7 +647,7 @@ Namespace cSurvey.Design.Items
                                                                     Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
                                                                 End Using
                                                                 Using oQuotaPath As GraphicsPath = New GraphicsPath
-                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth - sHalfWidth / 10, oBounds.Bottom), New PointF(oBounds.Left + sHalfWidth + sHalfWidth / 10, oBounds.Bottom))
+                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth - sHalfWidth / 10.0F, oBounds.Bottom), New PointF(oBounds.Left + sHalfWidth + sHalfWidth / 10.0F, oBounds.Bottom))
                                                                     Using oMatrix As Matrix = New Matrix
                                                                         Call oMatrix.RotateAt(45.0F, New PointF(oBounds.Left + sHalfWidth, oBounds.Bottom))
                                                                         Call oQuotaPath.Transform(oMatrix)
@@ -650,7 +655,7 @@ Namespace cSurvey.Design.Items
                                                                     Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
                                                                 End Using
                                                                 Using oQuotaPath As GraphicsPath = New GraphicsPath
-                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth - sHalfWidth / 10, oBounds.Bottom), New PointF(oBounds.Left + sHalfWidth + sHalfWidth / 10, oBounds.Bottom))
+                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth - sHalfWidth / 10.0F, oBounds.Bottom), New PointF(oBounds.Left + sHalfWidth + sHalfWidth / 10.0F, oBounds.Bottom))
                                                                     Using oMatrix As Matrix = New Matrix
                                                                         Call oMatrix.RotateAt(-45.0F, New PointF(oBounds.Left + sHalfWidth, oBounds.Bottom))
                                                                         Call oQuotaPath.Transform(oMatrix)
@@ -660,11 +665,11 @@ Namespace cSurvey.Design.Items
                                                             End If
 
                                                             Using oQuotaPath As GraphicsPath = New GraphicsPath
-                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth, oBounds.Top + sHalfHeight - sTextHeight / 2), New PointF(oBounds.Left + sHalfWidth, oBounds.Top))
+                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth, oBounds.Top + sHalfHeight - sTextHeight / 2.0F), New PointF(oBounds.Left + sHalfWidth, oBounds.Top))
                                                                 Call oQuotaPath.StartFigure()
-                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth, oBounds.Top + sHalfHeight - sTextHeight / 2), New PointF(oBounds.Left + sHalfWidth, oBounds.Top))
+                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth, oBounds.Top + sHalfHeight - sTextHeight / 2.0F), New PointF(oBounds.Left + sHalfWidth, oBounds.Top))
                                                                 Call oQuotaPath.StartFigure()
-                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth, oBounds.Top + sHalfHeight + sTextHeight / 2), New PointF(oBounds.Left + sHalfWidth, oBounds.Bottom))
+                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth, oBounds.Top + sHalfHeight + sTextHeight / 2.0F), New PointF(oBounds.Left + sHalfWidth, oBounds.Bottom))
                                                                 oCenterPoint = New PointF(oBounds.Left + sHalfWidth, oBounds.Top + sHalfHeight)
                                                                 Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oArrowPen, oArrowPen, Nothing)
                                                             End Using
@@ -686,15 +691,15 @@ Namespace cSurvey.Design.Items
                                                         Case cIItemQuota.QuotaAlignEnum.Left
                                                             Using oQuotaPath As GraphicsPath = New GraphicsPath
                                                                 Call oQuotaPath.StartFigure()
-                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left, oBounds.Top), New PointF(oBounds.Left, oBounds.Top + oBounds.Height * sQuotaLeftRefPercent / 100))
+                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left, oBounds.Top), New PointF(oBounds.Left, oBounds.Top + oBounds.Height * sQuotaLeftRefPercent / 100.0F))
                                                                 Call oQuotaPath.StartFigure()
-                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Right, oBounds.Top), New PointF(oBounds.Right, oBounds.Top + oBounds.Height * sQuotaRightRefPercent / 100))
+                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Right, oBounds.Top), New PointF(oBounds.Right, oBounds.Top + oBounds.Height * sQuotaRightRefPercent / 100.0F))
                                                                 Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
                                                             End Using
 
                                                             If iQuotaCapDecoration = cIItemQuota.QuotaCapDecorationEnum.Bars Then
                                                                 Using oQuotaPath As GraphicsPath = New GraphicsPath
-                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Left, oBounds.Top + sQuotaGap - sHalfWidth / 10), New PointF(oBounds.Left, oBounds.Top + sQuotaGap + sHalfWidth / 10))
+                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Left, oBounds.Top + sQuotaGap - sHalfWidth / 10.0F), New PointF(oBounds.Left, oBounds.Top + sQuotaGap + sHalfWidth / 10.0F))
                                                                     Using oMatrix As Matrix = New Matrix
                                                                         Call oMatrix.RotateAt(45.0F, New PointF(oBounds.Left, oBounds.Top + sQuotaGap))
                                                                         Call oQuotaPath.Transform(oMatrix)
@@ -702,7 +707,7 @@ Namespace cSurvey.Design.Items
                                                                     Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
                                                                 End Using
                                                                 Using oQuotaPath As GraphicsPath = New GraphicsPath
-                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Right, oBounds.Top + sQuotaGap - sHalfWidth / 10), New PointF(oBounds.Right, oBounds.Top + sQuotaGap + sHalfWidth / 10))
+                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Right, oBounds.Top + sQuotaGap - sHalfWidth / 10.0F), New PointF(oBounds.Right, oBounds.Top + sQuotaGap + sHalfWidth / 10.0F))
                                                                     Using oMatrix As Matrix = New Matrix
                                                                         Call oMatrix.RotateAt(-45.0F, New PointF(oBounds.Right, oBounds.Top + sQuotaGap))
                                                                         Call oQuotaPath.Transform(oMatrix)
@@ -713,24 +718,24 @@ Namespace cSurvey.Design.Items
 
                                                             Using oQuotaPath As GraphicsPath = New GraphicsPath
                                                                 Call oQuotaPath.StartFigure()
-                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth - sTextWidth / 2, oBounds.Top + sQuotaGap), New PointF(oBounds.Left, oBounds.Top + sQuotaGap))
+                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth - sTextWidth / 2.0F, oBounds.Top + sQuotaGap), New PointF(oBounds.Left, oBounds.Top + sQuotaGap))
                                                                 Call oQuotaPath.StartFigure()
-                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth + sTextWidth / 2, oBounds.Top + sQuotaGap), New PointF(oBounds.Right, oBounds.Top + sQuotaGap))
+                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth + sTextWidth / 2.0F, oBounds.Top + sQuotaGap), New PointF(oBounds.Right, oBounds.Top + sQuotaGap))
                                                                 oCenterPoint = New PointF(oBounds.Left + sHalfWidth, oBounds.Top + sQuotaGap)
                                                                 Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oArrowPen, oArrowPen, Nothing)
                                                             End Using
                                                         Case cIItemQuota.QuotaAlignEnum.Right
                                                             Using oQuotaPath As GraphicsPath = New GraphicsPath
                                                                 Call oQuotaPath.StartFigure()
-                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left, oBounds.Bottom - oBounds.Height * sQuotaLeftRefPercent / 100), New PointF(oBounds.Left, oBounds.Bottom))
+                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left, oBounds.Bottom - oBounds.Height * sQuotaLeftRefPercent / 100.0F), New PointF(oBounds.Left, oBounds.Bottom))
                                                                 Call oQuotaPath.StartFigure()
-                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Right, oBounds.Bottom - oBounds.Height * sQuotaRightRefPercent / 100), New PointF(oBounds.Right, oBounds.Bottom))
+                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Right, oBounds.Bottom - oBounds.Height * sQuotaRightRefPercent / 100.0F), New PointF(oBounds.Right, oBounds.Bottom))
                                                                 Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
                                                             End Using
 
                                                             If iQuotaCapDecoration = cIItemQuota.QuotaCapDecorationEnum.Bars Then
                                                                 Using oQuotaPath As GraphicsPath = New GraphicsPath
-                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Left, oBounds.Bottom - sQuotaGap - sHalfWidth / 10), New PointF(oBounds.Left, oBounds.Bottom - sQuotaGap + sHalfWidth / 10))
+                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Left, oBounds.Bottom - sQuotaGap - sHalfWidth / 10.0F), New PointF(oBounds.Left, oBounds.Bottom - sQuotaGap + sHalfWidth / 10.0F))
                                                                     Using oMatrix As Matrix = New Matrix
                                                                         Call oMatrix.RotateAt(-45.0F, New PointF(oBounds.Left, oBounds.Bottom - sQuotaGap))
                                                                         Call oQuotaPath.Transform(oMatrix)
@@ -738,7 +743,7 @@ Namespace cSurvey.Design.Items
                                                                     Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
                                                                 End Using
                                                                 Using oQuotaPath As GraphicsPath = New GraphicsPath
-                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Right, oBounds.Bottom - sQuotaGap - sHalfWidth / 10), New PointF(oBounds.Right, oBounds.Bottom - sQuotaGap + sHalfWidth / 10))
+                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Right, oBounds.Bottom - sQuotaGap - sHalfWidth / 10.0F), New PointF(oBounds.Right, oBounds.Bottom - sQuotaGap + sHalfWidth / 10.0F))
                                                                     Using oMatrix As Matrix = New Matrix
                                                                         Call oMatrix.RotateAt(45.0F, New PointF(oBounds.Right, oBounds.Bottom - sQuotaGap))
                                                                         Call oQuotaPath.Transform(oMatrix)
@@ -749,9 +754,9 @@ Namespace cSurvey.Design.Items
 
                                                             Using oQuotaPath As GraphicsPath = New GraphicsPath
                                                                 Call oQuotaPath.StartFigure()
-                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth - sTextWidth / 2, oBounds.Bottom - sQuotaGap), New PointF(oBounds.Left, oBounds.Bottom - sQuotaGap))
+                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth - sTextWidth / 2.0F, oBounds.Bottom - sQuotaGap), New PointF(oBounds.Left, oBounds.Bottom - sQuotaGap))
                                                                 Call oQuotaPath.StartFigure()
-                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth + sTextWidth / 2, oBounds.Bottom - sQuotaGap), New PointF(oBounds.Right, oBounds.Bottom - sQuotaGap))
+                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth + sTextWidth / 2.0F, oBounds.Bottom - sQuotaGap), New PointF(oBounds.Right, oBounds.Bottom - sQuotaGap))
                                                                 oCenterPoint = New PointF(oBounds.Left + sHalfWidth, oBounds.Bottom - sQuotaGap)
                                                                 Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oArrowPen, oArrowPen, Nothing)
 
@@ -760,12 +765,12 @@ Namespace cSurvey.Design.Items
                                                             Using oQuotaPath As GraphicsPath = New GraphicsPath
                                                                 Dim sRefHeight As Single
                                                                 Dim sRefTop As Single
-                                                                sRefHeight = oBounds.Height * sQuotaLeftRefPercent / 100
-                                                                sRefTop = oBounds.Top + (oBounds.Height - sRefHeight) / 2
+                                                                sRefHeight = oBounds.Height * sQuotaLeftRefPercent / 100.0F
+                                                                sRefTop = oBounds.Top + (oBounds.Height - sRefHeight) / 2.0F
                                                                 Call oQuotaPath.StartFigure()
                                                                 Call oQuotaPath.AddLine(New PointF(oBounds.Left, sRefTop), New PointF(oBounds.Left, sRefTop + sRefHeight))
-                                                                sRefHeight = oBounds.Height * sQuotaRightRefPercent / 100
-                                                                sRefTop = oBounds.Top + (oBounds.Height - sRefHeight) / 2
+                                                                sRefHeight = oBounds.Height * sQuotaRightRefPercent / 100.0F
+                                                                sRefTop = oBounds.Top + (oBounds.Height - sRefHeight) / 2.0F
                                                                 Call oQuotaPath.StartFigure()
                                                                 Call oQuotaPath.AddLine(New PointF(oBounds.Right, sRefTop), New PointF(oBounds.Right, sRefTop + sRefHeight))
                                                                 Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
@@ -773,7 +778,7 @@ Namespace cSurvey.Design.Items
 
                                                             If iQuotaCapDecoration = cIItemQuota.QuotaCapDecorationEnum.Bars Then
                                                                 Using oQuotaPath As GraphicsPath = New GraphicsPath
-                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Left, oBounds.Top + sHalfHeight - sHalfWidth / 10), New PointF(oBounds.Left, oBounds.Top + sHalfHeight + sHalfWidth / 10))
+                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Left, oBounds.Top + sHalfHeight - sHalfWidth / 10.0F), New PointF(oBounds.Left, oBounds.Top + sHalfHeight + sHalfWidth / 10.0F))
                                                                     Using oMatrix As Matrix = New Matrix
                                                                         Call oMatrix.RotateAt(45.0F, New PointF(oBounds.Left, oBounds.Top + sHalfHeight))
                                                                         Call oQuotaPath.Transform(oMatrix)
@@ -781,7 +786,7 @@ Namespace cSurvey.Design.Items
                                                                     Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
                                                                 End Using
                                                                 Using oQuotaPath As GraphicsPath = New GraphicsPath
-                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Left, oBounds.Top + sHalfHeight - sHalfWidth / 10), New PointF(oBounds.Left, oBounds.Top + sHalfHeight + sHalfWidth / 10))
+                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Left, oBounds.Top + sHalfHeight - sHalfWidth / 10.0F), New PointF(oBounds.Left, oBounds.Top + sHalfHeight + sHalfWidth / 10.0F))
                                                                     Using oMatrix As Matrix = New Matrix
                                                                         Call oMatrix.RotateAt(-45.0F, New PointF(oBounds.Left, oBounds.Top + sHalfHeight))
                                                                         Call oQuotaPath.Transform(oMatrix)
@@ -789,7 +794,7 @@ Namespace cSurvey.Design.Items
                                                                     Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
                                                                 End Using
                                                                 Using oQuotaPath As GraphicsPath = New GraphicsPath
-                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Right, oBounds.Top + sHalfHeight - sHalfWidth / 10), New PointF(oBounds.Right, oBounds.Top + sHalfHeight + sHalfWidth / 10))
+                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Right, oBounds.Top + sHalfHeight - sHalfWidth / 10.0F), New PointF(oBounds.Right, oBounds.Top + sHalfHeight + sHalfWidth / 10.0F))
                                                                     Using oMatrix As Matrix = New Matrix
                                                                         Call oMatrix.RotateAt(45.0F, New PointF(oBounds.Right, oBounds.Top + sHalfHeight))
                                                                         Call oQuotaPath.Transform(oMatrix)
@@ -797,7 +802,7 @@ Namespace cSurvey.Design.Items
                                                                     Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
                                                                 End Using
                                                                 Using oQuotaPath As GraphicsPath = New GraphicsPath
-                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Right, oBounds.Top + sHalfHeight - sHalfWidth / 10), New PointF(oBounds.Right, oBounds.Top + sHalfHeight + sHalfWidth / 10))
+                                                                    Call oQuotaPath.AddLine(New PointF(oBounds.Right, oBounds.Top + sHalfHeight - sHalfWidth / 10.0F), New PointF(oBounds.Right, oBounds.Top + sHalfHeight + sHalfWidth / 10.0F))
                                                                     Using oMatrix As Matrix = New Matrix
                                                                         Call oMatrix.RotateAt(-45.0F, New PointF(oBounds.Right, oBounds.Top + sHalfHeight))
                                                                         Call oQuotaPath.Transform(oMatrix)
@@ -808,9 +813,9 @@ Namespace cSurvey.Design.Items
 
                                                             Using oQuotaPath As GraphicsPath = New GraphicsPath
                                                                 Call oQuotaPath.StartFigure()
-                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth - sTextWidth / 2, oBounds.Top + sHalfHeight), New PointF(oBounds.Left, oBounds.Top + sHalfHeight))
+                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth - sTextWidth / 2.0F, oBounds.Top + sHalfHeight), New PointF(oBounds.Left, oBounds.Top + sHalfHeight))
                                                                 Call oQuotaPath.StartFigure()
-                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth + sTextWidth / 2, oBounds.Top + sHalfHeight), New PointF(oBounds.Right, oBounds.Top + sHalfHeight))
+                                                                Call oQuotaPath.AddLine(New PointF(oBounds.Left + sHalfWidth + sTextWidth / 2.0F, oBounds.Top + sHalfHeight), New PointF(oBounds.Right, oBounds.Top + sHalfHeight))
                                                                 oCenterPoint = New PointF(oBounds.Left + sHalfWidth, oBounds.Top + sHalfHeight)
                                                                 Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oArrowPen, oArrowPen, Nothing)
                                                             End Using
@@ -830,7 +835,7 @@ Namespace cSurvey.Design.Items
 
                                                     Using oQuotaPath As GraphicsPath = New GraphicsPath
                                                         Dim oMiddlePoint As PointF = modPaint.GetMediumPoint(MyBase.Points(0).Point, MyBase.Points(1).Point)
-                                                        Dim sTextMaxSize As Single = If(sTextWidth > sTextHeight, sTextWidth, sTextHeight) / 2
+                                                        Dim sTextMaxSize As Single = If(sTextWidth > sTextHeight, sTextWidth, sTextHeight) / 2.0F
                                                         Dim sHalfSize As Single = modPaint.DistancePointToPoint(oMiddlePoint, MyBase.Points(0).Point)
                                                         Dim sPercentage As Single = sTextMaxSize / sHalfSize
 
@@ -868,95 +873,308 @@ Namespace cSurvey.Design.Items
                                             Case cIItemQuota.QuotaTypeEnum.Altitude
                                                 oCenterPoint = New PointF(oBounds.Left + sHalfWidth, oBounds.Top + sHalfHeight)
 
-                                                Dim oTextBounds As RectangleF = oPath.GetBounds
-                                                Dim oCircleSize As SizeF = oTextBounds.Size
-                                                Dim sCircleWidth As Single = oCircleSize.Height
-                                                Dim oCircleLocation As PointF = New PointF(oCenterPoint.X - oTextBounds.Width / 2 - sCircleWidth * 5, oCenterPoint.Y - oTextBounds.Height / 2)
+                                                Select Case iQuotaAltitudeStyle
+                                                    Case cIItemQuota.QuotaAltitudeStyleEnum.Style1
+                                                        Dim oTextBounds As RectangleF = oPath.GetBounds
+                                                        Dim oBasePoint As PointF = New PointF(oCenterPoint.X - oTextBounds.Width / 2.0F, oCenterPoint.Y)
+                                                        Dim sCrossHeight As Single = oTextBounds.Height * 3.0F
+                                                        Dim sBottomRef As Single = oBasePoint.Y + oTextBounds.Height * 1.2F
+                                                        Dim oSubBasePoint As PointF = New PointF(oBasePoint.X - sCrossHeight, sBottomRef)
 
-                                                Using oQuotaPath As GraphicsPath = New GraphicsPath
-                                                    Call oQuotaPath.StartFigure()
-                                                    Call oQuotaPath.AddEllipse(oCircleLocation.X, oCircleLocation.Y, sCircleWidth * 2, sCircleWidth * 2)
-                                                    Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
-                                                End Using
+                                                        Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                            Call oQuotaPath.StartFigure()
+                                                            Dim sSize As Single = oTextBounds.Width * 2.0F + oTextBounds.Width / 1.9F
+                                                            Call oQuotaPath.AddLine(New PointF(oBasePoint.X - sCrossHeight * 2.0F, sBottomRef), New PointF(oCenterPoint.X + oTextBounds.Width / 1.9F, sBottomRef))
+                                                            Dim sCrossSize As Single = sCrossHeight / 4.0F
+                                                            Dim sHalfCrossSize As Single = sCrossSize / 2.0F
+                                                            Call oQuotaPath.StartFigure()
+                                                            'Call oQuotaPath.AddLine(oSubBasePoint, New PointF(oSubBasePoint.X, oSubBasePoint.Y - sCrossHeight))
+                                                            Call oQuotaPath.AddLine(New PointF(oSubBasePoint.X, oSubBasePoint.Y - sCrossHeight * 2.0F / 5.0F), New PointF(oSubBasePoint.X, oSubBasePoint.Y - sCrossHeight))
+                                                            Call oQuotaPath.StartFigure()
+                                                            Call oQuotaPath.AddLine(New PointF(oSubBasePoint.X - sHalfCrossSize, oSubBasePoint.Y - sCrossHeight + sHalfCrossSize), New PointF(oSubBasePoint.X + sHalfCrossSize, oSubBasePoint.Y - sCrossHeight + sHalfCrossSize))
+                                                            Call oQuotaPath.StartFigure()
+                                                            Call oQuotaPath.AddPolygon({oSubBasePoint, New PointF(oSubBasePoint.X - sCrossHeight / 5.0F, oSubBasePoint.Y - sCrossHeight * 2.0F / 5.0F), New PointF(oSubBasePoint.X + sCrossHeight / 5.0F, oSubBasePoint.Y - sCrossHeight * 2.0F / 5.0F)})
+                                                            Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
+                                                        End Using
+                                                        Select Case iQuotaAltitudeFill
+                                                            Case cIItemQuota.QuotaAltitudeFillEnum.None
+                                                            Case cIItemQuota.QuotaAltitudeFillEnum.Solid
+                                                                Using oBrush As SolidBrush = New SolidBrush(Color.Black)
+                                                                    Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                                        Call oQuotaPath.AddPolygon({oSubBasePoint, New PointF(oSubBasePoint.X - sCrossHeight / 5.0F, oSubBasePoint.Y - sCrossHeight * 2.0F / 5.0F), New PointF(oSubBasePoint.X + sCrossHeight / 5.0F, oSubBasePoint.Y - sCrossHeight * 2.0F / 5.0F)})
+                                                                        Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oQuotaPath, oPen, oWireframePen, oBrush)
+                                                                    End Using
+                                                                End Using
+                                                            Case cIItemQuota.QuotaAltitudeFillEnum.BlackAndWhite
+                                                                Using oBrush As SolidBrush = New SolidBrush(Color.Black)
+                                                                    Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                                        Call oQuotaPath.AddPolygon({oSubBasePoint, New PointF(oSubBasePoint.X - sCrossHeight / 5.0F, oSubBasePoint.Y - sCrossHeight * 2.0F / 5.0F), New PointF(oSubBasePoint.X, oSubBasePoint.Y - sCrossHeight * 2.0F / 5.0F)})
+                                                                        Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oQuotaPath, oPen, oWireframePen, oBrush)
+                                                                    End Using
+                                                                End Using
+                                                            Case cIItemQuota.QuotaAltitudeFillEnum.WhiteAndBlack
+                                                                Using oBrush As SolidBrush = New SolidBrush(Color.Black)
+                                                                    Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                                        Call oQuotaPath.AddPolygon({oSubBasePoint, New PointF(oSubBasePoint.X, oSubBasePoint.Y - sCrossHeight * 2.0F / 5.0F), New PointF(oSubBasePoint.X + sCrossHeight / 5.0F, oSubBasePoint.Y - sCrossHeight * 2.0F / 5.0F)})
+                                                                        Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oQuotaPath, oPen, oWireframePen, oBrush)
+                                                                    End Using
+                                                                End Using
+                                                        End Select
+                                                    Case cIItemQuota.QuotaAltitudeStyleEnum.Style2
+                                                        Dim oTextBounds As RectangleF = oPath.GetBounds
+                                                        Dim oBasePoint As PointF = New PointF(oCenterPoint.X, oCenterPoint.Y + oTextBounds.Height * 2.2F / 2.0F)
+                                                        Dim sCrossHeight As Single = oTextBounds.Height * 3.0F
+                                                        Dim sTriHeight As Single = oTextBounds.Height * 1.2F
+                                                        Dim sTriWidth As Single = sTriHeight * 3.0F
+                                                        Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                            Call oQuotaPath.StartFigure()
+                                                            Call oQuotaPath.AddLine(New PointF(oBasePoint.X - sCrossHeight * 1.5F, oBasePoint.Y + sTriHeight), New PointF(oBasePoint.X + sCrossHeight * 1.5F, oBasePoint.Y + sTriHeight))
+                                                            Call oQuotaPath.StartFigure()
+                                                            Call oQuotaPath.AddPolygon({New PointF(oBasePoint.X - sTriWidth / 2.0F, oBasePoint.Y), New PointF(oBasePoint.X + sTriWidth / 2.0F, oBasePoint.Y), New PointF(oBasePoint.X, oBasePoint.Y + sTriHeight)})
+                                                            Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
+                                                        End Using
+                                                        Select Case iQuotaAltitudeFill
+                                                            Case cIItemQuota.QuotaAltitudeFillEnum.None
+                                                                'none
+                                                            Case cIItemQuota.QuotaAltitudeFillEnum.Solid
+                                                                'solid
+                                                                Using oBrush As SolidBrush = New SolidBrush(Color.Black)
+                                                                    Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                                        Call oQuotaPath.AddPolygon({New PointF(oBasePoint.X - sTriWidth / 2.0F, oBasePoint.Y), New PointF(oBasePoint.X + sTriWidth / 2.0F, oBasePoint.Y), New PointF(oBasePoint.X, oBasePoint.Y + sTriHeight)})
+                                                                        Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oQuotaPath, Nothing, Nothing, oBrush)
+                                                                    End Using
+                                                                End Using
+                                                            Case cIItemQuota.QuotaAltitudeFillEnum.BlackAndWhite
+                                                                Using oBrush As SolidBrush = New SolidBrush(Color.Black)
+                                                                    Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                                        Call oQuotaPath.AddPolygon({New PointF(oBasePoint.X - sTriWidth / 2.0F, oBasePoint.Y), New PointF(oBasePoint.X, oBasePoint.Y), New PointF(oBasePoint.X, oBasePoint.Y + sTriHeight)})
+                                                                        Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oQuotaPath, Nothing, Nothing, oBrush)
+                                                                    End Using
+                                                                End Using
+                                                            Case cIItemQuota.QuotaAltitudeFillEnum.WhiteAndBlack
+                                                                Using oBrush As SolidBrush = New SolidBrush(Color.Black)
+                                                                    Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                                        Call oQuotaPath.AddPolygon({New PointF(oBasePoint.X, oBasePoint.Y), New PointF(oBasePoint.X + sTriWidth / 2.0F, oBasePoint.Y), New PointF(oBasePoint.X, oBasePoint.Y + sTriHeight)})
+                                                                        Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oQuotaPath, Nothing, Nothing, oBrush)
+                                                                    End Using
+                                                                End Using
+                                                        End Select
+                                                    Case cIItemQuota.QuotaAltitudeStyleEnum.Style3
+                                                        Dim oTextBounds As RectangleF = oPath.GetBounds
+                                                        Dim oBasePoint As PointF = New PointF(oCenterPoint.X - oTextBounds.Width / 2.0F, oCenterPoint.Y + oTextBounds.Height * 2.2F / 2.0F)
+                                                        Dim sCrossHeight As Single = oTextBounds.Height * 3.0F
+                                                        Dim sTriHeight As Single = oTextBounds.Height * 1.2F
+                                                        Dim sTriWidth As Single = sTriHeight * 3.0F
+                                                        Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                            Call oQuotaPath.StartFigure()
+                                                            Call oQuotaPath.AddLine(New PointF(oBasePoint.X, oBasePoint.Y), New PointF(oBasePoint.X + oTextBounds.Width, oBasePoint.Y))
+                                                            Call oQuotaPath.StartFigure()
+                                                            Call oQuotaPath.AddPolygon({New PointF(oBasePoint.X - sTriWidth, oBasePoint.Y), New PointF(oBasePoint.X, oBasePoint.Y), New PointF(oBasePoint.X - sTriWidth / 2.0F, oBasePoint.Y + sTriHeight)})
+                                                            Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
+                                                        End Using
+                                                        Select Case iQuotaAltitudeFill
+                                                            Case cIItemQuota.QuotaAltitudeFillEnum.None
+                                                                'none
+                                                            Case cIItemQuota.QuotaAltitudeFillEnum.Solid
+                                                                'solid
+                                                                Using oBrush As SolidBrush = New SolidBrush(Color.Black)
+                                                                    Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                                        Call oQuotaPath.AddPolygon({New PointF(oBasePoint.X - sTriWidth, oBasePoint.Y), New PointF(oBasePoint.X, oBasePoint.Y), New PointF(oBasePoint.X - sTriWidth / 2.0F, oBasePoint.Y + sTriHeight)})
+                                                                        Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oQuotaPath, Nothing, Nothing, oBrush)
+                                                                    End Using
+                                                                End Using
+                                                            Case cIItemQuota.QuotaAltitudeFillEnum.BlackAndWhite
+                                                                Using oBrush As SolidBrush = New SolidBrush(Color.Black)
+                                                                    Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                                        Call oQuotaPath.AddPolygon({New PointF(oBasePoint.X - sTriWidth, oBasePoint.Y), New PointF(oBasePoint.X - sTriWidth / 2.0F, oBasePoint.Y), New PointF(oBasePoint.X - sTriWidth / 2.0F, oBasePoint.Y + sTriHeight)})
+                                                                        Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oQuotaPath, Nothing, Nothing, oBrush)
+                                                                    End Using
+                                                                End Using
+                                                            Case cIItemQuota.QuotaAltitudeFillEnum.WhiteAndBlack
+                                                                Using oBrush As SolidBrush = New SolidBrush(Color.Black)
+                                                                    Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                                        Call oQuotaPath.AddPolygon({New PointF(oBasePoint.X - sTriWidth / 2.0F, oBasePoint.Y), New PointF(oBasePoint.X, oBasePoint.Y), New PointF(oBasePoint.X - sTriWidth / 2.0F, oBasePoint.Y + sTriHeight)})
+                                                                        Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oQuotaPath, Nothing, Nothing, oBrush)
+                                                                    End Using
+                                                                End Using
+                                                        End Select
+                                                    Case cIItemQuota.QuotaAltitudeStyleEnum.Style4
+                                                        Dim oTextBounds As RectangleF = oPath.GetBounds
+                                                        Dim sCrossHeight As Single = oTextBounds.Height * 3.0F
+                                                        Dim sTriHeight As Single = oTextBounds.Height * 1.2F
+                                                        Dim sTriWidth As Single = sTriHeight * 3.0F
+                                                        Dim oBasePoint As PointF = New PointF(oCenterPoint.X - oTextBounds.Width / 2.0F, oCenterPoint.Y + sTriHeight + oTextBounds.Height * 2.2F / 2.0F)
+                                                        Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                            Call oQuotaPath.StartFigure()
+                                                            Call oQuotaPath.AddLine(New PointF(oBasePoint.X - sTriWidth / 2.0F, oBasePoint.Y - sTriHeight), New PointF(oBasePoint.X + oTextBounds.Width, oBasePoint.Y - sTriHeight))
+                                                            Call oQuotaPath.AddLine(New PointF(oBasePoint.X - sTriWidth / 2.0F, oBasePoint.Y - sTriHeight), New PointF(oBasePoint.X - sTriWidth / 2.0F, oBasePoint.Y))
+                                                            Call oQuotaPath.StartFigure()
+                                                            Call oQuotaPath.AddPolygon({New PointF(oBasePoint.X - sTriWidth, oBasePoint.Y), New PointF(oBasePoint.X, oBasePoint.Y), New PointF(oBasePoint.X - sTriWidth / 2.0F, oBasePoint.Y + sTriHeight)})
+                                                            Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
+                                                        End Using
+                                                        Select Case iQuotaAltitudeFill
+                                                            Case cIItemQuota.QuotaAltitudeFillEnum.None
+                                                                'none
+                                                            Case cIItemQuota.QuotaAltitudeFillEnum.Solid
+                                                                'solid
+                                                                Using oBrush As SolidBrush = New SolidBrush(Color.Black)
+                                                                    Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                                        Call oQuotaPath.AddPolygon({New PointF(oBasePoint.X - sTriWidth, oBasePoint.Y), New PointF(oBasePoint.X, oBasePoint.Y), New PointF(oBasePoint.X - sTriWidth / 2.0F, oBasePoint.Y + sTriHeight)})
+                                                                        Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oQuotaPath, Nothing, Nothing, oBrush)
+                                                                    End Using
+                                                                End Using
+                                                            Case cIItemQuota.QuotaAltitudeFillEnum.BlackAndWhite
+                                                                Using oBrush As SolidBrush = New SolidBrush(Color.Black)
+                                                                    Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                                        Call oQuotaPath.AddPolygon({New PointF(oBasePoint.X - sTriWidth, oBasePoint.Y), New PointF(oBasePoint.X - sTriWidth / 2.0F, oBasePoint.Y), New PointF(oBasePoint.X - sTriWidth / 2.0F, oBasePoint.Y + sTriHeight)})
+                                                                        Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oQuotaPath, Nothing, Nothing, oBrush)
+                                                                    End Using
+                                                                End Using
+                                                            Case cIItemQuota.QuotaAltitudeFillEnum.WhiteAndBlack
+                                                                Using oBrush As SolidBrush = New SolidBrush(Color.Black)
+                                                                    Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                                        Call oQuotaPath.AddPolygon({New PointF(oBasePoint.X - sTriWidth / 2.0F, oBasePoint.Y), New PointF(oBasePoint.X, oBasePoint.Y), New PointF(oBasePoint.X - sTriWidth / 2.0F, oBasePoint.Y + sTriHeight)})
+                                                                        Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oQuotaPath, Nothing, Nothing, oBrush)
+                                                                    End Using
+                                                                End Using
+                                                        End Select
+                                                    Case cIItemQuota.QuotaAltitudeStyleEnum.Style0
+                                                        'UIS
+                                                        Dim oTextBounds As RectangleF = oPath.GetBounds
+                                                        Dim oCircleSize As SizeF = oTextBounds.Size
+                                                        Dim sCircleWidth As Single = oCircleSize.Height
+                                                        Dim oCircleLocation As PointF = New PointF(oCenterPoint.X - oTextBounds.Width / 2.0F - sCircleWidth * 5.0F, oCenterPoint.Y - oTextBounds.Height / 2.0F)
 
-                                                Using oQuotaPath As GraphicsPath = New GraphicsPath
-                                                    Call oQuotaPath.StartFigure()
-                                                    Call oQuotaPath.AddLine(oCircleLocation.X - sCircleWidth * 2, oCircleLocation.Y + sCircleWidth, oCircleLocation.X, oCircleLocation.Y + sCircleWidth)
-                                                    Call oQuotaPath.StartFigure()
-                                                    Call oQuotaPath.AddLine(oCircleLocation.X + sCircleWidth * 2, oCircleLocation.Y + sCircleWidth, oCircleLocation.X + sCircleWidth * 4, oCircleLocation.Y + sCircleWidth)
-                                                    Call oQuotaPath.StartFigure()
-                                                    Call oQuotaPath.AddLine(oCircleLocation.X + sCircleWidth, oCircleLocation.Y - sCircleWidth * 2, oCircleLocation.X + sCircleWidth, oCircleLocation.Y)
-                                                    Call oQuotaPath.StartFigure()
-                                                    Call oQuotaPath.AddLine(oCircleLocation.X + sCircleWidth, oCircleLocation.Y + sCircleWidth * 2, oCircleLocation.X + sCircleWidth, oCircleLocation.Y + sCircleWidth * 4)
-                                                    Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
-                                                End Using
+                                                        Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                            Call oQuotaPath.StartFigure()
+                                                            Call oQuotaPath.AddEllipse(oCircleLocation.X, oCircleLocation.Y, sCircleWidth * 2.0F, sCircleWidth * 2.0F)
+                                                            Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
+                                                        End Using
+
+                                                        Select Case iQuotaAltitudeFill
+                                                            Case cIItemQuota.QuotaAltitudeFillEnum.None
+                                                                Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                                    Call oQuotaPath.StartFigure()
+                                                                    Call oQuotaPath.AddLine(oCircleLocation.X - sCircleWidth * 2.0F, oCircleLocation.Y + sCircleWidth, oCircleLocation.X, oCircleLocation.Y + sCircleWidth)
+                                                                    Call oQuotaPath.StartFigure()
+                                                                    Call oQuotaPath.AddLine(oCircleLocation.X + sCircleWidth * 2.0F, oCircleLocation.Y + sCircleWidth, oCircleLocation.X + sCircleWidth * 4.0F, oCircleLocation.Y + sCircleWidth)
+                                                                    Call oQuotaPath.StartFigure()
+                                                                    Call oQuotaPath.AddLine(oCircleLocation.X + sCircleWidth, oCircleLocation.Y - sCircleWidth * 2.0F, oCircleLocation.X + sCircleWidth, oCircleLocation.Y)
+                                                                    Call oQuotaPath.StartFigure()
+                                                                    Call oQuotaPath.AddLine(oCircleLocation.X + sCircleWidth, oCircleLocation.Y + sCircleWidth * 2.0F, oCircleLocation.X + sCircleWidth, oCircleLocation.Y + sCircleWidth * 4.0F)
+                                                                    Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
+                                                                End Using
+                                                            Case cIItemQuota.QuotaAltitudeFillEnum.Solid
+                                                                Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                                    Call oQuotaPath.StartFigure()
+                                                                    Call oQuotaPath.AddLine(oCircleLocation.X - sCircleWidth * 2.0F, oCircleLocation.Y + sCircleWidth, oCircleLocation.X + sCircleWidth * 4.0F, oCircleLocation.Y + sCircleWidth)
+                                                                    Call oQuotaPath.StartFigure()
+                                                                    Call oQuotaPath.AddLine(oCircleLocation.X + sCircleWidth, oCircleLocation.Y - sCircleWidth * 2.0F, oCircleLocation.X + sCircleWidth, oCircleLocation.Y + sCircleWidth * 4.0F)
+                                                                    Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
+                                                                End Using
+                                                            Case cIItemQuota.QuotaAltitudeFillEnum.BlackAndWhite
+                                                                Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                                    Call oQuotaPath.StartFigure()
+                                                                    Call oQuotaPath.AddLine(oCircleLocation.X - sCircleWidth * 2.0F, oCircleLocation.Y + sCircleWidth, oCircleLocation.X + sCircleWidth * 4.0F, oCircleLocation.Y + sCircleWidth)
+                                                                    Call oQuotaPath.StartFigure()
+                                                                    Call oQuotaPath.AddLine(oCircleLocation.X + sCircleWidth, oCircleLocation.Y - sCircleWidth * 2.0F, oCircleLocation.X + sCircleWidth, oCircleLocation.Y + sCircleWidth * 4.0F)
+                                                                    Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
+                                                                End Using
+                                                                Using oBrush As SolidBrush = New SolidBrush(Color.Black)
+                                                                    Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                                        Call oQuotaPath.StartFigure()
+                                                                        Call oQuotaPath.AddPie(oCircleLocation.X, oCircleLocation.Y, sCircleWidth * 2.0F, sCircleWidth * 2.0F, 0F, 90.0F)
+                                                                        Call oQuotaPath.StartFigure()
+                                                                        Call oQuotaPath.AddPie(oCircleLocation.X, oCircleLocation.Y, sCircleWidth * 2.0F, sCircleWidth * 2.0F, 180.0F, 90.0F)
+                                                                        Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oQuotaPath, Nothing, Nothing, oBrush)
+                                                                    End Using
+                                                                End Using
+                                                            Case cIItemQuota.QuotaAltitudeFillEnum.WhiteAndBlack
+                                                                Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                                    Call oQuotaPath.StartFigure()
+                                                                    Call oQuotaPath.AddLine(oCircleLocation.X - sCircleWidth * 2.0F, oCircleLocation.Y + sCircleWidth, oCircleLocation.X + sCircleWidth * 4.0F, oCircleLocation.Y + sCircleWidth)
+                                                                    Call oQuotaPath.StartFigure()
+                                                                    Call oQuotaPath.AddLine(oCircleLocation.X + sCircleWidth, oCircleLocation.Y - sCircleWidth * 2.0F, oCircleLocation.X + sCircleWidth, oCircleLocation.Y + sCircleWidth * 4.0F)
+                                                                    Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
+                                                                End Using
+                                                                Using oBrush As SolidBrush = New SolidBrush(Color.Black)
+                                                                    Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                                        Call oQuotaPath.StartFigure()
+                                                                        Call oQuotaPath.AddPie(oCircleLocation.X, oCircleLocation.Y, sCircleWidth * 2.0F, sCircleWidth * 2.0F, 90.0F, 90.0F)
+                                                                        Call oQuotaPath.StartFigure()
+                                                                        Call oQuotaPath.AddPie(oCircleLocation.X, oCircleLocation.Y, sCircleWidth * 2.0F, sCircleWidth * 2.0F, 270.0F, 90.0F)
+                                                                        Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Filler, oQuotaPath, Nothing, Nothing, oBrush)
+                                                                    End Using
+                                                                End Using
+                                                        End Select
+                                                End Select
                                             Case cIItemQuota.QuotaTypeEnum.GridScale
                                                 Dim sXOffset As Single
-                                                Try
-                                                    If sQuotaRelativeTrigPoint = "" Then
-                                                        sXOffset = 0
-                                                    Else
-                                                        If oSurvey.Calculate.TrigPoints.Contains(sQuotaRelativeTrigPoint) Then
-                                                            If MyBase.Design.Type = cIDesign.cDesignTypeEnum.Plan Then
-                                                                sXOffset = oSurvey.Calculate.TrigPoints(sQuotaRelativeTrigPoint).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.FromTop).X - oBounds.Left
+                                                        Try
+                                                            If sQuotaRelativeTrigPoint = "" Then
+                                                                sXOffset = 0
                                                             Else
-                                                                sXOffset = oSurvey.Calculate.TrigPoints(sQuotaRelativeTrigPoint).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.Perpendicular).X - oBounds.Left
+                                                                If oSurvey.Calculate.TrigPoints.Contains(sQuotaRelativeTrigPoint) Then
+                                                                    If MyBase.Design.Type = cIDesign.cDesignTypeEnum.Plan Then
+                                                                        sXOffset = oSurvey.Calculate.TrigPoints(sQuotaRelativeTrigPoint).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.FromTop).X - oBounds.Left
+                                                                    Else
+                                                                        sXOffset = oSurvey.Calculate.TrigPoints(sQuotaRelativeTrigPoint).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.Perpendicular).X - oBounds.Left
+                                                                    End If
+                                                                Else
+                                                                    sXOffset = 0
+                                                                End If
                                                             End If
-                                                        Else
+                                                        Catch
                                                             sXOffset = 0
-                                                        End If
-                                                    End If
-                                                Catch
-                                                    sXOffset = 0
-                                                End Try
-                                                Dim iXTickValue As Integer
-                                                Dim sXFirstTick As Single = oBounds.Left + (sXOffset - pTruncateToTickFrequency(sXOffset))
-                                                Dim sXLastTick As Single = sXFirstTick + pTruncateToTickFrequency(oBounds.Width)
+                                                        End Try
+                                                        Dim iXTickValue As Integer
+                                                        Dim sXFirstTick As Single = oBounds.Left + (sXOffset - pTruncateToTickFrequency(sXOffset))
+                                                        Dim sXLastTick As Single = sXFirstTick + pTruncateToTickFrequency(oBounds.Width)
 
-                                                Dim sYOffset As Single
-                                                Try
-                                                    If sQuotaRelativeTrigPoint = "" Then
-                                                        sYOffset = 0
-                                                    Else
-                                                        If oSurvey.Calculate.TrigPoints.Contains(sQuotaRelativeTrigPoint) Then
-                                                            If MyBase.Design.Type = cIDesign.cDesignTypeEnum.Plan Then
-                                                                sYOffset = oSurvey.Calculate.TrigPoints(sQuotaRelativeTrigPoint).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.FromTop).Y - oBounds.Top
+                                                        Dim sYOffset As Single
+                                                        Try
+                                                            If sQuotaRelativeTrigPoint = "" Then
+                                                                sYOffset = 0
                                                             Else
-                                                                sYOffset = oSurvey.Calculate.TrigPoints(sQuotaRelativeTrigPoint).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.Perpendicular).Y - oBounds.Top
+                                                                If oSurvey.Calculate.TrigPoints.Contains(sQuotaRelativeTrigPoint) Then
+                                                                    If MyBase.Design.Type = cIDesign.cDesignTypeEnum.Plan Then
+                                                                        sYOffset = oSurvey.Calculate.TrigPoints(sQuotaRelativeTrigPoint).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.FromTop).Y - oBounds.Top
+                                                                    Else
+                                                                        sYOffset = oSurvey.Calculate.TrigPoints(sQuotaRelativeTrigPoint).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.Perpendicular).Y - oBounds.Top
+                                                                    End If
+                                                                Else
+                                                                    sYOffset = 0
+                                                                End If
                                                             End If
-                                                        Else
+                                                        Catch
                                                             sYOffset = 0
-                                                        End If
-                                                    End If
-                                                Catch
-                                                    sYOffset = 0
-                                                End Try
-                                                Dim iYTickValue As Integer
-                                                Dim sYFirstTick As Single = oBounds.Top + (sYOffset - pTruncateToTickFrequency(sYOffset))
-                                                Dim sYLastTick As Single = sYFirstTick + pTruncateToTickFrequency(oBounds.Height)
+                                                        End Try
+                                                        Dim iYTickValue As Integer
+                                                        Dim sYFirstTick As Single = oBounds.Top + (sYOffset - pTruncateToTickFrequency(sYOffset))
+                                                        Dim sYLastTick As Single = sYFirstTick + pTruncateToTickFrequency(oBounds.Height)
 
-                                                Dim sSpace As Single
-                                                Using oQuotaSpaceTextPath As GraphicsPath = New GraphicsPath
-                                                    Call oFont.AddToPath(PaintOptions, oQuotaSpaceTextPath, "0", New PointF(0, 0), oSF)
-                                                    sSpace = oQuotaSpaceTextPath.GetBounds.Width * sScale / 2
+                                                        Dim sSpace As Single
+                                                        Using oQuotaSpaceTextPath As GraphicsPath = New GraphicsPath
+                                                            Call oFont.AddToPath(PaintOptions, oQuotaSpaceTextPath, "0", New PointF(0, 0), oSF)
+                                                    sSpace = oQuotaSpaceTextPath.GetBounds.Width * sScale / 2.0F
                                                 End Using
 
-                                                Using oQuotaPath As GraphicsPath = New GraphicsPath
-                                                    Dim sTextTop As Single
-                                                    If iQuotaTextPosition = cIItemQuota.QuotaTextPositionEnum.LeftTop Then
-                                                        sTextTop = sYFirstTick - sQuotaTickSize
-                                                    Else
-                                                        sTextTop = sYLastTick + sQuotaTickSize
-                                                    End If
+                                                        Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                            Dim sTextTop As Single
+                                                            If iQuotaTextPosition = cIItemQuota.QuotaTextPositionEnum.LeftTop Then
+                                                                sTextTop = sYFirstTick - sQuotaTickSize
+                                                            Else
+                                                                sTextTop = sYLastTick + sQuotaTickSize
+                                                            End If
 
-                                                    iXTickValue = -1 * pTruncateToTickFrequency(sXOffset)
-                                                    For sMeter As Single = sXFirstTick To sXLastTick Step 1 'iQuotaTickFrequency
-                                                        If iXTickValue Mod iQuotaTickFrequency = 0 Then
-                                                            Call oQuotaPath.StartFigure()
-                                                            Call oQuotaPath.AddLine(New PointF(sMeter, sYFirstTick), New PointF(sMeter, sYLastTick))
-                                                            Select Case iQuotaTextPosition
-                                                                Case cIItemQuota.QuotaTextPositionEnum.LeftTop
-                                                                    Call oQuotaPath.AddLine(New PointF(sMeter, sYFirstTick - sQuotaTickSize), New PointF(sMeter, sYFirstTick))
+                                                            iXTickValue = -1 * pTruncateToTickFrequency(sXOffset)
+                                                            For sMeter As Single = sXFirstTick To sXLastTick Step 1 'iQuotaTickFrequency
+                                                                If iXTickValue Mod iQuotaTickFrequency = 0 Then
+                                                                    Call oQuotaPath.StartFigure()
+                                                                    Call oQuotaPath.AddLine(New PointF(sMeter, sYFirstTick), New PointF(sMeter, sYLastTick))
+                                                                    Select Case iQuotaTextPosition
+                                                                        Case cIItemQuota.QuotaTextPositionEnum.LeftTop
+                                                                            Call oQuotaPath.AddLine(New PointF(sMeter, sYFirstTick - sQuotaTickSize), New PointF(sMeter, sYFirstTick))
                                                                 Case cIItemQuota.QuotaTextPositionEnum.RightBottom
                                                                     Call oQuotaPath.AddLine(New PointF(sMeter, sYLastTick), New PointF(sMeter, sYLastTick + sQuotaTickSize))
                                                             End Select
@@ -973,9 +1191,9 @@ Namespace cSurvey.Design.Items
                                                                 Using oMatrix As Matrix = New Matrix
                                                                     Call oMatrix.Translate(-oQuotaTickTextBounds.Left, -oQuotaTickTextBounds.Top, MatrixOrder.Append)
                                                                     If iQuotaTextPosition = cIItemQuota.QuotaTextPositionEnum.LeftTop Then
-                                                                        Call oMatrix.Translate(sMeter - oQuotaTickTextPath.GetBounds.Width / 2, sTextTop - oQuotaTickTextPath.GetBounds.Height - sSpace, MatrixOrder.Append)
+                                                                        Call oMatrix.Translate(sMeter - oQuotaTickTextPath.GetBounds.Width / 2.0F, sTextTop - oQuotaTickTextPath.GetBounds.Height - sSpace, MatrixOrder.Append)
                                                                     Else
-                                                                        Call oMatrix.Translate(sMeter - oQuotaTickTextPath.GetBounds.Width / 2, sTextTop + sSpace, MatrixOrder.Append)
+                                                                        Call oMatrix.Translate(sMeter - oQuotaTickTextPath.GetBounds.Width / 2.0F, sTextTop + sSpace, MatrixOrder.Append)
                                                                     End If
                                                                     Call oQuotaTickTextPath.Transform(oMatrix)
                                                                 End Using
@@ -994,193 +1212,193 @@ Namespace cSurvey.Design.Items
                                                     End If
 
                                                     iYTickValue = pTruncateToTickFrequency(sYOffset)
-                                                    For sMeter As Single = sYFirstTick To sYLastTick Step 1 'iQuotaTickFrequency ' oBounds.Bottom Step 1
-                                                        If iYTickValue Mod iQuotaTickFrequency = 0 Then
-                                                            Call oQuotaPath.StartFigure()
-                                                            Call oQuotaPath.AddLine(New PointF(sXFirstTick, sMeter), New PointF(sXLastTick, sMeter))
-                                                            Select Case iQuotaTextPosition
-                                                                Case cIItemQuota.QuotaTextPositionEnum.LeftTop
-                                                                    Call oQuotaPath.AddLine(New PointF(sXFirstTick - sQuotaTickSize, sMeter), New PointF(sXLastTick, sMeter))
-                                                                Case cIItemQuota.QuotaTextPositionEnum.RightBottom
-                                                                    Call oQuotaPath.AddLine(New PointF(sXFirstTick, sMeter), New PointF(sXLastTick + sQuotaTickSize, sMeter))
-                                                            End Select
-                                                        End If
-                                                        If iYTickValue Mod iQuotaTickLabelFrequency = 0 Then
-                                                            Using oQuotaTickTextPath As GraphicsPath = New GraphicsPath
-                                                                Call oFont.AddToPath(PaintOptions, oQuotaTickTextPath, iYTickValue, New PointF(0, 0), oSF)
-
-                                                                Using oMatrix As Matrix = New Matrix
-                                                                    Call oMatrix.Scale(sScale, sScale, MatrixOrder.Append)
-                                                                    Call oQuotaTickTextPath.Transform(oMatrix)
-                                                                End Using
-
-                                                                Dim oQuotaTickTextBounds As RectangleF = oQuotaTickTextPath.GetBounds
-                                                                Using oMatrix As Matrix = New Matrix
-                                                                    Call oMatrix.Translate(-oQuotaTickTextBounds.Left, -oQuotaTickTextBounds.Top, MatrixOrder.Append)
-                                                                    If iQuotaTextPosition = cIItemQuota.QuotaTextPositionEnum.LeftTop Then
-                                                                        Call oMatrix.Translate(sTextLeft - oQuotaTickTextBounds.Width - sSpace, sMeter - oQuotaTickTextBounds.Height / 2, MatrixOrder.Append)
-                                                                    Else
-                                                                        Call oMatrix.Translate(sTextLeft + sSpace, sMeter - oQuotaTickTextBounds.Height / 2, MatrixOrder.Append)
-                                                                    End If
-                                                                    Call oQuotaTickTextPath.Transform(oMatrix)
-                                                                End Using
-
-                                                                Call oFont.Render(Graphics, PaintOptions, Options, oQuotaTickTextPath, oCache)
-                                                            End Using
-                                                        End If
-                                                        iYTickValue -= 1
-                                                    Next
-
-                                                    Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
-                                                End Using
-                                            Case cIItemQuota.QuotaTypeEnum.VerticalScale
-                                                Dim sYOffset As Single
-                                                Try
-                                                    If sQuotaRelativeTrigPoint <> "" Then
-                                                        If oSurvey.Calculate.TrigPoints.Contains(sQuotaRelativeTrigPoint) Then
-                                                            If MyBase.Design.Type = cIDesign.cDesignTypeEnum.Plan Then
-                                                                sYOffset = oSurvey.Calculate.TrigPoints(sQuotaRelativeTrigPoint).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.FromTop).Y - oBounds.Top
-                                                            Else
-                                                                sYOffset = oSurvey.Calculate.TrigPoints(sQuotaRelativeTrigPoint).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.Perpendicular).Y - oBounds.Top
-                                                            End If
-                                                        Else
-                                                            sYOffset = 0
-                                                        End If
-                                                    Else
-                                                        sYOffset = 0
-                                                    End If
-                                                Catch
-                                                    sYOffset = 0
-                                                End Try
-                                                Dim iYTickValue As Integer
-                                                Dim sYFirstTick As Single = oBounds.Top + (sYOffset - pTruncateToTickFrequency(sYOffset))
-                                                Dim sYLastTick As Single = sYFirstTick + pTruncateToTickFrequency(oBounds.Height)
-
-                                                Dim sXFirstTick As Single = oBounds.Left
-
-                                                Dim sSpace As Single
-                                                Using oQuotaSpaceTextPath As GraphicsPath = New GraphicsPath
-                                                    Call oFont.AddToPath(PaintOptions, oQuotaSpaceTextPath, "0", New PointF(0, 0), oSF)
-                                                    sSpace = oQuotaSpaceTextPath.GetBounds.Width * sScale / 2
-                                                End Using
-
-                                                Using oQuotaPath As GraphicsPath = New GraphicsPath
-                                                    Dim sTextLeft As Single
-                                                    If iQuotaTextPosition = cIItemQuota.QuotaTextPositionEnum.LeftTop Then
-                                                        sTextLeft = sXFirstTick
-                                                    Else
-                                                        sTextLeft = sXFirstTick + sQuotaTickSize
-                                                    End If
-
-                                                    Select Case iQuotaAlign
-                                                        Case cIItemQuota.QuotaAlignEnum.Left
-                                                            Call oQuotaPath.AddLine(New PointF(sXFirstTick, sYFirstTick), New PointF(sXFirstTick, sYLastTick))
-                                                        Case cIItemQuota.QuotaAlignEnum.Center
-                                                            Call oQuotaPath.AddLine(New PointF(sXFirstTick + sQuotaTickSize / 2, sYFirstTick), New PointF(sXFirstTick + sQuotaTickSize / 2, sYLastTick))
-                                                        Case cIItemQuota.QuotaAlignEnum.Right
-                                                            Call oQuotaPath.AddLine(New PointF(sXFirstTick + sQuotaTickSize, sYFirstTick), New PointF(sXFirstTick + sQuotaTickSize, sYLastTick))
-                                                    End Select
-
-                                                    iYTickValue = pTruncateToTickFrequency(sYOffset)
-                                                    For sMeter As Single = sYFirstTick To sYLastTick Step 1 'iQuotaTickFrequency ' oBounds.Bottom Step 1
-                                                        If iYTickValue Mod iQuotaTickFrequency = 0 Then
-                                                            Call oQuotaPath.StartFigure()
-                                                            Call oQuotaPath.AddLine(New PointF(sXFirstTick, sMeter), New PointF(sXFirstTick + sQuotaTickSize, sMeter))
-                                                        End If
-                                                        If iYTickValue Mod iQuotaTickLabelFrequency = 0 Then
-                                                            Dim oQuotaTickTextPath As GraphicsPath = New GraphicsPath
-                                                            Call oFont.AddToPath(PaintOptions, oQuotaTickTextPath, iYTickValue, New PointF(0, 0), oSF)
-
-                                                            Using oMatrix As Matrix = New Matrix
-                                                                Call oMatrix.Scale(sScale, sScale, MatrixOrder.Append)
-                                                                Call oQuotaTickTextPath.Transform(oMatrix)
-                                                            End Using
-
-                                                            Dim oQuotaTickTextBounds As RectangleF = oQuotaTickTextPath.GetBounds
-                                                            Using oMatrix As Matrix = New Matrix
-                                                                Call oMatrix.Translate(-oQuotaTickTextBounds.Left, -oQuotaTickTextBounds.Top, MatrixOrder.Append)
-                                                                If iQuotaTextPosition = cIItemQuota.QuotaTextPositionEnum.LeftTop Then
-                                                                    Call oMatrix.Translate(sTextLeft - oQuotaTickTextBounds.Width - sSpace, sMeter - oQuotaTickTextBounds.Height / 2, MatrixOrder.Append)
-                                                                Else
-                                                                    Call oMatrix.Translate(sTextLeft + sSpace, sMeter - oQuotaTickTextBounds.Height / 2, MatrixOrder.Append)
+                                                            For sMeter As Single = sYFirstTick To sYLastTick Step 1 'iQuotaTickFrequency ' oBounds.Bottom Step 1
+                                                                If iYTickValue Mod iQuotaTickFrequency = 0 Then
+                                                                    Call oQuotaPath.StartFigure()
+                                                                    Call oQuotaPath.AddLine(New PointF(sXFirstTick, sMeter), New PointF(sXLastTick, sMeter))
+                                                                    Select Case iQuotaTextPosition
+                                                                        Case cIItemQuota.QuotaTextPositionEnum.LeftTop
+                                                                            Call oQuotaPath.AddLine(New PointF(sXFirstTick - sQuotaTickSize, sMeter), New PointF(sXLastTick, sMeter))
+                                                                        Case cIItemQuota.QuotaTextPositionEnum.RightBottom
+                                                                            Call oQuotaPath.AddLine(New PointF(sXFirstTick, sMeter), New PointF(sXLastTick + sQuotaTickSize, sMeter))
+                                                                    End Select
                                                                 End If
-                                                                Call oQuotaTickTextPath.Transform(oMatrix)
-                                                            End Using
+                                                                If iYTickValue Mod iQuotaTickLabelFrequency = 0 Then
+                                                                    Using oQuotaTickTextPath As GraphicsPath = New GraphicsPath
+                                                                        Call oFont.AddToPath(PaintOptions, oQuotaTickTextPath, iYTickValue, New PointF(0, 0), oSF)
 
-                                                            Call oFont.Render(Graphics, PaintOptions, Options, oQuotaTickTextPath, oCache)
-                                                            Call oQuotaTickTextPath.Dispose()
-                                                        End If
-                                                        iYTickValue -= 1
-                                                    Next
+                                                                        Using oMatrix As Matrix = New Matrix
+                                                                            Call oMatrix.Scale(sScale, sScale, MatrixOrder.Append)
+                                                                            Call oQuotaTickTextPath.Transform(oMatrix)
+                                                                        End Using
 
-                                                    Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
-                                                End Using
-                                            Case cIItemQuota.QuotaTypeEnum.HorizontalScale
-                                                Dim sXOffset As Single
-                                                Try
-                                                    If sQuotaRelativeTrigPoint <> "" Then
-                                                        If oSurvey.Calculate.TrigPoints.Contains(sQuotaRelativeTrigPoint) Then
-                                                            If MyBase.Design.Type = cIDesign.cDesignTypeEnum.Plan Then
-                                                                sXOffset = oSurvey.Calculate.TrigPoints(sQuotaRelativeTrigPoint).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.FromTop).X - oBounds.Left
+                                                                        Dim oQuotaTickTextBounds As RectangleF = oQuotaTickTextPath.GetBounds
+                                                                        Using oMatrix As Matrix = New Matrix
+                                                                            Call oMatrix.Translate(-oQuotaTickTextBounds.Left, -oQuotaTickTextBounds.Top, MatrixOrder.Append)
+                                                                            If iQuotaTextPosition = cIItemQuota.QuotaTextPositionEnum.LeftTop Then
+                                                                                Call oMatrix.Translate(sTextLeft - oQuotaTickTextBounds.Width - sSpace, sMeter - oQuotaTickTextBounds.Height / 2, MatrixOrder.Append)
+                                                                            Else
+                                                                                Call oMatrix.Translate(sTextLeft + sSpace, sMeter - oQuotaTickTextBounds.Height / 2, MatrixOrder.Append)
+                                                                            End If
+                                                                            Call oQuotaTickTextPath.Transform(oMatrix)
+                                                                        End Using
+
+                                                                        Call oFont.Render(Graphics, PaintOptions, Options, oQuotaTickTextPath, oCache)
+                                                                    End Using
+                                                                End If
+                                                                iYTickValue -= 1
+                                                            Next
+
+                                                            Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
+                                                        End Using
+                                                    Case cIItemQuota.QuotaTypeEnum.VerticalScale
+                                                        Dim sYOffset As Single
+                                                        Try
+                                                            If sQuotaRelativeTrigPoint <> "" Then
+                                                                If oSurvey.Calculate.TrigPoints.Contains(sQuotaRelativeTrigPoint) Then
+                                                                    If MyBase.Design.Type = cIDesign.cDesignTypeEnum.Plan Then
+                                                                        sYOffset = oSurvey.Calculate.TrigPoints(sQuotaRelativeTrigPoint).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.FromTop).Y - oBounds.Top
+                                                                    Else
+                                                                        sYOffset = oSurvey.Calculate.TrigPoints(sQuotaRelativeTrigPoint).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.Perpendicular).Y - oBounds.Top
+                                                                    End If
+                                                                Else
+                                                                    sYOffset = 0
+                                                                End If
                                                             Else
-                                                                sXOffset = oSurvey.Calculate.TrigPoints(sQuotaRelativeTrigPoint).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.Perpendicular).X - oBounds.Left
+                                                                sYOffset = 0
                                                             End If
-                                                        Else
+                                                        Catch
+                                                            sYOffset = 0
+                                                        End Try
+                                                        Dim iYTickValue As Integer
+                                                        Dim sYFirstTick As Single = oBounds.Top + (sYOffset - pTruncateToTickFrequency(sYOffset))
+                                                        Dim sYLastTick As Single = sYFirstTick + pTruncateToTickFrequency(oBounds.Height)
+
+                                                        Dim sXFirstTick As Single = oBounds.Left
+
+                                                        Dim sSpace As Single
+                                                        Using oQuotaSpaceTextPath As GraphicsPath = New GraphicsPath
+                                                            Call oFont.AddToPath(PaintOptions, oQuotaSpaceTextPath, "0", New PointF(0, 0), oSF)
+                                                            sSpace = oQuotaSpaceTextPath.GetBounds.Width * sScale / 2
+                                                        End Using
+
+                                                        Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                            Dim sTextLeft As Single
+                                                            If iQuotaTextPosition = cIItemQuota.QuotaTextPositionEnum.LeftTop Then
+                                                                sTextLeft = sXFirstTick
+                                                            Else
+                                                                sTextLeft = sXFirstTick + sQuotaTickSize
+                                                            End If
+
+                                                            Select Case iQuotaAlign
+                                                                Case cIItemQuota.QuotaAlignEnum.Left
+                                                                    Call oQuotaPath.AddLine(New PointF(sXFirstTick, sYFirstTick), New PointF(sXFirstTick, sYLastTick))
+                                                                Case cIItemQuota.QuotaAlignEnum.Center
+                                                                    Call oQuotaPath.AddLine(New PointF(sXFirstTick + sQuotaTickSize / 2, sYFirstTick), New PointF(sXFirstTick + sQuotaTickSize / 2, sYLastTick))
+                                                                Case cIItemQuota.QuotaAlignEnum.Right
+                                                                    Call oQuotaPath.AddLine(New PointF(sXFirstTick + sQuotaTickSize, sYFirstTick), New PointF(sXFirstTick + sQuotaTickSize, sYLastTick))
+                                                            End Select
+
+                                                            iYTickValue = pTruncateToTickFrequency(sYOffset)
+                                                            For sMeter As Single = sYFirstTick To sYLastTick Step 1 'iQuotaTickFrequency ' oBounds.Bottom Step 1
+                                                                If iYTickValue Mod iQuotaTickFrequency = 0 Then
+                                                                    Call oQuotaPath.StartFigure()
+                                                                    Call oQuotaPath.AddLine(New PointF(sXFirstTick, sMeter), New PointF(sXFirstTick + sQuotaTickSize, sMeter))
+                                                                End If
+                                                                If iYTickValue Mod iQuotaTickLabelFrequency = 0 Then
+                                                                    Dim oQuotaTickTextPath As GraphicsPath = New GraphicsPath
+                                                                    Call oFont.AddToPath(PaintOptions, oQuotaTickTextPath, iYTickValue, New PointF(0, 0), oSF)
+
+                                                                    Using oMatrix As Matrix = New Matrix
+                                                                        Call oMatrix.Scale(sScale, sScale, MatrixOrder.Append)
+                                                                        Call oQuotaTickTextPath.Transform(oMatrix)
+                                                                    End Using
+
+                                                                    Dim oQuotaTickTextBounds As RectangleF = oQuotaTickTextPath.GetBounds
+                                                                    Using oMatrix As Matrix = New Matrix
+                                                                        Call oMatrix.Translate(-oQuotaTickTextBounds.Left, -oQuotaTickTextBounds.Top, MatrixOrder.Append)
+                                                                        If iQuotaTextPosition = cIItemQuota.QuotaTextPositionEnum.LeftTop Then
+                                                                            Call oMatrix.Translate(sTextLeft - oQuotaTickTextBounds.Width - sSpace, sMeter - oQuotaTickTextBounds.Height / 2, MatrixOrder.Append)
+                                                                        Else
+                                                                            Call oMatrix.Translate(sTextLeft + sSpace, sMeter - oQuotaTickTextBounds.Height / 2, MatrixOrder.Append)
+                                                                        End If
+                                                                        Call oQuotaTickTextPath.Transform(oMatrix)
+                                                                    End Using
+
+                                                                    Call oFont.Render(Graphics, PaintOptions, Options, oQuotaTickTextPath, oCache)
+                                                                    Call oQuotaTickTextPath.Dispose()
+                                                                End If
+                                                                iYTickValue -= 1
+                                                            Next
+
+                                                            Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oQuotaPath, oPen, oWireframePen, Nothing)
+                                                        End Using
+                                                    Case cIItemQuota.QuotaTypeEnum.HorizontalScale
+                                                        Dim sXOffset As Single
+                                                        Try
+                                                            If sQuotaRelativeTrigPoint <> "" Then
+                                                                If oSurvey.Calculate.TrigPoints.Contains(sQuotaRelativeTrigPoint) Then
+                                                                    If MyBase.Design.Type = cIDesign.cDesignTypeEnum.Plan Then
+                                                                        sXOffset = oSurvey.Calculate.TrigPoints(sQuotaRelativeTrigPoint).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.FromTop).X - oBounds.Left
+                                                                    Else
+                                                                        sXOffset = oSurvey.Calculate.TrigPoints(sQuotaRelativeTrigPoint).Point.To2DPoint(Calculate.cTrigPointPoint.ProjectionEnum.Perpendicular).X - oBounds.Left
+                                                                    End If
+                                                                Else
+                                                                    sXOffset = 0
+                                                                End If
+                                                            Else
+                                                                sXOffset = 0
+                                                            End If
+                                                        Catch
                                                             sXOffset = 0
-                                                        End If
-                                                    Else
-                                                        sXOffset = 0
-                                                    End If
-                                                Catch
-                                                    sXOffset = 0
-                                                End Try
-                                                Dim iXTickValue As Integer
-                                                Dim sXFirstTick As Single = oBounds.Left + (sXOffset - pTruncateToTickFrequency(sXOffset))
-                                                Dim sXLastTick As Single = sXFirstTick + pTruncateToTickFrequency(oBounds.Width)
+                                                        End Try
+                                                        Dim iXTickValue As Integer
+                                                        Dim sXFirstTick As Single = oBounds.Left + (sXOffset - pTruncateToTickFrequency(sXOffset))
+                                                        Dim sXLastTick As Single = sXFirstTick + pTruncateToTickFrequency(oBounds.Width)
 
-                                                Dim sYFirstTick As Single = oBounds.Top
+                                                        Dim sYFirstTick As Single = oBounds.Top
 
-                                                Dim sSpace As Single
-                                                Using oQuotaSpaceTextPath As GraphicsPath = New GraphicsPath
-                                                    Call oFont.AddToPath(PaintOptions, oQuotaSpaceTextPath, "0", New PointF(0, 0), oSF)
-                                                    sSpace = oQuotaSpaceTextPath.GetBounds.Width * sScale / 2
-                                                End Using
+                                                        Dim sSpace As Single
+                                                        Using oQuotaSpaceTextPath As GraphicsPath = New GraphicsPath
+                                                            Call oFont.AddToPath(PaintOptions, oQuotaSpaceTextPath, "0", New PointF(0, 0), oSF)
+                                                            sSpace = oQuotaSpaceTextPath.GetBounds.Width * sScale / 2
+                                                        End Using
 
-                                                Using oQuotaPath As GraphicsPath = New GraphicsPath
+                                                        Using oQuotaPath As GraphicsPath = New GraphicsPath
 
-                                                    Dim sTextTop As Single
-                                                    If iQuotaTextPosition = cIItemQuota.QuotaTextPositionEnum.LeftTop Then
-                                                        sTextTop = sYFirstTick
-                                                    Else
-                                                        sTextTop = sYFirstTick + sQuotaTickSize
-                                                    End If
+                                                            Dim sTextTop As Single
+                                                            If iQuotaTextPosition = cIItemQuota.QuotaTextPositionEnum.LeftTop Then
+                                                                sTextTop = sYFirstTick
+                                                            Else
+                                                                sTextTop = sYFirstTick + sQuotaTickSize
+                                                            End If
 
-                                                    Select Case iQuotaAlign
-                                                        Case cIItemQuota.QuotaAlignEnum.Left
-                                                            Call oQuotaPath.AddLine(New PointF(sXFirstTick, sYFirstTick), New PointF(sXLastTick, sYFirstTick))
-                                                        Case cIItemQuota.QuotaAlignEnum.Center
-                                                            Call oQuotaPath.AddLine(New PointF(sXFirstTick, sYFirstTick + sQuotaTickSize / 2), New PointF(sXLastTick, sYFirstTick + sQuotaTickSize / 2))
-                                                        Case cIItemQuota.QuotaAlignEnum.Right
-                                                            Call oQuotaPath.AddLine(New PointF(sXFirstTick, sYFirstTick + sQuotaTickSize), New PointF(sXLastTick, sYFirstTick + sQuotaTickSize))
-                                                    End Select
+                                                            Select Case iQuotaAlign
+                                                                Case cIItemQuota.QuotaAlignEnum.Left
+                                                                    Call oQuotaPath.AddLine(New PointF(sXFirstTick, sYFirstTick), New PointF(sXLastTick, sYFirstTick))
+                                                                Case cIItemQuota.QuotaAlignEnum.Center
+                                                                    Call oQuotaPath.AddLine(New PointF(sXFirstTick, sYFirstTick + sQuotaTickSize / 2), New PointF(sXLastTick, sYFirstTick + sQuotaTickSize / 2))
+                                                                Case cIItemQuota.QuotaAlignEnum.Right
+                                                                    Call oQuotaPath.AddLine(New PointF(sXFirstTick, sYFirstTick + sQuotaTickSize), New PointF(sXLastTick, sYFirstTick + sQuotaTickSize))
+                                                            End Select
 
-                                                    iXTickValue = -1 * pTruncateToTickFrequency(sXOffset)
-                                                    For sMeter As Single = sXFirstTick To sXLastTick Step 1 'iQuotaTickFrequency
-                                                        If iXTickValue Mod iQuotaTickFrequency = 0 Then
-                                                            Call oQuotaPath.StartFigure()
-                                                            Call oQuotaPath.AddLine(New PointF(sMeter, sYFirstTick), New PointF(sMeter, sYFirstTick + sQuotaTickSize))
-                                                        End If
-                                                        If iXTickValue Mod iQuotaTickLabelFrequency = 0 Then
-                                                            Using oQuotaTickTextPath As GraphicsPath = New GraphicsPath
-                                                                Call oFont.AddToPath(PaintOptions, oQuotaTickTextPath, iXTickValue, New PointF(0, 0), oSF)
-                                                                Using oMatrix As Matrix = New Matrix
-                                                                    Call oMatrix.Scale(sScale, sScale, MatrixOrder.Append)
-                                                                    Call oQuotaTickTextPath.Transform(oMatrix)
-                                                                End Using
+                                                            iXTickValue = -1 * pTruncateToTickFrequency(sXOffset)
+                                                            For sMeter As Single = sXFirstTick To sXLastTick Step 1 'iQuotaTickFrequency
+                                                                If iXTickValue Mod iQuotaTickFrequency = 0 Then
+                                                                    Call oQuotaPath.StartFigure()
+                                                                    Call oQuotaPath.AddLine(New PointF(sMeter, sYFirstTick), New PointF(sMeter, sYFirstTick + sQuotaTickSize))
+                                                                End If
+                                                                If iXTickValue Mod iQuotaTickLabelFrequency = 0 Then
+                                                                    Using oQuotaTickTextPath As GraphicsPath = New GraphicsPath
+                                                                        Call oFont.AddToPath(PaintOptions, oQuotaTickTextPath, iXTickValue, New PointF(0, 0), oSF)
+                                                                        Using oMatrix As Matrix = New Matrix
+                                                                            Call oMatrix.Scale(sScale, sScale, MatrixOrder.Append)
+                                                                            Call oQuotaTickTextPath.Transform(oMatrix)
+                                                                        End Using
 
-                                                                Dim oQuotaTickTextBounds As RectangleF = oQuotaTickTextPath.GetBounds
-                                                                Using oMatrix As Matrix = New Matrix
-                                                                    Call oMatrix.Translate(-oQuotaTickTextBounds.Left, -oQuotaTickTextBounds.Top, MatrixOrder.Append)
+                                                                        Dim oQuotaTickTextBounds As RectangleF = oQuotaTickTextPath.GetBounds
+                                                                        Using oMatrix As Matrix = New Matrix
+                                                                            Call oMatrix.Translate(-oQuotaTickTextBounds.Left, -oQuotaTickTextBounds.Top, MatrixOrder.Append)
                                                                     If iQuotaTextPosition = cIItemQuota.QuotaTextPositionEnum.LeftTop Then
                                                                         Call oMatrix.Translate(sMeter - oQuotaTickTextPath.GetBounds.Width / 2, sTextTop - oQuotaTickTextPath.GetBounds.Height - sSpace, MatrixOrder.Append)
                                                                     Else
@@ -1201,11 +1419,18 @@ Namespace cSurvey.Design.Items
 
                                         'sposto la clipart scalata nel punto di disegno
                                         Dim oPathRect As RectangleF = oPath.GetBounds
-                                        Dim oTranslatePoint As PointF = New PointF(oCenterPoint.X - oPathRect.Width / 2, oCenterPoint.Y - oPathRect.Height / 2)
+                                        Dim oTranslatePoint As PointF = New PointF(oCenterPoint.X - oPathRect.Left - oPathRect.Width / 2.0F, oCenterPoint.Y - oPathRect.Top - oPathRect.Height / 2.0F)
+                                        'Using oBoxPath As GraphicsPath = New GraphicsPath
+                                        'oBoxPath.AddRectangle(oPathRect)
                                         Using oMatrix As Matrix = New Matrix
-                                            Call oMatrix.Translate(oTranslatePoint.X, oTranslatePoint.Y, MatrixOrder.Append)
-                                            Call oPath.Transform(oMatrix)
+                                                Call oMatrix.Translate(oTranslatePoint.X, oTranslatePoint.Y, MatrixOrder.Append)
+                                                Call oPath.Transform(oMatrix)
+                                            'Call oBoxPath.Transform(oMatrix)
                                         End Using
+                                        'oBoxPath.StartFigure()
+                                        'modPaint.PathAddCrossFromPoint(oBoxPath, oCenterPoint, 2)
+                                        'Call oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border, oBoxPath, oPen, oWireframePen, Nothing)
+                                        'End Using
 
                                         Call oFont.Render(Graphics, PaintOptions, Options, oPath, oCache)
                                     End Using
@@ -1258,31 +1483,25 @@ Namespace cSurvey.Design.Items
 
             sQuotaRelativeTrigPoint = modXML.GetAttributeValue(item, "quotarelativetrigpoint", "")
 
+
             If iQuotaType = cIItemQuota.QuotaTypeEnum.HorizontalScale OrElse iQuotaType = cIItemQuota.QuotaTypeEnum.VerticalScale Or iQuotaType = cIItemQuota.QuotaTypeEnum.GridScale Then
-                'Try
                 iQuotaTickFrequency = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "quotatickfrequency", 1))
                 If iQuotaTickFrequency = 0 Then iQuotaTickFrequency = 1
                 iQuotaTickLabelFrequency = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "quotaticklabelfrequency", 5))
                 If iQuotaTickLabelFrequency = 0 Then iQuotaTickLabelFrequency = 5
                 sQuotaTickSize = modNumbers.StringToSingle(modXML.GetAttributeValue(item, "quotaticksize", 0.3))
                 If sQuotaTickSize = 0 Then sQuotaTickSize = 0.3
-                'Catch ex As Exception
-                '    iQuotaTickFrequency = 1
-                '    iQuotaTickLabelFrequency = 5
-                '    sQuotaTickSize = 0.3
-                'End Try
             End If
 
             If iQuotaType = cIItemQuota.QuotaTypeEnum.Horizontal OrElse iQuotaType = cIItemQuota.QuotaTypeEnum.Vertical OrElse iQuotaType = cIItemQuota.QuotaTypeEnum.Oblique Then
-                'Try
                 iQuotaCapDecoration = modXML.GetAttributeValue(item, "quotacapdecoration", cIItemQuota.QuotaCapDecorationEnum.Arrow)
                 sQuotaLeftRefPercent = modNumbers.StringToDecimal(modXML.GetAttributeValue(item, "quotaleftrefpercent", 100))
                 sQuotaRightRefPercent = modNumbers.StringToDecimal(modXML.GetAttributeValue(item, "quotarightrefpercent", 100))
-                'Catch ex As Exception
-                '    iQuotaCapDecoration = cIItemQuota.QuotaCapDecorationEnum.Arrow
-                '    sQuotaLeftRefPercent = 100
-                '    sQuotaRightRefPercent = 100
-                'End Try
+            End If
+
+            If iQuotaType = cIItemQuota.QuotaTypeEnum.Altitude Then
+                iQuotaAltitudeStyle = modXML.GetAttributeValue(item, "quotaaltitudestyle", cIItemQuota.QuotaAltitudeStyleEnum.Style0)
+                iQuotaAltitudeFill = modXML.GetAttributeValue(item, "quotaaltitudefill", cIItemQuota.QuotaAltitudeFillEnum.None)
             End If
 
             sAngle = modNumbers.StringToDecimal(modXML.GetAttributeValue(item, "angle", 0))
@@ -1311,9 +1530,13 @@ Namespace cSurvey.Design.Items
                 Call oItem.SetAttribute("quotaticksize", modNumbers.NumberToString(sQuotaTickSize))
             End If
             If iQuotaType = cIItemQuota.QuotaTypeEnum.Horizontal Or iQuotaType = cIItemQuota.QuotaTypeEnum.Vertical Then
-                Call oItem.SetAttribute("quotacapdecoration", iQuotaCapDecoration.ToString("D"))
+                If iQuotaCapDecoration <> cIItemQuota.QuotaCapDecorationEnum.Arrow Then Call oItem.SetAttribute("quotacapdecoration", iQuotaCapDecoration.ToString("D"))
                 Call oItem.SetAttribute("quotaleftrefpercent", modNumbers.NumberToString(sQuotaLeftRefPercent))
                 Call oItem.SetAttribute("quotarightrefpercent", modNumbers.NumberToString(sQuotaRightRefPercent))
+            End If
+            If iQuotaType = cIItemQuota.QuotaTypeEnum.Altitude Then
+                If iQuotaAltitudeStyle <> cIItemQuota.QuotaAltitudeStyleEnum.Style0 Then Call oItem.SetAttribute("quotaaltitudestyle", iQuotaAltitudeStyle.ToString("D"))
+                If iQuotaAltitudeFill <> cIItemQuota.QuotaAltitudeFillEnum.None Then Call oItem.SetAttribute("quotaaltitudefill", iQuotaAltitudeFill.ToString("D"))
             End If
 
             Return oItem
@@ -1497,6 +1720,30 @@ Namespace cSurvey.Design.Items
             Set(value As Integer)
                 If iQuotaTickLabelFrequency <> value Then
                     iQuotaTickLabelFrequency = value
+                    Call MyBase.Caches.Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property QuotaAltitudeFill As cIItemQuota.QuotaAltitudeFillEnum Implements cIItemQuota.QuotaAltitudeFill
+            Get
+                Return iQuotaAltitudeFill
+            End Get
+            Set(value As cIItemQuota.QuotaAltitudeFillEnum)
+                If iQuotaAltitudeFill <> value Then
+                    iQuotaAltitudeFill = value
+                    Call MyBase.Caches.Invalidate()
+                End If
+            End Set
+        End Property
+
+        Public Property QuotaAltitudeStyle As cIItemQuota.QuotaAltitudeStyleEnum Implements cIItemQuota.QuotaAltitudeStyle
+            Get
+                Return iQuotaAltitudeStyle
+            End Get
+            Set(value As cIItemQuota.QuotaAltitudeStyleEnum)
+                If iQuotaAltitudeStyle <> value Then
+                    iQuotaAltitudeStyle = value
                     Call MyBase.Caches.Invalidate()
                 End If
             End Set

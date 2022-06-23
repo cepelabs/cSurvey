@@ -204,6 +204,7 @@ Partial Class frmSettings
         Me.lblLogMaxSize = New DevExpress.XtraEditors.LabelControl()
         Me.txtLogMaxLine = New DevExpress.XtraEditors.SpinEdit()
         Me.chkLogOnFile = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkForceGarbaceCollect = New DevExpress.XtraEditors.CheckEdit()
         Me.tabHistorySettings.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.chkHistoryArchiveOnSave.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -303,6 +304,7 @@ Partial Class frmSettings
         Me.tabInfoDebug.SuspendLayout()
         CType(Me.txtLogMaxLine.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkLogOnFile.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkForceGarbaceCollect.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tabHistorySettings
@@ -1587,6 +1589,7 @@ Partial Class frmSettings
         '
         'tabInfoDebug
         '
+        Me.tabInfoDebug.Controls.Add(Me.chkForceGarbaceCollect)
         Me.tabInfoDebug.Controls.Add(Me.lblLogMaxSize)
         Me.tabInfoDebug.Controls.Add(Me.txtLogMaxLine)
         Me.tabInfoDebug.Controls.Add(Me.chkLogOnFile)
@@ -1627,6 +1630,13 @@ Partial Class frmSettings
         Me.chkLogOnFile.Name = "chkLogOnFile"
         Me.chkLogOnFile.Properties.AutoWidth = True
         Me.chkLogOnFile.Properties.Caption = resources.GetString("chkLogOnFile.Properties.Caption")
+        '
+        'chkForceGarbaceCollect
+        '
+        resources.ApplyResources(Me.chkForceGarbaceCollect, "chkForceGarbaceCollect")
+        Me.chkForceGarbaceCollect.Name = "chkForceGarbaceCollect"
+        Me.chkForceGarbaceCollect.Properties.AutoWidth = True
+        Me.chkForceGarbaceCollect.Properties.Caption = resources.GetString("CheckEdit1.Properties.Caption")
         '
         'frmSettings
         '
@@ -1759,6 +1769,7 @@ Partial Class frmSettings
         Me.tabInfoDebug.PerformLayout()
         CType(Me.txtLogMaxLine.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkLogOnFile.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkForceGarbaceCollect.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1943,4 +1954,5 @@ Partial Class frmSettings
     Friend WithEvents chkLogOnFile As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents lblLogMaxSize As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtLogMaxLine As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents chkForceGarbaceCollect As DevExpress.XtraEditors.CheckEdit
 End Class

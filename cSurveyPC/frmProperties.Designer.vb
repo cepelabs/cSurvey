@@ -205,6 +205,67 @@ Partial Class frmProperties
         Me.lblPlotNoteTextScaleFactor = New DevExpress.XtraEditors.LabelControl()
         Me.txtPlotNoteTextColor = New cSurveyPC.cColorSelector()
         Me.GroupBox6 = New DevExpress.XtraEditors.GroupControl()
+        Me.lblPlotSplayCrossScale = New DevExpress.XtraEditors.LabelControl()
+        Me.txtPlotSplayCrossScale = New DevExpress.XtraEditors.SpinEdit()
+        Me.BarManager = New DevExpress.XtraBars.BarManager(Me.components)
+        Me.barSessions = New DevExpress.XtraBars.Bar()
+        Me.btnSessionAdd = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnSessionDelete = New DevExpress.XtraBars.BarButtonItem()
+        Me.StandaloneBarDockControl1 = New DevExpress.XtraBars.StandaloneBarDockControl()
+        Me.barCavesAndBranches = New DevExpress.XtraBars.Bar()
+        Me.btnCaveInfoAddCave = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnCaveInfoAddBranch = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnCaveInfoDelete = New DevExpress.XtraBars.BarButtonItem()
+        Me.StandaloneBarDockControl2 = New DevExpress.XtraBars.StandaloneBarDockControl()
+        Me.barHighlights = New DevExpress.XtraBars.Bar()
+        Me.btnAddHighlight = New DevExpress.XtraBars.BarSubItem()
+        Me.btnAddHighlightStations = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnAddHighlightShots = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnDeleteHighlight = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnResetHighlight = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnHighlightImport = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnHighlightExport = New DevExpress.XtraBars.BarButtonItem()
+        Me.StandaloneBarDockControl3 = New DevExpress.XtraBars.StandaloneBarDockControl()
+        Me.barElevation = New DevExpress.XtraBars.Bar()
+        Me.btnElevationAdd = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnElevationsPreviewNewReduced = New DevExpress.XtraBars.BarSubItem()
+        Me.btnElevationsPreviewNewReduced50 = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnElevationsPreviewNewReduced33 = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnElevationsPreviewNewReduced25 = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnElevationDelete = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnElevationClear = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnElevationExport = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnElevationsPreviewRemoveNODATA = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnElevationCreateOrthophotoFromWMS = New DevExpress.XtraBars.BarSubItem()
+        Me.StandaloneBarDockControl4 = New DevExpress.XtraBars.StandaloneBarDockControl()
+        Me.barOrthophotos = New DevExpress.XtraBars.Bar()
+        Me.btnOrthophotoAdd = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnOrthophotosPreviewNewReduced = New DevExpress.XtraBars.BarSubItem()
+        Me.btnOrthophotosPreviewNewReduced50 = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnOrthophotosPreviewNewReduced33 = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnOrthophotosPreviewNewReduced25 = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnOrthophotoDelete = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnOrthophotoClear = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnOrthophotoExport = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnOrthophotoPreviewInvertColors = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnElevationFromOrthophoto = New DevExpress.XtraBars.BarButtonItem()
+        Me.StandaloneBarDockControl5 = New DevExpress.XtraBars.StandaloneBarDockControl()
+        Me.barWMS = New DevExpress.XtraBars.Bar()
+        Me.btnWMSAdd = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnWMSDelete = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnWMSClear = New DevExpress.XtraBars.BarButtonItem()
+        Me.StandaloneBarDockControl6 = New DevExpress.XtraBars.StandaloneBarDockControl()
+        Me.barGrades = New DevExpress.XtraBars.Bar()
+        Me.btnGradesAdd = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnGradesDelete = New DevExpress.XtraBars.BarButtonItem()
+        Me.StandaloneBarDockControl7 = New DevExpress.XtraBars.StandaloneBarDockControl()
+        Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
+        Me.btnLayerSync = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnExpandAll = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnCollapseAll = New DevExpress.XtraBars.BarButtonItem()
         Me.lblPlotSplaySelectedPenWidth = New DevExpress.XtraEditors.LabelControl()
         Me.lblPlotSplayPenWidth = New DevExpress.XtraEditors.LabelControl()
         Me.lblPlotSplayPenStyle = New DevExpress.XtraEditors.LabelControl()
@@ -329,65 +390,6 @@ Partial Class frmProperties
         Me.lblSessionTeam = New DevExpress.XtraEditors.LabelControl()
         Me.tabSessionNote1 = New DevExpress.XtraTab.XtraTabPage()
         Me.txtSessionNote = New DevExpress.XtraEditors.MemoEdit()
-        Me.BarManager = New DevExpress.XtraBars.BarManager(Me.components)
-        Me.barSessions = New DevExpress.XtraBars.Bar()
-        Me.btnSessionAdd = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnSessionDelete = New DevExpress.XtraBars.BarButtonItem()
-        Me.StandaloneBarDockControl1 = New DevExpress.XtraBars.StandaloneBarDockControl()
-        Me.barCavesAndBranches = New DevExpress.XtraBars.Bar()
-        Me.btnCaveInfoAddCave = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnCaveInfoAddBranch = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnCaveInfoDelete = New DevExpress.XtraBars.BarButtonItem()
-        Me.StandaloneBarDockControl2 = New DevExpress.XtraBars.StandaloneBarDockControl()
-        Me.barHighlights = New DevExpress.XtraBars.Bar()
-        Me.btnAddHighlight = New DevExpress.XtraBars.BarSubItem()
-        Me.btnAddHighlightStations = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnAddHighlightShots = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnDeleteHighlight = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnResetHighlight = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnHighlightImport = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnHighlightExport = New DevExpress.XtraBars.BarButtonItem()
-        Me.StandaloneBarDockControl3 = New DevExpress.XtraBars.StandaloneBarDockControl()
-        Me.barElevation = New DevExpress.XtraBars.Bar()
-        Me.btnElevationAdd = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnElevationsPreviewNewReduced = New DevExpress.XtraBars.BarSubItem()
-        Me.btnElevationsPreviewNewReduced50 = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnElevationsPreviewNewReduced33 = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnElevationsPreviewNewReduced25 = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnElevationDelete = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnElevationClear = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnElevationExport = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnElevationsPreviewRemoveNODATA = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnElevationCreateOrthophotoFromWMS = New DevExpress.XtraBars.BarSubItem()
-        Me.StandaloneBarDockControl4 = New DevExpress.XtraBars.StandaloneBarDockControl()
-        Me.barOrthophotos = New DevExpress.XtraBars.Bar()
-        Me.btnOrthophotoAdd = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnOrthophotosPreviewNewReduced = New DevExpress.XtraBars.BarSubItem()
-        Me.btnOrthophotosPreviewNewReduced50 = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnOrthophotosPreviewNewReduced33 = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnOrthophotosPreviewNewReduced25 = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnOrthophotoDelete = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnOrthophotoClear = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnOrthophotoExport = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnOrthophotoPreviewInvertColors = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnElevationFromOrthophoto = New DevExpress.XtraBars.BarButtonItem()
-        Me.StandaloneBarDockControl5 = New DevExpress.XtraBars.StandaloneBarDockControl()
-        Me.barWMS = New DevExpress.XtraBars.Bar()
-        Me.btnWMSAdd = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnWMSDelete = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnWMSClear = New DevExpress.XtraBars.BarButtonItem()
-        Me.StandaloneBarDockControl6 = New DevExpress.XtraBars.StandaloneBarDockControl()
-        Me.barGrades = New DevExpress.XtraBars.Bar()
-        Me.btnGradesAdd = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnGradesDelete = New DevExpress.XtraBars.BarButtonItem()
-        Me.StandaloneBarDockControl7 = New DevExpress.XtraBars.StandaloneBarDockControl()
-        Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
-        Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
-        Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
-        Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
-        Me.btnLayerSync = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnExpandAll = New DevExpress.XtraBars.BarButtonItem()
-        Me.btnCollapseAll = New DevExpress.XtraBars.BarButtonItem()
         Me.tabSessionMeasure1 = New DevExpress.XtraTab.XtraTabPage()
         Me.pnlSessionDepth = New System.Windows.Forms.Panel()
         Me.cboSessionDepthType = New System.Windows.Forms.ComboBox()
@@ -715,6 +717,8 @@ Partial Class frmProperties
         CType(Me.txtPlotNoteTextColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox6.SuspendLayout()
+        CType(Me.txtPlotSplayCrossScale.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BarManager, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.frmPlotLRUD, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.frmPlotLRUD.SuspendLayout()
         CType(Me.frmPlotTranslationLine, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -771,7 +775,6 @@ Partial Class frmProperties
         Me.tabSessionMain1.SuspendLayout()
         Me.tabSessionNote1.SuspendLayout()
         CType(Me.txtSessionNote.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BarManager, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabSessionMeasure1.SuspendLayout()
         Me.pnlSessionDepth.SuspendLayout()
         CType(Me.chkSessionVthreshold.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -2099,6 +2102,8 @@ Partial Class frmProperties
         '
         'GroupBox6
         '
+        Me.GroupBox6.Controls.Add(Me.lblPlotSplayCrossScale)
+        Me.GroupBox6.Controls.Add(Me.txtPlotSplayCrossScale)
         Me.GroupBox6.Controls.Add(Me.lblPlotSplaySelectedPenWidth)
         Me.GroupBox6.Controls.Add(Me.txtPlotSplaySelectedPenWidth)
         Me.GroupBox6.Controls.Add(Me.txtPlotSplayPenWidth)
@@ -2107,6 +2112,559 @@ Partial Class frmProperties
         Me.GroupBox6.Controls.Add(Me.lblPlotSplayPenStyle)
         resources.ApplyResources(Me.GroupBox6, "GroupBox6")
         Me.GroupBox6.Name = "GroupBox6"
+        '
+        'lblPlotSplayCrossScale
+        '
+        resources.ApplyResources(Me.lblPlotSplayCrossScale, "lblPlotSplayCrossScale")
+        Me.lblPlotSplayCrossScale.Name = "lblPlotSplayCrossScale"
+        '
+        'txtPlotSplayCrossScale
+        '
+        resources.ApplyResources(Me.txtPlotSplayCrossScale, "txtPlotSplayCrossScale")
+        Me.txtPlotSplayCrossScale.MenuManager = Me.BarManager
+        Me.txtPlotSplayCrossScale.Name = "txtPlotSplayCrossScale"
+        Me.txtPlotSplayCrossScale.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("txtPlotSplayCrossScale.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.txtPlotSplayCrossScale.Properties.DisplayFormat.FormatString = "N1"
+        Me.txtPlotSplayCrossScale.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtPlotSplayCrossScale.Properties.EditFormat.FormatString = "N1"
+        Me.txtPlotSplayCrossScale.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtPlotSplayCrossScale.Properties.MaskSettings.Set("hideInsignificantZeros", False)
+        Me.txtPlotSplayCrossScale.Properties.MaskSettings.Set("mask", "0.0")
+        Me.txtPlotSplayCrossScale.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
+        Me.txtPlotSplayCrossScale.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 65536})
+        '
+        'BarManager
+        '
+        Me.BarManager.Bars.AddRange(New DevExpress.XtraBars.Bar() {Me.barSessions, Me.barCavesAndBranches, Me.barHighlights, Me.barElevation, Me.barOrthophotos, Me.barWMS, Me.barGrades})
+        Me.BarManager.Categories.AddRange(New DevExpress.XtraBars.BarManagerCategory() {CType(resources.GetObject("BarManager.Categories"), DevExpress.XtraBars.BarManagerCategory), CType(resources.GetObject("BarManager.Categories1"), DevExpress.XtraBars.BarManagerCategory), CType(resources.GetObject("BarManager.Categories2"), DevExpress.XtraBars.BarManagerCategory), CType(resources.GetObject("BarManager.Categories3"), DevExpress.XtraBars.BarManagerCategory), CType(resources.GetObject("BarManager.Categories4"), DevExpress.XtraBars.BarManagerCategory), CType(resources.GetObject("BarManager.Categories5"), DevExpress.XtraBars.BarManagerCategory)})
+        Me.BarManager.DockControls.Add(Me.barDockControlTop)
+        Me.BarManager.DockControls.Add(Me.barDockControlBottom)
+        Me.BarManager.DockControls.Add(Me.barDockControlLeft)
+        Me.BarManager.DockControls.Add(Me.barDockControlRight)
+        Me.BarManager.DockControls.Add(Me.StandaloneBarDockControl1)
+        Me.BarManager.DockControls.Add(Me.StandaloneBarDockControl2)
+        Me.BarManager.DockControls.Add(Me.StandaloneBarDockControl3)
+        Me.BarManager.DockControls.Add(Me.StandaloneBarDockControl4)
+        Me.BarManager.DockControls.Add(Me.StandaloneBarDockControl5)
+        Me.BarManager.DockControls.Add(Me.StandaloneBarDockControl6)
+        Me.BarManager.DockControls.Add(Me.StandaloneBarDockControl7)
+        Me.BarManager.Form = Me
+        Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnLayerSync, Me.btnExpandAll, Me.btnCollapseAll, Me.btnSessionAdd, Me.btnSessionDelete, Me.btnCaveInfoAddCave, Me.btnCaveInfoAddBranch, Me.btnCaveInfoDelete, Me.btnDeleteHighlight, Me.btnAddHighlight, Me.btnAddHighlightStations, Me.btnAddHighlightShots, Me.btnResetHighlight, Me.btnElevationAdd, Me.btnElevationDelete, Me.btnElevationClear, Me.btnElevationExport, Me.btnElevationsPreviewNewReduced, Me.btnElevationsPreviewNewReduced50, Me.btnElevationsPreviewNewReduced33, Me.btnElevationsPreviewNewReduced25, Me.btnElevationsPreviewRemoveNODATA, Me.btnOrthophotoAdd, Me.btnOrthophotoDelete, Me.btnOrthophotoClear, Me.btnOrthophotoPreviewInvertColors, Me.btnWMSAdd, Me.btnWMSDelete, Me.btnWMSClear, Me.btnOrthophotoExport, Me.btnOrthophotosPreviewNewReduced, Me.btnOrthophotosPreviewNewReduced50, Me.btnOrthophotosPreviewNewReduced33, Me.btnOrthophotosPreviewNewReduced25, Me.btnElevationCreateOrthophotoFromWMS, Me.btnElevationFromOrthophoto, Me.btnGradesAdd, Me.btnGradesDelete, Me.btnHighlightImport, Me.btnHighlightExport})
+        Me.BarManager.MaxItemId = 49
+        '
+        'barSessions
+        '
+        Me.barSessions.BarName = "Tools"
+        Me.barSessions.DockCol = 0
+        Me.barSessions.DockRow = 0
+        Me.barSessions.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone
+        Me.barSessions.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnSessionAdd, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnSessionDelete, True)})
+        Me.barSessions.OptionsBar.AllowQuickCustomization = False
+        Me.barSessions.OptionsBar.DisableClose = True
+        Me.barSessions.OptionsBar.DisableCustomization = True
+        Me.barSessions.OptionsBar.DrawDragBorder = False
+        Me.barSessions.OptionsBar.UseWholeRow = True
+        Me.barSessions.StandaloneBarDockControl = Me.StandaloneBarDockControl1
+        resources.ApplyResources(Me.barSessions, "barSessions")
+        '
+        'btnSessionAdd
+        '
+        resources.ApplyResources(Me.btnSessionAdd, "btnSessionAdd")
+        Me.btnSessionAdd.CategoryGuid = New System.Guid("61abd845-11c0-44a8-9e71-8dc04414192e")
+        Me.btnSessionAdd.Id = 11
+        Me.btnSessionAdd.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
+        Me.btnSessionAdd.Name = "btnSessionAdd"
+        '
+        'btnSessionDelete
+        '
+        resources.ApplyResources(Me.btnSessionDelete, "btnSessionDelete")
+        Me.btnSessionDelete.CategoryGuid = New System.Guid("61abd845-11c0-44a8-9e71-8dc04414192e")
+        Me.btnSessionDelete.Enabled = False
+        Me.btnSessionDelete.Id = 12
+        Me.btnSessionDelete.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
+        Me.btnSessionDelete.Name = "btnSessionDelete"
+        '
+        'StandaloneBarDockControl1
+        '
+        resources.ApplyResources(Me.StandaloneBarDockControl1, "StandaloneBarDockControl1")
+        Me.StandaloneBarDockControl1.CausesValidation = False
+        Me.StandaloneBarDockControl1.Manager = Me.BarManager
+        Me.StandaloneBarDockControl1.Name = "StandaloneBarDockControl1"
+        '
+        'barCavesAndBranches
+        '
+        Me.barCavesAndBranches.BarName = "Custom 3"
+        Me.barCavesAndBranches.DockCol = 0
+        Me.barCavesAndBranches.DockRow = 0
+        Me.barCavesAndBranches.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone
+        Me.barCavesAndBranches.FloatLocation = New System.Drawing.Point(986, 268)
+        Me.barCavesAndBranches.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnCaveInfoAddCave), New DevExpress.XtraBars.LinkPersistInfo(Me.btnCaveInfoAddBranch), New DevExpress.XtraBars.LinkPersistInfo(Me.btnCaveInfoDelete, True)})
+        Me.barCavesAndBranches.OptionsBar.AllowQuickCustomization = False
+        Me.barCavesAndBranches.OptionsBar.DisableClose = True
+        Me.barCavesAndBranches.OptionsBar.DisableCustomization = True
+        Me.barCavesAndBranches.OptionsBar.DrawDragBorder = False
+        Me.barCavesAndBranches.OptionsBar.UseWholeRow = True
+        Me.barCavesAndBranches.StandaloneBarDockControl = Me.StandaloneBarDockControl2
+        resources.ApplyResources(Me.barCavesAndBranches, "barCavesAndBranches")
+        '
+        'btnCaveInfoAddCave
+        '
+        resources.ApplyResources(Me.btnCaveInfoAddCave, "btnCaveInfoAddCave")
+        Me.btnCaveInfoAddCave.CategoryGuid = New System.Guid("37d50ecf-5c40-4d8c-a52a-d786eac3d685")
+        Me.btnCaveInfoAddCave.Id = 13
+        Me.btnCaveInfoAddCave.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
+        Me.btnCaveInfoAddCave.Name = "btnCaveInfoAddCave"
+        Me.btnCaveInfoAddCave.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        '
+        'btnCaveInfoAddBranch
+        '
+        resources.ApplyResources(Me.btnCaveInfoAddBranch, "btnCaveInfoAddBranch")
+        Me.btnCaveInfoAddBranch.CategoryGuid = New System.Guid("37d50ecf-5c40-4d8c-a52a-d786eac3d685")
+        Me.btnCaveInfoAddBranch.Id = 14
+        Me.btnCaveInfoAddBranch.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
+        Me.btnCaveInfoAddBranch.Name = "btnCaveInfoAddBranch"
+        Me.btnCaveInfoAddBranch.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        '
+        'btnCaveInfoDelete
+        '
+        resources.ApplyResources(Me.btnCaveInfoDelete, "btnCaveInfoDelete")
+        Me.btnCaveInfoDelete.CategoryGuid = New System.Guid("37d50ecf-5c40-4d8c-a52a-d786eac3d685")
+        Me.btnCaveInfoDelete.Enabled = False
+        Me.btnCaveInfoDelete.Id = 15
+        Me.btnCaveInfoDelete.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
+        Me.btnCaveInfoDelete.Name = "btnCaveInfoDelete"
+        '
+        'StandaloneBarDockControl2
+        '
+        resources.ApplyResources(Me.StandaloneBarDockControl2, "StandaloneBarDockControl2")
+        Me.StandaloneBarDockControl2.CausesValidation = False
+        Me.StandaloneBarDockControl2.Manager = Me.BarManager
+        Me.StandaloneBarDockControl2.Name = "StandaloneBarDockControl2"
+        '
+        'barHighlights
+        '
+        Me.barHighlights.BarName = "Highlights"
+        Me.barHighlights.DockCol = 0
+        Me.barHighlights.DockRow = 0
+        Me.barHighlights.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone
+        Me.barHighlights.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnAddHighlight), New DevExpress.XtraBars.LinkPersistInfo(Me.btnDeleteHighlight, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnResetHighlight, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnHighlightImport, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnHighlightExport)})
+        Me.barHighlights.OptionsBar.AllowQuickCustomization = False
+        Me.barHighlights.OptionsBar.DisableClose = True
+        Me.barHighlights.OptionsBar.DisableCustomization = True
+        Me.barHighlights.OptionsBar.DrawDragBorder = False
+        Me.barHighlights.OptionsBar.UseWholeRow = True
+        Me.barHighlights.StandaloneBarDockControl = Me.StandaloneBarDockControl3
+        resources.ApplyResources(Me.barHighlights, "barHighlights")
+        '
+        'btnAddHighlight
+        '
+        resources.ApplyResources(Me.btnAddHighlight, "btnAddHighlight")
+        Me.btnAddHighlight.CategoryGuid = New System.Guid("4ff6a78e-cb12-400f-b633-05009f6e594d")
+        Me.btnAddHighlight.Id = 17
+        Me.btnAddHighlight.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
+        Me.btnAddHighlight.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnAddHighlightStations), New DevExpress.XtraBars.LinkPersistInfo(Me.btnAddHighlightShots)})
+        Me.btnAddHighlight.Name = "btnAddHighlight"
+        Me.btnAddHighlight.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        '
+        'btnAddHighlightStations
+        '
+        resources.ApplyResources(Me.btnAddHighlightStations, "btnAddHighlightStations")
+        Me.btnAddHighlightStations.CategoryGuid = New System.Guid("4ff6a78e-cb12-400f-b633-05009f6e594d")
+        Me.btnAddHighlightStations.Id = 18
+        Me.btnAddHighlightStations.Name = "btnAddHighlightStations"
+        '
+        'btnAddHighlightShots
+        '
+        resources.ApplyResources(Me.btnAddHighlightShots, "btnAddHighlightShots")
+        Me.btnAddHighlightShots.CategoryGuid = New System.Guid("4ff6a78e-cb12-400f-b633-05009f6e594d")
+        Me.btnAddHighlightShots.Id = 19
+        Me.btnAddHighlightShots.Name = "btnAddHighlightShots"
+        '
+        'btnDeleteHighlight
+        '
+        resources.ApplyResources(Me.btnDeleteHighlight, "btnDeleteHighlight")
+        Me.btnDeleteHighlight.CategoryGuid = New System.Guid("4ff6a78e-cb12-400f-b633-05009f6e594d")
+        Me.btnDeleteHighlight.Enabled = False
+        Me.btnDeleteHighlight.Id = 16
+        Me.btnDeleteHighlight.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
+        Me.btnDeleteHighlight.Name = "btnDeleteHighlight"
+        '
+        'btnResetHighlight
+        '
+        resources.ApplyResources(Me.btnResetHighlight, "btnResetHighlight")
+        Me.btnResetHighlight.CategoryGuid = New System.Guid("4ff6a78e-cb12-400f-b633-05009f6e594d")
+        Me.btnResetHighlight.Id = 20
+        Me.btnResetHighlight.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.reset
+        Me.btnResetHighlight.Name = "btnResetHighlight"
+        '
+        'btnHighlightImport
+        '
+        resources.ApplyResources(Me.btnHighlightImport, "btnHighlightImport")
+        Me.btnHighlightImport.Id = 47
+        Me.btnHighlightImport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.import
+        Me.btnHighlightImport.Name = "btnHighlightImport"
+        '
+        'btnHighlightExport
+        '
+        resources.ApplyResources(Me.btnHighlightExport, "btnHighlightExport")
+        Me.btnHighlightExport.Enabled = False
+        Me.btnHighlightExport.Id = 48
+        Me.btnHighlightExport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.exportfile
+        Me.btnHighlightExport.Name = "btnHighlightExport"
+        '
+        'StandaloneBarDockControl3
+        '
+        resources.ApplyResources(Me.StandaloneBarDockControl3, "StandaloneBarDockControl3")
+        Me.StandaloneBarDockControl3.CausesValidation = False
+        Me.StandaloneBarDockControl3.Manager = Me.BarManager
+        Me.StandaloneBarDockControl3.Name = "StandaloneBarDockControl3"
+        '
+        'barElevation
+        '
+        Me.barElevation.BarName = "Elevation"
+        Me.barElevation.DockCol = 0
+        Me.barElevation.DockRow = 0
+        Me.barElevation.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone
+        Me.barElevation.FloatLocation = New System.Drawing.Point(652, 221)
+        Me.barElevation.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnElevationAdd), New DevExpress.XtraBars.LinkPersistInfo(Me.btnElevationsPreviewNewReduced), New DevExpress.XtraBars.LinkPersistInfo(Me.btnElevationDelete, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnElevationClear, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnElevationExport, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnElevationsPreviewRemoveNODATA, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnElevationCreateOrthophotoFromWMS, True)})
+        Me.barElevation.OptionsBar.AllowQuickCustomization = False
+        Me.barElevation.OptionsBar.DisableClose = True
+        Me.barElevation.OptionsBar.DrawDragBorder = False
+        Me.barElevation.OptionsBar.UseWholeRow = True
+        Me.barElevation.StandaloneBarDockControl = Me.StandaloneBarDockControl4
+        resources.ApplyResources(Me.barElevation, "barElevation")
+        '
+        'btnElevationAdd
+        '
+        resources.ApplyResources(Me.btnElevationAdd, "btnElevationAdd")
+        Me.btnElevationAdd.CategoryGuid = New System.Guid("5354d549-bd81-4095-8bce-c0794626674a")
+        Me.btnElevationAdd.Id = 21
+        Me.btnElevationAdd.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
+        Me.btnElevationAdd.Name = "btnElevationAdd"
+        '
+        'btnElevationsPreviewNewReduced
+        '
+        resources.ApplyResources(Me.btnElevationsPreviewNewReduced, "btnElevationsPreviewNewReduced")
+        Me.btnElevationsPreviewNewReduced.CategoryGuid = New System.Guid("5354d549-bd81-4095-8bce-c0794626674a")
+        Me.btnElevationsPreviewNewReduced.Enabled = False
+        Me.btnElevationsPreviewNewReduced.Id = 25
+        Me.btnElevationsPreviewNewReduced.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
+        Me.btnElevationsPreviewNewReduced.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnElevationsPreviewNewReduced50), New DevExpress.XtraBars.LinkPersistInfo(Me.btnElevationsPreviewNewReduced33), New DevExpress.XtraBars.LinkPersistInfo(Me.btnElevationsPreviewNewReduced25)})
+        Me.btnElevationsPreviewNewReduced.Name = "btnElevationsPreviewNewReduced"
+        Me.btnElevationsPreviewNewReduced.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        '
+        'btnElevationsPreviewNewReduced50
+        '
+        resources.ApplyResources(Me.btnElevationsPreviewNewReduced50, "btnElevationsPreviewNewReduced50")
+        Me.btnElevationsPreviewNewReduced50.CategoryGuid = New System.Guid("5354d549-bd81-4095-8bce-c0794626674a")
+        Me.btnElevationsPreviewNewReduced50.Id = 26
+        Me.btnElevationsPreviewNewReduced50.Name = "btnElevationsPreviewNewReduced50"
+        '
+        'btnElevationsPreviewNewReduced33
+        '
+        resources.ApplyResources(Me.btnElevationsPreviewNewReduced33, "btnElevationsPreviewNewReduced33")
+        Me.btnElevationsPreviewNewReduced33.CategoryGuid = New System.Guid("5354d549-bd81-4095-8bce-c0794626674a")
+        Me.btnElevationsPreviewNewReduced33.Id = 27
+        Me.btnElevationsPreviewNewReduced33.Name = "btnElevationsPreviewNewReduced33"
+        '
+        'btnElevationsPreviewNewReduced25
+        '
+        resources.ApplyResources(Me.btnElevationsPreviewNewReduced25, "btnElevationsPreviewNewReduced25")
+        Me.btnElevationsPreviewNewReduced25.CategoryGuid = New System.Guid("5354d549-bd81-4095-8bce-c0794626674a")
+        Me.btnElevationsPreviewNewReduced25.Id = 28
+        Me.btnElevationsPreviewNewReduced25.Name = "btnElevationsPreviewNewReduced25"
+        '
+        'btnElevationDelete
+        '
+        resources.ApplyResources(Me.btnElevationDelete, "btnElevationDelete")
+        Me.btnElevationDelete.CategoryGuid = New System.Guid("5354d549-bd81-4095-8bce-c0794626674a")
+        Me.btnElevationDelete.Enabled = False
+        Me.btnElevationDelete.Id = 22
+        Me.btnElevationDelete.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
+        Me.btnElevationDelete.Name = "btnElevationDelete"
+        '
+        'btnElevationClear
+        '
+        resources.ApplyResources(Me.btnElevationClear, "btnElevationClear")
+        Me.btnElevationClear.CategoryGuid = New System.Guid("5354d549-bd81-4095-8bce-c0794626674a")
+        Me.btnElevationClear.Enabled = False
+        Me.btnElevationClear.Id = 23
+        Me.btnElevationClear.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.clearall
+        Me.btnElevationClear.Name = "btnElevationClear"
+        '
+        'btnElevationExport
+        '
+        resources.ApplyResources(Me.btnElevationExport, "btnElevationExport")
+        Me.btnElevationExport.CategoryGuid = New System.Guid("5354d549-bd81-4095-8bce-c0794626674a")
+        Me.btnElevationExport.Enabled = False
+        Me.btnElevationExport.Id = 24
+        Me.btnElevationExport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.exportfile
+        Me.btnElevationExport.Name = "btnElevationExport"
+        Me.btnElevationExport.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+        '
+        'btnElevationsPreviewRemoveNODATA
+        '
+        resources.ApplyResources(Me.btnElevationsPreviewRemoveNODATA, "btnElevationsPreviewRemoveNODATA")
+        Me.btnElevationsPreviewRemoveNODATA.CategoryGuid = New System.Guid("5354d549-bd81-4095-8bce-c0794626674a")
+        Me.btnElevationsPreviewRemoveNODATA.Enabled = False
+        Me.btnElevationsPreviewRemoveNODATA.Id = 29
+        Me.btnElevationsPreviewRemoveNODATA.Name = "btnElevationsPreviewRemoveNODATA"
+        '
+        'btnElevationCreateOrthophotoFromWMS
+        '
+        resources.ApplyResources(Me.btnElevationCreateOrthophotoFromWMS, "btnElevationCreateOrthophotoFromWMS")
+        Me.btnElevationCreateOrthophotoFromWMS.Enabled = False
+        Me.btnElevationCreateOrthophotoFromWMS.Id = 43
+        Me.btnElevationCreateOrthophotoFromWMS.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.map_raster
+        Me.btnElevationCreateOrthophotoFromWMS.Name = "btnElevationCreateOrthophotoFromWMS"
+        Me.btnElevationCreateOrthophotoFromWMS.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        '
+        'StandaloneBarDockControl4
+        '
+        resources.ApplyResources(Me.StandaloneBarDockControl4, "StandaloneBarDockControl4")
+        Me.StandaloneBarDockControl4.CausesValidation = False
+        Me.StandaloneBarDockControl4.Manager = Me.BarManager
+        Me.StandaloneBarDockControl4.Name = "StandaloneBarDockControl4"
+        '
+        'barOrthophotos
+        '
+        Me.barOrthophotos.BarName = "Orthophoto"
+        Me.barOrthophotos.DockCol = 0
+        Me.barOrthophotos.DockRow = 0
+        Me.barOrthophotos.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone
+        Me.barOrthophotos.FloatLocation = New System.Drawing.Point(607, 167)
+        Me.barOrthophotos.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnOrthophotoAdd), New DevExpress.XtraBars.LinkPersistInfo(Me.btnOrthophotosPreviewNewReduced), New DevExpress.XtraBars.LinkPersistInfo(Me.btnOrthophotoDelete, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnOrthophotoClear, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnOrthophotoExport, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnOrthophotoPreviewInvertColors), New DevExpress.XtraBars.LinkPersistInfo(Me.btnElevationFromOrthophoto)})
+        Me.barOrthophotos.OptionsBar.AllowQuickCustomization = False
+        Me.barOrthophotos.OptionsBar.DisableClose = True
+        Me.barOrthophotos.OptionsBar.DisableCustomization = True
+        Me.barOrthophotos.OptionsBar.DrawDragBorder = False
+        Me.barOrthophotos.OptionsBar.UseWholeRow = True
+        Me.barOrthophotos.StandaloneBarDockControl = Me.StandaloneBarDockControl5
+        resources.ApplyResources(Me.barOrthophotos, "barOrthophotos")
+        '
+        'btnOrthophotoAdd
+        '
+        resources.ApplyResources(Me.btnOrthophotoAdd, "btnOrthophotoAdd")
+        Me.btnOrthophotoAdd.CategoryGuid = New System.Guid("b0e0b438-0cf0-4a30-8627-76578373ed24")
+        Me.btnOrthophotoAdd.Id = 30
+        Me.btnOrthophotoAdd.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
+        Me.btnOrthophotoAdd.Name = "btnOrthophotoAdd"
+        '
+        'btnOrthophotosPreviewNewReduced
+        '
+        resources.ApplyResources(Me.btnOrthophotosPreviewNewReduced, "btnOrthophotosPreviewNewReduced")
+        Me.btnOrthophotosPreviewNewReduced.CategoryGuid = New System.Guid("b0e0b438-0cf0-4a30-8627-76578373ed24")
+        Me.btnOrthophotosPreviewNewReduced.Enabled = False
+        Me.btnOrthophotosPreviewNewReduced.Id = 38
+        Me.btnOrthophotosPreviewNewReduced.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
+        Me.btnOrthophotosPreviewNewReduced.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnOrthophotosPreviewNewReduced50), New DevExpress.XtraBars.LinkPersistInfo(Me.btnOrthophotosPreviewNewReduced33), New DevExpress.XtraBars.LinkPersistInfo(Me.btnOrthophotosPreviewNewReduced25)})
+        Me.btnOrthophotosPreviewNewReduced.Name = "btnOrthophotosPreviewNewReduced"
+        Me.btnOrthophotosPreviewNewReduced.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        '
+        'btnOrthophotosPreviewNewReduced50
+        '
+        resources.ApplyResources(Me.btnOrthophotosPreviewNewReduced50, "btnOrthophotosPreviewNewReduced50")
+        Me.btnOrthophotosPreviewNewReduced50.CategoryGuid = New System.Guid("b0e0b438-0cf0-4a30-8627-76578373ed24")
+        Me.btnOrthophotosPreviewNewReduced50.Id = 39
+        Me.btnOrthophotosPreviewNewReduced50.Name = "btnOrthophotosPreviewNewReduced50"
+        '
+        'btnOrthophotosPreviewNewReduced33
+        '
+        resources.ApplyResources(Me.btnOrthophotosPreviewNewReduced33, "btnOrthophotosPreviewNewReduced33")
+        Me.btnOrthophotosPreviewNewReduced33.CategoryGuid = New System.Guid("b0e0b438-0cf0-4a30-8627-76578373ed24")
+        Me.btnOrthophotosPreviewNewReduced33.Id = 40
+        Me.btnOrthophotosPreviewNewReduced33.Name = "btnOrthophotosPreviewNewReduced33"
+        '
+        'btnOrthophotosPreviewNewReduced25
+        '
+        resources.ApplyResources(Me.btnOrthophotosPreviewNewReduced25, "btnOrthophotosPreviewNewReduced25")
+        Me.btnOrthophotosPreviewNewReduced25.CategoryGuid = New System.Guid("b0e0b438-0cf0-4a30-8627-76578373ed24")
+        Me.btnOrthophotosPreviewNewReduced25.Id = 41
+        Me.btnOrthophotosPreviewNewReduced25.Name = "btnOrthophotosPreviewNewReduced25"
+        '
+        'btnOrthophotoDelete
+        '
+        resources.ApplyResources(Me.btnOrthophotoDelete, "btnOrthophotoDelete")
+        Me.btnOrthophotoDelete.CategoryGuid = New System.Guid("b0e0b438-0cf0-4a30-8627-76578373ed24")
+        Me.btnOrthophotoDelete.Enabled = False
+        Me.btnOrthophotoDelete.Id = 31
+        Me.btnOrthophotoDelete.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
+        Me.btnOrthophotoDelete.Name = "btnOrthophotoDelete"
+        '
+        'btnOrthophotoClear
+        '
+        resources.ApplyResources(Me.btnOrthophotoClear, "btnOrthophotoClear")
+        Me.btnOrthophotoClear.CategoryGuid = New System.Guid("b0e0b438-0cf0-4a30-8627-76578373ed24")
+        Me.btnOrthophotoClear.Enabled = False
+        Me.btnOrthophotoClear.Id = 32
+        Me.btnOrthophotoClear.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.clearall
+        Me.btnOrthophotoClear.Name = "btnOrthophotoClear"
+        '
+        'btnOrthophotoExport
+        '
+        resources.ApplyResources(Me.btnOrthophotoExport, "btnOrthophotoExport")
+        Me.btnOrthophotoExport.CategoryGuid = New System.Guid("b0e0b438-0cf0-4a30-8627-76578373ed24")
+        Me.btnOrthophotoExport.Enabled = False
+        Me.btnOrthophotoExport.Id = 37
+        Me.btnOrthophotoExport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.exportfile
+        Me.btnOrthophotoExport.Name = "btnOrthophotoExport"
+        '
+        'btnOrthophotoPreviewInvertColors
+        '
+        resources.ApplyResources(Me.btnOrthophotoPreviewInvertColors, "btnOrthophotoPreviewInvertColors")
+        Me.btnOrthophotoPreviewInvertColors.CategoryGuid = New System.Guid("b0e0b438-0cf0-4a30-8627-76578373ed24")
+        Me.btnOrthophotoPreviewInvertColors.Enabled = False
+        Me.btnOrthophotoPreviewInvertColors.Id = 33
+        Me.btnOrthophotoPreviewInvertColors.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.invertcolor
+        Me.btnOrthophotoPreviewInvertColors.Name = "btnOrthophotoPreviewInvertColors"
+        '
+        'btnElevationFromOrthophoto
+        '
+        resources.ApplyResources(Me.btnElevationFromOrthophoto, "btnElevationFromOrthophoto")
+        Me.btnElevationFromOrthophoto.Enabled = False
+        Me.btnElevationFromOrthophoto.Id = 44
+        Me.btnElevationFromOrthophoto.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.soilmodeldata
+        Me.btnElevationFromOrthophoto.Name = "btnElevationFromOrthophoto"
+        Me.btnElevationFromOrthophoto.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        Me.btnElevationFromOrthophoto.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+        '
+        'StandaloneBarDockControl5
+        '
+        resources.ApplyResources(Me.StandaloneBarDockControl5, "StandaloneBarDockControl5")
+        Me.StandaloneBarDockControl5.CausesValidation = False
+        Me.StandaloneBarDockControl5.Manager = Me.BarManager
+        Me.StandaloneBarDockControl5.Name = "StandaloneBarDockControl5"
+        '
+        'barWMS
+        '
+        Me.barWMS.BarName = "WMS"
+        Me.barWMS.DockCol = 0
+        Me.barWMS.DockRow = 0
+        Me.barWMS.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone
+        Me.barWMS.FloatLocation = New System.Drawing.Point(700, 161)
+        Me.barWMS.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnWMSAdd), New DevExpress.XtraBars.LinkPersistInfo(Me.btnWMSDelete, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnWMSClear, True)})
+        Me.barWMS.OptionsBar.AllowQuickCustomization = False
+        Me.barWMS.OptionsBar.DisableClose = True
+        Me.barWMS.OptionsBar.DisableCustomization = True
+        Me.barWMS.OptionsBar.DrawDragBorder = False
+        Me.barWMS.OptionsBar.UseWholeRow = True
+        Me.barWMS.StandaloneBarDockControl = Me.StandaloneBarDockControl6
+        resources.ApplyResources(Me.barWMS, "barWMS")
+        '
+        'btnWMSAdd
+        '
+        resources.ApplyResources(Me.btnWMSAdd, "btnWMSAdd")
+        Me.btnWMSAdd.CategoryGuid = New System.Guid("43c16ecd-a271-40e8-b5ad-b36406108d31")
+        Me.btnWMSAdd.Id = 34
+        Me.btnWMSAdd.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
+        Me.btnWMSAdd.Name = "btnWMSAdd"
+        '
+        'btnWMSDelete
+        '
+        resources.ApplyResources(Me.btnWMSDelete, "btnWMSDelete")
+        Me.btnWMSDelete.CategoryGuid = New System.Guid("43c16ecd-a271-40e8-b5ad-b36406108d31")
+        Me.btnWMSDelete.Enabled = False
+        Me.btnWMSDelete.Id = 35
+        Me.btnWMSDelete.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
+        Me.btnWMSDelete.Name = "btnWMSDelete"
+        '
+        'btnWMSClear
+        '
+        resources.ApplyResources(Me.btnWMSClear, "btnWMSClear")
+        Me.btnWMSClear.CategoryGuid = New System.Guid("43c16ecd-a271-40e8-b5ad-b36406108d31")
+        Me.btnWMSClear.Enabled = False
+        Me.btnWMSClear.Id = 36
+        Me.btnWMSClear.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.clearall
+        Me.btnWMSClear.Name = "btnWMSClear"
+        '
+        'StandaloneBarDockControl6
+        '
+        resources.ApplyResources(Me.StandaloneBarDockControl6, "StandaloneBarDockControl6")
+        Me.StandaloneBarDockControl6.CausesValidation = False
+        Me.StandaloneBarDockControl6.Manager = Me.BarManager
+        Me.StandaloneBarDockControl6.Name = "StandaloneBarDockControl6"
+        '
+        'barGrades
+        '
+        Me.barGrades.BarName = "Grades"
+        Me.barGrades.DockCol = 0
+        Me.barGrades.DockRow = 0
+        Me.barGrades.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone
+        Me.barGrades.FloatLocation = New System.Drawing.Point(548, 219)
+        Me.barGrades.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnGradesAdd), New DevExpress.XtraBars.LinkPersistInfo(Me.btnGradesDelete, True)})
+        Me.barGrades.OptionsBar.AllowQuickCustomization = False
+        Me.barGrades.OptionsBar.DisableClose = True
+        Me.barGrades.OptionsBar.DisableCustomization = True
+        Me.barGrades.OptionsBar.DrawDragBorder = False
+        Me.barGrades.OptionsBar.UseWholeRow = True
+        Me.barGrades.StandaloneBarDockControl = Me.StandaloneBarDockControl7
+        resources.ApplyResources(Me.barGrades, "barGrades")
+        '
+        'btnGradesAdd
+        '
+        resources.ApplyResources(Me.btnGradesAdd, "btnGradesAdd")
+        Me.btnGradesAdd.Id = 45
+        Me.btnGradesAdd.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
+        Me.btnGradesAdd.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.btnGradesAdd.Name = "btnGradesAdd"
+        '
+        'btnGradesDelete
+        '
+        resources.ApplyResources(Me.btnGradesDelete, "btnGradesDelete")
+        Me.btnGradesDelete.Enabled = False
+        Me.btnGradesDelete.Id = 46
+        Me.btnGradesDelete.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
+        Me.btnGradesDelete.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.btnGradesDelete.Name = "btnGradesDelete"
+        '
+        'StandaloneBarDockControl7
+        '
+        resources.ApplyResources(Me.StandaloneBarDockControl7, "StandaloneBarDockControl7")
+        Me.StandaloneBarDockControl7.CausesValidation = False
+        Me.StandaloneBarDockControl7.Manager = Me.BarManager
+        Me.StandaloneBarDockControl7.Name = "StandaloneBarDockControl7"
+        '
+        'barDockControlTop
+        '
+        Me.barDockControlTop.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlTop, "barDockControlTop")
+        Me.barDockControlTop.Manager = Me.BarManager
+        '
+        'barDockControlBottom
+        '
+        Me.barDockControlBottom.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlBottom, "barDockControlBottom")
+        Me.barDockControlBottom.Manager = Me.BarManager
+        '
+        'barDockControlLeft
+        '
+        Me.barDockControlLeft.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlLeft, "barDockControlLeft")
+        Me.barDockControlLeft.Manager = Me.BarManager
+        '
+        'barDockControlRight
+        '
+        Me.barDockControlRight.CausesValidation = False
+        resources.ApplyResources(Me.barDockControlRight, "barDockControlRight")
+        Me.barDockControlRight.Manager = Me.BarManager
+        '
+        'btnLayerSync
+        '
+        Me.btnLayerSync.Id = 6
+        Me.btnLayerSync.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.productquickcomparisons
+        Me.btnLayerSync.Name = "btnLayerSync"
+        '
+        'btnExpandAll
+        '
+        resources.ApplyResources(Me.btnExpandAll, "btnExpandAll")
+        Me.btnExpandAll.Id = 9
+        Me.btnExpandAll.Name = "btnExpandAll"
+        '
+        'btnCollapseAll
+        '
+        resources.ApplyResources(Me.btnCollapseAll, "btnCollapseAll")
+        Me.btnCollapseAll.Id = 10
+        Me.btnCollapseAll.Name = "btnCollapseAll"
         '
         'lblPlotSplaySelectedPenWidth
         '
@@ -2919,539 +3477,6 @@ Partial Class frmProperties
         Me.txtSessionNote.MenuManager = Me.BarManager
         Me.txtSessionNote.Name = "txtSessionNote"
         '
-        'BarManager
-        '
-        Me.BarManager.Bars.AddRange(New DevExpress.XtraBars.Bar() {Me.barSessions, Me.barCavesAndBranches, Me.barHighlights, Me.barElevation, Me.barOrthophotos, Me.barWMS, Me.barGrades})
-        Me.BarManager.Categories.AddRange(New DevExpress.XtraBars.BarManagerCategory() {CType(resources.GetObject("BarManager.Categories"), DevExpress.XtraBars.BarManagerCategory), CType(resources.GetObject("BarManager.Categories1"), DevExpress.XtraBars.BarManagerCategory), CType(resources.GetObject("BarManager.Categories2"), DevExpress.XtraBars.BarManagerCategory), CType(resources.GetObject("BarManager.Categories3"), DevExpress.XtraBars.BarManagerCategory), CType(resources.GetObject("BarManager.Categories4"), DevExpress.XtraBars.BarManagerCategory), CType(resources.GetObject("BarManager.Categories5"), DevExpress.XtraBars.BarManagerCategory)})
-        Me.BarManager.DockControls.Add(Me.barDockControlTop)
-        Me.BarManager.DockControls.Add(Me.barDockControlBottom)
-        Me.BarManager.DockControls.Add(Me.barDockControlLeft)
-        Me.BarManager.DockControls.Add(Me.barDockControlRight)
-        Me.BarManager.DockControls.Add(Me.StandaloneBarDockControl1)
-        Me.BarManager.DockControls.Add(Me.StandaloneBarDockControl2)
-        Me.BarManager.DockControls.Add(Me.StandaloneBarDockControl3)
-        Me.BarManager.DockControls.Add(Me.StandaloneBarDockControl4)
-        Me.BarManager.DockControls.Add(Me.StandaloneBarDockControl5)
-        Me.BarManager.DockControls.Add(Me.StandaloneBarDockControl6)
-        Me.BarManager.DockControls.Add(Me.StandaloneBarDockControl7)
-        Me.BarManager.Form = Me
-        Me.BarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnLayerSync, Me.btnExpandAll, Me.btnCollapseAll, Me.btnSessionAdd, Me.btnSessionDelete, Me.btnCaveInfoAddCave, Me.btnCaveInfoAddBranch, Me.btnCaveInfoDelete, Me.btnDeleteHighlight, Me.btnAddHighlight, Me.btnAddHighlightStations, Me.btnAddHighlightShots, Me.btnResetHighlight, Me.btnElevationAdd, Me.btnElevationDelete, Me.btnElevationClear, Me.btnElevationExport, Me.btnElevationsPreviewNewReduced, Me.btnElevationsPreviewNewReduced50, Me.btnElevationsPreviewNewReduced33, Me.btnElevationsPreviewNewReduced25, Me.btnElevationsPreviewRemoveNODATA, Me.btnOrthophotoAdd, Me.btnOrthophotoDelete, Me.btnOrthophotoClear, Me.btnOrthophotoPreviewInvertColors, Me.btnWMSAdd, Me.btnWMSDelete, Me.btnWMSClear, Me.btnOrthophotoExport, Me.btnOrthophotosPreviewNewReduced, Me.btnOrthophotosPreviewNewReduced50, Me.btnOrthophotosPreviewNewReduced33, Me.btnOrthophotosPreviewNewReduced25, Me.btnElevationCreateOrthophotoFromWMS, Me.btnElevationFromOrthophoto, Me.btnGradesAdd, Me.btnGradesDelete, Me.btnHighlightImport, Me.btnHighlightExport})
-        Me.BarManager.MaxItemId = 49
-        '
-        'barSessions
-        '
-        Me.barSessions.BarName = "Tools"
-        Me.barSessions.DockCol = 0
-        Me.barSessions.DockRow = 0
-        Me.barSessions.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone
-        Me.barSessions.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnSessionAdd, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnSessionDelete, True)})
-        Me.barSessions.OptionsBar.AllowQuickCustomization = False
-        Me.barSessions.OptionsBar.DisableClose = True
-        Me.barSessions.OptionsBar.DisableCustomization = True
-        Me.barSessions.OptionsBar.DrawDragBorder = False
-        Me.barSessions.OptionsBar.UseWholeRow = True
-        Me.barSessions.StandaloneBarDockControl = Me.StandaloneBarDockControl1
-        resources.ApplyResources(Me.barSessions, "barSessions")
-        '
-        'btnSessionAdd
-        '
-        resources.ApplyResources(Me.btnSessionAdd, "btnSessionAdd")
-        Me.btnSessionAdd.CategoryGuid = New System.Guid("61abd845-11c0-44a8-9e71-8dc04414192e")
-        Me.btnSessionAdd.Id = 11
-        Me.btnSessionAdd.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
-        Me.btnSessionAdd.Name = "btnSessionAdd"
-        '
-        'btnSessionDelete
-        '
-        resources.ApplyResources(Me.btnSessionDelete, "btnSessionDelete")
-        Me.btnSessionDelete.CategoryGuid = New System.Guid("61abd845-11c0-44a8-9e71-8dc04414192e")
-        Me.btnSessionDelete.Enabled = False
-        Me.btnSessionDelete.Id = 12
-        Me.btnSessionDelete.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
-        Me.btnSessionDelete.Name = "btnSessionDelete"
-        '
-        'StandaloneBarDockControl1
-        '
-        resources.ApplyResources(Me.StandaloneBarDockControl1, "StandaloneBarDockControl1")
-        Me.StandaloneBarDockControl1.CausesValidation = False
-        Me.StandaloneBarDockControl1.Manager = Me.BarManager
-        Me.StandaloneBarDockControl1.Name = "StandaloneBarDockControl1"
-        '
-        'barCavesAndBranches
-        '
-        Me.barCavesAndBranches.BarName = "Custom 3"
-        Me.barCavesAndBranches.DockCol = 0
-        Me.barCavesAndBranches.DockRow = 0
-        Me.barCavesAndBranches.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone
-        Me.barCavesAndBranches.FloatLocation = New System.Drawing.Point(986, 268)
-        Me.barCavesAndBranches.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnCaveInfoAddCave), New DevExpress.XtraBars.LinkPersistInfo(Me.btnCaveInfoAddBranch), New DevExpress.XtraBars.LinkPersistInfo(Me.btnCaveInfoDelete, True)})
-        Me.barCavesAndBranches.OptionsBar.AllowQuickCustomization = False
-        Me.barCavesAndBranches.OptionsBar.DisableClose = True
-        Me.barCavesAndBranches.OptionsBar.DisableCustomization = True
-        Me.barCavesAndBranches.OptionsBar.DrawDragBorder = False
-        Me.barCavesAndBranches.OptionsBar.UseWholeRow = True
-        Me.barCavesAndBranches.StandaloneBarDockControl = Me.StandaloneBarDockControl2
-        resources.ApplyResources(Me.barCavesAndBranches, "barCavesAndBranches")
-        '
-        'btnCaveInfoAddCave
-        '
-        resources.ApplyResources(Me.btnCaveInfoAddCave, "btnCaveInfoAddCave")
-        Me.btnCaveInfoAddCave.CategoryGuid = New System.Guid("37d50ecf-5c40-4d8c-a52a-d786eac3d685")
-        Me.btnCaveInfoAddCave.Id = 13
-        Me.btnCaveInfoAddCave.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
-        Me.btnCaveInfoAddCave.Name = "btnCaveInfoAddCave"
-        Me.btnCaveInfoAddCave.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
-        '
-        'btnCaveInfoAddBranch
-        '
-        resources.ApplyResources(Me.btnCaveInfoAddBranch, "btnCaveInfoAddBranch")
-        Me.btnCaveInfoAddBranch.CategoryGuid = New System.Guid("37d50ecf-5c40-4d8c-a52a-d786eac3d685")
-        Me.btnCaveInfoAddBranch.Id = 14
-        Me.btnCaveInfoAddBranch.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
-        Me.btnCaveInfoAddBranch.Name = "btnCaveInfoAddBranch"
-        Me.btnCaveInfoAddBranch.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
-        '
-        'btnCaveInfoDelete
-        '
-        resources.ApplyResources(Me.btnCaveInfoDelete, "btnCaveInfoDelete")
-        Me.btnCaveInfoDelete.CategoryGuid = New System.Guid("37d50ecf-5c40-4d8c-a52a-d786eac3d685")
-        Me.btnCaveInfoDelete.Enabled = False
-        Me.btnCaveInfoDelete.Id = 15
-        Me.btnCaveInfoDelete.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
-        Me.btnCaveInfoDelete.Name = "btnCaveInfoDelete"
-        '
-        'StandaloneBarDockControl2
-        '
-        resources.ApplyResources(Me.StandaloneBarDockControl2, "StandaloneBarDockControl2")
-        Me.StandaloneBarDockControl2.CausesValidation = False
-        Me.StandaloneBarDockControl2.Manager = Me.BarManager
-        Me.StandaloneBarDockControl2.Name = "StandaloneBarDockControl2"
-        '
-        'barHighlights
-        '
-        Me.barHighlights.BarName = "Highlights"
-        Me.barHighlights.DockCol = 0
-        Me.barHighlights.DockRow = 0
-        Me.barHighlights.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone
-        Me.barHighlights.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnAddHighlight), New DevExpress.XtraBars.LinkPersistInfo(Me.btnDeleteHighlight, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnResetHighlight, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnHighlightImport, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnHighlightExport)})
-        Me.barHighlights.OptionsBar.AllowQuickCustomization = False
-        Me.barHighlights.OptionsBar.DisableClose = True
-        Me.barHighlights.OptionsBar.DisableCustomization = True
-        Me.barHighlights.OptionsBar.DrawDragBorder = False
-        Me.barHighlights.OptionsBar.UseWholeRow = True
-        Me.barHighlights.StandaloneBarDockControl = Me.StandaloneBarDockControl3
-        resources.ApplyResources(Me.barHighlights, "barHighlights")
-        '
-        'btnAddHighlight
-        '
-        resources.ApplyResources(Me.btnAddHighlight, "btnAddHighlight")
-        Me.btnAddHighlight.CategoryGuid = New System.Guid("4ff6a78e-cb12-400f-b633-05009f6e594d")
-        Me.btnAddHighlight.Id = 17
-        Me.btnAddHighlight.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
-        Me.btnAddHighlight.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnAddHighlightStations), New DevExpress.XtraBars.LinkPersistInfo(Me.btnAddHighlightShots)})
-        Me.btnAddHighlight.Name = "btnAddHighlight"
-        Me.btnAddHighlight.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
-        '
-        'btnAddHighlightStations
-        '
-        resources.ApplyResources(Me.btnAddHighlightStations, "btnAddHighlightStations")
-        Me.btnAddHighlightStations.CategoryGuid = New System.Guid("4ff6a78e-cb12-400f-b633-05009f6e594d")
-        Me.btnAddHighlightStations.Id = 18
-        Me.btnAddHighlightStations.Name = "btnAddHighlightStations"
-        '
-        'btnAddHighlightShots
-        '
-        resources.ApplyResources(Me.btnAddHighlightShots, "btnAddHighlightShots")
-        Me.btnAddHighlightShots.CategoryGuid = New System.Guid("4ff6a78e-cb12-400f-b633-05009f6e594d")
-        Me.btnAddHighlightShots.Id = 19
-        Me.btnAddHighlightShots.Name = "btnAddHighlightShots"
-        '
-        'btnDeleteHighlight
-        '
-        resources.ApplyResources(Me.btnDeleteHighlight, "btnDeleteHighlight")
-        Me.btnDeleteHighlight.CategoryGuid = New System.Guid("4ff6a78e-cb12-400f-b633-05009f6e594d")
-        Me.btnDeleteHighlight.Enabled = False
-        Me.btnDeleteHighlight.Id = 16
-        Me.btnDeleteHighlight.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
-        Me.btnDeleteHighlight.Name = "btnDeleteHighlight"
-        '
-        'btnResetHighlight
-        '
-        resources.ApplyResources(Me.btnResetHighlight, "btnResetHighlight")
-        Me.btnResetHighlight.CategoryGuid = New System.Guid("4ff6a78e-cb12-400f-b633-05009f6e594d")
-        Me.btnResetHighlight.Id = 20
-        Me.btnResetHighlight.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.reset
-        Me.btnResetHighlight.Name = "btnResetHighlight"
-        '
-        'btnHighlightImport
-        '
-        resources.ApplyResources(Me.btnHighlightImport, "btnHighlightImport")
-        Me.btnHighlightImport.Id = 47
-        Me.btnHighlightImport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.import
-        Me.btnHighlightImport.Name = "btnHighlightImport"
-        '
-        'btnHighlightExport
-        '
-        resources.ApplyResources(Me.btnHighlightExport, "btnHighlightExport")
-        Me.btnHighlightExport.Enabled = False
-        Me.btnHighlightExport.Id = 48
-        Me.btnHighlightExport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.exportfile
-        Me.btnHighlightExport.Name = "btnHighlightExport"
-        '
-        'StandaloneBarDockControl3
-        '
-        resources.ApplyResources(Me.StandaloneBarDockControl3, "StandaloneBarDockControl3")
-        Me.StandaloneBarDockControl3.CausesValidation = False
-        Me.StandaloneBarDockControl3.Manager = Me.BarManager
-        Me.StandaloneBarDockControl3.Name = "StandaloneBarDockControl3"
-        '
-        'barElevation
-        '
-        Me.barElevation.BarName = "Elevation"
-        Me.barElevation.DockCol = 0
-        Me.barElevation.DockRow = 0
-        Me.barElevation.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone
-        Me.barElevation.FloatLocation = New System.Drawing.Point(652, 221)
-        Me.barElevation.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnElevationAdd), New DevExpress.XtraBars.LinkPersistInfo(Me.btnElevationsPreviewNewReduced), New DevExpress.XtraBars.LinkPersistInfo(Me.btnElevationDelete, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnElevationClear, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnElevationExport, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnElevationsPreviewRemoveNODATA, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnElevationCreateOrthophotoFromWMS, True)})
-        Me.barElevation.OptionsBar.AllowQuickCustomization = False
-        Me.barElevation.OptionsBar.DisableClose = True
-        Me.barElevation.OptionsBar.DrawDragBorder = False
-        Me.barElevation.OptionsBar.UseWholeRow = True
-        Me.barElevation.StandaloneBarDockControl = Me.StandaloneBarDockControl4
-        resources.ApplyResources(Me.barElevation, "barElevation")
-        '
-        'btnElevationAdd
-        '
-        resources.ApplyResources(Me.btnElevationAdd, "btnElevationAdd")
-        Me.btnElevationAdd.CategoryGuid = New System.Guid("5354d549-bd81-4095-8bce-c0794626674a")
-        Me.btnElevationAdd.Id = 21
-        Me.btnElevationAdd.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
-        Me.btnElevationAdd.Name = "btnElevationAdd"
-        '
-        'btnElevationsPreviewNewReduced
-        '
-        resources.ApplyResources(Me.btnElevationsPreviewNewReduced, "btnElevationsPreviewNewReduced")
-        Me.btnElevationsPreviewNewReduced.CategoryGuid = New System.Guid("5354d549-bd81-4095-8bce-c0794626674a")
-        Me.btnElevationsPreviewNewReduced.Enabled = False
-        Me.btnElevationsPreviewNewReduced.Id = 25
-        Me.btnElevationsPreviewNewReduced.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
-        Me.btnElevationsPreviewNewReduced.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnElevationsPreviewNewReduced50), New DevExpress.XtraBars.LinkPersistInfo(Me.btnElevationsPreviewNewReduced33), New DevExpress.XtraBars.LinkPersistInfo(Me.btnElevationsPreviewNewReduced25)})
-        Me.btnElevationsPreviewNewReduced.Name = "btnElevationsPreviewNewReduced"
-        Me.btnElevationsPreviewNewReduced.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
-        '
-        'btnElevationsPreviewNewReduced50
-        '
-        resources.ApplyResources(Me.btnElevationsPreviewNewReduced50, "btnElevationsPreviewNewReduced50")
-        Me.btnElevationsPreviewNewReduced50.CategoryGuid = New System.Guid("5354d549-bd81-4095-8bce-c0794626674a")
-        Me.btnElevationsPreviewNewReduced50.Id = 26
-        Me.btnElevationsPreviewNewReduced50.Name = "btnElevationsPreviewNewReduced50"
-        '
-        'btnElevationsPreviewNewReduced33
-        '
-        resources.ApplyResources(Me.btnElevationsPreviewNewReduced33, "btnElevationsPreviewNewReduced33")
-        Me.btnElevationsPreviewNewReduced33.CategoryGuid = New System.Guid("5354d549-bd81-4095-8bce-c0794626674a")
-        Me.btnElevationsPreviewNewReduced33.Id = 27
-        Me.btnElevationsPreviewNewReduced33.Name = "btnElevationsPreviewNewReduced33"
-        '
-        'btnElevationsPreviewNewReduced25
-        '
-        resources.ApplyResources(Me.btnElevationsPreviewNewReduced25, "btnElevationsPreviewNewReduced25")
-        Me.btnElevationsPreviewNewReduced25.CategoryGuid = New System.Guid("5354d549-bd81-4095-8bce-c0794626674a")
-        Me.btnElevationsPreviewNewReduced25.Id = 28
-        Me.btnElevationsPreviewNewReduced25.Name = "btnElevationsPreviewNewReduced25"
-        '
-        'btnElevationDelete
-        '
-        resources.ApplyResources(Me.btnElevationDelete, "btnElevationDelete")
-        Me.btnElevationDelete.CategoryGuid = New System.Guid("5354d549-bd81-4095-8bce-c0794626674a")
-        Me.btnElevationDelete.Enabled = False
-        Me.btnElevationDelete.Id = 22
-        Me.btnElevationDelete.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
-        Me.btnElevationDelete.Name = "btnElevationDelete"
-        '
-        'btnElevationClear
-        '
-        resources.ApplyResources(Me.btnElevationClear, "btnElevationClear")
-        Me.btnElevationClear.CategoryGuid = New System.Guid("5354d549-bd81-4095-8bce-c0794626674a")
-        Me.btnElevationClear.Enabled = False
-        Me.btnElevationClear.Id = 23
-        Me.btnElevationClear.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.clearall
-        Me.btnElevationClear.Name = "btnElevationClear"
-        '
-        'btnElevationExport
-        '
-        resources.ApplyResources(Me.btnElevationExport, "btnElevationExport")
-        Me.btnElevationExport.CategoryGuid = New System.Guid("5354d549-bd81-4095-8bce-c0794626674a")
-        Me.btnElevationExport.Enabled = False
-        Me.btnElevationExport.Id = 24
-        Me.btnElevationExport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.exportfile
-        Me.btnElevationExport.Name = "btnElevationExport"
-        Me.btnElevationExport.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-        '
-        'btnElevationsPreviewRemoveNODATA
-        '
-        resources.ApplyResources(Me.btnElevationsPreviewRemoveNODATA, "btnElevationsPreviewRemoveNODATA")
-        Me.btnElevationsPreviewRemoveNODATA.CategoryGuid = New System.Guid("5354d549-bd81-4095-8bce-c0794626674a")
-        Me.btnElevationsPreviewRemoveNODATA.Enabled = False
-        Me.btnElevationsPreviewRemoveNODATA.Id = 29
-        Me.btnElevationsPreviewRemoveNODATA.Name = "btnElevationsPreviewRemoveNODATA"
-        '
-        'btnElevationCreateOrthophotoFromWMS
-        '
-        resources.ApplyResources(Me.btnElevationCreateOrthophotoFromWMS, "btnElevationCreateOrthophotoFromWMS")
-        Me.btnElevationCreateOrthophotoFromWMS.Enabled = False
-        Me.btnElevationCreateOrthophotoFromWMS.Id = 43
-        Me.btnElevationCreateOrthophotoFromWMS.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.map_raster
-        Me.btnElevationCreateOrthophotoFromWMS.Name = "btnElevationCreateOrthophotoFromWMS"
-        Me.btnElevationCreateOrthophotoFromWMS.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
-        '
-        'StandaloneBarDockControl4
-        '
-        resources.ApplyResources(Me.StandaloneBarDockControl4, "StandaloneBarDockControl4")
-        Me.StandaloneBarDockControl4.CausesValidation = False
-        Me.StandaloneBarDockControl4.Manager = Me.BarManager
-        Me.StandaloneBarDockControl4.Name = "StandaloneBarDockControl4"
-        '
-        'barOrthophotos
-        '
-        Me.barOrthophotos.BarName = "Orthophoto"
-        Me.barOrthophotos.DockCol = 0
-        Me.barOrthophotos.DockRow = 0
-        Me.barOrthophotos.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone
-        Me.barOrthophotos.FloatLocation = New System.Drawing.Point(607, 167)
-        Me.barOrthophotos.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnOrthophotoAdd), New DevExpress.XtraBars.LinkPersistInfo(Me.btnOrthophotosPreviewNewReduced), New DevExpress.XtraBars.LinkPersistInfo(Me.btnOrthophotoDelete, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnOrthophotoClear, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnOrthophotoExport, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnOrthophotoPreviewInvertColors), New DevExpress.XtraBars.LinkPersistInfo(Me.btnElevationFromOrthophoto)})
-        Me.barOrthophotos.OptionsBar.AllowQuickCustomization = False
-        Me.barOrthophotos.OptionsBar.DisableClose = True
-        Me.barOrthophotos.OptionsBar.DisableCustomization = True
-        Me.barOrthophotos.OptionsBar.DrawDragBorder = False
-        Me.barOrthophotos.OptionsBar.UseWholeRow = True
-        Me.barOrthophotos.StandaloneBarDockControl = Me.StandaloneBarDockControl5
-        resources.ApplyResources(Me.barOrthophotos, "barOrthophotos")
-        '
-        'btnOrthophotoAdd
-        '
-        resources.ApplyResources(Me.btnOrthophotoAdd, "btnOrthophotoAdd")
-        Me.btnOrthophotoAdd.CategoryGuid = New System.Guid("b0e0b438-0cf0-4a30-8627-76578373ed24")
-        Me.btnOrthophotoAdd.Id = 30
-        Me.btnOrthophotoAdd.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
-        Me.btnOrthophotoAdd.Name = "btnOrthophotoAdd"
-        '
-        'btnOrthophotosPreviewNewReduced
-        '
-        resources.ApplyResources(Me.btnOrthophotosPreviewNewReduced, "btnOrthophotosPreviewNewReduced")
-        Me.btnOrthophotosPreviewNewReduced.CategoryGuid = New System.Guid("b0e0b438-0cf0-4a30-8627-76578373ed24")
-        Me.btnOrthophotosPreviewNewReduced.Enabled = False
-        Me.btnOrthophotosPreviewNewReduced.Id = 38
-        Me.btnOrthophotosPreviewNewReduced.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
-        Me.btnOrthophotosPreviewNewReduced.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnOrthophotosPreviewNewReduced50), New DevExpress.XtraBars.LinkPersistInfo(Me.btnOrthophotosPreviewNewReduced33), New DevExpress.XtraBars.LinkPersistInfo(Me.btnOrthophotosPreviewNewReduced25)})
-        Me.btnOrthophotosPreviewNewReduced.Name = "btnOrthophotosPreviewNewReduced"
-        Me.btnOrthophotosPreviewNewReduced.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
-        '
-        'btnOrthophotosPreviewNewReduced50
-        '
-        resources.ApplyResources(Me.btnOrthophotosPreviewNewReduced50, "btnOrthophotosPreviewNewReduced50")
-        Me.btnOrthophotosPreviewNewReduced50.CategoryGuid = New System.Guid("b0e0b438-0cf0-4a30-8627-76578373ed24")
-        Me.btnOrthophotosPreviewNewReduced50.Id = 39
-        Me.btnOrthophotosPreviewNewReduced50.Name = "btnOrthophotosPreviewNewReduced50"
-        '
-        'btnOrthophotosPreviewNewReduced33
-        '
-        resources.ApplyResources(Me.btnOrthophotosPreviewNewReduced33, "btnOrthophotosPreviewNewReduced33")
-        Me.btnOrthophotosPreviewNewReduced33.CategoryGuid = New System.Guid("b0e0b438-0cf0-4a30-8627-76578373ed24")
-        Me.btnOrthophotosPreviewNewReduced33.Id = 40
-        Me.btnOrthophotosPreviewNewReduced33.Name = "btnOrthophotosPreviewNewReduced33"
-        '
-        'btnOrthophotosPreviewNewReduced25
-        '
-        resources.ApplyResources(Me.btnOrthophotosPreviewNewReduced25, "btnOrthophotosPreviewNewReduced25")
-        Me.btnOrthophotosPreviewNewReduced25.CategoryGuid = New System.Guid("b0e0b438-0cf0-4a30-8627-76578373ed24")
-        Me.btnOrthophotosPreviewNewReduced25.Id = 41
-        Me.btnOrthophotosPreviewNewReduced25.Name = "btnOrthophotosPreviewNewReduced25"
-        '
-        'btnOrthophotoDelete
-        '
-        resources.ApplyResources(Me.btnOrthophotoDelete, "btnOrthophotoDelete")
-        Me.btnOrthophotoDelete.CategoryGuid = New System.Guid("b0e0b438-0cf0-4a30-8627-76578373ed24")
-        Me.btnOrthophotoDelete.Enabled = False
-        Me.btnOrthophotoDelete.Id = 31
-        Me.btnOrthophotoDelete.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
-        Me.btnOrthophotoDelete.Name = "btnOrthophotoDelete"
-        '
-        'btnOrthophotoClear
-        '
-        resources.ApplyResources(Me.btnOrthophotoClear, "btnOrthophotoClear")
-        Me.btnOrthophotoClear.CategoryGuid = New System.Guid("b0e0b438-0cf0-4a30-8627-76578373ed24")
-        Me.btnOrthophotoClear.Enabled = False
-        Me.btnOrthophotoClear.Id = 32
-        Me.btnOrthophotoClear.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.clearall
-        Me.btnOrthophotoClear.Name = "btnOrthophotoClear"
-        '
-        'btnOrthophotoExport
-        '
-        resources.ApplyResources(Me.btnOrthophotoExport, "btnOrthophotoExport")
-        Me.btnOrthophotoExport.CategoryGuid = New System.Guid("b0e0b438-0cf0-4a30-8627-76578373ed24")
-        Me.btnOrthophotoExport.Enabled = False
-        Me.btnOrthophotoExport.Id = 37
-        Me.btnOrthophotoExport.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.exportfile
-        Me.btnOrthophotoExport.Name = "btnOrthophotoExport"
-        '
-        'btnOrthophotoPreviewInvertColors
-        '
-        resources.ApplyResources(Me.btnOrthophotoPreviewInvertColors, "btnOrthophotoPreviewInvertColors")
-        Me.btnOrthophotoPreviewInvertColors.CategoryGuid = New System.Guid("b0e0b438-0cf0-4a30-8627-76578373ed24")
-        Me.btnOrthophotoPreviewInvertColors.Enabled = False
-        Me.btnOrthophotoPreviewInvertColors.Id = 33
-        Me.btnOrthophotoPreviewInvertColors.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.invertcolor
-        Me.btnOrthophotoPreviewInvertColors.Name = "btnOrthophotoPreviewInvertColors"
-        '
-        'btnElevationFromOrthophoto
-        '
-        resources.ApplyResources(Me.btnElevationFromOrthophoto, "btnElevationFromOrthophoto")
-        Me.btnElevationFromOrthophoto.Enabled = False
-        Me.btnElevationFromOrthophoto.Id = 44
-        Me.btnElevationFromOrthophoto.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.soilmodeldata
-        Me.btnElevationFromOrthophoto.Name = "btnElevationFromOrthophoto"
-        Me.btnElevationFromOrthophoto.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
-        Me.btnElevationFromOrthophoto.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-        '
-        'StandaloneBarDockControl5
-        '
-        resources.ApplyResources(Me.StandaloneBarDockControl5, "StandaloneBarDockControl5")
-        Me.StandaloneBarDockControl5.CausesValidation = False
-        Me.StandaloneBarDockControl5.Manager = Me.BarManager
-        Me.StandaloneBarDockControl5.Name = "StandaloneBarDockControl5"
-        '
-        'barWMS
-        '
-        Me.barWMS.BarName = "WMS"
-        Me.barWMS.DockCol = 0
-        Me.barWMS.DockRow = 0
-        Me.barWMS.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone
-        Me.barWMS.FloatLocation = New System.Drawing.Point(700, 161)
-        Me.barWMS.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnWMSAdd), New DevExpress.XtraBars.LinkPersistInfo(Me.btnWMSDelete, True), New DevExpress.XtraBars.LinkPersistInfo(Me.btnWMSClear, True)})
-        Me.barWMS.OptionsBar.AllowQuickCustomization = False
-        Me.barWMS.OptionsBar.DisableClose = True
-        Me.barWMS.OptionsBar.DisableCustomization = True
-        Me.barWMS.OptionsBar.DrawDragBorder = False
-        Me.barWMS.OptionsBar.UseWholeRow = True
-        Me.barWMS.StandaloneBarDockControl = Me.StandaloneBarDockControl6
-        resources.ApplyResources(Me.barWMS, "barWMS")
-        '
-        'btnWMSAdd
-        '
-        resources.ApplyResources(Me.btnWMSAdd, "btnWMSAdd")
-        Me.btnWMSAdd.CategoryGuid = New System.Guid("43c16ecd-a271-40e8-b5ad-b36406108d31")
-        Me.btnWMSAdd.Id = 34
-        Me.btnWMSAdd.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
-        Me.btnWMSAdd.Name = "btnWMSAdd"
-        '
-        'btnWMSDelete
-        '
-        resources.ApplyResources(Me.btnWMSDelete, "btnWMSDelete")
-        Me.btnWMSDelete.CategoryGuid = New System.Guid("43c16ecd-a271-40e8-b5ad-b36406108d31")
-        Me.btnWMSDelete.Enabled = False
-        Me.btnWMSDelete.Id = 35
-        Me.btnWMSDelete.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
-        Me.btnWMSDelete.Name = "btnWMSDelete"
-        '
-        'btnWMSClear
-        '
-        resources.ApplyResources(Me.btnWMSClear, "btnWMSClear")
-        Me.btnWMSClear.CategoryGuid = New System.Guid("43c16ecd-a271-40e8-b5ad-b36406108d31")
-        Me.btnWMSClear.Enabled = False
-        Me.btnWMSClear.Id = 36
-        Me.btnWMSClear.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.clearall
-        Me.btnWMSClear.Name = "btnWMSClear"
-        '
-        'StandaloneBarDockControl6
-        '
-        resources.ApplyResources(Me.StandaloneBarDockControl6, "StandaloneBarDockControl6")
-        Me.StandaloneBarDockControl6.CausesValidation = False
-        Me.StandaloneBarDockControl6.Manager = Me.BarManager
-        Me.StandaloneBarDockControl6.Name = "StandaloneBarDockControl6"
-        '
-        'barGrades
-        '
-        Me.barGrades.BarName = "Grades"
-        Me.barGrades.DockCol = 0
-        Me.barGrades.DockRow = 0
-        Me.barGrades.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone
-        Me.barGrades.FloatLocation = New System.Drawing.Point(548, 219)
-        Me.barGrades.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnGradesAdd), New DevExpress.XtraBars.LinkPersistInfo(Me.btnGradesDelete, True)})
-        Me.barGrades.OptionsBar.AllowQuickCustomization = False
-        Me.barGrades.OptionsBar.DisableClose = True
-        Me.barGrades.OptionsBar.DisableCustomization = True
-        Me.barGrades.OptionsBar.DrawDragBorder = False
-        Me.barGrades.OptionsBar.UseWholeRow = True
-        Me.barGrades.StandaloneBarDockControl = Me.StandaloneBarDockControl7
-        resources.ApplyResources(Me.barGrades, "barGrades")
-        '
-        'btnGradesAdd
-        '
-        resources.ApplyResources(Me.btnGradesAdd, "btnGradesAdd")
-        Me.btnGradesAdd.Id = 45
-        Me.btnGradesAdd.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_add
-        Me.btnGradesAdd.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.btnGradesAdd.Name = "btnGradesAdd"
-        '
-        'btnGradesDelete
-        '
-        resources.ApplyResources(Me.btnGradesDelete, "btnGradesDelete")
-        Me.btnGradesDelete.Enabled = False
-        Me.btnGradesDelete.Id = 46
-        Me.btnGradesDelete.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.delete1
-        Me.btnGradesDelete.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.btnGradesDelete.Name = "btnGradesDelete"
-        '
-        'StandaloneBarDockControl7
-        '
-        resources.ApplyResources(Me.StandaloneBarDockControl7, "StandaloneBarDockControl7")
-        Me.StandaloneBarDockControl7.CausesValidation = False
-        Me.StandaloneBarDockControl7.Manager = Me.BarManager
-        Me.StandaloneBarDockControl7.Name = "StandaloneBarDockControl7"
-        '
-        'barDockControlTop
-        '
-        Me.barDockControlTop.CausesValidation = False
-        resources.ApplyResources(Me.barDockControlTop, "barDockControlTop")
-        Me.barDockControlTop.Manager = Me.BarManager
-        '
-        'barDockControlBottom
-        '
-        Me.barDockControlBottom.CausesValidation = False
-        resources.ApplyResources(Me.barDockControlBottom, "barDockControlBottom")
-        Me.barDockControlBottom.Manager = Me.BarManager
-        '
-        'barDockControlLeft
-        '
-        Me.barDockControlLeft.CausesValidation = False
-        resources.ApplyResources(Me.barDockControlLeft, "barDockControlLeft")
-        Me.barDockControlLeft.Manager = Me.BarManager
-        '
-        'barDockControlRight
-        '
-        Me.barDockControlRight.CausesValidation = False
-        resources.ApplyResources(Me.barDockControlRight, "barDockControlRight")
-        Me.barDockControlRight.Manager = Me.BarManager
-        '
-        'btnLayerSync
-        '
-        Me.btnLayerSync.Id = 6
-        Me.btnLayerSync.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.productquickcomparisons
-        Me.btnLayerSync.Name = "btnLayerSync"
-        '
-        'btnExpandAll
-        '
-        resources.ApplyResources(Me.btnExpandAll, "btnExpandAll")
-        Me.btnExpandAll.Id = 9
-        Me.btnExpandAll.Name = "btnExpandAll"
-        '
-        'btnCollapseAll
-        '
-        resources.ApplyResources(Me.btnCollapseAll, "btnCollapseAll")
-        Me.btnCollapseAll.Id = 10
-        Me.btnCollapseAll.Name = "btnCollapseAll"
-        '
         'tabSessionMeasure1
         '
         Me.tabSessionMeasure1.Controls.Add(Me.pnlSessionDepth)
@@ -3805,6 +3830,7 @@ Partial Class frmProperties
         '
         resources.ApplyResources(Me.chkShowWarpingDetails, "chkShowWarpingDetails")
         Me.chkShowWarpingDetails.Name = "chkShowWarpingDetails"
+        Me.chkShowWarpingDetails.Properties.AutoWidth = True
         Me.chkShowWarpingDetails.Properties.Caption = resources.GetString("chkShowWarpingDetails.Properties.Caption")
         '
         'cboCalculateVersion
@@ -3829,18 +3855,21 @@ Partial Class frmProperties
         '
         resources.ApplyResources(Me.chkProfileWarpingEnabled, "chkProfileWarpingEnabled")
         Me.chkProfileWarpingEnabled.Name = "chkProfileWarpingEnabled"
+        Me.chkProfileWarpingEnabled.Properties.AutoWidth = True
         Me.chkProfileWarpingEnabled.Properties.Caption = resources.GetString("chkProfileWarpingEnabled.Properties.Caption")
         '
         'chkPlanWarpingEnabled
         '
         resources.ApplyResources(Me.chkPlanWarpingEnabled, "chkPlanWarpingEnabled")
         Me.chkPlanWarpingEnabled.Name = "chkPlanWarpingEnabled"
+        Me.chkPlanWarpingEnabled.Properties.AutoWidth = True
         Me.chkPlanWarpingEnabled.Properties.Caption = resources.GetString("chkPlanWarpingEnabled.Properties.Caption")
         '
         'chkBindCrossSection
         '
         resources.ApplyResources(Me.chkBindCrossSection, "chkBindCrossSection")
         Me.chkBindCrossSection.Name = "chkBindCrossSection"
+        Me.chkBindCrossSection.Properties.AutoWidth = True
         Me.chkBindCrossSection.Properties.Caption = resources.GetString("chkBindCrossSection.Properties.Caption")
         '
         'lblNordCorrectionWarning
@@ -3891,6 +3920,7 @@ Partial Class frmProperties
         '
         resources.ApplyResources(Me.chkCalculateMode, "chkCalculateMode")
         Me.chkCalculateMode.Name = "chkCalculateMode"
+        Me.chkCalculateMode.Properties.AutoWidth = True
         Me.chkCalculateMode.Properties.Caption = resources.GetString("chkCalculateMode.Properties.Caption")
         '
         'lblNordCorrection
@@ -5404,6 +5434,8 @@ Partial Class frmProperties
         CType(Me.GroupBox6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
+        CType(Me.txtPlotSplayCrossScale.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BarManager, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.frmPlotLRUD, System.ComponentModel.ISupportInitialize).EndInit()
         Me.frmPlotLRUD.ResumeLayout(False)
         Me.frmPlotLRUD.PerformLayout()
@@ -5479,7 +5511,6 @@ Partial Class frmProperties
         Me.tabSessionMain1.PerformLayout()
         Me.tabSessionNote1.ResumeLayout(False)
         CType(Me.txtSessionNote.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BarManager, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabSessionMeasure1.ResumeLayout(False)
         Me.tabSessionMeasure1.PerformLayout()
         Me.pnlSessionDepth.ResumeLayout(False)
@@ -6206,4 +6237,6 @@ Partial Class frmProperties
     Friend WithEvents optGPSRefPointOnOrigin As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents cboOrigin As cTrigpointDropDown
     Friend WithEvents cboCaveInfoExtendStart As cTrigpointDropDown
+    Friend WithEvents lblPlotSplayCrossScale As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txtPlotSplayCrossScale As DevExpress.XtraEditors.SpinEdit
 End Class

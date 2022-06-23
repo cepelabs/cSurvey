@@ -824,7 +824,7 @@ Namespace cSurvey
             RaiseEvent OnProgress(Me, New OnProgressEventArgs(Task, Action, Text, Progress, Options))
         End Sub
 
-        Public Function Check(ByVal filename As String) As cActionResult
+        Public Shared Function Check(ByVal filename As String) As cActionResult
             Try
                 If My.Computer.FileSystem.FileExists(filename) Then
                     Using oFile As cFile = New cFile(filename)

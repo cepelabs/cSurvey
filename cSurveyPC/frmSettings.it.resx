@@ -767,7 +767,7 @@ Non vi è correlazione tra questo codice e alcun dato relativo all'utente.</valu
     <value>Rilievi collegati</value>
   </data>
   <data name="chkLogOnFile.ToolTip" xml:space="preserve">
-    <value>Scrivi log su file</value>
+    <value>Scrive il log su file</value>
   </data>
   <data name="chkLogVerbose.Properties.Caption" xml:space="preserve">
     <value>Log prolisso</value>
@@ -780,5 +780,32 @@ Non vi è correlazione tra questo codice e alcun dato relativo all'utente.</valu
   </data>
   <data name="lblLogMaxSize.ToolTip" xml:space="preserve">
     <value>Numero massimo di linee visualizzabili nella console</value>
+  </data>
+  <data name="CheckEdit1.Properties.Caption" xml:space="preserve">
+    <value>Forza garbage collect</value>
+  </data>
+  <data name="chkSVGExportcSurveyReference.Properties.Caption" xml:space="preserve">
+    <value>Esporta dati aggiuntivi</value>
+  </data>
+  <data name="chkSVGExportcSurveyReference.ToolTip" xml:space="preserve">
+    <value>Esporta anche i dati aggiuntivi</value>
+  </data>
+  <data name="chkSVGExportImages.Properties.Caption" xml:space="preserve">
+    <value>Esporta immagini</value>
+  </data>
+  <data name="chkSVGExportImages.ToolTip" xml:space="preserve">
+    <value>Esporta le immagini raster</value>
+  </data>
+  <data name="chkSVGExportTextAsPath.ToolTip" xml:space="preserve">
+    <value>Esporta le immagini raster</value>
+  </data>
+  <data name="chkSVGExportTextAsPath.Properties.Caption" xml:space="preserve">
+    <value>Esporta testo come path</value>
+  </data>
+  <data name="cmdDefaultFolder.ToolTip" xml:space="preserve">
+    <value>Sfoglia...</value>
+  </data>
+  <data name="chkLogOnFile.Properties.Caption" xml:space="preserve">
+    <value>Scrivi log su file</value>
   </data>
 </root>

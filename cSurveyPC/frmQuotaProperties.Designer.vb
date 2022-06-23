@@ -31,12 +31,17 @@ Partial Class frmQuotaProperties
         Me.lblPlotSelectedPenWidth = New DevExpress.XtraEditors.LabelControl()
         Me.txtQuotaticklabelfrequency = New System.Windows.Forms.NumericUpDown()
         Me.frmHVQuota = New DevExpress.XtraEditors.GroupControl()
-        Me.cboQuotaCapDecoration = New System.Windows.Forms.ComboBox()
         Me.lblQuotaRightRefPercent = New DevExpress.XtraEditors.LabelControl()
         Me.txtQuotaRightRefPercent = New System.Windows.Forms.NumericUpDown()
         Me.lblQuotaCapDecoration = New DevExpress.XtraEditors.LabelControl()
         Me.lblQuotaLeftRefPercent = New DevExpress.XtraEditors.LabelControl()
         Me.txtQuotaLeftRefPercent = New System.Windows.Forms.NumericUpDown()
+        Me.cboQuotaCapDecoration = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.frmAltQuota = New DevExpress.XtraEditors.GroupControl()
+        Me.lblQuotaAltitudeFill = New DevExpress.XtraEditors.LabelControl()
+        Me.lblQuotaAltitudeStyle = New DevExpress.XtraEditors.LabelControl()
+        Me.cboQuotaAltitudeFill = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.cboQuotaAltitudeStyle = New DevExpress.XtraEditors.ComboBoxEdit()
         CType(Me.frmScaleQuota, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.frmScaleQuota.SuspendLayout()
         CType(Me.txtQuotaticksize, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -46,6 +51,11 @@ Partial Class frmQuotaProperties
         Me.frmHVQuota.SuspendLayout()
         CType(Me.txtQuotaRightRefPercent, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtQuotaLeftRefPercent, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboQuotaCapDecoration.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.frmAltQuota, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.frmAltQuota.SuspendLayout()
+        CType(Me.cboQuotaAltitudeFill.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboQuotaAltitudeStyle.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'frmScaleQuota
@@ -102,22 +112,14 @@ Partial Class frmQuotaProperties
         '
         'frmHVQuota
         '
-        Me.frmHVQuota.Controls.Add(Me.cboQuotaCapDecoration)
         Me.frmHVQuota.Controls.Add(Me.lblQuotaRightRefPercent)
         Me.frmHVQuota.Controls.Add(Me.txtQuotaRightRefPercent)
         Me.frmHVQuota.Controls.Add(Me.lblQuotaCapDecoration)
         Me.frmHVQuota.Controls.Add(Me.lblQuotaLeftRefPercent)
         Me.frmHVQuota.Controls.Add(Me.txtQuotaLeftRefPercent)
+        Me.frmHVQuota.Controls.Add(Me.cboQuotaCapDecoration)
         resources.ApplyResources(Me.frmHVQuota, "frmHVQuota")
         Me.frmHVQuota.Name = "frmHVQuota"
-        '
-        'cboQuotaCapDecoration
-        '
-        Me.cboQuotaCapDecoration.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboQuotaCapDecoration.FormattingEnabled = True
-        Me.cboQuotaCapDecoration.Items.AddRange(New Object() {resources.GetString("cboQuotaCapDecoration.Items"), resources.GetString("cboQuotaCapDecoration.Items1"), resources.GetString("cboQuotaCapDecoration.Items2")})
-        resources.ApplyResources(Me.cboQuotaCapDecoration, "cboQuotaCapDecoration")
-        Me.cboQuotaCapDecoration.Name = "cboQuotaCapDecoration"
         '
         'lblQuotaRightRefPercent
         '
@@ -152,11 +154,55 @@ Partial Class frmQuotaProperties
         Me.txtQuotaLeftRefPercent.Name = "txtQuotaLeftRefPercent"
         Me.txtQuotaLeftRefPercent.Value = New Decimal(New Integer() {100, 0, 0, 0})
         '
+        'cboQuotaCapDecoration
+        '
+        resources.ApplyResources(Me.cboQuotaCapDecoration, "cboQuotaCapDecoration")
+        Me.cboQuotaCapDecoration.Name = "cboQuotaCapDecoration"
+        Me.cboQuotaCapDecoration.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboQuotaCapDecoration.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboQuotaCapDecoration.Properties.Items.AddRange(New Object() {resources.GetString("cboQuotaCapDecoration.Properties.Items"), resources.GetString("cboQuotaCapDecoration.Properties.Items1"), resources.GetString("cboQuotaCapDecoration.Properties.Items2")})
+        Me.cboQuotaCapDecoration.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        '
+        'frmAltQuota
+        '
+        Me.frmAltQuota.Controls.Add(Me.lblQuotaAltitudeFill)
+        Me.frmAltQuota.Controls.Add(Me.lblQuotaAltitudeStyle)
+        Me.frmAltQuota.Controls.Add(Me.cboQuotaAltitudeFill)
+        Me.frmAltQuota.Controls.Add(Me.cboQuotaAltitudeStyle)
+        resources.ApplyResources(Me.frmAltQuota, "frmAltQuota")
+        Me.frmAltQuota.Name = "frmAltQuota"
+        '
+        'lblQuotaAltitudeFill
+        '
+        resources.ApplyResources(Me.lblQuotaAltitudeFill, "lblQuotaAltitudeFill")
+        Me.lblQuotaAltitudeFill.Name = "lblQuotaAltitudeFill"
+        '
+        'lblQuotaAltitudeStyle
+        '
+        resources.ApplyResources(Me.lblQuotaAltitudeStyle, "lblQuotaAltitudeStyle")
+        Me.lblQuotaAltitudeStyle.Name = "lblQuotaAltitudeStyle"
+        '
+        'cboQuotaAltitudeFill
+        '
+        resources.ApplyResources(Me.cboQuotaAltitudeFill, "cboQuotaAltitudeFill")
+        Me.cboQuotaAltitudeFill.Name = "cboQuotaAltitudeFill"
+        Me.cboQuotaAltitudeFill.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboQuotaAltitudeFill.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboQuotaAltitudeFill.Properties.Items.AddRange(New Object() {resources.GetString("cboQuotaAltitudeFill.Properties.Items"), resources.GetString("cboQuotaAltitudeFill.Properties.Items1"), resources.GetString("cboQuotaAltitudeFill.Properties.Items2"), resources.GetString("cboQuotaAltitudeFill.Properties.Items3")})
+        Me.cboQuotaAltitudeFill.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        '
+        'cboQuotaAltitudeStyle
+        '
+        resources.ApplyResources(Me.cboQuotaAltitudeStyle, "cboQuotaAltitudeStyle")
+        Me.cboQuotaAltitudeStyle.Name = "cboQuotaAltitudeStyle"
+        Me.cboQuotaAltitudeStyle.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboQuotaAltitudeStyle.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboQuotaAltitudeStyle.Properties.Items.AddRange(New Object() {resources.GetString("cboQuotaAltitudeStyle.Properties.Items"), resources.GetString("cboQuotaAltitudeStyle.Properties.Items1"), resources.GetString("cboQuotaAltitudeStyle.Properties.Items2"), resources.GetString("cboQuotaAltitudeStyle.Properties.Items3"), resources.GetString("cboQuotaAltitudeStyle.Properties.Items4")})
+        Me.cboQuotaAltitudeStyle.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        '
         'frmQuotaProperties
         '
         Me.Appearance.Options.UseFont = True
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.Controls.Add(Me.frmAltQuota)
         Me.Controls.Add(Me.frmHVQuota)
         Me.Controls.Add(Me.frmScaleQuota)
         Me.Name = "frmQuotaProperties"
@@ -171,6 +217,12 @@ Partial Class frmQuotaProperties
         Me.frmHVQuota.PerformLayout()
         CType(Me.txtQuotaRightRefPercent, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtQuotaLeftRefPercent, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboQuotaCapDecoration.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.frmAltQuota, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.frmAltQuota.ResumeLayout(False)
+        Me.frmAltQuota.PerformLayout()
+        CType(Me.cboQuotaAltitudeFill.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboQuotaAltitudeStyle.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -187,5 +239,10 @@ Partial Class frmQuotaProperties
     Friend WithEvents lblQuotaCapDecoration As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lblQuotaLeftRefPercent As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtQuotaLeftRefPercent As System.Windows.Forms.NumericUpDown
-    Friend WithEvents cboQuotaCapDecoration As System.Windows.Forms.ComboBox
+    Friend WithEvents cboQuotaCapDecoration As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents frmAltQuota As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents lblQuotaAltitudeFill As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lblQuotaAltitudeStyle As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cboQuotaAltitudeFill As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents cboQuotaAltitudeStyle As DevExpress.XtraEditors.ComboBoxEdit
 End Class

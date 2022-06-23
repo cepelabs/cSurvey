@@ -2,6 +2,21 @@
     Public Interface cIItemQuota
         Inherits cIItemText
 
+        Enum QuotaAltitudeFillEnum
+            None = 0
+            Solid = 1
+            BlackAndWhite = 2
+            WhiteAndBlack = 3
+        End Enum
+
+        Enum QuotaAltitudeStyleEnum
+            Style0 = 0
+            Style1 = 1
+            Style2 = 2
+            Style3 = 3
+            Style4 = 4
+        End Enum
+
         Enum QuotaTypeEnum
             Vertical = 0
             Horizontal = 1
@@ -60,6 +75,10 @@
         Property QuotaCapDecoration As QuotaCapDecorationEnum
         Property QuotaLeftRefPercent As Single
         Property QuotaRightRefPercent As Single
+
+
+        Property QuotaAltitudeStyle As QuotaAltitudeStyleEnum
+        Property QuotaAltitudeFill As QuotaAltitudeFillEnum
 
     End Interface
 End Namespace

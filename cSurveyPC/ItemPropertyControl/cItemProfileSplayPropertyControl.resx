@@ -139,7 +139,7 @@
     <value>lblPropPlanSplay</value>
   </data>
   <data name="&gt;&gt;lblPropPlanSplay.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropPlanSplay.Parent" xml:space="preserve">
     <value>$this</value>
@@ -220,7 +220,7 @@
     <value>lblPropProfileSplayNegInclinationRange</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayNegInclinationRange.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayNegInclinationRange.Parent" xml:space="preserve">
     <value>$this</value>
@@ -298,7 +298,7 @@
     <value>cmdPropProfileSplay</value>
   </data>
   <data name="&gt;&gt;cmdPropProfileSplay.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPropProfileSplay.Parent" xml:space="preserve">
     <value>$this</value>
@@ -355,7 +355,7 @@
     <value>lblPropProfileSplayMaxVariationAngle</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayMaxVariationAngle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayMaxVariationAngle.Parent" xml:space="preserve">
     <value>$this</value>
@@ -388,7 +388,7 @@
     <value>lblPropProfileSplayProjectionAngle</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayProjectionAngle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayProjectionAngle.Parent" xml:space="preserve">
     <value>$this</value>
@@ -445,7 +445,7 @@
     <value>lblPropProfileSplayPosInclinationRange</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayPosInclinationRange.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayPosInclinationRange.Parent" xml:space="preserve">
     <value>$this</value>
@@ -469,7 +469,7 @@
     <value>picPropProfileProjectionSchema</value>
   </data>
   <data name="&gt;&gt;picPropProfileProjectionSchema.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PictureEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PictureEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;picPropProfileProjectionSchema.Parent" xml:space="preserve">
     <value>$this</value>

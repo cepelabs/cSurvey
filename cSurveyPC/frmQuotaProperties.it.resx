@@ -117,15 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cboQuotaCapDecoration.Items" xml:space="preserve">
-    <value>Nessuna</value>
-  </data>
-  <data name="cboQuotaCapDecoration.Items1" xml:space="preserve">
-    <value>Frecce</value>
-  </data>
-  <data name="cboQuotaCapDecoration.Items2" xml:space="preserve">
-    <value>Segmento inclinato</value>
-  </data>
   <data name="frmHVQuota.Text" xml:space="preserve">
     <value>Quota orizzontale/verticale:</value>
   </data>
@@ -149,5 +140,50 @@
   </data>
   <data name="lblQuotaRightRefPercent.Text" xml:space="preserve">
     <value>% riferimento destro:</value>
+  </data>
+  <data name="cboQuotaAltitudeFill.Properties.Items" xml:space="preserve">
+    <value>Nessuno</value>
+  </data>
+  <data name="cboQuotaAltitudeFill.Properties.Items1" xml:space="preserve">
+    <value>Pieno</value>
+  </data>
+  <data name="cboQuotaAltitudeFill.Properties.Items2" xml:space="preserve">
+    <value>Nero e bianco</value>
+  </data>
+  <data name="cboQuotaAltitudeFill.Properties.Items3" xml:space="preserve">
+    <value>Bianco e nero</value>
+  </data>
+  <data name="cboQuotaAltitudeStyle.Properties.Items" xml:space="preserve">
+    <value>Predefinito</value>
+  </data>
+  <data name="cboQuotaAltitudeStyle.Properties.Items1" xml:space="preserve">
+    <value>Stile 1</value>
+  </data>
+  <data name="cboQuotaAltitudeStyle.Properties.Items2" xml:space="preserve">
+    <value>Stile 2</value>
+  </data>
+  <data name="cboQuotaAltitudeStyle.Properties.Items3" xml:space="preserve">
+    <value>Stile 3</value>
+  </data>
+  <data name="cboQuotaAltitudeStyle.Properties.Items4" xml:space="preserve">
+    <value>Stile 4</value>
+  </data>
+  <data name="cboQuotaCapDecoration.Properties.Items" xml:space="preserve">
+    <value>Nessuna</value>
+  </data>
+  <data name="cboQuotaCapDecoration.Properties.Items1" xml:space="preserve">
+    <value>Frecce</value>
+  </data>
+  <data name="cboQuotaCapDecoration.Properties.Items2" xml:space="preserve">
+    <value>Segmento inclinato</value>
+  </data>
+  <data name="frmAltQuota.Text" xml:space="preserve">
+    <value>Altitudine:</value>
+  </data>
+  <data name="lblQuotaAltitudeFill.Text" xml:space="preserve">
+    <value>Riempimento:</value>
+  </data>
+  <data name="lblQuotaAltitudeStyle.Text" xml:space="preserve">
+    <value>Stile:</value>
   </data>
 </root>

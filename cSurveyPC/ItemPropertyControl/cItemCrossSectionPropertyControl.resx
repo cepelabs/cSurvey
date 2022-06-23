@@ -139,7 +139,7 @@
     <value>lblPropCrossSectionRefStation</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionRefStation.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionRefStation.Parent" xml:space="preserve">
     <value>$this</value>
@@ -199,7 +199,7 @@
     <value>cmdPropCrossSectionProfileMarker</value>
   </data>
   <data name="&gt;&gt;cmdPropCrossSectionProfileMarker.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPropCrossSectionProfileMarker.Parent" xml:space="preserve">
     <value>$this</value>
@@ -226,7 +226,7 @@
     <value>cmdPropCrossSectionPlanMarker</value>
   </data>
   <data name="&gt;&gt;cmdPropCrossSectionPlanMarker.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPropCrossSectionPlanMarker.Parent" xml:space="preserve">
     <value>$this</value>
@@ -243,7 +243,7 @@
   <data name="chkPropCrossSectionProfileMarker.Properties.Caption" xml:space="preserve">
     <value>Profile</value>
   </data>
-  <assembly alias="DevExpress.Data.v21.2" name="DevExpress.Data.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.Data.v21.2" name="DevExpress.Data.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="chkPropCrossSectionProfileMarker.Properties.GlyphAlignment" type="DevExpress.Utils.HorzAlignment, DevExpress.Data.v21.2">
     <value>Far</value>
   </data>
@@ -257,7 +257,7 @@
     <value>chkPropCrossSectionProfileMarker</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionProfileMarker.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionProfileMarker.Parent" xml:space="preserve">
     <value>$this</value>
@@ -287,7 +287,7 @@
     <value>chkPropCrossSectionPlanMarker</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionPlanMarker.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionPlanMarker.Parent" xml:space="preserve">
     <value>$this</value>
@@ -314,7 +314,7 @@
     <value>lblPropProfileReferences</value>
   </data>
   <data name="&gt;&gt;lblPropProfileReferences.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropProfileReferences.Parent" xml:space="preserve">
     <value>$this</value>
@@ -344,7 +344,7 @@
     <value>lblPropCrossSectionCrossH</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionCrossH.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionCrossH.Parent" xml:space="preserve">
     <value>$this</value>
@@ -374,7 +374,7 @@
     <value>lblPropCrossSectionCrossW</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionCrossW.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionCrossW.Parent" xml:space="preserve">
     <value>$this</value>
@@ -455,7 +455,7 @@
     <value>lblPropCrossSectionCross</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionCross.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionCross.Parent" xml:space="preserve">
     <value>$this</value>
@@ -482,7 +482,7 @@
     <value>lblPropCrossSectionSegment</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionSegment.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionSegment.Parent" xml:space="preserve">
     <value>$this</value>
@@ -539,7 +539,7 @@
     <value>lblPropProfileBearing</value>
   </data>
   <data name="&gt;&gt;lblPropProfileBearing.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropProfileBearing.Parent" xml:space="preserve">
     <value>$this</value>
@@ -596,7 +596,7 @@
     <value>lblPropProfileTextDistance</value>
   </data>
   <data name="&gt;&gt;lblPropProfileTextDistance.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropProfileTextDistance.Parent" xml:space="preserve">
     <value>$this</value>
@@ -674,7 +674,7 @@
     <value>lblPropProfileTextPosition</value>
   </data>
   <data name="&gt;&gt;lblPropProfileTextPosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropProfileTextPosition.Parent" xml:space="preserve">
     <value>$this</value>
@@ -695,7 +695,7 @@
     <value>txtPropCrossSectionSegment</value>
   </data>
   <data name="&gt;&gt;txtPropCrossSectionSegment.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ButtonEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.ButtonEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtPropCrossSectionSegment.Parent" xml:space="preserve">
     <value>$this</value>

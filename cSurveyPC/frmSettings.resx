@@ -135,7 +135,7 @@
     <value>chkHistoryArchiveOnSave</value>
   </data>
   <data name="&gt;&gt;chkHistoryArchiveOnSave.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkHistoryArchiveOnSave.Parent" xml:space="preserve">
     <value>TabPage1</value>
@@ -163,7 +163,7 @@
     <value>lblHistoryMaxCopies</value>
   </data>
   <data name="&gt;&gt;lblHistoryMaxCopies.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblHistoryMaxCopies.Parent" xml:space="preserve">
     <value>TabPage1</value>
@@ -232,7 +232,7 @@
     <value>lblHistoryFolder</value>
   </data>
   <data name="&gt;&gt;lblHistoryFolder.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblHistoryFolder.Parent" xml:space="preserve">
     <value>TabPage1</value>
@@ -259,7 +259,7 @@
     <value>lblHistoryDailyCopies</value>
   </data>
   <data name="&gt;&gt;lblHistoryDailyCopies.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblHistoryDailyCopies.Parent" xml:space="preserve">
     <value>TabPage1</value>
@@ -283,7 +283,7 @@
     <value>cmdHistoryFolderBrowse</value>
   </data>
   <data name="&gt;&gt;cmdHistoryFolderBrowse.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdHistoryFolderBrowse.Parent" xml:space="preserve">
     <value>TabPage1</value>
@@ -361,7 +361,7 @@
     <value>chkHistoryWebArchiveOnSave</value>
   </data>
   <data name="&gt;&gt;chkHistoryWebArchiveOnSave.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkHistoryWebArchiveOnSave.Parent" xml:space="preserve">
     <value>TabPage2</value>
@@ -385,7 +385,7 @@
     <value>chkHistoryWebAuthReq</value>
   </data>
   <data name="&gt;&gt;chkHistoryWebAuthReq.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkHistoryWebAuthReq.Parent" xml:space="preserve">
     <value>TabPage2</value>
@@ -412,7 +412,7 @@
     <value>lblHistoryWebMaxCopies</value>
   </data>
   <data name="&gt;&gt;lblHistoryWebMaxCopies.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblHistoryWebMaxCopies.Parent" xml:space="preserve">
     <value>TabPage2</value>
@@ -463,7 +463,7 @@
     <value>lblHistoryWebDailyCopies</value>
   </data>
   <data name="&gt;&gt;lblHistoryWebDailyCopies.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblHistoryWebDailyCopies.Parent" xml:space="preserve">
     <value>TabPage2</value>
@@ -514,7 +514,7 @@
     <value>cmdHistoryWebCheck</value>
   </data>
   <data name="&gt;&gt;cmdHistoryWebCheck.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdHistoryWebCheck.Parent" xml:space="preserve">
     <value>TabPage2</value>
@@ -562,7 +562,7 @@
     <value>lblHistoryWebPassword</value>
   </data>
   <data name="&gt;&gt;lblHistoryWebPassword.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblHistoryWebPassword.Parent" xml:space="preserve">
     <value>TabPage2</value>
@@ -589,7 +589,7 @@
     <value>lblHistoryWebAddress</value>
   </data>
   <data name="&gt;&gt;lblHistoryWebAddress.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblHistoryWebAddress.Parent" xml:space="preserve">
     <value>TabPage2</value>
@@ -661,7 +661,7 @@
     <value>lblHistoryWebUsername</value>
   </data>
   <data name="&gt;&gt;lblHistoryWebUsername.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblHistoryWebUsername.Parent" xml:space="preserve">
     <value>TabPage2</value>
@@ -739,7 +739,7 @@
     <value>chkAutosaveUseHistorySettings</value>
   </data>
   <data name="&gt;&gt;chkAutosaveUseHistorySettings.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkAutosaveUseHistorySettings.Parent" xml:space="preserve">
     <value>tabInfoHistory</value>
@@ -766,7 +766,7 @@
     <value>lblHistoryMode</value>
   </data>
   <data name="&gt;&gt;lblHistoryMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblHistoryMode.Parent" xml:space="preserve">
     <value>tabInfoHistory</value>
@@ -793,7 +793,7 @@
     <value>chkHistory</value>
   </data>
   <data name="&gt;&gt;chkHistory.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkHistory.Parent" xml:space="preserve">
     <value>tabInfoHistory</value>
@@ -817,7 +817,7 @@
     <value>chkAutosave</value>
   </data>
   <data name="&gt;&gt;chkAutosave.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkAutosave.Parent" xml:space="preserve">
     <value>tabInfoHistory</value>
@@ -880,7 +880,7 @@
     <value>Label9</value>
   </data>
   <data name="&gt;&gt;Label9.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label9.Parent" xml:space="preserve">
     <value>GroupBox6</value>
@@ -940,7 +940,7 @@
     <value>Label7</value>
   </data>
   <data name="&gt;&gt;Label7.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label7.Parent" xml:space="preserve">
     <value>GroupBox6</value>
@@ -967,7 +967,7 @@
     <value>cmdWMSFromOrthoPhotoBackgroundColor</value>
   </data>
   <data name="&gt;&gt;cmdWMSFromOrthoPhotoBackgroundColor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdWMSFromOrthoPhotoBackgroundColor.Parent" xml:space="preserve">
     <value>GroupBox6</value>
@@ -997,7 +997,7 @@
     <value>lblPlotNoteTextColor</value>
   </data>
   <data name="&gt;&gt;lblPlotNoteTextColor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotNoteTextColor.Parent" xml:space="preserve">
     <value>GroupBox6</value>
@@ -1081,7 +1081,7 @@
     <value>Label8</value>
   </data>
   <data name="&gt;&gt;Label8.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label8.Parent" xml:space="preserve">
     <value>GroupBox6</value>
@@ -1108,7 +1108,7 @@
     <value>GroupBox6</value>
   </data>
   <data name="&gt;&gt;GroupBox6.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;GroupBox6.Parent" xml:space="preserve">
     <value>tabInfoWMS</value>
@@ -1138,7 +1138,7 @@
     <value>btnWMSBrowse</value>
   </data>
   <data name="&gt;&gt;btnWMSBrowse.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnWMSBrowse.Parent" xml:space="preserve">
     <value>GroupBox5</value>
@@ -1168,7 +1168,7 @@
     <value>lblWMSCacheCurrentSizeValue</value>
   </data>
   <data name="&gt;&gt;lblWMSCacheCurrentSizeValue.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblWMSCacheCurrentSizeValue.Parent" xml:space="preserve">
     <value>GroupBox5</value>
@@ -1198,7 +1198,7 @@
     <value>lblWMSCacheCurrentSize</value>
   </data>
   <data name="&gt;&gt;lblWMSCacheCurrentSize.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblWMSCacheCurrentSize.Parent" xml:space="preserve">
     <value>GroupBox5</value>
@@ -1228,7 +1228,7 @@
     <value>btnWMSClearCache</value>
   </data>
   <data name="&gt;&gt;btnWMSClearCache.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnWMSClearCache.Parent" xml:space="preserve">
     <value>GroupBox5</value>
@@ -1285,7 +1285,7 @@
     <value>lblWMSCacheMaxSize</value>
   </data>
   <data name="&gt;&gt;lblWMSCacheMaxSize.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblWMSCacheMaxSize.Parent" xml:space="preserve">
     <value>GroupBox5</value>
@@ -1316,7 +1316,7 @@ The data must then be corrected manually after the import.</value>
     <value>chkWMSCacheEnabled</value>
   </data>
   <data name="&gt;&gt;chkWMSCacheEnabled.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkWMSCacheEnabled.Parent" xml:space="preserve">
     <value>GroupBox5</value>
@@ -1340,7 +1340,7 @@ The data must then be corrected manually after the import.</value>
     <value>GroupBox5</value>
   </data>
   <data name="&gt;&gt;GroupBox5.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;GroupBox5.Parent" xml:space="preserve">
     <value>tabInfoWMS</value>
@@ -1373,7 +1373,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoDebug</value>
   </data>
   <data name="&gt;&gt;cboFunctionLanguage.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="lblFunctionLanguage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1394,13 +1394,13 @@ The data must then be corrected manually after the import.</value>
     <value>lblFunctionLanguage</value>
   </data>
   <data name="&gt;&gt;lblFunctionLanguage.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblFunctionLanguage.Parent" xml:space="preserve">
     <value>tabInfoDebug</value>
   </data>
   <data name="&gt;&gt;lblFunctionLanguage.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="txtMachineID.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -1422,13 +1422,13 @@ There is a correlation between this code and any data related to the user.</valu
     <value>txtMachineID</value>
   </data>
   <data name="&gt;&gt;txtMachineID.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtMachineID.Parent" xml:space="preserve">
     <value>tabInfoDebug</value>
   </data>
   <data name="&gt;&gt;txtMachineID.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="lblMachineID.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -1452,18 +1452,18 @@ There is a correlation between this code and any data related to the user.</valu
     <value>lblMachineID</value>
   </data>
   <data name="&gt;&gt;lblMachineID.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblMachineID.Parent" xml:space="preserve">
     <value>tabInfoDebug</value>
   </data>
   <data name="&gt;&gt;lblMachineID.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="Label4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <assembly alias="DevExpress.XtraEditors.v21.2" name="DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.XtraEditors.v21.2" name="DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="Label4.AutoSizeMode" type="DevExpress.XtraEditors.LabelAutoSizeMode, DevExpress.XtraEditors.v21.2">
     <value>Vertical</value>
   </data>
@@ -1486,13 +1486,13 @@ There is a correlation between this code and any data related to the user.</valu
     <value>Label4</value>
   </data>
   <data name="&gt;&gt;Label4.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label4.Parent" xml:space="preserve">
     <value>tabInfoDebug</value>
   </data>
   <data name="&gt;&gt;Label4.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="chkCheckNewVersion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1516,13 +1516,13 @@ There is a correlation between this code and any data related to the user.</valu
     <value>chkCheckNewVersion</value>
   </data>
   <data name="&gt;&gt;chkCheckNewVersion.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkCheckNewVersion.Parent" xml:space="preserve">
     <value>tabInfoDebug</value>
   </data>
   <data name="&gt;&gt;chkCheckNewVersion.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="lblSendExceptionWarning.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1549,13 +1549,13 @@ There is a correlation between this code and any data related to the user.</valu
     <value>lblSendExceptionWarning</value>
   </data>
   <data name="&gt;&gt;lblSendExceptionWarning.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblSendExceptionWarning.Parent" xml:space="preserve">
     <value>tabInfoDebug</value>
   </data>
   <data name="&gt;&gt;lblSendExceptionWarning.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="chkSendException.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1579,13 +1579,13 @@ There is a correlation between this code and any data related to the user.</valu
     <value>chkSendException</value>
   </data>
   <data name="&gt;&gt;chkSendException.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkSendException.Parent" xml:space="preserve">
     <value>tabInfoDebug</value>
   </data>
   <data name="&gt;&gt;chkSendException.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="chkLogVerbose.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 12</value>
@@ -1606,13 +1606,13 @@ There is a correlation between this code and any data related to the user.</valu
     <value>chkLogVerbose</value>
   </data>
   <data name="&gt;&gt;chkLogVerbose.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkLogVerbose.Parent" xml:space="preserve">
     <value>tabInfoDebug</value>
   </data>
   <data name="&gt;&gt;chkLogVerbose.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="cboDesignSelectionMode.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -1669,7 +1669,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>lblDesignSelectionMode</value>
   </data>
   <data name="&gt;&gt;lblDesignSelectionMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignSelectionMode.Parent" xml:space="preserve">
     <value>tabInfoDesign</value>
@@ -1696,7 +1696,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>chkDesignShowLegacyExtraPrintAndExportObjects</value>
   </data>
   <data name="&gt;&gt;chkDesignShowLegacyExtraPrintAndExportObjects.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignShowLegacyExtraPrintAndExportObjects.Parent" xml:space="preserve">
     <value>tabInfoDesign</value>
@@ -1744,7 +1744,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>lblDesignMetricGridOpacity</value>
   </data>
   <data name="&gt;&gt;lblDesignMetricGridOpacity.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignMetricGridOpacity.Parent" xml:space="preserve">
     <value>tabInfoDesign</value>
@@ -1804,7 +1804,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>Label6</value>
   </data>
   <data name="&gt;&gt;Label6.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label6.Parent" xml:space="preserve">
     <value>tabInfoDesign</value>
@@ -1852,7 +1852,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>cmdDefaultFont</value>
   </data>
   <data name="&gt;&gt;cmdDefaultFont.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdDefaultFont.Parent" xml:space="preserve">
     <value>tabInfoDesign</value>
@@ -1882,7 +1882,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>lblDefaultFont</value>
   </data>
   <data name="&gt;&gt;lblDefaultFont.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDefaultFont.Parent" xml:space="preserve">
     <value>tabInfoDesign</value>
@@ -1909,7 +1909,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>chkDesignUseOnlyAnchorToMove</value>
   </data>
   <data name="&gt;&gt;chkDesignUseOnlyAnchorToMove.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignUseOnlyAnchorToMove.Parent" xml:space="preserve">
     <value>tabInfoDesign</value>
@@ -1963,7 +1963,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>lblDesignZoomType</value>
   </data>
   <data name="&gt;&gt;lblDesignZoomType.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignZoomType.Parent" xml:space="preserve">
     <value>tabInfoDesign</value>
@@ -2053,7 +2053,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>lblClipping</value>
   </data>
   <data name="&gt;&gt;lblClipping.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblClipping.Parent" xml:space="preserve">
     <value>tabInfoDesign</value>
@@ -2107,7 +2107,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>Label27</value>
   </data>
   <data name="&gt;&gt;Label27.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label27.Parent" xml:space="preserve">
     <value>tabInfoDesign</value>
@@ -2161,7 +2161,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>lblDesignQuality</value>
   </data>
   <data name="&gt;&gt;lblDesignQuality.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignQuality.Parent" xml:space="preserve">
     <value>tabInfoDesign</value>
@@ -2185,7 +2185,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>chkDesignShowRulers</value>
   </data>
   <data name="&gt;&gt;chkDesignShowRulers.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDesignShowRulers.Parent" xml:space="preserve">
     <value>tabInfoDesign</value>
@@ -2242,7 +2242,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>lblDesignMode</value>
   </data>
   <data name="&gt;&gt;lblDesignMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDesignMode.Parent" xml:space="preserve">
     <value>tabInfoDesign</value>
@@ -2272,7 +2272,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>chkShotsGridExportSplayNames</value>
   </data>
   <data name="&gt;&gt;chkShotsGridExportSplayNames.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkShotsGridExportSplayNames.Parent" xml:space="preserve">
     <value>GroupBox7</value>
@@ -2296,7 +2296,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>GroupBox7</value>
   </data>
   <data name="&gt;&gt;GroupBox7.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;GroupBox7.Parent" xml:space="preserve">
     <value>tabInfoData</value>
@@ -2326,7 +2326,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>chkSVGExportTextAsPath</value>
   </data>
   <data name="&gt;&gt;chkSVGExportTextAsPath.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkSVGExportTextAsPath.Parent" xml:space="preserve">
     <value>GroupBox2</value>
@@ -2356,7 +2356,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>chkSVGExportcSurveyReference</value>
   </data>
   <data name="&gt;&gt;chkSVGExportcSurveyReference.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkSVGExportcSurveyReference.Parent" xml:space="preserve">
     <value>GroupBox2</value>
@@ -2386,7 +2386,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>chkSVGExportImages</value>
   </data>
   <data name="&gt;&gt;chkSVGExportImages.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkSVGExportImages.Parent" xml:space="preserve">
     <value>GroupBox2</value>
@@ -2413,7 +2413,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>lblSVGExportDPI</value>
   </data>
   <data name="&gt;&gt;lblSVGExportDPI.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblSVGExportDPI.Parent" xml:space="preserve">
     <value>GroupBox2</value>
@@ -2467,7 +2467,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>chkSVGExportNoClipartBrushes</value>
   </data>
   <data name="&gt;&gt;chkSVGExportNoClipartBrushes.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkSVGExportNoClipartBrushes.Parent" xml:space="preserve">
     <value>GroupBox2</value>
@@ -2494,7 +2494,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>chkSVGExportNoClipping</value>
   </data>
   <data name="&gt;&gt;chkSVGExportNoClipping.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkSVGExportNoClipping.Parent" xml:space="preserve">
     <value>GroupBox2</value>
@@ -2524,7 +2524,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>lblSVGExportScale</value>
   </data>
   <data name="&gt;&gt;lblSVGExportScale.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblSVGExportScale.Parent" xml:space="preserve">
     <value>GroupBox2</value>
@@ -2578,7 +2578,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>GroupBox2</value>
   </data>
   <data name="&gt;&gt;GroupBox2.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;GroupBox2.Parent" xml:space="preserve">
     <value>tabInfoSVG</value>
@@ -2626,7 +2626,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>chkSVGImportAutodivide</value>
   </data>
   <data name="&gt;&gt;chkSVGImportAutodivide.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkSVGImportAutodivide.Parent" xml:space="preserve">
     <value>GroupBox1</value>
@@ -2680,7 +2680,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>lblSVGImportScale</value>
   </data>
   <data name="&gt;&gt;lblSVGImportScale.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblSVGImportScale.Parent" xml:space="preserve">
     <value>GroupBox1</value>
@@ -2704,7 +2704,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>lblSVGImportLineType</value>
   </data>
   <data name="&gt;&gt;lblSVGImportLineType.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblSVGImportLineType.Parent" xml:space="preserve">
     <value>GroupBox1</value>
@@ -2728,7 +2728,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>lblPlotSelectedPointSize</value>
   </data>
   <data name="&gt;&gt;lblPlotSelectedPointSize.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPlotSelectedPointSize.Parent" xml:space="preserve">
     <value>GroupBox1</value>
@@ -2776,7 +2776,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;GroupBox1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;GroupBox1.Parent" xml:space="preserve">
     <value>tabInfoSVG</value>
@@ -2803,7 +2803,7 @@ There is a correlation between this code and any data related to the user.</valu
     <value>chkVTopoImportSetAsBranch</value>
   </data>
   <data name="&gt;&gt;chkVTopoImportSetAsBranch.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkVTopoImportSetAsBranch.Parent" xml:space="preserve">
     <value>GroupBox4</value>
@@ -2831,7 +2831,7 @@ The data must then be corrected manually after the import.</value>
     <value>chkVTopoImportIncompatibleSet</value>
   </data>
   <data name="&gt;&gt;chkVTopoImportIncompatibleSet.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkVTopoImportIncompatibleSet.Parent" xml:space="preserve">
     <value>GroupBox4</value>
@@ -2855,7 +2855,7 @@ The data must then be corrected manually after the import.</value>
     <value>GroupBox4</value>
   </data>
   <data name="&gt;&gt;GroupBox4.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;GroupBox4.Parent" xml:space="preserve">
     <value>tabInfoVisualTopo</value>
@@ -2882,7 +2882,7 @@ The data must then be corrected manually after the import.</value>
     <value>chkLinkedSurveysRefreshOnLoad</value>
   </data>
   <data name="&gt;&gt;chkLinkedSurveysRefreshOnLoad.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkLinkedSurveysRefreshOnLoad.Parent" xml:space="preserve">
     <value>tabInfoLinkedSurveys</value>
@@ -2912,7 +2912,7 @@ The data must then be corrected manually after the import.</value>
     <value>chkLinkedSurveysRecursiveLoadPrioritizeChildren</value>
   </data>
   <data name="&gt;&gt;chkLinkedSurveysRecursiveLoadPrioritizeChildren.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkLinkedSurveysRecursiveLoadPrioritizeChildren.Parent" xml:space="preserve">
     <value>tabInfoLinkedSurveys</value>
@@ -2939,7 +2939,7 @@ The data must then be corrected manually after the import.</value>
     <value>chkLinkedSurveysRecursiveLoad</value>
   </data>
   <data name="&gt;&gt;chkLinkedSurveysRecursiveLoad.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkLinkedSurveysRecursiveLoad.Parent" xml:space="preserve">
     <value>tabInfoLinkedSurveys</value>
@@ -2966,7 +2966,7 @@ The data must then be corrected manually after the import.</value>
     <value>chkLinkedSurveysShowInCaveInfo</value>
   </data>
   <data name="&gt;&gt;chkLinkedSurveysShowInCaveInfo.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkLinkedSurveysShowInCaveInfo.Parent" xml:space="preserve">
     <value>tabInfoLinkedSurveys</value>
@@ -2990,7 +2990,7 @@ The data must then be corrected manually after the import.</value>
     <value>chkLinkedSurveysSelectOnAdd</value>
   </data>
   <data name="&gt;&gt;chkLinkedSurveysSelectOnAdd.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkLinkedSurveysSelectOnAdd.Parent" xml:space="preserve">
     <value>tabInfoLinkedSurveys</value>
@@ -3014,7 +3014,7 @@ The data must then be corrected manually after the import.</value>
     <value>chkCalculateMode</value>
   </data>
   <data name="&gt;&gt;chkCalculateMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkCalculateMode.Parent" xml:space="preserve">
     <value>tabInfoOptions</value>
@@ -3041,7 +3041,7 @@ The data must then be corrected manually after the import.</value>
     <value>lblDefaultCalculateMode</value>
   </data>
   <data name="&gt;&gt;lblDefaultCalculateMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDefaultCalculateMode.Parent" xml:space="preserve">
     <value>tabInfoOptions</value>
@@ -3104,7 +3104,7 @@ The data must then be corrected manually after the import.</value>
     <value>chkAlwaysUseShellForAttchments</value>
   </data>
   <data name="&gt;&gt;chkAlwaysUseShellForAttchments.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkAlwaysUseShellForAttchments.Parent" xml:space="preserve">
     <value>tabInfoInterface</value>
@@ -3152,7 +3152,7 @@ The data must then be corrected manually after the import.</value>
     <value>lblBaseLineWidthScaleFactor</value>
   </data>
   <data name="&gt;&gt;lblBaseLineWidthScaleFactor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblBaseLineWidthScaleFactor.Parent" xml:space="preserve">
     <value>tabInfoInterface</value>
@@ -3179,7 +3179,7 @@ The data must then be corrected manually after the import.</value>
     <value>chkShowLastUsedToolsInDesignBar</value>
   </data>
   <data name="&gt;&gt;chkShowLastUsedToolsInDesignBar.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkShowLastUsedToolsInDesignBar.Parent" xml:space="preserve">
     <value>tabInfoInterface</value>
@@ -3239,7 +3239,7 @@ The data must then be corrected manually after the import.</value>
     <value>Label5</value>
   </data>
   <data name="&gt;&gt;Label5.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label5.Parent" xml:space="preserve">
     <value>tabInfoInterface</value>
@@ -3296,7 +3296,7 @@ The data must then be corrected manually after the import.</value>
     <value>Label1</value>
   </data>
   <data name="&gt;&gt;Label1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
     <value>tabInfoInterface</value>
@@ -3326,7 +3326,7 @@ The data must then be corrected manually after the import.</value>
     <value>chkClipboardLocalFormat</value>
   </data>
   <data name="&gt;&gt;chkClipboardLocalFormat.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkClipboardLocalFormat.Parent" xml:space="preserve">
     <value>GroupBox3</value>
@@ -3353,7 +3353,7 @@ The data must then be corrected manually after the import.</value>
     <value>chkClipboardCleanPastedStation</value>
   </data>
   <data name="&gt;&gt;chkClipboardCleanPastedStation.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkClipboardCleanPastedStation.Parent" xml:space="preserve">
     <value>GroupBox3</value>
@@ -3377,7 +3377,7 @@ The data must then be corrected manually after the import.</value>
     <value>lblClipboardFormats</value>
   </data>
   <data name="&gt;&gt;lblClipboardFormats.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblClipboardFormats.Parent" xml:space="preserve">
     <value>GroupBox3</value>
@@ -3428,7 +3428,7 @@ The data must then be corrected manually after the import.</value>
     <value>GroupBox3</value>
   </data>
   <data name="&gt;&gt;GroupBox3.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;GroupBox3.Parent" xml:space="preserve">
     <value>tabInfoInterface</value>
@@ -3452,7 +3452,7 @@ The data must then be corrected manually after the import.</value>
     <value>chkSetDesignToolsEnabledByLevel</value>
   </data>
   <data name="&gt;&gt;chkSetDesignToolsEnabledByLevel.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkSetDesignToolsEnabledByLevel.Parent" xml:space="preserve">
     <value>tabInfoInterface</value>
@@ -3476,7 +3476,7 @@ The data must then be corrected manually after the import.</value>
     <value>chkSetDesignToolsHiddenByLevel</value>
   </data>
   <data name="&gt;&gt;chkSetDesignToolsHiddenByLevel.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkSetDesignToolsHiddenByLevel.Parent" xml:space="preserve">
     <value>tabInfoInterface</value>
@@ -3536,7 +3536,7 @@ The data must then be corrected manually after the import.</value>
     <value>Label10</value>
   </data>
   <data name="&gt;&gt;Label10.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label10.Parent" xml:space="preserve">
     <value>tabInfoInterface</value>
@@ -3563,7 +3563,7 @@ The data must then be corrected manually after the import.</value>
     <value>chkTherionLochEnabled</value>
   </data>
   <data name="&gt;&gt;chkTherionLochEnabled.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkTherionLochEnabled.Parent" xml:space="preserve">
     <value>tabInfoTherion</value>
@@ -3587,7 +3587,7 @@ The data must then be corrected manually after the import.</value>
     <value>cmdTherionPathBrowse</value>
   </data>
   <data name="&gt;&gt;cmdTherionPathBrowse.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdTherionPathBrowse.Parent" xml:space="preserve">
     <value>tabInfoTherion</value>
@@ -3611,7 +3611,7 @@ The data must then be corrected manually after the import.</value>
     <value>txtTherionPath</value>
   </data>
   <data name="&gt;&gt;txtTherionPath.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtTherionPath.Parent" xml:space="preserve">
     <value>tabInfoTherion</value>
@@ -3635,7 +3635,7 @@ The data must then be corrected manually after the import.</value>
     <value>lblTherionPath</value>
   </data>
   <data name="&gt;&gt;lblTherionPath.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblTherionPath.Parent" xml:space="preserve">
     <value>tabInfoTherion</value>
@@ -3668,7 +3668,7 @@ The data must then be corrected manually after the import.</value>
     <value>chkTherionUseCadastralIDInCaveNames</value>
   </data>
   <data name="&gt;&gt;chkTherionUseCadastralIDInCaveNames.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkTherionUseCadastralIDInCaveNames.Parent" xml:space="preserve">
     <value>frmTherionAdvancedSettings</value>
@@ -3695,7 +3695,7 @@ The data must then be corrected manually after the import.</value>
     <value>chkTherionSegmentForcePath</value>
   </data>
   <data name="&gt;&gt;chkTherionSegmentForcePath.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkTherionSegmentForcePath.Parent" xml:space="preserve">
     <value>frmTherionAdvancedSettings</value>
@@ -3722,7 +3722,7 @@ The data must then be corrected manually after the import.</value>
     <value>chkTherionSegmentForceDirection</value>
   </data>
   <data name="&gt;&gt;chkTherionSegmentForceDirection.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkTherionSegmentForceDirection.Parent" xml:space="preserve">
     <value>frmTherionAdvancedSettings</value>
@@ -3749,7 +3749,7 @@ The data must then be corrected manually after the import.</value>
     <value>chkTherionTrigpointSafename</value>
   </data>
   <data name="&gt;&gt;chkTherionTrigpointSafename.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkTherionTrigpointSafename.Parent" xml:space="preserve">
     <value>frmTherionAdvancedSettings</value>
@@ -3776,7 +3776,7 @@ The data must then be corrected manually after the import.</value>
     <value>chkTherionBackgroundProcess</value>
   </data>
   <data name="&gt;&gt;chkTherionBackgroundProcess.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkTherionBackgroundProcess.Parent" xml:space="preserve">
     <value>frmTherionAdvancedSettings</value>
@@ -3803,7 +3803,7 @@ The data must then be corrected manually after the import.</value>
     <value>chkTherionDeleteTempFiles</value>
   </data>
   <data name="&gt;&gt;chkTherionDeleteTempFiles.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkTherionDeleteTempFiles.Parent" xml:space="preserve">
     <value>frmTherionAdvancedSettings</value>
@@ -3827,7 +3827,7 @@ The data must then be corrected manually after the import.</value>
     <value>frmTherionAdvancedSettings</value>
   </data>
   <data name="&gt;&gt;frmTherionAdvancedSettings.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;frmTherionAdvancedSettings.Parent" xml:space="preserve">
     <value>tabInfoTherion</value>
@@ -3857,7 +3857,7 @@ The data must then be corrected manually after the import.</value>
     <value>cmdDefaultFolder</value>
   </data>
   <data name="&gt;&gt;cmdDefaultFolder.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdDefaultFolder.Parent" xml:space="preserve">
     <value>tabInfoMain</value>
@@ -3881,7 +3881,7 @@ The data must then be corrected manually after the import.</value>
     <value>txtDefaultFolder</value>
   </data>
   <data name="&gt;&gt;txtDefaultFolder.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtDefaultFolder.Parent" xml:space="preserve">
     <value>tabInfoMain</value>
@@ -3911,7 +3911,7 @@ The data must then be corrected manually after the import.</value>
     <value>Label3</value>
   </data>
   <data name="&gt;&gt;Label3.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label3.Parent" xml:space="preserve">
     <value>tabInfoMain</value>
@@ -3935,7 +3935,7 @@ The data must then be corrected manually after the import.</value>
     <value>txtDefaultDesigner</value>
   </data>
   <data name="&gt;&gt;txtDefaultDesigner.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.MemoEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.MemoEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtDefaultDesigner.Parent" xml:space="preserve">
     <value>tabInfoMain</value>
@@ -3959,7 +3959,7 @@ The data must then be corrected manually after the import.</value>
     <value>lblDefaultDesigner</value>
   </data>
   <data name="&gt;&gt;lblDefaultDesigner.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDefaultDesigner.Parent" xml:space="preserve">
     <value>tabInfoMain</value>
@@ -3983,7 +3983,7 @@ The data must then be corrected manually after the import.</value>
     <value>txtDefaultTeam</value>
   </data>
   <data name="&gt;&gt;txtDefaultTeam.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.MemoEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.MemoEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtDefaultTeam.Parent" xml:space="preserve">
     <value>tabInfoMain</value>
@@ -4007,7 +4007,7 @@ The data must then be corrected manually after the import.</value>
     <value>lblDefaultTeam</value>
   </data>
   <data name="&gt;&gt;lblDefaultTeam.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDefaultTeam.Parent" xml:space="preserve">
     <value>tabInfoMain</value>
@@ -4031,7 +4031,7 @@ The data must then be corrected manually after the import.</value>
     <value>txtDefaultClub</value>
   </data>
   <data name="&gt;&gt;txtDefaultClub.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.MemoEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.MemoEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtDefaultClub.Parent" xml:space="preserve">
     <value>tabInfoMain</value>
@@ -4055,7 +4055,7 @@ The data must then be corrected manually after the import.</value>
     <value>lblDefaultClub</value>
   </data>
   <data name="&gt;&gt;lblDefaultClub.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblDefaultClub.Parent" xml:space="preserve">
     <value>tabInfoMain</value>
@@ -4082,7 +4082,7 @@ The data must then be corrected manually after the import.</value>
     <value>lblSeparator</value>
   </data>
   <data name="&gt;&gt;lblSeparator.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblSeparator.Parent" xml:space="preserve">
     <value>pnlFooter</value>
@@ -4109,7 +4109,7 @@ The data must then be corrected manually after the import.</value>
     <value>cmdCancel</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
     <value>pnlFooter</value>
@@ -4136,7 +4136,7 @@ The data must then be corrected manually after the import.</value>
     <value>cmdOk</value>
   </data>
   <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
     <value>pnlFooter</value>
@@ -4160,7 +4160,7 @@ The data must then be corrected manually after the import.</value>
     <value>pnlFooter</value>
   </data>
   <data name="&gt;&gt;pnlFooter.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlFooter.Parent" xml:space="preserve">
     <value>$this</value>
@@ -4223,7 +4223,7 @@ The data must then be corrected manually after the import.</value>
     <value>AccordionControl1</value>
   </data>
   <data name="&gt;&gt;AccordionControl1.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Navigation.AccordionControl, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Navigation.AccordionControl, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;AccordionControl1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -4247,7 +4247,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoMain</value>
   </data>
   <data name="&gt;&gt;tabInfoMain.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tabInfoMain.Parent" xml:space="preserve">
     <value>tabMain</value>
@@ -4271,7 +4271,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoTherion</value>
   </data>
   <data name="&gt;&gt;tabInfoTherion.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tabInfoTherion.Parent" xml:space="preserve">
     <value>tabMain</value>
@@ -4289,7 +4289,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoOptions</value>
   </data>
   <data name="&gt;&gt;tabInfoOptions.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tabInfoOptions.Parent" xml:space="preserve">
     <value>tabMain</value>
@@ -4307,7 +4307,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoInterface</value>
   </data>
   <data name="&gt;&gt;tabInfoInterface.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tabInfoInterface.Parent" xml:space="preserve">
     <value>tabMain</value>
@@ -4325,7 +4325,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoDesign</value>
   </data>
   <data name="&gt;&gt;tabInfoDesign.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tabInfoDesign.Parent" xml:space="preserve">
     <value>tabMain</value>
@@ -4343,7 +4343,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoData</value>
   </data>
   <data name="&gt;&gt;tabInfoData.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tabInfoData.Parent" xml:space="preserve">
     <value>tabMain</value>
@@ -4361,7 +4361,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoSVG</value>
   </data>
   <data name="&gt;&gt;tabInfoSVG.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tabInfoSVG.Parent" xml:space="preserve">
     <value>tabMain</value>
@@ -4379,7 +4379,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoVisualTopo</value>
   </data>
   <data name="&gt;&gt;tabInfoVisualTopo.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tabInfoVisualTopo.Parent" xml:space="preserve">
     <value>tabMain</value>
@@ -4397,7 +4397,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoLinkedSurveys</value>
   </data>
   <data name="&gt;&gt;tabInfoLinkedSurveys.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tabInfoLinkedSurveys.Parent" xml:space="preserve">
     <value>tabMain</value>
@@ -4415,7 +4415,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoWMS</value>
   </data>
   <data name="&gt;&gt;tabInfoWMS.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tabInfoWMS.Parent" xml:space="preserve">
     <value>tabMain</value>
@@ -4433,13 +4433,40 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoHistory</value>
   </data>
   <data name="&gt;&gt;tabInfoHistory.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tabInfoHistory.Parent" xml:space="preserve">
     <value>tabMain</value>
   </data>
   <data name="&gt;&gt;tabInfoHistory.ZOrder" xml:space="preserve">
     <value>10</value>
+  </data>
+  <data name="chkForceGarbaceCollect.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkForceGarbaceCollect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>134, 38</value>
+  </data>
+  <data name="CheckEdit1.Properties.Caption" xml:space="preserve">
+    <value>Force garbace collect</value>
+  </data>
+  <data name="chkForceGarbaceCollect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 20</value>
+  </data>
+  <data name="chkForceGarbaceCollect.TabIndex" type="System.Int32, mscorlib">
+    <value>136</value>
+  </data>
+  <data name="&gt;&gt;chkForceGarbaceCollect.Name" xml:space="preserve">
+    <value>chkForceGarbaceCollect</value>
+  </data>
+  <data name="&gt;&gt;chkForceGarbaceCollect.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkForceGarbaceCollect.Parent" xml:space="preserve">
+    <value>tabInfoDebug</value>
+  </data>
+  <data name="&gt;&gt;chkForceGarbaceCollect.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="lblLogMaxSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>284, 15</value>
@@ -4460,13 +4487,13 @@ The data must then be corrected manually after the import.</value>
     <value>lblLogMaxSize</value>
   </data>
   <data name="&gt;&gt;lblLogMaxSize.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblLogMaxSize.Parent" xml:space="preserve">
     <value>tabInfoDebug</value>
   </data>
   <data name="&gt;&gt;lblLogMaxSize.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="txtLogMaxLine.EditValue" type="System.Decimal, mscorlib">
     <value>512</value>
@@ -4474,7 +4501,7 @@ The data must then be corrected manually after the import.</value>
   <data name="txtLogMaxLine.Location" type="System.Drawing.Point, System.Drawing">
     <value>372, 12</value>
   </data>
-  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="txtLogMaxLine.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
     <value>Combo</value>
   </data>
@@ -4488,13 +4515,13 @@ The data must then be corrected manually after the import.</value>
     <value>txtLogMaxLine</value>
   </data>
   <data name="&gt;&gt;txtLogMaxLine.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtLogMaxLine.Parent" xml:space="preserve">
     <value>tabInfoDebug</value>
   </data>
   <data name="&gt;&gt;txtLogMaxLine.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="chkLogOnFile.Location" type="System.Drawing.Point, System.Drawing">
     <value>134, 12</value>
@@ -4515,13 +4542,13 @@ The data must then be corrected manually after the import.</value>
     <value>chkLogOnFile</value>
   </data>
   <data name="&gt;&gt;chkLogOnFile.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkLogOnFile.Parent" xml:space="preserve">
     <value>tabInfoDebug</value>
   </data>
   <data name="&gt;&gt;chkLogOnFile.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="tabInfoDebug.Size" type="System.Drawing.Size, System.Drawing">
     <value>475, 418</value>
@@ -4533,7 +4560,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoDebug</value>
   </data>
   <data name="&gt;&gt;tabInfoDebug.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tabInfoDebug.Parent" xml:space="preserve">
     <value>tabMain</value>
@@ -4545,7 +4572,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabMain</value>
   </data>
   <data name="&gt;&gt;tabMain.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTab.XtraTabControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tabMain.Parent" xml:space="preserve">
     <value>$this</value>
@@ -4643,79 +4670,79 @@ The data must then be corrected manually after the import.</value>
     <value>btnMain</value>
   </data>
   <data name="&gt;&gt;btnMain.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;AccordionControlElement4.Name" xml:space="preserve">
     <value>AccordionControlElement4</value>
   </data>
   <data name="&gt;&gt;AccordionControlElement4.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;AccordionControlElement17.Name" xml:space="preserve">
     <value>AccordionControlElement17</value>
   </data>
   <data name="&gt;&gt;AccordionControlElement17.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;AccordionControlElement18.Name" xml:space="preserve">
     <value>AccordionControlElement18</value>
   </data>
   <data name="&gt;&gt;AccordionControlElement18.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;AccordionControlElement16.Name" xml:space="preserve">
     <value>AccordionControlElement16</value>
   </data>
   <data name="&gt;&gt;AccordionControlElement16.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;AccordionControlElement14.Name" xml:space="preserve">
     <value>AccordionControlElement14</value>
   </data>
   <data name="&gt;&gt;AccordionControlElement14.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnSurface.Name" xml:space="preserve">
     <value>btnSurface</value>
   </data>
   <data name="&gt;&gt;btnSurface.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;AccordionControlElement13.Name" xml:space="preserve">
     <value>AccordionControlElement13</value>
   </data>
   <data name="&gt;&gt;AccordionControlElement13.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;AccordionControlElement7.Name" xml:space="preserve">
     <value>AccordionControlElement7</value>
   </data>
   <data name="&gt;&gt;AccordionControlElement7.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;AccordionControlElement8.Name" xml:space="preserve">
     <value>AccordionControlElement8</value>
   </data>
   <data name="&gt;&gt;AccordionControlElement8.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;AccordionControlElement12.Name" xml:space="preserve">
     <value>AccordionControlElement12</value>
   </data>
   <data name="&gt;&gt;AccordionControlElement12.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;AccordionControlElement10.Name" xml:space="preserve">
     <value>AccordionControlElement10</value>
   </data>
   <data name="&gt;&gt;AccordionControlElement10.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;AccordionControlElement11.Name" xml:space="preserve">
     <value>AccordionControlElement11</value>
   </data>
   <data name="&gt;&gt;AccordionControlElement11.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraBars.Navigation.AccordionControlElement, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmSettings</value>

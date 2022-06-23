@@ -387,6 +387,10 @@ Friend Class frmMain2
             '---------------------------------------------------------
             oSurvey = New cSurvey.cSurvey
 
+            '---------------------------------------------------------
+            'added in v2 due to microsoft tips abound gc: some say this can be usefull, some no...
+            If cEditDesignEnvironment.GetSetting("debug.forcegc", False) Then Call GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced)
+
             ''template or default template...
             'Template = oTemplates.GetDefaultTemplate(Template)
             'If Not IsNothing(Template) Then
@@ -713,20 +717,24 @@ Friend Class frmMain2
                 End Using
             End If
             If Filename <> "" Then
-                If oSurvey Is Nothing Then
-                    oSurvey = New cSurvey.cSurvey
-                End If
+                'If oSurvey Is Nothing Then
+                '    oSurvey = New cSurvey.cSurvey
+                'End If
 
                 Select Case IO.Path.GetExtension(Filename).ToLower
                     Case ".crsx", ".crsz"
                         Call pResurvey(Filename)
                         Return False
                     Case Else
-                        Dim oResult As cSurvey.cActionResult = oSurvey.Check(Filename)
+                        Dim oResult As cSurvey.cActionResult = cSurvey.cSurvey.Check(Filename)
                         If oResult.Result Then
                             oCurrentDesign = Nothing
 
                             oSurvey = New cSurveyPC.cSurvey.cSurvey
+
+                            '---------------------------------------------------------
+                            'added in v2 due to microsoft tips abound gc: some say this can be usefull, some no...
+                            If cEditDesignEnvironment.GetSetting("debug.forcegc", False) Then Call GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced)
 
                             Call pToolsCreate()
 
@@ -7170,7 +7178,9 @@ Friend Class frmMain2
 
         'v2: I leave this...even if v2 is no more compiled for 32 bit
         'this was necessary to prevent strange behaviour 
-        If modMain.Is32Bit Then Call GC.Collect()
+        If modMain.Is32Bit Then
+            Call GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced)
+        End If
     End Sub
 
     Private Sub oPlanTools_OnItemPointEnd(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignTools.cEditDesignToolsEventArgs) Handles oPlanTools.OnItemPointEnd, oProfileTools.OnItemPointEnd

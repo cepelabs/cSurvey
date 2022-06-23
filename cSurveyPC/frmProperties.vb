@@ -227,6 +227,7 @@ Friend Class frmProperties
             txtPlotSplayPenWidth.Value = .DesignProperties.GetValue("PlotSplayPenWidth", 0.8)
             txtPlotSplaySelectedPenWidth.Value = .DesignProperties.GetValue("PlotSplaySelectedPenWidth", 1.2)
             cboPlotSplayPenStyle.SelectedIndex = .DesignProperties.GetValue("PlotSplayPenStyle", Design.cPen.PenStylesEnum.Dot)
+            txtPlotSplayCrossScale.Value = .DesignProperties.GetValue("PlotSplayCrossScale", 1)
 
             chkPlotCenterlineVectors.Checked = .DesignProperties.GetValue("PlotCenterlineVector", 0)
             chkPlotCenterlineForceSegmentColor.Checked = .DesignProperties.GetValue("PlotCenterlineForceColor", 0)
@@ -735,6 +736,7 @@ Friend Class frmProperties
             Call .DesignProperties.SetValue("PlotSplayPenWidth", txtPlotSplayPenWidth.Value)
             Call .DesignProperties.SetValue("PlotSplaySelectedPenWidth", txtPlotSplaySelectedPenWidth.Value)
             Call .DesignProperties.SetValue("PlotSplayPenStyle", cboPlotSplayPenStyle.SelectedIndex)
+            Call .DesignProperties.SetValue("PlotSplayCrossScale", txtPlotSplayCrossScale.Value)
 
             Call .DesignProperties.SetValue("PlotTextScaleFactor", txtPlotTextScaleFactor.Value)
             Call .DesignProperties.SetValue("PlotTextFont", txtPlotTextFont.Tag)

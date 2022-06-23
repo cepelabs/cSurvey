@@ -2599,11 +2599,12 @@ Module modPaint
     Public sSidePointSize As Single = 0.15
 
     Friend Sub PaintStationSplays(ByVal PaintOptions As cOptionsCenterline, Cache As Drawings.cDrawCache, ByVal CurrentSegment As cISegment, Segment As cISegment, StationPoint As PointF, Color As Color, TranslationMatrix As Matrix, LorUPrefix As String, RorDPrefix As String, Splays As IEnumerable(Of Calculate.Plot.cISplayProjectedData))
+        Dim sScaleFactor As Single = PaintOptions.DesignProperties.GetValue("PlotSplayCrossScale", 1)
         If PaintOptions.SplayStyle = cOptionsCenterline.SplayStyleEnum.Points OrElse PaintOptions.SplayStyle = cOptionsCenterline.SplayStyleEnum.PointsAndRays Then
             Using oPath As GraphicsPath = New GraphicsPath
                 For Each oItem As Calculate.Plot.cISplayProjectedData In Splays
                     Dim oPoint As PointF = oItem.ToPoint
-                    Call modPaint.PathAddCrossFromPoint(oPath, oPoint, sPointSize)
+                    Call modPaint.PathAddCrossFromPoint(oPath, oPoint, sPointSize * sScaleFactor)
 
                     If PaintOptions.ShowSplayText Then
                         Dim oCacheItem As Drawings.cDrawCacheItem = Cache.AddBorder(Nothing, Nothing, Nothing, PaintOptions.DrawingObjects.SplayBrush)
@@ -2614,7 +2615,7 @@ Module modPaint
                     If PaintOptions.DrawLRUD Then
                         Dim oLeftPoint As PointF = oItem.LorUPoint
                         If oLeftPoint <> oPoint Then
-                            Call modPaint.PathAddCrossFromPoint(oPath, oLeftPoint, sSidePointSize)
+                            Call modPaint.PathAddCrossFromPoint(oPath, oLeftPoint, sSidePointSize * sScaleFactor)
                             If PaintOptions.ShowSplayText Then
                                 Dim oCacheItem As Drawings.cDrawCacheItem = Cache.AddBorder(Nothing, Nothing, Nothing, PaintOptions.DrawingObjects.SplayBrush)
                                 oCacheItem.AddString(oItem.To & LorUPrefix, PaintOptions.DrawingObjects.SplayFont, oLeftPoint)
@@ -2624,7 +2625,7 @@ Module modPaint
 
                         Dim oRightPoint As PointF = oItem.RorDPoint
                         If oRightPoint <> oPoint Then
-                            Call modPaint.PathAddCrossFromPoint(oPath, oRightPoint, sSidePointSize)
+                            Call modPaint.PathAddCrossFromPoint(oPath, oRightPoint, sSidePointSize * sScaleFactor)
                             If PaintOptions.ShowSplayText Then
                                 Dim oCacheItem As Drawings.cDrawCacheItem = Cache.AddBorder(Nothing, Nothing, Nothing, PaintOptions.DrawingObjects.SplayBrush)
                                 oCacheItem.AddString(oItem.To & RorDPrefix, PaintOptions.DrawingObjects.SplayFont, oRightPoint)

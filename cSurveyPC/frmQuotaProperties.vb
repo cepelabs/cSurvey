@@ -11,12 +11,21 @@ friend Class frmQuotaProperties
         Call MyBase.Rebind(Item)
 
         Select Case Item.QuotaType
+            Case cIItemQuota.QuotaTypeEnum.Altitude
+                cboQuotaAltitudeStyle.SelectedIndex = Item.QuotaAltitudeStyle
+                cboQuotaAltitudeFill.SelectedIndex = Item.QuotaAltitudeFill
+                frmHVQuota.Visible = False
+                frmScaleQuota.Visible = False
+                frmAltQuota.Visible = True
+                frmAltQuota.Location = New Point(12, 12)
+                Me.Height = frmAltQuota.Height + frmAltQuota.Top * 2
             Case cIItemQuota.QuotaTypeEnum.Horizontal, cIItemQuota.QuotaTypeEnum.Vertical
                 cboQuotaCapDecoration.SelectedIndex = Item.QuotaCapDecoration
                 txtQuotaLeftRefPercent.Value = Item.QuotaLeftRefPercent
                 txtQuotaRightRefPercent.Value = Item.QuotaRightRefPercent
                 frmHVQuota.Visible = True
                 frmScaleQuota.Visible = False
+                frmAltQuota.Visible = False
                 frmHVQuota.Location = New Point(12, 12)
                 Me.Height = frmHVQuota.Height + frmHVQuota.Top * 2
             Case cIItemQuota.QuotaTypeEnum.HorizontalScale, cIItemQuota.QuotaTypeEnum.VerticalScale, cIItemQuota.QuotaTypeEnum.GridScale
@@ -26,37 +35,16 @@ friend Class frmQuotaProperties
                 frmHVQuota.Visible = False
                 frmScaleQuota.Visible = True
                 frmScaleQuota.Location = New Point(12, 12)
+                frmAltQuota.Visible = False
                 Me.Height = frmScaleQuota.Height + frmScaleQuota.Top * 2
         End Select
     End Sub
-
-    'Private Sub cmdOk_Click(sender As Object, e As System.EventArgs) Handles cmdOk.Click
-    '    Select Case Item.QuotaType
-    '        Case cIItemQuota.QuotaTypeEnum.Horizontal, cIItemQuota.QuotaTypeEnum.Vertical
-    '            oItem.QuotaCapDecoration = cboQuotaCapDecoration.SelectedIndex
-    '            oItem.QuotaLeftRefPercent = txtQuotaLeftRefPercent.Value
-    '            oItem.QuotaRightRefPercent = txtQuotaRightRefPercent.Value
-    '        Case cIItemQuota.QuotaTypeEnum.HorizontalScale, cIItemQuota.QuotaTypeEnum.VerticalScale, cIItemQuota.QuotaTypeEnum.GridScale
-    '            oItem.QuotaTickFrequency = txtQuotatickfrequency.Value
-    '            oItem.QuotaTickLabelFrequency = txtQuotaticklabelfrequency.Value
-    '            oItem.QuotaTickSize = txtQuotaticksize.Value
-    '    End Select
-    'End Sub
 
     Private Sub txtQuotatickfrequency_ValueChanged(sender As Object, e As EventArgs) Handles txtQuotatickfrequency.ValueChanged
         If Not DisabledObjectProperty() Then
             Me.Item.QuotaTickFrequency = txtQuotatickfrequency.Value
             Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("QuotaTickFrequency")
-            Call MyBase.MapInvalidate()
-        End If
-    End Sub
-
-    Private Sub cboQuotaCapDecoration_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboQuotaCapDecoration.SelectedIndexChanged
-        If Not DisabledObjectProperty() Then
-            Me.Item.QuotaCapDecoration = cboQuotaCapDecoration.SelectedIndex
-            Call MyBase.TakeUndoSnapshot()
-            Call MyBase.PropertyChanged("QuotaCapDecoration")
             Call MyBase.MapInvalidate()
         End If
     End Sub
@@ -93,6 +81,33 @@ friend Class frmQuotaProperties
             Me.Item.QuotaTickSize = txtQuotaticksize.Value
             Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("QuotaTickSize")
+            Call MyBase.MapInvalidate()
+        End If
+    End Sub
+
+    Private Sub cboQuotaCapDecoration_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboQuotaCapDecoration.SelectedIndexChanged
+        If Not DisabledObjectProperty() Then
+            Me.Item.QuotaCapDecoration = cboQuotaCapDecoration.SelectedIndex
+            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.PropertyChanged("QuotaCapDecoration")
+            Call MyBase.MapInvalidate()
+        End If
+    End Sub
+
+    Private Sub cboQuotaAltitudeFill_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboQuotaAltitudeFill.SelectedIndexChanged
+        If Not DisabledObjectProperty() Then
+            Me.Item.QuotaAltitudeFill = cboQuotaAltitudeFill.SelectedIndex
+            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.PropertyChanged("QuotaAltitudeFill")
+            Call MyBase.MapInvalidate()
+        End If
+    End Sub
+
+    Private Sub cboQuotaAltitudeStyle_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboQuotaAltitudeStyle.SelectedIndexChanged
+        If Not DisabledObjectProperty() Then
+            Me.Item.QuotaAltitudeStyle = cboQuotaAltitudeStyle.SelectedIndex
+            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.PropertyChanged("QuotaAltitudeStyle")
             Call MyBase.MapInvalidate()
         End If
     End Sub

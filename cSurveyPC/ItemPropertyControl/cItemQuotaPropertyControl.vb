@@ -75,7 +75,7 @@ Friend Class cItemQuotaPropertyControl
                 lblPropQuotaAlign.Enabled = False
                 lblPropQuotaRelativeTrigpoint.Enabled = False
                 txtPropQuotaRelativeTrigpoint.Properties.Buttons(0).Enabled = False
-                cmdPropQuotaOtherOptions.Enabled = False
+                cmdPropQuotaOtherOptions.Enabled = True
                 lblPropQuotaValue.Enabled = True
                 cboPropQuotaValue.Enabled = True
                 lblPropQuotaValueType.Enabled = True

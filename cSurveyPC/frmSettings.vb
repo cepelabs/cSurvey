@@ -90,12 +90,12 @@ friend Class frmSettings
             Call oReg.SetValue("debug.log.verbose", If(chkLogVerbose.Checked, 1, 0))
             Call oReg.SetValue("debug.log.writeonfile", If(chkLogOnFile.Checked, 1, 0))
             Call oReg.SetValue("debug.log.maxlinecount", txtLogMaxLine.EditValue)
+            Call oReg.SetValue("debug.forcegc", If(chkForceGarbaceCollect.Checked, 1, 0))
 
             Call oReg.SetValue("debug.autosave", If(chkAutosave.Checked, 1, 0))
             Call oReg.SetValue("debug.autosave.usehistorysettings", IIf(chkAutosaveUseHistorySettings.Checked, 1, 0))
             Call oReg.SetValue("debug.sendexception", If(chkSendException.Checked, 1, 0))
             Call oReg.SetValue("debug.checknewversion", If(chkCheckNewVersion.Checked, 1, 0))
-            'Call oReg.SetValue("debug.multithreading", If(chkMultiThreading.Checked, 1, 0))
 
             Call oReg.SetValue("clipboard.segments.extformats", pGetClipboardFormats("segments"))
             Call oReg.SetValue("clipboard.designitems.extformats", pGetClipboardFormats("designitems"))
@@ -313,13 +313,12 @@ friend Class frmSettings
             chkLogVerbose.Checked = oReg.GetValue("debug.log.verbose", 0)
             chkLogOnFile.Checked = oReg.GetValue("debug.log.writeonfile", 0)
             txtLogMaxLine.EditValue = oReg.GetValue("debug.log.maxlinecount", 512)
+            chkForceGarbaceCollect.Checked = oReg.GetValue("debug.forcegc", 0)
 
             chkAutosave.Checked = oReg.GetValue("debug.autosave", 0)
             chkAutosaveUseHistorySettings.Checked = oReg.GetValue("debug.autosave.usehistorysettings", 0)
             chkSendException.Checked = oReg.GetValue("debug.sendexception", 0)
             chkCheckNewVersion.Checked = oReg.GetValue("debug.checknewversion", 0)
-            'chkMultiThreading.Enabled = Environment.ProcessorCount > 1
-            'chkMultiThreading.Checked = oReg.GetValue("debug.multithreading", 0)
             txtMachineID.Text = oReg.GetValue("debug.machineid", "")
 
             Call pSetClipboardFormats("segments", oReg.GetValue("clipboard.segments.extformats", ""))

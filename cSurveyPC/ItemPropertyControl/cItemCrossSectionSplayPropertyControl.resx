@@ -139,7 +139,7 @@
     <value>lblPropPlanSplay</value>
   </data>
   <data name="&gt;&gt;lblPropPlanSplay.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropPlanSplay.Parent" xml:space="preserve">
     <value>$this</value>
@@ -169,7 +169,7 @@
     <value>cmdPropCrossSectionSplay</value>
   </data>
   <data name="&gt;&gt;cmdPropCrossSectionSplay.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdPropCrossSectionSplay.Parent" xml:space="preserve">
     <value>$this</value>
@@ -193,7 +193,7 @@
     <value>picPropCrossSectionProjectionSchema</value>
   </data>
   <data name="&gt;&gt;picPropCrossSectionProjectionSchema.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PictureEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PictureEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;picPropCrossSectionProjectionSchema.Parent" xml:space="preserve">
     <value>$this</value>
@@ -244,7 +244,7 @@
     <value>chkPropCrossSectionShowOnlyCutSplay</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionShowOnlyCutSplay.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionShowOnlyCutSplay.Parent" xml:space="preserve">
     <value>$this</value>
@@ -271,7 +271,7 @@
     <value>chkPropCrossSectionSplayText</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionSplayText.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionSplayText.Parent" xml:space="preserve">
     <value>$this</value>
@@ -328,7 +328,7 @@
     <value>lblPropCrossSectionSplayMaxVariationAngle</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionSplayMaxVariationAngle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionSplayMaxVariationAngle.Parent" xml:space="preserve">
     <value>$this</value>
@@ -361,7 +361,7 @@
     <value>lblPropCrossSectionSplayProjectionAngle</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionSplayProjectionAngle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionSplayProjectionAngle.Parent" xml:space="preserve">
     <value>$this</value>
@@ -448,7 +448,7 @@
     <value>lblPropCrossSectionSplayLineStyle</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionSplayLineStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionSplayLineStyle.Parent" xml:space="preserve">
     <value>$this</value>
@@ -475,7 +475,7 @@
     <value>chkPropCrossSectionShowSplayBorder</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionShowSplayBorder.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionShowSplayBorder.Parent" xml:space="preserve">
     <value>$this</value>

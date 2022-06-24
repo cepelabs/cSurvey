@@ -2620,6 +2620,14 @@ Friend Class frmMain2
             bLinkedSurveysRefreshOnLoadPrioritizeChildren = oReg.GetValue("linkedsurveys.recursiveload.prioritizechildren", "0")
             bLinkedSurveysRefreshOnLoad = oReg.GetValue("linkedsurveys.refreshonload", "0")
 
+            'Dim sQAT As String = cEditDesignEnvironment.GetSetting("qat", "")
+            'If sQAT <> "" Then
+            '    Dim oXML As XmlDocument = New XmlDocument
+            '    oXML.LoadXml(sQAT)
+            '    'in this state qat is in default state
+            '    RibbonControl.Toolbar.ItemLinks(0)
+            'End If
+
             'bugfix...to be removed in future...
             'Dim sCurrentVersion As String = "" & oReg.GetValue("currentversion", "")
             'If sCurrentVersion <> "1.04" Then
@@ -12834,6 +12842,7 @@ Friend Class frmMain2
 
         ' Add any initialization after the InitializeComponent() call.
         Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(RibbonControl, False)
+
         Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(pnlDesignProp, False)
         Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(pnl3DProp, False)
         Call DevExpress.Utils.WorkspaceManager.SetSerializationEnabled(pnlObjectSubProp, False)
@@ -15135,6 +15144,7 @@ Friend Class frmMain2
     Private oBottomDesignBar As Bar
 
     Private Sub pWorkspacesMenuAndToolbarUpdate()
+
         barDesignerItemFloat.ItemLinks.Add(btnItemsEndEdit, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
         barDesignerItemFloat.ItemLinks.Add(btnDesignSetCurrentCaveBranch, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
         barDesignerItemFloat.ItemLinks.Add(btnCut, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
@@ -18583,6 +18593,14 @@ Friend Class frmMain2
             End If
         End If
     End Function
+
+    Private Sub RibbonControl_CustomizeQatMenu(sender As Object, e As Ribbon.CustomizeQatMenuEventArgs) Handles RibbonControl.CustomizeQatMenu
+
+    End Sub
+
+    Private Sub RibbonControl_ShowCustomizationMenu(sender As Object, e As Ribbon.RibbonCustomizationMenuEventArgs) Handles RibbonControl.ShowCustomizationMenu
+
+    End Sub
 End Class
 
 

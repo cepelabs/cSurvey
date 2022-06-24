@@ -117,1267 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;cboPrintCenterlineColorMode.Name" xml:space="preserve">
-    <value>cboPrintCenterlineColorMode</value>
-  </data>
-  <data name="&gt;&gt;cboPrintCenterlineColorMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboPrintCenterlineColorMode.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;cboPrintCenterlineColorMode.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lblPrintCenterlineColorMode.Name" xml:space="preserve">
-    <value>lblPrintCenterlineColorMode</value>
-  </data>
-  <data name="&gt;&gt;lblPrintCenterlineColorMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPrintCenterlineColorMode.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;lblPrintCenterlineColorMode.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;chkPrintSplay.Name" xml:space="preserve">
-    <value>chkPrintSplay</value>
-  </data>
-  <data name="&gt;&gt;chkPrintSplay.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPrintSplay.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;chkPrintSplay.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;btnSegmentDetails.Name" xml:space="preserve">
-    <value>btnSegmentDetails</value>
-  </data>
-  <data name="&gt;&gt;btnSegmentDetails.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnSegmentDetails.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;btnSegmentDetails.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;btnDesignDetails.Name" xml:space="preserve">
-    <value>btnDesignDetails</value>
-  </data>
-  <data name="&gt;&gt;btnDesignDetails.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnDesignDetails.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;btnDesignDetails.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;chkPrintCombineColorGray.Name" xml:space="preserve">
-    <value>chkPrintCombineColorGray</value>
-  </data>
-  <data name="&gt;&gt;chkPrintCombineColorGray.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPrintCombineColorGray.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;chkPrintCombineColorGray.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;cboPrintCombineColorMode.Name" xml:space="preserve">
-    <value>cboPrintCombineColorMode</value>
-  </data>
-  <data name="&gt;&gt;cboPrintCombineColorMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboPrintCombineColorMode.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;cboPrintCombineColorMode.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;lblPrintCombineColorMode.Name" xml:space="preserve">
-    <value>lblPrintCombineColorMode</value>
-  </data>
-  <data name="&gt;&gt;lblPrintCombineColorMode.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPrintCombineColorMode.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;lblPrintCombineColorMode.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;chkPrintSketches.Name" xml:space="preserve">
-    <value>chkPrintSketches</value>
-  </data>
-  <data name="&gt;&gt;chkPrintSketches.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPrintSketches.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;chkPrintSketches.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;chkUseDrawingZOrder.Name" xml:space="preserve">
-    <value>chkUseDrawingZOrder</value>
-  </data>
-  <data name="&gt;&gt;chkUseDrawingZOrder.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkUseDrawingZOrder.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;chkUseDrawingZOrder.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;btnZOrderDetails.Name" xml:space="preserve">
-    <value>btnZOrderDetails</value>
-  </data>
-  <data name="&gt;&gt;btnZOrderDetails.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnZOrderDetails.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;btnZOrderDetails.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;chkPrintDesignAdvancedBrushes.Name" xml:space="preserve">
-    <value>chkPrintDesignAdvancedBrushes</value>
-  </data>
-  <data name="&gt;&gt;chkPrintDesignAdvancedBrushes.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPrintDesignAdvancedBrushes.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;chkPrintDesignAdvancedBrushes.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;chkTranslations.Name" xml:space="preserve">
-    <value>chkTranslations</value>
-  </data>
-  <data name="&gt;&gt;chkTranslations.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkTranslations.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;chkTranslations.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;btnTranslationsDetails.Name" xml:space="preserve">
-    <value>btnTranslationsDetails</value>
-  </data>
-  <data name="&gt;&gt;btnTranslationsDetails.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnTranslationsDetails.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;btnTranslationsDetails.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;cboPrintDesignStyle.Name" xml:space="preserve">
-    <value>cboPrintDesignStyle</value>
-  </data>
-  <data name="&gt;&gt;cboPrintDesignStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboPrintDesignStyle.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;cboPrintDesignStyle.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;chkPrintDesignStyle.Name" xml:space="preserve">
-    <value>chkPrintDesignStyle</value>
-  </data>
-  <data name="&gt;&gt;chkPrintDesignStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPrintDesignStyle.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;chkPrintDesignStyle.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;cboGPSData.Name" xml:space="preserve">
-    <value>cboGPSData</value>
-  </data>
-  <data name="&gt;&gt;cboGPSData.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboGPSData.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;cboGPSData.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;lblGPSData.Name" xml:space="preserve">
-    <value>lblGPSData</value>
-  </data>
-  <data name="&gt;&gt;lblGPSData.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblGPSData.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;lblGPSData.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;chkExportGPS.Name" xml:space="preserve">
-    <value>chkExportGPS</value>
-  </data>
-  <data name="&gt;&gt;chkExportGPS.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkExportGPS.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;chkExportGPS.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="&gt;&gt;chkPrintDesignSpecialPoint.Name" xml:space="preserve">
-    <value>chkPrintDesignSpecialPoint</value>
-  </data>
-  <data name="&gt;&gt;chkPrintDesignSpecialPoint.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPrintDesignSpecialPoint.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;chkPrintDesignSpecialPoint.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="&gt;&gt;chkPrintImages.Name" xml:space="preserve">
-    <value>chkPrintImages</value>
-  </data>
-  <data name="&gt;&gt;chkPrintImages.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPrintImages.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;chkPrintImages.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;chkPrintDesign.Name" xml:space="preserve">
-    <value>chkPrintDesign</value>
-  </data>
-  <data name="&gt;&gt;chkPrintDesign.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPrintDesign.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;chkPrintDesign.ZOrder" xml:space="preserve">
-    <value>21</value>
-  </data>
-  <data name="&gt;&gt;chkPrintCentrelineColorGray.Name" xml:space="preserve">
-    <value>chkPrintCentrelineColorGray</value>
-  </data>
-  <data name="&gt;&gt;chkPrintCentrelineColorGray.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPrintCentrelineColorGray.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;chkPrintCentrelineColorGray.ZOrder" xml:space="preserve">
-    <value>22</value>
-  </data>
-  <data name="&gt;&gt;chkPrintLRUD.Name" xml:space="preserve">
-    <value>chkPrintLRUD</value>
-  </data>
-  <data name="&gt;&gt;chkPrintLRUD.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPrintLRUD.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;chkPrintLRUD.ZOrder" xml:space="preserve">
-    <value>23</value>
-  </data>
-  <data name="&gt;&gt;chkPrintStations.Name" xml:space="preserve">
-    <value>chkPrintStations</value>
-  </data>
-  <data name="&gt;&gt;chkPrintStations.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPrintStations.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;chkPrintStations.ZOrder" xml:space="preserve">
-    <value>24</value>
-  </data>
-  <data name="&gt;&gt;chkPrintShots.Name" xml:space="preserve">
-    <value>chkPrintShots</value>
-  </data>
-  <data name="&gt;&gt;chkPrintShots.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPrintShots.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;chkPrintShots.ZOrder" xml:space="preserve">
-    <value>25</value>
-  </data>
-  <data name="&gt;&gt;chkPrintCentreline.Name" xml:space="preserve">
-    <value>chkPrintCentreline</value>
-  </data>
-  <data name="&gt;&gt;chkPrintCentreline.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPrintCentreline.Parent" xml:space="preserve">
-    <value>pnlMainOptions</value>
-  </data>
-  <data name="&gt;&gt;chkPrintCentreline.ZOrder" xml:space="preserve">
-    <value>26</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="chkPrintTrigpointText.EditValue" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkPrintTrigpointText.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="pnlMainOptions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="chkPrintTrigpointText.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pnlMainOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 577</value>
+  <data name="chkPrintTrigpointText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 83</value>
   </data>
-  <data name="pnlMainOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 418</value>
+  <data name="chkPrintTrigpointText.Properties.Caption" xml:space="preserve">
+    <value>Station label</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="pnlMainOptions.TabIndex" type="System.Int32, mscorlib">
-    <value>152</value>
+  <data name="chkPrintTrigpointText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 20</value>
   </data>
-  <data name="&gt;&gt;pnlMainOptions.Name" xml:space="preserve">
+  <data name="chkPrintTrigpointText.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;chkPrintTrigpointText.Name" xml:space="preserve">
+    <value>chkPrintTrigpointText</value>
+  </data>
+  <data name="&gt;&gt;chkPrintTrigpointText.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkPrintTrigpointText.Parent" xml:space="preserve">
     <value>pnlMainOptions</value>
   </data>
-  <data name="&gt;&gt;pnlMainOptions.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlMainOptions.Parent" xml:space="preserve">
-    <value>pnlOptions</value>
-  </data>
-  <data name="&gt;&gt;pnlMainOptions.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;chkPrintTrigpointText.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="&gt;&gt;chkPrintCompass.Name" xml:space="preserve">
-    <value>chkPrintCompass</value>
-  </data>
-  <data name="&gt;&gt;chkPrintCompass.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPrintCompass.Parent" xml:space="preserve">
-    <value>pnlCompass</value>
-  </data>
-  <data name="&gt;&gt;chkPrintCompass.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;Label4.Name" xml:space="preserve">
-    <value>Label4</value>
-  </data>
-  <data name="&gt;&gt;Label4.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;Label4.Parent" xml:space="preserve">
-    <value>pnlCompass</value>
-  </data>
-  <data name="&gt;&gt;Label4.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;cboCompassPosition.Name" xml:space="preserve">
-    <value>cboCompassPosition</value>
-  </data>
-  <data name="&gt;&gt;cboCompassPosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboCompassPosition.Parent" xml:space="preserve">
-    <value>pnlCompass</value>
-  </data>
-  <data name="&gt;&gt;cboCompassPosition.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;btnCompassDetails.Name" xml:space="preserve">
-    <value>btnCompassDetails</value>
-  </data>
-  <data name="&gt;&gt;btnCompassDetails.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnCompassDetails.Parent" xml:space="preserve">
-    <value>pnlCompass</value>
-  </data>
-  <data name="&gt;&gt;btnCompassDetails.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="pnlCompass.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="pnlCompass.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 520</value>
-  </data>
-  <data name="pnlCompass.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 57</value>
-  </data>
-  <data name="pnlCompass.TabIndex" type="System.Int32, mscorlib">
-    <value>159</value>
-  </data>
-  <data name="&gt;&gt;pnlCompass.Name" xml:space="preserve">
-    <value>pnlCompass</value>
-  </data>
-  <data name="&gt;&gt;pnlCompass.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlCompass.Parent" xml:space="preserve">
-    <value>pnlOptions</value>
-  </data>
-  <data name="&gt;&gt;pnlCompass.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;chkPrintScale.Name" xml:space="preserve">
-    <value>chkPrintScale</value>
-  </data>
-  <data name="&gt;&gt;chkPrintScale.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPrintScale.Parent" xml:space="preserve">
-    <value>pnlScale</value>
-  </data>
-  <data name="&gt;&gt;chkPrintScale.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;Label3.Name" xml:space="preserve">
-    <value>Label3</value>
-  </data>
-  <data name="&gt;&gt;Label3.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;Label3.Parent" xml:space="preserve">
-    <value>pnlScale</value>
-  </data>
-  <data name="&gt;&gt;Label3.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;cboScalePosition.Name" xml:space="preserve">
-    <value>cboScalePosition</value>
-  </data>
-  <data name="&gt;&gt;cboScalePosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboScalePosition.Parent" xml:space="preserve">
-    <value>pnlScale</value>
-  </data>
-  <data name="&gt;&gt;cboScalePosition.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;btnScaleDetails.Name" xml:space="preserve">
-    <value>btnScaleDetails</value>
-  </data>
-  <data name="&gt;&gt;btnScaleDetails.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnScaleDetails.Parent" xml:space="preserve">
-    <value>pnlScale</value>
-  </data>
-  <data name="&gt;&gt;btnScaleDetails.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="pnlScale.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="pnlScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 463</value>
-  </data>
-  <data name="pnlScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 57</value>
-  </data>
-  <data name="pnlScale.TabIndex" type="System.Int32, mscorlib">
-    <value>158</value>
-  </data>
-  <data name="&gt;&gt;pnlScale.Name" xml:space="preserve">
-    <value>pnlScale</value>
-  </data>
-  <data name="&gt;&gt;pnlScale.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlScale.Parent" xml:space="preserve">
-    <value>pnlOptions</value>
-  </data>
-  <data name="&gt;&gt;pnlScale.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;chkPrintBox.Name" xml:space="preserve">
-    <value>chkPrintBox</value>
-  </data>
-  <data name="&gt;&gt;chkPrintBox.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPrintBox.Parent" xml:space="preserve">
-    <value>pnlInformationBox</value>
-  </data>
-  <data name="&gt;&gt;chkPrintBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;Label2.Name" xml:space="preserve">
-    <value>Label2</value>
-  </data>
-  <data name="&gt;&gt;Label2.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;Label2.Parent" xml:space="preserve">
-    <value>pnlInformationBox</value>
-  </data>
-  <data name="&gt;&gt;Label2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;cboBoxPosition.Name" xml:space="preserve">
-    <value>cboBoxPosition</value>
-  </data>
-  <data name="&gt;&gt;cboBoxPosition.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboBoxPosition.Parent" xml:space="preserve">
-    <value>pnlInformationBox</value>
-  </data>
-  <data name="&gt;&gt;cboBoxPosition.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;btnInfoBoxDetails.Name" xml:space="preserve">
-    <value>btnInfoBoxDetails</value>
-  </data>
-  <data name="&gt;&gt;btnInfoBoxDetails.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;btnInfoBoxDetails.Parent" xml:space="preserve">
-    <value>pnlInformationBox</value>
-  </data>
-  <data name="&gt;&gt;btnInfoBoxDetails.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="pnlInformationBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="pnlInformationBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 406</value>
-  </data>
-  <data name="pnlInformationBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 57</value>
-  </data>
-  <data name="pnlInformationBox.TabIndex" type="System.Int32, mscorlib">
-    <value>157</value>
-  </data>
-  <data name="&gt;&gt;pnlInformationBox.Name" xml:space="preserve">
-    <value>pnlInformationBox</value>
-  </data>
-  <data name="&gt;&gt;pnlInformationBox.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlInformationBox.Parent" xml:space="preserve">
-    <value>pnlOptions</value>
-  </data>
-  <data name="&gt;&gt;pnlInformationBox.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;txtCurrentProfile.Name" xml:space="preserve">
-    <value>txtCurrentProfile</value>
-  </data>
-  <data name="&gt;&gt;txtCurrentProfile.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;txtCurrentProfile.Parent" xml:space="preserve">
-    <value>pnlProfile</value>
-  </data>
-  <data name="&gt;&gt;txtCurrentProfile.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cmdManageProfile.Name" xml:space="preserve">
-    <value>cmdManageProfile</value>
-  </data>
-  <data name="&gt;&gt;cmdManageProfile.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cmdManageProfile.Parent" xml:space="preserve">
-    <value>pnlProfile</value>
-  </data>
-  <data name="&gt;&gt;cmdManageProfile.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;lblCurrentProfile.Name" xml:space="preserve">
-    <value>lblCurrentProfile</value>
-  </data>
-  <data name="&gt;&gt;lblCurrentProfile.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblCurrentProfile.Parent" xml:space="preserve">
-    <value>pnlProfile</value>
-  </data>
-  <data name="&gt;&gt;lblCurrentProfile.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="pnlProfile.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="pnlProfile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 374</value>
-  </data>
-  <data name="pnlProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 32</value>
-  </data>
-  <data name="pnlProfile.TabIndex" type="System.Int32, mscorlib">
-    <value>156</value>
-  </data>
-  <data name="&gt;&gt;pnlProfile.Name" xml:space="preserve">
-    <value>pnlProfile</value>
-  </data>
-  <data name="&gt;&gt;pnlProfile.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlProfile.Parent" xml:space="preserve">
-    <value>pnlOptions</value>
-  </data>
-  <data name="&gt;&gt;pnlProfile.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="lblScale.Appearance.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
-  </data>
-  <data name="lblScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 8</value>
-  </data>
-  <data name="lblScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 13</value>
-  </data>
-  <data name="lblScale.TabIndex" type="System.Int32, mscorlib">
-    <value>125</value>
-  </data>
-  <data name="lblScale.Text" xml:space="preserve">
-    <value>Scale:</value>
-  </data>
-  <data name="&gt;&gt;lblScale.Name" xml:space="preserve">
-    <value>lblScale</value>
-  </data>
-  <data name="&gt;&gt;lblScale.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblScale.Parent" xml:space="preserve">
-    <value>pnlScaleOptions</value>
-  </data>
-  <data name="&gt;&gt;lblScale.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="cboScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>69, 8</value>
-  </data>
-  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-  <data name="cboScale.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
-    <value>Combo</value>
-  </data>
-  <data name="cboScale.Properties.Items" xml:space="preserve">
-    <value>Automatic</value>
-  </data>
-  <data name="cboScale.Properties.Items1" xml:space="preserve">
-    <value>1:100</value>
-  </data>
-  <data name="cboScale.Properties.Items2" xml:space="preserve">
-    <value>1:200</value>
-  </data>
-  <data name="cboScale.Properties.Items3" xml:space="preserve">
-    <value>1:250</value>
-  </data>
-  <data name="cboScale.Properties.Items4" xml:space="preserve">
-    <value>1:300</value>
-  </data>
-  <data name="cboScale.Properties.Items5" xml:space="preserve">
-    <value>1:500</value>
-  </data>
-  <data name="cboScale.Properties.Items6" xml:space="preserve">
-    <value>1:1000</value>
-  </data>
-  <data name="cboScale.Properties.Items7" xml:space="preserve">
-    <value>1:2000</value>
-  </data>
-  <data name="cboScale.Properties.Items8" xml:space="preserve">
-    <value>1:5000</value>
-  </data>
-  <data name="cboScale.Properties.Items9" xml:space="preserve">
-    <value>1:10000</value>
-  </data>
-  <data name="cboScale.Properties.Items10" xml:space="preserve">
-    <value>1:25000</value>
-  </data>
-  <data name="cboScale.Properties.Items11" xml:space="preserve">
-    <value>Custom</value>
-  </data>
-  <data name="cboScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 20</value>
-  </data>
-  <data name="cboScale.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;cboScale.Name" xml:space="preserve">
-    <value>cboScale</value>
-  </data>
-  <data name="&gt;&gt;cboScale.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboScale.Parent" xml:space="preserve">
-    <value>pnlScaleOptions</value>
-  </data>
-  <data name="&gt;&gt;cboScale.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="lblScale1.Appearance.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
-  </data>
-  <data name="lblScale1.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="lblScale1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>75, 38</value>
-  </data>
-  <data name="lblScale1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>10, 13</value>
-  </data>
-  <data name="lblScale1.TabIndex" type="System.Int32, mscorlib">
-    <value>126</value>
-  </data>
-  <data name="lblScale1.Text" xml:space="preserve">
-    <value>1:</value>
-  </data>
-  <data name="&gt;&gt;lblScale1.Name" xml:space="preserve">
-    <value>lblScale1</value>
-  </data>
-  <data name="&gt;&gt;lblScale1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblScale1.Parent" xml:space="preserve">
-    <value>pnlScaleOptions</value>
-  </data>
-  <data name="&gt;&gt;lblScale1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="cmdScaleTools.Location" type="System.Drawing.Point, System.Drawing">
-    <value>202, 5</value>
-  </data>
-  <data name="cmdScaleTools.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="cmdScaleTools.TabIndex" type="System.Int32, mscorlib">
-    <value>144</value>
-  </data>
-  <data name="cmdScaleTools.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;cmdScaleTools.Name" xml:space="preserve">
-    <value>cmdScaleTools</value>
-  </data>
-  <data name="&gt;&gt;cmdScaleTools.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cmdScaleTools.Parent" xml:space="preserve">
-    <value>pnlScaleOptions</value>
-  </data>
-  <data name="&gt;&gt;cmdScaleTools.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="txtScaleManual.EditValue" type="System.Decimal, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="txtScaleManual.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="txtScaleManual.Location" type="System.Drawing.Point, System.Drawing">
-    <value>98, 36</value>
-  </data>
-  <data name="txtScaleManual.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
-    <value>Combo</value>
-  </data>
-  <data name="txtScaleManual.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 20</value>
-  </data>
-  <data name="txtScaleManual.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;txtScaleManual.Name" xml:space="preserve">
-    <value>txtScaleManual</value>
-  </data>
-  <data name="&gt;&gt;txtScaleManual.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;txtScaleManual.Parent" xml:space="preserve">
-    <value>pnlScaleOptions</value>
-  </data>
-  <data name="&gt;&gt;txtScaleManual.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="pnlScaleOptions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="pnlScaleOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 312</value>
-  </data>
-  <data name="pnlScaleOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 62</value>
-  </data>
-  <data name="pnlScaleOptions.TabIndex" type="System.Int32, mscorlib">
-    <value>154</value>
-  </data>
-  <data name="&gt;&gt;pnlScaleOptions.Name" xml:space="preserve">
-    <value>pnlScaleOptions</value>
-  </data>
-  <data name="&gt;&gt;pnlScaleOptions.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlScaleOptions.Parent" xml:space="preserve">
-    <value>pnlOptions</value>
-  </data>
-  <data name="&gt;&gt;pnlScaleOptions.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;lblImageResolutionUM.Name" xml:space="preserve">
-    <value>lblImageResolutionUM</value>
-  </data>
-  <data name="&gt;&gt;lblImageResolutionUM.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblImageResolutionUM.Parent" xml:space="preserve">
-    <value>pnlExportOptionsOther</value>
-  </data>
-  <data name="&gt;&gt;lblImageResolutionUM.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lblImageResolution.Name" xml:space="preserve">
-    <value>lblImageResolution</value>
-  </data>
-  <data name="&gt;&gt;lblImageResolution.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblImageResolution.Parent" xml:space="preserve">
-    <value>pnlExportOptionsOther</value>
-  </data>
-  <data name="&gt;&gt;lblImageResolution.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;txtImageDPI.Name" xml:space="preserve">
-    <value>txtImageDPI</value>
-  </data>
-  <data name="&gt;&gt;txtImageDPI.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtImageDPI.Parent" xml:space="preserve">
-    <value>pnlExportOptionsOther</value>
-  </data>
-  <data name="&gt;&gt;txtImageDPI.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;chkBackgroundTransparent.Name" xml:space="preserve">
-    <value>chkBackgroundTransparent</value>
-  </data>
-  <data name="&gt;&gt;chkBackgroundTransparent.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkBackgroundTransparent.Parent" xml:space="preserve">
-    <value>pnlExportOptionsOther</value>
-  </data>
-  <data name="&gt;&gt;chkBackgroundTransparent.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="pnlExportOptionsOther.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="pnlExportOptionsOther.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 260</value>
-  </data>
-  <data name="pnlExportOptionsOther.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 52</value>
-  </data>
-  <data name="pnlExportOptionsOther.TabIndex" type="System.Int32, mscorlib">
-    <value>130</value>
-  </data>
-  <data name="&gt;&gt;pnlExportOptionsOther.Name" xml:space="preserve">
-    <value>pnlExportOptionsOther</value>
-  </data>
-  <data name="&gt;&gt;pnlExportOptionsOther.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlExportOptionsOther.Parent" xml:space="preserve">
-    <value>pnlOptions</value>
-  </data>
-  <data name="&gt;&gt;pnlExportOptionsOther.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;txtImageWidth.Name" xml:space="preserve">
-    <value>txtImageWidth</value>
-  </data>
-  <data name="&gt;&gt;txtImageWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtImageWidth.Parent" xml:space="preserve">
-    <value>pnlExportOptionsSize</value>
-  </data>
-  <data name="&gt;&gt;txtImageWidth.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lblSize.Name" xml:space="preserve">
-    <value>lblSize</value>
-  </data>
-  <data name="&gt;&gt;lblSize.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblSize.Parent" xml:space="preserve">
-    <value>pnlExportOptionsSize</value>
-  </data>
-  <data name="&gt;&gt;lblSize.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;cboImageUM.Name" xml:space="preserve">
-    <value>cboImageUM</value>
-  </data>
-  <data name="&gt;&gt;cboImageUM.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboImageUM.Parent" xml:space="preserve">
-    <value>pnlExportOptionsSize</value>
-  </data>
-  <data name="&gt;&gt;cboImageUM.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;txtImageHeight.Name" xml:space="preserve">
-    <value>txtImageHeight</value>
-  </data>
-  <data name="&gt;&gt;txtImageHeight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtImageHeight.Parent" xml:space="preserve">
-    <value>pnlExportOptionsSize</value>
-  </data>
-  <data name="&gt;&gt;txtImageHeight.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="pnlExportOptionsSize.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="pnlExportOptionsSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 205</value>
-  </data>
-  <data name="pnlExportOptionsSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 55</value>
-  </data>
-  <data name="pnlExportOptionsSize.TabIndex" type="System.Int32, mscorlib">
-    <value>162</value>
-  </data>
-  <data name="&gt;&gt;pnlExportOptionsSize.Name" xml:space="preserve">
-    <value>pnlExportOptionsSize</value>
-  </data>
-  <data name="&gt;&gt;pnlExportOptionsSize.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlExportOptionsSize.Parent" xml:space="preserve">
-    <value>pnlOptions</value>
-  </data>
-  <data name="&gt;&gt;pnlExportOptionsSize.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;lblImageOrientation.Name" xml:space="preserve">
-    <value>lblImageOrientation</value>
-  </data>
-  <data name="&gt;&gt;lblImageOrientation.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblImageOrientation.Parent" xml:space="preserve">
-    <value>pnlExportOptionsPage</value>
-  </data>
-  <data name="&gt;&gt;lblImageOrientation.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;chkImageOrientationLandscape.Name" xml:space="preserve">
-    <value>chkImageOrientationLandscape</value>
-  </data>
-  <data name="&gt;&gt;chkImageOrientationLandscape.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkImageOrientationLandscape.Parent" xml:space="preserve">
-    <value>pnlExportOptionsPage</value>
-  </data>
-  <data name="&gt;&gt;chkImageOrientationLandscape.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;cmdSetImageMargins.Name" xml:space="preserve">
-    <value>cmdSetImageMargins</value>
-  </data>
-  <data name="&gt;&gt;cmdSetImageMargins.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cmdSetImageMargins.Parent" xml:space="preserve">
-    <value>pnlExportOptionsPage</value>
-  </data>
-  <data name="&gt;&gt;cmdSetImageMargins.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;chkImageOrientationPortrait.Name" xml:space="preserve">
-    <value>chkImageOrientationPortrait</value>
-  </data>
-  <data name="&gt;&gt;chkImageOrientationPortrait.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkImageOrientationPortrait.Parent" xml:space="preserve">
-    <value>pnlExportOptionsPage</value>
-  </data>
-  <data name="&gt;&gt;chkImageOrientationPortrait.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;Label1.Name" xml:space="preserve">
-    <value>Label1</value>
-  </data>
-  <data name="&gt;&gt;Label1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
-    <value>pnlExportOptionsPage</value>
-  </data>
-  <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;cboSize.Name" xml:space="preserve">
-    <value>cboSize</value>
-  </data>
-  <data name="&gt;&gt;cboSize.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ImageComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboSize.Parent" xml:space="preserve">
-    <value>pnlExportOptionsPage</value>
-  </data>
-  <data name="&gt;&gt;cboSize.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="pnlExportOptionsPage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="pnlExportOptionsPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 133</value>
-  </data>
-  <data name="pnlExportOptionsPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 72</value>
-  </data>
-  <data name="pnlExportOptionsPage.TabIndex" type="System.Int32, mscorlib">
-    <value>161</value>
-  </data>
-  <data name="&gt;&gt;pnlExportOptionsPage.Name" xml:space="preserve">
-    <value>pnlExportOptionsPage</value>
-  </data>
-  <data name="&gt;&gt;pnlExportOptionsPage.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlExportOptionsPage.Parent" xml:space="preserve">
-    <value>pnlOptions</value>
-  </data>
-  <data name="&gt;&gt;pnlExportOptionsPage.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;cboFileFormat.Name" xml:space="preserve">
-    <value>cboFileFormat</value>
-  </data>
-  <data name="&gt;&gt;cboFileFormat.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboFileFormat.Parent" xml:space="preserve">
-    <value>pnlExportOptionsFormat</value>
-  </data>
-  <data name="&gt;&gt;cboFileFormat.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;Label7.Name" xml:space="preserve">
-    <value>Label7</value>
-  </data>
-  <data name="&gt;&gt;Label7.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;Label7.Parent" xml:space="preserve">
-    <value>pnlExportOptionsFormat</value>
-  </data>
-  <data name="&gt;&gt;Label7.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="pnlExportOptionsFormat.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="pnlExportOptionsFormat.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 104</value>
-  </data>
-  <data name="pnlExportOptionsFormat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 29</value>
-  </data>
-  <data name="pnlExportOptionsFormat.TabIndex" type="System.Int32, mscorlib">
-    <value>160</value>
-  </data>
-  <data name="&gt;&gt;pnlExportOptionsFormat.Name" xml:space="preserve">
-    <value>pnlExportOptionsFormat</value>
-  </data>
-  <data name="&gt;&gt;pnlExportOptionsFormat.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlExportOptionsFormat.Parent" xml:space="preserve">
-    <value>pnlOptions</value>
-  </data>
-  <data name="&gt;&gt;pnlExportOptionsFormat.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;cboPageFormat.Name" xml:space="preserve">
-    <value>cboPageFormat</value>
-  </data>
-  <data name="&gt;&gt;cboPageFormat.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ImageComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboPageFormat.Parent" xml:space="preserve">
-    <value>pnlPrintOptions</value>
-  </data>
-  <data name="&gt;&gt;cboPageFormat.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;LabelControl1.Name" xml:space="preserve">
-    <value>LabelControl1</value>
-  </data>
-  <data name="&gt;&gt;LabelControl1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;LabelControl1.Parent" xml:space="preserve">
-    <value>pnlPrintOptions</value>
-  </data>
-  <data name="&gt;&gt;LabelControl1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;chkPageHorizontal.Name" xml:space="preserve">
-    <value>chkPageHorizontal</value>
-  </data>
-  <data name="&gt;&gt;chkPageHorizontal.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPageHorizontal.Parent" xml:space="preserve">
-    <value>pnlPrintOptions</value>
-  </data>
-  <data name="&gt;&gt;chkPageHorizontal.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;chkPageVertical.Name" xml:space="preserve">
-    <value>chkPageVertical</value>
-  </data>
-  <data name="&gt;&gt;chkPageVertical.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;chkPageVertical.Parent" xml:space="preserve">
-    <value>pnlPrintOptions</value>
-  </data>
-  <data name="&gt;&gt;chkPageVertical.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;cmdSetMargins.Name" xml:space="preserve">
-    <value>cmdSetMargins</value>
-  </data>
-  <data name="&gt;&gt;cmdSetMargins.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cmdSetMargins.Parent" xml:space="preserve">
-    <value>pnlPrintOptions</value>
-  </data>
-  <data name="&gt;&gt;cmdSetMargins.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;cboPrinter.Name" xml:space="preserve">
-    <value>cboPrinter</value>
-  </data>
-  <data name="&gt;&gt;cboPrinter.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboPrinter.Parent" xml:space="preserve">
-    <value>pnlPrintOptions</value>
-  </data>
-  <data name="&gt;&gt;cboPrinter.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;lblPrinter.Name" xml:space="preserve">
-    <value>lblPrinter</value>
-  </data>
-  <data name="&gt;&gt;lblPrinter.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPrinter.Parent" xml:space="preserve">
-    <value>pnlPrintOptions</value>
-  </data>
-  <data name="&gt;&gt;lblPrinter.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;lblPageFormat.Name" xml:space="preserve">
-    <value>lblPageFormat</value>
-  </data>
-  <data name="&gt;&gt;lblPageFormat.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblPageFormat.Parent" xml:space="preserve">
-    <value>pnlPrintOptions</value>
-  </data>
-  <data name="&gt;&gt;lblPageFormat.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="pnlPrintOptions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="pnlPrintOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 2</value>
-  </data>
-  <data name="pnlPrintOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 102</value>
-  </data>
-  <data name="pnlPrintOptions.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;pnlPrintOptions.Name" xml:space="preserve">
-    <value>pnlPrintOptions</value>
-  </data>
-  <data name="&gt;&gt;pnlPrintOptions.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlPrintOptions.Parent" xml:space="preserve">
-    <value>pnlOptions</value>
-  </data>
-  <data name="&gt;&gt;pnlPrintOptions.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="pnlOptions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="pnlOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 0</value>
-  </data>
-  <data name="pnlOptions.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="pnlOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>254, 714</value>
-  </data>
-  <data name="pnlOptions.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;pnlOptions.Name" xml:space="preserve">
-    <value>pnlOptions</value>
-  </data>
-  <data name="&gt;&gt;pnlOptions.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.XtraScrollableControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlOptions.Parent" xml:space="preserve">
-    <value>pnlForm</value>
-  </data>
-  <data name="&gt;&gt;pnlOptions.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="cboPrintCenterlineColorMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 77</value>
+    <value>88, 110</value>
   </data>
+  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="cboPrintCenterlineColorMode.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
     <value>Combo</value>
   </data>
@@ -1394,7 +173,7 @@
     <value>138, 20</value>
   </data>
   <data name="cboPrintCenterlineColorMode.TabIndex" type="System.Int32, mscorlib">
-    <value>158</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;cboPrintCenterlineColorMode.Name" xml:space="preserve">
     <value>cboPrintCenterlineColorMode</value>
@@ -1406,7 +185,7 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;cboPrintCenterlineColorMode.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="lblPrintCenterlineColorMode.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -1415,13 +194,13 @@
     <value>NoControl</value>
   </data>
   <data name="lblPrintCenterlineColorMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 81</value>
+    <value>26, 114</value>
   </data>
   <data name="lblPrintCenterlineColorMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 13</value>
   </data>
   <data name="lblPrintCenterlineColorMode.TabIndex" type="System.Int32, mscorlib">
-    <value>159</value>
+    <value>7</value>
   </data>
   <data name="lblPrintCenterlineColorMode.Text" xml:space="preserve">
     <value>Color style:</value>
@@ -1436,13 +215,13 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;lblPrintCenterlineColorMode.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="chkPrintSplay.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkPrintSplay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 54</value>
+    <value>139, 57</value>
   </data>
   <data name="chkPrintSplay.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -1454,7 +233,7 @@
     <value>49, 20</value>
   </data>
   <data name="chkPrintSplay.TabIndex" type="System.Int32, mscorlib">
-    <value>157</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;chkPrintSplay.Name" xml:space="preserve">
     <value>chkPrintSplay</value>
@@ -1466,7 +245,7 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;chkPrintSplay.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="btnSegmentDetails.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1478,7 +257,7 @@
     <value>24, 24</value>
   </data>
   <data name="btnSegmentDetails.TabIndex" type="System.Int32, mscorlib">
-    <value>156</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;btnSegmentDetails.Name" xml:space="preserve">
     <value>btnSegmentDetails</value>
@@ -1490,19 +269,19 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;btnSegmentDetails.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="btnDesignDetails.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnDesignDetails.Location" type="System.Drawing.Point, System.Drawing">
-    <value>202, 126</value>
+    <value>202, 159</value>
   </data>
   <data name="btnDesignDetails.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
   </data>
   <data name="btnDesignDetails.TabIndex" type="System.Int32, mscorlib">
-    <value>155</value>
+    <value>12</value>
   </data>
   <data name="&gt;&gt;btnDesignDetails.Name" xml:space="preserve">
     <value>btnDesignDetails</value>
@@ -1514,7 +293,7 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;btnDesignDetails.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="chkPrintCombineColorGray.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1523,7 +302,7 @@
     <value>NoControl</value>
   </data>
   <data name="chkPrintCombineColorGray.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 255</value>
+    <value>88, 288</value>
   </data>
   <data name="chkPrintCombineColorGray.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -1535,7 +314,7 @@
     <value>73, 20</value>
   </data>
   <data name="chkPrintCombineColorGray.TabIndex" type="System.Int32, mscorlib">
-    <value>154</value>
+    <value>21</value>
   </data>
   <data name="&gt;&gt;chkPrintCombineColorGray.Name" xml:space="preserve">
     <value>chkPrintCombineColorGray</value>
@@ -1547,13 +326,13 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;chkPrintCombineColorGray.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="cboPrintCombineColorMode.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="cboPrintCombineColorMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 228</value>
+    <value>88, 261</value>
   </data>
   <data name="cboPrintCombineColorMode.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
     <value>Combo</value>
@@ -1571,7 +350,7 @@
     <value>138, 20</value>
   </data>
   <data name="cboPrintCombineColorMode.TabIndex" type="System.Int32, mscorlib">
-    <value>152</value>
+    <value>20</value>
   </data>
   <data name="&gt;&gt;cboPrintCombineColorMode.Name" xml:space="preserve">
     <value>cboPrintCombineColorMode</value>
@@ -1583,7 +362,7 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;cboPrintCombineColorMode.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="lblPrintCombineColorMode.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -1595,13 +374,13 @@
     <value>NoControl</value>
   </data>
   <data name="lblPrintCombineColorMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 232</value>
+    <value>26, 265</value>
   </data>
   <data name="lblPrintCombineColorMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 13</value>
   </data>
   <data name="lblPrintCombineColorMode.TabIndex" type="System.Int32, mscorlib">
-    <value>153</value>
+    <value>19</value>
   </data>
   <data name="lblPrintCombineColorMode.Text" xml:space="preserve">
     <value>Color style:</value>
@@ -1616,13 +395,13 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;lblPrintCombineColorMode.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="chkPrintSketches.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkPrintSketches.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 176</value>
+    <value>139, 209</value>
   </data>
   <data name="chkPrintSketches.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -1634,7 +413,7 @@
     <value>55, 20</value>
   </data>
   <data name="chkPrintSketches.TabIndex" type="System.Int32, mscorlib">
-    <value>151</value>
+    <value>16</value>
   </data>
   <data name="&gt;&gt;chkPrintSketches.Name" xml:space="preserve">
     <value>chkPrintSketches</value>
@@ -1646,7 +425,7 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;chkPrintSketches.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="chkUseDrawingZOrder.EditValue" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1655,7 +434,7 @@
     <value>NoControl</value>
   </data>
   <data name="chkUseDrawingZOrder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 326</value>
+    <value>9, 359</value>
   </data>
   <data name="chkUseDrawingZOrder.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -1667,7 +446,7 @@
     <value>115, 20</value>
   </data>
   <data name="chkUseDrawingZOrder.TabIndex" type="System.Int32, mscorlib">
-    <value>150</value>
+    <value>24</value>
   </data>
   <data name="&gt;&gt;chkUseDrawingZOrder.Name" xml:space="preserve">
     <value>chkUseDrawingZOrder</value>
@@ -1679,7 +458,7 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;chkUseDrawingZOrder.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="btnZOrderDetails.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1701,13 +480,13 @@
     <value>NoControl</value>
   </data>
   <data name="btnZOrderDetails.Location" type="System.Drawing.Point, System.Drawing">
-    <value>203, 321</value>
+    <value>203, 354</value>
   </data>
   <data name="btnZOrderDetails.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
   </data>
   <data name="btnZOrderDetails.TabIndex" type="System.Int32, mscorlib">
-    <value>149</value>
+    <value>25</value>
   </data>
   <data name="&gt;&gt;btnZOrderDetails.Name" xml:space="preserve">
     <value>btnZOrderDetails</value>
@@ -1719,13 +498,13 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;btnZOrderDetails.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="chkPrintDesignAdvancedBrushes.EditValue" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="chkPrintDesignAdvancedBrushes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 176</value>
+    <value>31, 209</value>
   </data>
   <data name="chkPrintDesignAdvancedBrushes.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -1737,7 +516,7 @@
     <value>97, 20</value>
   </data>
   <data name="chkPrintDesignAdvancedBrushes.TabIndex" type="System.Int32, mscorlib">
-    <value>145</value>
+    <value>15</value>
   </data>
   <data name="&gt;&gt;chkPrintDesignAdvancedBrushes.Name" xml:space="preserve">
     <value>chkPrintDesignAdvancedBrushes</value>
@@ -1749,13 +528,13 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;chkPrintDesignAdvancedBrushes.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="chkTranslations.EditValue" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="chkTranslations.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 291</value>
+    <value>9, 324</value>
   </data>
   <data name="chkTranslations.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -1767,7 +546,7 @@
     <value>81, 20</value>
   </data>
   <data name="chkTranslations.TabIndex" type="System.Int32, mscorlib">
-    <value>143</value>
+    <value>22</value>
   </data>
   <data name="&gt;&gt;chkTranslations.Name" xml:space="preserve">
     <value>chkTranslations</value>
@@ -1779,16 +558,16 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;chkTranslations.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="btnTranslationsDetails.Location" type="System.Drawing.Point, System.Drawing">
-    <value>203, 286</value>
+    <value>203, 319</value>
   </data>
   <data name="btnTranslationsDetails.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
   </data>
   <data name="btnTranslationsDetails.TabIndex" type="System.Int32, mscorlib">
-    <value>142</value>
+    <value>23</value>
   </data>
   <data name="&gt;&gt;btnTranslationsDetails.Name" xml:space="preserve">
     <value>btnTranslationsDetails</value>
@@ -1800,10 +579,10 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;btnTranslationsDetails.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="cboPrintDesignStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 201</value>
+    <value>88, 234</value>
   </data>
   <data name="cboPrintDesignStyle.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
     <value>Combo</value>
@@ -1821,7 +600,7 @@
     <value>138, 20</value>
   </data>
   <data name="cboPrintDesignStyle.TabIndex" type="System.Int32, mscorlib">
-    <value>139</value>
+    <value>18</value>
   </data>
   <data name="&gt;&gt;cboPrintDesignStyle.Name" xml:space="preserve">
     <value>cboPrintDesignStyle</value>
@@ -1833,19 +612,19 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;cboPrintDesignStyle.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="chkPrintDesignStyle.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="chkPrintDesignStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 205</value>
+    <value>26, 238</value>
   </data>
   <data name="chkPrintDesignStyle.Size" type="System.Drawing.Size, System.Drawing">
     <value>28, 13</value>
   </data>
   <data name="chkPrintDesignStyle.TabIndex" type="System.Int32, mscorlib">
-    <value>140</value>
+    <value>17</value>
   </data>
   <data name="chkPrintDesignStyle.Text" xml:space="preserve">
     <value>Style:</value>
@@ -1860,10 +639,10 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;chkPrintDesignStyle.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="cboGPSData.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 385</value>
+    <value>88, 418</value>
   </data>
   <data name="cboGPSData.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
     <value>Combo</value>
@@ -1875,7 +654,7 @@
     <value>138, 20</value>
   </data>
   <data name="cboGPSData.TabIndex" type="System.Int32, mscorlib">
-    <value>136</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;cboGPSData.Name" xml:space="preserve">
     <value>cboGPSData</value>
@@ -1887,19 +666,19 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;cboGPSData.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="lblGPSData.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
   <data name="lblGPSData.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 389</value>
+    <value>26, 422</value>
   </data>
   <data name="lblGPSData.Size" type="System.Drawing.Size, System.Drawing">
     <value>38, 13</value>
   </data>
   <data name="lblGPSData.TabIndex" type="System.Int32, mscorlib">
-    <value>137</value>
+    <value>27</value>
   </data>
   <data name="lblGPSData.Text" xml:space="preserve">
     <value>Format:</value>
@@ -1914,13 +693,13 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;lblGPSData.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="chkExportGPS.EditValue" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="chkExportGPS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 360</value>
+    <value>8, 393</value>
   </data>
   <data name="chkExportGPS.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -1932,7 +711,7 @@
     <value>144, 20</value>
   </data>
   <data name="chkExportGPS.TabIndex" type="System.Int32, mscorlib">
-    <value>135</value>
+    <value>26</value>
   </data>
   <data name="&gt;&gt;chkExportGPS.Name" xml:space="preserve">
     <value>chkExportGPS</value>
@@ -1944,13 +723,13 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;chkExportGPS.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="chkPrintDesignSpecialPoint.EditValue" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="chkPrintDesignSpecialPoint.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 154</value>
+    <value>30, 187</value>
   </data>
   <data name="chkPrintDesignSpecialPoint.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -1962,7 +741,7 @@
     <value>97, 20</value>
   </data>
   <data name="chkPrintDesignSpecialPoint.TabIndex" type="System.Int32, mscorlib">
-    <value>134</value>
+    <value>13</value>
   </data>
   <data name="&gt;&gt;chkPrintDesignSpecialPoint.Name" xml:space="preserve">
     <value>chkPrintDesignSpecialPoint</value>
@@ -1974,10 +753,10 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;chkPrintDesignSpecialPoint.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="chkPrintImages.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 154</value>
+    <value>139, 187</value>
   </data>
   <data name="chkPrintImages.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -1989,7 +768,7 @@
     <value>58, 20</value>
   </data>
   <data name="chkPrintImages.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>14</value>
   </data>
   <data name="&gt;&gt;chkPrintImages.Name" xml:space="preserve">
     <value>chkPrintImages</value>
@@ -2001,13 +780,13 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;chkPrintImages.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>21</value>
   </data>
   <data name="chkPrintDesign.EditValue" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="chkPrintDesign.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 131</value>
+    <value>9, 164</value>
   </data>
   <data name="chkPrintDesign.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -2019,7 +798,7 @@
     <value>79, 20</value>
   </data>
   <data name="chkPrintDesign.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>11</value>
   </data>
   <data name="&gt;&gt;chkPrintDesign.Name" xml:space="preserve">
     <value>chkPrintDesign</value>
@@ -2031,10 +810,10 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;chkPrintDesign.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>22</value>
   </data>
   <data name="chkPrintCentrelineColorGray.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 104</value>
+    <value>88, 137</value>
   </data>
   <data name="chkPrintCentrelineColorGray.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -2046,7 +825,7 @@
     <value>73, 20</value>
   </data>
   <data name="chkPrintCentrelineColorGray.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>10</value>
   </data>
   <data name="&gt;&gt;chkPrintCentrelineColorGray.Name" xml:space="preserve">
     <value>chkPrintCentrelineColorGray</value>
@@ -2058,7 +837,7 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;chkPrintCentrelineColorGray.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>23</value>
   </data>
   <data name="chkPrintLRUD.Location" type="System.Drawing.Point, System.Drawing">
     <value>139, 31</value>
@@ -2073,7 +852,7 @@
     <value>49, 20</value>
   </data>
   <data name="chkPrintLRUD.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;chkPrintLRUD.Name" xml:space="preserve">
     <value>chkPrintLRUD</value>
@@ -2085,13 +864,13 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;chkPrintLRUD.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>24</value>
   </data>
   <data name="chkPrintStations.EditValue" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="chkPrintStations.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 54</value>
+    <value>30, 57</value>
   </data>
   <data name="chkPrintStations.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -2103,7 +882,7 @@
     <value>62, 20</value>
   </data>
   <data name="chkPrintStations.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;chkPrintStations.Name" xml:space="preserve">
     <value>chkPrintStations</value>
@@ -2115,7 +894,7 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;chkPrintStations.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>25</value>
   </data>
   <data name="chkPrintShots.EditValue" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2136,7 +915,7 @@
     <value>50, 20</value>
   </data>
   <data name="chkPrintShots.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;chkPrintShots.Name" xml:space="preserve">
     <value>chkPrintShots</value>
@@ -2148,7 +927,7 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;chkPrintShots.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>26</value>
   </data>
   <data name="chkPrintCentreline.EditValue" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2166,7 +945,7 @@
     <value>72, 20</value>
   </data>
   <data name="chkPrintCentreline.TabIndex" type="System.Int32, mscorlib">
-    <value>104</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;chkPrintCentreline.Name" xml:space="preserve">
     <value>chkPrintCentreline</value>
@@ -2178,7 +957,31 @@
     <value>pnlMainOptions</value>
   </data>
   <data name="&gt;&gt;chkPrintCentreline.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>27</value>
+  </data>
+  <data name="pnlMainOptions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="pnlMainOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 577</value>
+  </data>
+  <data name="pnlMainOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 459</value>
+  </data>
+  <data name="pnlMainOptions.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;pnlMainOptions.Name" xml:space="preserve">
+    <value>pnlMainOptions</value>
+  </data>
+  <data name="&gt;&gt;pnlMainOptions.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlMainOptions.Parent" xml:space="preserve">
+    <value>pnlOptions</value>
+  </data>
+  <data name="&gt;&gt;pnlMainOptions.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="chkPrintCompass.EditValue" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2196,7 +999,7 @@
     <value>66, 20</value>
   </data>
   <data name="chkPrintCompass.TabIndex" type="System.Int32, mscorlib">
-    <value>111</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;chkPrintCompass.Name" xml:space="preserve">
     <value>chkPrintCompass</value>
@@ -2259,7 +1062,7 @@
     <value>138, 20</value>
   </data>
   <data name="cboCompassPosition.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;cboCompassPosition.Name" xml:space="preserve">
     <value>cboCompassPosition</value>
@@ -2280,7 +1083,7 @@
     <value>24, 24</value>
   </data>
   <data name="btnCompassDetails.TabIndex" type="System.Int32, mscorlib">
-    <value>133</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;btnCompassDetails.Name" xml:space="preserve">
     <value>btnCompassDetails</value>
@@ -2293,6 +1096,30 @@
   </data>
   <data name="&gt;&gt;btnCompassDetails.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="pnlCompass.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="pnlCompass.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 520</value>
+  </data>
+  <data name="pnlCompass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 57</value>
+  </data>
+  <data name="pnlCompass.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;pnlCompass.Name" xml:space="preserve">
+    <value>pnlCompass</value>
+  </data>
+  <data name="&gt;&gt;pnlCompass.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlCompass.Parent" xml:space="preserve">
+    <value>pnlOptions</value>
+  </data>
+  <data name="&gt;&gt;pnlCompass.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="chkPrintScale.EditValue" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2310,7 +1137,7 @@
     <value>48, 20</value>
   </data>
   <data name="chkPrintScale.TabIndex" type="System.Int32, mscorlib">
-    <value>96</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;chkPrintScale.Name" xml:space="preserve">
     <value>chkPrintScale</value>
@@ -2373,7 +1200,7 @@
     <value>138, 20</value>
   </data>
   <data name="cboScalePosition.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;cboScalePosition.Name" xml:space="preserve">
     <value>cboScalePosition</value>
@@ -2394,7 +1221,7 @@
     <value>24, 24</value>
   </data>
   <data name="btnScaleDetails.TabIndex" type="System.Int32, mscorlib">
-    <value>132</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;btnScaleDetails.Name" xml:space="preserve">
     <value>btnScaleDetails</value>
@@ -2407,6 +1234,30 @@
   </data>
   <data name="&gt;&gt;btnScaleDetails.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="pnlScale.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="pnlScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 463</value>
+  </data>
+  <data name="pnlScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 57</value>
+  </data>
+  <data name="pnlScale.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;pnlScale.Name" xml:space="preserve">
+    <value>pnlScale</value>
+  </data>
+  <data name="&gt;&gt;pnlScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlScale.Parent" xml:space="preserve">
+    <value>pnlOptions</value>
+  </data>
+  <data name="&gt;&gt;pnlScale.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="chkPrintBox.EditValue" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2424,7 +1275,7 @@
     <value>100, 20</value>
   </data>
   <data name="chkPrintBox.TabIndex" type="System.Int32, mscorlib">
-    <value>96</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;chkPrintBox.Name" xml:space="preserve">
     <value>chkPrintBox</value>
@@ -2487,7 +1338,7 @@
     <value>138, 20</value>
   </data>
   <data name="cboBoxPosition.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;cboBoxPosition.Name" xml:space="preserve">
     <value>cboBoxPosition</value>
@@ -2508,7 +1359,7 @@
     <value>24, 24</value>
   </data>
   <data name="btnInfoBoxDetails.TabIndex" type="System.Int32, mscorlib">
-    <value>130</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;btnInfoBoxDetails.Name" xml:space="preserve">
     <value>btnInfoBoxDetails</value>
@@ -2522,6 +1373,30 @@
   <data name="&gt;&gt;btnInfoBoxDetails.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="pnlInformationBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="pnlInformationBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 406</value>
+  </data>
+  <data name="pnlInformationBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 57</value>
+  </data>
+  <data name="pnlInformationBox.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;pnlInformationBox.Name" xml:space="preserve">
+    <value>pnlInformationBox</value>
+  </data>
+  <data name="&gt;&gt;pnlInformationBox.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlInformationBox.Parent" xml:space="preserve">
+    <value>pnlOptions</value>
+  </data>
+  <data name="&gt;&gt;pnlInformationBox.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="txtCurrentProfile.Location" type="System.Drawing.Point, System.Drawing">
     <value>50, 6</value>
   </data>
@@ -2529,7 +1404,7 @@
     <value>140, 20</value>
   </data>
   <data name="txtCurrentProfile.TabIndex" type="System.Int32, mscorlib">
-    <value>147</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;txtCurrentProfile.Name" xml:space="preserve">
     <value>txtCurrentProfile</value>
@@ -2590,6 +1465,225 @@
   </data>
   <data name="&gt;&gt;lblCurrentProfile.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="pnlProfile.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="pnlProfile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 374</value>
+  </data>
+  <data name="pnlProfile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 32</value>
+  </data>
+  <data name="pnlProfile.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;pnlProfile.Name" xml:space="preserve">
+    <value>pnlProfile</value>
+  </data>
+  <data name="&gt;&gt;pnlProfile.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlProfile.Parent" xml:space="preserve">
+    <value>pnlOptions</value>
+  </data>
+  <data name="&gt;&gt;pnlProfile.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lblScale.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 8</value>
+  </data>
+  <data name="lblScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 13</value>
+  </data>
+  <data name="lblScale.TabIndex" type="System.Int32, mscorlib">
+    <value>125</value>
+  </data>
+  <data name="lblScale.Text" xml:space="preserve">
+    <value>Scale:</value>
+  </data>
+  <data name="&gt;&gt;lblScale.Name" xml:space="preserve">
+    <value>lblScale</value>
+  </data>
+  <data name="&gt;&gt;lblScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblScale.Parent" xml:space="preserve">
+    <value>pnlScaleOptions</value>
+  </data>
+  <data name="&gt;&gt;lblScale.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cboScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 8</value>
+  </data>
+  <data name="cboScale.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboScale.Properties.Items" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="cboScale.Properties.Items1" xml:space="preserve">
+    <value>1:100</value>
+  </data>
+  <data name="cboScale.Properties.Items2" xml:space="preserve">
+    <value>1:200</value>
+  </data>
+  <data name="cboScale.Properties.Items3" xml:space="preserve">
+    <value>1:250</value>
+  </data>
+  <data name="cboScale.Properties.Items4" xml:space="preserve">
+    <value>1:300</value>
+  </data>
+  <data name="cboScale.Properties.Items5" xml:space="preserve">
+    <value>1:500</value>
+  </data>
+  <data name="cboScale.Properties.Items6" xml:space="preserve">
+    <value>1:1000</value>
+  </data>
+  <data name="cboScale.Properties.Items7" xml:space="preserve">
+    <value>1:2000</value>
+  </data>
+  <data name="cboScale.Properties.Items8" xml:space="preserve">
+    <value>1:5000</value>
+  </data>
+  <data name="cboScale.Properties.Items9" xml:space="preserve">
+    <value>1:10000</value>
+  </data>
+  <data name="cboScale.Properties.Items10" xml:space="preserve">
+    <value>1:25000</value>
+  </data>
+  <data name="cboScale.Properties.Items11" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="cboScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 20</value>
+  </data>
+  <data name="cboScale.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cboScale.Name" xml:space="preserve">
+    <value>cboScale</value>
+  </data>
+  <data name="&gt;&gt;cboScale.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboScale.Parent" xml:space="preserve">
+    <value>pnlScaleOptions</value>
+  </data>
+  <data name="&gt;&gt;cboScale.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblScale1.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblScale1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="lblScale1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 38</value>
+  </data>
+  <data name="lblScale1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 13</value>
+  </data>
+  <data name="lblScale1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="lblScale1.Text" xml:space="preserve">
+    <value>1:</value>
+  </data>
+  <data name="&gt;&gt;lblScale1.Name" xml:space="preserve">
+    <value>lblScale1</value>
+  </data>
+  <data name="&gt;&gt;lblScale1.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblScale1.Parent" xml:space="preserve">
+    <value>pnlScaleOptions</value>
+  </data>
+  <data name="&gt;&gt;lblScale1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cmdScaleTools.Location" type="System.Drawing.Point, System.Drawing">
+    <value>202, 5</value>
+  </data>
+  <data name="cmdScaleTools.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="cmdScaleTools.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="cmdScaleTools.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;cmdScaleTools.Name" xml:space="preserve">
+    <value>cmdScaleTools</value>
+  </data>
+  <data name="&gt;&gt;cmdScaleTools.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cmdScaleTools.Parent" xml:space="preserve">
+    <value>pnlScaleOptions</value>
+  </data>
+  <data name="&gt;&gt;cmdScaleTools.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtScaleManual.EditValue" type="System.Decimal, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="txtScaleManual.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtScaleManual.Location" type="System.Drawing.Point, System.Drawing">
+    <value>98, 36</value>
+  </data>
+  <data name="txtScaleManual.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="txtScaleManual.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 20</value>
+  </data>
+  <data name="txtScaleManual.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtScaleManual.Name" xml:space="preserve">
+    <value>txtScaleManual</value>
+  </data>
+  <data name="&gt;&gt;txtScaleManual.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SpinEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtScaleManual.Parent" xml:space="preserve">
+    <value>pnlScaleOptions</value>
+  </data>
+  <data name="&gt;&gt;txtScaleManual.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="pnlScaleOptions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="pnlScaleOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 312</value>
+  </data>
+  <data name="pnlScaleOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 62</value>
+  </data>
+  <data name="pnlScaleOptions.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;pnlScaleOptions.Name" xml:space="preserve">
+    <value>pnlScaleOptions</value>
+  </data>
+  <data name="&gt;&gt;pnlScaleOptions.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlScaleOptions.Parent" xml:space="preserve">
+    <value>pnlOptions</value>
+  </data>
+  <data name="&gt;&gt;pnlScaleOptions.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="lblImageResolutionUM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2652,7 +1746,7 @@
     <value>51, 21</value>
   </data>
   <data name="txtImageDPI.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>0</value>
   </data>
   <data name="txtImageDPI.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
@@ -2679,7 +1773,7 @@
     <value>141, 20</value>
   </data>
   <data name="chkBackgroundTransparent.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;chkBackgroundTransparent.Name" xml:space="preserve">
     <value>chkBackgroundTransparent</value>
@@ -2693,6 +1787,30 @@
   <data name="&gt;&gt;chkBackgroundTransparent.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="pnlExportOptionsOther.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="pnlExportOptionsOther.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 260</value>
+  </data>
+  <data name="pnlExportOptionsOther.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 52</value>
+  </data>
+  <data name="pnlExportOptionsOther.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsOther.Name" xml:space="preserve">
+    <value>pnlExportOptionsOther</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsOther.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsOther.Parent" xml:space="preserve">
+    <value>pnlOptions</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsOther.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
   <data name="txtImageWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>69, 3</value>
   </data>
@@ -2700,7 +1818,7 @@
     <value>70, 21</value>
   </data>
   <data name="txtImageWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="txtImageWidth.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
@@ -2763,7 +1881,7 @@
     <value>52, 20</value>
   </data>
   <data name="cboImageUM.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;cboImageUM.Name" xml:space="preserve">
     <value>cboImageUM</value>
@@ -2801,11 +1919,35 @@
   <data name="&gt;&gt;txtImageHeight.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="pnlExportOptionsSize.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="pnlExportOptionsSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 205</value>
+  </data>
+  <data name="pnlExportOptionsSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 55</value>
+  </data>
+  <data name="pnlExportOptionsSize.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsSize.Name" xml:space="preserve">
+    <value>pnlExportOptionsSize</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsSize.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsSize.Parent" xml:space="preserve">
+    <value>pnlOptions</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsSize.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <data name="lblImageOrientation.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 49</value>
   </data>
   <data name="lblImageOrientation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 13</value>
+    <value>37, 13</value>
   </data>
   <data name="lblImageOrientation.TabIndex" type="System.Int32, mscorlib">
     <value>143</value>
@@ -2832,7 +1974,7 @@
     <value>25, 25</value>
   </data>
   <data name="chkImageOrientationLandscape.TabIndex" type="System.Int32, mscorlib">
-    <value>142</value>
+    <value>3</value>
   </data>
   <data name="chkImageOrientationLandscape.ToolTip" xml:space="preserve">
     <value>Landscape</value>
@@ -2856,7 +1998,7 @@
     <value>24, 24</value>
   </data>
   <data name="cmdSetImageMargins.TabIndex" type="System.Int32, mscorlib">
-    <value>130</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;cmdSetImageMargins.Name" xml:space="preserve">
     <value>cmdSetImageMargins</value>
@@ -2877,7 +2019,7 @@
     <value>25, 25</value>
   </data>
   <data name="chkImageOrientationPortrait.TabIndex" type="System.Int32, mscorlib">
-    <value>141</value>
+    <value>2</value>
   </data>
   <data name="chkImageOrientationPortrait.ToolTip" xml:space="preserve">
     <value>Portrait</value>
@@ -2934,7 +2076,7 @@
     <value>128, 34</value>
   </data>
   <data name="cboSize.TabIndex" type="System.Int32, mscorlib">
-    <value>135</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;cboSize.Name" xml:space="preserve">
     <value>cboSize</value>
@@ -2947,6 +2089,30 @@
   </data>
   <data name="&gt;&gt;cboSize.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="pnlExportOptionsPage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="pnlExportOptionsPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 133</value>
+  </data>
+  <data name="pnlExportOptionsPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 72</value>
+  </data>
+  <data name="pnlExportOptionsPage.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsPage.Name" xml:space="preserve">
+    <value>pnlExportOptionsPage</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsPage.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsPage.Parent" xml:space="preserve">
+    <value>pnlOptions</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsPage.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <data name="cboFileFormat.Location" type="System.Drawing.Point, System.Drawing">
     <value>69, 3</value>
@@ -3014,6 +2180,30 @@
   <data name="&gt;&gt;Label7.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="pnlExportOptionsFormat.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="pnlExportOptionsFormat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 104</value>
+  </data>
+  <data name="pnlExportOptionsFormat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 29</value>
+  </data>
+  <data name="pnlExportOptionsFormat.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsFormat.Name" xml:space="preserve">
+    <value>pnlExportOptionsFormat</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsFormat.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsFormat.Parent" xml:space="preserve">
+    <value>pnlOptions</value>
+  </data>
+  <data name="&gt;&gt;pnlExportOptionsFormat.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
   <data name="cboPageFormat.Location" type="System.Drawing.Point, System.Drawing">
     <value>71, 64</value>
   </data>
@@ -3024,7 +2214,7 @@
     <value>128, 34</value>
   </data>
   <data name="cboPageFormat.TabIndex" type="System.Int32, mscorlib">
-    <value>146</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;cboPageFormat.Name" xml:space="preserve">
     <value>cboPageFormat</value>
@@ -3042,7 +2232,7 @@
     <value>9, 39</value>
   </data>
   <data name="LabelControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 13</value>
+    <value>37, 13</value>
   </data>
   <data name="LabelControl1.TabIndex" type="System.Int32, mscorlib">
     <value>145</value>
@@ -3069,7 +2259,7 @@
     <value>25, 25</value>
   </data>
   <data name="chkPageHorizontal.TabIndex" type="System.Int32, mscorlib">
-    <value>144</value>
+    <value>2</value>
   </data>
   <data name="chkPageHorizontal.ToolTip" xml:space="preserve">
     <value>Landscape</value>
@@ -3093,7 +2283,7 @@
     <value>25, 25</value>
   </data>
   <data name="chkPageVertical.TabIndex" type="System.Int32, mscorlib">
-    <value>143</value>
+    <value>1</value>
   </data>
   <data name="chkPageVertical.ToolTip" xml:space="preserve">
     <value>Portrait</value>
@@ -3117,7 +2307,7 @@
     <value>24, 24</value>
   </data>
   <data name="cmdSetMargins.TabIndex" type="System.Int32, mscorlib">
-    <value>129</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;cmdSetMargins.Name" xml:space="preserve">
     <value>cmdSetMargins</value>
@@ -3209,6 +2399,57 @@
   <data name="&gt;&gt;lblPageFormat.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="pnlPrintOptions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="pnlPrintOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 2</value>
+  </data>
+  <data name="pnlPrintOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 102</value>
+  </data>
+  <data name="pnlPrintOptions.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;pnlPrintOptions.Name" xml:space="preserve">
+    <value>pnlPrintOptions</value>
+  </data>
+  <data name="&gt;&gt;pnlPrintOptions.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlPrintOptions.Parent" xml:space="preserve">
+    <value>pnlOptions</value>
+  </data>
+  <data name="&gt;&gt;pnlPrintOptions.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="pnlOptions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="pnlOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 0</value>
+  </data>
+  <data name="pnlOptions.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="pnlOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>254, 714</value>
+  </data>
+  <data name="pnlOptions.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;pnlOptions.Name" xml:space="preserve">
+    <value>pnlOptions</value>
+  </data>
+  <data name="&gt;&gt;pnlOptions.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.XtraScrollableControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlOptions.Parent" xml:space="preserve">
+    <value>pnlForm</value>
+  </data>
+  <data name="&gt;&gt;pnlOptions.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="pPreview.Location" type="System.Drawing.Point, System.Drawing">
     <value>142, 244</value>
   </data>
@@ -3233,6 +2474,18 @@
   <metadata name="prDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>401, 17</value>
   </metadata>
+  <data name="picExport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="picExport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 110</value>
+  </data>
+  <data name="picExport.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="picExport.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="&gt;&gt;picExport.Name" xml:space="preserve">
     <value>picExport</value>
   </data>
@@ -3265,30 +2518,6 @@
   </data>
   <data name="&gt;&gt;pnlExport.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="picExport.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="picExport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 110</value>
-  </data>
-  <data name="picExport.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>Zoom</value>
-  </data>
-  <data name="picExport.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;picExport.Name" xml:space="preserve">
-    <value>picExport</value>
-  </data>
-  <data name="&gt;&gt;picExport.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;picExport.Parent" xml:space="preserve">
-    <value>pnlExport</value>
-  </data>
-  <data name="&gt;&gt;picExport.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="picMap.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3371,6 +2600,18 @@
   <data name="&gt;&gt;trkZoom.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="cDesignMessageCorner.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="cDesignMessageCorner.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 80</value>
+  </data>
+  <data name="cDesignMessageCorner.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="cDesignMessageCorner.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;cDesignMessageCorner.Name" xml:space="preserve">
     <value>cDesignMessageCorner</value>
   </data>
@@ -3407,35 +2648,11 @@
   <data name="&gt;&gt;pnlMain.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="cDesignMessageCorner.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="cDesignMessageCorner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 96</value>
-  </data>
-  <data name="cDesignMessageCorner.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="cDesignMessageCorner.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;cDesignMessageCorner.Name" xml:space="preserve">
-    <value>cDesignMessageCorner</value>
-  </data>
-  <data name="&gt;&gt;cDesignMessageCorner.Type" xml:space="preserve">
-    <value>cSurveyPC.cMessageCorner, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cDesignMessageCorner.Parent" xml:space="preserve">
-    <value>pnlMain</value>
-  </data>
-  <data name="&gt;&gt;cDesignMessageCorner.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <assembly alias="DevExpress.XtraBars.v21.2" name="DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="RibbonControl1.Categories" type="DevExpress.XtraBars.BarManagerCategory, DevExpress.XtraBars.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMS4yLCBWZXJzaW9uPTIx
-        LjIuNS4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
+        LjIuOC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
         ACZEZXZFeHByZXNzLlh0cmFCYXJzLkJhck1hbmFnZXJDYXRlZ29yeQMAAAAETmFtZQRHdWlkB1Zpc2li
         bGUBAwALU3lzdGVtLkd1aWQBAgAAAAYDAAAACFByb2ZpbGVzBPz///8LU3lzdGVtLkd1aWQLAAAAAl9h
         Al9iAl9jAl9kAl9lAl9mAl9nAl9oAl9pAl9qAl9rAAAAAAAAAAAAAAAIBwcCAgICAgICAlhpY4DrXuBP
@@ -3445,7 +2662,7 @@
   <data name="RibbonControl1.Categories1" type="DevExpress.XtraBars.BarManagerCategory, DevExpress.XtraBars.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMS4yLCBWZXJzaW9uPTIx
-        LjIuNS4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
+        LjIuOC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
         ACZEZXZFeHByZXNzLlh0cmFCYXJzLkJhck1hbmFnZXJDYXRlZ29yeQMAAAAETmFtZQRHdWlkB1Zpc2li
         bGUBAwALU3lzdGVtLkd1aWQBAgAAAAYDAAAABEZpbGUE/P///wtTeXN0ZW0uR3VpZAsAAAACX2ECX2IC
         X2MCX2QCX2UCX2YCX2cCX2gCX2kCX2oCX2sAAAAAAAAAAAAAAAgHBwICAgICAgIC8hhOJ7ZC8k+EpkRj
@@ -3455,7 +2672,7 @@
   <data name="RibbonControl1.Categories2" type="DevExpress.XtraBars.BarManagerCategory, DevExpress.XtraBars.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFCYXJzLnYyMS4yLCBWZXJzaW9uPTIx
-        LjIuNS4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
+        LjIuOC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAA
         ACZEZXZFeHByZXNzLlh0cmFCYXJzLkJhck1hbmFnZXJDYXRlZ29yeQMAAAAETmFtZQRHdWlkB1Zpc2li
         bGUBAwALU3lzdGVtLkd1aWQBAgAAAAYDAAAABFZpZXcE/P///wtTeXN0ZW0uR3VpZAsAAAACX2ECX2IC
         X2MCX2QCX2UCX2YCX2cCX2gCX2kCX2oCX2sAAAAAAAAAAAAAAAgHBwICAgICAgICJX1b1vC2+kmIR2mw
@@ -3498,9 +2715,6 @@
   <data name="btnDesignGraphicsQuality.Caption" xml:space="preserve">
     <value>Render quality</value>
   </data>
-  <data name="btnStop.Caption" xml:space="preserve">
-    <value>Stop painting</value>
-  </data>
   <data name="btnDesignGraphics0.Caption" xml:space="preserve">
     <value>Low quality</value>
   </data>
@@ -3509,6 +2723,9 @@
   </data>
   <data name="btnDesignGraphics2.Caption" xml:space="preserve">
     <value>High quality</value>
+  </data>
+  <data name="btnStop.Caption" xml:space="preserve">
+    <value>Stop painting</value>
   </data>
   <data name="btnManualRefresh.Caption" xml:space="preserve">
     <value>Manual refresh</value>
@@ -3549,6 +2766,21 @@
   <data name="RibbonControl1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="grpProfiles.Text" xml:space="preserve">
+    <value>Profiles</value>
+  </data>
+  <data name="grpFile.Text" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="grpView.Text" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="grpOptions.Text" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="RibbonPageGroup1.Text" xml:space="preserve">
+    <value>Commands</value>
+  </data>
   <data name="RibbonPage1.Text" xml:space="preserve">
     <value>General</value>
   </data>
@@ -3584,21 +2816,6 @@
   </data>
   <data name="&gt;&gt;RibbonControl1.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="grpProfiles.Text" xml:space="preserve">
-    <value>Profiles</value>
-  </data>
-  <data name="grpFile.Text" xml:space="preserve">
-    <value>File</value>
-  </data>
-  <data name="grpView.Text" xml:space="preserve">
-    <value>View</value>
-  </data>
-  <data name="grpOptions.Text" xml:space="preserve">
-    <value>Options</value>
-  </data>
-  <data name="RibbonPageGroup1.Text" xml:space="preserve">
-    <value>Commands</value>
   </data>
   <data name="grpMain.Caption" xml:space="preserve">
     <value>Profiles</value>
@@ -3663,6 +2880,18 @@
   <data name="&gt;&gt;pnlForm.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="pnlParameters.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pnlParameters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="pnlParameters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 94</value>
+  </data>
+  <data name="pnlParameters.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="&gt;&gt;pnlParameters.Name" xml:space="preserve">
     <value>pnlParameters</value>
   </data>
@@ -3694,30 +2923,6 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;flyParameters.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="pnlParameters.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="pnlParameters.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="pnlParameters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 94</value>
-  </data>
-  <data name="pnlParameters.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;pnlParameters.Name" xml:space="preserve">
-    <value>pnlParameters</value>
-  </data>
-  <data name="&gt;&gt;pnlParameters.Type" xml:space="preserve">
-    <value>DevExpress.Utils.FlyoutPanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlParameters.Parent" xml:space="preserve">
-    <value>flyParameters</value>
-  </data>
-  <data name="&gt;&gt;pnlParameters.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -3983,14 +3188,5 @@
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonForm, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="btnAdd.Text" xml:space="preserve">
-    <value>Add...</value>
-  </data>
-  <data name="btnDelete.Text" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="btnBaseRule.Text" xml:space="preserve">
-    <value>Base settings</value>
   </data>
 </root>

@@ -23,11 +23,16 @@ Friend Class frmParametersSegments
         chkSurface.Checked = (oOptions.DrawSegmentsOptions And cOptionsDesign.DrawSegmentsOptionsEnum.Surface) = cOptionsDesign.DrawSegmentsOptionsEnum.Surface
         chkDuplicate.Checked = (oOptions.DrawSegmentsOptions And cOptionsDesign.DrawSegmentsOptionsEnum.Duplicate) = cOptionsDesign.DrawSegmentsOptionsEnum.Duplicate
         cboSegmentsPaintStyle.SelectedIndex = oOptions.DrawStyle
+
+        grpsplay.enabled = Options.DrawSplay
         cboSplayStyle.SelectedIndex = oOptions.SplayStyle
+        chkShowSplayLabel.Checked = oOptions.ShowSplayText
+
+        chkShowTrigpointText.Checked = oOptions.ShowPointText
 
         If iApplyTo = cIDesign.cDesignTypeEnum.Profile Then
             grpSurface.Enabled = True
-            chkDesignSurfaceProfile.Checked = oOptions.DrawSurfaceProfile
+            chkSurfaceProfile.Checked = oOptions.DrawSurfaceProfile
         Else
             grpSurface.Enabled = False
         End If
@@ -67,9 +72,9 @@ Friend Class frmParametersSegments
         End If
     End Sub
 
-    Private Sub chkDesignSurfaceProfile_CheckedChanged(sender As Object, e As EventArgs) Handles chkDesignSurfaceProfile.CheckedChanged
+    Private Sub chkDesignSurfaceProfile_CheckedChanged(sender As Object, e As EventArgs) Handles chkSurfaceProfile.CheckedChanged
         If Not oOptions Is Nothing AndAlso Not bEventDisabled Then
-            oOptions.DrawSurfaceProfile = chkDesignSurfaceProfile.Checked
+            oOptions.DrawSurfaceProfile = chkSurfaceProfile.Checked
         End If
     End Sub
 
@@ -100,6 +105,18 @@ Friend Class frmParametersSegments
             oOptions.DrawSegmentsOptions = oOptions.DrawSegmentsOptions Or cOptionsDesign.DrawSegmentsOptionsEnum.Duplicate
         Else
             oOptions.DrawSegmentsOptions = oOptions.DrawSegmentsOptions And Not cOptionsDesign.DrawSegmentsOptionsEnum.Duplicate
+        End If
+    End Sub
+
+    Private Sub chkDesignPlotShowTrigpointText_CheckedChanged(sender As Object, e As EventArgs)
+        If Not oOptions Is Nothing AndAlso Not bEventDisabled Then
+            oOptions.ShowPointText = chkShowTrigpointText.Checked
+        End If
+    End Sub
+
+    Private Sub chkDesignPlotShowSplayLabel_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowSplayLabel.CheckedChanged
+        If Not oOptions Is Nothing AndAlso Not bEventDisabled Then
+            oOptions.ShowSplayText = chkShowSplayLabel.Checked
         End If
     End Sub
 End Class

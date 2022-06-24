@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="GroupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="grpShots.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
   <data name="chkDuplicate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -145,7 +145,7 @@
     <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkDuplicate.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
+    <value>grpShots</value>
   </data>
   <data name="&gt;&gt;chkDuplicate.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -172,36 +172,36 @@
     <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkSurface.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
+    <value>grpShots</value>
   </data>
   <data name="&gt;&gt;chkSurface.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="GroupBox1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="grpShots.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
   </data>
-  <data name="GroupBox1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="grpShots.Size" type="System.Drawing.Size, System.Drawing">
     <value>281, 91</value>
   </data>
-  <data name="GroupBox1.TabIndex" type="System.Int32, mscorlib">
+  <data name="grpShots.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
-  <data name="GroupBox1.Text" xml:space="preserve">
+  <data name="grpShots.Text" xml:space="preserve">
     <value>Show also excluded shots:</value>
   </data>
-  <data name="&gt;&gt;GroupBox1.Name" xml:space="preserve">
-    <value>GroupBox1</value>
+  <data name="&gt;&gt;grpShots.Name" xml:space="preserve">
+    <value>grpShots</value>
   </data>
-  <data name="&gt;&gt;GroupBox1.Type" xml:space="preserve">
+  <data name="&gt;&gt;grpShots.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;GroupBox1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;grpShots.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;GroupBox1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;grpShots.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="GroupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="grpLRUD.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
   <data name="cboSegmentsPaintStyle.Items" xml:space="preserve">
@@ -232,7 +232,7 @@
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cboSegmentsPaintStyle.Parent" xml:space="preserve">
-    <value>GroupBox2</value>
+    <value>grpLRUD</value>
   </data>
   <data name="&gt;&gt;cboSegmentsPaintStyle.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -262,33 +262,33 @@
     <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
-    <value>GroupBox2</value>
+    <value>grpLRUD</value>
   </data>
   <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="GroupBox2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="grpLRUD.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 109</value>
   </data>
-  <data name="GroupBox2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="grpLRUD.Size" type="System.Drawing.Size, System.Drawing">
     <value>281, 68</value>
   </data>
-  <data name="GroupBox2.TabIndex" type="System.Int32, mscorlib">
+  <data name="grpLRUD.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
   </data>
-  <data name="GroupBox2.Text" xml:space="preserve">
+  <data name="grpLRUD.Text" xml:space="preserve">
     <value>LRUD:</value>
   </data>
-  <data name="&gt;&gt;GroupBox2.Name" xml:space="preserve">
-    <value>GroupBox2</value>
+  <data name="&gt;&gt;grpLRUD.Name" xml:space="preserve">
+    <value>grpLRUD</value>
   </data>
-  <data name="&gt;&gt;GroupBox2.Type" xml:space="preserve">
+  <data name="&gt;&gt;grpLRUD.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;GroupBox2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;grpLRUD.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;GroupBox2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;grpLRUD.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="cboSplayStyle.Font" type="System.Drawing.Font, System.Drawing">
@@ -319,10 +319,10 @@
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cboSplayStyle.Parent" xml:space="preserve">
-    <value>GroupBox3</value>
+    <value>grpSplay</value>
   </data>
   <data name="&gt;&gt;cboSplayStyle.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="lblSplayStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -346,36 +346,63 @@
     <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblSplayStyle.Parent" xml:space="preserve">
-    <value>GroupBox3</value>
+    <value>grpSplay</value>
   </data>
   <data name="&gt;&gt;lblSplayStyle.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
-  <data name="GroupBox3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="grpSplay.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="GroupBox3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="chkShowSplayLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkShowSplayLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>73, 60</value>
+  </data>
+  <data name="chkShowSplayLabel.Properties.Caption" xml:space="preserve">
+    <value>Station label</value>
+  </data>
+  <data name="chkShowSplayLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 20</value>
+  </data>
+  <data name="chkShowSplayLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>144</value>
+  </data>
+  <data name="&gt;&gt;chkShowSplayLabel.Name" xml:space="preserve">
+    <value>chkShowSplayLabel</value>
+  </data>
+  <data name="&gt;&gt;chkShowSplayLabel.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkShowSplayLabel.Parent" xml:space="preserve">
+    <value>grpSplay</value>
+  </data>
+  <data name="&gt;&gt;chkShowSplayLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="grpSplay.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 183</value>
   </data>
-  <data name="GroupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 68</value>
+  <data name="grpSplay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 90</value>
   </data>
-  <data name="GroupBox3.TabIndex" type="System.Int32, mscorlib">
+  <data name="grpSplay.TabIndex" type="System.Int32, mscorlib">
     <value>112</value>
   </data>
-  <data name="GroupBox3.Text" xml:space="preserve">
+  <data name="grpSplay.Text" xml:space="preserve">
     <value>Splay:</value>
   </data>
-  <data name="&gt;&gt;GroupBox3.Name" xml:space="preserve">
-    <value>GroupBox3</value>
+  <data name="&gt;&gt;grpSplay.Name" xml:space="preserve">
+    <value>grpSplay</value>
   </data>
-  <data name="&gt;&gt;GroupBox3.Type" xml:space="preserve">
+  <data name="&gt;&gt;grpSplay.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.GroupControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;GroupBox3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;grpSplay.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;GroupBox3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;grpSplay.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="GroupBox4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -415,7 +442,7 @@
     <value>1</value>
   </data>
   <data name="grdHighlights.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 137</value>
+    <value>173, 160</value>
   </data>
   <data name="grdHighlights.TabIndex" type="System.Int32, mscorlib">
     <value>165</value>
@@ -460,10 +487,10 @@
     <value>1</value>
   </data>
   <data name="GroupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 331</value>
+    <value>12, 353</value>
   </data>
   <data name="GroupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 185</value>
+    <value>281, 208</value>
   </data>
   <data name="GroupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -483,38 +510,38 @@
   <data name="&gt;&gt;GroupBox4.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="chkDesignSurfaceProfile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="chkSurfaceProfile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="chkDesignSurfaceProfile.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="chkSurfaceProfile.Location" type="System.Drawing.Point, System.Drawing">
     <value>14, 36</value>
   </data>
-  <data name="chkDesignSurfaceProfile.Properties.Caption" xml:space="preserve">
+  <data name="chkSurfaceProfile.Properties.Caption" xml:space="preserve">
     <value>Surface profile</value>
   </data>
-  <data name="chkDesignSurfaceProfile.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="chkSurfaceProfile.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 20</value>
   </data>
-  <data name="chkDesignSurfaceProfile.TabIndex" type="System.Int32, mscorlib">
+  <data name="chkSurfaceProfile.TabIndex" type="System.Int32, mscorlib">
     <value>160</value>
   </data>
-  <data name="&gt;&gt;chkDesignSurfaceProfile.Name" xml:space="preserve">
-    <value>chkDesignSurfaceProfile</value>
+  <data name="&gt;&gt;chkSurfaceProfile.Name" xml:space="preserve">
+    <value>chkSurfaceProfile</value>
   </data>
-  <data name="&gt;&gt;chkDesignSurfaceProfile.Type" xml:space="preserve">
+  <data name="&gt;&gt;chkSurfaceProfile.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;chkDesignSurfaceProfile.Parent" xml:space="preserve">
+  <data name="&gt;&gt;chkSurfaceProfile.Parent" xml:space="preserve">
     <value>grpSurface</value>
   </data>
-  <data name="&gt;&gt;chkDesignSurfaceProfile.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;chkSurfaceProfile.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="grpSurface.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
   <data name="grpSurface.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 257</value>
+    <value>12, 279</value>
   </data>
   <data name="grpSurface.Size" type="System.Drawing.Size, System.Drawing">
     <value>281, 68</value>
@@ -544,7 +571,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 528</value>
+    <value>308, 571</value>
   </data>
   <data name="&gt;&gt;grdViewHighlights.Name" xml:space="preserve">
     <value>grdViewHighlights</value>

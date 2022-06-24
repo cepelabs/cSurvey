@@ -772,6 +772,7 @@ Namespace cSurvey.Design
             End Set
         End Property
 
+        'TODO: is redundant?
         Public Overridable Property DrawPointNames() As Boolean
             Get
                 Return bDrawPointNames

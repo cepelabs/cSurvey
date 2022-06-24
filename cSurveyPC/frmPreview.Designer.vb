@@ -26,6 +26,7 @@ Partial Class frmPreview
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPreview))
         Me.pnlOptions = New DevExpress.XtraEditors.XtraScrollableControl()
         Me.pnlMainOptions = New DevExpress.XtraEditors.PanelControl()
+        Me.chkPrintTrigpointText = New DevExpress.XtraEditors.CheckEdit()
         Me.cboPrintCenterlineColorMode = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.lblPrintCenterlineColorMode = New DevExpress.XtraEditors.LabelControl()
         Me.chkPrintSplay = New DevExpress.XtraEditors.CheckEdit()
@@ -165,6 +166,7 @@ Partial Class frmPreview
         Me.pnlOptions.SuspendLayout()
         CType(Me.pnlMainOptions, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlMainOptions.SuspendLayout()
+        CType(Me.chkPrintTrigpointText.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboPrintCenterlineColorMode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkPrintSplay.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkPrintCombineColorGray.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -262,6 +264,7 @@ Partial Class frmPreview
         'pnlMainOptions
         '
         Me.pnlMainOptions.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlMainOptions.Controls.Add(Me.chkPrintTrigpointText)
         Me.pnlMainOptions.Controls.Add(Me.cboPrintCenterlineColorMode)
         Me.pnlMainOptions.Controls.Add(Me.lblPrintCenterlineColorMode)
         Me.pnlMainOptions.Controls.Add(Me.chkPrintSplay)
@@ -291,6 +294,13 @@ Partial Class frmPreview
         Me.pnlMainOptions.Controls.Add(Me.chkPrintCentreline)
         resources.ApplyResources(Me.pnlMainOptions, "pnlMainOptions")
         Me.pnlMainOptions.Name = "pnlMainOptions"
+        '
+        'chkPrintTrigpointText
+        '
+        resources.ApplyResources(Me.chkPrintTrigpointText, "chkPrintTrigpointText")
+        Me.chkPrintTrigpointText.Name = "chkPrintTrigpointText"
+        Me.chkPrintTrigpointText.Properties.AutoWidth = True
+        Me.chkPrintTrigpointText.Properties.Caption = resources.GetString("chkPrintTrigpointText.Properties.Caption")
         '
         'cboPrintCenterlineColorMode
         '
@@ -1435,6 +1445,7 @@ Partial Class frmPreview
         CType(Me.pnlMainOptions, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlMainOptions.ResumeLayout(False)
         Me.pnlMainOptions.PerformLayout()
+        CType(Me.chkPrintTrigpointText.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboPrintCenterlineColorMode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkPrintSplay.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkPrintCombineColorGray.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1526,7 +1537,7 @@ Partial Class frmPreview
 
     End Sub
     Friend WithEvents pnlOptions As DevExpress.XtraEditors.XtraScrollableControl
-    Friend WithEvents pPreview As cprintcontroller.PrintPreviewControl 'System.Windows.Forms.PrintPreviewControl 
+    Friend WithEvents pPreview As cPrintController.PrintPreviewControl 'System.Windows.Forms.PrintPreviewControl 
     Friend WithEvents chkPrintBox As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents cboScalePosition As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents Label3 As DevExpress.XtraEditors.LabelControl
@@ -1663,4 +1674,5 @@ Partial Class frmPreview
     Friend WithEvents btnProfileImportFromFile As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnProfileExportToFile As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents mnuProfiles As DevExpress.XtraBars.PopupMenu
+    Friend WithEvents chkPrintTrigpointText As DevExpress.XtraEditors.CheckEdit
 End Class

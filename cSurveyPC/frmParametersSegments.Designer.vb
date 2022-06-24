@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmParametersSegments
     Inherits DevExpress.XtraEditors.XtraUserControl
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,18 +20,19 @@ Partial Class frmParametersSegments
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmParametersSegments))
-        Me.GroupBox1 = New DevExpress.XtraEditors.GroupControl()
+        Me.grpShots = New DevExpress.XtraEditors.GroupControl()
         Me.chkDuplicate = New DevExpress.XtraEditors.CheckEdit()
         Me.chkSurface = New DevExpress.XtraEditors.CheckEdit()
-        Me.GroupBox2 = New DevExpress.XtraEditors.GroupControl()
+        Me.grpLRUD = New DevExpress.XtraEditors.GroupControl()
         Me.cboSegmentsPaintStyle = New System.Windows.Forms.ComboBox()
         Me.Label1 = New DevExpress.XtraEditors.LabelControl()
         Me.cboSplayStyle = New System.Windows.Forms.ComboBox()
         Me.lblSplayStyle = New DevExpress.XtraEditors.LabelControl()
-        Me.GroupBox3 = New DevExpress.XtraEditors.GroupControl()
+        Me.grpSplay = New DevExpress.XtraEditors.GroupControl()
+        Me.chkShowSplayLabel = New DevExpress.XtraEditors.CheckEdit()
         Me.GroupBox4 = New DevExpress.XtraEditors.GroupControl()
         Me.grdHighlights = New DevExpress.XtraGrid.GridControl()
         Me.grdViewHighlights = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -39,33 +40,34 @@ Partial Class frmParametersSegments
         Me.chkHLSelected = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.colHLName = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.chkShowHLs = New DevExpress.XtraEditors.CheckEdit()
-        Me.chkDesignSurfaceProfile = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkSurfaceProfile = New DevExpress.XtraEditors.CheckEdit()
         Me.grpSurface = New DevExpress.XtraEditors.GroupControl()
-        CType(Me.GroupBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
+        CType(Me.grpShots, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.grpShots.SuspendLayout()
         CType(Me.chkDuplicate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkSurface.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox2.SuspendLayout()
-        CType(Me.GroupBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox3.SuspendLayout()
+        CType(Me.grpLRUD, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.grpLRUD.SuspendLayout()
+        CType(Me.grpSplay, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.grpSplay.SuspendLayout()
+        CType(Me.chkShowSplayLabel.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
         CType(Me.grdHighlights, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdViewHighlights, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkHLSelected, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkShowHLs.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkDesignSurfaceProfile.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkSurfaceProfile.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grpSurface, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpSurface.SuspendLayout()
         Me.SuspendLayout()
         '
-        'GroupBox1
+        'grpShots
         '
-        resources.ApplyResources(Me.GroupBox1, "GroupBox1")
-        Me.GroupBox1.Controls.Add(Me.chkDuplicate)
-        Me.GroupBox1.Controls.Add(Me.chkSurface)
-        Me.GroupBox1.Name = "GroupBox1"
+        resources.ApplyResources(Me.grpShots, "grpShots")
+        Me.grpShots.Controls.Add(Me.chkDuplicate)
+        Me.grpShots.Controls.Add(Me.chkSurface)
+        Me.grpShots.Name = "grpShots"
         '
         'chkDuplicate
         '
@@ -81,12 +83,12 @@ Partial Class frmParametersSegments
         Me.chkSurface.Properties.AutoWidth = True
         Me.chkSurface.Properties.Caption = resources.GetString("chkSurface.Properties.Caption")
         '
-        'GroupBox2
+        'grpLRUD
         '
-        resources.ApplyResources(Me.GroupBox2, "GroupBox2")
-        Me.GroupBox2.Controls.Add(Me.cboSegmentsPaintStyle)
-        Me.GroupBox2.Controls.Add(Me.Label1)
-        Me.GroupBox2.Name = "GroupBox2"
+        resources.ApplyResources(Me.grpLRUD, "grpLRUD")
+        Me.grpLRUD.Controls.Add(Me.cboSegmentsPaintStyle)
+        Me.grpLRUD.Controls.Add(Me.Label1)
+        Me.grpLRUD.Name = "grpLRUD"
         '
         'cboSegmentsPaintStyle
         '
@@ -115,12 +117,20 @@ Partial Class frmParametersSegments
         resources.ApplyResources(Me.lblSplayStyle, "lblSplayStyle")
         Me.lblSplayStyle.Name = "lblSplayStyle"
         '
-        'GroupBox3
+        'grpSplay
         '
-        resources.ApplyResources(Me.GroupBox3, "GroupBox3")
-        Me.GroupBox3.Controls.Add(Me.cboSplayStyle)
-        Me.GroupBox3.Controls.Add(Me.lblSplayStyle)
-        Me.GroupBox3.Name = "GroupBox3"
+        resources.ApplyResources(Me.grpSplay, "grpSplay")
+        Me.grpSplay.Controls.Add(Me.chkShowSplayLabel)
+        Me.grpSplay.Controls.Add(Me.cboSplayStyle)
+        Me.grpSplay.Controls.Add(Me.lblSplayStyle)
+        Me.grpSplay.Name = "grpSplay"
+        '
+        'chkShowSplayLabel
+        '
+        resources.ApplyResources(Me.chkShowSplayLabel, "chkShowSplayLabel")
+        Me.chkShowSplayLabel.Name = "chkShowSplayLabel"
+        Me.chkShowSplayLabel.Properties.AutoWidth = True
+        Me.chkShowSplayLabel.Properties.Caption = resources.GetString("chkShowSplayLabel.Properties.Caption")
         '
         'GroupBox4
         '
@@ -177,17 +187,17 @@ Partial Class frmParametersSegments
         Me.chkShowHLs.Properties.AutoWidth = True
         Me.chkShowHLs.Properties.Caption = resources.GetString("chkShowHLs.Properties.Caption")
         '
-        'chkDesignSurfaceProfile
+        'chkSurfaceProfile
         '
-        resources.ApplyResources(Me.chkDesignSurfaceProfile, "chkDesignSurfaceProfile")
-        Me.chkDesignSurfaceProfile.Name = "chkDesignSurfaceProfile"
-        Me.chkDesignSurfaceProfile.Properties.AutoWidth = True
-        Me.chkDesignSurfaceProfile.Properties.Caption = resources.GetString("chkDesignSurfaceProfile.Properties.Caption")
+        resources.ApplyResources(Me.chkSurfaceProfile, "chkSurfaceProfile")
+        Me.chkSurfaceProfile.Name = "chkSurfaceProfile"
+        Me.chkSurfaceProfile.Properties.AutoWidth = True
+        Me.chkSurfaceProfile.Properties.Caption = resources.GetString("chkSurfaceProfile.Properties.Caption")
         '
         'grpSurface
         '
         resources.ApplyResources(Me.grpSurface, "grpSurface")
-        Me.grpSurface.Controls.Add(Me.chkDesignSurfaceProfile)
+        Me.grpSurface.Controls.Add(Me.chkSurfaceProfile)
         Me.grpSurface.Name = "grpSurface"
         '
         'frmParametersSegments
@@ -196,21 +206,22 @@ Partial Class frmParametersSegments
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.Controls.Add(Me.grpSurface)
         Me.Controls.Add(Me.GroupBox4)
-        Me.Controls.Add(Me.GroupBox3)
-        Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.grpSplay)
+        Me.Controls.Add(Me.grpLRUD)
+        Me.Controls.Add(Me.grpShots)
         Me.Name = "frmParametersSegments"
-        CType(Me.GroupBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
+        CType(Me.grpShots, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.grpShots.ResumeLayout(False)
+        Me.grpShots.PerformLayout()
         CType(Me.chkDuplicate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkSurface.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
-        CType(Me.GroupBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
+        CType(Me.grpLRUD, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.grpLRUD.ResumeLayout(False)
+        Me.grpLRUD.PerformLayout()
+        CType(Me.grpSplay, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.grpSplay.ResumeLayout(False)
+        Me.grpSplay.PerformLayout()
+        CType(Me.chkShowSplayLabel.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
@@ -218,29 +229,30 @@ Partial Class frmParametersSegments
         CType(Me.grdViewHighlights, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkHLSelected, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkShowHLs.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkDesignSurfaceProfile.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkSurfaceProfile.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grpSurface, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpSurface.ResumeLayout(False)
         Me.grpSurface.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents GroupBox1 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents grpShots As DevExpress.XtraEditors.GroupControl
     Friend WithEvents chkDuplicate As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents chkSurface As DevExpress.XtraEditors.CheckEdit
-    Friend WithEvents GroupBox2 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents grpLRUD As DevExpress.XtraEditors.GroupControl
     Friend WithEvents cboSegmentsPaintStyle As System.Windows.Forms.ComboBox
     Friend WithEvents Label1 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cboSplayStyle As System.Windows.Forms.ComboBox
     Friend WithEvents lblSplayStyle As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents GroupBox3 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents grpSplay As DevExpress.XtraEditors.GroupControl
     Friend WithEvents GroupBox4 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents chkShowHLs As DevExpress.XtraEditors.CheckEdit
-    Friend WithEvents chkDesignSurfaceProfile As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkSurfaceProfile As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents grdHighlights As DevExpress.XtraGrid.GridControl
     Friend WithEvents grdViewHighlights As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents colHLSelected As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents chkHLSelected As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
     Friend WithEvents colHLName As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents grpSurface As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents chkShowSplayLabel As DevExpress.XtraEditors.CheckEdit
 End Class

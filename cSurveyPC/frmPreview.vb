@@ -430,7 +430,8 @@ Friend Class frmPreview
                     .DrawPlot = chkPrintCentreline.Checked
                     .DrawSegments = chkPrintShots.Checked
                     .DrawPoints = chkPrintStations.Checked
-                    .DrawPointNames = chkPrintStations.Checked
+                    '.DrawPointNames = chkPrintStations.Checked
+                    .ShowPointText = chkPrintTrigpointText.Checked
                     .DrawLRUD = chkPrintLRUD.Checked
                     .DrawSplay = chkPrintSplay.Checked
 
@@ -487,10 +488,10 @@ Friend Class frmPreview
                     .DrawPlot = chkPrintCentreline.Checked
                     .DrawSegments = chkPrintShots.Checked
                     .DrawPoints = chkPrintStations.Checked
-                    .DrawPointNames = chkPrintStations.Checked
+                    '.DrawPointNames = chkPrintStations.Checked
+                    .ShowPointText = chkPrintTrigpointText.Checked
                     .DrawLRUD = chkPrintLRUD.Checked
                     .DrawSplay = chkPrintSplay.Checked
-
 
                     .DesignStyle = cboPrintDesignStyle.SelectedIndex
                     .CenterlineColorGray = chkPrintCentrelineColorGray.Checked
@@ -536,7 +537,8 @@ Friend Class frmPreview
                     .DrawPlot = chkPrintCentreline.Checked
                     .DrawSegments = chkPrintShots.Checked
                     .DrawPoints = chkPrintStations.Checked
-                    .DrawPointNames = chkPrintStations.Checked
+                    '.DrawPointNames = chkPrintStations.Checked
+                    .ShowPointText = chkPrintTrigpointText.Checked
                     .DrawLRUD = chkPrintLRUD.Checked
                     .DrawSplay = chkPrintSplay.Checked
 
@@ -701,7 +703,8 @@ Friend Class frmPreview
                 chkPrintCentreline.Checked = .DrawPlot
                 chkPrintShots.Checked = .DrawSegments
                 chkPrintStations.Checked = .DrawPoints
-                chkPrintStations.Checked = .DrawPointNames
+                'chkPrintStations.Checked = .DrawPointNames
+                chkPrintTrigpointText.Checked = .ShowPointText
                 chkPrintLRUD.Checked = .DrawLRUD
                 chkPrintSplay.Checked = .DrawSplay
 
@@ -786,7 +789,8 @@ Friend Class frmPreview
                 chkPrintCentreline.Checked = .DrawPlot
                 chkPrintShots.Checked = .DrawSegments
                 chkPrintStations.Checked = .DrawPoints
-                chkPrintStations.Checked = .DrawPointNames
+                'chkPrintStations.Checked = .DrawPointNames
+                chkPrintTrigpointText.Checked = .ShowPointText
                 chkPrintLRUD.Checked = .DrawLRUD
                 chkPrintSplay.Checked = .DrawSplay
 
@@ -862,7 +866,8 @@ Friend Class frmPreview
                 chkPrintCentreline.Checked = .DrawPlot
                 chkPrintShots.Checked = .DrawSegments
                 chkPrintStations.Checked = .DrawPoints
-                chkPrintStations.Checked = .DrawPointNames
+                'chkPrintStations.Checked = .DrawPointNames
+                chkPrintTrigpointText.Checked = .ShowPointText
                 chkPrintLRUD.Checked = .DrawLRUD
                 chkPrintSplay.Checked = .DrawSplay
 
@@ -1294,6 +1299,7 @@ Friend Class frmPreview
         chkPrintSplay.Enabled = bEnabled
         chkPrintCentrelineColorGray.Enabled = bEnabled
         chkPrintDesignSpecialPoint.Enabled = Not bEnabled
+        chkPrintTrigpointText.Enabled = bEnabled
 
         lblPrintCenterlineColorMode.Enabled = bEnabled
         cboPrintCenterlineColorMode.Enabled = bEnabled
@@ -3397,4 +3403,8 @@ Friend Class frmPreview
             End If
         End If
     End Function
+
+    Private Sub chkShowTrigpointText_CheckedChanged(sender As Object, e As EventArgs) Handles chkPrintTrigpointText.CheckedChanged
+        Call pRefresh()
+    End Sub
 End Class

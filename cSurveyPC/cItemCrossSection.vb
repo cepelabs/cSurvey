@@ -652,8 +652,6 @@ Namespace cSurvey.Design.Items
                                     For Each oSplaySegment As cSegment In oSplaySegments
                                         If (bShowOnlyCutSplay AndAlso oSplaySegment.Cut) OrElse (Not bShowOnlyCutSplay) Then
                                             Dim sSplayBearing As Single = oSplaySegment.Data.Data.Bearing
-                                            'dim oSplayVector As Windows.Media.Media3D.Vector3D = New Windows.Media.Media3D.Point3D(oSplaySegment.GetToTrigPoint.Data.X, oSplaySegment.GetToTrigPoint.Data.Y, oSplaySegment.GetToTrigPoint.Data.Z) - New Windows.Media.Media3D.Point3D(oSplaySegment.GetFromTrigPoint.Data.X, oSplaySegment.GetFromTrigPoint.Data.Y, oSplaySegment.GetFromTrigPoint.Data.Z)
-                                            'Dim oPlanVector As Windows.Media.Media3D.Vector3D = New Windows.Media.Media3D.Point3D(oSplaySegment.GetToTrigPoint.Data.X, oSplaySegment.GetToTrigPoint.Data.Y, oSplaySegment.GetToTrigPoint.Data.Z) - New Windows.Media.Media3D.Point3D(oSplaySegment.GetFromTrigPoint.Data.X, oSplaySegment.GetFromTrigPoint.Data.Y, oSplaySegment.GetFromTrigPoint.Data.Z)
                                             If modPaint.IsAngleBetween(sSplayBearing, sPlaneDirection - sSplayBorderMaxAngleVariation, sPlaneDirection + sSplayBorderMaxAngleVariation) OrElse modPaint.IsAngleBetween(sSplayBearing, sPlainDirectionInverted - sSplayBorderMaxAngleVariation, sPlainDirectionInverted + sSplayBorderMaxAngleVariation) Then
                                                 Dim sDeltaAngle As Single = modPaint.NormalizeAngle(oSplaySegment.Data.Data.Bearing - sPlaneDirection)
                                                 Dim oSegmentCateti As SizeF = modPaint.Trigo(oSplaySegment.Data.Data.Distance, oSplaySegment.Data.Data.Inclination)
@@ -678,18 +676,19 @@ Namespace cSurvey.Design.Items
                                     If oPoints.Count > 0 Then
                                         Dim sPointSize As Single = 0.3
 
-                                        Using oCrossPath As GraphicsPath = New GraphicsPath
-                                            For Each oPoint As PointF In oPoints
-                                                Call modPaint.PathAddCrossFromPoint(oCrossPath, oPoint, sPointSize)
-                                            Next
-                                            oCacheItem = oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
-                                            Dim oColor As Color = oSurvey.Properties.CaveInfos.GetColor(oSegment, oDrawingObject.SplayPenColor)
-                                            oDrawingObject.SplayPen.Color = oColor
-                                            Call oCacheItem.SetPen(oDrawingObject.SplayPen)
-                                            Call oCacheItem.SetWireframePen(oDrawingObject.SplayPen)
-                                            Call oCacheItem.AddPath(oCrossPath)
-                                        End Using
-
+                                        If iSplayBorderLineStyle = cOptionsCenterline.SplayStyleEnum.Points OrElse iSplayBorderLineStyle = cOptionsCenterline.SplayStyleEnum.PointsAndRays Then
+                                            Using oCrossPath As GraphicsPath = New GraphicsPath
+                                                For Each oPoint As PointF In oPoints
+                                                    Call modPaint.PathAddCrossFromPoint(oCrossPath, oPoint, sPointSize)
+                                                Next
+                                                oCacheItem = oCache.Add(cDrawCacheItem.cDrawCacheItemType.Border)
+                                                Dim oColor As Color = oSurvey.Properties.CaveInfos.GetColor(oSegment, oDrawingObject.SplayPenColor)
+                                                oDrawingObject.SplayPen.Color = oColor
+                                                Call oCacheItem.SetPen(oDrawingObject.SplayPen)
+                                                Call oCacheItem.SetWireframePen(oDrawingObject.SplayPen)
+                                                Call oCacheItem.AddPath(oCrossPath)
+                                            End Using
+                                        End If
                                         If iSplayBorderLineStyle <> cOptionsCenterline.SplayStyleEnum.Points Then
                                             Using oBorderPath As GraphicsPath = New GraphicsPath
                                                 For Each oPoint As PointF In oPoints

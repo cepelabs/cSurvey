@@ -112,56 +112,41 @@ Friend Class cItemProfileSplayPropertyControl
         Dim iProjectionAngle As Integer = dBearing + iAngle
         Dim oRect As Rectangle = e.ClipRectangle
         Call oRect.Inflate(-4, -4)
-        Using oMatrix As DevExpress.Utils.Drawing.DirectXMatrix = New DevExpress.Utils.Drawing.DirectXMatrix
-            Call oMatrix.RotateAt(dBearing, modPaint.GetCenterPoint(oRect))
-            e.Cache.SetTransform(oMatrix)
-            Using oPen As New Pen(Brushes.DimGray, 1)
-                e.Cache.DrawEllipse(oPen, oRect)
-                oPen.StartCap = Drawing2D.LineCap.Custom
-                oPen.CustomStartCap = New Drawing2D.AdjustableArrowCap(5, 5, True)
-                e.Cache.DrawLine(oPen, New Point(oRect.Left + oRect.Width \ 2, oRect.Top), New Point(oRect.Left + oRect.Width \ 2, oRect.Bottom))
+
+        If oRect.Width > 0 AndAlso oRect.Height > 0 Then
+            Using oMatrix As DevExpress.Utils.Drawing.DirectXMatrix = New DevExpress.Utils.Drawing.DirectXMatrix
+                Call oMatrix.RotateAt(dBearing, modPaint.GetCenterPoint(oRect))
+                e.Cache.SetTransform(oMatrix)
+                Using oPen As New Pen(Brushes.DimGray, 1)
+                    e.Cache.DrawEllipse(oPen, oRect)
+                    oPen.StartCap = Drawing2D.LineCap.Custom
+                    oPen.CustomStartCap = New Drawing2D.AdjustableArrowCap(5, 5, True)
+                    e.Cache.DrawLine(oPen, New Point(oRect.Left + oRect.Width \ 2, oRect.Top), New Point(oRect.Left + oRect.Width \ 2, oRect.Bottom))
+                End Using
             End Using
-        End Using
-        Using oMatrix As DevExpress.Utils.Drawing.DirectXMatrix = New DevExpress.Utils.Drawing.DirectXMatrix
-            Call oMatrix.RotateAt(iProjectionAngle, modPaint.GetCenterPoint(oRect))
-            e.Cache.SetTransform(oMatrix)
-            Using oPen As New Pen(Color.FromArgb(180, Color.Red), 1)
-                oPen.StartCap = Drawing2D.LineCap.Custom
-                oPen.CustomStartCap = New Drawing2D.AdjustableArrowCap(5, 5, True)
-                e.Cache.DrawLine(oPen, New Point(oRect.Right, oRect.Top + oRect.Height \ 2), New Point(oRect.Left, oRect.Top + oRect.Height \ 2))
+            Using oMatrix As DevExpress.Utils.Drawing.DirectXMatrix = New DevExpress.Utils.Drawing.DirectXMatrix
+                Call oMatrix.RotateAt(iProjectionAngle, modPaint.GetCenterPoint(oRect))
+                e.Cache.SetTransform(oMatrix)
+                Using oPen As New Pen(Color.FromArgb(180, Color.Red), 1)
+                    oPen.StartCap = Drawing2D.LineCap.Custom
+                    oPen.CustomStartCap = New Drawing2D.AdjustableArrowCap(5, 5, True)
+                    e.Cache.DrawLine(oPen, New Point(oRect.Right, oRect.Top + oRect.Height \ 2), New Point(oRect.Left, oRect.Top + oRect.Height \ 2))
+                End Using
+                Using oPen As New Pen(Brushes.Gray, 2)
+                    e.Cache.DrawLine(oPen, New Point(oRect.Left + oRect.Width \ 2, oRect.Top), New Point(oRect.Left + oRect.Width \ 2, oRect.Bottom))
+                End Using
+                Using oOtherLightBrush As Brush = New SolidBrush(Color.FromArgb(80, Color.Red))
+                    If iVariation > 0 Then
+                        Dim oRect1 As Rectangle = New Rectangle(oRect.Left, oRect.Top - oRect.Height \ 2, oRect.Width, oRect.Height)
+                        Call e.Cache.FillPie(oOtherLightBrush, oRect1, 90 - iVariation, iVariation * 2)
+                    End If
+                    If iVariation > 0 Then
+                        Dim oRect2 As Rectangle = New Rectangle(oRect.Left, oRect.Top + oRect.Height \ 2, oRect.Width, oRect.Height)
+                        Call e.Cache.FillPie(oOtherLightBrush, oRect2, -90 - iVariation, iVariation * 2)
+                    End If
+                End Using
             End Using
-            Using oPen As New Pen(Brushes.Gray, 2)
-                e.Cache.DrawLine(oPen, New Point(oRect.Left + oRect.Width \ 2, oRect.Top), New Point(oRect.Left + oRect.Width \ 2, oRect.Bottom))
-            End Using
-            Using oOtherLightBrush As Brush = New SolidBrush(Color.FromArgb(80, Color.Red))
-                If iVariation > 0 Then
-                    Dim oRect1 As Rectangle = New Rectangle(oRect.Left, oRect.Top - oRect.Height \ 2, oRect.Width, oRect.Height)
-                    Call e.Cache.FillPie(oOtherLightBrush, oRect1, 90 - iVariation, iVariation * 2)
-                End If
-                If iVariation > 0 Then
-                    Dim oRect2 As Rectangle = New Rectangle(oRect.Left, oRect.Top + oRect.Height \ 2, oRect.Width, oRect.Height)
-                    Call e.Cache.FillPie(oOtherLightBrush, oRect2, -90 - iVariation, iVariation * 2)
-                End If
-            End Using
-        End Using
+        End If
     End Sub
-
-    'Private Sub txtPropAttachmentName_EditValueChanged(sender As Object, e As EventArgs)
-    '    If Not DisabledObjectProperty() Then
-    '        Item.Attachment.Attachment.Name = txtPropAttachmentName.EditValue
-    '        Call MyBase.TakeUndoSnapshot()
-    '        Call MyBase.PropertyChanged("AttachmentName")
-    '        Call MyBase.MapInvalidate()
-    '    End If
-    'End Sub
-
-    'Private Sub txtPropAttachmentNote_EditValueChanged(sender As Object, e As EventArgs)
-    '    If Not DisabledObjectProperty() Then
-    '        Item.Attachment.Attachment.Note = txtPropAttachmentNote.EditValue
-    '        Call MyBase.TakeUndoSnapshot()
-    '        Call MyBase.PropertyChanged("AttachmentNote")
-    '        Call MyBase.MapInvalidate()
-    '    End If
-    'End Sub
 
 End Class

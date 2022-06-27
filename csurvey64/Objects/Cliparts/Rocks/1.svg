@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="210mm" height="297mm" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 210 297"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:black;stroke-width:0.0529}
+    .fil1 {fill:none}
+    .fil0 {fill:white}
+   ]]>
+  </style>
+ </defs>
+ <g id="Livello_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <path class="fil0 str0" d="M17.9587 21.698c-2.0942,6.8061 -7.9652,14.5443 1.0262,17.2995 2.9708,0.9103 7.8307,2.788 10.5556,4.3982 5.5893,3.3027 9.2957,-4.4214 12.3149,-7.6235 6.5264,-6.9219 2.2633,-10.3433 -4.3982,-15.98 -1.1353,-0.9606 -6.3403,-5.6704 -8.0633,-4.6914 -1.7085,0.9708 -9.7231,6.5973 -11.4352,6.5973l0 -0.0001z"/>
+  <path class="fil1 str0" d="M20.0112 23.6038c5.1085,0.3929 10.0472,3.4775 14.6606,5.4244 1.6643,0.7023 0.1854,4.8226 -0.2932,6.0108 -0.629,1.5618 -0.8796,1.8784 -0.8796,3.9584m1.1728 -9.9692l7.5475 -2.5633"/>
+ </g>
+</svg>

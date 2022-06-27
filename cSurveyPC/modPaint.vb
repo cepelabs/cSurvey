@@ -793,7 +793,7 @@ Module modPaint
     End Function
 
     Public Function IsRectangleEmpty(ByVal Rectangle As RectangleF) As Boolean
-        Return (Rectangle.Left = 0 AndAlso Rectangle.Top = 0 AndAlso Rectangle.Height = 0 AndAlso Rectangle.Width = 0) 'orelse (Single.IsNaN(Rectangle.Left) orelse Single.IsNaN(Rectangle.Top) orelse Single.IsNaN(Rectangle.Height) orelse Single.IsNaN(Rectangle.Width))
+        Return (Rectangle.Left = 0F AndAlso Rectangle.Top = 0F AndAlso Rectangle.Height = 0F AndAlso Rectangle.Width = 0F) 'orelse (Single.IsNaN(Rectangle.Left) orelse Single.IsNaN(Rectangle.Top) orelse Single.IsNaN(Rectangle.Height) orelse Single.IsNaN(Rectangle.Width))
     End Function
 
     Public Function IsRectangleEmpty(ByVal Rectangle As Rectangle) As Boolean

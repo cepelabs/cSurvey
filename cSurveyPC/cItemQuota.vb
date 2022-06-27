@@ -525,10 +525,10 @@ Namespace cSurvey.Design.Items
                                         End If
 
                                         Dim sScale As Single = GetTextScaleFactor(PaintOptions)
-                                        'Using oScaleMatrix As Matrix = New Matrix
-                                        '    Call oScaleMatrix.Scale(sScale, sScale, MatrixOrder.Append)
-                                        '    Call oPath.Transform(oScaleMatrix)
-                                        'End Using
+                                        Using oScaleMatrix As Matrix = New Matrix
+                                            Call oScaleMatrix.Scale(sScale, sScale, MatrixOrder.Append)
+                                            Call oPath.Transform(oScaleMatrix)
+                                        End Using
 
                                         Dim sTextHeight As Single = oPath.GetBounds.Height * 2.0F
                                         Dim sTextWidth As Single = oPath.GetBounds.Width * 1.3F

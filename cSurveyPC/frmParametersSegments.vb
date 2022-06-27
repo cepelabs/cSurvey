@@ -28,8 +28,6 @@ Friend Class frmParametersSegments
         cboSplayStyle.SelectedIndex = oOptions.SplayStyle
         chkShowSplayLabel.Checked = oOptions.ShowSplayText
 
-        chkShowTrigpointText.Checked = oOptions.ShowPointText
-
         If iApplyTo = cIDesign.cDesignTypeEnum.Profile Then
             grpSurface.Enabled = True
             chkSurfaceProfile.Checked = oOptions.DrawSurfaceProfile
@@ -105,12 +103,6 @@ Friend Class frmParametersSegments
             oOptions.DrawSegmentsOptions = oOptions.DrawSegmentsOptions Or cOptionsDesign.DrawSegmentsOptionsEnum.Duplicate
         Else
             oOptions.DrawSegmentsOptions = oOptions.DrawSegmentsOptions And Not cOptionsDesign.DrawSegmentsOptionsEnum.Duplicate
-        End If
-    End Sub
-
-    Private Sub chkDesignPlotShowTrigpointText_CheckedChanged(sender As Object, e As EventArgs)
-        If Not oOptions Is Nothing AndAlso Not bEventDisabled Then
-            oOptions.ShowPointText = chkShowTrigpointText.Checked
         End If
     End Sub
 

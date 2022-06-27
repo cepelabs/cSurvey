@@ -1021,3 +1021,4 @@ main.filetypeBRUSHX=File riempimento di cSurvey
 main.exportbrushdialog=Esporta come riempimento:
 main.savebrushtext=Digita un nome per questo riempimento
 main.savebrushtitle=Nome riempimento:
+main.warning34=Ripristinare il layout predefinito della barra di accesso rapido?

@@ -7416,4 +7416,19 @@ o ad una sezione trasversale</value>
   <data name="btnPenSpline.Caption" xml:space="preserve">
     <value>Spline</value>
   </data>
+  <data name="btnQATBeginGroup.Caption" xml:space="preserve">
+    <value>Inizia gruppo</value>
+  </data>
+  <data name="btnQATMoveNext.Caption" xml:space="preserve">
+    <value>Sposta prima</value>
+  </data>
+  <data name="btnQATMovePrev.Caption" xml:space="preserve">
+    <value>Sposta dopo</value>
+  </data>
+  <data name="btnQATRestore.Caption" xml:space="preserve">
+    <value>Ripristina la barra di accesso rapido</value>
+  </data>
+  <data name="btnSegmentInsert.Caption" xml:space="preserve">
+    <value>Inserisci segmento</value>
+  </data>
 </root>

@@ -2506,7 +2506,8 @@ Friend Class frmMain2
         Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
             Dim sSkinName As String = "" & oReg.GetValue("theme.name")
             If sSkinName <> "" Then
-                DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle(oReg.GetValue("theme.name"), oReg.GetValue("theme.palette"))
+                Dim sPaletteName As String = "" & oReg.GetValue("theme.palette")
+                DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle(sSkinName, sPaletteName)
                 DevExpress.LookAndFeel.UserLookAndFeel.Default.UpdateStyleSettings()
             End If
 
@@ -2620,13 +2621,23 @@ Friend Class frmMain2
             bLinkedSurveysRefreshOnLoadPrioritizeChildren = oReg.GetValue("linkedsurveys.recursiveload.prioritizechildren", "0")
             bLinkedSurveysRefreshOnLoad = oReg.GetValue("linkedsurveys.refreshonload", "0")
 
-            'Dim sQAT As String = cEditDesignEnvironment.GetSetting("qat", "")
-            'If sQAT <> "" Then
-            '    Dim oXML As XmlDocument = New XmlDocument
-            '    oXML.LoadXml(sQAT)
-            '    'in this state qat is in default state
-            '    RibbonControl.Toolbar.ItemLinks(0)
-            'End If
+            Dim sQAT As String = cEditDesignEnvironment.GetSetting("qat.items", "")
+            If sQAT <> "" Then
+                Dim oXML As XmlDocument = New XmlDocument
+                Call oXML.LoadXml(sQAT)
+                Call RibbonControl.Toolbar.ItemLinks.Clear()
+                Dim oXMLRoot As XmlElement = oXML.DocumentElement
+                For Each oXMLItem As XmlElement In oXMLRoot.ChildNodes
+                    Dim oItem As BarItem = RibbonControl.Items.FindById(oXMLItem.GetAttribute("i"))
+                    If oItem IsNot Nothing Then
+                        Dim oItemLink As BarItemLink = RibbonControl.Toolbar.ItemLinks.Add(oItem)
+                        oItemLink.BeginGroup = modXML.GetAttributeValue(oXMLItem, "bg", "0")
+                        oItemLink.Visible = modXML.GetAttributeValue(oXMLItem, "v", "1")
+                    End If
+                Next
+                RibbonControl.ToolbarLocation = modXML.GetAttributeValue(oXMLRoot, "tl", "0")
+                RibbonControl.Minimized = modXML.GetAttributeValue(oXMLRoot, "m", "0")
+            End If
 
             'bugfix...to be removed in future...
             'Dim sCurrentVersion As String = "" & oReg.GetValue("currentversion", "")
@@ -2786,6 +2797,20 @@ Friend Class frmMain2
                 Call oReg.SetValue("design.objectsbinding.expanded", If(oPropObjectsBindingContainer.Expanded, 1, 0))
                 Call oReg.SetValue("design.segmentsbinding.expanded", If(oPropSegmentsBindingContainer.Expanded, 1, 0))
                 Call oReg.SetValue("design.trigpointdistances.expanded", If(oPropTrigpointsDistancesContainer.Expanded, 1, 0))
+
+                Dim oXml As XmlDocument = New XmlDocument
+                Dim oXmlRoot As XmlElement = oXml.CreateElement("is")
+                For Each oItemLink As BarItemLink In RibbonControl.Toolbar.ItemLinks
+                    Dim oXmlItem As XmlElement = oXml.CreateElement("i")
+                    Call oXmlItem.SetAttribute("i", oItemLink.ItemId)
+                    If oItemLink.BeginGroup Then Call oXmlItem.SetAttribute("bg", "1")
+                    If Not oItemLink.Visible Then Call oXmlItem.SetAttribute("v", "0")
+                    Call oXmlRoot.AppendChild(oXmlItem)
+                Next
+                Call oXmlRoot.SetAttribute("tl", RibbonControl.ToolbarLocation.ToString("D"))
+                If RibbonControl.Minimized Then Call oXmlRoot.SetAttribute("m", "1")
+                Call oXml.AppendChild(oXmlRoot)
+                Call oReg.SetValue("qat.items", oXml.OuterXml)
 
                 'Call oReg.SetValue("design.multithreading", if(bDrawMultithreading, 1, 0))
 
@@ -16799,6 +16824,7 @@ Friend Class frmMain2
     End Sub
 
     Private Sub grdViewSegments_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles grdViewSegments.PopupMenuShowing
+        Call grdSegments.Focus()
         If e.HitInfo.InRowCell OrElse e.HitInfo.HitTest = DevExpress.XtraGrid.Views.Grid.ViewInfo.GridHitTest.EmptyRow Then
             e.Allow = False
             Call mnuSegments.ShowPopup(grdSegments.PointToScreen(e.Point))
@@ -16848,6 +16874,7 @@ Friend Class frmMain2
     'End Sub
 
     Private Sub grdViewTrigpoints_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles grdViewTrigpoints.PopupMenuShowing
+        Call grdTrigPoints.Focus()
         If e.HitInfo.InRowCell Then
             e.Allow = False
             Call mnuTrigpoint.ShowPopup(grdTrigPoints.PointToScreen(e.Point))
@@ -18595,11 +18622,91 @@ Friend Class frmMain2
     End Function
 
     Private Sub RibbonControl_CustomizeQatMenu(sender As Object, e As Ribbon.CustomizeQatMenuEventArgs) Handles RibbonControl.CustomizeQatMenu
+        'remove options to hide some items (is not usefull)
+        Do
+            Call e.ItemLinks.RemoveAt(0)
+        Loop Until e.ItemLinks.Count = 1
+        Call e.ItemLinks.Insert(0, btnQATRestore)
+    End Sub
 
+    Private oQATBeginGroup As BarItemLink
+    Private oQATMovePrev As BarItemLink
+    Private oQATMoveNext As BarItemLink
+    Private oQATRestoreToDefault As BarItemLink
+
+    Private oQATLastItem As BarItemLink
+
+    Private Sub pQATRestore()
+        Call RibbonControl.Toolbar.ItemLinks.Clear()
+        Call RibbonControl.Toolbar.ItemLinks.Add(btnNew)
+        Call RibbonControl.Toolbar.ItemLinks.Add(btnLoad)
+        Call RibbonControl.Toolbar.ItemLinks.Add(btnRollback, True)
+        Call RibbonControl.Toolbar.ItemLinks.Add(btnSave, True)
+        Call RibbonControl.Toolbar.ItemLinks.Add(btnSaveAs)
+        Call RibbonControl.Toolbar.ItemLinks.Add(btnImport, True)
+        Call RibbonControl.Toolbar.ItemLinks.Add(btnExport, True)
+        Call RibbonControl.Toolbar.ItemLinks.Add(btnPrint)
+        Call RibbonControl.Toolbar.ItemLinks.Add(btnProperties, True)
+        Call RibbonControl.Toolbar.ItemLinks.Add(btnSurface)
+        Call RibbonControl.Toolbar.ItemLinks.Add(btnPlotInfoCave, True)
+        Call RibbonControl.Toolbar.ItemLinks.Add(btnPlotCalculate, True)
     End Sub
 
     Private Sub RibbonControl_ShowCustomizationMenu(sender As Object, e As Ribbon.RibbonCustomizationMenuEventArgs) Handles RibbonControl.ShowCustomizationMenu
+        If oQATBeginGroup IsNot Nothing Then e.CustomizationMenu.ItemLinks.Remove(oQATBeginGroup)
+        If oQATMovePrev IsNot Nothing Then e.CustomizationMenu.ItemLinks.Remove(oQATMovePrev)
+        If oQATMoveNext IsNot Nothing Then e.CustomizationMenu.ItemLinks.Remove(oQATMoveNext)
+        If oQATRestoreToDefault IsNot Nothing Then e.CustomizationMenu.ItemLinks.Remove(oQATRestoreToDefault)
+        If e.HitInfo IsNot Nothing Then
+            If e.HitInfo.InItem Then
+                If e.HitInfo.InToolbar Then
+                    Dim oLink As BarItemLink = e.Link
+                    If Not TypeOf oLink Is DevExpress.XtraBars.Ribbon.Internal.RibbonQuickToolbarCustomizeItemLink Then
+                        oQATBeginGroup = e.CustomizationMenu.ItemLinks.Add(btnQATBeginGroup, True)
+                        btnQATBeginGroup.Checked = oLink.BeginGroup
 
+                        oQATMovePrev = e.CustomizationMenu.ItemLinks.Add(btnQATMovePrev, True)
+                        btnQATMovePrev.Enabled = RibbonControl.Toolbar.ItemLinks.IndexOf(oLink) > 0
+                        oQATMoveNext = e.CustomizationMenu.ItemLinks.Add(btnQATMoveNext, False)
+                        btnQATMoveNext.Enabled = RibbonControl.Toolbar.ItemLinks.IndexOf(oLink) < RibbonControl.Toolbar.ItemLinks.Count - 1
+
+                        oQATRestoreToDefault = e.CustomizationMenu.ItemLinks.Add(btnQATRestore, True)
+
+                        oQATLastItem = oLink
+                    End If
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub btnBeginGroup_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnQATBeginGroup.ItemClick
+        If oQATLastItem IsNot Nothing Then
+            oQATLastItem.BeginGroup = btnQATBeginGroup.Checked
+        End If
+    End Sub
+
+    Private Sub btnQATMovePrev_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnQATMovePrev.ItemClick
+        If oQATLastItem IsNot Nothing Then
+            Dim oItem As BarItem = oQATLastItem.Item
+            Dim iIndex As Integer = RibbonControl.Toolbar.ItemLinks.IndexOf(oQATLastItem)
+            RibbonControl.Toolbar.ItemLinks.RemoveAt(iIndex)
+            RibbonControl.Toolbar.ItemLinks.Insert(iIndex - 1, oItem)
+        End If
+    End Sub
+
+    Private Sub btnQATRestore_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnQATRestore.ItemClick
+        If UIHelpers.Dialogs.Msgbox(GetLocalizedString("main.warning34"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("main.warningtitle")) = vbYes Then
+            Call pQATRestore()
+        End If
+    End Sub
+
+    Private Sub btnQATMoveNext_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnQATMoveNext.ItemClick
+        If oQATLastItem IsNot Nothing Then
+            Dim oItem As BarItem = oQATLastItem.Item
+            Dim iIndex As Integer = RibbonControl.Toolbar.ItemLinks.IndexOf(oQATLastItem)
+            RibbonControl.Toolbar.ItemLinks.RemoveAt(iIndex)
+            RibbonControl.Toolbar.ItemLinks.Insert(iIndex + 1, oitem)
+        End If
     End Sub
 End Class
 

@@ -112,6 +112,10 @@ Partial Class frmResurveyMain
         Me.btnSaveAs = New DevExpress.XtraBars.BarButtonItem()
         Me.btnSaveImage = New DevExpress.XtraBars.BarButtonItem()
         Me.btnClearImage = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnQATMovePrev = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnQATMoveNext = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnQATRestore = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnQATBeginGroup = New DevExpress.XtraBars.BarCheckItem()
         Me.tbPlan = New DevExpress.XtraBars.Ribbon.RibbonMiniToolbar(Me.components)
         Me.tbProfile = New DevExpress.XtraBars.Ribbon.RibbonMiniToolbar(Me.components)
         Me.pageMain = New DevExpress.XtraBars.Ribbon.RibbonPage()
@@ -127,6 +131,8 @@ Partial Class frmResurveyMain
         Me.pageImage = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.grpImageCommands = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.grpImageColors = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.pageOther = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.grpOther = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonStatusBar1 = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.picPlan = New System.Windows.Forms.PictureBox()
         Me.picProfile = New System.Windows.Forms.PictureBox()
@@ -401,13 +407,13 @@ Partial Class frmResurveyMain
         Me.RibbonControl.CaptionBarItemLinks.Add(Me.btnConfirm)
         Me.RibbonControl.CaptionBarItemLinks.Add(Me.btnClose)
         Me.RibbonControl.ExpandCollapseItem.Id = 0
-        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnConfirm, Me.btnClose, Me.RibbonControl.ExpandCollapseItem, Me.RibbonControl.SearchEditItem, Me.btnNew, Me.btnLoad, Me.btnSave, Me.btnLoadImage, Me.btnOptions, Me.btnZoomIn, Me.btnZoomOut, Me.btnCalculate, Me.btnExport, Me.btnShowRulers, Me.btnAdd2, Me.btnRemove2, Me.btnRemoveAll2, Me.btnDelete2, Me.btnDeleteAll2, Me.btnDeleteLink, Me.btnSetOrigin2, Me.btnProperties2, Me.btnShowRuler, Me.pnlStatus, Me.pnlCurrentProjection, Me.pnlCoordinates, Me.pnlDistance, Me.pnlAngle, Me.pnlZoom, Me.btnZoom100, Me.btnZoomToFit, Me.btnsZoom, Me.btnZoom25, Me.btnZoom200, Me.btnZoom50, Me.btnVisibility, Me.btnPlanHideAll, Me.btnPlanShowAll, Me.btnProfileShowAll, Me.btnProfileHideAll, Me.btnVisible, Me.btnImageInvertColor, Me.btnImageToGrayScale, Me.btnImageBWThreshold, Me.btnRulerCenterHere, Me.btnRulerAlignTo, Me.btnMagnifier, Me.btnLeftEdit, Me.btnRightEdit, Me.btnUpEdit, Me.btnDownEdit, Me.btnSaveAs, Me.btnSaveImage, Me.btnClearImage})
+        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btnConfirm, Me.btnClose, Me.RibbonControl.ExpandCollapseItem, Me.RibbonControl.SearchEditItem, Me.btnNew, Me.btnLoad, Me.btnSave, Me.btnLoadImage, Me.btnOptions, Me.btnZoomIn, Me.btnZoomOut, Me.btnCalculate, Me.btnExport, Me.btnShowRulers, Me.btnAdd2, Me.btnRemove2, Me.btnRemoveAll2, Me.btnDelete2, Me.btnDeleteAll2, Me.btnDeleteLink, Me.btnSetOrigin2, Me.btnProperties2, Me.btnShowRuler, Me.pnlStatus, Me.pnlCurrentProjection, Me.pnlCoordinates, Me.pnlDistance, Me.pnlAngle, Me.pnlZoom, Me.btnZoom100, Me.btnZoomToFit, Me.btnsZoom, Me.btnZoom25, Me.btnZoom200, Me.btnZoom50, Me.btnVisibility, Me.btnPlanHideAll, Me.btnPlanShowAll, Me.btnProfileShowAll, Me.btnProfileHideAll, Me.btnVisible, Me.btnImageInvertColor, Me.btnImageToGrayScale, Me.btnImageBWThreshold, Me.btnRulerCenterHere, Me.btnRulerAlignTo, Me.btnMagnifier, Me.btnLeftEdit, Me.btnRightEdit, Me.btnUpEdit, Me.btnDownEdit, Me.btnSaveAs, Me.btnSaveImage, Me.btnClearImage, Me.btnQATMovePrev, Me.btnQATMoveNext, Me.btnQATRestore, Me.btnQATBeginGroup})
         resources.ApplyResources(Me.RibbonControl, "RibbonControl")
-        Me.RibbonControl.MaxItemId = 70
+        Me.RibbonControl.MaxItemId = 74
         Me.RibbonControl.MiniToolbars.Add(Me.tbPlan)
         Me.RibbonControl.MiniToolbars.Add(Me.tbProfile)
         Me.RibbonControl.Name = "RibbonControl"
-        Me.RibbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.pageMain, Me.pageWorkflow, Me.pageImage})
+        Me.RibbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.pageMain, Me.pageWorkflow, Me.pageImage, Me.pageOther})
         Me.RibbonControl.QuickToolbarItemLinks.Add(Me.btnNew)
         Me.RibbonControl.QuickToolbarItemLinks.Add(Me.btnLoad)
         Me.RibbonControl.QuickToolbarItemLinks.Add(Me.btnSave, True)
@@ -891,6 +897,37 @@ Partial Class frmResurveyMain
         Me.btnClearImage.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.clearall
         Me.btnClearImage.Name = "btnClearImage"
         '
+        'btnQATMovePrev
+        '
+        resources.ApplyResources(Me.btnQATMovePrev, "btnQATMovePrev")
+        Me.btnQATMovePrev.Id = 70
+        Me.btnQATMovePrev.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_arrow4left
+        Me.btnQATMovePrev.Name = "btnQATMovePrev"
+        Me.btnQATMovePrev.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'btnQATMoveNext
+        '
+        resources.ApplyResources(Me.btnQATMoveNext, "btnQATMoveNext")
+        Me.btnQATMoveNext.Id = 71
+        Me.btnQATMoveNext.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.actions_arrow4right
+        Me.btnQATMoveNext.Name = "btnQATMoveNext"
+        Me.btnQATMoveNext.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'btnQATRestore
+        '
+        resources.ApplyResources(Me.btnQATRestore, "btnQATRestore")
+        Me.btnQATRestore.Id = 72
+        Me.btnQATRestore.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.ResetGreen
+        Me.btnQATRestore.Name = "btnQATRestore"
+        Me.btnQATRestore.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'btnQATBeginGroup
+        '
+        resources.ApplyResources(Me.btnQATBeginGroup, "btnQATBeginGroup")
+        Me.btnQATBeginGroup.Id = 73
+        Me.btnQATBeginGroup.Name = "btnQATBeginGroup"
+        Me.btnQATBeginGroup.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
         'tbPlan
         '
         Me.tbPlan.Alignment = System.Drawing.ContentAlignment.TopLeft
@@ -1022,6 +1059,22 @@ Partial Class frmResurveyMain
         Me.grpImageColors.ItemLinks.Add(Me.btnImageBWThreshold)
         Me.grpImageColors.Name = "grpImageColors"
         resources.ApplyResources(Me.grpImageColors, "grpImageColors")
+        '
+        'pageOther
+        '
+        Me.pageOther.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.grpOther})
+        Me.pageOther.Name = "pageOther"
+        resources.ApplyResources(Me.pageOther, "pageOther")
+        Me.pageOther.Visible = False
+        '
+        'grpOther
+        '
+        Me.grpOther.ItemLinks.Add(Me.btnQATBeginGroup)
+        Me.grpOther.ItemLinks.Add(Me.btnQATMovePrev)
+        Me.grpOther.ItemLinks.Add(Me.btnQATMoveNext)
+        Me.grpOther.ItemLinks.Add(Me.btnQATRestore)
+        Me.grpOther.Name = "grpOther"
+        resources.ApplyResources(Me.grpOther, "grpOther")
         '
         'RibbonStatusBar1
         '
@@ -1620,4 +1673,10 @@ Partial Class frmResurveyMain
     Friend WithEvents oMainMessageBar As cMessageBar
     Friend WithEvents mnuRecents As DevExpress.XtraBars.PopupMenu
     Friend WithEvents DefaultToolTipController As DevExpress.Utils.DefaultToolTipController
+    Friend WithEvents btnQATMovePrev As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents pageOther As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents grpOther As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents btnQATMoveNext As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnQATRestore As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnQATBeginGroup As DevExpress.XtraBars.BarCheckItem
 End Class

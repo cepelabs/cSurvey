@@ -1019,3 +1019,4 @@ main.filetypeBRUSHX=cSurvey brush file
 main.exportbrushdialog=Export as brush:
 main.savebrushtext=Give a name to this brush
 main.savebrushtitle=Brush name:
+main.warning34=Restore the quick access toolbar's default layout?

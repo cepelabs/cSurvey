@@ -21,27 +21,28 @@ Module modOpeningFlags
 
     Public Sub SetFlags(Optional Parent As IWin32Window = Nothing)
         If My.Computer.Keyboard.ShiftKeyDown And My.Computer.Keyboard.CtrlKeyDown Then
-            Dim frmOF As frmOpeningFlags = New frmOpeningFlags
-            If frmOF.ShowDialog() = DialogResult.OK Then
-                OFCalculateModeEnabled = frmOF.chkCalculateModeEnabled.Checked
-                If frmOF.chkCalculateMode.Checked Then
-                    OFCalculateMode = CalculateModeEnum.Automatic
-                Else
-                    OFCalculateMode = CalculateModeEnum.Manual
+            Using frmOF As frmOpeningFlags = New frmOpeningFlags
+                If frmOF.ShowDialog() = DialogResult.OK Then
+                    OFCalculateModeEnabled = frmOF.chkCalculateModeEnabled.Checked
+                    If frmOF.chkCalculateMode.Checked Then
+                        OFCalculateMode = CalculateModeEnum.Automatic
+                    Else
+                        OFCalculateMode = CalculateModeEnum.Manual
+                    End If
+                    OFDesignWarpingModeEnabled = frmOF.chkDesignWarpingModeEnabled.Checked
+                    OFDesignWarpingMode = frmOF.cboDesignWarpingMode.SelectedIndex
+                    OFDesignWarlingPlanDisable = Not frmOF.chkPlanWarpingEnabled.Checked
+                    OFDesignWarlingProfileDisable = Not frmOF.chkProfileWarpingEnabled.Checked
+                    OFMorphingDisabledEnabled = frmOF.chkMorphingDisableEnabled.Checked
+                    OFMorphingDisabled = frmOF.chkMorphingDisable.Checked
+                    OFUpgradeCalculateVersion = frmOF.chkUpgradeCalculateVersion.Checked
+                    If frmOF.chkUpgradeInversionMode.Enabled Then
+                        OFUpgradeInversionMode = frmOF.chkUpgradeInversionMode.Checked
+                    End If
+                    OFRegenerateSegmentsID = frmOF.chkRegenerateSegmentsID.Checked
                 End If
-                OFDesignWarpingModeEnabled = frmOF.chkDesignWarpingModeEnabled.Checked
-                OFDesignWarpingMode = frmOF.cboDesignWarpingMode.SelectedIndex
-                OFDesignWarlingPlanDisable = Not frmOF.chkPlanWarpingEnabled.Checked
-                OFDesignWarlingProfileDisable = Not frmOF.chkProfileWarpingEnabled.Checked
-                OFMorphingDisabledEnabled = frmOF.chkMorphingDisableEnabled.Checked
-                OFMorphingDisabled = frmOF.chkMorphingDisable.Checked
-                OFUpgradeCalculateVersion = frmOF.chkUpgradeCalculateVersion.Checked
-                If frmOF.chkUpgradeInversionMode.Enabled Then
-                    OFUpgradeInversionMode = frmOF.chkUpgradeInversionMode.Checked
-                End If
-                OFRegenerateSegmentsID = frmOF.chkRegenerateSegmentsID.Checked
-            End If
-            End If
+            End Using
+        End If
     End Sub
 
     Public Sub ResetFlags()

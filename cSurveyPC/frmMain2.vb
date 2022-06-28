@@ -28,7 +28,7 @@ Friend Class frmMain2
     Private sZoomRatio As Single = 15
 
     Private sFilename As String
-    Private dlastLogEvent As DateTime
+    'Private dlastLogEvent As DateTime
 
     Private WithEvents oSurvey As cSurvey.cSurvey
 
@@ -374,56 +374,78 @@ Friend Class frmMain2
         If pSurveySaveOnExit() Then
             Call modWMSManager.WMSDownloadFileCancelAsync()
 
-            'Call pConsoleClear()
             Call pPopupHide()
             Call pPreviewHide()
-            'Call pScriptEditorHide()
 
             bDisabledAutosaveEvent = True
             bDisabledObjectPropertyEvent = True
 
             oCurrentDesign = Nothing
 
-            '---------------------------------------------------------
             oSurvey = New cSurvey.cSurvey
 
             '---------------------------------------------------------
             'added in v2 due to microsoft tips abound gc: some say this can be usefull, some no...
             If cEditDesignEnvironment.GetSetting("debug.forcegc", False) Then Call GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced)
 
-            ''template or default template...
-            'Template = oTemplates.GetDefaultTemplate(Template)
-            'If Not IsNothing(Template) Then
-            '    Call oSurvey.Load(Template.File.FullName, cSurvey.cSurvey.LoadOptionsEnum.Update)
-            '    Call oSurvey.NewID()
-            'End If
-
             Call pToolsCreate()
 
-            '---------------------------------------------------------
             Call pSegmentClear()
             Call pTrigpointClear()
 
             oDefaultOptions = oSurvey.Options("_design.plan").DefaultOptions
             Call My.Application.SetCurrent(oSurvey, "")
 
-            sFilename = ""
+            Call oMousePointer.Push(Cursors.WaitCursor)
 
+            Call modWMSManager.WMSDownloadFileCancelAsync()
+            Call pPopupHide()
+            Call pPreviewHide()
+
+            bDisabledAutosaveEvent = True
+            bDisabledObjectPropertyEvent = True
+
+            bDisabledCaveBranchChangeEvent = True
+            bDisabledObjectPropertyEvent = True
+            bDisableSegmentsChangeEvent = True
+            bDisableTrigpointsChangeEvent = True
+
+            'template or default template...
+            Template = oTemplates.GetDefaultTemplate(Template)
+            If Not IsNothing(Template) Then
+                Call oSurvey.Load(Template.File.FullName, cSurvey.cSurvey.LoadOptionsEnum.Update)
+                Call oSurvey.NewID()
+            End If
+
+            bDisabledCaveBranchChangeEvent = False
+            bDisabledObjectPropertyEvent = False
+            bDisableSegmentsChangeEvent = False
+            bDisableTrigpointsChangeEvent = False
+
+            Call oMousePointer.Pop()
+
+            sFilename = ""
             With oSurvey.Properties
                 .Club = sDefaultClub
                 .Team = sDefaultTeam
                 .Designer = sDefaultDesigner
                 .CalculateMode = iDefaultCalculateMode
                 .CalculateType = iDefaultCalculateType
-
                 .ShowLegacyPrintAndExportObjects = bDefaultShowLegacyPrintAndExportObjects
             End With
+
+            Call pToolsCreate()
+
+            Call oMousePointer.Pop()
 
             Call pSurveyMainProperties()
             Call pSurveyFillSessionList(True)
             Call pSurveyFillCaveList(True)
 
             Call pSurveyCaption()
+
+            oCurrentDesign = Nothing
+            oCurrentOptions = Nothing
 
             Call pDesignRestoreShowBinding()
             Call pSurveyRestoreCurrentWorkarea()
@@ -441,14 +463,14 @@ Friend Class frmMain2
 
             If Not IsNothing(frmU) Then frmU.SetSurvey(oSurvey, pGetCurrentTools)
 
-            Call pSurveySegmentsGridSetup()
-            Call pSurveyTrigpointsGridSetup()
-
             Call pSurveyShowPlan()
+
             Call pZoomReset()
             Call pMapCenterAndFit()
 
-            Call pSurveyTrigpointsRefresh()
+            Call pSurveySegmentsGridSetup()
+            Call pSurveyTrigpointsGridSetup()
+
             Call oTools.SelectSegment(oSurvey.Segments.First)
             Call oTools.SelectTrigpoint(oSurvey.TrigPoints.First)
 
@@ -459,17 +481,11 @@ Friend Class frmMain2
             sLastHash = pSurveyGetHash()
             sNewHash = sLastHash
 
-            Call pObjectPropertyDelayedLoad()
+            Call pSurveyRedraw()
+            Call pSurveyMainPropertiesPanelsRefresh()
 
             bDisabledAutosaveEvent = False
             bDisabledObjectPropertyEvent = False
-
-            'template or default template...
-            Template = oTemplates.GetDefaultTemplate(Template)
-            If Not IsNothing(Template) Then
-                Call oSurvey.Load(Template.File.FullName, cSurvey.cSurvey.LoadOptionsEnum.Update)
-                Call oSurvey.NewID()
-            End If
         End If
     End Sub
 
@@ -745,11 +761,10 @@ Friend Class frmMain2
                             Call My.Application.SetCurrent(oSurvey, "")
 
                             Call oMousePointer.Push(Cursors.WaitCursor)
+
                             Call modWMSManager.WMSDownloadFileCancelAsync()
-                            'Call pConsoleClear()
                             Call pPopupHide()
                             Call pPreviewHide()
-                            'Call pScriptEditorHide()
 
                             bDisabledAutosaveEvent = True
                             bDisabledObjectPropertyEvent = True
@@ -759,21 +774,23 @@ Friend Class frmMain2
                             bDisabledObjectPropertyEvent = True
                             bDisableSegmentsChangeEvent = True
                             bDisableTrigpointsChangeEvent = True
+
                             oResult = oSurvey.Load(Filename)
+
                             bDisabledCaveBranchChangeEvent = False
                             bDisabledObjectPropertyEvent = False
                             bDisableSegmentsChangeEvent = False
                             bDisableTrigpointsChangeEvent = False
 
                             Call modOpeningFlags.ResetFlags()
+                            Call oMousePointer.Pop()
+
                             If oResult.Result Then
                                 sFilename = Filename
 
                                 Call UIHelpers.cRecentsHelper.AppendTo(sFilename, "Recent", oRecents, btnLoad)
 
                                 Call pToolsCreate()
-
-                                Call oMousePointer.Pop()
 
                                 Call pSurveyMainProperties()
                                 Call pSurveyFillSessionList(True)
@@ -813,12 +830,10 @@ Friend Class frmMain2
                                 If bHolos Then Call oHolos.Reset()
 
                                 sLastHash = pSurveyGetHash()
-                                'If oSurvey.Calculate.LoadedFromFile Then
+
                                 Call pSurveyRedraw()
                                 Call pSurveyMainPropertiesPanelsRefresh()
-                                'Else
-                                '    Call pSurveyCalculate(True)
-                                'End If
+
                                 Call pSurveyCheckBezierLineType(oSurvey)
                             Else
                                 Call UIHelpers.Dialogs.Msgbox(String.Format(GetLocalizedString("main.warning19"), oResult.Exception.Message), MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, GetLocalizedString("main.warningtitle"))
@@ -8669,8 +8684,6 @@ Friend Class frmMain2
                         Else
                             Return picMap.PointToScreen(New Point(oVisibleBound.X - 4, oVisibleBound.Y - 24))
                         End If
-                        'Dim oPenToolsPointF As PointF = modPaint.ToPaintPoint(New PointF(pGetCurrentDesignTools.CurrentItem.GetBounds.Left, pGetCurrentDesignTools.CurrentItem.GetBounds.Top), sPaintZoom, oPaintTranslation)
-                        'Return picMap.PointToScreen(New Point(oPenToolsPointF.X - 4, oPenToolsPointF.Y - 24))
                     End If
                 Else
                     Dim oPenToolsPointF As PointF = modPaint.ToPaintPoint(New PointF(pGetCurrentDesignTools.CurrentItemPoint.X, pGetCurrentDesignTools.CurrentItemPoint.Y), sPaintZoom, oPaintTranslation)
@@ -12916,7 +12929,7 @@ Friend Class frmMain2
         ntiMain.Icon = Me.Icon
 
         oMousePointer = New cMousePointer
-        dlastLogEvent = Now
+        'dlastLogEvent = Now
 
         sObjectsPath = modMain.GetApplicationPath & "\objects"
         sClipartPath = sObjectsPath & "\cliparts"
@@ -12931,9 +12944,11 @@ Friend Class frmMain2
         For Each oGroup In pageCurrentItem.Groups
             Call pageHome.Groups.Add(oGroup)
         Next
+        Call RibbonControl.Pages.Remove(pageCurrentItem)
         For Each oGroup In pageCurrentItemPoint.Groups
             Call pageHome.Groups.Add(oGroup)
         Next
+        Call RibbonControl.Pages.Remove(pageCurrentItemPoint)
         '-----------------------------------------------------------------------------------------------
 
         oDockLevels = New cDockLevels
@@ -13127,27 +13142,15 @@ Friend Class frmMain2
         pnl3DProp.Dock = DockStyle.Fill
 
         '-----------------------------------------------------------------------------------------------
-        'carico i cursori
+        'cursors...
         oOpenHandCursor = New Cursor(sObjectsPath & "\cursors\openhand.cur")
         oClosedHandCursor = New Cursor(sObjectsPath & "\cursors\closedhand.cur")
-
-        'layer's tree setup...
-        'Call pSurveySetupTreeLayers()
-        'Call pSurveySetupSegmentAttachments()
-        'Call pSurveySetupTrigpoints()
 
         Dim oBindDesignTypeList As List(Of cComboItem(Of cItem.BindDesignTypeEnum)) = New List(Of cComboItem(Of cItem.BindDesignTypeEnum))
         Dim oEditBindDesignTypeCombo As DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit = btnMainBindDesignType.Edit
         Call oBindDesignTypeList.Add(New cComboItem(Of cItem.BindDesignTypeEnum)(modMain.GetLocalizedString("csurvey.design.item.binddesigntypeenum." & cItem.BindDesignTypeEnum.MainDesign.ToString("D")), cItem.BindDesignTypeEnum.MainDesign))
         Call oBindDesignTypeList.Add(New cComboItem(Of cItem.BindDesignTypeEnum)(modMain.GetLocalizedString("csurvey.design.item.binddesigntypeenum." & cItem.BindDesignTypeEnum.CrossSections.ToString("D")), cItem.BindDesignTypeEnum.CrossSections))
         oEditBindDesignTypeCombo.DataSource = oBindDesignTypeList
-
-        'Dim oDirectionTypeList As List(Of cComboItem(Of cSurvey.cSurvey.DirectionEnum)) = New List(Of cComboItem(Of cSurvey.cSurvey.DirectionEnum))
-        'Dim oEditDirectionTypeCombo As DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit = colSegmentsListProfileDirection.ColumnEdit
-        'Call oDirectionTypeList.Add(New cComboItem(Of cSurvey.cSurvey.DirectionEnum)(modMain.GetLocalizedString("csurvey.directionenum." & cSurvey.cSurvey.DirectionEnum.Right.ToString("D")), cSurvey.cSurvey.DirectionEnum.Right))
-        'Call oDirectionTypeList.Add(New cComboItem(Of cSurvey.cSurvey.DirectionEnum)(modMain.GetLocalizedString("csurvey.directionenum." & cSurvey.cSurvey.DirectionEnum.Left.ToString("D")), cSurvey.cSurvey.DirectionEnum.Left))
-        'Call oDirectionTypeList.Add(New cComboItem(Of cSurvey.cSurvey.DirectionEnum)(modMain.GetLocalizedString("csurvey.directionenum." & cSurvey.cSurvey.DirectionEnum.Vertical.ToString("D")), cSurvey.cSurvey.DirectionEnum.Vertical))
-        'oEditDirectionTypeCombo.DataSource = oDirectionTypeList
 
         Dim cboSegmentDirectionTypeCombo As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox = colSegmentsListProfileDirection.ColumnEdit
         cboSegmentDirectionTypeCombo.Items.Add(New DevExpress.XtraEditors.Controls.ImageComboBoxItem(modMain.GetLocalizedString("csurvey.directionenum." & cSurvey.cSurvey.DirectionEnum.Right.ToString("D")), cSurvey.cSurvey.DirectionEnum.Right, 11))
@@ -13177,7 +13180,7 @@ Friend Class frmMain2
             iIndex += 1
         Next
 
-        'delegates for wms download
+        'delegates for wms download 
         Call modWMSManager.WMSSetDelegate(AddressOf pWMSChangeState, AddressOf pWMSDownloadAsyncProgress, AddressOf pWMSDownloadAsyncCompleted, AddressOf pWMSLog)
 
         'undo

@@ -145,7 +145,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPropProfileTextPosition.ZOrder" xml:space="preserve">
-    <value>54</value>
+    <value>53</value>
   </data>
   <data name="chkPropCrossSectionMarkerArrowSizeEnabled.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -308,7 +308,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionMarkerDeltaAngleEnabled.ZOrder" xml:space="preserve">
-    <value>56</value>
+    <value>55</value>
   </data>
   <data name="chkPropCrossSectionMarkerScaleEnabled.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 37</value>
@@ -1060,7 +1060,7 @@
   <assembly alias="DevExpress.Data.v21.2" name="DevExpress.Data.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="cmdPropCrossSectionItem.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjIsIFZlcnNpb249MjEuMi41
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjIsIFZlcnNpb249MjEuMi44
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
         dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAMoEAAAC77u/
         PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
@@ -1706,7 +1706,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cboPropCrossSectionMarkerAlign.ZOrder" xml:space="preserve">
-    <value>48</value>
+    <value>56</value>
   </data>
   <data name="txtPropCrossSectionMarkerD.Location" type="System.Drawing.Point, System.Drawing">
     <value>96, 202</value>
@@ -1730,7 +1730,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtPropCrossSectionMarkerD.ZOrder" xml:space="preserve">
-    <value>49</value>
+    <value>48</value>
   </data>
   <data name="lblPropCrossSectionMarkerDUM.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -1760,7 +1760,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerDUM.ZOrder" xml:space="preserve">
-    <value>50</value>
+    <value>49</value>
   </data>
   <data name="lblPropCrossSectionMarkerUUM.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -1790,7 +1790,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerUUM.ZOrder" xml:space="preserve">
-    <value>51</value>
+    <value>50</value>
   </data>
   <data name="lblPropCrossSectionMarkerLUM.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
@@ -1820,7 +1820,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionMarkerLUM.ZOrder" xml:space="preserve">
-    <value>52</value>
+    <value>51</value>
   </data>
   <data name="cboPropCrossSectionMarkerProfileAlign.Location" type="System.Drawing.Point, System.Drawing">
     <value>78, 263</value>
@@ -1853,7 +1853,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cboPropCrossSectionMarkerProfileAlign.ZOrder" xml:space="preserve">
-    <value>53</value>
+    <value>52</value>
   </data>
   <data name="cboPropCrossSectionMarkerDirection.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 6</value>
@@ -1889,7 +1889,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cboPropCrossSectionMarkerDirection.ZOrder" xml:space="preserve">
-    <value>55</value>
+    <value>54</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

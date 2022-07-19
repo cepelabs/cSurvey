@@ -581,7 +581,6 @@ Partial Class cItemCrossSectionMarkerPropertyControl
         Me.Controls.Add(Me.txtPropCrossSectionMarkerL)
         Me.Controls.Add(Me.lblPropCrossSectionMarkerAlign)
         Me.Controls.Add(Me.txtPropCrossSectionMarkerR)
-        Me.Controls.Add(Me.cboPropCrossSectionMarkerAlign)
         Me.Controls.Add(Me.txtPropCrossSectionMarkerD)
         Me.Controls.Add(Me.lblPropCrossSectionMarkerDUM)
         Me.Controls.Add(Me.lblPropCrossSectionMarkerUUM)
@@ -590,6 +589,7 @@ Partial Class cItemCrossSectionMarkerPropertyControl
         Me.Controls.Add(Me.lblPropProfileTextPosition)
         Me.Controls.Add(Me.cboPropCrossSectionMarkerDirection)
         Me.Controls.Add(Me.chkPropCrossSectionMarkerDeltaAngleEnabled)
+        Me.Controls.Add(Me.cboPropCrossSectionMarkerAlign)
         Me.Name = "cItemCrossSectionMarkerPropertyControl"
         CType(Me.chkPropCrossSectionMarkerArrowSizeEnabled.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboPropCrossSectionMarkerArrowSize.Properties, System.ComponentModel.ISupportInitialize).EndInit()

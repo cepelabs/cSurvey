@@ -4049,13 +4049,13 @@ Friend Class frmMain2
                 'TODO: manage islocked for UI elements that can not be used in this context
 
                 With oCurrentItem
-                    grpCurrentItemLocation.Visible = False
-                    grpCurrentItemSize.Visible = False
-                    btnItemsLayouts.Visibility = BarItemVisibility.Never
+                    grpCurrentItemLocation.SetVisible(False)
+                    grpCurrentItemSize.SetVisible(False)
+                    btnItemsLayouts.SetVisible(False)
                     btnCurrentItemSendCopyTo.Visibility = BarItemVisibility.Never
                     btnCurrentItemConvertTo.Visibility = BarItemVisibility.Never
-                    grpCurrentItemRotate.Visible = False
-                    grpCurrentItemAlign.Visible = False
+                    grpCurrentItemRotate.SetVisible(False)
+                    grpCurrentItemAlign.SetVisible(False)
 
                     oPropName.Visible = False
                     oPropTransparency.Visible = False
@@ -4089,8 +4089,8 @@ Friend Class frmMain2
                     oPropScaleItems.Visible = False
                     oPropCompassItems.Visible = False
 
-                    grpCurrentItemShot.Visible = True
-                    grpCurrentItemStation.Visible = False
+                    grpCurrentItemShot.SetVisible(True)
+                    grpCurrentItemStation.SetVisible(False)
 
                     With btnCurrentItemSegmentFromProperty
                         .Enabled = True
@@ -4180,15 +4180,15 @@ Friend Class frmMain2
 
                 With oCurrentItem
                     'grpCurrentItemLocation.Visible = False
-                    grpCurrentItemSize.Visible = False
-                    btnItemsLayouts.Visibility = BarItemVisibility.Never
+                    grpCurrentItemSize.SetVisible(False)
+                    btnItemsLayouts.SetVisible(False)
                     btnCurrentItemSendCopyTo.Visibility = BarItemVisibility.Never
                     btnCurrentItemConvertTo.Visibility = BarItemVisibility.Never
-                    grpCurrentItemRotate.Visible = False
-                    grpCurrentItemAlign.Visible = False
-                    grpCurrentItemShot.Visible = False
+                    grpCurrentItemRotate.SetVisible(False)
+                    grpCurrentItemAlign.SetVisible(False)
+                    grpCurrentItemShot.SetVisible(False)
                     btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
-                    grpCurrentItemStation.Visible = False
+                    grpCurrentItemStation.SetVisible(False)
 
                     oPropName.Visible = False
                     oPropTransparency.Visible = False
@@ -4224,13 +4224,13 @@ Friend Class frmMain2
                     Dim oLocation As PointF = oBounds.Location
                     Call pPropertyItemBounds(bPropPopupShowed)
 
-                    grpCurrentItemLocation.Visible = True
+                    grpCurrentItemLocation.SetVisible(True)
 
                     btnCurrentItemLock.Visibility = BarItemVisibility.Never
-                    btnItemsLayouts.Visibility = BarItemVisibility.Never
+                    btnItemsLayouts.SetVisible(False)
 
-                    grpCurrentItemSize.Visible = False
-                    grpCurrentItemRotate.Visible = False
+                    grpCurrentItemSize.SetVisible(False)
+                    grpCurrentItemRotate.SetVisible(False)
 
                     Call oPropMarker.Rebind(oCurrentItem)
 
@@ -4257,16 +4257,16 @@ Friend Class frmMain2
                 Dim bIsUnlocked As Boolean = True
                 'TODO: manage islocked for UI elements that can not be used in this context
 
-                grpCurrentItemLocation.Visible = False
-                grpCurrentItemSize.Visible = False
-                btnItemsLayouts.Visibility = BarItemVisibility.Never
+                grpCurrentItemLocation.SetVisible(False)
+                grpCurrentItemSize.SetVisible(False)
+                btnItemsLayouts.SetVisible(False)
                 btnCurrentItemSendCopyTo.Visibility = BarItemVisibility.Never
                 btnCurrentItemConvertTo.Visibility = BarItemVisibility.Never
-                grpCurrentItemRotate.Visible = False
-                grpCurrentItemAlign.Visible = False
-                grpCurrentItemShot.Visible = False
+                grpCurrentItemRotate.SetVisible(False)
+                grpCurrentItemAlign.SetVisible(False)
+                grpCurrentItemShot.SetVisible(False)
                 btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
-                grpCurrentItemStation.Visible = True
+                grpCurrentItemStation.SetVisible(True)
 
                 oPropName.Visible = False
                 oPropTransparency.Visible = False
@@ -4355,10 +4355,10 @@ Friend Class frmMain2
     Private Sub pProperty3D()
         RibbonControl.Manager.BeginUpdate()
 
-        grpCurrentItemLocation.Visible = False
+        grpCurrentItemLocation.SetVisible(False)
         btnCurrentItemLock.Visibility = BarItemVisibility.Never
-        grpCurrentItemSize.Visible = False
-        btnItemsLayouts.Visibility = BarItemVisibility.Never
+        grpCurrentItemSize.SetVisible(False)
+        btnItemsLayouts.SetVisible(False)
         btnCurrentItemSendCopyTo.Visibility = BarItemVisibility.Never
         btnCurrentItemConvertTo.Visibility = BarItemVisibility.Never
 
@@ -4375,30 +4375,34 @@ Friend Class frmMain2
 
         Dim bHasItems As Boolean = oCurrentDesign.HasItems
 
-        grpCurrentItemLocation.Visible = bHasItems
+        grpCurrentItemLocation.SetVisible(bHasItems)
         btnCurrentItemLock.Visibility = BarItemVisibility.Never
-        grpCurrentItemSize.Visible = bHasItems
-        btnItemsLayouts.Visibility = BarItemVisibility.Never
+        grpCurrentItemSize.SetVisible(bHasItems)
+        btnItemsLayouts.SetVisible(False)
         btnCurrentItemSendCopyTo.Visibility = BarItemVisibility.Never
         btnCurrentItemConvertTo.Visibility = BarItemVisibility.Never
-        grpCurrentItemRotate.Visible = False
-        grpCurrentItemAlign.Visible = False
-        grpCurrentItemShot.Visible = False
+        grpCurrentItemRotate.SetVisible(False)
+        grpCurrentItemAlign.SetVisible(False)
+        grpCurrentItemShot.SetVisible(False)
         btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
-        grpCurrentItemStation.Visible = False
+        grpCurrentItemStation.SetVisible(False)
 
-        grpCurrentItemLegend.Visible = False
-        grpCurrentItemSign.Visible = False
-        grpCurrentItemClipart.Visible = False
-        grpCurrentItemSketch.Visible = False
-        grpCurrentItemImage.Visible = False
-        grpCurrentItemShape.Visible = False
+        grpCurrentItemLegend.SetVisible(False)
+        grpCurrentItemSign.SetVisible(False)
+        grpCurrentItemClipart.SetVisible(False)
+        grpCurrentItemSketch.SetVisible(False)
+        grpCurrentItemImage.SetVisible(False)
+        grpCurrentItemShape.SetVisible(False)
         btnCurrentItemGenericCombine.Visibility = BarItemVisibility.Never
         grpCurrentItemItems.Visible = False
 
-        grpCurrentItemSequence.Visible = False
-        grpCurrentItemPoint.Visible = False
-        grpCurrentItemBindings.Visible = False
+        grpCurrentItemSequence.SetVisible(False)
+        grpCurrentItemPoint.SetVisible(False)
+        grpCurrentItemBindings.SetVisible(False)
+
+        grpCurrentItemDesignOptions.SetVisible(False)
+        chkViewShowLRUD.Checked = oCurrentOptions.DrawLRUD
+        chkViewShowSplay.Checked = oCurrentOptions.DrawSplay
 
         If bHasItems Then Call pPropertyItemBounds(False)
 
@@ -4423,16 +4427,16 @@ Friend Class frmMain2
         RibbonControl.Manager.BeginUpdate()
 
         With pGetCurrentDesignTools.CurrentItemPoint
-            grpCurrentItemLocation.Visible = True
-            grpCurrentItemSize.Visible = False
-            btnItemsLayouts.Visibility = BarItemVisibility.Never
+            grpCurrentItemLocation.SetVisible(True)
+            grpCurrentItemSize.SetVisible(False)
+            btnItemsLayouts.SetVisible(False)
             btnCurrentItemSendCopyTo.Visibility = BarItemVisibility.Never
             btnCurrentItemConvertTo.Visibility = BarItemVisibility.Never
-            grpCurrentItemRotate.Visible = False
-            grpCurrentItemAlign.Visible = False
-            grpCurrentItemShot.Visible = False
+            grpCurrentItemRotate.SetVisible(False)
+            grpCurrentItemAlign.SetVisible(False)
+            grpCurrentItemShot.SetVisible(False)
             btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
-            grpCurrentItemStation.Visible = False
+            grpCurrentItemStation.SetVisible(False)
 
             oPropName.Visible = False
             oPropTransparency.Visible = False
@@ -4467,17 +4471,17 @@ Friend Class frmMain2
             oPropVisibility.Visible = False
             oPropLineType.Visible = False
 
-            grpCurrentItemLegend.Visible = False
-            grpCurrentItemSign.Visible = False
-            grpCurrentItemClipart.Visible = False
-            grpCurrentItemSketch.Visible = False
-            grpCurrentItemImage.Visible = False
-            grpCurrentItemShape.Visible = False
+            grpCurrentItemLegend.SetVisible(False)
+            grpCurrentItemSign.SetVisible(False)
+            grpCurrentItemClipart.SetVisible(False)
+            grpCurrentItemSketch.SetVisible(False)
+            grpCurrentItemImage.SetVisible(False)
+            grpCurrentItemShape.SetVisible(False)
             btnCurrentItemGenericCombine.Visibility = BarItemVisibility.Never
-            grpCurrentItemItems.Visible = False
+            grpCurrentItemItems.SetVisible(False)
 
-            grpCurrentItemSequence.Visible = True
-            grpCurrentItemPoint.Visible = True
+            grpCurrentItemSequence.SetVisible(False)
+            grpCurrentItemPoint.SetVisible(False)
 
             Dim iType As cPoint.PointTypeEnum = .Type
 
@@ -4495,7 +4499,7 @@ Friend Class frmMain2
                 btnCurrentItemPointNewFromSequence0.Visibility = BarItemVisibility.Never
                 btnCurrentItemPointNewFromSequence1.Visibility = BarItemVisibility.Never
 
-                grpCurrentItemBindings.Visible = False
+                grpCurrentItemBindings.SetVisible(False)
             Else
                 btnCurrentItemPointDelete.Visibility = BarItemVisibility.Always
 
@@ -4516,7 +4520,7 @@ Friend Class frmMain2
                 btnCurrentItemPointNewFromSequence0.Visibility = BarItemVisibility.Always
                 btnCurrentItemPointNewFromSequence1.Visibility = BarItemVisibility.Always
 
-                grpCurrentItemBindings.Visible = False 'True
+                grpCurrentItemBindings.SetVisible(False)
             End If
 
             Dim sCave As String = "" & .Item.Cave
@@ -4622,22 +4626,22 @@ Friend Class frmMain2
             ElseIf .Type = cIItem.cItemTypeEnum.Marker Then
                 Call pPropertyItemMarker()
             Else
-                grpCurrentItemClipart.Visible = TypeOf oCurrentDesign Is cIItemClipart
-                grpCurrentItemSign.Visible = TypeOf oCurrentItem Is cIItemSign
-                grpCurrentItemShape.Visible = .HaveEditablePoints
+                grpCurrentItemClipart.SetVisible(TypeOf oCurrentDesign Is cIItemClipart)
+                grpCurrentItemSign.SetVisible(TypeOf oCurrentItem Is cIItemSign)
+                grpCurrentItemShape.SetVisible(.HaveEditablePoints)
                 btnCurrentItemGenericCombine.Visibility = modControls.VisibleToVisibility(.HaveEditablePoints)
 
                 btnCurrentItemSendCopyTo.Caption = If(oCurrentDesign.Type = cIDesign.cDesignTypeEnum.Plan, modMain.GetLocalizedString("main.sendcopytoprofile"), modMain.GetLocalizedString("main.sendcopytoplan"))
                 btnCurrentItemSendCopyTo.Visibility = modControls.VisibleToVisibility(.CanBeSendedToOtherDesign)
 
-                grpCurrentItemLegend.Visible = oCurrentItem.Type <> cIItem.cItemTypeEnum.Legend AndAlso oCurrentDesign.Layers.Item(cLayers.LayerTypeEnum.Signs).Items.Where(Function(item) item.Type = cIItem.cItemTypeEnum.Legend).Count > 0
+                grpCurrentItemLegend.SetVisible(oCurrentItem.Type <> cIItem.cItemTypeEnum.Legend AndAlso oCurrentDesign.Layers.Item(cLayers.LayerTypeEnum.Signs).Items.Where(Function(item) item.Type = cIItem.cItemTypeEnum.Legend).Count > 0)
 
-                grpCurrentItemSequence.Visible = False
-                grpCurrentItemPoint.Visible = False
-                grpCurrentItemBindings.Visible = False
-                grpCurrentItemShot.Visible = False
+                grpCurrentItemSequence.SetVisible(False)
+                grpCurrentItemPoint.SetVisible(False)
+                grpCurrentItemBindings.SetVisible(False)
+                grpCurrentItemShot.SetVisible(False)
                 btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
-                grpCurrentItemStation.Visible = False
+                grpCurrentItemStation.SetVisible(False)
 
                 Dim sCave As String = "" & .Cave
                 Dim sBranch As String = "" & .Branch
@@ -4662,11 +4666,11 @@ Friend Class frmMain2
                 Call pPropertyItemBounds(bPropPopupShowed)
 
                 Dim bCanBeRaised As Boolean = pGetCurrentDesignTools.CurrentLayer.Items.Contains(oCurrentItem)
-                btnItemsLayouts.Visibility = BarItemVisibility.Always
+                btnItemsLayouts.SetVisible(True)
                 btnItemsLayouts.Enabled = bCanBeRaised
 
-                grpCurrentItemSize.Visible = .CanBeResized
-                grpCurrentItemLocation.Visible = .CanBeMoved
+                grpCurrentItemSize.SetVisible(.CanBeResized)
+                grpCurrentItemLocation.SetVisible(.CanBeMoved)
 
                 btnCurrentItemLock.Visibility = BarItemVisibility.Always
                 btnCurrentItemLock.Enabled = .CanBeMoved
@@ -4675,7 +4679,7 @@ Friend Class frmMain2
                 oPropVisibility.Rebind(oCurrentItem)
                 oPropVisibility.Visible = True
 
-                grpCurrentItemRotate.Visible = .CanBeRotated
+                grpCurrentItemRotate.SetVisible(.CanBeRotated)
 
                 If .HaveTransparency Then
                     Call oPropTransparency.Rebind(oCurrentItem)
@@ -4701,10 +4705,10 @@ Friend Class frmMain2
                 If .HaveImage Then
                     Call oPropImage.Rebind(oCurrentItem)
                     oPropImage.Visible = True
-                    grpCurrentItemImage.Visible = True
+                    grpCurrentItemImage.SetVisible(True)
                 Else
                     oPropImage.Visible = False
-                    grpCurrentItemImage.Visible = False
+                    grpCurrentItemImage.SetVisible(False)
                 End If
 
                 If .HaveSign Then
@@ -4810,10 +4814,10 @@ Friend Class frmMain2
                 If .HaveSketch Then
                     Call oPropSketch.Rebind(oCurrentItem)
                     oPropSketch.Visible = True
-                    grpCurrentItemSketch.Visible = True
+                    grpCurrentItemSketch.SetVisible(True)
                 Else
                     oPropSketch.Visible = False
-                    grpCurrentItemSketch.Visible = False
+                    grpCurrentItemSketch.SetVisible(False)
                 End If
 
                 If .Type = cIItem.cItemTypeEnum.InvertedFreeHandArea Then
@@ -4824,8 +4828,8 @@ Friend Class frmMain2
                 End If
 
                 If .Type = cIItem.cItemTypeEnum.Items Then
-                    grpCurrentItemAlign.Visible = True
-                    grpCurrentItemItems.Visible = True
+                    grpCurrentItemAlign.SetVisible(True)
+                    grpCurrentItemItems.SetVisible(True)
 
                     Dim oItemItems As cItemItems = oCurrentItem
                     btnCurrentItemItemsCombine.Visibility = modControls.VisibleToVisibility(oItemItems.IsSelfCombinable)
@@ -4834,8 +4838,8 @@ Friend Class frmMain2
                     btnCurrentItemItemsCombineRockClipart.Enabled = oItemItems.IsConvertibleToRock
                     btnCurrentItemItemsCombineSignClipart.Enabled = oItemItems.IsConvertibleToSign
                 Else
-                    grpCurrentItemItems.Visible = False
-                    grpCurrentItemAlign.Visible = False
+                    grpCurrentItemItems.SetVisible(False)
+                    grpCurrentItemAlign.SetVisible(False)
                     btnCurrentItemItemsCombine.Visibility = BarItemVisibility.Never
                 End If
 
@@ -4855,13 +4859,13 @@ Friend Class frmMain2
     Private Sub pPropertyNull()
         RibbonControl.Manager.BeginUpdate()
 
-        grpCurrentItemLocation.Visible = False
-        grpCurrentItemSize.Visible = False
-        btnItemsLayouts.Visibility = BarItemVisibility.Never
+        grpCurrentItemLocation.SetVisible(False)
+        grpCurrentItemSize.SetVisible(False)
+        btnItemsLayouts.SetVisible(False)
         btnCurrentItemSendCopyTo.Visibility = BarItemVisibility.Never
         btnCurrentItemConvertTo.Visibility = BarItemVisibility.Never
-        grpCurrentItemRotate.Visible = False
-        grpCurrentItemAlign.Visible = False
+        grpCurrentItemRotate.SetVisible(False)
+        grpCurrentItemAlign.SetVisible(False)
 
         oPropName.Visible = False
         oPropCaveBranch.Visible = False
@@ -4900,16 +4904,16 @@ Friend Class frmMain2
         oPropLineType.Visible = False
         oPropPointLineType.Visible = False
 
-        grpCurrentItemLegend.Visible = False
-        grpCurrentItemSign.Visible = False
-        grpCurrentItemClipart.Visible = False
-        grpCurrentItemShape.Visible = False
+        grpCurrentItemLegend.SetVisible(False)
+        grpCurrentItemSign.SetVisible(False)
+        grpCurrentItemClipart.SetVisible(False)
+        grpCurrentItemShape.SetVisible(False)
         btnCurrentItemGenericCombine.Visibility = BarItemVisibility.Never
-        grpCurrentItemItems.Visible = False
+        grpCurrentItemItems.SetVisible(False)
 
-        grpCurrentItemSequence.Visible = False
-        grpCurrentItemPoint.Visible = False
-        grpCurrentItemBindings.Visible = False
+        grpCurrentItemSequence.SetVisible(False)
+        grpCurrentItemPoint.SetVisible(False)
+        grpCurrentItemBindings.SetVisible(False)
 
         RibbonControl.Manager.EndUpdate()
 
@@ -4995,14 +4999,7 @@ Friend Class frmMain2
         End If
     End Sub
 
-    'Private Sub btnZooms_ButtonClick(ByVal sender As System.Object, ByVal e As System.EventArgs)
-    '    Call pMapCenter()
-    'End Sub
-
     Private Sub pSurveyMainProperties()
-        'lblSegmentDirection.Visible = True
-        'cboSegmentDirection.Visible = True
-        'grdSegments.Columns(11).HeaderText = "Dx/sx"
         Call pSurveyMainPropertiesPanelsRefresh()
     End Sub
 
@@ -7183,7 +7180,6 @@ Friend Class frmMain2
     Private Sub oPlanTools_OnItemSelect(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignTools.cEditDesignToolsEventArgs) Handles oPlanTools.OnItemSelect, oProfileTools.OnItemSelect
         Dim bThereIsAnItemSelected As Boolean = Not pGetCurrentDesignTools.CurrentItem Is Nothing
         btnZoomZoomToSelection.Enabled = bThereIsAnItemSelected
-        'btnItemsLayouts.Enabled = bThereIsAnItemSelected
 
         Call pMapInvalidate()
         Call pObjectPropertyDelayedLoad()
@@ -18709,6 +18705,20 @@ Friend Class frmMain2
             Dim iIndex As Integer = RibbonControl.Toolbar.ItemLinks.IndexOf(oQATLastItem)
             RibbonControl.Toolbar.ItemLinks.RemoveAt(iIndex)
             RibbonControl.Toolbar.ItemLinks.Insert(iIndex + 1, oitem)
+        End If
+    End Sub
+
+    Private Sub chkViewShowSplay_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles chkViewShowSplay.CheckedChanged
+        If Not bDisabledObjectPropertyEvent Then
+            oCurrentOptions.DrawSplay = chkViewShowSplay.Checked
+            Call pObjectPropertyLoad()
+        End If
+    End Sub
+
+    Private Sub chkViewShowLRUD_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles chkViewShowLRUD.CheckedChanged
+        If Not bDisabledObjectPropertyEvent Then
+            oCurrentOptions.DrawLRUD = chkViewShowLRUD.Checked
+            Call pObjectPropertyLoad()
         End If
     End Sub
 End Class

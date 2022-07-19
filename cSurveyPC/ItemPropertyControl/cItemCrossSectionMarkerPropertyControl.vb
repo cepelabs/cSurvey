@@ -220,7 +220,7 @@ Friend Class cItemCrossSectionMarkerPropertyControl
             DirectCast(Me.Item, cIItemProfileCrossSectionMarker).AutoUpHeight = chkPropCrossSectionMarkerUH.Checked
             txtPropCrossSectionMarkerUH.Enabled = Not chkPropCrossSectionMarkerUH.Checked
             Call MyBase.TakeUndoSnapshot()
-            Call MyBase.PropertyChanged("CrossSectionMarkerUH")
+            Call MyBase.PropertyChanged("CrossSectionMarkerAutoUH")
             Call MyBase.MapInvalidate()
         End If
     End Sub
@@ -257,7 +257,7 @@ Friend Class cItemCrossSectionMarkerPropertyControl
             DirectCast(Me.Item, cIItemPlanCrossSectionMarker).AutoLeftWidth = chkPropCrossSectionMarkerLW.Checked
             txtPropCrossSectionMarkerLW.Enabled = Not chkPropCrossSectionMarkerLW.Checked
             Call MyBase.TakeUndoSnapshot()
-            Call MyBase.PropertyChanged("CrossSectionMarkerLW")
+            Call MyBase.PropertyChanged("CrossSectionMarkerAutoLW")
             Call MyBase.MapInvalidate()
         End If
     End Sub
@@ -276,7 +276,7 @@ Friend Class cItemCrossSectionMarkerPropertyControl
             DirectCast(Me.Item, cIItemPlanCrossSectionMarker).AutoRightWidth = chkPropCrossSectionMarkerRW.Checked
             txtPropCrossSectionMarkerRW.Enabled = Not chkPropCrossSectionMarkerRW.Checked
             Call MyBase.TakeUndoSnapshot()
-            Call MyBase.PropertyChanged("CrossSectionMarkerRW")
+            Call MyBase.PropertyChanged("CrossSectionMarkerAutoRW")
             Call MyBase.MapInvalidate()
         End If
     End Sub
@@ -304,7 +304,7 @@ Friend Class cItemCrossSectionMarkerPropertyControl
             DirectCast(Me.Item, cIItemProfileCrossSectionMarker).AutoDownHeight = chkPropCrossSectionMarkerDH.Checked
             txtPropCrossSectionMarkerDH.Enabled = Not chkPropCrossSectionMarkerDH.Checked
             Call MyBase.TakeUndoSnapshot()
-            Call MyBase.PropertyChanged("CrossSectionMarkerDH")
+            Call MyBase.PropertyChanged("CrossSectionMarkerAutoDH")
             Call MyBase.MapInvalidate()
         End If
     End Sub
@@ -322,7 +322,7 @@ Friend Class cItemCrossSectionMarkerPropertyControl
         If Not DisabledObjectProperty() Then
             DirectCast(Me.Item, cIItemPlanCrossSectionMarker).PlanAlignment = cboPropCrossSectionMarkerAlign.SelectedIndex
             Call MyBase.TakeUndoSnapshot()
-            Call MyBase.PropertyChanged("CrossSectionMarkerAlign")
+            Call MyBase.PropertyChanged("CrossSectionMarkerPlanAlignment")
             Call MyBase.MapInvalidate()
         End If
     End Sub
@@ -332,7 +332,7 @@ Friend Class cItemCrossSectionMarkerPropertyControl
             Me.Item.ArrowSizeEnabled = chkPropCrossSectionMarkerArrowSizeEnabled.Checked
             cboPropCrossSectionMarkerArrowSize.Enabled = chkPropCrossSectionMarkerArrowSizeEnabled.Checked
             Call MyBase.TakeUndoSnapshot()
-            Call MyBase.PropertyChanged("CrossSectionMarkerAlign")
+            Call MyBase.PropertyChanged("CrossSectionMarkerArrowSizeEnabled")
             Call MyBase.MapInvalidate()
         End If
     End Sub
@@ -341,7 +341,7 @@ Friend Class cItemCrossSectionMarkerPropertyControl
         If Not DisabledObjectProperty() Then
             Me.Item.ArrowSize = cboPropCrossSectionMarkerArrowSize.SelectedIndex
             Call MyBase.TakeUndoSnapshot()
-            Call MyBase.PropertyChanged("CrossSectionMarkerAlign")
+            Call MyBase.PropertyChanged("CrossSectionMarkerArrowSize")
             Call MyBase.MapInvalidate()
         End If
     End Sub
@@ -416,6 +416,15 @@ Friend Class cItemCrossSectionMarkerPropertyControl
             End If
             Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("CrossSectionMarkerLabelRotation")
+            Call MyBase.MapInvalidate()
+        End If
+    End Sub
+
+    Private Sub cboPropCrossSectionMarkerProfileAlign_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropCrossSectionMarkerProfileAlign.SelectedIndexChanged
+        If Not DisabledObjectProperty() Then
+            DirectCast(Me.Item, cIItemProfileCrossSectionMarker).ProfileAlignment = cboPropCrossSectionMarkerProfileAlign.SelectedIndex
+            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.PropertyChanged("CrossSectionMarkerProfileAlignment")
             Call MyBase.MapInvalidate()
         End If
     End Sub

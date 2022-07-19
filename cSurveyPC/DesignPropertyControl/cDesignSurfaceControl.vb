@@ -97,15 +97,22 @@ Public Class cDesignSurfaceControl
         If e.Row IsNot Nothing Then
             If e.IsGetData AndAlso e.Row IsNot Nothing Then
                 If e.Column Is colLayerName Then
-                    e.Value = MyBase.Design.Survey.Surface(DirectCast(e.Row, cISurfaceOptionsItem).ID).Name
+                    Dim sID As String = DirectCast(e.Row, cISurfaceOptionsItem).ID
+                    Dim oItem As Surface.cISurfaceItem = MyBase.Design.Survey.Surface(sID)
+                    If oItem IsNot Nothing Then
+                        e.Value = oItem.Name
+                    End If
                 ElseIf e.Column Is colLayerImage Then
-                    Dim oItem As Surface.cISurfaceItem = MyBase.Design.Survey.Surface(DirectCast(e.Row, cISurfaceOptionsItem).ID)
-                    If TypeOf oItem Is Surface.cOrthoPhoto Then
-                        e.Value = My.Resources.map_raster
-                    ElseIf TypeOf oItem Is Surface.cWMS Then
-                        e.Value = My.Resources.map_wms
-                    ElseIf TypeOf oItem Is Surface.cElevation Then
-                        e.Value = My.Resources.soilmodeldata
+                    Dim sID As String = DirectCast(e.Row, cISurfaceOptionsItem).ID
+                    Dim oItem As Surface.cISurfaceItem = MyBase.Design.Survey.Surface(sID)
+                    If oItem IsNot Nothing Then
+                        If TypeOf oItem Is Surface.cOrthoPhoto Then
+                            e.Value = My.Resources.map_raster
+                        ElseIf TypeOf oItem Is Surface.cWMS Then
+                            e.Value = My.Resources.map_wms
+                        ElseIf TypeOf oItem Is Surface.cElevation Then
+                            e.Value = My.Resources.soilmodeldata
+                        End If
                     End If
                 End If
             End If

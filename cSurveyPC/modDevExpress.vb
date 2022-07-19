@@ -38,9 +38,25 @@ Public Module modDevExpress
     End Sub
     Public Sub RestoreDockPanel(DockManager As DevExpress.XtraBars.Docking.DockManager, DockPanel As DevExpress.XtraBars.Docking.DockPanel, Dock As DevExpress.XtraBars.Docking.DockingStyle)
         If DockPanel.DockManager Is Nothing Then
-            DockManager.AddPanel(Dock, DockPanel)
+            Call DockManager.AddPanel(Dock, DockPanel)
             DockPanel.Visible = False
         End If
+    End Sub
+    <Extension>
+    Public Sub SetVisible(Group As DevExpress.XtraBars.BarButtonGroup, Visible As Boolean)
+        Dim iVisibility As DevExpress.XtraBars.BarItemVisibility = VisibleToVisibility(Visible)
+        For Each oLink As DevExpress.XtraBars.BarItemLink In Group.ItemLinks
+            oLink.Item.Visibility = iVisibility
+        Next
+        Group.Visibility = iVisibility
+    End Sub
+    <Extension>
+    Public Sub SetVisible(Group As DevExpress.XtraBars.Ribbon.RibbonPageGroup, Visible As Boolean)
+        Dim iVisibility As DevExpress.XtraBars.BarItemVisibility = VisibleToVisibility(Visible)
+        For Each oLink As DevExpress.XtraBars.BarItemLink In Group.ItemLinks
+            oLink.Item.Visibility = iVisibility
+        Next
+        Group.Visible = Visible
     End Sub
 
     <Extension>

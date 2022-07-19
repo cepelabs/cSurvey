@@ -424,6 +424,11 @@
     <Compile Include="ItemPropertyControl\cItemPenStylePropertyControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Specialized\cTrigpointDropDown.Designer.vb">
       <DependentUpon>cTrigpointDropDown.vb</DependentUpon>
     </Compile>
@@ -1599,11 +1604,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
       <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="My Project\Resources.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="My Project\Settings.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -3011,8 +3011,8 @@
     <EmbeddedResource Include="My Project\Resources.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Specialized\cTrigpointsMultiselector.it.resx">
       <DependentUpon>cTrigpointsMultiselector.vb</DependentUpon>
@@ -4673,9 +4673,14 @@
     <None Include="Resources\clearheaderandfooter.svg" />
     <None Include="Resources\connected.svg" />
     <None Include="Resources\disconnected.svg" />
+    <None Include="Resources\Actions_Arrow4Left.svg" />
+    <None Include="Resources\Actions_Arrow4Right.svg" />
     <Content Include="Resources\Actions_Database.svg" />
     <None Include="Resources\csurvey_2.svg" />
     <Content Include="Resources\Bar.svg" />
+    <None Include="Resources\databasecleanup.svg" />
+    <None Include="Resources\Electronics_Volume.svg" />
+    <None Include="Resources\Electronics_Volume_colored.svg" />
     <Content Include="version.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

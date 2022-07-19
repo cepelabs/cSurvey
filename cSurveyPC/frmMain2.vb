@@ -4091,6 +4091,7 @@ Friend Class frmMain2
 
                     grpCurrentItemShot.SetVisible(True)
                     grpCurrentItemStation.SetVisible(False)
+                    grpCurrentItemCenterline.SetVisible(False)
 
                     With btnCurrentItemSegmentFromProperty
                         .Enabled = True
@@ -4189,6 +4190,7 @@ Friend Class frmMain2
                     grpCurrentItemShot.SetVisible(False)
                     btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
                     grpCurrentItemStation.SetVisible(False)
+                    grpCurrentItemCenterline.SetVisible(False)
 
                     oPropName.Visible = False
                     oPropTransparency.Visible = False
@@ -4267,6 +4269,7 @@ Friend Class frmMain2
                 grpCurrentItemShot.SetVisible(False)
                 btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
                 grpCurrentItemStation.SetVisible(True)
+                grpCurrentItemCenterline.SetVisible(False)
 
                 oPropName.Visible = False
                 oPropTransparency.Visible = False
@@ -4386,6 +4389,7 @@ Friend Class frmMain2
         grpCurrentItemShot.SetVisible(False)
         btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
         grpCurrentItemStation.SetVisible(False)
+        grpCurrentItemCenterline.SetVisible(True)
 
         grpCurrentItemLegend.SetVisible(False)
         grpCurrentItemSign.SetVisible(False)
@@ -4400,7 +4404,6 @@ Friend Class frmMain2
         grpCurrentItemPoint.SetVisible(False)
         grpCurrentItemBindings.SetVisible(False)
 
-        grpCurrentItemDesignOptions.SetVisible(False)
         chkViewShowLRUD.Checked = oCurrentOptions.DrawLRUD
         chkViewShowSplay.Checked = oCurrentOptions.DrawSplay
 
@@ -4437,6 +4440,7 @@ Friend Class frmMain2
             grpCurrentItemShot.SetVisible(False)
             btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
             grpCurrentItemStation.SetVisible(False)
+            grpCurrentItemCenterline.SetVisible(False)
 
             oPropName.Visible = False
             oPropTransparency.Visible = False
@@ -4642,6 +4646,7 @@ Friend Class frmMain2
                 grpCurrentItemShot.SetVisible(False)
                 btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
                 grpCurrentItemStation.SetVisible(False)
+                grpCurrentItemCenterline.SetVisible(False)
 
                 Dim sCave As String = "" & .Cave
                 Dim sBranch As String = "" & .Branch
@@ -4866,6 +4871,9 @@ Friend Class frmMain2
         btnCurrentItemConvertTo.Visibility = BarItemVisibility.Never
         grpCurrentItemRotate.SetVisible(False)
         grpCurrentItemAlign.SetVisible(False)
+        grpCurrentItemShot.SetVisible(False)
+        grpCurrentItemStation.SetVisible(False)
+        grpCurrentItemCenterline.SetVisible(False)
 
         oPropName.Visible = False
         oPropCaveBranch.Visible = False
@@ -15047,6 +15055,10 @@ Friend Class frmMain2
 
     Private Sub ObjectProperty_OnPropertyChanged(Sender As Object, e As PropertyChangeEventArgs)
         Select Case e.Name
+            Case "PlotShowSplay"
+                chkViewShowSplay.Checked = oCurrentOptions.DrawSplay
+            Case "PlotShowLRUD"
+                chkViewShowLRUD.Checked = oCurrentOptions.DrawLRUD
             Case "QuotaType"
                 Call pObjectPropertyLoad()
             Case "LineStyle"

@@ -506,13 +506,13 @@ Partial Class frmMain2
         Me.grpCurrentItemImage = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.grpCurrentItemShot = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.grpCurrentItemStation = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.grpCurrentItemCenterline = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.pageCurrentItemPoint = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.grpCurrentItemSequence = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.grpCurrentItemPoint = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.grpCurrentItemBindings = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.pageOther = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.grdViewCurrentView = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.grpCurrentItemDesignOptions = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.cboPensSmooting1 = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
         Me.RepositoryItemPopupContainerEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit()
         Me.txtCurrentItemTransparency = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
@@ -4485,7 +4485,7 @@ Partial Class frmMain2
         '
         'pageCurrentItem
         '
-        Me.pageCurrentItem.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.grpCurrentItemItem, Me.grpCurrentItemLocation, Me.grpCurrentItemSize, Me.grpCurrentItemRotate, Me.grpCurrentItemAlign, Me.grpCurrentItemShape, Me.grpCurrentItemSign, Me.grpCurrentItemClipart, Me.grpCurrentItemItems, Me.grpCurrentItemLegend, Me.grpCurrentItemSketch, Me.grpCurrentItemImage, Me.grpCurrentItemShot, Me.grpCurrentItemStation})
+        Me.pageCurrentItem.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.grpCurrentItemItem, Me.grpCurrentItemLocation, Me.grpCurrentItemSize, Me.grpCurrentItemRotate, Me.grpCurrentItemAlign, Me.grpCurrentItemShape, Me.grpCurrentItemSign, Me.grpCurrentItemClipart, Me.grpCurrentItemItems, Me.grpCurrentItemLegend, Me.grpCurrentItemSketch, Me.grpCurrentItemImage, Me.grpCurrentItemShot, Me.grpCurrentItemStation, Me.grpCurrentItemCenterline})
         Me.pageCurrentItem.Name = "pageCurrentItem"
         resources.ApplyResources(Me.pageCurrentItem, "pageCurrentItem")
         Me.pageCurrentItem.Visible = False
@@ -4634,6 +4634,14 @@ Partial Class frmMain2
         resources.ApplyResources(Me.grpCurrentItemStation, "grpCurrentItemStation")
         Me.grpCurrentItemStation.Visible = False
         '
+        'grpCurrentItemCenterline
+        '
+        Me.grpCurrentItemCenterline.ItemLinks.Add(Me.chkViewShowLRUD)
+        Me.grpCurrentItemCenterline.ItemLinks.Add(Me.chkViewShowSplay)
+        Me.grpCurrentItemCenterline.Name = "grpCurrentItemCenterline"
+        resources.ApplyResources(Me.grpCurrentItemCenterline, "grpCurrentItemCenterline")
+        Me.grpCurrentItemCenterline.Visible = False
+        '
         'pageCurrentItemPoint
         '
         Me.pageCurrentItemPoint.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.grpCurrentItemSequence, Me.grpCurrentItemPoint, Me.grpCurrentItemBindings})
@@ -4677,7 +4685,7 @@ Partial Class frmMain2
         '
         'pageOther
         '
-        Me.pageOther.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.grdViewCurrentView, Me.grpCurrentItemDesignOptions})
+        Me.pageOther.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.grdViewCurrentView})
         Me.pageOther.Name = "pageOther"
         resources.ApplyResources(Me.pageOther, "pageOther")
         Me.pageOther.Visible = False
@@ -4724,13 +4732,6 @@ Partial Class frmMain2
         Me.grdViewCurrentView.ItemLinks.Add(Me.btnQATRestore)
         Me.grdViewCurrentView.Name = "grdViewCurrentView"
         resources.ApplyResources(Me.grdViewCurrentView, "grdViewCurrentView")
-        '
-        'grpCurrentItemDesignOptions
-        '
-        Me.grpCurrentItemDesignOptions.ItemLinks.Add(Me.chkViewShowLRUD)
-        Me.grpCurrentItemDesignOptions.ItemLinks.Add(Me.chkViewShowSplay)
-        Me.grpCurrentItemDesignOptions.Name = "grpCurrentItemDesignOptions"
-        resources.ApplyResources(Me.grpCurrentItemDesignOptions, "grpCurrentItemDesignOptions")
         '
         'cboPensSmooting1
         '
@@ -8040,5 +8041,5 @@ Partial Class frmMain2
     Friend WithEvents btnQATRestore As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents chkViewShowLRUD As DevExpress.XtraBars.BarCheckItem
     Friend WithEvents chkViewShowSplay As DevExpress.XtraBars.BarCheckItem
-    Friend WithEvents grpCurrentItemDesignOptions As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents grpCurrentItemCenterline As DevExpress.XtraBars.Ribbon.RibbonPageGroup
 End Class

@@ -70,6 +70,7 @@ Public Class cDesignCenterlineControl
             Height = 32 * Me.CurrentAutoScaleDimensions.Height / 96.0F
         End If
     End Sub
+
     Private Sub chkDesignPlotShowTrigpointText_CheckedChanged(sender As Object, e As EventArgs) Handles chkDesignPlotShowTrigpointText.CheckedChanged
         If Not DisabledObjectProperty() Then
             MyBase.Options.ShowPointText = chkDesignPlotShowTrigpointText.Checked

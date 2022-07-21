@@ -2175,7 +2175,8 @@ Friend Class frmMain2
                         'Call cDesignMessageBar.PopupHide()
                         cDesignMessageCorner.PopupHide()
 
-                        btnDesignBar3DRefresh.Visibility = BarItemVisibility.Never
+                        btnDesignBar3DRefresh.ItemAppearance.Normal.Reset()
+                        btnDesignBar3DRefresh.Visibility = BarItemVisibility.Always
                         btnDesignBarPlotCalculate.Visibility = BarItemVisibility.Never
                     End If
             End Select
@@ -4091,7 +4092,7 @@ Friend Class frmMain2
 
                     grpCurrentItemShot.SetVisible(True)
                     grpCurrentItemStation.SetVisible(False)
-                    grpCurrentItemCenterline.SetVisible(False)
+                    'btnViewShowCenterline.Visibility = BarItemVisibility.Never
 
                     With btnCurrentItemSegmentFromProperty
                         .Enabled = True
@@ -4190,7 +4191,7 @@ Friend Class frmMain2
                     grpCurrentItemShot.SetVisible(False)
                     btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
                     grpCurrentItemStation.SetVisible(False)
-                    grpCurrentItemCenterline.SetVisible(False)
+                    'btnViewShowCenterline.Visibility = BarItemVisibility.Never
 
                     oPropName.Visible = False
                     oPropTransparency.Visible = False
@@ -4269,7 +4270,7 @@ Friend Class frmMain2
                 grpCurrentItemShot.SetVisible(False)
                 btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
                 grpCurrentItemStation.SetVisible(True)
-                grpCurrentItemCenterline.SetVisible(False)
+                'btnViewShowCenterline.Visibility = BarItemVisibility.Never
 
                 oPropName.Visible = False
                 oPropTransparency.Visible = False
@@ -4389,7 +4390,7 @@ Friend Class frmMain2
         grpCurrentItemShot.SetVisible(False)
         btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
         grpCurrentItemStation.SetVisible(False)
-        grpCurrentItemCenterline.SetVisible(True)
+        'btnViewShowCenterline.Visibility = BarItemVisibility.Always
 
         grpCurrentItemLegend.SetVisible(False)
         grpCurrentItemSign.SetVisible(False)
@@ -4404,6 +4405,7 @@ Friend Class frmMain2
         grpCurrentItemPoint.SetVisible(False)
         grpCurrentItemBindings.SetVisible(False)
 
+        chkViewShowShots.Checked = oCurrentOptions.DrawSegments
         chkViewShowLRUD.Checked = oCurrentOptions.DrawLRUD
         chkViewShowSplay.Checked = oCurrentOptions.DrawSplay
 
@@ -4440,7 +4442,7 @@ Friend Class frmMain2
             grpCurrentItemShot.SetVisible(False)
             btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
             grpCurrentItemStation.SetVisible(False)
-            grpCurrentItemCenterline.SetVisible(False)
+            'btnViewShowCenterline.Visibility = BarItemVisibility.Never
 
             oPropName.Visible = False
             oPropTransparency.Visible = False
@@ -4646,7 +4648,7 @@ Friend Class frmMain2
                 grpCurrentItemShot.SetVisible(False)
                 btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
                 grpCurrentItemStation.SetVisible(False)
-                grpCurrentItemCenterline.SetVisible(False)
+                'btnViewShowCenterline.Visibility = BarItemVisibility.Never
 
                 Dim sCave As String = "" & .Cave
                 Dim sBranch As String = "" & .Branch
@@ -4873,7 +4875,7 @@ Friend Class frmMain2
         grpCurrentItemAlign.SetVisible(False)
         grpCurrentItemShot.SetVisible(False)
         grpCurrentItemStation.SetVisible(False)
-        grpCurrentItemCenterline.SetVisible(False)
+        'btnViewShowCenterline.Visibility = BarItemVisibility.Never
 
         oPropName.Visible = False
         oPropCaveBranch.Visible = False
@@ -4886,14 +4888,15 @@ Friend Class frmMain2
         oPropMarker.Visible = False
         oPropSegmentBinding.Visible = False
         oPropSegmentsBinding.Visible = False
+        oPropSegmentsBinding.Visible = False
         oPropSign.Visible = False
         oPropTextStyle.Visible = False
         oPropClipping.Visible = False
         oPropCrossSection.Visible = False
         oPropQuota.Visible = False
         oPropSketch.Visible = False
-        grpCurrentItemSketch.Visible = False
-        grpCurrentItemImage.Visible = False
+        grpCurrentItemSketch.SetVisible(False)
+        grpCurrentItemImage.SetVisible(False)
         oPropMergeMode.Visible = False
         oPropObjectsBinding.Visible = False
         oPropTrigpointsDistances.Visible = False
@@ -5521,6 +5524,12 @@ Friend Class frmMain2
 
             oCurrentDesign = oTools.ThreeDTools.Design
             oCurrentOptions = oSurvey.Options("_design.3d")
+            chkViewShowSplay.Checked = oCurrentOptions.DrawSplay
+            chkViewShowLRUD.Checked = oCurrentOptions.DrawLRUD
+            chkViewShowShots.Checked = oCurrentOptions.DrawSegments
+            chkViewShowStation.Checked = oCurrentOptions.DrawPoints
+            chkViewShowStationLabel.Checked = oCurrentOptions.ShowPointText
+
             oDockLevels.Enabled = False
             oDockText.Enabled = False
             oDockJoinPoints.Enabled = False
@@ -5535,7 +5544,7 @@ Friend Class frmMain2
 
             oTopDesignLevelBar.Visible = False
             oTopDesignItemsBar.Visible = False
-            grpDesignOptions.Visible = False
+            grpDesignOptions.SetVisible(False)
             pageDesign.Visible = False
 
             btnScrollMode.Visibility = BarItemVisibility.Never
@@ -5595,11 +5604,11 @@ Friend Class frmMain2
             oVSB.Visible = False
             oHSB.Visible = False
 
-            grdDesignLayers.Visible = False
+            grpDesignLayers.SetVisible(False)
             grpDesignCommands.Visible = False
-            grpDesignBindings.Visible = False
+            grpDesignBindings.SetVisible(False)
 
-            grpDesignItemsAdd.Visible = False
+            grpDesignItemsAdd.SetVisible(False)
 
             Call pSurveySetCurrentCaveBranch(pGetCurrentDesignTools.CurrentCave, pGetCurrentDesignTools.CurrentBranch)
             btnDesignHighlight0.Checked = Not oCurrentOptions.HighlightCurrentCave
@@ -5642,6 +5651,12 @@ Friend Class frmMain2
 
             oCurrentDesign = oSurvey.Profile
             oCurrentOptions = oSurvey.Options("_design.profile")
+            chkViewShowSplay.Checked = oCurrentOptions.DrawSplay
+            chkViewShowLRUD.Checked = oCurrentOptions.DrawLRUD
+            chkViewShowShots.Checked = oCurrentOptions.DrawSegments
+            chkViewShowStation.Checked = oCurrentOptions.DrawPoints
+            chkViewShowStationLabel.Checked = oCurrentOptions.ShowPointText
+
             Call oDockLevels.SetDesign(oCurrentDesign, pGetCurrentDesignTools, oCurrentOptions)
             oDockLevels.Enabled = True
             Call oDockText.SetOptions(oCurrentOptions)
@@ -5665,7 +5680,6 @@ Friend Class frmMain2
 
             oTopDesignLevelBar.Visible = True
             oTopDesignItemsBar.Visible = True
-            grdDesignLayers.Visible = True
             pageDesign.Visible = True
 
             btnScrollMode.Visibility = BarItemVisibility.Always
@@ -5687,7 +5701,7 @@ Friend Class frmMain2
             btnDesignPlotShowBindings.Visibility = BarItemVisibility.Always
             btnGrpDesignPlotRebindCommands.Visibility = BarItemVisibility.Always
             btnGrpDesignPlotRebindActions.Visibility = BarItemVisibility.Always
-            grpDesignOptions.Visible = True
+            grpDesignOptions.SetVisible(True)
 
             btn3DViewTop.Visibility = BarItemVisibility.Never
             btn3DViewBottom.Visibility = BarItemVisibility.Never
@@ -5718,9 +5732,9 @@ Friend Class frmMain2
             oVSB.Visible = True
             oHSB.Visible = True
 
-            grdDesignLayers.Visible = True
+            grpDesignLayers.SetVisible(True)
             grpDesignCommands.Visible = True
-            grpDesignBindings.Visible = True
+            grpDesignBindings.SetVisible(True)
 
             If pGetCurrentDesignTools.CurrentLayer Is Nothing Then
                 Call pGetCurrentDesignTools.SelectLayer(oSurvey.Profile.Layers(cLayers.LayerTypeEnum.Base))
@@ -5728,29 +5742,21 @@ Friend Class frmMain2
                 Select Case pGetCurrentDesignTools.CurrentLayer.Type
                     Case cLayers.LayerTypeEnum.Base
                         btnLayer_Base.Checked = True
-                        'Call btnLayer_Base.PerformClick()
                     Case cLayers.LayerTypeEnum.Borders
                         btnLayer_Borders.Checked = True
-                        'Call btnLayer_Borders.PerformClick()
                     Case cLayers.LayerTypeEnum.RocksAndConcretion
                         btnLayer_Rocks.Checked = True
-                        'Call btnLayer_Rocks.PerformClick()
                     Case cLayers.LayerTypeEnum.Signs
                         btnLayer_Signs.Checked = True
-                        'Call btnLayer_Signs.PerformClick()
                     Case cLayers.LayerTypeEnum.Soil
                         btnLayer_Soil.Checked = True
-                        'Call btnLayer_Soil.PerformClick()
                     Case cLayers.LayerTypeEnum.CeilingMorphologies
                         btnLayer_TerrainLevel.Checked = True
-                        'Call btnLayer_TerrainLevel.PerformClick()
                     Case cLayers.LayerTypeEnum.WaterAndFloorMorphologies
                         btnLayer_Water.Checked = True
-                        'Call btnLayer_Water.PerformClick()
                 End Select
             End If
 
-            grpDesignItemsAdd.Visible = True
             For Each oItem As BarItemLink In grpDesignItemsAdd.ItemLinks
                 If TypeOf oItem.Item.Tag Is cEditToolsBag Then
                     Dim oBag As cEditToolsBag = oItem.Item.Tag
@@ -5759,14 +5765,7 @@ Friend Class frmMain2
                     oItem.Item.Visibility = BarItemVisibility.Always
                 End If
             Next
-            'For Each oButton As ToolStripItem In mnuDesignAdd.DropDownItems
-            '    If TypeOf oButton.Tag Is cEditToolsBag Then
-            '        Dim oBag As cEditToolsBag = oButton.Tag
-            '        oButton.Visible = oBag.AvaiableInProfile
-            '    Else
-            '        oButton.Visible = True
-            '    End If
-            'Next
+            grpDesignItemsAdd.SetVisible(True)
 
             Call pSurveySetCurrentCaveBranch(pGetCurrentDesignTools.CurrentCave, pGetCurrentDesignTools.CurrentBranch)
             btnDesignHighlight0.Checked = Not oCurrentOptions.HighlightCurrentCave
@@ -5808,9 +5807,15 @@ Friend Class frmMain2
 
             oCurrentDesign = oSurvey.Plan
             oCurrentOptions = oSurvey.Options("_design.plan")
+            chkViewShowSplay.Checked = oCurrentOptions.DrawSplay
+            chkViewShowLRUD.Checked = oCurrentOptions.DrawLRUD
+            chkViewShowShots.Checked = oCurrentOptions.DrawSegments
+            chkViewShowStation.Checked = oCurrentOptions.DrawPoints
+            chkViewShowStationLabel.Checked = oCurrentOptions.ShowPointText
+
             Call oDockLevels.SetDesign(oCurrentDesign, pGetCurrentDesignTools, oCurrentOptions)
             oDockLevels.Enabled = True
-            Call oDockText.setoptions(oCurrentOptions)
+            Call oDockText.SetOptions(oCurrentOptions)
             oDockText.Enabled = True
             oDockJoinPoints.Enabled = True
             oDockClipart.Enabled = True
@@ -5829,9 +5834,8 @@ Friend Class frmMain2
             btnViewProfile.Checked = False
             btnView3D.Checked = False
 
-            oTopDesignLevelBar.visible = True
+            oTopDesignLevelBar.Visible = True
             oTopDesignItemsBar.Visible = True
-            grdDesignLayers.Visible = True
             pageDesign.Visible = True
 
             btnScrollMode.Visibility = BarItemVisibility.Always
@@ -5853,7 +5857,7 @@ Friend Class frmMain2
             btnDesignPlotShowBindings.Visibility = BarItemVisibility.Always
             btnGrpDesignPlotRebindCommands.Visibility = BarItemVisibility.Always
             btnGrpDesignPlotRebindActions.Visibility = BarItemVisibility.Always
-            grpDesignOptions.Visible = True
+            grpDesignOptions.SetVisible(True)
 
             btn3DViewTop.Visibility = BarItemVisibility.Never
             btn3DViewBottom.Visibility = BarItemVisibility.Never
@@ -5884,9 +5888,9 @@ Friend Class frmMain2
             oVSB.Visible = True
             oHSB.Visible = True
 
-            grdDesignLayers.Visible = True
+            grpDesignLayers.SetVisible(True)
             grpDesignCommands.Visible = True
-            grpDesignBindings.Visible = True
+            grpDesignBindings.SetVisible(True)
 
             If pGetCurrentDesignTools.CurrentLayer Is Nothing Then
                 Call pGetCurrentDesignTools.SelectLayer(oSurvey.Plan.Layers(cLayers.LayerTypeEnum.Base))
@@ -5894,29 +5898,21 @@ Friend Class frmMain2
                 Select Case pGetCurrentDesignTools.CurrentLayer.Type
                     Case cLayers.LayerTypeEnum.Base
                         btnLayer_Base.Checked = True
-                        'Call btnLayer_Base.PerformClick()
                     Case cLayers.LayerTypeEnum.Borders
                         btnLayer_Borders.Checked = True
-                        'Call btnLayer_Borders.PerformClick()
                     Case cLayers.LayerTypeEnum.RocksAndConcretion
                         btnLayer_Rocks.Checked = True
-                        'Call btnLayer_Rocks.PerformClick()
                     Case cLayers.LayerTypeEnum.Signs
                         btnLayer_Signs.Checked = True
-                        'Call btnLayer_Signs.PerformClick()
                     Case cLayers.LayerTypeEnum.Soil
                         btnLayer_Soil.Checked = True
-                        'Call btnLayer_Soil.PerformClick()
                     Case cLayers.LayerTypeEnum.CeilingMorphologies
                         btnLayer_TerrainLevel.Checked = True
-                        'Call btnLayer_TerrainLevel.PerformClick()
                     Case cLayers.LayerTypeEnum.WaterAndFloorMorphologies
                         btnLayer_Water.Checked = True
-                        'Call btnLayer_Water.PerformClick()
                 End Select
             End If
 
-            grpDesignItemsAdd.Visible = True
             For Each oItem As BarItemLink In grpDesignItemsAdd.ItemLinks
                 If TypeOf oItem.Item.Tag Is cEditToolsBag Then
                     Dim oBag As cEditToolsBag = oItem.Item.Tag
@@ -5925,14 +5921,7 @@ Friend Class frmMain2
                     oItem.Item.Visibility = BarItemVisibility.Always
                 End If
             Next
-            'For Each oButton As ToolStripItem In mnuDesignAdd.DropDownItems
-            '    If TypeOf oButton.Tag Is cEditToolsBag Then
-            '        Dim oBag As cEditToolsBag = oButton.Tag
-            '        oButton.Visible = oBag.AvaiableInPlan
-            '    Else
-            '        oButton.Visible = True
-            '    End If
-            'Next
+            grpDesignItemsAdd.SetVisible(True)
 
             Call pSurveySetCurrentCaveBranch(pGetCurrentDesignTools.CurrentCave, pGetCurrentDesignTools.CurrentBranch)
             btnDesignHighlight0.Checked = Not oCurrentOptions.HighlightCurrentCave
@@ -6311,7 +6300,7 @@ Friend Class frmMain2
                             '    Dim oItem As ToolStripSeparator = New ToolStripSeparator
                             '    oItem.AutoSize = True
                             '    Call Parent.Add(oItem)
-                            'bBeginGroup = True
+                            bBeginGroup = True
                         Case "gallery"
                             Dim oItem As BarButtonItem = New BarButtonItem
                             oItem.Name = "btnItemsAdd_" & oBag.Name
@@ -15059,6 +15048,12 @@ Friend Class frmMain2
                 chkViewShowSplay.Checked = oCurrentOptions.DrawSplay
             Case "PlotShowLRUD"
                 chkViewShowLRUD.Checked = oCurrentOptions.DrawLRUD
+            Case "PlotShowSegment"
+                chkViewShowShots.Checked = oCurrentOptions.DrawSegments
+            Case "PlotShowTrigpoint"
+                chkViewShowShots.Checked = oCurrentOptions.DrawPoints
+            Case "PlotShowTrigpointText"
+                chkViewShowStationLabel.Checked = oCurrentOptions.DrawPointNames
             Case "QuotaType"
                 Call pObjectPropertyLoad()
             Case "LineStyle"
@@ -15277,7 +15272,7 @@ Friend Class frmMain2
         oBottomDesignBar.OptionsBar.DrawDragBorder = False
         oBottomDesignBar.StandaloneBarDockControl = dockBottomDesignerBar
         oBottomDesignBar.DockStyle = BarDockStyle.Standalone
-        oBottomDesignBar.ItemLinks.AddRange({btnViewPlan, btnViewProfile, btnView3D})
+        oBottomDesignBar.ItemLinks.AddRange({btnViewPlan, btnViewProfile, btnView3D}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText, BarItemPaintStyle.Caption)
         'oBottomDesignBar.ItemLinks.Add(btnItemsEndEdit, True)
         oBottomDesignBar.ItemLinks.Add(btnDesignBarPlotCalculate, True)
         oBottomDesignBar.ItemLinks.Add(btnDesignBar3DRefresh, True)
@@ -15289,6 +15284,7 @@ Friend Class frmMain2
         oBottomDesignBar.ItemLinks.AddRange({btnViewMetricGrid}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionInMenu)
         oBottomDesignBar.ItemLinks.Add(btnEditDrawing, True)
         oBottomDesignBar.ItemLinks.AddRange({btnEditPointToPoint})
+        oBottomDesignBar.ItemLinks.Add(btnViewShowCenterline, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionInMenu)
         oBottomDesignBar.ItemLinks.Add(btn3DViewTop, True)
         oBottomDesignBar.ItemLinks.AddRange({btn3DViewBottom, btn3dViewNS, btn3dViewSN, btn3dViewEW, btn3dViewWE})
         oBottomDesignBar.ItemLinks.Add(btn3DCameraType, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionInMenu)
@@ -15843,18 +15839,6 @@ Friend Class frmMain2
 
     Private Sub btnViewObjectProp_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnViewObjectProp.ItemClick
         Call pObjectPropShow(True)
-    End Sub
-
-    Private Sub btnViewPlan_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnViewPlan.ItemClick
-        Call pSurveyShowPlan()
-    End Sub
-
-    Private Sub btnViewProfile_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnViewProfile.ItemClick
-        Call pSurveyShowProfile()
-    End Sub
-
-    Private Sub btnView3D_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnView3D.ItemClick
-        Call pSurveyShow3D()
     End Sub
 
     Private Sub btnViewViewer_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnViewViewer.ItemClick
@@ -18722,16 +18706,64 @@ Friend Class frmMain2
 
     Private Sub chkViewShowSplay_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles chkViewShowSplay.CheckedChanged
         If Not bDisabledObjectPropertyEvent Then
-            oCurrentOptions.DrawSplay = chkViewShowSplay.Checked
-            Call pObjectPropertyLoad()
+            If oCurrentOptions.DrawSplay <> chkViewShowSplay.Checked Then
+                oCurrentOptions.DrawSplay = chkViewShowSplay.Checked
+                Call pObjectPropertyLoad()
+                Call ObjectProperty_OnDrawInvalidate(sender, New cHolosViewer.cDrawInvalidateEventArgs(cHolosViewer.InvalidateType.Caves))
+            End If
         End If
     End Sub
 
     Private Sub chkViewShowLRUD_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles chkViewShowLRUD.CheckedChanged
         If Not bDisabledObjectPropertyEvent Then
-            oCurrentOptions.DrawLRUD = chkViewShowLRUD.Checked
-            Call pObjectPropertyLoad()
+            If oCurrentOptions.DrawLRUD <> chkViewShowLRUD.Checked Then
+                oCurrentOptions.DrawLRUD = chkViewShowLRUD.Checked
+                Call pObjectPropertyLoad()
+                Call ObjectProperty_OnDrawInvalidate(sender, New cHolosViewer.cDrawInvalidateEventArgs(cHolosViewer.InvalidateType.Caves))
+            End If
         End If
+    End Sub
+
+    Private Sub chkViewShowShots_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles chkViewShowShots.CheckedChanged
+        If Not bDisabledObjectPropertyEvent Then
+            If oCurrentOptions.DrawSegments <> chkViewShowShots.Checked Then
+                oCurrentOptions.DrawSegments = chkViewShowShots.Checked
+                Call pObjectPropertyLoad()
+                Call ObjectProperty_OnDrawInvalidate(sender, New cHolosViewer.cDrawInvalidateEventArgs(cHolosViewer.InvalidateType.Caves))
+            End If
+        End If
+    End Sub
+
+    Private Sub chkViewShowStation_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles chkViewShowStation.CheckedChanged
+        If Not bDisabledObjectPropertyEvent Then
+            If oCurrentOptions.DrawPoints <> chkViewShowStation.Checked Then
+                oCurrentOptions.DrawPoints = chkViewShowStation.Checked
+                Call pObjectPropertyLoad()
+                Call ObjectProperty_OnDrawInvalidate(sender, New cHolosViewer.cDrawInvalidateEventArgs(cHolosViewer.InvalidateType.Caves))
+            End If
+        End If
+    End Sub
+
+    Private Sub chkViewShowStationLabel_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles chkViewShowStationLabel.CheckedChanged
+        If Not bDisabledObjectPropertyEvent Then
+            If oCurrentOptions.ShowPointText <> chkViewShowStationLabel.Checked Then
+                oCurrentOptions.ShowPointText = chkViewShowStationLabel.Checked
+                Call pObjectPropertyLoad()
+                Call ObjectProperty_OnDrawInvalidate(sender, New cHolosViewer.cDrawInvalidateEventArgs(cHolosViewer.InvalidateType.Caves))
+            End If
+        End If
+    End Sub
+
+    Private Sub btnViewPlan_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnViewPlan.ItemClick
+        If btnViewPlan.Checked Then Call pSurveyShowPlan()
+    End Sub
+
+    Private Sub btnViewProfile_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnViewProfile.ItemClick
+        If btnViewProfile.Checked Then Call pSurveyShowProfile()
+    End Sub
+
+    Private Sub btnView3D_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnView3D.ItemClick
+        If btnView3D.Checked Then Call pSurveyShow3D()
     End Sub
 End Class
 

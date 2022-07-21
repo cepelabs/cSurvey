@@ -242,7 +242,7 @@
     <value>0, 32</value>
   </data>
   <data name="pnlDesigner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>493, 704</value>
+    <value>589, 704</value>
   </data>
   <data name="pnlDesigner.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -10867,6 +10867,18 @@
   <data name="chkViewShowSplay.Caption" xml:space="preserve">
     <value>Splay</value>
   </data>
+  <data name="chkViewShowShots.Caption" xml:space="preserve">
+    <value>Shots</value>
+  </data>
+  <data name="chkViewShowStation.Caption" xml:space="preserve">
+    <value>Station</value>
+  </data>
+  <data name="chkViewShowStationLabel.Caption" xml:space="preserve">
+    <value>Station label</value>
+  </data>
+  <data name="btnViewShowCenterline.Caption" xml:space="preserve">
+    <value>Centerline</value>
+  </data>
   <data name="RibbonControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -10918,7 +10930,7 @@
   <data name="pageSurvey.Text" xml:space="preserve">
     <value>Survey</value>
   </data>
-  <data name="grdDesignLayers.Text" xml:space="preserve">
+  <data name="grpDesignLayers.Text" xml:space="preserve">
     <value>Levels</value>
   </data>
   <data name="grpDesignItemsAdd.Text" xml:space="preserve">
@@ -10993,9 +11005,6 @@
   <data name="grpCurrentItemStation.Text" xml:space="preserve">
     <value>Station</value>
   </data>
-  <data name="grpCurrentItemCenterline.Text" xml:space="preserve">
-    <value>Centerline</value>
-  </data>
   <data name="pageCurrentItem.Text" xml:space="preserve">
     <value>Item</value>
   </data>
@@ -11042,13 +11051,13 @@
     <value>Combo</value>
   </data>
   <data name="RibbonControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1778, 162</value>
+    <value>1971, 162</value>
   </data>
   <data name="RibbonStatusBar1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 1019</value>
   </data>
   <data name="RibbonStatusBar1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1778, 26</value>
+    <value>1971, 26</value>
   </data>
   <data name="&gt;&gt;RibbonStatusBar1.Name" xml:space="preserve">
     <value>RibbonStatusBar1</value>
@@ -13163,7 +13172,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1778, 1045</value>
+    <value>1971, 1045</value>
   </data>
   <data name="pnlForm.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v21.2">
     <value>Default</value>
@@ -13434,7 +13443,7 @@
     <value>2</value>
   </data>
   <data name="panelContainer1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1004, 0</value>
+    <value>1197, 0</value>
   </data>
   <data name="panelContainer1.Size" type="System.Drawing.Size, System.Drawing">
     <value>774, 801</value>
@@ -13461,7 +13470,7 @@
     <value>0, 218</value>
   </data>
   <data name="pnlForm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1778, 801</value>
+    <value>1971, 801</value>
   </data>
   <data name="pnlForm.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -13488,7 +13497,7 @@
     <value>0, 194</value>
   </data>
   <data name="cMainMessageBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1778, 24</value>
+    <value>1971, 24</value>
   </data>
   <data name="cMainMessageBar.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -13518,7 +13527,7 @@
     <value>0, 162</value>
   </data>
   <data name="dockTopGlobalBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1778, 32</value>
+    <value>1971, 32</value>
   </data>
   <data name="dockTopGlobalBar.Text" xml:space="preserve">
     <value>StandaloneBarDockControl1</value>
@@ -16147,6 +16156,30 @@
   <data name="&gt;&gt;chkViewShowSplay.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="&gt;&gt;chkViewShowShots.Name" xml:space="preserve">
+    <value>chkViewShowShots</value>
+  </data>
+  <data name="&gt;&gt;chkViewShowShots.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkViewShowStation.Name" xml:space="preserve">
+    <value>chkViewShowStation</value>
+  </data>
+  <data name="&gt;&gt;chkViewShowStation.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;chkViewShowStationLabel.Name" xml:space="preserve">
+    <value>chkViewShowStationLabel</value>
+  </data>
+  <data name="&gt;&gt;chkViewShowStationLabel.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;btnViewShowCenterline.Name" xml:space="preserve">
+    <value>btnViewShowCenterline</value>
+  </data>
+  <data name="&gt;&gt;btnViewShowCenterline.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarSubItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="&gt;&gt;barDesignerItemPointFloat.Name" xml:space="preserve">
     <value>barDesignerItemPointFloat</value>
   </data>
@@ -16249,10 +16282,10 @@
   <data name="&gt;&gt;pageDesign.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPage, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;grdDesignLayers.Name" xml:space="preserve">
-    <value>grdDesignLayers</value>
+  <data name="&gt;&gt;grpDesignLayers.Name" xml:space="preserve">
+    <value>grpDesignLayers</value>
   </data>
-  <data name="&gt;&gt;grdDesignLayers.Type" xml:space="preserve">
+  <data name="&gt;&gt;grpDesignLayers.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;grpDesignItemsAdd.Name" xml:space="preserve">
@@ -16397,12 +16430,6 @@
     <value>grpCurrentItemStation</value>
   </data>
   <data name="&gt;&gt;grpCurrentItemStation.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;grpCurrentItemCenterline.Name" xml:space="preserve">
-    <value>grpCurrentItemCenterline</value>
-  </data>
-  <data name="&gt;&gt;grpCurrentItemCenterline.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Ribbon.RibbonPageGroup, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pageCurrentItemPoint.Name" xml:space="preserve">
@@ -18277,7 +18304,7 @@
     <value>0, 0</value>
   </data>
   <data name="dockTopDesignerBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>493, 32</value>
+    <value>589, 32</value>
   </data>
   <data name="dockTopDesignerBar.Text" xml:space="preserve">
     <value>StandaloneBarDockControl1</value>
@@ -18597,7 +18624,7 @@
     <value>Combo</value>
   </data>
   <data name="grdSegments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 461</value>
+    <value>330, 461</value>
   </data>
   <data name="grdSegments.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -19074,7 +19101,7 @@
     <value>1</value>
   </data>
   <data name="spSegments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>493, 461</value>
+    <value>590, 461</value>
   </data>
   <data name="spSegments.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -19682,7 +19709,7 @@
     <value>28</value>
   </data>
   <data name="grdTrigPoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 265</value>
+    <value>330, 265</value>
   </data>
   <data name="grdTrigPoints.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -19835,7 +19862,7 @@
     <value>1</value>
   </data>
   <data name="spTrigPoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>493, 265</value>
+    <value>590, 265</value>
   </data>
   <data name="spTrigPoints.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -19865,7 +19892,7 @@
     <value>1</value>
   </data>
   <data name="spSegmentsAndTrigpoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>493, 736</value>
+    <value>590, 736</value>
   </data>
   <data name="spSegmentsAndTrigpoints.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -19916,7 +19943,7 @@
     <value>0, 736</value>
   </data>
   <data name="dockBottomSegmentsAndTrigpoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>493, 32</value>
+    <value>590, 32</value>
   </data>
   <data name="dockBottomSegmentsAndTrigpoints.Text" xml:space="preserve">
     <value>StandaloneBarDockControl1</value>
@@ -19940,7 +19967,7 @@
     <value>0, 0</value>
   </data>
   <data name="pnlData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>493, 768</value>
+    <value>590, 768</value>
   </data>
   <data name="pnlData.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -20258,7 +20285,7 @@
     <value>0, 0</value>
   </data>
   <data name="ControlContainer6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>493, 768</value>
+    <value>590, 768</value>
   </data>
   <data name="ControlContainer6.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -20288,7 +20315,7 @@
     <value>0, 736</value>
   </data>
   <data name="dockBottomDesignerBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>493, 32</value>
+    <value>589, 32</value>
   </data>
   <data name="dockBottomDesignerBar.Text" xml:space="preserve">
     <value>StandaloneBarDockControl1</value>
@@ -20309,7 +20336,7 @@
     <value>0, 0</value>
   </data>
   <data name="DockPanel1_Container.Size" type="System.Drawing.Size, System.Drawing">
-    <value>493, 768</value>
+    <value>589, 768</value>
   </data>
   <data name="DockPanel1_Container.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

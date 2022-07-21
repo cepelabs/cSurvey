@@ -1408,7 +1408,7 @@ Partial Class frmSettings
         '
         'btnSurface
         '
-        Me.btnSurface.Expanded = True
+        Me.btnSurface.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
         Me.btnSurface.Name = "btnSurface"
         Me.btnSurface.Tag = "tabInfoData"
         resources.ApplyResources(Me.btnSurface, "btnSurface")

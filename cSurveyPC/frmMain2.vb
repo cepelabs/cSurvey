@@ -4360,11 +4360,25 @@ Friend Class frmMain2
         RibbonControl.Manager.BeginUpdate()
 
         grpCurrentItemLocation.SetVisible(False)
-        btnCurrentItemLock.Visibility = BarItemVisibility.Never
         grpCurrentItemSize.SetVisible(False)
         btnItemsLayouts.SetVisible(False)
         btnCurrentItemSendCopyTo.Visibility = BarItemVisibility.Never
         btnCurrentItemConvertTo.Visibility = BarItemVisibility.Never
+        grpCurrentItemRotate.SetVisible(False)
+        grpCurrentItemAlign.SetVisible(False)
+        grpCurrentItemShot.SetVisible(False)
+        grpCurrentItemStation.SetVisible(False)
+        grpCurrentItemSketch.SetVisible(False)
+        grpCurrentItemImage.SetVisible(False)
+        grpCurrentItemLegend.SetVisible(False)
+        grpCurrentItemSign.SetVisible(False)
+        grpCurrentItemClipart.SetVisible(False)
+        grpCurrentItemShape.SetVisible(False)
+        btnCurrentItemGenericCombine.Visibility = BarItemVisibility.Never
+        grpCurrentItemItems.SetVisible(False)
+        grpCurrentItemSequence.SetVisible(False)
+        grpCurrentItemPoint.SetVisible(False)
+        grpCurrentItemBindings.SetVisible(False)
 
         Call o3DAltitudeAmplification.Rebind(oCurrentDesign, oCurrentOptions)
         Call o3DLinkedSurveys.Rebind(oCurrentDesign, oCurrentOptions)
@@ -4487,7 +4501,8 @@ Friend Class frmMain2
             grpCurrentItemItems.SetVisible(False)
 
             grpCurrentItemSequence.SetVisible(False)
-            grpCurrentItemPoint.SetVisible(False)
+            grpCurrentItemPoint.SetVisible(True)
+            grpCurrentItemBindings.SetVisible(True)
 
             Dim iType As cPoint.PointTypeEnum = .Type
 
@@ -4875,7 +4890,17 @@ Friend Class frmMain2
         grpCurrentItemAlign.SetVisible(False)
         grpCurrentItemShot.SetVisible(False)
         grpCurrentItemStation.SetVisible(False)
-        'btnViewShowCenterline.Visibility = BarItemVisibility.Never
+        grpCurrentItemSketch.SetVisible(False)
+        grpCurrentItemImage.SetVisible(False)
+        grpCurrentItemLegend.SetVisible(False)
+        grpCurrentItemSign.SetVisible(False)
+        grpCurrentItemClipart.SetVisible(False)
+        grpCurrentItemShape.SetVisible(False)
+        btnCurrentItemGenericCombine.Visibility = BarItemVisibility.Never
+        grpCurrentItemItems.SetVisible(False)
+        grpCurrentItemSequence.SetVisible(False)
+        grpCurrentItemPoint.SetVisible(False)
+        grpCurrentItemBindings.SetVisible(False)
 
         oPropName.Visible = False
         oPropCaveBranch.Visible = False
@@ -4895,8 +4920,6 @@ Friend Class frmMain2
         oPropCrossSection.Visible = False
         oPropQuota.Visible = False
         oPropSketch.Visible = False
-        grpCurrentItemSketch.SetVisible(False)
-        grpCurrentItemImage.SetVisible(False)
         oPropMergeMode.Visible = False
         oPropObjectsBinding.Visible = False
         oPropTrigpointsDistances.Visible = False
@@ -4914,17 +4937,6 @@ Friend Class frmMain2
         oPropVisibility.Visible = False
         oPropLineType.Visible = False
         oPropPointLineType.Visible = False
-
-        grpCurrentItemLegend.SetVisible(False)
-        grpCurrentItemSign.SetVisible(False)
-        grpCurrentItemClipart.SetVisible(False)
-        grpCurrentItemShape.SetVisible(False)
-        btnCurrentItemGenericCombine.Visibility = BarItemVisibility.Never
-        grpCurrentItemItems.SetVisible(False)
-
-        grpCurrentItemSequence.SetVisible(False)
-        grpCurrentItemPoint.SetVisible(False)
-        grpCurrentItemBindings.SetVisible(False)
 
         RibbonControl.Manager.EndUpdate()
 
@@ -5516,6 +5528,8 @@ Friend Class frmMain2
             iCurrentDesignType = oCurrentDesign.Type
         End If
         If iCurrentDesignType <> cIDesign.cDesignTypeEnum.ThreeDModel Then
+            RibbonControl.Manager.BeginUpdate()
+
             Call pToolsEnd()
 
             If iCurrentDesignType >= 0 Then
@@ -5618,6 +5632,8 @@ Friend Class frmMain2
             btnMainBindDesignType.Visibility = BarItemVisibility.Never
             btnMainBindCrossSections.Visibility = BarItemVisibility.Never
 
+            RibbonControl.Manager.EndUpdate()
+
             Call pSurveyHighlightCurrentCave(True)
 
             Call pRebindDesignBar()
@@ -5644,6 +5660,8 @@ Friend Class frmMain2
             iCurrentDesignType = oCurrentDesign.Type
         End If
         If iCurrentDesignType <> cIDesign.cDesignTypeEnum.Profile Then
+            RibbonControl.Manager.BeginUpdate()
+
             Call pToolsEnd()
             If iCurrentDesignType >= 0 Then
                 Call oPaintInfo(oCurrentDesign.Type).Backup(oPaintTranslation, sPaintZoom)
@@ -5775,7 +5793,9 @@ Friend Class frmMain2
             Call pSurveyRestoreCaveBranchLockstate(pGetCurrentDesignTools.CurrentCave, pGetCurrentDesignTools.CurrentBranch)
             btnMainBindDesignType.Visibility = BarItemVisibility.Always
             btnMainBindCrossSections.Visibility = BarItemVisibility.Always
-            'cboPropBindDesignType.Visible = True
+
+            RibbonControl.Manager.EndUpdate()
+
             Call pSurveyLayersFilterApply(False)
             Call pSurveyHighlightCurrentCave(True)
 
@@ -5793,6 +5813,7 @@ Friend Class frmMain2
 
     Private Sub pSurveyShowPlan()
         Call oMousePointer.Push(Cursors.WaitCursor)
+
         Dim iCurrentDesignType As cIDesign.cDesignTypeEnum
         If oCurrentDesign Is Nothing Then
             iCurrentDesignType = -1
@@ -5800,6 +5821,8 @@ Friend Class frmMain2
             iCurrentDesignType = oCurrentDesign.Type
         End If
         If iCurrentDesignType <> cIDesign.cDesignTypeEnum.Plan Then
+            RibbonControl.Manager.BeginUpdate()
+
             Call pToolsEnd()
             If iCurrentDesignType >= 0 Then
                 Call oPaintInfo(oCurrentDesign.Type).Backup(oPaintTranslation, sPaintZoom)
@@ -5931,7 +5954,9 @@ Friend Class frmMain2
             Call pSurveyRestoreCaveBranchLockstate(pGetCurrentDesignTools.CurrentCave, pGetCurrentDesignTools.CurrentBranch)
             btnMainBindDesignType.Visibility = BarItemVisibility.Always
             btnMainBindCrossSections.Visibility = BarItemVisibility.Always
-            'cboPropBindDesignType.Visible = True
+
+            RibbonControl.Manager.EndUpdate()
+
             Call pSurveyLayersFilterApply(False)
             Call pSurveyHighlightCurrentCave(True)
 
@@ -15237,6 +15262,7 @@ Friend Class frmMain2
         oTopDesignLevelBar.StandaloneBarDockControl = dockTopDesignerBar
         oTopDesignLevelBar.DockStyle = BarDockStyle.Standalone
         oTopDesignLevelBar.ItemLinks.AddRange({btnLayer_Base, btnLayer_Soil, btnLayer_Water, btnLayer_Rocks, btnLayer_TerrainLevel, btnLayer_Borders, btnLayer_Signs}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText, BarItemPaintStyle.CaptionGlyph)
+        oTopDesignLevelBar.ItemLinks.Add(btnLayerManageLevels, True)
 
         oTopDesignItemsBar = New Bar(RibbonControl.Manager, "Designer new items bar")
         oTopDesignItemsBar.OptionsBar.AllowQuickCustomization = False

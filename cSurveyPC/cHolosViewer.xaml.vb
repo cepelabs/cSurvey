@@ -57,7 +57,6 @@ Friend Class cHolosViewer
 
     Friend Event OnInvalidate(sender As cHolosViewer, Args As EventArgs)
 
-    'Private oLights As List(Of ModelVisual3D)
     Private oCaves As List(Of ModelVisual3D)
     Private oSelectors As ModelVisual3D
     Private oModels As List(Of ModelVisual3D)
@@ -727,10 +726,6 @@ Friend Class cHolosViewer
                 For Each ohotspot As cHotSpot In oSurfacesHotSpots.Values
                     Call oHotSpots.Add(ohotspot.Model, ohotspot)
                 Next
-
-                'If i3DScale <> 1 Then
-                '    oAll.Transform = New ScaleTransform3D(i3DScale, i3DScale, i3DScale)
-                'End If
             End If
 
             Call pSetCamera()
@@ -740,10 +735,11 @@ Friend Class cHolosViewer
             RaiseEvent OnRedrawComplete(Me, New EventArgs)
             iInvalidated = InvalidateType.None
             pnlInvalidated.Visibility = Windows.Visibility.Hidden
-            RaiseEvent OnInvalidate(Me, New EventArgs)
+            RaiseEvent OnInvalidate(Me, EventArgs.Empty)
         Catch ex As Exception
+            Call oSurvey.RaiseOnErrorLogEvent(modMain.GetLocalizedString("holos.textpart2"), ex)
             Call Invalidate(InvalidateType.Error)
-            RaiseEvent OnRedrawComplete(Me, New EventArgs)
+            RaiseEvent OnRedrawComplete(Me, EventArgs.Empty)
         End Try
     End Sub
 

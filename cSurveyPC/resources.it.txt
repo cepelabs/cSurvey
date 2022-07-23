@@ -1022,3 +1022,4 @@ main.exportbrushdialog=Esporta come riempimento:
 main.savebrushtext=Digita un nome per questo riempimento
 main.savebrushtitle=Nome riempimento:
 main.warning34=Ripristinare il layout predefinito della barra di accesso rapido?
+holos.textpart2=Errore non gestito durante la creazione del modello 3D

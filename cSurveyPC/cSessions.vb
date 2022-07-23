@@ -8,7 +8,11 @@ Namespace cSurvey
         Private oSessions As SortedDictionary(Of String, cSession)
 
         Public Function GetSession(Session As cISession) As cSession
-            Return oSessions(Session.Session)
+            If Session.Session Is Nothing OrElse Session.Session = "" Then
+                Return Nothing
+            Else
+                Return oSessions(Session.Session)
+            End If
         End Function
 
         Public Function GetSurveyYears() As List(Of Integer)

@@ -585,17 +585,21 @@ Namespace cSurvey.Design.Items
             If Append Then
                 For Each oItem As cLegendItem In oItems
                     If Not IsNothing(oItem) AndAlso Not IsNothing(oItem.Item) Then
-                        Dim iPenType As cPen.PenTypeEnum = oItem.Item.Pen.Type
-                        If oItem.Type = cLegendItem.ItemTypeEnum.LineItem AndAlso (Not oPenList.Contains(iPenType) OrElse iPenType = cPen.PenTypeEnum.Custom) Then
-                            Call oPenList.Add(iPenType)
-                            Dim sName As String = oItem.Item.Pen.Name   'some doubt...name for custom is not editable...may be better use item name?
-                            If Not oNames.Contains(sName.ToLower) Then Call oNames.Add(sName.ToLower)
+                        If oItem.Item.HavePen AndAlso oItem.Item.Pen IsNot Nothing Then
+                            Dim iPenType As cPen.PenTypeEnum = oItem.Item.Pen.Type
+                            If oItem.Type = cLegendItem.ItemTypeEnum.LineItem AndAlso (Not oPenList.Contains(iPenType) OrElse iPenType = cPen.PenTypeEnum.Custom) Then
+                                Call oPenList.Add(iPenType)
+                                Dim sName As String = oItem.Item.Pen.Name   'some doubt...name for custom is not editable...may be better use item name?
+                                If Not oNames.Contains(sName.ToLower) Then Call oNames.Add(sName.ToLower)
+                            End If
                         End If
-                        Dim iBrushType As cBrush.BrushTypeEnum = oItem.Item.Brush.Type
-                        If oItem.Type = cLegendItem.ItemTypeEnum.AreaItem AndAlso (Not oBrushList.Contains(iBrushType) OrElse iPenType = cPen.PenTypeEnum.Custom) Then
-                            Call oBrushList.Add(oItem.Item.Brush.Type)
-                            Dim sName As String = oItem.Item.Brush.Name
-                            If Not oNames.Contains(sName.ToLower) Then Call oNames.Add(sName.ToLower)
+                        If oItem.Item.HaveBrush AndAlso oItem.Item.Brush IsNot Nothing Then
+                            Dim iBrushType As cBrush.BrushTypeEnum = oItem.Item.Brush.Type
+                            If oItem.Type = cLegendItem.ItemTypeEnum.AreaItem AndAlso (Not oBrushList.Contains(iBrushType) OrElse iBrushType = cPen.PenTypeEnum.Custom) Then
+                                Call oBrushList.Add(oItem.Item.Brush.Type)
+                                Dim sName As String = oItem.Item.Brush.Name
+                                If Not oNames.Contains(sName.ToLower) Then Call oNames.Add(sName.ToLower)
+                            End If
                         End If
                         If oItem.Type = cLegendItem.ItemTypeEnum.SignItem Then
                             Dim sClipartID As String = DirectCast(oItem.Item, cIItemClipartBase).Clipart.ID

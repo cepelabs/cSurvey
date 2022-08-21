@@ -4657,6 +4657,8 @@ Partial Class frmMain2
         Me.grpCurrentItemShot.ItemLinks.Add(Me.btnPlotReplicateData, True)
         Me.grpCurrentItemShot.ItemLinks.Add(Me.btnPlotManageLRUD, True)
         Me.grpCurrentItemShot.ItemLinks.Add(Me.btnPlotSplayReplicate)
+        Me.grpCurrentItemShot.ItemLinks.Add(Me.btnPlotPrefixTrigpoints, True)
+        Me.grpCurrentItemShot.ItemLinks.Add(Me.btnPlotRenameTrigpoints)
         Me.grpCurrentItemShot.Name = "grpCurrentItemShot"
         resources.ApplyResources(Me.grpCurrentItemShot, "grpCurrentItemShot")
         Me.grpCurrentItemShot.Visible = False

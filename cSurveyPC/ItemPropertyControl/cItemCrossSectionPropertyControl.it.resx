@@ -211,9 +211,9 @@
     <value>Lontano</value>
   </data>
   <data name="cmdPropCrossSectionPlanMarker.ToolTip" xml:space="preserve">
-    <value>Via all'oggetto</value>
+    <value>Vai all'oggetto</value>
   </data>
   <data name="cmdPropCrossSectionProfileMarker.ToolTip" xml:space="preserve">
-    <value>Via all'oggetto</value>
+    <value>Vai all'oggetto</value>
   </data>
 </root>

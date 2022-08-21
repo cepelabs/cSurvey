@@ -600,7 +600,6 @@ Namespace cSurvey.Calculate
                                 Call oSurvey.RaiseOnLogEvent(cSurvey.LogEntryType.Information Or cSurvey.LogEntryType.Important, "Prepare data")
                                 Call pCalculatePrepareData(oOriginItem, oGroups)
                                 If oOrphanStations.Count > 0 Then
-                                    'Dim oStations As List(Of cSurveyPC.cSurvey.cTrigPoint) = oOrphanStations.Select(Function(sStation) oSurvey.TrigPoints(sStation)).ToList
                                     Dim oOrphanSegments As List(Of cSegment) = New List(Of cSegment)
                                     Call oOrphanStations.ForEach(Sub(sStation) oOrphanSegments.AddRange(oSurvey.Segments.GetTrigpointSegments(sStation).Cast(Of cSegment)))
                                     oOrphanSegments = oOrphanSegments.Distinct().ToList

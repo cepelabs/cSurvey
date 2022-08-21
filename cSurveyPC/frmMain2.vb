@@ -733,10 +733,6 @@ Friend Class frmMain2
                 End Using
             End If
             If Filename <> "" Then
-                'If oSurvey Is Nothing Then
-                '    oSurvey = New cSurvey.cSurvey
-                'End If
-
                 Select Case IO.Path.GetExtension(Filename).ToLower
                     Case ".crsx", ".crsz"
                         Call pResurvey(Filename)
@@ -4090,9 +4086,8 @@ Friend Class frmMain2
                     oPropScaleItems.Visible = False
                     oPropCompassItems.Visible = False
 
-                    grpCurrentItemShot.SetVisible(True)
                     grpCurrentItemStation.SetVisible(False)
-                    'btnViewShowCenterline.Visibility = BarItemVisibility.Never
+                    grpCurrentItemShot.SetVisible(True)
 
                     With btnCurrentItemSegmentFromProperty
                         .Enabled = True
@@ -4189,9 +4184,8 @@ Friend Class frmMain2
                     grpCurrentItemRotate.SetVisible(False)
                     grpCurrentItemAlign.SetVisible(False)
                     grpCurrentItemShot.SetVisible(False)
-                    btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
                     grpCurrentItemStation.SetVisible(False)
-                    'btnViewShowCenterline.Visibility = BarItemVisibility.Never
+                    btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
 
                     oPropName.Visible = False
                     oPropTransparency.Visible = False
@@ -4268,9 +4262,8 @@ Friend Class frmMain2
                 grpCurrentItemRotate.SetVisible(False)
                 grpCurrentItemAlign.SetVisible(False)
                 grpCurrentItemShot.SetVisible(False)
-                btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
                 grpCurrentItemStation.SetVisible(True)
-                'btnViewShowCenterline.Visibility = BarItemVisibility.Never
+                btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
 
                 oPropName.Visible = False
                 oPropTransparency.Visible = False
@@ -4368,6 +4361,7 @@ Friend Class frmMain2
         grpCurrentItemAlign.SetVisible(False)
         grpCurrentItemShot.SetVisible(False)
         grpCurrentItemStation.SetVisible(False)
+        btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
         grpCurrentItemSketch.SetVisible(False)
         grpCurrentItemImage.SetVisible(False)
         grpCurrentItemLegend.SetVisible(False)
@@ -4402,9 +4396,8 @@ Friend Class frmMain2
         grpCurrentItemRotate.SetVisible(False)
         grpCurrentItemAlign.SetVisible(False)
         grpCurrentItemShot.SetVisible(False)
-        btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
         grpCurrentItemStation.SetVisible(False)
-        'btnViewShowCenterline.Visibility = BarItemVisibility.Always
+        btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
 
         grpCurrentItemLegend.SetVisible(False)
         grpCurrentItemSign.SetVisible(False)
@@ -4454,9 +4447,8 @@ Friend Class frmMain2
             grpCurrentItemRotate.SetVisible(False)
             grpCurrentItemAlign.SetVisible(False)
             grpCurrentItemShot.SetVisible(False)
-            btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
             grpCurrentItemStation.SetVisible(False)
-            'btnViewShowCenterline.Visibility = BarItemVisibility.Never
+            btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
 
             oPropName.Visible = False
             oPropTransparency.Visible = False
@@ -4661,9 +4653,8 @@ Friend Class frmMain2
                 grpCurrentItemPoint.SetVisible(False)
                 grpCurrentItemBindings.SetVisible(False)
                 grpCurrentItemShot.SetVisible(False)
-                btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
                 grpCurrentItemStation.SetVisible(False)
-                'btnViewShowCenterline.Visibility = BarItemVisibility.Never
+                btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
 
                 Dim sCave As String = "" & .Cave
                 Dim sBranch As String = "" & .Branch

@@ -2,11 +2,11 @@
     Private bNightBuild As Boolean
 
     Private Sub cmdOk_Click(sender As Object, e As EventArgs) Handles cmdOk.Click
-        If bNightBuild Then
-            Call Process.Start("http://www.csurvey.it/site/index.php/it/download/download/nightbuild")
-        Else
-            Call Process.Start("http://csurvey.it/site/index.php/it/download")
-        End If
+        'If bNightBuild Then
+        Call Process.Start("https://www.csurvey.it/site/index.php/it/download/download/nightbuild-v2")
+        'Else
+        'Call Process.Start("http://csurvey.it/site/index.php/it/download")
+        'End If
     End Sub
 
     Public Sub New(NightBuild As Boolean)

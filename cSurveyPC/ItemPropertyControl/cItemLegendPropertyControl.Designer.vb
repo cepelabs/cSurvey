@@ -276,6 +276,10 @@ Partial Class cItemLegendPropertyControl
         Me.txtItemsScale.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.txtItemsScale.EditFormat.FormatString = "N3"
         Me.txtItemsScale.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtItemsScale.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
+        Me.txtItemsScale.MaskSettings.Set("mask", "N3")
+        Me.txtItemsScale.MaxValue = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.txtItemsScale.MinValue = New Decimal(New Integer() {1, 0, 0, 262144})
         Me.txtItemsScale.Name = "txtItemsScale"
         '
         'cboItemsType

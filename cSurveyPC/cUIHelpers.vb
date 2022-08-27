@@ -3072,6 +3072,7 @@ Namespace cSurvey.UIHelpers
             Dim oPlaceholder As cSegmentPlaceholder = New cSegmentPlaceholder(e.Segment)
             Call MyBase.Add(oPlaceholder)
             Call oIndex.Add(e.Segment, oPlaceholder)
+            Call oPlaceholder.SetVisible(True)
             Call Validate(oPlaceholder)
         End Sub
 
@@ -3079,6 +3080,7 @@ Namespace cSurvey.UIHelpers
             Dim oPlaceholder As cSegmentPlaceholder = New cSegmentPlaceholder(e.Segment)
             Call MyBase.Insert(e.Index, oPlaceholder)
             Call oIndex.Add(e.Segment, oPlaceholder)
+            Call oPlaceholder.SetVisible(True)
             Call Validate(oPlaceholder)
         End Sub
 

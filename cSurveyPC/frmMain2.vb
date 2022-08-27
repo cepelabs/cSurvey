@@ -5030,6 +5030,9 @@ Friend Class frmMain2
         Call pSurveyFillSessionList(False)
         Call pSurveyFillCaveList(False)
 
+        Call btnMainSessionList_EditValueChanged(btnMainSessionList, EventArgs.Empty)
+        Call btnMainCaveBranchList_EditValueChanged(btnMainCaveBranchList, EventArgs.Empty)
+
         Call pSurveyInvalidate()
         Call grdViewSegments.RefreshData()
         Call grdViewTrigpoints.RefreshData()
@@ -12934,6 +12937,7 @@ Friend Class frmMain2
                                                                                 End Sub
 
         AddHandler RibbonControl.Manager.HighlightedLinkChanged, AddressOf RibbonControl_HighlightedLinkChanged
+        AddHandler RibbonControl.Manager.ShortcutItemClick, AddressOf RibbonControl_ShortcutItemClick
 
         ntiMain.Icon = Me.Icon
 
@@ -16697,7 +16701,7 @@ Friend Class frmMain2
                 pSurveyCheckSession()
                 Call oSegment.SetSession(DirectCast(btnMainSessionList.EditValue, cSession))
                 Call oSegment.Save()
-                'grdViewSegments.FocusedRowHandle = grdViewSegments.FindRow(oSegment)
+                grdViewSegments.RefreshData()
                 Dim iRowHandle As Integer = grdViewSegments.FindRow(oSegment)
                 Call grdViewSegments.FullFocusRow(iRowHandle)
             Else
@@ -16755,6 +16759,7 @@ Friend Class frmMain2
         Call oSegment.SetCave(btnMainCaveList.EditValue, btnMainCaveBranchList.EditValue)
         Call pSurveyCheckSession()
         Call oSegment.SetSession(DirectCast(btnMainSessionList.EditValue, cSession))
+        grdViewSegments.RefreshData()
     End Sub
 
     Private Sub grdViewSegments_ValidateRow(sender As Object, e As ValidateRowEventArgs) Handles grdViewSegments.ValidateRow
@@ -17813,6 +17818,14 @@ Friend Class frmMain2
         Call pItemBringToTop()
     End Sub
 
+    Private Sub Ribboncontrol_ShortcutItemClick(sender As Object, e As ShortcutItemClickEventArgs)
+        If e.Shortcut.Key = Keys.Delete Then
+            If Not (grdSegments.Focused OrElse picMap.Focused) Then
+                e.Cancel = True
+            End If
+        End If
+    End Sub
+
     Private Sub RibbonControl_HighlightedLinkChanged(Sender As Object, e As HighlightedLinkChangedEventArgs)
         If Not e.Link Is Nothing Then
             If e.Link.Item.Name.StartsWith("btnCurrentItemUnderlying_") Then
@@ -18782,6 +18795,7 @@ Friend Class frmMain2
     Private Sub btnView3D_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnView3D.ItemClick
         If btnView3D.Checked Then Call pSurveyShow3D()
     End Sub
+
 End Class
 
 

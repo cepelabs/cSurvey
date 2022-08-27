@@ -506,6 +506,7 @@ Partial Class frmProperties
         Me.txtSessionColor = New cSurveyPC.cColorSelector()
         Me.tvSessions = New DevExpress.XtraTreeList.TreeList()
         Me.colSessionsName = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.colSessionsColor = New DevExpress.XtraTreeList.Columns.TreeListColumn()
         Me.imlsvg = New DevExpress.Utils.SvgImageCollection(Me.components)
         Me.tabInfoCaves1 = New DevExpress.XtraTab.XtraTabPage()
         Me.tvCaveInfos = New DevExpress.XtraTreeList.TreeList()
@@ -4277,7 +4278,7 @@ Partial Class frmProperties
         '
         'tvSessions
         '
-        Me.tvSessions.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colSessionsName})
+        Me.tvSessions.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.colSessionsName, Me.colSessionsColor})
         resources.ApplyResources(Me.tvSessions, "tvSessions")
         Me.tvSessions.MenuManager = Me.BarManager
         Me.tvSessions.Name = "tvSessions"
@@ -4295,6 +4296,15 @@ Partial Class frmProperties
         resources.ApplyResources(Me.colSessionsName, "colSessionsName")
         Me.colSessionsName.FieldName = "FormattedID"
         Me.colSessionsName.Name = "colSessionsName"
+        '
+        'colSessionsColor
+        '
+        resources.ApplyResources(Me.colSessionsColor, "colSessionsColor")
+        Me.colSessionsColor.FieldName = " "
+        Me.colSessionsColor.Name = "colSessionsColor"
+        Me.colSessionsColor.OptionsColumn.AllowEdit = False
+        Me.colSessionsColor.OptionsColumn.FixedWidth = True
+        Me.colSessionsColor.OptionsColumn.ReadOnly = True
         '
         'imlsvg
         '
@@ -6239,4 +6249,5 @@ Partial Class frmProperties
     Friend WithEvents cboCaveInfoExtendStart As cTrigpointDropDown
     Friend WithEvents lblPlotSplayCrossScale As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtPlotSplayCrossScale As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents colSessionsColor As DevExpress.XtraTreeList.Columns.TreeListColumn
 End Class

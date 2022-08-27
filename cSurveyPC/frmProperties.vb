@@ -2790,7 +2790,7 @@ Friend Class frmProperties
         Call tabCaveAndBranch.EndUpdate()
     End Sub
 
-    Private Sub tvCaveInfos1_NodeCellStyle(sender As Object, e As DevExpress.XtraTreeList.GetCustomNodeCellStyleEventArgs) Handles tvCaveInfos.NodeCellStyle
+    Private Sub tvCaveInfos_NodeCellStyle(sender As Object, e As DevExpress.XtraTreeList.GetCustomNodeCellStyleEventArgs) Handles tvCaveInfos.NodeCellStyle
         If e.Column Is colCaveInfosColor Then
             Dim oItem As cICaveInfoBasePlaceHolder = tvCaveInfos.GetDataRecordByNode(e.Node)
             e.Appearance.BackColor = oItem.Color
@@ -3945,6 +3945,13 @@ Friend Class frmProperties
         Dim oTrigpoint As cSurvey.cTrigPoint = oSurvey.TrigPoints(e.Value)
         If oTrigpoint IsNot Nothing Then
             Call e.Add(oTrigpoint)
+        End If
+    End Sub
+
+    Private Sub tvSessions_NodeCellStyle(sender As Object, e As DevExpress.XtraTreeList.GetCustomNodeCellStyleEventArgs) Handles tvSessions.NodeCellStyle
+        If e.Column Is colSessionsColor Then
+            Dim oItem As cSessionEditPlaceHolder = tvSessions.GetDataRecordByNode(e.Node)
+            e.Appearance.BackColor = oItem.Color
         End If
     End Sub
 End Class

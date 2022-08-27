@@ -7187,6 +7187,27 @@
   <data name="colSessionsName.VisibleIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="colSessionsName.Width" type="System.Int32, mscorlib">
+    <value>162</value>
+  </data>
+  <data name="colSessionsColor.Caption" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="colSessionsColor.MaxWidth" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="colSessionsColor.MinWidth" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="colSessionsColor.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colSessionsColor.VisibleIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="colSessionsColor.Width" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
   <data name="tvSessions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
   </data>
@@ -13476,6 +13497,12 @@
     <value>colSessionsName</value>
   </data>
   <data name="&gt;&gt;colSessionsName.Type" xml:space="preserve">
+    <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colSessionsColor.Name" xml:space="preserve">
+    <value>colSessionsColor</value>
+  </data>
+  <data name="&gt;&gt;colSessionsColor.Type" xml:space="preserve">
     <value>DevExpress.XtraTreeList.Columns.TreeListColumn, DevExpress.XtraTreeList.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;imlsvg.Name" xml:space="preserve">

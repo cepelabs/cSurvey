@@ -2991,6 +2991,7 @@ Namespace cSurvey.UIHelpers
         Friend Sub New(Segment As cSegment)
             oSegment = Segment
             iValidation = SegmentValidation.None
+            bVisible = True
 
             sCalculateExceptionMessage = ""
         End Sub
@@ -3059,6 +3060,7 @@ Namespace cSurvey.UIHelpers
                 Dim oPlaceholder As cSegmentPlaceholder = New cSegmentPlaceholder(oSegment)
                 Call MyBase.Add(oPlaceholder)
                 Call oIndex.Add(oSegment, oPlaceholder)
+                'Call oPlaceholder.SetVisible(True)
                 Call Validate(oPlaceholder)
             Next
         End Sub

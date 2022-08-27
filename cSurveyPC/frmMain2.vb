@@ -831,6 +831,8 @@ Friend Class frmMain2
                                 Call pSurveyMainPropertiesPanelsRefresh()
 
                                 Call pSurveyCheckBezierLineType(oSurvey)
+
+                                If oCurrentOptions.HighlightCurrentCave AndAlso oCurrentOptions.HighlightSegmentsAndTrigpoints Then Call pSurveySegmentsAndTrigpointVisibility()
                             Else
                                 Call UIHelpers.Dialogs.Msgbox(String.Format(GetLocalizedString("main.warning19"), oResult.Exception.Message), MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, GetLocalizedString("main.warningtitle"))
                             End If
@@ -1306,6 +1308,10 @@ Friend Class frmMain2
                 If oCurrentOptions.HighlightCurrentCave AndAlso oCurrentOptions.HighlightSegmentsAndTrigpoints Then
                     '---------------------------------------------------------------
                     spSegmentsAndTrigpoints.Enabled = False
+
+                    grdViewSegments.BeginUpdate()
+                    grdViewTrigpoints.BeginUpdate()
+
                     Call pSurveyProgress("applyfilter", cSurvey.cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, 0, GetLocalizedString("main.progressbegin14"), cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImageFilter Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowProgressWindow)
                     Dim iIndex As Integer = 0
                     Dim iCount As Integer = oSurvey.Segments.Count
@@ -1330,7 +1336,9 @@ Friend Class frmMain2
                     Next
                     '---------------------------------------------------------------
                     Call grdViewSegments.RefreshData()
+                    grdViewSegments.EndUpdate()
                     Call grdViewTrigpoints.RefreshData()
+                    grdViewTrigpoints.EndUpdate()
 
                     '---------------------------------------------------------------
                     spSegmentsAndTrigpoints.Enabled = True
@@ -1340,13 +1348,18 @@ Friend Class frmMain2
                     '---------------------------------------------------------------
                     spSegmentsAndTrigpoints.Enabled = False
 
+                    grdViewSegments.BeginUpdate()
+                    grdViewTrigpoints.BeginUpdate()
+
                     Dim oSegments As UIHelpers.cSegmentsBindingList = grdSegments.DataSource
                     If oSegments IsNot Nothing Then Call oSegments.ResetVisible()
 
                     Call oVisibleStations.Clear()
 
                     Call grdViewSegments.RefreshData()
+                    grdViewSegments.EndUpdate()
                     Call grdViewTrigpoints.RefreshData()
+                    grdViewTrigpoints.EndUpdate()
 
                     '---------------------------------------------------------------
                     'lvTrigPoints.UseFiltering = False
@@ -8189,6 +8202,7 @@ Friend Class frmMain2
         bDisabledCaveBranchChangeEvent = True
         Dim sSelectedCave As String
         Dim sSelectedCaveBranch As String
+
         sSelectedCave = oSurvey.SharedSettings.GetValue("plan.selectedcave", "")
         sSelectedCaveBranch = oSurvey.SharedSettings.GetValue("plan.selectedcavebranch", "")
         Call oPlanTools.SelectCave(sSelectedCave, sSelectedCaveBranch)
@@ -18584,7 +18598,7 @@ Friend Class frmMain2
 
     Private Sub grdViewSegments_CustomRowFilter(sender As Object, e As RowFilterEventArgs) Handles grdViewSegments.CustomRowFilter
         If oCurrentOptions IsNot Nothing Then
-            If oCurrentOptions.HighlightCurrentCave AndAlso oCurrentOptions.HighlightSegmentsAndTrigpoints Then
+            If oCurrentOptions.HighlightSegmentsAndTrigpoints AndAlso oCurrentOptions.HighlightCurrentCave Then
                 e.Visible = DirectCast(grdSegments.DataSource, UIHelpers.cSegmentsBindingList)(e.ListSourceRow).Visible
                 e.Handled = Not e.Visible
             End If

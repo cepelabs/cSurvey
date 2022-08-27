@@ -13,7 +13,7 @@ cSurveyUpdateVersion.exe
 ..\..\..\..\7za a -tzip csurvey64 *.dll
 ..\..\..\..\7za a -tzip csurvey64 *.txt
 ..\..\..\..\7za a -tzip csurvey64 resources.resources
-..\..\..\..\7za a -tzip csurvey64 resources.en.resources
+..\..\..\..\7za a -tzip csurvey64 resources.it.resources
 ..\..\..\..\7za a -tzip csurvey64 resources.ru.resources
 ..\..\..\..\7za a -tzip csurvey64 version.xml
 move csurvey64.zip ..\..\..\..\

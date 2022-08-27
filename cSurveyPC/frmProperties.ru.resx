@@ -1467,4 +1467,10 @@
   <data name="optGPSRefPointOnOrigin.Properties.Caption" xml:space="preserve">
     <value>Точка отсчета</value>
   </data>
+  <data name="colSessionsColor.Caption" xml:space="preserve">
+    <value>Цвет:</value>
+  </data>
+  <data name="colCaveInfosColor.Caption" xml:space="preserve">
+    <value>Цвет:</value>
+  </data>
 </root>

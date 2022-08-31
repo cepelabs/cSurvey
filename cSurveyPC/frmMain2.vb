@@ -7343,7 +7343,7 @@ Friend Class frmMain2
             Try
                 Dim iIndex As Integer = grdViewSegments.GetFocusedDataSourceRowIndex
                 bDisableSegmentsChangeEvent = True
-                Dim oSegments As List(Of cSegment) = pGetCurrentTools.PasteSegments(Format, iIndex)
+                Dim oSegments As List(Of cSegment) = pGetCurrentTools.PasteSegments(Format, iIndex, btnMainSessionList.EditValue, btnMainCaveList.EditValue, btnMainCaveBranchList.EditValue)
                 bDisableSegmentsChangeEvent = False
                 'Call pSurveySegmentsGridSetup()
                 Call pSegmentSelect(oSurvey.Segments(iIndex + oSegments.Count - 1), False, False)

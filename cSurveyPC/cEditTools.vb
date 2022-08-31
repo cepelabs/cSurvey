@@ -499,7 +499,7 @@ Namespace cSurvey.Helper.Editor
             End If
         End Sub
 
-        Friend Function PasteSegments(Optional ByVal Format As String = "", Optional ByVal InsertAt As Integer = -1) As List(Of cSegment)
+        Friend Function PasteSegments(Optional ByVal Format As String = "", Optional ByVal InsertAt As Integer = -1, Optional CurrentSession As cSession = Nothing, Optional CurrentCave As cCaveInfo = Nothing, Optional CurrentBranch As cCaveInfoBranch = Nothing) As List(Of cSegment)
             Dim oPastedSegments As List(Of cSegment) = New List(Of cSegment)
             If InsertAt = -1 Then
                 InsertAt = oSurvey.Segments.Count - 1
@@ -564,17 +564,30 @@ Namespace cSurvey.Helper.Editor
                         Next
 
                         Dim oSegment As cSegment = New cSegment(oSurvey)
+                        Call oSegment.SetCave(CurrentCave, CurrentBranch)
+                        Call oSegment.SetSession(CurrentSession)
                         Dim iColumn As Integer = -1
                         iColumn = pFindNextValue(sDeformattedValues, iColumn)
                         If Not iColumn = -1 Then
-                            Dim sFrom As String = sDeformattedValues(iColumn)
+                            Dim sFrom As String = sDeformattedValues(iColumn).Trim
                             iColumn = pFindNextValue(sDeformattedValues, iColumn)
                             If Not iColumn = -1 Then
-                                Dim sTo As String = sDeformattedValues(iColumn)
+                                Dim sTo As String = sDeformattedValues(iColumn).Trim
 
-                                If oSurvey.Segments.Find(sFrom, sTo) Is Nothing Then
-                                    oSegment.From = sFrom
-                                    oSegment.To = sTo
+                                If sFrom <> "" Then
+                                    If sTo = "" OrElse sTo = "*" OrElse sTo Like "*(*)" Then
+                                        oSegment.From = sFrom
+                                        oSegment.To = oSurvey.Segments.GetSplayName(sFrom)
+                                        oSegment.Splay = True
+                                    Else
+                                        If oSurvey.Segments.Find(sFrom, sTo) Is Nothing Then
+                                            oSegment.From = sFrom
+                                            oSegment.To = sTo
+                                        Else
+                                            oSegment.From = ""
+                                            oSegment.To = ""
+                                        End If
+                                    End If
                                 Else
                                     oSegment.From = ""
                                     oSegment.To = ""

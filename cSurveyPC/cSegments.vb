@@ -1,5 +1,6 @@
 ﻿Imports System.ComponentModel
 Imports System.Xml
+Imports cSurveyPC.cSurvey.cSegment
 
 Namespace cSurvey
     Public Class cSegments
@@ -292,6 +293,12 @@ Namespace cSurvey
         End Function
 
         Private oLastSplayIndexes As Dictionary(Of String, Integer) = New Dictionary(Of String, Integer)
+
+        Public Function GetSplayName(Name As String) As String
+            Dim oArgs As cSegment.cGetSplayNameEventArgs = New cSegment.cGetSplayNameEventArgs(Name)
+            Call oSegment_OnGetSplayName(Nothing, oArgs)
+            Return oArgs.SplayName
+        End Function
 
         Private Sub oSegment_OnGetSplayName(ByVal Sender As Object, Args As cSegment.cGetSplayNameEventArgs)
             Dim sBasename As String = Args.Basename

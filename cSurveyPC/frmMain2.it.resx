@@ -7431,4 +7431,22 @@ o ad una sezione trasversale</value>
   <data name="btnSegmentInsert.Caption" xml:space="preserve">
     <value>Inserisci segmento</value>
   </data>
+  <data name="cboMainCaveBranchList.Buttons2" xml:space="preserve">
+    <value>Modifica...</value>
+  </data>
+  <data name="cboMainCaveBranchList.Buttons7" xml:space="preserve">
+    <value>Modifica...</value>
+  </data>
+  <data name="cboMainCaveList.Buttons2" xml:space="preserve">
+    <value>Modifica...</value>
+  </data>
+  <data name="cboMainCaveList.Buttons7" xml:space="preserve">
+    <value>Modifica...</value>
+  </data>
+  <data name="cboMainSessionList.Buttons2" xml:space="preserve">
+    <value>Modifica...</value>
+  </data>
+  <data name="cboMainSessionList.Buttons7" xml:space="preserve">
+    <value>Modifica...</value>
+  </data>
 </root>

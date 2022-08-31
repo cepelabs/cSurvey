@@ -116,4 +116,8 @@ Friend Class cItemCaveBranchPropertyControl
             Call MyBase.MapInvalidate()
         End If
     End Sub
+
+    Private Sub cboPropCaveList_EditRequest(sender As Object, e As EventArgs) Handles cboPropCaveList.EditRequest, cboPropCaveBranchList.EditRequest
+        MyBase.DoCommand("editproperties", {7, sender.editvalue})
+    End Sub
 End Class

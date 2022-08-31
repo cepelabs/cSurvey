@@ -27,7 +27,9 @@ Friend Class frmProperties
 
     Private iFunctionLanguage As LanguageEnum
 
-    Public Sub New(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Optional SelectedTabIndex As Integer? = Nothing, Optional FunctionLanguage As LanguageEnum = LanguageEnum.VisualBasic)
+    Public Delegate Sub OnShowDelegate()
+
+    Public Sub New(ByVal Survey As cSurveyPC.cSurvey.cSurvey, Optional SelectedTabIndex As Integer? = Nothing, Optional FunctionLanguage As LanguageEnum = LanguageEnum.VisualBasic, Optional SelectedElement As Object = Nothing)
         ' This call is required by the Windows Form Designer.
         InitializeComponent()
 
@@ -296,6 +298,22 @@ Friend Class frmProperties
                                      Call pSelectTabByIndex(0)
                                  Else
                                      Call pSelectTabByIndex(SelectedTabIndex)
+                                     Select Case SelectedTabIndex
+                                         Case 6
+                                             'session
+                                             If SelectedElement IsNot Nothing Then
+                                                 Dim oSessionPlaceholder As UIHelpers.cSessionEditPlaceHolder = DirectCast(tvSessions.DataSource, UIHelpers.cSessionsEditBindingList).FirstOrDefault(Function(oItem) oItem.ID = SelectedElement.id)
+                                                 Call tvSessions.SetFocusedObject(oSessionPlaceholder)
+                                                 Call tvSessions.Focus()
+                                             End If
+                                         Case 7
+                                             'caveorbranch
+                                             If SelectedElement IsNot Nothing Then
+                                                 Dim oCaveBranchPlaceholder As UIHelpers.cICaveInfoBasePlaceHolder = DirectCast(tvCaveInfos.DataSource, UIHelpers.cCaveInfoBranchEditBindingList).FirstOrDefault(Function(oItem) oItem.GetSource Is SelectedElement)
+                                                 Call tvCaveInfos.SetFocusedObject(oCaveBranchPlaceholder)
+                                                 Call tvCaveInfos.Focus()
+                                             End If
+                                     End Select
                                  End If
                              End Sub
 

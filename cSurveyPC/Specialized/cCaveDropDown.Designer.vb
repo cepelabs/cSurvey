@@ -22,6 +22,11 @@ Partial Class cCaveDropDown
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.cboCaveList = New DevExpress.XtraEditors.GridLookUpEdit()
         Me.cboCaveListView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colCaveListName = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -37,7 +42,7 @@ Partial Class cCaveDropDown
         Me.cboCaveList.Location = New System.Drawing.Point(0, 0)
         Me.cboCaveList.Name = "cboCaveList"
         Me.cboCaveList.Properties.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.[True]
-        Me.cboCaveList.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cboCaveList.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "Edit...", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.cboCaveList.Properties.DisplayMember = "ToHTMLString"
         Me.cboCaveList.Properties.NullText = ""
         Me.cboCaveList.Properties.PopupView = Me.cboCaveListView

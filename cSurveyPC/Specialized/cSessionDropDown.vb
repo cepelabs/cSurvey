@@ -108,4 +108,12 @@ Public Class cSessionDropDown
     Private Sub cboCaveList_EditValueChanged(sender As Object, e As EventArgs) Handles cboSessionList.EditValueChanged
         RaiseEvent EditValueChanged(Me, e)
     End Sub
+
+    Public Event EditRequest As EventHandler
+
+    Private Sub cboSessionList_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles cboSessionList.ButtonClick
+        If e.Button.Index = 1 Then
+            RaiseEvent EditRequest(Me, EventArgs.Empty)
+        End If
+    End Sub
 End Class

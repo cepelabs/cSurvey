@@ -123,4 +123,12 @@ Public Class cCaveBranchDropDown
     Private Sub cboCaveBranchList_EditValueChanged(sender As Object, e As EventArgs) Handles cboCaveBranchList.EditValueChanged
         RaiseEvent EditValueChanged(Me, e)
     End Sub
+
+    Public Event EditRequest As EventHandler
+
+    Private Sub cboCaveBranchList_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles cboCaveBranchList.ButtonClick
+        If e.Button.Index = 1 Then
+            RaiseEvent EditRequest(Me, EventArgs.Empty)
+        End If
+    End Sub
 End Class

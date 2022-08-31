@@ -22,6 +22,11 @@ Partial Class cSessionDropDown
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.cboSessionList = New DevExpress.XtraEditors.GridLookUpEdit()
         Me.cboSessionListView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colSessionListName = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -37,7 +42,7 @@ Partial Class cSessionDropDown
         Me.cboSessionList.Location = New System.Drawing.Point(0, 0)
         Me.cboSessionList.Name = "cboSessionList"
         Me.cboSessionList.Properties.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.[True]
-        Me.cboSessionList.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cboSessionList.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "Edit...", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "Edit...", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.cboSessionList.Properties.DisplayMember = "ToHTMLString"
         Me.cboSessionList.Properties.NullText = ""
         Me.cboSessionList.Properties.PopupView = Me.cboSessionListView

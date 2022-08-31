@@ -333,4 +333,7 @@
   <data name="mnuPreviewEditDistance.Text" xml:space="preserve">
     <value>Modifica distanza da caposaldo...</value>
   </data>
+  <data name="btnEditDistance.Caption" xml:space="preserve">
+    <value>Modifica...</value>
+  </data>
 </root>

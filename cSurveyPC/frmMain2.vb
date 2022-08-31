@@ -23,6 +23,8 @@ Imports DevExpress.XtraGrid.Views.Base
 Imports HelixToolkit.Wpf
 'Imports Microsoft.WindowsAPICodePack.Taskbar
 Imports DevExpress.XtraSplashScreen
+Imports DevExpress.XtraEditors.Controls
+
 Friend Class frmMain2
     Private sZoomDefault As Single = 500
     Private sZoomRatio As Single = 15
@@ -5077,8 +5079,8 @@ Friend Class frmMain2
         End Select
     End Sub
 
-    Private Sub pSurveyProperty(Optional SelectedTabIndex As Integer? = Nothing)
-        Using frmP As frmProperties = New frmProperties(oSurvey, SelectedTabIndex, iFunctionLanguage)
+    Private Sub pSurveyProperty(Optional SelectedTabIndex As Integer? = Nothing, Optional SelectedElement As Object = Nothing)
+        Using frmP As frmProperties = New frmProperties(oSurvey, SelectedTabIndex, iFunctionLanguage, SelectedElement)
             AddHandler frmP.OnApply, AddressOf frmProperties_OnApply
             AddHandler frmP.OnSegmentSelect, AddressOf frmProperties_OnSegmentSelect
             If frmP.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
@@ -15032,6 +15034,16 @@ Friend Class frmMain2
 
     Private Sub ObjectProperty_OnDoCommand(Sender As Object, e As DoCommandEventArgs)
         Select Case e.Command.ToLower
+            Case "editproperties"
+                If e.Args.Length > 0 Then
+                    If e.Args.Length = 1 Then
+                        Call pSurveyProperty(e.Args(0))
+                    Else
+                        Call pSurveyProperty(e.Args(0), e.Args(1))
+                    End If
+                Else
+                    Call pSurveyProperty()
+                End If
             Case "imageviewer"
                 Call pImageViewerShow(DirectCast(e.Args(0), cItem))
             Case "openattachment"
@@ -17833,7 +17845,7 @@ Friend Class frmMain2
     End Sub
 
     Private Sub Ribboncontrol_ShortcutItemClick(sender As Object, e As ShortcutItemClickEventArgs)
-        If e.Shortcut.Key = Keys.Delete Then
+        If e.Shortcut.Key = Keys.Delete OrElse e.Shortcut.Key = (Keys.C Or Keys.Control) OrElse e.Shortcut.Key = (Keys.V Or Keys.Control) OrElse e.Shortcut.Key = (Keys.X Or Keys.Control) OrElse e.Shortcut.Key = (Keys.Z Or Keys.Control) OrElse e.Shortcut.Key = (Keys.A Or Keys.Control) Then
             If Not (grdSegments.Focused OrElse picMap.Focused) Then
                 e.Cancel = True
             End If
@@ -18810,6 +18822,25 @@ Friend Class frmMain2
         If btnView3D.Checked Then Call pSurveyShow3D()
     End Sub
 
+    Private Sub cboSegmentCaveList_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboMainSessionList.ButtonPressed
+        If e.Button.Index = 1 Then
+            Call pSurveyProperty(6, btnMainSessionList.EditValue)
+        End If
+    End Sub
+
+    Private Sub cboSegmentSessionList_EditRequest(sender As Object, e As EventArgs) Handles cboSegmentSessionList.EditRequest
+        Call pSurveyProperty(6, cboSegmentSessionList.EditValue)
+    End Sub
+
+    Private Sub cboSegmentCaveList_EditRequest(sender As Object, e As EventArgs) Handles cboSegmentCaveList.EditRequest, cboSegmentCaveBranchList.EditRequest
+        Call pSurveyProperty(7, sender.editvalue)
+    End Sub
+
+    Private Sub cboMainCaveBranchList_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboMainCaveBranchList.ButtonPressed, cboMainCaveList.ButtonPressed
+        If e.Button.Index = 1 Then
+            Call pSurveyProperty(7, sender.editvalue)
+        End If
+    End Sub
 End Class
 
 

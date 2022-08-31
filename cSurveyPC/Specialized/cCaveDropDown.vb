@@ -125,4 +125,12 @@ Public Class cCaveDropDown
     Private Sub cboCaveList_EditValueChanged(sender As Object, e As EventArgs) Handles cboCaveList.EditValueChanged
         RaiseEvent EditValueChanged(Me, e)
     End Sub
+
+    Public Event EditRequest As EventHandler
+
+    Private Sub cboCaveList_ButtonPressed(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles cboCaveList.ButtonPressed
+        If e.Button.Index = 1 Then
+            RaiseEvent EditRequest(Me, EventArgs.Empty)
+        End If
+    End Sub
 End Class

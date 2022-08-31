@@ -1924,4 +1924,7 @@
   <data name="colSessionsColor.Caption" xml:space="preserve">
     <value>Colore:</value>
   </data>
+  <data name="lblDesignTransparencyEdit.Text" xml:space="preserve">
+    <value>Modifica...</value>
+  </data>
 </root>

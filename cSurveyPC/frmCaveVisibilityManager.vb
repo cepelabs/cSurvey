@@ -45,11 +45,12 @@ Friend Class frmCaveVisibilityManager
     Private oItems As UIHelpers.cCaveBranchSelectorList(Of Boolean)
 
     Private Sub pProfileToGrid()
+        sCurrentProfile = cboProfiles.Text
+        Dim oProfile As cCaveVisibilityProfile = oCaveVisibilityProfiles(sCurrentProfile)
+
         oItems = New UIHelpers.cCaveBranchSelectorList(Of Boolean)(oSurvey.Properties.CaveInfos, modMain.GetLocalizedString("translations.originalposition"), AddressOf pGetValue)
         Call grdProfile.Rebind(oSurvey, oItems, DevExpress.Data.UnboundColumnType.Boolean, "Campo", "Value")
 
-        sCurrentProfile = cboProfiles.Text
-        Dim oProfile As cCaveVisibilityProfile = oCaveVisibilityProfiles(sCurrentProfile)
         txtSegments.Text = oProfile.SegmentsQuery
         tabSegment.PageVisible = txtSegments.Text <> ""
 

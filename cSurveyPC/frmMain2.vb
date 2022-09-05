@@ -8217,6 +8217,11 @@ Friend Class frmMain2
         sSelectedCaveBranch = oSurvey.SharedSettings.GetValue("threed.selectedcavebranch", "")
         Call o3DTools.SelectCave(sSelectedCave, sSelectedCaveBranch)
 
+        Dim sSelectedSessiondID As String = oSurvey.SharedSettings.GetValue("selectedsession", "")
+        If sSelectedSessiondID <> "" AndAlso oSurvey.Properties.Sessions.Contains(sSelectedSessiondID) Then
+            btnMainSessionList.EditValue = oSurvey.Properties.Sessions(sSelectedSessiondID)
+        End If
+
         Try
             If oSurvey.SharedSettings.Contains("paintinfo") Then
                 With oPaintInfo(0)
@@ -8270,6 +8275,13 @@ Friend Class frmMain2
         Call oSurvey.SharedSettings.SetValue("profile.selectedcavebranch", oProfileTools.CurrentBranch)
         Call oSurvey.SharedSettings.SetValue("threed.selectedcave", o3DTools.CurrentCave)
         Call oSurvey.SharedSettings.SetValue("threed.selectedcavebranch", o3DTools.CurrentBranch)
+
+        If btnMainSessionList.EditValue IsNot Nothing Then
+            Dim sSelectedSessiondID As String = DirectCast(btnMainSessionList.EditValue, cSession).ID
+            If sSelectedSessiondID <> "" Then
+                Call oSurvey.SharedSettings.SetValue("selectedsession", sSelectedSessiondID)
+            End If
+        End If
 
         Dim iCurrentDesignType As cIDesign.cDesignTypeEnum
         If oCurrentDesign Is Nothing Then
@@ -15893,6 +15905,7 @@ Friend Class frmMain2
     End Sub
 
     Private Sub btnMainSessionList_EditValueChanged(sender As Object, e As EventArgs) Handles btnMainSessionList.EditValueChanged
+        'TODO: is usefull?
         Call pSegmentSetSessionColor()
     End Sub
 

@@ -46,12 +46,14 @@ Partial Class cItemTextStylePropertyControl
         Me.cboPropTextFontChar = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.cboPropTextStyle = New cSurveyPC.cFontStyleDropDown()
         Me.cboPropTextFontSize = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.chkPropTextUnscalableSize = New DevExpress.XtraEditors.CheckEdit()
         CType(Me.cboPropTextSize.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropText.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboPropTextRotateMode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPropFontColor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboPropTextFontChar.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboPropTextFontSize.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkPropTextUnscalableSize.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'optPropTextVAlignBottom
@@ -227,10 +229,18 @@ Partial Class cItemTextStylePropertyControl
         Me.cboPropTextFontSize.Properties.Items.AddRange(New Object() {resources.GetString("cboPropTextFontSize.Properties.Items"), resources.GetString("cboPropTextFontSize.Properties.Items1"), resources.GetString("cboPropTextFontSize.Properties.Items2"), resources.GetString("cboPropTextFontSize.Properties.Items3"), resources.GetString("cboPropTextFontSize.Properties.Items4"), resources.GetString("cboPropTextFontSize.Properties.Items5"), resources.GetString("cboPropTextFontSize.Properties.Items6"), resources.GetString("cboPropTextFontSize.Properties.Items7"), resources.GetString("cboPropTextFontSize.Properties.Items8"), resources.GetString("cboPropTextFontSize.Properties.Items9"), resources.GetString("cboPropTextFontSize.Properties.Items10"), resources.GetString("cboPropTextFontSize.Properties.Items11"), resources.GetString("cboPropTextFontSize.Properties.Items12"), resources.GetString("cboPropTextFontSize.Properties.Items13"), resources.GetString("cboPropTextFontSize.Properties.Items14"), resources.GetString("cboPropTextFontSize.Properties.Items15"), resources.GetString("cboPropTextFontSize.Properties.Items16"), resources.GetString("cboPropTextFontSize.Properties.Items17")})
         Me.cboPropTextFontSize.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
+        'chkPropTextUnscalableSize
+        '
+        resources.ApplyResources(Me.chkPropTextUnscalableSize, "chkPropTextUnscalableSize")
+        Me.chkPropTextUnscalableSize.Name = "chkPropTextUnscalableSize"
+        Me.chkPropTextUnscalableSize.Properties.AutoWidth = True
+        Me.chkPropTextUnscalableSize.Properties.Caption = resources.GetString("chkPropTextUnscalableSize.Properties.Caption")
+        '
         'cItemTextStylePropertyControl
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.Controls.Add(Me.chkPropTextUnscalableSize)
         Me.Controls.Add(Me.lblPropFontColor)
         Me.Controls.Add(Me.chkPropTextFontUnderline)
         Me.Controls.Add(Me.chkPropTextFontItalic)
@@ -261,6 +271,7 @@ Partial Class cItemTextStylePropertyControl
         CType(Me.txtPropFontColor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboPropTextFontChar.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboPropTextFontSize.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkPropTextUnscalableSize.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -289,4 +300,5 @@ Partial Class cItemTextStylePropertyControl
     Friend WithEvents cboPropTextFontChar As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents cboPropTextStyle As cFontStyleDropDown
     Friend WithEvents cboPropTextFontSize As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents chkPropTextUnscalableSize As DevExpress.XtraEditors.CheckEdit
 End Class

@@ -29,6 +29,7 @@ Namespace cSurvey.Design.Items
                 End If
             End Set
         End Property
+
         Public Overrides ReadOnly Property CanBeHiddenInDesign As Boolean
             Get
                 Return True

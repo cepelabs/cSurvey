@@ -914,7 +914,7 @@ Module modPaint
                 If graphics.DpiX = 96 Then
                     Return graphics.DpiX / (Scale * 0.0254)
                 Else
-                    Return 1 / (Scale * 0.000254)
+                    Return 1.0 / (Scale * 0.000254)
                 End If
         End Select
     End Function

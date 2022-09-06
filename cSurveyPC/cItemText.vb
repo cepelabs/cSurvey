@@ -2,6 +2,7 @@
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports cSurveyPC.cSurvey.Drawings
+Imports OfficeOpenXml.FormulaParsing.Excel.Functions.Logical
 
 Namespace cSurvey.Design.Items
     Public Class cItemText
@@ -22,6 +23,8 @@ Namespace cSurvey.Design.Items
         Private iTextVerticalAlignment As cIItemVerticalLineableText.TextVerticalAlignmentEnum
 
         Private sAngle As Single
+
+        'Private bUnscalableSize As Boolean
 
         Public Overrides ReadOnly Property CanBeHiddenInDesign As Boolean
             Get
@@ -527,10 +530,22 @@ Namespace cSurvey.Design.Items
         '    End If
         'End Function
 
+        'Public Property UnscalableSize As Boolean
+        '    Get
+        '        Return bUnscalableSize
+        '    End Get
+        '    Set(value As Boolean)
+        '        If bUnscalableSize <> value Then
+        '            bUnscalableSize = value
+        '            Call MyBase.Caches.Invalidate()
+        '        End If
+        '    End Set
+        'End Property
+
         Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             Dim oCache As cDrawCache = MyBase.Caches(PaintOptions)
             With oCache
-                If .Invalidated Then
+                If .Invalidated Then 'OrElse bUnscalableSize Then
                     Call .Clear()
 
                     'for debug: add cross to see base point
@@ -618,6 +633,15 @@ Namespace cSurvey.Design.Items
                                 Call oScaleMatrix.Scale(sScale, sScale, MatrixOrder.Append)
                                 Call oPath.Transform(oScaleMatrix)
                             End Using
+
+                            'global scale
+                            'If bUnscalableSize Then
+                            '    Using oGlobalScale As Matrix = New Matrix
+                            '        Dim sGlobalScale As Single = 100.0F * (1.0 / modPaint.GetZoomFactor(Graphics, PaintOptions.CurrentScale))
+                            '        Call oGlobalScale.Scale(sGlobalScale, sGlobalScale, MatrixOrder.Append)
+                            '        Call oPath.Transform(oGlobalScale)
+                            '    End Using
+                            'End If
 
                             oPathRect = oPath.GetBounds
 

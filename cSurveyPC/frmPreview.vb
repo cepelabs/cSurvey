@@ -689,8 +689,11 @@ Friend Class frmPreview
                 If .Scale > 0 Then
                     txtScaleManual.Value = .Scale
                 End If
+
+                chkTranslations.Enabled = True
                 chkTranslations.Checked = .DrawTranslation
 
+                chkUseDrawingZOrder.Enabled = True
                 chkUseDrawingZOrder.Checked = .UseDrawingZOrder
 
                 chkPrintBox.Checked = .DrawBox
@@ -775,8 +778,11 @@ Friend Class frmPreview
                 If .Scale > 0 Then
                     txtScaleManual.Value = .Scale
                 End If
+
+                chkTranslations.Enabled = True
                 chkTranslations.Checked = .DrawTranslation
 
+                chkUseDrawingZOrder.Enabled = True
                 chkUseDrawingZOrder.Checked = .UseDrawingZOrder
 
                 chkPrintBox.Checked = .DrawBox
@@ -851,9 +857,10 @@ Friend Class frmPreview
             Dim oOptions As cSurvey.Design.cOptionsViewer = oCurrentOptions
             With oOptions
                 'pnlProfile.Enabled = Not oOptions.DrawPrintOrExportArea
-
+                chkTranslations.Enabled = False
                 chkTranslations.Checked = .DrawTranslation
 
+                chkUseDrawingZOrder.Enabled = False
                 chkUseDrawingZOrder.Checked = .UseDrawingZOrder
 
                 chkPrintBox.Checked = .DrawBox

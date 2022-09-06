@@ -326,4 +326,12 @@ Friend Class cItemTextStylePropertyControl
         End If
     End Sub
 
+    'Private Sub chkPropTextUnscalableSize_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropTextUnscalableSize.CheckedChanged
+    '    If Not DisabledObjectProperty() Then
+    '        DirectCast(Item, cItemText).unscalablesize = chkPropTextUnscalableSize.Checked
+    '        Call MyBase.TakeUndoSnapshot()
+    '        Call MyBase.PropertyChanged("UnscalableSize")
+    '        Call MyBase.MapInvalidate()
+    '    End If
+    'End Sub
 End Class

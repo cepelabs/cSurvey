@@ -5360,6 +5360,7 @@ Friend Class frmMain2
     End Sub
 
     Private Sub pLayerTools_EnabledByLevel(ByVal Layer As cLayers.LayerTypeEnum)
+        Call Ribbon.Manager.BeginUpdate()
         If bToolsEnabledByLevel Then
             For Each oItem As BarItemLink In grpDesignItemsAdd.ItemLinks
                 Try
@@ -5381,7 +5382,15 @@ Friend Class frmMain2
                 Catch ex As Exception
                 End Try
             Next
+        Else
+            For Each oItem As BarItemLink In grpDesignItemsAdd.ItemLinks
+                If Not oItem.Item.Enabled Then
+                    oItem.Item.Enabled = True
+                    oItem.Item.Visibility = BarItemVisibility.Always
+                End If
+            Next
         End If
+        Call Ribbon.Manager.EndUpdate()
     End Sub
 
     Private Sub picMap_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles picMap.Click

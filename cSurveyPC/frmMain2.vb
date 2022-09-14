@@ -24,6 +24,8 @@ Imports HelixToolkit.Wpf
 'Imports Microsoft.WindowsAPICodePack.Taskbar
 Imports DevExpress.XtraSplashScreen
 Imports DevExpress.XtraEditors.Controls
+Imports DevExpress.RichEdit.Export
+Imports DevExpress.Utils.Extensions
 
 Friend Class frmMain2
     Private sZoomDefault As Single = 500
@@ -202,9 +204,10 @@ Friend Class frmMain2
     Private bDesignBarShowLastUsedTools As Boolean
     Private Enum DesignBarPositionEnum
         [Default] = 0
-        TopLeftCorner = 1
+        TopSide = 1
         NearCurrentItem = 2
         NearCurrentItemAndPoint = 3
+        BottomSide = 4
     End Enum
     Private iDesignBarPosition As DesignBarPositionEnum
 
@@ -5356,14 +5359,14 @@ Friend Class frmMain2
         Next
     End Sub
 
-    Private Sub pLayerTools_EnabledByLevel(ByVal Prefix As String)
+    Private Sub pLayerTools_EnabledByLevel(ByVal Layer As cLayers.LayerTypeEnum)
         If bToolsEnabledByLevel Then
-            Dim sPattern As String = Prefix.ToLower & "*"
             For Each oItem As BarItemLink In grpDesignItemsAdd.ItemLinks
                 Try
                     Dim bValue As Boolean
                     If Not oItem.Item.Tag Is Nothing Then
-                        If oItem.Item.Tag.name.ToLower Like sPattern Then
+                        Dim oBag As cEditToolsBag = oItem.Item.Tag
+                        If oBag.Layer = Layer Then
                             bValue = True
                         Else
                             bValue = False
@@ -5375,7 +5378,7 @@ Friend Class frmMain2
                             oItem.Item.Enabled = bValue
                         End If
                     End If
-                Catch
+                Catch ex As Exception
                 End Try
             Next
         End If
@@ -8693,36 +8696,70 @@ Friend Class frmMain2
         End Try
     End Sub
 
-    Private Function pFloatingToolbarGetLocation() As Point
+    Private Function pFloatingToolbarValidateLocation(Toolbar As cRibbonMiniToolbar, Point As Point) As Boolean
+        Dim oSize As Size = Toolbar.GetSize
+        Dim oBounds As Rectangle = New Rectangle(Point.X, Point.Y, oSize.Width, oSize.Height)
+        Dim oMapBounds As Rectangle = picMap.Bounds
+        If oMapBounds.Contains(oBounds) Then
+            'oFloatBar.FloatLocation = picMap.PointToScreen(Point)
+            'oFloatBar.Visible = True
+
+            Toolbar.Alignment = ContentAlignment.TopRight
+            Call Toolbar.Show(picMap.PointToScreen(Point))
+            Return True
+        Else
+            If oBounds.X < 0 Then oBounds.X = 0
+            If oBounds.Right > oMapBounds.Right Then oBounds.X = oMapBounds.Right - oSize.Width
+            If oBounds.Y < 0 Then oBounds.Y = 0
+            If oBounds.Bottom > oMapBounds.Bottom Then oBounds.Y = oMapBounds.Bottom - oSize.Height
+            If oMapBounds.Contains(oBounds) Then
+                'oFloatBar.FloatLocation = picMap.PointToScreen(oBounds.Location)
+                'oFloatBar.Visible = True
+
+                Toolbar.Alignment = ContentAlignment.TopRight
+                Call Toolbar.Show(picMap.PointToScreen(oBounds.Location))
+                Return True
+            Else
+                'oFloatBar.Visible = False
+
+                Toolbar.Hide()
+                Return False
+            End If
+            'return picMap.PointToScreen(New Point(oBounds.X, oBounds.Y))
+        End If
+    End Function
+
+    Private Function pFloatingToolbarGetLocation(Toolbar As cRibbonMiniToolbar) As Boolean
         Select Case iDesignBarPosition
-            Case DesignBarPositionEnum.TopLeftCorner
-                Return picMap.PointToScreen(New Point(8, 48))
+            Case DesignBarPositionEnum.TopSide
+                'Return pFloatingToolbarValidateLocation(New Point(0, 0))
             Case DesignBarPositionEnum.NearCurrentItem
                 If pGetCurrentDesignTools.CurrentItem Is Nothing Then
-                    Return picMap.PointToScreen(New Point(8, 48))
-                    'Return Point.Empty
+                    Toolbar.Hide()
+                    Return False
                 Else
-                    'Dim oPenToolsPointF As PointF = modPaint.ToPaintPoint(New PointF(pGetCurrentDesignTools.CurrentItem.GetBounds.Left, pGetCurrentDesignTools.CurrentItem.GetBounds.Top), sPaintZoom, oPaintTranslation)
-                    'Return picMap.PointToScreen(New Point(oPenToolsPointF.X - 4, oPenToolsPointF.Y - 4))
                     Dim oItemBound As RectangleF = modPaint.ToPaintRectangle(pGetCurrentDesignTools.CurrentItem.GetBounds, sPaintZoom, oPaintTranslation)
                     Dim oVisibleBound As RectangleF = RectangleF.Intersect(oItemBound, picMap.ClientRectangle)
                     If modPaint.IsRectangleEmpty(oVisibleBound) Then
-                        Return picMap.PointToScreen(New Point(8, 48))
+                        Toolbar.Hide()
+                        Return False
                     Else
-                        Return picMap.PointToScreen(New Point(oVisibleBound.X - 4, oVisibleBound.Y - 24))
+                        Return pFloatingToolbarValidateLocation(Toolbar, New Point(oVisibleBound.X - 4, oVisibleBound.Y - 24))
                     End If
                 End If
             Case DesignBarPositionEnum.NearCurrentItemAndPoint, DesignBarPositionEnum.Default
                 If pGetCurrentDesignTools.CurrentItemPoint Is Nothing Then
                     If pGetCurrentDesignTools.CurrentItem Is Nothing Then
-                        Return picMap.PointToScreen(New Point(8, 48))
+                        Toolbar.Hide()
+                        Return False
                     Else
                         Dim oItemBound As RectangleF = modPaint.ToPaintRectangle(pGetCurrentDesignTools.CurrentItem.GetBounds, sPaintZoom, oPaintTranslation)
                         Dim oVisibleBound As RectangleF = RectangleF.Intersect(oItemBound, picMap.ClientRectangle)
                         If modPaint.IsRectangleEmpty(oVisibleBound) Then
-                            Return picMap.PointToScreen(New Point(8, 48))
+                            Toolbar.Hide()
+                            Return False
                         Else
-                            Return picMap.PointToScreen(New Point(oVisibleBound.X - 4, oVisibleBound.Y - 24))
+                            Return pFloatingToolbarValidateLocation(Toolbar, New Point(oVisibleBound.X - 4, oVisibleBound.Y - 24))
                         End If
                     End If
                 Else
@@ -8737,9 +8774,9 @@ Friend Class frmMain2
                             Call oPath.AddLine(oPenToolsPointF, modPaint.ToPaintPoint(New PointF(oPrevPoint.X, oPrevPoint.Y), sPaintZoom, oPaintTranslation))
                         End If
                         If modPaint.IsRectangleEmpty(oPath.GetBounds) Then
-                            Return picMap.PointToScreen(New Point(oPenToolsPointF.X - 4, oPenToolsPointF.Y - 24))
+                            Return pFloatingToolbarValidateLocation(Toolbar, New Point(oPenToolsPointF.X - 4, oPenToolsPointF.Y - 24))
                         Else
-                            Return picMap.PointToScreen(New Point(oPath.GetBounds.Location.X - 4, oPath.GetBounds.Location.Y - 24))
+                            Return pFloatingToolbarValidateLocation(Toolbar, New Point(oPath.GetBounds.Location.X - 4, oPath.GetBounds.Location.Y - 24))
                         End If
                     End Using
                 End If
@@ -9036,11 +9073,13 @@ Friend Class frmMain2
                     'dockFloatingDesignerBar.Location = pFloatingBarGetLocation()
                     If pGetCurrentDesignTools.IsInPointEdit Then
                         If barDesignerItemPointFloat.Visible Then
-                            barDesignerItemPointFloat.Location = pFloatingToolbarGetLocation()
+                            pFloatingToolbarGetLocation(barDesignerItemPointFloat)
+                            'barDesignerItemPointFloat.Location = oPoint
                         End If
                     Else
                         If barDesignerItemFloat.Visible Then
-                            barDesignerItemFloat.Location = pFloatingToolbarGetLocation()
+                            pFloatingToolbarGetLocation(barDesignerItemFloat)
+                            'barDesignerItemFloat.Location = oPoint
                         End If
                     End If
                 End If
@@ -9064,21 +9103,23 @@ Friend Class frmMain2
                             bFloatingToolbarHiding = True
                             Call barDesignerItemFloat.Hide()
                             bFloatingToolbarHiding = False
-                            If barDesignerItemPointFloat.Visible Then
-                                barDesignerItemPointFloat.Location = pFloatingToolbarGetLocation()
-                            Else
-                                barDesignerItemPointFloat.Show(pFloatingToolbarGetLocation())
-                            End If
+                            pFloatingToolbarGetLocation(barDesignerItemPointFloat)
+                            'If barDesignerItemPointFloat.Visible Then
+                            '    barDesignerItemPointFloat.Location = pFloatingToolbarGetLocation()
+                            'Else
+                            '    barDesignerItemPointFloat.Show(pFloatingToolbarGetLocation())
+                            'End If
                             Call barDesignerItemPointFloat.Refresh()
                         Else
                             bFloatingToolbarHiding = True
                             Call barDesignerItemPointFloat.Hide()
                             bFloatingToolbarHiding = False
-                            If barDesignerItemFloat.Visible Then
-                                barDesignerItemFloat.Location = pFloatingToolbarGetLocation()
-                            Else
-                                barDesignerItemFloat.Show(pFloatingToolbarGetLocation())
-                            End If
+                            pFloatingToolbarGetLocation(barDesignerItemFloat)
+                            'If barDesignerItemFloat.Visible Then
+                            '    barDesignerItemFloat.Location = pFloatingToolbarGetLocation()
+                            'Else
+                            '    barDesignerItemFloat.Show(pFloatingToolbarGetLocation())
+                            'End If
                             Call barDesignerItemFloat.Refresh()
                         End If
 
@@ -15226,6 +15267,8 @@ Friend Class frmMain2
         End If
     End Sub
 
+    'Private oFloatBar As Bar
+
     Private oBottomDataBar As Bar
     Private oTopGlobalFilterBar As Bar
     Private oTopDesignLevelBar As Bar
@@ -15233,6 +15276,31 @@ Friend Class frmMain2
     Private oBottomDesignBar As Bar
 
     Private Sub pWorkspacesMenuAndToolbarUpdate()
+        'Dim oManager As BarManager = New BarManager
+        'oManager.DockManager = DockManager
+        'Dim oDock As StandaloneBarDockControl = New StandaloneBarDockControl
+        'oDock.Manager = oManager
+        'pnlDesigner.Controls.Add(oDock)
+        'oFloatBar = New Bar(oManager, "Float bar")
+        'oFloatBar.OptionsBar.AllowQuickCustomization = False
+        'oFloatBar.OptionsBar.DisableCustomization = False
+        'oFloatBar.OptionsBar.DrawSizeGrip = True
+        'oFloatBar.OptionsBar.UseWholeRow = False
+        'oFloatBar.OptionsBar.DisableClose = True
+        'oFloatBar.OptionsBar.DrawDragBorder = False
+        'oFloatBar.DockStyle = BarDockStyle.None
+        'oFloatBar.ItemLinks.Add(btnItemsEndEdit, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        'oFloatBar.ItemLinks.Add(btnDesignSetCurrentCaveBranch, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        'oFloatBar.ItemLinks.Add(btnCut, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        'oFloatBar.ItemLinks.AddRange({btnCopy, btnPaste}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        'oFloatBar.ItemLinks.Add(btnDelete, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        'oFloatBar.ItemLinks.Add(btnItemsLayouts, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText, BarItemPaintStyle.Standard)
+        'oFloatBar.ItemLinks.Add(btnCurrentItemSegmentDirection, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        'oFloatBar.ItemLinks.Add(btnCurrentItemLock, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        'oFloatBar.ItemLinks.Add(btnCurrentItemGenericCombine, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        'oFloatBar.StandaloneBarDockControl = oDock
+        'oFloatBar.ItemLinks.ForEach(Function(oItem) oItem.ImageOptions.SvgImageSize = New Drawing.Size(8, 8))
+        'oFloatBar.Visible = True
 
         barDesignerItemFloat.ItemLinks.Add(btnItemsEndEdit, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
         barDesignerItemFloat.ItemLinks.Add(btnDesignSetCurrentCaveBranch, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
@@ -15240,11 +15308,10 @@ Friend Class frmMain2
         barDesignerItemFloat.ItemLinks.AddRange({btnCopy, btnPaste}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
         barDesignerItemFloat.ItemLinks.Add(btnDelete, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
         barDesignerItemFloat.ItemLinks.Add(btnItemsLayouts, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText, BarItemPaintStyle.CaptionGlyph)
-
         barDesignerItemFloat.ItemLinks.Add(btnCurrentItemSegmentDirection, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
         barDesignerItemFloat.ItemLinks.Add(btnCurrentItemLock, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
-
         barDesignerItemFloat.ItemLinks.Add(btnCurrentItemGenericCombine, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
+
         barDesignerItemPointFloat.ItemLinks.AddRange({btnCurrentItemPointAdd, btnCurrentItemPointDelete}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
         barDesignerItemPointFloat.ItemLinks.Add(btnCurrentItemPointsJoin, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
         barDesignerItemPointFloat.ItemLinks.AddRange({btnCurrentItemPointsJoinAndConnect, btnCurrentItemPointsUnjoinAll}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
@@ -15627,7 +15694,7 @@ Friend Class frmMain2
             btnLayer_Signs.Checked = False
             Call pToolsEnd()
             Call pGetCurrentDesignTools.SelectLayer(oCurrentDesign.Layers(cLayers.LayerTypeEnum.Base))
-            Call pLayerTools_EnabledByLevel("btnDesignTools_Base_")
+            Call pLayerTools_EnabledByLevel(cLayers.LayerTypeEnum.Base)
             Call pMapInvalidate()
         End If
     End Sub
@@ -15643,7 +15710,7 @@ Friend Class frmMain2
             btnLayer_Signs.Checked = False
             Call pToolsEnd()
             Call pGetCurrentDesignTools.SelectLayer(oCurrentDesign.Layers(cLayers.LayerTypeEnum.Soil))
-            Call pLayerTools_EnabledByLevel("btnDesignTools_Soil_")
+            Call pLayerTools_EnabledByLevel(cLayers.LayerTypeEnum.Soil)
             Call pMapInvalidate()
         End If
     End Sub
@@ -15659,7 +15726,7 @@ Friend Class frmMain2
             btnLayer_Signs.Checked = False
             Call pToolsEnd()
             Call pGetCurrentDesignTools.SelectLayer(oCurrentDesign.Layers(cLayers.LayerTypeEnum.WaterAndFloorMorphologies))
-            Call pLayerTools_EnabledByLevel("btnDesignTools_Water_")
+            Call pLayerTools_EnabledByLevel(cLayers.LayerTypeEnum.WaterAndFloorMorphologies)
             Call pMapInvalidate()
         End If
     End Sub
@@ -15675,7 +15742,7 @@ Friend Class frmMain2
             btnLayer_Signs.Checked = False
             Call pToolsEnd()
             Call pGetCurrentDesignTools.SelectLayer(oCurrentDesign.Layers(cLayers.LayerTypeEnum.RocksAndConcretion))
-            Call pLayerTools_EnabledByLevel("btnDesignTools_Rocks_")
+            Call pLayerTools_EnabledByLevel(cLayers.LayerTypeEnum.RocksAndConcretion)
             Call pMapInvalidate()
         End If
     End Sub
@@ -15691,7 +15758,7 @@ Friend Class frmMain2
             btnLayer_Signs.Checked = False
             Call pToolsEnd()
             Call pGetCurrentDesignTools.SelectLayer(oCurrentDesign.Layers(cLayers.LayerTypeEnum.CeilingMorphologies))
-            Call pLayerTools_EnabledByLevel("btnDesignTools_TerrainLevel_")
+            Call pLayerTools_EnabledByLevel(cLayers.LayerTypeEnum.CeilingMorphologies)
             Call pMapInvalidate()
         End If
     End Sub
@@ -15707,7 +15774,7 @@ Friend Class frmMain2
             btnLayer_Signs.Checked = False
             Call pToolsEnd()
             Call pGetCurrentDesignTools.SelectLayer(oCurrentDesign.Layers(cLayers.LayerTypeEnum.Borders))
-            Call pLayerTools_EnabledByLevel("btnDesignTools_Borders_")
+            Call pLayerTools_EnabledByLevel(cLayers.LayerTypeEnum.Borders)
             Call pMapInvalidate()
         End If
     End Sub
@@ -15723,7 +15790,7 @@ Friend Class frmMain2
             'btnLayer_Signs.Checked = False
             Call pToolsEnd()
             Call pGetCurrentDesignTools.SelectLayer(oCurrentDesign.Layers(cLayers.LayerTypeEnum.Signs))
-            Call pLayerTools_EnabledByLevel("btnDesignTools_Signs_")
+            Call pLayerTools_EnabledByLevel(cLayers.LayerTypeEnum.Signs)
             Call pMapInvalidate()
         End If
     End Sub

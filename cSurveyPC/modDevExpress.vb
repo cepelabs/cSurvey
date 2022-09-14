@@ -9,8 +9,39 @@ Imports DevExpress.XtraNavBar.ViewInfo
 Imports DevExpress.Utils.Drawing
 Imports DevExpress.XtraRichEdit.API.Native
 Imports DevExpress.XtraEditors
+Imports DevExpress.XtraBars.Ribbon
+Imports System.Reflection
 
 Public Module modDevExpress
+
+    <Extension>
+    Public Function GetSize(RibbonMiniToolbar As RibbonMiniToolbar) As Size
+        Dim p As PropertyInfo = GetType(RibbonMiniToolbar).GetProperty("Form", BindingFlags.NonPublic Or BindingFlags.Instance)
+        Dim f As DevExpress.XtraBars.Ribbon.RibbonMiniToolbarPopupForm = TryCast(p.GetValue(RibbonMiniToolbar, Nothing), DevExpress.XtraBars.Ribbon.RibbonMiniToolbarPopupForm)
+        Return f.Size
+    End Function
+
+    <Extension>
+    Public Function Bounds(RibbonMiniToolbar As RibbonMiniToolbar) As Rectangle
+        Dim p As PropertyInfo = GetType(RibbonMiniToolbar).GetProperty("Form", BindingFlags.NonPublic Or BindingFlags.Instance)
+        Dim f As DevExpress.XtraBars.Ribbon.RibbonMiniToolbarPopupForm = TryCast(p.GetValue(RibbonMiniToolbar, Nothing), DevExpress.XtraBars.Ribbon.RibbonMiniToolbarPopupForm)
+        Return f.DesktopBounds
+    End Function
+
+    <Extension>
+    Public Function GetWidth(RibbonMiniToolbar As RibbonMiniToolbar) As Integer
+        Dim p As PropertyInfo = GetType(RibbonMiniToolbar).GetProperty("Form", BindingFlags.NonPublic Or BindingFlags.Instance)
+        Dim f As DevExpress.XtraBars.Ribbon.RibbonMiniToolbarPopupForm = TryCast(p.GetValue(RibbonMiniToolbar, Nothing), DevExpress.XtraBars.Ribbon.RibbonMiniToolbarPopupForm)
+        Return f.Size.Width
+    End Function
+
+    <Extension>
+    Public Function GetHeight(RibbonMiniToolbar As RibbonMiniToolbar) As Integer
+        Dim p As PropertyInfo = GetType(RibbonMiniToolbar).GetProperty("Form", BindingFlags.NonPublic Or BindingFlags.Instance)
+        Dim f As DevExpress.XtraBars.Ribbon.RibbonMiniToolbarPopupForm = TryCast(p.GetValue(RibbonMiniToolbar, Nothing), DevExpress.XtraBars.Ribbon.RibbonMiniToolbarPopupForm)
+        Return f.Size.Height
+    End Function
+
     Public Sub PrepareSkinMenu(SkinGallery As DevExpress.XtraBars.Ribbon.Gallery.GalleryControlGallery)
         'SkinGallery.Groups.ToList.ForEach(Sub(oGroup) oGroup.Items.ToList.ForEach(Sub(oItem) oItem.Visible = (oItem.Caption.ToLower = "the bezier" OrElse oItem.Caption.ToLower Like "*office 2019 *" OrElse oItem.Caption.ToLower Like "*visual studio*")))
     End Sub

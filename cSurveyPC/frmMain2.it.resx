@@ -7449,4 +7449,7 @@ o ad una sezione trasversale</value>
   <data name="cboMainSessionList.Buttons7" xml:space="preserve">
     <value>Modifica...</value>
   </data>
+  <data name="btnCurrentItemPointBindings.Caption" xml:space="preserve">
+    <value>Collegamenti</value>
+  </data>
 </root>

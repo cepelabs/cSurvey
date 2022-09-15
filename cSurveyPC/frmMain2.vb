@@ -4242,7 +4242,6 @@ Friend Class frmMain2
                     grpCurrentItemLocation.SetVisible(True)
 
                     btnCurrentItemLock.Visibility = BarItemVisibility.Never
-                    btnItemsLayouts.SetVisible(False)
 
                     grpCurrentItemSize.SetVisible(False)
                     grpCurrentItemRotate.SetVisible(False)
@@ -4510,9 +4509,8 @@ Friend Class frmMain2
             btnCurrentItemGenericCombine.Visibility = BarItemVisibility.Never
             grpCurrentItemItems.SetVisible(False)
 
-            grpCurrentItemSequence.SetVisible(False)
+            grpCurrentItemSequence.SetVisible(True)
             grpCurrentItemPoint.SetVisible(True)
-            grpCurrentItemBindings.SetVisible(True)
 
             Dim iType As cPoint.PointTypeEnum = .Type
 
@@ -4551,7 +4549,7 @@ Friend Class frmMain2
                 btnCurrentItemPointNewFromSequence0.Visibility = BarItemVisibility.Always
                 btnCurrentItemPointNewFromSequence1.Visibility = BarItemVisibility.Always
 
-                grpCurrentItemBindings.SetVisible(False)
+                grpCurrentItemBindings.SetVisible(True)
             End If
 
             Dim sCave As String = "" & .Item.Cave
@@ -4952,6 +4950,12 @@ Friend Class frmMain2
         Call pPropPopupHide()
     End Sub
 
+
+    Private Sub tmrFloatingBar_Tick(sender As Object, e As EventArgs) Handles tmrFloatingBar.Tick
+        tmrFloatingBar.Enabled = False
+        Call pFloatingToolbarShow()
+    End Sub
+
     Private Sub pObjectPropertyLoad()
         If InvokeRequired Then
             Call Me.BeginInvoke(New MethodInvoker(AddressOf pObjectPropertyLoad))
@@ -5019,6 +5023,7 @@ Friend Class frmMain2
                         Catch ex As Exception
                             Call pLogAdd(ex)
                         End Try
+                        Call pFloatingToolbarHide()
                         pnl3DProp.Visible = False
                         pnlDesignProp.Visible = False
                         pnlObjectProp.Visible = False
@@ -5360,7 +5365,7 @@ Friend Class frmMain2
     End Sub
 
     Private Sub pLayerTools_EnabledByLevel(ByVal Layer As cLayers.LayerTypeEnum)
-        Call Ribbon.Manager.BeginUpdate()
+        Call RibbonControl.Manager.BeginUpdate()
         If bToolsEnabledByLevel Then
             For Each oItem As BarItemLink In grpDesignItemsAdd.ItemLinks
                 Try
@@ -5390,7 +5395,7 @@ Friend Class frmMain2
                 End If
             Next
         End If
-        Call Ribbon.Manager.EndUpdate()
+        Call RibbonControl.Manager.EndUpdate()
     End Sub
 
     Private Sub picMap_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles picMap.Click
@@ -8741,7 +8746,7 @@ Friend Class frmMain2
     Private Function pFloatingToolbarGetLocation(Toolbar As cRibbonMiniToolbar) As Boolean
         Select Case iDesignBarPosition
             Case DesignBarPositionEnum.TopSide
-                'Return pFloatingToolbarValidateLocation(New Point(0, 0))
+                Return pFloatingToolbarValidateLocation(Toolbar, New Point(-4, -24))
             Case DesignBarPositionEnum.NearCurrentItem
                 If pGetCurrentDesignTools.CurrentItem Is Nothing Then
                     Toolbar.Hide()
@@ -9154,7 +9159,7 @@ Friend Class frmMain2
     Private Delegate Sub pFloatingToolbarHideDelegate()
     Private Sub pFloatingToolbarHide()
         If InvokeRequired Then
-            Call Me.BeginInvoke(New pFloatingToolbarShowDelegate(AddressOf pFloatingToolbarHide))
+            Call Me.BeginInvoke(New pFloatingToolbarHideDelegate(AddressOf pFloatingToolbarHide))
         Else
             If barDesignerItemFloat.Visible OrElse barDesignerItemPointFloat.Visible Then
                 bFloatingToolbarHiding = True
@@ -15282,6 +15287,7 @@ Friend Class frmMain2
     Private oTopGlobalFilterBar As Bar
     Private oTopDesignLevelBar As Bar
     Private oTopDesignItemsBar As Bar
+    Private oTopDesignToolsBar As Bar
     Private oBottomDesignBar As Bar
 
     Private Sub pWorkspacesMenuAndToolbarUpdate()
@@ -15383,6 +15389,25 @@ Friend Class frmMain2
         oTopDesignItemsBar.StandaloneBarDockControl = dockTopDesignerBar
         oTopDesignItemsBar.DockStyle = BarDockStyle.Standalone
         oTopDesignItemsBar.ItemLinks.AddRange(grpDesignItemsAdd.ItemLinks.Select(Function(oitem) oitem.Item).ToList)
+
+        'oTopDesignToolsBar = New Bar(RibbonControl.Manager, "Designer tools bar")
+        'oTopDesignToolsBar.OptionsBar.AllowQuickCustomization = False
+        'oTopDesignToolsBar.OptionsBar.DisableCustomization = False
+        'oTopDesignToolsBar.OptionsBar.DrawSizeGrip = False
+        'oTopDesignToolsBar.OptionsBar.UseWholeRow = True
+        'oTopDesignToolsBar.OptionsBar.DisableClose = True
+        'oTopDesignToolsBar.OptionsBar.DrawDragBorder = False
+        'oTopDesignToolsBar.StandaloneBarDockControl = dockTopDesignerBar
+        'oTopDesignToolsBar.DockStyle = BarDockStyle.Standalone
+        'oTopDesignToolsBar.ItemLinks.Add(btnItemsEndEdit, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        'oTopDesignToolsBar.ItemLinks.Add(btnDesignSetCurrentCaveBranch, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        'oTopDesignToolsBar.ItemLinks.Add(btnCut, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        'oTopDesignToolsBar.ItemLinks.AddRange({btnCopy, btnPaste}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        'oTopDesignToolsBar.ItemLinks.Add(btnDelete, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        'oTopDesignToolsBar.ItemLinks.Add(btnItemsLayouts, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        'oTopDesignToolsBar.ItemLinks.Add(btnCurrentItemSegmentDirection, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        'oTopDesignToolsBar.ItemLinks.Add(btnCurrentItemLock, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        'oTopDesignToolsBar.ItemLinks.Add(btnCurrentItemGenericCombine, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
 
         dockBottomDesignerBar.Manager = RibbonControl.Manager
         'Dim oBottomPenBar As Bar = New Bar(RibbonControl.Manager, "Pen tools bar")
@@ -15638,7 +15663,7 @@ Friend Class frmMain2
         Call mnuRecents.ClearItems
         If oRecents.Count > 0 Then
             For Each sRecent As String In oRecents
-                Dim oItem As BarButtonItem = New BarButtonItem(Ribbon.Manager, iRecentIndex & " " & sRecent)
+                Dim oItem As BarButtonItem = New BarButtonItem(RibbonControl.Manager, iRecentIndex & " " & sRecent)
                 oItem.Tag = sRecent
                 AddHandler oItem.ItemClick, AddressOf oRecentItem_ItemClick
                 mnuRecents.AddItem(oItem)
@@ -15651,7 +15676,7 @@ Friend Class frmMain2
     Private Sub mnuTemplates_BeforePopup(sender As Object, e As CancelEventArgs) Handles mnuTemplates.BeforePopup
         Call mnuTemplates.ClearItems
         For Each oTemplate As UIHelpers.cTemplateEntry In oTemplates
-            Dim oItem As BarButtonItem = New BarButtonItem(Ribbon.Manager, oTemplate.Name)
+            Dim oItem As BarButtonItem = New BarButtonItem(RibbonControl.Manager, oTemplate.Name)
             oItem.Tag = oTemplate
             AddHandler oItem.ItemClick, AddressOf oNewFromTemplate_ItemClick
             mnuTemplates.AddItem(oItem)
@@ -18930,6 +18955,7 @@ Friend Class frmMain2
             Call pSurveyProperty(7, sender.editvalue)
         End If
     End Sub
+
 End Class
 
 

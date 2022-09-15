@@ -36,15 +36,24 @@ Friend Class cItemTextStylePropertyControl
             Call cboPropTextStyle.Rebind(oPaintOptions)
         End If
 
-        txtPropText.Text = Me.Item.Text
         cboPropTextStyle.EditValue = Me.Item.Font.Type
 
         cboPropTextSize.SelectedIndex = DirectCast(Me.Item, cIItemSizable).Size
+        If (Me.Item.AvaiableTextProperties And cIItemText.AvaiableTextPropertiesEnum.Text) Then
+            txtPropText.Text = Me.Item.Text
+            txtPropText.Enabled = True
+            lblPropText.Enabled = True
+        Else
+            txtPropText.Enabled = False
+            lblPropText.Enabled = False
+        End If
         If (Me.Item.AvaiableTextProperties And cIItemText.AvaiableTextPropertiesEnum.Rotable) Then
             cboPropTextRotateMode.SelectedIndex = DirectCast(Me.Item, cIItemRotable).RotateMode
             cboPropTextRotateMode.Enabled = True
+            lblPropTextRotateMode.Enabled = True
         Else
             cboPropTextRotateMode.Enabled = False
+            lblPropTextRotateMode.Enabled = False
         End If
         If (Me.Item.AvaiableTextProperties And cIItemText.AvaiableTextPropertiesEnum.Lineable) Then
             Dim oItemLineableText As cIItemLineableText = Me.Item

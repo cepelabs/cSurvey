@@ -69,7 +69,25 @@ Namespace cSurvey.Design.Items
 
         Public ReadOnly Property AvaiableTextProperties As cIItemText.AvaiableTextPropertiesEnum Implements cIItemText.AvaiableTextProperties
             Get
-                Return cIItemText.AvaiableTextPropertiesEnum.None
+
+                Select Case iQuotaType
+                    Case cIItemQuota.QuotaTypeEnum.Vertical
+                        Return cIItemText.AvaiableTextPropertiesEnum.Text
+                    Case cIItemQuota.QuotaTypeEnum.Altitude
+                        Return cIItemText.AvaiableTextPropertiesEnum.Text
+                    Case cIItemQuota.QuotaTypeEnum.Drop
+                        Return cIItemText.AvaiableTextPropertiesEnum.Text
+                    Case cIItemQuota.QuotaTypeEnum.Horizontal
+                        Return cIItemText.AvaiableTextPropertiesEnum.Text
+                    Case cIItemQuota.QuotaTypeEnum.Oblique
+                        Return cIItemText.AvaiableTextPropertiesEnum.Text
+                    Case cIItemQuota.QuotaTypeEnum.VerticalScale
+                        Return cIItemText.AvaiableTextPropertiesEnum.None
+                    Case cIItemQuota.QuotaTypeEnum.HorizontalScale
+                        Return cIItemText.AvaiableTextPropertiesEnum.None
+                    Case cIItemQuota.QuotaTypeEnum.GridScale
+                        Return cIItemText.AvaiableTextPropertiesEnum.None
+                End Select
             End Get
         End Property
 
@@ -183,24 +201,7 @@ Namespace cSurvey.Design.Items
 
         Public Overrides ReadOnly Property HaveText As Boolean
             Get
-                Select Case iQuotaType
-                    Case cIItemQuota.QuotaTypeEnum.Vertical
-                        Return True
-                    Case cIItemQuota.QuotaTypeEnum.Altitude
-                        Return True
-                    Case cIItemQuota.QuotaTypeEnum.Drop
-                        Return True
-                    Case cIItemQuota.QuotaTypeEnum.Horizontal
-                        Return True
-                    Case cIItemQuota.QuotaTypeEnum.Oblique
-                        Return True
-                    Case cIItemQuota.QuotaTypeEnum.VerticalScale
-                        Return False
-                    Case cIItemQuota.QuotaTypeEnum.HorizontalScale
-                        Return False
-                    Case cIItemQuota.QuotaTypeEnum.GridScale
-                        Return False
-                End Select
+                Return True
             End Get
         End Property
 

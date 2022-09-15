@@ -58,7 +58,7 @@ Namespace cSurvey.Design.Items
 
         Public Overridable ReadOnly Property AvaiableTextProperties As cIItemText.AvaiableTextPropertiesEnum Implements cIItemText.AvaiableTextProperties
             Get
-                Return cIItemText.AvaiableTextPropertiesEnum.Rotable Or cIItemText.AvaiableTextPropertiesEnum.Lineable Or cIItemText.AvaiableTextPropertiesEnum.VerticalLineable
+                Return cIItemText.AvaiableTextPropertiesEnum.Rotable Or cIItemText.AvaiableTextPropertiesEnum.Lineable Or cIItemText.AvaiableTextPropertiesEnum.VerticalLineable Or cIItemText.AvaiableTextPropertiesEnum.Text
             End Get
         End Property
 

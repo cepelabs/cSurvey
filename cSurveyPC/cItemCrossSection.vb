@@ -1081,7 +1081,7 @@ Namespace cSurvey.Design.Items
 
         Public ReadOnly Property AvaiableTextProperties As cIItemText.AvaiableTextPropertiesEnum Implements cIItemText.AvaiableTextProperties
             Get
-                Return cIItemText.AvaiableTextPropertiesEnum.None
+                Return cIItemText.AvaiableTextPropertiesEnum.Text
             End Get
         End Property
 

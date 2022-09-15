@@ -8,6 +8,7 @@
         <Flags> Enum AvaiableTextPropertiesEnum
             None = &H0
             Rotable = &H1
+            Text = &H2
             Lineable = &H10
             VerticalLineable = &H100
         End Enum

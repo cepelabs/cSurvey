@@ -140,7 +140,7 @@
     <value>&lt;image=#warning;size=16,16&gt; &lt;b&gt;Attenzione:&lt;/b&gt; prima di eseguire questa funzione salvare il rilievo</value>
   </data>
   <data name="GroupBox1.Text" xml:space="preserve">
-    <value>Segmenti e dati</value>
+    <value>Battute e dati:</value>
   </data>
   <data name="GroupBox2.Text" xml:space="preserve">
     <value>Disegno:</value>

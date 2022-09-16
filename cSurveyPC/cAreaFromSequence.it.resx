@@ -137,7 +137,7 @@
     <value>Larghezza:</value>
   </data>
   <data name="ColumnHeader1.Text" xml:space="preserve">
-    <value>Segmento</value>
+    <value>Battuta</value>
   </data>
   <data name="cboLineType.Items2" xml:space="preserve">
     <value>Beziers</value>

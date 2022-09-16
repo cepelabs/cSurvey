@@ -190,7 +190,7 @@
     <value>Ok</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Elimina segmenti e dati</value>
+    <value>Elimina battute e altri dati</value>
   </data>
   <data name="RadioButton1.Properties.Caption" xml:space="preserve">
     <value>Elimina tutto</value>

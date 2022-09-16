@@ -291,4 +291,7 @@
   <data name="lblPropCrossSectionPosition.ToolTip" xml:space="preserve">
     <value>Posizione del marker lungo la battuta</value>
   </data>
+  <data name="lblPropCrossSectionMarkerArrowSize.ToolTip" xml:space="preserve">
+    <value>Freccia a scala libera</value>
+  </data>
 </root>

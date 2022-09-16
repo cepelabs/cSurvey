@@ -4950,12 +4950,6 @@ Friend Class frmMain2
         Call pPropPopupHide()
     End Sub
 
-
-    Private Sub tmrFloatingBar_Tick(sender As Object, e As EventArgs) Handles tmrFloatingBar.Tick
-        tmrFloatingBar.Enabled = False
-        Call pFloatingToolbarShow()
-    End Sub
-
     Private Sub pObjectPropertyLoad()
         If InvokeRequired Then
             Call Me.BeginInvoke(New MethodInvoker(AddressOf pObjectPropertyLoad))
@@ -5031,6 +5025,11 @@ Friend Class frmMain2
                 Catch ex As Exception
                     Call pLogAdd(ex)
                 End Try
+
+                'fix forcing refresh of floating bar and design
+                dockFloatBar.Size = New Size(20, 20)
+                picMap.Invalidate()
+
                 bDisabledObjectPropertyEvent = False
             End If
         End If
@@ -8710,16 +8709,17 @@ Friend Class frmMain2
         End Try
     End Sub
 
-    Private Function pFloatingToolbarValidateLocation(Toolbar As cRibbonMiniToolbar, Point As Point) As Boolean
-        Dim oSize As Size = Toolbar.GetSize
-        Dim oBounds As Rectangle = New Rectangle(Point.X, Point.Y, oSize.Width, oSize.Height)
+    Private Function pFloatingToolbarValidateLocation(Point As Point) As Boolean
+        Dim oSize As Size = oFloatBar.Size '.GetSize
+        Dim iHPadding As Integer = -4 * Me.CurrentAutoScaleDimensions.Height / 96.0F
+        Dim iVPadding As Integer = 20 * Me.CurrentAutoScaleDimensions.Height / 96.0F
+        Dim oBounds As Rectangle = New Rectangle(Point.X + iHPadding, Point.Y - oSize.Height - iVPadding, oSize.Width, oSize.Height)
         Dim oMapBounds As Rectangle = picMap.Bounds
         If oMapBounds.Contains(oBounds) Then
-            'oFloatBar.FloatLocation = picMap.PointToScreen(Point)
-            'oFloatBar.Visible = True
-
-            Toolbar.Alignment = ContentAlignment.TopRight
-            Call Toolbar.Show(picMap.PointToScreen(Point))
+            dockFloatBar.Location = pnlDesigner.PointToClient(picMap.PointToScreen(New Point(oBounds.X, oBounds.Y)))
+            dockFloatBar.BringToFront()
+            dockFloatBar.Visible = True
+            dockFloatBar.Refresh()
             Return True
         Else
             If oBounds.X < 0 Then oBounds.X = 0
@@ -8727,53 +8727,58 @@ Friend Class frmMain2
             If oBounds.Y < 0 Then oBounds.Y = 0
             If oBounds.Bottom > oMapBounds.Bottom Then oBounds.Y = oMapBounds.Bottom - oSize.Height
             If oMapBounds.Contains(oBounds) Then
-                'oFloatBar.FloatLocation = picMap.PointToScreen(oBounds.Location)
-                'oFloatBar.Visible = True
-
-                Toolbar.Alignment = ContentAlignment.TopRight
-                Call Toolbar.Show(picMap.PointToScreen(oBounds.Location))
+                'StandaloneBarDockControl1.Location = New Point(0, 0)
+                dockFloatBar.Location = pnlDesigner.PointToClient(picMap.PointToScreen(New Point(oBounds.X, oBounds.Y)))
+                dockFloatBar.BringToFront()
+                dockFloatBar.Visible = True
+                dockFloatBar.Refresh()
                 Return True
             Else
-                'oFloatBar.Visible = False
-
-                Toolbar.Hide()
+                dockFloatBar.Visible = False
                 Return False
             End If
-            'return picMap.PointToScreen(New Point(oBounds.X, oBounds.Y))
         End If
     End Function
 
-    Private Function pFloatingToolbarGetLocation(Toolbar As cRibbonMiniToolbar) As Boolean
+    Private Function pFloatingToolbarGetLocation() As Boolean
         Select Case iDesignBarPosition
             Case DesignBarPositionEnum.TopSide
-                Return pFloatingToolbarValidateLocation(Toolbar, New Point(-4, -24))
+                If Not oFloatBar.OptionsBar.UseWholeRow Then
+                    oFloatBar.StandaloneBarDockControl = dockTopDesignerBar
+                    oFloatBar.OptionsBar.UseWholeRow = True
+                End If
             Case DesignBarPositionEnum.NearCurrentItem
+                If oFloatBar.OptionsBar.UseWholeRow Then
+                    oFloatBar.StandaloneBarDockControl = dockFloatBar
+                    oFloatBar.OptionsBar.UseWholeRow = False
+                End If
                 If pGetCurrentDesignTools.CurrentItem Is Nothing Then
-                    Toolbar.Hide()
+                    dockFloatBar.Visible = False
                     Return False
                 Else
                     Dim oItemBound As RectangleF = modPaint.ToPaintRectangle(pGetCurrentDesignTools.CurrentItem.GetBounds, sPaintZoom, oPaintTranslation)
                     Dim oVisibleBound As RectangleF = RectangleF.Intersect(oItemBound, picMap.ClientRectangle)
-                    If modPaint.IsRectangleEmpty(oVisibleBound) Then
-                        Toolbar.Hide()
+                    If oVisibleBound.IsEmpty Then
+                        dockFloatBar.Visible = False
                         Return False
                     Else
-                        Return pFloatingToolbarValidateLocation(Toolbar, New Point(oVisibleBound.X - 4, oVisibleBound.Y - 24))
+                        Return pFloatingToolbarValidateLocation(New Point(oVisibleBound.X, oVisibleBound.Y))
                     End If
                 End If
             Case DesignBarPositionEnum.NearCurrentItemAndPoint, DesignBarPositionEnum.Default
+                oFloatBar.StandaloneBarDockControl = dockFloatBar
                 If pGetCurrentDesignTools.CurrentItemPoint Is Nothing Then
                     If pGetCurrentDesignTools.CurrentItem Is Nothing Then
-                        Toolbar.Hide()
+                        dockFloatBar.Visible = False
                         Return False
                     Else
                         Dim oItemBound As RectangleF = modPaint.ToPaintRectangle(pGetCurrentDesignTools.CurrentItem.GetBounds, sPaintZoom, oPaintTranslation)
                         Dim oVisibleBound As RectangleF = RectangleF.Intersect(oItemBound, picMap.ClientRectangle)
-                        If modPaint.IsRectangleEmpty(oVisibleBound) Then
-                            Toolbar.Hide()
+                        If oVisibleBound.IsEmpty Then
+                            dockFloatBar.Visible = False
                             Return False
                         Else
-                            Return pFloatingToolbarValidateLocation(Toolbar, New Point(oVisibleBound.X - 4, oVisibleBound.Y - 24))
+                            Return pFloatingToolbarValidateLocation(New Point(oVisibleBound.X, oVisibleBound.Y))
                         End If
                     End If
                 Else
@@ -8787,10 +8792,10 @@ Friend Class frmMain2
                         If Not IsNothing(oPrevPoint) Then
                             Call oPath.AddLine(oPenToolsPointF, modPaint.ToPaintPoint(New PointF(oPrevPoint.X, oPrevPoint.Y), sPaintZoom, oPaintTranslation))
                         End If
-                        If modPaint.IsRectangleEmpty(oPath.GetBounds) Then
-                            Return pFloatingToolbarValidateLocation(Toolbar, New Point(oPenToolsPointF.X - 4, oPenToolsPointF.Y - 24))
+                        If oPath.GetBounds.IsEmpty Then
+                            Return pFloatingToolbarValidateLocation(New Point(oPenToolsPointF.X, oPenToolsPointF.Y))
                         Else
-                            Return pFloatingToolbarValidateLocation(Toolbar, New Point(oPath.GetBounds.Location.X - 4, oPath.GetBounds.Location.Y - 24))
+                            Return pFloatingToolbarValidateLocation(New Point(oPath.GetBounds.Location.X, oPath.GetBounds.Location.Y))
                         End If
                     End Using
                 End If
@@ -9084,18 +9089,7 @@ Friend Class frmMain2
                 If pGetCurrentDesignTools.CurrentItem Is Nothing Then
                     Call pFloatingToolbarHide()
                 Else
-                    'dockFloatingDesignerBar.Location = pFloatingBarGetLocation()
-                    If pGetCurrentDesignTools.IsInPointEdit Then
-                        If barDesignerItemPointFloat.Visible Then
-                            pFloatingToolbarGetLocation(barDesignerItemPointFloat)
-                            'barDesignerItemPointFloat.Location = oPoint
-                        End If
-                    Else
-                        If barDesignerItemFloat.Visible Then
-                            pFloatingToolbarGetLocation(barDesignerItemFloat)
-                            'barDesignerItemFloat.Location = oPoint
-                        End If
-                    End If
+                    Call pFloatingToolbarGetLocation()
                 End If
             End If
         End If
@@ -9114,40 +9108,19 @@ Friend Class frmMain2
                         Call pFloatingToolbarHide()
                     Else
                         If pGetCurrentDesignTools.IsInPointEdit Then
-                            bFloatingToolbarHiding = True
-                            Call barDesignerItemFloat.Hide()
-                            bFloatingToolbarHiding = False
-                            pFloatingToolbarGetLocation(barDesignerItemPointFloat)
-                            'If barDesignerItemPointFloat.Visible Then
-                            '    barDesignerItemPointFloat.Location = pFloatingToolbarGetLocation()
-                            'Else
-                            '    barDesignerItemPointFloat.Show(pFloatingToolbarGetLocation())
-                            'End If
-                            Call barDesignerItemPointFloat.Refresh()
+                            Call oFloatBar.BeginUpdate()
+                            For Each oLink As BarItemLink In oFloatBar.ItemLinks
+                                oLink.Visible = oLink.Item.Name.ToLower.StartsWith("btncurrentitempoint")
+                            Next
+                            Call oFloatBar.EndUpdate()
                         Else
-                            bFloatingToolbarHiding = True
-                            Call barDesignerItemPointFloat.Hide()
-                            bFloatingToolbarHiding = False
-                            pFloatingToolbarGetLocation(barDesignerItemFloat)
-                            'If barDesignerItemFloat.Visible Then
-                            '    barDesignerItemFloat.Location = pFloatingToolbarGetLocation()
-                            'Else
-                            '    barDesignerItemFloat.Show(pFloatingToolbarGetLocation())
-                            'End If
-                            Call barDesignerItemFloat.Refresh()
+                            Call oFloatBar.BeginUpdate()
+                            For Each oLink As BarItemLink In oFloatBar.ItemLinks
+                                oLink.Visible = Not oLink.Item.Name.ToLower.StartsWith("btncurrentitempoint")
+                            Next
+                            Call oFloatBar.EndUpdate()
                         End If
-
-                        'If pGetCurrentDesignTools.IsInPointEdit Then
-                        '    oFloatingDesignerItemPointBar.Visible = True
-                        '    oFloatingDesignerItemBar.Visible = False
-                        'Else
-                        '    oFloatingDesignerItemPointBar.Visible = False
-                        '    oFloatingDesignerItemBar.Visible = True
-                        'End If
-                        'dockFloatingDesignerBar.Location = pFloatingBarGetLocation()
-                        'dockFloatingDesignerBar.BringToFront()
-                        'dockFloatingDesignerBar.Visible = True
-                        'dockFloatingDesignerBar.Refresh()
+                        Call pFloatingToolbarGetLocation()
                     End If
                 End If
             End If
@@ -9161,11 +9134,9 @@ Friend Class frmMain2
         If InvokeRequired Then
             Call Me.BeginInvoke(New pFloatingToolbarHideDelegate(AddressOf pFloatingToolbarHide))
         Else
-            If barDesignerItemFloat.Visible OrElse barDesignerItemPointFloat.Visible Then
-                bFloatingToolbarHiding = True
-                Call barDesignerItemFloat.Hide()
-                Call barDesignerItemPointFloat.Hide()
-                bFloatingToolbarHiding = False
+            If dockFloatBar.Visible Then
+                dockFloatBar.Visible = False
+                Call picMap.Invalidate()
             End If
         End If
     End Sub
@@ -15281,7 +15252,7 @@ Friend Class frmMain2
         End If
     End Sub
 
-    'Private oFloatBar As Bar
+    Private oFloatBar As Bar
 
     Private oBottomDataBar As Bar
     Private oTopGlobalFilterBar As Bar
@@ -15291,46 +15262,47 @@ Friend Class frmMain2
     Private oBottomDesignBar As Bar
 
     Private Sub pWorkspacesMenuAndToolbarUpdate()
-        'Dim oManager As BarManager = New BarManager
-        'oManager.DockManager = DockManager
-        'Dim oDock As StandaloneBarDockControl = New StandaloneBarDockControl
-        'oDock.Manager = oManager
-        'pnlDesigner.Controls.Add(oDock)
-        'oFloatBar = New Bar(oManager, "Float bar")
-        'oFloatBar.OptionsBar.AllowQuickCustomization = False
-        'oFloatBar.OptionsBar.DisableCustomization = False
-        'oFloatBar.OptionsBar.DrawSizeGrip = True
-        'oFloatBar.OptionsBar.UseWholeRow = False
-        'oFloatBar.OptionsBar.DisableClose = True
-        'oFloatBar.OptionsBar.DrawDragBorder = False
-        'oFloatBar.DockStyle = BarDockStyle.None
-        'oFloatBar.ItemLinks.Add(btnItemsEndEdit, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
-        'oFloatBar.ItemLinks.Add(btnDesignSetCurrentCaveBranch, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
-        'oFloatBar.ItemLinks.Add(btnCut, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
-        'oFloatBar.ItemLinks.AddRange({btnCopy, btnPaste}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
-        'oFloatBar.ItemLinks.Add(btnDelete, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
-        'oFloatBar.ItemLinks.Add(btnItemsLayouts, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText, BarItemPaintStyle.Standard)
-        'oFloatBar.ItemLinks.Add(btnCurrentItemSegmentDirection, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
-        'oFloatBar.ItemLinks.Add(btnCurrentItemLock, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
-        'oFloatBar.ItemLinks.Add(btnCurrentItemGenericCombine, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
-        'oFloatBar.StandaloneBarDockControl = oDock
-        'oFloatBar.ItemLinks.ForEach(Function(oItem) oItem.ImageOptions.SvgImageSize = New Drawing.Size(8, 8))
-        'oFloatBar.Visible = True
+        dockFloatBar.Manager = RibbonControl.Manager
+        oFloatBar = New Bar(RibbonControl.Manager, "Float bar")
+        oFloatBar.OptionsBar.AllowQuickCustomization = False
+        oFloatBar.OptionsBar.DisableCustomization = False
+        oFloatBar.OptionsBar.DrawSizeGrip = False
+        oFloatBar.OptionsBar.UseWholeRow = False
+        oFloatBar.OptionsBar.DisableClose = True
+        oFloatBar.OptionsBar.DrawDragBorder = False
+        oFloatBar.DockStyle = BarDockStyle.Standalone
+        oFloatBar.ItemLinks.Add(btnItemsEndEdit, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        oFloatBar.ItemLinks.Add(btnDesignSetCurrentCaveBranch, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        oFloatBar.ItemLinks.Add(btnCut, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        oFloatBar.ItemLinks.AddRange({btnCopy, btnPaste}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        oFloatBar.ItemLinks.Add(btnDelete, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
 
-        barDesignerItemFloat.ItemLinks.Add(btnItemsEndEdit, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
-        barDesignerItemFloat.ItemLinks.Add(btnDesignSetCurrentCaveBranch, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
-        barDesignerItemFloat.ItemLinks.Add(btnCut, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
-        barDesignerItemFloat.ItemLinks.AddRange({btnCopy, btnPaste}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
-        barDesignerItemFloat.ItemLinks.Add(btnDelete, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
-        barDesignerItemFloat.ItemLinks.Add(btnItemsLayouts, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText, BarItemPaintStyle.CaptionGlyph)
-        barDesignerItemFloat.ItemLinks.Add(btnCurrentItemSegmentDirection, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
-        barDesignerItemFloat.ItemLinks.Add(btnCurrentItemLock, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
-        barDesignerItemFloat.ItemLinks.Add(btnCurrentItemGenericCombine, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
+        oFloatBar.ItemLinks.Add(btnItemsLayouts, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText, BarItemPaintStyle.Standard)
+        oFloatBar.ItemLinks.Add(btnCurrentItemSegmentDirection, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        oFloatBar.ItemLinks.Add(btnCurrentItemLock, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        oFloatBar.ItemLinks.Add(btnCurrentItemGenericCombine, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
 
-        barDesignerItemPointFloat.ItemLinks.AddRange({btnCurrentItemPointAdd, btnCurrentItemPointDelete}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
-        barDesignerItemPointFloat.ItemLinks.Add(btnCurrentItemPointsJoin, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
-        barDesignerItemPointFloat.ItemLinks.AddRange({btnCurrentItemPointsJoinAndConnect, btnCurrentItemPointsUnjoinAll}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
-        barDesignerItemPointFloat.ItemLinks.AddRange({btnCurrentItemPointSequenceDivide, btnCurrentItemPointSequenceDivideAndJoin, btnCurrentItemPointRevertSequence, btnCurrentItemPointDeleteSequence}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
+        oFloatBar.ItemLinks.AddRange({btnCurrentItemPointAdd, btnCurrentItemPointDelete}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        oFloatBar.ItemLinks.Add(btnCurrentItemPointsJoin, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        oFloatBar.ItemLinks.AddRange({btnCurrentItemPointsJoinAndConnect, btnCurrentItemPointsUnjoinAll}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        oFloatBar.ItemLinks.AddRange({btnCurrentItemPointSequenceDivide, btnCurrentItemPointSequenceDivideAndJoin, btnCurrentItemPointRevertSequence, btnCurrentItemPointDeleteSequence}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+
+        oFloatBar.StandaloneBarDockControl = dockFloatBar
+
+        'barDesignerItemFloat.ItemLinks.Add(btnItemsEndEdit, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
+        'barDesignerItemFloat.ItemLinks.Add(btnDesignSetCurrentCaveBranch, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
+        'barDesignerItemFloat.ItemLinks.Add(btnCut, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
+        'barDesignerItemFloat.ItemLinks.AddRange({btnCopy, btnPaste}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
+        'barDesignerItemFloat.ItemLinks.Add(btnDelete, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
+        'barDesignerItemFloat.ItemLinks.Add(btnItemsLayouts, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText, BarItemPaintStyle.CaptionGlyph)
+        'barDesignerItemFloat.ItemLinks.Add(btnCurrentItemSegmentDirection, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
+        'barDesignerItemFloat.ItemLinks.Add(btnCurrentItemLock, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
+        'barDesignerItemFloat.ItemLinks.Add(btnCurrentItemGenericCombine, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
+
+        'barDesignerItemPointFloat.ItemLinks.AddRange({btnCurrentItemPointAdd, btnCurrentItemPointDelete}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
+        'barDesignerItemPointFloat.ItemLinks.Add(btnCurrentItemPointsJoin, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
+        'barDesignerItemPointFloat.ItemLinks.AddRange({btnCurrentItemPointsJoinAndConnect, btnCurrentItemPointsUnjoinAll}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
+        'barDesignerItemPointFloat.ItemLinks.AddRange({btnCurrentItemPointSequenceDivide, btnCurrentItemPointSequenceDivideAndJoin, btnCurrentItemPointRevertSequence, btnCurrentItemPointDeleteSequence}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionGlyph)
 
         dockBottomSegmentsAndTrigpoints.Manager = RibbonControl.Manager
         oBottomDataBar = New Bar(RibbonControl.Manager, "Data bar")
@@ -18247,13 +18219,13 @@ Friend Class frmMain2
         End If
     End Sub
 
-    Private Sub barDesignerItemPointFloat_Hiding(sender As Object, e As CancelEventArgs) Handles barDesignerItemPointFloat.Hiding
+    Private Sub barDesignerItemPointFloat_Hiding(sender As Object, e As CancelEventArgs)
         If Not bFloatingToolbarHiding Then
             e.Cancel = True
         End If
     End Sub
 
-    Private Sub barDesignerItemFloat_Hiding(sender As Object, e As CancelEventArgs) Handles barDesignerItemFloat.Hiding
+    Private Sub barDesignerItemFloat_Hiding(sender As Object, e As CancelEventArgs)
         If Not bFloatingToolbarHiding Then
             e.Cancel = True
         End If
@@ -18955,7 +18927,6 @@ Friend Class frmMain2
             Call pSurveyProperty(7, sender.editvalue)
         End If
     End Sub
-
 End Class
 
 

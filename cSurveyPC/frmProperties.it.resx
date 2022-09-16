@@ -315,7 +315,7 @@
     <value>Nessuno</value>
   </data>
   <data name="cboDesignWarpingMode.Items1" xml:space="preserve">
-    <value>Semplice (1 punto-&gt;1 segmento)</value>
+    <value>Semplice (1 punto-&gt;1 battuta)</value>
   </data>
   <data name="cboDesignBindingMode.Items" xml:space="preserve">
     <value>Automatico</value>
@@ -447,7 +447,7 @@
     <value>Tratto:</value>
   </data>
   <data name="frmPlotPen.Text" xml:space="preserve">
-    <value>Segmenti:</value>
+    <value>Battute:</value>
   </data>
   <data name="cboClipBorder.Items" xml:space="preserve">
     <value>Non tagliare gli oggetti del livello bordi</value>
@@ -576,7 +576,7 @@
     <value>Colore:</value>
   </data>
   <data name="tabCaveInfoSegments.Text" xml:space="preserve">
-    <value>Segmenti</value>
+    <value>Battute</value>
   </data>
   <data name="lblCaveInfoSurfaceProfileShow.Text" xml:space="preserve">
     <value>Visualizza:</value>
@@ -666,13 +666,13 @@
     <value>Distanza:</value>
   </data>
   <data name="cboSessionSideMeasuresType.Items" xml:space="preserve">
-    <value>Perpendicolari al segmento entrante</value>
+    <value>Perpendicolari alla battuta entrante</value>
   </data>
   <data name="cboSessionSideMeasuresType.Items1" xml:space="preserve">
-    <value>Bisetrice dell'angolo tra il segmento entrante e il 1° segmento uscente</value>
+    <value>Bisetrice dell'angolo tra la 1° battuta entrante e la 1° battuta uscente</value>
   </data>
   <data name="cboSessionSideMeasuresType.Items2" xml:space="preserve">
-    <value>Perpendicolari al 1° segmento uscente</value>
+    <value>Perpendicolari al 1° battuta uscente</value>
   </data>
   <data name="lblSessionSideMeasureType.Text" xml:space="preserve">
     <value>Misure laterali:</value>
@@ -786,13 +786,13 @@
     <value>Misure laterali:</value>
   </data>
   <data name="cboSideMeasuresType.Items" xml:space="preserve">
-    <value>Perpendicolari al segmento entrante</value>
+    <value>Perpendicolari alla battuta entrante</value>
   </data>
   <data name="cboSideMeasuresType.Items1" xml:space="preserve">
-    <value>Bisetrice dell'angolo tra il segmento entrante e il 1° segmento uscente</value>
+    <value>Bisetrice dell'angolo tra la 1° battuta entrante e la 1° battuta uscente</value>
   </data>
   <data name="cboSideMeasuresType.Items2" xml:space="preserve">
-    <value>Perpendicolari al 1° segmento uscente</value>
+    <value>Perpendicolari alla 1° battuta uscente</value>
   </data>
   <data name="lblDistanceType.Text" xml:space="preserve">
     <value>Distanza:</value>
@@ -1007,7 +1007,7 @@
 		<value>Punti</value>
 	</data>
   <data name="cboDesignBindingMode.ToolTip" xml:space="preserve">
-		<value>Indica come associare gli oggetti grafici ai segmenti della poligonale</value>
+		<value>Indica come associare gli oggetti grafici alle battute della poligonale</value>
 	</data>
   <data name="ToolStripMenuItem8.Text" xml:space="preserve">
 		<value>Nome (%NAME%)</value>
@@ -1325,7 +1325,7 @@
     <value>Tratto predefinito per le linee splay</value>
   </data>
   <data name="colPropSegmentsBindedSegment.Text" xml:space="preserve">
-    <value>Segmento</value>
+    <value>Battuta</value>
   </data>
   <data name="chkShowWarpingDetails.Properties.Caption" xml:space="preserve">
     <value>Mostra dettagli warping</value>

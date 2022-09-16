@@ -140,7 +140,7 @@
     <value>Visibile</value>
   </data>
   <data name="tabSegment.Text" xml:space="preserve">
-    <value>Segmenti</value>
+    <value>Battute</value>
   </data>
   <data name="tabItems.Text" xml:space="preserve">
     <value>Oggetti grafici</value>

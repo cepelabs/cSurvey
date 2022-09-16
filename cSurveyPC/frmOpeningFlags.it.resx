@@ -200,7 +200,7 @@ Nel caso queste modifiche non abbiano l'effetto desiderato non salvare il riliev
     <value>Nessuno</value>
   </data>
   <data name="cboDesignWarpingMode.Items1" xml:space="preserve">
-    <value>Semplice (1 punto-&gt;1 segmento)</value>
+    <value>Semplice (1 punto-&gt;1 battuta)</value>
   </data>
   <data name="cmdCancel.Text" xml:space="preserve">
     <value>Annulla</value>
@@ -227,6 +227,6 @@ Nel caso queste modifiche non abbiano l'effetto desiderato non salvare il riliev
     <value>All'apertura del rilievo:</value>
   </data>
   <data name="chkRegenerateSegmentsID.Properties.Caption" xml:space="preserve">
-    <value>Rigenera ID segmenti non standard</value>
+    <value>Rigenera ID battute non standard</value>
   </data>
 </root>

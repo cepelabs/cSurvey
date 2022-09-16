@@ -179,7 +179,7 @@
     <value>Forza percorso in sezione</value>
   </data>
   <data name="chkTherionSegmentForceDirection.Properties.Caption" xml:space="preserve">
-    <value>Forza direzione segmenti</value>
+    <value>Forza direzione battute</value>
   </data>
   <data name="chkTherionTrigpointSafename.Properties.Caption" xml:space="preserve">
     <value>Usa dizionario capisaldi</value>
@@ -455,7 +455,7 @@ Non verrà inviato alcun dato relativo all'utente o al rilievo attivo.</value>
 		<value>Imposta il percorso da seguire per la generazione della sezione</value>
 	</data>
   <data name="chkTherionSegmentForceDirection.ToolTip" xml:space="preserve">
-		<value>Imposta la direzione di ogni segmento</value>
+		<value>Imposta la direzione di ogni battuta</value>
 	</data>
   <data name="chkTherionTrigpointSafename.ToolTip" xml:space="preserve">
 		<value>Usa un dizionario di conversione per in nomi dei capisaldi (per evitare problemi di incompatibilità con Therion)</value>
@@ -470,7 +470,7 @@ Non verrà inviato alcun dato relativo all'utente o al rilievo attivo.</value>
 		<value>Soglia di complessità:</value>
 	</data>
   <data name="chkClipboardCleanPastedStation.ToolTip" xml:space="preserve">
-		<value>Cancella i capisaldi impostati per un segmento incollato se esiste già un'altro segmento con gli stessi riferimenti.</value>
+		<value>Cancella i capisaldi impostati per una battuta incollata se esiste già un'altra battuta con gli stessi riferimenti.</value>
 	</data>
   <data name="colClipboardFormat.Text" xml:space="preserve">
 		<value>Formato</value>
@@ -488,7 +488,7 @@ Non verrà inviato alcun dato relativo all'utente o al rilievo attivo.</value>
 		<value>Griglia metrica standard</value>
 	</data>
   <data name="cboDesignShowMetricGrid.Items2" xml:space="preserve">
-		<value>Griglia metrica allineata al segmento corrente</value>
+		<value>Griglia metrica allineata alla battuta corrente</value>
 	</data>
   <data name="Label6.Text" xml:space="preserve">
 		<value>Griglia metrica:</value>

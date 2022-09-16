@@ -252,4 +252,10 @@
   <data name="optNorthEnd.Text" xml:space="preserve">
     <value>Secondo riferimento Nord:</value>
   </data>
+  <data name="optFirstScale1.Properties.Caption" xml:space="preserve">
+    <value>Primo riferimento di scala</value>
+  </data>
+  <data name="optSecondScale1.Properties.Caption" xml:space="preserve">
+    <value>Secondo riferimento di scala</value>
+  </data>
 </root>

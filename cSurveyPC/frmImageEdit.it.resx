@@ -254,4 +254,10 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Modifica immagine:</value>
   </data>
+  <data name="btnRescale.Caption" xml:space="preserve">
+    <value>Riscala a</value>
+  </data>
+  <data name="btnToGrayscale.Caption" xml:space="preserve">
+    <value>Scala di grigi</value>
+  </data>
 </root>

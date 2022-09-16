@@ -154,16 +154,16 @@
 		<value>Applica a:</value>
 	</data>
   <data name="cboReplicateTo.Items" xml:space="preserve">
-		<value>per i segmenti che hanno lo stesso ramo/grotta del segmento corrente</value>
+		<value>per le battute che hanno lo stesso ramo/grotta della battuta corrente</value>
 	</data>
   <data name="cboReplicateTo.Items1" xml:space="preserve">
-		<value>per i segmenti che hanno la stessa sessione del segmento corrente</value>
+		<value>per le battute che hanno la stessa sessione della battuta corrente</value>
 	</data>
   <data name="cboReplicateTo.Items2" xml:space="preserve">
-		<value>per tutti i segmenti</value>
+		<value>per tutte le battute</value>
 	</data>
   <data name="cboReplicateTo.Items3" xml:space="preserve">
-		<value>per i segmenti selezionati</value>
+		<value>per le battute selezionate</value>
 	</data>
   <data name="Label2.Text" xml:space="preserve">
 		<value>Salva dati in:</value>

@@ -138,4 +138,10 @@
   <data name="cmdOk.Text" xml:space="preserve">
     <value>Ok</value>
   </data>
+  <data name="chkMaxScale.Properties.Caption" xml:space="preserve">
+    <value>Scala max:</value>
+  </data>
+  <data name="chkMinScale.Properties.Caption" xml:space="preserve">
+    <value>Scala min:</value>
+  </data>
 </root>

@@ -1023,4 +1023,7 @@
   <data name="cboImageUM.Properties.Items3" xml:space="preserve">
     <value>pollici</value>
   </data>
+  <data name="btnBaseRule.Caption" xml:space="preserve">
+    <value>Impostazioni per scala...</value>
+  </data>
 </root>

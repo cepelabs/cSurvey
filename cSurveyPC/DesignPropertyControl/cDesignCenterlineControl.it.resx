@@ -145,7 +145,7 @@
     <value>Leggero</value>
   </data>
   <data name="cboDesignPlotSegmentsPaintStyle.Properties.Items3" xml:space="preserve">
-    <value>Solo segmenti</value>
+    <value>Solo battute</value>
   </data>
   <data name="cboDesignPlotSplayStyle.Properties.Items" xml:space="preserve">
     <value>Solo punti</value>

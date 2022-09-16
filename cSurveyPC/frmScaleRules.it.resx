@@ -310,7 +310,7 @@ Per il range di scala al di sotto del più piccolo fattore inserito verranno uti
 		<value>Linee medie:</value>
 	</data>
   <data name="frmPlotPen.Text" xml:space="preserve">
-		<value>Segmenti:</value>
+		<value>Battute:</value>
 	</data>
   <data name="cboPlotTranslationLinePenStyle.Items4" xml:space="preserve">
 		<value>Tratteggio e 2 punti</value>
@@ -521,5 +521,11 @@ Per il range di scala al di sotto del più piccolo fattore inserito verranno uti
   </data>
   <data name="lblPlotSplayCrossScale.Text" xml:space="preserve">
     <value>Scala punti:</value>
+  </data>
+  <data name="btnAddScale.Caption" xml:space="preserve">
+    <value>Scala:</value>
+  </data>
+  <data name="colScalesScale.Caption" xml:space="preserve">
+    <value>Scala</value>
   </data>
 </root>

@@ -152,16 +152,16 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="mnuSegmentsAdd.Text" xml:space="preserve">
-    <value>Aggiungi segmento</value>
+    <value>Aggiungi battuta</value>
   </data>
   <data name="mnuSegmentsInsert.Text" xml:space="preserve">
-    <value>Inserisci segmento</value>
+    <value>Inserisci battuta</value>
   </data>
   <data name="mnuSegmentsDelete.Text" xml:space="preserve">
-    <value>Elimina segmento</value>
+    <value>Elimina battuta</value>
   </data>
   <data name="mnuSegmentsReverse.Text" xml:space="preserve">
-    <value>Inverti segmento...</value>
+    <value>Inverti battuta...</value>
   </data>
   <data name="mnuSegmentsMoveUp.Text" xml:space="preserve">
     <value>Sposta su</value>
@@ -188,7 +188,7 @@
     <value>Replica dati...</value>
   </data>
   <data name="mnuSegmentsReplicateData.ToolTipText" xml:space="preserve">
-    <value>Replica i dati del segmento corrente ai segmenti successivi</value>
+    <value>Replica i dati della battuta corrente alle battute successive</value>
   </data>
   <data name="mnuSegmentsManageLRUD.Text" xml:space="preserve">
     <value>Gestisci LRUD...</value>
@@ -245,22 +245,22 @@
     <value>Superficie</value>
   </data>
   <data name="chkSegmentSurface.ToolTip" xml:space="preserve">
-    <value>Segmento esterno</value>
+    <value>Battuta esterna</value>
   </data>
   <data name="chkSegmentDuplicate.Properties.Caption" xml:space="preserve">
     <value>Duplicato</value>
   </data>
   <data name="chkSegmentDuplicate.ToolTip" xml:space="preserve">
-    <value>Segmento duplicato o alternativo ad un altro segmento</value>
+    <value>Battuta duplicata o alternativa ad un altro battuta</value>
   </data>
   <data name="chkSegmentSplay.ToolTip" xml:space="preserve">
-    <value>Segmento laterale o segmento secondario</value>
+    <value>Battuta laterale o battuta secondaria</value>
   </data>
   <data name="cboSegmentDirection.ToolTip" xml:space="preserve">
-    <value>Specifica la direzione del segmento in sezione</value>
+    <value>Specifica la direzione della battuta in sezione</value>
   </data>
   <data name="chkSegmentExclude.Properties.Caption" xml:space="preserve">
-    <value>Escludi segmento dalle statistiche</value>
+    <value>Escludi battuta dalle statistiche</value>
   </data>
   <data name="txtSegmentBearing.ToolTip" xml:space="preserve">
     <value>Direzione</value>
@@ -302,7 +302,7 @@
     <value>Dati</value>
   </data>
   <data name="tabSegmentPropertyMain.ToolTipText" xml:space="preserve">
-    <value>Informazioni segmento</value>
+    <value>Informazioni battuta</value>
   </data>
   <data name="mnuSegmentsDataPropertiesEdit.Text" xml:space="preserve">
     <value>Modifica proprietà aggiuntive...</value>
@@ -1067,10 +1067,10 @@
     <value>Entrambi</value>
   </data>
   <data name="btnSegmentAndTrigpointGridColor2.Text" xml:space="preserve">
-    <value>Colora segmenti per grotta/ramo</value>
+    <value>Colora battute per grotta/ramo</value>
   </data>
   <data name="btnSegmentAndTrigpointGridColor1.Text" xml:space="preserve">
-    <value>Colora segmenti per sessione</value>
+    <value>Colora battute per sessione</value>
   </data>
   <data name="btnSegmentAndTrigpointGridColor0.Text" xml:space="preserve">
     <value>Non colorare</value>
@@ -1085,7 +1085,7 @@
     <value>Nessuna</value>
   </data>
   <data name="btnViewMetricGrid2.Text" xml:space="preserve">
-    <value>Griglia allineata al segmento corrente</value>
+    <value>Griglia allineata alla battuta corrente</value>
   </data>
   <data name="btnViewMetricGrid.Text" xml:space="preserve">
     <value>Griglia metrica</value>
@@ -1379,7 +1379,7 @@
     <value>Leggero</value>
   </data>
   <data name="cboDesignPlotSegmentsPaintStyle.Items3" xml:space="preserve">
-    <value>Solo segmenti</value>
+    <value>Solo battute</value>
   </data>
   <data name="chkDesignPlotShowHLs.Text" xml:space="preserve">
     <value>Evidenzia</value>
@@ -1409,7 +1409,7 @@
     <value>Etichette capisaldi</value>
   </data>
   <data name="chkDesignPlotShowSegment.Text" xml:space="preserve">
-    <value>Segmenti</value>
+    <value>Battute</value>
   </data>
   <data name="cboDesignPlotSplayStyle.Items" xml:space="preserve">
     <value>Solo punti</value>
@@ -1454,7 +1454,7 @@
     <value>Converti</value>
   </data>
   <data name="ColumnHeader1.Text" xml:space="preserve">
-    <value>Segmento</value>
+    <value>Battuta</value>
   </data>
   <data name="lvPropConvertTo.ToolTip" xml:space="preserve">
     <value>Tipo di oggetto</value>
@@ -2018,10 +2018,10 @@
     <value>Ricollega punto</value>
   </data>
   <data name="chkPropSegmentLocked.ToolTip" xml:space="preserve">
-    <value>Blocca segmento associato</value>
+    <value>Blocca battuta associata</value>
   </data>
   <data name="lblPropBinding.Text" xml:space="preserve">
-    <value>Segmento:</value>
+    <value>Battuta:</value>
   </data>
   <data name="cmdPropSegmentsLock.ToolTip" xml:space="preserve">
     <value>Blocca tutti i punti</value>
@@ -2030,7 +2030,7 @@
     <value>Sblocca tutti i punti</value>
   </data>
   <data name="colPropSegmentsBindedSegment.Text" xml:space="preserve">
-    <value>Segmento</value>
+    <value>Battuta</value>
   </data>
   <data name="lvPropSegmentsBinded.ToolTip" xml:space="preserve">
     <value>Tratti di poligonale associati all'oggetto</value>
@@ -2039,10 +2039,10 @@
     <value>Riassocia oggetto</value>
   </data>
   <data name="chkPropSegmentsLocked.ToolTip" xml:space="preserve">
-    <value>Blocco segmenti associati</value>
+    <value>Blocca battute associate</value>
   </data>
   <data name="Label41.Text" xml:space="preserve">
-    <value>Segmenti:</value>
+    <value>Battute:</value>
   </data>
   <data name="lblPropFontColor.Text" xml:space="preserve">
     <value>Colore:</value>
@@ -2051,13 +2051,13 @@
     <value>Seleziona un colore...</value>
   </data>
   <data name="chkPropTextFontUnderline.ToolTip" xml:space="preserve">
-    <value>Blocca segmento associato</value>
+    <value>Blocca battuta associata</value>
   </data>
   <data name="chkPropTextFontItalic.ToolTip" xml:space="preserve">
-    <value>Blocca segmento associato</value>
+    <value>Blocca battuta associata</value>
   </data>
   <data name="chkPropTextFontBold.ToolTip" xml:space="preserve">
-    <value>Blocca segmento associato</value>
+    <value>Blocca battuta associata</value>
   </data>
   <data name="cboPropTextFontChar.ToolTip" xml:space="preserve">
     <value>Dimensione del simbolo</value>
@@ -2186,13 +2186,13 @@
     <value>Distanza dell'etichetta dal caposaldo</value>
   </data>
   <data name="cmdPropCrossSectionSegment.ToolTip" xml:space="preserve">
-    <value>Seleziona un segmento...</value>
+    <value>Seleziona una battuta...</value>
   </data>
   <data name="txtPropCrossSectionSegment.ToolTip" xml:space="preserve">
     <value>Tratto di poligonale associato a questa sezione trasversale</value>
   </data>
   <data name="lblPropCrossSectionSegment.Text" xml:space="preserve">
-    <value>Segmento:</value>
+    <value>Battuta:</value>
   </data>
   <data name="cboPropProfileDirection.Items" xml:space="preserve">
     <value>Diretta</value>
@@ -2267,7 +2267,7 @@
     <value>Altre impostazioni...</value>
   </data>
   <data name="cmdPropQuotaTrigpoint.ToolTip" xml:space="preserve">
-    <value>Seleziona un segmento...</value>
+    <value>Seleziona una battuta...</value>
   </data>
   <data name="txtPropQuotaRelativeTrigpoint.ToolTip" xml:space="preserve">
     <value>Caposaldo di riferimento (valido per le quote differenziali come il dislivello)</value>
@@ -2648,7 +2648,7 @@
     <value>Mostra splay:</value>
   </data>
   <data name="cmdPropSegmentGoto.ToolTip" xml:space="preserve">
-    <value>Segmento</value>
+    <value>Battuta</value>
   </data>
   <data name="cmdPropSegmentEndShot.ToolTip" xml:space="preserve">
     <value>Caposaldo finale</value>
@@ -2660,7 +2660,7 @@
     <value>Inverti</value>
   </data>
   <data name="lblPropSegment.Text" xml:space="preserve">
-    <value>Segmento:</value>
+    <value>Battuta:</value>
   </data>
   <data name="colSegmentInfoName.Text" xml:space="preserve">
     <value>Nome</value>
@@ -2681,10 +2681,10 @@
     <value>Copia valori</value>
   </data>
   <data name="cmdSegmentSetCaveBranch.ToolTip" xml:space="preserve">
-    <value>Imposta "grotta/ramo/collega a" correnti al segmento selezionato</value>
+    <value>Imposta "grotta/ramo/collega a" correnti alla battuta selezionata</value>
   </data>
   <data name="cmdSegmentSetCurrentCaveBranch.ToolTip" xml:space="preserve">
-    <value>Imposta grotta e ramo di questo segmento come grotta e ramo correnti</value>
+    <value>Imposta grotta e ramo di questa battuta come grotta e ramo correnti</value>
   </data>
   <data name="cmdPropTrigpointGoto.ToolTip" xml:space="preserve">
     <value>Caposaldo</value>
@@ -2939,7 +2939,7 @@
     <value>Etichette capisaldi</value>
   </data>
   <data name="chk3DPlotShowSegment.Text" xml:space="preserve">
-    <value>Segmenti</value>
+    <value>Battute</value>
   </data>
   <data name="cbo3DPlotSplayStyle.Items" xml:space="preserve">
     <value>Solo punti</value>
@@ -2957,7 +2957,7 @@
     <value>Leggero</value>
   </data>
   <data name="cbo3DPlotSegmentsPaintStyle.Items3" xml:space="preserve">
-    <value>Solo segmenti</value>
+    <value>Solo battute</value>
   </data>
   <data name="chk3DSurface.Text" xml:space="preserve">
     <value>Superficie:</value>
@@ -3125,7 +3125,7 @@
     <value>Modalità di filtro</value>
   </data>
   <data name="btnDesignHighlightSegmentsAndTrigpoints.Text" xml:space="preserve">
-    <value>Filtra segmenti e capisaldi</value>
+    <value>Filtra battute e capisaldi</value>
   </data>
   <data name="btnDesignHighlight.Text" xml:space="preserve">
     <value>Evidenzia oggetti</value>
@@ -3270,7 +3270,7 @@ o ad una sezione trasversale</value>
     <value>Griglia standard</value>
   </data>
   <data name="mnuViewGraphicsMetricGrid2.Text" xml:space="preserve">
-    <value>Griglia allineata al segmento corrente</value>
+    <value>Griglia allineata alla battuta corrente</value>
   </data>
   <data name="mnuViewGraphicsMetricGrid.Text" xml:space="preserve">
     <value>Griglia metrica</value>
@@ -3285,7 +3285,7 @@ o ad una sezione trasversale</value>
     <value>Disegno</value>
   </data>
   <data name="mnuViewPlotSegments.Text" xml:space="preserve">
-    <value>Segmenti</value>
+    <value>Battute</value>
   </data>
   <data name="mnuViewPlotShowAlso1.Text" xml:space="preserve">
     <value>Superficie</value>
@@ -3366,7 +3366,7 @@ o ad una sezione trasversale</value>
     <value>Profili di visibilità grotte/rami...</value>
   </data>
   <data name="mnuPlotDeleteAll.Text" xml:space="preserve">
-    <value>Elimina segmenti e dati</value>
+    <value>Elimina battute e dati</value>
   </data>
   <data name="mnuPlot.Text" xml:space="preserve">
     <value>&amp;Rilievo</value>
@@ -3504,7 +3504,7 @@ o ad una sezione trasversale</value>
     <value>Esporta...</value>
   </data>
   <data name="mnuDesignItemSegment.Text" xml:space="preserve">
-    <value>Modifica segmento</value>
+    <value>Modifica battuta</value>
   </data>
   <data name="mnuDesignItemSegmentTrigpointFrom.Text" xml:space="preserve">
     <value>Iniziale</value>
@@ -3519,19 +3519,19 @@ o ad una sezione trasversale</value>
     <value>Inverti</value>
   </data>
   <data name="mnuDesignItemSegmentDirection0.Text" xml:space="preserve">
-    <value>Inverti segmento</value>
+    <value>Inverti battuta</value>
   </data>
   <data name="mnuDesignItemSegmentDirection1.Text" xml:space="preserve">
-    <value>Inverti segmento e tutti i successivi fino alla prima diramazione</value>
+    <value>Inverti battuta e tutti le successive fino alla prima diramazione</value>
   </data>
   <data name="mnuDesignItemSegmentDirection2.Text" xml:space="preserve">
-    <value>Inverti segmento e tutti i successivi fino al primo segmento con direzione opposta</value>
+    <value>Inverti battuta e tutti le successive fino alla prima battuta con direzione opposta</value>
   </data>
   <data name="mnuDesignItemSegmentDirection3.Text" xml:space="preserve">
-    <value>Direziona la grotta/ramo come il segmento selezionato</value>
+    <value>Direziona la grotta/ramo come la battuta selezionata</value>
   </data>
   <data name="mnuDesignItemSegmentDirection4.Text" xml:space="preserve">
-    <value>Inverti la grotta/ramo del segmento selezionato</value>
+    <value>Inverti la grotta/ramo della battuta selezionata</value>
   </data>
   <data name="mnuDesignItemSegmentDirection.Text" xml:space="preserve">
     <value>Direzione</value>
@@ -3798,7 +3798,7 @@ o ad una sezione trasversale</value>
     <value>Sposta in nuovo oggetto</value>
   </data>
   <data name="mnuDesignItemPointPlotLockSegment.Text" xml:space="preserve">
-    <value>Blocca segmento associato</value>
+    <value>Blocca battuta associato</value>
   </data>
   <data name="mnuDesignItemPointPlotBindSegment.Text" xml:space="preserve">
     <value>Riassocia</value>
@@ -6199,7 +6199,7 @@ o ad una sezione trasversale</value>
     <value>Raggiera</value>
   </data>
   <data name="btnSegmentAndTrigpointGridColor3.Text" xml:space="preserve">
-    <value>Colora segmenti per origine/suborigine</value>
+    <value>Colora battute per origine/suborigine</value>
   </data>
   <data name="mnuViewLinkedSurveys.Text" xml:space="preserve">
     <value>Rilievi collegati</value>
@@ -6400,7 +6400,7 @@ o ad una sezione trasversale</value>
     <value>Corrispondenza esatta</value>
   </data>
   <data name="btnDesignHighlightSegmentsAndTrigpoints.Caption" xml:space="preserve">
-    <value>Filtra segmenti e capisaldi</value>
+    <value>Filtra battute e capisaldi</value>
   </data>
   <data name="btnSurveyInfoDepths.Caption" xml:space="preserve">
     <value>Quote...</value>
@@ -6448,7 +6448,7 @@ o ad una sezione trasversale</value>
     <value>Rigenera capisaldi</value>
   </data>
   <data name="btnSegmentDelete.Caption" xml:space="preserve">
-    <value>Elimina segmento</value>
+    <value>Elimina battuta</value>
   </data>
   <data name="btnSettings.Caption" xml:space="preserve">
     <value>Impostazioni...</value>
@@ -6457,7 +6457,7 @@ o ad una sezione trasversale</value>
     <value>Mostra</value>
   </data>
   <data name="btnSegments.Caption" xml:space="preserve">
-    <value>Segmenti</value>
+    <value>Battute</value>
   </data>
   <data name="btnSurface.Caption" xml:space="preserve">
     <value>Superficie...</value>
@@ -6646,7 +6646,7 @@ o ad una sezione trasversale</value>
     <value>Grotta:</value>
   </data>
   <data name="btnMainSessionList.Caption" xml:space="preserve">
-    <value>Sessione</value>
+    <value>Sessione:</value>
   </data>
   <data name="btnZoomZoomCenter.Caption" xml:space="preserve">
     <value>Zoom centrato</value>
@@ -6964,7 +6964,7 @@ o ad una sezione trasversale</value>
     <value>Sposta su</value>
   </data>
   <data name="btnSegmentAdd.Caption" xml:space="preserve">
-    <value>Aggiungi segmento</value>
+    <value>Aggiungi battuta</value>
   </data>
   <data name="grpCurrentItemStation.Text" xml:space="preserve">
     <value>Caposaldo</value>
@@ -7006,7 +7006,7 @@ o ad una sezione trasversale</value>
     <value>Tutti</value>
   </data>
   <data name="btnViewSplayShowMode1.Caption" xml:space="preserve">
-    <value>Solo segmento corrente</value>
+    <value>Solo battuta corrente</value>
   </data>
   <data name="btn3DCameraMode0.Caption" xml:space="preserve">
     <value>Ispezione</value>
@@ -7027,7 +7027,7 @@ o ad una sezione trasversale</value>
     <value>Allinea alla griglia</value>
   </data>
   <data name="btnViewMetricGrid2.Caption" xml:space="preserve">
-    <value>Griglia allineata al segmento corrente</value>
+    <value>Griglia allineata alla battuta corrente</value>
   </data>
   <data name="btnViewMetricGrid.Caption" xml:space="preserve">
     <value>Griglia metrica</value>
@@ -7273,7 +7273,7 @@ o ad una sezione trasversale</value>
     <value>Applica filtro</value>
   </data>
   <data name="btnDesignSetCurrentCaveBranch.Caption" xml:space="preserve">
-    <value>Imposta grotta/ramo dell'oggetto selezione come grotta e ramo correnti</value>
+    <value>Imposta grotta/ramo dell'oggetto selezionato come grotta e ramo correnti</value>
   </data>
   <data name="btnGrpDesignPlotRebindCommands.Caption" xml:space="preserve">
     <value>Comandi sui collegamenti</value>
@@ -7429,7 +7429,7 @@ o ad una sezione trasversale</value>
     <value>Ripristina la barra di accesso rapido</value>
   </data>
   <data name="btnSegmentInsert.Caption" xml:space="preserve">
-    <value>Inserisci segmento</value>
+    <value>Inserisci battuta</value>
   </data>
   <data name="cboMainCaveBranchList.Buttons2" xml:space="preserve">
     <value>Modifica...</value>
@@ -7451,5 +7451,23 @@ o ad una sezione trasversale</value>
   </data>
   <data name="btnCurrentItemPointBindings.Caption" xml:space="preserve">
     <value>Collegamenti</value>
+  </data>
+  <data name="btnViewShowCenterline.Caption" xml:space="preserve">
+    <value>Poligonale</value>
+  </data>
+  <data name="chkViewShowStation.Caption" xml:space="preserve">
+    <value>Capisaldi</value>
+  </data>
+  <data name="chkViewShowStationLabel.Caption" xml:space="preserve">
+    <value>Etichette capisaldi</value>
+  </data>
+  <data name="chkViewShowShots.Caption" xml:space="preserve">
+    <value>Battute</value>
+  </data>
+  <data name="lblSegmentSession.Text" xml:space="preserve">
+    <value>Sessione:</value>
+  </data>
+  <data name="btnSurveyInfoSession.Caption" xml:space="preserve">
+    <value>Informazioni sessione...</value>
   </data>
 </root>

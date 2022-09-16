@@ -216,4 +216,7 @@
   <data name="cmdOk.Text" xml:space="preserve">
     <value>Ok</value>
   </data>
+  <data name="chkCompassCreateBrachForSession.Properties.Caption" xml:space="preserve">
+    <value>Crea ramo per ogni sessione</value>
+  </data>
 </root>

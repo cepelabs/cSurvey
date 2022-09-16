@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="GroupBox1.Text" xml:space="preserve">
-    <value>Visualizza anche segmenti esclusi:</value>
+    <value>Visualizza anche le battute escluse:</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="chkDuplicate.Properties.Caption" xml:space="preserve">
@@ -141,7 +141,7 @@
 		<value>Leggero</value>
 	</data>
   <data name="cboSegmentsPaintStyle.Items3" xml:space="preserve">
-		<value>Solo segmenti</value>
+		<value>Solo battute</value>
 	</data>
   <data name="Label1.Text" xml:space="preserve">
 		<value>Stile:</value>

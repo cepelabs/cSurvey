@@ -241,7 +241,7 @@
     <value>Salta la prima riga</value>
   </data>
   <data name="chkCutSplaySymbol.Properties.Caption" xml:space="preserve">
-    <value>Imposta battute con questo cs di fine come splay cut:</value>
+    <value>Imposta battute con questo caposaldo di fine come splay cut:</value>
   </data>
   <data name="chkCommentSymbols.Properties.Caption" xml:space="preserve">
     <value>Tag di inizio commento</value>

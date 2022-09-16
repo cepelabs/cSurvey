@@ -146,13 +146,13 @@
     <value>rilevato/anno</value>
   </data>
   <data name="cboChartType.Items3" xml:space="preserve">
-    <value>segmenti/giorno</value>
+    <value>battute/giorno</value>
   </data>
   <data name="cboChartType.Items4" xml:space="preserve">
-    <value>segmenti/mese</value>
+    <value>battute/mese</value>
   </data>
   <data name="cboChartType.Items5" xml:space="preserve">
-    <value>segmenti/anno</value>
+    <value>battute/anno</value>
   </data>
   <data name="Label1.Text" xml:space="preserve">
     <value>Dati:</value>

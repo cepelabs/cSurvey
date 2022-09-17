@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class cItemSegmentBindingPropertyControl
+Partial Class cItemPointSegmentBindingPropertyControl
     Inherits cItemPointPropertyControl
 
     'UserControl overrides dispose to clean up the component list.
@@ -22,7 +22,7 @@ Partial Class cItemSegmentBindingPropertyControl
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(cItemSegmentBindingPropertyControl))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(cItemPointSegmentBindingPropertyControl))
         Me.txtPropSegmentBinded = New DevExpress.XtraEditors.TextEdit()
         Me.chkPropSegmentLocked = New DevExpress.XtraEditors.CheckButton()
         Me.lblPropBinding = New DevExpress.XtraEditors.LabelControl()

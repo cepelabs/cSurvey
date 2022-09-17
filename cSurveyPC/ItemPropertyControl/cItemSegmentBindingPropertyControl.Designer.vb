@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class cItemSegmentsBindingPropertyControl
+Partial Class cItemSegmentBindingPropertyControl
     Inherits cItemPropertyControl
 
     'UserControl overrides dispose to clean up the component list.
@@ -23,7 +23,7 @@ Partial Class cItemSegmentsBindingPropertyControl
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(cItemSegmentsBindingPropertyControl))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(cItemSegmentBindingPropertyControl))
         Me.iml = New DevExpress.Utils.SvgImageCollection(Me.components)
         Me.cmdPropSegmentsLock = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdPropSegmentsRebind = New DevExpress.XtraEditors.SimpleButton()

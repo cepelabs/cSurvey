@@ -203,7 +203,7 @@
     <value>146</value>
   </data>
   <data name="cmdPropSegmentsRebind.ToolTip" xml:space="preserve">
-    <value>Rebind object</value>
+    <value>Rebind</value>
   </data>
   <data name="&gt;&gt;cmdPropSegmentsRebind.Name" xml:space="preserve">
     <value>cmdPropSegmentsRebind</value>

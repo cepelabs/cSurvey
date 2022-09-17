@@ -123,13 +123,16 @@
   <data name="btnPropObjectsSelect.ToolTip" xml:space="preserve">
     <value>Seleziona</value>
   </data>
-  <data name="chkPropSegmentLocked.ToolTip" xml:space="preserve">
-    <value>Blocca battute collegate</value>
+  <data name="cmdPropSegmentsLock.ToolTip" xml:space="preserve">
+    <value>Blocca tutti i punti</value>
   </data>
-  <data name="lblPropBinding.Text" xml:space="preserve">
-    <value>Battuta:</value>
+  <data name="cmdPropSegmentsRebind.ToolTip" xml:space="preserve">
+    <value>Riassocia</value>
   </data>
-  <data name="txtPropSegmentBinded.ToolTip" xml:space="preserve">
-    <value>Battuta collega al punto</value>
+  <data name="cmdPropSegmentsUnlock.ToolTip" xml:space="preserve">
+    <value>Sblocca tutti i punti</value>
+  </data>
+  <data name="Label41.Text" xml:space="preserve">
+    <value>Battute:</value>
   </data>
 </root>

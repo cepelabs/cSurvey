@@ -2,7 +2,7 @@
 Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Design.Items
 
-Friend Class cItemSegmentBindingPropertyControl
+Friend Class cItemPointSegmentBindingPropertyControl
 
     Public Sub New()
 

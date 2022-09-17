@@ -7470,4 +7470,16 @@ o ad una sezione trasversale</value>
   <data name="btnSurveyInfoSession.Caption" xml:space="preserve">
     <value>Informazioni sessione...</value>
   </data>
+  <data name="btnCurrentItemBindings.Caption" xml:space="preserve">
+    <value>Collegamenti</value>
+  </data>
+  <data name="btnCurrentItemPlotBindSegment.Caption" xml:space="preserve">
+    <value>Riassocia</value>
+  </data>
+  <data name="btnCurrentItemPlotLockSegment.Caption" xml:space="preserve">
+    <value>Blocca battute collegate</value>
+  </data>
+  <data name="btnCurrentItemPlotUnlockSegment.Caption" xml:space="preserve">
+    <value>Sblocca battute collegate</value>
+  </data>
 </root>

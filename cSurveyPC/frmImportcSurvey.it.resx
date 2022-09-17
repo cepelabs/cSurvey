@@ -325,4 +325,10 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Importazione da cSurvey:</value>
   </data>
+  <data name="chkcSurveyImportDuplicatesOverwriteOnlyUsed.Properties.Caption" xml:space="preserve">
+    <value>Sovrascrivi solo battute collegate al disegno</value>
+  </data>
+  <data name="chkcSurveyImportCaveBranchFromDesign.Properties.Caption" xml:space="preserve">
+    <value>Importa grotte/rami collegati al disegno</value>
+  </data>
 </root>

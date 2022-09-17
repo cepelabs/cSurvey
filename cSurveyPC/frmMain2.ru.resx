@@ -6484,4 +6484,13 @@
   <data name="btnAliasDelete.Caption" xml:space="preserve">
     <value>Удалить</value>
   </data>
+  <data name="grpDesignBindings.Text" xml:space="preserve">
+    <value>Привязки</value>
+  </data>
+  <data name="grpCurrentItemBindings.Text" xml:space="preserve">
+    <value>Привязки</value>
+  </data>
+  <data name="btnCurrentItemBindings.Caption" xml:space="preserve">
+    <value>Привязки</value>
+  </data>
 </root>

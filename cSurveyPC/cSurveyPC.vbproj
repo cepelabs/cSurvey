@@ -447,10 +447,10 @@
     <Compile Include="ItemPropertyControl\cItemTextStylePropertyControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ItemPointPropertyControl\cItemSegmentBindingPropertyControl.Designer.vb">
-      <DependentUpon>cItemSegmentBindingPropertyControl.vb</DependentUpon>
+    <Compile Include="ItemPointPropertyControl\cItemPointSegmentBindingPropertyControl.Designer.vb">
+      <DependentUpon>cItemPointSegmentBindingPropertyControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="ItemPointPropertyControl\cItemSegmentBindingPropertyControl.vb">
+    <Compile Include="ItemPointPropertyControl\cItemPointSegmentBindingPropertyControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ItemPropertyControl\cItemQuotaPropertyControl.Designer.vb">
@@ -597,10 +597,10 @@
     <Compile Include="ItemPropertyControl\cItemCaveBranchPropertyControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ItemPropertyControl\cItemSegmentsBindingPropertyControl.Designer.vb">
-      <DependentUpon>cItemSegmentsBindingPropertyControl.vb</DependentUpon>
+    <Compile Include="ItemPropertyControl\cItemSegmentBindingPropertyControl.Designer.vb">
+      <DependentUpon>cItemSegmentBindingPropertyControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="ItemPropertyControl\cItemSegmentsBindingPropertyControl.vb">
+    <Compile Include="ItemPropertyControl\cItemSegmentBindingPropertyControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ItemPropertyControl\cItemObjectsBindingPropertyControl.Designer.vb">
@@ -1755,15 +1755,15 @@
     <EmbeddedResource Include="ItemPropertyControl\cItemTextStylePropertyControl.ru.resx">
       <DependentUpon>cItemTextStylePropertyControl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ItemPointPropertyControl\cItemSegmentBindingPropertyControl.it.resx">
-      <DependentUpon>cItemSegmentBindingPropertyControl.vb</DependentUpon>
+    <EmbeddedResource Include="ItemPointPropertyControl\cItemPointSegmentBindingPropertyControl.it.resx">
+      <DependentUpon>cItemPointSegmentBindingPropertyControl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ItemPointPropertyControl\cItemSegmentBindingPropertyControl.resx">
-      <DependentUpon>cItemSegmentBindingPropertyControl.vb</DependentUpon>
+    <EmbeddedResource Include="ItemPointPropertyControl\cItemPointSegmentBindingPropertyControl.resx">
+      <DependentUpon>cItemPointSegmentBindingPropertyControl.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ItemPointPropertyControl\cItemSegmentBindingPropertyControl.ru.resx">
-      <DependentUpon>cItemSegmentBindingPropertyControl.vb</DependentUpon>
+    <EmbeddedResource Include="ItemPointPropertyControl\cItemPointSegmentBindingPropertyControl.ru.resx">
+      <DependentUpon>cItemPointSegmentBindingPropertyControl.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ItemPropertyControl\cItemQuotaPropertyControl.en.resx">
       <DependentUpon>cItemQuotaPropertyControl.vb</DependentUpon>
@@ -1944,15 +1944,15 @@
     <EmbeddedResource Include="ItemPropertyControl\cItemCaveBranchPropertyControl.ru.resx">
       <DependentUpon>cItemCaveBranchPropertyControl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ItemPropertyControl\cItemSegmentsBindingPropertyControl.it.resx">
-      <DependentUpon>cItemSegmentsBindingPropertyControl.vb</DependentUpon>
+    <EmbeddedResource Include="ItemPropertyControl\cItemSegmentBindingPropertyControl.it.resx">
+      <DependentUpon>cItemSegmentBindingPropertyControl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ItemPropertyControl\cItemSegmentsBindingPropertyControl.resx">
-      <DependentUpon>cItemSegmentsBindingPropertyControl.vb</DependentUpon>
+    <EmbeddedResource Include="ItemPropertyControl\cItemSegmentBindingPropertyControl.resx">
+      <DependentUpon>cItemSegmentBindingPropertyControl.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ItemPropertyControl\cItemSegmentsBindingPropertyControl.ru.resx">
-      <DependentUpon>cItemSegmentsBindingPropertyControl.vb</DependentUpon>
+    <EmbeddedResource Include="ItemPropertyControl\cItemSegmentBindingPropertyControl.ru.resx">
+      <DependentUpon>cItemSegmentBindingPropertyControl.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ItemPropertyControl\cItemObjectsBindingPropertyControl.it.resx">
       <DependentUpon>cItemObjectsBindingPropertyControl.vb</DependentUpon>

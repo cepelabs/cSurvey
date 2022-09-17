@@ -1927,4 +1927,7 @@
   <data name="lblDesignTransparencyEdit.Text" xml:space="preserve">
     <value>Modifica...</value>
   </data>
+  <data name="lblDesignBindingMode.Text" xml:space="preserve">
+    <value>Collegamenti:</value>
+  </data>
 </root>

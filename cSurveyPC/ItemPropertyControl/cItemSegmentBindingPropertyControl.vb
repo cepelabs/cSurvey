@@ -4,7 +4,7 @@ Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Design.Items
 Imports DevExpress.XtraTreeList
 
-Friend Class cItemSegmentsBindingPropertyControl
+Friend Class cItemSegmentBindingPropertyControl
     Public Sub New()
 
         ' This call is required by the designer.
@@ -16,9 +16,19 @@ Friend Class cItemSegmentsBindingPropertyControl
 
     Public Shadows Sub Rebind(Item As cItem)
         MyBase.Rebind(Item)
-        Enabled = (Item.Cave <> "")
+        Enabled = IsAvailable
         Call pRefresh()
     End Sub
+
+    Public ReadOnly Property IsAvailable()
+        Get
+            If Item Is Nothing Then
+                Return False
+            Else
+                Return (Item.Cave <> "")
+            End If
+        End Get
+    End Property
 
     Private Sub pRefresh()
         Dim oSegments As SortedList(Of String, cISegment) = New SortedList(Of String, cISegment)
@@ -33,15 +43,27 @@ Friend Class cItemSegmentsBindingPropertyControl
         grdSegmentsBinded.Rebind(Item.Survey, oSegments.Values.Cast(Of cSegment).ToList, New cSegmentsGrid.cSegmentGridParameters(False, True, True, True))
     End Sub
 
+    Public Sub DoSegmentsLock()
+        Call pSegmentsLock()
+    End Sub
+
+    Public Sub DoSegmentsRebind()
+        Call pSegmentsRebind()
+    End Sub
+
+    Public Sub DoSegmentsUnlock()
+        Call pSegmentsUnlock()
+    End Sub
+
     Private Sub cmdPropSegmentsRebind_Click(sender As Object, e As EventArgs) Handles cmdPropSegmentsRebind.Click
-        If Not DisabledObjectProperty() Then
-            Call Item.BindSegments()
-            Call MyBase.TakeUndoSnapshot()
-            Call MyBase.MapInvalidate()
-        End If
+        Call pSegmentsRebind()
     End Sub
 
     Private Sub cmdPropSegmentsUnlock_Click(sender As Object, e As EventArgs) Handles cmdPropSegmentsUnlock.Click
+        Call pSegmentsUnlock()
+    End Sub
+
+    Private Sub pSegmentsUnlock()
         If Not DisabledObjectProperty() Then
             Item.UnlockSegments()
             Call MyBase.TakeUndoSnapshot()
@@ -49,12 +71,24 @@ Friend Class cItemSegmentsBindingPropertyControl
         End If
     End Sub
 
-    Private Sub cmdPropSegmentsLock_Click(sender As Object, e As EventArgs) Handles cmdPropSegmentsLock.Click
+    Private Sub pSegmentsRebind()
+        If Not DisabledObjectProperty() Then
+            Call Item.BindSegments()
+            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.MapInvalidate()
+        End If
+    End Sub
+
+    Private Sub pSegmentsLock()
         If Not DisabledObjectProperty() Then
             Item.LockSegments()
             Call MyBase.TakeUndoSnapshot()
             Call MyBase.MapInvalidate()
         End If
+    End Sub
+
+    Private Sub cmdPropSegmentsLock_Click(sender As Object, e As EventArgs) Handles cmdPropSegmentsLock.Click
+        Call pSegmentsLock
     End Sub
 
     Private Sub grdSegmentsBinded_DoubleClick(sender As Object, e As EventArgs) Handles grdSegmentsBinded.DoubleClick

@@ -2628,7 +2628,7 @@ Friend Class frmMain2
             modPaint.AnchorsScale = modNumbers.StringToSingle(oReg.GetValue("design.anchorscale", 1))
 
             oPropObjectsBindingContainer.Expanded = oReg.GetValue("design.objectsbinding.expanded")
-            oPropSegmentsBindingContainer.Expanded = oReg.GetValue("design.segmentsbinding.expanded")
+            oPropSegmentBindingContainer.Expanded = oReg.GetValue("design.segmentsbinding.expanded")
             oPropTrigpointsDistancesContainer.Expanded = oReg.GetValue("design.trigpointdistances.expanded")
 
             bHistory = oReg.GetValue("history.enabled", 0)
@@ -2825,7 +2825,7 @@ Friend Class frmMain2
                 Call oReg.SetValue("design.metricgrid", iDrawMetricGrid)
 
                 Call oReg.SetValue("design.objectsbinding.expanded", If(oPropObjectsBindingContainer.Expanded, 1, 0))
-                Call oReg.SetValue("design.segmentsbinding.expanded", If(oPropSegmentsBindingContainer.Expanded, 1, 0))
+                Call oReg.SetValue("design.segmentsbinding.expanded", If(oPropSegmentBindingContainer.Expanded, 1, 0))
                 Call oReg.SetValue("design.trigpointdistances.expanded", If(oPropTrigpointsDistancesContainer.Expanded, 1, 0))
 
                 Dim oXml As XmlDocument = New XmlDocument
@@ -4084,8 +4084,8 @@ Friend Class frmMain2
                     oPropImage.Visible = False
                     oPropTrigpoint.Visible = False
                     oPropMarker.Visible = False
+                    oPropPointSegmentBinding.Visible = False
                     oPropSegmentBinding.Visible = False
-                    oPropSegmentsBinding.Visible = False
                     oPropSign.Visible = False
                     oPropTextStyle.Visible = False
                     oPropClipping.Visible = False
@@ -4213,8 +4213,8 @@ Friend Class frmMain2
                     oPropBrushStyle.Visible = False
                     oPropImage.Visible = False
                     oPropSegment.Visible = False
+                    oPropPointSegmentBinding.Visible = False
                     oPropSegmentBinding.Visible = False
-                    oPropSegmentsBinding.Visible = False
                     oPropSign.Visible = False
                     oPropTextStyle.Visible = False
                     oPropClipping.Visible = False
@@ -4291,8 +4291,8 @@ Friend Class frmMain2
                 oPropImage.Visible = False
                 oPropSegment.Visible = False
                 oPropMarker.Visible = False
+                oPropPointSegmentBinding.Visible = False
                 oPropSegmentBinding.Visible = False
-                oPropSegmentsBinding.Visible = False
                 oPropSign.Visible = False
                 oPropTextStyle.Visible = False
                 oPropClipping.Visible = False
@@ -4476,7 +4476,7 @@ Friend Class frmMain2
             oPropSegment.Visible = False
             oPropTrigpoint.Visible = False
             oPropMarker.Visible = False
-            oPropSegmentsBinding.Visible = False
+            oPropSegmentBinding.Visible = False
             oPropSign.Visible = False
             oPropTextStyle.Visible = False
             oPropClipping.Visible = False
@@ -4508,6 +4508,7 @@ Friend Class frmMain2
             grpCurrentItemShape.SetVisible(False)
             btnCurrentItemGenericCombine.Visibility = BarItemVisibility.Never
             grpCurrentItemItems.SetVisible(False)
+            grpCurrentItemBindings.SetVisible(False)
 
             grpCurrentItemSequence.SetVisible(True)
             grpCurrentItemPoint.SetVisible(True)
@@ -4527,8 +4528,6 @@ Friend Class frmMain2
 
                 btnCurrentItemPointNewFromSequence0.Visibility = BarItemVisibility.Never
                 btnCurrentItemPointNewFromSequence1.Visibility = BarItemVisibility.Never
-
-                grpCurrentItemBindings.SetVisible(False)
             Else
                 btnCurrentItemPointDelete.Visibility = BarItemVisibility.Always
 
@@ -4548,8 +4547,6 @@ Friend Class frmMain2
 
                 btnCurrentItemPointNewFromSequence0.Visibility = BarItemVisibility.Always
                 btnCurrentItemPointNewFromSequence1.Visibility = BarItemVisibility.Always
-
-                grpCurrentItemBindings.SetVisible(True)
             End If
 
             Dim sCave As String = "" & .Item.Cave
@@ -4572,13 +4569,13 @@ Friend Class frmMain2
 
             oPropBrushStyle.Visible = False
 
-            Call oPropSegmentBinding.Rebind(pGetCurrentDesignTools.CurrentItemPoint)
+            Call oPropPointSegmentBinding.Rebind(pGetCurrentDesignTools.CurrentItemPoint)
             If .BindedSegment Is Nothing Then
-                oPropSegmentBinding.Enabled = False
+                oPropPointSegmentBinding.Enabled = False
             Else
-                oPropSegmentBinding.Enabled = True
+                oPropPointSegmentBinding.Enabled = True
             End If
-            oPropSegmentBinding.Visible = True
+            oPropPointSegmentBinding.Visible = True
 
             btnCurrentItemPointDeleteSequence.Enabled = True
             btnCurrentItemPointCloseSequence.Enabled = True
@@ -4667,7 +4664,6 @@ Friend Class frmMain2
 
                 grpCurrentItemSequence.SetVisible(False)
                 grpCurrentItemPoint.SetVisible(False)
-                grpCurrentItemBindings.SetVisible(False)
                 grpCurrentItemShot.SetVisible(False)
                 grpCurrentItemStation.SetVisible(False)
                 btnCurrentItemSegmentDirection.Visibility = BarItemVisibility.Never
@@ -4787,7 +4783,7 @@ Friend Class frmMain2
                 oPropMarker.Visible = False
                 oPropObjectsBinding.Visible = False
                 oPropTrigpointsDistances.Visible = False
-                oPropSegmentBinding.Visible = False
+                oPropPointSegmentBinding.Visible = False
 
                 oPropPlanSplayBorder.Visible = False
                 oPropProfileSplayBorder.Visible = False
@@ -4873,10 +4869,16 @@ Friend Class frmMain2
                 End If
 
                 If .CanBeBinded Then
-                    Call oPropSegmentsBinding.Rebind(oCurrentItem)
-                    oPropSegmentsBinding.Visible = True
+                    Call oPropSegmentBinding.Rebind(oCurrentItem)
+                    Call grpCurrentItemBindings.SetVisible(oPropSegmentBinding.IsAvailable)
+                    btnCurrentItemBindings.Visibility = BarItemVisibility.Always
+                    btnCurrentItemBindings.Enabled = oPropSegmentBinding.IsAvailable
+                    oPropSegmentBinding.Visible = True
                 Else
-                    oPropSegmentsBinding.Visible = False
+                    Call grpCurrentItemBindings.SetVisible(False)
+                    btnCurrentItemBindings.Visibility = BarItemVisibility.Never
+                    btnCurrentItemBindings.Enabled = False
+                    oPropSegmentBinding.Visible = False
                 End If
             End If
         End With
@@ -4918,9 +4920,9 @@ Friend Class frmMain2
         oPropSegment.Visible = False
         oPropTrigpoint.Visible = False
         oPropMarker.Visible = False
+        oPropPointSegmentBinding.Visible = False
         oPropSegmentBinding.Visible = False
-        oPropSegmentsBinding.Visible = False
-        oPropSegmentsBinding.Visible = False
+        oPropSegmentBinding.Visible = False
         oPropSign.Visible = False
         oPropTextStyle.Visible = False
         oPropClipping.Visible = False
@@ -12904,13 +12906,13 @@ Friend Class frmMain2
     Private oPropPlanSplayBorder As cItemPlanSplayPropertyControl
     Private oPropProfileSplayBorder As cItemProfileSplayPropertyControl
     Private oPropCrossSectionSplayBorder As cItemCrossSectionSplayPropertyControl
+    Private oPropPointSegmentBinding As cItemPointSegmentBindingPropertyControl
     Private oPropSegmentBinding As cItemSegmentBindingPropertyControl
-    Private oPropSegmentsBinding As cItemSegmentsBindingPropertyControl
     Private oPropObjectsBinding As cItemObjectsBindingPropertyControl
     Private oPropTrigpointsDistances As cItemTrigpointDistancesPropertyControl
 
+    Private WithEvents oPropPointSegmentBindingContainer As cCollapsablePropertyControlContainer
     Private WithEvents oPropSegmentBindingContainer As cCollapsablePropertyControlContainer
-    Private WithEvents oPropSegmentsBindingContainer As cCollapsablePropertyControlContainer
     Private WithEvents oPropObjectsBindingContainer As cCollapsablePropertyControlContainer
     Private WithEvents oPropTrigpointsDistancesContainer As cCollapsablePropertyControlContainer
 
@@ -13147,21 +13149,21 @@ Friend Class frmMain2
         pnlObjectProp.Controls.Add(oSeparator)
         oSeparator.Dock = DockStyle.Bottom
 
+        oPropPointSegmentBindingContainer = New cCollapsablePropertyControlContainer
+        oPropPointSegmentBinding = New cItemPointSegmentBindingPropertyControl
+        oPropPointSegmentBindingContainer.SetClientControl(modMain.GetLocalizedString("main.textpart162"), oPropPointSegmentBinding, 96)
+        oPropPointSegmentBindingContainer.SetVisibleSeparator(oSeparator)
+        pnlObjectProp.Controls.Add(oPropPointSegmentBindingContainer)
+        oPropPointSegmentBindingContainer.Dock = DockStyle.Bottom
+        Call pUIRebindPropertyControlEvents(oPropPointSegmentBinding)
+
         oPropSegmentBindingContainer = New cCollapsablePropertyControlContainer
         oPropSegmentBinding = New cItemSegmentBindingPropertyControl
-        oPropSegmentBindingContainer.SetClientControl(modMain.GetLocalizedString("main.textpart162"), oPropSegmentBinding, 96)
+        oPropSegmentBindingContainer.SetClientControl(modMain.GetLocalizedString("main.textpart163"), oPropSegmentBinding, 220)
         oPropSegmentBindingContainer.SetVisibleSeparator(oSeparator)
         pnlObjectProp.Controls.Add(oPropSegmentBindingContainer)
         oPropSegmentBindingContainer.Dock = DockStyle.Bottom
         Call pUIRebindPropertyControlEvents(oPropSegmentBinding)
-
-        oPropSegmentsBindingContainer = New cCollapsablePropertyControlContainer
-        oPropSegmentsBinding = New cItemSegmentsBindingPropertyControl
-        oPropSegmentsBindingContainer.SetClientControl(modMain.GetLocalizedString("main.textpart163"), oPropSegmentsBinding, 220)
-        oPropSegmentsBindingContainer.SetVisibleSeparator(oSeparator)
-        pnlObjectProp.Controls.Add(oPropSegmentsBindingContainer)
-        oPropSegmentsBindingContainer.Dock = DockStyle.Bottom
-        Call pUIRebindPropertyControlEvents(oPropSegmentsBinding)
 
         oPropObjectsBindingContainer = New cCollapsablePropertyControlContainer
         oPropObjectsBinding = New cItemObjectsBindingPropertyControl
@@ -17469,12 +17471,16 @@ Friend Class frmMain2
         Call pMapInvalidate()
     End Sub
 
-    Private Sub btnCurrentItemPointPlotLockSegment_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCurrentItemPointPlotLockSegment.ItemClick
-        UIHelpers.Dialogs.Msgbox("TODO")
+    Private Sub btnCurrentItemPlotUnlockSegment_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCurrentItemPlotUnlockSegment.ItemClick
+        Call oPropSegmentBinding.DoSegmentsUnlock()
     End Sub
 
-    Private Sub btnCurrentItemPointPlotBindSegment_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCurrentItemPointPlotBindSegment.ItemClick
-        UIHelpers.Dialogs.Msgbox("TODO")
+    Private Sub btnCurrentItemPlotLockSegment_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCurrentItemPlotLockSegment.ItemClick
+        Call oPropSegmentBinding.DoSegmentsLock()
+    End Sub
+
+    Private Sub btnCurrentItemPlotBindSegment_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCurrentItemPlotBindSegment.ItemClick
+        Call oPropSegmentBinding.DoSegmentsRebind()
     End Sub
 
     Private Sub btnCurrentItemClipartSaveInGallery_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCurrentItemClipartSaveInGallery.ItemClick
@@ -18927,6 +18933,7 @@ Friend Class frmMain2
             Call pSurveyProperty(7, sender.editvalue)
         End If
     End Sub
+
 End Class
 
 

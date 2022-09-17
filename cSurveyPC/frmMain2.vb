@@ -5701,6 +5701,7 @@ Friend Class frmMain2
             chkViewShowShots.Checked = oCurrentOptions.DrawSegments
             chkViewShowStation.Checked = oCurrentOptions.DrawPoints
             chkViewShowStationLabel.Checked = oCurrentOptions.ShowPointText
+            Call pDesignRestoreShowBinding()
 
             Call oDockLevels.SetDesign(oCurrentDesign, pGetCurrentDesignTools, oCurrentOptions)
             oDockLevels.Enabled = True
@@ -5862,6 +5863,7 @@ Friend Class frmMain2
             chkViewShowShots.Checked = oCurrentOptions.DrawSegments
             chkViewShowStation.Checked = oCurrentOptions.DrawPoints
             chkViewShowStationLabel.Checked = oCurrentOptions.ShowPointText
+            Call pDesignRestoreShowBinding()
 
             Call oDockLevels.SetDesign(oCurrentDesign, pGetCurrentDesignTools, oCurrentOptions)
             oDockLevels.Enabled = True

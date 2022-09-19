@@ -9676,7 +9676,10 @@ Friend Class frmMain2
             Select Case pGetCurrentContext()
                 Case cContextEnum.Segments
                     Dim oSegment As cSegment = pGetCurrentTools.CurrentSegment
-                    If Not oSegment Is Nothing Then
+                    If oSegment Is Nothing Then
+                        btnDesignSetCurrentCaveBranch.Enabled = False
+                    Else
+                        btnDesignSetCurrentCaveBranch.Enabled = True
                         Dim oSegments As cSegmentCollection = pSegmentsFromGridSelection(True)
                         Dim bEnabledEdit As Boolean = oSegments.Count > 0 AndAlso Not IsNothing(oSegment)
                         Dim bLocked As Boolean = oSegment.GetLocked
@@ -9697,6 +9700,8 @@ Friend Class frmMain2
 
                     End If
                 Case cContextEnum.Trigpoints
+                    btnDesignSetCurrentCaveBranch.Enabled = False
+
                     btnCut.Enabled = False
                     btnCopy.Enabled = False
 
@@ -9708,6 +9713,8 @@ Friend Class frmMain2
                     btnDelete.Enabled = False
                 Case cContextEnum.DesignPlan, cContextEnum.DesignProfile
                     If oCurrentDesign Is Nothing Then
+                        btnDesignSetCurrentCaveBranch.Enabled = False
+
                         btnCut.Enabled = False
                         btnCopy.Enabled = False
 
@@ -9724,9 +9731,18 @@ Friend Class frmMain2
                         If bEnabledEdit Then
                             If TypeOf oItem Is cItemSegment Then
                                 bEnabledEdit = False
+                                btnDesignSetCurrentCaveBranch.Enabled = True
+                            ElseIf TypeOf oItem Is cItemtrigpoint Then
+                                bEnabledEdit = False
+                                btnDesignSetCurrentCaveBranch.Enabled = False
                             ElseIf TypeOf oItem Is cItemMarker Then
                                 bEnabledEdit = False
+                                btnDesignSetCurrentCaveBranch.Enabled = False
+                            Else
+                                btnDesignSetCurrentCaveBranch.Enabled = True
                             End If
+                        Else
+                            btnDesignSetCurrentCaveBranch.Enabled = False
                         End If
 
                         Dim bCanBeDeleted As Boolean = bEnabledEdit AndAlso oItem.CanBeDeleted 'AndAlso bLocked
@@ -9760,6 +9776,8 @@ Friend Class frmMain2
                         btnPaste.Enabled = bEnabled
                     End If
                 Case Else
+                    btnDesignSetCurrentCaveBranch.Enabled = False
+
                     btnCut.Enabled = False
                     btnCopy.Enabled = False
 

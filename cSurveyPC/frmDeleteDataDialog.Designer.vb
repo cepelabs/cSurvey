@@ -47,6 +47,7 @@ Partial Class frmDeleteDataDialog
         '
         resources.ApplyResources(Me.RadioButton1, "RadioButton1")
         Me.RadioButton1.Name = "RadioButton1"
+        Me.RadioButton1.Properties.AutoWidth = True
         Me.RadioButton1.Properties.Caption = resources.GetString("RadioButton1.Properties.Caption")
         Me.RadioButton1.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio
         Me.RadioButton1.Properties.RadioGroupIndex = 1
@@ -55,9 +56,11 @@ Partial Class frmDeleteDataDialog
         '
         resources.ApplyResources(Me.RadioButton2, "RadioButton2")
         Me.RadioButton2.Name = "RadioButton2"
+        Me.RadioButton2.Properties.AutoWidth = True
         Me.RadioButton2.Properties.Caption = resources.GetString("RadioButton2.Properties.Caption")
         Me.RadioButton2.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio
         Me.RadioButton2.Properties.RadioGroupIndex = 1
+        Me.RadioButton2.TabStop = False
         '
         'frmDeleteDataDialog
         '

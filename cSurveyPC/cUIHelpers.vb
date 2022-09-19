@@ -3060,7 +3060,6 @@ Namespace cSurvey.UIHelpers
                 Dim oPlaceholder As cSegmentPlaceholder = New cSegmentPlaceholder(oSegment)
                 Call MyBase.Add(oPlaceholder)
                 Call oIndex.Add(oSegment, oPlaceholder)
-                'Call oPlaceholder.SetVisible(True)
                 Call Validate(oPlaceholder)
             Next
         End Sub
@@ -3100,8 +3099,11 @@ Namespace cSurvey.UIHelpers
         End Sub
 
         Private Sub oSegments_OnSegmentRemoveRange(Sender As cSegments, e As cSegments.OnSegmentsEventArgs) Handles oSegments.OnSegmentRemoveRange
+            Dim oPlaceholders As List(Of cSegmentPlaceholder) = New List(Of cSegmentPlaceholder)
             For Each iIndex As Integer In e.Indexes
-                Dim oPlaceholder As cSegmentPlaceholder = MyBase.Item(iIndex)
+                oPlaceholders.Add(MyBase.Item(iIndex))
+            Next
+            For Each oPlaceholder As cSegmentPlaceholder In oPlaceholders
                 Call MyBase.Remove(oPlaceholder)
                 Call oIndex.Remove(oPlaceholder.Segment)
             Next

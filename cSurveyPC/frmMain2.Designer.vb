@@ -423,6 +423,7 @@ Partial Class frmMain2
         Me.trkZoom = New DevExpress.XtraEditors.Repository.RepositoryItemZoomTrackBar()
         Me.btnViewAudioListener = New DevExpress.XtraBars.BarButtonItem()
         Me.btnCurrentItemBindings = New DevExpress.XtraBars.BarSubItem()
+        Me.btnCurrentItemPlotUnlockSegment = New DevExpress.XtraBars.BarButtonItem()
         Me.btnMapDropImage = New DevExpress.XtraBars.BarButtonItem()
         Me.btnMapDropSketch = New DevExpress.XtraBars.BarButtonItem()
         Me.btnMapDropPocketTopo = New DevExpress.XtraBars.BarButtonItem()
@@ -484,7 +485,6 @@ Partial Class frmMain2
         Me.chkViewShowStation = New DevExpress.XtraBars.BarCheckItem()
         Me.chkViewShowStationLabel = New DevExpress.XtraBars.BarCheckItem()
         Me.btnViewShowCenterline = New DevExpress.XtraBars.BarSubItem()
-        Me.btnCurrentItemPlotUnlockSegment = New DevExpress.XtraBars.BarButtonItem()
         Me.pageFile = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.tabFile = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.tabMaintenance = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
@@ -3624,6 +3624,14 @@ Partial Class frmMain2
         Me.btnCurrentItemBindings.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btnCurrentItemPlotBindSegment), New DevExpress.XtraBars.LinkPersistInfo(Me.btnCurrentItemPlotLockSegment), New DevExpress.XtraBars.LinkPersistInfo(Me.btnCurrentItemPlotUnlockSegment)})
         Me.btnCurrentItemBindings.Name = "btnCurrentItemBindings"
         '
+        'btnCurrentItemPlotUnlockSegment
+        '
+        resources.ApplyResources(Me.btnCurrentItemPlotUnlockSegment, "btnCurrentItemPlotUnlockSegment")
+        Me.btnCurrentItemPlotUnlockSegment.Id = 360
+        Me.btnCurrentItemPlotUnlockSegment.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.Security_Unlock
+        Me.btnCurrentItemPlotUnlockSegment.Name = "btnCurrentItemPlotUnlockSegment"
+        Me.btnCurrentItemPlotUnlockSegment.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
+        '
         'btnMapDropImage
         '
         resources.ApplyResources(Me.btnMapDropImage, "btnMapDropImage")
@@ -4285,14 +4293,6 @@ Partial Class frmMain2
         Me.btnViewShowCenterline.ImageOptions.SvgImage = CType(resources.GetObject("btnViewShowCenterline.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.btnViewShowCenterline.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.chkViewShowShots), New DevExpress.XtraBars.LinkPersistInfo(Me.chkViewShowLRUD, True), New DevExpress.XtraBars.LinkPersistInfo(Me.chkViewShowSplay), New DevExpress.XtraBars.LinkPersistInfo(Me.chkViewShowStation, True), New DevExpress.XtraBars.LinkPersistInfo(Me.chkViewShowStationLabel)})
         Me.btnViewShowCenterline.Name = "btnViewShowCenterline"
-        '
-        'btnCurrentItemPlotUnlockSegment
-        '
-        resources.ApplyResources(Me.btnCurrentItemPlotUnlockSegment, "btnCurrentItemPlotUnlockSegment")
-        Me.btnCurrentItemPlotUnlockSegment.Id = 360
-        Me.btnCurrentItemPlotUnlockSegment.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.Security_Unlock
-        Me.btnCurrentItemPlotUnlockSegment.Name = "btnCurrentItemPlotUnlockSegment"
-        Me.btnCurrentItemPlotUnlockSegment.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
         '
         'pageFile
         '

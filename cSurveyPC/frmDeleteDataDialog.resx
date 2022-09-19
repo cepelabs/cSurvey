@@ -190,7 +190,7 @@
     <value>Delete all</value>
   </data>
   <data name="RadioButton1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 20</value>
+    <value>67, 20</value>
   </data>
   <data name="RadioButton1.TabIndex" type="System.Int32, mscorlib">
     <value>175</value>
@@ -217,7 +217,7 @@
     <value>Delete only splay shot</value>
   </data>
   <data name="RadioButton2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 20</value>
+    <value>129, 20</value>
   </data>
   <data name="RadioButton2.TabIndex" type="System.Int32, mscorlib">
     <value>176</value>

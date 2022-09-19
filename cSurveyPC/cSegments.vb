@@ -363,6 +363,10 @@ Namespace cSurvey
             For Each oRemovedSegment As cSegment In oRemovedSegments
                 If oSegments.Contains(oRemovedSegment) Then
                     Call oRemovedIndexes.Add(oRemovedSegment.Index)
+                End If
+            Next
+            For Each oRemovedSegment As cSegment In oRemovedSegments
+                If oSegments.Contains(oRemovedSegment) Then
                     Call oSegments.Remove(oRemovedSegment)
                     Call oRemovedSegment.Attachments.Clear()
                 End If
@@ -539,10 +543,10 @@ Namespace cSurvey
         Public Sub Clear(Optional Flags As ClearFlags = ClearFlags.All)
             If Flags = ClearFlags.All Then
                 Call oSegments.Clear()
+                RaiseEvent OnClear(Me)
             ElseIf Flags = ClearFlags.OnlySplays Then
-                Call RemoveRange(oSegments.Where(Function(osegment) osegment.Splay))
+                Call RemoveRange(oSegments.Where(Function(oSegment) oSegment.Splay).Cast(Of cSegment))
             End If
-            RaiseEvent OnClear(Me)
         End Sub
 
         Public Function cISegment_GetEnumerator() As IEnumerator(Of cISegment) Implements cISegmentCollection.GetEnumerator

@@ -6901,7 +6901,7 @@ o ad una sezione trasversale</value>
     <value>Azioni su collegamenti</value>
   </data>
   <data name="btnPlotDeleteAll.Caption" xml:space="preserve">
-    <value>Eliminati dati</value>
+    <value>Elimina dati</value>
   </data>
   <data name="btnPlotGrades.Caption" xml:space="preserve">
     <value>Precisione dei dati...</value>

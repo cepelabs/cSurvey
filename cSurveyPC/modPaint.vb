@@ -792,12 +792,20 @@ Module modPaint
         Return NormalizeAngle(Degree + Value)
     End Function
 
+    Public Function IsRectangleUnsized(Rectangle As RectangleF) As Boolean
+        Return Rectangle.Height = 0F AndAlso Rectangle.Width = 0F
+    End Function
+
+    Public Function IsRectangleUnsized(Rectangle As Rectangle) As Boolean
+        Return Rectangle.Height = 0 AndAlso Rectangle.Width = 0
+    End Function
+
     Public Function IsRectangleEmpty(ByVal Rectangle As RectangleF) As Boolean
-        Return (Rectangle.Left = 0F AndAlso Rectangle.Top = 0F AndAlso Rectangle.Height = 0F AndAlso Rectangle.Width = 0F) 'orelse (Single.IsNaN(Rectangle.Left) orelse Single.IsNaN(Rectangle.Top) orelse Single.IsNaN(Rectangle.Height) orelse Single.IsNaN(Rectangle.Width))
+        Return Rectangle.Left = 0F AndAlso Rectangle.Top = 0F AndAlso Rectangle.Height = 0F AndAlso Rectangle.Width = 0F 'orelse (Single.IsNaN(Rectangle.Left) orelse Single.IsNaN(Rectangle.Top) orelse Single.IsNaN(Rectangle.Height) orelse Single.IsNaN(Rectangle.Width))
     End Function
 
     Public Function IsRectangleEmpty(ByVal Rectangle As Rectangle) As Boolean
-        Return (Rectangle.Left = 0 AndAlso Rectangle.Top = 0 AndAlso Rectangle.Height = 0 AndAlso Rectangle.Width = 0)
+        Return Rectangle.Left = 0 AndAlso Rectangle.Top = 0 AndAlso Rectangle.Height = 0 AndAlso Rectangle.Width = 0
     End Function
 
     Public Function ScaleToFit(Rectangle1 As Rectangle, rectangle2 As Rectangle) As Integer

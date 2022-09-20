@@ -6493,4 +6493,7 @@
   <data name="btnCurrentItemBindings.Caption" xml:space="preserve">
     <value>Привязки</value>
   </data>
+  <data name="btnPlotDeleteAll.Caption" xml:space="preserve">
+    <value>Удалить сегменты</value>
+  </data>
 </root>

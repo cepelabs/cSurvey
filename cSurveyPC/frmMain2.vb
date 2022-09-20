@@ -8506,7 +8506,7 @@ Friend Class frmMain2
         Try
             If Me.IsActive Then
                 If DockManager.ActivePanel IsNot Nothing Then
-                    If DockManager.ActivePanel Is dockDesigner OrElse DockManager.ActivePanel Is dockLevels OrElse DockManager.ActivePanel Is dockClipart OrElse DockManager.ActivePanel Is dockJoinPoints Then
+                    If DockManager.ActivePanel Is dockDesigner OrElse DockManager.ActivePanel Is dockLevels OrElse DockManager.ActivePanel Is dockClipart OrElse DockManager.ActivePanel Is dockJoinPoints OrElse DockManager.ActivePanel Is dockProperties Then
                         If pIsContextDesignVisible() Then 'docView.ActiveDocument IsNot Nothing AndAlso docView.ActiveDocument.IsVisible AndAlso docView.ActiveDocument.ControlName.ToLower = "dockdesigner" Then
                             If btnViewPlan.Checked Then
                                 Return cContextEnum.DesignPlan
@@ -8762,7 +8762,7 @@ Friend Class frmMain2
                 Else
                     Dim oItemBound As RectangleF = modPaint.ToPaintRectangle(pGetCurrentDesignTools.CurrentItem.GetBounds, sPaintZoom, oPaintTranslation)
                     Dim oVisibleBound As RectangleF = RectangleF.Intersect(oItemBound, picMap.ClientRectangle)
-                    If oVisibleBound.IsEmpty Then
+                    If modPaint.IsRectangleUnsized(oVisibleBound) Then
                         dockFloatBar.Visible = False
                         Return False
                     Else
@@ -8778,7 +8778,7 @@ Friend Class frmMain2
                     Else
                         Dim oItemBound As RectangleF = modPaint.ToPaintRectangle(pGetCurrentDesignTools.CurrentItem.GetBounds, sPaintZoom, oPaintTranslation)
                         Dim oVisibleBound As RectangleF = RectangleF.Intersect(oItemBound, picMap.ClientRectangle)
-                        If oVisibleBound.IsEmpty Then
+                        If modPaint.IsRectangleUnsized(oVisibleBound) Then
                             dockFloatBar.Visible = False
                             Return False
                         Else
@@ -8796,7 +8796,7 @@ Friend Class frmMain2
                         If Not IsNothing(oPrevPoint) Then
                             Call oPath.AddLine(oPenToolsPointF, modPaint.ToPaintPoint(New PointF(oPrevPoint.X, oPrevPoint.Y), sPaintZoom, oPaintTranslation))
                         End If
-                        If oPath.GetBounds.IsEmpty Then
+                        If modPaint.IsRectangleUnsized(oPath.GetBounds) Then
                             Return pFloatingToolbarValidateLocation(New Point(oPenToolsPointF.X, oPenToolsPointF.Y))
                         Else
                             Return pFloatingToolbarValidateLocation(New Point(oPath.GetBounds.Location.X, oPath.GetBounds.Location.Y))
@@ -9104,34 +9104,36 @@ Friend Class frmMain2
         If InvokeRequired Then
             Call Me.BeginInvoke(New pFloatingToolbarShowDelegate(AddressOf pFloatingToolbarShow))
         Else
-            If Me.IsActive AndAlso docView.ActiveDocument IsNot Nothing AndAlso docView.ActiveDocument.ControlName.ToLower = "dockdesigner" Then
-                If pGetCurrentDesignTools() Is o3DTools Then
+            'If Me.IsActive AndAlso docView.ActiveDocument IsNot Nothing AndAlso docView.ActiveDocument.ControlName.ToLower = "dockdesigner" Then
+            Dim oTools As Helper.Editor.cEditDesignTools = pGetCurrentDesignTools()
+
+            If oTools Is o3DTools Then
+                Call pFloatingToolbarHide()
+            Else
+                If oTools.CurrentItem Is Nothing Then
                     Call pFloatingToolbarHide()
                 Else
-                    If pGetCurrentDesignTools.CurrentItem Is Nothing Then
-                        Call pFloatingToolbarHide()
+                    If oTools.IsInPointEdit AndAlso oTools.CurrentItemPoint IsNot Nothing Then
+                        Call oFloatBar.BeginUpdate()
+                        For Each oLink As BarItemLink In oFloatBar.ItemLinks
+                            'oLink.Visible = oLink.Enabled
+                            oLink.Visible = oLink.Item.Name.ToLower.StartsWith("btncurrentitempoint") AndAlso oLink.Enabled
+                        Next
+                        Call oFloatBar.EndUpdate()
                     Else
-                        If pGetCurrentDesignTools.IsInPointEdit Then
-                            Call oFloatBar.BeginUpdate()
-                            For Each oLink As BarItemLink In oFloatBar.ItemLinks
-                                oLink.Visible = oLink.Item.Name.ToLower.StartsWith("btncurrentitempoint")
-                            Next
-                            Call oFloatBar.EndUpdate()
-                        Else
-                            Call oFloatBar.BeginUpdate()
-                            For Each oLink As BarItemLink In oFloatBar.ItemLinks
-                                oLink.Visible = Not oLink.Item.Name.ToLower.StartsWith("btncurrentitempoint")
-                            Next
-                            Call oFloatBar.EndUpdate()
-                        End If
-                        Call pFloatingToolbarGetLocation()
+                        Call oFloatBar.BeginUpdate()
+                        For Each oLink As BarItemLink In oFloatBar.ItemLinks
+                            'oLink.Visible = oLink.Enabled
+                            oLink.Visible = Not oLink.Item.Name.ToLower.StartsWith("btncurrentitempoint") AndAlso oLink.Enabled
+                        Next
+                        Call oFloatBar.EndUpdate()
                     End If
+                    Call pFloatingToolbarGetLocation()
                 End If
             End If
+            'End If
         End If
     End Sub
-
-    Private bFloatingToolbarHiding As Boolean
 
     Private Delegate Sub pFloatingToolbarHideDelegate()
     Private Sub pFloatingToolbarHide()
@@ -9732,7 +9734,7 @@ Friend Class frmMain2
                             If TypeOf oItem Is cItemSegment Then
                                 bEnabledEdit = False
                                 btnDesignSetCurrentCaveBranch.Enabled = True
-                            ElseIf TypeOf oItem Is cItemtrigpoint Then
+                            ElseIf TypeOf oItem Is cItemTrigpoint Then
                                 bEnabledEdit = False
                                 btnDesignSetCurrentCaveBranch.Enabled = False
                             ElseIf TypeOf oItem Is cItemMarker Then
@@ -15300,9 +15302,23 @@ Friend Class frmMain2
         oFloatBar.ItemLinks.Add(btnDelete, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
 
         oFloatBar.ItemLinks.Add(btnItemsLayouts, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText, BarItemPaintStyle.Standard)
-        oFloatBar.ItemLinks.Add(btnCurrentItemSegmentDirection, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
         oFloatBar.ItemLinks.Add(btnCurrentItemLock, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
         oFloatBar.ItemLinks.Add(btnCurrentItemGenericCombine, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+
+        oFloatBar.ItemLinks.Add(btnCurrentItemSketchEdit, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        oFloatBar.ItemLinks.Add(btnCurrentItemSketchView, False, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        oFloatBar.ItemLinks.Add(btnCurrentItemImageEdit, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        oFloatBar.ItemLinks.Add(btnCurrentItemImageView, False, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+
+        'oFloatBar.ItemLinks.Add(btnCurrentItemShot, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        oFloatBar.ItemLinks.AddRange({btnCurrentItemSegmentFromProperty, btnCurrentItemSegmentToProperty}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText, BarItemPaintStyle.Caption)
+        oFloatBar.ItemLinks.Add(btnCurrentItemSegmentDirection, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+
+        'oFloatBar.ItemLinks.Add(btnCurrentItemStation, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+
+        oFloatBar.ItemLinks.Add(btnCurrentItemLegendAddTo, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionInMenu)
+        oFloatBar.ItemLinks.Add(btnCurrentItemSignExport, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        oFloatBar.ItemLinks.Add(btnCurrentItemClipartExport, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
 
         oFloatBar.ItemLinks.AddRange({btnCurrentItemPointAdd, btnCurrentItemPointDelete}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
         oFloatBar.ItemLinks.Add(btnCurrentItemPointsJoin, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
@@ -17049,20 +17065,20 @@ Friend Class frmMain2
     End Sub
 
     Private Sub mnuSegments1_BeforePopup(sender As Object, e As CancelEventArgs) Handles mnuSegments.BeforePopup
-        Dim oSegment As cSegment = pGetCurrentTools.CurrentSegment
-        If oSegment Is Nothing Then
-            btnCut.Enabled = False
-            btnCopy.Enabled = False
-            btnDelete.Enabled = False
-            'btnSegmentsReverse.Enabled = False
-        Else
-            Dim oSegments As cSegmentCollection = pSegmentsFromGridSelection(True)
-            Dim bEnabled As Boolean = oSegments.Count > 0
-            'btnCut.Enabled = btnCut.Enabled
-            'btnCopy.Enabled = btnCopy.Enabled
-            'btnDelete.Enabled = btnDelete.Enabled
-            'btnSegmentsReverse.Enabled = oSegment.IsValid
-        End If
+        'Dim oSegment As cSegment = pGetCurrentTools.CurrentSegment
+        'If oSegment Is Nothing Then
+        '    btnCut.Enabled = False
+        '    btnCopy.Enabled = False
+        '    btnDelete.Enabled = False
+        '    'btnSegmentsReverse.Enabled = False
+        'Else
+        '    Dim oSegments As cSegmentCollection = pSegmentsFromGridSelection(True)
+        '    Dim bEnabled As Boolean = oSegments.Count > 0
+        '    'btnCut.Enabled = btnCut.Enabled
+        '    'btnCopy.Enabled = btnCopy.Enabled
+        '    'btnDelete.Enabled = btnDelete.Enabled
+        '    'btnSegmentsReverse.Enabled = oSegment.IsValid
+        'End If
     End Sub
 
     Private Sub btnDataPropertiesDelete_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnDataPropertiesDelete.ItemClick
@@ -18245,18 +18261,6 @@ Friend Class frmMain2
         End If
     End Sub
 
-    Private Sub barDesignerItemPointFloat_Hiding(sender As Object, e As CancelEventArgs)
-        If Not bFloatingToolbarHiding Then
-            e.Cancel = True
-        End If
-    End Sub
-
-    Private Sub barDesignerItemFloat_Hiding(sender As Object, e As CancelEventArgs)
-        If Not bFloatingToolbarHiding Then
-            e.Cancel = True
-        End If
-    End Sub
-
     Private Sub btnDesignSetCurrentCaveBranch_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnDesignSetCurrentCaveBranch.ItemClick
         Dim oCurrentItem As cItem = pGetCurrentDesignTools.CurrentItem
         If TypeOf oCurrentItem Is cItemSegment Then
@@ -18269,10 +18273,6 @@ Friend Class frmMain2
             btnMainBindCrossSections.EditValue = If(oCurrentItem.CrossSection = "", cboMainBindCrossSections.DataSource(0), oSurvey.CrossSections.GetBindItem(oCurrentItem.CrossSection))
             Call pSurveyRedraw()
         End If
-    End Sub
-
-    Private Sub frmMain2_Deactivate(sender As Object, e As EventArgs) Handles Me.Deactivate
-        Call pFloatingToolbarHide()
     End Sub
 
     Private Sub btnAlignToGrid_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btnAlignToGrid.CheckedChanged
@@ -18424,14 +18424,6 @@ Friend Class frmMain2
         If oWorkspace IsNot Nothing Then
             Call pStatusSet(String.Format(modMain.GetLocalizedString("manageworkspace.textpart1"), oWorkspace.Name))
         End If
-    End Sub
-
-    Private Sub frmMain2_Leave(sender As Object, e As EventArgs) Handles Me.Leave
-        Call pFloatingToolbarHide()
-    End Sub
-
-    Private Sub picMap_Leave(sender As Object, e As EventArgs) Handles picMap.Leave
-        'pFloatingToolbarHide()
     End Sub
 
     Private Sub grdTrigPoints_Enter(sender As Object, e As EventArgs) Handles grdTrigPoints.Enter

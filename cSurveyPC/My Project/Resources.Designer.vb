@@ -1203,6 +1203,26 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
         '''</summary>
+        Friend ReadOnly Property chart() As DevExpress.Utils.Svg.SvgImage
+            Get
+                Dim obj As Object = ResourceManager.GetObject("chart", resourceCulture)
+                Return CType(obj,DevExpress.Utils.Svg.SvgImage)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        '''</summary>
+        Friend ReadOnly Property Chart_rotated() As DevExpress.Utils.Svg.SvgImage
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Chart_rotated", resourceCulture)
+                Return CType(obj,DevExpress.Utils.Svg.SvgImage)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        '''</summary>
         Friend ReadOnly Property charttype_area3dstacked() As DevExpress.Utils.Svg.SvgImage
             Get
                 Dim obj As Object = ResourceManager.GetObject("charttype_area3dstacked", resourceCulture)
@@ -1596,6 +1616,16 @@ Namespace My.Resources
         Friend ReadOnly Property console1() As DevExpress.Utils.Svg.SvgImage
             Get
                 Dim obj As Object = ResourceManager.GetObject("console1", resourceCulture)
+                Return CType(obj,DevExpress.Utils.Svg.SvgImage)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        '''</summary>
+        Friend ReadOnly Property Context_Menu_Show_In_Popup() As DevExpress.Utils.Svg.SvgImage
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Context_Menu_Show_In_Popup", resourceCulture)
                 Return CType(obj,DevExpress.Utils.Svg.SvgImage)
             End Get
         End Property

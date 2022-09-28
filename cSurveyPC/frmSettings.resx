@@ -3110,7 +3110,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoInterface</value>
   </data>
   <data name="&gt;&gt;chkAlwaysUseShellForAttchments.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="txtDesignAnchorScale.Location" type="System.Drawing.Point, System.Drawing">
     <value>398, 66</value>
@@ -3131,7 +3131,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoInterface</value>
   </data>
   <data name="&gt;&gt;txtDesignAnchorScale.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="lblBaseLineWidthScaleFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3158,7 +3158,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoInterface</value>
   </data>
   <data name="&gt;&gt;lblBaseLineWidthScaleFactor.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="chkShowLastUsedToolsInDesignBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3185,7 +3185,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoInterface</value>
   </data>
   <data name="&gt;&gt;chkShowLastUsedToolsInDesignBar.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="cboMaxDrawItemCount.Items" xml:space="preserve">
     <value>20</value>
@@ -3218,7 +3218,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoInterface</value>
   </data>
   <data name="&gt;&gt;cboMaxDrawItemCount.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="Label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3245,7 +3245,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoInterface</value>
   </data>
   <data name="&gt;&gt;Label5.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="cboLanguage.Items" xml:space="preserve">
     <value>Default</value>
@@ -3278,7 +3278,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoInterface</value>
   </data>
   <data name="&gt;&gt;cboLanguage.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>268, 15</value>
@@ -3302,7 +3302,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoInterface</value>
   </data>
   <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="chkClipboardLocalFormat.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3434,7 +3434,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoInterface</value>
   </data>
   <data name="&gt;&gt;GroupBox3.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="chkSetDesignToolsEnabledByLevel.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 12</value>
@@ -3458,7 +3458,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoInterface</value>
   </data>
   <data name="&gt;&gt;chkSetDesignToolsEnabledByLevel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="chkSetDesignToolsHiddenByLevel.Location" type="System.Drawing.Point, System.Drawing">
     <value>28, 38</value>
@@ -3482,7 +3482,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoInterface</value>
   </data>
   <data name="&gt;&gt;chkSetDesignToolsHiddenByLevel.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="cboDesignBarPosition.Items" xml:space="preserve">
     <value>Default</value>
@@ -3515,7 +3515,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoInterface</value>
   </data>
   <data name="&gt;&gt;cboDesignBarPosition.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="Label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3542,7 +3542,7 @@ The data must then be corrected manually after the import.</value>
     <value>tabInfoInterface</value>
   </data>
   <data name="&gt;&gt;Label10.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="chkTherionLochEnabled.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 36</value>
@@ -4297,6 +4297,73 @@ The data must then be corrected manually after the import.</value>
   <data name="&gt;&gt;tabInfoOptions.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="cboDesignBarSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>133, 118</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="cboDesignBarSize.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboDesignBarSize.Properties.Items" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="cboDesignBarSize.Properties.Items1" xml:space="preserve">
+    <value>Small</value>
+  </data>
+  <data name="cboDesignBarSize.Properties.Items2" xml:space="preserve">
+    <value>Extra small</value>
+  </data>
+  <data name="cboDesignBarSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 20</value>
+  </data>
+  <data name="cboDesignBarSize.TabIndex" type="System.Int32, mscorlib">
+    <value>146</value>
+  </data>
+  <data name="cboDesignBarSize.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;cboDesignBarSize.Name" xml:space="preserve">
+    <value>cboDesignBarSize</value>
+  </data>
+  <data name="&gt;&gt;cboDesignBarSize.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboDesignBarSize.Parent" xml:space="preserve">
+    <value>tabInfoInterface</value>
+  </data>
+  <data name="&gt;&gt;cboDesignBarSize.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="LabelControl1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LabelControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 121</value>
+  </data>
+  <data name="LabelControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 13</value>
+  </data>
+  <data name="LabelControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>144</value>
+  </data>
+  <data name="LabelControl1.Text" xml:space="preserve">
+    <value>Design bar size:</value>
+  </data>
+  <data name="LabelControl1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;LabelControl1.Name" xml:space="preserve">
+    <value>LabelControl1</value>
+  </data>
+  <data name="&gt;&gt;LabelControl1.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;LabelControl1.Parent" xml:space="preserve">
+    <value>tabInfoInterface</value>
+  </data>
+  <data name="&gt;&gt;LabelControl1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="tabInfoInterface.Size" type="System.Drawing.Size, System.Drawing">
     <value>475, 418</value>
   </data>
@@ -4447,7 +4514,7 @@ The data must then be corrected manually after the import.</value>
   <data name="chkForceGarbaceCollect.Location" type="System.Drawing.Point, System.Drawing">
     <value>134, 38</value>
   </data>
-  <data name="CheckEdit1.Properties.Caption" xml:space="preserve">
+  <data name="chkForceGarbaceCollect.Properties.Caption" xml:space="preserve">
     <value>Force garbace collect</value>
   </data>
   <data name="chkForceGarbaceCollect.Size" type="System.Drawing.Size, System.Drawing">
@@ -4501,7 +4568,6 @@ The data must then be corrected manually after the import.</value>
   <data name="txtLogMaxLine.Location" type="System.Drawing.Point, System.Drawing">
     <value>372, 12</value>
   </data>
-  <assembly alias="DevExpress.Utils.v21.2" name="DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="txtLogMaxLine.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
     <value>Combo</value>
   </data>

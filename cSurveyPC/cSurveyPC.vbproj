@@ -4681,6 +4681,9 @@
     <None Include="Resources\databasecleanup.svg" />
     <None Include="Resources\Electronics_Volume.svg" />
     <None Include="Resources\Electronics_Volume_colored.svg" />
+    <None Include="Resources\Context_Menu_Show_In_Popup.svg" />
+    <None Include="Resources\chart.svg" />
+    <None Include="Resources\Chart_rotated.svg" />
     <Content Include="version.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

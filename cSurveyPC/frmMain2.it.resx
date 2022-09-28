@@ -7482,4 +7482,7 @@ o ad una sezione trasversale</value>
   <data name="btnCurrentItemPlotUnlockSegment.Caption" xml:space="preserve">
     <value>Sblocca battute collegate</value>
   </data>
+  <data name="btnContextMenu.Caption" xml:space="preserve">
+    <value>Apri menu contestuale</value>
+  </data>
 </root>

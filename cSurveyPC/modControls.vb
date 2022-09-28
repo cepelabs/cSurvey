@@ -53,14 +53,37 @@ Module modControls
         Return oItem
     End Function
 
+
     <System.Runtime.CompilerServices.Extension>
-    Public Sub AddRange(ItemLinks As BarItemLinkCollection, items As BarItem(), RibbonItemStyles As Ribbon.RibbonItemStyles, BarItemStyle As BarItemPaintStyle)
+    Public Sub AddRange(ItemLinks As BarItemLinkCollection, items As IEnumerable(Of BarItem), BeginGroup As Boolean, RibbonItemStyles As Ribbon.RibbonItemStyles, BarItemStyle As BarItemPaintStyle)
+        items.ToList.ForEach(Sub(oitem)
+                                 Dim oLink As BarItemLink = ItemLinks.Add(oitem)
+                                 oLink.UserRibbonStyle = RibbonItemStyles
+                                 oLink.UserPaintStyle = BarItemStyle
+                                 If BeginGroup Then
+                                     oLink.BeginGroup = BeginGroup
+                                     BeginGroup = False
+                                 End If
+                             End Sub)
+    End Sub
+
+    <System.Runtime.CompilerServices.Extension>
+    Public Sub AddRange(ItemLinks As BarItemLinkCollection, items As IEnumerable(Of BarItem), RibbonItemStyles As Ribbon.RibbonItemStyles, BarItemStyle As BarItemPaintStyle)
         items.ToList.ForEach(Sub(oitem)
                                  Dim oLink As BarItemLink = ItemLinks.Add(oitem)
                                  oLink.UserRibbonStyle = RibbonItemStyles
                                  oLink.UserPaintStyle = BarItemStyle
                              End Sub)
     End Sub
+
+    '<System.Runtime.CompilerServices.Extension>
+    'Public Sub AddRange(ItemLinks As BarItemLinkCollection, items As BarItem(), RibbonItemStyles As Ribbon.RibbonItemStyles, BarItemStyle As BarItemPaintStyle)
+    '    items.ToList.ForEach(Sub(oitem)
+    '                             Dim oLink As BarItemLink = ItemLinks.Add(oitem)
+    '                             oLink.UserRibbonStyle = RibbonItemStyles
+    '                             oLink.UserPaintStyle = BarItemStyle
+    '                         End Sub)
+    'End Sub
 
     <System.Runtime.CompilerServices.Extension>
     Public Function Add(ItemLinks As BarItemLinkCollection, item As BarItem, BeginGroup As Boolean, RibbonItemStyles As Ribbon.RibbonItemStyles) As BarItemLink

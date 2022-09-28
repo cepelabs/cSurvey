@@ -26,6 +26,7 @@ Imports DevExpress.XtraSplashScreen
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.RichEdit.Export
 Imports DevExpress.Utils.Extensions
+Imports DevExpress.XtraBars.Ribbon
 
 Friend Class frmMain2
     Private sZoomDefault As Single = 500
@@ -210,6 +211,7 @@ Friend Class frmMain2
         BottomSide = 4
     End Enum
     Private iDesignBarPosition As DesignBarPositionEnum
+    'Private iDesignBarSize As Integer
 
     Private oCurrentDesign As cDesign
     Private WithEvents oCurrentOptions As cOptionsCenterline
@@ -2561,7 +2563,59 @@ Friend Class frmMain2
             iDrawMetricGrid = oReg.GetValue("design.metricgrid", 0)
 
             bDesignBarShowLastUsedTools = oReg.GetValue("design.designbar.showlastusedtools", 1)
+            oLastUsedBar.Visible = bDesignBarShowLastUsedTools
             iDesignBarPosition = oReg.GetValue("design.designbar.defaultposition", 0)
+
+
+            'last used items
+            Dim sLui As String = oReg.GetValue("lui", "")
+            If sLui <> "" Then
+                For Each sLuiItem As String In sLui.Split(",")
+                    Call oLastUsedItems.Add(RibbonControl.Items.FindByName(sLuiItem))
+                Next
+            End If
+
+            'most used items are merged with saved data...
+            Using oRegMui As Microsoft.Win32.RegistryKey = oReg.OpenSubKey("mui", False)
+                If oRegMui IsNot Nothing Then
+                    For Each sMuiItem As String In oRegMui.GetValueNames
+                        Dim iBaseCount As Integer = oRegMui.GetValue(sMuiItem)
+                        Call oMostUsedItems.Add(RibbonControl.Items.FindByName(sMuiItem), New cMostUsedItemCounters(iBaseCount))
+                    Next
+                End If
+                Call oRegMui.Close()
+            End Using
+
+            oTopDesignLevelBar.Visible = oReg.GetValue("levelsbar", "1")
+            btnViewToolbarLevels.Checked = oTopDesignLevelBar.Visible
+            oTopDesignItemsBar.Visible = oReg.GetValue("itemsbar", "1")
+            btnViewToolbarItems.Checked = oTopDesignItemsBar.Visible
+            oLastUsedBar.Visible = oReg.GetValue("lastusedbar", "1")
+            btnViewToolbarLastUsedTools.Checked = oLastUsedBar.Visible
+
+            Call pReloadUsedToolsBar()
+
+            'iDesignBarSize = oReg.GetValue("design.designbar.size", 0)
+            'If iDesignBarSize <> 0 Then
+            '    Dim oSize As Size
+            '    Select Case iDesignBarSize
+            '        Case 1
+            '            oSize = New Size(12, 12)
+            '        Case 2
+            '            oSize = New Size(8, 8)
+            '    End Select
+            '    For Each oBar As Bar In {oFloatBar} '{oFloatBarX, oFloatBar, oLastUsedBar}
+            '        For Each oLink As BarItemLink In oBar.ItemLinks
+            '            If TypeOf oLink.Item Is BarButtonGroup Then
+            '                For Each oSubLink In DirectCast(oLink.Item, BarButtonGroup).ItemLinks
+            '                    oSubLink.ImageOptions.SvgImageSize = oSize
+            '                Next
+            '            Else
+            '                oLink.ImageOptions.SvgImageSize = oSize
+            '            End If
+            '        Next
+            '    Next
+            'End If
 
             modMain.iMaxDrawItemCount = oReg.GetValue("design.maxdrawitemcount", 20)
 
@@ -2841,6 +2895,24 @@ Friend Class frmMain2
                 If RibbonControl.Minimized Then Call oXmlRoot.SetAttribute("m", "1")
                 Call oXml.AppendChild(oXmlRoot)
                 Call oReg.SetValue("qat.items", oXml.OuterXml)
+
+                'last used items are barely overwritten each time...merging with other instance is not strategic
+                Call oReg.SetValue("lui", String.Join(",", oLastUsedItems.Select(Function(oBarItem) oBarItem.Name)))
+
+                'most used items are merged with saved data...
+                Using oRegMui As Microsoft.Win32.RegistryKey = oReg.CreateSubKey("mui")
+                    For Each oMostUsedItem As KeyValuePair(Of BarItem, cMostUsedItemCounters) In oMostUsedItems
+                        Dim oBarItem As BarItem = oMostUsedItem.Key
+                        Dim iCurrentCount As Integer = oMostUsedItem.Value.Value - oMostUsedItem.Value.BaseValue
+                        Dim iLastCount As Integer = oRegMui.GetValue(oBarItem.Name)
+                        oRegMui.SetValue(oBarItem.Name, iLastCount + icurrentcount)
+                    Next
+                    Call oRegMui.Close()
+                End Using
+
+                If Not oTopDesignLevelBar.Visible Then Call oReg.SetValue("levelsbar", "0")
+                If Not oTopDesignItemsBar.Visible Then Call oReg.SetValue("itemsbar", "0")
+                If Not oLastUsedBar.Visible Then Call oReg.SetValue("lastusedbar", "0")
 
                 'Call oReg.SetValue("design.multithreading", if(bDrawMultithreading, 1, 0))
 
@@ -6242,7 +6314,7 @@ Friend Class frmMain2
     End Sub
 
     Private Sub pClipartShow(Optional ByVal Visible As Boolean? = Nothing)
-        Call pDockContentShow(DockClipart, Visible)
+        Call pDockContentShow(dockClipart, Visible)
     End Sub
 
     Private Sub pConsoleShow(Optional ByVal Visible As Boolean? = Nothing)
@@ -6305,6 +6377,23 @@ Friend Class frmMain2
         Call pSelectDataItem()
     End Sub
 
+    Private Sub pSurveyDesignToolsCreateStandardItem(Bag As cEditToolsBag)
+        Dim oItem As BarButtonItem = New BarButtonItem
+        oItem.Name = "btnItemsAdd_" & Bag.Name & "_Standard"
+        oItem.Caption = Bag.Caption
+        oItem.ImageOptions.Image = New Bitmap(Path.Combine(Path.Combine(sObjectsPath, "icons"), Bag.Image))
+        If Bag.SvgImage <> "" Then
+            oItem.ImageOptions.SvgImage = pGetDesignToolsSvgImage(Bag.SvgImage)
+            'oItem.ImageOptions.SvgImageSize = New Size(16, 16)
+            oItem.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.None
+        End If
+        oItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
+        oItem.Tag = Bag
+        AddHandler oItem.ItemClick, AddressOf btnDesignTools_ItemClick
+
+        Call RibbonControl.Items.Add(oItem)
+    End Sub
+
     Private Sub pSurveyDesignToolsLoadSubToolbarItem(ByVal Item As XmlElement, Optional ParentMenu As PopupMenu = Nothing) ', ByVal Parent As System.Windows.Forms.ToolStripItemCollection, Optional ByVal IsDropDown As Boolean = False)
         'btnItemsAdd.Gallery.ShowGroupCaption = False
         Dim bBeginGroup As Boolean = False
@@ -6351,9 +6440,6 @@ Friend Class frmMain2
                             End If
                             Call pSurveyDesignToolsLoadSubToolbarItem(oXmlTool, oItem.DropDownControl)
                         Case "separator", "-"
-                            '    Dim oItem As ToolStripSeparator = New ToolStripSeparator
-                            '    oItem.AutoSize = True
-                            '    Call Parent.Add(oItem)
                             bBeginGroup = True
                         Case "gallery"
                             Dim oItem As BarButtonItem = New BarButtonItem
@@ -6368,13 +6454,13 @@ Friend Class frmMain2
                             oItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
                             oItem.Tag = oBag
                             If ParentMenu Is Nothing Then
-                                'oItemGroup.AddItem(oItem).BeginGroup = bBeginGroup
                                 Call grpDesignItemsAdd.ItemLinks.Add(oItem)
                             Else
                                 ParentMenu.AddItem(oItem).BeginGroup = bBeginGroup
                             End If
                             bBeginGroup = False
                             AddHandler oItem.ItemClick, AddressOf btnDesignTools_ItemClick
+                            Call pSurveyDesignToolsCreateStandardItem(oBag)
 
                             Dim sGalleryPart() As String = oBag.Gallery.Split(",")
                             Dim sGalleryName As String = sGalleryPart(0)
@@ -6394,13 +6480,13 @@ Friend Class frmMain2
                             oItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
                             oItem.Tag = oBag
                             If ParentMenu Is Nothing Then
-                                'oItemGroup.AddItem(oItem).BeginGroup = bBeginGroup
                                 Call grpDesignItemsAdd.ItemLinks.Add(oItem)
                             Else
                                 ParentMenu.AddItem(oItem).BeginGroup = bBeginGroup
                             End If
                             bBeginGroup = False
                             AddHandler oItem.ItemClick, AddressOf btnDesignTools_ItemClick
+                            Call pSurveyDesignToolsCreateStandardItem(oBag)
                             Call oDockText.AddText(oBag)
                         Case Else
                             Dim oItem As BarButtonItem = New BarButtonItem
@@ -6415,13 +6501,13 @@ Friend Class frmMain2
                             oItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
                             oItem.Tag = oBag
                             If ParentMenu Is Nothing Then
-                                'oItemGroup.AddItem(oItem).BeginGroup = bBeginGroup
                                 Call grpDesignItemsAdd.ItemLinks.Add(oItem)
                             Else
                                 ParentMenu.AddItem(oItem).BeginGroup = bBeginGroup
                             End If
                             bBeginGroup = False
                             AddHandler oItem.ItemClick, AddressOf btnDesignTools_ItemClick
+                            Call pSurveyDesignToolsCreateStandardItem(oBag)
                     End Select
                 End If
             End If
@@ -6959,11 +7045,71 @@ Friend Class frmMain2
         Call ClipartItem.MoveTo(oCurrentCenter)
     End Sub
 
+    Private Class cMostUsedItemCounters
+        Public BaseValue As Integer
+        Public Value As Integer
+
+        Public Sub New()
+
+        End Sub
+
+        Public Sub New(BaseValue As Integer)
+            Me.BaseValue = BaseValue
+            Me.Value = Me.BaseValue
+        End Sub
+
+        'Public Sub New(BaseValue As Integer, Value As Integer)
+        '    Me.BaseValue = BaseValue
+        '    Me.Value = Value
+        'End Sub
+    End Class
+
+    Private oMostUsedItems As Dictionary(Of BarItem, cMostUsedItemCounters) = New Dictionary(Of BarItem, cMostUsedItemCounters)
+    Private oLastUsedItems As List(Of BarItem) = New List(Of BarItem)
+    Private iMaxUsedItem As Integer = 12
+
+    Private Sub pReloadUsedToolsBar()
+        If oLastUsedBar IsNot Nothing Then
+            Call oLastUsedBar.BeginUpdate()
+            Call oLastUsedBar.ClearLinks()
+            oLastUsedBar.AddItem(btnToolsLastUsed)
+            oLastUsedBar.AddItem(btnToolsMostUsed)
+            If btnToolsLastUsed.Checked Then
+                Call oLastUsedBar.ItemLinks.AddRange(oLastUsedItems, True, RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+            Else
+                Call oLastUsedBar.ItemLinks.AddRange(oMostUsedItems.ToList.OrderBy(Function(oitem) oitem.Value.Value).Select(Function(oitem) oitem.Key).Take(iMaxUsedItem), True, RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+            End If
+            Call oLastUsedBar.EndUpdate()
+        End If
+    End Sub
+
     Private Sub btnDesignTools_ItemClick(sender As Object, e As ItemClickEventArgs)
+        Dim oItem As BarItem = e.Item
+
+        If bDesignBarShowLastUsedTools Then
+            Dim oStandardItem As BarItem
+            If e.Item.Name.EndsWith("_Standard") Then
+                oStandardItem = e.Item
+            Else
+                oStandardItem = RibbonControl.Items.FindByName(e.Item.Name & "_Standard")
+            End If
+
+            If Not oMostUsedItems.ContainsKey(oStandardItem) Then oMostUsedItems.Add(oStandardItem, New cMostUsedItemCounters)
+            oMostUsedItems(oStandardItem).Value += 1
+
+            If oLastUsedItems.Contains(oStandardItem) Then oLastUsedItems.Remove(oStandardItem)
+            Call oLastUsedItems.Add(oStandardItem)
+            If oLastUsedItems.Count > iMaxUsedItem Then
+                Call oLastUsedItems.RemoveAt(0)
+            End If
+            Call pReloadUsedToolsBar()
+        End If
+
         btnCursorMode.Down = True
-        Dim oBag As cEditToolsBag = e.Item.Tag
+        Dim oBag As cEditToolsBag = oItem.Tag
         Call pDesignTools_CreateItem(oBag)
     End Sub
+
     Private Sub mnuDesignItem_Opening(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles mnuDesignItemOLD.Opening
         Try
             Dim oItem As cItem = pGetCurrentDesignTools.CurrentItem
@@ -8846,17 +8992,17 @@ Friend Class frmMain2
                     Graphics.CompositingQuality = CompositingQuality.HighSpeed
                     Graphics.InterpolationMode = InterpolationMode.Low
                     Graphics.SmoothingMode = SmoothingMode.HighSpeed
-                    Graphics.TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
+                    Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias
                 Case DesignQualityLevelEnum.MediumQuality
                     Graphics.CompositingQuality = CompositingQuality.HighSpeed
                     Graphics.InterpolationMode = InterpolationMode.Default
                     Graphics.SmoothingMode = SmoothingMode.AntiAlias
-                    Graphics.TextRenderingHint = Drawing.Text.TextRenderingHint.ClearTypeGridFit
+                    Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit
                 Case DesignQualityLevelEnum.HighQuality
                     Graphics.CompositingQuality = CompositingQuality.HighQuality
                     Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic
                     Graphics.SmoothingMode = SmoothingMode.HighQuality
-                    Graphics.TextRenderingHint = Drawing.Text.TextRenderingHint.ClearTypeGridFit
+                    Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit
             End Select
 
             If Not oFrozenDesktop Is Nothing Then
@@ -9116,15 +9262,13 @@ Friend Class frmMain2
                     If oTools.IsInPointEdit AndAlso oTools.CurrentItemPoint IsNot Nothing Then
                         Call oFloatBar.BeginUpdate()
                         For Each oLink As BarItemLink In oFloatBar.ItemLinks
-                            'oLink.Visible = oLink.Enabled
-                            oLink.Visible = oLink.Item.Name.ToLower.StartsWith("btncurrentitempoint") AndAlso oLink.Enabled
+                            oLink.Visible = (oLink.Item.Name.ToLower.StartsWith("btncurrentitempoint") OrElse oLink.Item Is btnItemsObjectProperties OrElse oLink.Item Is btnContextMenu) AndAlso oLink.Enabled
                         Next
                         Call oFloatBar.EndUpdate()
                     Else
                         Call oFloatBar.BeginUpdate()
                         For Each oLink As BarItemLink In oFloatBar.ItemLinks
-                            'oLink.Visible = oLink.Enabled
-                            oLink.Visible = Not oLink.Item.Name.ToLower.StartsWith("btncurrentitempoint") AndAlso oLink.Enabled
+                            oLink.Visible = (Not oLink.Item.Name.ToLower.StartsWith("btncurrentitempoint") OrElse oLink.Item Is btnItemsObjectProperties OrElse oLink.Item Is btnContextMenu) AndAlso oLink.Enabled
                         Next
                         Call oFloatBar.EndUpdate()
                     End If
@@ -15276,7 +15420,9 @@ Friend Class frmMain2
         End If
     End Sub
 
+    'Private oFloatBarX As Bar
     Private oFloatBar As Bar
+    Private oLastUsedBar As Bar
 
     Private oBottomDataBar As Bar
     Private oTopGlobalFilterBar As Bar
@@ -15287,6 +15433,22 @@ Friend Class frmMain2
 
     Private Sub pWorkspacesMenuAndToolbarUpdate()
         dockFloatBar.Manager = RibbonControl.Manager
+        'oFloatBarX = New Bar(RibbonControl.Manager, "Float bar X")
+        'oFloatBarX.OptionsBar.AllowQuickCustomization = False
+        'oFloatBarX.OptionsBar.DisableCustomization = False
+        'oFloatBarX.OptionsBar.DrawSizeGrip = False
+        'oFloatBarX.OptionsBar.UseWholeRow = False
+        'oFloatBarX.OptionsBar.DisableClose = True
+        'oFloatBarX.OptionsBar.DrawDragBorder = False
+        'oFloatBarX.DockStyle = BarDockStyle.Standalone
+        'oFloatBarX.ItemLinks.Add(btnItemsEndEdit, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        'oFloatBarX.ItemLinks.Add(btnDesignSetCurrentCaveBranch, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        'oFloatBarX.ItemLinks.Add(btnCut, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        'oFloatBarX.ItemLinks.AddRange({btnCopy, btnPaste}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        'oFloatBarX.ItemLinks.Add(btnDelete, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+
+        'oFloatBarX.StandaloneBarDockControl = dockFloatBar
+
         oFloatBar = New Bar(RibbonControl.Manager, "Float bar")
         oFloatBar.OptionsBar.AllowQuickCustomization = False
         oFloatBar.OptionsBar.DisableCustomization = False
@@ -15297,9 +15459,12 @@ Friend Class frmMain2
         oFloatBar.DockStyle = BarDockStyle.Standalone
         oFloatBar.ItemLinks.Add(btnItemsEndEdit, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
         oFloatBar.ItemLinks.Add(btnDesignSetCurrentCaveBranch, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
-        oFloatBar.ItemLinks.Add(btnCut, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
-        oFloatBar.ItemLinks.AddRange({btnCopy, btnPaste}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
-        oFloatBar.ItemLinks.Add(btnDelete, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        'oFloatBar.ItemLinks.Add(btnCut, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        'oFloatBar.ItemLinks.AddRange({btnCopy, btnPaste}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+        'oFloatBar.ItemLinks.Add(btnDelete, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+
+        oFloatBar.ItemLinks.Add(btnItemsObjectProperties, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText, BarItemPaintStyle.Standard)
+        oFloatBar.ItemLinks.Add(btnContextMenu, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText, BarItemPaintStyle.Standard)
 
         oFloatBar.ItemLinks.Add(btnItemsLayouts, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText, BarItemPaintStyle.Standard)
         oFloatBar.ItemLinks.Add(btnCurrentItemLock, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
@@ -15311,12 +15476,13 @@ Friend Class frmMain2
         oFloatBar.ItemLinks.Add(btnCurrentItemImageView, False, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
 
         'oFloatBar.ItemLinks.Add(btnCurrentItemShot, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
-        oFloatBar.ItemLinks.AddRange({btnCurrentItemSegmentFromProperty, btnCurrentItemSegmentToProperty}, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText, BarItemPaintStyle.Caption)
+        oFloatBar.ItemLinks.Add(btnCurrentItemSegmentFromProperty, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText, BarItemPaintStyle.Caption)
+        oFloatBar.ItemLinks.Add(btnCurrentItemSegmentToProperty, False, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText, BarItemPaintStyle.Caption)
         oFloatBar.ItemLinks.Add(btnCurrentItemSegmentDirection, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
 
         'oFloatBar.ItemLinks.Add(btnCurrentItemStation, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
 
-        oFloatBar.ItemLinks.Add(btnCurrentItemLegendAddTo, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionInMenu)
+        'oFloatBar.ItemLinks.Add(btnCurrentItemLegendAddTo, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.CaptionInMenu)
         oFloatBar.ItemLinks.Add(btnCurrentItemSignExport, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
         oFloatBar.ItemLinks.Add(btnCurrentItemClipartExport, True, DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
 
@@ -15432,6 +15598,18 @@ Friend Class frmMain2
         'oBottomPenBar.ItemLinks.AddRange({btnPenLine, btnPenSpline, btnPenBezier})
         'oBottomPenBar.ItemLinks.Add(btnPenSmooting, True)
         'oBottomPenBar.ItemLinks.AddRange({btnPenSmootingFactor})
+
+
+        oLastUsedBar = New Bar(RibbonControl.Manager, "Last used tools bar")
+        oLastUsedBar.OptionsBar.AllowQuickCustomization = False
+        oLastUsedBar.OptionsBar.DisableCustomization = False
+        oLastUsedBar.OptionsBar.DrawSizeGrip = False
+        oLastUsedBar.OptionsBar.UseWholeRow = True
+        oLastUsedBar.OptionsBar.DisableClose = True
+        oLastUsedBar.OptionsBar.DrawDragBorder = False
+        oLastUsedBar.DockStyle = BarDockStyle.Standalone
+
+        oLastUsedBar.StandaloneBarDockControl = dockBottomDesignerBar
 
         oBottomDesignBar = New Bar(RibbonControl.Manager, "Designer tools bar")
         oBottomDesignBar.OptionsBar.AllowQuickCustomization = False
@@ -16808,9 +16986,9 @@ Friend Class frmMain2
         If oSegmentPlaceholder IsNot Nothing Then
             Dim oSegment As cSegment = oSegmentPlaceholder.Segment
             If e.Column Is colSegmentsListCaveBranch Then
-                e.Appearance.BackColor = oSurvey.Properties.CaveInfos.GetColor(oSegment, Drawing.Color.LightGray)
+                e.Appearance.BackColor = oSurvey.Properties.CaveInfos.GetColor(oSegment, System.Drawing.Color.LightGray)
             ElseIf e.Column Is colSegmentsListSession Then
-                e.Appearance.BackColor = oSurvey.Properties.Sessions.GetColor(oSegment, Drawing.Color.LightGray)
+                e.Appearance.BackColor = oSurvey.Properties.Sessions.GetColor(oSegment, System.Drawing.Color.LightGray)
             ElseIf e.Column Is colSegmentsListTo Then
                 If oSegment.To Like "*(*)" Then
                     If cEditDesignEnvironment.GetSetting("isdarkskin") Then
@@ -18812,7 +18990,16 @@ Friend Class frmMain2
         If oQATMovePrev IsNot Nothing Then e.CustomizationMenu.ItemLinks.Remove(oQATMovePrev)
         If oQATMoveNext IsNot Nothing Then e.CustomizationMenu.ItemLinks.Remove(oQATMoveNext)
         If oQATRestoreToDefault IsNot Nothing Then e.CustomizationMenu.ItemLinks.Remove(oQATRestoreToDefault)
-        If e.HitInfo IsNot Nothing Then
+        If e.HitInfo Is Nothing Then
+            If e.Link IsNot Nothing Then
+                If e.Link.Bar Is oTopDesignItemsBar OrElse e.Link.Bar Is oTopDesignLevelBar OrElse e.Link.Bar Is oLastUsedBar Then
+                    e.ShowCustomizationMenu = False
+                    mnuBar.ShowPopup(Cursor.Position)
+                ElseIf e.Link.Bar Is oBottomDataBar OrElse e.Link.Bar Is oBottomDesignBar Then
+                    e.ShowCustomizationMenu = False
+                End If
+            End If
+        Else
             If e.HitInfo.InItem Then
                 If e.HitInfo.InToolbar Then
                     Dim oLink As BarItemLink = e.Link
@@ -18946,6 +19133,35 @@ Friend Class frmMain2
         End If
     End Sub
 
+    Private Sub btnContextMenu_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnContextMenu.ItemClick
+        Dim oPoint As Point = New Point(dockFloatBar.Location.X, dockFloatBar.Location.Y + dockFloatBar.Height)
+        Call pMapInfoMenu(oPoint)
+        Call mnuDesignItem.ShowPopup(picMap.PointToScreen(oPoint))
+    End Sub
+
+    Private Sub btnToolsLastUsed_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btnToolsLastUsed.CheckedChanged
+        If btnToolsLastUsed.Checked Then
+            Call pReloadUsedToolsBar()
+        End If
+    End Sub
+
+    Private Sub btnToolsMostUsed_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btnToolsMostUsed.CheckedChanged
+        If btnToolsMostUsed.Checked Then
+            Call pReloadUsedToolsBar()
+        End If
+    End Sub
+
+    Private Sub btnViewToolbarItems_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btnViewToolbarItems.CheckedChanged
+        oTopDesignItemsBar.Visible = btnViewToolbarItems.Checked
+    End Sub
+
+    Private Sub btnViewToolbarLastUsedTools_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btnViewToolbarLastUsedTools.CheckedChanged
+        oLastUsedBar.Visible = btnViewToolbarLastUsedTools.Checked
+    End Sub
+
+    Private Sub btnViewToolbarLevels_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btnViewToolbarLevels.CheckedChanged
+        oTopDesignLevelBar.Visible = btnViewToolbarLevels.Checked
+    End Sub
 End Class
 
 

@@ -45,8 +45,7 @@ Friend Class frmMain2
     Private WithEvents oVSB As DevExpress.XtraEditors.VScrollBar
     Private WithEvents oHSB As DevExpress.XtraEditors.HScrollBar
 
-    Private WithEvents frmU As frmUndoManager
-
+    'Private WithEvents frmU As frmUndoManager
 
     Private WithEvents frmV As frmPreview
     Private WithEvents frmProg As frmProgress
@@ -468,7 +467,7 @@ Friend Class frmMain2
             If Not IsNothing(oDockLevels) Then Call oDockLevels.SetSurvey(oSurvey)
             If Not IsNothing(oDockDistances) Then Call oDockDistances.SetSurvey(oSurvey)
 
-            If Not IsNothing(frmU) Then frmU.SetSurvey(oSurvey, pGetCurrentTools)
+            'If Not IsNothing(frmU) Then frmU.SetSurvey(oSurvey, pGetCurrentTools)
 
             Call pSurveyShowPlan()
 
@@ -818,7 +817,7 @@ Friend Class frmMain2
                                 If Not IsNothing(oDockLevels) Then Call oDockLevels.SetSurvey(oSurvey)
                                 If Not IsNothing(oDockDistances) Then Call oDockDistances.SetSurvey(oSurvey)
 
-                                If Not IsNothing(frmU) Then frmU.SetSurvey(oSurvey, pGetCurrentTools)
+                                'If Not IsNothing(frmU) Then frmU.SetSurvey(oSurvey, pGetCurrentTools)
 
                                 Call pSurveyShowPlan()
 
@@ -2117,8 +2116,9 @@ Friend Class frmMain2
     Private Sub pDesignPointsUnjoin(Optional All As Boolean = False)
         If Not bDisabledObjectPropertyEvent Then
             With pGetCurrentDesignTools()
+                Call .BeginUndoSnapshot("Unjoin point")
                 Call .CurrentItemPoint.Unjoin(All)
-                Call .TakeUndoSnapshot()
+                Call .CommitUndoSnapshot()
             End With
             Call pObjectPropertyLoad()
             Call pMapInvalidate()
@@ -2348,10 +2348,10 @@ Friend Class frmMain2
                     Dim bAlt As Boolean = My.Computer.Keyboard.AltKeyDown Or btnAltMode.Down Or btnMultiSelMode2.Down
                     Call pMapSetCursor(bCtrl, bShift, bAlt, Control.MouseButtons)
                 End If
-            Case Keys.Z
-                If e.Control And e.Shift Then
-                    Call pUndoManager()
-                End If
+            'Case Keys.Z
+            '    If e.Control And e.Shift Then
+            '        Call pUndoManager()
+            '    End If
             Case Keys.Add Or Keys.Oemplus
                 If pGetCurrentDesignTools.IsNewItem Then
 
@@ -2359,11 +2359,11 @@ Friend Class frmMain2
         End Select
     End Sub
 
-    Private Sub pUndoManager()
-        If Not frmU.Visible Then
-            Call frmU.Show(Me)
-        End If
-    End Sub
+    'Private Sub pUndoManager()
+    '    If Not frmU.Visible Then
+    '        Call frmU.Show(Me)
+    '    End If
+    'End Sub
 
     Private WithEvents oDockConsole As cDockConsole
 
@@ -2415,49 +2415,6 @@ Friend Class frmMain2
         End If
     End Sub
 
-    'Private Sub cboMainCaveListView_CustomUnboundColumnData(sender As Object, e As CustomColumnDataEventArgs) Handles cboMainCaveListView.CustomUnboundColumnData
-    '    If e.IsGetData Then
-    '        Dim oCave As cCaveInfo = e.Row
-    '        e.Value = "<b>" & oCave.Name & "</b>ssss"
-    '    End If
-    'End Sub
-
-    'Private Sub cboMainCaveListView_CustomColumnDisplayText(sender As Object, e As CustomColumnDisplayTextEventArgs) Handles cboMainCaveListView.CustomColumnDisplayText
-    '    Dim oGridView As DevExpress.XtraGrid.Views.Grid.GridView = sender
-    '    Dim oCave As cCaveInfo = oGridView.DataSource(e.ListSourceRowIndex)
-    '    e.DisplayText = "<b>" & oCave.Name & "</b>ssss"
-    'End Sub
-
-    'Private Sub cboMainCaveListView_RowCellStyle(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs) Handles cboMainCaveListView.RowCellStyle
-    '    If e.Column.Name = "cboMainCaveListColor" Then
-    '        Dim oGridView As DevExpress.XtraGrid.Views.Grid.GridView = sender
-    '        Dim oCave As cCaveInfo = oGridView.GetRow(e.RowHandle)
-    '        If Not oCave Is Nothing Then
-    '            e.Appearance.BackColor = oCave.GetColor(Color.LightGray)
-    '        End If
-    '    End If
-    'End Sub
-
-    'Private Sub cboMainCaveBranchListView_RowCellStyle(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs) Handles cboMainCaveBranchListView.RowCellStyle
-    '    If e.Column.Name = "cboMainBranchListColor" Then
-    '        Dim oGridView As DevExpress.XtraGrid.Views.Grid.GridView = sender
-    '        Dim oBranch As cCaveInfoBranch = oGridView.GetRow(e.RowHandle)
-    '        If Not oBranch Is Nothing Then
-    '            e.Appearance.BackColor = oBranch.GetColor(Color.LightGray)
-    '        End If
-    '    End If
-    'End Sub
-
-    'Private Sub cboMainSessionListView_RowCellStyle(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs) Handles cboMainSessionListView.RowCellStyle
-    '    If e.Column.Name = "cboMainSessionListColor" Then
-    '        Dim oGridView As DevExpress.XtraGrid.Views.Grid.GridView = sender
-    '        Dim oSession As cSession = oGridView.GetRow(e.RowHandle)
-    '        If Not oSession Is Nothing Then
-    '            e.Appearance.BackColor = oSession.Color
-    '        End If
-    '    End If
-    'End Sub
-
     Private Sub pJumplistCreate()
         Try
             Dim oJumpLink As DevExpress.Utils.Taskbar.JumpListItemTask
@@ -2473,7 +2430,6 @@ Friend Class frmMain2
             oJumpLink = New DevExpress.Utils.Taskbar.JumpListItemTask("www.csurvey.it")
             oJumpLink.Path = "http://www.csurvey.it"
             Call TaskbarAssistant.JumpListTasksCategory.Add(oJumpLink)
-
         Catch ex As Exception
             Call pLogAdd(ex)
         End Try
@@ -3108,7 +3064,7 @@ Friend Class frmMain2
         Dim oPoint As PointF = e.Location
         Dim oMousePoint As PointF = modPaint.FromPaintPoint(oPoint, sPaintZoom, oPaintTranslation)
 
-        Dim bUndo As Boolean = False
+        'Dim bUndo As Boolean = False
         Dim bInvalidate As Boolean = False
         If bShift AndAlso Not pGetCurrentDesignTools.IsInEdit Then
             If bCtrl Then
@@ -3222,7 +3178,7 @@ Friend Class frmMain2
                                     End Select
                                     .LastPoint = oPoint
                                     bInvalidate = True
-                                    bUndo = True
+                                    'bUndo = True
                                 End If
                             End With
                         ElseIf pGetCurrentDesignTools.IsInCombine Then
@@ -3393,7 +3349,7 @@ Friend Class frmMain2
                                             End Select
                                         End If
                                     End With
-                                    bUndo = True
+                                    'bUndo = True
                                 Else
                                     'seleziono l'oggetto
                                     If bCtrl AndAlso bAlt AndAlso Not IsNothing(oSelectedItem) Then
@@ -3474,9 +3430,9 @@ Friend Class frmMain2
                 End If
             End If
         End If
-        If bUndo And Not pGetCurrentDesignTools.IsNewItem Then
-            Call pGetCurrentDesignTools.TakeUndoSnapshot()
-        End If
+        'If bUndo And Not pGetCurrentDesignTools.IsNewItem Then
+        '    Call pGetCurrentDesignTools.TakeUndoSnapshot()
+        'End If
         If bInvalidate Then
             Call pMapInvalidate()
         End If
@@ -3597,56 +3553,47 @@ Friend Class frmMain2
                 End If
                 With oCurrentDesign
                     If pGetCurrentDesignTools.IsInEdit Then
-                        If (e.Button And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left Or bEditPointByPoint Then
+                        If (e.Button And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left OrElse bEditPointByPoint Then
                             With pGetCurrentDesignTools()
-                                'If Not bEditPointByPoint Then
                                 If .Started Then
                                     If btnAlignToGrid.Checked Then modPaint.PointToGrid(oMousePoint, btnAlignToGridSize.EditValue)
-                                    'If bSnapToPoint Then modPaint.PointSnap(oMousePoint, oCurrentDesign, sGridSnap)
                                     Dim oLastPoint As PointF = modPaint.FromPaintPoint(.LastPoint, sPaintZoom, oPaintTranslation)
-                                    If btnAlignToGrid.Checked Then modPaint.PointToGrid(oLastPoint, btnAlignToGridSize.EditValue)
-                                    If oMousePoint <> oLastPoint Then
-                                        Select Case .CurrentItem.Type
-                                            Case cIItem.cItemTypeEnum.CrossSection
-                                                Dim oItem As cItemCrossSection = .CurrentItem
-                                                If oItem.Points.Count < oItem.MaxPointsCount Then
-                                                    Call oItem.Points.AddFromPaintPoint(oMousePoint)
-                                                Else
-                                                    Call oItem.Points.Last.MoveTo(oMousePoint)
-                                                End If
+                                        If btnAlignToGrid.Checked Then modPaint.PointToGrid(oLastPoint, btnAlignToGridSize.EditValue)
+                                        If oMousePoint <> oLastPoint Then
+                                            Select Case .CurrentItem.Type
+                                                Case cIItem.cItemTypeEnum.CrossSection
+                                                    Dim oItem As cItemCrossSection = .CurrentItem
+                                                    If oItem.Points.Count < oItem.MaxPointsCount Then
+                                                        Call oItem.Points.AddFromPaintPoint(oMousePoint)
+                                                    Else
+                                                        Call oItem.Points.Last.MoveTo(oMousePoint)
+                                                    End If
 
-                                            Case cIItem.cItemTypeEnum.FreeHandLine, cIItem.cItemTypeEnum.FreeHandArea, cIItem.cItemTypeEnum.InvertedFreeHandArea
-                                                Dim oItem As cItem = .CurrentItem
-                                                If bEditPointByPoint Then
-                                                    Call oItem.Points.Last.MoveTo(oMousePoint)
-                                                Else
-                                                    Call .SelectLastPoint(oItem.Points.AddFromPaintPoint(oMousePoint))
-                                                End If
+                                                Case cIItem.cItemTypeEnum.FreeHandLine, cIItem.cItemTypeEnum.FreeHandArea, cIItem.cItemTypeEnum.InvertedFreeHandArea
+                                                    Dim oItem As cItem = .CurrentItem
+                                                    If bEditPointByPoint Then
+                                                        Call oItem.Points.Last.MoveTo(oMousePoint)
+                                                    Else
+                                                        Call .SelectLastPoint(oItem.Points.AddFromPaintPoint(oMousePoint))
+                                                    End If
 
-                                            Case cIItem.cItemTypeEnum.Text, cIItem.cItemTypeEnum.Sign, cIItem.cItemTypeEnum.Clipart, cIItem.cItemTypeEnum.Image, cIItem.cItemTypeEnum.Attachment, cIItem.cItemTypeEnum.Quota, cIItem.cItemTypeEnum.Legend, cIItem.cItemTypeEnum.Scale, cIItem.cItemTypeEnum.Compass, cIItem.cItemTypeEnum.InformationBoxText
-                                                Dim oItem As cItem = .CurrentItem
-                                                If oItem.Points.Count < oItem.MaxPointsCount Then
-                                                    Call .SelectLastPoint(oItem.Points.AddFromPaintPoint(oMousePoint))
-                                                    'If oItem.Points.Count >= oItem.MaxPointsCount Then Call .EndAndSelectItem()
-                                                Else
-                                                    If oItem.Points.Count = oItem.MaxPointsCount Then
-                                                        If oItem.Points.First.Point <> oMousePoint Then
-                                                            Call oItem.Points.Last.MoveTo(oMousePoint)
+                                                Case cIItem.cItemTypeEnum.Text, cIItem.cItemTypeEnum.Sign, cIItem.cItemTypeEnum.Clipart, cIItem.cItemTypeEnum.Image, cIItem.cItemTypeEnum.Attachment, cIItem.cItemTypeEnum.Quota, cIItem.cItemTypeEnum.Legend, cIItem.cItemTypeEnum.Scale, cIItem.cItemTypeEnum.Compass, cIItem.cItemTypeEnum.InformationBoxText
+                                                    Dim oItem As cItem = .CurrentItem
+                                                    If oItem.Points.Count < oItem.MaxPointsCount Then
+                                                        Call .SelectLastPoint(oItem.Points.AddFromPaintPoint(oMousePoint))
+                                                        'If oItem.Points.Count >= oItem.MaxPointsCount Then Call .EndAndSelectItem()
+                                                    Else
+                                                        If oItem.Points.Count = oItem.MaxPointsCount Then
+                                                            If oItem.Points.First.Point <> oMousePoint Then
+                                                                Call oItem.Points.Last.MoveTo(oMousePoint)
+                                                            End If
                                                         End If
                                                     End If
-                                                    'If oItem.MaxPointsCount = 2 Then
-                                                    '    If oItem.Points.First.Point <> oMousePoint Then
-                                                    '        Call oItem.Points.Last.MoveTo(oMousePoint)
-                                                    '    End If
-                                                    'Else
-                                                    '    Call oItem.Points.Last.MoveTo(oMousePoint)
-                                                    'End If
-                                                End If
-                                        End Select
-                                        .LastPoint = oPoint
-                                        bInvalidate = True
+                                            End Select
+                                            .LastPoint = oPoint
+                                            bInvalidate = True
+                                        End If
                                     End If
-                                End If
                             End With
                         ElseIf ((e.Button And Windows.Forms.MouseButtons.Middle) = Windows.Forms.MouseButtons.Middle) Then
                             Dim oOldPaintTranslation As PointF = oPaintTranslation
@@ -3667,18 +3614,18 @@ Friend Class frmMain2
                                 If Not .CurrentItem Is Nothing Then
                                     If (e.Button And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left Then
                                         If btnAlignToGrid.Checked Then modPaint.PointToGrid(oMousePoint, btnAlignToGridSize.EditValue)
-                                        'If bSnapToPoint Then modPaint.PointSnap(oMousePoint, oCurrentDesign, sGridSnap)
                                         If bLocked Then
                                             Select Case .LastAnchor
                                                 Case AnchorRectangleTypeEnum.GenericPoint
-                                                    'punto del tracciato...
                                                     Call .CurrentItemPoint.MoveTo(oMousePoint)
                                                     Call .RefreshTools()
                                             End Select
                                         Else
+                                            If .LastAnchor <> AnchorRectangleTypeEnum.None Then
+                                                Call .BeginUndoSnapshot("Item transform")
+                                            End If
                                             Select Case .LastAnchor
                                                 Case AnchorRectangleTypeEnum.GenericPoint
-                                                    'punto del tracciato...
                                                     If Not .CurrentItemPoint Is Nothing Then
                                                         Call .CurrentItemPoint.MoveTo(oMousePoint)
                                                         Call .RefreshTools()
@@ -3908,17 +3855,6 @@ Friend Class frmMain2
 
                                     Case cIItem.cItemTypeEnum.Text, cIItem.cItemTypeEnum.Sign, cIItem.cItemTypeEnum.Clipart, cIItem.cItemTypeEnum.Image, cIItem.cItemTypeEnum.Attachment, cIItem.cItemTypeEnum.Quota, cIItem.cItemTypeEnum.Legend, cIItem.cItemTypeEnum.Scale, cIItem.cItemTypeEnum.Compass, cIItem.cItemTypeEnum.InformationBoxText
                                         Dim oItem As cItem = .CurrentItem
-                                        'If oItem.Points.Count < oItem.MaxPointsCount Then
-                                        '    Call .SelectLastPoint(oItem.Points.AddFromPaintPoint(oMousePoint))
-                                        'Else
-                                        '    If oItem.MaxPointsCount = 2 Then
-                                        '        If oItem.Points.First.Point <> oMousePoint Then
-                                        '            Call oItem.Points.Last.MoveTo(oMousePoint)
-                                        '        End If
-                                        '    Else
-                                        '        Call oItem.Points.Last.MoveTo(oMousePoint)
-                                        '    End If
-                                        'End If
                                         If oItem.Points.Count < oItem.MaxPointsCount Then
                                             Call .SelectLastPoint(oItem.Points.AddFromPaintPoint(oMousePoint))
                                         Else
@@ -3927,17 +3863,10 @@ Friend Class frmMain2
                                                     Call oItem.Points.Last.MoveTo(oMousePoint)
                                                 End If
                                             End If
-                                            'If oItem.MaxPointsCount = 2 Then
-                                            '    If oItem.Points.First.Point <> oMousePoint Then
-                                            '        Call oItem.Points.Last.MoveTo(oMousePoint)
-                                            '    End If
-                                            'Else
-                                            '    Call oItem.Points.Last.MoveTo(oMousePoint)
-                                            'End If
                                         End If
                                 End Select
                                 bInvalidate = True
-                                'Call pObjectPropertyDelayedLoad()
+
                                 Call pPropertyItemBounds()
                                 Call pFloatingToolbarUpdate()
 
@@ -3985,11 +3914,10 @@ Friend Class frmMain2
                                             Dim oItem As cItemFreeHandArea = .CurrentItem
                                             Call oItem.Points.Last.MoveTo(oMousePoint)
                                     End Select
-                                    'bUndoSnapshot = True
                                     bInvalidate = True
                                     Call pPropertyItemBounds()
                                     Call pFloatingToolbarUpdate()
-
+                                    .CommitUndoSnapshot(True)
                                 End If
                             End With
                         End If
@@ -3998,6 +3926,10 @@ Friend Class frmMain2
                             If (e.Button And Windows.Forms.MouseButtons.Left) = Windows.Forms.MouseButtons.Left Then
                                 .LastAnchor = AnchorRectangleTypeEnum.None
                                 'bUndoSnapshot = True
+                                If .Undo.IsBeginned Then
+                                    .CommitUndoSnapshot()
+                                End If
+
                             ElseIf (e.Button And Windows.Forms.MouseButtons.Right) = Windows.Forms.MouseButtons.Right Then
                                 If .CurrentItem Is Nothing Then
                                     Call pMapInfoMenu(e.Location)
@@ -4016,13 +3948,10 @@ Friend Class frmMain2
                             End If
                         End With
                     End If
-                    'If bUndoSnapshot Then
-                    '    Call pGetCurrentDesignTools.TakeUndoSnapshot()
-                    'End If
                 End With
             End If
         End If
-        'Call pStatusSet("")
+
         If bInvalidate Then
             Call pMapInvalidate()
         End If
@@ -6134,6 +6063,7 @@ Friend Class frmMain2
 
     Private Sub pSequenceDelete()
         With pGetCurrentDesignTools()
+            .BeginUndoSnapshot("Sequence delete")
             Dim oItem As cItem = .CurrentItem
             Dim oPoint As cPoint = .CurrentItemPoint
             Call oItem.Points.DeleteSequence(oPoint)
@@ -6142,23 +6072,25 @@ Friend Class frmMain2
             Else
                 Call .SelectPoint(oItem.Points.First)
             End If
-            Call .TakeUndoSnapshot()
+            .CommitUndoSnapshot()
         End With
         Call pMapInvalidate()
     End Sub
 
     Private Sub pSequenceDivide(Optional Join As Boolean = False)
         With pGetCurrentDesignTools()
+            .BeginUndoSnapshot("Sequence divide")
             Dim oItem As cItem = .CurrentItem
             Dim oPoint As cPoint = .CurrentItemPoint
             Call oItem.Points.DivideSequence(oPoint, Join)
-            Call .TakeUndoSnapshot()
+            .CommitUndoSnapshot()
         End With
         Call pMapInvalidate()
     End Sub
 
     Private Sub pItemDeletePoint()
         With pGetCurrentDesignTools()
+            .BeginUndoSnapshot("Point delete")
             Dim oItem As cItem = .CurrentItem
             Dim oPoint As cPoint = .CurrentItemPoint
             Call oItem.Points.Remove(oPoint)
@@ -6167,7 +6099,7 @@ Friend Class frmMain2
             Else
                 Call .SelectPoint(oItem.Points.First)
             End If
-            Call .TakeUndoSnapshot()
+            Call .CommitUndoSnapshot()
         End With
         Call pMapInvalidate()
     End Sub
@@ -6175,6 +6107,7 @@ Friend Class frmMain2
     Private Sub pItemAddPoint()
         Try
             With pGetCurrentDesignTools()
+                .BeginUndoSnapshot("Point add")
                 Dim oNewPoint As cPoint
                 If .IsNewPoint Then
                     Dim iIndex As Integer = .CurrentItem.Points.IndexOf(.CurrentNewPointRelative)
@@ -6188,7 +6121,7 @@ Friend Class frmMain2
                     oNewPoint = .CurrentItem.Points.InsertFromPaintPoint(iIndex + 1, oNewPaintPoint)
                 End If
                 Call .SelectPoint(oNewPoint)
-                Call .TakeUndoSnapshot()
+                Call .CommitUndoSnapshot()
             End With
             Call pMapInvalidate()
         Catch
@@ -6197,10 +6130,11 @@ Friend Class frmMain2
 
     Private Sub pSequenceCombine()
         With pGetCurrentDesignTools()
+            .BeginUndoSnapshot("Sequence combine")
             Dim oEditPoint As cPoint = .CurrentItemPoint
             Dim oNewEditPoint As cPoint = oEditPoint.Item.Points.CombineSequences(oEditPoint)
             Call .SelectPoint(oNewEditPoint)
-            Call .TakeUndoSnapshot()
+            Call .CommitUndoSnapshot()
         End With
         Call pMapInvalidate()
     End Sub
@@ -6208,8 +6142,9 @@ Friend Class frmMain2
     Private Sub pItemSendToBottom()
         Try
             With pGetCurrentDesignTools()
+                .BeginUndoSnapshot("Send to bottom")
                 Call .CurrentLayer.Items.SendToBottom(.CurrentItem)
-                Call .TakeUndoSnapshot()
+                Call .CommitUndoSnapshot()
             End With
             Call pMapInvalidate()
         Catch
@@ -6219,8 +6154,9 @@ Friend Class frmMain2
     Private Sub pItemSendBehind()
         Try
             With pGetCurrentDesignTools()
+                .BeginUndoSnapshot("Send behind")
                 Call .CurrentLayer.Items.SendBehind(.CurrentItem)
-                Call .TakeUndoSnapshot()
+                Call .CommitUndoSnapshot()
             End With
             Call pMapInvalidate()
         Catch
@@ -6230,8 +6166,9 @@ Friend Class frmMain2
     Private Sub pItemBringAhead()
         Try
             With pGetCurrentDesignTools()
+                .BeginUndoSnapshot("Bring ahead")
                 Call .CurrentLayer.Items.BringAhead(.CurrentItem)
-                Call .TakeUndoSnapshot()
+                Call .CommitUndoSnapshot()
             End With
             Call pMapInvalidate()
         Catch
@@ -6241,32 +6178,14 @@ Friend Class frmMain2
     Private Sub pItemBringToTop()
         Try
             With pGetCurrentDesignTools()
+                .BeginUndoSnapshot("Bring to top")
                 Call .CurrentLayer.Items.BringToTop(.CurrentItem)
-                Call .TakeUndoSnapshot()
+                Call .CommitUndoSnapshot()
             End With
             Call pMapInvalidate()
         Catch
         End Try
     End Sub
-
-    'Private Sub mnuDesignItemPointPlot_DropDownOpening(ByVal sender As Object, ByVal e As System.EventArgs)
-    '    Try
-    '        With pGetCurrentDesignTools()
-
-    '            If .CurrentItemPoint.SegmentLocked Then
-    '                mnuDesignItemPointPlotLockSegment.Text = GetLocalizedString("main.textpart42")
-    '                mnuDesignItemPointPlotBindSegment.Enabled = False
-    '            Else
-    '                mnuDesignItemPointPlotLockSegment.Text = GetLocalizedString("main.textpart43")
-    '                mnuDesignItemPointPlotBindSegment.Enabled = True
-    '            End If
-    '            mnuDesignItemPointPlotLockSegment.Enabled = True
-    '            Call .TakeUndoSnapshot()
-    '        End With
-    '    Catch
-    '        mnuDesignItemPointPlotLockSegment.Enabled = False
-    '    End Try
-    'End Sub
 
     Private Sub picmap_MouseWheel(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles picMap.MouseWheel
         Try
@@ -6781,7 +6700,7 @@ Friend Class frmMain2
                     End If
                     If Not bCancel And Filename <> "" Then
                         Try
-                            Using oImage As Image = New Bitmap(Filename)
+                            Using oImage As Image = modPaint.SafeBitmapFromFile(Filename)
                                 Dim oLayer As cLayer = oCurrentDesign.Layers(Bag.Layer)
                                 Call pGetCurrentDesignTools.SelectLayer(oLayer)
                                 oItem = oLayer.GetType.GetMethod(Bag.Method).Invoke(oLayer, Bag.GetInvokeParameters("cave", sCave, "branch", sBranch, "image", oImage))
@@ -6789,11 +6708,10 @@ Friend Class frmMain2
                                 Using frmSE As frmSketchEdit = New frmSketchEdit(oItem)
                                     If frmSE.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                                         Call pSurveyInvalidate()
-                                        Call pGetCurrentDesignTools.SelectItem(oItem)
-                                        'Call pSurveyLoadTreeLayers(oItem.Layer, oItem)
+                                        Call pGetCurrentDesignTools.EditItem(oItem, True)
                                     Else
-                                        Call oLayer.Items.Remove(oItem)
                                         Call pGetCurrentDesignTools.EndItem()
+                                        Call oLayer.Items.Remove(oItem)
                                         Call oSurvey.Sketches.Rebind()
                                         bCancel = True
                                     End If
@@ -6823,7 +6741,7 @@ Friend Class frmMain2
                 End If
                 If Not bCancel And Filename <> "" Then
                     Try
-                        Using oImage As Image = Bitmap.FromFile(Filename)
+                        Using oImage As Image = modPaint.SafeBitmapFromFile(Filename)
                             Dim oLayer As cLayer = oCurrentDesign.Layers(Bag.Layer)
                             Call pGetCurrentDesignTools.SelectLayer(oLayer)
                             oItem = oLayer.GetType.GetMethod(Bag.Method).Invoke(oLayer, Bag.GetInvokeParameters("cave", sCave, "branch", sBranch, "image", oImage))
@@ -6831,7 +6749,6 @@ Friend Class frmMain2
                             Using frmIE As frmImageEdit = New frmImageEdit(oItem)
                                 If frmIE.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                                     Call pGetCurrentDesignTools.EditItem(oItem, True)
-                                    'Call pMapInvalidate()
                                 Else
                                     Call pGetCurrentDesignTools.EndItem()
                                     Call oLayer.Items.Remove(oItem)
@@ -6843,7 +6760,6 @@ Friend Class frmMain2
                         Call pLogAdd(ex)
                     End Try
                 End If
-
             Case "quota"
                 Dim oLayer As cLayer = oCurrentDesign.Layers(Bag.Layer)
                 Call pGetCurrentDesignTools.SelectLayer(oLayer)
@@ -6981,7 +6897,6 @@ Friend Class frmMain2
                         oCurrentCenter = modPaint.FromPaintPoint(oCurrentCenter, sPaintZoom, oPaintTranslation)
                         Call oTextItem.MoveTo(oCurrentCenter)
                         Call pGetCurrentDesignTools.EndAndSelectItem()
-
                     Case cIItem.cItemTypeEnum.Attachment
                         Dim oAttachmentItem As cItemAttachment = oItem
                         Call oAttachmentItem.FixBound(True)
@@ -6989,7 +6904,6 @@ Friend Class frmMain2
                         oCurrentCenter = modPaint.FromPaintPoint(oCurrentCenter, sPaintZoom, oPaintTranslation)
                         Call oAttachmentItem.MoveTo(oCurrentCenter)
                         Call pGetCurrentDesignTools.EndAndSelectItem()
-
                     Case cIItem.cItemTypeEnum.Compass
                         'for compass bound is not needed...sign have one point (have to be center...for now left center point)...
                         Dim oCompassItem As cItemCompass = oItem
@@ -6998,7 +6912,6 @@ Friend Class frmMain2
                         oCurrentCenter = modPaint.FromPaintPoint(oCurrentCenter, sPaintZoom, oPaintTranslation)
                         Call oCompassItem.MoveTo(oCurrentCenter)
                         Call pGetCurrentDesignTools.EndAndSelectItem()
-
                     Case cIItem.cItemTypeEnum.Clipart
                         'for clipart bound is needed due to different resize approach...clipart is warped and have 4 point so move to point have to be adjusted
                         Dim oClipartItem As cItemClipart = oItem
@@ -7008,7 +6921,6 @@ Friend Class frmMain2
                         Dim oBounds As RectangleF = oClipartItem.Clipart.Clipart.GetBounds
                         Call oClipartItem.MoveTo(New PointF(oCurrentCenter.X - oBounds.Size.Width / 2, oCurrentCenter.Y - oBounds.Size.Height / 2))
                         Call pGetCurrentDesignTools.EndAndSelectItem()
-
                     Case cIItem.cItemTypeEnum.Sign
                         'for sign bound is not needed...sign have one point (center)...
                         Dim oSignItem As cItemSign = oItem
@@ -7017,7 +6929,6 @@ Friend Class frmMain2
                         oCurrentCenter = modPaint.FromPaintPoint(oCurrentCenter, sPaintZoom, oPaintTranslation)
                         Call oSignItem.MoveTo(oCurrentCenter)
                         Call pGetCurrentDesignTools.EndAndSelectItem()
-
                 End Select
 
                 Call pMapInvalidate()
@@ -7110,85 +7021,90 @@ Friend Class frmMain2
         Call pDesignTools_CreateItem(oBag)
     End Sub
 
-    Private Sub mnuDesignItem_Opening(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles mnuDesignItemOLD.Opening
-        Try
-            Dim oItem As cItem = pGetCurrentDesignTools.CurrentItem
-            If oItem.Type = cIItem.cItemTypeEnum.Segment Then
-                Dim oItemSegment As cItemSegment = oItem
-                'If oCurrentDesign.Type = cIDesign.cDesignTypeEnum.Plan Then
-                '    mnuDesignItemSegmentInvert.Visible = False
-                'Else
-                '    mnuDesignItemSegmentInvert.Enabled = Not oItemSegment.Segment.IsProfileBinded AndAlso oItemSegment.Segment.Direction <> cSurvey.cSurvey.DirectionEnum.Vertical
-                'End If
-                mnuDesignItemSegmentSplay.Visible = True
+    'Private Sub mnuDesignItem_Opening(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles mnuDesignItemOLD.Opening
+    '    Try
+    '        Dim oItem As cItem = pGetCurrentDesignTools.CurrentItem
+    '        If oItem.Type = cIItem.cItemTypeEnum.Segment Then
+    '            Dim oItemSegment As cItemSegment = oItem
+    '            'If oCurrentDesign.Type = cIDesign.cDesignTypeEnum.Plan Then
+    '            '    mnuDesignItemSegmentInvert.Visible = False
+    '            'Else
+    '            '    mnuDesignItemSegmentInvert.Enabled = Not oItemSegment.Segment.IsProfileBinded AndAlso oItemSegment.Segment.Direction <> cSurvey.cSurvey.DirectionEnum.Vertical
+    '            'End If
+    '            mnuDesignItemSegmentSplay.Visible = True
 
 
-                'mnuDesignItemImage.Visible = False
-                'mnuDesignItemSketch.Visible = False
-                mnuDesignItemBar0.Visible = True
+    '            'mnuDesignItemImage.Visible = False
+    '            'mnuDesignItemSketch.Visible = False
+    '            mnuDesignItemBar0.Visible = True
 
-                'mnuDesignItemCut.Visible = False
-                'mnuDesignItemCopy.Visible = False
-                'mnuDesignItempaste.Visible = False
-                'mnuDesignItemDelete.Visible = False
+    '            'mnuDesignItemCut.Visible = False
+    '            'mnuDesignItemCopy.Visible = False
+    '            'mnuDesignItempaste.Visible = False
+    '            'mnuDesignItemDelete.Visible = False
 
-                mnuDesignItemChangeTo.Visible = False
-                'mnuDesignItemRotate.Visible = False
+    '            'mnuDesignItemChangeTo.Visible = False
+    '            'mnuDesignItemRotate.Visible = False
 
-            Else
-                'mnuDesignItemSegmentInvert.Visible = False
-                mnuDesignItemSegmentSplay.Visible = False
-                'mnuDesignItemSegmentSetCoordinate.Visible = False
-                'mnuDesignItemSegmentSetCoordinateCP.Visible = False
+    '        Else
+    '            'mnuDesignItemSegmentInvert.Visible = False
+    '            mnuDesignItemSegmentSplay.Visible = False
+    '            'mnuDesignItemSegmentSetCoordinate.Visible = False
+    '            'mnuDesignItemSegmentSetCoordinateCP.Visible = False
 
-                'mnuDesignItemImage.Visible = oItem.HaveImage
-                'mnuDesignItemSketch.Visible = oItem.HaveSketch
+    '            'mnuDesignItemImage.Visible = oItem.HaveImage
+    '            'mnuDesignItemSketch.Visible = oItem.HaveSketch
 
-                'Dim bItemItems As Boolean
-                'If oItem.Type = cIItem.cItemTypeEnum.Items Then
-                '    Dim oItemItems As cItemItems = oItem
-                '    Dim bCombined As Boolean = True
-                '    For Each oSubItem As cItem In oItemItems
-                '        bCombined = bCombined And oSubItem.CanBeCombined
-                '    Next
-                '    btnCurrentItemItemsCombine.Visible = bCombined
-                '    bItemItems = bCombined
-                '    grpCurrentItemItems.Visible = bItemItems
-                'Else
-                '    grpCurrentItemItems.Visible = False
-                '    bItemItems = False
-                'End If
+    '            'Dim bItemItems As Boolean
+    '            'If oItem.Type = cIItem.cItemTypeEnum.Items Then
+    '            '    Dim oItemItems As cItemItems = oItem
+    '            '    Dim bCombined As Boolean = True
+    '            '    For Each oSubItem As cItem In oItemItems
+    '            '        bCombined = bCombined And oSubItem.CanBeCombined
+    '            '    Next
+    '            '    btnCurrentItemItemsCombine.Visible = bCombined
+    '            '    bItemItems = bCombined
+    '            '    grpCurrentItemItems.Visible = bItemItems
+    '            'Else
+    '            '    grpCurrentItemItems.Visible = False
+    '            '    bItemItems = False
+    '            'End If
 
-                'mnuDesignItemCut.Visible = True
-                'mnuDesignItemCopy.Visible = True
-                'mnuDesignItempaste.Visible = False
-                'mnuDesignItemDelete.Visible = True
+    '            'mnuDesignItemCut.Visible = True
+    '            'mnuDesignItemCopy.Visible = True
+    '            'mnuDesignItempaste.Visible = False
+    '            'mnuDesignItemDelete.Visible = True
 
-                'Dim bCanBeRaised As Boolean = pGetCurrentDesignTools.CurrentLayer.Items.Contains(oItem)
-                'mnuDesignItemBringAhead.Visible = bCanBeRaised
-                'mnuDesignItemBringOnTop.Visible = bCanBeRaised
-                'mnuDesignItemSendToBottom.Visible = bCanBeRaised
-                'mnuDesignItemSendBehind.Visible = bCanBeRaised
-                'mnuDesignItemBar3.Visible = bCanBeRaised
+    '            'Dim bCanBeRaised As Boolean = pGetCurrentDesignTools.CurrentLayer.Items.Contains(oItem)
+    '            'mnuDesignItemBringAhead.Visible = bCanBeRaised
+    '            'mnuDesignItemBringOnTop.Visible = bCanBeRaised
+    '            'mnuDesignItemSendToBottom.Visible = bCanBeRaised
+    '            'mnuDesignItemSendBehind.Visible = bCanBeRaised
+    '            'mnuDesignItemBar3.Visible = bCanBeRaised
 
-                'mnuDesignItemRotate.Visible = oItem.CanBeRotated
-                mnuDesignItemChangeTo.Visible = pGetCurrentDesignTools.CurrentItem.HaveEditablePoints   'pGetCurrentDesignTools.CurrentLayer.Type = cLayers.LayerTypeEnum.Borders
+    '            'mnuDesignItemRotate.Visible = oItem.CanBeRotated
+    '            'mnuDesignItemChangeTo.Visible = pGetCurrentDesignTools.CurrentItem.HaveEditablePoints   'pGetCurrentDesignTools.CurrentLayer.Type = cLayers.LayerTypeEnum.Borders
 
-            End If
-        Catch
-        End Try
-    End Sub
+    '        End If
+    '    Catch
+    '    End Try
+    'End Sub
+
     Private Sub pSequenceClose()
         With pGetCurrentDesignTools()
+            .BeginUndoSnapshot("Sequence close")
             Dim oItem As cItem = .CurrentItem
             Dim oPoint As cPoint = .CurrentItemPoint
             Call oItem.Points.CloseSequence(oPoint)
-            Call .TakeUndoSnapshot()
+            Call .CommitUndoSnapshot()
         End With
         Call pMapInvalidate()
     End Sub
+
     Private Sub pItemRotateBy(Angle As Single, CenteredOnOrigin As Boolean)
         With pGetCurrentDesignTools()
+
+            .BeginUndoSnapshot("Rotate by")
             If .CurrentItem Is Nothing Then
                 Dim oRect As RectangleF = oCurrentDesign.GetBounds(oCurrentOptions)
                 Dim oCenter As PointF
@@ -7210,13 +7126,15 @@ Friend Class frmMain2
                 End If
             End If
             Call pPropertyItemBounds()
-            Call .TakeUndoSnapshot()
+
+            Call .CommitUndoSnapshot()
         End With
         Call pMapInvalidate()
     End Sub
 
     Private Sub pObjectFlipV()
         With pGetCurrentDesignTools()
+            .BeginUndoSnapshot("Flip vertically")
             If .CurrentItem Is Nothing Then
                 Dim oRect As RectangleF = oCurrentDesign.GetBounds(oCurrentOptions)
                 Dim oItem As cItemItems = New cItemItems(oSurvey, oCurrentDesign, pGetCurrentDesignTools.CurrentLayer, cIItem.cItemCategoryEnum.None)
@@ -7228,7 +7146,7 @@ Friend Class frmMain2
                 Call .CurrentItem.ResizeBy(1, -1)
             End If
             Call pPropertyItemBounds()
-            Call .TakeUndoSnapshot()
+            Call .CommitUndoSnapshot()
         End With
         pGetCurrentDesignTools.LastCenterPoint = New PointF(0, 0)
         Call pMapInvalidate()
@@ -7236,6 +7154,7 @@ Friend Class frmMain2
 
     Private Sub pObjectFlipH()
         With pGetCurrentDesignTools()
+            .BeginUndoSnapshot("Flip horizzontally")
             If .CurrentItem Is Nothing Then
                 Dim oRect As RectangleF = oCurrentDesign.GetBounds(oCurrentOptions)
                 Dim oItem As cItemItems = New cItemItems(oSurvey, oCurrentDesign, pGetCurrentDesignTools.CurrentLayer, cIItem.cItemCategoryEnum.None)
@@ -7247,7 +7166,7 @@ Friend Class frmMain2
                 Call .CurrentItem.ResizeBy(-1, 1)
             End If
             Call pPropertyItemBounds()
-            Call .TakeUndoSnapshot()
+            Call .CommitUndoSnapshot()
         End With
         pGetCurrentDesignTools.LastCenterPoint = New PointF(0, 0)
         Call pMapInvalidate()
@@ -7277,6 +7196,7 @@ Friend Class frmMain2
     End Sub
 
     Private Sub oPlanTools_OnItemDeleted(Sender As Object, ToolEventArgs As cEditDesignTools.cEditDesignToolsEventArgs) Handles oPlanTools.OnItemDeleted, oProfileTools.OnItemDeleted
+        Call pGetCurrentDesignTools.CommitUndoSnapshot()
         Call pObjectPropertyLoad()
         Call pMapInvalidate()
     End Sub
@@ -7310,7 +7230,7 @@ Friend Class frmMain2
                         Dim iDefaultLineType As cIItemLine.LineTypeEnum = oSurvey.Properties.DesignProperties.GetValue("LineType", cEditDesignEnvironment.GetSetting("design.linetype", cIItemLine.LineTypeEnum.Splines))
                         If iDefaultLineType = cIItemLine.LineTypeEnum.Beziers Then
                             'converto le sequenze in bezier
-                            Call pSequencesTo(cIItemLine.LineTypeEnum.Beziers, True, False)
+                            Call pSequencesTo(cIItemLine.LineTypeEnum.Beziers, True)
                         End If
                     End If
                     'workaraound for images...width or height can not be less then 1 m
@@ -7334,14 +7254,12 @@ Friend Class frmMain2
             With ToolEventArgs.CurrentItem
                 If .Points.Count = 0 AndAlso .Type <> cIItem.cItemTypeEnum.Group AndAlso .Type <> cIItem.cItemTypeEnum.Items AndAlso .Type <> cIItem.cItemTypeEnum.Sketch AndAlso .Type <> cIItem.cItemTypeEnum.CrossSectionMarker AndAlso .Type <> cIItem.cItemTypeEnum.Trigpoint AndAlso .Type <> cIItem.cItemTypeEnum.Segment Then
                     Call .Layer.Items.Remove(ToolEventArgs.CurrentItem)
-                    'Call oSurvey.Undo.Cancel()
                     Call pGetCurrentDesignTools.Reset()
                 Else
+                    If ToolEventArgs.IsNewItem Then
+                        Call pGetCurrentDesignTools.CreateUndoSnapshot("Create item", ToolEventArgs.CurrentItem)
+                    End If
                     Call .Invalidate(oCurrentOptions)
-                    'Call .BindSegments()
-                    'If ToolEventArgs.IsNewItem Then
-                    '    Call pSurveyLoadTreeLayers(.Layer, ToolEventArgs.CurrentItem)
-                    'End If
                 End If
             End With
         End If
@@ -7349,14 +7267,14 @@ Friend Class frmMain2
         Sender.LastAngle = 0
         Sender.LastAnchor = AnchorRectangleTypeEnum.None
         picMap.Cursor = Cursors.Default
-        'tbPen.Visible = False
+
         Call pFloatingToolbarHide()
 
-        'frmMFT.btnPenEndEdit.Enabled = False
         btnItemsEndEdit.Enabled = False
 
         Call pUndoRefresh()
         If ToolEventArgs.IsNewItem Then
+            Call pGetCurrentDesignTools.CreateSelectionSnaphot()
             Call pObjectPropertyLoad()
         End If
         Call pMapInvalidate()
@@ -7376,6 +7294,7 @@ Friend Class frmMain2
 
     Private Sub oPlanTools_OnItemSelect(ByVal Sender As Object, ByVal ToolEventArgs As cEditDesignTools.cEditDesignToolsEventArgs) Handles oPlanTools.OnItemSelect, oProfileTools.OnItemSelect
         Dim bThereIsAnItemSelected As Boolean = Not pGetCurrentDesignTools.CurrentItem Is Nothing
+        If bThereIsAnItemSelected AndAlso Not bUndoRestore Then pGetCurrentDesignTools.CreateSelectionSnaphot()
         btnZoomZoomToSelection.Enabled = bThereIsAnItemSelected
 
         Call pMapInvalidate()
@@ -7618,10 +7537,43 @@ Friend Class frmMain2
         Call pMapInvalidate()
     End Sub
 
+    Private bUndoRestore As Boolean
+
     Private Sub pSurveyUndo()
         Call oMousePointer.Push(Cursors.WaitCursor)
-        Call pGetCurrentDesignTools.Reset()
-        Call pGetCurrentTools.Undo.Pop()
+        bUndoRestore = True
+        Call pGetCurrentDesignTools.EndItem()
+        Dim oRestore As cUndoRestore = pGetCurrentTools.Undo.RestoreSnapshot()
+        If oRestore IsNot Nothing Then
+            Select Case oRestore.Area
+                Case cUndo.cAreaEnum.DesignPlan
+                    Dim oRestoreDesign As cUndoRestoreDesign = oRestore
+                    Call pSurveyShowPlan()
+                    If oRestoreDesign.Items.Count > 0 Then
+                        If oRestoreDesign.Items.Count = 1 Then
+                            Call pGetCurrentDesignTools.SelectItem(oRestoreDesign.Items(0))
+                        Else
+                            Dim oItemItems As cItemItems = New cItemItems(oSurvey, oCurrentDesign, pGetCurrentDesignTools.CurrentLayer, cIItem.cItemCategoryEnum.None)
+                            Call oItemItems.AddRange(oRestoreDesign.Items)
+                            Call pGetCurrentDesignTools.SelectItem(oItemItems)
+                        End If
+                    End If
+                Case cUndo.cAreaEnum.DesignProfile
+                    Dim oRestoreDesign As cUndoRestoreDesign = oRestore
+                    Call pSurveyShowProfile()
+                    If oRestoreDesign.Items.Count > 0 Then
+                        If oRestoreDesign.Items.Count = 1 Then
+                            Call pGetCurrentDesignTools.SelectItem(oRestoreDesign.Items(0))
+                        Else
+                            Dim oItemItems As cItemItems = New cItemItems(oSurvey, oCurrentDesign, pGetCurrentDesignTools.CurrentLayer, cIItem.cItemCategoryEnum.None)
+                            Call oItemItems.AddRange(oRestoreDesign.Items)
+                            Call pGetCurrentDesignTools.SelectItem(oItemItems)
+                        End If
+                    End If
+            End Select
+            Call pObjectPropertyLoad()
+        End If
+        bUndoRestore = False
         Call oMousePointer.Pop()
         Call pMapInvalidate()
         Call pUndoRefresh()
@@ -8745,10 +8697,11 @@ Friend Class frmMain2
 
     Private Sub pSequenceRevert()
         With pGetCurrentDesignTools()
+            .BeginUndoSnapshot("Sequence reverted")
             Dim oItem As cItem = .CurrentItem
             Dim oPoint As cPoint = .CurrentItemPoint
             Call oItem.Points.RevertSequence(oPoint)
-            Call .TakeUndoSnapshot()
+            Call .CommitUndoSnapshot()
         End With
         Call pMapInvalidate()
     End Sub
@@ -8785,7 +8738,7 @@ Friend Class frmMain2
         End If
     End Sub
 
-    Private Sub mnuDesignItemChangeTo1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuDesignItemChangeTo1.Click
+    Private Sub mnuDesignItemChangeTo1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim oItem As cItem = pGetCurrentDesignTools.CurrentItem
         Dim oLayer As cLayerBorders = pGetCurrentDesignTools.CurrentLayer.Design.Layers(cLayers.LayerTypeEnum.Borders)
         Dim sCave As String = cCaveInfo.EditToString(btnMainCaveList.EditValue)
@@ -8798,7 +8751,7 @@ Friend Class frmMain2
         Call pMapInvalidate()
     End Sub
 
-    Private Sub mnuDesignItemChangeTo2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuDesignItemChangeTo2.Click
+    Private Sub mnuDesignItemChangeTo2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim oItem As cItem = pGetCurrentDesignTools.CurrentItem
         Dim oLayer As cLayerBorders = pGetCurrentDesignTools.CurrentLayer.Design.Layers(cLayers.LayerTypeEnum.Borders)
         Dim sCave As String = cCaveInfo.EditToString(btnMainCaveList.EditValue)
@@ -8811,7 +8764,7 @@ Friend Class frmMain2
         Call pMapInvalidate()
     End Sub
 
-    Private Sub mnuDesignItemChangeTo3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuDesignItemChangeTo3.Click
+    Private Sub mnuDesignItemChangeTo3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim oItem As cItem = pGetCurrentDesignTools.CurrentItem
         Dim oLayer As cLayerCeilingMorphologies = pGetCurrentDesignTools.CurrentLayer.Design.Layers(cLayers.LayerTypeEnum.CeilingMorphologies)
         Dim sCave As String = cCaveInfo.EditToString(btnMainCaveList.EditValue)
@@ -8824,7 +8777,7 @@ Friend Class frmMain2
         Call pMapInvalidate()
     End Sub
 
-    Private Sub mnuDesignItemChangeTo4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuDesignItemChangeTo4.Click
+    Private Sub mnuDesignItemChangeTo4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim oItem As cItem = pGetCurrentDesignTools.CurrentItem
         Dim oLayer As cLayerWaterAndFloorMorphologies = pGetCurrentDesignTools.CurrentLayer.Design.Layers(cLayers.LayerTypeEnum.WaterAndFloorMorphologies)
         Dim sCave As String = cCaveInfo.EditToString(btnMainCaveList.EditValue)
@@ -8849,9 +8802,10 @@ Friend Class frmMain2
         Try
             If UIHelpers.Dialogs.Msgbox(GetLocalizedString("main.warning11"), MsgBoxStyle.YesNo Or MsgBoxStyle.Question, GetLocalizedString("main.warningtitle")) = MsgBoxResult.Yes Then
                 With pGetCurrentDesignTools()
+                    .BeginUndoSnapshot("Reduce point")
                     Dim oItem As Items.cIItemLine = .CurrentItem
                     Call oItem.ReducePoints(btnCurrentItemGenericReducePointFactor.EditValue)
-                    Call .TakeUndoSnapshot()
+                    Call .CommitUndoSnapshot()
                 End With
                 Call pMapInvalidate()
             End If
@@ -9948,12 +9902,13 @@ Friend Class frmMain2
         Try
             If Not bDisabledObjectPropertyEvent Then
                 With pGetCurrentDesignTools()
+                    .BeginUndoSnapshot("Set cave and brach")
                     Dim oItem As cItem = .CurrentItem
                     Dim sCurrentCave As String = cCaveInfo.EditToString(btnMainCaveList.EditValue)
                     Dim sCurrentBranch As String = cCaveInfoBranch.EditToString(btnMainCaveBranchList.EditValue)
                     Call oItem.SetCave(sCurrentCave, sCurrentBranch, True)
                     Call oItem.SetBindDesignType(btnMainBindDesignType.EditValue, oSurvey.CrossSections.GetBindItem(btnMainBindCrossSections.EditValue), True)
-                    Call .TakeUndoSnapshot()
+                    Call .CommitUndoSnapshot()
                 End With
                 Call pObjectPropertyLoad()
                 Call pMapInvalidate()
@@ -12749,7 +12704,6 @@ Friend Class frmMain2
                 Dim oCurrentCave As cCaveInfo = Nothing
                 Dim oCurrentCaveBranch As cCaveInfoBranch = Nothing
                 Dim oCurrentCaveSubBranch As cCaveInfoBranch = Nothing
-                Dim oCurrentsession As cSession
 
                 If sForcedCaveName = "" Then
                     sCaveName = Path.GetFileNameWithoutExtension(sFilename)
@@ -12975,6 +12929,7 @@ Friend Class frmMain2
     Private Sub btnCurrentItemGenericRestorePointPen_ItemClick(ByVal sender As System.Object, ByVal e As ItemClickEventArgs) Handles btnCurrentItemGenericRestorePointPen.ItemClick
         Try
             With pGetCurrentDesignTools()
+                .BeginUndoSnapshot("Restore point pen")
                 Dim oItem As cItem = .CurrentItem
                 For Each oSequence As cSequence In oItem.Points.GetSequences
                     With oSequence.First
@@ -12982,8 +12937,7 @@ Friend Class frmMain2
                         .LineType = cIItemLine.LineTypeEnum.Undefined
                     End With
                 Next
-                'Call oItem.Cache.Invalidate()
-                Call .TakeUndoSnapshot()
+                Call .CommitUndoSnapshot()
             End With
             Call pMapInvalidate()
         Catch
@@ -13420,7 +13374,7 @@ Friend Class frmMain2
 
         'undo
         btnUndo.Enabled = False
-        frmU = New frmUndoManager()
+        'frmU = New frmUndoManager()
 
         '3dviewer
         Try
@@ -13527,6 +13481,11 @@ Friend Class frmMain2
         AddHandler Control.OnDoCommand, AddressOf ObjectProperty_OnDoCommand
         AddHandler Control.OnObjectPropertyLoad, AddressOf ObjectProperty_OnObjectPropertyLoad
         AddHandler Control.OnPropertyChanged, AddressOf ObjectProperty_OnPropertyChanged
+
+        AddHandler Control.OnCommitUndoSnapshot, AddressOf ObjectProperty_OnCommitUndoSnapshot
+        AddHandler Control.OnBeginUndoSnapshot, AddressOf ObjectProperty_OnBeginUndoSnapshot
+        AddHandler Control.OnCreateUndoSnapshot, AddressOf ObjectProperty_OnCreateUndoSnapshot
+        AddHandler Control.OnCancelUndoSnapshot, AddressOf ObjectProperty_OnCancelUndoSnapshot
     End Sub
 
     Private Sub pUIAppendItemPointPropertyControl(Control As cItemPointPropertyControl, Height As Integer)
@@ -13593,9 +13552,9 @@ Friend Class frmMain2
         Call oSurvey.Properties.CaveVisibilityProfiles.CopyFrom(CaveVisibilityProfiles)
     End Sub
 
-    Private Sub frmU_OnUndoRequest(ByVal Sender As frmUndoManager, ByVal e As Object) Handles frmU.OnUndoRequest
-        Call pSurveyUndo()
-    End Sub
+    'Private Sub frmU_OnUndoRequest(ByVal Sender As frmUndoManager, ByVal e As Object) Handles frmU.OnUndoRequest
+    '    Call pSurveyUndo()
+    'End Sub
 
     'Private Sub pListviewInfoCopy(ListViewItems As IEnumerable, OnlyValues As Boolean)
     '    Try
@@ -13786,7 +13745,7 @@ Friend Class frmMain2
         'If Not frmThP Is Nothing Then If Not frmThP.IsDisposed Then Call frmThP.Close()
         If Not frmV Is Nothing Then If Not frmV.IsDisposed Then Call frmV.Close()
         'If Not frmJ Is Nothing Then If Not frmJ.IsDisposed Then Call frmJ.Hide()
-        If Not frmU Is Nothing Then If Not frmU.IsDisposed Then Call frmU.Close()
+        'If Not frmU Is Nothing Then If Not frmU.IsDisposed Then Call frmU.Close()
     End Sub
 
     Private Sub pTrayHideIn()
@@ -14035,8 +13994,9 @@ Friend Class frmMain2
                                 'per ora...nulla
                             Else
                                 If .CurrentItem.CanBeRotated Then
+                                    Call .BeginUndoSnapshot("Rotate item")
                                     Call .CurrentItem.Rotate(sStep)
-                                    Call .TakeUndoSnapshot()
+                                    Call .CommitUndoSnapshot()
                                 End If
                             End If
                         End With
@@ -14047,6 +14007,7 @@ Friend Class frmMain2
                             sStep = 0.01
                         End If
                         With pGetCurrentDesignTools()
+                            Call .BeginUndoSnapshot("Move item")
                             If .IsInPointEdit Then
                                 Call .CurrentItemPoint.MoveBy(sStep, 0)
                             Else
@@ -14054,7 +14015,7 @@ Friend Class frmMain2
                                     Call .CurrentItem.MoveBy(sStep, 0)
                                 End If
                             End If
-                            Call .TakeUndoSnapshot()
+                            Call .CommitUndoSnapshot()
                         End With
                     End If
                     Call pObjectPropertyDelayedLoad()
@@ -14077,8 +14038,9 @@ Friend Class frmMain2
                                 'per ora...nulla
                             Else
                                 If .CurrentItem.CanBeResized Then
+                                    Call .BeginUndoSnapshot("Rotate item")
                                     Call .CurrentItem.ResizeBy(sStep, sStep)
-                                    Call .TakeUndoSnapshot()
+                                    Call .CommitUndoSnapshot()
                                 ElseIf .CurrentItem.HaveSign Then
                                     'DirectCast(.CurrentItem,cIItemSign ).SignSize =
                                     'Call .TakeUndoSnapshot()
@@ -14092,6 +14054,7 @@ Friend Class frmMain2
                             sStep = 0.01
                         End If
                         With pGetCurrentDesignTools()
+                            Call .BeginUndoSnapshot("Move item")
                             If .IsInPointEdit Then
                                 Call .CurrentItemPoint.MoveBy(0, sStep)
                             Else
@@ -14099,7 +14062,7 @@ Friend Class frmMain2
                                     Call .CurrentItem.MoveBy(0, sStep)
                                 End If
                             End If
-                            Call .TakeUndoSnapshot()
+                            Call .CommitUndoSnapshot()
                         End With
                     End If
                     Call pObjectPropertyDelayedLoad()
@@ -14122,8 +14085,9 @@ Friend Class frmMain2
                                 'per ora...nulla
                             Else
                                 If .CurrentItem.CanBeResized Then
+                                    Call .BeginUndoSnapshot("Rotate item")
                                     Call .CurrentItem.ResizeBy(sStep, sStep)
-                                    Call .TakeUndoSnapshot()
+                                    Call .CommitUndoSnapshot()
                                 ElseIf .CurrentItem.HaveSign Then
                                     'DirectCast(.CurrentItem,cIItemSign ).SignSize =
                                     'Call .TakeUndoSnapshot()
@@ -14137,6 +14101,7 @@ Friend Class frmMain2
                             sStep = 0.01
                         End If
                         With pGetCurrentDesignTools()
+                            Call .BeginUndoSnapshot("Move item")
                             If .IsInPointEdit Then
                                 Call .CurrentItemPoint.MoveBy(0, -sStep)
                             Else
@@ -14144,7 +14109,7 @@ Friend Class frmMain2
                                     Call .CurrentItem.MoveBy(0, -sStep)
                                 End If
                             End If
-                            Call .TakeUndoSnapshot()
+                            Call .CommitUndoSnapshot()
                         End With
                     End If
                     Call pObjectPropertyDelayedLoad()
@@ -14167,8 +14132,9 @@ Friend Class frmMain2
                                 'per ora...nulla
                             Else
                                 If .CurrentItem.CanBeRotated Then
+                                    Call .BeginUndoSnapshot("Rotate item")
                                     Call .CurrentItem.Rotate(sStep)
-                                    Call .TakeUndoSnapshot()
+                                    Call .CommitUndoSnapshot()
                                 End If
                             End If
                         End With
@@ -14179,6 +14145,7 @@ Friend Class frmMain2
                             sStep = 0.01
                         End If
                         With pGetCurrentDesignTools()
+                            Call .BeginUndoSnapshot("Move item")
                             If .IsInPointEdit Then
                                 Call .CurrentItemPoint.MoveBy(-sStep, 0)
                             Else
@@ -14186,7 +14153,7 @@ Friend Class frmMain2
                                     Call .CurrentItem.MoveBy(-sStep, 0)
                                 End If
                             End If
-                            Call .TakeUndoSnapshot()
+                            Call .CommitUndoSnapshot()
                         End With
                     End If
                     Call pObjectPropertyDelayedLoad()
@@ -14294,9 +14261,10 @@ Friend Class frmMain2
 
     Private Sub pItemHorizontalAlign(Alignment As cItemItems.HorizontalAlignmentEnum)
         With pGetCurrentDesignTools()
+            Call .BeginUndoSnapshot("Align item")
             Dim oItems As cItemItems = .CurrentItem
             Call oItems.HorizontalAlign(Alignment)
-            Call .TakeUndoSnapshot()
+            Call .CommitUndoSnapshot()
         End With
         Call pObjectPropertyLoad()
         Call pMapInvalidate()
@@ -14304,9 +14272,10 @@ Friend Class frmMain2
 
     Private Sub pItemVerticalAlign(Alignment As cItemItems.VerticalAlignmentEnum)
         With pGetCurrentDesignTools()
+            Call .BeginUndoSnapshot("Align item")
             Dim oItems As cItemItems = .CurrentItem
             Call oItems.VerticalAlign(Alignment)
-            Call .TakeUndoSnapshot()
+            Call .CommitUndoSnapshot()
         End With
         Call pObjectPropertyLoad()
         Call pMapInvalidate()
@@ -14319,13 +14288,14 @@ Friend Class frmMain2
 
     Private Sub pItemSpaceH()
         With pGetCurrentDesignTools()
+            Call .BeginUndoSnapshot("Space item")
             Dim oItems As cItemItems = .CurrentItem
             If My.Computer.Keyboard.ShiftKeyDown Then
                 Call oItems.HorizontalSpace(cItemItems.SpaceEnum.ToMaximum)
             Else
                 Call oItems.HorizontalSpace(cItemItems.SpaceEnum.ToMinimum)
             End If
-            Call .TakeUndoSnapshot()
+            Call .CommitUndoSnapshot()
         End With
         Call pObjectPropertyLoad()
         Call pMapInvalidate()
@@ -14333,13 +14303,14 @@ Friend Class frmMain2
 
     Private Sub pItemSpaceV()
         With pGetCurrentDesignTools()
+            Call .BeginUndoSnapshot("Space item")
             Dim oItems As cItemItems = .CurrentItem
             If My.Computer.Keyboard.ShiftKeyDown Then
                 Call oItems.VerticalSpace(cItemItems.SpaceEnum.ToMaximum)
             Else
                 Call oItems.VerticalSpace(cItemItems.SpaceEnum.ToMinimum)
             End If
-            Call .TakeUndoSnapshot()
+            Call .CommitUndoSnapshot()
         End With
         Call pObjectPropertyLoad()
         Call pMapInvalidate()
@@ -14398,7 +14369,7 @@ Friend Class frmMain2
         End Using
     End Sub
 
-    Private Sub pPointSequencesTo(NewLineType As cIItemLine.LineTypeEnum, TakeUndoSnapshot As Boolean)
+    Private Sub pPointSequencesTo(NewLineType As cIItemLine.LineTypeEnum)
         With pGetCurrentDesignTools()
             Dim oItem As cItem = .CurrentItem
             Dim oPoint As cPoint = .CurrentItemPoint
@@ -14417,14 +14388,13 @@ Friend Class frmMain2
                 End Select
                 If Not oNewSequence Is Nothing Then
                     Call .SelectPoint(Nothing)
-                    Call .TakeUndoSnapshot()
                 End If
             End If
         End With
     End Sub
 
     'used in designer when in bezier mode and for line type conversion...
-    Private Sub pSequencesTo(NewLineType As cIItemLine.LineTypeEnum, AlsoCustomized As Boolean, TakeUndoSnapshot As Boolean)
+    Private Sub pSequencesTo(NewLineType As cIItemLine.LineTypeEnum, AlsoCustomized As Boolean)
         With pGetCurrentDesignTools()
             Dim oItem As cItem = .CurrentItem
             Dim iItemLineType As cIItemLine.LineTypeEnum = DirectCast(oItem, cIItemLine).LineType
@@ -14458,7 +14428,6 @@ Friend Class frmMain2
             Next
             DirectCast(oItem, cIItemLine).LineType = NewLineType
             Call oItem.Points.EndUpdate()
-            If TakeUndoSnapshot Then Call .TakeUndoSnapshot()
         End With
     End Sub
 
@@ -14799,7 +14768,16 @@ Friend Class frmMain2
         Call pObjectPropertyLoad()
     End Sub
 
+    Private Sub oDockJoinPoints_OnBeforePointLink(Sender As Object, e As EventArgs) Handles oDockJoinPoints.OnBeforePointLink
+        With pGetCurrentDesignTools()
+            .BeginUndoSnapshot("Point link", oDockJoinPoints.GetPointsItems)
+        End With
+    End Sub
+
     Private Sub oDockJoinPoints_OnPointLink(Sender As Object, e As EventArgs) Handles oDockJoinPoints.OnPointLink
+        With pGetCurrentDesignTools()
+            .CommitUndoSnapshot()
+        End With
         Call pObjectPropertyLoad()
         Call pMapInvalidate()
     End Sub
@@ -15042,6 +15020,7 @@ Friend Class frmMain2
     Private Sub oAreaFromSequence_OnCreate(Sender As cAreaFromSequence, Args As EventArgs) Handles oAreaFromSequence.OnCreate
         Call oMousePointer.Push(Cursors.WaitCursor)
         With pGetCurrentDesignTools()
+            Call .BeginUndoSnapshot("Area from sequence")
             Dim oItem As cItem = .CurrentItem
             Dim oPoint As cPoint = .CurrentItemPoint
             Dim oNewSequence As cSequence = modPaint.WidenSequence(oItem, oPoint, oAreaFromSequence.txtWidth.Value, oAreaFromSequence.txtReductionFactor.Value)
@@ -15055,7 +15034,7 @@ Friend Class frmMain2
             Call oItem.Points.AddRange(oNewSequence)
             Call oItem.Points.CloseSequences()
             Call oItem.Points.EndUpdate()
-            Call .TakeUndoSnapshot()
+            Call .CommitUndoSnapshot()
         End With
         Call oMousePointer.Pop()
         Call pMapInvalidate()
@@ -15292,6 +15271,30 @@ Friend Class frmMain2
             Case "trigpointsetcoordinatetomarker"
                 Call pTrigpointSetCoordinate(e.Args(0).Name, pGetCurrentDesignTools.CurrentMarkedDesktopPoint.Coordinate)
         End Select
+    End Sub
+
+    Private Sub ObjectProperty_OnCancelUndoSnapshot(Sender As Object, e As CommitUndoSnapshotEventArgs)
+        With pGetCurrentDesignTools()
+            .cancelundosnapshot()
+        End With
+    End Sub
+
+    Private Sub ObjectProperty_OnCommitUndoSnapshot(Sender As Object, e As CommitUndoSnapshotEventArgs)
+        With pGetCurrentDesignTools()
+            .CommitUndoSnapshot(e.SkipIfNotBeginned)
+        End With
+    End Sub
+
+    Private Sub ObjectProperty_OnBeginUndoSnapshot(Sender As Object, e As BeginUndoSnapshotEventArgs)
+        With pGetCurrentDesignTools()
+            .BeginUndoSnapshot(e.Description)
+        End With
+    End Sub
+
+    Private Sub ObjectProperty_OnCreateUndoSnapshot(Sender As Object, e As CreateUndoSnapshotEventArgs)
+        With pGetCurrentDesignTools()
+            .CreateUndoSnapshot(e.Description, e.PropertyName)
+        End With
     End Sub
 
     Private Sub ObjectProperty_OnPropertyChanged(Sender As Object, e As PropertyChangeEventArgs)
@@ -16089,7 +16092,7 @@ Friend Class frmMain2
         If UIHelpers.Dialogs.Msgbox(GetLocalizedString("main.warning12"), MsgBoxStyle.YesNo Or MsgBoxStyle.Exclamation, GetLocalizedString("main.warningtitle")) = MsgBoxResult.Yes Then
             Call pGetCurrentDesignTools.SelectItem(Nothing)
             Call oCurrentDesign.Clear()
-            Call pGetCurrentTools.Undo.Clear()
+            'Call pGetCurrentTools.Undo.Clear()
             Call pObjectPropertyLoad()
             Call pMapInvalidate()
         End If
@@ -17533,10 +17536,12 @@ Friend Class frmMain2
     Private Sub btnCurrentItemGenericRevertAllSequences_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCurrentItemGenericRevertAllSequences.ItemClick
         Try
             With pGetCurrentDesignTools()
+                Call .BeginUndoSnapshot("Revert sequences")
                 Dim oItem As cItem = .CurrentItem
                 Call oItem.Points.Revert()
-                Call .TakeUndoSnapshot()
+                Call .CommitUndoSnapshot()
             End With
+            Call pObjectPropertyLoad()
             Call pMapInvalidate()
         Catch
         End Try
@@ -17545,10 +17550,12 @@ Friend Class frmMain2
     Private Sub btnCurrentItemGenericReorderSequence_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCurrentItemGenericReorderSequence.ItemClick
         Try
             With pGetCurrentDesignTools()
+                Call .BeginUndoSnapshot("Reorder sequences")
                 Dim oItem As cItem = .CurrentItem
                 Call oItem.Points.ReorderSequences()
-                Call .TakeUndoSnapshot()
+                Call .CommitUndoSnapshot()
             End With
+            Call pObjectPropertyLoad()
             Call pMapInvalidate()
         Catch
         End Try
@@ -17556,14 +17563,19 @@ Friend Class frmMain2
 
     Private Sub btnCurrentItemGenericDivide_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCurrentItemGenericDivide.ItemClick
         Try
-            Dim oItem As cItem = pGetCurrentDesignTools.CurrentItem
-            If oItem.CanBeDivided Then
-                Call oMousePointer.Push(Cursors.WaitCursor)
-                Call pGetCurrentDesignTools.CurrentLayer.Items.Divide(oItem)
-                Call oMousePointer.Pop()
-                Call pGetCurrentDesignTools.EndItem()
-                Call pMapInvalidate()
-            End If
+            With pGetCurrentDesignTools()
+                Dim oItem As cItem = .CurrentItem
+                If oItem.CanBeDivided Then
+                    Call .BeginUndoSnapshot("Item divide")
+                    Dim oItems As List(Of cItem) = .CurrentLayer.Items.Divide(oItem)
+                    Call .EndItem()
+                    Dim oNewItem As cItemItems = New cItemItems(oSurvey, oCurrentDesign, pGetCurrentDesignTools.CurrentLayer, cIItem.cItemCategoryEnum.None)
+                    Call oNewItem.AddRange(oItems)
+                    Call pGetCurrentDesignTools.SelectItem(oNewItem)
+                    Call .CommitUndoSnapshot()
+                End If
+            End With
+            Call pMapInvalidate()
         Catch
         End Try
     End Sub
@@ -17571,10 +17583,12 @@ Friend Class frmMain2
     Private Sub btnCurrentItemGenericCombineAllSequences_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCurrentItemGenericCombineAllSequences.ItemClick
         Try
             With pGetCurrentDesignTools()
+                Call .BeginUndoSnapshot("Combine sequences")
                 Dim oItem As cItem = .CurrentItem
                 Call oItem.Points.CombineSequences()
-                Call .TakeUndoSnapshot()
+                Call .CommitUndoSnapshot()
             End With
+            Call pObjectPropertyLoad()
             Call pMapInvalidate()
         Catch
         End Try
@@ -17590,21 +17604,24 @@ Friend Class frmMain2
 
     Private Sub btnCurrentItemGenericCloseAllSequences_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCurrentItemGenericCloseAllSequences.ItemClick
         With pGetCurrentDesignTools()
+            Call .BeginUndoSnapshot("Close sequences")
             Dim oItem As cItem = .CurrentItem
             Call oItem.Points.CloseSequences()
-            Call .TakeUndoSnapshot()
+            Call .CommitUndoSnapshot()
         End With
         Call pObjectPropertyLoad()
         Call pMapInvalidate()
     End Sub
 
     Private Sub btnCurrentItemItemsCombine_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCurrentItemItemsCombine.ItemClick
-        With oCurrentDesign
-            Dim oItemItems As cItemItems = pGetCurrentDesignTools.CurrentItem
+        With pGetCurrentDesignTools()
+            Call .BeginUndoSnapshot("Merge items")
+            Dim oItemItems As cItemItems = .CurrentItem
             Dim oResultItem As cItem = oItemItems.SelfCombine()
-            Call pGetCurrentDesignTools.Clear()
-            Call pGetCurrentDesignTools.SelectItem(oResultItem)
+            Call .Clear()
+            Call .SelectItem(oResultItem)
             Call oResultItem.Points.ReorderSequences()
+            Call .CommitUndoSnapshot()
         End With
         Call pObjectPropertyLoad()
         Call pMapInvalidate()
@@ -17665,22 +17682,24 @@ Friend Class frmMain2
 
     Private Sub btnCurrentItemPointNewFromSequence0_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCurrentItemPointNewFromSequence0.ItemClick
         With pGetCurrentDesignTools()
+            Call .BeginUndoSnapshot("New item from sequence")
             Dim oItem As cItem = .CurrentItem
             Dim oPoint As cPoint = .CurrentItemPoint
             Dim oNewItem As cItem = pGetCurrentDesignTools.CurrentLayer.Items.DivideOneSequence(oItem, oPoint, False)
             Call .SelectItem(oNewItem)
-            Call .TakeUndoSnapshot()
+            Call .CommitUndoSnapshot()
         End With
         Call pMapInvalidate()
     End Sub
 
     Private Sub btnCurrentItemPointNewFromSequence1_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnCurrentItemPointNewFromSequence1.ItemClick
         With pGetCurrentDesignTools()
+            Call .BeginUndoSnapshot("New item from sequence")
             Dim oItem As cItem = .CurrentItem
             Dim oPoint As cPoint = .CurrentItemPoint
             Dim oNewItem As cItem = pGetCurrentDesignTools.CurrentLayer.Items.DivideOneSequence(oItem, oPoint, True)
             Call .SelectItem(oNewItem)
-            Call .TakeUndoSnapshot()
+            Call .CommitUndoSnapshot()
         End With
         Call pMapInvalidate()
     End Sub
@@ -17747,16 +17766,20 @@ Friend Class frmMain2
             With pGetCurrentDesignTools()
                 Dim oItem As cItem = .CurrentItem
                 Call .EndAndSelectItem()
+                Call .BeginUndoSnapshot("Copy item to profile")
                 Call .CloneItem(oSurvey.Profile)
                 Call .SelectItem(oItem)
+                Call .CommitUndoSnapshot()
             End With
             Call pMapInvalidate()
         Else
             With pGetCurrentDesignTools()
                 Dim oItem As cItem = .CurrentItem
                 Call .EndAndSelectItem()
+                Call .BeginUndoSnapshot("Copy item to profile")
                 Call .CloneItem(oSurvey.Plan)
                 Call .SelectItem(oItem)
+                Call .CommitUndoSnapshot()
             End With
             Call pMapInvalidate()
         End If
@@ -17765,6 +17788,7 @@ Friend Class frmMain2
     Private Sub pItemSizeBy(Width As Single, Height As Single)
         If Not bDisabledObjectPropertyEvent Then
             With pGetCurrentDesignTools()
+                .BeginUndoSnapshot("Resize item")
                 If .CurrentItem Is Nothing Then
                     Dim oRect As RectangleF = oCurrentDesign.GetVisibleBounds(oCurrentOptions)
                     Dim oItem As cItemItems = New cItemItems(oSurvey, oCurrentDesign, pGetCurrentDesignTools.CurrentLayer, cIItem.cItemCategoryEnum.None)
@@ -17776,7 +17800,7 @@ Friend Class frmMain2
                     .CurrentItem.ResizeBy(Width / 100, Height / 100)
                 End If
                 Call pPropertyItemBounds()
-                Call .TakeUndoSnapshot()
+                .CommitUndoSnapshot()
             End With
             Call pMapInvalidate()
         End If
@@ -17785,6 +17809,7 @@ Friend Class frmMain2
     Private Sub pItemSizeTo(Width As Single, Height As Single)
         If Not bDisabledObjectPropertyEvent Then
             With pGetCurrentDesignTools()
+                .BeginUndoSnapshot("Resize item")
                 If .CurrentItem Is Nothing Then
                     Dim oRect As RectangleF = oCurrentDesign.GetVisibleBounds(oCurrentOptions)
                     Dim sDiffW As Single = Width / oRect.Width
@@ -17798,7 +17823,35 @@ Friend Class frmMain2
                     .CurrentItem.ResizeTo(Width, Height)
                 End If
                 Call pPropertyItemBounds()
-                Call .TakeUndoSnapshot()
+                .CommitUndoSnapshot()
+            End With
+            Call pMapInvalidate()
+        End If
+    End Sub
+
+    Private Sub pItemMoveBy(X As Single, Y As Single)
+        If Not bDisabledObjectPropertyEvent Then
+            With pGetCurrentDesignTools()
+                .BeginUndoSnapshot("Move item")
+                If .IsInPointEdit AndAlso Not .CurrentItemPoint Is Nothing Then
+                    Call .CurrentItemPoint.MoveBy(X, Y)
+                    Call pPropertyItemPointBounds()
+                Else
+                    If .CurrentItem Is Nothing Then
+                        Dim oRect As RectangleF = oCurrentDesign.GetBounds(oCurrentOptions)
+                        Dim sDiffX As Single = X - oRect.Left
+                        Dim sDiffY As Single = Y - oRect.Top
+                        Dim oItem As cItemItems = New cItemItems(oSurvey, oCurrentDesign, pGetCurrentDesignTools.CurrentLayer, cIItem.cItemCategoryEnum.None)
+                        Call oItem.AddRange(oCurrentDesign.GetAllItems)
+                        If oItem.Count > 0 Then
+                            Call oItem.MoveBy(sDiffX, sDiffY)
+                        End If
+                    Else
+                        Call .CurrentItem.MoveBy(X, Y)
+                    End If
+                    Call pPropertyItemBounds()
+                End If
+                .CommitUndoSnapshot()
             End With
             Call pMapInvalidate()
         End If
@@ -17807,6 +17860,7 @@ Friend Class frmMain2
     Private Sub pItemMoveTo(X As Single, Y As Single)
         If Not bDisabledObjectPropertyEvent Then
             With pGetCurrentDesignTools()
+                .BeginUndoSnapshot("Move item")
                 If .IsInPointEdit AndAlso Not .CurrentItemPoint Is Nothing Then
                     Call .CurrentItemPoint.MoveTo(X, Y)
                     Call pPropertyItemPointBounds()
@@ -17825,7 +17879,7 @@ Friend Class frmMain2
                     End If
                     Call pPropertyItemBounds()
                 End If
-                Call .TakeUndoSnapshot()
+                .CommitUndoSnapshot()
             End With
             Call pMapInvalidate()
         End If
@@ -18098,7 +18152,7 @@ Friend Class frmMain2
                 If oItem.Type = cIItem.cItemTypeEnum.Sketch Then
                     Dim oItemSketch As cIItemSketch = oItem
                     oItemSketch.MorphingDisabled = Enabled
-                    Call pGetCurrentDesignTools.TakeUndoSnapshot()
+                    'Call pGetCurrentDesignTools.TakeUndoSnapshot()
                 End If
             Next
             Call oMousePointer.Pop()
@@ -19161,6 +19215,32 @@ Friend Class frmMain2
 
     Private Sub btnViewToolbarLevels_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btnViewToolbarLevels.CheckedChanged
         oTopDesignLevelBar.Visible = btnViewToolbarLevels.Checked
+    End Sub
+
+    Private Sub btnUndo_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnUndo.ItemClick
+        Call pSurveyUndo()
+    End Sub
+
+    Private Sub oTools_OnUndoChange(sender As Object, e As EventArgs) Handles oTools.OnUndoChanged
+        Call pUndoRefresh()
+    End Sub
+
+    Private Sub mnuUndo_BeforePopup(sender As Object, e As CancelEventArgs) Handles mnuUndo.BeforePopup
+        With pGetCurrentTools()
+            If .Undo.IsUndoable Then
+                Call mnuUndo.ClearItems
+                For Each oUndoitem2 As cUndoItem In .Undo
+                    Dim oItem As BarButtonItem = New BarButtonItem(RibbonControl.Manager, oUndoitem2.Description) '& " " & oUndoitem2.DateStamp)
+                    mnuUndo.AddItem(oItem)
+                Next
+            Else
+                e.Cancel = True
+            End If
+        End With
+    End Sub
+
+    Private Sub oPlanTools_OnItemDelete(Sender As Object, ToolEventArgs As cEditDesignTools.cEditDesignToolsEventArgs) Handles oPlanTools.OnItemDelete, oProfileTools.OnItemDelete
+        Call pGetCurrentDesignTools.BeginUndoSnapshot("Delete item", {ToolEventArgs.CurrentItem})
     End Sub
 End Class
 

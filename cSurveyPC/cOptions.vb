@@ -54,18 +54,6 @@ Namespace cSurvey.Design
         Property DrawPrintOrExportAreaDesignStyle As DesignStyleEnum
     End Interface
 
-    Public Interface cUIControlPropertyInteractions
-        Inherits cIUIInteractions
-        Event OnGetFlags(Sender As Object, e As FlagEventArgs)
-        Event OnSetFlags(Sender As Object, e As FlagEventArgs)
-
-        Event OnDrawInvalidate(Sender As Object, e As EventArgs)
-        Event OnSurveyInvalidate(Sender As Object, e As EventArgs)
-        Event OnObjectPropertyLoad(Sender As Object, e As EventArgs)
-        Event OnTakeUndoSnapshot(Sender As Object, e As EventArgs)
-        Event OnDoCommand(Sender As Object, e As DoCommandEventArgs)
-    End Interface
-
     Public Interface cIOptions
         Inherits cIUIInteractions
 

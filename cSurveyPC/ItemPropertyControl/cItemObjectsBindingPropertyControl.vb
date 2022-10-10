@@ -128,8 +128,6 @@ Friend Class cItemObjectsBindingPropertyControl
     Private Sub tvLayers_CustomDrawEmptyArea(sender As Object, e As CustomDrawEmptyAreaEventArgs) Handles tvLayers.CustomDrawEmptyArea
         If tvLayers.Nodes.Count = 0 Then
             Dim s As String = "Press refresh to update"
-            'e.Appearance.FontStyleDelta = FontStyle.Bold
-            'e.Appearance.FontSizeDelta = 2
             Using oSF As StringFormat = New StringFormat
                 oSF.Alignment = StringAlignment.Center
                 e.Cache.DrawString(s, e.Appearance.Font, e.Appearance.GetForeBrush(e.Cache), e.Bounds, New DevExpress.Utils.StringFormatInfo(oSF))

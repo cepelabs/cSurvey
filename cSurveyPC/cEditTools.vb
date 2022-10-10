@@ -3,6 +3,7 @@
 Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Drawings
 Imports cSurveyPC.cSurvey.Design.Items
+Imports cSurveyPC.cSurvey.Helper.Editor.cUndo
 
 Namespace cSurvey.Helper.Editor
     Public Class cEditDesignEnvironment
@@ -302,6 +303,7 @@ Namespace cSurvey.Helper.Editor
         Implements cIEditSelection
 
         Private oSurvey As cSurvey
+        'Private WithEvents oUndo As cUndo
         Private WithEvents oUndo As cUndo
 
         Private oCurrentSegment As cSegment
@@ -365,6 +367,7 @@ Namespace cSurvey.Helper.Editor
             End Get
         End Property
 
+        Friend Event OnUndoChanged(sender As Object, e As EventArgs)
         Friend Event OnSegmentSelect(ByVal Sender As Object, ByVal ToolEventArgs As cEditBaseToolsEventArgs)
         Friend Event OnTrigPointSelect(ByVal Sender As Object, ByVal ToolEventArgs As cEditBaseToolsEventArgs)
 
@@ -470,6 +473,7 @@ Namespace cSurvey.Helper.Editor
             oSegments = New UIHelpers.cSegmentsBindingList(oSurvey.Segments)
             oCurrentSegments = oSurvey.Segments
 
+            'oUndo = New cUndo(oSurvey, Me)
             oUndo = New cUndo(oSurvey, Me)
             oPlanTools = New cEditDesignTools(Me, oSurvey.Plan)
             oProfileTools = New cEditDesignTools(Me, oSurvey.Profile)
@@ -482,9 +486,15 @@ Namespace cSurvey.Helper.Editor
             End Get
         End Property
 
+        'Public ReadOnly Property Undo() As cUndo
+        '    Get
+        '        Return oUndo
+        '    End Get
+        'End Property
+
         Public Sub DeleteSegment(Segment As cSegment)
             If Not Segment Is Nothing Then
-                Call oUndo.Push("Elimina segmento", cUndo.ActionEnum.Delete, Segment)
+                'Call oUndo.Push("Elimina segmento", cUndo.ActionEnum.Delete, Segment)
                 Call oSurvey.Segments.Remove(Segment)
                 If Segment Is oCurrentSegment Then
                     Call SelectSegment(Nothing)
@@ -494,7 +504,7 @@ Namespace cSurvey.Helper.Editor
 
         Public Sub DeleteSegment()
             If Not oCurrentSegment Is Nothing Then
-                Call oUndo.Push("Elimina segmento", cUndo.ActionEnum.Delete, oCurrentSegment)
+                'Call oUndo.Push("Elimina segmento", cUndo.ActionEnum.Delete, oCurrentSegment)
                 Call oSurvey.Segments.Remove(oCurrentSegment)
             End If
         End Sub
@@ -713,6 +723,10 @@ Namespace cSurvey.Helper.Editor
                 Call DeleteSegment()
             End Using
         End Sub
+
+        Private Sub oUndo_OnChanged(sender As Object, e As EventArgs) Handles oUndo.OnChanged
+            RaiseEvent OnUndoChanged(sender, e)
+        End Sub
     End Class
 
     Friend Class cFilter
@@ -917,6 +931,12 @@ Namespace cSurvey.Helper.Editor
                 Return oParent.Undo
             End Get
         End Property
+
+        'Public ReadOnly Property Undo As cUndo
+        '    Get
+        '        Return oParent.Undo
+        '    End Get
+        'End Property
 
         Public ReadOnly Property Design As cDesign
             Get
@@ -1177,9 +1197,9 @@ Namespace cSurvey.Helper.Editor
                 Else
                     RaiseEvent OnItemSelect(Me, New cEditDesignToolsEventArgs(Me))
                 End If
-                If Not oCurrentItem Is Nothing Then
-                    Call oParent.Undo.Push("Modifica oggetto", cUndo.ActionEnum.Update, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
-                End If
+                'If Not oCurrentItem Is Nothing Then
+                '    Call oParent.Undo.Push("Modifica oggetto", cUndo.ActionEnum.Update, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
+                'End If
             Else
                 Dim oNewTools As cEditDesignTools = oParent.GetDesignTools(Item)
                 Call oNewTools.pRaiseOnChange()
@@ -1261,7 +1281,7 @@ Namespace cSurvey.Helper.Editor
             Else
                 bIsNewItem = False
                 bStarted = False
-                Call oParent.Undo.Push("Modifica oggetto", cUndo.ActionEnum.Update, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
+                'Call oParent.Undo.Push("Modifica oggetto", cUndo.ActionEnum.Update, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
             End If
             RaiseEvent OnItemEdit(Me, New cEditDesignToolsEventArgs(Me))
         End Sub
@@ -1294,7 +1314,7 @@ Namespace cSurvey.Helper.Editor
                     bStarted = False
                     RaiseEvent OnRefreshDesign(Me, New cEditDesignToolsEventArgs(Me))
 
-                    Call oParent.Undo.Push("Modifica oggetto", cUndo.ActionEnum.Update, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
+                    'Call oParent.Undo.Push("Modifica oggetto", cUndo.ActionEnum.Update, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
                 End If
             End If
         End Sub
@@ -1501,7 +1521,7 @@ Namespace cSurvey.Helper.Editor
             End If
             If sExtFormats.Contains("svg") Then
                 Dim oSVGMS As IO.MemoryStream = New IO.MemoryStream
-                Call oCurrentItem.ToSvg(oSurvey.Options("_design.plan"), cItem.SVGOptionsEnum.None).Save(oSVGMS)
+                Call oCurrentItem.ToSvg(oSurvey.Options("_design.plan"), cItem.SVGOptionsEnum.Images).Save(oSVGMS)
                 Call oDataObject.SetData("image/svg+xml", oSVGMS)
             End If
             Call Clipboard.SetDataObject(oDataObject)
@@ -1538,7 +1558,7 @@ Namespace cSurvey.Helper.Editor
         Public Sub DeleteItemPoint()
             If oCurrentItem IsNot Nothing Then
                 If oCurrentItem.Points.Count > 1 Then
-                    Call oParent.Undo.Push("Modifica oggetto", cUndo.ActionEnum.Update, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
+                    'Call oParent.Undo.Push("Modifica oggetto", cUndo.ActionEnum.Update, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
                     Dim iPointIndex As Integer = oCurrentItem.Points.IndexOf(oCurrentItemPoint)
                     If oCurrentItem.Points.Remove(oCurrentItemPoint) Then
                         RaiseEvent OnItemPointDelete(Me, New cEditDesignToolsEventArgs(Me))
@@ -1562,14 +1582,14 @@ Namespace cSurvey.Helper.Editor
         Public Sub DeleteItem()
             If oCurrentItem IsNot Nothing Then
                 If oCurrentItem.Type = cIItem.cItemTypeEnum.Items Then
-                    Call oParent.Undo.Push("Elimina oggetti", cUndo.ActionEnum.Delete, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
+                    'Call oParent.Undo.Push("Elimina oggetti", cUndo.ActionEnum.Delete, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
                     Call oCurrentLayer.Items.Remove(oCurrentItem)
                     Dim oItems As cSurveyPC.cSurvey.Design.Items.cItemItems = oCurrentItem
                     For Each oItem As cItem In oItems
                         Call oCurrentLayer.Design.RemoveItem(oItem)
                     Next
                 Else
-                    Call oParent.Undo.Push("Elimina oggetto", cUndo.ActionEnum.Delete, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
+                    'Call oParent.Undo.Push("Elimina oggetto", cUndo.ActionEnum.Delete, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
                     Call oCurrentLayer.Items.Remove(oCurrentItem)
                 End If
                 RaiseEvent OnItemDelete(Me, New cEditDesignToolsEventArgs(Me))
@@ -1580,15 +1600,53 @@ Namespace cSurvey.Helper.Editor
             End If
         End Sub
 
-        Public Sub TakeUndoSnapshot()
-            If oCurrentItem IsNot Nothing And oCurrentLayer IsNot Nothing Then
-                If oCurrentItem.Type = cIItem.cItemTypeEnum.Items Then
-                    'DA FARE....BOH!
-                Else
-                    Call oParent.Undo.Push("Modifica oggetto", cUndo.ActionEnum.Update, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
+        Public Sub CreateUndoSnapshot(Description As String, Item As cItem)
+            oParent.Undo.CreateSnapshot(Description, {Item})
+        End Sub
+
+        Public Sub CreateUndoSnapshot(Description As String, PropertyName As String)
+            oParent.Undo.CreateSnapshot(Description, If(oDesign.Type = cIDesign.cDesignTypeEnum.Plan, cUndo.cAreaEnum.DesignPlan, cUndo.cAreaEnum.DesignProfile), PropertyName)
+        End Sub
+
+        Public Sub CreateUndoSnapshot(Description As String)
+            oParent.Undo.CreateSnapshot(Description, If(oDesign.Type = cIDesign.cDesignTypeEnum.Plan, cUndo.cAreaEnum.DesignPlan, cUndo.cAreaEnum.DesignProfile))
+        End Sub
+
+        Public Sub BeginUndoSnapshot(Description As String, Items As IEnumerable(Of cItem))
+            oParent.Undo.BeginSnapshot(Description, Items)
+        End Sub
+
+        Public Sub BeginUndoSnapshot(Description As String)
+            oParent.Undo.BeginSnapshot(Description, If(oDesign.Type = cIDesign.cDesignTypeEnum.Plan, cUndo.cAreaEnum.DesignPlan, cUndo.cAreaEnum.DesignProfile))
+        End Sub
+
+        Public Sub CreateSelectionSnaphot()
+            oParent.Undo.CreateSelectionSnapshot(If(oDesign.Type = cIDesign.cDesignTypeEnum.Plan, cUndo.cAreaEnum.DesignPlan, cUndo.cAreaEnum.DesignProfile))
+        End Sub
+
+        Public Sub CancelUndoSnapshot()
+            Call oParent.Undo.CancelSnapshot()
+        End Sub
+
+        Public Sub CommitUndoSnapshot(Optional SkipIfNotBeginned As Boolean = False)
+            If SkipIfNotBeginned Then
+                If oParent.Undo.IsBeginned Then
+                    Call oParent.Undo.CommitSnapshot()
                 End If
+            Else
+                Call oParent.Undo.CommitSnapshot()
             End If
         End Sub
+
+        'Public Sub TakeUndoSnapshot()
+        '    If oCurrentItem IsNot Nothing And oCurrentLayer IsNot Nothing Then
+        '        If oCurrentItem.Type = cIItem.cItemTypeEnum.Items Then
+        '            'DA FARE....BOH!
+        '        Else
+        '            Call oParent.Undo.Push("Modifica oggetto", cUndo.ActionEnum.Update, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
+        '        End If
+        '    End If
+        'End Sub
 
         Private Function pEndItem() As Boolean
             Dim bRaiseEvent As Boolean
@@ -1603,11 +1661,11 @@ Namespace cSurvey.Helper.Editor
             bStarted = False
             If bRaiseEvent Then
                 RaiseEvent OnItemEnd(Me, New cEditDesignToolsEventArgs(oCurrentLayer, oCurrentItem, oCurrentItemPoint, bIsNewItem))
-                If Not oCurrentItem Is Nothing Then
-                    If bIsNewItem Then
-                        Call oParent.Undo.Push("Aggiunta oggetto", cUndo.ActionEnum.Insert, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
-                    End If
-                End If
+                'If Not oCurrentItem Is Nothing Then
+                '    If bIsNewItem Then
+                '        Call oParent.Undo.Push("Aggiunta oggetto", cUndo.ActionEnum.Insert, oCurrentLayer, oCurrentItem, oCurrentLayer.Items.IndexOf(oCurrentItem))
+                '    End If
+                'End If
             End If
             bIsNewItem = False
             oCurrentItem = Nothing

@@ -3215,6 +3215,7 @@ Namespace cSurvey.UIHelpers
                 Call oReg.Close()
             End Using
         End Sub
+
         Public Shared Sub AppendTo(Filename As String, RegistryKey As String, Recents As List(Of String), Button As DevExpress.XtraBars.BarButtonItem)
             Dim sFilename As String = Filename.ToLower
             Do While Recents.Contains(sFilename)

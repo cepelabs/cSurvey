@@ -7485,4 +7485,13 @@ o ad una sezione trasversale</value>
   <data name="btnContextMenu.Caption" xml:space="preserve">
     <value>Apri menu contestuale</value>
   </data>
+  <data name="btnToolsLastUsed.Caption" xml:space="preserve">
+    <value>Ultimi usati</value>
+  </data>
+  <data name="btnToolsMostUsed.Caption" xml:space="preserve">
+    <value>Più usati</value>
+  </data>
+  <data name="btnViewToolbarLastUsedTools.Caption" xml:space="preserve">
+    <value>Ultimi/più usati</value>
+  </data>
 </root>

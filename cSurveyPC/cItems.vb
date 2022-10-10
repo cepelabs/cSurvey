@@ -388,7 +388,8 @@ Namespace cSurvey.Design
             End If
         End Function
 
-        Public Sub Divide(ByVal SourceItem As cItem)
+        Public Function Divide(ByVal SourceItem As cItem) As List(Of cItem)
+            Dim oResults As List(Of cItem) = New List(Of cItem)
             If oItems.Contains(SourceItem) Then
                 If SourceItem.CanBeDivided Then
                     Dim bFirst As Boolean = True
@@ -398,6 +399,7 @@ Namespace cSurvey.Design
                             bFirst = False
                             If Not oDestItem Is Nothing Then
                                 Call oItems.Add(oDestItem)
+                                Call oResults.Add(oDestItem)
                             End If
                             Select Case SourceItem.Type
                                 Case cIItem.cItemTypeEnum.Generic
@@ -422,10 +424,12 @@ Namespace cSurvey.Design
                         End If
                     Next
                     Call oItems.Add(oDestItem)
+                    Call oResults.Add(oDestItem)
                     Call Remove(SourceItem)
                 End If
             End If
-        End Sub
+            Return oResults
+        End Function
 
         Protected Overrides Sub Finalize()
             MyBase.Finalize()

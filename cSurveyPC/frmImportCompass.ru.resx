@@ -136,12 +136,6 @@
   <data name="lblCaveName.Text" xml:space="preserve">
     <value>Пещера:</value>
   </data>
-  <data name="chkCompassCreateBrachForSession.Text" xml:space="preserve">
-    <value>Создать ветку для каждой съёмки</value>
-  </data>
-  <data name="chkCompassImportFlagX.Text" xml:space="preserve">
-    <value>Импортировать данные с флагом X</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
@@ -215,5 +209,11 @@
   </data>
   <data name="cmdOk.Text" xml:space="preserve">
     <value>Ok</value>
+  </data>
+  <data name="chkCompassImportFlagX.Properties.Caption" xml:space="preserve">
+    <value>Импортировать данные с флагом X</value>
+  </data>
+  <data name="chkCompassCreateBrachForSession.Properties.Caption" xml:space="preserve">
+    <value>Создать ветку для каждой съёмки</value>
   </data>
 </root>

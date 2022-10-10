@@ -11,7 +11,7 @@ Friend Class cItemLineTypePropertyControl2
         ' Add any initialization after the InitializeComponent() call.
     End Sub
 
-    Friend Delegate Sub SequencesToDelegate(NewLineType As cIItemLine.LineTypeEnum, AlsoCustomized As Boolean, TakeUndoSnapshot As Boolean)
+    Friend Delegate Sub SequencesToDelegate(NewLineType As cIItemLine.LineTypeEnum, AlsoCustomized As Boolean)
 
     Private oSequencesTo As SequencesToDelegate
 
@@ -33,8 +33,9 @@ Friend Class cItemLineTypePropertyControl2
     Private Sub chkStyleStraightLine_CheckedChanged(sender As Object, e As EventArgs) Handles chkStyleStraightLine.CheckedChanged
         If Not DisabledObjectProperty Then
             If chkStyleStraightLine.Checked Then
-                Call oSequencesTo(cIItemLine.LineTypeEnum.Lines, My.Computer.Keyboard.ShiftKeyDown, False)
-                Call MyBase.TakeUndoSnapshot()
+                Call MyBase.BeginUndoSnapshot("Line type change")
+                Call oSequencesTo(cIItemLine.LineTypeEnum.Lines, My.Computer.Keyboard.ShiftKeyDown)
+                Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("LineStyle")
                 Call MyBase.MapInvalidate()
             End If
@@ -44,8 +45,9 @@ Friend Class cItemLineTypePropertyControl2
     Private Sub chkStyleSpline_CheckedChanged(sender As Object, e As EventArgs) Handles chkStyleSpline.CheckedChanged
         If Not DisabledObjectProperty Then
             If chkStyleSpline.Checked Then
-                Call oSequencesTo(cIItemLine.LineTypeEnum.Splines, My.Computer.Keyboard.ShiftKeyDown, False)
-                Call MyBase.TakeUndoSnapshot()
+                Call MyBase.BeginUndoSnapshot("Line type change")
+                Call oSequencesTo(cIItemLine.LineTypeEnum.Splines, My.Computer.Keyboard.ShiftKeyDown)
+                Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("LineStyle")
                 Call MyBase.MapInvalidate()
             End If
@@ -55,8 +57,9 @@ Friend Class cItemLineTypePropertyControl2
     Private Sub chkStyleBezier_CheckedChanged(sender As Object, e As EventArgs) Handles chkStyleBezier.CheckedChanged
         If Not DisabledObjectProperty Then
             If chkStyleBezier.Checked Then
-                Call oSequencesTo(cIItemLine.LineTypeEnum.Beziers, My.Computer.Keyboard.ShiftKeyDown, False)
-                Call MyBase.TakeUndoSnapshot()
+                Call MyBase.BeginUndoSnapshot("Line type change")
+                Call oSequencesTo(cIItemLine.LineTypeEnum.Beziers, My.Computer.Keyboard.ShiftKeyDown)
+                Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("LineStyle")
                 Call MyBase.MapInvalidate()
             End If

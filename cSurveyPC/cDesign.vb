@@ -1051,9 +1051,12 @@ Namespace cSurvey.Design
                                             If Not oMoveBy.IsEmpty Then
                                                 oState = Graphics.Save()
                                                 Using oMatrix As Matrix = Graphics.Transform.Clone
-                                                    Call oMatrix.Translate(oMoveBy.Width, -oMoveBy.Height) ', MatrixOrder.Prepend)
-                                                    Call oMatrix.RotateAt(oLinkedsurvey.LinkedSurvey.Calculate.GeoMagDeclinationData.MeridianConvergence, New PointF(0, 0)) ', MatrixOrder.Prepend)
+                                                    Call oMatrix.RotateAt(-oSurvey.Calculate.GeoMagDeclinationData.MeridianConvergence, New PointF(0, 0))
+                                                    Call oMatrix.Translate(oMoveBy.Width, -oMoveBy.Height)
+                                                    Call oMatrix.RotateAt(oLinkedsurvey.LinkedSurvey.Calculate.GeoMagDeclinationData.MeridianConvergence, New PointF(0, 0))
                                                     Graphics.Transform = oMatrix
+                                                    'Graphics.FillEllipse(Brushes.Blue, New RectangleF(-5, -5, 10, 10))
+                                                    'Graphics.DrawLine(Pens.Black, New Point(0, 0), New Point(0, -100))
                                                 End Using
                                             End If
                                             Try

@@ -136,12 +136,6 @@
   <data name="lblCaveName.Text" xml:space="preserve">
     <value>Пещера:</value>
   </data>
-  <data name="chkPocketTopoImportData.Text" xml:space="preserve">
-    <value>Импортировать данные</value>
-  </data>
-  <data name="chkPocketTopoImportGraphics.Text" xml:space="preserve">
-    <value>Импортировать графику</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
@@ -213,4 +207,10 @@
   <data name="lblFilename.Text" xml:space="preserve">
 		<value>Файл:</value>
 	</data>
+  <data name="chkPocketTopoImportData.Properties.Caption" xml:space="preserve">
+    <value>Импортировать данные</value>
+  </data>
+  <data name="chkPocketTopoImportGraphics.Properties.Caption" xml:space="preserve">
+    <value>Импортировать графику</value>
+  </data>
 </root>

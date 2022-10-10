@@ -1727,7 +1727,11 @@ Module modPaint
             If oProperties.Sessions.Count = 1 Then
                 Text = Text.Replace("%YEARRANGE%", oProperties.Sessions.FirstSession.Date.Year)
             Else
-                Text = Text.Replace("%YEARRANGE%", oProperties.Sessions.FirstSession.Date.Year & " - " & oProperties.Sessions.LastSession.Date.Year)
+                If oProperties.Sessions.FirstSession.Date.Year = oProperties.Sessions.LastSession.Date.Year Then
+                    Text = Text.Replace("%YEARRANGE%", oProperties.Sessions.FirstSession.Date.Year)
+                Else
+                    Text = Text.Replace("%YEARRANGE%", oProperties.Sessions.FirstSession.Date.Year & " - " & oProperties.Sessions.LastSession.Date.Year)
+                End If
             End If
         End If
 

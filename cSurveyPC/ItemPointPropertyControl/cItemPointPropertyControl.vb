@@ -116,11 +116,32 @@ Public Class cItemPointPropertyControl
     Public Event OnDrawInvalidate(Sender As Object, e As EventArgs) Implements cUIControlPropertyInteractions.OnDrawInvalidate
     Public Event OnSurveyInvalidate(Sender As Object, e As EventArgs) Implements cUIControlPropertyInteractions.OnSurveyInvalidate
     Public Event OnObjectPropertyLoad(Sender As Object, e As EventArgs) Implements cUIControlPropertyInteractions.OnObjectPropertyLoad
-    Public Event OnTakeUndoSnapshot(Sender As Object, e As EventArgs) Implements cUIControlPropertyInteractions.OnTakeUndoSnapshot
     Public Event OnDoCommand(Sender As Object, e As DoCommandEventArgs) Implements cUIControlPropertyInteractions.OnDoCommand
 
     Public Event OnMapInvalidate(Sender As Object, e As EventArgs) Implements cUIControlPropertyInteractions.OnMapInvalidate
     Public Event OnPropertyChanged(sender As Object, e As PropertyChangeEventArgs) Implements cUIControlPropertyInteractions.OnPropertyChanged
+
+    Public Event OnTakeUndoSnapshot(Sender As Object, e As EventArgs) Implements cUIControlPropertyInteractions.OnTakeUndoSnapshot
+    Public Event OnCreateUndoSnapshot(Sender As Object, e As CreateUndoSnapshotEventArgs) Implements cUIControlPropertyInteractions.OnCreateUndoSnapshot
+    Public Event OnBeginUndoSnapshot(Sender As Object, e As BeginUndoSnapshotEventArgs) Implements cUIControlPropertyInteractions.OnBeginUndoSnapshot
+    Public Event OnCommitUndoSnapshot(Sender As Object, e As CommitUndoSnapshotEventArgs) Implements cUIControlPropertyInteractions.OnCommitUndoSnapshot
+    Public Event OnCancelUndoSnapshot(Sender As Object, e As EventArgs) Implements cUIControlPropertyInteractions.OnCancelUndoSnapshot
+
+    Public Sub CreateUndoSnapshot(Description As String, PropertyName As String)
+        RaiseEvent OnCreateUndoSnapshot(Me, New CreateUndoSnapshotEventArgs(Description, PropertyName))
+    End Sub
+
+    Public Sub BeginUndoSnapshot(Description As String)
+        RaiseEvent OnBeginUndoSnapshot(Me, New BeginUndoSnapshotEventArgs(Description))
+    End Sub
+
+    Public Sub CancelUndoSnapshot()
+        RaiseEvent OnCancelUndoSnapshot(Me, EventArgs.Empty)
+    End Sub
+
+    Public Sub CommitUndoSnapshot(Optional SkipIfNotBeginned As Boolean = False)
+        RaiseEvent OnCommitUndoSnapshot(Me, New CommitUndoSnapshotEventArgs(SkipIfNotBeginned))
+    End Sub
 
     Public Sub TakeUndoSnapshot()
         RaiseEvent OnTakeUndoSnapshot(Me, EventArgs.Empty)

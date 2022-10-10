@@ -1,4 +1,5 @@
 ﻿Imports cSurveyPC.cSurvey.Design
+
 Public Class KeyValueChangeEventArgs(Of N, V)
     Private oName As N
     Private oValue As V
@@ -26,6 +27,7 @@ Public Class KeyValueChangeEventArgs(Of N, V)
         oValue = Value
     End Sub
 End Class
+
 Public Class DoCommandEventArgs
     Inherits EventArgs
 
@@ -85,3 +87,69 @@ Public Class FlagEventArgs
         bValue = Value
     End Sub
 End Class
+
+Public Class CommitUndoSnapshotEventArgs
+    Inherits EventArgs
+
+    Private bSkipIfNotBeginned As Boolean
+
+    Public ReadOnly Property SkipIfNotBeginned As Boolean
+        Get
+            Return bSkipIfNotBeginned
+        End Get
+    End Property
+
+    Public Sub New(Optional SkipIfNotBeginned As Boolean = False)
+        bSkipIfNotBeginned = SkipIfNotBeginned
+    End Sub
+End Class
+
+Public Class BeginUndoSnapshotEventArgs
+    Inherits EventArgs
+
+    Private sDescription As String
+
+    Public ReadOnly Property Description As String
+        Get
+            Return sDescription
+        End Get
+    End Property
+
+    Public Sub New(Description As String)
+        sDescription = Description
+    End Sub
+End Class
+
+Public Class CreateUndoSnapshotEventArgs
+    Inherits BeginUndoSnapshotEventArgs
+
+    Private sPropertyName As String
+
+    Public Sub New(Description As String, PropertyName As String)
+        MyBase.New(Description)
+        sPropertyName = PropertyName
+    End Sub
+
+    Public ReadOnly Property PropertyName As String
+        Get
+            Return sPropertyName
+        End Get
+    End Property
+End Class
+
+Public Interface cUIControlPropertyInteractions
+    Inherits cIUIInteractions
+    Event OnGetFlags(Sender As Object, e As FlagEventArgs)
+    Event OnSetFlags(Sender As Object, e As FlagEventArgs)
+
+    Event OnDrawInvalidate(Sender As Object, e As EventArgs)
+    Event OnSurveyInvalidate(Sender As Object, e As EventArgs)
+    Event OnObjectPropertyLoad(Sender As Object, e As EventArgs)
+    Event OnDoCommand(Sender As Object, e As DoCommandEventArgs)
+
+    Event OnTakeUndoSnapshot(Sender As Object, e As EventArgs)
+    Event OnCreateUndoSnapshot(Sender As Object, e As CreateUndoSnapshotEventArgs)
+    Event OnBeginUndoSnapshot(Sender As Object, e As BeginUndoSnapshotEventArgs)
+    Event OnCommitUndoSnapshot(Sender As Object, e As CommitUndoSnapshotEventArgs)
+    Event OnCancelUndoSnapshot(Sender As Object, e As EventArgs)
+End Interface

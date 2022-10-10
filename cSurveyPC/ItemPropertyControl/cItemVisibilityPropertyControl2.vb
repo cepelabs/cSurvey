@@ -35,8 +35,8 @@ Friend Class cItemVisibilityPropertyControl2
     Private Sub chkVisibleInPreview_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropVisibleInPreview.CheckedChanged
         Try
             If Not DisabledObjectProperty() Then
+                Call MyBase.CreateUndoSnapshot("Visible in preview change", "HiddenInPreview")
                 Item.HiddenInPreview = Not chkPropVisibleInPreview.Checked
-                Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("HiddenInPreview")
                 Call MyBase.MapInvalidate()
             End If
@@ -47,8 +47,8 @@ Friend Class cItemVisibilityPropertyControl2
     Private Sub chkVisibleInDesign_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropVisibleInDesign.CheckedChanged
         Try
             If Not DisabledObjectProperty() Then
+                Call MyBase.CreateUndoSnapshot("Visible in design change", "HiddenInDesign")
                 Item.HiddenInDesign = Not chkPropVisibleInDesign.Checked
-                Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("HiddenInDesign")
                 Call MyBase.MapInvalidate()
             End If
@@ -59,6 +59,7 @@ Friend Class cItemVisibilityPropertyControl2
     Private Function pScaleRulestemScaleVisibilityEdit(Item As cItem) As Boolean
         Using frmSR As frmItemScaleVisibility = New frmItemScaleVisibility(Item)
             If frmSR.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                Call MyBase.MapInvalidate()
                 Return True
             Else
                 Return False
@@ -88,10 +89,12 @@ Friend Class cItemVisibilityPropertyControl2
 
     Private Sub chkAffinityDesign_CheckedChanged(sender As Object, e As EventArgs) Handles chkAffinityDesign.CheckedChanged
         Try
-            Item.DesignAffinity = If(chkAffinityDesign.Checked, cItem.DesignAffinityEnum.Design, cItem.DesignAffinityEnum.Extra)
-            Call MyBase.TakeUndoSnapshot()
-            Call MyBase.PropertyChanged("DesignAffinity")
-            Call MyBase.MapInvalidate()
+            If Not DisabledObjectProperty() Then
+                Call MyBase.CreateUndoSnapshot("Design affinity change", "DesignAffinity")
+                Item.DesignAffinity = If(chkAffinityDesign.Checked, cItem.DesignAffinityEnum.Design, cItem.DesignAffinityEnum.Extra)
+                Call MyBase.PropertyChanged("DesignAffinity")
+                Call MyBase.MapInvalidate()
+            End If
         Catch
         End Try
     End Sub

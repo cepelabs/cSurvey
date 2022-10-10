@@ -65,24 +65,27 @@ Friend Class cItemSegmentBindingPropertyControl
 
     Private Sub pSegmentsUnlock()
         If Not DisabledObjectProperty() Then
+            Call MyBase.BeginUndoSnapshot("Segments unlock")
             Item.UnlockSegments()
-            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.CommitUndoSnapshot()
             Call MyBase.MapInvalidate()
         End If
     End Sub
 
     Private Sub pSegmentsRebind()
         If Not DisabledObjectProperty() Then
+            Call MyBase.BeginUndoSnapshot("Segments rebind")
             Call Item.BindSegments()
-            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.CommitUndoSnapshot()
             Call MyBase.MapInvalidate()
         End If
     End Sub
 
     Private Sub pSegmentsLock()
         If Not DisabledObjectProperty() Then
+            Call MyBase.BeginUndoSnapshot("Segments lock")
             Item.LockSegments()
-            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.CommitUndoSnapshot()
             Call MyBase.MapInvalidate()
         End If
     End Sub
@@ -112,20 +115,4 @@ Friend Class cItemSegmentBindingPropertyControl
             btnPropObjectsSelect.Enabled = True
         End If
     End Sub
-
-    'Private Sub lvPropSegmentsBinded_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles lvPropSegmentsBinded.DoubleClick
-    '    If lvPropSegmentsBinded.SelectedItems.Count > 0 Then
-    '        Call pFieldDataShow(True)
-    '    End If
-    'End Sub
-
-    'Private Sub lvPropSegmentsBinded_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lvPropSegmentsBinded.SelectedIndexChanged
-    '    If Not bDisabledObjectPropertyEvent Then
-    '        Try
-    '            Dim oSegment As cSegment = lvPropSegmentsBinded.SelectedItems(0).Tag
-    '            Call pSegmentSelect(oSegment, False, False)
-    '        Catch
-    '        End Try
-    '    End If
-    'End Sub
 End Class

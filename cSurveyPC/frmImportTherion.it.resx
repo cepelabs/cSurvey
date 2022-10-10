@@ -216,16 +216,16 @@
   <data name="txtTherionScaleFactor.ToolTip" xml:space="preserve">
     <value>Fattore di scala applicato in fase di importazione</value>
   </data>
-  <data name="chkTherionMergeAndReorderBorders.Text" xml:space="preserve">
-    <value>Unisci e riordina bordi</value>
+  <data name="chktherionConvertBezierToSpline.Properties.Caption" xml:space="preserve">
+    <value>Converti beziers in splines</value>
   </data>
-  <data name="chkTherionImportprofile.Text" xml:space="preserve">
-    <value>Importa sezione</value>
-  </data>
-  <data name="chkTherionImportplan.Text" xml:space="preserve">
+  <data name="chkTherionImportplan.Properties.Caption" xml:space="preserve">
     <value>Importa pianta</value>
   </data>
-  <data name="chktherionConvertBezierToSpline.Text" xml:space="preserve">
-    <value>Converti beziers in splines</value>
+  <data name="chkTherionImportprofile.Properties.Caption" xml:space="preserve">
+    <value>Importa sezione</value>
+  </data>
+  <data name="chkTherionMergeAndReorderBorders.Properties.Caption" xml:space="preserve">
+    <value>Unisci e riordina bordi</value>
   </data>
 </root>

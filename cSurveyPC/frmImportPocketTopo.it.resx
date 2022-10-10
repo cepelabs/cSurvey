@@ -136,12 +136,6 @@
   <data name="lblCaveName.Text" xml:space="preserve">
     <value>Grotta:</value>
   </data>
-  <data name="chkPocketTopoImportData.Text" xml:space="preserve">
-    <value>Importa dati</value>
-  </data>
-  <data name="chkPocketTopoImportGraphics.Text" xml:space="preserve">
-    <value>Importa grafica</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
@@ -209,5 +203,11 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Importazione dati da PocketTopo:</value>
+  </data>
+  <data name="chkPocketTopoImportData.Properties.Caption" xml:space="preserve">
+    <value>Importa dati</value>
+  </data>
+  <data name="chkPocketTopoImportGraphics.Properties.Caption" xml:space="preserve">
+    <value>Importa grafica</value>
   </data>
 </root>

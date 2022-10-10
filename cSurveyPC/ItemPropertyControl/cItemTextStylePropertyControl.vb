@@ -283,36 +283,6 @@ Friend Class cItemTextStylePropertyControl
         End If
     End Sub
 
-    'Private Sub cboPropTextStyle_DrawItem(ByVal sender As Object, ByVal e As System.Windows.Forms.DrawItemEventArgs)
-    '    Try
-    '        Dim oGr As Graphics = e.Graphics
-    '        oGr.CompositingQuality = CompositingQuality.HighQuality
-    '        oGr.InterpolationMode = InterpolationMode.HighQualityBicubic
-    '        oGr.TextRenderingHint = Drawing.Text.TextRenderingHint.ClearTypeGridFit
-    '        Dim bSelected As Boolean = (e.State And DrawItemState.Selected) = DrawItemState.Selected
-    '        If bSelected Then
-    '            Call oGr.FillRectangle(SystemBrushes.Highlight, e.Bounds)
-    '        Else
-    '            Call oGr.FillRectangle(SystemBrushes.Window, e.Bounds)
-    '        End If
-    '        Dim oFont As cItemFont = cboPropTextStyle.Items(e.Index)
-    '        Using oSampleFont As Font = oFont.GetSampleFont
-    '            Dim oLabelRect As RectangleF = New RectangleF(e.Bounds.Left + 2, e.Bounds.Top, e.Bounds.Right - 2, e.Bounds.Height)
-    '            Using oSF As StringFormat = New StringFormat
-    '                oSF.LineAlignment = StringAlignment.Center
-    '                oSF.Trimming = StringTrimming.EllipsisCharacter
-    '                oSF.FormatFlags = StringFormatFlags.NoWrap
-    '                If bSelected Then
-    '                    Call oGr.DrawString(oFont.Name, oSampleFont, SystemBrushes.HighlightText, oLabelRect, oSF)
-    '                Else
-    '                    Call oGr.DrawString(oFont.Name, oSampleFont, SystemBrushes.WindowText, oLabelRect, oSF)
-    '                End If
-    '            End Using
-    '        End Using
-    '    Catch
-    '    End Try
-    'End Sub
-
     Private Sub txtPropFontColor_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropFontColor.EditValueChanged
         If Not DisabledObjectProperty() Then
             Item.Font.Color = txtPropFontColor.EditValue
@@ -334,13 +304,4 @@ Friend Class cItemTextStylePropertyControl
             Call MyBase.MapInvalidate()
         End If
     End Sub
-
-    'Private Sub chkPropTextUnscalableSize_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropTextUnscalableSize.CheckedChanged
-    '    If Not DisabledObjectProperty() Then
-    '        DirectCast(Item, cItemText).unscalablesize = chkPropTextUnscalableSize.Checked
-    '        Call MyBase.TakeUndoSnapshot()
-    '        Call MyBase.PropertyChanged("UnscalableSize")
-    '        Call MyBase.MapInvalidate()
-    '    End If
-    'End Sub
 End Class

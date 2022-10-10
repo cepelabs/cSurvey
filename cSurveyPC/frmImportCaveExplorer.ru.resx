@@ -210,9 +210,6 @@
   <data name="cmdOk.Text" xml:space="preserve">
     <value>Ok</value>
   </data>
-  <data name="chkCompassCreateBrachForSession.Text" xml:space="preserve">
-		<value>Создать ветку для каждой съёмки</value>
-	</data>
   <data name="chkCompassImportFlagX.Text" xml:space="preserve">
 		<value>Импортировать данные с флагом X</value>
 	</data>

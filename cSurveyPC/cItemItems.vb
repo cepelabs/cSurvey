@@ -4,11 +4,14 @@ Imports System.Drawing.Drawing2D
 Imports cSurveyPC.cSurvey.Design.Layers
 Imports cSurveyPC.cSurvey.Design.cLayers
 Imports cSurveyPC.cSurvey.Data
+Imports DevExpress.Office
 
 Namespace cSurvey.Design.Items
     Public Class cItemItems
         Inherits cItem
         Implements IEnumerable
+        Implements IEnumerable(Of cItem)
+        Implements IReadOnlyList(Of cItem)
 
         Private oItems As List(Of cItem)
         Private WithEvents oDataProperties As Data.cDataProperties
@@ -376,13 +379,13 @@ Namespace cSurvey.Design.Items
             End If
         End Sub
 
-        Public ReadOnly Property Count As Integer
+        Public ReadOnly Property Count As Integer Implements IReadOnlyList(Of cItem).Count
             Get
                 Return oItems.Count
             End Get
         End Property
 
-        Default Public ReadOnly Property Item(ByVal Index As Integer) As cItem
+        Default Public ReadOnly Property Item(ByVal Index As Integer) As cItem Implements IReadOnlyList(Of cItem).Item
             Get
                 Return oItems(Index)
             End Get
@@ -977,10 +980,6 @@ Namespace cSurvey.Design.Items
             Return False
         End Function
 
-        Public Function GetEnumerator() As IEnumerator Implements IEnumerable.GetEnumerator
-            Return oItems.GetEnumerator
-        End Function
-
         Public Function ToArray() As cItem()
             Return oItems.ToArray
         End Function
@@ -1085,5 +1084,13 @@ Namespace cSurvey.Design.Items
                 Call oItem.DataProperties.SetValue(Args.Name, Args.Value)
             Next
         End Sub
+
+        Private Function IEnumerable_GetEnumerator() As IEnumerator Implements IEnumerable.GetEnumerator
+            Return oItems.GetEnumerator
+        End Function
+
+        Public Function GetEnumerator() As IEnumerator(Of cItem) Implements IEnumerable(Of cItem).GetEnumerator
+            Return oItems.GetEnumerator
+        End Function
     End Class
 End Namespace

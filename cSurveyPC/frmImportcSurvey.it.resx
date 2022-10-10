@@ -188,33 +188,6 @@
     <value>Analisi rilievo:</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="chkcSurveyImportScaleRules.Text" xml:space="preserve">
-    <value>Importa impostazioni per scala</value>
-  </data>
-  <data name="chkcSurveyImportDesignProperties.Text" xml:space="preserve">
-    <value>Importa impostazioni grafiche</value>
-  </data>
-  <data name="chkcSurveyImportSurface.Text" xml:space="preserve">
-    <value>Importa dati superficie</value>
-  </data>
-  <data name="chkcSurveyImportProfile.Text" xml:space="preserve">
-    <value>Importa sezione</value>
-  </data>
-  <data name="chkcSurveyImportPlan.Text" xml:space="preserve">
-    <value>Importa pianta</value>
-  </data>
-  <data name="chkcSurveyImportData.Text" xml:space="preserve">
-    <value>Importa dati</value>
-  </data>
-  <data name="chkcSurveyImportGraphics.Text" xml:space="preserve">
-    <value>Importa grafica</value>
-  </data>
-  <data name="chkcSurveyImportCaveBranchFromDesign.Text" xml:space="preserve">
-    <value>Importa grotte/rami associati ad oggetti grafici</value>
-  </data>
-  <data name="chkcSurveyImportDuplicates.Text" xml:space="preserve">
-    <value>Importa battute già esistenti</value>
-  </data>
   <data name="cbocSurveyImportDuplicatesMode.Items" xml:space="preserve">
     <value>per ID battuta uguale</value>
   </data>
@@ -224,26 +197,11 @@
   <data name="lblcSurveyImportDuplicatesMode.Text" xml:space="preserve">
     <value>Ricerca battute esistenti:</value>
   </data>
-  <data name="chkcSurveyImportDuplicatesOverwrite.Text" xml:space="preserve">
-    <value>Sovrascrivi duplicati</value>
-  </data>
-  <data name="chkcSurveyImportDuplicatesStations.Text" xml:space="preserve">
-    <value>Importa e sovrascrivi stazioni già esistenti</value>
-  </data>
   <data name="chkImportAsBranchOf.Text" xml:space="preserve">
     <value>Importa come ramo di:</value>
   </data>
   <data name="chkcSurveyImportUpdateCaveBranchPriority.Text" xml:space="preserve">
     <value>Aggiorna priorità di grotta/ramo</value>
-  </data>
-  <data name="chkcSurveyImportCreateNewBranch.Text" xml:space="preserve">
-    <value>Importa tutto come nuova grotta/ramo</value>
-  </data>
-  <data name="chkcSurveyImportDuplicatesOverwriteOnlyUsed.Text" xml:space="preserve">
-    <value>Sovrascrivi solo battute collegate ad ogg. grafici</value>
-  </data>
-  <data name="chkcSurveyDisableOriginAsExtendstart.Text" xml:space="preserve">
-    <value>Non impostare origine come sub-origine</value>
   </data>
   <data name="lblcSurveyImportWarpingMode.Text" xml:space="preserve">
     <value>Modalità di warping:</value>
@@ -330,5 +288,41 @@
   </data>
   <data name="chkcSurveyImportCaveBranchFromDesign.Properties.Caption" xml:space="preserve">
     <value>Importa grotte/rami collegati al disegno</value>
+  </data>
+  <data name="chkcSurveyImportSurface.Properties.Caption" xml:space="preserve">
+    <value>Importa dati superficie</value>
+  </data>
+  <data name="chkcSurveyImportScaleRules.Properties.Caption" xml:space="preserve">
+    <value>Importa impostazioni per scala</value>
+  </data>
+  <data name="chkcSurveyImportProfile.Properties.Caption" xml:space="preserve">
+    <value>Importa sezione</value>
+  </data>
+  <data name="chkcSurveyImportPlan.Properties.Caption" xml:space="preserve">
+    <value>Importa pianta</value>
+  </data>
+  <data name="chkcSurveyImportGraphics.Properties.Caption" xml:space="preserve">
+    <value>Importa grafica</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesStations.Properties.Caption" xml:space="preserve">
+    <value>Importa e sovrascrivi stazioni già esistenti</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesOverwrite.Properties.Caption" xml:space="preserve">
+    <value>Sovrascrivi duplicati</value>
+  </data>
+  <data name="chkcSurveyImportDuplicates.Properties.Caption" xml:space="preserve">
+    <value>Importa battute già esistenti</value>
+  </data>
+  <data name="chkcSurveyImportDesignProperties.Properties.Caption" xml:space="preserve">
+    <value>Importa impostazioni grafiche</value>
+  </data>
+  <data name="chkcSurveyImportData.Properties.Caption" xml:space="preserve">
+    <value>Importa dati</value>
+  </data>
+  <data name="chkcSurveyImportCreateNewBranch.Properties.Caption" xml:space="preserve">
+    <value>Importa tutto come nuova grotta/ramo</value>
+  </data>
+  <data name="chkcSurveyDisableOriginAsExtendstart.Properties.Caption" xml:space="preserve">
+    <value>Non impostare origine come sub-origine</value>
   </data>
 </root>

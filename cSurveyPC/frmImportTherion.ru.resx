@@ -216,16 +216,16 @@
   <data name="txtTherionScaleFactor.ToolTip" xml:space="preserve">
     <value>Масштабный коэффициент применяемый при импорте</value>
   </data>
-  <data name="chkTherionMergeAndReorderBorders.Text" xml:space="preserve">
-    <value>Объединить и упорядочить границы</value>
+  <data name="chktherionConvertBezierToSpline.Properties.Caption" xml:space="preserve">
+    <value>Конвертировать Безье в сплайны</value>
   </data>
-  <data name="chkTherionImportprofile.Text" xml:space="preserve">
-    <value>Импортировать разрез развертку</value>
-  </data>
-  <data name="chkTherionImportplan.Text" xml:space="preserve">
+  <data name="chkTherionImportplan.Properties.Caption" xml:space="preserve">
     <value>Импортировать план</value>
   </data>
-  <data name="chktherionConvertBezierToSpline.Text" xml:space="preserve">
-    <value>Конвертировать Безье в сплайны</value>
+  <data name="chkTherionImportprofile.Properties.Caption" xml:space="preserve">
+    <value>Импортировать разрез развертку</value>
+  </data>
+  <data name="chkTherionMergeAndReorderBorders.Properties.Caption" xml:space="preserve">
+    <value>Объединить и упорядочить границы</value>
   </data>
 </root>

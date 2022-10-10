@@ -124,12 +124,6 @@
     <value>Отмена</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="chkcSurveyImportPlan.Text" xml:space="preserve">
-    <value>Импортировать план</value>
-  </data>
-  <data name="chkcSurveyImportProfile.Text" xml:space="preserve">
-    <value>Импортировать разрез</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAAAA
@@ -198,20 +192,11 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Импорт данных cSurvey:</value>
   </data>
-  <data name="chkcSurveyImportSurface.Text" xml:space="preserve">
-    <value>Импорт данных поверхности</value>
-  </data>
   <data name="cmdOk.Text" xml:space="preserve">
     <value>Ok</value>
   </data>
   <data name="lblFilename.Text" xml:space="preserve">
     <value>Файл:</value>
-  </data>
-  <data name="chkcSurveyImportGraphics.Text" xml:space="preserve">
-    <value>Импорт графики</value>
-  </data>
-  <data name="chkcSurveyImportData.Text" xml:space="preserve">
-    <value>Импорт данных</value>
   </data>
   <data name="colText.Text" xml:space="preserve">
 		<value>Текст</value>
@@ -219,31 +204,46 @@
   <data name="GroupBox1.Text" xml:space="preserve">
 		<value>Проверить съёмку</value>
 	</data>
-  <data name="chkcSurveyImportScaleRules.Text" xml:space="preserve">
-		<value>Импорт настроек масштаба</value>
-	</data>
-  <data name="chkcSurveyImportDesignProperties.Text" xml:space="preserve">
-		<value>Импорт настроек графики</value>
-	</data>
-  <data name="chkcSurveyImportCaveBranchFromDesign.Text" xml:space="preserve">
-		<value>Импорт привязки пещеры/ветки к графическим объектам </value>
-	</data>
-  <data name="chkcSurveyImportDuplicates.Text" xml:space="preserve">
-		<value>Импорт существующих измерений</value>
-	</data>
   <data name="cbocSurveyImportDuplicatesMode.Items" xml:space="preserve">
 		<value>по ID замера</value>
 	</data>
   <data name="cbocSurveyImportDuplicatesMode.Items1" xml:space="preserve">
 		<value>по данным замера</value>
 	</data>
-  <data name="chkcSurveyImportDuplicatesOverwrite.Text" xml:space="preserve">
-		<value>Перезаписать дубликаты</value>
-	</data>
   <data name="lblcSurveyImportDuplicatesMode.Text" xml:space="preserve">
 		<value>Найти существующие измерения</value>
 	</data>
-  <data name="chkcSurveyImportDuplicatesStations.Text" xml:space="preserve">
-		<value>Импортировать и перезаписать существующие пикеты</value>
-	</data>
+  <data name="chkcSurveyImportSurface.Properties.Caption" xml:space="preserve">
+    <value>Импорт данных поверхности</value>
+  </data>
+  <data name="chkcSurveyImportScaleRules.Properties.Caption" xml:space="preserve">
+    <value>Импорт настроек масштаба</value>
+  </data>
+  <data name="chkcSurveyImportPlan.Properties.Caption" xml:space="preserve">
+    <value>Импортировать план</value>
+  </data>
+  <data name="chkcSurveyImportProfile.Properties.Caption" xml:space="preserve">
+    <value>Импортировать разрез</value>
+  </data>
+  <data name="chkcSurveyImportGraphics.Properties.Caption" xml:space="preserve">
+    <value>Импорт графики</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesStations.Properties.Caption" xml:space="preserve">
+    <value>Импортировать и перезаписать существующие пикеты</value>
+  </data>
+  <data name="chkcSurveyImportDuplicatesOverwrite.Properties.Caption" xml:space="preserve">
+    <value>Перезаписать дубликаты</value>
+  </data>
+  <data name="chkcSurveyImportDuplicates.Properties.Caption" xml:space="preserve">
+    <value>Импорт существующих измерений</value>
+  </data>
+  <data name="chkcSurveyImportDesignProperties.Properties.Caption" xml:space="preserve">
+    <value>Импорт настроек графики</value>
+  </data>
+  <data name="chkcSurveyImportData.Properties.Caption" xml:space="preserve">
+    <value>Импорт данных</value>
+  </data>
+  <data name="chkcSurveyImportCaveBranchFromDesign.Properties.Caption" xml:space="preserve">
+    <value>Импорт привязки пещеры/ветки к графическим объектам </value>
+  </data>
 </root>

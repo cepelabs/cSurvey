@@ -25,23 +25,22 @@ Friend Class cItemNamePropertyControl2
     End Sub
 
     Private Sub txtPropName_Validated(sender As Object, e As EventArgs) Handles txtPropName.Validated
-        Try
-            If Not DisabledObjectProperty() Then
-                Item.Name = txtPropName.Text
-                Call MyBase.TakeUndoSnapshot()
-                Call MyBase.PropertyChanged("Name")
-            End If
-        Catch
-        End Try
+        If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot("Name change", "Name")
+            Item.Name = txtPropName.Text
+            Call MyBase.PropertyChanged("Name")
+        End If
     End Sub
 
     Private Sub cmdItemNameRegen_Click(sender As Object, e As EventArgs) Handles cmdItemNameRegen.Click
         If Not IsNothing(Item) Then
             Dim sPattern As String = Item.Survey.Properties.DesignProperties.GetValue("DesignItemNamePattern", "")
             If TypeOf Item Is cItemItems Then
+                Call MyBase.BeginUndoSnapshot("Items name regen")
                 For Each oSubItem As cItem In DirectCast(Item, cItemItems)
                     oSubItem.Name = modPaint.ReplaceItemTags(Item.Survey, oSubItem, sPattern)
                 Next
+                Call MyBase.CommitUndoSnapshot()
             Else
                 Call txtPropName.Focus()
                 txtPropName.Text = modPaint.ReplaceItemTags(Item.Survey, Item, sPattern)

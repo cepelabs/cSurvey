@@ -26,12 +26,15 @@ Public Class cCaveBranchDropDown
         End Set
     End Property
 
+    Private bDisableEvent As Boolean
+
     Private bAllowEmpty As Boolean
 
     Public Sub Rebind(Survey As cSurvey.cSurvey, Cave As cCaveDropDown, Optional AllowEmpty As Boolean = True, Optional AllowLocked As cCaveDropDown.AllowLockedEnum = cCaveDropDown.AllowLockedEnum.True)
         Dim sCave As String = cCaveInfo.EditToString(Cave.EditValue)
         bAllowEmpty = AllowEmpty
 
+        bDisableEvent = True
         If sCave = "" Then
             If bAllowEmpty Then
                 cboCaveBranchList.Properties.DataSource = New List(Of cCaveInfoBranch)({Survey.Properties.CaveInfos.GetEmptyCaveInfoBranch(sCave)})
@@ -70,6 +73,7 @@ Public Class cCaveBranchDropDown
                 MyBase.Enabled = False
             End If
         End If
+        bDisableEvent = False
     End Sub
 
     Public Property EditValue As cSurvey.cCaveInfoBranch
@@ -121,7 +125,9 @@ Public Class cCaveBranchDropDown
     Public Event EditValueChanged As EventHandler
 
     Private Sub cboCaveBranchList_EditValueChanged(sender As Object, e As EventArgs) Handles cboCaveBranchList.EditValueChanged
-        RaiseEvent EditValueChanged(Me, e)
+        If Not bDisableEvent Then
+            RaiseEvent EditValueChanged(Me, e)
+        End If
     End Sub
 
     Public Event EditRequest As EventHandler

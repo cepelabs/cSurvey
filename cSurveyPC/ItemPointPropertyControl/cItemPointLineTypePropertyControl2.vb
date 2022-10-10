@@ -3,7 +3,7 @@ Imports cSurveyPC.cSurvey.Design.Items
 
 Friend Class cItemPointLineTypePropertyControl2
 
-    Friend Delegate Sub PointSequencesToDelegate(NewLineType As cIItemLine.LineTypeEnum, TakeUndoSnapshot As Boolean)
+    Friend Delegate Sub PointSequencesToDelegate(NewLineType As cIItemLine.LineTypeEnum)
 
     Private oSequencesTo As PointSequencesToDelegate
 
@@ -42,7 +42,7 @@ Friend Class cItemPointLineTypePropertyControl2
         If Not DisabledObjectProperty Then
             If chkStyleAsParent.Checked Then
                 Dim oItem As cIItemLine = Item
-                Call oSequencesTo(oItem.LineType, False)
+                Call oSequencesTo(oItem.LineType)
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("LineStyle")
                 Call MyBase.MapInvalidate()
@@ -53,7 +53,7 @@ Friend Class cItemPointLineTypePropertyControl2
     Private Sub chkStyleStraightLine_CheckedChanged(sender As Object, e As EventArgs) Handles chkStyleStraightLine.CheckedChanged
         If Not DisabledObjectProperty Then
             If chkStyleStraightLine.Checked Then
-                Call oSequencesTo(cIItemLine.LineTypeEnum.Lines, False)
+                Call oSequencesTo(cIItemLine.LineTypeEnum.Lines)
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("LineStyle")
                 Call MyBase.MapInvalidate()
@@ -64,7 +64,7 @@ Friend Class cItemPointLineTypePropertyControl2
     Private Sub chkStyleSpline_CheckedChanged(sender As Object, e As EventArgs) Handles chkStyleSpline.CheckedChanged
         If Not DisabledObjectProperty Then
             If chkStyleSpline.Checked Then
-                Call oSequencesTo(cIItemLine.LineTypeEnum.Splines, False)
+                Call oSequencesTo(cIItemLine.LineTypeEnum.Splines)
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("LineStyle")
                 Call MyBase.MapInvalidate()
@@ -75,7 +75,7 @@ Friend Class cItemPointLineTypePropertyControl2
     Private Sub chkStyleBezier_CheckedChanged(sender As Object, e As EventArgs) Handles chkStyleBezier.CheckedChanged
         If Not DisabledObjectProperty Then
             If chkStyleBezier.Checked Then
-                Call oSequencesTo(cIItemLine.LineTypeEnum.Beziers, False)
+                Call oSequencesTo(cIItemLine.LineTypeEnum.Beziers)
                 Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("LineStyle")
                 Call MyBase.MapInvalidate()

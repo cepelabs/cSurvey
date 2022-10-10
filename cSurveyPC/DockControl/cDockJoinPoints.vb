@@ -29,6 +29,7 @@ Friend Class cDockJoinPoints
     Friend Event OnPointClear(Sender As Object, e As EventArgs)
     Friend Event OnPointRemoved(Sender As Object, e As cPointEventArgs)
     Friend Event OnPointLink(Sender As Object, e As EventArgs)
+    Friend Event OnBeforePointLink(Sender As Object, e As EventArgs)
     Friend Event OnPointSelect(Sender As Object, e As cPointEventArgs)
 
     Private oPoints As BindingList(Of cPoint) = New BindingList(Of cPoint)
@@ -55,7 +56,11 @@ Friend Class cDockJoinPoints
         End If
     End Sub
 
-    Friend Function GetPointsCount()
+    Friend Function GetPointsItems() As IEnumerable(Of cItem)
+        Return oPoints.Select(Function(opoint) opoint.Item).Distinct()
+    End Function
+
+    Friend Function GetPointsCount() As Integer
         Return oPoints.Count
     End Function
 
@@ -109,6 +114,7 @@ Friend Class cDockJoinPoints
     Private Sub btnLink_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnLink.ItemClick
         Dim oPoint As cPoint = tvPoints.GetFocusedObject
         If Not oPoint Is Nothing AndAlso oPoints.Count > 1 Then
+            RaiseEvent OnBeforePointLink(Me, EventArgs.Empty)
             For Each oOtherPoint As cPoint In oPoints.ToList
                 If Not oOtherPoint Is oPoint Then
                     Call oPoint.Join(oOtherPoint)

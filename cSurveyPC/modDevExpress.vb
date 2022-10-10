@@ -341,7 +341,11 @@ Public Module modDevExpress
     Public Sub CopyRowValues(Grid As DevExpress.XtraVerticalGrid.VGridControl)
         Dim oText As StringBuilder = New StringBuilder
         For Each oRow As BaseRow In Grid.Rows
-            oText.AppendLine(oRow.Properties.Value.ToString)
+            If oRow.Properties.Value Is Nothing Then
+                oText.AppendLine("")
+            Else
+                oText.AppendLine(oRow.Properties.Value.ToString)
+            End If
         Next
         Call Clipboard.SetText(oText.ToString)
     End Sub

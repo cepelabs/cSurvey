@@ -22,8 +22,8 @@ Friend Class cItemClippingPropertyControl
 
     Private Sub pSetClippingType(Type As cItem.cItemClippingTypeEnum)
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot("Clipping change", "ClippingType")
             Item.ClippingType = Type
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("ClippingType")
             Call MyBase.MapInvalidate()
         End If

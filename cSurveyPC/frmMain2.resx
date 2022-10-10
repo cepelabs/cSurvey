@@ -961,6 +961,9 @@
   <data name="btnUndo.Caption" xml:space="preserve">
     <value>Undo</value>
   </data>
+  <metadata name="mnuUndo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>440, 135</value>
+  </metadata>
   <data name="btnUndo.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjIsIFZlcnNpb249MjEuMi44
@@ -16048,6 +16051,12 @@
   <data name="&gt;&gt;btnUndo.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="&gt;&gt;mnuUndo.Name" xml:space="preserve">
+    <value>mnuUndo</value>
+  </data>
+  <data name="&gt;&gt;mnuUndo.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="&gt;&gt;btnCut.Name" xml:space="preserve">
     <value>btnCut</value>
   </data>
@@ -18651,48 +18660,6 @@
   </data>
   <data name="&gt;&gt;mnuDesignItemBar8.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;mnuDesignItemChangeTo.Name" xml:space="preserve">
-    <value>mnuDesignItemChangeTo</value>
-  </data>
-  <data name="&gt;&gt;mnuDesignItemChangeTo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;mnuDesignItemChangeTo4.Name" xml:space="preserve">
-    <value>mnuDesignItemChangeTo4</value>
-  </data>
-  <data name="&gt;&gt;mnuDesignItemChangeTo4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem61.Name" xml:space="preserve">
-    <value>ToolStripMenuItem61</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem61.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;mnuDesignItemChangeTo1.Name" xml:space="preserve">
-    <value>mnuDesignItemChangeTo1</value>
-  </data>
-  <data name="&gt;&gt;mnuDesignItemChangeTo1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;mnuDesignItemChangeTo2.Name" xml:space="preserve">
-    <value>mnuDesignItemChangeTo2</value>
-  </data>
-  <data name="&gt;&gt;mnuDesignItemChangeTo2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem13.Name" xml:space="preserve">
-    <value>ToolStripMenuItem13</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;mnuDesignItemChangeTo3.Name" xml:space="preserve">
-    <value>mnuDesignItemChangeTo3</value>
-  </data>
-  <data name="&gt;&gt;mnuDesignItemChangeTo3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;grpDesignProp.Name" xml:space="preserve">
     <value>grpDesignProp</value>
@@ -21960,55 +21927,19 @@
     <value>Create border from splay</value>
   </data>
   <data name="mnuDesignItemSegmentSplay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
+    <value>100, 22</value>
   </data>
   <data name="mnuDesignItemSegmentSplay.Text" xml:space="preserve">
     <value>Splay</value>
   </data>
   <data name="mnuDesignItemBar0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 6</value>
+    <value>97, 6</value>
   </data>
   <data name="mnuDesignItemBar8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 6</value>
-  </data>
-  <data name="mnuDesignItemChangeTo4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
-  </data>
-  <data name="mnuDesignItemChangeTo4.Text" xml:space="preserve">
-    <value>Floor morphology</value>
-  </data>
-  <data name="ToolStripMenuItem61.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 6</value>
-  </data>
-  <data name="mnuDesignItemChangeTo1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
-  </data>
-  <data name="mnuDesignItemChangeTo1.Text" xml:space="preserve">
-    <value>Cave border</value>
-  </data>
-  <data name="mnuDesignItemChangeTo2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
-  </data>
-  <data name="mnuDesignItemChangeTo2.Text" xml:space="preserve">
-    <value>Border</value>
-  </data>
-  <data name="ToolStripMenuItem13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 6</value>
-  </data>
-  <data name="mnuDesignItemChangeTo3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
-  </data>
-  <data name="mnuDesignItemChangeTo3.Text" xml:space="preserve">
-    <value>Ceiling morphology</value>
-  </data>
-  <data name="mnuDesignItemChangeTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
-  </data>
-  <data name="mnuDesignItemChangeTo.Text" xml:space="preserve">
-    <value>Change to</value>
+    <value>97, 6</value>
   </data>
   <data name="mnuDesignItemOLD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 60</value>
+    <value>101, 38</value>
   </data>
   <data name="&gt;&gt;mnuDesignItemOLD.Name" xml:space="preserve">
     <value>mnuDesignItemOLD</value>

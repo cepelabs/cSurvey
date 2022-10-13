@@ -35,9 +35,10 @@ Friend Class cItemImagePropertyControl
         If Not DisabledObjectProperty() Then
             Using frmSB As frmImageEdit = New frmImageEdit(Item)
                 If frmSB.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                    Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo42"))
                     picPropImage.Image = Me.Item.Image
                     Call pRefreshImageInfo()
-                    Call MyBase.TakeUndoSnapshot()
+                    Call MyBase.CommitUndoSnapshot()
                     Call MyBase.PropertyChanged("Image")
                     Call MyBase.MapInvalidate()
                 End If
@@ -55,8 +56,8 @@ Friend Class cItemImagePropertyControl
 
     Private Sub cboPropImageResizeMode_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboPropImageResizeMode.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo42"), "ImageResizeMode")
             Me.Item.ImageResizeMode = cboPropImageResizeMode.SelectedIndex
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("ImageResizeMode")
             Call MyBase.MapInvalidate()
         End If
@@ -64,12 +65,13 @@ Friend Class cItemImagePropertyControl
 
     Private Sub pItemImageRealSize(ByVal Scale As Integer)
         If Not DisabledObjectProperty() Then
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo42"))
             Dim oSize As SizeF = Me.Item.ImageSize
             Dim oRes As PointF = Me.Item.ImageResolution
             oSize.Width = (oSize.Width / oRes.X) * 0.0254F * Scale
             oSize.Height = (oSize.Height / oRes.Y) * 0.0254F * Scale
             Call Me.Item.ResizeTo(oSize)
-            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("ImageScaleToRealSize")
             Call MyBase.MapInvalidate()
         End If
@@ -95,8 +97,8 @@ Friend Class cItemImagePropertyControl
 
     Private Sub txtPropImageRotateAngle_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropImageRotateAngle.EditValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo42"), "RotateBy")
             Me.Item.RotateBy = txtPropImageRotateAngle.EditValue
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("ImageRotateAngle")
             Call MyBase.MapInvalidate()
         End If

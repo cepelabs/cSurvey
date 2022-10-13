@@ -31,6 +31,50 @@ Namespace cSurvey.Helper.Editor
     '    End Sub
     'End Class
 
+    Friend Class cUndoItemSelectionTrigpoint
+        Private sTrigpoint As String
+        Private oTrigpoints As cTrigPoints
+
+        Public ReadOnly Property Trigpoints As cTrigPoints
+            Get
+                Return oTrigpoints
+            End Get
+        End Property
+
+        Public ReadOnly Property Trigpoint As String
+            Get
+                Return sTrigpoint
+            End Get
+        End Property
+
+        Public Sub New(Trigpoints As cTrigPoints, Trigpoint As String)
+            oTrigpoints = Trigpoints
+            sTrigpoint = sTrigpoint
+        End Sub
+    End Class
+
+    Friend Class cUndoItemSelectionSegment
+        Private iIndex As Integer
+        Private oSegments As cSegments
+
+        Public ReadOnly Property Segments As cSegments
+            Get
+                Return oSegments
+            End Get
+        End Property
+
+        Public ReadOnly Property Index As Integer
+            Get
+                Return iIndex
+            End Get
+        End Property
+
+        Public Sub New(Segments As cSegments, Index As Integer)
+            oSegments = Segments
+            iIndex = Index
+        End Sub
+    End Class
+
     Friend Class cUndoItemSelectionDesignData
         Private iIndex As Integer
         Private oLayer As cLayer
@@ -49,6 +93,66 @@ Namespace cSurvey.Helper.Editor
         Public ReadOnly Property Layer As cLayer
             Get
                 Return oLayer
+            End Get
+        End Property
+    End Class
+
+    Friend Class cUndoItemDataTrigpointData
+        Private oXMLElement As XmlElement
+        Private sTrigpoint As String
+        Private oTrigpoints As cTrigPoints
+
+        Public ReadOnly Property XMLElement As XmlElement
+            Get
+                Return oXMLElement
+            End Get
+        End Property
+
+        Public ReadOnly Property Trigpoint As String
+            Get
+                Return sTrigpoint
+            End Get
+        End Property
+
+        Public Sub New(XMLElement As XmlElement, Trigpoint As String, Trigpoints As cTrigPoints)
+            oXMLElement = XMLElement
+            sTrigpoint = Trigpoint
+            oTrigpoints = Trigpoints
+        End Sub
+
+        Public ReadOnly Property Trigpoints As cTrigPoints
+            Get
+                Return oTrigpoints
+            End Get
+        End Property
+    End Class
+
+    Friend Class cUndoItemDataSegmentData
+        Private oXMLElement As XmlElement
+        Private iIndex As Integer
+        Private oSegments As cSegments
+
+        Public ReadOnly Property XMLElement As XmlElement
+            Get
+                Return oXMLElement
+            End Get
+        End Property
+
+        Public ReadOnly Property Index As Integer
+            Get
+                Return iIndex
+            End Get
+        End Property
+
+        Public Sub New(XMLElement As XmlElement, Index As Integer, Segments As cSegments)
+            oXMLElement = XMLElement
+            iIndex = Index
+            oSegments = Segments
+        End Sub
+
+        Public ReadOnly Property Segments As cSegments
+            Get
+                Return oSegments
             End Get
         End Property
     End Class
@@ -113,7 +217,6 @@ Namespace cSurvey.Helper.Editor
         End Property
     End Class
 
-
     Public MustInherit Class cUndoItem
         Private oParent As cUndo
 
@@ -163,6 +266,36 @@ Namespace cSurvey.Helper.Editor
         End Sub
     End Class
 
+    Public Class cUndoDataTrigpointSelection
+        Inherits cUndoItemSelection
+
+        Private oItem As cUndoItemSelectionTrigpoint
+
+        Friend Sub New(Parent As cUndo, Description As String, Area As cAreaEnum, Trigpoint As cTrigPoint)
+            MyBase.New(Parent, Description, Area)
+            oItem = New cUndoItemSelectionTrigpoint(Trigpoint.Survey.TrigPoints, Trigpoint.Name)
+        End Sub
+
+        Friend Overrides Function Restore() As cUndoRestore
+            Return New cUndoRestoreDataTrigPoint(MyBase.Area, oItem.Trigpoints(oItem.Trigpoint))
+        End Function
+    End Class
+
+    Public Class cUndoDataSegmentSelection
+        Inherits cUndoItemSelection
+
+        Private oItem As cUndoItemSelectionSegment
+
+        Friend Sub New(Parent As cUndo, Description As String, Area As cAreaEnum, Segment As cSegment)
+            MyBase.New(Parent, Description, Area)
+            oItem = New cUndoItemSelectionSegment(Segment.Survey.Segments, Segment.Index)
+        End Sub
+
+        Friend Overrides Function Restore() As cUndoRestore
+            Return New cUndoRestoreDataSegment(MyBase.Area, oItem.Segments(oItem.Index))
+        End Function
+    End Class
+
     Public Class cUndoDesignItemSelection
         Inherits cUndoItemSelection
 
@@ -210,7 +343,7 @@ Namespace cSurvey.Helper.Editor
             Dim oRestore As cUndoRestoreDesign = New cUndoRestoreDesign(MyBase.Area)
             For Each oFirstItem As cUndoItemValueDesignPropertyData In oFirstItems.OrderBy(Function(oItem) oItem.Index)
                 Dim oItem As cItem = oFirstItem.Layer.Items(oFirstItem.Index)
-                Call pSetData(oItem, sPropertyName, oFirstItem.Value)
+                Call pSetData(oItem, sPropertyName, oFirstItem)
                 Call oRestore.Append(oItem)
             Next
             Return oRestore
@@ -247,13 +380,36 @@ Namespace cSurvey.Helper.Editor
         End Sub
 
         Private Function pGetData(Item As cItem, PropertyName As String) As cUndoItemValueDesignPropertyData
-            Dim oValue As Object = CallByName(Item, PropertyName, CallType.Get)
+            Dim oBaseObject As Object = Item
+            Dim sPropertyName As String
+            If PropertyName.Contains(".") Then
+                Dim sPropertyNames As String() = PropertyName.Split(".")
+                For i As Integer = 0 To sPropertyNames.Count - 2
+                    oBaseObject = CallByName(oBaseObject, sPropertyNames(i), CallType.Get)
+                Next
+                sPropertyName = sPropertyNames(sPropertyNames.Count - 1)
+            Else
+                sPropertyName = PropertyName
+            End If
+            Dim oValue As Object = CallByName(oBaseObject, sPropertyName, CallType.Get)
             Return New cUndoItemValueDesignPropertyData(oValue, Item.Layer.Items.IndexOf(Item), Item.Layer)
         End Function
 
         Private Function pSetData(Item As cItem, PropertyName As String, Value As cUndoItemValueDesignPropertyData)
             Dim oValue As Object = Value.Value
-            Return CallByName(Item, PropertyName, CallType.Set, oValue)
+            Dim oBaseObject As Object = Item
+            Dim sPropertyName As String
+            If PropertyName.Contains(".") Then
+                Dim sPropertyNames As String() = PropertyName.Split(".")
+                For i As Integer = 0 To sPropertyNames.Count - 2
+                    oBaseObject = CallByName(oBaseObject, sPropertyNames(i), CallType.Get)
+                Next
+                sPropertyName = sPropertyNames(sPropertyNames.Count - 1)
+            Else
+                oBaseObject = Item
+                sPropertyName = PropertyName
+            End If
+            Return CallByName(oBaseObject, sPropertyName, CallType.Set, oValue)
         End Function
     End Class
 
@@ -384,6 +540,159 @@ Namespace cSurvey.Helper.Editor
         End Function
     End Class
 
+    Public Class cUndoDataTrigpointEdit
+        Inherits cUndoItem
+
+        Private oFirstItems As List(Of cUndoItemDataTrigpointData)
+        Private oLastItems As List(Of cUndoItemSelectionTrigpoint)
+
+        Friend Overrides Function Restore() As cUndoRestore
+            For Each oLastItem As cUndoItemSelectionTrigpoint In oLastItems
+                oLastItem.Trigpoints.Remove(oLastItem.Trigpoint)
+            Next
+            Dim oRestore As cUndoRestoreDataTrigPoint = New cUndoRestoreDataTrigPoint(MyBase.Area)
+            For Each oFirstItem As cUndoItemDataTrigpointData In oFirstItems.OrderBy(Function(oItem) oItem.Trigpoint)
+                Dim oItem As cTrigPoint = pDeserializeItem(MyBase.Parent.File, oFirstItem)
+                Call oFirstItem.Trigpoints.Append(oItem)
+                Call oRestore.Append(oItem)
+            Next
+            Return oRestore
+        End Function
+
+        Friend Sub Commit(Items As IEnumerable(Of cTrigPoint))
+            oLastItems = New List(Of cUndoItemSelectionTrigpoint)
+            For Each oItem As cTrigPoint In Items
+                Call oLastItems.Add(New cUndoItemSelectionTrigpoint(oItem.Survey.TrigPoints, oItem.Index))
+            Next
+        End Sub
+
+        Friend Sub Commit(Item As cTrigPoint)
+            oLastItems = New List(Of cUndoItemSelectionTrigpoint)
+            If Item IsNot Nothing Then
+                Call oLastItems.Add(New cUndoItemSelectionTrigpoint(Item.Survey.TrigPoints, Item.Index))
+            End If
+        End Sub
+
+        Friend Sub New(Parent As cUndo, Description As String, Area As cAreaEnum)
+            MyBase.New(Parent, Description, Area)
+            oFirstItems = New List(Of cUndoItemDataTrigpointData)
+        End Sub
+
+        Friend Sub New(Parent As cUndo, Description As String, Area As cAreaEnum, Item As cTrigPoint)
+            MyBase.New(Parent, Description, Area)
+            oFirstItems = New List(Of cUndoItemDataTrigpointData)
+            Call Append(Item)
+        End Sub
+
+        Friend Sub New(Parent As cUndo, Description As String, Area As cAreaEnum, Items As IEnumerable(Of cTrigPoint))
+            MyBase.New(Parent, Description, Area)
+            oFirstItems = New List(Of cUndoItemDataTrigpointData)
+            Call Append(Items)
+        End Sub
+
+        Friend Sub Append(Items As IEnumerable(Of cTrigPoint))
+            For Each oItem As cTrigPoint In Items
+                Call Append(oItem)
+            Next
+        End Sub
+
+        Friend Sub Append(Item As cTrigPoint)
+            Call oFirstItems.Add(pSerializeItem(MyBase.Parent.File, Item))
+        End Sub
+
+        Private Function pDeserializeItem(File As cFile, Item As cUndoItemDataTrigpointData) As cTrigPoint
+            Return Item.Trigpoints.Append(New cTrigPoint(Item.Trigpoints.Survey, Item.XMLElement))
+        End Function
+
+        Private Function pSerializeItem(File As cFile, Item As cTrigPoint) As cUndoItemDataTrigpointData
+            Dim oXML As XmlDocument = File.Document
+            Dim oXMLParent As XmlElement = oXML.CreateElement("i")
+            Dim oXMLSourceData As XmlElement = Item.SaveTo(File, oXML, oXMLParent, cSurvey.SaveOptionsEnum.Silent)
+            If oXMLSourceData Is Nothing Then
+                'TODO: why go here?! must investigate...
+                Return New cUndoItemDataTrigpointData(Nothing, Item.Name, Item.Survey.TrigPoints)
+            Else
+                Return New cUndoItemDataTrigpointData(oXMLSourceData, Item.Name, Item.Survey.TrigPoints)
+            End If
+        End Function
+    End Class
+
+    Public Class cUndoDataSegmentEdit
+        Inherits cUndoItem
+
+        Private oFirstItems As List(Of cUndoItemDataSegmentData)
+        Private oLastItems As List(Of cUndoItemSelectionSegment)
+
+        Friend Overrides Function Restore() As cUndoRestore
+            For Each oLastItem As cUndoItemSelectionSegment In oLastItems
+                oLastItem.Segments.Remove(oLastItem.Index)
+            Next
+            Dim oRestore As cUndoRestoreDataSegment = New cUndoRestoreDataSegment(MyBase.Area)
+            For Each oFirstItem As cUndoItemDataSegmentData In oFirstItems.OrderBy(Function(oItem) oItem.Index)
+                Dim oItem As cSegment = pDeserializeItem(MyBase.Parent.File, oFirstItem)
+                oFirstItem.Segments.Insert(oFirstItem.Index, oItem)
+                Call oRestore.Append(oItem)
+            Next
+            Return oRestore
+        End Function
+
+        Friend Sub Commit(Items As IEnumerable(Of cSegment))
+            oLastItems = New List(Of cUndoItemSelectionSegment)
+            For Each oItem As cSegment In Items
+                Call oLastItems.Add(New cUndoItemSelectionSegment(oItem.Survey.Segments, oItem.Index))
+            Next
+        End Sub
+
+        Friend Sub Commit(Item As cSegment)
+            oLastItems = New List(Of cUndoItemSelectionSegment)
+            If Item IsNot Nothing Then
+                Call oLastItems.Add(New cUndoItemSelectionSegment(Item.Survey.Segments, Item.Index))
+            End If
+        End Sub
+
+        Friend Sub New(Parent As cUndo, Description As String, Area As cAreaEnum)
+            MyBase.New(Parent, Description, Area)
+            oFirstItems = New List(Of cUndoItemDataSegmentData)
+        End Sub
+
+        Friend Sub New(Parent As cUndo, Description As String, Area As cAreaEnum, Item As cSegment)
+            MyBase.New(Parent, Description, Area)
+            oFirstItems = New List(Of cUndoItemDataSegmentData)
+            Call Append(Item)
+        End Sub
+
+        Friend Sub New(Parent As cUndo, Description As String, Area As cAreaEnum, Items As IEnumerable(Of cSegment))
+            MyBase.New(Parent, Description, Area)
+            oFirstItems = New List(Of cUndoItemDataSegmentData)
+            Call Append(Items)
+        End Sub
+
+        Friend Sub Append(Items As IEnumerable(Of cSegment))
+            For Each oItem As cSegment In Items
+                Call Append(oItem)
+            Next
+        End Sub
+
+        Friend Sub Append(Item As cSegment)
+            Call oFirstItems.Add(pSerializeItem(MyBase.Parent.File, Item))
+        End Sub
+
+        Private Function pDeserializeItem(File As cFile, Item As cUndoItemDataSegmentData) As cSegment
+            Return Item.Segments.Append(New cSegment(Item.Segments.Survey, File, Item.XMLElement))
+        End Function
+
+        Private Function pSerializeItem(File As cFile, Item As cSegment) As cUndoItemDataSegmentData
+            Dim oXML As XmlDocument = File.Document
+            Dim oXMLParent As XmlElement = oXML.CreateElement("i")
+            Dim oXMLSourceData As XmlElement = Item.SaveTo(File, oXML, oXMLParent, cSurvey.SaveOptionsEnum.Silent)
+            If oXMLSourceData Is Nothing Then
+                'TODO: why go here?! must investigate...
+                Return New cUndoItemDataSegmentData(Nothing, Item.Index, Item.Survey.Segments)
+            Else
+                Return New cUndoItemDataSegmentData(oXMLSourceData, Item.Index, Item.Survey.Segments)
+            End If
+        End Function
+    End Class
 
     Public MustInherit Class cUndoRestore
         Private iArea As cAreaEnum
@@ -397,6 +706,56 @@ Namespace cSurvey.Helper.Editor
                 Return iArea
             End Get
         End Property
+    End Class
+
+    Public Class cUndoRestoreDataTrigPoint
+        Inherits cUndoRestore
+
+        Private oTrigpoint As cTrigPoint
+
+        Public ReadOnly Property Trigpoint As cTrigPoint
+            Get
+                Return oTrigpoint
+            End Get
+        End Property
+
+        Public Sub New(Area As cAreaEnum, Trigpoint As cTrigPoint)
+            MyBase.New(Area)
+            oTrigpoint = Trigpoint
+        End Sub
+
+        Public Sub New(Area As cAreaEnum)
+            MyBase.New(Area)
+        End Sub
+
+        Public Sub Append(Trigpoint As cTrigPoint)
+            oTrigpoint = Trigpoint
+        End Sub
+    End Class
+
+    Public Class cUndoRestoreDataSegment
+        Inherits cUndoRestore
+
+        Private oSegment As cSegment
+
+        Public ReadOnly Property Segment As cSegment
+            Get
+                Return oSegment
+            End Get
+        End Property
+
+        Public Sub New(Area As cAreaEnum, Segment As cSegment)
+            MyBase.New(Area)
+            oSegment = Segment
+        End Sub
+
+        Public Sub New(Area As cAreaEnum)
+            MyBase.New(Area)
+        End Sub
+
+        Public Sub Append(Segment As cSegment)
+            oSegment = Segment
+        End Sub
     End Class
 
     Public Class cUndoRestoreDesign
@@ -453,6 +812,9 @@ Namespace cSurvey.Helper.Editor
         Public Enum cAreaEnum
             DesignPlan = 0
             DesignProfile = 1
+            DataSegments = 2
+            DataShots = 3
+            All = 99
         End Enum
 
         Private oCurrentUndoItem As cUndoItem
@@ -510,6 +872,14 @@ Namespace cSurvey.Helper.Editor
                     Else
                         oSelectionItem = New cUndoDesignItemSelection(Me, "Selection", Area, oItem)
                     End If
+                Case cAreaEnum.DataSegments
+                    Dim oSegment As cSegment = oParent.CurrentSegment
+                    oSelectionItem = New cUndoDataSegmentSelection(Me, "Selection", Area, oSegment)
+                Case cAreaEnum.DataShots
+                    Dim oTrigpoint As cTrigPoint = oParent.CurrentTrigpoint
+                    oSelectionItem = New cUndoDataTrigpointSelection(Me, "Selection", Area, oTrigpoint)
+                Case cAreaEnum.All
+                    Throw New Exception("Unsupported")
             End Select
             oLastSelectionItem = oSelectionItem
         End Sub
@@ -537,6 +907,12 @@ Namespace cSurvey.Helper.Editor
                         Else
                             oCurrentUndoItem = New cUndoDesignItemProperty(Me, Description, Area, oItem, PropertyName)
                         End If
+                    Case cAreaEnum.DataSegments
+                        Throw New Exception("Unsupported")
+                    Case cAreaEnum.DataShots
+                        Throw New Exception("Unsupported")
+                    Case cAreaEnum.All
+                        Throw New Exception("Unsupported")
                 End Select
                 Call oItems.Push(oCurrentUndoItem)
                 oCurrentUndoItem = Nothing
@@ -569,6 +945,10 @@ Namespace cSurvey.Helper.Editor
                         Else
                             DirectCast(oCurrentUndoItem, cUndoDesignItemNew).Commit(oItem)
                         End If
+                    Case cAreaEnum.DataSegments
+                        'oCurrentUndoItem = New cUndoDataSegmentEdit(Me, Description, Area, oParent.CurrentSegment)
+                    Case cAreaEnum.DataShots
+                        'oCurrentUndoItem = New cUndoDatatrigpointEdit(Me, Description, Area, oParent.CurrentSegment)
                 End Select
                 Call oItems.Push(oCurrentUndoItem)
                 oCurrentUndoItem = Nothing
@@ -633,8 +1013,44 @@ Namespace cSurvey.Helper.Editor
                                 oCurrentUndoItem = New cUndoDesignItemEdit(Me, Description, Area, oItem)
                             End If
                         End If
+                    Case cAreaEnum.DataSegments
+                        oCurrentUndoItem = New cUndoDataSegmentEdit(Me, Description, Area, oParent.CurrentSegment)
+                    Case cAreaEnum.DataShots
+                        oCurrentUndoItem = New cUndoDataTrigpointEdit(Me, Description, Area, oParent.CurrentSegment)
                 End Select
                 sLastDescription = Description
+            End If
+        End Sub
+
+        ''' <summary>
+        ''' Add stations to current snapshot
+        ''' </summary>
+        ''' <param name="Items">Items to be added</param>
+        Public Sub AppendSnapshot(Items As IEnumerable(Of cTrigPoint))
+            If oCurrentUndoItem Is Nothing Then
+                Throw New Exception("Append without begin")
+            Else
+                If TypeOf oCurrentUndoItem Is cUndoDataTrigpointEdit Then
+                    DirectCast(oCurrentUndoItem, cUndoDataTrigpointEdit).Append(oItems)
+                Else
+                    Throw New Exception("Append not allowed for this kind of snapshot")
+                End If
+            End If
+        End Sub
+
+        ''' <summary>
+        ''' Add segments to current snapshot
+        ''' </summary>
+        ''' <param name="Items">Items to be added</param>
+        Public Sub AppendSnapshot(Items As IEnumerable(Of cSegment))
+            If oCurrentUndoItem Is Nothing Then
+                Throw New Exception("Append without begin")
+            Else
+                If TypeOf oCurrentUndoItem Is cUndoDataSegmentEdit Then
+                    DirectCast(oCurrentUndoItem, cUndoDataSegmentEdit).Append(oItems)
+                Else
+                    Throw New Exception("Append not allowed for this kind of snapshot")
+                End If
             End If
         End Sub
 

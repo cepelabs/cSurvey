@@ -33,7 +33,7 @@ Friend Class cItemLineTypePropertyControl2
     Private Sub chkStyleStraightLine_CheckedChanged(sender As Object, e As EventArgs) Handles chkStyleStraightLine.CheckedChanged
         If Not DisabledObjectProperty Then
             If chkStyleStraightLine.Checked Then
-                Call MyBase.BeginUndoSnapshot("Line type change")
+                Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo34"))
                 Call oSequencesTo(cIItemLine.LineTypeEnum.Lines, My.Computer.Keyboard.ShiftKeyDown)
                 Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("LineStyle")
@@ -45,7 +45,7 @@ Friend Class cItemLineTypePropertyControl2
     Private Sub chkStyleSpline_CheckedChanged(sender As Object, e As EventArgs) Handles chkStyleSpline.CheckedChanged
         If Not DisabledObjectProperty Then
             If chkStyleSpline.Checked Then
-                Call MyBase.BeginUndoSnapshot("Line type change")
+                Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo34"))
                 Call oSequencesTo(cIItemLine.LineTypeEnum.Splines, My.Computer.Keyboard.ShiftKeyDown)
                 Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("LineStyle")
@@ -57,7 +57,7 @@ Friend Class cItemLineTypePropertyControl2
     Private Sub chkStyleBezier_CheckedChanged(sender As Object, e As EventArgs) Handles chkStyleBezier.CheckedChanged
         If Not DisabledObjectProperty Then
             If chkStyleBezier.Checked Then
-                Call MyBase.BeginUndoSnapshot("Line type change")
+                Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo34"))
                 Call oSequencesTo(cIItemLine.LineTypeEnum.Beziers, My.Computer.Keyboard.ShiftKeyDown)
                 Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("LineStyle")

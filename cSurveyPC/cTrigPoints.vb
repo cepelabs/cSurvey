@@ -9,7 +9,15 @@ Namespace cSurvey
 
         Private oSurvey As cSurvey
 
+        Public ReadOnly Property Survey As cSurvey
+            Get
+                Return oSurvey
+            End Get
+        End Property
+
         Friend Class OnTrigpointEventArgs
+            Inherits EventArgs
+
             Private oTrigpoint As cTrigPoint
 
             Public ReadOnly Property Trigpoint() As cTrigPoint
@@ -47,10 +55,6 @@ Namespace cSurvey
                 End If
             End Get
         End Property
-
-        'Friend Function GetTrigPointsArray() As List(Of String)
-        '    Return oTrigPoints.Keys.ToList
-        'End Function
 
         Friend Sub New(ByVal Survey As cSurvey)
             oSurvey = Survey

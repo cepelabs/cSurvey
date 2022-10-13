@@ -69,6 +69,7 @@ Friend Class cItemPenStylePropertyControl
     Private Sub cboPropPenPattern_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropPenPattern.EditValueChanged
         If Not DisabledObjectProperty() Then
             If oPoint Is Nothing Then
+                Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
                 If cPen.IsUserPenID(cboPropPenPattern.EditValue) AndAlso Not oSurvey.Pens.Contains(cboPropPenPattern.EditValue) Then
                     Call oSurvey.Pens.Add(cboPropPenPattern.GetUserPen(cboPropPenPattern.EditValue))
                     Call cboPropPenPattern.Rebind(oSurvey)
@@ -82,7 +83,7 @@ Friend Class cItemPenStylePropertyControl
                 End If
                 oPoint.Pen.ID = cboPropPenPattern.EditValue
             End If
-            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("PenPattern")
             Call MyBase.MapInvalidate()
         End If
@@ -133,13 +134,14 @@ Friend Class cItemPenStylePropertyControl
 
     Private Sub txtPropPenColor_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropPenColor.EditValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
             If oPoint Is Nothing Then
                 Item.Pen.Color = txtPropPenColor.EditValue
             Else
                 Call pObjectSetSequencePen()
                 oPoint.Pen.Color = txtPropPenColor.EditValue
             End If
-            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("PenColor")
             Call MyBase.MapInvalidate()
         End If
@@ -250,6 +252,7 @@ Friend Class cItemPenStylePropertyControl
                 .FilterIndex = 1
                 If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                     Try
+                        Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
                         Try
                             Dim oClipart As Drawings.cDrawClipArt = New Drawings.cDrawClipArt(.FileName)
                             If oPoint Is Nothing Then
@@ -268,7 +271,7 @@ Friend Class cItemPenStylePropertyControl
                             End If
                             picPropPenClipartImage.Image = Nothing
                         End Try
-                        Call MyBase.TakeUndoSnapshot()
+                        Call MyBase.CommitUndoSnapshot()
                         Call MyBase.PropertyChanged("BrushClipart")
                         Call MyBase.MapInvalidate()
                     Catch
@@ -280,6 +283,7 @@ Friend Class cItemPenStylePropertyControl
 
     Private Sub cboPropPenDecoration_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropPenDecoration.EditValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
             If oPoint Is Nothing Then
                 Item.Pen.DecorationStyle = cboPropPenDecoration.SelectedIndex
             Else
@@ -287,7 +291,7 @@ Friend Class cItemPenStylePropertyControl
                 oPoint.Pen.DecorationStyle = cboPropPenDecoration.SelectedIndex
             End If
             Call pRefreshHeight()
-            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("PenDecoration")
             Call MyBase.MapInvalidate()
         End If
@@ -344,13 +348,14 @@ Friend Class cItemPenStylePropertyControl
 
     Private Sub txtPropPenWidth_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropPenWidth.EditValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
             If oPoint Is Nothing Then
                 Item.Pen.Width = txtPropPenWidth.EditValue
             Else
                 Call pObjectSetSequencePen()
                 oPoint.Pen.Width = txtPropPenWidth.EditValue
             End If
-            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("PenWidth")
             Call MyBase.MapInvalidate()
         End If
@@ -358,13 +363,14 @@ Friend Class cItemPenStylePropertyControl
 
     Private Sub cboPropPenStyle_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropPenStyle.EditValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
             If oPoint Is Nothing Then
                 Item.Pen.Style = pSelectedIndexToPenStyle(cboPropPenStyle)
             Else
                 Call pObjectSetSequencePen()
                 oPoint.Pen.Style = pSelectedIndexToPenStyle(cboPropPenStyle)
             End If
-            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("PenStyle")
             Call MyBase.MapInvalidate()
         End If
@@ -372,13 +378,14 @@ Friend Class cItemPenStylePropertyControl
 
     Private Sub cboPropPenDecorationAlignment_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropPenDecorationAlignment.EditValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
             If oPoint Is Nothing Then
                 Item.Pen.DecorationAlignment = cboPropPenDecorationAlignment.SelectedIndex
             Else
                 Call pObjectSetSequencePen()
                 oPoint.Pen.DecorationAlignment = cboPropPenDecorationAlignment.SelectedIndex
             End If
-            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("PenDecorationAlignment")
             Call MyBase.MapInvalidate()
         End If
@@ -386,13 +393,14 @@ Friend Class cItemPenStylePropertyControl
 
     Private Sub txtPropPenDecorationSpacePercentage_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropPenDecorationSpacePercentage.EditValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
             If oPoint Is Nothing Then
                 Item.Pen.DecorationSpacePercentage = txtPropPenDecorationSpacePercentage.EditValue
             Else
                 Call pObjectSetSequencePen()
                 oPoint.Pen.DecorationSpacePercentage = txtPropPenDecorationSpacePercentage.EditValue
             End If
-            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("PenDecorationSpacePercentage")
             Call MyBase.MapInvalidate()
         End If
@@ -400,13 +408,14 @@ Friend Class cItemPenStylePropertyControl
 
     Private Sub txtPropPenDecorationScale_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropPenDecorationScale.EditValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
             If oPoint Is Nothing Then
                 Item.Pen.DecorationScale = txtPropPenDecorationScale.EditValue
             Else
                 Call pObjectSetSequencePen()
                 oPoint.Pen.DecorationScale = txtPropPenDecorationScale.EditValue
             End If
-            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("PenDecorationSpacePercentage")
             Call MyBase.MapInvalidate()
         End If
@@ -414,6 +423,7 @@ Friend Class cItemPenStylePropertyControl
 
     Private Sub cboPropPenClipartPenMode_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropPenClipartPenMode.EditValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
             Dim oPen As cPen
             If oPoint Is Nothing Then
                 oPen = Item.Pen
@@ -422,36 +432,23 @@ Friend Class cItemPenStylePropertyControl
                 oPen = oPoint.Pen
             End If
             oPen.ClipartPenMode = cboPropPenClipartPenMode.SelectedIndex
-            'If oPen.ClipartPenMode = cPen.ClipartPenModeEnum.Custom Then
-            '    cboPropPenClipartPenStyle.SelectedIndex = pPenStyleToSelectedIndex(cboPropPenClipartPenStyle, oPen.ClipartPenStyle)
-            '    txtPropPenClipartPenWidth.EditValue = oPen.ClipartPenWidth
-            '    txtPropPenClipartPenColor.EditValue = oPen.ClipartPenColor
-            'End If
-            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("ClipartPenMode")
             Call MyBase.MapInvalidate()
         End If
-
         Call pRefreshHeight()
-
-        'Dim bEnabled As Boolean = cboPropPenClipartPenMode.SelectedIndex = 1
-        'lblPropPenClipartPenStyle.Enabled = bEnabled
-        'cboPropPenClipartPenStyle.Enabled = bEnabled
-        'lblPropPenClipartPenWidth.Enabled = bEnabled
-        'txtPropPenClipartPenWidth.Enabled = bEnabled
-        'lblPropPenClipartPenColor.Enabled = bEnabled
-        'txtPropPenClipartPenColor.Enabled = bEnabled
     End Sub
 
     Private Sub txtPropPenClipartPenWidth_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropPenClipartPenWidth.EditValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
             If oPoint Is Nothing Then
                 Item.Pen.ClipartPenWidth = txtPropPenClipartPenWidth.EditValue
             Else
                 Call pObjectSetSequencePen()
                 oPoint.Pen.ClipartPenWidth = txtPropPenClipartPenWidth.EditValue
             End If
-            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("ClipartPenWidth")
             Call MyBase.MapInvalidate()
         End If
@@ -459,13 +456,14 @@ Friend Class cItemPenStylePropertyControl
 
     Private Sub txtPropPenClipartPenColor_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropPenClipartPenColor.EditValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
             If oPoint Is Nothing Then
-                Item.Pen.clipartpenColor = txtPropPenClipartPenColor.EditValue
+                Item.Pen.ClipartPenColor = txtPropPenClipartPenColor.EditValue
             Else
                 Call pObjectSetSequencePen()
-                oPoint.Pen.clipartpenColor = txtPropPenClipartPenColor.EditValue
+                oPoint.Pen.ClipartPenColor = txtPropPenClipartPenColor.EditValue
             End If
-            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("ClipartPenColor")
             Call MyBase.MapInvalidate()
         End If
@@ -506,13 +504,14 @@ Friend Class cItemPenStylePropertyControl
 
     Private Sub cboPropPenClipartPenStyle_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropPenClipartPenStyle.EditValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
             If oPoint Is Nothing Then
                 Item.Pen.ClipartPenStyle = pSelectedIndexToPenStyle(cboPropPenClipartPenStyle)
             Else
                 Call pObjectSetSequencePen()
                 oPoint.Pen.ClipartPenStyle = pSelectedIndexToPenStyle(cboPropPenClipartPenStyle)
             End If
-            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("ClipartPenStyle")
             Call MyBase.MapInvalidate()
         End If
@@ -520,13 +519,14 @@ Friend Class cItemPenStylePropertyControl
 
     Private Sub cboPropPenDecorationPosition_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropPenDecorationPosition.EditValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo39"))
             If oPoint Is Nothing Then
                 Item.Pen.DecorationPosition = cboPropPenDecorationPosition.SelectedIndex
             Else
                 Call pObjectSetSequencePen()
                 oPoint.Pen.DecorationPosition = cboPropPenDecorationPosition.SelectedIndex
             End If
-            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("PenDecorationPosition")
             Call MyBase.MapInvalidate()
         End If

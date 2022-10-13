@@ -47,7 +47,7 @@ Friend Class cItemAttachmentPropertyControl
             oOFD.Filter = modMain.GetLocalizedString("main.filetypeALL") & " (*.*)|*.*"
             oOFD.FilterIndex = 1
             If oOFD.ShowDialog(Me) = DialogResult.OK Then
-                Call MyBase.BeginUndoSnapshot("Attachment file change")
+                Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo25"))
                 Item.SetAttachment(oOFD.FileName)
                 Call pRefreshPreview()
                 Call MyBase.CommitUndoSnapshot()
@@ -63,9 +63,8 @@ Friend Class cItemAttachmentPropertyControl
 
     Private Sub txtPropAttachmentName_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropAttachmentName.EditValueChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.BeginUndoSnapshot("Attachment name change")
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo25"), "Attachment.Attachment.Name")
             Item.Attachment.Attachment.Name = txtPropAttachmentName.EditValue
-            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("AttachmentName")
             Call MyBase.MapInvalidate()
         End If
@@ -73,9 +72,8 @@ Friend Class cItemAttachmentPropertyControl
 
     Private Sub txtPropAttachmentNote_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropAttachmentNote.EditValueChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.BeginUndoSnapshot("Attachment note change")
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo25"), "Attachment.Attachment.Note")
             Item.Attachment.Attachment.Note = txtPropAttachmentNote.EditValue
-            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("AttachmentNote")
             Call MyBase.MapInvalidate()
         End If

@@ -367,12 +367,6 @@
     <Compile Include="Calculate\cCalculate.Plot.cSplayProfileProjectedDatas.vb" />
     <Compile Include="Calculate\cCalculate.Plot.cSplayPlanProjectedDatas.vb" />
     <Compile Include="Calculate\cCalculate.Plot.cSplayPlanProjectedData.vb" />
-    <Compile Include="cGrid.Designer.vb">
-      <DependentUpon>cGrid.vb</DependentUpon>
-    </Compile>
-    <Compile Include="cGrid.vb">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="cOptions.cSurfaceLochOptions.vb" />
     <Compile Include="cOptionsTherion.vb" />
     <Compile Include="frmDistancesFilter.Designer.vb">
@@ -717,10 +711,10 @@
     <Compile Include="Specialized\cMessageBar.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cRibbonForm.vb">
+    <Compile Include="Specialized\cRibbonForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="cForm.vb">
+    <Compile Include="Specialized\cForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="cAttachments.vb" />
@@ -753,12 +747,6 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="cLinkedSurveys.vb" />
-    <Compile Include="cNumericUpDown.Designer.vb">
-      <DependentUpon>cNumericUpDown.vb</DependentUpon>
-    </Compile>
-    <Compile Include="cNumericUpDown.vb">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="cPropertyControl.vb" />
     <Compile Include="cItemClipartSubItems.vb" />
     <Compile Include="cItemGroup.vb" />
@@ -784,9 +772,6 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="cMasterSurvey.vb" />
-    <Compile Include="cRibbonMiniToolbar.vb">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="cSegmentImage.vb" />
     <Compile Include="cSegmentImages.vb" />
     <Compile Include="Specialized\cCaveDropDown.Designer.vb">
@@ -852,7 +837,7 @@
     <Compile Include="DockControl\cDockLinkedSurveys.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cVerticalGrid.vb">
+    <Compile Include="Specialized\cVerticalGrid.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="frmCaveBranchesSelector.Designer.vb">
@@ -923,7 +908,7 @@
     <Compile Include="cItemProfileCrossSectionMarker.vb" />
     <Compile Include="cProperties.cHighlightsDetail.vb" />
     <Compile Include="cProperties.cHighlightsDetails.vb" />
-    <Compile Include="cHolosViewer.xaml.vb">
+    <Compile Include="Specialized\cHolosViewer.xaml.vb">
       <DependentUpon>cHolosViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="cICaveInfo.vb" />
@@ -978,16 +963,10 @@
     <Compile Include="cOptions.cScaleOptions.vb" />
     <Compile Include="cOptions.cSurface3DOptions.vb" />
     <Compile Include="cOptions3D.vb" />
-    <Compile Include="cPanel.Designer.vb">
-      <DependentUpon>cPanel.vb</DependentUpon>
-    </Compile>
-    <Compile Include="cPanel.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="cProgressPanel.Designer.vb">
+    <Compile Include="Specialized\cProgressPanel.Designer.vb">
       <DependentUpon>cProgressPanel.vb</DependentUpon>
     </Compile>
-    <Compile Include="cProgressPanel.vb">
+    <Compile Include="Specialized\cProgressPanel.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="cScript.vb" />
@@ -1230,7 +1209,6 @@
     </Compile>
     <Compile Include="cResurvey.vb" />
     <Compile Include="cSurface.vb" />
-    <Compile Include="cUndoItem.vb" />
     <Compile Include="frmImportGenericData.Designer.vb">
       <DependentUpon>frmImportGenericData.vb</DependentUpon>
     </Compile>
@@ -2161,7 +2139,7 @@
     <EmbeddedResource Include="Specialized\cMessageBar.resx">
       <DependentUpon>cMessageBar.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cProgressPanel.resx">
+    <EmbeddedResource Include="Specialized\cProgressPanel.resx">
       <DependentUpon>cProgressPanel.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -4703,7 +4681,7 @@
     </FileAssociation>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="cHolosViewer.xaml">
+    <Page Include="Specialized\cHolosViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

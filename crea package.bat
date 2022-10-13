@@ -10,6 +10,7 @@ cSurveyUpdateVersion.exe
 ..\..\..\..\7za a -tzip csurvey64 cSurveyPC.exe.config
 ..\..\..\..\7za a -tzip csurvey64 designtools.xml
 ..\..\..\..\7za a -tzip csurvey64 designtools_debug.xml
+..\..\..\..\7za a -tzip csurvey64 papersizes.xml
 ..\..\..\..\7za a -tzip csurvey64 *.dll
 ..\..\..\..\7za a -tzip csurvey64 *.txt
 ..\..\..\..\7za a -tzip csurvey64 resources.resources

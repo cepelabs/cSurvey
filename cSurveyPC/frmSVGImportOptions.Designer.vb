@@ -137,6 +137,8 @@ Partial Class frmSVGImportOptions
         Me.Controls.Add(Me.cboSVGLineType)
         Me.Controls.Add(Me.cmdOk)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.IconOptions.Icon = CType(resources.GetObject("frmSVGImportOptions.IconOptions.Icon"), System.Drawing.Icon)
+        Me.IconOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.import
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSVGImportOptions"

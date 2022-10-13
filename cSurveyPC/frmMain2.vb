@@ -2116,7 +2116,7 @@ Friend Class frmMain2
     Private Sub pDesignPointsUnjoin(Optional All As Boolean = False)
         If Not bDisabledObjectPropertyEvent Then
             With pGetCurrentDesignTools()
-                Call .BeginUndoSnapshot("Unjoin point")
+                Call .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo1"))
                 Call .CurrentItemPoint.Unjoin(All)
                 Call .CommitUndoSnapshot()
             End With
@@ -3622,7 +3622,7 @@ Friend Class frmMain2
                                             End Select
                                         Else
                                             If .LastAnchor <> AnchorRectangleTypeEnum.None Then
-                                                Call .BeginUndoSnapshot("Item transform")
+                                                Call .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo2"))
                                             End If
                                             Select Case .LastAnchor
                                                 Case AnchorRectangleTypeEnum.GenericPoint
@@ -6063,7 +6063,7 @@ Friend Class frmMain2
 
     Private Sub pSequenceDelete()
         With pGetCurrentDesignTools()
-            .BeginUndoSnapshot("Sequence delete")
+            .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo3"))
             Dim oItem As cItem = .CurrentItem
             Dim oPoint As cPoint = .CurrentItemPoint
             Call oItem.Points.DeleteSequence(oPoint)
@@ -6079,7 +6079,7 @@ Friend Class frmMain2
 
     Private Sub pSequenceDivide(Optional Join As Boolean = False)
         With pGetCurrentDesignTools()
-            .BeginUndoSnapshot("Sequence divide")
+            .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo4"))
             Dim oItem As cItem = .CurrentItem
             Dim oPoint As cPoint = .CurrentItemPoint
             Call oItem.Points.DivideSequence(oPoint, Join)
@@ -6090,7 +6090,7 @@ Friend Class frmMain2
 
     Private Sub pItemDeletePoint()
         With pGetCurrentDesignTools()
-            .BeginUndoSnapshot("Point delete")
+            .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo5"))
             Dim oItem As cItem = .CurrentItem
             Dim oPoint As cPoint = .CurrentItemPoint
             Call oItem.Points.Remove(oPoint)
@@ -6107,7 +6107,7 @@ Friend Class frmMain2
     Private Sub pItemAddPoint()
         Try
             With pGetCurrentDesignTools()
-                .BeginUndoSnapshot("Point add")
+                .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo6"))
                 Dim oNewPoint As cPoint
                 If .IsNewPoint Then
                     Dim iIndex As Integer = .CurrentItem.Points.IndexOf(.CurrentNewPointRelative)
@@ -6130,7 +6130,7 @@ Friend Class frmMain2
 
     Private Sub pSequenceCombine()
         With pGetCurrentDesignTools()
-            .BeginUndoSnapshot("Sequence combine")
+            .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo7"))
             Dim oEditPoint As cPoint = .CurrentItemPoint
             Dim oNewEditPoint As cPoint = oEditPoint.Item.Points.CombineSequences(oEditPoint)
             Call .SelectPoint(oNewEditPoint)
@@ -6142,7 +6142,7 @@ Friend Class frmMain2
     Private Sub pItemSendToBottom()
         Try
             With pGetCurrentDesignTools()
-                .BeginUndoSnapshot("Send to bottom")
+                .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo8"))
                 Call .CurrentLayer.Items.SendToBottom(.CurrentItem)
                 Call .CommitUndoSnapshot()
             End With
@@ -6154,7 +6154,7 @@ Friend Class frmMain2
     Private Sub pItemSendBehind()
         Try
             With pGetCurrentDesignTools()
-                .BeginUndoSnapshot("Send behind")
+                .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo9"))
                 Call .CurrentLayer.Items.SendBehind(.CurrentItem)
                 Call .CommitUndoSnapshot()
             End With
@@ -6166,7 +6166,7 @@ Friend Class frmMain2
     Private Sub pItemBringAhead()
         Try
             With pGetCurrentDesignTools()
-                .BeginUndoSnapshot("Bring ahead")
+                .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo10"))
                 Call .CurrentLayer.Items.BringAhead(.CurrentItem)
                 Call .CommitUndoSnapshot()
             End With
@@ -6178,7 +6178,7 @@ Friend Class frmMain2
     Private Sub pItemBringToTop()
         Try
             With pGetCurrentDesignTools()
-                .BeginUndoSnapshot("Bring to top")
+                .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo11"))
                 Call .CurrentLayer.Items.BringToTop(.CurrentItem)
                 Call .CommitUndoSnapshot()
             End With
@@ -7092,7 +7092,7 @@ Friend Class frmMain2
 
     Private Sub pSequenceClose()
         With pGetCurrentDesignTools()
-            .BeginUndoSnapshot("Sequence close")
+            .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo12"))
             Dim oItem As cItem = .CurrentItem
             Dim oPoint As cPoint = .CurrentItemPoint
             Call oItem.Points.CloseSequence(oPoint)
@@ -7104,7 +7104,7 @@ Friend Class frmMain2
     Private Sub pItemRotateBy(Angle As Single, CenteredOnOrigin As Boolean)
         With pGetCurrentDesignTools()
 
-            .BeginUndoSnapshot("Rotate by")
+            .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo13"))
             If .CurrentItem Is Nothing Then
                 Dim oRect As RectangleF = oCurrentDesign.GetBounds(oCurrentOptions)
                 Dim oCenter As PointF
@@ -7134,7 +7134,7 @@ Friend Class frmMain2
 
     Private Sub pObjectFlipV()
         With pGetCurrentDesignTools()
-            .BeginUndoSnapshot("Flip vertically")
+            .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo14"))
             If .CurrentItem Is Nothing Then
                 Dim oRect As RectangleF = oCurrentDesign.GetBounds(oCurrentOptions)
                 Dim oItem As cItemItems = New cItemItems(oSurvey, oCurrentDesign, pGetCurrentDesignTools.CurrentLayer, cIItem.cItemCategoryEnum.None)
@@ -7154,7 +7154,7 @@ Friend Class frmMain2
 
     Private Sub pObjectFlipH()
         With pGetCurrentDesignTools()
-            .BeginUndoSnapshot("Flip horizzontally")
+            .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo15"))
             If .CurrentItem Is Nothing Then
                 Dim oRect As RectangleF = oCurrentDesign.GetBounds(oCurrentOptions)
                 Dim oItem As cItemItems = New cItemItems(oSurvey, oCurrentDesign, pGetCurrentDesignTools.CurrentLayer, cIItem.cItemCategoryEnum.None)
@@ -7257,7 +7257,7 @@ Friend Class frmMain2
                     Call pGetCurrentDesignTools.Reset()
                 Else
                     If ToolEventArgs.IsNewItem Then
-                        Call pGetCurrentDesignTools.CreateUndoSnapshot("Create item", ToolEventArgs.CurrentItem)
+                        Call pGetCurrentDesignTools.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo24"), ToolEventArgs.CurrentItem)
                     End If
                     Call .Invalidate(oCurrentOptions)
                 End If
@@ -8697,7 +8697,7 @@ Friend Class frmMain2
 
     Private Sub pSequenceRevert()
         With pGetCurrentDesignTools()
-            .BeginUndoSnapshot("Sequence reverted")
+            .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo16"))
             Dim oItem As cItem = .CurrentItem
             Dim oPoint As cPoint = .CurrentItemPoint
             Call oItem.Points.RevertSequence(oPoint)
@@ -8802,7 +8802,7 @@ Friend Class frmMain2
         Try
             If UIHelpers.Dialogs.Msgbox(GetLocalizedString("main.warning11"), MsgBoxStyle.YesNo Or MsgBoxStyle.Question, GetLocalizedString("main.warningtitle")) = MsgBoxResult.Yes Then
                 With pGetCurrentDesignTools()
-                    .BeginUndoSnapshot("Reduce point")
+                    .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo17"))
                     Dim oItem As Items.cIItemLine = .CurrentItem
                     Call oItem.ReducePoints(btnCurrentItemGenericReducePointFactor.EditValue)
                     Call .CommitUndoSnapshot()
@@ -9902,7 +9902,7 @@ Friend Class frmMain2
         Try
             If Not bDisabledObjectPropertyEvent Then
                 With pGetCurrentDesignTools()
-                    .BeginUndoSnapshot("Set cave and brach")
+                    .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo18"))
                     Dim oItem As cItem = .CurrentItem
                     Dim sCurrentCave As String = cCaveInfo.EditToString(btnMainCaveList.EditValue)
                     Dim sCurrentBranch As String = cCaveInfoBranch.EditToString(btnMainCaveBranchList.EditValue)
@@ -12929,7 +12929,7 @@ Friend Class frmMain2
     Private Sub btnCurrentItemGenericRestorePointPen_ItemClick(ByVal sender As System.Object, ByVal e As ItemClickEventArgs) Handles btnCurrentItemGenericRestorePointPen.ItemClick
         Try
             With pGetCurrentDesignTools()
-                .BeginUndoSnapshot("Restore point pen")
+                .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo19"))
                 Dim oItem As cItem = .CurrentItem
                 For Each oSequence As cSequence In oItem.Points.GetSequences
                     With oSequence.First
@@ -13994,7 +13994,7 @@ Friend Class frmMain2
                                 'per ora...nulla
                             Else
                                 If .CurrentItem.CanBeRotated Then
-                                    Call .BeginUndoSnapshot("Rotate item")
+                                    Call .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo20"))
                                     Call .CurrentItem.Rotate(sStep)
                                     Call .CommitUndoSnapshot()
                                 End If
@@ -14007,7 +14007,7 @@ Friend Class frmMain2
                             sStep = 0.01
                         End If
                         With pGetCurrentDesignTools()
-                            Call .BeginUndoSnapshot("Move item")
+                            Call .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo21"))
                             If .IsInPointEdit Then
                                 Call .CurrentItemPoint.MoveBy(sStep, 0)
                             Else
@@ -14038,7 +14038,7 @@ Friend Class frmMain2
                                 'per ora...nulla
                             Else
                                 If .CurrentItem.CanBeResized Then
-                                    Call .BeginUndoSnapshot("Rotate item")
+                                    Call .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo20"))
                                     Call .CurrentItem.ResizeBy(sStep, sStep)
                                     Call .CommitUndoSnapshot()
                                 ElseIf .CurrentItem.HaveSign Then
@@ -14054,7 +14054,7 @@ Friend Class frmMain2
                             sStep = 0.01
                         End If
                         With pGetCurrentDesignTools()
-                            Call .BeginUndoSnapshot("Move item")
+                            Call .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo21"))
                             If .IsInPointEdit Then
                                 Call .CurrentItemPoint.MoveBy(0, sStep)
                             Else
@@ -14085,7 +14085,7 @@ Friend Class frmMain2
                                 'per ora...nulla
                             Else
                                 If .CurrentItem.CanBeResized Then
-                                    Call .BeginUndoSnapshot("Rotate item")
+                                    Call .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo20"))
                                     Call .CurrentItem.ResizeBy(sStep, sStep)
                                     Call .CommitUndoSnapshot()
                                 ElseIf .CurrentItem.HaveSign Then
@@ -14101,7 +14101,7 @@ Friend Class frmMain2
                             sStep = 0.01
                         End If
                         With pGetCurrentDesignTools()
-                            Call .BeginUndoSnapshot("Move item")
+                            Call .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo21"))
                             If .IsInPointEdit Then
                                 Call .CurrentItemPoint.MoveBy(0, -sStep)
                             Else
@@ -14132,7 +14132,7 @@ Friend Class frmMain2
                                 'per ora...nulla
                             Else
                                 If .CurrentItem.CanBeRotated Then
-                                    Call .BeginUndoSnapshot("Rotate item")
+                                    Call .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo20"))
                                     Call .CurrentItem.Rotate(sStep)
                                     Call .CommitUndoSnapshot()
                                 End If
@@ -14145,7 +14145,7 @@ Friend Class frmMain2
                             sStep = 0.01
                         End If
                         With pGetCurrentDesignTools()
-                            Call .BeginUndoSnapshot("Move item")
+                            Call .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo21"))
                             If .IsInPointEdit Then
                                 Call .CurrentItemPoint.MoveBy(-sStep, 0)
                             Else
@@ -14261,7 +14261,7 @@ Friend Class frmMain2
 
     Private Sub pItemHorizontalAlign(Alignment As cItemItems.HorizontalAlignmentEnum)
         With pGetCurrentDesignTools()
-            Call .BeginUndoSnapshot("Align item")
+            Call .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo22"))
             Dim oItems As cItemItems = .CurrentItem
             Call oItems.HorizontalAlign(Alignment)
             Call .CommitUndoSnapshot()
@@ -14272,7 +14272,7 @@ Friend Class frmMain2
 
     Private Sub pItemVerticalAlign(Alignment As cItemItems.VerticalAlignmentEnum)
         With pGetCurrentDesignTools()
-            Call .BeginUndoSnapshot("Align item")
+            Call .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo22"))
             Dim oItems As cItemItems = .CurrentItem
             Call oItems.VerticalAlign(Alignment)
             Call .CommitUndoSnapshot()
@@ -14288,7 +14288,7 @@ Friend Class frmMain2
 
     Private Sub pItemSpaceH()
         With pGetCurrentDesignTools()
-            Call .BeginUndoSnapshot("Space item")
+            Call .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo23"))
             Dim oItems As cItemItems = .CurrentItem
             If My.Computer.Keyboard.ShiftKeyDown Then
                 Call oItems.HorizontalSpace(cItemItems.SpaceEnum.ToMaximum)
@@ -14303,7 +14303,7 @@ Friend Class frmMain2
 
     Private Sub pItemSpaceV()
         With pGetCurrentDesignTools()
-            Call .BeginUndoSnapshot("Space item")
+            Call .BeginUndoSnapshot(modMain.GetLocalizedString("main.undo23"))
             Dim oItems As cItemItems = .CurrentItem
             If My.Computer.Keyboard.ShiftKeyDown Then
                 Call oItems.VerticalSpace(cItemItems.SpaceEnum.ToMaximum)

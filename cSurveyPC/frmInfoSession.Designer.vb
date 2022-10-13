@@ -37,7 +37,7 @@ Partial Class frmInfoSession
         Me.chrSessions = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.tabMain = New System.Windows.Forms.TabControl()
         Me.tabStats = New System.Windows.Forms.TabPage()
-        Me.grdSurveyInfo = New cSurveyPC.cGrid()
+        Me.grdSurveyInfo = New DataGridView()
         Me.colSurveyInfoName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colSurveyInfoValue = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tabCharts = New System.Windows.Forms.TabPage()
@@ -205,7 +205,7 @@ Partial Class frmInfoSession
     End Sub
     Friend WithEvents cmdClose As System.Windows.Forms.Button
     Friend WithEvents cboSurveyInfoSession As System.Windows.Forms.ComboBox
-    Friend WithEvents grdSurveyInfo As cSurveyPC.cGrid
+    Friend WithEvents grdSurveyInfo As DataGridView
     Friend WithEvents lblSurveyInfoSession As System.Windows.Forms.Label
     Friend WithEvents colSurveyInfoName As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents colSurveyInfoValue As System.Windows.Forms.DataGridViewTextBoxColumn

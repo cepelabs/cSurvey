@@ -32,9 +32,10 @@ Friend Class cItemPointSegmentBindingPropertyControl
 
     Private Sub chkPropSegmentLocked_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropSegmentLocked.CheckedChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo43"))
             Me.Point.SegmentLocked = chkPropSegmentLocked.Checked
             chkPropSegmentLocked.ImageOptions.SvgImage = If(chkPropSegmentLocked.Checked, My.Resources.Security_Lock, My.Resources.Security_Unlock)
-            Call MyBase.TakeUndoSnapshot()
+            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("PointSegmentLocked")
             Call MyBase.MapInvalidate()
         End If
@@ -57,28 +58,4 @@ Friend Class cItemPointSegmentBindingPropertyControl
             Call DoCommand("selectshot", grdSegmentsBinded.SelectedItem)
         End If
     End Sub
-    'Private Sub txtPropName_Validated(sender As Object, e As EventArgs)
-    '    Try
-    '        If Not DisabledObjectProperty() Then
-    '            Item.Name = txtPropName.Text
-    '            Call MyBase.TakeUndoSnapshot()
-    '            Call MyBase.PropertyChanged("Name")
-    '        End If
-    '    Catch
-    '    End Try
-    'End Sub
-
-    'Private Sub cmdItemNameRegen_Click(sender As Object, e As EventArgs)
-    '    If Not IsNothing(Item) Then
-    '        Dim sPattern As String = Item.Survey.Properties.DesignProperties.GetValue("DesignItemNamePattern", "")
-    '        If TypeOf Item Is cItemItems Then
-    '            For Each oSubItem As cItem In DirectCast(Item, cItemItems)
-    '                oSubItem.Name = modPaint.ReplaceItemTags(Item.Survey, oSubItem, sPattern)
-    '            Next
-    '        Else
-    '            Call txtPropName.Focus()
-    '            txtPropName.Text = modPaint.ReplaceItemTags(Item.Survey, Item, sPattern)
-    '        End If
-    '    End If
-    'End Sub
 End Class

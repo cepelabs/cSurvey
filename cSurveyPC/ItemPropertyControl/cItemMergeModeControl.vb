@@ -18,7 +18,6 @@ Friend Class cItemMergeModeControl
 
     Public Shadows Sub Rebind(Item As cIItemMergeableArea)
         MyBase.Rebind(Item)
-
         chkMergeMode0.Checked = Me.Item.MergeMode = cIItemMergeableArea.MergeModeEnum.Add
         chkMergeMode1.Checked = Me.Item.MergeMode = cIItemMergeableArea.MergeModeEnum.Subtract
     End Sub
@@ -26,8 +25,8 @@ Friend Class cItemMergeModeControl
     Private Sub chkMergeMode0_CheckedChanged(sender As Object, e As EventArgs) Handles chkMergeMode0.CheckedChanged
         Try
             If Not DisabledObjectProperty() Then
+                Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo41"), "MergeMode")
                 Item.MergeMode = cIItemMergeableArea.MergeModeEnum.Add
-                Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("MergeMode")
                 Call MyBase.MapInvalidate()
             End If
@@ -38,8 +37,8 @@ Friend Class cItemMergeModeControl
     Private Sub chkMergeMode1_CheckedChanged(sender As Object, e As EventArgs) Handles chkMergeMode1.CheckedChanged
         Try
             If Not DisabledObjectProperty() Then
+                Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo41"), "MergeMode")
                 Item.MergeMode = cIItemMergeableArea.MergeModeEnum.Subtract
-                Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("MergeMode")
                 Call MyBase.MapInvalidate()
             End If

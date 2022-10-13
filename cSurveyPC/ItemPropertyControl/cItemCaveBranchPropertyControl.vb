@@ -67,7 +67,7 @@ Friend Class cItemCaveBranchPropertyControl
 
     Private Sub cmdPropSetCaveBranch_Click(sender As Object, e As EventArgs) Handles cmdPropSetCaveBranch.Click
         If Not DisabledObjectProperty() Then
-            Call MyBase.BeginUndoSnapshot("Cave and branch change")
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo29"))
             Dim sCurrentCave As String = cCaveInfo.EditToString(cboPropCaveList.EditValue)
             Dim sCurrentBranch As String = cCaveInfoBranch.EditToString(cboPropCaveBranchList.EditValue)
             Call Item.SetCave(sCurrentCave, sCurrentBranch, True)
@@ -82,7 +82,7 @@ Friend Class cItemCaveBranchPropertyControl
         Call cboPropCaveBranchList.Rebind(oSurvey, cboPropCaveList, True)
         Call pPropSetCaveBranchesColor()
         If Not DisabledObjectProperty() Then
-            Call MyBase.BeginUndoSnapshot("Cave and branch change")
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo29"))
             Call Item.SetCave(cCaveInfo.EditToString(cboPropCaveList.EditValue), cCaveInfoBranch.EditToString(cboPropCaveBranchList.EditValue), True)
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("CaveBranch")
@@ -93,7 +93,7 @@ Friend Class cItemCaveBranchPropertyControl
     Private Sub cboPropCaveBranchList_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropCaveBranchList.EditValueChanged
         Call pPropSetCaveBranchesColor()
         If Not DisabledObjectProperty() Then
-            Call MyBase.BeginUndoSnapshot("Cave and branch change")
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo29"))
             Call Item.SetCave(cCaveInfo.EditToString(cboPropCaveList.EditValue), cCaveInfoBranch.EditToString(cboPropCaveBranchList.EditValue), True)
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("CaveBranch")
@@ -103,7 +103,7 @@ Friend Class cItemCaveBranchPropertyControl
 
     Private Sub cboPropBindDesignType_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboPropBindDesignType.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.BeginUndoSnapshot("Design type change")
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo30"))
             Call Item.SetBindDesignType(cboPropBindDesignType.SelectedIndex, oSurvey.CrossSections.GetBindItem(cboPropBindCrossSections.EditValue))
             cboPropBindCrossSections.Enabled = cboPropBindDesignType.SelectedIndex > 0
             Call MyBase.CommitUndoSnapshot()
@@ -114,7 +114,7 @@ Friend Class cItemCaveBranchPropertyControl
 
     Private Sub cboPropBindCrossSections_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropBindCrossSections.EditValueChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.BeginUndoSnapshot("Cross sections change")
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo31"))
             Call Item.SetBindDesignType(cboPropBindDesignType.SelectedIndex, oSurvey.CrossSections.GetBindItem(cboPropBindCrossSections.EditValue))
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("BindCrossSections")

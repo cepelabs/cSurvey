@@ -38,9 +38,9 @@ Friend Class cItemProfileSplayPropertyControl
 
     Private Sub txtPropProfileSplayProjectionAngle_ValueChanged(sender As Object, e As EventArgs) Handles txtPropProfileSplayProjectionAngle.ValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo40"), "SplayBorderProjectionAngle")
             Me.Item.SplayBorderProjectionAngle = txtPropProfileSplayProjectionAngle.Value
             Call picPropProfileProjectionSchema.Invalidate()
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("ProfileSplayProjectionAngle")
             Call MyBase.MapInvalidate()
         End If
@@ -48,9 +48,9 @@ Friend Class cItemProfileSplayPropertyControl
 
     Private Sub txtPropProfileSplayMaxVariationAngle_ValueChanged(sender As Object, e As EventArgs) Handles txtPropProfileSplayMaxVariationAngle.ValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo40"), "SplayBorderMaxAngleVariation")
             Me.Item.SplayBorderMaxAngleVariation = txtPropProfileSplayMaxVariationAngle.Value
             Call picPropProfileProjectionSchema.Invalidate()
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("ProfileSplayMaxVariationAngle")
             Call MyBase.MapInvalidate()
         End If
@@ -58,9 +58,9 @@ Friend Class cItemProfileSplayPropertyControl
 
     Private Sub txtPropProfileSplayPosInclinationRangeMin_ValueChanged(sender As Object, e As EventArgs) Handles txtPropProfileSplayPosInclinationRangeMin.ValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo40"), "SplayBorderPosInclinationRange")
             Me.Item.SplayBorderPosInclinationRange = New SizeF(txtPropProfileSplayPosInclinationRangeMin.Value, Me.Item.SplayBorderPosInclinationRange.Height)
             Call picPropProfileProjectionSchema.Invalidate()
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("ProfileSplayPosInclinationRangeMin")
             Call MyBase.MapInvalidate()
         End If
@@ -68,9 +68,9 @@ Friend Class cItemProfileSplayPropertyControl
 
     Private Sub txtPropProfileSplayNegInclinationRangeMin_ValueChanged(sender As Object, e As EventArgs) Handles txtPropProfileSplayNegInclinationRangeMin.ValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo40"), "SplayBorderNegInclinationRange")
             Me.Item.SplayBorderNegInclinationRange = New SizeF(txtPropProfileSplayNegInclinationRangeMin.Value, Me.Item.SplayBorderNegInclinationRange.Height)
             Call picPropProfileProjectionSchema.Invalidate()
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("ProfileSplayNegInclinationRangeMin")
             Call MyBase.MapInvalidate()
         End If
@@ -78,9 +78,9 @@ Friend Class cItemProfileSplayPropertyControl
 
     Private Sub txtPropProfileSplayPosInclinationRangeMax_ValueChanged(sender As Object, e As EventArgs) Handles txtPropProfileSplayPosInclinationRangeMax.ValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo40"), "SplayBorderPosInclinationRange")
             Me.Item.SplayBorderPosInclinationRange = New SizeF(Me.Item.SplayBorderPosInclinationRange.Width, txtPropProfileSplayPosInclinationRangeMax.Value)
             Call picPropProfileProjectionSchema.Invalidate()
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("ProfileSplayPosInclinationRangeMax")
             Call MyBase.MapInvalidate()
         End If
@@ -88,9 +88,9 @@ Friend Class cItemProfileSplayPropertyControl
 
     Private Sub txtPropProfileSplayNegInclinationRangeMax_ValueChanged(sender As Object, e As EventArgs) Handles txtPropProfileSplayNegInclinationRangeMax.ValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo40"), "SplayBorderNegInclinationRange")
             Me.Item.SplayBorderNegInclinationRange = New SizeF(Me.Item.SplayBorderNegInclinationRange.Width, txtPropProfileSplayNegInclinationRangeMax.Value)
             Call picPropProfileProjectionSchema.Invalidate()
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("ProfileSplayNegInclinationRangeMax")
             Call MyBase.MapInvalidate()
         End If

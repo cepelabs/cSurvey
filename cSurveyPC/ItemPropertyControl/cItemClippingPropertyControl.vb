@@ -22,7 +22,7 @@ Friend Class cItemClippingPropertyControl
 
     Private Sub pSetClippingType(Type As cItem.cItemClippingTypeEnum)
         If Not DisabledObjectProperty() Then
-            Call MyBase.CreateUndoSnapshot("Clipping change", "ClippingType")
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo28"), "ClippingType")
             Item.ClippingType = Type
             Call MyBase.PropertyChanged("ClippingType")
             Call MyBase.MapInvalidate()

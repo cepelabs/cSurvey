@@ -155,6 +155,12 @@ Namespace cSurvey
             End Try
         End Sub
 
+        Public ReadOnly Property Survey As cSurvey
+            Get
+                Return oSurvey
+            End Get
+        End Property
+
         Default Public ReadOnly Property Item(ByVal ID As String) As cISegment Implements cISegmentCollection.Item
             Get
                 Return oSegments(ID)

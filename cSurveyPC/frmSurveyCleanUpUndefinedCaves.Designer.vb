@@ -25,7 +25,7 @@ Partial Class frmSurveyCleanUpUndefinedCaves
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSurveyCleanUpUndefinedCaves))
         Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton
         Me.cmdOk = New DevExpress.XtraEditors.SimpleButton
-        Me.grdUndefinedCaves = New cSurveyPC.cGrid()
+        Me.grdUndefinedCaves = New DataGridView()
         Me.colCave = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colBranch = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colNewCave = New System.Windows.Forms.DataGridViewComboBoxColumn()
@@ -101,7 +101,7 @@ Partial Class frmSurveyCleanUpUndefinedCaves
     End Sub
     Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdOk As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents grdUndefinedCaves As cSurveyPC.cGrid
+    Friend WithEvents grdUndefinedCaves As DataGridView
     Friend WithEvents colCave As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents colBranch As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents colNewCave As System.Windows.Forms.DataGridViewComboBoxColumn

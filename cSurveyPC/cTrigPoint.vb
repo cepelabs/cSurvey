@@ -384,9 +384,6 @@ Namespace cSurvey
             End If
 
             sName = modXML.GetAttributeValue(TrigPoint, "name")
-            'sX = modNumbers.StringToDecimal(modXML.GetAttributeValue(TrigPoint, "x"))
-            'sY = modNumbers.StringToDecimal(modXML.GetAttributeValue(TrigPoint, "y"))
-            'sZ = modNumbers.StringToDecimal(modXML.GetAttributeValue(TrigPoint, "z"))
 
             iEntrance = modXML.GetAttributeValue(TrigPoint, "entrance")
             iType = modXML.GetAttributeValue(TrigPoint, "type")

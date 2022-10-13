@@ -17,7 +17,7 @@ Friend Class cItemTransparencyPropertyControl2
     Private Sub trkTransparency_EditValueChanged(sender As Object, e As EventArgs) Handles trkTransparency.EditValueChanged
         Try
             If Not DisabledObjectProperty() Then
-                Call MyBase.CreateUndoSnapshot("Transparency change", "Transparency")
+                Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo38"), "Transparency")
                 Item.Transparency = trkTransparency.EditValue / 255.0F
                 Call MyBase.PropertyChanged("Transparency")
                 Call MyBase.MapInvalidate()

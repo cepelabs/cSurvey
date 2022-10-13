@@ -47,8 +47,8 @@ Friend Class cItemPlanSplayPropertyControl
 
     Private Sub cboPropPlanSplayPlanProjectionType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropPlanSplayPlanProjectionType.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo40"), "SplayBorderProjectionType")
             Me.Item.SplayBorderProjectionType = cboPropPlanSplayPlanProjectionType.SelectedIndex
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("PlanSplayPlanProjectionType")
             Call MyBase.MapInvalidate()
         End If
@@ -56,8 +56,8 @@ Friend Class cItemPlanSplayPropertyControl
 
     Private Sub txtPropPlanSplayPlanDeltaZ_ValueChanged(sender As Object, e As EventArgs) Handles txtPropPlanSplayPlanDeltaZ.ValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo40"), "SplayBorderProjectionDeltaZ")
             Me.Item.SplayBorderProjectionDeltaZ = txtPropPlanSplayPlanDeltaZ.Value
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("PlanSplayPlanDeltaZ")
             Call MyBase.MapInvalidate()
         End If
@@ -65,8 +65,8 @@ Friend Class cItemPlanSplayPropertyControl
 
     Private Sub txtPropPlanSplayMaxVariationDelta_ValueChanged(sender As Object, e As EventArgs) Handles txtPropPlanSplayMaxVariationDelta.ValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo40"), "SplayBorderMaxDeltaVariation")
             Me.Item.SplayBorderMaxDeltaVariation = txtPropPlanSplayMaxVariationDelta.Value
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("PlanSplayMaxVariationDelta")
             Call MyBase.MapInvalidate()
         End If
@@ -74,8 +74,8 @@ Friend Class cItemPlanSplayPropertyControl
 
     Private Sub txtPropPlanSplayInclinationRangeMin_ValueChanged(sender As Object, e As EventArgs) Handles txtPropPlanSplayInclinationRangeMin.ValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo40"), "SplayBorderInclinationRange")
             Me.Item.SplayBorderInclinationRange = New SizeF(txtPropPlanSplayInclinationRangeMin.Value, Me.Item.SplayBorderInclinationRange.Height)
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("PlanSplayInclinationRangeMin")
             Call MyBase.MapInvalidate()
         End If
@@ -83,8 +83,8 @@ Friend Class cItemPlanSplayPropertyControl
 
     Private Sub txtPropPlanSplayInclinationRangeMax_ValueChanged(sender As Object, e As EventArgs) Handles txtPropPlanSplayInclinationRangeMax.ValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo40"), "SplayBorderInclinationRange")
             Me.Item.SplayBorderInclinationRange = New SizeF(Me.Item.SplayBorderInclinationRange.Width, txtPropPlanSplayInclinationRangeMax.Value)
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("PlanSplayInclinationRangeMax")
             Call MyBase.MapInvalidate()
         End If
@@ -93,23 +93,5 @@ Friend Class cItemPlanSplayPropertyControl
     Private Sub cmdPropPlanSplay_Click(sender As Object, e As EventArgs) Handles cmdPropPlanSplay.Click
         Call MyBase.DoCommand("splayreplicatedata", Item)
     End Sub
-
-    'Private Sub txtPropAttachmentName_EditValueChanged(sender As Object, e As EventArgs)
-    '    If Not DisabledObjectProperty() Then
-    '        Item.Attachment.Attachment.Name = txtPropAttachmentName.EditValue
-    '        Call MyBase.TakeUndoSnapshot()
-    '        Call MyBase.PropertyChanged("AttachmentName")
-    '        Call MyBase.MapInvalidate()
-    '    End If
-    'End Sub
-
-    'Private Sub txtPropAttachmentNote_EditValueChanged(sender As Object, e As EventArgs)
-    '    If Not DisabledObjectProperty() Then
-    '        Item.Attachment.Attachment.Note = txtPropAttachmentNote.EditValue
-    '        Call MyBase.TakeUndoSnapshot()
-    '        Call MyBase.PropertyChanged("AttachmentNote")
-    '        Call MyBase.MapInvalidate()
-    '    End If
-    'End Sub
 
 End Class

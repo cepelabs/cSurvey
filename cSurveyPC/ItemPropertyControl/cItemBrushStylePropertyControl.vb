@@ -33,7 +33,7 @@ Friend Class cItemBrushStylePropertyControl
     End Sub
 
     Private Sub cmdPropBrushReseed_Click(sender As Object, e As EventArgs) Handles cmdPropBrushReseed.Click
-        Call MyBase.BeginUndoSnapshot("Brush reseed")
+        Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo32"))
         Call Item.Brush.Seed.Reseed()
         Call MyBase.CommitUndoSnapshot()
         Call MyBase.PropertyChanged("BrushReseed")
@@ -117,9 +117,8 @@ Friend Class cItemBrushStylePropertyControl
 
     Private Sub cboPropBrushClipartPosition_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropBrushClipartPosition.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.BeginUndoSnapshot("Brush change")
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.ClipartPosition")
             Item.Brush.ClipartPosition = cboPropBrushClipartPosition.SelectedIndex
-            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("BrushClipartPosition")
             Call MyBase.MapInvalidate()
         End If
@@ -127,9 +126,8 @@ Friend Class cItemBrushStylePropertyControl
 
     Private Sub cboPropBrushPatternType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropBrushPatternType.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.BeginUndoSnapshot("Brush change")
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.PatternType")
             Item.Brush.PatternType = cboPropBrushPatternType.SelectedIndex
-            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("BrushPatternType")
             Call MyBase.MapInvalidate()
         End If
@@ -137,9 +135,8 @@ Friend Class cItemBrushStylePropertyControl
 
     Private Sub cboPropBrushClipartAngleMode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropBrushClipartAngleMode.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.BeginUndoSnapshot("Brush change")
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.ClipartAngleMode")
             Item.Brush.ClipartAngleMode = cboPropBrushClipartAngleMode.SelectedIndex
-            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("BrushClipartAngleMode")
             Call MyBase.MapInvalidate()
         End If
@@ -150,9 +147,8 @@ Friend Class cItemBrushStylePropertyControl
 
     Private Sub txtPropBrushColor_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropBrushColor.EditValueChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.BeginUndoSnapshot("Brush change")
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.Color")
             Item.Brush.Color = txtPropBrushColor.EditValue
-            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("BrushColor")
             Call MyBase.MapInvalidate()
         End If
@@ -160,9 +156,8 @@ Friend Class cItemBrushStylePropertyControl
 
     Private Sub cboPropBrushPatternPen_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropBrushPatternPen.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.BeginUndoSnapshot("Brush change")
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.PatternPenStyle")
             Item.Brush.PatternPenStyle = cboPropBrushPatternPen.SelectedIndex
-            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("BrushPatternPen")
             Call MyBase.MapInvalidate()
         End If
@@ -170,9 +165,8 @@ Friend Class cItemBrushStylePropertyControl
 
     Private Sub txtPropBrushAlternativeBrushColor_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropBrushAlternativeBrushColor.EditValueChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.BeginUndoSnapshot("Brush change")
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.ClipartAlternativeColor")
             Item.Brush.ClipartAlternativeColor = txtPropBrushAlternativeBrushColor.EditValue
-            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("BrushAlternativeBrushColor")
             Call MyBase.MapInvalidate()
         End If
@@ -186,7 +180,7 @@ Friend Class cItemBrushStylePropertyControl
                 .FilterIndex = 1
                 If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                     Try
-                        Call MyBase.BeginUndoSnapshot("Brush change")
+                        Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo33"))
                         Try
                             Dim oClipart As Drawings.cDrawClipArt = New Drawings.cDrawClipArt(.FileName)
                             Item.Brush.Clipart = oClipart
@@ -207,7 +201,7 @@ Friend Class cItemBrushStylePropertyControl
 
     Private Sub cboPropBrushPattern_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropBrushPattern.EditValueChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.BeginUndoSnapshot("Brush change")
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo33"))
             If cBrush.IsUserBrushID(cboPropBrushPattern.EditValue) AndAlso Not oSurvey.Brushes.Contains(cboPropBrushPattern.EditValue) Then
                 Call oSurvey.Brushes.Add(cboPropBrushPattern.GetUserBrush(cboPropBrushPattern.EditValue))
                 Call cboPropBrushPattern.Rebind(oSurvey)
@@ -258,13 +252,13 @@ Friend Class cItemBrushStylePropertyControl
 
     Private Sub cboPropBrushClipartCrop_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropBrushClipartCrop.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.BeginUndoSnapshot("Brush change")
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.ClipartCrop")
             Item.Brush.ClipartCrop = cboPropBrushClipartCrop.SelectedIndex
-            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("BrushClipartCrop")
             Call MyBase.MapInvalidate()
         End If
     End Sub
+
     Private Sub pSaveBrush(Filename As String, Brush As cCustomBrush)
         Using oFile As cFile = New cFile(cFile.FileFormatEnum.CSX, Filename, cFile.FileOptionsEnum.EmbedResource)
             Dim oXML As XmlDocument = oFile.Document
@@ -274,6 +268,7 @@ Friend Class cItemBrushStylePropertyControl
             oFile.Save()
         End Using
     End Sub
+
     Private Sub btnPropSaveToSurvey_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnPropSaveToSurvey.ItemClick
         Call pSaveToSurvey()
     End Sub
@@ -343,9 +338,8 @@ Friend Class cItemBrushStylePropertyControl
 
     Private Sub txtPropBrushClipartZoomFactor_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropBrushClipartZoomFactor.EditValueChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.BeginUndoSnapshot("Brush change")
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.ClipartZoomFactor")
             Item.Brush.ClipartZoomFactor = txtPropBrushClipartZoomFactor.Value / 1000.0F
-            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("BrushClipartZoomFactor")
             Call MyBase.MapInvalidate()
         End If
@@ -353,9 +347,8 @@ Friend Class cItemBrushStylePropertyControl
 
     Private Sub txtPropBrushClipartDensity_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropBrushClipartDensity.EditValueChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.BeginUndoSnapshot("Brush change")
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.ClipartDensity")
             Item.Brush.ClipartDensity = txtPropBrushClipartDensity.Value / 100.0F
-            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("BrushClipartDensity")
             Call MyBase.MapInvalidate()
         End If
@@ -363,9 +356,8 @@ Friend Class cItemBrushStylePropertyControl
 
     Private Sub txtPropBrushClipartAngle_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropBrushClipartAngle.EditValueChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.BeginUndoSnapshot("Brush change")
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo33"), "Brush.ClipartAngle")
             Item.Brush.ClipartAngle = txtPropBrushClipartAngle.Value
-            Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("BrushClipartAngle")
             Call MyBase.MapInvalidate()
         End If
@@ -373,16 +365,13 @@ Friend Class cItemBrushStylePropertyControl
 
     Private Sub cboPropBrushHatch_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropBrushHatch.EditValueChanged
         If Not DisabledObjectProperty() Then
-            Call MyBase.BeginUndoSnapshot("Brush change")
-
+            Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo33"))
             Item.Brush.HatchType = cboPropBrushHatch.SelectedIndex
-
             If Item.Brush.HatchType = cBrush.HatchTypeEnum.Clipart Then
                 Item.Brush.Clipart = modDevExpress.SvgImageToClipart(picPropBrushClipartImage.SvgImage)
             ElseIf Item.Brush.HatchType = cBrush.HatchTypeEnum.Texture Then
                 Item.Brush.Texture = picPropBrushTextureImage.Image
             End If
-
             Call MyBase.CommitUndoSnapshot()
             Call MyBase.PropertyChanged("BrushHatch")
             Call MyBase.MapInvalidate()
@@ -398,7 +387,8 @@ Friend Class cItemBrushStylePropertyControl
                 .Filter = GetLocalizedString("main.filetypePNG") & " (*.PNG)|*.PNG|" & GetLocalizedString("main.filetypeBMP") & " (*.BMP)|*.BMP|" & GetLocalizedString("main.filetypeALL") & " (*.*)|*.*"
                 .FilterIndex = 1
                 If .ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                    Call MyBase.BeginUndoSnapshot("Brush change")
+                    'TODO: in undo support property of image/svg type
+                    Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo33"))
                     Item.Brush.Texture = modPaint.SafeBitmapFromFileUnlocked(.FileName)
                     picPropBrushTextureImage.Image = Item.Brush.Texture
                     Call MyBase.CommitUndoSnapshot()

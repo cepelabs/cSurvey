@@ -3,6 +3,7 @@ Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Design.Items
 Imports DevExpress.XtraTreeList
+Imports DevExpress.XtraVerticalGrid.Events
 
 Friend Class cItemCategoryAndPropertiesControl
     Public Sub New()
@@ -40,5 +41,14 @@ Friend Class cItemCategoryAndPropertiesControl
         End If
         lblPropDesignDataProperties.Visible = bChecked
         prpPropDesignDataProperties.Visible = bChecked
+    End Sub
+
+    Private Sub prpPropDesignDataProperties_CellValueChanged(sender As Object, e As DevExpress.XtraVerticalGrid.Events.CellValueChangedEventArgs) Handles prpPropDesignDataProperties.CellValueChanged
+        'MyBase.CommitUndoSnapshot(True)
+    End Sub
+
+    Private Sub prpPropDesignDataProperties_ShowingEditor(sender As Object, e As CancelEventArgs) Handles prpPropDesignDataProperties.ShowingEditor
+        'MyBase.CancelUndoSnapshot()
+        'MyBase.BeginUndoSnapshot("main.undo44")
     End Sub
 End Class

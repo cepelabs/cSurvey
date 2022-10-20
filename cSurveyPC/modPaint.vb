@@ -14,6 +14,8 @@ Imports System.IO
 Imports System.Runtime.CompilerServices
 
 Module modPaint
+    Public Const sMeterToPixelScale As Decimal = 1.0 / 3779.52768
+
     Public Function MediaColorToDrawingColor(MediaColor As Windows.Media.Color) As Drawing.Color
         Return System.Drawing.Color.FromArgb(MediaColor.A, MediaColor.R, MediaColor.G, MediaColor.B)
     End Function
@@ -369,7 +371,7 @@ Module modPaint
 
         Dim sDeltaX As Single = sSrcWidth / sDestWidth
         Dim sDeltaY As Single = sSrcHeight / sDestHeight
-        Dim sDelta As Single = IIf(sDeltaX > sDeltaY, sDeltaX, sDeltaY)
+        Dim sDelta As Single = If(sDeltaX > sDeltaY, sDeltaX, sDeltaY)
 
         Dim sWidth As Single = sSrcWidth / sDelta
         Dim sHeight As Single = sSrcHeight / sDelta
@@ -393,7 +395,7 @@ Module modPaint
 
         Dim sDeltaX As Single = sSrcWidth / sDestWidth
         Dim sDeltaY As Single = sSrcHeight / sDestHeight
-        Dim sDelta As Single = IIf(sDeltaX > sDeltaY, sDeltaX, sDeltaY)
+        Dim sDelta As Single = If(sDeltaX > sDeltaY, sDeltaX, sDeltaY)
 
         Dim sWidth As Single = sSrcWidth / sDelta
         Dim sHeight As Single = sSrcHeight / sDelta
@@ -401,6 +403,24 @@ Module modPaint
         Dim oRect As RectangleF = New RectangleF(Bounds.Left + (Bounds.Width - sWidth) / 2, Bounds.Top + (Bounds.Height - sHeight) / 2, sWidth, sHeight)
         Call Graphics.DrawImage(Image, oRect)
     End Sub
+
+    Public Sub DrawFittedImage(Graphics As Graphics, Image As Image, Bounds As RectangleF)
+        Dim sSrcWidth As Single = Image.Width
+        Dim sSrcHeight As Single = Image.Height
+        Dim sDestWidth As Single = Bounds.Width
+        Dim sDestHeight As Single = Bounds.Height
+
+        Dim sDeltaX As Single = sSrcWidth / sDestWidth
+        Dim sDeltaY As Single = sSrcHeight / sDestHeight
+        Dim sDelta As Single = If(sDeltaX > sDeltaY, sDeltaY, sDeltaX)
+
+        Dim sWidth As Single = sSrcWidth / sDelta
+        Dim sHeight As Single = sSrcHeight / sDelta
+
+        Dim oRect As RectangleF = New RectangleF(Bounds.Left + (Bounds.Width - sWidth) / 2, Bounds.Top + (Bounds.Height - sHeight) / 2, sWidth, sHeight)
+        Call Graphics.DrawImage(Image, oRect)
+    End Sub
+
 
     Public Function GetBisection(Angle1 As Single, Angle2 As Single) As Single
         Dim sAngle As Single
@@ -1816,7 +1836,7 @@ Module modPaint
                     bFirstCave = False
                 End If
             Else
-                    sPath = oSpeleometric.Cave & cCaveInfoBranches.sBranchSeparator & oSpeleometric.Branch
+                sPath = oSpeleometric.Cave & cCaveInfoBranches.sBranchSeparator & oSpeleometric.Branch
             End If
             Text = pReplaceCaveBranchTags(Survey, oSpeleometric, sPath, Text)
         Next
@@ -2030,10 +2050,10 @@ Module modPaint
     '    Dim oPoint2 As PointF = Polygon(2)
     '    Dim oPoint3 As PointF = Polygon(3)
 
-    '    Dim oPointM As PointF = New PointF(oPoint0.X + IIf(oPoint1.X > oPoint0.X, (oPoint1.X - oPoint0.X), -(oPoint1.X - oPoint0.X)) * dX, oPoint0.Y + IIf(oPoint1.Y - oPoint0.Y, (oPoint1.Y - oPoint0.Y), -(oPoint1.Y - oPoint0.Y)) * dX)
-    '    Dim oPointN As PointF = New PointF(oPoint3.X + IIf(oPoint2.X > oPoint3.X, (oPoint2.X - oPoint3.X), -(oPoint2.X - oPoint3.X)) * dX, oPoint3.Y + IIf(oPoint3.Y > oPoint2.Y, -(oPoint3.Y - oPoint2.Y), -(oPoint3.Y - oPoint2.Y)) * dX)
-    '    Dim oPointJ As PointF = New PointF(oPoint0.X + IIf(oPoint3.X > oPoint0.X, (oPoint3.X - oPoint0.X), (oPoint3.X - oPoint0.X)) * dY, oPoint0.Y + IIf(oPoint3.Y > oPoint0.Y, (oPoint3.Y - oPoint0.Y), -(oPoint3.Y - oPoint0.Y)) * dY)
-    '    Dim oPointP As PointF = New PointF(oPoint1.X + IIf(oPoint2.X > oPoint1.X, (oPoint2.X - oPoint1.X), (oPoint2.X - oPoint1.X)) * dY, oPoint1.Y + IIf(oPoint2.Y > oPoint1.Y, (oPoint2.Y - oPoint1.Y), -(oPoint2.Y - oPoint1.Y)) * dY)
+    '    Dim oPointM As PointF = New PointF(oPoint0.X + if(oPoint1.X > oPoint0.X, (oPoint1.X - oPoint0.X), -(oPoint1.X - oPoint0.X)) * dX, oPoint0.Y + if(oPoint1.Y - oPoint0.Y, (oPoint1.Y - oPoint0.Y), -(oPoint1.Y - oPoint0.Y)) * dX)
+    '    Dim oPointN As PointF = New PointF(oPoint3.X + if(oPoint2.X > oPoint3.X, (oPoint2.X - oPoint3.X), -(oPoint2.X - oPoint3.X)) * dX, oPoint3.Y + if(oPoint3.Y > oPoint2.Y, -(oPoint3.Y - oPoint2.Y), -(oPoint3.Y - oPoint2.Y)) * dX)
+    '    Dim oPointJ As PointF = New PointF(oPoint0.X + if(oPoint3.X > oPoint0.X, (oPoint3.X - oPoint0.X), (oPoint3.X - oPoint0.X)) * dY, oPoint0.Y + if(oPoint3.Y > oPoint0.Y, (oPoint3.Y - oPoint0.Y), -(oPoint3.Y - oPoint0.Y)) * dY)
+    '    Dim oPointP As PointF = New PointF(oPoint1.X + if(oPoint2.X > oPoint1.X, (oPoint2.X - oPoint1.X), (oPoint2.X - oPoint1.X)) * dY, oPoint1.Y + if(oPoint2.Y > oPoint1.Y, (oPoint2.Y - oPoint1.Y), -(oPoint2.Y - oPoint1.Y)) * dY)
 
     '    'pDrawPoint(Graphics, "M", modPaint.ToPaintPoint(oPointM,  ), Pens.DarkGreen, 1)
     '    'pDrawPoint(Graphics, "N", modPaint.ToPaintPoint(oPointN,  ), Pens.DarkGreen, 1)
@@ -2430,13 +2450,13 @@ Module modPaint
     End Function
 
     Friend Function ObjectHitTest(PaintOptions As cOptions, ByVal X As Single, ByVal Y As Single, ByVal Tools As cEditDesignTools, ByVal Zoom As Single) As cHitTestResult
-        Dim sAnchorBaseScale As Single = AnchorsScale * My.Application.currentdpiratio
+        Dim sAnchorBaseScale As Single = AnchorsScale * My.Application.CurrentDPIRatio
         Dim oHitTestResult As cHitTestResult = New cHitTestResult
         Dim oItem As cItem = Tools.CurrentItem
         If oItem Is Nothing Then
             Return oHitTestResult
         Else
-            Dim oBounds As RectangleF = oItem.GetBounds
+            Dim oBounds As RectangleF = oItem.GetBounds()
             Dim oHitRect As RectangleF
 
             If oItem.HaveEditablePoints AndAlso Tools.IsInPointEdit Then
@@ -2757,7 +2777,7 @@ Module modPaint
 
     Friend Sub PaintCurrentMarkedDesktopPoint(graphics As Graphics, ByVal Survey As cSurvey.cSurvey, MarkedDesktopPoint As cMarkedDesktopPoint, ByVal Zoom As Single)
         If MarkedDesktopPoint.IsSet Then
-            Dim sAnchorBaseScale As Single = AnchorsScale * My.Application.currentdpiratio
+            Dim sAnchorBaseScale As Single = AnchorsScale * My.Application.CurrentDPIRatio
             Dim oPoint As PointF = MarkedDesktopPoint.Point
             Dim oPaintRect As RectangleF
             oPaintRect = modPaint.GetPaintAnchor(oPoint, sAnchorBaseScale * sMarkerBaseScale / Zoom)
@@ -2779,7 +2799,7 @@ Module modPaint
     Private Const sExtraCornerAnchorBaseScale As Single = 12.0F
     Friend Sub PaintAnchorRectangle(ByVal Graphics As Graphics, ByVal Point As PointF, ByVal Type As AnchorRectangleTypeEnum, ByVal Survey As cSurvey.cSurvey, ByVal Zoom As Single)
         Try
-            Dim sAnchorBaseScale As Single = AnchorsScale * My.Application.currentdpiratio
+            Dim sAnchorBaseScale As Single = AnchorsScale * My.Application.CurrentDPIRatio
             Dim oPaintRect As RectangleF
 
 
@@ -2936,7 +2956,7 @@ Module modPaint
             Dim oPrevPoint As cPoint
             For Each oPoint As cPoint In Item.Points
                 Dim oPaintPoint As PointF = oPoint.Point()
-                Dim iJoined As AnchorRectangleTypeEnum = IIf(oPoint.IsJoined, AnchorRectangleTypeEnum.JoinedPoint, AnchorRectangleTypeEnum.None)
+                Dim iJoined As AnchorRectangleTypeEnum = If(oPoint.IsJoined, AnchorRectangleTypeEnum.JoinedPoint, AnchorRectangleTypeEnum.None)
                 Dim iFirstOrLastAll As AnchorRectangleTypeEnum
                 If (oPoint.Type And cPoint.PointTypeEnum.FirstOfAll) = cPoint.PointTypeEnum.FirstOfAll Then
                     iFirstOrLastAll = AnchorRectangleTypeEnum.FirstOfAllPoint
@@ -3554,7 +3574,7 @@ Module modPaint
                         Dim sPageHeight As Single = oPageWithMarginRect.Size.Height '* 0.000254
                         Dim sDeltaX As Single = sPageWidth / sDesignWidth
                         Dim sDeltaY As Single = sPageHeight / sDesignHeight
-                        Dim sDelta As Single = IIf(sDeltaX < sDeltaY, sDeltaX, sDeltaY)
+                        Dim sDelta As Single = If(sDeltaX < sDeltaY, sDeltaX, sDeltaY)
                         If Single.IsInfinity(sDelta) Then sDelta = 100
                         sPaintZoom = sDelta * 0.9
                         If sPaintZoom < sMinZoom Then sPaintZoom = sMinZoom
@@ -3613,7 +3633,7 @@ Module modPaint
                         Dim sPageHeight As Single = oPageWithMarginRect.Size.Height '* 0.000254
                         Dim sDeltaX As Single = sPageWidth / sDesignWidth
                         Dim sDeltaY As Single = sPageHeight / sDesignHeight
-                        Dim sDelta As Single = IIf(sDeltaX < sDeltaY, sDeltaX, sDeltaY)
+                        Dim sDelta As Single = If(sDeltaX < sDeltaY, sDeltaX, sDeltaY)
                         If Single.IsInfinity(sDelta) Then sDelta = 100
                         sPaintZoom = sDelta
                         If sPaintZoom < sMinZoom Then sPaintZoom = sMinZoom

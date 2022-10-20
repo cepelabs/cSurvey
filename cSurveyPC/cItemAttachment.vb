@@ -2,6 +2,11 @@
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports cSurveyPC.cSurvey.Drawings
+Imports DevExpress.XtraBars.Alerter
+Imports DevExpress.Utils.Svg
+Imports DevExpress
+Imports DevExpress.Utils.Drawing
+Imports DevExpress.LookAndFeel
 
 Namespace cSurvey.Design.Items
     Public Class cItemAttachment
@@ -241,6 +246,7 @@ Namespace cSurvey.Design.Items
                     Using oPath As GraphicsPath = New GraphicsPath
                         Dim oPoint As PointF = MyBase.Points(0).Point
                         Dim oBounds As RectangleF = New RectangleF(oPoint.X - oDataBounds.Width / 2, oPoint.Y - oDataBounds.Height / 2, oDataBounds.Width, oDataBounds.Height)
+                        'oBounds = modPaint.ScaleRectangle(oBounds, modPaint.sMeterToPixelScale * PaintOptions.CurrentScale)
                         Call oPath.AddRectangle(oBounds)
                         Call .Add(Drawings.cDrawCacheItem.cDrawCacheItemType.Border, oPath, Nothing, Nothing, Nothing)
                     End Using
@@ -253,16 +259,81 @@ Namespace cSurvey.Design.Items
             If MyBase.Points.Count > 0 Then
                 Call Render(Graphics, PaintOptions, Options, Selected)
                 Try
-                    If Not PaintOptions.IsDesign OrElse (PaintOptions.IsDesign And Not MyBase.HiddenInDesign) Then
+                    If Not PaintOptions.IsDesign OrElse (PaintOptions.IsDesign AndAlso Not MyBase.HiddenInDesign) Then
+
                         Dim oPoint As PointF = MyBase.Points(0).Point
-                        Debug.Print(PaintOptions.CurrentScale)
                         Dim oBounds As RectangleF = New RectangleF(oPoint.X - oDataBounds.Width / 2, oPoint.Y - oDataBounds.Height / 2, oDataBounds.Width, oDataBounds.Height)
-                        If (Options And PaintOptionsEnum.Wireframe) = PaintOptionsEnum.Wireframe Then
-                            Call Graphics.DrawImage(oAttachment.Attachment.GetThumbnail(True), oBounds)
-                        Else
-                            Call Graphics.DrawImage(oAttachment.Attachment.GetThumbnail, oBounds)
-                        End If
-                        Call MyBase.Caches(PaintOptions).Paint(Graphics, PaintOptions, Options)
+                        'oBounds = modPaint.ScaleRectangle(oBounds, modPaint.sMeterToPixelScale * PaintOptions.CurrentScale)
+                        Using oPath As GraphicsPath = New GraphicsPath
+                            Call oPath.AddLine(oBounds.Left, oBounds.Top, oBounds.Left, oBounds.Top + oBounds.Height \ 2)
+                            Call oPath.AddArc(oBounds, 180, -90)
+                            Call oPath.AddLine(oBounds.Left + oBounds.Width \ 2, oBounds.Bottom, oBounds.Left + oBounds.Width \ 2, oBounds.Bottom)
+
+                            Call oPath.AddArc(oBounds.Left, oBounds.Top, oBounds.Width, oBounds.Height, 90, -180)
+                            Call oPath.AddLine(oBounds.Left, oBounds.Top, oBounds.Left + oBounds.Width \ 2, oBounds.Top)
+                            Call oPath.AddLine(oBounds.Left + oBounds.Width \ 2, oBounds.Top, oBounds.Left, oBounds.Top)
+
+                            Dim oClipBounds As RectangleF = oBounds
+                            oClipBounds.Inflate(-0.1, -0.1)
+                            'oClipBounds.Inflate(-2 * modPaint.sMeterToPixelScale * PaintOptions.CurrentScale, -2 * modPaint.sMeterToPixelScale * PaintOptions.CurrentScale)
+                            oPath.AddEllipse(oClipBounds)
+
+                            Call Graphics.FillPath(Brushes.Gray, oPath)
+                        End Using
+
+                        Using oClipPath As GraphicsPath = New GraphicsPath
+                            Dim oClipBounds As RectangleF = oBounds
+                            'oClipBounds.Inflate(-2 * modPaint.sMeterToPixelScale * PaintOptions.CurrentScale, -2 * modPaint.sMeterToPixelScale * PaintOptions.CurrentScale)
+                            oClipBounds.Inflate(-0.1, -0.1)
+                            oClipPath.AddEllipse(oClipBounds)
+
+                            Dim oState As GraphicsState = Graphics.Save
+                            Call Graphics.SetClip(oClipPath)
+                            Select Case oAttachment.Attachment.GetCategory
+                                Case FTTLib.FileCategory.Audio
+                                    Using oImage As Image = My.Resources.Electronics_Volume_colored.Render(Nothing)
+                                        'Call Graphics.DrawImage(oImage, oBounds)
+                                        modPaint.DrawFittedImage(Graphics, oImage, oClipBounds)
+                                    End Using
+                                Case FTTLib.FileCategory.Image
+                                    If (Options And PaintOptionsEnum.Wireframe) = PaintOptionsEnum.Wireframe Then
+                                        'Call Graphics.DrawImage(oAttachment.Attachment.GetThumbnail(True), oBounds)
+                                        modPaint.DrawFittedImage(Graphics, oAttachment.Attachment.GetThumbnail(True), oClipBounds)
+                                    Else
+                                        'Call Graphics.DrawImage(oAttachment.Attachment.GetThumbnail, oBounds)
+                                        modPaint.DrawFittedImage(Graphics, oAttachment.Attachment.GetThumbnail, oClipBounds)
+                                    End If
+                                Case Else
+                                    Using oImage As Image = My.Resources.attachments.Render(Nothing)
+                                        'Call Graphics.DrawImage(oImage, oBounds)
+                                        modPaint.DrawFittedImage(Graphics, oImage, oClipBounds)
+                                    End Using
+                            End Select
+                            Call Graphics.Restore(oState)
+                        End Using
+
+                        'Select Case oAttachment.Attachment.GetCategory
+                        '    Case FTTLib.FileCategory.Audio
+                        '        Using oImage As Image = My.Resources.Electronics_Volume_colored.Render(Nothing)
+                        '            Call Graphics.DrawImage(oImage, oBounds)
+                        '        End Using
+                        '    Case FTTLib.FileCategory.Image
+                        '        If (Options And PaintOptionsEnum.Wireframe) = PaintOptionsEnum.Wireframe Then
+                        '            Call Graphics.DrawImage(oAttachment.Attachment.GetThumbnail(True), oBounds)
+                        '        Else
+                        '            Call Graphics.DrawImage(oAttachment.Attachment.GetThumbnail, oBounds)
+                        '        End If
+                        '    Case Else
+                        '        Using oImage As Image = My.Resources.attachments.Render(Nothing)
+                        '            Call Graphics.DrawImage(oImage, oBounds)
+                        '        End Using
+                        'End Select
+                        'If (Options And PaintOptionsEnum.Wireframe) = PaintOptionsEnum.Wireframe Then
+                        '    Call Graphics.DrawImage(oAttachment.Attachment.GetThumbnail(True), oBounds)
+                        'Else
+                        '    Call Graphics.DrawImage(oAttachment.Attachment.GetThumbnail, oBounds)
+                        'End If
+
                         If PaintOptions.ShowSegmentBindings Then
                             Call modPaint.PaintPointToSegmentBindings(Graphics, MyBase.Survey, Me, Selected)
                         End If

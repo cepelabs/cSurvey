@@ -1062,3 +1062,4 @@ main.undo40=Splay change
 main.undo41=Merge mode change
 main.undo42=Image change
 main.undo43=Item binding change
+main.undo44=Custom property change

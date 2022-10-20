@@ -1064,3 +1064,4 @@ main.undo40=Modifica splay
 main.undo41=Modifica merge mode
 main.undo42=Modifica immagine
 main.undo43=Modifica binding
+main.undo44=Modifica proprietà aggiuntiva

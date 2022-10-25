@@ -1608,6 +1608,11 @@ Namespace cSurvey.Helper.Editor
             oParent.Undo.CreateSnapshot(Description, If(oDesign.Type = cIDesign.cDesignTypeEnum.Plan, cUndo.cAreaEnum.DesignPlan, cUndo.cAreaEnum.DesignProfile), PropertyName)
         End Sub
 
+        Public Sub CreateUndoSnapshot(Description As String, BackupDelegate As cUndoItemBackupValueDelegate, RestoreDelegate As cUndoItemRestoreValueDelegate)
+            oParent.Undo.CreateSnapshot(Description, If(oDesign.Type = cIDesign.cDesignTypeEnum.Plan, cUndo.cAreaEnum.DesignPlan, cUndo.cAreaEnum.DesignProfile), BackupDelegate, RestoreDelegate)
+        End Sub
+
+
         Public Sub CreateUndoSnapshot(Description As String)
             oParent.Undo.CreateSnapshot(Description, If(oDesign.Type = cIDesign.cDesignTypeEnum.Plan, cUndo.cAreaEnum.DesignPlan, cUndo.cAreaEnum.DesignProfile))
         End Sub

@@ -42,13 +42,4 @@ Friend Class cItemCategoryAndPropertiesControl
         lblPropDesignDataProperties.Visible = bChecked
         prpPropDesignDataProperties.Visible = bChecked
     End Sub
-
-    Private Sub prpPropDesignDataProperties_CellValueChanged(sender As Object, e As DevExpress.XtraVerticalGrid.Events.CellValueChangedEventArgs) Handles prpPropDesignDataProperties.CellValueChanged
-        'MyBase.CommitUndoSnapshot(True)
-    End Sub
-
-    Private Sub prpPropDesignDataProperties_ShowingEditor(sender As Object, e As CancelEventArgs) Handles prpPropDesignDataProperties.ShowingEditor
-        'MyBase.CancelUndoSnapshot()
-        'MyBase.BeginUndoSnapshot("main.undo44")
-    End Sub
 End Class

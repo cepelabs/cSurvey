@@ -15293,7 +15293,12 @@ Friend Class frmMain2
 
     Private Sub ObjectProperty_OnCreateUndoSnapshot(Sender As Object, e As CreateUndoSnapshotEventArgs)
         With pGetCurrentDesignTools()
-            .CreateUndoSnapshot(e.Description, e.PropertyName)
+            Select Case e.SnapshotType
+                Case 0
+                    .CreateUndoSnapshot(e.Description, e.PropertyName)
+                Case 1
+                    .CreateUndoSnapshot(e.Description, e.BackupDelegate, e.RestoreDelegate)
+            End Select
         End With
     End Sub
 

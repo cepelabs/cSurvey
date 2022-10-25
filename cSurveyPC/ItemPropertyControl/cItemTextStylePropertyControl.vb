@@ -1,8 +1,10 @@
 ﻿Imports System.ComponentModel
 Imports System.Drawing.Drawing2D
+Imports System.Windows.Navigation
 Imports cSurveyPC.cSurvey
 Imports cSurveyPC.cSurvey.Design
 Imports cSurveyPC.cSurvey.Design.Items
+Imports cSurveyPC.cSurvey.Helper.Editor
 Imports DevExpress.XtraTreeList
 
 Friend Class cItemTextStylePropertyControl
@@ -111,19 +113,10 @@ Friend Class cItemTextStylePropertyControl
         End If
     End Sub
 
-    'Private Sub txtPropText_PreviewKeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles txtPropText.PreviewKeyDown
-    '    If e.Control And e.KeyCode = Keys.Enter Then ' And Not e.Shift And Not e.Control And Not e.Alt Then
-    '        Me.Item.Text = txtPropText.Text
-    '        Call MyBase.TakeUndoSnapshot()
-    '        Call MyBase.PropertyChanged("Text")
-    '        Call MyBase.MapInvalidate()
-    '    End If
-    'End Sub
-
-    Private Sub txtPropText_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropText.EditValueChanged
+    Private Sub txtPropText_Validated(sender As Object, e As EventArgs) Handles txtPropText.Validated
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo47"), "Text")
             Me.Item.Text = txtPropText.Text
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("Text")
             Call MyBase.MapInvalidate()
         End If
@@ -131,8 +124,8 @@ Friend Class cItemTextStylePropertyControl
 
     Private Sub cboPropTextRotateMode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropTextRotateMode.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo47"), New cUndoItemBackupValueDelegate(Function(item As cItem) DirectCast(Me.Item, cIItemRotable).RotateMode), New cUndoItemRestoreValueDelegate(Sub(item As cItem, value As Object) DirectCast(Me.Item, cIItemRotable).RotateMode = value))
             DirectCast(Me.Item, cIItemRotable).RotateMode = cboPropTextRotateMode.SelectedIndex
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("TextRotateMode")
             Call MyBase.MapInvalidate()
         End If
@@ -140,8 +133,8 @@ Friend Class cItemTextStylePropertyControl
 
     Private Sub cboPropTextSize_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropTextSize.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo47"), New cUndoItemBackupValueDelegate(Function(item As cItem) DirectCast(Me.Item, cIItemSizable).Size), New cUndoItemRestoreValueDelegate(Sub(item As cItem, value As Object) DirectCast(Me.Item, cIItemSizable).Size = value))
             DirectCast(Me.Item, cIItemSizable).Size = cboPropTextSize.SelectedIndex
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("TextSize")
             Call MyBase.MapInvalidate()
         End If
@@ -150,8 +143,8 @@ Friend Class cItemTextStylePropertyControl
     Private Sub optPropTextAlignLeft_CheckedChanged(sender As Object, e As EventArgs) Handles optPropTextAlignLeft.CheckedChanged
         If Not DisabledObjectProperty() Then
             If optPropTextAlignLeft.Checked Then
+                Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo47"), New cUndoItemBackupValueDelegate(Function(item As cItem) DirectCast(Me.Item, cIItemLineableText).TextAlignment), New cUndoItemRestoreValueDelegate(Sub(item As cItem, value As Object) DirectCast(Me.Item, cIItemLineableText).TextAlignment = value))
                 DirectCast(Me.Item, cIItemLineableText).TextAlignment = cIItemLineableText.TextAlignmentEnum.Left
-                Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("TextAlignLeft")
                 Call MyBase.MapInvalidate()
             End If
@@ -161,8 +154,8 @@ Friend Class cItemTextStylePropertyControl
     Private Sub optPropTextAlignCenter_CheckedChanged(sender As Object, e As EventArgs) Handles optPropTextAlignCenter.CheckedChanged
         If Not DisabledObjectProperty() Then
             If optPropTextAlignCenter.Checked Then
+                Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo47"), New cUndoItemBackupValueDelegate(Function(item As cItem) DirectCast(Me.Item, cIItemLineableText).TextAlignment), New cUndoItemRestoreValueDelegate(Sub(item As cItem, value As Object) DirectCast(Me.Item, cIItemLineableText).TextAlignment = value))
                 DirectCast(Me.Item, cIItemLineableText).TextAlignment = cIItemLineableText.TextAlignmentEnum.Center
-                Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("TextAlignCenter")
                 Call MyBase.MapInvalidate()
             End If
@@ -172,8 +165,8 @@ Friend Class cItemTextStylePropertyControl
     Private Sub optPropTextAlignRight_CheckedChanged(sender As Object, e As EventArgs) Handles optPropTextAlignRight.CheckedChanged
         If Not DisabledObjectProperty() Then
             If optPropTextAlignRight.Checked Then
+                Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo47"), New cUndoItemBackupValueDelegate(Function(item As cItem) DirectCast(Me.Item, cIItemLineableText).TextAlignment), New cUndoItemRestoreValueDelegate(Sub(item As cItem, value As Object) DirectCast(Me.Item, cIItemLineableText).TextAlignment = value))
                 DirectCast(Me.Item, cIItemLineableText).TextAlignment = cIItemLineableText.TextAlignmentEnum.Right
-                Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("TextAlignRight")
                 Call MyBase.MapInvalidate()
             End If
@@ -183,8 +176,8 @@ Friend Class cItemTextStylePropertyControl
     Private Sub optPropTextVAlignTop_CheckedChanged(sender As Object, e As EventArgs) Handles optPropTextVAlignTop.CheckedChanged
         If Not DisabledObjectProperty() Then
             If optPropTextVAlignTop.Checked Then
+                Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo47"), New cUndoItemBackupValueDelegate(Function(item As cItem) DirectCast(Me.Item, cIItemVerticalLineableText).TextVerticalAlignment), New cUndoItemRestoreValueDelegate(Sub(item As cItem, value As Object) DirectCast(Me.Item, cIItemVerticalLineableText).TextVerticalAlignment = value))
                 DirectCast(Me.Item, cIItemVerticalLineableText).TextVerticalAlignment = cIItemVerticalLineableText.TextVerticalAlignmentEnum.Top
-                Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("TextVAlignTop")
                 Call MyBase.MapInvalidate()
             End If
@@ -194,8 +187,8 @@ Friend Class cItemTextStylePropertyControl
     Private Sub optPropTextVAlignCenter_CheckedChanged(sender As Object, e As EventArgs) Handles optPropTextVAlignCenter.CheckedChanged
         If Not DisabledObjectProperty() Then
             If optPropTextVAlignCenter.Checked Then
+                Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo47"), New cUndoItemBackupValueDelegate(Function(item As cItem) DirectCast(Me.Item, cIItemVerticalLineableText).TextVerticalAlignment), New cUndoItemRestoreValueDelegate(Sub(item As cItem, value As Object) DirectCast(Me.Item, cIItemVerticalLineableText).TextVerticalAlignment = value))
                 DirectCast(Me.Item, cIItemVerticalLineableText).TextVerticalAlignment = cIItemVerticalLineableText.TextVerticalAlignmentEnum.Middle
-                Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("TextVAlignCenter")
                 Call MyBase.MapInvalidate()
             End If
@@ -205,8 +198,8 @@ Friend Class cItemTextStylePropertyControl
     Private Sub optPropTextVAlignBottom_CheckedChanged(sender As Object, e As EventArgs) Handles optPropTextVAlignBottom.CheckedChanged
         If Not DisabledObjectProperty() Then
             If optPropTextVAlignBottom.Checked Then
+                Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo47"), New cUndoItemBackupValueDelegate(Function(item As cItem) DirectCast(Me.Item, cIItemVerticalLineableText).TextVerticalAlignment), New cUndoItemRestoreValueDelegate(Sub(item As cItem, value As Object) DirectCast(Me.Item, cIItemVerticalLineableText).TextVerticalAlignment = value))
                 DirectCast(Me.Item, cIItemVerticalLineableText).TextVerticalAlignment = cIItemVerticalLineableText.TextVerticalAlignmentEnum.Bottom
-                Call MyBase.TakeUndoSnapshot()
                 Call MyBase.PropertyChanged("TextVAlignBottom")
                 Call MyBase.MapInvalidate()
             End If
@@ -215,8 +208,8 @@ Friend Class cItemTextStylePropertyControl
 
     Private Sub cboPropTextStyle_EditValueChanged(sender As Object, e As EventArgs) Handles cboPropTextStyle.EditValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo47"), "Font.Type")
             Item.Font.Type = cboPropTextStyle.EditValue
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("TextStyle")
             Call MyBase.MapInvalidate()
         End If
@@ -245,12 +238,12 @@ Friend Class cItemTextStylePropertyControl
 
     Private Sub cboPropTextFontChar_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropTextFontChar.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo47"), "Font.FontName")
             If cboPropTextFontChar.SelectedIndex = 0 Then
                 Item.Font.FontName = ""
             Else
                 Item.Font.FontName = cboPropTextFontChar.EditValue
             End If
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("TextFontChar")
             Call MyBase.MapInvalidate()
         End If
@@ -258,8 +251,8 @@ Friend Class cItemTextStylePropertyControl
 
     Private Sub chkPropTextFontBold_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropTextFontBold.CheckedChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo47"), "Font.FontBold")
             Item.Font.FontBold = chkPropTextFontBold.Checked
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("TextFontBold")
             Call MyBase.MapInvalidate()
         End If
@@ -267,8 +260,8 @@ Friend Class cItemTextStylePropertyControl
 
     Private Sub chkPropTextFontItalic_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropTextFontItalic.CheckedChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo47"), "Font.FontItalic")
             Item.Font.FontItalic = chkPropTextFontItalic.Checked
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("TextFontItalic")
             Call MyBase.MapInvalidate()
         End If
@@ -276,8 +269,8 @@ Friend Class cItemTextStylePropertyControl
 
     Private Sub chkPropTextFontUnderline_CheckedChanged(sender As Object, e As EventArgs) Handles chkPropTextFontUnderline.CheckedChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo47"), "Font.FontUnderline")
             Item.Font.FontUnderline = chkPropTextFontUnderline.Checked
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("TextFontUnderline")
             Call MyBase.MapInvalidate()
         End If
@@ -285,8 +278,8 @@ Friend Class cItemTextStylePropertyControl
 
     Private Sub txtPropFontColor_EditValueChanged(sender As Object, e As EventArgs) Handles txtPropFontColor.EditValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo47"), "Font.FontUnderline")
             Item.Font.Color = txtPropFontColor.EditValue
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("TextFontColor")
             Call MyBase.MapInvalidate()
         End If
@@ -294,14 +287,15 @@ Friend Class cItemTextStylePropertyControl
 
     Private Sub cboPropTextFontSize_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropTextFontSize.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo47"), "Font.FontSize")
             If cboPropTextFontSize.SelectedIndex = 0 Then
                 Item.Font.FontSize = 0
             Else
                 Item.Font.FontSize = cboPropTextFontSize.EditValue
             End If
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("TextFontSize")
             Call MyBase.MapInvalidate()
         End If
     End Sub
+
 End Class

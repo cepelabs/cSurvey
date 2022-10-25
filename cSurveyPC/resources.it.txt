@@ -1065,3 +1065,6 @@ main.undo41=Modifica merge mode
 main.undo42=Modifica immagine
 main.undo43=Modifica binding
 main.undo44=Modifica proprietà aggiuntiva
+main.undo45=Modifica bussola
+main.undo46=Modifica riferimento sezione trasversale
+main.undo47=Modifica testo

@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Reflection
 Imports System.Runtime.Remoting.Messaging
 Imports System.ServiceModel
 Imports System.Text
@@ -187,9 +188,13 @@ Namespace cSurvey.Helper.Editor
         End Property
     End Class
 
+    Public Delegate Function cUndoItemBackupValueDelegate(Item As cItem)
+    Public Delegate Sub cUndoItemRestoreValueDelegate(Item As cItem, Value As Object)
+
     Friend Class cUndoItemValueDesignPropertyData
         Private iIndex As Integer
         Private oLayer As cLayer
+
         Private oValue As Object
 
         Public Sub New(Value As Object, Index As Integer, Layer As cLayer)
@@ -332,6 +337,68 @@ Namespace cSurvey.Helper.Editor
         End Function
     End Class
 
+    Public Class cUndoDesignItemDelegatedProperty
+        Inherits cUndoItem
+
+        Private oBackupDelegate As cUndoItemBackupValueDelegate
+        Private oRestoreDelegate As cUndoItemRestoreValueDelegate
+
+        Private oFirstItems As List(Of cUndoItemValueDesignPropertyData)
+
+        Friend Overrides Function Restore() As cUndoRestore
+            Dim oRestore As cUndoRestoreDesign = New cUndoRestoreDesign(MyBase.Area)
+            For Each oFirstItem As cUndoItemValueDesignPropertyData In oFirstItems.OrderBy(Function(oItem) oItem.Index)
+                Dim oItem As cItem = oFirstItem.Layer.Items(oFirstItem.Index)
+                Call pSetData(oItem, oFirstItem)
+                Call oRestore.Append(oItem)
+            Next
+            Return oRestore
+        End Function
+
+        Friend Sub New(Parent As cUndo, Description As String, Area As cAreaEnum, BackupDelegate As cUndoItemBackupValueDelegate, RestoreDelegate As cUndoItemRestoreValueDelegate)
+            MyBase.New(Parent, Description, Area)
+            oBackupDelegate = BackupDelegate
+            oRestoreDelegate = RestoreDelegate
+            oFirstItems = New List(Of cUndoItemValueDesignPropertyData)
+        End Sub
+
+        Friend Sub New(Parent As cUndo, Description As String, Area As cAreaEnum, Item As cItem, BackupDelegate As cUndoItemBackupValueDelegate, RestoreDelegate As cUndoItemRestoreValueDelegate)
+            MyBase.New(Parent, Description, Area)
+            oBackupDelegate = BackupDelegate
+            oRestoreDelegate = RestoreDelegate
+            oFirstItems = New List(Of cUndoItemValueDesignPropertyData)
+            Call Append(Item)
+        End Sub
+
+        Friend Sub New(Parent As cUndo, Description As String, Area As cAreaEnum, Items As IEnumerable(Of cItem), BackupDelegate As cUndoItemBackupValueDelegate, RestoreDelegate As cUndoItemRestoreValueDelegate)
+            MyBase.New(Parent, Description, Area)
+            oBackupDelegate = BackupDelegate
+            oRestoreDelegate = RestoreDelegate
+            oFirstItems = New List(Of cUndoItemValueDesignPropertyData)
+            Call Append(Items)
+        End Sub
+
+        Friend Sub Append(Items As IEnumerable(Of cItem), BackupDelegate As cUndoItemBackupValueDelegate)
+            For Each oItem As cItem In Items
+                Call Append(oItem)
+            Next
+        End Sub
+
+        Friend Sub Append(Item As cItem)
+            Call oFirstItems.Add(pGetData(Item))
+        End Sub
+
+        Private Function pGetData(Item As cItem) As cUndoItemValueDesignPropertyData
+            Dim oValue As Object = oBackupDelegate(Item)
+            Return New cUndoItemValueDesignPropertyData(oValue, Item.Layer.Items.IndexOf(Item), Item.Layer)
+        End Function
+
+        Private Sub pSetData(Item As cItem, Value As cUndoItemValueDesignPropertyData)
+            Dim oValue As Object = Value.Value
+            oRestoreDelegate(Item, oValue)
+        End Sub
+    End Class
+
     Public Class cUndoDesignItemProperty
         Inherits cUndoItem
 
@@ -343,7 +410,7 @@ Namespace cSurvey.Helper.Editor
             Dim oRestore As cUndoRestoreDesign = New cUndoRestoreDesign(MyBase.Area)
             For Each oFirstItem As cUndoItemValueDesignPropertyData In oFirstItems.OrderBy(Function(oItem) oItem.Index)
                 Dim oItem As cItem = oFirstItem.Layer.Items(oFirstItem.Index)
-                Call pSetData(oItem, sPropertyName, oFirstItem)
+                Call pSetData(oItem, oFirstItem)
                 Call oRestore.Append(oItem)
             Next
             Return oRestore
@@ -359,57 +426,57 @@ Namespace cSurvey.Helper.Editor
             MyBase.New(Parent, Description, Area)
             sPropertyName = PropertyName
             oFirstItems = New List(Of cUndoItemValueDesignPropertyData)
-            Call Append(Item, PropertyName)
+            Call Append(Item)
         End Sub
 
-        Friend Sub New(Parent As cUndo, Description As String, Area As cAreaEnum, Items As IEnumerable(Of cItem), PropertyName As String)
+        Friend Sub New(Parent As cUndo, Description As String, Area As cAreaEnum, Items As IEnumerable(Of cItem), ItemType As Type, PropertyName As String)
             MyBase.New(Parent, Description, Area)
             sPropertyName = PropertyName
             oFirstItems = New List(Of cUndoItemValueDesignPropertyData)
-            Call Append(Items, PropertyName)
+            Call Append(Items)
         End Sub
 
-        Friend Sub Append(Items As IEnumerable(Of cItem), PropertyName As String)
+        Friend Sub Append(Items As IEnumerable(Of cItem))
             For Each oItem As cItem In Items
-                Call Append(oItem, PropertyName)
+                Call Append(oItem)
             Next
         End Sub
 
-        Friend Sub Append(Item As cItem, PropertyName As String)
-            Call oFirstItems.Add(pGetData(Item, PropertyName))
+        Friend Sub Append(Item As cItem)
+            Call oFirstItems.Add(pGetData(Item))
         End Sub
 
-        Private Function pGetData(Item As cItem, PropertyName As String) As cUndoItemValueDesignPropertyData
+        Private Function pGetData(Item As cItem) As cUndoItemValueDesignPropertyData
             Dim oBaseObject As Object = Item
-            Dim sPropertyName As String
-            If PropertyName.Contains(".") Then
-                Dim sPropertyNames As String() = PropertyName.Split(".")
+            Dim sBasePropertyName As String
+            If sPropertyName.Contains(".") Then
+                Dim sPropertyNames As String() = sPropertyName.Split(".")
                 For i As Integer = 0 To sPropertyNames.Count - 2
                     oBaseObject = CallByName(oBaseObject, sPropertyNames(i), CallType.Get)
                 Next
-                sPropertyName = sPropertyNames(sPropertyNames.Count - 1)
+                sBasePropertyName = sPropertyNames(sPropertyNames.Count - 1)
             Else
-                sPropertyName = PropertyName
+                sBasePropertyName = sPropertyName
             End If
-            Dim oValue As Object = CallByName(oBaseObject, sPropertyName, CallType.Get)
+            Dim oValue As Object = CallByName(oBaseObject, sBasePropertyName, CallType.Get)
             Return New cUndoItemValueDesignPropertyData(oValue, Item.Layer.Items.IndexOf(Item), Item.Layer)
         End Function
 
-        Private Function pSetData(Item As cItem, PropertyName As String, Value As cUndoItemValueDesignPropertyData)
+        Private Function pSetData(Item As cItem, Value As cUndoItemValueDesignPropertyData)
             Dim oValue As Object = Value.Value
             Dim oBaseObject As Object = Item
-            Dim sPropertyName As String
-            If PropertyName.Contains(".") Then
-                Dim sPropertyNames As String() = PropertyName.Split(".")
+            Dim sBasePropertyName As String
+            If sPropertyName.Contains(".") Then
+                Dim sPropertyNames As String() = sPropertyName.Split(".")
                 For i As Integer = 0 To sPropertyNames.Count - 2
                     oBaseObject = CallByName(oBaseObject, sPropertyNames(i), CallType.Get)
                 Next
-                sPropertyName = sPropertyNames(sPropertyNames.Count - 1)
+                sBasePropertyName = sPropertyNames(sPropertyNames.Count - 1)
             Else
                 oBaseObject = Item
-                sPropertyName = PropertyName
+                sBasePropertyName = sPropertyName
             End If
-            Return CallByName(oBaseObject, sPropertyName, CallType.Set, oValue)
+            Return CallByName(oBaseObject, sBasePropertyName, CallType.Set, oValue)
         End Function
     End Class
 
@@ -790,6 +857,7 @@ Namespace cSurvey.Helper.Editor
 
     End Class
 
+    Public Delegate Function cUndoPropertyOwnerDelegate() As Object
 
     Public Class cUndo
         Implements IEnumerable
@@ -906,6 +974,42 @@ Namespace cSurvey.Helper.Editor
                             oCurrentUndoItem = New cUndoDesignItemProperty(Me, Description, Area, DirectCast(oItem, IEnumerable(Of cItem)), PropertyName)
                         Else
                             oCurrentUndoItem = New cUndoDesignItemProperty(Me, Description, Area, oItem, PropertyName)
+                        End If
+                    Case cAreaEnum.DataSegments
+                        Throw New Exception("Unsupported")
+                    Case cAreaEnum.DataShots
+                        Throw New Exception("Unsupported")
+                    Case cAreaEnum.All
+                        Throw New Exception("Unsupported")
+                End Select
+                Call oItems.Push(oCurrentUndoItem)
+                oCurrentUndoItem = Nothing
+                RaiseEvent OnChanged(Me, EventArgs.Empty)
+            End If
+        End Sub
+
+        ''' <summary>
+        ''' Create an undo snapshot with not starting item and with working area's selected item as action's result. Usefull for item's creation.
+        ''' </summary>
+        ''' <param name="Description">Action's description</param>
+        ''' <param name="Area">Working area</param>
+        Public Sub CreateSnapshot(Description As String, Area As cAreaEnum, BackupDelegate As cUndoItemBackupValueDelegate, RestoreDelegate As cUndoItemRestoreValueDelegate)
+            If oCurrentUndoItem Is Nothing Then
+                Dim oItem As cItem
+                Select Case Area
+                    Case cAreaEnum.DesignPlan
+                        oItem = oParent.PlanTools.CurrentItem
+                        If TypeOf oItem Is cItemItems Then
+                            oCurrentUndoItem = New cUndoDesignItemDelegatedProperty(Me, Description, Area, DirectCast(oItem, IEnumerable(Of cItem)), BackupDelegate, RestoreDelegate)
+                        Else
+                            oCurrentUndoItem = New cUndoDesignItemDelegatedProperty(Me, Description, Area, oItem, BackupDelegate, RestoreDelegate)
+                        End If
+                    Case cAreaEnum.DesignProfile
+                        oItem = oParent.ProfileTools.CurrentItem
+                        If TypeOf oItem Is cItemItems Then
+                            oCurrentUndoItem = New cUndoDesignItemDelegatedProperty(Me, Description, Area, DirectCast(oItem, IEnumerable(Of cItem)), BackupDelegate, RestoreDelegate)
+                        Else
+                            oCurrentUndoItem = New cUndoDesignItemDelegatedProperty(Me, Description, Area, oItem, BackupDelegate, RestoreDelegate)
                         End If
                     Case cAreaEnum.DataSegments
                         Throw New Exception("Unsupported")

@@ -34,13 +34,14 @@ Friend Class cItemCompassPropertyControl
                 .Filter = GetLocalizedString("parameterscompass.filetypeSVG") & " (*.SVG)|*.SVG|" & GetLocalizedString("parameterscompass.filetypeALL") & " (*.*)|*.*"
                 .FilterIndex = 1
                 If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                    Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo45"), "Clipart")
                     Try
                         Item.Clipart = Item.Survey.Signs.Cliparts.Add(.FileName)
                         picCompassClipartImage.SvgImage = modDevExpress.SvgImageFromClipart(Item.Clipart.Clipart)
                     Catch
                         picCompassClipartImage.SvgImage = Nothing
                     End Try
-                    Call MyBase.TakeUndoSnapshot()
+                    Call MyBase.CommitUndoSnapshot()
                     Call MyBase.PropertyChanged("clipart")
                     Call MyBase.MapInvalidate()
                 End If
@@ -51,8 +52,9 @@ Friend Class cItemCompassPropertyControl
     Private Sub txtCompassClipartZoomFactor_ValueChanged(sender As Object, e As EventArgs) Handles txtCompassClipartZoomFactor.ValueChanged
         Try
             If Not DisabledObjectProperty() Then
+                Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo45"), "ClipartScale")
                 Item.ClipartScale = txtCompassClipartZoomFactor.Value
-                Call MyBase.TakeUndoSnapshot()
+                Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("clipartscale")
                 Call MyBase.MapInvalidate()
             End If
@@ -63,9 +65,10 @@ Friend Class cItemCompassPropertyControl
     Private Sub cboCompassNorth_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCompassNorth.SelectedIndexChanged
         Try
             If Not DisabledObjectProperty() Then
+                Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo45"), "North")
                 Item.North = cboCompassNorth.SelectedIndex
                 Call pSetEnabled()
-                Call MyBase.TakeUndoSnapshot()
+                Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("north")
                 Call MyBase.MapInvalidate()
             End If
@@ -85,9 +88,10 @@ Friend Class cItemCompassPropertyControl
     Private Sub cboCompassMode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCompassMode.SelectedIndexChanged
         Try
             If Not DisabledObjectProperty() Then
+                Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo45"), "Mode")
                 Item.Mode = cboCompassMode.SelectedIndex
                 Call pSetEnabled()
-                Call MyBase.TakeUndoSnapshot()
+                Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("mode")
                 Call MyBase.MapInvalidate()
             End If
@@ -98,8 +102,9 @@ Friend Class cItemCompassPropertyControl
     Private Sub txtCompassYear_ValueChanged(sender As Object, e As EventArgs) Handles txtCompassYear.ValueChanged
         Try
             If Not DisabledObjectProperty() Then
+                Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo45"), "Year")
                 Item.Year = txtCompassYear.Value
-                Call MyBase.TakeUndoSnapshot()
+                Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("year")
                 Call MyBase.MapInvalidate()
             End If
@@ -110,8 +115,9 @@ Friend Class cItemCompassPropertyControl
     Private Sub chkUseTextScaleOnClipart_CheckedChanged(sender As Object, e As EventArgs) Handles chkUseTextScaleOnClipart.CheckedChanged
         Try
             If Not DisabledObjectProperty() Then
+                Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo45"), "UseTextScaleOnClipart")
                 Item.UseTextScaleOnClipart = chkUseTextScaleOnClipart.Checked
-                Call MyBase.TakeUndoSnapshot()
+                Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("usetextscaleonclipart")
                 Call MyBase.MapInvalidate()
             End If
@@ -122,8 +128,9 @@ Friend Class cItemCompassPropertyControl
     Private Sub chkUseClipartScaleOnText_CheckedChanged(sender As Object, e As EventArgs) Handles chkUseClipartScaleOnText.CheckedChanged
         Try
             If Not DisabledObjectProperty() Then
+                Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo45"), "UseClipartScaleOnText")
                 Item.UseClipartScaleOnText = chkUseClipartScaleOnText.Checked
-                Call MyBase.TakeUndoSnapshot()
+                Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("useclipartscaleontext")
                 Call MyBase.MapInvalidate()
             End If
@@ -134,8 +141,9 @@ Friend Class cItemCompassPropertyControl
     Private Sub chkHideNorthValue_CheckedChanged(sender As Object, e As EventArgs) Handles chkHideNorthValue.CheckedChanged
         Try
             If Not DisabledObjectProperty() Then
+                Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo45"), "HideNorthValue")
                 Item.HideNorthValue = chkHideNorthValue.Checked
-                Call MyBase.TakeUndoSnapshot()
+                Call MyBase.CommitUndoSnapshot()
                 Call MyBase.PropertyChanged("hidescalevalue")
                 Call MyBase.MapInvalidate()
             End If

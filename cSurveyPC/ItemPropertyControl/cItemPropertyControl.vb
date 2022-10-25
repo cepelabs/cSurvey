@@ -1,6 +1,9 @@
 ﻿Imports System.ComponentModel
 Imports cSurveyPC
 Imports cSurveyPC.cSurvey.Design
+Imports cSurveyPC.cSurvey.Helper.Editor
+Imports DevExpress.XtraRichEdit.Model
+Imports ScintillaNET
 
 Public Class cItemPropertyControl
     Implements cUIControlPropertyInteractions
@@ -119,6 +122,10 @@ Public Class cItemPropertyControl
 
     Public Sub CreateUndoSnapshot(Description As String, PropertyName As String)
         RaiseEvent OnCreateUndoSnapshot(Me, New CreateUndoSnapshotEventArgs(Description, PropertyName))
+    End Sub
+
+    Public Sub CreateUndoSnapshot(Description As String, BackupDelegate As cUndoItemBackupValueDelegate, RestoreDelegate As cUndoItemRestoreValueDelegate)
+        RaiseEvent OnCreateUndoSnapshot(Me, New CreateUndoSnapshotEventArgs(Description, BackupDelegate, RestoreDelegate))
     End Sub
 
     Public Sub BeginUndoSnapshot(Description As String)

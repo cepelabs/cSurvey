@@ -1063,3 +1063,6 @@ main.undo41=Merge mode change
 main.undo42=Image change
 main.undo43=Item binding change
 main.undo44=Custom property change
+main.undo45=Compass change
+main.undo46=Cross section marker change
+main.undo47=Text change

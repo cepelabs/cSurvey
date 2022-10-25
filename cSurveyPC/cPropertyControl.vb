@@ -1,4 +1,6 @@
 ﻿Imports cSurveyPC.cSurvey.Design
+Imports cSurveyPC.cSurvey.Helper.Editor
+Imports DevExpress.XtraPrinting.Native
 
 Public Class KeyValueChangeEventArgs(Of N, V)
     Private oName As N
@@ -123,7 +125,36 @@ End Class
 Public Class CreateUndoSnapshotEventArgs
     Inherits BeginUndoSnapshotEventArgs
 
+    Private oBackupDelegate As cUndoItemBackupValueDelegate
+    Private oRestoreDelegate As cUndoItemRestoreValueDelegate
+
     Private sPropertyName As String
+
+    Public Function SnapshotType() As Integer
+        If sPropertyName Is Nothing Then
+            Return 1
+        Else
+            Return 0
+        End If
+    End Function
+
+    Public Sub New(Description As String, BackupDelegate As cUndoItemBackupValueDelegate, RestoreDelegate As cUndoItemRestoreValueDelegate)
+        MyBase.New(Description)
+        oBackupDelegate = BackupDelegate
+        oRestoreDelegate = RestoreDelegate
+    End Sub
+
+    Public ReadOnly Property RestoreDelegate As cUndoItemRestoreValueDelegate
+        Get
+            Return oRestoreDelegate
+        End Get
+    End Property
+
+    Public ReadOnly Property BackupDelegate As cUndoItemBackupValueDelegate
+        Get
+            Return oBackupDelegate
+        End Get
+    End Property
 
     Public Sub New(Description As String, PropertyName As String)
         MyBase.New(Description)

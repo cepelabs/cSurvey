@@ -32,8 +32,8 @@ Friend Class cItemSignPropertyControl
 
     Private Sub cboPropSignRotateMode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropSignRotateMode.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo50"), "SignRotateMode")
             Me.Item.SignRotateMode = cboPropSignRotateMode.SelectedIndex
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("SignRotateMode")
             Call MyBase.MapInvalidate()
         End If
@@ -41,8 +41,8 @@ Friend Class cItemSignPropertyControl
 
     Private Sub cboPropSignFlip_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropSignFlip.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo50"), "SignFlip")
             Me.Item.SignFlip = cboPropSignFlip.SelectedIndex
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("SignFlip")
             Call MyBase.MapInvalidate()
         End If
@@ -50,8 +50,8 @@ Friend Class cItemSignPropertyControl
 
     Private Sub cboPropSignSize_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropSignSize.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo50"), "SignSize")
             Me.Item.SignSize = cboPropSignSize.SelectedIndex
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("SignSize")
             Call MyBase.MapInvalidate()
         End If
@@ -59,8 +59,8 @@ Friend Class cItemSignPropertyControl
 
     Private Sub cboPropSign_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropSign.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo50"), "Sign")
             Me.Item.Sign = New List(Of Items.cIItemSign.SignEnum)(System.Enum.GetValues(GetType(Items.cIItemSign.SignEnum))).Item(cboPropSign.SelectedIndex)
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("PropSign")
             Call MyBase.MapInvalidate()
         End If
@@ -68,8 +68,8 @@ Friend Class cItemSignPropertyControl
 
     Private Sub txtPropSignRotationAngleDelta_ValueChanged(sender As Object, e As EventArgs) Handles txtPropSignRotationAngleDelta.ValueChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo50"), "SignRotationAngleDelta")
             Me.Item.SignRotationAngleDelta = txtPropSignRotationAngleDelta.Value
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("SignRotationAngleDelta")
             Call MyBase.MapInvalidate()
         End If

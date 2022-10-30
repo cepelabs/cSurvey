@@ -871,11 +871,11 @@ Namespace cSurvey.Helper.Editor
 
         Friend Event OnChanged(sender As Object, e As EventArgs)
 
-        Public Enum cUndoActionEnum
-            Add = 1
-            Edit = 0
-            Delete = 2
-        End Enum
+        'Public Enum cUndoActionEnum
+        '    Add = 1
+        '    Edit = 0
+        '    Delete = 2
+        'End Enum
 
         Public Enum cAreaEnum
             DesignPlan = 0
@@ -1247,6 +1247,12 @@ Namespace cSurvey.Helper.Editor
         Public Function GetEnumerator() As IEnumerator Implements IEnumerable.GetEnumerator
             Return oItems.GetEnumerator
         End Function
+
+        Public ReadOnly Property Count As Integer
+            Get
+                Return oItems.Count
+            End Get
+        End Property
     End Class
 
     'Public Class cUndo

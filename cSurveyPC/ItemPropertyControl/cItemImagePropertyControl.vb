@@ -27,20 +27,21 @@ Friend Class cItemImagePropertyControl
     End Sub
 
     Private Sub pRefreshImageInfo()
-
         txtPropImageResolution.Text = Me.Item.ImageSize.Width & "x" & Me.Item.ImageSize.Height & "px " & Me.Item.ImageResolution.X & "x" & Me.Item.ImageResolution.Y & " dpi"
     End Sub
 
     Public Sub Edit()
         If Not DisabledObjectProperty() Then
             Using frmSB As frmImageEdit = New frmImageEdit(Item)
+                Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo42"))
                 If frmSB.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                    Call MyBase.BeginUndoSnapshot(modMain.GetLocalizedString("main.undo42"))
                     picPropImage.Image = Me.Item.Image
                     Call pRefreshImageInfo()
                     Call MyBase.CommitUndoSnapshot()
                     Call MyBase.PropertyChanged("Image")
                     Call MyBase.MapInvalidate()
+                Else
+                    Call MyBase.CancelUndoSnapshot()
                 End If
             End Using
         End If

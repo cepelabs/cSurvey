@@ -105,16 +105,7 @@ Partial Class frmMain2
         Me.DocumentGroup2 = New DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(Me.components)
         Me.Document1 = New DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(Me.components)
         Me.pnlDesigner = New DevExpress.XtraEditors.PanelControl()
-        Me.dockFloatBar = New DevExpress.XtraBars.StandaloneBarDockControl()
-        Me.cDesignMessageCorner = New cSurveyPC.cMessageCorner()
-        Me.pnl3D = New DevExpress.XtraEditors.PanelControl()
-        Me.h3D = New System.Windows.Forms.Integration.ElementHost()
-        Me.picMap = New System.Windows.Forms.PictureBox()
-        Me.tabTrigpointsProperty = New DevExpress.XtraTab.XtraTabControl()
-        Me.tabTrigpointsMain = New DevExpress.XtraTab.XtraTabPage()
-        Me.grdTrigPointAliases = New DevExpress.XtraGrid.GridControl()
-        Me.grdViewTrigPointAliases = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.colTrigPointAliasesAlias = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.pnlUndoPopup = New DevExpress.XtraBars.PopupControlContainer(Me.components)
         Me.RibbonControl = New DevExpress.XtraBars.Ribbon.RibbonControl()
         Me.BarAndDockingController = New DevExpress.XtraBars.BarAndDockingController(Me.components)
         Me.btnNew = New DevExpress.XtraBars.BarButtonItem()
@@ -149,7 +140,6 @@ Partial Class frmMain2
         Me.btnHide = New DevExpress.XtraBars.BarButtonItem()
         Me.btnExit = New DevExpress.XtraBars.BarButtonItem()
         Me.btnUndo = New DevExpress.XtraBars.BarButtonItem()
-        Me.mnuUndo = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.btnCut = New DevExpress.XtraBars.BarButtonItem()
         Me.btnCopy = New DevExpress.XtraBars.BarButtonItem()
         Me.btnPasteService = New DevExpress.XtraBars.BarButtonItem()
@@ -547,6 +537,17 @@ Partial Class frmMain2
         Me.txtCurrentItemTransparency = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
         Me.RepositoryItemImageComboBox1 = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
         Me.RibbonStatusBar1 = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
+        Me.dockFloatBar = New DevExpress.XtraBars.StandaloneBarDockControl()
+        Me.cDesignMessageCorner = New cSurveyPC.cMessageCorner()
+        Me.pnl3D = New DevExpress.XtraEditors.PanelControl()
+        Me.h3D = New System.Windows.Forms.Integration.ElementHost()
+        Me.picMap = New System.Windows.Forms.PictureBox()
+        Me.mnuUndo = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.tabTrigpointsProperty = New DevExpress.XtraTab.XtraTabControl()
+        Me.tabTrigpointsMain = New DevExpress.XtraTab.XtraTabPage()
+        Me.grdTrigPointAliases = New DevExpress.XtraGrid.GridControl()
+        Me.grdViewTrigPointAliases = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colTrigPointAliasesAlias = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.chkTrigpointZTurn = New DevExpress.XtraEditors.CheckEdit()
         Me.cboTrigpointEntrance = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.chkTrigpointIsInExploration = New DevExpress.XtraEditors.CheckEdit()
@@ -809,20 +810,12 @@ Partial Class frmMain2
         CType(Me.Document1, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.pnlDesigner, System.ComponentModel.ISupportInitialize).BeginInit
         Me.pnlDesigner.SuspendLayout
-        CType(Me.pnl3D, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.pnl3D.SuspendLayout
-        CType(Me.picMap, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.tabTrigpointsProperty, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.tabTrigpointsProperty.SuspendLayout
-        Me.tabTrigpointsMain.SuspendLayout
-        CType(Me.grdTrigPointAliases, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.grdViewTrigPointAliases, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnlUndoPopup, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.BarAndDockingController, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.mnuTemplates, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.mnuRecents, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.mnuTherionPad, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.mnuUndo, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.mnuPasteSpecial, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.mnuPlotManageStations, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.mnuZoom, System.ComponentModel.ISupportInitialize).BeginInit
@@ -861,6 +854,15 @@ Partial Class frmMain2
         CType(Me.RepositoryItemPopupContainerEdit1, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtCurrentItemTransparency, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pnl3D, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnl3D.SuspendLayout
+        CType(Me.picMap, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.mnuUndo, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tabTrigpointsProperty, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabTrigpointsProperty.SuspendLayout
+        Me.tabTrigpointsMain.SuspendLayout
+        CType(Me.grdTrigPointAliases, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grdViewTrigPointAliases, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.chkTrigpointZTurn.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.cboTrigpointEntrance.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.chkTrigpointIsInExploration.Properties, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1059,6 +1061,7 @@ Partial Class frmMain2
         '
         Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlDesigner, CType(resources.GetObject("pnlDesigner.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
         Me.pnlDesigner.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlDesigner.Controls.Add(Me.pnlUndoPopup)
         Me.pnlDesigner.Controls.Add(Me.dockFloatBar)
         Me.pnlDesigner.Controls.Add(Me.cDesignMessageCorner)
         Me.pnlDesigner.Controls.Add(Me.pnl3D)
@@ -1066,104 +1069,13 @@ Partial Class frmMain2
         resources.ApplyResources(Me.pnlDesigner, "pnlDesigner")
         Me.pnlDesigner.Name = "pnlDesigner"
         '
-        'dockFloatBar
+        'pnlUndoPopup
         '
-        resources.ApplyResources(Me.dockFloatBar, "dockFloatBar")
-        Me.dockFloatBar.CausesValidation = False
-        Me.dockFloatBar.Manager = Nothing
-        Me.dockFloatBar.Name = "dockFloatBar"
-        '
-        'cDesignMessageCorner
-        '
-        Me.cDesignMessageCorner.AllowClick = False
-        Me.DefaultToolTipController.SetAllowHtmlText(Me.cDesignMessageCorner, CType(resources.GetObject("cDesignMessageCorner.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.cDesignMessageCorner.Appearance.BackColor = System.Drawing.Color.LemonChiffon
-        Me.cDesignMessageCorner.Appearance.Options.UseBackColor = True
-        Me.cDesignMessageCorner.CustomButtonCaption = "Refresh"
-        Me.cDesignMessageCorner.CustomButtonTooltip = ""
-        resources.ApplyResources(Me.cDesignMessageCorner, "cDesignMessageCorner")
-        Me.cDesignMessageCorner.Name = "cDesignMessageCorner"
-        '
-        'pnl3D
-        '
-        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnl3D, CType(resources.GetObject("pnl3D.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.pnl3D.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-        Me.pnl3D.Controls.Add(Me.h3D)
-        resources.ApplyResources(Me.pnl3D, "pnl3D")
-        Me.pnl3D.Name = "pnl3D"
-        '
-        'h3D
-        '
-        Me.DefaultToolTipController.SetAllowHtmlText(Me.h3D, CType(resources.GetObject("h3D.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        resources.ApplyResources(Me.h3D, "h3D")
-        Me.h3D.Name = "h3D"
-        Me.h3D.Child = Nothing
-        '
-        'picMap
-        '
-        Me.DefaultToolTipController.SetAllowHtmlText(Me.picMap, CType(resources.GetObject("picMap.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.picMap.BackColor = System.Drawing.Color.White
-        resources.ApplyResources(Me.picMap, "picMap")
-        Me.picMap.Name = "picMap"
-        Me.picMap.TabStop = False
-        '
-        'tabTrigpointsProperty
-        '
-        resources.ApplyResources(Me.tabTrigpointsProperty, "tabTrigpointsProperty")
-        Me.tabTrigpointsProperty.Name = "tabTrigpointsProperty"
-        Me.tabTrigpointsProperty.SelectedTabPage = Me.tabTrigpointsMain
-        Me.tabTrigpointsProperty.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tabTrigpointsMain, Me.tabTrigpointsLayout, Me.tabTrigpointsConnections, Me.tabTrigpointsData, Me.tabTrigpointsNote, Me.tabTrigpointsCoordinate})
-        '
-        'tabTrigpointsMain
-        '
-        Me.tabTrigpointsMain.Controls.Add(Me.grdTrigPointAliases)
-        Me.tabTrigpointsMain.Controls.Add(Me.chkTrigpointZTurn)
-        Me.tabTrigpointsMain.Controls.Add(Me.cboTrigpointEntrance)
-        Me.tabTrigpointsMain.Controls.Add(Me.chkTrigpointIsInExploration)
-        Me.tabTrigpointsMain.Controls.Add(Me.lblTrigpointEntrance)
-        Me.tabTrigpointsMain.Controls.Add(Me.chkTrigpointShowEntrance)
-        Me.tabTrigpointsMain.Controls.Add(Me.lblTrigpointType)
-        Me.tabTrigpointsMain.Controls.Add(Me.chkTrigpointIsSpecial)
-        Me.tabTrigpointsMain.Controls.Add(Me.cboTrigPointType)
-        Me.tabTrigpointsMain.ImageOptions.SvgImage = CType(resources.GetObject("tabTrigpointsMain.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.tabTrigpointsMain.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.tabTrigpointsMain.Name = "tabTrigpointsMain"
-        resources.ApplyResources(Me.tabTrigpointsMain, "tabTrigpointsMain")
-        '
-        'grdTrigPointAliases
-        '
-        resources.ApplyResources(Me.grdTrigPointAliases, "grdTrigPointAliases")
-        Me.grdTrigPointAliases.MainView = Me.grdViewTrigPointAliases
-        Me.grdTrigPointAliases.MenuManager = Me.RibbonControl
-        Me.grdTrigPointAliases.Name = "grdTrigPointAliases"
-        Me.grdTrigPointAliases.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdViewTrigPointAliases})
-        '
-        'grdViewTrigPointAliases
-        '
-        Me.grdViewTrigPointAliases.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colTrigPointAliasesAlias})
-        Me.grdViewTrigPointAliases.GridControl = Me.grdTrigPointAliases
-        Me.grdViewTrigPointAliases.Name = "grdViewTrigPointAliases"
-        Me.grdViewTrigPointAliases.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[True]
-        Me.grdViewTrigPointAliases.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[True]
-        Me.grdViewTrigPointAliases.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.Click
-        Me.grdViewTrigPointAliases.OptionsCustomization.AllowColumnMoving = False
-        Me.grdViewTrigPointAliases.OptionsCustomization.AllowGroup = False
-        Me.grdViewTrigPointAliases.OptionsCustomization.AllowQuickHideColumns = False
-        Me.grdViewTrigPointAliases.OptionsCustomization.AllowSort = False
-        Me.grdViewTrigPointAliases.OptionsFind.AllowFindPanel = False
-        Me.grdViewTrigPointAliases.OptionsMenu.EnableColumnMenu = False
-        Me.grdViewTrigPointAliases.OptionsMenu.EnableFooterMenu = False
-        Me.grdViewTrigPointAliases.OptionsMenu.EnableGroupPanelMenu = False
-        Me.grdViewTrigPointAliases.OptionsMenu.ShowAutoFilterRowItem = False
-        Me.grdViewTrigPointAliases.OptionsMenu.ShowDateTimeGroupIntervalItems = False
-        Me.grdViewTrigPointAliases.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom
-        Me.grdViewTrigPointAliases.OptionsView.ShowGroupPanel = False
-        '
-        'colTrigPointAliasesAlias
-        '
-        resources.ApplyResources(Me.colTrigPointAliasesAlias, "colTrigPointAliasesAlias")
-        Me.colTrigPointAliasesAlias.FieldName = "Value"
-        Me.colTrigPointAliasesAlias.Name = "colTrigPointAliasesAlias"
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlUndoPopup, CType(resources.GetObject("pnlUndoPopup.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlUndoPopup.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        resources.ApplyResources(Me.pnlUndoPopup, "pnlUndoPopup")
+        Me.pnlUndoPopup.Name = "pnlUndoPopup"
+        Me.pnlUndoPopup.Ribbon = Me.RibbonControl
         '
         'RibbonControl
         '
@@ -1436,16 +1348,11 @@ Partial Class frmMain2
         '
         Me.btnUndo.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown
         resources.ApplyResources(Me.btnUndo, "btnUndo")
-        Me.btnUndo.DropDownControl = Me.mnuUndo
+        Me.btnUndo.DropDownControl = Me.pnlUndoPopup
         Me.btnUndo.Id = 29
         Me.btnUndo.ImageOptions.SvgImage = CType(resources.GetObject("btnUndo.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.btnUndo.ItemShortcut = New DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Z))
         Me.btnUndo.Name = "btnUndo"
-        '
-        'mnuUndo
-        '
-        Me.mnuUndo.Name = "mnuUndo"
-        Me.mnuUndo.Ribbon = Me.RibbonControl
         '
         'btnCut
         '
@@ -1803,7 +1710,7 @@ Partial Class frmMain2
         '
         resources.ApplyResources(Me.btnViewFieldData, "btnViewFieldData")
         Me.btnViewFieldData.Id = 69
-        Me.btnViewFieldData.ImageOptions.SvgImage = CType(resources.GetObject("btnViewFieldData.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnViewFieldData.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.inserttable
         Me.btnViewFieldData.ItemShortcut = New DevExpress.XtraBars.BarShortcut(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
                 Or System.Windows.Forms.Keys.D))
         Me.btnViewFieldData.Name = "btnViewFieldData"
@@ -1812,7 +1719,7 @@ Partial Class frmMain2
         '
         resources.ApplyResources(Me.btnViewObjectProp, "btnViewObjectProp")
         Me.btnViewObjectProp.Id = 70
-        Me.btnViewObjectProp.ImageOptions.SvgImage = CType(resources.GetObject("btnViewObjectProp.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnViewObjectProp.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.propertiespanel
         Me.btnViewObjectProp.ItemShortcut = New DevExpress.XtraBars.BarShortcut(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
                 Or System.Windows.Forms.Keys.C))
         Me.btnViewObjectProp.Name = "btnViewObjectProp"
@@ -1821,7 +1728,7 @@ Partial Class frmMain2
         '
         resources.ApplyResources(Me.btnViewDesignArea, "btnViewDesignArea")
         Me.btnViewDesignArea.Id = 71
-        Me.btnViewDesignArea.ImageOptions.SvgImage = CType(resources.GetObject("btnViewDesignArea.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnViewDesignArea.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.designer
         Me.btnViewDesignArea.ItemShortcut = New DevExpress.XtraBars.BarShortcut(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
                 Or System.Windows.Forms.Keys.G))
         Me.btnViewDesignArea.Name = "btnViewDesignArea"
@@ -1865,7 +1772,7 @@ Partial Class frmMain2
         '
         resources.ApplyResources(Me.btnViewViewer, "btnViewViewer")
         Me.btnViewViewer.Id = 75
-        Me.btnViewViewer.ImageOptions.SvgImage = CType(resources.GetObject("btnViewViewer.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnViewViewer.ImageOptions.SvgImage = Global.cSurveyPC.My.Resources.Resources.viewer
         Me.btnViewViewer.ItemShortcut = New DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F12)
         Me.btnViewViewer.Name = "btnViewViewer"
         '
@@ -4915,6 +4822,110 @@ Partial Class frmMain2
         Me.RibbonStatusBar1.Name = "RibbonStatusBar1"
         Me.RibbonStatusBar1.Ribbon = Me.RibbonControl
         '
+        'dockFloatBar
+        '
+        resources.ApplyResources(Me.dockFloatBar, "dockFloatBar")
+        Me.dockFloatBar.CausesValidation = False
+        Me.dockFloatBar.Manager = Nothing
+        Me.dockFloatBar.Name = "dockFloatBar"
+        '
+        'cDesignMessageCorner
+        '
+        Me.cDesignMessageCorner.AllowClick = False
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.cDesignMessageCorner, CType(resources.GetObject("cDesignMessageCorner.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.cDesignMessageCorner.Appearance.BackColor = System.Drawing.Color.LemonChiffon
+        Me.cDesignMessageCorner.Appearance.Options.UseBackColor = True
+        Me.cDesignMessageCorner.CustomButtonCaption = "Refresh"
+        Me.cDesignMessageCorner.CustomButtonTooltip = ""
+        resources.ApplyResources(Me.cDesignMessageCorner, "cDesignMessageCorner")
+        Me.cDesignMessageCorner.Name = "cDesignMessageCorner"
+        '
+        'pnl3D
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnl3D, CType(resources.GetObject("pnl3D.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnl3D.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnl3D.Controls.Add(Me.h3D)
+        resources.ApplyResources(Me.pnl3D, "pnl3D")
+        Me.pnl3D.Name = "pnl3D"
+        '
+        'h3D
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.h3D, CType(resources.GetObject("h3D.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        resources.ApplyResources(Me.h3D, "h3D")
+        Me.h3D.Name = "h3D"
+        Me.h3D.Child = Nothing
+        '
+        'picMap
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.picMap, CType(resources.GetObject("picMap.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.picMap.BackColor = System.Drawing.Color.White
+        resources.ApplyResources(Me.picMap, "picMap")
+        Me.picMap.Name = "picMap"
+        Me.picMap.TabStop = False
+        '
+        'mnuUndo
+        '
+        Me.mnuUndo.Name = "mnuUndo"
+        Me.mnuUndo.Ribbon = Me.RibbonControl
+        '
+        'tabTrigpointsProperty
+        '
+        resources.ApplyResources(Me.tabTrigpointsProperty, "tabTrigpointsProperty")
+        Me.tabTrigpointsProperty.Name = "tabTrigpointsProperty"
+        Me.tabTrigpointsProperty.SelectedTabPage = Me.tabTrigpointsMain
+        Me.tabTrigpointsProperty.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tabTrigpointsMain, Me.tabTrigpointsLayout, Me.tabTrigpointsConnections, Me.tabTrigpointsData, Me.tabTrigpointsNote, Me.tabTrigpointsCoordinate})
+        '
+        'tabTrigpointsMain
+        '
+        Me.tabTrigpointsMain.Controls.Add(Me.grdTrigPointAliases)
+        Me.tabTrigpointsMain.Controls.Add(Me.chkTrigpointZTurn)
+        Me.tabTrigpointsMain.Controls.Add(Me.cboTrigpointEntrance)
+        Me.tabTrigpointsMain.Controls.Add(Me.chkTrigpointIsInExploration)
+        Me.tabTrigpointsMain.Controls.Add(Me.lblTrigpointEntrance)
+        Me.tabTrigpointsMain.Controls.Add(Me.chkTrigpointShowEntrance)
+        Me.tabTrigpointsMain.Controls.Add(Me.lblTrigpointType)
+        Me.tabTrigpointsMain.Controls.Add(Me.chkTrigpointIsSpecial)
+        Me.tabTrigpointsMain.Controls.Add(Me.cboTrigPointType)
+        Me.tabTrigpointsMain.ImageOptions.SvgImage = CType(resources.GetObject("tabTrigpointsMain.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.tabTrigpointsMain.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.tabTrigpointsMain.Name = "tabTrigpointsMain"
+        resources.ApplyResources(Me.tabTrigpointsMain, "tabTrigpointsMain")
+        '
+        'grdTrigPointAliases
+        '
+        resources.ApplyResources(Me.grdTrigPointAliases, "grdTrigPointAliases")
+        Me.grdTrigPointAliases.MainView = Me.grdViewTrigPointAliases
+        Me.grdTrigPointAliases.MenuManager = Me.RibbonControl
+        Me.grdTrigPointAliases.Name = "grdTrigPointAliases"
+        Me.grdTrigPointAliases.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdViewTrigPointAliases})
+        '
+        'grdViewTrigPointAliases
+        '
+        Me.grdViewTrigPointAliases.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colTrigPointAliasesAlias})
+        Me.grdViewTrigPointAliases.GridControl = Me.grdTrigPointAliases
+        Me.grdViewTrigPointAliases.Name = "grdViewTrigPointAliases"
+        Me.grdViewTrigPointAliases.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[True]
+        Me.grdViewTrigPointAliases.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[True]
+        Me.grdViewTrigPointAliases.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.Click
+        Me.grdViewTrigPointAliases.OptionsCustomization.AllowColumnMoving = False
+        Me.grdViewTrigPointAliases.OptionsCustomization.AllowGroup = False
+        Me.grdViewTrigPointAliases.OptionsCustomization.AllowQuickHideColumns = False
+        Me.grdViewTrigPointAliases.OptionsCustomization.AllowSort = False
+        Me.grdViewTrigPointAliases.OptionsFind.AllowFindPanel = False
+        Me.grdViewTrigPointAliases.OptionsMenu.EnableColumnMenu = False
+        Me.grdViewTrigPointAliases.OptionsMenu.EnableFooterMenu = False
+        Me.grdViewTrigPointAliases.OptionsMenu.EnableGroupPanelMenu = False
+        Me.grdViewTrigPointAliases.OptionsMenu.ShowAutoFilterRowItem = False
+        Me.grdViewTrigPointAliases.OptionsMenu.ShowDateTimeGroupIntervalItems = False
+        Me.grdViewTrigPointAliases.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom
+        Me.grdViewTrigPointAliases.OptionsView.ShowGroupPanel = False
+        '
+        'colTrigPointAliasesAlias
+        '
+        resources.ApplyResources(Me.colTrigPointAliasesAlias, "colTrigPointAliasesAlias")
+        Me.colTrigPointAliasesAlias.FieldName = "Value"
+        Me.colTrigPointAliasesAlias.Name = "colTrigPointAliasesAlias"
+        '
         'chkTrigpointZTurn
         '
         resources.ApplyResources(Me.chkTrigpointZTurn, "chkTrigpointZTurn")
@@ -7213,21 +7224,12 @@ Partial Class frmMain2
         CType(Me.pnlDesigner, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlDesigner.ResumeLayout(False)
         Me.pnlDesigner.PerformLayout
-        CType(Me.pnl3D, System.ComponentModel.ISupportInitialize).EndInit
-        Me.pnl3D.ResumeLayout(False)
-        CType(Me.picMap, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tabTrigpointsProperty, System.ComponentModel.ISupportInitialize).EndInit
-        Me.tabTrigpointsProperty.ResumeLayout(False)
-        Me.tabTrigpointsMain.ResumeLayout(False)
-        Me.tabTrigpointsMain.PerformLayout
-        CType(Me.grdTrigPointAliases, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.grdViewTrigPointAliases, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnlUndoPopup, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.BarAndDockingController, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.mnuTemplates, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.mnuRecents, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.mnuTherionPad, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.mnuUndo, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.mnuPasteSpecial, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.mnuPlotManageStations, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.mnuZoom, System.ComponentModel.ISupportInitialize).EndInit
@@ -7266,6 +7268,16 @@ Partial Class frmMain2
         CType(Me.RepositoryItemPopupContainerEdit1, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.txtCurrentItemTransparency, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pnl3D, System.ComponentModel.ISupportInitialize).EndInit
+        Me.pnl3D.ResumeLayout(False)
+        CType(Me.picMap, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.mnuUndo, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tabTrigpointsProperty, System.ComponentModel.ISupportInitialize).EndInit
+        Me.tabTrigpointsProperty.ResumeLayout(False)
+        Me.tabTrigpointsMain.ResumeLayout(False)
+        Me.tabTrigpointsMain.PerformLayout
+        CType(Me.grdTrigPointAliases, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grdViewTrigPointAliases, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.chkTrigpointZTurn.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.cboTrigpointEntrance.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.chkTrigpointIsInExploration.Properties, System.ComponentModel.ISupportInitialize).EndInit
@@ -8150,4 +8162,5 @@ Partial Class frmMain2
     Friend WithEvents grpViewToolbar As DevExpress.XtraBars.Ribbon.RibbonPageGroup
     Friend WithEvents btnViewToolbarsDesign As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents mnuUndo As DevExpress.XtraBars.PopupMenu
+    Friend WithEvents pnlUndoPopup As DevExpress.XtraBars.PopupControlContainer
 End Class

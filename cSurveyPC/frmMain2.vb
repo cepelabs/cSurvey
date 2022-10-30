@@ -3558,42 +3558,42 @@ Friend Class frmMain2
                                 If .Started Then
                                     If btnAlignToGrid.Checked Then modPaint.PointToGrid(oMousePoint, btnAlignToGridSize.EditValue)
                                     Dim oLastPoint As PointF = modPaint.FromPaintPoint(.LastPoint, sPaintZoom, oPaintTranslation)
-                                        If btnAlignToGrid.Checked Then modPaint.PointToGrid(oLastPoint, btnAlignToGridSize.EditValue)
-                                        If oMousePoint <> oLastPoint Then
-                                            Select Case .CurrentItem.Type
-                                                Case cIItem.cItemTypeEnum.CrossSection
-                                                    Dim oItem As cItemCrossSection = .CurrentItem
-                                                    If oItem.Points.Count < oItem.MaxPointsCount Then
-                                                        Call oItem.Points.AddFromPaintPoint(oMousePoint)
-                                                    Else
-                                                        Call oItem.Points.Last.MoveTo(oMousePoint)
-                                                    End If
+                                    If btnAlignToGrid.Checked Then modPaint.PointToGrid(oLastPoint, btnAlignToGridSize.EditValue)
+                                    If oMousePoint <> oLastPoint Then
+                                        Select Case .CurrentItem.Type
+                                            Case cIItem.cItemTypeEnum.CrossSection
+                                                Dim oItem As cItemCrossSection = .CurrentItem
+                                                If oItem.Points.Count < oItem.MaxPointsCount Then
+                                                    Call oItem.Points.AddFromPaintPoint(oMousePoint)
+                                                Else
+                                                    Call oItem.Points.Last.MoveTo(oMousePoint)
+                                                End If
 
-                                                Case cIItem.cItemTypeEnum.FreeHandLine, cIItem.cItemTypeEnum.FreeHandArea, cIItem.cItemTypeEnum.InvertedFreeHandArea
-                                                    Dim oItem As cItem = .CurrentItem
-                                                    If bEditPointByPoint Then
-                                                        Call oItem.Points.Last.MoveTo(oMousePoint)
-                                                    Else
-                                                        Call .SelectLastPoint(oItem.Points.AddFromPaintPoint(oMousePoint))
-                                                    End If
+                                            Case cIItem.cItemTypeEnum.FreeHandLine, cIItem.cItemTypeEnum.FreeHandArea, cIItem.cItemTypeEnum.InvertedFreeHandArea
+                                                Dim oItem As cItem = .CurrentItem
+                                                If bEditPointByPoint Then
+                                                    Call oItem.Points.Last.MoveTo(oMousePoint)
+                                                Else
+                                                    Call .SelectLastPoint(oItem.Points.AddFromPaintPoint(oMousePoint))
+                                                End If
 
-                                                Case cIItem.cItemTypeEnum.Text, cIItem.cItemTypeEnum.Sign, cIItem.cItemTypeEnum.Clipart, cIItem.cItemTypeEnum.Image, cIItem.cItemTypeEnum.Attachment, cIItem.cItemTypeEnum.Quota, cIItem.cItemTypeEnum.Legend, cIItem.cItemTypeEnum.Scale, cIItem.cItemTypeEnum.Compass, cIItem.cItemTypeEnum.InformationBoxText
-                                                    Dim oItem As cItem = .CurrentItem
-                                                    If oItem.Points.Count < oItem.MaxPointsCount Then
-                                                        Call .SelectLastPoint(oItem.Points.AddFromPaintPoint(oMousePoint))
-                                                        'If oItem.Points.Count >= oItem.MaxPointsCount Then Call .EndAndSelectItem()
-                                                    Else
-                                                        If oItem.Points.Count = oItem.MaxPointsCount Then
-                                                            If oItem.Points.First.Point <> oMousePoint Then
-                                                                Call oItem.Points.Last.MoveTo(oMousePoint)
-                                                            End If
+                                            Case cIItem.cItemTypeEnum.Text, cIItem.cItemTypeEnum.Sign, cIItem.cItemTypeEnum.Clipart, cIItem.cItemTypeEnum.Image, cIItem.cItemTypeEnum.Attachment, cIItem.cItemTypeEnum.Quota, cIItem.cItemTypeEnum.Legend, cIItem.cItemTypeEnum.Scale, cIItem.cItemTypeEnum.Compass, cIItem.cItemTypeEnum.InformationBoxText
+                                                Dim oItem As cItem = .CurrentItem
+                                                If oItem.Points.Count < oItem.MaxPointsCount Then
+                                                    Call .SelectLastPoint(oItem.Points.AddFromPaintPoint(oMousePoint))
+                                                    'If oItem.Points.Count >= oItem.MaxPointsCount Then Call .EndAndSelectItem()
+                                                Else
+                                                    If oItem.Points.Count = oItem.MaxPointsCount Then
+                                                        If oItem.Points.First.Point <> oMousePoint Then
+                                                            Call oItem.Points.Last.MoveTo(oMousePoint)
                                                         End If
                                                     End If
-                                            End Select
-                                            .LastPoint = oPoint
-                                            bInvalidate = True
-                                        End If
+                                                End If
+                                        End Select
+                                        .LastPoint = oPoint
+                                        bInvalidate = True
                                     End If
+                                End If
                             End With
                         ElseIf ((e.Button And Windows.Forms.MouseButtons.Middle) = Windows.Forms.MouseButtons.Middle) Then
                             Dim oOldPaintTranslation As PointF = oPaintTranslation
@@ -18152,17 +18152,21 @@ Friend Class frmMain2
 
     Private Sub pItemSketchEnableMorphingForAll(Enabled As Boolean)
         Try
-            Call oMousePointer.Push(Cursors.WaitCursor)
-            For Each oItem As cItem In oCurrentDesign.Layers(cLayers.LayerTypeEnum.Base).Items
-                If oItem.Type = cIItem.cItemTypeEnum.Sketch Then
-                    Dim oItemSketch As cIItemSketch = oItem
-                    oItemSketch.MorphingDisabled = Enabled
-                    'Call pGetCurrentDesignTools.TakeUndoSnapshot()
-                End If
-            Next
-            Call oMousePointer.Pop()
-            Call pObjectPropertyLoad()
-            Call pMapInvalidate()
+            Dim oItems As IEnumerable(Of cItem) = oCurrentDesign.Layers(cLayers.LayerTypeEnum.Base).Items.Where(Function(oitem) TypeOf oitem Is cItemSketch)
+            If oItems.Count > 0 Then
+                Call oMousePointer.Push(Cursors.WaitCursor)
+                Call pGetCurrentDesignTools.BeginUndoSnapshot("main.undo52", oItems)
+                For Each oItem As cItem In oItems
+                    If oItem.Type = cIItem.cItemTypeEnum.Sketch Then
+                        Dim oItemSketch As cIItemSketch = oItem
+                        oItemSketch.MorphingDisabled = Enabled
+                    End If
+                Next
+                Call pGetCurrentDesignTools.CommitUndoSnapshot()
+                Call oMousePointer.Pop()
+                Call pObjectPropertyLoad()
+                Call pMapInvalidate()
+            End If
         Catch ex As Exception
             Call pLogAdd(ex)
         End Try
@@ -19230,22 +19234,65 @@ Friend Class frmMain2
         Call pUndoRefresh()
     End Sub
 
-    Private Sub mnuUndo_BeforePopup(sender As Object, e As CancelEventArgs) Handles mnuUndo.BeforePopup
+    'Private Sub mnuUndo_BeforePopup(sender As Object, e As CancelEventArgs) Handles mnuUndo.BeforePopup
+    '    With pGetCurrentTools()
+    '        If .Undo.IsUndoable Then
+    '            Call mnuUndo.ClearItems
+
+    '            If Not Controls.ContainsKey("_undopopup") Then
+    '                Dim oContainer As PopupControlContainer = New PopupControlContainer
+    '                oContainer.Name = "_undopopup"
+    '                Dim oUndoDropDown As cUndoDropDown = New cUndoDropDown
+    '                oContainer.Controls.Add(oUndoDropDown)
+    '                oUndoDropDown.Rebind(.Undo)
+    '                oUndoDropDown.Dock = DockStyle.Fill
+    '                oContainer.Controls.Add(oUndoDropDown)
+    '                Controls.Add(oContainer)
+    '                btnUndo.DropDownControl = oContainer
+    '            Else
+    '                DirectCast(Controls("_undopopup").Controls(0), cUndoDropDown).Rebind(.Undo)
+    '            End If
+
+
+
+    '            'For Each oUndoitem2 As cUndoItem In .Undo
+    '            '    Dim oItem As BarButtonItem = New BarButtonItem(RibbonControl.Manager, oUndoitem2.Description) '& " " & oUndoitem2.DateStamp)
+    '            '    mnuUndo.AddItem(oItem)
+    '            'Next
+    '        Else
+    '                e.Cancel = True
+    '        End If
+    '    End With
+    'End Sub
+
+    Private Sub oPlanTools_OnItemDelete(Sender As Object, ToolEventArgs As cEditDesignTools.cEditDesignToolsEventArgs) Handles oPlanTools.OnItemDelete, oProfileTools.OnItemDelete
+        Call pGetCurrentDesignTools.BeginUndoSnapshot("Delete item", {ToolEventArgs.CurrentItem})
+    End Sub
+
+    Private Sub pnlUndoPopup_BeforePopup(sender As Object, e As CancelEventArgs) Handles pnlUndoPopup.BeforePopup
         With pGetCurrentTools()
             If .Undo.IsUndoable Then
-                Call mnuUndo.ClearItems
-                For Each oUndoitem2 As cUndoItem In .Undo
-                    Dim oItem As BarButtonItem = New BarButtonItem(RibbonControl.Manager, oUndoitem2.Description) '& " " & oUndoitem2.DateStamp)
-                    mnuUndo.AddItem(oItem)
-                Next
-            Else
-                e.Cancel = True
+                Dim oUndoDropdown As cUndoDropDown
+                If pnlUndoPopup.Controls.ContainsKey("_undopopup") Then
+                    oUndoDropdown = pnlUndoPopup.Controls.Item("_undopopup")
+                Else
+                    pnlUndoPopup.Size = New Size(200 * Me.CurrentAutoScaleDimensions.Width / 96.0F, 240 * Me.CurrentAutoScaleDimensions.Height / 96.0F)
+                    oUndoDropdown = New cUndoDropDown
+                    oUndoDropdown.Name = "_undopopup"
+                    AddHandler oUndoDropdown.OnUndo, AddressOf oUndoDropdown_Onundo
+                    pnlUndoPopup.Controls.Add(oUndoDropDown)
+                    oUndoDropDown.Dock = DockStyle.Fill
+                End If
+                Call oUndoDropdown.Rebind(.Undo)
             End If
         End With
     End Sub
 
-    Private Sub oPlanTools_OnItemDelete(Sender As Object, ToolEventArgs As cEditDesignTools.cEditDesignToolsEventArgs) Handles oPlanTools.OnItemDelete, oProfileTools.OnItemDelete
-        Call pGetCurrentDesignTools.BeginUndoSnapshot("Delete item", {ToolEventArgs.CurrentItem})
+    Private Sub oUndoDropdown_Onundo(sender As Object, e As cUndoDropDown.cUndoDropDownUndoEventArgs)
+        Call pnlUndoPopup.HidePopup()
+        For i As Integer = 0 To e.UndoActions
+            Call pSurveyUndo()
+        Next
     End Sub
 End Class
 

@@ -130,179 +130,12 @@
   <data name="pnlDesigner.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v21.2">
     <value>Default</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="dockFloatBar.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="pnlUndoPopup.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v21.2">
+    <value>Default</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="dockFloatBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>307, 21</value>
-  </data>
-  <data name="dockFloatBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 27</value>
-  </data>
-  <data name="dockFloatBar.Text" xml:space="preserve">
-    <value>StandaloneBarDockControl1</value>
-  </data>
-  <data name="&gt;&gt;dockFloatBar.Name" xml:space="preserve">
-    <value>dockFloatBar</value>
-  </data>
-  <data name="&gt;&gt;dockFloatBar.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.StandaloneBarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;dockFloatBar.Parent" xml:space="preserve">
-    <value>pnlDesigner</value>
-  </data>
-  <data name="&gt;&gt;dockFloatBar.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="cDesignMessageCorner.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v21.2">
-    <value>Default</value>
-  </data>
-  <data name="cDesignMessageCorner.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="cDesignMessageCorner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 80</value>
-  </data>
-  <data name="cDesignMessageCorner.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;cDesignMessageCorner.Name" xml:space="preserve">
-    <value>cDesignMessageCorner</value>
-  </data>
-  <data name="&gt;&gt;cDesignMessageCorner.Type" xml:space="preserve">
-    <value>cSurveyPC.cMessageCorner, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cDesignMessageCorner.Parent" xml:space="preserve">
-    <value>pnlDesigner</value>
-  </data>
-  <data name="&gt;&gt;cDesignMessageCorner.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="pnl3D.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v21.2">
-    <value>Default</value>
-  </data>
-  <data name="h3D.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v21.2">
-    <value>Default</value>
-  </data>
-  <data name="h3D.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 41</value>
-  </data>
-  <data name="h3D.Size" type="System.Drawing.Size, System.Drawing">
-    <value>244, 104</value>
-  </data>
-  <data name="h3D.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="&gt;&gt;h3D.Name" xml:space="preserve">
-    <value>h3D</value>
-  </data>
-  <data name="&gt;&gt;h3D.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Integration.ElementHost, WindowsFormsIntegration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</value>
-  </data>
-  <data name="&gt;&gt;h3D.Parent" xml:space="preserve">
-    <value>pnl3D</value>
-  </data>
-  <data name="&gt;&gt;h3D.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="pnl3D.Location" type="System.Drawing.Point, System.Drawing">
-    <value>35, 90</value>
-  </data>
-  <data name="pnl3D.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 167</value>
-  </data>
-  <data name="pnl3D.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="pnl3D.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;pnl3D.Name" xml:space="preserve">
-    <value>pnl3D</value>
-  </data>
-  <data name="&gt;&gt;pnl3D.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnl3D.Parent" xml:space="preserve">
-    <value>pnlDesigner</value>
-  </data>
-  <data name="&gt;&gt;pnl3D.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="picMap.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v21.2">
-    <value>Default</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="picMap.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="picMap.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 7</value>
-  </data>
-  <data name="picMap.Size" type="System.Drawing.Size, System.Drawing">
-    <value>282, 53</value>
-  </data>
-  <data name="picMap.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;picMap.Name" xml:space="preserve">
-    <value>picMap</value>
-  </data>
-  <data name="&gt;&gt;picMap.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;picMap.Parent" xml:space="preserve">
-    <value>pnlDesigner</value>
-  </data>
-  <data name="&gt;&gt;picMap.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="pnlDesigner.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="pnlDesigner.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 32</value>
-  </data>
-  <data name="pnlDesigner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>589, 704</value>
-  </data>
-  <data name="pnlDesigner.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;pnlDesigner.Name" xml:space="preserve">
-    <value>pnlDesigner</value>
-  </data>
-  <data name="&gt;&gt;pnlDesigner.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlDesigner.Parent" xml:space="preserve">
-    <value>DockPanel1_Container</value>
-  </data>
-  <data name="&gt;&gt;pnlDesigner.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabTrigpointsProperty.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tabTrigpointsProperty.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 40</value>
-  </data>
-  <data name="grdTrigPointAliases.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="grdTrigPointAliases.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 157</value>
-  </data>
-  <data name="colTrigPointAliasesAlias.Caption" xml:space="preserve">
-    <value>Alias</value>
-  </data>
-  <data name="colTrigPointAliasesAlias.Visible" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="colTrigPointAliasesAlias.VisibleIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="pnlUndoPopup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>406, 21</value>
   </data>
   <assembly alias="DevExpress.XtraBars.v21.2" name="DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="RibbonControl.Categories" type="DevExpress.XtraBars.BarManagerCategory, DevExpress.XtraBars.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -961,9 +794,6 @@
   <data name="btnUndo.Caption" xml:space="preserve">
     <value>Undo</value>
   </data>
-  <metadata name="mnuUndo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>440, 135</value>
-  </metadata>
   <data name="btnUndo.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjIsIFZlcnNpb249MjEuMi44
@@ -2224,105 +2054,11 @@
   <data name="btnViewFieldData.Caption" xml:space="preserve">
     <value>Data panel</value>
   </data>
-  <data name="btnViewFieldData.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjIsIFZlcnNpb249MjEuMi44
-        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
-        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAEsCAAAC77u/
-        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
-        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
-        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
-        Y2U9InByZXNlcnZlIiBpZD0iVGFibGUiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDMy
-        IDMyIj4NCiAgPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5CbGFja3tmaWxsOiM3MjcyNzI7fQoJLkJs
-        dWV7ZmlsbDojMTE3N0Q3O30KCS5zdDB7b3BhY2l0eTowLjU7fQo8L3N0eWxlPg0KICA8ZyBjbGFzcz0i
-        c3QwIj4NCiAgICA8cGF0aCBkPSJNMjIsMTJoOHY2aC04VjEyeiBNMTIsMTJ2Nmg4di02SDEyeiBNMTAs
-        MTh2LTZIMnY2SDEweiBNMjIsMjZoOHYtNmgtOFYyNnogTTEyLDIwdjZoOHYtNkgxMnogTTEwLDI2di02
-        SDJ2NiAgIEgxMHoiIGNsYXNzPSJCbGFjayIgLz4NCiAgPC9nPg0KICA8cmVjdCB4PSIyIiB5PSI0IiB3
-        aWR0aD0iMjgiIGhlaWdodD0iNiIgY2xhc3M9IkJsdWUiIC8+DQo8L3N2Zz4L
-</value>
-  </data>
   <data name="btnViewObjectProp.Caption" xml:space="preserve">
     <value>Properties panel</value>
   </data>
-  <data name="btnViewObjectProp.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjIsIFZlcnNpb249MjEuMi44
-        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
-        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAACwFAAAC77u/
-        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
-        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
-        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
-        Y2U9InByZXNlcnZlIiBpZD0iTGF5ZXJfMSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAg
-        MzIgMzIiPg0KICA8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLkJsYWNre2ZpbGw6IzczNzM3NDt9Cgku
-        WWVsbG93e2ZpbGw6I0ZDQjAxQjt9CgkuR3JlZW57ZmlsbDojMTI5QzQ5O30KCS5CbHVle2ZpbGw6IzM4
-        N0NCNzt9CgkuUmVke2ZpbGw6I0QwMjEyNzt9CgkuV2hpdGV7ZmlsbDojRkZGRkZGO30KCS5zdDB7b3Bh
-        Y2l0eTowLjU7fQoJLnN0MXtvcGFjaXR5OjAuNzU7fQoJLnN0MntvcGFjaXR5OjAuMjU7fQoJLnN0M3tk
-        aXNwbGF5Om5vbmU7ZmlsbDojNzM3Mzc0O30KPC9zdHlsZT4NCiAgPHBhdGggZD0iTTI0LDhoMlYzYzAt
-        MC41LTAuNS0xLTEtMUgzQzIuNSwyLDIsMi41LDIsM3Y1aDJIMjR6IiBjbGFzcz0iQmx1ZSIgLz4NCiAg
-        PHBhdGggZD0iTTIyLDEySDEydi0yaDEwVjEyeiBNMjIsMTZ2LTJIMTJ2MkgyMnogTTYsMjBoNHYtMkg2
-        VjIweiBNMTYsMThoLTR2Mmg0VjE4eiBNNiwxNmg0di0ySDZWMTZ6IE02LDEyaDR2LTJINiAgVjEyeiIg
-        Y2xhc3M9IkJsYWNrIiAvPg0KICA8ZyBjbGFzcz0ic3QwIj4NCiAgICA8cGF0aCBkPSJNMjQsMTRWOGgy
-        djZIMjR6IE0xNCwyMkg0VjhIMnYxNWMwLDAuNSwwLjUsMSwxLDFoMTFWMjJ6IiBjbGFzcz0iQmxhY2si
-        IC8+DQogIDwvZz4NCiAgPHBhdGggZD0iTTMyLDI1di0ybC0yLjUtMC42Yy0wLjEtMC40LTAuMy0wLjgt
-        MC41LTEuMmwxLjUtMi4xbC0xLjYtMS42TDI2LjgsMTljLTAuNC0wLjItMC44LTAuNC0xLjItMC41TDI1
-        LDE2aC0yICBsLTAuNiwyLjVjLTAuNCwwLjEtMC44LDAuMy0xLjIsMC41bC0yLTEuNWwtMS43LDEuN2wx
-        LjUsMmMtMC4yLDAuNC0wLjQsMC44LTAuNSwxLjJMMTYsMjN2MmwyLjUsMC42YzAuMSwwLjQsMC4zLDAu
-        OCwwLjUsMS4yICBsLTEuNSwyLjFsMS42LDEuNmwyLjEtMS41YzAuNCwwLjIsMC44LDAuNCwxLjIsMC41
-        TDIzLDMyaDJsMC42LTIuNWMwLjQtMC4xLDAuOC0wLjMsMS4yLTAuNWwyLjEsMS41bDEuNi0xLjZMMjks
-        MjYuOCAgYzAuMi0wLjQsMC40LTAuOCwwLjUtMS4yTDMyLDI1eiBNMjQsMjZjLTEuMSwwLTItMC45LTIt
-        MnMwLjktMiwyLTJzMiwwLjksMiwyUzI1LjEsMjYsMjQsMjZ6IiBjbGFzcz0iQmx1ZSIgLz4NCjwvc3Zn
-        Pgs=
-</value>
-  </data>
   <data name="btnViewDesignArea.Caption" xml:space="preserve">
     <value>Design</value>
-  </data>
-  <data name="btnViewDesignArea.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjIsIFZlcnNpb249MjEuMi44
-        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
-        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAGEJAAAC77u/
-        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
-        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
-        MjAwMC9zdmciIHhtbDpzcGFjZT0icHJlc2VydmUiIGlkPSJMYXllcl8xIiBzdHlsZT0iZW5hYmxlLWJh
-        Y2tncm91bmQ6bmV3IDAgMCAzMiAzMiI+DQogIDxkZWZzIGlkPSJkZWZzMTIiPg0KICAgIDxwYXRoIGQ9
-        Ik0gLTIuNSwtMS4wIEMgLTIuNSwxLjc2MDAwMDAgLTQuNzQwMDAwMCw0LjAgLTcuNSw0LjAgQyAtMTAu
-        MjYwMDAwLDQuMCAtMTIuNSwxLjc2MDAwMDAgLTEyLjUsLTEuMCBDIC0xMi41LC0zLjc2MDAwMDAgLTEw
-        LjI2MDAwMCwtNi4wIC03LjUsLTYuMCBDIC00Ljc0MDAwMDAsLTYuMCAtMi41LC0zLjc2MDAwMDAgLTIu
-        NSwtMS4wIHogIiBpZD0icGF0aDEzMzkiIHRyYW5zZm9ybT0ic2NhbGUoMC44KSB0cmFuc2xhdGUoNy40
-        LCAxKSIgc3R5bGU9ImZpbGwtcnVsZTpldmVub2RkO3N0cm9rZTojODA4MDgwO3N0cm9rZS13aWR0aDox
-        cHQ7c3Ryb2tlLW9wYWNpdHk6MTtmaWxsOiM4MDgwODA7ZmlsbC1vcGFjaXR5OjEiIC8+DQogICAgPHBh
-        dGggZD0iTSAtMi41LC0xLjAgQyAtMi41LDEuNzYwMDAwMCAtNC43NDAwMDAwLDQuMCAtNy41LDQuMCBD
-        IC0xMC4yNjAwMDAsNC4wIC0xMi41LDEuNzYwMDAwMCAtMTIuNSwtMS4wIEMgLTEyLjUsLTMuNzYwMDAw
-        MCAtMTAuMjYwMDAwLC02LjAgLTcuNSwtNi4wIEMgLTQuNzQwMDAwMCwtNi4wIC0yLjUsLTMuNzYwMDAw
-        MCAtMi41LC0xLjAgeiAiIGlkPSJwYXRoMTMyOSIgdHJhbnNmb3JtPSJzY2FsZSgwLjgpIHRyYW5zbGF0
-        ZSg3LjQsIDEpIiBzdHlsZT0iZmlsbC1ydWxlOmV2ZW5vZGQ7c3Ryb2tlOiM4MDgwODA7c3Ryb2tlLXdp
-        ZHRoOjFwdDtzdHJva2Utb3BhY2l0eToxO2ZpbGw6IzgwODA4MDtmaWxsLW9wYWNpdHk6MSIgLz4NCiAg
-        PC9kZWZzPg0KICA8c3R5bGUgdHlwZT0idGV4dC9jc3MiIGlkPSJzdHlsZTIiPgoJLkJsdWV7ZmlsbDoj
-        MTE3N0Q3O30KCS5ZZWxsb3d7ZmlsbDojRkZCMTE1O30KCS5CbGFja3tmaWxsOiM3MjcyNzI7fQoJLkdy
-        ZWVue2ZpbGw6IzAzOUMyMzt9CgkuUmVke2ZpbGw6I0QxMUMxQzt9Cgkuc3Qwe29wYWNpdHk6MC43NTt9
-        Cgkuc3Qxe29wYWNpdHk6MC41O30KPC9zdHlsZT4NCiAgPGcgaWQ9IldpbmRvdyI+DQogICAgPHBhdGgg
-        ZD0iTSAzMCwxMCBWIDUgQyAzMCw0LjUgMjkuNSw0IDI5LDQgSCAzIEMgMi41LDQgMiw0LjUgMiw1IHYg
-        NSB6IiBpZD0icGF0aDQiIGNsYXNzPSJCbHVlIiAvPg0KICAgIDxwYXRoIGQ9Ik0gMjgsMTAgViAyNiBI
-        IDQgViAxMCBIIDIgdiAxNyBjIDAsMC41IDAuNSwxIDEsMSBoIDI2IGMgMC41LDAgMSwtMC41IDEsLTEg
-        ViAxMCBaIiBpZD0icGF0aDYiIGNsYXNzPSJCbGFjayIgLz4NCiAgPC9nPg0KICA8c3R5bGUgdHlwZT0i
-        dGV4dC9jc3MiIGlkPSJzdHlsZTItOCI+CgkuQmx1ZXtmaWxsOiMxMTc3RDc7fQoJLlllbGxvd3tmaWxs
-        OiNGRkIxMTU7fQoJLlJlZHtmaWxsOiNEMTFDMUM7fQo8L3N0eWxlPg0KICA8c3R5bGUgdHlwZT0idGV4
-        dC9jc3MiIGlkPSJzdHlsZTkwMSI+CgkuQmxhY2t7ZmlsbDojNzI3MjcyO30KCS5ZZWxsb3d7ZmlsbDoj
-        RkZCMTE1O30KCS5CbHVle2ZpbGw6IzExNzdENzt9CgkuR3JlZW57ZmlsbDojMDM5QzIzO30KCS5SZWR7
-        ZmlsbDojRDExQzFDO30KCS5XaGl0ZXtmaWxsOiNGRkZGRkY7fQoJLnN0MHtvcGFjaXR5OjAuNzU7fQoJ
-        LnN0MXtvcGFjaXR5OjAuNTt9Cgkuc3Qye29wYWNpdHk6MC4yNTt9Cjwvc3R5bGU+DQogIDxnIGlkPSJn
-        OTQ2IiB0cmFuc2Zvcm09Im1hdHJpeCgwLjU1NjYxMzE0LCAwLCAwLCAwLjU1NjYxMzE0LCA3LjI3MTU3
-        ODYsIDkuMDc0MDk2NykiPg0KICAgIDxwYXRoIGQ9Ik0gMjkuNyw0IEMgMjkuNCw0IDI5LjIsNC4xIDI4
-        LjksNC4zIEwgMTcsMTIgYyAwLjUsLTAuNSAxLjksMC4zIDMuMywxLjcgMS40LDEuNCAyLjIsMi44IDEu
-        NywzLjMgTCAzMC43LDYuMSBDIDMwLjksNS45IDMxLDUuNiAzMSw1LjMgMzEsNC42IDMwLjQsNCAyOS43
-        LDQgWiIgb3BhY2l0eT0iMC44IiBpZD0icGF0aDkzMCIgLz4NCiAgICA8cGF0aCBkPSJtIDE3LDEyIC0z
-        LjEsNiAxLDMuMSBMIDIyLDE3IEMgMjIuNSwxNi41IDIxLjcsMTUuMSAyMC4zLDEzLjcgMTguOSwxMi4z
-        IDE3LjUsMTEuNSAxNywxMiBaIiBvcGFjaXR5PSIwLjQiIGlkPSJwYXRoOTMyIiAvPg0KICAgIDxwYXRo
-        IGQ9Im0gMCwyNy43IGMgMCwwIDExLjcsMS43IDE2LjcsLTMuNiA0LjMsLTQuNCAwLjcsLTcuNyAwLjcs
-        LTcuNyAwLDAgLTMuNSwtMy4xIC03LjIsLTAuMyBDIDYuNSwxOC45IDcuMywyNC44IDAsMjcuNyBaIiBm
-        aWxsPSIjMzM3Y2I4IiBpZD0icGF0aDkzNCIgY2xhc3M9IkJsdWUiIC8+DQogIDwvZz4NCjwvc3ZnPgs=
-</value>
   </data>
   <data name="btnViewPlan.Caption" xml:space="preserve">
     <value>Plan</value>
@@ -2415,49 +2151,6 @@
   </data>
   <data name="btnViewViewer.Caption" xml:space="preserve">
     <value>Viewer</value>
-  </data>
-  <data name="btnViewViewer.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjIsIFZlcnNpb249MjEuMi44
-        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
-        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAFsIAAAC77u/
-        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
-        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
-        MjAwMC9zdmciIHhtbDpzcGFjZT0icHJlc2VydmUiIGlkPSJMYXllcl8xIiBzdHlsZT0iZW5hYmxlLWJh
-        Y2tncm91bmQ6bmV3IDAgMCAzMiAzMiI+DQogIDxkZWZzIGlkPSJkZWZzMTIiPg0KICAgIDxwYXRoIGQ9
-        Ik0gLTIuNSwtMS4wIEMgLTIuNSwxLjc2MDAwMDAgLTQuNzQwMDAwMCw0LjAgLTcuNSw0LjAgQyAtMTAu
-        MjYwMDAwLDQuMCAtMTIuNSwxLjc2MDAwMDAgLTEyLjUsLTEuMCBDIC0xMi41LC0zLjc2MDAwMDAgLTEw
-        LjI2MDAwMCwtNi4wIC03LjUsLTYuMCBDIC00Ljc0MDAwMDAsLTYuMCAtMi41LC0zLjc2MDAwMDAgLTIu
-        NSwtMS4wIHogIiBpZD0icGF0aDEzMzkiIHRyYW5zZm9ybT0ic2NhbGUoMC44KSB0cmFuc2xhdGUoNy40
-        LCAxKSIgc3R5bGU9ImZpbGwtcnVsZTpldmVub2RkO3N0cm9rZTojODA4MDgwO3N0cm9rZS13aWR0aDox
-        cHQ7c3Ryb2tlLW9wYWNpdHk6MTtmaWxsOiM4MDgwODA7ZmlsbC1vcGFjaXR5OjEiIC8+DQogICAgPHBh
-        dGggZD0iTSAtMi41LC0xLjAgQyAtMi41LDEuNzYwMDAwMCAtNC43NDAwMDAwLDQuMCAtNy41LDQuMCBD
-        IC0xMC4yNjAwMDAsNC4wIC0xMi41LDEuNzYwMDAwMCAtMTIuNSwtMS4wIEMgLTEyLjUsLTMuNzYwMDAw
-        MCAtMTAuMjYwMDAwLC02LjAgLTcuNSwtNi4wIEMgLTQuNzQwMDAwMCwtNi4wIC0yLjUsLTMuNzYwMDAw
-        MCAtMi41LC0xLjAgeiAiIGlkPSJwYXRoMTMyOSIgdHJhbnNmb3JtPSJzY2FsZSgwLjgpIHRyYW5zbGF0
-        ZSg3LjQsIDEpIiBzdHlsZT0iZmlsbC1ydWxlOmV2ZW5vZGQ7c3Ryb2tlOiM4MDgwODA7c3Ryb2tlLXdp
-        ZHRoOjFwdDtzdHJva2Utb3BhY2l0eToxO2ZpbGw6IzgwODA4MDtmaWxsLW9wYWNpdHk6MSIgLz4NCiAg
-        PC9kZWZzPg0KICA8c3R5bGUgdHlwZT0idGV4dC9jc3MiIGlkPSJzdHlsZTIiPgoJLkJsdWV7ZmlsbDoj
-        MTE3N0Q3O30KCS5ZZWxsb3d7ZmlsbDojRkZCMTE1O30KCS5CbGFja3tmaWxsOiM3MjcyNzI7fQoJLkdy
-        ZWVue2ZpbGw6IzAzOUMyMzt9CgkuUmVke2ZpbGw6I0QxMUMxQzt9Cgkuc3Qwe29wYWNpdHk6MC43NTt9
-        Cgkuc3Qxe29wYWNpdHk6MC41O30KPC9zdHlsZT4NCiAgPGcgaWQ9IldpbmRvdyI+DQogICAgPHBhdGgg
-        ZD0iTSAzMCwxMCBWIDUgQyAzMCw0LjUgMjkuNSw0IDI5LDQgSCAzIEMgMi41LDQgMiw0LjUgMiw1IHYg
-        NSB6IiBpZD0icGF0aDQiIGNsYXNzPSJCbHVlIiAvPg0KICAgIDxwYXRoIGQ9Ik0gMjgsMTAgViAyNiBI
-        IDQgViAxMCBIIDIgdiAxNyBjIDAsMC41IDAuNSwxIDEsMSBoIDI2IGMgMC41LDAgMSwtMC41IDEsLTEg
-        ViAxMCBaIiBpZD0icGF0aDYiIGNsYXNzPSJCbGFjayIgLz4NCiAgPC9nPg0KICA8c3R5bGUgdHlwZT0i
-        dGV4dC9jc3MiIGlkPSJzdHlsZTItOCI+CgkuQmx1ZXtmaWxsOiMxMTc3RDc7fQoJLlllbGxvd3tmaWxs
-        OiNGRkIxMTU7fQoJLlJlZHtmaWxsOiNEMTFDMUM7fQo8L3N0eWxlPg0KICA8c3R5bGUgdHlwZT0idGV4
-        dC9jc3MiIGlkPSJzdHlsZTkwMSI+CgkuQmxhY2t7ZmlsbDojNzI3MjcyO30KCS5ZZWxsb3d7ZmlsbDoj
-        RkZCMTE1O30KCS5CbHVle2ZpbGw6IzExNzdENzt9CgkuR3JlZW57ZmlsbDojMDM5QzIzO30KCS5SZWR7
-        ZmlsbDojRDExQzFDO30KCS5XaGl0ZXtmaWxsOiNGRkZGRkY7fQoJLnN0MHtvcGFjaXR5OjAuNzU7fQoJ
-        LnN0MXtvcGFjaXR5OjAuNTt9Cgkuc3Qye29wYWNpdHk6MC4yNTt9Cjwvc3R5bGU+DQogIDxwYXRoIGQ9
-        Im0gMTYsMTEuNzg4MjM1IGMgNS43LDAgOCw2IDgsNiAwLDAgLTIuMyw2IC04LDYgLTUuNywwIC03Ljk5
-        OTk5OTgsLTYgLTcuOTk5OTk5OCwtNiAwLDAgMi4yOTk5OTk4LC02IDcuOTk5OTk5OCwtNiBtIDAsMiBj
-        IC0zLjMsMCAtNS4xLDIuNyAtNS44LDQgMC43LDEuMyAyLjUsNCA1LjgsNCAzLjMsMCA1LjEsLTIuNyA1
-        LjgsLTQgLTAuNywtMS4zIC0yLjUsLTQgLTUuOCwtNCB6IG0gMCwyIGMgLTEuMSwwIC0yLDAuOSAtMiwy
-        IDAsMS4xIDAuOSwyIDIsMiAxLjEsMCAyLC0wLjkgMiwtMiAwLC0xLjEgLTAuOSwtMiAtMiwtMiB6IiBp
-        ZD0icGF0aDkwMyIgY2xhc3M9IkJsYWNrIiAvPg0KPC9zdmc+Cw==
-</value>
   </data>
   <data name="btnViewScript.Caption" xml:space="preserve">
     <value>Script</value>
@@ -2647,6 +2340,7 @@
   <data name="btnMainSessionList.Caption" xml:space="preserve">
     <value>Session:</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cboMainSessionList.AutoHeight" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -2675,6 +2369,7 @@
   <data name="cboMainSessionList.Buttons7" xml:space="preserve">
     <value>Edit...</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cboMainSessionList.Buttons8" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
@@ -12892,6 +12587,201 @@
   <data name="&gt;&gt;RibbonControl.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="pnlUndoPopup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 46</value>
+  </data>
+  <data name="pnlUndoPopup.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="pnlUndoPopup.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;pnlUndoPopup.Name" xml:space="preserve">
+    <value>pnlUndoPopup</value>
+  </data>
+  <data name="&gt;&gt;pnlUndoPopup.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.PopupControlContainer, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlUndoPopup.Parent" xml:space="preserve">
+    <value>pnlDesigner</value>
+  </data>
+  <data name="&gt;&gt;pnlUndoPopup.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="dockFloatBar.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="dockFloatBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>307, 21</value>
+  </data>
+  <data name="dockFloatBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 27</value>
+  </data>
+  <data name="dockFloatBar.Text" xml:space="preserve">
+    <value>StandaloneBarDockControl1</value>
+  </data>
+  <data name="&gt;&gt;dockFloatBar.Name" xml:space="preserve">
+    <value>dockFloatBar</value>
+  </data>
+  <data name="&gt;&gt;dockFloatBar.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.StandaloneBarDockControl, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;dockFloatBar.Parent" xml:space="preserve">
+    <value>pnlDesigner</value>
+  </data>
+  <data name="&gt;&gt;dockFloatBar.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cDesignMessageCorner.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v21.2">
+    <value>Default</value>
+  </data>
+  <data name="cDesignMessageCorner.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="cDesignMessageCorner.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 80</value>
+  </data>
+  <data name="cDesignMessageCorner.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;cDesignMessageCorner.Name" xml:space="preserve">
+    <value>cDesignMessageCorner</value>
+  </data>
+  <data name="&gt;&gt;cDesignMessageCorner.Type" xml:space="preserve">
+    <value>cSurveyPC.cMessageCorner, cSurveyPC, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cDesignMessageCorner.Parent" xml:space="preserve">
+    <value>pnlDesigner</value>
+  </data>
+  <data name="&gt;&gt;cDesignMessageCorner.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="pnl3D.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v21.2">
+    <value>Default</value>
+  </data>
+  <data name="h3D.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v21.2">
+    <value>Default</value>
+  </data>
+  <data name="h3D.Location" type="System.Drawing.Point, System.Drawing">
+    <value>51, 41</value>
+  </data>
+  <data name="h3D.Size" type="System.Drawing.Size, System.Drawing">
+    <value>244, 104</value>
+  </data>
+  <data name="h3D.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;h3D.Name" xml:space="preserve">
+    <value>h3D</value>
+  </data>
+  <data name="&gt;&gt;h3D.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Integration.ElementHost, WindowsFormsIntegration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</value>
+  </data>
+  <data name="&gt;&gt;h3D.Parent" xml:space="preserve">
+    <value>pnl3D</value>
+  </data>
+  <data name="&gt;&gt;h3D.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="pnl3D.Location" type="System.Drawing.Point, System.Drawing">
+    <value>35, 90</value>
+  </data>
+  <data name="pnl3D.Size" type="System.Drawing.Size, System.Drawing">
+    <value>325, 167</value>
+  </data>
+  <data name="pnl3D.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="pnl3D.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;pnl3D.Name" xml:space="preserve">
+    <value>pnl3D</value>
+  </data>
+  <data name="&gt;&gt;pnl3D.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnl3D.Parent" xml:space="preserve">
+    <value>pnlDesigner</value>
+  </data>
+  <data name="&gt;&gt;pnl3D.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="picMap.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v21.2">
+    <value>Default</value>
+  </data>
+  <data name="picMap.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="picMap.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 7</value>
+  </data>
+  <data name="picMap.Size" type="System.Drawing.Size, System.Drawing">
+    <value>282, 53</value>
+  </data>
+  <data name="picMap.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;picMap.Name" xml:space="preserve">
+    <value>picMap</value>
+  </data>
+  <data name="&gt;&gt;picMap.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;picMap.Parent" xml:space="preserve">
+    <value>pnlDesigner</value>
+  </data>
+  <data name="&gt;&gt;picMap.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="pnlDesigner.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pnlDesigner.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 32</value>
+  </data>
+  <data name="pnlDesigner.Size" type="System.Drawing.Size, System.Drawing">
+    <value>589, 704</value>
+  </data>
+  <data name="pnlDesigner.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;pnlDesigner.Name" xml:space="preserve">
+    <value>pnlDesigner</value>
+  </data>
+  <data name="&gt;&gt;pnlDesigner.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlDesigner.Parent" xml:space="preserve">
+    <value>DockPanel1_Container</value>
+  </data>
+  <data name="&gt;&gt;pnlDesigner.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="mnuUndo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>440, 135</value>
+  </metadata>
+  <data name="tabTrigpointsProperty.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabTrigpointsProperty.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 40</value>
+  </data>
+  <data name="grdTrigPointAliases.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="grdTrigPointAliases.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 157</value>
+  </data>
+  <data name="colTrigPointAliasesAlias.Caption" xml:space="preserve">
+    <value>Alias</value>
+  </data>
+  <data name="colTrigPointAliasesAlias.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colTrigPointAliasesAlias.VisibleIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="grdTrigPointAliases.Size" type="System.Drawing.Size, System.Drawing">
     <value>241, 146</value>
   </data>
@@ -15841,18 +15731,6 @@
   <data name="&gt;&gt;Document1.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.Docking2010.Views.Tabbed.Document, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;grdViewTrigPointAliases.Name" xml:space="preserve">
-    <value>grdViewTrigPointAliases</value>
-  </data>
-  <data name="&gt;&gt;grdViewTrigPointAliases.Type" xml:space="preserve">
-    <value>DevExpress.XtraGrid.Views.Grid.GridView, DevExpress.XtraGrid.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;colTrigPointAliasesAlias.Name" xml:space="preserve">
-    <value>colTrigPointAliasesAlias</value>
-  </data>
-  <data name="&gt;&gt;colTrigPointAliasesAlias.Type" xml:space="preserve">
-    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
   <data name="&gt;&gt;BarAndDockingController.Name" xml:space="preserve">
     <value>BarAndDockingController</value>
   </data>
@@ -16050,12 +15928,6 @@
   </data>
   <data name="&gt;&gt;btnUndo.Type" xml:space="preserve">
     <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;mnuUndo.Name" xml:space="preserve">
-    <value>mnuUndo</value>
-  </data>
-  <data name="&gt;&gt;mnuUndo.Type" xml:space="preserve">
-    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnCut.Name" xml:space="preserve">
     <value>btnCut</value>
@@ -18432,6 +18304,24 @@
   </data>
   <data name="&gt;&gt;RepositoryItemImageComboBox1.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;mnuUndo.Name" xml:space="preserve">
+    <value>mnuUndo</value>
+  </data>
+  <data name="&gt;&gt;mnuUndo.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.PopupMenu, DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;grdViewTrigPointAliases.Name" xml:space="preserve">
+    <value>grdViewTrigPointAliases</value>
+  </data>
+  <data name="&gt;&gt;grdViewTrigPointAliases.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Views.Grid.GridView, DevExpress.XtraGrid.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;colTrigPointAliasesAlias.Name" xml:space="preserve">
+    <value>colTrigPointAliasesAlias</value>
+  </data>
+  <data name="&gt;&gt;colTrigPointAliasesAlias.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;grdViewTrigpointConnections.Name" xml:space="preserve">
     <value>grdViewTrigpointConnections</value>

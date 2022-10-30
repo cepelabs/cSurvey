@@ -837,6 +837,12 @@
     <Compile Include="DockControl\cDockLinkedSurveys.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Specialized\cUndoDropDown.Designer.vb">
+      <DependentUpon>cUndoDropDown.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Specialized\cUndoDropDown.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Specialized\cVerticalGrid.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -2997,6 +3003,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Specialized\cTrigpointsMultiselector.resx">
       <DependentUpon>cTrigpointsMultiselector.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Specialized\cUndoDropDown.resx">
+      <DependentUpon>cUndoDropDown.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

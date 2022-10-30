@@ -131,8 +131,8 @@ Friend Class cItemQuotaPropertyControl
 
     Private Sub cboPropQuotaType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropQuotaType.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo48"), "QuotaType")
             Me.Item.QuotaType = cboPropQuotaType.SelectedIndex
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("QuotaType")
             Call MyBase.MapInvalidate()
         End If
@@ -140,8 +140,8 @@ Friend Class cItemQuotaPropertyControl
 
     Private Sub cboPropQuotaAlign_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropQuotaAlign.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo48"), "QuotaAlign")
             Me.Item.QuotaAlign = cboPropQuotaAlign.SelectedIndex
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("QuotaAlign")
             Call MyBase.MapInvalidate()
         End If
@@ -149,8 +149,8 @@ Friend Class cItemQuotaPropertyControl
 
     Private Sub cboPropQuotaTextPosition_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropQuotaTextPosition.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo48"), "QuotaTextPosition")
             Me.Item.QuotaTextPosition = cboPropQuotaTextPosition.SelectedIndex
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("QuotaTextPosition")
             Call MyBase.MapInvalidate()
         End If
@@ -158,8 +158,8 @@ Friend Class cItemQuotaPropertyControl
 
     Private Sub cboPropQuotaValue_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropQuotaValue.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo48"), "QuotaValue")
             Me.Item.QuotaValue = cboPropQuotaValue.SelectedIndex
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("QuotaValue")
             Call MyBase.MapInvalidate()
         End If
@@ -167,8 +167,8 @@ Friend Class cItemQuotaPropertyControl
 
     Private Sub cboPropQuotaFormat_TextChanged(sender As Object, e As EventArgs) Handles cboPropQuotaFormat.TextChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo48"), "QuotaFormat")
             Me.Item.QuotaFormat = cboPropQuotaFormat.Text
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("QuotaFormat")
             Call MyBase.MapInvalidate()
         End If
@@ -176,8 +176,8 @@ Friend Class cItemQuotaPropertyControl
 
     Private Sub cboPropQuotaValueType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboPropQuotaValueType.SelectedIndexChanged
         If Not DisabledObjectProperty() Then
+            Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo48"), "QuotaValueType")
             Me.Item.QuotaValueType = cboPropQuotaValueType.SelectedIndex
-            Call MyBase.TakeUndoSnapshot()
             Call MyBase.PropertyChanged("QuotaValueType")
             Call MyBase.MapInvalidate()
         End If
@@ -187,9 +187,9 @@ Friend Class cItemQuotaPropertyControl
         If Not DisabledObjectProperty() Then
             Using frmTB As frmTrigpointBrowser = New frmTrigpointBrowser(Me.Item.Survey, txtPropQuotaRelativeTrigpoint.EditValue, True)
                 If frmTB.ShowDialog(Me) = vbOK Then
+                    Call MyBase.CreateUndoSnapshot(modMain.GetLocalizedString("main.undo48"), "QuotaRelativeTrigpoint")
                     txtPropQuotaRelativeTrigpoint.EditValue = frmTB.SelectedItem
                     Me.Item.QuotaRelativeTrigpoint = txtPropQuotaRelativeTrigpoint.EditValue
-                    Call MyBase.TakeUndoSnapshot()
                     Call MyBase.PropertyChanged("QuotaTrigpoint")
                     Call MyBase.MapInvalidate()
                 End If

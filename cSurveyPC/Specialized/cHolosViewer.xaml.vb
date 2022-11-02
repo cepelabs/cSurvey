@@ -1900,7 +1900,6 @@ Friend Class cHolosViewer
         Dim c1 As Single = Math.Sqrt(oV1.X ^ 2 + oV1.Y ^ 2)
         Dim sInclination As Single = RadiansToDegree(Math.Atan(c1 / oV1.Z))
         Dim sBearing As Single = modPaint.GetBearing(New PointF(oV1.X, oV1.Y), New PointF(0, 0))
-        'Debug.Print("Angolo: " & sInclination & " - Direzione:" & sBearing)
         RaiseEvent OnSceneInfoChange(Me, New cSceneInfoChangeEventArgs(sBearing, sInclination))
         Call Invalidate(InvalidateType.CameraMove)
     End Sub

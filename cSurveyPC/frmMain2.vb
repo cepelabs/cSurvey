@@ -297,6 +297,32 @@ Friend Class frmMain2
     Private bSegmentChanged As Boolean
     Private bTrigpointChanged As Boolean
 
+    'Private Function pZoomToScale(Value As Decimal) As Decimal
+
+    'End Function
+
+    'Private Function pScaleToZoom(Value As Decimal) As Decimal
+
+    'End Function
+
+    'Private Function pZoomGet() As Decimal
+    '    Dim dValue As Decimal = pnlStatusZoomBar.EditValue
+    '    Dim dBase As Decimal = Math.Floor(dValue / 100D)
+    '    Dim dDelta As Decimal = dValue - (dBase * 100D)
+    '    Dim dResult As Decimal = 10D ^ (dBase + 1D)
+    '    Dim dScale As Decimal
+    '    If dDelta <= 50 Then
+    '        dScale = 10D ^ dBase + (dResult / 2D - (10D ^ dBase)) * dDelta / 50
+    '    Else
+    '        dScale = 10D ^ (dBase + 1D) * If(dDelta <= 50, dDelta / 40D, dDelta / 100D)
+    '    End If
+    '    Return dScale
+    'End Function
+
+    'Private Sub pZoomSet(Value As Decimal)
+
+    'End Sub
+
     Private Sub pMapZoom(ByVal Zoom As Single)
         If sPaintZoom <> Zoom Then
             Dim iNewZoomValue As Integer = Zoom * sZoomRatio
@@ -336,8 +362,8 @@ Friend Class frmMain2
 
             Try
                 Dim oCurrentTranslation As PointF = New PointF(oPaintTranslation.X * sPaintZoom / sOldPaintZoom, oPaintTranslation.Y * sPaintZoom / sOldPaintZoom)
-                Dim sX As Single = (picMap.Width - picMap.Width * sPaintZoom / sOldPaintZoom) / 2
-                Dim sY As Single = (picMap.Height - picMap.Height * sPaintZoom / sOldPaintZoom) / 2
+                Dim sX As Single = (picMap.Width - picMap.Width * sPaintZoom / sOldPaintZoom) / 2.0F
+                Dim sY As Single = (picMap.Height - picMap.Height * sPaintZoom / sOldPaintZoom) / 2.0F
                 oPaintTranslation = New PointF(sX + oCurrentTranslation.X, sY + oCurrentTranslation.Y)
             Catch
             End Try

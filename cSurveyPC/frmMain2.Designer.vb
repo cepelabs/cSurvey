@@ -412,7 +412,7 @@ Partial Class frmMain2
         Me.btnCurrentItemConvertToBezier = New DevExpress.XtraBars.BarButtonItem()
         Me.btnViewImageViewer = New DevExpress.XtraBars.BarButtonItem()
         Me.pnlStatusZoomBar = New DevExpress.XtraBars.BarEditItem()
-        Me.trkZoom = New DevExpress.XtraEditors.Repository.RepositoryItemZoomTrackBar()
+        Me.trkZoom = New DevExpress.XtraEditors.Repository.RepositoryItemTrackBar()
         Me.btnViewAudioListener = New DevExpress.XtraBars.BarButtonItem()
         Me.btnCurrentItemBindings = New DevExpress.XtraBars.BarSubItem()
         Me.btnCurrentItemPlotUnlockSegment = New DevExpress.XtraBars.BarButtonItem()
@@ -1461,6 +1461,7 @@ Partial Class frmMain2
         '
         'btnZoomIn
         '
+        Me.btnZoomIn.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right
         resources.ApplyResources(Me.btnZoomIn, "btnZoomIn")
         Me.btnZoomIn.Id = 39
         Me.btnZoomIn.ImageOptions.SvgImage = CType(resources.GetObject("btnZoomIn.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
@@ -1470,6 +1471,7 @@ Partial Class frmMain2
         '
         'btnZoomOut
         '
+        Me.btnZoomOut.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right
         resources.ApplyResources(Me.btnZoomOut, "btnZoomOut")
         Me.btnZoomOut.Id = 40
         Me.btnZoomOut.ImageOptions.SvgImage = CType(resources.GetObject("btnZoomOut.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
@@ -1479,6 +1481,7 @@ Partial Class frmMain2
         '
         'btnZoomToFit
         '
+        Me.btnZoomToFit.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right
         Me.btnZoomToFit.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown
         resources.ApplyResources(Me.btnZoomToFit, "btnZoomToFit")
         Me.btnZoomToFit.DropDownControl = Me.mnuZoom
@@ -2372,7 +2375,7 @@ Partial Class frmMain2
         Me.pnlStatusDesignInfo.ImageOptions.SvgImage = CType(resources.GetObject("pnlStatusDesignInfo.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.pnlStatusDesignInfo.Name = "pnlStatusDesignInfo"
         Me.pnlStatusDesignInfo.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
-        Me.pnlStatusDesignInfo.Width = 180
+        Me.pnlStatusDesignInfo.Width = 200
         '
         'pnlStatusDesignZoom
         '
@@ -3529,12 +3532,15 @@ Partial Class frmMain2
         Me.pnlStatusZoomBar.Id = 286
         Me.pnlStatusZoomBar.Name = "pnlStatusZoomBar"
         Me.pnlStatusZoomBar.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
+        Me.pnlStatusZoomBar.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'trkZoom
         '
-        Me.trkZoom.Maximum = 6000
-        Me.trkZoom.Minimum = 2
+        Me.trkZoom.LargeChange = 1
+        Me.trkZoom.Maximum = 51761
+        Me.trkZoom.Minimum = 10000
         Me.trkZoom.Name = "trkZoom"
+        Me.trkZoom.TickStyle = System.Windows.Forms.TickStyle.None
         '
         'btnViewAudioListener
         '
@@ -4816,7 +4822,10 @@ Partial Class frmMain2
         Me.RibbonStatusBar1.ItemLinks.Add(Me.btnStatusDesignGeographicState, True)
         Me.RibbonStatusBar1.ItemLinks.Add(Me.pnlStatusDesignInfo, True)
         Me.RibbonStatusBar1.ItemLinks.Add(Me.pnlStatusDesignZoom, True)
+        Me.RibbonStatusBar1.ItemLinks.Add(Me.btnZoomIn)
         Me.RibbonStatusBar1.ItemLinks.Add(Me.pnlStatusZoomBar)
+        Me.RibbonStatusBar1.ItemLinks.Add(Me.btnZoomOut)
+        Me.RibbonStatusBar1.ItemLinks.Add(Me.btnZoomToFit, True)
         Me.RibbonStatusBar1.ItemLinks.Add(Me.pnlStatusDesignSnapToGrid, True)
         resources.ApplyResources(Me.RibbonStatusBar1, "RibbonStatusBar1")
         Me.RibbonStatusBar1.Name = "RibbonStatusBar1"
@@ -8030,7 +8039,7 @@ Partial Class frmMain2
     Friend WithEvents dockTopGlobalBar As DevExpress.XtraBars.StandaloneBarDockControl
     Friend WithEvents btnViewImageViewer As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents pnlStatusZoomBar As DevExpress.XtraBars.BarEditItem
-    Friend WithEvents trkZoom As DevExpress.XtraEditors.Repository.RepositoryItemZoomTrackBar
+    Friend WithEvents trkZoom As DevExpress.XtraEditors.Repository.RepositoryItemTrackBar
     Friend WithEvents btnViewAudioListener As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents mnuDesignItemPoint As DevExpress.XtraBars.PopupMenu
     Friend WithEvents btnCurrentItemBindings As DevExpress.XtraBars.BarSubItem

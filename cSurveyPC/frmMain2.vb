@@ -27,10 +27,14 @@ Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.RichEdit.Export
 Imports DevExpress.Utils.Extensions
 Imports DevExpress.XtraBars.Ribbon
+Imports DevExpress.Utils
 
 Friend Class frmMain2
-    Private sZoomDefault As Single = 500
-    Private sZoomRatio As Single = 15
+    Private sZoomDefault As Single = 15.1181107F
+    'Private sZoomRatio As Single = 1.0F / Math.Log(sZoomDefault) * 50.0F
+    Private sZoom As Single
+    Private sZoomMax As Single = 377.952759F
+    Private sZoomMin As Single = 0.02519685F
 
     Private sFilename As String
     'Private dlastLogEvent As DateTime
@@ -297,42 +301,16 @@ Friend Class frmMain2
     Private bSegmentChanged As Boolean
     Private bTrigpointChanged As Boolean
 
-    'Private Function pZoomToScale(Value As Decimal) As Decimal
-
-    'End Function
-
-    'Private Function pScaleToZoom(Value As Decimal) As Decimal
-
-    'End Function
-
-    'Private Function pZoomGet() As Decimal
-    '    Dim dValue As Decimal = pnlStatusZoomBar.EditValue
-    '    Dim dBase As Decimal = Math.Floor(dValue / 100D)
-    '    Dim dDelta As Decimal = dValue - (dBase * 100D)
-    '    Dim dResult As Decimal = 10D ^ (dBase + 1D)
-    '    Dim dScale As Decimal
-    '    If dDelta <= 50 Then
-    '        dScale = 10D ^ dBase + (dResult / 2D - (10D ^ dBase)) * dDelta / 50
-    '    Else
-    '        dScale = 10D ^ (dBase + 1D) * If(dDelta <= 50, dDelta / 40D, dDelta / 100D)
-    '    End If
-    '    Return dScale
-    'End Function
-
-    'Private Sub pZoomSet(Value As Decimal)
-
-    'End Sub
-
     Private Sub pMapZoom(ByVal Zoom As Single)
         If sPaintZoom <> Zoom Then
-            Dim iNewZoomValue As Integer = Zoom * sZoomRatio
-            If iNewZoomValue > trkZoom.Maximum Then
-                iNewZoomValue = trkZoom.Maximum
-                Zoom = iNewZoomValue / sZoomRatio
+            Dim sNewZoomValue As Single = Zoom '* sZoomRatio
+            If sNewZoomValue > sZoomMax Then
+                sNewZoomValue = sZoomMax
+                Zoom = sNewZoomValue '/ sZoomRatio
             End If
-            If iNewZoomValue < trkZoom.Minimum Then
-                iNewZoomValue = trkZoom.Minimum
-                Zoom = iNewZoomValue / sZoomRatio
+            If sNewZoomValue < sZoomMin Then
+                sNewZoomValue = sZoomMin
+                Zoom = sNewZoomValue '/ sZoomRatio
             End If
 
             bDisableZoomEvent = True
@@ -340,15 +318,20 @@ Friend Class frmMain2
             Dim sOldPaintZoom As Single = sPaintZoom
             If sOldPaintZoom = 0 Then sOldPaintZoom = 1
             sPaintZoom = Zoom
-            pnlStatusZoomBar.EditValue = iNewZoomValue
+            sZoom = sNewZoomValue
 
-            Dim iScale As Integer = 250
-            If oCurrentOptions IsNot Nothing Then
-                Using oGr As Graphics = picMap.CreateGraphics
-                    'oGr.PageUnit = GraphicsUnit.Pixel
-                    iScale = modPaint.GetScaleFactor(oGr, sPaintZoom)
-                    oCurrentOptions.CurrentScale = iScale
-                End Using
+            Dim iScale As Integer
+            If oCurrentOptions Is Nothing Then
+                pnlStatusZoomBar.Enabled = False
+            Else
+                If Me.DeviceDpi = 96 Then
+                    iScale = Me.DeviceDpi / (sPaintZoom * 0.0254F)
+                Else
+                    iScale = 1 / (sPaintZoom * 0.000254F)
+                End If
+                oCurrentOptions.CurrentScale = iScale
+                pnlStatusZoomBar.Enabled = True
+                pnlStatusZoomBar.EditValue = Math.Log(iScale, 10) * 10000
             End If
 
             Dim sZoomText As String = ""
@@ -2361,7 +2344,7 @@ Friend Class frmMain2
     Private Sub pZoomReset()
         Dim bBackupDisableZoomEvent As Boolean = bDisableZoomEvent
         bDisableZoomEvent = True
-        Call pMapZoom(sZoomDefault / sZoomRatio)
+        Call pMapZoom(sZoomDefault) ' / sZoomRatio)
         bDisableZoomEvent = bBackupDisableZoomEvent
     End Sub
 
@@ -4035,9 +4018,18 @@ Friend Class frmMain2
         If oCurrentDesign.Type = cIDesign.cDesignTypeEnum.ThreeDModel Then
             Call oHolos.Zoom(0.1)
         Else
-            If pnlStatusZoomBar.EditValue - 20 >= trkZoom.Minimum Then
-                pnlStatusZoomBar.EditValue -= 20
+            Dim sDeltaIncrement As Single
+            If My.Computer.Keyboard.ShiftKeyDown Then
+                sDeltaIncrement = sZoom / 2.0F
+            Else
+                sDeltaIncrement = sZoom / 10.0F
             End If
+            If sZoom - 20.0F >= sZoomMin Then
+                sZoom -= sDeltaIncrement
+            Else
+                sZoom = sZoomMin
+            End If
+            Call pMapRepaint()
         End If
     End Sub
 
@@ -4045,15 +4037,24 @@ Friend Class frmMain2
         If oCurrentDesign.Type = cIDesign.cDesignTypeEnum.ThreeDModel Then
             Call oHolos.Zoom(-0.1)
         Else
-            If pnlStatusZoomBar.EditValue + 20 <= trkZoom.Maximum Then
-                pnlStatusZoomBar.EditValue += 20
+            Dim sDeltaIncrement As Single
+            If My.Computer.Keyboard.ShiftKeyDown Then
+                sDeltaIncrement = sZoom / 2.0F
+            Else
+                sDeltaIncrement = sZoom / 10.0F
             End If
+            If sZoom + sDeltaIncrement <= sZoomMax Then
+                sZoom += sDeltaIncrement
+            Else
+                sZoom = sZoomMax
+            End If
+            Call pMapRepaint()
         End If
     End Sub
 
     Private Sub pMapRepaint(Optional ByVal ZoomCenter As Boolean = False)
         'adjusting real zoom ratio from actual zoom value...
-        sZoomRatio = 1 / Math.Log(pnlStatusZoomBar.EditValue) * 50
+        'sZoomRatio = 1 / Math.Log(sZoom) * 50
         'If trkZoom.Value < 100 Then
         '    sZoomRatio = 50
         'ElseIf trkZoom.Value >= 100 And trkZoom.Value > 500 Then
@@ -4061,7 +4062,7 @@ Friend Class frmMain2
         'Else
         '    sZoomRatio = 15
         'End If
-        Call pMapZoom(pnlStatusZoomBar.EditValue / sZoomRatio)
+        Call pMapZoom(sZoom) '/ sZoomRatio)
         If ZoomCenter Then
             Call pMapCenter()
         End If
@@ -6215,21 +6216,22 @@ Friend Class frmMain2
 
     Private Sub picmap_MouseWheel(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles picMap.MouseWheel
         Try
-            Dim iDeltaIncrement As Integer
+            Dim sDeltaIncrement As Single
             If My.Computer.Keyboard.ShiftKeyDown Then
-                iDeltaIncrement = pnlStatusZoomBar.EditValue / 2
+                sDeltaIncrement = sZoom / 2.0F
             Else
-                iDeltaIncrement = pnlStatusZoomBar.EditValue / 10
+                sDeltaIncrement = sZoom / 10.0F
             End If
-            If iDeltaIncrement = 0 Then iDeltaIncrement = 1
-            Dim iDelta As Integer = If(e.Delta > 0, iDeltaIncrement, -iDeltaIncrement)
-            If pnlStatusZoomBar.EditValue + iDelta > trkZoom.Maximum Then
-                pnlStatusZoomBar.EditValue = trkZoom.Maximum
-            ElseIf pnlStatusZoomBar.EditValue + iDelta < trkZoom.Minimum Then
-                pnlStatusZoomBar.EditValue = trkZoom.Minimum
+            If sDeltaIncrement = 0F Then sDeltaIncrement = 1.0F
+            sDeltaIncrement = If(e.Delta > 0, sDeltaIncrement, -sDeltaIncrement)
+            If sZoom + sDeltaIncrement > sZoomMax Then
+                sZoom = sZoomMax
+            ElseIf sZoom + sDeltaIncrement < sZoomMin Then
+                sZoom = sZoomMin
             Else
-                pnlStatusZoomBar.EditValue = pnlStatusZoomBar.EditValue + iDelta
+                sZoom = sZoom + sDeltaIncrement
             End If
+            Call pMapRepaint()
         Catch
         End Try
     End Sub
@@ -18130,20 +18132,23 @@ Friend Class frmMain2
         Call pDockContentShow(dockIV, True)
     End Sub
 
-    'Private Sub prpPropDesignDataProperties_MouseUp(sender As Object, e As MouseEventArgs)
-    '    If (e.Button And MouseButtons.Right) = MouseButtons.Right Then
-    '        mnuDataProperties.Tag = prpPropDesignDataProperties
-    '        Call mnuDataProperties.ShowPopup(prpPropDesignDataProperties.PointToScreen(e.Location))
-    '    End If
-    'End Sub
-
     Private Sub pnlStatusZoomBar_EditValueChanged(sender As Object, e As EventArgs) Handles pnlStatusZoomBar.EditValueChanged
         If Not bDisableZoomEvent Then
-            If oCurrentDesign.Type = cIDesign.cDesignTypeEnum.ThreeDModel Then
-                oHolos.Zoom(pnlStatusZoomBar.EditValue / sZoomRatio)
-            Else
-                Call pFloatingToolbarUpdate()
-                Call pMapRepaint()
+            If Not oCurrentDesign.Type = cIDesign.cDesignTypeEnum.ThreeDModel Then
+                'oHolos.Zoom(pnlStatusZoomBar.EditValue / sZoomRatio)
+                'Else
+                Dim sNewZoom As Single
+                Dim sScale As Single = 10.0F ^ (pnlStatusZoomBar.EditValue / 10000)
+                If Me.DeviceDpi = 96 Then
+                    'sZoom = (3937.00781F * Me.DeviceDpi) / iScale
+                    sNewZoom = (Me.DeviceDpi / (sScale * 0.0254F))
+                Else
+                    sNewZoom = (1.0F / (sScale * 0.000254F))
+                End If
+                Call pMapZoom(sNewZoom)
+
+                'Call pFloatingToolbarUpdate()
+                'Call pMapRepaint()
             End If
         End If
     End Sub

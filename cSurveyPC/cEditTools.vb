@@ -16,8 +16,22 @@ Namespace cSurvey.Helper.Editor
         Public Delegate Sub OnPropertyChanged(Sender As Object, e As PropertyChangeEventArgs)
         Private Shared oChangedDelegates As List(Of OnPropertyChanged) = New List(Of OnPropertyChanged)
 
+        Public Shared Sub Save()
+            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
+                For Each sName As String In oValues.Keys
+                    Call oReg.SetValue(sName, oValues(sName))
+                Next
+            End Using
+        End Sub
+
         Public Shared Sub Reset()
             Call oValues.Clear()
+
+            Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
+                For Each sName As String In oReg.GetValueNames
+                    Call oValues.Add(sName, oReg.GetValue(sName))
+                Next
+            End Using
         End Sub
 
         Public Shared Sub OnPropertyChangedAppend(OnPropertyChanged As OnPropertyChanged)
@@ -47,10 +61,16 @@ Namespace cSurvey.Helper.Editor
         End Sub
 
         Public Shared Sub SetSetting(Key As String, Value As Object)
-            If oValues.ContainsKey(Key) Then
-                Call oValues.Remove(Key)
-            End If
+            If oValues.ContainsKey(Key) Then Call oValues.Remove(Key)
             Call oValues.Add(Key, Value)
+            Call pRaiseOnPropertyChanged(Key)
+        End Sub
+
+        Public Shared Sub SetSetting(Key As String, Value As Object, DefaultValue As Object)
+            If oValues.ContainsKey(Key) Then Call oValues.Remove(Key)
+            If Value.Equals(DefaultValue) Then
+                Call oValues.Add(Key, Value)
+            End If
             Call pRaiseOnPropertyChanged(Key)
         End Sub
 
@@ -77,19 +97,6 @@ Namespace cSurvey.Helper.Editor
                 Return DefaultValue
             End Try
         End Function
-
-        'Public Shared ReadOnly Property xLowerLayersDesignTransparencyThreshold As Integer
-        '    Get
-        '        Return iLowerLayersDesignTransparencyThreshold
-        '    End Get
-        'End Property
-
-        'Public Shared ReadOnly Property xLowerLayersDesignColor As Color
-        '    Get
-        '        Return oLowerLayersDesignColor
-        '    End Get
-        'End Property
-
     End Class
 
     Public Interface cIEditSelection

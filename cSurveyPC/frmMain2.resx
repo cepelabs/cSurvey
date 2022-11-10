@@ -12786,7 +12786,7 @@
     <value>241, 146</value>
   </data>
   <data name="grdTrigPointAliases.TabIndex" type="System.Int32, mscorlib">
-    <value>123</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;grdTrigPointAliases.Name" xml:space="preserve">
     <value>grdTrigPointAliases</value>
@@ -12813,7 +12813,7 @@
     <value>117, 20</value>
   </data>
   <data name="chkTrigpointZTurn.TabIndex" type="System.Int32, mscorlib">
-    <value>122</value>
+    <value>5</value>
   </data>
   <data name="chkTrigpointZTurn.ToolTip" xml:space="preserve">
     <value>Zig-zag survey useful for build model of HUGE holls</value>
@@ -12888,7 +12888,7 @@
     <value>95, 20</value>
   </data>
   <data name="chkTrigpointIsInExploration.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="chkTrigpointIsInExploration.ToolTip" xml:space="preserve">
     <value>It indicates the starting point of a possible stretch to explore</value>
@@ -12948,7 +12948,7 @@
     <value>117, 20</value>
   </data>
   <data name="chkTrigpointShowEntrance.TabIndex" type="System.Int32, mscorlib">
-    <value>120</value>
+    <value>1</value>
   </data>
   <data name="chkTrigpointShowEntrance.ToolTip" xml:space="preserve">
     <value>Automatically displays the symbol of the entrance at the station</value>
@@ -13008,7 +13008,7 @@
     <value>92, 20</value>
   </data>
   <data name="chkTrigpointIsSpecial.TabIndex" type="System.Int32, mscorlib">
-    <value>95</value>
+    <value>3</value>
   </data>
   <data name="chkTrigpointIsSpecial.ToolTip" xml:space="preserve">
     <value>It indicates that the station has particularities and needs to be highlighted when required</value>
@@ -13047,7 +13047,7 @@
     <value>101, 20</value>
   </data>
   <data name="cboTrigPointType.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="cboTrigPointType.ToolTip" xml:space="preserve">
     <value>It indicates whether the finish is at the station of an input</value>
@@ -13092,7 +13092,7 @@
 </value>
   </data>
   <data name="tabTrigpointsMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 193</value>
+    <value>248, 291</value>
   </data>
   <data name="tabTrigpointsMain.Tooltip" xml:space="preserve">
     <value>Main</value>
@@ -13110,7 +13110,7 @@
     <value>0</value>
   </data>
   <data name="tabTrigpointsProperty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 225</value>
+    <value>250, 323</value>
   </data>
   <data name="tabTrigpointsProperty.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -13128,7 +13128,7 @@
     <value>60, 20</value>
   </data>
   <data name="txtTrigpointFontColor.TabIndex" type="System.Int32, mscorlib">
-    <value>185</value>
+    <value>9</value>
   </data>
   <data name="txtTrigpointFontColor.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -13158,7 +13158,7 @@
     <value>95, 20</value>
   </data>
   <data name="chkTrigpointDrawTranslationsLine.TabIndex" type="System.Int32, mscorlib">
-    <value>145</value>
+    <value>10</value>
   </data>
   <data name="chkTrigpointDrawTranslationsLine.ToolTip" xml:space="preserve">
     <value>Indicates if translation line have to be draw</value>
@@ -13215,7 +13215,7 @@
     <value>129, 20</value>
   </data>
   <data name="cboTrigPointLabelPosition.TabIndex" type="System.Int32, mscorlib">
-    <value>96</value>
+    <value>1</value>
   </data>
   <data name="cboTrigPointLabelPosition.ToolTip" xml:space="preserve">
     <value>Specify the label position</value>
@@ -13308,7 +13308,7 @@
     <value>53, 21</value>
   </data>
   <data name="txtTrigPointLabelDistance.TabIndex" type="System.Int32, mscorlib">
-    <value>119</value>
+    <value>2</value>
   </data>
   <data name="txtTrigPointLabelDistance.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
@@ -13363,7 +13363,7 @@
     <value>24, 24</value>
   </data>
   <data name="chkTrigpointFontBold.TabIndex" type="System.Int32, mscorlib">
-    <value>135</value>
+    <value>5</value>
   </data>
   <data name="chkTrigpointFontBold.ToolTip" xml:space="preserve">
     <value>Bold</value>
@@ -13423,7 +13423,7 @@
     <value>129, 20</value>
   </data>
   <data name="cboTrigPointLabelSymbol.TabIndex" type="System.Int32, mscorlib">
-    <value>118</value>
+    <value>3</value>
   </data>
   <data name="cboTrigPointLabelSymbol.ToolTip" xml:space="preserve">
     <value>Symbol for the station</value>
@@ -13507,7 +13507,7 @@
     <value>79, 21</value>
   </data>
   <data name="cboTrigpointFontSize.TabIndex" type="System.Int32, mscorlib">
-    <value>137</value>
+    <value>8</value>
   </data>
   <data name="cboTrigpointFontSize.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -13552,7 +13552,7 @@
     <value>24, 24</value>
   </data>
   <data name="chkTrigpointFontItalic.TabIndex" type="System.Int32, mscorlib">
-    <value>140</value>
+    <value>6</value>
   </data>
   <data name="chkTrigpointFontItalic.ToolTip" xml:space="preserve">
     <value>Italic</value>
@@ -13618,7 +13618,7 @@
     <value>129, 21</value>
   </data>
   <data name="cboTrigpointFontChar.TabIndex" type="System.Int32, mscorlib">
-    <value>134</value>
+    <value>4</value>
   </data>
   <data name="cboTrigpointFontChar.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -13696,7 +13696,7 @@
     <value>24, 24</value>
   </data>
   <data name="chkTrigpointFontUnderline.TabIndex" type="System.Int32, mscorlib">
-    <value>136</value>
+    <value>7</value>
   </data>
   <data name="chkTrigpointFontUnderline.ToolTip" xml:space="preserve">
     <value>Underlined</value>
@@ -13802,7 +13802,7 @@
 </value>
   </data>
   <data name="tabTrigpointsLayout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 193</value>
+    <value>248, 291</value>
   </data>
   <data name="tabTrigpointsLayout.Tooltip" xml:space="preserve">
     <value>Layout</value>
@@ -13850,7 +13850,7 @@
     <value>64</value>
   </data>
   <data name="grdTrigpointConnections.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 193</value>
+    <value>248, 291</value>
   </data>
   <data name="grdTrigpointConnections.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -13892,7 +13892,7 @@
 </value>
   </data>
   <data name="tabTrigpointsConnections.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 193</value>
+    <value>248, 291</value>
   </data>
   <data name="tabTrigpointsConnections.Tooltip" xml:space="preserve">
     <value>Connections</value>
@@ -13919,7 +13919,7 @@
     <value>0, 0</value>
   </data>
   <data name="prpTrigpointDataProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 193</value>
+    <value>248, 291</value>
   </data>
   <data name="prpTrigpointDataProperties.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -13963,7 +13963,7 @@
 </value>
   </data>
   <data name="tabTrigpointsData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 193</value>
+    <value>248, 291</value>
   </data>
   <data name="tabTrigpointsData.Tooltip" xml:space="preserve">
     <value>Data</value>
@@ -13987,7 +13987,7 @@
     <value>0, 0</value>
   </data>
   <data name="txtTrigpointNote.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 193</value>
+    <value>248, 291</value>
   </data>
   <data name="txtTrigpointNote.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -14042,7 +14042,7 @@
 </value>
   </data>
   <data name="tabTrigpointsNote.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 193</value>
+    <value>248, 291</value>
   </data>
   <data name="tabTrigpointsNote.Tooltip" xml:space="preserve">
     <value>Note</value>
@@ -14086,7 +14086,7 @@
     <value>24, 24</value>
   </data>
   <data name="btnTrigpointCoordinateClear.TabIndex" type="System.Int32, mscorlib">
-    <value>88</value>
+    <value>7</value>
   </data>
   <data name="btnTrigpointCoordinateClear.ToolTip" xml:space="preserve">
     <value>Clean</value>
@@ -14188,7 +14188,7 @@
     <value>125, 20</value>
   </data>
   <data name="cboTrigpointCoordinateFix.TabIndex" type="System.Int32, mscorlib">
-    <value>86</value>
+    <value>6</value>
   </data>
   <data name="cboTrigpointCoordinateFix.ToolTip" xml:space="preserve">
     <value>Coordinate system</value>
@@ -14275,7 +14275,7 @@
     <value>85, 20</value>
   </data>
   <data name="txtTrigpointCoordinateAlt.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="txtTrigpointCoordinateAlt.ToolTip" xml:space="preserve">
     <value>Altitude (m)</value>
@@ -14292,258 +14292,6 @@
   <data name="&gt;&gt;txtTrigpointCoordinateAlt.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="pnlTrigpointCoordinateUTM.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v21.2">
-    <value>Default</value>
-  </data>
-  <data name="Label5.Appearance.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
-  </data>
-  <data name="Label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="Label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 92</value>
-  </data>
-  <data name="Label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 13</value>
-  </data>
-  <data name="Label5.TabIndex" type="System.Int32, mscorlib">
-    <value>79</value>
-  </data>
-  <data name="Label5.Text" xml:space="preserve">
-    <value>Band:</value>
-  </data>
-  <data name="&gt;&gt;Label5.Name" xml:space="preserve">
-    <value>Label5</value>
-  </data>
-  <data name="&gt;&gt;Label5.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;Label5.Parent" xml:space="preserve">
-    <value>pnlTrigpointCoordinateUTM</value>
-  </data>
-  <data name="&gt;&gt;Label5.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="cboTrigpointCoordinateBand.Location" type="System.Drawing.Point, System.Drawing">
-    <value>59, 89</value>
-  </data>
-  <data name="cboTrigpointCoordinateBand.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
-  </data>
-  <data name="cboTrigpointCoordinateBand.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
-    <value>Combo</value>
-  </data>
-  <data name="cboTrigpointCoordinateBand.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 20</value>
-  </data>
-  <data name="cboTrigpointCoordinateBand.TabIndex" type="System.Int32, mscorlib">
-    <value>78</value>
-  </data>
-  <data name="&gt;&gt;cboTrigpointCoordinateBand.Name" xml:space="preserve">
-    <value>cboTrigpointCoordinateBand</value>
-  </data>
-  <data name="&gt;&gt;cboTrigpointCoordinateBand.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboTrigpointCoordinateBand.Parent" xml:space="preserve">
-    <value>pnlTrigpointCoordinateUTM</value>
-  </data>
-  <data name="&gt;&gt;cboTrigpointCoordinateBand.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="lblTrigpointCoordinateZone.Appearance.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
-  </data>
-  <data name="lblTrigpointCoordinateZone.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblTrigpointCoordinateZone.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 65</value>
-  </data>
-  <data name="lblTrigpointCoordinateZone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 13</value>
-  </data>
-  <data name="lblTrigpointCoordinateZone.TabIndex" type="System.Int32, mscorlib">
-    <value>77</value>
-  </data>
-  <data name="lblTrigpointCoordinateZone.Text" xml:space="preserve">
-    <value>Zone:</value>
-  </data>
-  <data name="&gt;&gt;lblTrigpointCoordinateZone.Name" xml:space="preserve">
-    <value>lblTrigpointCoordinateZone</value>
-  </data>
-  <data name="&gt;&gt;lblTrigpointCoordinateZone.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblTrigpointCoordinateZone.Parent" xml:space="preserve">
-    <value>pnlTrigpointCoordinateUTM</value>
-  </data>
-  <data name="&gt;&gt;lblTrigpointCoordinateZone.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="txtTrigpointCoordinateY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>59, 35</value>
-  </data>
-  <data name="txtTrigpointCoordinateY.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
-  </data>
-  <data name="txtTrigpointCoordinateY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 20</value>
-  </data>
-  <data name="txtTrigpointCoordinateY.TabIndex" type="System.Int32, mscorlib">
-    <value>81</value>
-  </data>
-  <data name="txtTrigpointCoordinateY.ToolTip" xml:space="preserve">
-    <value>Y</value>
-  </data>
-  <data name="&gt;&gt;txtTrigpointCoordinateY.Name" xml:space="preserve">
-    <value>txtTrigpointCoordinateY</value>
-  </data>
-  <data name="&gt;&gt;txtTrigpointCoordinateY.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;txtTrigpointCoordinateY.Parent" xml:space="preserve">
-    <value>pnlTrigpointCoordinateUTM</value>
-  </data>
-  <data name="&gt;&gt;txtTrigpointCoordinateY.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="cboTrigpointCoordinateZone.Location" type="System.Drawing.Point, System.Drawing">
-    <value>59, 62</value>
-  </data>
-  <data name="cboTrigpointCoordinateZone.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
-  </data>
-  <data name="cboTrigpointCoordinateZone.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
-    <value>Combo</value>
-  </data>
-  <data name="cboTrigpointCoordinateZone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 20</value>
-  </data>
-  <data name="cboTrigpointCoordinateZone.TabIndex" type="System.Int32, mscorlib">
-    <value>76</value>
-  </data>
-  <data name="&gt;&gt;cboTrigpointCoordinateZone.Name" xml:space="preserve">
-    <value>cboTrigpointCoordinateZone</value>
-  </data>
-  <data name="&gt;&gt;cboTrigpointCoordinateZone.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;cboTrigpointCoordinateZone.Parent" xml:space="preserve">
-    <value>pnlTrigpointCoordinateUTM</value>
-  </data>
-  <data name="&gt;&gt;cboTrigpointCoordinateZone.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="txtTrigpointCoordinateX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>59, 9</value>
-  </data>
-  <data name="txtTrigpointCoordinateX.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
-  </data>
-  <data name="txtTrigpointCoordinateX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 20</value>
-  </data>
-  <data name="txtTrigpointCoordinateX.TabIndex" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="txtTrigpointCoordinateX.ToolTip" xml:space="preserve">
-    <value>X</value>
-  </data>
-  <data name="&gt;&gt;txtTrigpointCoordinateX.Name" xml:space="preserve">
-    <value>txtTrigpointCoordinateX</value>
-  </data>
-  <data name="&gt;&gt;txtTrigpointCoordinateX.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;txtTrigpointCoordinateX.Parent" xml:space="preserve">
-    <value>pnlTrigpointCoordinateUTM</value>
-  </data>
-  <data name="&gt;&gt;txtTrigpointCoordinateX.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="lblTrigpointCoordinateY.Appearance.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
-  </data>
-  <data name="lblTrigpointCoordinateY.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblTrigpointCoordinateY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 38</value>
-  </data>
-  <data name="lblTrigpointCoordinateY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>10, 13</value>
-  </data>
-  <data name="lblTrigpointCoordinateY.TabIndex" type="System.Int32, mscorlib">
-    <value>82</value>
-  </data>
-  <data name="lblTrigpointCoordinateY.Text" xml:space="preserve">
-    <value>Y:</value>
-  </data>
-  <data name="&gt;&gt;lblTrigpointCoordinateY.Name" xml:space="preserve">
-    <value>lblTrigpointCoordinateY</value>
-  </data>
-  <data name="&gt;&gt;lblTrigpointCoordinateY.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblTrigpointCoordinateY.Parent" xml:space="preserve">
-    <value>pnlTrigpointCoordinateUTM</value>
-  </data>
-  <data name="&gt;&gt;lblTrigpointCoordinateY.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="lblTrigpointCoordinateX.Appearance.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
-  </data>
-  <data name="lblTrigpointCoordinateX.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblTrigpointCoordinateX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 12</value>
-  </data>
-  <data name="lblTrigpointCoordinateX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>10, 13</value>
-  </data>
-  <data name="lblTrigpointCoordinateX.TabIndex" type="System.Int32, mscorlib">
-    <value>83</value>
-  </data>
-  <data name="lblTrigpointCoordinateX.Text" xml:space="preserve">
-    <value>X:</value>
-  </data>
-  <data name="&gt;&gt;lblTrigpointCoordinateX.Name" xml:space="preserve">
-    <value>lblTrigpointCoordinateX</value>
-  </data>
-  <data name="&gt;&gt;lblTrigpointCoordinateX.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblTrigpointCoordinateX.Parent" xml:space="preserve">
-    <value>pnlTrigpointCoordinateUTM</value>
-  </data>
-  <data name="&gt;&gt;lblTrigpointCoordinateX.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="pnlTrigpointCoordinateUTM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 28</value>
-  </data>
-  <data name="pnlTrigpointCoordinateUTM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 115</value>
-  </data>
-  <data name="pnlTrigpointCoordinateUTM.TabIndex" type="System.Int32, mscorlib">
-    <value>85</value>
-  </data>
-  <data name="&gt;&gt;pnlTrigpointCoordinateUTM.Name" xml:space="preserve">
-    <value>pnlTrigpointCoordinateUTM</value>
-  </data>
-  <data name="&gt;&gt;pnlTrigpointCoordinateUTM.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;pnlTrigpointCoordinateUTM.Parent" xml:space="preserve">
-    <value>tabTrigpointsCoordinate</value>
-  </data>
-  <data name="&gt;&gt;pnlTrigpointCoordinateUTM.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
   <data name="pnlTrigpointCoordinateWGS84.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v21.2">
     <value>Default</value>
   </data>
@@ -14557,7 +14305,7 @@
     <value>124, 20</value>
   </data>
   <data name="txtTrigpointCoordinateLong.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;txtTrigpointCoordinateLong.Name" xml:space="preserve">
     <value>txtTrigpointCoordinateLong</value>
@@ -14581,7 +14329,7 @@
     <value>124, 20</value>
   </data>
   <data name="txtTrigpointCoordinateLat.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="txtTrigpointCoordinateLat.ToolTip" xml:space="preserve">
     <value>Latitude</value>
@@ -14710,7 +14458,7 @@
     <value>125, 20</value>
   </data>
   <data name="cboTrigpointCoordinateFormat.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="cboTrigpointCoordinateFormat.ToolTip" xml:space="preserve">
     <value>The format of the coordinates</value>
@@ -14734,7 +14482,7 @@
     <value>217, 89</value>
   </data>
   <data name="pnlTrigpointCoordinateWGS84.TabIndex" type="System.Int32, mscorlib">
-    <value>84</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;pnlTrigpointCoordinateWGS84.Name" xml:space="preserve">
     <value>pnlTrigpointCoordinateWGS84</value>
@@ -14746,6 +14494,258 @@
     <value>tabTrigpointsCoordinate</value>
   </data>
   <data name="&gt;&gt;pnlTrigpointCoordinateWGS84.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="pnlTrigpointCoordinateUTM.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v21.2">
+    <value>Default</value>
+  </data>
+  <data name="Label5.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="Label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 92</value>
+  </data>
+  <data name="Label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 13</value>
+  </data>
+  <data name="Label5.TabIndex" type="System.Int32, mscorlib">
+    <value>79</value>
+  </data>
+  <data name="Label5.Text" xml:space="preserve">
+    <value>Band:</value>
+  </data>
+  <data name="&gt;&gt;Label5.Name" xml:space="preserve">
+    <value>Label5</value>
+  </data>
+  <data name="&gt;&gt;Label5.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;Label5.Parent" xml:space="preserve">
+    <value>pnlTrigpointCoordinateUTM</value>
+  </data>
+  <data name="&gt;&gt;Label5.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cboTrigpointCoordinateBand.Location" type="System.Drawing.Point, System.Drawing">
+    <value>59, 89</value>
+  </data>
+  <data name="cboTrigpointCoordinateBand.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="cboTrigpointCoordinateBand.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboTrigpointCoordinateBand.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 20</value>
+  </data>
+  <data name="cboTrigpointCoordinateBand.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;cboTrigpointCoordinateBand.Name" xml:space="preserve">
+    <value>cboTrigpointCoordinateBand</value>
+  </data>
+  <data name="&gt;&gt;cboTrigpointCoordinateBand.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboTrigpointCoordinateBand.Parent" xml:space="preserve">
+    <value>pnlTrigpointCoordinateUTM</value>
+  </data>
+  <data name="&gt;&gt;cboTrigpointCoordinateBand.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblTrigpointCoordinateZone.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblTrigpointCoordinateZone.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblTrigpointCoordinateZone.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 65</value>
+  </data>
+  <data name="lblTrigpointCoordinateZone.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 13</value>
+  </data>
+  <data name="lblTrigpointCoordinateZone.TabIndex" type="System.Int32, mscorlib">
+    <value>77</value>
+  </data>
+  <data name="lblTrigpointCoordinateZone.Text" xml:space="preserve">
+    <value>Zone:</value>
+  </data>
+  <data name="&gt;&gt;lblTrigpointCoordinateZone.Name" xml:space="preserve">
+    <value>lblTrigpointCoordinateZone</value>
+  </data>
+  <data name="&gt;&gt;lblTrigpointCoordinateZone.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblTrigpointCoordinateZone.Parent" xml:space="preserve">
+    <value>pnlTrigpointCoordinateUTM</value>
+  </data>
+  <data name="&gt;&gt;lblTrigpointCoordinateZone.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtTrigpointCoordinateY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>59, 35</value>
+  </data>
+  <data name="txtTrigpointCoordinateY.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="txtTrigpointCoordinateY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 20</value>
+  </data>
+  <data name="txtTrigpointCoordinateY.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="txtTrigpointCoordinateY.ToolTip" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="&gt;&gt;txtTrigpointCoordinateY.Name" xml:space="preserve">
+    <value>txtTrigpointCoordinateY</value>
+  </data>
+  <data name="&gt;&gt;txtTrigpointCoordinateY.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtTrigpointCoordinateY.Parent" xml:space="preserve">
+    <value>pnlTrigpointCoordinateUTM</value>
+  </data>
+  <data name="&gt;&gt;txtTrigpointCoordinateY.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cboTrigpointCoordinateZone.Location" type="System.Drawing.Point, System.Drawing">
+    <value>59, 62</value>
+  </data>
+  <data name="cboTrigpointCoordinateZone.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="cboTrigpointCoordinateZone.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v21.2">
+    <value>Combo</value>
+  </data>
+  <data name="cboTrigpointCoordinateZone.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 20</value>
+  </data>
+  <data name="cboTrigpointCoordinateZone.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;cboTrigpointCoordinateZone.Name" xml:space="preserve">
+    <value>cboTrigpointCoordinateZone</value>
+  </data>
+  <data name="&gt;&gt;cboTrigpointCoordinateZone.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;cboTrigpointCoordinateZone.Parent" xml:space="preserve">
+    <value>pnlTrigpointCoordinateUTM</value>
+  </data>
+  <data name="&gt;&gt;cboTrigpointCoordinateZone.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="txtTrigpointCoordinateX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>59, 9</value>
+  </data>
+  <data name="txtTrigpointCoordinateX.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="txtTrigpointCoordinateX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 20</value>
+  </data>
+  <data name="txtTrigpointCoordinateX.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="txtTrigpointCoordinateX.ToolTip" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="&gt;&gt;txtTrigpointCoordinateX.Name" xml:space="preserve">
+    <value>txtTrigpointCoordinateX</value>
+  </data>
+  <data name="&gt;&gt;txtTrigpointCoordinateX.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;txtTrigpointCoordinateX.Parent" xml:space="preserve">
+    <value>pnlTrigpointCoordinateUTM</value>
+  </data>
+  <data name="&gt;&gt;txtTrigpointCoordinateX.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lblTrigpointCoordinateY.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblTrigpointCoordinateY.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblTrigpointCoordinateY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 38</value>
+  </data>
+  <data name="lblTrigpointCoordinateY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 13</value>
+  </data>
+  <data name="lblTrigpointCoordinateY.TabIndex" type="System.Int32, mscorlib">
+    <value>82</value>
+  </data>
+  <data name="lblTrigpointCoordinateY.Text" xml:space="preserve">
+    <value>Y:</value>
+  </data>
+  <data name="&gt;&gt;lblTrigpointCoordinateY.Name" xml:space="preserve">
+    <value>lblTrigpointCoordinateY</value>
+  </data>
+  <data name="&gt;&gt;lblTrigpointCoordinateY.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblTrigpointCoordinateY.Parent" xml:space="preserve">
+    <value>pnlTrigpointCoordinateUTM</value>
+  </data>
+  <data name="&gt;&gt;lblTrigpointCoordinateY.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lblTrigpointCoordinateX.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="lblTrigpointCoordinateX.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblTrigpointCoordinateX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 12</value>
+  </data>
+  <data name="lblTrigpointCoordinateX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 13</value>
+  </data>
+  <data name="lblTrigpointCoordinateX.TabIndex" type="System.Int32, mscorlib">
+    <value>83</value>
+  </data>
+  <data name="lblTrigpointCoordinateX.Text" xml:space="preserve">
+    <value>X:</value>
+  </data>
+  <data name="&gt;&gt;lblTrigpointCoordinateX.Name" xml:space="preserve">
+    <value>lblTrigpointCoordinateX</value>
+  </data>
+  <data name="&gt;&gt;lblTrigpointCoordinateX.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;lblTrigpointCoordinateX.Parent" xml:space="preserve">
+    <value>pnlTrigpointCoordinateUTM</value>
+  </data>
+  <data name="&gt;&gt;lblTrigpointCoordinateX.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="pnlTrigpointCoordinateUTM.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
+  </data>
+  <data name="pnlTrigpointCoordinateUTM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 115</value>
+  </data>
+  <data name="pnlTrigpointCoordinateUTM.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;pnlTrigpointCoordinateUTM.Name" xml:space="preserve">
+    <value>pnlTrigpointCoordinateUTM</value>
+  </data>
+  <data name="&gt;&gt;pnlTrigpointCoordinateUTM.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;pnlTrigpointCoordinateUTM.Parent" xml:space="preserve">
+    <value>tabTrigpointsCoordinate</value>
+  </data>
+  <data name="&gt;&gt;pnlTrigpointCoordinateUTM.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
   <data name="tabTrigpointsCoordinate.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -14843,7 +14843,7 @@
 </value>
   </data>
   <data name="tabTrigpointsCoordinate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 193</value>
+    <value>248, 291</value>
   </data>
   <data name="tabTrigpointsCoordinate.Tooltip" xml:space="preserve">
     <value>Coordinate</value>
@@ -19707,7 +19707,7 @@
 </value>
   </data>
   <data name="tabSegmentsMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 302</value>
+    <value>248, 204</value>
   </data>
   <data name="tabSegmentsMain.Tooltip" xml:space="preserve">
     <value>Main</value>
@@ -19725,7 +19725,7 @@
     <value>0</value>
   </data>
   <data name="tabSegmentsProperty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 334</value>
+    <value>250, 236</value>
   </data>
   <data name="tabSegmentsProperty.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -19807,7 +19807,7 @@
 </value>
   </data>
   <data name="tabSegmentsLayout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 302</value>
+    <value>248, 204</value>
   </data>
   <data name="tabSegmentsLayout.Tooltip" xml:space="preserve">
     <value>Layout</value>
@@ -19834,7 +19834,7 @@
     <value>0, 0</value>
   </data>
   <data name="prpSegmentDataProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 302</value>
+    <value>248, 204</value>
   </data>
   <data name="prpSegmentDataProperties.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -19878,7 +19878,7 @@
 </value>
   </data>
   <data name="tabSegmentsData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 302</value>
+    <value>248, 204</value>
   </data>
   <data name="tabSegmentsData.Tooltip" xml:space="preserve">
     <value>Data</value>
@@ -19902,7 +19902,7 @@
     <value>0, 0</value>
   </data>
   <data name="txtSegmentNote.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 302</value>
+    <value>248, 204</value>
   </data>
   <data name="txtSegmentNote.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -19957,7 +19957,7 @@
 </value>
   </data>
   <data name="tabSegmentsNote.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 302</value>
+    <value>248, 204</value>
   </data>
   <data name="tabSegmentsNote.Tooltip" xml:space="preserve">
     <value>Note</value>
@@ -20017,7 +20017,7 @@
     <value>240</value>
   </data>
   <data name="grdSegmentAttachments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 302</value>
+    <value>248, 204</value>
   </data>
   <data name="grdSegmentAttachments.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -20054,7 +20054,7 @@
 </value>
   </data>
   <data name="tabSegmentsAttachments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 302</value>
+    <value>248, 204</value>
   </data>
   <data name="tabSegmentsAttachments.Tooltip" xml:space="preserve">
     <value>Attachments</value>
@@ -20413,7 +20413,7 @@
     <value>Combo</value>
   </data>
   <data name="grdSegments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>330, 461</value>
+    <value>330, 363</value>
   </data>
   <data name="grdSegments.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -20860,7 +20860,7 @@
     <value>0, 0</value>
   </data>
   <data name="pnlSegment.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 461</value>
+    <value>250, 363</value>
   </data>
   <data name="pnlSegment.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -20890,7 +20890,7 @@
     <value>1</value>
   </data>
   <data name="spSegments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>590, 461</value>
+    <value>590, 363</value>
   </data>
   <data name="spSegments.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -21520,7 +21520,7 @@
     <value>28</value>
   </data>
   <data name="grdTrigPoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>330, 265</value>
+    <value>330, 363</value>
   </data>
   <data name="grdTrigPoints.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -21643,7 +21643,7 @@
     <value>0, 0</value>
   </data>
   <data name="pnlTrigPoint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 265</value>
+    <value>250, 363</value>
   </data>
   <data name="pnlTrigPoint.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -21673,7 +21673,7 @@
     <value>1</value>
   </data>
   <data name="spTrigPoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>590, 265</value>
+    <value>590, 363</value>
   </data>
   <data name="spTrigPoints.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

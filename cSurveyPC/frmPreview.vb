@@ -1719,12 +1719,12 @@ Friend Class frmPreview
         Dim iVal As Integer = e.Delta / 120
         Dim iAbs As Integer = Math.Abs(iVal)
         Dim iSegno As Integer = iVal / iAbs
-        If (iAbs < 20) And (((iSegno > 0) And (sViewZoom > 0.1)) Or ((iSegno < 0) And (sViewZoom < 100))) Then
+        If (iAbs < 20) AndAlso (((iSegno > 0) AndAlso (sViewZoom > 0.1F)) OrElse ((iSegno < 0) AndAlso (sViewZoom < 100.0F))) Then
             For j As Integer = 1 To iAbs
                 If iSegno > 0 Then
-                    sViewZoom *= 1.1
+                    sViewZoom *= 1.1F
                 Else
-                    sViewZoom /= 1.1
+                    sViewZoom /= 1.1F
                 End If
             Next
             picExport.Size = New Size(picExport.Image.Width * sViewZoom, picExport.Image.Height * sViewZoom)
@@ -3233,12 +3233,12 @@ Friend Class frmPreview
     Private Sub btnZoomIn_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnZoomIn.ItemClick
         Select Case iMode
             Case PreviewModeEnum.Preview
-                If (pPreview.Zoom < 100) Then
-                    sViewZoom *= 1.1
+                If (pPreview.Zoom < 100.0F) Then
+                    sViewZoom *= 1.1F
                     pPreview.Zoom = sViewZoom
                 End If
             Case PreviewModeEnum.Export
-                sViewZoom *= 1.1
+                sViewZoom *= 1.1F
                 picExport.Size = New Size(picExport.Image.Width * sViewZoom, picExport.Image.Height * sViewZoom)
                 Call pnlExport.Invalidate()
             Case PreviewModeEnum.Viewer
@@ -3249,13 +3249,13 @@ Friend Class frmPreview
     Private Sub btnZoomout_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnZoomOut.ItemClick
         Select Case iMode
             Case PreviewModeEnum.Preview
-                If (sViewZoom > 0.1) Then
-                    sViewZoom /= 1.1
+                If (sViewZoom > 0.1F) Then
+                    sViewZoom /= 1.1F
                     pPreview.Zoom = sViewZoom
                 End If
             Case PreviewModeEnum.Export
-                If (sViewZoom > 0.1) Then
-                    sViewZoom /= 1.1
+                If (sViewZoom > 0.1F) Then
+                    sViewZoom /= 1.1F
                     picExport.Size = New Size(picExport.Image.Width * sViewZoom, picExport.Image.Height * sViewZoom)
                     Call pnlExport.Invalidate()
                 End If

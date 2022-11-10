@@ -590,6 +590,13 @@ Partial Class frmMain2
         Me.lblTrigpointCoordinateGeo = New DevExpress.XtraEditors.LabelControl()
         Me.lblTrigpointCoordinateAlt = New DevExpress.XtraEditors.LabelControl()
         Me.txtTrigpointCoordinateAlt = New DevExpress.XtraEditors.TextEdit()
+        Me.pnlTrigpointCoordinateWGS84 = New DevExpress.XtraEditors.PanelControl()
+        Me.txtTrigpointCoordinateLong = New DevExpress.XtraEditors.TextEdit()
+        Me.txtTrigpointCoordinateLat = New DevExpress.XtraEditors.TextEdit()
+        Me.lblTrigpointCoordinateLat = New DevExpress.XtraEditors.LabelControl()
+        Me.lblTrigpointCoordinateLong = New DevExpress.XtraEditors.LabelControl()
+        Me.lblTrigpointCoordinateFormat = New DevExpress.XtraEditors.LabelControl()
+        Me.cboTrigpointCoordinateFormat = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.pnlTrigpointCoordinateUTM = New DevExpress.XtraEditors.PanelControl()
         Me.Label5 = New DevExpress.XtraEditors.LabelControl()
         Me.cboTrigpointCoordinateBand = New DevExpress.XtraEditors.ComboBoxEdit()
@@ -599,13 +606,6 @@ Partial Class frmMain2
         Me.txtTrigpointCoordinateX = New DevExpress.XtraEditors.TextEdit()
         Me.lblTrigpointCoordinateY = New DevExpress.XtraEditors.LabelControl()
         Me.lblTrigpointCoordinateX = New DevExpress.XtraEditors.LabelControl()
-        Me.pnlTrigpointCoordinateWGS84 = New DevExpress.XtraEditors.PanelControl()
-        Me.txtTrigpointCoordinateLong = New DevExpress.XtraEditors.TextEdit()
-        Me.txtTrigpointCoordinateLat = New DevExpress.XtraEditors.TextEdit()
-        Me.lblTrigpointCoordinateLat = New DevExpress.XtraEditors.LabelControl()
-        Me.lblTrigpointCoordinateLong = New DevExpress.XtraEditors.LabelControl()
-        Me.lblTrigpointCoordinateFormat = New DevExpress.XtraEditors.LabelControl()
-        Me.cboTrigpointCoordinateFormat = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.WorkspaceManager = New DevExpress.Utils.WorkspaceManager(Me.components)
         Me.tabSegmentsProperty = New DevExpress.XtraTab.XtraTabControl()
         Me.tabSegmentsMain = New DevExpress.XtraTab.XtraTabPage()
@@ -886,17 +886,17 @@ Partial Class frmMain2
         CType(Me.cboTrigpointCoordinateGeo.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboTrigpointCoordinateFix.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtTrigpointCoordinateAlt.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pnlTrigpointCoordinateWGS84, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlTrigpointCoordinateWGS84.SuspendLayout()
+        CType(Me.txtTrigpointCoordinateLong.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtTrigpointCoordinateLat.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboTrigpointCoordinateFormat.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pnlTrigpointCoordinateUTM, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlTrigpointCoordinateUTM.SuspendLayout()
         CType(Me.cboTrigpointCoordinateBand.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtTrigpointCoordinateY.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboTrigpointCoordinateZone.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtTrigpointCoordinateX.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pnlTrigpointCoordinateWGS84, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlTrigpointCoordinateWGS84.SuspendLayout()
-        CType(Me.txtTrigpointCoordinateLong.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtTrigpointCoordinateLat.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboTrigpointCoordinateFormat.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tabSegmentsProperty, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabSegmentsProperty.SuspendLayout()
         Me.tabSegmentsMain.SuspendLayout()
@@ -5226,8 +5226,8 @@ Partial Class frmMain2
         Me.tabTrigpointsCoordinate.Controls.Add(Me.lblTrigpointCoordinateGeo)
         Me.tabTrigpointsCoordinate.Controls.Add(Me.lblTrigpointCoordinateAlt)
         Me.tabTrigpointsCoordinate.Controls.Add(Me.txtTrigpointCoordinateAlt)
-        Me.tabTrigpointsCoordinate.Controls.Add(Me.pnlTrigpointCoordinateUTM)
         Me.tabTrigpointsCoordinate.Controls.Add(Me.pnlTrigpointCoordinateWGS84)
+        Me.tabTrigpointsCoordinate.Controls.Add(Me.pnlTrigpointCoordinateUTM)
         Me.tabTrigpointsCoordinate.ImageOptions.SvgImage = CType(resources.GetObject("tabTrigpointsCoordinate.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.tabTrigpointsCoordinate.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.tabTrigpointsCoordinate.Name = "tabTrigpointsCoordinate"
@@ -5288,6 +5288,64 @@ Partial Class frmMain2
         Me.txtTrigpointCoordinateAlt.Name = "txtTrigpointCoordinateAlt"
         Me.txtTrigpointCoordinateAlt.Properties.Appearance.Font = CType(resources.GetObject("txtTrigpointCoordinateAlt.Properties.Appearance.Font"), System.Drawing.Font)
         Me.txtTrigpointCoordinateAlt.Properties.Appearance.Options.UseFont = True
+        '
+        'pnlTrigpointCoordinateWGS84
+        '
+        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlTrigpointCoordinateWGS84, CType(resources.GetObject("pnlTrigpointCoordinateWGS84.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
+        Me.pnlTrigpointCoordinateWGS84.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.pnlTrigpointCoordinateWGS84.Controls.Add(Me.txtTrigpointCoordinateLong)
+        Me.pnlTrigpointCoordinateWGS84.Controls.Add(Me.txtTrigpointCoordinateLat)
+        Me.pnlTrigpointCoordinateWGS84.Controls.Add(Me.lblTrigpointCoordinateLat)
+        Me.pnlTrigpointCoordinateWGS84.Controls.Add(Me.lblTrigpointCoordinateLong)
+        Me.pnlTrigpointCoordinateWGS84.Controls.Add(Me.lblTrigpointCoordinateFormat)
+        Me.pnlTrigpointCoordinateWGS84.Controls.Add(Me.cboTrigpointCoordinateFormat)
+        resources.ApplyResources(Me.pnlTrigpointCoordinateWGS84, "pnlTrigpointCoordinateWGS84")
+        Me.pnlTrigpointCoordinateWGS84.Name = "pnlTrigpointCoordinateWGS84"
+        '
+        'txtTrigpointCoordinateLong
+        '
+        resources.ApplyResources(Me.txtTrigpointCoordinateLong, "txtTrigpointCoordinateLong")
+        Me.txtTrigpointCoordinateLong.Name = "txtTrigpointCoordinateLong"
+        Me.txtTrigpointCoordinateLong.Properties.Appearance.Font = CType(resources.GetObject("txtTrigpointCoordinateLong.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.txtTrigpointCoordinateLong.Properties.Appearance.Options.UseFont = True
+        '
+        'txtTrigpointCoordinateLat
+        '
+        resources.ApplyResources(Me.txtTrigpointCoordinateLat, "txtTrigpointCoordinateLat")
+        Me.txtTrigpointCoordinateLat.Name = "txtTrigpointCoordinateLat"
+        Me.txtTrigpointCoordinateLat.Properties.Appearance.Font = CType(resources.GetObject("txtTrigpointCoordinateLat.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.txtTrigpointCoordinateLat.Properties.Appearance.Options.UseFont = True
+        '
+        'lblTrigpointCoordinateLat
+        '
+        Me.lblTrigpointCoordinateLat.Appearance.Font = CType(resources.GetObject("lblTrigpointCoordinateLat.Appearance.Font"), System.Drawing.Font)
+        Me.lblTrigpointCoordinateLat.Appearance.Options.UseFont = True
+        resources.ApplyResources(Me.lblTrigpointCoordinateLat, "lblTrigpointCoordinateLat")
+        Me.lblTrigpointCoordinateLat.Name = "lblTrigpointCoordinateLat"
+        '
+        'lblTrigpointCoordinateLong
+        '
+        Me.lblTrigpointCoordinateLong.Appearance.Font = CType(resources.GetObject("lblTrigpointCoordinateLong.Appearance.Font"), System.Drawing.Font)
+        Me.lblTrigpointCoordinateLong.Appearance.Options.UseFont = True
+        resources.ApplyResources(Me.lblTrigpointCoordinateLong, "lblTrigpointCoordinateLong")
+        Me.lblTrigpointCoordinateLong.Name = "lblTrigpointCoordinateLong"
+        '
+        'lblTrigpointCoordinateFormat
+        '
+        Me.lblTrigpointCoordinateFormat.Appearance.Font = CType(resources.GetObject("lblTrigpointCoordinateFormat.Appearance.Font"), System.Drawing.Font)
+        Me.lblTrigpointCoordinateFormat.Appearance.Options.UseFont = True
+        resources.ApplyResources(Me.lblTrigpointCoordinateFormat, "lblTrigpointCoordinateFormat")
+        Me.lblTrigpointCoordinateFormat.Name = "lblTrigpointCoordinateFormat"
+        '
+        'cboTrigpointCoordinateFormat
+        '
+        resources.ApplyResources(Me.cboTrigpointCoordinateFormat, "cboTrigpointCoordinateFormat")
+        Me.cboTrigpointCoordinateFormat.Name = "cboTrigpointCoordinateFormat"
+        Me.cboTrigpointCoordinateFormat.Properties.Appearance.Font = CType(resources.GetObject("cboTrigpointCoordinateFormat.Properties.Appearance.Font"), System.Drawing.Font)
+        Me.cboTrigpointCoordinateFormat.Properties.Appearance.Options.UseFont = True
+        Me.cboTrigpointCoordinateFormat.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboTrigpointCoordinateFormat.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboTrigpointCoordinateFormat.Properties.Items.AddRange(New Object() {resources.GetString("cboTrigpointCoordinateFormat.Properties.Items"), resources.GetString("cboTrigpointCoordinateFormat.Properties.Items1"), resources.GetString("cboTrigpointCoordinateFormat.Properties.Items2")})
+        Me.cboTrigpointCoordinateFormat.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
         'pnlTrigpointCoordinateUTM
         '
@@ -5363,64 +5421,6 @@ Partial Class frmMain2
         Me.lblTrigpointCoordinateX.Appearance.Options.UseFont = True
         resources.ApplyResources(Me.lblTrigpointCoordinateX, "lblTrigpointCoordinateX")
         Me.lblTrigpointCoordinateX.Name = "lblTrigpointCoordinateX"
-        '
-        'pnlTrigpointCoordinateWGS84
-        '
-        Me.DefaultToolTipController.SetAllowHtmlText(Me.pnlTrigpointCoordinateWGS84, CType(resources.GetObject("pnlTrigpointCoordinateWGS84.AllowHtmlText"), DevExpress.Utils.DefaultBoolean))
-        Me.pnlTrigpointCoordinateWGS84.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-        Me.pnlTrigpointCoordinateWGS84.Controls.Add(Me.txtTrigpointCoordinateLong)
-        Me.pnlTrigpointCoordinateWGS84.Controls.Add(Me.txtTrigpointCoordinateLat)
-        Me.pnlTrigpointCoordinateWGS84.Controls.Add(Me.lblTrigpointCoordinateLat)
-        Me.pnlTrigpointCoordinateWGS84.Controls.Add(Me.lblTrigpointCoordinateLong)
-        Me.pnlTrigpointCoordinateWGS84.Controls.Add(Me.lblTrigpointCoordinateFormat)
-        Me.pnlTrigpointCoordinateWGS84.Controls.Add(Me.cboTrigpointCoordinateFormat)
-        resources.ApplyResources(Me.pnlTrigpointCoordinateWGS84, "pnlTrigpointCoordinateWGS84")
-        Me.pnlTrigpointCoordinateWGS84.Name = "pnlTrigpointCoordinateWGS84"
-        '
-        'txtTrigpointCoordinateLong
-        '
-        resources.ApplyResources(Me.txtTrigpointCoordinateLong, "txtTrigpointCoordinateLong")
-        Me.txtTrigpointCoordinateLong.Name = "txtTrigpointCoordinateLong"
-        Me.txtTrigpointCoordinateLong.Properties.Appearance.Font = CType(resources.GetObject("txtTrigpointCoordinateLong.Properties.Appearance.Font"), System.Drawing.Font)
-        Me.txtTrigpointCoordinateLong.Properties.Appearance.Options.UseFont = True
-        '
-        'txtTrigpointCoordinateLat
-        '
-        resources.ApplyResources(Me.txtTrigpointCoordinateLat, "txtTrigpointCoordinateLat")
-        Me.txtTrigpointCoordinateLat.Name = "txtTrigpointCoordinateLat"
-        Me.txtTrigpointCoordinateLat.Properties.Appearance.Font = CType(resources.GetObject("txtTrigpointCoordinateLat.Properties.Appearance.Font"), System.Drawing.Font)
-        Me.txtTrigpointCoordinateLat.Properties.Appearance.Options.UseFont = True
-        '
-        'lblTrigpointCoordinateLat
-        '
-        Me.lblTrigpointCoordinateLat.Appearance.Font = CType(resources.GetObject("lblTrigpointCoordinateLat.Appearance.Font"), System.Drawing.Font)
-        Me.lblTrigpointCoordinateLat.Appearance.Options.UseFont = True
-        resources.ApplyResources(Me.lblTrigpointCoordinateLat, "lblTrigpointCoordinateLat")
-        Me.lblTrigpointCoordinateLat.Name = "lblTrigpointCoordinateLat"
-        '
-        'lblTrigpointCoordinateLong
-        '
-        Me.lblTrigpointCoordinateLong.Appearance.Font = CType(resources.GetObject("lblTrigpointCoordinateLong.Appearance.Font"), System.Drawing.Font)
-        Me.lblTrigpointCoordinateLong.Appearance.Options.UseFont = True
-        resources.ApplyResources(Me.lblTrigpointCoordinateLong, "lblTrigpointCoordinateLong")
-        Me.lblTrigpointCoordinateLong.Name = "lblTrigpointCoordinateLong"
-        '
-        'lblTrigpointCoordinateFormat
-        '
-        Me.lblTrigpointCoordinateFormat.Appearance.Font = CType(resources.GetObject("lblTrigpointCoordinateFormat.Appearance.Font"), System.Drawing.Font)
-        Me.lblTrigpointCoordinateFormat.Appearance.Options.UseFont = True
-        resources.ApplyResources(Me.lblTrigpointCoordinateFormat, "lblTrigpointCoordinateFormat")
-        Me.lblTrigpointCoordinateFormat.Name = "lblTrigpointCoordinateFormat"
-        '
-        'cboTrigpointCoordinateFormat
-        '
-        resources.ApplyResources(Me.cboTrigpointCoordinateFormat, "cboTrigpointCoordinateFormat")
-        Me.cboTrigpointCoordinateFormat.Name = "cboTrigpointCoordinateFormat"
-        Me.cboTrigpointCoordinateFormat.Properties.Appearance.Font = CType(resources.GetObject("cboTrigpointCoordinateFormat.Properties.Appearance.Font"), System.Drawing.Font)
-        Me.cboTrigpointCoordinateFormat.Properties.Appearance.Options.UseFont = True
-        Me.cboTrigpointCoordinateFormat.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboTrigpointCoordinateFormat.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.cboTrigpointCoordinateFormat.Properties.Items.AddRange(New Object() {resources.GetString("cboTrigpointCoordinateFormat.Properties.Items"), resources.GetString("cboTrigpointCoordinateFormat.Properties.Items1"), resources.GetString("cboTrigpointCoordinateFormat.Properties.Items2")})
-        Me.cboTrigpointCoordinateFormat.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
         'WorkspaceManager
         '
@@ -5846,7 +5846,7 @@ Partial Class frmMain2
         'spSegmentsAndTrigpoints.Panel2
         '
         Me.spSegmentsAndTrigpoints.Panel2.Controls.Add(Me.spTrigPoints)
-        Me.spSegmentsAndTrigpoints.SplitterPosition = 461
+        Me.spSegmentsAndTrigpoints.SplitterPosition = 363
         Me.spSegmentsAndTrigpoints.ToolTipController = Me.DefaultToolTipController.DefaultController
         '
         'spSegments
@@ -7312,6 +7312,12 @@ Partial Class frmMain2
         CType(Me.cboTrigpointCoordinateGeo.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboTrigpointCoordinateFix.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtTrigpointCoordinateAlt.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pnlTrigpointCoordinateWGS84, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlTrigpointCoordinateWGS84.ResumeLayout(False)
+        Me.pnlTrigpointCoordinateWGS84.PerformLayout()
+        CType(Me.txtTrigpointCoordinateLong.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtTrigpointCoordinateLat.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboTrigpointCoordinateFormat.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pnlTrigpointCoordinateUTM, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlTrigpointCoordinateUTM.ResumeLayout(False)
         Me.pnlTrigpointCoordinateUTM.PerformLayout()
@@ -7319,12 +7325,6 @@ Partial Class frmMain2
         CType(Me.txtTrigpointCoordinateY.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboTrigpointCoordinateZone.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtTrigpointCoordinateX.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pnlTrigpointCoordinateWGS84, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnlTrigpointCoordinateWGS84.ResumeLayout(False)
-        Me.pnlTrigpointCoordinateWGS84.PerformLayout()
-        CType(Me.txtTrigpointCoordinateLong.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtTrigpointCoordinateLat.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboTrigpointCoordinateFormat.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tabSegmentsProperty, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabSegmentsProperty.ResumeLayout(False)
         Me.tabSegmentsMain.ResumeLayout(False)

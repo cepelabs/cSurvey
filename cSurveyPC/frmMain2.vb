@@ -3958,7 +3958,7 @@ Friend Class frmMain2
             Else
                 sDeltaIncrement = sZoom / 10.0F
             End If
-            If sZoom - 20.0F >= sZoomMin Then
+            If sZoom - sDeltaIncrement >= sZoomMin Then
                 sZoom -= sDeltaIncrement
             Else
                 sZoom = sZoomMin

@@ -77,7 +77,7 @@ Friend Class frmSettings
 
             Call oReg.SetValue("design.designbar.showlastusedtools", If(chkShowLastUsedToolsInDesignBar.Checked, 1, 0))
             Call oReg.SetValue("design.designbar.defaultposition", cboDesignBarPosition.SelectedIndex)
-            Call oReg.SetValue("design.designbar.size", cboDesignBarSize.SelectedIndex)
+            'Call oReg.SetValue("design.designbar.size", cboDesignBarSize.SelectedIndex)
 
             Call oReg.SetValue("environment.alwaysuseshellforattachments", If(chkAlwaysUseShellForAttchments.Checked, 1, 0))
 
@@ -270,7 +270,7 @@ Friend Class frmSettings
 
             chkShowLastUsedToolsInDesignBar.Checked = oReg.GetValue("design.designbar.showlastusedtools", 1)
             cboDesignBarPosition.SelectedIndex = oReg.GetValue("design.designbar.defaultposition", 0)
-            cboDesignBarSize.SelectedIndex = oReg.GetValue("design.designbar.size", 0)
+            ' cboDesignBarSize.SelectedIndex = oReg.GetValue("design.designbar.size", 0)
 
             cboMaxDrawItemCount.Text = oReg.GetValue("design.maxdrawitemcount", 20)
 

@@ -193,8 +193,6 @@ Partial Class frmSettings
         Me.tabInfoTherion = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoOptions = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoInterface = New DevExpress.XtraTab.XtraTabPage()
-        Me.cboDesignBarSize = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.tabInfoDesign = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoData = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoSVG = New DevExpress.XtraTab.XtraTabPage()
@@ -296,7 +294,6 @@ Partial Class frmSettings
         Me.tabInfoTherion.SuspendLayout()
         Me.tabInfoOptions.SuspendLayout()
         Me.tabInfoInterface.SuspendLayout()
-        CType(Me.cboDesignBarSize.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabInfoDesign.SuspendLayout()
         Me.tabInfoData.SuspendLayout()
         Me.tabInfoSVG.SuspendLayout()
@@ -1499,8 +1496,6 @@ Partial Class frmSettings
         '
         'tabInfoInterface
         '
-        Me.tabInfoInterface.Controls.Add(Me.cboDesignBarSize)
-        Me.tabInfoInterface.Controls.Add(Me.LabelControl1)
         Me.tabInfoInterface.Controls.Add(Me.GroupBox3)
         Me.tabInfoInterface.Controls.Add(Me.chkAlwaysUseShellForAttchments)
         Me.tabInfoInterface.Controls.Add(Me.chkSetDesignToolsEnabledByLevel)
@@ -1516,19 +1511,6 @@ Partial Class frmSettings
         Me.tabInfoInterface.Controls.Add(Me.Label5)
         Me.tabInfoInterface.Name = "tabInfoInterface"
         resources.ApplyResources(Me.tabInfoInterface, "tabInfoInterface")
-        '
-        'cboDesignBarSize
-        '
-        resources.ApplyResources(Me.cboDesignBarSize, "cboDesignBarSize")
-        Me.cboDesignBarSize.Name = "cboDesignBarSize"
-        Me.cboDesignBarSize.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboDesignBarSize.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.cboDesignBarSize.Properties.Items.AddRange(New Object() {resources.GetString("cboDesignBarSize.Properties.Items"), resources.GetString("cboDesignBarSize.Properties.Items1"), resources.GetString("cboDesignBarSize.Properties.Items2")})
-        Me.cboDesignBarSize.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        '
-        'LabelControl1
-        '
-        resources.ApplyResources(Me.LabelControl1, "LabelControl1")
-        Me.LabelControl1.Name = "LabelControl1"
         '
         'tabInfoDesign
         '
@@ -1773,7 +1755,6 @@ Partial Class frmSettings
         Me.tabInfoOptions.PerformLayout()
         Me.tabInfoInterface.ResumeLayout(False)
         Me.tabInfoInterface.PerformLayout()
-        CType(Me.cboDesignBarSize.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabInfoDesign.ResumeLayout(False)
         Me.tabInfoDesign.PerformLayout()
         Me.tabInfoData.ResumeLayout(False)
@@ -1974,6 +1955,4 @@ Partial Class frmSettings
     Friend WithEvents lblLogMaxSize As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtLogMaxLine As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents chkForceGarbaceCollect As DevExpress.XtraEditors.CheckEdit
-    Friend WithEvents cboDesignBarSize As DevExpress.XtraEditors.ComboBoxEdit
-    Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
 End Class

@@ -2499,195 +2499,186 @@ Friend Class frmMain2
     Private Sub pSettingsLoad()
         Call cEditDesignEnvironment.Reset()
 
+        Dim sSkinName As String = "" & cEditDesignEnvironment.GetSetting("theme.name")
+        If sSkinName <> "" Then
+            Dim sPaletteName As String = "" & cEditDesignEnvironment.GetSetting("theme.palette")
+            DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle(sSkinName, sPaletteName)
+            DevExpress.LookAndFeel.UserLookAndFeel.Default.UpdateStyleSettings()
+        End If
+
+        Dim iFieldDataViewMode As Integer = cEditDesignEnvironment.GetSetting("user.fieldDataviewmode", 0)
+        Select Case iFieldDataViewMode
+            Case 0
+                btnSegments.Checked = True
+                Call pSegmentsShow(True)
+            Case 1
+                btnTrigpoints.Checked = True
+                Call pTrigpointsShow(True)
+            Case 2
+                btnSegmentsAndTrigPoints.Checked = True
+                Call pSegmentsAndTrigPointsShow(True)
+        End Select
+
+        iDesignQuality = cEditDesignEnvironment.GetSetting("design.quality", 0)
+        Call pSettingsSetDesignQuality(iDesignQuality, True)
+        Call pRulersSetVisible(cEditDesignEnvironment.GetSetting("design.rulers", 1))
+        iDrawRulesStyle = cEditDesignEnvironment.GetSetting("design.rulers.style", RulersStyleEnum.Simple)
+        iDrawMetricGrid = cEditDesignEnvironment.GetSetting("design.metricgrid", 0)
+
+        bDesignBarShowLastUsedTools = cEditDesignEnvironment.GetSetting("design.designbar.showlastusedtools", 1)
+        oLastUsedBar.Visible = bDesignBarShowLastUsedTools
+        iDesignBarPosition = cEditDesignEnvironment.GetSetting("design.designbar.defaultposition", 0)
+
+        'last used items
+        Dim sLui As String = cEditDesignEnvironment.GetSetting("lui", "")
+        If sLui <> "" Then
+            For Each sLuiItem As String In sLui.Split(",")
+                Call oLastUsedItems.Add(RibbonControl.Items.FindByName(sLuiItem))
+            Next
+        End If
+
+        bDesignLevelBarVisible = cEditDesignEnvironment.GetSetting("levelsbar", "1")
+        btnViewToolbarLevels.Checked = bDesignLevelBarVisible
+        bDesignItemsBarVisible = cEditDesignEnvironment.GetSetting("itemsbar", "1")
+        btnViewToolbarItems.Checked = bDesignItemsBarVisible
+        bLastUsedBarVisible = cEditDesignEnvironment.GetSetting("lastusedbar", "1")
+        btnViewToolbarLastUsedTools.Checked = bLastUsedBarVisible
+
+        Call pReloadUsedToolsBar()
+
+        modMain.iMaxDrawItemCount = cEditDesignEnvironment.GetSetting("design.maxdrawitemcount", 20)
+
+        btnAlignToGrid.Checked = cEditDesignEnvironment.GetSetting("snaptogrid", 0)
+        btnAlignToGridSize.EditValue = modNumbers.StringToSingle(cEditDesignEnvironment.GetSetting("snaptogrid.size", "0.1"))
+
+        bEditPointByPoint = cEditDesignEnvironment.GetSetting("user.editpointtopoint", 0)
+        btnEditDrawing.Down = Not bEditPointByPoint
+        btnEditPointToPoint.Down = bEditPointByPoint
+
+        btnLoch.Visibility = modControls.VisibleToVisibility(cEditDesignEnvironment.GetSetting("therion.loch.enabled", 1))
+
+        sDefaultClub = cEditDesignEnvironment.GetSetting("default.club", "")
+        sDefaultTeam = cEditDesignEnvironment.GetSetting("default.team", "")
+        sDefaultDesigner = cEditDesignEnvironment.GetSetting("default.designer", "")
+
+        'defaultfolder (if not set...create it)
+        sDefaultFolder = cEditDesignEnvironment.GetSetting("default.folder", "")
+        If sDefaultFolder = "" Then
+            Call pDefaultFolderSetup()
+        End If
+        'templates (if not set...create it)
+        oTemplates = New UIHelpers.cTemplatesBindingList(IO.Path.Combine(sDefaultFolder, "Templates"))
+        btnNew.ButtonStyle = If(oTemplates.Count > 0, BarButtonStyle.DropDown, BarButtonStyle.Default)
+
+        oRecents = UIHelpers.cRecentsHelper.Load("Recent", btnLoad)
+
+        iDefaultCalculateMode = cEditDesignEnvironment.GetSetting("default.calculatemode", 0)
+        iDefaultCalculateType = cEditDesignEnvironment.GetSetting("default.calculatetype", cSurvey.cSurvey.CalculateTypeEnum.Therion)
+
+        bDefaultShowLegacyPrintAndExportObjects = cEditDesignEnvironment.GetSetting("default.showlegacyextraprintandexportobjects", Not bFirstRun)
+
+        bDefaultArrangePriorityOnImport = cEditDesignEnvironment.GetSetting("default.arrangepriorityonimport", True)
+
+        iZoomType = cEditDesignEnvironment.GetSetting("zoom.type", 1)
+
+        bGridExportSplayNames = cEditDesignEnvironment.GetSetting("grid.shotsgrid.exportsplaynames", 1)
+
+        'bLogEnabled = oReg.GetValue("debug.log", 0)
+
+        bToolsEnabledByLevel = cEditDesignEnvironment.GetSetting("environment.setdesigntoolsenabledbylevel", 1)
+        bToolsHiddenByLevel = cEditDesignEnvironment.GetSetting("environment.setdesigntoolshiddenbylevel", 0)
+        iFunctionLanguage = cEditDesignEnvironment.GetSetting("environment.functionlanguage", 0)
+
+        bAlwaysUseShellForAttachments = cEditDesignEnvironment.GetSetting("environment.alwaysuseshellforattachments", 0)
+
+        tmrAutosave.Enabled = cEditDesignEnvironment.GetSetting("debug.autosave", 0)
+        bAutoSaveUseHistorySettings = cEditDesignEnvironment.GetSetting("debug.autosave.usehistorysettings", 0)
+
+        Dim sPointPrecision As Single = modNumbers.StringToSingle(cEditDesignEnvironment.GetSetting("pens.smooth", "0.05"))
+        If sPointPrecision < 0.01 Then sPointPrecision = 0.01
+        btnPenSmooting.Checked = cEditDesignEnvironment.GetSetting("pens.smooting", 0)
+        btnPenSmootingFactor.EditValue = Math.Round(sPointPrecision, 2)
+
+        Dim sToolsPrecision As Single = modNumbers.StringToSingle(cEditDesignEnvironment.GetSetting("tools.smooth", "0.05"))
+        If sToolsPrecision < 0.01F Then sToolsPrecision = 0.01F
+        btnCurrentItemGenericReducePointFactor.EditValue = Math.Round(sToolsPrecision, 2)
+
+        bUseOnlyAnchorToMove = cEditDesignEnvironment.GetSetting("design.useonlyanchortomove", 1)
+        iAdvancedSelectionMode = cEditDesignEnvironment.GetSetting("design.selectionmode", 0)
+        sAdvancedSelectionPrecision = modNumbers.StringToSingle(cEditDesignEnvironment.GetSetting("design.selectionmode.precision", 1000.0F))
+        sAdvancedSelectionWide = modNumbers.StringToSingle(cEditDesignEnvironment.GetSetting("design.selectionmode.wide", 4.0F))
+
+        modPaint.AnchorsScale = modNumbers.StringToSingle(cEditDesignEnvironment.GetSetting("design.anchorscale", 1))
+
+        oPropObjectsBindingContainer.Expanded = cEditDesignEnvironment.GetSetting("design.objectsbinding.expanded")
+        oPropSegmentBindingContainer.Expanded = cEditDesignEnvironment.GetSetting("design.segmentsbinding.expanded")
+        oPropTrigpointsDistancesContainer.Expanded = cEditDesignEnvironment.GetSetting("design.trigpointdistances.expanded")
+
+        bHistory = cEditDesignEnvironment.GetSetting("history.enabled", 0)
+        iHistoryMode = cEditDesignEnvironment.GetSetting("history.mode", 0)
+        sHistoryWebURL = cEditDesignEnvironment.GetSetting("history.web.url", "")
+        sHistoryWebUsername = cEditDesignEnvironment.GetSetting("history.web.username", "")
+        sHistoryWebPassword = cEditDesignEnvironment.GetSetting("history.web.password", "")
+        If sHistoryWebPassword <> "" Then
+            sHistoryWebPassword = New cLocalSecurity("csurvey").DecryptData(sHistoryWebPassword)
+        End If
+        sHistoryFolder = cEditDesignEnvironment.GetSetting("history.folder", "")
+        iHistoryDailyCopies = cEditDesignEnvironment.GetSetting("history.maxdailycopies", 4)
+        iHistoryMaxCopies = cEditDesignEnvironment.GetSetting("history.maxcopies", 20)
+        bHistoryCreateOnSave = cEditDesignEnvironment.GetSetting("history.createonsave", 0)
+        bHistoryWebCreateOnSave = cEditDesignEnvironment.GetSetting("history.web.createonsave", 0)
+
+        bLinkedSurveysSelectOnAdd = cEditDesignEnvironment.GetSetting("linkedsurveys.selectonadd", "0")
+        bLinkedSurveysShowInCaveInfo = cEditDesignEnvironment.GetSetting("linkedsurveys.showincaveinfo", "0")
+        bLinkedSurveysRecursiveLoad = cEditDesignEnvironment.GetSetting("linkedsurveys.recursiveload", "0")
+        bLinkedSurveysRefreshOnLoadPrioritizeChildren = cEditDesignEnvironment.GetSetting("linkedsurveys.recursiveload.prioritizechildren", "0")
+        bLinkedSurveysRefreshOnLoad = cEditDesignEnvironment.GetSetting("linkedsurveys.refreshonload", "0")
+
+
+        Dim sQAT As String = cEditDesignEnvironment.GetSetting("qat.items", "")
+        If sQAT <> "" Then
+            Dim oXML As XmlDocument = New XmlDocument
+            Call oXML.LoadXml(sQAT)
+            Call RibbonControl.Toolbar.ItemLinks.Clear()
+            Dim oXMLRoot As XmlElement = oXML.DocumentElement
+            For Each oXMLItem As XmlElement In oXMLRoot.ChildNodes
+                Dim oItem As BarItem = RibbonControl.Items.FindById(oXMLItem.GetAttribute("i"))
+                If oItem IsNot Nothing Then
+                    Dim oItemLink As BarItemLink = RibbonControl.Toolbar.ItemLinks.Add(oItem)
+                    oItemLink.BeginGroup = modXML.GetAttributeValue(oXMLItem, "bg", "0")
+                    oItemLink.Visible = modXML.GetAttributeValue(oXMLItem, "v", "1")
+                End If
+            Next
+            RibbonControl.ToolbarLocation = modXML.GetAttributeValue(oXMLRoot, "tl", "0")
+            RibbonControl.Minimized = modXML.GetAttributeValue(oXMLRoot, "m", "0")
+        End If
+
+        'TODO: remove this settings...have to be managed by cEditDesignEnviroment...
+        Call pSurveyCheckBezierLineType()
+
+        If cEditDesignEnvironment.GetSetting("wms.cache.enabled", 0) Then
+            modWMSManager.MaxCacheSize = cEditDesignEnvironment.GetSetting("wms.cache.maxsize", 0) * 1048576
+        End If
+
+        bCheckNewVersion = cEditDesignEnvironment.GetSetting("debug.checknewversion", 0)
+
         'TODO: remove this settings...have to be managed by cEditDesignEnviroment...
         Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree)
-            Dim sSkinName As String = "" & cEditDesignEnvironment.GetSetting("theme.name")
-            If sSkinName <> "" Then
-                Dim sPaletteName As String = "" & cEditDesignEnvironment.GetSetting("theme.palette")
-                DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle(sSkinName, sPaletteName)
-                DevExpress.LookAndFeel.UserLookAndFeel.Default.UpdateStyleSettings()
-            End If
-
-            Dim iFieldDataViewMode As Integer = cEditDesignEnvironment.GetSetting("user.fieldDataviewmode", 0)
-            Select Case iFieldDataViewMode
-                Case 0
-                    btnSegments.Checked = True
-                    Call pSegmentsShow(True)
-                Case 1
-                    btnTrigpoints.Checked = True
-                    Call pTrigpointsShow(True)
-                Case 2
-                    btnSegmentsAndTrigPoints.Checked = True
-                    Call pSegmentsAndTrigPointsShow(True)
-            End Select
-
-            iDesignQuality = cEditDesignEnvironment.GetSetting("design.quality", 0)
-            Call pSettingsSetDesignQuality(iDesignQuality, True)
-            Call pRulersSetVisible(cEditDesignEnvironment.GetSetting("design.rulers", 1))
-            iDrawRulesStyle = cEditDesignEnvironment.GetSetting("design.rulers.style", RulersStyleEnum.Simple)
-            iDrawMetricGrid = cEditDesignEnvironment.GetSetting("design.metricgrid", 0)
-
-            bDesignBarShowLastUsedTools = cEditDesignEnvironment.GetSetting("design.designbar.showlastusedtools", 1)
-            oLastUsedBar.Visible = bDesignBarShowLastUsedTools
-            iDesignBarPosition = cEditDesignEnvironment.GetSetting("design.designbar.defaultposition", 0)
-
-            'last used items
-            Dim sLui As String = cEditDesignEnvironment.GetSetting("lui", "")
-            If sLui <> "" Then
-                For Each sLuiItem As String In sLui.Split(",")
-                    Call oLastUsedItems.Add(RibbonControl.Items.FindByName(sLuiItem))
-                Next
-            End If
-
             'most used items are merged with saved data...
-            Using oRegMui As Microsoft.Win32.RegistryKey = oReg.OpenSubKey("mui", False)
-                If oRegMui IsNot Nothing Then
-                    For Each sMuiItem As String In oRegMui.GetValueNames
-                        Dim iBaseCount As Integer = oRegMui.GetValue(sMuiItem)
-                        Call oMostUsedItems.Add(RibbonControl.Items.FindByName(sMuiItem), New cMostUsedItemCounters(iBaseCount))
-                    Next
-                End If
-                Call oRegMui.Close()
-            End Using
-
-            bDesignLevelBarVisible = cEditDesignEnvironment.GetSetting("levelsbar", "1")
-            btnViewToolbarLevels.Checked = bDesignLevelBarVisible
-            bDesignItemsBarVisible = cEditDesignEnvironment.GetSetting("itemsbar", "1")
-            btnViewToolbarItems.Checked = bDesignItemsBarVisible
-            bLastUsedBarVisible = cEditDesignEnvironment.GetSetting("lastusedbar", "1")
-            btnViewToolbarLastUsedTools.Checked = bLastUsedBarVisible
-
-            Call pReloadUsedToolsBar()
-
-            modMain.iMaxDrawItemCount = cEditDesignEnvironment.GetSetting("design.maxdrawitemcount", 20)
-
-            btnAlignToGrid.Checked = cEditDesignEnvironment.GetSetting("snaptogrid", 0)
-            btnAlignToGridSize.EditValue = modNumbers.StringToSingle(cEditDesignEnvironment.GetSetting("snaptogrid.size", "0.1"))
-
-            bEditPointByPoint = cEditDesignEnvironment.GetSetting("user.editpointtopoint", 0)
-            btnEditDrawing.Down = Not bEditPointByPoint
-            btnEditPointToPoint.Down = bEditPointByPoint
-
-            btnLoch.Visibility = modControls.VisibleToVisibility(cEditDesignEnvironment.GetSetting("therion.loch.enabled", 1))
-
-            sDefaultClub = cEditDesignEnvironment.GetSetting("default.club", "")
-            sDefaultTeam = cEditDesignEnvironment.GetSetting("default.team", "")
-            sDefaultDesigner = cEditDesignEnvironment.GetSetting("default.designer", "")
-
-            'defaultfolder (if not set...create it)
-            sDefaultFolder = cEditDesignEnvironment.GetSetting("default.folder", "")
-            If sDefaultFolder = "" Then
-                Call pDefaultFolderSetup()
-            End If
-            'templates (if not set...create it)
-            oTemplates = New UIHelpers.cTemplatesBindingList(IO.Path.Combine(sDefaultFolder, "Templates"))
-            btnNew.ButtonStyle = If(oTemplates.Count > 0, BarButtonStyle.DropDown, BarButtonStyle.Default)
-
-            oRecents = UIHelpers.cRecentsHelper.Load("Recent", btnLoad)
-
-            iDefaultCalculateMode = cEditDesignEnvironment.GetSetting("default.calculatemode", 0)
-            iDefaultCalculateType = cEditDesignEnvironment.GetSetting("default.calculatetype", cSurvey.cSurvey.CalculateTypeEnum.Therion)
-
-            bDefaultShowLegacyPrintAndExportObjects = cEditDesignEnvironment.GetSetting("default.showlegacyextraprintandexportobjects", Not bFirstRun)
-
-            bDefaultArrangePriorityOnImport = cEditDesignEnvironment.GetSetting("default.arrangepriorityonimport", True)
-
-            iZoomType = cEditDesignEnvironment.GetSetting("zoom.type", 1)
-
-            bGridExportSplayNames = cEditDesignEnvironment.GetSetting("grid.shotsgrid.exportsplaynames", 1)
-
-            'bLogEnabled = oReg.GetValue("debug.log", 0)
-
-            bToolsEnabledByLevel = cEditDesignEnvironment.GetSetting("environment.setdesigntoolsenabledbylevel", 1)
-            bToolsHiddenByLevel = cEditDesignEnvironment.GetSetting("environment.setdesigntoolshiddenbylevel", 0)
-            iFunctionLanguage = cEditDesignEnvironment.GetSetting("environment.functionlanguage", 0)
-
-            bAlwaysUseShellForAttachments = cEditDesignEnvironment.GetSetting("environment.alwaysuseshellforattachments", 0)
-
-            tmrAutosave.Enabled = cEditDesignEnvironment.GetSetting("debug.autosave", 0)
-            bAutoSaveUseHistorySettings = cEditDesignEnvironment.GetSetting("debug.autosave.usehistorysettings", 0)
-
-            Dim sPointPrecision As Single = modNumbers.StringToSingle(cEditDesignEnvironment.GetSetting("pens.smooth", "0.05"))
-            If sPointPrecision < 0.01 Then sPointPrecision = 0.01
-            btnPenSmooting.Checked = cEditDesignEnvironment.GetSetting("pens.smooting", 0)
-            btnPenSmootingFactor.EditValue = Math.Round(sPointPrecision, 2)
-
-            Dim sToolsPrecision As Single = modNumbers.StringToSingle(cEditDesignEnvironment.GetSetting("tools.smooth", "0.05"))
-            If sToolsPrecision < 0.01 Then sToolsPrecision = 0.01
-            btnCurrentItemGenericReducePointFactor.EditValue = Math.Round(sToolsPrecision, 2)
-
-            bUseOnlyAnchorToMove = cEditDesignEnvironment.GetSetting("design.useonlyanchortomove", 1)
-            iAdvancedSelectionMode = cEditDesignEnvironment.GetSetting("design.selectionmode", 0)
-            sAdvancedSelectionPrecision = modNumbers.StringToSingle(cEditDesignEnvironment.GetSetting("design.selectionmode.precision", 1000.0F))
-            sAdvancedSelectionWide = modNumbers.StringToSingle(cEditDesignEnvironment.GetSetting("design.selectionmode.wide", 4.0F))
-
-            modPaint.AnchorsScale = modNumbers.StringToSingle(cEditDesignEnvironment.GetSetting("design.anchorscale", 1))
-
-            oPropObjectsBindingContainer.Expanded = cEditDesignEnvironment.GetSetting("design.objectsbinding.expanded")
-            oPropSegmentBindingContainer.Expanded = cEditDesignEnvironment.GetSetting("design.segmentsbinding.expanded")
-            oPropTrigpointsDistancesContainer.Expanded = cEditDesignEnvironment.GetSetting("design.trigpointdistances.expanded")
-
-            bHistory = cEditDesignEnvironment.GetSetting("history.enabled", 0)
-            iHistoryMode = cEditDesignEnvironment.GetSetting("history.mode", 0)
-            sHistoryWebURL = cEditDesignEnvironment.GetSetting("history.web.url", "")
-            sHistoryWebUsername = cEditDesignEnvironment.GetSetting("history.web.username", "")
-            sHistoryWebPassword = cEditDesignEnvironment.GetSetting("history.web.password", "")
-            If sHistoryWebPassword <> "" Then
-                sHistoryWebPassword = New cLocalSecurity("csurvey").DecryptData(sHistoryWebPassword)
-            End If
-            sHistoryFolder = cEditDesignEnvironment.GetSetting("history.folder", "")
-            iHistoryDailyCopies = cEditDesignEnvironment.GetSetting("history.maxdailycopies", 4)
-            iHistoryMaxCopies = cEditDesignEnvironment.GetSetting("history.maxcopies", 20)
-            bHistoryCreateOnSave = cEditDesignEnvironment.GetSetting("history.createonsave", 0)
-            bHistoryWebCreateOnSave = cEditDesignEnvironment.GetSetting("history.web.createonsave", 0)
-
-            bLinkedSurveysSelectOnAdd = cEditDesignEnvironment.GetSetting("linkedsurveys.selectonadd", "0")
-            bLinkedSurveysShowInCaveInfo = cEditDesignEnvironment.GetSetting("linkedsurveys.showincaveinfo", "0")
-            bLinkedSurveysRecursiveLoad = cEditDesignEnvironment.GetSetting("linkedsurveys.recursiveload", "0")
-            bLinkedSurveysRefreshOnLoadPrioritizeChildren = cEditDesignEnvironment.GetSetting("linkedsurveys.recursiveload.prioritizechildren", "0")
-            bLinkedSurveysRefreshOnLoad = cEditDesignEnvironment.GetSetting("linkedsurveys.refreshonload", "0")
-
-            Dim sQAT As String = cEditDesignEnvironment.GetSetting("qat.items", "")
-            If sQAT <> "" Then
-                Dim oXML As XmlDocument = New XmlDocument
-                Call oXML.LoadXml(sQAT)
-                Call RibbonControl.Toolbar.ItemLinks.Clear()
-                Dim oXMLRoot As XmlElement = oXML.DocumentElement
-                For Each oXMLItem As XmlElement In oXMLRoot.ChildNodes
-                    Dim oItem As BarItem = RibbonControl.Items.FindById(oXMLItem.GetAttribute("i"))
-                    If oItem IsNot Nothing Then
-                        Dim oItemLink As BarItemLink = RibbonControl.Toolbar.ItemLinks.Add(oItem)
-                        oItemLink.BeginGroup = modXML.GetAttributeValue(oXMLItem, "bg", "0")
-                        oItemLink.Visible = modXML.GetAttributeValue(oXMLItem, "v", "1")
+            If oReg.GetSubKeyNames().Contains("mui") Then
+                Using oRegMui As Microsoft.Win32.RegistryKey = oReg.OpenSubKey("mui", False)
+                    If oRegMui IsNot Nothing Then
+                        For Each sMuiItem As String In oRegMui.GetValueNames
+                            Dim iBaseCount As Integer = oRegMui.GetValue(sMuiItem)
+                            Call oMostUsedItems.Add(RibbonControl.Items.FindByName(sMuiItem), New cMostUsedItemCounters(iBaseCount))
+                        Next
                     End If
-                Next
-                RibbonControl.ToolbarLocation = modXML.GetAttributeValue(oXMLRoot, "tl", "0")
-                RibbonControl.Minimized = modXML.GetAttributeValue(oXMLRoot, "m", "0")
+                    Call oRegMui.Close()
+                End Using
             End If
-
-            'bugfix...to be removed in future...
-            'Dim sCurrentVersion As String = "" & oReg.GetValue("currentversion", "")
-            'If sCurrentVersion <> "1.04" Then
-            '    Dim iLineType As Items.cIItemLine.LineTypeEnum = oReg.GetValue("design.linetype", Items.cIItemLine.LineTypeEnum.Lines)
-            '    Dim iNewLineType As Items.cIItemLine.LineTypeEnum = cIItemLine.LineTypeEnum.Lines
-            '    If iLineType = 2 Or iLineType = 1 Then iNewLineType = cIItemLine.LineTypeEnum.Splines
-            '    If iNewLineType <> iLineType Then
-            '        Call oReg.SetValue("design.linetype", iNewLineType.ToString("D"))
-            '    End If
-            '    Call oReg.SetValue("currentversion", "1.04")
-            '    Call oReg.Flush()
-            'End If
-
-            Call pSurveyCheckBezierLineType()
-
-            If oReg.GetValue("wms.cache.enabled", 0) Then
-                modWMSManager.MaxCacheSize = cEditDesignEnvironment.GetSetting("wms.cache.maxsize", 0) * 1048576
-            End If
-
-            bCheckNewVersion = cEditDesignEnvironment.GetSetting("debug.checknewversion", 0)
-
             Call oReg.Close()
         End Using
+
         'Call ResumeLayout()
     End Sub
 
@@ -6951,9 +6942,13 @@ Friend Class frmMain2
             oLastUsedBar.AddItem(btnToolsLastUsed)
             oLastUsedBar.AddItem(btnToolsMostUsed)
             If btnToolsLastUsed.Checked Then
-                Call oLastUsedBar.ItemLinks.AddRange(oLastUsedItems, True, RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+                If oLastUsedItems.Count > 0 Then
+                    Call oLastUsedBar.ItemLinks.AddRange(oLastUsedItems, True, RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+                End If
             Else
-                Call oLastUsedBar.ItemLinks.AddRange(oMostUsedItems.ToList.OrderBy(Function(oitem) oitem.Value.Value).Select(Function(oitem) oitem.Key).Take(iMaxUsedItem), True, RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+                If oMostUsedItems.Count > 0 Then
+                    Call oLastUsedBar.ItemLinks.AddRange(oMostUsedItems.ToList.OrderBy(Function(oitem) oitem.Value.Value).Select(Function(oitem) oitem.Key).Take(iMaxUsedItem), True, RibbonItemStyles.SmallWithoutText, BarItemPaintStyle.Standard)
+                End If
             End If
             Call oLastUsedBar.EndUpdate()
         End If
@@ -13393,6 +13388,7 @@ Friend Class frmMain2
         Next
 
         Call pSettingsLoad()
+
         Call pWorkspacesLoad()
 
         Call pFirstRun()
@@ -15214,7 +15210,7 @@ Friend Class frmMain2
             Case "splayreplicatedata"
                 Call pSplayReplicateData()
             Case "selectitem"
-                Call pDesignAreaShow()
+                Call pDesignAreaShow(True)
                 Call oDockLevels_onItemSelected(Sender, New cDockLevels.cItemSelectedEventargs(e.Args(0)))
                 If e.Args.Length > 1 Then
                     If e.Args(1) Then

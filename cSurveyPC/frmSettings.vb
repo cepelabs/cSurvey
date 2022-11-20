@@ -75,7 +75,7 @@ Friend Class frmSettings
 
             Call oReg.SetValue("design.maxdrawitemcount", cboMaxDrawItemCount.Text)
 
-            Call oReg.SetValue("design.designbar.showlastusedtools", If(chkShowLastUsedToolsInDesignBar.Checked, 1, 0))
+            'Call oReg.SetValue("design.designbar.showlastusedtools", If(chkShowLastUsedToolsInDesignBar.Checked, 1, 0))
             Call oReg.SetValue("design.designbar.defaultposition", cboDesignBarPosition.SelectedIndex)
             'Call oReg.SetValue("design.designbar.size", cboDesignBarSize.SelectedIndex)
 
@@ -268,7 +268,7 @@ Friend Class frmSettings
 
             chkShotsGridExportSplayNames.Checked = oReg.GetValue("grid.shotsgrid.exportsplaynames", 1)
 
-            chkShowLastUsedToolsInDesignBar.Checked = oReg.GetValue("design.designbar.showlastusedtools", 1)
+            'chkShowLastUsedToolsInDesignBar.Checked = oReg.GetValue("design.designbar.showlastusedtools", 1)
             cboDesignBarPosition.SelectedIndex = oReg.GetValue("design.designbar.defaultposition", 0)
             ' cboDesignBarSize.SelectedIndex = oReg.GetValue("design.designbar.size", 0)
 

@@ -998,36 +998,47 @@ Namespace cSurvey.Design
                         Dim iBackupSmoothingMode As SmoothingMode = Graphics.SmoothingMode
                         Graphics.SmoothingMode = SmoothingMode.None
 
-                        Dim iCurrentScale As Integer = PaintOptions.CurrentScale
-                        Dim iIndex As Integer = 0
-                        Dim iCount As Integer = PaintOptions.SurfaceOptions.Count
-                        Call oSurvey.RaiseOnProgressEvent("paint.design.surface", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, "Rendering surface...", 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
-                        For Each oSurfaceOptionItem As cSurfaceOptions.cSurfaceOptionsItem In PaintOptions.SurfaceOptions
-                            If oSurfaceOptionItem.Visible Then
-                                Dim bVisible As Boolean
-                                If oSurfaceOptionItem.MinScale.HasValue AndAlso oSurfaceOptionItem.MaxScale.HasValue Then
-                                    bVisible = iCurrentScale >= oSurfaceOptionItem.MinScale.Value And iCurrentScale <= oSurfaceOptionItem.MaxScale.Value
-                                ElseIf oSurfaceOptionItem.MinScale.HasValue AndAlso Not oSurfaceOptionItem.MaxScale.HasValue Then
-                                    bVisible = iCurrentScale >= oSurfaceOptionItem.MinScale.Value
-                                ElseIf Not oSurfaceOptionItem.MinScale.HasValue AndAlso oSurfaceOptionItem.MaxScale.HasValue Then
-                                    bVisible = iCurrentScale <= oSurfaceOptionItem.MaxScale.Value
-                                Else
-                                    bVisible = True
-                                End If
-                                If bVisible Then
-                                    Dim oSurfaceItem As Surface.cISurfaceItem = oSurvey.Surface(oSurfaceOptionItem.ID)
-                                    Call oSurvey.RaiseOnProgressEvent("", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "Rendering surface layer " & oSurfaceItem.Name & "...", iIndex / iCount, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
-                                    If TypeOf oSurfaceItem Is Surface.cElevation Then
-                                        Call modPaint.MapDrawElevation(Graphics, oSurvey, DirectCast(oSurfaceItem, Surface.cElevation), oSurfaceOptionItem)
-                                    ElseIf TypeOf oSurfaceItem Is Surface.cOrthoPhoto Then
-                                        Call modPaint.MapDrawOrthophoto(Graphics, oSurvey, DirectCast(oSurfaceItem, Surface.cOrthoPhoto), oSurfaceOptionItem)
-                                    ElseIf TypeOf oSurfaceItem Is Surface.cWMS Then
-                                        Call modPaint.MapDrawWMS(Graphics, oSurvey, DirectCast(oSurfaceItem, Surface.cWMS), oSurfaceOptionItem)
+                        Dim oState As GraphicsState = Nothing
+                        oState = Graphics.Save()
+                        Using oMatrix As Matrix = Graphics.Transform.Clone
+                            Call oMatrix.RotateAt(-oSurvey.Calculate.GeoMagDeclinationData.MeridianConvergence, New PointF(0, 0))
+                            Graphics.Transform = oMatrix
+
+                            Dim iCurrentScale As Integer = PaintOptions.CurrentScale
+                            Dim iIndex As Integer = 0
+                            Dim iCount As Integer = PaintOptions.SurfaceOptions.Count
+                            Call oSurvey.RaiseOnProgressEvent("paint.design.surface", cSurvey.OnProgressEventArgs.ProgressActionEnum.Begin, "Rendering surface...", 0, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
+                            For Each oSurfaceOptionItem As cSurfaceOptions.cSurfaceOptionsItem In PaintOptions.SurfaceOptions
+                                If oSurfaceOptionItem.Visible Then
+                                    Dim bVisible As Boolean
+                                    If oSurfaceOptionItem.MinScale.HasValue AndAlso oSurfaceOptionItem.MaxScale.HasValue Then
+                                        bVisible = iCurrentScale >= oSurfaceOptionItem.MinScale.Value And iCurrentScale <= oSurfaceOptionItem.MaxScale.Value
+                                    ElseIf oSurfaceOptionItem.MinScale.HasValue AndAlso Not oSurfaceOptionItem.MaxScale.HasValue Then
+                                        bVisible = iCurrentScale >= oSurfaceOptionItem.MinScale.Value
+                                    ElseIf Not oSurfaceOptionItem.MinScale.HasValue AndAlso oSurfaceOptionItem.MaxScale.HasValue Then
+                                        bVisible = iCurrentScale <= oSurfaceOptionItem.MaxScale.Value
+                                    Else
+                                        bVisible = True
+                                    End If
+                                    If bVisible Then
+
+                                        Dim oSurfaceItem As Surface.cISurfaceItem = oSurvey.Surface(oSurfaceOptionItem.ID)
+                                        Call oSurvey.RaiseOnProgressEvent("", cSurvey.OnProgressEventArgs.ProgressActionEnum.Progress, "Rendering surface layer " & oSurfaceItem.Name & "...", iIndex / iCount, cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ShowPercentage Or cSurvey.OnProgressEventArgs.ProgressOptionsEnum.ImagePaint)
+                                        If TypeOf oSurfaceItem Is Surface.cElevation Then
+                                            Call modPaint.MapDrawElevation(Graphics, oSurvey, DirectCast(oSurfaceItem, Surface.cElevation), oSurfaceOptionItem)
+                                        ElseIf TypeOf oSurfaceItem Is Surface.cOrthoPhoto Then
+                                            Call modPaint.MapDrawOrthophoto(Graphics, oSurvey, DirectCast(oSurfaceItem, Surface.cOrthoPhoto), oSurfaceOptionItem)
+                                        ElseIf TypeOf oSurfaceItem Is Surface.cWMS Then
+                                            Call modPaint.MapDrawWMS(Graphics, oSurvey, DirectCast(oSurfaceItem, Surface.cWMS), oSurfaceOptionItem)
+                                        End If
+
                                     End If
                                 End If
-                            End If
-                            iIndex += 1
-                        Next
+                                iIndex += 1
+                            Next
+                        End Using
+                        Graphics.Restore(oState)
+
                         Call oSurvey.RaiseOnProgressEvent("paint.design.surface", cSurvey.OnProgressEventArgs.ProgressActionEnum.End, "", 0)
                         Graphics.SmoothingMode = iBackupSmoothingMode
                     End If
@@ -1055,8 +1066,6 @@ Namespace cSurvey.Design
                                                     Call oMatrix.Translate(oMoveBy.Width, -oMoveBy.Height)
                                                     Call oMatrix.RotateAt(oLinkedsurvey.LinkedSurvey.Calculate.GeoMagDeclinationData.MeridianConvergence, New PointF(0, 0))
                                                     Graphics.Transform = oMatrix
-                                                    'Graphics.FillEllipse(Brushes.Blue, New RectangleF(-5, -5, 10, 10))
-                                                    'Graphics.DrawLine(Pens.Black, New Point(0, 0), New Point(0, -100))
                                                 End Using
                                             End If
                                             Try

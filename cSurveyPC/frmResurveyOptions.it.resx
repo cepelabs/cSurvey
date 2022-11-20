@@ -294,4 +294,7 @@
   <data name="btnMain.Text" xml:space="preserve">
     <value>Generale</value>
   </data>
+  <data name="lblShotDirection.Text" xml:space="preserve">
+    <value>Direzione della battuta:</value>
+  </data>
 </root>

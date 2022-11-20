@@ -7492,6 +7492,33 @@ o ad una sezione trasversale</value>
     <value>Più usati</value>
   </data>
   <data name="btnViewToolbarLastUsedTools.Caption" xml:space="preserve">
-    <value>Ultimi/più usati</value>
+    <value>Barra degli ultimi/più usati</value>
+  </data>
+  <data name="btnCurrentItemSegmentDirection4.Caption" xml:space="preserve">
+    <value>Inverti tutta la grotta/ramo della battuta corrente</value>
+  </data>
+  <data name="btnCurrentItemSegmentDirection1.Caption" xml:space="preserve">
+    <value>Inverti tutte le battute fino al primo bivio</value>
+  </data>
+  <data name="btnCurrentItemSegmentDirection2.Caption" xml:space="preserve">
+    <value>Inverti tutte le battute fino alla prima con direzione diversa</value>
+  </data>
+  <data name="btnCurrentItemSegmentDirection3.Caption" xml:space="preserve">
+    <value>Orienta tutta la grotta/ramo come la battuta corrente</value>
+  </data>
+  <data name="btnViewToolbarFloatingBar.Caption" xml:space="preserve">
+    <value>Barra libera</value>
+  </data>
+  <data name="btnViewToolbarLevels.Caption" xml:space="preserve">
+    <value>Barra dei livelli</value>
+  </data>
+  <data name="btnViewToolbarItems.Caption" xml:space="preserve">
+    <value>Barra degli oggetti</value>
+  </data>
+  <data name="btnViewToolbarsDesign.Caption" xml:space="preserve">
+    <value>Area di disegno</value>
+  </data>
+  <data name="grpViewToolbar.Text" xml:space="preserve">
+    <value>Barre degli strumenti</value>
   </data>
 </root>

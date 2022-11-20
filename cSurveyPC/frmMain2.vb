@@ -205,7 +205,7 @@ Friend Class frmMain2
 
     Private bAllowResizablePanels As Boolean
 
-    Private bDesignBarShowLastUsedTools As Boolean
+    'Private bDesignBarShowLastUsedTools As Boolean
     Private Enum DesignBarPositionEnum
         [Default] = 0
         TopSide = 1
@@ -2525,8 +2525,8 @@ Friend Class frmMain2
         iDrawRulesStyle = cEditDesignEnvironment.GetSetting("design.rulers.style", RulersStyleEnum.Simple)
         iDrawMetricGrid = cEditDesignEnvironment.GetSetting("design.metricgrid", 0)
 
-        bDesignBarShowLastUsedTools = cEditDesignEnvironment.GetSetting("design.designbar.showlastusedtools", 1)
-        oLastUsedBar.Visible = bDesignBarShowLastUsedTools
+        'bDesignBarShowLastUsedTools = cEditDesignEnvironment.GetSetting("design.designbar.showlastusedtools", 1)
+        'oLastUsedBar.Visible = bDesignBarShowLastUsedTools
         iDesignBarPosition = cEditDesignEnvironment.GetSetting("design.designbar.defaultposition", 0)
 
         'last used items
@@ -2543,6 +2543,8 @@ Friend Class frmMain2
         btnViewToolbarItems.Checked = bDesignItemsBarVisible
         bLastUsedBarVisible = cEditDesignEnvironment.GetSetting("lastusedbar", "1")
         btnViewToolbarLastUsedTools.Checked = bLastUsedBarVisible
+        bFloatBarVisible = cEditDesignEnvironment.GetSetting("floatbar", "1")
+        btnViewToolbarFloatingBar.Checked = bFloatBarVisible
 
         Call pReloadUsedToolsBar()
 
@@ -6957,24 +6959,24 @@ Friend Class frmMain2
     Private Sub btnDesignTools_ItemClick(sender As Object, e As ItemClickEventArgs)
         Dim oItem As BarItem = e.Item
 
-        If bDesignBarShowLastUsedTools Then
-            Dim oStandardItem As BarItem
-            If e.Item.Name.EndsWith("_Standard") Then
-                oStandardItem = e.Item
-            Else
-                oStandardItem = RibbonControl.Items.FindByName(e.Item.Name & "_Standard")
-            End If
-
-            If Not oMostUsedItems.ContainsKey(oStandardItem) Then oMostUsedItems.Add(oStandardItem, New cMostUsedItemCounters)
-            oMostUsedItems(oStandardItem).Value += 1
-
-            If oLastUsedItems.Contains(oStandardItem) Then oLastUsedItems.Remove(oStandardItem)
-            Call oLastUsedItems.Add(oStandardItem)
-            If oLastUsedItems.Count > iMaxUsedItem Then
-                Call oLastUsedItems.RemoveAt(0)
-            End If
-            Call pReloadUsedToolsBar()
+        'If bDesignBarShowLastUsedTools Then
+        Dim oStandardItem As BarItem
+        If e.Item.Name.EndsWith("_Standard") Then
+            oStandardItem = e.Item
+        Else
+            oStandardItem = RibbonControl.Items.FindByName(e.Item.Name & "_Standard")
         End If
+
+        If Not oMostUsedItems.ContainsKey(oStandardItem) Then oMostUsedItems.Add(oStandardItem, New cMostUsedItemCounters)
+        oMostUsedItems(oStandardItem).Value += 1
+
+        If oLastUsedItems.Contains(oStandardItem) Then oLastUsedItems.Remove(oStandardItem)
+        Call oLastUsedItems.Add(oStandardItem)
+        If oLastUsedItems.Count > iMaxUsedItem Then
+            Call oLastUsedItems.RemoveAt(0)
+        End If
+        Call pReloadUsedToolsBar()
+        'End If
 
         btnCursorMode.Down = True
         Dim oBag As cEditToolsBag = oItem.Tag
@@ -8805,33 +8807,18 @@ Friend Class frmMain2
     End Function
 
     Private Function pFloatingToolbarGetLocation() As Boolean
-        Select Case iDesignBarPosition
-            Case DesignBarPositionEnum.TopSide
-                If Not oFloatBar.OptionsBar.UseWholeRow Then
-                    oFloatBar.StandaloneBarDockControl = dockTopDesignerBar
-                    oFloatBar.OptionsBar.UseWholeRow = True
-                End If
-            Case DesignBarPositionEnum.NearCurrentItem
-                If oFloatBar.OptionsBar.UseWholeRow Then
-                    oFloatBar.StandaloneBarDockControl = dockFloatBar
-                    oFloatBar.OptionsBar.UseWholeRow = False
-                End If
-                If pGetCurrentDesignTools.CurrentItem Is Nothing Then
-                    dockFloatBar.Visible = False
-                    Return False
-                Else
-                    Dim oItemBound As RectangleF = modPaint.ToPaintRectangle(pGetCurrentDesignTools.CurrentItem.GetBounds, sPaintZoom, oPaintTranslation)
-                    Dim oVisibleBound As RectangleF = RectangleF.Intersect(oItemBound, picMap.ClientRectangle)
-                    If modPaint.IsRectangleUnsized(oVisibleBound) Then
-                        dockFloatBar.Visible = False
-                        Return False
-                    Else
-                        Return pFloatingToolbarValidateLocation(New Point(oVisibleBound.X, oVisibleBound.Y))
+        If bFloatBarVisible Then
+            Select Case iDesignBarPosition
+                Case DesignBarPositionEnum.TopSide
+                    If Not oFloatBar.OptionsBar.UseWholeRow Then
+                        oFloatBar.StandaloneBarDockControl = dockTopDesignerBar
+                        oFloatBar.OptionsBar.UseWholeRow = True
                     End If
-                End If
-            Case DesignBarPositionEnum.NearCurrentItemAndPoint, DesignBarPositionEnum.Default
-                oFloatBar.StandaloneBarDockControl = dockFloatBar
-                If pGetCurrentDesignTools.CurrentItemPoint Is Nothing Then
+                Case DesignBarPositionEnum.NearCurrentItem
+                    If oFloatBar.OptionsBar.UseWholeRow Then
+                        oFloatBar.StandaloneBarDockControl = dockFloatBar
+                        oFloatBar.OptionsBar.UseWholeRow = False
+                    End If
                     If pGetCurrentDesignTools.CurrentItem Is Nothing Then
                         dockFloatBar.Visible = False
                         Return False
@@ -8845,25 +8832,45 @@ Friend Class frmMain2
                             Return pFloatingToolbarValidateLocation(New Point(oVisibleBound.X, oVisibleBound.Y))
                         End If
                     End If
-                Else
-                    Dim oPenToolsPointF As PointF = modPaint.ToPaintPoint(New PointF(pGetCurrentDesignTools.CurrentItemPoint.X, pGetCurrentDesignTools.CurrentItemPoint.Y), sPaintZoom, oPaintTranslation)
-                    Using oPath As GraphicsPath = New GraphicsPath
-                        Dim oNextPoint As cPoint = pGetCurrentDesignTools.CurrentItemPoint.GetNext
-                        If Not IsNothing(oNextPoint) Then
-                            Call oPath.AddLine(oPenToolsPointF, modPaint.ToPaintPoint(New PointF(oNextPoint.X, oNextPoint.Y), sPaintZoom, oPaintTranslation))
-                        End If
-                        Dim oPrevPoint As cPoint = pGetCurrentDesignTools.CurrentItemPoint.GetPrevious
-                        If Not IsNothing(oPrevPoint) Then
-                            Call oPath.AddLine(oPenToolsPointF, modPaint.ToPaintPoint(New PointF(oPrevPoint.X, oPrevPoint.Y), sPaintZoom, oPaintTranslation))
-                        End If
-                        If modPaint.IsRectangleUnsized(oPath.GetBounds) Then
-                            Return pFloatingToolbarValidateLocation(New Point(oPenToolsPointF.X, oPenToolsPointF.Y))
+                Case DesignBarPositionEnum.NearCurrentItemAndPoint, DesignBarPositionEnum.Default
+                    oFloatBar.StandaloneBarDockControl = dockFloatBar
+                    If pGetCurrentDesignTools.CurrentItemPoint Is Nothing Then
+                        If pGetCurrentDesignTools.CurrentItem Is Nothing Then
+                            dockFloatBar.Visible = False
+                            Return False
                         Else
-                            Return pFloatingToolbarValidateLocation(New Point(oPath.GetBounds.Location.X, oPath.GetBounds.Location.Y))
+                            Dim oItemBound As RectangleF = modPaint.ToPaintRectangle(pGetCurrentDesignTools.CurrentItem.GetBounds, sPaintZoom, oPaintTranslation)
+                            Dim oVisibleBound As RectangleF = RectangleF.Intersect(oItemBound, picMap.ClientRectangle)
+                            If modPaint.IsRectangleUnsized(oVisibleBound) Then
+                                dockFloatBar.Visible = False
+                                Return False
+                            Else
+                                Return pFloatingToolbarValidateLocation(New Point(oVisibleBound.X, oVisibleBound.Y))
+                            End If
                         End If
-                    End Using
-                End If
-        End Select
+                    Else
+                        Dim oPenToolsPointF As PointF = modPaint.ToPaintPoint(New PointF(pGetCurrentDesignTools.CurrentItemPoint.X, pGetCurrentDesignTools.CurrentItemPoint.Y), sPaintZoom, oPaintTranslation)
+                        Using oPath As GraphicsPath = New GraphicsPath
+                            Dim oNextPoint As cPoint = pGetCurrentDesignTools.CurrentItemPoint.GetNext
+                            If Not IsNothing(oNextPoint) Then
+                                Call oPath.AddLine(oPenToolsPointF, modPaint.ToPaintPoint(New PointF(oNextPoint.X, oNextPoint.Y), sPaintZoom, oPaintTranslation))
+                            End If
+                            Dim oPrevPoint As cPoint = pGetCurrentDesignTools.CurrentItemPoint.GetPrevious
+                            If Not IsNothing(oPrevPoint) Then
+                                Call oPath.AddLine(oPenToolsPointF, modPaint.ToPaintPoint(New PointF(oPrevPoint.X, oPrevPoint.Y), sPaintZoom, oPaintTranslation))
+                            End If
+                            If modPaint.IsRectangleUnsized(oPath.GetBounds) Then
+                                Return pFloatingToolbarValidateLocation(New Point(oPenToolsPointF.X, oPenToolsPointF.Y))
+                            Else
+                                Return pFloatingToolbarValidateLocation(New Point(oPath.GetBounds.Location.X, oPath.GetBounds.Location.Y))
+                            End If
+                        End Using
+                    End If
+            End Select
+        Else
+            dockFloatBar.Visible = False
+            Return False
+        End If
     End Function
 
     Private Sub pSurveyDrawTools(Graphics As Graphics)
@@ -11636,7 +11643,7 @@ Friend Class frmMain2
                                     Dim oXML As XmlDocument = oFile.Document
                                     Dim oXMLParent As XmlElement = oXML.CreateElement("parent")
                                     Call oImportSegment.SaveTo(oFile, oXML, oXMLParent, cSurvey.cSurvey.SaveOptionsEnum.Silent Or cSurvey.cSurvey.SaveOptionsEnum.ForClipboard)
-
+                                    DirectCast(oXMLParent.ChildNodes(0), XmlElement).SetAttribute("id", "")
                                     Dim oNewSegment As cSegment = New cSegment(oSurvey, oFile, oXMLParent.ChildNodes(0))
                                     Dim iFindDuplicateMode As Integer = 0
                                     Dim bIsDuplicated As Boolean
@@ -14783,7 +14790,7 @@ Friend Class frmMain2
         If oSurvey.Properties.GPS.Enabled Then
             If oCurrentDesign.Type = cIDesign.cDesignTypeEnum.Plan Then
                 Dim dMC As Single = oSurvey.Calculate.GeoMagDeclinationData.MeridianConvergenceRadians
-                Dim oNoGeoMagPoint = modPaint.RotatePointByRadians(Point, dMC)
+                Dim oNoGeoMagPoint As PointF = modPaint.RotatePointByRadians(Point, dMC)
                 Dim oOriginCoordinate As Calculate.cTrigPointCoordinate = oSurvey.Calculate.TrigPoints(oSurvey.Properties.Origin).Coordinate
                 Dim dNewLat As Decimal
                 Dim dNewLon As Decimal
@@ -15403,6 +15410,7 @@ Friend Class frmMain2
     Private bDesignLevelBarVisible As Boolean
     Private bDesignItemsBarVisible As Boolean
     Private bLastUsedBarVisible As Boolean
+    Private bFloatBarVisible As Boolean
 
     Private Sub pWorkspacesMenuAndToolbarUpdate()
         dockFloatBar.Manager = RibbonControl.Manager
@@ -17076,7 +17084,7 @@ Friend Class frmMain2
         Dim oSegmentPlaceholder As UIHelpers.cSegmentPlaceholder = grdViewSegments.GetFocusedRow
         If oSegmentPlaceholder IsNot Nothing Then
             Dim oSegment As cSegment = oSegmentPlaceholder.Segment
-            Dim oCaveInfo As cICaveInfoBranches = oTools.CurrentSegment.GetCaveInfo
+            Dim oCaveInfo As cICaveInfoBranches = If(oTools.CurrentSegment Is Nothing, Nothing, oTools.CurrentSegment.GetCaveInfo)
             If Not IsNothing(oCaveInfo) AndAlso oCaveInfo.GetLocked Then
                 e.Cancel = True
             Else
@@ -18778,6 +18786,13 @@ Friend Class frmMain2
                                     End If
                                 End If
                             End If
+                        Else
+                            If (oSegment.Segment.Note <> "") Then
+                                Dim oInfo As DevExpress.XtraGrid.Views.Grid.GridScrollAnnotationInfo = New DevExpress.XtraGrid.Views.Grid.GridScrollAnnotationInfo
+                                oInfo.Color = DevExpress.LookAndFeel.DXSkinColors.ForeColors.Information  'Color.Orange
+                                oInfo.RowHandle = grdViewSegments.GetRowHandle(iIndex)
+                                oInfos.Add(oInfo)
+                            End If
                         End If
                     End If
                     iIndex += 1
@@ -19023,7 +19038,7 @@ Friend Class frmMain2
         If oQATRestoreToDefault IsNot Nothing Then e.CustomizationMenu.ItemLinks.Remove(oQATRestoreToDefault)
         If e.HitInfo Is Nothing Then
             If e.Link IsNot Nothing Then
-                If e.Link.Bar Is oTopDesignItemsBar OrElse e.Link.Bar Is oTopDesignLevelBar OrElse e.Link.Bar Is oLastUsedBar Then
+                If e.Link.Bar Is oTopDesignItemsBar OrElse e.Link.Bar Is oTopDesignLevelBar OrElse e.Link.Bar Is oLastUsedBar OrElse e.Link.Bar Is oFloatBar Then
                     e.ShowCustomizationMenu = False
                     mnuBar.ShowPopup(Cursor.Position)
                 ElseIf e.Link.Bar Is oBottomDataBar OrElse e.Link.Bar Is oBottomDesignBar Then
@@ -19194,6 +19209,12 @@ Friend Class frmMain2
         cEditDesignEnvironment.SetSetting("lastusedbar", If(bLastUsedBarVisible, "1", "0"))
     End Sub
 
+    Private Sub btnViewToolbarFloatingBar_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btnViewToolbarFloatingBar.CheckedChanged
+        bFloatBarVisible = btnViewToolbarFloatingBar.Checked
+        oFloatBar.Visible = bFloatBarVisible
+        cEditDesignEnvironment.SetSetting("floatbar", If(bFloatBarVisible, "1", "0"))
+    End Sub
+
     Private Sub btnViewToolbarLevels_CheckedChanged(sender As Object, e As ItemClickEventArgs) Handles btnViewToolbarLevels.CheckedChanged
         bDesignLevelBarVisible = btnViewToolbarLevels.Checked
         oTopDesignLevelBar.Visible = bDesignLevelBarVisible
@@ -19207,37 +19228,6 @@ Friend Class frmMain2
     Private Sub oTools_OnUndoChange(sender As Object, e As EventArgs) Handles oTools.OnUndoChanged
         Call pUndoRefresh()
     End Sub
-
-    'Private Sub mnuUndo_BeforePopup(sender As Object, e As CancelEventArgs) Handles mnuUndo.BeforePopup
-    '    With pGetCurrentTools()
-    '        If .Undo.IsUndoable Then
-    '            Call mnuUndo.ClearItems
-
-    '            If Not Controls.ContainsKey("_undopopup") Then
-    '                Dim oContainer As PopupControlContainer = New PopupControlContainer
-    '                oContainer.Name = "_undopopup"
-    '                Dim oUndoDropDown As cUndoDropDown = New cUndoDropDown
-    '                oContainer.Controls.Add(oUndoDropDown)
-    '                oUndoDropDown.Rebind(.Undo)
-    '                oUndoDropDown.Dock = DockStyle.Fill
-    '                oContainer.Controls.Add(oUndoDropDown)
-    '                Controls.Add(oContainer)
-    '                btnUndo.DropDownControl = oContainer
-    '            Else
-    '                DirectCast(Controls("_undopopup").Controls(0), cUndoDropDown).Rebind(.Undo)
-    '            End If
-
-
-
-    '            'For Each oUndoitem2 As cUndoItem In .Undo
-    '            '    Dim oItem As BarButtonItem = New BarButtonItem(RibbonControl.Manager, oUndoitem2.Description) '& " " & oUndoitem2.DateStamp)
-    '            '    mnuUndo.AddItem(oItem)
-    '            'Next
-    '        Else
-    '                e.Cancel = True
-    '        End If
-    '    End With
-    'End Sub
 
     Private Sub oPlanTools_OnItemDelete(Sender As Object, ToolEventArgs As cEditDesignTools.cEditDesignToolsEventArgs) Handles oPlanTools.OnItemDelete, oProfileTools.OnItemDelete
         Call pGetCurrentDesignTools.BeginUndoSnapshot("Delete item", {ToolEventArgs.CurrentItem})

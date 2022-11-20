@@ -139,7 +139,7 @@
     <value>chkCrossSection</value>
   </data>
   <data name="&gt;&gt;chkCrossSection.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkCrossSection.Parent" xml:space="preserve">
     <value>tabCrossSections</value>
@@ -166,7 +166,7 @@
     <value>chkPropCrossSectionShowOnlyCutSplay</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionShowOnlyCutSplay.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionShowOnlyCutSplay.Parent" xml:space="preserve">
     <value>pnlCrosssection</value>
@@ -190,7 +190,7 @@
     <value>lblPropCrossSectionSplayProjectionAngle</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionSplayProjectionAngle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionSplayProjectionAngle.Parent" xml:space="preserve">
     <value>pnlCrosssection</value>
@@ -241,7 +241,7 @@
     <value>chkPropCrossSectionShowSplayBorder</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionShowSplayBorder.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionShowSplayBorder.Parent" xml:space="preserve">
     <value>pnlCrosssection</value>
@@ -265,7 +265,7 @@
     <value>lblPropCrossSectionSplayLineStyle</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionSplayLineStyle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionSplayLineStyle.Parent" xml:space="preserve">
     <value>pnlCrosssection</value>
@@ -319,7 +319,7 @@
     <value>lblPropCrossSectionSplayMaxVariationAngle</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionSplayMaxVariationAngle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropCrossSectionSplayMaxVariationAngle.Parent" xml:space="preserve">
     <value>pnlCrosssection</value>
@@ -370,7 +370,7 @@
     <value>chkPropCrossSectionSplayText</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionSplayText.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPropCrossSectionSplayText.Parent" xml:space="preserve">
     <value>pnlCrosssection</value>
@@ -397,7 +397,7 @@
     <value>pnlCrosssection</value>
   </data>
   <data name="&gt;&gt;pnlCrosssection.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlCrosssection.Parent" xml:space="preserve">
     <value>tabCrossSections</value>
@@ -421,7 +421,7 @@
     <value>chkPlan</value>
   </data>
   <data name="&gt;&gt;chkPlan.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkPlan.Parent" xml:space="preserve">
     <value>tabPlan</value>
@@ -484,7 +484,7 @@
     <value>lblPropPlanSplayInclinationRange</value>
   </data>
   <data name="&gt;&gt;lblPropPlanSplayInclinationRange.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropPlanSplayInclinationRange.Parent" xml:space="preserve">
     <value>pnlPlan</value>
@@ -604,7 +604,7 @@
     <value>lblPropPlanSplayPlanProjectionType</value>
   </data>
   <data name="&gt;&gt;lblPropPlanSplayPlanProjectionType.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropPlanSplayPlanProjectionType.Parent" xml:space="preserve">
     <value>pnlPlan</value>
@@ -628,7 +628,7 @@
     <value>lblPropPlanSplayMaxVariationDelta</value>
   </data>
   <data name="&gt;&gt;lblPropPlanSplayMaxVariationDelta.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropPlanSplayMaxVariationDelta.Parent" xml:space="preserve">
     <value>pnlPlan</value>
@@ -652,7 +652,7 @@
     <value>lblPropPlanSplayPlanDeltaZ</value>
   </data>
   <data name="&gt;&gt;lblPropPlanSplayPlanDeltaZ.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropPlanSplayPlanDeltaZ.Parent" xml:space="preserve">
     <value>pnlPlan</value>
@@ -679,7 +679,7 @@
     <value>pnlPlan</value>
   </data>
   <data name="&gt;&gt;pnlPlan.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlPlan.Parent" xml:space="preserve">
     <value>tabPlan</value>
@@ -757,7 +757,7 @@
     <value>lblPropProfileSplayNegInclinationRange</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayNegInclinationRange.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayNegInclinationRange.Parent" xml:space="preserve">
     <value>pnlProfile</value>
@@ -835,7 +835,7 @@
     <value>lblPropProfileSplayPosInclinationRange</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayPosInclinationRange.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayPosInclinationRange.Parent" xml:space="preserve">
     <value>pnlProfile</value>
@@ -859,7 +859,7 @@
     <value>lblPropProfileSplayProjectionAngle</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayProjectionAngle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayProjectionAngle.Parent" xml:space="preserve">
     <value>pnlProfile</value>
@@ -883,7 +883,7 @@
     <value>lblPropProfileSplayMaxVariationAngle</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayMaxVariationAngle.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPropProfileSplayMaxVariationAngle.Parent" xml:space="preserve">
     <value>pnlProfile</value>
@@ -958,7 +958,7 @@
     <value>pnlProfile</value>
   </data>
   <data name="&gt;&gt;pnlProfile.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;pnlProfile.Parent" xml:space="preserve">
     <value>tabProfile</value>
@@ -985,7 +985,7 @@
     <value>chkProfile</value>
   </data>
   <data name="&gt;&gt;chkProfile.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkProfile.Parent" xml:space="preserve">
     <value>tabProfile</value>
@@ -1015,7 +1015,7 @@
     <value>cmdCancel</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdCancel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1045,7 +1045,7 @@
     <value>cmdOk</value>
   </data>
   <data name="&gt;&gt;cmdOk.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdOk.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1075,7 +1075,7 @@
     <value>cmdApply</value>
   </data>
   <data name="&gt;&gt;cmdApply.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cmdApply.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1099,7 +1099,7 @@
     <value>tabPlan</value>
   </data>
   <data name="&gt;&gt;tabPlan.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tabPlan.Parent" xml:space="preserve">
     <value>tabMain</value>
@@ -1123,7 +1123,7 @@
     <value>tabProfile</value>
   </data>
   <data name="&gt;&gt;tabProfile.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tabProfile.Parent" xml:space="preserve">
     <value>tabMain</value>
@@ -1141,7 +1141,7 @@
     <value>tabCrossSections</value>
   </data>
   <data name="&gt;&gt;tabCrossSections.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTab.XtraTabPage, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tabCrossSections.Parent" xml:space="preserve">
     <value>tabMain</value>
@@ -1153,7 +1153,7 @@
     <value>tabMain</value>
   </data>
   <data name="&gt;&gt;tabMain.Type" xml:space="preserve">
-    <value>DevExpress.XtraTab.XtraTabControl, DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraTab.XtraTabControl, DevExpress.XtraEditors.v21.2, Version=21.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tabMain.Parent" xml:space="preserve">
     <value>$this</value>

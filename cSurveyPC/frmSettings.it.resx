@@ -808,4 +808,19 @@ Non vi è correlazione tra questo codice e alcun dato relativo all'utente.</valu
   <data name="chkLogOnFile.Properties.Caption" xml:space="preserve">
     <value>Scrivi log su file</value>
   </data>
+  <data name="cboDesignBarPosition2.Properties.Items" xml:space="preserve">
+    <value>Predefinito</value>
+  </data>
+  <data name="cboDesignBarPosition2.Properties.Items1" xml:space="preserve">
+    <value>Angolo in alto a sinistra dell'area di disegno</value>
+  </data>
+  <data name="cboDesignBarPosition2.Properties.Items2" xml:space="preserve">
+    <value>Vicino all'oggetto in fase di modifica</value>
+  </data>
+  <data name="cboDesignBarPosition2.Properties.Items3" xml:space="preserve">
+    <value>Vicino all'oggetto o al punto in fase di modifica</value>
+  </data>
+  <data name="lblDesignBarPosition.Text" xml:space="preserve">
+    <value>Posizione barra libera:</value>
+  </data>
 </root>

@@ -135,7 +135,6 @@ Partial Class frmSettings
         Me.chkAlwaysUseShellForAttchments = New DevExpress.XtraEditors.CheckEdit()
         Me.txtDesignAnchorScale = New System.Windows.Forms.NumericUpDown()
         Me.lblBaseLineWidthScaleFactor = New DevExpress.XtraEditors.LabelControl()
-        Me.chkShowLastUsedToolsInDesignBar = New DevExpress.XtraEditors.CheckEdit()
         Me.cboMaxDrawItemCount = New System.Windows.Forms.ComboBox()
         Me.Label5 = New DevExpress.XtraEditors.LabelControl()
         Me.cboLanguage = New System.Windows.Forms.ComboBox()
@@ -148,8 +147,7 @@ Partial Class frmSettings
         Me.colClipboardFormat = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.chkSetDesignToolsEnabledByLevel = New DevExpress.XtraEditors.CheckEdit()
         Me.chkSetDesignToolsHiddenByLevel = New DevExpress.XtraEditors.CheckEdit()
-        Me.cboDesignBarPosition = New System.Windows.Forms.ComboBox()
-        Me.Label10 = New DevExpress.XtraEditors.LabelControl()
+        Me.lblDesignBarPosition = New DevExpress.XtraEditors.LabelControl()
         Me.chkTherionLochEnabled = New DevExpress.XtraEditors.CheckEdit()
         Me.cmdTherionPathBrowse = New DevExpress.XtraEditors.SimpleButton()
         Me.txtTherionPath = New DevExpress.XtraEditors.TextEdit()
@@ -193,6 +191,7 @@ Partial Class frmSettings
         Me.tabInfoTherion = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoOptions = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoInterface = New DevExpress.XtraTab.XtraTabPage()
+        Me.cboDesignBarPosition = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.tabInfoDesign = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoData = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoSVG = New DevExpress.XtraTab.XtraTabPage()
@@ -264,7 +263,6 @@ Partial Class frmSettings
         CType(Me.chkCalculateMode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkAlwaysUseShellForAttchments.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtDesignAnchorScale, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkShowLastUsedToolsInDesignBar.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
         CType(Me.chkClipboardLocalFormat.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -294,6 +292,7 @@ Partial Class frmSettings
         Me.tabInfoTherion.SuspendLayout()
         Me.tabInfoOptions.SuspendLayout()
         Me.tabInfoInterface.SuspendLayout()
+        CType(Me.cboDesignBarPosition.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabInfoDesign.SuspendLayout()
         Me.tabInfoData.SuspendLayout()
         Me.tabInfoSVG.SuspendLayout()
@@ -333,6 +332,7 @@ Partial Class frmSettings
         '
         resources.ApplyResources(Me.chkHistoryArchiveOnSave, "chkHistoryArchiveOnSave")
         Me.chkHistoryArchiveOnSave.Name = "chkHistoryArchiveOnSave"
+        Me.chkHistoryArchiveOnSave.Properties.AutoWidth = True
         Me.chkHistoryArchiveOnSave.Properties.Caption = resources.GetString("chkHistoryArchiveOnSave.Properties.Caption")
         '
         'lblHistoryMaxCopies
@@ -478,6 +478,7 @@ Partial Class frmSettings
         '
         resources.ApplyResources(Me.chkAutosaveUseHistorySettings, "chkAutosaveUseHistorySettings")
         Me.chkAutosaveUseHistorySettings.Name = "chkAutosaveUseHistorySettings"
+        Me.chkAutosaveUseHistorySettings.Properties.AutoWidth = True
         Me.chkAutosaveUseHistorySettings.Properties.Caption = resources.GetString("chkAutosaveUseHistorySettings.Properties.Caption")
         '
         'lblHistoryMode
@@ -496,6 +497,7 @@ Partial Class frmSettings
         '
         resources.ApplyResources(Me.chkAutosave, "chkAutosave")
         Me.chkAutosave.Name = "chkAutosave"
+        Me.chkAutosave.Properties.AutoWidth = True
         Me.chkAutosave.Properties.Caption = resources.GetString("chkAutosave.Properties.Caption")
         '
         'cboHistoryMode
@@ -504,7 +506,7 @@ Partial Class frmSettings
         Me.cboHistoryMode.DropDownWidth = 400
         resources.ApplyResources(Me.cboHistoryMode, "cboHistoryMode")
         Me.cboHistoryMode.FormattingEnabled = True
-        Me.cboHistoryMode.Items.AddRange(New Object() {resources.GetString("cboHistoryMode.Items"), resources.GetString("cboHistoryMode.Items1"), resources.GetString("cboHistoryMode.Items2")})
+        Me.cboHistoryMode.Items.AddRange(New Object() {resources.GetString("cboHistoryMode.Items")})
         Me.cboHistoryMode.Name = "cboHistoryMode"
         '
         'GroupBox6
@@ -1089,13 +1091,6 @@ Partial Class frmSettings
         resources.ApplyResources(Me.lblBaseLineWidthScaleFactor, "lblBaseLineWidthScaleFactor")
         Me.lblBaseLineWidthScaleFactor.Name = "lblBaseLineWidthScaleFactor"
         '
-        'chkShowLastUsedToolsInDesignBar
-        '
-        resources.ApplyResources(Me.chkShowLastUsedToolsInDesignBar, "chkShowLastUsedToolsInDesignBar")
-        Me.chkShowLastUsedToolsInDesignBar.Name = "chkShowLastUsedToolsInDesignBar"
-        Me.chkShowLastUsedToolsInDesignBar.Properties.AutoWidth = True
-        Me.chkShowLastUsedToolsInDesignBar.Properties.Caption = resources.GetString("chkShowLastUsedToolsInDesignBar.Properties.Caption")
-        '
         'cboMaxDrawItemCount
         '
         Me.cboMaxDrawItemCount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
@@ -1182,19 +1177,10 @@ Partial Class frmSettings
         Me.chkSetDesignToolsHiddenByLevel.Properties.AutoWidth = True
         Me.chkSetDesignToolsHiddenByLevel.Properties.Caption = resources.GetString("chkSetDesignToolsHiddenByLevel.Properties.Caption")
         '
-        'cboDesignBarPosition
+        'lblDesignBarPosition
         '
-        Me.cboDesignBarPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboDesignBarPosition.DropDownWidth = 400
-        Me.cboDesignBarPosition.FormattingEnabled = True
-        Me.cboDesignBarPosition.Items.AddRange(New Object() {resources.GetString("cboDesignBarPosition.Items"), resources.GetString("cboDesignBarPosition.Items1"), resources.GetString("cboDesignBarPosition.Items2"), resources.GetString("cboDesignBarPosition.Items3")})
-        resources.ApplyResources(Me.cboDesignBarPosition, "cboDesignBarPosition")
-        Me.cboDesignBarPosition.Name = "cboDesignBarPosition"
-        '
-        'Label10
-        '
-        resources.ApplyResources(Me.Label10, "Label10")
-        Me.Label10.Name = "Label10"
+        resources.ApplyResources(Me.lblDesignBarPosition, "lblDesignBarPosition")
+        Me.lblDesignBarPosition.Name = "lblDesignBarPosition"
         '
         'chkTherionLochEnabled
         '
@@ -1500,17 +1486,24 @@ Partial Class frmSettings
         Me.tabInfoInterface.Controls.Add(Me.chkAlwaysUseShellForAttchments)
         Me.tabInfoInterface.Controls.Add(Me.chkSetDesignToolsEnabledByLevel)
         Me.tabInfoInterface.Controls.Add(Me.txtDesignAnchorScale)
-        Me.tabInfoInterface.Controls.Add(Me.Label10)
+        Me.tabInfoInterface.Controls.Add(Me.lblDesignBarPosition)
         Me.tabInfoInterface.Controls.Add(Me.lblBaseLineWidthScaleFactor)
-        Me.tabInfoInterface.Controls.Add(Me.cboDesignBarPosition)
         Me.tabInfoInterface.Controls.Add(Me.chkSetDesignToolsHiddenByLevel)
-        Me.tabInfoInterface.Controls.Add(Me.chkShowLastUsedToolsInDesignBar)
         Me.tabInfoInterface.Controls.Add(Me.Label1)
         Me.tabInfoInterface.Controls.Add(Me.cboMaxDrawItemCount)
         Me.tabInfoInterface.Controls.Add(Me.cboLanguage)
         Me.tabInfoInterface.Controls.Add(Me.Label5)
+        Me.tabInfoInterface.Controls.Add(Me.cboDesignBarPosition)
         Me.tabInfoInterface.Name = "tabInfoInterface"
         resources.ApplyResources(Me.tabInfoInterface, "tabInfoInterface")
+        '
+        'cboDesignBarPosition
+        '
+        resources.ApplyResources(Me.cboDesignBarPosition, "cboDesignBarPosition")
+        Me.cboDesignBarPosition.Name = "cboDesignBarPosition"
+        Me.cboDesignBarPosition.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboDesignBarPosition.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboDesignBarPosition.Properties.Items.AddRange(New Object() {resources.GetString("cboDesignBarPosition.Properties.Items"), resources.GetString("cboDesignBarPosition.Properties.Items1"), resources.GetString("cboDesignBarPosition.Properties.Items2"), resources.GetString("cboDesignBarPosition.Properties.Items3")})
+        Me.cboDesignBarPosition.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
         'tabInfoDesign
         '
@@ -1719,7 +1712,6 @@ Partial Class frmSettings
         CType(Me.chkCalculateMode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkAlwaysUseShellForAttchments.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtDesignAnchorScale, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkShowLastUsedToolsInDesignBar.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
@@ -1755,6 +1747,7 @@ Partial Class frmSettings
         Me.tabInfoOptions.PerformLayout()
         Me.tabInfoInterface.ResumeLayout(False)
         Me.tabInfoInterface.PerformLayout()
+        CType(Me.cboDesignBarPosition.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabInfoDesign.ResumeLayout(False)
         Me.tabInfoDesign.PerformLayout()
         Me.tabInfoData.ResumeLayout(False)
@@ -1899,9 +1892,7 @@ Partial Class frmSettings
     Friend WithEvents btnWMSBrowse As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents txtDesignMetricGridOpacity As System.Windows.Forms.NumericUpDown
     Friend WithEvents lblDesignMetricGridOpacity As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents cboDesignBarPosition As ComboBox
-    Friend WithEvents Label10 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents chkShowLastUsedToolsInDesignBar As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents lblDesignBarPosition As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtDesignAnchorScale As NumericUpDown
     Friend WithEvents lblBaseLineWidthScaleFactor As DevExpress.XtraEditors.LabelControl
     Friend WithEvents GroupBox7 As DevExpress.XtraEditors.GroupControl
@@ -1955,4 +1946,5 @@ Partial Class frmSettings
     Friend WithEvents lblLogMaxSize As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtLogMaxLine As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents chkForceGarbaceCollect As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents cboDesignBarPosition As DevExpress.XtraEditors.ComboBoxEdit
 End Class

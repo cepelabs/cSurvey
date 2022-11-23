@@ -194,7 +194,7 @@ Friend Class cItemPenStylePropertyControl
             Dim sName As String = cSurvey.UIHelpers.Dialogs.TextInputBox(Me, GetLocalizedString("main.savepentext"), GetLocalizedString("main.savepentitle"), "")
             If sName IsNot Nothing Then
                 Dim bOk As Boolean = True
-                If oSurvey.Pens.Contains(oPen) Then
+                If oSurvey.Pens.Contains(sName) Then
                     bOk = cSurvey.UIHelpers.Dialogs.Msgbox(GetLocalizedString("main.savepenoverwritetext"), MsgBoxStyle.YesNo Or MsgBoxStyle.Critical, GetLocalizedString("main.savepentitle")) = MsgBoxResult.Yes
                 End If
                 If bOk Then

@@ -46,18 +46,35 @@ Namespace My
         Private sCurrentDPIRatio As Single
 
         Private Sub MyApplication_Startup(sender As Object, e As Microsoft.VisualBasic.ApplicationServices.StartupEventArgs) Handles Me.Startup
-            Call DevExpress.XtraEditors.WindowsFormsSettings.LoadApplicationSettings
-            Call pLanguageSet()
+            Call DevExpress.XtraEditors.WindowsFormsSettings.LoadApplicationSettings()
+            Call pGlobalSettingsSet()
             Using oGr As Graphics = Graphics.FromHwnd(IntPtr.Zero)
                 sCurrentDPIRatio = oGr.DpiX / 96.0F
             End Using
         End Sub
 
-        Private Sub pLanguageSet()
+        Private bChangeDecimalKey As Boolean
+        Private bChangePeriodKey As Boolean
+
+        Public ReadOnly Property ChangePeriodKey As Boolean
+            Get
+                Return bChangePeriodKey
+            End Get
+        End Property
+
+        Public ReadOnly Property ChangeDecimalKey As Boolean
+            Get
+                Return bChangeDecimalKey
+            End Get
+        End Property
+
+        Private Sub pGlobalSettingsSet()
             sCurrentLanguage = Threading.Thread.CurrentThread.CurrentCulture.Parent.Name
             Try
                 Using oReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Cepelabs\cSurvey", Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree)
                     sCurrentLanguage = oReg.GetValue("language", sCurrentLanguage)
+                    bChangeDecimalKey = oReg.GetValue("keys.changedecimalkey", "1")
+                    bChangePeriodKey = oReg.GetValue("keys.changeperiodkey", "0")
                 End Using
             Catch
             End Try
@@ -69,6 +86,7 @@ Namespace My
                 Threading.Thread.CurrentThread.CurrentUICulture = New System.Globalization.CultureInfo(sCurrentLanguage)
             End If
             Call modMain.LoadLocalizedStrings(sCurrentLanguage)
+
         End Sub
 
         Private Sub MyApplication_UnhandledException(ByVal sender As Object, ByVal e As Microsoft.VisualBasic.ApplicationServices.UnhandledExceptionEventArgs) Handles Me.UnhandledException

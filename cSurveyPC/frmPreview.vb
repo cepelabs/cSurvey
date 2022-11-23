@@ -2998,6 +2998,20 @@ Friend Class frmPreview
         Call pRefresh()
     End Sub
 
+    Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
+        If My.Application.CurrentLanguage = "it" Then
+            If My.Application.ChangeDecimalKey AndAlso keyData = Keys.Decimal Then
+                SendKeys.Send(",")
+                Return True
+            ElseIf My.Application.ChangePeriodKey AndAlso keyData = Keys.OemPeriod Then
+                SendKeys.Send(",")
+                Return True
+            Else
+                Return MyBase.ProcessCmdKey(msg, keyData)
+            End If
+        End If
+    End Function
+
     Private Sub picMap_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles picMap.PreviewKeyDown
         Call frmPreview_PreviewKeyDown(sender, e)
     End Sub
@@ -3399,17 +3413,6 @@ Friend Class frmPreview
     '        pnlProfile.Enabled = Not oOptions.DrawPrintOrExportArea
     '    End If
     'End Sub
-
-    Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
-        If My.Application.CurrentLanguage = "it" Then
-            If keyData = Keys.Decimal Then
-                SendKeys.Send(",")
-                Return True
-            Else
-                Return MyBase.ProcessCmdKey(msg, keyData)
-            End If
-        End If
-    End Function
 
     Private Sub chkShowTrigpointText_CheckedChanged(sender As Object, e As EventArgs) Handles chkPrintTrigpointText.CheckedChanged
         Call pRefresh()

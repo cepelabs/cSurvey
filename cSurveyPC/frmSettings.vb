@@ -139,6 +139,9 @@ Friend Class frmSettings
                     Call oReg.SetValue("language", "it")
             End Select
 
+            Call oReg.SetValue("keys.changedecimalkey", If(chkITChangeDecimalKey.Checked, "1", "0"))
+            Call oReg.SetValue("keys.changeperiodkey", If(chkITChangePeriodKey.Checked, "1", "0"))
+
             Call oReg.Close()
         End Using
     End Sub
@@ -254,6 +257,7 @@ Friend Class frmSettings
             chkCalculateMode.Checked = IIf(oReg.GetValue("default.calculatemode", 0) = cSurvey.cSurvey.CalculateModeEnum.Automatic, True, False)
             cboDefaultCalculateType.SelectedIndex = oReg.GetValue("default.calculatetype", cSurvey.cSurvey.CalculateTypeEnum.Therion)
 
+            cboDesignMode.SelectedIndex = 0
             cboDesignQuality.SelectedIndex = oReg.GetValue("design.quality", 0)
             chkDesignShowRulers.Checked = oReg.GetValue("design.rulers", 1)
             cboDesignShowRulersStyle.SelectedIndex = oReg.GetValue("design.rulers.style", frmMain2.RulersStyleEnum.Simple)
@@ -368,8 +372,13 @@ Friend Class frmSettings
                     cboLanguage.SelectedIndex = 0
             End Select
 
+            chkITChangeDecimalKey.Checked = oReg.GetValue("keys.changedecimalkey", "1")
+            chkITChangePeriodKey.Checked = oReg.GetValue("keys.changeperiodkey", "0")
+
             Call oReg.Close()
         End Using
+
+        Call pVisibilityByLanguage()
 
         Call pWMSRefreshCacheSize()
 
@@ -541,5 +550,15 @@ Friend Class frmSettings
                 Controls("_" & sControlName).Visible = True
             End If
         End If
+    End Sub
+
+    Private Sub cboLanguage_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboLanguage.SelectedIndexChanged
+        Call pVisibilityByLanguage
+    End Sub
+
+    Private Sub pVisibilityByLanguage()
+        Dim bITVisible As Boolean = (cboLanguage.SelectedIndex = 0 AndAlso My.Application.CurrentLanguage = "it") OrElse (cboLanguage.SelectedIndex = 3)
+        chkITChangeDecimalKey.Visible = bITVisible
+        chkITChangePeriodKey.Visible = bITVisible
     End Sub
 End Class

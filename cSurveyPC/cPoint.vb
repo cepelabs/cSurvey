@@ -1,5 +1,6 @@
 ﻿Imports System.Xml
 Imports cSurveyPC.cSurvey.Design
+Imports DevExpress.XtraLayout
 
 Namespace cSurvey.Design
     Public Class cPointsJoins
@@ -449,7 +450,7 @@ Namespace cSurvey.Design
 
         Public Function GetPrevious() As cPoint
             Dim oPoint As cPoint
-            RaiseEvent onGetPrevious(Me, oPoint)
+            RaiseEvent OnGetPrevious(Me, oPoint)
             Return oPoint
         End Function
 

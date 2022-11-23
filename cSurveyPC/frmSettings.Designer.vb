@@ -137,7 +137,6 @@ Partial Class frmSettings
         Me.lblBaseLineWidthScaleFactor = New DevExpress.XtraEditors.LabelControl()
         Me.cboMaxDrawItemCount = New System.Windows.Forms.ComboBox()
         Me.Label5 = New DevExpress.XtraEditors.LabelControl()
-        Me.cboLanguage = New System.Windows.Forms.ComboBox()
         Me.Label1 = New DevExpress.XtraEditors.LabelControl()
         Me.GroupBox3 = New DevExpress.XtraEditors.GroupControl()
         Me.chkClipboardLocalFormat = New DevExpress.XtraEditors.CheckEdit()
@@ -191,8 +190,11 @@ Partial Class frmSettings
         Me.tabInfoTherion = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoOptions = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoInterface = New DevExpress.XtraTab.XtraTabPage()
-        Me.cboDesignBarPosition = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.chkITChangePeriodKey = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkITChangeDecimalKey = New DevExpress.XtraEditors.CheckEdit()
+        Me.cboLanguage = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.tabInfoDesign = New DevExpress.XtraTab.XtraTabPage()
+        Me.cboDesignBarPosition = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.tabInfoData = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoSVG = New DevExpress.XtraTab.XtraTabPage()
         Me.tabInfoVisualTopo = New DevExpress.XtraTab.XtraTabPage()
@@ -292,8 +294,11 @@ Partial Class frmSettings
         Me.tabInfoTherion.SuspendLayout()
         Me.tabInfoOptions.SuspendLayout()
         Me.tabInfoInterface.SuspendLayout()
-        CType(Me.cboDesignBarPosition.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkITChangePeriodKey.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkITChangeDecimalKey.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboLanguage.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabInfoDesign.SuspendLayout()
+        CType(Me.cboDesignBarPosition.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabInfoData.SuspendLayout()
         Me.tabInfoSVG.SuspendLayout()
         Me.tabInfoVisualTopo.SuspendLayout()
@@ -1104,15 +1109,6 @@ Partial Class frmSettings
         resources.ApplyResources(Me.Label5, "Label5")
         Me.Label5.Name = "Label5"
         '
-        'cboLanguage
-        '
-        Me.cboLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboLanguage.DropDownWidth = 240
-        Me.cboLanguage.FormattingEnabled = True
-        Me.cboLanguage.Items.AddRange(New Object() {resources.GetString("cboLanguage.Items"), resources.GetString("cboLanguage.Items1"), resources.GetString("cboLanguage.Items2"), resources.GetString("cboLanguage.Items3")})
-        resources.ApplyResources(Me.cboLanguage, "cboLanguage")
-        Me.cboLanguage.Name = "cboLanguage"
-        '
         'Label1
         '
         resources.ApplyResources(Me.Label1, "Label1")
@@ -1482,34 +1478,51 @@ Partial Class frmSettings
         '
         'tabInfoInterface
         '
+        Me.tabInfoInterface.Controls.Add(Me.chkITChangePeriodKey)
+        Me.tabInfoInterface.Controls.Add(Me.chkITChangeDecimalKey)
+        Me.tabInfoInterface.Controls.Add(Me.cboLanguage)
         Me.tabInfoInterface.Controls.Add(Me.GroupBox3)
         Me.tabInfoInterface.Controls.Add(Me.chkAlwaysUseShellForAttchments)
-        Me.tabInfoInterface.Controls.Add(Me.chkSetDesignToolsEnabledByLevel)
-        Me.tabInfoInterface.Controls.Add(Me.txtDesignAnchorScale)
-        Me.tabInfoInterface.Controls.Add(Me.lblDesignBarPosition)
-        Me.tabInfoInterface.Controls.Add(Me.lblBaseLineWidthScaleFactor)
-        Me.tabInfoInterface.Controls.Add(Me.chkSetDesignToolsHiddenByLevel)
         Me.tabInfoInterface.Controls.Add(Me.Label1)
-        Me.tabInfoInterface.Controls.Add(Me.cboMaxDrawItemCount)
-        Me.tabInfoInterface.Controls.Add(Me.cboLanguage)
-        Me.tabInfoInterface.Controls.Add(Me.Label5)
-        Me.tabInfoInterface.Controls.Add(Me.cboDesignBarPosition)
         Me.tabInfoInterface.Name = "tabInfoInterface"
         resources.ApplyResources(Me.tabInfoInterface, "tabInfoInterface")
         '
-        'cboDesignBarPosition
+        'chkITChangePeriodKey
         '
-        resources.ApplyResources(Me.cboDesignBarPosition, "cboDesignBarPosition")
-        Me.cboDesignBarPosition.Name = "cboDesignBarPosition"
-        Me.cboDesignBarPosition.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboDesignBarPosition.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
-        Me.cboDesignBarPosition.Properties.Items.AddRange(New Object() {resources.GetString("cboDesignBarPosition.Properties.Items"), resources.GetString("cboDesignBarPosition.Properties.Items1"), resources.GetString("cboDesignBarPosition.Properties.Items2"), resources.GetString("cboDesignBarPosition.Properties.Items3")})
-        Me.cboDesignBarPosition.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        resources.ApplyResources(Me.chkITChangePeriodKey, "chkITChangePeriodKey")
+        Me.chkITChangePeriodKey.Name = "chkITChangePeriodKey"
+        Me.chkITChangePeriodKey.Properties.AutoWidth = True
+        Me.chkITChangePeriodKey.Properties.Caption = resources.GetString("chkITChangePeriodKey.Properties.Caption")
+        '
+        'chkITChangeDecimalKey
+        '
+        resources.ApplyResources(Me.chkITChangeDecimalKey, "chkITChangeDecimalKey")
+        Me.chkITChangeDecimalKey.Name = "chkITChangeDecimalKey"
+        Me.chkITChangeDecimalKey.Properties.AutoWidth = True
+        Me.chkITChangeDecimalKey.Properties.Caption = resources.GetString("chkITChangeDecimalKey.Properties.Caption")
+        '
+        'cboLanguage
+        '
+        resources.ApplyResources(Me.cboLanguage, "cboLanguage")
+        Me.cboLanguage.Name = "cboLanguage"
+        Me.cboLanguage.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboLanguage.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboLanguage.Properties.Items.AddRange(New Object() {resources.GetString("cboLanguage.Properties.Items"), resources.GetString("cboLanguage.Properties.Items1"), resources.GetString("cboLanguage.Properties.Items2"), resources.GetString("cboLanguage.Properties.Items3")})
+        Me.cboLanguage.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
         'tabInfoDesign
         '
+        resources.ApplyResources(Me.tabInfoDesign, "tabInfoDesign")
         Me.tabInfoDesign.Controls.Add(Me.cboDesignSelectionMode)
         Me.tabInfoDesign.Controls.Add(Me.cboDesignMode)
         Me.tabInfoDesign.Controls.Add(Me.lblDesignSelectionMode)
+        Me.tabInfoDesign.Controls.Add(Me.Label5)
+        Me.tabInfoDesign.Controls.Add(Me.cboMaxDrawItemCount)
+        Me.tabInfoDesign.Controls.Add(Me.cboDesignBarPosition)
+        Me.tabInfoDesign.Controls.Add(Me.chkSetDesignToolsHiddenByLevel)
+        Me.tabInfoDesign.Controls.Add(Me.lblDesignBarPosition)
+        Me.tabInfoDesign.Controls.Add(Me.chkSetDesignToolsEnabledByLevel)
+        Me.tabInfoDesign.Controls.Add(Me.lblBaseLineWidthScaleFactor)
+        Me.tabInfoDesign.Controls.Add(Me.txtDesignAnchorScale)
         Me.tabInfoDesign.Controls.Add(Me.lblDesignMode)
         Me.tabInfoDesign.Controls.Add(Me.chkDesignShowLegacyExtraPrintAndExportObjects)
         Me.tabInfoDesign.Controls.Add(Me.chkDesignShowRulers)
@@ -1531,7 +1544,14 @@ Partial Class frmSettings
         Me.tabInfoDesign.Controls.Add(Me.lblDesignZoomType)
         Me.tabInfoDesign.Controls.Add(Me.cboDesignZoomType)
         Me.tabInfoDesign.Name = "tabInfoDesign"
-        resources.ApplyResources(Me.tabInfoDesign, "tabInfoDesign")
+        '
+        'cboDesignBarPosition
+        '
+        resources.ApplyResources(Me.cboDesignBarPosition, "cboDesignBarPosition")
+        Me.cboDesignBarPosition.Name = "cboDesignBarPosition"
+        Me.cboDesignBarPosition.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("cboDesignBarPosition.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+        Me.cboDesignBarPosition.Properties.Items.AddRange(New Object() {resources.GetString("cboDesignBarPosition.Properties.Items"), resources.GetString("cboDesignBarPosition.Properties.Items1"), resources.GetString("cboDesignBarPosition.Properties.Items2"), resources.GetString("cboDesignBarPosition.Properties.Items3")})
+        Me.cboDesignBarPosition.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
         'tabInfoData
         '
@@ -1747,9 +1767,12 @@ Partial Class frmSettings
         Me.tabInfoOptions.PerformLayout()
         Me.tabInfoInterface.ResumeLayout(False)
         Me.tabInfoInterface.PerformLayout()
-        CType(Me.cboDesignBarPosition.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkITChangePeriodKey.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkITChangeDecimalKey.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboLanguage.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabInfoDesign.ResumeLayout(False)
         Me.tabInfoDesign.PerformLayout()
+        CType(Me.cboDesignBarPosition.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabInfoData.ResumeLayout(False)
         Me.tabInfoSVG.ResumeLayout(False)
         Me.tabInfoVisualTopo.ResumeLayout(False)
@@ -1830,7 +1853,6 @@ Partial Class frmSettings
     Friend WithEvents cboDesignZoomType As System.Windows.Forms.ComboBox
     Friend WithEvents lblDesignZoomType As DevExpress.XtraEditors.LabelControl
     Friend WithEvents chkDesignUseOnlyAnchorToMove As DevExpress.XtraEditors.CheckEdit
-    Friend WithEvents cboLanguage As System.Windows.Forms.ComboBox
     Friend WithEvents Label1 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents chkAutosaveUseHistorySettings As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents lblHistoryDailyCopies As DevExpress.XtraEditors.LabelControl
@@ -1947,4 +1969,7 @@ Partial Class frmSettings
     Friend WithEvents txtLogMaxLine As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents chkForceGarbaceCollect As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents cboDesignBarPosition As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents cboLanguage As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents chkITChangeDecimalKey As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents chkITChangePeriodKey As DevExpress.XtraEditors.CheckEdit
 End Class

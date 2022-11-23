@@ -162,24 +162,6 @@ Namespace cSurvey.Design.Items
             End Get
         End Property
 
-        'Friend Overrides Function ToSvgItem(ByVal SVG As XmlDocument, ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlElement
-        '    Using oMatrix As Matrix = New Matrix
-        '        If PaintOptions.DrawTranslation Then
-        '            Dim oTranslation As SizeF = MyBase.Design.GetItemTranslation(Me)
-        '            Call oMatrix.Translate(oTranslation.Width, oTranslation.Height)
-        '        End If
-        '        Dim oSVGItem As XmlElement = MyBase.Caches(PaintOptions).ToSvgItem(SVG, PaintOptions, Options, oMatrix)
-        '        If MyBase.Name <> "" Then Call oSVGItem.SetAttribute("name", MyBase.Name)
-        '        Return oSVGItem
-        '    End Using
-        'End Function
-
-        'Friend Overrides Function ToSvg(ByVal PaintOptions As cOptions, ByVal Options As cItem.SVGOptionsEnum) As XmlDocument
-        '    Dim oSVG As XmlDocument = modSVG.CreateSVG
-        '    Call modSVG.AppendItem(oSVG, Nothing, ToSvgItem(oSVG, PaintOptions, Options))
-        '    Return oSVG
-        'End Function
-
         Friend Overrides Sub Render(ByVal Graphics As System.Drawing.Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As SelectionModeEnum)
             Dim oCache As cDrawCache = MyBase.Caches(PaintOptions)
             With oCache

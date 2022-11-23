@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Reflection
+Imports System.Runtime.InteropServices.WindowsRuntime
 Imports System.Runtime.Remoting.Messaging
 Imports System.ServiceModel
 Imports System.Text
@@ -923,57 +924,74 @@ Namespace cSurvey.Helper.Editor
 
         Private oLastSelectionItem As cUndoItemSelection
 
-        Public Sub CreateSelectionSnapshot(Area As cAreaEnum)
+        Public Function CreateSelectionSnapshot(Area As cAreaEnum) As Boolean
             Dim oSelectionItem As cUndoItemSelection
             Select Case Area
                 Case cAreaEnum.DesignPlan
                     Dim oItem As cItem = oParent.PlanTools.CurrentItem
-                    If TypeOf oItem Is cItemItems Then
-                        oSelectionItem = New cUndoDesignItemSelection(Me, "Selection", Area, DirectCast(oItem, IEnumerable(Of cItem)))
-                    Else
-                        oSelectionItem = New cUndoDesignItemSelection(Me, "Selection", Area, oItem)
+                    If oItem IsNot Nothing Then
+                        If TypeOf oItem Is cItemItems Then
+                            oSelectionItem = New cUndoDesignItemSelection(Me, "Selection", Area, DirectCast(oItem, IEnumerable(Of cItem)))
+                        Else
+                            oSelectionItem = New cUndoDesignItemSelection(Me, "Selection", Area, oItem)
+                        End If
                     End If
                 Case cAreaEnum.DesignProfile
                     Dim oItem As cItem = oParent.ProfileTools.CurrentItem
-                    If TypeOf oItem Is cItemItems Then
-                        oSelectionItem = New cUndoDesignItemSelection(Me, "Selection", Area, DirectCast(oItem, IEnumerable(Of cItem)))
-                    Else
-                        oSelectionItem = New cUndoDesignItemSelection(Me, "Selection", Area, oItem)
+                    If oItem IsNot Nothing Then
+                        If TypeOf oItem Is cItemItems Then
+                            oSelectionItem = New cUndoDesignItemSelection(Me, "Selection", Area, DirectCast(oItem, IEnumerable(Of cItem)))
+                        Else
+                            oSelectionItem = New cUndoDesignItemSelection(Me, "Selection", Area, oItem)
+                        End If
                     End If
                 Case cAreaEnum.DataSegments
                     Dim oSegment As cSegment = oParent.CurrentSegment
-                    oSelectionItem = New cUndoDataSegmentSelection(Me, "Selection", Area, oSegment)
+                    If oSegment IsNot Nothing Then
+                        oSelectionItem = New cUndoDataSegmentSelection(Me, "Selection", Area, oSegment)
+                    End If
                 Case cAreaEnum.DataShots
                     Dim oTrigpoint As cTrigPoint = oParent.CurrentTrigpoint
-                    oSelectionItem = New cUndoDataTrigpointSelection(Me, "Selection", Area, oTrigpoint)
+                    If oTrigpoint IsNot Nothing Then
+                        oSelectionItem = New cUndoDataTrigpointSelection(Me, "Selection", Area, oTrigpoint)
+                    End If
                 Case cAreaEnum.All
                     Throw New Exception("Unsupported")
             End Select
-            oLastSelectionItem = oSelectionItem
-        End Sub
+            If oSelectionItem Is Nothing Then
+                Return False
+            Else
+                oLastSelectionItem = oSelectionItem
+                Return True
+            End If
+        End Function
 
         ''' <summary>
         ''' Create an undo snapshot with not starting item and with working area's selected item as action's result. Usefull for item's creation.
         ''' </summary>
         ''' <param name="Description">Action's description</param>
         ''' <param name="Area">Working area</param>
-        Public Sub CreateSnapshot(Description As String, Area As cAreaEnum, PropertyName As String)
+        Public Function CreateSnapshot(Description As String, Area As cAreaEnum, PropertyName As String) As Boolean
             If oCurrentUndoItem Is Nothing Then
                 Dim oItem As cItem
                 Select Case Area
                     Case cAreaEnum.DesignPlan
                         oItem = oParent.PlanTools.CurrentItem
-                        If TypeOf oItem Is cItemItems Then
-                            oCurrentUndoItem = New cUndoDesignItemProperty(Me, Description, Area, DirectCast(oItem, IEnumerable(Of cItem)), PropertyName)
-                        Else
-                            oCurrentUndoItem = New cUndoDesignItemProperty(Me, Description, Area, oItem, PropertyName)
+                        If oItem IsNot Nothing Then
+                            If TypeOf oItem Is cItemItems Then
+                                oCurrentUndoItem = New cUndoDesignItemProperty(Me, Description, Area, DirectCast(oItem, IEnumerable(Of cItem)), PropertyName)
+                            Else
+                                oCurrentUndoItem = New cUndoDesignItemProperty(Me, Description, Area, oItem, PropertyName)
+                            End If
                         End If
                     Case cAreaEnum.DesignProfile
                         oItem = oParent.ProfileTools.CurrentItem
-                        If TypeOf oItem Is cItemItems Then
-                            oCurrentUndoItem = New cUndoDesignItemProperty(Me, Description, Area, DirectCast(oItem, IEnumerable(Of cItem)), PropertyName)
-                        Else
-                            oCurrentUndoItem = New cUndoDesignItemProperty(Me, Description, Area, oItem, PropertyName)
+                        If oItem IsNot Nothing Then
+                            If TypeOf oItem Is cItemItems Then
+                                oCurrentUndoItem = New cUndoDesignItemProperty(Me, Description, Area, DirectCast(oItem, IEnumerable(Of cItem)), PropertyName)
+                            Else
+                                oCurrentUndoItem = New cUndoDesignItemProperty(Me, Description, Area, oItem, PropertyName)
+                            End If
                         End If
                     Case cAreaEnum.DataSegments
                         Throw New Exception("Unsupported")
@@ -982,34 +1000,43 @@ Namespace cSurvey.Helper.Editor
                     Case cAreaEnum.All
                         Throw New Exception("Unsupported")
                 End Select
-                Call oItems.Push(oCurrentUndoItem)
-                oCurrentUndoItem = Nothing
-                RaiseEvent OnChanged(Me, EventArgs.Empty)
+                If oCurrentUndoItem Is Nothing Then
+                    Return False
+                Else
+                    Call oItems.Push(oCurrentUndoItem)
+                    oCurrentUndoItem = Nothing
+                    RaiseEvent OnChanged(Me, EventArgs.Empty)
+                    Return True
+                End If
             End If
-        End Sub
+        End Function
 
         ''' <summary>
         ''' Create an undo snapshot with not starting item and with working area's selected item as action's result. Usefull for item's creation.
         ''' </summary>
         ''' <param name="Description">Action's description</param>
         ''' <param name="Area">Working area</param>
-        Public Sub CreateSnapshot(Description As String, Area As cAreaEnum, BackupDelegate As cUndoItemBackupValueDelegate, RestoreDelegate As cUndoItemRestoreValueDelegate)
+        Public Function CreateSnapshot(Description As String, Area As cAreaEnum, BackupDelegate As cUndoItemBackupValueDelegate, RestoreDelegate As cUndoItemRestoreValueDelegate) As Boolean
             If oCurrentUndoItem Is Nothing Then
                 Dim oItem As cItem
                 Select Case Area
                     Case cAreaEnum.DesignPlan
                         oItem = oParent.PlanTools.CurrentItem
-                        If TypeOf oItem Is cItemItems Then
-                            oCurrentUndoItem = New cUndoDesignItemDelegatedProperty(Me, Description, Area, DirectCast(oItem, IEnumerable(Of cItem)), BackupDelegate, RestoreDelegate)
-                        Else
-                            oCurrentUndoItem = New cUndoDesignItemDelegatedProperty(Me, Description, Area, oItem, BackupDelegate, RestoreDelegate)
+                        If oItem IsNot Nothing Then
+                            If TypeOf oItem Is cItemItems Then
+                                oCurrentUndoItem = New cUndoDesignItemDelegatedProperty(Me, Description, Area, DirectCast(oItem, IEnumerable(Of cItem)), BackupDelegate, RestoreDelegate)
+                            Else
+                                oCurrentUndoItem = New cUndoDesignItemDelegatedProperty(Me, Description, Area, oItem, BackupDelegate, RestoreDelegate)
+                            End If
                         End If
                     Case cAreaEnum.DesignProfile
                         oItem = oParent.ProfileTools.CurrentItem
-                        If TypeOf oItem Is cItemItems Then
-                            oCurrentUndoItem = New cUndoDesignItemDelegatedProperty(Me, Description, Area, DirectCast(oItem, IEnumerable(Of cItem)), BackupDelegate, RestoreDelegate)
-                        Else
-                            oCurrentUndoItem = New cUndoDesignItemDelegatedProperty(Me, Description, Area, oItem, BackupDelegate, RestoreDelegate)
+                        If oItem IsNot Nothing Then
+                            If TypeOf oItem Is cItemItems Then
+                                oCurrentUndoItem = New cUndoDesignItemDelegatedProperty(Me, Description, Area, DirectCast(oItem, IEnumerable(Of cItem)), BackupDelegate, RestoreDelegate)
+                            Else
+                                oCurrentUndoItem = New cUndoDesignItemDelegatedProperty(Me, Description, Area, oItem, BackupDelegate, RestoreDelegate)
+                            End If
                         End If
                     Case cAreaEnum.DataSegments
                         Throw New Exception("Unsupported")
@@ -1018,54 +1045,68 @@ Namespace cSurvey.Helper.Editor
                     Case cAreaEnum.All
                         Throw New Exception("Unsupported")
                 End Select
-                Call oItems.Push(oCurrentUndoItem)
-                oCurrentUndoItem = Nothing
-                RaiseEvent OnChanged(Me, EventArgs.Empty)
+                If oCurrentUndoItem Is Nothing Then
+                    Return False
+                Else
+                    Call oItems.Push(oCurrentUndoItem)
+                    oCurrentUndoItem = Nothing
+                    RaiseEvent OnChanged(Me, EventArgs.Empty)
+                    Return True
+                End If
             End If
-        End Sub
+        End Function
 
         ''' <summary>
         ''' Create an undo snapshot with not starting item and with working area's selected item as action's result. Usefull for item's creation.
         ''' </summary>
         ''' <param name="Description">Action's description</param>
         ''' <param name="Area">Working area</param>
-        Public Sub CreateSnapshot(Description As String, Area As cAreaEnum)
+        Public Function CreateSnapshot(Description As String, Area As cAreaEnum) As Boolean
             If oCurrentUndoItem Is Nothing Then
                 Dim oItem As cItem
                 Select Case Area
                     Case cAreaEnum.DesignPlan
                         oItem = oParent.PlanTools.CurrentItem
-                        oCurrentUndoItem = New cUndoDesignItemNew(Me, Description, Area, oLastSelectionItem)
-                        If TypeOf oItem Is cItemItems Then
-                            DirectCast(oCurrentUndoItem, cUndoDesignItemNew).Commit(DirectCast(oItem, IEnumerable(Of cItem)))
-                        Else
-                            DirectCast(oCurrentUndoItem, cUndoDesignItemNew).Commit(oItem)
+                        If oItem IsNot Nothing Then
+                            oCurrentUndoItem = New cUndoDesignItemNew(Me, Description, Area, oLastSelectionItem)
+                            If TypeOf oItem Is cItemItems Then
+                                DirectCast(oCurrentUndoItem, cUndoDesignItemNew).Commit(DirectCast(oItem, IEnumerable(Of cItem)))
+                            Else
+                                DirectCast(oCurrentUndoItem, cUndoDesignItemNew).Commit(oItem)
+                            End If
                         End If
                     Case cAreaEnum.DesignProfile
                         oItem = oParent.ProfileTools.CurrentItem
-                        oCurrentUndoItem = New cUndoDesignItemNew(Me, Description, Area, oLastSelectionItem)
-                        If TypeOf oItem Is cItemItems Then
-                            DirectCast(oCurrentUndoItem, cUndoDesignItemNew).Commit(DirectCast(oItem, IEnumerable(Of cItem)))
-                        Else
-                            DirectCast(oCurrentUndoItem, cUndoDesignItemNew).Commit(oItem)
+                        If oItem IsNot Nothing Then
+                            oCurrentUndoItem = New cUndoDesignItemNew(Me, Description, Area, oLastSelectionItem)
+                            If TypeOf oItem Is cItemItems Then
+                                DirectCast(oCurrentUndoItem, cUndoDesignItemNew).Commit(DirectCast(oItem, IEnumerable(Of cItem)))
+                            Else
+                                DirectCast(oCurrentUndoItem, cUndoDesignItemNew).Commit(oItem)
+                            End If
                         End If
                     Case cAreaEnum.DataSegments
                         'oCurrentUndoItem = New cUndoDataSegmentEdit(Me, Description, Area, oParent.CurrentSegment)
                     Case cAreaEnum.DataShots
                         'oCurrentUndoItem = New cUndoDatatrigpointEdit(Me, Description, Area, oParent.CurrentSegment)
                 End Select
-                Call oItems.Push(oCurrentUndoItem)
-                oCurrentUndoItem = Nothing
-                RaiseEvent OnChanged(Me, EventArgs.Empty)
+                If oCurrentUndoItem Is Nothing Then
+                    Return False
+                Else
+                    Call oItems.Push(oCurrentUndoItem)
+                    oCurrentUndoItem = Nothing
+                    RaiseEvent OnChanged(Me, EventArgs.Empty)
+                    Return True
+                End If
             End If
-        End Sub
+        End Function
 
         ''' <summary>
         ''' Create an undo snapshot with not starting item and with working area's selected item as action's result. Usefull for item's creation.
         ''' </summary>
         ''' <param name="Description">Action's description</param>
         ''' <param name="Items">Items to be restored</param>
-        Public Sub CreateSnapshot(Description As String, Items As IEnumerable(Of cItem))
+        Public Function CreateSnapshot(Description As String, Items As IEnumerable(Of cItem)) As Boolean
             If oCurrentUndoItem Is Nothing AndAlso Items.Count > 0 Then
                 Dim iArea As cAreaEnum = If(Items(0).Design.Type = cIDesign.cDesignTypeEnum.Plan, cAreaEnum.DesignPlan, cAreaEnum.DesignProfile)
                 oCurrentUndoItem = New cUndoDesignItemNew(Me, Description, iArea, oLastSelectionItem)
@@ -1073,35 +1114,37 @@ Namespace cSurvey.Helper.Editor
                 Call oItems.Push(oCurrentUndoItem)
                 oCurrentUndoItem = Nothing
                 RaiseEvent OnChanged(Me, EventArgs.Empty)
+                Return True
             End If
-        End Sub
+        End Function
 
         ''' <summary>
         ''' Start and undo snapshot with specific design items. Area will be taken from first item.
         ''' </summary>
         ''' <param name="Description">Action's description</param>
         ''' <param name="Items">Items to be restored</param>
-        Public Sub BeginSnapshot(Description As String, Items As IEnumerable(Of cItem))
+        Public Function BeginSnapshot(Description As String, Items As IEnumerable(Of cItem)) As Boolean
             If oCurrentUndoItem Is Nothing AndAlso Items.Count > 0 Then
                 Dim iArea As cAreaEnum = If(Items(0).Design.Type = cIDesign.cDesignTypeEnum.Plan, cAreaEnum.DesignPlan, cAreaEnum.DesignProfile)
                 oCurrentUndoItem = New cUndoDesignItemEdit(Me, Description, iArea, Items)
                 'oLastItem = oItem
                 sLastDescription = Description
+                Return True
             End If
-        End Sub
+        End Function
 
         ''' <summary>
         ''' Start and undo snapshot with working area's selected item
         ''' </summary>
         ''' <param name="Description">Action's description</param>
         ''' <param name="Area">Working area</param>
-        Public Sub BeginSnapshot(Description As String, Area As cAreaEnum)
+        Public Function BeginSnapshot(Description As String, Area As cAreaEnum) As Boolean
             If oCurrentUndoItem Is Nothing Then
                 Dim oItem As cItem
                 Select Case Area
                     Case cAreaEnum.DesignPlan
                         oItem = oParent.PlanTools.CurrentItem
-                        If Not oItem Is Nothing Then
+                        If oItem IsNot Nothing Then
                             If TypeOf oItem Is cItemItems Then
                                 oCurrentUndoItem = New cUndoDesignItemEdit(Me, Description, Area, DirectCast(oItem, IEnumerable(Of cItem)))
                             Else
@@ -1110,7 +1153,7 @@ Namespace cSurvey.Helper.Editor
                         End If
                     Case cAreaEnum.DesignProfile
                         oItem = oParent.ProfileTools.CurrentItem
-                        If Not oItem Is Nothing Then
+                        If oItem IsNot Nothing Then
                             If TypeOf oItem Is cItemItems Then
                                 oCurrentUndoItem = New cUndoDesignItemEdit(Me, Description, Area, DirectCast(oItem, IEnumerable(Of cItem)))
                             Else
@@ -1118,13 +1161,20 @@ Namespace cSurvey.Helper.Editor
                             End If
                         End If
                     Case cAreaEnum.DataSegments
-                        oCurrentUndoItem = New cUndoDataSegmentEdit(Me, Description, Area, oParent.CurrentSegment)
+                        If oParent.CurrentSegment IsNot Nothing Then
+                            oCurrentUndoItem = New cUndoDataSegmentEdit(Me, Description, Area, oParent.CurrentSegment)
+                        End If
                     Case cAreaEnum.DataShots
-                        oCurrentUndoItem = New cUndoDataTrigpointEdit(Me, Description, Area, oParent.CurrentSegment)
+                        If oParent.CurrentTrigpoint IsNot Nothing Then
+                            oCurrentUndoItem = New cUndoDataTrigpointEdit(Me, Description, Area, oParent.CurrentTrigpoint)
+                        End If
                 End Select
-                sLastDescription = Description
+                If oCurrentUndoItem IsNot Nothing Then
+                    sLastDescription = Description
+                    Return True
+                End If
             End If
-        End Sub
+        End Function
 
         ''' <summary>
         ''' Add stations to current snapshot

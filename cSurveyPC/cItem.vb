@@ -964,13 +964,13 @@ Namespace cSurvey.Design
             End If
         End Sub
 
-        Private Sub oBrush_OnRender(sender As cBrush, RenderArgs As cBrush.cRenderArgs) Handles oBrush.OnRender
+        Private Sub oBrush_OnRender(sender As Object, RenderArgs As cBrush.cRenderEventArgs) Handles oBrush.OnRender
             If HaveTransparency Then
                 RenderArgs.Transparency = sTransparency
             End If
         End Sub
 
-        Private Sub oPen_OnRender(sender As cPen, RenderArgs As cPen.cRenderArgs) Handles oPen.OnRender
+        Private Sub oPen_OnRender(sender As Object, RenderArgs As cPen.cRenderEventArgs) Handles oPen.OnRender
             If HaveTransparency Then
                 RenderArgs.Transparency = sTransparency
             End If

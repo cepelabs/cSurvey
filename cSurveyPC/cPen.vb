@@ -6,6 +6,8 @@ Imports System.Xml
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports System.IO
+Imports cSurveyPC.cSurvey.Design.cPen
+Imports DevExpress.XtraTreeList.Nodes.Operations
 
 Namespace cSurvey.Design
 
@@ -29,9 +31,8 @@ Namespace cSurvey.Design
         Private iDecorationAlignment As cPen.DecorationAlignmentEnum
         Private sDecorationSpacePercentage As Single
         Private sDecorationScale As Single
-
         Private oClipart As cDrawClipArt
-        Private iClipartPenMode As cPen.clipartpenmodeenum
+        Private iClipartPenMode As cPen.ClipartPenModeEnum
         Private sClipartPenWidth As Single
         Private iClipartPenStyle As cPen.PenStylesEnum
         Private sClipartStylePattern As Single()
@@ -49,11 +50,7 @@ Namespace cSurvey.Design
 
         Friend Event OnChanged(ByVal Sender As Object, e As EventArgs)
 
-        Friend Class cRenderArgs
-            Inherits EventArgs
-            Public Transparency As Single
-        End Class
-        Friend Event OnRender(sender As Object, RenderArgs As cRenderArgs)
+        Friend Event OnRender(sender As Object, RenderArgs As cPen.cRenderEventArgs)
 
         Public Function GetThumbnailSVG(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal thumbWidth As Integer, ByVal thumbHeight As Integer, ByVal ForeColor As Color, ByVal Backcolor As Color) As XmlDocument
             Dim oBounds As RectangleF = New RectangleF(0, 0, thumbWidth, thumbHeight)
@@ -635,11 +632,11 @@ Namespace cSurvey.Design
         End Function
 
         Private Sub pRender(PaintOptions As cOptionsCenterline)
-            Dim oRenderArgs As cRenderArgs = New cRenderArgs
-            RaiseEvent OnRender(Me, oRenderArgs)
+            'Dim oRenderArgs As cPen.cRenderArgs = New cPen.cRenderArgs
+            'RaiseEvent OnRender(Me, oRenderArgs)
 
             Dim oTempPenColor As Color = If(oAlternativeColor.IsEmpty, oColor, oAlternativeColor)
-            oTempPenColor = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oTempPenColor)
+            'oTempPenColor = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oTempPenColor)
 
             If iStyle = cPen.PenStylesEnum.None Then
                 If oPen IsNot Nothing Then oPen.Dispose()
@@ -673,7 +670,7 @@ Namespace cSurvey.Design
 
             If iClipartPenMode = cPen.ClipartPenModeEnum.Custom Then
                 Dim oTempClipartPenColor As Color = If(oAlternativeColor.IsEmpty, oClipartPenColor, oAlternativeColor)
-                oTempClipartPenColor = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oTempClipartPenColor)
+                'oTempClipartPenColor = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oTempClipartPenColor)
                 If iClipartPenStyle <> cPen.PenStylesEnum.None Then
                     Dim sTempClipartPenWidth As Single = GetPaintPenWidth(PaintOptions, sClipartPenWidth)
                     oClipartPen = New Pen(oTempClipartPenColor, sTempClipartPenWidth)
@@ -745,6 +742,17 @@ Namespace cSurvey.Design
                 If iType = cPen.PenTypeEnum.None Then
                     Call Cache.AddBorder(Path, Nothing, oWireframePen)
                 Else
+                    Dim oRenderArgs As cPen.cRenderEventArgs = New cPen.cRenderEventArgs
+                    RaiseEvent OnRender(Me, oRenderArgs)
+
+                    Dim oBackupColors(1) As Color
+                    If oRenderArgs.Transparency <> 0 Then
+                        oBackupColors(0) = oPen.Color
+                        oPen.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oPen.Color)
+                        oBackupColors(1) = oBrush.Color
+                        oBrush.Color = Color.FromArgb((1 - oRenderArgs.Transparency) * 255, oBrush.Color)
+                    End If
+
                     Dim sZoomFactor As Single = GetPaintZoomFactor(PaintOptions)
                     If iDecorationPosition = cPen.DecorationPositionEnum.Above Then
                         Call Cache.AddBorder(Path, oPen, oWireframePen)
@@ -787,6 +795,11 @@ Namespace cSurvey.Design
                     End If
                     If iDecorationPosition = cPen.DecorationPositionEnum.Behind Then
                         Call Cache.AddBorder(Path, oPen, oWireframePen)
+                    End If
+
+                    If oRenderArgs.Transparency <> 0 Then
+                        oPen.Color = oBackupColors(0)
+                        oBrush.Color = oBackupColors(1)
                     End If
                 End If
             End If
@@ -931,11 +944,11 @@ Namespace cSurvey.Design
 
         Private WithEvents oBasePen As cCustomPen
 
-        Friend Class cRenderArgs
+        Friend Class cRenderEventArgs
             Inherits EventArgs
             Public Transparency As Single
         End Class
-        Friend Event OnRender(sender As Object, RenderArgs As cRenderArgs)
+        Friend Event OnRender(sender As Object, RenderArgs As cRenderEventArgs)
 
         Public Function GetThumbnailSVG(ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As cItem.SelectionModeEnum, ByVal thumbWidth As Integer, ByVal thumbHeight As Integer, ByVal ForeColor As Color, ByVal Backcolor As Color) As XmlDocument
             Return oBasePen.GetThumbnailSVG(PaintOptions, Options, cItem.SelectionModeEnum.Selected, thumbWidth, thumbHeight, ForeColor, Backcolor)
@@ -1043,7 +1056,7 @@ Namespace cSurvey.Design
                     Else
                         If value = PenTypeEnum.Custom Then
                             'create a custom copy of the current pen 
-                            oBasePen = cCustomPen.copyascustom(oSurvey, oBasePen)
+                            oBasePen = cCustomPen.CopyAsCustom(oSurvey, oBasePen)
                         Else
                             oBasePen = oSurvey.Pens.FromType(value)
                         End If
@@ -1254,8 +1267,12 @@ Namespace cSurvey.Design
             Call oBasePen.Invalidate()
         End Sub
 
+        Private bIsRendering As Boolean
+
         Friend Sub Render(ByVal Graphics As Graphics, ByVal PaintOptions As cOptionsCenterline, ByVal Options As cItem.PaintOptionsEnum, ByVal Selected As Boolean, ByVal Path As GraphicsPath, ByVal Cache As cDrawCache)
+            bIsRendering = True
             Call oBasePen.Render(Graphics, PaintOptions, Options, Selected, Path, Cache)
+            bIsRendering = False
         End Sub
 
         Private Sub oBasePen_OnChanged(Sender As Object, e As EventArgs) Handles oBasePen.OnChanged
@@ -1264,6 +1281,12 @@ Namespace cSurvey.Design
 
         Private Sub oSurvey_OnPropertiesChanged(ByVal Sender As cSurvey, ByVal Args As cSurvey.OnPropertiesChangedEventArgs) Handles oSurvey.OnPropertiesChanged
             Call Invalidate()
+        End Sub
+
+        Private Sub oBasePen_OnRender(sender As Object, RenderArgs As cRenderEventArgs) Handles oBasePen.OnRender
+            If bIsRendering Then
+                RaiseEvent OnRender(Me, RenderArgs)
+            End If
         End Sub
 
 #Region "IDisposable Support"
@@ -1287,6 +1310,8 @@ Namespace cSurvey.Design
             ' Non modificare questo codice. Inserire sopra il codice di pulizia in Dispose(disposing As Boolean).
             Dispose(True)
         End Sub
+
+
 #End Region
     End Class
 End Namespace

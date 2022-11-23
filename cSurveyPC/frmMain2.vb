@@ -2496,8 +2496,14 @@ Friend Class frmMain2
         Call modDevExpress.UpdateFloatingForm(Me, DockManager)
     End Sub
 
+    Private bChangeDecimalKey As Boolean
+    Private bChangePeriodKey As Boolean
+
     Private Sub pSettingsLoad()
         Call cEditDesignEnvironment.Reset()
+
+        bChangeDecimalKey = cEditDesignEnvironment.GetSetting("keys.changedecimalkey", "1")
+        bChangePeriodKey = cEditDesignEnvironment.GetSetting("keys.changeperiodkey", "0")
 
         Dim sSkinName As String = "" & cEditDesignEnvironment.GetSetting("theme.name")
         If sSkinName <> "" Then
@@ -17072,8 +17078,10 @@ Friend Class frmMain2
     End Sub
 
     Private Sub grdViewSegments_ValidateRow(sender As Object, e As ValidateRowEventArgs) Handles grdViewSegments.ValidateRow
-        Dim oSegmentPlaceholder As UIHelpers.cSegmentPlaceholder = e.Row
-        Call pSegmentValidate(oSegmentPlaceholder.Segment)
+        If e.Row IsNot Nothing Then
+            Dim oSegmentPlaceholder As UIHelpers.cSegmentPlaceholder = e.Row
+            Call pSegmentValidate(oSegmentPlaceholder.Segment)
+        End If
     End Sub
 
     Private Sub btnSegmentInsert_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnSegmentInsert.ItemClick
@@ -18989,9 +18997,13 @@ Friend Class frmMain2
     Private Sub dockData_ClosedPanel(sender As Object, e As Docking.DockPanelEventArgs) Handles dockData.ClosedPanel
         Call pContextChange()
     End Sub
+
     Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
         If My.Application.CurrentLanguage = "it" Then
-            If keyData = Keys.Decimal OrElse keyData = Keys.OemPeriod Then
+            If My.Application.ChangeDecimalKey AndAlso keyData = Keys.Decimal Then
+                SendKeys.Send(",")
+                Return True
+            ElseIf My.Application.ChangePeriodKey AndAlso keyData = Keys.OemPeriod Then
                 SendKeys.Send(",")
                 Return True
             Else

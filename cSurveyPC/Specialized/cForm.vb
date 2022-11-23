@@ -5,7 +5,10 @@
 
     Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
         If My.Application.CurrentLanguage = "it" Then
-            If keyData = Keys.Decimal Then
+            If My.Application.ChangeDecimalKey AndAlso keyData = Keys.Decimal Then
+                SendKeys.Send(",")
+                Return True
+            ElseIf My.Application.ChangePeriodKey AndAlso keyData = Keys.OemPeriod Then
                 SendKeys.Send(",")
                 Return True
             Else
@@ -13,6 +16,7 @@
             End If
         End If
     End Function
+
     Public Class FormSettingsEventArgs
         Inherits EventArgs
 
@@ -91,24 +95,7 @@
         End Try
     End Sub
 
-    'Public Sub New()
-    '    Call MyBase.New
-    '    If modControls.SystemDPIRatio = 0 Then
-    '        Using oGr As Graphics = Graphics.FromHwnd(Handle)
-    '            modControls.SystemDPIRatio = oGr.DpiX / 96.0F
-    '        End Using
-    '    End If
-    '    'Call AdjustThroughtDPI(modControls.SystemDPIRatio)
-    'End Sub
-
-    'Public ReadOnly Property DPIRatio As Single
-    '    Get
-    '        Return modControls.SystemDPIRatio
-    '    End Get
-    'End Property
-
     Public Sub cForm_Load() Handles MyBase.Load
-        'Call AdjustThroughtDPI(modControls.SystemDPIRatio)
         If bSaveAndRestoreSettings Then pSettingsLoad()
         Call pFormSettingsLoad()
     End Sub

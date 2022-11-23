@@ -711,9 +711,6 @@
     <Compile Include="Specialized\cMessageBar.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Specialized\cRibbonForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Specialized\cForm.vb">
       <SubType>Form</SubType>
     </Compile>
